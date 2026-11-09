@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "kyary-pamyu-pamyu",
+  "universe": "Kyary Pamyu Pamyu",
+  "directory": "DLC/KyaryPamyuPamyu",
+  "registration": "runtime",
+  "catalogOrder": 223,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

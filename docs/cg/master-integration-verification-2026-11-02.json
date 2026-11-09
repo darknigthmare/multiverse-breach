@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "kind": "pre-merge-working-tree-integration-verification",
+  "recordedAt": "2026-11-02T05:56:43.198492+00:00",
+  "pullRequest": "https://github.com/darknigthmare/multiverse-breach/pull/21",
+  "principalBranch": "master",
+  "integrationParents": {
+    "cgBranch": "c87a603c77da598e0065d26127d415afa3791900",
+    "master": "698975774df66c32a730cf00156c0ccbf5a28af5"
+  },
+  "scope": "Preserve the current game while connecting the fidelity CG catalogue, corrections, variants, Rift reference candidates and workbook.",
+  "catalogue": {
+    "currentCg": 1406,
+    "retainedVersions": 1500,
+    "registeredMedia": 4500,
+    "subjects": 1912,
+    "universes": 525,
+    "correctedSpriteMaps": 60,
+    "newAlienPredatorCg": 60,
+    "newAlienPredatorAtlases": 4,
+    "oldVariantsRetained": true
+  },
+  "integration": {
+    "combinedFiles": [
+      "package.json",
+      "src/components/HubScreen.jsx",
+      "src/components/cg/CgGallery.jsx",
+      "src/game/spriteAssets.js"
+    ],
+    "runtimeSpriteComparison": {
+      "comparisons": 76480,
+      "completePacksCompared": 1912,
+      "selectionChangesAgainstCgBranch": 0
+    },
+    "riftCurrentReferences": {
+      "updatedCharacterDossiers": 58,
+      "historicalImagesVerifiedUnchanged": 1038,
+      "all3199PromptAndAssetPathsUnchanged": true,
+      "assetRegistryUnchanged": true,
+      "qualityMethod": "Technical usability only; this is not a canon or visual fidelity approval."
+    },
+    "workbook": {
+      "file": {
+        "path": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+        "sha256": "70331a54d95046c2215efd5e1ea80d2b5b7f59c42babb4e887bd69f2e0cb6da0",
+        "bytes": 103387438
+      },
+      "sheets": 14,
+      "embeddedImages": 4145,
+      "verifiedLocalHyperlinks": 20616,
+      "manualRowsBefore": {
+        "Contrôles": 0,
+        "Matrice CG": 0
+      },
+      "manualRowsAfter": {
+        "Contrôles": 0,
+        "Matrice CG": 0
+      },
+      "manualFieldRegressionChecks": 16,
+      "actualConsumedInputsCapturedBeforeBuild": 7648,
+      "rootPinsVerified": 74,
+      "currentRiftCandidatesMatched": 58,
+      "iccGreybackEmbeddedThumbnail": "pixel-exact Pillow CMS replay",
+      "automaticFidelityCertifications": 0
+    }
+  },
+  "verification": {
+    "node": "22.23.4",
+    "cgTestsWorkspace": {
+      "pass": 84,
+      "fail": 0,
+      "skip": 0
+    },
+    "cgTestsPrivateArchiveAbsent": {
+      "pass": 84,
+      "fail": 0,
+      "skip": 0
+    },
+    "sourceAvailabilityContract": "The published snapshot reproduces exactly when its archived images are available. A checkout without those archives may only downgrade explicitly unavailable references; source receipt hashes and exact fallback contracts are checked before comparing all remaining plan data.",
+    "browser": {
+      "passedBlocks": 6,
+      "loadedCgMasters": 60,
+      "lockedCgRequests": 0,
+      "rendererCanvases": 12,
+      "pageErrors": 0,
+      "httpErrors": 0,
+      "viewports": [
+        "1440x1000",
+        "390x844"
+      ],
+      "scope": "Actual CgGallery and drawPixelSprite in a private fixture, not a full App or combat playthrough."
+    },
+    "prebuild": {
+      "coveredStages": 42,
+      "evidenceMode": "All stages exercised locally; original failures retained and affected cases or data were fixed and rechecked. No uninterrupted local npm run build is claimed.",
+      "inotifyFailuresRecheckedSequentially": true
+    },
+    "vite": {
+      "compiled": true,
+      "copyPublicDir": false,
+      "reason": "Avoid duplicating the complete static artwork tree locally. The production-build GitHub workflow performs the canonical full lifecycle with LFS checkout and static copying."
+    },
+    "publicAssetAudit": {
+      "regularTrackedFiles": 14163,
+      "unresolvedLfsPointers": 0
+    },
+    "cosmeticGenerator": {
+      "runtimeUniverseCoverage": 525,
+      "runtimeCitationsPendingReview": 145,
+      "blockedIdentityOrLoadoutReferences": 7,
+      "unchangedPreviouslySourcedEntries": 374,
+      "fallbackOnlyEntries": 144,
+      "generationAllowedForBlockedIdentities": false,
+      "runtimePublishedPacksUnchanged": 50,
+      "newManifestsOrArtworksGenerated": 0
+    }
+  },
+  "artAndHistory": {
+    "newGenerationCallsDuringIntegration": 0,
+    "originalProducerGelsAndHistoricalEvidenceRewritten": false,
+    "perfectVisualFidelityCertified": false
+  },
+  "postBuildEvidence": [
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/local-prebuild-coverage.json",
+      "sha256": "52e8dd5e38c3b2f4d4f690104e1bc7754dae362e75b5f9f5376b25bac7a906ef",
+      "bytes": 19814
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/ci-cg-fresh-checkout-final-verification.json",
+      "sha256": "346901f5d28a5f2dd047c605dadd07c95dbdeba303005f6d8a69085fbbe6236e",
+      "bytes": 9409
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/browser/evidence-2026-11-02/browser-proof-final.json",
+      "sha256": "ae664aaa25199d6a4143bf3b051a4d818a2ef0c289e6b44709b2c4ac8cec7047",
+      "bytes": 33403
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/quality/rift-static-metadata/rift-current-metadata-integration-review-2026-11-02.json",
+      "sha256": "4b55940a2090272f5d06536e69f42fa4ab903f9d2c00d1f5f44458b9cd272a07",
+      "bytes": 62175
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/quality/excel-integrated-final/final-integrated-workbook-independent-review-2026-11-02.json",
+      "sha256": "86e13791f29dc7fc65322e04a699100104ac458e0c1ff70365e77d07bb4fc0ec",
+      "bytes": 21153
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/quality/excel-integrated-final/input-pins-and-rift-chain-review.json",
+      "sha256": "fe6710ae284510d1c3b3dfbb8f2855f701bb788c4ba1e1a1e0f7600d4d59a381",
+      "bytes": 8050
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/focused-tests-2026-11-02/focused-test-review.json",
+      "sha256": "906a0ebd39e507f6e1ce10bc804ddf1e723c263544aa8a484fa0f31b4e053821",
+      "bytes": 2167
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/cosmetic-dependent-checks-2026-11-02/cosmetic-runtime-final-test-result.json",
+      "sha256": "decd5629dd789044e2b7d43d9ee64375ca72dc8857cd52b40e9a84895a72a776",
+      "bytes": 2145
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/cosmetic-dependent-checks-2026-11-02/cosmetic-runtime-final-metadata-review.json",
+      "sha256": "d62507658095c707b3e7b52fa99f9865e73187e7f218c826770ee5dd8dbde3cf",
+      "bytes": 9722
+    },
+    {
+      "path": ".tmp/cg-main-integration-2026-11-02/excel/manual-baseline-chronology-clarification.json",
+      "sha256": "963d4034cb1e8ca041a76b31e47b0ff58b2618a5c84fa596cc944786a092f22d",
+      "bytes": 1331
+    }
+  ],
+  "livePublicationAndCiState": "See the linked pull request for the final merge and checks."
+}

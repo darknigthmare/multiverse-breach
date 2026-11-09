@@ -1,7 +1,10 @@
 import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { spawnSync } from 'node:child_process';
+import { register } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
+import { createDlcSourceReader } from './dlcAuditSources.mjs';
+import { LORE_ACCURATE_HERO_OVERRIDES } from '../src/game/loreAccuratePacks.js';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
 import { LORE_WORLD_BOSS_OVERRIDES, LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
@@ -23,6 +26,9 @@ import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
 import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
+const readGameSource = createDlcSourceReader();
+register('./sourceSceneTestLoader.mjs', import.meta.url);
+const { OPENAI_BACKDROPS } = await import('../src/game/renderer.js');
 const fail = (message) => {
   throw new Error(message);
 };
@@ -30,37 +36,49 @@ const assert = (condition, message) => {
   if (!condition) fail(message);
 };
 
-const heroesSource = read('../src/game/heroes.js');
-const enemiesSource = read('../src/game/enemies.js');
-const battleItemsSource = read('../src/game/battleItems.js');
-const dlcSource = read('../src/game/dlcConfig.js');
+const hasLoreLoadout = id => {
+  const loadout = LORE_ACCURATE_HERO_OVERRIDES[id];
+  return Boolean(loadout?.weaponType && ['simple', 'secondary', 'defense', 'special']
+    .every(slot => typeof loadout[slot]?.name === 'string' && loadout[slot].name.trim()));
+};
+
+const heroesSource = readGameSource('src/game/heroes.js');
+const enemiesSource = readGameSource('src/game/enemies.js');
+const battleItemsSource = readGameSource('src/game/battleItems.js');
+const dlcSource = readGameSource('src/game/dlcConfig.js');
 const appSource = read('../src/App.jsx');
-const hubSource = read('../src/components/HubScreen.jsx');
+const hubSource = [
+  read('../src/components/HubScreen.jsx'),
+  readGameSource('src/game/legacyStageCatalog.js'),
+  readGameSource('src/game/universeModifiers.js')
+].join('\n');
+const extinctionSignaturesSource = read('../src/game/extinctionSignatures.js');
 const regulationImagePreviewSource = read('../src/components/RegulationImagePreview.jsx');
-const ocCampaignSource = read('../src/game/ocCampaign.js');
-const characterPlaquesSource = read('../src/game/characterPlaques.js');
-const featuredUniverseSource = read('../src/game/featuredUniversePacks.js');
-const expandedUniversesSource = read('../src/game/expandedUniverses.js');
-const loreAccuratePacksSource = read('../src/game/loreAccuratePacks.js');
-const loreDescriptionsSource = read('../src/game/loreDescriptions.js');
-const narrativeSystemsSource = read('../src/game/narrativeSystems.js');
-const missionStageProjectionSource = read('../src/game/missions/missionStageProjection.js');
+const ocCampaignSource = readGameSource('src/game/ocCampaign.js');
+const characterPlaquesSource = readGameSource('src/game/characterPlaques.js');
+const featuredUniverseSource = readGameSource('src/game/featuredUniversePacks.js');
+const expandedUniversesSource = readGameSource('src/game/expandedUniverses.js');
+const loreAccuratePacksSource = readGameSource('src/game/loreAccuratePacks.js');
+const loreDescriptionsSource = readGameSource('src/game/loreDescriptions.js');
+const narrativeSystemsSource = readGameSource('src/game/narrativeSystems.js');
+const missionStageProjectionSource = readGameSource('src/game/missions/missionStageProjection.js');
 const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
-const rpgEngineSource = read('../src/game/engineRpg.js');
+const rpgEngineSource = readGameSource('src/game/engineRpg.js');
 const raceModeSource = read('../src/components/RaceMode.jsx');
-const kartCareerSource = read('../src/game/kartCareer.js');
+const kartSpritePreviewSource = read('../src/components/KartSpritePreview.jsx');
+const kartCareerSource = readGameSource('src/game/kartCareer.js');
 const fighterModeSource = read('../src/components/FighterMode.jsx');
-const fighterEngineSource = read('../src/game/engineFighter.js');
-const smashEngineSource = read('../src/game/engineSmash.js');
-const raceEngineSource = read('../src/game/engineRace.js');
-const spriteAssetsSource = read('../src/game/spriteAssets.js');
-const rendererSource = read('../src/game/renderer.js');
-const smashArenasSource = read('../src/game/smashArenas.js');
-const tacticsEngineSource = read('../src/game/engineTactics.js');
-const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
-const recentUniverseLevelsSource = read('../src/game/recentUniverseLevels.js');
-const recentUniverseTextureAssetsSource = read('../src/game/recentUniverseTextureAssets.js');
+const fighterEngineSource = readGameSource('src/game/engineFighter.js');
+const smashEngineSource = readGameSource('src/game/engineSmash.js');
+const raceEngineSource = readGameSource('src/game/engineRace.js');
+const spriteAssetsSource = readGameSource('src/game/spriteAssets.js');
+const rendererSource = readGameSource('src/game/renderer.js');
+const smashArenasSource = readGameSource('src/game/smashArenas.js');
+const tacticsEngineSource = readGameSource('src/game/engineTactics.js');
+const tacticsBattlefieldsSource = readGameSource('src/game/tacticsBattlefields.js');
+const recentUniverseLevelsSource = readGameSource('src/game/recentUniverseLevels.js');
+const recentUniverseTextureAssetsSource = readGameSource('src/game/recentUniverseTextureAssets.js');
 const recentTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-level-texture-sources.json'));
 const recentTacticsTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-tactics-perspective-sources.json'));
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
@@ -608,7 +626,7 @@ expectedChuckyExpansionRoster.forEach(name => {
   assert(loreAccuratePacksSource.includes(name), `Missing Chucky incarnation ${name}.`);
 });
 assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
-assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
+assert(OPENAI_BACKDROPS.Smash.Chucky === '/backgrounds/chucky-play-pals-breach-openai-v2.png', 'Chucky stages must use the dedicated Play Pals Breach background.');
 assert(spriteChecklistSource.includes('[x] Vingt-six nouvelles plaquettes Chucky') && spriteChecklistSource.includes('[x] Les trois equivalents en corps de poupee Tiffany') && spriteChecklistSource.includes('Tiffany humaine et Tiffany poupee en maillot deux pieces Adult AU') && spriteChecklistSource.includes('Buddi Chucky du remake 2019'), 'The completed Chucky expansion must remain visible in the conversion checklist.');
 expectedStargateSpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing Stargate OpenAI sprite ${output}.`);
@@ -639,7 +657,7 @@ expectedDandadanSpriteOutputs.forEach(output => {
   assert(spriteReferenceSource.includes(output), `Missing Dandadan reference trace for ${output}.`);
 });
 assert(loreAccuratePacksSource.includes("hero('jiji_dandadan', 'Jiji'") && loreAccuratePacksSource.includes("hero('seiko_dandadan', 'Seiko Ayase'") && loreAccuratePacksSource.includes("hero('turbo_granny_cat', 'Turbo Granny - Maneki-neko'"), 'Jiji, Seiko, and Turbo Granny cat must remain playable Dandadan signatures.');
-assert(loreAccuratePacksSource.includes('momo_ayase: loadout') && loreAccuratePacksSource.includes('oken_dandadan: loadout') && loreAccuratePacksSource.includes('aira_dandadan: loadout'), 'The three original Dandadan signatures must keep their lore-specific loadouts.');
+assert(['momo_ayase', 'oken_dandadan', 'aira_dandadan'].every(hasLoreLoadout), 'The three original Dandadan signatures must keep their lore-specific loadouts.');
 assert(spriteChecklistSource.includes('Validation technique: 6 plaquettes transparentes, 16/16 cellules non vides'), 'The completed Dandadan character batch must remain documented in the conversion checklist.');
 expectedFrenchComedySpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing French comedy OpenAI sprite ${output}.`);
@@ -647,7 +665,7 @@ expectedFrenchComedySpriteOutputs.forEach(output => {
 });
 assert(expandedUniversesSource.includes("hero: ['inconnus_trio', 'Pascal Legitimus'") && expandedUniversesSource.includes("['bernard_inconnus', 'Bernard Campan'") && expandedUniversesSource.includes("['didier_inconnus', 'Didier Bourdon'"), 'Les Inconnus must expose the three named comedians without replacing their save-compatible IDs.');
 assert(expandedUniversesSource.includes("hero: ['pierre_rrr', 'Pierre - Chef des Cheveux Propres'") && expandedUniversesSource.includes("['chef_cheveux_sales', 'Tonton - Chef des Cheveux Sales'"), 'RRRrrrr!!! must keep its exact clean-hair and dirty-hair identities.');
-assert(loreAccuratePacksSource.includes('inconnus_trio: loadout') && loreAccuratePacksSource.includes('pierre_rrr: loadout') && loreAccuratePacksSource.includes('odile_deray: loadout'), 'The French comedy signatures must keep their lore-specific loadouts.');
+assert(['inconnus_trio', 'pierre_rrr', 'odile_deray'].every(hasLoreLoadout), 'The French comedy signatures must keep their lore-specific loadouts.');
 assert(spriteChecklistSource.includes('[x] Les Inconnus - trio principal OpenAI') && spriteChecklistSource.includes('[x] RRRrrrr!!! - trio principal OpenAI') && spriteChecklistSource.includes('[x] La Cite de la Peur - trio principal OpenAI'), 'The three completed French comedy batches must remain documented in the conversion checklist.');
 expectedFeaturedUniverses.forEach(universe => {
   const universeEntries = (manifest.entries || []).filter(entry => entry.universe === universe);
@@ -758,11 +776,19 @@ assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCa
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
-assert(raceEngineSource.includes('arca-mirelle-hud-avatar.png') && raceModeSource.includes('race-mode-pilot-icon'), 'Race pilot HUD must use a cropped Mirelle icon instead of a full sprite plaque.');
+assert(raceModeSource.includes('<KartSpritePreview spec={pilotSpec}')
+  && kartSpritePreviewSource.includes('getKartDriverFrame(spec, source)')
+  && kartSpritePreviewSource.includes('ctx.drawImage(drawable, sx, sy, sw, sh,'),
+  'Race pilot previews must crop the selected character\'s declared atlas cell.');
 assert(raceEngineSource.includes('drawRaceCameraBackdrop') && raceEngineSource.includes('drawRearRoad') && raceEngineSource.includes('drawRearPlayerKart'), 'Race mode must render from a rear kart camera, not only a top-down circuit.');
 assert(raceEngineSource.includes('const sprite = this.images.kartDirections') && raceEngineSource.includes('const row = 1'), 'Rear kart camera must crop Mirelle from the rear-facing direction row.');
 assert(raceEngineSource.includes('projectToRearCamera') && raceEngineSource.includes('drawProjectedRaceObjects'), 'Race objects and rivals must be projected into the rear camera view.');
-assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.includes('vue de dessus reste limitee a la mini-map'), 'Race top-down view must stay limited to the minimap.');
+assert(raceEngineSource.includes('drawTopDownMinimap')
+  && raceModeSource.includes('new KartRenderer3D')
+  && raceModeSource.includes('rendererRef.current?.setCameraMode(cameraMode)')
+  && raceModeSource.includes('<option value="overview">')
+  && raceModeSource.includes('<option value="chase">'),
+  'Race must retain its minimap and expose both real 3D cameras on the shared simulation.');
 [
   'arca-mirelle-rpg.png',
   'arca-mirelle-tactics.png',
@@ -816,9 +842,27 @@ assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.include
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
 verifyExtinctionViewmodelContract();
 assert(hubSource.includes('getExtinctionHandFrame(viewmodel, state)') && hubSource.includes('getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight)') && hubSource.includes('getExtinctionHandPlacement(handSource'), 'FPS renderer must use the verified identity, crop and aspect contract.');
-assert(hubSource.includes('reloadPulse') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('projectileSheet.naturalWidth'), 'FPS firing must keep a dedicated projectile overlay and existing fire/reload timing.');
+assert(hubSource.includes('fireExtinctionPickupWeapon(state, { onKill: triggerEnemyDrop, damageMultiplier: role.dmg, lang })')
+  && extinctionSignaturesSource.includes("if (state.reloadPulse > 0) return refusal('reload');")
+  && extinctionSignaturesSource.includes('finite(weapon.fireRate, 1) * 18')
+  && extinctionSignaturesSource.includes("state.t - state.lastFireTime < cooldown) return refusal('cooldown');")
+  && extinctionSignaturesSource.includes('weapon.ammo -= 1; state.ammo = weapon.ammo;')
+  && extinctionSignaturesSource.includes('state.lastFireTime = state.t; state.muzzle = 36;'),
+  'FPS pickup firing must keep its scene binding, ammo consumption, active-tick cadence and 36-tick muzzle feedback in the protocol helper.');
+assert(hubSource.includes("if (state.phase !== 'running' || state.reloadPulse > 0) return;")
+  && hubSource.includes('state.reserveAmmo -= loaded;') && hubSource.includes('state.reloadPulse = 36;')
+  && hubSource.includes('state.reloadPulse = Math.max(0, (state.reloadPulse || 0) - 1);'),
+  'FPS reload timing must keep its running-state guard, finite reserve, 36-tick delay and active-tick countdown.');
+assert(hubSource.includes('drawExtinctionProtocols(ctx, state, canvas.width, canvas.height, projectWorld, { ownerId: viewmodel.id, image: fpsProjectileRef.current })')
+  && hubSource.includes('state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth')
+  && hubSource.includes('getExtinctionProjectilePlacement(projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width, canvas.height)')
+  && hubSource.includes('ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, effect.x, effect.y, effect.w, effect.h)'),
+  'FPS projectile rendering must keep world protocol effects and the decoded dedicated overlay with its own aspect and muzzle timing.');
 assert(raceEngineSource.includes('drawRearKartActionOverlay') && raceEngineSource.includes('KART_ITEM_FRAMES') && raceEngineSource.includes('this.images.kartItems') && raceEngineSource.includes('this.images.hudIcons'), 'Race mode must render Mirelle kart actions, item sheet, and HUD icon sheet in playable views.');
-assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('RACE_ASSETS.hudGarage') && raceModeSource.includes('RACE_ASSETS.kartItems'), 'Race tab must expose Mirelle garage and item sheets outside admin preview.');
+assert(raceModeSource.includes('race-garage-card')
+  && raceModeSource.includes('<KartSpritePreview spec={displayedKartSpec} kind="kart"')
+  && raceModeSource.includes('RACE_ASSETS.kartItems'),
+  'Race garage must show the chosen pilot\'s painted kart and its playable item controls.');
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
 assert(raceEngineSource.includes('getClosestRoadPoint') && raceEngineSource.includes('this.track.roadWidth') && raceEngineSource.includes('this.track.shortcuts'), 'Race physics and minimap must follow the active track path instead of one fixed oval.');
 assert(raceEngineSource.includes('getProjectedTrackSegments') && raceEngineSource.includes('normalizeTrackObjects') && raceEngineSource.includes('closestPointOnPath'), 'Race rear camera, physics, and objects must be anchored to the same track geometry.');
@@ -832,7 +876,17 @@ assert(
 assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes('setTrackId') && raceModeSource.includes('trackList.map'), 'Race tab must let the player switch between available kart tracks.');
 assert(raceModeSource.includes('keyPulseRef') && raceModeSource.includes('pulseVirtualKey'), 'Race controls must keep short keyboard and touch inputs alive long enough for the engine loop.');
 assert(raceModeSource.includes('autoAccelerateRef') && raceModeSource.includes('recoverPlayer') && raceModeSource.includes('data-track-factor'), 'Race controls must provide assisted acceleration, manual recovery, and visible track-lock telemetry.');
-assert(raceEngineSource.includes('lapArmed') && raceEngineSource.includes('previousRouteProgress') && raceEngineSource.includes('previousProgress - routeProgress > 0.28'), 'Race laps must use ordered route gates so figure-eight and portal tracks cannot become impossible to finish.');
+// The selected pilot, cropped frame, cameras and ordered lap gates are runtime
+// contracts. Do not require the former Mirelle-only panel or lap formula.
+const kartRuntimeAudit = spawnSync(process.execPath,
+  ['--test', '--test-concurrency=1',
+    fileURLToPath(new URL('./kart/kartRaceIntegration.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartDriver2D.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartRenderer3D.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartLapProgress.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!kartRuntimeAudit.error && kartRuntimeAudit.status === 0,
+  'Race selected-pilot identity, atlas crops, 3D cameras and ordered lap/portal contracts failed.');
 assert(raceEngineSource.includes('getTrackPointAhead(road, lookAhead)') && raceEngineSource.includes('assistStrength'), 'Race steering must use a forward route target for player stability and AI navigation.');
 assert(raceEngineSource.includes('startBoostWindow') && raceEngineSource.includes('driftCharge') && raceEngineSource.includes('Mini-turbo violet'), 'Race mode must include start boost and charged mini-turbo handling.');
 assert(raceEngineSource.includes("zone.type === 'jump'") && raceEngineSource.includes("zone.type === 'portal'") && raceEngineSource.includes("zone.type === 'slow'"), 'Race mode must include jump, portal, and slow interactive surfaces.');
@@ -854,11 +908,12 @@ assert(
   mosaicCitySource.includes('const hero = npc.hero;')
     && /drawPixelPerson\([^;\n]*false,\s*\{\s*\.\.\.hero,\s*state:\s*npc\.sceneState\s*\}\s*\)/.test(mosaicCitySource)
     && mosaicCitySource.includes("const spriteState = hero.state || 'idle';")
-    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, \{ \.\.\.hero, state: spriteState \}, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return;\s*\}/.test(mosaicCitySource),
+    && mosaicCitySource.includes('const renderedHero = { ...hero, state: spriteState };')
+    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, renderedHero, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return protectedRects;\s*\}/.test(mosaicCitySource),
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
-verifyExtinctionRendererBinding(hubSource);
+verifyExtinctionRendererBinding(read('../src/components/HubScreen.jsx'));
 assert(
   hubSource.includes("kind: completePack ? 'pack' : 'hero'") &&
   regulationImagePreviewSource.includes('preview.sheets'),
@@ -1167,7 +1222,8 @@ console.log(JSON.stringify({
   fighterGameplay: ['flat-arena', 'one-active-fighter', 'three-slot-tag', 'guard-break', 'combos', 'specials', 'projectiles', 'crouch', 'ai-difficulties'],
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
-  racePilotSprite: 'mirelle-kart-openai-sheet',
+  racePilotSprite: 'selected-character-cropped-atlas',
+  racePresentations: ['webgl-3d', 'rear-camera-2d-sprites'],
   mirelleCompleteSpritePack: 16,
   mirelleSpriteRouting: ['rpg', 'tactics', 'melee', 'nexus', 'hud', 'fps', 'kart', 'admin-preview'],
   meleeArenaLayouts: 17,

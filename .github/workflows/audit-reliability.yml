@@ -11,7 +11,9 @@ concurrency:
 jobs:
   reliability:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    # Ten browser suites follow the source and runtime checks. Run 42415960630
+    # hit 12 minutes during the final suite with all preceding cases passing.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -21,6 +23,9 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /supabase/
@@ -28,10 +33,14 @@ jobs:
             **/*.json
             **/*.jsonl
             **/*.md
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Derived index contract and reliability tests
         run: |

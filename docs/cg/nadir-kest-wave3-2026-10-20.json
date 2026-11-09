@@ -1,0 +1,1676 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_nadir",
+  "heroId": "arca_nadir",
+  "incarnation": "Nexus de Convergence — Nadir Kest, canon original du projet2026, atlas courant4×4 et dossier de personnage",
+  "publishedAt": "2026-10-20",
+  "status": "complete",
+  "plannedSlots": 15,
+  "deliveredNewSlots": 15,
+  "planFile": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+  "referenceEvidence": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+  "independentReviewFile": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+  "unattemptedSlots": [],
+  "entries": [
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:characterSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "characterSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/character-solo-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/character-solo-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le coureur du retour",
+        "en": "Nadir Kest — Le coureur du retour"
+      },
+      "slotNumber": "CG01",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-charactersolo-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Portrait entier de référence Nadir Kest, homme en armure marine, harnais causal et sonde de retour fidèles à l’atlas canon interne. Debout de trois quarts, appui sur la jambe droite, pistolet abaissé à la main droite et main gauche ouverte sous la sonde reliée au harnais.",
+        "en": "Portrait entier de référence Nadir Kest, homme en armure marine, harnais causal et sonde de retour fidèles à l’atlas canon interne. Debout de trois quarts, appui sur la jambe droite, pistolet abaissé à la main droite et main gauche ouverte sous la sonde reliée au harnais."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/01-characterSolo.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg01-wave3-2026-10-20",
+      "backgroundDescription": "Terrasse de reconnaissance près d’un anneau causal calme; Dalles ivoire et petite borne d’ancrage au bord de la terrasse; Nadir entier, sonde en vol à sa gauche et câble légèrement courbé; Anneaux d’archives cyan, verrières et silhouette de la Cité-Mosaïque; Aube turquoise douce, reflets pâles et fines ombres de métal",
+      "background": {
+        "location": "Terrasse de reconnaissance près d’un anneau causal calme",
+        "foreground": "Dalles ivoire et petite borne d’ancrage au bord de la terrasse",
+        "midground": "Nadir entier, sonde en vol à sa gauche et câble légèrement courbé",
+        "background": "Anneaux d’archives cyan, verrières et silhouette de la Cité-Mosaïque",
+        "lighting": "Aube turquoise douce, reflets pâles et fines ombres de métal"
+      },
+      "poseId": "nadir-kest-cg01-charactersolo-wave3",
+      "poseBrief": "Debout de trois quarts, appui sur la jambe droite, pistolet abaissé à la main droite et main gauche ouverte sous la sonde reliée au harnais.",
+      "poseDescription": "Debout de trois quarts, appui sur la jambe droite, pistolet abaissé à la main droite et main gauche ouverte sous la sonde reliée au harnais.",
+      "themeBrief": "Portrait entier de référence Nadir Kest, homme en armure marine, harnais causal et sonde de retour fidèles à l’atlas canon interne.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Uncovered male face/short black hair/navy segmented suit and cyan chest bobbin match project source.",
+          "Right hand holds lowered pistol, left palm open below tethered spherical return probe; two arms/two legs and complete boots."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/character-solo-wave3-2026-10-20.png",
+          "sha256": "35fd81b1170eed7ffade95601072fc654b1492eedd5266092d5673dd0b3c36cc",
+          "bytes": 4296010,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/character-solo-wave3-2026-10-20.webp",
+          "sha256": "d95de65ed15016376407188a67cd56358c31b3d97315bb109ff37bb7725e8a0e",
+          "bytes": 1107796,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/character-solo-wave3-2026-10-20-thumb.webp",
+          "sha256": "c2981b284245b20c7ffc2297d459831d4fb319347340129fe91ea219fed26dc0",
+          "bytes": 98490,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:weaponSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "weaponSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/signature-weapon-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/signature-weapon-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — La ligne et la sonde",
+        "en": "Nadir Kest — La ligne et la sonde"
+      },
+      "slotNumber": "CG02",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-weaponsolo-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Étude d’équipement du canon original : pistolet cyan et sonde de retour reliée à son câble, sans inventer un fusil, une croix médicale ou un pouvoir étranger. Pistolet court couché seul en diagonale sur un coussin technique, sonde sombre sur un petit support distinct à sa droite, câble cyan en boucle souple sans corps ni main.",
+        "en": "Étude d’équipement du canon original : pistolet cyan et sonde de retour reliée à son câble, sans inventer un fusil, une croix médicale ou un pouvoir étranger. Pistolet court couché seul en diagonale sur un coussin technique, sonde sombre sur un petit support distinct à sa droite, câble cyan en boucle souple sans corps ni main."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/02-weaponSolo.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg02-wave3-2026-10-20",
+      "backgroundDescription": "Établi d’étalonnage des équipes de reconnaissance A.R.C.A.; Bord de table noir mat, outils fins et feutre technique marine; Pistolet compact et sonde sphérique à ailettes visibles séparément; Étagère de bobines, verre gravé sans texte et fenêtre sur une cour; Lampe blanche froide zénithale, touches cyan discrètes sur les objets",
+      "background": {
+        "location": "Établi d’étalonnage des équipes de reconnaissance A.R.C.A.",
+        "foreground": "Bord de table noir mat, outils fins et feutre technique marine",
+        "midground": "Pistolet compact et sonde sphérique à ailettes visibles séparément",
+        "background": "Étagère de bobines, verre gravé sans texte et fenêtre sur une cour",
+        "lighting": "Lampe blanche froide zénithale, touches cyan discrètes sur les objets"
+      },
+      "poseId": "nadir-kest-cg02-weaponsolo-wave3",
+      "poseBrief": "Pistolet court couché seul en diagonale sur un coussin technique, sonde sombre sur un petit support distinct à sa droite, câble cyan en boucle souple sans corps ni main.",
+      "poseDescription": "Pistolet court couché seul en diagonale sur un coussin technique, sonde sombre sur un petit support distinct à sa droite, câble cyan en boucle souple sans corps ni main.",
+      "themeBrief": "Étude d’équipement du canon original : pistolet cyan et sonde de retour reliée à son câble, sans inventer un fusil, une croix médicale ou un pouvoir étranger.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Complete compact dark/cyan pistol and separate spherical cyan return probe with coiled cable.",
+          "No person or hand, equipment study set in dark workshop distinct from CG01 skyline."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/weapon-solo-wave3-2026-10-20.png",
+          "sha256": "93001040b4c3a77e3e67a24c99e5635343784c2d8b5d71651df222e6129a8e37",
+          "bytes": 3632074,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/weapon-solo-wave3-2026-10-20.webp",
+          "sha256": "7145b83f921350baafcbd53a50d8cc33884d1bb80a94fa22292328e63b159ad1",
+          "bytes": 901116,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/weapon-solo-wave3-2026-10-20-thumb.webp",
+          "sha256": "e365325175335b723f6f2042eeeecca962ff4250e2e183018b2c21caf62ff790",
+          "bytes": 71990,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:decorSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "decorSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/decor-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/decor-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le passage mesurable",
+        "en": "Nadir Kest — Le passage mesurable"
+      },
+      "slotNumber": "CG03",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-decorsolo-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Décor original seul du Nexus : corridor d’extraction mesuré et habitable, pas un plan exact d’une autre franchise. Vue architecturale vide de trois quarts, longue diagonale de passerelle partant du bas gauche vers un anneau ouvert au fond, sans silhouette humaine.",
+        "en": "Décor original seul du Nexus : corridor d’extraction mesuré et habitable, pas un plan exact d’une autre franchise. Vue architecturale vide de trois quarts, longue diagonale de passerelle partant du bas gauche vers un anneau ouvert au fond, sans silhouette humaine."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/03-decorSolo.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg03-wave3-2026-10-20",
+      "backgroundDescription": "Corridor périphérique d’archives de la Cité-Mosaïque; Passerelle ivoire, rainures de laiton et plots de câble fixes; Portiques cyan fins, consoles sans texte et rambardes basses; Anneau causal ouvert sur une autre galerie claire et ciel blanc; Lumière d’après-midi diffuse à travers une verrière géométrique",
+      "background": {
+        "location": "Corridor périphérique d’archives de la Cité-Mosaïque",
+        "foreground": "Passerelle ivoire, rainures de laiton et plots de câble fixes",
+        "midground": "Portiques cyan fins, consoles sans texte et rambardes basses",
+        "background": "Anneau causal ouvert sur une autre galerie claire et ciel blanc",
+        "lighting": "Lumière d’après-midi diffuse à travers une verrière géométrique"
+      },
+      "poseId": "nadir-kest-cg03-decorsolo-wave3",
+      "poseBrief": "Vue architecturale vide de trois quarts, longue diagonale de passerelle partant du bas gauche vers un anneau ouvert au fond, sans silhouette humaine.",
+      "poseDescription": "Vue architecturale vide de trois quarts, longue diagonale de passerelle partant du bas gauche vers un anneau ouvert au fond, sans silhouette humaine.",
+      "themeBrief": "Décor original seul du Nexus : corridor d’extraction mesuré et habitable, pas un plan exact d’une autre franchise.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Empty archive gallery and curved return route through a circular portal; no character or weapon.",
+          "Strong diagonal perspective and glass roof distinguish the environment from the CG01 exterior and CG02 workshop."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/decor-solo-wave3-2026-10-20.png",
+          "sha256": "b756467000543d0c15602a697427e5dc34faf928d177fed1629d91fad1412ef2",
+          "bytes": 4325156,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/decor-solo-wave3-2026-10-20.webp",
+          "sha256": "4ce8dbbcc8e33bbf06a97c17b3cebaca926fced68baf650e0b08a7c3a9274140",
+          "bytes": 1097192,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/decor-solo-wave3-2026-10-20-thumb.webp",
+          "sha256": "d814d969317f57bef41dc11b74c3c4c5f4eac78e4480c5a5926498e665a3032f",
+          "bytes": 89106,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:coherentScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "coherentScene",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/coherent-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/coherent-scene-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Contrôle de tension",
+        "en": "Nadir Kest — Contrôle de tension"
+      },
+      "slotNumber": "CG04",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-coherentscene-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Pause cohérente : Nadir vérifie que la ligne revient réellement avant de laisser entrer une équipe; aucun transfert de pouvoir ou nouveau gadget. Assis sur le bord d’un banc bas, torse penché vers la bobine thoracique, deux mains contrôlant la tension du câble qui rejoint la sonde en vol.",
+        "en": "Pause cohérente : Nadir vérifie que la ligne revient réellement avant de laisser entrer une équipe; aucun transfert de pouvoir ou nouveau gadget. Assis sur le bord d’un banc bas, torse penché vers la bobine thoracique, deux mains contrôlant la tension du câble qui rejoint la sonde en vol."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/04-coherentScene.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg04-wave3-2026-10-20",
+      "backgroundDescription": "Vestibule de retour attenant à une cour de portails; Banc de pierre sombre et boucle de câble au-dessus du sol; Nadir assis, harnais frontal dégagé et sonde à hauteur de l’épaule; Arcade ivoire avec registre fermé et accès à une cour verte; Soleil latéral clair et reflets cyan localisés sur le harnais",
+      "background": {
+        "location": "Vestibule de retour attenant à une cour de portails",
+        "foreground": "Banc de pierre sombre et boucle de câble au-dessus du sol",
+        "midground": "Nadir assis, harnais frontal dégagé et sonde à hauteur de l’épaule",
+        "background": "Arcade ivoire avec registre fermé et accès à une cour verte",
+        "lighting": "Soleil latéral clair et reflets cyan localisés sur le harnais"
+      },
+      "poseId": "nadir-kest-cg04-coherentscene-wave3",
+      "poseBrief": "Assis sur le bord d’un banc bas, torse penché vers la bobine thoracique, deux mains contrôlant la tension du câble qui rejoint la sonde en vol.",
+      "poseDescription": "Assis sur le bord d’un banc bas, torse penché vers la bobine thoracique, deux mains contrôlant la tension du câble qui rejoint la sonde en vol.",
+      "themeBrief": "Pause cohérente : Nadir vérifie que la ligne revient réellement avant de laisser entrer une équipe; aucun transfert de pouvoir ou nouveau gadget.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Seated on low ledge with both feet planted, two hands checking return cable; pistol safely at side.",
+          "Face, navy armor, cyan chest bobbin and spherical probe remain coherent with the project atlas; complete anatomy."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/coherent-scene-wave3-2026-10-20.png",
+          "sha256": "602698da5a8ba838cee3ffdfcfaea9997b3c819c576f7cbc46059db6b7ccffd1",
+          "bytes": 4163096,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/coherent-scene-wave3-2026-10-20.webp",
+          "sha256": "df844c175189b925ed3d60a30d516bf1e2a90b705dcafdcbdd510f96d1bf0e19",
+          "bytes": 828168,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/coherent-scene-wave3-2026-10-20-thumb.webp",
+          "sha256": "31389408d45b449cf3427f961f7084e7a3b2536026a9775035b04b4d423ec6b9",
+          "bytes": 82718,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:actionScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "actionScene",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/action-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/action-scene-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Dernier à couper le fil",
+        "en": "Nadir Kest — Dernier à couper le fil"
+      },
+      "slotNumber": "CG05",
+      "family": "Nexus",
+      "rarity": "stable",
+      "canonStatus": "nexus-variant",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-actionscene-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Action Nexus d’extraction des marges : maintenir un lien physique pour ouvrir le retour, sans tirer sur une personne ni attaquer avec un objet inventé. Fente basse vers l’avant, pied gauche ancré et jambe droite tendue derrière, deux mains tirant un câble cyan tendu vers un portail; sonde visible au-delà du seuil.",
+        "en": "Action Nexus d’extraction des marges : maintenir un lien physique pour ouvrir le retour, sans tirer sur une personne ni attaquer avec un objet inventé. Fente basse vers l’avant, pied gauche ancré et jambe droite tendue derrière, deux mains tirant un câble cyan tendu vers un portail; sonde visible au-delà du seuil."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/05-actionScene.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg05-wave3-2026-10-20",
+      "backgroundDescription": "Passerelle de sauvetage près de la Cour des faux passages; Dalles légèrement fendues, bordure corail d’alerte et point fixe de ligne; Nadir en effort contrôlé, câble tendu et petit portail de retour; Trois arches instables, registres flottants et voie sûre lumineuse; Ciel orageux violet, alerte corail et faisceau cyan contenu",
+      "background": {
+        "location": "Passerelle de sauvetage près de la Cour des faux passages",
+        "foreground": "Dalles légèrement fendues, bordure corail d’alerte et point fixe de ligne",
+        "midground": "Nadir en effort contrôlé, câble tendu et petit portail de retour",
+        "background": "Trois arches instables, registres flottants et voie sûre lumineuse",
+        "lighting": "Ciel orageux violet, alerte corail et faisceau cyan contenu"
+      },
+      "poseId": "nadir-kest-cg05-actionscene-wave3",
+      "poseBrief": "Fente basse vers l’avant, pied gauche ancré et jambe droite tendue derrière, deux mains tirant un câble cyan tendu vers un portail; sonde visible au-delà du seuil.",
+      "poseDescription": "Fente basse vers l’avant, pied gauche ancré et jambe droite tendue derrière, deux mains tirant un câble cyan tendu vers un portail; sonde visible au-delà du seuil.",
+      "themeBrief": "Action Nexus d’extraction des marges : maintenir un lien physique pour ouvrir le retour, sans tirer sur une personne ni attaquer avec un objet inventé.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Wide return-cable extraction lunge with anatomical left foot toward portal at image right and right leg extended behind toward image left.",
+          "Two hands pull cable, pistol holstered and separate tethered probe inside cyan portal; full two-arm/two-leg anatomy."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/action-scene-wave3-2026-10-20.png",
+          "sha256": "bc08e5b4c805b179680a71d0af1b2524a8ac8a44c462e441053adeb938b87a60",
+          "bytes": 4302577,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/action-scene-wave3-2026-10-20.webp",
+          "sha256": "dbab9d452f4d6d35818154f0f256e926704d2912833850052c7840aff6f36f93",
+          "bytes": 1071538,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/action-scene-wave3-2026-10-20-thumb.webp",
+          "sha256": "40bc5c16e93cc8fb13ed7eb153a2db7312d5caa05521a0dbe13dfef57d2f5525",
+          "bytes": 100810,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:introPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "introPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/intro-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/intro-pose-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le premier engagé",
+        "en": "Nadir Kest — Le premier engagé"
+      },
+      "slotNumber": "CG06",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-intropose-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Entrée prudente du guide de reconnaissance, visage découvert et équipement de base complet. Franchit le seuil d’un sas en levant un pied, une main ouverte en signe d’attente et l’autre tenant le pistolet bas, tête tournée vers la sonde.",
+        "en": "Entrée prudente du guide de reconnaissance, visage découvert et équipement de base complet. Franchit le seuil d’un sas en levant un pied, une main ouverte en signe d’attente et l’autre tenant le pistolet bas, tête tournée vers la sonde."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/06-introPose.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg06-wave3-2026-10-20",
+      "backgroundDescription": "Sas de départ d’une cellule ZERO dans les Archives statiques; Seuil de métal sombre et trois marches peu profondes; Nadir avançant hors du sas, sonde déployée en avant; Porte de verre opaque ouverte et baie de rangement fermée; Lumière blanche du sas contrastant avec le matin bleu des Archives",
+      "background": {
+        "location": "Sas de départ d’une cellule ZERO dans les Archives statiques",
+        "foreground": "Seuil de métal sombre et trois marches peu profondes",
+        "midground": "Nadir avançant hors du sas, sonde déployée en avant",
+        "background": "Porte de verre opaque ouverte et baie de rangement fermée",
+        "lighting": "Lumière blanche du sas contrastant avec le matin bleu des Archives"
+      },
+      "poseId": "nadir-kest-cg06-intropose-wave3",
+      "poseBrief": "Franchit le seuil d’un sas en levant un pied, une main ouverte en signe d’attente et l’autre tenant le pistolet bas, tête tournée vers la sonde.",
+      "poseDescription": "Franchit le seuil d’un sas en levant un pied, une main ouverte en signe d’attente et l’autre tenant le pistolet bas, tête tournée vers la sonde.",
+      "themeBrief": "Entrée prudente du guide de reconnaissance, visage découvert et équipement de base complet.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Walking down a threshold stair, left open palm signals wait with five digits; right pistol lowered.",
+          "Complete two-arm/two-leg figure and familiar tethered probe; dark industrial threshold differs from sunny CG01 terrace."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/intro-pose-wave3-2026-10-20.png",
+          "sha256": "50a7c84f0452be16662cd8a1d2791102d236b2b68ec4f367f5284c362090ab42",
+          "bytes": 3920441,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/intro-pose-wave3-2026-10-20.webp",
+          "sha256": "8e9ca57308cb40835d90bd78943f578e3d2d74240586d0b83fb334c776d59137",
+          "bytes": 803788,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/intro-pose-wave3-2026-10-20-thumb.webp",
+          "sha256": "bd1454c2b9085cdfad181cc3ec72f1b7580826fda222708262d63991f49afb47",
+          "bytes": 76872,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:victoryPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "victoryPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/victory-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/victory-pose-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — La ligne a tenu",
+        "en": "Nadir Kest — La ligne a tenu"
+      },
+      "slotNumber": "CG07",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-victorypose-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Victoire sans humiliation : l’équipe est rentrée et la ligne a gardé sa tension, tenue et visage de Nadir conservés. Debout sur un petit socle de retour, une main levée en poing relâché et l’autre posée sur le harnais, pieds bien séparés et sonde au-dessus du bras.",
+        "en": "Victoire sans humiliation : l’équipe est rentrée et la ligne a gardé sa tension, tenue et visage de Nadir conservés. Debout sur un petit socle de retour, une main levée en poing relâché et l’autre posée sur le harnais, pieds bien séparés et sonde au-dessus du bras."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/07-victoryPose.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg07-wave3-2026-10-20",
+      "backgroundDescription": "Salle cartographique fermée des lignes de retour A.R.C.A.; Sol en cuivre quadrillé, petit socle de validation et trois plaques de marquage sans texte; Nadir victorieux près d’une table basse de cartes fermées et de vitrines de balises; Murs de basalte sombre, niches de registres et grand orrery mécanique suspendu sous plafond fermé; Lampes cuivre et ambre de salle, lueur cyan localisée au harnais et au socle",
+      "background": {
+        "location": "Salle cartographique fermée des lignes de retour A.R.C.A.",
+        "foreground": "Sol en cuivre quadrillé, petit socle de validation et trois plaques de marquage sans texte",
+        "midground": "Nadir victorieux près d’une table basse de cartes fermées et de vitrines de balises",
+        "background": "Murs de basalte sombre, niches de registres et grand orrery mécanique suspendu sous plafond fermé",
+        "lighting": "Lampes cuivre et ambre de salle, lueur cyan localisée au harnais et au socle"
+      },
+      "poseId": "nadir-kest-cg07-victorypose-wave3",
+      "poseBrief": "Debout sur un petit socle de retour, une main levée en poing relâché et l’autre posée sur le harnais, pieds bien séparés et sonde au-dessus du bras.",
+      "poseDescription": "Debout sur un petit socle de retour, une main levée en poing relâché et l’autre posée sur le harnais, pieds bien séparés et sonde au-dessus du bras.",
+      "themeBrief": "Victoire sans humiliation : l’équipe est rentrée et la ligne a gardé sa tension, tenue et visage de Nadir conservés.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Raised anatomical right fist, left hand at chest harness, both feet firmly planted.",
+          "Closed dark cartography room and overhead brass orrery replace the earlier repeated skyline; pose/identity stable and complete."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/victory-pose-wave3-2026-10-20.png",
+          "sha256": "c69be8677ba6374935a0627056c71c5eb2ddb02723c472480d848c75b623fa30",
+          "bytes": 3886771,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/victory-pose-wave3-2026-10-20.webp",
+          "sha256": "bb3e1c3c5ecbef42601e8520547394a224ec81f5609638315f1b8a7a646faa27",
+          "bytes": 1012314,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/victory-pose-wave3-2026-10-20-thumb.webp",
+          "sha256": "71388d8ee4c2e216ab8e33369ef29715483fa4b7a1b5882825e007b7168fc8c7",
+          "bytes": 94390,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:defeatPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "defeatPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/defeat-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/defeat-pose-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Reprendre la mesure",
+        "en": "Nadir Kest — Reprendre la mesure"
+      },
+      "slotNumber": "CG08",
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-defeatpose-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Défaite temporaire familiale : fatigue et retour interrompu, sans blessure graphique, humiliation ou équipement remplacé. À genoux sur une seule jambe, main gauche au sol et main droite sur le haut du harnais, tête baissée puis regard attentif vers la sonde posée près de lui.",
+        "en": "Défaite temporaire familiale : fatigue et retour interrompu, sans blessure graphique, humiliation ou équipement remplacé. À genoux sur une seule jambe, main gauche au sol et main droite sur le haut du harnais, tête baissée puis regard attentif vers la sonde posée près de lui."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/08-defeatPose.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg08-wave3-2026-10-20",
+      "backgroundDescription": "Abri de maintenance sous un pont d’archives après la pluie; Dalles mouillées, gouttes et câble lâche intact au sol; Nadir agenouillé et sonde entière sur un petit support bas; Poutres sombres, piliers ivoire et sortie sur une coursive vide; Lumière bleue de pluie et petit feu technique ambre en retrait",
+      "background": {
+        "location": "Abri de maintenance sous un pont d’archives après la pluie",
+        "foreground": "Dalles mouillées, gouttes et câble lâche intact au sol",
+        "midground": "Nadir agenouillé et sonde entière sur un petit support bas",
+        "background": "Poutres sombres, piliers ivoire et sortie sur une coursive vide",
+        "lighting": "Lumière bleue de pluie et petit feu technique ambre en retrait"
+      },
+      "poseId": "nadir-kest-cg08-defeatpose-wave3",
+      "poseBrief": "À genoux sur une seule jambe, main gauche au sol et main droite sur le haut du harnais, tête baissée puis regard attentif vers la sonde posée près de lui.",
+      "poseDescription": "À genoux sur une seule jambe, main gauche au sol et main droite sur le haut du harnais, tête baissée puis regard attentif vers la sonde posée près de lui.",
+      "themeBrief": "Défaite temporaire familiale : fatigue et retour interrompu, sans blessure graphique, humiliation ou équipement remplacé.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Alive exhausted refuge in rain, one knee on floor and opposite foot forward, left palm braced on ground and right hand at harness.",
+          "Whole two-arm/two-leg figure with complete boots, navy armor and spherical return probe; no gore."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/defeat-pose-wave3-2026-10-20.png",
+          "sha256": "bb0cec816b979de853e609b282f58b6d1c53bdb828b8fe9f7fc979873ca7a3d1",
+          "bytes": 3929951,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/defeat-pose-wave3-2026-10-20.webp",
+          "sha256": "753c01a8f19c4f7a78f91e2aa8343be2b2b61468d049fd166cd454ed1c06093e",
+          "bytes": 885540,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/defeat-pose-wave3-2026-10-20-thumb.webp",
+          "sha256": "812758723d04d8e7f33be9c0f7a90d1c8a8066c6d51174a31f4541d192ab8694",
+          "bytes": 89334,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:beachFamily:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "beachFamily",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/beach-family-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/beach-family-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Un trajet dans le sable",
+        "en": "Nadir Kest — Un trajet dans le sable"
+      },
+      "slotNumber": "CG09",
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-beachfamily-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Loisir familial sur une rive du Nexus, uniforme de base entièrement couvrant conservé; aucune romance, aucun âge adulte inventé. Assis sur le sable avec les deux jambes étendues devant lui, buste penché pour tracer un trajet de l’index droit, autre main posée sous la sonde en vol.",
+        "en": "Loisir familial sur une rive du Nexus, uniforme de base entièrement couvrant conservé; aucune romance, aucun âge adulte inventé. Assis sur le sable avec les deux jambes étendues devant lui, buste penché pour tracer un trajet de l’index droit, autre main posée sous la sonde en vol."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/09-beachFamily.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg09-wave3-2026-10-20",
+      "backgroundDescription": "Plage douce d’un lac d’ancrage de la Cité-Mosaïque; Sable clair, deux galets et petit tracé dans le sable sans texte; Nadir assis avec les deux jambes étendues, sonde à hauteur de sa paume libre; Eau turquoise calme, roseaux ivoire et ponton de repos vide; Grand soleil d’été, ombres nettes et reflets doux du lac",
+      "background": {
+        "location": "Plage douce d’un lac d’ancrage de la Cité-Mosaïque",
+        "foreground": "Sable clair, deux galets et petit tracé dans le sable sans texte",
+        "midground": "Nadir assis avec les deux jambes étendues, sonde à hauteur de sa paume libre",
+        "background": "Eau turquoise calme, roseaux ivoire et ponton de repos vide",
+        "lighting": "Grand soleil d’été, ombres nettes et reflets doux du lac"
+      },
+      "poseId": "nadir-kest-cg09-beachfamily-wave3",
+      "poseBrief": "Assis sur le sable avec les deux jambes étendues devant lui, buste penché pour tracer un trajet de l’index droit, autre main posée sous la sonde en vol.",
+      "poseDescription": "Assis sur le sable avec les deux jambes étendues devant lui, buste penché pour tracer un trajet de l’index droit, autre main posée sous la sonde en vol.",
+      "themeBrief": "Loisir familial sur une rive du Nexus, uniforme de base entièrement couvrant conservé; aucune romance, aucun âge adulte inventé.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Corrected beach pose: seated directly on sand with both legs extended and separated, right index traces return line, left hand controls hovering probe.",
+          "Distinct silhouette from CG08 one-knee refuge and CG04 ledge seat; complete boots and family-safe full marine suit."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/beach-family-wave3-2026-10-20.png",
+          "sha256": "cccf83d9ea97133ac0685b044c13919792ad93061971127d823ad99c286091a1",
+          "bytes": 4244398,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/beach-family-wave3-2026-10-20.webp",
+          "sha256": "2401d40b8e0a72a51848c30ba3cb9f517bf546d0cd0e765684ddfc34eac801ec",
+          "bytes": 1025394,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/beach-family-wave3-2026-10-20-thumb.webp",
+          "sha256": "d358ab3fe44fdcf81469901c71116f78e54fa3680412441eb48828eae886171e",
+          "bytes": 102200,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:maidService:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "maidService",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/maid-service-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/maid-service-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le service de la cellule",
+        "en": "Nadir Kest — Le service de la cellule"
+      },
+      "slotNumber": "CG10",
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-maidservice-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Service convivial : tablier ivoire fermé sur l’armure marine, eau et fruits pour une cellule de retour, sans sexualisation ni romance. Debout devant une table, main droite portant une carafe et main gauche stabilisant un plateau, il remplit un gobelet d’eau en tournant légèrement le torse.",
+        "en": "Service convivial : tablier ivoire fermé sur l’armure marine, eau et fruits pour une cellule de retour, sans sexualisation ni romance. Debout devant une table, main droite portant une carafe et main gauche stabilisant un plateau, il remplit un gobelet d’eau en tournant légèrement le torse."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/10-maidService.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg10-wave3-2026-10-20",
+      "backgroundDescription": "Réfectoire vitré des équipes A.R.C.A. au matin; Table propre, gobelet, plateau de fruits et petit pain; Nadir en tablier de service, sonde stationnée à côté du comptoir; Chaises simples, plantes en pot et verrière sur un jardin suspendu; Lumière matinale ambrée et reflets cyan très discrets",
+      "background": {
+        "location": "Réfectoire vitré des équipes A.R.C.A. au matin",
+        "foreground": "Table propre, gobelet, plateau de fruits et petit pain",
+        "midground": "Nadir en tablier de service, sonde stationnée à côté du comptoir",
+        "background": "Chaises simples, plantes en pot et verrière sur un jardin suspendu",
+        "lighting": "Lumière matinale ambrée et reflets cyan très discrets"
+      },
+      "poseId": "nadir-kest-cg10-maidservice-wave3",
+      "poseBrief": "Debout devant une table, main droite portant une carafe et main gauche stabilisant un plateau, il remplit un gobelet d’eau en tournant légèrement le torse.",
+      "poseDescription": "Debout devant une table, main droite portant une carafe et main gauche stabilisant un plateau, il remplit un gobelet d’eau en tournant légèrement le torse.",
+      "themeBrief": "Service convivial : tablier ivoire fermé sur l’armure marine, eau et fruits pour une cellule de retour, sans sexualisation ni romance.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Family-safe closed apron over navy suit, right hand pours water while left hand supports food tray.",
+          "Two arms/two legs, complete boots and original canteen setting; chest harness/probe remain recognizable."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/maid-service-wave3-2026-10-20.png",
+          "sha256": "9aeea8a332906f813730a9faf8653c7ca0e01bdd4ea780f9c3ff5eb1e992fbb9",
+          "bytes": 3880724,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/maid-service-wave3-2026-10-20.webp",
+          "sha256": "ae42461f3fe2882cd329c2bef5aaba0e43d2bc23af6060ca779336c9fed6f6f8",
+          "bytes": 848174,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/maid-service-wave3-2026-10-20-thumb.webp",
+          "sha256": "69456d2c70bf1b455e9d39fa22ffb5fc940cbff1383717601e8b86d500b42635",
+          "bytes": 87264,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:goofy:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "goofy",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/goofy-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/goofy-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le câble et le balai",
+        "en": "Nadir Kest — Le câble et le balai"
+      },
+      "slotNumber": "CG11",
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-goofy-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Gag familial non blessant : un câble de maintenance au sol gêne le nettoyage; le fil de la sonde reste séparément relié au harnais et Nadir garde son identité et sa dignité. En équilibre sur un pied, genou opposé levé pour franchir un câble de maintenance distinct au sol, un bras écarté et l’autre tenant un petit balai neutre, expression surprise.",
+        "en": "Gag familial non blessant : un câble de maintenance au sol gêne le nettoyage; le fil de la sonde reste séparément relié au harnais et Nadir garde son identité et sa dignité. En équilibre sur un pied, genou opposé levé pour franchir un câble de maintenance distinct au sol, un bras écarté et l’autre tenant un petit balai neutre, expression surprise."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/11-goofy.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg11-wave3-2026-10-20",
+      "backgroundDescription": "Cour d’entretien d’un atelier de balises après une averse; Sol carrelé, boucle de câble et feuilles tombées; Nadir surpris franchit le câble, sonde innocente flottant à côté; Bacs à outils fermés, treille verte et anneau de portail éteint; Soleil d’éclaircie, petites flaques et couleurs légèrement chaudes",
+      "background": {
+        "location": "Cour d’entretien d’un atelier de balises après une averse",
+        "foreground": "Sol carrelé, boucle de câble et feuilles tombées",
+        "midground": "Nadir surpris franchit le câble, sonde innocente flottant à côté",
+        "background": "Bacs à outils fermés, treille verte et anneau de portail éteint",
+        "lighting": "Soleil d’éclaircie, petites flaques et couleurs légèrement chaudes"
+      },
+      "poseId": "nadir-kest-cg11-goofy-wave3",
+      "poseBrief": "En équilibre sur un pied, genou opposé levé pour franchir un câble de maintenance distinct au sol, un bras écarté et l’autre tenant un petit balai neutre, expression surprise.",
+      "poseDescription": "En équilibre sur un pied, genou opposé levé pour franchir un câble de maintenance distinct au sol, un bras écarté et l’autre tenant un petit balai neutre, expression surprise.",
+      "historicalCorrectionNote": "Le prompt initial attribuait la boucle à la sonde; la revue constate un câble de maintenance distinct au sol. Métadonnées précisées sans modifier l’image ni déclarer un fil continu inexistant.",
+      "themeBrief": "Gag familial non blessant : un câble de maintenance au sol gêne le nettoyage; le fil de la sonde reste séparément relié au harnais et Nadir garde son identité et sa dignité.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "One-leg balance with raised boot caught in separate maintenance cable, right hand holds broom and left open palm has five digits.",
+          "Drone-to-harness tether remains a separate unbroken line; floor maintenance cable should not be falsely described as that same tether."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/goofy-wave3-2026-10-20.png",
+          "sha256": "5becc88416a81198cf26665e36ad6ad4446522040acc026615d04e2f039412d2",
+          "bytes": 4459447,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/goofy-wave3-2026-10-20.webp",
+          "sha256": "00420f3437d9a5cd17880bef7c3c141aad2a77234cc9caa92c8ec84aedb01000",
+          "bytes": 1149276,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/goofy-wave3-2026-10-20-thumb.webp",
+          "sha256": "c17da09815c92f86d15c7d60cd316d9c3cc8a93a2b95b264b5987d6cd5888dae",
+          "bytes": 107768,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:alignmentSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "alignmentSwap",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/alignment-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/alignment-swap-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — Le gardien des sorties",
+        "en": "Nadir Kest — Le gardien des sorties"
+      },
+      "slotNumber": "CG12",
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-alignmentswap-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "What If d’alignement : Nadir devenu contrôleur autoritaire des sorties, même identité et matériel mais liserés de contrôle ambre; la doctrine originale de sauvetage est explicitement inversée. De profil en appui stable, pistolet abaissé dans la main droite et paume gauche tendue en signe d’arrêt devant une barrière fermée, sonde près du visage.",
+        "en": "What If d’alignement : Nadir devenu contrôleur autoritaire des sorties, même identité et matériel mais liserés de contrôle ambre; la doctrine originale de sauvetage est explicitement inversée. De profil en appui stable, pistolet abaissé dans la main droite et paume gauche tendue en signe d’arrêt devant une barrière fermée, sonde près du visage."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/12-alignmentSwap.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg12-wave3-2026-10-20",
+      "backgroundDescription": "Poste de contrôle hypothétique d’une arche de sortie fermée; Console de décision sans texte et barrière de métal pâle; Nadir en uniforme marine à accents ambre, câble tendu court; Porte à iris close, couloirs symétriques et signal de refus discret; Éclairage dur ambre et ombres bleues, aucune scène de violence",
+      "background": {
+        "location": "Poste de contrôle hypothétique d’une arche de sortie fermée",
+        "foreground": "Console de décision sans texte et barrière de métal pâle",
+        "midground": "Nadir en uniforme marine à accents ambre, câble tendu court",
+        "background": "Porte à iris close, couloirs symétriques et signal de refus discret",
+        "lighting": "Éclairage dur ambre et ombres bleues, aucune scène de violence"
+      },
+      "poseId": "nadir-kest-cg12-alignmentswap-wave3",
+      "poseBrief": "De profil en appui stable, pistolet abaissé dans la main droite et paume gauche tendue en signe d’arrêt devant une barrière fermée, sonde près du visage.",
+      "poseDescription": "De profil en appui stable, pistolet abaissé dans la main droite et paume gauche tendue en signe d’arrêt devant une barrière fermée, sonde près du visage.",
+      "historicalCorrectionNote": "Le prompt prévoyait une main sur commande et une paume tournée vers le haut; le rendu accepté utilise un pistolet abaissé et une paume d’arrêt, tout en gardant le thème du contrôleur autoritaire.",
+      "themeBrief": "What If d’alignement : Nadir devenu contrôleur autoritaire des sorties, même identité et matériel mais liserés de contrôle ambre; la doctrine originale de sauvetage est explicitement inversée.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Explicit authoritarian exit-controller WhatIf: closed barrier, left stop palm and right lowered pistol, stern profile.",
+          "Same navy suit, harness and probe; amber accent replacement is intentional transformed alignment, not ordinary source palette."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/alignment-swap-wave3-2026-10-20.png",
+          "sha256": "c57bce339bedc324dfaf1ca63b1c0bca4259395d3e66efe8dbd806384c13ebf7",
+          "bytes": 3604713,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/alignment-swap-wave3-2026-10-20.webp",
+          "sha256": "c41c8959eb51f1b3172bc2e64894622627099ecbdb07a5bf98315755e14c8a50",
+          "bytes": 703152,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/alignment-swap-wave3-2026-10-20-thumb.webp",
+          "sha256": "132758568ea9608acfba5ae8db4aec6b3b6c1c8414ed25eff17e4de5fd2cccd6",
+          "bytes": 71920,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:genderSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "genderSwap",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/gender-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/gender-swap-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — La coureuse du retour",
+        "en": "Nadir Kest — La coureuse du retour"
+      },
+      "slotNumber": "CG13",
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-genderswap-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "What If de genre : même peau chaude, cheveux noirs courts, tenue marine couvrante, bobine cyan et sonde de Nadir, anatomie féminine humaine sans sexualisation ni âge inventé. Version féminine de Nadir en appui sur un pied posé sur une marche, une main ajuste la boucle du harnais et l’autre laisse le pistolet abaissé, visage vers le spectateur.",
+        "en": "What If de genre : même peau chaude, cheveux noirs courts, tenue marine couvrante, bobine cyan et sonde de Nadir, anatomie féminine humaine sans sexualisation ni âge inventé. Version féminine de Nadir en appui sur un pied posé sur une marche, une main ajuste la boucle du harnais et l’autre laisse le pistolet abaissé, visage vers le spectateur."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/13-genderSwap.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg13-wave3-2026-10-20",
+      "backgroundDescription": "Escalier extérieur d’une petite station de reconnaissance; Marche d’ardoise, rambarde courbe et feuille d’archive fermée; La coureuse en trois quarts avec câble vers la sonde de côté; Deux arches ivoire et jardins en terrasse sur ciel nacré; Lumière de fin de matinée, bordure turquoise et ombres douces",
+      "background": {
+        "location": "Escalier extérieur d’une petite station de reconnaissance",
+        "foreground": "Marche d’ardoise, rambarde courbe et feuille d’archive fermée",
+        "midground": "La coureuse en trois quarts avec câble vers la sonde de côté",
+        "background": "Deux arches ivoire et jardins en terrasse sur ciel nacré",
+        "lighting": "Lumière de fin de matinée, bordure turquoise et ombres douces"
+      },
+      "poseId": "nadir-kest-cg13-genderswap-wave3",
+      "poseBrief": "Version féminine de Nadir en appui sur un pied posé sur une marche, une main ajuste la boucle du harnais et l’autre laisse le pistolet abaissé, visage vers le spectateur.",
+      "poseDescription": "Version féminine de Nadir en appui sur un pied posé sur une marche, une main ajuste la boucle du harnais et l’autre laisse le pistolet abaissé, visage vers le spectateur.",
+      "themeBrief": "What If de genre : même peau chaude, cheveux noirs courts, tenue marine couvrante, bobine cyan et sonde de Nadir, anatomie féminine humaine sans sexualisation ni âge inventé.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Single female-presenting counterpart: same short dark hair, warm face, navy marine suit, cyan chest bobbin and tethered probe.",
+          "One foot on stair, one hand adjusts harness and other lowers pistol; complete two-arm/two-leg anatomy, no age invented."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/gender-swap-wave3-2026-10-20.png",
+          "sha256": "b0934793b63a020827232609348a4ec47bec7dabb53c9474c17c4ccd8151dc98",
+          "bytes": 4400746,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/gender-swap-wave3-2026-10-20.webp",
+          "sha256": "182007d5da02be3814c58f1d46db10f85985d3dd7ff7a299c4513bd72b1ce4e2",
+          "bytes": 1165840,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/gender-swap-wave3-2026-10-20-thumb.webp",
+          "sha256": "6558120b3f7b39b5eac9d758c194d079f305b219b9103f7cd7e196aa32d779e4",
+          "bytes": 100832,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:zombieVersion:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "zombieVersion",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/zombie-version-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/zombie-version-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — La sonde sans retour",
+        "en": "Nadir Kest — La sonde sans retour"
+      },
+      "slotNumber": "CG14",
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-zombieversion-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "What If de corruption : teint gris froid et petites fissures cyan lumineuses sans plaie, identité et armure de Nadir conservées; transformation inventée, sans sang ou blessure graphique. Debout en recul sous une arche, main droite posée contre un pilier et main gauche ouverte vers la sonde, tête légèrement inclinée, câble presque immobile.",
+        "en": "What If de corruption : teint gris froid et petites fissures cyan lumineuses sans plaie, identité et armure de Nadir conservées; transformation inventée, sans sang ou blessure graphique. Debout en recul sous une arche, main droite posée contre un pilier et main gauche ouverte vers la sonde, tête légèrement inclinée, câble presque immobile."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/14-zombieVersion.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg14-wave3-2026-10-20",
+      "backgroundDescription": "Galerie d’archives éteinte avec ancrage causal instable; Dalles sombres intactes et fragments de lumière sans débris humains; Nadir corrompu près d’un pilier, sonde pâle et câble fin visible; Rayonnages ivoire fermés et anneau cyan incomplet au fond; Lueur lunaire froide, cyan retenu et ombres violettes",
+      "background": {
+        "location": "Galerie d’archives éteinte avec ancrage causal instable",
+        "foreground": "Dalles sombres intactes et fragments de lumière sans débris humains",
+        "midground": "Nadir corrompu près d’un pilier, sonde pâle et câble fin visible",
+        "background": "Rayonnages ivoire fermés et anneau cyan incomplet au fond",
+        "lighting": "Lueur lunaire froide, cyan retenu et ombres violettes"
+      },
+      "poseId": "nadir-kest-cg14-zombieversion-wave3",
+      "poseBrief": "Debout en recul sous une arche, main droite posée contre un pilier et main gauche ouverte vers la sonde, tête légèrement inclinée, câble presque immobile.",
+      "poseDescription": "Debout en recul sous une arche, main droite posée contre un pilier et main gauche ouverte vers la sonde, tête légèrement inclinée, câble presque immobile.",
+      "themeBrief": "What If de corruption : teint gris froid et petites fissures cyan lumineuses sans plaie, identité et armure de Nadir conservées; transformation inventée, sans sang ou blessure graphique.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Explicit non-gory corruption with cool grey face, cyan surface seams and intact navy armor.",
+          "One palm braces against pillar while other opens toward probe; complete human figure in dark archive gallery."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/zombie-version-wave3-2026-10-20.png",
+          "sha256": "56e6afaa7a5c301b01e53c39873a55d1a545d7fb6a5d007ebd90774b1a592d38",
+          "bytes": 3981345,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/zombie-version-wave3-2026-10-20.webp",
+          "sha256": "2faf617960d3dc28dd996c3022d9d488f32051e4aa722ae39b4f9103c8a7aaa9",
+          "bytes": 993370,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/zombie-version-wave3-2026-10-20-thumb.webp",
+          "sha256": "c5341d3eec0fe1fbe70e3411a470b6841d35c8a70050934e8d373e40419d371c",
+          "bytes": 80308,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nadir:futureExperienced:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-nadir",
+      "type": "futureExperienced",
+      "imagePath": "/cg/nexus-de-convergence/arca-nadir/future-experienced-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nadir/future-experienced-openai-v1-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_nadir",
+      "heroId": "arca_nadir",
+      "characterName": "Nadir Kest",
+      "title": {
+        "fr": "Nadir Kest — La dernière inspection",
+        "en": "Nadir Kest — La dernière inspection"
+      },
+      "slotNumber": "CG15",
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-nadir-kest-current-project-canon",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nadir-kest-source-inspected-wave3-2026-10-20",
+      "promptId": "cg-nadir-kest-futureexperienced-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "What If temporel : Nadir plus expérimenté, quelques mèches grises et rides hypothétiques, même combinaison marine patinée; aucune chronologie future déclarée canon. Assis dans un fauteuil bas de maintenance, buste légèrement penché et regard vers l’outil, sonde posée sur les genoux entre ses mains et pistolet rangé.",
+        "en": "What If temporel : Nadir plus expérimenté, quelques mèches grises et rides hypothétiques, même combinaison marine patinée; aucune chronologie future déclarée canon. Assis dans un fauteuil bas de maintenance, buste légèrement penché et regard vers l’outil, sonde posée sur les genoux entre ses mains et pistolet rangé."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+        "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+        "src/game/heroes.js#arca_nadir",
+        "src/game/characterPlaques.js#arca_nadir",
+        "src/game/spriteAssets.js#getHeroSpriteSheetSrc"
+      ],
+      "credits": {
+        "fr": "Nadir Kest / Nexus : canon original du projet; illustration générée avec OpenAI ImageGen.",
+        "en": "Nadir Kest / Nexus: original project canon; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nadir"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/nadir-kest/15-futureExperienced.txt",
+      "referenceReviewFile": "docs/cg/nadir-kest-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "nadir-kest-cg15-wave3-2026-10-20",
+      "backgroundDescription": "Atelier de retour d’un observatoire ancien restauré; Fauteuil bas, caisse de câbles et petit tabouret de travail; Nadir plus âgé examine la même sonde sur ses genoux; Baie ouverte vers une Cité-Mosaïque paisible et de vieux anneaux; Fin de journée dorée, cuivre discret et éclairage d’atelier doux",
+      "background": {
+        "location": "Atelier de retour d’un observatoire ancien restauré",
+        "foreground": "Fauteuil bas, caisse de câbles et petit tabouret de travail",
+        "midground": "Nadir plus âgé examine la même sonde sur ses genoux",
+        "background": "Baie ouverte vers une Cité-Mosaïque paisible et de vieux anneaux",
+        "lighting": "Fin de journée dorée, cuivre discret et éclairage d’atelier doux"
+      },
+      "poseId": "nadir-kest-cg15-futureexperienced-wave3",
+      "poseBrief": "Assis dans un fauteuil bas de maintenance, buste légèrement penché et regard vers l’outil, sonde posée sur les genoux entre ses mains et pistolet rangé.",
+      "poseDescription": "Assis dans un fauteuil bas de maintenance, buste légèrement penché et regard vers l’outil, sonde posée sur les genoux entre ses mains et pistolet rangé.",
+      "themeBrief": "What If temporel : Nadir plus expérimenté, quelques mèches grises et rides hypothétiques, même combinaison marine patinée; aucune chronologie future déclarée canon.",
+      "themeSource": "docs/cg/nadir-kest-wave3-plan-2026-10-20.json",
+      "visualReview": {
+        "status": "accepted-with-independent-source-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+        "notes": [
+          "Explicit imagined experienced future: greying beard and worn familiar armor, face still recognizably Nadir.",
+          "Seated in maintenance chair, slightly leaning forward with both hands on probe in lap and pistol safely at side; future chronology not canon."
+        ],
+        "limitations": [
+          "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+          "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+          "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques.",
+          "Dimensions et empreintes ne certifient pas automatiquement une fidélité visuelle parfaite1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/future-experienced-wave3-2026-10-20.png",
+          "sha256": "346898eee38b7f034a57ba1e69f21178a008fddcea2262a84b800e42c072f1c9",
+          "bytes": 4026011,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/future-experienced-wave3-2026-10-20.webp",
+          "sha256": "1f110942bd9b1db37e3cf70f99efa0f8d99ae3ef70ccad5d9db7c13225ad5850",
+          "bytes": 1004048,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nadir/future-experienced-wave3-2026-10-20-thumb.webp",
+          "sha256": "fcdff381473c8ac8d924c5f85f1375bcd84606a5a6e15946e95b688c526debb5",
+          "bytes": 90746,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Images réellement générées individuellement, aucune image prévue comptée comme livrée.",
+    "Anciennes images et natifs conservés; aucun registre partagé modifié par ce conditionnement.",
+    "Revue indépendante visuelle séparée et limites de source explicites, sans certification parfaite1:1."
+  ],
+  "generationAttempts": 17,
+  "retainedUnselectedNativeAttempts": 2,
+  "toolRefusals": 0
+}

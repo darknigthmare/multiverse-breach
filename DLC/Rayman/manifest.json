@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "rayman",
+  "universe": "Rayman",
+  "directory": "DLC/Rayman",
+  "registration": "runtime",
+  "catalogOrder": 180,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartE.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartE.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

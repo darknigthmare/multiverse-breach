@@ -1,0 +1,2 @@
+// Alien vs Predator — mission modifiers consumed by the Hub.
+export const createUniverseModifier = () => ({ id: 'temple_crossfire', name: { fr: 'Temple croise', en: 'Temple Crossfire' }, desc: { fr: 'Le temple oppose ruche et clan: boss +12% PV, attaque +8%, cache +30%.', en: 'The temple pits hive against clan: boss +12% HP, attack +8%, cache +30%.' }, bossHp: 1.12, enemyAtk: 1.08, reward: 1.3, color: '#92f56d' });

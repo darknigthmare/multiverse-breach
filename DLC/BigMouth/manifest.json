@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "big-mouth",
+  "universe": "Big Mouth",
+  "directory": "DLC/BigMouth",
+  "registration": "runtime",
+  "catalogOrder": 190,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

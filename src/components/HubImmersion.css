@@ -19,7 +19,7 @@
 .hub-screen .hub-resource-strip { display: flex !important; flex-wrap: nowrap !important; min-width: 0; max-width: 100%; gap: 6px !important; margin-left: auto; overflow-x: auto; justify-content: flex-start !important; }
 .hub-screen .hub-resource { flex: 0 0 auto; border: 0 !important; background: transparent !important; padding: 5px 6px !important; font-size: 11px !important; white-space: nowrap; }
 .hub-screen:not(.is-dedicated-game) .hub-navigation { grid-area: navigation; width: auto; max-width: none; margin: 0; padding: 18px 10px 70px; display: flex; flex-direction: column; gap: 24px; overflow-y: auto; border-right: 1px solid #73d6d42e; background: #030910ea; }
-.hub-screen .hub-navigation-primary { display: grid; gap: 6px; padding: 0; border: 0; background: none; }
+.hub-screen .hub-navigation-primary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 0; border: 0; background: none; }
 .hub-screen .hub-navigation-primary > button { min-height: 48px; padding: 11px 13px; text-align: left; font-size: 11px; line-height: 1.4; letter-spacing: .08em; border: 0; border-left: 3px solid transparent; border-radius: 0; background: transparent; color: #a3bbc6; }
 .hub-screen .hub-navigation-primary > button.is-active { background: linear-gradient(90deg, #36c5b323, transparent); border-left-color: #7fffe1; color: #edffff; }
 .hub-screen .hub-navigation-secondary { display: flex !important; flex-direction: column; gap: 12px; padding: 8px 0; border: 0; background: none; }
@@ -101,9 +101,8 @@
 .mosaic-location span { color: #7fffe1; font-size: 10px; letter-spacing: .15em; }
 .mosaic-location strong { font-size: 18px; }
 .mosaic-location small { font-size: 12px; color: #bed5de; }
-.mosaic-rpg-stage > .mosaic-city-guide { position: absolute; top: 184px; left: 22px; z-index: 5; width: min(520px, calc(100% - 44px)); box-sizing: border-box; grid-template-columns: auto minmax(0,1fr) auto; background: #061b28eb; box-shadow: 0 14px 50px #0006; }
-.mosaic-rpg-stage .mosaic-city-guide p { font-size: 13px; line-height: 1.55; }
-.mosaic-rpg-stage .mosaic-city-guide-progress { flex-direction: column; }
+.mosaic-world-column > .mosaic-city-guide { min-width: 0; min-height: 0; box-sizing: border-box; background: #061b28eb; box-shadow: 0 14px 50px #0006; }
+.mosaic-world-column .mosaic-city-guide p { font-size: 13px; line-height: 1.55; }
 .mosaic-world-log { position: absolute; bottom: 84px; left: 22px; z-index: 3; max-width: min(560px, calc(100% - 210px)); margin: 0; padding: 9px 12px; font-size: 12px; line-height: 1.5; color: #d5f0f5; background: #04111cb9; pointer-events: none; }
 .mosaic-rpg-panel .mosaic-world-controls { position: absolute; bottom: max(16px, env(safe-area-inset-bottom)); left: 22px; z-index: 5; display: flex; gap: 6px; width: auto; max-width: calc(100% - 210px); grid-template-columns: none; background: none; padding: 0; }
 .mosaic-world-controls button { min-width: 44px; }
@@ -186,7 +185,7 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .hub-screen .hub-header-copy { display: none; }
   .hub-screen:not(.is-dedicated-game) .hub-navigation { flex-direction: column; padding: 6px 10px; gap: 5px; overflow: visible; border-right: 0; border-bottom: 1px solid #3a6c7244; }
   .hub-screen .hub-navigation-primary { display: flex; gap: 2px; overflow-x: auto; }
-  .hub-screen .hub-navigation-primary > button { min-height: 36px; min-width: 96px; font-size: 9px; padding: 7px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .hub-screen .hub-navigation-primary > button { flex-shrink: 0; min-height: 36px; min-width: 96px; font-size: 9px; padding: 7px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
   .hub-screen .hub-navigation-primary > button.is-active { border-bottom-color: #7fffe1; }
   .hub-screen .hub-navigation-secondary { padding: 0; flex-direction: row; gap: 5px; }
   .hub-screen .hub-navigation-context { display: none; }
@@ -211,8 +210,7 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .mosaic-location { padding: 9px; }
   .mosaic-location strong { font-size: 14px; }
   .mosaic-world-hud > button { font-size: 9px; padding: 8px; min-height: 40px; }
-  .mosaic-rpg-stage > .mosaic-city-guide { top: 162px; left: 12px; width: calc(100% - 24px); gap: 8px; padding: 10px; }
-  .mosaic-rpg-stage .mosaic-city-guide p { font-size: 12px; }
+  .mosaic-world-column > .mosaic-city-guide { gap: 8px; padding: 10px; }
   .mosaic-rpg-panel .mosaic-world-controls { left: 12px; bottom: 12px; max-width: calc(100% - 24px); flex-wrap: wrap; gap: 3px; }
   .mosaic-world-log { left: 12px; bottom: 100px; max-width: calc(100% - 180px); max-height: 100px; overflow-y: auto; font-size: 10px; }
   .extinction-panel-active .nexus-play-stats { left: 10px; bottom: 145px; font-size: 10px; }
@@ -230,7 +228,6 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .custom-lobby-footer { bottom: -70px; }
 }
 @media (max-height: 560px) and (min-width: 761px) {
-  .mosaic-rpg-stage > .mosaic-city-guide { top: auto; bottom: 85px; max-width: 430px; }
   .mosaic-world-log { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hub-screen *, .immersive-drawer * { scroll-behavior: auto !important; transition-duration: 0s !important; animation-duration: 0s !important; } }
@@ -308,20 +305,15 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 .extinction-intel-button { color: #ffe59c; background: transparent; border: 0; padding: 0; text-align: left; font: inherit; font-weight: 700; cursor: pointer; min-height: 28px; }
 .extinction-panel-active .extinction-objective-strip { pointer-events: auto; }
 .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { border-color: #81a3b66b; }
+.extinction-panel-active .extinction-hud-dock .extinction-move-action { border-color: #81a3b66b; }
 .immersive-drawer pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
 .mosaic-world-log { font-size: calc(12px * var(--game-hud-scale, 1)); }
 .mosaic-rpg-panel .mosaic-world-controls button:focus-visible { outline: 3px solid #ffdc79; outline-offset: -3px; }
 @media (max-width: 760px) {
   .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(n+5) { grid-column: span 1; }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(9),
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > :nth-child(10) { grid-column: span 2; }
 }
 @media (max-height: 500px) and (min-width: 600px) {
   .mosaic-world-hud { top: calc(52px + var(--hub-hud-top)); }
-  .mosaic-rpg-stage .mosaic-city-guide { top: 130px; left: var(--hub-hud-left); max-width: min(440px, 56vw); padding: 9px; gap: 8px; }
-  .mosaic-rpg-stage .mosaic-city-guide p { font-size: 11px; line-height: 1.35; }
   .mosaic-world-log { display: none; } /* full transmission remains in Terminal > Journal */
   .extinction-panel-active .extinction-objective-strip { padding: 5px 9px; font-size: calc(10px * var(--game-hud-scale, 1)); max-width: 55%; }
   .extinction-panel-active .extinction-objective-strip small { display: none; } /* full message retained in Directive */
@@ -377,7 +369,155 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 @media (max-height:500px) and (min-width:600px) { .extinction-protocol-actions button { padding:5px 3px; } }
 .extinction-panel-active .extinction-hud-dock .nexus-play-actions > .extinction-protocol-actions { grid-column:1 / -1; }
 .extinction-protocol-actions strong { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.extinction-primary-action > .extinction-action-label-compact { display:none; }
 @media (max-height:500px) and (min-width:600px) {
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(6,minmax(0,1fr)); }
-  .extinction-panel-active .extinction-hud-dock .nexus-play-actions > button { grid-column:span 1; }
+  /* Keep three action rows even when KIT or MARK adds a fifth/sixth primary.
+     Compact labels retain their complete accessible names on the buttons. */
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); }
+  .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 2; }
+  .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions:has([data-personal-kit], [data-field-weapon], [data-hunt-mark]) > .extinction-primary-action { grid-column:span 2; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:44px; padding:4px 6px; line-height:1.2; }
+  .extinction-primary-action > .extinction-action-label-full { display:none; }
+  .extinction-primary-action > .extinction-action-label-compact { display:inline; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions { gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions strong,
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 }
+@media (max-width:760px) and (min-height:501px) {
+  /* Three compact stat rows and four action rows leave the portrait aim clear.
+     Stable classes keep movement packing independent of the protocol group. */
+  .extinction-panel-active .extinction-hud-dock { gap:8px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-stats { gap:3px 4px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-stats > span { padding:1px 6px; overflow-wrap:anywhere; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-run { order:1; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-armor { order:2; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-ammo { order:3; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health { order:4; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-signature { order:5; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-wave { order:6; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-kills { order:7; }
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-beacons { order:8; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health,
+  .extinction-panel-active .extinction-hud-dock .extinction-stat-signature { flex:0 1 calc(50% - 2px); min-width:0; box-sizing:border-box; }
+  .extinction-panel-active .extinction-hud-dock .extinction-health progress { min-width:0; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns:repeat(12,minmax(0,1fr)); gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-primary-action { grid-column:span 3; }
+  .extinction-panel-active .extinction-hud-dock .extinction-move-action { grid-column:span 4; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width:44px; min-height:max(44px, 42px * var(--game-hud-scale, 1)); padding:4px 6px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions { gap:4px; }
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions strong,
+  .extinction-panel-active .extinction-hud-dock .extinction-protocol-actions small { white-space:normal; overflow:visible; text-overflow:clip; }
+}
+
+/* Location, guide and terminal share one normal-flow grid. The guide body gets
+   the remaining height above the movement controls, including enlarged HUDs. */
+.mosaic-world-hud {
+  --city-hud-top: calc(56px + var(--hub-hud-top));
+  top: var(--city-hud-top);
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 8px 16px;
+  max-height: calc(100dvh - var(--city-hud-top) - var(--hub-hud-bottom) - 46px * var(--game-hud-scale, 1) - 12px);
+  min-height: 0;
+}
+.mosaic-world-column { display: contents; }
+.mosaic-world-column > .mosaic-location { grid-column: 1; grid-row: 1; max-width: none; min-width: 0; box-sizing: border-box; overflow-wrap: anywhere; }
+.mosaic-world-hud > button { grid-column: 2; grid-row: 1; justify-self: end; }
+.mosaic-world-column > .mosaic-city-guide { grid-column: 1; grid-row: 2; max-height: 100%; overflow: auto; overscroll-behavior: contain; pointer-events: auto; }
+.mosaic-world-column > .mosaic-city-guide--collapsible { display: flex; flex-direction: column; align-items: stretch; padding: 0; gap: 0; overflow: hidden; }
+.mosaic-city-guide-toggle { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 3px 12px; flex-shrink: 0; width: 100%; min-width: 0; min-height: calc(44px * var(--game-hud-scale, 1)); padding: 10px 12px; text-align: left; border: 0; color: #e7fffa; background: transparent; font: inherit; cursor: pointer; }
+.mosaic-city-guide-toggle > span:first-child { display: contents; }
+.mosaic-city-guide-toggle small { grid-column: 1; grid-row: 1; font-size: calc(10px * var(--game-hud-scale, 1)); letter-spacing: .08em; color: #9ce5db; }
+.mosaic-city-guide-toggle strong { grid-column: 1 / -1; grid-row: 2; font-size: calc(12px * var(--game-hud-scale, 1)); overflow-wrap: anywhere; }
+.mosaic-city-guide-toggle-label { grid-column: 2; grid-row: 1; font-size: calc(11px * var(--game-hud-scale, 1)); text-decoration: underline; text-underline-offset: 3px; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle small { display: none; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle strong { grid-column: 1; grid-row: 1; }
+.mosaic-city-guide--compact .mosaic-city-guide-toggle-label { grid-column: 1; grid-row: 2; justify-self: start; white-space: normal; }
+.mosaic-city-guide-content { min-height: 0; overflow: auto; overscroll-behavior: contain; padding: 0 12px 12px; }
+.mosaic-city-guide-content[hidden] { display: none; }
+.mosaic-world-column .mosaic-city-guide-content p { margin: 10px 0; font-size: calc(13px * var(--game-text-scale, 1)); line-height: 1.5; }
+.mosaic-world-column .mosaic-city-guide-content .mosaic-city-guide-progress { flex-direction: row; }
+.mosaic-city-guide-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.mosaic-city-guide-actions button { min-height: 44px; font-size: calc(11px * var(--game-text-scale, 1)); }
+.mosaic-city-guide-toggle:focus-visible, .mosaic-city-guide-content:focus-visible, .mosaic-city-guide-content :focus-visible { outline: 3px solid #ffdc79; outline-offset: -3px; }
+@media (max-width: 760px) {
+  .mosaic-world-hud { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .mosaic-world-column > .mosaic-city-guide { grid-column: 1 / -1; }
+}
+@media (max-height: 560px) and (min-width: 600px) {
+  .mosaic-world-hud { grid-template-columns: minmax(0, min(320px, 38vw, calc(50vw - var(--hub-hud-left) - 28px))) minmax(0, 1fr); }
+  .mosaic-world-column > .mosaic-city-guide { grid-column: 1; }
+}
+@media (max-height: 500px) and (min-width: 600px) {
+  .mosaic-world-hud { --city-hud-top: calc(52px + var(--hub-hud-top)); }
+}
+
+/* Optional field objectives keep their explanation in the terminal. */
+.mosaic-reconnaissance { display: grid; gap: 12px; padding: 14px; border: 1px solid #81bac345; background: #061923; min-width: 0; }
+.mosaic-reconnaissance h3, .mosaic-reconnaissance p { margin: 0; }
+.mosaic-reconnaissance p, .mosaic-reconnaissance li { line-height: 1.55; overflow-wrap: anywhere; font-size: .9rem; }
+.mosaic-reconnaissance ol { margin: 0; padding-left: 24px; display: grid; gap: 8px; }
+.mosaic-reconnaissance button { min-height: 44px; white-space: normal; }
+.extinction-relay-option { display: flex; align-items: flex-start; gap: 10px; padding: 12px; min-width: 0; border: 1px solid #81bac345; background: #061923; cursor: pointer; }
+.extinction-relay-option input { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; accent-color: #7ef7b1; }
+.extinction-relay-option > span { min-width: 0; display: grid; gap: 5px; line-height: 1.5; overflow-wrap: anywhere; }
+.extinction-relay-status { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 4px 8px; min-width: 0; font-size: calc(11px * var(--game-hud-scale, 1)); }
+.extinction-relay-status > strong { grid-column: 1; grid-row: 1; }
+.extinction-relay-status > span { grid-column: 2; grid-row: 1; min-width: 0; text-align: right; overflow-wrap: anywhere; }
+.extinction-relay-status progress { grid-column: 1 / -1; grid-row: 2; width: 100%; min-width: 0; height: 8px; accent-color: #7ef7b1; }
+.extinction-directive-status .extinction-directive-heading { font-size: .8rem; }
+.extinction-directive-status .extinction-directive-heading > span { font-size: inherit; }
+@media (max-height: 500px) and (min-width: 600px) {
+  /* Use the upper band without entering the radar, reticle or action dock.
+     The radar diameter matches getSceneHudLayout; text keeps the chosen scale. */
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status),
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) {
+    width: calc(100% - var(--hub-hud-left) - var(--hub-hud-right) - min(84px * var(--game-hud-scale, 1), 26vw) - 12px);
+    max-width: 760px;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 12px;
+    align-items: center;
+  }
+  .extinction-panel-active .extinction-objective-strip > .extinction-intel-button { min-height: 44px; }
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-relay-status) > span,
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) > span { min-width: 0; overflow-wrap: anywhere; }
+  .extinction-panel-active .extinction-objective-strip > .extinction-relay-status { grid-column: 1 / -1; }
+  .extinction-panel-active .extinction-relay-status > strong { font-size: inherit; }
+  .extinction-panel-active .extinction-relay-status > span { text-align: left; }
+  /* A compact left card leaves the right-hand view region free. The terminal
+     retains the full title, rule and current detail while play is paused. */
+  .extinction-panel-active .extinction-objective-strip:has(.extinction-directive-status) {
+    width: calc(50% - var(--hub-hud-left) - 32px); max-width: none;
+    grid-template-columns: minmax(0, .45fr) minmax(0, 1fr); row-gap: 2px; padding: 3px 9px; line-height: 1.2;
+  }
+  .extinction-panel-active .extinction-objective-strip > .extinction-directive-status {
+    grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(64px, 20%);
+    align-items: center; gap: 6px; min-width: 0; padding: 2px 6px;
+  }
+  .extinction-directive-status .extinction-directive-heading { display: flex; align-items: baseline; gap: 6px; min-width: 0; line-height: 1.2; }
+  .extinction-directive-status .extinction-directive-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .extinction-directive-status .extinction-directive-count { flex-shrink: 0; white-space: nowrap; }
+  .extinction-directive-status > progress { min-width: 0; }
+  .extinction-directive-status > .extinction-directive-detail { display: none; }
+}
+.extinction-stowed-readout {
+  display: flex;
+  flex: 1 0 100%;
+  order: 9;
+  box-sizing: border-box;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3px 12px;
+  padding: 4px 8px;
+  border-left: 2px solid #ffe2a8;
+  background: #0a1926;
+  color: #e9eef3;
+  font-size: calc(10px * var(--game-hud-scale, 1));
+  line-height: 1.3;
+}
+.extinction-stowed-readout strong { color: #ffe2a8; overflow-wrap: anywhere; }
+.extinction-stowed-readout span { white-space: nowrap; }

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "validationDate": "2026-11-07",
+  "kind": "technical-packing-implementation-revalidation",
+  "status": "verified-current-implementation",
+  "characterId": "arca_elyra",
+  "historicalEvidence": {
+    "runtimePromotion": {
+      "path": "docs/audits/elyra-frame-packing-runtime-2026-10-20.json",
+      "sha256": "8c8188b3795b92456fbee05d5dd1e0870f77340c0078547ada9fd7ea77218b7b",
+      "bytes": 2162
+    },
+    "preparationReceipt": {
+      "path": "docs/audits/elyra-frame-packing-2026-10-20.json",
+      "sha256": "93d1d1211d0dc2dda54d8d0fbed70b781e8eed550ecba5224fcf61f7e6e3fdd7",
+      "bytes": 30353
+    },
+    "independentReview": {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-independent-review.json",
+      "sha256": "fb444f9fc38935a292f7ffeb83daf5b1dca35d796c994d73c0fc95ccc5a3b7f3",
+      "bytes": 9029
+    },
+    "implementation": {
+      "path": "scripts/installReferencedCharacterImages.mjs",
+      "sha256": "00db90db72e5999ebd339c202c1fbc2c1675370c5cc15b1354522fe9f0b0cf02"
+    }
+  },
+  "implementation": {
+    "path": "scripts/installReferencedCharacterImages.mjs",
+    "sha256": "dc71c5c6501f6c12aee0de32b2f4800d3729365ff8b4a10f16b9dc32fc142a3b",
+    "bytes": 32863
+  },
+  "revalidationTool": {
+    "path": "scripts/revalidateTechnicalSpritePacking.mjs",
+    "sha256": "5d615e64300814a955f421eb40aa7b1ec426475fe68ac5bb52a1d87b7d4500de",
+    "bytes": 13071
+  },
+  "artwork": {
+    "source": {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-elyra.png",
+      "sha256": "626d237ff5841f06f5b159799be7ed546588624ce9ac8632e95a3f8f98a630e2",
+      "bytes": 956521
+    },
+    "snapshot": {
+      "path": "docs/cg/references/wave3-2026-10-20/elyra/canonical-selected-atlas.png",
+      "sha256": "626d237ff5841f06f5b159799be7ed546588624ce9ac8632e95a3f8f98a630e2",
+      "bytes": 956521
+    },
+    "output": {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png",
+      "sha256": "d3d9a4825029297f2189f592a28c73bb08b043778e99b58c660e5f83512c9aaa",
+      "bytes": 565213,
+      "runtimePath": "/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png"
+    }
+  },
+  "reproduction": {
+    "exactOutputBytes": true,
+    "outputSha256": "d3d9a4825029297f2189f592a28c73bb08b043778e99b58c660e5f83512c9aaa",
+    "outputBytes": 565213,
+    "processingSha256": "9ad639d6cfd31439d4103b0c497c6b69e89aed94165d6f52a9f2057555eb968b",
+    "geometrySha256": "3cf768228d66de3ca0383f7d09cad67aadeaa376049cebc9becd4cc4873e082f",
+    "frames": [
+      {
+        "frame": 1,
+        "originalRuntimeSliceSha256": "81ea46c370694f979de7a209ce1c2d04eb1568caa339d1f6421c57927cbf9702",
+        "packedFrameSha256": "01ecd6e249ee5a3c1056d63c24b5e780160b812a296ca899ecb1f402a061bcf2"
+      },
+      {
+        "frame": 2,
+        "originalRuntimeSliceSha256": "20534a0fc2e330b02edb27d9755d2f549e941f02e148e536689510fa0e959afa",
+        "packedFrameSha256": "4b951fde322facbea6c1e8b8ff49da5c5bb83550bb3797724d3c8d46a290f605"
+      },
+      {
+        "frame": 3,
+        "originalRuntimeSliceSha256": "e8b386a220ccba91c5beb1866fb7a016472db6f762f60ca86f4dcec683840ade",
+        "packedFrameSha256": "2cc6da2e902ee9ae9ee47cd8178612d1e43729f64dee8af6868677c80710fdf8"
+      },
+      {
+        "frame": 4,
+        "originalRuntimeSliceSha256": "28537f93121dd92f28e6bd47ccaeb8cbdf2909442301d98b56232a3600c04f96",
+        "packedFrameSha256": "96db33513e3f9e969b975719e6540138ba802c9ae0c7c83531621b04ac161004"
+      },
+      {
+        "frame": 5,
+        "originalRuntimeSliceSha256": "06c80ae3b480f2091c04a9f07a3e5f88f44cc583dd4618b88be99e84ab20e324",
+        "packedFrameSha256": "07dfc0245e51c91ee7cb0e98b38bc423f7c5ccee84efe3fa53be019e89034856"
+      },
+      {
+        "frame": 6,
+        "originalRuntimeSliceSha256": "6dac91484b13d44fa62e9ebd27d5e875ec8a2609f83e96d0b3e3e62b1809cd96",
+        "packedFrameSha256": "3325939bd08e30fda49010c5289e730427066657305f60ef57ea5a50e4d068b0"
+      },
+      {
+        "frame": 7,
+        "originalRuntimeSliceSha256": "f0e06e26c58d485afc5a466eb7cc133f843456e3c426ac02e86f6240d07c0a88",
+        "packedFrameSha256": "0df6890f27165369050f1a84276c35af71cb03950b6331e94e03eef96d835d81"
+      },
+      {
+        "frame": 8,
+        "originalRuntimeSliceSha256": "612b6834ff96394e413032f3961484fe17a6692eabb670b4e330f7f94b625298",
+        "packedFrameSha256": "2207d29a27f18b9447d77b6c7dbb75ed93d3f24a8a479a5d721467fd34f1997a"
+      },
+      {
+        "frame": 9,
+        "originalRuntimeSliceSha256": "b28539979f6b336474a6b2ac54926b2817fb3c729408ba17159b1b3d1f8cff51",
+        "packedFrameSha256": "ea5893e5393936d982737edad7910a7e948d53bf406d1d9f0e722fea2c07ef60"
+      },
+      {
+        "frame": 10,
+        "originalRuntimeSliceSha256": "0a7d7559939612359d255ba294eb64997518324780dcbac1278d71edcaf63a29",
+        "packedFrameSha256": "ba6e1545b947f98c45b18556e36f5c793186a47f9b11f6b2abbc7ab811561700"
+      },
+      {
+        "frame": 11,
+        "originalRuntimeSliceSha256": "11878d174e45266cb3eaf8035253e1d5ba793bd2d88dcabe84b534857f8c0db7",
+        "packedFrameSha256": "cccd1630f2bfe0477577b818b004350b6b5a88e904b2cd42123a0bf6f166db38"
+      },
+      {
+        "frame": 12,
+        "originalRuntimeSliceSha256": "a44bc47a5587da5e38fcbf211d6d1861ac78504824c1363f175271524783af82",
+        "packedFrameSha256": "a8144549e7f0855a520a1bcdf0ad0473e452e1e38df0058db31f0df5769d2445"
+      },
+      {
+        "frame": 13,
+        "originalRuntimeSliceSha256": "aad372377cbb648632bf6ee1bcd06ce8834ef3182f2acc277d5cc6e7abd7b0ec",
+        "packedFrameSha256": "13fc7bd7394e071c37710f783084a89895f522608397e722f9b353508984ce5e"
+      },
+      {
+        "frame": 14,
+        "originalRuntimeSliceSha256": "fc73034eec0e6cc9d2202a9c4f7e265cd71dfd838367c2dc41f6b03e3e91b6b9",
+        "packedFrameSha256": "b3857e71ed0b54a1f3f3df70b40fda709e948d1a26a76fe1e5c42ebf30e9b085"
+      },
+      {
+        "frame": 15,
+        "originalRuntimeSliceSha256": "20c30121d1f37c8fd3b62e366cfa0bedb2304703df11f6371f34ace47ea3c2de",
+        "packedFrameSha256": "d6fbb3b933a7312da51f1a0e2688650658f0687b8732bac13576788f1cb9905c"
+      },
+      {
+        "frame": 16,
+        "originalRuntimeSliceSha256": "784220d9216114436109e84a360b692be947ca74094d660713e3ba1c47bcad99",
+        "packedFrameSha256": "415c000689ecaedbb334e25c8afc4790e699da99e45e17c89ba4d729a6a32def"
+      }
+    ]
+  },
+  "newImageGenerationUsed": false,
+  "semanticArtworkCreated": false,
+  "canonicalFidelityApproved": false,
+  "newVisualReviewPerformed": false,
+  "historicalVisualReviewRetained": true,
+  "environment": {
+    "node": "v24.22.1",
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  },
+  "scope": "Exact technical reproduction with the current implementation; preserves the original visual review and makes no new artistic approval."
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "jet-set-radio",
+  "universe": "Jet Set Radio",
+  "directory": "DLC/JetSetRadio",
+  "registration": "runtime",
+  "catalogOrder": 203,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartJ.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartJ.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

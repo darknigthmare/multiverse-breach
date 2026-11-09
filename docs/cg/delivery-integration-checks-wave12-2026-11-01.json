@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "kind": "cg-and-sprite-integration-checks",
+  "wave": "wave12-2026-11-01",
+  "checkedAt": "2026-11-02T03:51:07.503979+00:00",
+  "status": "passed",
+  "scope": "CG and sprite delivery, source-consumer correction, data coherence and historical conservation. The separately rebuilt workbook has its own validation and preservation reports.",
+  "delivery": {
+    "newCg": 60,
+    "newCgMedia": 180,
+    "newAtlases": 4,
+    "newSpritePoses": 64,
+    "characters": [
+      "bishop",
+      "predator",
+      "greyback_yautja",
+      "ripley"
+    ],
+    "catalogueCg": 1406,
+    "registeredCgVersions": 1500,
+    "registeredCgMedia": 4500,
+    "correctedSpriteMaps": 60
+  },
+  "checks": {
+    "cgTests": {
+      "passed": 83,
+      "failed": 0
+    },
+    "characterPngTests": {
+      "passed": 42,
+      "failed": 0
+    },
+    "configuredCharacterSpriteAudits": {
+      "passed": 70,
+      "failed": 0
+    },
+    "spriteAvailabilityAndManifest": "passed",
+    "cgManifestProductionPlanFidelityBibleGlobalBatchAndAgentAssignments": "passed",
+    "viteBuild": {
+      "status": "passed",
+      "copyPublicDir": false,
+      "limitation": "Build verification uses the full source with public copying disabled to avoid duplicating the artwork library; media presence is checked separately."
+    },
+    "sourceUseCorrections": {
+      "rules": 2,
+      "status": "passed-exact-restrictive-tuple-and-bitmap-hash-checks",
+      "publicRegressionIncludedInCgTests": true
+    },
+    "sourceIccAndSixteenManualFieldsRegression": {
+      "status": "passed-on-exact-current-builder",
+      "privateAuthority": {
+        "path": ".tmp/cg-alien-2026-11-01/excel-preflight-reference-use/manual-preservation-private-validation.json",
+        "sha256": "dbe3f9acf82297865409ec4241483270d3e329b332965bb669c36a9344642205",
+        "bytes": 2787
+      },
+      "scope": "Manual-only private regression; real production global routing must also pass during the frozen workbook rebuild."
+    },
+    "historicalConservation": {
+      "originalCgMediaPreserved": 4320,
+      "originalSpriteMediaPreserved": 2000,
+      "oldCorrectionMapsPreserved": 56,
+      "runtimeSelectionsChecked": 9560,
+      "authorizedChangedSelections": 20,
+      "unchangedSelections": 9540,
+      "report": {
+        "path": "docs/cg/reviews/wave12-2026-11-01/historical-preservation-verification.json",
+        "sha256": "6e7652e7e5730dc0343aec7fd4012643a086241a9c51896d63abcea4b664b93c",
+        "bytes": 5899
+      }
+    },
+    "authoredSourceWhitespace": "passed"
+  },
+  "spriteTransitionReviews": [
+    {
+      "path": "docs/cg/reviews/wave12-2026-11-01/bishop-sprite-runtime-transition-review.json",
+      "sha256": "10a6a8700795e0072265c043f82a0402f1c1f60f3f79a220156a45a3b2c16601",
+      "bytes": 3365
+    },
+    {
+      "path": "docs/cg/reviews/wave12-2026-11-01/greyback-yautja-sprite-runtime-transition-review.json",
+      "sha256": "a5dc1bab028cf2df0c1229b3ba60f7ad4c5d4ba18f2ac9210e3fe29e87b81dea",
+      "bytes": 3553
+    },
+    {
+      "path": "docs/cg/reviews/wave12-2026-11-01/predator-sprite-runtime-transition-review.json",
+      "sha256": "908ffd9e2f6e272e7ab2d8dfec873b0ed0ea3dd4b055ae0507214301d53e6f1d",
+      "bytes": 4323
+    },
+    {
+      "path": "docs/cg/reviews/wave12-2026-11-01/ripley-sprite-runtime-transition-review.json",
+      "sha256": "45c57f060f545965108f4e9fd1c6f7fdb9e999fca27fa0218bdf9675e8df2929",
+      "bytes": 5520
+    }
+  ],
+  "logs": [
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/agent-batches-check.log",
+      "sha256": "d8afbdafca7ed244e22cb327289627982e140de440b2925e8e5f353d29f211cd",
+      "bytes": 1143
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/cg-manifest-check.log",
+      "sha256": "b3d613f21784e5ddc20671a236920599c9ff555cb5a8ee95582a75850ebeeebc",
+      "bytes": 33
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/cg-tests.log",
+      "sha256": "2d3f6bc9eac389dca8bae7d91100543e7679665d3902933c9f4434b7f140b8b3",
+      "bytes": 9313
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/fidelity-bible-check.log",
+      "sha256": "84a6c43d2ae77a2cb14943372ab4cd2cf821180aa5dc84915845875b4f593539",
+      "bytes": 52
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/fidelity-bible.log",
+      "sha256": "402f137ee07f0dd315fd95b056c1b0b512c6db23f43b1f39e449ce0e0dedfecb",
+      "bytes": 2007
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/global-batch-check.log",
+      "sha256": "2c3d4842f331bdc6eae847706fd32fe26ea8b0815a5278e5b72d2c4a33d71e8f",
+      "bytes": 1167
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/global-batch.log",
+      "sha256": "0dec6ba64bab77922dc683097190e3fe53cf40a8d177459160b54a0bd1276dcc",
+      "bytes": 1167
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/historical-conservation.log",
+      "sha256": "03b5da4592d7e5e4011580305d388f5b1b8cc5d760ca4e3f4a8806a0b25765c3",
+      "bytes": 477
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/production-plan-check.log",
+      "sha256": "ef0ec4c00a57af6acb5a1c282173772fccff991682a6351e021306343090ab83",
+      "bytes": 750
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/production-plan.log",
+      "sha256": "ef0ec4c00a57af6acb5a1c282173772fccff991682a6351e021306343090ab83",
+      "bytes": 750
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/sprites-final-2026-11-02T03-47-51Z-adf2c71a/character-audits-70-2026-11-02.jsonl",
+      "sha256": "334bfe5389557936a8f7fcf422386fb7ad8985da902b1779071bb1bee98af76c",
+      "bytes": 24189
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/sprites-final-2026-11-02T03-47-51Z-adf2c71a/character-png-tests-2026-11-02.tap.log",
+      "sha256": "1d2158418c78b9d61672c44847d7a04d497a9433688e30b6ba9aa6469221df54",
+      "bytes": 4652
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/sprites-final-2026-11-02T03-47-51Z-adf2c71a/sprite-availability-manifest-2026-11-02.jsonl",
+      "sha256": "67bba666ba3f56b6b30a0833db48911f2860e21014739d5f53336fba321ddf01",
+      "bytes": 1511
+    },
+    {
+      "path": ".tmp/cg-alien-2026-11-01/final-checks/vite-build.log",
+      "sha256": "dc9d9f5666838e5b5f23941b0d7f83e4a566e5cc9d976bdbc53546af8da1006e",
+      "bytes": 4521
+    }
+  ],
+  "priorityScope": {
+    "characters": 66,
+    "groups": [
+      40,
+      26
+    ],
+    "completedCharacters": 4,
+    "remainingCharacters": 62,
+    "remainingCg": 930,
+    "original47BatchAssignmentsUnchanged": true
+  },
+  "capacity": {
+    "workspaceGiB": 32,
+    "resizePerformed": false,
+    "newImageProductionPausedAtThisCheckpoint": true,
+    "artworksOrProofsDeleted": false
+  },
+  "absoluteFidelityCertified": false,
+  "automaticFidelityCertifications": 0
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "eminem",
+  "universe": "Eminem",
+  "directory": "DLC/Eminem",
+  "registration": "runtime",
+  "catalogOrder": 234,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

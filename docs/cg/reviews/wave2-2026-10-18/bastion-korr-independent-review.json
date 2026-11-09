@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_bastion",
+  "characterName": "Bastion Korr",
+  "incarnation": "Nexus de Convergence — canon original du projet",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "reviewStartedAt": "2026-10-18T04:46:57.379892+00:00",
+  "status": "complete-with-source-limitations",
+  "scope": "Individual native image comparison against inspected source references; composition and continuity review, not perfect resemblance certification.",
+  "axes": [
+    "identity-and-incarnation",
+    "silhouette-and-anatomy",
+    "face-and-hair",
+    "costume-and-palette",
+    "equipment-and-laterality",
+    "pose-distinctness",
+    "universe-and-background",
+    "special-theme-readability"
+  ],
+  "sourceReferences": [
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+      "role": "canonical-original-project-sprite-pack",
+      "sourceScope": "original-project-canon",
+      "inspectedBy": "excel_fidelite",
+      "viewed": true,
+      "sha256": "ba6a82bf9566061137be08f3f771fab84e3b896db3381a6415c396198abc1277",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-bastion.png",
+      "role": "original-project-historical-sprite",
+      "sourceScope": "original-project-canon",
+      "inspectedBy": "excel_fidelite",
+      "viewed": true,
+      "sha256": "4079a93203b714079756e09bac0a69196952ea271a89f12e6fb3b41d8d031beb",
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "nativePath": "/workspace/generated_images/exec-f703b281-9cd3-46c1-8940-3f94d2bb5b4a.png",
+      "sha256": "4ac628289035d83dedb71fecafb3e7e18566a422c4440ad5c6fb9f7f7b652034",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:50:42.734867+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "identity": "Human with tan skin, short black hair and dark stubble; no robot or Ancre identity substitution.",
+        "anatomy": "Two arms/two legs, gloved hands and complete boots, no duplicated limb observed.",
+        "costume": "Slate/charcoal long armored coat with orange piping, shoulder plates, crossed chest straps, pouches and knee protection match the original sprite design.",
+        "equipment": "Elongated angular shield with orange hexagonal lattice, compact black/orange firearm held down.",
+        "pose": "Standing three-quarter guard pose; one hand at belt, firearm lowered; full silhouette readable.",
+        "background": "Original A.R.C.A./Atrium guard architecture, luminous cyan infrastructure and orange technical panels; consistent with Nexus setting.",
+        "theme": "Reference character standing guard; no undocumented transformation."
+      },
+      "findings": [],
+      "limitations": [
+        "Fine facial anatomy, beard and small armor fasteners are interpreted from low-resolution sprites; perfect detail accuracy is not certified.",
+        "At this first delivered slot, series-wide pose/background diversity remains to be checked against later renders."
+      ]
+    },
+    {
+      "slot": "CG02",
+      "type": "weaponSolo",
+      "nativePath": "/workspace/generated_images/exec-cb9d0189-4ee1-4102-954e-ba3d6cea6946.png",
+      "sha256": "a1684df06ab35559dea1b8de1f7af5f2af452eecd67d6c2e3e3f064570ebb0a8",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.781618+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Single complete black/orange Atrium firearm with stock, rectangular receiver, low top rail, one barrel and no invented scope; no bearer. Original calibration workshop, distinct interior."
+      },
+      "findings": [],
+      "limitations": [
+        "Small receiver, rail and stock details are inferred from pixel sprites, not independently certified engineering geometry."
+      ]
+    },
+    {
+      "slot": "CG03",
+      "type": "decorSolo",
+      "nativePath": "/workspace/generated_images/exec-4346a027-8e8a-4c55-9841-689b7276bf22.png",
+      "sha256": "f688ff9ebe8c0291ec8a283035862894d9c8346670c936c9d14575e7fc57c2db",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.788814+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Empty descending A.R.C.A. causeway with exactly three orange beacons and a hexagonal gate above Mosaic City. Clear depth and architecture distinct from CG01 watch post and CG02 workshop."
+      },
+      "findings": [],
+      "limitations": [
+        "Original project-world environment, not a literal documented Atrium location."
+      ]
+    },
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "nativePath": "/workspace/generated_images/exec-df37d314-9307-4cc5-abe1-4622fc116889.png",
+      "sha256": "da65c69df88f42d1d709c6c755877623f4a29ad2f0a638d263002132fcf12d87",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.796537+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Bastion kneels with one boot planted; two separate gloved hands adjust and steady a low physical barricade beacon, three cyan control tiles beside it. Black hair/stubble, slate/orange armor, coat, knee protection and back-mounted firearm remain coherent."
+      },
+      "findings": [],
+      "limitations": [
+        "Fine face, beacon and interface geometry interpreted from low-resolution original sprites."
+      ]
+    },
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "nativePath": "/workspace/generated_images/exec-0ec74ace-054a-4235-9f3e-341dbc01c561.png",
+      "sha256": "3702357a787276ca96ffd254f9e0da267d3e9bf4ee85ebe9d4deda93f79fd59e",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.929499+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Corrected rifle now has one open muzzle; no lower second bore. Wide orange Convergence beam pose, folded shield, two arms/two legs and original A.R.C.A. training yard preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG05",
+          "type": "actionScene",
+          "nativePath": "/workspace/generated_images/exec-fbeca2e8-3cdf-4f94-af75-98acdaa7bc1a.png",
+          "sha256": "fc6c0b5e915862ee595e05fa995374ade765b9b8a3385fa1cd38437dcc7eba9f",
+          "dimensions": [
+            1087,
+            1447
+          ],
+          "reviewedAt": "2026-10-18T05:04:38.897063+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Wide lateral action stance, orange Convergence seal/beam, folded hex-grid shield, source-compatible face/armor and two arms/two legs."
+          },
+          "findings": [
+            "Weapon has a second distinct dark muzzle on the lower tube. Keep only one open firearm barrel, remove or close/shorten the lower appendage."
+          ],
+          "limitations": [
+            "Internal project ability is sourced, but the second open muzzle is not supported by the source weapon or CG02."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "nativePath": "/workspace/generated_images/exec-26dc6ad5-7e5a-47f4-80a9-abb0fc461b1b.png",
+      "sha256": "818d9da7b3f450ba0728f541a188882f9d92223afa9d1c4ec2063a4e4f42bf35",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.908073+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Walking through the guard arch with a two-finger greeting and rifle across chest. Current corrected image contains no visible extra guards. Human face, slate/orange coat, complete boots and one folded shield remain stable."
+      },
+      "findings": [],
+      "limitations": [
+        "Original relief-post scene; fine face/gear details remain limited by source sprite resolution."
+      ]
+    },
+    {
+      "slot": "CG07",
+      "type": "victoryPose",
+      "nativePath": "/workspace/generated_images/exec-5df23636-b718-43b9-98d5-da5dfd052c7f.png",
+      "sha256": "431ab3af13e54fbbef22865f3a2937def4bdd8e7b7f84d4da3732fb6a58f0a66",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.915074+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Seated upright on a crate, both hands separately resting on compact rifle across knees, full boots. Corrected image has no tubular scope and no second ground shield, only the folded forearm shield. Sunset overlook distinct from other scenes."
+      },
+      "findings": [],
+      "limitations": [
+        "Producer corrected earlier scope/shield additions before this independent inspection; initial versions were not independently viewed here."
+      ]
+    },
+    {
+      "slot": "CG08",
+      "type": "defeatPose",
+      "nativePath": "/workspace/generated_images/exec-cc728b76-32be-4325-929f-04d66d3cf47b.png",
+      "sha256": "9bb7b1b79ea2b86e923f073aaf573ce8cc5c202b30ea388a7103f8b07ea4671e",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.936706+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Corrected rifle has one open barrel. Living defensive crouch, one deployed elongated orange hex-grid shield, full two-leg silhouette and evacuation corridor preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG08",
+          "type": "defeatPose",
+          "nativePath": "/workspace/generated_images/exec-720540d5-fa8c-434c-a2f6-fa0a371db629.png",
+          "sha256": "73748599724fd3725c0ede55efd122006cfa105f5f5ae37b1c55feda4c8c02c6",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-18T05:04:38.917595+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Low living defensive crouch with one deployed elongated rectangular orange hex-grid shield, two arms/two legs and stable face/armor. Evacuation corridor clearly different from maintenance scene."
+          },
+          "findings": [
+            "Lower rifle tube ends in a second dark muzzle beside the main bore; remove or close/shorten it to match the single-barrel CG02."
+          ],
+          "limitations": [
+            "Shield/anatomy/pose are accepted in isolation; weapon correction required before packaging."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG09",
+      "type": "beachFamily",
+      "nativePath": "/workspace/generated_images/exec-8ad5437c-8404-4d10-a9b6-847e7ad11537.png",
+      "sha256": "d6e08e2e7a822fc7c06e25f2088802962810ee5ded6f7273cf2098d8061645ea",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.946017+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Family leisure seated on driftwood with paper pinwheel, complete armored coat/trousers/boots retained; two hands/two legs and closed firearm case. Original garden beach, no age change."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG10",
+      "type": "maidService",
+      "nativePath": "/workspace/generated_images/exec-4e6bbe76-19f1-46f2-9368-f3c064cbc8c8.png",
+      "sha256": "f43889c7e60d483a3138e935a35ec13be3e0b405741ff7fca7b73d97cd0a55f9",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.952788+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Service apron over original armored coat; two gloved hands place supply crate on counter. Short forearm armor plate and one long shield stored beside racked rifle; no second deployed long shield observed."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG11",
+      "type": "goofy",
+      "nativePath": "/workspace/generated_images/exec-409b0d42-4c62-4781-aa13-4e8de4926a85.png",
+      "sha256": "7a43c5c364c3c1a749cbfc7e6b0ac1fc46a0f8fd1c75e8cf70e6be74eaf9833c",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.954628+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Comic coat hem caught at crate, one boot raised, one hand frees hem and other holds a physical orange beacon; firearm on back. Two arms/two legs, stable face/costume, original locker corner."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG12",
+      "type": "alignmentSwap",
+      "nativePath": "/workspace/generated_images/exec-fe7ec407-f224-41a7-8298-6d4697778db2.png",
+      "sha256": "daa0cdd5eb6c73d5d110a2be2efd461def87b564a41c21058da6a736efb82e66",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.961047+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "WhatIf allegiance: rear three-quarter gate-closing pose and look back, one long hex-grid shield and firearm on back. Stable slate/orange coat and human face; withheld-passage theme clear."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG13",
+      "type": "genderSwap",
+      "nativePath": "/workspace/generated_images/exec-7b61dea6-0146-4c42-a23a-e8c6facfb485.png",
+      "sha256": "26f84bf5ac98373560fb47e794bc6da97630af8ab231a21fd5165da19dcf82e9",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.967336+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Single feminine-presenting WhatIf counterpart with short dark hair/tan skin and same full heavy slate/orange armored coat, knee protection, gloves and boots. Two hands inspect long shield; firearm on back; no revealing costume or age assertion."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG14",
+      "type": "zombieVersion",
+      "nativePath": "/workspace/generated_images/exec-e0fc7f41-af83-470b-b5fe-721e9c56ee38.png",
+      "sha256": "5e32cb1eae3caa4c5c4e21ba2f1550bc169e0708234a4e6c689aeeaddfb417d0",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.973572+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Non-gory memory corruption affects coat/shield rim as digital gaps; face and all limbs intact. One hand on chest, other reaches toward beacon; shield parked, source identity/palette stable. Original quarantine archive chamber."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG15",
+      "type": "futureExperienced",
+      "nativePath": "/workspace/generated_images/exec-ea28bafe-ccc9-4988-9713-7b5ec8c945f3.png",
+      "sha256": "f3fd3807271da253c76d191b80b20e0f0d8ba7fac5d48624e7d12bda93a0a6de",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.979996+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Hypothetical future guard inspection in side profile, rear heel lifting, hand on rail and other holding a beacon; same face/coat/gear and complete body. Distant generic citizens are not recognizable Bastion duplicates or franchise cameos."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    }
+  ],
+  "summary": {
+    "reviewedCurrentSlots": 15,
+    "acceptedForPackaging": 15,
+    "openIssues": 0,
+    "correctionsRequested": 0,
+    "perfectVisualFidelityCertified": false
+  },
+  "limitations": [
+    "Uninspected or ungenerated slots are not approved.",
+    "A familiar silhouette or a project-generated image alone does not certify external franchise accuracy."
+  ],
+  "observedIdentityLocks": [
+    "Human with tan skin, short dark hair and short stubble; no robot head.",
+    "Slate/charcoal armored long coat with orange piping, reinforced shoulder pads, belt pouches, knee protection and dark boots.",
+    "Compact black/orange Atrium firearm; elongated angular rectangular shield with orange hexagonal lattice; low physical barricade beacon.",
+    "Original A.R.C.A./Mosaic City context; no Overwatch Bastion transformation or Ancre gauntlet."
+  ],
+  "updatedAt": "2026-10-18T05:14:56.980025+00:00",
+  "reviewCompletedAt": "2026-10-18T05:14:56.980025+00:00",
+  "deliveryReceiptFile": "docs/cg/bastion-korr-wave2-2026-10-18.json"
+}

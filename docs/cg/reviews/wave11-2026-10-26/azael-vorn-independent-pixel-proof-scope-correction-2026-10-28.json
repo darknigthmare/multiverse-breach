@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "characterId": "azael_vorn",
+  "reviewer": "/root/lot_02_wave11",
+  "operation": "explicit-correction-of-legacy-cardinality-field-name-without-modifying-frozen-proof",
+  "referencedProof": {
+    "path": "docs/cg/reviews/wave11-2026-10-26/azael-vorn-independent-pixel-proof.json",
+    "sha256": "653cde58257023f2a059c32e9e5533d08058c36dd87f13980de7f357a20da628"
+  },
+  "legacyFieldName": "all45ExportsByteExact",
+  "correction": "The field name was copied from a15CG/45asset template and is misleading for this partial delivery. It must not be interpreted as45 actual exports. Actual counts and individual compared asset rows below govern scope.",
+  "actualNativesCompared": 2,
+  "actualExportsCompared": 6,
+  "allActualExportsByteExact": true,
+  "allActualAssetHashesReconfirmed": true,
+  "noFortyFiveExportComparisonClaim": true,
+  "status": "pass-with-explicit-scope-correction",
+  "canonicalFidelityApproved": false
+}

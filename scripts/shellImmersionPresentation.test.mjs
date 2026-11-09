@@ -2,8 +2,9 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { CG_CATALOG } from '../src/game/cg/cgCatalog.js';
+import { CG_REVISION_REGISTRY } from '../src/game/cg/cgRevisions.js';
 
 let vite, CgGallery, CollectionHome, UniverseArchiveDialog, IntroSequence;
 before(async () => {
@@ -19,14 +20,29 @@ const render = (Component, props, ...children) => renderToStaticMarkup(React.cre
 test('the gallery main stage uses an unlocked illustration without exposing locked full-size media', () => {
   const entry = CG_CATALOG.find(item => item.family === 'Canon');
   assert.ok(entry?.imagePath);
-  const available = render(CgGallery, { entries: [entry], unlockedHeroes: [entry.unlock.heroId], lang: 'fr' });
+  const available = render(CgGallery, { entries: [entry], revisionRegistry: {}, unlockedHeroes: [entry.unlock.heroId], lang: 'fr' });
   assert.ok(available.includes(entry.imagePath));
   assert.match(available, /cg-gallery__stage-open/);
   assert.match(available, /aria-pressed="true"/);
   assert.match(available, /cg-gallery__filter-drawer/);
-  const locked = render(CgGallery, { entries: [entry], unlockedHeroes: [], lang: 'fr' });
+  const locked = render(CgGallery, { entries: [entry], revisionRegistry: {}, unlockedHeroes: [], lang: 'fr' });
   assert.ok(!locked.includes(entry.imagePath));
   assert.match(locked, /data-cg-unlocked="false"/);
+});
+
+test('the main stage displays the latest published correction and keeps every version locked with its hero', () => {
+  const entry = CG_CATALOG.find(item => item.family === 'Canon' && CG_REVISION_REGISTRY[item.id]?.length);
+  assert.ok(entry);
+  const revisions = CG_REVISION_REGISTRY[entry.id];
+  const current = revisions.at(-1);
+  const available = render(CgGallery, { entries: [entry], unlockedHeroes: [entry.unlock.heroId], lang: 'fr' });
+  assert.ok(available.includes(`<img src="${current.imagePath}"`));
+  assert.ok(!available.includes(`<img src="${entry.imagePath}"`));
+  const locked = render(CgGallery, { entries: [entry], unlockedHeroes: [], lang: 'fr' });
+  for (const media of [entry, ...revisions]) {
+    assert.ok(!locked.includes(media.imagePath));
+    assert.ok(!locked.includes(media.thumbnailPath));
+  }
 });
 
 test('the album remains one labelled dialog with all three views and explicitly scoped filters', () => {

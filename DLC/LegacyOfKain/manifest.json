@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "legacy-of-kain",
+  "universe": "Legacy of Kain",
+  "directory": "DLC/LegacyOfKain",
+  "registration": "runtime",
+  "catalogOrder": 184,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartD.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartD.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

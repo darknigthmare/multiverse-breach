@@ -1,0 +1,2231 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "checkedAt": "2026-10-25T07:29:48.512Z",
+  "status": "passed",
+  "reviewer": "/root/wave9_coordination",
+  "scope": "Independent read-only source/slot/theme/provenance and real asset bindings after root freeze. This report checks the actual named visual reviews and does not claim a second exhaustive visual inspection of all75CG.",
+  "manifest": {
+    "path": "docs/cg/roster-global-batch-2026-10-25.json",
+    "sha256": "fe67fb86dcce2ccf73bd7f8435cdef5e981423320853b79e447dcae928f50208"
+  },
+  "instruction": {
+    "path": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+    "sha256": "51fdedb11ed1c41089a7a4cb7b66ec2d45b8d93d7c6a4aa5622e5af867adce4a"
+  },
+  "masterInstructionContinuityReport": {
+    "path": "docs/cg/reviews/wave9-2026-10-25/master-instruction-continuity-verification.json",
+    "sha256": "26fa2e737c2e907aeb3a349fb0ea0959f5b4d88f9b03b752410dc9ca6c118e28"
+  },
+  "inputs": {
+    "plan": {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "sha256": "e144aa27bec7fee49968af45ac68099a0bce534c7e809e03280a8cc1a879c1ce",
+      "bytes": 34577636
+    },
+    "bible": {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "sha256": "1f0f72cf9192952254f0b281c5a8417c3c59e02659b64bf411f4d1184f0876c9",
+      "bytes": 41365180
+    },
+    "pilot": {
+      "path": "public/cg/cg-manifest.json",
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee",
+      "bytes": 160270
+    },
+    "roster": {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "635a822a0082fb2a9639561d0bdfdbb02b08dac437ac59113e95b61377b741a6",
+      "bytes": 5439587
+    },
+    "revisions": {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    }
+  },
+  "coverage": {
+    "subjects": 1912,
+    "slots": 28680,
+    "actualDeliveredCg": 895,
+    "newCgBound": 75,
+    "unchangedOtherProductionCells": 28605,
+    "documentedNotApplicablePreserved": 8,
+    "registeredVersions": 989,
+    "remainingSlots": 27777
+  },
+  "cgRefusalJobsPreserved": 20,
+  "atlasRefusalsSeparate": {
+    "current": 7,
+    "historical": 7,
+    "newToday": 0,
+    "newAtlasRefusalFromThisAudit": false
+  },
+  "explicitBodyCoverageGapSubjects": [
+    "batman_n52",
+    "harry",
+    "jack_sparrow_potc"
+  ],
+  "scopedCostumeChecks": {
+    "characterId": "seyra_tal",
+    "slot": "CG13",
+    "authorityOwner": "aurelia_marcellina",
+    "sourceSha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+    "usedForIdentity": false,
+    "costumeOnly": true,
+    "qualifiedIdentityTotalRemains65": true,
+    "directCostumeBitmapAttributions": 1,
+    "otherFourteenCgDoNotAttributeUnusedCostumeBitmap": 14,
+    "commonScopedSourceReceiptMayBeReferencedByAllEntries": true
+  },
+  "inspectionAuthorship": "The reviewers recorded above personally inspected the individual native images. This auditor verified their selected-native SHA bindings, authored themes, individual source and gallery assets and current manifest queues.",
+  "series": [
+    {
+      "characterId": "doros_bronzehand",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/doros-bronzehand-wave9-2026-10-25.json",
+        "sha256": "d46cf0c5c0fa302d25bcec73852bd1ae7f0fd21e5f62822cef9bb10f42c0486d"
+      },
+      "plan": {
+        "path": "docs/cg/doros-bronzehand-wave9-plan-2026-10-25.json",
+        "sha256": "c89677d53592f5df3200f62bfaa1babc7769d6197682a86868ad08dcd8c9eb9b"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/doros-bronzehand-independent-review.json",
+        "sha256": "13a06602e212ae23eb7fcc96265c60afca8abba772840d5bb6114e856925cf4b"
+      },
+      "independentReviewer": "/root/cg_aoi_wave9",
+      "producer": "/root/cg_doros_wave9",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "sourceLimitations": []
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "592f45e80e0d1447810dc54e00dad07d62a8119176de6e4e1c066d1e475cb7ee",
+          "deliveredSourceSha256": "6c7da52fd7a1b6e50276e7ec7f63ac53e298221bcd38b04f6776f7f4bff94106",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "3e2e4d74e63e30868ff0f28d0c8710aea6b5ce296e0f4022c6644b21800b48a1",
+          "deliveredSourceSha256": "2a3381c7698d8d0d29fb1b2a5f94d13a59205f415c18217200a5b13ca4c3af7f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "5baf356c993360ddfafca2d2a43bac0831c30f2cefe90e2228e436edb735c9c2",
+          "deliveredSourceSha256": "45fa5c928017b423fc465e9e56495a8a06d53c38fc47a975c3e7dc5e66bea975",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "79c5f66265968f752601eaecf2b2affd26d1627fa0283a9b723776581f79ffc1",
+          "deliveredSourceSha256": "6d494427aeca8a2b43da6004c7f27caca26d3f545549ec6579da4c6d381d8c12",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "fb69dab46eb29ef8deea28d9540aa45aed7cd00a8886e4037751baf716777663",
+          "deliveredSourceSha256": "c90122ebf7c1ccbf96c789c421dc6c1aa3f6fd0e9382ab4368e8b247a17948e6",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "ae36c7f03adf679f3a2f4f778ced713a48407a70a21460240cea3b40aaa23ba4",
+          "deliveredSourceSha256": "cd9954bf978d1847c4393fdaf055bb860ef6baa7d2f93efeacfa514d4d156992",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "6eeeb6226a5cf5c562f7e79a60cfbe6c6852d139a0c91cbc20d1ac3793ec0aed",
+          "deliveredSourceSha256": "341a929b8d2e62bb4e19bc6af3364ba862b99d1857d5abc3c8bf1bd63caa468e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "6892063d615b8e9ee4ec436438b9d4c7d4c251ffbb1aa93f51aed74c40a0af70",
+          "deliveredSourceSha256": "42ac0943565f99e78dd20bac8f72284d3722df288b3cf3524397cf3171140133",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "0f987770aedb514bc81cb5a1969157dce50c6d11adc860b959480149b6f170a9",
+          "deliveredSourceSha256": "f515c084995b5e767d1d0fff64667019254e917f050dae79314449de671a85d7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "49fbf81f5ebcce15596e55762b20c566bf16c857695239b461e7847262be256c",
+          "deliveredSourceSha256": "fb4f0baf0b811b7c67e55b36b35c6c80320bf0c82412f6d0d395d16271180b31",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "8b4ec26119112a9ff182105db74fdb24ba8621c75d3e832f684822d71ef988ae",
+          "deliveredSourceSha256": "0a4c527d0764955fb95ad138c3ccced6393a18378b4e9c0a67f03ba35a383c7f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "1bbc67c4fa87532cd34b57fefe29c2873c2455be95c152fcaedd654839f73361",
+          "deliveredSourceSha256": "7b877c596139faf29bfc5851584706203f771cf5e0caf33320afe5e0fe4d56cf",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "d99fc5cf3b42c6b66a22dbf27276e21809c7b944f0ff58a65fb3277a105cfa83",
+          "deliveredSourceSha256": "056c293e9be76d5df8cf8808e2168b318c731bd6e967a6f7c23e5cba2fcde6f7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "ed4bc03d097d99e9ac11bf1ad3c9c3f8e5b28e39525f77b5c07658b420d7fe52",
+          "deliveredSourceSha256": "0564aeb8f780e9c288778c66d52b53ba65abd35fdfef4136ba559ac04ea9ec0e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:aegea-war-of-the-moirai:doros-bronzehand:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "6d96a47a0ad52d201fea1845e786ed6e58f287615c487e2a14432b88a1f23dbf",
+          "deliveredSourceSha256": "aae496caf36b94bcf19b5336f6de6a0953f2a43403b1aacd453938eac56a9b53",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aoi_wave9",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "lin_yue",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/lin-yue-wave9-2026-10-25.json",
+        "sha256": "1649384246902983de73fe9272fd8f173b764ef389519a69cfddfcad408f89b3"
+      },
+      "plan": {
+        "path": "docs/cg/lin-yue-wave9-plan-2026-10-25.json",
+        "sha256": "95ba3f6752c499564f5916342e986020669c4fdd3ca4bf6265c962d51380e68b"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/lin-yue-independent-review.json",
+        "sha256": "ac38544cd93ff02f26f1620b1eac4bffb5d0b69ea6cd0e7d3d28ce610d5241c1"
+      },
+      "independentReviewer": "/root/cg_doros_wave9",
+      "producer": "/root/cg_lin_wave9",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "sourceLimitations": []
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "a88c66676e5b8d7497c974b54b2948c906a6ff26f7a684179539b377f4cd845e",
+          "deliveredSourceSha256": "e5bbb75e1fd1cae910d8227821ddc950d670628a7c519a5584e4033c637b8091",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "39bd486e1b638889c3376ae7266e96c9fd4d69205de5ee5b9f52a60cadd81d43",
+          "deliveredSourceSha256": "dbac8f84cd1bd4f3396a4bc339f478f82cbf3af95cd7b515fb742432b26e6f86",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "0a0bf07f098f50fd89f94e31e99a3c337cd0417ea26bc5da33856f27d573e2c7",
+          "deliveredSourceSha256": "381053f5ac7617023f748e8160dde3bd9163b0b67aa8608327f28bf9ba60efc6",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "8ec6e62c3d97c7c53ac8f2af8cb91edef1521fc76a4e181c68bcff8ea14e6cb7",
+          "deliveredSourceSha256": "87cbf1cfa7ae697e55475905e2035a72519b67de3ab8d6b566f131c3e76acce5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "e3417eefbe1128c1e9d6ea737b4a77f7bb16e1615e16bbddde4aa322f58fbcfa",
+          "deliveredSourceSha256": "f57b8f18644499b288581aed9099f10a4c0c78586824d69124c6992664fdd23e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "d7e6504eef4af2785c492b65493f46155d5f9179e192391ae32e9f7e6c7b025e",
+          "deliveredSourceSha256": "53ad189ac3bde9357f61df3def59fbd2e5b773d983f8452a80f48b1a63eb5bc9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "fcba60bd6e3c9ac3249e350480697bb78e3593dbea628a483b6ec7efa93a24fe",
+          "deliveredSourceSha256": "360adcb72914c3c04e603963f64eaee7d70f20d68ce9c3d73299be7616750d89",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "2dbf3b592875c6512334d2c3fd613bf632e0ab1f1e1f33b07a5168b26baff2c8",
+          "deliveredSourceSha256": "da459ddb07d4463a5c8fd264aca7deb59e5c508cc6a6206cb77839cf1be38173",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "f40e1ca41aa5ba9786ee936cc047d5e07e0a7581bc27aab6e3763350a25ba83b",
+          "deliveredSourceSha256": "4d0e03fa99351bd7cce312ee0f2be48160f96f06fd6c7e1e6e95779d42bed81c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "9d9cf12ea10b6941adacf0055fbdecd05d39846cfce834760c5351099a021cc6",
+          "deliveredSourceSha256": "8aba852baa07891232fef1f2115d12023932605472b271e1c5ccb61340f1f0a1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "dcb02a42f33966859ffdeef82e28d034dd43d60d4aac1570d3af1087a8386a60",
+          "deliveredSourceSha256": "a3fe4d209e19c9ae52c8ef951e27371b51b97c058a116c63cd9f20c7d24c659f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "15145fc4c5b5293e4729281fab73e21740475da11941448569872c921bbb6bb5",
+          "deliveredSourceSha256": "2e919df120b14cf7f8e955768e098059a1e667b669883f326219553529e2baaf",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "35a8aef38f3c7810bc2ed3928369c54887cad65bd17bf806ecb822c05d87406a",
+          "deliveredSourceSha256": "80de7ad3a931ba1b76b2e728105a0110dabcf541bbbf3bd51dc3a6bdc23c0ea0",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "22410dd3a72e9d3cc7a6da5ac3b52296077930d166ff86fa0e65618e4381383b",
+          "deliveredSourceSha256": "897c49a4e011b5ce06ddb43738dac4d977b5e1b9fda5fc2a6d948abc0d8d7425",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:mandate-of-nine-heavens:lin-yue:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "9c6ab9825eec7c4c9a627346023caca878d4179de594d7af30bb1e766f37f1b4",
+          "deliveredSourceSha256": "ebbbfda8b1c39e8945d88cef55892d41ae0bda00d64057bae8376d8d890f8a7d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_doros_wave9",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/eira-hrafnsdottir-wave9-2026-10-25.json",
+        "sha256": "f95640741b771c022874bff94ee4a3b10545df06b6dc54d5952abe75184b1615"
+      },
+      "plan": {
+        "path": "docs/cg/eira-hrafnsdottir-wave9-plan-2026-10-25.json",
+        "sha256": "713ba9f92c2a54bf09b9027badd3a8a21077af10d7da8997764b8a3ae84c3245"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/eira-hrafnsdottir-independent-review.json",
+        "sha256": "01cf1e743cffab05891300ba81f6cc2c6091f901d151f68ab5ee2876d15815eb"
+      },
+      "independentReviewer": "/root/cg_lin_wave9",
+      "producer": "/root/cg_eira_wave9",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": false,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": true,
+        "optionalAbsentFlagIsNotInferredAsCertification": true,
+        "sourceLimitations": [
+          "Only visible source surfaces checked; exact reverse structures and microdetail unknown; no absolute 1:1 certification.",
+          "No chronological age inferred; family-safe and no romance."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "690659094a1770943dcd31810da17591e470429dfc1286c66eda208d48c30949",
+          "deliveredSourceSha256": "4563a360080bb0de51e79acec5a145bdc12cf0918dd7c3b25ec1b51428c76e6a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "064e37602e34e8732c03883a7e6c6f7b3a3a52be00adb38b8312f7b84e39adb2",
+          "deliveredSourceSha256": "e27e88dee6547d6bd539e1283c880e012a3fd5a00b605183913be0802ff6d211",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "abb7a502ff7334b588751a1d2faf08bba7f9956db24b572b89797a1a5b29f65a",
+          "deliveredSourceSha256": "eb89d532feb828263c844760197d42553960c0bc71a6ada88a36cb0d0b175339",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "e8e2238d99877934d8084905b41e6a3e8afe946f8a87d2016b0ab37bbba86cd1",
+          "deliveredSourceSha256": "9828613ba8694792590cb152d14d75bb87cfdcdce44fb34af0875203e63e9a9a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "1115c29043dd66f4f8bfa493fc0fa568cf02576cc24589123080c1e28c31b94c",
+          "deliveredSourceSha256": "8f6ffcbdaa23912f6e2d0b7b37a113449403d892301a796bd1f6a4458296cba6",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "ef75e7e0de56f222241e7887b0b536aaf02303139862317027779a7ac790b627",
+          "deliveredSourceSha256": "e6254ced833e3bf6b72d591b87e96f6f8ff20eea2b415c98697d6ab97691ce97",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "39dff1d9b489d4e21a63f669dcc56fef903788b4843a700de2cf63d52afe1dce",
+          "deliveredSourceSha256": "32ac1fa8bb6546f49650f4e24c5128958f97bf9ff25a96e638b8a4b5f1270c25",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "a2f3efd870428be19a240989aea9c82af5e463e400725e611b8d8fb5a381cdac",
+          "deliveredSourceSha256": "d0ae80670fcb0e7af4162650a36f7d5bc34766d2d49e3cf99fae27cccde07a53",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "1c1c0bedcabb519e966c6de9d60473977f892c9196c1df5e5d56d21b984bdd75",
+          "deliveredSourceSha256": "289cc503c7d0a9862e3e30a3253f45abef1cc43bddc87bf51fadfa26d1a13633",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "805bf2191a25945f90ff463c38795ada8bde3d65f267679d2543d8afd4cfe3b4",
+          "deliveredSourceSha256": "4a3bfe3bf52a342ab0b16699659e78da8c952b715816e2902617cd253d14d25f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "9fcd10a4519e87f4756dd0ca5cf00313b48021f0b6d997781dcb1e0e036afd0f",
+          "deliveredSourceSha256": "1eac6544fc95bdffb0ce2647e34dc1741f9b59b921be37b8d0531faaf0520f58",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "4abb968ad04e7868ad61b2b0c926fc34dbc50836db25a4a3108326b6ebc5871f",
+          "deliveredSourceSha256": "75a1739f654cdd17cc428362fc6a5fc25d9dba612c234e2335bb4742b2d14cd5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "539fc7181c7aaf0fa0ee4efe6e0a140286be4e82554b1498ccad496a76bcbe64",
+          "deliveredSourceSha256": "a40f925f39816a3126f97d2e3244f2d87bf587ffce515734635183bdb43d17db",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "d7aed38375c20421b1dfdbc9ac9c1a2be2978ebfd9a33932fc2215efcc6298c9",
+          "deliveredSourceSha256": "b42ab4751e76c7255fc8f3636a960b9e80e1859290b2f1717903a6004b139457",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:nine-realms-last-twilight:eira-hrafnsdottir:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "7c763c88cc57de9552ad6ef8dcb8c54d5bbde51b0b4822281b798de10354ac57",
+          "deliveredSourceSha256": "5a0f303b15fc8ed63841e5c845db70ad16f4a21b7264e0f6a3c6051bc82bd36d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lin_wave9",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "killa_mayu",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/killa-mayu-wave9-2026-10-25.json",
+        "sha256": "530f2d9cd3f333177e32ff8e2f91bb86cb3fdaa12175a8b20f17dbfa8a9b003b"
+      },
+      "plan": {
+        "path": "docs/cg/killa-mayu-wave9-plan-2026-10-25.json",
+        "sha256": "c5dd86449bf907f1bfbfa7bdb0e1d59f813fbfebc579e6281fa97cab1fb812b1"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/killa-mayu-independent-review.json",
+        "sha256": "7bb0dc9a9bf3f607263d5c15ff97c6eab302ea9ac78baec3ac3658d46d534f4c"
+      },
+      "independentReviewer": "/root/cg_eira_wave9",
+      "producer": "/root/cg_killa_wave9",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "sourceLimitations": []
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "3b6c2112f2f4af536f6eeec6328e53209a5dad3e50573ce02b9cc03688ce33a0",
+          "deliveredSourceSha256": "4381c4dc4e9f82726ea7f4b6c24b7ae39ff25111a0d3878fde58ef3fab1e41c4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "b47f47c5435afdc4bf5b388810318fbe93de19ea9ad041b030d09f08c6e08f90",
+          "deliveredSourceSha256": "f4c6c904306d8ce1f2141e7d727980579d28659c585b16b854059ace909d0570",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "8da89c42aa0fc131aee35939c40eb2214e5cd3070a6295827f81ca5f2f11a702",
+          "deliveredSourceSha256": "59719df54a9d32446fd1a9ae5b420ddc94cf03ff5b6cf8b284998c146b1621c5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "e627d43d2ecacbcfc363a51797b79a05461d44d101cd0bbb5964ac0c307e2eac",
+          "deliveredSourceSha256": "e31573cb6c3cc33d75e03fa2cb74bb2cfb486dd83d10f155e4a9ff3f086ffa45",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "da853df0ecf2f5f584c2e5465f5a6d14194a986816bd6c7bbe281c804a293adc",
+          "deliveredSourceSha256": "f02dbe8f5d03e53d05d3d13752c70933fe369ec0145fe43a036a69c3b99580b2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "ac99f7d6ce8fdd519950b10d7659a5719b874aa41caedc4bee57704e4f40f733",
+          "deliveredSourceSha256": "32e030ee4dc471502f69c4cdfd3f06990e8fae7842232b74ed8a4bd8bd24038a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "2b3aa693aaff86a8a313ebfffba7af2092ed5938c3f8ab448165216c0ac033dd",
+          "deliveredSourceSha256": "15b519ab884fd2f24c347df798abc3804228d556c378e24bc10b57cdb9569d6d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "3ee5ac1afa17a49514bda491534e39d7763d98c74b49ad6aab28f90ced25d137",
+          "deliveredSourceSha256": "c2d7a1eaf7130e8d92b795df3f322538db213e997bc9b36117ce9733a7499696",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "e78f99fa2c61ce349828a489055dfd6118d65ee11e2bcf1725b36b7c1ffab611",
+          "deliveredSourceSha256": "03b3656debd914ea11169598be0fe5d4ea03443c8909f415081ec0f187fb03cd",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "59b7e3aef366aca13007ec53c8ab06c1109241fc7c75b842f8836b60814caf02",
+          "deliveredSourceSha256": "65ba8f801b56801bfae4742e29c62c915ef431c50d16eaef0f80663673ab3bd3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "f7b6b5fc8cc1bc70a399fbf3ba0cb6486b79ddb3ab094a5b1b3180a8b5f7f577",
+          "deliveredSourceSha256": "10b38da684161d86ce846601fde865628a9cb366f2e4a180e8cf02e20dd4b8af",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "fde903ab162b46bf8925579503b4a1802458ce562afbe6b5c5386a85e1b37971",
+          "deliveredSourceSha256": "3fd73698799073b69dbf1848d8a78cca90ed1072b4e6e216c1cebb35f7327102",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "781436b366c2906ed21aad7cefd6a1a0d8aa84647a91d7db7d63b20454a00614",
+          "deliveredSourceSha256": "91bab76628adbd0354131489e02c243bc0b3c552017cda4deb028ac5e45c8d85",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "7cacf26458022aece75fb04b8abc4cbb7357cc804d5b06c099ecc2c324187a07",
+          "deliveredSourceSha256": "beb819ee346cab3f5583881e4c8de017f8724246d176453f9d52881f0a0a15fc",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:tawantinsuyu-the-split-sun:killa-mayu:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "6639c6c361c2c1a5988ab19ec02f63208ae6edad5df94be0bb943ad9459d5819",
+          "deliveredSourceSha256": "a106b77fe5213c3d8a896a64bd5b0ea63b4b4f797ac7f330c2fe222abec9f0de",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_eira_wave9",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/aoi-mikazuki-wave9-2026-10-25.json",
+        "sha256": "ab9bfcf2c8f24e1644b2d701803afd3d7e58a3dad3cfdae6d2ecbed02c605e65"
+      },
+      "plan": {
+        "path": "docs/cg/aoi-mikazuki-wave9-plan-2026-10-25.json",
+        "sha256": "0a261d56b5b0f0906f224963904ffb855b617497745c37b007150571132264ee"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/aoi-mikazuki-independent-review.json",
+        "sha256": "ba692e136e3cfee35ff047de46fc1ecbf7eeaad37ff2801dcfd6148afc464aa1"
+      },
+      "independentReviewer": "/root/cg_killa_wave9",
+      "producer": "/root/cg_aoi_wave9",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "sourceLimitations": []
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "9d70d9b88289f2cd6006193a486b41d2f10c9f3951c2ab18bd2c44fa5809bc74",
+          "deliveredSourceSha256": "7cf97433c730e402db3c6934fe039187796d0dba88aafe0b272b06f6528a0c8b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "830d29a6effccdd722882543ad63c2bcbe691c58d20c7bcc51a1a403e76cbfc4",
+          "deliveredSourceSha256": "f121f71d364dea2afcf00b6b9c4418d14186491665dc01f541ef81cabafbe71e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "0d1a180846a95a3c4bfd5e556989f90be5b8ed8e1a7f57033dd8acf868cacd58",
+          "deliveredSourceSha256": "3d1489c8b42a273cf5a6ada7d27bb252940b54b9f67e906f636023a64e97e4e7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "87613c6034b2f50f7280a3da9e3885d0c71bc990160a70807e86a9cdf2450eee",
+          "deliveredSourceSha256": "f0bdfffbbd0a1507011734d3e4619e411f4e812ba7977ee0429066d4cea0f050",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "74462d90e986f3b6d4835f32682e5291671f89d5267a4510348902d4665a00c6",
+          "deliveredSourceSha256": "96c4980bbdfff8cc94052b9f006583dbec3ba5e733a54f55379c2c5dea7f55a0",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "12a5feb4ac39a8c2b0c43f47fc34b3ef43bb43010aaa0008adedb423972c15a7",
+          "deliveredSourceSha256": "dae2f2367d32232b291406f7e61ff1700b0c8e23daaef9cad3235dd25e937cc4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "cd52b00ed1fa921c3d70eb2961f4c829376ac53ae35b91c1de7d649f027dcfb0",
+          "deliveredSourceSha256": "d4ea976274a3b20aff3dac263bc92557622db8cef7ab0b3e21ec88f5328de672",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "5b051c5e38317c5f3381c5320729ee1fd2c5249aea5643328a84423e62ac4114",
+          "deliveredSourceSha256": "c8e7b0a1d684a7f8581c3b006d7cd224e0717b98c26a146e8840ab460e1e2331",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "4a0279faaf16724186e9f1d1480efd8589a6a0a5a10edaa806fea03fb4881ea6",
+          "deliveredSourceSha256": "22a3c1fe040ddd105806656b9cb4eaed90cde752087de1d5c989e0850910031e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "b73a4c3e5c73866ac03d9c93367e26fe86063b50fdc7494fe9333fa60885d97f",
+          "deliveredSourceSha256": "e8cf9d942ea2d899503c1c114db6c927e5afd3e642bfe5c6bac56149bba0d744",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "48fec27db698d456d888cb7273f4cde225b73ecbaf90db72bb22d37bd89bc0bd",
+          "deliveredSourceSha256": "2bf2fb3d1644073fd61e9c60658979fc1db572c779b10d4c8f81132888ab804d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "bfa68443983b87372fce8d3b34ddd7ed55dfb2f08c88564678b97fd1e4ee6900",
+          "deliveredSourceSha256": "723eb8dd1c3299c80c8ef32fd93d99702474c01fbe79255f088f84b0db5fc6c0",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "1a20d2e063fe4f05740326d6525d96a40d7ac91c024578fc06b0a82299573493",
+          "deliveredSourceSha256": "429be3b9a467beb1e5d847ae24107e15cc1c0fe428827c66212c356305d19e03",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "2ba4f58b18d25292b758d022bce8b27581716b6ac5f220109a92b2ed5a9dc03b",
+          "deliveredSourceSha256": "ea24d11585dec1e64152afaa82ab97a35ba01d54dbd524e62eb0c1f3bf100972",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:yomi-no-kage:aoi-mikazuki:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "c6e7ebd5991cdb751cc38b03660b772a84cfa4851866f412a19e02fdc223c576",
+          "deliveredSourceSha256": "d9cd13057183150ee3e2b5b0fdac836d3f03379491130a587cf86e4f2e99b223",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_killa_wave9",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    }
+  ],
+  "seriesPreviewsPersonallyOpened": [
+    {
+      "characterId": "killa_mayu",
+      "path": "docs/cg/screenshots/killa-mayu-wave9-2026-10-25.webp",
+      "sha256": "d40e9b984758a3dd0396af5bb952d5880bc4db816c85393880bed79e01283b01",
+      "actuallyOpened": true,
+      "observedAt": "2026-10-25T06:52:38.064463+00:00",
+      "scope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+      "observations": "All fifteen labels visible; different standing, seated, walking, jumping, service and comedy compositions; source sling/knotted cords and ocre-violet/red clothing recognizable. CG02 equipment only, CG03 empty environment; title correctly says wave9/25October.",
+      "provenance": {
+        "path": "docs/cg/screenshots/killa-mayu-wave9-2026-10-25.json",
+        "sha256": "ea3b98e4708d05f62afbbeabe9367533458ba3160d92f6b250b7db9ee033269c"
+      },
+      "receipt": {
+        "path": "docs/cg/killa-mayu-wave9-2026-10-25.json",
+        "sha256": "530f2d9cd3f333177e32ff8e2f91bb86cb3fdaa12175a8b20f17dbfa8a9b003b"
+      },
+      "verifiedCurrentAssetBindings": [
+        {
+          "slot": "CG01",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/character-solo-wave9-2026-10-25.webp",
+          "sha256": "83a15a0cb268bf87b3f7bb073501631af48b4ee688b982addf74c8261a02b777"
+        },
+        {
+          "slot": "CG02",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "bb3b7b90e78c97ca38755a8d53cff6fe542f40a622613a396c73facc70cdbc11"
+        },
+        {
+          "slot": "CG03",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/decor-wave9-2026-10-25.webp",
+          "sha256": "92fd702454110dd8df63bfbd605c3ef2b96b2b471cd791facf1b3cf7d2fb2ad1"
+        },
+        {
+          "slot": "CG04",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "1d8827a20e8db8ff8a7767549c670223f4321d62ee4bf08f51c976600f7f9316"
+        },
+        {
+          "slot": "CG05",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/action-scene-wave9-2026-10-25.webp",
+          "sha256": "40f9d0b66b06823e33809aef0a9d2e244465101e08bff6d30ca3df2571e2d414"
+        },
+        {
+          "slot": "CG06",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "5ba93b325db53beb00d2b1c8c721011b89cbc727144f0412edec463eed8adbc4"
+        },
+        {
+          "slot": "CG07",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "ac77cc20e9f8d17d5ae67ca5fb3e2847503efcf3616bf22ffd6755c45f094454"
+        },
+        {
+          "slot": "CG08",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "5d4ab50b1f001d40ca89bd5c5decdff602cf49e92da1b30695fe01284bdb45ae"
+        },
+        {
+          "slot": "CG09",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/beach-family-wave9-2026-10-25.webp",
+          "sha256": "76ac9ba7c050f7abb6c0fba7e65686c77d395c2520205c4b6f504f74d055304f"
+        },
+        {
+          "slot": "CG10",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/maid-service-wave9-2026-10-25.webp",
+          "sha256": "0e14274269f5517fa9b9e11580e48a8f8ab4444688bba87fcfdcc21fa364b573"
+        },
+        {
+          "slot": "CG11",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/goofy-wave9-2026-10-25.webp",
+          "sha256": "7e7e9a701d860dfcc3dc4ad1d8c1d60e08c3ad2e2122a2445ec8b9fbd83bd87b"
+        },
+        {
+          "slot": "CG12",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "29fe39b7712c89c2106e436fcba127be9318635c25d8f898e0fbde08eb3e2fee"
+        },
+        {
+          "slot": "CG13",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "e075fda07dc82e059a1c53747b6281b4f11ea6b45421bbecb2974e5b00f173eb"
+        },
+        {
+          "slot": "CG14",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "3da32d8f3529fbd7314f10c2dc546fe985184215cf00cbde0825fa17a9cb21c4"
+        },
+        {
+          "slot": "CG15",
+          "kind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "e05a35e194f07c48299077b2b38fd87f0fa1c57564c2a23b7199aec7ff0a6c34"
+        }
+      ],
+      "certifiesAbsoluteFidelity": false
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "path": "docs/cg/screenshots/eira-hrafnsdottir-wave9-2026-10-25.webp",
+      "sha256": "70a6a2c52810726461f57e606102639c3df59e58989115b83a46ee477046cd16",
+      "actuallyOpened": true,
+      "observedAt": "2026-10-25T06:57:31.190975+00:00",
+      "scope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+      "observations": "Corrected title explicitly says wave9/25October. All fifteen labels visible; standing, sitting, advancing, aiming and service/comedy compositions are distinguishable. RIGHT axe/LEFT round blue shield, long blue torn cloak and blonde braids readable. CG02 equipment only and CG03 empty environment visible.",
+      "provenance": {
+        "path": "docs/cg/screenshots/eira-hrafnsdottir-wave9-2026-10-25.json",
+        "sha256": "4919f0e127490c57e94d4e178736a4603aa8ea9dddd2c2d6628c72eed1f346a7"
+      },
+      "receipt": {
+        "path": "docs/cg/eira-hrafnsdottir-wave9-2026-10-25.json",
+        "sha256": "f95640741b771c022874bff94ee4a3b10545df06b6dc54d5952abe75184b1615"
+      },
+      "verifiedCurrentAssetBindings": [
+        {
+          "slot": "CG01",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/character-solo-wave9-2026-10-25.webp",
+          "sha256": "3b7f676761e82a6add51aea2395cd19c7bf3e55f3668c68ad22230fe26bffc6a"
+        },
+        {
+          "slot": "CG02",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "bc88fe662826d6f617c8e58c3253248739d34165fdcf31fdf9ad32755e5ecd7b"
+        },
+        {
+          "slot": "CG03",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/decor-wave9-2026-10-25.webp",
+          "sha256": "c4c0a84d60a45e86704e3f8d433269fa4d6dcd6d037dbfaff7f243f4f0640ad4"
+        },
+        {
+          "slot": "CG04",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "47b1bdc363e87c60dc2598dddb6bbd64efd89e3bf6e132b23bf5175054026695"
+        },
+        {
+          "slot": "CG05",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/action-scene-wave9-2026-10-25.webp",
+          "sha256": "ea4957249da561182371700fe0278f9c4e98ff837e5991cd18c3a6fbcac64904"
+        },
+        {
+          "slot": "CG06",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "648a7ef0b849a20bfe7924d318397a54ec44ae060b01ca6030ba169f15453d6c"
+        },
+        {
+          "slot": "CG07",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "efe0aef0eacb7d49680dc4419287fddd5cdd1fd0a4ce9549788c4b54704e978a"
+        },
+        {
+          "slot": "CG08",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "58ea40597c9b10dc059d762b29ee750ecba5506ef03436d30590848bf9a09093"
+        },
+        {
+          "slot": "CG09",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/beach-family-wave9-2026-10-25.webp",
+          "sha256": "832c619c0a6dc639ec3a16977e6e307d9e736351214dd83bbce981f9b80ca710"
+        },
+        {
+          "slot": "CG10",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/maid-service-wave9-2026-10-25.webp",
+          "sha256": "59c3fdc37812d8e7677770b604cd30c747a547cc82060efe8d7d2b61020ec9ec"
+        },
+        {
+          "slot": "CG11",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/goofy-wave9-2026-10-25.webp",
+          "sha256": "fc5c8923e31e1540a144377221bb95938b4e9d886a5acc644d86595533f5cde6"
+        },
+        {
+          "slot": "CG12",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "cccb280df547f994e4b79d137811c8c834003715b100fac5bd7baa959add79f0"
+        },
+        {
+          "slot": "CG13",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "e3e3c1bf873b6cd528e4f8c275f359189d5e88031a90cb3c18782e84a4166902"
+        },
+        {
+          "slot": "CG14",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "de1be56060331622660c0cceeb72a5b9917bd51c7eab5cb8fe281f88206b07c6"
+        },
+        {
+          "slot": "CG15",
+          "kind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "73483bbe5ca8799252e1fd12c28153d7b8ad6998efb9f90122ba97fceb5fc8f8"
+        }
+      ],
+      "certifiesAbsoluteFidelity": false
+    },
+    {
+      "characterId": "doros_bronzehand",
+      "path": "docs/cg/screenshots/doros-bronzehand-wave9-2026-10-25.webp",
+      "sha256": "f1497cfc6219f20dabb37f29895b44cf1061e2d597bb961d0c53c216b3f5b789",
+      "actuallyOpened": true,
+      "observedAt": "2026-10-25T07:00:48.563929+00:00",
+      "scope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+      "observations": "Title correctly says wave9/25October. Fifteen labels and differing standing, seated, rear-view, walking, jumping, service and comedy compositions are visible. Long brown leather apron, teal drape and RIGHT hammer remain readable; separate source automaton appears in the coherent scene only. CG02 equipment alone and CG03 empty environment visible.",
+      "provenance": {
+        "path": "docs/cg/screenshots/doros-bronzehand-wave9-2026-10-25.json",
+        "sha256": "c86865829e7c725074aab8b7488ba3eb76d9fc7f52e4603dfe05e013b0b255c6"
+      },
+      "receipt": {
+        "path": "docs/cg/doros-bronzehand-wave9-2026-10-25.json",
+        "sha256": "d46cf0c5c0fa302d25bcec73852bd1ae7f0fd21e5f62822cef9bb10f42c0486d"
+      },
+      "verifiedCurrentAssetBindings": [
+        {
+          "slot": "CG01",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/character-solo-wave9-2026-10-25.webp",
+          "sha256": "19d188b3de72b02e0f667c35fa111a6a3a9b9d74e1815e49c197284bc35000df"
+        },
+        {
+          "slot": "CG02",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "3a20e35f5832f64f5cec3875192bf28e33c66caa34bd697c0a1496f99e4fb4e1"
+        },
+        {
+          "slot": "CG03",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/decor-wave9-2026-10-25.webp",
+          "sha256": "5dd93dc1665c31aae16c445b1d0430b20570ef9749dc07614daf6dd7c04ef223"
+        },
+        {
+          "slot": "CG04",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "ebef5607cb88f57b7415517130fb8640609b64f5faed0299bb88c128bbd44c95"
+        },
+        {
+          "slot": "CG05",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/action-scene-wave9-2026-10-25.webp",
+          "sha256": "8df00cde01520a2c467a1c064dd51fe035a1cb5f95dd44c4615bc1bf203eade3"
+        },
+        {
+          "slot": "CG06",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "808e90516932deda3b2b0eec6ff05b3c62964331ef71e3c2bb6223d3c5f42fd7"
+        },
+        {
+          "slot": "CG07",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "d639cd90ea32be88d991d45c1d8faa27a7bb6d235f3d00f2d3887f310f9b1d00"
+        },
+        {
+          "slot": "CG08",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "30320c5cb454326ec8ecd73b61b6c412f3391d8136cee33dc9e92333aee0468f"
+        },
+        {
+          "slot": "CG09",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/beach-family-wave9-2026-10-25.webp",
+          "sha256": "d8c9d78ec2da831e84c014d78791e9ac6d87d10e0b136248aafd25ad222b4606"
+        },
+        {
+          "slot": "CG10",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/maid-service-wave9-2026-10-25.webp",
+          "sha256": "f74528a0c48e1e8e9911b4c4f3882801cc31eee2234a1978fea3a39c2dcffb90"
+        },
+        {
+          "slot": "CG11",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/goofy-wave9-2026-10-25.webp",
+          "sha256": "3168bddd1df5094192f75a358ef7ddc13cce70ec8fa9843c56be53fd02d33e2e"
+        },
+        {
+          "slot": "CG12",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "bfd2d6ffac39d5871158b8012e8ea8f54ef358e85508dfff4d620e4fca3b8df1"
+        },
+        {
+          "slot": "CG13",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "5e81e2641d2343b8c3a9db44e768bc508b2aa3a2931e4cb5db3f5ba331838fc7"
+        },
+        {
+          "slot": "CG14",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "1b1edc71977556f3b6df2fa0630f2b19f3f881927af3cc495f6b1aeb2ac0d0ae"
+        },
+        {
+          "slot": "CG15",
+          "kind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "3a5915fe4b71bd6358463e9844a55d14f22313385cb8b85f834565e37b096467"
+        }
+      ],
+      "certifiesAbsoluteFidelity": false
+    },
+    {
+      "characterId": "lin_yue",
+      "path": "docs/cg/screenshots/lin-yue-wave9-2026-10-25.webp",
+      "sha256": "5c43a1f82c0715b13bd1b39f0f3143631f19aaa643e15efe26f19e8f7f5f1b88",
+      "actuallyOpened": true,
+      "observedAt": "2026-10-25T07:02:36.007350+00:00",
+      "scope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+      "observations": "Title correctly says wave9/25October. Fifteen labels and distinct standing, seated, kneeling, writing, action, service and comedy compositions are visible. Source navy/gold constellation robes, red ribbons, large RIGHT brush and separate blue water dragon readable. CG02 equipment alone and CG03 empty setting visible.",
+      "provenance": {
+        "path": "docs/cg/screenshots/lin-yue-wave9-2026-10-25.json",
+        "sha256": "2974a49fb2d95de935ac3a4f258a9e54ab5ab06f2564b02efa3f6868ddf7a221"
+      },
+      "receipt": {
+        "path": "docs/cg/lin-yue-wave9-2026-10-25.json",
+        "sha256": "1649384246902983de73fe9272fd8f173b764ef389519a69cfddfcad408f89b3"
+      },
+      "verifiedCurrentAssetBindings": [
+        {
+          "slot": "CG01",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/character-solo-wave9-2026-10-25.webp",
+          "sha256": "a3137e3c8942e173ea921916d09c4db898bcac9d69ce640987d6b15c19b1b5f5"
+        },
+        {
+          "slot": "CG02",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "45686ee9cc085a0af63d535973c137b1f99ff62c938f725a97785c45d7720d77"
+        },
+        {
+          "slot": "CG03",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/decor-wave9-2026-10-25.webp",
+          "sha256": "82a1557628583aa8bc6c126a0b0e50e989cf725e10b6363ed130509f5a32efd5"
+        },
+        {
+          "slot": "CG04",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "c8e66979395c40d07eacaf73a21d208bdbb5eb28d6b2fbce4415b01c5d011dd0"
+        },
+        {
+          "slot": "CG05",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/action-scene-wave9-2026-10-25.webp",
+          "sha256": "0406b71b333fd058db3934caa48dca03f108fb1de29bd5192e0e3d45661fc233"
+        },
+        {
+          "slot": "CG06",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "fb4935eb4f4ead9607019f6f3d4d86a8e012249aaf0f2084614c8aaacb31cd5b"
+        },
+        {
+          "slot": "CG07",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "711ddff81cd2050684c623db3abf007a46e57f18023dfe72461cf900bbb6e1a0"
+        },
+        {
+          "slot": "CG08",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "c367ba4b8ad82c02db5ce1975e79f26861ad8933d9274a1e9edc842d3528d84f"
+        },
+        {
+          "slot": "CG09",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/beach-family-wave9-2026-10-25.webp",
+          "sha256": "d5f2e0b1da7662aa8e6901fd40f76aa5807597b82e1fd2a9acf9b216dcd51cde"
+        },
+        {
+          "slot": "CG10",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/maid-service-wave9-2026-10-25.webp",
+          "sha256": "0d4872f6bbbf3bf6f4cbf626e40ebf376f7af1872ca93e15c51d5892bf18b3f9"
+        },
+        {
+          "slot": "CG11",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/goofy-wave9-2026-10-25.webp",
+          "sha256": "2e441e1dbf16f70bffa61b24fbfe4be099774aea51ed8e56608d29444b9a08a2"
+        },
+        {
+          "slot": "CG12",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "ff6f0b4275dd12951ea5509fc2597ec1072f4e8a8517f207b12a805004380e2f"
+        },
+        {
+          "slot": "CG13",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "5b505bde130512a3a4db2032206497315d3a1cb101f47ff5fc87bb3b74cc2a67"
+        },
+        {
+          "slot": "CG14",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "78465b2b65e29c1d3580f3f1a0c2cdf50b65ad878646abef4b115aa8c98d1235"
+        },
+        {
+          "slot": "CG15",
+          "kind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "01edc5335dbdf28f8419cd0f39b00c21dde880c6fdc5499997a5db0bd8c4c6bc"
+        }
+      ],
+      "certifiesAbsoluteFidelity": false
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "path": "docs/cg/screenshots/aoi-mikazuki-wave9-2026-10-25.webp",
+      "sha256": "c9e287e52169cad24eae0362efe73d709650e451c2f5d398b3cabed4890507af",
+      "actuallyOpened": true,
+      "observedAt": "2026-10-25T07:12:44.467382+00:00",
+      "scope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+      "observations": "Title correctly says wave9/25October. Fifteen labels and distinguishable standing, seated, walking, action, service and comedy/distant-view compositions visible. Long burgundy/ivory kimono, cyan RIGHT katana and separate floating rolls/talismans remain recognizable; CG02 equipment alone and CG03 empty setting visible.",
+      "provenance": {
+        "path": "docs/cg/screenshots/aoi-mikazuki-wave9-2026-10-25.json",
+        "sha256": "1bd4da20dfa9b8a38fc32b07c74c98cfebca64efd4d09cf0b0e555443a74ff22"
+      },
+      "receipt": {
+        "path": "docs/cg/aoi-mikazuki-wave9-2026-10-25.json",
+        "sha256": "ab9bfcf2c8f24e1644b2d701803afd3d7e58a3dad3cfdae6d2ecbed02c605e65"
+      },
+      "verifiedCurrentAssetBindings": [
+        {
+          "slot": "CG01",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/character-solo-wave9-2026-10-25.webp",
+          "sha256": "c6d053f5e92375c2b531a29463a2f48b5e86c6235f66bff24d16099632e14778"
+        },
+        {
+          "slot": "CG02",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "6ef16a6f8968536b0d9d80cbec0cfb9297c7be72f00547ff6486ed0b1b02818e"
+        },
+        {
+          "slot": "CG03",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/decor-wave9-2026-10-25.webp",
+          "sha256": "d7b5776252a5a288fb45093b75a9556b29dad424bb7e58a51992d26820af72fb"
+        },
+        {
+          "slot": "CG04",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "8d27f2c2792777efb29a08d6171123294b0b5edd3c9d0428cd8b576b433c4751"
+        },
+        {
+          "slot": "CG05",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/action-scene-wave9-2026-10-25.webp",
+          "sha256": "87eab6054f7f077a60762ec608c1886ce4268539653f4375aca4ec8b0b05026d"
+        },
+        {
+          "slot": "CG06",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "cb7da8e2ad1685c07d250548a965eb0520ea9faf2c290d616eb42d45b1cd1f62"
+        },
+        {
+          "slot": "CG07",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "f4a3b8a97dc59b5db6912d58556777aceb9bf24aafe997f7179a68977e4ccde7"
+        },
+        {
+          "slot": "CG08",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "4e4e1f38d5f59392580d2e79969a55c7f2546b08b8a38ec313660faf80c86763"
+        },
+        {
+          "slot": "CG09",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/beach-family-wave9-2026-10-25.webp",
+          "sha256": "6802a132dd39ecd8ccfc6e8658c6ae6049a54e1ad6cecf6acbcba03c00eb5627"
+        },
+        {
+          "slot": "CG10",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/maid-service-wave9-2026-10-25.webp",
+          "sha256": "56a1be51c709d9746a1f8f2aac7e8693161293c459f764d7329847be18471cd8"
+        },
+        {
+          "slot": "CG11",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/goofy-wave9-2026-10-25.webp",
+          "sha256": "dddb817951295446624a3e833304e3d71ae42acc295ca1cd2d47ead12ce11de7"
+        },
+        {
+          "slot": "CG12",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "5f61d82b69da05d3b7d62471d3bd844ae569a8fb17411eea0dfa1239551f22f0"
+        },
+        {
+          "slot": "CG13",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "047cf56794e356722d6dfcae0e2216aa60e88fdae013c94fde929494a952c88b"
+        },
+        {
+          "slot": "CG14",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "54f0173dfd5a48e6861faa7035d76cd59cc9c9fcea8814c5778284fb0b82883c"
+        },
+        {
+          "slot": "CG15",
+          "kind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "629296da78254a3655b75b18eb8d6de908eafca02e4fe398879d3e91b290b2b5"
+        }
+      ],
+      "certifiesAbsoluteFidelity": false
+    }
+  ],
+  "seriesPreviewScope": "Final fifteen-CG contact sheet personally opened for readability, represented themes and composition/environment variety at thumbnail resolution; not a second exhaustive full-resolution native review.",
+  "seriesPreviewSourceBindings": [
+    {
+      "characterId": "doros_bronzehand",
+      "screenshot": {
+        "path": "docs/cg/screenshots/doros-bronzehand-wave9-2026-10-25.webp",
+        "sha256": "f1497cfc6219f20dabb37f29895b44cf1061e2d597bb961d0c53c216b3f5b789"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/doros-bronzehand-wave9-2026-10-25.json",
+        "sha256": "c86865829e7c725074aab8b7488ba3eb76d9fc7f52e4603dfe05e013b0b255c6"
+      },
+      "receipt": {
+        "path": "docs/cg/doros-bronzehand-wave9-2026-10-25.json",
+        "sha256": "d46cf0c5c0fa302d25bcec73852bd1ae7f0fd21e5f62822cef9bb10f42c0486d"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/character-solo-wave9-2026-10-25.webp",
+          "sha256": "19d188b3de72b02e0f667c35fa111a6a3a9b9d74e1815e49c197284bc35000df"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "3a20e35f5832f64f5cec3875192bf28e33c66caa34bd697c0a1496f99e4fb4e1"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/decor-wave9-2026-10-25.webp",
+          "sha256": "5dd93dc1665c31aae16c445b1d0430b20570ef9749dc07614daf6dd7c04ef223"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "ebef5607cb88f57b7415517130fb8640609b64f5faed0299bb88c128bbd44c95"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/action-scene-wave9-2026-10-25.webp",
+          "sha256": "8df00cde01520a2c467a1c064dd51fe035a1cb5f95dd44c4615bc1bf203eade3"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "808e90516932deda3b2b0eec6ff05b3c62964331ef71e3c2bb6223d3c5f42fd7"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "d639cd90ea32be88d991d45c1d8faa27a7bb6d235f3d00f2d3887f310f9b1d00"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "30320c5cb454326ec8ecd73b61b6c412f3391d8136cee33dc9e92333aee0468f"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/beach-family-wave9-2026-10-25.webp",
+          "sha256": "d8c9d78ec2da831e84c014d78791e9ac6d87d10e0b136248aafd25ad222b4606"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/maid-service-wave9-2026-10-25.webp",
+          "sha256": "f74528a0c48e1e8e9911b4c4f3882801cc31eee2234a1978fea3a39c2dcffb90"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/goofy-wave9-2026-10-25.webp",
+          "sha256": "3168bddd1df5094192f75a358ef7ddc13cce70ec8fa9843c56be53fd02d33e2e"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "bfd2d6ffac39d5871158b8012e8ea8f54ef358e85508dfff4d620e4fca3b8df1"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "5e81e2641d2343b8c3a9db44e768bc508b2aa3a2931e4cb5db3f5ba331838fc7"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "1b1edc71977556f3b6df2fa0630f2b19f3f881927af3cc495f6b1aeb2ac0d0ae"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:aegea-war-of-the-moirai:doros-bronzehand:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/doros-bronzehand/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "3a5915fe4b71bd6358463e9844a55d14f22313385cb8b85f834565e37b096467"
+        }
+      ]
+    },
+    {
+      "characterId": "lin_yue",
+      "screenshot": {
+        "path": "docs/cg/screenshots/lin-yue-wave9-2026-10-25.webp",
+        "sha256": "5c43a1f82c0715b13bd1b39f0f3143631f19aaa643e15efe26f19e8f7f5f1b88"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/lin-yue-wave9-2026-10-25.json",
+        "sha256": "2974a49fb2d95de935ac3a4f258a9e54ab5ab06f2564b02efa3f6868ddf7a221"
+      },
+      "receipt": {
+        "path": "docs/cg/lin-yue-wave9-2026-10-25.json",
+        "sha256": "1649384246902983de73fe9272fd8f173b764ef389519a69cfddfcad408f89b3"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/character-solo-wave9-2026-10-25.webp",
+          "sha256": "a3137e3c8942e173ea921916d09c4db898bcac9d69ce640987d6b15c19b1b5f5"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "45686ee9cc085a0af63d535973c137b1f99ff62c938f725a97785c45d7720d77"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/decor-wave9-2026-10-25.webp",
+          "sha256": "82a1557628583aa8bc6c126a0b0e50e989cf725e10b6363ed130509f5a32efd5"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "c8e66979395c40d07eacaf73a21d208bdbb5eb28d6b2fbce4415b01c5d011dd0"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/action-scene-wave9-2026-10-25.webp",
+          "sha256": "0406b71b333fd058db3934caa48dca03f108fb1de29bd5192e0e3d45661fc233"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "fb4935eb4f4ead9607019f6f3d4d86a8e012249aaf0f2084614c8aaacb31cd5b"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "711ddff81cd2050684c623db3abf007a46e57f18023dfe72461cf900bbb6e1a0"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "c367ba4b8ad82c02db5ce1975e79f26861ad8933d9274a1e9edc842d3528d84f"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/beach-family-wave9-2026-10-25.webp",
+          "sha256": "d5f2e0b1da7662aa8e6901fd40f76aa5807597b82e1fd2a9acf9b216dcd51cde"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/maid-service-wave9-2026-10-25.webp",
+          "sha256": "0d4872f6bbbf3bf6f4cbf626e40ebf376f7af1872ca93e15c51d5892bf18b3f9"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/goofy-wave9-2026-10-25.webp",
+          "sha256": "2e441e1dbf16f70bffa61b24fbfe4be099774aea51ed8e56608d29444b9a08a2"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "ff6f0b4275dd12951ea5509fc2597ec1072f4e8a8517f207b12a805004380e2f"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "5b505bde130512a3a4db2032206497315d3a1cb101f47ff5fc87bb3b74cc2a67"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "78465b2b65e29c1d3580f3f1a0c2cdf50b65ad878646abef4b115aa8c98d1235"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:mandate-of-nine-heavens:lin-yue:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/lin-yue/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "01edc5335dbdf28f8419cd0f39b00c21dde880c6fdc5499997a5db0bd8c4c6bc"
+        }
+      ]
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "screenshot": {
+        "path": "docs/cg/screenshots/eira-hrafnsdottir-wave9-2026-10-25.webp",
+        "sha256": "70a6a2c52810726461f57e606102639c3df59e58989115b83a46ee477046cd16"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/eira-hrafnsdottir-wave9-2026-10-25.json",
+        "sha256": "4919f0e127490c57e94d4e178736a4603aa8ea9dddd2c2d6628c72eed1f346a7"
+      },
+      "receipt": {
+        "path": "docs/cg/eira-hrafnsdottir-wave9-2026-10-25.json",
+        "sha256": "f95640741b771c022874bff94ee4a3b10545df06b6dc54d5952abe75184b1615"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/character-solo-wave9-2026-10-25.webp",
+          "sha256": "3b7f676761e82a6add51aea2395cd19c7bf3e55f3668c68ad22230fe26bffc6a"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "bc88fe662826d6f617c8e58c3253248739d34165fdcf31fdf9ad32755e5ecd7b"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/decor-wave9-2026-10-25.webp",
+          "sha256": "c4c0a84d60a45e86704e3f8d433269fa4d6dcd6d037dbfaff7f243f4f0640ad4"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "47b1bdc363e87c60dc2598dddb6bbd64efd89e3bf6e132b23bf5175054026695"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/action-scene-wave9-2026-10-25.webp",
+          "sha256": "ea4957249da561182371700fe0278f9c4e98ff837e5991cd18c3a6fbcac64904"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "648a7ef0b849a20bfe7924d318397a54ec44ae060b01ca6030ba169f15453d6c"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "efe0aef0eacb7d49680dc4419287fddd5cdd1fd0a4ce9549788c4b54704e978a"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "58ea40597c9b10dc059d762b29ee750ecba5506ef03436d30590848bf9a09093"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/beach-family-wave9-2026-10-25.webp",
+          "sha256": "832c619c0a6dc639ec3a16977e6e307d9e736351214dd83bbce981f9b80ca710"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/maid-service-wave9-2026-10-25.webp",
+          "sha256": "59c3fdc37812d8e7677770b604cd30c747a547cc82060efe8d7d2b61020ec9ec"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/goofy-wave9-2026-10-25.webp",
+          "sha256": "fc5c8923e31e1540a144377221bb95938b4e9d886a5acc644d86595533f5cde6"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "cccb280df547f994e4b79d137811c8c834003715b100fac5bd7baa959add79f0"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "e3e3c1bf873b6cd528e4f8c275f359189d5e88031a90cb3c18782e84a4166902"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "de1be56060331622660c0cceeb72a5b9917bd51c7eab5cb8fe281f88206b07c6"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:nine-realms-last-twilight:eira-hrafnsdottir:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/eira-hrafnsdottir/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "73483bbe5ca8799252e1fd12c28153d7b8ad6998efb9f90122ba97fceb5fc8f8"
+        }
+      ]
+    },
+    {
+      "characterId": "killa_mayu",
+      "screenshot": {
+        "path": "docs/cg/screenshots/killa-mayu-wave9-2026-10-25.webp",
+        "sha256": "d40e9b984758a3dd0396af5bb952d5880bc4db816c85393880bed79e01283b01"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/killa-mayu-wave9-2026-10-25.json",
+        "sha256": "ea3b98e4708d05f62afbbeabe9367533458ba3160d92f6b250b7db9ee033269c"
+      },
+      "receipt": {
+        "path": "docs/cg/killa-mayu-wave9-2026-10-25.json",
+        "sha256": "530f2d9cd3f333177e32ff8e2f91bb86cb3fdaa12175a8b20f17dbfa8a9b003b"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/character-solo-wave9-2026-10-25.webp",
+          "sha256": "83a15a0cb268bf87b3f7bb073501631af48b4ee688b982addf74c8261a02b777"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "bb3b7b90e78c97ca38755a8d53cff6fe542f40a622613a396c73facc70cdbc11"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/decor-wave9-2026-10-25.webp",
+          "sha256": "92fd702454110dd8df63bfbd605c3ef2b96b2b471cd791facf1b3cf7d2fb2ad1"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "1d8827a20e8db8ff8a7767549c670223f4321d62ee4bf08f51c976600f7f9316"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/action-scene-wave9-2026-10-25.webp",
+          "sha256": "40f9d0b66b06823e33809aef0a9d2e244465101e08bff6d30ca3df2571e2d414"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "5ba93b325db53beb00d2b1c8c721011b89cbc727144f0412edec463eed8adbc4"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "ac77cc20e9f8d17d5ae67ca5fb3e2847503efcf3616bf22ffd6755c45f094454"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "5d4ab50b1f001d40ca89bd5c5decdff602cf49e92da1b30695fe01284bdb45ae"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/beach-family-wave9-2026-10-25.webp",
+          "sha256": "76ac9ba7c050f7abb6c0fba7e65686c77d395c2520205c4b6f504f74d055304f"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/maid-service-wave9-2026-10-25.webp",
+          "sha256": "0e14274269f5517fa9b9e11580e48a8f8ab4444688bba87fcfdcc21fa364b573"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/goofy-wave9-2026-10-25.webp",
+          "sha256": "7e7e9a701d860dfcc3dc4ad1d8c1d60e08c3ad2e2122a2445ec8b9fbd83bd87b"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "29fe39b7712c89c2106e436fcba127be9318635c25d8f898e0fbde08eb3e2fee"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "e075fda07dc82e059a1c53747b6281b4f11ea6b45421bbecb2974e5b00f173eb"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "3da32d8f3529fbd7314f10c2dc546fe985184215cf00cbde0825fa17a9cb21c4"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:tawantinsuyu-the-split-sun:killa-mayu:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/killa-mayu/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "e05a35e194f07c48299077b2b38fd87f0fa1c57564c2a23b7199aec7ff0a6c34"
+        }
+      ]
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "screenshot": {
+        "path": "docs/cg/screenshots/aoi-mikazuki-wave9-2026-10-25.webp",
+        "sha256": "c9e287e52169cad24eae0362efe73d709650e451c2f5d398b3cabed4890507af"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/aoi-mikazuki-wave9-2026-10-25.json",
+        "sha256": "1bd4da20dfa9b8a38fc32b07c74c98cfebca64efd4d09cf0b0e555443a74ff22"
+      },
+      "receipt": {
+        "path": "docs/cg/aoi-mikazuki-wave9-2026-10-25.json",
+        "sha256": "ab9bfcf2c8f24e1644b2d701803afd3d7e58a3dad3cfdae6d2ecbed02c605e65"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/character-solo-wave9-2026-10-25.webp",
+          "sha256": "c6d053f5e92375c2b531a29463a2f48b5e86c6235f66bff24d16099632e14778"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/signature-weapon-wave9-2026-10-25.webp",
+          "sha256": "6ef16a6f8968536b0d9d80cbec0cfb9297c7be72f00547ff6486ed0b1b02818e"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/decor-wave9-2026-10-25.webp",
+          "sha256": "d7b5776252a5a288fb45093b75a9556b29dad424bb7e58a51992d26820af72fb"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/coherent-scene-wave9-2026-10-25.webp",
+          "sha256": "8d27f2c2792777efb29a08d6171123294b0b5edd3c9d0428cd8b576b433c4751"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/action-scene-wave9-2026-10-25.webp",
+          "sha256": "87eab6054f7f077a60762ec608c1886ce4268539653f4375aca4ec8b0b05026d"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/intro-pose-wave9-2026-10-25.webp",
+          "sha256": "cb7da8e2ad1685c07d250548a965eb0520ea9faf2c290d616eb42d45b1cd1f62"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/victory-pose-wave9-2026-10-25.webp",
+          "sha256": "f4a3b8a97dc59b5db6912d58556777aceb9bf24aafe997f7179a68977e4ccde7"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/defeat-pose-wave9-2026-10-25.webp",
+          "sha256": "4e4e1f38d5f59392580d2e79969a55c7f2546b08b8a38ec313660faf80c86763"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/beach-family-wave9-2026-10-25.webp",
+          "sha256": "6802a132dd39ecd8ccfc6e8658c6ae6049a54e1ad6cecf6acbcba03c00eb5627"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/maid-service-wave9-2026-10-25.webp",
+          "sha256": "56a1be51c709d9746a1f8f2aac7e8693161293c459f764d7329847be18471cd8"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/goofy-wave9-2026-10-25.webp",
+          "sha256": "dddb817951295446624a3e833304e3d71ae42acc295ca1cd2d47ead12ce11de7"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/alignment-swap-wave9-2026-10-25.webp",
+          "sha256": "5f61d82b69da05d3b7d62471d3bd844ae569a8fb17411eea0dfa1239551f22f0"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/gender-swap-wave9-2026-10-25.webp",
+          "sha256": "047cf56794e356722d6dfcae0e2216aa60e88fdae013c94fde929494a952c88b"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/zombie-version-wave9-2026-10-25.webp",
+          "sha256": "54f0173dfd5a48e6861faa7035d76cd59cc9c9fcea8814c5778284fb0b82883c"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:yomi-no-kage:aoi-mikazuki:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/aoi-mikazuki/future-experienced-wave9-2026-10-25.webp",
+          "sha256": "629296da78254a3655b75b18eb8d6de908eafca02e4fe398879d3e91b290b2b5"
+        }
+      ]
+    }
+  ],
+  "seriesPreviewCurrentAssetBindingsVerified": 75,
+  "automaticImageCalls": 0,
+  "automaticInstallations": 0,
+  "automaticPerfectFidelityApprovals": 0
+}

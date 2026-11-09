@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "aelwen_starbough",
+  "heroId": "aelwen_starbough",
+  "characterName": "Aelwen Starbough",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-redraw-plus-four-true-whole-pose-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/valedor_shattered_crown/heroes/aelwen_starbough.png",
+    "sha256": "e6dddff9b04d8f24b63ab2b0971d93a6192e1fced2e4e8fbea97548a3868c5b6",
+    "bytes": 2644446,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough-v2-fidelity-wave7-2026-10-23.png",
+    "sha256": "a4e8a6a47402523d411d94e059419d52c39762345ef1f1468bae7e2b2836a7b6",
+    "bytes": 1259350,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/aelwen-starbough-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+    "sha256": "9be783d2d434d95d31ef101085a4cbbd25eaebeb2731ba8aeedb1eb3f67535b0"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-sprite-independent-review.json",
+    "sha256": "be126e6ef9e06391f2ec160eda6bfac605145e4a9447d5aadc5b94b77f41c837",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough.png",
+    "sha256": "de235555677bfa3233a710765dcb946bd600c134d062cc353b41e66c89a9c3b1",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "a1b244a33f5f2af8d95f0ada32f50e85ec478c8c82573ac21ac7ec303214a3d9",
+    "selectedImagegenNativeInputs": 2,
+    "twelveWholePreviouslyNormalizedRgbaCellsPreservedBeforeFinalNormalization": true,
+    "fourGenuineCorrectiveFinalCells": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "commonFourPoseNearestScale": 0.34894991922455576,
+    "fourCorrectiveVisiblePixels": 621918,
+    "fourCorrectiveAssignedVisiblePixels": 621918,
+    "atlas2ComponentLayoutAllVisiblePixelsAssigned": 713641,
+    "atlas2DominantBodies": 16,
+    "atlas2Satellites": 51,
+    "finalCommonNearestScale": 0.9914529914529915,
+    "minimumGuard": 16,
+    "visibleFootBaselinesByCell": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave7-2026-10-23/aelwen-starbough/atlas/packing-proof.json",
+      "sha256": "3ef628ebca8cacc2de58da0aeae17cbf5fd3f42ad44ad2edf0655a6c8a735c01"
+    }
+  },
+  "nativeInputs": [
+    {
+      "path": "/workspace/generated_images/exec-b11d68ef-0b75-4926-b8eb-b705444fb16f.png",
+      "sha256": "6eb33b3f248c2b872068c3300afa5b34f1194df643f31513d62429ba6425a022",
+      "selectedFrames": [],
+      "reason": "Initial16pose layout has cell-edge equipment/gutter concerns, a genuine reframe is being generated before selecting poses."
+    },
+    {
+      "path": "/workspace/generated_images/exec-92c36e91-a59d-4aad-8d36-611bb0b789b2.png",
+      "sha256": "2baf205f148187ab55dea866dd6da8adc3be0312147825d4c3238d8e7a3ee126",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "reason": "Whole retained poses except rightmost column4/8/12/16, which receive true generated complete-pose replacement to repair boundary equipment. Final frame list subject to independent review."
+    },
+    {
+      "path": "/workspace/generated_images/exec-8779bef7-536b-47d0-b77e-4f49ace0c973.png",
+      "sha256": "dff3458d0302addcf755c5da797df8ed8d4d5872f2fa422f0ac716e6aac78723",
+      "selectedFrames": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "reason": "Four genuine complete-pose corrections, separately isolated as wholecomponents and packed with12 sourceatlas2 frames."
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 3,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/aelwen-starbough-reference-evidence-wave7-2026-10-23.json",
+  "limitations": [
+    "Selected V2 is a single internal original-project authority; no external franchise identity is claimed.",
+    "Source-hidden reversecostume/quiver construction and tinyeye/leafengraving details remain interpreted, no perfect1:1certification.",
+    "Initial atlas1 wholly unselected, atlas2contributes12wholeposes and real fourpose native3 repairs rightcolumn04/08/12/16 equipment framing.",
+    "The red/yellow rawatlas fringe observed by the producer has maximumalpha5 and no alpha>12pixel; normalizer handles boundedsoftfringe without semanticpainting.",
+    "Producer installer leaves runtime maps unchanged; root handles selection and exposing old atlas as variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-sprite-independent-review.json",
+  "independentReviewSha256": "be126e6ef9e06391f2ec160eda6bfac605145e4a9447d5aadc5b94b77f41c837"
+}

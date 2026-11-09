@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "checkedAt": "2026-10-25T09:07:34.159Z",
+  "reviewer": "/root/wave10_coordination",
+  "status": "passed",
+  "scope": "Runtime atlas selections only, after explicit root freeze; CG registry and CG media are not claimed frozen or audited by this report.",
+  "baseline": {
+    "path": ".tmp/cg-wave10-2026-10-25/runtime-baseline-before-integration.json",
+    "sha256": "d5e2dc126325ab7a7e8be78a3ecb59c17bad5a67289791841c0b4e22fff4d401"
+  },
+  "runtimeSource": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "c9940f8c77302d5ea818ea5bb33749fa4c25d8530ebfecbe3737aa3d3f50a538"
+  },
+  "contextsChecked": [
+    "rpg",
+    "tactics",
+    "melee",
+    "fps",
+    "kart"
+  ],
+  "correctedHeroSubjects": 41,
+  "correctedHeroContextChecks": 205,
+  "previousCorrectedSubjectsUnchanged": 36,
+  "previousVariantsUnchanged": true,
+  "unchangedOtherHeroSelections": 1907,
+  "oldAtlasFilesPreserved": 5,
+  "previousCorrectedAndVariantFilesPreserved": 76,
+  "atlasSelections": [
+    {
+      "characterId": "thaleia_naxos",
+      "currentPath": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+      "currentSha256": "25a6eec61cc68b28a61e1e0a198e28e2274e5d88c42ce743ec1852b028fcdd10",
+      "previousPath": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos.png",
+      "previousSha256": "918947aaeccffdbdeafb1732c0ce76d8b1fc9dcba4c77084e8f8a6562d818067",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/thaleia-naxos-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+        "sha256": "e04ceedd2449e6edeb7487272816bc4099fba7eb59509c92a9169654348a218f"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/thaleia-naxos-sprite-independent-review.json",
+        "sha256": "9aec54a1c307ea4c1b27b55972877b475c45538504cd4f6dd8c61d98ba732b25"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "mei_zhen",
+      "currentPath": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen-v2-fidelity-wave10-2026-10-25.png",
+      "currentSha256": "d21decab85bfc54bba5aece185e0ccee310450b8ab8963a6f9b420d9b48eee4a",
+      "previousPath": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen.png",
+      "previousSha256": "e17df3e4b33638efc66b065f955f9771e43b29f60e41083c1524a09fe1180eb2",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/mei-zhen-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+        "sha256": "56c20b90f2ae0ec6134f5f86cb1565006395c37a91d14b67981abad1a22153e2"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-sprite-independent-review.json",
+        "sha256": "05c03d232d22d67c750dd9685bb476d6431f5b0a7e47a8d9d84424706b8461ba"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          241,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "currentPath": "/sprites/generated/heroes/nine-realms-last-twilight/yrsa-rune-binder-v2-fidelity-wave10-2026-10-25.png",
+      "currentSha256": "bfac17d0458a40f7e077017962ecb73ce40a0b5619885bf21dcc4b6c5e32f40a",
+      "previousPath": "/sprites/generated/heroes/nine-realms-last-twilight/yrsa-rune-binder.png",
+      "previousSha256": "36629484a717fdbd93f4c0cbd17ca1dffbc1b64f0e724ec3d2c839cb1e7ebf15",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/yrsa-rune-binder-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+        "sha256": "ba68737d3e53f99f8a7a41ff6fb6d779d424ae35c8e3a857aa626895befdfaa5"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/yrsa-rune-binder-sprite-independent-review.json",
+        "sha256": "6f7a489c23e98e71396d7542dc178a69ef62d925148952f95ea05725f2235304"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 14,
+        "visibleFootBaselinesByCell": [
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241
+        ]
+      }
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "currentPath": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu-v2-fidelity-wave10-2026-10-25.png",
+      "currentSha256": "10bbb722f3b58d507a017d7fa3f90ac9e9d302bc5859c0645a88a0a51dbe0826",
+      "previousPath": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu.png",
+      "previousSha256": "623751f5dcf5a618c622b76ec03ff7ed960a772247e0c91579f61d195244072c",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/sumaq-khipu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+        "sha256": "3e94ba4d1ceb11563899cdcb47cd5a9dd0e8734236240f5711db212ea29e0134"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-sprite-independent-review.json",
+        "sha256": "454df0b0bed067b965e002a2f089e76b3fd9aa78624e972e0ac1a61a2f3d7d82"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          241,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "rei_kagetsu",
+      "currentPath": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+      "currentSha256": "337a56b040d412c8f8def39b042e4db45bfc836e5c404870f194617ee8cd5f41",
+      "previousPath": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu.png",
+      "previousSha256": "80d62b3f485d3dcefa7302f9ee5aa91d87fcb5c966bdb37742570bc2807060ab",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/rei-kagetsu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+        "sha256": "795ec33cde4f49bd2a2e295e530df88c4b16e30505710b87d3d941158b4dd029"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/rei-kagetsu-sprite-independent-review.json",
+        "sha256": "d8d9acaf28e62110751aa3d744b58f23864a2f33a46c9ac050b42b1bc1fa269d"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    }
+  ],
+  "frozenInputPins": [
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "9c10f135b43ed543ebcc4e7bfe6a13db0a8cfed05697613674eb5e2fa2563cf8"
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "c9940f8c77302d5ea818ea5bb33749fa4c25d8530ebfecbe3737aa3d3f50a538"
+    },
+    {
+      "path": "docs/cg/thaleia-naxos-sprite-wave10-2026-10-25.json",
+      "sha256": "51debdcce16a26e9e5b8a78789036cd6345eb1161a05c42c73f9ae54217a18f9"
+    },
+    {
+      "path": "docs/audits/thaleia-naxos-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+      "sha256": "e04ceedd2449e6edeb7487272816bc4099fba7eb59509c92a9169654348a218f"
+    },
+    {
+      "path": "docs/cg/reviews/wave10-2026-10-25/thaleia-naxos-sprite-independent-review.json",
+      "sha256": "9aec54a1c307ea4c1b27b55972877b475c45538504cd4f6dd8c61d98ba732b25"
+    },
+    {
+      "path": "docs/cg/mei-zhen-sprite-wave10-2026-10-25.json",
+      "sha256": "9fc707b342084ea95b383670ad4e76f1633cd2284f1a3b9d2380124c88c26cd9"
+    },
+    {
+      "path": "docs/audits/mei-zhen-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+      "sha256": "56c20b90f2ae0ec6134f5f86cb1565006395c37a91d14b67981abad1a22153e2"
+    },
+    {
+      "path": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-sprite-independent-review.json",
+      "sha256": "05c03d232d22d67c750dd9685bb476d6431f5b0a7e47a8d9d84424706b8461ba"
+    },
+    {
+      "path": "docs/cg/yrsa-rune-binder-sprite-wave10-2026-10-25.json",
+      "sha256": "786517709638d95c5d80a56d2d063a0756ea9aec5a3f0cea23c4561a35902073"
+    },
+    {
+      "path": "docs/audits/yrsa-rune-binder-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+      "sha256": "ba68737d3e53f99f8a7a41ff6fb6d779d424ae35c8e3a857aa626895befdfaa5"
+    },
+    {
+      "path": "docs/cg/reviews/wave10-2026-10-25/yrsa-rune-binder-sprite-independent-review.json",
+      "sha256": "6f7a489c23e98e71396d7542dc178a69ef62d925148952f95ea05725f2235304"
+    },
+    {
+      "path": "docs/cg/sumaq-khipu-sprite-wave10-2026-10-25.json",
+      "sha256": "cb14f63fcdee1d62615ab30f4cb51df8249a57ed1b7b9818610594c469f43ef8"
+    },
+    {
+      "path": "docs/audits/sumaq-khipu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+      "sha256": "3e94ba4d1ceb11563899cdcb47cd5a9dd0e8734236240f5711db212ea29e0134"
+    },
+    {
+      "path": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-sprite-independent-review.json",
+      "sha256": "454df0b0bed067b965e002a2f089e76b3fd9aa78624e972e0ac1a61a2f3d7d82"
+    },
+    {
+      "path": "docs/cg/rei-kagetsu-sprite-wave10-2026-10-25.json",
+      "sha256": "c97899241f020ae57883583aa624315c1adac3dd2099dd7784a3a82df9be06cf"
+    },
+    {
+      "path": "docs/audits/rei-kagetsu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+      "sha256": "795ec33cde4f49bd2a2e295e530df88c4b16e30505710b87d3d941158b4dd029"
+    },
+    {
+      "path": "docs/cg/reviews/wave10-2026-10-25/rei-kagetsu-sprite-independent-review.json",
+      "sha256": "d8d9acaf28e62110751aa3d744b58f23864a2f33a46c9ac050b42b1bc1fa269d"
+    }
+  ],
+  "certifiesPerfectVisualFidelity": false,
+  "visualReviewScope": "Verifies bindings to independent sixteen-frame reviews. Does not add a new full sixteen-frame visual review; verifies the five independent review bindings."
+}

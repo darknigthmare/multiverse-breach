@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_sable",
+  "characterName": "Sable Orison",
+  "incarnation": "Nexus de Convergence — Sable Orison, original project current cartographer atlas (2026)",
+  "publishedAt": "2026-10-20",
+  "status": "source-inspected-production-in-progress",
+  "sourceEvidenceFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+  "slots": [
+    {
+      "slot": 1,
+      "type": "characterSolo",
+      "stem": "character-solo",
+      "title": "Sable Orison — Identité de cartographe aux références conservées",
+      "themeBrief": "Identité de cartographe aux références conservées",
+      "poseBrief": "Debout de trois quarts, longue-vue repliée tenue horizontalement à la taille, autre main sur le bord du chapeau, pieds écartés et regard attentif.",
+      "poseEnglish": "Stand in a calm front three-quarter full-body pose, folded brass spyglass held horizontally at waist level in one hand, other hand touching hat brim, feet apart.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Cour des routes attestées",
+      "background": {
+        "location": "Cour des routes attestées",
+        "foreground": "Pavés ivoire gravés et trois plots de mesure",
+        "midground": "Porte en bois brun et repères de cuivre",
+        "background": "Terrasses étagées et anneau causal lointain",
+        "lighting": "Matin clair, reflets doux de cuivre"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg01-monocle-removal.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg01.txt"
+    },
+    {
+      "slot": 2,
+      "type": "weaponSolo",
+      "stem": "signature-spyglass",
+      "title": "Sable Orison — Longue-vue de reconnaissance seule, équipement sourcé",
+      "themeBrief": "Longue-vue de reconnaissance seule, équipement sourcé",
+      "poseBrief": "Longue-vue de cuivre et laiton déployée en diagonale sur deux cales de bois, lentille avant bleu pâle ; aucun personnage, bras ou main.",
+      "poseEnglish": "Equipment only: one brass collapsible spyglass, nested cylindrical brass sections, dark engraved grip, pale blue front lens. Display diagonally on two wooden rests. No person, hand, rifle or magic sword.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Niche de calibrage des optiques",
+      "background": {
+        "location": "Niche de calibrage des optiques",
+        "foreground": "Cales de bois et papier de calibration",
+        "midground": "Longue-vue isolée, lentille orientée en bas à droite",
+        "background": "Étuis cylindriques flous et étagères basses",
+        "lighting": "Lumière latérale chaude sur le métal"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg02.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ]
+    },
+    {
+      "slot": 3,
+      "type": "decorSolo",
+      "stem": "tenth-route-landscape",
+      "title": "Sable Orison — Décor seul — dixième voie originale du Nexus",
+      "themeBrief": "Décor seul — dixième voie originale du Nexus",
+      "poseBrief": "Vue plongeante de la route d’évacuation suspendue entre deux falaises d’archives, échelles de mesure et balises sans personnage.",
+      "poseEnglish": "Environment only: elevated oblique view along an abandoned suspended tenth evacuation route, ivory archive cliffs, survey posts, broken copper sign structures without writing, cyan causal mist below. No character or weapons.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Dixième voie d’évacuation effacée",
+      "background": {
+        "location": "Dixième voie d’évacuation effacée",
+        "foreground": "Muret de pierre cassé et corde de mesure",
+        "midground": "Passerelle de bois-cuivre suspendue en diagonale",
+        "background": "Deux falaises d’archives et brume turquoise",
+        "lighting": "Aube diffuse et fines balises dorées"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg03-frame-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg03.txt"
+    },
+    {
+      "slot": 4,
+      "type": "coherentScene",
+      "stem": "map-witnesses",
+      "title": "Sable Orison — Scène de relevé — carte et témoins de mesure",
+      "themeBrief": "Scène de relevé — carte et témoins de mesure",
+      "poseBrief": "Assise jambes croisées sur une caisse, carte vivante ouverte sur les genoux, main droite traçant une route et main gauche stabilisant le bord.",
+      "poseEnglish": "Sit cross-legged on a wooden crate, living parchment map board spread across knees, one gloved hand drawing a route, the other stabilising its edge. Hat remains on head, spyglass sheathed.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Cabane mobile des relevés de terrain",
+      "background": {
+        "location": "Cabane mobile des relevés de terrain",
+        "foreground": "Caisse de voyage et ficelle de mesure",
+        "midground": "Sable et carte parchemin sous un auvent",
+        "background": "Casier de rouleaux et baie sur des terrasses d’ivoire",
+        "lighting": "Soleil filtré par une toile ocre"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg04-coat-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg04.txt"
+    },
+    {
+      "slot": 5,
+      "type": "actionScene",
+      "stem": "beacon-shot",
+      "title": "Sable Orison — Action Nexus — Tir de Balise, adaptation de jeu",
+      "themeBrief": "Action Nexus — Tir de Balise, adaptation de jeu",
+      "poseBrief": "Un genou au sol et buste tourné, fusil de balise à deux mains visant une cible mécanique vide en hauteur, manteau balayé par le vent.",
+      "poseEnglish": "One knee on the ground, body twisting in a dynamic side view, both hands aiming the long brown/brass beacon rifle with slim barrel, mounted scope and folded bipod at an empty mechanical survey target above. One small golden/cyan beacon shot, no victim. Keep rifle design close to atlas equipment row.",
+      "family": "Nexus",
+      "canonStatus": "nexus-variant",
+      "backgroundDescription": "Viaduc des coordonnées instables",
+      "background": {
+        "location": "Viaduc des coordonnées instables",
+        "foreground": "Bord de viaduc avec rivets et pierres éparses",
+        "midground": "Arche mécanique vide et trajectoire de balise",
+        "background": "Tours d’archives inclinées au-dessus d’un vide causal",
+        "lighting": "Vent d’orage, tir doré comme accent"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg05-coat-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg05.txt"
+    },
+    {
+      "slot": 6,
+      "type": "introPose",
+      "stem": "field-arrival",
+      "title": "Sable Orison — Entrée de terrain sur une jetée de balises",
+      "themeBrief": "Entrée de terrain sur une jetée de balises",
+      "poseBrief": "Descend d’une barque sur une jetée, main gauche tenant un rouleau de carte, autre main levant légèrement le chapeau, manteau en mouvement.",
+      "poseEnglish": "Step down from a small wooden field-survey boat onto a stone jetty, one hand holds a rolled map, other lifts hat slightly in greeting; the boat and coat move in wind, one foot still higher on the boat edge.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Jetée des cartographes du canal intérieur",
+      "background": {
+        "location": "Jetée des cartographes du canal intérieur",
+        "foreground": "Amarre de corde et bord de jetée ivoire",
+        "midground": "Barque de reconnaissance et poteaux de cuivre",
+        "background": "Canal turquoise et entrepôts d’archives",
+        "lighting": "Milieu du jour, eau claire réfléchissante"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg06.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ]
+    },
+    {
+      "slot": 7,
+      "type": "victoryPose",
+      "stem": "route-proven",
+      "title": "Sable Orison — Victoire — route retrouvée et preuve conservée",
+      "themeBrief": "Victoire — route retrouvée et preuve conservée",
+      "poseBrief": "En équilibre sur un bloc de pierre, carte dépliée levée au-dessus de l’épaule et longue-vue abaissée, sourire discret et menton relevé.",
+      "poseEnglish": "Balance triumphantly atop one low fallen stone block, one arm raises the unfolded parchment map above shoulder, other lowers the spyglass, restrained pleased smile and lifted chin. Clearly different from the calm identity pose.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Jardin clos des routes rouvertes",
+      "background": {
+        "location": "Jardin clos des routes rouvertes",
+        "foreground": "Bloc de pierre bas et fleurs au ras d’une pelouse",
+        "midground": "Fontaine de cuivre et buis taillés autour de la cartographe",
+        "background": "Mur d’ivoire bas couvert de lierre, sans panorama de château ni anneau",
+        "lighting": "Après la pluie, lumière dorée latérale dans le jardin clos"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg07-garden-background-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg07.txt"
+    },
+    {
+      "slot": 8,
+      "type": "defeatPose",
+      "stem": "lost-coordinates",
+      "title": "Sable Orison — Défaite sans blessure — relevés perdus",
+      "themeBrief": "Défaite sans blessure — relevés perdus",
+      "poseBrief": "Assise au sol contre un pilier brisé, une jambe allongée et l’autre repliée, main au front et longue-vue abaissée contre le genou.",
+      "poseEnglish": "Sit exhausted against a broken stone pillar, one leg stretched out and the other bent, one gloved hand at forehead, brass spyglass lowered against bent knee. Hat still present, no wound, no gore or corpse.",
+      "family": "Canon",
+      "canonStatus": "project-canon",
+      "backgroundDescription": "Borne des coordonnées effacées",
+      "background": {
+        "location": "Borne des coordonnées effacées",
+        "foreground": "Feuillets vierges mouillés et sac fermé",
+        "midground": "Pilier brisé abritant la cartographe fatiguée",
+        "background": "Escalier impraticable et silhouettes d’archives vides",
+        "lighting": "Fin d’averse sous un ciel ardoise"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg08-frame-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg08.txt"
+    },
+    {
+      "slot": 9,
+      "type": "beachFamily",
+      "stem": "beach-survey",
+      "title": "Sable Orison — Plage familiale — relevé de côte, Fan Art",
+      "themeBrief": "Plage familiale — relevé de côte, Fan Art",
+      "poseBrief": "Accroupie sur un rivage, dessine un cercle de balises dans le sable avec un petit bâton, longue-vue rangée et chapeau conservé.",
+      "poseEnglish": "Family-friendly seaside fan-art: crouch on a sandy shore, tracing a circular survey diagram in sand using a small driftwood stick, spyglass sheathed. Keep practical closed explorer outfit, dark hat, scarf and boots, no revealing beachwear or romance.",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "backgroundDescription": "Rivage de poche aux arches de craie",
+      "background": {
+        "location": "Rivage de poche aux arches de craie",
+        "foreground": "Sable clair, coquillages et cercle de relevé",
+        "midground": "Sable accroupie près d’une flaque turquoise",
+        "background": "Arches de craie et horizon calme du Nexus",
+        "lighting": "Après-midi de plage lumineuse"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg09-coat-framing-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg09.txt"
+    },
+    {
+      "slot": 10,
+      "type": "maidService",
+      "stem": "archive-service",
+      "title": "Sable Orison — Service familial — entretien de l’office, Fan Art",
+      "themeBrief": "Service familial — entretien de l’office, Fan Art",
+      "poseBrief": "Debout de trois quarts avec un tablier pratique sur le manteau, essuie une tasse de terre cuite entre ses deux mains ; plateau de tasses posé sur la table devant elle.",
+      "poseEnglish": "Family-friendly service fan-art: stand side-on in an archive tea room, practical plain apron over the fully closed original coat, one hand balances a wooden tray of plain cups, other hand dries one cup with a cloth. Hat and dark hair remain, no frills or revealing costume.",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "backgroundDescription": "Office de thé des équipes de terrain",
+      "background": {
+        "location": "Office de thé des équipes de terrain",
+        "foreground": "Plateau de bois et tasses de terre cuite",
+        "midground": "Table de service et étagère de cartes roulées",
+        "background": "Grande baie cintrée et plantes en pot ouvertes sur le quartier d’archives",
+        "lighting": "Lumière chaude de début de soirée"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg10.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ]
+    },
+    {
+      "slot": 11,
+      "type": "goofy",
+      "stem": "folding-map-gag",
+      "title": "Sable Orison — Gag familial — carte retournée par le vent, Fan Art",
+      "themeBrief": "Gag familial — carte retournée par le vent, Fan Art",
+      "poseBrief": "Penche le buste en arrière tandis qu’une carte se replie sur le nez, bras écartés et chapeau retenu du bout des doigts.",
+      "poseEnglish": "Comedic family-safe scene: a gust folds her own unfolded map over the tip of her nose, torso leaning back, arms apart, one hand just catching hat brim. Keep her recognisable human face and outfit, surprise instead of pain.",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "backgroundDescription": "Passage venteux des moulins à papier",
+      "background": {
+        "location": "Passage venteux des moulins à papier",
+        "foreground": "Dalles et petites feuilles d’archive en mouvement",
+        "midground": "Carte soulevée et chapeau retenu",
+        "background": "Roues de papier et auvents de cuivre",
+        "lighting": "Vent vif sous un soleil printanier"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg11.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ]
+    },
+    {
+      "slot": 12,
+      "type": "alignmentSwap",
+      "stem": "sealed-route-authority",
+      "title": "Sable Orison — Alignement inversé — cartographe qui cache les routes, What If",
+      "themeBrief": "Alignement inversé — cartographe qui cache les routes, What If",
+      "poseBrief": "Se tient derrière un pupitre fermé, bras croisés sur une carte scellée, regard strict et longue-vue rangée à la ceinture.",
+      "poseEnglish": "Explicit alternate-alignment WhatIf: the accountable cartographer has become an austere official hiding routes. Stand behind a tall closed lectern, forearms crossed over a sealed rolled map, strict calm expression. Same warm human face, black hair, brown hat/goggles, umber/gold coat. No physical mutation or unrelated villain.",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "backgroundDescription": "Salle hypothétique du relevé interdit",
+      "background": {
+        "location": "Salle hypothétique du relevé interdit",
+        "foreground": "Sceau de cire sombre sur le pupitre",
+        "midground": "Sable gardant une carte scellée sous ses avant-bras",
+        "background": "Portes d’archives closes et lampes rouge sombre",
+        "lighting": "Éclairage sévère de cuivre et rouge discret"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg12-frame-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg12.txt"
+    },
+    {
+      "slot": 13,
+      "type": "genderSwap",
+      "stem": "masculine-what-if",
+      "title": "Sable Orison — Présentation masculine hypothétique — une seule alternative CG13",
+      "themeBrief": "Présentation masculine hypothétique — une seule alternative CG13",
+      "poseBrief": "Version masculine assise de biais sur un rebord, coude gauche sur le genou relevé et longue-vue dans la main droite, mêmes cheveux, chapeau et tenue.",
+      "poseEnglish": "Explicit masculine-presenting WhatIf counterpart, still recognisably the same cartographer: slightly squarer jaw and brow, no beard, same shoulder-length black hair, warm face, same hat with brass goggles and fully covered umber/gold costume. Sit sideways on a low ledge, one knee raised with elbow resting on it, other hand holding lowered spyglass. No sexualised or exaggerated anatomy.",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "backgroundDescription": "Galerie des reflets de coordonnées",
+      "background": {
+        "location": "Galerie des reflets de coordonnées",
+        "foreground": "Rebord de pierre et petite flaque claire",
+        "midground": "Version masculine assise près d’un miroir ancien",
+        "background": "Miroirs verticaux et couloir de cuivre blanc",
+        "lighting": "Lumière douce argentée de lune"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg13-frame-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg13.txt"
+    },
+    {
+      "slot": 14,
+      "type": "zombieVersion",
+      "stem": "causal-corruption",
+      "title": "Sable Orison — Corruption de carte non gore — variante What If",
+      "themeBrief": "Corruption de carte non gore — variante What If",
+      "poseBrief": "À genoux sur une carte déployée, paumes ouvertes sous des feuillets sombres en lévitation ; fines fissures causales cyan, corps intact.",
+      "poseEnglish": "Explicit non-gory causal-corruption WhatIf: kneel on a huge unfolded parchment survey map, both palms open underneath levitating dark page fragments. Keep intact human anatomy and recognisable warm-grey face, shoulder-length black hair, brown hat/goggles, umber/gold coat. Thin cyan corruption seams and tired glowing eyes, no wounds, dismemberment or new monster limbs.",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "backgroundDescription": "Dépôt hypothétique des cartes falsifiées",
+      "background": {
+        "location": "Dépôt hypothétique des cartes falsifiées",
+        "foreground": "Grande carte parchemin et éclats de cire",
+        "midground": "Sable agenouillée et feuillets en lévitation",
+        "background": "Rayonnages renversés et portes géométriques brisées",
+        "lighting": "Brume bleu-noir et faibles fissures cyan"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg14.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ]
+    },
+    {
+      "slot": 15,
+      "type": "futureExperienced",
+      "stem": "experienced-future",
+      "title": "Sable Orison — Cartographe expérimentée du futur — une seule alternative CG15",
+      "themeBrief": "Cartographe expérimentée du futur — une seule alternative CG15",
+      "poseBrief": "Adossée à une balustrade avec la longue-vue dans les deux mains, une cheville croisée et quelques mèches grises aux tempes, même chapeau et manteau réparé.",
+      "poseEnglish": "Explicit experienced-future WhatIf, not an established canonical age: the same female cartographer with a few grey strands at temples, subtle facial lines and visibly patched original umber/gold coat, same brown hat and brass goggles. Lean against a balustrade with ankles crossed, holding the familiar spyglass in both hands at waist level. No new weapon or uniform.",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "backgroundDescription": "Terrasse future de l’observatoire aux verrières bleues",
+      "background": {
+        "location": "Terrasse future de l’observatoire aux verrières bleues",
+        "foreground": "Balustrade patinée et sol circulaire en cuivre gravé",
+        "midground": "Sable expérimentée et grand instrument astronomique de cuivre",
+        "background": "Dôme bas de verre bleu, arbres sombres et ciel étoilé, sans château panoramique ni grand anneau",
+        "lighting": "Crépuscule bleu et petites lampes ambrées de l’observatoire"
+      },
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg15-temples-revision.txt",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "generationPromptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg15.txt"
+    }
+  ]
+}

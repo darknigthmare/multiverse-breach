@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare DLC assets from the full checkout
+        run: node scripts/prepareDlcAssets.mjs
       - run: npm ci --no-audit --no-fund
       - name: Rebuild the two existing derived files, preserving all validation gates
         run: |

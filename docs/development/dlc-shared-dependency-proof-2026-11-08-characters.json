@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "scope": "Explicit dependency closure for reviewed OpenAI backdrop factories, generated registry data, common consumers and guarded dynamic resolvers. No general-purpose shared asset purge, hot installation, performance or artwork-fidelity claim.",
+  "defaultPolicy": "preserve-all",
+  "optInPolicy": "reviewed-dependencies",
+  "dependencyManifestSha256": "a146c96d61bd68ed288c40ebde0ae53a72bfa041537ebfbb02d1ca0a9b33c27c",
+  "sourceFiles": 2442,
+  "sourceInventorySha256": "ae103e3da1fe7c34bde62bd7416d2d510fa5d56afd0e8dd5f2593b4a769e2afc",
+  "resolvers": {
+    "getter": "629b6aa14a80aa1873381c94c30caeed86a4b0f57917faa1601b91802382f91d",
+    "extension": "f2709923afea57c612c7b68180aa60b23b911342b6b637d5ca698428a911707c",
+    "loreBuilder": "8c11760857ab00eb77cc013c4a23b5aa5914d77bb30064621ba288c42026b679",
+    "generatedModule": "bef4698beb0d0aca6f681328dc3c46fd3361a2ebda9df8c7ff30657ba2bef05e"
+  },
+  "profiles": [
+    {
+      "name": "base",
+      "mode": "base",
+      "sharedPolicy": "preserve-all",
+      "installedPacks": 0,
+      "selectedPacks": 0,
+      "sharedAssets": 5977,
+      "selectedDlcAssets": 0,
+      "excludedDlcAssets": 8186,
+      "publishedAssets": 5977,
+      "sharedBytes": 7167320919,
+      "excludedSharedFiles": 0,
+      "excludedSharedBytes": 0,
+      "commonIntroIncluded": true,
+      "commonProfileIncluded": true
+    },
+    {
+      "name": "halo",
+      "mode": "selected",
+      "sharedPolicy": "preserve-all",
+      "installedPacks": 1,
+      "selectedPacks": 1,
+      "sharedAssets": 5977,
+      "selectedDlcAssets": 201,
+      "excludedDlcAssets": 7985,
+      "publishedAssets": 6178,
+      "sharedBytes": 7167320919,
+      "excludedSharedFiles": 0,
+      "excludedSharedBytes": 0,
+      "commonIntroIncluded": true,
+      "commonProfileIncluded": true
+    },
+    {
+      "name": "base-reviewed",
+      "mode": "base",
+      "sharedPolicy": "reviewed-dependencies",
+      "installedPacks": 0,
+      "selectedPacks": 0,
+      "sharedAssets": 5963,
+      "selectedDlcAssets": 0,
+      "excludedDlcAssets": 8186,
+      "publishedAssets": 5963,
+      "sharedBytes": 7128846455,
+      "excludedSharedFiles": 14,
+      "excludedSharedBytes": 38474464,
+      "commonIntroIncluded": true,
+      "commonProfileIncluded": true
+    },
+    {
+      "name": "halo-reviewed",
+      "mode": "selected",
+      "sharedPolicy": "reviewed-dependencies",
+      "installedPacks": 1,
+      "selectedPacks": 1,
+      "sharedAssets": 5963,
+      "selectedDlcAssets": 201,
+      "excludedDlcAssets": 7985,
+      "publishedAssets": 6164,
+      "sharedBytes": 7128846455,
+      "excludedSharedFiles": 14,
+      "excludedSharedBytes": 38474464,
+      "commonIntroIncluded": true,
+      "commonProfileIncluded": true
+    },
+    {
+      "name": "consumers-reviewed",
+      "mode": "selected",
+      "sharedPolicy": "reviewed-dependencies",
+      "installedPacks": 38,
+      "selectedPacks": 38,
+      "sharedAssets": 5977,
+      "selectedDlcAssets": 1191,
+      "excludedDlcAssets": 6995,
+      "publishedAssets": 7168,
+      "sharedBytes": 7167320919,
+      "excludedSharedFiles": 0,
+      "excludedSharedBytes": 0,
+      "commonIntroIncluded": true,
+      "commonProfileIncluded": true
+    }
+  ],
+  "assets": [
+    {
+      "publicPath": "/backgrounds/alien-smash-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "alien",
+        "alien-covenant",
+        "alien-romulus",
+        "alien3",
+        "aliens",
+        "aliens-vs-predator-requiem"
+      ],
+      "consumers": [
+        {
+          "packId": "alien3",
+          "universe": "Alien 3",
+          "mode": "RPG",
+          "sourcePath": "DLC/Alien3/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "alien-covenant",
+          "universe": "Alien: Covenant",
+          "mode": "RPG",
+          "sourcePath": "DLC/AlienCovenant/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "alien",
+          "universe": "Alien",
+          "mode": "Smash",
+          "sourcePath": "DLC/Alien/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "aliens",
+          "universe": "Aliens",
+          "mode": "Smash",
+          "sourcePath": "DLC/Aliens/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "alien-romulus",
+          "universe": "Alien: Romulus",
+          "mode": "Smash",
+          "sourcePath": "DLC/AlienRomulus/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "aliens-vs-predator-requiem",
+          "universe": "Aliens vs Predator: Requiem",
+          "mode": "Smash",
+          "sourcePath": "DLC/AliensVsPredatorRequiem/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        }
+      ],
+      "sourcePath": "public/backgrounds/alien-smash-openai.png",
+      "bytes": 2602739,
+      "sha256": "602db60d1aabf2ac7ce51af99046bdeaa260c5448afdae476574a69373d51f8f"
+    },
+    {
+      "publicPath": "/backgrounds/chucky-smash-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "joker-new52",
+        "rob-zombie"
+      ],
+      "consumers": [
+        {
+          "packId": "joker-new52",
+          "universe": "Joker New 52",
+          "mode": "Smash",
+          "sourcePath": "DLC/JokerNew52/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "rob-zombie",
+          "universe": "Rob Zombie",
+          "mode": "Smash",
+          "sourcePath": "DLC/RobZombie/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        }
+      ],
+      "sourcePath": "public/backgrounds/chucky-smash-openai.png",
+      "bytes": 2502293,
+      "sha256": "e8f274ab268b30c0ad6e6d13a221f14c527095532b7e680fe5f4e83e5f096cfb"
+    },
+    {
+      "publicPath": "/backgrounds/dead-space-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "alien-resurrection",
+        "dead-space",
+        "prometheus"
+      ],
+      "consumers": [
+        {
+          "packId": "dead-space",
+          "universe": "Dead Space",
+          "mode": "Tactics",
+          "sourcePath": "DLC/DeadSpace/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "prometheus",
+          "universe": "Prometheus",
+          "mode": "Tactics",
+          "sourcePath": "DLC/Prometheus/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "alien-resurrection",
+          "universe": "Alien Resurrection",
+          "mode": "Tactics",
+          "sourcePath": "DLC/AlienResurrection/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/dead-space-tactics-openai.png",
+      "bytes": 2863457,
+      "sha256": "0791d4dccbae83513751e071dece563f8fd03ffdd67e93fa8482fcef29b8374a"
+    },
+    {
+      "publicPath": "/backgrounds/digimon-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "digimon",
+        "noob"
+      ],
+      "consumers": [
+        {
+          "packId": "digimon",
+          "universe": "Digimon",
+          "mode": "Tactics",
+          "sourcePath": "DLC/Digimon/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "noob",
+          "universe": "Noob",
+          "mode": "Tactics",
+          "sourcePath": "DLC/Noob/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/digimon-tactics-openai.png",
+      "bytes": 2994665,
+      "sha256": "981d40768cfd6194bce57f5264ba8223a183ae16601c9c1d73310d9c2f27d742"
+    },
+    {
+      "publicPath": "/backgrounds/digital-circus-rpg-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "digital-circus",
+        "hazbin-hotel"
+      ],
+      "consumers": [
+        {
+          "packId": "digital-circus",
+          "universe": "Digital Circus",
+          "mode": "RPG",
+          "sourcePath": "DLC/DigitalCircus/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "hazbin-hotel",
+          "universe": "Hazbin Hotel",
+          "mode": "RPG",
+          "sourcePath": "DLC/HazbinHotel/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        }
+      ],
+      "sourcePath": "public/backgrounds/digital-circus-rpg-openai.png",
+      "bytes": 2313686,
+      "sha256": "a4439508f71237b38a1dc0363b686391c9a46d3be5327f8a981c4395a932ae4b"
+    },
+    {
+      "publicPath": "/backgrounds/doom-rpg-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "doom",
+        "rammstein"
+      ],
+      "consumers": [
+        {
+          "packId": "doom",
+          "universe": "Doom",
+          "mode": "RPG",
+          "sourcePath": "DLC/Doom/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "rammstein",
+          "universe": "Rammstein",
+          "mode": "Smash",
+          "sourcePath": "DLC/Rammstein/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        }
+      ],
+      "sourcePath": "public/backgrounds/doom-rpg-openai.png",
+      "bytes": 2817074,
+      "sha256": "4af707cc20e28aeae802f280d2dbed811ebc89f7253f563ccd8dde3eeb6078f4"
+    },
+    {
+      "publicPath": "/backgrounds/harry-potter-rpg-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "discworld",
+        "harry-potter",
+        "kaamelott"
+      ],
+      "consumers": [
+        {
+          "packId": "harry-potter",
+          "universe": "Harry Potter",
+          "mode": "RPG",
+          "sourcePath": "DLC/HarryPotter/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "discworld",
+          "universe": "Discworld",
+          "mode": "RPG",
+          "sourcePath": "DLC/Discworld/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "kaamelott",
+          "universe": "Kaamelott",
+          "mode": "RPG",
+          "sourcePath": "DLC/Kaamelott/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        }
+      ],
+      "sourcePath": "public/backgrounds/harry-potter-rpg-openai.png",
+      "bytes": 2464121,
+      "sha256": "b7dca03300cfde2b7b53b0eb74a08c786e3131e1d9b80753603e6413c9a5cc07"
+    },
+    {
+      "publicPath": "/backgrounds/matrix-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "daft-punk",
+        "the-matrix"
+      ],
+      "consumers": [
+        {
+          "packId": "the-matrix",
+          "universe": "The Matrix",
+          "mode": "Tactics",
+          "sourcePath": "DLC/TheMatrix/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "daft-punk",
+          "universe": "Daft Punk",
+          "mode": "Tactics",
+          "sourcePath": "DLC/DaftPunk/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/matrix-tactics-openai.png",
+      "bytes": 2768386,
+      "sha256": "5acbb7c3434dc3a4a40a1eb72abea0b7d620329af090884682fed8cf13a6921d"
+    },
+    {
+      "publicPath": "/backgrounds/metal-gear-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "metal-gear",
+        "system-of-adown",
+        "the-batman-who-laughs"
+      ],
+      "consumers": [
+        {
+          "packId": "metal-gear",
+          "universe": "Metal Gear",
+          "mode": "Tactics",
+          "sourcePath": "DLC/MetalGear/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "the-batman-who-laughs",
+          "universe": "The Batman Who Laughs",
+          "mode": "Tactics",
+          "sourcePath": "DLC/TheBatmanWhoLaughs/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "system-of-adown",
+          "universe": "System of a Down",
+          "mode": "Tactics",
+          "sourcePath": "DLC/SystemOfADown/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/metal-gear-tactics-openai.png",
+      "bytes": 2876988,
+      "sha256": "46ca7495989c4cd2ee9d0a98b86d489d446d6da044f6363292d95156417c820e"
+    },
+    {
+      "publicPath": "/backgrounds/predator-rpg-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "predator",
+        "predator-badlands",
+        "predator2",
+        "prey",
+        "the-predator"
+      ],
+      "consumers": [
+        {
+          "packId": "predator",
+          "universe": "Predator",
+          "mode": "RPG",
+          "sourcePath": "DLC/Predator/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "the-predator",
+          "universe": "The Predator",
+          "mode": "RPG",
+          "sourcePath": "DLC/ThePredator/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "predator-badlands",
+          "universe": "Predator: Badlands",
+          "mode": "RPG",
+          "sourcePath": "DLC/PredatorBadlands/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "predator2",
+          "universe": "Predator 2",
+          "mode": "Smash",
+          "sourcePath": "DLC/Predator2/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "prey",
+          "universe": "Prey",
+          "mode": "Smash",
+          "sourcePath": "DLC/Prey/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        }
+      ],
+      "sourcePath": "public/backgrounds/predator-rpg-openai.png",
+      "bytes": 2779849,
+      "sha256": "824c3c25d0af450d85d68660619b8cb9384bf453d3bb84fec515c896a116a5ca"
+    },
+    {
+      "publicPath": "/backgrounds/resident-evil-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "alien-vs-predator",
+        "resident-evil"
+      ],
+      "consumers": [
+        {
+          "packId": "resident-evil",
+          "universe": "Resident Evil",
+          "mode": "Tactics",
+          "sourcePath": "DLC/ResidentEvil/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "alien-vs-predator",
+          "universe": "Alien vs Predator",
+          "mode": "Tactics",
+          "sourcePath": "DLC/AlienVsPredator/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/resident-evil-tactics-openai.png",
+      "bytes": 2913112,
+      "sha256": "6e8093386e3debe79323ae9d64623a19480cba6d552a9cd18322aaf48526f4f4"
+    },
+    {
+      "publicPath": "/backgrounds/rick-morty-smash-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "oliver-tree",
+        "rick-morty"
+      ],
+      "consumers": [
+        {
+          "packId": "rick-morty",
+          "universe": "Rick & Morty",
+          "mode": "Smash",
+          "sourcePath": "DLC/RickMorty/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        },
+        {
+          "packId": "oliver-tree",
+          "universe": "Oliver Tree",
+          "mode": "Smash",
+          "sourcePath": "DLC/OliverTree/data/renderer.js",
+          "functionName": "createOpenaiBackdropsSmash"
+        }
+      ],
+      "sourcePath": "public/backgrounds/rick-morty-smash-openai.png",
+      "bytes": 2820367,
+      "sha256": "98a5873e9d0361a460baaaa461518f31da96f96bc7d451b5b186456e90dd5c19"
+    },
+    {
+      "publicPath": "/backgrounds/rosario-vampire-rpg-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "dungeon-meshi",
+        "rosario-vampire"
+      ],
+      "consumers": [
+        {
+          "packId": "rosario-vampire",
+          "universe": "Rosario + Vampire",
+          "mode": "RPG",
+          "sourcePath": "DLC/RosarioVampire/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        },
+        {
+          "packId": "dungeon-meshi",
+          "universe": "Dungeon Meshi",
+          "mode": "RPG",
+          "sourcePath": "DLC/DungeonMeshi/data/renderer.js",
+          "functionName": "createOpenaiBackdropsRpg"
+        }
+      ],
+      "sourcePath": "public/backgrounds/rosario-vampire-rpg-openai.png",
+      "bytes": 2718565,
+      "sha256": "b7b8757d5be35d01bd7290789c654ae9131fe99c487360044188dc5918c82d40"
+    },
+    {
+      "publicPath": "/backgrounds/yu-gi-oh-tactics-openai.png",
+      "family": "openai-backdrop",
+      "packIds": [
+        "predator-killer-of-killers",
+        "yu-gi-oh"
+      ],
+      "consumers": [
+        {
+          "packId": "yu-gi-oh",
+          "universe": "Yu-Gi-Oh",
+          "mode": "Tactics",
+          "sourcePath": "DLC/YuGiOh/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        },
+        {
+          "packId": "predator-killer-of-killers",
+          "universe": "Predator: Killer of Killers",
+          "mode": "Tactics",
+          "sourcePath": "DLC/PredatorKillerOfKillers/data/renderer.js",
+          "functionName": "createOpenaiBackdropsTactics"
+        }
+      ],
+      "sourcePath": "public/backgrounds/yu-gi-oh-tactics-openai.png",
+      "bytes": 3039162,
+      "sha256": "335b23a0e16dfe5210703d933d48d82675b01f3a772148c59fb3cec6acefc16a"
+    }
+  ]
+}

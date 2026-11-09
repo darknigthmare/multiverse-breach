@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_mirelle",
+  "incarnation": "Mirelle Suture — Nexus de Convergence, pack original complet A.R.C.A. (2026)",
+  "references": [
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-hud-avatar.png",
+      "sha256": "8a24e0451f359262c9cfefb0dc3cfb31ca7307847cfd0788e39e271843517b24",
+      "bytes": 113470,
+      "role": "canonical-original-project-sprite-pack",
+      "viewed": true,
+      "viewedAt": "2026-10-18"
+    },
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+      "sha256": "74b7789da78e6025e89104233c1102bd513ee33a6e7b16b5edbb2bbf8927227f",
+      "bytes": 1555044,
+      "role": "canonical-original-project-sprite-pack",
+      "viewed": true,
+      "viewedAt": "2026-10-18"
+    },
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-items-vfx.png",
+      "sha256": "f8c53c620c3b22bad4c5cdc94fe65691c9c6193b8bd8a68a9717d2b273998c41",
+      "bytes": 1175240,
+      "role": "canonical-original-project-sprite-pack",
+      "viewed": true,
+      "viewedAt": "2026-10-18"
+    },
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-melee-combat.png",
+      "sha256": "1aedca25bfc922fed363d1ac5eeb7168afe8ab1aff0cd4f429f0d4327c054302",
+      "bytes": 1462803,
+      "role": "canonical-original-project-sprite-pack",
+      "viewed": true,
+      "viewedAt": "2026-10-18"
+    }
+  ],
+  "sourceRefs": [
+    "src/game/spriteAssets.js#MIRELLE_COMPLETE_SPRITES",
+    "src/game/heroes.js#arca_mirelle",
+    "src/game/ocCampaign.js",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/manifest.json",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-hud-avatar.png",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-items-vfx.png"
+  ],
+  "visualLocks": {
+    "face": "Peau chaude, yeux brun/ambre, longs cheveux noirs, expression calme ; portrait HUD utilisé pour les détails du visage.",
+    "hat": "Grand chapeau noir pointu recourbé, bord large, ornements constellaires or et bande/boucle or.",
+    "costume": "Long manteau noir/vert profond à bordures et filigranes or, cravate ivoire et broche, pantalon teal sombre, bottes et gants foncés.",
+    "equipment": "Cartes rectangulaires turquoise, croix blanche simple, liserés cyan/blanc et bord or ; boîtier noir-or visible items/VFX.",
+    "anatomy": "Deux bras et deux jambes humains ; ni casque ni gantelet de l’Ancre."
+  },
+  "gameplayEvidence": {
+    "file": "src/game/heroes.js",
+    "weaponType": "cards",
+    "abilities": [
+      "Fil de Resonance",
+      "Patch de Trame",
+      "Boucle de Sauvegarde",
+      "Suture du Voile"
+    ],
+    "classification": "original-project-gameplay"
+  },
+  "ageStatus": "unknown-family-safe-only",
+  "limitations": [
+    "Âge numérique et statut adulte non établis dans les sources examinées ; toutes les scènes sont familiales et non romantiques.",
+    "Les sprites présentent des variations de petit détail de boucle/filigrane ; le portrait HUD et la silhouette collection sont les verrous de référence.",
+    "Aucune certification mathématique 1:1 des détails agrandis ; comparer visuellement visage, chapeau, vêtements et cartes à chaque rendu.",
+    "Le dossier monde partagé décrit aussi l’Ancre : ses ancrages de casque/gantelet ne sont pas transférés à Mirelle."
+  ]
+}

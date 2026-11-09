@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "operation": "technical-comparison-of-real-source-portrait-and-old-new-atlas-cells",
+  "semanticImageGenerationInThisComposition": false,
+  "canonicalFidelityApproved": false,
+  "perfect1to1Certified": false,
+  "oldAtlasPreserved": true,
+  "runtimeSelectionClaimed": false,
+  "sourceAuthority": "internal-original-project-selected-V2-portrait",
+  "sources": [
+    {
+      "label": "Ancien atlas conservé",
+      "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash.png",
+      "note": "Variante historique divergente",
+      "detail": "Aucune autorité pour la silhouette V2",
+      "sha256": "98d14fc54fcd0a06bba8eca9f496f4d76c8b14aabce10f49d9bb932028b03922",
+      "nativeSize": [
+        1024,
+        1024
+      ],
+      "comparisonCropPixels": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "resampling": "nearest-neighbor-display-only"
+    },
+    {
+      "label": "Portrait V2 interne sélectionné",
+      "path": "/images/oc-worlds/v2/infernum_nine_pits/heroes/mercy_ash.png",
+      "note": "Référence individuelle du projet",
+      "detail": "Peau cendrée · cape prune · faux ambre",
+      "sha256": "2c78d2844181d02dab26c7cd07de88c10f8c59c40ab40cbbb48aeb410b699dc5",
+      "nativeSize": [
+        1086,
+        1448
+      ],
+      "comparisonCropPixels": null,
+      "resampling": "nearest-neighbor-display-only"
+    },
+    {
+      "label": "Nouvel atlas — pose 01",
+      "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png",
+      "note": "Redessin ImageGen référencé",
+      "detail": "16 poses revues · garde de 15 pixels",
+      "sha256": "73b4187c5cf7e46865c8550d899093cef8a8f8486baab8d92ea6e49f20dccef0",
+      "nativeSize": [
+        1024,
+        1024
+      ],
+      "comparisonCropPixels": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "resampling": "nearest-neighbor-display-only"
+    }
+  ],
+  "output": {
+    "path": "docs/cg/screenshots/mercy-ash-sprite-comparison-wave6-2026-10-23.webp",
+    "sha256": "00ea58ac891aa07feb211348173581f015fff404f594513e0830e7a619765f91",
+    "width": 1600,
+    "height": 1000
+  },
+  "independentAtlasReview": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+  "limitations": [
+    "Only the first frame of each atlas is displayed here; all sixteen new frames were reviewed separately.",
+    "The selected portrait is internal original project canon, not external franchise evidence.",
+    "Composition uses technical crops, nearest-neighbor previews, text and alpha compositing; no semantic image painting or regeneration."
+  ]
+}

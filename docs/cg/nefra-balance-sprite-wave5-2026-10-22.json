@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "nefra_balance",
+  "heroId": "nefra_balance",
+  "characterName": "Nefra de la Balance",
+  "incarnation": "Kemet: The Devoured Sun — original-project current selected V2 portrait (2026)",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "oldAtlas": {
+    "path": "public/sprites/generated/heroes/kemet-the-devoured-sun/nefra-balance.png",
+    "sha256": "2eee39b19b92b91b1947833c2be4f62009001e01934ebad15ed394306f4001cd",
+    "bytes": 908981
+  },
+  "newAtlas": {
+    "path": "public/sprites/generated/heroes/kemet-the-devoured-sun/nefra-balance-v2-fidelity-wave5-2026-10-22.png",
+    "sha256": "c94c2386440593d82ca88c09b3402dc7663d48b3675ea1727f752b02996055a2",
+    "bytes": 852729
+  },
+  "publicAuditFile": "docs/audits/nefra-balance-v2-reference-sprite-fidelity-wave5-2026-10-22.json",
+  "sourceReviewFile": "docs/cg/nefra-balance-reference-evidence-wave5-2026-10-22.json",
+  "reference": {
+    "path": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/nefra_balance.png",
+    "sha256": "676db7253cf77fd8132903c7a65e5df15b0c7cbd25e9f2d5bbe08b0f8b189149",
+    "bytes": 2330487
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-sprite-independent-review.json",
+    "sha256": "cd025529af2903b99bf8aa8acba2813f7f1bbc32b0fb6ab2190971d31efa4e74",
+    "status": "sixteen-poses-independently-accepted-with-source-limitations",
+    "framesAccepted": 16
+  },
+  "successfulNativeImageGenOutputs": 3,
+  "newProviderRefusals": 0,
+  "whollyUnselectedNativeDrafts": [
+    {
+      "path": "/workspace/generated_images/exec-068f090a-bd9c-4c2d-955f-ed20f2685c6e.png",
+      "sha256": "a69a9a8dc7645e4038051d4b3aabf1ad343e28d2d0429cf52e02ec802c1f2a49",
+      "bytes": 1843806,
+      "reason": "First full atlas clipped balances and crossed cell gutters; retained unselected."
+    }
+  ],
+  "selectedNativeSources": [
+    {
+      "path": "/workspace/generated_images/exec-d02b9542-8ec4-43ef-881e-29935c36c423.png",
+      "sha256": "f9ca5c3336c33a3cb60668f6993323e7a4c00b434a8306564084a544c6026dd8",
+      "bytes": 1638763,
+      "selectedFrames": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16
+      ],
+      "role": "Real ImageGen reframing of whole16pose draft,14poses retained; two opaque-balance poses superseded."
+    },
+    {
+      "path": "/workspace/generated_images/exec-fb493887-fd80-4124-a0ee-40b0268ffcce.png",
+      "sha256": "a96c0b44a2421ea992618dac8dc68a6fa4341fa8c862be70c581721d80d9a5a0",
+      "bytes": 1314948,
+      "selectedFrames": [
+        3,
+        12
+      ],
+      "role": "Two genuinely redrawn poses with open cyan balance, heart and feather."
+    }
+  ],
+  "technicalProof": {
+    "path": ".tmp/cg-wave5-2026-10-22/nefra-balance-atlas/atlas-balance-correction-proof.json",
+    "sha256": "830045e184d7bdd174b3dd49af404d82f862a68388d51c342ac873b040f381a2",
+    "bytes": 17598
+  },
+  "initialPackingProof": {
+    "path": ".tmp/cg-wave5-2026-10-22/nefra-balance-atlas/atlas-packing-proof.json",
+    "sha256": "11305dab7f96b71e46612849c059061a153a4a0b5869628697ad2fdf820364d0",
+    "bytes": 10411
+  },
+  "reproducer": ".tmp/cg-wave5-2026-10-22/nefra-balance-atlas/prepare-balance-correction.mjs",
+  "reproductionCaveat": "The deterministic conditioner reproduces selected atlas pixels; installation proof pins the independent review added after conditioning.",
+  "unchangedCellsBeforeFinalNormalization": 14,
+  "unchangedFinalCellPngFiles": 14,
+  "frames": 16,
+  "minimumGuard": 16,
+  "visibleFootBaselinesByCell": [
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239,
+    239
+  ],
+  "semanticPaintingPerformed": false,
+  "runtimeSelectionChanged": true,
+  "historicalAtlasUnchanged": true,
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "Internal original character portrait is current authority, never an external franchise source.",
+    "New poses and hidden source angles are original interpretations, no automatic perfect1:1 approval.",
+    "Red/lime halos in transparency previews are only alpha1/2 softfringe; proper composites were reviewed and no semantic repaint was performed."
+  ],
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-sprite-independent-review.json",
+  "independentReviewSha256": "cd025529af2903b99bf8aa8acba2813f7f1bbc32b0fb6ab2190971d31efa4e74"
+}

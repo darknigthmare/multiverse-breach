@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { listTrackedRuntimePaths } from './dlcAssetPaths.mjs';
 import { buildCatalog } from './extinction-city/catalog.mjs';
-const catalog = buildCatalog('80a54ea5bf203b7991c213775bd3c7ec4d8b3fba',(existsSync('TRACKED_FILES.txt')?readFileSync('TRACKED_FILES.txt','utf8'):execFileSync('git',['ls-files'],{encoding:'utf8',maxBuffer:32*1024*1024})).split('\n'));
+const trackedFiles = existsSync('TRACKED_FILES.txt') ? readFileSync('TRACKED_FILES.txt','utf8').split('\n') : listTrackedRuntimePaths(process.cwd());
+const catalog = buildCatalog('80a54ea5bf203b7991c213775bd3c7ec4d8b3fba',trackedFiles);
 test('all resolved characters are preserved in both modes',()=>{
  assert.equal(catalog.counts.heroes,1912);
  assert.equal(catalog.tables.Heros_Extinction.rows.length,1912);
@@ -41,10 +42,10 @@ test('source revision is pinned and invalid revisions are rejected',()=>{
 });
 
 test('source-bound Nexus progress never certifies all roster actions or individual world art',()=>{
- assert.equal(catalog.counts.runtimeSignatureHeroes,7);
- assert.equal(catalog.counts.runtimeSignatureActions,28);
+ assert.equal(catalog.counts.runtimeSignatureHeroes,12);
+ assert.equal(catalog.counts.runtimeSignatureActions,48);
  const actions=catalog.tables.Actions_FPS.rows;
- assert.equal(actions.filter(r=>r[7].startsWith('Partiel — 4 actions')).length,7);
+ assert.equal(actions.filter(r=>r[7].startsWith('Partiel — 4 actions')).length,12);
  assert.ok(actions.filter(r=>r[7].startsWith('À adapter')).length>1700);
  const relics=catalog.tables.Cite_props.rows.filter(r=>r[0].startsWith('gear::'));
  assert.equal(relics.length,catalog.counts.cityExhibitRecords);

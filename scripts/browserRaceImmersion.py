@@ -60,8 +60,12 @@ def run():
                         page.add_script_tag(content=(offline / 'race.iife.js').read_text())
                     else:
                         page.goto(args.base + '/scripts/fixtures/race-lifecycle.html?lang=' + lang, wait_until='domcontentloaded')
-                    page.locator('.race-pilot-option').click()
-                    page.locator('.race-track-option').first.click()
+                    # This existing suite continues to verify the Canvas 2D
+                    # lifecycle; the dedicated kart-3d suite covers native GL.
+                    page.get_by_role('radio', name='2D · sprites', exact=True).check()
+                    page.locator('[data-pilot-id="arca_mirelle"]').click()
+                    page.get_by_role('searchbox', name='Rechercher un circuit' if lang == 'fr' else 'Search tracks').fill('Archive')
+                    page.locator('[data-track-id="nexus_archive_loop"]').click()
                     page.get_by_role('button', name='VALIDER LA GRILLE' if lang == 'fr' else 'CONFIRM GRID', exact=True).click()
                     page.wait_for_function('window.__raceLifecycle?.engine')
                     if args.require_art:

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "stitch_626",
+  "characterName": "Stitch",
+  "incarnation": "Lilo & Stitch — film animé Disney 2002, Stitch/Expérience 626 en forme terrestre à deux bras",
+  "status": "official-primary-images-inspected-source-qualified-with-limitations",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "referenceImagesQualified": [
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-animated-poster.jpeg",
+      "sha256": "9fc95af50e006c5e1fe65c7a8bd070eadb80411908cfa485d8f5e4042058bf18",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/p_liloandstitch_19755_0ba5c55e.jpeg",
+      "viewed": true,
+      "role": "Disney2002-finished-animation"
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-hero.jpeg",
+      "sha256": "9904ce62f1cf390c223d912c6083a217ab52105e0c74f7b26cf4086cecda3342",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/h_liloandstitch_19755_0999631f.jpeg",
+      "viewed": true,
+      "role": "Disney2002-finished-animation"
+    }
+  ],
+  "actualAttempts": [
+    {
+      "url": "https://lumiere-a.akamaihd.net/v1/images/h_liloandstitch_19755_0999631f.jpeg",
+      "attemptedAt": "2026-10-26T08:15:13.887245+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://lumiere-a.akamaihd.net/v1/images/h_liloandstitch_19755_0999631f.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 342360,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/stitch-626/research/source-02.html",
+      "sha256": "9904ce62f1cf390c223d912c6083a217ab52105e0c74f7b26cf4086cecda3342",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    },
+    {
+      "url": "https://lumiere-a.akamaihd.net/v1/images/p_liloandstitch_19755_0ba5c55e.jpeg",
+      "attemptedAt": "2026-10-26T08:15:15.508674+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://lumiere-a.akamaihd.net/v1/images/p_liloandstitch_19755_0ba5c55e.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 135449,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/stitch-626/research/source-03.html",
+      "sha256": "9fc95af50e006c5e1fe65c7a8bd070eadb80411908cfa485d8f5e4042058bf18",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    }
+  ],
+  "blockingFindings": [
+    "Historical wave3 provider output moderation refused CG01/04/05, code moderation_blocked, stage output, category other; preserve exactly, no retry/evasion and not N/A. These refusals were omitted from current global matrix status but original actual receipts remain authoritative.",
+    "CG06–15 and atlas remain unattempted in wave11; no blocked character-depiction request will be rerouted as another slot/atlas to evade prior refusal."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "qualified-source-but-historical-blocked-slots-preserved-unattempted-other-jobs",
+  "toolRefusals": 0,
+  "oldAtlasActuallyViewed": true,
+  "visualLocks": {
+    "silhouette": [
+      "Small stocky blue extraterrestrial, rounded huge head, broad pink/purple inner notched ears; terrestrial form exactly TWO arms/TWO legs."
+    ],
+    "face": [
+      "Huge glossy black eyes with pale-blue surround, large rounded navy nose, wide toothed smile, cobalt body/pale-blue belly."
+    ],
+    "equipment": [
+      "No permanent armor/clothes/gun. Hula lei/skirt only scoped costume support. Promotional pendant not permanent. Old delivered CG02 ukulele preserved."
+    ],
+    "forbiddenMixes": [
+      "No four arms, antenna, red tactical harness, 2025live-action fur."
+    ]
+  },
+  "scopeLimitations": [
+    "2002 animated terrestrial form selected, not 2025liveaction or alien four-arm form.",
+    "Hula still clothing support, poster main face/body authority. Tiny digits/back geometry limited.",
+    "Old atlas personally opened: four arms, antenna, red harness contradict selected form; divergence warrants atlas, old bytes preserved.",
+    "Prior generated CG02/03 preserved, only incomplete slots to produce.",
+    "No absolute1:1 certification."
+  ],
+  "historicalProviderRefusals": [
+    {
+      "slot": 1,
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/stitch/01-characterSolo.txt",
+      "status": "blocked-output-moderation",
+      "outputProduced": false,
+      "code": "moderation_blocked",
+      "stage": "output",
+      "categories": [
+        "other"
+      ],
+      "requestId": "2a4ea253-6044-45ee-bda4-0fce1d88b558",
+      "historicalAssetsModified": false,
+      "retried": false
+    },
+    {
+      "slot": 4,
+      "status": "blocked-output-moderation",
+      "outputProduced": false,
+      "code": "moderation_blocked",
+      "stage": "output",
+      "categories": [
+        "other"
+      ],
+      "requestId": "7bfab308-bf5d-462e-81a4-c745a66e3b77",
+      "historicalAssetsModified": false,
+      "retried": false
+    },
+    {
+      "slot": 5,
+      "status": "blocked-output-moderation",
+      "outputProduced": false,
+      "code": "moderation_blocked",
+      "stage": "output",
+      "categories": [
+        "other"
+      ],
+      "requestId": "927faab4-9e64-451a-8b8c-f94bc54f1116",
+      "historicalAssetsModified": false,
+      "retried": false
+    }
+  ],
+  "historicalProviderRefusalEvidence": ".tmp/cg-wave3-2026-10-20/stitch/generation-attempts.json",
+  "historicalBlockedSlotsPreserved": [
+    "CG01",
+    "CG04",
+    "CG05"
+  ],
+  "historicalDeliveredSlotsPreserved": [
+    "CG02",
+    "CG03"
+  ],
+  "remainingUnattemptedSlots": [
+    "CG06",
+    "CG07",
+    "CG08",
+    "CG09",
+    "CG10",
+    "CG11",
+    "CG12",
+    "CG13",
+    "CG14",
+    "CG15"
+  ],
+  "sourceLimitsNote": "Qualification of actual2002 reference bytes is separate from permission or provider acceptance of generation."
+}

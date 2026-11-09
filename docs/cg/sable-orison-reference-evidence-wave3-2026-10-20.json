@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_sable",
+  "characterName": "Sable Orison",
+  "incarnation": "Nexus de Convergence — Sable Orison, original project current cartographer atlas (2026)",
+  "publishedAt": "2026-10-20",
+  "sourceKind": "original-project-internal-canon",
+  "referenceScope": "original-project-sable-orison",
+  "canonicalProjectReference": true,
+  "canonicalFidelityApproved": false,
+  "ageStatus": "unknown-family-safe-only",
+  "consentStatus": "no-romance",
+  "contentRating": "family",
+  "references": [
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+      "sha256": "4970201891a2cdf46304785dfb8fec422e2e8f8d19e8b6fef7684fa759b1e5ae",
+      "bytes": 957635,
+      "viewed": true,
+      "role": "canonical-original-project-sprite-pack",
+      "canonicalProjectReference": true,
+      "limitations": [
+        "Current 4x4 project sprite atlas, not an independent external franchise image. Small facial pixels do not establish exact iris colour or microdetail."
+      ]
+    },
+    {
+      "path": "src/game/characterPlaques.js",
+      "sha256": "438fa6f7d81621f56a02a1abebc99811356e03ef6031362ea6c41eb8e3d86a31",
+      "bytes": 146071,
+      "viewed": true,
+      "role": "original-project-canon-text-or-runtime-selection",
+      "viewedScope": "Sable-specific fields and passages only, not a claim of reviewing every character in the shared file."
+    },
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "99e103e87fdb1ff6e56108a1614f5a60400c836d21affba76cf6e3bf372604c1",
+      "bytes": 140776,
+      "viewed": true,
+      "role": "original-project-canon-text-or-runtime-selection",
+      "viewedScope": "Sable-specific fields and passages only, not a claim of reviewing every character in the shared file."
+    },
+    {
+      "path": "src/game/ocCampaign.js",
+      "sha256": "03e8be2a60fbbcbef4e3f439046aa68d7f999e53b28107805dee6a114e11e2d8",
+      "bytes": 82918,
+      "viewed": true,
+      "role": "original-project-canon-text-or-runtime-selection",
+      "viewedScope": "Sable-specific fields and passages only, not a claim of reviewing every character in the shared file."
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/sable/runtime-selection-excerpt.txt",
+      "sha256": "21542242fbc61fcae7b8ad18ab54d35e3295f48898170f35dc7c540d7bc7cfcf",
+      "bytes": 512,
+      "viewed": true,
+      "role": "original-project-canon-text-or-runtime-selection",
+      "viewedScope": "Sable-only declaration excerpt and observed runtime result; unrelated actors may change in shared source later.",
+      "originalSourceFile": "src/game/spriteAssets.js",
+      "originalSourceFileSha256AtObservation": "73c71679345680f71bc1d9b578f1d5e6e2fb4f8e11bcbc54abd6057413ec7478"
+    }
+  ],
+  "visualLocks": {
+    "face": "Human female cartographer as written in English dossier; warm light/olive skin, small dark eyes partly covered by black hair; no beard, mask, monocle implanted in face or helmet.",
+    "hair": "Shaggy straight shoulder-length black hair with long side fringe, not silver or red.",
+    "outfit": "Dark umber/brown broad brimmed explorer hat with brass round goggles on the hat band; dark brown scarf, long split dark brown explorer coat with gold maplike filigree and ochre lining, belts/pouches, dark gloves, trousers and tall brown laced boots. Written lore calls this her sand-coloured field coat; current pixels visibly establish dark umber and gold rather than a pale tan redesign.",
+    "equipment": "Short brass collapsible spyglass with pale blue front lens and cylindrical nested sections, rolled parchment/map case at back, living parchment map board. Beacon rifle with brown/brass long barrel, scope and bipod appears in row3, but CG02 deliberately depicts only the clearly visible spyglass.",
+    "anatomy": "One human head, two arms and two legs, normal hands. Hat/goggle silhouette is an identity anchor; no anchor helmet or cyan gauntlet, no card-deck witch identity.",
+    "lore": "Cartographer of accountable routes; records names of those who measured the route, proves a suppressed tenth evacuation route, forces the organisation to publish costs and names rather than destroy it.",
+    "handedness": "No fixed handedness established in inspected written lore. Spyglass grip varies with action; do not infer a permanent anatomical side from a view."
+  },
+  "scopeLimitations": [
+    "This original project character uses an explicitly declared internal authority, not an external official likeness.",
+    "Small pixel art details are interpreted at CG scale; hashes and resolution do not certify perfect1:1.",
+    "All new rooms/poses are original compositions consistent with the authored Nexus; no exact prior screenshot recreation claimed.",
+    "CG13 selects only masculine-presenting WhatIf; CG15 selects only experienced-future WhatIf."
+  ],
+  "derivedInspection": {
+    "path": "docs/cg/references/wave3-2026-10-20/sable/current-frame0-inspection.png",
+    "role": "nearest-neighbor-inspection-crop-of-selected-sprite",
+    "viewed": true,
+    "sha256": "30d83b899c08a9cbdda54af01eb0d842ab1112273254f0dda0b30367b33b1d01",
+    "limitations": [
+      "Same atlas enlarged without painting; not an additional independent source."
+    ]
+  }
+}

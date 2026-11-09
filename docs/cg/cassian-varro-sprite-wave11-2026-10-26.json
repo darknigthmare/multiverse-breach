@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "cassian_varro",
+  "heroId": "cassian_varro",
+  "characterName": "Cassian Varro",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-whole-pose-redraw-with-real-wholejump-and-handedness-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/imperium_aeternum/heroes/cassian_varro.png",
+    "sha256": "b8462b7fe0f131445ffb6fe1bb18d8f2302f06840dbe47969ecfd0a9ea45dbca",
+    "bytes": 2550998,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/imperium-aeternum/cassian-varro-v2-fidelity-wave11-2026-10-26.png",
+    "sha256": "5858aad64c601f2514af05ab5c6b931b9d0bf1ba33897f976bc13c2db92a9d5a",
+    "bytes": 1008223,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/cassian-varro-v2-reference-sprite-fidelity-wave11-2026-10-26.json",
+    "sha256": "977eabbc11a4748c73287c5d611a710e6a0ee583a779eedb09850c587a5c18bb",
+    "bytes": 13175
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave11-2026-10-26/cassian-varro-sprite-independent-review.json",
+    "sha256": "b027e12383b84edecfa1d7ab95736dc61c8a0540befa6f3d184c8c35735b1763",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/imperium-aeternum/cassian-varro.png",
+    "sha256": "8d2e04c383f45a15548b015ab98527aae5e2c84a249aeedc532e398976a31b09",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "6b37797641441d38257cc1d091fb1149c5d2342965cc1a80133dfd6a53bc5daa",
+    "selectedImagegenNativeInputs": 6,
+    "sixteenWholeNativePosesPreservedBeforeFinalNormalization": true,
+    "genuineCorrectiveFinalCells": [
+      7,
+      10,
+      12
+    ],
+    "selectedVisiblePixelsBeforeNormalization": 2546856,
+    "assignedVisiblePixelsBeforeNormalization": 2546856,
+    "preNormalizationResizing": false,
+    "finalCommonNearestScale": 0.3333333333333333,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      242,
+      242,
+      241,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/cassian-varro/atlas/packing-proof.json",
+      "sha256": "0efd9519e1b0ef52c55daf317392e3b4d87395fe88de02c984c8709b01c27c6f",
+      "bytes": 11360
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-05/cassian-varro/atlas/assembly-proof.json",
+      "sha256": "f89f91c73562d15002eeab13a13d9c0f5d522a9add30d8ed0b478b5eb0f01943",
+      "bytes": 20879
+    },
+    "genuineRenderedNativePoses": 25,
+    "unusedNativePoses": 9
+  },
+  "nativeInputs": [
+    {
+      "path": "/workspace/generated_images/exec-67129580-df4a-45d9-a3f0-a8d9213cebc9.png",
+      "sha256": "d15e59155c36aac0b9f3d79ebcb7530b06f2230e1d524efcba773004e4bef101",
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-jump-reprise1.txt",
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "unusedNativePoseIndices": [
+        1
+      ],
+      "reason": "Actually opened whole jump complete but rendered at near full1254canvas scale, much larger than other4group figures; cannot fit translation-only1024cells nor keep common source scale. No per-frame resizing used. Retained whole unused."
+    },
+    {
+      "path": "/workspace/generated_images/exec-1b76c7ac-c6da-4310-9ca3-939a6505ec64.png",
+      "sha256": "1eba8fb434944c21ef9f6bd21bfa0ba02be0ca539d0a079e8c4fd4c2f23e5416",
+      "bytes": 1930814,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-group-1.txt",
+      "promptSha256": "8f1ceeadc431720080a9629a28d48c93d0e180b7f6b1f97843e8ed1ac1dcf0ad",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-ee32137f-9176-4565-8f04-c2bfe5821544.png",
+      "sha256": "c0c2d5ef7b9940f8f9699515b62aeca11653d433f719623ebadfbfc4dce5d036",
+      "bytes": 1869910,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-group-2.txt",
+      "promptSha256": "644f30baadc4e2e84a089a9eed4f14ea35298f425c885866c67163d7c44847a5",
+      "selectedFrames": [
+        5,
+        6,
+        8
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        3
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-b4c9ed62-bd95-4453-a69a-d41d69f024f1.png",
+      "sha256": "5f898e71c04fa0658f3ddea21ee7239b10cd1bb8e30249d88522a6bd5153d5f7",
+      "bytes": 1836684,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-group-3.txt",
+      "promptSha256": "f20bac1754b3400a30d6e3ef1c8da9e8d67cde7ebb778ecbea43feb732d0e026",
+      "selectedFrames": [
+        9,
+        11
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        2,
+        4
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-70c48273-df1f-4ca8-adcf-ef8f6271dc10.png",
+      "sha256": "08d6a3fa25d9f34ca3031a30bb06ea0569d29780280dbb7dc965ef1fb48d05b1",
+      "bytes": 1646562,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-group-4.txt",
+      "promptSha256": "2fde2029f329b8c29d7431f14822013cc4272c072a4e6d8f6665e7054c5e91b1",
+      "selectedFrames": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-8d4e2ea5-4aaf-427f-96d1-7e7f5bf27c78.png",
+      "sha256": "00a730d9fc24d8eb3d605daf1268fccdb8a27a23279b56855c4ed688813fbd4c",
+      "bytes": 1643464,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-group-3-reprise1.txt",
+      "promptSha256": "9aeec9b058e1407334fc8b8ddf936e38f991000ddd8f6232605a0e62f0fb4e05",
+      "selectedFrames": [
+        10
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-1645e757-08b4-46e6-8419-012a1f66d86b.png",
+      "sha256": "f265fc9570d33a51bf88b4f8459e1f078691f11106abdacf29e42cc937108c55",
+      "bytes": 1915933,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/cassian-varro/atlas-hand-reprise1.txt",
+      "promptSha256": "a57f23102b945a127a699ddc560c5d0f9211b2a9c34843989d8aa1b19f09276d",
+      "selectedFrames": [
+        7,
+        12
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        3,
+        4
+      ]
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 7,
+  "contributingAtlasNativeInputs": 6,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/cassian-varro-reference-evidence-wave11-2026-10-26.json",
+  "limitations": [
+    "Selected internal original-project V2 portrait only; no external franchise provenance or absolute1:1 certification.",
+    "One front-three-quarter source leaves hidden reverse armor, scutum reverse and tiny marks unknown. Cape covers uncertain reverse construction.",
+    "Seven real native outputs retained: four initial2x2groups, one wholejump unused because scale incompatible, one wholejump corrective2x2group and one anatomical-handedness corrective2x2group. Six contributors supply16frames; oldgroup3jump and inverted old07/12 unused. Nine real rendered poses unselected, not nine wholly-unused sheets.",
+    "Only whole-alpha component extraction, translation and bounded4pxsoftfringe handling precede one shared nearest-neighbor scale. No semantic pixel edit, recoloring, mirroring or copied limbs.",
+    "Producer leaves runtime maps unchanged; root integrates selection and exposes oldatlas as historical variant."
+  ],
+  "independentPixelReplay": {
+    "path": ".tmp/cg-wave11-2026-10-26/lot-04/peer-cassian-sprite-replay/independent-sprite-replay.json",
+    "sha256": "70c69288850f679df1f6dcae5f05257f4ed51c985d29b37fd112231b8186ef51",
+    "bytes": 22417
+  }
+}

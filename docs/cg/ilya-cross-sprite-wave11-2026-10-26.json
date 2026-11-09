@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "ilya_cross",
+  "heroId": "ilya_cross",
+  "characterName": "Ilya Cross",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-whole-pose-redraw-five-contributing-native-groups",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png",
+    "sha256": "1ec60ba62abd81a378f9abe440adc74e1e58b5554365803d9c81cac414a986fb",
+    "bytes": 2358185,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/iron-tempest/ilya-cross-v2-fidelity-wave11-2026-10-26.png",
+    "sha256": "ad8d863b6c82982537577554d5f00063b9f0a2d1e0313398c9eaa7e4e1c86b54",
+    "bytes": 654346,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/ilya-cross-v2-reference-sprite-fidelity-wave11-2026-10-26.json",
+    "sha256": "90bf85266737c702674ff3a0f1012428b8570c5a3a39ffc836bfafa68ecf794c",
+    "bytes": 13133
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave11-2026-10-26/ilya-cross-sprite-independent-review.json",
+    "sha256": "91f1bc8eb3c0a0055cb441bb95ecf8207a464b267407287808591489b87138f6",
+    "bytes": 9491,
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/iron-tempest/ilya-cross.png",
+    "sha256": "bf4f48a3016cccd344e655f349aa18e5335fdd4a35e25af34de22c3d42c9c2f5",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "a38cc98896d81960512dde1e66bae8e61e84ab141f5cc99328977dec2eb6559f",
+    "selectedImagegenNativeInputs": 5,
+    "sixteenWholeNativeGroupPosesPreservedBeforeFinalNormalization": true,
+    "genuineCorrectiveFinalCells": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "selectedVisiblePixelsBeforeNormalization": 1676135,
+    "assignedVisiblePixelsBeforeNormalization": 1676135,
+    "preNormalizationResizing": false,
+    "finalCommonNearestScale": 0.3231197771587744,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ilya-cross/atlas/packing-proof.json",
+      "sha256": "aec87eb0869bc5027a7fba47059c5efa6751eacefa966a42cf9940d88c6b8a99",
+      "bytes": 11315
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ilya-cross/atlas/assembly-proof.json",
+      "sha256": "af02abfaac0b8b4f1280700f927d431189e3c5d6eb6721efc073133602f0921a",
+      "bytes": 18461
+    }
+  },
+  "nativeInputs": [
+    {
+      "path": "/workspace/generated_images/exec-f3f804b2-5817-4772-a1ea-ebfa8a8e1cd8.png",
+      "sha256": "7ade4ce1aed205ee0adaf044a50ffb4533bb9f74bc081ffa8fdad9ede84e085b",
+      "bytes": 1341988,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-02.txt",
+      "promptSha256": "81dd9ccec5277ee075f40cc37a485180d9e15b70cd4211f1503cf96f69461c0a",
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "producerActuallyViewed": true,
+      "observations": "Frames5/7 appear to move gearblade to anatomicalRIGHT hand (imageLEFT) while left arm advances; source demands LEFT. All four wholeposes preserved unused; regenerate group2 wholebody, no mirroring or limb patches."
+    },
+    {
+      "path": "/workspace/generated_images/exec-6c9b5ffa-47c6-4ce7-a131-1319da1b6b4c.png",
+      "sha256": "2ca14cd1b3f56987b6b4ff68514c89edccd85453e051b000ef8757da9e03840a",
+      "bytes": 1430785,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-03.txt",
+      "promptSha256": "6c96a793ca291a4d14bfc2bc69325f755a89bb8c5c2371644d50c9ff5810b382",
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "producerActuallyViewed": true,
+      "observations": "Actually opened group: topLeft pose09 holds sword in anatomicalRIGHT instead ofLEFT. TopRight pose10 blade tip reaches/cuts source rightcanvas edge. Wholegroup preserved unused; need real fourpose regeneration, no semantically painted tips or mirror."
+    },
+    {
+      "path": "/workspace/generated_images/exec-86023b3f-6025-40d1-aed7-94ab9a98dabc.png",
+      "sha256": "2218208c342455c2dc4e6c9619dc3bf284f894baf7810085250c69c4f7cd4af8",
+      "bytes": 1222425,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-01.txt",
+      "promptSha256": "4db59513e87f2228acc1486acd1eb976ef588ff0fdfab91603fdf11b9b195cb5",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-5e3bf691-923c-467d-95ce-e83e102da782.png",
+      "sha256": "ab0da1019a89be24ebac3ad242ac3481e29183b8fb7295d1f3116ac9ea8bc163",
+      "bytes": 1397567,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-02-revision2.txt",
+      "promptSha256": "b87bfb9ccbdc263bea79b95eea86b659b5cd94891f3834038b08839872e5be48",
+      "selectedFrames": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-2708d8bb-fe3b-4bed-bf15-90d70e17eb85.png",
+      "sha256": "100ef2e78c8293c2453ee908b562f63c1c71efb7775aeb505fa5956476a8bf6e",
+      "bytes": 1253939,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-03-revision2.txt",
+      "promptSha256": "1debc711ee6e71acf946a51b00cf278197990c057f12ba5c665f7978ce7062cb",
+      "selectedFrames": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-8d533cbc-4c83-42e0-b05f-721f12194d25.png",
+      "sha256": "ffe630395a12fa73a5cb87f9c2aca6c66ce34f108d289337588acf039c64b098",
+      "bytes": 1467690,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-04.txt",
+      "promptSha256": "a2caa2380f753114f294703ccf3e2f1c31aeb61785f59dfa9b78e49cd4c2a8df",
+      "selectedFrames": [
+        15,
+        16
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        1,
+        2
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-b042edc9-91bd-46da-b282-b8427faa914b.png",
+      "sha256": "ac7d21faf05a9f9236e4b0e981cbea909970c48ac675d934432d162c6d151999",
+      "bytes": 1420861,
+      "promptFile": "docs/cg/prompts/wave11-2026-10-26/ilya-cross/atlas/group-05-corrective13-14.txt",
+      "promptSha256": "bf6ee9dd00a14e0d115f59d7fdd27e8fbcf44a62db79ca880dfe8a139dd2a97d",
+      "selectedFrames": [
+        13,
+        14
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        3,
+        4
+      ]
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 7,
+  "contributingAtlasNativeInputs": 5,
+  "retainedWhollyUnselectedNativeAttempts": 2,
+  "partiallyUsedNativeInputs": 2,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/ilya-cross-reference-evidence-wave11-2026-10-26.json",
+  "limitations": [
+    "Current selected V2 portrait is original-project internal authority; no external franchise certification.",
+    "A single front-threequarter portrait leaves reverse construction and unreadable marks unknown; no perfect fidelity certification.",
+    "Five genuine native groups contribute sixteen selected whole poses; groups4/5 contribute two each. Two entire earlier groups and four unused quadrants from partly used groups remain documented, not counted as final poses.",
+    "Only whole-pose extraction/translation and one shared nearest scale are applied. All selected alpha>12 pixels are preserved before scaling. Alpha1–12 fringe is bounded to four pixels from the selected visible pose, excluding neighboring pose fragments. No semantic painting, mirroring, recoloring or limb copies.",
+    "Anatomical LEFT holds the single gear-hub blade; anatomical RIGHT remains empty. Both boots and full blade endpoints are visible in each accepted frame.",
+    "Root alone selects the runtime sprite and exposes the preserved old atlas as a variant."
+  ]
+}

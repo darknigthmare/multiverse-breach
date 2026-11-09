@@ -6,6 +6,7 @@ import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { parseSync } from 'rolldown/utils';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { PERMANENT_OC_BOOSTERS, ORIGINAL_WORLD_BOOSTERS } from '../src/game/portalBoosterCatalog.js';
 import { getOfficialCostumes, getOriginalCostumes, applyActorAppearance } from '../src/game/wardrobe.js';
@@ -172,7 +173,37 @@ test('PortalScreen integration draws only after accepted five-card opening and c
   assert.ok(!source.includes('rewards.push(outfitBonus)'));
 });
 test('Hub passes actual inventory to both hero and adversary wardrobes', () => {
-  const source=fs.readFileSync(new URL('../src/components/HubScreen.jsx',import.meta.url),'utf8');
-  assert.ok(source.includes('actor={selectedHero} lang={lang} inventory={inventory}'));
-  assert.ok(source.includes('lang={lang} inventory={inventory} readOnly'));
+  const openings = file => {
+    const source = fs.readFileSync(new URL(`../src/components/${file}`, import.meta.url), 'utf8');
+    const parsed = parseSync(file, source, { lang: 'jsx' });
+    assert.deepEqual(parsed.errors, []);
+    const entries = [];
+    const visit = node => {
+      if (!node || typeof node !== 'object') return;
+      if (node.type === 'JSXOpeningElement') entries.push(node);
+      for (const value of Object.values(node)) {
+        if (Array.isArray(value)) value.forEach(visit);
+        else if (value && typeof value === 'object') visit(value);
+      }
+    };
+    visit(parsed.program);
+    return entries;
+  };
+  const attribute = (node, name) => node.attributes.find(item => item.type === 'JSXAttribute' && item.name.name === name);
+  const boundTo = (node, name, binding) => {
+    const expression = attribute(node, name)?.value?.expression;
+    return expression?.type === 'Identifier' && expression.name === binding;
+  };
+  const hub = openings('HubScreen.jsx');
+  const hero = hub.find(node => node.name.name === 'CharacterWardrobe' && boundTo(node, 'actor', 'selectedHero'));
+  assert.ok(hero && boundTo(hero, 'lang', 'lang') && boundTo(hero, 'inventory', 'inventory'), 'Hero wardrobe must receive the actual inventory');
+  const reader = hub.find(node => node.name.name === 'UniverseArchiveReader');
+  assert.ok(reader && boundTo(reader, 'inventory', 'inventory'), 'Hub must pass the actual inventory into the archive reader');
+  const adversaries = openings('UniverseArchiveReader.jsx').filter(node => node.name.name === 'CharacterWardrobe');
+  assert.ok(adversaries.length > 0, 'The archive must retain its adversary wardrobe');
+  for (const wardrobe of adversaries) {
+    assert.ok(boundTo(wardrobe, 'lang', 'lang') && boundTo(wardrobe, 'inventory', 'inventory'), 'Adversary wardrobe must receive the actual inventory');
+    const readOnly = attribute(wardrobe, 'readOnly');
+    assert.ok(readOnly && (readOnly.value === null || readOnly.value?.expression?.value === true), 'Adversary consultation must remain read-only');
+  }
 });

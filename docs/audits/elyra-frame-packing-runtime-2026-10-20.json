@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "arca_elyra",
+  "characterName": "Elyra Null",
+  "status": "installed-after-independent-technical-review",
+  "operationKind": "technical-frame-packing-of-existing-project-art",
+  "preparationReceipt": {
+    "path": "docs/audits/elyra-frame-packing-2026-10-20.json",
+    "sha256": "93d1d1211d0dc2dda54d8d0fbed70b781e8eed550ecba5224fcf61f7e6e3fdd7"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-independent-review.json",
+    "sha256": "fb444f9fc38935a292f7ffeb83daf5b1dca35d796c994d73c0fc95ccc5a3b7f3"
+  },
+  "currentRuntimePath": "/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png",
+  "previousRuntimePath": "/sprites/generated/heroes/nexus-de-convergence/arca-elyra.png",
+  "runtimeSelectionFile": "src/game/spriteAssets.js",
+  "previousAtlasRetainedAsVariant": true,
+  "newImageGenerationUsed": false,
+  "semanticArtworkCreated": false,
+  "canonicalFidelityApproved": false,
+  "uniformScale": 0.7227414330218068,
+  "limitations": [
+    "This is conservative segmentation and common nearest-neighbor scaling of existing pixels; it creates no new character art, pose, facial detail, palette or animation.",
+    "All alpha>12 source pixels and all1397weak-alpha pixels are assigned before scaling; nearest downsampling can remove fine pixels at reduced size, but introduces no new RGBA values.",
+    "The105satellite components are assigned by the existing conservative nearest-body algorithm; body/VFX grouping and all16frames require visual review.",
+    "The original source remains unchanged. Before/after uses actual runtime256pixel cuts for BEFORE, which intentionally demonstrates existing clipping; AFTER holds whole components inside each256pixel cell.",
+    "Uniform scale preserves source size differences between standing/running/falling poses; it does not redraw or equalize anatomy.",
+    "No new ImageGen provenance and no perfect1:1 certification are claimed."
+  ],
+  "verificationCommand": "node scripts/auditTechnicalSpritePacking.mjs docs/audits/elyra-frame-packing-runtime-2026-10-20.json"
+}

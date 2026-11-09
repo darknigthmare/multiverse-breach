@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { validateVercelUploadManifest } from './auditVercelUploadManifest.mjs';
-import { auditLocalPublicAssets, isGitLfsPointer, listGitTrackedPublicPaths, listPublicTreePaths } from './auditLocalPublicAssets.mjs';
+import { auditLocalAssetSources, auditLocalPublicAssets, isGitLfsPointer, listGitTrackedPublicPaths, listPublicTreePaths } from './auditLocalPublicAssets.mjs';
 
 const publicPaths = [
   'public/images/campaign-oc/chapter-01-atrium-v1.png',
@@ -82,6 +82,23 @@ test('the pure validator preserves frozen inputs, metadata, Unicode and spaces',
   assert.equal(manifest.files[0].sha, 'fixture');
 });
 
+test('DLC upload coverage requires the physical source, not its generated public copy', () => {
+  const paths = ['public/base.png', 'DLC/Halo/assets/sprites/hero.png'];
+  assert.deepEqual(validateVercelUploadManifest(manifestFor([...paths, 'package.json']), paths), {
+    manifestFileCount: 3, trackedPublicFileCount: 2, matchedPublicFileCount: 2
+  });
+  assert.throws(() => validateVercelUploadManifest(manifestFor(['public/base.png', 'public/sprites/hero.png']), paths), error => {
+    assert.equal(error.code, 'MISSING_PUBLIC_UPLOAD_FILES');
+    assert.deepEqual(error.missingPaths, [paths[1]]);
+    return true;
+  });
+  for (const path of ['DLC/Halo/assets.json', 'DLC/Halo/data/hero.js', 'DLC/Halo/assets/../hero.png', 'DLC/Half-Life/assets/image.png']) {
+    assert.throws(() => validateVercelUploadManifest(manifestFor([path]), [path]), /canonical relative path|under public/);
+  }
+  const conflicting = ['public/hero.png', 'DLC/Halo/assets/hero.png'];
+  assert.throws(() => validateVercelUploadManifest(manifestFor(conflicting), conflicting), /Asset URL collision/);
+});
+
 const pointer = `version https://git-lfs.github.com/spec/v1\noid sha256:${'a'.repeat(64)}\nsize 4096\n`;
 const localAuditCli = fileURLToPath(new URL('./auditLocalPublicAssets.mjs', import.meta.url));
 const uploadAuditCli = fileURLToPath(new URL('./auditVercelUploadManifest.mjs', import.meta.url));
@@ -126,6 +143,26 @@ test('local audit accepts materialized regular files, Unicode and empty tracked 
   assert.deepEqual(auditLocalPublicAssets({ root, trackedPublicPaths: paths }), { publicFileCount: 5 });
 });
 
+test('physical source audit checks DLC bytes, missing files and symlink ancestors', t => {
+  const root = fixture(t, {
+    'public/base.png': 'base',
+    'DLC/Halo/assets/pointer.png': pointer,
+    'DLC/Halo/assets/real.png': Buffer.from([137, 80, 78, 71]),
+    'materialized/target.png': 'outside target'
+  });
+  symlinkSync(join(root, 'materialized'), join(root, 'DLC/Halo/assets/linked'), 'dir');
+  const sourcePaths = ['public/base.png', 'DLC/Halo/assets/pointer.png', 'DLC/Halo/assets/missing.png', 'DLC/Halo/assets/linked/target.png'];
+  assert.throws(() => auditLocalAssetSources({ root, sourcePaths }), error => {
+    assert.equal(error.code, 'INVALID_LOCAL_PUBLIC_ASSETS');
+    assert.deepEqual(error.lfsPointerPaths, ['DLC/Halo/assets/pointer.png']);
+    assert.deepEqual(error.missingPaths, ['DLC/Halo/assets/missing.png']);
+    assert.deepEqual(error.symlinkPaths, ['DLC/Halo/assets/linked/target.png']);
+    return true;
+  });
+  assert.deepEqual(auditLocalAssetSources({ root, sourcePaths: ['public/base.png', 'DLC/Halo/assets/real.png'] }), { publicFileCount: 2 });
+  assert.throws(() => auditLocalAssetSources({ root, sourcePaths: ['src/main.js'] }), /canonical relative asset path/);
+});
+
 test('local audit rejects a directory symlink and file symlink before reading their targets', t => {
   const root = fixture(t, { 'materialized/rpg.webp': Buffer.from([137, 80, 78, 71]), 'public/metadata.json': '{}' });
   symlinkSync(join(root, 'materialized'), join(root, 'public/backgrounds'), 'dir');
@@ -161,6 +198,20 @@ test('Git-tracked audit includes deleted local files rather than scanning only f
   assert.match(result.stderr, /public\/deleted\.webp/);
 });
 
+test('the legacy public audit requires published destinations for Git-tracked DLC sources', t => {
+  const root = fixture(t, { 'public/base.png': 'base', 'DLC/Halo/assets/sprites/hero.png': 'DLC source' });
+  trackPublicFiles(root);
+  execFileSync('git', ['add', '--', 'DLC'], { cwd: root });
+  assert.deepEqual(listGitTrackedPublicPaths(root), ['public/base.png', 'public/sprites/hero.png']);
+  assert.throws(() => auditLocalPublicAssets({ root }), error => {
+    assert.deepEqual(error.missingPaths, ['public/sprites/hero.png']);
+    return true;
+  });
+  mkdirSync(join(root, 'public/sprites'));
+  writeFileSync(join(root, 'public/sprites/hero.png'), 'published bytes');
+  assert.deepEqual(auditLocalPublicAssets({ root }), { publicFileCount: 2 });
+});
+
 test('upload audit CLI blocks pointer files even when its manifest lists every tracked asset', t => {
   const paths = ['public/image.webp'];
   const root = fixture(t, { [paths[0]]: pointer });
@@ -170,6 +221,32 @@ test('upload audit CLI blocks pointer files even when its manifest lists every t
   });
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Unresolved Git LFS pointers/);
+});
+
+test('upload CLI audits canonical DLC bytes and refuses a manifest containing only generated copies', t => {
+  const sourcePaths = ['public/base.png', 'DLC/Halo/assets/sprites/hero.png'];
+  const root = fixture(t, {
+    [sourcePaths[0]]: 'base', [sourcePaths[1]]: pointer,
+    'public/sprites/hero.png': 'already generated copy'
+  });
+  execFileSync('git', ['init', '--quiet'], { cwd: root });
+  execFileSync('git', ['add', '--', ...sourcePaths], { cwd: root });
+  const run = paths => spawnSync(process.execPath, [uploadAuditCli], {
+    cwd: root, input: JSON.stringify(manifestFor(paths)), encoding: 'utf8'
+  });
+  const pointerRejected = run(sourcePaths);
+  assert.equal(pointerRejected.status, 1);
+  assert.match(pointerRejected.stderr, /Unresolved Git LFS pointers/);
+  assert.match(pointerRejected.stderr, /DLC\/Halo\/assets\/sprites\/hero\.png/);
+
+  writeFileSync(join(root, sourcePaths[1]), 'materialized DLC source');
+  const copyRejected = run(['public/base.png', 'public/sprites/hero.png']);
+  assert.equal(copyRejected.status, 1);
+  assert.match(copyRejected.stderr, /missing 1 Git-tracked public file/);
+  assert.match(copyRejected.stderr, /DLC\/Halo\/assets\/sprites\/hero\.png/);
+  const passed = run(sourcePaths);
+  assert.equal(passed.status, 0, passed.stderr);
+  assert.match(passed.stdout, /2\/2 Git-tracked asset source files/);
 });
 
 test('build audit can inspect uploaded archives without .git and states its coverage limit', t => {

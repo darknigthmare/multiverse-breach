@@ -2,7 +2,11 @@ name: Race immersive UI
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/RaceMode.jsx'
+      - 'src/components/RaceKart3D.css'
+      - 'src/components/KartSpritePreview.jsx'
+      - 'src/game/kart/**'
       - 'src/components/HubImmersion.css'
       - 'src/game/engineRace.js'
       - 'src/game/scenePresentation.js'
@@ -19,7 +23,7 @@ concurrency:
 jobs:
   race-ui:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -29,6 +33,9 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             **/*.json
             **/*.jsonl
@@ -39,10 +46,17 @@ jobs:
             /public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-hud-avatar.png
             /public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-kart-hud-garage.png
             /public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-kart-track-nexus.png
+            /public/kart/nexus-de-convergence/
+            /public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-rpg.png
+            /public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/arca-loom.png
+            /public/sprites/generated/heroes/nexus-de-convergence/arca-sable.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Unit contracts and lint
         run: |

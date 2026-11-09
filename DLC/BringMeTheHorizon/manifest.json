@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "bring-me-the-horizon",
+  "universe": "Bring Me the Horizon",
+  "directory": "DLC/BringMeTheHorizon",
+  "registration": "runtime",
+  "catalogOrder": 231,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

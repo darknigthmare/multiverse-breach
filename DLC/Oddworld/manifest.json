@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "oddworld",
+  "universe": "Oddworld",
+  "directory": "DLC/Oddworld",
+  "registration": "runtime",
+  "catalogOrder": 183,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartJ.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartJ.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

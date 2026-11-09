@@ -1,7 +1,7 @@
-import { execFileSync, spawnSync } from 'node:child_process';
-import { closeSync, existsSync, lstatSync, openSync, readSync, readdirSync, realpathSync } from 'node:fs';
+import { closeSync, lstatSync, openSync, readSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { hasOwnGitIndex, listGitAssetSources, projectAssetPath } from './dlcAssetPaths.mjs';
 
 const LFS_HEADER_PATTERN = /^version https:\/\/git-lfs\.github\.com\/spec\/v1\r?(?:\n|$)/;
 
@@ -28,19 +28,8 @@ function validatePublicPaths(paths) {
 }
 
 export function listGitTrackedPublicPaths(root = process.cwd()) {
-  return execFileSync('git', ['ls-files', '-z', '--', 'public'], {
-    cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe']
-  }).split('\0').filter(Boolean);
-}
-
-function hasUsableGitMetadata(root) {
-  if (!existsSync(resolve(root, '.git'))) return false;
-  const probe = spawnSync('git', ['rev-parse', '--show-toplevel'], {
-    cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore']
-  });
-  // Vercel can retain an empty .git directory after removing its contents.
-  // Require this checkout's metadata; a parent repository is not coverage proof.
-  return probe.status === 0 && resolve(probe.stdout.trim()) === realpathSync(root);
+  // These are publication destinations, including assets physically owned by DLC.
+  return listGitAssetSources(root).map(sourcePath => `public${projectAssetPath(sourcePath).publicPath}`).sort();
 }
 
 /** Vercel direct uploads omit .git. This scan verifies contents, not Git coverage. */
@@ -71,6 +60,21 @@ const formatPaths = (label, paths) => paths.length ? [
 /** Verify materialized local files; injected paths make filesystem checks testable. */
 export function auditLocalPublicAssets({ root = process.cwd(), trackedPublicPaths = listGitTrackedPublicPaths(root) } = {}) {
   validatePublicPaths(trackedPublicPaths);
+  return auditLocalAssetSources({ root, sourcePaths: trackedPublicPaths });
+}
+
+/** Audit canonical source bytes before publication or a direct source upload. */
+export function auditLocalAssetSources({ root = process.cwd(), sourcePaths = listGitAssetSources(root) } = {}) {
+  if (!Array.isArray(sourcePaths) || !sourcePaths.length) {
+    throw new Error('Expected a non-empty list of public or DLC asset source files.');
+  }
+  const byUrl = new Map();
+  for (const sourcePath of sourcePaths) {
+    const entry = projectAssetPath(sourcePath);
+    if (!entry) throw new Error(`Expected a canonical relative asset path under public/ or DLC/<Alnum>/assets/: ${JSON.stringify(sourcePath)}`);
+    if (byUrl.has(entry.publicPath)) throw new Error(`Duplicate asset source or URL collision: ${JSON.stringify(sourcePath)} and ${JSON.stringify(byUrl.get(entry.publicPath))}`);
+    byUrl.set(entry.publicPath, sourcePath);
+  }
   const missingPaths = [];
   const lfsPointerPaths = [];
   const symlinkPaths = [];
@@ -88,7 +92,7 @@ export function auditLocalPublicAssets({ root = process.cwd(), trackedPublicPath
     }
     return statCache.get(path);
   };
-  for (const path of trackedPublicPaths) {
+  for (const path of sourcePaths) {
     const segments = path.split('/');
     let invalid = false;
     for (let index = 0; index < segments.length; index += 1) {
@@ -121,7 +125,7 @@ export function auditLocalPublicAssets({ root = process.cwd(), trackedPublicPath
     Object.assign(error, { missingPaths, lfsPointerPaths, symlinkPaths, nonFilePaths });
     throw error;
   }
-  return { publicFileCount: trackedPublicPaths.length };
+  return { publicFileCount: sourcePaths.length };
 }
 
 function main() {
@@ -130,7 +134,7 @@ function main() {
     throw new Error('Usage: node scripts/auditLocalPublicAssets.mjs [--build]');
   }
   const root = process.cwd();
-  const treeOnly = args[0] === '--build' && !hasUsableGitMetadata(root);
+  const treeOnly = args[0] === '--build' && !hasOwnGitIndex(root);
   const paths = treeOnly ? listPublicTreePaths(root) : listGitTrackedPublicPaths(root);
   const result = auditLocalPublicAssets({ root, trackedPublicPaths: paths });
   process.stdout.write(`Local public assets audit passed: ${result.publicFileCount} ${treeOnly ? 'public-tree' : 'Git-tracked public'} regular files, no LFS pointers.\n`);

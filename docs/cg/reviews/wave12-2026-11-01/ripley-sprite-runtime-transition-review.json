@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-02T03:48:44.244327+00:00",
+  "reviewer": "/root/alien_quality_review",
+  "characterId": "ripley",
+  "status": "passed-independent-root-runtime-transition-review",
+  "scope": "Targeted Ripley Alien1979 atlas transition only. Replays sixteen normalized cells, all1911 other roster IDs and19110 context selections,59 previous correction/variant maps,225 frozen CG descendant files and3 scoped source JPEGs. No global4320-CG/2000-sprite conservation rerun.",
+  "preRuntimeGate": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/ripley-before-runtime-gate.json",
+    "sha256": "fe55dc28ec2d3c13bc70a3dc924ac4d0a20774afb5912cb151d722f8cf699334",
+    "bytes": 84941
+  },
+  "rootTransition": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/ripley/transition.json",
+    "sha256": "c37417b55091d756389e723bee0bc6c8c85f110dba369c23043e910ead77bda9",
+    "bytes": 2082
+  },
+  "producerAtlasFreeze": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/producer-atlas-freeze-wave12-2026-11-01.json",
+    "sha256": "3deb84d3bae86e43d91160c6917c22c52c566dd753612e276bc0e71bf4ee9deb",
+    "bytes": 38504
+  },
+  "independentVisualReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/ripley-sprite-independent-review.json",
+    "sha256": "15ca9aed1315501f2eab75c48c6ae4b26c0f7770b51939f62ad0504c8e3c09a1",
+    "bytes": 54652
+  },
+  "preRuntimePixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/ripley-sprite-independent-pixel-proof.json",
+    "sha256": "f50d6fcd2597e3d8b7fbd27bf8daddb4c8b4d2f7f594b5b983c731b365548e47",
+    "bytes": 20454
+  },
+  "postRuntimePixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/ripley-sprite-runtime-selector-proof.json",
+    "sha256": "82fabf53283a9be8d6be98dcd4d513375d59057d39034ce98de6535239abec9e",
+    "bytes": 20887
+  },
+  "finalCompanion": {
+    "path": "docs/cg/ripley-sprite-wave12-2026-11-01.json",
+    "sha256": "6ca0924653e4f2c3377fb93d2cc2cd507896ab481ab4ad5b0f2e32bfc8661678",
+    "bytes": 23132
+  },
+  "preRuntimeCompanionPreservedSnapshot": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/ripley/ripley-sprite-wave12-2026-11-01.json.before",
+    "sha256": "250c73eb7b3869dd12264fc1c725228fb23d1d5c76c5a9caf4763945609be81e",
+    "bytes": 23146
+  },
+  "afterRuntimeCompanionPreservedSnapshot": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/ripley/ripley-sprite-wave12-2026-11-01.json.after",
+    "sha256": "6ca0924653e4f2c3377fb93d2cc2cd507896ab481ab4ad5b0f2e32bfc8661678",
+    "bytes": 23132
+  },
+  "authorizedCompanionFieldsChanged": [
+    "oldAtlasAccessibleAsVariant",
+    "previousAtlas.accessibleAsVariant",
+    "previousAtlas.pendingRootRuntimeIntegration",
+    "runtimeSelectionChanged",
+    "runtimeSelectionPending",
+    "status"
+  ],
+  "onlySixAuthorizedCompanionFieldsChanged": true,
+  "companionImmutableFieldsSha256": "1c95ca55e1c9edb81d8b51644a7124dde0d0a91026dc3e37fd90d60ef607850e",
+  "immutableHashEncoding": "UTF-8 JSON after removing allowed dotted fields, ensure_ascii=false, recursive sorted object keys, compact separators comma/colon, no trailing newline",
+  "allProducerAtlasPinsVerifiedUnchanged": 122,
+  "preRuntimeGateInputPinsVerifiedUnchanged": 346,
+  "exactPreRuntimeFullCompanionPinException": {
+    "path": "docs/cg/ripley-sprite-wave12-2026-11-01.json",
+    "sha256": "250c73eb7b3869dd12264fc1c725228fb23d1d5c76c5a9caf4763945609be81e",
+    "bytes": 23146
+  },
+  "fullCompanionExceptionBoundToRootTransitionAndSixFields": true,
+  "correctionMapCountBefore": 59,
+  "correctionMapCountAfter": 60,
+  "variantMapCountBefore": 59,
+  "variantMapCountAfter": 60,
+  "onlyNewCorrectionAndVariantKey": "ripley",
+  "otherRosterIdsUnchanged": 1911,
+  "otherContextSelectionsUnchanged": 19110,
+  "contextsPerRosterId": 10,
+  "allOtherVariantPacksPreserved": true,
+  "distinctRipleyAliensUnchanged": true,
+  "frozenCgGelDescendantPinsVerified": 225,
+  "qualifiedSourceBitmapsVerified": 3,
+  "selectedNewAtlas": {
+    "path": "public/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
+    "sha256": "9ace11dc65acf293675cbbd934a371688091b10dd4bff7112e2cd7b2aa09b35d",
+    "bytes": 591827
+  },
+  "previousAtlasAccessibleAsOriginalVariant": {
+    "path": "public/sprites/generated/heroes/alien/ripley.png",
+    "sha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+    "bytes": 818640
+  },
+  "installedPngByteEqualsReviewedCandidate": true,
+  "artPixelsChangedDuringRootTransition": false,
+  "runtimeModuleOnlyTwoDocumentedRipleyInsertions": true,
+  "packageOnlyNewAtlasAuditCommandAppended": true,
+  "finalSelectorModule": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "dfe37c385f8cd94c4252c85feacfcd4715c3037d0cc74c39edbd6109fee4d2aa",
+    "bytes": 59750
+  },
+  "finalPackageManifest": {
+    "path": "package.json",
+    "sha256": "bdb49ab67d94c68d8436bca94ce8b446932d40b9ad61dec568550ec82b1f9621",
+    "bytes": 27809
+  },
+  "publicAudit": {
+    "path": "docs/audits/ripley-v2-reference-sprite-fidelity-wave12-2026-11-01.json",
+    "sha256": "7970f17333140b03271244642e20bb0f9a3b82e5d98812d195023d9eca3d1930",
+    "bytes": 13100
+  },
+  "atlasProducerBudgetBeforeFinalIndependentPostEvidenceBytes": 26555719,
+  "atlasHardBudgetBytes": 40000000,
+  "reviewerHasNoAtlasOrQAInputWritesPending": true,
+  "registryWrittenByReviewer": false,
+  "semanticPixelEditsByReviewer": false,
+  "canonicalFidelityApproved": false,
+  "absoluteVisualFidelityCertified": false
+}

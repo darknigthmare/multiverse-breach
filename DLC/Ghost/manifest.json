@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "ghost",
+  "universe": "Ghost",
+  "directory": "DLC/Ghost",
+  "registration": "runtime",
+  "catalogOrder": 237,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,9 +1,13 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import GameCanvas from './GameCanvas';
 import FighterMode from './FighterMode';
+import CatalogPagination from './CatalogPagination.jsx';
 import sound from '../game/soundEngine';
 import { drawPixelSprite } from '../game/renderer';
 import './HubImmersion.css';
+import './CustomBattleMode.css';
+import { createCatalogView, paginateCatalog } from '../game/catalogPagination.js';
+import { resolveCustomThreatCandidate } from '../game/customLobbySelection.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import {
@@ -45,13 +49,13 @@ const panelStyle = {
 const selectStyle = {
   width: '100%',
   boxSizing: 'border-box',
-  minHeight: 40,
+  minHeight: 44,
   padding: '8px 10px',
   color: '#eaffff',
   border: '1px solid rgba(57,197,187,0.35)',
   borderRadius: 4,
   background: 'rgba(0,0,0,0.72)',
-  font: "11px 'Share Tech Mono', monospace"
+  font: 'inherit'
 };
 
 const localized = (entry, lang, fallback = '') => (
@@ -61,7 +65,13 @@ const localized = (entry, lang, fallback = '') => (
 const presetsEqual = (left, right) => JSON.stringify(left) === JSON.stringify(right);
 
 function TeamPicker({ title, heroes, selectedIds, onChange, max = 3, accent = '#39c5bb', lang }) {
+  const pickerId = useId();
+  const pickerRef = useRef(null);
+  const [view, setView] = useState(createCatalogView);
   const selectedSet = new Set(selectedIds);
+  const page = useMemo(() => paginateCatalog(heroes, view), [heroes, view]);
+  const selected = selectedIds.map(id => heroes.find(hero => hero.id === id)).filter(Boolean);
+  const changeView = changes => setView(previous => ({ ...previous, ...changes }));
   const toggle = id => {
     if (selectedSet.has(id)) {
       if (selectedIds.length <= 1) return;
@@ -72,104 +82,137 @@ function TeamPicker({ title, heroes, selectedIds, onChange, max = 3, accent = '#
     onChange([...selectedIds, id]);
   };
   return (
-    <section style={panelStyle}>
-      <div className="fighter-section-label" style={{ color: accent, marginBottom: 9 }}>{title}</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 7, maxHeight: '50dvh', overflow: 'auto' }}>
-        {heroes.map(hero => {
-          const selected = selectedSet.has(hero.id);
+    <section ref={pickerRef} className="custom-team-picker" aria-labelledby={`${pickerId}-title`} style={{ ...panelStyle, '--custom-picker-accent': accent }}>
+      <h3 className="custom-picker-heading" id={`${pickerId}-title`}>{title}</h3>
+      <div className="custom-selected-roster" role="group" aria-label={lang === 'fr' ? 'Escouade sélectionnée' : 'Selected squad'}>
+        {selected.map(hero => <button key={hero.id} type="button" className="custom-roster-token"
+          aria-disabled={selectedIds.length <= 1}
+          aria-label={lang === 'fr' ? `Retirer ${hero.name}` : `Remove ${hero.name}`}
+          onClick={() => {
+            if (selectedIds.length <= 1) return;
+            pickerRef.current?.querySelector('input[type="search"]')?.focus({ preventScroll: true });
+            toggle(hero.id);
+          }}>{hero.name}<span aria-hidden="true"> ×</span></button>)}
+      </div>
+      <p className="custom-picker-status" role="status">{lang === 'fr'
+        ? `${selectedIds.length}/${max} signatures sélectionnées. ${selectedIds.length >= max ? 'Retire une signature pour en choisir une autre.' : 'Conserve au moins une signature dans ce camp.'}`
+        : `${selectedIds.length}/${max} signatures selected. ${selectedIds.length >= max ? 'Remove a signature to choose another.' : 'Keep at least one signature on this side.'}`}</p>
+      <CatalogPagination catalogId={`custom-team-${pickerId}`} title={title} lang={lang} page={page} query={view.query}
+        onQueryChange={query => changeView({ query, page: 1 })}
+        onPageChange={next => changeView({ page: next })}
+        onPageSizeChange={pageSize => changeView({ pageSize, page: 1 })} />
+      <div className="custom-hero-grid">
+        {page.items.map(hero => {
+          const isSelected = selectedSet.has(hero.id);
+          const unavailable = isSelected ? selectedIds.length <= 1 : selectedIds.length >= max;
           return (
             <button
               type="button"
               key={hero.id}
               onClick={() => toggle(hero.id)}
-              className="btn-retro"
-              aria-pressed={selected}
-              title={selected
+              className="btn-retro custom-hero-choice"
+              aria-pressed={isSelected}
+              aria-disabled={unavailable}
+              data-hero-id={hero.id}
+              title={isSelected
                 ? (lang === 'fr' ? `Retirer ${hero.name}` : `Remove ${hero.name}`)
                 : (lang === 'fr' ? `Ajouter ${hero.name}` : `Add ${hero.name}`)}
               style={{
                 padding: '8px 9px',
                 textAlign: 'left',
-                borderColor: selected ? accent : '#34454b',
-                color: selected ? '#fff' : '#9db0b5',
-                background: selected ? `${accent}22` : 'rgba(0,0,0,0.3)',
-                opacity: !selected && selectedIds.length >= max ? 0.42 : 1
+                borderColor: isSelected ? accent : '#34454b',
+                color: isSelected ? '#fff' : '#bdcfd4',
+                background: isSelected ? `${accent}22` : 'rgba(0,0,0,0.3)'
               }}
             >
-              <canvas aria-hidden="true" width="96" height="88" style={{ width: 72, height: 66, display: 'block', margin: '0 auto 6px' }} ref={canvas => { if (!canvas) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 96, 88); drawPixelSprite(ctx, 48, 64, hero, 0, 1, 60, 'nexus'); }} />
-              <strong style={{ display: 'block', fontSize: 10 }}>{selected ? '◆ ' : '◇ '}{hero.name}</strong>
-              <small style={{ display: 'block', marginTop: 4, color: hero.primaryColor || accent, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <canvas aria-hidden="true" width="96" height="88" ref={canvas => { if (!canvas) return; const ctx = canvas.getContext('2d'); if (!ctx) return; ctx.clearRect(0, 0, 96, 88); drawPixelSprite(ctx, 48, 64, hero, 0, 1, 60, 'nexus'); }} />
+              <strong>{isSelected ? '◆ ' : '◇ '}{hero.name}</strong>
+              <small>
                 {hero.universe}
               </small>
             </button>
           );
         })}
       </div>
-      <small style={{ display: 'block', marginTop: 8, color: '#7f969b' }}>{selectedIds.length}/{max}</small>
     </section>
   );
 }
 
 function ThreatPicker({ catalog, selectedIds, onChange, max = 6, lang }) {
-  const [query, setQuery] = useState('');
+  const pickerId = useId();
+  const pickerRef = useRef(null);
+  const [view, setView] = useState(createCatalogView);
   const [candidateId, setCandidateId] = useState('');
-  const selectedSet = new Set(selectedIds);
-  const normalizedQuery = query.trim().toLowerCase();
-  const filtered = catalog
-    .filter(entry => !selectedSet.has(entry.id))
-    .filter(entry => !normalizedQuery || `${entry.name} ${entry.universe}`.toLowerCase().includes(normalizedQuery))
-    .slice(0, 250);
+  const page = useMemo(() => {
+    const selectedSet = new Set(selectedIds);
+    return paginateCatalog(catalog, { ...view, predicate: entry => !selectedSet.has(entry.id) });
+  }, [catalog, selectedIds, view]);
+  const candidate = resolveCustomThreatCandidate(page.items, candidateId);
   const selected = selectedIds.map(id => catalog.find(entry => entry.id === id)).filter(Boolean);
+  const changeView = changes => {
+    setCandidateId('');
+    setView(previous => ({ ...previous, ...changes }));
+  };
   const add = () => {
-    const id = candidateId || filtered[0]?.id;
-    if (!id || selectedIds.length >= max) return;
-    onChange([...selectedIds, id]);
+    if (!candidate || selectedIds.length >= max || selectedIds.includes(candidate.id)) return;
+    pickerRef.current?.querySelector('input[type="search"]')?.focus({ preventScroll: true });
+    onChange([...selectedIds, candidate.id]);
     setCandidateId('');
     sound.playSfx('click');
   };
   return (
-    <section style={panelStyle}>
-      <div className="fighter-section-label" style={{ color: '#ff8a50', marginBottom: 9 }}>
+    <section ref={pickerRef} className="custom-threat-picker" aria-labelledby={`${pickerId}-title`} style={{ ...panelStyle, '--custom-picker-accent': '#ffb28c' }}>
+      <h3 className="custom-picker-heading" id={`${pickerId}-title`}>
         {lang === 'fr' ? 'MENACES / ENNEMIS' : 'THREATS / ENEMIES'}
-      </div>
-      <input
-        value={query}
-        onChange={event => setQuery(event.target.value)}
-        aria-label={lang === 'fr' ? 'Rechercher une menace' : 'Search threats'}
-        placeholder={lang === 'fr' ? 'Chercher un ennemi ou un univers...' : 'Search enemy or universe...'}
-        style={{ ...selectStyle, marginBottom: 7 }}
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 7 }}>
-        <select value={candidateId} onChange={event => setCandidateId(event.target.value)} style={selectStyle}>
-          {filtered.map(entry => (
+      </h3>
+      <CatalogPagination catalogId={`custom-threats-${pickerId}`} title={lang === 'fr' ? 'Menaces' : 'Threats'} lang={lang} page={page} query={view.query}
+        onQueryChange={query => changeView({ query, page: 1 })}
+        onPageChange={next => changeView({ page: next })}
+        onPageSizeChange={pageSize => changeView({ pageSize, page: 1 })} />
+      <div className="custom-threat-add">
+        <label htmlFor={`${pickerId}-candidate`}>{lang === 'fr' ? 'Menace à ajouter' : 'Threat to add'}</label>
+        <select id={`${pickerId}-candidate`} aria-describedby={`${pickerId}-candidate-description`} value={candidate?.id || ''} onChange={event => setCandidateId(event.target.value)} disabled={!page.items.length} style={selectStyle}>
+          {!page.items.length && <option value="">{lang === 'fr' ? 'Aucune menace correspondante' : 'No matching threats'}</option>}
+          {page.items.map(entry => (
             <option key={entry.id} value={entry.id}>
               [{entry.kind === 'worldBoss' ? 'WORLD BOSS' : entry.kind.toUpperCase()}] {entry.name} — {entry.universe}
             </option>
           ))}
         </select>
-        <button type="button" className="btn-retro" onClick={add} disabled={!filtered.length || selectedIds.length >= max} style={{ padding: '8px 14px', borderColor: '#ff8a50', color: '#ffb28c' }}>
+        <button type="button" className="btn-retro" onClick={add} disabled={!candidate || selectedIds.length >= max} style={{ padding: '8px 14px', borderColor: '#ff8a50', color: '#ffb28c' }}>
           {lang === 'fr' ? 'AJOUTER' : 'ADD'}
         </button>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 9 }}>
+      <p className="custom-candidate-preview" id={`${pickerId}-candidate-description`}>
+        {candidate && <><strong>{candidate.name}</strong><span>{candidate.universe}</span></>}
+      </p>
+      <div className="custom-selected-roster" role="group" aria-label={lang === 'fr' ? 'Menaces sélectionnées' : 'Selected threats'}>
         {selected.map(entry => (
           <button
             type="button"
             key={entry.id}
-            onClick={() => selected.length > 1 && onChange(selectedIds.filter(id => id !== entry.id))}
+            className="custom-roster-token"
+            data-threat-id={entry.id}
+            aria-disabled={selected.length <= 1}
+            onClick={() => {
+              if (selected.length <= 1) return;
+              pickerRef.current?.querySelector('input[type="search"]')?.focus({ preventScroll: true });
+              onChange(selectedIds.filter(id => id !== entry.id));
+            }}
+            aria-label={lang === 'fr' ? `Retirer ${entry.name}` : `Remove ${entry.name}`}
             title={lang === 'fr' ? `Retirer ${entry.name}` : `Remove ${entry.name}`}
-            style={{ padding: '5px 8px', color: '#fff', border: '1px solid #8d4b36', background: 'rgba(141,75,54,0.22)', borderRadius: 3, fontSize: 9 }}
           >
-            {entry.name} ×
+            {entry.name}<span aria-hidden="true"> ×</span>
           </button>
         ))}
       </div>
-      <small style={{ display: 'block', marginTop: 8, color: '#7f969b' }}>
+      <p className="custom-picker-status" role="status">
         {lang === 'fr'
           ? 'Le même roster est utilisé par l IA ou contrôlé à tour de rôle par P2.'
           : 'The same roster is controlled by AI or locally by P2.'}
-        {' '}{selectedIds.length}/{max}
-      </small>
+        {' '}{selectedIds.length}/{max} {lang === 'fr' ? 'menaces sélectionnées.' : 'threats selected.'}
+        {selectedIds.length >= max && (lang === 'fr' ? ' Retire une menace pour en choisir une autre.' : ' Remove a threat to choose another.')}
+      </p>
     </section>
   );
 }
@@ -213,6 +256,12 @@ export default function CustomBattleMode({
 }) {
   const [phase, setPhase] = useState('setup');
   const [lobbyStep, setLobbyStep] = useState(0);
+  const lobbyId = useId();
+  const stepRefs = useRef([]);
+  const panelRef = useRef(null);
+  const launchButtonRef = useRef(null);
+  const pendingStepFocusRef = useRef(null);
+  const lastPhaseRef = useRef(phase);
   const [runtimeNonce, setRuntimeNonce] = useState(0);
   const sessionActiveRef = useRef(false);
   const pendingBattleReportRef = useRef(null);
@@ -236,6 +285,33 @@ export default function CustomBattleMode({
   const allowedHeroIds = useMemo(() => availableHeroes.map(hero => hero.id), [availableHeroes]);
   const allowedEnemyIds = useMemo(() => enemyCatalog.map(enemy => enemy.id), [enemyCatalog]);
   const [preset, setPreset] = useState(() => normalizeCustomBattlePreset(portalCollection.customBattlePreset));
+
+  const changeLobbyStep = (step, focus = 'tab') => {
+    if (step === lobbyStep) return;
+    pendingStepFocusRef.current = focus;
+    setLobbyStep(step);
+  };
+  const handleStepNavigation = event => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    const next = event.key === 'ArrowRight' ? (lobbyStep + 1) % 4
+      : event.key === 'ArrowLeft' ? (lobbyStep + 3) % 4
+        : event.key === 'Home' ? 0 : event.key === 'End' ? 3 : null;
+    if (next === null) return;
+    event.preventDefault();
+    changeLobbyStep(next);
+  };
+  useEffect(() => {
+    const returnedFromBattle = lastPhaseRef.current !== 'setup' && phase === 'setup';
+    lastPhaseRef.current = phase;
+    if (phase !== 'setup') return;
+    const pending = pendingStepFocusRef.current;
+    pendingStepFocusRef.current = null;
+    const target = pending === 'panel' ? panelRef.current
+      : pending === 'tab' ? stepRefs.current[lobbyStep]
+        : returnedFromBattle ? launchButtonRef.current : null;
+    target?.focus({ preventScroll: true });
+    target?.scrollIntoView({ block: pending === 'panel' ? 'start' : 'nearest' });
+  }, [lobbyStep, phase]);
 
   // Le wrapper reste seul proprietaire de l abandon pour tous les moteurs custom.
   useEffect(() => {
@@ -441,7 +517,7 @@ export default function CustomBattleMode({
             if (report.reason === 'abandoned') setPhase('setup');
           }}
           onPauseRequest={onPauseRequest}
-        sessionPaused={sessionPaused}
+          sessionPaused={sessionPaused}
           dedicatedSession={dedicatedSession}
         />
       </div>
@@ -450,35 +526,39 @@ export default function CustomBattleMode({
 
   const modeInfo = MODE_OPTIONS.find(mode => mode.id === preset.mode) || MODE_OPTIONS[0];
   return (
-    <div className="glass-panel custom-battle-lobby" data-testid="custom-battle-mode" style={{ padding: 18, borderRadius: 8, display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 14 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(250px, 100%), 1fr))', alignItems: 'end', gap: 12, minWidth: 0 }}>
+    <div className="glass-panel custom-battle-lobby" data-testid="custom-battle-mode">
+      <header className="custom-lobby-header">
         <div>
-          <div style={{ color: '#39c5bb', fontSize: 10, letterSpacing: 2 }}>A.R.C.A. / SIMULATION LIBRE</div>
-          <h2 className="cyber-title" style={{ margin: '5px 0 3px', fontSize: 24 }}>
-            {lang === 'fr' ? 'COMBAT PERSONNALISE' : 'CUSTOM BATTLE'}
+          <div className="custom-lobby-kicker">A.R.C.A. / {lang === 'fr' ? 'SIMULATION LIBRE' : 'FREE SIMULATION'}</div>
+          <h2 className="cyber-title">
+            {lang === 'fr' ? 'COMBAT PERSONNALISÉ' : 'CUSTOM BATTLE'}
           </h2>
-          <p style={{ margin: 0, color: '#9eb5ba', fontSize: 11, lineHeight: 1.5 }}>
+          <p>
             {lang === 'fr'
-              ? 'Compose les deux camps, puis choisis le stage, les musiques et les regles. Ces simulations ne donnent aucune recompense de campagne.'
+              ? 'Compose les deux camps, puis choisis le stage, les musiques et les règles. Ces simulations ne donnent aucune récompense de campagne.'
               : 'Build both sides, then choose the stage, music, and rules. Simulations award no campaign rewards.'}
           </p>
         </div>
-        <div style={{ padding: '7px 10px', border: '1px solid #7e6d24', color: '#ffeb3b', background: 'rgba(126,109,36,0.16)', fontSize: 9 }}>
-          {lang === 'fr' ? 'PROGRESSION DESACTIVEE' : 'PROGRESSION DISABLED'}
+        <div className="custom-lobby-progression">
+          {lang === 'fr' ? 'PROGRESSION DÉSACTIVÉE' : 'PROGRESSION DISABLED'}
         </div>
-      </div>
+      </header>
 
-      <nav className="custom-lobby-steps" aria-label={lang === 'fr' ? 'Étapes de préparation' : 'Setup steps'}>
-        {(lang === 'fr' ? ['MODE', 'ÉQUIPES', 'ARÈNE', 'RÈGLES'] : ['MODE', 'TEAMS', 'ARENA', 'RULES']).map((label, index) => <button key={label} type="button" aria-current={lobbyStep === index ? 'step' : undefined} onClick={() => setLobbyStep(index)}><b>{index + 1}</b><span>{label}</span></button>)}
+      <nav className="custom-lobby-steps" role="tablist" aria-label={lang === 'fr' ? 'Étapes de préparation' : 'Setup steps'} onKeyDown={handleStepNavigation}>
+        {(lang === 'fr' ? ['MODE', 'ÉQUIPES', 'ARÈNE', 'RÈGLES'] : ['MODE', 'TEAMS', 'ARENA', 'RULES']).map((label, index) => <button key={index} type="button"
+          ref={node => { stepRefs.current[index] = node; }} role="tab" id={`${lobbyId}-step-${index}`} aria-controls={`${lobbyId}-panel`}
+          tabIndex={lobbyStep === index ? 0 : -1} aria-selected={lobbyStep === index} aria-current={lobbyStep === index ? 'step' : undefined}
+          onClick={() => changeLobbyStep(index)}><b aria-hidden="true">{index + 1}</b><span>{label}</span></button>)}
       </nav>
+      <div ref={panelRef} id={`${lobbyId}-panel`} role="tabpanel" tabIndex={-1} aria-labelledby={`${lobbyId}-step-${lobbyStep}`} className="custom-lobby-panel">
       <section hidden={lobbyStep !== 0} aria-label={lang === 'fr' ? 'Mode de combat' : 'Battle mode'} style={{ ...panelStyle, display: 'grid', gap: 10 }}>
         <div className="fighter-section-label">{lang === 'fr' ? 'SYSTEME DE COMBAT' : 'BATTLE SYSTEM'}</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8 }}>
+        <div className="custom-mode-options">
           {MODE_OPTIONS.map(mode => (
             <button
               type="button"
               key={mode.id}
-              className="btn-retro"
+              className="btn-retro custom-mode-choice"
               aria-pressed={preset.mode === mode.id}
               onClick={() => updatePreset({
                 mode: mode.id,
@@ -491,12 +571,12 @@ export default function CustomBattleMode({
                 background: preset.mode === mode.id ? 'rgba(57,197,187,0.14)' : 'rgba(0,0,0,0.24)'
               }}
             >
-              <strong style={{ display: 'block', fontSize: 11 }}>{lang === 'fr' ? mode.fr : mode.en}</strong>
-              <small style={{ display: 'block', marginTop: 6, color: '#789096', lineHeight: 1.35 }}>{lang === 'fr' ? mode.descFr : mode.descEn}</small>
+              <strong>{lang === 'fr' ? mode.fr : mode.en}</strong>
+              <small>{lang === 'fr' ? mode.descFr : mode.descEn}</small>
             </button>
           ))}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        <div className="custom-opponent-options">
           {[
             { id: 'cpu', fr: 'CONTRE CPU', en: 'VERSUS CPU', descFr: 'A.R.C.A. controle le camp adverse.', descEn: 'A.R.C.A. controls the opposing side.' },
             { id: 'p2', fr: 'CONTRE P2 LOCAL', en: 'LOCAL VERSUS P2', descFr: 'Deux joueurs sur le meme appareil.', descEn: 'Two players on the same device.' }
@@ -504,7 +584,7 @@ export default function CustomBattleMode({
             <button
               type="button"
               key={option.id}
-              className="btn-retro"
+              className="btn-retro custom-mode-choice"
               aria-pressed={preset.opponentControl === option.id}
               onClick={() => updatePreset({
                 opponentControl: option.id,
@@ -515,13 +595,13 @@ export default function CustomBattleMode({
               style={{ padding: 9, borderColor: preset.opponentControl === option.id ? '#ff8a50' : '#34454b', color: preset.opponentControl === option.id ? '#fff' : '#8fa5aa' }}
             >
               <strong>{lang === 'fr' ? option.fr : option.en}</strong>
-              <small style={{ display: 'block', marginTop: 4 }}>{lang === 'fr' ? option.descFr : option.descEn}</small>
+              <small>{lang === 'fr' ? option.descFr : option.descEn}</small>
             </button>
           ))}
         </div>
       </section>
 
-      <div hidden={lobbyStep !== 1} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 12 }}>
+      <div hidden={lobbyStep !== 1} className="custom-lobby-teams">
         <TeamPicker
           title={lang === 'fr' ? 'ESCOUADE P1' : 'P1 SQUAD'}
           heroes={availableHeroes}
@@ -575,12 +655,12 @@ export default function CustomBattleMode({
           <div hidden={lobbyStep !== 2}><LoadoutSelect label={lang === 'fr' ? 'MUSIQUE DU COMBAT' : 'BATTLE MUSIC'} value={preset.battleMusicId} onChange={id => updatePreset({ battleMusicId: id })} options={ownedBattleMusic} defaultLabel={lang === 'fr' ? 'Automatique selon le combat' : 'Automatic for battle'} lang={lang} /></div>
           <div hidden={lobbyStep !== 3}><LoadoutSelect label={lang === 'fr' ? 'SUPER DE TERRAIN' : 'FIELD SUPER'} value={preset.fieldSuperId} onChange={id => updatePreset({ fieldSuperId: id })} options={ownedFieldSupers} defaultLabel={lang === 'fr' ? 'Aucun super de terrain' : 'No field super'} lang={lang} /></div>
           {preset.mode !== 'Fighter' && lobbyStep === 3 && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'end', gap: 8 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(8em, 100%), 1fr))', alignItems: 'end', gap: 8 }}>
               {[
                 { key: 'items', fr: 'Objets', en: 'Items' },
                 { key: 'hazards', fr: 'Dangers', en: 'Hazards' }
               ].filter(rule => preset.mode !== 'Smash' || rule.key !== 'hazards').map(rule => (
-                <label key={rule.key} style={{ minHeight: 40, display: 'flex', alignItems: 'center', gap: 8, padding: '0 10px', border: '1px solid #34454b', borderRadius: 4, color: '#cce6e7', fontSize: 10 }}>
+                <label className="custom-lobby-toggle" key={rule.key}>
                   <input type="checkbox" checked={preset[rule.key]} onChange={event => updatePreset({ [rule.key]: event.target.checked })} />
                   {lang === 'fr' ? rule.fr : rule.en}
                 </label>
@@ -617,9 +697,9 @@ export default function CustomBattleMode({
                 disabled={preset.stageVariant === STAGE_VARIANTS.competitive}
                 style={selectStyle}
               >
-                <option value={STAGE_EVENT_INTENSITIES.off}>Off</option>
-                <option value={STAGE_EVENT_INTENSITIES.light}>Light</option>
-                <option value={STAGE_EVENT_INTENSITIES.full}>Full</option>
+                <option value={STAGE_EVENT_INTENSITIES.off}>{lang === 'fr' ? 'Désactivée' : 'Off'}</option>
+                <option value={STAGE_EVENT_INTENSITIES.light}>{lang === 'fr' ? 'Légère' : 'Light'}</option>
+                <option value={STAGE_EVENT_INTENSITIES.full}>{lang === 'fr' ? 'Complète' : 'Full'}</option>
               </select>
               {preset.stageVariant === STAGE_VARIANTS.competitive && (
                 <small>{lang === 'fr' ? 'La variante compétitive désactive les événements du décor.' : 'The competitive variant disables stage events.'}</small>
@@ -657,7 +737,7 @@ export default function CustomBattleMode({
             <img src={selectedArchive.image} alt="" style={{ width: 180, maxWidth: '100%', maxHeight: 110, objectFit: 'cover', border: '1px solid #31545a', boxSizing: 'border-box' }} />
             <div>
               <strong style={{ color: selectedArchive.color || '#39c5bb' }}>{selectedArchive.universe}</strong>
-              <p style={{ margin: '5px 0 0', color: '#8ea6ab', fontSize: 10, lineHeight: 1.45 }}>
+              <p className="custom-lobby-note">
                 {lang === 'fr'
                   ? `Cette arène débloquée sera utilisée pour ton combat ${modeInfo.fr}.`
                   : `This unlocked arena will host your ${modeInfo.en} battle.`}
@@ -668,25 +748,34 @@ export default function CustomBattleMode({
       </section>
 
       {lobbyStep === 3 && preset.opponentControl === 'p2' && (
-        <div style={{ padding: 10, border: '1px solid rgba(255,138,80,0.38)', background: 'rgba(255,138,80,0.08)', color: '#ffd4bd', fontSize: 10, lineHeight: 1.5 }}>
+        <div className="custom-lobby-p2-note">
           {preset.mode === 'Tactics' || preset.mode === 'RPG'
             ? (lang === 'fr' ? 'P2 prend les commandes pendant les tours/ATB ennemis. La souris est partagee en Tactique.' : 'P2 takes control during enemy turns/ATB. The mouse is shared in Tactics.')
             : (lang === 'fr' ? 'P1 utilise ZQSD et ses touches d action; P2 utilise les fleches et le second groupe de touches affiche en combat.' : 'P1 uses ZQSD and the first action-key group; P2 uses arrows and the second group shown in battle.')}
         </div>
       )}
+      </div>
 
       <footer className="custom-lobby-footer">
-        <div className="custom-lobby-summary"><strong>{lang === 'fr' ? modeInfo.fr : modeInfo.en} · {preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}</strong><span>{preset.playerTeamIds.map(id => availableHeroes.find(hero => hero.id === id)?.name || id).join(' / ')} → {selectedArchive ? localized(selectedArchive, lang, selectedArchive.universe) : 'Nexus'}</span></div>
-        <div style={{ display: 'flex', gap: 8 }}>
-          {lobbyStep > 0 && <button type="button" className="btn-retro" onClick={() => setLobbyStep(step => step - 1)}>{lang === 'fr' ? 'PRÉCÉDENT' : 'PREVIOUS'}</button>}
-          {lobbyStep < 3 && <button type="button" className="btn-retro" onClick={() => setLobbyStep(step => step + 1)}>{lang === 'fr' ? 'SUIVANT' : 'NEXT'}</button>}
+        <div className="custom-lobby-summary">
+          <strong>{lang === 'fr' ? modeInfo.fr : modeInfo.en} · {preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}</strong>
+          <span>P1 : {preset.playerTeamIds.map(id => availableHeroes.find(hero => hero.id === id)?.name || id).join(' / ')}</span>
+          <span>{preset.opponentControl === 'p2' ? 'P2' : 'CPU'} : {(preset.mode === 'Fighter'
+            ? preset.opponentTeamIds.map(id => availableHeroes.find(hero => hero.id === id)?.name || id)
+            : enemyData.customRoster.map(entry => entry.name)).join(' / ')}</span>
+          <span>{lang === 'fr' ? 'Arène' : 'Arena'} : {selectedArchive ? localized(selectedArchive, lang, selectedArchive.universe) : 'Nexus'}</span>
+        </div>
+        <div className="custom-lobby-actions">
+          {lobbyStep > 0 && <button type="button" className="btn-retro" onClick={() => changeLobbyStep(lobbyStep - 1, 'panel')}>{lang === 'fr' ? 'PRÉCÉDENT' : 'PREVIOUS'}</button>}
+          {lobbyStep < 3 && <button type="button" className="btn-retro" onClick={() => changeLobbyStep(lobbyStep + 1, 'panel')}>{lang === 'fr' ? 'SUIVANT' : 'NEXT'}</button>}
       <button
         hidden={lobbyStep !== 3}
+        ref={launchButtonRef}
         type="button"
         className="btn-retro"
         onClick={launch}
         disabled={!preset.playerTeamIds.length || (preset.mode === 'Fighter' ? !preset.opponentTeamIds.length : !enemyData.customRoster.length)}
-        style={{ justifySelf: 'stretch', padding: '13px 18px', borderColor: '#39c5bb', color: '#fff', background: 'linear-gradient(90deg, rgba(57,197,187,0.2), rgba(255,138,80,0.12))', fontSize: 13 }}
+        style={{ justifySelf: 'stretch', padding: '13px 18px', borderColor: '#39c5bb', color: '#fff', background: 'linear-gradient(90deg, rgba(57,197,187,0.2), rgba(255,138,80,0.12))' }}
       >
         {lang === 'fr' ? `LANCER ${modeInfo.fr} — ${preset.opponentControl === 'p2' ? 'P2 LOCAL' : 'CPU'}` : `LAUNCH ${modeInfo.en} — ${preset.opponentControl === 'p2' ? 'LOCAL P2' : 'CPU'}`}
       </button>

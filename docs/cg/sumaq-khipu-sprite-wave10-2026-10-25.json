@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "characterId": "sumaq_khipu",
+  "heroId": "sumaq_khipu",
+  "characterName": "Sumaq Khipu",
+  "operationKind": "genuine-source-referenced-four-groups-plus-whole-pose13-correction",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "internalcanonicalOriginalProject",
+  "role": "qualified-but-not-certified",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+    "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+    "bytes": 2580548,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu-v2-fidelity-wave10-2026-10-25.png",
+    "sha256": "10bbb722f3b58d507a017d7fa3f90ac9e9d302bc5859c0645a88a0a51dbe0826",
+    "bytes": 1403138,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "publicAuditFile": "docs/audits/sumaq-khipu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+  "installerManifest": {
+    "path": "docs/audits/sumaq-khipu-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+    "sha256": "3e94ba4d1ceb11563899cdcb47cd5a9dd0e8734236240f5711db212ea29e0134"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-sprite-independent-review.json",
+    "sha256": "454df0b0bed067b965e002a2f089e76b3fd9aa78624e972e0ac1a61a2f3d7d82",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu.png",
+    "sha256": "623751f5dcf5a618c622b76ec03ff7ed960a772247e0c91579f61d195244072c",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 5,
+    "genuineCorrectiveFrames": [
+      13
+    ],
+    "sourceVisiblePixels": 2637231,
+    "assignedVisiblePixels": 2637231,
+    "selectedSourcePixelsDeletedBeforeNearestResize": 0,
+    "finalCommonNearestScale": 0.3706070287539936,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      241,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas/packing-proof.json",
+      "sha256": "a0e6572c9bc812ce768da88180c0b82a68c1104116db45bf6ff3438643138124"
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas/assembly-proof.json",
+      "sha256": "17f18f278f66607eb3264b63d9f39b4897f51d2c6e3ea23e7ca312a5e6faabd6"
+    }
+  },
+  "nativeInputs": [
+    {
+      "nativePath": "/workspace/generated_images/exec-4ffe2c82-beb0-47f8-8608-c936f4fb93cc.png",
+      "nativeSha256": "60e7882ad11c82a8995a1149d574de258602c1d9634a02aeb2c825050e3d76ea",
+      "selectedFrames": [],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-pose13-correction-prompt.txt",
+      "actuallyViewed": true,
+      "reason": "Whole solo corrective pose shows both sandals but at2x native group scale; not selected. Replaced by genuine2x2 group, no per-pose technical resizing.",
+      "bytes": 1664913,
+      "promptSha256": "70577814eac289152b60068fcf24c8f463cce6c8f048ea0a930e7523a6ee9a7a",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-09843774-4dfb-459e-a623-b28aeddc3d89.png",
+      "nativeSha256": "9927515b272a4ff00ca5846d14985fe4485fa660ccd8a74938e0913133b34dbc",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-group-1-prompt.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All four whole native source poses personally opened; all visible alpha>12 strictly inside native canvas. Both implements and both shoes inspected; no endpoint repaired by padding.",
+      "bytes": 2109740,
+      "promptSha256": "7bf9240473dc400371e67ef36fbdaff48d72547b5b363c5f7e3a402636b2143e",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-9e75b256-3af2-4b4c-99df-f7c1ae245e61.png",
+      "nativeSha256": "8c53721f34ac948c6632af8b69efe1ff33e24b0caded53bba5dcae21d369205a",
+      "selectedFrames": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-group-2-prompt.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All four whole native source poses personally opened; all visible alpha>12 strictly inside native canvas. Both implements and both shoes inspected; no endpoint repaired by padding.",
+      "bytes": 2243950,
+      "promptSha256": "c56e4ce41ea8845b69a297fe49b5a635190a756a425cf8ee62ed951bcc1caafe",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-30d0174a-a299-45fe-a800-df1453f40f82.png",
+      "nativeSha256": "4a9b374902d074854f4c5474137518241e9e1daf228df22921cee55d56b15553",
+      "selectedFrames": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-group-3-prompt.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All four whole native source poses personally opened; all visible alpha>12 strictly inside native canvas. Both implements and both shoes inspected; no endpoint repaired by padding.",
+      "bytes": 2199208,
+      "promptSha256": "ec78abb7448d91b4b11957c56ba435f39f0252a3d27b9d20b6dc59b88f31be1b",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-b65e0448-b3ce-4d1e-ab38-686179d7a543.png",
+      "nativeSha256": "ecb823440dc0d288ce4dc7f30b9e2773b6154776cc47a29bed5b07781c6792b7",
+      "selectedFrames": [
+        14,
+        15,
+        16
+      ],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-group-4-prompt.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All four whole native source poses personally opened; all visible alpha>12 strictly inside native canvas. Both implements and both shoes inspected; no endpoint repaired by padding.",
+      "bytes": 2052429,
+      "promptSha256": "fb33b352af21b55070b3ffeb297c91cbd9708259d43508e9e0ec2676a483b6b0",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-cd6bb54a-614d-4334-97e1-bd5b2ca71fb5.png",
+      "nativeSha256": "368983ceb53cef7130d31909a7cd9f46284e23f6edcc44e053ce49cac8f6127b",
+      "selectedFrames": [
+        13
+      ],
+      "promptFile": "/workspace/multiverse-breach/.tmp/cg-wave10-2026-10-25/sumaq-khipu/atlas-pose13-group-correction-prompt.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All four whole native source poses personally opened; all visible alpha>12 strictly inside native canvas. Both implements and both shoes inspected; no endpoint repaired by padding.",
+      "bytes": 2032197,
+      "promptSha256": "9711ed4426cdde3ac55cae4d1f88f0b1bccca8fae8c6240f5f21e754ecf655ec",
+      "sourceReference": {
+        "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+        "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+        "actuallyUsedAsImagegenReference": true
+      }
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 6,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "refusals": 0,
+  "toolRefusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/sumaq-khipu-reference-evidence-wave10-2026-10-25.json",
+  "sourceReviewSha256": "793bc228f724d95d2d3e438b26c8afc43c8229c6c10a27db7db17a4c6bd4866f",
+  "limitations": [
+    "Single visible internal original-project V2 reference; hidden reverse garment geometry and tiny knots remain interpreted, no absolute 1:1 certification.",
+    "Chronological age unknown; all poses retain source apparent proportions and opaque family-safe clothes, no romance.",
+    "Six genuine raw ImageGen natives retained. Solo corrective whole13 unused due2x native scale versus groups; final13 comes from genuine2x2 correction. Four groups plus correction contribute selectedFrames4+4+4+3+1. Group4 original13 and correction other3 remain in full raw files; partial contributors are not wholly unused natives.",
+    "All selected visible alpha>12 pixels assigned and preserved before common nearest normalization; weak-alpha fringe bounded at4 pixels. Nearest sampling changes pixel counts.",
+    "The producer left shared runtime maps unchanged; root subsequently selected this final atlas and exposed the historical atlas as an accessible variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-25",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-sprite-independent-review.json",
+  "independentReviewSha256": "454df0b0bed067b965e002a2f089e76b3fd9aa78624e972e0ac1a61a2f3d7d82"
+}

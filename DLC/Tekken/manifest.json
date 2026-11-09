@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "tekken",
+  "universe": "Tekken",
+  "directory": "DLC/Tekken",
+  "registration": "runtime",
+  "catalogOrder": 178,
+  "modules": [
+    {
+      "path": "data/canonFollowupSourceKits.js",
+      "runtimeAdapter": "src/game/canonFollowupSourceKits.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -6,6 +6,7 @@ import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, getOpenAiBackdropSrc, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
+import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
@@ -100,10 +101,15 @@ const scaleHeroForFight = (hero, level = 1) => {
 };
 
 function FighterPortrait({ hero, active = false, ko = false }) {
-  const src = getHeroSpriteSheetSrc(hero, 'melee');
+  const artBlocked = Boolean(getQuarantinedCanonSprite(hero));
+  const src = artBlocked ? '' : getHeroSpriteSheetSrc(hero, 'melee');
   const layout = getSpriteSheetLayout(src);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    if (!src) {
+      setLoaded(false);
+      return undefined;
+    }
     let cancelled = false;
     const image = new Image();
     image.onload = () => { if (!cancelled) setLoaded(true); };
@@ -123,7 +129,7 @@ function FighterPortrait({ hero, active = false, ko = false }) {
       }}
       aria-hidden="true"
     >
-      {!loaded && <b>{initials}</b>}
+      {!loaded && <b title={artBlocked ? 'Known noncanonical sprite quarantined for art review' : undefined}>{artBlocked ? 'ART' : initials}</b>}
     </span>
   );
 }

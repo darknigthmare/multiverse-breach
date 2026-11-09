@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "nova_bell",
+  "heroId": "nova_bell",
+  "characterName": "Nova Bell",
+  "incarnation": "Helios 56 — selected individual Nova Bell V2 original-project portrait2026",
+  "qualificationStatus": "internal-selected-original-project-reference-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/helios_56/heroes/nova_bell.png",
+      "sha256": "8cdc5e3ca4086c275dc3384ad2033642b9abda2bf8c2ae56bb8227dcfb401327",
+      "bytes": 2236692,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:26:59.256903+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact selected source restored by root, actually opened in current session."
+    },
+    {
+      "path": "/sprites/generated/heroes/helios-56/nova-bell.png",
+      "sha256": "013b5625a114312de2322a9794a059acab2a0ef66e98c598fd78463fe4e39202",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Lean human woman, short curly dark-brown bob under red/ivory padded headset, red cropped high-collar jacket and yellow flared trousers with broad red outer panels, black/red lace boots."
+    ],
+    "face": [
+      "Warm light skin, dark brows, green eyes, brown curls and silver headset with red ear-disc/antenna."
+    ],
+    "costume": [
+      "Ivory undershirt, red jacket/yellow high collar/cuffs, trailing yellow scarf, red-black gloves, black utility belt with silver cylinder on anatomical LEFT hip, thigh holster at anatomical RIGHT.",
+      "Anatomical LEFT upper sleeve has a tiny beige/gold circular patch; its internal mark is unreadable. Do not replace it with a large readable letter or square badge."
+    ],
+    "equipment": [
+      "Anatomical LEFT hand (viewer RIGHT) extends red cylindrical ray pistol with black/silver grip/barrel details and small upper antenna; RIGHT hand open. Small white robots in source are contextual, not mandatory body parts.",
+      "Visible muzzle is a flat round black opening bordered brass/gold, with separate yellow light effect. A long solid brass nozzle is not source established."
+    ],
+    "palette": [
+      "Red, mustard yellow, ivory, black boot/glove, silver radio and ray-pistol details."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project selected V2 source only, no external franchise authority or absolute1:1 certification.",
+    "Chronological age unknown; all themes family-safe, opaque, nonromantic.",
+    "Single front/three-quarter source, hidden reverse geometry and tiny illegible insignia unknown.",
+    "Old atlas high brown ponytail, yellow cropped jacket/dark fitted trousers and unarmed punches; source short curly bob/red jacket/yellow-red flared trousers/headset/left ray pistol differ.",
+    "Old atlas remains byte-identical; actual divergence justifies new atlas.",
+    "CG05 Nexus adaptation; CG09-11 fan art; CG12-15 hypothetical WhatIf with one CG13 option and one CG15 option. All new settings original universe-compatible interpretations.",
+    "Fine sleeve/headset/gun markings remain unresolved. Prominent invented letter on first CG04 and solid brass nozzle on first CG01 were genuine rejected drafts, preserved separately; source-hidden details not certified."
+  ],
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/helios_56/heroes/nova_bell.png"
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "actualRecordRead": {
+      "worldKey": "helios_56",
+      "lore": {
+        "origin": {
+          "fr": "En 1956, la société Helios a promis des villes atomiques propres, des robots domestiques et des vacances lunaires. Soixante-dix ans plus tard, Tomorrowville vit toujours dans la même publicité tandis que ses réacteurs vieillissent derrière des façades chromées."
+        },
+        "breach": {
+          "fr": "HELIO-1, le réacteur central, interprète les Éclats d’Origine comme un combustible parfait. L’intelligence de propagande diffuse alors une version du futur où chaque anomalie, chaque peur et chaque citoyen imparfait doit être corrigé."
+        },
+        "coreConflict": {
+          "fr": "Réconcilier l’optimisme scientifique avec ses conséquences, sauver la colonie lunaire et empêcher HELIO-1 de transformer tout le Nexus en démonstration publicitaire."
+        }
+      },
+      "hero": {
+        "id": "nova_bell",
+        "name": "Nova Bell",
+        "category": "tactical",
+        "combatRole": "pilote / mobilité",
+        "loreRole": "Pilote d’essai de la ligne Terre-Lune et voix pirate de Tomorrowville.",
+        "primaryColor": "#d84c39",
+        "secondaryColor": "#f5d45c",
+        "weaponType": "ray_pistol",
+        "stats": {
+          "hp": 126,
+          "atk": 15,
+          "def": 8,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Pistolet Rayon",
+          "type": "bullet",
+          "dmg": 1.0
+        },
+        "secondary": {
+          "name": "Bond Fusée",
+          "type": "dash",
+          "cd": 5,
+          "dmg": 1.9
+        },
+        "defense": {
+          "name": "Casque Pressurisé",
+          "type": "shield",
+          "dur": 2.0,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Passage Comète",
+          "type": "airstrike_aoe",
+          "dmg": 4.7,
+          "color": "#e8503d"
+        },
+        "universe": "Helios 56",
+        "sourceType": "original",
+        "weaponColor": "#f5d45c"
+      },
+      "stages": [
+        {
+          "id": "helios_tomorrowville_expo",
+          "name": {
+            "fr": "Exposition Tomorrowville",
+            "en": "Tomorrowville Expo"
+          },
+          "mode": "Smash",
+          "difficulty": "Medium",
+          "objectiveType": "rout",
+          "boss": "The Perfect Family Broadcast",
+          "setting": {
+            "fr": "Pavillons Googie, voitures à ailettes, écrans souriants et réacteurs miniatures."
+          },
+          "universe": "Helios 56",
+          "sourceUniverses": [
+            "Helios 56"
+          ],
+          "sourceType": "original",
+          "stageKey": "helios_tomorrowville_expo"
+        },
+        {
+          "id": "helios_lunar_silo_7",
+          "name": {
+            "fr": "Silo lunaire 7",
+            "en": "Lunar Silo 7"
+          },
+          "mode": "Tactics",
+          "difficulty": "Hard",
+          "objectiveType": "escort",
+          "boss": "Moonbase Warden",
+          "setting": {
+            "fr": "Escorter une équipe civile entre des sas, silos et zones sous vide."
+          },
+          "universe": "Helios 56",
+          "sourceUniverses": [
+            "Helios 56"
+          ],
+          "sourceType": "original",
+          "stageKey": "helios_lunar_silo_7"
+        },
+        {
+          "id": "helios_reactor_core",
+          "name": {
+            "fr": "Cœur de HELIO-1",
+            "en": "HELIO-1 Core"
+          },
+          "mode": "RPG",
+          "difficulty": "Very Hard",
+          "objectiveType": "overload",
+          "boss": "HELIO-1, Smiling Sun Reactor",
+          "setting": {
+            "fr": "Boss de fusion où le joueur choisit entre arrêt sûr et surcharge rapide."
+          },
+          "universe": "Helios 56",
+          "sourceUniverses": [
+            "Helios 56"
+          ],
+          "sourceType": "original",
+          "stageKey": "helios_reactor_core"
+        }
+      ]
+    }
+  },
+  "incarnationDecision": {
+    "selectedPortrait": "public/images/oc-worlds/v2/helios_56/heroes/nova_bell.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/helios-56/nova-bell.png",
+    "reason": "Old atlas high brown ponytail, yellow cropped jacket/dark fitted trousers and unarmed punches; source short curly bob/red jacket/yellow-red flared trousers/headset/left ray pistol differ."
+  }
+}

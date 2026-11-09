@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "futurama",
+  "universe": "Futurama",
+  "directory": "DLC/Futurama",
+  "registration": "runtime",
+  "catalogOrder": 189,
+  "modules": [
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/mosaicUniversePlaces.js",
+      "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

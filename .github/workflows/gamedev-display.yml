@@ -2,6 +2,7 @@ name: Gamedev display browser
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -9,12 +10,14 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
   push:
     branches: [master]
     paths:
+      - 'DLC/**'
       - 'src/**'
       - 'scripts/**'
       - 'package.json'
@@ -22,6 +25,7 @@ on:
       - '.nvmrc'
       - 'vite.config.js'
       - 'AGENTS.md'
+      - '.ai-tools/**'
       - 'docs/development/**'
       - 'vendor/gamedev-skills/**'
       - '.github/workflows/gamedev-display.yml'
@@ -44,14 +48,21 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
+            /.ai-tools/
             /docs/development/
             /vendor/gamedev-skills/
             /.github/workflows/
+            /public/visuals/cosmetics/openai/portal-effects-atlas-v1.png
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Guidance integrity and focused behavior tests
         run: |
@@ -70,6 +81,7 @@ jobs:
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-audio.html
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-save.html
           test -s .tmp/gamedev-display/scripts/fixtures/gamedev-gamepad.html
+          node scripts/buildMenuAccessibilityFixture.mjs 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/menu-fixture-build.log"
       - name: Install pinned browser test tooling separately from the game
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/gamedev-browsers
@@ -90,6 +102,7 @@ jobs:
           npm run test:gamedev:audio-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/audio-browser.log"
           npm run test:gamedev:save-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/save-browser.log"
           npm run test:gamedev:gamepad-browser 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/gamepad-browser.log"
+          PLAYWRIGHT_FIXTURE_DIR=.tmp/menu-accessibility node scripts/browserMenuAccessibility.mjs --evidence "$RUNNER_TEMP/gamedev-display-evidence/menus" 2>&1 | tee "$RUNNER_TEMP/gamedev-display-evidence/menu-browser.log"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

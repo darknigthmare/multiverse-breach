@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "ysara_flint",
+  "heroId": "ysara_flint",
+  "characterName": "Capitaine Ysara Flint",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-pose-redraw-and-genuine-whole-atlas-reframing",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/crownless_sea/heroes/ysara_flint.png",
+    "sha256": "4ac6a4c8cfbe185c8308c6013acaef65d1e3f72b107df497f80abe781df3f696",
+    "bytes": 2584447,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "15a44c8d958a154c10721d4dc65d60eb88e826c705f7420c162ba8d430db59bf",
+    "bytes": 1202385,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/the-crownless-sea/ysara-flint-v2-fidelity-wave7-2026-10-23.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/ysara-flint-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+    "sha256": "fe0484928a39015bd7eb75b5e5f298f2609a205469784940f97d185924f12b45"
+  },
+  "publicAuditFile": "docs/audits/ysara-flint-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+  "independentReview": {
+    "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-sprite-independent-review.json",
+    "sha256": "707afd4837604433f08178d1e2bdda5c83190371512369f2773de8f893b95132",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/the-crownless-sea/ysara-flint.png",
+    "sha256": "302a668a013345af9794c8ca7da2410bc00447c58ba3fd77612f086a348478b4",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceNative": {
+    "successfulNativeOutputs": 2,
+    "selectedImagegenNativeInputs": 1,
+    "whollyUnselectedNativeDrafts": 1,
+    "nativeInputBindings": [
+      {
+        "path": "/workspace/generated_images/exec-05085f6c-684c-4924-be1c-9e69f6d6ea96.png",
+        "sha256": "a809de1732e7ebc8bf71c747eb9935ee4821193410a0cab5fd04b24e3eda0b83",
+        "selectedFrames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "promptFile": "docs/cg/prompts/wave7-2026-10-23/ysara-flint/atlas-reframe-v2.txt",
+        "reason": "Genuine ImageGen reframing restores complete16silhouettes with outer transparent clearance; pending independent frame review.",
+        "contributesFrames": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    ],
+    "nativeLedger": {
+      "path": ".tmp/cg-wave7-2026-10-23/ysara-flint/atlas-native-ledger.json",
+      "sha256": "d64cdfb39a25814fea502f7fc1cac39d9b733f2f4d4dedbf3bdf1c7c5ca93d7c"
+    },
+    "singleGenuineSelectedNative": true
+  },
+  "processing": {
+    "operation": "visible-alpha-bounds+4px-fringe+referenced-frame-extraction+common-nearest-scale+4x4-packing",
+    "mode": "component-layout",
+    "sourceVisiblePixels": 454731,
+    "assignedVisiblePixels": 454731,
+    "softAlphaPixelsPreserved": 113898,
+    "softAlphaOutsideFrameDiscarded": 3936,
+    "softAlphaAmbiguitiesForReview": 0,
+    "dominantBodies": 16,
+    "satellites": 39,
+    "crossesVirtualBoundaries": [
+      1,
+      2,
+      3,
+      4,
+      13,
+      14
+    ],
+    "componentAssignment": "dominant centroid to distinct grid centers; satellites to nearest dominant bbox; original internal coordinates preserved",
+    "alphaBoundsThreshold": 12,
+    "sourceFringePixels": 4,
+    "softAlphaNormalization": "Keep alpha 1-12 inside each visible alpha>12 bbox expanded by 4 source pixels; discard only alpha 1-12 outside those bounds. No alpha>12 source pixel is removed before resize.",
+    "uniformScale": 0.8226950354609929,
+    "maximumSourceFrameWidth": 274,
+    "maximumSourceFrameHeight": 282,
+    "frameMeasurements": [
+      {
+        "cell": 1,
+        "sourceBounds": {
+          "left": 36,
+          "top": 54,
+          "right": 272,
+          "bottom": 329,
+          "width": 237,
+          "height": 276
+        },
+        "sourceVisibleBounds": {
+          "left": 40,
+          "top": 58,
+          "right": 268,
+          "bottom": 325,
+          "width": 229,
+          "height": 268
+        },
+        "sourceVisiblePixels": 28360,
+        "normalizedWidth": 195,
+        "normalizedHeight": 227
+      },
+      {
+        "cell": 2,
+        "sourceBounds": {
+          "left": 371,
+          "top": 48,
+          "right": 597,
+          "bottom": 329,
+          "width": 227,
+          "height": 282
+        },
+        "sourceVisibleBounds": {
+          "left": 375,
+          "top": 52,
+          "right": 593,
+          "bottom": 325,
+          "width": 219,
+          "height": 274
+        },
+        "sourceVisiblePixels": 29777,
+        "normalizedWidth": 187,
+        "normalizedHeight": 232
+      },
+      {
+        "cell": 3,
+        "sourceBounds": {
+          "left": 673,
+          "top": 55,
+          "right": 896,
+          "bottom": 327,
+          "width": 224,
+          "height": 273
+        },
+        "sourceVisibleBounds": {
+          "left": 677,
+          "top": 59,
+          "right": 892,
+          "bottom": 323,
+          "width": 216,
+          "height": 265
+        },
+        "sourceVisiblePixels": 27172,
+        "normalizedWidth": 184,
+        "normalizedHeight": 225
+      },
+      {
+        "cell": 4,
+        "sourceBounds": {
+          "left": 999,
+          "top": 55,
+          "right": 1235,
+          "bottom": 331,
+          "width": 237,
+          "height": 277
+        },
+        "sourceVisibleBounds": {
+          "left": 1003,
+          "top": 59,
+          "right": 1231,
+          "bottom": 327,
+          "width": 229,
+          "height": 269
+        },
+        "sourceVisiblePixels": 29287,
+        "normalizedWidth": 195,
+        "normalizedHeight": 228
+      },
+      {
+        "cell": 5,
+        "sourceBounds": {
+          "left": 48,
+          "top": 374,
+          "right": 306,
+          "bottom": 619,
+          "width": 259,
+          "height": 246
+        },
+        "sourceVisibleBounds": {
+          "left": 52,
+          "top": 378,
+          "right": 302,
+          "bottom": 615,
+          "width": 251,
+          "height": 238
+        },
+        "sourceVisiblePixels": 27102,
+        "normalizedWidth": 213,
+        "normalizedHeight": 202
+      },
+      {
+        "cell": 6,
+        "sourceBounds": {
+          "left": 348,
+          "top": 378,
+          "right": 609,
+          "bottom": 614,
+          "width": 262,
+          "height": 237
+        },
+        "sourceVisibleBounds": {
+          "left": 352,
+          "top": 382,
+          "right": 605,
+          "bottom": 610,
+          "width": 254,
+          "height": 229
+        },
+        "sourceVisiblePixels": 25773,
+        "normalizedWidth": 216,
+        "normalizedHeight": 195
+      },
+      {
+        "cell": 7,
+        "sourceBounds": {
+          "left": 655,
+          "top": 385,
+          "right": 913,
+          "bottom": 619,
+          "width": 259,
+          "height": 235
+        },
+        "sourceVisibleBounds": {
+          "left": 659,
+          "top": 389,
+          "right": 909,
+          "bottom": 615,
+          "width": 251,
+          "height": 227
+        },
+        "sourceVisiblePixels": 27363,
+        "normalizedWidth": 213,
+        "normalizedHeight": 193
+      },
+      {
+        "cell": 8,
+        "sourceBounds": {
+          "left": 978,
+          "top": 376,
+          "right": 1234,
+          "bottom": 619,
+          "width": 257,
+          "height": 244
+        },
+        "sourceVisibleBounds": {
+          "left": 982,
+          "top": 380,
+          "right": 1230,
+          "bottom": 615,
+          "width": 249,
+          "height": 236
+        },
+        "sourceVisiblePixels": 25179,
+        "normalizedWidth": 211,
+        "normalizedHeight": 201
+      },
+      {
+        "cell": 9,
+        "sourceBounds": {
+          "left": 25,
+          "top": 671,
+          "right": 298,
+          "bottom": 892,
+          "width": 274,
+          "height": 222
+        },
+        "sourceVisibleBounds": {
+          "left": 29,
+          "top": 675,
+          "right": 294,
+          "bottom": 888,
+          "width": 266,
+          "height": 214
+        },
+        "sourceVisiblePixels": 28894,
+        "normalizedWidth": 225,
+        "normalizedHeight": 183
+      },
+      {
+        "cell": 10,
+        "sourceBounds": {
+          "left": 349,
+          "top": 652,
+          "right": 612,
+          "bottom": 895,
+          "width": 264,
+          "height": 244
+        },
+        "sourceVisibleBounds": {
+          "left": 353,
+          "top": 656,
+          "right": 608,
+          "bottom": 891,
+          "width": 256,
+          "height": 236
+        },
+        "sourceVisiblePixels": 30691,
+        "normalizedWidth": 217,
+        "normalizedHeight": 201
+      },
+      {
+        "cell": 11,
+        "sourceBounds": {
+          "left": 644,
+          "top": 646,
+          "right": 914,
+          "bottom": 897,
+          "width": 271,
+          "height": 252
+        },
+        "sourceVisibleBounds": {
+          "left": 648,
+          "top": 650,
+          "right": 910,
+          "bottom": 893,
+          "width": 263,
+          "height": 244
+        },
+        "sourceVisiblePixels": 26978,
+        "normalizedWidth": 223,
+        "normalizedHeight": 207
+      },
+      {
+        "cell": 12,
+        "sourceBounds": {
+          "left": 968,
+          "top": 653,
+          "right": 1241,
+          "bottom": 886,
+          "width": 274,
+          "height": 234
+        },
+        "sourceVisibleBounds": {
+          "left": 972,
+          "top": 657,
+          "right": 1237,
+          "bottom": 882,
+          "width": 266,
+          "height": 226
+        },
+        "sourceVisiblePixels": 25648,
+        "normalizedWidth": 225,
+        "normalizedHeight": 193
+      },
+      {
+        "cell": 13,
+        "sourceBounds": {
+          "left": 46,
+          "top": 926,
+          "right": 299,
+          "bottom": 1186,
+          "width": 254,
+          "height": 261
+        },
+        "sourceVisibleBounds": {
+          "left": 50,
+          "top": 930,
+          "right": 295,
+          "bottom": 1182,
+          "width": 246,
+          "height": 253
+        },
+        "sourceVisiblePixels": 35157,
+        "normalizedWidth": 209,
+        "normalizedHeight": 215
+      },
+      {
+        "cell": 14,
+        "sourceBounds": {
+          "left": 372,
+          "top": 936,
+          "right": 583,
+          "bottom": 1186,
+          "width": 212,
+          "height": 251
+        },
+        "sourceVisibleBounds": {
+          "left": 376,
+          "top": 940,
+          "right": 579,
+          "bottom": 1182,
+          "width": 204,
+          "height": 243
+        },
+        "sourceVisiblePixels": 29909,
+        "normalizedWidth": 174,
+        "normalizedHeight": 206
+      },
+      {
+        "cell": 15,
+        "sourceBounds": {
+          "left": 664,
+          "top": 960,
+          "right": 906,
+          "bottom": 1194,
+          "width": 243,
+          "height": 235
+        },
+        "sourceVisibleBounds": {
+          "left": 668,
+          "top": 964,
+          "right": 902,
+          "bottom": 1190,
+          "width": 235,
+          "height": 227
+        },
+        "sourceVisiblePixels": 27284,
+        "normalizedWidth": 200,
+        "normalizedHeight": 193
+      },
+      {
+        "cell": 16,
+        "sourceBounds": {
+          "left": 973,
+          "top": 944,
+          "right": 1227,
+          "bottom": 1186,
+          "width": 255,
+          "height": 243
+        },
+        "sourceVisibleBounds": {
+          "left": 977,
+          "top": 948,
+          "right": 1223,
+          "bottom": 1182,
+          "width": 247,
+          "height": 235
+        },
+        "sourceVisiblePixels": 30157,
+        "normalizedWidth": 210,
+        "normalizedHeight": 200
+      }
+    ],
+    "nonemptyCells": 16,
+    "minimumGuard": 15,
+    "visiblePixelsByCell": [
+      19194,
+      20211,
+      18370,
+      19831,
+      18322,
+      17483,
+      18462,
+      17033,
+      19582,
+      20794,
+      18245,
+      17401,
+      23827,
+      20149,
+      18450,
+      20461
+    ],
+    "visibleFootBaselinesByCell": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ]
+  },
+  "sourceReviewFile": "docs/cg/ysara-flint-reference-evidence-wave7-2026-10-23.json",
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "newProviderRefusals": 0,
+  "semanticPaintingPerformed": false,
+  "limitations": [
+    "Selected V2 is an internal original-project authority, not an external franchise reference.",
+    "The source gives one three-quarter view; exact hidden garment/weapon microgeometry and tiny facial details remain interpreted at gameplay scale.",
+    "Initial atlas had insufficient gutters and suspected edge truncation; genuine ImageGen reframing restored all16complete silhouettes. Every454731alpha>12sourcepixel is assigned before uniformnearest packing;3936softalpha1–12fringe pixels outside expanded bounds are explicitly discarded.",
+    "The producer installer leaves runtime mapping unchanged; the separate root integration is tracked by runtimeSelectionPending and previousAtlas.accessibleAsVariant.",
+    "Sixteen real frame inspections, matching bytes and normalization proof do not certify perfect1:1visual fidelity."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-sprite-independent-review.json",
+  "independentReviewSha256": "707afd4837604433f08178d1e2bdda5c83190371512369f2773de8f893b95132"
+}

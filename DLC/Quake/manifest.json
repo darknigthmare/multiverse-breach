@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "quake",
+  "universe": "Quake",
+  "directory": "DLC/Quake",
+  "registration": "runtime",
+  "catalogOrder": 380,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartD.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartD.js"
+    },
+    {
+      "path": "data/signatureSourceWave2.js",
+      "runtimeAdapter": "src/game/signatureSourceWave2.js"
+    },
+    {
+      "path": "data/signatureSourceWave3.js",
+      "runtimeAdapter": "src/game/signatureSourceWave3.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

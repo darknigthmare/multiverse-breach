@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "seraphine_meridius",
+  "characterName": "Seraphine Meridius",
+  "operationKind": "genuine-current-v2-imagegen-redraw-with-one-individual-missing-rapier-pose-correction",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/meridian_clockwork/heroes/seraphine_meridius.png",
+    "sha256": "a3a472b064794a32d6c998428f22b8d1420f57fc1e59dbec5033b999e27ccf68",
+    "bytes": 2418055,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "52084c07a51921fc24bc34ab66eb0ad3089ff2230eaa8a0cbf5ce81b69c7a041",
+    "bytes": 738828,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/meridian-clockwork/seraphine-meridius-v2-fidelity-wave5-2026-10-22.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/seraphine-meridius-v2-reference-sprite-fidelity-wave5-2026-10-22.json",
+    "sha256": "b539c2947c94f5d7efc3f4289a6048e36bec0d8c28b84ce5f893a66099fd254d"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave5-2026-10-22/seraphine-meridius-sprite-independent-review.json",
+    "sha256": "525ac0abb92c4a1fbf2ee216050a7f83bd09d6cbff575cfc41bba234eb2bebad",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/meridian-clockwork/seraphine-meridius.png",
+    "sha256": "7a9d71be61cfaca3a5b19843508fae1029acc0648a728bae4fa754706c1996f9",
+    "preserved": true,
+    "runtimeSelectionStillUnchanged": true,
+    "accessibleAsVariantAfterRootIntegration": true
+  },
+  "sourceAssembly": {
+    "sha256": "08f0537c5688044c0fd9fc5ad5895d51eecb8046f3f28f482891c4847426bcbd",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "selectedFramesFromWholeAtlasNative": 15,
+    "individualCorrectedFrames": [
+      2
+    ],
+    "fifteenRgbaCellsUnchangedBeforeFinalNormalization": true,
+    "finalCommonNearestScale": 0.5888324873096447,
+    "minimumGuard": 14,
+    "baselines": [
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241
+    ],
+    "privateEvidenceSha256": "413792b5441e291cad5f3ed91500919e0de56b37d9acd98aaa5e79f4090b0814",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "successfulAtlasGenerationAttempts": 2,
+  "retainedUnselectedWholeOrIndividualAttempts": 0,
+  "retainedSupersededPoseInsideWholeAtlas": [
+    2
+  ],
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/seraphine-meridius-reference-evidence-wave5-2026-10-22.json",
+  "limitations": [
+    "Internal project V2 portrait, not an external official franchise reference.",
+    "Exact rapier tip/length beyond source crop, tiny face/gear embroidery and unseen sides are interpretations.",
+    "New frame02 is a genuine ImageGen pose;15other new native poses preserve RGBA exactly in assembly then share documented final nearest normalization.",
+    "Some alpha fringe pixels reach5/255red; reviewed as weak source fringe, no opaque stray semantic element.",
+    "Public atlas is installed; root still must update runtime selection and variant map. No perfect1:1 certification."
+  ],
+  "screenshots": [
+    "docs/cg/screenshots/seraphine-meridius-sprite-comparison-wave5-2026-10-22.webp"
+  ],
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/seraphine-meridius-sprite-independent-review.json",
+  "independentReviewSha256": "525ac0abb92c4a1fbf2ee216050a7f83bd09d6cbff575cfc41bba234eb2bebad"
+}

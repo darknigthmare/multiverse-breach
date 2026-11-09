@@ -1,0 +1,5 @@
+// Generated package entry point. Shared constructors remain supplied by the runtime adapters.
+export { default as manifest } from './manifest.json' with { type: 'json' };
+export * as canonRosterWavePartE from './data/canonRosterWavePartE.js';
+export * as expandedUniverses from './data/expandedUniverses.js';
+export * as wardrobeOfficialR14 from './data/wardrobeOfficialR14.js';

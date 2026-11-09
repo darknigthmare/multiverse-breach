@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "checkedAt": "2026-10-25T07:24:35.200Z",
+  "reviewer": "/root/wave9_coordination",
+  "status": "passed",
+  "scope": "Runtime atlas selections only, after explicit root freeze; CG registry and CG media are not claimed frozen or audited by this report.",
+  "baseline": {
+    "path": ".tmp/cg-wave9-2026-10-25/runtime-baseline-before-integration.json",
+    "sha256": "eeaf5c54f4e1a077ce0a60605e861db3d5242237b847de168c415410feec78d5"
+  },
+  "runtimeSource": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "510ad89ad4aa2d29a62c54aea13be7a2d0368b41e545d52e0c736f5a4da748dd"
+  },
+  "contextsChecked": [
+    "rpg",
+    "tactics",
+    "melee",
+    "fps",
+    "kart"
+  ],
+  "correctedHeroSubjects": 36,
+  "correctedHeroContextChecks": 180,
+  "previousCorrectedSubjectsUnchanged": 31,
+  "previousVariantsUnchanged": true,
+  "unchangedOtherHeroSelections": 1907,
+  "oldAtlasFilesPreserved": 5,
+  "previousCorrectedAndVariantFilesPreserved": 66,
+  "atlasSelections": [
+    {
+      "characterId": "doros_bronzehand",
+      "currentPath": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand-v2-fidelity-wave9-2026-10-25.png",
+      "currentSha256": "a57ebc830f31c86571eafe2bfcb6f903aaec894bdc09a71325cacd7fbddb250c",
+      "previousPath": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand.png",
+      "previousSha256": "509dcbb953e17982468abae71bf7acdd4827f7eecba6019708212400dc65c36f",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/doros-bronzehand-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+        "sha256": "9b5aeb38e4691e48b8bffe6616d6fa3b688368451a0fd88c06d1c3f232ce5294"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/doros-bronzehand-sprite-independent-review.json",
+        "sha256": "9ac8dd72bce5237dcdc428018aca20cd761bff5de99d6d86b53920c907168a3a"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "lin_yue",
+      "currentPath": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+      "currentSha256": "0bb25b18adf15263a1b52e669bc8449b80b7133671e230439d71d6a5bfe5f860",
+      "previousPath": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue.png",
+      "previousSha256": "dd58717bbe7684e7090f2559846e86e0e1508b88e2f5e9994c12b085d77a0c6b",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/lin-yue-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+        "sha256": "7200d6d75c275feef75de800b0c7e61dca5b2ed0d897f0d55fde092b51fb0571"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/lin-yue-sprite-independent-review.json",
+        "sha256": "8880ccd2fad43d82ee503d2400c2023cda4b77e13681d40f24d5929677393686"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "currentPath": "/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir-v2-fidelity-wave9-2026-10-25.png",
+      "currentSha256": "560fcbf98146895cdda9ca7aef62aea5ccdc5f5d47dec131d76c7d49098ee981",
+      "previousPath": "/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir.png",
+      "previousSha256": "5553b559453cb0804bae038181e76bcc014e883d8bda0cf37260141d452846ab",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/eira-hrafnsdottir-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+        "sha256": "1d7602c86f6f2c3efbf3084aa20b978c196c083a8be15dcd1e79bc2cc197a873"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/eira-hrafnsdottir-sprite-independent-review.json",
+        "sha256": "d6b1620e17c66ab759644bf37f7749035cf43c53fab8d6aee2a1b3e051036264"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "killa_mayu",
+      "currentPath": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/killa-mayu-v2-fidelity-wave9-2026-10-25.png",
+      "currentSha256": "83b6b2a81aeb01c619f7b17ef1846d395e5cdfa2efd481b34f8d0fc9c857830b",
+      "previousPath": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/killa-mayu.png",
+      "previousSha256": "5d55cd9204b866996d80f66e5d19604dc0825a65e23a4b96a2447561cf130694",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/killa-mayu-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+        "sha256": "a90c161b31e7eebb77c6b1208bd823826fa948e4b683a590ac03d168f2f409a8"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/killa-mayu-sprite-independent-review.json",
+        "sha256": "f2b34873af69103009b582913a4cbaee6f584aa1b479a608cf167ea0c7ea6566"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "currentPath": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki-v2-fidelity-wave9-2026-10-25.png",
+      "currentSha256": "eafd6eb2ed404f16ac1cfa5d9f824f1fea00980595dd118a7d61672aee8df9f3",
+      "previousPath": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki.png",
+      "previousSha256": "453b4cf5eb102c4c0fc4f6e9e7fda32d9d1357592a21de12c4116f84d4892ff8",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/aoi-mikazuki-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+        "sha256": "59a73f19086e20dcb1a0c2c1662737cff1f58b60b80a78f7807823ddbfab371d"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave9-2026-10-25/aoi-mikazuki-sprite-independent-review.json",
+        "sha256": "ab69c75c8bcb5f3a4eb15c954f65391f8e86dbb073971a73287ac0c92beb153e"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 14,
+        "visibleFootBaselinesByCell": [
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241
+        ]
+      }
+    }
+  ],
+  "frozenInputPins": [
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "635a822a0082fb2a9639561d0bdfdbb02b08dac437ac59113e95b61377b741a6"
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "510ad89ad4aa2d29a62c54aea13be7a2d0368b41e545d52e0c736f5a4da748dd"
+    },
+    {
+      "path": "docs/cg/doros-bronzehand-sprite-wave9-2026-10-25.json",
+      "sha256": "2388a8ec16ca687d1af2e22a9371dc5fd63856f9930e19d0023b43e3de54d28d"
+    },
+    {
+      "path": "docs/audits/doros-bronzehand-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+      "sha256": "9b5aeb38e4691e48b8bffe6616d6fa3b688368451a0fd88c06d1c3f232ce5294"
+    },
+    {
+      "path": "docs/cg/reviews/wave9-2026-10-25/doros-bronzehand-sprite-independent-review.json",
+      "sha256": "9ac8dd72bce5237dcdc428018aca20cd761bff5de99d6d86b53920c907168a3a"
+    },
+    {
+      "path": "docs/cg/lin-yue-sprite-wave9-2026-10-25.json",
+      "sha256": "87a02b2011c2a7f985323176372f22eb548f09df8795bbca71079b4a6df57274"
+    },
+    {
+      "path": "docs/audits/lin-yue-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+      "sha256": "7200d6d75c275feef75de800b0c7e61dca5b2ed0d897f0d55fde092b51fb0571"
+    },
+    {
+      "path": "docs/cg/reviews/wave9-2026-10-25/lin-yue-sprite-independent-review.json",
+      "sha256": "8880ccd2fad43d82ee503d2400c2023cda4b77e13681d40f24d5929677393686"
+    },
+    {
+      "path": "docs/cg/eira-hrafnsdottir-sprite-wave9-2026-10-25.json",
+      "sha256": "708ccd4e7da33661158de07c590a4a956d5ea658351ac25f5ca3a78a0eb5b876"
+    },
+    {
+      "path": "docs/audits/eira-hrafnsdottir-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+      "sha256": "1d7602c86f6f2c3efbf3084aa20b978c196c083a8be15dcd1e79bc2cc197a873"
+    },
+    {
+      "path": "docs/cg/reviews/wave9-2026-10-25/eira-hrafnsdottir-sprite-independent-review.json",
+      "sha256": "d6b1620e17c66ab759644bf37f7749035cf43c53fab8d6aee2a1b3e051036264"
+    },
+    {
+      "path": "docs/cg/killa-mayu-sprite-wave9-2026-10-25.json",
+      "sha256": "8b26aaf1c646b183cd1b9788fd5887a95f5d5dfb8f6656d5d0736881ae76bcba"
+    },
+    {
+      "path": "docs/audits/killa-mayu-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+      "sha256": "a90c161b31e7eebb77c6b1208bd823826fa948e4b683a590ac03d168f2f409a8"
+    },
+    {
+      "path": "docs/cg/reviews/wave9-2026-10-25/killa-mayu-sprite-independent-review.json",
+      "sha256": "f2b34873af69103009b582913a4cbaee6f584aa1b479a608cf167ea0c7ea6566"
+    },
+    {
+      "path": "docs/cg/aoi-mikazuki-sprite-wave9-2026-10-25.json",
+      "sha256": "01296edd945bbb1d0c419fa2aad118e2b5a1920851cfab6fe698899822580846"
+    },
+    {
+      "path": "docs/audits/aoi-mikazuki-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+      "sha256": "59a73f19086e20dcb1a0c2c1662737cff1f58b60b80a78f7807823ddbfab371d"
+    },
+    {
+      "path": "docs/cg/reviews/wave9-2026-10-25/aoi-mikazuki-sprite-independent-review.json",
+      "sha256": "ab69c75c8bcb5f3a4eb15c954f65391f8e86dbb073971a73287ac0c92beb153e"
+    }
+  ],
+  "certifiesPerfectVisualFidelity": false,
+  "visualReviewScope": "Verifies bindings to independent sixteen-frame reviews. Does not add a new full sixteen-frame visual review; verifies the five independent review bindings."
+}

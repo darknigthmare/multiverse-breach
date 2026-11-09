@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "characterId": "sonic_hedgehog",
+  "heroId": "sonic_hedgehog",
+  "incarnation": "Sonic moderne — profil officiel SEGA Sonic Channel, jeu vidéo",
+  "continuityId": "sonic-channel-modern-game-design",
+  "status": "source-inspected-series-delivered-with-limitations",
+  "canonicalFidelityApproved": false,
+  "ageStatus": "unknown-family-safe-only",
+  "consentStatus": "no-romance",
+  "references": [
+    {
+      "schemaVersion": 1,
+      "heroId": "sonic_hedgehog",
+      "publisher": "SEGA / Sonic Channel",
+      "pageUrl": "https://sonic.sega.jp/SonicChannel/character/sonic.html",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+      "finalUrl": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+      "httpStatus": 200,
+      "path": "docs/cg/references/wave2-2026-10-18/sonic/official-modern-profile.jpg",
+      "sha256": "e8fbfe1530684d67aabb0ccaeeee9aae28c1a85c11ace76f0c9a906b7d235ed8",
+      "bytes": 173984,
+      "retrievedAt": "2026-10-18",
+      "viewed": true,
+      "role": "primary-official-modern-character-art",
+      "discovery": "Exact image URL read from the current official character HTML, not a guessed asset URL.",
+      "visualObservations": [
+        "Modern long-legged game design, blue head/quills/torso/legs, beige bare arms, muzzle and oval belly.",
+        "Large joined white eye area with green irises, black oval nose, white gloves with cuffs.",
+        "Red shoes with broad white strap and grey soles; no movie fur or Classic black-only eyes."
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/sonic/official-riders-letterpaper.pdf",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/etc_letterpaper_05_riders.pdf",
+      "sha256": "439b3fac25a87b9854177b8f04ca4074c7cd0796c6f0d37d4d89d69c1e82e7ca",
+      "viewed": true,
+      "role": "official-equipment-reference-CG13-only",
+      "renderedInspectionPath": ".tmp/cg-wave2-2026-10-18/sonic/references/official-riders-letterpaper.png",
+      "referenceScope": "iconic-outfit-only",
+      "referencePurpose": "costume-only",
+      "slot": "CG13"
+    },
+    {
+      "path": "/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+      "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108",
+      "viewed": true,
+      "role": "project-pixel-art-style-only-not-independent-source"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/sonic/official-riders-letterpaper-page1.png",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/etc_letterpaper_05_riders.pdf",
+      "sha256": "44e88420dd4532f16e605a47bb4400bf5b79cfed655440f8049682e6ee3100a3",
+      "viewed": true,
+      "role": "rendered-official-PDF-page-inspected-for-CG13-only",
+      "referenceScope": "iconic-outfit-only",
+      "referencePurpose": "costume-only",
+      "slot": "CG13",
+      "derivedFrom": "docs/cg/references/wave2-2026-10-18/sonic/official-riders-letterpaper.pdf",
+      "conversion": "pdftoppm page1 to PNG, scale-to1600, no artistic editing"
+    }
+  ],
+  "visualLocks": [
+    "Modern long-legged game design, blue head/quills/torso/legs, beige bare arms, muzzle and oval belly.",
+    "Large joined white eye area with green irises, black oval nose, white gloves with cuffs.",
+    "Red shoes with broad white strap and grey soles; no movie fur or Classic black-only eyes.",
+    "Two arms, two legs, two ears, swept-back quills, one small tail. Five gloved fingers when an open hand is readable.",
+    "Base character remains Modern blue, never yellowSuperSonic, Classic roundbody, live-action fur or Boom scarf.",
+    "OnlyCG13explicitly uses separately sourced Riders goggles and racing equipment."
+  ],
+  "limitations": [
+    "Official supplied image is a clear full-body three-quarter profile, not an exhaustive model turntable.",
+    "Exact back/sole detail and animation accuracy are not certified.",
+    "All15backgrounds and their compositions are original, not reproductions of verified game-stage screenshots.",
+    "The prior Classic1991 authored workbook lock was an unreviewed proposal; this production explicitly chooses the downloaded official Modern game design instead."
+  ],
+  "visualLockAxes": {
+    "species": "Anthropomorphic hedgehog with two ears, swept-back head quills and small tail.",
+    "proportions": "Modern long blue legs and narrow torso; never Classic round proportions.",
+    "face": "Connected white eye area, two green irises, black oval nose, beige muzzle.",
+    "palette": "Saturated blue head/body/quills/legs; bare beige arms, beige oval belly and ear interiors.",
+    "anatomy": "Exactly two arms/two legs; five fingers per glove where open hands can be counted.",
+    "equipment": "White gloves/cuffs and red shoes with broad white strap and grey sole. Empty shoes can be isolated forCG02; no detached feet.",
+    "transformations": "OnlyCG13 uses separately sourced SonicRiders goggles/ExtremeGear as explicit named WhatIf; base identity stays SonicChannelModern."
+  },
+  "equipment": [
+    "White gloves with cuffs",
+    "Red rounded shoes with broad white strap and grey soles (CG02isolatable equipment)"
+  ],
+  "seriesReviewFile": "docs/cg/reviews/wave2-2026-10-18/sonic-independent-review.json"
+}

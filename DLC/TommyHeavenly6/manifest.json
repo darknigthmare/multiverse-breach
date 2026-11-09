@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "tommy-heavenly6",
+  "universe": "Tommy Heavenly6",
+  "directory": "DLC/TommyHeavenly6",
+  "registration": "runtime",
+  "catalogOrder": 251,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

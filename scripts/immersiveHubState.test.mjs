@@ -4,7 +4,9 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createRaceKeyboardState, createRaceRunGuard } from '../src/game/raceSessionControls.js';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
-import { applyExtinctionReport, compareGearBoosts, getSceneHudLayout, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
+import { applyExtinctionReport, compareGearBoosts, getSceneCanvasSize, getSceneHudLayout, getSceneHudRect, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
+import { applyDisplayPreferences, DISPLAY_PREFERENCES_EVENT, readSceneHudPreferences } from '../src/game/displayPreferences.js';
+import { placeMosaicMissionObjectLabel } from '../src/game/mosaicMissionOperations.js';
 
 const districts = {
   atrium: { id: 'atrium', worldW: 1640, worldH: 1080, spawn: { x: 780, y: 520 } },
@@ -86,6 +88,188 @@ test('canvas map/radar bounds respect portrait, short landscape and desktop at b
       assert.ok(radar.y + radar.radius < height - safeArea);
     }
   }
+});
+
+test('measured HUD bounds project through the actual canvas offset and backing size in every format', () => {
+  for (const [width, height] of [[390, 844], [844, 390], [1365, 900]]) {
+    const canvasRect = { left: 17, top: 59, width, height }, size = getSceneCanvasSize(width, height, 540);
+    for (const titleHeight of [99, 173]) {
+      const overlay = { left: 49, top: 143, width: Math.min(320, width - 64), height: titleHeight };
+      const before = structuredClone({ canvasRect, overlay, size });
+      const projected = getSceneHudRect(canvasRect, overlay, size);
+      assert.ok(Math.abs(projected.x * width / size.width - 32) < 1e-9);
+      assert.ok(Math.abs(projected.y * height / size.height - 84) < 1e-9);
+      assert.ok(Math.abs(projected.width * width / size.width - overlay.width) < 1e-9);
+      assert.ok(Math.abs(projected.height * height / size.height - titleHeight) < 1e-9,
+        'the measured title height must not be replaced by a fixed language-dependent height');
+      assert.deepEqual({ canvasRect, overlay, size }, before);
+    }
+  }
+  const canvasRect = { left: 20, top: 50, width: 400, height: 300 }, size = { width: 800, height: 600 };
+  assert.deepEqual(getSceneHudRect(canvasRect, { left: 10, top: 40, width: 80, height: 70 }, size),
+    { x: 0, y: 0, width: 140, height: 120 });
+  for (const overlay of [null, { left: 500, top: 50, width: 80, height: 70 },
+    { left: 20, top: 50, width: 0, height: 20 }, { left: NaN, top: 50, width: 80, height: 70 }]) {
+    assert.equal(getSceneHudRect(canvasRect, overlay, size), null);
+  }
+  assert.equal(getSceneHudRect(canvasRect, canvasRect, { width: 800, height: 0 }), null);
+});
+
+test('the production viewport hook measures committed title text and preference changes before painting, then disconnects', () => {
+  // Run the actual hook with controlled lifecycle/DOM services. Native CI checks
+  // the painted cartouches against independently measured browser rectangles.
+  const source = readFileSync(new URL('../src/components/useSceneViewport.js', import.meta.url), 'utf8');
+  const declaration = source.slice(source.indexOf('export default function')).replace('export default ', '');
+  const fixture = (withOverlay = true, enabled = true, initial = {}) => {
+    let pendingEffect, dependencies, cleanup, observer, styleObserver, canvasMeasurements = 0;
+    let canvasBounds = initial.canvas || { left: 0, top: 0, width: 844, height: 390 };
+    let overlayBounds = initial.overlay || { left: 12, top: 64, width: 320, height: 99 };
+    const listeners = new Map(), observed = [], layout = { current: null };
+    const canvas = { getBoundingClientRect: () => { canvasMeasurements++; return canvasBounds; } };
+    const overlay = { getBoundingClientRect: () => overlayBounds };
+    const properties = new Map([['--game-safe-area', `${initial.safeArea ?? 12}px`],
+      ['--game-hud-scale', String(initial.hudScale ?? 1)]]), mutations = [];
+    const root = { dataset: {}, style: { getPropertyValue: name => properties.get(name) || '',
+      setProperty(name, value) {
+        properties.set(name, value);
+        if (name === '--game-safe-area') overlayBounds = { ...overlayBounds,
+          left: Number.parseFloat(value), top: 52 + Number.parseFloat(value) };
+        mutations.push({ type: 'attributes', target: root, attributeName: 'style' });
+      } } };
+    const createHook = new Function('env', `const { useRef, useEffect, useLayoutEffect, ResizeObserver, MutationObserver, window, document,
+      getComputedStyle, readSceneHudPreferences, DISPLAY_PREFERENCES_EVENT, getSceneCanvasSize,
+      getSceneHudLayout, getSceneHudRect } = env; ${declaration}; return useSceneViewport;`);
+    const scheduleEffect = phase => (callback, nextDependencies) => {
+      if (!dependencies || nextDependencies.some((value, index) => !Object.is(value, dependencies[index]))) {
+        pendingEffect = { phase, callback, dependencies: nextDependencies };
+      }
+    };
+    const hook = createHook({ useRef: () => layout,
+      useEffect: scheduleEffect('passive'), useLayoutEffect: scheduleEffect('layout'),
+      ResizeObserver: class { constructor(callback) { this.callback = callback; observer = this; }
+        observe(element) { observed.push(element); } disconnect() { this.disconnected = true; } },
+      MutationObserver: class { constructor(callback) { this.callback = callback; styleObserver = this; }
+        observe(element, options) { this.element = element; this.options = options; }
+        disconnect() { this.disconnected = true; } },
+      window: { addEventListener: (name, callback) => listeners.set(name, callback),
+        removeEventListener: (name, callback) => { assert.equal(listeners.get(name), callback); listeners.delete(name); } },
+      document: { documentElement: root }, getComputedStyle: () => root.style,
+      readSceneHudPreferences, DISPLAY_PREFERENCES_EVENT,
+      getSceneCanvasSize, getSceneHudLayout, getSceneHudRect });
+    const canvasRef = { current: canvas }, overlayRef = withOverlay ? { current: overlay } : null;
+    const flushEffect = phase => {
+      if (pendingEffect?.phase !== phase) return;
+      const effect = pendingEffect; pendingEffect = null;
+      cleanup?.();
+      dependencies = effect.dependencies;
+      cleanup = effect.callback();
+    };
+    const commit = contentKey => {
+      hook(canvasRef, 540, enabled, overlayRef, contentKey);
+      flushEffect('layout');
+    };
+    commit(initial.contentKey || 'initial title');
+    flushEffect('passive');
+    return { layout, get cleanup() { return cleanup; }, get observer() { return observer; },
+      get styleObserver() { return styleObserver; }, get canvasMeasurements() { return canvasMeasurements; },
+      observed, listeners, canvas, overlay, root,
+      commitTitle: (contentKey, height) => { overlayBounds = { ...overlayBounds, height }; commit(contentKey); },
+      flushMutations: () => { const records = mutations.splice(0);
+        if (records.length && styleObserver?.element && !styleObserver.disconnected) styleObserver.callback(records); },
+      wrapTitle: () => { overlayBounds = { ...overlayBounds, height: 173 }; observer.callback(); },
+      hideCanvas: () => { canvasBounds = { ...canvasBounds, width: 0 }; observer.callback(); } };
+  };
+  const city = fixture();
+  assert.deepEqual(city.observed, [city.canvas, city.overlay]);
+  assert.ok(Math.abs(city.layout.current.occlusionRect.height - 99 * 540 / 390) < 1e-9);
+  // Native fixture order: mount at the default margin, then write root CSS.
+  // The title moves (+20,+20) without resizing or dispatching a preference event.
+  city.root.style.setProperty('--game-hud-scale', '1.4');
+  city.root.style.setProperty('--game-safe-area', '32px');
+  city.flushMutations();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 32 * city.canvas.width / 844) < 1e-9,
+    'the first draw after a root style mutation must use the new horizontal position');
+  assert.ok(Math.abs(city.layout.current.occlusionRect.y - 84 * 540 / 390) < 1e-9);
+  assert.equal(city.styleObserver.element, city.root);
+  assert.deepEqual(city.styleObserver.options, { attributes: true, attributeFilter: ['style', 'class'] });
+  // A storage listener can run before GameDisplayPreferencesSync applies CSS.
+  city.listeners.get('storage')();
+  applyDisplayPreferences({ safeArea: 12 }, city.root);
+  city.flushMutations();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 12 * city.canvas.width / 844) < 1e-9);
+  assert.ok(Math.abs(city.layout.current.occlusionRect.y - 64 * 540 / 390) < 1e-9);
+  city.wrapTitle();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.height - 173 * 540 / 390) < 1e-9);
+  applyDisplayPreferences({ safeArea: 32 }, city.root);
+  city.listeners.get(DISPLAY_PREFERENCES_EVENT)();
+  assert.ok(Math.abs(city.layout.current.occlusionRect.x - 32 * city.canvas.width / 844) < 1e-9);
+  city.hideCanvas();
+  assert.equal(city.layout.current, null, 'a hidden canvas cannot retain stale occlusion geometry');
+  city.cleanup();
+  assert.equal(city.observer.disconnected, true);
+  assert.equal(city.styleObserver.disconnected, true);
+  assert.equal(city.listeners.size, 0);
+  city.root.style.setProperty('--game-safe-area', '12px'); city.flushMutations();
+  assert.equal(city.layout.current, null);
+
+  // Native 5451123 Nexus EN portrait frames 2790 -> 2791: leaving the Mission
+  // Beacon changes only the committed zone text, growing its DOM title 83 -> 97.
+  // The scene can call loop() synchronously in a passive effect before any
+  // ResizeObserver notification. Its simulation time/player/camera are unchanged.
+  const titleKey = zone => JSON.stringify(['MOSAIC CITY', 'Nexus de Convergence District', zone]);
+  const portrait = fixture(true, true, {
+    canvas: { left: 0, top: 0, width: 390, height: 844 },
+    overlay: { left: 32, top: 88, width: 202.453125, height: 83 },
+    contentKey: titleKey('Mission Beacon'), safeArea: 32, hudScale: 1.4
+  });
+  const frame = { t: 324.2399999999992, player: { x: 1311.1859234283456, y: 709.183402377607 },
+    camera: { x: 1171.3171225403116, y: 447.9346906263877 } };
+  const beforeFrame = structuredClone(frame);
+  const world = rect => ({ ...rect, x: rect.x + frame.camera.x, y: rect.y + frame.camera.y });
+  const playerRects = [
+    { x: 100.8687744140625, y: 215.9375, width: 78, height: 78 },
+    { x: 132.64710506897063, y: 213.62498003125336, width: 15.2216796875, height: 9 },
+    { x: 121.86878475647063, y: 282.24870999479447, width: 36, height: 7 }
+  ].map(world);
+  const paint = () => {
+    const rect = placeMosaicMissionObjectLabel({ anchor: { x: 1380, y: 660 }, width: 188, height: 57,
+      viewport: { ...frame.camera, width: 250, height: 540 },
+      protectedRects: [...playerRects, world(portrait.layout.current.occlusionRect)] });
+    assert.ok(rect);
+    // The native Canvas matrix stores these camera translations at float32 precision.
+    return { ...rect, x: rect.x - Math.fround(frame.camera.x), y: rect.y - Math.fround(frame.camera.y) };
+  };
+  assert.ok(Math.abs(paint().y - 117.40758118196379) < 1e-9, 'reproduce the pre-commit cartouche');
+  const previousObserver = portrait.observer, previousStyleObserver = portrait.styleObserver;
+  portrait.commitTitle(titleKey('Nexus de Convergence District'), 97);
+  const afterCommit = paint(), actualHudBottom = (88 + 97) * 540 / 844;
+  assert.ok(afterCommit.y >= actualHudBottom,
+    'the first synchronous scene draw after a text commit must clear the new title before ResizeObserver');
+  assert.ok(Math.abs(afterCommit.y - 126.36492715352777) < 1e-9);
+  assert.deepEqual(frame, beforeFrame, 'presentation refresh does not advance or reposition the scene');
+  assert.equal(previousObserver.disconnected, true);
+  assert.equal(previousStyleObserver.disconnected, true);
+  const measurements = portrait.canvasMeasurements;
+  portrait.commitTitle(titleKey('Nexus de Convergence District'), 97);
+  assert.equal(portrait.canvasMeasurements, measurements, 'unchanged title text needs no extra DOM measurement');
+  portrait.cleanup();
+  assert.equal(portrait.observer.disconnected, true);
+  assert.equal(portrait.styleObserver.disconnected, true);
+  assert.equal(portrait.listeners.size, 0);
+  assert.equal(portrait.layout.current, null);
+
+  const otherScene = fixture(false);
+  assert.deepEqual(otherScene.observed, [otherScene.canvas]);
+  assert.equal(otherScene.styleObserver, undefined, 'scenes without the DOM overlay do not observe root mutations');
+  assert.equal(otherScene.layout.current.occlusionRect, null);
+  assert.ok(otherScene.layout.current.fpsRadar);
+  otherScene.cleanup();
+  assert.equal(otherScene.layout.current, null);
+  const disabled = fixture(true, false);
+  assert.equal(disabled.layout.current, null);
+  assert.equal(disabled.observed.length, 0);
+  assert.equal(disabled.styleObserver, undefined);
+  assert.equal(disabled.cleanup, undefined);
 });
 
 test('real scene handlers resume W/E with button focus while reserving native activation and text entry', () => {

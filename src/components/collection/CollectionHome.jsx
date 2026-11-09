@@ -1,4 +1,4 @@
-import React, { useDeferredValue, useMemo, useRef, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CardDetailModal from './CardDetailModal';
 import UniverseBinder from './UniverseBinder';
@@ -16,6 +16,8 @@ const getClaimedMilestones = (setProgress, setId) => (
   setProgress?.[setId]?.claimedMilestones || []
 ).map(value => Number(value));
 
+const COLLECTION_VIEWS = ['library', 'binder', 'history'];
+
 export default function CollectionHome({
   lang = 'fr',
   definitions = [],
@@ -31,6 +33,12 @@ export default function CollectionHome({
   const closeRef = useRef(null);
   const overlayRef = useRef(null);
   const dialogRef = useRef(null);
+  const panelRef = useRef(null);
+  const tabRefs = useRef({});
+  const libraryTileRefs = useRef(new Map());
+  const libraryOrigin = useRef('all');
+  const cardOrigin = useRef(null);
+  const pendingFocus = useRef(null);
   const [view, setView] = useState('library');
   const [selectedUniverse, setSelectedUniverse] = useState('all');
   const [selectedCardId, setSelectedCardId] = useState(null);
@@ -40,10 +48,47 @@ export default function CollectionHome({
   const [canonStatus, setCanonStatus] = useState('all');
   const [ownedOnly, setOwnedOnly] = useState(false);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(true);
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = normalizeSearch(deferredQuery.trim());
 
   useModalDialog({ overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
+
+  useEffect(() => {
+    const request = pendingFocus.current;
+    if (!request) return undefined;
+    let target = panelRef.current;
+    if (request.destination === 'library') {
+      target = libraryTileRefs.current.get(libraryOrigin.current) || tabRefs.current.library;
+    } else if (request.destination === 'milestone') {
+      target = panelRef.current?.querySelector('#tcg-milestones-title') || panelRef.current;
+    } else if (request.destination === 'card') {
+      target = [...(panelRef.current?.querySelectorAll('[data-card-id]') || [])]
+        .find(card => card.dataset.cardId === cardOrigin.current && !card.disabled)
+        || panelRef.current?.querySelector('#tcg-binder-title')
+        || panelRef.current;
+    }
+    if (!target) { pendingFocus.current = null; return undefined; }
+    const focusOrigin = target.ownerDocument.activeElement;
+    // Modal cleanup may already have restored this card. A second delayed focus
+    // must not pull the player back after they move to another control.
+    if (focusOrigin === target) {
+      pendingFocus.current = null;
+      target.scrollIntoView({ block: 'nearest' });
+      return undefined;
+    }
+    let cancelled = false;
+    const frame = requestAnimationFrame(() => {
+      if (cancelled || pendingFocus.current !== request) return;
+      pendingFocus.current = null;
+      if (target.isConnected && target.ownerDocument.activeElement === focusOrigin
+        && !target.closest('[inert]') && !target.closest('[hidden]')) {
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ block: 'nearest' });
+      }
+    });
+    return () => { cancelled = true; cancelAnimationFrame(frame); };
+  }, [view, selectedUniverse, selectedCardId, setProgress]);
 
   const searchableDefinitions = useMemo(() => definitions.map(definition => ({
     ...definition,
@@ -65,6 +110,9 @@ export default function CollectionHome({
   }, lang), [searchableDefinitions, cards, normalizedQuery, rarity, kind, canonStatus, ownedOnly, favoritesOnly, lang]);
   const visibleUniverseSummaries = universeSummaries.filter(summary => summary.matching > 0);
   const matchingCount = visibleUniverseSummaries.reduce((total, summary) => total + summary.matching, 0);
+  const visibleMatchingCount = view === 'binder' && selectedUniverse !== 'all'
+    ? universeSummaries.find(summary => summary.universe === selectedUniverse)?.matching || 0
+    : matchingCount;
   const ownedCount = searchableDefinitions.reduce(
     (total, definition) => total + Number(Boolean(cards[definition.id])),
     0
@@ -91,12 +139,43 @@ export default function CollectionHome({
     || 0;
 
   const openBinder = universe => {
+    libraryOrigin.current = universe;
+    pendingFocus.current = { destination: 'panel' };
     setSelectedUniverse(universe);
     setView('binder');
   };
+  const returnToLibrary = () => {
+    pendingFocus.current = { destination: 'library' };
+    setView('library');
+  };
+  const changeView = nextView => {
+    pendingFocus.current = null;
+    setView(nextView);
+  };
+  const navigateViews = event => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    const index = COLLECTION_VIEWS.indexOf(view);
+    const nextIndex = event.key === 'Home' ? 0
+      : event.key === 'End' ? COLLECTION_VIEWS.length - 1
+        : event.key === 'ArrowRight' ? (index + 1) % COLLECTION_VIEWS.length
+          : event.key === 'ArrowLeft' ? (index + COLLECTION_VIEWS.length - 1) % COLLECTION_VIEWS.length
+            : null;
+    if (nextIndex === null) return;
+    event.preventDefault();
+    const nextView = COLLECTION_VIEWS[nextIndex];
+    changeView(nextView);
+    tabRefs.current[nextView]?.focus();
+  };
   const openCard = cardId => {
+    cardOrigin.current = cardId;
     setSelectedCardId(cardId);
     if (cards[cardId]?.seen === false) onUpdateCard?.(cardId, { seen: true });
+  };
+  const closeCard = () => {
+    // Removing a favorite can remove its tile while its record is open. Restore
+    // to the current binder when the original trigger no longer exists.
+    pendingFocus.current = { destination: 'card' };
+    setSelectedCardId(null);
   };
 
   const content = (
@@ -106,17 +185,13 @@ export default function CollectionHome({
           <div>
             <span>A.R.C.A. / ARCHIVES</span>
             <h1 id="tcg-album-title">{lang === 'fr' ? 'ALBUM DES TRAMES' : 'THREAD ALBUM'}</h1>
-            <p>
-              {lang === 'fr'
-                ? 'Les cartes indexent les recompenses existantes sans modifier la puissance de combat.'
-                : 'Cards index existing rewards without changing combat power.'}
-            </p>
           </div>
           <button ref={closeRef} type="button" className="tcg-close-button" onClick={onClose}>
             {lang === 'fr' ? 'FERMER' : 'CLOSE'}
           </button>
         </header>
 
+        <div className="tcg-album-workspace">
         <div className="tcg-album-stats" aria-label={lang === 'fr' ? 'Progression globale' : 'Global progress'}>
           <div><span>{lang === 'fr' ? 'CARTES' : 'CARDS'}</span><strong>{ownedCount}/{searchableDefinitions.length}</strong></div>
           <div><span>{lang === 'fr' ? 'TRAMES' : 'THREADS'}</span><strong>{universeSummaries.filter(summary => summary.owned > 0).length}/{universeSummaries.length}</strong></div>
@@ -132,20 +207,23 @@ export default function CollectionHome({
           </div>
         ) : null}
 
-        <nav className="tcg-album-tabs" aria-label={lang === 'fr' ? 'Vues de collection' : 'Collection views'}>
+        <nav className="tcg-album-tabs" role="tablist" aria-label={lang === 'fr' ? 'Vues de collection' : 'Collection views'}>
           {[
             ['library', lang === 'fr' ? 'BIBLIOTHEQUE' : 'LIBRARY'],
             ['binder', lang === 'fr' ? 'CLASSEUR' : 'BINDER'],
             ['history', lang === 'fr' ? 'HISTORIQUE' : 'HISTORY']
           ].map(([id, label]) => (
-            <button key={id} type="button" className={view === id ? 'is-active' : ''} aria-pressed={view === id} onClick={() => setView(id)}>
+            <button key={id} ref={node => { tabRefs.current[id] = node; }} type="button"
+              id={`tcg-album-tab-${id}`} role="tab" aria-controls={`tcg-album-view-${id}`}
+              aria-selected={view === id} tabIndex={view === id ? 0 : -1}
+              className={view === id ? 'is-active' : ''} onClick={() => changeView(id)} onKeyDown={navigateViews}>
               {label}
             </button>
           ))}
         </nav>
 
-        {view !== 'history' && <details className="tcg-filter-drawer" open>
-          <summary>{lang === 'fr' ? 'Recherche et filtres' : 'Search and filters'} <span>{matchingCount} {lang === 'fr' ? 'cartes' : 'cards'}</span></summary>
+        {view !== 'history' && <details className="tcg-filter-drawer" open={filtersOpen} onToggle={event => setFiltersOpen(event.currentTarget.open)}>
+          <summary>{lang === 'fr' ? 'Recherche et filtres' : 'Search and filters'} <span aria-live="polite" aria-atomic="true">{visibleMatchingCount} {lang === 'fr' ? 'cartes' : 'cards'}</span></summary>
         <div className="tcg-album-toolbar">
           <label className="tcg-search-field">
             <span>{lang === 'fr' ? 'RECHERCHE' : 'SEARCH'}</span>
@@ -188,21 +266,24 @@ export default function CollectionHome({
         </details>}
 
         <main className="tcg-album-content">
-          <details className="tcg-album-about"><summary>{lang === 'fr' ? 'Informations sur l’Album' : 'About the Album'}</summary><p>A.R.C.A. / TCG ARCHIVE v1 · {lang === 'fr' ? 'Les statuts provisoires, les planches sources et la provenance restent consultables dans la fiche de chaque carte. Les cartes obtenues, copies, maîtrise et finitions sont conservées.' : 'Provisional status, source sheets and provenance remain available in every card record. Owned cards, copies, mastery and finishes are preserved.'}</p></details>
-          {view === 'library' ? (
-            <section aria-labelledby="tcg-library-title">
+          <details className="tcg-album-about"><summary>{lang === 'fr' ? 'Informations sur l’Album' : 'About the Album'}</summary>
+            <p>{lang === 'fr' ? 'Les cartes indexent les recompenses existantes sans modifier la puissance de combat.' : 'Cards index existing rewards without changing combat power.'}</p>
+            <p>A.R.C.A. / TCG ARCHIVE v1 · {lang === 'fr' ? 'Les statuts provisoires, les planches sources et la provenance restent consultables dans la fiche de chaque carte. Les cartes obtenues, copies, maîtrise et finitions sont conservées.' : 'Provisional status, source sheets and provenance remain available in every card record. Owned cards, copies, mastery and finishes are preserved.'}</p>
+          </details>
+            <section ref={view === 'library' ? panelRef : null} className="tcg-album-view" id="tcg-album-view-library"
+              role="tabpanel" tabIndex={-1} aria-labelledby="tcg-album-tab-library" hidden={view !== 'library'}>
               <div className="tcg-section-title">
                 <div><span>{lang === 'fr' ? 'INDEX GLOBAL' : 'GLOBAL INDEX'}</span><h2 id="tcg-library-title">{lang === 'fr' ? 'Classeurs d’univers' : 'Universe binders'}</h2></div>
                 <strong>{visibleUniverseSummaries.length}</strong>
               </div>
               <div className="tcg-universe-grid">
-                <button type="button" className="tcg-universe-tile tcg-universe-all" onClick={() => openBinder('all')}>
+                <button type="button" ref={node => { if (node) libraryTileRefs.current.set('all', node); else libraryTileRefs.current.delete('all'); }} className="tcg-universe-tile tcg-universe-all" onClick={() => openBinder('all')}>
                   <span>NEXUS INDEX</span><strong>{lang === 'fr' ? 'TOUTES LES TRAMES' : 'ALL THREADS'}</strong><small>{matchingCount} {lang === 'fr' ? 'cartes correspondent' : 'matching cards'}</small>
                 </button>
                 {visibleUniverseSummaries.map(summary => {
                   const progress = summary.total ? Math.round((summary.owned / summary.total) * 100) : 0;
                   return (
-                    <button key={summary.universe} type="button" className="tcg-universe-tile" onClick={() => openBinder(summary.universe)}>
+                    <button key={summary.universe} type="button" ref={node => { if (node) libraryTileRefs.current.set(summary.universe, node); else libraryTileRefs.current.delete(summary.universe); }} className="tcg-universe-tile" onClick={() => openBinder(summary.universe)}>
                       <span>{summary.matching} {lang === 'fr' ? 'CARTES CORRESPONDANTES' : 'MATCHING CARDS'}</span>
                       <strong>{summary.universe}</strong>
                       <small>{summary.owned}/{summary.total} / {progress}%</small>
@@ -213,10 +294,10 @@ export default function CollectionHome({
               </div>
               {visibleUniverseSummaries.length === 0 && <p className="tcg-empty-state" role="status">{lang === 'fr' ? 'Aucun classeur ne contient de carte correspondant à ces filtres.' : 'No binder contains cards matching these filters.'}</p>}
             </section>
-          ) : null}
 
-          {view === 'binder' ? (
-            <>
+          <section ref={view === 'binder' ? panelRef : null} className="tcg-album-view tcg-binder-view" id="tcg-album-view-binder"
+            role="tabpanel" tabIndex={-1} aria-labelledby="tcg-album-tab-binder" hidden={view !== 'binder'}>
+              <button type="button" className="tcg-library-return" onClick={returnToLibrary}>{lang === 'fr' ? 'RETOUR À LA BIBLIOTHÈQUE' : 'BACK TO LIBRARY'}</button>
               <label className="tcg-universe-select">
                 <span>{lang === 'fr' ? 'CLASSEUR' : 'BINDER'}</span>
                 <select value={selectedUniverse} onChange={event => setSelectedUniverse(event.target.value)}>
@@ -226,7 +307,7 @@ export default function CollectionHome({
               </label>
               {activeSet ? (
                 <section className="tcg-milestones" aria-labelledby="tcg-milestones-title">
-                  <div><span>{lang === 'fr' ? 'PALIERS DU SET' : 'SET MILESTONES'}</span><strong id="tcg-milestones-title">{activeSetOwned}/{activeSetTotal}</strong></div>
+                  <div><span id="tcg-milestones-title" tabIndex={-1}>{lang === 'fr' ? 'PALIERS DU SET' : 'SET MILESTONES'}</span><strong>{activeSetOwned}/{activeSetTotal}</strong></div>
                   <div className="tcg-milestone-list">
                     {(activeSet.completionRewards || []).map(reward => {
                       const threshold = Number(reward.milestone ?? reward.threshold ?? reward.percent ?? 0);
@@ -238,9 +319,13 @@ export default function CollectionHome({
                           type="button"
                           className={claimed ? 'is-claimed' : available ? 'is-available' : ''}
                           disabled={!available || claimed}
-                          onClick={() => onClaimMilestone?.(activeSet, reward)}
+                          onClick={() => {
+                            if (!onClaimMilestone) return;
+                            pendingFocus.current = { destination: 'milestone' };
+                            onClaimMilestone(activeSet, reward);
+                          }}
                         >
-                          <strong>{threshold}%</strong><span>{getText(reward.label, lang, reward.rewardType || reward.type || reward.id)}</span><small>{claimed ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED') : available ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM') : 'LOCKED'}</small>
+                          <strong>{threshold}%</strong><span>{getText(reward.label, lang, reward.rewardType || reward.type || reward.id)}</span><small>{claimed ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED') : available ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM') : (lang === 'fr' ? 'VERROUILLE' : 'LOCKED')}</small>
                         </button>
                       );
                     })}
@@ -260,11 +345,10 @@ export default function CollectionHome({
                 favoritesOnly={favoritesOnly}
                 onSelectCard={openCard}
               />
-            </>
-          ) : null}
+          </section>
 
-          {view === 'history' ? (
-            <section className="tcg-opening-history" aria-labelledby="tcg-history-title">
+            <section ref={view === 'history' ? panelRef : null} className="tcg-album-view tcg-opening-history" id="tcg-album-view-history"
+              role="tabpanel" tabIndex={-1} aria-labelledby="tcg-album-tab-history" hidden={view !== 'history'}>
               <div className="tcg-section-title"><div><span>A.R.C.A. LEDGER</span><h2 id="tcg-history-title">{lang === 'fr' ? '100 derniers tirages' : 'Last 100 pulls'}</h2></div><strong>{Math.min(100, history.length)}</strong></div>
               {history.length > 0 ? (
                 <ol>
@@ -273,21 +357,21 @@ export default function CollectionHome({
                       <span style={{ '--history-rarity': entry.rarityColor || '#9fb6bb' }}>{entry.rarityLabel || entry.rarity || 'Stable'}</span>
                       <strong>{entry.name || entry.rewardId || entry.cardId}</strong>
                       <small>{entry.universe || 'Nexus'} / {entry.pack || entry.packId || 'LEGACY'}</small>
-                      <em>{entry.duplicate ? `ECHO +${entry.shardsReturned || 0}` : 'NEW'}</em>
+                      <em>{entry.duplicate ? `ECHO +${entry.shardsReturned || 0}` : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}</em>
                     </li>
                   ))}
                 </ol>
               ) : <div className="tcg-empty-state">{lang === 'fr' ? 'Aucun tirage enregistre.' : 'No recorded pull.'}</div>}
             </section>
-          ) : null}
         </main>
+        </div>
 
         {selectedCard && selectedEntry ? (
           <CardDetailModal
             lang={lang}
             definition={selectedCard}
             entry={selectedEntry}
-            onClose={() => setSelectedCardId(null)}
+            onClose={closeCard}
             onUpdateCard={onUpdateCard}
           />
         ) : null}

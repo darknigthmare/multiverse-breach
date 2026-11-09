@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-20",
+  "reviewer": "referentiel_canon",
+  "method": "Independent local view_image inspection of original references and each delivered native; technical crops only where needed, no semantic image edits.",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "characterId": "stitch_626",
+  "incarnation": "Lilo & Stitch, animated Disney film2002, terrestrial two-arm form",
+  "status": "partial-two-delivered-natives-reviewed",
+  "sourceEvidenceFile": "docs/cg/stitch-reference-evidence-wave3-2026-10-20.json",
+  "sourceReferences": [
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-hero.jpeg",
+      "sha256": "9904ce62f1cf390c223d912c6083a217ab52105e0c74f7b26cf4086cecda3342",
+      "viewed": true,
+      "independentlyViewed": true,
+      "referencePurpose": "identity",
+      "usedForIdentity": true
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-animated-poster.jpeg",
+      "sha256": "9fc95af50e006c5e1fe65c7a8bd070eadb80411908cfa485d8f5e4042058bf18",
+      "viewed": true,
+      "independentlyViewed": true,
+      "referencePurpose": "identity",
+      "usedForIdentity": true
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/d23-production-ukulele.jpg",
+      "sha256": "e57a074005e5cddc21da90f731ac003715379742cdc677fea8857f26ec4de98c",
+      "viewed": true,
+      "independentlyViewed": true,
+      "referencePurpose": "equipment-only",
+      "slot": "CG02",
+      "usedForIdentity": false
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/stitch/d23-production-house.jpg",
+      "sha256": "3583a1d45b0a55e9def1e7d214b04e37426c70d83a3c797608870f9ae21b1bc8",
+      "viewed": true,
+      "independentlyViewed": true,
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "usedForIdentity": false
+    }
+  ],
+  "sourceFindings": [
+    "Final Disney2002 animated banner and poster establish the blue terrestrial character, two arms, large notched pink ears and dark rounded nose.",
+    "The Disney production ukulele painting is equipment development art, not a finalized film prop model.",
+    "The house sketch is environment support only; four-arm development poses and the2025 remake image are explicitly excluded."
+  ],
+  "entries": [
+    {
+      "slot": "CG02",
+      "type": "weaponSolo",
+      "status": "accepted-with-documented-limitations",
+      "accepted": true,
+      "nativePath": "/workspace/generated_images/exec-4dfeb1cb-bc48-4088-8f86-a39f449f9081.png",
+      "nativeSha256": "b4a9e52db7111c4ff67b013a04af3c6b4ede2b6fec62486fe83b63a266723f72",
+      "independentlyViewed": true,
+      "observations": [
+        "Complete wooden ukulele with four tuning pegs and four strings, no person, hands or detached anatomy.",
+        "Instrument on cloth-covered veranda table; separate interior setting."
+      ],
+      "limitations": [
+        "Fan Art equipment study from development painting; exact woods, frets and final-film geometry not certified."
+      ],
+      "canonicalFidelityApproved": false
+    },
+    {
+      "slot": "CG03",
+      "type": "decorSolo",
+      "status": "accepted-with-documented-limitations",
+      "accepted": true,
+      "nativePath": "/workspace/generated_images/exec-1b8adf9f-38bf-4ee9-aa6f-be831fa80aec.png",
+      "nativeSha256": "f4f28cd767a547ca9b5fa33f99fde6024a8aef25448711e9156e7cf511297bdd",
+      "independentlyViewed": true,
+      "observations": [
+        "Empty domestic garden with hammock between palms, porch, coastal village and bay.",
+        "No dominant character or weapon; composition distinct from CG02."
+      ],
+      "limitations": [
+        "Original Kauai-inspired composition, not a recreated film background.",
+        "Observed sunset differs from planned dawn; production metadata should describe delivered sunset."
+      ],
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "generationLimitations": [
+    "No generated body native has been supplied for acceptance; refused requests do not count as delivered or N/A.",
+    "These two images do not demonstrate character-body fidelity."
+  ],
+  "openBlockers": [],
+  "exportVerification": {
+    "status": "passed",
+    "receiptFile": "docs/cg/stitch-wave3-2026-10-20.json",
+    "verifiedFiles": 6,
+    "entries": [
+      {
+        "slot": "CG02",
+        "sourcePath": "/cg/lilo-stitch/stitch-626/signature-weapon-wave3-2026-10-20.png",
+        "nativeSha256": "b4a9e52db7111c4ff67b013a04af3c6b4ede2b6fec62486fe83b63a266723f72",
+        "sourceByteIdenticalToNative": false,
+        "decodedSourcePixelsMatchAcceptedNative": true,
+        "assets": [
+          {
+            "kind": "source",
+            "path": "/cg/lilo-stitch/stitch-626/signature-weapon-wave3-2026-10-20.png",
+            "sha256": "710e51db3369c0385c3e89b3ee61d3f5130ff63570a645fe9581a35db03da2d4",
+            "metadataMatch": true
+          },
+          {
+            "kind": "master",
+            "path": "/cg/lilo-stitch/stitch-626/signature-weapon-wave3-2026-10-20.webp",
+            "sha256": "963527ce2b0297afa899db0a9b5a389bb93f2a60115e78e0c7c2ca9f5258a04c",
+            "metadataMatch": true
+          },
+          {
+            "kind": "thumbnail",
+            "path": "/cg/lilo-stitch/stitch-626/signature-weapon-wave3-2026-10-20-thumb.webp",
+            "sha256": "0aaecc479729db93971fb70ce6e2a0dc8c53471dada414c28184741805422b55",
+            "metadataMatch": true
+          }
+        ]
+      },
+      {
+        "slot": "CG03",
+        "sourcePath": "/cg/lilo-stitch/stitch-626/decor-wave3-2026-10-20.png",
+        "nativeSha256": "f4f28cd767a547ca9b5fa33f99fde6024a8aef25448711e9156e7cf511297bdd",
+        "sourceByteIdenticalToNative": false,
+        "decodedSourcePixelsMatchAcceptedNative": true,
+        "assets": [
+          {
+            "kind": "source",
+            "path": "/cg/lilo-stitch/stitch-626/decor-wave3-2026-10-20.png",
+            "sha256": "9287467261c74fa09fdfa579c322ffa56835fefd0db4afc2ef712eef3e1b0f40",
+            "metadataMatch": true
+          },
+          {
+            "kind": "master",
+            "path": "/cg/lilo-stitch/stitch-626/decor-wave3-2026-10-20.webp",
+            "sha256": "9ea175de345680f2b2542d58a932c06cb83c7186af52ea97d79caff6b55b0677",
+            "metadataMatch": true
+          },
+          {
+            "kind": "thumbnail",
+            "path": "/cg/lilo-stitch/stitch-626/decor-wave3-2026-10-20-thumb.webp",
+            "sha256": "5ee9b08cfd3fa4e5dd1116ccf13684d06bfaf59e975d66f39f89be796b04ddc5",
+            "metadataMatch": true
+          }
+        ]
+      }
+    ],
+    "semanticallyEditedByReviewer": false
+  }
+}

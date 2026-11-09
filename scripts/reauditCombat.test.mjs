@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { before, after, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { isCombatGameplayAdvancing } from '../src/game/combatActivity.js';
 import { readFileSync } from 'node:fs';
 let vite, heroes, Rpg, Smash, Fighter, Tactics, install, kits, getSupport;

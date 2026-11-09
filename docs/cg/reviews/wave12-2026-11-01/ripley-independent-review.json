@@ -1,0 +1,1724 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-01T03:07:45.181356+00:00",
+  "characterId": "ripley",
+  "reviewer": "/root/alien_storage_audit",
+  "status": "passed-fifteen-actual-selected-native-image-reviews-with-source-bounds",
+  "allAccepted": true,
+  "completeSeries": true,
+  "acceptedCount": 15,
+  "actualSuccessfulImageGenOutputs": 19,
+  "sourceEvidence": {
+    "path": "docs/cg/ripley-reference-evidence-wave12-2026-11-01.json",
+    "sha256": "5e682d5a262ec7de82b52c8ebd90b67197bfacbd5aa5d0cd6c709ff7404f73b4",
+    "bytes": 14799
+  },
+  "planEvidence": {
+    "path": "docs/cg/ripley-wave12-plan-2026-11-01.json",
+    "sha256": "9b2a33da1db270271bafa9a5b82c2415a54b3c40051d935bdbe06d1298ea7c79",
+    "bytes": 79651
+  },
+  "entries": [
+    {
+      "slot": "CG01",
+      "attempt": 2,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-revised-boot-profile",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-50b2b84e-4f86-4939-9a56-f70e89a27a6c.png",
+      "sha256": "7e393cde239b26effef890a54c240e22a2d226c31ed31e1d70a62ef29b967881",
+      "bytes": 1670668,
+      "native": {
+        "path": "/workspace/generated_images/exec-50b2b84e-4f86-4939-9a56-f70e89a27a6c.png",
+        "sha256": "7e393cde239b26effef890a54c240e22a2d226c31ed31e1d70a62ef29b967881",
+        "bytes": 1670668
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:14:17.936767+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt2-native-independent-review.json",
+        "sha256": "8c86d50a07e7e54bc83383e23f032faced435b3865e81ad6516e7ea0c7c51abe",
+        "bytes": 4244
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt2-transport-independent.json",
+        "sha256": "29140ab1eca3d76c4565eb2637f21a851e55d9bbfca5e694fd8e79560b3be9e2",
+        "bytes": 2456
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+          "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+          "bytes": 1689196,
+          "role": "target-edit-only-not-identity",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "role": "primary-actor-face-hair-upper-costume-identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "role": "licensed-body-costume-boots-support-not-face-identity",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/01-characterSolo-revision1-thin-continuous-soles.txt",
+        "sha256": "b2f48d5125a8920ca133b6f5f8e546f6fb0d08922011101ba894a3ee35ac1a03",
+        "bytes": 2083
+      },
+      "observations": [
+        "Recognizable1979 Sigourney Weaver/Ripley face and shoulder-length dark curls remain visually coherent with official film4.",
+        "Source-supported communications headset, blue-gray coveralls, cream collar/olive undershirt and anatomical LEFT wing badge.",
+        "Black watch remains anatomical LEFT; RIGHT hand at waist and LEFT empty hand low, full body and complete separate feet visible.",
+        "Original compatible Nostromo locker alcove, lighting/camera composition and empty hanging garment remain visually coherent; no extra person or Jonesy.",
+        "Hard visible square-pixel clusters remain, without photographic or toy-plastic rendering."
+      ],
+      "limitations": [
+        "ImageGen edit is a new full-image output; no exact outside-boots pixel identity is claimed.",
+        "Provided NECA photograph supplies body/costume/footwear support, not figurine-face identity or a certified historical shoe brand/model.",
+        "No eyelet count, microscopic patch glyphs, exact headset construction, iris color or hidden sole/reverse surfaces are certified.",
+        "This review covers CG01 attempt2 only, not ungenerated CG02–15 and not any new Ripley atlas."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "soleCorrectionObserved": {
+        "lowContinuousRubberSoleBand": true,
+        "separateChunkyBlockHeelRemovedEspeciallyViewerRight": true,
+        "grayLaceUpAnkleUppersAndTwoCompleteBootSilhouettesRetained": true,
+        "matchesProvidedLicensedFootwearSupportWithinPixelArtResolution": true
+      },
+      "allVisibleBlockingReservationsFromAttempt1Resolved": true,
+      "previousIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt1-native-independent-review.json",
+        "sha256": "159534ce787101b76c13f7221a9796f482ec210884cd4d041fd59ec4419cbdfb",
+        "bytes": 4073
+      },
+      "previousRealNativeRetained": {
+        "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+        "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+        "bytes": 1689196
+      },
+      "slotNumber": 1,
+      "type": "characterSolo",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Unarmed selected1979 crew identity at rest.",
+      "poseBrief": "Front three-quarter calm stance, anatomical RIGHT hand at waist and LEFT black-watch empty hand open low, both gray lace-up boots separate, gaze toward viewer-right.",
+      "poseId": "ripley-wave12-2026-11-01-cg01-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg01-distinct",
+      "background": {
+        "location": "Original compatible Nostromo crew supply-locker alcove",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Unarmed selected1979 crew identity at rest.",
+        "background": "Folded unlettered crew cloth and recessed utilitarian gray cabinets, no weapon.",
+        "lighting": "Soft warm task lamp against cold blue-gray work surfaces."
+      }
+    },
+    {
+      "slot": "CG02",
+      "attempt": 2,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-targeted-revision",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-01e9277f-226f-4e7f-9d59-c2b1011af063.png",
+      "sha256": "5f3171406f9972cfd637fa9ec0380ed376d2378bca43b48c36f36f099449f550",
+      "bytes": 1660758,
+      "native": {
+        "path": "/workspace/generated_images/exec-01e9277f-226f-4e7f-9d59-c2b1011af063.png",
+        "sha256": "5f3171406f9972cfd637fa9ec0380ed376d2378bca43b48c36f36f099449f550",
+        "bytes": 1660758
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:34:13.499911+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt2-native-independent-review.json",
+        "sha256": "be4411488a25410602e079de372eee7fe545c224aa415d737976846237096f58",
+        "bytes": 3361
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt2-transport-independent.json",
+        "sha256": "c18df8741cc570c3e93ab3eb487eacbf050d1320339c89fe5d0c2e961e0c3c36",
+        "bytes": 3071
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+          "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+          "bytes": 1815146,
+          "referencePurpose": "target-edit-only-not-identity",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "equipment-only-not-identity",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/02-weaponSolo-revision1-source-visible-sling.txt",
+        "sha256": "69894c72a4d7efd9521b8789f42eb7d061ab20d0da42b9c474867eb30a2e0232",
+        "bytes": 1733
+      },
+      "observations": [
+        "Large unsupported exposed triangular sling and extended silver chain sections are removed.",
+        "Only a short source-compatible black strap segment and small attachment hardware remain close to the gray weapon; unknown routing stays masked behind it.",
+        "Whole1979 gray cylinder/receiver/red bottle/upper curved pipe/short dark round muzzle remain inside frame on two plain supports.",
+        "No body, hand, animal, extra weapon or flame appears; the equipment-only workbench and deliberate pixel-art clusters remain distinct from other scenes."
+      ],
+      "limitations": [
+        "Licensed NECA photo is equipment-only support, not actor identity.",
+        "Exact muzzle-hole count, hardware count and hidden strap/reverse geometry remain unverified.",
+        "A new full-image edit result is reviewed; outside-sling pixel identity is not claimed."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "allVisibleBlockingReservationsFromAttempt1Resolved": true,
+      "previousIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt1-native-independent-review.json",
+        "sha256": "8d6cae89b0113c98262862cd1dee34933b1c4df50d9614e7e3b0cc0560a3306b",
+        "bytes": 3542
+      },
+      "previousRealNativeRetained": {
+        "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+        "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+        "bytes": 1815146
+      },
+      "slotNumber": 2,
+      "type": "weaponSolo",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "One complete source1979 flamethrower alone.",
+      "poseBrief": "Entire source gray improvised flamethrower in matching oblique source-facing presentation on two plain supports, muzzle upper-right and rear gray cylinder lower-left; red bottle, upper bent pipe/hose and source-visible black sling segments, all visible ends/attachments inside frame while unknown hidden routing stays behind weapon fully inside image. No figure, hand, cat, fire or extra weapon.",
+      "poseId": "ripley-wave12-2026-11-01-cg02-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg02-distinct",
+      "background": {
+        "location": "Original compatible merchant-vessel inert-equipment safety bench",
+        "foreground": "Clear full-object presentation or empty architecture without a body.",
+        "midground": "One complete source1979 flamethrower alone.",
+        "background": "Plain dark service cloth, two supports and recessed gray cabinet; no additional weapon.",
+        "lighting": "Neutral silver side lighting with restrained warm maintenance bulb."
+      }
+    },
+    {
+      "slot": "CG03",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-empty-environment",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-c2965beb-b0fa-4a46-8b56-88eda65e9d72.png",
+      "sha256": "9bb98e35ac3ad3c3cb172f08fe8493eaf9ae3f723b65841892dbb785bb52cd15",
+      "bytes": 2200658,
+      "native": {
+        "path": "/workspace/generated_images/exec-c2965beb-b0fa-4a46-8b56-88eda65e9d72.png",
+        "sha256": "9bb98e35ac3ad3c3cb172f08fe8493eaf9ae3f723b65841892dbb785bb52cd15",
+        "bytes": 2200658
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:18:51.881585+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG03-attempt1-native-independent-review.json",
+        "sha256": "f91741b43bb583f56187ee199fc0c3958cfa9f5d32bc28fc76be654c3a08cd33",
+        "bytes": 3164
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG03-attempt1-transport-independent.json",
+        "sha256": "fa10a5eac02786fc46ce87a39278ed06849b0fb76f0ac29c95c618205540c266",
+        "bytes": 2037
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "environment-only",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-3.jpeg",
+          "sha256": "379a96d7c4448fd18a71671a58debe28c585912d6ea18e3b2ed444d6a03dbc8f",
+          "bytes": 120772,
+          "referencePurpose": "environment-only",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/03-decorSolo.txt",
+        "sha256": "e7481accb850f6599e7b152cc3355443adf6e182c6b8b64b2029c69c124ab693",
+        "bytes": 4124
+      },
+      "observations": [
+        "Empty industrial flight-control room with analog CRT banks, utilitarian switch panels, ribbed recesses and mechanical ceiling fittings.",
+        "Ring-shaped ceiling fixture and gray cabinet vocabulary are supported by actual film3 surroundings; crew figures from both references are excluded.",
+        "No person-shaped silhouette, portrait, reflection, animal, alien specimen or second scene observed.",
+        "A distinct original compatible setting, not a claim to reproduce an exact official camera frame or canonical plan."
+      ],
+      "limitations": [
+        "No tiny control glyph, text, exact unseen room geometry or precise console count is certified.",
+        "References are environment vocabulary only; none supplies a generated character identity here."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "slotNumber": 3,
+      "type": "decorSolo",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Empty1979 Nostromo-compatible flight-control room.",
+      "poseBrief": "Environment only, wide depth within portrait format: empty control seats, analog CRT console banks and ceiling utility housings. No people, person-shaped silhouettes, animals, alien specimens, posters or reflections.",
+      "poseId": "ripley-wave12-2026-11-01-cg03-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg03-distinct",
+      "background": {
+        "location": "Original compatible Nostromo flight-control compartment",
+        "foreground": "Clear full-object presentation or empty architecture without a body.",
+        "midground": "Empty1979 Nostromo-compatible flight-control room.",
+        "background": "1979 curved CRTs, pale gray utilitarian panels, dark ribbed recesses and industrial ceiling fittings.",
+        "lighting": "Dim cool CRT glow and practical off-white ceiling illumination."
+      }
+    },
+    {
+      "slot": "CG04",
+      "attempt": 2,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-targeted-revision",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-3927b4ec-4e02-48d6-b25e-f2a670a66ef2.png",
+      "sha256": "69adf7d9eae5086ade552f43b57dc58a3ecee5b93971834fc63703d66f73f025",
+      "bytes": 1884354,
+      "native": {
+        "path": "/workspace/generated_images/exec-3927b4ec-4e02-48d6-b25e-f2a670a66ef2.png",
+        "sha256": "69adf7d9eae5086ade552f43b57dc58a3ecee5b93971834fc63703d66f73f025",
+        "bytes": 1884354
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:34:13.506712+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt2-native-independent-review.json",
+        "sha256": "1445abf107e83f10c5a6de9b71a1c3c59a823d52d0ebe311119eba01a688c695",
+        "bytes": 3825
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt2-transport-independent.json",
+        "sha256": "692704b504157f8b46dffae73e998723f4caf4e4bf3d792bc1a42910bfec9eeb",
+        "bytes": 3275
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+          "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+          "bytes": 1935770,
+          "referencePurpose": "target-edit-only-not-identity",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "primary-actor-identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support-not-figurine-face",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/04-coherentScene-revision1-subdued-irises-thin-soles.txt",
+        "sha256": "b315d765f0846113d9ee13a8c41221ce48d4bd6a2711ccebf5e372ac1bee4308",
+        "bytes": 2041
+      },
+      "observations": [
+        "Iris rendering is now subdued; conspicuous saturated cyan emphasis is removed without imposing a certified new hue.",
+        "Gray lace-up ankle boots have lower continuous rubber sole profiles with shallow heels, and two complete separated silhouettes remain inside frame.",
+        "Recognizable1979 actor face/curls, headset, blue-gray coveralls/cream collar/olive layer, LEFT wing and LEFT black watch remain visually coherent.",
+        "Distinct leaning communication-console task, whole arms/hands and source-compatible analog industrial alcove remain, with no added person, weapon or incarnation."
+      ],
+      "limitations": [
+        "Exact iris color remains unresolved and is not certified as a named hue.",
+        "Licensed figurine supports body/costume/boots only, not actor-face identity or a historical boot model.",
+        "No exact eyelet count, patch glyph, headset microgeometry or hidden surfaces are certified.",
+        "A new full-image edit result is reviewed; outside-eye/sole pixel identity is not claimed."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "allVisibleBlockingReservationsFromAttempt1Resolved": true,
+      "previousIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt1-native-independent-review.json",
+        "sha256": "2f0154815d13fd178b24c67d123b8dbac972e92beb8d3413d6c400576345359b",
+        "bytes": 4001
+      },
+      "previousRealNativeRetained": {
+        "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+        "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+        "bytes": 1935770
+      },
+      "slotNumber": 4,
+      "type": "coherentScene",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Crew communication task using optional headset observed in film4.",
+      "poseBrief": "Leaning over a console front three-quarter, source headset with thin mic on head, anatomical LEFT black-watch index points to one analog control, RIGHT empty palm rests on console edge; both whole gray lace-up boots clear in front of console. No flamethrower.",
+      "poseId": "ripley-wave12-2026-11-01-cg04-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg04-distinct",
+      "background": {
+        "location": "Original compatible merchant-vessel communications alcove",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Crew communication task using optional headset observed in film4.",
+        "background": "Unlettered analog radio/CRT bank and a narrow open side work platform, no other crew.",
+        "lighting": "Cool pale-green CRT light with warm desk task lamp."
+      }
+    },
+    {
+      "slot": "CG05",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-nexus-action",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/lot-01/ripley/native-recovered/CG05-94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599.png",
+      "sha256": "94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599",
+      "bytes": 2518492,
+      "native": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/native-recovered/CG05-94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599.png",
+        "sha256": "94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599",
+        "bytes": 2518492
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:28:21.293525+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG05-attempt1-native-independent-review.json",
+        "sha256": "4bb7224f8ca403777df79c616476f7410a1cc23c055b9af40243071551b23b72",
+        "bytes": 4035
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG05-attempt1-transport-independent.json",
+        "sha256": "8c7c51304ae526ec4ac3cc901febbef6398c290f8491597f04b7d36c89bfd656",
+        "bytes": 2800
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/05-actionScene.txt",
+        "sha256": "99f1260e764aa632fccf998b22415652ca59f824cde95438545144d56b4f0cd5",
+        "bytes": 4660
+      },
+      "observations": [
+        "Recognizable Ripley1979 actor face, source-like dark curls and subdued eyes; no imposed bright iris tint or changed incarnation.",
+        "Blue-gray coveralls, cream/olive layers and anatomical LEFT wing badge retained.",
+        "Distinct diagonal leap across broken service catwalk, anatomical LEFT knee raised and RIGHT leg extended; both whole gray lace-up ankle boots remain separate inside frame.",
+        "Anatomical RIGHT hand grips1979 flamethrower and LEFT supports body with black watch visible. Gray rear cylinder/red bottle/upper bent pipe/short round dark muzzle remain legible without firing flame.",
+        "Visible black sling segments stay partly masked by body/weapon; no fully exposed invented triangle with long silver chains as in rejected CG02.",
+        "Nexus fracture is confined to original compatible industrial catwalk setting, without new outfit, extra person, animal or alien.",
+        "Whole hands, boots and source-visible weapon ends fit the portrait; crisp square-pixel clusters remain."
+      ],
+      "limitations": [
+        "No exact muzzle-hole count, hidden sling/back route, eyelet count, badge glyph or unseen underside is certified.",
+        "Licensed figure supports body/costume/equipment only, never actor face identity.",
+        "Nexus breach is an explicit noncanonical environment variant, not an Alien1979 film event.",
+        "Original output hint and canonical tool filesystem path are unavailable; the actual returned PNG payload is preserved without reencoding."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "transportLimitation": {
+        "actualOutputHintKeyPresent": false,
+        "actualOutputHint": null,
+        "canonicalHintPngPath": null,
+        "dataUrlPayloadEqualsPreservedNativeByteExact": true,
+        "recoveryAttestation": {
+          "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/native-recovered/CG05-attempt1-transport-attestation.json",
+          "sha256": "38fe59aceaa3fc9bef5124b8c975c85e36b7915cbe8c0ffe7338f6258c1f9090",
+          "bytes": 1914
+        },
+        "uuidOrHintInvented": false
+      },
+      "slotNumber": 5,
+      "type": "actionScene",
+      "family": "Nexus",
+      "canonStatus": "nexus-variant",
+      "themeBrief": "Explicit Nexus environmental breach, source equipment unchanged.",
+      "poseBrief": "Diagonal leap across a low broken service catwalk, anatomical LEFT knee raised and RIGHT leg long, RIGHT hand grips entire source flamethrower and LEFT supports its body with black watch visible; red bottle, muzzle, rear cylinder and all source-visible black sling segments, with hidden routing left understated behind weapon stay inside frame, both whole gray boots clear. No flame firing or extra weapon.",
+      "poseId": "ripley-wave12-2026-11-01-cg05-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg05-distinct",
+      "background": {
+        "location": "Nexus-fractured original compatible Nostromo service catwalk",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Explicit Nexus environmental breach, source equipment unchanged.",
+        "background": "Gray grated bridge over contained conduits; blue-violet rift lies in architecture, not innate character magic.",
+        "lighting": "Cool steel task light and contained background violet rift glow."
+      }
+    },
+    {
+      "slot": "CG06",
+      "attempt": 2,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-distinct-pose-and-setting",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-38f39bcf-b40c-44ba-bcff-be180b1b7c58.png",
+      "sha256": "f15675291abfc4b729cb307df380f6cac970d3ea18f7da897086a0e33011ad97",
+      "bytes": 1949344,
+      "native": {
+        "path": "/workspace/generated_images/exec-38f39bcf-b40c-44ba-bcff-be180b1b7c58.png",
+        "sha256": "f15675291abfc4b729cb307df380f6cac970d3ea18f7da897086a0e33011ad97",
+        "bytes": 1949344
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:49:50.902951+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt2-native-independent-review.json",
+        "sha256": "4d198dae827c6a30446d07e9dbbfac1ffbb2cd42bccafe36dd1cf7643fd69ac2",
+        "bytes": 5070
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt2-transport-independent.json",
+        "sha256": "53befc666a07a9f11cd02409fbd41d7127dee43aa999488c73cede74be5bf3b6",
+        "bytes": 3267
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+          "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+          "bytes": 2317781,
+          "referencePurpose": "target-edit-only-not-identity",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "primary-actor-identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support-not-figurine-face",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/06-introPose-revision1-separated-whole-boots.txt",
+        "sha256": "f6d2169a3a10c57e93828a227dedfaac4615f616859fcad876080463ddbcba7d",
+        "bytes": 2065
+      },
+      "observations": [
+        "Recognizable 1979 actor face and shoulder-length dark curls, blue-gray crew coveralls, cream collar/olive layer and LEFT wing badge.",
+        "Black watch remains anatomical LEFT; two whole gray lace-up ankle boots are separate, unobstructed and show low continuous soles with shallow heels in available views.",
+        "No conspicuous luminous cyan iris emphasis; no exact iris hue certified.",
+        "Normal complete arms/hands, no new weapon, person or creature; visible deliberate square-pixel clusters.",
+        "The original rear-boot occlusion is resolved; both complete shoes including heel silhouettes are separately legible.",
+        "Observed stride is RIGHT forward / LEFT behind, differing from requested LEFT forward / RIGHT behind. This is explicitly recorded rather than claimed as a literal prompt match.",
+        "Cargo receiving area, source identity/costume and arm/watch/rail laterality remain coherent."
+      ],
+      "limitations": [
+        "No exact iris color, eyelet count, shoe model, small badge glyph, headset construction or hidden geometry is certified.",
+        "Licensed figure supports body/costume/footwear only, never actor-face identity.",
+        "A new full-image edit is reviewed; unchanged outside-leg pixels are not claimed."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Walking cargo-arrival stride with anatomical RIGHT boot forward and LEFT behind, both laterally separated; LEFT watch hand holds rail and empty RIGHT hand stays low.",
+      "requestedPose": "Walking in front three-quarter with anatomical LEFT boot forward and RIGHT rear, LEFT black-watch hand lightly touches vertical grab rail, RIGHT empty hand relaxed near hip, gaze into room. Boots separate with neither heel hidden. No carried weapon.",
+      "literalRequestedPoseFullyMatched": false,
+      "poseVarianceAcceptedBecause": "The visible source-fidelity and whole-shoe defect is resolved; the distinct arrival stride remains coherent without mirroring gear or changing character.",
+      "allVisibleBlockingReservationsFromAttempt1Resolved": true,
+      "previousIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt1-native-independent-review.json",
+        "sha256": "5339fb9954b77667b15c21f361d2614e89dd6b2085f8a6703a3b93a36b3eed63",
+        "bytes": 3654
+      },
+      "previousRealNativeRetained": {
+        "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+        "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+        "bytes": 2317781
+      },
+      "slotNumber": 6,
+      "type": "introPose",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Arrival into a cargo receiving compartment.",
+      "poseBrief": "Cautious arrival step with anatomical RIGHT gray ankle-high boot ahead and LEFT a little rear, sufficient lateral floor gap that both whole footwear silhouettes are separately legible with no opposite-leg heel occlusion; LEFT black-watch hand touches vertical rail and RIGHT empty hand stays low, source face/gaze/costume/cargo setting retained.",
+      "poseId": "ripley-wave12-2026-11-01-cg06-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg06-distinct",
+      "background": {
+        "location": "Original compatible Nostromo cargo receiving ramp",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Arrival into a cargo receiving compartment.",
+        "background": "Low empty receiving deck, tied-down plain freight crates behind and tall practical doorway at angle.",
+        "lighting": "Cool overhead cargo lamps and muted amber threshold light."
+      }
+    },
+    {
+      "slot": "CG07",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-seated-relief",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-5e3b94f7-6611-4c83-8969-aa53e2866ee5.png",
+      "sha256": "1f254b7293c258368d6ca43908bfc31d5cba36e8ade9441e17975cc558f3b9b2",
+      "bytes": 1619972,
+      "native": {
+        "path": "/workspace/generated_images/exec-5e3b94f7-6611-4c83-8969-aa53e2866ee5.png",
+        "sha256": "1f254b7293c258368d6ca43908bfc31d5cba36e8ade9441e17975cc558f3b9b2",
+        "bytes": 1619972
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:38:21.082710+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG07-attempt1-native-independent-review.json",
+        "sha256": "a3ef5ac47100fed7ccbf202b7969593756a4cdebb3390f04ba1a21544b80ada5",
+        "bytes": 3507
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG07-attempt1-transport-independent.json",
+        "sha256": "cd6a602fedb2502a8620d17ba1000755bea3a79b16fcd839e66fb2a5ef608876",
+        "bytes": 3026
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/07-victoryPose.txt",
+        "sha256": "3bf5fe9a0dd172746e4a4699a9983ec7b50e94a55b4d37bb12a7ec5dfee6812c",
+        "bytes": 4915
+      },
+      "observations": [
+        "Recognizable1979 actor likeness and dark curls, blue-gray crew coveralls, cream collar/olive inner shirt and LEFT chest wing.",
+        "Anatomical LEFT black watch, whole normal arms/hands, no new weapon/outfit/creature.",
+        "Original compatible industrial merchant-vessel setting and deliberate square-pixel clusters.",
+        "Distinct restrained-relief seated pose on a low mess bench, LEFT watch forearm resting on own thigh and RIGHT empty palm beside hip.",
+        "Both complete gray ankle lace-up boots, toes and heels are visible with clear lateral separation; low continuous soles and shallow heels read coherently.",
+        "Eyes are small/dark with no pronounced luminous cyan emphasis as in rejected CG04a1; exact iris hue remains uncertified.",
+        "Empty mess/rest compartment has utilitarian benches and simple crockery, without another person or battle trophy."
+      ],
+      "limitations": [
+        "No exact iris hue, eyelet count, shoe model, badge glyph or hidden geometry is certified.",
+        "Body/costume/footwear derive only within licensed support scope; actor identity remains film4."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "slotNumber": 7,
+      "type": "victoryPose",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Restrained relief after duty, no battle trophy.",
+      "poseBrief": "Seated on a low mess-area bench, anatomical LEFT black-watch forearm on own thigh and RIGHT empty palm resting beside hip; RIGHT boot farther forward, LEFT nearer but both entire toes and heels separate. Calm relieved upward gaze.",
+      "poseId": "ripley-wave12-2026-11-01-cg07-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg07-distinct",
+      "background": {
+        "location": "Original compatible merchant-vessel mess-rest compartment",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Restrained relief after duty, no battle trophy.",
+        "background": "Empty plain tables, simple unmarked crockery and a circular utility wall vent, no other figure.",
+        "lighting": "Warm meal-area light and restrained cool ambient steel."
+      }
+    },
+    {
+      "slot": "CG08",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-distinct-pose-and-setting",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-8f054972-4dd1-4293-8136-1669de39a473.png",
+      "sha256": "15171f3cb54f2b45b31b2efccda150417aaf6ed1bdb83eb4260041bacd0cd34f",
+      "bytes": 1847142,
+      "native": {
+        "path": "/workspace/generated_images/exec-8f054972-4dd1-4293-8136-1669de39a473.png",
+        "sha256": "15171f3cb54f2b45b31b2efccda150417aaf6ed1bdb83eb4260041bacd0cd34f",
+        "bytes": 1847142
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:44:03.431485+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG08-attempt1-native-independent-review.json",
+        "sha256": "918726c2695ea1076f98057fb4d0865f0748ee5163a8a4311e3c65f5fca05d61",
+        "bytes": 3747
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG08-attempt1-transport-independent.json",
+        "sha256": "d72d1d944e2597161ac3178e2e9df9eda5db0eb31bc47f513fd932cf4dc8e0a2",
+        "bytes": 3025
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/08-defeatPose.txt",
+        "sha256": "14d1f0af12e54ee27f4c45a5622460f7def8780643d71483b3833ccba7eae869",
+        "bytes": 4914
+      },
+      "observations": [
+        "Recognizable1979 actor face and dark shoulder-length curls, blue-gray crew coveralls, cream collar/olive inner shirt and LEFT wing.",
+        "Black watch remains anatomical LEFT; two whole gray lace-up ankle boots are unobstructed, separately legible and have low continuous soles/shallow heels within available view.",
+        "Subdued eyes without conspicuous luminous cyan emphasis; exact hue remains uncertified.",
+        "Whole hands and limbs, no added weapon, character, animal or alternate incarnation; visible square-pixel clusters retained.",
+        "Distinct cautious sideways retreat on a maintenance stair, anatomical RIGHT knee on higher step and LEFT leg lower.",
+        "LEFT watch hand grips rail, RIGHT empty palm extends for balance; both complete boots stay visible on separate steps.",
+        "Industrial landing/stair shaft differs from other planned locations without injury, torn costume or body damage."
+      ],
+      "limitations": [
+        "No exact iris hue, eyelet count, shoe model, badge glyph, headset microgeometry or hidden surfaces is certified.",
+        "Licensed figurine supports body/costume/footwear only, never actor-face identity.",
+        "Original compatible setting is not an exact official camera frame or a canonical film event."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "slotNumber": 8,
+      "type": "defeatPose",
+      "family": "Canon",
+      "canonStatus": "canon-inspired",
+      "themeBrief": "Dignified retreat, intact1979 crew body.",
+      "poseBrief": "Sideways retreat along an industrial maintenance stair, anatomical RIGHT knee bent on higher step and LEFT leg extended toward lower step, LEFT black-watch hand on rail and RIGHT empty palm out for balance; both whole gray lace-up boots separately visible.",
+      "poseId": "ripley-wave12-2026-11-01-cg08-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg08-distinct",
+      "background": {
+        "location": "Original compatible Nostromo maintenance-ladder shaft landing",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Dignified retreat, intact1979 crew body.",
+        "background": "Open gray stair treads and tall ribbed ventilation recesses; no creature or injury.",
+        "lighting": "Low amber emergency lamp and cold gray shaft light."
+      }
+    },
+    {
+      "slot": "CG09",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-distinct-pose-and-setting",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-072e9eca-5255-4fa8-8292-1b3eb764d480.png",
+      "sha256": "d80be704b98c18d1c3e8dc3b4f37c096d0d11bb2e29efc773ab483e8d5a59e30",
+      "bytes": 2146636,
+      "native": {
+        "path": "/workspace/generated_images/exec-072e9eca-5255-4fa8-8292-1b3eb764d480.png",
+        "sha256": "d80be704b98c18d1c3e8dc3b4f37c096d0d11bb2e29efc773ab483e8d5a59e30",
+        "bytes": 2146636
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:44:03.434998+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG09-attempt1-native-independent-review.json",
+        "sha256": "3f9d024b0304cb31e2a4238f826e8c58a5a52ee948cb85af9fb15b6ed4116498",
+        "bytes": 3828
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG09-attempt1-transport-independent.json",
+        "sha256": "4e3941952ca7f88dbc96354cf48a91978cf88886db55152fa5770374a85138a1",
+        "bytes": 3026
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/09-beachFamily.txt",
+        "sha256": "3a9f0f5f1d2b6166c933540f5640f7cb65428c4c1ffe3fda70313499a4abb344",
+        "bytes": 4982
+      },
+      "observations": [
+        "Recognizable1979 actor face and dark shoulder-length curls, blue-gray crew coveralls, cream collar/olive inner shirt and LEFT wing.",
+        "Black watch remains anatomical LEFT; two whole gray lace-up ankle boots are unobstructed, separately legible and have low continuous soles/shallow heels within available view.",
+        "Subdued eyes without conspicuous luminous cyan emphasis; exact hue remains uncertified.",
+        "Whole hands and limbs, no added weapon, character, animal or alternate incarnation; visible square-pixel clusters retained.",
+        "Explicit Fan Art shore pause in unchanged opaque source crew outfit, seated side three-quarter on a low rock.",
+        "LEFT watch hand arranges three small pebbles, RIGHT relaxed hand rests on own knee.",
+        "Both entire boots are separate and clear of rocks/other leg, with visibly restrained sole profiles.",
+        "Remote merchant-port shoreline and distant industrial silhouette form a distinct noncanonical scene; no swimwear or extra person."
+      ],
+      "limitations": [
+        "No exact iris hue, eyelet count, shoe model, badge glyph, headset microgeometry or hidden surfaces is certified.",
+        "Licensed figurine supports body/costume/footwear only, never actor-face identity.",
+        "Original compatible setting is not an exact official camera frame or a canonical film event."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "slotNumber": 9,
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Family-safe shore pause fully clothed in selected source outfit.",
+      "poseBrief": "Seated side three-quarter on a low flat stone with both gray boots set apart and whole, anatomical LEFT black-watch hand arranges three small pebbles and RIGHT empty hand rests on own knee; no weapon, swimwear or other person.",
+      "poseId": "ripley-wave12-2026-11-01-cg09-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg09-distinct",
+      "background": {
+        "location": "Original compatible remote merchant-port shore, noncanonical FanArt",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Family-safe shore pause fully clothed in selected source outfit.",
+        "background": "Quiet stony shoreline, low surf and distant utilitarian port silhouette; no claim this is official Nostromo landing or LV426.",
+        "lighting": "Muted natural dawn and cool gray water reflection."
+      }
+    },
+    {
+      "slot": "CG10",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-distinct-pose-and-setting",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-449f310a-612a-41f9-84c3-3a9359ad0b16.png",
+      "sha256": "8c3c30e40fe735c438349b2408efae62d2b989b00c34c4c9ee34d2b8c08102c1",
+      "bytes": 1604896,
+      "native": {
+        "path": "/workspace/generated_images/exec-449f310a-612a-41f9-84c3-3a9359ad0b16.png",
+        "sha256": "8c3c30e40fe735c438349b2408efae62d2b989b00c34c4c9ee34d2b8c08102c1",
+        "bytes": 1604896
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:49:50.908406+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG10-attempt1-native-independent-review.json",
+        "sha256": "91e8793cbdb38ad7c37b1f1b5d680711ce06eb33cd50e3424da83062b06ef075",
+        "bytes": 4136
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG10-attempt1-transport-independent.json",
+        "sha256": "fb3a5bd0a9be48c9dadc9f06f6a78095554d4340d232b8ffc1763bd3ec8371a4",
+        "bytes": 3026
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "primary-actor-identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support-not-figurine-face",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/10-maidService.txt",
+        "sha256": "f38e91cc49690cc291b1793c00fb1c64ac24dd91bd77de29026bddbaf6ae926a",
+        "bytes": 5049
+      },
+      "observations": [
+        "Recognizable 1979 actor face and shoulder-length dark curls, blue-gray crew coveralls, cream collar/olive layer and LEFT wing badge.",
+        "Black watch remains anatomical LEFT; two whole gray lace-up ankle boots are separate, unobstructed and show low continuous soles with shallow heels in available views.",
+        "No conspicuous luminous cyan iris emphasis; no exact iris hue certified.",
+        "Normal complete arms/hands, no new weapon, person or creature; visible deliberate square-pixel clusters.",
+        "Explicit family-safe Fan Art service theme: plain opaque gray apron overlays the full source crew outfit, with source collar/inner layer and LEFT watch visible.",
+        "Both full boots remain separate and visible without crossed-leg occlusion.",
+        "Additional small covered food/service container is visibly present on tray; it is a compatible theme prop, not a claimed source or exact prompt-only object set.",
+        "Original industrial merchant-vessel galley setting is distinct from other slots, with no maid costume donor, weapon or extra person."
+      ],
+      "limitations": [
+        "No exact iris color, eyelet count, shoe model, small badge glyph, headset construction or hidden geometry is certified.",
+        "Licensed figure supports body/costume/footwear only, never actor-face identity."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Standing galley service pose with feet apart at similar depth, both hands carrying a tray with a plain cup and an additional small covered service container.",
+      "requestedPose": "Standing gentle three-quarter with both feet at same depth shoulder-width apart, every complete gray boot separately visible from toe through heel, no crossed legs. Plain opaque gray knee-length apron over full source coveralls/cream collar/olive inner shirt; both hands carry small tray and unmarked cup, LEFT black watch visible. No weapon.",
+      "slotNumber": 10,
+      "type": "maidService",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Professional family-safe shipboard galley service.",
+      "poseBrief": "Standing gentle three-quarter with both feet at same depth shoulder-width apart, every complete gray boot separately visible from toe through heel, no crossed legs. Plain opaque gray knee-length apron over full source coveralls/cream collar/olive inner shirt; both hands carry small tray and unmarked cup, LEFT black watch visible. No weapon.",
+      "poseId": "ripley-wave12-2026-11-01-cg10-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg10-distinct",
+      "background": {
+        "location": "Original compatible Nostromo staff galley service counter",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Professional family-safe shipboard galley service.",
+        "background": "Plain serving counter, simple cups and utilitarian wall clock; no extra figure or futuristic touchscreen.",
+        "lighting": "Warm galley task lamps with cool utilitarian gray backdrop."
+      }
+    },
+    {
+      "slot": "CG11",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-explicit-special-theme",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-a8eda2a6-ed80-4ff5-b471-932ed701b653.png",
+      "sha256": "fa442dd8e973eca3b0c5db3b2f1f78a9de2d0dbea87f2e086c9b79edd13b188b",
+      "bytes": 1768902,
+      "native": {
+        "path": "/workspace/generated_images/exec-a8eda2a6-ed80-4ff5-b471-932ed701b653.png",
+        "sha256": "fa442dd8e973eca3b0c5db3b2f1f78a9de2d0dbea87f2e086c9b79edd13b188b",
+        "bytes": 1768902
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:56:20.265898+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG11-attempt1-native-independent-review.json",
+        "sha256": "a9c2000820e40faef491338a2ebebd69839cb5a1030ca7b1022a63161b1b4673",
+        "bytes": 4207
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG11-attempt1-transport-independent.json",
+        "sha256": "3261f86aba3b8c62e338b4ccc29ad0e3c617a1d6f1a0fc025f56b5671e04590b",
+        "bytes": 3020
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/11-goofy.txt",
+        "sha256": "ef32f2982c6b9b2e17a6865874b09f07f0076b6e2c9463cf676d652103450e66",
+        "bytes": 4969
+      },
+      "observations": [
+        "Recognizable 1979 actor face, dark shoulder-length curls, blue-gray coveralls, cream/olive layers and LEFT wing badge.",
+        "Black watch remains anatomical LEFT; whole hands/limbs and two entire separated gray ankle lace-up boots remain in frame.",
+        "Subdued iris rendering without electric cyan emphasis; no exact hue certified.",
+        "Source outfit remains intact without new weapon, faction armor, additional person or creature; deliberate square-pixel clusters.",
+        "Amused/source-like face and distinct comic maintenance-records niche fit the Fan Art theme.",
+        "Primary held sheet and all character fingers are fully visible.",
+        "Several additional maintenance sheets with unreadable gray marks appear in background/foreground; some decorative floor sheets are clipped by canvas borders."
+      ],
+      "limitations": [
+        "No exact iris hue, tiny badge glyph, eyelet count, boot model, headset construction or hidden geometry is certified.",
+        "Licensed figurine supports body/costume/footwear, not actor-face identity.",
+        "Special theme is explicitly noncanonical, without a claim that the scene occurred in the film."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Shallow comic crouch with LEFT watch hand holding a whole primary maintenance sheet low and empty RIGHT palm extended for balance, complete feet spread apart.",
+      "requestedPose": "Shallow surprised crouch with two whole gray boots spread apart, anatomical LEFT black-watch hand reaches low to catch ONE blank floating maintenance chit and RIGHT empty hand lifts outward for balance; source face amused, paper and all fingers entire. No weapon or other character.",
+      "observedPropVariance": "More than one sheet and faint unreadable marks, rather than the single blank chit requested.",
+      "literalRequestedPoseFullyMatched": false,
+      "poseVarianceAcceptedBecause": "Extra sheets function as compatible comic set dressing. The primary held item, character body, fingers and boots remain complete; no exact one-blank-chit claim is made.",
+      "slotNumber": 11,
+      "type": "goofy",
+      "family": "Fan Art",
+      "canonStatus": "fan-art",
+      "themeBrief": "Mild comic mishap in a maintenance-records room.",
+      "poseBrief": "Wide shallow comic crouch, LEFT black-watch hand low grasps the entire principal marked/unreadable maintenance sheet, RIGHT open palm out for balance; two whole gray lace-up footwear silhouettes remain separate. Several additional ordinary work-paper sheets float or lie on floor; some decorative floor pages meet/cross frame edge.",
+      "poseId": "ripley-wave12-2026-11-01-cg11-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg11-distinct",
+      "background": {
+        "location": "Original compatible Nostromo maintenance-records niche",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Mild comic mishap in a maintenance-records room.",
+        "background": "Unlettered card drawers and clipped plain records in dark steel storage bay, no fabric hiding feet.",
+        "lighting": "Warm hanging work lamp and faint green analog status lamp."
+      }
+    },
+    {
+      "slot": "CG12",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-explicit-special-theme",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-2eeed48a-f1a7-452a-b8da-aa3a97fc1e5f.png",
+      "sha256": "4ccdb8d6642796ad9763cb530930b6b01d735ece30af36033ae43bc78c438b5a",
+      "bytes": 1840655,
+      "native": {
+        "path": "/workspace/generated_images/exec-2eeed48a-f1a7-452a-b8da-aa3a97fc1e5f.png",
+        "sha256": "4ccdb8d6642796ad9763cb530930b6b01d735ece30af36033ae43bc78c438b5a",
+        "bytes": 1840655
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:56:20.269166+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG12-attempt1-native-independent-review.json",
+        "sha256": "433ecdf46202c646522254c93d4ae72dc8ef327e739caa9e2e023d9d3d6c4dfc",
+        "bytes": 3780
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG12-attempt1-transport-independent.json",
+        "sha256": "75a22032aa0a181c879040d74b48dafd0a4e9560f1160855a5a68ad8f810f601",
+        "bytes": 3028
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/12-alignmentSwap.txt",
+        "sha256": "2d1601373483fd82697002ae68305be40a644fdaf0c5fcff40d65d040bfaefb9",
+        "bytes": 4965
+      },
+      "observations": [
+        "Recognizable 1979 actor face, dark shoulder-length curls, blue-gray coveralls, cream/olive layers and LEFT wing badge.",
+        "Black watch remains anatomical LEFT; whole hands/limbs and two entire separated gray ankle lace-up boots remain in frame.",
+        "Subdued iris rendering without electric cyan emphasis; no exact hue certified.",
+        "Source outfit remains intact without new weapon, faction armor, additional person or creature; deliberate square-pixel clusters.",
+        "One stern What If alignment interpretation in unchanged source crew costume, without a canonical villain or new faction claim.",
+        "Whole STOP palm/fingers, LEFT black watch and two whole gray boots are separately legible.",
+        "Quarantine/interlock door, warning lamp and analog console give a distinct compatible industrial setting."
+      ],
+      "limitations": [
+        "No exact iris hue, tiny badge glyph, eyelet count, boot model, headset construction or hidden geometry is certified.",
+        "Licensed figurine supports body/costume/footwear, not actor-face identity.",
+        "Special theme is explicitly noncanonical, without a claim that the scene occurred in the film."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Firm wide stance with anatomical LEFT watch arm extended in STOP gesture, stern expression and empty RIGHT hand low beside hip.",
+      "requestedPose": "Firm frontal wide stance, anatomical LEFT black-watch palm raised in STOP gesture, RIGHT empty hand low beside hip, chin level and source face stern; two entire gray boots separate. No new weapon or faction costume.",
+      "slotNumber": 12,
+      "type": "alignmentSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "One stern alternative alignment, no canonical villain claim.",
+      "poseBrief": "Firm frontal wide stance, anatomical LEFT black-watch palm raised in STOP gesture, RIGHT empty hand low beside hip, chin level and source face stern; two entire gray boots separate. No new weapon or faction costume.",
+      "poseId": "ripley-wave12-2026-11-01-cg12-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg12-distinct",
+      "background": {
+        "location": "Original compatible remote quarantine-interlock control bay",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "One stern alternative alignment, no canonical villain claim.",
+        "background": "Opaque sealed service gate with diagonal utility markings and a single analog red status lamp, no person/creature behind it.",
+        "lighting": "Hard pale overhead light and restrained red practical lamp."
+      }
+    },
+    {
+      "slot": "CG13",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-explicit-whatif-theme",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-a2b11d20-6145-4d35-b73e-059f87c91183.png",
+      "sha256": "313269116e67db11e4ebd759cb6d827f0e60d785948a92e9398f1f301cd60574",
+      "bytes": 1740614,
+      "native": {
+        "path": "/workspace/generated_images/exec-a2b11d20-6145-4d35-b73e-059f87c91183.png",
+        "sha256": "313269116e67db11e4ebd759cb6d827f0e60d785948a92e9398f1f301cd60574",
+        "bytes": 1740614
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T03:00:02.682244+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG13-attempt1-native-independent-review.json",
+        "sha256": "ab65137f073d4988b911dcd08c099c52b58a8f5ee930f9304de73008ee7a9e3f",
+        "bytes": 4211
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG13-attempt1-transport-independent.json",
+        "sha256": "fa40006e4b4bb216f02d8ec19dc490562e753e62c740ab96527f7d826ff6ff41",
+        "bytes": 3025
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/13-genderSwap.txt",
+        "sha256": "dfd689fe4791e117e60609f4538a1a0c124cb603846d90c7d26b2ec4a6b35dff",
+        "bytes": 5146
+      },
+      "observations": [
+        "Source brown curls and recognizable actor-based facial vocabulary remain within the one explicit What If transformation.",
+        "Blue-gray crew coveralls, cream/olive layers, LEFT wing and anatomical LEFT black watch remain visible.",
+        "Whole normal human arms/hands and two complete gray ankle lace-up boots stay separate and inside frame.",
+        "No source incarnation swap, new armor/weapon, extra character, animal or toy styling; visible square-pixel clusters retained.",
+        "The requested genderSwap reads visually through jaw/brow/torso presentation, with shoulder-length curls and source facial vocabulary retained.",
+        "No beard, separate identity donor, external belt, changed age claim or second outfit appears.",
+        "Instrument balcony setting and step/hand pose are distinct while source costume and complete footwear remain coherent."
+      ],
+      "limitations": [
+        "No real person gender identity or real physical transformation is asserted.",
+        "No exact iris hue, micro badge glyph, eyelet count, shoe model, headset construction or hidden surfaces are certified.",
+        "Licensed figure supports body/costume/footwear, not actor-face identity.",
+        "Only this slot-specific fictional transformation is accepted; no canonical event or alternate-franchise costume claim."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "One masculine-presenting fictional interpretation with stronger clean-shaven jaw/brow and restrained flatter torso; RIGHT boot on low step, LEFT lower, LEFT watch hand at waist seam and empty RIGHT hand low.",
+      "requestedPose": "One masculine-presenting interpretation retaining mature source facial character and shoulder-length dark-brown curls with slightly stronger clean-shaven jaw/brow, same blue-gray coveralls/cream collar/olive inner shirt/gray boots/LEFT black watch. Anatomical RIGHT foot on low step and LEFT lower, LEFT watch hand at waist seam/hip and RIGHT empty palm relaxed low. No second outfit, costume donor or numerical age claim.",
+      "slotNumber": 13,
+      "type": "genderSwap",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "One masculine-presenting alternative in the same source costume.",
+      "poseBrief": "One masculine-presenting interpretation retaining mature source facial character and shoulder-length dark-brown curls with slightly stronger clean-shaven jaw/brow, same blue-gray coveralls/cream collar/olive inner shirt/gray boots/LEFT black watch. Anatomical RIGHT foot on low step and LEFT lower, LEFT watch hand at waist seam/hip and RIGHT empty palm relaxed low. No second outfit, costume donor or numerical age claim.",
+      "poseId": "ripley-wave12-2026-11-01-cg13-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg13-distinct",
+      "background": {
+        "location": "Original compatible merchant-vessel survey-instrument balcony",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "One masculine-presenting alternative in the same source costume.",
+        "background": "Plain analog instrument housings and cable-run arch, no view of an invented official planet.",
+        "lighting": "Muted blue artificial light and warm instrument task bulb."
+      }
+    },
+    {
+      "slot": "CG14",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-explicit-whatif-theme",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-cb096bc2-950e-40e4-9db7-397e9f0d05b7.png",
+      "sha256": "eace396cfd7bf3bd8d51d5a3263cb647f268eb1767a77f578e58f1a40fa7117b",
+      "bytes": 1863703,
+      "native": {
+        "path": "/workspace/generated_images/exec-cb096bc2-950e-40e4-9db7-397e9f0d05b7.png",
+        "sha256": "eace396cfd7bf3bd8d51d5a3263cb647f268eb1767a77f578e58f1a40fa7117b",
+        "bytes": 1863703
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T03:00:02.686855+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG14-attempt1-native-independent-review.json",
+        "sha256": "d739f3a2b8ac3cab3e1472e9a2a73320980cd1af1a2669d0761cdaa853346aaf",
+        "bytes": 4667
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG14-attempt1-transport-independent.json",
+        "sha256": "6c6f78fccffb2b37d2c42d8584834297c0f97f2202a3b54f5d2cc69a844f1162",
+        "bytes": 3028
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/14-zombieVersion.txt",
+        "sha256": "0061b49b07561c2594d6d1345552c1ef64c91d070c367b23e628a8055b0fc317",
+        "bytes": 5239
+      },
+      "observations": [
+        "Source brown curls and recognizable actor-based facial vocabulary remain within the one explicit What If transformation.",
+        "Blue-gray crew coveralls, cream/olive layers, LEFT wing and anatomical LEFT black watch remain visible.",
+        "Whole normal human arms/hands and two complete gray ankle lace-up boots stay separate and inside frame.",
+        "No source incarnation swap, new armor/weapon, extra character, animal or toy styling; visible square-pixel clusters retained.",
+        "Intact recognizable human face is pale/ashen with tired under-eye shadows and visible subdued violet vein patterns on face/forearms.",
+        "Blue-violet square corruption appears on source coveralls and air-filtration setting without gore, open limbs, wires, android body or clone reinterpretation.",
+        "Observed leading/support leg is reversed from requested LEFT planted / RIGHT raised; the recoil function, gear laterality and two whole boots remain coherent."
+      ],
+      "limitations": [
+        "No real person gender identity or real physical transformation is asserted.",
+        "No exact iris hue, micro badge glyph, eyelet count, shoe model, headset construction or hidden surfaces are certified.",
+        "Licensed figure supports body/costume/footwear, not actor-face identity.",
+        "Only this slot-specific fictional transformation is accepted; no canonical event or alternate-franchise costume claim."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Human recoil/corruption pose with anatomical RIGHT foot planted and LEFT knee raised, LEFT watch forearm across ribs and RIGHT empty palm spread to the side.",
+      "requestedPose": "Backward recoil with anatomical LEFT boot planted and RIGHT knee raised, LEFT black-watch forearm across ribs and RIGHT empty hand spread to side; Recognizably human zombie-like corruption: ashen sickly source face, dark tired under-eye shadows, a few subdued violet veins at cheek/rolled-sleeve forearms and stiff guarded posture, plus restrained blue-violet square corruption on blue-gray coveralls. Whole body remains human, clothed and intact; no wires, gore, torn limbs, clone or android reinterpretation.",
+      "literalRequestedPoseFullyMatched": false,
+      "poseVarianceAcceptedBecause": "Support/raised-leg reversal does not change the intended distinct recoil/corruption function, character source traits or LEFT watch laterality; actual pose is recorded without a literal prompt claim.",
+      "slotNumber": 14,
+      "type": "zombieVersion",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "Intact non-gore human zombie/corruption WhatIf, recognizable source face and opaque source costume.",
+      "poseBrief": "Backward recoil with anatomical RIGHT boot planted and LEFT knee raised, LEFT black-watch forearm across ribs and RIGHT empty hand spread to side; Recognizably human zombie-like corruption: ashen sickly source face, dark tired under-eye shadows, a few subdued violet veins at cheek/rolled-sleeve forearms and stiff guarded posture, plus restrained blue-violet square corruption on blue-gray coveralls. Whole body remains human, clothed and intact; no wires, gore, torn limbs, clone or android reinterpretation.",
+      "poseId": "ripley-wave12-2026-11-01-cg14-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg14-distinct",
+      "background": {
+        "location": "Nexus-corrupted original compatible Nostromo air-filtration bay",
+        "foreground": "Clear practical floor or terrain with whole requested boots/object safely inside the frame.",
+        "midground": "Intact non-gore Nexus corruption on the human herself.",
+        "background": "Large gray ventilation fins and closed filter housings crossed by contained violet digital lines.",
+        "lighting": "Cold emergency task light and restrained on-body violet square fractures."
+      }
+    },
+    {
+      "slot": "CG15",
+      "attempt": 1,
+      "decision": "accepted",
+      "individualDecision": "accepted-source-bounded-experienced-planning-whatif",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-a68bac1d-41e8-4609-92f2-a46e87dff544.png",
+      "sha256": "112dd959f2d53407987370a868089cc980380de6d391b9a016863609b65d5bc6",
+      "bytes": 1726549,
+      "native": {
+        "path": "/workspace/generated_images/exec-a68bac1d-41e8-4609-92f2-a46e87dff544.png",
+        "sha256": "112dd959f2d53407987370a868089cc980380de6d391b9a016863609b65d5bc6",
+        "bytes": 1726549
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T03:06:00.721548+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG15-attempt1-native-independent-review.json",
+        "sha256": "f42dc8f05af8aa4406111e341138652c8d88b6003166fe98d9be8c1d1eab5443",
+        "bytes": 5006
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG15-attempt1-transport-independent.json",
+        "sha256": "3af39ca67ed89ebc56bc76315fb7eac1a2535d20771e00482ae1440cec652868",
+        "bytes": 3032
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/15-futureExperienced.txt",
+        "sha256": "ef5a23677af6d0594144606d8cc58062bbd2f54404c722ae307f8e73c9cab109",
+        "bytes": 5509
+      },
+      "observations": [
+        "Recognizable source actor face and shoulder-length dark curls retain the same apparent source age, without a numerical age, clone, android or alternate-incarnation claim.",
+        "Blue-gray crew coveralls, cream collar/olive inner layer, LEFT chest wing and LEFT black watch remain coherent; repair detailing is restrained and not strongly contrasted.",
+        "Both complete gray ankle lace-up boots are unobstructed and flat on the same floor, distinct from CG08 stairs.",
+        "Hands, fingers, body and boots remain inside the frame. Analog maintenance workshop and planning task provide a distinct hypothetical experienced-future setting.",
+        "Table is larger than requested and extends beyond viewer-right edge; schematic-marked paper also extends beyond that edge rather than being wholly visible and blank. These are observed scene-prop variances, not a perfect prompt execution.",
+        "Visible square-pixel clusters remain; no extra person, animal, weapon or Marine costume."
+      ],
+      "limitations": [
+        "No exact iris hue, eyelet count, footwear model, tiny badge glyph, headset construction or hidden surfaces is certified.",
+        "Source-compatible repair details are subtle; no exact stitch count or historical future event is asserted.",
+        "Licensed figure supports body/costume/footwear only, never actor-face identity.",
+        "This is an explicit What If interpretation, without a canonical survival or official future claim."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observedPose": "Confident repair-planning stance with both whole boots flat and separated, slight lean, LEFT watch hand on a paper plan at offset viewer-right table and empty RIGHT hand at own hip.",
+      "requestedPose": "Experienced repair-planning stance, BOTH gray ankle-high lace-up work boots flat on the same clear floor and well apart, slight quarter turn and forward lean beside a SMALL narrow maintenance-planning table offset fully to viewer-right, never in front of body or boots. Anatomical LEFT black-watch hand rests on one plain blank repair-plan paper, RIGHT empty hand at own hip; confident focused expression and unchanged apparent source age/hair/face. Same blue-gray crew coveralls with a few restrained same-color repair stitches, cream collar/olive inner shirt unchanged. No stairs, clone, canonical survival claim, new armor or numerical age.",
+      "observedPropVariance": "Larger table and schematic-marked paper continue out of frame at viewer-right, rather than the requested small whole table and blank paper.",
+      "literalRequestedCompositionFullyMatched": false,
+      "poseVarianceAcceptedBecause": "Planning function and all character identity/body/gear/whole-foot requirements remain coherent; clipped compatible set dressing does not obscure the character.",
+      "slotNumber": 15,
+      "type": "futureExperienced",
+      "family": "What If",
+      "canonStatus": "what-if",
+      "themeBrief": "One hypothetical experienced future planning a safe repair, same apparent age and subtly repaired source crew coveralls.",
+      "poseBrief": "Confident experienced planning stance with two whole gray footwear flat apart, LEFT black-watch hand resting on schematic work paper on viewer-right table, RIGHT hand at hip; same source face/curls/blue-gray crew coveralls/cream collar/olive inner shirt, understated repair wear, no new numerical age or clone chronology.",
+      "poseId": "ripley-wave12-2026-11-01-cg15-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg15-distinct",
+      "background": {
+        "location": "Hypothetical future merchant-vessel maintenance-planning workshop",
+        "foreground": "Two complete gray ankle-high lace-up work boots flat on clear floor, neither hidden by table legs.",
+        "midground": "Single source-clothed repair planner beside one small whole narrow planning table and blank paper, with both hands visible.",
+        "background": "Original1979-compatible rebuilt analog planning/control drawers and practical wire runs; no staircase, power-loader or Marine technology.",
+        "lighting": "Gentle warm repair-planning task lamp against cool blue-gray utilitarian steel."
+      }
+    }
+  ],
+  "rejectedDrafts": [
+    {
+      "slot": "CG01",
+      "attempt": 1,
+      "decision": "revision-requested-visible-boot-sole-profile",
+      "individualDecision": "revision-requested-visible-boot-sole-profile",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+      "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+      "bytes": 1689196,
+      "native": {
+        "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+        "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+        "bytes": 1689196
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:12:07.714102+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt1-native-independent-review.json",
+        "sha256": "159534ce787101b76c13f7221a9796f482ec210884cd4d041fd59ec4419cbdfb",
+        "bytes": 4073
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt1-transport-independent.json",
+        "sha256": "dd6aac3794410c3ffbadd9c69078f9d19097ce5e58afa57cf3020debdf8ae005",
+        "bytes": 1936
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/01-characterSolo.txt",
+        "sha256": "4bcc9abd0bc04f5dd26b5e93e2fce9084b775aad58b2668a005e02d3033863ad",
+        "bytes": 3846
+      },
+      "observations": [
+        "Recognizable Sigourney Weaver/Ripley1979 actor likeness in a deliberate pixel-art interpretation, dark shoulder-length curly hair and matching face/profile vocabulary.",
+        "Blue-gray coverall, cream collar and olive undershirt, anatomical LEFT wing insignia and LEFT black watch.",
+        "Whole separate gray lace-up ankle boots and whole limbs remain inside frame; anatomical RIGHT hand at waist and empty LEFT hand relaxed low.",
+        "Source-compatible Nostromo crew supply-locker alcove, warm task light against cold utilitarian panels.",
+        "Visible communications headset is supported by official film4; unoccupied hanging coverall is a garment rather than a second person. No Jonesy or Aliens1986 weapon/alternate suit."
+      ],
+      "limitations": [
+        "The first quick PASS message was corrected after a more precise source/native sole comparison requested by root.",
+        "No eyelet count, shoe manufacturer/model, exact badge glyphs, microphone construction or unseen surfaces are certified.",
+        "Actor identity is evaluated from film4, not the licensed figurine face.",
+        "No general approval of CG02–15 follows from this review; root controls the next call and budget."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observableRevision": [
+        {
+          "area": "Both boot outsoles, especially anatomical LEFT / viewer RIGHT",
+          "providedSupportSource": "Licensed NECA fullbody photograph only; not a certified historical boot model",
+          "sourceObservation": "Low continuous rubber sole band with a shallow heel profile.",
+          "nativeObservation": "More massive outsole profile and a visibly distinct block heel, especially viewer RIGHT boot.",
+          "effect": "Boot color, laces and ankle coverage match broadly, but this visible sole silhouette departs from supplied body/costume support.",
+          "requestedRevision": "Keep the same identity, pose, costume and scene; gray ankle-high lace-up work boots with low-profile thin continuous rubber soles, shallow heels, no stacked platform or block heels. Preserve the old native at its existing immutable path as a previous variant."
+        }
+      ]
+    },
+    {
+      "slot": "CG02",
+      "attempt": 1,
+      "decision": "revision-requested-unsupported-full-sling-route-and-long-chain-links",
+      "individualDecision": "revision-requested-unsupported-full-sling-route-and-long-chain-links",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+      "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+      "bytes": 1815146,
+      "native": {
+        "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+        "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+        "bytes": 1815146
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:18:51.878207+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt1-native-independent-review.json",
+        "sha256": "8d6cae89b0113c98262862cd1dee34933b1c4df50d9614e7e3b0cc0560a3306b",
+        "bytes": 3542
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt1-transport-independent.json",
+        "sha256": "a0f32f7e5f5506ce85c8ba532f422065c1fb99da2e860fe98d464238e5fcfaef",
+        "bytes": 1848
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "equipment-only",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/02-weaponSolo.txt",
+        "sha256": "67bac7452128d6b0b66fe0bb7ea5475f58a845c6fac57067e9f85a1c5f8cb20f",
+        "bytes": 4320
+      },
+      "observations": [
+        "Whole gray1979 equipment silhouette with rear cylinder, red bottle, upper bent pipe, receiver and short dark round perforated muzzle remains in frame.",
+        "Two plain supports and inert maintenance bench give a scene distinct from character solo; no figure, hand, Jonesy, flame or second weapon."
+      ],
+      "limitations": [
+        "No exact muzzle-hole count, chain-link count or hidden reverse geometry is certified.",
+        "Equipment qualification comes from the scoped licensed NECA photo, not independent prop measurement."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observableRevision": [
+        {
+          "area": "Black sling and metal connections above the weapon",
+          "sourceObservation": "Provided licensed source shows limited strap/attachment segments while part of routing is hidden behind the body/weapon.",
+          "nativeObservation": "A complete large exposed triangular sling and extended silver chain-link sections are displayed as settled geometry.",
+          "requestedRevision": "Remove the full exposed triangle and prolonged chain links. Retain only source-visible short black strap/attachment segments with unknown routing understated behind the weapon. Preserve the first native as an older proposal."
+        }
+      ]
+    },
+    {
+      "slot": "CG04",
+      "attempt": 1,
+      "decision": "revision-requested-unsupported-bright-cyan-iris-and-heavy-heel-profile",
+      "individualDecision": "revision-requested-unsupported-bright-cyan-iris-and-heavy-heel-profile",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+      "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+      "bytes": 1935770,
+      "native": {
+        "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+        "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+        "bytes": 1935770
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:24:33.661942+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt1-native-independent-review.json",
+        "sha256": "2f0154815d13fd178b24c67d123b8dbac972e92beb8d3413d6c400576345359b",
+        "bytes": 4001
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt1-transport-independent.json",
+        "sha256": "eda0688661079a646abfc7ab3bec77813564af79575ff66795697620a127f696",
+        "bytes": 2047
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/04-coherentScene.txt",
+        "sha256": "0236388a1a80958c7480208bfc95ecfaa2811f4bb90f70a17f5b404a508e4b19",
+        "bytes": 4476
+      },
+      "observations": [
+        "Recognizable1979 actor-based face and shoulder-length curls, blue-gray coverall, cream/olive layers and LEFT chest wing.",
+        "Black watch on anatomical LEFT, source-supported communications headset and complete arms/hands.",
+        "Distinct leaning-console communication pose, LEFT hand working an analog control and RIGHT hand braced at console edge.",
+        "Two whole gray ankle lace-up boots are separated and entirely inside the frame.",
+        "Analog CRT/instrument alcove fits original compatible Nostromo language, without second person or weapon; visible square-pixel clusters retained."
+      ],
+      "limitations": [
+        "These are source-bounded visible render reservations, not claims about a historical eye color or shoe model.",
+        "No exact patch glyph, eyelet count, headset construction or hidden geometry is certified.",
+        "First real output remains preserved; no pixel edit was performed by the reviewer."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observableRevision": [
+        {
+          "area": "Iris rendering",
+          "sourceBoundary": "Exact iris color is unresolved; preflight/prompt explicitly avoid imposing a bright invented tint.",
+          "nativeObservation": "Conspicuous saturated cyan-blue iris coloration not established by the actor still.",
+          "requestedRevision": "Keep the same recognizable face and subdued source-like iris tonality; remove saturated cyan or luminous-eye emphasis. Do not impose a named brown/green/other iris color."
+        },
+        {
+          "area": "Boot sole/heel, especially viewer RIGHT",
+          "sourceBoundary": "Provided licensed body/footwear photo supports a low continuous rubber band and shallow heel.",
+          "nativeObservation": "Sole profile again tends toward a bulky distinct block heel.",
+          "requestedRevision": "Retain gray lace-up ankle uppers and complete silhouettes, but use a thin continuous low-profile rubber sole and shallow heel, without stacked platform/block heel."
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "attempt": 1,
+      "decision": "revision-requested-rear-boot-heel-occluded-by-front-trouser",
+      "individualDecision": "revision-requested-rear-boot-heel-occluded-by-front-trouser",
+      "actuallyViewed": true,
+      "nativePath": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+      "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+      "bytes": 2317781,
+      "native": {
+        "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+        "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+        "bytes": 2317781
+      },
+      "nativeMetadata": {
+        "format": "PNG",
+        "mode": "RGB",
+        "width": 1086,
+        "height": 1448,
+        "strictThreeByFour": true
+      },
+      "reviewedAt": "2026-11-01T02:38:21.078709+00:00",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt1-native-independent-review.json",
+        "sha256": "5339fb9954b77667b15c21f361d2614e89dd6b2085f8a6703a3b93a36b3eed63",
+        "bytes": 3654
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt1-transport-independent.json",
+        "sha256": "b843f576d08a9bada5ff429cf32f571503fe8396f3e4e7eb1fddf4e43b0b103f",
+        "bytes": 3024
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751,
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385,
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/06-introPose.txt",
+        "sha256": "a7708f2c6aef568484e8701f8e328224c9d2f9f3e360967571995b8ff921fb3d",
+        "bytes": 4924
+      },
+      "observations": [
+        "Recognizable1979 actor likeness and dark curls, blue-gray crew coveralls, cream collar/olive inner shirt and LEFT chest wing.",
+        "Anatomical LEFT black watch, whole normal arms/hands, no new weapon/outfit/creature.",
+        "Original compatible industrial merchant-vessel setting and deliberate square-pixel clusters.",
+        "Distinct cargo-arrival setting with anatomical LEFT watch hand on grab rail and empty RIGHT hand relaxed low.",
+        "Walking legs overlap in projection; rear viewer RIGHT boot is partly masked by the foreground trouser and its whole heel is not separately legible."
+      ],
+      "limitations": [
+        "Revision concerns visible occlusion, not an invented claim about unseen heel shape.",
+        "Source iris hue, shoe model/eyelet count and small badge glyphs remain unresolved."
+      ],
+      "canonicalFidelityApproved": false,
+      "absoluteVisualFidelityCertified": false,
+      "observableRevision": [
+        {
+          "area": "Lower-body stride/foot separation",
+          "requestedRevision": "Retain identity, clothing, arms/rail and scene. Stage anatomical LEFT foot forward and RIGHT behind with enough lateral separation that both complete gray shoes, every toe and heel, remain distinct and unobstructed by the other trouser leg. Keep thin continuous rubber soles and shallow heels."
+        }
+      ]
+    }
+  ],
+  "preservedUnselectedRealNativeCount": 4,
+  "sourceScope": {
+    "actorFaceHairUpperCostume": "Actual Alien1979 film4 actor image, not the figurine face.",
+    "bodyCostumeFootwearEquipment": "Licensed NECA photo, bounded support only; Jonesy, toy joints and plastic styling excluded.",
+    "environmentOnlyCg03": "Two film stills supply architecture vocabulary only; all depicted crew excluded.",
+    "equipmentOnlyCg02": "NECA weapon support only, no actor or figurine-body identity.",
+    "editTargets": "Prior generated natives are target-edit-only and never additional canon identity authority."
+  },
+  "seriesLimitations": [
+    "Acceptance concerns visible source-bounded fidelity, distinct scene/function and explicit special theme; absolute visual identity is not certified.",
+    "Exact iris hue, tiny badge glyphs, footwear brand/eyelet count, muzzle-hole count and hidden reverse/sling geometry remain unresolved.",
+    "CG06 and CG14 observed leading/support legs differ from the requests and are recorded explicitly.",
+    "CG11 contains additional marked decorative sheets, including some clipped floor dressing, rather than one wholly blank chit; the primary held sheet and character are complete.",
+    "CG15 table and schematic-marked paper extend outside the right frame edge rather than being small/whole and blank; the character, hands and boots remain complete.",
+    "CG05 actual tool result has no output_hint; original returned PNG payload and recovery attestation are preserved without reencoding or invented UUID.",
+    "Generated edit results are reviewed as new full images, with no unchanged-outside-edit pixel claim.",
+    "Canonical, Nexus, Fan Art and What If classifications follow the final plan; original compatible settings are not certified film camera frames."
+  ],
+  "canonicalFidelityApproved": false,
+  "absoluteVisualFidelityCertified": false,
+  "reviewerPixelsModified": false,
+  "registryWritten": false,
+  "runtimeAtlasCreated": false,
+  "exportReplayPerformedByThisDocument": false
+}

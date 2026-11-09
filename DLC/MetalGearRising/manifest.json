@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "metal-gear-rising",
+  "universe": "Metal Gear Rising",
+  "directory": "DLC/MetalGearRising",
+  "registration": "runtime",
+  "catalogOrder": 167,
+  "modules": [
+    {
+      "path": "data/canonFollowupSourceKits.js",
+      "runtimeAdapter": "src/game/canonFollowupSourceKits.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR7.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR7.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "celeste_ray",
+  "characterName": "Dr Celeste Ray",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-redraw-with-five-individual-hand-and-equipment-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/helios_56/heroes/celeste_ray.png",
+    "sha256": "4b92050c24ea36ff916e3e6183cefd23a679c0023bc686ec2918904f3797014b",
+    "bytes": 2467820,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "7c138eaac448d7be1c5b998de8aeb0feb39ba1644bfb447dd2592be74aed6cff",
+    "bytes": 1019015,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/helios-56/celeste-ray-v2-fidelity-wave5-2026-10-22.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/celeste-ray-v2-reference-sprite-fidelity-wave5-2026-10-22.json",
+    "sha256": "d3e85fdc055bf3b2dee37f66d0f3e159c401c1080ed36d0e4211066776581798"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave5-2026-10-22/celeste-ray-sprite-independent-review.json",
+    "sha256": "3e4779f9bf99ad303a43fc32c05b54988473d35f3bcfa04fcc91bc3a7f48b91c",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/helios-56/celeste-ray.png",
+    "sha256": "07fcf4a9b78b91d4b8c19038578a29f4e238929d37f3e734181c127d8dee666f",
+    "preserved": true,
+    "accessibleAsVariant": false,
+    "runtimeSelectionIntegrationPending": true
+  },
+  "sourceAssembly": {
+    "sha256": "d67219d97a230ea95e30d849ca1e851f8415c9b2fc49c1dd4d9ede9332cecbdb",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 6,
+    "selectedFramesFromWholeAtlasNative": 11,
+    "individualCorrectedFrames": [
+      4,
+      6,
+      8,
+      13,
+      14
+    ],
+    "elevenRgbaComponentsUnchangedBeforeFinalNormalization": true,
+    "finalCommonNearestScale": 0.7138461538461538,
+    "minimumGuard": 15,
+    "baselines": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "privateEvidenceSha256": "c3fe2928e596f016c362ddfc2371b165b049a717131bf8ecac3736114ab613e7",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "successfulAtlasGenerationAttempts": 7,
+  "retainedUnselectedWholeOrIndividualAttempts": 1,
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/celeste-ray-reference-evidence-wave5-2026-10-22.json",
+  "limitations": [
+    "Selected V2 is original internal project canon, not an external franchise source.",
+    "Five true ImageGen pose corrections repair wrong-hand or doubled emitters; one additional native repairs duplicated right-thigh vials. Eleven whole-atlas components retain exact extracted RGBA before common final normalization.",
+    "Exact unseen geometry, tiny facial and gear details remain interpreted at gameplay resolution.",
+    "A frame count, matching hash or independent review is not a perfect1:1 certificate.",
+    "Root must select the new path and expose old atlas as variant; this installer does not modify runtime maps."
+  ],
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/celeste-ray-sprite-independent-review.json",
+  "independentReviewSha256": "3e4779f9bf99ad303a43fc32c05b54988473d35f3bcfa04fcc91bc3a7f48b91c"
+}

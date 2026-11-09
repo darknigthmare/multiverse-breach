@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "michael-jackson",
+  "universe": "Michael Jackson",
+  "directory": "DLC/MichaelJackson",
+  "registration": "runtime",
+  "catalogOrder": 135,
+  "modules": [
+    {
+      "path": "data/canonP0SourceKits.js",
+      "runtimeAdapter": "src/game/canonP0SourceKits.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

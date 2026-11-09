@@ -1,0 +1,1004 @@
+{
+  "schema": 7,
+  "sourceRevision": "4ca3b2b87f4b7234612f11fc5c17ba205d36d340",
+  "runtimeBaseRevision": "48197dc4f35577b6b82a8929b9fe8960dc0e7405",
+  "sourceRevisionMeaning": "Historical roster and workbook baselines are retained; runtimeSources, fieldEquipmentSources, cityPresentationSources, fpsPresentationSources and planning provenance describe the actual edited files.",
+  "planningDataSha256": "ed2700786a719d2a94f4fd87839ad90f20f82e9ac0eb878767e1aa0eb822ac43",
+  "planningSourceManifestSha256": "7217f6104e6f5381ee4663f3bc9e1fb69586577786e7f66e6006198d69416a1e",
+  "workbook": "Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx",
+  "sha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+  "bytes": 1197519,
+  "operation": "Imported existing workbook with Artifact Tool; added four runtime contracts and four explicit adaptation links, preserving the previous 32 contracts, all tracking and unrelated tabs.",
+  "baselineSha256": "afe9387559864aaab3f3c76d371e7cbfb84a41e3f0772352210cd53775b4aadc",
+  "runtimeSources": [
+    {
+      "source": "DLC/Alien/data/characterPlaques.js",
+      "sha256": "5bfa1d796fc1f372c349a6d0fa843877ae4c3a06eb496680d3e1fc32cff0c8ba"
+    },
+    {
+      "source": "DLC/Alien/data/heroes.js",
+      "sha256": "66e385352f30bab5fbc0464b9d0f4cf1fd5bf8f6ad00596b6721db7c8f01afd0"
+    },
+    {
+      "source": "DLC/Alien/data/mosaicCharacterMissions.js",
+      "sha256": "d9f0477dc82374beb1a273db403ff822193e353266757495578e29494c9a1398"
+    },
+    {
+      "source": "DLC/Alien/data/sourceSceneStages.js",
+      "sha256": "6844a46c830019787e031801cc63f47ec54d5393ed968f466062527477ed876d"
+    },
+    {
+      "source": "DLC/Halo/data/characterPlaques.js",
+      "sha256": "34078c98cfd984a286937c2b8de0ec51aeba09f4cee0a24cc6ea9ee0ee7a4323"
+    },
+    {
+      "source": "DLC/Halo/data/heroes.js",
+      "sha256": "dc6eca0d3e6ac02668143dd19aaa328766827a76140385098aac84d53ec28f6c"
+    },
+    {
+      "source": "DLC/Halo/data/mosaicCharacterMissions.js",
+      "sha256": "61a96adeea8d0009845ac7b6c878c17af81032faded156815dc7ff9ce0bb8342"
+    },
+    {
+      "source": "DLC/Halo/data/mosaicUniversePlaces.js",
+      "sha256": "25a451ee4ccd3f93c966ce88c1589f24ecf4dfd66c60e42d1711408456d3eda2"
+    },
+    {
+      "source": "src/game/characterPlaques.js",
+      "sha256": "bb0c7fcc8b9b645810556e1ad75c9947fb0c83013d1fd872bbb292152f16012b"
+    },
+    {
+      "source": "src/game/heroes.js",
+      "sha256": "860654b18e01309aec089dbc45a10b5060f194a33de8e5fe1bc5956b818cb371"
+    },
+    {
+      "source": "src/game/lore.js",
+      "sha256": "c9e1d18810c8b4d502349aae5d40e339225fae6f43e9fce887297197f0259abb"
+    },
+    {
+      "source": "src/game/mosaicCharacterFollowups.js",
+      "sha256": "b130962ff2e257483e5a966a18acf6d96c88944b001592460c2b3d2366bf33b9"
+    },
+    {
+      "source": "src/game/mosaicCharacterMissions.js",
+      "sha256": "abce775eb5c41303659654db706b348fb41d285d3c18c45673f6d797f312a075"
+    },
+    {
+      "source": "src/game/mosaicCharacterStories.js",
+      "sha256": "aa2e4d4e00e06b6c03d8eb3d208ea6a811ccd65bcc9e1c895aa8f1f50c34235c"
+    },
+    {
+      "source": "src/game/mosaicCityDeliveries.js",
+      "sha256": "8458bebb10442258f403628895e4b325dd57cfae181b174adc661529bc293b11"
+    },
+    {
+      "source": "src/game/mosaicCityRoutes.js",
+      "sha256": "64ff5f52f8dbe7e4dcd3f7c4a596f8753e15bfc88882d2e84fb39656b46c0d52"
+    },
+    {
+      "source": "src/game/mosaicCityRuntime.js",
+      "sha256": "e8c23845c86d66bed9701f3fc39482a393b7ee93abcd1cd85f7fa80acd11393b"
+    },
+    {
+      "source": "src/game/mosaicMissionCargo.js",
+      "sha256": "ad80330f1e719c88c8fb3c752d0be0d71a02ff096bbe247477660302a1e42f99"
+    },
+    {
+      "source": "src/game/mosaicMissionOperations.js",
+      "sha256": "1160ba9f70538b0c476df27511f9807a5e5ce007b67eddbd811a8048b17a6671"
+    },
+    {
+      "source": "src/game/mosaicMissionWalks.js",
+      "sha256": "524612b5e62efa0fecd1d186758c02f1a3f7e435e2947ad0ce6cdeabefc6b6d4"
+    },
+    {
+      "source": "src/game/ocCampaign.js",
+      "sha256": "03e8be2a60fbbcbef4e3f439046aa68d7f999e53b28107805dee6a114e11e2d8"
+    }
+  ],
+  "characters": 1912,
+  "nonCombatCharacters": 101,
+  "proposedMissions": 3824,
+  "individuallyDesignedMissions": 44,
+  "integratedCityContracts": 36,
+  "fpsProfiles": 1912,
+  "fpsModes": 4,
+  "addedRuntimeContracts": [
+    "city-anchor-shared-beacon-v1",
+    "city-bastion-bulwark-relief-v1",
+    "city-nova-present-pulse-v1",
+    "city-sable-night-signs-v1"
+  ],
+  "changedRuntimeRows": [
+    39,
+    40,
+    41,
+    42
+  ],
+  "preservedRuntimeContracts": 32,
+  "chapterTwoContracts": 18,
+  "chapterThreeContracts": 2,
+  "cargoTransfers": [
+    {
+      "missionId": "city-mirelle-night-watch-v1",
+      "stepId": "take-watch-lamp",
+      "action": "take",
+      "id": "mirelle-watch-lamp",
+      "label": "Lampe de Mirelle",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-mirelle-night-watch-v1",
+      "stepId": "place-watch-lamp",
+      "action": "deliver",
+      "id": "mirelle-watch-lamp",
+      "label": "Lampe de Mirelle",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "take-spare-rotor",
+      "action": "take",
+      "id": "quillon-spare-rotor",
+      "label": "Rotor de réserve",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "fit-spare-rotor",
+      "action": "deliver",
+      "id": "quillon-spare-rotor",
+      "label": "Rotor de réserve",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "take-worn-rotor",
+      "action": "take",
+      "id": "quillon-worn-rotor",
+      "label": "Rotor usé",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-quillon-refuge-pump-v1",
+      "stepId": "return-worn-rotor",
+      "action": "deliver",
+      "id": "quillon-worn-rotor",
+      "label": "Rotor usé",
+      "appearance": "rotor"
+    },
+    {
+      "missionId": "city-nadir-buried-probe-v1",
+      "stepId": "recover-n4",
+      "action": "take",
+      "id": "nadir-n4-probe",
+      "label": "Sonde N-4",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-nadir-buried-probe-v1",
+      "stepId": "bring-n4-to-table",
+      "action": "deliver",
+      "id": "nadir-n4-probe",
+      "label": "Sonde N-4",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-tessera-chosen-window-v1",
+      "stepId": "take-reflector",
+      "action": "take",
+      "id": "tessera-reflector",
+      "label": "Réflecteur de Tessera",
+      "appearance": "reflector"
+    },
+    {
+      "missionId": "city-tessera-chosen-window-v1",
+      "stepId": "place-reflector",
+      "action": "deliver",
+      "id": "tessera-reflector",
+      "label": "Réflecteur de Tessera",
+      "appearance": "reflector"
+    },
+    {
+      "missionId": "city-anchor-shared-beacon-v1",
+      "stepId": "take-intake-lamp",
+      "action": "take",
+      "id": "anchor-intake-lamp",
+      "label": "Lampe de l’accueil",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-anchor-shared-beacon-v1",
+      "stepId": "place-intake-lamp",
+      "action": "deliver",
+      "id": "anchor-intake-lamp",
+      "label": "Lampe de l’accueil",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "take-first-brace",
+      "action": "take",
+      "id": "bastion-first-brace",
+      "label": "Premier étai",
+      "appearance": "brace"
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "set-first-brace",
+      "action": "deliver",
+      "id": "bastion-first-brace",
+      "label": "Premier étai",
+      "appearance": "brace"
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "take-second-brace",
+      "action": "take",
+      "id": "bastion-second-brace",
+      "label": "Second étai",
+      "appearance": "brace"
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "set-second-brace",
+      "action": "deliver",
+      "id": "bastion-second-brace",
+      "label": "Second étai",
+      "appearance": "brace"
+    },
+    {
+      "missionId": "city-nova-present-pulse-v1",
+      "stepId": "take-low-probe",
+      "action": "take",
+      "id": "nova-low-probe",
+      "label": "Sonde basse de Nova",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-nova-present-pulse-v1",
+      "stepId": "place-low-probe",
+      "action": "deliver",
+      "id": "nova-low-probe",
+      "label": "Sonde basse de Nova",
+      "appearance": "probe"
+    },
+    {
+      "missionId": "city-sable-night-signs-v1",
+      "stepId": "take-crossroads-lamp",
+      "action": "take",
+      "id": "sable-crossroads-lamp",
+      "label": "Lampe du carrefour",
+      "appearance": "lamp"
+    },
+    {
+      "missionId": "city-sable-night-signs-v1",
+      "stepId": "light-crossroads",
+      "action": "deliver",
+      "id": "sable-crossroads-lamp",
+      "label": "Lampe du carrefour",
+      "appearance": "lamp"
+    }
+  ],
+  "walkedRoutes": [
+    {
+      "missionId": "city-anchor-shared-beacon-v1",
+      "stepId": "walk-shared-light",
+      "branch": "byChoice",
+      "choiceId": "apply",
+      "points": [
+        {
+          "id": "intake-edge",
+          "x": 1120,
+          "y": 790,
+          "label": "Bord de l’accueil"
+        },
+        {
+          "id": "eastern-turn",
+          "x": 1420,
+          "y": 790,
+          "label": "Tournant de la rue est"
+        },
+        {
+          "id": "upper-street",
+          "x": 1420,
+          "y": 550,
+          "label": "Haut de la rue est"
+        },
+        {
+          "id": "light-return",
+          "x": 1100,
+          "y": 550,
+          "label": "Retour face aux deux lumières"
+        }
+      ]
+    },
+    {
+      "missionId": "city-anchor-shared-beacon-v1",
+      "stepId": "walk-shared-light",
+      "branch": "byChoice",
+      "choiceId": "hold",
+      "points": [
+        {
+          "id": "intake-edge",
+          "x": 1120,
+          "y": 790,
+          "label": "Bord de l’accueil"
+        },
+        {
+          "id": "stores-turn",
+          "x": 820,
+          "y": 790,
+          "label": "Tournant de la réserve"
+        },
+        {
+          "id": "western-edge",
+          "x": 510,
+          "y": 760,
+          "label": "Bord ouest de la rue"
+        },
+        {
+          "id": "light-return",
+          "x": 510,
+          "y": 550,
+          "label": "Retour de la réserve"
+        }
+      ]
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "walk-relief-route",
+      "branch": "byChoice",
+      "choiceId": "apply",
+      "points": [
+        {
+          "id": "lower-gate",
+          "x": 1120,
+          "y": 790,
+          "label": "Pied de la grille de service"
+        },
+        {
+          "id": "outer-turn",
+          "x": 1480,
+          "y": 790,
+          "label": "Tournant extérieur du Rempart"
+        },
+        {
+          "id": "upper-gate",
+          "x": 1480,
+          "y": 550,
+          "label": "Bord haut du passage"
+        },
+        {
+          "id": "relief-return",
+          "x": 1120,
+          "y": 550,
+          "label": "Retour vers la poignée"
+        }
+      ]
+    },
+    {
+      "missionId": "city-bastion-bulwark-relief-v1",
+      "stepId": "walk-relief-route",
+      "branch": "byChoice",
+      "choiceId": "hold",
+      "points": [
+        {
+          "id": "stores-departure",
+          "x": 820,
+          "y": 790,
+          "label": "Départ du détour large"
+        },
+        {
+          "id": "lower-stores",
+          "x": 490,
+          "y": 790,
+          "label": "Bas de la réserve"
+        },
+        {
+          "id": "upper-stores",
+          "x": 490,
+          "y": 550,
+          "label": "Haut de la réserve"
+        },
+        {
+          "id": "relief-return",
+          "x": 820,
+          "y": 550,
+          "label": "Retour de la relève"
+        }
+      ]
+    },
+    {
+      "missionId": "city-nova-present-pulse-v1",
+      "stepId": "walk-current-return",
+      "branch": "byChoice",
+      "choiceId": "apply",
+      "points": [
+        {
+          "id": "departure-mark",
+          "x": 1110,
+          "y": 790,
+          "label": "Repère de départ de Nova"
+        },
+        {
+          "id": "far-street",
+          "x": 1460,
+          "y": 790,
+          "label": "Rue au-delà de la sonde"
+        },
+        {
+          "id": "upper-street",
+          "x": 1460,
+          "y": 550,
+          "label": "Bord stable opposé"
+        },
+        {
+          "id": "return-mark",
+          "x": 1110,
+          "y": 790,
+          "label": "Retour au repère de départ"
+        }
+      ]
+    },
+    {
+      "missionId": "city-nova-present-pulse-v1",
+      "stepId": "walk-current-return",
+      "branch": "byChoice",
+      "choiceId": "hold",
+      "points": [
+        {
+          "id": "departure-mark",
+          "x": 820,
+          "y": 790,
+          "label": "Repère du détour de Nova"
+        },
+        {
+          "id": "lower-stores",
+          "x": 490,
+          "y": 790,
+          "label": "Rue basse de la réserve"
+        },
+        {
+          "id": "upper-stores",
+          "x": 490,
+          "y": 550,
+          "label": "Rue haute de la réserve"
+        },
+        {
+          "id": "return-mark",
+          "x": 820,
+          "y": 790,
+          "label": "Retour au départ du détour"
+        }
+      ]
+    },
+    {
+      "missionId": "city-sable-night-signs-v1",
+      "stepId": "walk-before-signing",
+      "branch": "byChoice",
+      "choiceId": "apply",
+      "points": [
+        {
+          "id": "lit-junction",
+          "x": 820,
+          "y": 790,
+          "label": "Départ du carrefour éclairé"
+        },
+        {
+          "id": "intake-street",
+          "x": 1120,
+          "y": 790,
+          "label": "Rue de l’accueil"
+        },
+        {
+          "id": "eastern-exit",
+          "x": 1450,
+          "y": 790,
+          "label": "Débouché de la rue est"
+        },
+        {
+          "id": "visible-return",
+          "x": 1450,
+          "y": 550,
+          "label": "Dernier panneau du retour"
+        }
+      ]
+    },
+    {
+      "missionId": "city-sable-night-signs-v1",
+      "stepId": "walk-before-signing",
+      "branch": "byChoice",
+      "choiceId": "hold",
+      "points": [
+        {
+          "id": "lit-junction",
+          "x": 820,
+          "y": 790,
+          "label": "Départ du carrefour éclairé"
+        },
+        {
+          "id": "western-street",
+          "x": 490,
+          "y": 790,
+          "label": "Rue ouest de la réserve"
+        },
+        {
+          "id": "stores-exit",
+          "x": 490,
+          "y": 550,
+          "label": "Débouché de la réserve"
+        },
+        {
+          "id": "visible-return",
+          "x": 820,
+          "y": 550,
+          "label": "Panneau du retour ouest"
+        }
+      ]
+    }
+  ],
+  "residentClosures": [
+    "city-mirelle-night-watch-v1",
+    "city-quillon-refuge-pump-v1",
+    "city-nadir-buried-probe-v1",
+    "city-tessera-chosen-window-v1",
+    "city-anchor-shared-beacon-v1",
+    "city-bastion-bulwark-relief-v1",
+    "city-nova-present-pulse-v1",
+    "city-sable-night-signs-v1"
+  ],
+  "inheritedRoutes": 40,
+  "decisionRoutes": 40,
+  "rewrittenNexusProposals": 4,
+  "authoredNexusProposals": 24,
+  "runtimeLinkedProposals": [
+    {
+      "id": "city-plan-v1::player_anchor::universe",
+      "runtimeMissionId": "city-anchor-shared-beacon-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Lampe distincte portée et installée, puis chemin de retour éprouvé à pied et repère orienté. Le passage autonome du nouvel arrivant reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_mirelle::multiverse",
+      "runtimeMissionId": "city-mirelle-night-watch-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Lampe portée au pupitre, alimentation séparée ou repli puis essai local et retour à Mirelle. La garde complète avec ses appels reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_bastion::universe",
+      "runtimeMissionId": "city-bastion-bulwark-relief-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Deux étais portés et posés, puis voie de service éprouvée à pied. La relève animée de Bastion avec le passage des habitants reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_nova::universe",
+      "runtimeMissionId": "city-nova-present-pulse-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Sonde posée du côté stable et retour réel par la rue dans « Le battement d’aujourd’hui ». Le raccord reste fermé. La simulation autonome d’une fenêtre de traversée reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_sable::universe",
+      "runtimeMissionId": "city-sable-night-signs-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Signalisation préparée sur place et chemin éprouvé à pied avant son balisage. Le déplacement autonome des marcheurs vers le refuge reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_tessera::universe",
+      "runtimeMissionId": "city-tessera-chosen-window-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Réflecteur porté, commande indépendante et lumière locale, puis retour à Tessera. Son animation de prise en main reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_quillon::multiverse",
+      "runtimeMissionId": "city-quillon-refuge-pump-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "Rotor porté à la pompe, pièce usée rendue, amorçage et récipient représentés par les accessoires. La vie complète du refuge reste à développer."
+    },
+    {
+      "id": "city-plan-v1::arca_nadir::universe",
+      "runtimeMissionId": "city-nadir-buried-probe-v1",
+      "implementationStatus": "runtime_adaptation",
+      "scope": "N-4 portée à Nadir, seuil fermé et prochain essai préparé. La simulation physique du câble et des débris reste à développer."
+    }
+  ],
+  "fieldEquipmentSources": [
+    {
+      "source": "src/game/extinctionFieldEquipment.js",
+      "sha256": "b82faf19ae0be6d68f8aecf7cce7d0f8fa55ad59ed72b88bdccbc82837480c35"
+    },
+    {
+      "source": "src/game/extinctionFighterProfiles.js",
+      "sha256": "146efd459680adb43a81cf3a114a1aab570803082ed95dd02ba981b3092c97c5"
+    },
+    {
+      "source": "src/components/HubScreen.jsx",
+      "sha256": "24fc1b3c348bc94533e5af7e7349ce0ef6c6eed612ad6b0ee2b1a78192350e84"
+    }
+  ],
+  "cityPresentationSources": [
+    {
+      "source": "src/components/HubScreen.jsx",
+      "sha256": "24fc1b3c348bc94533e5af7e7349ce0ef6c6eed612ad6b0ee2b1a78192350e84"
+    },
+    {
+      "source": "src/game/mosaicMissionOperations.js",
+      "sha256": "1160ba9f70538b0c476df27511f9807a5e5ce007b67eddbd811a8048b17a6671"
+    },
+    {
+      "source": "src/game/mosaicMissionCargo.js",
+      "sha256": "ad80330f1e719c88c8fb3c752d0be0d71a02ff096bbe247477660302a1e42f99"
+    },
+    {
+      "source": "src/game/renderer.js",
+      "sha256": "1cd35d66175c837b90e28a7cd38a93ca224f051c4736ae9b69939a51fe380069"
+    },
+    {
+      "source": "src/game/spriteAssets.js",
+      "sha256": "c2ab4e4c5b12504335499a6fea433647e0ecebaa44547ee39966d6de9ba06f0a"
+    },
+    {
+      "source": "src/game/immersiveHubState.js",
+      "sha256": "49b180f82611e318f760bf659ccb33ad09430938df216ccf69e8c1cef73968f7"
+    },
+    {
+      "source": "src/components/useSceneViewport.js",
+      "sha256": "085f7360a9e0023f9c413050ef3e45b8289dc09b258e2e573d961a7bf0577ba5"
+    },
+    {
+      "source": "src/game/mosaicMissionWalks.js",
+      "sha256": "524612b5e62efa0fecd1d186758c02f1a3f7e435e2947ad0ce6cdeabefc6b6d4"
+    },
+    {
+      "source": "src/components/MosaicPocketTerminal.jsx",
+      "sha256": "dc6cbf8e855517f4d2347cde1c3d34a50d5e68b8f25074cd4c96594a7e19cea1"
+    },
+    {
+      "source": "src/components/MosaicPocketTerminal.css",
+      "sha256": "0cbb7ae4a61689db54715ee099da5765d3047e7b7fdef93849fa98b35d1142df"
+    },
+    {
+      "source": "src/components/MosaicCharacterMissions.jsx",
+      "sha256": "3777d59d9eebe7de571e656c7ee79747d3b5448758be10cfae648e40985a685b"
+    },
+    {
+      "source": "src/components/ImmersiveDrawer.jsx",
+      "sha256": "2c8baf408d6929bddd7790a2192f6ee75e4224b29b7743b5f4a88800077cfd48"
+    },
+    {
+      "source": "src/components/MosaicCharacterMissions.css",
+      "sha256": "f1c5c200cca02a453b0950ab19671f08662f7e5d35534b961894987949080f7b"
+    }
+  ],
+  "fpsPresentationSources": [
+    {
+      "source": "src/components/HubScreen.jsx",
+      "sha256": "24fc1b3c348bc94533e5af7e7349ce0ef6c6eed612ad6b0ee2b1a78192350e84"
+    },
+    {
+      "source": "src/game/extinctionAimReadout.js",
+      "sha256": "826b47af9a07c6077e7a904e0705ffc836a9b0d121a017d05c84b9b881964966"
+    },
+    {
+      "source": "src/game/extinctionSignatures.js",
+      "sha256": "1c2c36a3543ec20b1eddbd44910b91363c5ac3d2f95ce29f835c8f8b5f715dd1"
+    },
+    {
+      "source": "src/game/extinctionFieldDirectives.js",
+      "sha256": "7b68e2f96ed1deb8b13b4d85d073689cfc44bb53802c037d3648e9200f04bbad"
+    },
+    {
+      "source": "src/components/ExtinctionPrimaryAction.jsx",
+      "sha256": "90fb3f9c841c1b73c0359ad92bcc52125a988c9ee68a7f06a3271aed1047b25b"
+    },
+    {
+      "source": "src/components/ExtinctionAimReadout.css",
+      "sha256": "015bd546cbe7feb4f70ce30a7342d912d230def698bb500f45508f5000fc9872"
+    }
+  ],
+  "changedModeCells": [],
+  "proposalsRequiringDiegeticRewrite": 3780,
+  "preservedTrackingColumns": [
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "S",
+    "T",
+    "U"
+  ],
+  "dependencyProof": {
+    "input": "Contrats jouables!A42",
+    "output": "Synthèse!B12",
+    "withLastContract": 36,
+    "withLastContractBlank": 35,
+    "restored": true
+  },
+  "gateProof": [
+    {
+      "inputs": [
+        "Validé",
+        "Terminée",
+        "Intégrée",
+        "À faire"
+      ],
+      "result": "Exécuter la recette"
+    },
+    {
+      "inputs": [
+        "Validé",
+        "Terminée",
+        "Intégrée",
+        "Validée"
+      ],
+      "result": "Terminée"
+    },
+    {
+      "inputs": [
+        "",
+        "Terminée",
+        "Intégrée",
+        "Validée"
+      ],
+      "result": "Valider le lore"
+    }
+  ],
+  "sheets": [
+    "Synthèse",
+    "Missions à créer",
+    "Contrats jouables",
+    "Personnages",
+    "Profils FPS",
+    "Modes FPS"
+  ],
+  "previews": [
+    "synthese.png",
+    "modes-fps.png",
+    "contrats-recits-33-34.png",
+    "contrats-acces-sources-33-34.png",
+    "contrats-recits-35-36.png",
+    "contrats-acces-sources-35-36.png",
+    "prolongement-lien-7.png",
+    "prolongement-lien-11.png",
+    "prolongement-lien-13.png",
+    "prolongement-lien-17.png"
+  ],
+  "preservedSheets": [
+    "Personnages",
+    "Profils FPS",
+    "Modes FPS"
+  ],
+  "formulaScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+  "nativeApplicationCheck": "Not executed; Artifact Tool recalculation, XLSX readback and rendered review are separate checks.",
+  "exportMethod": "Artifact Tool import, scoped edits and recalculation; official toProto/Workbook.load transfer to a fresh process before SpreadsheetFile.exportXlsx to bound memory. Independent saved-XLSX comparison passed against the original workbook.",
+  "provenanceRefresh": {
+    "kind": "source-provenance-only-after-native-review",
+    "basisRevision": "545112380690d37047ccae6f377371f3eec5abe9",
+    "reason": "Measure committed City banner text in the layout phase before the scene effect draws its first frame. Logical planning and workbook bytes remain unchanged. Keep journal filter counts on one line and track the stylesheet as an additional presentation dependency.",
+    "previousReceiptSha256": "30f6eb82f1924a4b446714ee743d9f5a3f0eee2b56db7590ce0349dd6f0ba0ec",
+    "previousPlanningDataSha256": "ed2700786a719d2a94f4fd87839ad90f20f82e9ac0eb878767e1aa0eb822ac43",
+    "unchangedPlanningSections": [
+      "characters",
+      "commonPolicies",
+      "counts",
+      "date",
+      "editableTrackingFields",
+      "editorialPolicy",
+      "encounters",
+      "finalePolicies",
+      "generationPolicy",
+      "missions",
+      "reviewQueue",
+      "runtimeMissions",
+      "schema",
+      "scope",
+      "sourceRevision",
+      "sourceRevisionMeaning",
+      "status"
+    ],
+    "changedPlanningSourceFiles": [],
+    "changedSourceGroups": {
+      "runtimeSources": [],
+      "fieldEquipmentSources": [
+        "src/components/HubScreen.jsx"
+      ],
+      "cityPresentationSources": [
+        "src/components/HubScreen.jsx",
+        "src/components/useSceneViewport.js"
+      ],
+      "fpsPresentationSources": [
+        "src/components/HubScreen.jsx"
+      ]
+    },
+    "workbookBytesPreserved": true,
+    "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+    "previousProvenanceRefresh": {
+      "kind": "source-provenance-only-after-native-review",
+      "basisRevision": "6342f3c1e52473257bb27cfd462e78ac865c5000",
+      "reason": "Observe root style and class changes so position-only preference changes refresh the City banner rectangle before drawing. Planning data and workbook bytes are unchanged.",
+      "previousReceiptSha256": "bdf380de19450aa8c9567e4bb76c7c009f55f39581615fea618808cc478e6aa2",
+      "previousPlanningDataSha256": "ed2700786a719d2a94f4fd87839ad90f20f82e9ac0eb878767e1aa0eb822ac43",
+      "unchangedPlanningSections": [
+        "characters",
+        "commonPolicies",
+        "counts",
+        "date",
+        "editableTrackingFields",
+        "editorialPolicy",
+        "encounters",
+        "finalePolicies",
+        "generationPolicy",
+        "missions",
+        "reviewQueue",
+        "runtimeMissions",
+        "schema",
+        "scope",
+        "sourceRevision",
+        "sourceRevisionMeaning",
+        "status"
+      ],
+      "changedPlanningSourceFiles": [],
+      "changedSourceGroups": {
+        "runtimeSources": [],
+        "fieldEquipmentSources": [],
+        "cityPresentationSources": [
+          "src/components/useSceneViewport.js"
+        ],
+        "fpsPresentationSources": []
+      },
+      "workbookBytesPreserved": true,
+      "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+      "previousProvenanceRefresh": {
+        "kind": "source-provenance-only-after-native-review",
+        "basisRevision": "bff887987d066610043c7d6998b5a4f97daca69f",
+        "reason": "Measured district banner bounds protect mission labels; acceptance observations are split at actual player-action boundaries. Logical planning and workbook bytes are unchanged.",
+        "previousReceiptSha256": "ee413715c8ecf43730faed9e8bf5c4ab82a4bf0de4938a7b512516f1a544a70c",
+        "previousPlanningDataSha256": "ed2700786a719d2a94f4fd87839ad90f20f82e9ac0eb878767e1aa0eb822ac43",
+        "unchangedPlanningSections": [
+          "characters",
+          "commonPolicies",
+          "counts",
+          "date",
+          "editableTrackingFields",
+          "editorialPolicy",
+          "encounters",
+          "finalePolicies",
+          "generationPolicy",
+          "missions",
+          "reviewQueue",
+          "runtimeMissions",
+          "schema",
+          "scope",
+          "sourceRevision",
+          "sourceRevisionMeaning",
+          "status"
+        ],
+        "changedPlanningSourceFiles": [],
+        "changedSourceGroups": {
+          "runtimeSources": [],
+          "fieldEquipmentSources": [
+            "src/components/HubScreen.jsx"
+          ],
+          "cityPresentationSources": [
+            "src/components/HubScreen.jsx",
+            "src/game/immersiveHubState.js",
+            "src/components/useSceneViewport.js"
+          ],
+          "fpsPresentationSources": [
+            "src/components/HubScreen.jsx"
+          ]
+        },
+        "workbookBytesPreserved": true,
+        "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+        "previousProvenanceRefresh": {
+          "kind": "source-provenance-only-after-native-review",
+          "basisRevision": "235e7b2392f0636b8cd18ee0126c7aead6712701",
+          "reason": "Keep walked-route prop IDs stable and distinguish the carried label from a homonymous world prop in native observations.",
+          "previousReceiptSha256": "c70f8c84deea9797a907579847645d11af8b0de90981e0cf0720781bcdf2fc7d",
+          "previousPlanningDataSha256": "579c12bad4b24c3d13d3241a644294f9b612b1e264d067eb5d0e8bc61116dc9d",
+          "unchangedPlanningSections": [
+            "characters",
+            "commonPolicies",
+            "counts",
+            "date",
+            "editableTrackingFields",
+            "editorialPolicy",
+            "encounters",
+            "finalePolicies",
+            "generationPolicy",
+            "missions",
+            "reviewQueue",
+            "runtimeMissions",
+            "schema",
+            "scope",
+            "sourceRevision",
+            "sourceRevisionMeaning",
+            "status"
+          ],
+          "changedPlanningSourceFiles": [
+            "src/game/mosaicCharacterMissions.js"
+          ],
+          "changedSourceGroups": {
+            "runtimeSources": [
+              "src/game/mosaicCharacterMissions.js"
+            ],
+            "fieldEquipmentSources": [],
+            "cityPresentationSources": [],
+            "fpsPresentationSources": []
+          },
+          "workbookBytesPreserved": true,
+          "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+          "previousProvenanceRefresh": {
+            "kind": "source-provenance-only-after-authoring",
+            "basisRevision": "48197dc4f35577b6b82a8929b9fe8960dc0e7405",
+            "basisMeaning": "Published predecessor of the new workbook. The previous receipt identifies the immutable authoring snapshot; this refresh records the final integrated helpers and presentation files.",
+            "previousReceiptSha256": "f549c794fa7e0cda662db6b0c4969be0c12d4feeba171bc76a20ede3a4f20c67",
+            "previousPlanningDataSha256": "35b6f1630f5d49a0a25255bdd9dcf12990b19fbcb40af2737b047bb98e81d4f5",
+            "unchangedPlanningSections": [
+              "characters",
+              "commonPolicies",
+              "counts",
+              "date",
+              "editableTrackingFields",
+              "editorialPolicy",
+              "encounters",
+              "finalePolicies",
+              "generationPolicy",
+              "missions",
+              "reviewQueue",
+              "runtimeMissions",
+              "schema",
+              "scope",
+              "sourceRevision",
+              "sourceRevisionMeaning",
+              "status"
+            ],
+            "changedPlanningSourceFiles": [
+              "src/game/mosaicMissionWalks.js"
+            ],
+            "workbookBytesPreserved": true,
+            "preservedWorkbookSha256": "245144e422a3fa89bed4ed4b0e1e994c4563b2cfc33798efe5fa9e4f02832e66",
+            "changedRuntimeSources": [
+              "src/game/mosaicMissionWalks.js"
+            ],
+            "changedFieldEquipmentSources": [
+              "src/components/HubScreen.jsx"
+            ],
+            "changedCityPresentationSources": [
+              "src/components/HubScreen.jsx",
+              "src/game/mosaicMissionWalks.js",
+              "src/components/ImmersiveDrawer.jsx"
+            ],
+            "changedFpsPresentationSources": [
+              "src/components/HubScreen.jsx"
+            ],
+            "finalReview": {
+              "previousReceiptSha256": "4565bde2c709323dfb22a091793ce85b74ec55fe66166f681d49ec915e6aa0c4",
+              "planningBytesPreserved": true,
+              "workbookBytesPreserved": true,
+              "changes": {
+                "runtimeSources": [],
+                "fieldEquipmentSources": [
+                  "src/components/HubScreen.jsx"
+                ],
+                "cityPresentationSources": [
+                  "src/components/HubScreen.jsx"
+                ],
+                "fpsPresentationSources": [
+                  "src/components/HubScreen.jsx"
+                ]
+              },
+              "reason": "Resolve unfinished route approach from the journal with the ordinary path planner and cancel stale terminal focus synchronously."
+            }
+          }
+        }
+      }
+    },
+    "addedSourceGroups": {
+      "cityPresentationSources": [
+        "src/components/MosaicCharacterMissions.css"
+      ]
+    }
+  }
+}
