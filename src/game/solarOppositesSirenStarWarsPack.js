@@ -26,12 +26,15 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus = 'canon'
+  canonStatus = 'canon',
+  ...fidelityMetadata
 }) => ({
   id,
   name,
   cat,
   color,
+  // Fallback renderer uses primaryColor; source fighter templates previously only exposed color.
+  primaryColor: color,
   secondaryColor: accent,
   weaponType,
   weaponColor: accent,
@@ -42,7 +45,8 @@ const fighter = ({
   special,
   equipment,
   incarnation,
-  canonStatus
+  canonStatus,
+  ...fidelityMetadata
 });
 
 const plaque = ({
@@ -167,13 +171,13 @@ export const SOLAR_OPPOSITES_SIREN_STAR_WARS_REFERENCE_ENTRIES = [
   ['Siren Head', 'Trevor Henderson solitary twin-siren mimetic predator', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.siren_head, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Siren_Head']],
   ['Long Horse', 'Trevor Henderson benevolent endless-neck omen entity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.long_horse, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Long_Horse']],
   ['Cartoon Cat', 'Trevor Henderson old-media faux cartoon body', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.cartoon_cat, ['https://www.trevorhenderson.com/', 'https://trevorhenderson.fandom.com/wiki/Cartoon_Cat']],
-  ['Ahsoka Tano (Padawan)', 'The Clone Wars early Padawan with one green lightsaber', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_padawan, ['https://www.starwars.com/databank/ahsoka-tano']],
-  ['Ahsoka Tano (Siege of Mandalore)', 'The Clone Wars final-season Mandalore outfit with twin blue lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka, ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/series/clone-wars/old-friends-not-forgotten-episode-guide']],
-  ['Ahsoka Tano (Adult)', 'Rebels and Ahsoka mature former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsoka-tano', 'https://www.starwars.com/series/star-wars-rebels/fire-across-the-galaxy-concept-art-gallery']],
+  ['Ahsoka Tano (Padawan)', 'The Clone Wars early Padawan with one green lightsaber', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_padawan, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
+  ['Ahsoka Tano (Siege of Mandalore)', 'The Clone Wars final-season Mandalore outfit with twin blue lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka, ['https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten', 'https://www.starwars.com/series/clone-wars/old-friends-not-forgotten-episode-guide']],
+  ['Ahsoka Tano (Adult)', 'Star Wars Rebels Fulcrum-era former Jedi with twin white lightsabers', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.ahsoka_adult, ['https://www.starwars.com/databank/ahsokas-lightsabers', 'https://www.starwars.com/databank/ahsoka-tano']],
   ['Aayla Secura', 'Clone Wars Twi lek Jedi General', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.aayla_secura, ['https://www.starwars.com/databank/aayla-secura']],
-  ['Darth Maul', 'The Clone Wars Mandalore incarnation with cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/databank/maul']],
-  ['Darth Revan', 'Knights of the Old Republic iconic masked Legends identity', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://www.starwars.com/news/from-a-certain-point-of-view-whos-the-best-star-wars-games-character', 'https://www.starwars.com/news/darth-revan-force-fx-elite-lightsaber']],
-  ['Darth Talon', 'Star Wars Legacy red Twi lek One Sith Hand', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://starwars.fandom.com/wiki/Darth_Talon']]
+  ['Darth Maul', 'The Clone Wars S7 Siege of Mandalore: red double-bladed duel weapon and cybernetic legs', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_maul, ['https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide', 'https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice', 'https://www.starwars.com/databank/maul']],
+  ['Darth Revan', 'KOTOR I masked Sith: one red lightsaber; KOTOR II red/purple duel and SWTOR masks/hilts are distinct depictions', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_revan, ['https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii', 'https://www.starwars.com/games-apps/knights-of-the-old-republic', 'https://www.swtor.com/info/news/article/20201209-0']],
+  ['Darth Talon', 'Star Wars Legacy One Sith Hand: ritual body markings and distinct 501st-reference protective plates', SOLAR_OPPOSITES_SIREN_STAR_WARS_SPRITES.darth_talon, ['https://crls.501st.com/tfe/darth-talon', 'https://starwars.fandom.com/wiki/Darth_Talon']]
 ].map(([character, incarnation, output, referencePages]) => ({
   character,
   incarnation,

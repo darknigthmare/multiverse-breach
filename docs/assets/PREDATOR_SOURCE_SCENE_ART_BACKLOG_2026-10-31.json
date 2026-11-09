@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "createdOn": "2026-10-31",
+  "kind": "predator-source-scene-art-production-backlog",
+  "scope": "Only stages 50104 (Predator 1987) and 50105 (Predator 2 1990). Not the full game's missing-asset inventory.",
+  "sourceLock": "Reference film edition, exact character and stage required before approvals.",
+  "status": "OPEN",
+  "artApproved": false,
+  "newPngsCommitted": 0,
+  "existingArtCanBeUsedAsProvisional": true,
+  "reviewCriteria": [
+    "source incarnation and film year",
+    "silhouette and body proportions",
+    "head/mask/costume",
+    "equipment chronology",
+    "palette and markings",
+    "distinct animation states and directions",
+    "transparent alpha and ground anchor",
+    "in-game full-size review and test screenshot"
+  ],
+  "reviewsDoNotInferFrom": [
+    "game sprite path presence",
+    "hash equality",
+    "one static pose",
+    "procedural Canvas stage",
+    "generated image without explicit source comparison",
+    "one film costume shared across characters"
+  ],
+  "tasks": [
+    {
+      "id": "predator-source-01",
+      "stageId": 50104,
+      "subjectId": "dutch-1987-mud",
+      "kind": "character-variant",
+      "priority": "P1",
+      "target": "Dutch under cold mud; unarmored bare chest and arms, cropped jungle trousers, mud boundaries, knife and improvised bow; compare exact 1987 final scene",
+      "contexts": [
+        "hero",
+        "tactics",
+        "portrait",
+        "melee"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-02",
+      "stageId": 50104,
+      "subjectId": "jungle-hunter-biomask",
+      "kind": "character-variant",
+      "priority": "P0",
+      "target": "1987 Jungle Hunter silver biomask, netted body suit, asymmetric armor, locks, shoulder plasma caster and wrist blades; no City Hunter smart disc",
+      "contexts": [
+        "enemy",
+        "boss",
+        "portrait",
+        "animation"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-03",
+      "stageId": 50104,
+      "subjectId": "jungle-hunter-unmasked",
+      "kind": "character-variant",
+      "priority": "P1",
+      "target": "Same 1987 hunter after removing biomask and shoulder weapon for hand-to-hand final duel; preserve individual silhouette and original weapon-free posture",
+      "contexts": [
+        "boss",
+        "animation"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-04",
+      "stageId": 50104,
+      "subjectId": "river-mud-log-trap",
+      "kind": "environment-separate-pieces",
+      "priority": "P1",
+      "target": "South American rainforest riverbank, night campfire, sharpened stake tunnel, suspended log and release counterweight as separate compositing layers",
+      "contexts": [
+        "stage",
+        "parallax",
+        "collision"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-05",
+      "stageId": 50104,
+      "subjectId": "jungle-final-vfx-audio",
+      "kind": "effects",
+      "priority": "P1",
+      "target": "Predator damaged cloak, thermal readout, mask-off beat, 1987 wrist self-destruct arming and blast; record original SFX, do not copy copyrighted film track",
+      "contexts": [
+        "vfx",
+        "audio",
+        "ui"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-06",
+      "stageId": 50105,
+      "subjectId": "harrigan-1990-roof-injured",
+      "kind": "character-variant",
+      "priority": "P1",
+      "target": "Mike Harrigan played by Danny Glover in 1990, LAPD street clothing battle damage, holds recovered smart disc while entering ship",
+      "contexts": [
+        "hero",
+        "tactics",
+        "portrait",
+        "melee"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-07",
+      "stageId": 50105,
+      "subjectId": "city-hunter-disc-damaged",
+      "kind": "character-variant",
+      "priority": "P0",
+      "target": "Distinct Predator 2 City Hunter with appropriate mask and armor, wounded and missing forearm following rooftop disarm, smart-disc choreography; not the 1987 Jungle Hunter",
+      "contexts": [
+        "boss",
+        "animation"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-08",
+      "stageId": 50105,
+      "subjectId": "lost-tribe-elder-greyback",
+      "kind": "character-variant",
+      "priority": "P1",
+      "target": "Greyback/elder during Lost Tribe emergence, non-hostile; handing eighteenth-century pistol to Harrigan; do not substitute 1987 Jungle Hunter",
+      "contexts": [
+        "noncombat-npc",
+        "animation"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-09",
+      "stageId": 50105,
+      "subjectId": "predator2-smart-disc-net",
+      "kind": "separate-props",
+      "priority": "P1",
+      "target": "Recoverable smart disc as 1990 tool, entangling net and cut-away frames, not a plasma rifle or conventional firearm",
+      "contexts": [
+        "equipment",
+        "animation",
+        "vfx"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-10",
+      "stageId": 50105,
+      "subjectId": "lost-tribe-trophy-wall",
+      "kind": "environment-separate-pieces",
+      "priority": "P0",
+      "target": "Biotechnological subterranean ship trophy display with skulls including xenomorph cranium cameo, background-only, no combat Xenomorph",
+      "contexts": [
+        "stage",
+        "parallax"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-11",
+      "stageId": 50105,
+      "subjectId": "adolini-1715-flintlock",
+      "kind": "prop",
+      "priority": "P1",
+      "target": "One antique flintlock trophy inscribed Raphael Adolini 1715; narrative proof after safe extraction, no fabricated weapon stats or automatic inventory entry",
+      "contexts": [
+        "prop",
+        "cutscene",
+        "collection-candidate"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-12",
+      "stageId": 50105,
+      "subjectId": "ship-hatch-engine-takeoff",
+      "kind": "environment-separate-pieces",
+      "priority": "P1",
+      "target": "Subterranean ship with segmented techno-organic hull, cavern passage and engine launch glow/shockwave; keep rooftop bomb deactivated in this scene",
+      "contexts": [
+        "stage",
+        "parallax",
+        "vfx"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2",
+        "https://catalog.afi.com/Film/58654-PREDATOR-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "predator-source-13",
+      "stageId": 50105,
+      "subjectId": "predator2-finale-music-sfx",
+      "kind": "audio",
+      "priority": "P1",
+      "target": "Original, non-extracted soundscape for City Hunter net/disc duel, non-hostile elder, engine take-off. Copyrighted film audio is not an installed asset",
+      "contexts": [
+        "audio"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator-2"
+      ],
+      "status": "OPEN_NOT_VISUALLY_VERIFIED",
+      "spritePath": null,
+      "reviewStatus": "pending",
+      "artApproved": false
+    }
+  ]
+}

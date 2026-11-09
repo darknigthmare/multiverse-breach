@@ -1,4 +1,4 @@
-import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
+import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, aimSourceSceneMask, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
 import { drawSourceSceneBoard } from './sourceScenePresentation.js';
 import { canUseTacticsAttack, captureTacticsAttackCommitment } from './tacticsAttackCommitment.js';
 import { prepareTacticsHealing } from './tacticsSourceHealing.js';
@@ -1366,6 +1366,11 @@ export class EngineTactics {
 
   canOccupyCell(unit, c, r) {
     if (this.sourceScene?.definition.material === 'shuttle' && this.sourceScene.done.has('harness')
+      && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
+    // Predator 2: the recovered smart disc must cut the net before Harrigan
+    // can move; AI and manual movement share the same collision rule.
+    if (this.sourceScene?.definition.material === 'ship'
+      && this.sourceScene.done.has('net') && !this.sourceScene.done.has('cut_net')
       && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
     if (!unit || !this.isInsideGrid(c, r)) return false;
     if (!unit.tacticsFootprint) return !this.isCellOccupied(c, r, unit);
@@ -2793,6 +2798,8 @@ export class EngineTactics {
   getSourceSceneState() { return getSourceSceneState(this); }
 
   triggerSourceSceneAction(id, turnToken) { return executeSourceSceneCommand(this, id, turnToken); }
+
+  aimSourceSceneMask(x, y, turnToken) { return aimSourceSceneMask(this, x, y, turnToken); }
 
   getRexEncounterState() {
     const encounter = this.rexEncounter;

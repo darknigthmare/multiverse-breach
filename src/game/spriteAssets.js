@@ -1,5 +1,6 @@
 import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
+import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
@@ -516,6 +517,14 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
+  '/sprites/generated/bosses/predator/feral-predator.png': {
+    // Reuse the existing full-body Prey Feral image as one static figure.
+    // No invented animation frames or 4x4 cropping of a single character.
+    // Film 2022 visual acceptance and independent animation still pending.
+    columns: 1,
+    rows: 1,
+    rowByState: { idle:0,run:0,attack:0,defense:0,support:0,special:0,hit:0,dead:0 }
+  },
   '/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png': {
     // One complete static figure. Movement/combat animation is not supplied.
     columns: 1,
@@ -794,6 +803,7 @@ export const SPRITE_SHEET_LAYOUTS = {
 };
 
 export const getHeroCompleteSpritePack = (hero) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   if (CORRECTED_HERO_SPRITE_VARIANTS[hero?.id]) return CORRECTED_HERO_SPRITE_VARIANTS[hero.id];
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
@@ -890,6 +900,7 @@ const normalizeHeroMeleeState = state => (
 );
 
 export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   const manifest = getMeleeAnimationManifest(hero?.id);
   if (!manifest) return null;
   const state = normalizeHeroMeleeState(hero?.state);
@@ -898,7 +909,7 @@ export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
 };
 
 export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
-  getMeleeAnimationSheetSources(heroOrId)
+  getQuarantinedCanonSprite(heroOrId) ? [] : getMeleeAnimationSheetSources(heroOrId)
 );
 
 const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
@@ -927,7 +938,7 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
 };
 
-export const getHeroSpriteSheetSources = (hero, context = 'auto') => [...new Set([
+export const getHeroSpriteSheetSources = (hero, context = 'auto') => getQuarantinedCanonSprite(hero) ? [] : [...new Set([
   ...getDisciplineSpriteSources(hero),
   getOriginalHeroSpriteSheetSrc(hero, context)
 ].filter(Boolean))];

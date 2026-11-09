@@ -8,6 +8,7 @@ import { EXPANDED_UNIVERSES } from '../src/game/expandedUniverses.js';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 import { STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
 import { CORRECTED_HERO_SPRITE_VARIANTS, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
 import { discoverCgSourceEvidenceFiles, loadCgSourceEvidence, loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -286,6 +287,7 @@ const subjects = plan.subjects.map(subject => {
  if (originalSpriteAnchor) refs.push(source('/src/game/heroes.js', 'authored-original-character-prompt', 'src/game/heroes.js', 'authored-project-canon'));
  if (sourceAnchor) refs.push(source('/src/game/heroes.js', 'character-specific-identity-description', 'src/game/heroes.js', 'authored-project-record'));
  if (original) refs.push(source('/src/game/originalUniversesManifest.json', 'original-project-canon', 'src/game/originalUniversesManifest.json', 'authored-project-canon'));
+ const quarantine = getQuarantinedCanonSprite(hero);
  const selectedSprite = getHeroSpriteSheetSrc(hero);
  const recordedSpriteFinding = selectedSpriteFindings.get(hero.id);
  // Findings apply to the exact reviewed asset. Installing a later variant must
@@ -294,7 +296,8 @@ const subjects = plan.subjects.map(subject => {
  const currentSpriteCorrection = (correctedSpriteAudits.get(hero.id) || []).find(entry => entry.output === selectedSprite && entry.visualReview?.status === 'close-to-reference' && existsSync(localFile(selectedSprite)) && entry.image?.sha256 === hash(localFile(selectedSprite)));
  const recordedTechnicalPacking = technicalSpritePackings.get(hero.id);
  const currentTechnicalPacking = recordedTechnicalPacking?.currentRuntimePath === selectedSprite && existsSync(localFile(selectedSprite)) && recordedTechnicalPacking.preparation.output.sha256 === hash(localFile(selectedSprite)) ? recordedTechnicalPacking : null;
- const currentSpriteReview = currentSpriteFinding ? { path: selectedSprite, sha256: currentSpriteFinding.selectedAsset.sha256, status: currentSpriteFinding.status, observation: currentSpriteFinding.observed, sourceComparison: currentSpriteFinding.sourceComparison, evidenceFile: currentSpriteFinding.evidenceFile, correctionAttemptEvidence: currentSpriteFinding.correctionAttemptEvidence, ...(currentSpriteFinding.sourceCoverageDecision ? { sourceCoverageDecision: currentSpriteFinding.sourceCoverageDecision } : {}), visualFidelityApproved: false }
+ const currentSpriteReview = quarantine ? { path: quarantine.asset, sha256: quarantine.sha256, status: 'OLD-quarantined-art-not-selected-in-runtime', reason: quarantine.reason, selectedInRuntime: false, visualFidelityApproved: false }
+  : currentSpriteFinding ? { path: selectedSprite, sha256: currentSpriteFinding.selectedAsset.sha256, status: currentSpriteFinding.status, observation: currentSpriteFinding.observed, sourceComparison: currentSpriteFinding.sourceComparison, evidenceFile: currentSpriteFinding.evidenceFile, correctionAttemptEvidence: currentSpriteFinding.correctionAttemptEvidence, ...(currentSpriteFinding.sourceCoverageDecision ? { sourceCoverageDecision: currentSpriteFinding.sourceCoverageDecision } : {}), visualFidelityApproved: false }
   : currentSpriteCorrection ? { path: selectedSprite, sha256: currentSpriteCorrection.image.sha256, status: 'corrected-sprite-reviewed-with-source-limitations', evidenceFile: currentSpriteCorrection.file, frames: currentSpriteCorrection.processing?.dominantBodies || currentSpriteCorrection.processing?.sourceGridCells || null, observations: currentSpriteCorrection.visualReview.notes || [], canonicalFidelityApproved: false, visualFidelityApproved: false }
   : currentTechnicalPacking ? { path: selectedSprite, sha256: currentTechnicalPacking.preparation.output.sha256, status: 'technical-frame-packing-reviewed-original-art-preserved', operationKind: currentTechnicalPacking.operationKind, evidenceFile: currentTechnicalPacking.file, preparationReceipt: currentTechnicalPacking.preparationReceipt, independentReview: currentTechnicalPacking.independentReview, frames: currentTechnicalPacking.preparation.processing.dominantBodies, uniformScale: currentTechnicalPacking.uniformScale, previousAtlasRetainedAsVariant: currentTechnicalPacking.previousAtlasRetainedAsVariant, newImageGenerationUsed: false, semanticArtworkCreated: false, limitations: currentTechnicalPacking.limitations, canonicalFidelityApproved: false, visualFidelityApproved: false } : null;
  if (currentSpriteFinding) {
@@ -303,9 +306,13 @@ const subjects = plan.subjects.map(subject => {
  }
  if (currentSpriteCorrection) refs.push(source(currentSpriteCorrection.file, 'current-selected-sprite-correction-audit', currentSpriteCorrection.file, 'reviewed-correction-not-perfect-fidelity-approval'));
  if (currentTechnicalPacking) refs.push(source(currentTechnicalPacking.file, 'current-selected-sprite-technical-frame-packing-audit', currentTechnicalPacking.file, 'existing-project-frame-packing-no-new-art-or-fidelity-certification'));
- const visualPaths = unique([selectedSprite, ...(CORRECTED_HERO_SPRITE_VARIANTS[hero.id] || []).map(variant => variant.src), manifestRow?.output, ...(subject.identity?.localCandidates || []).map(v => v.path), ...(rosterArt.filter(cg => cg.characterId === hero.id).flatMap(cg => [cg.assets?.source?.path, cg.assets?.master?.path, cg.sourcePath].filter(Boolean)))]);
- const localVisuals = visualPaths.map(value => ({ path: value, role: 'project-generated-art', exists: existsSync(localFile(value)), selectedInRuntime: value === selectedSprite,
-  status: 'existing-project-art-not-independent-canon-proof' }));
+ const visualPaths = unique([selectedSprite, ...(CORRECTED_HERO_SPRITE_VARIANTS[hero.id] || []).map(variant => variant.src), manifestRow?.output, quarantine?.asset, ...(subject.identity?.localCandidates || []).map(v => v.path), ...(rosterArt.filter(cg => cg.characterId === hero.id).flatMap(cg => [cg.assets?.source?.path, cg.assets?.master?.path, cg.sourcePath].filter(Boolean)))]);
+ const localVisuals = visualPaths.map(value => {
+  const archival = quarantine && (/^(?:\/|public\/)?sprites\//.test(value) || (subject.identity?.localCandidates || []).some(candidate => candidate.path === value));
+  return { path: value, role: 'project-generated-art', exists: existsSync(localFile(value)), selectedInRuntime: !archival && value === selectedSprite,
+   status: archival ? 'OLD-quarantined-project-art-not-current-or-canon-reference' : 'existing-project-art-not-independent-canon-proof',
+   ...(archival ? { archivalOnly: true, runtimeEligible: false, quarantineReason: quarantine.reason } : {}) };
+ });
  for (const ref of independentRefs.get(hero.id) || []) {
   localVisuals.push(ref);
   if (ref.url) refs.push({ ...source(ref.url, ref.role, ref.sourceFile, ref.status), referencePurpose: ref.referencePurpose, referenceScope: ref.referenceScope, slot: ref.slot });
@@ -361,6 +368,7 @@ const subjects = plan.subjects.map(subject => {
   incarnation: { label: incarnationLabel, status: incarnationStatus, evidence: unique([...(original ? ['src/game/heroes.js / originalUniversesManifest'] : []), ...(sourceEvidence?.files || []), ...(universeTarget ? [AUTHOR_FILE] : []), ...(hero.incarnation ? ['src/game/heroes.js'] : []), ...(refRecord ? ['public/sprites/generated/sprite-reference-sources.json'] : []), ...(pack?.continuity ? ['src/game/canonRosterWave.js'] : []), ...(proposal ? [AUTHOR_FILE] : [])]) },
   identityLock: identityLock || `${subject.characterName}, ${subject.universe} : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.`,
   visualLocks: visual, universeCoherence: world, sourceRefs: allRefs, sources: allRefs, localVisuals,
+  ...(quarantine ? { runtimeSpriteQuarantine: { characterId: hero.id, ...quarantine } } : {}),
   cgRequirements: { canonSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'source-identity-in-original-scene'), nexusSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'nexus-game-adaptation'), fanArtSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'fan-art-special-theme-original-scene'), whatIfSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'what-if-transformation-not-source-canon'), themes, commonRule: 'Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes.' },
   readiness: { identity: incarnationStatus, visualReference: inspectedIndependentIdentity ? 'independent-image-inspected-with-limitations' : localVisuals.some(ref => ref.role === 'independent-canon-reference') ? 'independent-image-available-inspection-not-recorded' : original ? 'project-canon-reference' : 'source-image-needed-or-historical-url-only', sourceReview: qualificationStatus, ...(currentSpriteReview ? { currentSprite: currentSpriteReview } : {}), visualFidelityApproved: false, detailedVisualAxes: detailedAxes, missing },
   qualificationStatus,

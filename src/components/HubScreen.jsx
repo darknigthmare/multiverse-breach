@@ -64,6 +64,7 @@ import {
 } from '../game/ocCampaign';
 import { CORRECTED_CANON_HERO_SPRITES, getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
+import { getQuarantinedCanonSprite } from '../game/canonicalSpriteQuarantine.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -5766,7 +5767,8 @@ function MultiverseRiftMap({
 }
 
 function MissionRequirementPortrait({ hero, label }) {
-  const src = hero ? getHeroSpriteSheetSrc(hero, 'melee') : '';
+  const artBlocked = Boolean(getQuarantinedCanonSprite(hero));
+  const src = hero && !artBlocked ? getHeroSpriteSheetSrc(hero, 'melee') : '';
   const layout = getSpriteSheetLayout(src);
   const [loaded, setLoaded] = useState(false);
 
@@ -5801,7 +5803,7 @@ function MissionRequirementPortrait({ hero, label }) {
       }}
       aria-hidden="true"
     >
-      {loaded ? null : <b>{initials}</b>}
+      {loaded ? null : <b>{artBlocked ? '!' : initials}</b>}
     </span>
   );
 }
@@ -6433,12 +6435,16 @@ export default function HubScreen({
     []
   );
   const getHeroSpriteInfo = useCallback((hero) => {
+    const rejectedSourceArt = getQuarantinedCanonSprite(hero);
     const completePack = getHeroCompleteSpritePack(hero);
-    const src = completePack?.[0]?.src || getHeroSpriteSheetSrc(hero, 'nexus');
+    const src = rejectedSourceArt?.asset || completePack?.[0]?.src || getHeroSpriteSheetSrc(hero, 'nexus');
     const entry = spriteOutputMap.get(src);
     return {
       src,
       ready: Boolean(entry) || Boolean(completePack?.length),
+      // This is an archival file availability flag, never a visual approval.
+      reviewRejected: Boolean(rejectedSourceArt),
+      reviewReason: rejectedSourceArt?.reason || null,
       source: entry?.source || (completePack ? 'openai-complete-pack' : null),
       kind: completePack ? 'pack' : 'hero',
       sheets: completePack || null
@@ -9344,13 +9350,15 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         entry.counts.items < 3 ||
         entry.counts.event < 1)
   ));
-  const getMediaTypeLabel = (mediaType) => {
+  // Used while building collection diagnostics above: a function declaration is
+  // hoisted, unlike a const arrow function, so filtered archives cannot hit TDZ.
+  function getMediaTypeLabel(mediaType) {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
     if (mediaType === 'series') return lang === 'fr' ? 'Serie' : 'Series';
     if (mediaType === 'music') return lang === 'fr' ? 'Musique' : 'Music';
     return 'Web / Manga';
-  };
+  }
 
   const finalOcStoryStage = BASE_OC_STAGES.find(stage => stage.campaignFinale)
     || BASE_OC_STAGES[BASE_OC_STAGES.length - 1]
@@ -13441,14 +13449,14 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     {spriteInfo ? (
                       <button
                         type="button"
-                        title={spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
+                        title={spriteInfo.reviewRejected ? (lang === 'fr' ? 'Archive de sprite non conforme — revue administrateur uniquement' : 'Rejected sprite archive — administrator review only') : spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
                         aria-haspopup="dialog"
                         aria-label={`${lang === 'fr' ? 'Afficher l image IA de' : 'Show AI image for'} ${title}`}
                         onClick={() => openSpritePreview(spriteInfo, title, subtitle)}
                         disabled={!spriteInfo.ready}
                         style={spriteButtonStyle(spriteInfo.ready)}
                       >
-                        IA
+                        {spriteInfo.reviewRejected ? 'OLD' : 'IA'}
                       </button>
                     ) : <span style={{ width: '24px' }} />}
                   </div>

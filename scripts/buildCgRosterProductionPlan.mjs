@@ -11,6 +11,7 @@ import { CG_GALLERY_CATALOG } from '../src/game/cg/cgRosterCatalog.js';
 import { createCgRevisionRegistry, resolveCgVersions } from '../src/game/cg/cgRevisions.js';
 import { buildCgId, buildCgPaths } from '../src/game/cg/cgSchema.js';
 import { STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
+import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
 import { loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -170,26 +171,31 @@ async function loadArcs() {
   }
 }
 
-function evidenceForSubject(hero, dossier, pilot, p0, imageEvidence, qualified) {
+export function evidenceForSubject(hero, dossier, pilot, p0, imageEvidence, qualified) {
+  const quarantine = getQuarantinedCanonSprite(hero);
   const lock = dossier?.verrouSourcePersonnage || (hero.incarnation && hero.visualAnchor ? hero : null);
-  const incarnation = qualified?.incarnation || pilot?.continuityId || lock?.incarnation || null;
+  const incarnation = qualified?.incarnation || pilot?.continuityId || quarantine?.incarnation || lock?.incarnation || null;
   const sourceRefs = qualified
     ? unique([...qualified.sourceEvidenceFiles, ...qualified.referenceUrls])
     : unique([...(pilot?.sourceRefs || []), ...(lock?.referenceUrls || []), ...(hero.referenceUrls || []), hero.referenceUrl, ...(dossier?.referenceUrls || [])]);
-  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || [])])
-    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)), role: 'historical-project-image-not-source-fidelity-approval' }));
+  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || []), quarantine?.asset])
+    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)), role: 'historical-project-image-not-source-fidelity-approval',
+      ...(quarantine ? { archivalOnly: true, selectedInRuntime: false, runtimeEligible: false,
+        status: 'OLD-quarantined-project-art-not-current-or-canon-reference', quarantineReason: quarantine.reason } : {}) }));
   const missing = [];
   if (!incarnation) missing.push('Choisir l’incarnation précise et sa continuité.');
   if (qualified) missing.push('Comparer chaque nouvelle image à la référence inspectée, sur les huit axes visuels; la cible sourcée ne certifie pas automatiquement les productions.');
   else if (!pilot) missing.push('Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.');
   if (!sourceRefs.length) missing.push('Renseigner une source d’identité vérifiable.');
   if (p0) missing.push('Les anciennes substitutions P0 ne constituent pas une référence fidèle; réviser explicitement leur ressemblance.');
+  if (quarantine) missing.push(`Sprite runtime en quarantaine (${quarantine.reason}); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source.`);
   return {
     incarnation,
     identityLock: qualified?.visualAnchor || (pilot ? text(pilot.promptSummary) : lock?.visualAnchor || null),
     equipment: qualified?.equipment || lock?.equipment || hero.equipment || [],
     sourceRefs,
     localCandidates,
+    ...(quarantine ? { runtimeSpriteQuarantine: { characterId: hero.id, ...quarantine } } : {}),
     historicalWebImageEvidence: imageEvidence || [],
     evidenceStatus: qualified?.evidenceStatus || (pilot ? 'approved-pilot-reference' : 'needs-reference'),
     ...(qualified ? { sourceEvidenceFiles: qualified.sourceEvidenceFiles, identityVisualReferences: qualified.identityVisualReferences } : {}),

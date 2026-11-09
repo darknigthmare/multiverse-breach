@@ -10,13 +10,13 @@
   "inputs": {
     "plan": {
       "path": "docs/cg/roster-production-2026-10-18.json",
-      "sha256": "8b3952765ce463af10799eefdb244e4fdd4d8d439b97c86505aa9cbde944d75f",
-      "bytes": 36978578
+      "sha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e",
+      "bytes": 36982763
     },
     "bible": {
       "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
-      "sha256": "faee4389b52de251b99f5c2afb7a61d7c818cfbfb68e362c982fd0d13b9f5f40",
-      "bytes": 42998288
+      "sha256": "7902ab623c2edbdc7fa406999f9c30e5d48350531f73418c127becfe4cfa9e4b",
+      "bytes": 43012866
     },
     "pilot": {
       "path": "public/cg/cg-manifest.json",
@@ -44590,7 +44590,7 @@
             {
               "sourceKind": "current-bible-field",
               "sourceFile": "docs/cg/roster-fidelity-bible-2026-10-18.json",
-              "sourceSha256": "faee4389b52de251b99f5c2afb7a61d7c818cfbfb68e362c982fd0d13b9f5f40",
+              "sourceSha256": "7902ab623c2edbdc7fa406999f9c30e5d48350531f73418c127becfe4cfa9e4b",
               "sourceField": "subjects[characterId=harry].readiness.currentSprite.sourceCoverageDecision",
               "observedText": "Not attempted: shoe/ankle/full-leg silhouette and readable wand missing from three inspected stills."
             }
@@ -202058,14 +202058,13 @@
           ]
         },
         "planIdentity": {
-          "incarnation": null,
+          "incarnation": "The Clone Wars - early Padawan, age fourteen",
           "identityLock": null,
           "equipment": [
-            "Green Lightsaber",
-            "Padawan Comlink",
-            "Clone Wars Field Bracers"
+            "Green Lightsaber"
           ],
           "sourceRefs": [
+            "https://www.starwars.com/databank/ahsokas-lightsabers",
             "https://www.starwars.com/databank/death-star",
             "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
             "https://www.starwars.com/databank/anti-air-turbolaser-tower"
@@ -202074,14 +202073,27 @@
             {
               "path": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
               "exists": true,
-              "role": "historical-project-image-not-source-fidelity-approval"
+              "role": "historical-project-image-not-source-fidelity-approval",
+              "archivalOnly": true,
+              "selectedInRuntime": false,
+              "runtimeEligible": false,
+              "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+              "quarantineReason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER"
             }
           ],
+          "runtimeSpriteQuarantine": {
+            "characterId": "ahsoka_padawan",
+            "universe": "Star Wars",
+            "incarnation": "The Clone Wars - early Padawan, age fourteen",
+            "asset": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+            "sha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+            "reason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER"
+          },
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
-            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.",
+            "Sprite runtime en quarantaine (WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
@@ -202108,9 +202120,7 @@
             "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "equipment": [
-            "Green Lightsaber",
-            "Padawan Comlink",
-            "Clone Wars Field Bracers"
+            "Green Lightsaber"
           ],
           "forbiddenMixes": [
             "Ne pas fusionner plusieurs continuités ou variantes de Ahsoka Tano (Padawan); toute transformation spéciale garde son étiquette WhatIf.",
@@ -202181,16 +202191,28 @@
         "src/game/heroes.js"
       ],
       "sprite": {
-        "selectedExistingProjectImage": {
+        "selectedExistingProjectImage": null,
+        "currentReview": {
           "path": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
-          "role": "project-generated-art",
-          "exists": true,
-          "selectedInRuntime": true,
-          "status": "existing-project-art-not-independent-canon-proof"
+          "sha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+          "status": "OLD-quarantined-art-not-selected-in-runtime",
+          "reason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER",
+          "selectedInRuntime": false,
+          "visualFidelityApproved": false
         },
-        "currentReview": null,
         "action": "source-comparison-required-before-claiming-fidelity",
-        "otherExistingProjectSprites": [],
+        "otherExistingProjectSprites": [
+          {
+            "path": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+            "role": "project-generated-art",
+            "exists": true,
+            "selectedInRuntime": false,
+            "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+            "archivalOnly": true,
+            "runtimeEligible": false,
+            "quarantineReason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER"
+          }
+        ],
         "originalProject": false,
         "existingProjectImageQualifiesIdentityByItself": false
       },
@@ -202208,6 +202230,7 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
+              "https://www.starwars.com/databank/ahsokas-lightsabers",
               "https://www.starwars.com/databank/death-star",
               "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
               "https://www.starwars.com/databank/anti-air-turbolaser-tower",
@@ -202709,24 +202732,22 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "Rebels and Ahsoka - mature former Jedi",
+          "label": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
           ]
         },
         "planIdentity": {
-          "incarnation": null,
-          "identityLock": null,
+          "incarnation": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
+          "identityLock": "Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit; NOT the later white-cloaked epilogue or New Republic outfit",
           "equipment": [
-            "Twin White Lightsabers",
-            "T-6 Shuttle Beacon",
-            "Fulcrum Archive"
+            "Twin White Lightsabers"
           ],
           "sourceRefs": [
-            "https://www.starwars.com/databank/death-star",
-            "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-            "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+            "https://www.starwars.com/databank/ahsokas-lightsabers",
+            "https://www.starwars.com/databank/ahsoka-tano",
+            "https://www.starwars.com/databank/malachor-sith-temple"
           ],
           "localCandidates": [
             {
@@ -202738,14 +202759,13 @@
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
             "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
           "adaptationNote": "canon"
         },
-        "identityLock": "Ahsoka Tano (Adult), Star Wars : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+        "identityLock": "Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit; NOT the later white-cloaked epilogue or New Republic outfit",
         "visualLocks": {
           "silhouette": [
             "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -202757,27 +202777,28 @@
             "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "costume": [
-            "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit;",
+            "NOT the later white-cloaked epilogue or New Republic outfit"
           ],
           "palette": [
-            "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit;",
+            "NOT the later white-cloaked epilogue or New Republic outfit"
           ],
           "distinguishingMarks": [
             "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "equipment": [
-            "Twin White Lightsabers",
-            "T-6 Shuttle Beacon",
-            "Fulcrum Archive"
+            "Twin White Lightsabers"
           ],
           "forbiddenMixes": [
+            "NOT the later white-cloaked epilogue or New Republic outfit",
             "Ne pas fusionner plusieurs continuités ou variantes de Ahsoka Tano (Adult); toute transformation spéciale garde son étiquette WhatIf.",
             "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
           ]
         },
         "universeCoherence": {
-          "sourceWork": "Rebels and Ahsoka - mature former Jedi",
-          "period": "Rebels and Ahsoka - mature former Jedi",
+          "sourceWork": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
+          "period": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -202808,12 +202829,11 @@
             "Un décor original cohérent ne certifie pas la reconstitution d’un lieu précis ou d’un épisode."
           ]
         },
-        "qualificationStatus": "identity-or-visual-locks-incomplete",
+        "qualificationStatus": "character-specific-lock-needs-image-comparison",
         "ageStatus": "not-established",
         "limitations": [
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : silhouette, anatomy, face, distinguishingMarks."
         ],
         "referenceStatus": "needs-reference",
         "generationReferenceStatus": "needs-reference",
@@ -202866,9 +202886,9 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
-              "https://www.starwars.com/databank/death-star",
-              "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-              "https://www.starwars.com/databank/anti-air-turbolaser-tower",
+              "https://www.starwars.com/databank/ahsokas-lightsabers",
+              "https://www.starwars.com/databank/ahsoka-tano",
+              "https://www.starwars.com/databank/malachor-sith-temple",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "backgroundId": "cg-bg-star-wars-ahsoka-adult-charactersolo"
@@ -202887,7 +202907,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "Rebels and Ahsoka - mature former Jedi",
+            "characterContext": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, promontoire fendu",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : un promontoire dont le bord fendu surplombe un niveau secondaire dégagé.",
@@ -203367,7 +203387,7 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "Clone Wars Jedi General",
+          "label": "The Clone Wars - Aayla Secura as Jedi General",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
@@ -203377,11 +203397,10 @@
           "incarnation": null,
           "identityLock": null,
           "equipment": [
-            "Blue Lightsaber",
-            "Jedi Field Bracers",
-            "Clone Command Comlink"
+            "Blue Lightsaber"
           ],
           "sourceRefs": [
+            "https://www.starwars.com/databank/aayla-secura",
             "https://www.starwars.com/databank/death-star",
             "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
             "https://www.starwars.com/databank/anti-air-turbolaser-tower"
@@ -203424,9 +203443,7 @@
             "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "equipment": [
-            "Blue Lightsaber",
-            "Jedi Field Bracers",
-            "Clone Command Comlink"
+            "Blue Lightsaber"
           ],
           "forbiddenMixes": [
             "Ne pas fusionner plusieurs continuités ou variantes de Aayla Secura; toute transformation spéciale garde son étiquette WhatIf.",
@@ -203434,8 +203451,8 @@
           ]
         },
         "universeCoherence": {
-          "sourceWork": "Clone Wars Jedi General",
-          "period": "Clone Wars Jedi General",
+          "sourceWork": "The Clone Wars - Aayla Secura as Jedi General",
+          "period": "The Clone Wars - Aayla Secura as Jedi General",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -203524,6 +203541,7 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
+              "https://www.starwars.com/databank/aayla-secura",
               "https://www.starwars.com/databank/death-star",
               "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
               "https://www.starwars.com/databank/anti-air-turbolaser-tower",
@@ -203545,7 +203563,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "Clone Wars Jedi General",
+            "characterContext": "The Clone Wars - Aayla Secura as Jedi General",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, embranchement bas",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : un embranchement bas en Y contournant une aire centrale laissée vide.",
@@ -204025,43 +204043,55 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "Knights of the Old Republic iconic masked identity",
+          "label": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
           ]
         },
         "planIdentity": {
-          "incarnation": null,
-          "identityLock": null,
+          "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+          "identityLock": "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask",
           "equipment": [
-            "Revan Mask",
-            "Red Lightsaber",
-            "Purple Lightsaber"
+            "Red Lightsaber"
           ],
           "sourceRefs": [
-            "https://www.starwars.com/databank/death-star",
-            "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-            "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+            "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+            "https://www.starwars.com/games-apps/knights-of-the-old-republic",
+            "https://www.swtor.com/info/news/article/20201209-0",
+            "https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts"
           ],
           "localCandidates": [
             {
               "path": "/sprites/generated/heroes/star-wars/darth-revan.png",
               "exists": true,
-              "role": "historical-project-image-not-source-fidelity-approval"
+              "role": "historical-project-image-not-source-fidelity-approval",
+              "archivalOnly": true,
+              "selectedInRuntime": false,
+              "runtimeEligible": false,
+              "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+              "quarantineReason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
             }
           ],
+          "runtimeSpriteQuarantine": {
+            "characterId": "darth_revan",
+            "universe": "Star Wars",
+            "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+            "asset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+            "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+            "reason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
+          },
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
-            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.",
+            "Sprite runtime en quarantaine (KOTOR_I_WRONG_RED_PURPLE_PAIR); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
           "adaptationNote": "legends"
         },
-        "identityLock": "Darth Revan, Star Wars : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+        "identityLock": "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask",
         "visualLocks": {
           "silhouette": [
             "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -204070,30 +204100,31 @@
             "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "face": [
-            "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces;",
+            "one red blade, NOT the SWTOR flat-chin mask"
           ],
           "costume": [
             "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "palette": [
-            "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces;",
+            "one red blade, NOT the SWTOR flat-chin mask"
           ],
           "distinguishingMarks": [
             "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "equipment": [
-            "Revan Mask",
-            "Red Lightsaber",
-            "Purple Lightsaber"
+            "Red Lightsaber"
           ],
           "forbiddenMixes": [
+            "one red blade, NOT the SWTOR flat-chin mask",
             "Ne pas fusionner plusieurs continuités ou variantes de Darth Revan; toute transformation spéciale garde son étiquette WhatIf.",
             "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
           ]
         },
         "universeCoherence": {
-          "sourceWork": "Knights of the Old Republic iconic masked identity",
-          "period": "Knights of the Old Republic iconic masked identity",
+          "sourceWork": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+          "period": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -204124,12 +204155,11 @@
             "Un décor original cohérent ne certifie pas la reconstitution d’un lieu précis ou d’un épisode."
           ]
         },
-        "qualificationStatus": "identity-or-visual-locks-incomplete",
+        "qualificationStatus": "character-specific-lock-needs-image-comparison",
         "ageStatus": "not-established",
         "limitations": [
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : silhouette, anatomy, costume, distinguishingMarks."
         ],
         "referenceStatus": "needs-reference",
         "generationReferenceStatus": "needs-reference",
@@ -204155,16 +204185,28 @@
         "src/game/heroes.js"
       ],
       "sprite": {
-        "selectedExistingProjectImage": {
+        "selectedExistingProjectImage": null,
+        "currentReview": {
           "path": "/sprites/generated/heroes/star-wars/darth-revan.png",
-          "role": "project-generated-art",
-          "exists": true,
-          "selectedInRuntime": true,
-          "status": "existing-project-art-not-independent-canon-proof"
+          "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+          "status": "OLD-quarantined-art-not-selected-in-runtime",
+          "reason": "KOTOR_I_WRONG_RED_PURPLE_PAIR",
+          "selectedInRuntime": false,
+          "visualFidelityApproved": false
         },
-        "currentReview": null,
         "action": "source-comparison-required-before-claiming-fidelity",
-        "otherExistingProjectSprites": [],
+        "otherExistingProjectSprites": [
+          {
+            "path": "/sprites/generated/heroes/star-wars/darth-revan.png",
+            "role": "project-generated-art",
+            "exists": true,
+            "selectedInRuntime": false,
+            "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+            "archivalOnly": true,
+            "runtimeEligible": false,
+            "quarantineReason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
+          }
+        ],
         "originalProject": false,
         "existingProjectImageQualifiesIdentityByItself": false
       },
@@ -204182,9 +204224,10 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
-              "https://www.starwars.com/databank/death-star",
-              "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-              "https://www.starwars.com/databank/anti-air-turbolaser-tower",
+              "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+              "https://www.starwars.com/games-apps/knights-of-the-old-republic",
+              "https://www.swtor.com/info/news/article/20201209-0",
+              "https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "backgroundId": "cg-bg-star-wars-darth-revan-charactersolo"
@@ -204203,7 +204246,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "Knights of the Old Republic iconic masked identity",
+            "characterContext": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, couloir traversant",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : un passage traversant sous une longue masse en surplomb, ouvert aux deux extrémités.",
@@ -204683,24 +204726,23 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "Star Wars Legacy - Hand of Darth Krayt",
+          "label": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
           ]
         },
         "planIdentity": {
-          "incarnation": null,
-          "identityLock": null,
+          "incarnation": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
+          "identityLock": "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates; actual comic and sprite match unverified",
           "equipment": [
             "Red Lightsaber",
-            "One Sith Armor",
-            "Ritual Sith Tattoos"
+            "Forearm and Bicep Armor",
+            "Leg Armor"
           ],
           "sourceRefs": [
-            "https://www.starwars.com/databank/death-star",
-            "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-            "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+            "https://crls.501st.com/tfe/darth-talon",
+            "https://starwars.fandom.com/wiki/Darth_Talon"
           ],
           "localCandidates": [
             {
@@ -204712,37 +204754,36 @@
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
             "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
           "adaptationNote": "legends"
         },
-        "identityLock": "Darth Talon, Star Wars : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+        "identityLock": "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates; actual comic and sprite match unverified",
         "visualLocks": {
           "silhouette": [
             "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "anatomy": [
-            "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates;"
           ],
           "face": [
             "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "costume": [
-            "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates;"
           ],
           "palette": [
-            "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates;"
           ],
           "distinguishingMarks": [
-            "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates;"
           ],
           "equipment": [
             "Red Lightsaber",
-            "One Sith Armor",
-            "Ritual Sith Tattoos"
+            "Forearm and Bicep Armor",
+            "Leg Armor"
           ],
           "forbiddenMixes": [
             "Ne pas fusionner plusieurs continuités ou variantes de Darth Talon; toute transformation spéciale garde son étiquette WhatIf.",
@@ -204750,8 +204791,8 @@
           ]
         },
         "universeCoherence": {
-          "sourceWork": "Star Wars Legacy - Hand of Darth Krayt",
-          "period": "Star Wars Legacy - Hand of Darth Krayt",
+          "sourceWork": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
+          "period": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -204782,12 +204823,11 @@
             "Un décor original cohérent ne certifie pas la reconstitution d’un lieu précis ou d’un épisode."
           ]
         },
-        "qualificationStatus": "identity-or-visual-locks-incomplete",
+        "qualificationStatus": "character-specific-lock-needs-image-comparison",
         "ageStatus": "not-established",
         "limitations": [
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : silhouette, face."
         ],
         "referenceStatus": "needs-reference",
         "generationReferenceStatus": "needs-reference",
@@ -204840,9 +204880,8 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
-              "https://www.starwars.com/databank/death-star",
-              "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-              "https://www.starwars.com/databank/anti-air-turbolaser-tower",
+              "https://crls.501st.com/tfe/darth-talon",
+              "https://starwars.fandom.com/wiki/Darth_Talon",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "backgroundId": "cg-bg-star-wars-darth-talon-charactersolo"
@@ -204861,7 +204900,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "Star Wars Legacy - Hand of Darth Krayt",
+            "characterContext": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, recoin surélevé",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : un recoin surélevé bordé d’une paroi courbe et d’une descente étroite.",
@@ -207291,24 +207330,24 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "The Clone Wars - ruler of Mandalore",
+          "label": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
           ]
         },
         "planIdentity": {
-          "incarnation": null,
-          "identityLock": null,
+          "incarnation": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
+          "identityLock": "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)",
           "equipment": [
-            "Double-Bladed Red Lightsaber",
-            "Cybernetic Legs",
-            "Mandalore Command Seal"
+            "Double-Bladed Red Lightsaber (The Clone Wars S7)"
           ],
           "sourceRefs": [
-            "https://www.starwars.com/databank/death-star",
-            "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-            "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+            "https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide",
+            "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice",
+            "https://www.starwars.com/databank/darth-mauls-lightsaber",
+            "https://www.starwars.com/news/what-is-the-darksaber",
+            "https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list"
           ],
           "localCandidates": [
             {
@@ -207320,20 +207359,19 @@
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
             "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
           "adaptationNote": "canon"
         },
-        "identityLock": "Darth Maul, Star Wars : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.",
+        "identityLock": "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)",
         "visualLocks": {
           "silhouette": [
             "silhouette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "anatomy": [
-            "anatomy : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)"
           ],
           "face": [
             "face : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
@@ -207342,24 +207380,23 @@
             "costume : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "palette": [
-            "palette : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)"
           ],
           "distinguishingMarks": [
-            "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
+            "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)"
           ],
           "equipment": [
-            "Double-Bladed Red Lightsaber",
-            "Cybernetic Legs",
-            "Mandalore Command Seal"
+            "Double-Bladed Red Lightsaber (The Clone Wars S7)"
           ],
           "forbiddenMixes": [
+            "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)",
             "Ne pas fusionner plusieurs continuités ou variantes de Darth Maul; toute transformation spéciale garde son étiquette WhatIf.",
             "Les armes, rayons, couleurs et catégories du gameplay ne prouvent pas un équipement ou pouvoir canonique."
           ]
         },
         "universeCoherence": {
-          "sourceWork": "The Clone Wars - ruler of Mandalore",
-          "period": "The Clone Wars - ruler of Mandalore",
+          "sourceWork": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
+          "period": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -207390,12 +207427,11 @@
             "Un décor original cohérent ne certifie pas la reconstitution d’un lieu précis ou d’un épisode."
           ]
         },
-        "qualificationStatus": "identity-or-visual-locks-incomplete",
+        "qualificationStatus": "character-specific-lock-needs-image-comparison",
         "ageStatus": "not-established",
         "limitations": [
-          "Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.",
           "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
-          "Axes visuels non détaillés : silhouette, anatomy, costume, palette, face, distinguishingMarks."
+          "Axes visuels non détaillés : silhouette, costume, face."
         ],
         "referenceStatus": "needs-reference",
         "generationReferenceStatus": "needs-reference",
@@ -207448,9 +207484,11 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
-              "https://www.starwars.com/databank/death-star",
-              "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
-              "https://www.starwars.com/databank/anti-air-turbolaser-tower",
+              "https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide",
+              "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice",
+              "https://www.starwars.com/databank/darth-mauls-lightsaber",
+              "https://www.starwars.com/news/what-is-the-darksaber",
+              "https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list",
               "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
             ],
             "backgroundId": "cg-bg-star-wars-darth-maul-charactersolo"
@@ -207469,7 +207507,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "The Clone Wars - ruler of Mandalore",
+            "characterContext": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, vallon protégé",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : un vallon peu profond avec deux hauteurs protectrices et une sortie en diagonale.",
@@ -209249,21 +209287,20 @@
       "priority": "P1",
       "target": {
         "incarnation": {
-          "label": "The Clone Wars - Siege of Mandalore",
+          "label": "The Clone Wars - Season 7, Siege of Mandalore",
           "status": "documented-in-project-source-record",
           "evidence": [
             "src/game/heroes.js"
           ]
         },
         "planIdentity": {
-          "incarnation": null,
+          "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
           "identityLock": null,
           "equipment": [
-            "Twin Blue Lightsabers",
-            "Mandalorian Siege Tunic",
-            "Fulcrum Frequency"
+            "Twin Blue Lightsabers"
           ],
           "sourceRefs": [
+            "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten",
             "https://www.starwars.com/databank/death-star",
             "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
             "https://www.starwars.com/databank/anti-air-turbolaser-tower"
@@ -209272,14 +209309,27 @@
             {
               "path": "/sprites/generated/heroes/star-wars/ahsoka.png",
               "exists": true,
-              "role": "historical-project-image-not-source-fidelity-approval"
+              "role": "historical-project-image-not-source-fidelity-approval",
+              "archivalOnly": true,
+              "selectedInRuntime": false,
+              "runtimeEligible": false,
+              "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+              "quarantineReason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS"
             }
           ],
+          "runtimeSpriteQuarantine": {
+            "characterId": "ahsoka",
+            "universe": "Star Wars",
+            "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+            "asset": "/sprites/generated/heroes/star-wars/ahsoka.png",
+            "sha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+            "reason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS"
+          },
           "historicalWebImageEvidence": [],
           "evidenceStatus": "needs-reference",
           "missing": [
-            "Choisir l’incarnation précise et sa continuité.",
-            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.",
+            "Sprite runtime en quarantaine (WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source."
           ],
           "visualFidelityApproved": false,
           "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
@@ -209306,9 +209356,7 @@
             "distinguishingMarks : détail non établi dans les données de référence de ce personnage; comparer la cible à un visuel source indépendant avant validation."
           ],
           "equipment": [
-            "Twin Blue Lightsabers",
-            "Mandalorian Siege Tunic",
-            "Fulcrum Frequency"
+            "Twin Blue Lightsabers"
           ],
           "forbiddenMixes": [
             "Ne pas fusionner plusieurs continuités ou variantes de Ahsoka Tano (Siege of Mandalore); toute transformation spéciale garde son étiquette WhatIf.",
@@ -209316,8 +209364,8 @@
           ]
         },
         "universeCoherence": {
-          "sourceWork": "The Clone Wars - Siege of Mandalore",
-          "period": "The Clone Wars - Siege of Mandalore",
+          "sourceWork": "The Clone Wars - Season 7, Siege of Mandalore",
+          "period": "The Clone Wars - Season 7, Siege of Mandalore",
           "locations": [
             "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador."
           ],
@@ -209379,16 +209427,28 @@
         "src/game/heroes.js"
       ],
       "sprite": {
-        "selectedExistingProjectImage": {
+        "selectedExistingProjectImage": null,
+        "currentReview": {
           "path": "/sprites/generated/heroes/star-wars/ahsoka.png",
-          "role": "project-generated-art",
-          "exists": true,
-          "selectedInRuntime": true,
-          "status": "existing-project-art-not-independent-canon-proof"
+          "sha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+          "status": "OLD-quarantined-art-not-selected-in-runtime",
+          "reason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS",
+          "selectedInRuntime": false,
+          "visualFidelityApproved": false
         },
-        "currentReview": null,
         "action": "source-comparison-required-before-claiming-fidelity",
-        "otherExistingProjectSprites": [],
+        "otherExistingProjectSprites": [
+          {
+            "path": "/sprites/generated/heroes/star-wars/ahsoka.png",
+            "role": "project-generated-art",
+            "exists": true,
+            "selectedInRuntime": false,
+            "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+            "archivalOnly": true,
+            "runtimeEligible": false,
+            "quarantineReason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS"
+          }
+        ],
         "originalProject": false,
         "existingProjectImageQualifiesIdentityByItself": false
       },
@@ -209406,6 +209466,7 @@
             "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
             "themeStatus": "needs-reference",
             "themeSource": [
+              "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten",
               "https://www.starwars.com/databank/death-star",
               "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
               "https://www.starwars.com/databank/anti-air-turbolaser-tower",
@@ -209427,7 +209488,7 @@
               "props": "Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
               "menace": "TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
             },
-            "characterContext": "The Clone Wars - Siege of Mandalore",
+            "characterContext": "The Clone Wars - Season 7, Siege of Mandalore",
             "originalScene": {
               "location": "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador. — repère personnel, clairière oblique",
               "foreground": "Sol dégagé bordé de deux masses asymétriques; passage latéral ouvert et lointain à trois profondeurs. Organisation spatiale propre à ce sujet : une clairière oblique délimitée par une masse haute à droite et trois reliefs bas à gauche.",

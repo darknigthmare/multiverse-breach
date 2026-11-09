@@ -64,6 +64,8 @@ import * as dlcRobZombie from '../../DLC/RobZombie/data/renderer.js';
 import * as dlcOliverTree from '../../DLC/OliverTree/data/renderer.js';
 
 import { drawWardrobeEffect } from './wardrobeEffects.js';
+import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
+import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
@@ -232,7 +234,35 @@ export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
   return true;
 };
 
+const drawQuarantinedCombatantBust = (ctx, x, y, width, height) => {
+  // A neutral, deliberately anonymous locator replaces known-inaccurate
+  // character art. The original PNG remains archived for an admin art review.
+  const centerX = x + width / 2;
+  const centerY = y + height * 0.38;
+  const radius = Math.max(3, Math.min(width, height) * 0.13);
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x, y, width, height);
+  ctx.clip();
+  ctx.fillStyle = '#15252d';
+  ctx.fillRect(x, y, width, height);
+  ctx.fillStyle = '#526974';
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillRect(centerX - radius * 1.5, centerY + radius, radius * 3, height * 0.4);
+  ctx.fillStyle = '#f6d18c';
+  ctx.textAlign = 'center';
+  ctx.font = `bold ${Math.max(8, Math.min(11, Math.round(height / 9)))}px monospace`;
+  ctx.fillText('ART PENDING', centerX, y + height - 7);
+  ctx.restore();
+  return true;
+};
+
 export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
+  if (kind === 'hero' && getQuarantinedCanonSprite(entity)) {
+    return drawQuarantinedCombatantBust(ctx, x, y, width, height);
+  }
   const sources = kind === 'hero'
     ? getHeroSpriteSheetSources(entity, 'tactics')
     : getEnemySpriteSheetSrc(entity);
@@ -553,14 +583,17 @@ export class ParticleSystem {
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
   drawWardrobeEffect(ctx, x, y, character, targetHeight);
-  if (context === 'melee') {
+  const quarantinedArt = getQuarantinedCanonSprite(character);
+  if (context === 'melee' && !quarantinedArt) {
     const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
       drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
     });
     if (meleeManifestStatus !== 'missing') return;
   }
 
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
+  // Suppress the *display* of three source-verified incorrect sheets while
+  // preserving their asset records, authoring history and gameplay identities.
+  const generatedStatus = quarantinedArt ? 'missing' : drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);
   if (generatedStatus !== 'missing') {
@@ -757,6 +790,14 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
   }
 
   ctx.restore();
+  if (quarantinedArt && targetHeight >= 44) {
+    ctx.save();
+    ctx.fillStyle = '#f6d18c';
+    ctx.font = 'bold 9px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('ART PENDING', x, y - targetHeight * 0.72);
+    ctx.restore();
+  }
 };
 
 const drawWeapon = (ctx, x, y, type, color, animTime) => {
@@ -765,6 +806,12 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
   ctx.fillStyle = color;
 
   switch (type) {
+    case 'lightsaber':
+    case 'dual_lightsaber':
+    case 'double_lightsaber':
+      // Only when no generated sprite can be displayed. No claims of 1:1 sprite fidelity.
+      drawFallbackEnergyBlades(ctx, type, color);
+      break;
     case 'gun':
       // Gun barrel & handle
       ctx.fillRect(0, -2, 8, 3);
