@@ -112,6 +112,12 @@ leur comportement.
 
 ## Vérifications locales
 
+La relecture des captures de `5451123` a aussi montré que le compte « 12 » du
+filtre « À commencer » / « Not started » se répartissait sur deux lignes à
+1440 × 1000. Le nombre garde désormais sa largeur naturelle et une seule ligne ;
+le libellé voisin peut toujours se replier. Cette correction CSS doit être relue
+dans les captures de la nouvelle révision.
+
 Sous Node 22.23.4 :
 
 - **37/37 tests** de `mosaicContractJournal.test.mjs` et
