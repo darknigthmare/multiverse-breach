@@ -549,8 +549,8 @@ export const EVENT_ITEMS_DB = {
 
 Object.assign(EVENT_ITEMS_DB, EXPANDED_EVENT_ITEMS);
 
-EVENT_ITEMS_DB.ASMRZ.effect = 'concert_buff';
-EVENT_ITEMS_DB['Spoof Movie'].effect = 'parody_rule_shift';
+if (EVENT_ITEMS_DB.ASMRZ) EVENT_ITEMS_DB.ASMRZ.effect = 'concert_buff';
+if (EVENT_ITEMS_DB['Spoof Movie']) EVENT_ITEMS_DB['Spoof Movie'].effect = 'parody_rule_shift';
 
 EVENT_ITEMS_DB['Nexus de Convergence'] = {
   id: 'evt_nexus_anchor_pulse',
@@ -954,4 +954,6 @@ HEROES_DB.forEach(hero => {
 export const getHeroById = (id) => HEROES_DB.find(h => h.id === id);
 export const getRandomHero = () => HEROES_DB[Math.floor(Math.random() * HEROES_DB.length)];
 export const getItemsForUniverse = (univ) => EQUIP_ITEMS_DB.filter(it => it.universe === univ);
-export const getEventItemForUniverse = (univ) => EVENT_ITEMS_DB[univ] || EVENT_ITEMS_DB['Halo'];
+export const getEventItemForUniverse = (univ) => (
+  EVENT_ITEMS_DB[univ] || EVENT_ITEMS_DB.Halo || EVENT_ITEMS_DB['Nexus de Convergence']
+);

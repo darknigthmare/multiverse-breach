@@ -1,0 +1,5 @@
+// Tomba — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'tomba', universe: 'Tomba', mediaType: 'game', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Tomba', stage: 'Evil Pig Jungle Rift', boss: 'Seven Evil Pigs Gate', hero: ['tomba_hero', 'Tomba', 'slayer'], allies: [['charles_tomba', 'Charles', 'hacker'], ['tabby_tomba', 'Tabby', 'tactical']], monsters: ['Evil Pig Soldier', 'Cursed Mushroom', 'Kokka Bird'], bosses: ['100 Year Old Wise Man Trial', 'Evil Pig Boss Gate'], gear: [['grapple_hook', 'Grapple Hook', 'Grappin', { spd: 4 }], ['charity_wings', 'Charity Wings', 'Ailes de charité', { def: 3, spd: 1 }], ['phoenix_rod', 'Phoenix Rod', 'Bâton du phénix', { atk: 4 }]], event: ['evt_evil_pig_bag_seal', 'Evil Pig Bag Seal', 'Sceau du sac de cochon maléfique', 'Seal an Evil Pig into a bag to banish the curse from the area', 'Scelle un cochon maléfique dans un sac pour bannir la malédiction de la zone'], theme: 'pink-haired platforming, cursed pigs, jungle quests, and whimsical object logic', motif: 'wasteland', colors: ['#2e1b32', '#050207', '#ff66aa'] });
+}

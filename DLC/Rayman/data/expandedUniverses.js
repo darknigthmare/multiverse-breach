@@ -1,0 +1,5 @@
+// Rayman — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'rayman', universe: 'Rayman', mediaType: 'game', faction: 'arcane', mode: 'Smash', difficulty: 'Medium', titleFr: 'Rayman', stage: 'Dream Forest Electoon Rift', boss: 'Mr Dark Nightmare Hand', hero: ['rayman_hero', 'Rayman', 'slayer'], allies: [['globox_rayman', 'Globox', 'marine'], ['betilla_rayman', 'Betilla', 'hacker']], monsters: ['Livid Dead', 'Dark Teensy', 'Lum Thief'], bosses: ['Mr Dark', 'Razoff'], gear: [['lum_magnet', 'Lum Magnet', 'Aimant a Lums', { spd: 2, hp: 50 }], ['plumbers_fist', 'Plumber s Fist', 'Poing du plombier', { atk: 9, def: 3 }], ['fairy_bottle', 'Fairy Bottle', 'Flacon de fee', { hp: 75, def: 4 }]], event: ['evt_moskito_ride', 'Moskito Ride', 'Chevauchee de Moskito', 'Rayman rides a Moskito, strafing enemies from above.', 'Rayman chevauche un Moskito et mitraille les ennemis depuis les airs.'], theme: 'limbless platforming, dream worlds, lums, strange music, and surreal cartoon hazards', motif: 'arcanecity', colors: ['#1b3f39', '#030807', '#ffdc4a'] });
+}

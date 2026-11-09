@@ -2,6 +2,7 @@
 export { default as manifest } from './manifest.json' with { type: 'json' };
 export * as canonRosterWavePartG from './data/canonRosterWavePartG.js';
 export * as enemies from './data/enemies.js';
+export * as expandedUniverses from './data/expandedUniverses.js';
 export * as heroes from './data/heroes.js';
 export * as loreBossOverrides from './data/loreBossOverrides.js';
 export * as loreEnemyOverrides from './data/loreEnemyOverrides.js';

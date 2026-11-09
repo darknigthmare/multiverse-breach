@@ -1,4 +1,4 @@
-# Univers et futurs DLC
+# Univers et profils DLC
 
 Chaque univers optionnel possède maintenant son dossier `DLC/NomDeLUnivers/`.
 Les définitions éditoriales sont dans ces dossiers : personnages, adversaires,
@@ -23,7 +23,9 @@ les sauvegardes et les services communs restent dans `src/`.
 | `DLC/Halo/assets/` | Fichiers sources propres à cet univers : images, sprites, CG, boosters et ressources associées. |
 | `DLC/Halo/assets.json` | Inventaire des fichiers graphiques et autres ressources rattachés à cet univers, avec leur source et leur URL existantes. |
 | `DLC/Halo/index.js` | Point d'entrée généré, exposant le manifeste et les modules du dossier. |
-| `DLC/index.js` | Registre généré des métadonnées de tous les dossiers. |
+| `DLC/index.js` | Registre complet généré, indépendant de la présence des dossiers dans un export. |
+| `DLC/distribution.json` | Profil installé : tous les packs, base seule ou sélection exacte. |
+| `DLC/content-identities.json` | Identifiants historiques des héros, missions et arcs ; conservés dans tous les profils. |
 | `DLC/shared-assets.json` | Ressources de base, de campagne, communes à plusieurs univers ou sans attribution suffisamment établie. |
 
 Les noms des dossiers utilisent des lettres et chiffres sans espace ni accent,
@@ -127,6 +129,7 @@ copie publique existe déjà.
 
 ```sh
 npm run dlc:registry:write
+npm run dlc:identities:write
 npm run dlc:assets:write
 npm run assets:prepare
 npm run test:dlc
@@ -161,12 +164,81 @@ est volontaire : une évolution ultérieure des illustrations peut légitimement
 changer leurs octets. Il ne prouve pas l'hydratation des objets LFS ni une
 nouvelle inspection visuelle des images.
 
-## Étape suivante : distribution séparée
+## Profils de distribution
 
-Cette organisation prépare des packs indépendants. Le jeu importe encore tous
-les catalogues à la compilation : supprimer un dossier DLC à ce stade ferait
-échouer ses imports. Une distribution optionnelle demandera un chargeur de packs,
-une politique de dépendances communes et un assemblage qui sélectionne les
-packs installés. La publication des ressources conserve pour le moment tous
-les packs enregistrés. Le manifeste, les sources et les inventaires fournissent
-les points de départ de ce travail, sans modifier les sauvegardes actuelles.
+Le dépôt canonique garde le profil `all`. Son `npm run build` conserve tous les
+audits de production existants. L'exporteur assemble une nouvelle arborescence
+autonome pour le profil demandé, sans modifier ce dépôt.
+
+Trois exemples sont fournis dans `config/dlc-profiles/` : `all.json`,
+`base.json` et `halo.json`. Une sélection utilise les IDs exacts des manifestes :
+
+```json
+{
+  "schemaVersion": 1,
+  "mode": "selected",
+  "packIds": ["halo"],
+  "sharedPolicy": "preserve-all"
+}
+```
+
+Les modes `all` et `base` exigent une liste `packIds` vide. Une sélection exige
+au moins un ID connu, sans doublon. L'ordre de sortie suit `catalogOrder`.
+
+### Créer et construire une distribution
+
+Depuis le dépôt canonique :
+
+```sh
+npm run dlc:export -- --profile config/dlc-profiles/base.json --out /tmp/multiverse-base
+cd /tmp/multiverse-base
+npm ci --no-audit --no-fund
+npm run build:distribution
+npx vite preview
+```
+
+Pour Halo, utiliser `config/dlc-profiles/halo.json` et un nouveau dossier de
+sortie. L'export refuse d'écraser un dossier existant. Il n'est publié qu'après
+vérification de son contenu dans un dossier temporaire voisin.
+
+L'export contient uniquement les dossiers DLC sélectionnés, leurs sources et
+leurs ressources, avec les catalogues communs adaptés. La transformation
+syntaxique retire les contributions des packs absents et refuse un usage
+qu'elle ne reconnaît pas. Les adaptateurs facultatifs conservent un contrat
+explicite d'indisponibilité. Le registre léger et les identités historiques
+restent complets pour décrire les contenus absents et préserver les sauvegardes.
+
+`build:distribution` vérifie le reçu `DLC/distribution-receipt.json`, les
+empreintes des sources et médias, la fermeture des imports puis le contenu du
+bundle. Ce cycle est propre à l'export ; le prébuild du dépôt canonique continue
+de valider le jeu complet. La CI exerce séparément les profils base et Halo,
+avec leurs vrais fichiers et un parcours navigateur.
+
+Les 5 976 ressources communes ou sans attribution certaine restent dans tous
+les profils. Elles représentent environ 7,16 Go dans la référence actuelle.
+Une sélection de packs n'est donc pas encore une optimisation exhaustive de
+ces ressources. Les URL historiques restent identiques.
+
+### Sauvegardes et menu
+
+L'installation appartient à la distribution. Le masquage appartient à la
+préférence du joueur. Une commande « tout afficher » agit sur les univers
+installés ; les préférences des autres packs restent conservées. Les contenus
+absents sont indiqués « NON INCLUS ».
+
+L'équipe sauvegardée conserve les héros temporairement indisponibles. Le jeu
+en calcule une équipe jouable distincte ; ouvrir le Hub ou sauvegarder ne
+remplace pas la sélection conservée. Une modification explicite de composition
+remplace cette sélection, comme l'indique le menu. Inventaire, progression OC,
+missions terminées et préférences restent disponibles après réinstallation.
+
+Les numéros historiques ne dépendent plus de la position d'un univers dans
+une liste réduite. `dlc:identities:write` doit être exécuté depuis le catalogue
+complet lors d'un ajout de contenu ; les anciennes identités restent réservées.
+
+Cette étape sélectionne les packs à la construction et à la distribution. Le
+téléchargement depuis le menu, les achats et l'installation à chaud ne sont pas
+implémentés.
+
+Voir le suivi détaillé :
+[`DLC_INSTALLATION_PROFILES_2026-11-07.md`](../docs/development/DLC_INSTALLATION_PROFILES_2026-11-07.md).

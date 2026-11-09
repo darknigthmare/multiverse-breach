@@ -53,7 +53,11 @@ import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteAvailability from '../../public/sprites/generated/sprite-availability.json';
-import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
+import { getDlcUniverseKeys, isBaseGameUniverse, isOriginalCampaignUniverse } from '../game/dlcConfig';
+import { getDlcManifest } from '../../DLC/index.js';
+import { OC_DLC_SAVE_METADATA, getStableContentIndex } from '../game/dlcContentIdentity.js';
+import { getDlcInstallationSummary, getInstalledDlcUniverseKeys, isUniverseInstalled } from '../game/dlcInstallation.js';
+import { getRuntimeHiddenUniverses, updateInstalledUniverseVisibility } from '../game/dlcPlayerState.js';
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import { OC_DLC_PACKS, getOcDlcPackByUniverse, isOcDlcMissionUnlocked } from '../game/ocDlcPacks';
 const RaceMode = lazy(() => import('./RaceMode'));
@@ -646,7 +650,7 @@ function OcDlcLibrary({
           {lang === 'fr' ? 'BIBLIOTHÈQUE / CRÉATIONS ORIGINALES' : 'LIBRARY / ORIGINAL CREATIONS'}
         </span>
         <h4 style={{ margin: '7px 0', color: '#fff', fontSize: '16px' }}>
-          {lang === 'fr' ? 'Trois actes annexes autonomes' : 'Three standalone side acts'}
+          {lang === 'fr' ? 'Actes annexes autonomes' : 'Standalone side acts'}
         </h4>
         <p style={{ margin: 0, color: '#cfd8dc', fontSize: '11px', lineHeight: 1.5 }}>
           {lang === 'fr'
@@ -662,7 +666,8 @@ function OcDlcLibrary({
       }}>
         {OC_DLC_PACKS.map(cataloguePack => {
           const pack = getOcDlcPackByUniverse(cataloguePack.universe) || cataloguePack;
-          const active = !hiddenUniverseIds.has(pack.universe);
+          const installed = isUniverseInstalled(pack.universe);
+          const active = installed && !hiddenUniverseIds.has(pack.universe);
           const missionIds = pack.missions.map(mission => mission.id);
           const completedCount = missionIds.filter(missionId => completedMissionIds.has(String(missionId))).length;
           const complete = completedCount === missionIds.length;
@@ -687,6 +692,7 @@ function OcDlcLibrary({
               key={pack.id}
               data-oc-dlc-pack={pack.id}
               data-pack-active={active ? 'true' : 'false'}
+              data-pack-installed={installed ? 'true' : 'false'}
               style={{
                 minWidth: 0,
                 border: `1px solid ${active ? accent : '#4b4b55'}`,
@@ -858,7 +864,8 @@ function OcDlcLibrary({
                   <button
                     type="button"
                     className="btn-retro"
-                    onClick={() => onSetPackActive(pack.universe, !active)}
+                    disabled={!installed}
+                    onClick={() => installed && onSetPackActive(pack.universe, !active)}
                     title={active
                       ? (lang === 'fr' ? 'Replace cet acte en réserve sans effacer sa progression.' : 'Put this act in reserve without erasing its progress.')
                       : (lang === 'fr' ? 'Active cet acte autonome.' : 'Activate this standalone act.')}
@@ -889,6 +896,32 @@ function OcDlcLibrary({
             </article>
           );
         })}
+        {OC_DLC_SAVE_METADATA.filter(pack => !OC_DLC_PACKS.some(loaded => loaded.id === pack.id)).map(pack => (
+          <article
+            key={pack.id}
+            data-oc-dlc-pack={pack.id}
+            data-pack-active="false"
+            data-pack-installed="false"
+            style={{ minWidth: 0, padding: '18px', border: '1px solid #4b4b55', borderRadius: '8px', background: 'rgba(3,2,10,0.94)' }}
+          >
+            <h4 style={{ color: '#fff', margin: '0 0 10px' }}>{pack.universe}</h4>
+            <strong style={{ color: '#b5bec4', fontSize: '11px' }}>
+              {lang === 'fr' ? 'NON INCLUS DANS CETTE VERSION' : 'NOT INCLUDED IN THIS VERSION'}
+            </strong>
+            <p style={{ color: '#cfd8dc', fontSize: '11px', lineHeight: 1.5 }}>
+              {lang === 'fr'
+                ? 'Ta progression et tes possessions sont conservées. Les missions seront disponibles dans une version incluant cet acte.'
+                : 'Your progress and possessions are retained. Missions will be available in a version that includes this act.'}
+            </p>
+            <p style={{ color: '#aeb8bd', fontSize: '10px' }}>
+              {lang === 'fr' ? 'Missions terminées' : 'Completed missions'}: {pack.missionIds.filter(id => completedMissionIds.has(String(id))).length}/{pack.missionIds.length}
+              {' · '}
+              {hiddenUniverseIds.has(pack.universe)
+                ? (lang === 'fr' ? 'Préférence conservée : en réserve' : 'Saved preference: in reserve')
+                : (lang === 'fr' ? 'Préférence conservée : actif au retour' : 'Saved preference: active when restored')}
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -5479,6 +5512,7 @@ export default function HubScreen({
   unlockedHeroes,
   heroLevels, setHeroLevels,
   activeTeam, setActiveTeam,
+  unavailableTeamCount = 0,
   completedStages,
   completedArcIds = [],
   arcReplayUnlockedIds = [],
@@ -5643,6 +5677,9 @@ export default function HubScreen({
   const hubContentMax = '100%';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const runtimeHiddenUniverses = useMemo(() => getRuntimeHiddenUniverses(
+    hiddenUniverses, getDlcUniverseKeys(), isUniverseInstalled
+  ), [hiddenUniverses]);
   const disabledAssetSets = useMemo(() => ({
     heroes: new Set(disabledAssets.heroes || []),
     enemies: new Set(disabledAssets.enemies || []),
@@ -5754,7 +5791,8 @@ export default function HubScreen({
     };
   }, [spriteOutputMap]);
   const isUniverseVisible = useCallback(
-    (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
+    (universe) => !universe || universe === 'Nexus de Convergence'
+      || (isUniverseInstalled(universe) && !hiddenUniverseSet.has(universe)),
     [hiddenUniverseSet]
   );
   const isGearContentPackVisible = useCallback((item) => {
@@ -5806,19 +5844,9 @@ export default function HubScreen({
   );
   const activeMissionHeroIds = useMemo(() => new Set(activeTeam), [activeTeam]);
   const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB);
-  const DLC_UNIVERSE_KEYS = ALL_UNIVERSE_KEYS.filter(universe => !isBaseGameUniverse(universe));
-
-  useEffect(() => {
-    if (!setActiveTeam) return;
-    setActiveTeam(prev => {
-      const filtered = prev.filter(heroId => {
-        const hero = ALL_HEROES_DB.find(item => item.id === heroId);
-        return !hero || hero.id === playerHero.id || (isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id));
-      });
-      if (filtered.length === prev.length) return prev;
-      return filtered.length > 0 ? filtered : [playerHero.id];
-    });
-  }, [ALL_HEROES_DB, hiddenUniverses, isUniverseVisible, isAssetDisabled, playerHero.id, setActiveTeam]);
+  const DLC_UNIVERSE_KEYS = getInstalledDlcUniverseKeys();
+  const installationSummary = getDlcInstallationSummary();
+  const REGULATION_UNIVERSE_KEYS = [...new Set([...ALL_UNIVERSE_KEYS, ...getDlcUniverseKeys()])];
 
   const BREACH_MODIFIERS = [
     {
@@ -5945,7 +5973,7 @@ export default function HubScreen({
 
     // 38th final stage
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core', metaStage: true, finalGameBoss: true, dlcStage: true }
-  ].map(stage => {
+  ].filter(Boolean).map(stage => {
     const finalePolicy = getResolvedLoreWorldBossPolicy(stage.universe);
     if (!finalePolicy || stage.finalGameBoss || stage.tutorial) return stage;
     const nonCombatTrial = inferNonCombatTrial(finalePolicy, {
@@ -5993,8 +6021,9 @@ export default function HubScreen({
     }
   }));
   const CHARACTER_STAGES = CHARACTER_NARRATIVE_ARCS.map(projectCharacterArcStage);
-  const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.flatMap((arc, index) => (
-    projectUniverseArcDeploymentPhases(arc, index).map(phase => {
+  const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.flatMap((arc, loadedIndex) => {
+    const index = getStableContentIndex('universeArcs', arc.id, loadedIndex);
+    return projectUniverseArcDeploymentPhases(arc, index).map(phase => {
       const isPrelude = phase.arcPhaseCount > 1 && !phase.isArcFinalPhase;
       const phaseLabel = `${phase.arcPhaseIndex + 1}/${phase.arcPhaseCount}`;
       return {
@@ -6030,8 +6059,8 @@ export default function HubScreen({
         previousArcStageId: phase.previousArcStageId,
         unlockClears: 4 + index * 2
       };
-    })
-  ));
+    });
+  });
   const TRIO_STAGES = TRIO_NARRATIVE_ARCS.map(arc => ({
     id: arc.stageId,
     name: arc.title.en,
@@ -8695,9 +8724,16 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
       setSelectedCollectionUniverse(null);
     }
   }, [selectedCollectionUniverse, isUniverseVisible]);
-  const adminUniverseRows = ALL_UNIVERSE_KEYS
+  const adminUniverseRows = REGULATION_UNIVERSE_KEYS
     .map(universe => {
       const lore = LORE_DB[universe];
+      const installed = isUniverseInstalled(universe);
+      if (!installed) return {
+        universe, lore, installed, hidden: hiddenUniverseSet.has(universe),
+        baseGame: false, originalCampaign: false,
+        heroes: [], enemies: [], gear: [], stages: [], disabledCount: 0,
+        stageCount: 0, enemyCount: 0, gearCount: 0, spriteTotalCount: 0, spriteReadyCount: 0
+      };
       const heroes = ALL_HEROES_DB.filter(hero => hero.universe === universe);
       const enemies = [
         ...(ENEMIES_DB[universe]?.monsters || []).map(enemy => ({ ...enemy, adminType: lang === 'fr' ? 'Monstre' : 'Monster' })),
@@ -8730,6 +8766,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         universe,
         lore,
         baseGame: isBaseGameUniverse(universe),
+        originalCampaign: isOriginalCampaignUniverse(universe),
+        installed,
         hidden: hiddenUniverseSet.has(universe),
         heroes,
         enemies,
@@ -8760,7 +8798,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
   const hiddenUniverseCount = DLC_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length;
   const visibleUniverseCount = DLC_UNIVERSE_KEYS.length - hiddenUniverseCount;
   const setUniverseHidden = (universe, hidden) => {
-    if (!setHiddenUniverses || isBaseGameUniverse(universe)) return;
+    if (!setHiddenUniverses || isBaseGameUniverse(universe) || !isUniverseInstalled(universe)) return;
     setHiddenUniverses(prev => {
       const next = new Set(prev);
       if (hidden) next.add(universe);
@@ -8770,25 +8808,25 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     sound.playSfx(hidden ? 'click' : 'coin');
   };
   const showAllUniverses = () => {
-    setHiddenUniverses?.([]);
-    notifyNexus(lang === 'fr' ? 'Tous les univers sont visibles.' : 'All universes are visible.', 'success');
+    setHiddenUniverses?.(prev => updateInstalledUniverseVisibility(prev, ALL_UNIVERSE_KEYS, false, isUniverseInstalled));
+    notifyNexus(lang === 'fr' ? 'Tous les univers inclus sont visibles.' : 'All included universes are visible.', 'success');
     sound.playSfx('levelup');
   };
   const hideAllDlcUniverses = () => {
     if (!setHiddenUniverses) return;
-    setHiddenUniverses(DEFAULT_HIDDEN_UNIVERSES);
+    setHiddenUniverses(prev => updateInstalledUniverseVisibility(prev, DLC_UNIVERSE_KEYS, true, isUniverseInstalled));
     notifyNexus(
       lang === 'fr'
-        ? 'Mode jeu de base restaure: seuls les contenus OC du Nexus restent actifs.'
-        : 'Base game mode restored: only OC Nexus content remains active.',
+        ? 'Les DLC inclus sont en reserve. Le jeu de base et la campagne restent disponibles.'
+        : 'Included DLC is in reserve. The base game and campaign remain available.',
       'success'
     );
     sound.playSfx('click');
   };
   const showAllDlcUniverses = () => {
     if (!setHiddenUniverses) return;
-    setHiddenUniverses(prev => prev.filter(universe => !DLC_UNIVERSE_KEYS.includes(universe)));
-    notifyNexus(lang === 'fr' ? 'Tous les DLC franchise sont actifs.' : 'All franchise DLC universes are active.', 'success');
+    setHiddenUniverses(prev => updateInstalledUniverseVisibility(prev, DLC_UNIVERSE_KEYS, false, isUniverseInstalled));
+    notifyNexus(lang === 'fr' ? 'Tous les DLC inclus sont actifs.' : 'All included DLC universes are active.', 'success');
     sound.playSfx('levelup');
   };
   const hideUniversesByMediaType = (mediaType) => {
@@ -10218,7 +10256,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             fighterCareer={activityProgress.fighterCareer || {}}
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
-            hiddenUniverses={hiddenUniverses}
+            hiddenUniverses={runtimeHiddenUniverses}
             onMatchComplete={recordFighterMatch}
             onSessionStart={startFighterSession}
             onSessionEnd={finishFighterSession}
@@ -10246,7 +10284,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             completedStages={completedStages}
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
-            hiddenUniverses={hiddenUniverses}
+            hiddenUniverses={runtimeHiddenUniverses}
             disabledAssets={disabledAssets}
             onSessionStart={startCustomSession}
             onSessionEnd={finishCustomSession}
@@ -10265,7 +10303,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             playerProfile={playerProfile}
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
-            hiddenUniverses={hiddenUniverses}
+            hiddenUniverses={runtimeHiddenUniverses}
             onSessionStart={startRaceSession}
             onSessionEnd={finishRaceSession}
             onPauseRequest={() => setPauseMenuOpen(true)}
@@ -11431,6 +11469,13 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </button>
             </div>
 
+            {unavailableTeamCount > 0 && (
+              <p role="status" style={{ padding: '12px', border: '1px solid #697b85', color: '#cfd8dc', fontSize: '12px', lineHeight: 1.5 }}>
+                {lang === 'fr'
+                  ? `${unavailableTeamCount} membre(s) de ta sélection sont indisponibles dans cette version ou en réserve. Leur sélection et leurs possessions restent sauvegardées. Seule une nouvelle composition remplace ce choix.`
+                  : `${unavailableTeamCount} member(s) of your selection are unavailable in this version or in reserve. Their selection and possessions remain saved. Choosing a new squad replaces that selection.`}
+              </p>
+            )}
             <div className="squad-zone-title">
               <span>{lang === 'fr' ? 'Equipe active' : 'Active team'}</span>
               <small>{lang === 'fr' ? 'Les trois cartes qui partiront en mission.' : 'The three cards that will enter missions.'}</small>
@@ -11995,7 +12040,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           <CgGallery
             lang={lang}
             unlockedHeroes={unlockedHeroes}
-            hiddenUniverses={hiddenUniverses}
+            hiddenUniverses={runtimeHiddenUniverses}
             disabledHeroIds={disabledAssets.heroes || []}
           />
         )}
@@ -12534,6 +12579,20 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 : 'Place a Thread in reserve to remove it from missions, portals, heroes, archives, and exchanges without deleting its data. Tooltips state each command technical effect.'}
             </p>
 
+            <div
+              data-dlc-installation-mode={installationSummary.mode}
+              style={{ padding: '12px', marginBottom: '16px', border: '1px solid #697b85', borderRadius: '5px', color: '#cfd8dc', fontSize: '12px', lineHeight: 1.5 }}
+            >
+              <strong style={{ color: '#fff' }}>
+                {lang === 'fr' ? 'DLC inclus dans cette version' : 'DLC included in this version'} : {installationSummary.installedCount}/{installationSummary.availableCount}
+              </strong>
+              <p style={{ margin: '5px 0 0' }}>
+                {lang === 'fr'
+                  ? 'Le jeu de base et sa campagne restent disponibles. Les packs absents conservent leur progression, leurs possessions et leur préférence de réserve ; utilise une version qui les inclut pour y jouer.'
+                  : 'The base game and its campaign remain available. Absent packs retain their progress, possessions and reserve preference; use a version that includes them to play them.'}
+              </p>
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '16px' }}>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
                 <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Trames actives' : 'Active Threads'}</div>
@@ -12555,7 +12614,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'minmax(260px, 1fr) minmax(260px, 1fr)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
               gap: '12px',
               marginBottom: '16px'
             }}>
@@ -12646,13 +12705,13 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   fontFamily: '"Share Tech Mono", monospace'
                 }}
               />
-              <button onClick={hideAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Masque tous les univers franchise et garde seulement le jeu de base OC.' : 'Hide every franchise universe and keep only base OC content.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#39c5bb', color: '#39c5bb' }}>
+              <button onClick={hideAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Met les DLC inclus en reserve et conserve le jeu de base et sa campagne.' : 'Reserve included DLC and keep the base game and its campaign.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#39c5bb', color: '#39c5bb' }}>
                 {lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE'}
               </button>
-              <button onClick={showAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive tous les DLC franchise.' : 'Reactivate every franchise DLC.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
+              <button onClick={showAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive les DLC inclus dans cette version.' : 'Reactivate DLC included in this version.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
                 {lang === 'fr' ? 'OUVRIR LES TRAMES' : 'OPEN THREADS'}
               </button>
-              <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive absolument tous les univers masques.' : 'Reactivate every hidden universe.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#777', color: '#ddd' }}>
+              <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive les univers inclus ; conserve les preferences des packs absents.' : 'Reactivate included universes; keep preferences for absent packs.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#777', color: '#ddd' }}>
                 {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
               </button>
               {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => {
@@ -12720,6 +12779,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   <div
                     key={row.universe}
                     className="arca-regulation-universe"
+                    data-dlc-pack={getDlcManifest(row.universe)?.id}
+                    data-pack-installed={row.installed ? 'true' : 'false'}
                     style={{
                       padding: '10px 12px',
                       borderRadius: '4px',
@@ -12730,6 +12791,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     <div className="arca-regulation-universe-header">
                       <button
                         onClick={() => toggleAdminUniverseOpen(row.universe)}
+                        disabled={!row.installed}
                         className="btn-retro"
                         title={isOpen ? (lang === 'fr' ? 'Referme les details de cet univers.' : 'Collapse this universe details.') : (lang === 'fr' ? 'Ouvre les details admin de cet univers.' : 'Expand this universe admin details.')}
                         style={{ fontSize: '11px', padding: '5px 8px', minWidth: '34px', borderColor: isOpen ? '#39c5bb' : '#444', color: isOpen ? '#39c5bb' : '#aaa' }}
@@ -12739,18 +12801,30 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       <div className="arca-regulation-universe-title">
                         <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
                         <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>
-                          {row.universe} - {row.baseGame ? (lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE') : `${lang === 'fr' ? 'TRAME EXTERNE' : 'EXTERNAL THREAD'} - ${getMediaTypeLabel(row.lore?.mediaType)}`}
+                          {row.universe} - {row.baseGame
+                            ? (lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE')
+                            : row.originalCampaign
+                              ? (lang === 'fr' ? 'CAMPAGNE PRINCIPALE' : 'MAIN CAMPAIGN')
+                              : `${lang === 'fr' ? 'TRAME EXTERNE' : 'EXTERNAL THREAD'}${row.installed ? ` - ${getMediaTypeLabel(row.lore?.mediaType)}` : ''}`}
                         </div>
                       </div>
-                      <div className="arca-regulation-universe-stats" style={{ fontSize: '10px', color: '#aaa' }}>
+                      {row.installed ? <div className="arca-regulation-universe-stats" style={{ fontSize: '10px', color: '#aaa' }}>
                         <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
                         <span>{row.enemyCount} {lang === 'fr' ? 'ennemis' : 'enemies'}</span>
                         <span>{row.gearCount} gear</span>
                         <span>{row.stageCount} stages</span>
                         {row.disabledCount > 0 && <span style={{ color: '#e74c3c' }}>{row.disabledCount} off</span>}
                         <span style={{ color: '#39c5bb', fontWeight: 'bold' }}>IA {row.spriteReadyCount}/{row.spriteTotalCount}</span>
-                      </div>
-                      {row.baseGame ? (
+                      </div> : <span style={{ color: '#aeb8bd', fontSize: '10px' }}>
+                        {row.hidden
+                          ? (lang === 'fr' ? 'Preference conservee : en reserve' : 'Saved preference: in reserve')
+                          : (lang === 'fr' ? 'Preference conservee : actif au retour' : 'Saved preference: active when restored')}
+                      </span>}
+                      {!row.installed ? (
+                        <span style={{ fontSize: '10px', padding: '7px 10px', color: '#aeb8bd', border: '1px solid #697b85', borderRadius: '4px' }}>
+                          {lang === 'fr' ? 'NON INCLUS' : 'NOT INCLUDED'}
+                        </span>
+                      ) : row.baseGame ? (
                         <span
                           title={lang === 'fr' ? 'Le Nexus est le contenu OC de base: il reste actif, seuls ses assets peuvent etre controles.' : 'The Nexus is base OC content: it remains active, only its assets can be controlled.'}
                           style={{ fontSize: '10px', padding: '7px 10px', minWidth: '110px', textAlign: 'center', border: '1px solid #39c5bb', color: '#39c5bb', borderRadius: '4px' }}
@@ -12779,7 +12853,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       )}
                     </div>
 
-                    {isOpen && (
+                    {isOpen && row.installed && (
                       <div className="arca-regulation-universe-details" style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
                         <details open>
                           <summary style={{ color: '#39c5bb', fontSize: '11px', cursor: 'pointer' }}>{lang === 'fr' ? 'Heros' : 'Heroes'} ({row.heroes.length})</summary>

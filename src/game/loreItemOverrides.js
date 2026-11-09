@@ -1,3 +1,5 @@
+import { DLC_PACK_MANIFESTS } from '../../DLC/index.js';
+import { isDlcPackInstalled } from './dlcInstallation.js';
 // Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
 import * as dlcAlteredBeast from '../../DLC/AlteredBeast/data/loreItemOverrides.js';
 import * as dlcCoolSpot from '../../DLC/CoolSpot/data/loreItemOverrides.js';
@@ -492,11 +494,14 @@ const validateRuntimeRegistry = () => {
   const seenIds = new Set();
   const seenIcons = new Set();
 
-  if (activeUniverses.length !== 126) {
-    throw new Error(`Expected 126 active FG4 item universes, received ${activeUniverses.length}`);
+  const declaredPacks = DLC_PACK_MANIFESTS.filter(pack => pack.modules.some(module => module.path === 'data/loreItemOverrides.js'));
+  if (declaredPacks.length !== 126) throw new Error(`Expected 126 declared FG4 item universes, received ${declaredPacks.length}`);
+  const expectedUniverses = new Set(declaredPacks.filter(pack => isDlcPackInstalled(pack.id)).map(pack => pack.universe));
+  if (activeUniverses.length !== expectedUniverses.size || activeUniverses.some(universe => !expectedUniverses.has(universe))) {
+    throw new Error(`Expected ${expectedUniverses.size} installed FG4 item universes, received ${activeUniverses.length}`);
   }
-  if (policyUniverses.length !== 126) {
-    throw new Error(`Expected 126 FG4 item policies, received ${policyUniverses.length}`);
+  if (policyUniverses.length !== expectedUniverses.size || policyUniverses.some(universe => !expectedUniverses.has(universe))) {
+    throw new Error(`Expected ${expectedUniverses.size} installed FG4 item policies, received ${policyUniverses.length}`);
   }
 
   for (const excludedUniverse of EXCLUDED_UNIVERSES) {
@@ -566,9 +571,9 @@ const validateRuntimeRegistry = () => {
     }
   }
 
-  if (seenIds.size !== 504 || seenIcons.size !== 504) {
+  if (seenIds.size !== expectedUniverses.size * 4 || seenIcons.size !== expectedUniverses.size * 4) {
     throw new Error(
-      `Expected 504 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
+      `Expected ${expectedUniverses.size * 4} unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
     );
   }
 };

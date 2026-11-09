@@ -1,0 +1,5 @@
+// Croc — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'croc', universe: 'Croc', mediaType: 'game', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Croc', stage: 'Gobbo Island Baron Raid', boss: 'Baron Dante Crystal Beast', hero: ['croc_hero', 'Croc', 'slayer'], allies: [['gobbo_chief', 'Gobbo Chief', 'tactical'], ['beany_bird', 'Beany Bird', 'hacker']], monsters: ['Dantini Guard', 'Jelly Monster', 'Fire Imp'], bosses: ['Baron Dante', 'Flibby'], gear: [['crystal_heart', 'Crystal Heart', 'Coeur de cristal', { hp: 80, def: 4 }], ['gobbo_balloon', 'Gobbo Balloon', 'Ballon Gobbo', { spd: 2, hp: 40 }], ['barons_key', 'Baron s Key', 'Cle du Baron', { atk: 8, def: 5 }]], event: ['evt_gobbo_stampede', 'Gobbo Stampede', 'Ruee des Gobbos', 'A horde of rescued Gobbos stampedes across the field, trampling enemies.', 'Une horde de Gobbos sauves pietine le terrain et ecrase les ennemis.'], theme: 'gobbo rescue, island castles, crystal monsters, and cheerful platform adventure', motif: 'castle', colors: ['#163b18', '#030803', '#7dff5a'] });
+}

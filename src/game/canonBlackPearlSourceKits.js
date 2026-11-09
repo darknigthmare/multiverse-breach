@@ -77,7 +77,8 @@ export function getBlackPearlSourceAmmunition(actor, actionType) {
     || actor?.incarnation !== BLACK_PEARL_JACK_INCARNATION
     || actor?.canonCombatPresentation !== true
     || actor.universe !== BLACK_PEARL_SOURCE_UNIVERSE) return null;
-  const policy = CANON_BLACK_PEARL_SOURCE_KITS.jack_sparrow_potc.sourceAmmunition;
+  const policy = CANON_BLACK_PEARL_SOURCE_KITS.jack_sparrow_potc?.sourceAmmunition;
+  if (!policy) return null;
   if (actionType && !policy.actionIds.includes(actionType)) return null;
   return { ...policy, actionIds: [...policy.actionIds] };
 }

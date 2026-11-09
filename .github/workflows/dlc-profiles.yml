@@ -1,0 +1,59 @@
+name: DLC distribution profiles
+on:
+  pull_request:
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: dlc-profiles-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  distribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [base, halo]
+    env:
+      PLAYWRIGHT_MODULE_PATH: file:///tmp/dlc-playwright/node_modules/playwright/index.mjs
+      PLAYWRIGHT_BROWSERS_PATH: /tmp/dlc-browsers
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Complete catalogue identities and profile regressions
+        run: |
+          npm run dlc:registry:check
+          npm run dlc:identities:check
+          npm run test:dlc:profiles
+      - name: Export selected modules and real media
+        run: npm run dlc:export -- --profile config/dlc-profiles/${{ matrix.profile }}.json --out /tmp/dlc-profile-${{ matrix.profile }}
+      - name: Build the standalone distribution with strict receipt checks
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/dlc-profile-evidence/${{ matrix.profile }}
+          npm ci --prefix /tmp/dlc-profile-${{ matrix.profile }} --no-audit --no-fund
+          npm run build:distribution --prefix /tmp/dlc-profile-${{ matrix.profile }} 2>&1 | tee /tmp/dlc-profile-evidence/${{ matrix.profile }}/build.log
+          cp /tmp/dlc-profile-${{ matrix.profile }}/DLC/distribution-receipt.json /tmp/dlc-profile-evidence/${{ matrix.profile }}/distribution-receipt.json
+          cp /tmp/dlc-profile-${{ matrix.profile }}/dist/build-info.json /tmp/dlc-profile-evidence/${{ matrix.profile }}/build-info.json
+      - name: Install pinned browser test tools
+        run: |
+          npm install --prefix /tmp/dlc-playwright --no-save --package-lock=false playwright@1.62.1
+          node /tmp/dlc-playwright/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Play the exported distribution and verify retained saves
+        run: node scripts/browserDlcDistribution.mjs --root /tmp/dlc-profile-${{ matrix.profile }} --output /tmp/dlc-profile-evidence/${{ matrix.profile }}/browser
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: dlc-${{ matrix.profile }}-${{ github.sha }}
+          path: /tmp/dlc-profile-evidence/${{ matrix.profile }}/
+          retention-days: 7
