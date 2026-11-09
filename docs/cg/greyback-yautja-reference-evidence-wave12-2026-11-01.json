@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "characterId": "greyback_yautja",
+  "heroId": "greyback_yautja",
+  "characterName": "Greyback Elder",
+  "universe": "Predator",
+  "selectedSourceWork": "Predator 2 (1990), film ending trophy-room Elder; not the2018 Golden Angel younger comic portrayal",
+  "incarnation": "Greyback Elder from Predator 2 (1990), unmasked film-ending appearance; matching NECA Ultimate Elder2022 licensed full-body target",
+  "incarnationDecision": {
+    "status": "root-confirmed-limited-licensed-target-for-production",
+    "selectedBy": "/root/alien_roster_inventory",
+    "productionApprovedByRoot": true,
+    "otherRosterIdsNotMerged": [
+      "predator",
+      "city_hunter",
+      "city_hunter_p2"
+    ]
+  },
+  "status": "licensed-source-target-used-for-fifteen-real-independently-reviewed-cg-with-stated-limits",
+  "sourceKind": "licensed-manufacturer-fullbody-portrait-plus-partial-mirrored-film-context",
+  "sourceAuthority": "NECA manufacturer matching-film-character depiction; direct film-clip context is a secondary-hosted mirror, not a studio press-file verification",
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "sourceImageQualified": true,
+  "qualifiedForLimitedSourceTarget": true,
+  "fullBodyReferenceAvailable": true,
+  "fullBodyReferenceIsDerivativeLicensedFigure": true,
+  "fullPrimaryFilmBodyVerified": false,
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "absoluteFidelityCertified": false,
+  "ageStatus": "not-established",
+  "generationStarted": true,
+  "newGenerationAttempts": 23,
+  "newCgImages": 15,
+  "references": [
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-ultimate-elder-unmasked-fullbody.jpg",
+      "sha256": "30acc63936c4775c6354bb3395528f14a42b20e26072097a44710d10352fb44a",
+      "bytes": 505911,
+      "width": 1707,
+      "height": 2560,
+      "mode": "RGB",
+      "url": "https://necaonline.com/wp-content/uploads/2022/07/Elder14-scaled.jpg",
+      "pageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+      "role": "licensed-exact-Predator2-Greyback-unmasked-fullbody-identity-and-costume-reference",
+      "referencePurpose": "identity",
+      "referenceScope": "Licensed matching-film character portrait: unmasked face, whole body, clothing, gear placement, both hands and both entire feet; toy joints/gloss and optional product accessories are not primary-film authority.",
+      "viewed": true,
+      "actuallyViewed": true,
+      "viewedAt": "2026-11-01T00:53:18.713073+00:00",
+      "referenceCharacter": "greyback_yautja",
+      "canonicalProjectReference": false,
+      "usedForIdentity": true,
+      "isPrimaryFilmIdentityAuthority": false
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-film-frame-first-fps1.png",
+      "sha256": "8a6699d0aa69ea8bb2d3ca5f4f1c26dd7fdccdfa0d16431a81e66d406903a265",
+      "bytes": 821600,
+      "width": 1920,
+      "height": 1040,
+      "mode": "RGB",
+      "url": "https://clip.cafe/predator-2-1990/take-it-s19/",
+      "role": "actual-film-content-context-not-clean-identity-conditioning",
+      "referencePurpose": "film-context-partial",
+      "referenceScope": "Torso, tendrils and lower-jaw edge of Greyback at far RIGHT. Upper face/head mostly outside the frame; NO primary-film face reference. Harrigan at left excluded. Environment context only, not an identity attachment.",
+      "viewed": true,
+      "actuallyViewed": true,
+      "viewedAt": "2026-11-01T00:53:18.713073+00:00",
+      "usedForIdentity": false,
+      "excludedFromGeneration": true,
+      "sourceVideo": {
+        "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-public-clip.mp4",
+        "sha256": "92e4dce3d6352e3bb29c124acc40ace869a323297188ee4a69236a118b7990bb",
+        "url": "https://clip.cafe/videos/take-it-s19.mp4",
+        "pageUrl": "https://clip.cafe/predator-2-1990/take-it-s19/",
+        "actualFetchStatus": 200,
+        "bytes": 972641
+      },
+      "technicalDerivation": {
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-i",
+          "predator2-take-it-public-clip.mp4",
+          "-vf",
+          "fps=1",
+          "-frames:v",
+          "10",
+          "frame-%02d.png"
+        ],
+        "selectedOutputFrame": 1,
+        "videoRate": "24000/1001",
+        "sourceTimeApproximateSeconds": 0.5,
+        "operation": "Standard full-frame video decode to RGB PNG; no crop, resize, repainting, restoration or semantic edit. Only first inspected output retained durably.",
+        "newIndependentSourceAuthorityCreated": false,
+        "decodeReplayProof": {
+          "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/film-frame-decode-proof.json",
+          "sha256": "955851b19b1dfca739013891e6033393bfc8ab1f22698b4c91518e828c016302"
+        }
+      },
+      "isPrimaryFilmIdentityAuthority": false
+    },
+    {
+      "path": "public/sprites/generated/heroes/predator/greyback-yautja.png",
+      "sha256": "1284f35efb3378e4f9755f58a1a8ac197bb19fd34bb44b4bb4667425685c9fbc",
+      "bytes": 1086996,
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "role": "previous-atlas-historical-only",
+      "usedForIdentity": false,
+      "actuallyViewed": true,
+      "viewedAt": "2026-11-01T00:53:18.713073+00:00",
+      "isPrimaryFilmIdentityAuthority": false
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/licensed-jungle-hunter1987-costume-only-cg13.jpg",
+      "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+      "bytes": 203981,
+      "width": 1500,
+      "height": 1875,
+      "mode": "RGB",
+      "url": "https://store.necaonline.com/cdn/shop/files/51548_UNP_1.jpg?v=1773857407&width=1500",
+      "role": "crossed-JungleHunter1987-costume-only-WhatIf-CG13",
+      "referencePurpose": "costume-only",
+      "usedForIdentity": false,
+      "actuallyViewed": true,
+      "viewed": true,
+      "viewedBy": "/root/alien_roster_inventory",
+      "viewedAt": "2026-11-01T01:07:03.492381+00:00",
+      "allowedSlots": [
+        "CG13"
+      ],
+      "referenceCharacter": "predator",
+      "scope": "CG13 only: silver-gray iconic biomask, visible classic armor geometry and brown loincloth. Do NOT borrow donor unmasked face, body proportions, skin color/pattern, hair, detached skull/hand accessories, blue effect or powers. Retain own Greyback gray skin/dreads/claws and own small left-hip pistol silhouette.",
+      "inheritedByteExactFrom": ".tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg",
+      "sourceEvidence": "docs/cg/predator-reference-evidence-wave11-2026-10-26.json",
+      "newExternalDownload": false,
+      "rootCostumeProposal": "explicitly requested crossed JungleHunter1987 outfit, awaiting final CG13 prompt confirmation",
+      "isPrimaryFilmIdentityAuthority": false,
+      "isAdditionalIndependentIdentitySource": false
+    }
+  ],
+  "referenceImagesQualified": [
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-ultimate-elder-unmasked-fullbody.jpg",
+      "sha256": "30acc63936c4775c6354bb3395528f14a42b20e26072097a44710d10352fb44a",
+      "bytes": 505911,
+      "width": 1707,
+      "height": 2560,
+      "mode": "RGB",
+      "url": "https://necaonline.com/wp-content/uploads/2022/07/Elder14-scaled.jpg",
+      "pageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+      "role": "licensed-exact-Predator2-Greyback-unmasked-fullbody-identity-and-costume-reference",
+      "referencePurpose": "identity",
+      "referenceScope": "Licensed matching-film character portrait: unmasked face, whole body, clothing, gear placement, both hands and both entire feet; toy joints/gloss and optional product accessories are not primary-film authority.",
+      "viewed": true,
+      "actuallyViewed": true,
+      "viewedAt": "2026-11-01T00:53:18.713073+00:00",
+      "referenceCharacter": "greyback_yautja",
+      "canonicalProjectReference": false,
+      "usedForIdentity": true,
+      "isPrimaryFilmIdentityAuthority": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Tall broad-shouldered lean humanoid Yautja with two arms/two legs, bare clawed feet, a raised ridged elongated bald forehead and long thick grey-black dreadlike tendrils with gold bands. Entire source silhouette visible in manufacturer image."
+    ],
+    "anatomy": [
+      "Unmasked nonhuman four-mandible face, deep recessed eyes, pale tusks and small gold mandible ornament as actually shown. Keep source visible hand/foot claw topology; plastic articulation gaps and hinge pegs are not anatomy. No human lips/nose/ears imposed. Exact tiny digit counts or hidden undersides are not certified. Exactly ONE small gold ring on anatomical LEFT lower mandible (viewer RIGHT), no symmetric second ring."
+    ],
+    "face": [
+      "UNMASKED pale grey/ivory ridged mottled forehead with central lighter stripe, recessed dark eyes, pink/ivory four mandibles and visible small gold mouth ornament from the NECA14 licensed sculpt. The retained film frame shows torso/hair/lower jaw only: upper face is largely outside frame, so NO primary-film face match is certified. Do not silently replace with optional masked head."
+    ],
+    "costume": [
+      "Black diamond netting over pale torso and thighs, asymmetric dark/bronze metal armor with the large layered shoulder guard on anatomical LEFT, forearm gauntlets, broad worn belt, dark loincloth, shin/knee armor and exposed clawed feet. Diagonal straps with multiple small bone/skull trophies remain per actual source, not a generic skeleton costume."
+    ],
+    "palette": [
+      "Use the source-backed pale grey/ivory mottled skin, dark grey/black netting, grey-black hair, bronze/dark metal, pale bone trophies and small gold details. Both film and manufacturer shots have strong amber lighting; it is not independent proof of the neutral albedo or exact RGB values."
+    ],
+    "distinguishingMarks": [
+      "Raised bumpy crown and central lighter forehead strip; long banded grey-black tendrils; diagonal skull/bone trophies; asymmetric LEFT armor silhouette; visible small gold mouth ornament. Do not invent readable tribal lettering or extra scars."
+    ],
+    "equipment": [
+      "Anatomical RIGHT forearm unit has TWO long parallel wrist blades. Anatomical LEFT has a computer gauntlet and layered shoulder armor with shoulder caster. At anatomical LEFT hip preserve the small source-visible antique pistol silhouette: brown curved stock, gold/brass trigger guard and partial mechanism. NOT a waist biomask. No exact pistol model/date or hidden portions inferred; no isolated full-pistol CG without fuller reference. These are licensed-product depictions, not proof every item is visible in the film ending. No added sword, no giant two-handed energy rifle from old atlas. The exterior RIGHT wrist brown/bronze shell has an irregular pale-yellow FOUR-point shape around a black center, not a standardized three-triangle radioactive emblem."
+    ],
+    "forbiddenMixes": [
+      "No Jungle Hunter1987 face/skin/anatomy substitute, City Hunter1990 merge, younger Golden Angel2018 comic incarnation, human anatomy, extra arms/legs, or automatic masked LED head/sword adoption. The ONLY CG13 WhatIf exception is explicit borrowed JungleHunter1987 costume/mask geometry, retaining Greyback body/identity and own pistol."
+    ]
+  },
+  "equipment": [
+    "Source-visible two RIGHT wrist blades, LEFT shoulder caster/gauntlet and small partially visible antique pistol worn at anatomical LEFT waist. Do not remove it, replace it with a mask, enlarge it or invent its complete hidden shape."
+  ],
+  "universeCoherence": {
+    "sourceWork": "Predator 2 (1990)",
+    "period": "Selected 1990 film appearance; no chronological age inferred",
+    "locations": [
+      "Los Angeles urban setting of Predator2",
+      "Yautja trophy-ship interior shown in the actual clip"
+    ],
+    "architecture": [
+      "Warm bronze/copper engraved biomechanical walls and vertical structural bands directly visible in the clip; not an Alien Nostromo or Colonial Marine set"
+    ],
+    "palette": [
+      "Film-context warm amber interior versus neutral costume colors kept distinct"
+    ],
+    "props": [
+      "Manufacturer attribution supports an antique pistol gift; selected source visually resolves only the small left-waist carried silhouette, not a complete isolated pistol or a model/date inscription."
+    ],
+    "boundaries": [
+      "Do not replace the specific1990 unmasked Elder by a general Predator, later comic or game skin. New settings/poses must retain the same selected identity; special themes keep Fan Art/What If labels."
+    ]
+  },
+  "sourceLimits": [
+    "Licensed toy sculpture/photo is a derivative matching-character support, not an absolute primary-film proportion/texture certificate. Do not reproduce toy seams, articulation pegs or specular plastic appearance.",
+    "Retained film frame is amber-lit and crops Greyback at top/right: torso, tendrils and lower jaw only, upper face largely out of frame. Harrigan excluded. This is environment/film context ONLY; no primary-film full-face verification.",
+    "No primary-film full-body footwear view has been separately validated. The licensed image supplies lower-body/claw coverage with this explicit provenance limit.",
+    "Hidden rear details, soles, tiny glyphs, exact iris color, neutral RGB color values and numerical age remain unresolved. Use source-compatible front/threequarter compositions.",
+    "Mask/sword from alternate toy photographs are not automatic film canon. Optional product accessories must not become default anatomy or fixed equipment.",
+    "A qualified source target is not approval of a generated image. Root source confirmation and independent native-art QA remain required before any CG/runtime delivery.",
+    "All special scenes remain fully nonsexual and nonromantic; no invented human age/sex transformation is required."
+  ],
+  "scopeLimitations": [
+    "Default NECA14 unmasked Greyback target only. CG13 iconicOutfitSwap WhatIf explicitly borrows visible silver mask/classic armor/brown loincloth from separately scoped licensed JungleHunter1987 image, usedForIdentity=false, costume-only; never transfers donor anatomy or identity.",
+    "Primary film content is hosted by Clip.Cafe; its attribution was read on the matching Predator2 page, without verifying studio press-file byte identity."
+  ],
+  "generationInputProposal": {
+    "referencePaths": [
+      "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-ultimate-elder-unmasked-fullbody.jpg"
+    ],
+    "doNotAttach": [
+      "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-film-frame-first-fps1.png",
+      "public/sprites/generated/heroes/predator/greyback-yautja.png"
+    ],
+    "requiresRootConfirmation": false,
+    "reason": "Use one clean licensed fullbody source. Scene composite contains another human and cropped Elder; old atlas has unsupported loadout.",
+    "requiresFirstCallPreflightReview": false,
+    "firstCallPreflightApprovedByRoot": true
+  },
+  "oldAtlasFindings": [
+    "Personally opened current atlas. It depicts an unmasked elder with grey hair, but repeatedly carries a detached mask and frames09–12 add a giant two-handed energy rifle absent from the inspected selected sources. Its armor/gear layout is not a fidelity certification. Preserve every old byte as a variant before any genuine new whole-pose atlas."
+  ],
+  "preservation": {
+    "previousAtlas": {
+      "path": "public/sprites/generated/heroes/predator/greyback-yautja.png",
+      "sha256": "1284f35efb3378e4f9755f58a1a8ac197bb19fd34bb44b4bb4667425685c9fbc",
+      "bytes": 1086996,
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGBA",
+      "role": "previous-atlas-historical-only",
+      "usedForIdentity": false,
+      "actuallyViewed": true,
+      "viewedAt": "2026-11-01T00:53:18.713073+00:00"
+    },
+    "previousReferenceEvidence": {
+      "path": "docs/cg/greyback-yautja-reference-evidence-wave11-2026-10-26.json",
+      "sha256": "7dc195060fd794efc399c6370d0b1e6cc27b93bc0eb9c200eec4c194b716cb28",
+      "bytes": 7831
+    },
+    "oldMediaChanged": false,
+    "oldEvidenceChanged": false
+  },
+  "sourceDiscovery": {
+    "productPage": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+    "postApi": "https://necaonline.com/wp-json/wp/v2/posts/73868",
+    "attachmentList": "https://necaonline.com/wp-json/wp/v2/media?parent=73868",
+    "selectedAttachmentPage": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/elder14/",
+    "selectedMediaOrigin": "Exact first-party URL decoded from the actual attachment-page Pinterest media parameter; not constructed by replacing a blocked CDN hostname. HTTP200, no redirects.",
+    "unfetchedOutsidePolicyHosts": [
+      "eadn-wc04-13179453.nxedge.io",
+      "e4adf05d9d.nxcli.io"
+    ],
+    "proxyAndTlsPreserved": true,
+    "newImageGenCalls": 23
+  },
+  "sourceRefs": [
+    "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+    "https://necaonline.com/wp-content/uploads/2022/07/Elder14-scaled.jpg",
+    "https://clip.cafe/predator-2-1990/take-it-s19/"
+  ],
+  "durableSourceFiles": [
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/clip-take-it-page.html",
+      "sha256": "07b185efe0a00e41b5e353302c365083d8dbf1e47550e80ccad29c2a4db34f2d",
+      "bytes": 183413
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/documented-media-fetches.json",
+      "sha256": "ac632b414f7c6b5ea65ac3f57456a066ca23d00034f8972c1f8b14840c18a95f",
+      "bytes": 1242
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/film-frame-decode-proof.json",
+      "sha256": "955851b19b1dfca739013891e6033393bfc8ab1f22698b4c91518e828c016302",
+      "bytes": 936
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-elder-attachments.json",
+      "sha256": "7102c0e1bdadc289e42600278e29bec9f10efc7f8590fe477455882e38eb4f3c",
+      "bytes": 80539
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-elder-post.json",
+      "sha256": "b250870eb92a12c4c4036fdeef6ebf28b5bed5f42556c1d97116f53d67efa17b",
+      "bytes": 25721
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-elder14-attachment.html",
+      "sha256": "b5412aea82e8a6086e69ed615db5d8e2edf2f69be636b6aa6d6bed23ab0d61f3",
+      "bytes": 116597
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-ultimate-elder-product.html",
+      "sha256": "7cae20b323738662553efaa2bea165e848ef27ca35b1d8d1b4451ed2ccdc86b1",
+      "bytes": 157234
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/neca-ultimate-elder-unmasked-fullbody.jpg",
+      "sha256": "30acc63936c4775c6354bb3395528f14a42b20e26072097a44710d10352fb44a",
+      "bytes": 505911
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-film-frame-first-fps1.png",
+      "sha256": "8a6699d0aa69ea8bb2d3ca5f4f1c26dd7fdccdfa0d16431a81e66d406903a265",
+      "bytes": 821600
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-public-clip.mp4",
+      "sha256": "92e4dce3d6352e3bb29c124acc40ace869a323297188ee4a69236a118b7990bb",
+      "bytes": 972641
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/licensed-jungle-hunter1987-costume-only-cg13.jpg",
+      "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+      "bytes": 203981
+    }
+  ],
+  "rootSourceReview": {
+    "reviewer": "/root",
+    "actuallyOpened": [
+      "NECA14-fullbody",
+      "film-frame-first-fps1",
+      "old-atlas",
+      "source-waist-diagnostic-only"
+    ],
+    "decision": "limited-licensed-target-accepted-prepare-CG01-preflight",
+    "generatedImageApproved": false,
+    "firstCallStillRequiresRootPreflightValidation": true,
+    "waistCorrection": "Anatomical LEFT hip partial antique pistol, not a biomask. Only visible brown curved stock / gold trigger guard and partial mechanism supported. No inferred model, date, hidden barrel/rear or full isolated pistol."
+  },
+  "documentHistory": {
+    "previousDraftSha256": "e9da1f13510429f70028dfd2b3a7bc52fbfa9dc039bff89cede209ca0ece9313",
+    "privatePreviousDraft": ".tmp/cg-alien-2026-11-01/lot-02/greyback-yautja/source-history/e9da1f13510429f70028dfd2b3a7bc52fbfa9dc039bff89cede209ca0ece9313.json",
+    "correctionsBeforeGeneration": [
+      "film-frame-upper-face-outside-context-only",
+      "left-waist-partial-pistol-not-mask",
+      "explicit-optional-mask-only-WhatIf-CG13",
+      "CG13-real-crossed-JungleHunter1987-costume-not-own-optional-head-variant"
+    ],
+    "beforeCrossCostumeCorrectionSha256": "0cb363f3d2aa0f2cd78d453dc51d31c37e9f6a1625624a8ffdfbaae3558bb563"
+  },
+  "productionOutcome": {
+    "actualProducer": "/root/alien_roster_inventory",
+    "actualSuccessfulImageGenOutputs": 23,
+    "selectedCg": 15,
+    "retainedRealRejectedDrafts": 8,
+    "nativeGeometry": "all selected natives 1086x1448 RGB strict3:4",
+    "sourceImagePixelsChanged": false,
+    "absoluteFilmFidelityCertified": false,
+    "runtimeImportedByProducer": false,
+    "rootFirstCgAccepted": true,
+    "independentReviewer": "/root/alien_associated_quality"
+  }
+}

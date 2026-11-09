@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T05:03:12.417980+00:00",
+  "heroId": "beyond_good_evil_jade",
+  "universe": "Beyond Good & Evil",
+  "sourceWork": "Beyond Good & Evil (2003), original Jade after acquiring Daï-Jo and Gyrodisk glove",
+  "sourceReference": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/15130/manuals/manual_english.pdf?t=1718743204",
+  "sourceFacts": {
+    "movement": "Manualp7 walk/run/crouch/roll/dodge/automatic jump and hanging/climbing",
+    "combat": "Manualp10 Daï-Jo blows, whirlwind combo and stationary charged Super Attack",
+    "camera": "Manualp8 reporting photography; informational, never a damaging beam",
+    "gyrodisk": "Manualp13 glove launches small disks that operate mechanisms; not a camera laser"
+  },
+  "appearance": "Short green cap, dark chin-length bob, green cropped jacket over white shirt, beige cargo trousers, brown practical shoes, fingerless gloves; compact camera, retractable Daï-Jo staff, Gyrodisk glove. Original2003 silhouette, not Jade2/reboot/cosplay.",
+  "equipmentRules": [
+    "Two-handed Daï-Jo physical staff for attacks and braced guard-labelled poses; no blade, gun or shield.",
+    "Camera kept compact at hip except taunt1/reporting gesture, informational zeroHP.",
+    "During locomotion/climbing staff retracted and secured so both hands can move or grip.",
+    "Shield states depict bracing, recoil and evasive recovery with the staff. Original2003 uses dodging; continuous engine shield, perfect-shield timing and platform-fighter aerial attacks are declared adaptations, not certified source mechanics."
+  ],
+  "states": [
+    "idle",
+    "walk",
+    "run",
+    "turn",
+    "jumpStart",
+    "jumpRise",
+    "jumpApex",
+    "fall",
+    "fastFall",
+    "land",
+    "crouchEnter",
+    "crouchIdle",
+    "crouchExit",
+    "crouchCharge",
+    "taunt1",
+    "hitStun",
+    "shieldEnter",
+    "shieldHold",
+    "shieldHit",
+    "perfectShield",
+    "shieldBreak",
+    "shieldExit",
+    "dead",
+    "defeat",
+    "attackLight1",
+    "attackLight2",
+    "attackLight3",
+    "crouchLight",
+    "chargeStart",
+    "chargeLoop",
+    "chargeRelease",
+    "chargeRecovery",
+    "attackRecovery",
+    "special",
+    "aerialNeutral",
+    "aerialForward",
+    "aerialDown",
+    "intro",
+    "victory",
+    "ledgeAttack",
+    "ledgeCatch",
+    "ledgeHang",
+    "ledgeClimb",
+    "ledgeDrop",
+    "ledgeJump"
+  ],
+  "atlases": [
+    {
+      "id": "jade-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "requestedStates": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    },
+    {
+      "id": "jade-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "requestedStates": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    },
+    {
+      "id": "jade-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "requestedStates": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    },
+    {
+      "id": "jade-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "requestedStates": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    },
+    {
+      "id": "jade-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory"
+      ],
+      "requestedStates": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "reservedGripStudy"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    },
+    {
+      "id": "jade-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeAttack",
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "requestedStates": [
+        "ledgeAttack",
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump",
+        "reservedStandingStudy",
+        "reservedCameraStudy"
+      ],
+      "physicalLayout": {
+        "columns": 4,
+        "rows": 8,
+        "posesPerState": 4
+      }
+    }
+  ],
+  "deliveredStates": 45,
+  "deliveredDistinctDrawings": 180,
+  "requestedCandidateDrawings": 192,
+  "reservedCandidateDrawings": 12,
+  "generationRules": [
+    "New native image_gen drawings; no anatomy repainting, frame mirroring countednew, rotation or bodypartcomposition.",
+    "Reference pictures used for appearance only and not counted as new drawings.",
+    "Retain every rawsource, exact actualarguments/receipt and exclude clipped/missing/contaminated rows honestly.",
+    "Technical normalization preserves RGBA inside real source rectangles before nearest-neighbor resizing and packing.",
+    "Every per-state fourpose row has independent drawings. All180delivered poses must be unique, including across atlases and comparedwith separately authored PartA48 and RPG16."
+  ],
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "gameplayAdaptation": true,
+  "globalPlan": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+    "sha256": "1f8685e68f25a13ca1c321d6899257f102f5a327ce01f8f58678931832926604"
+  }
+}

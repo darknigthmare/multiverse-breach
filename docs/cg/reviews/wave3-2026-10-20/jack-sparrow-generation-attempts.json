@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "characterId": "jack_sparrow_potc",
+  "date": "2026-10-20",
+  "attempts": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/jack-sparrow/01-characterSolo.txt",
+      "status": "blocked-input-moderation",
+      "outputProduced": false,
+      "errorCode": "moderation_blocked",
+      "moderationStage": "input",
+      "category": "public-figure",
+      "requestId": "73e8ffbe-83c1-42e8-bead-73905e33f31c",
+      "providerMessage": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 73e8ffbe-83c1-42e8-bead-73905e33f31c.",
+      "retries": 0
+    }
+  ],
+  "notAttemptedSlots": [
+    "CG04",
+    "CG05",
+    "CG06",
+    "CG07",
+    "CG08",
+    "CG09",
+    "CG10",
+    "CG11",
+    "CG12",
+    "CG13",
+    "CG14",
+    "CG15"
+  ],
+  "notAttemptedReason": "No further same-identity body request after explicit public-figure input refusal; no circumvention or substitute design.",
+  "successfulSlots": [
+    "CG02",
+    "CG03"
+  ],
+  "historicalFilesPreserved": true
+}

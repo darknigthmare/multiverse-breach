@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-23",
+  "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+  "reviewer": "/root/wave7_coordination",
+  "scope": "Five old then-selected atlases personally opened and compared with their five actual currently selected internal V2 portraits before wave7 runtime integration. Findings bind only the old bitmap paths and hashes, not future corrected atlas selections.",
+  "baselineRuntimeSnapshot": {
+    "path": ".tmp/cg-wave7-2026-10-23/runtime-baseline-before-integration.json",
+    "sha256": "1094a43cc8ec1c2c6d1aeb2fa8609c980a2536215252a6199b5f99ff2dbcef65"
+  },
+  "internalOriginalAuthorities": 5,
+  "newExternalIdentitySources": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "independentFromFiveNewAtlasAndCgProducers": true,
+  "newArtworkViewedByThisReview": false,
+  "visualInspectionPerformed": {
+    "currentInternalV2Portraits": 5,
+    "oldSelectedAtlases": 5,
+    "oldRuntimeContextBindingsChecked": 25
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "nessa_vire",
+      "incarnation": "Aetherion: Seven Laws of Magic — Nessa Vire current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "nessa_vire",
+        "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire.png",
+        "sha256": "4a74c4074b90f6708529879b40642fa7f03dbc7497586e2865ed357d76b57536",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-signature-sword-and-dark-segmented-armour",
+      "observed": [
+        "L’ancien atlas montre une femme aux cheveux bleu-noir souples, vêtue d’une tunique ou d’un manteau bleu marine à liserés dorés et de bottes brunes ; ses mains sont vides dans les seize cellules.",
+        "La V2 sélectionnée montre une armure segmentée anthracite/noire, épaulière et brassards métalliques, cuissardes ou bottes hautes à plaques, cape sombre à pans déchirés et chevelure sombre attachée en queue haute ; les yeux et accents lumineux sont violets.",
+        "La longue épée sombre à motif lumineux violet, tenue de la main anatomique droite dans cette vue arrière en trois quarts, est un volume de silhouette majeur absent de l’ancien atlas. Les fissures ou fragments magiques violets de l’autre côté du corps ne sont pas une seconde épée.",
+        "La tunique marine et ses bordures dorées régulières ne représentent ni les plaques sombres ni les longues bandes de cape déchirées de la source actuelle."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png",
+          "sha256": "e5c26dc4dc50e9a3f3ada818dc99fe3be836f8b04edca517416bd9a27dfd0e10",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "La source montre une vue principalement arrière en trois quarts avec un côté du visage ; les autres faces de l’armure et les petites gravures ne sont pas établies avec précision.",
+          "Une seule épée physique est visible ; les effets violets de l’autre main ne prouvent pas un autre objet rigide.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave7_coordination"
+      ],
+      "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "aelwen_starbough",
+      "incarnation": "Valedor: The Shattered Crown — Aelwen Starbough current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "aelwen_starbough",
+        "path": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough.png",
+        "sha256": "de235555677bfa3233a710765dcb946bd600c134d062cc353b41e66c89a9c3b1",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-longbow-quiver-and-divergent-white-costume",
+      "observed": [
+        "L’ancien atlas conserve des cheveux blonds, des oreilles pointues et une cape verte, mais porte une tunique blanche courte sous un plastron clair, des jambières brunes et des mains vides dans les seize poses.",
+        "La V2 sélectionnée porte un équipement d’archère vert sombre et brun, des ornements de feuilles et bordures dorées, une cape verte à pans irréguliers, des brassards sombres, des cuissardes ou bottes hautes feuillues et une silhouette de tenue nettement différente de la tunique blanche.",
+        "Le grand arc végétal courbe tenu de la main anatomique gauche, la flèche/corde tirée par la droite et le carquois à flèches visibles au-dessus de l’épaule droite sont des repères majeurs absents de l’ancien atlas.",
+        "Les oreilles elfiques et les cheveux blonds seuls ne suffisent pas à qualifier l’ancien costume ou à remplacer l’équipement source par des coups de poing."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/valedor_shattered_crown/heroes/aelwen_starbough.png",
+          "sha256": "e6dddff9b04d8f24b63ab2b0971d93a6192e1fced2e4e8fbea97548a3868c5b6",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "La source établit les formes visibles de l’arc, du carquois et de la tenue ; le dos complet du manteau, les fixations cachées et chaque plume de flèche ne sont pas un modèle de rotation.",
+          "La référence est une archère elfique originale de Valedor ; aucun personnage blond d’une franchise tierce ne peut lui servir d’identité de substitution.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave7_coordination"
+      ],
+      "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "ysara_flint",
+      "incarnation": "The Crownless Sea — Capitaine Ysara Flint current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "ysara_flint",
+        "path": "/sprites/generated/heroes/the-crownless-sea/ysara-flint.png",
+        "sha256": "302a668a013345af9794c8ca7da2410bc00447c58ba3fd77612f086a348478b4",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-cutlass-left-flintlock-and-yellow-sash",
+      "observed": [
+        "L’ancien atlas représente une capitaine aux longs cheveux sombres surtout ondulés, manteau marine à épaulettes dorées, chemise claire, ceinture ou étoffe rouge sombre et mains vides dans toute la planche.",
+        "La V2 sélectionnée montre une peau brune, des tresses sombres tirées vers l’arrière, de grandes boucles d’oreille dorées, un manteau bleu usé à broderies dorées, une chemise écrue ouverte et surtout une large écharpe ou ceinture jaune ocre nouée autour de la taille.",
+        "La source porte un sabre courbe complet dans la main anatomique droite et un pistolet à silex dressé dans la main gauche. Aucun de ces deux volumes distincts n’est représenté dans l’ancien atlas.",
+        "Le manteau partagé avec un archétype de pirate ne justifie pas le changement de coiffure, la disparition des deux armes ni le remplacement de la grande étoffe jaune par une bande rouge."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/crownless_sea/heroes/ysara_flint.png",
+          "sha256": "4ac6a4c8cfbe185c8308c6013acaef65d1e3f72b107df497f80abe781df3f696",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "Une seule vue qualifie les côtés visibles du sabre et du pistolet ; marques minuscules, faces cachées et géométrie mécanique interne ne sont pas établies.",
+          "Les autres personnes et navires du portrait servent au contexte, jamais au visage ou à la coiffure de Ysara.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave7_coordination"
+      ],
+      "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "aurelia_marcellina",
+      "incarnation": "Imperium Aeternum — Aurelia Marcellina current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "aurelia_marcellina",
+        "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina.png",
+        "sha256": "b7606b93b466251a0d40af5f9d2bd4d4b7801890ac5906329feef92d312fb30b",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-spear-left-fire-bowl-and-full-length-veiled-robe",
+      "observed": [
+        "L’ancien atlas représente une combattante romaine aux cheveux bruns découverts, courte tunique blanche sur les cuisses, cape rouge, plastron ou bandes dorées, hautes sandales et mains vides.",
+        "La V2 sélectionnée porte un voile blanc sur la tête et une longue robe blanche à plis atteignant le sol, avec drapé rouge vertical, grande ceinture dorée, parures et sandales ouvertes. La silhouette est celle de cette robe cérémonielle, et non celle de la courte tenue de combat de l’ancien atlas.",
+        "Une haute lance à pointe dorée et rubans rouges est tenue de la main anatomique droite ; un brasero ou plat à feu rond est porté dans la main gauche. Les deux accessoires identifiants sont absents de toutes les anciennes cellules.",
+        "Le voile, les grands volumes du drapé blanc et l’asymétrie lance/brasero doivent être redessinés ; une recoloration de la cape rouge de l’ancien atlas ne rétablit pas ces formes."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png",
+          "sha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "La source n’établit pas le revers du voile, chaque attache ni le relief exact de toutes les parures. Le feu est un effet visuel contenu dans le plat, pas un équipement anatomique supplémentaire.",
+          "La robe dissimule la majeure partie des jambes : les poses doivent conserver le drapé et ne pas prétendre que la source qualifie des détails cachés de tenue.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave7_coordination"
+      ],
+      "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "seyra_tal",
+      "incarnation": "Ilyr Concordat — Seyra Tal current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "seyra_tal",
+        "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal.png",
+        "sha256": "2e02cbb8c851e738959ce906adc7f3c8aa4463b21a2f3c4d98cfccaadb059f8c",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "human-substitution-instead-of-crystalline-nonhuman-anatomy",
+      "observed": [
+        "L’ancien atlas est une femme humaine à peau claire, cheveux noirs en chignon, visage humain, uniforme bleu marine à liserés dorés, petite cape blanche et bottes humaines ; ses mains sont vides.",
+        "La V2 sélectionnée est un être cristallin non humain bleu et violet : tête anguleuse allongée à pointes cristallines, yeux cyan, cou et membres facettés, doigts pointus et pieds cristallins à griffes. La substitution humaine change l’anatomie même du personnage.",
+        "Le long manteau ou drapé bleu à bordures dorées, ses grands pans latéraux, les cristaux pectoraux et les pointes des membres n’ont pas d’équivalent dans la courte cape blanche de l’ancien atlas.",
+        "La longue arme à lame cristalline est tenue de la main anatomique gauche ; la main droite ouverte soutient une composition orbitale cyan/violette. La V2 ne qualifie ni une chevelure humaine ni des bottes ordinaires ni un visage humain."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/ilyr_concordat/heroes/seyra_tal.png",
+          "sha256": "1aa75604977fde631c5629d99039ef2b4f9fdfe8728822e5a3a4ab04b8b0ffc9",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou son usage d’équipement n’est pas une nouvelle source indépendante.",
+          "Une vue ne fixe pas toute la géométrie cristalline cachée du crâne, du dos, des doigts ou des pieds ; le nombre exact de toutes les petites pointes n’est pas certifié.",
+          "Les pans du manteau ne sont pas automatiquement des ailes anatomiques ; la source ne qualifie ni cheveux humains ni âge humain précis.",
+          "Le constat s’applique seulement au chemin et au SHA de l’ancien atlas à l’instant de cette revue ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave7_coordination"
+      ],
+      "reviewedAt": "2026-10-23T20:42:32.227580+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    }
+  ]
+}

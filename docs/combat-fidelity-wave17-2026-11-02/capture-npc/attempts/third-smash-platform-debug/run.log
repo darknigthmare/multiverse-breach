@@ -1,0 +1,14 @@
+RPG player PASS
+RPG enemy PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Error: Capture modified HP, altitude, camp or input ownership: {"start":[{"id":"tail_concerto_waffle","sourceId":"tail_concerto_waffle","hp":120,"y":369.86000000000007,"team":"hero"},{"id":"w17-kit-battle-player","sourceId":"tail_concerto_red_vest_kitten","hp":65,"y":369.86000000000007,"team":"enemy"}],"armed":[{"id":"tail_concerto_waffle","sourceId":"tail_concerto_waffle","hp":120,"y":442.625,"team":"hero"},{"id":"w17-kit-battle-player","sourceId":"tail_concerto_red_vest_kitten","hp":65,"y":442.625,"team":"enemy"}],"ground":363,"capture":{"kind":"bubble-capture","active":true,"phase":"captured","sourceHeroId":"tail_concerto_waffle","universe":"Tail Concerto","sourceRuntimeId":"tail_concerto_waffle","targetRuntimeId":"w17-kit-battle-player","remaining":1.25,"duration":1.25,"turnsRemaining":1,"originalSide":null,"nonlethal":true,"immobilize":true,"suppressActions":true,"lift":0,"changesFaction":false,"inputProxy":null,"durationIsEngineAdaptation":true,"source1to1Verified":false}}
+    at eval (eval at evaluate (:311:30), <anonymous>:15:169)
+    at async <anonymous>:337:30
+    at /workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash.browser.mjs:57:27 {
+  log: []
+}
+
+Node.js v24.19.0

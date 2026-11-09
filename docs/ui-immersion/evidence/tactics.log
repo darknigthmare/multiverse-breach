@@ -1,0 +1,16 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> lively-darwin@0.0.0 test:audit-tactics
+> node --test --test-concurrency=1 scripts/auditTacticsReliability.test.mjs scripts/auditTacticsLifecycle.test.mjs scripts/auditTacticsSupport.test.mjs
+
+✔ scripts/auditTacticsLifecycle.test.mjs (2358.799024ms)
+✔ scripts/auditTacticsReliability.test.mjs (2131.739239ms)
+✔ scripts/auditTacticsSupport.test.mjs (2192.013192ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6692.359147

@@ -1,0 +1,38 @@
+EXCERPT src/game/heroes.js
+  {
+    id: 'arca_quillon',
+    name: 'Quillon Rusk',
+    universe: 'Nexus de Convergence',
+    category: 'tactical',
+    campaignExclusive: true,
+    campaignActId: 'anchors',
+    unlockMissionId: 8804,
+    primaryColor: '#3a3028',
+    secondaryColor: '#f0b35a',
+    weaponType: 'gun',
+    weaponColor: '#d7a55d',
+    stats: { hp: 130, atk: 12, def: 9, spd: 6 },
+    simple: { name: 'Tir de Contre-Registre', type: 'bullet', dmg: 0.95 },
+    secondary: { name: 'Mandat de Restitution', type: 'projectile', cd: 7, dmg: 1.65 },
+    defense: { name: 'Clause de Dette', type: 'shield', dur: 2.2, reduce: 0.76 },
+    special: { name: 'Audit de la Premiere Breche', type: 'rocket', dmg: 3.9, color: '#f0b35a' }
+  },
+EXCERPT src/game/characterPlaques.js
+  arca_quillon: {
+    clearance: 'ARC-QLON',
+    rank: { fr: 'Auditeur de la dette', en: 'Auditor of Debt' },
+    role: { fr: 'Preuve tactique, restitution et responsabilite de cellule', en: 'Tactical evidence, restitution, and cell accountability' },
+    callSign: 'Quillon',
+    origin: { fr: 'Nexus de Convergence - Bureau des comptes de l Atrium', en: 'Nexus of Convergence - Atrium Office of Accounts' },
+    dossier: {
+      fr: 'Quillon Rusk tenait les comptes materiels des premiers Remparts. Apres la Premiere Breche, il decouvrit des livraisons affectees a une route sans numero, puis recut l ordre de solder ces lignes comme des erreurs. Il obeissait encore quand les noms lies aux factures disparurent de sa memoire; il comprit alors qu A.R.C.A. ne cachait pas seulement une depense, mais les personnes qui en avaient paye le prix. Pendant l Acte II, Quillon presenta son contre-registre devant la Cite-Mosaique et accepta que sa propre signature figure parmi les responsables. La cellule ZERO le recruta non pour absoudre A.R.C.A., mais pour garantir que chaque victoire conserve des criteres, une dette et une personne capable d en repondre.',
+      en: 'Quillon Rusk kept material accounts for the first Bulwarks. After the First Breach, he found deliveries assigned to an unnumbered route, then received orders to close those lines as errors. He was still complying when the names tied to the invoices vanished from his memory; he understood A.R.C.A. was hiding not merely an expense, but the people who had paid its price. During Act II, Quillon presented his counter-ledger before Mosaic City and accepted that his own signature belonged among those responsible. Cell ZERO recruited him not to absolve A.R.C.A., but to ensure every victory retains its criteria, its debt, and someone able to answer for it.'
+    },
+    breachLore: {
+      fr: 'Tir de Contre-Registre fixe une preuve sur la cible. Mandat de Restitution rend au terrain une ressource declaree absente, Clause de Dette absorbe une attaque sans en effacer le cout et Audit de la Premiere Breche expose simultanement les lignes falsifiees. Quillon refuse les operations dont la reussite ne peut etre expliquee aux personnes sauvees. Son role tactique complete Sable: elle prouve ou la cellule est allee; lui inscrit pourquoi elle y est allee et qui supportera les consequences.',
+      en: 'Counter-Ledger Shot pins evidence to its target. Restitution Warrant returns a resource declared absent to the field, Debt Clause absorbs an attack without erasing its cost, and First Breach Audit exposes falsified lines at once. Quillon refuses operations whose success cannot be explained to the people they saved. His tactical role complements Sable: she proves where the cell went; he records why it went there and who will carry the consequences.'
+    },
+    doctrine: { fr: 'Contre-registre, mandat de restitution, cout visible et responsabilite nominative.', en: 'Counter-ledger, restitution warrant, visible cost, and named accountability.' },
+    threat: { fr: 'Risque A.R.C.A.: son besoin de tout inscrire peut ralentir une extraction urgente, ou transformer la responsabilite en punition quand la reparation devrait primer.', en: 'A.R.C.A. risk: his need to record everything can delay an urgent extraction or turn accountability into punishment when repair should come first.' },
+    tags: ['Nexus', 'Cellule ZERO', 'Acte II', 'A.R.C.A.', 'Dette', 'Tactical']
+  },

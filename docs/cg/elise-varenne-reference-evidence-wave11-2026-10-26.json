@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "elise_varenne",
+  "heroId": "elise_varenne",
+  "characterName": "Élise Varenne",
+  "incarnation": "Aevum Fracture — selected individual Élise Varenne V2 original-project portrait2026",
+  "qualificationStatus": "internal-selected-original-project-reference-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/aevum_fracture/heroes/elise_varenne.png",
+      "sha256": "7b2a7638651cf2c7ab6380d60eb1f095488170a4dc91bfa4aaaf08d9b648c712",
+      "bytes": 2124394,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:26:59.281089+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact selected source restored by root, actually opened in current session."
+    },
+    {
+      "path": "/sprites/generated/heroes/aevum-fracture/elise-varenne.png",
+      "sha256": "e5527f48a9b28d64a63dc3e7d74338fd937a7a7c98fbbf9c22fbeb2e9b8c2f83",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Lean human woman with short asymmetrical violet-black bob, long navy coat with bright cyan edging over fitted opaque charcoal tactical top/trousers, black gloves and tall black lace boots."
+    ],
+    "face": [
+      "Warm light skin, sharp features/dark brows, short wavy violet-black side-swept bob, gray-blue eyes; no visible scars."
+    ],
+    "costume": [
+      "Navy open high-collar longcoat/cyan lapel trim, layered dark neck scarf, black belt with rectangular silver buckle, dark thigh holster at anatomical RIGHT leg."
+    ],
+    "equipment": [
+      "Anatomical RIGHT hand (viewer LEFT) holds compact rectangular dark chronal pistol with clear bright cyan cylindrical lower chamber and circular muzzle ring; LEFT hand open."
+    ],
+    "palette": [
+      "Navy, charcoal/black, cyan luminescent trim/weapon, violet-black hair."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project selected V2 source only, no external franchise authority or absolute1:1 certification.",
+    "Chronological age unknown; all themes family-safe, opaque, nonromantic.",
+    "Single front/three-quarter source, hidden reverse geometry and tiny illegible insignia unknown.",
+    "Old atlas long brown ponytail, white shirt/white cuffs, gold-trimmed navy coat and unarmed punches; selected source short violet bob/dark tactical layers/cyan trim/right chronal pistol differ.",
+    "Old atlas remains byte-identical; actual divergence justifies new atlas.",
+    "CG05 Nexus adaptation; CG09-11 fan art; CG12-15 hypothetical WhatIf with one CG13 option and one CG15 option. All new settings original universe-compatible interpretations."
+  ],
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/aevum_fracture/heroes/elise_varenne.png"
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "actualRecordRead": {
+      "worldKey": "aevum_fracture",
+      "lore": {
+        "origin": {
+          "fr": "Aevum Fracture est une uchronie entièrement fictive où quatre versions d’une même capitale et de ses nations se superposent après l’invention du Moteur chronal."
+        },
+        "breach": {
+          "fr": "Le Sans-Auteur propose de résoudre les contradictions en choisissant une seule ligne victorieuse et en transformant les autres populations en erreurs."
+        },
+        "coreConflict": {
+          "fr": "Conserver les sources, les témoins et les conséquences de plusieurs histoires sans romantiser une timeline comme monde parfait."
+        }
+      },
+      "hero": {
+        "id": "elise_varenne",
+        "name": "Élise Varenne",
+        "category": "tactical",
+        "combatRole": "espionnage temporel / tir",
+        "loreRole": "Agente de la République de Lume, seule personne à se souvenir de quatre versions incompatibles de la capitale.",
+        "primaryColor": "#22356f",
+        "secondaryColor": "#4cc9f0",
+        "weaponType": "chronal_pistol",
+        "stats": {
+          "hp": 126,
+          "atk": 15,
+          "def": 8,
+          "spd": 8
+        },
+        "simple": {
+          "name": "Pistolet de Minuit",
+          "type": "bullet",
+          "dmg": 1.0
+        },
+        "secondary": {
+          "name": "Passeport Impossible",
+          "type": "teleport",
+          "cd": 5,
+          "dmg": 1.75
+        },
+        "defense": {
+          "name": "Couverture Diplomatique",
+          "type": "dodge",
+          "dur": 2.2,
+          "reduce": 0.87
+        },
+        "special": {
+          "name": "Quatre Capitales, Un Signal",
+          "type": "bullet_aoe",
+          "dmg": 4.8,
+          "color": "#4cc9f0"
+        },
+        "universe": "Aevum Fracture",
+        "sourceType": "original",
+        "weaponColor": "#4cc9f0"
+      },
+      "stages": [
+        {
+          "id": "uchronia_four_midnights",
+          "name": {
+            "fr": "Capitale aux Quatre Minuits",
+            "en": "Capital of Four Midnights"
+          },
+          "mode": "Smash",
+          "difficulty": "Hard",
+          "objectiveType": "control",
+          "boss": "Général Qui-N’a-Jamais-Perdu",
+          "setting": {
+            "fr": "Quatre skylines alternent toutes les trente secondes et changent armes, plateformes et dangers."
+          },
+          "universe": "Aevum Fracture",
+          "sourceUniverses": [
+            "Aevum Fracture"
+          ],
+          "sourceType": "original",
+          "stageKey": "uchronia_four_midnights"
+        },
+        {
+          "id": "uchronia_ministry_correct_history",
+          "name": {
+            "fr": "Ministère de l’Histoire Correcte",
+            "en": "Ministry of Correct History"
+          },
+          "mode": "Tactics",
+          "difficulty": "Very Hard",
+          "objectiveType": "artifact",
+          "boss": "Ministre d’Hier",
+          "setting": {
+            "fr": "Archives labyrinthiques où trois sources contradictoires doivent être placées dans le même dossier."
+          },
+          "universe": "Aevum Fracture",
+          "sourceUniverses": [
+            "Aevum Fracture"
+          ],
+          "sourceType": "original",
+          "stageKey": "uchronia_ministry_correct_history"
+        },
+        {
+          "id": "uchronia_one_history_engine",
+          "name": {
+            "fr": "Moteur de l’Histoire Unique",
+            "en": "One True History Engine"
+          },
+          "mode": "RPG",
+          "difficulty": "Expert",
+          "objectiveType": "overload",
+          "boss": "Moteur de l’Histoire Unique",
+          "setting": {
+            "fr": "Boss à quatre timelines; un choix sauvegardé dans une ligne modifie les trois autres sans les remplacer."
+          },
+          "universe": "Aevum Fracture",
+          "sourceUniverses": [
+            "Aevum Fracture"
+          ],
+          "sourceType": "original",
+          "stageKey": "uchronia_one_history_engine"
+        }
+      ]
+    }
+  },
+  "incarnationDecision": {
+    "selectedPortrait": "public/images/oc-worlds/v2/aevum_fracture/heroes/elise_varenne.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/aevum-fracture/elise-varenne.png",
+    "reason": "Old atlas long brown ponytail, white shirt/white cuffs, gold-trimmed navy coat and unarmed punches; selected source short violet bob/dark tactical layers/cyan trim/right chronal pistol differ."
+  }
+}

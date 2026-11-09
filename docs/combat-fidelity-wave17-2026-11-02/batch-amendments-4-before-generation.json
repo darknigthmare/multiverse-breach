@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T06:08:44.339Z",
+  "initialPlan": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+    "sha256": "1f8685e68f25a13ca1c321d6899257f102f5a327ce01f8f58678931832926604"
+  },
+  "replacements": [
+    {
+      "part": "B",
+      "withheldId": "bendy_ink_machine_boris",
+      "replacementId": "hammond",
+      "nativeRequestStatus": "actual-generation-refused",
+      "refusal": {
+        "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bendy_ink_machine_boris-result.json",
+        "sha256": "e60beff43c79ffcb7c98f115d614ebadd46a180b3284aefb1abb0905d1279e5b"
+      },
+      "replacementHero": {
+        "id": "hammond",
+        "name": "General Hammond",
+        "universe": "Stargate"
+      },
+      "replacementHeroSnapshotScope": "Identity fields from the scoped pre-generation source plan; complete live roster checked after activation.",
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "reason": "Independent Stargate SG-1 commander; no Boris, Buddy, Tom or Brute variant retry."
+    }
+  ],
+  "reviewedIdentityCount": 125,
+  "effectiveDrawingCharacters": 120,
+  "source1to1Verified": false,
+  "rules": {
+    "appendOnly": true,
+    "existingReviewedKitsRetained": true,
+    "replacementSourcePlansBeforeGeneration": true,
+    "noRefusedCharacterRetry": true
+  }
+}

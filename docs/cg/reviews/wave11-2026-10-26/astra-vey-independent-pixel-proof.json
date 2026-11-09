@@ -1,0 +1,643 @@
+{
+  "recoveredNativeTransportReplay": {
+    "schemaVersion": 1,
+    "status": "pass",
+    "characterId": "astra_vey",
+    "slot": "CG07",
+    "reviewer": "/root/lot_03_wave11",
+    "scope": "Independent local equality replay of producer-archived exact returned image_url/base64 to saved native PNG, not a second provider call or extra identity authority.",
+    "attestation": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-04/astra-vey/native-recovered/astra-CG07-57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5.transport-attestation.json",
+      "sha256": "997e8808fed84ae8a660bd193d1b1f320aa290b02bcc858a0ceb31747dfb62a5"
+    },
+    "originalDataUriArchive": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-04/astra-vey/native-recovered/astra-CG07-57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5.image-url.txt",
+      "sha256": "2fc67e3a4effacdfef2343f0851792353c8bd5b4b92948b607d39fef24a62c74",
+      "bytes": 4277510
+    },
+    "originalBase64Archive": {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-04/astra-vey/native-recovered/astra-CG07-57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5.original-base64.txt",
+      "sha256": "7be1ed844de17b3cef2ef829724e1fbc59276fbc4ee254bdcb7d04f3045e5abb",
+      "bytes": 4277488
+    },
+    "native": {
+      "path": "/workspace/multiverse-breach/.tmp/cg-wave11-2026-10-26/lot-04/astra-vey/native-recovered/astra-CG07-57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5.png",
+      "sha256": "57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5",
+      "bytes": 3208114
+    },
+    "exactDecodedBytesEqual": true,
+    "nativeReencoded": false,
+    "inventedExecUuid": false,
+    "promptAndSourceShaVerified": true
+  },
+  "conditionedExportVisualComparisons": [
+    {
+      "slot": "CG11",
+      "sourceActuallyOpened": true,
+      "nativeActuallyOpened": true,
+      "finalPublicSourceActuallyOpened": true,
+      "nativePath": "/workspace/generated_images/exec-9113fd8f-e264-4c68-902d-e8fcfb722986.png",
+      "sourcePath": "public/cg/mythos-primordia/astra-vey/goofy-wave11-2026-10-26.png",
+      "sourceSha256": "97ed78d0adb59c82b3a5a79cfcfa73d6f5f238c5fa96f450fdbbbb6f1c3b1fd3",
+      "reviewedAt": "2026-10-28T10:16:27.006232+00:00",
+      "decision": "accepted-minor-full-frame-nearest-with-source-limitations",
+      "observations": "Personally opened current V2, actual1087x1447 native11 and full public1086x1448 source PNG separately. Minor0.161253percent difference shows no material proportional drift; same entire main page/two boots/face/hair/LEFTheldcompass and drape boundaries remain legible, no crop/padding/painting. Secondary contextual floor papers still not all complete-rim certified."
+    }
+  ],
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "status": "pass",
+  "characterId": "astra_vey",
+  "reviewer": "/root/lot_03_wave11",
+  "producer": "/root/lot_04_wave11",
+  "receipt": {
+    "path": "docs/cg/astra-vey-wave11-2026-10-26.json",
+    "sha256": "e2813272133372e964317b142b818cbd41a4913afd95e6af6ec6846a319a4946"
+  },
+  "independentVisualReview": {
+    "path": "docs/cg/reviews/wave11-2026-10-26/astra-vey-independent-review.json",
+    "sha256": "34b8e03cba82cfb5520bcedc989fe068271cae577e34fde75ff3b1e81f653f79"
+  },
+  "strictNativeRgbSources": 14,
+  "nearestConditionedSources": 1,
+  "entries": [
+    {
+      "slot": "CG01",
+      "nativePath": "/workspace/generated_images/exec-2b485785-fa8a-4194-a4fd-a32c1db43e2a.png",
+      "nativeSha256": "9094f2a0b358bc3935704b58f0f282ff8049df0331fc53e4f4a53155a64eb1f8",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/character-solo-wave11-2026-10-26.png",
+          "sha256": "81ab933328b74a533e879d4bc400bce131580f47f2cb8fb260a688c2e8d75779",
+          "bytes": 4110346,
+          "replayedSha256": "81ab933328b74a533e879d4bc400bce131580f47f2cb8fb260a688c2e8d75779",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/character-solo-wave11-2026-10-26.webp",
+          "sha256": "75ba0a161caceb9f2cb36abfe1af680e49166ce2df44f632258782d90d345dd5",
+          "bytes": 1111714,
+          "replayedSha256": "75ba0a161caceb9f2cb36abfe1af680e49166ce2df44f632258782d90d345dd5",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/character-solo-wave11-2026-10-26-thumb.webp",
+          "sha256": "52265e18dafdf9d1718d6ac3745713a16ba0a247bc74dc9994fa169e631ac90b",
+          "bytes": 85236,
+          "replayedSha256": "52265e18dafdf9d1718d6ac3745713a16ba0a247bc74dc9994fa169e631ac90b",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG02",
+      "nativePath": "/workspace/generated_images/exec-377697b0-3701-47cf-a2bd-8fbd4cf69a92.png",
+      "nativeSha256": "68615251052faeb7b7bce182fe81b7dca9e41ef59b9443aee629b376f7fc8051",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/signature-weapon-wave11-2026-10-26.png",
+          "sha256": "3cc301538f4aa933623322d036d5059d509654664267df91278c3619f41b81e4",
+          "bytes": 3262666,
+          "replayedSha256": "3cc301538f4aa933623322d036d5059d509654664267df91278c3619f41b81e4",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/signature-weapon-wave11-2026-10-26.webp",
+          "sha256": "6e5c4d8ea1d24341d497279e4f18e323a0ff49ce4e0378c1909ce30903ef3330",
+          "bytes": 662862,
+          "replayedSha256": "6e5c4d8ea1d24341d497279e4f18e323a0ff49ce4e0378c1909ce30903ef3330",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/signature-weapon-wave11-2026-10-26-thumb.webp",
+          "sha256": "f688f032015520ad8aa8bc540327c9ecc9ba46ae24b54b3f4c06022a1dba13e8",
+          "bytes": 55600,
+          "replayedSha256": "f688f032015520ad8aa8bc540327c9ecc9ba46ae24b54b3f4c06022a1dba13e8",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG03",
+      "nativePath": "/workspace/generated_images/exec-f44c330b-abb3-4d0f-b2f8-84d3575f383c.png",
+      "nativeSha256": "5ab8b01e48b8918e9484ddb65680c1729929ee84fae8fbbf751a46326220c950",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/decor-wave11-2026-10-26.png",
+          "sha256": "ccb892460168f0898fe66029c0c5056c3bb4ad07badd92a1c32065ddb1b4f5d0",
+          "bytes": 4221672,
+          "replayedSha256": "ccb892460168f0898fe66029c0c5056c3bb4ad07badd92a1c32065ddb1b4f5d0",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/decor-wave11-2026-10-26.webp",
+          "sha256": "1b05c35a86a6a1297aaf68ac3e74f2dd30a2c57001d712ad74b8414c9c5274ee",
+          "bytes": 1150950,
+          "replayedSha256": "1b05c35a86a6a1297aaf68ac3e74f2dd30a2c57001d712ad74b8414c9c5274ee",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/decor-wave11-2026-10-26-thumb.webp",
+          "sha256": "08dfb6b5b0f5478108ae18e181c2c62a1cd3d9e205d7fc257bc9ca0de1198ce2",
+          "bytes": 87388,
+          "replayedSha256": "08dfb6b5b0f5478108ae18e181c2c62a1cd3d9e205d7fc257bc9ca0de1198ce2",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG04",
+      "nativePath": "/workspace/generated_images/exec-53c13acc-1ebc-4657-9fef-66a06c8d3a15.png",
+      "nativeSha256": "c8eed97d459abed1db918a153c4071276d33b2f7dd59046545ba24e77134972d",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/coherent-scene-wave11-2026-10-26.png",
+          "sha256": "affa8500066d872c48a5ad6538ea53f31f7841c0b591c73ffea927bad55bd59d",
+          "bytes": 4205925,
+          "replayedSha256": "affa8500066d872c48a5ad6538ea53f31f7841c0b591c73ffea927bad55bd59d",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/coherent-scene-wave11-2026-10-26.webp",
+          "sha256": "e869edf2b85ccde85de421e71ce4cd4ac960d196d6fcf69f2eace51cc41b3352",
+          "bytes": 1174908,
+          "replayedSha256": "e869edf2b85ccde85de421e71ce4cd4ac960d196d6fcf69f2eace51cc41b3352",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/coherent-scene-wave11-2026-10-26-thumb.webp",
+          "sha256": "04ebfad0c2e77cc2758d6b990f26bffe2572c63f5fbe3a07bbc4f60003430cb2",
+          "bytes": 91328,
+          "replayedSha256": "04ebfad0c2e77cc2758d6b990f26bffe2572c63f5fbe3a07bbc4f60003430cb2",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG05",
+      "nativePath": "/workspace/generated_images/exec-51ec90ab-6efc-43af-bdc8-26789ecc1e25.png",
+      "nativeSha256": "0d49844c259891e9a9bade7c494fd27cc18a9efd5278bb5479ce9b28e1427ae1",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/action-scene-wave11-2026-10-26.png",
+          "sha256": "538bd0a7c50a0a23ae89d51e08f0d88a300e9c3c3be6795198f067c4dbd8303c",
+          "bytes": 4264755,
+          "replayedSha256": "538bd0a7c50a0a23ae89d51e08f0d88a300e9c3c3be6795198f067c4dbd8303c",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/action-scene-wave11-2026-10-26.webp",
+          "sha256": "64a06563530151d889b38744e8680b2fd5dd2e1b24485e5bb7632462e90b57ea",
+          "bytes": 1237466,
+          "replayedSha256": "64a06563530151d889b38744e8680b2fd5dd2e1b24485e5bb7632462e90b57ea",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/action-scene-wave11-2026-10-26-thumb.webp",
+          "sha256": "771a319545ce01d682e5328e75ec54baf0d8e07f41cc9d9176a91ed3e06acc06",
+          "bytes": 96450,
+          "replayedSha256": "771a319545ce01d682e5328e75ec54baf0d8e07f41cc9d9176a91ed3e06acc06",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "nativePath": "/workspace/generated_images/exec-f07bf1d1-d831-416a-82fe-3cafcdc0ac2d.png",
+      "nativeSha256": "0bdf3a32b342db181566af06efbaf01416bb397ac3da0d17d0a3eaaf8cf1be95",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/intro-pose-wave11-2026-10-26.png",
+          "sha256": "bc7f6d220f93627ac626ad75e07cb3a8d7b050547520708c879c6db96d2450ae",
+          "bytes": 4374227,
+          "replayedSha256": "bc7f6d220f93627ac626ad75e07cb3a8d7b050547520708c879c6db96d2450ae",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/intro-pose-wave11-2026-10-26.webp",
+          "sha256": "6ded1ba78b6e469845e04e587ee4b72b103341ebd5759c6bb9f58421551d74a7",
+          "bytes": 1268894,
+          "replayedSha256": "6ded1ba78b6e469845e04e587ee4b72b103341ebd5759c6bb9f58421551d74a7",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/intro-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "c922dc0489206b92cf344af26ebd2d736f0258349becd356e8501f012576aa26",
+          "bytes": 100798,
+          "replayedSha256": "c922dc0489206b92cf344af26ebd2d736f0258349becd356e8501f012576aa26",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG07",
+      "nativePath": "/workspace/multiverse-breach/.tmp/cg-wave11-2026-10-26/lot-04/astra-vey/native-recovered/astra-CG07-57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5.png",
+      "nativeSha256": "57dc9022b0efbc2ea971ab464de63c3dc196495d7527adf403d0bb0c8efc57f5",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/victory-pose-wave11-2026-10-26.png",
+          "sha256": "35252beb79976b8d002bdaee172cc189e114d91153d3f97bda57064b07f255ad",
+          "bytes": 4329592,
+          "replayedSha256": "35252beb79976b8d002bdaee172cc189e114d91153d3f97bda57064b07f255ad",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/victory-pose-wave11-2026-10-26.webp",
+          "sha256": "3f3aa8d539187c5bede2ab091e6f6b5a4ee20c3de9ea234a5d6816da0ecbfb48",
+          "bytes": 1245204,
+          "replayedSha256": "3f3aa8d539187c5bede2ab091e6f6b5a4ee20c3de9ea234a5d6816da0ecbfb48",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/victory-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "0cba99e6e2888fcbe73b30ee834c0bbe682e672f02408c9fe05e862bffb57c89",
+          "bytes": 95700,
+          "replayedSha256": "0cba99e6e2888fcbe73b30ee834c0bbe682e672f02408c9fe05e862bffb57c89",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG08",
+      "nativePath": "/workspace/generated_images/exec-736d860e-aa7e-4856-979d-0b70b3153cee.png",
+      "nativeSha256": "1e9cc53c18ecdf6c8f5f16f169cc22ceba8ff206636d1945292d189e624cfd64",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/defeat-pose-wave11-2026-10-26.png",
+          "sha256": "25e5b5ff6f496aff25af8c6ddefad76bafeed89555c30cb6374d6ac2cc467fe5",
+          "bytes": 4343455,
+          "replayedSha256": "25e5b5ff6f496aff25af8c6ddefad76bafeed89555c30cb6374d6ac2cc467fe5",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/defeat-pose-wave11-2026-10-26.webp",
+          "sha256": "b1a6160405a80a8b07e17976a87fc7ef2c46e1319b2aea0330849ca14e685e2a",
+          "bytes": 1294162,
+          "replayedSha256": "b1a6160405a80a8b07e17976a87fc7ef2c46e1319b2aea0330849ca14e685e2a",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/defeat-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "328ad55903f41869e22ad9feed3d02bb79600fbe92e90f54656a2c034e717d5b",
+          "bytes": 99390,
+          "replayedSha256": "328ad55903f41869e22ad9feed3d02bb79600fbe92e90f54656a2c034e717d5b",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG09",
+      "nativePath": "/workspace/generated_images/exec-50ebd439-58f9-4c83-9b31-7ee1af395b9d.png",
+      "nativeSha256": "f713a46e15e0effe68418267ce9bfbc81a6666307b93795d4ebcc2cd82dc18a5",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/beach-family-wave11-2026-10-26.png",
+          "sha256": "0a44a20209f653a075ae98912e93a1fe54ffb9a1e69cb186b718698c602ae159",
+          "bytes": 4366749,
+          "replayedSha256": "0a44a20209f653a075ae98912e93a1fe54ffb9a1e69cb186b718698c602ae159",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/beach-family-wave11-2026-10-26.webp",
+          "sha256": "4648d9fb8ea84f0a09810aa67703f97e9838bce4f9797298fd717d8f6ce498cd",
+          "bytes": 1217288,
+          "replayedSha256": "4648d9fb8ea84f0a09810aa67703f97e9838bce4f9797298fd717d8f6ce498cd",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/beach-family-wave11-2026-10-26-thumb.webp",
+          "sha256": "65c4f92ec3bbccf44bdbca7331e3216663b0fc683f80b3989cf2431ced97b26f",
+          "bytes": 97644,
+          "replayedSha256": "65c4f92ec3bbccf44bdbca7331e3216663b0fc683f80b3989cf2431ced97b26f",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG10",
+      "nativePath": "/workspace/generated_images/exec-1f4286dc-8b07-4101-8e20-ee43a18d0470.png",
+      "nativeSha256": "84e47684e1b048ba0f057b6edf46fc89fc95c4aa7a1f5867f1d85eb2505a18ee",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/maid-service-wave11-2026-10-26.png",
+          "sha256": "6a3037d31987bc891eb97108047a689dd8397492a0235223a67d37273fbb0eee",
+          "bytes": 4202686,
+          "replayedSha256": "6a3037d31987bc891eb97108047a689dd8397492a0235223a67d37273fbb0eee",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/maid-service-wave11-2026-10-26.webp",
+          "sha256": "7011fbeb57a4fdecf30b8a12bd3f35cd601e8eac24604e8274c3f8d615780fba",
+          "bytes": 1116464,
+          "replayedSha256": "7011fbeb57a4fdecf30b8a12bd3f35cd601e8eac24604e8274c3f8d615780fba",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/maid-service-wave11-2026-10-26-thumb.webp",
+          "sha256": "d2537aeb4eb22f41877c05c316524963fd00d83e4b29fa19fc0b6673ca184969",
+          "bytes": 87974,
+          "replayedSha256": "d2537aeb4eb22f41877c05c316524963fd00d83e4b29fa19fc0b6673ca184969",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG11",
+      "nativePath": "/workspace/generated_images/exec-9113fd8f-e264-4c68-902d-e8fcfb722986.png",
+      "nativeSha256": "f5d1b12094ddbebcc086dbc134ecb39bb3aecce7a22aa839fc70c42df995c5f0",
+      "actualNativeDimensions": {
+        "width": 1087,
+        "height": 1447
+      },
+      "strictNativeRgb": false,
+      "fullFrameNearestFormatting": true,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/goofy-wave11-2026-10-26.png",
+          "sha256": "97ed78d0adb59c82b3a5a79cfcfa73d6f5f238c5fa96f450fdbbbb6f1c3b1fd3",
+          "bytes": 4398386,
+          "replayedSha256": "97ed78d0adb59c82b3a5a79cfcfa73d6f5f238c5fa96f450fdbbbb6f1c3b1fd3",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/goofy-wave11-2026-10-26.webp",
+          "sha256": "2f4722b80ec129f6866a60067cc1b55caca59c5af6798ffc7b64479364d18f0b",
+          "bytes": 1178872,
+          "replayedSha256": "2f4722b80ec129f6866a60067cc1b55caca59c5af6798ffc7b64479364d18f0b",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/goofy-wave11-2026-10-26-thumb.webp",
+          "sha256": "af23ce4c046a25f2283bd99aecb9d015189c5fec6e79b2c730607f2e922cd3a2",
+          "bytes": 94472,
+          "replayedSha256": "af23ce4c046a25f2283bd99aecb9d015189c5fec6e79b2c730607f2e922cd3a2",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG12",
+      "nativePath": "/workspace/generated_images/exec-cc9cdc8d-4c00-49e7-9d92-78425c45a789.png",
+      "nativeSha256": "09083b006d60ad8afc7e2a07cedaa15e533447df49a940d82f042eced3f9aa70",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/alignment-swap-wave11-2026-10-26.png",
+          "sha256": "d23dee9baaa16da47a158c23fd7297a74ecdd920ce89eb40f5e165b94b492505",
+          "bytes": 4375382,
+          "replayedSha256": "d23dee9baaa16da47a158c23fd7297a74ecdd920ce89eb40f5e165b94b492505",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/alignment-swap-wave11-2026-10-26.webp",
+          "sha256": "666abc1c6801e832d7c0c9d4815307e6f529e9879ca073c54a4d8fc93132108e",
+          "bytes": 1292872,
+          "replayedSha256": "666abc1c6801e832d7c0c9d4815307e6f529e9879ca073c54a4d8fc93132108e",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/alignment-swap-wave11-2026-10-26-thumb.webp",
+          "sha256": "77da599ee06da610c40665e0239d03cee89780c8d07f5f6a7bb0963081be9797",
+          "bytes": 101578,
+          "replayedSha256": "77da599ee06da610c40665e0239d03cee89780c8d07f5f6a7bb0963081be9797",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG13",
+      "nativePath": "/workspace/generated_images/exec-9bd26676-0966-4636-a7ad-4cbed137e1a6.png",
+      "nativeSha256": "cff7fc766853721989fdbd92bcd752721445b936e8e9fbea3349a009fc7d7b80",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/gender-swap-wave11-2026-10-26.png",
+          "sha256": "caac90340749cbc44085e602b4ba28b85f2bf030ad90150d46c3ae6be8560928",
+          "bytes": 4255626,
+          "replayedSha256": "caac90340749cbc44085e602b4ba28b85f2bf030ad90150d46c3ae6be8560928",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/gender-swap-wave11-2026-10-26.webp",
+          "sha256": "0c8d99575fc815c4deda56c6964e3c51da451d2b9c511245fb73fe0ebca6255b",
+          "bytes": 1147188,
+          "replayedSha256": "0c8d99575fc815c4deda56c6964e3c51da451d2b9c511245fb73fe0ebca6255b",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/gender-swap-wave11-2026-10-26-thumb.webp",
+          "sha256": "cce9ccecbc5ca5c7f1e33fe98a6456eb9f297c2c1c02e0a976908a08e8cbc22f",
+          "bytes": 91008,
+          "replayedSha256": "cce9ccecbc5ca5c7f1e33fe98a6456eb9f297c2c1c02e0a976908a08e8cbc22f",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG14",
+      "nativePath": "/workspace/generated_images/exec-de77cc31-d0d8-4257-9a2b-594da6c713ea.png",
+      "nativeSha256": "bbc827abd4e5b48d01ba34a140af134242d12468d03ec7771c453b80b77a2b8a",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/zombie-version-wave11-2026-10-26.png",
+          "sha256": "d335cfcc825eae62925aa0ea0f1c6f80edf4506ee530e69bf91750ece7a1c574",
+          "bytes": 4329671,
+          "replayedSha256": "d335cfcc825eae62925aa0ea0f1c6f80edf4506ee530e69bf91750ece7a1c574",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/zombie-version-wave11-2026-10-26.webp",
+          "sha256": "b06dc9ec88f7bcfef78c12ccc1fb1282db09dce6780145be6a0bcf076f5a3194",
+          "bytes": 1246602,
+          "replayedSha256": "b06dc9ec88f7bcfef78c12ccc1fb1282db09dce6780145be6a0bcf076f5a3194",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/zombie-version-wave11-2026-10-26-thumb.webp",
+          "sha256": "5a79a993f6fca500047c18658ad309fa0f93137523c075dee6356a0d7f5b7883",
+          "bytes": 100066,
+          "replayedSha256": "5a79a993f6fca500047c18658ad309fa0f93137523c075dee6356a0d7f5b7883",
+          "byteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG15",
+      "nativePath": "/workspace/generated_images/exec-70dd2d14-c186-4c95-bdfa-03901824efe5.png",
+      "nativeSha256": "3632818904d009b6ab03da22439e050b2399669afd1e3f841863c826fc75e629",
+      "actualNativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "semanticCropPaddingPainting": false,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/mythos-primordia/astra-vey/future-experienced-wave11-2026-10-26.png",
+          "sha256": "18ca39923dab054d87ddfbbdb1552189b75d4bac1a930845bde1fdb65f8f626f",
+          "bytes": 4481759,
+          "replayedSha256": "18ca39923dab054d87ddfbbdb1552189b75d4bac1a930845bde1fdb65f8f626f",
+          "byteExact": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/mythos-primordia/astra-vey/future-experienced-wave11-2026-10-26.webp",
+          "sha256": "c42dd5e48374c927cb1071a657b18cee2d89b34d8595ef0d5d1cb0e3fc6e8107",
+          "bytes": 1285518,
+          "replayedSha256": "c42dd5e48374c927cb1071a657b18cee2d89b34d8595ef0d5d1cb0e3fc6e8107",
+          "byteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/mythos-primordia/astra-vey/future-experienced-wave11-2026-10-26-thumb.webp",
+          "sha256": "ebc7347e205a93376774167ad0181a544b3a8035128aea3d3ab3252607644303",
+          "bytes": 101728,
+          "replayedSha256": "ebc7347e205a93376774167ad0181a544b3a8035128aea3d3ab3252607644303",
+          "byteExact": true
+        }
+      ]
+    }
+  ],
+  "replayedFiles": 45,
+  "exportsCompared": 45,
+  "allActualExportsByteExact": true,
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "Byte equality verifies documented formatting/export transport, not perfect identity fidelity.",
+    "Source/native visual inspection remains separately evidence-bound to each listed native."
+  ]
+}

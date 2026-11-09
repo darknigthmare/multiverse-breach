@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "maria_sh2",
+  "heroId": "maria_sh2",
+  "characterName": "Maria",
+  "proposedIncarnation": {
+    "label": "Silent Hill 2 original (2001)",
+    "status": "proposed-production-incarnation",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "needs-reference",
+  "sourceActuallyViewed": false,
+  "identityQualified": false,
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "attempts": [
+    {
+      "url": "https://www.konami.com/games/eu/en/products/silenthill/",
+      "attemptedAt": "2026-10-26T08:14:03.522458+00:00",
+      "identityQualified": false,
+      "imageActuallyViewed": false,
+      "statusCode": 200,
+      "finalUrl": "https://www.konami.com/games/eu/en/products/silenthill/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 22729,
+      "sha256": "bf648712037cbea842ce88b0f0f42b1f6319c8f4f7763a7e45881cff5518d7a0",
+      "localResponse": ".tmp/cg-wave11-2026-10-26/lot-04/maria-sh2/research/1.html",
+      "candidateImageUrls": [
+        "https://www.konami.com/games/s/eu/img/logo_konami.png",
+        "https://www.konami.com/products_master/eu_publish/silenthill/eu/en/images/mm1.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_shbom.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_shdp.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_shhd.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_shsm.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_shhc.jpg",
+        "https://www.konami.com/games/s/eu/img/rec_sho.jpg",
+        "https://www.konami.com/games/eu/en/products/silenthill/<%= thumbnail_data[title][current_country] %>",
+        "https://www.konami.com/games/eu/en/products/silenthill/<%= list[i].external_profile_image_url_https %>",
+        "https://www.konami.com/games/s/eu/img/thumb_topics_noimage.png",
+        "https://www.konami.com/games/eu/en/products/silenthill/<% if(list[i].thumbnail.medium.url && list[i].thumbnail.medium.w==600){ %><%= list[i].thumbnail.medium.url %><% }else if(list[i].thumbnail.full.url){ %><%= list[i].thumbnail.full.url %><% }else if(list[i].external_type == ",
+        "https://www.konami.com/games/s/eu/img/thumb-topics-cover-yt-16x9-s.png",
+        "https://www.konami.com/games/eu/en/products/silenthill/<% if(thumbnail.full.url){ %><%= thumbnail.full.url %><% }else if(game_thumbnail){ %><%= game_thumbnail %><% } %>"
+      ],
+      "result": "page-fetched-awaiting-incarnation-matching-image-inspection"
+    }
+  ],
+  "additionalAttemptEvidence": [],
+  "scopeLimitations": [
+    "No incarnation-matching identity image has been qualified through actual inspection. URLs, snippets, page200 status and old generic project sprites do not establish visual identity.",
+    "No CG or atlas generation counted for this unresolved subject in wave11. Existing art preserved.",
+    "Age and hidden details remain undocumented; no inferred continuity fusion."
+  ],
+  "references": [],
+  "historicalProjectArtNotAuthority": [
+    {
+      "path": "/sprites/generated/heroes/silent-hill/maria-sh2.png",
+      "exists": true,
+      "role": "historical-project-image-not-source-fidelity-approval"
+    }
+  ]
+}

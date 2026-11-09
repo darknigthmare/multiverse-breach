@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "arca_tessera",
+  "characterName": "Tessera Vale",
+  "incarnation": "Nexus de Convergence — Tessera Vale, current original project selected atlas and Cell ZERO dossier (2026)",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "status": "source-qualified-with-internal-resolution-limitations",
+  "sourceEvidenceFile": "docs/cg/tessera-vale-reference-evidence-wave3-2026-10-20.json",
+  "canonicalFidelityApproved": false,
+  "references": [
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-tessera.png",
+      "sha256": "91adb36c6746986e658784699f61e06e71d0de6f1ff291d789934aa0861935df",
+      "bytes": 951777,
+      "viewed": true,
+      "viewedAt": "2026-10-20",
+      "role": "canonical-original-project-sprite-pack",
+      "referenceScope": "original-project-tessera-vale",
+      "canonicalProjectReference": true,
+      "limitations": [
+        "Canon original interne du projet, aucune identité officielle de franchise externe.",
+        "Sprite pixelart à résolution limitée; microdétails des iris, motifs et structure matérielle sous les facettes non établis."
+      ],
+      "viewedScope": "Tessera-specific fields and selected atlas16frames only.",
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "visualLocks": {
+    "face": "Pale pink/fair youthful humanlike uncovered face; darkviolet/mauve eyes at sprite resolution, exact iris microdetail unresolved. Pink faceted crystalline-looking cluster on anatomical LEFT temple/cheek, never on right.",
+    "hair": "Short asymmetric dark-purple bob with long dark bangs on anatomical RIGHT and pink faceted strands/cluster on anatomical LEFT; never silver/white-haired Nova or plague-mask Marrow.",
+    "outfit": "Black/dark-plum bodysuit with visible split long plum coat, pink angular tessellated seams and panels, fitted dark anatomical RIGHT leg and pink faceted anatomical LEFT leg/hip, practical matching boots and gloves. Several long floating plum/pink ribbon-like coat tails behind shoulders. Preserve source asymmetry. Both forearm sleeves/gloves remain dark plum; do not recolor the whole left arm rose.",
+    "anatomy": "One head, two arms/two legs, humanoid; anatomical LEFT leg/hip and left temple show rose faceted surfaces, anatomical RIGHT is primarily dark. Exact whether every pink panel is armor versus transformed tissue is not established; depict source surface without inventing gore or prosthesis.",
+    "equipment": "Small floating pink rhombus/diamond-shaped crystalline card/shards with pale gold/ivory rim and magenta faceted center, as selected atlas. No pistol, staff, katana, axe or white-cross medical cards.",
+    "palette": "Deep plum and violet/black, rose pink/magenta facets and pale ivory/gold edges; pale pink skin. Not teal Mirelle, cyan Nova or orange Bastion.",
+    "lore": "Extracted from an Origin Shard seized from the Static Archives, held contradictory memories before the Thread Judge, named herself, refuses replacement of another person; now Cell ZERO, living contradiction and agency.",
+    "age": "Age not established in dossier; unknown-family-safe-only, no romance, no invented adulthood.",
+    "forbiddenMixes": "No franchise substitution, no copying another Nexus character costume/powers, no reversing anatomical LEFT rose facets to right, no twin heads/additional arms. Generated CGs never become their own identity authority."
+  },
+  "sourceSpecificObservation": [
+    "Actual atlas and exact frame0/frame2 nearest-neighbor inspection crops viewed. Current source copy has identical SHA256 to selected original PNG.",
+    "Anatomical LEFT temple/cheek border, shoulder/torso patch, hip and leg show pink faceted surfaces; anatomical RIGHT is dark/plum. Dark forearm sleeves remain, so a uniformly all-pink left arm would invent a new costume.",
+    "Dark violet asymmetric bob, fair face, long plum/pink patterned coat tails and ribbons, floating pink rhombus shard/cards. No Mirelle white cross deck, Nova cyan staff or external franchise reference."
+  ],
+  "textSourceRead": "src/game/characterPlaques.js#arca_tessera — extracted from Origin Shard/Foundry, contradictory memories, own chosen identity, CellZERO, refusal to replace another person.",
+  "derivedInspection": {
+    "paths": [
+      "docs/cg/references/wave3-2026-10-20/tessera/frame0-inspection.png",
+      "docs/cg/references/wave3-2026-10-20/tessera/frame2-inspection.png"
+    ],
+    "parent": "public/sprites/generated/heroes/nexus-de-convergence/arca-tessera.png",
+    "operation": "Exact256x256frame crops at(0,0)and(512,0), nearest-neighbor3x enlargement, no painting or semantic change.",
+    "notAdditionalIndependentSource": true,
+    "path": "docs/cg/references/wave3-2026-10-20/tessera/frame0-inspection.png",
+    "sha256": "252f2ad28a1753b64cae3ccba173300d4dbf6a038436078eae13dfe2090eb24a",
+    "viewed": true,
+    "role": "nearest-neighbor-inspection-crop-of-selected-sprite"
+  },
+  "limitations": [
+    "This is an original project character. Its retained selected atlas and own dossier provide internal visual/lore authority, not an external official franchise reference.",
+    "The source is16small pixel-art frames, not a high-resolution character turnaround. Iris/microtexture details and hidden angles remain approximate.",
+    "Anatomical LEFT pink faceted leg/hip/temple versus dark RIGHT is compared against frontal and rear frames. No new medical explanation or skin condition inferred.",
+    "New environments are original coherent Nexus scenes, not exact existing-background reconstructions.",
+    "Equipment comes from visible pink diamond-shaped shard/cards in the atlas plus Tessera-specific skill/dossier; generic weaponType alone is never a source.",
+    "Reference atlas originals and all previous media remain byte-identical; derived inspection crops are not independent references."
+  ],
+  "reviewedAt": "2026-10-20T08:25:48.613879+00:00"
+}

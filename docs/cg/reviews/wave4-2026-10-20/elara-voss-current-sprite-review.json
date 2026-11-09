@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "reviewer": "referentiel_canon",
+  "characterId": "elara_voss",
+  "status": "corrected-sprite-reviewed-with-source-limitations",
+  "incarnation": "Elara Voss — original project V2 production portrait target, The Aether Crown",
+  "selectedAsset": {
+    "path": "/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png",
+    "sha256": "bbc66a11cc60ae6c1df8fa5baa3d7d27deadba1059fd6088a1254b79d5a35699",
+    "selectedInRuntime": true,
+    "viewed": true,
+    "independentlyViewed": true
+  },
+  "runtimeSelectionEvidence": {
+    "method": "Actual getHeroById/getHeroSpriteSheetSrc invocation and file SHA on2026-10-20",
+    "oldFilePreserved": true,
+    "oldSha256": "ab91a7b94adc4aba23c885d1f2bbd0a1bee6b727b1d72e6a01f8122db32a49ff"
+  },
+  "observed": [
+    "Final sixteen frames individually opened: V2 burgundy/gold coat, black corset/white blouse, loose high brown curls, gold left shoulder detail and cyan right rapier/brass left pistol consistently retained.",
+    "The two incorrect-hand frames09/13 were genuinely regenerated and reviewed, then technically assembled with fourteen accepted RGBA cells and a documented common nearest packing.",
+    "Sixteen complete poses are within their guarded cells; no perfect visual identity or hidden geometry certification."
+  ],
+  "sourceComparison": [
+    {
+      "path": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+      "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+      "viewed": true,
+      "role": "canonical-original-project-portrait",
+      "referencePurpose": "identity",
+      "provenance": "Original project V2 portrait explicitly referenced by hero.portrait and production.audiovisual.portrait, recovered as the real Git LFS PNG."
+    }
+  ],
+  "independentReviewFile": "docs/cg/reviews/wave4-2026-10-20/elara-voss-sprite-independent-review.json",
+  "auditFile": "docs/audits/elara-voss-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+  "previousReview": {
+    "schemaVersion": 1,
+    "date": "2026-10-20",
+    "reviewer": "referentiel_canon",
+    "status": "current-selected-sprite-too-far-from-original-v2-portrait-target-correction-needed",
+    "canonicalFidelityApproved": false,
+    "characterId": "elara_voss",
+    "incarnation": "Elara Voss — original project V2 production portrait target, The Aether Crown",
+    "selectedAsset": {
+      "path": "/sprites/generated/heroes/the-aether-crown/elara-voss.png",
+      "sha256": "ab91a7b94adc4aba23c885d1f2bbd0a1bee6b727b1d72e6a01f8122db32a49ff",
+      "viewed": true,
+      "independentlyViewed": true
+    },
+    "observed": [
+      "Runtime atlas has a navy/gold coat and long high ponytail; V2 portrait establishes burgundy/gold coat, black corset/white blouse and loose high curled hair.",
+      "Current atlas presents unarmed close-combat gestures; source V2 depicts an ornate cyan rapier/right hand and brass/cyan pistol/left hand.",
+      "Several last-row current frames already lose the top of the head at their original frame border; this is a separate technical framing problem."
+    ],
+    "sourceComparison": [
+      {
+        "path": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+        "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+        "viewed": true,
+        "role": "canonical-original-project-portrait",
+        "referencePurpose": "identity",
+        "provenance": "Original project V2 portrait explicitly referenced by hero.portrait and production.audiovisual.portrait, recovered as the real Git LFS PNG."
+      }
+    ],
+    "sourceCoverageDecision": {
+      "status": "original-project-v2-identity-qualified-current-atlas-needs-correction",
+      "limitations": [
+        "Portrait is internal original canon, not an external franchise reference.",
+        "Rapier point lies outside the source frame; exact tip/complete length not established.",
+        "A current sprite correction must be independently reviewed before promotion; this record does not certify a new image."
+      ]
+    },
+    "correctionAttempt": {
+      "status": "not-yet-attempted-for-sprite-atlas-at-source-review",
+      "serviceRefusalForAtlas": false
+    }
+  },
+  "canonicalFidelityApproved": false
+}

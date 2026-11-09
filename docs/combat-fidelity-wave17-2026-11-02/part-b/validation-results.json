@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-02T06:48:11.861Z",
+  "scope": "PartB only; root performs global build/browser/freeze separately.",
+  "checks": [
+    {
+      "command": "node --test scripts/combatFidelityWave17PartB.test.mjs",
+      "exitCode": 0,
+      "tests": 3,
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave17PartB.mjs --check",
+      "exitCode": 0,
+      "heroes": 40,
+      "poses": 1280,
+      "completeObserved": 2116,
+      "retainedCombined": 1920,
+      "completeExcluded": 196
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave17PartB.mjs --check",
+      "exitCode": 0,
+      "heroes": 40,
+      "poses": 640,
+      "completeObserved": 2116,
+      "retainedCombined": 1920,
+      "completeExcluded": 196
+    },
+    {
+      "command": "node docs/combat-fidelity-wave17-2026-11-02/part-b/write-delivery-review.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check -- [PartB owned paths]",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave17PartB.js",
+      "sha256": "29ca4d9ecbdb0feacfca2640efcd9593149d89d0acf7dfee42e53d372dc4980b"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave17PartB.js",
+      "sha256": "c7eb5ef33709613ea51fa4138b9aad97ffc04744ef93844b902abd50ca0f0a21"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave17PartB.generated.json",
+      "sha256": "ce07c340a23cd366fa6fae25e8e28e76a7edce5b2ff6f841998a08da8dd6e3e3"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave17PartB.generated.json",
+      "sha256": "3393c5f1c01188fb256f74e739bda8d5ec3f660525e974627c49022ef6dae286"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/generation-records.json",
+      "sha256": "641f552840b0d4af5e5efe765d2627e89198d1a0bb56969323a6aed90160fe96"
+    }
+  ],
+  "source1to1Verified": false
+}

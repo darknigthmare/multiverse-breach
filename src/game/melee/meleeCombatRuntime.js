@@ -25,6 +25,8 @@ const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, v
 const meleePresentationStates = new Set(['intro', 'victory', 'defeat', 'dead']);
 
 export const isMeleePresentationLocked = actor => meleePresentationStates.has(actor?.state) || isCombatControlled(actor) || isSourceImmobilizedWave16(actor) || !!actor?.sourcePossessionBodyWave16;
+export const isMeleeHitLocked = actor => Boolean(actor?.currentHp > 0
+  && ['hit', 'hitStun'].includes(actor.state) && actor.stateTimer > 0);
 
 const createMetrics = source => ({
   perfectShields: finite(source?.perfectShields),
@@ -66,18 +68,60 @@ export const initializeMeleeActorRuntime = actor => {
   return actor;
 };
 
+// The engine owns the remaining ticks. The runtime cancels committed actions
+// and preserves this state until the engine advances that single clock.
+export const applyMeleeHitStun = (actor, ticks) => {
+  initializeMeleeActorRuntime(actor);
+  if (!actor || actor.currentHp <= 0 || !Number.isFinite(ticks) || ticks <= 0) return false;
+  const remaining = Math.max(isMeleeHitLocked(actor) ? actor.stateTimer : 0,
+    Math.ceil(finite(actor.shieldBreakTimer) * 60));
+  actor.action = null;
+  actor.queuedMeleeAction = null;
+  actor.charging = false;
+  actor.chargeHoldSeconds = 0;
+  actor.guarding = false;
+  actor.perfectShieldWindow = 0;
+  actor.crouching = false;
+  actor.fastFallHeld = false;
+  actor.jumpHeld = false;
+  actor.comboWindow = 0;
+  actor.comboStep = 0;
+  actor.meleeRecoveryTimer = 0;
+  actor.shieldBreakTimer = 0;
+  actor.ledge = null;
+  actor.ledgeActionTimer = 0;
+  actor.guardRegenDelay = MELEE_RUNTIME_DEFAULTS.guardRegenDelay;
+  const state = actor.id === 'player_anchor' ? 'hitStun' : 'hit';
+  if (!transitionMeleeState(actor, state, { force: true, restart: true })) {
+    actor.state = state;
+    actor.stateElapsed = 0;
+  }
+  actor.stateTimer = Math.max(remaining, Math.ceil(ticks));
+  return true;
+};
+
 const startDefinedAction = (actor, actionId, powerScale = 1, overrides = null) => {
   const baseDefinition = cloneMeleeActionDefinition(actionId);
   const definition = baseDefinition && { ...baseDefinition, ...overrides };
   if (!definition) return false;
-  const slot = ['charged', 'special'].includes(actionId) ? 'secondary'
+  // Jade2003 charges the Daï-Jo itself (Ubisoft manualp10). Her separate
+  // secondary Gyrodisk glove must never replace that charged staff action.
+  const jadeDaiJoCharge = actionId === 'charged'
+    && (actor?.sourceHeroId || actor?.sourceId || actor?.id) === 'beyond_good_evil_jade'
+    && actor?.universe === 'Beyond Good & Evil';
+  const slot = jadeDaiJoCharge ? 'simple' : ['charged', 'special'].includes(actionId) ? 'secondary'
     : ['light1', 'light2', 'light3', 'crouchLight', 'aerialNeutral', 'aerialForward', 'aerialDown', 'ledgeAttack'].includes(actionId) ? 'simple' : null;
   const ability = slot ? resolveCombatAbility(actor, slot) : null;
   if (ability?.provenance.identityAuthored) {
     definition.abilityProfile = ability;
     definition.range = ability.range;
-    definition.duration = ability.duration;
-    definition.hitAt = ability.hitAt;
+    if (!jadeDaiJoCharge) {
+      definition.duration = ability.duration;
+      definition.hitAt = ability.hitAt;
+    } else {
+      // Preserve the charged state clock and the actual held-charge powerScale.
+      definition.sourceJadeDaiJoChargeWave17 = true;
+    }
     definition.facing = actor.facing === -1 ? -1 : 1;
   }
   actor.action = {
@@ -96,7 +140,7 @@ const startDefinedAction = (actor, actionId, powerScale = 1, overrides = null) =
 
 export const beginMeleeAction = (actor, actionId, options = {}) => {
   initializeMeleeActorRuntime(actor);
-  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.shieldBreakTimer > 0 || actor.guarding || actor.ledge) return false;
+  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.shieldBreakTimer > 0 || actor.guarding || actor.ledge) return false;
   if (actor.action) {
     const nextDefinition = cloneMeleeActionDefinition(actionId);
     if (nextDefinition && isMeleeCancelOpen(actor, nextDefinition.state)) {
@@ -151,7 +195,7 @@ export const beginMeleeLightCombo = actor => {
 
 export const beginMeleeCharge = actor => {
   initializeMeleeActorRuntime(actor);
-  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guarding || actor.shieldBreakTimer > 0 || actor.ledge) return false;
+  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guarding || actor.shieldBreakTimer > 0 || actor.ledge) return false;
   actor.charging = true;
   actor.chargeHoldSeconds = 0;
   const chargeState = actor.crouching ? CHARGED_ATTACK_DATA.crouchState : CHARGED_ATTACK_DATA.startState;
@@ -161,7 +205,7 @@ export const beginMeleeCharge = actor => {
 
 export const releaseMeleeCharge = actor => {
   initializeMeleeActorRuntime(actor);
-  if (!actor?.charging) return false;
+  if (!actor?.charging || isMeleeHitLocked(actor)) return false;
   const ratio = clamp(actor.chargeHoldSeconds / CHARGED_ATTACK_DATA.maxHoldSeconds, 0, 1);
   const powerScale = CHARGED_ATTACK_DATA.minimumScale
     + (CHARGED_ATTACK_DATA.maximumScale - CHARGED_ATTACK_DATA.minimumScale) * ratio;
@@ -170,9 +214,23 @@ export const releaseMeleeCharge = actor => {
   return startDefinedAction(actor, 'charged', powerScale);
 };
 
+// Device/focus cancellation is not a deliberate release. Leave independent
+// held controls, a committed action and higher-priority actor states intact.
+export const cancelMeleeCharge = actor => {
+  initializeMeleeActorRuntime(actor);
+  if (!actor?.charging) return false;
+  actor.charging = false;
+  actor.chargeHoldSeconds = 0;
+  if (!actor.action && !actor.guarding && actor.shieldBreakTimer <= 0 && !actor.ledge
+    && !isMeleePresentationLocked(actor) && !isMeleeHitLocked(actor)) {
+    transitionMeleeState(actor, actor.crouching ? 'crouchIdle' : 'idle', { force: true });
+  }
+  return true;
+};
+
 export const beginMeleeShield = actor => {
   initializeMeleeActorRuntime(actor);
-  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guardMeter <= 0 || actor.shieldBreakTimer > 0 || actor.ledge) return false;
+  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guardMeter <= 0 || actor.shieldBreakTimer > 0 || actor.ledge) return false;
   if (!actor.guarding) {
     actor.guarding = true;
     actor.charging = false;
@@ -189,6 +247,7 @@ export const releaseMeleeShield = actor => {
   actor.guarding = false;
   actor.perfectShieldWindow = 0;
   actor.guardRegenDelay = MELEE_RUNTIME_DEFAULTS.guardRegenDelay;
+  if (isMeleeHitLocked(actor)) return false;
   transitionMeleeState(actor, 'shieldExit', { force: true, restart: true });
   return true;
 };
@@ -204,7 +263,7 @@ export const cancelMeleeHeldInputs = actor => {
   actor.perfectShieldWindow = 0;
   actor.chargeHoldSeconds = 0;
   actor.guardRegenDelay = MELEE_RUNTIME_DEFAULTS.guardRegenDelay;
-  if (!actor.action && actor.shieldBreakTimer <= 0 && !actor.ledge && !isMeleePresentationLocked(actor)) {
+  if (!actor.action && actor.shieldBreakTimer <= 0 && !actor.ledge && !isMeleePresentationLocked(actor) && !isMeleeHitLocked(actor)) {
     transitionMeleeState(actor, 'idle', { force: true });
   }
   return true;
@@ -212,7 +271,7 @@ export const cancelMeleeHeldInputs = actor => {
 
 export const setMeleeCrouch = (actor, active) => {
   initializeMeleeActorRuntime(actor);
-  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guarding || actor.shieldBreakTimer > 0 || actor.ledge) return false;
+  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.action || actor.guarding || actor.shieldBreakTimer > 0 || actor.ledge) return false;
   const next = Boolean(active);
   if (next === actor.crouching) return true;
   actor.crouching = next;
@@ -222,7 +281,7 @@ export const setMeleeCrouch = (actor, active) => {
 
 export const absorbMeleeGuardHit = (actor, values = {}) => {
   initializeMeleeActorRuntime(actor);
-  if (!actor?.guarding || actor.shieldBreakTimer > 0) {
+  if (isMeleeHitLocked(actor) || !actor?.guarding || actor.shieldBreakTimer > 0) {
     return { guarded: false, perfect: false, damageScale: 1, knockbackScale: 1 };
   }
 
@@ -254,7 +313,7 @@ export const absorbMeleeGuardHit = (actor, values = {}) => {
 
 export const tryCatchMeleeLedge = (actor, platforms = []) => {
   initializeMeleeActorRuntime(actor);
-  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.ledge || actor.ledgeRegrabTimer > 0 || finite(actor.vy) < 0) return null;
+  if (!actor || actor.currentHp <= 0 || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor) || actor.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze' || actor.ledge || actor.ledgeRegrabTimer > 0 || finite(actor.vy) < 0) return null;
   const candidate = platforms.find(platform => {
     const vertical = actor.y >= platform.y + 4 && actor.y <= platform.y + 42;
     const nearLeft = actor.x <= platform.x1 + 1 && Math.abs(actor.x - platform.x1) <= 13;
@@ -276,7 +335,7 @@ export const tryCatchMeleeLedge = (actor, platforms = []) => {
 
 export const performMeleeLedgeAction = (actor, action) => {
   initializeMeleeActorRuntime(actor);
-  if (!actor?.ledge || isMeleePresentationLocked(actor)) return false;
+  if (!actor?.ledge || isMeleePresentationLocked(actor) || isMeleeHitLocked(actor)) return false;
   const ledge = actor.ledge;
   const insideDirection = ledge.side === 'left' ? 1 : -1;
   if (action === 'climb') {
@@ -343,7 +402,7 @@ export const tickMeleeCombatActor = (actor, dt = 1 / 60, hooks = {}) => {
     actor.queuedMeleeAction = null;
     actor.charging = false;
   }
-  if (isMeleePresentationLocked(actor) && actor.state !== 'intro') {
+  if ((isMeleePresentationLocked(actor) && actor.state !== 'intro') || isMeleeHitLocked(actor)) {
     actor.stateElapsed += step;
     return actor;
   }
@@ -447,6 +506,7 @@ export const isMeleeMovementLocked = actor => Boolean(
   || actor?.shieldBreakTimer > 0
   || actor?.ledge
   || actor?.ledgeActionTimer > 0
+  || isMeleeHitLocked(actor)
   || ['attackRecovery', 'chargeRecovery', 'hitStun'].includes(actor?.state)
   || isMeleePresentationLocked(actor)
   || actor?.sourceProtectionWave16?.active && actor.sourceProtectionWave16.kind === 'yukikaze'

@@ -1,0 +1,4758 @@
+
+
+     
+
+    
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+
+	
+
+
+    
+	
+
+	
+	
+
+  <head>
+
+	
+	
+
+	<script>
+
+        var curUrl = window.location.href;
+
+		var isDev = window.location.host.includes("dev") || window.location.host.includes("preview") || window.location.host.includes("test");
+        var isStage = window.location.host.includes("stage");
+        var codDomain = isDev ? 'profile-dev' : isStage ? 'profile-stage' : 'profile';
+       // var domain = isDev || isStage || window.location.host.includes("profile") ? "s-dev" : "s";
+        var domain = isDev ? 's-dev': isStage ? 's-stage' : "s";
+        var siteId, fetchUrl;
+
+        if(curUrl.includes("callofduty.com") > 0) {
+            siteId = "cod";
+            fetchUrl = "https://" + codDomain + ".callofduty.com";
+        }
+        else if(curUrl.includes("crashbandicoot.com") > 0) {
+			siteId = "crash";
+            fetchUrl = "https://" + domain + ".crashbandicoot.com";
+        }
+        else if(curUrl.includes("tonyhawkthegame.com") > 0) {
+            siteId = "th";
+            fetchUrl = "https://" + domain + ".tonyhawkthegame.com";
+        }
+        else if(curUrl.includes("sekirothegame.com") > 0) {
+            siteId = "sekiro";
+            fetchUrl = "https://" + domain + ".sekirothegame.com";
+        }
+        else if(curUrl.includes("activision.com") > 0) {
+            siteId = "activision";
+            fetchUrl = "https://" + domain + ".activision.com";
+        }
+
+		var OneTrust = {
+				dataSubjectParams: {
+					id: "",
+					isAnonymous: false,
+					token : ""
+				}
+			};		
+			function otGetCookie (cookieName) {
+				var i = 0,
+					cookies = document.cookie.split(";"),
+					length = cookies.length,
+					trimRegex = /^\s+|\s+$/g,
+					cookiePair;
+
+				for (; i < length; i++) {
+					cookiePair = cookies[i].split('=');				
+					if (cookiePair[0].replace(trimRegex, '') === cookieName) return unescape(cookiePair[1]);
+				}
+			}
+			var loggedIn = otGetCookie("ACT_SSO_COOKIE") || otGetCookie("s_ACT_SSO_COOKIE") || false;
+			if(loggedIn) {
+
+				var xsrfToken = otGetCookie("XSRF-TOKEN");
+				var ssoCookieValue = otGetCookie("ACT_SSO_COOKIE");
+    			var headers = {
+        			'Cookie': "ACT_SSO_COOKIE=" + ssoCookieValue,
+					'X-XSRF-TOKEN': xsrfToken
+    			}
+
+				fetch(fetchUrl + "/" + siteId + "/regulations/onetrust/auth", {
+					method: "POST",
+            		credentials: 'include',
+            		mode: 'cors',
+					headers: headers
+				})
+				.then((response) => response.json())
+				.then((json) => { 
+					OneTrust = {
+						dataSubjectParams: {
+							id: json.userId,
+							isAnonymous: false,
+							token : json.token
+						}
+					};
+					console.log("OneTrust: ",OneTrust);
+				})
+        		.catch(error => {
+                    // Handle errors
+                    console.error('Fetch error:', error); 
+                });
+			}
+			window.addEventListener("OneTrustGroupsUpdated", handleOneTrustGroupsUpdated);
+		    function handleOneTrustGroupsUpdated() {
+				if(loggedIn) {
+        			var xsrfToken = otGetCookie("XSRF-TOKEN");
+                    var ssoCookieValue = otGetCookie("ACT_SSO_COOKIE");
+                    var headers = {
+            			'Cookie': "ACT_SSO_COOKIE=" + ssoCookieValue,
+                        'X-XSRF-TOKEN': xsrfToken
+                    };
+					fetch(fetchUrl + "/" + siteId + "/regulations/onetrust/preferences?activeGroups=" + OnetrustActiveGroups, {
+							method: "POST",
+							credentials: 'include',
+                			mode: 'cors',
+							headers: headers
+					})
+            		.catch(error => {
+                        // Handle errors
+                        console.error('Fetch error:', error);
+                    });
+
+				}
+			}
+
+	</script>
+
+
+
+    <meta charset="UTF-8"/>
+
+    <meta name="country" content="US"/>
+
+    
+    
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	
+    	<!-- OneTrust Cookies Consent Notice start for spyrothedragon.com -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="331bca64-a270-45a1-acb0-fc2bb9b87e5f"></script>
+<script type="text/javascript">
+function OptanonWrapper() { 
+    window.dataLayer.push( { event: 'OneTrustGroupsUpdated' } ); // do not remove
+}
+</script>
+<!-- OneTrust Cookies Consent Notice end for spyrothedragon.com -->
+    
+
+
+	
+    
+
+         <script>var dataLayer = dataLayer || [],
+    	         digitalData = {"page":{"pageInfo":{"charSet":"UTF-8","language":"EN","country":"US","site":"spyro","pageName":"spyro:spyro-touchui:home","siteSection":"spyro-touchui","siteSubsection":"home"},"pageCategory":{"primaryCategory":"spyro-touchui","pageType":"home","subCategory1":"home"},"targetEntity":{"locale":"en_US","brand":"spyro","categoryId":"['spyro-touchui', 'spyro-touchui:home', 'spyro:spyro-touchui:home']","pageURL":"https://www.spyrothedragon.com/content/atvi/spyro/spyro-touchui/web/en/home.html","id":"home","name":"Spyro Reignited Trilogy | Home","description":"Meet Spyro, the adorable and mischievous little dragon on a GIGANTIC adventure. Take on an astonishing and completely 3D platform adventure game unlike any other! Take a wonderful journey as you glide, fly, roll, and frolic through fantasy worlds."}}};
+    </script>
+
+    
+    
+
+     
+     
+    <base href="https://www.spyrothedragon.com"/> 
+
+
+
+	
+    
+
+	
+		<script>
+			(function(w,d,s,l,i){
+    			w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;j.setAttributeNode(d.createAttribute('data-ot-ignore'));
+                j.addEventListener('load', function() { 
+                    var _ge = new CustomEvent('gtm_loaded', { bubbles: true }); 
+                    d.dispatchEvent(_ge);
+                });
+                f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-NK64QRQ');
+		</script>                                                                                                                                                                        
+    
+
+
+    
+    
+
+     <title>Spyro Reignited Trilogy | Home</title>
+
+
+    
+    
+
+    <meta name="template" content="spyro-reginited-standard-template"/>
+    <meta name="description" content="Meet Spyro, the adorable and mischievous little dragon on a GIGANTIC adventure. Take on an astonishing and completely 3D platform adventure game unlike any other! Take a wonderful journey as you glide, fly, roll, and frolic through fantasy worlds."/>
+
+
+
+    
+    
+
+    
+
+
+	
+
+    
+        
+       	
+    
+
+	<link rel="image_src" href="https://www.spyrothedragon.com/content/dam/atvi/spyro/home/hero/Spyro-hero-bg.png"/>
+
+    <meta property="og:title" content="Spyro Reignited Trilogy | Home"/>
+    
+	
+	<meta property="og:description" content="Meet Spyro, the adorable and mischievous little dragon on a GIGANTIC adventure. Take on an astonishing and completely 3D platform adventure game unlike any other! Take a wonderful journey as you glide, fly, roll, and frolic through fantasy worlds."/>
+	<meta property="og:type" content="website"/>
+
+    <meta property="og:image" content="https://www.spyrothedragon.com/content/dam/atvi/spyro/home/hero/Spyro-hero-bg.png"/>
+    <meta property="og:image:url" content="https://www.spyrothedragon.com/content/dam/atvi/spyro/home/hero/Spyro-hero-bg.png"/>
+    <meta property="og:image:secure_url" content="https://www.spyrothedragon.com/content/dam/atvi/spyro/home/hero/Spyro-hero-bg.png"/>
+
+    <meta name="twitter:title" content="Spyro Reignited Trilogy | Home"/>
+    
+	<meta name="twitter:description" content="Meet Spyro, the adorable and mischievous little dragon on a GIGANTIC adventure. Take on an astonishing and completely 3D platform adventure game unlike any other! Take a wonderful journey as you glide, fly, roll, and frolic through fantasy worlds."/>
+    <meta name="twitter:image" content="https://www.spyrothedragon.com/content/dam/atvi/spyro/home/hero/Spyro-hero-bg.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site"/>
+    
+
+    <!-- END SHARE META TAGS -->
+
+
+    
+    
+		
+
+	 
+
+   
+
+	
+	
+
+	
+	
+
+	
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "VideoGame",
+          "author": {
+                "@type": "Organization", 
+                "name": [""]
+          },
+          "contentRating": "",
+          "datePublished": "",
+          "description": "Meet Spyro, the adorable and mischievous little dragon on a GIGANTIC adventure. Take on an astonishing and completely 3D platform adventure game unlike any other! Take a wonderful journey as you glide, fly, roll, and frolic through fantasy worlds.",
+          "gamePlatform": [],
+          "genre": [],
+          "image": "",
+          "name": "",
+	      "contentLocation": [],
+		  "playMode": [],
+		  "isAccessibleForFree": "False",
+          "inLanguage": [
+                {
+                    "@type": "Language",
+                    "name": "English"
+                }
+            ],
+            "thumbnailUrl": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Activision Publishing",
+                "sameAs": [
+                    "http://www.activision.com",
+                    "https://www.youtube.com/user/ActivisionGames",
+                    "http://en.wikipedia.org/wiki/Activision"
+                ]
+
+            },        
+            "applicationCategory": "Game",
+            "operatingSystem": [],
+            "url": "",
+            "isPartOf": {
+                "@type":"VideoGameSeries",
+                "name":""
+            }
+        }
+
+    	</script>
+
+    
+    <!-- END SCHEMA TAGS -->
+
+    
+    
+    
+
+	<script> 
+        var ATVI = ATVI || {},
+			wcmmode;
+		if (false) wcmmode = 'edit';
+		if (false) wcmmode = 'design';
+		if (!false && !false) wcmmode = '';
+		ATVI.pageMode = wcmmode;
+		ATVI.pageEnv = ('www.spyrothedragon.com'.indexOf('cmsauthor') > -1) ? 'dev' : 'prod';
+		ATVI.pageLocale = 'en';
+	</script>
+
+
+
+    
+    
+
+   
+
+   
+
+
+
+    
+    
+
+    
+
+	
+
+    
+
+	
+
+    
+
+    
+
+    
+    
+<link rel="stylesheet" href="/apps/atvi/global/clientlibs.3bf3f28740b0f13f93c845b52b11a008.css" type="text/css"><script type="text/javascript" src="/apps/atvi/global/clientlibs.3908e9bde27c6472d5a31a4c4fc89f54.js"></script>
+
+
+
+    
+        
+    
+<link rel="stylesheet" href="/apps/atvi/spyro/spyro-reignited/clientlibs/core.736fb543c3768ff6c2548b8ecca81e49.css" type="text/css"><link rel="stylesheet" href="/apps/atvi/spyro/spyro-reignited/components/content/home/clientlibs.f4666886df3ea45271889d87af5eb4fa.css" type="text/css"><script type="text/javascript" src="/apps/atvi/spyro/spyro-reignited/clientlibs/core.db9c3f39da17b1458acab1b31ca04da6.js" defer></script><script type="text/javascript" src="/apps/atvi/spyro/spyro-reignited/components/content/home/clientlibs.3752bb4d11a4a9b9be004bd733cf3f97.js" defer></script>
+
+
+    
+
+    
+
+
+
+
+	
+    
+	
+	 
+	 
+	
+	 
+
+	
+
+	
+        
+        
+
+            
+            
+				<link rel="alternate" hreflang="en-us" href="https://www.spyrothedragon.com/spyroreignitedtrilogy"/>
+                <link rel="alternate" hreflang="x-default" href="https://www.spyrothedragon.com/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="pl" href="https://www.spyrothedragon.com/pl/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="nl" href="https://www.spyrothedragon.com/nl/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="pt-br" href="https://www.spyrothedragon.com/br/pt/spyroreignitedtrilogy"/>
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="it" href="https://www.spyrothedragon.com/it/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="de" href="https://www.spyrothedragon.com/de/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="es" href="https://www.spyrothedragon.com/es/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+				<link rel="alternate" hreflang="fr" href="https://www.spyrothedragon.com/fr/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+				<link rel="alternate" hreflang="en-ca" href="https://www.spyrothedragon.com/ca/en/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+            
+            
+				<link rel="alternate" hreflang="en-au" href="https://www.spyrothedragon.com/au/en/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+        
+        
+
+            
+            
+            
+				<link rel="alternate" hreflang="en-gb" href="https://www.spyrothedragon.com/uk/en/spyroreignitedtrilogy"/>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+        
+    
+
+	
+    
+    
+
+  
+
+
+    
+    
+    
+    
+    
+    <link rel="icon" href="/content/dam/atvi/spyro/sarb/favicon/favicon-v2.ico"/>
+	<link rel="icon" type="image/vnd.microsoft.icon" href="/content/dam/atvi/spyro/sarb/favicon/favicon-v2.ico"/>
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/content/dam/atvi/spyro/sarb/favicon/favicon-v2.ico"/>
+
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=100"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<link rel="apple-touch-icon" href="https://www.activision.com/content/dam/atvi/global/apple-touch-icon.png"/>
+	<meta name="robots" content="max-image-preview:large"/>
+
+    
+	
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    
+    
+        
+    
+
+    
+    
+<link rel="stylesheet" href="/libs/wcm/foundation/components/page/responsive.6b768e2136fcc283bddfd16e964001ab.css" type="text/css">
+
+
+
+    
+
+    <!--adobe launch header scripts-->
+        
+
+    <!--end adobe launch scripts-->
+
+
+	
+	
+
+	
+    	<meta name="google-site-verification" content="Z6Ks1uWQ5jl6cTarxisLpWIVEKN8Q82ylSiryDKJZVM" />
+    
+
+
+  </head>
+
+
+	
+    
+
+
+<body class=" ">
+
+
+		
+		
+
+    
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK64QRQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	
+
+
+
+        
+        
+	
+
+
+    
+
+        
+        <div class="root responsivegrid">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="header aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/spyro/global/header/clientlibs.86de091538dd078a3167a89db90df0aa.css" type="text/css">
+<script src="/apps/atvi/spyro/global/header/clientlibs.34b2a2fa8df1927b52971b76d3cfe370.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        <header id="spyro-header">
+            <div class="spyro-header_inner-container">
+                <div class="spyro-header_mobile-menu" data-menu="close">
+                    <div class="spyro-header_mobile-button">
+                        <button aria-label="Menu dropdown" role="button" aria-controls="mobile-dropdown" aria-expanded="false">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span class="visually-hidden">Menu dropdown</span>
+                        </button>
+                    </div>
+
+                    
+                    <div id="mobile-dropdown" class="spyro-header_mobile-dropdown">
+                        <div class="spyro-header_mobile-dropdown-inner-container">
+                            
+                            <nav class="spyro-header_mobile-secondary-menu spyro-header_nav">
+                                
+                                <ul role="menu" id="menubar2" aria-label=" Menu" class="spyro-header_nav-list">
+                                    
+                                        
+                                        
+
+                                        <li role="menuitem" data-index="0" class="spyro-header_nav-list-item" aria-haspopup="false">
+                                            <a href="/spyroreignitedtrilogy#buy" target="_self" tabindex="0" data-entext="Available Now">
+                                                Available Now
+                                                
+                                            </a>
+
+                                            
+                                            
+                                        </li>
+                                    
+                                        
+                                        
+
+                                        <li role="menuitem" data-index="1" class="spyro-header_nav-list-item" aria-haspopup="false">
+                                            <a href="/spyroreignitedtrilogy#gallery" target="_self" tabindex="0" data-entext="Gallery">
+                                                Gallery
+                                                
+                                            </a>
+
+                                            
+                                            
+                                        </li>
+                                    
+                                        
+                                        
+
+                                        <li role="menuitem" data-index="2" class="spyro-header_nav-list-item" aria-haspopup="false">
+                                            <a href="/spyroreignitedtrilogy#social" target="_self" tabindex="0" data-entext="Social">
+                                                Social
+                                                
+                                            </a>
+
+                                            
+                                            
+                                        </li>
+                                    
+                                        
+                                        
+
+                                        <li role="menuitem" data-index="3" class="spyro-header_nav-list-item dd" aria-expanded="false" aria-haspopup="true">
+                                            <a target="_self" tabindex="0" data-entext="Games">
+                                                Games
+                                                <span class="expand-arrow"></span>
+                                            </a>
+
+                                            
+                                            <ul role="menu" aria-label="Games" class="nav-expand-content">
+                                                <li role="menuitem">
+                                                    <a href="/" data-entext="Spyro: A Realm Beyond">
+                                                        <p>
+                                                            Spyro: A Realm Beyond
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            
+                                                <li role="menuitem">
+                                                    <a href="/spyroreignitedtrilogy" data-entext="Spyro: Reignited Trilogy">
+                                                        <p>
+                                                            Spyro: Reignited Trilogy
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    
+
+                                    <!-- /* <li class="nav-ellipsis-dropdown">
+                                        <button
+                                            class="nav-ellipsis-dropdown-toggle"
+                                            aria-label="See more links"
+                                        >
+                                            <span>...</span>
+                                        </button>
+                                        <ul
+                                            class="nav-ellipsis-dropdown-menu"
+                                        ></ul>
+                                    </li> */ -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="spyro-header_logo" href="/">
+                    <img src="/content/dam/atvi/spyro/common/header/sarb-nav/Nav_Reignited-Trilogy_Logo.svg" alt="Spyro logo"/>
+                </a>
+                <nav class="spyro-header_nav">
+                    <ul class="spyro-header_nav-list" role="menu">
+                        
+                        
+                        <li class="spyro-header_nav-list-item" role="menuitem" aria-haspopup="false">
+                            <a data-entext="Available Now" href="/spyroreignitedtrilogy#buy" tabindex="0">
+                                Available Now
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        
+                        <li class="spyro-header_nav-list-item" role="menuitem" aria-haspopup="false">
+                            <a data-entext="Gallery" href="/spyroreignitedtrilogy#gallery" tabindex="0">
+                                Gallery
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        
+                        <li class="spyro-header_nav-list-item" role="menuitem" aria-haspopup="false">
+                            <a data-entext="Social" href="/spyroreignitedtrilogy#social" tabindex="0">
+                                Social
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        
+                        <li class="spyro-header_nav-list-item dd" role="menuitem" aria-expanded="false" aria-haspopup="true">
+                            <a data-entext="Games" tabindex="0">
+                                Games
+                                <span class="expand-arrow"></span>
+                            </a>
+                            <ul role="menu" aria-label="Games" class="nav-expand-content">
+                                <li role="menuitem">
+                                    <a href="/" data-entext="Spyro: A Realm Beyond">Spyro: A Realm Beyond</a>
+                                </li>
+                            
+                                <li role="menuitem">
+                                    <a href="/spyroreignitedtrilogy" data-entext="Spyro: Reignited Trilogy">Spyro: Reignited Trilogy</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="/spyroreignitedtrilogy#buy" class="spyro-header_order-link" aria-label="Order Game">
+                    Order Game
+                </a>
+            </div>
+        </header>
+    
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+<div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-column-layout aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+<style>
+
+    #home {
+        position: relative;
+        overflow: hidden;
+		
+        
+        
+	}
+
+    #home > .atvi-column-inner-container {
+   	 	position: relative;
+		display:flex; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex;
+        flex-wrap: wrap;
+        justify-content: jc-center;
+        align-items: flex-end
+        
+		width: 100%;
+        
+        
+		
+		
+		
+		
+		
+	}
+
+    
+
+        
+
+            @media screen and (max-width: 0px) {
+                #home {
+                	margin: ;
+                    padding: ;
+                    width: ;
+                }
+			}
+
+        
+
+    
+
+    
+
+	
+
+        @media screen and (max-width: 1px) {
+        
+            
+                #home > .atvi-column-inner-container {
+                    flex-direction: column;
+                }
+                #home > .atvi-column-inner-container > .column-child {
+                    width: 100% !important;
+    				flex-basis: auto !important;
+                }
+            
+        }
+
+    
+
+    
+
+        #home .atvi-column-layout-bg-media-container {
+			position: absolute; 
+			width: 100%; 
+            height: 100%; 
+            top: 0; 
+			left: 0;
+		}
+
+        #home .bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    
+        #home .bg-video.bg-desktop {
+            width: auto;
+    		height: 100%;
+            position: absolute;
+            top: 50%;
+    		left: 50%;
+    		-webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+		#home .bg-video.bg-mobile {
+            width: 100%;
+    		height: auto;
+            position: absolute;
+            top: 50%;
+    		left: 50%;
+    		-webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+	
+
+	
+
+        #home .bg-mobile {
+            display: none;
+        }
+        
+        @media screen and (max-width: 1px) {
+            
+            #home .bg-desktop {
+                display: none;
+            }
+
+            #home .bg-mobile {
+                display: block;
+            }
+
+    	}
+
+	
+
+
+
+    
+
+        
+        
+    
+            
+    
+            
+
+			.home-child-resource-1-class {
+                position: relative;
+                overflow: hidden;
+                
+            	
+            		flex-grow: 1;
+            		flex-basis: 0;
+            	
+            	
+            }
+        
+            
+       
+            
+        
+        
+    
+    
+
+</style>
+
+
+
+<section id="home" class="atvi-column-layout-container atvi-module-container spyro-section">
+
+		<div class="atvi-column-layout-bg-media-container">
+
+			
+
+            
+				<video class="bg-video bg-video-desktop bg-desktop" playsinline="" loop="" muted="" poster="">
+					<source src="/content/dam/atvi/spyro/home/hero/Falcon_Website_Video_Cutdown_under5mb.mp4" type="video/mp4"/>
+                </video>
+        
+                <video class="bg-video bg-video-mobile bg-mobile" playsinline="" loop="" muted="" poster="">
+                    <source src="/content/dam/atvi/spyro/home/hero/Falcon_Website_Video_Cutdown_under5mb.mp4" type="video/mp4"/>
+                </video>
+            
+
+		</div>
+
+			
+
+            <div class="atvi-column-inner-container">
+
+
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="0" id="home-child-resource-1" class=" home-child-resource-1-class column-child column-child-1"> 
+
+						
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element spyro-hero-container atvi-module-container">
+
+    
+    <div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="spyro-hero-subheading">
+
+     
+
+     Available Now On New Platforms
+
+</div>
+
+</div>
+<div class="atvi-cta aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-cta/clientlibs.3ad7342bfa1d7844085d3abe3fbeaa25.css" type="text/css">
+<script src="/apps/atvi/global/components/content/atvi-cta/clientlibs.f7c0994bf2c3143fbaa2e4cab9ae4627.js"></script>
+
+
+
+
+
+
+
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    <style>
+
+        
+    </style>
+
+    
+    
+        <div id="atvi_cta" class="atvi-cta-container hero-play" data-agegate="false">
+            <ul style=" justify-content: flex-start; align-items: stretch; align-content: flex-start; ">
+                
+                    
+                    
+
+                    
+                    
+
+                    <li id="hero-play-btn-listItem" style=" order: 0;">
+                        
+
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+
+                        
+                        <button id="hero-play-btn" class="-btn atvi-cta-btn-item atvi-cta-item " aria-label="Watch Spyro the Dragon trailer" data-entext="Watch Trailer" data-modal="true" data-type="video" data-ytid="xM5xUAuPEM8" data-autoplay="true" data-agegate="false" data-nocookies="true" data-youtube-title="Spyro Reignited Trilogy Reveal Trailer" aria-haspopup="dialog" aria-controls="atvi_cta-modal-overlay" aria-expanded="false" data-scroll-displacement="0">
+                            
+                            <span class="cta-text">Watch Trailer</span>
+                        </button>
+                    </li>
+                
+            </ul>
+
+            
+            <div id="atvi_cta-modal-overlay" class="atvi-cta-modal-overlay modal-overlay" role="dialog" tabindex="-1">
+                <div class="inner-modal">
+                    <button class="modal-close" aria-label="Close">
+                        &times;
+                    </button>
+
+                    <div class="modal-content">
+                        <div class="media-content"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+             
+
+		</div>
+
+    </section>
+
+    <script type="text/javascript" defer>
+
+		(function() {
+            // re-order slides according to their order value before initializing carousel
+            var $parentContainer = $("#home > .atvi-column-inner-container");
+            
+            $parentContainer.find(' > .column-child').sort(function(a, b) {
+                return +a.dataset.order - +b.dataset.order;
+            })
+            .appendTo($parentContainer);
+		})();
+
+	</script>
+
+    
+    
+        <script type="text/javascript" defer>
+
+			(function() {
+
+                var $parentContainer = $("#home");
+                var $desktopHeroVideo = $parentContainer.find(".bg-video-desktop")[0];
+                var $mobileHeroVideo = $parentContainer.find(".bg-video-mobile")[0];
+                
+                var initHeroVideos = function() {
+                    
+                    if($parentContainer.find("video").length != 0) {
+                        videoResize();
+                        window.addEventListener("resize", videoResize);
+                    }
+                    
+                };
+                
+                var videoResize = function(){
+                    
+                    if(window.innerWidth <= 1) {
+                        $desktopHeroVideo.pause();
+                        $mobileHeroVideo.play();
+                    } else {	
+                        $desktopHeroVideo.play();
+                        $mobileHeroVideo.pause();
+                    }
+                }
+
+                $(initHeroVideos);
+
+			})();
+    
+
+        </script>
+
+    
+
+	
+
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+<div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm_187641098" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div id="gallery" class="layout-container-element spyro-section atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-689824-container" class="atvi-image-component oldspyro-heading-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+      <img class="oldspyro-heading" src="/content/dam/atvi/spyro/common/3-games/title-3-games-in-one.png" alt="3 Games In One!" aria-label="3 Games In One!"/>
+    
+
+	
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-column-layout aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+    
+<link rel="stylesheet" href="/apps/atvi/global/clientlibs/plugins/slick-clientlibs.cd152c972ceed88a8f5a55c58497db64.css" type="text/css">
+<script src="/apps/atvi/global/clientlibs/plugins/slick-clientlibs.c7f57055feade1bc351733a1b7abcf11.js"></script>
+
+
+
+
+ 
+
+
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+<style>
+
+    #atvi_column_layout-683385755 {
+        position: relative;
+        overflow: hidden;
+		
+        
+        
+	}
+
+    #atvi_column_layout-683385755 > .atvi-column-inner-container {
+   	 	position: relative;
+		
+        
+        
+        
+        
+		
+        
+        
+		
+		
+		
+		
+		
+	}
+
+    
+
+    
+
+	
+
+    
+
+	
+
+
+
+    
+
+        
+        
+    
+            
+    
+            
+
+			.atvi_column_layout-683385755-child-resource-1-class {
+                position: relative;
+                overflow: hidden;
+                
+                    width: 100%;
+            	
+            	
+            	
+            }
+        
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.atvi_column_layout-683385755-child-resource-2-class {
+                position: relative;
+                overflow: hidden;
+                
+                    width: 100%;
+            	
+            	
+            	
+            }
+        
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.atvi_column_layout-683385755-child-resource-3-class {
+                position: relative;
+                overflow: hidden;
+                
+                    width: 100%;
+            	
+            	
+            	
+            }
+        
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.atvi_column_layout-683385755-child-resource-4-class {
+                position: relative;
+                overflow: hidden;
+                
+                    width: 100%;
+            	
+            	
+            	
+            }
+        
+            
+       
+            
+        
+        
+    
+    
+
+</style>
+
+
+
+<section id="atvi_column_layout-683385755" class="atvi-column-layout-container atvi-module-container spyro-carousel">
+
+		
+
+			
+
+            <div class="atvi-column-inner-container">
+
+
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="1" id="atvi_column_layout-683385755-child-resource-1" class=" atvi_column_layout-683385755-child-resource-1-class column-child column-child-1"> 
+
+						
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element carousel-nav carousel-container atvi-module-container">
+
+    
+    <div class="atvi-text-image parbase aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-text-image/clientlibs.2966fcfcddea538986b6cc62380bcd08.css" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+    
+    
+        <div id="game-1" class=" atvi-text-image-container ">
+
+                
+
+                <div class="atvi-image-wrapper" style="width:;">
+                    
+                        
+                        <img src="/content/dam/atvi/spyro/common/3-games/SPYRO_TheDragon_KeyArt_FINAL.jpg" alt="Spyro the Dragon Cover Art"/>
+                    
+                    
+                </div>
+
+				
+
+				
+                        
+                            <p>Spyro™ the Dragon</p>
+
+                        
+                        
+				
+        </div>
+    
+    
+
+
+
+</div>
+<div class="atvi-text-image parbase aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+    
+    
+        <div id="game-2" class=" atvi-text-image-container ">
+
+                
+
+                <div class="atvi-image-wrapper" style="width:;">
+                    
+                        
+                        <img src="/content/dam/atvi/spyro/common/3-games/SPYRO_RiposRage_KeyArt_FINAL.jpg" alt="Spyro 2: Ripto&#39;s Rage! Cover Art"/>
+                    
+                    
+                </div>
+
+				
+
+				
+                        
+                            <p>Spyro™ 2: Ripto's Rage!</p>
+
+                        
+                        
+				
+        </div>
+    
+    
+
+
+
+</div>
+<div class="atvi-text-image parbase aem-GridColumn aem-GridColumn--default--12">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+    
+    
+        <div id="game-3" class=" atvi-text-image-container ">
+
+                
+
+                <div class="atvi-image-wrapper" style="width:;">
+                    
+                        
+                        <img src="/content/dam/atvi/spyro/common/3-games/SPYRO_YearoftheDragon_KeyArt_FINAL.jpg" alt="Spyro: Year of the Dragon Cover Art"/>
+                    
+                    
+                </div>
+
+				
+
+				
+                        
+                            <p>Spyro™: Year of the Dragon</p>
+
+                        
+                        
+				
+        </div>
+    
+    
+
+
+
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="2" id="atvi_column_layout-683385755-child-resource-2" class=" atvi_column_layout-683385755-child-resource-2-class column-child column-child-2"> 
+
+						
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element carousel-item  carousel-container atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-48389-container" class="atvi-image-component game-art-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-art" src="/content/dam/atvi/spyro/common/3-games/SPYRO_TheDragon_KeyArt_FINAL.jpg" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element game-description atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-832902-container" class="atvi-image-component game-title-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-title" src="/content/dam/atvi/spyro/common/3-games/title-spyro-the-dragon.png" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="game-text">
+
+     
+
+     <p> Gnasty Gnorc has returned from exile and has unleashed evil magic on the Dragon Realms, trapping the Dragons in crystal and raising an army of Gnorcs. Spyro, with his friend Sparx the Dragonfly, is the only Dragon left who can traverse the six Homeworlds, free the Dragons and save the day! </p>
+
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="3" id="atvi_column_layout-683385755-child-resource-3" class=" atvi_column_layout-683385755-child-resource-3-class column-child column-child-3"> 
+
+						
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element carousel-item  carousel-container atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-306971-container" class="atvi-image-component game-art-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-art" src="/content/dam/atvi/spyro/common/3-games/SPYRO_RiposRage_KeyArt_FINAL.jpg" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element game-description atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-974936-container" class="atvi-image-component game-title-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-title" src="/content/dam/atvi/spyro/common/3-games/title-spyro-2-riptos-rage.png" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="game-text">
+
+     
+
+     <p>Spyro has been brought to the land of Avalar to defeat the evil sorcerer Ripto who has brought war to Avalar’s Homeworlds. Each Homeworld is being held captive by Ripto and his minions, and it's up to Spyro to defeat them and bring peace to Avalar’s realms.</p>
+
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="4" id="atvi_column_layout-683385755-child-resource-4" class=" atvi_column_layout-683385755-child-resource-4-class column-child column-child-4"> 
+
+						
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element carousel-item  carousel-container atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-885684-container" class="atvi-image-component game-art-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-art" src="/content/dam/atvi/spyro/common/3-games/SPYRO_YearoftheDragon_KeyArt_FINAL.jpg" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element game-description atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-294589-container" class="atvi-image-component game-title-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="game-title" src="/content/dam/atvi/spyro/common/3-games/title-spyro-year-of-the-dragon.png" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="game-text">
+
+     
+
+     <p>The Dragon Realms are celebrating the ‘Year of the Dragon’ when a mysterious cloaked figure emerges to steal all the Dragon Eggs. Under the spell of the evil Sorceress, an army of Rhynocs is now guarding the helpless eggs in the Forgotten Realms. With new and old friends, Spyro is on a quest to recover the lost eggs, defeat the Rhynoc army and stop the evil Sorceress.</p>
+
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+             
+
+		</div>
+
+    </section>
+
+    <script type="text/javascript" defer>
+
+		(function() {
+            // re-order slides according to their order value before initializing carousel
+            var $parentContainer = $("#atvi_column_layout-683385755 > .atvi-column-inner-container");
+            
+            $parentContainer.find(' > .column-child').sort(function(a, b) {
+                return +a.dataset.order - +b.dataset.order;
+            })
+            .appendTo($parentContainer);
+		})();
+
+	</script>
+
+    
+
+	
+
+		<script type="text/javascript" defer>
+
+			(function() {
+
+                var init = function() {
+                    if(ATVI.pageMode != "edit") setTimeout(initCarousel(), 0);
+                };
+
+                var direction = (ATVI.pageLocale == "ar") ? true : false;
+
+				var initCarousel = function() {
+
+                    var $parentContainer = $("#atvi_column_layout-683385755 > .atvi-column-inner-container");
+
+                    $parentContainer.slick({
+                      slidesToShow: 1,
+                      slidesToScroll: 1,
+                      speed: 300,
+                      dots: true,
+                      centerMode: true,
+                      variableWidth: false,
+                      adaptiveHeight: false,
+                      centerPadding: "0px",
+                      arrows: true,
+                      autoplay: false,
+                      autoplaySpeed: 5000,
+                      fade: false,
+                      rtl: direction,
+                      responsive: [
+                            {
+                                breakpoint: 0,
+                                settings: {
+									slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    speed: 300,
+                                    dots: false,
+                                    centerMode: false,
+                                    variableWidth: false,
+                                    adaptiveHeight: false,
+                                    centerPadding: "0px",
+                                    arrows: false,
+                                    autoplay: false,
+                                    autoplaySpeed: 5000,
+                                    fade: false,
+                                    rtl: direction
+                                }
+                            },
+                            {
+                                breakpoint: 0,
+                                settings: {
+									slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    speed: 300,
+                                    dots: false,
+                                    centerMode: false,
+                                    variableWidth: false,
+                                    adaptiveHeight: false,
+                                    centerPadding: "0px",
+                                    arrows: false,
+                                    autoplay: false,
+                                    autoplaySpeed: 5000,
+                                    fade: false,
+                                    rtl: direction
+                                }
+                            }               
+                    	]
+    
+                    });
+                };
+
+                $(init);
+
+			})();
+
+    	</script>
+
+    
+
+</div>
+
+    
+
+</div>
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+<div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm_1789610567" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-wtb-simple aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-wtb-simple/clientlibs.1c81435d4ce7d9336a9b8bfeb3d518d1.css" type="text/css">
+<script src="/apps/atvi/global/components/content/atvi-wtb-simple/clientlibs.7f9bb6abb9dd396d53dd9f12261dea89.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+<div id="buy" class="wtb-container">
+
+    <div class="wtb-inner-container">
+
+        
+        
+        <div class="wtb-header">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element  atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="spyro-wtb-logo-container" class="atvi-image-component atvi-image-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img id="spyro-wtb-logo" src="/content/dam/atvi/spyro/common/global/Spyro_Logo.png" alt="" loading="lazy"/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+
+    
+
+</div>
+</div>
+
+        
+        
+        
+        
+        
+        
+
+    <div class="wtb-container-layout wtb-layout-3">
+
+        <div class="wtb-box-bundle-art wtb-col">
+
+            <div class="wtb-box-art col-1">
+            	<img src="" alt="Box Art" id="box-art-img"/>
+            </div>
+
+            
+
+        </div>
+
+		<div class="wtb-selections wtb-col">
+
+            
+
+            <div class="wtb-drop-downs">
+                <div class="bundle-select-container select-container" style="display: none;">
+					
+					<select id="bundle-select">
+                        <option ${item.properties.bundleEntryId="=" properties.defaultBundle ?='selected' :='' } value="standard">Standard</option>
+                    </select>
+                </div>
+            
+                <div class="platform-select-container select-container">
+					
+                    <select id="platform-select">
+                        <option ${item.properties.platformEntryId="=" properties.defaultPlatform ?='selected' :='' } value="pc">PC</option>
+                    
+                        <option ${item.properties.platformEntryId="=" properties.defaultPlatform ?='selected' :='' } value="ps4">PlayStation® 4</option>
+                    
+                        <option ${item.properties.platformEntryId="=" properties.defaultPlatform ?='selected' :='' } value="xboxone">Xbox One</option>
+                    </select>
+                </div>
+            
+                <div class="region-select-container select-container">
+					
+                    <select id="region-select"></select>
+                </div>
+            
+                <div class="retailer-select-container select-container" style="display: block">
+					
+					<select id="retailer-select"></select>
+                </div>
+            </div>
+
+            <div class="retailer-link-container">
+                <div class="retailer-error">
+                    <p>Sorry, the selected bundle is not available for this area.</p>
+                </div>
+                <a id="purchase-link" href="#" target="_blank">Buy Now</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+        
+    
+
+    </div>
+
+    
+    
+        <script>
+            (function() {
+                var wtbObj = {
+                    wtbData         : `Bundle	Region	Platform	Image	Retailer	Link
+standard	al	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	al	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Albagame	https://www.albagame.al/index.php?search=spyro+the+dragon&category_id=0&submit_search=&route=product%2Fsearch&sub_category=true&description=true
+standard	al	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png		#unavailable
+standard	al	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	al	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Albagame	https://www.albagame.al/index.php?search=spyro+the+dragon&category_id=0&submit_search=&route=product%2Fsearch&sub_category=true&description=true
+standard	al	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ar	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ar	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png		#unavailable
+standard	ar	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ar	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com/es-ar/store/p/spyro-reignited-trilogy/bwhfznsl0pb5
+standard	ar	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	au	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	au	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	Amazon	https://www.amazon.com.au/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=spyro+the+dragon
+standard	au	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	EB Games	https://www.ebgames.com.au/any/any?q=spyro&availability=onlinestock
+standard	au	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	JB Hi-Fi	https://www.jbhifi.com.au/games-consoles/?q=spyro%20trilogy&
+standard	au	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	Playstation Store	https://store.playstation.com/?resolve=UP0002-CUSA12125_00-SPYROTRILOGY0000
+standard	au	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	au	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	Amazon	https://www.amazon.com.au/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords=spyro+the+dragon
+standard	au	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	EB Games	https://www.ebgames.com.au/any/any?q=spyro&availability=onlinestock
+standard	au	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	JB Hi-Fi	https://www.jbhifi.com.au/games-consoles/?q=spyro%20trilogy&
+standard	au	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	au	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	at	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	at	ps4	SPYRO_TRILOGY_PS4_Packshot_GM-PEGI.png	Playstation Store	https://store.playstation.com
+standard	at	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	at	xboxone	SPYRO_TRILOGY_XB1_Packshot_GM-PEGI.png	Xbox Store	https://www.microsoft.com
+standard	at	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	be-nl	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	be-nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	BOL.COM	https://www.bol.com/nl/p/spyro-reignited-trilogy-ps4/9200000092412417/?country=BE
+standard	be-nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	DREAMLAND	https://www.dreamland.be/e/nl/dl/ps4-spyro-reignited-trilogy-nl-fr-113217
+standard	be-nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	GAMEMANIA	https://www.gamemania.be/Games/playstation-4/142148_spyro-reignited-trilogy
+standard	be-nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	MediaMarkt	https://www.mediamarkt.be/nl/product/_activision-spyro-reignited-trilogy-nl-fr-ps4-1739523.html
+standard	be-nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	SMARTOYS	https://www.smartoys.be/catalog/advanced_search_result.php?keywords=spyro
+standard	be-nl	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	be-nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	BOL.COM	https://www.bol.com/nl/p/spyro-reignited-trilogy-xbox-one/9200000092412421/?country=BE
+standard	be-nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	DREAMLAND	https://www.dreamland.be/e/nl/dl/xbox-one-spyro-reignited-trilogy-nl-fr-113394
+standard	be-nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	GAMEMANIA	https://www.gamemania.be/Games/xbox-one/142149_spyro-reignited-trilogy
+standard	be-nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	MediaMarkt	https://www.mediamarkt.be/nl/product/_activision-spyro-reignited-trilogy-nl-fr-xbox-one-1739527.html
+standard	be-nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	SMARTOYS	https://www.smartoys.be/catalog/advanced_search_result.php?keywords=spyro
+standard	be-nl	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	be-fr	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	be-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	DREAMLAND	https://www.dreamland.be/e/fr/dl/ps4-spyro-reignited-trilogy-fr-nl-113217
+standard	be-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	GAMEMANIA	https://www.gamemania.be/Games/playstation-4/142148_spyro-reignited-trilogy
+standard	be-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	MEDIAMARKT	https://www.mediamarkt.be/fr/product/_activision-spyro-reignited-trilogy-fr-nl-ps4-1739523.html
+standard	be-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	PLAYERONE.BE	https://www.playerone.be/SPYRO-TRILOGY-REIGNITED-168053
+standard	be-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	SMARTOYS	https://www.smartoys.be/catalog/product_info.php?products_id=5030917242229
+standard	be-fr	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	be-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	DREAMLAND	https://www.dreamland.be/e/fr/dl/xbox-one-spyro-reignited-trilogy-nl-fr-113394
+standard	be-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	GAMEMANIA	https://www.gamemania.be/Games/xbox-one/142149_spyro-reignited-trilogy
+standard	be-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	MEDIAMARKT	https://www.mediamarkt.be/fr/product/_activision-spyro-reignited-trilogy-fr-nl-xbox-one-1739527.html
+standard	be-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	PLAYERONE.BE	https://www.playerone.be/SPYRO-TRILOGY-REIGNITED-168054
+standard	be-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	SMARTOYS	https://www.smartoys.be/catalog/product_info.php?products_id=5030917242335
+standard	be-fr	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ba	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ba	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Imtec	https://imtec.ba/search?controller=search&orderby=price&orderway=asc&search_query=spyro+the+dragon&submit_search=
+standard	ba	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ba	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Imtec	https://imtec.ba/search?controller=search&orderby=price&orderway=asc&search_query=spyro+the+dragon&submit_search=
+standard	ba	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	br	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	br	ps4	PS4_2D_BR.png	Playstation Store	https://store.playstation.com/?resolve=UP0002-CUSA12125_00-SPYROTRILOGY0000
+standard	br	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	br	xboxone	XONE_2D_BR_copy.jpg	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	br	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ca	pc	SPYRO_Trilogy_PC_FINAL2.png	Steam	https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/
+standard	ca	ps4	SPYRO_TRILOGY_PS4_Packshot_ENG_F_FINAL.png	Playstation Store	https://store.playstation.com/en-us/product/UP0002-CUSA12125_00-SPYROTRILOGY0001
+standard	ca	switch	Spyro_Presell_Switch_Final.png	Nintendo	https://www.nintendo.com/store/products/spyro-reignited-trilogy-switch/
+standard	ca	xboxone	SPYRO_TRILOGY_XB1_Packshot_ENG_F_FINAL.png	Xbox Store	https://www.xbox.com/en-US/games/store/spyro-reignited-trilogy/bwhfznsl0pb5
+standard	ca	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ca-fr	pc	SPYRO_Trilogy_PC_FINAL2.png	Steam	https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/
+standard	ca-fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FCN_F_FINAL.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	ca-fr	switch	Spyro_Presell_Switch_Final.png	Nintendo	https://www.nintendo.com/store/products/spyro-reignited-trilogy-switch/
+standard	ca-fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FCN_FINAL.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	ca-fr	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cl	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cl	ps4	PS4_2D_MX.png	MICROPLAY	https://www.microplay.cl/producto/spyro-reignited-trilogy-ps4/
+standard	cl	ps4	PS4_2D_MX.png	Weplay	https://www.weplay.cl/preventa-spyro-reignited-trilogy-ps4.html
+standard	cl	ps4	PS4_2D_MX.png	ZMART	https://www.zmart.cl/scripts/prodView.asp?idProduct=70435
+standard	cl	switch	Spyro_Presell_Switch_Final.png	MICROPLAY	https://www.microplay.cl/producto/spyro-reignited-trilogy-switch/
+standard	cl	xboxone	XONE_2D_MX.png	MICROPLAY	https://www.microplay.cl/producto/spyro-reignited-trilogy-xbox-one/
+standard	cl	xboxone	XONE_2D_MX.png	Microsoft Store	https://www.microsoft.com/es-cl/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	cl	xboxone	XONE_2D_MX.png	Weplay	https://www.weplay.cl/preventa-spyro-reignited-trilogy-xbox-one.html
+standard	cl	xboxone	XONE_2D_MX.png	ZMART	https://www.zmart.cl/scripts/prodView.asp?idProduct=70434
+standard	cl	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cn	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cn	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/en-th/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	cn	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	cn	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com
+standard	cn	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cn	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/zh-hant-tw/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	cn	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	cn	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com
+standard	cn	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	co	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	co	ps4	PS4_2D_MX.png	Alkosto	https://www.alkosto.com/videojuego-ps4-spyro-reignited-trilogy
+standard	co	ps4	PS4_2D_MX.png	Dprimero	https://dprimero.com/spyro-reignited-trilogy/
+standard	co	ps4	PS4_2D_MX.png	Panamericana	https://www.panamericana.com.co/juego-spyro-reignited-trilogy-para-xbox-one-556667/p
+standard	co	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	co	xboxone	XONE_2D_MX.png	Alkosto	https://www.alkosto.com/videojuego-xbox-one-spyro-reignited-trilogy
+standard	co	xboxone	XONE_2D_MX.png	Dprimero	https://dprimero.com/spyro-reignited-trilogy-2/
+standard	co	xboxone	XONE_2D_MX.png	Panamericana	https://www.panamericana.com.co/juego-spyro-reignited-trilogy-para-xbox-one-556667/p
+standard	co	xboxone	XONE_2D_MX.png	Xbox Store	https://www.microsoft.com/es-co/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	co	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hr	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Ekupi	https://www.ekupi.hr/Content/Search.aspx?qry=spyro
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Links	https://www.links.hr/hr/search?q=spyro
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Sancta Domenica	https://www.sancta-domenica.hr/?sn.q=spyro
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Sophos Lab	http://www.sophoslab.hr/site/search/?query=spyro
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Svijet Medija	https://www.svijet-medija.hr/artikls/spyro
+standard	hr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Zelda	http://www.zelda.hr/index.php?route=product/search&search=spyro
+standard	hr	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Ekupi	https://www.ekupi.hr/Content/Search.aspx?qry=spyro
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Links	https://www.links.hr/hr/search?q=spyro
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Sancta Domenica	https://www.sancta-domenica.hr/?sn.q=spyro
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Sophos Lab	http://www.sophoslab.hr/site/search/?query=spyro
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Svijet Medija	https://www.svijet-medija.hr/artikls/spyro
+standard	hr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Zelda	http://www.zelda.hr/index.php?route=product/search&search=spyro
+standard	hr	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cz	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	cz	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Alza	https://www.alza.cz/search.htm?exps=spyro%20the%20dragon
+standard	cz	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	JRC	http://www.jrc.cz/vyhledavani?q=spyro+the+dragon
+standard	cz	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Xzone	https://www.xzone.cz/hledat.php3?search=spyro+the+dragon
+standard	cz	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	cz	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Alza	https://www.alza.cz/search.htm?exps=spyro%20the%20dragon
+standard	cz	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	JRC	http://www.jrc.cz/vyhledavani?q=spyro+the+dragon
+standard	cz	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xzone	https://www.xzone.cz/hledat.php3?search=spyro+the+dragon
+standard	cz	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	dk	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	dk	ps4	Spyro_PS4_2D_FRONT_Packshot_SC.png	Playstation Store	https://store.playstation.com
+standard	dk	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	dk	xboxone	Spyro_XB1_2D_FRONT_Packshot_SC.png	Xbox Store	https://www.microsoft.com
+standard	dk	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	de	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	de	ps4	SPYRO_TRILOGY_PS4_Packshot_GM-USK.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	de	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	de	xboxone	SPYRO_TRILOGY_XB1_Packshot_GM-USK.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	de	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	es	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	es	ps4	SPYRO_TRILOGY_PS4_Packshot_ES.png	fnac.es	https://www.fnac.es/SearchResult/ResultList.aspx?SCat=0%211&Search=spyro&sft=1&sa=0
+standard	es	ps4	SPYRO_TRILOGY_PS4_Packshot_ES.png	game.es	https://www.game.es/buscar/spyro
+standard	es	ps4	SPYRO_TRILOGY_PS4_Packshot_ES.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	es	ps4	SPYRO_TRILOGY_PS4_Packshot_ES.png	xtralife.es	https://www.xtralife.es/buscar/spyro
+standard	es	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	es	xboxone	SPYRO_TRILOGY_XB1_Packshot_ES.png	fnac.es	https://www.fnac.es/SearchResult/ResultList.aspx?SCat=0%211&Search=spyro&sft=1&sa=0
+standard	es	xboxone	SPYRO_TRILOGY_XB1_Packshot_ES.png	game.es	https://www.game.es/buscar/spyro
+standard	es	xboxone	SPYRO_TRILOGY_XB1_Packshot_ES.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	es	xboxone	SPYRO_TRILOGY_XB1_Packshot_ES.png	xtralife.es	https://www.xtralife.es/buscar/spyro
+standard	es	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	fi	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	fi	ps4	Spyro_PS4_2D_FRONT_Packshot_SC.png	Playstation Store	https://store.playstation.com
+standard	fi	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	fi	xboxone	Spyro_XB1_2D_FRONT_Packshot_SC.png	Xbox Store	https://www.microsoft.com
+standard	fi	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	fr	pc	SPYRO_Trilogy_PC_FINAL2.png	steam.fr	https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	Playstation Store	https://store.playstation.com/fr-fr/product/EP0002-CUSA12085_00-SPYROTRILOGY0001?emcid=pa-st-165918
+standard	fr	switch	Spyro_Presell_Switch_Final.png	fnac.fr	https://jeux-video.fnac.com/a13599571/Spyro-Reignited-Trilogy-Nintendo-Switch-Jeu-Nintendo-Switch#omnsearchpos=2
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	Xbox Store	https://www.microsoft.com/fr-fr/p/spyro-reignited-trilogy/bwhfznsl0pb5?activetab=pivot:overviewtab
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	fnac.fr	https://jeux-video.fnac.com/a11954077/Spyro-Reignited-Trilogy-PS4-Jeu-PlayStation-4#omnsearchpos=3
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	fnac.fr	https://jeux-video.fnac.com/a11954078/Spyro-Reignited-Trilogy-Xbox-One-Jeu-Xbox-One#omnsearchpos=5
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	Cdiscount.fr	https://www.cdiscount.com/jeux-pc-video-console/ps4/spyro-reignited-trilogy-jeu-ps4/f-1030401-5030917242182.html#mpos=0|cd
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	Cdiscount.fr	https://www.cdiscount.com/jeux-pc-video-console/xbox-one/spyro-reignited-trilogy-jeu-xbox-one/f-1030201-5030917242298.html#mpos=0|cd
+standard	fr	switch	Spyro_Presell_Switch_Final.png	Cdiscount.fr	https://www.cdiscount.com/jeux-pc-video-console/nintendo-switch/spyro-reignited-trilogy-jeu-switch/f-1032801-5030917284557.html#mpos=0|cd
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	Micromania.fr	https://www.micromania.fr/spyro-reignited-trilogy-87110.html
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	Micromania.fr	https://www.micromania.fr/spyro-reignited-trilogy-87112.html
+standard	fr	switch	Spyro_Presell_Switch_Final.png	Micromania.fr	https://www.micromania.fr/spyro-reignited-trilogy-99004.html
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	Amazon.fr	https://www.amazon.fr/ACTIVISION-5030917242182-Spyro-Reignited-Trilogy/dp/B07BZRJBQG/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=spyro&qid=1575476134&sr=8-2
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	Amazon.fr	https://www.amazon.fr/ACTIVISION-5030917242182-Spyro-Reignited-Trilogy/dp/B07BZRHYY3/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=spyro&qid=1575476134&sr=8-2&th=1
+standard	fr	switch	Spyro_Presell_Switch_Final.png	Amazon.fr	https://www.amazon.fr/ACTIVISION-5030917242182-Spyro-Reignited-Trilogy/dp/B07SFXLGW8/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=spyro&qid=1575476134&sr=8-2&th=1
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	Auchan.fr	https://www.auchan.fr/spyro-reignited-trilogy-ps4/p-c1044933
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	Auchan.fr	https://www.auchan.fr/spyro-reignited-trilogy-xbox-one/p-c1044936
+standard	fr	switch	Spyro_Presell_Switch_Final.png	Auchan.fr	https://www.auchan.fr/spyro-reignited-trilogy-nintendo-switch/p-c1117815
+standard	fr	ps4	SPYRO_TRILOGY_PS4_Packshot_FR.png	culture.leclerc.fr	https://www.culture.leclerc/jeux-video-u/playstation-4-u/jeux-u/aventure-u/spyro-reignited-trilogy-ps4-5030917242182-pr
+standard	fr	xboxone	SPYRO_TRILOGY_XB1_Packshot_FR.png	culture.leclerc.fr	https://www.culture.leclerc/jeux-video-u/xbox-one-u/jeux-u/aventure-u/spyro-reignited-trilogy-xboxone-5030917242298-pr
+standard	fr	switch	Spyro_Presell_Switch_Final.png	culture.leclerc.fr	https://www.culture.leclerc/jeux-video-u/nintendo-switch-u/jeux-u/aventure-u/spyro-reignited-trilogy-switch-5030917284557-pr
+standard	fr	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	gr	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	gr	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Public	http://www.public.gr/search/public/searchResultsSN.jsp?sn.q=spyro
+standard	gr	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	gr	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Public	http://www.public.gr/search/public/searchResultsSN.jsp?sn.q=spyro
+standard	gr	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hk	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hk	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/en-hk/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	hk	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	hk	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com
+standard	hk	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hu	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	576 Kbyte	https://576kb.hu/catalogsearch/result/?q=spyro+the+dragon
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Auchan	https://www.auchan.hu/kereses?type=all&term=spyro+the+dragon
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Euronics	https://euronics.hu/search/?text=spyro+the+dragon
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Extreme Digital	https://edigital.hu/search?product%5Bsearch%5D=spyro+the+dragon
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Konzolvilag	https://www.konzolvilag.hu/mind/keres/spyro+the+dragon
+standard	hu	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Media Markt	http://www.mediamarkt.hu/hu/search.html?query=spyro+the+dragon&searchProfile=onlineshop&channel=mmhuhu
+standard	hu	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	576 Kbyte	https://576kb.hu/catalogsearch/result/?q=spyro+the+dragon
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Auchan	https://www.auchan.hu/kereses?type=all&term=spyro+the+dragon
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Euronics	https://euronics.hu/search/?text=spyro+the+dragon
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Extreme Digital	https://edigital.hu/search?product%5Bsearch%5D=spyro+the+dragon
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Konzolvilag	https://www.konzolvilag.hu/mind/keres/spyro+the+dragon
+standard	hu	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Media Markt	http://www.mediamarkt.hu/hu/search.html?query=spyro+the+dragon&searchProfile=onlineshop&channel=mmhuhu
+standard	hu	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	is	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	is	ps4	Spyro_PS4_2D_FRONT_Packshot_SC.png	Playstation Store	https://store.playstation.com
+standard	is	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	is	xboxone	Spyro_XB1_2D_FRONT_Packshot_SC.png	Xbox Store	https://www.microsoft.com
+standard	is	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	id	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	id	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/en-id/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	id	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	id	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png		#unavailable
+standard	id	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	it	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	it	ps4	SPYRO_TRILOGY_PS4_Packshot_IT.png	AMAZON	https://www.amazon.it/s/ref=nb_sb_ss_c_1_10/262-0865395-5378507?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=spyro+the+dragon&sprefix=spyro+the+%2Caps%2C158&crid=1ZHJFNID9YM1Z
+standard	it	ps4	SPYRO_TRILOGY_PS4_Packshot_IT.png	GAMESTOP	https://www.gamestop.it/SearchResult/QuickSearch?q=SPYRO+THE+DRAGON
+standard	it	ps4	SPYRO_TRILOGY_PS4_Packshot_IT.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	it	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	it	xboxone	SPYRO_TRILOGY_XB1_Packshot_IT.png	AMAZON	https://www.amazon.it/s/ref=nb_sb_ss_c_1_10/262-0865395-5378507?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=spyro+the+dragon&sprefix=spyro+the+%2Caps%2C158&crid=1ZHJFNID9YM1Z
+standard	it	xboxone	SPYRO_TRILOGY_XB1_Packshot_IT.png	GAMESTOP	https://www.gamestop.it/SearchResult/QuickSearch?q=SPYRO+THE+DRAGON
+standard	it	xboxone	SPYRO_TRILOGY_XB1_Packshot_IT.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	it	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	jp	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	jp	ps4	SPYRO_TRILOGY_PS4_Packshot_ENG_F_FINAL.png	Playstation Store	https://store.playstation.com/?resolve=UP0002-CUSA12125_00-ASIAPLACEHOLDER0
+standard	jp	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	jp	xboxone	SPYRO_TRILOGY_XB1_Packshot_ENG_F_FINAL.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	jp	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ko	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ko	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/ko-kr/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	ko	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ko	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	#unavailable
+standard	ko	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	xk	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	xk	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Mega-KS	http://www.mega-ks.com/?s=spyro+the+dragon&product_cat=&page=search&post_type=product
+standard	xk	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	xk	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Mega-KS	http://www.mega-ks.com/?s=spyro+the+dragon&product_cat=&page=search&post_type=product
+standard	xk	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	my	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	my	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store 	https://store.playstation.com/#!/en-my/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	my	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	my	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	#unavailable
+standard	my	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	mx	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	mx	ps4	PS4_2D_MX.png	GAMEPLANET	https://gameplanet.com/spyro-reignited-ps4-trilogy.html
+standard	mx	ps4	PS4_2D_MX.png	GAMERS	https://www.gamershop.com.mx/products/spyro-reignited-trilogy-ps4?variant=8032709279774
+standard	mx	ps4	PS4_2D_MX.png	Playstation Store	https://store.playstation.com/?resolve=UP0002-CUSA12125_00-SPYROTRILOGY0001
+standard	mx	switch	Spyro_Presell_Switch_Final.png	AMAZON	https://www.amazon.com.mx/Spyro-Reignited-Trilogy-Standard-Nintendo/dp/B07SW7NN1D/ref=sr_1_2?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1QYPNS3GQ71UZ&keywords=spyro&qid=1565109407&s=gateway&sprefix=spyro%2Caps%2C186&sr=8-2
+standard	mx	switch	Spyro_Presell_Switch_Final.png	GAMEPLANET	https://gameplanet.com/spyro-reignited-trilogy-nsw.html
+standard	mx	xboxone	XONE_2D_MX.png	GAMEPLANET	https://gameplanet.com/spyro-reignited-one-trilogy.html
+standard	mx	xboxone	XONE_2D_MX.png	GAMERS	https://www.gamershop.com.mx/products/preventa-spyro-reignited-trilogy-one?variant=8032713539614
+standard	mx	xboxone	XONE_2D_MX.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	mx	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	nl	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	BOL.COM	https://www.bol.com/nl/p/spyro-reignited-trilogy-ps4/9200000092412417/
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	GAMEMANIA	https://www.gamemania.nl/games/playstation-4/142148_spyro-reignited-trilogy
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	INTERTOYS	https://www.intertoys.nl/p/ps4-spyro-reignited-trilogy/1790024
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	MEDIAMARKT	https://www.mediamarkt.nl/nl/product/_spyro-%E2%80%93-trilogy-reignited-playstation-4-1569281.html
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	nl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	WEHKAMP	https://www.wehkamp.nl/spyro-trilogy-reignited-playstation-4-16094707/
+standard	nl	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	BOL.COM	https://www.bol.com/nl/p/spyro-reignited-trilogy-xbox-one/9200000092412421/
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	GAMEMANIA	https://www.gamemania.nl/games/xbox-one/142149_spyro-reignited-trilogy
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	INTERTOYS	https://www.intertoys.nl/p/xbox-one-spyro-reignited-trilogy/1790025
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	MEDIAMARKT	https://www.mediamarkt.nl/nl/product/_spyro-%E2%80%93-trilogy-reignited-xbox-one-1569282.html
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	WEHKAMP	https://www.wehkamp.nl/spyro-trilogy-reignited-xbox-one-16094708/
+standard	nl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	nl	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	nz	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	nz	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	EB Games	https://ebgames.co.nz/any/any?q=spyro&availability=onlinestock
+standard	nz	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	JB Hi-Fi	https://www.jbhifi.co.nz/?q=spyro%20the%20dragon&
+standard	nz	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	Mighty Ape	https://www.mightyape.com.au/search?q=spyro&page=1
+standard	nz	ps4	SPYRO_TRILOGY_PS4_Packshot_AU.png	The Warehouse	https://www.thewarehouse.co.nz/search?q=spyro
+standard	nz	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	nz	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	EB Games	https://ebgames.co.nz/any/any?q=spyro&availability=onlinestock
+standard	nz	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	JB Hi-Fi	https://www.jbhifi.co.nz/?q=spyro%20the%20dragon&
+standard	nz	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	Mighty Ape	https://www.mightyape.com.au/search?q=spyro&page=1
+standard	nz	xboxone	SPYRO_TRILOGY_XB1_Packshot_AU.png	The Warehouse	https://www.thewarehouse.co.nz/search?q=spyro
+standard	nz	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	no	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	no	ps4	Spyro_PS4_2D_FRONT_Packshot_SC.png	Playstation Store	https://store.playstation.com
+standard	no	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	no	xboxone	Spyro_XB1_2D_FRONT_Packshot_SC.png	Xbox Store	https://www.microsoft.com
+standard	no	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pe	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pe	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com
+standard	pe	switch	Spyro_Presell_Switch_Final.png	PHANTOM	https://phantom.pe/spyro-reignited-trilogy-nintendo-switch-preventa.html
+standard	pe	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com
+standard	pe	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pl	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	3kropki	https://www.3kropki.pl/p/spyro-reignited-trilogy-ps4.html
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	CDP.PL	https://cdp.pl/spyro-reignited-trilogy-pud-ps4.html
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	electro.pl	https://www.electro.pl/gry-playstation-4/gra-ps4-spyro-reignited-trilogy,id-1143871
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	EMPIK	https://www.empik.com/spyro-reignited-trilogy-toys-for-bob,p1201510996,multimedia-p
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	EURO	https://www.euro.com.pl/gry-playstation-4/activision-spyro-reignited-trilogy-ps4.bhtml
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	grymel	http://www.grymel.pl/cenega-spyro-reignited-trilogy-pl-o_l_11803.html
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	konsole i gry	http://konsoleigry.pl/gry-na-ps4/10741-spyro-reignited-trilogy-ps4-5030917242243.html
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	Media Expert	https://www.mediaexpert.pl/gry-playstation-4/gra-ps4-spyro-reignited-trilogy,id-1143871
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	Media Markt	https://mediamarkt.pl/search?query%5Bmenu_item%5D=&query%5Bquerystring%5D=SPYRO
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	merlin	https://merlin.pl/spyro-reignited-trilogy-ps4-activision/7970323/
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	morele.net	https://www.morele.net/spyro-reignited-trilogy-premiera-13-11-2018-4140727/
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	MUVE	https://muve.pl/sklep/playstation-4/platformowki/spyro-reignited-trilogy-ps4-pl-dubbing,433710
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	ULTIMA	https://www.ultima.pl/ct/playstation-4/gry/przygodowe/spyro-reignited-trilogy
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png	X-kom	https://www.x-kom.pl/p/439296-gra-na-playstation-4-cenega-spyro-reignited-trilogy.html
+standard	pl	ps4	SPYRO_TRILOGY_PS4_Packshot_PL.png		#unavailable
+standard	pl	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	3kropki	https://www.3kropki.pl/p/spyro-reignited-trilogy-xbox-one.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	arenagry	https://arenagry.pl/preordery/39172-spyro-reignited-trilogy-ang.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	CDP.PL	https://cdp.pl/spyro-reignited-trilogy-pud-xone.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	electro.pl	https://www.electro.pl/gry-xbox-one/gra-xbox-one-spyro-reignited-trilogy,id-1143873
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	EMPIK	https://www.empik.com/spyro-reignited-trilogy-toys-for-bob,p1201510987,multimedia-p
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	EURO	https://www.euro.com.pl/gry-xbox-one/activision-spyro-reignited-trilogy-xone.bhtml
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	grymel	http://www.grymel.pl/cenega-spyro-reignited-trilogy-pl-o_l_11804.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	konsole i gry	http://konsoleigry.pl/gry-na-xbox-one/10742-spyro-reignited-trilogy-xone-5030917242359.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	Media Expert	https://www.mediaexpert.pl/gry-xbox-one/gra-xbox-one-spyro-reignited-trilogy,id-1143873
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	Media Markt	https://mediamarkt.pl/konsole-i-gry/gra-xbox-one-spyro-reignited-trilogy?querystring=SPYRO
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	merlin	https://merlin.pl/spyro-reignited-trilogy-xbox-one-activision/7970321/
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	morele.net	https://www.morele.net/spyro-reignited-trilogy-premiera-13-11-2018-4140726/
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	MUVE	https://muve.pl/sklep/xbox-one/zrecznosciowe/spyro-reignited-trilogy-xone-pl-dubbing,433708
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	ULTIMA	https://www.ultima.pl/ct/xbox-one/gry/przygodowe/spyro-reignited-trilogy-1
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	X-kom	https://www.x-kom.pl/p/439321-gra-na-xbox-one-cenega-spyro-reignited-trilogy.html
+standard	pl	xboxone	SPYRO_TRILOGY_XB1_Packshot_PL.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	pl	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pt	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	pt	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	pt	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	pt	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	pt	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ro	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ro	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Altex	https://altex.ro/search/?q=spyro+the+dragon
+standard	ro	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	eMag	https://www.emag.ro/search/spyro%20the%20dragon
+standard	ro	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Media Galaxy	https://mediagalaxy.ro/search/?q=spyro+the+dragon
+standard	ro	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ro	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Altex	https://altex.ro/search/?q=spyro+the+dragon
+standard	ro	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	eMag	https://www.emag.ro/search/spyro%20the%20dragon
+standard	ro	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Media Galaxy	https://mediagalaxy.ro/search/?q=spyro+the+dragon
+standard	ro	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sa	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sa	ps4	SPYRO_TRILOGY_PS4_Packshot_AR-GCAM.png		#unavailable
+standard	sa	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	sa	xboxone	SPYRO_TRILOGY_XB1_Packshot_AR-GCAM.png	Virgin Megastore	https://www.virginmegastore.ae/en/search/?text=spyro
+standard	sa	xboxone	SPYRO_TRILOGY_XB1_Packshot_AR-GCAM.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	sa	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	rs	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	rs	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Baito	http://www.baito.rs/pretraga-proizvoda?termin=spyro+the+dragon
+standard	rs	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Computerland	https://computerlandshop.rs/index.php?mod=catalog&op=thm_search&search_type=&submited=1&keywords=spyro+the+dragon
+standard	rs	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Gamecentar	https://www.gamecentar.rs/?s=spyro+the+dragon&post_type=product
+standard	rs	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	GameS	https://games.rs/catalogsearch/result/?q=spyro+the+dragon
+standard	rs	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Gigatron	https://www.gigatron.rs/pretraga?pojam=spyro%20the%20dragon
+standard	rs	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	rs	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Baito	http://www.baito.rs/pretraga-proizvoda?termin=spyro+the+dragon
+standard	rs	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Computerland	https://computerlandshop.rs/index.php?mod=catalog&op=thm_search&search_type=&submited=1&keywords=spyro+the+dragon
+standard	rs	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Gamecentar	https://www.gamecentar.rs/?s=spyro+the+dragon&post_type=product
+standard	rs	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	GameS	https://games.rs/catalogsearch/result/?q=spyro+the+dragon
+standard	rs	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Gigatron	https://www.gigatron.rs/pretraga?pojam=spyro%20the%20dragon
+standard	rs	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sg	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sg	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store 	https://store.playstation.com/#!/en-sg/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	sg	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	sg	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	#unavailable
+standard	sg	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sk	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sk	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	ProGamingShop	https://www.progamingshop.sk/advanced_search_result_v1.php?keywords=spyro+the+dragon
+standard	sk	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	sk	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	ProGamingShop	https://www.progamingshop.sk/advanced_search_result_v1.php?keywords=spyro+the+dragon
+standard	sk	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sl	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	ACS	http://acssony.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Big Bang	https://www.bigbang.si/?sn.q=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Gameshop	http://www.gameshop.si/PS4Igre/prednarocila-3832.htm
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Goblin	http://www.goblin.si/index.php?main_page=advanced_search&search_in_description=1&keyword=spyro%20the%20dragon%20ps4&inc_subcat=0&sort=20a
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Harvey Norman	https://www.harveynorman.si/catalogsearch/result/?q=spyro+the+dragon+ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Ideo	https://www.ideo.si/iskanje/spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Igabiba	https://www.igabiba.si/iskanje-spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Konzolko	https://www.konzolko.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Legit	https://eigre.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Links	https://si.links.eu/search?q=spyro+the+dragon+ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Mercator	https://mtehnika.mercator.si/brskaj#search=spyro%2520the%2520dragon%2520ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Mimovrste	https://www.mimovrste.com/iskanje?s=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playgame	http://playgame.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Vozicek	http://www.vozicek.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	ACS	http://acssony.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Big Bang	https://www.bigbang.si/?sn.q=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Gameshop	http://www.gameshop.si/PS4Igre/prednarocila-3832.htm
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Goblin	http://www.goblin.si/index.php?main_page=advanced_search&search_in_description=1&keyword=spyro%20the%20dragon%20ps4&inc_subcat=0&sort=20a
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Harvey Norman	https://www.harveynorman.si/catalogsearch/result/?q=spyro+the+dragon+ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Ideo	https://www.ideo.si/iskanje/spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Igabiba	https://www.igabiba.si/iskanje-spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Konzolko	https://www.konzolko.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Legit	https://eigre.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Links	https://si.links.eu/search?q=spyro+the+dragon+ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Mercator	https://mtehnika.mercator.si/brskaj#search=spyro%2520the%2520dragon%2520ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Mimovrste	https://www.mimovrste.com/iskanje?s=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Playgame	http://playgame.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Vozicek	http://www.vozicek.si/index.php?route=product/search&search=spyro%20the%20dragon%20ps4
+standard	sl	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	za	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	BT Games	https://www.btgames.co.za/catalogsearch/result/?q=spyro
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	C N A	https://www.cna.co.za/spyro-reignited-trilogy-ps4.html
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Game4U	https://game4u.co.za/shop/spyro-reignited-triliogy/
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Loot	https://game4u.co.za/shop/spyro-reignited-triliogy/
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Raru	https://raru.co.za/video-games/6540861-spyro-reignited-remastered-trilogy-ps4
+standard	za	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Takealot	https://www.takealot.com/spyro-reignited-trilogy-ps4/PLID49984605
+standard	za	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	BT Games	https://www.btgames.co.za/catalogsearch/result/?q=spyro
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	C N A	https://www.cna.co.za/spyro-reignited-trilogy-xbox1.html
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Game4U	https://game4u.co.za/shop/spyro-reignited-triliogy-2/
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Loot	https://game4u.co.za/shop/spyro-reignited-triliogy-2/
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Raru	https://raru.co.za/video-games/6540862-spyro-reignited-remastered-trilogy-xbox-one
+standard	za	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Takealot	https://www.takealot.com/spyro-reignited-trilogy-xbox-one/PLID49984607
+standard	za	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ch	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ch	ps4	SPYRO_TRILOGY_PS4_Packshot_GM-PEGI.png	Playstation Store	https://store.playstation.com
+standard	ch	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ch	xboxone	SPYRO_TRILOGY_XB1_Packshot_GM-PEGI.png	Xbox Store	https://www.microsoft.com
+standard	ch	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	tw	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	tw	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/#!/en-tw/cid=UP0002-CUSA12125_00-ASIA000000000000
+standard	tw	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	tw	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com
+standard	tw	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ae	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ae	ps4	SPYRO_TRILOGY_PS4_Packshot_AR-NMC.png	Geekay Games	https://www.geekaygames.com/catalogsearch/result/?q=spyro&fa=Submit
+standard	ae	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ae	xboxone	SPYRO_TRILOGY_XB1_Packshot_AR-NMC.png	Geekay Games	https://www.geekaygames.com/catalogsearch/result/?q=spyro&fa=Submit
+standard	ae	xboxone	SPYRO_TRILOGY_XB1_Packshot_AR-NMC.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	ae	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	gb	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	gb	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Amazon.co.uk	https://www.amazon.co.uk/gp/product/B07BXMWG8L/ref=as_li_tl?ie=UTF8&tag=calofdut0f-21&camp=1634&creative=6738&linkCode=as2&creativeASIN=B07BXMWG8L&linkId=01f663a49f9a76a62449550555f04812
+standard	gb	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Game	https://www.game.co.uk/en/spyro-reignited-trilogy-2326855
+standard	gb	ps4	SPYRO_TRILOGY_PS4_Packshot_EN.png	Playstation Store	https://store.playstation.com/?resolve=EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	gb	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	gb	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Amazon.co.uk	https://www.amazon.co.uk/gp/product/B07BY4CHNY/ref=as_li_tl?ie=UTF8&tag=calofdut0f-21&camp=1634&creative=6738&linkCode=as2&creativeASIN=B07BY4CHNY&linkId=3acbad1fa6665f0cb7a88fb1b4a1b12b
+standard	gb	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Game	https://www.game.co.uk/en/spyro-reignited-trilogy-2326847
+standard	gb	xboxone	SPYRO_TRILOGY_XB1_Packshot_EN.png	Xbox Store	https://www.microsoft.com/store/p/Spyro-Reignited-Trilogy/BWHFZNSL0PB5
+standard	gb	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	us	pc	SPYRO_Trilogy_PC_FINAL2.png	Steam	https://store.steampowered.com/app/996580/Spyro_Reignited_Trilogy/
+standard	us	ps4	3750_d20180718-008_1P_Packshots_PS4_01a.jpg	Playstation Store	https://store.playstation.com/en-us/product/UP0002-CUSA12125_00-SPYROTRILOGY0001
+standard	us	switch	3750_d20180718-008_1P_Packshots_X1_01a.jpg	Nintendo	https://www.nintendo.com/store/products/spyro-reignited-trilogy-switch/
+standard	us	xboxone	SPYRO_TRILOGY_XB1_Packshot_ENG_F_FINAL.png	Xbox Store	https://www.xbox.com/en-US/games/store/spyro-reignited-trilogy/bwhfznsl0pb5
+standard	us	pc	SPYRO_Trilogy_PC_FINAL2.png	Microsoft Store	https://www.microsoft.com/store/productid/9nld3zrwf8dt
+standard	us	msstore	SPYRO_Trilogy_PC_FINAL2.png	Microsoft Store	https://www.microsoft.com/store/productid/9nld3zrwf8dt
+standard	ru	pc	SPYRO_Trilogy_PC_FINAL2.png		#unavailable
+standard	ru	ps4	SPYRO_TRILOGY_PS4_Packshot_ENG_F_FINAL.png	Playstation Store	https://store.playstation.com/ru-ru/product/EP0002-CUSA12085_00-SPYROTRILOGYPREO
+standard	ru	switch	Spyro_Presell_Switch_Final.png		#unavailable
+standard	ru	xboxone	SPYRO_TRILOGY_XB1_Packshot_ENG_F_FINAL.png	Xbox Store	https://www.microsoft.com/ru-ru/p/spyro-reignited-trilogy/bwhfznsl0pb5
+standard	ru	msstore	SPYRO_Trilogy_PC_FINAL2.png		#unavailable`, //tsv data,
+                    el              : $("#buy"), //wtb parent html ID
+                    boxArtDirectory : "/content/dam/atvi/spyro/wheretobuy/" //box art directory
+                }
+
+                ATVI.wtbSimple.init(wtbObj); //init wtb component
+            })();
+        
+        </script>
+    
+
+</div></div>
+<div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cq-placeholder" data-emptytext="ATVI Text"></div>
+
+
+
+<div>
+
+     
+
+     
+
+</div>
+
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+<div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm_1855885494" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div id="social" class="layout-container-element spyro-section atvi-module-container">
+
+    
+    <div class="atvi-layout-container aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element spyro-social-content atvi-module-container">
+
+    
+    <div class="atvi-image aem-GridColumn aem-GridColumn--default--12">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="atvi-image-214061-container" class="atvi-image-component social-heading-container reg-width " data-emptytext="ATVI Image" data-type="imgTag">
+
+  
+  
+
+  
+	
+
+	
+	
+	
+
+	
+
+
+    
+
+	
+
+    
+    
+    
+
+    
+
+	
+	  <img class="social-heading" src="/content/dam/atvi/spyro/common/social/stay-connected.png" alt=""/>
+    
+
+
+	
+
+	
+
+
+	
+
+
+    
+    
+
+
+	
+	
+
+     
+     
+
+  
+
+</div></div>
+<div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-subheading">
+
+     
+
+     Follow Along For Updates
+
+</div>
+
+</div>
+<div class="atvi-column-layout aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+<style>
+
+    #atvi_column_layout--1439112937 {
+        position: relative;
+        overflow: hidden;
+		
+        
+        
+	}
+
+    #atvi_column_layout--1439112937 > .atvi-column-inner-container {
+   	 	position: relative;
+		display:flex; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex;
+        flex-wrap: wrap;
+        justify-content: jc-center;
+        align-items: center
+        
+		
+        
+        
+		
+		
+		
+		
+		
+	}
+
+    
+
+    
+
+	
+
+    
+
+	
+
+
+
+    
+
+        
+        
+    
+            
+    
+            
+
+			.fb-link-class {
+                position: relative;
+                overflow: hidden;
+                
+            	
+            		flex-grow: 1;
+            		flex-basis: 0;
+            	
+            	
+            }
+        
+            
+
+
+
+                .fb-link-class .atvi-column-child-layout-bg-media-container {
+					position: absolute; 
+                    width: 100%; 
+                    height: 100%; 
+                    top: 0; 
+                    left: 0;
+                }
+            
+                .fb-link-class .bg-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+    
+                .fb-link-class .bg-video {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.twitter-link-class {
+                position: relative;
+                overflow: hidden;
+                
+            	
+            		flex-grow: 1;
+            		flex-basis: 0;
+            	
+            	
+            }
+        
+            
+
+
+
+                .twitter-link-class .atvi-column-child-layout-bg-media-container {
+					position: absolute; 
+                    width: 100%; 
+                    height: 100%; 
+                    top: 0; 
+                    left: 0;
+                }
+            
+                .twitter-link-class .bg-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+    
+                .twitter-link-class .bg-video {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.insta-link-class {
+                position: relative;
+                overflow: hidden;
+                
+            	
+            		flex-grow: 1;
+            		flex-basis: 0;
+            	
+            	
+            }
+        
+            
+
+
+
+                .insta-link-class .atvi-column-child-layout-bg-media-container {
+					position: absolute; 
+                    width: 100%; 
+                    height: 100%; 
+                    top: 0; 
+                    left: 0;
+                }
+            
+                .insta-link-class .bg-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+    
+                .insta-link-class .bg-video {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+
+            
+       
+            
+        
+        
+    
+            
+    
+            
+
+			.youtube-link-class {
+                position: relative;
+                overflow: hidden;
+                
+            	
+            		flex-grow: 1;
+            		flex-basis: 0;
+            	
+            	
+            }
+        
+            
+
+
+
+                .youtube-link-class .atvi-column-child-layout-bg-media-container {
+					position: absolute; 
+                    width: 100%; 
+                    height: 100%; 
+                    top: 0; 
+                    left: 0;
+                }
+            
+                .youtube-link-class .bg-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+    
+                .youtube-link-class .bg-video {
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+
+            
+       
+            
+        
+        
+    
+    
+
+</style>
+
+
+
+<section id="atvi_column_layout--1439112937" class="atvi-column-layout-container atvi-module-container social-links">
+
+		
+
+			
+
+            <div class="atvi-column-inner-container">
+
+
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="1" id="fb-link" class="social-link fb-link-class column-child column-child-1"> 
+
+						<div class="atvi-column-child-layout-bg-media-container atvi_column_layout--1439112937-child-resource-1-media-container">
+
+                        
+                            <div class="bg-img bg-img-desktop bg-desktop" style="background: url(/content/dam/atvi/spyro/common/social/fb-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                            <div class="bg-img bg-img-mobile bg-mobile" style="background: url(/content/dam/atvi/spyro/common/social/fb-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                        
+
+                        
+            
+                    </div>
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element  atvi-module-container">
+
+    
+    <div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-label">
+
+     
+
+     Like
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="2" id="twitter-link" class="social-link twitter-link-class column-child column-child-2"> 
+
+						<div class="atvi-column-child-layout-bg-media-container atvi_column_layout--1439112937-child-resource-2-media-container">
+
+                        
+                            <div class="bg-img bg-img-desktop bg-desktop" style="background: url(/content/dam/atvi/spyro/common/social/tw-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                            <div class="bg-img bg-img-mobile bg-mobile" style="background: url(/content/dam/atvi/spyro/common/social/tw-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                        
+
+                        
+            
+                    </div>
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element  atvi-module-container">
+
+    
+    <div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-label">
+
+     
+
+     Follow
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="3" id="insta-link" class="social-link insta-link-class column-child column-child-3"> 
+
+						<div class="atvi-column-child-layout-bg-media-container atvi_column_layout--1439112937-child-resource-3-media-container">
+
+                        
+                            <div class="bg-img bg-img-desktop bg-desktop" style="background: url(/content/dam/atvi/spyro/common/social/ig-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                            <div class="bg-img bg-img-mobile bg-mobile" style="background: url(/content/dam/atvi/spyro/common/social/ig-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                        
+
+                        
+            
+                    </div>
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element  atvi-module-container">
+
+    
+    <div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-label">
+
+     
+
+     Follow
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+            
+            
+
+            	
+                
+
+				
+                
+                
+
+					<div data-order="4" id="youtube-link" class="social-link youtube-link-class column-child column-child-4"> 
+
+						<div class="atvi-column-child-layout-bg-media-container atvi_column_layout--1439112937-child-resource-4-media-container">
+
+                        
+                            <div class="bg-img bg-img-desktop bg-desktop" style="background: url(/content/dam/atvi/spyro/common/social/yt-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                            <div class="bg-img bg-img-mobile bg-mobile" style="background: url(/content/dam/atvi/spyro/common/social/yt-btn-blank.png) center center no-repeat; background-size: cover;"></div>
+                        
+
+                        
+            
+                    </div>
+                    <div class="atvi-column-child-content" style="position: relative;">
+
+
+
+
+
+
+
+
+
+
+<div class="layout-container-element  atvi-module-container">
+
+    
+    <div class="atvi-text aem-GridColumn aem-GridColumn--default--12">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-label">
+
+     
+
+     Watch
+
+</div>
+
+</div>
+
+    
+
+</div>
+</div>
+
+					
+				</div>
+
+             
+
+		</div>
+
+    </section>
+
+    <script type="text/javascript" defer>
+
+		(function() {
+            // re-order slides according to their order value before initializing carousel
+            var $parentContainer = $("#atvi_column_layout--1439112937 > .atvi-column-inner-container");
+            
+            $parentContainer.find(' > .column-child').sort(function(a, b) {
+                return +a.dataset.order - +b.dataset.order;
+            })
+            .appendTo($parentContainer);
+		})();
+
+	</script>
+
+    
+
+	
+
+</div>
+
+    
+
+</div>
+</div>
+
+    
+
+</div>
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+
+    
+</div>
+</div>
+<div class="atvi-experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+
+    
+    
+		<div id="atvi_experiencefragm_1058061630" class=" atvi-module-container">
+			
+
+<section class="experience-fragment-container ">
+	
+
+	
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="responsivegrid aem-GridColumn aem-GridColumn--default--12">
+
+
+<div class="aem-Grid aem-Grid--12 aem-Grid--default--12 ">
+    
+    <div class="sr-footer aem-GridColumn aem-GridColumn--default--12">
+    
+<link rel="stylesheet" href="/apps/atvi/spyro/spyro-reignited/components/structure/sr-footer/clientlibs.2c98854f4403ff0875ecef59601e2049.css" type="text/css">
+<script src="/apps/atvi/spyro/spyro-reignited/components/structure/sr-footer/clientlibs.69d5c81ec7063b5d924d8aa9ed7944a6.js"></script>
+
+
+  
+
+
+ 
+ 
+     
+
+
+
+
+
+
+
+
+
+
+	 
+	 
+
+    <footer id="spyro-footer">
+
+    	<div class="back-to-top"></div>
+
+        <ul class="footer-links">
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://www.activision.com/legal" target="_blank">Legal</a>
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://www.activision.com/legal/terms-of-use" target="_blank">Terms of Use</a>
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://www.activision.com/legal/privacy-policy" target="_blank">Privacy Policy</a>
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://www.activision.com/legal/cookie-policy" target="_blank">Cookie Policy</a>
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+					<a id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie Settings</a>
+                
+
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://www.activision.com/legal/online-safety-guide" target="_blank">Online Safety</a>
+                
+            </li>
+        
+            <li>
+            	 
+
+                
+
+                
+					<a href="https://support.activision.com" target="_blank">Support</a>
+                
+            </li>
+        </ul>
+
+    	<ul class="footer-logos">
+
+			<li>
+				<a class="spyro25th-logo" style="background-image: url(/content/dam/atvi/global/firstparty/studio/spyro_25_logo_07a_FINAL-02.png)"></a>
+			</li>
+        	<li>
+            	<a class="esrb-rating" style="background-image: url(/content/dam/atvi/global/ratings/esrb/Spyro---ESRB.png)" href="https://www.esrb.org">ESRB Rating</a>
+            </li>
+			<li>
+            	<a class="activision-logo" style="background-image: url(/content/dam/atvi/global/firstparty/activision/activision_logo_white-text.png)" href="https://www.activision.com">Activision</a>
+            </li>
+			<li>
+				<a class="toysforbob-logo" style="background-image: url(/content/dam/atvi/global/firstparty/studio/ToysForBob_Logo_001_v2.png)" href="https://www.toysforbob.com/">Toys For Bob</a>
+			</li>
+            <li>
+        		<div class="atvi-column-child-content">
+    
+<link rel="stylesheet" href="/apps/atvi/global/components/content/atvi-locale-selector/clientlibs.f7dc4b2d1fe73813c0a90a67b45b024e.css" type="text/css">
+<script src="/apps/atvi/global/components/content/atvi-locale-selector/clientlibs.4a13c2ab7a8ee37f2f7bf5b7d87826e0.js"></script>
+
+
+
+
+
+
+<div class="atvi-locale-selector  open-up " data-selectedLocale="en" role="navigation" aria-label="locale-selector.ariaLabel">
+    <h2 class="visually-hidden">Choose your region</h2>
+
+    <p class="cur-locale-selector-btn">
+        <button id="locale-selector-toggle" aria-haspopup="listbox" aria-controls="locale-selector-list" aria-expanded="false" class="flag-button flag-en" aria-label="Selected region - United States">
+            <span class="visually-hidden">Selected region -
+                United States</span>
+            <span class="flag-icon" aria-hidden="true">United States</span>
+            
+        </button>
+    </p>
+
+    <div class="locale-panel" id="locale-selector-list" role="listbox">
+        <div class="locale-panel-inner-container">
+            <div class="locale-panel-header">
+                <p class="selected-region-text">
+                    <span class="label">Selected region:</span>
+                    <span class="locale-string">United States</span>
+                </p>
+                <p class="close-btn">
+                    <button type="button" aria-label="Close Menu">
+                        <span class="visually-hidden">Close Menu</span>+
+                    </button>
+                </p>
+            </div>
+
+            
+
+            
+
+            <ul>
+                <li class="active flag-en" data-lang="en" role="option" aria-selected>
+                    <a href="/spyroreignitedtrilogy" aria-label="United States">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United States
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_gb" data-lang="en_gb" role="option">
+                    <a href="/uk/en/spyroreignitedtrilogy" aria-label="United Kingdom">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            United Kingdom
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_ca" data-lang="en_ca" role="option">
+                    <a href="/ca/en/spyroreignitedtrilogy" aria-label="English Canada">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            English Canada
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-en_au" data-lang="en_au" role="option">
+                    <a href="/au/en/spyroreignitedtrilogy" aria-label="Australia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Australia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-fr" data-lang="fr" role="option">
+                    <a href="/fr/spyroreignitedtrilogy" aria-label="Francais">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Francais
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-de" data-lang="de" role="option">
+                    <a href="/de/spyroreignitedtrilogy" aria-label="Deutschland">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Deutschland
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-it" data-lang="it" role="option">
+                    <a href="/it/spyroreignitedtrilogy" aria-label="Italia">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Italia
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-es" data-lang="es" role="option">
+                    <a href="/es/spyroreignitedtrilogy" aria-label="España">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            España
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-pt_br" data-lang="pt_br" role="option">
+                    <a href="/br/pt/spyroreignitedtrilogy" aria-label="Brasil">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Brasil
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-nl" data-lang="nl" role="option">
+                    <a href="/nl/spyroreignitedtrilogy" aria-label="Nederland">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Nederland
+                        </div>
+                    </a>
+                </li>
+            
+                <li class=" flag-pl" data-lang="pl" role="option">
+                    <a href="/pl/spyroreignitedtrilogy" aria-label="Polska">
+                        <div class="flag-icon" aria-hidden="true"></div>
+                        <div class="region">
+                            Polska
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+            </li>
+        </ul>
+
+        <div class="footer-copyright-text"><p>© 2026 Activision Publishing, Inc. ACTIVISION, SPYRO, SPYRO REIGNITED TRILOGY, SPYRO THE DRAGON, SPYRO 2 RIPTO'S RAGE! and SPYRO YEAR OF THE DRAGON are trademarks of Activision Publishing, Inc. The rating icon is a trademark of the Entertainment Software Association. All other trademarks and trade names are the properties of their respective owners.</p>
+</div>
+
+    </footer>
+
+</div>
+
+    
+</div>
+</div>
+
+    
+</div>
+
+</section>
+		</div>
+	
+</div>
+
+    
+</div>
+</div>
+
+    
+
+        
+        
+
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+	
+	
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+        
+
+
+
+
+		
+		
+
+        <script type="text/javascript">
+            if (typeof _satellite !== 'undefined') {
+       			 _satellite.pageBottom(); // Execute if _satellite exists
+      		}
+    	</script>
+
+    </body>
+
+
+</html>

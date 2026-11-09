@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 import {
   EXPANDED_ENEMIES_DB,
@@ -9,6 +11,8 @@ import {
 } from '../src/game/expandedUniverses.js';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
+import { CANONICAL_CAPTURE_NPC_WAVE17, SOURCE_KITTEN_ID_WAVE17, getSourceCaptureEnemyAssetsWave17 } from '../src/game/combat/sourceCaptureEnemyCatalogWave17.js';
+import { isSourceKittenWave17 } from '../src/game/combat/sourceMechanicsWave17.js';
 import { CANON_ROSTER_WAVE_PART_G } from '../src/game/canonRosterWavePartG.js';
 import { CANON_ROSTER_WAVE_PART_H } from '../src/game/canonRosterWavePartH.js';
 import { CANON_ROSTER_WAVE_PART_I } from '../src/game/canonRosterWavePartI.js';
@@ -526,7 +530,7 @@ test('expanded music universes use performance trials instead of invented enemie
   }
 });
 
-test('global hero and enemy catalogs cannot append legacy extras to canon rosters', () => {
+test('global catalogs preserve canon rosters and the one documented nonoffensive W17 NPC', () => {
   for (const authored of CANON_ROSTER_WAVE) {
     const runtime = EXPANDED_UNIVERSES.find(entry => entry.universe === authored.universe);
     assert.deepEqual(
@@ -535,9 +539,53 @@ test('global hero and enemy catalogs cannot append legacy extras to canon roster
       `${authored.universe} global heroes`
     );
     const globalEnemies = ENEMIES_DB[authored.universe];
+    const expectedMonsters = runtime.monsters.map(threatName);
+    if (authored.universe === 'Tail Concerto') {
+      // This is a source-documented capture target, not a generated combat
+      // roster. Every other universe and every other Tail Concerto slot stays exact.
+      const npc = CANONICAL_CAPTURE_NPC_WAVE17;
+      assert.deepEqual(expectedMonsters, []);
+      assert.deepEqual(globalEnemies.monsters, [npc]);
+      assert.equal(npc.id, 'tail_concerto_red_vest_kitten');
+      assert.equal(npc.id, SOURCE_KITTEN_ID_WAVE17);
+      assert.equal(npc.sourceEnemyId, npc.id);
+      assert.equal(npc.universe, 'Tail Concerto');
+      assert.equal(npc.sourceNativeNpcWave17, true);
+      assert.equal(npc.sourceNonOffensiveWave17, true);
+      assert.equal(npc.bubbleCaptureEligible, true);
+      assert.equal(npc.canonStatus, 'canon nonoffensive adversary');
+      assert.equal(npc.weapon, 'none');
+      assert.equal(npc.weaponType, 'unarmed');
+      assert.equal(npc.atk, 0); assert.equal(npc.stats.atk, 0);
+      for (const slot of ['simple', 'secondary', 'defense', 'special']) {
+        assert.equal(npc[slot].type, 'guard', slot);
+        assert.equal(npc[slot].dmg ?? 0, 0, slot);
+      }
+      assert.equal(globalEnemies.monsters.filter(enemy => (enemy.stats?.atk ?? enemy.atk) > 0
+        || ['simple', 'secondary', 'special'].some(slot => enemy[slot]?.dmg > 0)).length, 0);
+      assert.equal(isSourceKittenWave17(npc), true);
+      assert.equal(isSourceKittenWave17({ ...npc, sourceEnemyId: 'generic-capture-bot' }), false);
+      assert.equal(isSourceKittenWave17({ ...npc, universe: 'Other' }), false);
+      assert.equal(npc.sourceWork, 'Tail Concerto (1998)');
+      assert.match(npc.sourceReference, /USA manual, printedpage19 \/PDFpage21/);
+      assert.equal(npc.source1to1Verified, false);
+      const assets = getSourceCaptureEnemyAssetsWave17();
+      assert.equal(assets.length, 1);
+      const asset = assets[0];
+      assert.equal(asset.sourceEnemyId, npc.id); assert.equal(asset.universe, npc.universe);
+      assert.equal(asset.frames, 16);
+      assert.deepEqual(Object.keys(asset.phases), ['idle', 'run', 'captured', 'released']);
+      assert.equal(asset.sourceWork, 'Tail Concerto (1998), USA manual printedpage19 /PDFpage21');
+      assert.equal(asset.referenceImage, 'docs/combat-fidelity-wave17-2026-11-02/rpg-sources/tail-concerto-kittens-manual-page21.png');
+      assert.equal(asset.referenceImageSha256, 'd4d174db4628ca6bef1079232d5946e6345e1d81d01b95f24d729717021613a1');
+      assert.equal(createHash('sha256').update(readFileSync(new URL('../' + asset.referenceImage, import.meta.url))).digest('hex'), asset.referenceImageSha256);
+      assert.equal(asset.source1to1Verified, false);
+      assert.equal(asset.visualValidation.source1to1Verified, false);
+      expectedMonsters.push(npc.name);
+    }
     assert.deepEqual(
       globalEnemies.monsters.map(enemy => enemy.name),
-      runtime.monsters.map(threatName),
+      expectedMonsters,
       `${authored.universe} global monsters`
     );
     assert.deepEqual(

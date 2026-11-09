@@ -14,11 +14,11 @@ const SPRITE_PROMPT_PREFIX = [
   'Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject.'
 ].join(' ');
 
-const buildSpritePrompt = ({ name, universe, weapon, special, phases, visualAnchor }) => [
+const buildSpritePrompt = ({ name, universe, weapon, special, phases, visualAnchor, combatMechanicsStatus }) => [
   SPRITE_PROMPT_PREFIX,
   `Subject: ${name} from ${universe}.`,
   `Visual lock: ${visualAnchor}`,
-  `Canonical combat identity: ${weapon}; signature action: ${special}.`,
+  `${combatMechanicsStatus === 'game-adaptation' ? 'Gameplay adaptation' : 'Canonical combat identity'}: ${weapon}; signature action: ${special}.`,
   `Gameplay phases: ${phases.join(' Then ')}.`,
   'Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.'
 ].join(' ');
@@ -31,6 +31,8 @@ const defineBoss = (universe, entry) => Object.freeze({
   lore: Object.freeze({ ...entry.lore }),
   referenceUrl: entry.referenceUrl,
   visualAnchor: entry.visualAnchor,
+  ...(entry.combatMechanicsStatus ? { combatMechanicsStatus: entry.combatMechanicsStatus } : {}),
+  ...(entry.visualReviewStatus ? { visualReviewStatus: entry.visualReviewStatus } : {}),
   spritePrompt: buildSpritePrompt({ universe, ...entry }),
   output: `/sprites/generated/bosses/${slugify(universe)}/${slugify(entry.name)}.png`
 });
@@ -143,15 +145,17 @@ const RAW_BOSS_OVERRIDES = {
     },
     {
       name: 'Crustaceous Rex',
-      weapon: 'massive_claws',
-      special: 'Crustacean Crushing Grip',
-      phases: ['Uses claw slams and armored body charges', 'Cracked shell exposes vulnerable tissue below 40 percent health'],
+      weapon: 'clawed_forelimbs',
+      special: 'Forelimb and Tentacle Sweep',
+      phases: ['Alternates long forelimb sweeps with flexible head-tentacle motions', 'Shortens recovery after heavy strikes while preserving its intact shell and original anatomy'],
+      combatMechanicsStatus: 'game-adaptation',
+      visualReviewStatus: 'pending',
       lore: {
         fr: 'Crustaceous Rex est un mutant crustace geant affronte par H.E.A.T. et Godzilla.',
         en: 'Crustaceous Rex is a giant crustacean mutation fought by H.E.A.T. and Godzilla.'
       },
-      referenceUrl: 'https://godzillatheseries.fandom.com/wiki/Crustaceous_Rex',
-      visualAnchor: 'Exact red-brown giant crustacean anatomy from the series, enormous claws, layered shell and low amphibious stance.'
+      referenceUrl: 'https://www.scifijapan.com/anime-animation/godzilla-the-series',
+      visualAnchor: 'Crustaceous Rex from Godzilla: The Series (1998), following the Sony Pictures/Adelaide Productions model sheet: dark olive-brown ridged carapace with small cream spikes, ochre segmented underside, extremely elongated segmented forelimbs ending in broad claw-fingered walking hands, small hind limbs, a narrow beak-shaped head opening into a red flower-like mouth, and numerous flexible head tentacles. Preserve this hunched long-armed silhouette rather than ordinary crab pincers or a lobster tail; no invented shell-breaking transformation.'
     }
   ],
   'Pee-wee': [

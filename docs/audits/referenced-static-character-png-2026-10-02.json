@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "scope": "One explicitly static original-character PNG; animation remains pending.",
+  "policy": {
+    "canonicalFidelityApproved": false,
+    "privatePromptsAndIdentifiersPublished": false
+  },
+  "entries": [
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "yomi_no_kage:amas_des_huit_orochi",
+      "name": "Amas des Huit Orochi",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "8f96f6cb1c6f02f2ac1cd91d7cdbe3a56a104ad8625c458b58ef67de2c5f551b",
+        "bytes": 2207062,
+        "width": 1254,
+        "height": 1254
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/yomi_no_kage/threats/amas_des_huit_orochi.png",
+        "sha256": "15b163455c1a0c4e32b9598a3a46645ba6f4a3216fdcbcaa9badfb8614a16deb"
+      },
+      "image": {
+        "sha256": "e3ab279196e0d168d9256c8bffab2b5280c85ba1dfb2d43d6fdfe850d7dcd5cf",
+        "bytes": 1629100,
+        "width": 1024,
+        "height": 1024,
+        "format": "png",
+        "channels": 4
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with transparent padding",
+        "padding": 24,
+        "sourceGuard": 12,
+        "outputGuard": 33,
+        "sourceVisiblePixels": 790443,
+        "visiblePixels": 478867,
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "54d71d3e583a55891d6c965f309af2ae9b6a4533bb45b48bda311c811bf7e4da",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "serpentHeads": 8,
+        "canonicalFidelityApproved": false,
+        "notes": "Eight serpent heads and a closed central mask verified independently against the portrait. Saturation and texture differ; one static image, animations pending."
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

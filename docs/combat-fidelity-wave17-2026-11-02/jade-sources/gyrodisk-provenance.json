@@ -1,0 +1,890 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-02",
+  "kind": "native-source-action",
+  "source1to1Verified": false,
+  "entries": [
+    {
+      "id": "jade-gyrodisk-action-wave17",
+      "heroId": "beyond_good_evil_jade",
+      "universe": "Beyond Good & Evil",
+      "actionName": "Gyrodisk de Jade",
+      "abilityName": "Gyrodisk de Jade",
+      "abilityEffect": "damage",
+      "delivery": "projectile",
+      "sheet": "/sprites/generated/jade-action-wave17/gyrodisk.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "sha256": "836b2c0824a29e40d41d983abdc4d5a693e46cfe949154cff0ae720c35540ee2",
+      "alpha": true,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 16,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 16,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 16,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 16,
+          "loop": false
+        }
+      },
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+      "sourceImageSha256": "1abacbd9fc18691f3a21b8e5486a358ad951cc27c5b79f84a15b0771d7796fe3",
+      "sourceDimensions": [
+        1144,
+        1375
+      ],
+      "sourceWork": "Beyond Good & Evil (2003), original Jade with Gyrodisk glove",
+      "sourceReference": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/15130/manuals/manual_english.pdf?t=1718743204",
+      "referenceAsset": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/research/manual-gyrodisk-glove-icon.png",
+      "referenceAssetSha256": "28aa61a58a4ec2cc9bd018943c0a0918f130ff7256e6df7b0560d94cca557f26",
+      "normalization": {
+        "method": "Reviewed whole-body geometric source regions preserve retained original RGBA; one common Jade anatomical stature, exact nearest-neighbor whole-pixel resizing, native foot anchor and raw-canvas packing. No alpha cleanup, repaint or detached-body composition.",
+        "baseline": 244,
+        "margins": 10,
+        "commonStandingBodyHeight": 190,
+        "effectivePackedBodyHeight": 93.96415770609319,
+        "renderScale": 2.022047604516326,
+        "scale": 0.291814154366749,
+        "rgbaValuesUnmodifiedBeforeNearestResize": true,
+        "rgbaPreservedByExactNearestMapping": true,
+        "sharedScalePerSource": true,
+        "rows": [
+          {
+            "phase": "gyroReady",
+            "row": 0,
+            "renderScale": 2.022047604516326,
+            "scale": 0.291814154366749,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRow": 0,
+            "crossedVisiblePixels": 0,
+            "crossedOpaquePixels": 0,
+            "frameBounds": [
+              {
+                "source": {
+                  "x": 60,
+                  "y": 11,
+                  "width": 193,
+                  "height": 329
+                },
+                "output": {
+                  "x": 93,
+                  "y": 148,
+                  "width": 56,
+                  "height": 96
+                }
+              },
+              {
+                "source": {
+                  "x": 336,
+                  "y": 27,
+                  "width": 197,
+                  "height": 313
+                },
+                "output": {
+                  "x": 90,
+                  "y": 153,
+                  "width": 57,
+                  "height": 91
+                }
+              },
+              {
+                "source": {
+                  "x": 616,
+                  "y": 29,
+                  "width": 222,
+                  "height": 312
+                },
+                "output": {
+                  "x": 84,
+                  "y": 153,
+                  "width": 65,
+                  "height": 91
+                }
+              },
+              {
+                "source": {
+                  "x": 902,
+                  "y": 29,
+                  "width": 207,
+                  "height": 312
+                },
+                "output": {
+                  "x": 88,
+                  "y": 153,
+                  "width": 60,
+                  "height": 91
+                }
+              }
+            ],
+            "statureCalibration": {
+              "sourceBodyBounds": {
+                "x": 65,
+                "y": 14,
+                "width": 184,
+                "height": 322
+              },
+              "sourceBodyHeight": 322,
+              "targetBodyHeight": 190,
+              "normalizedBodyHeight": 93.96415770609319,
+              "effectiveStandingBodyHeight": 190,
+              "scale": 0.291814154366749,
+              "renderScale": 2.022047604516326,
+              "raisedArmsExcluded": true,
+              "excludesWeaponEffects": true,
+              "sharedAcrossAllJadeSources": true
+            }
+          },
+          {
+            "phase": "gyroAim",
+            "row": 1,
+            "renderScale": 2.022047604516326,
+            "scale": 0.291814154366749,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRow": 1,
+            "crossedVisiblePixels": 0,
+            "crossedOpaquePixels": 0,
+            "frameBounds": [
+              {
+                "source": {
+                  "x": 31,
+                  "y": 365,
+                  "width": 248,
+                  "height": 315
+                },
+                "output": {
+                  "x": 84,
+                  "y": 152,
+                  "width": 72,
+                  "height": 92
+                }
+              },
+              {
+                "source": {
+                  "x": 320,
+                  "y": 366,
+                  "width": 242,
+                  "height": 314
+                },
+                "output": {
+                  "x": 109,
+                  "y": 152,
+                  "width": 71,
+                  "height": 92
+                }
+              },
+              {
+                "source": {
+                  "x": 581,
+                  "y": 370,
+                  "width": 269,
+                  "height": 311
+                },
+                "output": {
+                  "x": 80,
+                  "y": 153,
+                  "width": 78,
+                  "height": 91
+                }
+              },
+              {
+                "source": {
+                  "x": 879,
+                  "y": 370,
+                  "width": 232,
+                  "height": 311
+                },
+                "output": {
+                  "x": 82,
+                  "y": 153,
+                  "width": 68,
+                  "height": 91
+                }
+              }
+            ],
+            "statureCalibration": {
+              "sourceBodyBounds": {
+                "x": 65,
+                "y": 14,
+                "width": 184,
+                "height": 322
+              },
+              "sourceBodyHeight": 322,
+              "targetBodyHeight": 190,
+              "normalizedBodyHeight": 93.96415770609319,
+              "effectiveStandingBodyHeight": 190,
+              "scale": 0.291814154366749,
+              "renderScale": 2.022047604516326,
+              "raisedArmsExcluded": true,
+              "excludesWeaponEffects": true,
+              "sharedAcrossAllJadeSources": true
+            }
+          },
+          {
+            "phase": "gyroRelease",
+            "row": 2,
+            "renderScale": 2.022047604516326,
+            "scale": 0.291814154366749,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRow": 2,
+            "crossedVisiblePixels": 0,
+            "crossedOpaquePixels": 0,
+            "frameBounds": [
+              {
+                "source": {
+                  "x": 26,
+                  "y": 695,
+                  "width": 246,
+                  "height": 309
+                },
+                "output": {
+                  "x": 83,
+                  "y": 154,
+                  "width": 72,
+                  "height": 90
+                }
+              },
+              {
+                "source": {
+                  "x": 296,
+                  "y": 695,
+                  "width": 243,
+                  "height": 309
+                },
+                "output": {
+                  "x": 83,
+                  "y": 154,
+                  "width": 71,
+                  "height": 90
+                }
+              },
+              {
+                "source": {
+                  "x": 562,
+                  "y": 698,
+                  "width": 357,
+                  "height": 306
+                },
+                "output": {
+                  "x": 80,
+                  "y": 155,
+                  "width": 104,
+                  "height": 89
+                }
+              },
+              {
+                "source": {
+                  "x": 897,
+                  "y": 700,
+                  "width": 227,
+                  "height": 304
+                },
+                "output": {
+                  "x": 107,
+                  "y": 155,
+                  "width": 66,
+                  "height": 89
+                }
+              }
+            ],
+            "statureCalibration": {
+              "sourceBodyBounds": {
+                "x": 65,
+                "y": 14,
+                "width": 184,
+                "height": 322
+              },
+              "sourceBodyHeight": 322,
+              "targetBodyHeight": 190,
+              "normalizedBodyHeight": 93.96415770609319,
+              "effectiveStandingBodyHeight": 190,
+              "scale": 0.291814154366749,
+              "renderScale": 2.022047604516326,
+              "raisedArmsExcluded": true,
+              "excludesWeaponEffects": true,
+              "sharedAcrossAllJadeSources": true
+            }
+          },
+          {
+            "phase": "gyroRecovery",
+            "row": 3,
+            "renderScale": 2.022047604516326,
+            "scale": 0.291814154366749,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRow": 3,
+            "crossedVisiblePixels": 0,
+            "crossedOpaquePixels": 0,
+            "frameBounds": [
+              {
+                "source": {
+                  "x": 22,
+                  "y": 1016,
+                  "width": 271,
+                  "height": 324
+                },
+                "output": {
+                  "x": 83,
+                  "y": 149,
+                  "width": 79,
+                  "height": 95
+                }
+              },
+              {
+                "source": {
+                  "x": 321,
+                  "y": 1019,
+                  "width": 214,
+                  "height": 323
+                },
+                "output": {
+                  "x": 87,
+                  "y": 150,
+                  "width": 62,
+                  "height": 94
+                }
+              },
+              {
+                "source": {
+                  "x": 596,
+                  "y": 1016,
+                  "width": 223,
+                  "height": 328
+                },
+                "output": {
+                  "x": 85,
+                  "y": 148,
+                  "width": 65,
+                  "height": 96
+                }
+              },
+              {
+                "source": {
+                  "x": 908,
+                  "y": 1014,
+                  "width": 211,
+                  "height": 329
+                },
+                "output": {
+                  "x": 88,
+                  "y": 148,
+                  "width": 62,
+                  "height": 96
+                }
+              }
+            ],
+            "statureCalibration": {
+              "sourceBodyBounds": {
+                "x": 65,
+                "y": 14,
+                "width": 184,
+                "height": 322
+              },
+              "sourceBodyHeight": 322,
+              "targetBodyHeight": 190,
+              "normalizedBodyHeight": 93.96415770609319,
+              "effectiveStandingBodyHeight": 190,
+              "scale": 0.291814154366749,
+              "renderScale": 2.022047604516326,
+              "raisedArmsExcluded": true,
+              "excludesWeaponEffects": true,
+              "sharedAcrossAllJadeSources": true
+            }
+          }
+        ],
+        "frames": [
+          {
+            "phase": "gyroReady",
+            "frame": 0,
+            "index": 0,
+            "row": 0,
+            "col": 0,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 60,
+              "y": 11,
+              "width": 193,
+              "height": 329
+            },
+            "destinationRect": {
+              "x": 93,
+              "y": 148,
+              "width": 56,
+              "height": 96
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "384057765f8b593d0e665f7559289ffd9e099f9962c0fa453a55272d6dfd4b58",
+            "visibleNativeRgbaSha256": "243d41d29c45643194e16bd921f661f58ddf958e9ae601f1c244b34b91261b43",
+            "normalizedRgbaSha256": "eb62275bfe77637dd1085367d89295c1a45dd9c8f2024c1169cf3e43d2a051ad",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroReady",
+            "frame": 1,
+            "index": 1,
+            "row": 0,
+            "col": 1,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 336,
+              "y": 27,
+              "width": 197,
+              "height": 313
+            },
+            "destinationRect": {
+              "x": 90,
+              "y": 153,
+              "width": 57,
+              "height": 91
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "f453f8bd8c9db1a12c9ba9f4ab406829ce33dab3266cadabbe59d5044f5a47d2",
+            "visibleNativeRgbaSha256": "6e03db7d788d6aa7d0a88c0dda29b09c56ee4fce643e2d90f20d027925c30c25",
+            "normalizedRgbaSha256": "85d7b61c5a3d4aff0657f1d16eabd62e7410dae460409a1374dd81caaa26c16f",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroReady",
+            "frame": 2,
+            "index": 2,
+            "row": 0,
+            "col": 2,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 616,
+              "y": 29,
+              "width": 222,
+              "height": 312
+            },
+            "destinationRect": {
+              "x": 84,
+              "y": 153,
+              "width": 65,
+              "height": 91
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "fcfc49488014960269dba86e96f62cd50c25ac14420cf584492f17dfca6ad439",
+            "visibleNativeRgbaSha256": "e9032dede6a2c7b4a538143af25a30705505425362ac1018d67b7cddf1eb941b",
+            "normalizedRgbaSha256": "05f3f55f0a7418930bc70707625c81b432a1fb83a55784cacc66930a3e34f0c7",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroReady",
+            "frame": 3,
+            "index": 3,
+            "row": 0,
+            "col": 3,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 902,
+              "y": 29,
+              "width": 207,
+              "height": 312
+            },
+            "destinationRect": {
+              "x": 88,
+              "y": 153,
+              "width": 60,
+              "height": 91
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "c4ceeaf319c523b73a8159fb168933d10a870d91b96aea8394cbe49f72b15b63",
+            "visibleNativeRgbaSha256": "c045393d6018e41d4c3ba676af5c79b49f7ad7c5dfc990c99c2dd05bb0d6d811",
+            "normalizedRgbaSha256": "ec419d20b32c45fe34fa241ed3e723a522397ae3cdbb066f83fc4d46fc118a0e",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroAim",
+            "frame": 0,
+            "index": 4,
+            "row": 1,
+            "col": 0,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 31,
+              "y": 365,
+              "width": 248,
+              "height": 315
+            },
+            "destinationRect": {
+              "x": 84,
+              "y": 152,
+              "width": 72,
+              "height": 92
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "1643847bfbe6035f4ddfee8e67929167f2a3c41e7a90832da749b90485848510",
+            "visibleNativeRgbaSha256": "fc177cb9ebae22e3c04fbe8acac50be4b36ebcc234607d8fd2b09a32f5c36ade",
+            "normalizedRgbaSha256": "6417d181fd2d4947c0d8de797a3487bc437d89755f8d20c5c6c4ab8d077522ec",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroAim",
+            "frame": 1,
+            "index": 5,
+            "row": 1,
+            "col": 1,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 320,
+              "y": 366,
+              "width": 242,
+              "height": 314
+            },
+            "destinationRect": {
+              "x": 109,
+              "y": 152,
+              "width": 71,
+              "height": 92
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "7e4bb1612c678b0ca964db3331f8ccd0449574c72faa2d27f8f6c6ae8a1e353a",
+            "visibleNativeRgbaSha256": "256dd04a2bc985747f445615c6c190cf0113887f94e7af101c6ef1fa167047ab",
+            "normalizedRgbaSha256": "9506a4f1296d2bdc2f4d8b253900117b5cb346a2fa339025558b41ece9bb4e0b",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroAim",
+            "frame": 2,
+            "index": 6,
+            "row": 1,
+            "col": 2,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 581,
+              "y": 370,
+              "width": 269,
+              "height": 311
+            },
+            "destinationRect": {
+              "x": 80,
+              "y": 153,
+              "width": 78,
+              "height": 91
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "b261bdf50581a82c31e30b3e4eed8f00f785ffb57e0ff3e93e0eb2d140f10429",
+            "visibleNativeRgbaSha256": "691f63ce529bb8c902763ad7b33a82c411b53b9bc56125cdd0f0d912c97a9fff",
+            "normalizedRgbaSha256": "8ddf49ff5e321fbf6f5c4dcc7cb67581692d3be5763860f267debd443718f2cd",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroAim",
+            "frame": 3,
+            "index": 7,
+            "row": 1,
+            "col": 3,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 879,
+              "y": 370,
+              "width": 232,
+              "height": 311
+            },
+            "destinationRect": {
+              "x": 82,
+              "y": 153,
+              "width": 68,
+              "height": 91
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "32bc52e719b9b03d6cfc7cf61c0da0c9e156981644bb8a04e1cb4964863bdc0d",
+            "visibleNativeRgbaSha256": "5eafb620fd1ad81a17d07e70d57de2f8f5c7eb33476860b53366a8a87769c0eb",
+            "normalizedRgbaSha256": "767eb77a4570544234acfc491edd0479fd6fa22f3f659d8f1eef8a0b1d2ed8b3",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRelease",
+            "frame": 0,
+            "index": 8,
+            "row": 2,
+            "col": 0,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 26,
+              "y": 695,
+              "width": 246,
+              "height": 309
+            },
+            "destinationRect": {
+              "x": 83,
+              "y": 154,
+              "width": 72,
+              "height": 90
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "b98734ea116e799fdf459e646afc2b60b90b25288097ebcfb93935eb619d8a0b",
+            "visibleNativeRgbaSha256": "080d23a951fd2c7e14d3cf7e7c63a6dc8c0e1899b3ce64a1924853ad79df737c",
+            "normalizedRgbaSha256": "d894da46251e484e624716f94f3e0d400dedf7d824d039d008f72ff0444a5686",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRelease",
+            "frame": 1,
+            "index": 9,
+            "row": 2,
+            "col": 1,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 296,
+              "y": 695,
+              "width": 243,
+              "height": 309
+            },
+            "destinationRect": {
+              "x": 83,
+              "y": 154,
+              "width": 71,
+              "height": 90
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "b018eb9de70b4302035372bcc26fc56f8e57df9e3de129c27c4d07d1dfaf26b9",
+            "visibleNativeRgbaSha256": "20173bf9bd28605fbfdf24a7e8d653e07169222618a67ec18a86f5cdda74b33b",
+            "normalizedRgbaSha256": "13f0f67883f8cebebd36348a9651344a41e1ce8881cec5ebad179832769ee50c",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRelease",
+            "frame": 2,
+            "index": 10,
+            "row": 2,
+            "col": 2,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 562,
+              "y": 698,
+              "width": 357,
+              "height": 306
+            },
+            "destinationRect": {
+              "x": 80,
+              "y": 155,
+              "width": 104,
+              "height": 89
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "51c2b5876ec0004fc3e12f4302ba90ddcd0cad313e39e7809ebb1ab6301f6f26",
+            "visibleNativeRgbaSha256": "ce1783d062f6a6624995420dfbcce9ab436720170414dac696c320a36282f1d4",
+            "normalizedRgbaSha256": "c192200691cb4352e21d4cf906de290272ab8f155234bfca737878cdb66d7dd1",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRelease",
+            "frame": 3,
+            "index": 11,
+            "row": 2,
+            "col": 3,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 897,
+              "y": 700,
+              "width": 227,
+              "height": 304
+            },
+            "destinationRect": {
+              "x": 107,
+              "y": 155,
+              "width": 66,
+              "height": 89
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "8231c0740375b939db869ef4072ef51ef90e0e487f91f8673a85d795163cc049",
+            "visibleNativeRgbaSha256": "78e380baf0f887175fd344993f37c4d82d5d0295a8a9a4a37ec70875b7480be5",
+            "normalizedRgbaSha256": "685a631e2c5553bb55515ccf1ce467a5c0d2c66d9b3a617df266bd6e13182566",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRecovery",
+            "frame": 0,
+            "index": 12,
+            "row": 3,
+            "col": 0,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 22,
+              "y": 1016,
+              "width": 271,
+              "height": 324
+            },
+            "destinationRect": {
+              "x": 83,
+              "y": 149,
+              "width": 79,
+              "height": 95
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "66128b17fd8a38c1615002b10daa9b7b20ce50463e59732b81fe9a3aecae3e03",
+            "visibleNativeRgbaSha256": "44c2686421d9574482a2b60190843cb2288d98554d99b05ace47c517836b3493",
+            "normalizedRgbaSha256": "370d62f84072178cf5f48d34f68df404567d7ff03ea47eee0f386d31b10588bb",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRecovery",
+            "frame": 1,
+            "index": 13,
+            "row": 3,
+            "col": 1,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 321,
+              "y": 1019,
+              "width": 214,
+              "height": 323
+            },
+            "destinationRect": {
+              "x": 87,
+              "y": 150,
+              "width": 62,
+              "height": 94
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "a61e0c793267f32143915d9daeffa26a6e1fcdee45e22c5c0bd9b6a905dd6e42",
+            "visibleNativeRgbaSha256": "ebdac441162987ed23a32a0c356b2e57826f6524999a3b5fb1661496033bd1a2",
+            "normalizedRgbaSha256": "c44e39ab8a8d2ba771cbb56f6bcee5b948dfc5306f39005391738c6d01f8a1a3",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRecovery",
+            "frame": 2,
+            "index": 14,
+            "row": 3,
+            "col": 2,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 596,
+              "y": 1016,
+              "width": 223,
+              "height": 328
+            },
+            "destinationRect": {
+              "x": 85,
+              "y": 148,
+              "width": 65,
+              "height": 96
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "cae45cc53b77d8fde0d00d66e10f5f38be9184d7ff57520cb1f6aae6d332fa8d",
+            "visibleNativeRgbaSha256": "145ad2170bae9fad95fefac6e85b0ed3ede732f5b77f0beab95b55f806c519a9",
+            "normalizedRgbaSha256": "6081266253a0e649d34d81196a2981c09a27adc205158d2700f671049f289dc8",
+            "originalRgbaComparisonPassed": true
+          },
+          {
+            "phase": "gyroRecovery",
+            "frame": 3,
+            "index": 15,
+            "row": 3,
+            "col": 3,
+            "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+            "sourceRect": {
+              "x": 908,
+              "y": 1014,
+              "width": 211,
+              "height": 329
+            },
+            "destinationRect": {
+              "x": 88,
+              "y": 148,
+              "width": 62,
+              "height": 96
+            },
+            "scale": 0.291814154366749,
+            "renderScale": 2.022047604516326,
+            "sourceFrameRgbaSha256": "f172cb747a5de20127368aec5f37dec1e34c8c1a9b48ae5094d206d1ef79b4dd",
+            "visibleNativeRgbaSha256": "42ce4c124f860530f4be6ba2dd5f5a38e8533cb57d99d625cab3c63e0d344b7c",
+            "normalizedRgbaSha256": "26b964753f0a47af557d7878f9b695009c2daebc29c1d28b86929aec608a5ba7",
+            "originalRgbaComparisonPassed": true
+          }
+        ]
+      },
+      "gloveEmitter": {
+        "row": 2,
+        "col": 2,
+        "index": 10,
+        "point": {
+          "x": 152,
+          "y": 177
+        },
+        "sourcePoint": {
+          "x": 810,
+          "y": 775
+        },
+        "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.native.png",
+        "sourceImageSha256": "1abacbd9fc18691f3a21b8e5486a358ad951cc27c5b79f84a15b0771d7796fe3",
+        "sourceVisibleNeighborhood9x9": 81,
+        "packedVisibleNeighborhood9x9": 81,
+        "reviewed": true,
+        "kind": "actual-forward-glove-fingertips",
+        "separateFromCamera": true
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "wholeCharacterContained": true,
+        "distinctCells": 16,
+        "source1to1Verified": false,
+        "canonicalVerified": false,
+        "gameplayAdaptation": true,
+        "notes": "All16 corrective figures contain complete native bodies and visible fitted glove hands. Original camera-like arm device rejected in all16 earlier figures, which remain archived. Exact source-game animation and glove handedness are not certified."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-11-02",
+        "source1to1Verified": false,
+        "actualToolCalls": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/gyrodisk-actual-tool-calls.json",
+        "actualToolCallsSha256": "fa69e8b01d4b733dadbc27c1197f5be11c4aea29dad0321b5b5ecb98521289de",
+        "preGenerationPlan": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/gyrodisk-correction-plan-before-generation.json",
+        "sourcePlanSha256": "883b5f155bf4b458432891aea8f8e11fb7a5977b6f37b39d3b226a7da7979536",
+        "normalizationScript": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-jade-gyrodisk-action.mjs",
+        "importRegions": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-gyrodisk-corrected.region-review.json",
+        "importRegionsSha256": "6098a1e3747f6624ac70ea74db921b849870ae1eb445a4f680eaf586da19035f"
+      }
+    }
+  ],
+  "deliveredNativePoses": 16,
+  "observedNativePoses": 32,
+  "rejectedNativePoses": 16,
+  "actualToolCallAttempts": 2
+}

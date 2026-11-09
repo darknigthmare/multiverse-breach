@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "mara_veylan",
+  "characterName": "Mara Veylan",
+  "incarnation": "Iron Tempest — Mara Veylan current selected individual V2 portrait, original project canon2026",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/iron_tempest/heroes/mara_veylan.png",
+      "sha256": "831defa50271b7f728aa36d5962bcde166427c6a9f411a45285656cd4ecdada5",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "viewed": true,
+      "inspected": true,
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Tracked original-project portrait currently selected by HEROES_DB; real Git LFS object restored without changing tracked pointer.",
+      "canonicalProjectReference": true,
+      "viewedAt": "2026-10-22",
+      "bytes": 2283917
+    },
+    {
+      "path": "/images/oc-worlds/v2/iron_tempest/backdrop.png",
+      "sha256": "a0632e9700dc2a40e37d98d37313ed56ceb35ca629c0d99a46264a361a0e26f9",
+      "role": "original-project-environment-reference",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "identityUse": false,
+      "viewed": true,
+      "inspected": true,
+      "status": "internal-world-backdrop-inspected",
+      "provenance": "Iron Tempest shared world image; environment only."
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human reconnaissance officer of average-tall athletic build, full-length olive fatigues and black laced combat boots."
+    ],
+    "anatomy": [
+      "Two human arms, two legs, five fingers per hand when individually visible; preserve source apparent age without inventing a number."
+    ],
+    "face": [
+      "Warm olive/tan skin, dark eyes, dark eyebrows, serious calm face; tiny exact iris details are not certifiable from pixel source."
+    ],
+    "costume": [
+      "Olive military jacket and trousers, high collar, dark segmented chest harness, brown waist/thigh straps, fingerless dark gloves, black lace-up boots, dark hard knee plate on her RIGHT leg."
+    ],
+    "palette": [
+      "Olive drab, charcoal/black, warm brass/brown, burnt rust-red scarf and long torn trailing cloth; no bright blue or purple uniform."
+    ],
+    "distinguishingMarks": [
+      "Black/darkest-brown hair in high messy bun with loose front strands; long rust-red scarf/torn cloth trailing behind her left shoulder and upper left arm band; no invented badges or readable insignia."
+    ],
+    "equipment": [
+      "Reference-visible diesel carbine: olive/brown rectangular body, dark stock, long barrel with short front sight, compact tube under fore-end and curved magazine. Trigger/control RIGHT hand and supporting LEFT hand in normal carry. A red-glowing cylindrical canister on RIGHT thigh."
+    ],
+    "forbiddenMixes": [
+      "Do not use the ponytail/black unarmed old atlas as identity authority. No real army insignia or franchise weapons; all Iron Tempest scenes are internal original project art."
+    ]
+  },
+  "scopeLimitations": [
+    "Original project character, no external publisher/canon reference: currently selected HEROES_DB V2 portrait is the internal visual authority.",
+    "Exact eye color, tiny insignia, unseen back construction, hidden parts of harness/carbine and chronological age are not fully specified by one pixel-art view; no perfect1:1 certification.",
+    "World backdrop is environment-only; no identity reference inferred from other soldiers or shared props.",
+    "Existing selected atlas has long brown ponytail, darker close-fit costume and no carbine; retained unchanged as historical variant, not the V2 identity source.",
+    "New locations and poses are original compositions consistent with documented Iron Tempest lore, not official screenshots.",
+    "CG05 Nexus gameplay adaptation; CG09-11 Fan Art; CG12-15 What If; CG13genderSwap; CG15firstStep at same apparent age, no invented childhood."
+  ],
+  "canonicalFidelityApproved": false,
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/iron_tempest/heroes/mara_veylan.png"
+  ],
+  "heroId": "mara_veylan",
+  "sourceKind": "original-project-internal-canon",
+  "referenceScope": "original-project-character-not-external-official-source",
+  "incarnationDecision": {
+    "status": "explicit-selected-current-v2-over-previous-runtime-atlas",
+    "reason": "HEROES_DB portrait and production.audiovisual select the same current individual V2 bitmap; source weaponType diesel_carbine and olive/rust palette agree. Prior dark ponytail atlas is historical variant.",
+    "selectedPortrait": "public/images/oc-worlds/v2/iron_tempest/heroes/mara_veylan.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/iron-tempest/mara-veylan.png"
+  }
+}

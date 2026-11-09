@@ -91,6 +91,106 @@ test('authored simple firearms travel to their target and stop at the actual sou
   }
 });
 
+for (const id of ['raven_tt', 'starfire_tt']) for (const side of ['player', 'cpu']) {
+  test(`Fighter current ${id} ${side} basic uses its single ranged projectile and declared procedural feedback`, () => {
+    const source = find(id);
+    const profile = resolveCombatAbility(source, 'simple');
+    assert.equal(profile.provenance.identityAuthored, false, 'the supplied canonical kit keeps its actual provenance');
+    assert.equal(profile.delivery, 'projectile');
+    assert.equal(profile.shape, 'single');
+    const sign = side === 'player' ? 1 : -1;
+    for (const distance of [400, profile.range + 1]) {
+      const particles = [];
+      const sounds = [];
+      const own = [source, { ...dummy, id: `${id}-own-reserve` }];
+      const opposing = [dummy, { ...dummy, id: `${id}-opposing-reserve` }];
+      const engine = new EngineFighter(1800, 540, side === 'player' ? own : opposing,
+        side === 'player' ? opposing : own, { add: (...args) => particles.push(args) },
+        sound => sounds.push(sound), noop, { opponentControl: 'p2' });
+      engine.countdown = 0;
+      const caster = engine.getActive(side);
+      const target = engine.getOpponent(side);
+      caster.x = side === 'player' ? 200 : 1600;
+      target.x = caster.x + sign * distance;
+      const reserves = ['player', 'cpu'].map(team => engine.getTeam(team).fighters[1]);
+      const reserveHp = reserves.map(actor => actor.currentHp);
+      const hp = target.currentHp;
+      assert.equal(engine.triggerSideAction(side, 'light'), true);
+      assert.equal(caster.action.canonSourceAbility, true);
+      assert.equal(caster.action.authoredAbility, false);
+      assert.equal(caster.action.identity.sourceAbility.name, source.simple.name);
+      advance(engine, profile.hitAt / 2);
+      assert.equal(engine.projectiles.length, 0, 'startup cannot release a projectile early');
+      assert.equal(target.currentHp, hp);
+      for (let frame = 0; frame < 60 && engine.projectiles.length === 0; frame++) engine.update(1 / 60);
+      assert.equal(engine.projectiles.length, 1, 'release creates one actual physics projectile');
+      assert.equal(target.currentHp, hp, 'the distant target waits for projectile travel');
+      const projectile = engine.projectiles[0];
+      assert.equal(projectile.maxRange, profile.range);
+      assert.equal(projectile.canonParticleType, id === 'raven_tt' ? 'shadow_wisp' : 'starbolt');
+      assert.equal(particles.some(args => args[8] === 'laser_line'), false, 'typed source feedback does not emit a generic laser');
+      assert.ok(sounds.includes(id === 'raven_tt' ? 'shield' : 'shoot'));
+      const { ctx, calls } = recordedCanvas();
+      const beforeDraw = JSON.stringify({ projectile, stats: engine.stats, hp: target.currentHp });
+      engine.drawProjectile(ctx, projectile);
+      assert.equal(JSON.stringify({ projectile, stats: engine.stats, hp: target.currentHp }), beforeDraw);
+      assert.ok(calls.some(([method, x, y]) => method === 'ellipse' && x === projectile.x && y === projectile.y));
+      assert.equal(ctx.fillStyle, id === 'raven_tt' ? '#383044' : '#63ef72');
+      assert.equal(calls.some(([method]) => ['arc', 'fillRect'].includes(method)), false);
+      advance(engine, 2);
+      assert.equal(target.currentHp < hp, distance < profile.range);
+      assert.deepEqual(reserves.map(actor => actor.currentHp), reserveHp, 'single-target travel cannot damage either reserve');
+      assert.equal(engine.projectiles.length, 0, 'hit or range expiry removes the projectile and its feedback');
+    }
+  });
+}
+
+for (const id of ['hudson_aliens', 'hicks_aliens']) for (const side of ['player', 'cpu']) {
+  test(`Fighter current ${id} ${side} keeps its reviewed super when only basic metadata is revised`, () => {
+    const source = find(id);
+    const profile = resolveCombatAbility(source, 'special');
+    const own = [source, { ...dummy, id: `${id}-allied-reserve` }];
+    const opposing = [dummy, { ...dummy, id: `${id}-opposing-reserve` }];
+    const engine = new EngineFighter(1800, 540, side === 'player' ? own : opposing,
+      side === 'player' ? opposing : own, { add: noop }, noop, noop, { opponentControl: 'p2' });
+    engine.countdown = 0;
+    const caster = engine.getActive(side);
+    const target = engine.getOpponent(side);
+    const alliedReserve = engine.getTeam(side).fighters[1];
+    const opposingReserve = engine.getTeam(side === 'player' ? 'cpu' : 'player').fighters[1];
+    caster.x = side === 'player' ? 200 : 1600;
+    target.x = caster.x + caster.facing * 400;
+    caster.meter = 100;
+    const actors = [caster, alliedReserve, target, opposingReserve];
+    const hp = actors.map(actor => actor.currentHp);
+    assert.equal(engine.triggerSideAction(side, 'super'), true);
+    assert.equal(caster.meter, 0);
+    assert.equal(caster.action.identity.name, profile.name);
+    assert.equal(caster.action.meleeSignature, undefined, 'the older direct-fire adapter must not replace this reviewed source');
+    advance(engine, 0.1);
+    assert.deepEqual(actors.map(actor => actor.currentHp), hp);
+    assert.equal(engine.projectiles.length, 0);
+    if (id === 'hudson_aliens') {
+      assert.equal(caster.action.effect, 'buff');
+      advance(engine, 1.3);
+      assert.ok(caster.superBuffSeconds > 0);
+      assert.ok(alliedReserve.superBuffSeconds > 0);
+      assert.deepEqual(actors.map(actor => actor.currentHp), hp, 'motion-tracker information does not cause hostile damage or healing');
+      assert.equal(engine.projectiles.length, 0);
+    } else {
+      assert.equal(caster.action.delivery, 'projectile');
+      assert.equal(caster.action.shape, 'single');
+      for (let frame = 0; frame < 60 && engine.projectiles.length === 0; frame++) engine.update(1 / 60);
+      assert.equal(engine.projectiles.length, 1);
+      assert.equal(target.currentHp, hp[2], 'the rifle shot must physically reach its distant opponent');
+      advance(engine, 2);
+      assert.ok(target.currentHp < hp[2]);
+      assert.deepEqual([caster.currentHp, alliedReserve.currentHp, opposingReserve.currentHp], [hp[0], hp[1], hp[3]]);
+      assert.equal(engine.projectiles.length, 0);
+    }
+  });
+}
+
 test('continuous authored defense uses its actual reduction instead of the legacy universal block', () => {
   const civilian = find('hannah_28dl');
   const defense = resolveCombatAbility(civilian, 'defense');
@@ -228,6 +328,9 @@ test('Barret super lifts the rendered body and fires downward at its real impact
     const barret = find('barret_ff7');
     const engine = side === 'player' ? makeEngine(barret) : makeEngine(dummy, barret);
     const fighter = engine.getActive(side);
+    // The source signature now admits Catastrophe only within its Fighter reach.
+    // Put this visual-only fixture inside that reach before committing it.
+    engine.getOpponent(side).x = fighter.x + fighter.facing * 120;
     fighter.meter = 100;
     assert.equal(engine.triggerSideAction(side, 'super'), true);
     fighter.action.elapsed = fighter.action.hitAt + 0.04;
@@ -252,6 +355,7 @@ test('Barret finale keeps its beam cosmetic after the match is confirmed and com
   const completed = [];
   const engine = new EngineFighter(960, 540, [find('barret_ff7')], [dummy], { add: noop }, noop, (...args) => completed.push(args), { opponentControl: 'p2', roundsToWin: 1 });
   engine.countdown = 0;
+  engine.getActive('cpu').x = engine.getActive('player').x + 120;
   engine.getActive('player').meter = 100;
   assert.equal(engine.triggerPlayerAction('super'), true);
   engine.endRound('victory');

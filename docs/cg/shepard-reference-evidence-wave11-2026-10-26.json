@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "shepard",
+  "characterName": "Commander Shepard",
+  "incarnation": "Commander Shepard — Mass Effect2 (2010), costumes par défaut proposés",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.ea.com/games/mass-effect/mass-effect-legendary-edition",
+      "attemptedAt": "2026-10-26T08:15:13.891212+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://www.ea.com/games/mass-effect/mass-effect-legendary-edition",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 395840,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/shepard/research/source-00.html",
+      "sha256": "ae71158be2cac13a92d9aa6dc33aa141a8772c833ea12f9ce599deefed0901e5",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    },
+    {
+      "url": "https://static.cdn.ea.com/www.bioware.com/wp-content/uploads/2016/01/Writing-Test.pdf",
+      "attemptedAt": "2026-10-26T08:15:15.299974+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0,
+  "actualAdditionalAttempts": [
+    {
+      "url": "https://www.ea.com/games/mass-effect/community/cosplay-guides",
+      "kind": "official-specific-incarnation-reference-page-discovery-not-qualification",
+      "statusCode": 200,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/shepard/research/official-cosplay-page.html",
+      "sha256": "2248c7661ce15965aa8c2c3e598f3c678192d91c02c02835e15d056464108ba3",
+      "bytes": 136477,
+      "result": "page-fetched-not-image-qualification",
+      "candidates": [
+        "Mass Effect official cosplay guides to help you craft the perfect Shepard Armor, and a how-to video from renowned cosplayer Soylent.",
+        "https://media.contentapi.ea.com/content/dam/eacom/mass-effect-legendary-edition/cosplay-guides/mele-cosplayguide-commandershepard-final-v02-pdf.zip",
+        "/games/mass-effect/mass-effect-legendary-edition/my-shepard-art-creator"
+      ]
+    },
+    {
+      "url": "https://media.contentapi.ea.com/content/dam/eacom/mass-effect-legendary-edition/cosplay-guides/mele-cosplayguide-commandershepard-final-v02-pdf.zip",
+      "linkedFrom": "https://www.ea.com/games/mass-effect/community/cosplay-guides",
+      "kind": "official-publisher-character-guide-download",
+      "result": "download-failed-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

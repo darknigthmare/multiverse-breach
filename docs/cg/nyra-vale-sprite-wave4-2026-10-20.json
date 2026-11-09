@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "nyra_vale",
+  "characterName": "Nyra Vale",
+  "operationKind": "genuine-v2-reference-imagegen-redraw-with-individual-hand-correction",
+  "status": "installed-and-selected-with-source-limitations",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+    "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+    "bytes": 2544671,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+    "bytes": 840998,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/nyra-vale-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+    "sha256": "43389eddcb5f7dd7afb7f07b8dfc5581ddb6dc805afd16049cfe6b0dea8f88d8"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-independent-review.json",
+    "sha256": "b298487946a57c97a4362fb5f3b708c6376283a6d6e3b279f2844e641db218c8",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "targetedCanonCounterreview": {
+    "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-canon-counterreview.json",
+    "sha256": "fd7130b91b0ec417fe6c9977d1fa0f8fd9fc71ab1389f0b0a8ea38987b7db7e8",
+    "scope": "whole sheet plus05/06/07/08/10 individually; not a second full16-frame review"
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/neon-requiem/nyra-vale.png",
+    "sha256": "f40fd1b382927de6b269a58863f317573d543f21f00652ba04ab072f9552fe9c",
+    "preserved": true,
+    "accessibleAsVariant": true
+  },
+  "sourceAssembly": {
+    "sha256": "d246d0ee71b87688c66af3e5deb2755af972843c9bfc114fd6e67036da18382b",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "selectedFramesFromWholeAtlasNative": 15,
+    "individualCorrectedFrames": [
+      10
+    ],
+    "fifteenRgbaCellsUnchangedBeforeFinalNormalization": true,
+    "finalCommonNearestScale": 0.9914529914529915,
+    "minimumGuard": 16,
+    "baselines": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "privateEvidenceSha256": "55ceb7bca5a7809c2160bd817052393491af9eb9df853b6f7e4d11c1ca0283d3",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "frame10ActualPose": "Right free arm projects a small memory cube toward imageLEFT, left cyberdeck raised near left shoulder at imageRIGHT.",
+  "successfulAtlasGenerationAttempts": 3,
+  "retainedUnselectedWholeOrIndividualAttempts": 1,
+  "refusals": 0,
+  "screenshots": [
+    "docs/cg/screenshots/nyra-vale-sprite-comparison-wave4-2026-10-20.webp"
+  ],
+  "limitations": [
+    "Current V2 refers to selected original-project portrait; its July ledger does not by itself establish chronology of all atlas assets.",
+    "Original left coat fringe is partly outside source crop; conservative full folded tails and unseen cyberdeck geometry remain interpreted.",
+    "Anatomical LEFT shaved temple/implants and RIGHT long hair were reviewed for actual head angle, not fixed screen side.",
+    "Very weak blue RGBA residue under frame08 has alpha at most1/255, no alpha>12; retained as technical fringe and never a body part.",
+    "Technical geometry does not certify perfect visual1:1 fidelity."
+  ]
+}

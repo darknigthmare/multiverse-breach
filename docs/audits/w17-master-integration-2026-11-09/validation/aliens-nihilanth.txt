@@ -1,0 +1,304 @@
+TAP version 13
+# Subtest: the source hive keeps its stage, rewards, waves, Queen identity and original enemy statistics
+ok 1 - the source hive keeps its stage, rewards, waves, Queen identity and original enemy statistics
+  ---
+  duration_ms: 23249.742091
+  type: 'test'
+  ...
+# Subtest: Newt is a spatial rescue marker with no HP, combat state or attack targeting entry
+ok 2 - Newt is a spatial rescue marker with no HP, combat state or attack targeting entry
+  ---
+  duration_ms: 2.667745
+  type: 'test'
+  ...
+# Subtest: only Ripley Aliens in this source hive exchanges Sulaco equipment without mutating even frozen source data
+ok 3 - only Ripley Aliens in this source hive exchanges Sulaco equipment without mutating even frozen source data
+  ---
+  duration_ms: 3.086634
+  type: 'test'
+  ...
+# Subtest: Ripley’s hive grenade is a directional ranged action with a local projectile, not a loader strike or global effect
+ok 4 - Ripley’s hive grenade is a directional ranged action with a local projectile, not a loader strike or global effect
+  ---
+  duration_ms: 2.547395
+  type: 'test'
+  ...
+# Subtest: Ripley’s source hive rifle and incinerator use local gunfire and flames in normal and timed Melee delivery
+ok 5 - Ripley’s source hive rifle and incinerator use local gunfire and flames in normal and timed Melee delivery
+  ---
+  duration_ms: 1.727975
+  type: 'test'
+  ...
+# Subtest: regular waves do not award rescue progress and the interaction opens on the actual Queen wave
+ok 6 - regular waves do not award rescue progress and the interaction opens on the actual Queen wave
+  ---
+  duration_ms: 1.168645
+  type: 'test'
+  ...
+# Subtest: rescue requires the living party actor to reach the marker rather than a remote UI command
+ok 7 - rescue requires the living party actor to reach the marker rather than a remote UI command
+  ---
+  duration_ms: 0.847162
+  type: 'test'
+  ...
+# Subtest: rescue and evacuation refuse pre-match, pause and hit lock
+ok 8 - rescue and evacuation refuse pre-match, pause and hit lock
+  ---
+  duration_ms: 1.614924
+  type: 'test'
+  ...
+# Subtest: autoBattle selects Newt’s actual living carrier after a nonleader rescues her
+ok 9 - autoBattle selects Newt’s actual living carrier after a nonleader rescues her
+  ---
+  duration_ms: 17.965895
+  type: 'test'
+  ...
+# Subtest: evacuation cannot happen before rescue, from the nest, or with the wrong carrier
+ok 10 - evacuation cannot happen before rescue, from the nest, or with the wrong carrier
+  ---
+  duration_ms: 1.537288
+  type: 'test'
+  ...
+# Subtest: successful spatial rescue and evacuation wins with the source Queen still alive
+ok 11 - successful spatial rescue and evacuation wins with the source Queen still alive
+  ---
+  duration_ms: 1.841134
+  type: 'test'
+  ...
+# Subtest: a carrier loss is defeat even when another living hero stands at the exit
+ok 12 - a carrier loss is defeat even when another living hero stands at the exit
+  ---
+  duration_ms: 1.131079
+  type: 'test'
+  ...
+# Subtest: ordinary melee damage can hurt the Queen but cannot kill her or complete the mission
+ok 13 - ordinary melee damage can hurt the Queen but cannot kill her or complete the mission
+  ---
+  duration_ms: 2.855648
+  type: 'test'
+  ...
+# Subtest: external fixed damage respects the nonlethal Queen floor without combat variance
+ok 14 - external fixed damage respects the nonlethal Queen floor without combat variance
+  ---
+  duration_ms: 0.779861
+  type: 'test'
+  ...
+# Subtest: battle item shield is opt-in for fixed Queen damage and paused commands do not consume it
+ok 15 - battle item shield is opt-in for fixed Queen damage and paused commands do not consume it
+  ---
+  duration_ms: 0.95228
+  type: 'test'
+  ...
+# Subtest: the source Queen cannot turn a Smash ringout into the later Sulaco airlock finale
+ok 16 - the source Queen cannot turn a Smash ringout into the later Sulaco airlock finale
+  ---
+  duration_ms: 0.477467
+  type: 'test'
+  ...
+# Subtest: accidentally emptied boss arrays cannot bypass rescue with generic final-wave victory
+ok 17 - accidentally emptied boss arrays cannot bypass rescue with generic final-wave victory
+  ---
+  duration_ms: 0.448083
+  type: 'test'
+  ...
+# Subtest: the rendered source markers and carrier notice are real canvas elements with restored state
+ok 18 - the rendered source markers and carrier notice are real canvas elements with restored state
+  ---
+  duration_ms: 0.920202
+  type: 'test'
+  ...
+# Subtest: autoBattle actually walks the authored rescue and evacuation route with original Ripley and Queen stats
+ok 19 - autoBattle actually walks the authored rescue and evacuation route with original Ripley and Queen stats
+  ---
+  duration_ms: 7.055243
+  type: 'test'
+  ...
+# Subtest: autoBattle crosses the original combat waves before rescuing Newt and escaping
+ok 20 - autoBattle crosses the original combat waves before rescuing Newt and escaping
+  ---
+  duration_ms: 109.652048
+  type: 'test'
+  ...
+# Subtest: non-source Alien stages retain their existing elimination and lethal damage
+ok 21 - non-source Alien stages retain their existing elimination and lethal damage
+  ---
+  duration_ms: 2.367354
+  type: 'test'
+  ...
+# Subtest: custom battles borrowing stage 3 do not acquire Newt, nonlethal Queen damage or rescue objectives
+ok 22 - custom battles borrowing stage 3 do not acquire Newt, nonlethal Queen damage or rescue objectives
+  ---
+  duration_ms: 0.984608
+  type: 'test'
+  ...
+# Subtest: different incarnations, modes, rosters and custom flags never acquire the source rescue rules
+ok 23 - different incarnations, modes, rosters and custom flags never acquire the source rescue rules
+  ---
+  duration_ms: 1.446612
+  type: 'test'
+  ...
+# Subtest: Nihilanth retains all three crystals, body nonlethal gating and an exposed brain kill
+ok 24 - Nihilanth retains all three crystals, body nonlethal gating and an exposed brain kill
+  ---
+  duration_ms: 7.297497
+  type: 'test'
+  ...
+# Subtest: Nihilanth interactions attach only when the actual source boss wave arrives
+ok 25 - Nihilanth interactions attach only when the actual source boss wave arrives
+  ---
+  duration_ms: 29406.516734
+  type: 'test'
+  ...
+# Subtest: the source finale keeps its saved stage, rewards, boss identity and base statistics
+ok 26 - the source finale keeps its saved stage, rewards, boss identity and base statistics
+  ---
+  duration_ms: 5.158771
+  type: 'test'
+  ...
+# Subtest: a normal legacy melee attack destroys a nearby healing crystal instead of an invisible metadata objective
+ok 27 - a normal legacy melee attack destroys a nearby healing crystal instead of an invisible metadata objective
+  ---
+  duration_ms: 2.475661
+  type: 'test'
+  ...
+# Subtest: a directional source-locked ranged attack selects and damages a real crystal
+ok 28 - a directional source-locked ranged attack selects and damages a real crystal
+  ---
+  duration_ms: 2.106136
+  type: 'test'
+  ...
+# Subtest: the committed Melee action pipeline reaches destructible crystals
+ok 29 - the committed Melee action pipeline reaches destructible crystals
+  ---
+  duration_ms: 1.350534
+  type: 'test'
+  ...
+# Subtest: body damage is real but cannot deliver a lethal hit before or after the head opens
+ok 30 - body damage is real but cannot deliver a lethal hit before or after the head opens
+  ---
+  duration_ms: 7.425859
+  type: 'test'
+  ...
+# Subtest: orange spheres absorb into a damaged boss, restore 5 percent max HP and are consumed
+ok 31 - orange spheres absorb into a damaged boss, restore 5 percent max HP and are consumed
+  ---
+  duration_ms: 1.062132
+  type: 'test'
+  ...
+# Subtest: a surviving crystal restores depleted spheres and the head remains closed
+ok 32 - a surviving crystal restores depleted spheres and the head remains closed
+  ---
+  duration_ms: 13.665009
+  type: 'test'
+  ...
+# Subtest: destroying all crystals removes recharging, weakens the reserve and opens a targetable brain
+ok 33 - destroying all crystals removes recharging, weakens the reserve and opens a targetable brain
+  ---
+  duration_ms: 6.883116
+  type: 'test'
+  ...
+# Subtest: an untouched closed-head encounter cannot be skipped by hitting its hidden brain
+ok 34 - an untouched closed-head encounter cannot be skipped by hitting its hidden brain
+  ---
+  duration_ms: 1.055532
+  type: 'test'
+  ...
+# Subtest: external battle items and supers respect the body restriction and may hit the exposed weak point
+ok 35 - external battle items and supers respect the body restriction and may hit the exposed weak point
+  ---
+  duration_ms: 5.31135
+  type: 'test'
+  ...
+# Subtest: a source-locked ranged attack from the head platform can land the lethal brain hit
+ok 36 - a source-locked ranged attack from the head platform can land the lethal brain hit
+  ---
+  duration_ms: 7.980149
+  type: 'test'
+  ...
+# Subtest: time and destruction of the three crystals alone cannot award victory
+ok 37 - time and destruction of the three crystals alone cannot award victory
+  ---
+  duration_ms: 8.339178
+  type: 'test'
+  ...
+# Subtest: Nihilanth levitates and is not removed by ground physics or knockback ringouts
+ok 38 - Nihilanth levitates and is not removed by ground physics or knockback ringouts
+  ---
+  duration_ms: 4.47772
+  type: 'test'
+  ...
+# Subtest: purple energy projectiles travel through the arena and damage the hero rather than a generic melee strike
+ok 39 - purple energy projectiles travel through the arena and damage the hero rather than a generic melee strike
+  ---
+  duration_ms: 4.224981
+  type: 'test'
+  ...
+# Subtest: a noncanonical Alien stage retains generic damage without acquiring either source encounter
+ok 40 - a noncanonical Alien stage retains generic damage without acquiring either source encounter
+  ---
+  duration_ms: 1.426498
+  type: 'test'
+  ...
+# Subtest: custom battles using stage 10 do not acquire crystals or campaign restrictions
+ok 41 - custom battles using stage 10 do not acquire crystals or campaign restrictions
+  ---
+  duration_ms: 1.751205
+  type: 'test'
+  ...
+# Subtest: interactive crystals, orange spheres, the exposed brain and purple attacks are actually drawn with restored state
+ok 42 - interactive crystals, orange spheres, the exposed brain and purple attacks are actually drawn with restored state
+  ---
+  duration_ms: 5.249728
+  type: 'test'
+  ...
+# Subtest: the actual EngineSmash draw path includes the encounter markers
+ok 43 - the actual EngineSmash draw path includes the encounter markers
+  ---
+  duration_ms: 10.740806
+  type: 'test'
+  ...
+# Subtest: direct external damage preserves its fixed HP amount without armor, variance or movement changes
+ok 44 - direct external damage preserves its fixed HP amount without armor, variance or movement changes
+  ---
+  duration_ms: 0.885967
+  type: 'test'
+  ...
+# Subtest: a direct nonlethal field effect leaves the exposed brain and boss at one synchronized HP
+ok 45 - a direct nonlethal field effect leaves the exposed brain and boss at one synchronized HP
+  ---
+  duration_ms: 8.033649
+  type: 'test'
+  ...
+# Subtest: direct battle item shields absorb once after head protection, while field effects retain their legacy shield behavior
+ok 46 - direct battle item shields absorb once after head protection, while field effects retain their legacy shield behavior
+  ---
+  duration_ms: 0.620941
+  type: 'test'
+  ...
+# Subtest: a direct lethal weakpoint hit synchronizes the proxy and cannot count a second corpse kill
+ok 47 - a direct lethal weakpoint hit synchronizes the proxy and cannot count a second corpse kill
+  ---
+  duration_ms: 4.458913
+  type: 'test'
+  ...
+# Subtest: external damage cannot affect an encounter after the match is over
+ok 48 - external damage cannot affect an encounter after the match is over
+  ---
+  duration_ms: 0.578568
+  type: 'test'
+  ...
+# Subtest: continued attacks after crystal destruction can open the head while orange spheres still remain
+ok 49 - continued attacks after crystal destruction can open the head while orange spheres still remain
+  ---
+  duration_ms: 3.762569
+  type: 'test'
+  ...
+1..49
+# tests 49
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55300.013961

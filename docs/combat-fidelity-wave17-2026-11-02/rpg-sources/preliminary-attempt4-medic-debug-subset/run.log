@@ -1,0 +1,22 @@
+{"medicBeforeUi":{"precharge":{"realMediGunCommand":true,"initialCharge":0.0033333333333333335,"simulationTicks":2392,"simulationSeconds":39.86666666666667,"charge":0.999999999999953,"beamConnected":true,"patientId":"hero:0:team_fortress_2_scout","medicId":"hero:1:team_fortress_2_medic","scenarioInjuryPulses":2392},"actor":{"id":"team_fortress_2_scout","state":"idle","atb":100,"hp":86472.33333333538,"charge":100,"used":false,"actionPending":false},"allies":[{"id":"team_fortress_2_scout","x":146,"y":304,"hp":86472.33333333538,"state":"idle"},{"id":"team_fortress_2_medic","x":81,"y":304,"hp":60000,"state":"idle","beam":{"kind":"tf2-stock-medi-gun","patientRuntimeId":"hero:0:team_fortress_2_scout","medicRuntimeId":"hero:1:team_fortress_2_medic","charge":1,"range":220,"connected":true,"elapsed":40.13333333333234,"uberRemaining":0,"chargeBuilt":1}}],"summon":{"available":true,"ready":true,"actorId":"hero:0:team_fortress_2_scout","side":"player","id":"team_fortress_2_scout:reinforcement:team_fortress_2_medic:special","name":"Medic — ÜberCharge du Medi Gun stock","entityName":"Medic","actionName":"ÜberCharge du Medi Gun stock","universe":"Team Fortress 2","kind":"reinforcement","entityAssetId":null,"used":false,"atb":100,"charge":100,"cost":{"atb":100,"charge":100},"assetMissing":false,"reason":null}}}
+{"completed":1,"caller":"team_fortress_2_scout","side":"player","kind":"native16","effects":1,"hpImpacts":0}
+{"medicBeforeUi":{"precharge":{"realMediGunCommand":true,"initialCharge":0.0033333333333333335,"simulationTicks":2392,"simulationSeconds":39.86666666666667,"charge":0.999999999999953,"beamConnected":true,"patientId":"enemy:custom:0:team_fortress_2_scout","medicId":"enemy:custom:1:team_fortress_2_medic","scenarioInjuryPulses":2392},"actor":{"id":"team_fortress_2_scout","state":"idle","atb":100,"hp":87326.33333333545,"charge":100,"used":false,"actionPending":false},"allies":[{"id":"team_fortress_2_scout","x":770,"y":304,"hp":87326.33333333545,"state":"idle"},{"id":"team_fortress_2_medic","x":835,"y":304,"hp":60000,"state":"idle","beam":{"kind":"tf2-stock-medi-gun","patientRuntimeId":"enemy:custom:0:team_fortress_2_scout","medicRuntimeId":"enemy:custom:1:team_fortress_2_medic","charge":1,"range":220,"connected":true,"elapsed":40.28333333333233,"uberRemaining":0,"chargeBuilt":1}}],"summon":{"available":true,"ready":true,"actorId":"enemy:custom:0:team_fortress_2_scout","side":"enemy","id":"team_fortress_2_scout:reinforcement:team_fortress_2_medic:special","name":"Medic — ÜberCharge du Medi Gun stock","entityName":"Medic","actionName":"ÜberCharge du Medi Gun stock","universe":"Team Fortress 2","kind":"reinforcement","entityAssetId":null,"used":false,"atb":100,"charge":100,"cost":{"atb":100,"charge":100},"assetMissing":false,"reason":null}}}
+{"completed":2,"caller":"team_fortress_2_scout","side":"enemy","kind":"native16","effects":1,"hpImpacts":0}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 12
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-browser.mjs:317:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 12,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

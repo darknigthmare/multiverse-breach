@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-02T06:43:59.385Z",
+  "actuallyViewedWith": "view_image",
+  "reviewImage": "docs/combat-fidelity-wave17-2026-11-02/part-b/excluded-clipped-corrective-review.png",
+  "sourcePlanPreserved": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-corrections3.json",
+    "sha256": "26b71e0b400526d6f7ebf90fbf7c6776112985f5ea7f408a43576385409d52b5"
+  },
+  "correction": "The first wide RGBA display was misread as clipping the three fourth weapon drawings. Flattening solely for QA shows complete weapon tips and borders on all4 drawings in each source. The original pre-generation suspicion remains archived as a historical observation, not a current fact.",
+  "affectedSources": [
+    {
+      "heroId": "team_fortress_2_soldier",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_soldier-correction1.png",
+      "completeDrawings": 4,
+      "excludedDrawings": 4,
+      "incompleteDrawings": 0
+    },
+    {
+      "heroId": "team_fortress_2_medic",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_medic-correction1.png",
+      "completeDrawings": 4,
+      "excludedDrawings": 4,
+      "incompleteDrawings": 0
+    },
+    {
+      "heroId": "nemesis_awaken_realms_soldier",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_soldier-correction1.png",
+      "completeDrawings": 4,
+      "excludedDrawings": 4,
+      "incompleteDrawings": 0
+    }
+  ],
+  "deliveryPixelsChanged": false,
+  "finalCounts": {
+    "completeObserved": 2116,
+    "retained": 1920,
+    "completeExcluded": 196,
+    "incompleteCorrectiveCandidates": 0
+  }
+}

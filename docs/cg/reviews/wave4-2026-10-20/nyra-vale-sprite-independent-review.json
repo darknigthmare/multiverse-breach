@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "characterId": "nyra_vale",
+  "date": "2026-10-20",
+  "reviewedAt": "2026-10-20T11:24:53.173421+00:00",
+  "reviewer": "cg_raven_suite",
+  "producer": "root",
+  "independentFromProducer": true,
+  "status": "accepted-with-source-limitations",
+  "scope": "Independent visual and technical QA of uninstalled 16-frame sprite candidate, not CG review and not an identity source.",
+  "sourceAuthority": {
+    "path": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+    "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+    "role": "canonical-original-project-portrait",
+    "canonicalProjectReference": true,
+    "actuallyViewed": true,
+    "scope": "Currently selected project-authored individual Nyra Vale V2 portrait; no franchise authority and no full turnaround invented."
+  },
+  "candidate": {
+    "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/atlas-final-preview.png",
+    "sha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "actuallyViewed": true,
+    "runtimeInstalledAtReview": false,
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "assemblyProofFile": ".tmp/cg-wave4-2026-10-20/nyra-atlas/atlas-assembly-proof.json",
+    "assemblyProofSha256": "123236c98aff67a3e3e8e17ec558127d7067c75c0d64e26ba0c391bb56dd8c6b",
+    "packingFile": ".tmp/cg-wave4-2026-10-20/nyra-atlas/atlas-final-packing.json",
+    "packingFileSha256": "40b60d7d6d932692a9382ccae5cd17d687147a5076cb29da9a7eed5f29291beb"
+  },
+  "genuineNativesActuallyViewed": [
+    {
+      "path": "/workspace/generated_images/exec-61a2c30e-69aa-4a51-8a2b-73495206ff96.png",
+      "sha256": "0fd7e59177b9e5da1945fef3758f0cab706c653a92ffd04cbf78f06735ddb701",
+      "scope": "Original complete sprite sheet; its rejected frame10 is not selected."
+    },
+    {
+      "path": "/workspace/generated_images/exec-b28075e0-c4fc-4324-91bc-358e8fe52863.png",
+      "sha256": "778433191c6489af2e44ec47b54ff50ddb284e8546c6d989b3fd4520d68cddb7",
+      "scope": "Corrected frame10 genuine native, selected after technical extraction."
+    }
+  ],
+  "derivedSourceInspection": {
+    "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/portrait-cyberdeck-inspection.png",
+    "sha256": "85e36fe54f8b0f24ef19b389c360a1b05ad48bf18fccb6ce33870bb214dc0439",
+    "actuallyViewed": true,
+    "independentIdentitySource": false,
+    "operation": "Crop of same V2 source at x710,y590,width300,height300, nearest upscaled to900square; inspection only.",
+    "observation": "Two long rails at one end and two smaller opposite-side antenna projections are visible. More than two total projections is not by itself an extra-appendage defect."
+  },
+  "frameReviews": [
+    {
+      "cell": 1,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-01-final.png",
+      "sha256": "8f98a6a98bf2f68e62f1f29a56a3ead21117e22123823e535cc53a8f7048d476",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "006eee2bae155c18cbee21326180690f4b91d8cba7c8d15ff54c629512cd910a",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Neutral standing view, right free hand lowered and left hand holding lowered cyberdeck; front three-quarter head keeps implanted anatomical-left temple."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 2,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-02-final.png",
+      "sha256": "262e6b3c65396bfebafc03f454990d7142fd27e29ad8935f9e0c4401ccaf7d1a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "a56abd9d95d52757364739080d1d6a8056d4cece1659967d182eb91a8a782494",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Right open palm near waist, left cyberdeck angled down; visible hand has a natural opposed thumb/finger grouping without a demonstrated extra digit."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 3,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-03-final.png",
+      "sha256": "713a4589f14337859a6ddb1fb2c8f623555094d5f334dc0be470ca4083c90dc6",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "0eac5d5260e95513b707f87cb3bb616188f85683cf420bb1d667b1d8ca4bb3d4",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Right hand at hip, left hand holding cyberdeck; both boots and both long coat panels contained."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 4,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-04-final.png",
+      "sha256": "55957f3f197039fb37b8df8a08df46ce1121a8d5b34a04a82b737cb964f0745e",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "96717df8374a4ed7e6925c93cee505dbbd9bd1ccf7df3f334df6135060a3152c",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Right open palm supporting cyan memory cube with magenta satellites, left hand holding cyberdeck; frontal three-quarter identity coherent."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 5,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-05-final.png",
+      "sha256": "3ec94c802e203d0538307d7af9e4a10f2b61840562e8d159814b5c34d7a09fcf",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "629e17b921984b29bdf8654de34f20afa20fc2a17df9c475389829a3c4835606",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Running toward imageRIGHT with wide stride, right arm trailing and left cyberdeck ahead; head remains front three-quarter with both eyes readable and the anatomical-left implant band on its far side."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 6,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-06-final.png",
+      "sha256": "dc07175bf0c2349403bdd3dd67a7f7f00708af655207d56e567621a94a889a80",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "b6c9110341a436c58297f831b63f3e799dd598286c5d624ecb72f2e95e4c2965",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Running toward imageRIGHT with knees folded and right arm trailing; head still turned toward viewer, so a far anatomical-left temple band is consistent rather than a demonstrated right-side implant."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 7,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-07-final.png",
+      "sha256": "86be9958a0c5a867bd5e0198c244a688e0b0d1a2f5ae0f5dd0dfbbf0aaeec057",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "87aa0adff82d2e58ba7ca0e5ba56cba17c77735edddce73cb5b665ae04725278",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Running toward imageRIGHT, near bent leg raised and rear leg lower; face remains three-quarter, cyberdeck in anatomical-left hand."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 8,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-08-final.png",
+      "sha256": "b55af3badf03f112acde011bf783ef1e05c7b54fd5ffe8128f7679d29b0e0475",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "bfe43a6b8b084c280724a8ea0e3e0bc4e8c338a0506660df17ad73ddf12055eb",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Low forward sprint toward imageRIGHT, right hand bent close to chest and left cyberdeck forward; head remains three-quarter. Blue low-alpha satellite below body is separately documented as a nonblocking technical observation."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 9,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-09-final.png",
+      "sha256": "ca5ead2de7df6e34b9dde09755b1a5c4a1b0b4a91fa3ec1c7a532641ac93b589",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "5847aed7a016122f28954d7135dbcd6b15b02d1d2e4f3509f42b77340d578fe3",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Wide stance, right free hand raised above head with small cube/glow and left cyberdeck lowered; no demonstrated hand inversion."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 10,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-10-final.png",
+      "sha256": "023c0cb4f7106deb2a1bd9a9aa76794019f8f09c92c49c4cb4875bcc950e287d",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "4ac7e5df5877ab237df4af4a40f77fd6491fbfb08207f84bc6ebf4a92ff6474b",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Corrected genuine native: bent-knee wide lunge, anatomical-right free hand projects cube toward imageLEFT, anatomical-left hand raises cyberdeck at imageRIGHT near shoulder. Both coat tails and boots contained. Head/body footprint remains acceptable among this stylized pose set; exact skeletal scale is not certified."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 11,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-11-final.png",
+      "sha256": "03661e8460a36ce4e4e1232dd5197046dd51aca795c51aea8a733f94c07259f5",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "a9ba75ee41d42255ff00807b875b75f18a30cfd39225aa472763021e9547a9de",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Crouch with right open hand planted on ground and left cyberdeck held outward; exposed ground hand has a natural five-digit fan."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 12,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-12-final.png",
+      "sha256": "b6e238665ea003a32d4dc2e4a35a20312a41db813258529dc9999f5f003c5fe4",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "8a176d2bfdc24fda092d3f411375dd2b821755b90c80639a57e144dfff9dd14e",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Right hand reaches up to cube, left cyberdeck lowered; overhead VFX, connector rails and both boot soles contained."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 13,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-13-final.png",
+      "sha256": "d0efaeeec9a92c12ce2be66c58ab133be6da347966e28823bd3301cc045f7ae4",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "64f49cdf19aef3caa6bedad78b33025c09405b949ffaceadfc881a62a7b8b36d",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Leaning backward with right palm on ground and left cyberdeck at raised side; both boot silhouettes remain present and contained."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 14,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-14-final.png",
+      "sha256": "275a9ea88bd6f1873b1a00ddb72db58043758fa9414b279ea669fc3fe040d9e0",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "805fbc8c246890b7febdc6e259fc43114053ceca7bf865b346d79b387a3ea01f",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Kneeling recovery, right hand relaxed near raised knee, left cyberdeck low; implanted left temple on front three-quarter head remains coherent."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 15,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-15-final.png",
+      "sha256": "73ad113755d09d89dfc52bb8df6aa009a1a0eb793737164f2c2c5d47bf7fc1ef",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "3c1b462f857b356dd4a05f13da9539acf8896c9fa65377319d70979d21950fbc",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Seated with both legs extended and cyberdeck supported across lap. Both arms remain continuous; near hand visible and far support partly occluded. Do not certify each hidden finger."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    },
+    {
+      "cell": 16,
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-atlas/frame-16-final.png",
+      "sha256": "d85e7f100cb7c928816c213e363fa7bfd4096a91918dc63bab662fe924391db0",
+      "dimensions": [
+        256,
+        256
+      ],
+      "rgbaSha256": "b963e5cd9a97c460e99e7a9aca44869c9fbdfb13bec11717be8c9ed2e2263dcb",
+      "matchesFinalAtlasPixels": true,
+      "actuallyViewed": true,
+      "status": "accepted-with-source-limitations",
+      "notes": [
+        "Low kneel with right palm on ground and left cyberdeck raised near shoulder; source turquoise sweep, left temple implants, long coat and cyan boot soles remain coherent."
+      ],
+      "identityAuthority": "selected-original-project-v2-portrait-only",
+      "cyberdeckLaterality": "anatomical-left; frame15 rests across lap with natural support occlusion",
+      "bodyAndEquipmentContoursContained": true,
+      "anatomicalSideSwapDemonstrated": false,
+      "extraLimbOrDigitDemonstrated": false
+    }
+  ],
+  "technicalValidation": {
+    "report": ".tmp/cg-wave4-2026-10-20/nyra-sprite-independent-review/technical-validation.json",
+    "reportSha256": "363e5a21378f67c85b0f4625af6afdadd884b4023b1d2b190b177d339e307cac",
+    "operation": "Independently re-run exported normalizeReferencedCharacterPng on atlas-assembled-source.png with strict-grid mode; inspectReferencedCharacterPng and exact RGBA crop comparison for all16cells.",
+    "reproducedFinalBytesExact": true,
+    "reproducedFinalSha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+    "all16CellsPixelMatchFinalAtlas": true,
+    "geometry": {
+      "nonemptyCells": 16,
+      "minimumGuard": 16,
+      "visiblePixelsByCell": [
+        13569,
+        13778,
+        13021,
+        15965,
+        13196,
+        13769,
+        13550,
+        12865,
+        13531,
+        18812,
+        11887,
+        14532,
+        12471,
+        11439,
+        11111,
+        12050
+      ],
+      "visibleFootBaselinesByCell": [
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239,
+        239
+      ]
+    },
+    "visibleAlphaThreshold": 12,
+    "newSemanticPaintingPerformedByReviewer": false
+  },
+  "inspectionSheets": [
+    {
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-sprite-independent-review/frames-01-04-inspection.png",
+      "sha256": "2d2a89268c98cba6742da898f48f50ddf97ee1995f9de99482f374a98b8bb68c",
+      "actuallyViewed": true,
+      "operation": "Exact frame RGBA composited on RGB36,39,46 for inspection only, then nearest3x; no candidate change."
+    },
+    {
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-sprite-independent-review/frames-05-08-inspection.png",
+      "sha256": "e260cb72564b11b6b69f3061671799a1da6097b922600193ae36d6729731b3f2",
+      "actuallyViewed": true,
+      "operation": "Exact frame RGBA composited on RGB36,39,46 for inspection only, then nearest3x; no candidate change."
+    },
+    {
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-sprite-independent-review/frames-09-12-inspection.png",
+      "sha256": "03690ba0fbe5fcce8f0d2ca07213325ce4b57232744578125b1dfc86bf36d073",
+      "actuallyViewed": true,
+      "operation": "Exact frame RGBA composited on RGB36,39,46 for inspection only, then nearest3x; no candidate change."
+    },
+    {
+      "path": ".tmp/cg-wave4-2026-10-20/nyra-sprite-independent-review/frames-13-16-inspection.png",
+      "sha256": "f33180537274685fba196f45613cdd774930636b789d0909c894afb2057d3ff6",
+      "actuallyViewed": true,
+      "operation": "Exact frame RGBA composited on RGB36,39,46 for inspection only, then nearest3x; no candidate change."
+    }
+  ],
+  "nonblockingObservations": [
+    {
+      "cell": 8,
+      "type": "retained-alpha1-blue-satellite",
+      "region": [
+        85,
+        215,
+        150,
+        256
+      ],
+      "selectedSaturatedBluePixels": 197,
+      "selectedBluePixelBounds": [
+        94,
+        220,
+        141,
+        239
+      ],
+      "alphaRange": [
+        1,
+        1
+      ],
+      "maximum8BitCompositeChannelChange": 1,
+      "notes": "A low-alpha blue arc retained near the feet is visible in raw transparent preview tooling. On normal alpha composition its contribution is at most one 8bit channel level. It has no alpha>12 contour, does not cut the figure, and is not a limb. No broad alpha cleanup or artwork mutation was performed."
+    }
+  ],
+  "limitations": [
+    "Single individual project portrait rather than a multi-angle design sheet; far temple, rear garment construction, iris microdetail and hidden device mechanics cannot be certified exactly.",
+    "Anatomical-left temple is shaved/implanted; anatomical-right has long turquoise hair. Run05–08 preserve three-quarter heads with both eyes, so seeing the far-left temple at imageRIGHT is not itself an inversion. No true right-profile near-temple swap was established in these16cells.",
+    "Five digits are checked where clearly exposed; naturally hidden or tiny fingers are not falsely counted as missing.",
+    "Corrected10 has a separately generated render and some natural stylized size/detail variation; no gross size jump established against the full set, but exact skeletal scaling is not certified.",
+    "Old source/attempts remain the producer responsibility; this reviewer did not modify portraits, natives, candidate pixels, prior receipts or runtime registries.",
+    "No automatic or perfect1:1 visual certification. Runtime integration remains with root."
+  ],
+  "summary": {
+    "framesActuallyViewed": 16,
+    "acceptedFrames": 16,
+    "openBlockingIssues": 0,
+    "nonblockingObservations": 1,
+    "perfectVisualFidelityCertified": false,
+    "canonicalFidelityApproved": false
+  },
+  "canonicalFidelityApproved": false
+}

@@ -1,0 +1,68 @@
+{
+  "assetId": "black-suit-agent-bob:black-catsuit-reference-v12",
+  "reviewDate": "2026-10-29",
+  "reviewers": [
+    "primary assistant",
+    "independent visual-review agent"
+  ],
+  "readyForStaticCatalogue": true,
+  "blockingDefects": [],
+  "preservedVisualCues": [
+    "Single adult female agent based on the right-hand reference figure",
+    "Black bob with straight bangs, reddish-brown eyes and high collar retained",
+    "Opaque black outfit, long sleeves, blue highlights and two bare hands retained",
+    "Unintended flank opening corrected to continuous black/navy material",
+    "Full head, hands and both reconstructed footwear soles inside canvas",
+    "Native RGBA final output copied byte-for-byte without additional pixel edits"
+  ],
+  "observedDifferences": [
+    "Neutral catalogue pose replaces the low-angle pose in the reference",
+    "Full-body proportions, face details and highlight placement are interpreted in pixel art",
+    "Ankles, lower-leg transitions, black footwear and soles are reconstructed because the source crops them"
+  ],
+  "correctionReview": {
+    "firstRenderAccepted": false,
+    "defect": "Small nearly opaque skin-colored triangle at the viewer-left flank, not attested on the selected right-hand reference figure",
+    "firstRenderRegion": [
+      572,
+      414,
+      595,
+      448
+    ],
+    "firstRenderWarmPixelCount": 209,
+    "firstRenderAlphaRange": [
+      237,
+      253
+    ],
+    "finalFlankClosed": true,
+    "opaqueSkinPixelsRemainingInReviewedRegion": 0,
+    "newBlockingDefects": []
+  },
+  "alphaReview": {
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "visibleBoundsAlphaGt8": [
+      435,
+      26,
+      842,
+      1236
+    ],
+    "visibleMargins": [
+      435,
+      26,
+      412,
+      18
+    ],
+    "maximumCanvasEdgeAlpha": 1,
+    "visibleAlphaGt8TouchesCanvasEdge": false,
+    "handFringeReview": "The inspected red hand-edge fringe includes 569 pixels at alpha 1/255; maximum alpha 7/255. It is negligible after normal alpha compositing."
+  },
+  "canonicalIdentityCertified": false,
+  "fullBodyOneToOneCertified": false,
+  "pixelEditsOutsideImageGeneration": false
+}

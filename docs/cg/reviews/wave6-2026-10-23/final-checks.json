@@ -1,0 +1,1120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "closedAt": "2026-10-23T20:38:17.819711+00:00",
+  "status": "pass",
+  "reviewer": "/root/wave7_coordination",
+  "scope": "Wave6 actual deliveries and complete common-instruction coverage. The entire1912-subject roster is not finished.",
+  "closureMethod": "Created on resume after the interrupted environment recovered; verifies frozen final pins and local links. Existing completed Wave6 audits and execution logs are cited, not represented as newly rerun tests or new visual inspections.",
+  "newCurrentCg": 75,
+  "newCompleteSeries": 5,
+  "currentCg": 670,
+  "charactersWithCg": 51,
+  "completeApplicableSeries": 44,
+  "retainedCgVersions": 764,
+  "registeredCgMedia": 2292,
+  "unchangedEarlierCgMedia": 2067,
+  "newReferencedSpriteAtlases": 5,
+  "newSpriteFramesReviewed": 80,
+  "remainingRosterSlots": 28002,
+  "documentedNotApplicable": 8,
+  "workbook": {
+    "path": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+    "sha256": "26182c393303e7996ddcd3503b2cea30e8abd8b42e4be1404b19846cb6575d6e",
+    "bytes": 72600997
+  },
+  "workbookIndependentAudit": {
+    "schemaVersion": 1,
+    "workbook": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+    "sha256": "26182c393303e7996ddcd3503b2cea30e8abd8b42e4be1404b19846cb6575d6e",
+    "subjects": 1912,
+    "universes": 525,
+    "matrixRows": 28680,
+    "registeredCurrentCg": 670,
+    "selectedSpritesMatched": 1912,
+    "retainedVersions": 764,
+    "notApplicable": 8,
+    "embeddedImages": 3070,
+    "verifiedLocalHyperlinks": 12499,
+    "scopedReferenceUsageChecks": {
+      "danteEquipmentOnly": 1,
+      "danteEnvironmentOnly": 5,
+      "sonicCostumeOnly": 1,
+      "raymanEnvironmentOnly": 1,
+      "excludedNerisCopyRows": 0,
+      "excludedNyraHistoricalComparisonRows": 0,
+      "nyraInternalEquipmentReuse": 1,
+      "nyraInternalEnvironmentReuse": 1,
+      "jaxInternalEquipmentReuse": 1,
+      "jaxInternalEnvironmentReuse": 1,
+      "maraInternalEnvironmentOnly": 1
+    },
+    "verifiedInternalV2PortraitSubjects": [
+      "brann_crow",
+      "celeste_ray",
+      "elara_voss",
+      "jax_rook",
+      "lyra_hexwind",
+      "mara_ell",
+      "mara_veylan",
+      "mercy_ash",
+      "nefra_balance",
+      "nyra_vale",
+      "orin_vale",
+      "seraphine_meridius"
+    ],
+    "partialWaveRefusalAndNonAttemptChecks": {
+      "refused": 9,
+      "notAttempted": 40
+    },
+    "mistralRefusalAndNonAttemptChecks": {
+      "refused": 4,
+      "notAttempted": 9
+    },
+    "globalBatchChecks": {
+      "manifest": "docs/cg/roster-global-batch-2026-10-23.json",
+      "manifestSha256": "789d3720788d2f736af19b54ea41082c037351153cc932cc36f6e782ec119ea9",
+      "masterPrompt": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+      "masterPromptSha256": "9bc6a9352dffdef184c9eb0b8692f269e69ddaa7c492355f74cca869ed068c7c",
+      "subjects": 1912,
+      "slots": 28680,
+      "actualDeliveredCg": 670,
+      "currentCgRefusals": 20,
+      "currentAtlasRefusals": 7,
+      "newAtlasRefusals": 1,
+      "homeEntryPointLinksVerified": 2,
+      "instructionsMistakenForGeneratedImages": 0
+    },
+    "allCurrentMediaMatchRuntime": true,
+    "plannedImagesPresentedAsDelivered": 0,
+    "certifiesVisualResemblance": false
+  },
+  "manualPreservation": {
+    "privateFieldsVerified": 16,
+    "realRowsBefore": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "realRowsAfter": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "allExistingValuesPreserved": true,
+    "syntheticTestDataInProduction": false,
+    "consumedInputFilesCapturedBeforeBuild": 4718,
+    "documentaryJsonCapturedBeforeBuild": 325,
+    "captureSha256": "31f82dd236f9d0806efbc3c084898e95cf0f09881f7a7b86dd74eacdfef788bc"
+  },
+  "checksFromSavedWave6Execution": {
+    "cgTests": {
+      "passed": 68,
+      "failed": 0
+    },
+    "globalBuilderTestsIncludedInCgSuite": 13,
+    "characterPngPipelineTests": {
+      "passed": 42,
+      "failed": 0
+    },
+    "spriteCharacterAudits": "pass",
+    "spriteAvailabilityPaths": 5520,
+    "targetedLint": "pass",
+    "pythonCompilation": "pass",
+    "bibleReproducibility": "pass",
+    "globalManifestReproducibility": "pass; saved final independent audit and unchanged frozen pins",
+    "globalSingleJobInstructionRender": "pass; instruction only, no image call",
+    "viteCodeBuild": "pass; existing chunk-size warning; public files not recopied",
+    "gitDiffCheck": "pass",
+    "runtimeCorrectedHeroContextChecks": 105,
+    "unchangedOtherHeroSelections": 1907,
+    "runtimeVerification": "programmatic; no new interactive browser session claimed"
+  },
+  "closureChecksOnResume": {
+    "frozenInputPinsVerified": 78,
+    "documentationLocalLinksVerified": 171,
+    "documentationFiles": [
+      "docs/cg/README.md",
+      "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "docs/cg/EXCEL_FIDELITE.md",
+      "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md"
+    ],
+    "newSemanticArtworkOrVisualReviewClaimed": false
+  },
+  "generationCounts": {
+    "cg": {
+      "successfulNativeOutputs": 108,
+      "selectedNativeOutputs": 75,
+      "whollyUnselectedDraftNativeOutputs": 33,
+      "deliveredCGIllustrations": 75,
+      "deliveredMediaFiles": 225,
+      "strictNativeRgbSources": 74,
+      "fullFrameNearestConditionedSources": 1,
+      "newProviderRefusalsRecorded": 0
+    },
+    "atlas": {
+      "successfulNativeOutputs": 21,
+      "selectedNativeContributors": 12,
+      "whollyUnselectedDraftNativeOutputs": 9,
+      "deliveredAtlasSheets": 5,
+      "deliveredPoseFrames": 80,
+      "deliveredMediaFiles": 5,
+      "newProviderRefusalsRecorded": 0
+    },
+    "batmanAtlasSeparate": {
+      "successfulNativeOutputs": 0,
+      "deliveredAtlasSheets": 0,
+      "deliveredPoseFrames": 0,
+      "newProviderRefusalsRecorded": 1
+    },
+    "combinedSuccessfulArtworkProduction": {
+      "successfulNativeOutputs": 129,
+      "selectedNativeContributors": 87,
+      "whollyUnselectedDraftNativeOutputs": 42,
+      "deliveredCGIllustrations": 75,
+      "deliveredAtlasSheets": 5,
+      "deliveredAtlasPoseFrames": 80,
+      "deliveredMediaFiles": 230,
+      "newProviderRefusalsRecordedIncludingBatman": 1
+    }
+  },
+  "newAtlasRefusal": {
+    "characterId": "batman_n52",
+    "category": "other",
+    "newFilesProduced": 0,
+    "previousSpriteUnchanged": true,
+    "receipt": "docs/cg/batman-new52-sprite-wave6-2026-10-23.json"
+  },
+  "fullRosterCommonInstruction": {
+    "available": true,
+    "manifestPath": "docs/cg/roster-global-batch-2026-10-23.json",
+    "manifestSha256": "789d3720788d2f736af19b54ea41082c037351153cc932cc36f6e782ec119ea9",
+    "masterPromptPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+    "masterPromptSha256": "9bc6a9352dffdef184c9eb0b8692f269e69ddaa7c492355f74cca869ed068c7c",
+    "summary": {
+      "subjects": 1912,
+      "universes": 525,
+      "cgSlots": 28680,
+      "actualDeliveredCg": 670,
+      "documentedNotApplicable": 8,
+      "remainingSlots": 28002,
+      "subjectsWithVerifiedIdentityReference": 50,
+      "subjectsWithExternalIdentityReference": 24,
+      "subjectsWithInternalOriginalAuthority": 26,
+      "currentProviderRefusedOrCorrectionRefusedJobs": 20,
+      "jobsWithRecordedNonAttempt": 72,
+      "currentAtlasRefusedSubjects": 7,
+      "newAtlasRefusedSubjects": 1,
+      "historicalAtlasRefusedSubjects": 6,
+      "subjectsWithExplicitFullBodySourceCoverageGap": 3,
+      "queueStatuses": {
+        "delivered-current": 669,
+        "needs-character-brief": 75,
+        "needs-reference": 27852,
+        "not-applicable-documented": 8,
+        "provider-refused": 19,
+        "ready-for-generation": 56,
+        "source-correction-refused": 1
+      },
+      "automaticPerfectFidelityApprovals": 0,
+      "imageCallsMadeByThisBuilder": 0,
+      "imagesInstalledByThisBuilder": 0,
+      "registeredVersions": 764
+    }
+  },
+  "historicalReportsPreserved": true,
+  "canonicalFidelityApproved": false,
+  "perfect1to1AutomaticallyCertified": false,
+  "artifacts": [
+    {
+      "path": "docs/cg/README.md",
+      "sha256": "171620c512199b35a82c5f35e9dad14a27e8363d7f55bb11e8ea3acc83dca41e",
+      "bytes": 18415
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "sha256": "2189030d591636bb0da5923eb7ba83797967c26a6ea0c306f7ffeac049087add",
+      "bytes": 7370
+    },
+    {
+      "path": "docs/cg/EXCEL_FIDELITE.md",
+      "sha256": "95fb49903cfd304ef2576782c2fd93c858839e1811f781849a3f7ee50b724426",
+      "bytes": 12770
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "sha256": "c6b9b8fe53f06dffda9680289abfc8748eec31c2b71c87f43d4d8a524a1597b6",
+      "bytes": 11272
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "sha256": "15d19dcc65cca2e0ad7810174d66010df5e65c1497a4e83b29c114e21ce7ac89",
+      "bytes": 4466
+    },
+    {
+      "path": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+      "sha256": "9bc6a9352dffdef184c9eb0b8692f269e69ddaa7c492355f74cca869ed068c7c",
+      "bytes": 7683
+    },
+    {
+      "path": "docs/cg/roster-global-batch-2026-10-23.json",
+      "sha256": "789d3720788d2f736af19b54ea41082c037351153cc932cc36f6e782ec119ea9",
+      "bytes": 68277328
+    },
+    {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "sha256": "8095c7aa2af5e9bb1c871b5652dccf89f33f75ce65c51ae01983c7336c7622a5",
+      "bytes": 33636441
+    },
+    {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "sha256": "fd72c10cba223766ab620cce04363c86551166469b28009872dc097a591e33a1",
+      "bytes": 40929654
+    },
+    {
+      "path": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+      "sha256": "26182c393303e7996ddcd3503b2cea30e8abd8b42e4be1404b19846cb6575d6e",
+      "bytes": 72600997
+    },
+    {
+      "path": "docs/cg/Multiverse_Breach_Fidelite_CG.summary.json",
+      "sha256": "d7daa373224c79f48873518e747307c8e1ce6b0b977f34d62de6b2094fa596d1",
+      "bytes": 2792
+    },
+    {
+      "path": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json",
+      "sha256": "28fd0777e0d51e7bcfa0d20427be9fb2a334ad1a46dfef9805c9327504b7bceb",
+      "bytes": 1976
+    },
+    {
+      "path": "docs/cg/Multiverse_Breach_Fidelite_CG.preservation-validation.json",
+      "sha256": "9e8c24ee9a4344041f40974ff1a54b20d8ffe1aaeb5b352f7a14a8bb7c9a51f6",
+      "bytes": 694365
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave6-2026-10-23.json",
+      "sha256": "8202380abb0e1b5cbad50cdaef25d4f326aa9eb77eb89baa922c6194af9eb068",
+      "bytes": 2212718
+    },
+    {
+      "path": "docs/cg/screenshots/roster-wave6-overview-2026-10-23.webp",
+      "sha256": "140fb4a13539db8b6c6f829b3006708f9da50988886261faeaca4d8d496881e5",
+      "bytes": 523538
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "d3cfc1e05dac8c172e41ce5eea9dee87ac1bf4af779fa3b979df0303d6c2bca7",
+      "bytes": 40134
+    },
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "57c1aa5861ab6e9c6f5bb42915d646e85eee82c249b438dab55d886e2bd732ba",
+      "bytes": 3850887
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    },
+    {
+      "path": "scripts/buildCgGlobalBatch.mjs",
+      "sha256": "b0f72eb2234aeb5a8fc7249017624e54be7564c280110f3bc3aa00b909077700",
+      "bytes": 41920
+    },
+    {
+      "path": "scripts/buildCgGlobalBatch.test.mjs",
+      "sha256": "5bc7addcefcf2e29346be360b5fb70c5899b064354684b12f4894767b08feba0",
+      "bytes": 22321
+    },
+    {
+      "path": "scripts/buildCgFidelityWorkbook.py",
+      "sha256": "a9461ac4c884f994266757ef557e84799db30ab2415527018d2950e7d31d0420",
+      "bytes": 89487
+    },
+    {
+      "path": "scripts/auditCgFidelityWorkbook.py",
+      "sha256": "d999c658e21f5cab57db9dc38943288d5704d9b8d66bc14a0f4f0c4d76006df4",
+      "bytes": 22441
+    },
+    {
+      "path": "scripts/cgSourceEvidence.test.mjs",
+      "sha256": "2cfc068d2dbec2dcb1e952baac38718395b2eb073f02d44f9541e017401dbdfa",
+      "bytes": 12482
+    },
+    {
+      "path": "package.json",
+      "sha256": "db2c9e75c8a78d23a29c9a2733b2fcdb3c58c98b300d34f736fec38770c553d7",
+      "bytes": 22380
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/brann-crow-independent-review.json",
+      "sha256": "568c7d1d3ffe56471b44e75f02f997edf64ad94d4896242e0807e10b09b1beff",
+      "bytes": 13956
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/brann-crow-sprite-independent-review.json",
+      "sha256": "6be8514c37e1bddfc4c822472e5ec40d56a2c14e7a31d2e8f7338416ad810d0f",
+      "bytes": 10898
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/comparison-preview-verification.json",
+      "sha256": "ef1865af6cade56c8be2db35fae56a4da7dd8d6ee7901546999b7a05639ab0c6",
+      "bytes": 8229
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/generation-counts-independent-verification.json",
+      "sha256": "21440aeac6a488ec9b8296410a62dcfb6d424adb44df71fad4cf32769d7ade55",
+      "bytes": 211767
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/global-batch-semantic-verification.json",
+      "sha256": "ff5f92547aa1f9da7e57ae461314ed778ca838e5e054fcb4d2682d7209aa0d15",
+      "bytes": 50733
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/historical-preservation-verification.json",
+      "sha256": "8782270cfd7111d301417146a6c0d84643a692d06689c1c383ea68927b57ee2c",
+      "bytes": 3237
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-independent-review.json",
+      "sha256": "8d938a874fd549ad239801bbfe8f5429162a043325999e964b2a06cdac1baaf9",
+      "bytes": 15088
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+      "sha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7",
+      "bytes": 12985
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-independent-review.json",
+      "sha256": "a38c80ea5d3b74b5c59ead253df8761062582fd929337063725fee9e6957a8eb",
+      "bytes": 20792
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json",
+      "sha256": "aff0e67a175623623c6cf6039313d71620cc48e7e0ce9bb6e782db4f62ff04ce",
+      "bytes": 15403
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-independent-review.json",
+      "sha256": "6dbacb8e4e1c6fa43cd9b3668ca1287d209f8a4b98173964b795743c9004838f",
+      "bytes": 11401
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+      "sha256": "ff403d7ff9d8ef2583c56e80b5bd6ab7237603d78d24772831b70147ea0ec328",
+      "bytes": 13319
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/orin-vale-independent-review.json",
+      "sha256": "d4287c7989783c2d85bfcf5e961a260c1096e838c756c305ce5b023f7b0fde76",
+      "bytes": 26030
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/orin-vale-sprite-independent-review.json",
+      "sha256": "3a3c3e742d4f7f04ee22eca0f43d1d7261fdb6723557868f0b0224cc2264fd5d",
+      "bytes": 12929
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/runtime-atlas-selection-independent-verification.json",
+      "sha256": "ee9b11eed49e1eb36a2180acc0ea82c9125c360c33c888dd7f205fb931dfce6e",
+      "bytes": 9129
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/runtime-selection-independent-verification.json",
+      "sha256": "8631f34101c26422d00df027c1bda1f954b4af73952d33f4afb67c30538ee17f",
+      "bytes": 8681
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/selected-roster-visual-priorities.json",
+      "sha256": "2c2f5b9b579e476b48d04a93c7b8dd85d72e183c28961dd9f1335d571e0d6501",
+      "bytes": 26840
+    }
+  ],
+  "documentationLinkChecks": [
+    {
+      "document": "docs/cg/README.md",
+      "target": "PROMPT_GLOBAL_ROSTER_1_1.txt"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "roster-global-batch-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "EXCEL_FIDELITE.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.validation.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/roster-wave6-overview-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "FIDELITY_PROGRESS_WAVE6_2026-10-23.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave6-2026-10-23/README.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "fidelity-delivery-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "roster-production-2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/roster-wave5-overview-2026-10-22.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "FIDELITY_PROGRESS_WAVE5_2026-10-22.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave5-2026-10-22/README.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "fidelity-delivery-wave5-2026-10-22.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/roster-wave4-overview-2026-10-20.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "FIDELITY_PROGRESS_WAVE4_2026-10-20.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave4-2026-10-20/README.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/elara-voss-sprite-comparison-wave4-2026-10-20.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/nyra-vale-sprite-comparison-wave4-2026-10-20.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.validation.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "EXCEL_FIDELITE.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "roster-production-2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "fidelity-delivery-wave4-2026-10-20.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/roster-wave3-overview-2026-10-20.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "FIDELITY_PROGRESS_2026-10-20.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave3-2026-10-20/README.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "fidelity-delivery-2026-10-20.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "EXCEL_FIDELITE.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "roster-production-2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "EXCEL_FIDELITE.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "FIDELITY_PROGRESS_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "../../src/game/cg/cgRevisions.generated.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "../../src/game/cg/cgRosterArtwork.generated.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave2-2026-10-18/README.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "screenshots/roster-wave2-overview-2026-10-18.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "reviews/wave2-2026-10-18/sprite-before-after.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "roster-production-2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./CG_PILOT_REFERENCE_AUDIT.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./CG_PILOT_PROMPTS.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/halo-chief-arbiter-cg02-05-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/resident-evil-wesker-jill-cg02-05-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/leon-anchor-cg02-05-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/halo-chief-arbiter-cg06-08-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/resident-evil-wesker-jill-cg06-08-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/leon-anchor-cg06-08-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./CG_VARIANT_WAVE_AUDIT.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/halo-chief-arbiter-cg09-15-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/resident-evil-wesker-jill-cg09-15-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/leon-anchor-cg09-15-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/jill-goofy-alignment-style-corrections-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./prompts/jill-gender-zombie-style-corrections-openai-v1.md"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./character-reference-approvals.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./wave-approvals.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./variant-wave-approvals.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "../../public/cg/cg-manifest.json"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-pilot-review-sheet.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-pilot-cg01-08-review-sheet.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-pilot-cg09-15-review-sheet.webp"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-cg09-15-desktop.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-cg09-15-mobile.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-variant-compare-desktop.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-variant-compare-mobile.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-cg01-08-desktop.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-cg01-08-mobile.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-cg07-all-owned-desktop.png"
+    },
+    {
+      "document": "docs/cg/README.md",
+      "target": "./screenshots/cg-gallery-arbiter-victory-corrected-desktop.png"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "PROMPT_GLOBAL_ROSTER_1_1.txt"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "roster-global-batch-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "screenshots/roster-wave6-overview-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/README.md"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/generation-counts-independent-verification.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "batman-new52-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/historical-preservation-verification.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/runtime-selection-independent-verification.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/runtime-atlas-selection-independent-verification.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "fidelity-delivery-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "EXCEL_FIDELITE.md"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "Multiverse_Breach_Fidelite_CG.validation.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "Multiverse_Breach_Fidelite_CG.preservation-validation.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "reviews/wave6-2026-10-23/final-checks.json"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "FIDELITY_PROGRESS_WAVE5_2026-10-22.md"
+    },
+    {
+      "document": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "target": "fidelity-delivery-wave5-2026-10-22.json"
+    },
+    {
+      "document": "docs/cg/EXCEL_FIDELITE.md",
+      "target": "./Multiverse_Breach_Fidelite_CG.xlsx"
+    },
+    {
+      "document": "docs/cg/EXCEL_FIDELITE.md",
+      "target": "PROMPT_GLOBAL_ROSTER_1_1.txt"
+    },
+    {
+      "document": "docs/cg/EXCEL_FIDELITE.md",
+      "target": "roster-global-batch-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/roster-wave6-overview-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/brann-crow-reference-evidence-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/brann-crow-wave6-plan-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/brann-crow-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/brann-crow-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/brann-crow-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/lyra-hexwind-reference-evidence-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/lyra-hexwind-wave6-plan-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/lyra-hexwind-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/lyra-hexwind-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mercy-ash-reference-evidence-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mercy-ash-wave6-plan-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mercy-ash-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/mercy-ash-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mercy-ash-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mara-ell-reference-evidence-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mara-ell-wave6-plan-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mara-ell-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/mara-ell-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mara-ell-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/orin-vale-reference-evidence-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/orin-vale-wave6-plan-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/orin-vale-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/orin-vale-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/orin-vale-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/public/sprites/generated/heroes/the-crownless-sea/brann-crow-v2-fidelity-wave6-2026-10-23.png"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/audits/brann-crow-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/brann-crow-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/brann-crow-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/brann-crow-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/brann-crow-sprite-comparison-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/public/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/audits/lyra-hexwind-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/lyra-hexwind-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/lyra-hexwind-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/lyra-hexwind-sprite-comparison-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/public/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/audits/mercy-ash-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mercy-ash-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mercy-ash-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mercy-ash-sprite-comparison-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/public/sprites/generated/heroes/the-drowned-testament/mara-ell-v2-fidelity-wave6-2026-10-23.png"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/audits/mara-ell-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/mara-ell-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mara-ell-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/mara-ell-sprite-comparison-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/public/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale-v2-fidelity-wave6-2026-10-23.png"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/audits/orin-vale-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/orin-vale-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/orin-vale-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/orin-vale-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/screenshots/orin-vale-sprite-comparison-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/batman-new52-endgame-reference-evidence-wave2-2026-10-18.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/batman-new52-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/selected-roster-visual-priorities.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/historical-preservation-verification.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/runtime-selection-independent-verification.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/runtime-atlas-selection-independent-verification.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/comparison-preview-verification.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave6-2026-10-23/global-batch-semantic-verification.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/roster-global-batch-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "target": "/workspace/multiverse-breach/docs/cg/reviews/wave5-2026-10-22/README.md"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../lyra-hexwind-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "lyra-hexwind-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../screenshots/lyra-hexwind-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../screenshots/lyra-hexwind-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../lyra-hexwind-sprite-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../../audits/lyra-hexwind-v2-reference-sprite-fidelity-wave6-2026-10-23.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "lyra-hexwind-sprite-independent-review.json"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../screenshots/lyra-hexwind-sprite-comparison-wave6-2026-10-23.webp"
+    },
+    {
+      "document": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "target": "../../screenshots/lyra-hexwind-sprite-comparison-wave6-2026-10-23.json"
+    }
+  ]
+}

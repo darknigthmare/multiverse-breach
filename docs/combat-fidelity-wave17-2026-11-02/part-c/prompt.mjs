@@ -1,0 +1,22 @@
+export function promptFor(entry) {
+ const duo = entry.partner ? `Each source drawing is ONE COMPLETE DUO UNIT: the named human on the left safely behind their own complete ${entry.partner} on the right. Both named bodies are present in EVERY cell, at the SAME calibrated relative sizes across all48 drawings. The HUMAN only commands: the PARTNER alone performs the actual attack. Keep partner mouth, staff or active claw clearly visible on the RIGHT during the THIRD pose of every attack sequence. This is48 duo drawings, not96 separate poses. No third character, duplicated partner or unrequested evolution.` : 'Each source drawing contains only the one named complete character, with their actual equipment.';
+ const active = entry.effect === 'damage' ? `${entry.actionName}: ${entry.pose} Four real distinct poses: anticipation, preparation, actual local release/contact in the THIRD drawing, recovery. The source equipment and all bodies stay complete and connected. No blood or target victim, no huge detached effects.` : `${entry.actionName}: four genuinely different practical communication, readiness, supportive or safe positioning gestures consistent with ${entry.weapon}. These gestures are NON-OFFENSIVE: no damaging rays, attacking music, fabricated healing, magical shields or power borrowed from another identity. Decisive finale is a reassuring safe resolution, not an execution.`;
+ return `Create one professional detailed native PIXEL-ART animation SOURCE ATLAS for ${entry.displayName}, exact selected incarnation: ${entry.sourceWork}.
+
+APPEARANCE: ${entry.appearance}
+EXACT EQUIPMENT / SOURCE ROLE: ${entry.weapon}
+${duo}
+
+Clean detailed16-bit game sprites, full complete heads, bodies, feet and complete equipment inside every cell. Same design, palette and true body proportions across ALL48 drawings. Naturally crouched figures remain shorter; do not stretch them. All source units face screen-right in three-quarter side-view. Neutral practical game character poses, modest source clothing, non-graphic actions.
+
+STRICT GRID: exactly EIGHT COLUMNS by SIX ROWS = FORTY-EIGHT COMPLETE SEPARATE SOURCE UNITS. Landscape4:3 arrangement, equal square cells, transparent background. Large empty transparent gutters separate every cell. No floor, shadow, scene, text, names, labels, borders, gridlines, panels or additional characters. Every row must have exactly8 units, not7 or9. Every four consecutive units form one FOUR-POSE sequence: four independently drawn DIFFERENT bodily poses, never copied static bodies with only effect changes. Bodies, ears, tail, ribbons and complete actual equipment never cross into neighbouring cells.
+
+ROW1 col1-4 INTRO: four distinct source-specific readiness poses. Col5-8 OUTRO: four different lowering/settling/turning poses, no attack.
+ROW2 col1-4 ROUND VICTORY: four distinct restrained acknowledgements. Col5-8 ROUND DEFEAT: four distinct tired, lowered or kneeling poses, complete bodies, no injury.
+ROW3 col1-4 FINALE: ${active} Col5-8 VICTORY: four distinct restrained final winning poses, not copies of round victory.
+ROW4 col1-4 DEFEAT: four distinct exhausted lowered poses with complete equipment. Col5-8 SUPER: ${active} Do not copy the finale drawings.
+ROW5 col1-4 IDLE: four different breathing/weight shifts. Col5-8 RUN: four genuine different locomotion poses with source anatomy retained.
+ROW6 col1-4 BASIC ACTION ${entry.simpleName}: four different appropriate physical or NON-OFFENSIVE support gestures; actual release/contact in THIRD drawing if the source action attacks. Col5-8 HIT REACTION: four different non-graphic full-body recoils, complete limbs, no injury detail.
+
+All48 complete units must be distinct, separated and readable. Keep each unit compact within its cell and at least20pixels transparent around complete equipment and all bodies. For duos, the complete partner is beside the human, never behind another cell or a detached icon. No long detached VFX, no glowing aura substitute for actual body action, no translucent extra body.`;
+}

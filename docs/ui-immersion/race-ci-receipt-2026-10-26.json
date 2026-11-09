@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "run": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40274918615",
+  "testedTransportCommit": "84ecc8c2e69beb7a735e335d247bb5fa95983064",
+  "appliedToBase": "d45652fb08bf3bacf51812d8e253631549b9b5e8",
+  "conclusion": "success",
+  "unitRace": { "passed": 40, "total": 40 },
+  "unitUI": { "passed": 68, "total": 68, "note": "Suites overlap; do not add their counts as distinct tests." },
+  "browser": {
+    "scope": "Real RaceMode and EngineRace with seven committed images; prepared career, injected completion/failure; no real account or physical controller.",
+    "passed": 6,
+    "total": 6,
+    "cases": [
+      { "name": "race-1280x900-fr-lifecycle", "passed": true, "imagesLoaded": 7 },
+      { "name": "race-390x844-en-lifecycle", "passed": true, "imagesLoaded": 7 },
+      { "name": "race-844x390-fr-lifecycle", "passed": true, "imagesLoaded": 7 },
+      { "name": "race-2560x1080-en-lifecycle", "passed": true, "imagesLoaded": 7 },
+      { "name": "race-1280x900-en-fault", "passed": true, "imagesLoaded": 7 },
+      { "name": "race-390x844-fr-fault", "passed": true, "imagesLoaded": 7 }
+    ]
+  },
+  "lint": { "warnings": 0, "errors": 0, "files": 6 },
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sha256": "deed4379d2e6703e49784f4a3d65921dd1b0fce9d66d89642c232235c19e61c2",
+    "sheets": 5,
+    "screens": 40,
+    "actions": 39,
+    "verificationRows": 118,
+    "cachedFormulaErrors": 0,
+    "note": "COURSE-CI records preparation state and links to PR Checks. This receipt adds the subsequent successful run without rewriting historical results."
+  },
+  "visualReview": [
+    "Portrait 390x844: DOM telemetry legible, full circuit contained, controls remain in viewport; QA toolbar is fixture-only.",
+    "Landscape 844x390: result actions and reward text fit; background controls are inert."
+  ],
+  "limits": [
+    "Prepared career and injected completion/failure, not a full race driven from start to finish.",
+    "Seven committed image resources loaded; not a certification of every artwork or track.",
+    "No physical controller, real multi-touch device or real cloud account.",
+    "Engine-supplied objective still French in the English UI.",
+    "No complete visual validation of all forty screens.",
+    "No merge or production promotion."
+  ],
+  "verifiedBlobs": [
+    { "path": "src/components/RaceMode.jsx", "sha": "ff2905a414539abbb93544517bf5cc908c5c3a12" },
+    { "path": "src/components/HubImmersion.css", "sha": "9c6136f6cc354820843232a67af7d60d201beeef" },
+    { "path": "src/game/raceSessionControls.js", "sha": "4d93e3040872e34ebb4fe789eb660f9ea2da4b8e" },
+    { "path": "scripts/raceSessionControls.test.mjs", "sha": "b3eb239256059ade4ed43f83db57d22663bf91af" },
+    { "path": "scripts/fixedStepClock.test.mjs", "sha": "531ea0c8273c11b52e05bea9c3d2a438af7c75e7" },
+    { "path": "scripts/immersiveHubState.test.mjs", "sha": "2618e8087d560723f82dcd9a6793aae99d5b7269" },
+    { "path": "scripts/fixtures/raceLifecycleHarness.jsx", "sha": "0f4cc67a731d385530e6edea42f13462efb4fa67" },
+    { "path": "scripts/fixtures/race-lifecycle.html", "sha": "38f57f1a94052aeec75940db6c900fabb98d1cc6" },
+    { "path": "scripts/browserRaceImmersion.py", "sha": "f76fe8053e129c840a8e71fd425d0f836a62c65f" },
+    { "path": ".github/workflows/race-ui.yml", "sha": "93784b81e92bd1f46095a2de13bc0d38eb06eedd" },
+    { "path": "docs/ui-immersion/race-continuation-2026-10-26.json", "sha": "b4ec6255b336297fa1b8ea2030ed22a693d9ee8b" },
+    { "path": "docs/ui-immersion/evidence/race-unit-final.log", "sha": "41204f23e5bbd85c77cfe72838149a3e31ed1fa9" },
+    { "path": "docs/ui-immersion/evidence/race-browser-final.log", "sha": "77440d12a934ced3b223c3ede725e5e9c37562a8" },
+    { "path": "docs/ui-immersion/evidence/race-browser-results.json", "sha": "a0f7726a7ede06937632562326a90bf4722d016c" },
+    { "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx", "sha": "d78e0f6251792f1959d329baf416012609445a1d" }
+  ]
+}

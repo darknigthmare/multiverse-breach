@@ -1,0 +1,250 @@
+TAP version 13
+# Subtest: Fighter fait entrer un tag derriere le partenaire sur les camps initiaux
+ok 1 - Fighter fait entrer un tag derriere le partenaire sur les camps initiaux
+  ---
+  duration_ms: 2.702213
+  type: 'test'
+  ...
+# Subtest: Fighter fait entrer un tag derriere le partenaire et face au rival apres croisement
+ok 2 - Fighter fait entrer un tag derriere le partenaire et face au rival apres croisement
+  ---
+  duration_ms: 0.27701
+  type: 'test'
+  ...
+# Subtest: Race applique enfin la penalite hors-piste propre au circuit
+ok 3 - Race applique enfin la penalite hors-piste propre au circuit
+  ---
+  duration_ms: 8.224468
+  type: 'test'
+  ...
+# Subtest: Race verrouille le bas de la route sous le kart et courbe vers l horizon
+ok 4 - Race verrouille le bas de la route sous le kart et courbe vers l horizon
+  ---
+  duration_ms: 1.024919
+  type: 'test'
+  ...
+# Subtest: Race dessine toujours une chaussee continue et aligne le HUD a gauche
+ok 5 - Race dessine toujours une chaussee continue et aligne le HUD a gauche
+  ---
+  duration_ms: 4.680259
+  type: 'test'
+  ...
+# Subtest: Race expose un vrai frein tactile sans turbo gratuit et une sortie de resultat
+ok 6 - Race expose un vrai frein tactile sans turbo gratuit et une sortie de resultat
+  ---
+  duration_ms: 11.251038
+  type: 'test'
+  ...
+# Subtest: combat advances equally on 30, 60, 120 and 144 Hz displays
+ok 7 - combat advances equally on 30, 60, 120 and 144 Hz displays
+  ---
+  duration_ms: 7.687925
+  type: 'test'
+  ...
+# Subtest: pause and background suspension never produce catch-up attacks
+ok 8 - pause and background suspension never produce catch-up attacks
+  ---
+  duration_ms: 0.474158
+  type: 'test'
+  ...
+# Subtest: invalid time, clock rollback and lag remain bounded
+ok 9 - invalid time, clock rollback and lag remain bounded
+  ---
+  duration_ms: 0.473683
+  type: 'test'
+  ...
+# Subtest: GameCanvas visibility transitions discard hidden time even when no RAF runs
+ok 10 - GameCanvas visibility transitions discard hidden time even when no RAF runs
+  ---
+  duration_ms: 3.416174
+  type: 'test'
+  ...
+# Subtest: GameCanvas shell pause and resume reset elapsed time without reconstructing the engine
+ok 11 - GameCanvas shell pause and resume reset elapsed time without reconstructing the engine
+  ---
+  duration_ms: 2.006316
+  type: 'test'
+  ...
+# Subtest: FighterMode visibility transitions discard hidden time even when no RAF runs
+ok 12 - FighterMode visibility transitions discard hidden time even when no RAF runs
+  ---
+  duration_ms: 1.739623
+  type: 'test'
+  ...
+# Subtest: FighterMode shell pause and resume reset elapsed time without reconstructing the engine
+ok 13 - FighterMode shell pause and resume reset elapsed time without reconstructing the engine
+  ---
+  duration_ms: 0.793048
+  type: 'test'
+  ...
+# Subtest: RaceMode visibility transitions discard hidden time even when no RAF runs
+ok 14 - RaceMode visibility transitions discard hidden time even when no RAF runs
+  ---
+  duration_ms: 0.629105
+  type: 'test'
+  ...
+# Subtest: RaceMode shell pause and resume reset elapsed time without reconstructing the engine
+ok 15 - RaceMode shell pause and resume reset elapsed time without reconstructing the engine
+  ---
+  duration_ms: 0.834221
+  type: 'test'
+  ...
+# Subtest: RPG targeting wait transitions also reset the clock independently of the shell pause
+ok 16 - RPG targeting wait transitions also reset the clock independently of the shell pause
+  ---
+  duration_ms: 2.351413
+  type: 'test'
+  ...
+# Subtest: leaving a walked city district and restoring it preserves position, facing and district
+ok 17 - leaving a walked city district and restoring it preserves position, facing and district
+  ---
+  duration_ms: 3.550009
+  type: 'test'
+  ...
+# Subtest: a hidden/unavailable district falls back safely while valid world positions are clamped
+ok 18 - a hidden/unavailable district falls back safely while valid world positions are clamped
+  ---
+  duration_ms: 0.239626
+  type: 'test'
+  ...
+# Subtest: Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+ok 19 - Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+  ---
+  duration_ms: 0.460417
+  type: 'test'
+  ...
+# Subtest: abandonment and malformed reports cannot award XP or rewards
+ok 20 - abandonment and malformed reports cannot award XP or rewards
+  ---
+  duration_ms: 0.176635
+  type: 'test'
+  ...
+# Subtest: canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+ok 21 - canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+  ---
+  duration_ms: 0.587138
+  type: 'test'
+  ...
+# Subtest: real scene handlers resume W/E with button focus while reserving native activation and text entry
+ok 22 - real scene handlers resume W/E with button focus while reserving native activation and text entry
+  ---
+  duration_ms: 1.567112
+  type: 'test'
+  ...
+# Subtest: the real pause focus trap yields to a modal that made its parent inert
+ok 23 - the real pause focus trap yields to a modal that made its parent inert
+  ---
+  duration_ms: 0.28452
+  type: 'test'
+  ...
+# Subtest: UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+ok 24 - UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+  ---
+  duration_ms: 1.246803
+  type: 'test'
+  ...
+# Subtest: real launch handler writes mission context before navigation and never bypasses access checks
+ok 25 - real launch handler writes mission context before navigation and never bypasses access checks
+  ---
+  duration_ms: 1.594976
+  type: 'test'
+  ...
+# Subtest: real category effect preserves restored selection on mount, and resets only on a category change
+ok 26 - real category effect preserves restored selection on mount, and resets only on a category change
+  ---
+  duration_ms: 1.715109
+  type: 'test'
+  ...
+# Subtest: real Hub callback credits wallets once and keeps results until acknowledgement
+ok 27 - real Hub callback credits wallets once and keeps results until acknowledgement
+  ---
+  duration_ms: 0.81643
+  type: 'test'
+  ...
+# Subtest: gear comparison includes both gained stats and bonuses lost by replacing the slot
+ok 28 - gear comparison includes both gained stats and bonuses lost by replacing the slot
+  ---
+  duration_ms: 0.243215
+  type: 'test'
+  ...
+# Subtest: legacy kart career migrates inside the save-v9 portal collection
+ok 29 - legacy kart career migrates inside the save-v9 portal collection
+  ---
+  duration_ms: 7.147641
+  type: 'test'
+  ...
+# Subtest: integrated career wins over stale legacy storage and is normalized
+ok 30 - integrated career wins over stale legacy storage and is normalized
+  ---
+  duration_ms: 0.259894
+  type: 'test'
+  ...
+# Subtest: race results preserve the best time and accumulate rewards once
+ok 31 - race results preserve the best time and accumulate rewards once
+  ---
+  duration_ms: 6.104756
+  type: 'test'
+  ...
+# Subtest: one mounted race accepts its completion only once
+ok 32 - one mounted race accepts its completion only once
+  ---
+  duration_ms: 1.213972
+  type: 'test'
+  ...
+# Subtest: abandoned or failed races cannot report late rewards
+ok 33 - abandoned or failed races cannot report late rewards
+  ---
+  duration_ms: 1.199794
+  type: 'test'
+  ...
+# Subtest: a restart owns a fresh receipt; an old callback stays invalid
+ok 34 - a restart owns a fresh receipt; an old callback stays invalid
+  ---
+  duration_ms: 0.224539
+  type: 'test'
+  ...
+# Subtest: held touch controls last until release, not a timed pulse
+ok 35 - held touch controls last until release, not a timed pulse
+  ---
+  duration_ms: 1.036909
+  type: 'test'
+  ...
+# Subtest: two thumbs retain independent steering and drift ownership
+ok 36 - two thumbs retain independent steering and drift ownership
+  ---
+  duration_ms: 0.227562
+  type: 'test'
+  ...
+# Subtest: releasing one of two pointers on a key does not clear the other
+ok 37 - releasing one of two pointers on a key does not clear the other
+  ---
+  duration_ms: 0.13536
+  type: 'test'
+  ...
+# Subtest: pointer ownership cannot mutate keyboard state or previous snapshots
+ok 38 - pointer ownership cannot mutate keyboard state or previous snapshots
+  ---
+  duration_ms: 0.224582
+  type: 'test'
+  ...
+# Subtest: pause, lost focus and unmount can cancel every held pointer safely
+ok 39 - pause, lost focus and unmount can cancel every held pointer safely
+  ---
+  duration_ms: 0.341002
+  type: 'test'
+  ...
+# Subtest: malformed pointer IDs and unknown controls do not create inputs
+ok 40 - malformed pointer IDs and unknown controls do not create inputs
+  ---
+  duration_ms: 0.469257
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 216.500823

@@ -60,3 +60,36 @@ test('canvas source status uses runtime remaining time, charges and channel stat
   assert.equal(status({ sourceProtectionWave16: { active: false, kind: 'mugman-super-art-ii', remaining: 0 } }), null);
   assert.equal(present({ abilityName: 'Mugman', profile: {} }), null);
 });
+
+test('the targeting panel shows typed W17 nonlethal capture without a damage estimate', () => {
+  const state = targeting({ sourceHeroId: 'tail_concerto_waffle', universe: 'Tail Concerto',
+    effect: 'control', delivery: 'control', controlKind: 'bubble-capture', targetSide: 'enemy',
+    shape: 'single', maxTargets: 1, multiplier: 0, requiresExplicitTargetEligibility: true,
+    nonlethal: true, controlDuration: 1.25 });
+  const html = render(state);
+  assert.match(html, /CAPTURE NON LÉTALE · 1,25 s/);
+  assert.doesNotMatch(html, /900–1000/);
+  assert.match(html, /Confirmer les cibles/);
+  assert.match(html, /Annuler sans coût/);
+});
+
+test('damage ranges, Über blocking and cleansed status previews survive source UI integration', () => {
+  const state = targeting({ effect: 'damage' });
+  state.estimates[0] = { id: 'target', effect: 'damage', amount: 0, min: 0, max: 25,
+    blockedByUber: true, cleansedStatuses: ['infected', 'glitched', 'radiated'] };
+  const html = render(state);
+  assert.match(html, /Dégâts estimés 0–25/);
+  assert.match(html, /ÜberCharge : dégâts bloqués/);
+  assert.match(html, /Purification : Infection, Glitch, Radiations/);
+});
+
+test('the single targeting panel retains source status and possession commands outside target selection', () => {
+  const html = renderToStaticMarkup(React.createElement(Panel, { lang: 'fr', paused: false, wait: true,
+    sourceStatusActors: [{ id: 'shielded', name: 'Protected actor',
+      sourceProtectionWave16: { active: true, kind: 'shield-pal-one-hit', charges: 1, remaining: null } }],
+    possessionCommands: [{ controllerId: 'abe', controllerName: 'Abe', bodyName: 'Slig', side: 'player',
+      ready: true, atb: 100, actionName: 'Tir du Slig' }] }));
+  assert.equal((html.match(/Protected actor · SHIELD PAL · 1 coup/g) || []).length, 1);
+  assert.equal((html.match(/>Tir du Slig<\/button>/g) || []).length, 1);
+  assert.equal((html.match(/>Libérer le Slig<\/button>/g) || []).length, 1);
+});

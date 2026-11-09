@@ -1,3 +1,5 @@
+import { assertCatalogActionEdition, assertCatalogWeaponEdition, historicalWave13Actor } from './combatCanonicalEditionFixtures.mjs';
+import { projectPresentationIdsBeforeWave17 } from './combatFidelityHistoricalCohortWave17.mjs';
 import assert from 'node:assert/strict';
 import { WAVE14_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave14.mjs';
 import { WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
@@ -32,6 +34,7 @@ const ids = Object.values(plan.parts).flat();
 const historicalW13AbilityIds = Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).filter(id => !Object.hasOwn(ABILITIES_WAVE14, id));
 const roster = new Map(HEROES_DB.map(hero => [hero.id, hero]));
 const hero = id => { assert.ok(roster.has(id), id); return roster.get(id); };
+const historicalHero = id => historicalWave13Actor(hero(id), plan.heroes.find(row => row.hero.id === id).hero, sources[id]);
 
 test('W13 retains the exact40 identities and separately measures18 additions and22 prior-version revisions', () => {
   assert.equal(ids.length, 40); assert.equal(new Set(ids).size, 40);
@@ -47,19 +50,19 @@ test('W13 retains the exact40 identities and separately measures18 additions and
     const actual = hero(row.hero.id), source = sources[actual.id];
     assert.equal(actual.universe, row.hero.universe);
     assert.equal(source.universe, actual.universe);
-    assert.equal(actual.weaponType, source.weaponType);
+    assertCatalogWeaponEdition(actual, source.weaponType);
     assert.equal(source.sourceWork, row.source.sourceWork);
     assert.equal(source.appearance, row.source.appearance);
     assert.match(source.sourceReference, /^https:\/\//);
     assert.equal(source.source1to1Verified, false); assert.equal(source.networkVerified, false);
-    for (const slot of ['simple','secondary','defense','special']) assert.deepEqual(actual[slot], row.hero[slot], actual.id + ': raw catalog action changed');
+    for (const slot of ['simple','secondary','defense','special']) assertCatalogActionEdition(actual, slot, row.hero[slot]);
   }
 });
 
 test('W13 personal kits resolve all160 source-authored slots with bounded target and cost semantics', () => {
   let offensiveSupers = 0, supportSupers = 0, meleeSupers = 0, projectileSupers = 0;
   for (const id of ids) {
-    const actor = hero(id), source = sources[id];
+    const actor = historicalHero(id), source = sources[id];
     for (const slot of ['simple','secondary','defense','special']) {
       const profile = resolveCombatAbility(actor, slot);
       assert.equal(profile.sourceHeroId, id); assert.equal(profile.universe, actor.universe);
@@ -106,7 +109,7 @@ test('W13 distinguishes source-specific support roles from offensive tools and o
     assert.equal(profile.targetSide, 'ally', id); assert.equal(profile.statusEffect, null, id);
   }
   for (const id of ['luke','vader','ahsoka_adult','aayla_secura','darth_revan','obi_wan','yoda','darth_maul']) {
-    const profile = resolveCombatAbility(hero(id), 'special');
+    const profile = resolveCombatAbility(historicalHero(id), 'special');
     assert.equal(profile.delivery, 'melee', id); assert.equal(profile.shape, 'single', id);
     assert.equal(profile.statusEffect, null, id); assert.ok(profile.range <= 185, id);
     assert.doesNotMatch(profile.name, /lightning|éclair|choke|étrangl|instant|soul/i, id);
@@ -120,13 +123,13 @@ test('W13 exposes seven source-version recipes per character and replaces only t
   const oldRecipes = new Set(baseline.presentations.entries.map(entry => entry.heroId || entry.id));
   // The independent W12 audit explicitly records these previously scripted IDs.
   assert.deepEqual(ids.filter(id => oldRecipes.has(id)).sort(), ['luke','obi_wan','vader']);
-  assert.equal(Object.keys(CHARACTER_PRESENTATIONS).filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id) && !WAVE15_PRESENTATION_IDS.has(id) && !WAVE16_PRESENTATION_IDS.has(id)).length, 280);
+  assert.equal(projectPresentationIdsBeforeWave17(Object.keys(CHARACTER_PRESENTATIONS)).filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id) && !WAVE15_PRESENTATION_IDS.has(id) && !WAVE16_PRESENTATION_IDS.has(id)).length, 280);
   for (const id of ids) {
     const recipe = CHARACTER_PRESENTATIONS[id];
     assert.equal(recipe.sourceAction, sources[id].name, id);
     assert.equal(recipe.universe, sources[id].universe, id);
     for (const phase of PRESENTATION_PHASES) {
-      const profile = resolveCombatPresentation(hero(id), phase);
+      const profile = resolveCombatPresentation(historicalHero(id), phase);
       assert.equal(profile.provenance.presentationAuthored, true, id + ':' + phase);
       assert.equal(profile.presentationScript.phase, phase, id + ':' + phase);
       assert.ok(recipe.phases[phase].beats.length >= 4, id + ':' + phase);
@@ -157,7 +160,7 @@ test('W13 visual admission requires exact identity and never manufactures confir
   const calls = [];
   const ctx = new Proxy({ globalAlpha:1 }, { get:(target,key)=>key in target ? target[key] : (...args)=>calls.push([key,...args]), set:(target,key,value)=>{target[key]=value;return true;} });
   for (const id of ids) {
-    const actor = hero(id), profile = resolveCombatAbility(actor, 'special');
+    const actor = historicalHero(id), profile = resolveCombatAbility(actor, 'special');
     assert.equal(supportsNativeSuperWave13(profile), true, id);
     assert.equal(supportsConfirmedCharacterSuperContact(profile), true, id);
     for (const patch of [{sourceHeroId:'unknown'}, {universe:'Foreign universe'}, {name:'Unrelated source action'}, {effect:profile.effect==='damage'?'guard':'damage'}, {delivery:profile.delivery==='melee'?'projectile':'melee'}]) assert.equal(supportsNativeSuperWave13({...profile,...patch}),false,id);
@@ -225,15 +228,15 @@ test('W13 explicit native refusals retain old bytes and cannot acquire native po
     const original=plan.heroes.find(row=>row.hero.id===id);
     assert.equal(sha(read('public'+original.referenceAsset)),original.referenceSha256,id);
     for(const identityField of ['sourceHeroId','sourceId'])for(const context of ['auto','rpg','melee']){
-      const clone={...hero(id),id:'enemy:custom:0:'+id,[identityField]:id};
+      const clone={...historicalHero(id),id:'enemy:custom:0:'+id,[identityField]:id};
       assert.equal(getHeroSpriteSheetSrc(clone,context),original.referenceAsset,id+': exact source fallback clone');
       const foreign={...clone,universe:'Foreign fallback continuity'};
       const foreignPath=getHeroSpriteSheetSrc(foreign,context);
       assert.notEqual(foreignPath,original.referenceAsset,id+': foreign universe borrowed a fallback');
       assert.ok(foreignPath.includes('/foreign-fallback-continuity/enemy-custom-0-'),id);
     }
-    assert.equal(getCharacterAnimationFrame(hero(id),{phase:'super',progress:.6}),null,id);
-    const actor={...hero(id),x:400,y:330,facing:1},profile=resolveCombatAbility(actor,'special');
+    assert.equal(getCharacterAnimationFrame(historicalHero(id),{phase:'super',progress:.6}),null,id);
+    const actor={...historicalHero(id),x:400,y:330,facing:1},profile=resolveCombatAbility(actor,'special');
     assert.equal(projectNativeSuperAnchorWave13(actor,.6,.41,72),null,id);
     const state=getNativeSuperVisualStateWave13({actor,profile,action:{duration:1.1,elapsed:.6,hitAt:.451,facing:1},target:{x:450,y:330},contactVisual:{confirmed:true,x:450,y:330}});
     assert.equal(state.nativeArtworkAvailable,false,id);assert.equal(state.nativeMuzzleActive,false,id);assert.equal(state.nativeAnchor,null,id);

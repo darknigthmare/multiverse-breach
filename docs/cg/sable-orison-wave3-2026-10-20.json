@@ -1,0 +1,2053 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_sable",
+  "heroId": "arca_sable",
+  "characterName": "Sable Orison",
+  "incarnation": "Nexus de Convergence — Sable Orison, original project current cartographer atlas (2026)",
+  "publishedAt": "2026-10-20",
+  "status": "complete",
+  "plannedSlots": 15,
+  "deliveredNewSlots": 15,
+  "planFile": "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+  "referenceEvidence": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+  "independentReviewFile": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+  "entries": [
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:characterSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "characterSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Identité de cartographe aux références conservées",
+        "en": "Sable Orison — Identité de cartographe aux références conservées"
+      },
+      "slotNumber": 1,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-character-solo-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Identité de cartographe aux références conservées ; Debout de trois quarts, longue-vue repliée tenue horizontalement à la taille, autre main sur le bord du chapeau, pieds écartés et regard attentif.",
+        "en": "Stand in a calm front three-quarter full-body pose, folded brass spyglass held horizontally at waist level in one hand, other hand touching hat brim, feet apart."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg01-monocle-removal.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg01-character-solo-wave3-2026-10-20",
+      "backgroundDescription": "Cour des routes attestées",
+      "background": {
+        "location": "Cour des routes attestées",
+        "foreground": "Pavés ivoire gravés et trois plots de mesure",
+        "midground": "Porte en bois brun et repères de cuivre",
+        "background": "Terrasses étagées et anneau causal lointain",
+        "lighting": "Matin clair, reflets doux de cuivre"
+      },
+      "poseId": "sable-cg01-character-solo",
+      "poseBrief": "Debout de trois quarts, longue-vue repliée tenue horizontalement à la taille, autre main sur le bord du chapeau, pieds écartés et regard attentif.",
+      "poseDescription": "Debout de trois quarts, longue-vue repliée tenue horizontalement à la taille, autre main sur le bord du chapeau, pieds écartés et regard attentif.",
+      "themeBrief": "Identité de cartographe aux références conservées",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20.png",
+          "sha256": "80e1c643fe6cbe54f82927ec25b929781c7ed3ea6fac8c215eec009826847bb2",
+          "bytes": 4305622,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20.webp",
+          "sha256": "30970c37d6bdb6f8299c1d5d8aae490ec9fb4efafe1290363a8329d9b07dd10a",
+          "bytes": 1056768,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20-thumb.webp",
+          "sha256": "742a75fdb8bb4adc1a483baceb9b9e2beb058682911fb983f2eb1493f089f155",
+          "bytes": 104900,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:weaponSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "weaponSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Longue-vue de reconnaissance seule, équipement sourcé",
+        "en": "Sable Orison — Longue-vue de reconnaissance seule, équipement sourcé"
+      },
+      "slotNumber": 2,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-signature-spyglass-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Longue-vue de reconnaissance seule, équipement sourcé ; Longue-vue de cuivre et laiton déployée en diagonale sur deux cales de bois, lentille avant bleu pâle ; aucun personnage, bras ou main.",
+        "en": "Equipment only: one brass collapsible spyglass, nested cylindrical brass sections, dark engraved grip, pale blue front lens. Display diagonally on two wooden rests. No person, hand, rifle or magic sword."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg02.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg02-signature-spyglass-wave3-2026-10-20",
+      "backgroundDescription": "Niche de calibrage des optiques",
+      "background": {
+        "location": "Niche de calibrage des optiques",
+        "foreground": "Cales de bois et papier de calibration",
+        "midground": "Longue-vue isolée, lentille orientée en bas à droite",
+        "background": "Étuis cylindriques flous et étagères basses",
+        "lighting": "Lumière latérale chaude sur le métal"
+      },
+      "poseId": "sable-cg02-signature-spyglass",
+      "poseBrief": "Longue-vue de cuivre et laiton déployée en diagonale sur deux cales de bois, lentille avant bleu pâle ; aucun personnage, bras ou main.",
+      "poseDescription": "Longue-vue de cuivre et laiton déployée en diagonale sur deux cales de bois, lentille avant bleu pâle ; aucun personnage, bras ou main.",
+      "themeBrief": "Longue-vue de reconnaissance seule, équipement sourcé",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20.png",
+          "sha256": "4b70372c8e289b3cdf36acde0c0235ab312b758e4b9e48d2d5bf9b15581d6e4a",
+          "bytes": 3815720,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20.webp",
+          "sha256": "1074d4138f73f2f9e38010964e12e7a21acf9aa7ab6886292e3e899bcff26193",
+          "bytes": 778450,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20-thumb.webp",
+          "sha256": "804d6f69542f22c8e87c2b4ecacaa7a98db9b5b5f1339ea3af73363f4e0f0636",
+          "bytes": 76702,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:decorSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "decorSolo",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Décor seul — dixième voie originale du Nexus",
+        "en": "Sable Orison — Décor seul — dixième voie originale du Nexus"
+      },
+      "slotNumber": 3,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-tenth-route-landscape-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Décor seul — dixième voie originale du Nexus ; Vue plongeante de la route d’évacuation suspendue entre deux falaises d’archives, échelles de mesure et balises sans personnage.",
+        "en": "Environment only: elevated oblique view along an abandoned suspended tenth evacuation route, ivory archive cliffs, survey posts, broken copper sign structures without writing, cyan causal mist below. No character or weapons."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg03-frame-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg03-tenth-route-landscape-wave3-2026-10-20",
+      "backgroundDescription": "Dixième voie d’évacuation effacée",
+      "background": {
+        "location": "Dixième voie d’évacuation effacée",
+        "foreground": "Muret de pierre cassé et corde de mesure",
+        "midground": "Passerelle de bois-cuivre suspendue en diagonale",
+        "background": "Deux falaises d’archives et brume turquoise",
+        "lighting": "Aube diffuse et fines balises dorées"
+      },
+      "poseId": "sable-cg03-tenth-route-landscape",
+      "poseBrief": "Vue plongeante de la route d’évacuation suspendue entre deux falaises d’archives, échelles de mesure et balises sans personnage.",
+      "poseDescription": "Vue plongeante de la route d’évacuation suspendue entre deux falaises d’archives, échelles de mesure et balises sans personnage.",
+      "themeBrief": "Décor seul — dixième voie originale du Nexus",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20.png",
+          "sha256": "548ad521f51637941435d47d1c64b24d5b7b4f966f35ce6248a4a16a86d12565",
+          "bytes": 4463844,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20.webp",
+          "sha256": "9871f901fa99b0964d7c839f469f4a9a0ff6fedc4965387d775b4db80df7d731",
+          "bytes": 1371472,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20-thumb.webp",
+          "sha256": "c8c7a1f657765dcdcacc8d5f109e17eb770f53bd25cf0ff13ce2ac1181d66bcd",
+          "bytes": 112700,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:coherentScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "coherentScene",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Scène de relevé — carte et témoins de mesure",
+        "en": "Sable Orison — Scène de relevé — carte et témoins de mesure"
+      },
+      "slotNumber": 4,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-map-witnesses-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Scène de relevé — carte et témoins de mesure ; Assise jambes croisées sur une caisse, carte vivante ouverte sur les genoux, main droite traçant une route et main gauche stabilisant le bord.",
+        "en": "Sit cross-legged on a wooden crate, living parchment map board spread across knees, one gloved hand drawing a route, the other stabilising its edge. Hat remains on head, spyglass sheathed."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg04-coat-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg04-map-witnesses-wave3-2026-10-20",
+      "backgroundDescription": "Cabane mobile des relevés de terrain",
+      "background": {
+        "location": "Cabane mobile des relevés de terrain",
+        "foreground": "Caisse de voyage et ficelle de mesure",
+        "midground": "Sable et carte parchemin sous un auvent",
+        "background": "Casier de rouleaux et baie sur des terrasses d’ivoire",
+        "lighting": "Soleil filtré par une toile ocre"
+      },
+      "poseId": "sable-cg04-map-witnesses",
+      "poseBrief": "Assise jambes croisées sur une caisse, carte vivante ouverte sur les genoux, main droite traçant une route et main gauche stabilisant le bord.",
+      "poseDescription": "Assise jambes croisées sur une caisse, carte vivante ouverte sur les genoux, main droite traçant une route et main gauche stabilisant le bord.",
+      "themeBrief": "Scène de relevé — carte et témoins de mesure",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20.png",
+          "sha256": "b14933b74ab5e1bdc5cff3ae05b51dfb4299f61d2ae8bbd2f1e84a73cac303a4",
+          "bytes": 4192921,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20.webp",
+          "sha256": "9dd301ee60df92b90797888e9d535ed9e0c62a82b4795ee475a7a19dc65bafc9",
+          "bytes": 918820,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20-thumb.webp",
+          "sha256": "2ffcabad6d2b992102c9fff69723bfb055ea9e0a983a5bc10c5e25d65847e591",
+          "bytes": 100906,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:actionScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "actionScene",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Action Nexus — Tir de Balise, adaptation de jeu",
+        "en": "Sable Orison — Action Nexus — Tir de Balise, adaptation de jeu"
+      },
+      "slotNumber": 5,
+      "family": "Nexus",
+      "rarity": "stable",
+      "canonStatus": "nexus-variant",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-beacon-shot-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Action Nexus — Tir de Balise, adaptation de jeu ; Un genou au sol et buste tourné, fusil de balise à deux mains visant une cible mécanique vide en hauteur, manteau balayé par le vent.",
+        "en": "One knee on the ground, body twisting in a dynamic side view, both hands aiming the long brown/brass beacon rifle with slim barrel, mounted scope and folded bipod at an empty mechanical survey target above. One small golden/cyan beacon shot, no victim. Keep rifle design close to atlas equipment row."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg05-coat-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg05-beacon-shot-wave3-2026-10-20",
+      "backgroundDescription": "Viaduc des coordonnées instables",
+      "background": {
+        "location": "Viaduc des coordonnées instables",
+        "foreground": "Bord de viaduc avec rivets et pierres éparses",
+        "midground": "Arche mécanique vide et trajectoire de balise",
+        "background": "Tours d’archives inclinées au-dessus d’un vide causal",
+        "lighting": "Vent d’orage, tir doré comme accent"
+      },
+      "poseId": "sable-cg05-beacon-shot",
+      "poseBrief": "Un genou au sol et buste tourné, fusil de balise à deux mains visant une cible mécanique vide en hauteur, manteau balayé par le vent.",
+      "poseDescription": "Un genou au sol et buste tourné, fusil de balise à deux mains visant une cible mécanique vide en hauteur, manteau balayé par le vent.",
+      "themeBrief": "Action Nexus — Tir de Balise, adaptation de jeu",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20.png",
+          "sha256": "67e7219e265faf1b244777c34c2103c533979eb471b6f67ce8c527b903cb39a8",
+          "bytes": 4380748,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20.webp",
+          "sha256": "70ee59b1d3a8c10a22e1c9dc273bbdd8ee3a299a29d4bda4514e084b9f1c5ed6",
+          "bytes": 1033504,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20-thumb.webp",
+          "sha256": "42674882cd517cdf4e6c4a19b38a017088a775f1d5050cde7e50416e30d22083",
+          "bytes": 103110,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:introPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "introPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Entrée de terrain sur une jetée de balises",
+        "en": "Sable Orison — Entrée de terrain sur une jetée de balises"
+      },
+      "slotNumber": 6,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-field-arrival-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Entrée de terrain sur une jetée de balises ; Descend d’une barque sur une jetée, main gauche tenant un rouleau de carte, autre main levant légèrement le chapeau, manteau en mouvement.",
+        "en": "Step down from a small wooden field-survey boat onto a stone jetty, one hand holds a rolled map, other lifts hat slightly in greeting; the boat and coat move in wind, one foot still higher on the boat edge."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg06.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg06-field-arrival-wave3-2026-10-20",
+      "backgroundDescription": "Jetée des cartographes du canal intérieur",
+      "background": {
+        "location": "Jetée des cartographes du canal intérieur",
+        "foreground": "Amarre de corde et bord de jetée ivoire",
+        "midground": "Barque de reconnaissance et poteaux de cuivre",
+        "background": "Canal turquoise et entrepôts d’archives",
+        "lighting": "Milieu du jour, eau claire réfléchissante"
+      },
+      "poseId": "sable-cg06-field-arrival",
+      "poseBrief": "Descend d’une barque sur une jetée, main gauche tenant un rouleau de carte, autre main levant légèrement le chapeau, manteau en mouvement.",
+      "poseDescription": "Descend d’une barque sur une jetée, main gauche tenant un rouleau de carte, autre main levant légèrement le chapeau, manteau en mouvement.",
+      "themeBrief": "Entrée de terrain sur une jetée de balises",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20.png",
+          "sha256": "6349a5e7126b8142403f0e88c36a7dfed2e6fe7487c790ec3fece89b6324c753",
+          "bytes": 4389082,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20.webp",
+          "sha256": "4567ccc91f73abf9800f83ff1618395bf8f527b1562bd441224df064f488c66e",
+          "bytes": 1167418,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20-thumb.webp",
+          "sha256": "5d9c5bb657f20287887aaaaed6eaee413a707b4de6a894f55f365df257bd53ee",
+          "bytes": 112760,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:victoryPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "victoryPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Victoire — route retrouvée et preuve conservée",
+        "en": "Sable Orison — Victoire — route retrouvée et preuve conservée"
+      },
+      "slotNumber": 7,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-route-proven-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Victoire — route retrouvée et preuve conservée ; En équilibre sur un bloc de pierre, carte dépliée levée au-dessus de l’épaule et longue-vue abaissée, sourire discret et menton relevé.",
+        "en": "Balance triumphantly atop one low fallen stone block, one arm raises the unfolded parchment map above shoulder, other lowers the spyglass, restrained pleased smile and lifted chin. Clearly different from the calm identity pose."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg07-garden-background-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg07-route-proven-wave3-2026-10-20",
+      "backgroundDescription": "Jardin clos des routes rouvertes",
+      "background": {
+        "location": "Jardin clos des routes rouvertes",
+        "foreground": "Bloc de pierre bas et fleurs au ras d’une pelouse",
+        "midground": "Fontaine de cuivre et buis taillés autour de la cartographe",
+        "background": "Mur d’ivoire bas couvert de lierre, sans panorama de château ni anneau",
+        "lighting": "Après la pluie, lumière dorée latérale dans le jardin clos"
+      },
+      "poseId": "sable-cg07-route-proven",
+      "poseBrief": "En équilibre sur un bloc de pierre, carte dépliée levée au-dessus de l’épaule et longue-vue abaissée, sourire discret et menton relevé.",
+      "poseDescription": "En équilibre sur un bloc de pierre, carte dépliée levée au-dessus de l’épaule et longue-vue abaissée, sourire discret et menton relevé.",
+      "themeBrief": "Victoire — route retrouvée et preuve conservée",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20.png",
+          "sha256": "78f73bfdab8fa91542456f93624fe0b76e6fc1e9344f3b29e8ed4651631ab9b8",
+          "bytes": 4535419,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20.webp",
+          "sha256": "a108df073bee75a56da54e30f6126f31917f35485f29c146f4e1962ab6020129",
+          "bytes": 1470444,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20-thumb.webp",
+          "sha256": "92e0c574f1cbb185208d7db3163526e7c727eadfcb00d83fbedeb1739b01b7f0",
+          "bytes": 136436,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:defeatPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "defeatPose",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Défaite sans blessure — relevés perdus",
+        "en": "Sable Orison — Défaite sans blessure — relevés perdus"
+      },
+      "slotNumber": 8,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-lost-coordinates-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Défaite sans blessure — relevés perdus ; Assise au sol contre un pilier brisé, une jambe allongée et l’autre repliée, main au front et longue-vue abaissée contre le genou.",
+        "en": "Sit exhausted against a broken stone pillar, one leg stretched out and the other bent, one gloved hand at forehead, brass spyglass lowered against bent knee. Hat still present, no wound, no gore or corpse."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg08-frame-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg08-lost-coordinates-wave3-2026-10-20",
+      "backgroundDescription": "Borne des coordonnées effacées",
+      "background": {
+        "location": "Borne des coordonnées effacées",
+        "foreground": "Feuillets vierges mouillés et sac fermé",
+        "midground": "Pilier brisé abritant la cartographe fatiguée",
+        "background": "Escalier impraticable et silhouettes d’archives vides",
+        "lighting": "Fin d’averse sous un ciel ardoise"
+      },
+      "poseId": "sable-cg08-lost-coordinates",
+      "poseBrief": "Assise au sol contre un pilier brisé, une jambe allongée et l’autre repliée, main au front et longue-vue abaissée contre le genou.",
+      "poseDescription": "Assise au sol contre un pilier brisé, une jambe allongée et l’autre repliée, main au front et longue-vue abaissée contre le genou.",
+      "themeBrief": "Défaite sans blessure — relevés perdus",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20.png",
+          "sha256": "0b63ddaff257414eecc1f458f7c3932d0b06dfd7b03431cbc445e780eb615a75",
+          "bytes": 4478305,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20.webp",
+          "sha256": "46916e79313bed09a49e41ec10c2bcb28a70d64e31e6614572db73aa4887804c",
+          "bytes": 1367408,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20-thumb.webp",
+          "sha256": "af425f610243e0ed9aa41b62dcd769fab80dd8174700192363178634c781af9a",
+          "bytes": 116074,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:beachFamily:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "beachFamily",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Plage familiale — relevé de côte, Fan Art",
+        "en": "Sable Orison — Plage familiale — relevé de côte, Fan Art"
+      },
+      "slotNumber": 9,
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-beach-survey-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Plage familiale — relevé de côte, Fan Art ; Accroupie sur un rivage, dessine un cercle de balises dans le sable avec un petit bâton, longue-vue rangée et chapeau conservé.",
+        "en": "Family-friendly seaside fan-art: crouch on a sandy shore, tracing a circular survey diagram in sand using a small driftwood stick, spyglass sheathed. Keep practical closed explorer outfit, dark hat, scarf and boots, no revealing beachwear or romance."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg09-coat-framing-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg09-beach-survey-wave3-2026-10-20",
+      "backgroundDescription": "Rivage de poche aux arches de craie",
+      "background": {
+        "location": "Rivage de poche aux arches de craie",
+        "foreground": "Sable clair, coquillages et cercle de relevé",
+        "midground": "Sable accroupie près d’une flaque turquoise",
+        "background": "Arches de craie et horizon calme du Nexus",
+        "lighting": "Après-midi de plage lumineuse"
+      },
+      "poseId": "sable-cg09-beach-survey",
+      "poseBrief": "Accroupie sur un rivage, dessine un cercle de balises dans le sable avec un petit bâton, longue-vue rangée et chapeau conservé.",
+      "poseDescription": "Accroupie sur un rivage, dessine un cercle de balises dans le sable avec un petit bâton, longue-vue rangée et chapeau conservé.",
+      "themeBrief": "Plage familiale — relevé de côte, Fan Art",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20.png",
+          "sha256": "1c4108387fe39f5c1f16c01e19d477af952682b3742fca42db76845f100568c6",
+          "bytes": 4274412,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20.webp",
+          "sha256": "536e147826044f06d8a22c9d1b08e7fb86d56e8a3c17da63be9ddddb1057327c",
+          "bytes": 1177752,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20-thumb.webp",
+          "sha256": "12adbf2ed804c632e6c183a07528e7115d286ff3c50ce63eeb51cdefdb73a528",
+          "bytes": 111824,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:maidService:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "maidService",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Service familial — entretien de l’office, Fan Art",
+        "en": "Sable Orison — Service familial — entretien de l’office, Fan Art"
+      },
+      "slotNumber": 10,
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-archive-service-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Service familial — entretien de l’office, Fan Art ; Debout de trois quarts avec un tablier pratique sur le manteau, essuie une tasse de terre cuite entre ses deux mains ; plateau de tasses posé sur la table devant elle.",
+        "en": "Family-friendly service fan-art: stand side-on in an archive tea room, practical plain apron over the fully closed original coat, one hand balances a wooden tray of plain cups, other hand dries one cup with a cloth. Hat and dark hair remain, no frills or revealing costume."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg10.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg10-archive-service-wave3-2026-10-20",
+      "backgroundDescription": "Office de thé des équipes de terrain",
+      "background": {
+        "location": "Office de thé des équipes de terrain",
+        "foreground": "Plateau de bois et tasses de terre cuite",
+        "midground": "Table de service et étagère de cartes roulées",
+        "background": "Grande baie cintrée et plantes en pot ouvertes sur le quartier d’archives",
+        "lighting": "Lumière chaude de début de soirée"
+      },
+      "poseId": "sable-cg10-archive-service",
+      "poseBrief": "Debout de trois quarts avec un tablier pratique sur le manteau, essuie une tasse de terre cuite entre ses deux mains ; plateau de tasses posé sur la table devant elle.",
+      "poseDescription": "Debout de trois quarts avec un tablier pratique sur le manteau, essuie une tasse de terre cuite entre ses deux mains ; plateau de tasses posé sur la table devant elle.",
+      "themeBrief": "Service familial — entretien de l’office, Fan Art",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20.png",
+          "sha256": "bf62fd1c3a29c1aaef8c260b577986994e8ef2bd29a7de422b2de7ef1dfc3657",
+          "bytes": 4390964,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20.webp",
+          "sha256": "43330859a13c39985ad82ac492383c5a0eab648f92b3a21f999d9c7908b7e382",
+          "bytes": 1037244,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20-thumb.webp",
+          "sha256": "2e19cac84848601d7704794c50e24d03af1300e6dc55c1390cfc53038e1906c9",
+          "bytes": 111530,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:goofy:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "goofy",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Gag familial — carte retournée par le vent, Fan Art",
+        "en": "Sable Orison — Gag familial — carte retournée par le vent, Fan Art"
+      },
+      "slotNumber": 11,
+      "family": "Fan Art",
+      "rarity": "stable",
+      "canonStatus": "fan-art",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-folding-map-gag-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Gag familial — carte retournée par le vent, Fan Art ; Penche le buste en arrière tandis qu’une carte se replie sur le nez, bras écartés et chapeau retenu du bout des doigts.",
+        "en": "Comedic family-safe scene: a gust folds her own unfolded map over the tip of her nose, torso leaning back, arms apart, one hand just catching hat brim. Keep her recognisable human face and outfit, surprise instead of pain."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg11.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg11-folding-map-gag-wave3-2026-10-20",
+      "backgroundDescription": "Passage venteux des moulins à papier",
+      "background": {
+        "location": "Passage venteux des moulins à papier",
+        "foreground": "Dalles et petites feuilles d’archive en mouvement",
+        "midground": "Carte soulevée et chapeau retenu",
+        "background": "Roues de papier et auvents de cuivre",
+        "lighting": "Vent vif sous un soleil printanier"
+      },
+      "poseId": "sable-cg11-folding-map-gag",
+      "poseBrief": "Penche le buste en arrière tandis qu’une carte se replie sur le nez, bras écartés et chapeau retenu du bout des doigts.",
+      "poseDescription": "Penche le buste en arrière tandis qu’une carte se replie sur le nez, bras écartés et chapeau retenu du bout des doigts.",
+      "themeBrief": "Gag familial — carte retournée par le vent, Fan Art",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20.png",
+          "sha256": "19bb0e723b226a7d3781b286a0a56c8ed18dd815c2543c3583175ededf3f5b89",
+          "bytes": 4380746,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20.webp",
+          "sha256": "337285d1b31d5dbde322a039d2a660d82ca33949eb28540304c4ce85eb4fb2d9",
+          "bytes": 1163734,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20-thumb.webp",
+          "sha256": "35f46941a1787b185b473dc0e4de3fc355c9e84514eac49b3d571d1593648b90",
+          "bytes": 111782,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:alignmentSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "alignmentSwap",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Alignement inversé — cartographe qui cache les routes, What If",
+        "en": "Sable Orison — Alignement inversé — cartographe qui cache les routes, What If"
+      },
+      "slotNumber": 12,
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-sealed-route-authority-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Alignement inversé — cartographe qui cache les routes, What If ; Se tient derrière un pupitre fermé, bras croisés sur une carte scellée, regard strict et longue-vue rangée à la ceinture.",
+        "en": "Explicit alternate-alignment WhatIf: the accountable cartographer has become an austere official hiding routes. Stand behind a tall closed lectern, forearms crossed over a sealed rolled map, strict calm expression. Same warm human face, black hair, brown hat/goggles, umber/gold coat. No physical mutation or unrelated villain."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg12-frame-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg12-sealed-route-authority-wave3-2026-10-20",
+      "backgroundDescription": "Salle hypothétique du relevé interdit",
+      "background": {
+        "location": "Salle hypothétique du relevé interdit",
+        "foreground": "Sceau de cire sombre sur le pupitre",
+        "midground": "Sable gardant une carte scellée sous ses avant-bras",
+        "background": "Portes d’archives closes et lampes rouge sombre",
+        "lighting": "Éclairage sévère de cuivre et rouge discret"
+      },
+      "poseId": "sable-cg12-sealed-route-authority",
+      "poseBrief": "Se tient derrière un pupitre fermé, bras croisés sur une carte scellée, regard strict et longue-vue rangée à la ceinture.",
+      "poseDescription": "Se tient derrière un pupitre fermé, bras croisés sur une carte scellée, regard strict et longue-vue rangée à la ceinture.",
+      "themeBrief": "Alignement inversé — cartographe qui cache les routes, What If",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20.png",
+          "sha256": "8afa93e4c276dbd6e88ef635d4f0b6c905967e3a345e3fb051812cef2a927fd6",
+          "bytes": 4047090,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20.webp",
+          "sha256": "2cc0e8ca8145fa494e4e8c8729344df57a161569057563981cb68beed3aa36d4",
+          "bytes": 1000904,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20-thumb.webp",
+          "sha256": "826dfae1c0cb463379f1958bc60dd673019f888b7106ba0a830a2ebcedd681d5",
+          "bytes": 96430,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:genderSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "genderSwap",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Présentation masculine hypothétique — une seule alternative CG13",
+        "en": "Sable Orison — Présentation masculine hypothétique — une seule alternative CG13"
+      },
+      "slotNumber": 13,
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-masculine-what-if-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Présentation masculine hypothétique — une seule alternative CG13 ; Version masculine assise de biais sur un rebord, coude gauche sur le genou relevé et longue-vue dans la main droite, mêmes cheveux, chapeau et tenue.",
+        "en": "Explicit masculine-presenting WhatIf counterpart, still recognisably the same cartographer: slightly squarer jaw and brow, no beard, same shoulder-length black hair, warm face, same hat with brass goggles and fully covered umber/gold costume. Sit sideways on a low ledge, one knee raised with elbow resting on it, other hand holding lowered spyglass. No sexualised or exaggerated anatomy."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg13-frame-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg13-masculine-what-if-wave3-2026-10-20",
+      "backgroundDescription": "Galerie des reflets de coordonnées",
+      "background": {
+        "location": "Galerie des reflets de coordonnées",
+        "foreground": "Rebord de pierre et petite flaque claire",
+        "midground": "Version masculine assise près d’un miroir ancien",
+        "background": "Miroirs verticaux et couloir de cuivre blanc",
+        "lighting": "Lumière douce argentée de lune"
+      },
+      "poseId": "sable-cg13-masculine-what-if",
+      "poseBrief": "Version masculine assise de biais sur un rebord, coude gauche sur le genou relevé et longue-vue dans la main droite, mêmes cheveux, chapeau et tenue.",
+      "poseDescription": "Version masculine assise de biais sur un rebord, coude gauche sur le genou relevé et longue-vue dans la main droite, mêmes cheveux, chapeau et tenue.",
+      "themeBrief": "Présentation masculine hypothétique — une seule alternative CG13",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20.png",
+          "sha256": "5cdde26a1ab405d5c0bde98a9f3cf35db21c949b9381b1cee6047e805596d1c1",
+          "bytes": 4525142,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20.webp",
+          "sha256": "337cc2a6a02b336e5eba30d45b97f51ba4e0b0c24d18369f94c824909dfd8151",
+          "bytes": 1223394,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20-thumb.webp",
+          "sha256": "9718c6ad964a16f73d7680c661715c1a8ac4bd7d774a9f746d1358fd6666b633",
+          "bytes": 116546,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:zombieVersion:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "zombieVersion",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Corruption de carte non gore — variante What If",
+        "en": "Sable Orison — Corruption de carte non gore — variante What If"
+      },
+      "slotNumber": 14,
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-causal-corruption-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Corruption de carte non gore — variante What If ; À genoux sur une carte déployée, paumes ouvertes sous des feuillets sombres en lévitation ; fines fissures causales cyan, corps intact.",
+        "en": "Explicit non-gory causal-corruption WhatIf: kneel on a huge unfolded parchment survey map, both palms open underneath levitating dark page fragments. Keep intact human anatomy and recognisable warm-grey face, shoulder-length black hair, brown hat/goggles, umber/gold coat. Thin cyan corruption seams and tired glowing eyes, no wounds, dismemberment or new monster limbs."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg14.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg14-causal-corruption-wave3-2026-10-20",
+      "backgroundDescription": "Dépôt hypothétique des cartes falsifiées",
+      "background": {
+        "location": "Dépôt hypothétique des cartes falsifiées",
+        "foreground": "Grande carte parchemin et éclats de cire",
+        "midground": "Sable agenouillée et feuillets en lévitation",
+        "background": "Rayonnages renversés et portes géométriques brisées",
+        "lighting": "Brume bleu-noir et faibles fissures cyan"
+      },
+      "poseId": "sable-cg14-causal-corruption",
+      "poseBrief": "À genoux sur une carte déployée, paumes ouvertes sous des feuillets sombres en lévitation ; fines fissures causales cyan, corps intact.",
+      "poseDescription": "À genoux sur une carte déployée, paumes ouvertes sous des feuillets sombres en lévitation ; fines fissures causales cyan, corps intact.",
+      "themeBrief": "Corruption de carte non gore — variante What If",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20.png",
+          "sha256": "f1dec4b13a8e43d6fe73803f9f6270cff3591e3be514cecf294f0e50fc9b6e6d",
+          "bytes": 4272806,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20.webp",
+          "sha256": "d154d6c26c1d1662716ca536bf38860863b7da44b31f75305eef085da60ae703",
+          "bytes": 1181204,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20-thumb.webp",
+          "sha256": "479130e3ca3b90f5a2a273bb9cc545b1d7b96613bd3be54b19ae5a900a60d1cd",
+          "bytes": 108960,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-sable:futureExperienced:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "characterKey": "arca-sable",
+      "type": "futureExperienced",
+      "imagePath": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20-thumb.webp",
+      "universeName": "Nexus de Convergence",
+      "characterId": "arca_sable",
+      "heroId": "arca_sable",
+      "characterName": "Sable Orison",
+      "title": {
+        "fr": "Sable Orison — Cartographe expérimentée du futur — une seule alternative CG15",
+        "en": "Sable Orison — Cartographe expérimentée du futur — une seule alternative CG15"
+      },
+      "slotNumber": 15,
+      "family": "What If",
+      "rarity": "stable",
+      "canonStatus": "what-if",
+      "continuityId": "original-project-sable-current-cartographer-2026",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "sable-current-cartographer-project-sprite-viewed-2026-10-20",
+      "promptId": "cg-sable-experienced-future-wave3-2026-10-20",
+      "promptSummary": {
+        "fr": "Cartographe expérimentée du futur — une seule alternative CG15 ; Adossée à une balustrade avec la longue-vue dans les deux mains, une cheville croisée et quelques mèches grises aux tempes, même chapeau et manteau réparé.",
+        "en": "Explicit experienced-future WhatIf, not an established canonical age: the same female cartographer with a few grey strands at temples, subtle facial lines and visibly patched original umber/gold coat, same brown hat and brass goggles. Lean against a balustrade with ankles crossed, holding the familiar spyglass in both hands at waist level. No new weapon or uniform."
+      },
+      "publishedAt": "2026-10-20",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+        "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+        "src/game/characterPlaques.js",
+        "src/game/heroes.js"
+      ],
+      "credits": {
+        "fr": "Sable Orison, personnage original de Multiverse Breach ; art généré avec OpenAI ImageGen.",
+        "en": "Sable Orison, original Multiverse Breach character; generated with OpenAI ImageGen."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_sable"
+      },
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/sable/cg15-temples-revision.txt",
+      "referenceReviewFile": "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json",
+      "backgroundId": "sable-cg15-experienced-future-wave3-2026-10-20",
+      "backgroundDescription": "Terrasse future de l’observatoire aux verrières bleues",
+      "background": {
+        "location": "Terrasse future de l’observatoire aux verrières bleues",
+        "foreground": "Balustrade patinée et sol circulaire en cuivre gravé",
+        "midground": "Sable expérimentée et grand instrument astronomique de cuivre",
+        "background": "Dôme bas de verre bleu, arbres sombres et ciel étoilé, sans château panoramique ni grand anneau",
+        "lighting": "Crépuscule bleu et petites lampes ambrées de l’observatoire"
+      },
+      "poseId": "sable-cg15-experienced-future",
+      "poseBrief": "Adossée à une balustrade avec la longue-vue dans les deux mains, une cheville croisée et quelques mèches grises aux tempes, même chapeau et manteau réparé.",
+      "poseDescription": "Adossée à une balustrade avec la longue-vue dans les deux mains, une cheville croisée et quelques mèches grises aux tempes, même chapeau et manteau réparé.",
+      "themeBrief": "Cartographe expérimentée du futur — une seule alternative CG15",
+      "themeSource": [
+        "docs/cg/sable-orison-wave3-plan-2026-10-20.json",
+        "scripts/buildCgRosterProductionPlan.mjs#ROSTER_CG_SLOTS",
+        "docs/cg/sable-orison-reference-evidence-wave3-2026-10-20.json"
+      ],
+      "visualReview": {
+        "status": "accepted-with-original-project-reference-limitations",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-20",
+        "independentReview": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+        "notes": [
+          true
+        ],
+        "limitations": [
+          "Canon original interne du projet; petits détails du pixelart interprétés au format CG, aucune certification parfaite1:1.",
+          "Les compositions nouvelles et les WhatIf ne constituent pas des événements déjà établis dans le lore.",
+          "Original project internal atlas is the identity authority; original compatible scene composition and small facial/costume details are not perfect1:1 certified."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20.png",
+          "sha256": "45f937b3225a154920bd8a65e1fba082febdae7a1090c63db82f51476696d6cd",
+          "bytes": 4363891,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20.webp",
+          "sha256": "bd5235820359c8bd1064b08f091d8efb69423877446ba0a17903d4a78bfe7b08",
+          "bytes": 1141518,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20-thumb.webp",
+          "sha256": "425046615e8dece61984c0c598bc4413a3a5ad5648d41482d1e78ef0e8bde84b",
+          "bytes": 111382,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      }
+    }
+  ],
+  "blockedSlots": [],
+  "unattemptedSlots": [],
+  "notes": [
+    "Fifteen individual scenes based on the current original Sable atlas and character-specific authored lore.",
+    "Historical sprite and all initial/superseded native attempts retained.",
+    "No global game registry is modified by this packer and no1:1 fidelity certificate is inferred."
+  ],
+  "generationAttempts": 27,
+  "retainedUnselectedNativeAttempts": 12,
+  "toolRefusals": 0,
+  "nativeRecords": [
+    {
+      "slot": "CG01",
+      "nativePath": "/workspace/generated_images/exec-dda06b3b-f735-43aa-ae26-6ec66133b965.png",
+      "nativeSha256": "bd194f17660fd58d40ea0e561e9c8f857a0413c98c4ed17fc9fdb0c4af101914",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/character-solo-wave3-2026-10-20.png",
+        "sha256": "80e1c643fe6cbe54f82927ec25b929781c7ed3ea6fac8c215eec009826847bb2",
+        "bytes": 4305622,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG02",
+      "nativePath": "/workspace/generated_images/exec-4abd2c40-1ce7-499d-9267-eccd99a4b758.png",
+      "nativeSha256": "d37edd9687b3e92a1104b373411383e88e8e5ad13c1a238150bcca8fc1cce671",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/signature-spyglass-wave3-2026-10-20.png",
+        "sha256": "4b70372c8e289b3cdf36acde0c0235ab312b758e4b9e48d2d5bf9b15581d6e4a",
+        "bytes": 3815720,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG03",
+      "nativePath": "/workspace/generated_images/exec-9c5a4be8-31db-4636-9265-0eb07f73aedc.png",
+      "nativeSha256": "3b1868df8a79fc4b8f542c57ed5f1daf630240991c945970ff086ec65d7438e3",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/tenth-route-landscape-wave3-2026-10-20.png",
+        "sha256": "548ad521f51637941435d47d1c64b24d5b7b4f966f35ce6248a4a16a86d12565",
+        "bytes": 4463844,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG04",
+      "nativePath": "/workspace/generated_images/exec-22afde59-42e8-4374-8f5b-eb5b5dd1a0cf.png",
+      "nativeSha256": "901743e32e3e6c213160f52e2cd3f7cdcd031f4cf853e8a6d3be5d9b3163693d",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/map-witnesses-wave3-2026-10-20.png",
+        "sha256": "b14933b74ab5e1bdc5cff3ae05b51dfb4299f61d2ae8bbd2f1e84a73cac303a4",
+        "bytes": 4192921,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG05",
+      "nativePath": "/workspace/generated_images/exec-c2e530de-0083-4c5d-8bb4-f1f0134406ad.png",
+      "nativeSha256": "ffc3232b2dedee4260dd0dab6bf6472d39751cda5c1942401c1582e899cf9337",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/beacon-shot-wave3-2026-10-20.png",
+        "sha256": "67e7219e265faf1b244777c34c2103c533979eb471b6f67ce8c527b903cb39a8",
+        "bytes": 4380748,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "minimal full-frame nearest ratio conditioning, no crop or painting",
+        "nativeWidth": 1086,
+        "nativeHeight": 1449,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0.0006901311249136732,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG06",
+      "nativePath": "/workspace/generated_images/exec-0db89c48-d49f-4312-8311-2d9637f1b806.png",
+      "nativeSha256": "5c02dbcd7c6b3947ac9a9a80fd4682de82add87cc0c5aeb3e4e9b3e0cf84d341",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/field-arrival-wave3-2026-10-20.png",
+        "sha256": "6349a5e7126b8142403f0e88c36a7dfed2e6fe7487c790ec3fece89b6324c753",
+        "bytes": 4389082,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "minimal full-frame nearest ratio conditioning, no crop or painting",
+        "nativeWidth": 1087,
+        "nativeHeight": 1447,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0.0016125316747293006,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG07",
+      "nativePath": "/workspace/generated_images/exec-2ff44638-211f-4275-8df2-d92c0b5c77d8.png",
+      "nativeSha256": "fc402cf437ee2abb30a3345b87e6a3c459ad5fe8da47b52f9d12211ac4ab0086",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/route-proven-wave3-2026-10-20.png",
+        "sha256": "78f73bfdab8fa91542456f93624fe0b76e6fc1e9344f3b29e8ed4651631ab9b8",
+        "bytes": 4535419,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG08",
+      "nativePath": "/workspace/generated_images/exec-658ef7cd-967c-4dd2-bac4-95611cf72193.png",
+      "nativeSha256": "dc361d8ce94d865f9e2fbfc9d87da27e44b3a578b8860a045d4a84d8f1942209",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/lost-coordinates-wave3-2026-10-20.png",
+        "sha256": "0b63ddaff257414eecc1f458f7c3932d0b06dfd7b03431cbc445e780eb615a75",
+        "bytes": 4478305,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG09",
+      "nativePath": "/workspace/generated_images/exec-222ef3b1-a124-40a1-80f2-c257e211ce24.png",
+      "nativeSha256": "266c03b768a6a615f3683638950d377591b8ec9ebcf9b507ff8a18c7f9c1c4ca",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/beach-survey-wave3-2026-10-20.png",
+        "sha256": "1c4108387fe39f5c1f16c01e19d477af952682b3742fca42db76845f100568c6",
+        "bytes": 4274412,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG10",
+      "nativePath": "/workspace/generated_images/exec-ff3f693f-2202-4833-b278-27b990f1a9f3.png",
+      "nativeSha256": "43a8c91fb87cb637276598540d5db8ec6884584310b096487a3f5ed09f21674e",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/archive-service-wave3-2026-10-20.png",
+        "sha256": "bf62fd1c3a29c1aaef8c260b577986994e8ef2bd29a7de422b2de7ef1dfc3657",
+        "bytes": 4390964,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG11",
+      "nativePath": "/workspace/generated_images/exec-1c3fcb04-1821-4634-9ad1-2f0f3767d3d7.png",
+      "nativeSha256": "52eae9a5afa9eb4347143f5bb264701f56f1cae73ff4097957b6c3d71af55305",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/folding-map-gag-wave3-2026-10-20.png",
+        "sha256": "19bb0e723b226a7d3781b286a0a56c8ed18dd815c2543c3583175ededf3f5b89",
+        "bytes": 4380746,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG12",
+      "nativePath": "/workspace/generated_images/exec-8fa1ecf9-9e12-476e-be47-72883575163d.png",
+      "nativeSha256": "5e37e5aa9742b7efc3d70529755e685396e47909d364ba763f896d6eda3061af",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/sealed-route-authority-wave3-2026-10-20.png",
+        "sha256": "8afa93e4c276dbd6e88ef635d4f0b6c905967e3a345e3fb051812cef2a927fd6",
+        "bytes": 4047090,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG13",
+      "nativePath": "/workspace/generated_images/exec-13c79c8b-7894-4af9-99c8-e658a54d958d.png",
+      "nativeSha256": "fa539c2d691c52fe4b4964f37041df8195d5d1cbc7c18ba5e05fbf62b85a1f2c",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/masculine-what-if-wave3-2026-10-20.png",
+        "sha256": "5cdde26a1ab405d5c0bde98a9f3cf35db21c949b9381b1cee6047e805596d1c1",
+        "bytes": 4525142,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "minimal full-frame nearest ratio conditioning, no crop or painting",
+        "nativeWidth": 1087,
+        "nativeHeight": 1447,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0.0016125316747293006,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG14",
+      "nativePath": "/workspace/generated_images/exec-1bf6b694-a5bb-4497-8f3b-3808f5a6e952.png",
+      "nativeSha256": "bf9fc79979207ab398e8a1aa3eb1886207c72c5cd0138baa839c50c1dc1616ba",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/causal-corruption-wave3-2026-10-20.png",
+        "sha256": "f1dec4b13a8e43d6fe73803f9f6270cff3591e3be514cecf294f0e50fc9b6e6d",
+        "bytes": 4272806,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    },
+    {
+      "slot": "CG15",
+      "nativePath": "/workspace/generated_images/exec-0545162e-2161-4b11-8dc0-56397d0612e2.png",
+      "nativeSha256": "fef55c435af0b3a7bebbd0c91d7584d5daca87971efebe5a6d6893ff3b94d42d",
+      "conditionedSource": {
+        "path": "/cg/nexus-de-convergence/arca-sable/experienced-future-wave3-2026-10-20.png",
+        "sha256": "45f937b3225a154920bd8a65e1fba082febdae7a1090c63db82f51476696d6cd",
+        "bytes": 4363891,
+        "width": 1086,
+        "height": 1448,
+        "format": "png",
+        "channels": 3
+      },
+      "conditioning": {
+        "operation": "RGB/format-only lossless re-encoding",
+        "nativeWidth": 1086,
+        "nativeHeight": 1448,
+        "width": 1086,
+        "height": 1448,
+        "aspectRatioDrift": 0,
+        "maximumAllowedDrift": 0.005
+      },
+      "supersededReviews": []
+    }
+  ]
+}

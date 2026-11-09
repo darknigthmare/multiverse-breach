@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "heroId": "cyber_spider_kelly",
+  "name": "Cybernetic Spider (Dr. Michael Kelly)",
+  "universe": "Spider: The Video Game",
+  "incarnation": "PlayStation 1997; same Dr. Michael Kelly protagonist with the default Slasher front-leg attachment.",
+  "status": "blocked-needs-more-precise-body-and-slasher-reference",
+  "canonicalFidelityApproved": false,
+  "scope": "Only the Kelly base protagonist sprite; no Electro-Beam or Flamethrower slot changes.",
+  "generationAttempted": false,
+  "assetInstalled": false,
+  "runtimeSelectionChanged": false,
+  "oldAsset": {
+    "output": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png",
+    "sha256": "e9900a15304818da848735096550e37d842bd8349fd9707e9dc89c31f82b1707",
+    "matchesGitBaseline": true,
+    "preserved": true
+  },
+  "references": [
+    {
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Box/big/Spider_-_1997_-_BMG_Interactive.jpg",
+      "finalUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Box/big/Spider_-_1997_-_BMG_Interactive.jpg",
+      "httpStatus": 200,
+      "downloadedAt": "2026-10-18T00:45:40.411710+00:00",
+      "sha256": "2a46c81bcac203f19d6ef7324a3f201e2973d02de1650d092ad42be4f1ae7e8b",
+      "bytes": 151377,
+      "width": 1080,
+      "height": 1080,
+      "format": "jpeg",
+      "viewed": true,
+      "publiclyRedistributed": false,
+      "discoveryPage": "https://www.gamesdatabase.org/media/sony-playstation/artwork-box/spider"
+    },
+    {
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Snap/big/Spider_-_1997_-_BMG_Interactive.jpg",
+      "finalUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Snap/big/Spider_-_1997_-_BMG_Interactive.jpg",
+      "httpStatus": 200,
+      "downloadedAt": "2026-10-18T00:45:41.412285+00:00",
+      "sha256": "bcb1ab259820019d840342e38ac96a3d901a99a43208ca60f6846e5c389fa84c",
+      "bytes": 116103,
+      "width": 1440,
+      "height": 1080,
+      "format": "jpeg",
+      "viewed": true,
+      "publiclyRedistributed": false,
+      "discoveryPage": "https://www.gamesdatabase.org/media/sony-playstation/artwork-in-game/spider"
+    }
+  ],
+  "auxiliaryEvidence": [
+    {
+      "kind": "original-manual-scan",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation//Manual/formated/Spider_-_1997_-_BMG_Interactive.pdf",
+      "finalUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation//Manual/formated/Spider_-_1997_-_BMG_Interactive.pdf",
+      "httpStatus": 200,
+      "sha256": "0612192dbaefb427ba42fafb801f071503ff9f44de243c9fdffc62fd5534a527",
+      "bytes": 4480316,
+      "viewedPdfPages": [
+        6,
+        8,
+        10
+      ],
+      "observations": "The primary manual states Slash is the basic front-leg weapon and weapons attach to the two front legs. Its visible body diagrams and gameplay images are too small; page14–15 lists weapons without a clear Slasher model."
+    },
+    {
+      "kind": "linked-gameplay-video",
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Video/Formated/Spider___1997___BMG_Interactive.mp4",
+      "finalUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/Video/Formated/Spider___1997___BMG_Interactive.mp4",
+      "httpStatus": 200,
+      "sha256": "dca628851ff067845f5d0e28f8aacecd337092bf2eef351c96d8d8889a158764",
+      "bytes": 5437882,
+      "viewedFrameTimesSeconds": [
+        1.5,
+        4.5,
+        7.5,
+        10.5,
+        13.5,
+        16.5,
+        19.5,
+        22.5,
+        25.5,
+        28.5,
+        31.5,
+        34.5
+      ],
+      "observations": "The 35.75-second 640x480 gameplay clip confirms the small organic arachnid body and crawling/climbing context. The Slasher blade, face implant and complete limb geometry remain too small to resolve."
+    }
+  ],
+  "verifiedIdentityFacts": [
+    "The existing dome robot sprite is not a faithful visual authority.",
+    "The source protagonist is an organic/cybernetic arachnid with an abdomen and cephalothorax, not a humanoid or armored robot dome.",
+    "Default Slash/Slasher is a front-leg attachment; promotional cover firearm is not evidence for the selected base loadout."
+  ],
+  "unresolvedVisualDetails": [
+    "Complete eight-leg geometry and leg attachment layout across animation angles.",
+    "Precise Slasher blade shape, proportions and implantation, including its relation to ordinary front legs.",
+    "Face/eye/implant design at readable resolution.",
+    "Palette difference between blue promotional cover lighting and brown/gray in-game model."
+  ],
+  "independentSourceReview": {
+    "recorded": true,
+    "status": "insufficient-for-1-to-1-four-by-four-atlas",
+    "summary": "Independent reviewer viewed both source rasters and the gameplay contact sheet. A cautious body anchor is possible, but full anatomy/angles and the default Slasher are not sufficiently locked to approve a faithful4x4 sheet.",
+    "report": "docs/audits/cyber-spider-kelly-source-review-2026-10-18.json"
+  },
+  "requiredEvidence": "A readable native game close-up, model turnaround, or original diagram showing the complete default Slasher spider, face/implant and its leg attachments. It must be retrieved and viewed before any regeneration.",
+  "decision": "No generation or installation. Keep the old image unchanged as an existing variant; do not substitute a generic spider or invent missing source detail."
+}

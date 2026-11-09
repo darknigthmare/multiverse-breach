@@ -1,5 +1,7 @@
 // Canvas and accessible target buttons use the same runtime IDs. Empty space
 // never confirms a command or changes the acting character.
+import { isUberProfileWave17, isJadeInformationProfileWave17 } from './combat/sourceMechanicsWave17.js';
+import { isSourceBubbleCaptureProfileWave17 } from './combat/sourceBubbleCaptureWave17.js';
 const seconds = (value, fr) => Number.isFinite(Number(value)) && value !== null
   ? Number(value).toLocaleString(fr ? 'fr-FR' : 'en-US', { maximumFractionDigits: 2 }) : '—';
 
@@ -9,6 +11,24 @@ export function getRpgSourceEffectPresentation(targeting, lang = 'fr') {
   const profile = targeting?.profile;
   if (!profile) return null;
   const fr = lang === 'fr';
+  if (isSourceBubbleCaptureProfileWave17(profile)) return {
+    label: fr ? 'CAPTURE NON LÉTALE · 1,25 s' : 'NONLETHAL CAPTURE · 1.25 s',
+    detail: fr ? 'Sur une cible capturable uniquement. Immobilise sans blesser, soulever ou changer le camp de la cible.'
+      : 'Capturable targets only. Immobilizes without damage, lifting or changing the target’s team.',
+    hideDamageEstimate: true
+  };
+  if (isUberProfileWave17(profile)) return {
+    label: fr ? 'ÜBERCHARGE · 8 s · Medic et patient connecté' : 'ÜBERCHARGE · 8 s · Medic and connected patient',
+    detail: fr ? 'Charge complète et faisceau vers un allié vivant requis. Invulnérabilité du Medic et de ce patient, sans bonus offensif.'
+      : 'Requires full charge and a beam connected to a living ally. Invulnerability for Medic and that patient, without an offensive bonus.',
+    hideDamageEstimate: true
+  };
+  if (isJadeInformationProfileWave17(profile)) return {
+    label: fr ? 'PHOTOGRAPHIE · information · 3 s' : 'PHOTOGRAPHY · information · 3 s',
+    detail: fr ? 'Révèle la cible hostile choisie. Aucun dégât, soin ou bonus d’attaque.'
+      : 'Reveals the selected hostile target. No damage, healing or attack bonus.',
+    hideDamageEstimate: true
+  };
   if (profile.invulnerabilityKind === 'mugman-super-art-ii') return {
     label: `${fr ? 'INVULNÉRABLE' : 'INVULNERABLE'} · ${seconds(profile.invulnerabilityDuration, fr)} s`,
     detail: targeting.summon?.kind === 'reinforcement'

@@ -1,0 +1,1791 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "part": "B",
+  "observedAt": "2026-11-02T06:46:19.270Z",
+  "scope": "PartB asset delivery and scoped code checks; global browser, build, freeze and publication are performed by the root task separately.",
+  "counts": {
+    "reviewedIdentities": 43,
+    "newAuthoredRecords": 21,
+    "existingAuthoredRevisions": 22,
+    "newExplicitSlots": 84,
+    "effectiveCharacters": 40,
+    "nativePng": 40,
+    "basePng": 40,
+    "nativePoses": 1280,
+    "basePoses": 640,
+    "distinctRetainedDrawings": 1920,
+    "completeDrawingsObserved": 2116,
+    "completeDrawingsExcluded": 196,
+    "incompleteCorrectiveCandidatesExcluded": 0,
+    "actualImageRequests": 57,
+    "successfulImageRequests": 55,
+    "actualImageFailures": 2,
+    "withheldAfterSameCharacterRefusal": 1
+  },
+  "registries": [
+    {
+      "path": "src/game/combat/characterAnimationsWave17PartB.generated.json",
+      "sha256": "ce07c340a23cd366fa6fae25e8e28e76a7edce5b2ff6f841998a08da8dd6e3e3"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave17PartB.generated.json",
+      "sha256": "3393c5f1c01188fb256f74e739bda8d5ec3f660525e974627c49022ef6dae286"
+    }
+  ],
+  "amendments": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/batch-amendments-before-generation.json",
+      "sha256": "32fbdd64d187a7ac96543da9c99e382cc016d4f1ef65563e360fb695961e72d9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/batch-amendments-2-before-generation.json",
+      "sha256": "7e6a9cca0530b00a99c75536c0edf3f5637f73a782333912bbbe5f598eff6117"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/batch-amendments-3-before-generation.json",
+      "sha256": "ce899059e88d6320860c5e7fee0f2fe0c038c22950bede5e3cb589170f8f7485"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/batch-amendments-4-before-generation.json",
+      "sha256": "6b09730aa01ea7b005dad70f457b603d1f64becb7965f0d7ca648c7cdd49d95f"
+    }
+  ],
+  "sourcePlans": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan.json",
+      "sha256": "2f8fc9f0e19ee867cb409bc82a69f78481a9ea64dec9f9d54a07ea005aa7023e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-replacements.json",
+      "sha256": "17ffd38310d13166e8cffffa2292058c9ac1cfca1ea2f12783f3e80d449ad11a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-hammond.json",
+      "sha256": "0eb37a0d68144afc09471bbd88d46a89801b917d25b0bcbb2dbf1b00364a2131"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-corrections1.json",
+      "sha256": "35f6c1159a26d5fb14101800fb29b245ce4fa9e0aa4211ecf2c8568c0e48c16a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-corrections2.json",
+      "sha256": "d32a0729403675ad6737ed103d166edc8c47b2a75d261061f275187f9446fea7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/source-plan-corrections3.json",
+      "sha256": "26b71e0b400526d6f7ebf90fbf7c6776112985f5ea7f408a43576385409d52b5"
+    }
+  ],
+  "generationRecords": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/generation-records.json",
+    "sha256": "641f552840b0d4af5e5efe765d2627e89198d1a0bb56969323a6aed90160fe96"
+  },
+  "imageResults": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/absolver_downfall_forsaken-result.json",
+      "sha256": "6db66ce8fc19505541e3d6dc8080c7fb48561a0e8b47220110a39e0c35ef3745",
+      "heroId": "absolver_downfall_forsaken",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:42:34.915Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/absolver_downfall_khalt-result.json",
+      "sha256": "4af7345696c9edabdc0eccc8d84f59a936cd4bea5b6b7522b534ddd9fff24bce",
+      "heroId": "absolver_downfall_khalt",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:40:08.161Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/absolver_downfall_windfall-result.json",
+      "sha256": "23062f2e6be79c573cc1fd52f2b21a59e0cafa88d2549b3ada35aa80ec44f7d8",
+      "heroId": "absolver_downfall_windfall",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:41:46.142Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/amy_crystal_hotd2-result.json",
+      "sha256": "8c6ad1f7a0d3b0eae3dd083915bfd3bd0f4d50011c44045ef82459463c384685",
+      "heroId": "amy_crystal_hotd2",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:07:48.465Z",
+      "observedAt": "2026-11-02T05:10:51.857Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/atomic_heart_granny_zina-result.json",
+      "sha256": "658e20888483e8895a386ec215c054047978ef12b49cb3c93960226c1fb09c18",
+      "heroId": "atomic_heart_granny_zina",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:44:22.965Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/atomic_heart_p3-correction1-result.json",
+      "sha256": "2a01de98c28f6dfa7e89c3fa8dfeea3279fbdfd9290b0ba0a42cb0dd289657ab",
+      "heroId": "atomic_heart_p3",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:14:03.859Z",
+      "observedAt": "2026-11-02T06:17:54.816Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/atomic_heart_p3-result.json",
+      "sha256": "ef21e3073eb88ba2f447d099e5fe20176583f551081f53ae1b141dac37119200",
+      "heroId": "atomic_heart_p3",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:43:26.759Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/atomic_heart_tereshkova-result.json",
+      "sha256": "3f017ff2189a9f5ebb8e27d769bc297b623e85c82e64eaed6353f622a5db3bf2",
+      "heroId": "atomic_heart_tereshkova",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:43:40.085Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bendy_ink_machine_allison-correction1-result.json",
+      "sha256": "62c7822f237ad525c10d7f6ba9d32b4165dfa8fd3fd82f919acaccc7b582b22e",
+      "heroId": "bendy_ink_machine_allison",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:14:03.859Z",
+      "observedAt": "2026-11-02T06:15:57.861Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bendy_ink_machine_allison-result.json",
+      "sha256": "a11e9d1b4e422d4966be89c824268fae309cc5b13ea2f25a118fc39d955804c3",
+      "heroId": "bendy_ink_machine_allison",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:46:41.723Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bendy_ink_machine_boris-result.json",
+      "sha256": "e60beff43c79ffcb7c98f115d614ebadd46a180b3284aefb1abb0905d1279e5b",
+      "heroId": "bendy_ink_machine_boris",
+      "imageReturned": false,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:45:08.067Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bendy_ink_machine_henry-result.json",
+      "sha256": "b9930ecd671d93c5b33ba359942d7e903837bc1a116588c57c1b402c463bd7e1",
+      "heroId": "bendy_ink_machine_henry",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:46:07.683Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bioshock_rapture_bouncer-correction1-result.json",
+      "sha256": "9c95ae1f0a439e788e5414e28f33c608c795014bbd03d4d5e1e3660c7298d226",
+      "heroId": "bioshock_rapture_bouncer",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:57:28.411Z",
+      "observedAt": "2026-11-02T05:59:17.952Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bioshock_rapture_bouncer-result.json",
+      "sha256": "1c74f679c4440661346ec18e0a3f7f5b5228337617d335d3e78e7e7c84d7436a",
+      "heroId": "bioshock_rapture_bouncer",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:12:03.165Z",
+      "observedAt": "2026-11-02T05:15:56.668Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bioshock_rapture_jack-correction1-result.json",
+      "sha256": "e6193612034dae594cbe4012dce9d898ca653443f022ecde4ff5ee6583b75de1",
+      "heroId": "bioshock_rapture_jack",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:57:28.411Z",
+      "observedAt": "2026-11-02T05:59:56.848Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/bioshock_rapture_jack-result.json",
+      "sha256": "fe02ea3e47b0f54a3026cdaafa9f65d84c7a77d59c0407e9bcded06dedb30c83",
+      "heroId": "bioshock_rapture_jack",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:12:03.165Z",
+      "observedAt": "2026-11-02T05:16:33.509Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/clementine_final_season-result.json",
+      "sha256": "d21f6fe3aec0165b6361ffd148e8d369d2276df62d8e0c2ce533b2c3e7e1cb91",
+      "heroId": "clementine_final_season",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:34:06.538Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/counter_strike_fbi-result.json",
+      "sha256": "660069f4cced5ce5bed06acace580b71c04e5b4daa6311151fbe9190a515c53c",
+      "heroId": "counter_strike_fbi",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:16:58.383Z",
+      "observedAt": "2026-11-02T05:19:23.233Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/counter_strike_gign-result.json",
+      "sha256": "5a3c8ca8e2c225dbe970a5024c1e85fe9e8ad3a163f5e8140e0b50f7681c822a",
+      "heroId": "counter_strike_gign",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:16:58.383Z",
+      "observedAt": "2026-11-02T05:18:30.405Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/counter_strike_sas-correction1-result.json",
+      "sha256": "e19be38118176caf7f17ef95cc9e751d4ff597a4547dbeafa0452ec7fecfd8c8",
+      "heroId": "counter_strike_sas",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:57:28.411Z",
+      "observedAt": "2026-11-02T06:00:44.287Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/counter_strike_sas-result.json",
+      "sha256": "e19727bcbb63fa623ebc057bfa2bd483a92500200415e6b9d0f726783cf48bce",
+      "heroId": "counter_strike_sas",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:16:58.383Z",
+      "observedAt": "2026-11-02T05:17:45.452Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/crypt_necrodancer_cadence-correction1-result.json",
+      "sha256": "be5347522780e151e3c5f92c3edbacccca8b8eb593d58774be2032902c11ecdf",
+      "heroId": "crypt_necrodancer_cadence",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:14:03.859Z",
+      "observedAt": "2026-11-02T06:14:43.820Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/crypt_necrodancer_cadence-result.json",
+      "sha256": "d660e39a175d952c2f164f7284d2ec5b75c8a8e6238902441de986d3ba6f37a8",
+      "heroId": "crypt_necrodancer_cadence",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:36:27.404Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/crypt_necrodancer_melody-result.json",
+      "sha256": "a56ea11127ec6d39e0586b9062c03c1a77b27c009620abb36d5b93d990fe8d9a",
+      "heroId": "crypt_necrodancer_melody",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:37:17.049Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/dan_taylor_hotd3-result.json",
+      "sha256": "fe31061a6a4437f0302f63fc36a0ae29723e488e469677c67c439bea96bab1a0",
+      "heroId": "dan_taylor_hotd3",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:12:03.165Z",
+      "observedAt": "2026-11-02T05:13:45.753Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/dana_barrett_gb-result.json",
+      "sha256": "73d16874df570ac59d620e809f9f93795716055a8343e32cc9a7710d605efc51",
+      "heroId": "dana_barrett_gb",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:47:39.184Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/g_hotd-result.json",
+      "sha256": "40f45d2978c3d5e73751f953891d9b19c462691de4859f9ec021cdc90117582d",
+      "heroId": "g_hotd",
+      "imageReturned": false,
+      "startedAt": "2026-11-02T05:05:37.066Z",
+      "observedAt": "2026-11-02T05:07:15.473Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/gary_stewart_hotd2-result.json",
+      "sha256": "f9ebcb07a1e6288275e81e3995b5bddf276cf613746fb6cc1e0254599399c049",
+      "heroId": "gary_stewart_hotd2",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:07:48.465Z",
+      "observedAt": "2026-11-02T05:10:04.413Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/hammond-result.json",
+      "sha256": "eb00f815a8695b495a98d3b0f40a8b2052edfb072ec62db64784fe406232540e",
+      "heroId": "hammond",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:14:03.859Z",
+      "observedAt": "2026-11-02T06:16:53.399Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/hotline_miami_biker-result.json",
+      "sha256": "bc03fa2ce16aa0fb0b024594e13adefa95dd786a71cb8c20de353f5a6c1afff0",
+      "heroId": "hotline_miami_biker",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:26:14.605Z",
+      "observedAt": "2026-11-02T05:28:17.495Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/hotline_miami_jacket-result.json",
+      "sha256": "a45503116b897d0f7eaf863c326d7f0a0ab6d89188ecee7575b7f405a6b82a21",
+      "heroId": "hotline_miami_jacket",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:26:14.605Z",
+      "observedAt": "2026-11-02T05:26:50.726Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/hotline_miami_richter-correction1-result.json",
+      "sha256": "1e02831b87aef559fc28fe694e46d788000b463c760a3e438df10733999617b3",
+      "heroId": "hotline_miami_richter",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:08:29.952Z",
+      "observedAt": "2026-11-02T06:09:18.690Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/hotline_miami_richter-result.json",
+      "sha256": "c2e2d68657e0e252b1117817402ddb82b947b2fa18b32ea8fd20e3b08f4591b1",
+      "heroId": "hotline_miami_richter",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:26:14.605Z",
+      "observedAt": "2026-11-02T05:29:11.438Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/james_taylor_hotd2-result.json",
+      "sha256": "005ebc874fa6bf071ca51eabdd00fec2a51517bf7e5c42b7b5c11cefce0a1bc3",
+      "heroId": "james_taylor_hotd2",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:07:48.465Z",
+      "observedAt": "2026-11-02T05:09:27.258Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/lisa_rogan_hotd3-result.json",
+      "sha256": "954fa87efcdda8cfad8a233d138bd7de00a47f8bda912c9513cbd51fa101c7c8",
+      "heroId": "lisa_rogan_hotd3",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:12:03.165Z",
+      "observedAt": "2026-11-02T05:12:54.593Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/louis_tully_gb-result.json",
+      "sha256": "397f7042af2b1df2aca01a72a29be67dccdb72424c1db08f00108461f82d4fe6",
+      "heroId": "louis_tully_gb",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:42:51.128Z",
+      "observedAt": "2026-11-02T05:48:27.561Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_scientist-result.json",
+      "sha256": "315950b0a7bf228c69d81ce28b4921d5e7f6f5adc564e7409faaae095ac1a907",
+      "heroId": "nemesis_awaken_realms_scientist",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:39:21.502Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_scout-result.json",
+      "sha256": "041d77136b44a5d62287b4170106198b3adf746761b2450a31cb41212afadea7",
+      "heroId": "nemesis_awaken_realms_scout",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:38:33.600Z",
+      "observedAt": "2026-11-02T05:40:55.283Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_soldier-correction1-result.json",
+      "sha256": "22717185612314cf9812f074e896530bd0a3e6be9f77528c28b037ee4c4c2c51",
+      "heroId": "nemesis_awaken_realms_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:14:03.859Z",
+      "observedAt": "2026-11-02T06:15:19.590Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_soldier-correction2-result.json",
+      "sha256": "0fdd8fcd15b70ffe365bb793846e12e4251e42821ff5857c0f520edd4b23b0ef",
+      "heroId": "nemesis_awaken_realms_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:29:02.513Z",
+      "observedAt": "2026-11-02T06:31:27.219Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/nemesis_awaken_realms_soldier-result.json",
+      "sha256": "1931c32994c310331134d184f4c954e622293e31d89599a04e95017391aa5820",
+      "heroId": "nemesis_awaken_realms_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:37:54.236Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sanctum_simo-result.json",
+      "sha256": "424719dd235ed3628be0e0e87359814f7ca62b81c74e5eeecd3d9f0393a0bcd0",
+      "heroId": "sanctum_simo",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:26:14.605Z",
+      "observedAt": "2026-11-02T05:27:38.033Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sanctum_skye_autumn-result.json",
+      "sha256": "f23fe5f9ba8eb9d2151bd482ebdc8b70bf82d95bcc4c392bc645be4db9718c89",
+      "heroId": "sanctum_skye_autumn",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:21:20.677Z",
+      "observedAt": "2026-11-02T05:23:38.003Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sanctum_sweet_autumn-correction1-result.json",
+      "sha256": "c8bdaeb180b082df2486f45510d8d279b1e469236e21f00e146a818c0a196b02",
+      "heroId": "sanctum_sweet_autumn",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:08:29.952Z",
+      "observedAt": "2026-11-02T06:10:50.972Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sanctum_sweet_autumn-result.json",
+      "sha256": "68c8e7c2a3e93f6613b7068153c72fdacdfc011ea0159a93174296aa99703d62",
+      "heroId": "sanctum_sweet_autumn",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:21:20.678Z",
+      "observedAt": "2026-11-02T05:24:25.091Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sophie_hotd-correction1-result.json",
+      "sha256": "096fd1648e96d20b5822d0695ca7ed761a0a8c5d1aaed9a24041c4b0dd992362",
+      "heroId": "sophie_hotd",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:57:28.411Z",
+      "observedAt": "2026-11-02T05:58:24.516Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/sophie_hotd-result.json",
+      "sha256": "8cd3eaf9b623f59c7e647243624e2503b9214a26c864385bb58e852c256d3473",
+      "heroId": "sophie_hotd",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:07:48.465Z",
+      "observedAt": "2026-11-02T05:08:37.922Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_medic-correction1-result.json",
+      "sha256": "57984f753c977e60a6cea3ec6b0b692897d5a8af801dce30b539229f98ac6e90",
+      "heroId": "team_fortress_2_medic",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:08:29.952Z",
+      "observedAt": "2026-11-02T06:10:20.941Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_medic-correction2-result.json",
+      "sha256": "f370f86b20ddacaa2a258ea5572cfb500e63a2dc870dcab94f6aa7d2dba7c587",
+      "heroId": "team_fortress_2_medic",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:29:02.513Z",
+      "observedAt": "2026-11-02T06:30:38.732Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_medic-result.json",
+      "sha256": "ac992e557ffa45dbe8740f62828b2c4f41e9e13d84435e4f670873f5d3f9ebc7",
+      "heroId": "team_fortress_2_medic",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:21:20.677Z",
+      "observedAt": "2026-11-02T05:23:01.614Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_scout-result.json",
+      "sha256": "091a2d36718a65c52f557c3d00265d0c14ddfefaf8454592094e8ff8aa0bfc20",
+      "heroId": "team_fortress_2_scout",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:16:58.383Z",
+      "observedAt": "2026-11-02T05:20:08.580Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_soldier-correction1-result.json",
+      "sha256": "719cb22974887e2eaeccb70fd0ffc77894ebfc56e40aed211d415f25d3d4744d",
+      "heroId": "team_fortress_2_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:08:29.952Z",
+      "observedAt": "2026-11-02T06:09:46.675Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_soldier-correction2-result.json",
+      "sha256": "d1d547443a8c768a708b9889840af655deb0af41d4bc4abd4ca5938edc7e844b",
+      "heroId": "team_fortress_2_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T06:29:02.513Z",
+      "observedAt": "2026-11-02T06:29:47.692Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/team_fortress_2_soldier-result.json",
+      "sha256": "c25e1a0378745fc7d897872867f9614e3cdb4ff07a1970d1b8bf5e0958de55a1",
+      "heroId": "team_fortress_2_soldier",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:21:20.677Z",
+      "observedAt": "2026-11-02T05:22:14.826Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/thomas_rogan_hotd-result.json",
+      "sha256": "44947a22a2d54b9f84bf49a3f9a7be6b96d75aee5cc9dee9bfdb815c845d2793",
+      "heroId": "thomas_rogan_hotd",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:05:37.065Z",
+      "observedAt": "2026-11-02T05:06:13.789Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/walking_dead_telltale_kenny-result.json",
+      "sha256": "142bfcd840e66cdc79973ad52f15b5ec1d37330e9707cd45b692a41d57c9b163",
+      "heroId": "walking_dead_telltale_kenny",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:35:34.428Z"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/walking_dead_telltale_lee_everett-result.json",
+      "sha256": "d80212efd05895923baefa7ff5fba9fb89bc861a448854418d8c02ea164366a6",
+      "heroId": "walking_dead_telltale_lee_everett",
+      "imageReturned": true,
+      "startedAt": "2026-11-02T05:31:39.966Z",
+      "observedAt": "2026-11-02T05:33:09.059Z"
+    }
+  ],
+  "deliveries": [
+    {
+      "heroId": "thomas_rogan_hotd",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/thomas_rogan_hotd.png",
+        "sha256": "5b58e17da2b4fee4495116d7063e13e2c915e8cfe5ea183ce75b7acfc92c95b6",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/thomas_rogan_hotd.png",
+        "sha256": "4c8b0dd8ac4692dd45883aeec12fde82053d66ec4bdbd7123f24510db060bdc5",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead (1997), original arcade Rogan",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dana_barrett_gb",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/dana_barrett_gb.png",
+        "sha256": "0659f4f48c11a1deacd8bc5e13111e0864f89104b8892f45433c4eb1b4fa8db9",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/dana_barrett_gb.png",
+        "sha256": "4bd38d7e025cc54ba1619170cb0202034cd5deece70addf7ec04a19f2e0e92d1",
+        "poses": 16
+      },
+      "sourceWork": "Ghostbusters (1984), non-possessed Dana Barrett, orchestra musician",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sophie_hotd",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/sophie_hotd.png",
+        "sha256": "2af7d0359ef33a24096af37a0068abe5fc773d8e39dc3341b04f14717cdb2964",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/sophie_hotd.png",
+        "sha256": "cada6155ea0be696ad35385cb57aa0941c85c4d9292e24bf0f79c854ca89d1b7",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead (1997), living DBR researcher Sophie Richards",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "james_taylor_hotd2",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/james_taylor_hotd2.png",
+        "sha256": "6d49cf113a5b2f275b0ac3809709718363ae1e9a587d1fa9beb89b7392fd490d",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/james_taylor_hotd2.png",
+        "sha256": "973715b0b99afb978c9b6775635b1d26ea1a9c124e3c839cb9e4e1342c73ec88",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead 2 (1998), original arcade James",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "gary_stewart_hotd2",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/gary_stewart_hotd2.png",
+        "sha256": "97af9ee0f01026a027589fe80f5f5643ed66fa7557dd2c34d8a09489c954fa3a",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/gary_stewart_hotd2.png",
+        "sha256": "5b35bcb083066e7123e5b2152b62ed10b2adeeec4783aa7631904f62f4a61e6b",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead 2 (1998), original arcade Gary",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "amy_crystal_hotd2",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/amy_crystal_hotd2.png",
+        "sha256": "dfeebd18232de690181c63776d4217efdb51ff2ade9904f5671f24d67519c8fc",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/amy_crystal_hotd2.png",
+        "sha256": "de4694b35ea321e4c7fd15ae052efa0872bc9e389b27b8636b344b222211b98f",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead 2 (1998), original arcade Amy",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "lisa_rogan_hotd3",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/lisa_rogan_hotd3.png",
+        "sha256": "a2375d6c3a598993acc864caf1efd474f65791d8c8031a90a6d1fe7b0e2268e0",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/lisa_rogan_hotd3.png",
+        "sha256": "d67a681adfd5e11bc06d11059a7a563a44831f2c5475a3226736b0bcd5c15698",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead III (2002), Lisa during the 2019 rescue",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "louis_tully_gb",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/louis_tully_gb.png",
+        "sha256": "42863897972b99eaf5f3533063ca68485e4b81037dc4b07e9a036383d6de4b54",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/louis_tully_gb.png",
+        "sha256": "ab1577a746772f9360238f95e2bb67524df358ac7fdcd6bfea00d14faa6f6d6b",
+        "poses": 16
+      },
+      "sourceWork": "Ghostbusters (1984), non-possessed Louis Tully in blue tracksuit",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dan_taylor_hotd3",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/dan_taylor_hotd3.png",
+        "sha256": "e9e4077deebceaf55c33980778671ecdaf2f8e783b73684f87a9ec851ca09a90",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/dan_taylor_hotd3.png",
+        "sha256": "0b9428c722f7b7bfa70c763aa3995abdcf8e016ae52c71105b0a39b55f073e02",
+        "poses": 16
+      },
+      "sourceWork": "The House of the Dead III (2002), Dan Taylor in the 2019 prologue",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bioshock_rapture_jack",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/bioshock_rapture_jack.png",
+        "sha256": "3e63852593c56f143a746d239d2ab1d5df8d10af4ef928870f7ab332b92747f0",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/bioshock_rapture_jack.png",
+        "sha256": "77e747ddfae96a829caffaab063b1131c5bdcd94c11ce9b11b7cc8ed661bdd7e",
+        "poses": 16
+      },
+      "sourceWork": "BioShock (2007), Jack in Rapture",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bioshock_rapture_bouncer",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/bioshock_rapture_bouncer.png",
+        "sha256": "5f382ed676e682700c259223534bb4df731fac112038fbc49a75cbe662aea310",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/bioshock_rapture_bouncer.png",
+        "sha256": "7ae11b6496cf6ea7aba23e18cce4378d841e6635efd7c973821c1db1becb4445",
+        "poses": 16
+      },
+      "sourceWork": "BioShock (2007), standard Bouncer Big Daddy",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_sas",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/counter_strike_sas.png",
+        "sha256": "2caa3e75b3f92b6f4d2a795503f2c03a621883a98a923a5c46d7637daa8a8145",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/counter_strike_sas.png",
+        "sha256": "c9205bf9ea4dad4094aeef46e7bac5e8ac445fa51ce4bab0a67f21796e780d65",
+        "poses": 16
+      },
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default SAS counter-terrorist",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_gign",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/counter_strike_gign.png",
+        "sha256": "d54940cf1acfb0c3951c0152556311f79a44c2a6805dc6e91611bb56f80d94df",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/counter_strike_gign.png",
+        "sha256": "f07a823260c199024a03eaab85ba89cc7a388949d263e9c9f0fba3f4ee74c8fc",
+        "poses": 16
+      },
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default GIGN counter-terrorist",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_fbi",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/counter_strike_fbi.png",
+        "sha256": "91384fb6cd619f3002fe7b6d2b00a01d97ffc93d7e719e753634d6fc22b04f34",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/counter_strike_fbi.png",
+        "sha256": "0ae0fe022dc3fe4291bc7e9a8a3af417f9e3e321b04e872c0ed24751c79f6631",
+        "poses": 16
+      },
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default FBI HRT counter-terrorist",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_scout",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/team_fortress_2_scout.png",
+        "sha256": "1ddef8364c2a712b56cc984e84be31ed44b56a47c90351b44b2e33b2c99e7ac1",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/team_fortress_2_scout.png",
+        "sha256": "fd33f224c549a27936a9924ab831537cd6209eb3dfda3e6fbce1ecc5603cc623",
+        "poses": 16
+      },
+      "sourceWork": "Team Fortress 2 (2007), stock RED Scout loadout",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_soldier",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/team_fortress_2_soldier.png",
+        "sha256": "0b69bda2defe8dd4eb75f862a6fa0a8784707950621303993e2c6326f4419855",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/team_fortress_2_soldier.png",
+        "sha256": "a923398eeb605412c3caac2350e38b1c19a157cd85fdd933a25ef3b3b0f3c725",
+        "poses": 16
+      },
+      "sourceWork": "Team Fortress 2 (2007), stock RED Soldier loadout",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_medic",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/team_fortress_2_medic.png",
+        "sha256": "dd54d07c2cffb035381cff091db429c2693ab28b95b8035b1d41e0fae799e051",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/team_fortress_2_medic.png",
+        "sha256": "cbab5bf529a7047bc40ebdea959b3ac9dee7d92e0d35873d3e344bb985d6db4a",
+        "poses": 16
+      },
+      "sourceWork": "Team Fortress 2 (2007), stock RED Medic loadout",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_skye_autumn",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/sanctum_skye_autumn.png",
+        "sha256": "28b381f902832ca3e1349d318dd4d426de54a40539c532846b9bf1b544e9f330",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/sanctum_skye_autumn.png",
+        "sha256": "b02ca96b0cc6f6085c450a2dd860f185d30b0c9304a14cfe83267d6e9af4265f",
+        "poses": 16
+      },
+      "sourceWork": "Sanctum 2 (2013), base-game Skye Autumn",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_sweet_autumn",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/sanctum_sweet_autumn.png",
+        "sha256": "70ac384ba83452764e87c67a7614c484155e5553e22871efb4922f954dac0fbf",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/sanctum_sweet_autumn.png",
+        "sha256": "e2fb34900b3e21bba2b8e3622ea8e5a759e01566af92a6e7e0904350bbf6f8c8",
+        "poses": 16
+      },
+      "sourceWork": "Sanctum 2 (2013), base-game Sweet Autumn",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_simo",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/sanctum_simo.png",
+        "sha256": "3ee4a66f94c899d263b354396b67245dc56ca40618f8c7539b6065c53d3fdca1",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/sanctum_simo.png",
+        "sha256": "32b5c4e8c29fd4676e65c6db194618df3e6c48b71a17c38e2193ebfdb83a5707",
+        "poses": 16
+      },
+      "sourceWork": "Sanctum 2 (2013), SiMo UNIT 025-58",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_jacket",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/hotline_miami_jacket.png",
+        "sha256": "3a1e5be47523d5ee2267d50568db588029246a1cdbe1d512aa6f06345ca711b2",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/hotline_miami_jacket.png",
+        "sha256": "5f734df5693659ac9da38c06e4a5b10b1a81fed708a56e4d2b6fd3fcb80c7e58",
+        "poses": 16
+      },
+      "sourceWork": "Hotline Miami (2012), Jacket in 1989 wearing Richard mask",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_biker",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/hotline_miami_biker.png",
+        "sha256": "923d121677dfb4688ff7fceb58ce995d78f8feb7cc8e2418172371081490894b",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/hotline_miami_biker.png",
+        "sha256": "396fe673f0f3573e95538f0c8c3780abf70c3fcbb00f804b63c75a37805d70a8",
+        "poses": 16
+      },
+      "sourceWork": "Hotline Miami (2012), Biker in 1989",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_richter",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/hotline_miami_richter.png",
+        "sha256": "79f04175ab69b1122f44c1754e28347fad714160a0156c51ec295e18d06a0655",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/hotline_miami_richter.png",
+        "sha256": "08818c578579d6932f6d940ef30d477efc5af9505786bca04f71f3ad81d8156d",
+        "poses": 16
+      },
+      "sourceWork": "Hotline Miami (2012), Richter in 1989 wearing rat mask",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "walking_dead_telltale_lee_everett",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/walking_dead_telltale_lee_everett.png",
+        "sha256": "e5077dc7c053f6243be75930df529ac0b92ed2307552a13bcd69ecc3acfa2a87",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/walking_dead_telltale_lee_everett.png",
+        "sha256": "68de4a79bcf68bb7865df5330b42878cc5e8a466e7e54cc04e53d9d78322c115",
+        "poses": 16
+      },
+      "sourceWork": "The Walking Dead: Season One (2012), Lee before the final infection",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "clementine_final_season",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/clementine_final_season.png",
+        "sha256": "bfc8268be508ba7e205aa4c95b3e468fbf44cb48c9391a2920a389795d1b5d7c",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/clementine_final_season.png",
+        "sha256": "9b8e14fec5a29436dbb4029c793e7ab162e2579af34edddb646f6b24dbe0dd0a",
+        "poses": 16
+      },
+      "sourceWork": "The Walking Dead: The Final Season (2018), Clementine before the final injury",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "walking_dead_telltale_kenny",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/walking_dead_telltale_kenny.png",
+        "sha256": "3c3982cb902f457ca4f09ade04b9f21309d0779105835ba0f69fb6d8d3f143c8",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/walking_dead_telltale_kenny.png",
+        "sha256": "96939b0cee22cc96a2b7818b0571cafc50c84afc32eaf62868ce9b7e67069061",
+        "poses": 16
+      },
+      "sourceWork": "The Walking Dead: Season One (2012), Kenny before Season Two",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "crypt_necrodancer_cadence",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+        "sha256": "1eb3beb1c444377ee78aaa4e2379d552da8dfc732c806fca44af569837388e22",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/crypt_necrodancer_cadence.png",
+        "sha256": "ab938ef7d34c71669b6fb4a9ea3d1cff7d3a4fb3231d475b57f9b565f8835583",
+        "poses": 16
+      },
+      "sourceWork": "Crypt of the NecroDancer (2015), ordinary Cadence campaign equipment",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "crypt_necrodancer_melody",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_melody.png",
+        "sha256": "3a34ddab5a79d1b4deb7935cd2923ad305b57e21dad69a0f34a6327866faa090",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/crypt_necrodancer_melody.png",
+        "sha256": "2a273fe36372350fa5a1466ca9439cc383c27583d76269a5941157eb355eeb69",
+        "poses": 16
+      },
+      "sourceWork": "Crypt of the NecroDancer (2015), playable Melody",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_soldier",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/nemesis_awaken_realms_soldier.png",
+        "sha256": "430efe96588590e301add3684b1cc58cd2609ba58943b762880a938d7ade62f5",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/nemesis_awaken_realms_soldier.png",
+        "sha256": "f88f41be6399c00ddc3b4b71d2165299705836358f05bf699d7db6603aacc778",
+        "poses": 16
+      },
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Soldier",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_scientist",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/nemesis_awaken_realms_scientist.png",
+        "sha256": "610c932a7010c2f968ecb3437b5701015df2188856ef7dc7a88fe332d206220a",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/nemesis_awaken_realms_scientist.png",
+        "sha256": "daaf2dd94964067b53d62f265346a004b9ca3b5816df3bfc7a04380796329113",
+        "poses": 16
+      },
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Scientist",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_scout",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/nemesis_awaken_realms_scout.png",
+        "sha256": "28f257a056e743924782620a54736d95405e16ccc3ffde02e37086e350bfc1b0",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/nemesis_awaken_realms_scout.png",
+        "sha256": "70e996d624d3d6a2ae803655ddd4410045d71f35b714627544f6dcbbdcf455cf",
+        "poses": 16
+      },
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Scout",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_windfall",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/absolver_downfall_windfall.png",
+        "sha256": "598c17d3837268bf035768b7b21aee94c04f270b9fa1d30ac895904993410346",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/absolver_downfall_windfall.png",
+        "sha256": "8b800fd3d799da42d4b22e8725ebd0eb48346759573beb6aaa633eeac068bfa5",
+        "poses": 16
+      },
+      "sourceWork": "Absolver: Downfall (2018), declared custom Windfall Prospect configuration",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_khalt",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/absolver_downfall_khalt.png",
+        "sha256": "e65c6e01f0fa8ef9d8511d1083350cd4e43f25aed8428b5149d932556b899702",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/absolver_downfall_khalt.png",
+        "sha256": "1668f96e85af12fe90fb35fda7ef4da28482ffe4c948849e2fba0a6dfa0e1b43",
+        "poses": 16
+      },
+      "sourceWork": "Absolver: Downfall (2018), declared custom Kahlt Prospect configuration",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_forsaken",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/absolver_downfall_forsaken.png",
+        "sha256": "64db942c61635914629d20b32a1a2e5a63f628ae66c594e748ecebdaf7736a5f",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/absolver_downfall_forsaken.png",
+        "sha256": "b74d28b66b729262b03bf2a2e6ba5ff2e57c793dcce004685fc091f2d4b8f0d0",
+        "poses": 16
+      },
+      "sourceWork": "Absolver: Downfall (2018), declared custom Forsaken Prospect configuration",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_p3",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/atomic_heart_p3.png",
+        "sha256": "abda479d1e4e6b79f3aed3a3390e0617804e212581ca2cb7b3b5fb652de01437",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/atomic_heart_p3.png",
+        "sha256": "43c2d3ad73666af191a01673048cb5da1f8f0237a5e454469d5d4ad931416b10",
+        "poses": 16
+      },
+      "sourceWork": "Atomic Heart (2023), base-game P-3 using Zvezdochka and CHAR-les",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_granny_zina",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/atomic_heart_granny_zina.png",
+        "sha256": "5cedd2efd4146f304659534ad81701dad18bf418b19db27fafa4ce2bdf1be544",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/atomic_heart_granny_zina.png",
+        "sha256": "4c9edad626cbe9e228e523fb85a3460f4e7aea63bcea76950d11ba352e9cf9f0",
+        "poses": 16
+      },
+      "sourceWork": "Atomic Heart (2023), Baba Zina in the base game",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_tereshkova",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/atomic_heart_tereshkova.png",
+        "sha256": "bb95fc5f63d2b46c92696e1be43d5f5232622d20438d92cebc72c0002d46d549",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/atomic_heart_tereshkova.png",
+        "sha256": "563a267cb0ce81e16495d6c65a2611a76713012b92b2daa1e7cdd4190faa19f4",
+        "poses": 16
+      },
+      "sourceWork": "Atomic Heart (2023), TER-A6 Tereshkova VDNKh hostess",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bendy_ink_machine_henry",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/bendy_ink_machine_henry.png",
+        "sha256": "3381e74c3b3c390620f5af5d0cf84bc0fa000ae916343b4f305b46e3dba1aeca",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/bendy_ink_machine_henry.png",
+        "sha256": "47ffa9f7bf9b5a1dd7538b37497720505497ecd55feefd6e18ea400032f40557",
+        "poses": 16
+      },
+      "sourceWork": "Bendy and the Dark Revival (2022), visible ink-realm Henry replica; prior BATIM axe actions are declared adaptation",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/hammond.png",
+        "sha256": "82b44867baea290b9eacf5ef1261f01b8df737af9f52d59775fd24c024955e56",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/hammond.png",
+        "sha256": "ba7c71c5decca7c53206cbed857b7717f0bd416428e8ebfa29e3451b5de402b9",
+        "poses": 16
+      },
+      "sourceWork": "Stargate SG-1, Season1 (1997), Major General George Hammond at Stargate Command",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bendy_ink_machine_allison",
+      "native": {
+        "path": "public/sprites/generated/combat-character-animations-wave17-part-b/bendy_ink_machine_allison.png",
+        "sha256": "782fc7cee7c79ba02d02a7e146735594e63ac3e88dc2714a05e088041249620f",
+        "poses": 32
+      },
+      "base": {
+        "path": "public/sprites/generated/combat-character-corrections-wave17-part-b/bendy_ink_machine_allison.png",
+        "sha256": "9ae2204cdfea4ec65ffa63433b21c8aa507094b5b2ea6e317557fc7fd32545e1",
+        "poses": 16
+      },
+      "sourceWork": "Bendy and the Ink Machine (2018), friendly Allison Angel chapters 4–5",
+      "source1to1Verified": false
+    }
+  ],
+  "reviewed": [
+    {
+      "heroId": "thomas_rogan_hotd",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead (1997), original arcade Rogan",
+      "simple": "Tir du pistolet AMS de Rogan",
+      "secondary": "Double tir de Rogan dans le manoir",
+      "defense": "Retrait de Rogan derrière le pilier",
+      "special": "Salve du pistolet AMS de Rogan",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "g_hotd",
+      "delivered": false,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead (1997), original arcade G",
+      "simple": "Tir précis du pistolet de G",
+      "secondary": "Double tir de G sur la cible repérée",
+      "defense": "Couvert de G derrière la porte",
+      "special": "Tirs précis de G au laboratoire",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sophie_hotd",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead (1997), living DBR researcher Sophie Richards",
+      "simple": "Signaler un passage libre à Rogan",
+      "secondary": "Indiquer la sortie du laboratoire",
+      "defense": "Se mettre à l’abri dans le manoir",
+      "special": "Alerte de Sophie depuis le manoir",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "james_taylor_hotd2",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead 2 (1998), original arcade James",
+      "simple": "Tir du pistolet de James",
+      "secondary": "Double tir de James dans la rue de Venise",
+      "defense": "Repli de James derrière le parapet",
+      "special": "Salve de James sur le point exposé",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "gary_stewart_hotd2",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead 2 (1998), original arcade Gary",
+      "simple": "Tir du pistolet de Gary",
+      "secondary": "Double tir de Gary près du canal",
+      "defense": "Couvert de Gary derrière le pilier",
+      "special": "Salve du pistolet de Gary",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "amy_crystal_hotd2",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead 2 (1998), original arcade Amy",
+      "simple": "Tir de service d’Amy Crystal",
+      "secondary": "Double tir d’Amy au pont",
+      "defense": "Retrait d’Amy derrière la balustrade",
+      "special": "Tirs de couverture d’Amy à Venise",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "lisa_rogan_hotd3",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead III (2002), Lisa during the 2019 rescue",
+      "simple": "Tir du fusil à pompe de Lisa",
+      "secondary": "Second tir de Lisa après réarmement",
+      "defense": "Repli de Lisa derrière la porte EFI",
+      "special": "Salve du fusil à pompe de Lisa",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "g_hotd3",
+      "delivered": false,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead III (2002), gray-haired G during the 2019 rescue",
+      "simple": "Tir du fusil à pompe du vétéran G",
+      "secondary": "Réarmement puis tir de G",
+      "defense": "Couvert de G derrière le bloc EFI",
+      "special": "Salve du vétéran G dans l’installation",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dan_taylor_hotd3",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The House of the Dead III (2002), Dan Taylor in the 2019 prologue",
+      "simple": "Tir du fusil à pompe de Dan",
+      "secondary": "Tir de Dan après réarmement",
+      "defense": "Couvert du commando derrière la cloison",
+      "special": "Dernière salve de Dan dans la coursive",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bioshock_rapture_jack",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "BioShock (2007), Jack in Rapture",
+      "simple": "Coup de clé anglaise de Jack",
+      "secondary": "Electro Bolt de Jack",
+      "defense": "Repli de Jack derrière les cloisons de Rapture",
+      "special": "Electro Bolt de la main gauche de Jack",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bioshock_rapture_bouncer",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "BioShock (2007), standard Bouncer Big Daddy",
+      "simple": "Percussion de la foreuse du Bouncer",
+      "secondary": "Charge à la foreuse du Bouncer",
+      "defense": "Tenir sous l’armure de plongée du Bouncer",
+      "special": "Charge à la foreuse du Bouncer",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_sas",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default SAS counter-terrorist",
+      "simple": "Tir silencieux au M4A1-S",
+      "secondary": "Rafale contrôlée au M4A1-S",
+      "defense": "Couvert du SAS derrière une caisse de site",
+      "special": "Séquence de tirs au M4A1-S du SAS",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_gign",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default GIGN counter-terrorist",
+      "simple": "Tir simple du FAMAS du GIGN",
+      "secondary": "Mode rafale du FAMAS",
+      "defense": "Repli du GIGN derrière le couvert de désamorçage",
+      "special": "Trois rafales du FAMAS du GIGN",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "counter_strike_fbi",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Counter-Strike: Global Offensive (2018), default FBI HRT counter-terrorist",
+      "simple": "Tir du M4A4 de l’opérateur HRT",
+      "secondary": "Écran fumigène de reprise du site",
+      "defense": "Angle de repli de l’opérateur HRT",
+      "special": "Tirs de reprise du M4A4 HRT",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_scout",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Team Fortress 2 (2007), stock RED Scout loadout",
+      "simple": "Tir du Scattergun du Scout",
+      "secondary": "Pistolet secondaire du Scout",
+      "defense": "Double saut d’évitement du Scout",
+      "special": "Rafale rapprochée du Scattergun",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_soldier",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Team Fortress 2 (2007), stock RED Soldier loadout",
+      "simple": "Roquette du lance-roquettes standard",
+      "secondary": "Fusil à pompe secondaire du Soldier",
+      "defense": "Repli du Soldier derrière le couvert du front",
+      "special": "Salve du lance-roquettes du Soldier",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "team_fortress_2_medic",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Team Fortress 2 (2007), stock RED Medic loadout",
+      "simple": "Tir du Syringe Gun du Medic",
+      "secondary": "Medi Gun du Medic",
+      "defense": "Recul du Medic derrière son patient",
+      "special": "Faisceau de soin du Medi Gun",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_skye_autumn",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Sanctum 2 (2013), base-game Skye Autumn",
+      "simple": "Tir du fusil d’assaut de Skye",
+      "secondary": "Grenade secondaire du fusil de Skye",
+      "defense": "Double saut de Skye vers le couvert",
+      "special": "Rafale soutenue du fusil de Skye",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_sweet_autumn",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Sanctum 2 (2013), base-game Sweet Autumn",
+      "simple": "Roquette REX de Sweet Autumn",
+      "secondary": "Roquettes secondaires du REX",
+      "defense": "Écart aérien contrôlé de Sweet",
+      "special": "Salve de roquettes REX de Sweet",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sanctum_simo",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Sanctum 2 (2013), SiMo UNIT 025-58",
+      "simple": "Tir du fusil de précision de SiMo",
+      "secondary": "Tir secondaire du fusil de SiMo",
+      "defense": "Repositionnement mécanique de SiMo",
+      "special": "Tir de SiMo sur le point faible",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_jacket",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Hotline Miami (2012), Jacket in 1989 wearing Richard mask",
+      "simple": "Coup de batte de Jacket",
+      "secondary": "Revers de la batte de Jacket",
+      "defense": "Repli de Jacket derrière l’encadrement",
+      "special": "Enchaînement à la batte de Jacket",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_biker",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Hotline Miami (2012), Biker in 1989",
+      "simple": "Coup de couperet de Biker",
+      "secondary": "Lancer du couteau de Biker",
+      "defense": "Retrait de Biker derrière la porte",
+      "special": "Enchaînement au couperet de Biker",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hotline_miami_richter",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Hotline Miami (2012), Richter in 1989 wearing rat mask",
+      "simple": "Tir silencieux de Richter",
+      "secondary": "Double tir silencieux de Richter",
+      "defense": "Repli de Richter derrière le mur",
+      "special": "Rafale de l’arme silencieuse de Richter",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "walking_dead_telltale_lee_everett",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The Walking Dead: Season One (2012), Lee before the final infection",
+      "simple": "Coup de hache de Lee Everett",
+      "secondary": "Revers de la hache de Lee",
+      "defense": "Repli de Lee derrière la barricade",
+      "special": "Dégagement à la hache de Lee",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "clementine_final_season",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The Walking Dead: The Final Season (2018), Clementine before the final injury",
+      "simple": "Coup du couteau de survie",
+      "secondary": "Frappe de dégagement de Clementine",
+      "defense": "Retrait derrière la barricade d’Ericson",
+      "special": "Dégagement au couteau de Clementine",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "walking_dead_telltale_kenny",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "The Walking Dead: Season One (2012), Kenny before Season Two",
+      "simple": "Coup du pied-de-biche de Kenny",
+      "secondary": "Revers du pied-de-biche",
+      "defense": "Repli de Kenny derrière le véhicule",
+      "special": "Dégagement au pied-de-biche de Kenny",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "crypt_necrodancer_cadence",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Crypt of the NecroDancer (2015), ordinary Cadence campaign equipment",
+      "simple": "Frappe de dague sur le battement",
+      "secondary": "Bombe de Cadence sur le battement",
+      "defense": "Repli de Cadence sur un battement libre",
+      "special": "Frappe de dague de Cadence sur le battement",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "crypt_necrodancer_melody",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Crypt of the NecroDancer (2015), playable Melody",
+      "simple": "Déplacement adjacent de Melody",
+      "secondary": "Frappe adjacente de la Golden Lute",
+      "defense": "Pas de Melody hors de la case menacée",
+      "special": "Pas de Melody et résonance de la Golden Lute",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_soldier",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Soldier",
+      "simple": "Tir du fusil du Soldat",
+      "secondary": "Tir de couverture du Soldat",
+      "defense": "Repli du Soldat derrière une porte de coursive",
+      "special": "Tir de suppression du Soldat Nemesis",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_scientist",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Scientist",
+      "simple": "Tir du pistolet du Scientifique",
+      "secondary": "Lecture de la console par le Scientifique",
+      "defense": "Retrait du Scientifique par la coursive sûre",
+      "special": "Analyse du terminal par le Scientifique",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "nemesis_awaken_realms_scout",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Nemesis (Awaken Realms, 2018), core-box Scout",
+      "simple": "Tir du fusil de la Scout",
+      "secondary": "Progression silencieuse du Scout",
+      "defense": "Écart du Scout vers la porte libre",
+      "special": "Reconnaissance prudente de la Scout",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_windfall",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Absolver: Downfall (2018), declared custom Windfall Prospect configuration",
+      "simple": "Frappe du Prospect Windfall",
+      "secondary": "Contre après esquive du style Windfall",
+      "defense": "Évitement directionnel Windfall",
+      "special": "Contre physique après évitement Windfall",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_khalt",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Absolver: Downfall (2018), declared custom Kahlt Prospect configuration",
+      "simple": "Frappe du Prospect Kahlt",
+      "secondary": "Riposte après absorption du style Kahlt",
+      "defense": "Absorption du choc par la posture Kahlt",
+      "special": "Riposte physique après absorption Kahlt",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "absolver_downfall_forsaken",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Absolver: Downfall (2018), declared custom Forsaken Prospect configuration",
+      "simple": "Frappe du Prospect Forsaken",
+      "secondary": "Contre de la parade Forsaken",
+      "defense": "Parade directionnelle Forsaken",
+      "special": "Contre physique après parade Forsaken",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_p3",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Atomic Heart (2023), base-game P-3 using Zvezdochka and CHAR-les",
+      "simple": "Coup de Zvezdochka de P-3",
+      "secondary": "SHOK du gant de P-3",
+      "defense": "Bouclier polymérique de P-3",
+      "special": "SHOK du gant CHAR-les de P-3",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_granny_zina",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Atomic Heart (2023), Baba Zina in the base game",
+      "simple": "Tir du Kalash de Zina",
+      "secondary": "Tir de soutien de Baba Zina",
+      "defense": "Couvert dans le dépôt d’armes de Zina",
+      "special": "Rafale du Kalash de Baba Zina",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "atomic_heart_tereshkova",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [],
+      "sourceWork": "Atomic Heart (2023), TER-A6 Tereshkova VDNKh hostess",
+      "simple": "Annonce d’accueil de Tereshkova",
+      "secondary": "Guidage vers le passage du VDNKh",
+      "defense": "Position d’attente de l’hôtesse",
+      "special": "Orientation de l’hôtesse du VDNKh",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bendy_ink_machine_henry",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Bendy and the Dark Revival (2022), visible ink-realm Henry replica; prior BATIM axe actions are declared adaptation",
+      "simple": "Coup de hache de Henry",
+      "secondary": "Revers de la hache de Henry",
+      "defense": "Repli de Henry dans la station de refuge",
+      "special": "Geste de dégagement à la hache de Henry",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bendy_ink_machine_boris",
+      "delivered": false,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Bendy and the Ink Machine (2018), friendly Buddy Boris before transformation",
+      "simple": "Montrer le passage avec la lampe de Boris",
+      "secondary": "Signaler le refuge de Boris",
+      "defense": "S’abriter dans la pièce sûre de Boris",
+      "special": "Éclairage du refuge par Buddy Boris",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "bendy_ink_machine_allison",
+      "delivered": true,
+      "priorAuthored": true,
+      "missingSlotsBefore": [
+        "simple"
+      ],
+      "sourceWork": "Bendy and the Ink Machine (2018), friendly Allison Angel chapters 4–5",
+      "simple": "Taille de l’épée d’Allison",
+      "secondary": "Riposte à l’épée d’Allison Angel",
+      "defense": "Parade de l’épée d’Allison",
+      "special": "Riposte de l’épée d’Allison Angel",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dana_barrett_gb",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Ghostbusters (1984), non-possessed Dana Barrett, orchestra musician",
+      "simple": "Dana indique le passage libre",
+      "secondary": "Dana avertit les autres du danger",
+      "defense": "Dana se retire derrière la porte",
+      "special": "Dana guide le retour vers la sortie",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "louis_tully_gb",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Ghostbusters (1984), non-possessed Louis Tully in blue tracksuit",
+      "simple": "Louis signale la porte ouverte",
+      "secondary": "Louis prévient les voisins",
+      "defense": "Louis se replie derrière la porte",
+      "special": "Louis indique la sortie de l’immeuble",
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond",
+      "delivered": true,
+      "priorAuthored": false,
+      "missingSlotsBefore": [
+        "simple",
+        "secondary",
+        "defense"
+      ],
+      "sourceWork": "Stargate SG-1, Season1 (1997), Major General George Hammond at Stargate Command",
+      "simple": "Hammond précise le point de repli",
+      "secondary": "Briefing de sécurité de l’équipe SG",
+      "defense": "Hammond se retire derrière la console du SGC",
+      "special": "Ordre de repli du commandant du SGC",
+      "source1to1Verified": false
+    }
+  ],
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "networkVerified": false
+}

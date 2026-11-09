@@ -1,0 +1,89 @@
+✔ all15 previous topologies and34 material definitions remain exact while eight new material profiles are added (6.075763ms)
+✔ W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop (14.63219ms)
+✔ new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry (5.92085ms)
+✔ four new scenery types keep the actual floor anchor, physical volume, HP and canvas state (0.82627ms)
+✔ all19 previous topologies and42 material definitions remain exact while ten new material profiles are added (6.780431ms)
+✔ W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop (17.317553ms)
+✔ new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry (6.688232ms)
+✔ five new scenery types keep the actual floor anchor, physical volume, HP and canvas state (0.790206ms)
+✔ each W17 source location selects its own playable Tactics topology and materials without recent-stage substitution (5137.150971ms)
+✔ a named source location in another universe cannot silently select a foreign terrain (0.428203ms)
+✔ custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop (1.406883ms)
+✔ custom automatic choice uses a dedicated source layout and survives preset normalization (0.559149ms)
+✔ forced base arenas and authored mission objectives keep their explicit contracts (0.288764ms)
+✔ bge_lighthouse_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (15760.927012ms)
+✔ bge_lighthouse_tactics: actual surface objective resolves through engine effects without rewriting counters (2.551921ms)
+✔ rayman_teensies_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (7.79996ms)
+✔ rayman_teensies_forest_tactics: actual surface objective resolves through engine effects without rewriting counters (3.513784ms)
+✔ atomic_vdnh_gallery_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (9.730673ms)
+✔ atomic_vdnh_gallery_tactics: actual surface objective resolves through engine effects without rewriting counters (4.280681ms)
+✔ zootopia_rainforest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface (5.667495ms)
+✔ zootopia_rainforest_tactics: actual surface objective resolves through engine effects without rewriting counters (0.997427ms)
+✔ four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded (12.603208ms)
+✔ W15 environments cannot enter other engines and suppression removes source-specific art (0.550665ms)
+✔ Spencer mist respects reduced-motion while game time drives its independent original atmosphere (3.771077ms)
+✔ seven W15 materials paint real tops and cliff faces without changing geometry (4.8606ms)
+✔ every W15 playable surface selects a registered material and renders finite faces including slabs and slopes (91.08566ms)
+✔ lamppost, statue and radio mast use real obstacle supports and never alter collision or HP (1.261719ms)
+✔ each source location selects its own playable Tactics topology and materials without recent-stage substitution (5125.09829ms)
+✔ W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image (14.849207ms)
+✔ W15 location matching and explicit goals keep universe/base-arena boundaries (0.503986ms)
+✔ four W17 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans (1.523698ms)
+✔ the four W17 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs (5.516082ms)
+✔ bge_lighthouse_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid (80.73949ms)
+✔ rayman_teensies_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid (53.039419ms)
+✔ atomic_vdnh_gallery_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid (51.88184ms)
+✔ zootopia_rainforest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid (43.482459ms)
+✔ Hillys gives its two markers distinct floors, real stairs, lower dock cost and an impassable sea (4.273537ms)
+✔ Legends keeps the curved root route above its slow ravine without bridging the missing shortcut (2.031851ms)
+✖ VDNH has three independently supported levels, width-two stairs and a real height-limited service slab (8.19203ms)
+✖ Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil (2.354075ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 38
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28556.396898
+
+✖ failing tests:
+
+test at scripts/tacticsUniverseWave17.test.mjs:146:1
+✖ VDNH has three independently supported levels, width-two stairs and a real height-limited service slab (8.19203ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(findTerrainPath(t, f.heroSpawns[0], mid, options(f)).path.includes(at(f, 5, 8, 'bridge')))
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsUniverseWave17.test.mjs:157:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at scripts/tacticsUniverseWave17.test.mjs:164:1
+✖ Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil (2.354075ms)
+  AssertionError [ERR_ASSERTION]: A two-by-two body must have an actual route to the broad lower exit
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsUniverseWave17.test.mjs:175:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

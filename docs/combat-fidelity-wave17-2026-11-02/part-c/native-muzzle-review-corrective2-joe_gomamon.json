@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "heroId": "joe_gomamon",
+  "requestId": "joe_gomamon-correction-2",
+  "reviewedAt": "2026-11-02T07:59:48.832Z",
+  "actuallyViewedWith": "view_image",
+  "detail": "original",
+  "sourcePathActuallyViewed": "docs/combat-fidelity-wave17-2026-11-02/part-c/sources/joe_gomamon-correction-2.png",
+  "sourceSha256": "b2e98b457c84c5bdffcde0db347637aa326c4ca4f8ba7d596d1e26f9a3419d30",
+  "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/part-c/sources/joe_gomamon-correction-2.png",
+  "archivedSourceSha256": "b2e98b457c84c5bdffcde0db347637aa326c4ca4f8ba7d596d1e26f9a3419d30",
+  "requestResult": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/requests/joe_gomamon-correction-2-result.json",
+    "sha256": "fec53bdf70c3a67b18270ac28cb4da8cbccf751e5cd38ab5797ef1004225ec1e"
+  },
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "expectedDrawings": 8,
+  "observedDrawings": 8,
+  "sourceBodies": {
+    "primary": 8,
+    "partner": 8,
+    "completeUnits": 8
+  },
+  "rows": [
+    {
+      "row": 0,
+      "role": "super",
+      "completeUnits": 4,
+      "completePrimaryBodies": 4,
+      "completePartners": 4,
+      "calibrationOnly": false,
+      "observedReleaseColumns": [
+        2
+      ]
+    },
+    {
+      "row": 1,
+      "role": "calibration-only",
+      "completeUnits": 4,
+      "completePrimaryBodies": 4,
+      "completePartners": 4,
+      "calibrationOnly": true,
+      "observedReleaseColumns": []
+    }
+  ],
+  "productionCandidateDrawings": 4,
+  "calibrationOnlyDrawings": 4,
+  "deliveredDrawingsByThisReview": 0,
+  "reviewOnly": true,
+  "plannedCorrectiveRowsReady": true,
+  "notes": [
+    "8 complete Joe+Gomamon duos. Only third SUPER contains3 whole actual fish released beside the actual forward flipper.",
+    "New source passes strict rectangular isolation at alpha>24: fish box1230/232/217/140, no body pixel inside. Only4 blank source columns separate body/flipper maxx1225 from fish minx1230; no48px margin is claimed.",
+    "Top two fish touch each other; all3 are visibly complete. Last4 upright duos are calibration only. Final packed-atlas isolation must still be measured before publishing projectileRegion."
+  ],
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "sourceFishIsolation": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/native-muzzle-review-corrective2-joe-fish-source-geometry.json",
+    "sha256": "3d8b15a86ac574b0268a4d2d364dabc3de1eafaa1da5ca324278782696f86b86",
+    "sourceOnly": true,
+    "packedAtlasVerificationPending": true
+  },
+  "sourceDetailReview": "docs/combat-fidelity-wave17-2026-11-02/part-c/native-muzzle-review-corrective2-joe-fish-source-detail.png",
+  "sourceDetailReviewSha256": "c2075bd7a717228f06a085e4b110f03dda9e09f37eb8a977c251607b50189d28"
+}

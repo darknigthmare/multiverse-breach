@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "category": "sourceCaptureEnemy",
+  "entries": [
+    {
+      "id": "tail-concerto-kitten-wave17",
+      "sourceEnemyId": "tail_concerto_red_vest_kitten",
+      "universe": "Tail Concerto",
+      "kind": "source-capture-enemy",
+      "bodyHeight": 110,
+      "sheet": "/sprites/generated/source-capture-enemies-wave17/black-cat-gang-kitten.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "phases": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "captured": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "released": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": false
+        }
+      },
+      "sha256": "29f0fe81b38407cb3d8709ce816684abc6b7feff93bf650786fa2d5b4cfedfef",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/kitten-original.png",
+      "sourceImageSha256": "912f54eb68fd70079c6928dc71a7536df3496ab4a0c4506e4e3956caf0eea015",
+      "sourceDimensions": [
+        1402,
+        1122
+      ],
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/kitten-original.png",
+          "sha256": "912f54eb68fd70079c6928dc71a7536df3496ab4a0c4506e4e3956caf0eea015",
+          "role": "accepted-generated-native-entity-atlas"
+        }
+      ],
+      "referenceImage": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/tail-concerto-kittens-manual-page21.png",
+      "referenceImageSha256": "d4d174db4628ca6bef1079232d5946e6345e1d81d01b95f24d729717021613a1",
+      "sourceWork": "Tail Concerto (1998), USA manual printedpage19 /PDFpage21",
+      "sourceReference": "Pale beige-yellow feline child, blue eyes, open red vest, striped white/green undershirt, green trousers, white cuffed gloves, burgundy-brown boots. Manual: henchmen tend not to attack, run and laugh and hide; not an armed combatant. Native new pixel-art adaptation; capture state never damages, lifts or changes factions.",
+      "sourceUrl": "https://www.videogamemanual.com/ps1/Tail%20Concerto%20%28USA%29.pdf",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-common-scale-nearest-neighbor",
+        "baseline": 244,
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6117021276595744,
+        "bodyCalibration": {
+          "row": 1,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "sourceBodyHeight": 232,
+          "outputBodyHeight": 142
+        },
+        "rows": [
+          {
+            "phase": "idle",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 135,
+                  "top": 32,
+                  "width": 170,
+                  "height": 243
+                },
+                "output": {
+                  "left": 64,
+                  "top": 94,
+                  "width": 104,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 463,
+                  "top": 32,
+                  "width": 185,
+                  "height": 245
+                },
+                "output": {
+                  "left": 67,
+                  "top": 94,
+                  "width": 113,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 749,
+                  "top": 19,
+                  "width": 204,
+                  "height": 258
+                },
+                "output": {
+                  "left": 72,
+                  "top": 86,
+                  "width": 125,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 1019,
+                  "top": 63,
+                  "width": 212,
+                  "height": 214
+                },
+                "output": {
+                  "left": 66,
+                  "top": 113,
+                  "width": 130,
+                  "height": 131
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 295
+            }
+          },
+          {
+            "phase": "run",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 89,
+                  "top": 23,
+                  "width": 244,
+                  "height": 232
+                },
+                "output": {
+                  "left": 17,
+                  "top": 101,
+                  "width": 149,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 402,
+                  "top": 17,
+                  "width": 237,
+                  "height": 240
+                },
+                "output": {
+                  "left": 41,
+                  "top": 97,
+                  "width": 145,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 20,
+                  "width": 243,
+                  "height": 235
+                },
+                "output": {
+                  "left": 17,
+                  "top": 99,
+                  "width": 149,
+                  "height": 144
+                }
+              },
+              {
+                "source": {
+                  "left": 1045,
+                  "top": 17,
+                  "width": 286,
+                  "height": 232
+                },
+                "output": {
+                  "left": 13,
+                  "top": 97,
+                  "width": 175,
+                  "height": 142
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 294,
+              "bottom": 564
+            }
+          },
+          {
+            "phase": "captured",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 139,
+                  "top": 17,
+                  "width": 147,
+                  "height": 254
+                },
+                "output": {
+                  "left": 77,
+                  "top": 88,
+                  "width": 90,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 38,
+                  "width": 162,
+                  "height": 234
+                },
+                "output": {
+                  "left": 85,
+                  "top": 101,
+                  "width": 99,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 775,
+                  "top": 21,
+                  "width": 154,
+                  "height": 250
+                },
+                "output": {
+                  "left": 79,
+                  "top": 90,
+                  "width": 94,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 1118,
+                  "top": 12,
+                  "width": 138,
+                  "height": 259
+                },
+                "output": {
+                  "left": 80,
+                  "top": 85,
+                  "width": 84,
+                  "height": 158
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 557,
+              "bottom": 838
+            }
+          },
+          {
+            "phase": "released",
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 129,
+                  "top": 27,
+                  "width": 203,
+                  "height": 243
+                },
+                "output": {
+                  "left": 58,
+                  "top": 95,
+                  "width": 124,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 12,
+                  "width": 191,
+                  "height": 256
+                },
+                "output": {
+                  "left": 52,
+                  "top": 86,
+                  "width": 117,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 751,
+                  "top": 62,
+                  "width": 225,
+                  "height": 200
+                },
+                "output": {
+                  "left": 61,
+                  "top": 117,
+                  "width": 138,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 1068,
+                  "top": 37,
+                  "width": 240,
+                  "height": 227
+                },
+                "output": {
+                  "left": 44,
+                  "top": 101,
+                  "width": 147,
+                  "height": 139
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "sourceBounds": {
+              "top": 824,
+              "bottom": 1122
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "distinctCells": 16,
+        "frameHashes": [
+          "a487d0118b28f01ac9a31743e5cbf2d15ff876b593d146c4b134c2da08ccf644",
+          "de123eb5ae5c547a58ec6f1bf44c6fce761e3409783bf0cb9b5f7d3c060a2d54",
+          "5a9f309ed869cf4f34c29478805e734278e8343674aa7b712172983b190ab174",
+          "745c5570e3b01760fadeed5a90789e7d0c725016678192b21b0747b1c7fc3b45",
+          "6bf76388d3735179e5508a086e3a79c04c76a645d6db74f17be9e9477f03ee4e",
+          "16f50e07665069da1999a57e4375a87edc582cc33b6fe2a9987e1e41ad1521b7",
+          "992bd95046035bd1cb0784a5c6db5c4ff09cf0fa867d26a575e9c4d9cb85ac1c",
+          "500a925a7e0ecc557d1397701753d3c27859b1c6d543464e94bf854d7a54508f",
+          "7d32dd863a99661b2e5604768db3fcbf116e1b4b09c56f20eb6b89db24626d8e",
+          "594bffc22b0bcfa6ec1eb9a5d6dc04aa66fe8bda88508c3ac13a74bf63262b29",
+          "dc480a2ba6d9409fada5928c24789e33095a7b91398606e511c757904862fe31",
+          "72d3222f2ffb41fa670087df8832f8943353e51d7f2ea0ac8066a2f3a27baa55",
+          "bf7b230d36920beabfcb7b72418fdb1e4cb88117ad66fe7d6770bf325b1a2162",
+          "d78b114488bb03578e97ac45df6fe9d916f2ad774c167f961d6acd834d6e73c5",
+          "933e896d5c4e9fcbc8387ce84952401585cc992f3cd33081043e4256dde6d5b6",
+          "32f356503456c7eb437cd2bdf151266de8019fbad31faf7e674dea367f59a176"
+        ],
+        "visiblePixels": [
+          9105,
+          10248,
+          11173,
+          9621,
+          11557,
+          11017,
+          11827,
+          12143,
+          9457,
+          9195,
+          9664,
+          9457,
+          10406,
+          10910,
+          10196,
+          11391
+        ],
+        "transparentMarginPixels": 12,
+        "source1to1Verified": false,
+        "noNewGameplayEvents": true,
+        "review": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/kitten-artwork-review.json",
+        "reviewSha256": "100315a1a75ae2be343477f35da4c1bf1085d2cbb71a7a00e628e4e4424ebf40"
+      }
+    }
+  ]
+}

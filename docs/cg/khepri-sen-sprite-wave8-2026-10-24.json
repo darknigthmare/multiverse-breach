@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "characterId": "khepri_sen",
+  "heroId": "khepri_sen",
+  "characterName": "Khepri-Sen",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-pose-redraw-and-one-genuine-wholepose-framing-replacement",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/kemet_devoured_sun/heroes/khepri_sen.png",
+    "sha256": "26830c1508238bd4aa62b244eadc8a177bf6ee230534a5aec9f3fc1e497e0c23",
+    "bytes": 2472418,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen-v2-fidelity-wave8-2026-10-24.png",
+    "sha256": "c13ff34fbfc64b2ccbba0d494ffc6188612ed700beb576cf6cb2a501a0fe89e7",
+    "bytes": 1233742,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+    "sha256": "af1a3cc0c025f944fc0636292b685acc628b99e879cd846c6e148cd7910eae06"
+  },
+  "publicAuditFile": "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+  "independentReview": {
+    "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+    "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen.png",
+    "sha256": "4ec0712a74d543d1c25714ac7bcdf19abcdaceb33e4d04cac3059929964e0664",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "f97f918e2b2d8a916f03f580ef760232c841f588a584f35ca692ac61b530d3df",
+    "selectedImagegenNativeInputs": 2,
+    "sourceAtlasVisiblePixels": 570887,
+    "sourceAtlasAssignedVisiblePixels": 570887,
+    "sourceCorrectiveVisiblePixels": 351404,
+    "sourceCorrectiveAssignedVisiblePixels": 351404,
+    "selectedSourceAtlasFrames": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "genuineCorrectiveFinalCells": [
+      1
+    ],
+    "correctiveWholePoseNearestScale": 0.2621276595744681,
+    "finalCommonNearestScale": 0.7365079365079366,
+    "minimumGuard": 15,
+    "visibleFootBaselinesByCell": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave8-2026-10-24/khepri-sen/atlas/packing-proof.json",
+      "sha256": "afb31dd71b461584dbd6fd0df7e1a5fed064226c51eac7732956a282c389c248"
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave8-2026-10-24/khepri-sen/atlas/assembly-proof.json",
+      "sha256": "7f0ac7ec60f850a1ec6a8aa079aab8a0bb58c7cf1cfc30ecf6ae9fd32f86cee7"
+    }
+  },
+  "nativeInputs": [
+    {
+      "path": "/workspace/generated_images/exec-bc791e65-b953-429e-bad5-7dc7dccb8c97.png",
+      "sha256": "d6681a27fc600f42a64a948161868cf30ad79fc709c5915d567f1e73864f6280",
+      "selectedFrames": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "promptFile": "docs/cg/prompts/wave8-2026-10-24/khepri-sen/atlas-sixteen-poses.txt",
+      "reason": "Fifteen complete whole poses selected; initial visual border concern about pose1 later measured8px visible-alpha clearance, not confirmed truncation. Pose1 genuinely regenerated for improved framing."
+    },
+    {
+      "path": "/workspace/generated_images/exec-d33c062b-344d-4bae-a6fd-28bbcec12ab9.png",
+      "sha256": "7532bfddeaa7c5aee27344e0df718fc22b0feb83a21f4e3354d80f1ab03ad2bf",
+      "selectedFrames": [
+        1
+      ],
+      "promptFile": "docs/cg/prompts/wave8-2026-10-24/khepri-sen/atlas-single-pose01-full-clearance.txt",
+      "reason": "True complete-pose1 generation with broadouterclearance; wholeRGBA scaled nearest to match nativeatlasdensity."
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 2,
+  "retainedWhollyUnselectedNativeAttempts": 0,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/khepri-sen-reference-evidence-wave8-2026-10-24.json",
+  "limitations": [
+    "One currently selected internal original-project portrait is the identity authority, not an external official franchise or historic Egyptian source.",
+    "Hidden drapery, medallion mechanisms, reverse staff microgeometry and tiny face details remain interpreted; no absolute1:1 claim.",
+    "Fifteen whole poses from the first generated atlas and one genuinely generated complete idle pose are assembled mechanically, with all visible-alpha source components assigned and no semantic painting, recoloring or mirroring.",
+    "Initial pose1 visual border concern led to a genuine replacement. Later measurement found8px visible-alpha clearance, not confirmed opaque truncation; no false clipping diagnosis is made.",
+    "The producer installer left runtime maps unchanged; root subsequently selected the new atlas and exposed the exact unchanged old atlas as a variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-24",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+  "independentReviewSha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2"
+}

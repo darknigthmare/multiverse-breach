@@ -1,0 +1,580 @@
+{
+  "receipt": {
+    "command": "taskset --cpu-list 0,1 npm run build -- --config scripts/viteCodeOnly.config.js",
+    "args": [
+      "taskset",
+      "--cpu-list",
+      "0,1",
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--config",
+      "scripts/viteCodeOnly.config.js"
+    ],
+    "cwd": "/workspace/multiverse-breach",
+    "nodeVersion": "v22.23.4",
+    "nodeExecutable": "/tmp/multiverse-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "startedAt": "2026-11-09T05:34:53.041419+00:00",
+    "finishedAt": "2026-11-09T05:59:12.915943+00:00",
+    "exitCode": 1,
+    "status": "completed",
+    "prebuildBypassed": false,
+    "staticMediaCopied": false,
+    "log": "/tmp/merged-integration-build.log",
+    "childPid": 20050
+  },
+  "failureCount": 64,
+  "lastScript": "test:conversation",
+  "failures": [
+    {
+      "case": 104,
+      "title": "Jack keeps his reserved pistol and non-offensive compass while Will and Elizabeth lose class powers",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:77:1",
+      "error": "|-\n    elizabeth_swann_potc:simple\n    \n    'group' !== 'single'"
+    },
+    {
+      "case": 110,
+      "title": "RPG jack_sparrow_potc secondary damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(kinds.includes('bullet'))"
+    },
+    {
+      "case": 113,
+      "title": "RPG jack_sparrow_potc special damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 122,
+      "title": "RPG will_turner_potc special damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 125,
+      "title": "RPG elizabeth_swann_potc simple damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 128,
+      "title": "RPG elizabeth_swann_potc secondary damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 131,
+      "title": "RPG elizabeth_swann_potc special damages one valid victim without a generated laser or group burst",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonBlackPearlSourceKits.test.mjs:188:7",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 219,
+      "title": "Smash liquid_snake simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash liquid_snake simple: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 222,
+      "title": "Smash liquid_snake secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash liquid_snake secondary: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 223,
+      "title": "RPG liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    RPG liquid_snake special: incorrect damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 225,
+      "title": "Smash liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash liquid_snake special: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 226,
+      "title": "RPG mistral_mgr simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "'missing declared physical cue'"
+    },
+    {
+      "case": 229,
+      "title": "RPG mistral_mgr secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "'missing declared physical cue'"
+    },
+    {
+      "case": 232,
+      "title": "RPG mistral_mgr special damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    RPG mistral_mgr special: incorrect damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 235,
+      "title": "RPG true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "'missing declared physical cue'"
+    },
+    {
+      "case": 237,
+      "title": "Smash true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash true_ogre_tekken simple: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 238,
+      "title": "RPG true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "'missing declared physical cue'"
+    },
+    {
+      "case": 240,
+      "title": "Smash true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash true_ogre_tekken secondary: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 241,
+      "title": "RPG true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    RPG true_ogre_tekken special: incorrect damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 243,
+      "title": "Smash true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "error": "|-\n    Smash true_ogre_tekken special: incorrect damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 244,
+      "title": "RPG saturnin_duck executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 247,
+      "title": "RPG lilo_pelekai executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 250,
+      "title": "RPG stitch_626 executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    RPG stitch_626 wrong damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 253,
+      "title": "RPG mj_performer executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 256,
+      "title": "RPG rhythm_guard_mj executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 259,
+      "title": "RPG jack_sparrow_potc executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "'missing bullet feedback'"
+    },
+    {
+      "case": 262,
+      "title": "RPG roger_rabbit executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 265,
+      "title": "RPG cyber_spider_electro_beam executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "'missing electric_beam feedback'"
+    },
+    {
+      "case": 268,
+      "title": "RPG cyber_spider_flamethrower executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "'missing flame feedback'"
+    },
+    {
+      "case": 271,
+      "title": "RPG cyber_spider_kelly executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    RPG cyber_spider_kelly wrong damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 274,
+      "title": "RPG raven_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 275,
+      "title": "Tactics raven_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    8 !== 1"
+    },
+    {
+      "case": 276,
+      "title": "Smash raven_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Smash raven_tt wrong damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 277,
+      "title": "RPG starfire_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 278,
+      "title": "Tactics starfire_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Tactics starfire_tt wrong damage identity 1\n    \n    false !== true"
+    },
+    {
+      "case": 279,
+      "title": "Smash starfire_tt executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Smash starfire_tt wrong damage identity 0\n    \n    false !== true"
+    },
+    {
+      "case": 280,
+      "title": "RPG batman_tdk executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 289,
+      "title": "RPG batman_n52 executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 292,
+      "title": "RPG harley_n52 executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    RPG harley_n52 wrong damage identity 2\n    \n    false !== true"
+    },
+    {
+      "case": 295,
+      "title": "RPG joker_n52 executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 298,
+      "title": "RPG grim_knight executes its source action with typed feedback and one victim",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:80:51",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 303,
+      "title": "non-opt-in legacy kits preserve their actual RPG, Tactics and Smash presentation paths",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:147:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 304,
+      "title": "Smash P2 normalizes its source identity and preserves Starfire’s green single-target attack",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:162:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 305,
+      "title": "RPG P2 controls use the same camera flash without giving Lilo an alien ray",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:179:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 306,
+      "title": "Tactics P2 uses Raven’s single-target shadow presentation from the same source action",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0RuntimeEffects.test.mjs:203:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 316,
+      "title": "the duckling, human child and toon lose class-derived firearms and explicitly keep comic adaptations",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0SourceKits.test.mjs:79:1",
+      "error": "|-\n    saturnin_duck\n    \n    'support' !== 'melee'"
+    },
+    {
+      "case": 318,
+      "title": "Jack keeps the 2003 sword, flintlock and compass rather than a laser or a sequel boss power",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0SourceKits.test.mjs:105:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    'melee' !== 'ranged'"
+    },
+    {
+      "case": 321,
+      "title": "the original 2003 Titans keep mystical Raven, green ranged starbolts and a separate melee kick",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0SourceKits.test.mjs:152:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    'ranged' !== 'melee'"
+    },
+    {
+      "case": 325,
+      "title": "every damaging action uses the selected single opponent instead of a generic Nexus area explosion",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonP0SourceKits.test.mjs:220:1",
+      "error": "|-\n    saturnin_duck: simple\n    + actual - expected\n    \n      [\n        'chosen',\n    +   'neighbor'\n      ]"
+    },
+    {
+      "case": 412,
+      "title": "custom CPU Jack fires once then chooses swordplay through the normal enemy action loop",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonPiratesPlayableJackCurse.test.mjs:523:1",
+      "error": "|-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(engine.calls.some(call => call[7] === 'bullet'))"
+    },
+    {
+      "case": 414,
+      "title": "Ripley 1979 and Ripley 1986 keep separate source equipment and saved hero IDs",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonPriorityCorrections.test.mjs:18:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + '/sprites/generated/combat-character-corrections-wave10/ripley_aliens.png'\n    - '/sprites/generated/heroes/aliens/ripley-aliens.png'"
+    },
+    {
+      "case": 416,
+      "title": "the four reviewed Alien and Predator sprites keep their historical atlases as accessible variants",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonPriorityCorrections.test.mjs:48:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + '/sprites/generated/combat-character-corrections-wave10/ripley_aliens.png'\n    - '/sprites/generated/heroes/aliens/ripley-aliens.png'"
+    },
+    {
+      "case": 417,
+      "title": "the final Freeman runtime override stays in Half-Life 2 instead of restoring the gluon gun",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonPriorityCorrections.test.mjs:73:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + '/sprites/generated/combat-character-corrections-wave10/freeman.png'\n    - '/sprites/generated/heroes/half-life/freeman.png'"
+    },
+    {
+      "case": 532,
+      "title": "RPG Vader Force choke damages one identity and produces no laser or group flash",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:80:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 533,
+      "title": "RPG bob_minions launches a banana and keeps contact attacks free of guns",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:90:52",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 534,
+      "title": "RPG kevin_minions launches a banana and keeps contact attacks free of guns",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:90:52",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 535,
+      "title": "RPG Stuart plays musical notes rather than a laser projectile",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:102:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 536,
+      "title": "RPG Han blaster volley emits red bolts for its selected opponents up to its three-target cap",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:113:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 540,
+      "title": "Tactics Stuart guitar swing is contact-only while his sound attack uses musical notes",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonSourceKitRuntime.test.mjs:142:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    false !== true"
+    },
+    {
+      "case": 546,
+      "title": "Vader keeps a red Sith blade and Force choke targets one enemy rather than a musical area explosion",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonStarWarsMinionsCorrections.test.mjs:34:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    'melee' !== 'ranged'"
+    },
+    {
+      "case": 547,
+      "title": "Han uses his DL-44 and an evasion defense without carbonite protection or a Kessel-run explosion",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonStarWarsMinionsCorrections.test.mjs:47:1",
+      "error": "|-\n    The input did not match the regular expression /DL-44/. Input:\n    \n    'Tir de couverture de Han'"
+    },
+    {
+      "case": 548,
+      "title": "Bob and Kevin basic attacks use melee instead of class-generated lasers and guns",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonStarWarsMinionsCorrections.test.mjs:62:1",
+      "error": "|-\n    bob_minions\n    \n    'support' !== 'melee'"
+    },
+    {
+      "case": 549,
+      "title": "Stuart uses the documented red guitar while his sound damage remains an explicit game adaptation",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonStarWarsMinionsCorrections.test.mjs:73:1",
+      "error": "|-\n    Expected values to be strictly equal:\n    \n    'support' !== 'melee'"
+    },
+    {
+      "case": 550,
+      "title": "the six corrected identities preserve saved IDs, stats, categories and existing sprite paths",
+      "script": "test:conversation",
+      "location": "/workspace/multiverse-breach/scripts/canonStarWarsMinionsCorrections.test.mjs:83:1",
+      "error": "|-\n    han_solo\n    + actual - expected\n    \n    + '/sprites/generated/combat-character-corrections-wave7/han_solo.png'\n    - '/sprites/generated/heroes/star-wars/han-solo.png'"
+    }
+  ],
+  "testSummaries": [
+    {
+      "tests": 49,
+      "suites": 0,
+      "pass": 49,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 25628.32277,
+      "script": "test:discipline"
+    },
+    {
+      "tests": 8,
+      "suites": 0,
+      "pass": 8,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 290.396456,
+      "script": "test:cloud-meadow"
+    },
+    {
+      "tests": 157,
+      "suites": 0,
+      "pass": 157,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 40786.274144,
+      "script": "test:ui-immersion"
+    },
+    {
+      "tests": 1048,
+      "suites": 0,
+      "pass": 1048,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 375812.611712,
+      "script": "test:reaudit"
+    },
+    {
+      "tests": 105,
+      "suites": 0,
+      "pass": 105,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 47627.538965,
+      "script": "test:audit-reliability"
+    },
+    {
+      "tests": 62,
+      "suites": 0,
+      "pass": 62,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 28797.795923,
+      "script": "test:audit-followup"
+    },
+    {
+      "tests": 48,
+      "suites": 0,
+      "pass": 48,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 46690.385857,
+      "script": "test:audit-combat"
+    },
+    {
+      "tests": 19,
+      "suites": 0,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 549.485875,
+      "script": "test:deployment-inputs"
+    },
+    {
+      "tests": 949,
+      "suites": 0,
+      "pass": 885,
+      "fail": 64,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 879267.969147,
+      "script": "test:conversation"
+    }
+  ]
+}

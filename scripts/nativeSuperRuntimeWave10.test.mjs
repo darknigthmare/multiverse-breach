@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import sharp from 'sharp';
+import { historicalWave10Actor } from './combatSourceVersionFixturesWave10.mjs';
 
 const IDS = Object.keys(DEFINITIONS);
 const SUPPORT = new Set(IDS.filter(id=>DEFINITIONS[id].effect!=='damage'));
@@ -14,7 +15,7 @@ const MODES = ['rpg','melee','fighter'], SIDES = ['player','opponent'];
 const observations = [], engines = [], noop = () => {}, particles = { add: noop };
 let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, beginMeleeShield;
 let supportsNative, supportsTracked, getVisual, drawVisual, sampleMotion, getCharacterVisual, drawCharacterVisual, sampleCharacterMotion, getFrame, projectAnchor;
-const hero = id => { const h=heroes.find(h=>h.id===id);assert.ok(h,id);return h; };
+const hero = id => { const h=heroes.find(h=>h.id===id);assert.ok(h,id);return historicalWave10Actor(h); };
 const dummy = id => ({id,name:id,universe:'Wave10 runtime training',category:'test',weaponType:'melee',primaryColor:'#89aacc',secondaryColor:'#ddeeff',
   stats:{hp:5000,atk:20,def:8,spd:5},simple:{name:'Training strike',type:'melee',dmg:1},secondary:{name:'Training shot',type:'bullet',dmg:1,cd:3},
   defense:{name:'Training guard',type:'shield',reduce:0.4,dur:1},special:{name:'Training finish',type:'bullet',dmg:2}});

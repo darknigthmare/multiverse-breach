@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { projectAbilitiesBeforeWave17 } from './combatFidelityHistoricalCohortWave17.mjs';
 import { effectiveBatchPlan } from '../docs/combat-fidelity-wave16-2026-10-28/closure-support.mjs';
 
 // W16 reviews120 initial identities plus4 separately planned additions; the
@@ -46,7 +47,7 @@ export function projectAbilitiesBeforeWave16(current) {
   return Object.freeze(result);
 }
 
-export const HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE16 = projectAbilitiesBeforeWave16(COMBAT_ABILITY_OVERRIDES);
+export const HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE16 = projectAbilitiesBeforeWave16(projectAbilitiesBeforeWave17(COMBAT_ABILITY_OVERRIDES));
 
 // Presentation cardinalities in older tests describe the exact W15 inventory.
 // Prove the live union before removing only the 120 separately planned new

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "gray_fox",
+  "characterName": "Gray Fox",
+  "incarnation": "Metal Gear Solid original (1998) - Cyborg Ninja",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.konami.com/games/eu/en/products/mgs/",
+      "attemptedAt": "2026-10-26T08:15:16.002939+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://www.konami.com/games/eu/en/products/mgs/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 171661,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/gray-fox/research/source-00.html",
+      "sha256": "85db0ab163ac05e6d9be13a284c09003e9a0879ee0660c98e36fdd2cbaccb8ec",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    },
+    {
+      "url": "https://www.konami.com/games/eu/en/products/mgs3r/",
+      "attemptedAt": "2026-10-26T08:15:16.296750+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://www.konami.com/games/eu/en/products/mgs3r/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 108132,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/gray-fox/research/source-01.html",
+      "sha256": "fdd8eb8ac716d8bcf829fc8a7a3324a17f072801cb8ed8ffc9b2a1f0b7df3738",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0,
+  "wave11ResearchNotes": [
+    "Correct labelled CYBORG NINJA character_09 image URL attempted. Proxy403 denied before bytes, no visual source received, no bypass attempted."
+  ],
+  "actualAdditionalAttempts": [
+    {
+      "url": "https://www.konami.com/mg/s/img/history/chara_mgs/chara_09.png",
+      "linkedFrom": "https://www.konami.com/mg/history/jp/ja/mgs",
+      "pageCharacterLabel": "CYBORG NINJA",
+      "kind": "actual-image-fetch",
+      "attemptedAt": "2026-10-26T10:12:26.244953+00:00",
+      "result": "download-failed-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "noBypassAttempted": true
+    }
+  ]
+}

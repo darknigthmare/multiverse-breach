@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "preliminary": true,
+  "startedAt": "2026-11-02T05:57:55.350Z",
+  "commands": [
+    {
+      "id": "core",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-browser.mjs"
+      ],
+      "startedAt": "2026-11-02T05:57:55.541Z",
+      "finishedAt": "2026-11-02T05:58:02.434Z",
+      "processId": 19438,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102055755350/jade-core.log",
+      "logSha256": "c30a1cab374ca1a70198705d306c02f20614197b77095a23ff14b7374a4a7ed3",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T05:58:02.278Z"
+    },
+    {
+      "id": "physical-ledge",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-browser.mjs"
+      ],
+      "startedAt": "2026-11-02T05:58:02.437Z",
+      "finishedAt": "2026-11-02T05:58:09.256Z",
+      "processId": 19576,
+      "exitCode": 1,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102055755350/jade-physical-ledge.log",
+      "logSha256": "be2a2967f974e8ff88be301181011a856b5c9bb3bd1bf417e597e92b13db9658",
+      "receiptOrigin": "node-child-process-close-event"
+    }
+  ]
+}

@@ -109,7 +109,6 @@ const SAFE_KEY_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const ALLOWED_UNLOCK_FIELDS = new Set(['type', 'heroId']);
 const FAN_SERVICE_TYPES = new Set(['beachFamily', 'maidService', 'affection', 'goofy']);
-const ADULT_ONLY_FAN_SERVICE_TYPES = new Set(['beachFamily', 'maidService']);
 
 const requireText = (value, fieldName) => {
   const text = String(value ?? '').trim();
@@ -259,9 +258,9 @@ export const createCgDefinition = (input = {}) => {
       throw new TypeError('The approved fan-service wave is family-safe only.');
     }
   }
-  if (ADULT_ONLY_FAN_SERVICE_TYPES.has(definition.type) && definition.ageStatus !== 'adult-confirmed') {
-    throw new TypeError(`${definition.type} requires ageStatus adult-confirmed.`);
-  }
+  // The expanded roster includes natural animals and young characters. Family
+  // leisure and service scenes do not establish an adult age; the existing
+  // family-only and non-romantic gates apply when age is unconfirmed.
   if (
     definition.ageStatus === 'unknown-family-safe-only'
     && (definition.contentRating !== 'family' || definition.consentStatus === 'adult-consensual-romance')
@@ -315,6 +314,7 @@ export const filterCgCatalogByRegulation = (entries, regulation = {}) => {
   return catalog.filter((definition) => {
     const universeNames = [
       definition?.universeKey,
+      typeof definition?.universeName === 'string' ? definition.universeName : null,
       definition?.universeName?.fr,
       definition?.universeName?.en
     ].filter(Boolean).map(String);

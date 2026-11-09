@@ -1,0 +1,1056 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "checkedAt": "2026-10-23T21:45:22.712Z",
+  "status": "passed",
+  "reviewer": "/root/wave7_coordination",
+  "scope": "Independent read-only source/slot/theme/provenance and real asset bindings after root freeze. This report checks the actual named visual reviews and does not claim a second exhaustive visual inspection of all75CG.",
+  "manifest": {
+    "path": "docs/cg/roster-global-batch-2026-10-23.json",
+    "sha256": "9bfacf14ab94ad64a38b2698ec1d633f9a25ff3595452fa976dfb1b5f051f439"
+  },
+  "instruction": {
+    "path": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+    "sha256": "9bc6a9352dffdef184c9eb0b8692f269e69ddaa7c492355f74cca869ed068c7c"
+  },
+  "inputs": {
+    "plan": {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "sha256": "2706af253d159c1c219fee51d643f5cf5389302442f4e95f46daabb59b69f915",
+      "bytes": 33970238
+    },
+    "bible": {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "sha256": "85f5a527222e64ac9563ef93e5b86b4c30d69fa0878d2d061e5f1e2132c99545",
+      "bytes": 41089745
+    },
+    "pilot": {
+      "path": "public/cg/cg-manifest.json",
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee",
+      "bytes": 160270
+    },
+    "roster": {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "754ed7ce92119a8d0a40278c750ed8e7dbe52579593f721c5216538cb54174e1",
+      "bytes": 4408897
+    },
+    "revisions": {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    }
+  },
+  "coverage": {
+    "subjects": 1912,
+    "slots": 28680,
+    "actualDeliveredCg": 745,
+    "newCgBound": 75,
+    "unchangedOtherProductionCells": 28605,
+    "documentedNotApplicablePreserved": 8,
+    "registeredVersions": 839,
+    "remainingSlots": 27927
+  },
+  "cgRefusalJobsPreserved": 20,
+  "atlasRefusalsSeparate": {
+    "current": 7,
+    "historical": 6,
+    "newToday": 1,
+    "newAtlasRefusalFromThisAudit": false
+  },
+  "explicitBodyCoverageGapSubjects": [
+    "batman_n52",
+    "harry",
+    "jack_sparrow_potc"
+  ],
+  "scopedCostumeChecks": {
+    "characterId": "seyra_tal",
+    "slot": "CG13",
+    "authorityOwner": "aurelia_marcellina",
+    "sourceSha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+    "usedForIdentity": false,
+    "costumeOnly": true,
+    "qualifiedIdentityTotalRemains55": true,
+    "directCostumeBitmapAttributions": 1,
+    "otherFourteenCgDoNotAttributeUnusedCostumeBitmap": 14,
+    "commonScopedSourceReceiptMayBeReferencedByAllEntries": true
+  },
+  "inspectionAuthorship": "The reviewers recorded above personally inspected the individual native images. This auditor verified their selected-native SHA bindings, authored themes, individual source and gallery assets and current manifest queues.",
+  "series": [
+    {
+      "characterId": "nessa_vire",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/nessa-vire-wave7-2026-10-23.json",
+        "sha256": "0d9bcd6af6f51ab6e4d0b3864750b209c90040afeb3281486a7e8c32d80fc098"
+      },
+      "plan": {
+        "path": "docs/cg/nessa-vire-wave7-plan-2026-10-23.json",
+        "sha256": "eb91b4511e2acfd812c941eee6aca784903338b69bb80297ab9288f252014ea2"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-independent-review.json",
+        "sha256": "4826c6d40c907f9685c532934b4878c36a7dc74f92f2b05811a950d08c23aa3a"
+      },
+      "independentReviewer": "/root/cg_seyra_wave7",
+      "producer": "/root/cg_nessa_wave7",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "0d743b55d94c9a6a67a856dbdeb7307834818218152ce7fed3361bdf2d98d312",
+          "deliveredSourceSha256": "9cb580d2e9beda0f55ab016b72cea105484e601605d900c20619a44a7e39e5a4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "23b98d5201b17c1c45a6b5048fb3c138c29f17f2191961651a8d08d5e2cdffd5",
+          "deliveredSourceSha256": "f6feea508f13cc711d96f759d651737c7ec848ae70002b8cf2e393cd1d9bdfa2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "91698c690e5f79c01a4f0398c019d0b296fd149573ca66444d10b5fee0a089db",
+          "deliveredSourceSha256": "798b5d5bdfb90ef29c4727e284911a2fa0ebd9589d3727b46b3427380674f4be",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "561b09ae93e5e4b79934615fd5f3f062b2f35243e5987076df3234dd1a870b58",
+          "deliveredSourceSha256": "9177d489f7fabff08cd3148155059366f8f5e6c305c0f73b6828fbb48b41a93b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "6bcbc9b25dc9c1ccdaafee3cc5346505b872858ae03d0cd86950dcd9c0614c02",
+          "deliveredSourceSha256": "fa97ee28d339746ebd7450c97cada554c1446e284133ed3678f48b0fd5eb6337",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "56e69c2eda74002bc8d4c2ce2e409e2390d2f1129592bbcbd7d10e4c38c8aa2e",
+          "deliveredSourceSha256": "c3d8362bda8afc8802905403115d2454bd7c0b8f723e26ce311b199567d7054a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "35b81c2cbd34cd32cabac58569272fc786f4103b98ff24c68e824b15ad0c351f",
+          "deliveredSourceSha256": "4fd26ee81fcbabaf93471de0153faa1c378a5bf5c9a9af98ec4f371031d94f9e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "0d2c8f6d6a5546b35d885f22a565f71b778003d69fceecdaa7299cbf678f19d4",
+          "deliveredSourceSha256": "e7e3620d6be34b33fc51b1fb8f86886603b6e4f36bfcd6949fd7b7916ce14295",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "371f923c15a730cad3334da0e55a2c8f404067e47915afbfbc4d4a3c87a5f54d",
+          "deliveredSourceSha256": "d3028995f1bab2cb98fc2da485019f7a037911c91c6b324f2432f4900f1f03f2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "51780bae79645d619accf38526aa8c619e04ce4c2d0f58599fdfcb63a7ebbff4",
+          "deliveredSourceSha256": "b65fc13b5f40f75076a4fbc45e8598f137b131b60203ff338bf32b9538de53fe",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "7e9b0c3da2b051bfda95843a6cbb91bde4c9f139c4ac55a146abb4504401f201",
+          "deliveredSourceSha256": "b1f2a27cec5e32b752afff6b40336266381fc66f9e877702a2ccf01fba82669b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "98927aaf4aebc7c57bc6147b9d11d989f03c689379933305099d08f6d1f55df4",
+          "deliveredSourceSha256": "3002cb57081dce8d0e0875b5851eadf151d5b8909c5920a1bf941eedf42db4a2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "ea28e468b9f07c020568a2fe05b3712a2e4511b594a93de1710de0ae104d20fa",
+          "deliveredSourceSha256": "e18ef25d39ea31b1174c033ed7a4ddf6a0c594f67ff0a4cccce2ee96c5c820e1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "1e27829551232b40589c018d34ff06ae2832e2d824810ba3e749f1ff0f49a324",
+          "deliveredSourceSha256": "ad10859a60251e235cadffa9ff797aba9b481415c66a7c71b04646923f924563",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:aetherion-seven-laws-of-magic:nessa-vire:firstStep:openai-v1",
+          "type": "firstStep",
+          "family": "What If",
+          "nativeSha256": "fd36a28e23390b766390854ea6fd08b890526087f021433314144883c4fd48be",
+          "deliveredSourceSha256": "81b4b33b12de9b51909affe2ba59202e10230deb5f528cf46f459d7d8da768ee",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_seyra_wave7",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "aelwen_starbough",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/aelwen-starbough-wave7-2026-10-23.json",
+        "sha256": "b6d90c88313b8a55dfa2abfe778eb74d130bd8708daa00f8553391a1a0f13f01"
+      },
+      "plan": {
+        "path": "docs/cg/aelwen-starbough-wave7-plan-2026-10-23.json",
+        "sha256": "69da227efe9754462a4ba3af2a4fa016c9f940d8b23f55f117bb1339e29c0039"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-independent-review.json",
+        "sha256": "6d579806b44eb4409014c1e53d049bb018d129dc9a23ba5df8689dee963bfe45"
+      },
+      "independentReviewer": "/root/cg_nessa_wave7",
+      "producer": "/root/cg_aelwen_wave7",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "c01ca5358c2198422ccbda46a37bdf1ecd755ba8da02ebff0eeac9ae31258507",
+          "deliveredSourceSha256": "ad4342a038870b8525db2638c71dcd6afcccf7571f9b5d45cb0471dae7e76b24",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "5b1bdba325ed652636b3be951f7bfa5f6a23d5175ec9f3eaea8edf3474daf9b3",
+          "deliveredSourceSha256": "53696815c310e134c690e5d0d258bce80c160f9cb9dd0034e4f13f045ccd2af9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "7a64678b40faeeacdc230b2eba69ebe70780d46e489d1911667ea30b21252e25",
+          "deliveredSourceSha256": "46cb760de6a859c106e47b8173a4109f22ba6ca36e0ae170dd215b139a1b2f3c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "00b0ba18fc9d3307a502e5d842726f18e79cccfe1b482943d2f1531e4f5adda3",
+          "deliveredSourceSha256": "58b74d02eb67204c63f322f33a1e073541b22f0071a633d44b595f29e403fb62",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "5596d4035e5d4d764a51c1965f3534afd32953c5d6255cff53384924a38f7229",
+          "deliveredSourceSha256": "9320cb268d3f96e1e521b13d7f5b68db440ae43d905a2e94d69aae8e22262230",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "8d394ec01677cc7d7a6d6ef408fd95f48ee14379f21296ad81f661703018de4a",
+          "deliveredSourceSha256": "10b7e4c16c6448bb1ce93d9e238cdbbdb492c1f63f92813792ebeefb94bbe822",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "85269291d287c80f05a53b8da856cfd20043b11665d8b16a83be01d9d5603311",
+          "deliveredSourceSha256": "830f7b1f8cd44e7ec84c50879469f00b150871d4cfe03bb716e5d38ab70fdc25",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "db73ab9614e63e36d77a00b72e62dbf658614cb2520651f13de74a2840c2a159",
+          "deliveredSourceSha256": "b9b781c6a3ac71ba59bdfe41a435750e36649389fca3336d91abf67867194cb9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "352e73a18bde65c93dd282cdc683f9bbc5fb2a6bef966a1276fcb8cdd7819cfc",
+          "deliveredSourceSha256": "942b3ce4de3e7f7709d29287be722958bf6b9bee01dfc1d06b79be7576b73fc7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "9dcf0baac9c9fc919eb00a67a967cf1de927361c7fc295ea2c30dddce571635d",
+          "deliveredSourceSha256": "6737473d4a48b934c89fc6400cec1834346caae73f0d550c41d3e88116e3c5e2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "16d9db79b4b40b36ce81fcd3eef9f3c01323d47383a785690e438a0bff1a25c5",
+          "deliveredSourceSha256": "2d46bbcd5baa9842ed30110540bb6ddfce454d53acaeb9a4f16e05e3bfb9d759",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "6b8973a1734e2d7039babd68eb9f9da8c5d5f1c26cdb1773674a0c014b16a3f8",
+          "deliveredSourceSha256": "cd15bafd7e9036bb16a361e6c348497662ea02171e2bfc1c778f7ec97bafe442",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "4668ce2b490352babe2e532dfba7e94312864eef415fbff75282624dba74962a",
+          "deliveredSourceSha256": "f25eebc6c427b46a221de480eae82b7a782ce8a84b2ca9e8f9f4c34c243b8993",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "750ff29b9f065e38ad821c1c767f01b9a930c7c8beb0a7dc278dfb1cf4cd4d30",
+          "deliveredSourceSha256": "a98661bc70012299f5295c276dd1399cd7731e36deec8dc90da5cf1c87b685fb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:valedor-the-shattered-crown:aelwen-starbough:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "8ba393ed958020ed3b28e1042acb61fd17ae5e204855de08ad38624e51615f28",
+          "deliveredSourceSha256": "5d1d20d8442c8af5366d3e5cec2aa3d80072e64ba57f89c0ed5ccd7c5872711e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_nessa_wave7",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "ysara_flint",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/ysara-flint-wave7-2026-10-23.json",
+        "sha256": "fd53c6bbec962426f47b27f8ff83274dba2a9001c7a18ffe7761f8b80685f4b4"
+      },
+      "plan": {
+        "path": "docs/cg/ysara-flint-wave7-plan-2026-10-23.json",
+        "sha256": "c4d137a74fafac92a1114fd00aa7195eab7b2603bf0bc1bee17a0fc986d74671"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-independent-review.json",
+        "sha256": "583b20e61d93e9c8ca5f24d3845190b2f913d71f96f6e5197fff75b2391e8d1f"
+      },
+      "independentReviewer": "/root/cg_aelwen_wave7",
+      "producer": "/root/cg_ysara_wave7",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:the-crownless-sea:ysara-flint:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "f316e711b3b21a9beb0abcb441ed1d612074d654b7c02168eeb5b39a40b19943",
+          "deliveredSourceSha256": "256c658a841cacbe530cfa18fb5b605af1d5ac5eda29fceee8738ecdb8b7ba00",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:the-crownless-sea:ysara-flint:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "75afe759fae15f14419ec6a49293cf6db5f35a3f262aaa1312f7d6e896f8636f",
+          "deliveredSourceSha256": "2761185fe0d7a24804cfff4ea62139b5cea0cf33e12aec691452fcca35c6c122",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:the-crownless-sea:ysara-flint:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "3c8f397510e1d8a162c0140b467bc4f47b2f6d62bd055862d9e9aa57fd0d0cc7",
+          "deliveredSourceSha256": "b7c86b859bd3b966b72c67e944ac23e5640faa9f963131148bdd342dcf21f285",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:the-crownless-sea:ysara-flint:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "452c9d37564b56ede420f6bfbd93972704f9a4e8edcdc835083ce592d6eee1b6",
+          "deliveredSourceSha256": "33e43a8d188e983d49ab8c6e25c47a9883c7717b5cd9fbec785afb119ca25c87",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:the-crownless-sea:ysara-flint:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "b39b1aafe370fd49827301c3be2647050689c223ba2a552afed30f8eb02df373",
+          "deliveredSourceSha256": "e1a5d79e4eebf0222c488d2aa8d2793cf48508c0e78a7ecebe4edf9bb7d8792a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:the-crownless-sea:ysara-flint:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "872865a6da91c94ad05b1446fbbe8f58a42aaeaebe013f860e33ee281ea9fe06",
+          "deliveredSourceSha256": "7bb7bfeb830a660cde66ff3e669b7d7e99c267137f9d22ebdc60147be41a7db3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:the-crownless-sea:ysara-flint:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "df80e5a5372dfcb251c2da3f115c5c334d27b438fa78bc54dc885a7010fef5ad",
+          "deliveredSourceSha256": "e2b6ee2f80bf153b051841c4f1712a970a4fb26d2ac66e4931ef69a45880b0e9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:the-crownless-sea:ysara-flint:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "78fdad4867cd21bd5af4937c9c6e288a014f338203a0fb465c4d0c0fcef12046",
+          "deliveredSourceSha256": "ed3c82c51d3266307a9cf67f8b1ab8f6cd1b25169e33aabcc6b10dccf82cd9ca",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:the-crownless-sea:ysara-flint:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "c3a391a3b235c6e8ba2e5cd50b81dea1d4c4a95406e0cf73f5e8e73c2e9fa6df",
+          "deliveredSourceSha256": "4b2856d23e5b050c6ad173b4928b2d0552feacc494e752dac2ed28391056190a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:the-crownless-sea:ysara-flint:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "18ae083138a3b7926f6062f03c39e1ea0c7df97d77e0625d2a64f16c1871f7dc",
+          "deliveredSourceSha256": "d7ed3d4da87b37ea64c8ff16b2f6a61e77567042c786b75232a706791fa66668",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:the-crownless-sea:ysara-flint:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "93e2cc23846f95dc301df8c161628277baaf59042ef9d9ab7b180dddd7d12419",
+          "deliveredSourceSha256": "432e9f9d149a4e7078e1c9f98b8499146cb0fa7a2555e904f270d814b55073a7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:the-crownless-sea:ysara-flint:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "a7c0d2955b3f4074d7b6cd8e55bdec4aa053320b478b6eee362f7d2cc63cba12",
+          "deliveredSourceSha256": "b9352ae55a0b8687de1a56c170b0853937c82a803bd99f2c1302bc66cb231a98",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:the-crownless-sea:ysara-flint:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "23f94c828ec3419d72493b2e543aef5bd4b615b0c732e6e6dbed8daf1a05a154",
+          "deliveredSourceSha256": "075a58a09b2d7090339e31d20283ed0ce627c03d6338ade0eec100ba1e2b0ff1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:the-crownless-sea:ysara-flint:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "eb826e984deb236a9c2cad941e06810a0b6408596ca5a8ecaf088594ba34600b",
+          "deliveredSourceSha256": "a390e73b44e11ca7b2ac1071852f8d7425a75ab8f25c2c98ac87b024503aa043",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:the-crownless-sea:ysara-flint:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "1300fb72a9c2b844c24c66ae11fea05178da4ee1acbb4e8efd54da2bdedcc6d4",
+          "deliveredSourceSha256": "b34d46c7ba6749a90899f0d27eef4944d1f16963c38ace8a13409146a2ac79be",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aelwen_wave7",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "aurelia_marcellina",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/aurelia-marcellina-wave7-2026-10-23.json",
+        "sha256": "df97e41f961041a80f06902b99311aeff3168a5b1b91b7a8bdc6f4c928e82037"
+      },
+      "plan": {
+        "path": "docs/cg/aurelia-marcellina-wave7-plan-2026-10-23.json",
+        "sha256": "695b7ea78cb4ce8832f2567bb93446134842cde507e07b9297395c3404b4bfe3"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-independent-review.json",
+        "sha256": "4e04b452c2fd7d49cc392cfac9d145d32ded974fc31eb6e72a3abad9dae355d7"
+      },
+      "independentReviewer": "/root/cg_ysara_wave7",
+      "producer": "/root/cg_aurelia_wave7",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "45c6b14d3d807c327e1faf3de8c5d9ac96f25a01f0ad5815c55fa89602dd18d0",
+          "deliveredSourceSha256": "78c942bf12081948d49c0019b2ec57c90eefe6fdd5eab62a30cc9d8a929155ef",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "5881e7a20b36bb7e64744775f1427439a88d8db13bccd2666ee0485d81e5502e",
+          "deliveredSourceSha256": "91f539ce0b83508f6f4ab7776c01d730e25b3b77055180f56cd7a309a535d161",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "2e33735bd1a954a86facb04f6f4ae692fbb740b12da55b3ae0391bcd402eeab3",
+          "deliveredSourceSha256": "4479bbd71edc0c233e9bc1c664e15961f993c0d31cc330cd8d3efe1f05523966",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "8fa9036600183bd81a562f50c2973d0272c26f4068d76aedfa18858663607b0a",
+          "deliveredSourceSha256": "50f1e10190e5895e38f39911bcc135519044a0b1d7cc13807b740df483f92b40",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "4e573a894b5020e177a9c3880c2d2846b900ae19217ec2415c0453fa9b5dd358",
+          "deliveredSourceSha256": "edbf4e838beb976d2cc630faeade2de1e7650e59a92cca770eb11dd2889bd343",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "e45a91c0622043a2c619acb845709878a2b65d278275013c218fafeddc6f14e6",
+          "deliveredSourceSha256": "bc078d7094bfe6c19c2fb996051396fe3061ab38a9d94fe9d26f36b2c89f525a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "6d87867f06ef73a00fa99303bd8944d1afcd74231fdf011ddbf5cee858422496",
+          "deliveredSourceSha256": "2526fae7bd1e7ffc697101881527a57e22ca89c5afc25a75dff3e719048a2a4f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "5dd80ebd3d2af0b0f86f63fbc2c50088234333c86ef25e1673171acdc0884765",
+          "deliveredSourceSha256": "29f0762fd620a60ad4aa29fcadbe9f9f168a8028f20401f00a78e6c831be15ca",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "7c74067494c59a9e063a8b6b380faabf8b21cafc5fcfb96c2ca024212a8654d8",
+          "deliveredSourceSha256": "e4e829f7fde756ad2df239fa4b5ab22ded1e0f009f406695069c96a5c20d476e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "c08dfb6f9f9a5130d1d02ecc752e2242412cf4c4879e4278a004eddfa4ec4892",
+          "deliveredSourceSha256": "2bd8b5a860dd9889ac04822d31463ef84e85648bff573841ada958505f114bcd",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "31f5d6c1450b57722d85be2ebc855a60f0248effe037c8b038a4d2ec8512136d",
+          "deliveredSourceSha256": "c865b2a970089a31a402873a5ecd23278601cb2ef699efc213b3fde6e88a56de",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "e4ea729c54075459103423bb06a19a94d7ee1c953dda3254c2786503f3b8d846",
+          "deliveredSourceSha256": "159777b324bc3743ad488de31c1f69500c974c43fb6d983ce7a035a2dfef2c55",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "af8c5857dfc5bdbe97371abefa6d862f95400da53df6ec0ec79bc2133540127b",
+          "deliveredSourceSha256": "a967b810bdbbfabd58a891d75db8cf3d79fcde6dc46373f8d49da3ed69b158da",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "b1966f7616f8630af43d64a80b4c699369867e4d75e05d11e2ec70cf57d728a1",
+          "deliveredSourceSha256": "5d772f84b76c9fadf397620899918e51e306a877247c8f4fefcd424a83e30eb3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:imperium-aeternum:aurelia-marcellina:firstStep:openai-v1",
+          "type": "firstStep",
+          "family": "What If",
+          "nativeSha256": "00615cebdbfd2ad92095df2622cb9b8c1ecd78af9dfbb274868a499934a0f798",
+          "deliveredSourceSha256": "ed3dc5e6542117a17ecc9c4add4aec0963502e4a3a42e81eda58d2b7e3aad009",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_ysara_wave7",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "seyra_tal",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/seyra-tal-wave7-2026-10-23.json",
+        "sha256": "069df04f5e77c712445f49f5a2fbb3ad66a4829f0584112ac21809155e461f05"
+      },
+      "plan": {
+        "path": "docs/cg/seyra-tal-wave7-plan-2026-10-23.json",
+        "sha256": "bacf7925ff565ce9b00f33015d71f78529fc4d1af05d453de9081f9a47ea2fee"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-independent-review.json",
+        "sha256": "a253da4a0e9ba91af0b6e1aeecade99eb8faaa6b7177c1116c859bd27c2378f5"
+      },
+      "independentReviewer": "/root/cg_aurelia_wave7",
+      "producer": "/root/cg_seyra_wave7",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:ilyr-concordat:seyra-tal:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "893f794e8305122b90c90443e9abd7c6a42563e7a5328b5a295b4415cebaa4b8",
+          "deliveredSourceSha256": "c09d9c3990c344e0728fe1954f3c29c0310761402255353defa2cb24ade41c71",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:ilyr-concordat:seyra-tal:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "44f749bfdaf86b7fb45f24ee6b9688458cefb0c00480900c85b607e89544e1c5",
+          "deliveredSourceSha256": "32ed634be01c86fedbe7fd3a70f50d9abf27e41122e468cd062876867402094f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:ilyr-concordat:seyra-tal:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "3b9ac5be78f6cea0ef50eb20978ac92df8b54a2cf4d95c6b077936e3a642b4a4",
+          "deliveredSourceSha256": "47c77ec5c6cda55545a8810a06cb507e37bc8b0884bcf7e3babcef0c5ac5c7fb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:ilyr-concordat:seyra-tal:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "c13ae1caf29f32d27173a845521d5759f9019b2bf510c1000d57d641ed21bb66",
+          "deliveredSourceSha256": "27651778dd4a68f350e9c337999dd708f1c1831a2edda035d8f71b3793e28714",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:ilyr-concordat:seyra-tal:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "3511eaeb23c7f326cea81246bf6eb14fdeb08586387391e5a6c83c1e676a8dcb",
+          "deliveredSourceSha256": "86e4257233a193f24247f80fdd02532838692867852411dbe3d558f1ca0d9700",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:ilyr-concordat:seyra-tal:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "af559cfea60265e2b55845c15bdc83565c3970b692606a3b772954c2e02fe240",
+          "deliveredSourceSha256": "da2d8374a6af1e221d077fad30ed13e0dd5a4f67b84f9f40fe6f9fd91863c0c5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:ilyr-concordat:seyra-tal:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "9eb2bb634f8ac45c02aa4a5a802ad1ad8e05d684c0c11c540ec6b05b4958000f",
+          "deliveredSourceSha256": "edf882611acc4e1503d654c143f6dfb2e4fd9a5d8ba6cba18fca1bbd55060b42",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:ilyr-concordat:seyra-tal:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "41b6b81d463fa9ba50c9fd99de076729166607062fccdd67e58551959381b57f",
+          "deliveredSourceSha256": "c1c19ccb662b75ac9489bdb937f98de4bb643943f728b5bc03f8a6c392880647",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:ilyr-concordat:seyra-tal:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "0fbae0bb191cdaa4e30d73363bb7d45f7e66f2b27bce5344be68630d3fab5240",
+          "deliveredSourceSha256": "186e3234d5597db146b3515f67e7b71001c36d43c0e4284d76fa0f5d5a2fe03b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:ilyr-concordat:seyra-tal:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "87dd01edc200ea84c7477123755fb4debb30b74acc998cc90b1c7fcd0a72bd8b",
+          "deliveredSourceSha256": "587900b9d24b11dce498f9320c75d8a1404121f2cf2f8b9ee1e7aa63b92777b2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:ilyr-concordat:seyra-tal:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "2b87d136f8f7b88e9382fa62736ff71a8bc5e82b0b423fabc5c9991566b57a40",
+          "deliveredSourceSha256": "d70b813f8795d19d8fd4978f94b22fd631912d5dfaf960bca0666d783167b4a8",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:ilyr-concordat:seyra-tal:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "ffc160342434667c1e542c7ceab0fd865e62824969cdc638913c427bb41c7cf8",
+          "deliveredSourceSha256": "54df05e1e8d4872928fac65cc346efb823df53be22a8a9df61d1d84cf657c032",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:ilyr-concordat:seyra-tal:iconicOutfitSwap:openai-v1",
+          "type": "iconicOutfitSwap",
+          "family": "What If",
+          "nativeSha256": "bb1bc3472d56ff55b7f9f79e233ae382dc2460fbf5332a1f7bf46cc984c39fe6",
+          "deliveredSourceSha256": "e18dcbdb212602ffb032d3ac5757baa4e9b06f741582db4b96d87c1e510d7604",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:ilyr-concordat:seyra-tal:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "36682f1d491acba0800530da31775f7c33366a7c7a339f06e3665476bb89a109",
+          "deliveredSourceSha256": "5a64c3716325d0bc4b326c76c2a15420955aa080f2efe3c99086cf3e5771fc5e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:ilyr-concordat:seyra-tal:firstStep:openai-v1",
+          "type": "firstStep",
+          "family": "What If",
+          "nativeSha256": "d4f42c826ab8f7b4c9272ee9374015ddbeb9e9845444d016b5b9194fc33502a5",
+          "deliveredSourceSha256": "e26b51b4b166dbbecd78f7ca561298efbe691b1babeda275765eab69005dbf6b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_aurelia_wave7",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    }
+  ],
+  "seriesPreviewsPersonallyOpened": [
+    {
+      "characterId": "nessa_vire",
+      "path": "docs/cg/screenshots/nessa-vire-wave7-2026-10-23.webp",
+      "sha256": "159eefbc1be31569b91e1a8e6f5b74f19ccdde12faa4b5317ede14057c7d96e9",
+      "scope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review."
+    },
+    {
+      "characterId": "aelwen_starbough",
+      "path": "docs/cg/screenshots/aelwen-starbough-wave7-2026-10-23.webp",
+      "sha256": "ad8d4a23f91abfe12aae18dc5ee29a3bb0a2a45638d44e5c25bcd350f0d865cd",
+      "scope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review."
+    },
+    {
+      "characterId": "ysara_flint",
+      "path": "docs/cg/screenshots/ysara-flint-wave7-2026-10-23.webp",
+      "sha256": "a2210e516697f5c538d264cb73ae59c2d00a6b252e6e04e34957ec8ccbf53964",
+      "scope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review."
+    },
+    {
+      "characterId": "aurelia_marcellina",
+      "path": "docs/cg/screenshots/aurelia-marcellina-wave7-2026-10-23.webp",
+      "sha256": "e41b78d353cf8863042b2a120008af1ed8946892adb151222c242102afc50660",
+      "scope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review."
+    },
+    {
+      "characterId": "seyra_tal",
+      "path": "docs/cg/screenshots/seyra-tal-wave7-2026-10-23.webp",
+      "sha256": "ee09f7934eb082803d500f2e39f5f6ae212f234daa669ff11a06eb67be29b314",
+      "scope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review."
+    }
+  ],
+  "seriesPreviewScope": "Personally opened the public fifteen-CG contact sheet to check readability, varied poses/backgrounds and the displayed subject/theme overview. Thumbnail inspection only; individual native fidelity QA remains the independently authored producer/pair review.",
+  "automaticImageCalls": 0,
+  "automaticInstallations": 0,
+  "automaticPerfectFidelityApprovals": 0
+}

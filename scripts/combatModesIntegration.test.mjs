@@ -262,7 +262,14 @@ test('RPG P2 medical invocation keeps ally healing, radiation cap and dead-unit 
   assert.equal(engine.summon(actor, 'enemy'), true);
   assert.equal(engine.getTargetingState().effect, 'heal');
   assert.equal(engine.getTargetingState().eligibleTargets.every(unit => unit.side === 'enemy'), true);
+  // The current master chooser ranks recoverable HP: Loom lacks 40 HP,
+  // while radiation leaves Mirelle only 5 HP below her healing cap.
+  assert.deepEqual(engine.getTargetingState().previewTargetIds, [actor.battleId]);
+  assert.equal(engine.selectTarget(patient.battleId), true);
   assert.deepEqual(engine.getTargetingState().previewTargetIds, [patient.battleId]);
+  assert.equal(actor.atb, 100, 'choosing the patient does not spend ATB');
+  assert.equal(actor.specialCharge, 100, 'choosing the patient does not spend special charge');
+  assert.equal(actor.summonUsed, false, 'choosing the patient does not consume the invocation');
   assert.equal(engine.confirmTargeting(), true);
   const impact = engine.activeSummon.impactTick;
   stepRpg(engine, impact);

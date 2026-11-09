@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T05:46:56.293Z",
+  "initialPlan": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+    "sha256": "1f8685e68f25a13ca1c321d6899257f102f5a327ce01f8f58678931832926604"
+  },
+  "replacements": [
+    {
+      "part": "C",
+      "withheldId": "judy_hopps",
+      "replacementId": "stella_interstella",
+      "nativeRequestStatus": "actual-generation-refused",
+      "refusal": {
+        "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/requests/judy_hopps-result.json",
+        "sha256": "1d85528df66e9327f9860603cb8a4fa3b41feb5e815b3b1258db9341ce6ec128"
+      },
+      "replacementHero": {
+        "id": "stella_interstella",
+        "name": "Stella (Interstella 5555)",
+        "cat": "hacker",
+        "color": "#00d8ff",
+        "weapon": "laser",
+        "stats": {
+          "hp": 100,
+          "atk": 12,
+          "def": 6,
+          "spd": 6
+        },
+        "universe": "Daft Punk",
+        "category": "hacker",
+        "primaryColor": "#00d8ff",
+        "secondaryColor": "#00d8ff",
+        "weaponType": "laser",
+        "weaponColor": "#00d8ff",
+        "simple": {
+          "name": "Stella (Interstella 5555) Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Stella (Interstella 5555) Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Stella (Interstella 5555) Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Stella (Interstella 5555) Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#00d8ff"
+        }
+      },
+      "alreadyAuthored": true,
+      "priorAuthored": {
+        "sourceHeroId": "stella_interstella",
+        "universe": "Daft Punk",
+        "sourceWork": "Daft Punk — One More Time ; Interstella 5555 (2003)",
+        "sourceReference": "Interstella 5555 définit Stella comme bassiste des Crescendolls ; les trois gestes sont musicaux et protecteurs.",
+        "sourceUrl": null,
+        "identityBasis": "canonical-role",
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "gameplayAdaptation": true,
+        "simple": {
+          "name": "Première ligne de basse de Stella",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Relais des Crescendolls sur One More Time",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Retrait au repère de basse",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        }
+      },
+      "reason": "Different existing Interstella5555 musician; no Judy Hopps alternative version, alias or refusal retry."
+    }
+  ],
+  "reviewedIdentityCount": 124,
+  "effectiveDrawingCharacters": 120,
+  "source1to1Verified": false,
+  "rules": {
+    "appendOnly": true,
+    "existingReviewedKitsRetained": true,
+    "replacementSourcePlansBeforeGeneration": true,
+    "noRefusedCharacterRetry": true
+  }
+}

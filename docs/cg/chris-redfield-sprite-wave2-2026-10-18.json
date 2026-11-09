@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "heroId": "chris_redfield",
+  "incarnation": "Resident Evil1 original1996 finalized concept illustration",
+  "status": "installed-and-selected-with-source-limitations",
+  "provider": "OpenAI",
+  "interface": "built-in image_gen",
+  "plannedFrames": 16,
+  "reviewedFrames": 16,
+  "canonicalFidelityApproved": false,
+  "referenceEvidence": "docs/cg/chris-redfield-reference-evidence-2026-10-18.json",
+  "references": [
+    {
+      "url": "https://static.wikia.nocookie.net/residentevil/images/0/05/RE1ChrisConceptArtwork.png/revision/latest",
+      "finalUrl": "https://static.wikia.nocookie.net/residentevil/images/0/05/RE1ChrisConceptArtwork.png/revision/latest",
+      "httpStatus": 200,
+      "downloadedAt": "2026-10-18T05:34:54.907300+00:00",
+      "sha256": "cb0ac8b7ac20ed2ce55fcf935f6eb5cff2c1ef76462a5dacaa31e8cc1962c31b",
+      "viewed": true,
+      "incarnation": "Chris Redfield finalized concept Resident Evil1 1996",
+      "referencePurpose": "identity"
+    },
+    {
+      "url": "https://www.imfdb.org/images/c/c7/RE1_1996_Beretta92-1.JPG",
+      "finalUrl": "https://www.imfdb.org/images/c/c7/RE1_1996_Beretta92-1.JPG",
+      "httpStatus": 200,
+      "downloadedAt": "2026-10-18T05:34:55.297198+00:00",
+      "sha256": "4e8b119967a83f3f79a1a59f10d65f28d6e9597aec5811ef3a7de9719a5abb97",
+      "viewed": true,
+      "incarnation": "Beretta92FS black original1996; equipment-only, not identity",
+      "referencePurpose": "equipment-only"
+    }
+  ],
+  "image": {
+    "sha256": "758d421495de61ed9200e4490475e10385772408a91965cec83968c08941279a",
+    "bytes": 921559,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "preparedPrivately": true
+  },
+  "sourceImage": {
+    "sha256": "9c71393e42bb857088011042b1be38bb32f835c8d3507bca70ed30a705f07ca1",
+    "bytes": 1183832,
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "channels": 4
+  },
+  "targetOutput": "/sprites/generated/heroes/resident-evil/chris-redfield-re1-1996-fidelity-2026-10-18.png",
+  "targetFileInstalled": true,
+  "runtimeSelectionChanged": true,
+  "oldVariant": {
+    "path": "/sprites/generated/heroes/resident-evil/chris-redfield.png",
+    "sha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a",
+    "bytes": 835580,
+    "preserved": true
+  },
+  "privateEvidence": {
+    "generationSha256": "aad2ad5ad1cd68e80713f04f62157a38a5190520a4c42bdf176a540cfe1319be",
+    "peerReviewSha256": "d73b3d135b5b19ad569a4965fea9b0dba3805c4a955ed69b6a388c162f4d21cb",
+    "installationPlanSha256": "6574a8d1cbd0cc8f360a2d4925156d3c1d40ba1ebfb6507a18d78d86b221ccaa",
+    "publiclyAvailable": false
+  },
+  "normalization": {
+    "operation": "visible-alpha-bounds+4px-fringe+referenced-frame-extraction+common-nearest-scale+4x4-packing",
+    "mode": "component-layout",
+    "sourceVisiblePixels": 374357,
+    "assignedVisiblePixels": 374357,
+    "softAlphaPixelsPreserved": 77805,
+    "softAlphaOutsideFrameDiscarded": 8030,
+    "softAlphaAmbiguitiesForReview": 0,
+    "dominantBodies": 16,
+    "satellites": 20,
+    "crossesVirtualBoundaries": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      11
+    ],
+    "componentAssignment": "dominant centroid to distinct grid centers; satellites to nearest dominant bbox; original internal coordinates preserved",
+    "alphaBoundsThreshold": 12,
+    "sourceFringePixels": 4,
+    "softAlphaNormalization": "Keep alpha 1-12 inside each visible alpha>12 bbox expanded by 4 source pixels; discard only alpha 1-12 outside those bounds. No alpha>12 source pixel is removed before resize.",
+    "uniformScale": 0.8285714285714286,
+    "maximumSourceFrameWidth": 280,
+    "maximumSourceFrameHeight": 269,
+    "frameMeasurements": [
+      {
+        "cell": 1,
+        "sourceBounds": {
+          "left": 78,
+          "top": 56,
+          "right": 231,
+          "bottom": 324,
+          "width": 154,
+          "height": 269
+        },
+        "sourceVisibleBounds": {
+          "left": 82,
+          "top": 60,
+          "right": 227,
+          "bottom": 320,
+          "width": 146,
+          "height": 261
+        },
+        "sourceVisiblePixels": 23155,
+        "normalizedWidth": 128,
+        "normalizedHeight": 223
+      },
+      {
+        "cell": 2,
+        "sourceBounds": {
+          "left": 398,
+          "top": 57,
+          "right": 547,
+          "bottom": 324,
+          "width": 150,
+          "height": 268
+        },
+        "sourceVisibleBounds": {
+          "left": 402,
+          "top": 61,
+          "right": 543,
+          "bottom": 320,
+          "width": 142,
+          "height": 260
+        },
+        "sourceVisiblePixels": 22241,
+        "normalizedWidth": 124,
+        "normalizedHeight": 222
+      },
+      {
+        "cell": 3,
+        "sourceBounds": {
+          "left": 711,
+          "top": 56,
+          "right": 865,
+          "bottom": 324,
+          "width": 155,
+          "height": 269
+        },
+        "sourceVisibleBounds": {
+          "left": 715,
+          "top": 60,
+          "right": 861,
+          "bottom": 320,
+          "width": 147,
+          "height": 261
+        },
+        "sourceVisiblePixels": 22317,
+        "normalizedWidth": 128,
+        "normalizedHeight": 223
+      },
+      {
+        "cell": 4,
+        "sourceBounds": {
+          "left": 1031,
+          "top": 56,
+          "right": 1185,
+          "bottom": 324,
+          "width": 155,
+          "height": 269
+        },
+        "sourceVisibleBounds": {
+          "left": 1035,
+          "top": 60,
+          "right": 1181,
+          "bottom": 320,
+          "width": 147,
+          "height": 261
+        },
+        "sourceVisiblePixels": 23229,
+        "normalizedWidth": 128,
+        "normalizedHeight": 223
+      },
+      {
+        "cell": 5,
+        "sourceBounds": {
+          "left": 45,
+          "top": 374,
+          "right": 267,
+          "bottom": 631,
+          "width": 223,
+          "height": 258
+        },
+        "sourceVisibleBounds": {
+          "left": 49,
+          "top": 378,
+          "right": 263,
+          "bottom": 627,
+          "width": 215,
+          "height": 250
+        },
+        "sourceVisiblePixels": 25166,
+        "normalizedWidth": 185,
+        "normalizedHeight": 214
+      },
+      {
+        "cell": 6,
+        "sourceBounds": {
+          "left": 398,
+          "top": 378,
+          "right": 582,
+          "bottom": 632,
+          "width": 185,
+          "height": 255
+        },
+        "sourceVisibleBounds": {
+          "left": 402,
+          "top": 382,
+          "right": 578,
+          "bottom": 628,
+          "width": 177,
+          "height": 247
+        },
+        "sourceVisiblePixels": 22766,
+        "normalizedWidth": 153,
+        "normalizedHeight": 211
+      },
+      {
+        "cell": 7,
+        "sourceBounds": {
+          "left": 673,
+          "top": 374,
+          "right": 882,
+          "bottom": 631,
+          "width": 210,
+          "height": 258
+        },
+        "sourceVisibleBounds": {
+          "left": 677,
+          "top": 378,
+          "right": 878,
+          "bottom": 627,
+          "width": 202,
+          "height": 250
+        },
+        "sourceVisiblePixels": 25139,
+        "normalizedWidth": 174,
+        "normalizedHeight": 214
+      },
+      {
+        "cell": 8,
+        "sourceBounds": {
+          "left": 997,
+          "top": 379,
+          "right": 1223,
+          "bottom": 631,
+          "width": 227,
+          "height": 253
+        },
+        "sourceVisibleBounds": {
+          "left": 1001,
+          "top": 383,
+          "right": 1219,
+          "bottom": 627,
+          "width": 219,
+          "height": 245
+        },
+        "sourceVisiblePixels": 24014,
+        "normalizedWidth": 188,
+        "normalizedHeight": 210
+      },
+      {
+        "cell": 9,
+        "sourceBounds": {
+          "left": 53,
+          "top": 674,
+          "right": 239,
+          "bottom": 925,
+          "width": 187,
+          "height": 252
+        },
+        "sourceVisibleBounds": {
+          "left": 57,
+          "top": 678,
+          "right": 235,
+          "bottom": 921,
+          "width": 179,
+          "height": 244
+        },
+        "sourceVisiblePixels": 24100,
+        "normalizedWidth": 155,
+        "normalizedHeight": 209
+      },
+      {
+        "cell": 10,
+        "sourceBounds": {
+          "left": 375,
+          "top": 674,
+          "right": 590,
+          "bottom": 926,
+          "width": 216,
+          "height": 253
+        },
+        "sourceVisibleBounds": {
+          "left": 379,
+          "top": 678,
+          "right": 586,
+          "bottom": 922,
+          "width": 208,
+          "height": 245
+        },
+        "sourceVisiblePixels": 24309,
+        "normalizedWidth": 179,
+        "normalizedHeight": 210
+      },
+      {
+        "cell": 11,
+        "sourceBounds": {
+          "left": 670,
+          "top": 681,
+          "right": 949,
+          "bottom": 926,
+          "width": 280,
+          "height": 246
+        },
+        "sourceVisibleBounds": {
+          "left": 674,
+          "top": 685,
+          "right": 945,
+          "bottom": 922,
+          "width": 272,
+          "height": 238
+        },
+        "sourceVisiblePixels": 26034,
+        "normalizedWidth": 232,
+        "normalizedHeight": 204
+      },
+      {
+        "cell": 12,
+        "sourceBounds": {
+          "left": 1000,
+          "top": 674,
+          "right": 1214,
+          "bottom": 928,
+          "width": 215,
+          "height": 255
+        },
+        "sourceVisibleBounds": {
+          "left": 1004,
+          "top": 678,
+          "right": 1210,
+          "bottom": 924,
+          "width": 207,
+          "height": 247
+        },
+        "sourceVisiblePixels": 24391,
+        "normalizedWidth": 178,
+        "normalizedHeight": 211
+      },
+      {
+        "cell": 13,
+        "sourceBounds": {
+          "left": 68,
+          "top": 973,
+          "right": 247,
+          "bottom": 1200,
+          "width": 180,
+          "height": 228
+        },
+        "sourceVisibleBounds": {
+          "left": 72,
+          "top": 977,
+          "right": 243,
+          "bottom": 1196,
+          "width": 172,
+          "height": 220
+        },
+        "sourceVisiblePixels": 20957,
+        "normalizedWidth": 149,
+        "normalizedHeight": 189
+      },
+      {
+        "cell": 14,
+        "sourceBounds": {
+          "left": 382,
+          "top": 1001,
+          "right": 580,
+          "bottom": 1198,
+          "width": 199,
+          "height": 198
+        },
+        "sourceVisibleBounds": {
+          "left": 386,
+          "top": 1005,
+          "right": 576,
+          "bottom": 1194,
+          "width": 191,
+          "height": 190
+        },
+        "sourceVisiblePixels": 22214,
+        "normalizedWidth": 165,
+        "normalizedHeight": 164
+      },
+      {
+        "cell": 15,
+        "sourceBounds": {
+          "left": 674,
+          "top": 970,
+          "right": 907,
+          "bottom": 1207,
+          "width": 234,
+          "height": 238
+        },
+        "sourceVisibleBounds": {
+          "left": 678,
+          "top": 974,
+          "right": 903,
+          "bottom": 1203,
+          "width": 226,
+          "height": 230
+        },
+        "sourceVisiblePixels": 23738,
+        "normalizedWidth": 194,
+        "normalizedHeight": 197
+      },
+      {
+        "cell": 16,
+        "sourceBounds": {
+          "left": 1017,
+          "top": 971,
+          "right": 1201,
+          "bottom": 1201,
+          "width": 185,
+          "height": 231
+        },
+        "sourceVisibleBounds": {
+          "left": 1021,
+          "top": 975,
+          "right": 1197,
+          "bottom": 1197,
+          "width": 177,
+          "height": 223
+        },
+        "sourceVisiblePixels": 20587,
+        "normalizedWidth": 153,
+        "normalizedHeight": 191
+      }
+    ],
+    "nonemptyCells": 16,
+    "minimumGuard": 15,
+    "visiblePixelsByCell": [
+      15990,
+      15258,
+      15303,
+      15922,
+      17357,
+      15576,
+      17307,
+      16513,
+      16575,
+      16735,
+      17915,
+      16718,
+      14398,
+      15270,
+      16309,
+      14093
+    ],
+    "visibleFootBaselinesByCell": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ]
+  },
+  "independentReview": {
+    "accepted": true,
+    "canonicalFidelityApproved": false,
+    "reviewedFrames": 16
+  },
+  "rejectedAttempts": 2,
+  "limitations": [
+    "Le concept officiel a été inspecté sur un miroir tiers ; détail visage, coutures et pistolet réduit en pixels non certifiés1:1.",
+    "Les phases de respiration sont volontairement proches dans l’animation ; les autres lignes montrent course, tir et réactions distinctes.",
+    "Franges alpha colorées mineures visibles à fort agrandissement, sans perte de membres ni cases fusionnées."
+  ],
+  "installation": {
+    "installer": "scripts/installWebReferencedCharacterImages.mjs",
+    "proposedPublicAudit": "docs/audits/chris-redfield-reference-sprite-fidelity-2026-10-18.json",
+    "performed": true,
+    "auditFile": "docs/audits/chris-redfield-reference-sprite-fidelity-2026-10-18.json"
+  }
+}

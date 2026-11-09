@@ -1,0 +1,116 @@
+{
+  "recordedAtUtc": "2026-11-09T07:49:40.881257+00:00",
+  "scope": "Complete test:stages file set, sequential Node22 and Node24 runs; no full-build or source visual-fidelity certification.",
+  "testOnlyCompatibility": "Only eight Springfield draw samples may use the two exact known Node22 raw hashes. The helper restores one known Y coordinate in a copy and reasserts the original historical hashes.",
+  "productionOrBaselineEdits": false,
+  "oldBaselineSha256": {
+    "docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json": "6063699c4e2e8424d7f9eb1574aabe6a433801442c2ec8cc1239020a6725503f",
+    "docs/combat-fidelity-wave17-2026-11-02/stages/baseline-before.json": "13339ae20d54be5f35031af959dd6d3226c5904ed3bd2dab38cde07492fee044"
+  },
+  "checkedFileSha256": {
+    "scripts/historicalStageRuntimeCompatibility.mjs": "e58f074f77bbfea0fc991b0ff98119c1aaec602c6416f5bbcb1454be0e17b8f7",
+    "scripts/stageAnimationWave16.test.mjs": "74399823e71442bdaca03ecf7e4f950bbc8cc577d2cd95880f21764535d55b1d",
+    "scripts/stageAnimationWave17.test.mjs": "9893bf860170a1f2d9480914cd0152422d32fd8d282e98f978e9b00ce62d248f",
+    "src/game/melee/stageAnimationCatalog.js": "2af6890d75b9f9eda5b10d2062cb665e2b0ce54e7da126c7749fe973d41f5f3f",
+    "src/game/melee/stageAnimationCatalogWave11.js": "13549c59ce422d9e1c2b8a052cf90cc1b8a15e48562a0660d2da9d3d7c56d49d"
+  },
+  "diagnosticArchiveSha256": {
+    "original-node22-20261109.log": "170074909e80cd425a1d2ef32097c26ef78047fa029c8f75ae9792865a917f9d",
+    "compat-node22-20261109.log": "b18afcad819f823d4711522011fc767e7fdc28195e9bf9cd4a37bc57c8ce7c97",
+    "original-node24-20261109.log": "d56252e10f717d1765fea1b51b18e26b7384e841908092708117892fdb1143e3",
+    "README.md": "9021c3f0f7100e238320a3f041999f1fe291a97246218fdd035f9e989a540528",
+    "runtime-deltas-20261109.json": "81fe9675e67274b068a2d8e155841fc6ac0299557b21b6ff2193e434e306ad47",
+    "compat-node24-20261109.log": "1c058788bac3aed8ca7983058297ac7d6381ff8414476e25d9991888323b93be",
+    "diagnosis-20261109.json": "7516ca77795802f7ae1fb336fba96a44b1991a3f6d48098da1a8ab2a6ba78d35"
+  },
+  "runs": [
+    {
+      "nodeVersion": "v22.23.4",
+      "v8Version": "12.4.254.21-node.57",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "/tmp/multiverse-node22-bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "scripts/stageTopologyCatalog.test.mjs",
+        "scripts/stageEventEngine.test.mjs",
+        "scripts/stageAnimationCatalog.test.mjs",
+        "scripts/stageAnimationWave3.test.mjs",
+        "scripts/stageAnimationWave4.test.mjs",
+        "scripts/stageAnimationWave5.test.mjs",
+        "scripts/stageAnimationWave6.test.mjs",
+        "scripts/stageAnimationWave7.test.mjs",
+        "scripts/stageAnimationWave8.test.mjs",
+        "scripts/stageAnimationWave9.test.mjs",
+        "scripts/stageAnimationWave10.test.mjs",
+        "scripts/stageAnimationWave11.test.mjs",
+        "scripts/stageAnimationWave12.test.mjs",
+        "scripts/stageAnimationWave15.test.mjs",
+        "scripts/stageAnimationWave16.test.mjs",
+        "scripts/stageAnimationWave17.test.mjs"
+      ],
+      "environment": {
+        "NODE_OPTIONS": "--max-old-space-size=2048"
+      },
+      "exitCode": 0,
+      "counts": {
+        "tests": 100,
+        "pass": 100,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "compat-node22-20261109.log",
+      "logSha256": "b18afcad819f823d4711522011fc767e7fdc28195e9bf9cd4a37bc57c8ce7c97",
+      "standardProcessIsolation": true,
+      "preload": null
+    },
+    {
+      "nodeVersion": "v24.19.0",
+      "v8Version": "13.6.233.17-node.51",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "scripts/stageTopologyCatalog.test.mjs",
+        "scripts/stageEventEngine.test.mjs",
+        "scripts/stageAnimationCatalog.test.mjs",
+        "scripts/stageAnimationWave3.test.mjs",
+        "scripts/stageAnimationWave4.test.mjs",
+        "scripts/stageAnimationWave5.test.mjs",
+        "scripts/stageAnimationWave6.test.mjs",
+        "scripts/stageAnimationWave7.test.mjs",
+        "scripts/stageAnimationWave8.test.mjs",
+        "scripts/stageAnimationWave9.test.mjs",
+        "scripts/stageAnimationWave10.test.mjs",
+        "scripts/stageAnimationWave11.test.mjs",
+        "scripts/stageAnimationWave12.test.mjs",
+        "scripts/stageAnimationWave15.test.mjs",
+        "scripts/stageAnimationWave16.test.mjs",
+        "scripts/stageAnimationWave17.test.mjs"
+      ],
+      "environment": {
+        "NODE_OPTIONS": "--max-old-space-size=2048"
+      },
+      "exitCode": 0,
+      "counts": {
+        "tests": 100,
+        "pass": 100,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "log": "compat-node24-20261109.log",
+      "logSha256": "1c058788bac3aed8ca7983058297ac7d6381ff8414476e25d9991888323b93be",
+      "standardProcessIsolation": true,
+      "preload": null
+    }
+  ]
+}

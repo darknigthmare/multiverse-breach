@@ -9,6 +9,7 @@ let vite;
 let EngineRpg;
 let HEROES_DB;
 let ENEMIES_DB;
+let CANONICAL_CAPTURE_NPC_WAVE17;
 let resolveUniverseSummon;
 let getRpgActionProfile;
 let getRpgEligibleTargets;
@@ -57,6 +58,7 @@ before(async () => {
   ({ EngineRpg } = await vite.ssrLoadModule('/src/game/engineRpg.js?rpg-summon-tests'));
   ({ HEROES_DB } = await vite.ssrLoadModule('/src/game/heroes.js?rpg-summon-tests'));
   ({ ENEMIES_DB } = await vite.ssrLoadModule('/src/game/enemies.js?rpg-summon-tests'));
+  ({ CANONICAL_CAPTURE_NPC_WAVE17 } = await vite.ssrLoadModule('/src/game/combat/sourceCaptureEnemyCatalogWave17.js?rpg-summon-tests'));
   ({ resolveUniverseSummon } = await vite.ssrLoadModule('/src/game/combatIdentity.js?rpg-summon-tests'));
   ({ getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets } = await vite.ssrLoadModule('/src/game/rpgTargeting.js?rpg-summon-tests'));
 });
@@ -280,13 +282,21 @@ test('RPG every catalog invocation can resolve its authored effect from the comb
     const ally = { battleId: 'ally', x: 152, y: 328, currentHp: profile.effect === 'revive' ? 0 : 100, maxHp: 200, statusEffects: { infected: 100 } };
     const genericFoe = { battleId: 'foe', x: 562, y: 277, currentHp: 1000, maxHp: 1000 };
     // A source-restricted control does not authorize an arbitrary opponent.
-    // Use the actual historical Slig, or the explicitly authorized episode21
-    // Shinya fixture, while still requiring generic opponents to be rejected.
+    // Use the actual historical Slig, explicitly authorized episode21 Shinya,
+    // or canonical Tail Concerto kitten, while still rejecting generic foes.
+    const bubbleCapture = profile.controlKind === 'bubble-capture';
     const sourceTarget = profile.controlKind === 'possession'
       ? ENEMIES_DB.Oddworld.monsters.find(unit => unit.id === 'oddworld_slig')
-      : profile.controlKind === 'paralyzer' ? { ...hero('shinya_kogami'), paralyzerEligible: true } : null;
+      : profile.controlKind === 'paralyzer' ? { ...hero('shinya_kogami'), paralyzerEligible: true }
+      : bubbleCapture ? CANONICAL_CAPTURE_NPC_WAVE17 : null;
     if (sourceTarget) assert.deepEqual(getRpgEligibleTargets({ actor, profile, allies: [actor, ally], opponents: [genericFoe] }), []);
-    const foe = sourceTarget ? { ...sourceTarget, ...genericFoe } : genericFoe;
+    const foe = sourceTarget ? { ...sourceTarget, ...genericFoe,
+      ...(bubbleCapture ? { x: actor.x + Math.min(96, profile.range / 2), y: actor.y,
+        currentHp: sourceTarget.hp, maxHp: sourceTarget.hp } : {}) } : genericFoe;
+    if (bubbleCapture) {
+      assert.deepEqual(getRpgEligibleTargets({ actor, profile, allies: [actor, ally], opponents: [{ ...foe, isBoss: true }] }), []);
+      assert.deepEqual(getRpgEligibleTargets({ actor, profile, allies: [actor, ally], opponents: [{ ...foe, x: actor.x + profile.range + 1 }] }), []);
+    }
     const eligibleTargets = getRpgEligibleTargets({ actor, profile, allies: [actor, ally], opponents: [foe] });
     const selectedTargetIds = profile.shape === 'group' ? [] : eligibleTargets.slice(0, profile.minTargets).map(id);
     assert.equal(resolveRpgTargets({ actor, profile, eligibleTargets, selectedTargetIds }).valid, true, `${catalogHero.id}: ${descriptor.action.name} cannot reach its targets`);

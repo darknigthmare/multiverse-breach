@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "numa_corvinus",
+  "heroId": "numa_corvinus",
+  "characterName": "Numa Corvinus",
+  "incarnation": "Imperium Aeternum — Numa Corvinus, canon original du projet (2026) — selected current V2",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/imperium_aeternum/heroes/numa_corvinus.png",
+      "sha256": "2da35bbde58602e0e81f878e2b75d2e0d4516696c6ae6357c5506aa06ac08b2b",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "viewed": true,
+      "inspected": true
+    },
+    {
+      "path": "/sprites/generated/heroes/imperium-aeternum/numa-corvinus.png",
+      "sha256": "6b55ff6cf2ac2d1a48b7a13d5f5356cfa1bb270d9e6a31e90eadbfa0153ac915",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human figure in long deep navy robes/cape with gold geometric borders, white inner tunic, strapped brown sandals."
+    ],
+    "face": [
+      "Olive/light tan skin, curly short black hair, dark eyes, clean-shaven angular profile."
+    ],
+    "equipment": [
+      "RIGHT hand holds black/gold long augur staff: gold circular ring around a gold bird sculpture, suspended chains and small hanging brazier. A separate black raven perched at RIGHT shoulder is contextual companion, not an additional limb. LEFT palm open."
+    ],
+    "costume": [
+      "Navy/gold long robes, white inner long robe with narrow red hem, gold circular brooch at right shoulder, layered belts/gold pendants and wrist bangles, brown strapped sandals."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project authority only; no external franchise certification.",
+    "Single front three-quarter portrait; hidden reverse geometry and unreadable fine marks unknown. Absolute 1:1 fidelity is not certified.",
+    "Chronological age not established; retain apparent source proportions, opaque family-safe clothing and no romance.",
+    "Old atlas red short legion tunic, armor and tall boots with no staff or raven; actual old raster clipping visible in bottom row."
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "universeKey": "imperium_aeternum",
+    "heroRecord": {
+      "id": "numa_corvinus",
+      "name": "Numa Corvinus",
+      "category": "hacker",
+      "combatRole": "lecture du destin / contrôle",
+      "loreRole": "Augure qui lit les routes de la Brèche dans le vol des oiseaux et les fissures des présages.",
+      "primaryColor": "#2c3e50",
+      "secondaryColor": "#d4af37",
+      "weaponType": "augur_staff",
+      "stats": {
+        "hp": 112,
+        "atk": 13,
+        "def": 7,
+        "spd": 9
+      },
+      "simple": {
+        "name": "Signe du Corbeau",
+        "type": "projectile",
+        "dmg": 0.9
+      },
+      "secondary": {
+        "name": "Auspice Contraire",
+        "type": "glitch",
+        "cd": 5,
+        "dmg": 1.75
+      },
+      "defense": {
+        "name": "Jour Néfaste",
+        "type": "dodge",
+        "dur": 2.1,
+        "reduce": 0.86
+      },
+      "special": {
+        "name": "Présage des Deux Horizons",
+        "type": "magic_aoe",
+        "dmg": 4.7,
+        "color": "#7f8c8d"
+      },
+      "universe": "Imperium Aeternum",
+      "sourceType": "original",
+      "weaponColor": "#d4af37"
+    },
+    "worldLore": {
+      "origin": {
+        "fr": "Imperium Aeternum est une Rome mythique originale où institutions civiques, cultes domestiques, légions, présages et monde des morts coexistent sans correspondre à une période historique unique."
+      },
+      "breach": {
+        "fr": "La Brèche a empilé plusieurs Rome et donné au Dictateur à la Couronne Vide le pouvoir de déclarer qu’une seule version mérite d’avoir existé."
+      },
+      "coreConflict": {
+        "fr": "Protéger le feu commun, remettre le pouvoir en circulation et empêcher le Seuil de Janus de réduire l’histoire à un empire éternel."
+      }
+    },
+    "stages": [
+      {
+        "id": "roman_forum_four_eras",
+        "name": {
+          "fr": "Forum des Quatre Époques",
+          "en": "Forum of Four Eras"
+        },
+        "mode": "Tactics",
+        "difficulty": "Hard",
+        "objectiveType": "control",
+        "boss": "Dictateur à la Couronne Vide",
+        "setting": {
+          "fr": "Forum superposé à quatre siècles; les points civiques changent de propriétaire à chaque décret."
+        },
+        "universe": "Imperium Aeternum",
+        "sourceUniverses": [
+          "Imperium Aeternum"
+        ],
+        "sourceType": "original",
+        "stageKey": "roman_forum_four_eras"
+      },
+      {
+        "id": "roman_vestal_fire_siege",
+        "name": {
+          "fr": "Siège du Feu Vestal",
+          "en": "Siege of the Vestal Fire"
+        },
+        "mode": "RPG",
+        "difficulty": "Hard",
+        "objectiveType": "protect",
+        "boss": "Collecteur d’Orcus",
+        "setting": {
+          "fr": "Temple encerclé par les lémures où la flamme constitue une seconde barre de vie."
+        },
+        "universe": "Imperium Aeternum",
+        "sourceUniverses": [
+          "Imperium Aeternum"
+        ],
+        "sourceType": "original",
+        "stageKey": "roman_vestal_fire_siege"
+      },
+      {
+        "id": "roman_janus_gate",
+        "name": {
+          "fr": "Porte Bifrons",
+          "en": "Bifrons Gate"
+        },
+        "mode": "Smash",
+        "difficulty": "Very Hard",
+        "objectiveType": "overload",
+        "boss": "Janus Bifrons, Seuil Fracturé",
+        "setting": {
+          "fr": "Arène à deux moitiés temporelles; les plateformes du passé et du futur ne coïncident jamais longtemps."
+        },
+        "universe": "Imperium Aeternum",
+        "sourceUniverses": [
+          "Imperium Aeternum"
+        ],
+        "sourceType": "original",
+        "stageKey": "roman_janus_gate"
+      }
+    ]
+  },
+  "sourceRefs": [
+    "/images/oc-worlds/v2/imperium_aeternum/heroes/numa_corvinus.png",
+    "src/game/originalUniversesManifest.json"
+  ]
+}

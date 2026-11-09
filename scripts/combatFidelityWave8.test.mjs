@@ -11,12 +11,13 @@ import { getCharacterAnimationAssets, getCharacterAnimationFrame, resolveCharact
 import { CHARACTER_PRESENTATIONS, PRESENTATION_PHASES, resolvePresentationScript, samplePresentationScript } from '../src/game/combat/presentationCatalog.js';
 import { getMeleeAnimationFrame, getMeleeAnimationManifest, validateMeleeAnimationManifest } from '../src/game/melee/meleeAnimationManifest.js';
 import { MELEE_STATES, MELEE_TRANSITION_DATA } from '../src/game/melee/meleeStateMachine.js';
-import { getHeroMeleeAnimationFrame, getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
+import { getHeroMeleeAnimationFrame, getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout, getEnemySpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { STAGE_ANIMATION_PROFILES, getStageAnimationFrame, getStageAnimationProfile, renderStageAnimation } from '../src/game/melee/stageAnimationCatalog.js';
 import { getCharacterFormFrame } from '../src/game/combat/characterFormState.js';
 import { getSummonAnimationAssets, resolveSummonAnimationAsset } from '../src/game/combat/summonAnimationCatalog.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
 import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
+import { CANONICAL_BASE_EDITIONS, assertBaseSpriteEdition } from './combatCanonicalEditionFixtures.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -38,11 +39,11 @@ const fullIds = nativeIds.filter(id => id !== 'beast_boy_tt');
 const kiryuPaths = ['src/game/combat/kiryuMeleeMotion.generated.json', 'src/game/combat/kiryuMeleeCombat.generated.json'];
 const phases = ['intro', 'outro', 'roundVictory', 'roundDefeat', 'fatality', 'victory', 'defeat', 'super'];
 const noop = () => {};
-let vite, drawPixelSprite, EngineFighter;
+let vite, drawPixelSprite, drawPixelEnemy, EngineFighter;
 const engines = [];
 before(async () => {
   vite = await createServer({ root: fileURLToPath(root), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true, watch: null } });
-  ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
+  ({ drawPixelSprite, drawPixelEnemy } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
 });
 after(async () => { engines.forEach(engine => engine.dispose?.()); await vite?.close(); });
@@ -220,7 +221,16 @@ test('all17 new base layouts contain272 real cells and render every native cell 
     // his coarse base; his new16-cell sheet remains the actual RPG body.
     if (entry.heroId === 'kiryu_yakuza') assert.equal(getHeroSpriteSheetSrc(hero('kiryu_yakuza'), 'melee'), getMeleeAnimationManifest('kiryu_yakuza').animations.idle.sheet);
     for (const context of entry.heroId === 'kiryu_yakuza' ? ['rpg'] : ['melee', 'rpg']) {
-      for (const key of ['sourceHeroId', 'sourceId']) assert.equal(getHeroSpriteSheetSrc({ ...hero(entry.heroId), id: 'base-p2-copy', [key]: entry.heroId }, context), entry.sheet);
+      for (const key of ['sourceHeroId', 'sourceId']) assertBaseSpriteEdition(hero(entry.heroId), entry, getHeroSpriteSheetSrc({ ...hero(entry.heroId), id: 'base-p2-copy', [key]: entry.heroId }, context));
+      const canonicalEdition = CANONICAL_BASE_EDITIONS[entry.heroId];
+      if (canonicalEdition) fakeImages(() => {
+        const current = { ...hero(entry.heroId), state: 'idle', stateElapsed: 0.5, currentHp: 77 }, ctx = recorder(), paused = recorder();
+        drawPixelSprite(ctx, 200, 400, current, 0, 1, 256, context);
+        drawPixelSprite(paused, 200, 400, current, context === 'melee' ? 60000 : 0, 1, 256, context);
+        assert.equal(ctx.calls.find(call => call[0] === 'drawImage')[1].src, canonicalEdition.src);
+        assert.deepEqual(paused.calls.find(call => call[0] === 'drawImage'), ctx.calls.find(call => call[0] === 'drawImage'));
+        assert.equal(ctx.depth, 0); assert.equal(paused.depth, 0);
+      });
       assert.notEqual(getHeroSpriteSheetSrc({ ...hero(entry.heroId), universe: 'Unrelated QA universe' }, context), entry.sheet);
       assert.notEqual(getHeroSpriteSheetSrc({ ...hero(entry.heroId), sourceHeroId: 'unregistered-source' }, context), entry.sheet);
       for (const [state, spec] of Object.entries(entry.states)) for (const facing of [1, -1]) for (let col = 0; col < 4; col++) fakeImages(() => {
@@ -229,7 +239,20 @@ test('all17 new base layouts contain272 real cells and render every native cell 
         const animTime = col * 10 + 0.1, actor = { ...hero(entry.heroId), id: 'base-p2-copy', sourceHeroId: entry.heroId,
           state, stateElapsed: animTime / 60, currentHp: 77, meter: 41 };
         const before = structuredClone(actor), ctx = recorder(), paused = recorder();
-        drawPixelSprite(ctx, 200, 400, actor, context === 'melee' ? 0 : animTime, facing, 256, context);
+        // A canonical override changes the live default, not the retained
+        // archive. Exercise its explicit spriteSource through the shared sheet
+        // renderer without pretending it is the current hero incarnation.
+        const drawBase = (record, wallTime) => {
+          if (!canonicalEdition) return drawPixelSprite(record, 200, 400, actor, wallTime, facing, 256, context);
+          const archived = { id: 'archived-base:' + entry.heroId, name: 'Archived native base', universe: 'Historical asset inventory',
+            spriteSource: entry.sheet, state };
+          assert.equal(getEnemySpriteSheetSrc(archived), entry.sheet);
+          const clock = context === 'melee' ? actor.stateElapsed * 60 : wallTime;
+          const frame = getSpriteFrameForLayout(state, clock, layout);
+          assert.equal(frame.row, spec.row); assert.equal(frame.col, col);
+          return drawPixelEnemy(record, 200, 400, archived, clock, facing, 256);
+        };
+        drawBase(ctx, context === 'melee' ? 0 : animTime);
         const draw = ctx.calls.find(call => call[0] === 'drawImage'); assert.ok(draw);
         assert.equal(draw[1].src, entry.sheet);
         assert.deepEqual(draw.slice(2, 6), [col * 256, spec.row * 256, 256, 256]);
@@ -240,7 +263,7 @@ test('all17 new base layouts contain272 real cells and render every native cell 
         }
         assert.ok(ctx.calls.some(call => call[0] === 'scale' && call[1] === facing));
         if (context === 'melee') {
-          drawPixelSprite(paused, 200, 400, actor, 60000, facing, 256, context);
+          drawBase(paused, 60000);
           assert.deepEqual(paused.calls.find(call => call[0] === 'drawImage'), draw);
           assert.equal(paused.depth, 0);
         }

@@ -1,3 +1,4 @@
+import { ROSTER_REINFORCEMENTS_WAVE17 } from './combat/rosterReinforcementsWave17.js';
 import { ROSTER_REINFORCEMENTS_WAVE15 } from './combat/rosterReinforcementsWave15.js';
 import { ROSTER_PARTNERS_WAVE16 } from './combat/rosterPartnersWave16.js';
 import { ROSTER_REINFORCEMENTS_WAVE16, CANONICAL_SUMMONS_WAVE16 } from './combat/rosterReinforcementsWave16.js';
@@ -13,6 +14,7 @@ import { COMBAT_ABILITY_OVERRIDES } from './combat/abilities/catalog.js';
 import { resolvePresentationScript } from './combat/presentationCatalog.js';
 import { ROSTER_REINFORCEMENTS_WAVE10 } from './combat/rosterReinforcementsWave10.js';
 import { ROSTER_REINFORCEMENTS_WAVE11 } from './combat/rosterReinforcementsWave11.js';
+import { resolveSelectedCombatSource, hasPreparedLegacyCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
 
 // This catalog preserves the source of each action. A runtime adaptation and an
 // actual source-game animation are different claims; no animation is certified
@@ -44,7 +46,15 @@ export function resolveCombatHeroSpriteActor(actor) {
 }
 const identity = actor => actor?.sourceHeroId || actor?.sourceId || actor?.id;
 const hasAbility = action => !!(action && typeof action === 'object' && combatIdentityText(action.name) && typeof action.type === 'string');
+const hasDeclaredSourceLock = actor => typeof actor?.incarnation === 'string'
+  && Array.isArray(actor.equipment) && actor.equipment.length > 0
+  && typeof actor.referenceUrl === 'string' && typeof actor.canonStatus === 'string'
+  && /source.*\block(?:ed)?\b/i.test(actor.canonStatus);
+const prefersSuppliedCanonAction = (actor, slot) => prefersCurrentCanonCombatKit(actor)
+  || (!hasPreparedLegacyCombatSource(actor, slot) && !resolveSelectedCombatSource(actor, slot)
+    && (actor?.canonCombatPresentation === true || hasDeclaredSourceLock(actor)));
 const overrideFor = actor => {
+  if (prefersSuppliedCanonAction(actor, 'special')) return null;
   const record = CANONICAL_COMBAT_OVERRIDES[identity(actor)] || CANONICAL_COMBAT_EXTENSIONS[identity(actor)] || COMBAT_CAPABILITY_COMPLETION[identity(actor)];
   return record?.universe === actor?.universe ? record : null;
 };
@@ -55,11 +65,12 @@ const provenanceFor = (actor, slot, action, override = null) => ({
   sourceSlot: slot,
   sourceAbilityName: combatIdentityText(action.name),
   originalCatalogName: combatIdentityText(actor[slot]?.name),
-  sourceWork: override?.sourceWork || actor.universe,
-  sourceReference: override?.sourceReference || null,
-  sourceUrl: override?.sourceUrl || null,
+  sourceWork: override?.sourceWork || actor.incarnation || actor.sourceWork || actor.universe,
+  sourceReference: override?.sourceReference || actor.canonStatus || actor.sourceReference || null,
+  sourceUrl: override?.sourceUrl || actor.referenceUrl || actor.sourceUrl || actor.referenceUrls?.[0] || null,
   identityBasis: override?.identityBasis || (override ? 'authored-source-adaptation' : 'existing-catalog'),
   canonicalVerified: false,
+  source1to1Verified: false,
   networkVerified: false,
   identityAuthored: !!override,
   genericCatalogIdentity: /Origin Burst|Signature Strike|Breach Technique|decisive\s+action/i.test(combatIdentityText(action.name)),
@@ -75,23 +86,26 @@ function abilityProfile(actor, slot, action) {
   const loreEffect = identity(actor) === 'arca_loom' && slot === 'secondary' ? 'heal'
     : identity(actor) === 'arca_bastion' && slot === 'secondary' ? 'guard' : null;
   const declared = explicit.effect || action.effect?.type || (typeof action.effect === 'string' ? action.effect : null);
-  const effect = effects.has(declared) ? declared : loreEffect
+  const ordinaryDefense = slot === 'defense' && !declared && /^(?:dodge|shield|guard)$/.test(type);
+  const effect = ordinaryDefense ? 'guard' : effects.has(declared) ? declared : loreEffect
     || (/reviv|resurrect/.test(type) ? 'revive' : /heal|restore|regen/.test(type) ? 'heal'
       : /cleanse|purify/.test(type) ? 'cleanse' : /buff|support/.test(type) ? 'buff'
         : /shield|guard/.test(type) ? 'guard' : 'damage');
   const supported = beneficial.has(effect);
   const controlled = effect === 'control' && (identity(actor) === 'borderlands_2_maya_phaselock' && actor.universe === 'Borderlands 2'
     || identity(actor) === 'oddworld_abe_possession' && actor.universe === 'Oddworld' && explicit.controlKind === 'possession'
+    || identity(actor) === 'tail_concerto_waffle' && actor.universe === 'Tail Concerto' && explicit.controlKind === 'bubble-capture'
     || identity(actor) === 'akane_tsunemori' && actor.universe === 'Psycho-Pass' && explicit.controlKind === 'paralyzer'
       && explicit.authorization === 'sibyl-s1e21-exception');
   const declaredDelivery = explicit.delivery || action.delivery;
   const delivery = controlled ? 'control' : supported ? 'support'
-    : ['melee', 'projectile', 'beam', 'area', 'radial'].includes(declaredDelivery) ? declaredDelivery
+    : declaredDelivery === 'ranged' ? /beam|laser/.test(type) ? 'beam' : 'projectile'
+      : ['melee', 'projectile', 'beam', 'area', 'radial'].includes(declaredDelivery) ? declaredDelivery
       : /melee|slash|punch|dodge_strike|drill_smash/.test(type) ? 'melee'
         : /beam|laser/.test(type) ? 'beam'
           : /bullet|shotgun|rocket|projectile|boomerang|cannon/.test(type) ? 'projectile' : 'area';
   const side = explicit.targetSide || action.targetSide;
-  const targetSide = controlled ? 'enemy' : ['self', 'ally', 'enemy'].includes(side) ? side
+  const targetSide = ordinaryDefense ? 'self' : controlled ? 'enemy' : ['self', 'ally', 'enemy'].includes(side) ? side
     : side === 'allies' ? 'ally' : side === 'enemies' ? 'enemy' : supported ? 'ally' : 'enemy';
   const aliases = { all: 'group', allies: 'group', enemies: 'group', aoe: 'area', zone: 'area', ray: 'line' };
   const declaredShape = explicit.shape || explicit.pattern || (typeof action.targeting === 'string' ? action.targeting : null);
@@ -103,19 +117,21 @@ function abilityProfile(actor, slot, action) {
     effect,
     delivery,
     targetSide,
-    excludeSelf: explicit.excludeSelf === true,
+    excludeSelf: explicit.excludeSelf === true || action.sourceMediGunWave17===true,
     shape: controlled ? 'single' : ['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape) ? shape : fallbackShape,
-    range: finite(explicit.range ?? action.range ?? action.rpgRange, delivery === 'melee' ? 170 : delivery === 'support' ? 760 : 640, 1),
+    range: action.sourceMediGunWave17===true?220:finite(explicit.range ?? action.range ?? action.rpgRange, delivery === 'melee' ? 170 : delivery === 'support' ? 760 : 640, 1),
     areaRadius: finite(explicit.areaRadius ?? explicit.radius ?? action.areaRadius, 135, 1),
     lineWidth: finite(explicit.lineWidth ?? action.lineWidth, 48, 1),
     coneAngle: clamp(finite(explicit.coneAngle ?? action.coneAngle, 55, 1), 1, 180),
     maxTargets: finite(explicit.maxTargets ?? action.maxTargets, shape === 'single' ? 1 : 8, 1),
-    multiplier: controlled ? 0 : finite(action.dmg, 1),
+    multiplier: controlled || ordinaryDefense ? 0 : finite(action.dmg, 1),
     ...(controlled ? { controlKind: explicit.controlKind || null,
       controlDuration: clamp(finite(explicit.controlDuration ?? explicit.duration, 2.4, .1), .1, 8), controlTurns: 1, minTargets: 1,
       ...(explicit.authorization ? { authorization: explicit.authorization } : {}),
       ...(explicit.channelDuration ? { channelDuration: explicit.channelDuration } : {}) } : {}),
     ...(explicit.requiresExplicitTargetEligibility !== undefined ? { requiresExplicitTargetEligibility: explicit.requiresExplicitTargetEligibility } : {}),
+    ...(explicit.nonlethal === true ? {nonlethal:true} : {}),
+    ...Object.fromEntries(['sourceMediGunWave17','sourceUberWave17','sourceGoldenLuteWave17','sourceOkarunAllOutWave17','maxAllOutUses','informationOnly','sourceSpecificId'].filter(key=>(explicit[key]??action[key])!==undefined).map(key=>[key,explicit[key]??action[key]])),
     ...(explicit.hitSequence ? { hitSequence: clone(explicit.hitSequence) } : {}),
     ...(explicit.postSequenceStunDuration ? { postSequenceStunDuration: explicit.postSequenceStunDuration } : {}),
     ...(explicit.invulnerabilityKind ? { invulnerabilityKind: explicit.invulnerabilityKind,
@@ -136,8 +152,10 @@ function abilityProfile(actor, slot, action) {
 
 export function resolveMeleeSuper(actor) {
   if (!actor?.universe || !hasAbility(actor.special)) return null;
-  const authored = COMBAT_ABILITY_OVERRIDES[identity(actor)];
-  const canonical = authored?.universe === actor.universe && authored.special ? authored : overrideFor(actor);
+  const preparedLegacy = hasPreparedLegacyCombatSource(actor, 'special') || prefersSuppliedCanonAction(actor, 'special');
+  const selected = resolveSelectedCombatSource(actor, 'special');
+  const authored = preparedLegacy ? null : selected?.authored || COMBAT_ABILITY_OVERRIDES[identity(actor)];
+  const canonical = preparedLegacy ? null : authored?.universe === actor.universe && authored.special ? authored : overrideFor(actor);
   // A selected source version applies to the super as well as basic commands.
   // Retain its canonical action and reference, and record the explicit revision.
   const override = canonical && authored?.universe === actor.universe && authored.versionRevision
@@ -173,8 +191,9 @@ export function resolveMeleeSuper(actor) {
 export function resolveCombatAbility(actor, slot = 'special') {
   if (slot === 'special') return resolveMeleeSuper(actor);
   if (!['simple', 'secondary', 'defense'].includes(slot) || !actor?.universe || !hasAbility(actor[slot])) return null;
-  const candidate = COMBAT_ABILITY_OVERRIDES[identity(actor)];
-  const override = candidate?.universe === actor.universe && candidate[slot] ? candidate : null;
+  const candidate = prefersSuppliedCanonAction(actor, slot) ? null : COMBAT_ABILITY_OVERRIDES[identity(actor)];
+  const selected = resolveSelectedCombatSource(actor, slot);
+  const override = selected?.authored || (candidate?.universe === actor.universe && candidate[slot] ? candidate : null);
   const action = clone(override?.[slot] || actor[slot]);
   if (!hasAbility(action)) return null;
   const profile = abilityProfile(actor, slot, action);
@@ -239,7 +258,7 @@ export function resolveUniverseSummon(actor) {
   const sourceSummon = CANONICAL_SUMMONS_WAVE16[identity(actor)];
   if (sourceSummon?.universe === actor.universe && hasAbility(sourceSummon.action))
     return attachCombatEntityAsset(canonicalSummon(actor, sourceSummon));
-  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE16[identity(actor)] || ROSTER_PARTNERS_WAVE16[identity(actor)]
+  const selectedPartner = ROSTER_REINFORCEMENTS_WAVE17[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE16[identity(actor)] || ROSTER_PARTNERS_WAVE16[identity(actor)]
     || ROSTER_REINFORCEMENTS_WAVE15[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE14[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE13[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE12[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE11[identity(actor)] || ROSTER_REINFORCEMENTS_WAVE10[identity(actor)];
   if (selectedPartner?.universe === actor.universe) {
     const performer = heroSpriteIdentities.get(selectedPartner.performerHeroId);
@@ -282,8 +301,8 @@ export function resolveUniverseSummon(actor) {
   }
   const { performer, slot, explicitSummon } = source;
   const effective = resolveCombatAbility(performer, slot);
-  const sourceOverride = slot === 'special' ? overrideFor(performer)
-    : effective?.provenance.identityAuthored ? COMBAT_ABILITY_OVERRIDES[identity(performer)] : null;
+  const sourceOverride = !effective?.provenance.identityAuthored ? null : slot === 'special' ? overrideFor(performer)
+    : COMBAT_ABILITY_OVERRIDES[identity(performer)];
   // Keep authored corrections of the same named deployment (including
   // nonviolent ancestor guidance). A different personal super must not replace
   // an older caller's Dog robot or sentry with the performer's new gunshot.

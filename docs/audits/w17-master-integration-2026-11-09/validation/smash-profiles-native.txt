@@ -1,0 +1,292 @@
+TAP version 13
+# Subtest: keyboard/touch special and legacy ability dispatch share one timed super and one meter spend
+ok 1 - keyboard/touch special and legacy ability dispatch share one timed super and one meter spend
+  ---
+  duration_ms: 23685.50598
+  type: 'test'
+  ...
+# Subtest: beam respects facing, finite range and height while projectile hits the nearest target
+ok 2 - beam respects facing, finite range and height while projectile hits the nearest target
+  ---
+  duration_ms: 3.649029
+  type: 'test'
+  ...
+# Subtest: authored heal restores nearby living allies without damaging enemies or reviving
+ok 3 - authored heal restores nearby living allies without damaging enemies or reviving
+  ---
+  duration_ms: 0.856286
+  type: 'test'
+  ...
+# Subtest: guard, buff, cleanse and revive retain their support effects and expire during simulation
+ok 4 - guard, buff, cleanse and revive retain their support effects and expire during simulation
+  ---
+  duration_ms: 3.47633
+  type: 'test'
+  ...
+# Subtest: interruption, pause input reset and outcome cannot produce a delayed second impact
+ok 5 - interruption, pause input reset and outcome cannot produce a delayed second impact
+  ---
+  duration_ms: 5.36765
+  type: 'test'
+  ...
+# Subtest: perfect guard works on supers; missing abilities spend no meter for P2 or CPU
+ok 6 - perfect guard works on supers; missing abilities spend no meter for P2 or CPU
+  ---
+  duration_ms: 1.380012
+  type: 'test'
+  ...
+# Subtest: CPU and local P2 can activate their own authored super with the same runtime
+ok 7 - CPU and local P2 can activate their own authored super with the same runtime
+  ---
+  duration_ms: 1.479311
+  type: 'test'
+  ...
+# Subtest: every fighter keeps its own intro duration and outcome while pending attacks are cleared
+ok 8 - every fighter keeps its own intro duration and outcome while pending attacks are cleared
+  ---
+  duration_ms: 2.412862
+  type: 'test'
+  ...
+# Subtest: unreviewed legacy heroes retain the old Smash rules until an explicit Smash profile is declared
+ok 9 - unreviewed legacy heroes retain the old Smash rules until an explicit Smash profile is declared
+  ---
+  duration_ms: 29616.816093
+  type: 'test'
+  ...
+# Subtest: Han actually fires his simple DL-44 at distance and rejects targets behind, above and beyond its range
+ok 10 - Han actually fires his simple DL-44 at distance and rejects targets behind, above and beyond its range
+  ---
+  duration_ms: 1.947269
+  type: 'test'
+  ...
+# Subtest: Han’s special selects at most three nearest in-range enemies instead of exploding across the arena
+ok 11 - Han’s special selects at most three nearest in-range enemies instead of exploding across the arena
+  ---
+  duration_ms: 1.30137
+  type: 'test'
+  ...
+# Subtest: Vader’s Force choke damages one selected nearby opponent without a laser or global explosion
+ok 12 - Vader’s Force choke damages one selected nearby opponent without a laser or global explosion
+  ---
+  duration_ms: 0.962592
+  type: 'test'
+  ...
+# Subtest: Luke’s special is a single close lightsaber duel and telekinesis supplies no electrical ray
+ok 13 - Luke’s special is a single close lightsaber duel and telekinesis supplies no electrical ray
+  ---
+  duration_ms: 1.373799
+  type: 'test'
+  ...
+# Subtest: bob_minions comic contact special stays close to one target, and the banana throw replaces its laser
+ok 14 - bob_minions comic contact special stays close to one target, and the banana throw replaces its laser
+  ---
+  duration_ms: 1.168851
+  type: 'test'
+  ...
+# Subtest: kevin_minions comic contact special stays close to one target, and the banana throw replaces its laser
+ok 15 - kevin_minions comic contact special stays close to one target, and the banana throw replaces its laser
+  ---
+  duration_ms: 1.022051
+  type: 'test'
+  ...
+# Subtest: Stuart’s guitar riffs are musical and his area adaptation has a local radius
+ok 16 - Stuart’s guitar riffs are musical and his area adaptation has a local radius
+  ---
+  duration_ms: 0.890284
+  type: 'test'
+  ...
+# Subtest: shared RPG group targeting and non-pixel ranges cannot override declared Smash radius and contact distances
+ok 17 - shared RPG group targeting and non-pixel ranges cannot override declared Smash radius and contact distances
+  ---
+  duration_ms: 0.313489
+  type: 'test'
+  ...
+# Subtest: source profiles also govern the real timed keyboard/touch melee special and preserve its meter cost
+ok 18 - source profiles also govern the real timed keyboard/touch melee special and preserve its meter cost
+  ---
+  duration_ms: 2.846085
+  type: 'test'
+  ...
+# Subtest: Han’s timed melee input uses the blaster’s range while retaining its original action damage
+ok 19 - Han’s timed melee input uses the blaster’s range while retaining its original action damage
+  ---
+  duration_ms: 1.467669
+  type: 'test'
+  ...
+# Subtest: local P2 retains the source ID, facing and single-target choke when playing Vader
+ok 20 - local P2 retains the source ID, facing and single-target choke when playing Vader
+  ---
+  duration_ms: 1.104144
+  type: 'test'
+  ...
+# Subtest: source-profiled damage still passes through combat buffs and depletion guards
+ok 21 - source-profiled damage still passes through combat buffs and depletion guards
+  ---
+  duration_ms: 0.815032
+  type: 'test'
+  ...
+# Subtest: fighter: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 22 - fighter: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 22784.390367
+  type: 'test'
+  ...
+# Subtest: melee: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 23 - melee: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 6.109087
+  type: 'test'
+  ...
+# Subtest: rpg: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 24 - rpg: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 8.395988
+  type: 'test'
+  ...
+# Subtest: tactics: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 25 - tactics: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 10.293825
+  type: 'test'
+  ...
+# Subtest: fighter: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 26 - fighter: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.667942
+  type: 'test'
+  ...
+# Subtest: melee: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 27 - melee: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.803015
+  type: 'test'
+  ...
+# Subtest: rpg: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 28 - rpg: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.546009
+  type: 'test'
+  ...
+# Subtest: tactics: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 29 - tactics: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 2.30586
+  type: 'test'
+  ...
+# Subtest: RPG: ordinary Melody performs a physical cardinal step; an immobile replay never damages
+ok 30 - RPG: ordinary Melody performs a physical cardinal step; an immobile replay never damages
+  ---
+  duration_ms: 4.973072
+  type: 'test'
+  ...
+# Subtest: RPG: stock Medic really channels, charges through40 injured-patient seconds, and gives8s protection only through an existing ally beam
+ok 31 - RPG: stock Medic really channels, charges through40 injured-patient seconds, and gives8s protection only through an existing ally beam
+  ---
+  duration_ms: 68.275495
+  type: 'test'
+  ...
+# Subtest: fighter: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 32 - fighter: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 7.952282
+  type: 'test'
+  ...
+# Subtest: melee: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 33 - melee: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 2.923967
+  type: 'test'
+  ...
+# Subtest: rpg: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 34 - rpg: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 2.346171
+  type: 'test'
+  ...
+# Subtest: tactics: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 35 - tactics: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 5.3119
+  type: 'test'
+  ...
+# Subtest: rpg: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+ok 36 - rpg: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+  ---
+  duration_ms: 2.507292
+  type: 'test'
+  ...
+# Subtest: tactics: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+ok 37 - tactics: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+  ---
+  duration_ms: 4.204949
+  type: 'test'
+  ...
+# Subtest: rpg: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+ok 38 - rpg: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+  ---
+  duration_ms: 1.705889
+  type: 'test'
+  ...
+# Subtest: tactics: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+ok 39 - tactics: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+  ---
+  duration_ms: 3.742185
+  type: 'test'
+  ...
+# Subtest: fighter: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 40 - fighter: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 2.964819
+  type: 'test'
+  ...
+# Subtest: melee: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 41 - melee: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 2.362715
+  type: 'test'
+  ...
+# Subtest: rpg: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 42 - rpg: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 3.89932
+  type: 'test'
+  ...
+# Subtest: tactics: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 43 - tactics: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 7.787105
+  type: 'test'
+  ...
+# Subtest: fighter: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 44 - fighter: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 12.770211
+  type: 'test'
+  ...
+# Subtest: melee: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 45 - melee: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 6.462407
+  type: 'test'
+  ...
+# Subtest: tactics: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 46 - tactics: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 4.354094
+  type: 'test'
+  ...
+# Subtest: RPG: Momo’s actual reinforcement and an already present Okarun share the same two-use all-out resource
+ok 47 - RPG: Momo’s actual reinforcement and an already present Okarun share the same two-use all-out resource
+  ---
+  duration_ms: 20.5938
+  type: 'test'
+  ...
+1..47
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78952.464016

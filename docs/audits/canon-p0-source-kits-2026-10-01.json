@@ -1,0 +1,2349 @@
+{
+  "date": "2026-10-01",
+  "scope": "Nineteen source locks integrated in playable heroes, character plaques and dedicated dossiers, with adjacent scene/item incarnation corrections.",
+  "implementationFiles": [
+    "src/game/canonP0SourceKits.js",
+    "scripts/canonP0SourceKits.test.mjs"
+  ],
+  "helperExports": [
+    "applyCanonP0SourceKit",
+    "getCanonP0SourcePlaque",
+    "CANON_P0_SOURCE_KIT_IDS",
+    "CANON_P0_SOURCE_KITS"
+  ],
+  "validation": {
+    "targetedNodeTests": 14,
+    "passed": 14,
+    "lint": "passed",
+    "fullBuild": {
+      "status": "passed",
+      "nodeTests": 922,
+      "testCommands": 15,
+      "bundle": "/assets/index-C_NWE7Wd.js",
+      "lint": "passed"
+    },
+    "dossierIntegrationTests": {
+      "passed": 5,
+      "failed": 0,
+      "lint": "passed"
+    },
+    "runtimePresentationTests": {
+      "passed": 69,
+      "failed": 0,
+      "verificationScope": "separate runtime presentation and integration test lot"
+    }
+  },
+  "sourceEvidence": [
+    {
+      "key": "lilo-stitch",
+      "url": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "httpStatus": 200,
+      "sha256": "e6d0fb7ca3fd84033c8dfda4e94bbb7f56bf5423f0ebe9eb1e685e7171098c65",
+      "bytes": 64537,
+      "title": [
+        "Lilo &amp; Stitch (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "roger-rabbit",
+      "url": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "httpStatus": 200,
+      "sha256": "02e0502da7cb1ad1e78b18ac07cb7f44aa7fc016c57b93475d39f14f260638d4",
+      "bytes": 66261,
+      "title": [
+        "Who Framed Roger Rabbit (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "jack-sparrow",
+      "url": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "httpStatus": 200,
+      "sha256": "e3de8df82de813e99c247570fd109c8f88ea5f9cf22b69d09273fc609fc19b58",
+      "bytes": 66193,
+      "title": [
+        "Pirates of the Caribbean: The Curse of the Black Pearl (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "batman",
+      "url": "https://www.dc.com/characters/batman",
+      "resolvedUrl": "https://www.dc.com/characters/batman",
+      "httpStatus": 200,
+      "sha256": "a003d76717d584d330fa7cc25cb139104cfe4c67c95ef7db1ff58d91d0a9f98c",
+      "bytes": 404783,
+      "title": [
+        "Batman | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "raven",
+      "url": "https://www.dc.com/characters/raven",
+      "resolvedUrl": "https://www.dc.com/characters/raven",
+      "httpStatus": 200,
+      "sha256": "d47f331a81eca378adf7b3107479ea9417f68e94c525a92994bcfe47c12c93ce",
+      "bytes": 124433,
+      "title": [
+        "Raven | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "starfire",
+      "url": "https://www.dc.com/characters/starfire",
+      "resolvedUrl": "https://www.dc.com/characters/starfire",
+      "httpStatus": 200,
+      "sha256": "25023f81d5f2ba40c02b21d4041b9c9114ad6087d03eee8f8bcbfa680df9aab6",
+      "bytes": 160007,
+      "title": [
+        "Starfire | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "harley-quinn",
+      "url": "https://www.dc.com/characters/harley-quinn",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "joker",
+      "url": "https://www.dc.com/characters/the-joker",
+      "resolvedUrl": "https://www.dc.com/characters/the-joker",
+      "httpStatus": 200,
+      "sha256": "abdeb6e93b5251c9ba02a28852f7e14a28d9ffbf78453192389ebbebc928b480",
+      "bytes": 194452,
+      "title": [
+        "The Joker | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "grim-knight",
+      "url": "https://www.dc.com/comics/the-batman-who-laughs-the-grim-knight-2019/the-batman-who-laughs-the-grim-knight-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "hermione",
+      "url": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "resolvedUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "httpStatus": 200,
+      "sha256": "d9211966300b40f32343a7a49dfa321b58663934488395393ec7d153dbc6ad06",
+      "bytes": 162268,
+      "title": [
+        "Hermione Granger | Official Harry Potter Encyclopedia"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "harry",
+      "url": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "resolvedUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "httpStatus": 200,
+      "sha256": "d5900e73b4aa2c08070a988f7b31c76bf31d0024ffbcea0c2243ce6e6b2f515c",
+      "bytes": 166416,
+      "title": [
+        "Harry Potter | Official Harry Potter Encyclopedia"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "saturnin",
+      "url": "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin",
+      "resolvedUrl": "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin",
+      "httpStatus": 200,
+      "bytes": 128947,
+      "sha256": "40235b278584cc785f0f09d4d3f8a689fac181057e6a91b16071db3022e4ba2e",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "spider",
+      "url": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "httpStatus": 200,
+      "bytes": 158384,
+      "sha256": "bb0905ba0ebeff2a92c0b2326f6e8a3d62f6e5dfd2ebfbfb5a021e8188764ab2",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "grim-knight-issue",
+      "url": "https://www.dc.com/comics/the-batman-who-laughs-2018/the-batman-who-laughs-the-grim-knight-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "endgame",
+      "url": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "resolvedUrl": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "httpStatus": 200,
+      "bytes": 629816,
+      "sha256": "420a3e70782308ede54820fcbf341f1e55e1d8f6e4d27e53ec3670a20f27c180",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "death-of-the-family",
+      "url": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-3-death-of-the-family",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "harley-suicide-squad",
+      "url": "https://www.dc.com/comics/suicide-squad-2011/suicide-squad-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "thriller",
+      "url": "https://www.michaeljackson.com/videos/michael-jackson-thriller-official-video/",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "the-dark-knight",
+      "url": "https://www.warnerbros.com/movies/dark-knight",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "hermione-patronus",
+      "url": "https://www.harrypotter.com/fact-file/spells-charms-and-potions/the-patronus-charm",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "animated-teen-titans",
+      "url": "https://www.dc.com/tv/teen-titans-2003-2006",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "animated-teen-titans-wiki",
+      "url": "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)",
+      "httpStatus": 200,
+      "bytes": 484839,
+      "sha256": "00f960e3f9a81a0c3350810aca1690a5405ff7b1c21a60fa0968f2400a526e12",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "order-phoenix",
+      "url": "https://www.harrypotter.com/discover/films/harry-potter-and-the-order-of-the-phoenix",
+      "resolvedUrl": "https://www.harrypotter.com/discover/films/harry-potter-and-the-order-of-the-phoenix",
+      "httpStatus": 200,
+      "bytes": 146183,
+      "sha256": "7b33fca7477d864b6622570c93686b4d6caab1c05532fb19432d2b9e0cedb7ad",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true,
+      "evidenceScope": "Film page title and site metadata; plot copy was not present in extracted page text."
+    },
+    {
+      "key": "order-phoenix-wiki",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)",
+      "httpStatus": 200,
+      "bytes": 796925,
+      "sha256": "f02af3b09acd8a0d157c4df342108678e41a0246b81d920338dbe6730ee3e342",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "grim-knight-wiki",
+      "url": "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs",
+      "httpStatus": 200,
+      "bytes": 245988,
+      "sha256": "d372361e9201f4d147f032e7a72b3c4dbb9ac5e0714f938a0214211df4c4f50c",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "harley-new52-wiki",
+      "url": "https://en.wikipedia.org/wiki/Harley_Quinn",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Harley_Quinn",
+      "httpStatus": 200,
+      "bytes": 1233214,
+      "sha256": "c627a6ee27f8447a76638771b8709a02714799c7ab142ce8b0533ac55963b0f7",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "ina-saturnin",
+      "url": "https://www.ina.fr/ina-eclaire-actu/saturnin-le-canard",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "spider-manual",
+      "url": "https://archive.org/details/spider-the-video-game-playstation-manual",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "dark-knight-wiki",
+      "url": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+      "httpStatus": 200,
+      "bytes": 1973560,
+      "sha256": "309407f282af1fea829153a1e18da12014020fe201bf199b0a8e948840afea24",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "spider-weapons",
+      "url": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "httpStatus": 200,
+      "bytes": 158384,
+      "sha256": "bb0905ba0ebeff2a92c0b2326f6e8a3d62f6e5dfd2ebfbfb5a021e8188764ab2",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "harry-film-official",
+      "url": "https://www.harrypotter.com/discover/films/harry-potter-and-the-order-of-phoenix",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    }
+  ],
+  "entries": [
+    {
+      "heroId": "saturnin_duck",
+      "name": "Saturnin the Duck",
+      "universe": "Les Aventures de Saturnin",
+      "incarnation": "Les Aventures de Saturnin (ORTF, 1965-1970) - real duckling in a miniature animal village",
+      "referenceUrls": [
+        "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Yellow Duckling Anatomy",
+        "Miniature Animal Village Props"
+      ],
+      "visualAnchor": "Saturnin is Jean Tourane s real yellow duckling in live-action miniature village sets: yellow down, orange bill and webbed feet, natural duck anatomy. No human arms, firearm, laser or human-sized uniform. Props and companions must match the selected episode.",
+      "canonStatus": "Real duckling source identity locked; bumps, distraction and escape are original comic game adaptations, not armed source combat.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Saturnin est le caneton reel de Jean Tourane, dans les decors miniatures des Aventures de Saturnin diffuses par l ORTF. Son caractere et ses aventures de village ne lui donnent ni fusil ni pouvoirs. Ses contacts, detours et evasions jouables sont une adaptation comique originale du projet ; son escorte est une mission de secours distincte.",
+        "en": "Saturnin is Jean Tourane s real duckling in the miniature sets of Les Aventures de Saturnin, broadcast by ORTF. His personality and village adventures do not give him a gun or supernatural powers. Playable bumps, detours and escapes are an original comic game adaptation; his escort is a separate rescue mission."
+      },
+      "actions": {
+        "simple": {
+          "name": "Duckling Bump",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Miniature Village Scramble",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Duckling Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Village Escape Tumble",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#ffd83d",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "lilo_pelekai",
+      "name": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Camera",
+        "Scrump Doll",
+        "Red White-Leaf Dress"
+      ],
+      "visualAnchor": "Lilo in the 2002 animated film: Hawaiian little girl, long straight black hair, red dress with large white leaf shapes and sandals. Camera and Scrump are personal props, not alien weapons. No adult substitute, laser rifle, magic beam or live-action redesign.",
+      "canonStatus": "Lilo s human source identity and props locked; photo distractions, dance and physical comedy are original game adaptations, not alien combat powers.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Lilo Pelekai est une enfant humaine de Kauai, elevee par sa soeur Nani dans le film anime Lilo & Stitch de 2002. Elle adopte Stitch et lui apprend le sens de ohana. Son appareil photo, sa poupee Scrump et sa danse appartiennent a sa vie ; le jeu adapte ces gestes en distraction et entraide, sans lui attribuer les pouvoirs de l Experience 626.",
+        "en": "Lilo Pelekai is a human child on Kauai, raised by her sister Nani in the 2002 animated film Lilo & Stitch. She adopts Stitch and teaches him the meaning of ohana. Her camera, Scrump doll and dancing belong to her life; the game adapts those gestures into distraction and support without granting her Experiment 626 s powers."
+      },
+      "actions": {
+        "simple": {
+          "name": "Camera Flash Distraction",
+          "type": "flash",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#fff4d8",
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "cameraFlash",
+            "color": "#fff4d8"
+          }
+        },
+        "secondary": {
+          "name": "Playful Sidestep Bump",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Hula Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Ohana Rescue Scramble",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#78daff",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "stitch_626",
+      "name": "Stitch",
+      "universe": "Lilo & Stitch",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Retractable Claws",
+        "Experiment 626 Anatomy"
+      ],
+      "visualAnchor": "Stitch in the 2002 animated film, Earth dog disguise: short stocky blue alien, large lateral ears with pink interiors and characteristic notches, dark nose and eyes, pale-blue belly, two visible arms. Alien four-arm form is a separate presentation, not extra permanent Earth-form arms. No humanoid warrior costume or innate laser gun.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Stitch est l Experience 626, creation genetique de Jumba poursuivie apres sa fuite vers la Terre. Le film anime de 2002 le montre d abord destructeur, puis lie a Lilo et a ohana. Sa force, ses griffes et son agilite viennent de son corps extraterrestre ; le kit joue sa forme terrestre a deux bras et adapte les impacts au combat du jeu.",
+        "en": "Stitch is Experiment 626, Jumba s genetic creation pursued after escaping to Earth. The 2002 animated film begins with his destructive behavior and follows his bond with Lilo and ohana. Strength, claws and agility come from his alien body; this kit uses his two-arm Earth disguise and adapts impacts to game combat."
+      },
+      "actions": {
+        "simple": {
+          "name": "Experiment 626 Claw Swipe",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Alien Strength Pounce",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Agile Alien Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Experiment 626 Strength Rush",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#55b7e8",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "jack_sparrow_potc",
+      "name": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Pirate Sword",
+        "Flintlock Pistol",
+        "Jack s Compass"
+      ],
+      "visualAnchor": "Jack Sparrow in The Curse of the Black Pearl: red bandanna beneath a brown tricorn, dark beaded braided hair, moustache and braided beard, loose cream shirt, dark waistcoat, worn brown coat, sash and belts, pirate sword and flintlock pistol. No laser, lightsaber, Davy Jones tentacle anatomy or automatic rifle.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Ce Jack Sparrow vient de The Curse of the Black Pearl, film de 2003 : il cherche son navire vole par Barbossa et aide Will Turner a sauver Elizabeth Swann. Son epee, son pistolet a silex et sa boussole sont des accessoires de pirate, pas des armes laser. Davy Jones, le coffre du mort et le maelstrom des suites ne sont pas l incarnation de ce kit ; la scene #269 est maintenant Isla de Muerta / Barbossa Duel, verrouillee sur le meme film de 2003.",
+        "en": "This Jack Sparrow comes from the 2003 film The Curse of the Black Pearl: he seeks the ship stolen by Barbossa and helps Will Turner rescue Elizabeth Swann. His sword, flintlock pistol and compass are pirate props, not laser weapons. Davy Jones, the Dead Man s Chest and the sequels maelstrom are not this kit s incarnation; stage #269 is now Isla de Muerta / Barbossa Duel, locked to the same 2003 film."
+      },
+      "actions": {
+        "simple": {
+          "name": "Pirate Sword Cut",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Flintlock Pistol Shot",
+          "type": "bullet",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#edc48b",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "flintlock",
+            "color": "#edc48b"
+          }
+        },
+        "defense": {
+          "name": "Roguish Swordfight Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Black Pearl Swordfight Feint",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#d6a654",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false,
+      "reportLoreScope": "Canonical report text refreshed with the adjacent scene correction; source-kit narrative is documented separately in the runtime module."
+    },
+    {
+      "heroId": "roger_rabbit",
+      "name": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "incarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/who-framed-roger-rabbit-film/"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Toon Body",
+        "Red Overalls",
+        "Blue Polka-Dot Bow Tie"
+      ],
+      "visualAnchor": "Roger Rabbit in the 1988 film: white cartoon rabbit with tall ears, orange hair tuft, pink nose, red overalls with yellow buttons, blue bow tie with yellow polka dots and yellow gloves. Cartoon elastic anatomy, not a humanoid armored rabbit or laser-wielding substitute. Dip is a lethal threat to toons.",
+      "canonStatus": "1988 toon identity locked; comic slaps, stretches and tumbles are original game combat adaptations. Dip remains a source vulnerability, not a protective ability.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Roger est le toon de Maroon Cartoon Studio accuse du meurtre de Marvin Acme dans Who Framed Roger Rabbit de 1988. Eddie Valiant enquete tandis que Judge Doom menace Toontown avec la Trempette. Roger reste un personnage comique elastique et vulnerable a ce solvant ; ses gestes convertis en degats sont une adaptation du jeu, pas des attaques laser du film.",
+        "en": "Roger is the Maroon Cartoon Studio toon accused of Marvin Acme s murder in 1988 s Who Framed Roger Rabbit. Eddie Valiant investigates while Judge Doom threatens Toontown with Dip. Roger remains an elastic comic character vulnerable to that solvent; gestures converted into damage are a game adaptation, not laser attacks from the film."
+      },
+      "actions": {
+        "simple": {
+          "name": "Toon Comic Slap",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Elastic Toon Feint",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Squash-and-Stretch Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Toon Comedy Tumble",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#ff6ab7",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "incarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Dark_Knight",
+        "https://www.dc.com/characters/batman"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Segmented Batsuit",
+        "Batarangs",
+        "Grapnel Gun",
+        "Utility Belt"
+      ],
+      "visualAnchor": "Batman in The Dark Knight (2008): Christian Bale s Bruce Wayne in the black segmented armored Batsuit, narrow pointed ears, exposed mouth and jaw, black cape and gold utility belt. Batarangs and grapnel equipment; no ordinary pistol, Grim Knight rifle, Justice Buster, blue-gray animated suit or The Batman 2022 costume.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Ce Batman est Bruce Wayne dans The Dark Knight de Nolan, sorti en 2008. Il agit avec Gordon et Harvey Dent face au Joker. Sa formation, son Batsuit segmente et ses gadgets expliquent son kit : combat martial, batarangs et protection. Le grapnel est un outil de deplacement, pas un pistolet a balles ; les chiffres de combat ne reproduisent pas le montage exact du film.",
+        "en": "This Batman is Bruce Wayne in Nolan s The Dark Knight, released in 2008. He works with Gordon and Harvey Dent against the Joker. Training, his segmented Batsuit and gadgets explain the kit: martial combat, Batarangs and protection. The grapnel is a movement tool, not a bullet-firing pistol; combat numbers do not reproduce the film s exact choreography."
+      },
+      "actions": {
+        "simple": {
+          "name": "Batsuit Martial Strike",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Batarang Throw",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#72767d",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "batarang",
+            "color": "#72767d"
+          }
+        },
+        "defense": {
+          "name": "Armored Forearm Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Gotham Close-Quarters Takedown",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#d3a84a",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - Bruce Wayne",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/batman"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "New 52 Batsuit",
+        "Batarangs",
+        "Utility Belt"
+      ],
+      "visualAnchor": "Bruce Wayne in the New 52 Endgame arc, Batman #35-40: gray armored suit, black cowl with white comic eye lenses, black bat emblem, black cape, gauntlets and boots, yellow-gold utility belt. Ordinary Batsuit form; Justice Buster is a separate armor form. No Grim Knight firearms or movie-specific Nolan costume.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Ce Bruce Wayne est verrouille sur Batman #35-40, l arc Endgame des New 52 recueilli par DC. Le Joker revient pour le tuer et retourne ses allies contre lui. Le kit conserve le Batsuit ordinaire et les batarangs ; Justice Buster, armure distincte de cet arc, n est pas fusionne avec sa silhouette. Aucun arsenal du Grim Knight n est attribue a ce Batman.",
+        "en": "This Bruce Wayne is locked to Batman #35-40, the New 52 Endgame arc collected by DC. The Joker returns to kill him and turns his allies against him. The kit keeps the ordinary Batsuit and Batarangs; Justice Buster, a distinct armor from that arc, is not merged into his silhouette. The Grim Knight s arsenal is not assigned to this Batman."
+      },
+      "actions": {
+        "simple": {
+          "name": "New 52 Martial Strike",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Utility-Belt Batarang",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#656973",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "batarang",
+            "color": "#656973"
+          }
+        },
+        "defense": {
+          "name": "Batsuit Gauntlet Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Endgame Close-Quarters Counter",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#1b2631",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/the-joker"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Joker Toxin",
+        "Knife"
+      ],
+      "visualAnchor": "The Joker in New 52 Endgame, Batman #35-40: chalk-white face, green hair and wide red grin, sinister purple-associated civilian clothing. His restored face is not the detached strapped-on face of Death of the Family. Exact issue panels must drive the final costume review; no movie Joker tattoos, Glasgow smile or Batman Who Laughs visor.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "Toxin is represented by game damage; Endgame infection and source antidote rules are not simulated.",
+      "loreLocalized": {
+        "fr": "Ce Joker vient de l arc Endgame, Batman #35-40 des New 52. DC decrit son retour pour tuer Batman en retournant ses allies contre lui. Ses armes et sa toxine remplacent les attaques Nexus anonymes ; leurs degats sont une adaptation et non une simulation de l infection. Le visage rattache de Death of the Family appartient a un autre arc et n equipe pas cette incarnation.",
+        "en": "This Joker comes from the New 52 Endgame arc, Batman #35-40. DC describes his return to kill Batman by turning his allies against him. Weapons and toxin replace anonymous Nexus attacks; damage is an adaptation rather than an infection simulation. The reattached face from Death of the Family belongs to another arc and does not equip this incarnation."
+      },
+      "actions": {
+        "simple": {
+          "name": "Joker Knife Slash",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Joker Toxin Spray",
+          "type": "spray",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#8ab155",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "toxin",
+            "color": "#8ab155"
+          }
+        },
+        "defense": {
+          "name": "Unpredictable Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Endgame Toxin Spray",
+          "type": "spray",
+          "dmg": 4.5,
+          "color": "#8ab155",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "toxin",
+            "color": "#8ab155"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "harley_n52",
+      "name": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Harley_Quinn"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Oversized Mallet",
+        "New 52 Squad Costume"
+      ],
+      "visualAnchor": "Harley Quinn s early New 52 Suicide Squad design, volume 4 #1 (2011): pale skin, hair divided blue and red, red-and-blue corset and shorts with matching boots and gloves, oversized mallet. Fully clothed source costume. Not the animated jester suit, Rebirth pink-and-blue hair tips, or Margot Robbie s 2016 film wardrobe. Source-panel visual review remains pending.",
+      "canonStatus": "Early New 52 Suicide Squad identity locked; presence in the Endgame universe roster is a crossover adaptation, not a claim she fights that comic finale.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Cette Harley Quinn vient du debut de Suicide Squad volume 4 des New 52, en 2011, avec son redesign bleu et rouge. Elle ne porte pas automatiquement les habits des films ni de Rebirth. Son maillet et son agilite deviennent un kit de combat adapte. Sa presence dans le roster Joker New 52 est un crossover du projet ; elle ne prouve pas une participation a la finale Endgame de Batman #35-40.",
+        "en": "This Harley Quinn comes from the beginning of New 52 Suicide Squad volume 4 in 2011, with its blue-and-red redesign. She does not automatically wear the film or Rebirth costumes. Her mallet and agility become an adapted combat kit. Her place in the Joker New 52 roster is a project crossover, not evidence she participates in Batman #35-40 s Endgame finale."
+      },
+      "actions": {
+        "simple": {
+          "name": "Oversized Mallet Swing",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Mallet Feint",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Acrobatic Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Squad Mallet Takedown",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#e74c3c",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "grim_knight",
+      "name": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "incarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Firearms Arsenal",
+        "Tactical Bat Armor"
+      ],
+      "visualAnchor": "The Grim Knight is the firearm-using Dark Multiverse Bruce Wayne: dark tactical bat armor, cowl and cape, multiple weapon mounts and ammunition. Exact 2019 issue panels must determine weapon models and armor details before visual approval. Not Nolan Batman, ordinary New 52 Batman, or Batman Who Laughs with a spiked visor.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Le Grim Knight est une version du Multivers Noir de Bruce Wayne qui utilise des armes a feu et impose a Gotham un regime militaire. Contrairement aux deux Batman ordinaires du roster, son arsenal est un trait de la source. Ce kit vise son one-shot de 2019 ; les modeles d armes, l armure et la choregraphie exigent encore une revue des pages originales.",
+        "en": "The Grim Knight is a Dark Multiverse version of Bruce Wayne who uses firearms and imposes military rule on Gotham. Unlike the roster s two ordinary Batmen, his arsenal is a source trait. This kit targets his 2019 one-shot; weapon models, armor and choreography still require review of the original pages."
+      },
+      "actions": {
+        "simple": {
+          "name": "Grim Knight Firearm Burst",
+          "type": "bullet",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#dfb879",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "bullet",
+            "color": "#dfb879"
+          }
+        },
+        "secondary": {
+          "name": "Tactical Covering Fire",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#dfb879",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "bullet",
+            "color": "#dfb879"
+          }
+        },
+        "defense": {
+          "name": "Tactical Armor Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Grim Knight Arsenal Volley",
+          "type": "bullet",
+          "dmg": 4.5,
+          "color": "#dfb879",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "bullet",
+            "color": "#dfb879"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "raven_tt",
+      "name": "Raven",
+      "universe": "Teen Titans",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "referenceUrls": [
+        "https://www.dc.com/characters/raven",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Mystical Powers",
+        "Hooded Purple Cloak"
+      ],
+      "visualAnchor": "Raven in the original 2003 Teen Titans animated series: gray skin, short violet hair, red forehead gem, dark outfit beneath a hooded blue-violet cloak with red clasp, blue-violet boots. Mystical dark-energy and telekinetic presentation, no mechanical laser rifle, Teen Titans Go proportions or live-action Titans wardrobe.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Cette Raven est celle de la serie animee Teen Titans commencee en 2003, pas de Teen Titans Go ni de la serie live-action Titans. Fille de Trigon, elle discipline ses emotions et pratique les arts mystiques. Son kit emploie telekinesie et protection magique sans lui donner un fusil laser ; les degats et la retenue de cible restent des abstractions du jeu.",
+        "en": "This Raven belongs to the Teen Titans animated series that began in 2003, not Teen Titans Go or the live-action Titans series. Trigon s daughter disciplines her emotions and practices mystical arts. Her kit uses telekinesis and magical protection without a laser rifle; damage and target restraint remain game abstractions."
+      },
+      "actions": {
+        "simple": {
+          "name": "Mystical Telekinetic Strike",
+          "type": "gravity",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#383044",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "shadow",
+            "color": "#383044"
+          }
+        },
+        "secondary": {
+          "name": "Telekinetic Debris",
+          "type": "gravity",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#383044",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "shadow",
+            "color": "#383044"
+          }
+        },
+        "defense": {
+          "name": "Mystical Barrier",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Raven Telekinetic Restraint",
+          "type": "gravity",
+          "dmg": 4.5,
+          "color": "#383044",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "shadow",
+            "color": "#383044"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "starfire_tt",
+      "name": "Starfire",
+      "universe": "Teen Titans",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "referenceUrls": [
+        "https://www.dc.com/characters/starfire",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Tamaranean Starbolts",
+        "Purple Animated-Series Costume"
+      ],
+      "visualAnchor": "Starfire in the original 2003 Teen Titans animated series: orange skin, long red hair, large green eyes, purple top and skirt, purple boots, silver neck piece and bracers with green gems. Green starbolts from her hands, not orange weapon fire, a rifle, New 52 comic costume or live-action Titans wardrobe.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Cette Starfire est Koriand r de Tamaran dans la serie animee Teen Titans de 2003. Elle rejoint l equipe de Jump City et garde sa force, son vol et ses starbolts verts. Un starbolt est une attaque d energie a distance ; son coup de pied reste une action de contact distincte. La trajectoire et les chiffres adaptes du jeu ne certifient pas une choregraphie d episode.",
+        "en": "This Starfire is Koriand r of Tamaran in the 2003 Teen Titans animated series. She joins the Jump City team and retains strength, flight and green starbolts. A starbolt is a ranged energy attack; her kick remains a separate contact action. Adapted game trajectories and numbers do not certify an episode s choreography."
+      },
+      "actions": {
+        "simple": {
+          "name": "Green Starbolt",
+          "type": "energy",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#63ef72",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "starbolt",
+            "color": "#63ef72"
+          }
+        },
+        "secondary": {
+          "name": "Tamaranean Flight Kick",
+          "type": "melee",
+          "cd": 7,
+          "dmg": 1.8,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Tamaranean Resilience",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Green Starbolt Volley",
+          "type": "energy",
+          "dmg": 4.6,
+          "color": "#63ef72",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "starbolt",
+            "color": "#63ef72"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Holly Wand with Phoenix-Feather Core",
+        "Gryffindor School Uniform",
+        "Round Glasses"
+      ],
+      "visualAnchor": "Harry in the 2007 Order of the Phoenix film: teenage Harry, untidy dark hair, round glasses and lightning scar, Hogwarts Gryffindor school clothing, original holly wand with phoenix-feather core. No Elder Wand, adult epilogue version or green Killing Curse. A corporeal Patronus is a stag, not a generic blast.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "Spells use game damage/guard; disarm, stun and Dementor-specific Patronus behavior require dedicated mechanics. Patronus is not an offensive area explosion.",
+      "loreLocalized": {
+        "fr": "Ce Harry est en cinquieme annee dans le film Order of the Phoenix de 2007. Il enseigne la defense a l Armee de Dumbledore avec sa baguette de houx a plume de phenix. Expelliarmus desarme, Stupefy etourdit et Protego protege dans la source ; les degats du moteur en sont une abstraction explicite. Son Patronus est un cerf protecteur face aux Detraqueurs et n est plus remplace par une explosion offensive generique.",
+        "en": "This Harry is a fifth-year student in the 2007 Order of the Phoenix film. He teaches defense to Dumbledore s Army with his holly and phoenix-feather wand. In the source, Expelliarmus disarms, Stupefy stuns and Protego protects; engine damage is an explicit abstraction. His Patronus is a protective stag against Dementors and is no longer replaced by a generic offensive explosion."
+      },
+      "actions": {
+        "simple": {
+          "name": "Expelliarmus",
+          "type": "projectile",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#ed6456",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#ed6456"
+          }
+        },
+        "secondary": {
+          "name": "Stupefy",
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.7,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#e35c5c",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#e35c5c"
+          }
+        },
+        "defense": {
+          "name": "Protego",
+          "type": "shield",
+          "dur": 2.2,
+          "reduce": 0.85,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Dumbledore s Army Stupefy Duel",
+          "type": "projectile",
+          "dmg": 4.8,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#e35c5c",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#e35c5c"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "hermione",
+      "name": "Hermione Granger",
+      "universe": "Harry Potter",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "sourceIdentityType": "source-character-incarnation",
+      "equipment": [
+        "Vine Wand with Dragon-Heartstring Core",
+        "Gryffindor School Uniform"
+      ],
+      "visualAnchor": "Hermione in the 2007 Order of the Phoenix film: teenage Hermione with brown hair, Hogwarts Gryffindor school clothing and her vine wand with dragon-heartstring core. Fifth-year incarnation; no permanent third-year Time-Turner pendant, Elder Wand or Deathly Hallows forest outfit. Final film-costume review remains pending.",
+      "canonStatus": "Source incarnation and props locked; numerical combat is a game adaptation, not a fidelity approval.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "Spells use game damage/guard; canonical disarm and stun effects are not yet simulated. No offensive Time-Turner or later-film Protego Maxima is attributed to this kit.",
+      "loreLocalized": {
+        "fr": "Cette Hermione est la cinquieme annee du film Order of the Phoenix de 2007 et membre de l Armee de Dumbledore, avec sa baguette de vigne a coeur de dragon. Son intelligence et son apprentissage des sorts structurent le kit a distance. Le Retourneur de Temps de Prisoner of Azkaban et Protego Maxima des films suivants ne sont pas fusionnes dans cette incarnation ; desarmement et etourdissement restent a distinguer des degats abstraits du jeu.",
+        "en": "This Hermione is the fifth-year Dumbledore s Army member from the 2007 Order of the Phoenix film, using her vine and dragon-heartstring wand. Intelligence and learned spells structure her ranged kit. The Prisoner of Azkaban Time-Turner and later-film Protego Maxima are not merged into this incarnation; disarm and stun still require separation from abstract game damage."
+      },
+      "actions": {
+        "simple": {
+          "name": "Stupefy",
+          "type": "projectile",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#e35c5c",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#e35c5c"
+          }
+        },
+        "secondary": {
+          "name": "Expelliarmus",
+          "type": "projectile",
+          "cd": 7,
+          "dmg": 1.8,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#ed6456",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#ed6456"
+          }
+        },
+        "defense": {
+          "name": "Protego",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Dumbledore s Army Stunning Duel",
+          "type": "projectile",
+          "dmg": 4.6,
+          "color": "#e35c5c",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "spell",
+            "color": "#e35c5c"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "sourceIdentityType": "source-protagonist-loadout-adaptation",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Default Slasher Attachment"
+      ],
+      "visualAnchor": "The small cybernetic spider carrying Dr. Michael Kelly s mind in Spider: The Video Game (1997), insect-scale laboratory setting and interchangeable weapon legs. This base slot uses the default slasher attachment. No humanoid exosuit, Spider-Man costume or claim that an original substitute sprite already matches the source model.",
+      "canonStatus": "Kelly is the source protagonist; separate playable attachment slots are project adaptations, not three official characters. Historical substitute sprites remain unapproved.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "L esprit du docteur Michael Kelly est transfere dans une araignee cybernetique dans Spider: The Video Game de 1997. Elle traverse des environnements de laboratoire a petite echelle et equipe des armes-pattes interchangeables ; le slasher est l attachment de base. Cette entree jouable represente un loadout du meme protagoniste, pas une nouvelle personne canonique. Son ancien sprite original reste a revoir.",
+        "en": "Dr. Michael Kelly s mind is transferred into a cybernetic spider in 1997 s Spider: The Video Game. It crosses insect-scale laboratory environments and equips interchangeable weapon legs; the slasher is its base attachment. This playable entry represents a loadout of the same protagonist, not a new official character. Its historical original substitute sprite remains under review."
+      },
+      "actions": {
+        "simple": {
+          "name": "Slasher Cyber-Leg Cut",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Cybernetic Slasher Feint",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Slasher Attachment Rush",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#5dff9e",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "cyber_spider_flamethrower",
+      "name": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "sourceIdentityType": "source-protagonist-loadout-adaptation",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Flamethrower Cyber-Leg"
+      ],
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Flamethrower Cyber-Leg loadout. Small multi-legged spider, flame emission associated with a mechanical leg, not a humanoid blade warrior. Exact 1997 weapon attachment appearance awaits original gameplay review; the existing substitute sprite is not approved.",
+      "canonStatus": "Kelly is the source protagonist; separate playable attachment slots are project adaptations, not three official characters. Historical substitute sprites remain unapproved.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Cette entree conserve l identite de Kelly dans l araignee cybernetique de Spider: The Video Game, avec le loadout lance-flammes nomme par le pack source du projet. Il ne s agit pas d un autre personnage officiel : le slot et les enchainements sont une adaptation jouable. Le lance-flammes remplace le slash generique ; modele exact de la patte, carburant et comportement du jeu original restent a revoir.",
+        "en": "This entry keeps Kelly s cybernetic-spider identity from Spider: The Video Game with the flamethrower loadout named by the project source pack. It is not another official character: the slot and sequences are a playable adaptation. Flame replaces the generic slash; the exact leg model, fuel and original-game behavior remain to be reviewed."
+      },
+      "actions": {
+        "simple": {
+          "name": "Flamethrower Cyber-Leg",
+          "type": "fire",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#f69a44",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "flame",
+            "color": "#f69a44"
+          }
+        },
+        "secondary": {
+          "name": "Flamethrower Attachment Sweep",
+          "type": "fire",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#f69a44",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "flame",
+            "color": "#f69a44"
+          }
+        },
+        "defense": {
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Flamethrower Cyber-Leg Burst",
+          "type": "fire",
+          "dmg": 4.5,
+          "color": "#f69a44",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "flame",
+            "color": "#f69a44"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "cyber_spider_electro_beam",
+      "name": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "sourceIdentityType": "source-protagonist-loadout-adaptation",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Electro-Beam Cyber-Leg"
+      ],
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Electro-Beam attachment loadout. Small multi-legged cybernetic spider; the electrical beam belongs to a weapon leg, not a human gun. Exact 1997 weapon model and beam presentation await original gameplay review; the existing original substitute sprite is not approved.",
+      "canonStatus": "Kelly is the source protagonist; separate playable attachment slots are project adaptations, not three official characters. Historical substitute sprites remain unapproved.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Cette variante represente le loadout Electro-Beam du meme Kelly/araignee de Spider: The Video Game de 1997. Le rayon de la patte remplace les balles derivees de la classe tactical. Le slot jouable est une adaptation du projet, pas un second protagoniste canonique ; le modele de l attachment et ses contraintes exactes demandent encore une reference de manuel ou de gameplay.",
+        "en": "This variant represents the Electro-Beam loadout of the same Kelly/spider from 1997 s Spider: The Video Game. A leg-mounted beam replaces the class-derived tactical bullets. The playable slot is a project adaptation, not a second official protagonist; the attachment model and exact constraints still require a manual or gameplay reference."
+      },
+      "actions": {
+        "simple": {
+          "name": "Electro-Beam Cyber-Leg",
+          "type": "beam",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#a6ddf0",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "electricBeam",
+            "color": "#a6ddf0"
+          }
+        },
+        "secondary": {
+          "name": "Electro-Beam Attachment Sweep",
+          "type": "beam",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#a6ddf0",
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "electricBeam",
+            "color": "#a6ddf0"
+          }
+        },
+        "defense": {
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Electro-Beam Cyber-Leg Burst",
+          "type": "beam",
+          "dmg": 4.5,
+          "color": "#a6ddf0",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified.",
+          "canonPresentation": {
+            "kind": "electricBeam",
+            "color": "#a6ddf0"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "mj_performer",
+      "name": "King of Pop Avatar",
+      "universe": "Michael Jackson",
+      "incarnation": "Multiverse Breach original tribute persona - King of Pop Avatar",
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "sourceIdentityType": "project-original-adaptation",
+      "equipment": [
+        "Original Stage Costume",
+        "Dance Shoes"
+      ],
+      "visualAnchor": "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume. Final visual review is pending. Do not silently label this substitute as Thriller, Moonwalker or historical Michael Jackson.",
+      "canonStatus": "Original tribute persona from the project, not historical Michael Jackson or an official Moonwalker character. Musical combat is an original game adaptation.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "King of Pop Avatar est un personnage original d hommage du projet Multiverse Breach. Il n est pas une representation validee de Michael Jackson, du court metrage Thriller ni d une incarnation Moonwalker. Son costume et sa danse forment sa propre adaptation jouable ; une version source 1:1 exigerait une incarnation distincte, des references correspondantes et une revue visuelle.",
+        "en": "King of Pop Avatar is an original tribute character created for Multiverse Breach. It is not an approved representation of Michael Jackson, the Thriller short film or a Moonwalker incarnation. Costume and dance define its own playable adaptation; a source-faithful version would require a distinct incarnation, matching references and visual review."
+      },
+      "actions": {
+        "simple": {
+          "name": "Original Dance-Step Contact",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Original Stage-Step Feint",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "defense": {
+          "name": "Original Performer Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Original Dance-Floor Finale",
+          "type": "melee",
+          "dmg": 4.5,
+          "color": "#f3d35c",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    },
+    {
+      "heroId": "rhythm_guard_mj",
+      "name": "Rhythm Guard",
+      "universe": "Michael Jackson",
+      "incarnation": "Multiverse Breach original companion - Rhythm Guard",
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "sourceIdentityType": "project-original-adaptation",
+      "equipment": [
+        "Original Stage Costume",
+        "Microphone"
+      ],
+      "visualAnchor": "The project s original fully clothed adult Rhythm Guard companion, with stage clothing and microphone. Not a claimed historical Michael Jackson associate or official Moonwalker cast member. No firearm derived only from the tactical class; existing substitute artwork remains pending review.",
+      "canonStatus": "Original project companion, not a character confirmed by an external musical source. Musical gestures converted to damage are an original game adaptation.",
+      "visualReviewStatus": "pending",
+      "mechanicsReviewStatus": "game adaptation; source choreography and special rules pending",
+      "loreLocalized": {
+        "fr": "Rhythm Guard est un compagnon original du projet et ne correspond pas a une personne officielle identifiee dans une oeuvre de Michael Jackson. Son microphone et ses indications de rythme remplacent le fusil generique de classe. La conversion de ces gestes en degats est une adaptation musicale originale, pas un pouvoir historique ou canonique.",
+        "en": "Rhythm Guard is an original project companion and does not correspond to an identified official person in a Michael Jackson work. A microphone and rhythm cues replace the generic class gun. Converting these gestures into damage is an original musical adaptation, not a historical or canonical power."
+      },
+      "actions": {
+        "simple": {
+          "name": "Microphone Contact",
+          "type": "melee",
+          "dmg": 1,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "melee"
+          },
+          "tacticsProfile": {
+            "range": 1
+          },
+          "smashProfile": {
+            "range": 70,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "melee"
+          }
+        },
+        "secondary": {
+          "name": "Original Rhythm Cue",
+          "type": "sound",
+          "cd": 8,
+          "dmg": 2.2,
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "color": "#e0c46a",
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "music",
+            "color": "#e0c46a"
+          }
+        },
+        "defense": {
+          "name": "Stage-Position Sidestep",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.75,
+          "canonStatus": "Named source action translated into game damage; original choreography and source-specific effects are not certified."
+        },
+        "special": {
+          "name": "Original Rhythm Finale",
+          "type": "sound",
+          "dmg": 4.5,
+          "color": "#e0c46a",
+          "attackProfile": {
+            "shape": "single",
+            "delivery": "ranged"
+          },
+          "tacticsProfile": {
+            "range": 4
+          },
+          "smashProfile": {
+            "range": 300,
+            "shape": "single",
+            "maxTargets": 1
+          },
+          "canonStatus": "Physical comic interaction translated into game damage; this is an original combat adaptation, not a combat feat from the source.",
+          "canonPresentation": {
+            "kind": "music",
+            "color": "#e0c46a"
+          }
+        }
+      },
+      "statsPreserved": true,
+      "numericAbilityValuesPreserved": true,
+      "runtimeActivation": "integrated in playable heroes and character plaques; dedicated dossiers verified; complete build coordinated by root",
+      "visualApproval": false
+    }
+  ],
+  "visualStatus": {
+    "existingWave4P0Count": 25,
+    "approved": 0,
+    "imagesModified": 0,
+    "provenanceOrManifestModified": false
+  },
+  "remainingWork": [
+    "Complete integrated build and browser verification are coordinated by root.",
+    "Source-specific coin-and-blood curse breaking, disarm/stun/Patronus/toxin/attachment constraints and scene-by-scene choreography remain separate work.",
+    "Original substitute sprites and stale dossier proofs remain pending visual review; metadata locks do not approve them.",
+    "Source-specific exact costume/weapon facts supported only by general biographies or secondary wikis need primary panel/episode/manual review."
+  ],
+  "blueSaberObservation": {
+    "id": "blue_saber",
+    "finding": "The item is now explicitly Luke s inherited blue blade from A New Hope (1977) and The Empire Strikes Back (1980), distinct from his playable Return of the Jedi green blade. It retains its saved ID and image and supplies passive stats without replacing or recoloring the hero weapon.",
+    "status": "source-incarnation-label-corrected; historical-image-review-pending"
+  },
+  "registryCounts": {
+    "available": 1021,
+    "pending": 2178,
+    "affectedCharacterDossiersPending": 19,
+    "sceneChange": "Old Pirates scene image preserved; renamed scene path awaits matching image evidence."
+  },
+  "adjacentCanonCorrections": {
+    "piratesScene": {
+      "stageId": 269,
+      "name": "Isla de Muerta / Barbossa Duel",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Isla de Muerta",
+      "boss": "Hector Barbossa",
+      "enemyRoster": [
+        "Cursed Aztec Pirate",
+        "Hector Barbossa"
+      ],
+      "sourceDataStatus": "corrected",
+      "mechanicsLimit": "RPG HP/waves do not simulate returning the coin and spilling the required blood to break the source curse.",
+      "visualStatus": "pending"
+    },
+    "jokerFaceRelic": {
+      "itemId": "joker_face_mask",
+      "incarnation": "Batman: Death of the Family (The New 52, Batman #13-17, 2012-2013)",
+      "sourceDataStatus": "corrected",
+      "defaultEndgameEquipment": false,
+      "visualStatus": "pending"
+    }
+  }
+}

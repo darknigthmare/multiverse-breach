@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "ilya_cross",
+  "heroId": "ilya_cross",
+  "characterName": "Ilya Cross",
+  "incarnation": "Iron Tempest — selected Ilya Cross V2 original-project portrait2026",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "referenceScope": "original-project-character-not-external-official-source",
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png",
+      "sha256": "1ec60ba62abd81a378f9abe440adc74e1e58b5554365803d9c81cac414a986fb",
+      "bytes": 2358185,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:11:21.418627+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact original portrait restored from matching local LFS object by root; personally opened by producer."
+    },
+    {
+      "path": "/sprites/generated/heroes/iron-tempest/ilya-cross.png",
+      "sha256": "bf4f48a3016cccd344e655f349aa18e5335fdd4a35e25af34de22c3d42c9c2f5",
+      "bytes": 1029604,
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Lean human, tousled short black bob, long ochre/olive scarf streaming from neck, fitted dark armored coat/tunic with split tails, dark full trousers and high black boots."
+    ],
+    "anatomy": [
+      "Two arms/hands, two legs, ordinary human proportions; retain apparent source proportions without assigning chronological age."
+    ],
+    "face": [
+      "Light warm skin, angular serious face, short tousled black hair framing face with long side strands; dark eyes; no goggles or ponytail."
+    ],
+    "costume": [
+      "Black/navy fitted armored jacket with brass-gold edging, chest and waist brown leather belts with brass buckles, brown waist pouches and thigh straps; asymmetric dark shoulder armor, worn silver knee plates, full black trousers, high black laced boots and dark gloves. Long ochre scarf.",
+      "Technical source boot crop personally inspected after reviewer query: source boots DO have substantial distinct high BLOCK HEELS and thick front sole, not flat military soles. Preserve heel shape; no identity inference from generic combat role."
+    ],
+    "equipment": [
+      "Anatomical LEFT hand (viewer right frontal) carries large propeller blade: long broad tapered dark metal blade with gold/brass edge and large circular brass gear-like hub at base next to handle. Blade is a single physical object; not a conventional sword with small crossguard. Anatomical RIGHT hand stays free unless scene requires service prop."
+    ],
+    "palette": [
+      "Black/navy, weathered brass/gold, ochre/olive scarf, brown leather and small silver knee plates."
+    ],
+    "distinguishingMarks": [
+      "Source shoulder badge and tiny buckles visible but lettering/emblem geometry unresolved; do not invent text."
+    ],
+    "forbiddenMixes": [
+      "No blonde ponytail, blue academy coat, short skirt, bare thighs, guns, right-hand permanent blade, small ordinary sword guard, face hidden by mask or generic pilot helmet."
+    ]
+  },
+  "scopeLimitations": [
+    "Single selected original-project portrait is internal project authority, not external franchise art.",
+    "Single front three-quarter view: reverse costume, hidden right hand and unreadable badge details remain unknown; favor source-facing views. Absolute 1:1 fidelity is not certified.",
+    "Chronological age undocumented. All scenes retain source proportions and opaque full clothing, family-safe and nonromantic.",
+    "Old atlas personally inspected: blonde ponytail, navy/gold coat, bare thighs and unarmed school-uniform fighter diverge from selected short black hair, full dark trousers, ochre scarf and left-hand propeller blade. Preserve old atlas byte-identically.",
+    "Iron Tempest original dieselpunk/interwar setting: armored trains, airships, radios and soot. New environments are compatible interpretations, not official screenshots. CG05 explicitly Nexus variant; CG09–11 Fan Art; CG12–15 What If; hypothetical future is not canonical chronology.",
+    "Source boots crop is an inspection derivative only, not second independent reference."
+  ],
+  "canonicalFidelityApproved": false,
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png"
+  ],
+  "incarnationDecision": {
+    "status": "explicit-selected-current-v2-over-previous-runtime-atlas",
+    "selectedPortrait": "public/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/iron-tempest/ilya-cross.png",
+    "reason": "Selected short black hair, long ochre scarf, fitted dark armored tunic/full trousers, left-hand broad propeller blade diverge from old blonde bare-thigh unarmed atlas."
+  },
+  "sourceAuthority": "internalcanonicalOriginalProject",
+  "role": "qualified-but-not-certified",
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actualRecordRead": "universe iron_tempest: fictional Arken forty-year war, dieselpunk/interwar, trains/airships/radio propaganda. Hero ilya_cross: night-squadron ace, survivor of six propaganda identities, propeller_blade. Mechanics are not independent proof of hidden equipment.",
+    "actuallyRead": true
+  },
+  "technicalInspectionDerivatives": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ilya-cross/source-boots-inspection.png",
+      "role": "source-crop-inspection-only-not-second-source",
+      "sourcePath": "/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen",
+  "provider": "OpenAI",
+  "toolArguments": {
+    "prompt": "Create exactly ONE transparent-background pixel-art sprite atlas, 4 columns by 4 rows, containing exactly SIXTEEN complete independently drawn poses of Jade in Beyond Good & Evil 2003: short uncovered black hair with a green forehead headband (not a cap), green cropped jacket over a white shirt, teal-green cargo trousers, brown fingerless gloves and brown shoes. A complete straight Daï-Jo staff held in both hands, no camera attack.\nSource: Beyond Good & Evil (2003).\nStaff physical combo. Row 1: four consecutive rightward arrivals carrying the full staff. Row 2: four visibly different staff grip/stance preparations. Row 3: anticipation with staff back, staff sweep beginning, full rightward staff contact at column 3, distinct follow-through. Row 4: four different staff recovery/retreat poses.\nAll figures face RIGHT. Wide empty transparent gutters separate every figure and every row. Each character, all hair, hands, feet, equipment and full weapon must fit wholly in its own cell, never touch or cross a cell edge. Keep one consistent body scale and recognisable source clothing in all16 poses. Pixel-art videogame side view, clean silhouette, neutral non-graphic action, fully clothed. Exactly four complete figures per row; no extra thumbnails, text, labels, grid lines, ground, background, shadows on floor, opponent or scenery. Transparent alpha background is required. Each pose is genuinely different; no duplicates or mirrored frames. Row order: arrival, preparation, action, recovery; release/contact is column3 (zero-based column2).",
+    "transparent_background": true
+  },
+  "actualReturnedFile": "/workspace/generated_images/exec-99ef1ad5-7afd-46d8-ab29-ea2d1cb6ac40.png",
+  "actualOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-99ef1ad5-7afd-46d8-ab29-ea2d1cb6ac40.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "base64RetainedAsActualPng": true,
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "generatedPosesObserved": null,
+  "reviewed": false
+}

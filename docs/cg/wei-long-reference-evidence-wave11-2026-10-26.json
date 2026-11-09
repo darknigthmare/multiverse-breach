@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "wei_long",
+  "heroId": "wei_long",
+  "characterName": "Wei Long",
+  "incarnation": "Mandate of Nine Heavens — Wei Long, canon original du projet (2026) — selected current V2",
+  "status": "internal-current-v2-portrait-inspected-source-qualified-with-limitations",
+  "sourceKind": "original-project-internal-canon",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": true,
+  "oldAtlasActuallyViewed": true,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/mandate_nine_heavens/heroes/wei_long.png",
+      "sha256": "b3c41852561abf208cd56ff8c56b05e0e1ddf5e4460ad9e9efd7792f7a6b59de",
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "viewed": true,
+      "inspected": true
+    },
+    {
+      "path": "/sprites/generated/heroes/mandate-of-nine-heavens/wei-long.png",
+      "sha256": "3a2fd79614929cb77d5187d2668b1c48bc09dc7e67ef2eb57fe258286d5bd532",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Human tall armored fighter, long black high ponytail with gold/teal winged head ornament, teal/black split flowing robes over dark trousers, gold-edged boots."
+    ],
+    "face": [
+      "Light skin, angular clean-shaven face, dark eyes and long loose side locks."
+    ],
+    "equipment": [
+      "Two-handed diagonal long TEAL polearm with ornate gold dragon head/socket and long curved turquoise blade: RIGHT hand upper shaft (viewer left), LEFT hand lower shaft by gold dragon socket (viewer right). Large water dragon behind is magic/context and need not be physical body."
+    ],
+    "costume": [
+      "Teal scale armor on torso/thigh, dark long sleeves/trousers, large gold pauldrons/bracers, gold sash across chest, gemmed gold belt and red hanging cords."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project authority only; no external franchise certification.",
+    "Single front three-quarter portrait; hidden reverse geometry and unreadable fine marks unknown. Absolute 1:1 fidelity is not certified.",
+    "Chronological age not established; retain apparent source proportions, opaque family-safe clothing and no romance.",
+    "Old atlas sleeveless navy martial tunic/white wraps, red sash, no armor or glaive; bottom-row clipping visible."
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "universeKey": "mandate_nine_heavens",
+    "heroRecord": {
+      "id": "wei_long",
+      "name": "Wei Long",
+      "category": "marine",
+      "combatRole": "gardien fluvial / déplacement",
+      "loreRole": "Émissaire draconique original chargé de maintenir les fleuves plutôt que de servir une cour céleste.",
+      "primaryColor": "#1d7874",
+      "secondaryColor": "#f4d35e",
+      "weaponType": "glaive",
+      "stats": {
+        "hp": 152,
+        "atk": 16,
+        "def": 12,
+        "spd": 6
+      },
+      "simple": {
+        "name": "Glaive des Eaux",
+        "type": "melee",
+        "dmg": 1.05
+      },
+      "secondary": {
+        "name": "Courant Ascendant",
+        "type": "water",
+        "cd": 6,
+        "dmg": 1.9
+      },
+      "defense": {
+        "name": "Écaille de Nuage",
+        "type": "shield",
+        "dur": 2.8,
+        "reduce": 0.88
+      },
+      "special": {
+        "name": "Dragon des Fleuves Réunis",
+        "type": "water_aoe",
+        "dmg": 4.7,
+        "color": "#2ec4b6"
+      },
+      "universe": "Mandate of Nine Heavens",
+      "sourceType": "original",
+      "weaponColor": "#f4d35e"
+    },
+    "worldLore": {
+      "origin": {
+        "fr": "Cette Trame originale assemble une cour céleste fictive, des esprits fluviaux, des ancêtres, des talismans et une bureaucratie surnaturelle sans prétendre résumer toutes les traditions chinoises."
+      },
+      "breach": {
+        "fr": "Le Sans-Auteur a offert à un Usurpateur la possibilité de rendre le Mandat permanent et de transformer tout désaccord en erreur administrative."
+      },
+      "coreConflict": {
+        "fr": "Rendre l’autorité conditionnelle, restaurer les pétitions et protéger les êtres surnaturels contre leur réduction à des symboles de pouvoir."
+      }
+    },
+    "stages": [
+      {
+        "id": "china_lantern_city",
+        "name": {
+          "fr": "Cité des Lanternes sans Ombre",
+          "en": "City of Shadowless Lanterns"
+        },
+        "mode": "Smash",
+        "difficulty": "Hard",
+        "objectiveType": "control",
+        "boss": "Dragon Noir de la Rivière Brisée",
+        "setting": {
+          "fr": "Ponts courbes, toits et canaux où la lumière des lanternes révèle les vraies plateformes."
+        },
+        "universe": "Mandate of Nine Heavens",
+        "sourceUniverses": [
+          "Mandate of Nine Heavens"
+        ],
+        "sourceType": "original",
+        "stageKey": "china_lantern_city"
+      },
+      {
+        "id": "china_bureau_scrolls",
+        "name": {
+          "fr": "Bureau des Dix Mille Rouleaux",
+          "en": "Bureau of Ten Thousand Scrolls"
+        },
+        "mode": "Tactics",
+        "difficulty": "Very Hard",
+        "objectiveType": "artifact",
+        "boss": "Juge des Pétitions Vides",
+        "setting": {
+          "fr": "Grille administrative où les bons sceaux doivent être apposés sur trois requêtes vivantes."
+        },
+        "universe": "Mandate of Nine Heavens",
+        "sourceUniverses": [
+          "Mandate of Nine Heavens"
+        ],
+        "sourceType": "original",
+        "stageKey": "china_bureau_scrolls"
+      },
+      {
+        "id": "china_ninth_heaven_gate",
+        "name": {
+          "fr": "Porte-dragon du Neuvième Ciel",
+          "en": "Ninth-Heaven Dragon Gate"
+        },
+        "mode": "RPG",
+        "difficulty": "Very Hard",
+        "objectiveType": "overload",
+        "boss": "Usurpateur du Neuvième Ciel",
+        "setting": {
+          "fr": "Ascension de neuf paliers; chaque niveau impose une règle que l’équipe peut accepter ou contester."
+        },
+        "universe": "Mandate of Nine Heavens",
+        "sourceUniverses": [
+          "Mandate of Nine Heavens"
+        ],
+        "sourceType": "original",
+        "stageKey": "china_ninth_heaven_gate"
+      }
+    ]
+  },
+  "sourceRefs": [
+    "/images/oc-worlds/v2/mandate_nine_heavens/heroes/wei_long.png",
+    "src/game/originalUniversesManifest.json"
+  ]
+}

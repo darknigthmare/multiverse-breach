@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { STAGE_ANIMATION_PROFILES, getStageAnimationProfile, getStageAnimationFrame, renderStageAnimation } from '../src/game/melee/stageAnimationCatalog.js';
 import { STAGE_ANIMATION_WAVE_16 } from '../src/game/melee/stageAnimationCatalogWave16.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16 } from '../src/game/tacticsUniverseBattlefieldsWave16.js';
+import { assertHistoricalStageDrawTrace } from './historicalStageRuntimeCompatibility.mjs';
 
 const root = new URL('../', import.meta.url);
 const before = JSON.parse(readFileSync(new URL('docs/combat-fidelity-wave16-2026-10-28/baseline-current-wave15.json', root)));
@@ -87,7 +88,9 @@ test('W16 honors reduced motion, disable flags, finite simulation time and canva
 });
 
 test('all425 previous definitions and their resolved simulation draw traces remain byte-for-byte stable', () => {
-  const baseline = JSON.parse(readFileSync(new URL('docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json', root)));
+  const baselineBytes = readFileSync(new URL('docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json', root));
+  assert.equal(hash(baselineBytes), '6063699c4e2e8424d7f9eb1574aabe6a433801442c2ec8cc1239020a6725503f');
+  const baseline = JSON.parse(baselineBytes);
   const encode = value => JSON.stringify(value, (_, item) => item instanceof RegExp ? { source: item.source, flags: item.flags } : item);
   assert.equal(Object.keys(baseline.stageDefinitions).length, 425);
   for (const [id, expected] of Object.entries(baseline.stageDefinitions)) {
@@ -100,7 +103,39 @@ test('all425 previous definitions and their resolved simulation draw traces rema
       const draw = record(row.stage, time), resolved = getStageAnimationProfile(row.stage)?.id || null;
       assert.equal(draw.rendered, row[key].rendered, row.id);
       assert.equal(resolved, row[key].resolved, row.id + ': selection was intercepted');
-      assert.equal(hash(encode(draw.calls)), row[key].sha256, row.id + ': historical draw changed');
+      assertHistoricalStageDrawTrace({ id: row.id, stage: row.stage, timeKey: key, elapsedSeconds: time, calls: draw.calls, expectedSha256: row[key].sha256 });
+    }
+  }
+});
+
+test('stage trace compatibility accepts only the exact two Springfield runtime variants and rejects every other context or draw change', () => {
+  const baseline = JSON.parse(readFileSync(new URL('docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json', root)));
+  const row = baseline.stageTraces.find(row => row.id === 'w11-springfield-cooling-tower-vapor');
+  assert.ok(row); assert.equal(row.stage.mode, 'Tactics');
+  for (const [timeKey, elapsedSeconds] of [['at0', 0], ['at23', 5.75]]) {
+    const calls = record(row.stage, elapsedSeconds).calls;
+    assert.equal(calls[24][0], 'lineTo'); assert.equal(calls[24][1], 482.41648200000003);
+    assert.ok([177.8660725, 177.86607249999997].includes(calls[24][2]));
+    const historical = structuredClone(calls); historical[24][2] = 177.86607249999997;
+    assert.equal(hash(JSON.stringify(historical)), row[timeKey].sha256);
+    const node22 = structuredClone(calls); node22[24][2] = 177.8660725;
+    const input = { id: row.id, stage: row.stage, timeKey, elapsedSeconds, calls: node22, expectedSha256: row[timeKey].sha256 };
+    const before = structuredClone(input);
+    assertHistoricalStageDrawTrace(input); assert.deepEqual(input, before);
+    assertHistoricalStageDrawTrace({ ...input, calls: historical });
+    for (const override of [
+      { id: 'other-stage' }, { stage: { ...row.stage, universe: 'Other universe' } },
+      { stage: { ...row.stage, name: 'Other cooling tower' } }, { stage: { ...row.stage, mode: 'Kart' } },
+      { timeKey: 'at50' }, { timeKey: timeKey === 'at0' ? 'at23' : 'at0' },
+      { elapsedSeconds: elapsedSeconds + 1e-12 }, { expectedSha256: '0'.repeat(64) }
+    ]) assert.throws(() => assertHistoricalStageDrawTrace({ ...input, ...override }));
+    for (const mutate of [
+      draw => { draw[24][0] = 'moveTo'; }, draw => { draw[24][1] += 1e-12; },
+      draw => { draw[24][2] = 177.86607250000003; }, draw => { draw[24][2] += 1; },
+      draw => { draw[14][2] += 1e-12; }, draw => { draw.push(['stroke']); }
+    ]) {
+      const changed = structuredClone(node22); mutate(changed);
+      assert.throws(() => assertHistoricalStageDrawTrace({ ...input, calls: changed }));
     }
   }
 });

@@ -1,0 +1,40 @@
+.intro-experience.intro-profile-screen { display: grid; grid-template-columns: minmax(300px, 480px) minmax(0, 1fr); align-items: center; justify-content: stretch; gap: clamp(24px, 5vw, 90px); height: 100dvh; min-height: 0; padding: max(72px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(26px, env(safe-area-inset-bottom)) max(28px, 5vw, env(safe-area-inset-left)); overflow: hidden; }
+.intro-profile-screen .intro-profile-shell { width: 100%; max-height: 100%; min-height: 0; overflow: auto; overscroll-behavior: contain; padding-right: 12px; }
+.intro-profile-screen .intro-profile-heading { margin: 14px 0 20px; }
+.intro-profile-screen .intro-profile-heading h1 { font-size: clamp(24px, 3vw, 42px); }
+.intro-profile-screen .intro-profile-layout { display: flex; flex-direction: column; gap: 20px; padding-top: 16px; }
+.intro-profile-screen .intro-identity-panel { gap: 12px; }
+.intro-profile-screen .intro-identity-panel label { font-size: .85rem; }
+.intro-profile-screen .intro-local-action { min-height: 54px; font-size: .9rem; }
+.intro-local-explanation { font-size: .85rem; color: #b1c9cc; line-height: 1.55; margin: 0; }
+.intro-optional-account { border-top: 1px solid #426d7044; padding: 12px 0; }
+.intro-optional-account > summary { cursor: pointer; font-size: .9rem; color: #a9d4d6; padding: 6px 0; }
+.intro-optional-account .auth-panel-embedded { padding-top: 12px; }
+.intro-rescue-preview { min-width: 0; align-self: stretch; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 20px; border-bottom: 1px solid #6df9eb44; background: radial-gradient(ellipse at 50% 50%, #48e8df16, transparent 70%); }
+.intro-rescue-kicker { color: #9de8dc; font-size: .8rem; letter-spacing: .2em; }
+.intro-rescue-portraits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-items: end; }
+.intro-rescue-portraits figure { margin: 0; min-width: 0; }
+.intro-rescue-pose { width: 100%; aspect-ratio: 1; background-repeat: no-repeat; image-rendering: pixelated; filter: drop-shadow(0 12px 28px #000b); }
+.intro-rescue-portraits figcaption { display: grid; gap: 6px; border-top: 1px solid #69cfc866; padding: 14px 4px; }
+.intro-rescue-portraits strong { font-size: .9rem; color: #effffa; }
+.intro-rescue-portraits span { font-size: .75rem; color: #b4c9cf; }
+.intro-anchor-preview > div { aspect-ratio: 1; display: grid; place-items: center; font: 700 clamp(24px, 5vw, 72px) 'Share Tech Mono', monospace; color: #a5fff0; background: radial-gradient(circle, #4af2db33, transparent 63%); text-shadow: 0 0 30px #57fce9; }
+.intro-title-dialog { max-height: calc(100dvh - 32px); overflow: auto; overscroll-behavior: contain; }
+.intro-title-dialog input, .intro-title-dialog select, .intro-title-dialog button { min-height: 42px; }
+.intro-dialog-dismiss { position: sticky; top: 0; float: right; z-index: 2; display: grid; place-items: center; width: 44px; border: 1px solid #5f9093; border-radius: 4px; background: #07141c; color: #e1fffa; font-size: 26px; cursor: pointer; }
+.intro-experience.intro-profile-screen { padding-left: max(28px, 5vw, var(--game-safe-area, 12px), env(safe-area-inset-left)); padding-right: max(24px, var(--game-safe-area, 12px), env(safe-area-inset-right)); }
+:root[data-game-contrast='high'] .intro-optional-account, :root[data-game-contrast='high'] .intro-title-dialog { color: #fff; background: #03090e; }
+@media (max-width: 850px) {
+  .intro-experience.intro-profile-screen { grid-template-columns: minmax(0, 1fr); padding-inline: 22px; gap: 12px; overflow-y: auto; }
+  .intro-profile-screen .intro-profile-shell { max-height: none; overflow: visible; }
+  .intro-rescue-preview { min-height: 170px; padding: 12px; order: -1; }
+  .intro-rescue-portraits { max-width: 450px; }
+  .intro-rescue-portraits figure { display: grid; grid-template-columns: 70px minmax(0, 1fr); align-items: center; }
+  .intro-rescue-portraits { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .intro-rescue-portraits figcaption { padding: 8px; border: 0; }
+  .intro-rescue-kicker { margin-bottom: 8px; }
+}
+@media (max-height: 580px) and (min-width: 851px) {
+  .intro-experience.intro-profile-screen { padding-top: 55px; padding-bottom: 12px; }
+  .intro-profile-screen .intro-profile-heading h1 { font-size: 23px; }
+}

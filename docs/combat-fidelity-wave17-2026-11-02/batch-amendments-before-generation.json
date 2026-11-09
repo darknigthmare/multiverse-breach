@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T05:10:11.425Z",
+  "initialPlan": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+    "sha256": "1f8685e68f25a13ca1c321d6899257f102f5a327ce01f8f58678931832926604"
+  },
+  "replacements": [
+    {
+      "part": "B",
+      "withheldId": "g_hotd",
+      "replacementId": "dana_barrett_gb",
+      "nativeRequestStatus": "actual-generation-refused",
+      "refusal": {
+        "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/g_hotd-result.json",
+        "sha256": "40f45d2978c3d5e73751f953891d9b19c462691de4859f9ec021cdc90117582d"
+      },
+      "replacementHero": {
+        "id": "dana_barrett_gb",
+        "name": "Dana Barrett",
+        "cat": "horror",
+        "color": "#c0392b",
+        "simpleName": "Zuul Warning",
+        "secondaryName": "Gatekeeper Possession Pulse",
+        "defenseName": "Apartment Door Brace",
+        "specialName": "Rooftop Temple Seal",
+        "universe": "Ghostbusters",
+        "category": "horror",
+        "primaryColor": "#c0392b",
+        "secondaryColor": "#c0392b",
+        "weaponType": "slash",
+        "weaponColor": "#c0392b",
+        "stats": {
+          "hp": 115,
+          "atk": 11,
+          "def": 7,
+          "spd": 5
+        },
+        "simple": {
+          "name": "Zuul Warning",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Gatekeeper Possession Pulse",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Apartment Door Brace",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Rooftop Temple Seal",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#c0392b"
+        }
+      },
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "reason": "Separate unrelated human support character; the withheld identity is not retried under another version or alias."
+    },
+    {
+      "part": "B",
+      "withheldId": "g_hotd3",
+      "replacementId": "louis_tully_gb",
+      "nativeRequestStatus": "not-requested-after-same-character-refusal",
+      "refusal": {
+        "path": "docs/combat-fidelity-wave17-2026-11-02/part-b/sources/g_hotd-result.json",
+        "sha256": "40f45d2978c3d5e73751f953891d9b19c462691de4859f9ec021cdc90117582d"
+      },
+      "replacementHero": {
+        "id": "louis_tully_gb",
+        "name": "Louis Tully",
+        "cat": "tactical",
+        "color": "#a67c52",
+        "simpleName": "Accountant Panic Swing",
+        "secondaryName": "Keymaster Charge",
+        "defenseName": "Party Guest Evasion",
+        "specialName": "Tax Season Gozer Audit",
+        "universe": "Ghostbusters",
+        "category": "tactical",
+        "primaryColor": "#a67c52",
+        "secondaryColor": "#a67c52",
+        "weaponType": "gun",
+        "weaponColor": "#a67c52",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Accountant Panic Swing",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Keymaster Charge",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Party Guest Evasion",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Tax Season Gozer Audit",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#a67c52"
+        }
+      },
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "reason": "Separate unrelated human support character; the withheld identity is not retried under another version or alias."
+    }
+  ],
+  "reviewedIdentityCount": 122,
+  "effectiveDrawingCharacters": 120,
+  "source1to1Verified": false,
+  "rules": {
+    "appendOnly": true,
+    "existingReviewedKitsRetained": true,
+    "replacementSourcePlansBeforeGeneration": true,
+    "noRefusedCharacterRetry": true
+  }
+}

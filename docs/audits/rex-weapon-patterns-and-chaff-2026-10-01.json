@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-01",
+  "scope": "Original MGS1998 stage12 attack armament, tactical footprints and finite chaff; exact source encounter guards retained.",
+  "previousPublishedCommit": "34e222b7036d3943aacfa6250f04f357d2216ba1",
+  "implementation": {
+    "sourceAttackTypes": [
+      "frontal machine guns",
+      "missile salvo",
+      "belly laser",
+      "foot stomp"
+    ],
+    "phases": [
+      "radome",
+      "cockpit"
+    ],
+    "bodyHp": 720,
+    "targetHpPools": [
+      360,
+      360
+    ],
+    "liquidSurvives": true,
+    "telegraphs": "Ground cells are committed before the next REX turn; ordinary reachable-cell movement can evade them. UI, board threat overlay and damage use the same cells.",
+    "radarMissiles": "Three-cell salvo; active radar-phase chaff disperses two impacts and leaves one dangerous impact.",
+    "cockpitMissiles": "Manual visual targeting; radar chaff does not blind Liquid. Current tactical restriction is declared adaptation, not a measured PS1 phase2 effect.",
+    "grenades": 3,
+    "chaffDuration": "Two completed REX attacks; other actors, UI reads and pause do not age it.",
+    "cost": "One grenade and the active living squad hero turn. No HP payment, damage to radome/cockpit or Stinger shot.",
+    "ai": "Uses the same movement, avoids marked cells and uses finite radar chaff when needed.",
+    "railgun": "Preserved as physical lore/visual attachment; not used as a firing weapon in the source duel. Runtime enemy weapon tag is machine gun."
+  },
+  "sourceReferences": [
+    {
+      "url": "https://archive.org/details/metal-gear-solid-official-mission-handbook-1998-kitsunebi",
+      "type": "Original PS1-era licensed Millennium Official Mission Handbook",
+      "supports": "Four attacks in both phases, medium-range guns/missiles, radar chaff makes most missiles miss, phase2 missiles manually aimed by Liquid.",
+      "limits": "OCR imperfect; numerical technical armament tables are not used to invent gameplay."
+    },
+    {
+      "url": "https://metalgear.konami.net/manual/mc1/mgs1/pc/en/page16.html",
+      "type": "Konami manual of original-game Master Collection port",
+      "supports": "Chaff interferes with electronic equipment. Five seconds is fuse time, not documented jamming duration."
+    }
+  ],
+  "adaptations": [
+    "Stationary grid target, cells, directional footprints, damage factors and telegraph turns adapt the original 3D boss.",
+    "Three shared grenades, immediate resolution within a spent turn and two REX attacks of jamming are balance adaptations; no exact PS1 fuse/jam timing claimed.",
+    "One surviving impact out of a dispersed radar salvo is a tactical representation of most missiles missing, not measured source accuracy.",
+    "Cockpit grenade command disabled to avoid claiming that radar chaff blinds Liquid; the precise original phase2 missile-electronics interaction still requires replay.",
+    "Genome approach patrols and crossover hero equipment, field artifacts and broader Multiverse combat remain project systems."
+  ],
+  "validation": {
+    "targetedTests": 29,
+    "targetedPassed": 29,
+    "fullBuild": {
+      "passed": true,
+      "tests": 1347,
+      "passedTests": 1347,
+      "failed": 0,
+      "cancelled": 0,
+      "groups": 15,
+      "viteBuilt": true,
+      "lintPassed": true,
+      "riftAuditPassed": true
+    },
+    "browser": {
+      "scope": "Local real GameCanvas in isolated fixture; normal App root separately checked. No progress save injection, HP change, position injection or engine hooks in browser.",
+      "languages": [
+        "fr",
+        "en"
+      ],
+      "mobileWidth": 390,
+      "chaffClickVerified": true,
+      "twoRealAutoBattlesWon": true,
+      "livingHeroesEach": 3,
+      "javascriptErrors": 0,
+      "remoteBrowserVerified": false,
+      "normalAppBriefingsVerified": true,
+      "sealedMissionRemainedSealed": true
+    },
+    "sourcePriorityRegression": {
+      "tests": 14,
+      "passed": 14,
+      "fixtureUpdate": "Uses an ordinary Snake/Chief/Leon squad and avoids telegraphed cells. Restores the isolated no-waiting fixture clock before battle; no application stats changed."
+    }
+  },
+  "remaining": [
+    "Original 3D REX movement, collision, attack animations, ranges and timings",
+    "Exact measured PS1 chaff lifetime and phase2 electronics behavior",
+    "Gray Fox original laser/resupply/death cinematic",
+    "Original PS1 confirmation of PSG1 cockpit alternative",
+    "Separate timed unarmed Liquid fistfight and escape",
+    "Legacy crossover character specials and field-item source consistency, including naming of Snake equipment",
+    "Pending REX boss sprite and stage12/stage269 dossier artwork; 25 visual P0 corrections and 6601 distinct missing paths remain"
+  ],
+  "newImagesInstalled": 0,
+  "visualFidelityApproved": false,
+  "implementationInputs": [
+    {
+      "path": "src/game/canonRexAttackPatterns.js",
+      "sha256": "6aba46010b0391d03657789a0aa404d6cdf3c6c55743a9ebc6485c1ec09dee8b"
+    },
+    {
+      "path": "src/game/canonRexEncounter.js",
+      "sha256": "2ee6889e1faa85f5f1f3fef83d91571987e81db7a655b27302c7cda3a8386bfe"
+    },
+    {
+      "path": "src/game/engineTactics.js",
+      "sha256": "26475654e76dfa3645303a2d29a9e8074c309bc354e8ceb17c1141f936653b29"
+    },
+    {
+      "path": "src/game/enemies.js",
+      "sha256": "de3da06feed0594f981ae89b8f12434c38e66949aa19841ec71293f946e6751f"
+    },
+    {
+      "path": "src/game/canonPriorityStages.js",
+      "sha256": "44fe0e22f927083ff024e046fc0571fec32fe42e30115833161b1e324119faf1"
+    },
+    {
+      "path": "src/game/canonEncounterBriefing.js",
+      "sha256": "a77f3b555de9465a282af43c82884fe6c9545735057bd1d68c4216b5a4f361e6"
+    },
+    {
+      "path": "src/game/canonicalArchiveLore.js",
+      "sha256": "d0ed65138e2ac901ce0a0f47a2ce6790b7ff91c67d60255fe28b7c68fc732c9a"
+    },
+    {
+      "path": "src/components/RexEncounterPanel.jsx",
+      "sha256": "3be53dc8ee1cba632d2c7256c48e0f656f581baddeeab47b3eaa6dd729a3cf32"
+    },
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "sha256": "73637692e247df6debc2354eba359c4ed5910865bf073940966f4652146eb186"
+    },
+    {
+      "path": "scripts/canonRexAttackPatterns.test.mjs",
+      "sha256": "1128825a5ce8066a6048e8a94d3dd9046adc423e0a144410fb9ba39bf3e414a9"
+    },
+    {
+      "path": "scripts/canonPriorityCorrections.test.mjs",
+      "sha256": "06ce7c935bcaf512bd505930c1b7609b3970865f43b73d97c202efa11334f4ac"
+    }
+  ]
+}

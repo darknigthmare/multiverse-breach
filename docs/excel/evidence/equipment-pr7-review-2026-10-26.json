@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "read-only-pr7-equipment-context",
+  "reviewedAtUtc": "2026-10-26 16:33:47 UTC",
+  "repository": "darknigthmare/multiverse-breach",
+  "baseline": {
+    "previousSource": "8ce15c779db1e911f0db8723c681a6b0b740bd78",
+    "currentMaster": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "masterCommitsSincePrevious": 44
+  },
+  "pr": {
+    "number": 7,
+    "url": "https://github.com/darknigthmare/multiverse-breach/pull/7",
+    "branch": "codex/forgotten-fighter-followup-2026-10-25",
+    "head": "6c0096807ba7d9107686b14657eaefc8b1c8cde2",
+    "state": "open",
+    "merged": false,
+    "draft": false,
+    "mergeable": false,
+    "mergeBase": "b8b2c326da45ce11ed8bd8868fca0bf266dfd31a",
+    "aheadOfCurrentMaster": 4,
+    "behindCurrentMaster": 33,
+    "comparisonStatus": "diverged",
+    "changedFiles": 13,
+    "bodyStatusStale": [
+      "Body says draft, but API draft=false.",
+      "Body says three final CI runs pending, but all three are now completed/success."
+    ]
+  },
+  "scope": {
+    "newSourceProfiles": 0,
+    "sourceProfilesAtCurrentMaster": 124,
+    "sourceProfilesAtPreviousBaseline": 118,
+    "newPhysicalEquipmentItems": 0,
+    "newCharacters": 0,
+    "newSprites": 0,
+    "newCanonicalFidelityApprovals": 0,
+    "offensiveFighterAdaptationsAtCurrentMaster": 69,
+    "offensiveFighterAdaptationsWithPr7": 82,
+    "supplementalProfiles": 13,
+    "supplementalRangedProfiles": 12,
+    "supplementalMeleeProfiles": 1,
+    "interpretation": "Mode adaptations of existing source attacks. Names such as Plasma Rifle Burst do not add an equippable item or prove a 1:1 physical loadout. My Final Heaven is a technique. No new equipment catalog or XLSX in PR 7."
+  },
+  "profiles": [
+    {
+      "key": "leia_organa",
+      "universe": "Star Wars",
+      "action": "Leia Blaster Volley",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 310,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "leia",
+      "universe": "Star Wars",
+      "action": "Leia Blaster Volley",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 310,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Star Wars::Stormtrooper Patrol",
+      "universe": "Star Wars",
+      "action": "E-11 Blaster Volley",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 310,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Star Wars::Stormtrooper Squad",
+      "universe": "Star Wars",
+      "action": "E-11 Blaster Volley",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 310,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Star Wars::Stormtrooper Fireteam",
+      "universe": "Star Wars",
+      "action": "E-11 Blaster Volley",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 310,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Star Wars::Droideka Shield Droid",
+      "universe": "Star Wars",
+      "action": "Droideka Twin Blasters",
+      "delivery": "ranged",
+      "contacts": 4,
+      "rangeGameUnits": 330,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Star Wars::Droideka Shield Unit",
+      "universe": "Star Wars",
+      "action": "Droideka Twin Blasters",
+      "delivery": "ranged",
+      "contacts": 4,
+      "rangeGameUnits": 330,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "doom_marine_classic",
+      "universe": "Doom",
+      "action": "Classic Plasma Rifle Burst",
+      "delivery": "ranged",
+      "contacts": 5,
+      "rangeGameUnits": 350,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "The Predator::Assassin Predator / Upgrade Predator",
+      "universe": "The Predator",
+      "action": "Assassin — Wrist Cannon",
+      "delivery": "ranged",
+      "contacts": 1,
+      "rangeGameUnits": 340,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Halo::Covenant Grunt",
+      "universe": "Halo",
+      "action": "Grunt — Plasma Pistol Burst",
+      "delivery": "ranged",
+      "contacts": 3,
+      "rangeGameUnits": 260,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Halo::Elite Minor",
+      "universe": "Halo",
+      "action": "Elite — Plasma Rifle Burst",
+      "delivery": "ranged",
+      "contacts": 4,
+      "rangeGameUnits": 320,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "key": "Quake::Makron — Quake II",
+      "universe": "Quake",
+      "action": "Makron — Hyperblaster Sweep",
+      "delivery": "ranged",
+      "contacts": 5,
+      "rangeGameUnits": 390,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false,
+      "requiredContinuity": "Quake II (1997)"
+    },
+    {
+      "key": "zell_ff8",
+      "universe": "Final Fantasy VIII",
+      "action": "My Final Heaven",
+      "delivery": "melee",
+      "contacts": 1,
+      "rangeGameUnits": 120,
+      "sourceDefinitionAlreadyPresentAtMaster": true,
+      "masterFighterContactDefinitionResolved": false,
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "ci": {
+    "queriedForHead": "6c0096807ba7d9107686b14657eaefc8b1c8cde2",
+    "runs": [
+      {
+        "id": 40172259253,
+        "name": "Reliability and source build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40172259253"
+      },
+      {
+        "id": 40172259219,
+        "name": "Signature combat",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40172259219"
+      },
+      {
+        "id": 40172259222,
+        "name": "Full production build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40172259222"
+      }
+    ],
+    "limit": "These runs validate the published PR 7 revision against its then-current base, not a merge with current master 1460d0e. No deployment certification or combat/browser rerun by this review."
+  },
+  "files": [
+    {
+      "path": ".github/workflows/refresh-rift-derived.yml",
+      "status": "added",
+      "pr7Blob": "cafb4b7370efc1e000d121bded80eeea44e01eb7",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "docs/audits/pr7-forgotten-fighter-2026-10-25.md",
+      "status": "added",
+      "pr7Blob": "ec3652bb8aa4045eaaf6a5a3e9b383b930769fbe",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "docs/audits/pr7-rift-provenance-followup-2026-10-25.md",
+      "status": "added",
+      "pr7Blob": "07ebe015dda7f53ab48aca1aa86952d4fc701f33",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "docs/excel/exports/fighter-supplemental-2026-10-25.csv",
+      "status": "added",
+      "pr7Blob": "ef3610c6261f5b0429f9e286b715cd8278c586cd",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "docs/rift-dossiers/canon-metadata-revisions-2026-10-25.json",
+      "status": "added",
+      "pr7Blob": "a526d4b3004a80ed62f040c95256654583c30265",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "docs/rift-dossiers/catalog.json",
+      "status": "modified",
+      "pr7Blob": "a370b7b7eeaa917264e2f7ee94449438ca9a9a8b",
+      "currentMasterBlob": "a370b7b7eeaa917264e2f7ee94449438ca9a9a8b",
+      "alreadyIdenticalAtMaster": true
+    },
+    {
+      "path": "scripts/browserFighterRanged.py",
+      "status": "modified",
+      "pr7Blob": "bfee49829c07658165296ce165790b26049086f9",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "scripts/fixtures/fighterRangedHarness.jsx",
+      "status": "modified",
+      "pr7Blob": "b0d82fcc61a5c1ddd4da42dded7c36af516e5b62",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "scripts/reauditFighterSupplemental.test.mjs",
+      "status": "added",
+      "pr7Blob": "481421732892ceadcd32a62f56aa99d13912012e",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "scripts/riftDossierStaticStages.test.mjs",
+      "status": "modified",
+      "pr7Blob": "4192eb82c7e3ab4c6327e24d84d464de47058094",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "src/game/fighterMeleeSignatures.js",
+      "status": "modified",
+      "pr7Blob": "7ecc6316d532d3ec4fa0f8fd3d2944859c0792fa",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "src/game/fighterSupplementalSignatures.js",
+      "status": "added",
+      "pr7Blob": "a260c1aa0745450c00677779995e160c8a7c467a",
+      "alreadyIdenticalAtMaster": false
+    },
+    {
+      "path": "src/game/signatureCodex.js",
+      "status": "modified",
+      "pr7Blob": "91b7b801091bcb1a436c3a288e1f43e40175dbbc",
+      "alreadyIdenticalAtMaster": false
+    }
+  ],
+  "provenanceConflict": {
+    "path": "docs/rift-dossiers/canon-remediation-2026-10-01.json",
+    "masterBlob": "e1f0703fc85976159085754e1e78e30afba26847",
+    "pr7Blob": "835583a4dd2597514b4cd62271dc04e69773b6fb",
+    "masterStage3CurrentPromptSha256": "9f5a12d8867b25af289b98ab12ed0ae214a15925fdf34e845685c61e5530a919",
+    "pr7Stage3CurrentPromptSha256": "cfa92430fcd3981e1141f78b35ea44ad854a1a0bb8fb1ce7a510386cc8550d73",
+    "pr7RevisionFile": "docs/rift-dossiers/canon-metadata-revisions-2026-10-25.json",
+    "pr7ExpectedHistoricalFileSha256": "559d1dba89470e9c34dae5b9b1710441a75abca5ac9ce7a5a74f4f57fe896a30",
+    "explanation": "Master already updates the Sulaco text and hash in the historical remediation file. PR 7 preserves the old historical file and adds an append-only cfa92430 -> 9f5a12d8 revision. Applying PR 7 revision/tests unchanged to current master would fail the preserved-file hash and previousPromptSha256 continuity assertions. Exact Git textual conflict paths were not computed."
+  },
+  "currentMasterDifferencesFromOld": {
+    "sourceSignaturesAdded": [
+      "seifer_ff8: No Mercy",
+      "laguna_ff8: Desperado",
+      "zell_ff8: My Final Heaven",
+      "irvine_ff8: Quick Shot",
+      "Final Fantasy VII::Midgar Zolom: Beta",
+      "Final Fantasy VII::Sweeper Machine: W Machine Gun"
+    ],
+    "sourcePath": "src/game/signatureSourceWave6.js",
+    "equipmentCatalogFilesChanged": false,
+    "note": "GitHub comparison lists 230 changed files and no heroes/enemies/equipment/event/battle-item catalog data file change. Wardrobe R10-R14 cosmetics and other UI work are separate from physical weapon catalog ownership."
+  },
+  "workbookPresence": {
+    "requestedEquipmentWorkbookPresentAtMaster": false,
+    "requestedEquipmentWorkbookPresentInPr7": false,
+    "priorTransientWorkbookRecreationRequired": true,
+    "masterExcelReadmeStillLabelsR13": true,
+    "limit": "The prior transient equipment workbook and extractor from this conversation were not found in the current master tree or PR 7 changed files."
+  },
+  "sources": [
+    "https://api.github.com/repos/darknigthmare/multiverse-breach/pulls/7",
+    "https://api.github.com/repos/darknigthmare/multiverse-breach/pulls/7/files?per_page=100",
+    "https://api.github.com/repos/darknigthmare/multiverse-breach/pulls/7/commits?per_page=100",
+    "https://github.com/darknigthmare/multiverse-breach/compare/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6...6c0096807ba7d9107686b14657eaefc8b1c8cde2",
+    "https://github.com/darknigthmare/multiverse-breach/compare/8ce15c779db1e911f0db8723c681a6b0b740bd78...1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "https://github.com/darknigthmare/multiverse-breach/blob/6c0096807ba7d9107686b14657eaefc8b1c8cde2/src/game/fighterSupplementalSignatures.js",
+    "https://github.com/darknigthmare/multiverse-breach/blob/6c0096807ba7d9107686b14657eaefc8b1c8cde2/docs/excel/exports/fighter-supplemental-2026-10-25.csv",
+    "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/src/game/signatureSourceWave6.js",
+    "https://github.com/darknigthmare/multiverse-breach/blob/1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6/docs/rift-dossiers/canon-remediation-2026-10-01.json",
+    "https://github.com/darknigthmare/multiverse-breach/blob/6c0096807ba7d9107686b14657eaefc8b1c8cde2/docs/rift-dossiers/canon-metadata-revisions-2026-10-25.json"
+  ],
+  "actionsPerformed": "Read-only GitHub API, local tree/source inspection and read-only source-resolver evaluation. No repository edits, commits, PR mutations, merges or publication; only this temporary evidence file was written."
+}

@@ -1,0 +1,1980 @@
+{
+  "preparedAt": "2026-11-02T09:03:24.658Z",
+  "preliminary": false,
+  "sourceReport": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-evidence.json",
+    "bytes": 317939,
+    "sha256": "1d3f4cd61a8c091286b921db7176bf9c208a13f1a2632bb709035e420ab4f1dc"
+  },
+  "scope": "Technical QA crops and padding/compositing of actual browser pixels. Preparing these files does not itself constitute visual inspection.",
+  "actualImagesInspected": 0,
+  "actualCapturesInspected": 0,
+  "preparedImages": 15,
+  "sourceCaptureCount": 27,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png",
+      "bytes": 139165,
+      "sha256": "dff920117945e789c8b1b414e78cb9fa2bfbfe7e1107c3f36debaf64d824c466",
+      "notes": "Lossless actual-renderer samples, all45states and bothfacings across three pages at nativecolumn2. The technical trace independently verifies all360native draw calls; all180raw native drawings were reviewed before packing. No new drawing counted."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png",
+      "bytes": 126939,
+      "sha256": "6ff39f7f03682878822153ba09da837b5f2259efe9c95d810a6b7442ce976a6b",
+      "notes": "Lossless actual-renderer samples, all45states and bothfacings across three pages at nativecolumn2. The technical trace independently verifies all360native draw calls; all180raw native drawings were reviewed before packing. No new drawing counted."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png",
+      "bytes": 19440,
+      "sha256": "9a7634388def88fb1f9c55cc31baaa941b7258223d27099d7b8f5cdaab283b7e",
+      "notes": "Lossless actual-renderer samples, all45states and bothfacings across three pages at nativecolumn2. The technical trace independently verifies all360native draw calls; all180raw native drawings were reviewed before packing. No new drawing counted."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-grips.png",
+      "bytes": 55250,
+      "sha256": "1ec7b93fd5b464640ce2f6b0b9567b47d71bd3386dfc72223054d3190fde4978",
+      "notes": "Eight actual visible hand-to-platform render attachments."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-0.png",
+      "bytes": 126285,
+      "sha256": "10b4f9364ec9d51219929984b181f57a8e567e62b5fc3547bdb321128ebba98b",
+      "notes": "Five actual real-engine ledge situations, full native visible source pixels."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-1.png",
+      "bytes": 126415,
+      "sha256": "99a3d5217c9c63f094401bd2b9fe21666fda4d558cd8ba4278fb4d1756fba26f",
+      "notes": "Five actual real-engine ledge situations, full native visible source pixels."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-2.png",
+      "bytes": 127275,
+      "sha256": "8eac41d086088094346477ccf67082a50df07d23220a2d6619ca7649ef933a2c",
+      "notes": "Five actual real-engine ledge situations, full native visible source pixels."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-3.png",
+      "bytes": 127426,
+      "sha256": "01225fefb97bc878a8017be60fb4c5a43c1868d03fdc188a1a904c9f4b4281c9",
+      "notes": "Five actual real-engine ledge situations, full native visible source pixels."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-player.png",
+      "bytes": 470471,
+      "sha256": "50b62c159cbd594d80e4ba31349cc3fe188357db4d40a333b93c5e8be7ba8402",
+      "notes": "Actual keyboard jump/movement arena; full canvas crop, no resampling."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-cpu.png",
+      "bytes": 469866,
+      "sha256": "8e54966861abf4d86cebebd1a0a42e40c0e2b5c65d8c4ea69ecdc24619c3ed2d",
+      "notes": "Actual keyboard jump/movement arena; full canvas crop, no resampling."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png",
+      "bytes": 56113,
+      "sha256": "d863635c0039823bec56039be560593796315bbcd6d8f67743b1315dbdbd4289",
+      "notes": "Three actual final GameCanvas captures: HP/name panel and personal-super meter cropped without resizing. Other screenshot pixels remain archived."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png",
+      "bytes": 55120,
+      "sha256": "078eddcdb4ba6168d7f7052af9d64a7131ccf32042424dc2729f4ff88c82ea7f",
+      "notes": "Three actual final GameCanvas captures: HP/name panel and personal-super meter cropped without resizing. Other screenshot pixels remain archived."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png",
+      "bytes": 56668,
+      "sha256": "f5cf3bec66d7f408572e78224a858932ea09659cc77ae55bd59546630fdacf0e",
+      "notes": "Three actual final GameCanvas captures: HP/name panel and personal-super meter cropped without resizing. Other screenshot pixels remain archived."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png",
+      "bytes": 55436,
+      "sha256": "4e63722cc943dfd037b541ca0ba15fa1bf47f8f7856ff25f03d0d166307d4e56",
+      "notes": "Three actual final GameCanvas captures: HP/name panel and personal-super meter cropped without resizing. Other screenshot pixels remain archived."
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png",
+      "bytes": 499284,
+      "sha256": "3cbf7ca5c72d14cd61d85b7cea1b1044787f7f79c53a9cabb59987ed69c92e51",
+      "notes": "Ten actual GameCanvas action/guard capture crops, in report order. Original native screenshot pixels only; no resize, retouch or pose replacement."
+    }
+  ],
+  "sourceCaptures": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 0,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 0,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 0,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 0,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 180,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 1,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 180,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 1,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 360,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 2,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 360,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 2,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 540,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 3,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 540,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 3,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 720,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 4,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 720,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 4,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 900,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 5,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 900,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 5,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1080,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 6,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1080,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 6,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 2700,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 15,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 2700,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 15,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 2880,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 16,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 2880,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 16,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3060,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 17,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3060,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 17,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3240,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 18,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3240,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 18,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3420,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 19,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3420,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 19,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3600,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 20,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3600,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 20,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3780,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 21,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3780,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 21,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5400,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 30,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5400,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 30,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5580,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 31,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5580,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 31,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5760,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 32,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5760,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 32,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5940,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 33,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5940,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 33,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 6120,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 34,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 6120,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 34,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 6300,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 35,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 6300,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 35,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 6480,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 36,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 6480,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 36,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1260,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 7,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1260,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 7,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1440,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 8,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1440,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 8,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1620,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 9,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1620,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 9,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1800,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 10,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1800,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 10,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 1980,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 11,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 1980,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 11,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 2160,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 12,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 2160,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 12,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 2340,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 13,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 2340,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 13,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 3960,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 22,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 3960,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 22,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 4140,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 23,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 4140,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 23,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 4320,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 24,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 4320,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 24,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 4500,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 25,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 4500,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 25,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 4680,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 26,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 4680,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 26,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 4860,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 27,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 4860,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 27,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5040,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 28,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5040,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 28,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 6660,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 37,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 6660,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 37,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 6840,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 38,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 6840,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 38,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7020,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 39,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7020,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 39,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7200,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 40,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7200,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 40,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7380,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 41,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7380,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 41,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7560,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 42,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7560,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 42,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7740,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 43,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7740,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 43,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 2520,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 14,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 2520,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 14,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 5220,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 29,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 5220,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 29,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 352,
+        "top": 7920,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 44,
+      "nativeColumn": 2,
+      "facing": 1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "bytes": 1442871,
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "sourceCrop": {
+        "left": 864,
+        "top": 7920,
+        "width": 128,
+        "height": 180
+      },
+      "stateOrdinal": 44,
+      "nativeColumn": 2,
+      "facing": -1,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-grips.png",
+      "bytes": 55250,
+      "sha256": "1ec7b93fd5b464640ce2f6b0b9567b47d71bd3386dfc72223054d3190fde4978",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-grips.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "bytes": 554834,
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "sourceCrop": {
+        "left": 0,
+        "top": 0,
+        "width": 1040,
+        "height": 800
+      },
+      "firstCase": 0,
+      "cases": 5,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "bytes": 554834,
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "sourceCrop": {
+        "left": 0,
+        "top": 800,
+        "width": 1040,
+        "height": 800
+      },
+      "firstCase": 5,
+      "cases": 5,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "bytes": 554834,
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "sourceCrop": {
+        "left": 0,
+        "top": 1600,
+        "width": 1040,
+        "height": 800
+      },
+      "firstCase": 10,
+      "cases": 5,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "bytes": 554834,
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "sourceCrop": {
+        "left": 0,
+        "top": 2400,
+        "width": 1040,
+        "height": 800
+      },
+      "firstCase": 15,
+      "cases": 5,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-3.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-active.png",
+      "bytes": 500765,
+      "sha256": "de05df4d83460db229f8581c20b6068f0e9311745956017f4ecbc2d4fa8873f5",
+      "sourceCrop": {
+        "left": 36,
+        "top": 188,
+        "width": 1368,
+        "height": 605
+      },
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-player.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-active.png",
+      "bytes": 498239,
+      "sha256": "64da418eee8c428341a3e6dd48dcfdb113a3be8c6698a108a901f065debfc13e",
+      "sourceCrop": {
+        "left": 36,
+        "top": 188,
+        "width": 1368,
+        "height": 605
+      },
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-cpu.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player.png",
+      "bytes": 498947,
+      "sha256": "c7e29649efd9bf42c53b62601d698b618f54640824943688f118531ed89a501e",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 0,
+      "kind": "movement",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu.png",
+      "bytes": 496668,
+      "sha256": "b5d50914f309be888218cc6a3d675adccbfa3a06021b6c1ac3b1365fb19a2528",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 1,
+      "kind": "movement",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player.png",
+      "bytes": 500376,
+      "sha256": "d691fa01b8bfd2d3d647f7968fe47569b4b8862108342570488ae25c33a114a7",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 2,
+      "kind": "attack",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu.png",
+      "bytes": 498674,
+      "sha256": "1f3a99827aea67d5e13e325c984a0030612d10d4be10f8464a1e653d9f4b1d63",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 3,
+      "kind": "attack",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player.png",
+      "bytes": 498746,
+      "sha256": "8345219a975dc8f34359f8d31dfdd6b408f1f663f578c2778aeb097905ea4865",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 4,
+      "kind": "guard",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu.png",
+      "bytes": 496265,
+      "sha256": "ce02ee84d87655c149100a51f28aac34240698393c9dc2ca78f0f4ab7259b3eb",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 5,
+      "kind": "guard",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player.png",
+      "bytes": 500902,
+      "sha256": "db3af436d3bd5b54db07f70513f79c65a173a4307a964be8851a3dc7b7d45957",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 6,
+      "kind": "charge",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu.png",
+      "bytes": 499572,
+      "sha256": "84a82ffaf4bb4a860ec808e5bd56725a50d46f37fa155d756afc8112ec393750",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 7,
+      "kind": "charge",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player.png",
+      "bytes": 499843,
+      "sha256": "75c780b349e81e2ee88e7fcd05d7158f98c2d98cd217f3a945ce1fc81bbfa087",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 8,
+      "kind": "photo",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu.png",
+      "bytes": 500267,
+      "sha256": "06964b3e5d1ca4ca0a122b2bc9eb808b179aabf4af8b4290cf83c75404a792b9",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 9,
+      "kind": "photo",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player.png",
+      "bytes": 501163,
+      "sha256": "db307b6fdf30a8950b16ede9d1361b614a994230997c9886adf108fd8ca3caef",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 10,
+      "kind": "gyrodisk",
+      "side": "player",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu.png",
+      "bytes": 498590,
+      "sha256": "1c0be98c1f0681d4a5c0c30c065ddf0831b06787ab2d49bd9b9737df9e2c7403",
+      "sourceCrops": [
+        {
+          "left": 46,
+          "top": 811,
+          "width": 490,
+          "height": 165
+        },
+        {
+          "left": 566,
+          "top": 923,
+          "width": 780,
+          "height": 95
+        }
+      ],
+      "tile": 11,
+      "kind": "gyrodisk",
+      "side": "cpu",
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-impact.png",
+      "bytes": 501401,
+      "sha256": "833b016fa57ef0dfc81f6c1bf5db6440880f04fda0ec216e4a50ac0110d057ed",
+      "sourceCrop": {
+        "left": 272,
+        "top": 482,
+        "width": 270,
+        "height": 211
+      },
+      "tile": 0,
+      "kind": "attack",
+      "side": "player",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-impact.png",
+      "bytes": 499944,
+      "sha256": "cd9fc6213b4e7c26eaa121b627a307e2d43f49e069a534655f6027a52361e904",
+      "sourceCrop": {
+        "left": 897,
+        "top": 482,
+        "width": 270,
+        "height": 211
+      },
+      "tile": 1,
+      "kind": "attack",
+      "side": "cpu",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-active.png",
+      "bytes": 500207,
+      "sha256": "85c7953b0853d2c9b6198871ed44566febe519a1ffb9c60054a73a47f6538ad3",
+      "sourceCrop": {
+        "left": 272,
+        "top": 482,
+        "width": 211,
+        "height": 211
+      },
+      "tile": 2,
+      "kind": "guard",
+      "side": "player",
+      "impact": false,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-active.png",
+      "bytes": 497575,
+      "sha256": "7bc3658faf056769c5ac7f503ae010b2dc3555443f912e0391eedab195501af0",
+      "sourceCrop": {
+        "left": 956,
+        "top": 482,
+        "width": 211,
+        "height": 211
+      },
+      "tile": 3,
+      "kind": "guard",
+      "side": "cpu",
+      "impact": false,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-impact.png",
+      "bytes": 502688,
+      "sha256": "34b52dfd8b92be037811a8d5ba0b8e382631ef9fedb165a282beada912411afd",
+      "sourceCrop": {
+        "left": 272,
+        "top": 482,
+        "width": 270,
+        "height": 211
+      },
+      "tile": 4,
+      "kind": "charge",
+      "side": "player",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-impact.png",
+      "bytes": 500423,
+      "sha256": "6c9e0e42a1c791f85cdd86cdd8fc46144f5cc99e28ab83958a89c45e6d34afb4",
+      "sourceCrop": {
+        "left": 897,
+        "top": 482,
+        "width": 270,
+        "height": 211
+      },
+      "tile": 5,
+      "kind": "charge",
+      "side": "cpu",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-impact.png",
+      "bytes": 512328,
+      "sha256": "0dccaef432988bf5c16742ef84a3ebf8a009edf26d75e9f4c999008edce17e51",
+      "sourceCrop": {
+        "left": 272,
+        "top": 482,
+        "width": 316,
+        "height": 211
+      },
+      "tile": 6,
+      "kind": "photo",
+      "side": "player",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-impact.png",
+      "bytes": 510171,
+      "sha256": "efcfdf7972e821d4ff4e2812c9fa4eff2324bce849c7cd0b44388ccc4f62c258",
+      "sourceCrop": {
+        "left": 851,
+        "top": 482,
+        "width": 316,
+        "height": 211
+      },
+      "tile": 7,
+      "kind": "photo",
+      "side": "cpu",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-impact.png",
+      "bytes": 502669,
+      "sha256": "d18a7dc797e83f798e3924cac77a569081bea4a930f1c8295a4607e842a97139",
+      "sourceCrop": {
+        "left": 272,
+        "top": 482,
+        "width": 316,
+        "height": 211
+      },
+      "tile": 8,
+      "kind": "gyrodisk",
+      "side": "player",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-impact.png",
+      "bytes": 500497,
+      "sha256": "9d11fe66bb73264c6a610dcccfbdbc536adaaaf3e8e4130ebf0af2a699dd0fd1",
+      "sourceCrop": {
+        "left": 851,
+        "top": 482,
+        "width": 316,
+        "height": 211
+      },
+      "tile": 9,
+      "kind": "gyrodisk",
+      "side": "cpu",
+      "impact": true,
+      "inspectedVia": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png"
+    }
+  ]
+}

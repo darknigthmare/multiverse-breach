@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "characterId": "vader",
+  "incarnation": "Star Wars: The Empire Strikes Back (1980) — Bespin Sith Lord",
+  "publishedAt": "2026-10-18",
+  "status": "partial-provider-blocked",
+  "plannedSlots": 15,
+  "deliveredNewSlots": 2,
+  "planFile": "docs/cg/vader-complete-plan-2026-10-18.json",
+  "referenceEvidence": "docs/cg/vader-reference-evidence-2026-10-18.json",
+  "entries": [
+    {
+      "id": "cg:star-wars:vader:weaponSolo:openai-v1",
+      "universeKey": "star-wars",
+      "characterKey": "vader",
+      "type": "weaponSolo",
+      "universeName": "Star Wars",
+      "characterId": "vader",
+      "heroId": "vader",
+      "characterName": "Darth Vader",
+      "title": {
+        "fr": "Darth Vader — Sabre rouge de Vader — poignée MPP",
+        "en": "Darth Vader — Sabre rouge de Vader — poignée MPP"
+      },
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "canon-inspired",
+      "continuityId": "star-wars-the-empire-strikes-back-1980-bespin",
+      "contentRating": "teen",
+      "ageStatus": "adult-confirmed",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "vader-esb-official-film-and-saber-viewed-2026-10-18",
+      "promptId": "cg-vader-signature-weapon-complete-2026-10-18",
+      "promptSummary": {
+        "fr": "Sabre rouge de Vader — poignée MPP ; Imperial armory inspection bench aboard a period support shuttle.",
+        "en": "No character. One complete Vader red lightsaber diagonally displayed on two small insulated cradles; silver MPP tubular hilt with black angled emitter shroud, black T-track grips, central clamp with bubble control strip and D-ring. Full red blade and full hilt inside frame."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "unofficial-fan-art",
+      "sourceRefs": [
+        "https://www.starwars.com/films/star-wars-episode-v-the-empire-strikes-back",
+        "https://www.starwars.com/news/empire-at-40-costume-evolution",
+        "https://www.starwars.com/databank/darth-vaders-lightsaber",
+        "https://propstore.com/product/star-wars-the-empire-strikes-back-1980-star-wars-return-of-the-jedi-1983/darth-vaders-screen-matched-hero-dueling-lightsaber/"
+      ],
+      "credits": {
+        "fr": "Art non officiel généré avec OpenAI ImageGen ; Star Wars appartient à ses ayants droit.",
+        "en": "Unofficial artwork generated with OpenAI ImageGen; Star Wars belongs to its rights holders."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "vader"
+      },
+      "imagePath": "/cg/star-wars/vader/signature-weapon-openai-v1.webp",
+      "thumbnailPath": "/cg/star-wars/vader/signature-weapon-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/vader/signature-weapon.txt",
+      "referenceReviewFile": "docs/cg/vader-reference-evidence-2026-10-18.json",
+      "backgroundId": "vader-imperial-weapon-inspection-bench-2026-10-18",
+      "backgroundDescription": "Imperial armory inspection bench aboard a period support shuttle.",
+      "background": {
+        "location": "Imperial armory inspection bench aboard a period support shuttle.",
+        "foreground": "Two compact insulated saber supports on dark brushed metal",
+        "midground": "Empty instrument drawers and a neutral measuring rail without text",
+        "background": "Tall ribbed storage lockers and a closed service hatch",
+        "lighting": "Neutral white task light and restrained red glow from one blade"
+      },
+      "poseId": "vader-imperial-weapon-inspection-bench",
+      "poseDescription": "No character. One complete Vader red lightsaber diagonally displayed on two small insulated cradles; silver MPP tubular hilt with black angled emitter shroud, black T-track grips, central clamp with bubble control strip and D-ring. Full red blade and full hilt inside frame.",
+      "themeBrief": "Sabre rouge de Vader — poignée MPP",
+      "themeSource": "docs/cg/vader-complete-plan-2026-10-18.json",
+      "assets": {
+        "source": {
+          "path": "/cg/star-wars/vader/signature-weapon-complete-2026-10-18.png",
+          "sha256": "788028f3dc241ae9fbc8b706fc089010db473d3be37974da4c07465ec8d2d286",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3079041,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/star-wars/vader/signature-weapon-complete-2026-10-18.webp",
+          "sha256": "5699bd87ac814201f435b0754ea1bd9b38b01c6aa0789a83faed44855990f46a",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 439598,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/star-wars/vader/signature-weapon-complete-2026-10-18-thumb.webp",
+          "sha256": "4e031fdb78a096f91afa86e3993cbb51c172799e77a257dd3605d50d47c50e72",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 47024,
+          "channels": 3
+        }
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Une seule arme complète, poignée argent-noir MPP, shroud incliné noir, grips T-track, clamp et lame rouge unique à pointe visible.",
+          "Premier essai rejeté car la pointe sortait du cadre ; nouvel essai corrigé par ImageGen, sans retouche sémantique locale."
+        ],
+        "limitations": [
+          "La photographie officielle Databank ne précise pas un prop exclusif ESB ; le texte Propstore confirme le motif MPP utilisé dans ESB et ROTJ.",
+          "Petites vis, nombre exact de grips et microgéométrie des props non certifiés."
+        ]
+      }
+    },
+    {
+      "id": "cg:star-wars:vader:decorSolo:openai-v1",
+      "universeKey": "star-wars",
+      "characterKey": "vader",
+      "type": "decorSolo",
+      "universeName": "Star Wars",
+      "characterId": "vader",
+      "heroId": "vader",
+      "characterName": "Darth Vader",
+      "title": {
+        "fr": "Darth Vader — Puits technique de Bespin — décor seul",
+        "en": "Darth Vader — Puits technique de Bespin — décor seul"
+      },
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "canon-inspired",
+      "continuityId": "star-wars-the-empire-strikes-back-1980-bespin",
+      "contentRating": "teen",
+      "ageStatus": "adult-confirmed",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "vader-esb-official-film-and-saber-viewed-2026-10-18",
+      "promptId": "cg-vader-decor-complete-2026-10-18",
+      "promptSummary": {
+        "fr": "Puits technique de Bespin — décor seul ; Cloud City deep industrial processing shaft inspired by the official ESB platform still.",
+        "en": "Environment only, no figures or weapons. Wide elevated view of a deep cylindrical Cloud City reactor/processing shaft with narrow projecting gantries, short railings and vertically banded indicator panels."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "unofficial-fan-art",
+      "sourceRefs": [
+        "https://www.starwars.com/films/star-wars-episode-v-the-empire-strikes-back",
+        "https://www.starwars.com/news/empire-at-40-costume-evolution",
+        "https://www.starwars.com/databank/darth-vaders-lightsaber",
+        "https://propstore.com/product/star-wars-the-empire-strikes-back-1980-star-wars-return-of-the-jedi-1983/darth-vaders-screen-matched-hero-dueling-lightsaber/"
+      ],
+      "credits": {
+        "fr": "Art non officiel généré avec OpenAI ImageGen ; Star Wars appartient à ses ayants droit.",
+        "en": "Unofficial artwork generated with OpenAI ImageGen; Star Wars belongs to its rights holders."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "vader"
+      },
+      "imagePath": "/cg/star-wars/vader/decor-openai-v1.webp",
+      "thumbnailPath": "/cg/star-wars/vader/decor-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/vader/decor.txt",
+      "referenceReviewFile": "docs/cg/vader-reference-evidence-2026-10-18.json",
+      "backgroundId": "vader-bespin-cylindrical-processing-shaft-2026-10-18",
+      "backgroundDescription": "Cloud City deep industrial processing shaft inspired by the official ESB platform still.",
+      "background": {
+        "location": "Cloud City deep industrial processing shaft inspired by the official ESB platform still.",
+        "foreground": "Empty curved gantry with short white railings",
+        "midground": "Projecting maintenance arms and suspended circular service platforms",
+        "background": "Deep cylindrical wall covered with small rectangular indicator panels",
+        "lighting": "Cool blue industrial haze and rows of warm white indicators"
+      },
+      "poseId": "vader-bespin-cylindrical-processing-shaft",
+      "poseDescription": "Environment only, no figures or weapons. Wide elevated view of a deep cylindrical Cloud City reactor/processing shaft with narrow projecting gantries, short railings and vertically banded indicator panels.",
+      "themeBrief": "Puits technique de Bespin — décor seul",
+      "themeSource": "docs/cg/vader-complete-plan-2026-10-18.json",
+      "assets": {
+        "source": {
+          "path": "/cg/star-wars/vader/decor-complete-2026-10-18.png",
+          "sha256": "82a2ef27284ea1b70ef3bef09beb4074b7f8557c39575f36724e1546bf6616b6",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3629446,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/star-wars/vader/decor-complete-2026-10-18.webp",
+          "sha256": "7e810eafc8849a7357b46e04c93105e08786b909f1f65b130eeff99261d6ddaf",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 468890,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/star-wars/vader/decor-complete-2026-10-18-thumb.webp",
+          "sha256": "3326e3b7ed30420645145dfb42b644915a6e10b0ad2d02b47ed935c8682910e9",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 59536,
+          "channels": 3
+        }
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "canonicalFidelityApproved": false,
+        "reviewedAt": "2026-10-18",
+        "notes": [
+          "Décor seul : puits industriel cylindrique profond de Bespin, passerelles et plateformes projetées, rails courts et parois à panneaux lumineux.",
+          "Aucun personnage ni arme ; composition originale inspirée d’une vraie image officielle ESB inspectée."
+        ],
+        "limitations": [
+          "Ce cadrage original n’est pas un photogramme reconstitué au pixel près."
+        ]
+      }
+    }
+  ],
+  "blockages": [
+    {
+      "slot": 1,
+      "type": "characterSolo",
+      "status": "blocked-output-moderation",
+      "requestId": "8257c404-52d3-43fc-b7ee-bd9aba97a7be",
+      "category": "other",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/vader/character-solo.txt"
+    },
+    {
+      "slot": 4,
+      "type": "coherentScene",
+      "status": "blocked-output-moderation",
+      "requestId": "81e05036-e140-4cef-b20d-484e3b78cd39",
+      "category": "other",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/vader/coherent-scene.txt"
+    },
+    {
+      "slot": 9,
+      "type": "beachFamily",
+      "status": "blocked-output-moderation",
+      "requestId": "df682b10-ddb6-431c-ab90-ee4781f322f7",
+      "category": "other",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/vader/beach-family.txt"
+    }
+  ],
+  "unattemptedSlots": [
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "notes": [
+    "Deux CG indépendantes équipement/décor livrées ; aucune CG de personnage livrée.",
+    "Trois demandes de personnage indépendantes ont été refusées par le fournisseur à la sortie, catégorie other, sans fichier fourni.",
+    "Aucun prompt atténué pour contourner les refus et aucun substitut de personnage créé.",
+    "Aucune modification du registre global."
+  ]
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: the default current Medic keeps its reviewed beam and never receives the old self-only Fighter adapter
+ok 1 - the default current Medic keeps its reviewed beam and never receives the old self-only Fighter adapter
+  ---
+  duration_ms: 48168.124179
+  type: 'test'
+  ...
+# Subtest: RPG: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 2 - RPG: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 148.666619
+  type: 'test'
+  ...
+# Subtest: Smash: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 3 - Smash: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 33.715558
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 4 - Tactics: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 405.987635
+  type: 'test'
+  ...
+# Subtest: Fighter: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 5 - Fighter: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 7.535563
+  type: 'test'
+  ...
+# Subtest: an unrelated key, unknown legacy definition, or crossed universe cannot select the legacy version
+ok 6 - an unrelated key, unknown legacy definition, or crossed universe cannot select the legacy version
+  ---
+  duration_ms: 1.503545
+  type: 'test'
+  ...
+# Subtest: ripley: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+ok 7 - ripley: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+  ---
+  duration_ms: 1.416925
+  type: 'test'
+  ...
+# Subtest: darth_maul: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+ok 8 - darth_maul: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+  ---
+  duration_ms: 1.202855
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicit current Medic mode profile heals only the actual selected patient
+ok 9 - Tactics: an explicit current Medic mode profile heals only the actual selected patient
+  ---
+  duration_ms: 24.905745
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicit prepared legacy Medic mode profile heals only the actual selected patient
+ok 10 - Tactics: an explicit prepared legacy Medic mode profile heals only the actual selected patient
+  ---
+  duration_ms: 4.277376
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49704.49246

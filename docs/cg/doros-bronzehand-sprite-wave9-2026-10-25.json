@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "characterId": "doros_bronzehand",
+  "heroId": "doros_bronzehand",
+  "characterName": "Doros Main-de-Bronze",
+  "operationKind": "genuine-source-referenced-six-groups-plus-preserved-unused-single-poses",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "internalcanonicalOriginalProject",
+  "role": "qualified-but-not-certified",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+    "sha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+    "bytes": 2610560,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand-v2-fidelity-wave9-2026-10-25.png",
+    "sha256": "a57ebc830f31c86571eafe2bfcb6f903aaec894bdc09a71325cacd7fbddb250c",
+    "bytes": 989514,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "publicAuditFile": "docs/audits/doros-bronzehand-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+  "installerManifest": {
+    "path": "docs/audits/doros-bronzehand-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+    "sha256": "9b5aeb38e4691e48b8bffe6616d6fa3b688368451a0fd88c06d1c3f232ce5294",
+    "bytes": 13169
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave9-2026-10-25/doros-bronzehand-sprite-independent-review.json",
+    "sha256": "9ac8dd72bce5237dcdc428018aca20cd761bff5de99d6d86b53920c907168a3a",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "independentReviewFile": "docs/cg/reviews/wave9-2026-10-25/doros-bronzehand-sprite-independent-review.json",
+  "independentReviewSha256": "9ac8dd72bce5237dcdc428018aca20cd761bff5de99d6d86b53920c907168a3a",
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand.png",
+    "sha256": "509dcbb953e17982468abae71bf7acdd4827f7eecba6019708212400dc65c36f",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "5a68982f24b8874c80a069fc7119f90a50c7a8372905d3b57f7fe715b50abf6a",
+    "selectedImagegenNativeInputs": 6,
+    "genuineCorrectiveFrames": [
+      2,
+      6,
+      12,
+      14
+    ],
+    "sourceVisiblePixels": 2049772,
+    "assignedVisiblePixels": 2049772,
+    "selectedSourcePixelsDeletedBeforeNearestResize": 0,
+    "preNormalizationResizing": false,
+    "finalCommonNearestScale": 0.3574730354391371,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave9-2026-10-25/doros-bronzehand/atlas/packing-proof.json",
+      "sha256": "d484a11fc74413862a2ba8b8bbc4ab221e23d1390f77f32776022d8bcf89be2f"
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave9-2026-10-25/doros-bronzehand/atlas/assembly-proof.json",
+      "sha256": "40661b4ec1e86df988a54efcb27b39dd57d8a0c14816abb5851e9b7a8536c0c4"
+    }
+  },
+  "nativeInputs": [
+    {
+      "nativePath": "/workspace/generated_images/exec-85c15950-1896-4c92-9639-adea35f39548.png",
+      "nativeSha256": "abd6d97ef53d8b45ef050880466ccce9bba1abccb0a1f09ccd16a7182fc8a0b7",
+      "selectedFrames": [
+        1,
+        3,
+        4
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-01.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-85c15950-1896-4c92-9639-adea35f39548.png",
+      "sha256": "abd6d97ef53d8b45ef050880466ccce9bba1abccb0a1f09ccd16a7182fc8a0b7",
+      "bytes": 1697396,
+      "promptSha256": "2d5c7e3ba3a8814a25a0eb5fceeab422dec46cd9348534da35b560538c939036",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-14b6d3a0-5911-4808-a7b0-ebadd30cba11.png",
+      "nativeSha256": "012e3b1138fb31a4bfdd385fb0537bf287d1315a6de13215a36d65582f9b5e17",
+      "selectedFrames": [
+        5,
+        7,
+        8
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-02.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-14b6d3a0-5911-4808-a7b0-ebadd30cba11.png",
+      "sha256": "012e3b1138fb31a4bfdd385fb0537bf287d1315a6de13215a36d65582f9b5e17",
+      "bytes": 1633036,
+      "promptSha256": "76fb1bd34d42c1e8548e510a7d7f3c10d8f2d9dca79d20bb950a8d074ca687e3",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-68a2f033-37fd-4cde-b407-8b3eabd49f0a.png",
+      "nativeSha256": "49d01036b58dbadc89c85164e1fa97e4dc3890d8fe84b13d641f99a05457b1c9",
+      "selectedFrames": [
+        9,
+        10,
+        11
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-03.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-68a2f033-37fd-4cde-b407-8b3eabd49f0a.png",
+      "sha256": "49d01036b58dbadc89c85164e1fa97e4dc3890d8fe84b13d641f99a05457b1c9",
+      "bytes": 1664715,
+      "promptSha256": "cd601e159d04cb7a68e23bfadd53e30081cd3c44ed2e017a0e09ce013e96c88d",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-97cbf71a-aed9-4d53-ac0c-3f24c90fceb2.png",
+      "nativeSha256": "32b89c0e56026a1a9cada1dd1deea9cb3a7bc36912d63fa3d92a19b4857c4882",
+      "selectedFrames": [
+        13,
+        15,
+        16
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-04.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-97cbf71a-aed9-4d53-ac0c-3f24c90fceb2.png",
+      "sha256": "32b89c0e56026a1a9cada1dd1deea9cb3a7bc36912d63fa3d92a19b4857c4882",
+      "bytes": 1713378,
+      "promptSha256": "967e86dffb88aa54479f1e09e528dedbaa0006d55fbb4272eec6d25859859cf8",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-6e69365c-4d4d-4b6b-b53e-994bac1987ad.png",
+      "nativeSha256": "812806d84d8996af2ee9ce1970190c0d5b2cb586e4568140fb47cbf2c1eeec53",
+      "selectedFrames": [
+        14,
+        12
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-05-correction.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-6e69365c-4d4d-4b6b-b53e-994bac1987ad.png",
+      "sha256": "812806d84d8996af2ee9ce1970190c0d5b2cb586e4568140fb47cbf2c1eeec53",
+      "bytes": 1654768,
+      "promptSha256": "f65d6bf2d1f65435e980e9350c0979fd3155b321fcf30782d287bda20c0b7e02",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-e31a1b2f-080a-453d-98d2-d54e40fb87ad.png",
+      "nativeSha256": "7ccafdc57068c0f008bcb55aec7b65bee515e824c237ee3aba413e5f1e0f0911",
+      "selectedFrames": [],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-frame-06-correction.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-e31a1b2f-080a-453d-98d2-d54e40fb87ad.png",
+      "sha256": "7ccafdc57068c0f008bcb55aec7b65bee515e824c237ee3aba413e5f1e0f0911",
+      "bytes": 1077142,
+      "promptSha256": "0c238093f8c95c5d2ebbab6699d1f6ceee5d4a9a1e40435c130cfb8ddee4310c",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "wholly-unselected-native-preserved"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-0431257d-ff62-497e-afe8-7ad3669855f0.png",
+      "nativeSha256": "f82900eafac72291f9dfbd026ba022793c86c06d956832914f84fc3361e45839",
+      "selectedFrames": [],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-frame-02-correction.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-0431257d-ff62-497e-afe8-7ad3669855f0.png",
+      "sha256": "f82900eafac72291f9dfbd026ba022793c86c06d956832914f84fc3361e45839",
+      "bytes": 1091982,
+      "promptSha256": "884e2f53b4ea17005d5d6be6043a501b3eb397e4b53831572be547789bd7db73",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "wholly-unselected-native-preserved"
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-701ae85f-de46-4964-89e8-9b5b52b4767f.png",
+      "nativeSha256": "c1d46f63778f2c5b0fa909a510fa6d980d0a06356e881894367ec3963f920751",
+      "selectedFrames": [
+        2,
+        6
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/doros-bronzehand/atlas-group-06-correction.txt",
+      "actuallyViewed": true,
+      "nativeEndpointInspection": "All raw outputs personally opened. Selected whole poses have complete visible hammer/head/feet endpoints and >=2nativepixel clearance. Unselected group2/local2, group4/local2 and group5/local1 had hammer near/clipped native edge and are preserved unused; group1/local2 and group3/local4 had obscured rear sandal. Two entirely unused single-pose outputs are retained because generated at different human scale, unsuitable for common scaling with group poses. Group6 genuinely replaces frames2/6. No endpoint repaired by padding.",
+      "path": "/workspace/generated_images/exec-701ae85f-de46-4964-89e8-9b5b52b4767f.png",
+      "sha256": "c1d46f63778f2c5b0fa909a510fa6d980d0a06356e881894367ec3963f920751",
+      "bytes": 1659686,
+      "promptSha256": "b833a2ae46486a6c0cc024e5ce4bc07491d4ad32bb880f9e2f47552e729e0d67",
+      "referencedImagePath": "/workspace/multiverse-breach/public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+      "referencedImageSha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "transparentBackground": true,
+      "status": "contributing-native"
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 8,
+  "contributingAtlasNativeInputs": 6,
+  "retainedWhollyUnselectedNativeAttempts": 2,
+  "refusals": 0,
+  "toolRefusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/doros-bronzehand-reference-evidence-wave9-2026-10-25.json",
+  "sourceReviewSha256": "c3c0a39fac45cf613234af9e33bf0615efe683eb0fe0b4f7c7d4770521c9a2b2",
+  "limitations": [
+    "Only one visible internal original-project V2 reference; hidden reverse apron/hammer construction and tiny face/engraving details remain interpreted. No absolute1:1 certification.",
+    "Doros is the human blacksmith with two human hands; Main-de-Bronze does not establish a robotic prosthesis. Repaired automaton is a contextual companion omitted from single-human combat atlas.",
+    "No chronological age is inferred; fully clothed family-safe nonromantic poses.",
+    "Six native groups contribute frames3+3+3+3+2+2 respectively. Two separate single-pose outputs are wholly unused because their human scale differs from group renders. Every raw output, including partially unused or edge-clipped rejected poses, is preserved and listed.",
+    "Selected whole source poses retain every alpha>12 pixel through component extraction and translation before one shared nearest scale; only bounded four-pixel weak alpha fringe is retained. No semantic painting, per-pose resizing or mirroring.",
+    "The producer installer left runtime maps unchanged; root subsequently selected the new atlas and exposed the exact unchanged old atlas as a variant."
+  ],
+  "comparison": {
+    "path": "docs/cg/screenshots/doros-bronzehand-sprite-comparison-wave9-2026-10-25.webp",
+    "sha256": "f18abec8e1d0511b8b4a17ce845533b0e4ea7f28256a77cdd7e16bd71c6689a8",
+    "provenanceFile": "docs/cg/screenshots/doros-bronzehand-sprite-comparison-wave9-2026-10-25.json",
+    "provenanceSha256": "92528de69b9302dab2bf45eb2068209aacc3fec7f451acb75937c0b973824efb",
+    "personallyOpened": true
+  },
+  "noGenerationPending": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-25",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  }
+}

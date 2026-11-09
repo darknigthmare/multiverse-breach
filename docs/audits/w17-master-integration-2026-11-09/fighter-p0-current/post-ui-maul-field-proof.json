@@ -1,0 +1,62 @@
+{
+  "sourceFile": "src/game/heroes.js",
+  "beforeSha256": "c8978d26ffacb771fe892e0eebec21f64d681c93851ac1ce0bc79a26d986d24e",
+  "afterSha256": "4e06780b4cc621bf452edafea554023aa13708cbee991186d72d40088d260d03",
+  "changedActorId": "darth_maul",
+  "field": "weaponType",
+  "beforeValue": "lightsaber",
+  "afterValue": "double_lightsaber",
+  "guard": {
+    "incarnation": "The Clone Wars - ruler of Mandalore",
+    "equipmentIncludes": "Cybernetic Legs"
+  },
+  "historicalWave13ActorUnchanged": true,
+  "source1to1Verified": false,
+  "browserReport": "docs/audits/w17-master-integration-2026-11-09/fighter-p0-current/result.json",
+  "browserReportSha256": "c648a552cb4488c5bc4631d8899ea8d92cb7d87a731d0dc92bce7b0a9d30e577",
+  "browserInputFileCount": 690,
+  "sourceChangesSinceThisBrowser": [
+    {
+      "path": "src/game/combat/abilities/abilitiesWave11.js",
+      "browserSha256": "19c0ddd44a68f2873982a7fdc32742c13640ac7840007132a343fe530b6319ce",
+      "currentSha256": "0a44781f1c288c5ef3f576a8dbf7aea8f6d41e16706d67474543388fcf1b8a28"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "browserSha256": "47e70dc1260811a1fdfdf02b5ca98acdb9e0b35d9b6f5fc52327f9d1480be826",
+      "currentSha256": "8720752e909943723a148001a7b641b34e70d0bddb8d72742e66ddc54d07f610"
+    },
+    {
+      "path": "src/game/heroes.js",
+      "browserSha256": "c8978d26ffacb771fe892e0eebec21f64d681c93851ac1ce0bc79a26d986d24e",
+      "currentSha256": "4e06780b4cc621bf452edafea554023aa13708cbee991186d72d40088d260d03"
+    }
+  ],
+  "testedTitansRawActorsChanged": false,
+  "scope": "The Maul weapon field proof is one of three later source-file differences. The additional Smash input guard and non-record-changing W11 aggregation cleanup are listed separately. The tested Raven/Starfire raw actors are unchanged, but the archived browser is not a byte-exact final production freeze.",
+  "finalProductionFreezeClaimed": false,
+  "focusedValidation": {
+    "log": "docs/audits/w17-master-integration-2026-11-09/validation/historical-canonical-after-maul.txt",
+    "exitCode": 0,
+    "tests": 3,
+    "pass": 3,
+    "fail": 0,
+    "skipped": 0,
+    "nodeVersion": "v22.23.4",
+    "maxOldSpaceMiB": 2048,
+    "cpuList": "0,1",
+    "testConcurrency": 1,
+    "testIsolation": "default"
+  },
+  "otherPostBrowserChanges": [
+    {
+      "path": "src/game/engineSmash.js",
+      "scope": "P2 pause/disposal early guard; a different combat mode from the archived Fighter cases.",
+      "focusedValidation": "131/131 in /tmp/merged-integration-smash-p2-guard-native-w7-and-supplemental-final.log"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave11.js",
+      "scope": "Removes nonexistent export spreads; the W11 ability records are unchanged."
+    }
+  ]
+}

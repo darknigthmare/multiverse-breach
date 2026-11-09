@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-02T06:33:51.385Z",
+  "initialPlansPreserved": true,
+  "sourceFile": "src/game/combat/combatSourceDefinitionsWave17PartB.js",
+  "sourceFileBeforeSha256": "a00156b4dd33e8c4c07faf0ebd32a9081516c641ea1846e59d32c82ce24061f2",
+  "sourceFileAfterSha256": "29ca4d9ecbdb0feacfca2640efcd9593149d89d0acf7dfee42e53d372dc4980b",
+  "reason": "Refine weapon and projectile metadata already concretely selected in frozen source plans; existing kind retained for compatibility. Native correction drawings use real rockets or a small gray suppressor puff.",
+  "changes": {
+    "team_fortress_2_soldier": {
+      "weaponType": "rocket-launcher",
+      "projectileType": "rocket",
+      "emissionOrigin": "actual-stock-Rocket-Launcher-barrel"
+    },
+    "sanctum_sweet_autumn": {
+      "weaponType": "rocket-launcher",
+      "projectileType": "rocket",
+      "emissionOrigin": "actual-REX-barrel"
+    },
+    "counter_strike_sas": {
+      "weaponType": "suppressed-rifle",
+      "projectileType": "suppressed-bullet",
+      "emissionOrigin": "actual-M4A1-S-suppressor-tip",
+      "releaseTrace": "small-gray-puff-only"
+    },
+    "hotline_miami_richter": {
+      "weaponType": "suppressed-submachine-gun",
+      "projectileType": "suppressed-bullet",
+      "emissionOrigin": "actual-submachine-gun-suppressor-tip",
+      "releaseTrace": "small-gray-puff-only"
+    }
+  },
+  "source1to1Verified": false
+}

@@ -1,3 +1,13 @@
+import { applyActorAppearance } from '../game/wardrobe.js';
+import { resolveSourceScene } from '../game/sourceSceneStages.js';
+import SourceScenePanel from './SourceScenePanel.jsx';
+import { drawSourceSceneBackdrop } from '../game/sourceScenePresentation.js';
+import { drawSignatureCinematic } from '../game/signaturePresentation.js';
+import { installSignatureDirector } from '../game/signatureDirector.js';
+import SignatureSequencePanel from './SignatureSequencePanel.jsx';
+import TacticsSupportPanel from './TacticsSupportPanel.jsx';
+import { resolveEquippedCombatEvent } from '../game/combatEventItem.js';
+import { applyCombatHealing } from '../game/combatHealing.js';
 import { drawCosmeticAtlasFrame } from '../game/renderer';
 import {
   getGameCanvasCosmeticAtlas,
@@ -6,19 +16,23 @@ import {
   getGameCanvasCosmeticFrame,
   supportsGameCanvasCosmeticPresentation
 } from '../game/gameCanvasCosmeticPresentation';
+import { isCombatGameplayAdvancing } from '../game/combatActivity.js';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
 import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createReducedMotionReader } from '../game/reducedMotion.js';
 import { getRpgCombatantAbility, rpgUnitId } from '../game/rpgTargeting';
 import { drawRpgTargeting, pickRpgTarget } from '../game/rpgTargetingPresentation';
-import { absorbBattleItemDamage, grantBattleItemShield } from '../game/battleItemShield';
+import { isSourceBubbleCaptureProfileWave17 } from '../game/combat/sourceBubbleCaptureWave17.js';
+import { grantBattleItemShield } from '../game/battleItemShield';
+import { applyEncounterOrDirectDamage } from '../game/encounterDamage';
 import { EngineTactics } from '../game/engineTactics';
 import { getTacticsEscortBriefing } from '../game/tacticsEscort';
 import { EngineNonCombatTrial } from '../game/nonCombatTrial';
-import { ParticleSystem, drawItemIcon, drawPixelSprite, drawUniverseBackground, drawSynergyOverlay, preloadMeleeSpriteSheetSrcs, preloadSpriteSheetSrcs } from '../game/renderer';
+import { ParticleSystem, getOpenAiBackdropSrc, drawItemIcon, drawPixelSprite, drawUniverseBackground, drawSynergyOverlay, preloadMeleeSpriteSheetSrcs, preloadSpriteSheetSrcs } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { HEROES_DB as BASE_HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
 import {
@@ -35,6 +49,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
+import { preserveEnemySpriteIdentity } from '../game/enemySpriteIdentity.js';
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsBattlefield, getTacticsPickupPositions } from '../game/tacticsBattlefields';
 import { drawTacticsEnvironment } from '../game/tacticsEnvironmentRenderer';
@@ -43,22 +58,40 @@ import { getTacticsCursorDestination } from '../game/tacticsTerrainControls';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
 import { getSpecialEventRewardById } from '../game/specialEvents';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import CombatDrawer from './CombatDrawer.jsx';
+import CombatResultDialog from './CombatResultDialog.jsx';
+import GameDisplaySettings from './GameDisplaySettings.jsx';
+import { clientToCombatPoint, clientToCombatDelta, createCombatCompletionGate } from '../game/combatViewport.js';
+import './combat-immersion.css';
 import MeleeControlsPanel from './MeleeControlsPanel';
 import RpgTargetingPanel from './RpgTargetingPanel';
 import TacticsTerrainPanel from './TacticsTerrainPanel';
+import RaamEncounterPanel from './RaamEncounterPanel';
+import AliensRescuePanel from './AliensRescuePanel';
+import PiratesCursePanel from './PiratesCursePanel';
+import RexEncounterPanel from './RexEncounterPanel';
+import BlackPearlAmmoPanel from './BlackPearlAmmoPanel';
+import { getSmashAbilityProfile, getSmashAbilityTargets } from '../game/smashAbilityProfiles.js';
+import { isMeleeMovementLocked } from '../game/melee/meleeCombatRuntime';
+import { getBlackPearlSourceAmmunition } from '../game/canonBlackPearlSourceKits.js';
+import { createSceneInputs } from '../game/sceneInputs.js';
+import { readBrowserGamepads } from '../game/browserGamepads.js';
+import { createMeleeGamepadInput } from '../game/melee/meleeGamepadInput.js';
 import {
   MELEE_ACTIONS,
+  MELEE_REMAPPABLE_SLOTS,
   createDefaultMeleeInputMaps,
   diffMeleeActionEdges,
   getMeleeActionsForCode,
   loadMeleeInputMaps,
   mergeMeleeInputSnapshots,
-  readGamepadMeleeInput,
   readKeyboardMeleeInput,
   replaceMeleeBinding,
   saveMeleeInputMaps,
   toEngineHeldInput
 } from '../game/melee/meleeInputMap';
+
+const MELEE_TOUCH_SLOTS = MELEE_REMAPPABLE_SLOTS.map(slot => slot.id);
 
 const getTouchMeleeSnapshot = heldSlots => {
   const held = heldSlots instanceof Set ? heldSlots : new Set();
@@ -105,12 +138,15 @@ function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return undefined;
 
+    const reducedMotion = createReducedMotionReader();
     let animationFrameId = 0;
     let startedAt = null;
     const draw = timestamp => {
       if (startedAt === null) startedAt = timestamp;
       const elapsedMs = Math.min(durationMs, Math.max(0, timestamp - startedAt));
-      const frame = getGameCanvasCosmeticFrame(atlas, elapsedMs, durationMs);
+      // A static representative frame keeps the cosmetic readable. Lifetime
+      // still uses real elapsed time, so reducing motion cannot prolong it.
+      const frame = getGameCanvasCosmeticFrame(atlas, reducedMotion() ? durationMs / 2 : elapsedMs, durationMs);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawCosmeticAtlasFrame(
         ctx,
@@ -147,7 +183,12 @@ function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
   );
 }
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, reputationProgress = {}, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, reputationProgress = {}, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, onPauseRequest, sessionPaused: externalSessionPaused = false, dedicatedSession = false }) {
+  const [activeDrawer, setActiveDrawer] = useState(null);
+  const [showTouchControls, setShowTouchControls] = useState(() => typeof window !== 'undefined' && (window.matchMedia?.('(any-pointer: coarse)')?.matches || window.innerWidth < 760));
+  const [hudExpanded, setHudExpanded] = useState(() => !globalThis.matchMedia?.('(orientation: landscape) and (max-height: 600px)')?.matches);
+  const sessionPaused = externalSessionPaused || ['briefing', 'controls', 'leave'].includes(activeDrawer);
+  const completionGateRef = useRef(createCombatCompletionGate());
   const canvasRef = useRef(null);
   const escortBriefing = useMemo(() => stage.mode === 'Tactics' ? getTacticsEscortBriefing(stage, lang) : '', [stage, lang]);
   const engineRef = useRef(null);
@@ -159,8 +200,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const keysPressed = useRef({});
   const meleePressedCodesRef = useRef(new Set());
   const meleePreviousInputRef = useRef({ player: null, cpu: null });
-  const meleeTouchHeldRef = useRef({ player: new Set(), cpu: new Set() });
-  const meleeNeutralGateRef = useRef({ player: false, cpu: false });
+  const meleeTouchHeldRef = useRef({
+    player: createSceneInputs(MELEE_TOUCH_SLOTS),
+    cpu: createSceneInputs(MELEE_TOUCH_SLOTS)
+  });
+  const meleeTouchCancelVersionRef = useRef({ player: 0, cpu: 0 });
+  const meleeGamepadInputRef = useRef({
+    player: createMeleeGamepadInput(),
+    cpu: createMeleeGamepadInput()
+  });
   const tacticsCameraPointerRef = useRef({
     active: false,
     pointerId: null,
@@ -200,7 +248,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [rpgTargeting, setRpgTargeting] = useState(null);
   const [rpgTargetingWait, setRpgTargetingWait] = useState(true);
   const rpgTargetingWaitRef = useRef(true);
-  const rpgSummonGamepadHeldRef = useRef({ player: false, enemy: false });
+  const rpgSummonGamepadHeldRef = useRef({ player: true, enemy: true });
   const [autoBattle, setAutoBattle] = useState(false);
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
@@ -222,17 +270,31 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   meleeInputMapsRef.current = meleeInputMaps;
   
   const [activeSynergies, setActiveSynergies] = useState([]);
-  const applySkin = (hero) => {
-    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
-    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  };
-  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(applySkin);
+  // HUD updates must not rebuild the entire multi-universe roster each frame.
+  const HEROES_DB = useMemo(() => [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(hero => {
+    return applyActorAppearance(hero, heroSkins?.[hero.id], SKIN_CATALOG, {
+      sourceLocked: Boolean(stage.sourceSceneId || (stage.incarnation && stage.enemyRosterExclusive))
+    });
+  }), [playerProfile, heroSkins, stage.sourceSceneId, stage.incarnation, stage.enemyRosterExclusive]);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
   const hiddenUniverseSet = new Set(hiddenUniverses || []);
   const battleConfig = customBattle || stage.customBattle || null;
   battleCompletedRef.current = battleCompleted;
+
+  useEffect(() => {
+    if (externalSessionPaused) setActiveDrawer(null);
+  }, [externalSessionPaused]);
+
+  const submitBattleExit = (result, report = {}) => (
+    completionGateRef.current.submit(result, report, onBattleEnd)
+  );
+  const requestPause = () => {
+    if (battleCompletedRef.current) return;
+    setActiveDrawer(onPauseRequest ? null : 'controls');
+    onPauseRequest?.();
+  };
 
   const handleMeleeRemap = (side, slot, code) => {
     setMeleeInputMaps(previous => saveMeleeInputMaps(
@@ -244,10 +306,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setMeleeInputMaps(saveMeleeInputMaps(createDefaultMeleeInputMaps()));
   };
 
-  const handleMeleeTouchAction = (slot, phase) => {
+  const handleMeleeTouchAction = (slot, phase, source) => {
     const held = meleeTouchHeldRef.current.player;
-    if (phase === 'down') held.add(slot);
-    else held.delete(slot);
+    // Keep legacy action-only callers while separating every physical owner.
+    const owner = `${slot}:${typeof source === 'string' && source ? source : 'legacy'}`;
+    if (phase === 'down') held.hold(owner, slot);
+    else if (held.release(owner) && phase === 'cancel' && slot === 'chargedAttack'
+      && !held.snapshot().chargedAttack) {
+      // Only cancelling the final touch owner terminates its charge source.
+      // A stale lost-capture callback must not cancel a later independent hold.
+      meleeTouchCancelVersionRef.current.player++;
+    }
   };
 
   const clearMeleeControls = () => {
@@ -258,7 +327,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     meleePreviousInputRef.current = { player: null, cpu: null };
     meleeTouchHeldRef.current.player.clear();
     meleeTouchHeldRef.current.cpu.clear();
-    meleeNeutralGateRef.current = { player: true, cpu: true };
+    meleeTouchCancelVersionRef.current = { player: 0, cpu: 0 };
+    meleeGamepadInputRef.current.player.reset();
+    meleeGamepadInputRef.current.cpu.reset();
     // Require a fresh shoulder-button press after a pause or focus change.
     rpgSummonGamepadHeldRef.current = { player: true, enemy: true };
   };
@@ -407,6 +478,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   
   // Track if active Event Item has been activated this fight
   const [eventItemUsed, setEventItemUsed] = useState(false);
+  const eventItemUsedRef = useRef(false);
 
   const BATTLE_ANOMALIES = [
     {
@@ -570,7 +642,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const scaleEnemy = (enemy, isBoss = false) => {
       const modifier = stage.modifier || {};
       return {
-        ...enemy,
+        ...preserveEnemySpriteIdentity(enemy, sourceUniverse),
         universe: sourceUniverse,
         hp: Math.round(enemy.hp * (isBoss ? (modifier.bossHp || 1) : 1)),
         atk: Math.round(enemy.atk * (modifier.enemyAtk || 1)),
@@ -609,7 +681,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, primaryBoss))
               ? scaleEnemy(fallbackEnemy(stage.universe, true), true)
               : scaleEnemy({
-                  ...primaryBoss,
+                  ...preserveEnemySpriteIdentity(primaryBoss, stage.universe),
                   name: stage.bossName || primaryBoss.name,
                   hp: Math.round((primaryBoss.hp || 1000) * 1.18),
                   atk: Math.round((primaryBoss.atk || 20) * 1.12)
@@ -739,8 +811,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     actors.forEach(actor => {
       if (actor.currentHp > 0) {
         const bossFactor = actor.isBoss ? 1.25 : 1;
-        actor.currentHp = Math.max(0, actor.currentHp - absorbBattleItemDamage(actor, Math.round(Number(amount) * bossFactor)));
-        if (actor.currentHp <= 0) actor.state = 'dead';
+        applyEncounterOrDirectDamage(engine, actor, Math.round(Number(amount) * bossFactor), { kind: 'battle-item', absorbBattleItemShield: true });
         engine.particles?.add(actor.x || 360, (actor.y || 160) - 14, 0, -1, color, 6, 32, 'spark');
       }
     });
@@ -751,8 +822,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (!Array.isArray(actors)) return;
     actors.forEach(actor => {
       if (actor.currentHp <= 0) return;
-      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      if (effect.heal) actor.currentHp = Math.min(maxHp, actor.currentHp + Number(effect.heal));
+      if (effect.heal) applyCombatHealing(actor, Number(effect.heal));
       if (effect.shield) grantBattleItemShield(actor, effect.shield);
       if (effect.charge && typeof actor.specialCharge === 'number') {
         const charge = actor === activeActor ? Number(effect.charge) : Math.ceil(Number(effect.charge) * 0.45);
@@ -926,10 +996,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(
-        maxHp,
-        actor.currentHp + Math.max(0, Math.round(maxHp * (effect.healRatio || 0)))
-      );
+      applyCombatHealing(actor, Math.max(0, Math.round(maxHp * (effect.healRatio || 0))));
       engine.particles?.add(actor.x || engine.width * 0.24, (actor.y || engine.height / 2) - 16, 0, -1, color, 5, 28, 'spark');
     });
     targetActors?.forEach(actor => {
@@ -986,12 +1053,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(maxHp, actor.currentHp + Math.round(maxHp * (effect.healRatio || 0)));
+      applyCombatHealing(actor, Math.round(maxHp * (effect.healRatio || 0)));
     });
     targetActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
-      actor.currentHp = Math.max(0, actor.currentHp - Math.round(effect.damage || 36));
-      if (actor.currentHp <= 0) actor.state = 'dead';
+      applyEncounterOrDirectDamage(engine, actor, Math.round(effect.damage || 36), { kind: 'field-super' });
       engine.particles?.add(actor.x || engine.width / 2, (actor.y || engine.height / 2) - 18, 0, -1, color, 8, 36, 'spark');
     });
     engine.particles?.add(
@@ -1032,6 +1098,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setCombatRuntimeError(null);
     setSpriteBootStatus(null);
     setBattleCompleted(false);
+    setActiveDrawer(null);
+    completionGateRef.current = createCombatCompletionGate();
     battleCompletedRef.current = false;
     setBattleResult(null);
     setBattleSummary(null);
@@ -1041,6 +1109,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setTeamState([]);
     setOpponentState([]);
     setActiveOpponentId('');
+    eventItemUsedRef.current = false;
     setEventItemUsed(false);
     keysPressed.current = {};
     lastAnomalyWaveRef.current = -1;
@@ -1106,10 +1175,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const anchor = HEROES_DB[0];
       squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), archetypeSynergiesPrepared: true, talent: null }];
     }
-    if (enemyList.length === 0 && !stage.nonCombatTrial) {
+    if (enemyList.length === 0 && !stage.nonCombatTrial && !resolveSourceScene(arenaStage)) {
       setCombatRuntimeError(lang === 'fr'
-        ? 'Aucune menace valide dans cette breche. Verifie les assets ennemis actifs dans ADMIN.'
-        : 'No valid threat in this breach. Check active enemy assets in ADMIN.');
+        ? 'Cette brèche ne peut pas être ouverte avec les adversaires disponibles. Retourne au Nexus pour choisir une autre mission.'
+        : 'This breach cannot open with the available opponents. Return to the Nexus to choose another mission.');
       setCombatBooting(false);
       sound.stopBgm();
       return undefined;
@@ -1123,8 +1192,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       ...battleItemPool.map(getItemSpriteSrc)
     ].filter(Boolean);
     setSpriteBootStatus(lang === 'fr'
-      ? `Plaquettes OpenAI: ${spriteSources.length} sprites indexes avant rendu final.`
-      : `OpenAI sheets: ${spriteSources.length} sprites indexed before final render.`);
+      ? `Synchronisation de ${spriteSources.length} signatures visuelles…`
+      : `Synchronizing ${spriteSources.length} visual signatures…`);
     preloadSpriteSheetSrcs(spriteSources);
     preloadCharacterSuperAssets([...squadHeroes, ...enemyList]);
     if (stage.mode === 'Smash') {
@@ -1166,8 +1235,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const height = canvas.height;
 
     const handleBattleComplete = (result, summary = null) => {
-      if (battleCompletionHandledRef.current) return;
+      if (battleCompletionHandledRef.current || !completionGateRef.current.complete(result)) return;
       battleCompletionHandledRef.current = true;
+      setActiveDrawer(null);
       battleCompletedRef.current = true;
       setBattleCompleted(true);
       setBattleResult(result);
@@ -1210,6 +1280,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.stopBgm();
       return undefined;
     }
+    installSignatureDirector(engineRef.current, { mode: stage.mode, disabled: !!stage.nonCombatTrial });
     engineRef.current.setPaused?.(sessionPausedRef.current || document.hidden);
     engineRef.current.setTargetingWait?.(rpgTargetingWaitRef.current);
     setRpgTargeting(null);
@@ -1247,7 +1318,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     const handleKeyDown = (e) => {
       if (sessionPausedRef.current || document.hidden || e.defaultPrevented) return;
-      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target?.tagName) || e.target?.isContentEditable) return;
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target?.tagName) || e.target?.isContentEditable || e.target?.closest?.('[data-combat-drawer].is-paused')) return;
+      if ([' ', 'Enter'].includes(e.key) && e.target?.closest?.('button')) return;
+      // A blur or pause clears ownership even if the physical key stays
+      // down. Its auto-repeat must not recreate a command on return.
+      if (stage.mode === 'Smash' && e.repeat && !meleePressedCodesRef.current.has(e.code)) {
+        const maps = meleeInputMapsRef.current;
+        const isBound = getMeleeActionsForCode(e.code, maps.player).length
+          || (battleConfig?.opponentControl === 'p2' && getMeleeActionsForCode(e.code, maps.cpu).length);
+        if (isBound) e.preventDefault();
+        return;
+      }
       if (stage.mode === 'Tactics' && e.target === canvasRef.current && !e.repeat && !battleCompletedRef.current) {
         const engine = engineRef.current;
         if (engine?.getTerrainViewState?.()?.vertical) {
@@ -1354,34 +1435,41 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (document.hidden) clearMeleeInput();
     };
 
+    const handleGamepadDisconnected = (event) => {
+      const index = event.gamepad?.index;
+      if (index === 0 || index === 1) {
+        meleeGamepadInputRef.current[index === 0 ? 'player' : 'cpu'].disconnect();
+        rpgSummonGamepadHeldRef.current[index === 0 ? 'player' : 'enemy'] = true;
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
     window.addEventListener('blur', clearMeleeInput);
+    window.addEventListener('gamepaddisconnected', handleGamepadDisconnected);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     const readMeleeInput = (side) => {
       const maps = meleeInputMapsRef.current;
       const map = side === 'cpu' ? maps.cpu : maps.player;
       const keyboard = readKeyboardMeleeInput(meleePressedCodesRef.current, map);
-      const gamepads = typeof navigator !== 'undefined' && navigator.getGamepads
-        ? navigator.getGamepads()
-        : [];
-      const gamepad = readGamepadMeleeInput(gamepads?.[side === 'cpu' ? 1 : 0]);
-      const touch = getTouchMeleeSnapshot(meleeTouchHeldRef.current[side]);
-      return mergeMeleeInputSnapshots(keyboard, gamepad, touch);
+      const gamepads = readBrowserGamepads();
+      const gamepad = meleeGamepadInputRef.current[side].read(gamepads?.[side === 'cpu' ? 1 : 0]);
+      const touch = getTouchMeleeSnapshot(new Set(Object.keys(meleeTouchHeldRef.current[side].snapshot())));
+      return {
+        ...mergeMeleeInputSnapshots(keyboard, gamepad.snapshot, touch),
+        gamepad,
+        touchChargeCancellation: meleeTouchCancelVersionRef.current[side]
+      };
     };
 
     const dispatchMeleeInputEdges = (engine, side, current) => {
-      if (meleeNeutralGateRef.current[side]) {
-        const hasInput = Math.abs(Number(current?.horizontal) || 0) > 0.35
-          || Math.abs(Number(current?.vertical) || 0) > 0.35
-          || Object.values(current?.actions || {}).some(Boolean);
-        meleePreviousInputRef.current[side] = current;
-        if (!hasInput) meleeNeutralGateRef.current[side] = false;
-        return true;
-      }
       const previous = meleePreviousInputRef.current[side];
       const edges = diffMeleeActionEdges(previous, current);
+      const padChargeLost = previous?.gamepad?.snapshot?.actions?.[MELEE_ACTIONS.chargedAttack]
+        && (!current.gamepad?.connected || previous.gamepad.generation !== current.gamepad.generation);
+      const touchChargeCancelled = previous
+        && previous.touchChargeCancellation !== current.touchChargeCancellation;
       meleePreviousInputRef.current[side] = current;
 
       edges.pressed.forEach(action => {
@@ -1413,16 +1501,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       });
 
       edges.released.forEach(action => {
-        if (action === MELEE_ACTIONS.chargedAttack) engine.releaseChargedMeleeAttack?.(side);
+        if (action === MELEE_ACTIONS.chargedAttack) {
+          if (padChargeLost || touchChargeCancelled) engine.cancelChargedMeleeAttack?.(side);
+          else engine.releaseChargedMeleeAttack?.(side);
+        }
         if (action === MELEE_ACTIONS.shield) engine.setMeleeShield?.(side, false);
       });
-      return false;
     };
 
     let animTime = 0;
     let combatTime = 0;
     const simulationClock = createFixedStepClock();
     simulationClockRef.current = simulationClock;
+    const reducedMotion = createReducedMotionReader();
     let lastHudSyncTimestamp = -Infinity;
     let frameId;
 
@@ -1444,19 +1535,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const renderUniverse = arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena
           ? 'Nexus de Convergence'
           : stage.universe;
-        const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false;
-        const usingOpenAiBackdrop = stage.mode === 'Tactics'
-          ? engineRef.current?.drawDedicatedEnvironment?.(ctx, animTime, reducedMotion)
-            || drawTacticsEnvironment(ctx, {
-              battlefield: getTacticsBattlefield(arenaStage), universe: renderUniverse,
-              forceBaseArena: arenaStage.forceBaseArena, dlcSuppressedArena: arenaStage.dlcSuppressedArena,
-              width, height, animTime, reducedMotion
-            })
-          : drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode, {
-          stage: { ...arenaStage, universe: renderUniverse },
-          elapsedSeconds: animTime / 60,
-          reducedMotion
-        });
+        const motionReduced = reducedMotion();
+        const usingOpenAiBackdrop = drawSourceSceneBackdrop(ctx, arenaStage, width, height)
+          || (stage.mode === 'Tactics'
+            ? engineRef.current?.drawDedicatedEnvironment?.(ctx, animTime, motionReduced)
+              || drawTacticsEnvironment(ctx, {
+                battlefield: getTacticsBattlefield(arenaStage), universe: renderUniverse,
+                forceBaseArena: arenaStage.forceBaseArena, dlcSuppressedArena: arenaStage.dlcSuppressedArena,
+                width, height, animTime, reducedMotion: motionReduced
+              })
+            : drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode, {
+              stage: { ...arenaStage, universe: renderUniverse },
+              elapsedSeconds: animTime / 60,
+              reducedMotion: motionReduced
+            }));
         if (!bootClearedRef.current) {
           bootClearedRef.current = true;
           setCombatBooting(false);
@@ -1482,13 +1574,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         if (engine) {
           engine.autoBattle = autoBattleRef.current;
           if (stage.mode === 'RPG') {
-            const pads = navigator.getGamepads?.() || [];
+            const pads = readBrowserGamepads();
             for (const [padIndex, side] of [[0, 'player'], [1, 'enemy']]) {
-              const pressed = Boolean(pads[padIndex]?.buttons?.[5]?.pressed);
+              const pad = pads?.[padIndex];
+              if (!pad || pad.connected === false) {
+                rpgSummonGamepadHeldRef.current[side] = true;
+                continue;
+              }
+              const pressed = Boolean(pad.buttons?.[5]?.pressed);
               const wasHeld = rpgSummonGamepadHeldRef.current[side];
               rpgSummonGamepadHeldRef.current[side] = pressed;
               if (pressed && !wasHeld && (side === 'player' || battleConfig?.opponentControl === 'p2')
-                && !engine.getTargetingState?.()) {
+                && !engine.getTargetingState?.() && !engine.isSummonSceneActive?.()) {
                 const actor = side === 'enemy' ? engine.getSelectedEnemy?.() : engine.getSelectedHero?.();
                 engine.summon?.(actor, side);
                 setRpgTargeting(engine.getTargetingState?.() || null);
@@ -1499,30 +1596,32 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           let meleeHeldP2 = {};
           if (stage.mode === 'Smash') {
             const playerInput = readMeleeInput('player');
-            const playerNeutralGated = dispatchMeleeInputEdges(engine, 'player', playerInput);
-            meleeHeldP1 = playerNeutralGated ? {} : toEngineHeldInput(playerInput);
+            dispatchMeleeInputEdges(engine, 'player', playerInput);
+            meleeHeldP1 = toEngineHeldInput(playerInput);
             if (battleConfig?.opponentControl === 'p2') {
               const opponentInput = readMeleeInput('cpu');
-              const opponentNeutralGated = dispatchMeleeInputEdges(engine, 'cpu', opponentInput);
-              meleeHeldP2 = opponentNeutralGated ? {} : toEngineHeldInput(opponentInput);
+              dispatchMeleeInputEdges(engine, 'cpu', opponentInput);
+              meleeHeldP2 = toEngineHeldInput(opponentInput);
             }
           }
           const actorsObservedDuringUpdate = {
             heroes: new Set(engine.heroes || []),
             enemies: new Set(engine.enemies || [])
           };
-          let matchInputLocked = false;
+          let activeCombatSteps = 0;
           for (let l = 0; l < updateLoops; l++) {
+            const advancing = !simulationPaused && isCombatGameplayAdvancing(engine) && !engine.isSummonSceneActive?.();
             engine.update(meleeHeldP1, meleeHeldP2, {
               preMatchDeltaMs: COMBAT_STEP_MS,
               stageDeltaMs: COMBAT_STEP_MS
             });
+            if (advancing) activeCombatSteps++;
             particles.update();
             (engine.heroes || []).forEach(actor => actorsObservedDuringUpdate.heroes.add(actor));
             (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
           }
-          matchInputLocked = stage.mode === 'Smash' && engine.isMatchInputLocked?.();
-          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver && !engine.isSummonSceneActive?.();
+          const gameplayAdvancing = activeCombatSteps > 0 && !simulationPaused && isCombatGameplayAdvancing(engine) && !engine.isSummonSceneActive?.();
+          combatTime += activeCombatSteps;
           if (stage.mode === 'Smash') {
             const nextPreMatch = engine.getPreMatchState?.(lang) || null;
             const cueKey = nextPreMatch ? `${nextPreMatch.state}:${nextPreMatch.cueId}` : null;
@@ -1541,7 +1640,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               : ['player'];
             chargeSides.forEach(side => {
               const fieldState = customFieldSuperRef.current[side];
-              if (!fieldState.used) fieldState.charge = Math.min(100, fieldState.charge + 0.055 * updateLoops);
+              if (!fieldState.used) fieldState.charge = Math.min(100, fieldState.charge + 0.055 * activeCombatSteps);
             });
             if (animTime % 12 === 0) {
               setCustomFieldSuperState({
@@ -1574,7 +1673,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             }
           }
           engine.draw(ctx, animTime, lang);
-          if (stage.mode !== 'RPG' && !matchInputLocked) {
+          if (stage.mode !== 'RPG' && !(stage.mode === 'Smash' && engine.isMatchInputLocked?.())) {
             battlePickupsRef.current.forEach(item => {
               const tacticalScreen = stage.mode === 'Tactics'
                 && Number.isFinite(item.gridX)
@@ -1595,6 +1694,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             nextBattleItemDropRef.current = combatTime + (stage.mode === 'Smash' ? 540 : 780);
           }
           particles.draw(ctx);
+          const signature = engine.signatureDirector?.snapshot(lang);
+          if (signature) {
+            const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === signature.actorId);
+            drawSignatureCinematic(ctx, signature, actor, drawPixelSprite, {
+              reducedMotion: reducedMotion()
+            });
+          }
           if (stage.mode === 'RPG') drawRpgTargeting(ctx, engine.getTargetingState?.(), [...engine.heroes, ...engine.enemies]);
           drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
 
@@ -1617,14 +1723,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             } else if (anomaly.id === 'rift_burn') {
               const boss = engine.enemies.find(enemy => enemy.isBoss && enemy.currentHp > 0) || engine.enemies.find(enemy => enemy.currentHp > 0);
               if (boss) {
-                boss.currentHp = Math.max(1, boss.currentHp - Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)));
+                applyEncounterOrDirectDamage(engine, boss, Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)), { kind: 'anomaly', nonlethal: true });
                 particles.add(width * 0.5, height * 0.26, 0, -1, '#ff4500', 3, 55, 'text', 'RIFT BURN');
               }
             } else if (anomaly.id === 'signal') {
               engine.heroes.forEach(hero => {
                 if (hero.currentHp > 0) {
                   const maxHp = hero.maxHp || hero.stats.hp;
-                  hero.currentHp = Math.min(maxHp, hero.currentHp + Math.max(8, Math.round(maxHp * 0.05)));
+                  applyCombatHealing(hero, Math.max(8, Math.round(maxHp * 0.05)));
                 }
               });
             }
@@ -1660,7 +1766,6 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
         }
 
-        if (!simulationPaused && !engineRef.current?.gameOver && !engineRef.current?.isSummonSceneActive?.() && !(stage.mode === 'Smash' && engineRef.current?.isMatchInputLocked?.())) combatTime += updateLoops;
         animTime += updateLoops;
         frameId = requestAnimationFrame(tick);
       } catch (error) {
@@ -1679,6 +1784,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
       window.removeEventListener('blur', clearMeleeInput);
+      window.removeEventListener('gamepaddisconnected', handleGamepadDisconnected);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(frameId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
@@ -1689,12 +1795,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         heroes: new Map(),
         enemies: new Map()
       };
+      clearMeleeControls();
       engineRef.current?.dispose?.();
       engineRef.current = null;
       sound.stopBgm();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, activeTeam]);
+
+  const activateTacticsCell = (c, r, surfaceId) => {
+    if (sessionPausedRef.current || battleCompleted || stage.mode !== 'Tactics') return;
+    const engine = engineRef.current;
+    if (!engine?.canCommandActiveUnit?.()) return;
+    const result = engine.handleCellClick(c, r, surfaceId);
+    if (result?.type === 'move' && engine.isActiveCombatant?.() && !engine.gameOver) activateTacticalPickupAtCell(c, r, surfaceId);
+    setSelectedAction(engine.selectedAction);
+    setTacticsTerrainState(engine.getTerrainViewState?.() || null);
+  };
 
   const handleCanvasClick = (e) => {
     if (sessionPausedRef.current) return;
@@ -1705,10 +1822,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
 
     const rect = canvasRef.current.getBoundingClientRect();
-    const scaleX = canvasRef.current.width / rect.width;
-    const scaleY = canvasRef.current.height / rect.height;
-    const clickX = (e.clientX - rect.left) * scaleX;
-    const clickY = (e.clientY - rect.top) * scaleY;
+    const point = clientToCombatPoint(e.clientX, e.clientY, rect, canvasRef.current.width, canvasRef.current.height);
+    if (!point) return;
+    const { x: clickX, y: clickY } = point;
 
     const engine = engineRef.current;
     if (stage.mode === 'RPG') {
@@ -1730,15 +1846,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         setTacticsTerrainState(engine.getTerrainViewState());
         return;
       }
-      const result = engine.handleCellClick(gridC, gridR, grid.surfaceId);
-      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR, grid.surfaceId);
-      setTacticsTerrainState(engine.getTerrainViewState?.() || null);
+      activateTacticsCell(gridC, gridR, grid.surfaceId);
     }
   };
 
   const handleTacticsPointerDown = (e) => {
     if (sessionPausedRef.current) return;
     if (stage.mode !== 'Tactics' || e.button !== 0 || !engineRef.current) return;
+    const canvas = canvasRef.current;
+    if (!clientToCombatPoint(e.clientX, e.clientY, canvas.getBoundingClientRect(), canvas.width, canvas.height)) return;
     e.currentTarget.focus({ preventScroll: true });
     suppressTacticsClickRef.current = false;
     tacticsCameraPointerRef.current = {
@@ -1775,10 +1891,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     pointer.moved = true;
     const rect = canvasRef.current.getBoundingClientRect();
-    engineRef.current.panCameraBy?.(
-      deltaClientX * (canvasRef.current.width / rect.width),
-      deltaClientY * (canvasRef.current.height / rect.height)
-    );
+    const delta = clientToCombatDelta(deltaClientX, deltaClientY, rect, canvasRef.current.width, canvasRef.current.height);
+    if (delta) engineRef.current.panCameraBy?.(delta.x, delta.y);
     e.preventDefault();
   };
 
@@ -1810,8 +1924,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (sessionPausedRef.current) return;
       if (!engineRef.current) return;
       const rect = canvas.getBoundingClientRect();
-      const anchorX = (event.clientX - rect.left) * (canvas.width / rect.width);
-      const anchorY = (event.clientY - rect.top) * (canvas.height / rect.height);
+      const anchor = clientToCombatPoint(event.clientX, event.clientY, rect, canvas.width, canvas.height);
+      if (!anchor) return;
+      const { x: anchorX, y: anchorY } = anchor;
       engineRef.current.zoomCameraAt?.(
         event.deltaY < 0 ? 1.12 : 1 / 1.12,
         anchorX,
@@ -1834,7 +1949,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const activeH = engine.getActiveHero();
       engine.triggerAbility(activeH, type);
     } else if (stage.mode === 'RPG') {
-      if (engine.getTargetingState?.()) return;
+      if (engine.getTargetingState?.() || engine.isSummonSceneActive?.()) return;
       const activeEnemy = engine.getSelectedEnemy?.();
       if (battleConfig?.opponentControl === 'p2' && activeEnemy?.atb >= 100) {
         engine.beginTargeting(activeEnemy, type, 'enemy');
@@ -1864,7 +1979,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const handleActivateEventItem = () => {
     if (engineRef.current?.getTargetingState?.() || engineRef.current?.isSummonSceneActive?.()) return;
     if (sessionPausedRef.current) return;
-    if (!engineRef.current || eventItemUsed || battleCompleted) return;
+    if (!engineRef.current || eventItemUsedRef.current || eventItemUsed || battleCompleted || stage.disableItems) return;
     if (stage.mode === 'Smash' && engineRef.current.isMatchInputLocked?.()) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
@@ -1873,18 +1988,28 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const eventId = equippedEventItems[activeHero.id];
     if (!eventId) return;
 
-    const eventDetails = EVENT_ITEMS_DB[activeHero.universe];
+    const actor = engineRef.current.heroes.find(hero => hero.id === activeHero.id);
+    if (!actor || actor.currentHp <= 0) return;
+    const eventDetails = resolveEquippedCombatEvent(eventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet);
     if (!eventDetails) return;
 
-    // Trigger effect in engine
-    if (engineRef.current.triggerCombatEvent(eventDetails.effect) === true) {
+    // The synchronous latch also rejects a second click before React commits.
+    eventItemUsedRef.current = true;
+    const signature = engineRef.current.signatureDirector?.eventReadiness(eventDetails, actor);
+    const activated = signature?.supported
+      ? engineRef.current.signatureDirector.triggerInvocation(eventDetails, actor)
+      : engineRef.current.triggerCombatEvent(eventDetails.effect);
+    if (activated === true) {
       setEventItemUsed(true);
+    } else {
+      eventItemUsedRef.current = false;
     }
   };
 
   const swapActiveHero = (id) => {
     if (sessionPausedRef.current) return;
     if (!engineRef.current) return;
+    if (stage.mode === 'RPG' && engineRef.current.isSummonSceneActive?.()) return;
     if (stage.mode === 'Smash') {
       engineRef.current.setActiveHero(id);
     } else if (stage.mode === 'RPG') {
@@ -1900,6 +2025,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         engineRef.current.selectEnemy?.(id);
       } else {
         engineRef.current.selectHero(id);
+        setActiveHeroId(engineRef.current.getSelectedHero()?.id || id);
       }
     }
   };
@@ -1921,6 +2047,75 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const rpgSourceInputLocked = stage.mode === 'RPG' && Boolean(activeHeroObj?.sourceControlWave16?.active
     || activeHeroObj?.sourcePossessionBodyWave16
     || activeHeroObj?.sourceProtectionWave16?.active && activeHeroObj.sourceProtectionWave16.kind === 'yukikaze');
+  const raamEncounter = stage.mode === 'RPG' ? engineRef.current?.getRaamEncounterState?.() : null;
+  const aliensRescueEncounter = stage.mode === 'Smash' ? engineRef.current?.getAliensRescueEncounterState?.() : null;
+  const piratesCurseEncounter = stage.mode === 'RPG' ? engineRef.current?.getPiratesCurseEncounterState?.() : null;
+  const sourceScene = stage.mode === 'Tactics' ? engineRef.current?.getSourceSceneState?.() : null;
+  const handleSourceSceneCommand = (id, token) => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.triggerSourceSceneAction?.(id, token)) { setSelectedAction(null); setTeamState([...engine.heroes]); }
+  };
+  const rexEncounter = stage.mode === 'Tactics' ? engineRef.current?.getRexEncounterState?.() : null;
+  const sourceAmmoHero = stage.mode === 'Smash' ? engineRef.current?.getActiveHero?.() || activeHeroObj : activeHeroObj;
+  const sourceAmmunition = getBlackPearlSourceAmmunition(sourceAmmoHero);
+  const sourceShotHasTarget = stage.mode === 'Smash' && sourceAmmunition
+    ? getSmashAbilityTargets(sourceAmmoHero, engineRef.current?.getEncounterTargets?.() || [], getSmashAbilityProfile(sourceAmmoHero, 'secondary')).length > 0 : false;
+  const sourceAmmoOpponent = stage.mode === 'Smash' && engineRef.current?.isLocalP2
+    ? engineRef.current.getActiveOpponent?.() : null;
+  const opponentShotHasTarget = getBlackPearlSourceAmmunition(sourceAmmoOpponent)
+    ? getSmashAbilityTargets(sourceAmmoOpponent, engineRef.current?.heroes || [], getSmashAbilityProfile(sourceAmmoOpponent, 'secondary')).length > 0 : false;
+  const handleOpponentSourceShot = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
+    const engine = engineRef.current;
+    if (engine?.isLocalP2 && engine.triggerOpponentAbility?.('secondary')) {
+      setOpponentState([...engine.enemies]);
+      setTeamState([...engine.heroes]);
+    }
+  };
+  const handleRexStingerSelection = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.selectRexStingerTarget?.()) {
+      setSelectedAction(engine.selectedAction);
+      setTeamState([...engine.heroes]);
+      sound.playSfx('click');
+    }
+  };
+  const handleRexChaff = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.triggerRexChaff?.()) {
+      setSelectedAction(engine.selectedAction);
+      setTeamState([...engine.heroes]);
+    }
+  };
+  const handleAliensRescueCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
+    const engine = engineRef.current;
+    if (engine?.triggerAliensRescueAction?.(command, engine.getActiveHero())) {
+      setTeamState([...engine.heroes]);
+      sound.playSfx('shield');
+    }
+  };
+  const handlePiratesCurseCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || opponentHasCommand || rpgTargeting || engineRef.current?.isSummonSceneActive?.()) return;
+    const engine = engineRef.current;
+    if (engine?.triggerPiratesCurseAction?.(command, engine.getSelectedHero())) {
+      setTeamState([...engine.heroes]);
+      setRpgTargeting(engine.getTargetingState?.() || null);
+      sound.playSfx('shield');
+    }
+  };
+  const handleRaamCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || opponentHasCommand || rpgTargeting || engineRef.current?.isSummonSceneActive?.()) return;
+    const engine = engineRef.current;
+    if (engine?.triggerRaamEncounterAction?.(command, engine.getSelectedHero())) {
+      setTeamState([...engine.heroes]);
+      setRpgTargeting(engine.getTargetingState?.() || null);
+      sound.playSfx(command === 'frag' ? 'special' : 'shield');
+    }
+  };
   const getCombatantMove = (combatant, type) => {
     const named = action => typeof action === 'string' ? { name: action } : action;
     if (stage.mode === 'Tactics' && engineRef.current?.verticalTerrain) {
@@ -1939,6 +2134,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     return { name: combatant?.weapon || 'Attaque', dmg: Math.max(0.7, baseDamage / 10) };
   };
 
+  const activeSimpleIsCapture = stage.mode === 'Tactics' && activeHeroObj
+    && isSourceBubbleCaptureProfileWave17(engineRef.current?.getAttackProfile?.(activeHeroObj, 'simple'));
+
   const toggleAuto = () => {
     if (sessionPausedRef.current) return;
     const nextVal = !autoBattle;
@@ -1955,11 +2153,22 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
   };
 
+  const tacticsInputLocked = stage.mode === 'Tactics' && (sessionPaused || battleCompleted || !engineRef.current?.canCommandActiveUnit?.());
+  const tacticsSupportState = stage.mode === 'Tactics' ? engineRef.current?.getSupportState?.() : null;
+
+  const signatureState = engineRef.current?.signatureDirector?.snapshot(lang) || null;
+  const playerSuper = engineRef.current?.signatureDirector?.superReadiness(engineRef.current?.getActiveHero?.());
+  const opponentSuper = engineRef.current?.isLocalP2
+    ? engineRef.current?.signatureDirector?.superReadiness(engineRef.current?.getActiveOpponent?.()) : null;
+
   // Check if active hero has an event item equipped
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
   const activeHeroUniverseEnabled = activeHeroStatic && !hiddenUniverseSet.has(activeHeroStatic.universe);
   const equippedEventId = activeHeroUniverseEnabled ? equippedEventItems[activeHeroStatic.id] : null;
-  const equippedEvent = activeHeroUniverseEnabled ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const equippedEvent = activeHeroUniverseEnabled && !stage.disableItems
+    ? resolveEquippedCombatEvent(equippedEventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet) : null;
+  const invocationReadiness = equippedEvent && engineRef.current?.signatureDirector?.eventReadiness(
+    equippedEvent, engineRef.current?.heroes?.find(hero => hero.id === activeHeroId));
   const preMatchLocked = stage.mode === 'Smash'
     && !stage.nonCombatTrial
     && preMatchAnnouncement?.locked !== false;
@@ -2023,131 +2232,185 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       ? (lang === 'fr' ? 'Melee: les drops se ramassent dans l arene ou via le panneau.' : 'Melee: drops can be collected in-arena or from the panel.')
       : (lang === 'fr' ? 'RPG: les reliques soutiennent le tempo ATB.' : 'RPG: relics support ATB tempo.');
 
+  const backdropSrc = getOpenAiBackdropSrc(arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena ? 'Nexus de Convergence' : arenaStage.universe, stage.mode);
+  const missionCommandsAvailable = Boolean(sourceScene || raamEncounter || rexEncounter || piratesCurseEncounter || aliensRescueEncounter || sourceAmmunition || sourceAmmoOpponent || tacticsSupportState);
+  const targetingPanel = stage.mode === 'RPG' && (
+    <RpgTargetingPanel targeting={rpgTargeting} lang={lang} paused={sessionPaused}
+            sourceStatusActors={[...teamState, ...opponentState]}
+            possessionCommands={['player', ...(battleConfig?.opponentControl === 'p2' ? ['enemy'] : [])].map(side => engineRef.current?.getRpgPossessionCommandState?.(side)).filter(Boolean)}
+            onPossessedTargeting={(controllerId, side) => { if (sessionPausedRef.current) return; engineRef.current?.beginPossessedTargeting?.(controllerId, side); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
+            onReleasePossession={(controllerId, side) => { if (sessionPausedRef.current) return; engineRef.current?.releaseRpgPossession?.(controllerId, side); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
+            wait={rpgTargetingWait}
+            onWaitChange={value => { rpgTargetingWaitRef.current = value; setRpgTargetingWait(value); engineRef.current?.setTargetingWait?.(value); }}
+            onSelect={id => { engineRef.current?.selectTarget(id); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
+            onConfirm={() => { if (sessionPausedRef.current) return; engineRef.current?.confirmTargeting(); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
+            onCancel={() => { if (sessionPausedRef.current) return; engineRef.current?.cancelTargeting(); setRpgTargeting(null); }}
+          />
+  );
+  const standardActions = activeHeroObj && stage.mode !== 'Smash' && (
+<div className="combat-primary-actions">
+                <button
+                  onClick={() => handleActiveHeroAbility('simple')}
+                  disabled={sessionPaused || !!sourceScene || tacticsInputLocked || !!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={activeSimpleIsCapture
+                    ? (lang === 'fr' ? 'Capture une cible admissible sans lui infliger de dégâts.' : 'Capture an eligible target without damage.')
+                    : (lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.')}
+                >
+                  {activeSimpleIsCapture ? '🫧' : '⚔️'} {getCombatantMove(activeHeroObj, 'simple').name}
+                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
+                    {activeSimpleIsCapture
+                      ? (lang === 'fr' ? 'Capture non létale' : 'Nonlethal capture')
+                      : (lang === 'fr' ? 'Action simple' : 'Basic Action')}
+                  </div>
+                </button>
+
+                <button
+                  onClick={() => handleActiveHeroAbility('secondary')}
+                  disabled={sessionPaused || !!sourceScene || tacticsInputLocked || !!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
+                >
+                  ⚡ {getCombatantMove(activeHeroObj, 'secondary').name}
+                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
+                    {activeHeroObj.cooldown > 0 ? `COOLDOWN (${Math.ceil(activeHeroObj.cooldown/60)}s)` : 'Skill Action'}
+                  </div>
+                </button>
+
+                <button
+                  onClick={() => handleActiveHeroAbility('defense')}
+                  disabled={sessionPaused || tacticsInputLocked || !!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
+                >
+                  🛡️ {getCombatantMove(activeHeroObj, 'defense').name}
+                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Shield Defense</div>
+                </button>
+
+                <button
+                  onClick={() => handleActiveHeroAbility('special')}
+                  disabled={sessionPaused || !!sourceScene || tacticsInputLocked || !!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  className="btn-special"
+                  title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
+                  style={{
+                    boxShadow: activeHeroObj.specialCharge >= 100 ? `0 0 15px ${activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50'}` : 'none',
+                    borderColor: activeHeroObj.specialCharge >= 100 ? '#fff' : '#444',
+                    background: activeHeroObj.specialCharge >= 100 ? (activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50') : 'rgba(0,0,0,0.4)',
+                    color: '#fff'
+                  }}
+                >
+                  🔥 {getCombatantMove(activeHeroObj, 'special').name.toUpperCase()}
+                  <div style={{ fontSize: '8px', color: '#fff', marginTop: '2px' }}>
+                    {activeHeroObj.specialCharge < 100 ? `SPECIAL CHARGE: ${Math.round(activeHeroObj.specialCharge)}%` : 'READY!'}
+                  </div>
+                </button>
+
+                {stage.mode === 'RPG' && rpgSummon?.available && (
+                  <button
+                    type="button"
+                    className="btn-special"
+                    onClick={() => handleActiveHeroAbility('summon')}
+                    disabled={sessionPaused || battleCompleted || !!rpgTargeting || rpgSceneActive || !rpgSummon.ready}
+                    style={{ gridColumn: 'span 2', borderColor: rpgSummon.ready ? '#b3a0ff' : '#53636b', padding: '12px 10px' }}
+                    title={lang === 'fr'
+                      ? '100 ATB et 100 % de charge spéciale. Une utilisation par combattant et par combat ; choisis puis confirme les cibles.'
+                      : '100 ATB and 100% special charge. Once per fighter per battle; choose and confirm targets.'}
+                  >
+                    {rpgSummon.kind === 'summon' ? (lang === 'fr' ? 'INVOCATION' : 'SUMMON') : (lang === 'fr' ? 'RENFORT' : 'REINFORCEMENT')}
+                    {' · '}{rpgSummon.entityName || rpgSummon.name}
+                    <span style={{ display: 'block', marginTop: 6, fontSize: 10, lineHeight: 1.5 }}>
+                      {rpgSummon.used
+                        ? (lang === 'fr' ? 'Déjà utilisé dans ce combat' : 'Already used this battle')
+                        : (lang === 'fr' ? '100 ATB + charge 100 % · 1 fois par combat' : '100 ATB + 100% charge · Once per battle')}
+                      {' · '}{opponentHasCommand ? (lang === 'fr' ? 'PavNum 5' : 'Numpad 5') : 'U'} / R1 · RB
+                    </span>
+                  </button>
+                )}
+
+                {stage.mode === 'Tactics' && selectedAction && (
+                  <button
+                    type="button"
+                    onClick={handleCancelTacticsAction}
+                    className="btn-retro"
+                    title={lang === 'fr'
+                      ? 'Annule la visee non confirmee et revient au deplacement avec les AP restants.'
+                      : 'Cancel unconfirmed targeting and return to movement with remaining AP.'}
+                    style={{
+                      gridColumn: 'span 2',
+                      padding: '8px 12px',
+                      background: 'rgba(41, 128, 185, 0.34)',
+                      borderColor: '#4fc3f7',
+                      color: '#dff6ff',
+                      fontSize: '10px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {lang === 'fr' ? 'ANNULER LA VISEE / DEPLACEMENT' : 'CANCEL TARGETING / MOVE'}
+                  </button>
+                )}
+
+                {stage.mode === 'Tactics' && (
+                  <button
+                    onClick={() => {
+                      if (!sessionPausedRef.current && engineRef.current?.skipActiveTurn?.()) {
+                        sound.playSfx('confirm');
+                      }
+                    }}
+                    className="btn-retro"
+                    disabled={tacticsInputLocked}
+                    title={lang === 'fr' ? 'Termine le tour du heros actif sans autre action.' : 'End the active hero turn without another action.'}
+                    style={{
+                      gridColumn: 'span 2',
+                      padding: '8px 12px',
+                      background: '#c0392b',
+                      borderColor: '#ff4d4d',
+                      color: '#fff',
+                      fontSize: '11px',
+                      fontWeight: 'bold',
+                      textShadow: '0 0 5px #ff4d4d',
+                      marginTop: '4px'
+                    }}
+                  >
+                    ⏭️ {lang === 'fr' ? 'FINIR LE TOUR' : 'END TURN'}
+                  </button>
+                )}
+              </div>
+  );
+
   return (
-    <div className={`battle-screen ${hudTheme ? 'game-hud-themed-interface' : ''}`} style={{
-      minHeight: '100vh',
-      background: '#04020a',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      color: '#fff',
-      padding: '20px 40px',
-      fontFamily: '"Share Tech Mono", monospace',
-      boxSizing: 'border-box',
-      width: '100%'
-    }}>
+    <div className={`battle-screen combat-immersive-surface combat-mode-${stage.mode.toLowerCase()} ${hudTheme ? 'game-hud-themed-interface' : ''}`}
+      data-hud-expanded={hudExpanded} data-battle-completed={battleCompleted} data-touch-controls={showTouchControls} data-targeting={Boolean(rpgTargeting)}
+      style={{ '--combat-backdrop': backdropSrc ? `url("${backdropSrc}")` : 'none' }}>
       <GameHudThemeLayer theme={hudTheme} mode={stage.mode} />
-      {/* Top Bar */}
-      <div className="battle-top-bar" style={{
-        width: '100%',
-        maxWidth: '1120px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '10px'
-      }}>
-        <div>
-          <h2 style={{ margin: 0, fontSize: '18px', color: '#ff4500' }}>
-            BREACH ZONE: {stage.name}
-          </h2>
-          <span style={{ fontSize: '11px', color: '#aaa' }}>
-            {lang === 'fr' ? 'Univers' : 'Universe'}: {stage.sourceUniverses?.join(' / ') || stage.universe} ({stage.mode.toUpperCase()})
-          </span>
-          {stage.modifier && (
-            <div style={{ fontSize: '10px', color: stage.modifier.color || '#ffeb3b', marginTop: '4px' }}>
-              {stage.modifier.name?.[lang] || stage.modifier.id}: {stage.modifier.desc?.[lang] || ''}
-            </div>
-          )}
-          {stage.isSurvival && (
-            <div style={{ fontSize: '10px', color: '#ff8c00', marginTop: '3px' }}>
-              {lang === 'fr' ? 'Mode survie: récompenses augmentées, anomalies plus fréquentes.' : 'Survival mode: higher rewards, more unstable anomalies.'}
-            </div>
-          )}
-          {stage.arcaAdaptation && (
-            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
-              {stage.nonCombatTrial
-                ? (lang === 'fr'
-                  ? 'A.R.C.A. conserve les données de la tentative précédente pour relire l objectif.'
-                  : 'A.R.C.A. retains the previous attempt data to clarify the objective.')
-                : (lang === 'fr'
-                  ? `Adaptation A.R.C.A.: ${stage.bossName} scanne, +5% HP equipe.`
-                  : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`)}
-            </div>
-          )}
-          {stage.mode === 'Tactics' && engineRef.current?.escort && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
-          {unstableTeamCount > 0 && !stage.nonCombatTrial && (
-            <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
-              {lang === 'fr'
-                ? `Instabilite de repli: ${unstableTeamCount} heros a -5% stats pendant cette mission.`
-                : `Retreat instability: ${unstableTeamCount} hero(es) at -5% stats for this mission.`}
-            </div>
-          )}
-          {collectionBonusCount > 0 && (
-            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
-              {lang === 'fr'
-                ? `Matrice Nexus: +${Math.min(30, collectionBonusCount * 2)}% toutes stats.`
-                : `Nexus matrix: +${Math.min(30, collectionBonusCount * 2)}% all stats.`}
-            </div>
-          )}
+      <div className="combat-scene-fill" aria-hidden="true" />
+      <header className="combat-hud-header">
+        <div className="combat-mission-heading">
+          <span>{stage.mode === 'Smash' ? (lang === 'fr' ? 'MÊLÉE' : 'MELEE') : stage.mode.toUpperCase()} / {stage.universe}</span>
+          <h1>{stage.name}</h1>
+          <p>{battleObjective}</p>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-          {(stage.mode === 'RPG' || stage.mode === 'Tactics') && (
-            <button
-              onClick={toggleAuto}
-              className="btn-retro"
-              title={lang === 'fr' ? 'Active ou desactive les actions automatiques en combat.' : 'Toggle automatic combat actions.'}
-              style={{
-                borderColor: autoBattle ? '#2ecc71' : '#444',
-                color: autoBattle ? '#2ecc71' : '#aaa',
-                fontSize: '11px',
-                padding: '6px 12px',
-                background: autoBattle ? 'rgba(46, 204, 113, 0.15)' : 'rgba(0,0,0,0.3)'
-              }}
-            >
-              🤖 {getTranslation(lang, 'btnAutoBattle')}
-            </button>
-          )}
-
-          <button
-            onClick={() => {
-              sound.playSfx('click');
-              setSpeedMultiplier(prev => (prev === 1 ? 2 : 1));
-            }}
-            className="btn-retro"
-            title={lang === 'fr' ? 'Passe la vitesse du combat entre normal et x2.' : 'Switch combat speed between normal and x2.'}
-            style={{
-              borderColor: speedMultiplier === 2 ? '#ffeb3b' : '#444',
-              color: speedMultiplier === 2 ? '#ffeb3b' : '#aaa',
-              fontSize: '11px',
-              padding: '6px 12px',
-              background: speedMultiplier === 2 ? 'rgba(255, 235, 59, 0.15)' : 'rgba(0,0,0,0.3)'
-            }}
-          >
-            {getTranslation(lang, 'btnSpeedUp')}
-          </button>
-
-          {!dedicatedSession && (
-            <button
-              onClick={() => onBattleEnd('quit')}
-              className="btn-retro"
-              title={stage.isCustomBattle
-                ? (lang === 'fr' ? 'Quitte la simulation sans modifier la progression et retourne a sa configuration.' : 'Leave the simulation without changing progression and return to setup.')
-                : stage.nonCombatTrial
-                  ? (lang === 'fr' ? 'Quitte l épreuve et retourne au hub. La tentative reste inachevée.' : 'Leave the trial and return to the hub. The attempt remains incomplete.')
-                  : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
-              style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}
-            >
-              {stage.isCustomBattle
-                ? (lang === 'fr' ? '← CONFIGURATION' : '← SETUP')
-                : getTranslation(lang, 'retreat')}
-            </button>
-          )}
-        </div>
-      </div>
-
+        <nav className="combat-hud-tools" aria-label={lang === 'fr' ? 'Menu du combat' : 'Combat menu'}>
+          {(stage.mode === 'RPG' || stage.mode === 'Tactics') && <button type="button" onClick={toggleAuto}
+            aria-pressed={autoBattle} disabled={sessionPaused || battleCompleted}>
+            AUTO <b>{autoBattle ? 'ON' : 'OFF'}</b>
+          </button>}
+          <button type="button" onClick={() => { sound.playSfx('click'); setSpeedMultiplier(prev => prev === 1 ? 2 : 1); }}
+            disabled={sessionPaused || battleCompleted} aria-label={lang === 'fr' ? 'Changer la vitesse du combat' : 'Change combat speed'}>×{speedMultiplier}</button>
+          <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'briefing' ? null : 'briefing')}
+            disabled={battleCompleted} aria-expanded={activeDrawer === 'briefing'}>{lang === 'fr' ? 'MISSION' : 'BRIEFING'}</button>
+          <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'arsenal' ? null : 'arsenal')}
+            disabled={sessionPaused || battleCompleted} aria-expanded={activeDrawer === 'arsenal'}>{lang === 'fr' ? 'ARSENAL' : 'ARSENAL'} <b>{usedBattleItems}/{totalBattleItems}</b></button>
+          <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'controls' ? null : 'controls')}
+            disabled={battleCompleted} aria-expanded={activeDrawer === 'controls'}>{lang === 'fr' ? 'COMMANDES' : 'CONTROLS'}</button>
+          <button type="button" className="combat-hud-toggle" onClick={() => setHudExpanded(value => !value)} aria-pressed={hudExpanded}
+            aria-label={lang === 'fr' ? 'Afficher les détails du HUD' : 'Show HUD details'}>HUD</button>
+          {!dedicatedSession && <button type="button" onClick={requestPause} disabled={battleCompleted}
+            aria-label={lang === 'fr' ? 'Mettre le combat en pause' : 'Pause combat'}>Ⅱ</button>}
+        </nav>
+      </header>
       {/* Boss Health Bar Display */}
       {bossState && bossState.currentHp > 0 && (
-        <div style={{ width: '100%', maxWidth: '1120px', marginBottom: '15px', textAlign: 'center' }}>
+        <div className="combat-boss-hud">
           <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#e74c3c', marginBottom: '4px', textTransform: 'uppercase' }}>
             {getTranslation(lang, 'bossWarning', { name: bossState.name })}
           </div>
@@ -2166,34 +2429,391 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         </div>
       )}
 
-      <div style={{
-        width: '100%',
-        maxWidth: '1120px',
-        display: 'grid',
-        gridTemplateColumns: '1fr auto auto',
-        gap: '10px',
-        alignItems: 'center',
-        marginBottom: '10px',
-        padding: '10px 12px',
-        background: 'rgba(0,0,0,0.28)',
-        border: '1px solid rgba(57,197,187,0.22)',
-        borderRadius: '5px',
-        boxSizing: 'border-box'
-      }}>
-        <div style={{ fontSize: '11px', color: '#d9f7f5', lineHeight: 1.35 }}>
-          <strong style={{ color: '#39c5bb' }}>{stage.bossName || stage.universe}</strong>
-          {' - '}
-          {battleObjective}
-          <div style={{ marginTop: '3px', color: '#9fb9bd', fontSize: '10px' }}>{modeSignal}</div>
+      {/* Canvas */}
+      <div className="combat-arena-frame">
+        <div className="crt-overlay" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 5 }} />
+
+        <div
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: 'hidden',
+            clip: 'rect(0, 0, 0, 0)',
+            whiteSpace: 'nowrap',
+            border: 0
+          }}
+        >
+          {preMatchAnnouncement
+            ? preMatchAnnouncement.cueId === 'coordinates'
+              ? `${preMatchAnnouncement.cue}. ${preMatchAnnouncement.message}`
+              : preMatchAnnouncement.cue
+            : ''}
         </div>
-        <div style={{ fontSize: '10px', color: '#ffeb3b', textAlign: 'center' }}>
-          {lang === 'fr' ? 'Artefacts' : 'Artifacts'} {usedBattleItems}/{totalBattleItems}
-        </div>
-        <div style={{ fontSize: '10px', color: '#39c5bb', textAlign: 'center' }}>
-          SFX {sound.muted ? 'OFF' : 'ON'} / {stage.mode}
-        </div>
+
+        {preMatchAnnouncement?.canSkip && (
+          <button
+            type="button"
+            className="btn-retro melee-pre-match-skip"
+            onClick={() => {
+              if (!engineRef.current?.skipPreMatch?.()) return;
+              clearMeleeControls();
+              sound.playSfx('confirm');
+            }}
+            title={lang === 'fr'
+              ? 'Ignore le compte a rebours uniquement pour cette session d entrainement.'
+              : 'Skip the countdown for this training session only.'}
+          >
+            {lang === 'fr' ? 'PASSER EN ENTRAINEMENT' : 'SKIP IN TRAINING'}
+          </button>
+        )}
+
+        {stage.mode === 'Tactics' && tacticsTerrainState?.vertical && (
+          <details open className="combat-targeting-overlay" style={{ left: 'var(--combat-left)', right: 'auto', maxHeight: 'min(45dvh, 540px)', boxSizing: 'border-box' }}>
+            <summary style={{ cursor: 'pointer', minHeight: 44, padding: '8px 0', boxSizing: 'border-box' }}>{lang === 'fr' ? 'TERRAIN · HAUTEURS' : 'TERRAIN · HEIGHTS'}</summary>
+            <TacticsTerrainPanel
+              terrain={tacticsTerrainState}
+              lang={lang}
+              disabled={sessionPaused || battleCompleted || combatBooting}
+              zoom={engineRef.current?.getCameraState?.()?.zoom || 1}
+              onZoom={factor => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.zoomCameraAt?.(factor);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onResetCamera={() => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.resetCamera?.();
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onLevelChange={level => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.setTerrainLevel?.(level);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onLevelCycle={direction => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.cycleTerrainLevel?.(direction);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onSurfaceSelect={id => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.selectTerrainSurface?.(id);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onSurfaceCycle={direction => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.cycleSelectedSurface?.(direction);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onConfirm={id => {
+                if (sessionPausedRef.current || battleCompleted) return;
+                const engine = engineRef.current;
+                const result = engine?.handleSurfaceClick?.(id);
+                const surface = engine?.getTerrainViewState?.()?.selectedSurface;
+                if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
+                setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
+              }}
+            />
+          </details>
+        )}
+
+        <canvas
+          ref={canvasRef}
+          className="combat-stage-canvas"
+          width="1040"
+          height="460"
+          tabIndex={stage.mode === 'Tactics' ? 0 : undefined}
+          aria-label={stage.mode === 'Tactics'
+            ? (lang === 'fr' ? 'Plateau tactique : cliquer ou utiliser les flèches pour sélectionner, Entrée pour confirmer sur les terrains à plusieurs hauteurs' : 'Tactical board: click or use arrow keys to select, Enter to confirm on multi-height terrain')
+            : (lang === 'fr' ? `Terrain de ${stage.name}` : `${stage.name} battlefield`)}
+          onClick={handleCanvasClick}
+          onPointerDown={handleTacticsPointerDown}
+          onPointerMove={handleTacticsPointerMove}
+          onPointerUp={finishTacticsPointer}
+          onPointerCancel={cancelTacticsPointer}
+          onLostPointerCapture={cancelTacticsPointer}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            cursor: stage.mode === 'Tactics'
+              ? selectedAction
+                ? 'crosshair'
+                : 'grab'
+              : rpgTargeting ? 'crosshair' : 'default',
+            touchAction: stage.mode === 'Tactics' ? 'none' : 'auto'
+          }}
+        />
+
+        {customPresentation && (
+          <div
+            className="custom-battle-presentation"
+            data-presentation-type={customPresentation.type}
+            data-presentation-style={customPresentation.cosmetic.style || 'standard'}
+            style={{
+              '--presentation-color': customPresentation.cosmetic.color || '#39c5bb',
+              '--presentation-duration': `${customPresentation.cosmetic.animation?.durationMs || customPresentation.cosmetic.visual?.durationMs || 1200}ms`
+            }}
+          >
+            <div>
+              <CosmeticAtlasPresentation
+                mode={stage.mode}
+                type={customPresentation.type}
+                side={customPresentation.side}
+                cosmetic={customPresentation.cosmetic}
+              />
+              <small>
+                {customPresentation.side === 'both'
+                  ? `P1 + ${battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU'}`
+                  : customPresentation.side === 'opponent'
+                    ? (battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU')
+                    : 'P1'} // {
+                  customPresentation.type === 'ko'
+                    ? 'K.-O.'
+                    : customPresentation.type === 'assist'
+                      ? 'ASSIST'
+                      : (lang === 'fr' ? 'POSE D INTRODUCTION' : 'INTRODUCTION POSE')
+                }
+              </small>
+              <strong>
+                {customPresentation.cosmetic.name?.[lang]
+                  || customPresentation.cosmetic.name?.fr
+                  || customPresentation.cosmetic.universe}
+              </strong>
+            </div>
+          </div>
+        )}
+
+        {(combatBooting || combatRuntimeError) && !battleCompleted && (
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            zIndex: 9,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: combatRuntimeError ? 'rgba(2,0,5,0.92)' : 'rgba(2,0,5,0.62)',
+            padding: '18px',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              maxWidth: '520px',
+              padding: '14px 18px',
+              border: `1px solid ${combatRuntimeError ? '#e74c3c' : '#39c5bb'}`,
+              background: 'rgba(0,0,0,0.72)',
+              borderRadius: '6px',
+              boxShadow: combatRuntimeError ? '0 0 18px rgba(231,76,60,0.25)' : '0 0 18px rgba(57,197,187,0.25)'
+            }}>
+              <div style={{ color: combatRuntimeError ? '#e74c3c' : '#39c5bb', fontWeight: 'bold', fontSize: '13px', marginBottom: '8px' }}>
+                {combatRuntimeError
+                  ? (lang === 'fr' ? 'SIGNAL DE BRECHE INSTABLE' : 'UNSTABLE BREACH SIGNAL')
+                  : (lang === 'fr' ? 'SYNCHRONISATION DU COMBAT' : 'SYNCING COMBAT')}
+              </div>
+              <div style={{ color: '#ddd', fontSize: '11px', lineHeight: 1.45 }}>
+                {combatRuntimeError ? (lang === 'fr' ? 'La mission a été interrompue. Retourne au Nexus pour relancer la connexion.' : 'The mission was interrupted. Return to the Nexus to reconnect.') : (lang === 'fr'
+                  ? 'A.R.C.A. charge le decor, les signatures d escouade et les artefacts de terrain.'
+                  : 'A.R.C.A. is loading the scene, squad signatures, and field artifacts.')}
+              </div>
+              {combatRuntimeError && <details style={{ marginTop: 12, fontSize: 12 }}>
+                <summary>{lang === 'fr' ? 'Détails du signal' : 'Signal details'}</summary><p>{combatRuntimeError}</p>
+              </details>}
+              {!combatRuntimeError && spriteBootStatus && (
+                <div style={{ color: '#ffeb3b', fontSize: '10px', lineHeight: 1.35, marginTop: '7px' }}>
+                  {spriteBootStatus}
+                </div>
+              )}
+              {combatRuntimeError && (
+                <button
+                  onClick={() => submitBattleExit('quit')}
+                  className="btn-retro"
+                  title={lang === 'fr' ? 'Retourne au hub apres une erreur de chargement du combat.' : 'Return to the hub after a combat loading error.'}
+                  style={{ marginTop: '12px', borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '7px 14px' }}
+                >
+                  {lang === 'fr' ? 'RETOUR HUB' : 'RETURN HUB'}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {battleAnomaly && !battleCompleted && (
+          <div className="combat-anomaly-toast" style={{
+            position: 'absolute',
+            top: '12px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 6,
+            padding: '7px 14px',
+            background: 'rgba(0,0,0,0.72)',
+            border: `1px solid ${battleAnomaly.color}`,
+            color: battleAnomaly.color,
+            borderRadius: '4px',
+            fontSize: '11px',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            boxShadow: `0 0 12px ${battleAnomaly.color}55`
+          }}>
+            {battleAnomaly.text[lang]}
+          </div>
+        )}
+
+        {battleItemLog && !battleCompleted && (
+          <div className="combat-item-toast" style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 6,
+            maxWidth: '86%',
+            padding: '7px 12px',
+            background: 'rgba(0,0,0,0.78)',
+            border: `1px solid ${battleItemLog.color}`,
+            color: '#fff',
+            borderRadius: '4px',
+            fontSize: '10px',
+            lineHeight: 1.35,
+            textAlign: 'center',
+            boxShadow: `0 0 14px ${battleItemLog.color}44`
+          }}>
+            {battleItemLog.text}
+          </div>
+        )}
+
+        {/* Victory/Defeat Overlay */}
+        {battleCompleted && (
+          <CombatResultDialog label={lang === 'fr' ? 'RAPPORT DE MISSION' : 'MISSION REPORT'}>
+            <h1 className="cyber-title" style={{
+              fontSize: '44px',
+              color: battleResult === 'victory' ? '#2ecc71' : '#e74c3c',
+              textShadow: battleResult === 'victory' ? '0 0 20px #2ecc71' : '0 0 20px #e74c3c',
+              marginBottom: '20px'
+            }}>
+              {battleResult === 'victory' ? getTranslation(lang, 'victory') : getTranslation(lang, 'defeat')}
+            </h1>
+            <p style={{ fontSize: '15px', color: '#ccc', marginBottom: '30px' }}>
+              {battleResult === 'victory'
+                ? victoryRewardText
+                : getTranslation(lang, 'defeatMsg')}
+            </p>
+            {battleResult === 'victory' && battleConfig?.cosmetics?.victoryPose && (
+              <div
+                className="custom-battle-victory-pose"
+                data-pose-style={battleConfig.cosmetics.victoryPose.style || 'standard'}
+                style={{
+                  '--presentation-color': battleConfig.cosmetics.victoryPose.color || '#2ecc71',
+                  '--presentation-duration': `${battleConfig.cosmetics.victoryPose.animation?.durationMs || 1800}ms`
+                }}
+              >
+                <CosmeticAtlasPresentation
+                  mode={stage.mode}
+                  type="victory"
+                  side="player"
+                  cosmetic={battleConfig.cosmetics.victoryPose}
+                />
+                <small>{lang === 'fr' ? 'POSE DE VICTOIRE EQUIPEE' : 'EQUIPPED VICTORY POSE'}</small>
+                <strong>
+                  {battleConfig.cosmetics.victoryPose.name?.[lang]
+                    || battleConfig.cosmetics.victoryPose.name?.fr
+                    || battleConfig.cosmetics.victoryPose.universe}
+                </strong>
+              </div>
+            )}
+            {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].length > 0 && (
+              <div style={{
+                width: 'min(520px, 92%)',
+                margin: '0 0 24px 0',
+                padding: '12px 14px',
+                border: '1px solid rgba(57,197,187,0.45)',
+                background: 'rgba(4,18,28,0.72)',
+                textAlign: 'left',
+                color: '#dff',
+                fontSize: '11px',
+                lineHeight: 1.7
+              }}>
+                {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].map(line => <div key={line}>{line}</div>)}
+              </div>
+            )}
+            <button
+              onClick={() => submitBattleExit(battleResult, {
+                battleItemsUsed: battlePickupsRef.current.filter(item => item.used).length,
+                battleItemsTotal: battlePickupsRef.current.length,
+                battleSummary
+              })}
+              className="btn-retro"
+              title={stage.isCustomBattle
+                ? (lang === 'fr' ? 'Ferme le resultat et retourne a la configuration du combat custom.' : 'Close the result and return to custom battle setup.')
+                : (lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.')}
+              style={{
+                fontSize: '16px',
+                padding: '10px 26px',
+                background: battleResult === 'victory' ? '#2ecc71' : '#e74c3c',
+                color: '#fff',
+                borderColor: '#fff'
+              }}
+            >
+              {stage.isCustomBattle
+                ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
+                : getTranslation(lang, 'returnToHub')}
+            </button>
+          </CombatResultDialog>
+        )}
       </div>
 
+
+      {!battleCompleted && <div className="combat-hud-dock">
+        <div className="combat-squad-strip" role="group" aria-label={lang === 'fr' ? 'Escouade active' : 'Active squad'}>
+          {teamState.map((hero, index) => {
+            const dead = !stage.nonCombatTrial && hero.currentHp <= 0;
+            const selected = hero.id === activeHeroId;
+            const maximum = hero.maxHp || hero.stats.hp;
+            return <button type="button" key={hero.id} className={selected ? 'is-selected' : ''}
+              aria-pressed={selected} onClick={() => swapActiveHero(hero.id)}
+              disabled={sessionPaused || rpgSceneActive || preMatchLocked || (rpgTargeting ? !rpgTargeting.eligibleTargets.some(target => target.id === rpgUnitId(hero)) : dead)}
+              title={`${hero.name}${typeof hero.atb === 'number' ? ` / ATB ${Math.round(hero.atb)}%` : ''}`}>
+              <kbd>{stage.mode === 'Smash' ? index + 1 : selected ? '◆' : '◇'}</kbd><span><strong>{hero.name}</strong>
+                <small>{stage.nonCombatTrial ? (lang === 'fr' ? 'ACTIF' : 'ACTIVE') : dead ? 'KO' : `${Math.max(0, Math.round(hero.currentHp))}/${maximum} HP`}
+                  {hero.battleItemShield > 0 ? ` +${hero.battleItemShield} PROT` : ''}</small>
+                {!stage.nonCombatTrial && <i className="combat-hp-track"><b style={{ width: `${Math.max(0, Math.min(100, hero.currentHp / maximum * 100))}%` }} /></i>}
+                {typeof hero.atb === 'number' && <i className="combat-atb-track" aria-label={`ATB ${Math.round(hero.atb)}%`}><b style={{ width: `${Math.max(0, Math.min(100, hero.atb))}%` }} /></i>}
+              </span>
+            </button>;
+          })}
+        </div>
+        {stage.mode !== 'Smash' && <div className="combat-action-dock">
+          <div className="combat-action-context"><strong>{opponentHasCommand ? 'P2 · ' : ''}{stage.mode === 'Tactics' ? engineRef.current?.activeUnit?.name : activeHeroObj?.name}</strong>
+            <span>{stage.mode === 'Tactics' ? <>{selectedAction ? (lang === 'fr' ? 'CIBLE À CONFIRMER' : 'CHOOSE A TARGET') : (lang === 'fr' ? 'DÉPLACEMENT' : 'MOVEMENT')} · {Math.max(0, (engineRef.current?.movementBudget || 0) - (engineRef.current?.movementSpent || 0))} {lang === 'fr' ? 'PA' : 'AP'}</> : `ATB ${Math.round(activeHeroObj?.atb || 0)}%`}</span>
+          </div>
+          {standardActions}
+          {missionCommandsAvailable && <button type="button" className="combat-mission-command" onClick={() => setActiveDrawer('arsenal')}
+            disabled={sessionPaused}>{lang === 'fr' ? 'ACTIONS DE MISSION / SOUTIEN' : 'MISSION ACTIONS / SUPPORT'} ↗</button>}
+        </div>}
+        {stage.mode === 'Smash' && <div className="combat-melee-status">
+          <MeleeControlsPanel lang={lang} presentation="hud" trial={Boolean(stage.nonCombatTrial)} maps={meleeInputMaps}
+            runtimeActor={teamState.find(hero => hero.id === activeHeroId) || teamState[0]}
+            superProfile={engineRef.current?.getMeleeSuper?.(teamState.find(hero => hero.id === activeHeroId) || teamState[0])} />
+          <div className="combat-quick-specials">
+            {playerSuper?.supported && <button type="button" disabled={sessionPaused || preMatchLocked || !playerSuper.ready}
+              onClick={() => handleActiveHeroAbility('special')}>{playerSuper.name} <b>{playerSuper.ready ? (lang === 'fr' ? 'PRÊT' : 'READY') : `${Math.round(activeHeroObj?.specialCharge || 0)}%`}</b></button>}
+            <button type="button" onClick={() => setActiveDrawer('arsenal')} disabled={sessionPaused}>
+              {missionCommandsAvailable ? (lang === 'fr' ? 'MISSION / SOUTIEN' : 'MISSION / SUPPORT') : (lang === 'fr' ? 'RELIQUES / RENFORTS' : 'RELICS / ASSISTS')} ↗
+            </button>
+          </div>
+        </div>}
+      </div>}
+      {!battleCompleted && rpgTargeting && <div className="combat-targeting-overlay">{targetingPanel}</div>}
+      {stage.mode === 'Smash' && !battleCompleted && <MeleeControlsPanel lang={lang} presentation="touch"
+        trial={Boolean(stage.nonCombatTrial)} maps={meleeInputMaps} onTouchAction={handleMeleeTouchAction}
+        disabled={sessionPaused || preMatchLocked} />}
+
+      <CombatDrawer open={activeDrawer === 'arsenal' && !battleCompleted} onClose={() => setActiveDrawer(null)}
+        title={lang === 'fr' ? 'Arsenal & commandes de mission' : 'Arsenal & mission commands'} lang={lang}>
       {battleConfig?.fieldSuper && (
         <div style={{
           width: '100%',
@@ -2277,365 +2897,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         </div>
       )}
 
-      {/* Canvas */}
-      <div style={{
-        position: 'relative',
-        border: '3px solid #39c5bb',
-        boxShadow: '0 0 20px rgba(57, 197, 187, 0.4)',
-        borderRadius: '8px',
-        overflow: 'hidden',
-        background: '#020005',
-        marginBottom: '15px',
-        width: '100%',
-        maxWidth: '1280px'
-      }}>
-        <div className="crt-overlay" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 5 }} />
-
-        <div
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
-          style={{
-            position: 'absolute',
-            width: 1,
-            height: 1,
-            padding: 0,
-            margin: -1,
-            overflow: 'hidden',
-            clip: 'rect(0, 0, 0, 0)',
-            whiteSpace: 'nowrap',
-            border: 0
-          }}
-        >
-          {preMatchAnnouncement
-            ? preMatchAnnouncement.cueId === 'coordinates'
-              ? `${preMatchAnnouncement.cue}. ${preMatchAnnouncement.message}`
-              : preMatchAnnouncement.cue
-            : ''}
-        </div>
-
-        {preMatchAnnouncement?.locked && (
-          <div className="melee-pre-match-cue-layer" aria-hidden="true">
-            <strong>{preMatchAnnouncement.cue}</strong>
-            <span>
-              {preMatchAnnouncement.cueId === 'coordinates'
-                ? preMatchAnnouncement.message
-                : `A.R.C.A. / ${preMatchAnnouncement.source}`}
-            </span>
-          </div>
-        )}
-
-        {preMatchAnnouncement?.canSkip && (
-          <button
-            type="button"
-            className="btn-retro melee-pre-match-skip"
-            onClick={() => {
-              if (!engineRef.current?.skipPreMatch?.()) return;
-              clearMeleeControls();
-              sound.playSfx('confirm');
-            }}
-            title={lang === 'fr'
-              ? 'Ignore le compte a rebours uniquement pour cette session d entrainement.'
-              : 'Skip the countdown for this training session only.'}
-          >
-            {lang === 'fr' ? 'PASSER EN ENTRAINEMENT' : 'SKIP IN TRAINING'}
-          </button>
-        )}
-
-        {stage.mode === 'Tactics' && (
-          <TacticsTerrainPanel
-            terrain={tacticsTerrainState}
-            lang={lang}
-            disabled={sessionPaused || battleCompleted || combatBooting}
-            zoom={engineRef.current?.getCameraState?.()?.zoom || 1}
-            onZoom={factor => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.zoomCameraAt?.(factor);
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onResetCamera={() => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.resetCamera?.();
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onLevelChange={level => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.setTerrainLevel?.(level);
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onLevelCycle={direction => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.cycleTerrainLevel?.(direction);
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onSurfaceSelect={id => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.selectTerrainSurface?.(id);
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onSurfaceCycle={direction => {
-              if (sessionPausedRef.current) return;
-              engineRef.current?.cycleSelectedSurface?.(direction);
-              setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-            }}
-            onConfirm={id => {
-              if (sessionPausedRef.current || battleCompleted) return;
-              const engine = engineRef.current;
-              const result = engine?.handleSurfaceClick?.(id);
-              const surface = engine?.getTerrainViewState?.()?.selectedSurface;
-              if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
-              setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
-            }}
-          />
-        )}
-
-        <canvas
-          ref={canvasRef}
-          width="1040"
-          height="460"
-          tabIndex={stage.mode === 'Tactics' ? 0 : undefined}
-          aria-label={stage.mode === 'Tactics' ? (lang === 'fr' ? 'Plateau tactique : cliquer ou utiliser les flèches pour sélectionner, Entrée pour confirmer sur les terrains à plusieurs hauteurs' : 'Tactical board: click or use arrow keys to select, Enter to confirm on multi-height terrain') : undefined}
-          onClick={handleCanvasClick}
-          onPointerDown={handleTacticsPointerDown}
-          onPointerMove={handleTacticsPointerMove}
-          onPointerUp={finishTacticsPointer}
-          onPointerCancel={cancelTacticsPointer}
-          onLostPointerCapture={cancelTacticsPointer}
-          style={{
-            display: 'block',
-            width: '100%',
-            height: 'auto',
-            cursor: stage.mode === 'Tactics'
-              ? selectedAction
-                ? 'crosshair'
-                : 'grab'
-              : rpgTargeting ? 'crosshair' : 'default',
-            touchAction: stage.mode === 'Tactics' ? 'none' : 'auto'
-          }}
-        />
-
-        {customPresentation && (
-          <div
-            className="custom-battle-presentation"
-            data-presentation-type={customPresentation.type}
-            data-presentation-style={customPresentation.cosmetic.style || 'standard'}
-            style={{
-              '--presentation-color': customPresentation.cosmetic.color || '#39c5bb',
-              '--presentation-duration': `${customPresentation.cosmetic.animation?.durationMs || customPresentation.cosmetic.visual?.durationMs || 1200}ms`
-            }}
-          >
-            <div>
-              <CosmeticAtlasPresentation
-                mode={stage.mode}
-                type={customPresentation.type}
-                side={customPresentation.side}
-                cosmetic={customPresentation.cosmetic}
-              />
-              <small>
-                {customPresentation.side === 'both'
-                  ? `P1 + ${battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU'}`
-                  : customPresentation.side === 'opponent'
-                    ? (battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU')
-                    : 'P1'} // {
-                  customPresentation.type === 'ko'
-                    ? 'K.-O.'
-                    : customPresentation.type === 'assist'
-                      ? 'ASSIST'
-                      : (lang === 'fr' ? 'POSE D INTRODUCTION' : 'INTRODUCTION POSE')
-                }
-              </small>
-              <strong>
-                {customPresentation.cosmetic.name?.[lang]
-                  || customPresentation.cosmetic.name?.fr
-                  || customPresentation.cosmetic.universe}
-              </strong>
-            </div>
-          </div>
-        )}
-
-        {(combatBooting || combatRuntimeError) && !battleCompleted && (
-          <div style={{
-            position: 'absolute',
-            top: 0, left: 0, right: 0, bottom: 0,
-            zIndex: 9,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: combatRuntimeError ? 'rgba(2,0,5,0.92)' : 'rgba(2,0,5,0.62)',
-            padding: '18px',
-            textAlign: 'center'
-          }}>
-            <div style={{
-              maxWidth: '520px',
-              padding: '14px 18px',
-              border: `1px solid ${combatRuntimeError ? '#e74c3c' : '#39c5bb'}`,
-              background: 'rgba(0,0,0,0.72)',
-              borderRadius: '6px',
-              boxShadow: combatRuntimeError ? '0 0 18px rgba(231,76,60,0.25)' : '0 0 18px rgba(57,197,187,0.25)'
-            }}>
-              <div style={{ color: combatRuntimeError ? '#e74c3c' : '#39c5bb', fontWeight: 'bold', fontSize: '13px', marginBottom: '8px' }}>
-                {combatRuntimeError
-                  ? (lang === 'fr' ? 'SIGNAL DE BRECHE INSTABLE' : 'UNSTABLE BREACH SIGNAL')
-                  : (lang === 'fr' ? 'SYNCHRONISATION DU COMBAT' : 'SYNCING COMBAT')}
-              </div>
-              <div style={{ color: '#ddd', fontSize: '11px', lineHeight: 1.45 }}>
-                {combatRuntimeError || (lang === 'fr'
-                  ? 'A.R.C.A. charge le decor, les signatures d escouade et les artefacts de terrain.'
-                  : 'A.R.C.A. is loading the scene, squad signatures, and field artifacts.')}
-              </div>
-              {!combatRuntimeError && spriteBootStatus && (
-                <div style={{ color: '#ffeb3b', fontSize: '10px', lineHeight: 1.35, marginTop: '7px' }}>
-                  {spriteBootStatus}
-                </div>
-              )}
-              {combatRuntimeError && (
-                <button
-                  onClick={() => onBattleEnd('quit')}
-                  className="btn-retro"
-                  title={lang === 'fr' ? 'Retourne au hub apres une erreur de chargement du combat.' : 'Return to the hub after a combat loading error.'}
-                  style={{ marginTop: '12px', borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '7px 14px' }}
-                >
-                  {lang === 'fr' ? 'RETOUR HUB' : 'RETURN HUB'}
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-
-        {battleAnomaly && !battleCompleted && (
-          <div style={{
-            position: 'absolute',
-            top: '12px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 6,
-            padding: '7px 14px',
-            background: 'rgba(0,0,0,0.72)',
-            border: `1px solid ${battleAnomaly.color}`,
-            color: battleAnomaly.color,
-            borderRadius: '4px',
-            fontSize: '11px',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            boxShadow: `0 0 12px ${battleAnomaly.color}55`
-          }}>
-            {battleAnomaly.text[lang]}
-          </div>
-        )}
-
-        {battleItemLog && !battleCompleted && (
-          <div style={{
-            position: 'absolute',
-            bottom: '12px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 6,
-            maxWidth: '86%',
-            padding: '7px 12px',
-            background: 'rgba(0,0,0,0.78)',
-            border: `1px solid ${battleItemLog.color}`,
-            color: '#fff',
-            borderRadius: '4px',
-            fontSize: '10px',
-            lineHeight: 1.35,
-            textAlign: 'center',
-            boxShadow: `0 0 14px ${battleItemLog.color}44`
-          }}>
-            {battleItemLog.text}
-          </div>
-        )}
-
-        {/* Victory/Defeat Overlay */}
-        {battleCompleted && (
-          <div style={{
-            position: 'absolute',
-            top: 0, left: 0, right: 0, bottom: 0,
-            background: 'rgba(0,0,0,0.85)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 10
-          }}>
-            <h1 className="cyber-title" style={{
-              fontSize: '44px',
-              color: battleResult === 'victory' ? '#2ecc71' : '#e74c3c',
-              textShadow: battleResult === 'victory' ? '0 0 20px #2ecc71' : '0 0 20px #e74c3c',
-              marginBottom: '20px'
-            }}>
-              {battleResult === 'victory' ? getTranslation(lang, 'victory') : getTranslation(lang, 'defeat')}
-            </h1>
-            <p style={{ fontSize: '15px', color: '#ccc', marginBottom: '30px' }}>
-              {battleResult === 'victory'
-                ? victoryRewardText
-                : getTranslation(lang, 'defeatMsg')}
-            </p>
-            {battleResult === 'victory' && battleConfig?.cosmetics?.victoryPose && (
-              <div
-                className="custom-battle-victory-pose"
-                data-pose-style={battleConfig.cosmetics.victoryPose.style || 'standard'}
-                style={{
-                  '--presentation-color': battleConfig.cosmetics.victoryPose.color || '#2ecc71',
-                  '--presentation-duration': `${battleConfig.cosmetics.victoryPose.animation?.durationMs || 1800}ms`
-                }}
-              >
-                <CosmeticAtlasPresentation
-                  mode={stage.mode}
-                  type="victory"
-                  side="player"
-                  cosmetic={battleConfig.cosmetics.victoryPose}
-                />
-                <small>{lang === 'fr' ? 'POSE DE VICTOIRE EQUIPEE' : 'EQUIPPED VICTORY POSE'}</small>
-                <strong>
-                  {battleConfig.cosmetics.victoryPose.name?.[lang]
-                    || battleConfig.cosmetics.victoryPose.name?.fr
-                    || battleConfig.cosmetics.victoryPose.universe}
-                </strong>
-              </div>
-            )}
-            {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].length > 0 && (
-              <div style={{
-                width: 'min(520px, 92%)',
-                margin: '0 0 24px 0',
-                padding: '12px 14px',
-                border: '1px solid rgba(57,197,187,0.45)',
-                background: 'rgba(4,18,28,0.72)',
-                textAlign: 'left',
-                color: '#dff',
-                fontSize: '11px',
-                lineHeight: 1.7
-              }}>
-                {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].map(line => <div key={line}>{line}</div>)}
-              </div>
-            )}
-            <button
-              onClick={() => onBattleEnd(battleResult, {
-                battleItemsUsed: battlePickupsRef.current.filter(item => item.used).length,
-                battleItemsTotal: battlePickupsRef.current.length,
-                battleSummary
-              })}
-              className="btn-retro"
-              title={stage.isCustomBattle
-                ? (lang === 'fr' ? 'Ferme le resultat et retourne a la configuration du combat custom.' : 'Close the result and return to custom battle setup.')
-                : (lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.')}
-              style={{
-                fontSize: '16px',
-                padding: '10px 26px',
-                background: battleResult === 'victory' ? '#2ecc71' : '#e74c3c',
-                color: '#fff',
-                borderColor: '#fff'
-              }}
-            >
-              {stage.isCustomBattle
-                ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
-                : getTranslation(lang, 'returnToHub')}
-            </button>
-          </div>
-        )}
-      </div>
-
       {/* Control Panel / Actions Dashboard */}
-      <div style={{
+      <div className="combat-command-dashboard" style={{
         width: '100%',
         maxWidth: '1120px',
         display: 'grid',
@@ -2721,29 +2984,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             </div>
           )}
 
-          {stage.mode === 'RPG' && (
-            <button
-              onClick={toggleAuto}
-              className="btn-retro"
-              title={lang === 'fr' ? 'Active ou desactive les actions automatiques en RPG.' : 'Toggle automatic RPG actions.'}
-              style={{
-                marginTop: '12px',
-                width: '100%',
-                fontSize: '11px',
-                padding: '6px',
-                borderColor: autoBattle ? '#2ecc71' : '#ff4500',
-                color: autoBattle ? '#2ecc71' : '#ff4500'
-              }}
-            >
-              {getTranslation(lang, 'autoBattle')}: {autoBattle ? 'ON' : 'OFF'}
-            </button>
-          )}
-
+          <SignatureSequencePanel state={signatureState} lang={lang} />
+          {stage.mode === 'Smash' && !stage.nonCombatTrial && playerSuper?.supported && <button type="button" className="btn-special" data-signature-super="player"
+            disabled={sessionPaused || battleCompleted || preMatchLocked || !playerSuper.ready}
+            onClick={() => handleActiveHeroAbility('special')} style={{ marginTop: 10, width: '100%' }}>
+            {lang === 'fr' ? 'SUPER PERSONNEL — 100 %' : 'PERSONAL SUPER — 100%'}<br />{playerSuper.name}
+          </button>}
+          {stage.mode === 'Smash' && opponentSuper?.supported && <button type="button" className="btn-special" data-signature-super="opponent"
+            disabled={sessionPaused || battleCompleted || preMatchLocked || !opponentSuper.ready}
+            onClick={() => engineRef.current?.triggerOpponentAbility('special')} style={{ marginTop: 10, width: '100%' }}>
+            P2 SUPER — 100 %<br />{opponentSuper.name}
+          </button>}
           {/* Active Event Item triggering button */}
           {equippedEventId && equippedEvent && (
             <button
               onClick={handleActivateEventItem}
-              disabled={eventItemUsed || battleCompleted || preMatchLocked}
+              data-signature-invocation={equippedEventId}
+              disabled={eventItemUsed || sessionPaused || battleCompleted || preMatchLocked || !!signatureState || (invocationReadiness?.supported && !invocationReadiness.ready) || !activeHeroObj || activeHeroObj.currentHp <= 0}
               className="btn-retro"
               title={preMatchLocked
                 ? (lang === 'fr' ? 'Indisponible pendant le pre-match.' : 'Unavailable during pre-match.')
@@ -2768,6 +3025,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 : eventItemUsed
                   ? getTranslation(lang, 'eventUsed')
                   : equippedEvent.name[lang].toUpperCase()}
+              {invocationReadiness?.supported && stage.mode === 'RPG' && !eventItemUsed && <span style={{ display: 'block' }}>ATB 100 %</span>}
             </button>
           )}
 
@@ -2855,19 +3113,43 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
         {/* Action Panel */}
         <div>
-          {stage.mode === 'RPG' && <RpgTargetingPanel targeting={rpgTargeting} lang={lang} paused={sessionPaused}
-            sourceStatusActors={[...teamState,...opponentState]}
-            possessionCommands={['player',...(battleConfig?.opponentControl==='p2'?['enemy']:[])].map(side=>engineRef.current?.getRpgPossessionCommandState?.(side)).filter(Boolean)}
-            onPossessedTargeting={(controllerId,side)=>{if(sessionPausedRef.current)return;engineRef.current?.beginPossessedTargeting?.(controllerId,side);setRpgTargeting(engineRef.current?.getTargetingState()||null);}}
-            onReleasePossession={(controllerId,side)=>{if(sessionPausedRef.current)return;engineRef.current?.releaseRpgPossession?.(controllerId,side);setRpgTargeting(engineRef.current?.getTargetingState()||null);}}
-            wait={rpgTargetingWait}
-            onWaitChange={value => { rpgTargetingWaitRef.current = value; setRpgTargetingWait(value); engineRef.current?.setTargetingWait?.(value); }}
-            onSelect={id => { engineRef.current?.selectTarget(id); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
-            onConfirm={() => { if (sessionPausedRef.current) return; engineRef.current?.confirmTargeting(); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
-            onCancel={() => { if (sessionPausedRef.current) return; engineRef.current?.cancelTargeting(); setRpgTargeting(null); }}
+          {!rpgTargeting && targetingPanel}
+          {stage.mode === 'RPG' && !opponentHasCommand && <RaamEncounterPanel
+            encounter={raamEncounter} hero={activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted || rpgSceneActive} targeting={Boolean(rpgTargeting)}
+            onCommand={handleRaamCommand}
+          />}
+          {stage.mode === 'Tactics' && <SourceScenePanel scene={sourceScene} lang={lang}
+            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand} />}
+          {stage.mode === 'Tactics' && !opponentHasCommand && <RexEncounterPanel
+            encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}
+            onSelectStinger={handleRexStingerSelection}
+            onChaff={handleRexChaff}
+          />}
+          {stage.mode === 'RPG' && !opponentHasCommand && <PiratesCursePanel
+            encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted || rpgSceneActive} targeting={Boolean(rpgTargeting)}
+            onCommand={handlePiratesCurseCommand}
+          />}
+          {stage.mode === 'Smash' && <AliensRescuePanel
+            encounter={aliensRescueEncounter} hero={engineRef.current?.getActiveHero?.() || activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+            onCommand={handleAliensRescueCommand}
+          />}
+          {stage.mode === 'Smash' && <BlackPearlAmmoPanel hero={sourceAmmoOpponent} mode={stage.mode} lang={lang} side="P2"
+            paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+            busy={sourceAmmoOpponent ? isMeleeMovementLocked(sourceAmmoOpponent) : true}
+            hasTarget={opponentShotHasTarget} onShoot={handleOpponentSourceShot}
           />}
           {activeHeroObj ? (
             <>
+              <BlackPearlAmmoPanel hero={sourceAmmoHero} mode={stage.mode} lang={lang}
+                paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+                busy={stage.mode === 'Smash' && isMeleeMovementLocked(sourceAmmoHero)}
+                hasTarget={sourceShotHasTarget} curseActive={piratesCurseEncounter?.curseActive === true}
+                onShoot={() => handleActiveHeroAbility('secondary')}
+              />
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                 <span style={{ fontWeight: 'bold', color: activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50' }}>
                   {opponentHasCommand ? 'P2 / ' : ''}{activeHeroObj.name.toUpperCase()} ACTIONS
@@ -2875,149 +3157,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {stage.mode === 'Tactics' && (
                   <span style={{ fontSize: '9px', color: '#ffb300' }}>
                     {selectedAction
-                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${getCombatantMove(activeHeroObj, selectedAction).name}`
+                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${selectedAction === 'rex_stinger' ? (lang === 'fr' ? 'Stinger de mission' : 'Mission Stinger') : getCombatantMove(activeHeroObj, selectedAction).name}`
                       : (lang === 'fr' ? 'MODE DEPLACEMENT' : 'MOVEMENT MODE')}
                   </span>
                 )}
               </div>
 
-              <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                <button
-                  onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
-                  className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
-                  title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
-                >
-                  ⚔️ {getCombatantMove(activeHeroObj, 'simple').name}
-                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Basic Action</div>
-                </button>
-
-                <button
-                  onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
-                  className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
-                  title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
-                >
-                  ⚡ {getCombatantMove(activeHeroObj, 'secondary').name}
-                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
-                    {activeHeroObj.cooldown > 0 ? `COOLDOWN (${Math.ceil(activeHeroObj.cooldown/60)}s)` : 'Skill Action'}
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
-                  className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
-                  title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
-                >
-                  🛡️ {getCombatantMove(activeHeroObj, 'defense').name}
-                  <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Shield Defense</div>
-                </button>
-
-                <button
-                  onClick={() => handleActiveHeroAbility('special')}
-                  disabled={!!rpgTargeting || rpgSceneActive || rpgSourceInputLocked || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
-                  className="btn-special"
-                  title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
-                  style={{
-                    boxShadow: activeHeroObj.specialCharge >= 100 ? `0 0 15px ${activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50'}` : 'none',
-                    borderColor: activeHeroObj.specialCharge >= 100 ? '#fff' : '#444',
-                    background: activeHeroObj.specialCharge >= 100 ? (activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50') : 'rgba(0,0,0,0.4)',
-                    color: '#fff'
-                  }}
-                >
-                  🔥 {getCombatantMove(activeHeroObj, 'special').name.toUpperCase()}
-                  <div style={{ fontSize: '8px', color: '#fff', marginTop: '2px' }}>
-                    {activeHeroObj.specialCharge < 100 ? `SPECIAL CHARGE: ${Math.round(activeHeroObj.specialCharge)}%` : 'READY!'}
-                  </div>
-                </button>
-
-                {stage.mode === 'RPG' && rpgSummon?.available && (
-                  <button
-                    type="button"
-                    className="btn-special"
-                    onClick={() => handleActiveHeroAbility('summon')}
-                    disabled={sessionPaused || battleCompleted || !!rpgTargeting || rpgSceneActive || !rpgSummon.ready}
-                    style={{ gridColumn: 'span 2', borderColor: rpgSummon.ready ? '#b3a0ff' : '#53636b', padding: '12px 10px' }}
-                    title={lang === 'fr'
-                      ? '100 ATB et 100 % de charge spéciale. Une utilisation par combattant et par combat ; choisis puis confirme les cibles.'
-                      : '100 ATB and 100% special charge. Once per fighter per battle; choose and confirm targets.'}
-                  >
-                    {rpgSummon.kind === 'summon' ? (lang === 'fr' ? 'INVOCATION' : 'SUMMON') : (lang === 'fr' ? 'RENFORT' : 'REINFORCEMENT')}
-                    {' · '}{rpgSummon.entityName || rpgSummon.name}
-                    <span style={{ display: 'block', marginTop: 6, fontSize: 10, lineHeight: 1.5 }}>
-                      {rpgSummon.used
-                        ? (lang === 'fr' ? 'Déjà utilisé dans ce combat' : 'Already used this battle')
-                        : (lang === 'fr' ? '100 ATB + charge 100 % · 1 fois par combat' : '100 ATB + 100% charge · Once per battle')}
-                      {' · '}{opponentHasCommand ? (lang === 'fr' ? 'PavNum 5' : 'Numpad 5') : 'U'} / R1 · RB
-                    </span>
-                  </button>
-                )}
-
-                {stage.mode === 'Tactics' && selectedAction && (
-                  <button
-                    type="button"
-                    onClick={handleCancelTacticsAction}
-                    className="btn-retro"
-                    title={lang === 'fr'
-                      ? 'Annule la visee non confirmee et revient au deplacement avec les AP restants.'
-                      : 'Cancel unconfirmed targeting and return to movement with remaining AP.'}
-                    style={{
-                      gridColumn: 'span 2',
-                      padding: '8px 12px',
-                      background: 'rgba(41, 128, 185, 0.34)',
-                      borderColor: '#4fc3f7',
-                      color: '#dff6ff',
-                      fontSize: '10px',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {lang === 'fr' ? 'ANNULER LA VISEE / DEPLACEMENT' : 'CANCEL TARGETING / MOVE'}
-                  </button>
-                )}
-
-                {stage.mode === 'Tactics' && (
-                  <button
-                    onClick={() => {
-                      if (engineRef.current) {
-                        engineRef.current.endActiveTurn();
-                        sound.playSfx('confirm');
-                      }
-                    }}
-                    className="btn-retro"
-                    title={lang === 'fr' ? 'Termine le tour du heros actif sans autre action.' : 'End the active hero turn without another action.'}
-                    style={{
-                      gridColumn: 'span 2',
-                      padding: '8px 12px',
-                      background: '#c0392b',
-                      borderColor: '#ff4d4d',
-                      color: '#fff',
-                      fontSize: '11px',
-                      fontWeight: 'bold',
-                      textShadow: '0 0 5px #ff4d4d',
-                      marginTop: '4px'
-                    }}
-                  >
-                    ⏭️ {lang === 'fr' ? 'FINIR LE TOUR' : 'END TURN'}
-                  </button>
-                )}
-              </div>
-
-              {stage.mode === 'Smash' && (
-                <div style={{ marginTop: '12px' }}>
-                  <MeleeControlsPanel
-                    lang={lang}
-                    trial={Boolean(stage.nonCombatTrial)}
-                    maps={meleeInputMaps}
-                    localP2={battleConfig?.opponentControl === 'p2'}
-                    onRemap={handleMeleeRemap}
-                    onReset={handleResetMeleeInputs}
-                    runtimeActor={teamState.find(hero => hero.id === activeHeroId) || teamState[0]}
-                    superProfile={engineRef.current?.getMeleeSuper?.(teamState.find(hero => hero.id === activeHeroId) || teamState[0])}
-                    onTouchAction={handleMeleeTouchAction}
-                  />
-                </div>
-              )}
+              <TacticsSupportPanel state={tacticsSupportState} lang={lang} locked={tacticsInputLocked} onTarget={activateTacticsCell} />
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
@@ -3027,10 +3173,116 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               )}
             </>
           ) : (
-            <div style={{ textAlign: 'center', color: '#777', padding: '30px' }}>NO HERO SELECTABLE</div>
+            <div role="status" style={{ textAlign: 'center', color: '#bbc9d2', padding: '30px' }}>{lang === 'fr' ? 'Aucune signature disponible pour le moment.' : 'No signature is available right now.'}</div>
           )}
         </div>
       </div>
+
+      </CombatDrawer>
+      <CombatDrawer open={activeDrawer === 'briefing' && !battleCompleted} onClose={() => setActiveDrawer(null)} modal
+        title={lang === 'fr' ? 'Briefing de mission' : 'Mission briefing'} lang={lang}>
+        <div>
+          <h2 style={{ margin: 0, fontSize: '18px', color: '#ff4500' }}>
+            BREACH ZONE: {stage.name}
+          </h2>
+          <span style={{ fontSize: '11px', color: '#aaa' }}>
+            {lang === 'fr' ? 'Univers' : 'Universe'}: {stage.sourceUniverses?.join(' / ') || stage.universe} ({stage.mode.toUpperCase()})
+          </span>
+          {stage.modifier && (
+            <div style={{ fontSize: '10px', color: stage.modifier.color || '#ffeb3b', marginTop: '4px' }}>
+              {stage.modifier.name?.[lang] || stage.modifier.id}: {stage.modifier.desc?.[lang] || ''}
+            </div>
+          )}
+          {stage.isSurvival && (
+            <div style={{ fontSize: '10px', color: '#ff8c00', marginTop: '3px' }}>
+              {lang === 'fr' ? 'Mode survie: récompenses augmentées, anomalies plus fréquentes.' : 'Survival mode: higher rewards, more unstable anomalies.'}
+            </div>
+          )}
+          {stage.arcaAdaptation && (
+            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
+              {stage.nonCombatTrial
+                ? (lang === 'fr'
+                  ? 'A.R.C.A. conserve les données de la tentative précédente pour relire l objectif.'
+                  : 'A.R.C.A. retains the previous attempt data to clarify the objective.')
+                : (lang === 'fr'
+                  ? `Adaptation A.R.C.A.: ${stage.bossName} scanne, +5% HP equipe.`
+                  : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`)}
+            </div>
+          )}
+          {stage.mode === 'Tactics' && engineRef.current?.escortUnit && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
+          {unstableTeamCount > 0 && !stage.nonCombatTrial && (
+            <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
+              {lang === 'fr'
+                ? `Instabilite de repli: ${unstableTeamCount} heros a -5% stats pendant cette mission.`
+                : `Retreat instability: ${unstableTeamCount} hero(es) at -5% stats for this mission.`}
+            </div>
+          )}
+          {collectionBonusCount > 0 && (
+            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
+              {lang === 'fr'
+                ? `Matrice Nexus: +${Math.min(30, collectionBonusCount * 2)}% toutes stats.`
+                : `Nexus matrix: +${Math.min(30, collectionBonusCount * 2)}% all stats.`}
+            </div>
+          )}
+        </div>
+      <div style={{
+        width: '100%',
+        maxWidth: '1120px',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto auto',
+        gap: '10px',
+        alignItems: 'center',
+        marginBottom: '10px',
+        padding: '10px 12px',
+        background: 'rgba(0,0,0,0.28)',
+        border: '1px solid rgba(57,197,187,0.22)',
+        borderRadius: '5px',
+        boxSizing: 'border-box'
+      }}>
+        <div style={{ fontSize: '11px', color: '#d9f7f5', lineHeight: 1.35 }}>
+          <strong style={{ color: '#39c5bb' }}>{stage.bossName || stage.universe}</strong>
+          {' - '}
+          {battleObjective}
+          <div style={{ marginTop: '3px', color: '#9fb9bd', fontSize: '10px' }}>{modeSignal}</div>
+        </div>
+        <div style={{ fontSize: '10px', color: '#ffeb3b', textAlign: 'center' }}>
+          {lang === 'fr' ? 'Artefacts' : 'Artifacts'} {usedBattleItems}/{totalBattleItems}
+        </div>
+        <div style={{ fontSize: '10px', color: '#39c5bb', textAlign: 'center' }}>
+          SFX {sound.muted ? 'OFF' : 'ON'} / {stage.mode}
+        </div>
+      </div>
+
+
+      </CombatDrawer>
+      <CombatDrawer open={activeDrawer === 'controls' && !battleCompleted} onClose={() => setActiveDrawer(null)} modal
+        title={lang === 'fr' ? 'Commandes & affichage' : 'Controls & display'} lang={lang}>
+        {stage.mode === 'Smash' ? <MeleeControlsPanel lang={lang} presentation="settings" trial={Boolean(stage.nonCombatTrial)}
+          maps={meleeInputMaps} localP2={battleConfig?.opponentControl === 'p2'} onRemap={handleMeleeRemap} onReset={handleResetMeleeInputs} /> :
+          <section className="combat-controls-reference">
+            <h3>{lang === 'fr' ? 'Pilotage de l’escouade' : 'Squad controls'}</h3>
+            <p>{lang === 'fr' ? 'Sélectionne une signature dans le HUD. Les capacités principales restent au bord du terrain; les reliques, invocations et actions propres à la mission sont dans l’arsenal.' : 'Select a signature in the HUD. Primary abilities remain at the battlefield edge; relics, invocations and mission-specific commands are in the arsenal.'}</p>
+            {stage.mode === 'Tactics' ? <p>{lang === 'fr' ? 'Sélectionne une case verte pour te déplacer. Choisis une capacité puis une cible. Glisse sur le terrain pour déplacer la caméra, utilise la molette pour zoomer. Annuler la visée conserve les PA restants. Finir le tour attend que ton unité puisse agir.' : 'Select a green cell to move. Choose an ability, then a target. Drag the battlefield to pan and use the wheel to zoom. Cancel targeting keeps remaining AP. End turn is available when your unit can act.'}</p> :
+              <p>{lang === 'fr' ? 'Une ATB pleine permet de choisir une action. Vérifie les cibles et confirme ou annule sans dépenser de ressource. L’option d’attente du ciblage se règle dans l’arsenal.' : 'A full ATB lets you choose an action. Review targets and confirm or cancel without spending resources. Targeting wait mode is available in the arsenal.'}</p>}
+          </section>}
+        {stage.mode === 'Smash' && <>
+        <label className="game-toggle-setting"><input type="checkbox" checked={showTouchControls} onChange={event => setShowTouchControls(event.target.checked)} />
+          <span>{lang === 'fr' ? 'Afficher les commandes tactiles à l’écran' : 'Show touch controls on screen'}</span></label>
+        </>}
+        <GameDisplaySettings lang={lang} />
+        <div className="combat-pause-actions">
+          <button type="button" className="btn-retro" onClick={() => setActiveDrawer(null)}>{lang === 'fr' ? 'REPRENDRE' : 'RESUME'}</button>
+          {!onPauseRequest && <button type="button" className="btn-retro" onClick={() => setActiveDrawer('leave')}>{stage.isCustomBattle ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP') : getTranslation(lang, 'retreat')}</button>}
+          {onPauseRequest && <button type="button" className="btn-retro" onClick={requestPause}>{lang === 'fr' ? 'MENU PAUSE' : 'PAUSE MENU'}</button>}
+        </div>
+      </CombatDrawer>
+      <CombatDrawer open={activeDrawer === 'leave' && !battleCompleted} onClose={() => setActiveDrawer(null)} modal
+        title={lang === 'fr' ? 'Quitter la mission ?' : 'Leave the mission?'} lang={lang}>
+        <p>{stage.isCustomBattle ? (lang === 'fr' ? 'Tu retrouveras la configuration de la simulation.' : 'You will return to simulation setup.') :
+          (lang === 'fr' ? 'Cette tentative restera inachevée. La progression déjà acquise est conservée.' : 'This attempt will remain incomplete. Your existing progress is preserved.')}</p>
+        <div className="combat-pause-actions"><button type="button" className="btn-retro" onClick={() => setActiveDrawer(null)}>{lang === 'fr' ? 'CONTINUER LE COMBAT' : 'CONTINUE FIGHTING'}</button>
+          <button type="button" className="btn-retro" onClick={() => submitBattleExit('quit')}>{lang === 'fr' ? 'CONFIRMER LE REPLI' : 'CONFIRM RETREAT'}</button></div>
+      </CombatDrawer>
     </div>
   );
 }

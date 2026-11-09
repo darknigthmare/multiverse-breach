@@ -1,5 +1,6 @@
 import React from 'react';
 import CardFoilLayer from './CardFoilLayer';
+import { getCardArtPresentation } from './cardArtPresentation.js';
 
 const RARITY_LABELS = Object.freeze({
   stable: { fr: 'Stable', en: 'Stable' },
@@ -29,7 +30,8 @@ function CollectibleCard({ definition, entry, lang = 'fr', onSelect }) {
   const rarityLabel = RARITY_LABELS[rarityId]?.[lang] || rarityId;
   const finishId = entry?.finishesOwned?.at(-1) || 'standard';
   const art = definition.art || {};
-  const artSrc = art.thumbnail || art.image || art.sheet || null;
+  const artwork = getCardArtPresentation(art);
+  const artSrc = artwork.src;
   const visualStatus = definition.visualStatus || 'draft';
 
   return (
@@ -59,7 +61,9 @@ function CollectibleCard({ definition, entry, lang = 'fr', onSelect }) {
       </span>
 
       <span className="tcg-card-art">
-        {owned && artSrc ? (
+        {owned && artwork.sheet ? (
+          <span className="tcg-card-pose" style={artwork.style} aria-hidden="true" data-card-pose="single" />
+        ) : owned && artSrc ? (
           <img
             src={artSrc}
             alt=""
@@ -95,7 +99,7 @@ function CollectibleCard({ definition, entry, lang = 'fr', onSelect }) {
       )}
 
       {owned && visualStatus !== 'pilot' ? (
-        <span className="tcg-card-visual-status">DRAFT</span>
+        <span className="tcg-card-visual-status">{lang === 'fr' ? 'PROVISOIRE' : 'PROVISIONAL'}</span>
       ) : null}
       {owned && entry?.seen === false ? <span className="tcg-card-new-badge">NEW</span> : null}
       {owned ? <CardFoilLayer finishId={finishId} /> : null}

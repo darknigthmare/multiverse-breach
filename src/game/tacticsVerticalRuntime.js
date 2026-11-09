@@ -1,11 +1,11 @@
-import {
-  getTerrainSurface, getSurfacesAt, terrainSurfaceRef, reachableTerrainSurfaces,
-  findTerrainPath, canOccupyTerrainSurface, getTerrainNeighbors,
-  getTerrainHeightAt, terrainLineOfSight, terrainHeightAdvantage, terrainCoverReduction
-} from './tacticsTerrain.js';
-import {
-  getSurfacePolygon, hitTestTacticsSurface, drawTacticsTerrain
-} from './tacticsTerrainRenderer.js';
+import { isMelodyWave17 } from './combat/sourceMechanicsWave17.js';
+import { isMediGunProfileWave17, startMediGunBeamWave17 } from './combat/sourceMechanicsWave17.js';
+import { isJadeInformationProfileWave17, revealPhotographicEvidenceWave17 } from './combat/sourceMechanicsWave17.js';
+import { consumeOkarunAllOutWave17 } from './combat/sourceMechanicsWave17.js';
+import { isSourceBubbleCaptureProfileWave17, isSourceBubbleCaptureTargetEligibleWave17 } from './combat/sourceBubbleCaptureWave17.js';
+import { armBubbleCaptureWave17, sourceCellWave17 } from './combat/sourceMechanicsWave17.js';
+import { getTerrainSurface, getSurfacesAt, terrainSurfaceRef, reachableTerrainSurfaces, findTerrainPath, canOccupyTerrainSurface, getTerrainNeighbors, getTerrainHeightAt, terrainLineOfSight, terrainHeightAdvantage, terrainCoverReduction } from './tacticsTerrain.js';
+import { getSurfacePolygon, hitTestTacticsSurface, drawTacticsTerrain } from './tacticsTerrainRenderer.js';
 import { faceGridUnitToward } from './tacticalFacing.js';
 import { resolveCombatAbility, resolveCombatHeroSpriteActor } from './combatIdentity.js';
 import { getCharacterAnimationFrame } from './combat/characterAnimationCatalog.js';
@@ -218,10 +218,12 @@ export class TacticsVerticalRuntime {
       },
       selectedSurfaceId: this.selectedSurfaceId, revision: this.revision,
       selectedSurface: selected ? { ...cell(selected), id: selected.id, materialId: selected.materialId,
+        ...(selected.materialLabel ? { materialLabel: selected.materialLabel } : {}),
         type: selected.type, moveCost: move?.cost ?? selected.moveCost, reachable, reason,
         path: move?.path || [], transitions: move?.transitions || [] } : null,
       stackedSurfaces: selected ? getSurfacesAt(this.terrain, selected.x, selected.y).filter(s => this.isVisible(s.id)).map(s => ({
-        id: s.id, surfaceId: s.id, x: s.x, y: s.y, z: s.z, materialId: s.materialId, type: s.type
+        id: s.id, surfaceId: s.id, x: s.x, y: s.y, z: s.z, materialId: s.materialId, type: s.type,
+        ...(s.materialLabel ? { materialLabel: s.materialLabel } : {})
       })) : []
     };
   }
@@ -274,6 +276,7 @@ export class TacticsVerticalRuntime {
     const route = findTerrainPath(this.terrain, start.id, target.id, this.pathOptions(unit));
     if (!route) return false;
     faceGridUnitToward(unit, target);
+    unit.sourceLuteCellWave17=sourceCellWave17(unit,{grid:true});
     unit.gridX = target.x; unit.gridY = target.y; unit.gridZ = target.z; unit.surfaceId = target.id;
     this.lastMove = { unitId: unit.runtimeId || unit.id, path: route.path, transitions: route.transitions, cost: route.cost };
     const points = route.path.map(id => this.surface(id));
@@ -307,6 +310,7 @@ export class TacticsVerticalRuntime {
       unit.terrainRenderPosition = { x: x - 0.5, y: y - 0.5, z, surfaceId: (t < 0.5 ? from : to).id };
       Object.assign(unit, this.project(x, y, z));
       if (t < 1) continue;
+      e.applySourceGoldenLuteStepWave17(unit,{x:from.x,y:from.y,z:from.z},{x:to.x,y:to.y,z:to.z});
       motion.segment++; motion.elapsed = 0;
       if (motion.segment < motion.points.length - 1) continue;
       delete unit.terrainMotion;
@@ -350,7 +354,7 @@ export class TacticsVerticalRuntime {
     e.attackRange = this.terrain.surfaces.filter(surface => {
       if (!e.canAttackCell(unit, cell(surface), profile)) return false;
       if (profile.effect === 'damage') return true;
-      if (isTacticsPhaselockProfile(profile)) {
+      if (isSourceBubbleCaptureProfileWave17(profile) || isTacticsPhaselockProfile(profile)) {
         const entry = this.unitAt(surface.x, surface.y, surface.id);
         return entry?.type === (e.activeUnitType === 'enemy' ? 'hero' : 'enemy') && e.isTacticsControlTargetEligible(entry.unit);
       }
@@ -413,14 +417,14 @@ export class TacticsVerticalRuntime {
   }
   resolution(attacker, target, actionType, attackerType) {
     const e = this.engine, profile = e.getAttackProfile(attacker, actionType);
-    if (isTacticsPhaselockProfile(profile)) {
+    if (isSourceBubbleCaptureProfileWave17(profile) || isTacticsPhaselockProfile(profile)) {
       const validTypes = attackerType === 'enemy' ? ['hero'] : ['enemy'];
       const found = this.unitAt(target.gridX ?? target.x, target.gridY ?? target.y, target.surfaceId);
-      const candidates = found && validTypes.includes(found.type) && e.isTacticsControlTargetEligible(found.unit)
+      const candidates = found && validTypes.includes(found.type) && (isSourceBubbleCaptureProfileWave17(profile)?isSourceBubbleCaptureTargetEligibleWave17(profile,found.unit):e.isTacticsControlTargetEligible(found.unit))
         && e.canAttackCell(attacker, found.unit, profile) ? [{ ...found, cell: cell(this.surface(found.unit)), order: 0 }] : [];
       return { profile, validTypes, impactCells: candidates.map(entry => entry.cell), clickedUnit: candidates[0]?.unit || null, candidates };
     }
-    if (profile.effect !== 'damage') {
+    if (profile.effect !== 'damage'&&!isJadeInformationProfileWave17(profile)) {
       const eligible = this.supportEntries(attacker, profile, attackerType)
         .filter(entry => e.canAttackCell(attacker, entry.unit, profile));
       const chosen = profile.shape === 'group' ? eligible
@@ -453,21 +457,27 @@ export class TacticsVerticalRuntime {
     return candidates.map(cell).find(anchor => e.canAttackCell(attacker, anchor, profile)
       && e.getAttackTargets(attacker, anchor, action, side).some(entry => entry.unit === target)) || null;
   }
-  applyAttack(attacker, target, action, damage, status, side) {
+  applyAttack(attacker, target, action, damage, status, side, commitment = null) {
     const e = this.engine, profile = e.getAttackProfile(attacker, action);
-    const targets = e.getAttackTargets(attacker, target, action, side);
+    const targets = e.getAttackTargets(attacker, target, action, side).filter(entry => !commitment || commitment.accepts(entry.unit));
+    const gyroTargets=e.beginSourceGyrodiskActionWave17(attacker,target,action,profile,side);if(gyroTargets)return gyroTargets;
     if (!e.canAttackCell(attacker, target, profile)) return [];
+    if(isMelodyWave17(attacker)&&profile.sourceGoldenLuteWave17===true){return e.beginSourceGoldenLuteMoveWave17(attacker,target)?targets:[];}
+    if(!consumeOkarunAllOutWave17(attacker,profile))return [];
     const applied = [];
     for (const { unit } of targets) {
       if (profile.effect === 'revive' && (!canOccupyTerrainSurface(this.terrain, unit, this.pathOptions(unit)) || living(unit))) continue;
       applied.push({ unit, type: targets.find(entry => entry.unit === unit)?.type, cell: cell(this.surface(unit)) });
+      if(isSourceBubbleCaptureProfileWave17(profile)){armBubbleCaptureWave17(attacker,unit,profile,{hostile:true});continue;}
+      if(isJadeInformationProfileWave17(profile)){revealPhotographicEvidenceWave17(attacker,unit,profile,{hostile:e.heroes.includes(attacker)!==e.heroes.includes(unit)});continue;}
+      if(isMediGunProfileWave17(profile)){startMediGunBeamWave17(attacker,unit,{allied:e.heroes.includes(attacker)===e.heroes.includes(unit),range:220});continue;}
       if (profile.effect === 'damage') {
         e.applyDamage(attacker, unit, damage, status || profile.statusEffect, { actionType: action });
         continue;
       }
       const ticks = Math.max(1, Math.round((profile.effectDuration || profile.duration || 2) * 60));
       if (profile.effect === 'heal') unit.currentHp = Math.min(unit.maxHp, unit.currentHp + Math.round(unit.maxHp * (profile.healRatio || 0.15)));
-      if (profile.effect === 'revive') { delete unit.tacticsControl; unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || 0.3))); unit.state = 'idle'; }
+      if (profile.effect === 'revive') { e.invalidateActorActions(unit); delete unit.tacticsControl; unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || 0.3))); unit.state = 'idle'; }
       if (profile.effect === 'guard') { unit.tacticsGuardTicks = ticks; unit.tacticsGuardReduce = profile.guardReduce ?? 0.3; }
       if (profile.effect === 'buff') { unit.tacticsBuffTicks = ticks; unit.tacticsBuffMultiplier = profile.buffMultiplier || 1.12; }
       if (profile.effect === 'cleanse' || profile.cleanses) {
@@ -492,7 +502,7 @@ export class TacticsVerticalRuntime {
     e.enemyThreatCells = new Map();
     for (const enemy of e.enemies.filter(living)) {
       const affected = new Map(), profile = e.getAttackProfile(enemy, 'enemy');
-      if (profile.effect !== 'damage') { e.enemyThreatCells.set(enemy, affected); continue; }
+      if (profile.effect !== 'damage'&&!isJadeInformationProfileWave17(profile)) { e.enemyThreatCells.set(enemy, affected); continue; }
       for (const support of this.terrain.surfaces) {
         const anchor = cell(support);
         if (!e.canAttackCell(enemy, anchor, profile)) continue;
@@ -675,6 +685,8 @@ export class TacticsVerticalRuntime {
     const profile = e.getAttackProfile(unit, action);
     const targets = profile.effect === 'damage' || isTacticsPhaselockProfile(profile) ? opponents.filter(living)
       : this.supportEntries(unit, profile, side).map(entry => entry.unit);
+    const committedTurn = e.turnSerial;
+    const commitment = e.captureSourceActionCommitmentWave16(unit, action, targets);
     const remaining = Math.max(0, e.movementBudget - e.movementSpent);
     const reachable = this.reachable(unit, remaining);
     const goals = e.getObjectiveFocusCells(side).map(ref => this.surface(ref)).filter(Boolean);
@@ -698,11 +710,14 @@ export class TacticsVerticalRuntime {
       if (score > bestScore) { best = candidate; bestScore = score; }
     }
     const attack = () => {
-      if (e.disposed || e.gameOver || !living(unit) || e.isTacticsControlled(unit) || e.activeUnit !== unit) return;
+      if (!commitment.canResolve()) {
+        if (!e.disposed && !e.paused && !e.gameOver && e.activeUnit === unit && e.turnSerial === committedTurn) e.endActiveTurn();
+        return;
+      }
       e.applyStartTileEffect(unit);
       if (e.gameOver) return;
       if (!living(unit)) { e.endActiveTurn(); return; }
-      const shot = targets.filter(target => profile.effect === 'revive' ? !living(target) : living(target))
+      const shot = targets.filter(target => commitment.accepts(target) && (profile.effect === 'revive' ? !living(target) : living(target)))
         .map(target => ({ target, anchor: this.anchorFor(unit, target, action, side) })).find(entry => entry.anchor);
       if (shot) {
         if (healingBurst) {
@@ -716,7 +731,7 @@ export class TacticsVerticalRuntime {
         unit.state = action === 'special' ? 'special' : profile.effect === 'damage' ? 'attack' : 'idle';
         unit.stateTimer = action === 'special' ? 35 : 25;
         if (action === 'special') unit.tacticsPresentationTicks = 35;
-        e.applyProfiledAttack(unit, shot.anchor, action, e.getActionBaseDamage(unit, action), null, side);
+        e.applyProfiledAttack(unit, shot.anchor, action, e.getActionBaseDamage(unit, action), null, side, commitment);
         if (action !== 'special') unit.specialCharge = Math.min(100, (unit.specialCharge || 0) + (phaselock && action === 'secondary' ? 25 : 15));
       }
       e.endActiveTurn();

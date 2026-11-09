@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "characterId": "mei_zhen",
+  "heroId": "mei_zhen",
+  "characterName": "Mei Zhen",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-sixteen-whole-pose-redraw-from-four-native-groups",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/mandate_nine_heavens/heroes/mei_zhen.png",
+    "sha256": "70a6df87290200ab7bc354f418bafc0e4ab01eb75e8ad48366a07daabc620441",
+    "bytes": 2627173,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen-v2-fidelity-wave10-2026-10-25.png",
+    "sha256": "d21decab85bfc54bba5aece185e0ccee310450b8ab8963a6f9b420d9b48eee4a",
+    "bytes": 1091248,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/mei-zhen-v2-reference-sprite-fidelity-wave10-2026-10-25.json",
+    "sha256": "56c20b90f2ae0ec6134f5f86cb1565006395c37a91d14b67981abad1a22153e2",
+    "bytes": 13169
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-sprite-independent-review.json",
+    "sha256": "05c03d232d22d67c750dd9685bb476d6431f5b0a7e47a8d9d84424706b8461ba",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen.png",
+    "sha256": "e17df3e4b33638efc66b065f955f9771e43b29f60e41083c1524a09fe1180eb2",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "b3a8f76ab72959f322d7a4f8674eca06d117bda7887e297e298ccf952c796ad1",
+    "selectedImagegenNativeInputs": 4,
+    "sixteenWholeNativeGroupPosesPreservedBeforeFinalNormalization": true,
+    "genuineCorrectiveFinalCells": [],
+    "selectedVisiblePixelsBeforeNormalization": 2210712,
+    "assignedVisiblePixelsBeforeNormalization": 2210712,
+    "preNormalizationResizing": false,
+    "finalCommonNearestScale": 0.3574730354391371,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      241,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave10-2026-10-25/mei-zhen/atlas/packing-proof.json",
+      "sha256": "bd5cb09982b912632b195974cd211d0695a33868210649b56833254603e6e8fd",
+      "bytes": 11305
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave10-2026-10-25/mei-zhen/atlas/assembly-proof.json",
+      "sha256": "d888dac82e613cdb00e00f2a0d2a34dc3c7fa550ff9d9a49de1741ad2f39c6ec",
+      "bytes": 15162
+    }
+  },
+  "nativeInputs": [
+    {
+      "group": 3,
+      "path": "/workspace/generated_images/exec-84fc1ba0-ba39-4618-8785-401e315f9eb7.png",
+      "sha256": "e38395ce4d31b0aff30c26cb534816b3eef4d02530df1127b5aadc4794ce90ef",
+      "bytes": 1922239,
+      "promptFile": "docs/cg/prompts/wave10-2026-10-25/mei-zhen/atlas-group-3.txt",
+      "promptSha256": "7d94e9ce79033773c8a3ae0cd4056d7246156dfa41cac520f22072514a8d599e",
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "reason": "Personally opened native: frame09 silver point cuts the canvas at x0; replacing four whole poses genuinely."
+    },
+    {
+      "path": "/workspace/generated_images/exec-8bce2d74-79fa-4e29-a175-cad12c8b15d9.png",
+      "sha256": "73219a9363969fd5bb0d4ed8bc442b794374f32e42989c33c7dbeeaa8ab99b90",
+      "bytes": 1851930,
+      "promptFile": "docs/cg/prompts/wave10-2026-10-25/mei-zhen/atlas-group-1.txt",
+      "promptSha256": "2e0630ff42c5c8aa0254f1b70f815ba0d4cad393fc8cc2b7375dc1e2e52c599d",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-b39c63a6-62df-42ce-b657-dafe281b1f9f.png",
+      "sha256": "c559938b89539887f94e6c0c50e8688aad43075b0f8c89b490f6dea4784a23f4",
+      "bytes": 1888278,
+      "promptFile": "docs/cg/prompts/wave10-2026-10-25/mei-zhen/atlas-group-2.txt",
+      "promptSha256": "3c756badee212fa5cc7f0a9ac7724f5e90fc3057cf385d05f40386ea569a7055",
+      "selectedFrames": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-d14549be-0792-4542-8000-7f2993d220ac.png",
+      "sha256": "849a626e0fd2cf28f36faf1f9e5eec4ea188b36b4dd7d78a51967a3b3c37be77",
+      "bytes": 1480461,
+      "promptFile": "docs/cg/prompts/wave10-2026-10-25/mei-zhen/atlas-group-3-correction1.txt",
+      "promptSha256": "9459b4d883a2d74195a1749b7a44581d9d7c37886afa3e1ad225d2386895b091",
+      "selectedFrames": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-269ed48e-210c-428f-a5b5-c51ec9171cc1.png",
+      "sha256": "38d5a435b8fff29ed81574f904c0272cb25a0e1c779f5114ada6618c5124de18",
+      "bytes": 2091055,
+      "promptFile": "docs/cg/prompts/wave10-2026-10-25/mei-zhen/atlas-group-4.txt",
+      "promptSha256": "becb35e24b8f0e4760211b277666cd69a45f66903c8f4740714920b4d4b92157",
+      "selectedFrames": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 5,
+  "contributingAtlasNativeInputs": 4,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/mei-zhen-reference-evidence-wave10-2026-10-25.json",
+  "limitations": [
+    "Current internal V2 is the selected original-project authority, without an external-franchise identity claim.",
+    "Single front-three-quarter source leaves hidden robe/bell-sword reverse geometry and tiny face/embroidery details uncertain; no perfect1:1 certification.",
+    "Four genuine native groups each contribute all four whole poses. RIGHT hand holds the complete bronze-bell sword and LEFT hand is free or invokes. One wholly unselected native group is preserved for its genuinely clipped frame09 silver tip; four new whole corrected poses replace that group.",
+    "Only translation and bounded soft-alpha fringe extraction precede the standard shared nearest scale; no semantic painting, mirroring or recoloring. Tool-native low-alpha fringe is retained only within the bounded4pixel source edge rule; no visible-alpha>12 pixel is removed before scaling.",
+    "The producer left shared runtime maps unchanged; root subsequently selected this final atlas and exposed the historical atlas as an accessible variant."
+  ],
+  "finalComparisonActuallyViewed": true,
+  "nativeImageGenOutputs": 5,
+  "contributingNativeImageGenOutputs": 4,
+  "whollyUnselectedNativeImageGenOutputs": 1,
+  "atlasGenerationPending": false,
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-25",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-sprite-independent-review.json",
+  "independentReviewSha256": "05c03d232d22d67c750dd9685bb476d6431f5b0a7e47a8d9d84424706b8461ba"
+}

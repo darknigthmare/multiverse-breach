@@ -1,0 +1,1683 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "checkedAt": "2026-10-24T02:55:59.411Z",
+  "status": "passed",
+  "reviewer": "/root/wave8_coordination",
+  "scope": "Independent read-only source/slot/theme/provenance and real asset bindings after root freeze. This report checks the actual named visual reviews and does not claim a second exhaustive visual inspection of all75CG.",
+  "manifest": {
+    "path": "docs/cg/roster-global-batch-2026-10-24.json",
+    "sha256": "d5ecbe02e6fff130c24b6dad56cd642c3456f348b7dccb130011665904d6be26"
+  },
+  "instruction": {
+    "path": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+    "sha256": "4c70032eb4046c0f906ac03d121efc136bcc9a0aafa9453a5ff4d5e596127f99"
+  },
+  "masterInstructionContinuityReport": {
+    "path": "docs/cg/reviews/wave8-2026-10-24/master-instruction-continuity-verification.json",
+    "sha256": "31a0c5e6252cbf2ffb5bd07d1ffdb1598144e026c493bb1a99e4415717d82ad4"
+  },
+  "inputs": {
+    "plan": {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "sha256": "b5e7dc2f5be4de724d4c308ad8fcadcfac9f713372d8da5c6701754a96b090a5",
+      "bytes": 34268361
+    },
+    "bible": {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "sha256": "1b5138d566bf036ca449a70917e7697d7f252a765d50b535b4bebdc569239738",
+      "bytes": 41236952
+    },
+    "pilot": {
+      "path": "public/cg/cg-manifest.json",
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee",
+      "bytes": 160270
+    },
+    "roster": {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "2ab3b5a89add3368b15ee5224e547ad9aa7e35b0b2a7bca24e2b8d75feb6d8a6",
+      "bytes": 4936413
+    },
+    "revisions": {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    }
+  },
+  "coverage": {
+    "subjects": 1912,
+    "slots": 28680,
+    "actualDeliveredCg": 820,
+    "newCgBound": 75,
+    "unchangedOtherProductionCells": 28605,
+    "documentedNotApplicablePreserved": 8,
+    "registeredVersions": 914,
+    "remainingSlots": 27852
+  },
+  "cgRefusalJobsPreserved": 20,
+  "atlasRefusalsSeparate": {
+    "current": 7,
+    "historical": 7,
+    "newToday": 0,
+    "newAtlasRefusalFromThisAudit": false
+  },
+  "explicitBodyCoverageGapSubjects": [
+    "batman_n52",
+    "harry",
+    "jack_sparrow_potc"
+  ],
+  "scopedCostumeChecks": {
+    "characterId": "seyra_tal",
+    "slot": "CG13",
+    "authorityOwner": "aurelia_marcellina",
+    "sourceSha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+    "usedForIdentity": false,
+    "costumeOnly": true,
+    "qualifiedIdentityTotalRemains60": true,
+    "directCostumeBitmapAttributions": 1,
+    "otherFourteenCgDoNotAttributeUnusedCostumeBitmap": 14,
+    "commonScopedSourceReceiptMayBeReferencedByAllEntries": true
+  },
+  "inspectionAuthorship": "The reviewers recorded above personally inspected the individual native images. This auditor verified their selected-native SHA bindings, authored themes, individual source and gallery assets and current manifest queues.",
+  "series": [
+    {
+      "characterId": "imani_quell",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/imani-quell-wave8-2026-10-24.json",
+        "sha256": "d519cd3fd727beb598c9f99728f016703c5bc3f6d70353f1d7e689d00a17b7da"
+      },
+      "plan": {
+        "path": "docs/cg/imani-quell-wave8-plan-2026-10-24.json",
+        "sha256": "5b544f10761ac27b28c3a5ec88299356fdf53075b3155f80977f2f628c9bbd5f"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-independent-review.json",
+        "sha256": "634338eecdf1d60a45e6542ba05994dcbb3f3cd55593d554886adba5a607804c"
+      },
+      "independentReviewer": "/root/cg_khepri_wave8",
+      "producer": "/root/cg_imani_wave8",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:neon-requiem:imani-quell:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "7ff29affda7d9eaf3d3de8022de2aad1be331b945007cd9f18f109761febd3aa",
+          "deliveredSourceSha256": "d46838ffcca2581c1d60936d3b4237a7fdbd465c9a66c50ed3034643affb90d3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:neon-requiem:imani-quell:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "04025f5108eb4e9008489e851543ff8796f65d1a2aff43febcd5cf20e706b74a",
+          "deliveredSourceSha256": "d3d1a49d03b2366f394fb1c11b733e5e3facad298ccc8c0383cd25eae1da7121",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:neon-requiem:imani-quell:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "517976761eb7279742db1e6cf52e1db558cecad1b33985eaf68c13609ab7c819",
+          "deliveredSourceSha256": "a47a356663dc9ae27c2d187d5a6a9efe191bd68535e3462ad3380cb205d45537",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:neon-requiem:imani-quell:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "31b11e9f6bb749558bfa690ab0f26cefd007d990fc49d080d34bb3102234739f",
+          "deliveredSourceSha256": "9df7864407816508fe4f1bcb50c946b4b8a19bdf2d43c8a12e18102dd1594af2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:neon-requiem:imani-quell:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "4f4966db3ce944b823d7cab4174c772b87c9d7ebe195e1f5cee81a6a31744344",
+          "deliveredSourceSha256": "0acb30ccc012f7bec56d61689768b3c1d040fa1b742be81d9ca19d3e3bbe3d36",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:neon-requiem:imani-quell:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "4098a36f6421419bc18aec07aa36fb042915c66a6ba62d65083fe8f0b7a8a24e",
+          "deliveredSourceSha256": "8af3c178edf97676643bd1677a82c9617cf8554e4c612f959cd9c236c9a7f37a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:neon-requiem:imani-quell:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "6de4909c7be45f5bcdc67b8e2331cdc43a10c11dac0b8eca341153d4b6e2e504",
+          "deliveredSourceSha256": "46c2695fcc7f8c995fe5b559b63c6dbbf2a10eca87734289508d171769e1b4c4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:neon-requiem:imani-quell:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "3277be749e0523c821db93f78a5378d0a6bdde2ce2be192d406b3d5b73aa45e4",
+          "deliveredSourceSha256": "7ae7c9a6e8e9951d3aa077c58f18ede4e969a1b8eb3b93c800c7d84579c92050",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:neon-requiem:imani-quell:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "7ecc3f91114103719f65c219cb11723f11d644a6c92080273f3cffd903aa3210",
+          "deliveredSourceSha256": "6c00c0cee53a5087adbb83636e760fc78ca0661728ae6cf201371342dd11afd2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:neon-requiem:imani-quell:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "09d38b0ab08d42887975b2a8e80452941269928c25d7a2fc082e2204f3aff5ae",
+          "deliveredSourceSha256": "53b50a31013bb3ca225474f4cca8a4aaab7967a0326f86b612fd453fc2de9982",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:neon-requiem:imani-quell:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "8558ce1b39dfafaa2a7f246c99f47de5c329b1bac32295fe7df30bb5a403304d",
+          "deliveredSourceSha256": "f8cc38ec9badce7f4cef944066a50fdb59e7fb6843aef654cb3c0ac5227eed9d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:neon-requiem:imani-quell:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "2841a13493241de1a5f4bef3db5816846efc5ed98d5d33ba9ecb62f5eaf73843",
+          "deliveredSourceSha256": "88e6f0faf8b661fe780a60ad6fa5d46ce2a166478cd8559b1e5f244ae8be6647",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:neon-requiem:imani-quell:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "7791161f9d92584c18315305d7dcbd45013836891b46d6a532da97ea3441ffc6",
+          "deliveredSourceSha256": "fe9de9d7c3846f07185a91715741dec31752fb2aea730ba4e1ed660ef7f04e32",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:neon-requiem:imani-quell:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "8fa60b1fb36d4a65ec22d646d1a900173562b3bddc0b26385edefe05c8c6682d",
+          "deliveredSourceSha256": "1b8bfaed3a4527d4a7a8369a528167f759ec777cff5abdce83a69639cf5344e9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:neon-requiem:imani-quell:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "5a995c649cdefabb392054db033f891ef9fed880c395eb3dc52f382cbfbbbd2e",
+          "deliveredSourceSha256": "bf161dc6ac92709c85e3f2c7cf3cfba5118b9e9b6a635d33610aa2036fc7db0f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_khepri_wave8",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "bram_quill",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/bram-quill-wave8-2026-10-24.json",
+        "sha256": "fae98da6b118880e83e10579d88afaf879e6faec387cb3d58e24287d77ad207d"
+      },
+      "plan": {
+        "path": "docs/cg/bram-quill-wave8-plan-2026-10-24.json",
+        "sha256": "127b85b5190e09b68f149b314052ae126632414648a97d687f5888c708a19892"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-independent-review.json",
+        "sha256": "70171cfad5eb4140c215712d2a32aff826b5f890647167f5f419f45d1e712988"
+      },
+      "independentReviewer": "/root/cg_imani_wave8",
+      "producer": "/root/cg_bram_wave8",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:the-aether-crown:bram-quill:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "1f117f753cb57e222904b2d788281940eb340c4ce7b1636e8313bc630f264588",
+          "deliveredSourceSha256": "d20f7152739d0242251612db4557b673ed997ff70ba285aebc8ec24a7fbddcf1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:the-aether-crown:bram-quill:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "b1d864f5ce0199dbf2110a6492aaacf0827315cfc69e62b7076691d56ed52d4f",
+          "deliveredSourceSha256": "520faa904ad44616026dece0c1b3c9dbb21701d4b642f25feb215f72698d1e8b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:the-aether-crown:bram-quill:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "6b62983a5b38ec32e72a8dcf73e6bc4b9fe03fb3559b58c5a2a16c4e2b2b66e5",
+          "deliveredSourceSha256": "a2afb36865ffa239505fa66bda716230d3c25a56090cdec1f5b7411993093a38",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:the-aether-crown:bram-quill:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "4583f6730cc7223f730f24f16c8594bb971327783b5dbfd654b87eeb05649d54",
+          "deliveredSourceSha256": "dbd53450af7e5e47a5dcf3eb308ba09f3fbc518ee71417d3927928d597d226bb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:the-aether-crown:bram-quill:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "5ae0b646451b5e09ff21c7c448523610c31e4ced87b90cc8609613609c889c24",
+          "deliveredSourceSha256": "f18b7a0548cc20bcda32d8381354f2b046b9e7070d2c1ef47099d168279dfab2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:the-aether-crown:bram-quill:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "b778250dad0f447b93f475a029362fa1a926266270b45995d101b9bcab805d7b",
+          "deliveredSourceSha256": "81549f48b8af9d51cea46a889d4e74caf8518aeed1edaa65ef171bee2657badb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:the-aether-crown:bram-quill:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "2c35fcf11970b72e0d8be4f5a0f5a187fb8545c37fc2c3068296860b3b87dccb",
+          "deliveredSourceSha256": "2a26c042e47169aed704b9f38f9b1040dddfd1482db1998ddd44a5a82794dbba",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:the-aether-crown:bram-quill:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "0d8eae9597656a57eb84937f2eabd22349148dd0374b6b6079cd80a7c5af0bab",
+          "deliveredSourceSha256": "c6dd101e83b49bc24d1aa632263d3e2bac303efa8ab0ea5e233e020a8565c184",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:the-aether-crown:bram-quill:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "bc1578e730f358f5ea5f67addf99dc8f46b441791cee18e8a20f8ceb2a93453d",
+          "deliveredSourceSha256": "731539a88b30032b03412260e38435bed2def18cb16dcb0ef2bea05b082fc8ce",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:the-aether-crown:bram-quill:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "30343bf49c72409d5136ae6b40aaf3de2f7a0545509606bd47fc08c6f072736e",
+          "deliveredSourceSha256": "3a513874eb060dc3b03684f36814539e030754b78ce5f950cf869398b3a64feb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:the-aether-crown:bram-quill:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "7a9848f8d688ac1b1c09a15fcf75c52fd4f6e3b7eca456e0ca61759d5e567a7a",
+          "deliveredSourceSha256": "2326a2d12eebe61e4bd8ebc470327620b7dec499cc6e4f568359a4543d5da24c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:the-aether-crown:bram-quill:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "80abedb1ee595750831eb57b17a30826dd880629594a99fa3a215079f72d3c99",
+          "deliveredSourceSha256": "92ad4c26eb5fa189608a7797214edca2de06837840d75028b0a4b41a7ff159b3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:the-aether-crown:bram-quill:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "0383e442179d2e3b74bb74c7bc59480e246a9bd903d1d97eb7f164764b8dba30",
+          "deliveredSourceSha256": "b3dbecf983c50902e5b013976920ddecb5824755ac25d7549499da930faf648b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:the-aether-crown:bram-quill:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "7f351f867933bca8468d65b983aa36266118cbb81e956dbc556753c06662868a",
+          "deliveredSourceSha256": "5e75080ad7fbb55afc0e6dc717a0f0ff1d19d006cde57e495f2e1a9490ddd933",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:the-aether-crown:bram-quill:firstStep:openai-v1",
+          "type": "firstStep",
+          "family": "What If",
+          "nativeSha256": "4b8b8e050d55bc44ded811a6479fc81536bd408bf3d3447a67e0582272dca318",
+          "deliveredSourceSha256": "1f150de07f777315b056fd9b0399801f1dec228d3d318788225a669dc4828d6a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_imani_wave8",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "lio_ferrante",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/lio-ferrante-wave8-2026-10-24.json",
+        "sha256": "1ac0aab1558cc4416270ac8c0f7241ac93a1d8da9cc7506e30989fc8f6e157f3"
+      },
+      "plan": {
+        "path": "docs/cg/lio-ferrante-wave8-plan-2026-10-24.json",
+        "sha256": "ac461a14fa520635b730f587a10240cfd204584bae2e679ff3a341715e2b5524"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-independent-review.json",
+        "sha256": "efbcbf7d491743177a8f1547c25f2a66a2ed6bad43b1f7db6e150392ae556c45"
+      },
+      "independentReviewer": "/root/cg_bram_wave8",
+      "producer": "/root/cg_lio_wave8",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:meridian-clockwork:lio-ferrante:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "4a0eb7c75695acc180a7b735b55fa39779e97db8c9715790fc01ed7fc577742a",
+          "deliveredSourceSha256": "387bce9cec6ab0f00c021336bc4413ebba62de4c76509ac0ebfea5a66b7c5063",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:meridian-clockwork:lio-ferrante:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "69486fbb02d3a52934a8257874f06d24b78f5a8619bc5a5beac53d1703e357a1",
+          "deliveredSourceSha256": "3426827b97ae4278f0e0ec0a5df253991638751a75dd8d282ff2fea9874588f1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:meridian-clockwork:lio-ferrante:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "9d79410a38c91c3fb2307ed2094319175fd693343bdb94ada149b4ca12d33fb9",
+          "deliveredSourceSha256": "400f42342add4560433aa98d6d5ddb5347e444d0f95b34d06d351c213e5759d0",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:meridian-clockwork:lio-ferrante:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "31610a53f5f11e24107db211c0b62d97fb7cc104c23b07b6800067058d3d7e7d",
+          "deliveredSourceSha256": "873dfb0fbcc703de0c56e2f191d3ed894f20986f8c2b9812b68657018ccc052a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:meridian-clockwork:lio-ferrante:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "6e06e920ac1de6ff3989120d5c8e61e341eee385281ce3f312e219b568b2f861",
+          "deliveredSourceSha256": "d7d3a6cbba25801193f5c0beaeca4692c90c8474e1c29ed420ace223dc6a8285",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:meridian-clockwork:lio-ferrante:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "98953b7612c4872e5185b26cd0ef74134e9ff48b61cdf36d3f2f49127f6b46db",
+          "deliveredSourceSha256": "46fefe301afc6a9198021eb29b0c4a5cb67e42bd6a3d8fc34791bcaa4c890add",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:meridian-clockwork:lio-ferrante:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "1fdf73389945a70ce86a4e01c73ad8607807c3ed719019429e1540ef9630771a",
+          "deliveredSourceSha256": "b547c65477cb3823a1c62eb81307777f6f823cbf86ce7feb94999e940e9a2522",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:meridian-clockwork:lio-ferrante:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "c46690f8ff5a2ba4948c31d48cdf414f319a201f533ac48d6417b8f489f308eb",
+          "deliveredSourceSha256": "dba294d5918c1e6dadd1886cacb2ac49d18543a96d72d62667b6fbae0a4bc6d9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:meridian-clockwork:lio-ferrante:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "455eecadb4289f5f065b67682b6bedac059e7c600d08f4e0f641aa9f7cbe8c3d",
+          "deliveredSourceSha256": "cf8c6dbc085404ab8345d36d32421423819f7230eff936d644f2d82a2f538f20",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:meridian-clockwork:lio-ferrante:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "5b388de002658b20b9a6d260ad433ce8684ac87eab34ff74839709281fa60dd4",
+          "deliveredSourceSha256": "1fe5ddc704515f8098650498826777827bc2574aa055c28afe2d062b07cd3ff7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:meridian-clockwork:lio-ferrante:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "ec1a16f4428a9a6536b3ce1c17c586422f11080838438ab308e4e3e519a807ae",
+          "deliveredSourceSha256": "7643a7d72b03e78ed04bbe936d8eb437b44b29e6585d4ea64d23b5aa4921e125",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:meridian-clockwork:lio-ferrante:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "2d4afb11a0d5ba01dd7d3a47f20186f20e52f7ba71ed090d364158ae56e23a9d",
+          "deliveredSourceSha256": "b5e832211e98279cc3a730934c5ef51a9abcae08e3312e5d2b2de7b10c883415",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:meridian-clockwork:lio-ferrante:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "ce150235113e78cd5b3a7211cd81bd2e3f5344631b5f474ecf619318d73dfc33",
+          "deliveredSourceSha256": "09806af6801fc15026823f98747fd4a4a49a60ca81ef62bd434df7c2320ac556",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:meridian-clockwork:lio-ferrante:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "5b017ba13d67df9b5f45efcfb139d2bd8dcc6902c1f68667d776a500bf48b258",
+          "deliveredSourceSha256": "b41d3362ab218bac35014cae586dee6fadfe802d0b89f7ad74e4ec970e8800cc",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:meridian-clockwork:lio-ferrante:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "d9edf476c7fd8bcd809a3529417b16c4b79620898ebec2cb34b28c1df5f17e16",
+          "deliveredSourceSha256": "f567fbd441826504a979ff79cb8c21db3d0a29eab6370b5f069b2821a7fdac33",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_bram_wave8",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "anton_rook",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/anton-rook-wave8-2026-10-24.json",
+        "sha256": "4da37fa2a3a7e09bf9bef21c355fdf7cbace2872ad7d2a303348dcc89a946fa0"
+      },
+      "plan": {
+        "path": "docs/cg/anton-rook-wave8-plan-2026-10-24.json",
+        "sha256": "387dbf6d15e162d4497c1fb0f534b90609f81f6a3768817f238b1d3b02c27696"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-independent-review.json",
+        "sha256": "e672d3cc3265358291462986ea4ce72bee26900e90b8d52b79f6bda124fd802d"
+      },
+      "independentReviewer": "/root/cg_lio_wave8",
+      "producer": "/root/cg_anton_wave8",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:iron-tempest:anton-rook:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "e645d896801d166a4f08e3064e3cade9e687f60e575a3c867d79088ca68165d7",
+          "deliveredSourceSha256": "553a44b0b8aae0678834ebe29129f3cab839e883d202d624f24b0b33a4db0212",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:iron-tempest:anton-rook:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "87a1a65ca0024a91808a5e132b2cca626ea71919eaf12007e409a953dccbb002",
+          "deliveredSourceSha256": "c9d4989a93a760f7b2c89d3dbeddf79aafc3b5e9b1c9b38537a0c87999f8d61e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:iron-tempest:anton-rook:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "0239ecac8ccc78f5ea24fff4f59f2e2078781411a8faaa74cd38cb4f9da2e856",
+          "deliveredSourceSha256": "ca5d10fe7b4a2af8ccf82b13606661269e822ba4e0de3647823600be91395963",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:iron-tempest:anton-rook:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "ae3f9c68f8a504edd63d2d722c198b3246535fb106d593f2f1ae788f0dd15c04",
+          "deliveredSourceSha256": "22a149167738bcf00d47356cd9c044fc905566038a9bde0b1abdc74897dd52f9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:iron-tempest:anton-rook:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "3d035b94d3f2421d69962d78c5327a9d52880dd7cd3c3776171e767fed5b7f40",
+          "deliveredSourceSha256": "edb5da87fb8565fc265441f5b61490196244cfff27e16d2301509be69d2eec03",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:iron-tempest:anton-rook:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "8e7b0c2dddee3ae89d68db9e5bc93106597cccd3699d43cbed8498d9c6b80ec6",
+          "deliveredSourceSha256": "bc8e39a266e4f6ed475efd5caf640fd8c4040300fb2ac8c38b432f05408e9313",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:iron-tempest:anton-rook:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "5f8cc78fde8a09144ee4a97659d71112a2ac1a5e603ce0b1c1a0b432ac7f4d80",
+          "deliveredSourceSha256": "dd7b52507a8bd5c6fdc04f77df2f97054a6be0405e97ce9f8def2d4a2f559081",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:iron-tempest:anton-rook:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "ba49e37355b563948410eda40f2053bc02a193a2e32e85a5f58202f642e7d986",
+          "deliveredSourceSha256": "989d36f6a9045bf6075c1a8bb13970f05567a99d3b59f20563cc8ffefc0e0c8c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:iron-tempest:anton-rook:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "115b14ef15a3263421daad081bd02aac23351ee1eaac242c9fb81d43b9fa168f",
+          "deliveredSourceSha256": "e3148ddb418ee251f4b83fbaa32404a726bac64e0a7b7b9550a58c8c7937da40",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:iron-tempest:anton-rook:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "5bfc3d11bbdd4f3d443c5a7ec0b5a4f8e2f019a38715047efb82e4f91543e564",
+          "deliveredSourceSha256": "6b35a53ef79f6c0c08aac05a7d46482041814c90eb682bb9dc8caf994be82ba9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:iron-tempest:anton-rook:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "cbdd0ed1db2a5d11e38a24c532d9b842f08af0837eb919d6affca4425e97aab8",
+          "deliveredSourceSha256": "14a32f4c2333d28d61e5284d6149a9eec7f78f9b2b6116b558f2e3bc42187bdd",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:iron-tempest:anton-rook:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "d9005b836215b077491047477204875b4a5b9ff3609119ecf86cd0bdcaa7ea03",
+          "deliveredSourceSha256": "e3f90ba662b5dc0551b330b907e468a908e6a49bf28db4c3f6a4dbbd7de2fe94",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:iron-tempest:anton-rook:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "cff17d67441f95a8c8a7d2d5be95df298510b307db7a198f97abbbe5dda7bea8",
+          "deliveredSourceSha256": "f7fcad2774b7c984bd3cee833c965b1918d3dc914e52e9394854da8171f79f4c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:iron-tempest:anton-rook:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "83d67473ef899006fed483cbe4951aa092e675e32d1c5beb966e92a7a0d550b6",
+          "deliveredSourceSha256": "7493d97367b2ef8e861f43ac6be4361814743c2974c758a729f15c05b24aeba6",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:iron-tempest:anton-rook:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "f3fab5bda11f1c5872c24f1639c039e29a3be8e9118c9ba1e39d90d611b6d3ea",
+          "deliveredSourceSha256": "73b9e92a29a1c0391419c1ab8f91b7f8b6979f8dc893f2b9295832bbb30917c4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_lio_wave8",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "khepri_sen",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/khepri-sen-wave8-2026-10-24.json",
+        "sha256": "d01f1e7d5f98a535447512e0d2d7f080e37b315ffcc84619950e18da161b1962"
+      },
+      "plan": {
+        "path": "docs/cg/khepri-sen-wave8-plan-2026-10-24.json",
+        "sha256": "cae0f603ca3cb1a86d77fd95ba537b536b8d40896ebc272767919339eaf0ec10"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-independent-review.json",
+        "sha256": "9e47f8b8afcdea5511b23028a8d639ca11080c39cfa172b8b275963333c8165a"
+      },
+      "independentReviewer": "/root/cg_anton_wave8",
+      "producer": "/root/cg_khepri_wave8",
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "2a422e2d6c8f126350f114d5f7522d91481b8cd2892541297446ecd0358a77db",
+          "deliveredSourceSha256": "cd2eba6727a31b2e0980b4bb1719d6676cf398fcc78f68ade34a51f9eeeac20b",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "527e905b5c1e61d3ed2ef02407f762b5ef569f274d2907c690fbe749f28d15c8",
+          "deliveredSourceSha256": "9f21e7947a1e310c18106a8cf47f51c56a9722943d7850fe379098c33834c29d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "8e9ea4b7f4a26e713c21861129884c8ead3ed70935ba44a4a453defa3ae88482",
+          "deliveredSourceSha256": "5f37449dee48dd2a6a0d2e90c7061b9a32d817698e3e8720585b955decf4fcd3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "a4be7eb39ff05b96b0be8fbeb66750950ca9eca727fc7d2630a65874980dda09",
+          "deliveredSourceSha256": "e8c8bc556227ebacde0e443f18e5af71e678e292071be6b33cef77291682a788",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "05fa065a51dfd6cee527ebb7f1307c7678e401474c2f1cab53dcc3ae40deaba2",
+          "deliveredSourceSha256": "64e1ac7c900b392cf5b91f9eb86723c7657ffe95dd028b3222efa0c80167f964",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "11852511f58698c482e3d74fd999dde16af218b72f5a52d5d3dc03c39d53c5ec",
+          "deliveredSourceSha256": "f64f60d184773fb76c3df24dad2163597940a5793a96c5d712c0c20b4742f55e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "bc8cd70bfd88a122e3697b0dc976c757e135d6dbbe204c9e360c35f02bea4583",
+          "deliveredSourceSha256": "5a598dc56587b1a7557330b28858dbd8ae3c79e05871dcce2c795797d3e4caf1",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "08018b72d94309e94d909f6de13539a9bcf0752c66dc4c3a72649927ac5234a1",
+          "deliveredSourceSha256": "1c6e68f602725874db0bb4c5bec4a6027a28d9a31d1317d4c0e45d1fdb406343",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "500e0042c4301447a947f0bcf829a949e936c23f9356dd4b30fae7cfbd362b69",
+          "deliveredSourceSha256": "12806b70274d10510b7f5b142a3a806b801d7d757477b20a7335e9186568eca3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "f4835be8c25000c7fe6632978438526ca435f31b4b735b538c7b33c993f8afb0",
+          "deliveredSourceSha256": "5dad41b238c5434bbccdfdb5b03ce50a2d9b4f7fd7e88b580068ffd6659b2924",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "2d32b9af1311fd5a44d6cd2c9bc693b6fbd778d0bb8c979502401e95739ca0cc",
+          "deliveredSourceSha256": "8e2714619a706c85dc0b31014a4ba7986af6033ff9ab054f43027a22bbd230e3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "fe7a3402343a927786ab433e8a7e2c1023c5bc1bbf1bbe9bd0807edef70e0197",
+          "deliveredSourceSha256": "68f1e0880cfd52a49d00e73b1e0edcf71025d40b6cc34273f8b649c47f607106",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "da981bed0ca99020b570f240fe1d078ef88e19b3df4384b3de3da40bc752475c",
+          "deliveredSourceSha256": "b9fb1d8ae6b814e29d29971330e29118f1580e9d6c591d0a64db4cb072889010",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "af20d72403794b105e7050bf8c69b12e9f6d6c5ff1f83f4c770a8d48c64804c2",
+          "deliveredSourceSha256": "692b49ce97fa4fbcd0e82c01297782052f2cb56139d1bb2f59d90836e97b66fc",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:kemet-the-devoured-sun:khepri-sen:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "c9f627f8f0a1d9973ceb7b39e1804140f71e3d089ca5b6087c3553a50cbf3fd5",
+          "deliveredSourceSha256": "823529296b3489cf754a5336915609076abd61e884e6d7f1bc6d3b556acb529c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_anton_wave8",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    }
+  ],
+  "seriesPreviewsPersonallyOpened": [
+    {
+      "characterId": "imani_quell",
+      "path": "docs/cg/screenshots/imani-quell-wave8-2026-10-24.webp",
+      "sha256": "08e3ed17d77f51f7a613563e0bd52a0662e31717d2e11b63ffed1bd50e31111c",
+      "openedAt": "2026-10-24T02:36:40.913765+00:00",
+      "scope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+      "observed": "Les quinze vignettes sont lisibles ; CG02 présente les dispositifs médicaux seuls, CG03 une clinique vide, plusieurs postures et décors sont distincts, et les thèmes de loisir familial, service, comédie et variations What If sont visibles."
+    },
+    {
+      "characterId": "bram_quill",
+      "path": "docs/cg/screenshots/bram-quill-wave8-2026-10-24.webp",
+      "sha256": "e4dc87cef59a533325516635df9a58c77bdff759966deca7e50fc094f56788b0",
+      "openedAt": "2026-10-24T02:39:33.544985+00:00",
+      "scope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+      "observed": "Les quinze vignettes sont lisibles ; clé et matériel seuls en CG02, îles flottantes vides en CG03, positions debout, agenouillée, assise et action distinctes, scènes de loisir et service familiales, thèmes What If visibles."
+    },
+    {
+      "characterId": "anton_rook",
+      "path": "docs/cg/screenshots/anton-rook-wave8-2026-10-24.webp",
+      "sha256": "e6a98aec92213d20194c0050060f853b09612aaa34186dd17f13f351de1d2575",
+      "openedAt": "2026-10-24T02:43:44.935983+00:00",
+      "scope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+      "observed": "Quinze vignettes lisibles ; canon rotatif seul, plaque tournante vide, poses debout/assise/agenouillée/en fente, service et loisir distincts. Tablier brun, barbe et vocabulaire industriel fer/cuivre maintenus hors transformations What If explicites."
+    },
+    {
+      "characterId": "lio_ferrante",
+      "path": "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.webp",
+      "sha256": "7428cde07008ae3281c05bfbdb1bcda5e8dcf4ed99a5386c39b2bc27c275317f",
+      "openedAt": "2026-10-24T02:50:03.516997+00:00",
+      "scope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+      "observed": "Quinze vignettes lisibles : canon et roue seuls en CG02, cité horlogère vide en CG03, manteau cuivré et écharpe bleue distinctifs, positions debout/assise/agenouillée/en fente variées, loisir et service modestes. Une lecture de planche ne certifie pas les microdétails de chaque genou."
+    },
+    {
+      "characterId": "khepri_sen",
+      "path": "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.webp",
+      "sha256": "4c5e3a49b4e0ee223a7794b828068e80ccfbdcd68a9958899c915bc678b5dcdc",
+      "openedAt": "2026-10-24T02:51:33.381733+00:00",
+      "scope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+      "observed": "Quinze vignettes lisibles ; équipement seul et décor corrigé vide, postures debout/agenouillée/assise/en fente, service et loisir distincts. Drapés sarcelle/ivoire/or, montre et bâton identifiants conservés hors variations What If explicites ; aucun constat de coupe initiale d’atlas inféré depuis cette planche."
+    }
+  ],
+  "seriesPreviewScope": "Personally opened fifteen-CG public contact sheet for composition/theme readability and overall pose/setting variety; not a second exhaustive native fidelity review.",
+  "seriesPreviewSourceBindings": [
+    {
+      "characterId": "imani_quell",
+      "screenshot": {
+        "path": "docs/cg/screenshots/imani-quell-wave8-2026-10-24.webp",
+        "sha256": "08e3ed17d77f51f7a613563e0bd52a0662e31717d2e11b63ffed1bd50e31111c"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/imani-quell-wave8-2026-10-24.json",
+        "sha256": "9ca50f9091b568e28a393e8d13ecfcc429ea1de8f4286c24752ce45e216d5dee"
+      },
+      "receipt": {
+        "path": "docs/cg/imani-quell-wave8-2026-10-24.json",
+        "sha256": "d519cd3fd727beb598c9f99728f016703c5bc3f6d70353f1d7e689d00a17b7da"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:neon-requiem:imani-quell:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/character-solo-wave8-2026-10-24.webp",
+          "sha256": "749abf55a24f817c12ecf52b5194b102cd549a1faa2a503ff6d654bb8edcfdcd"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:neon-requiem:imani-quell:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/signature-weapon-wave8-2026-10-24.webp",
+          "sha256": "407006c4234a0a35754e6a686906c8a30258742310b6614987a9dd853a023396"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:neon-requiem:imani-quell:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/decor-wave8-2026-10-24.webp",
+          "sha256": "79e8c140ddddd2042ee059b4bf3495538168043e9bbc5e146b1560382da0524e"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:neon-requiem:imani-quell:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/coherent-scene-wave8-2026-10-24.webp",
+          "sha256": "c87a22a4313ab5ae957c1e805e19f587e7c24372a81b31c4844b4d6e512f009f"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:neon-requiem:imani-quell:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/action-scene-wave8-2026-10-24.webp",
+          "sha256": "94ae1b34441ca307d2e9b7f43af7b44be19de5d92ef46f16d4e9527964a0dca0"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:neon-requiem:imani-quell:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/intro-pose-wave8-2026-10-24.webp",
+          "sha256": "68dec63be9e255cdeb2419b02d8d4aeaaf7562ce5e54ae7d228af6c11d6a68df"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:neon-requiem:imani-quell:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/victory-pose-wave8-2026-10-24.webp",
+          "sha256": "5b8f0690f5d9399e2a548ee8a10c7e25e57ad1784408579eb68a2fa5f70d23db"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:neon-requiem:imani-quell:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/defeat-pose-wave8-2026-10-24.webp",
+          "sha256": "bafe0ebf9c5383550247c0083dec7110b260b71b80c8af60f16a8a134ff130d7"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:neon-requiem:imani-quell:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/beach-family-wave8-2026-10-24.webp",
+          "sha256": "8f4fae74f6194b02c1e1e62f0fa53da6a8306596cdb57e158fc249ac4ef98afd"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:neon-requiem:imani-quell:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/maid-service-wave8-2026-10-24.webp",
+          "sha256": "fd8fab0784c8770bb6819010ffef5e756fccf016ae7e503369cbd17a8d035849"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:neon-requiem:imani-quell:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/goofy-wave8-2026-10-24.webp",
+          "sha256": "4b2652df1d4f1e33104c212831e51874d7cc3d5d5eafe7ff6810ba5d2fe0966a"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:neon-requiem:imani-quell:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/alignment-swap-wave8-2026-10-24.webp",
+          "sha256": "666166da5213a470d52aeef5181aaec1fb2a0be30b73ebc28e38740e3249951b"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:neon-requiem:imani-quell:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/gender-swap-wave8-2026-10-24.webp",
+          "sha256": "06a68137357a1dcbc393dab94bbc3b11a0fcc282930d039a20f672430b2b1c8f"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:neon-requiem:imani-quell:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/zombie-version-wave8-2026-10-24.webp",
+          "sha256": "e82315ba7b152d8bb71f95b434fafaeda68647042f5e9d233644fc3e10e249d9"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:neon-requiem:imani-quell:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/neon-requiem/imani-quell/future-experienced-wave8-2026-10-24.webp",
+          "sha256": "ea7f34835caf60597e25fabe1ad383b6b4b5161d16d43b7a6dc68880f3d88e56"
+        }
+      ]
+    },
+    {
+      "characterId": "bram_quill",
+      "screenshot": {
+        "path": "docs/cg/screenshots/bram-quill-wave8-2026-10-24.webp",
+        "sha256": "e4dc87cef59a533325516635df9a58c77bdff759966deca7e50fc094f56788b0"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/bram-quill-wave8-2026-10-24.json",
+        "sha256": "d051d823ae23cfe7cd6a73796948c14bd1247281316ccd48588fdb0147c2c7c1"
+      },
+      "receipt": {
+        "path": "docs/cg/bram-quill-wave8-2026-10-24.json",
+        "sha256": "fae98da6b118880e83e10579d88afaf879e6faec387cb3d58e24287d77ad207d"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:the-aether-crown:bram-quill:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/character-solo-wave8-2026-10-24.webp",
+          "sha256": "bc09755e283de0b60a4b85db3b86b60e52eabf23d65da03836a1e4bbcdd1cbd8"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:the-aether-crown:bram-quill:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/signature-weapon-wave8-2026-10-24.webp",
+          "sha256": "fe118414b1f5b672e5cb0d23743f549a74460096f67586641c5889e22113a5e7"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:the-aether-crown:bram-quill:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/decor-wave8-2026-10-24.webp",
+          "sha256": "97c04aeb0349279748c8d045421b51bff7317d4f97c436d464f0bc5350fd7e96"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:the-aether-crown:bram-quill:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/coherent-scene-wave8-2026-10-24.webp",
+          "sha256": "b2d9cdb0721932d2312f43fc73a7bfde32eb38e4b4b00bb60e39096d22a7797f"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:the-aether-crown:bram-quill:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/action-scene-wave8-2026-10-24.webp",
+          "sha256": "9b9887f7795f8dc8afb9523131f2f5ef5b60c2e62b2fc51c7ee5d25e9ce1e257"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:the-aether-crown:bram-quill:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/intro-pose-wave8-2026-10-24.webp",
+          "sha256": "e8199a6cf8e540b20bf3b1f92a496730605e16489e48e0a1290c3acb5878ec09"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:the-aether-crown:bram-quill:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/victory-pose-wave8-2026-10-24.webp",
+          "sha256": "b0867a5703aedf41a7d05a0f4cb8ceb5526d0e508eb1a6356eb34bfaab81a890"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:the-aether-crown:bram-quill:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/defeat-pose-wave8-2026-10-24.webp",
+          "sha256": "8dde1f95c2c0ba928baef4da6190b549dbe9a4fa43241cb5d4a13a3067f85857"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:the-aether-crown:bram-quill:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/beach-family-wave8-2026-10-24.webp",
+          "sha256": "6d7dd3375699f2862245020f8bd4ee3a679e48a18fb3df0712afcc443d7d405e"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:the-aether-crown:bram-quill:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/maid-service-wave8-2026-10-24.webp",
+          "sha256": "af010f53c146a160874c89741bf6d47c7bd1becc3874b3d47822c73634a793a3"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:the-aether-crown:bram-quill:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/goofy-wave8-2026-10-24.webp",
+          "sha256": "f6c73fb0029722a52aa04a2ac0b4cb7d8536d2d5523f00f5c14eda15baa88bfd"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:the-aether-crown:bram-quill:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/alignment-swap-wave8-2026-10-24.webp",
+          "sha256": "a9ee6452398531a1201d518e958b44f527b784f4cb13b83815a2173f8e01f925"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:the-aether-crown:bram-quill:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/gender-swap-wave8-2026-10-24.webp",
+          "sha256": "35de68ebd1febacc7ee473f506883707665f87f6af1c758ad8e3d93f8494403f"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:the-aether-crown:bram-quill:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/zombie-version-wave8-2026-10-24.webp",
+          "sha256": "4e97e749ccafe21c3d5a22b620161a74a02418b14b8906ec277b0f7c6f3b750b"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:the-aether-crown:bram-quill:firstStep:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/the-aether-crown/bram-quill/first-step-wave8-2026-10-24.webp",
+          "sha256": "07768a539b6c8f7b3c8012173c0c985322f96393e98da7fc52b986d4ee11948a"
+        }
+      ]
+    },
+    {
+      "characterId": "lio_ferrante",
+      "screenshot": {
+        "path": "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.webp",
+        "sha256": "7428cde07008ae3281c05bfbdb1bcda5e8dcf4ed99a5386c39b2bc27c275317f"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.json",
+        "sha256": "b1b843a7a2a9594390a4b62a093314126efb6f415c81431a02f2e6a26d113a11"
+      },
+      "receipt": {
+        "path": "docs/cg/lio-ferrante-wave8-2026-10-24.json",
+        "sha256": "1ac0aab1558cc4416270ac8c0f7241ac93a1d8da9cc7506e30989fc8f6e157f3"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/character-solo-wave8-2026-10-24.webp",
+          "sha256": "eafffa39f4672b461e47e82918f0e49f736ba5b12b3e03ffc61e1486bd16f158"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/signature-weapon-wave8-2026-10-24.webp",
+          "sha256": "3634d719659acd725a9551ce7fcf3520279a48ac302fe3b625495f5b6243e7f5"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/decor-wave8-2026-10-24.webp",
+          "sha256": "d65255791406908adae973b5f54389ceea6e9620eacc9b2ff6d21a41a1fbe289"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/coherent-scene-wave8-2026-10-24.webp",
+          "sha256": "0ec564655bafed1fb0951909e8d3816ad70368dd78619e135a27bd53fc223669"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/action-scene-wave8-2026-10-24.webp",
+          "sha256": "7b6c4dd42366598a966a475aea0bbc85b3265958a0a7cadd4a0a2e3dff297410"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/intro-pose-wave8-2026-10-24.webp",
+          "sha256": "bd32b232b52a21d21c4268f7badc3c4b3ca75120e10b78fa47494500a3df822b"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/victory-pose-wave8-2026-10-24.webp",
+          "sha256": "2705a94474d23725a341fb84307b71e32c8d19bbd776ba10403f030612212381"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/defeat-pose-wave8-2026-10-24.webp",
+          "sha256": "0363f4fef9056310f68f67a967865a6d2a3c7cc10a7ecbc3884b5fa131a60ff7"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/beach-family-wave8-2026-10-24.webp",
+          "sha256": "0336094570a9e3d1a689212ebcf776e24a60145a474935edd593e3e6665200f6"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/maid-service-wave8-2026-10-24.webp",
+          "sha256": "6c293c1b993463cd42b72103c508f59ddb3e04d181bb4795a61400c6e49c2172"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/goofy-wave8-2026-10-24.webp",
+          "sha256": "3f1f3232549c34f1c2d66fd4c270820b667e0303f89b848c03d31c376a1ebf1e"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/alignment-swap-wave8-2026-10-24.webp",
+          "sha256": "35ab0667018972c1b2618d80aadd09019906238101189ff51eb4992a2ceb64b1"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/gender-swap-wave8-2026-10-24.webp",
+          "sha256": "145ebdd0ba98df4c1f464bd665066249b6f567614661cba13ec0400ff9bf4790"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/zombie-version-wave8-2026-10-24.webp",
+          "sha256": "a439690267b4c181b927d5ff17073abd0359f2253f400fa80afe072f72c3b8dd"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:meridian-clockwork:lio-ferrante:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/meridian-clockwork/lio-ferrante/future-experienced-wave8-2026-10-24.webp",
+          "sha256": "1f3e53f69ab8cb58023590d6b26f33b86c595db98b361a428f691d8f61f6bd4f"
+        }
+      ]
+    },
+    {
+      "characterId": "anton_rook",
+      "screenshot": {
+        "path": "docs/cg/screenshots/anton-rook-wave8-2026-10-24.webp",
+        "sha256": "e6a98aec92213d20194c0050060f853b09612aaa34186dd17f13f351de1d2575"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/anton-rook-wave8-2026-10-24.json",
+        "sha256": "b0b4dfcbc06e03b8674d2547ad962765c02db85edde5c488c8fca71442938d6e"
+      },
+      "receipt": {
+        "path": "docs/cg/anton-rook-wave8-2026-10-24.json",
+        "sha256": "4da37fa2a3a7e09bf9bef21c355fdf7cbace2872ad7d2a303348dcc89a946fa0"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:iron-tempest:anton-rook:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/character-solo-wave8-2026-10-24.webp",
+          "sha256": "741e214d1e2deb259d751aa945a5f10534d9c8415e31763173358b114aef9068"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:iron-tempest:anton-rook:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/signature-weapon-wave8-2026-10-24.webp",
+          "sha256": "a729caf8257357044ab233ccb4ff8155b114fd58fc72745964ac9b6b72031f68"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:iron-tempest:anton-rook:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/decor-wave8-2026-10-24.webp",
+          "sha256": "a718340712f974292855d85e4852b80a4b07955a999f470edb7a21a99fae1061"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:iron-tempest:anton-rook:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/coherent-scene-wave8-2026-10-24.webp",
+          "sha256": "2dc808cbcc287c4b752e03ecb7829a424aff522fe086307018b75c80bf6a440f"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:iron-tempest:anton-rook:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/action-scene-wave8-2026-10-24.webp",
+          "sha256": "6456c8570fa750cf7068d3332ad41f1ce4ebcd891bd2eb26133f747711ed05d0"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:iron-tempest:anton-rook:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/intro-pose-wave8-2026-10-24.webp",
+          "sha256": "3ab4950e937f4da7d7ecc58c68a6d25f3ef9e39c97ccfa67087fe46c009563ff"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:iron-tempest:anton-rook:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/victory-pose-wave8-2026-10-24.webp",
+          "sha256": "e7294c0aaaee2afbd2ddc16716dce043594a8eabc4eed320d3a80d0716466fa6"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:iron-tempest:anton-rook:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/defeat-pose-wave8-2026-10-24.webp",
+          "sha256": "9165d6ef41de0954cf829fcfb0b9eb1255f9b8de6b10b5978316ae10764bf99c"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:iron-tempest:anton-rook:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/beach-family-wave8-2026-10-24.webp",
+          "sha256": "54913365b53eeb80f953bbae2ff0020e81fa98fbe7999b72e5bc28e1a733887c"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:iron-tempest:anton-rook:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/maid-service-wave8-2026-10-24.webp",
+          "sha256": "16826e317b5c8077c27f41cdf86f783dda99aa2d6f9378da34128ecfe6b75892"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:iron-tempest:anton-rook:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/goofy-wave8-2026-10-24.webp",
+          "sha256": "be9428a1f9431d70c9c43e797cc56787713bc2cb61d156c8497798484de66294"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:iron-tempest:anton-rook:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/alignment-swap-wave8-2026-10-24.webp",
+          "sha256": "1764f81f48be9b405286997d8ae7e72941507bd2c8a20fea524fca68a75cf767"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:iron-tempest:anton-rook:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/gender-swap-wave8-2026-10-24.webp",
+          "sha256": "26483294dd9893ad4a2de9a3d17cf48555045eb279f35ff4ec7760a53aaa50bf"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:iron-tempest:anton-rook:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/zombie-version-wave8-2026-10-24.webp",
+          "sha256": "991828dc31d7713104befa48da4bbc9d56cbd47de6fa80f8dc58a6924dbd1b97"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:iron-tempest:anton-rook:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/iron-tempest/anton-rook/future-experienced-wave8-2026-10-24.webp",
+          "sha256": "dee2bfb6becb1d9e14ed269707e04195b1816ff3f1be28413fcb4302ef1dcaab"
+        }
+      ]
+    },
+    {
+      "characterId": "khepri_sen",
+      "screenshot": {
+        "path": "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.webp",
+        "sha256": "4c5e3a49b4e0ee223a7794b828068e80ccfbdcd68a9958899c915bc678b5dcdc"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.json",
+        "sha256": "92e745a63a290e76acc8ef3e96ed49fa06accfd2518d9bc7cbd2dddd1c96510a"
+      },
+      "receipt": {
+        "path": "docs/cg/khepri-sen-wave8-2026-10-24.json",
+        "sha256": "d01f1e7d5f98a535447512e0d2d7f080e37b315ffcc84619950e18da161b1962"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/character-solo-wave8-2026-10-24.webp",
+          "sha256": "9c5c623c2426540615b4fb8c134f089b13c0f4665e7ed7df4651f601f2e11397"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/signature-weapon-wave8-2026-10-24.webp",
+          "sha256": "86803906d989f7fd19f3347c5cfd314354bb315f619b326113984efafbf71a1b"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/decor-wave8-2026-10-24.webp",
+          "sha256": "aa96d4af237d56cc833e1c786f4826f99cdd665f155dc723a700a0c5bffa63ca"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/coherent-scene-wave8-2026-10-24.webp",
+          "sha256": "8bdf7b4de0264f0178b311e9d1a76d43e5631c79f88cc7969e017d2f3677516a"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/action-scene-wave8-2026-10-24.webp",
+          "sha256": "939b06199c0dfa83f26ddcab8f61ae0907d1119556b8c9cf82e8548c4a27057e"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/intro-pose-wave8-2026-10-24.webp",
+          "sha256": "b7a933474aee966ac6b52884dbbe3d6ef05a6adbf3eb927152928ade01390dc1"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/victory-pose-wave8-2026-10-24.webp",
+          "sha256": "93fc7ddd66c5e50e171981bfe9db0b35dbffe0011b13c835386b07a8a6353c5d"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/defeat-pose-wave8-2026-10-24.webp",
+          "sha256": "7745e67cdcbf3190708c9f3672e4026beb1c27f48b468062df64d5aa1dfa0070"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/beach-family-wave8-2026-10-24.webp",
+          "sha256": "ae27233878cbfb9b20c26a4f6e0b454b8f5e2742475bbdd7ab479d51e8223e31"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/maid-service-wave8-2026-10-24.webp",
+          "sha256": "cda7513de5a60ef5c3a3d6ea7d8d7f5d801413a1e0849f4bacfcaa64a2125ef2"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/goofy-wave8-2026-10-24.webp",
+          "sha256": "ec076ffa5e69e8d7071fb38928210ec465c2553d0daddfda24561703b750b7e1"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/alignment-swap-wave8-2026-10-24.webp",
+          "sha256": "4c9d4eb68b125cd371e5efd3968e239818128831001a9eab177f31cacc8c32b1"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/gender-swap-wave8-2026-10-24.webp",
+          "sha256": "fcbc9e55e99464be5fe2c8703227a0807078e38939caf592daade6f86f6863f5"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/zombie-version-wave8-2026-10-24.webp",
+          "sha256": "377edb5d38ab1d501a870fff4a1462edc6fb907d6ece33cb1a403beb56c1e4c4"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:kemet-the-devoured-sun:khepri-sen:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/kemet-the-devoured-sun/khepri-sen/future-experienced-wave8-2026-10-24.webp",
+          "sha256": "dc811722bab4e0279f37e640fa53414b9f3fb2612a299848bb0d5c55896e2aaf"
+        }
+      ]
+    }
+  ],
+  "seriesPreviewCurrentAssetBindingsVerified": 75,
+  "automaticImageCalls": 0,
+  "automaticInstallations": 0,
+  "automaticPerfectFidelityApprovals": 0
+}

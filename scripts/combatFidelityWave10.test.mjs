@@ -21,6 +21,8 @@ import { supportsNativeSuperWave10, projectNativeSuperAnchorWave10, getNativeSup
 import { COMBAT_SOURCE_DEFINITIONS_WAVE10 } from '../src/game/combat/combatSourceDefinitionsWave10.js';
 import { getCharacterFormAssets } from '../src/game/combat/characterFormCatalog.js';
 import { assertHistoricalPresentationOrWave13Version } from './combatPresentationVersionsWave13.mjs';
+import { assertBaseSpriteEdition, assertNativeSourceBaseEdition } from './combatCanonicalEditionFixtures.mjs';
+import { historicalWave10Actor } from './combatSourceVersionFixturesWave10.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFileSync(new URL(path, root));
@@ -155,7 +157,7 @@ test('the wave9 snapshot,117 existing native records and all eight prior45-state
   assert.equal(old.baseSpriteCorrections.entries.length, 64);
   for (const entry of old.baseSpriteCorrections.entries) {
     const actor = hero(entry.heroId); assert.equal(actor.universe, entry.universe);
-    assert.equal(getHeroSpriteSheetSrc(actor, 'rpg'), entry.sheet, `${entry.heroId}: prior base rerouted`);
+    assertBaseSpriteEdition(actor, entry, getHeroSpriteSheetSrc(actor, 'rpg'));
     const layout = getSpriteSheetLayout(entry.sheet); assert.equal(layout.columns, 4); assert.equal(layout.rows, 4);
   }
   const delivered = [...partPaths, ...['A', 'B', 'C', 'D'].map(part => `src/game/combat/characterSpriteCorrectionsWave10Part${part}.generated.json`),
@@ -393,7 +395,7 @@ test('all fifteen prior summon bodies stay immutable and the eight new partners 
 
 test('the forty native visual helpers are deterministic projections and never mutate combat state', () => {
   for (const id of wave10Ids) for (const facing of [1, -1]) for (const progress of [0.1, 0.4, 0.6, 0.9]) {
-    const profile = resolveCombatAbility(hero(id), 'special'), actor = { ...hero(id), id: 'visual-p2', sourceHeroId: id, x: 300, y: 400, currentHp: 73, meter: 44 },
+    const sourceActor = historicalWave10Actor(hero(id)), profile = resolveCombatAbility(sourceActor, 'special'), actor = { ...sourceActor, id: 'visual-p2', sourceHeroId: id, x: 300, y: 400, currentHp: 73, meter: 44 },
       action = { elapsed: progress, duration: 1, hitAt: 0.45, facing }, target = { x: 300 + facing * 160, y: 400, currentHp: 82 };
     const input = { actor, profile, action, target, height: 80, contactVisual: { confirmed: true, x: target.x, y: target.y } }, before = structuredClone(input);
     const state = getNativeSuperVisualStateWave10(input); assert.ok(state); assert.equal(state.family, 'native-wave10'); assert.equal(state.gameplayEffect, 'none');
@@ -523,7 +525,7 @@ test('all forty source versions, real equipment and support mechanics agree with
   assert.equal(kits.filter(k=>slots.every(s=>k[s])).length,1402); assert.equal(kits.filter(k=>!slots.every(s=>k[s])).length,73);
   assert.deepEqual(sorted(Object.keys(COMBAT_SOURCE_DEFINITIONS_WAVE10)), sorted(wave10Ids));
   let damage=0,support=0;
-  for(const id of wave10Ids){const h=hero(id),before=structuredClone(h),definition=COMBAT_SOURCE_DEFINITIONS_WAVE10[id],special=resolveCombatAbility(h,'special');
+  for(const id of wave10Ids){const h=historicalWave10Actor(hero(id)),before=structuredClone(h),definition=COMBAT_SOURCE_DEFINITIONS_WAVE10[id],special=resolveCombatAbility(h,'special');
     for(const slot of [...slots,'special']){const a=resolveCombatAbility(h,slot);assert.equal(a.sourceHeroId,id);assert.equal(a.universe,h.universe);assert.equal(a.provenance.canonicalVerified,false);assert.equal(a.provenance.networkVerified,false);assert.ok(!/Signature Strike|Breach Technique|Signature Guard|Origin Burst/i.test(a.name));assert.ok(Number.isFinite(a.duration)&&a.duration>a.hitAt&&a.hitAt>=0);if(a.effect==='damage')assert.ok(a.multiplier>0);else assert.equal(a.multiplier,0);}
     assert.equal(special.name,definition.name);assert.equal(special.universe,definition.universe);assert.equal(special.effect,definition.effect);assert.equal(special.delivery,definition.delivery);
     assert.equal(CHARACTER_PRESENTATIONS[id].sourceAction,special.name);assert.equal(supportsNativeSuperWave10(special),true);
@@ -534,9 +536,24 @@ test('all forty source versions, real equipment and support mechanics agree with
   assert.equal(damage,25);assert.equal(support,15);
   for(const id of ['neo','agent_smith']){const a=resolveCombatAbility(hero(id),'special');assert.equal(a.delivery,'melee');assert.equal(a.shape,'single');assert.doesNotMatch(a.name,/glitch|override|virus|réécriture/i);const actor={...hero(id),x:100,y:200},input={actor,profile:a,action:{elapsed:.7,duration:1,hitAt:.4,facing:1},target:{x:200,y:200},height:90,contactVisual:{confirmed:true,x:200,y:200}},ctx=recorder();drawNativeSuperVisualsWave10(ctx,getNativeSuperVisualStateWave10(input));assert.equal(ctx.calls.filter(c=>c[0]==='lineTo'||c[0]==='fillText').length,0,'physical martial contact must not invent a code beam or hacking text');}
   for(const id of ['bishop_aliens','hudson_aliens','clover_pd']){const a=resolveCombatAbility(hero(id),'special');assert.notEqual(a.effect,'damage');assert.equal(a.multiplier,0);}
-  const ripley=resolveCombatAbility(hero('ripley_aliens'),'special');assert.equal(ripley.name,'P-5000 Power Loader');assert.equal(ripley.delivery,'melee');
+  const ripley=resolveCombatAbility(historicalWave10Actor(hero('ripley_aliens')),'special');assert.equal(ripley.name,'P-5000 Power Loader');assert.equal(ripley.delivery,'melee');
   assert.equal(resolveCombatAbility(hero('dallas'),'defense').effect,'heal');
   assert.equal(resolveCombatAbility(hero('wolf_pd'),'defense').targetSide,'self');assert.equal(resolveCombatAbility(hero('hoxton'),'defense').targetSide,'self');
+});
+
+test('current Aliens1986 Ripley keeps its exact P0 action and source-compatible native body separately from the frozen W10 kit', () => {
+  const current = hero('ripley_aliens'), before = structuredClone(current), historical = historicalWave10Actor(current);
+  const profile = resolveCombatAbility(current, 'special');
+  assert.equal(profile.name, 'Power Loader Smash'); assert.equal(profile.effect, 'damage');
+  assert.equal(profile.delivery, 'melee'); assert.equal(profile.shape, 'area'); assert.equal(profile.multiplier, 4.2);
+  assert.equal(supportsNativeSuperWave10(profile), false);
+  assert.equal(supportsNativeSuperWave10(resolveCombatAbility(historical, 'special')), true);
+  assertNativeSourceBaseEdition(current, getHeroSpriteSheetSrc(current, 'rpg'));
+  const frame = getCharacterAnimationFrame({ ...current, presentationPhase: 'super', presentationProgress: 0.6 });
+  assert.equal(frame.asset.sheet, '/sprites/generated/combat-character-animations-wave10/ripley_aliens.png');
+  assert.equal(frame.asset.sha256, 'e2c2f392997c1f961dac268e24cfba53ddea98f49e2847c2c8705355ca738e6c');
+  assert.equal(sha256(read('public' + frame.asset.sheet)), frame.asset.sha256);
+  assert.equal(frame.row, 7); assert.equal(frame.col, 2); assert.deepEqual(current, before);
 });
 
 test('Janine exposes only six accepted phases and uses declared existing-pose fallbacks for the two refused phases', () => fakeImages(() => {

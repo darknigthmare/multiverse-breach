@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "lyra_hexwind",
+  "purpose": "Review display: selected V2 reference, preserved old atlas first frame, installed referenced atlas first frame.",
+  "image": {
+    "path": "docs/cg/screenshots/lyra-hexwind-sprite-comparison-wave6-2026-10-23.webp",
+    "sha256": "7b0b62582705a7effd15c733a7c7e344baac8aae2be113338f853abee633537a",
+    "width": 1440,
+    "height": 900
+  },
+  "inputs": [
+    {
+      "path": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/lyra_hexwind.png",
+      "sha256": "ed446cb1fe7ca4694985c06a19866f78e522b3257f8f6c512d04665deb636940",
+      "nativeDimensions": [
+        1086,
+        1448
+      ],
+      "displayRectangle": [
+        0,
+        0,
+        1086,
+        1448
+      ]
+    },
+    {
+      "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind.png",
+      "sha256": "ba2de411f810bc944c9030aa2026ac831b2a12e5233903b1fb6614e731c156b6",
+      "nativeDimensions": [
+        1024,
+        1024
+      ],
+      "displayRectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    {
+      "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png",
+      "sha256": "d70a36f9ffb390a0fece6c24a2399a692335688c0444a0101259bed50c23e944",
+      "nativeDimensions": [
+        1024,
+        1024
+      ],
+      "displayRectangle": [
+        0,
+        0,
+        256,
+        256
+      ]
+    }
+  ],
+  "processing": "Full portrait and whole first grid cells; nearest-neighbor display scaling and grey compositing; labels only outside source content. No painting, recoloring, mirroring, generative edit or cropped character content.",
+  "spriteIndependentReview": {
+    "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+    "sha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7"
+  },
+  "canonicalFidelityApproved": false,
+  "runtimeSelectionPendingAtCreation": true
+}

@@ -1,0 +1,697 @@
+{
+  "heroId": "beyond_good_evil_jade",
+  "universe": "Beyond Good & Evil",
+  "sourceWork": "Beyond Good & Evil (2003), original Jade after acquiring Daï-Jo and Gyrodisk glove",
+  "sourceReference": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/15130/manuals/manual_english.pdf?t=1718743204",
+  "date": "2026-11-02",
+  "archiveDir": "docs/combat-fidelity-wave17-2026-11-02/jade-sources",
+  "outputDir": "public/sprites/generated/jade-melee-wave17",
+  "reference": {
+    "asset": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/research/steam-official-screen-2.jpg",
+    "savedImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/research/steam-official-screen-2.jpg"
+  },
+  "registryPaths": {
+    "Motion": "src/game/combat/characterJadeMotionWave17.generated.json",
+    "Combat": "src/game/combat/characterJadeActionWave17.generated.json"
+  },
+  "sources": [
+    {
+      "id": "jade-motion-a",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-a.native.png",
+      "sha256": "e7349dcaa5bca31428038f5adee21adaa0530938f3abbe05a9a872a8989af16d",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-a.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-a.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-a.region-review.json",
+      "importRegionsSha256": "defa6ad7477249b4dcf9bba708c7a6ff0ed42b72b31cf7956280811bb740a897",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "bodyBounds": {
+          "x": 137,
+          "y": 6,
+          "width": 88,
+          "height": 197
+        },
+        "state": "idle",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-motion-b",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.native.png",
+      "sha256": "3f36a1194b9fb7e971705265e5641ac0cb34411361ac47125cd46433182f4d7d",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.region-review.json",
+      "importRegionsSha256": "ae25c1367d6fbfb50e71c925b88508e6afa56eb18bb5f013528ae1337b0955f6",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 6,
+        "column": 0,
+        "bodyBounds": {
+          "x": 64,
+          "y": 1284,
+          "width": 171,
+          "height": 226
+        },
+        "state": "hitStun",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-defense",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-defense.native.png",
+      "sha256": "8adfb1dab14b29d1515923becbddbe2c53d776376c6bcf6319a6067d271dcff3",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-defense.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-defense.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-defense.region-review.json",
+      "importRegionsSha256": "1d353baa367087da83207d2628b126f1b4c81951c50a198422950a61e57b7e59",
+      "importOptions": {
+        "groupComponentsByGrid": false,
+        "minimumBodyHeight": 24
+      },
+      "calibration": {
+        "row": 4,
+        "column": 3,
+        "bodyBounds": {
+          "x": 827,
+          "y": 863,
+          "width": 133,
+          "height": 206
+        },
+        "state": "shieldExit",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-combat-a-1",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-1.native.png",
+      "sha256": "4ba09f7ad39b1e9c4106d688aa9edb935f58c031097342f82f9e291051099818",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-1.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-1.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-1.region-review.json",
+      "importRegionsSha256": "ca1f8c68edb1e72e7eb185478a1b7a47743400ed2877666667cde73ef68751f7",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "bodyBounds": {
+          "x": 34,
+          "y": 45,
+          "width": 188,
+          "height": 272
+        },
+        "state": "attackLight1",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-combat-a-2",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-2.native.png",
+      "sha256": "3457178cba10dc3e8d4d64f5348a674bc223a1c27a8638729cb5457f904340c4",
+      "states": [
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-2.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-2.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-2.region-review.json",
+      "importRegionsSha256": "55e8ee36618941c1ae0c7fab9e6b68c2ae180cc26fe763e631568116ba2202a4",
+      "importOptions": {
+        "groupComponentsByGrid": true
+      },
+      "calibration": {
+        "row": 3,
+        "column": 2,
+        "bodyBounds": {
+          "x": 651,
+          "y": 1003,
+          "width": 173,
+          "height": 292
+        },
+        "state": "chargeRecovery",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-combat-b-1",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-1.native.png",
+      "sha256": "95ddaf6f010b207f166cfb291e41d8146bddcf3f79648bbe2f6da75d20bdad56",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-1.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-1.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-1.region-review.json",
+      "importRegionsSha256": "a6460720a783b716279081d21600de7e61a276c68bb1addfaf07ea476e95cfc9",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "bodyBounds": {
+          "x": 82,
+          "y": 452,
+          "width": 157,
+          "height": 338
+        },
+        "state": "special",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-combat-b-2",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.native.png",
+      "sha256": "87adce36581d38d54fd283a3905882f3001cec11b04b204b74acb9881b95544f",
+      "states": [
+        "aerialDown",
+        "intro",
+        "victory",
+        "reservedGripStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.region-review.json",
+      "importRegionsSha256": "1bf7945ecc5a850f2d7e294a669ed89a1c45528d09341436b132e3683da08588",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 2,
+        "column": 0,
+        "bodyBounds": {
+          "x": 59,
+          "y": 785,
+          "width": 162,
+          "height": 325
+        },
+        "state": "victory",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-ledge-1",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-1.native.png",
+      "sha256": "05f602be0c5e179a3cc0cebc854c44f304946c854aa496ae04a7a163ee6e424d",
+      "states": [
+        "ledgeAttack",
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-1.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-1.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-1.region-review.json",
+      "importRegionsSha256": "22ea9333fc0161b8d39e43f2ed8070fb6db7f6a7e7b3521b462d305466b4200c",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "bodyBounds": {
+          "x": 978,
+          "y": 24,
+          "width": 202,
+          "height": 260
+        },
+        "state": "ledgeAttack",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-ledge-2",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png",
+      "sha256": "dd1599e5deefc61c6a04d75c1cdbb86d291d0bf21b3dc39780d032712dbdfdad",
+      "states": [
+        "ledgeDrop",
+        "ledgeJump",
+        "reservedStandingStudy",
+        "reservedCameraStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.region-review.json",
+      "importRegionsSha256": "6da00a68d63531eb691bc5139e201c11c0690299cf3e50eae6e1b6c881b27d22",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 2,
+        "column": 0,
+        "bodyBounds": {
+          "x": 52,
+          "y": 784,
+          "width": 167,
+          "height": 357
+        },
+        "state": "reservedStandingStudy",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    },
+    {
+      "id": "jade-correction-a",
+      "image": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.native.png",
+      "sha256": "517d26e8c62ee9246988bd8bdb5aa6ceb6afbe8a8942bf2b13c864845a676dcc",
+      "states": [
+        "crouchIdle",
+        "taunt1",
+        "perfectShield",
+        "reservedStandingStudy"
+      ],
+      "promptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.actual.prompt.txt",
+      "receiptFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.tool-receipt.json",
+      "importRegionsFile": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.region-review.json",
+      "importRegionsSha256": "06a2cfce8b515cfa87481f6c1f2abcfdc6b1d69d73073c2a76bc46d97c2b36e2",
+      "importOptions": {
+        "groupComponentsByGrid": false
+      },
+      "calibration": {
+        "row": 3,
+        "column": 0,
+        "bodyBounds": {
+          "x": 94,
+          "y": 949,
+          "width": 148,
+          "height": 326
+        },
+        "state": "reservedStandingStudy",
+        "reviewed": true,
+        "raisedArmsExcluded": true,
+        "reason": "Manual crown-to-sole anatomical ROI on the actual opened Jade2003 native source. Body measurement excludes Daï-Jo reach, camera and detached native energy; one common effective stature is used for every source and lowered body poses remain naturally lower."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "jade-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "jade-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "jade-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "jade-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "jade-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "jade-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "jade-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "jade-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "jade-motion-a",
+          "row": 7
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "jade-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "jade-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "jade-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "jade-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "jade-correction-a",
+          "row": 0
+        },
+        "crouchExit": {
+          "sourceId": "jade-motion-b",
+          "row": 3
+        },
+        "crouchCharge": {
+          "sourceId": "jade-motion-b",
+          "row": 4
+        },
+        "taunt1": {
+          "sourceId": "jade-correction-a",
+          "row": 1
+        },
+        "hitStun": {
+          "sourceId": "jade-motion-b",
+          "row": 6
+        }
+      },
+      "discardedRows": [
+        {
+          "state": "taunt1",
+          "row": 5,
+          "poses": 4,
+          "reason": "Camera row was drawn as cropped lower bodies; all four native drawings excluded, no body repair or compositing.",
+          "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.native.png"
+        }
+      ]
+    },
+    {
+      "id": "jade-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "jade-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "jade-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "jade-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "jade-correction-a",
+          "row": 2
+        },
+        "shieldBreak": {
+          "sourceId": "jade-defense",
+          "row": 3
+        },
+        "shieldExit": {
+          "sourceId": "jade-defense",
+          "row": 4
+        },
+        "dead": {
+          "sourceId": "jade-defense",
+          "row": 5
+        },
+        "defeat": {
+          "sourceId": "jade-defense",
+          "row": 6
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "jade-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "jade-combat-a-1",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "jade-combat-a-1",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "jade-combat-a-1",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "jade-combat-a-1",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "jade-combat-a-2",
+          "row": 0
+        },
+        "chargeLoop": {
+          "sourceId": "jade-combat-a-2",
+          "row": 1
+        },
+        "chargeRelease": {
+          "sourceId": "jade-combat-a-2",
+          "row": 2
+        },
+        "chargeRecovery": {
+          "sourceId": "jade-combat-a-2",
+          "row": 3
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "jade-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "jade-combat-b-1",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "jade-combat-b-1",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "jade-combat-b-1",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "jade-combat-b-1",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "jade-combat-b-2",
+          "row": 0
+        },
+        "intro": {
+          "sourceId": "jade-combat-b-2",
+          "row": 1
+        },
+        "victory": {
+          "sourceId": "jade-combat-b-2",
+          "row": 2
+        }
+      },
+      "discardedRows": []
+    },
+    {
+      "id": "jade-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeAttack",
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeAttack": {
+          "sourceId": "jade-ledge-1",
+          "row": 0
+        },
+        "ledgeCatch": {
+          "sourceId": "jade-ledge-1",
+          "row": 1
+        },
+        "ledgeHang": {
+          "sourceId": "jade-ledge-1",
+          "row": 2
+        },
+        "ledgeClimb": {
+          "sourceId": "jade-ledge-1",
+          "row": 3
+        },
+        "ledgeDrop": {
+          "sourceId": "jade-ledge-2",
+          "row": 0
+        },
+        "ledgeJump": {
+          "sourceId": "jade-ledge-2",
+          "row": 1
+        }
+      },
+      "discardedRows": [
+        {
+          "state": "reservedGripStudy",
+          "row": 3,
+          "poses": 4,
+          "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+          "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.native.png"
+        },
+        {
+          "state": "reservedStandingStudy",
+          "row": 2,
+          "poses": 4,
+          "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+          "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png"
+        },
+        {
+          "state": "reservedCameraStudy",
+          "row": 3,
+          "poses": 4,
+          "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+          "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png"
+        },
+        {
+          "state": "reservedStandingStudy",
+          "row": 3,
+          "poses": 4,
+          "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+          "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.native.png"
+        }
+      ]
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "evidence": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/source-row-review.json",
+    "outfit": "Original2003 Jade: short black swept hair, green cloth headband (no hat), green lipstick and eyes, darkgreen cropped jacket, white tank top, teal/green swirl-pattern trousers, brown sneakers, dark fingerless wrist gloves, compact round-lens camera and retractable blunt metallic Daï-Jo.",
+    "weapons": "Physical Daï-Jo staff; personal special is informational camera use with zero damage; no offensive camera ray, sword, shield or firearm.",
+    "limitations": [
+      "New generated pixel-art adaptations, not official source animation frames; source1to1Verified remainsfalse.",
+      "Continuous shield states depict staff bracing/evasive recovery; original2003 usesdodging. Platform-fighter shields/aerials and timings are declared adaptations.",
+      "Opposite facing mirrors the sprite at runtime and is not counted as newart; anatomical equipment handedness in mirrored camp is not source-certified."
+    ]
+  },
+  "incompleteInitialSources": [
+    {
+      "id": "jade-motion-b",
+      "requested": 32,
+      "observed": 28,
+      "missingState": "crouchIdle",
+      "excludedState": "taunt1",
+      "reason": "Only seven rows returned; photo row drawn with cropped legs."
+    },
+    {
+      "id": "jade-defense",
+      "requested": 32,
+      "observed": 28,
+      "missingState": "perfectShield",
+      "reason": "Only seven rows returned; missing state independently generated."
+    }
+  ],
+  "rejectedSources": []
+}

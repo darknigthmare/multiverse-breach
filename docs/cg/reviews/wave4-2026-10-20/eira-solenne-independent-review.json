@@ -1,0 +1,787 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "eira_solenne",
+  "incarnation": "Viridienne Ultime — original project Eira Solenne selected atlas and individual ocDlcPacks dossier, no portraitV2 exists",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "canonicalFidelityApproved": false,
+  "status": "complete-with-source-limitations",
+  "sourceReviewFile": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-source-review.json",
+  "sourceReferences": [
+    {
+      "path": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+      "sha256": "eeddaedeed904f504c8c8fd352f8dafc4e4d1e18486de0676edf9940beb00182",
+      "bytes": 1171835,
+      "role": "canonical-original-project-sprite-pack",
+      "referenceScope": "Eira identity, silhouette, face/hair/leaf visor, green-gold robes, staff and visible seed-orb ability",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": true,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite",
+      "referencePurpose": "identity"
+    },
+    {
+      "path": "src/game/ocDlcPacks.js",
+      "sha256": "4fa362764fd8a8feafa47cdda0985b3cbb8a2d18520e70e8f4772958ab67a69e",
+      "bytes": 81577,
+      "role": "original-project-individual-canon-and-world-text",
+      "referenceScope": "Eira hero block833 onward and Eira-specific dialogue nursery-listen and heart-question; world scenes only for Viridienne environment. Do not transfer Cael or other heroes anatomy/equipment.",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": true,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/visuals/cosmetics/openai/universes/viridienne-ultime/reference-dossier.json",
+      "sha256": "9dfcafb5f05a8d7277eb10065b41abdbfc2cb48c5fa55e316c7c7f2b0764633b",
+      "bytes": 9458,
+      "role": "original-project-world-context-with-exact-lead-confirmed",
+      "referenceScope": "leadHeroName Eira Solenne and leadReferencePath confirmed; shared architecture/palette/world motifs only, not an external official franchise source or new approval gate",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/backgrounds/lore-stages/viridienne-ultime/rpg.webp",
+      "sha256": "679cefd46a5da83c413c043fd58eff787ee4b160a66c2647282dfb41ffc8a2e8",
+      "bytes": 790536,
+      "role": "original-project-environment-only",
+      "referenceScope": "Cosmic garden architecture, glass seed enclosures, gold branching roots and distant eclipse; no character identity use",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/backgrounds/lore-stages/viridienne-ultime/combat.webp",
+      "sha256": "72cae1c64d96bed90ce5b5178e20ca6f23195a4256cf5bd6c815df04724e9f39",
+      "bytes": 681000,
+      "role": "original-project-environment-only",
+      "referenceScope": "Cosmic tree, green root light, black-gold conservatory structures and star-seed orbs; no character identity use",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/runtime-hero-source-snapshot.json",
+      "sha256": "0bff46003d563c3757fc6d322faa9bb17916604db760e9357841f342f1ab53af",
+      "bytes": 1240,
+      "role": "derived-runtime-fields-and-selection-snapshot",
+      "referenceScope": "Actual HEROES_DB eira_solenne spritePrompt/lore/weapon, null portrait and production, selected sprite path; not an independent visual source",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    }
+  ],
+  "limitations": [
+    "Wholly original project character. The selected atlas and Eira-specific visual/spritePrompt/lore define internal authority, never an official external franchise reference.",
+    "Actual HEROES_DB portrait and production fields are null; Eira Solenne and Viridienne are absent from originalUniversesManifestV2, and no own V2 portrait file exists. Eira Hrafnsdottir from Nine Realms is a different character and is excluded.",
+    "Exact selected atlas is retained byte-for-byte and its crops are nearest inspection derivatives, not extra independent references.",
+    "The small source limits exact iris colors beneath the translucent visor, flower petal counts, tiny gold root embroidery, globe interior and unseen costume geometry. Do not certify microdetails or invent a foreign portrait.",
+    "Shared world dossier and two background assets supply environment only; historical generationPrompt text is metadata, not a new instruction or approval requirement.",
+    "Age remains unknown; preserve source apparent proportions in family-safe scenes without romance, sexualization or invented adulthood.",
+    "New settings are original Viridienne cosmic-garden scenes. CG05 is the project Nexus ability variant; CG09–11 are Fan Art; CG12–15 are What If, with13 solely genderSwap and15 solely firstStep at the first forbidden-nursery entry, same age.",
+    "Every real native needs independent visual acceptance before exports. No perfect1:1 fidelity certification follows from a filename, matching hash or internal-canon source status."
+  ],
+  "axes": [
+    "source incarnation",
+    "silhouette/anatomy",
+    "face/hair/visible accessories",
+    "clothing/palette",
+    "equipment continuity",
+    "distinct real pose",
+    "distinct coherent environment",
+    "explicit theme/family scope",
+    "full silhouette and equipment margins"
+  ],
+  "plannedTypes": {
+    "CG01": "characterSolo",
+    "CG02": "weaponSolo",
+    "CG03": "decorSolo",
+    "CG04": "coherentScene",
+    "CG05": "actionScene",
+    "CG06": "introPose",
+    "CG07": "victoryPose",
+    "CG08": "defeatPose",
+    "CG09": "beachFamily",
+    "CG10": "maidService",
+    "CG11": "goofy",
+    "CG12": "alignmentSwap",
+    "CG13": "genderSwap",
+    "CG14": "zombieVersion",
+    "CG15": "firstStep"
+  },
+  "entries": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "nativePath": "/workspace/generated_images/exec-32b92bd4-c6df-4aaa-b572-48f36703358e.png",
+      "sha256": "48bff2d556a7240671d4287e4ca39374737766618cf3506fd6946a5ec4f63c84",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:41:27.870057+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Whole reference Eira with translucent double leaf visor, long dark hair, white flower at wearer-right temple/image-left, closed deep-green gold-root robe/collar and two green/gold boots. Right bare hand presents a small seed, left holds whole vine/photosphere staff. Two arms/two legs, no extra appendage; bent/foreshortened palm fingers naturally overlap. Entire robe, hair, globe and staff bottom contained. Distinct original cosmic-nursery lane; precise iris beneath visor, tiny embroidery and globe interior remain uncertified."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG02",
+      "type": "weaponSolo",
+      "nativePath": "/workspace/generated_images/exec-d8c764a4-430d-4cfd-86e4-56e65a178af8.png",
+      "sha256": "ef5fa96abe9741a40c586b775357676743ad23e780376b6850cb29987bac7ba9",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:39:03.763039+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Whole vine-wrapped brown/bronze staff on low circular support, gold leafy basket and reflective round globe with green/gold seed detail, plus two separate small green seed-orbs grounded in own attack source. Entire globe and bottom point framed with positive margins. No character, mannequin or foreign weapon. Globe micro-interior remains an interpretation of low-resolution internal authority. New glass-tool alcove and star window support Viridienne context."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG03",
+      "type": "decorSolo",
+      "nativePath": "/workspace/generated_images/exec-6fb36939-b882-4e9f-adb2-42cfb8033392.png",
+      "sha256": "57d6dfa268e6dc1600e3dae4aa3959170e3c25a96627c4b251ec3410a4ec9907",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:41:01.891537+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Empty high-angle orbital-canopy crossroads with branching root bridges, transparent planet-seed conservatories, white cosmic tree, black/gold arches and purple eclipse sky. World motifs closely align with qualified internal RPG/combat references while composition is new. No character, face or personal staff introduced. Several converging/diverging pathways remain distinct from the tool alcove and future character settings; exact architecture is authored rather than a canon-room claim."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "nativePath": "/workspace/generated_images/exec-b8363651-4adf-49e8-8f42-d98244f29022.png",
+      "sha256": "52bf6da86ad47398c6067eba2c1ac9e941ee8f98a05bcf592f136bbe8ec2678d",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:53:46.776591+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Targeted framing revision closes the left cape cut: fabric now folds inward with continuous background margin. A second green/gold boot is partly but clearly visible behind the seed pot, consistent with kneeling under a closed robe; main forward boot entire. Whole staff/globe/leaves contained with margin. Original normal hands, right palm above seed, left staff grip, leaf visor, wearer-right flower and nursery setting preserved. No new anatomy invented; hidden knee detail remains uncertified."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG04",
+          "type": "coherentScene",
+          "nativePath": "/workspace/generated_images/exec-08db5c0d-460d-43c0-96fc-958a2f2341bb.png",
+          "sha256": "3a12e95c1ffc4c3cf07a19c1a4993c4d73fe751760826c1a98a4d3f0d37eea31",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-20T10:48:07.429321+00:00",
+          "decision": "needs-framing-correction",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Kneeling seed-listening scene preserves correct face/visor/flower, two normal hands and whole staff, but the wide image-left robe/cape pan crosses the canvas edge. Only one boot visible under kneeling robe, the other naturally hidden; improve readable foot placement if possible while keeping modest closed robe. Require a framing/cape-fold edit before packaging, not a new identity."
+          },
+          "findings": [
+            "Image-left cape pan is cut by the canvas edge; fold/reframe it fully inside with margin. Keep whole staff leaves and two readable boot placements if naturally achievable."
+          ],
+          "limitations": [
+            "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "nativePath": "/workspace/generated_images/exec-be8e95cb-d643-4b60-be36-67cde4dd05a9.png",
+      "sha256": "de2a55bccba33beeaaad7b8ef7525ad8ddd4b72b7a0bd5437dfc19775dbf3dcd",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:48:07.438746+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Nexus orbit-redirection lunge with two normal hands holding a diagonal whole staff and two fully framed boots on the root bridge. Source leaf visor, wearer-right flower, long dark hair and closed green/gold root robes retained. Entire staff globe/point and cloak tips contained; bright arc is an intentional trajectory effect crossing the scene, no injured body or extra limb. Distinct airborne conservatory/root setting with clear action theme."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "nativePath": "/workspace/generated_images/exec-208cc287-c23b-495b-aae9-bf75dbdcf787.png",
+      "sha256": "5443a647b4145721375e69e9601d62ba1d592c94c749f981161591ce4479d5e2",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:47:15.066416+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Descending arrival on curved observatory stair, right hand lifts a small robe fold while left holds whole staff. Actual image-right/near boot is on the lower stair; avoid assigning an unseen knee or preserving the initial right-foot claim when robe obscures that tracing. Both boots visible, no bare thigh or foreign anatomy. Correct flower/visor/dark hair/root embroidery; full robe, hair, globe and point contained. Green nebula glass staircase distinct from nursery/tool alcove."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG07",
+      "type": "victoryPose",
+      "nativePath": "/workspace/generated_images/exec-707049e5-cf0d-4458-9013-1dab2432529f.png",
+      "sha256": "99514034fb3ee0a012a7e69797fbec772b4750b2f4d605842d46062c5544df46",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:54:21.061022+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Victory relief pose with two bare hands cupped around a small seed at heart level, complete signature staff parked in a visible side support. Five-digit hands naturally overlap around seed; normal connected arms and two whole boots visible. Source right-temple flower, translucent visor, long dark hair and closed root-embroidered robe remain stable. All garment edges contained. White constellation tree with differently colored suns and new observatory balcony clearly express shared-light victory."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG08",
+      "type": "defeatPose",
+      "nativePath": "/workspace/generated_images/exec-a9d0c3cf-85a0-4836-b2f3-0cf8b2e3e89a.png",
+      "sha256": "188c29ed21ed2c76b77338e4c91233eab32743c1217683bdb8d552d8c5cd4d06",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:47:15.070457+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Living tired rest seated against a root, right bare hand on stone and left touching visor edge, two boots visible and entire staff leaned beside her. No injury or missing limb, normal hands with naturally bent fingers. Correct wearer-right flower, translucent leaf visor, dark hair and closed green/gold robe. Full cape edges and staff point/globe contained. Mossy root shelter and glass-house exit form a different recovery setting."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG09",
+      "type": "beachFamily",
+      "nativePath": "/workspace/generated_images/exec-c1c8f9c0-812d-4cc2-812a-9fd9f7231d0c.png",
+      "sha256": "fc202cf2098131a61a9782e6c67308057a75099a9e254e422d04d7ceb5609808",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:54:21.066271+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Family beach fan-art, torso bent from hips while right hand picks a seed-pebble and left holds bowl. Closed source robe, right flower/leaf visor/dark hair unchanged; two boot tips visible beneath drape, complete staff planted beside her. No romance, exposed thigh or invented age. Full cloak/staff within margins. Original oceanic seed-world with transparent orbital canopy and suspended islands distinct from other settings."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG10",
+      "type": "maidService",
+      "nativePath": "/workspace/generated_images/exec-a995f5c8-3502-490f-807c-dce600637d06.png",
+      "sha256": "8f161a60fdad3324f6e0c36edc775d54f3fce1b0b2fff12d8c9b3a0ed1f4a7c9",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T11:04:25.858774+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Targeted foreground furniture revision reveals complete staff shaft and bottom point at image-left, no longer hidden by bread/counter. Body, apron, source green/gold robe, wearer-right flower/visor/hair, left tray and right cup unchanged; both boots whole. Staff parked against the wall in the background, exact unseen support mechanism not certified. Family tea service and distinct conservatory lounge preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG10",
+          "type": "maidService",
+          "nativePath": "/workspace/generated_images/exec-fb4299b9-83f6-4082-ac44-6ed6288758bc.png",
+          "sha256": "31b9fffc60453f3ab7f31a7198f1b8d4ea0eceb4f6104eff9717d21703bf7d2d",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-20T10:56:07.950054+00:00",
+          "decision": "needs-equipment-visibility-correction",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Family service pose with opaque apron over closed source robe, left hand supports whole tray and right presents cup; normal source visor/flower/hair and both boots retained. However the lower staff shaft/point at image-left is hidden behind the foreground bread/counter furniture, so the entire signature equipment cannot be inspected as planned. Request local staff/foreground prop adjustment without changing body/costume or kitchen setting."
+          },
+          "findings": [
+            "Foreground counter/bread hides the lower end of the staff; reveal the entire staff including point via local prop repositioning."
+          ],
+          "limitations": [
+            "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG11",
+      "type": "goofy",
+      "nativePath": "/workspace/generated_images/exec-db598cb8-2157-405b-9cf8-219c2f4592b8.png",
+      "sha256": "61f4afff22b6b683858845588f63eca0e7ae7fc129f172e472ff869a90d45bcd",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T11:04:25.862338+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Targeted accessory revision moves the single white flower/foliage cluster to wearer-right temple, image-LEFT in the frontal/upturned head; previous image-right flower removed. Face/visor, long hair, closed root robe, raised right hand/right boot, planted left boot and left staff grip preserved. All staff/globe/garment edges contained. Three orbiting seeds plus rolling pod are the actual family gag; no extra body part, age change or foreign equipment."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG11",
+          "type": "goofy",
+          "nativePath": "/workspace/generated_images/exec-7b0d9335-9d34-435c-9bcd-4d86495c28a5.png",
+          "sha256": "9e2d185c3e14736f6103ec01103cc2be6422155c9c6585034e04b0be1508b4de",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-20T10:57:10.474307+00:00",
+          "decision": "needs-source-accessory-correction",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Comic balance with right boot raised/right hand reaching toward orbiting seeds, left hand on whole staff. Three small orbiting seeds and rolling pod are actual obtained gag props, not the two-only initial wording. Body/robes/leaf visor/hair, equipment margins and hands otherwise consistent. White flower is now at image-RIGHT temple in a clearly front-facing head, i.e. wearer LEFT, contrary to selected source wearer RIGHT. Require a targeted flower/foliage side correction only."
+          },
+          "findings": [
+            "White flower/foliage cluster is on wearer-left temple; move it to wearer-right (image-left in this frontal view), preserving face/visor/hair/pose/staff."
+          ],
+          "limitations": [
+            "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG12",
+      "type": "alignmentSwap",
+      "nativePath": "/workspace/generated_images/exec-1701c1ef-9083-4fb8-8ef8-a6018046cd5c.png",
+      "sha256": "5aab0e3a0f7924346d553ce250b2eb1c49a44e9fad1d32994c9b2c05486ed2e7",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-20T10:56:07.955005+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Alignment-swap What If monoculture keeper, rigid upright pose on platform, left hand holds whole staff and right extended palm directs one gold trajectory before locked seed cages. Two connected arms/legs, correct wearer-right white flower/leaf visor/dark hair and closed green/gold robe. Both boots, garment edges and staff point/globe contained. Repeated closed constellations and standardized sun make doctrine readable without violence."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG13",
+      "type": "genderSwap",
+      "nativePath": "/workspace/generated_images/exec-43202edf-210f-40b7-97d1-a15922a42f76.png",
+      "sha256": "4a883b8e0922e9cd059c996a414ad494ed82c3c1f14435a8cf819054b0b78c0d",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T10:59:42.087230+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Masculine-presentation-only What If, slightly more angular jaw/flat closed torso with same long dark hair, translucent leaf visor, wearer-right white flower, green/gold root robe and normal human anatomy. Seated on root bench with two hands supporting entire diagonal staff across knees, globe and bottom point contained; both boots whole. No age change, extra outfit or foreign weapon. New botanical contemplation terrace, glass rose window and starry panorama distinct from other scenes."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG14",
+      "type": "zombieVersion",
+      "nativePath": "/workspace/generated_images/exec-77a93247-c1e0-4137-bb15-cc593bdb018c.png",
+      "sha256": "062eac0c2ca11f2aa79fa07a6284b9425e101965e823935c74a9d11d8c57ddb6",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T11:03:34.429756+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Nongraphic Null-germination What If: root embroidery turns white with black leaf filaments on fabric/globe, body/skin intact. Right hand at upper chest, left holds complete staff; original visor, wearer-right flower and long dark hair retained. Two whole green/gold boots and all robe/staff edges contained, no extra appendage. Dark-seed quarantine conservatory, eclipse and black roots make corruption clearly readable without gore."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG15",
+      "type": "firstStep",
+      "nativePath": "/workspace/generated_images/exec-77666e61-b9e8-4c88-9f43-2d7a09f348db.png",
+      "sha256": "8f7677b31d8dc9b21be743f9f095013f9b54a82894b3498063023e172e806855",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-20T11:03:34.434639+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "First-listening What If of same-age original Eira crossing service threshold: image-left/rear hand holds staff and image-right/forward hand approaches glowing seed in crate. Do not preserve the unfulfilled planned left-hand-staff assertion; movement is the actual offered pose. Correct leaf visor, wearer-right flower, dark hair and closed source robe, two boots and whole staff inside canvas. Original first dead-sun cargo quay, dark seed globes and dawn light express beginning without younger-body redesign."
+      },
+      "findings": [],
+      "limitations": [
+        "Visible source-model continuity, anatomy, costume/equipment, theme and composition reviewed; hidden details, exact color values and perfect1:1 likeness remain uncertified."
+      ]
+    }
+  ],
+  "summary": {
+    "reviewedCurrentSlots": 15,
+    "acceptedForPackaging": 15,
+    "openIssues": 0,
+    "perfectVisualFidelityCertified": false
+  },
+  "updatedAt": "2026-10-20T11:04:25.862399+00:00",
+  "reviewCompletedAt": "2026-10-20T11:04:25.862399+00:00",
+  "deliveryValidation": {
+    "receiptFile": "docs/cg/eira-solenne-wave4-2026-10-20.json",
+    "receiptSha256": "74eb41ea605db670ca0a3df590931a2145db557276d6ae71b1798fe912ec5748",
+    "checkedAt": "2026-10-20T11:09:41.572Z",
+    "entries": [
+      {
+        "slot": "CG01",
+        "nativeSha256": "48bff2d556a7240671d4287e4ca39374737766618cf3506fd6946a5ec4f63c84",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/character-solo-wave4-2026-10-20.png",
+        "sourceSha256": "2def2131cc3af34b59165c3f81a7fa7bf76d2a2c44f06f7f88fb5954b1c2460b",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG02",
+        "nativeSha256": "ef5fa96abe9741a40c586b775357676743ad23e780376b6850cb29987bac7ba9",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/signature-weapon-wave4-2026-10-20.png",
+        "sourceSha256": "0d26bc5baffdebb640745fd974576e6f51a4c7e198969ad57ed35601253e7127",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG03",
+        "nativeSha256": "57d6dfa268e6dc1600e3dae4aa3959170e3c25a96627c4b251ec3410a4ec9907",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/decor-wave4-2026-10-20.png",
+        "sourceSha256": "a38bf99643c7c151317e44fcaf3a25e9120b9c53aaf4c0080ebe3e0169635d41",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG04",
+        "nativeSha256": "52bf6da86ad47398c6067eba2c1ac9e941ee8f98a05bcf592f136bbe8ec2678d",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/coherent-scene-wave4-2026-10-20.png",
+        "sourceSha256": "a846f819a255a7ba73f46d507a3355a5073d577909ba777aee4e6aed7738f117",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG05",
+        "nativeSha256": "de2a55bccba33beeaaad7b8ef7525ad8ddd4b72b7a0bd5437dfc19775dbf3dcd",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/action-scene-wave4-2026-10-20.png",
+        "sourceSha256": "0d5931d9cd1411327b0c1ea3fbb7c0b0039e67b0fcd557d3e7bd5e80e4570458",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG06",
+        "nativeSha256": "5443a647b4145721375e69e9601d62ba1d592c94c749f981161591ce4479d5e2",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/intro-pose-wave4-2026-10-20.png",
+        "sourceSha256": "497470aba8636d58905bc0d618708bf97abe6a4a4dcb0edffdceaa0c8a846685",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG07",
+        "nativeSha256": "99514034fb3ee0a012a7e69797fbec772b4750b2f4d605842d46062c5544df46",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/victory-pose-wave4-2026-10-20.png",
+        "sourceSha256": "be8e878dabcab7dc78821d565b346c8299a72ec1e63a53e6f15faff79bfc4692",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG08",
+        "nativeSha256": "188c29ed21ed2c76b77338e4c91233eab32743c1217683bdb8d552d8c5cd4d06",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/defeat-pose-wave4-2026-10-20.png",
+        "sourceSha256": "018cf2c0b55260b381924d359905e39e3135e848a93d01a2e634412a79d316d7",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG09",
+        "nativeSha256": "fc202cf2098131a61a9782e6c67308057a75099a9e254e422d04d7ceb5609808",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/beach-family-wave4-2026-10-20.png",
+        "sourceSha256": "0e757b7b7f6b53d9e041c59e105a403fb40244ef53b736c5454f4d161130e426",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG10",
+        "nativeSha256": "8f161a60fdad3324f6e0c36edc775d54f3fce1b0b2fff12d8c9b3a0ed1f4a7c9",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/maid-service-wave4-2026-10-20.png",
+        "sourceSha256": "aca36d8e8004225bdf00f7829364e0961a324f3100564f86b80120ce6a7ccf8c",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG11",
+        "nativeSha256": "61f4afff22b6b683858845588f63eca0e7ae7fc129f172e472ff869a90d45bcd",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/goofy-wave4-2026-10-20.png",
+        "sourceSha256": "27022a4c2e1d958d4f836f6be5eb046f28e3610775c9f0f44d45c531e3ed283d",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG12",
+        "nativeSha256": "5aab0e3a0f7924346d553ce250b2eb1c49a44e9fad1d32994c9b2c05486ed2e7",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/alignment-swap-wave4-2026-10-20.png",
+        "sourceSha256": "c44eca21e688360fcb78080525b7e70d5c41cb6bfe7237f3142a4a11834186da",
+        "nativeDimensions": [
+          1087,
+          1447
+        ],
+        "nativePixelIdentical": false,
+        "documentedFormatOnlyConditioning": true,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0.0016125316747293006,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG13",
+        "nativeSha256": "4a883b8e0922e9cd059c996a414ad494ed82c3c1f14435a8cf819054b0b78c0d",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/gender-swap-wave4-2026-10-20.png",
+        "sourceSha256": "520c81c8565cdff0aa7ad34aadfe5a3b7ac590b2d5c750434f00d6067e103f68",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG14",
+        "nativeSha256": "062eac0c2ca11f2aa79fa07a6284b9425e101965e823935c74a9d11d8c57ddb6",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/zombie-version-wave4-2026-10-20.png",
+        "sourceSha256": "32e3cc3bfb0d5686f21cb4d3b1ab99e1c896002e8bc3c81872abc08df04abe37",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      },
+      {
+        "slot": "CG15",
+        "nativeSha256": "8f7677b31d8dc9b21be743f9f095013f9b54a82894b3498063023e172e806855",
+        "sourcePath": "/cg/viridienne-ultime/eira-solenne/first-step-wave4-2026-10-20.png",
+        "sourceSha256": "6c089f02e9549ac618335462051bf312942ec7377fa8068727830fb5f320e356",
+        "nativeDimensions": [
+          1086,
+          1448
+        ],
+        "nativePixelIdentical": true,
+        "documentedFormatOnlyConditioning": false,
+        "formatOnlyConditioningPixelReproductionExact": true,
+        "aspectRatioDrift": 0,
+        "allThreeAssetsHashAndDimensionsValid": true
+      }
+    ],
+    "assetCount": 45,
+    "allAssetChecksPassed": true,
+    "distinctIds": 15,
+    "distinctPoseIds": 15,
+    "distinctBackgroundIds": 15,
+    "distinctSourceImages": 15,
+    "nativePixelIdenticalSlots": [
+      "CG01",
+      "CG02",
+      "CG03",
+      "CG04",
+      "CG05",
+      "CG06",
+      "CG07",
+      "CG08",
+      "CG09",
+      "CG10",
+      "CG11",
+      "CG13",
+      "CG14",
+      "CG15"
+    ],
+    "formatOnlyConditionedSlots": [
+      "CG12"
+    ],
+    "allSourcePixelsReproducedWithoutSemanticPainting": true,
+    "contactSheet": {
+      "path": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-delivered.webp",
+      "sha256": "c49627a54359ffcce1613ab149d1c9216e2e670c8bc84206c093bb0321812108",
+      "actuallyViewed": true,
+      "reviewer": "excel_fidelite"
+    },
+    "canonicalFidelityApproved": false
+  }
+}

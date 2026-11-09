@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-23",
+  "reviewedAt": "2026-10-23T01:31:13.605Z",
+  "reviewer": "/root/prompt_global_roster",
+  "scope": "Five old then-selected atlas baselines visually compared with their five actual current individual internal V2 portraits, before runtime integration; plus the separately documented real Batman atlas refusal. The five baseline defects apply only to their exact old path/SHA and do not assert a defect in any later selected corrected atlas.",
+  "baselineRuntimeSnapshot": {
+    "path": ".tmp/cg-wave6-2026-10-23/runtime-baseline-before-integration.json",
+    "sha256": "c6f4bbc1675a4a5600c84d3d6897bc9e7b6cc7a2d3f5f69fd681d015539683d3"
+  },
+  "internalOriginalAuthorities": 5,
+  "newExternalIdentitySources": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "independentFromFiveNewAtlasAndCgProducers": true,
+  "newArtworkViewedByThisReview": false,
+  "visualInspectionPerformed": {
+    "currentInternalV2Portraits": 5,
+    "oldSelectedAtlases": 5,
+    "batmanOldAtlasAndOfficialCoverPreviouslyViewedInSeparateRecordedAttempt": true
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "brann_crow",
+      "incarnation": "The Crownless Sea — Brann Crow selected individual V2 portrait, original project canon (2026)",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "brann_crow",
+        "path": "/sprites/generated/heroes/the-crownless-sea/brann-crow.png",
+        "sha256": "38860bc450a65d0d522b1964bbf4ef5a5a0706c1f14dc195bcf9bb7c79c63f44",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-4x4-sheet-and-current-selected-individual-v2-portrait-actually-viewed",
+      "category": "missing-signature-axe-and-divergent-hair-beard-coat",
+      "observed": [
+        "L’ancien atlas représente un pirate mince aux cheveux noirs souples, visage presque rasé ou barbe très courte, long manteau bleu marine à bordure ocre, chemise claire et ceinture rouge-brun. Les seize silhouettes sont dépourvues de grande hache.",
+        "Le portrait V2 sélectionné montre un homme plus massif à barbe noire fournie, côtés de tête rasés et mèches noires tirées vers l’arrière, visage marqué, chemise écrue ouverte, couches de cuir brun et manteau brun usé à revers/liserés dorés et pans intérieurs ocre déchirés.",
+        "Une grande hache à manche long et large lame sombre/argentée est très visible en diagonale dans le portrait ; elle ne peut être remplacée par les poings nus de l’ancien atlas.",
+        "Les bottes hautes, sangles et pièce sombre de protection au genou visible dans le portrait participent à une silhouette plus lourde que celle de l’ancien bretteur en manteau marine."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/crownless_sea/heroes/brann_crow.png",
+          "sha256": "7f43fe9b56fc4afae65bb3950a432cf645608c6316df31248dd4162046a6ce88",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-v2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/brann-crow-reference-evidence-wave6-2026-10-23.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-v2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne ; les autres personnes du port et le précédent atlas ne qualifient pas le visage ou le costume de Brann.",
+          "Le portrait montre principalement le devant en trois quarts ; dos du manteau, face cachée de la hache, petits anneaux, cicatrices et détails exacts des yeux ne constituent pas un modèle complet certifié.",
+          "Les constats portent uniquement sur le chemin et le SHA de l’ancien atlas au moment de cette inspection, jamais sur un nouvel atlas installé ensuite."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-atlas-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Keep this exact old file unchanged as an accessible variant. Assess any new V2-based atlas separately against its source and all sixteen poses before selection. This finding is not a judgment on the new artwork.",
+      "comparisonEvidenceFile": "docs/cg/brann-crow-reference-evidence-wave6-2026-10-23.json",
+      "comparisonReviewers": [
+        "/root/prompt_global_roster"
+      ],
+      "reviewedAt": "2026-10-23T01:31:13.605Z",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "lyra_hexwind",
+      "incarnation": "Aetherion: Seven Laws of Magic — Lyra Hexwind current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "lyra_hexwind",
+        "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind.png",
+        "sha256": "ba2de411f810bc944c9030aa2026ac831b2a12e5233903b1fb6614e731c156b6",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-4x4-sheet-and-current-selected-individual-v2-portrait-actually-viewed",
+      "category": "missing-spell-focus-and-divergent-hair-costume-equipment",
+      "observed": [
+        "L’ancien atlas conserve une magicienne aux longs cheveux bleu nuit attachés haut, tunique/manteau marine à petites bordures dorées, bottes brunes et mains vides ; ni grand foyer magique tenu ni rack de fioles n’y est visible.",
+        "La V2 sélectionnée a une chevelure beaucoup plus violette avec mèches cyan visibles, un long manteau violet déchiré à bordures dorées sur un buste noir sanglé, de grands brassards et bottes sombres détaillées.",
+        "Le portrait porte un long instrument de focalisation : manche sombre, cage dorée autour d’un polyèdre violet et prolongement cristallin cyan. Ce volume et le porte-fioles latéral sont des repères absents des anciennes poses non armées.",
+        "Les diagrammes cyan/pourpre flottants, le cristal pectoral et les sangles de la V2 ne justifient pas de conserver la silhouette simplifiée de l’ancienne tunique marine."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/lyra_hexwind.png",
+          "sha256": "ed446cb1fe7ca4694985c06a19866f78e522b3257f8f6c512d04665deb636940",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-v2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/lyra-hexwind-reference-evidence-wave6-2026-10-23.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-v2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "Autorité canon interne originale du projet, sans nouvelle référence externe de franchise ; Lyra partage un univers avec Orin, pas son gant mécanique ou sa propre identité.",
+          "Une vue frontale en trois quarts ne fixe pas le dos du manteau ni chaque face cachée du foyer, les petits ornements, les inscriptions de fioles ou une géométrie d’iris parfaite.",
+          "Les diagrammes lumineux sont des motifs géométriques abstraits ; aucun texte lisible ou pouvoir illimité ne peut être déduit de leur présence.",
+          "Cette observation de baseline ne porte sur aucune nouvelle pose ou nouvelle sélection runtime."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-atlas-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Keep this exact old file unchanged as an accessible variant. Assess any new V2-based atlas separately against its source and all sixteen poses before selection. This finding is not a judgment on the new artwork.",
+      "comparisonEvidenceFile": "docs/cg/lyra-hexwind-reference-evidence-wave6-2026-10-23.json",
+      "comparisonReviewers": [
+        "/root/prompt_global_roster"
+      ],
+      "reviewedAt": "2026-10-23T01:31:13.605Z",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "mercy_ash",
+      "incarnation": "Infernum: Nine Pits — Mercy Ash individual currently selected V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "mercy_ash",
+        "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash.png",
+        "sha256": "98d14fc54fcd0a06bba8eca9f496f4d76c8b14aabce10f49d9bb932028b03922",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-4x4-sheet-and-current-selected-individual-v2-portrait-actually-viewed",
+      "category": "source-identity-replaced-by-unarmed-tank-top-fighter",
+      "observed": [
+        "L’ancien atlas montre une combattante à peau hâlée et bras nus, débardeur écru, large pantalon bleu, ceinture/écharpe rouge et bottes brunes. Les mains restent nues ou bandées sans faux ni lanterne.",
+        "La V2 a une peau cendrée grise, cheveux sombre-violet attachés haut, regard éclairé ambre, long manteau/cape prune déchiré et large encolure/écharpe ocre-or sur des vêtements sombres ajustés.",
+        "Le grand fer de faux incurvé à bord incandescent orange, le long manche sombre et la lanterne suspendue à une chaîne structurent clairement le portrait ; aucun de ces équipements n’apparaît dans l’ancien atlas.",
+        "Les gants/bandes d’avant-bras, nombreuses sangles et hautes bottes sombres lacées/bouclées de la V2 diffèrent de la tenue de combat sans manches et du pantalon ample bleu de l’ancien fichier."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/infernum_nine_pits/heroes/mercy_ash.png",
+          "sha256": "2c78d2844181d02dab26c7cd07de88c10f8c59c40ab40cbbb48aeb410b699dc5",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-v2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/mercy-ash-reference-evidence-wave6-2026-10-23.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-v2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "Portrait original interne uniquement ; les décors et personnages d’autres licences ne qualifient pas Mercy.",
+          "Des pans de cape sortent du bord gauche de la source ; face arrière, extrémités cachées des tissus, fixation exacte des chaînes et petites marques du visage restent partiellement indéterminées.",
+          "L’éclairage rouge/ambre et les petits pixels des yeux ne suffisent pas à certifier une teinte d’iris, un âge chronologique ou chaque maillon métallique.",
+          "Ancien atlas comparatif conservé ; aucune conclusion sur le nouvel atlas produit séparément."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-atlas-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Keep this exact old file unchanged as an accessible variant. Assess any new V2-based atlas separately against its source and all sixteen poses before selection. This finding is not a judgment on the new artwork.",
+      "comparisonEvidenceFile": "docs/cg/mercy-ash-reference-evidence-wave6-2026-10-23.json",
+      "comparisonReviewers": [
+        "/root/prompt_global_roster"
+      ],
+      "reviewedAt": "2026-10-23T01:31:13.605Z",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "mara_ell",
+      "incarnation": "The Drowned Testament — Dr Mara Ell current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "mara_ell",
+        "path": "/sprites/generated/heroes/the-drowned-testament/mara-ell.png",
+        "sha256": "cec22b2901cd358af7123aac36bb947f225b589e5579daf67b64b54bd69321ee",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-4x4-sheet-and-current-selected-individual-v2-portrait-actually-viewed",
+      "category": "missing-blue-spectacles-backpack-and-single-signal-lamp",
+      "observed": [
+        "L’ancien atlas montre une femme en chignon brun, manteau vert-gris ouvert, chemise blanche à col ouvert/manches retroussées, mains vides et visage sans lunettes lisibles.",
+        "Le portrait V2 sélectionné montre un chignon noir désordonné, lunettes rondes à reflets bleu/cyan, grande écharpe sombre, manteau long bleu-pétrole à doublure grise et vêtements intérieurs beaucoup plus sombres.",
+        "Une seule longue lampe de signal à cage métallique et gros cœur cyan est tenue dans le portrait ; le sac/harnachement dorsal laisse aussi dépasser un cristal violet au-dessus de l’épaule. Ces deux masses d’équipement manquent dans l’ancien atlas.",
+        "Les gants/brassards sombres, sangles de poitrine/cuisses, poche de hanche et hautes bottes de la V2 ne correspondent pas aux mains nues et à la simple blouse claire des anciennes silhouettes."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/drowned_testament/heroes/mara_ell.png",
+          "sha256": "2c11636cc62c7adcbcce4cd042454ef44a80b5f62f800064a08d200bae3316c5",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-v2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/mara-ell-reference-evidence-wave6-2026-10-23.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-v2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "Il s’agit de Dr Mara Ell du Drowned Testament, autorité interne V2 ; aucun transfert de blouse blanche, d’arme ou d’accessoires d’une autre scientifique du roster.",
+          "Les reflets des lunettes ne qualifient pas exactement les iris ; le dos et l’intérieur du sac, les petites étiquettes, coutures et géométrie de fixation de la lampe ne sont pas entièrement visibles.",
+          "La lampe visible est unique ; les effets de gameplay ne prouvent pas un deuxième dispositif physique.",
+          "Constat limité à l’ancien chemin/SHA de baseline ; le nouvel atlas demande sa propre revue de seize poses."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-atlas-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Keep this exact old file unchanged as an accessible variant. Assess any new V2-based atlas separately against its source and all sixteen poses before selection. This finding is not a judgment on the new artwork.",
+      "comparisonEvidenceFile": "docs/cg/mara-ell-reference-evidence-wave6-2026-10-23.json",
+      "comparisonReviewers": [
+        "/root/prompt_global_roster"
+      ],
+      "reviewedAt": "2026-10-23T01:31:13.605Z",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "orin_vale",
+      "incarnation": "Aetherion: Seven Laws of Magic — Orin Vale, current selected individual V2 original-project portrait2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "orin_vale",
+        "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale.png",
+        "sha256": "b1e3f6783b01d1d94a3e3fe9eeec2f55328e01c91cc0c05ba18f2a3d8b54fc33",
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-4x4-sheet-and-current-selected-individual-v2-portrait-actually-viewed",
+      "category": "missing-asymmetric-gold-gauntlet-flasks-and-ochre-coat-lining",
+      "observed": [
+        "L’ancien atlas reprend un jeune homme aux cheveux bleu-noir et un manteau bleu bordé d’or, mais les mains et avant-bras sont presque ordinaires, les doublures très sombres et les nombreuses fioles du portrait absentes.",
+        "La V2 sélectionnée porte une large écharpe marine, un long manteau bleu usé à grandes doublures ocre/or, un buste sombre couvert de sangles et plusieurs fioles/récipients bleus et ambre suspendus à la ceinture.",
+        "Le grand gant/gauntlet doré asymétrique du bras anatomique droit, avec articulation des doigts et noyau cyan au poignet, est un volume d’identité majeur de la V2 ; l’ancien atlas n’en offre aucune représentation.",
+        "La grosse fiole ronde bleue au-dessus de la paume droite et le petit effet/récipient ambre de l’autre main ne peuvent être remplacés par les seuls poings de combat de l’ancienne planche. Le foyer à cage violette de Lyra ne fait pas partie de ce portrait d’Orin."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/orin_vale.png",
+          "sha256": "499c665e5ada18a1848c2f979315bbbfa30f204d7a6b285f5f1ab828c4abc7e0",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-v2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/orin-vale-reference-evidence-wave6-2026-10-23.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-v2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "V2 originale interne d’Orin ; partager Aetherion avec Lyra ne permet ni échange de chevelure, ni reprise de son long foyer magique.",
+          "La construction inverse du gauntlet et du manteau, les petits bijoux, le nombre exact et les inscriptions des fioles ainsi que la couleur précise de chaque iris ne sont pas entièrement qualifiés par une seule vue.",
+          "Les effets bleu/ambre illustrent la composition et ne certifient pas des pouvoirs sans limites.",
+          "Ancien fichier conservé comme variante ; aucune inspection des nouvelles images n’est revendiquée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-atlas-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Keep this exact old file unchanged as an accessible variant. Assess any new V2-based atlas separately against its source and all sixteen poses before selection. This finding is not a judgment on the new artwork.",
+      "comparisonEvidenceFile": "docs/cg/orin-vale-reference-evidence-wave6-2026-10-23.json",
+      "comparisonReviewers": [
+        "/root/prompt_global_roster"
+      ],
+      "reviewedAt": "2026-10-23T01:31:13.605Z",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "batman_n52",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+        "sha256": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1",
+        "selectedInRuntime": true
+      },
+      "inspection": "existing-sixteen-frame-sheet-and-official-issue35-source-reinspected; no generated-output inspection possible",
+      "category": "unmasked-generic-tactical-substitution",
+      "observed": "Selected first frame is an uncovered brown-haired human with hair tied back, broad rectangular goggles, gray technical parka, orange harness/cable tool and no bat cowl or cape. The official Endgame#35 source instead establishes black pointed cowl, white drawn eyes, exposed jaw, black cape/gauntlets and gray torso.",
+      "sourceComparison": {
+        "issue": 35,
+        "url": "https://static.dc.com/dc/files/default_images/batman_v2_35_5b2ad7bd4de4f7.89843609.jpg",
+        "finalUrl": "https://static.dc.com/dc/files/default_images/batman_v2_35_5b2ad7bd4de4f7.89843609.jpg",
+        "path": "docs/cg/references/wave2-2026-10-18/batman-new52-endgame/batman-2011-35-official-cover.jpg",
+        "bytes": 379865,
+        "sha256": "f93f670f415ee2b465ee7b0e17315a0cb1507564e30f092024f369b34f419818",
+        "width": 1249,
+        "height": 1920,
+        "viewed": true,
+        "visuallyInspected": true,
+        "usedForIdentity": true,
+        "excluded": false,
+        "referencePurpose": "identity",
+        "referenceScope": "dc-new52-batman-endgame-2014-2015",
+        "referenceCharacter": "batman_n52",
+        "role": "official-comic-cover-standard-identity-inspected",
+        "sourcePage": "https://www.dc.com/comics/batman-2011/batman-35",
+        "sourcePublicationDate": "2014-10-08",
+        "sourceCopyright": "© & ™ DC. ALL RIGHTS RESERVED",
+        "observedDetails": "Couverture standard New52 Batman#35, EndgamePart1. Batman au centre porte une cagoule noire à deux pointes, yeux blancs dessinés, mâchoire découverte, cape noire ample, tunique grise à emblème chauve-souris noir, gants/gauntlets noirs. Corps humain standard ; aucun casque Nolan ni JusticeBuster. La construction verte de GreenLantern masque l’abdomen/ceinture et une partie des jambes.",
+        "canonicalFidelityApproved": false,
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "sourceEvidenceFile": "docs/cg/batman-new52-endgame-reference-evidence-wave2-2026-10-18.json",
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Restore standard New52 Endgame identity from the inspected issue#35: pointed black cowl, covered hair, white comic eyes, exposed human jaw, black cape/gauntlets and gray bat-emblem torso. Do not import Nolan segmentation, generic goggles/parka, giant green fist from the surrounding scene, JusticeBuster or symbolic winged#40costume. Exact belt/back/boots remain unqualified by this cover.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Preserve the unchanged wrong-identity historical atlas and this actual atlas refusal. No new sprite exists to review, install or select; do not reinterpret the reference copy as artwork or turn this refusal into a CG refusal or N/A.",
+      "sourceCoverageDecision": "Official standard cover #35 qualifies visible cowl, white comic eyes, exposed jaw, grey bat-emblem torso, cape and black gauntlets. Green Lantern construction still hides abdomen/belt and much of the lower body; exact belt/back/boot geometry remains unqualified. One currently authorized conservative limited-source atlas attempt was genuinely made on 23 October 2026 and refused at output (category other); no image was returned. This refusal does not resolve the source-coverage gap.",
+      "reviewer": "/root/prompt_global_roster",
+      "reviewedAt": "2026-10-23T01:10:34.024859+00:00",
+      "correctionAttemptEvidence": "docs/cg/batman-new52-sprite-wave6-2026-10-23.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "stage": "output",
+        "category": "other",
+        "categories": [
+          "other"
+        ],
+        "requestId": "1b852c71-5d15-431f-8dea-1ad86279041e",
+        "serviceRefusalForAtlas": true,
+        "historicalAssetPreserved": true
+      },
+      "sourceAuthorityReusedNoNewIndependentSource": true
+    }
+  ]
+}

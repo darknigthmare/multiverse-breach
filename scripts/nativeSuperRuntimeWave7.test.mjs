@@ -5,9 +5,10 @@ import { createServer } from 'vite';
 import sharp from 'sharp';
 import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
+import { historicalWave7HanActor } from './combatSourceVersionFixturesWave7.mjs';
 
 let supportsNative, getVisual, drawVisual, getCharacterVisual, drawCharacterVisual, supportsTracked, sampleMotion, sampleCharacterMotion, preloadAssets, getSummonAssets, beginMeleeShield;
-let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, resolveCombatAbility, historicalSnapshot;
+let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, resolveCombatAbility, historicalSnapshot, getSmashAbilityProfile;
 const observations = [], originalImage = globalThis.Image;
 const engines = [], noop = () => {}, particles = { add: noop };
 const dummy = id => ({
@@ -33,6 +34,7 @@ const selectedWave13 = {
 // actions under an unregistered fixture ID, then restore their recorded source
 // ID for admission to the old pure visual helper.
 function historicalAbility(id, slot = 'special') {
+  if (id === 'han_solo') return resolveCombatAbility(historicalWave7HanActor(), slot);
   if (!revisedByWave13.has(id)) return resolveCombatAbility(hero(id), slot);
   const basic = historicalSnapshot.authored[id], completion = historicalSnapshot.completion[id];
   const record = basic[slot] ? basic : completion;
@@ -49,8 +51,23 @@ const hp = actors => actors.map(x => x.currentHp);
 const meter = context => context.mode === 'fighter' ? context.actor.meter : context.actor.specialCharge;
 const setMeter = (context, value) => { if (context.mode === 'fighter') context.actor.meter = value; else context.actor.specialCharge = value; };
 
-function make(mode, side, heroId, withAlly = false) {
-  const own = [hero(heroId), ...(withAlly ? [dummy('allied-patient')] : [])];
+function make(mode, side, heroId, withAlly = false, sourceVersion = 'native') {
+  let ownHero = heroId === 'han_solo' && sourceVersion !== 'current' ? historicalWave7HanActor() : hero(heroId);
+  if (mode === 'fighter' && heroId === 'leia_organa' && sourceVersion === 'native-projectile') {
+    // Existing explicit Fighter profile metadata selects the declared native
+    // action instead of the current supplemental direct-contact adaptation.
+    // The current310px/three-contact default is covered independently by
+    // reauditFighterSupplemental.test.mjs, including both camps and pool checks.
+    const native = resolveMeleeSuper(ownHero);
+    assert.equal(native.name, 'Tir au blaster de Leia'); assert.equal(native.delivery, 'projectile'); assert.equal(native.range, 640);
+    assert.equal(native.shape, 'single'); assert.equal(native.maxTargets, 1); assert.equal(native.meterCost, 100);
+    ownHero = { ...ownHero, special: { ...native.sourceAbility, fighterProfile: {
+      effect: native.effect, delivery: native.delivery, range: native.range,
+      shape: native.shape, targetSide: native.targetSide, multiplier: native.multiplier,
+      duration: native.duration, hitAt: native.hitAt, meterCost: native.meterCost
+    } } };
+  }
+  const own = [ownHero, ...(withAlly ? [dummy('allied-patient')] : [])];
   const opposing = [dummy('near-one'), dummy('near-two'), dummy('far-one')];
   const players = side === 'player' ? own : opposing;
   const opponents = side === 'opponent' ? own : opposing;
@@ -87,6 +104,10 @@ function make(mode, side, heroId, withAlly = false) {
 function commit(context, index = 0) {
   const { mode, engine, actor, engineSide } = context;
   if (mode === 'fighter') return engine.triggerSideAction(engineSide, 'super');
+  // These tests exercise the declared personal-super timeline. The current
+  // source-locked Star Wars mode commands have separate immediate geometry,
+  // verified below through their actual public command entry points.
+  if (mode === 'melee' && ['luke', 'vader', 'han_solo'].includes(actor.sourceHeroId || actor.sourceId || actor.id)) return engine.triggerMeleeSuper(actor, resolveMeleeSuper(actor));
   if (mode === 'melee') return engineSide === 'player' ? engine.triggerAbility(actor, 'special') : engine.triggerOpponentAbility('special');
   if (!engine.beginTargeting(actor, 'special', engineSide)) return false;
   if (engine.getTargetingState().shape === 'single' && engine.getTargetingState().profile.targetSide === 'enemy') assert.equal(engine.selectTarget(context.targets[index].battleId), true);
@@ -142,6 +163,7 @@ before(async () => {
     assert.equal(createHash('sha256').update(JSON.stringify(record)).digest('hex'), historicalDigests[id], id + ': historical W7 record changed');
   }
   ({ resolveMeleeSuper, resolveCombatAbility } = await vite.ssrLoadModule('/src/game/combatIdentity.js'));
+  ({ getSmashAbilityProfile } = await vite.ssrLoadModule('/src/game/smashAbilityProfiles.js'));
   ({ tickMeleeCombatActor, beginMeleeShield } = await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js'));
   ({ supportsNativeSuperWave7: supportsNative, getNativeSuperVisualStateWave7: getVisual, drawNativeSuperVisualsWave7: drawVisual, sampleNativeSuperMotionWave7: sampleMotion, supportsTrackedProjectileVisualWave7: supportsTracked, preloadNativeSuperAssetsWave7: preloadAssets } = await vite.ssrLoadModule('/src/game/combat/nativeSuperVisualsWave7.js'));
   ({ getCharacterSuperVisualState: getCharacterVisual, drawCharacterSuperVisuals: drawCharacterVisual, sampleCharacterSuperMotion: sampleCharacterMotion } = await vite.ssrLoadModule('/src/game/combat/characterSuperVisuals.js'));
@@ -341,9 +363,9 @@ for (const side of ['player','opponent']) test(`RPG ${side} a protected/dead fir
 
 for (const side of ['player','opponent']) test(`Fighter ${side} four native projectiles track physical flight and only accepted impacts, including the real Yamada PNG`, () => {
   for (const id of trackedIds) {
-    const c = make('fighter', side, id), { engine, actor, targets, facing } = c, target = targets[0];
+    const c = make('fighter', side, id, false, 'native-projectile'), { engine, actor, targets, facing } = c, target = targets[0];
     target.x = actor.x + facing * 500; const hpBefore = target.currentHp;
-    assert.equal(commit(c), true); advance(c, actor.action.hitAt - 0.01); assert.equal(engine.projectiles.length, 0);
+    assert.equal(commit(c), true, id); advance(c, actor.action.hitAt - 0.01); assert.equal(engine.projectiles.length, 0);
     const startup = purePausedDraw(c);
     assert.equal(startup.some(call => call[0] === 'drawImage' || call[0] === 'lineTo'), false, `${id} must not draw a projectile or Yamada before its actual launch`);
     for (const ring of offensiveRings(startup)) assert.ok(Math.abs(ring[1] - actor.x) < 100, 'Startup accent stays local to the caster');
@@ -374,7 +396,7 @@ for (const side of ['player','opponent']) test(`Fighter ${side} four native proj
 
 for (const side of ['player','opponent']) test(`Fighter ${side} projectile misses and invulnerable/dead targets never create accepted impact art`, () => {
   for (const id of trackedIds) for (const reason of ['height','range','behind','dead','invulnerable']) {
-    const c = make('fighter', side, id), { engine, actor, targets, facing } = c, target = targets[0];
+    const c = make('fighter', side, id, false, 'native-projectile'), { engine, actor, targets, facing } = c, target = targets[0];
     assert.equal(commit(c), true);
     if (reason === 'height') target.y -= 240;
     if (reason === 'range') target.x = actor.x + facing * (actor.action.range + 100);
@@ -417,7 +439,7 @@ for (const side of ['player','opponent']) test(`Melee ${side} historical direct-
   for (const other of [...c.allies.slice(1), ...c.targets]) assert.ok(!other.meleeSuperSupport);
 });
 
-for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected W13 Star Wars saber loadouts preserve offensive supers and personal guard`, () => {
+for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected W13 Star Wars personal-super profiles preserve their timed offensive effects and personal guard`, () => {
   for (const id of ['luke','vader','obi_wan']) {
     const c = make(mode, side, id, true), { actor, allies, targets } = c, expected = selectedWave13[id];
     for (const slot of ['simple','secondary']) {
@@ -436,7 +458,7 @@ for (const mode of ['rpg','melee','fighter']) for (const side of ['player','oppo
   }
 });
 
-for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected Luke/Vader/Obi-Wan/Han ordinary kits execute their real damage and personal guard slots`, () => {
+for (const mode of ['rpg','melee','fighter']) for (const side of ['player','opponent']) test(`${mode} ${side} selected Luke/Vader/Obi-Wan and archived Han ordinary kits execute real damage and personal guard slots`, () => {
   for (const id of ['luke','vader','obi_wan','han_solo']) for (const slot of ['simple','secondary','defense']) {
     const c = make(mode, side, id, true), { engine, actor, allies, targets } = c;
     targets[0].x = actor.x + c.facing * 40; targets[1].x = actor.x + c.facing * 55;
@@ -475,6 +497,62 @@ for (const mode of ['rpg','melee','fighter']) for (const side of ['player','oppo
       allies.slice(1).forEach((ally, i) => assert.equal(ally.currentHp, before[i + 1]));
     }
   }
+});
+
+for (const side of ['player', 'opponent']) test(`Smash ${side} current source-locked Star Wars commands preserve exact master geometry and immediate authoritative effects`, () => {
+  for (const [id, expected] of Object.entries({
+    luke: { delivery: 'melee', range: 70, shape: 'single', victims: 1 },
+    vader: { delivery: 'ranged', range: 300, shape: 'single', victims: 1 },
+    han_solo: { delivery: 'ranged', range: 300, shape: 'multi', victims: 2 }
+  })) for (const accepted of [false, true]) {
+    const c = make('melee', side, id, false, 'current'), profile = getSmashAbilityProfile(c.actor, 'special');
+    assert.equal(profile.delivery, expected.delivery); assert.equal(profile.range, expected.range); assert.equal(profile.shape, expected.shape);
+    if (id === 'han_solo') assert.equal(profile.maxTargets, 3);
+    c.targets.forEach((target, i) => { target.x = c.actor.x + c.facing * (accepted ? [40, 55, -350][i] : profile.range + 100 + i * 20); });
+    const before = hp(c.targets), command = () => side === 'player' ? c.engine.triggerAbility(c.actor, 'special') : c.engine.triggerOpponentAbility('special');
+    setMeter(c, 99); assert.equal(command(), false); assert.equal(meter(c), 99); assert.deepEqual(hp(c.targets), before);
+    setMeter(c, 100); c.engine.setPaused(true); assert.equal(command(), false); assert.equal(meter(c), 100); c.engine.setPaused(false);
+    assert.equal(command(), true); assert.equal(meter(c), 0); assert.equal(c.actor.action, null);
+    assert.equal(c.targets.filter((target, i) => target.currentHp < before[i]).length, accepted ? expected.victims : 0);
+    const after = hp(c.targets); advance(c, 1.6); assert.deepEqual(hp(c.targets), after); assert.equal(command(), false);
+  }
+});
+
+test('current Han keeps exact A New Hope actions while the independent historical source retains its native single-shot contract', () => {
+  const current = hero('han_solo'), before = structuredClone(current), historical = historicalWave7HanActor();
+  assert.equal(current.incarnation, 'Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape');
+  assert.deepEqual(current.equipment, ['Modified DL-44 Blaster Pistol', 'Right-Thigh Blaster Holster', 'Smuggler Utility Belt']);
+  assert.deepEqual(current.simple, { name: 'DL-44 Quickdraw', type: 'bullet', dmg: 1, color: '#ff4136', tacticsProfile: { range: 4 } });
+  assert.deepEqual(current.secondary, { name: 'DL-44 Covering Fire', type: 'projectile', cd: 7, dmg: 1.8, color: '#ff4136', tacticsProfile: { range: 5 } });
+  assert.deepEqual(current.defense, { name: 'Smuggler Sidestep', type: 'dodge', dur: 2, reduce: 0.8 });
+  assert.deepEqual(current.special, { name: 'DL-44 Blaster Volley', type: 'bullet', dmg: 4.6, color: '#ff4136', attackProfile: { shape: 'multi', maxTargets: 3, delivery: 'ranged' } });
+  const profile = resolveMeleeSuper(current);
+  assert.equal(profile.name, 'DL-44 Blaster Volley'); assert.equal(profile.shape, 'multi'); assert.equal(profile.maxTargets, 3); assert.equal(profile.multiplier, 4.6);
+  assert.equal(profile.effect, 'damage'); assert.equal(profile.delivery, 'projectile'); assert.equal(profile.duration, 1.1); assert.equal(profile.hitAt, 0.451); assert.equal(profile.meterCost, 100);
+  assert.equal(profile.provenance.sourceWork, current.incarnation); assert.equal(supportsNative(profile), false);
+  const archived = resolveMeleeSuper(historical);
+  assert.equal(archived.name, 'Tir précis au DL-44'); assert.equal(archived.shape, 'single'); assert.equal(archived.range, 640); assert.equal(supportsNative(archived), true);
+  assert.deepEqual(current, before);
+});
+
+for (const mode of ['rpg', 'melee', 'fighter']) for (const side of ['player', 'opponent']) test(`${mode} ${side} current Han uses its actual personal defensive control without offensive effects`, () => {
+  const c = make(mode, side, 'han_solo', true, 'current'), before = hp([...c.allies, ...c.targets]);
+  const profile = resolveCombatAbility(c.actor, 'defense');
+  assert.equal(profile.name, 'Smuggler Sidestep'); assert.equal(profile.effect, 'guard'); assert.equal(profile.targetSide, 'self');
+  if (mode === 'fighter') assert.equal(c.engine.updateGuarding(c.engineSide, true, true), true);
+  else if (mode === 'melee') assert.equal(c.engine.setMeleeShield(c.engineSide, true), true);
+  else { assert.equal(commitSlot(c, 'defense'), true); advance(c, 0.3); }
+  assert.deepEqual(hp([...c.allies, ...c.targets]), before);
+  const fresh = make(mode, side, 'han_solo', false, 'current'), guardedHp = c.actor.currentHp, originalRandom = Math.random;
+  try {
+    Math.random = () => 0.5;
+    if (mode === 'fighter') {
+      const action = { type: 'light', base: 20, knockback: 0, guardDamage: 1, facing: -c.facing };
+      c.engine.applyHit(c.targets[0], c.actor, action); fresh.engine.applyHit(fresh.targets[0], fresh.actor, action);
+    } else { c.engine.applyDamage(c.targets[0], c.actor, 100); fresh.engine.applyDamage(fresh.targets[0], fresh.actor, 100); }
+  } finally { Math.random = originalRandom; }
+  assert.ok(guardedHp - c.actor.currentHp < fresh.actor.maxHp - fresh.actor.currentHp, 'Actual personal defense must reduce the same incoming hit');
+  c.allies.slice(1).forEach((ally, i) => assert.equal(ally.currentHp, before[i + 1]));
 });
 
 test('chosen BB/GG sourceWork and Rurouni weapon metadata remain explicit without a new balance claim', () => {

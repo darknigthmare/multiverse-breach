@@ -239,8 +239,11 @@ export const shouldRequireWebResearch = ({
   visualAnchors = [],
   referenceConfidence,
   webResearch,
-  webResearchVerified = webResearch?.webResearchVerified === true
+  webResearchVerified = webResearch?.webResearchVerified === true,
+  needsIdentityReference = false
 }) => (
+  needsIdentityReference
+  ||
   (
     leadReferencePath === null
     && !doesOfficialWebResearchMeetFidelityGate(webResearch, webResearchVerified)
@@ -486,9 +489,14 @@ export const buildUniverseCosmeticGenerationPrompt = ({
   leadReferencePath,
   webResearch = null,
   officialReferenceUrls = [],
+  runtimeCitations = [],
+  needsIdentityReference = false,
   needsWebResearch = false
 }) => {
-  const leadReferenceClause = leadReferencePath
+  const runtimeCitationFallback = officialReferenceUrls.length === 0 && runtimeCitations.length > 0;
+  const leadReferenceClause = needsIdentityReference
+    ? 'Identity reference needed: production is blocked. The discarded bitmap is provenance only and must not be supplied for image conditioning, face, costume, equipment or loadout. Find a matching identity and loadout reference before production; no lead-character bitmap is supplied by this entry.'
+    : leadReferencePath
     ? isThreadEchoLeadName(leadHeroName)
       ? `Approved local lead-reference metadata path: ${leadReferencePath}. Because the researched lead is explicitly an anonymous Thread Echo, the supplied bitmap is strictly a non-biometric reference for source-grounded costume, equipment, palette and broad silhouette only. Never use its face, facial geometry, biometric identity, performer likeness or exact pose; create an entirely original anonymous face and body details, and never copy its pixel placement or sheet layout.`
       : `Approved local lead-reference metadata path: ${leadReferencePath}. Treat this path as provenance metadata; use the bitmap for identity and costume cues only when it is actually supplied as an input image, and never copy its pixel placement, sheet layout or pose.`
@@ -499,12 +507,20 @@ export const buildUniverseCosmeticGenerationPrompt = ({
 
   return [
     'Use case: stylized-concept',
-    `Asset type: production-ready keyed 2D game cosmetic atlas for "${universe}".`,
+    needsIdentityReference
+      ? `Asset type: blocked cosmetic planning entry for "${universe}"; identity reference required before generation.`
+      : `Asset type: production-ready keyed 2D game cosmetic atlas for "${universe}".`,
     'Primary request: create exactly one 1024x1536 portrait raster sprite sheet, conceptually divided into 4 equal columns by 6 equal rows; every cell is exactly 256x256 and the row order below is mandatory.',
     `Canonical stage or motif: ${canonicalMotif}.`,
-    `Concrete verified visual anchors: ${visualAnchors.join(' | ')}.`,
-    `Official source provenance URLs researched before prompt encoding: ${officialReferenceUrls.join(' | ') || 'none recorded'}.`,
-    'The canonical motif, visual anchors and hero facts above are concrete facts already encoded from the researched official-source provenance. Do not browse, fetch, open or infer unseen content from any URL; reproduce only these explicit encoded details.',
+    runtimeCitationFallback
+      ? `Runtime semantic visual anchors, source review pending: ${visualAnchors.join(' | ')}.`
+      : `Concrete verified visual anchors: ${visualAnchors.join(' | ')}.`,
+    runtimeCitationFallback
+      ? `Documentary runtime-citation URLs, not verified official sources: ${uniqueStrings(runtimeCitations.map(citation => citation.url)).join(' | ')}.`
+      : `Official source provenance URLs researched before prompt encoding: ${officialReferenceUrls.join(' | ') || 'none recorded'}.`,
+    runtimeCitationFallback
+      ? 'These runtime citations are existing HEROES_DB metadata awaiting source review. They do not verify official-source authority, face identity or visual fidelity. Do not browse, fetch, open or infer unseen content from any URL; use only the explicit runtime semantic anchors and keep production research pending.'
+      : 'The canonical motif, visual anchors and hero facts above are concrete facts already encoded from the researched official-source provenance. Do not browse, fetch, open or infer unseen content from any URL; reproduce only these explicit encoded details.',
     needsWebResearch
       ? 'Fidelity gate: this entry is marked needsWebResearch=true. Before production approval, a research worker must strengthen missing identity or visual facts from official sources and encode those concrete findings into this manifest; the image model itself must never navigate URLs.'
       : 'Fidelity gate: the encoded official-source facts and approved local references meet the current production threshold; do not add unsupported visual lore.',
@@ -563,6 +579,46 @@ const buildOfficialReferenceUrls = ({ lore, stage, references, webResearch }) =>
   ...(lore?.worldBossPolicy?.referenceUrls || [])
 ]).filter(url => HTTP_URL_PATTERN.test(url));
 
+const validRuntimeCitationUrl = value => {
+  if (typeof value !== 'string' || value !== value.trim()) return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' && Boolean(url.hostname) && !url.username && !url.password;
+  } catch {
+    return false;
+  }
+};
+
+export const resolveRuntimeCitationFallback = ({ universe, officialReferenceUrls = [], heroes = [] }) => {
+  if (officialReferenceUrls.length) return [];
+  const seen = new Set();
+  const citations = [];
+  for (const hero of heroes) {
+    if (hero?.universe !== universe || typeof hero.id !== 'string' || !hero.id) continue;
+    for (const [sourceField, values] of [
+      ['referenceUrl', [hero.referenceUrl]],
+      ['referenceUrls', Array.isArray(hero.referenceUrls) ? hero.referenceUrls : []]
+    ]) for (const url of values) {
+      const key = `${hero.id}\0${url}`;
+      if (!validRuntimeCitationUrl(url) || seen.has(key)) continue;
+      seen.add(key);
+      citations.push({
+        source: 'runtime-citation', sourceFile: 'src/game/heroes.js', heroId: hero.id,
+        universe, sourceField, url, verificationStatus: 'needs-review',
+        usedForIdentity: false, canonicalFidelityApproved: false
+      });
+    }
+  }
+  return citations;
+};
+
+export const isLeadReferenceIdentityCompatible = ({ leadHeroName, leadHeroId, reference }) => {
+  if (!reference) return false;
+  const basename = normalizeCharacterIdentity(reference.basenameName);
+  if (leadHeroId && basename === normalizeCharacterIdentity(leadHeroId)) return true;
+  return [reference.basenameName, ...(reference.characterNames || [])].some(name => identitiesOverlap(leadHeroName, name));
+};
+
 const buildLocalReferencePaths = async ({ lore, stage, leadReferencePath }) => {
   const candidates = uniqueStrings([
     ...collectAssetStrings(lore?.audiovisual),
@@ -578,14 +634,13 @@ const buildLocalReferencePaths = async ({ lore, stage, leadReferencePath }) => {
   return uniqueStrings(existing);
 };
 
-const validateManifest = manifest => {
-  if (manifest.universes.length !== 394) {
-    throw new Error(`Expected 394 runtime universes, found ${manifest.universes.length}.`);
-  }
+export const validateUniverseCosmeticGenerationManifest = (manifest, runtimeUniverseKeys, runtimeHeroes = []) => {
+  const expectedUniverses = new Set(runtimeUniverseKeys);
   const universeKeys = new Set();
   const slugs = new Set();
   for (const entry of manifest.universes) {
     if (universeKeys.has(entry.universe)) throw new Error(`Duplicate universe: ${entry.universe}`);
+    if (!expectedUniverses.has(entry.universe)) throw new Error(`Unexpected runtime universe: ${entry.universe}`);
     if (slugs.has(entry.slug)) throw new Error(`Duplicate cosmetic slug: ${entry.slug}`);
     universeKeys.add(entry.universe);
     slugs.add(entry.slug);
@@ -603,11 +658,32 @@ const validateManifest = manifest => {
     ) {
       throw new Error(`${entry.universe}: canonical stage alias or hero anchors are missing.`);
     }
-    if (entry.officialReferenceUrls.length === 0) {
+    if (Boolean(entry.needsIdentityReference) !== Boolean(entry.rejectedLeadReference)) {
+      throw new Error(`${entry.universe}: rejected identity-reference provenance is inconsistent.`);
+    }
+    if (entry.needsIdentityReference && (entry.leadReferencePath !== null
+      || entry.generationAllowed !== false || entry.canonicalFidelityApproved !== false
+      || entry.identityReferenceStatus !== 'needs-identity-reference' || entry.generationReadiness !== 'not-ready'
+      || entry.rejectedLeadReference.usedForConditioning !== false || entry.rejectedLeadReference.usedForIdentity !== false
+      || entry.rejectedLeadReference.canonicalFidelityApproved !== false
+      || entry.localReferencePaths.includes(entry.rejectedLeadReference.path))) {
+      throw new Error(`${entry.universe}: unqualified identity bitmap must not condition a generation.`);
+    }
+    const runtimeCitations = resolveRuntimeCitationFallback({
+      universe: entry.universe, officialReferenceUrls: entry.officialReferenceUrls, heroes: runtimeHeroes
+    });
+    if (JSON.stringify(entry.runtimeCitations || []) !== JSON.stringify(runtimeCitations)) {
+      throw new Error(`${entry.universe}: runtime citations do not match same-universe hero metadata.`);
+    }
+    if (entry.officialReferenceUrls.length === 0 && runtimeCitations.length === 0) {
       throw new Error(`${entry.universe}: official reference URLs are missing.`);
     }
+    if (runtimeCitations.length && (entry.needsWebResearch !== true || entry.referenceConfidence !== 'medium'
+      || entry.webResearchVerified !== false || entry.webResearch !== null)) {
+      throw new Error(`${entry.universe}: runtime citations must remain pending source review.`);
+    }
     if (
-      entry.generationAllowed !== true
+      entry.generationAllowed !== !entry.needsIdentityReference
       || !['medium', 'high'].includes(entry.referenceConfidence)
       || typeof entry.needsWebResearch !== 'boolean'
       || typeof entry.generationPrompt !== 'string'
@@ -642,6 +718,11 @@ const validateManifest = manifest => {
       throw new Error(`${entry.universe}: explicit Web-research verification marker is invalid.`);
     }
   }
+  const missing = [...expectedUniverses].filter(universe => !universeKeys.has(universe));
+  if (missing.length) throw new Error(`Missing runtime universes: ${missing.join(', ')}`);
+  if (manifest.universes.length !== expectedUniverses.size || manifest.summary.universeCount !== expectedUniverses.size) {
+    throw new Error(`Expected ${expectedUniverses.size} runtime universes, found ${manifest.universes.length} with summary ${manifest.summary.universeCount}.`);
+  }
 };
 
 export const buildUniverseCosmeticGenerationManifest = async () => {
@@ -667,7 +748,7 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
     const webResearch = mergeQualifiedOfficialWebResearch(references);
     const canonicalMotif = resolveCanonicalMotif({ universe, lore, stage, references });
     const leadReference = leadReferenceByUniverse.get(universe) || null;
-    const leadReferencePath = leadReference?.path || null;
+    let leadReferencePath = leadReference?.path || null;
     const visualAnchors = buildVisualAnchors({
       lore,
       stage,
@@ -681,6 +762,7 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
       references,
       webResearch
     });
+    const runtimeCitations = resolveRuntimeCitationFallback({ universe, officialReferenceUrls, heroes: HEROES_DB });
     const universeHeroes = heroesByUniverse.get(universe) || [];
     const pathMatchedHero = leadReference
       ? universeHeroes.find(hero => referencePathMatchesHero(leadReference, hero))
@@ -704,6 +786,16 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
       leadReference,
       officialWebLeadName: webResearch?.leadCharacterName || null
     });
+    const needsIdentityReference = Boolean(leadReference && !isThreadEchoLeadName(leadHeroName)
+      && !isLeadReferenceIdentityCompatible({ leadHeroName, leadHeroId: leadHero?.id, reference: leadReference }));
+    const rejectedLeadReference = needsIdentityReference ? {
+      path: leadReferencePath, characterNames: leadReference.characterNames,
+      proposedLeadHeroId: leadHero?.id || null, proposedLeadHeroName: leadHeroName,
+      reason: 'identity-or-loadout-not-established-by-reference-metadata',
+      referenceScope: 'non-conditioning-provenance-only', usedForConditioning: false,
+      usedForIdentity: false, canonicalFidelityApproved: false
+    } : null;
+    if (needsIdentityReference) leadReferencePath = null;
     const heroAnchors = buildHeroAnchors({
       leadHero,
       leadHeroName,
@@ -718,7 +810,8 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
       leadReferencePath,
       visualAnchors,
       referenceConfidence,
-      webResearch
+      webResearch,
+      needsIdentityReference
     });
     const entry = {
       universe,
@@ -731,15 +824,21 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
       heroAnchors,
       leadHeroName,
       officialReferenceUrls,
-      localReferencePaths: await buildLocalReferencePaths({ lore, stage, leadReferencePath }),
+      ...(runtimeCitations.length ? { runtimeCitations } : {}),
+      localReferencePaths: (await buildLocalReferencePaths({ lore, stage, leadReferencePath }))
+        .filter(referencePath => referencePath !== rejectedLeadReference?.path),
       leadReferencePath,
-      leadReferenceCharacterNames: leadReference?.characterNames || [],
+      leadReferenceCharacterNames: needsIdentityReference ? [] : leadReference?.characterNames || [],
+      ...(needsIdentityReference ? {
+        needsIdentityReference: true, identityReferenceStatus: 'needs-identity-reference',
+        generationReadiness: 'not-ready', canonicalFidelityApproved: false, rejectedLeadReference
+      } : {}),
       webResearchVerified: webResearch?.webResearchVerified === true,
       webResearch,
       sourceReferenceFiles: uniqueStrings(references.map(reference => reference.source)),
       referenceConfidence,
       needsWebResearch,
-      generationAllowed: true
+      generationAllowed: !needsIdentityReference
     };
     entry.generationPrompt = buildUniverseCosmeticGenerationPrompt(entry);
     universes.push(entry);
@@ -768,7 +867,7 @@ export const buildUniverseCosmeticGenerationManifest = async () => {
     },
     universes
   };
-  validateManifest(manifest);
+  validateUniverseCosmeticGenerationManifest(manifest, Object.keys(LORE_DB), HEROES_DB);
   return manifest;
 };
 

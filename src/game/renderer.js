@@ -1,4 +1,7 @@
 import { registerSourceNativeRendererWave16 } from './combat/sourceNativeRendererWave16.js';
+import { drawWardrobeEffect } from './wardrobeEffects.js';
+import { getDisciplineSpriteSources } from './disciplineSprites.js';
+
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
@@ -9,15 +12,20 @@ import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { renderStageAtmosphere } from './melee/stageAtmosphere';
 import { getCharacterAnimationFrame, resolveCharacterAnimationAsset } from './combat/characterAnimationCatalog';
 import { getSourceRuntimeViewWave16 } from './combat/sourceCombatRuntimeWave16.js';
+import { getSourceNativeSupportViewWave17 } from './combat/sourceMechanicsWave17.js';
+import { drawSourceCaptureEnemyWave17 } from './combat/sourceCaptureEnemyCatalogWave17.js';
+import { getJadeGyrodiskActionFrameWave17 } from './combat/jadeGyrodiskActionWave17.js';
+import { registerNativeProjectileRegionRendererWave17 } from './combat/nativeProjectileRegionWave17.js';
 import { sampleCharacterSuperMotion } from './combat/characterSuperVisuals';
 import { resolveCombatHeroSpriteActor } from './combatIdentity.js';
 import { getCharacterFormFrame } from './combat/characterFormState';
 import { resolveCharacterFormAsset } from './combat/characterFormCatalog';
+import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
 import {
   getEnemySpriteSheetSrc,
   getHeroMeleeAnimationFrame,
   getHeroMeleeSpriteSheetSrcs,
-  getHeroSpriteSheetSrc,
+  getHeroSpriteSheetSources,
   getItemSpriteSrc,
   getSpriteFrameForLayout,
   getSpriteSheetLayout,
@@ -60,6 +68,15 @@ const getCachedSpriteSheet = (src) => {
   }
   spriteSheetCache.set(src, entry);
   return entry;
+};
+
+const getFirstAvailableSpriteSheet = sources => {
+  const candidates = Array.isArray(sources) ? sources : [sources];
+  for (const src of candidates) {
+    const entry = getCachedSpriteSheet(src);
+    if (entry && entry.status !== 'error') return entry;
+  }
+  return null;
 };
 
 const queueSpriteSheetRedraw = (entry, ctx, draw) => {
@@ -165,11 +182,11 @@ export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
 };
 
 export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
-  const src = kind === 'hero'
-    ? getHeroSpriteSheetSrc(entity, 'tactics')
+  const sources = kind === 'hero'
+    ? getHeroSpriteSheetSources(entity, 'tactics')
     : getEnemySpriteSheetSrc(entity);
-  const entry = getCachedSpriteSheet(src);
-  if (!entry || entry.status === 'error') return false;
+  const entry = getFirstAvailableSpriteSheet(sources);
+  if (!entry) return false;
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
       drawCombatantBust(ctx, x, y, width, height, entity, kind);
@@ -186,8 +203,10 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   const sourceY = frame.row * frameHeight + (trim.top || 0);
   const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const sourceH = Math.max(1, trimmedH * 0.68);
-  const scale = Math.max(width / sourceW, height / sourceH);
+  const sourceH = Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
+  const scale = layout.fullBodyPortrait
+    ? Math.min(width / sourceW, height / sourceH)
+    : Math.max(width / sourceW, height / sourceH);
   const drawW = sourceW * scale;
   const drawH = sourceH * scale;
 
@@ -343,8 +362,8 @@ const drawMeleeManifestSpriteSheet = (
 };
 
 const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
-  const entry = getCachedSpriteSheet(srcGetter(entity, context));
-  if (!entry || entry.status === 'error') return 'missing';
+  const entry = getFirstAvailableSpriteSheet(srcGetter(entity, context));
+  if (!entry) return 'missing';
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
       redrawWhenResolved?.();
@@ -432,6 +451,7 @@ export class ParticleSystem {
     ctx.save();
     this.particles.forEach(p => {
       ctx.globalAlpha = p.alpha;
+      if (drawP0CanonParticle(ctx, p)) return;
       if (p.type === 'text') {
         ctx.font = 'bold 12px "Share Tech Mono", monospace';
         ctx.fillStyle = p.color;
@@ -447,6 +467,15 @@ export class ParticleSystem {
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.x + p.vx * 10, p.y + p.vy * 10);
         ctx.stroke();
+      } else if (p.type === 'banana') {
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = Math.max(3, p.size / 3);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(p.x - p.size / 2, p.y - p.size / 3);
+        ctx.quadraticCurveTo(p.x, p.y + p.size / 2, p.x + p.size / 2, p.y - p.size / 3);
+        ctx.stroke();
+        ctx.lineCap = 'butt';
       } else if (p.type === 'music') {
         ctx.fillStyle = p.color;
         ctx.font = `${p.size}px monospace`;
@@ -512,25 +541,56 @@ const drawCharacterForm = (ctx, x, y, character, animTime, facing, targetHeight,
   return 'drawn';
 };
 
-export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
-  character = getSourceRuntimeViewWave16(character);
-  if (character?.sourceEnemyId === 'oddworld_slig' && character.universe === 'Oddworld') {
-    drawPixelEnemy(ctx, x, y, character, animTime, facing, targetHeight);
-    return;
+const drawJadeGyrodiskSpriteWave17 = (ctx, x, y, character, animTime, facing, targetHeight, context) => {
+  const action = character?.action || character?.rpgGyrodiskActionWave17 || character?.tacticsGyrodiskActionWave17;
+  const frame = getJadeGyrodiskActionFrameWave17(character, action);
+  if (!frame) return false;
+  const entry = getCachedSpriteSheet(frame.asset.sheet);
+  if (!entry || entry.status === 'error') return false;
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth <= 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context));
+    return true;
   }
-  if (drawCharacterForm(ctx, x, y, character, animTime, facing, targetHeight,
-    () => drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context)) !== 'missing') return;
-  const explicitPresentation = character.presentationPhase || character.action?.superProfile || character.action?.type === 'super';
-  const hasCoreMeleeAnimation = context === 'melee' && getHeroMeleeAnimationFrame(character, getMeleeElapsedMs(character, animTime));
-  if ((!hasCoreMeleeAnimation || explicitPresentation) && drawDedicatedCharacterAnimation(ctx, x, y, character, animTime, facing, targetHeight)) return;
-  if (context === 'melee') {
-    const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
-      drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
-    });
-    if (meleeManifestStatus !== 'missing') return;
+  const sourceWidth = entry.image.naturalWidth / frame.asset.columns;
+  const sourceHeight = entry.image.naturalHeight / frame.asset.rows;
+  const scale = targetHeight / sourceHeight * Math.max(.5, Math.min(3, frame.renderScale));
+  const baseline = frame.asset.normalization?.baseline || 244;
+  ctx.save(); ctx.translate(x, y); ctx.scale(facing < 0 ? -1 : 1, 1);
+  ctx.filter = character.spriteFilter || 'none'; ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(entry.image, frame.col * sourceWidth, frame.row * sourceHeight, sourceWidth, sourceHeight,
+    -sourceWidth * scale / 2, -baseline * scale, sourceWidth * scale, sourceHeight * scale);
+  ctx.restore();
+  return true;
+};
+
+export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
+  character = getSourceNativeSupportViewWave17(getSourceRuntimeViewWave16(character));
+  if (character.sourceMedicBeamPoseWave17) facing = character.facing;
+  if (drawSourceCaptureEnemyWave17(ctx, x, y, character, animTime, facing, targetHeight)) return;
+  drawWardrobeEffect(ctx, x, y, character, targetHeight);
+  // A validated delivered costume owns its body and fallback sources. Ground
+  // effects and legacy palette choices still retain the native action artwork.
+  const selectedCostume = getDisciplineSpriteSources(character).length > 0;
+  if (!selectedCostume) {
+    if (drawJadeGyrodiskSpriteWave17(ctx, x, y, character, animTime, facing, targetHeight, context)) return;
+    if (character?.sourceEnemyId === 'oddworld_slig' && character.universe === 'Oddworld') {
+      drawPixelEnemy(ctx, x, y, character, animTime, facing, targetHeight);
+      return;
+    }
+    if (drawCharacterForm(ctx, x, y, character, animTime, facing, targetHeight,
+      () => drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context)) !== 'missing') return;
+    const explicitPresentation = character.presentationPhase || character.action?.superProfile || character.action?.type === 'super';
+    const hasCoreMeleeAnimation = context === 'melee' && getHeroMeleeAnimationFrame(character, getMeleeElapsedMs(character, animTime));
+    if ((!hasCoreMeleeAnimation || explicitPresentation) && drawDedicatedCharacterAnimation(ctx, x, y, character, animTime, facing, targetHeight)) return;
+    if (context === 'melee') {
+      const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
+        drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
+      });
+      if (meleeManifestStatus !== 'missing') return;
+    }
   }
 
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc, () => {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);
   if (generatedStatus !== 'missing') {
@@ -896,6 +956,7 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing, targetHeight 
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68) => {
   enemy = getSourceRuntimeViewWave16(enemy);
+  if (drawSourceCaptureEnemyWave17(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
   if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
   // Custom opposing squads retain their real hero identity. The shared hero
   // renderer selects dedicated presentation cells before that hero's base PNG.
@@ -1803,3 +1864,15 @@ function drawHex(ctx, x, y, size) {
 
 // The W16 visual catalog stays pure when imported by Node audits/tests.
 registerSourceNativeRendererWave16({ drawCosmeticAtlasFrame, preloadSpriteSheetSrcs });
+registerNativeProjectileRegionRendererWave17((ctx, region, x, y, scale, facing) => {
+  const { rect } = region, entry = getCachedSpriteSheet(region.sheet);
+  if (!entry || entry.status !== 'ready' || !entry.image.complete) return false;
+  if (![rect.left, rect.top, rect.width, rect.height, x, y].every(Number.isFinite)
+    || rect.left < 0 || rect.top < 0 || rect.width <= 0 || rect.height <= 0
+    || rect.left + rect.width > entry.image.naturalWidth || rect.top + rect.height > entry.image.naturalHeight) return false;
+  ctx.save(); ctx.translate(x, y); ctx.scale(facing < 0 ? -1 : 1, 1); ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(entry.image, rect.left, rect.top, rect.width, rect.height,
+    -rect.width * scale / 2, -rect.height * scale / 2, rect.width * scale, rect.height * scale);
+  ctx.restore();
+  return true;
+});

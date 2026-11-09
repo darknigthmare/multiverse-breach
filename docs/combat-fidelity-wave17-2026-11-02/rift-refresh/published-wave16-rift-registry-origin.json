@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T08:35:54.261883Z",
+  "sourceCommit": "9981b73deb3ee027c86877d7c15c6698e4f02191",
+  "command": [
+    "git",
+    "show",
+    "9981b73deb3ee027c86877d7c15c6698e4f02191:src/game/riftDossierAssets.json"
+  ],
+  "exitCode": 0,
+  "originalRepoPath": "src/game/riftDossierAssets.json",
+  "publishedRegistry": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/published-wave16-rift-registry.json",
+    "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+    "bytes": 552092
+  },
+  "publishedWave16Audit": {
+    "command": [
+      "git",
+      "show",
+      "9981b73deb3ee027c86877d7c15c6698e4f02191:docs/combat-fidelity-wave16-2026-10-28/current.json"
+    ],
+    "exitCode": 0,
+    "sourceRepoPath": "docs/combat-fidelity-wave16-2026-10-28/current.json",
+    "baselineCopy": {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/baseline-current-wave16.json",
+      "sha256": "0778067e03aa3b5da8880d72c004f00f7659e158653027535bfc94573be88fc9",
+      "bytes": 11705617
+    }
+  },
+  "entryCount": 3199,
+  "observedCurrentDeltaBeforeRerun": [
+    {
+      "before": {
+        "stageId": 9330,
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-digital-circus-v1.webp",
+        "status": "pending"
+      },
+      "after": {
+        "stageId": 9330,
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-pomni-v1.webp",
+        "status": "pending"
+      }
+    }
+  ],
+  "source1to1Verified": false
+}

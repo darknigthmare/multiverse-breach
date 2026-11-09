@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "heroId": "joe_gomamon",
+  "requestId": "joe_gomamon-correction-1",
+  "reviewedAt": "2026-11-02T07:28:50.452Z",
+  "actuallyViewedWith": "view_image",
+  "detail": "original",
+  "sourcePathActuallyViewed": "/workspace/generated_images/exec-f5a0e91c-662c-4f4d-9153-6478e06bc7bd.png",
+  "sourceSha256": "6822d6da351c91d05c6437ab2bf65b68c4ec9e18942347b3a2675a1df8c5c7a3",
+  "expectedArchivePath": "docs/combat-fidelity-wave17-2026-11-02/part-c/sources/joe_gomamon-correction-1.png",
+  "requestResult": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/requests/joe_gomamon-correction-1-result.json",
+    "sha256": "7942696e1202de39527fbde05b05257ffc786e11b5eb9293272cc55f314ea0bb"
+  },
+  "sourceDimensions": [
+    1448,
+    1086
+  ],
+  "expectedDuoDrawings": 16,
+  "observedDuoDrawings": 16,
+  "sourceBodies": {
+    "human": 16,
+    "partner": 16,
+    "completeDuoUnits": 16
+  },
+  "rows": [
+    {
+      "row": 0,
+      "role": "fatality",
+      "completeDuoUnits": 4,
+      "completeHumans": 4,
+      "completePartners": 4,
+      "observedReleaseColumns": [
+        2
+      ],
+      "calibrationOnly": false
+    },
+    {
+      "row": 1,
+      "role": "defeat",
+      "completeDuoUnits": 4,
+      "completeHumans": 4,
+      "completePartners": 4,
+      "observedReleaseColumns": [],
+      "calibrationOnly": false
+    },
+    {
+      "row": 2,
+      "role": "super",
+      "completeDuoUnits": 4,
+      "completeHumans": 4,
+      "completePartners": 4,
+      "observedReleaseColumns": [
+        2
+      ],
+      "calibrationOnly": false
+    },
+    {
+      "row": 3,
+      "role": "calibration-only",
+      "completeDuoUnits": 4,
+      "completeHumans": 4,
+      "completePartners": 4,
+      "observedReleaseColumns": [],
+      "calibrationOnly": true
+    }
+  ],
+  "productionCandidateDrawings": 12,
+  "calibrationOnlyDrawings": 4,
+  "deliveredDrawingsByThisReview": 0,
+  "reviewOnly": true,
+  "allPlannedRowsUnconditionallyReady": false,
+  "holds": [
+    "projectileRegion requires another genuinely separated three-fish drawing; no masking or body-fragment erasure"
+  ],
+  "notes": [
+    "16 visibly complete duo drawings; Joe and Gomamon both present in every unit.",
+    "Exactly3 real complete fish in third fatality and third super, no fish in their other poses; human commands, actual Gomamon flipper releases.",
+    "Final4 distinct upright duos are calibration only and do not add production poses.",
+    "SUPER third lower fish tail touches the flipper at alpha>24; the rectangular3-fish group cannot be isolated without including flipper pixels or cutting that tail.",
+    "Fatality third has3 separate fish, but their minimal bounding rectangle x981..1124/y147..263 includes869 visible flipper pixels at alpha>24. No exact3-fish-only rectangular crop is available in that phase either."
+  ],
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "projectileRegionReady": false,
+  "sourceDetailReview": "docs/combat-fidelity-wave17-2026-11-02/part-c/native-muzzle-review-corrective-joe-fish-source-detail.png",
+  "sourceDetailReviewSha256": "72169c2d16c81dd7cb1cf0bbf82de8eb93e5be8781a514b2499cf5b43109ff40",
+  "previousRequestResultSha256": "ce1d937110bd00d6bdf62263e5c32c747d7a704117fc3f0775865fb1f59d577e",
+  "receiptEnrichmentObservedAt": "2026-11-02T07:34:02.879Z",
+  "receiptEnrichmentNote": "Owner enriched the same real receipt with exact PNG SHA, dimensions and archival path after this visual review. No image change, new image or fictitious second visual review is implied.",
+  "sourceArchiveNowPresent": true,
+  "archivedSourceSha256": "6822d6da351c91d05c6437ab2bf65b68c4ec9e18942347b3a2675a1df8c5c7a3",
+  "additionalFishIsolationReview": {
+    "actuallyViewedWith": "view_image",
+    "reviewedAt": "2026-11-02T07:34:02.881Z",
+    "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/native-muzzle-review-corrective-joe-fatality-fish-source-detail.png",
+    "sha256": "9eaf1781964d89d227a870d991cf9cefc5b1c7b06bc4ddd1bf3838f64b5c8b9c",
+    "phase": "fatality",
+    "sourceRow": 0,
+    "sourceColumn": 2,
+    "threeFishMinimumRectAtAlphaGt24": {
+      "left": 981,
+      "top": 147,
+      "width": 144,
+      "height": 117
+    },
+    "nonFishBodyPixelsInsideRectAtAlphaGt24": 869,
+    "rectangleIsolated": false
+  }
+}

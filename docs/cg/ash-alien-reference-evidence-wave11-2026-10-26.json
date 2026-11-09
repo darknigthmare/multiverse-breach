@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "ash_alien",
+  "characterName": "Ash",
+  "incarnation": "Ash — Alien; époque et version précises à fixer",
+  "status": "needs-reference-partial-official-face-uniform-opened-fullbody-equipment-missing",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.20thcenturystudios.com/movies/alien",
+      "attemptedAt": "2026-10-26T08:15:13.992986+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://www.20thcenturystudios.com/movies/alien",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 880022,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ash-alien/research/source-00.html",
+      "sha256": "368b2567b40a8ca22d1f55f7f94a3af5674ffd04d48cadbc472dbb8fa943508d",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0,
+  "wave11ResearchNotes": [
+    "Opened official Alien1979 still ac-0406_22df78d6.jpeg: Ian Holm Ash at upper-right in cream uniform; torso/face only, lower legs and shoes not visible. Opened image_73d5b777.jpeg: Ash seated center, face/profile and cream short-sleeve uniform visible; table conceals lowerbody. Others are cast/context, not identity authority."
+  ],
+  "partialActuallyOpenedReferences": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ash-alien/research/ac-0406_22df78d6.jpeg",
+      "sha256": "c2587e2cbd8afc206afc39b075951224a748a404af1cd719eca3dbf22f39ff64",
+      "viewed": true,
+      "scope": "actual-film-face-upper-body-only-no-feet",
+      "identityRegion": "Ash upper-right [1017,163,1268,379]"
+    },
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ash-alien/research/image_73d5b777.jpeg",
+      "sha256": "c37c0f1940bff8d8e3b1daf9e340b66a77a3feb7f55615b7dda8acba6b7cad78",
+      "viewed": true,
+      "scope": "actual-film-face-upper-body-only-no-feet",
+      "identityRegion": "Ash seated centre [900,437,1141,725]"
+    }
+  ],
+  "actualAdditionalAttempts": [
+    {
+      "url": "https://www.toyark.com/2021/01/06/pre-orders-open-for-the-walmart-exclusive-neca-alien-40th-anniversary-wave-3-414719",
+      "kind": "secondary-news-reprinting-licensed-figure-photography",
+      "result": "fetch-failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://store.necaonline.com/search?q=Ash+Alien&type=article",
+      "kind": "actual-reference-page-fetch",
+      "statusCode": 200,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/ash-alien/research/manufacturer-ash-search.html",
+      "sha256": "3613a6aa293cb0c2fa77343135702255d367fb2da6ee0a76847217a6bef5efa3",
+      "bytes": 349591,
+      "finalUrl": "https://store.necaonline.com/search?q=Ash+Alien&type=article",
+      "result": "page-fetched-not-image-qualification"
+    },
+    {
+      "url": "https://necaonline.com/2020/07/alien-7-scale-action-figures-40th-anniversary-assortment-3/",
+      "kind": "actual-reference-page-fetch",
+      "result": "fetch-failed-not-image-qualification",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://neverland.co.th/products/neca-alien-40th-anniversary-ash-7-scale-figure",
+      "kind": "reference-page-discovery-not-qualification",
+      "result": "fetch-failed",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

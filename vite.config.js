@@ -1,9 +1,25 @@
+import { getBuildIdentity, buildIdentityPlugin } from './scripts/buildIdentity.mjs';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+const identity = getBuildIdentity();
+
+// SSR tests read a fixed source snapshot. Watching the archived asset corpus
+// exhausts inotify without helping those tests; normal development keeps HMR.
+const testServerLifecycle = {
+  name: 'multiverse-isolated-test-server',
+  configResolved(config) {
+    if (process.env.NODE_TEST_CONTEXT || process.env.MULTIVERSE_TEST_SERVER === '1') {
+      config.server.watch = null;
+      config.server.hmr = false;
+    }
+  }
+};
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), buildIdentityPlugin(identity), testServerLifecycle],
+  define: { __MULTIVERSE_BUILD__: JSON.stringify(identity) },
   build: {
     chunkSizeWarningLimit: 1000,
     rollupOptions: {

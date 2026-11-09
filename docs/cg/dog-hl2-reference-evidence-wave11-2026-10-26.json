@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "dog_hl2",
+  "characterName": "Dog",
+  "incarnation": "Half-Life 2 (2004) - D0g",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.half-life.com/en/halflife1",
+      "attemptedAt": "2026-10-26T08:15:15.185909+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://store.steampowered.com/app/220/HalfLife_2/",
+      "attemptedAt": "2026-10-26T08:15:15.298598+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://store.steampowered.com/app/220/HalfLife_2/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 176656,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/dog-hl2/research/source-01.html",
+      "sha256": "840055d015a9dde81b388b0fc0627c83445e07a46ddf421c6f09260e93156381",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0
+}

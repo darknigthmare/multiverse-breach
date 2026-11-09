@@ -24,7 +24,7 @@ const fighter = (id, special = { name: 'Directed Beam', type: 'beam', dmg: 4.5 }
   stats: { hp: 600, atk: 20, def: 0, spd: 8 },
   simple: { name: 'Strike', dmg: 1 }, secondary: { name: 'Shot', dmg: 1.2, cd: 3 },
   defense: { name: 'Guard', reduce: 0.4, dur: 1 },
-  special, primaryColor: '#40c0ff', secondaryColor: '#ffffff'
+  special: special && { animationDuration: 1.1, hitAt: 0.451, meterCost: 100, ...special }, primaryColor: '#40c0ff', secondaryColor: '#ffffff'
 });
 
 const createEngine = ({ special, opponentSpecial, p2 = false } = {}) => {

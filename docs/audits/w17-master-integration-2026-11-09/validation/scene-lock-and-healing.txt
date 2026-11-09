@@ -1,0 +1,352 @@
+TAP version 13
+# Subtest: hero: Aerith has a named healing profile and never an offensive preview
+ok 1 - hero: Aerith has a named healing profile and never an offensive preview
+  ---
+  duration_ms: 26897.789177
+  type: 'test'
+  ...
+# Subtest: hero: native confirmation heals living allies, spends once and never hits opponents
+ok 2 - hero: native confirmation heals living allies, spends once and never hits opponents
+  ---
+  duration_ms: 6.821912
+  type: 'test'
+  ...
+# Subtest: enemy: Aerith has a named healing profile and never an offensive preview
+ok 3 - enemy: Aerith has a named healing profile and never an offensive preview
+  ---
+  duration_ms: 4.597052
+  type: 'test'
+  ...
+# Subtest: enemy: native confirmation heals living allies, spends once and never hits opponents
+ok 4 - enemy: native confirmation heals living allies, spends once and never hits opponents
+  ---
+  duration_ms: 3.735829
+  type: 'test'
+  ...
+# Subtest: hero: full health or only capped radiation cannot spend a tactical limit
+ok 5 - hero: full health or only capped radiation cannot spend a tactical limit
+  ---
+  duration_ms: 4.254958
+  type: 'test'
+  ...
+# Subtest: hero: the radiation cap and living-only rule do not cleanse, revive or damage
+ok 6 - hero: the radiation cap and living-only rule do not cleanse, revive or damage
+  ---
+  duration_ms: 1.795265
+  type: 'test'
+  ...
+# Subtest: hero: five-cell reach is inclusive and six-cell allies are left untouched
+ok 7 - hero: five-cell reach is inclusive and six-cell allies are left untouched
+  ---
+  duration_ms: 1.796647
+  type: 'test'
+  ...
+# Subtest: hero: a wall blocks the confirmed recipient without charging or ending the turn
+ok 8 - hero: a wall blocks the confirmed recipient without charging or ending the turn
+  ---
+  duration_ms: 1.63195
+  type: 'test'
+  ...
+# Subtest: hero: group source healing rejects empty cells and enemy anchors
+ok 9 - hero: group source healing rejects empty cells and enemy anchors
+  ---
+  duration_ms: 1.042716
+  type: 'test'
+  ...
+# Subtest: hero: stale healed target is not a free anchor for a different wounded ally
+ok 10 - hero: stale healed target is not a free anchor for a different wounded ally
+  ---
+  duration_ms: 2.157199
+  type: 'test'
+  ...
+# Subtest: hero: pause and cancellation preserve all HP, movement and resources
+ok 11 - hero: pause and cancellation preserve all HP, movement and resources
+  ---
+  duration_ms: 1.115605
+  type: 'test'
+  ...
+# Subtest: hero: noncombatants and dead-marked positive-HP allies cannot receive Healing Wind
+ok 12 - hero: noncombatants and dead-marked positive-HP allies cannot receive Healing Wind
+  ---
+  duration_ms: 4.030952
+  type: 'test'
+  ...
+# Subtest: hero: preview and real fractional HP agree while presentation is rounded
+ok 13 - hero: preview and real fractional HP agree while presentation is rounded
+  ---
+  duration_ms: 1.685401
+  type: 'test'
+  ...
+# Subtest: hero: invalid limit 99 is not spent
+ok 14 - hero: invalid limit 99 is not spent
+  ---
+  duration_ms: 16.117318
+  type: 'test'
+  ...
+# Subtest: hero: invalid limit NaN is not spent
+ok 15 - hero: invalid limit NaN is not spent
+  ---
+  duration_ms: 1.604509
+  type: 'test'
+  ...
+# Subtest: hero: invalid limit Infinity is not spent
+ok 16 - hero: invalid limit Infinity is not spent
+  ---
+  duration_ms: 3.300685
+  type: 'test'
+  ...
+# Subtest: hero: invalid limit 100 is not spent
+ok 17 - hero: invalid limit 100 is not spent
+  ---
+  duration_ms: 6.505167
+  type: 'test'
+  ...
+# Subtest: hero: delayed native AI heals once and pauses without consuming its limit
+ok 18 - hero: delayed native AI heals once and pauses without consuming its limit
+  ---
+  duration_ms: 2.163388
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by skill without using its replacement
+ok 19 - hero: pending source heal is invalidated by skill without using its replacement
+  ---
+  duration_ms: 1.302806
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by power without using its replacement
+ok 20 - hero: pending source heal is invalidated by power without using its replacement
+  ---
+  duration_ms: 1.431319
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by identity without using its replacement
+ok 21 - hero: pending source heal is invalidated by identity without using its replacement
+  ---
+  duration_ms: 0.974764
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by patient-life without using its replacement
+ok 22 - hero: pending source heal is invalidated by patient-life without using its replacement
+  ---
+  duration_ms: 1.196547
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by caster-life without using its replacement
+ok 23 - hero: pending source heal is invalidated by caster-life without using its replacement
+  ---
+  duration_ms: 0.873412
+  type: 'test'
+  ...
+# Subtest: hero: pending source heal is invalidated by dispose without using its replacement
+ok 24 - hero: pending source heal is invalidated by dispose without using its replacement
+  ---
+  duration_ms: 0.877888
+  type: 'test'
+  ...
+# Subtest: enemy: full health or only capped radiation cannot spend a tactical limit
+ok 25 - enemy: full health or only capped radiation cannot spend a tactical limit
+  ---
+  duration_ms: 1.81842
+  type: 'test'
+  ...
+# Subtest: enemy: the radiation cap and living-only rule do not cleanse, revive or damage
+ok 26 - enemy: the radiation cap and living-only rule do not cleanse, revive or damage
+  ---
+  duration_ms: 2.51103
+  type: 'test'
+  ...
+# Subtest: enemy: five-cell reach is inclusive and six-cell allies are left untouched
+ok 27 - enemy: five-cell reach is inclusive and six-cell allies are left untouched
+  ---
+  duration_ms: 2.020584
+  type: 'test'
+  ...
+# Subtest: enemy: a wall blocks the confirmed recipient without charging or ending the turn
+ok 28 - enemy: a wall blocks the confirmed recipient without charging or ending the turn
+  ---
+  duration_ms: 1.413322
+  type: 'test'
+  ...
+# Subtest: enemy: group source healing rejects empty cells and enemy anchors
+ok 29 - enemy: group source healing rejects empty cells and enemy anchors
+  ---
+  duration_ms: 0.793211
+  type: 'test'
+  ...
+# Subtest: enemy: stale healed target is not a free anchor for a different wounded ally
+ok 30 - enemy: stale healed target is not a free anchor for a different wounded ally
+  ---
+  duration_ms: 1.922576
+  type: 'test'
+  ...
+# Subtest: enemy: pause and cancellation preserve all HP, movement and resources
+ok 31 - enemy: pause and cancellation preserve all HP, movement and resources
+  ---
+  duration_ms: 0.810617
+  type: 'test'
+  ...
+# Subtest: enemy: noncombatants and dead-marked positive-HP allies cannot receive Healing Wind
+ok 32 - enemy: noncombatants and dead-marked positive-HP allies cannot receive Healing Wind
+  ---
+  duration_ms: 1.324178
+  type: 'test'
+  ...
+# Subtest: enemy: preview and real fractional HP agree while presentation is rounded
+ok 33 - enemy: preview and real fractional HP agree while presentation is rounded
+  ---
+  duration_ms: 1.258349
+  type: 'test'
+  ...
+# Subtest: enemy: invalid limit 99 is not spent
+ok 34 - enemy: invalid limit 99 is not spent
+  ---
+  duration_ms: 1.098389
+  type: 'test'
+  ...
+# Subtest: enemy: invalid limit NaN is not spent
+ok 35 - enemy: invalid limit NaN is not spent
+  ---
+  duration_ms: 8.465659
+  type: 'test'
+  ...
+# Subtest: enemy: invalid limit Infinity is not spent
+ok 36 - enemy: invalid limit Infinity is not spent
+  ---
+  duration_ms: 1.371279
+  type: 'test'
+  ...
+# Subtest: enemy: invalid limit 100 is not spent
+ok 37 - enemy: invalid limit 100 is not spent
+  ---
+  duration_ms: 1.211429
+  type: 'test'
+  ...
+# Subtest: enemy: delayed native AI heals once and pauses without consuming its limit
+ok 38 - enemy: delayed native AI heals once and pauses without consuming its limit
+  ---
+  duration_ms: 1.035304
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by skill without using its replacement
+ok 39 - enemy: pending source heal is invalidated by skill without using its replacement
+  ---
+  duration_ms: 0.705359
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by power without using its replacement
+ok 40 - enemy: pending source heal is invalidated by power without using its replacement
+  ---
+  duration_ms: 0.861283
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by identity without using its replacement
+ok 41 - enemy: pending source heal is invalidated by identity without using its replacement
+  ---
+  duration_ms: 0.984569
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by patient-life without using its replacement
+ok 42 - enemy: pending source heal is invalidated by patient-life without using its replacement
+  ---
+  duration_ms: 0.661363
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by caster-life without using its replacement
+ok 43 - enemy: pending source heal is invalidated by caster-life without using its replacement
+  ---
+  duration_ms: 0.657757
+  type: 'test'
+  ...
+# Subtest: enemy: pending source heal is invalidated by dispose without using its replacement
+ok 44 - enemy: pending source heal is invalidated by dispose without using its replacement
+  ---
+  duration_ms: 0.647742
+  type: 'test'
+  ...
+# Subtest: unverified/custom identity is not rewritten: {"id":"unknown","name":"Aerith Gainsborough"}
+ok 45 - unverified/custom identity is not rewritten: {"id":"unknown","name":"Aerith Gainsborough"}
+  ---
+  duration_ms: 0.66598
+  type: 'test'
+  ...
+# Subtest: unverified/custom identity is not rewritten: {"universe":"Final Fantasy VIII"}
+ok 46 - unverified/custom identity is not rewritten: {"universe":"Final Fantasy VIII"}
+  ---
+  duration_ms: 0.51297
+  type: 'test'
+  ...
+# Subtest: unverified/custom identity is not rewritten: {"special":{"name":"Authored custom attack","type":"beam","dmg":3}}
+ok 47 - unverified/custom identity is not rewritten: {"special":{"name":"Authored custom attack","type":"beam","dmg":3}}
+  ---
+  duration_ms: 0.495534
+  type: 'test'
+  ...
+# Subtest: unverified/custom identity is not rewritten: {"tacticsAttacks":{"special":{"effect":"heal","shape":"single","range":2}}}
+ok 48 - unverified/custom identity is not rewritten: {"tacticsAttacks":{"special":{"effect":"heal","shape":"single","range":2}}}
+  ---
+  duration_ms: 0.575133
+  type: 'test'
+  ...
+# Subtest: source reads and battle preparation never alter the catalogue or caller definition
+ok 49 - source reads and battle preparation never alter the catalogue or caller definition
+  ---
+  duration_ms: 1.213592
+  type: 'test'
+  ...
+# Subtest: explicit tacticsProfile remains authoritative
+ok 50 - explicit tacticsProfile remains authoritative
+  ---
+  duration_ms: 0.655645
+  type: 'test'
+  ...
+# Subtest: explicit tactics remains authoritative
+ok 51 - explicit tactics remains authoritative
+  ---
+  duration_ms: 0.525909
+  type: 'test'
+  ...
+# Subtest: explicit attackProfile remains authoritative
+ok 52 - explicit attackProfile remains authoritative
+  ---
+  duration_ms: 0.51972
+  type: 'test'
+  ...
+# Subtest: hero: a newly injured ally offered by the live panel can receive an ordinary heal
+ok 53 - hero: a newly injured ally offered by the live panel can receive an ordinary heal
+  ---
+  duration_ms: 4.957613
+  type: 'test'
+  ...
+# Subtest: enemy: a newly injured ally offered by the live panel can receive an ordinary heal
+ok 54 - enemy: a newly injured ally offered by the live panel can receive an ordinary heal
+  ---
+  duration_ms: 4.163602
+  type: 'test'
+  ...
+# Subtest: RAAM take-light-cover waits for an actual summon scene to finish without spending another ready hero's resources
+ok 55 - RAAM take-light-cover waits for an actual summon scene to finish without spending another ready hero's resources
+  ---
+  duration_ms: 25514.136805
+  type: 'test'
+  ...
+# Subtest: RAAM frag waits for an actual summon scene to finish without spending another ready hero's resources
+ok 56 - RAAM frag waits for an actual summon scene to finish without spending another ready hero's resources
+  ---
+  duration_ms: 30.244884
+  type: 'test'
+  ...
+# Subtest: Pirates ritual coordination waits for an actual summon scene and resumes through the ordinary command impact
+ok 57 - Pirates ritual coordination waits for an actual summon scene and resumes through the ordinary command impact
+  ---
+  duration_ms: 19.26887
+  type: 'test'
+  ...
+1..57
+# tests 57
+# suites 0
+# pass 57
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 53362.90458

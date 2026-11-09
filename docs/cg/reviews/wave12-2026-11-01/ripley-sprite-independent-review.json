@@ -1,0 +1,894 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "wave": 12,
+  "recordedAt": "2026-11-01T03:49:27.988996+00:00",
+  "reviewer": "/root/alien_quality_review",
+  "characterId": "ripley",
+  "heroId": "ripley",
+  "status": "accepted-sixteen-actual-native-poses-and-normalized-candidate-with-scoped-primary-film-identity-and-licensed-body-support",
+  "reviewScope": "Four real transparent2x2 native pages actually opened in original and neutral matte; all16 poses reviewed. All16 final256px cells actually viewed through four independently pixel-replayed neutral-matte quadrant previews. Individual frame files are not falsely claimed separately opened. No runtime installation/selection performed by reviewer.",
+  "allAccepted": true,
+  "acceptedFrames": 16,
+  "framesActuallyReviewed": 16,
+  "realNativePagesActuallyOpened": 4,
+  "actualNativeOutputs": 4,
+  "rejectedAtlasDrafts": 0,
+  "candidate": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/candidate.png",
+    "sha256": "9ace11dc65acf293675cbbd934a371688091b10dd4bff7112e2cd7b2aa09b35d",
+    "bytes": 591827
+  },
+  "candidateViewEvidence": [
+    {
+      "quadrant": 1,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/quadrant-1.png",
+      "sha256": "c99fe4a3566a36ec20311441b1896262e2b6d714bdcbb10ea29f4119cc115818",
+      "bytes": 223032,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual neutral-matte diagnostic PNG",
+      "sourceRect": {
+        "left": 0,
+        "top": 0,
+        "width": 512,
+        "height": 512
+      },
+      "nearestFactor": 2,
+      "matte": "#65656b",
+      "rawRgbByteExactToCandidateExtractionIndependentlyVerified": true,
+      "notAnArtworkEdit": true
+    },
+    {
+      "quadrant": 2,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/quadrant-2.png",
+      "sha256": "0aa5ce3489e3c40089ca46b0c5e2c56cb3f6803439749f5f4e7094e78280308f",
+      "bytes": 220786,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual neutral-matte diagnostic PNG",
+      "sourceRect": {
+        "left": 512,
+        "top": 0,
+        "width": 512,
+        "height": 512
+      },
+      "nearestFactor": 2,
+      "matte": "#65656b",
+      "rawRgbByteExactToCandidateExtractionIndependentlyVerified": true,
+      "notAnArtworkEdit": true
+    },
+    {
+      "quadrant": 3,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/quadrant-3.png",
+      "sha256": "c596dfe15ff44f05da04abd15bbc0f7d3e37760fa96f1d399c795eb1fdce029a",
+      "bytes": 263179,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual neutral-matte diagnostic PNG",
+      "sourceRect": {
+        "left": 0,
+        "top": 512,
+        "width": 512,
+        "height": 512
+      },
+      "nearestFactor": 2,
+      "matte": "#65656b",
+      "rawRgbByteExactToCandidateExtractionIndependentlyVerified": true,
+      "notAnArtworkEdit": true
+    },
+    {
+      "quadrant": 4,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/quadrant-4.png",
+      "sha256": "da499c50551da666ba19f262e3a557874c32804195cc19211831748c48d294d2",
+      "bytes": 254979,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual neutral-matte diagnostic PNG",
+      "sourceRect": {
+        "left": 512,
+        "top": 512,
+        "width": 512,
+        "height": 512
+      },
+      "nearestFactor": 2,
+      "matte": "#65656b",
+      "rawRgbByteExactToCandidateExtractionIndependentlyVerified": true,
+      "notAnArtworkEdit": true
+    }
+  ],
+  "nativePages": [
+    {
+      "page": "ATLAS01",
+      "attempt": 1,
+      "native": {
+        "path": "/workspace/generated_images/exec-6119e72d-ac36-4b31-a900-b4f887d3a029.png",
+        "sha256": "071b51e2be3c98557b55d1f654907e5163520ee8fc722c98308f74761d73a992",
+        "bytes": 874404
+      },
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual native; also full neutral-matte diagnostic, with source-only nearest footwear diagnostic for S07. Temporary diagnostics are reconstructible inspection caches, not new artwork authority.",
+      "decision": "accepted-native-poses-with-source-limitations-pending-normalized-frame-review",
+      "independentTransport": {
+        "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/ATLAS01-attempt1-transport.json",
+        "sha256": "387cbbd1176631cc88b3be0c36f93a8347cbec9fbb7a2347e7d9443db673c7d7",
+        "bytes": 3060
+      },
+      "actualPrompt": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/production-prompts/01-idle.txt",
+        "sha256": "1731f07d6bc7189f9b4157c8906e7d97a3027152bbcad4eb1c0dbd11196d0957",
+        "bytes": 3805
+      },
+      "actualSubmittedArgs": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS01-attempt1-submitted-args.json",
+        "sha256": "19dca2279ef7dbe3c287f1c117ff44c56937ccdde0762c0bcb2340807f63c875",
+        "bytes": 4106
+      },
+      "actualToolReturn": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS01-attempt1-result.json",
+        "sha256": "4023b4ada2a6e367965372298088e03047752f2c5927128125b2a129e9f3d8b3",
+        "bytes": 1166370
+      },
+      "submittedSourceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "returnedDataUrlNativeByteExact": true,
+      "exactSubmittedPromptAndInputsVerified": true,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "poses": [
+        {
+          "frame": 1,
+          "position": "top-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S01 quiet front-three-quarter stance, empty hands low; anatomical LEFT watch and LEFT wing, cream collar/olive inner layer, two whole separated gray lace boots."
+        },
+        {
+          "frame": 2,
+          "position": "top-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S02 RIGHT hand on own hip/side seam, LEFT watch hand low, shifted weight and raised chin; no added external belt/weapon, complete shallow-heeled shoes."
+        },
+        {
+          "frame": 3,
+          "position": "bottom-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S03 LEFT watch forearm bent/palm up near waist, RIGHT hand low; LEFT leg set sideways, whole boots and curls preserved."
+        },
+        {
+          "frame": 4,
+          "position": "bottom-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S04 low alert wide stance, both forearms forward below ribs, LEFT watch outside silhouette, both complete thin-soled gray boots apart."
+        }
+      ],
+      "limitations": [
+        "Actor film4 supplies face/upper costume only; licensed NECA body/boots/watch support is not face identity. No exact iris hue, lettering, footwear brand/eyelet count or microscopic heel geometry certification.",
+        "Native shoes have low-profile continuous gray soles with shallow heels; final256px normalized silhouette remains to inspect.",
+        "Colored weak-alpha fringe in transparent-tool preview is absent in actually opened neutral-matte composition; no semantic repaint requested."
+      ]
+    },
+    {
+      "page": "ATLAS02",
+      "attempt": 1,
+      "native": {
+        "path": "/workspace/generated_images/exec-5b910d02-96de-409a-aa7c-a87aa27eaf05.png",
+        "sha256": "ee81457f07a3f80841be9af06ca06c8a01647c499a24ef736e5f1fb6a7cb4050",
+        "bytes": 767358
+      },
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual native; also full neutral-matte diagnostic, with source-only nearest footwear diagnostic for S07. Temporary diagnostics are reconstructible inspection caches, not new artwork authority.",
+      "decision": "accepted-native-poses-with-source-limitations-pending-normalized-frame-review",
+      "independentTransport": {
+        "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/ATLAS02-attempt1-transport.json",
+        "sha256": "11e35508364cb4bf3c49acd331ab5bef6dad75b114e1cf614c130ac35cbabfca",
+        "bytes": 3059
+      },
+      "actualPrompt": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/production-prompts/02-run.txt",
+        "sha256": "d1ab98fe4800a311c937f22c0384683e9393da647870dcda508dac63e8a6f94c",
+        "bytes": 3778
+      },
+      "actualSubmittedArgs": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS02-attempt1-submitted-args.json",
+        "sha256": "875a63cd4066dfeac18963bf294c6d0871f63cdec1c68f2a915c1cfeeda8f1b0",
+        "bytes": 4079
+      },
+      "actualToolReturn": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS02-attempt1-result.json",
+        "sha256": "cb2963175b595e0c0e00a4b66e99869a97e1005df0edd08b8faf729af0711095",
+        "bytes": 1023642
+      },
+      "submittedSourceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "returnedDataUrlNativeByteExact": true,
+      "exactSubmittedPromptAndInputsVerified": true,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "poses": [
+        {
+          "frame": 5,
+          "position": "top-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S05 RIGHT contact-forward step, opposite LEFT arm swings forward, LEFT rear boot visibly raised and fully separate; complete outlines and thin continuous soles."
+        },
+        {
+          "frame": 6,
+          "position": "top-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S06 LEFT knee lifted, RIGHT foot supports body, RIGHT empty forearm forward and LEFT watch arm back/outside; both entire boots, no opposite-heel overlap."
+        },
+        {
+          "frame": 7,
+          "position": "bottom-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S07 opposite contact with LEFT leg advancing across front and RIGHT leg back; shins cross but two boot silhouettes, toes, soles and heels remain complete and separate. Actually checked a nearest diagnostic of native rect275,1100,210,140."
+        },
+        {
+          "frame": 8,
+          "position": "bottom-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S08 RIGHT knee lifted, LEFT foot supports, LEFT watch forearm forward, RIGHT arm low/back; opposite passing motion to S06, both footwear silhouettes entire."
+        }
+      ],
+      "limitations": [
+        "Actor film4 supplies face/upper costume only; licensed NECA body/boots/watch support is not face identity. No exact iris hue, lettering, footwear brand/eyelet count or microscopic heel geometry certification.",
+        "Native shoes have low-profile continuous gray soles with shallow heels; final256px normalized silhouette remains to inspect.",
+        "Colored weak-alpha fringe in transparent-tool preview is absent in actually opened neutral-matte composition; no semantic repaint requested."
+      ]
+    },
+    {
+      "page": "ATLAS03",
+      "attempt": 1,
+      "native": {
+        "path": "/workspace/generated_images/exec-11d46eb1-e420-48e6-a646-4b3526ceb10b.png",
+        "sha256": "ba376370049c9cb6a514462c365a3d257f51f327b0c8bd6dfe7289134487fe62",
+        "bytes": 1001131
+      },
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual native; also full neutral-matte diagnostic of same complete page. Temporary diagnostics are reconstructible inspection caches, not new artwork authority.",
+      "decision": "accepted-native-poses-with-source-limitations-pending-normalized-frame-review",
+      "independentTransport": {
+        "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/ATLAS03-attempt1-transport.json",
+        "sha256": "ee2d76ddabd6d8284bffa646316a8ea035da9720dd23e0fcb967adebc853ba5b",
+        "bytes": 3078
+      },
+      "actualPrompt": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/production-prompts/03-source-flamer-action.txt",
+        "sha256": "a71a67ba6ff4ce5b52480d5c825d81901cce4ff67e20e519ca6817ade896906b",
+        "bytes": 4616
+      },
+      "actualSubmittedArgs": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS03-attempt1-submitted-args.json",
+        "sha256": "00341cdf83a0aef91e68ca4454357a933971577ae4ea363a26504b05ee21d86c",
+        "bytes": 4919
+      },
+      "actualToolReturn": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS03-attempt1-result.json",
+        "sha256": "7e8e3ac98789d682888fb04a9f6ab06e5cac7d05e2378cc4c4a5fbd240951972",
+        "bytes": 1335342
+      },
+      "submittedSourceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "returnedDataUrlNativeByteExact": true,
+      "exactSubmittedPromptAndInputsVerified": true,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "poses": [
+        {
+          "frame": 9,
+          "position": "top-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S09 upright wide ready stance, RIGHT hand on source flamer grip, LEFT watch hand empty/low; complete rear gray cylinder, red bottle, upper hose and perforated dark muzzle. Visible black strap crosses upper body, without exposed invented rear routing."
+        },
+        {
+          "frame": 10,
+          "position": "top-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S10 LEFT-foot-forward low lunge, RIGHT boot behind remains complete/separate; RIGHT source grip and LEFT watch palm supporting below receiver. Both feet/entire source-like gray flamer visible; no extra handle or backpack tank."
+        },
+        {
+          "frame": 11,
+          "position": "bottom-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S11 deeper one-knee crouch rather than the requested shallow crouch, RIGHT foot forward and LEFT leg strongly bent with its boot fully visible behind; LEFT watch hand on own LEFT thigh. Complete firearm endpoints/red bottle/gray hose, no flames."
+        },
+        {
+          "frame": 12,
+          "position": "bottom-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S12 return-to-guard wide stance with LEFT foot outward, RIGHT source grip supports the whole flamer and LEFT watch palm opens outward; source-visible diagonal strap ends at the weapon, no closed black triangle or chains."
+        }
+      ],
+      "limitations": [
+        "Actor film4 supplies face/upper costume only; licensed NECA supports fullbody/boots/watch and1979 equipment, false face identity.",
+        "Exact iris hue, microscopic footwear geometry/brand, muzzle perforation count and hidden weapon reverse or rear sling route remain unresolved.",
+        "Final256px normalized cells remain to inspect. No software pose/limb/gun repaint or mirrored pose authorized."
+      ]
+    },
+    {
+      "page": "ATLAS04",
+      "attempt": 1,
+      "native": {
+        "path": "/workspace/generated_images/exec-46b352c6-f2d4-41fc-a3dd-d5ffc789ee89.png",
+        "sha256": "562d689fe0ccc72d1b1694c3eec9f3d5011788c29a009e274fcef3e92227521d",
+        "bytes": 925169
+      },
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image original actual native; also full neutral-matte diagnostic of same complete page. Temporary diagnostics are reconstructible inspection caches, not new artwork authority.",
+      "decision": "accepted-native-poses-with-source-limitations-pending-normalized-frame-review",
+      "independentTransport": {
+        "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/ATLAS04-attempt1-transport.json",
+        "sha256": "b79b9864956f2e1c97d81b527b19fe127894d2a25aeec866e858ec4a0d54eda6",
+        "bytes": 3068
+      },
+      "actualPrompt": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/production-prompts/04-hit-recovery.txt",
+        "sha256": "b2be271f1d4e3ac6c1391c532a7c474fe5993f0e7d0999961cb1cf5ab4ed81b9",
+        "bytes": 3826
+      },
+      "actualSubmittedArgs": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS04-attempt1-submitted-args.json",
+        "sha256": "8a638a80b22dd3445ecb8863befef8ce4937a8f89604835633cf0fb903448d7f",
+        "bytes": 4127
+      },
+      "actualToolReturn": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/tool-return-archives/ATLAS04-attempt1-result.json",
+        "sha256": "29223c55598aa3e47bb6162559cca4bbac02dd8cad51596adcfdb761385093db",
+        "bytes": 1234058
+      },
+      "submittedSourceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "returnedDataUrlNativeByteExact": true,
+      "exactSubmittedPromptAndInputsVerified": true,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "poses": [
+        {
+          "frame": 13,
+          "position": "top-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S13 low wide protective guard, RIGHT forearm near chest, LEFT watch palm outward; both entire gray thin-soled boots and curls visible, no wounds or extra equipment."
+        },
+        {
+          "frame": 14,
+          "position": "top-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S14 intact backward recoil, RIGHT boot supports and LEFT knee/whole boot lifted; RIGHT empty hand near sternum and LEFT watch arm spread outward. Different body lean and hand positions from passing motion."
+        },
+        {
+          "frame": 15,
+          "position": "bottom-left",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S15 deep balanced squat, RIGHT hand on own RIGHT thigh, LEFT watch hand extended sideways; two whole separated gray boots/heels. LEFT fingertips cross the virtual2x2 center line but are not cropped or touching another silhouette; preserve complete connected body."
+        },
+        {
+          "frame": 16,
+          "position": "bottom-right",
+          "actuallyViewedInRealNativePage": true,
+          "observation": "S16 calm upright reset/upward gaze, RIGHT hand at own hip and LEFT watch palm open; actual RIGHT foot supports and LEFT boot extends sideways, opposite requested support/extension legs. Watch/wing stay anatomical LEFT, so this is observed choreography, not a flipped costume."
+        }
+      ],
+      "limitations": [
+        "Actor film4 supplies face/upper costume only; licensed NECA supports fullbody/boots/watch and1979 equipment, false face identity.",
+        "Exact iris hue, microscopic footwear geometry/brand, muzzle perforation count and hidden weapon reverse or rear sling route remain unresolved.",
+        "Final256px normalized cells remain to inspect. No software pose/limb/gun repaint or mirrored pose authorized."
+      ]
+    }
+  ],
+  "nativeTransportReview": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/native-pages-review.json",
+    "sha256": "09591336f245d4847086e9f8da6d6a18ba51b81e6f1883cd6f1f6901d2226264",
+    "bytes": 19184
+  },
+  "independentSourceReview": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/source-review-production.json",
+    "sha256": "44ca63e21a93ccffa73a88e4f811ad070ceda135becc263a5295eed3cbd6e62e",
+    "bytes": 5204
+  },
+  "wholeRgbaReplay": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/whole-rgba-replay.json",
+    "sha256": "0fb5502d89b6c2cb9c824bd048f56bf28f6db95bf5d08c1cf216593ada9f0cff",
+    "bytes": 30369
+  },
+  "assemblyProof": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/assembly-proof.json",
+    "sha256": "62a0461218f67f4cbf6a6d36e269472aa5d39cfa50b913818bc128b28e6f3f95",
+    "bytes": 52731
+  },
+  "packingProof": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/packing-proof.json",
+    "sha256": "b86da3ddf3812197eb31d7ef99557a43ecb936cd07704619ad60cfdf301fcae6",
+    "bytes": 12218
+  },
+  "normalization": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/normalization.json",
+    "sha256": "e49ae9ae71270bf8d198e5c40a8af9574cdb4d449b5bd370b53f6ec70862a84a",
+    "bytes": 8674
+  },
+  "selectedGroups": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/atlas-selected-groups.json",
+    "sha256": "75c1b0de45b4ed5e0e8d6140b787e6b6f27f438b0feb86dbcfd166a347cbb6e7",
+    "bytes": 1133
+  },
+  "nativeLedger": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/atlas-native-ledger.json",
+    "sha256": "827d723ef96819bd888d88321350fe29ebf35c22cb5095da238884ecc22f61f5",
+    "bytes": 14951
+  },
+  "selectorBaseline": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/production-selector-baseline.json",
+    "sha256": "dff1e8b98f4740957ff4311d30e339671b6450414e3e4a807be3ab79e326b9dd",
+    "bytes": 1810307
+  },
+  "rootAuthorization": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/root-atlas-authorization.json",
+    "sha256": "4f071048fe20f253e98a9ce854892ae9499ebda23082b8ba1a3e96b5190fc9ba",
+    "bytes": 1791
+  },
+  "sourceEvidence": {
+    "path": "docs/cg/ripley-reference-evidence-wave12-2026-11-01.json",
+    "sha256": "5e682d5a262ec7de82b52c8ebd90b67197bfacbd5aa5d0cd6c709ff7404f73b4",
+    "bytes": 14799
+  },
+  "qualifiedSourceImages": [
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+      "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+      "bytes": 84751,
+      "referencePurpose": "identity",
+      "usedForIdentity": true
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-3.jpeg",
+      "sha256": "379a96d7c4448fd18a71671a58debe28c585912d6ea18e3b2ed444d6a03dbc8f",
+      "bytes": 120772,
+      "referencePurpose": "identity-support",
+      "usedForIdentity": true
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+      "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+      "bytes": 117385,
+      "referencePurpose": "body-costume-support",
+      "usedForIdentity": false
+    }
+  ],
+  "installerPrimaryFilmPng": {
+    "path": "public/images/references/alien/ripley-alien1979-film4-wave12-2026-11-01.png",
+    "sha256": "9833e6890fc786379676d7bcaf0971d09d49d5d04596ad5c3f015740b6c59800",
+    "bytes": 2410742
+  },
+  "referencePngIndependentRgbReplay": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/ripley-atlas/reference-film4-rgb-replay.json",
+    "sha256": "4a7cee39e649ff555ff3d1770a9def6d06f0500b7e1c3b4d2f0057d668c42ff0",
+    "bytes": 1288
+  },
+  "sourceCoverage": {
+    "primaryFilmImagesConsulted": 2,
+    "detailedPrimaryActorFaceAuthorityCount": 1,
+    "detailedPrimaryActorFaceAuthority": "film4 only, actor Sigourney Weaver face/hair/upper coveralls",
+    "film3Scope": "Ripley second from viewer-left torso/hip corroboration, other crew excluded; consulted not attached",
+    "licensedBodyCostumeSupportSources": 1,
+    "licensedBodySourceUsedForFaceIdentity": false,
+    "actualConditioningImagesPerCall": 2,
+    "actualConditioning": "film4JPEG and NECA fullbodyJPEG, roles separate",
+    "technicalInstallerPngIsAdditionalIndependentSource": false,
+    "oldGeneratedAtlasOrNewCGUsedAsIdentityAuthority": false,
+    "hiddenReverseDetailsMicroscopicDigitsIrisHueAndMuzzleCountResolved": false,
+    "absoluteOneToOneCertified": false
+  },
+  "sourceVisualLocks": [
+    "Alien1979 Nostromo blue-gray coveralls, cream collar, olive inner layer and shoulder-length curls; no1986 pulse rifle/yellow loader/green military uniform.",
+    "Anatomical LEFT black watch and LEFT chest wing; no flipped costume.",
+    "Two whole gray ankle-high lace-up footwear silhouettes, thin continuous low-profile sole and shallow heel; no stacked isolated block heels.",
+    "Optional1979 gray source flamethrower: visible rear cylinder/gray body and bent upper hose/red bottle/dark perforated muzzle; only visible sling segments/attachment points. No invented closed triangular/rear sling route, chains or asserted exact perforation count.",
+    "Front/three-quarter source-supported poses with all complete hair/hands/feet/weapon endpoints, no strict back/underside view or duplicate mirrored pose."
+  ],
+  "observedRequestedPoseDeviations": {
+    "S11": "Observed deeper bent-knee/one-knee crouch instead of proposed shallow crouch; both boots and source equipment whole.",
+    "S16": "Observed RIGHT supporting leg/LEFT boot outward, opposite proposed LEFT support/RIGHT extension; requested pose and exact submitted prompt must stay preserved.",
+    "pagePacking": "Prompt requested silhouettes occupy at most75percent cell dimensions; actual first two page figures are about96percent cell height with external visible guards17px or more. They are whole; prompt obedience is not certified."
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-01.png",
+      "sha256": "b155bb12d4a7106bd6d67d5a1ad958e8da85831314a94eba06a10b1009bc6a18",
+      "bytes": 37352,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 1,
+      "positionInViewedQuadrant": "top-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-6119e72d-ac36-4b31-a900-b4f887d3a029.png",
+      "nativeSha256": "071b51e2be3c98557b55d1f654907e5163520ee8fc722c98308f74761d73a992",
+      "nativeLocalPose": 1,
+      "notes": "S01 quiet front-three-quarter stance, empty hands low; anatomical LEFT watch and LEFT wing, cream collar/olive inner layer, two whole separated gray lace boots.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 2,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-02.png",
+      "sha256": "6318fe25e7586da00047d1908d08fdb1667d2328dcba2811db43ff14fa96d3a5",
+      "bytes": 36305,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 1,
+      "positionInViewedQuadrant": "top-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-6119e72d-ac36-4b31-a900-b4f887d3a029.png",
+      "nativeSha256": "071b51e2be3c98557b55d1f654907e5163520ee8fc722c98308f74761d73a992",
+      "nativeLocalPose": 2,
+      "notes": "S02 RIGHT hand on own hip/side seam, LEFT watch hand low, shifted weight and raised chin; no added external belt/weapon, complete shallow-heeled shoes.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 3,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-03.png",
+      "sha256": "9fc0c9b4948048c3b95f191fb4625ddfa422e2224bb18ffbcc483c21b661860c",
+      "bytes": 35685,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 2,
+      "positionInViewedQuadrant": "top-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-6119e72d-ac36-4b31-a900-b4f887d3a029.png",
+      "nativeSha256": "071b51e2be3c98557b55d1f654907e5163520ee8fc722c98308f74761d73a992",
+      "nativeLocalPose": 3,
+      "notes": "S03 LEFT watch forearm bent/palm up near waist, RIGHT hand low; LEFT leg set sideways, whole boots and curls preserved.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 4,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-04.png",
+      "sha256": "ad40258d9b57d4c8c849c716a2f3fee646991b79513ccf965708a7743aec9450",
+      "bytes": 37320,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 2,
+      "positionInViewedQuadrant": "top-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-6119e72d-ac36-4b31-a900-b4f887d3a029.png",
+      "nativeSha256": "071b51e2be3c98557b55d1f654907e5163520ee8fc722c98308f74761d73a992",
+      "nativeLocalPose": 4,
+      "notes": "S04 low alert wide stance, both forearms forward below ribs, LEFT watch outside silhouette, both complete thin-soled gray boots apart.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 5,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-05.png",
+      "sha256": "8b028402a7f751c03b0bf8b57f78efff038ff4dbd76c16b41eb8ae04a20af52b",
+      "bytes": 34752,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 1,
+      "positionInViewedQuadrant": "bottom-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-5b910d02-96de-409a-aa7c-a87aa27eaf05.png",
+      "nativeSha256": "ee81457f07a3f80841be9af06ca06c8a01647c499a24ef736e5f1fb6a7cb4050",
+      "nativeLocalPose": 1,
+      "notes": "S05 RIGHT contact-forward step, opposite LEFT arm swings forward, LEFT rear boot visibly raised and fully separate; complete outlines and thin continuous soles.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 6,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-06.png",
+      "sha256": "bd731360052a393b1b06679ae3a2a04808190dfe1c094dbbcdeca5ccae9c240e",
+      "bytes": 31708,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 1,
+      "positionInViewedQuadrant": "bottom-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-5b910d02-96de-409a-aa7c-a87aa27eaf05.png",
+      "nativeSha256": "ee81457f07a3f80841be9af06ca06c8a01647c499a24ef736e5f1fb6a7cb4050",
+      "nativeLocalPose": 2,
+      "notes": "S06 LEFT knee lifted, RIGHT foot supports body, RIGHT empty forearm forward and LEFT watch arm back/outside; both entire boots, no opposite-heel overlap.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 7,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-07.png",
+      "sha256": "5766130eea4547df56db79b239ef602e497d1c5a887f45b35da807c1cebd743f",
+      "bytes": 32852,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 2,
+      "positionInViewedQuadrant": "bottom-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-5b910d02-96de-409a-aa7c-a87aa27eaf05.png",
+      "nativeSha256": "ee81457f07a3f80841be9af06ca06c8a01647c499a24ef736e5f1fb6a7cb4050",
+      "nativeLocalPose": 3,
+      "notes": "S07 opposite contact with LEFT leg advancing across front and RIGHT leg back; shins cross but two boot silhouettes, toes, soles and heels remain complete and separate. Actually checked a nearest diagnostic of native rect275,1100,210,140.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 8,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-08.png",
+      "sha256": "e0ab8ac11750920faa1714b2b0cd0289cd334a0f84d59e3863c89e9ce439c393",
+      "bytes": 31719,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 2,
+      "positionInViewedQuadrant": "bottom-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-5b910d02-96de-409a-aa7c-a87aa27eaf05.png",
+      "nativeSha256": "ee81457f07a3f80841be9af06ca06c8a01647c499a24ef736e5f1fb6a7cb4050",
+      "nativeLocalPose": 4,
+      "notes": "S08 RIGHT knee lifted, LEFT foot supports, LEFT watch forearm forward, RIGHT arm low/back; opposite passing motion to S06, both footwear silhouettes entire.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 9,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-09.png",
+      "sha256": "f1b4f0e275abc7af5a39a1a678f1cc244826aff6df9a72d05937d2902b057c5a",
+      "bytes": 45778,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 3,
+      "positionInViewedQuadrant": "top-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-11d46eb1-e420-48e6-a646-4b3526ceb10b.png",
+      "nativeSha256": "ba376370049c9cb6a514462c365a3d257f51f327b0c8bd6dfe7289134487fe62",
+      "nativeLocalPose": 1,
+      "notes": "S09 upright wide ready stance, RIGHT hand on source flamer grip, LEFT watch hand empty/low; complete rear gray cylinder, red bottle, upper hose and perforated dark muzzle. Visible black strap crosses upper body, without exposed invented rear routing.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim. Complete1979 gray flamer cylinder/body/red bottle/upper hose/dark perforated muzzle and source-visible diagonal black strap remain inside the cell, without a complete exposed rear sling route or chains.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 10,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-10.png",
+      "sha256": "24607aaf4c5aa1d28ccc8feb59b8d2deb06b7200371890a79cd380784e1bc342",
+      "bytes": 41907,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 3,
+      "positionInViewedQuadrant": "top-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-11d46eb1-e420-48e6-a646-4b3526ceb10b.png",
+      "nativeSha256": "ba376370049c9cb6a514462c365a3d257f51f327b0c8bd6dfe7289134487fe62",
+      "nativeLocalPose": 2,
+      "notes": "S10 LEFT-foot-forward low lunge, RIGHT boot behind remains complete/separate; RIGHT source grip and LEFT watch palm supporting below receiver. Both feet/entire source-like gray flamer visible; no extra handle or backpack tank.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim. Complete1979 gray flamer cylinder/body/red bottle/upper hose/dark perforated muzzle and source-visible diagonal black strap remain inside the cell, without a complete exposed rear sling route or chains.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 11,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-11.png",
+      "sha256": "c88eae8c295c17eefedd844bcc796264cc4913d4b1b7dac117a76f2151772b27",
+      "bytes": 41226,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 4,
+      "positionInViewedQuadrant": "top-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-11d46eb1-e420-48e6-a646-4b3526ceb10b.png",
+      "nativeSha256": "ba376370049c9cb6a514462c365a3d257f51f327b0c8bd6dfe7289134487fe62",
+      "nativeLocalPose": 3,
+      "notes": "S11 deeper one-knee crouch rather than the requested shallow crouch, RIGHT foot forward and LEFT leg strongly bent with its boot fully visible behind; LEFT watch hand on own LEFT thigh. Complete firearm endpoints/red bottle/gray hose, no flames.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim. Complete1979 gray flamer cylinder/body/red bottle/upper hose/dark perforated muzzle and source-visible diagonal black strap remain inside the cell, without a complete exposed rear sling route or chains.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 12,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-12.png",
+      "sha256": "f641168e86f497f5dcb4fcbfab73050420eb62e945bc27a04a4707e764165656",
+      "bytes": 42531,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 4,
+      "positionInViewedQuadrant": "top-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-11d46eb1-e420-48e6-a646-4b3526ceb10b.png",
+      "nativeSha256": "ba376370049c9cb6a514462c365a3d257f51f327b0c8bd6dfe7289134487fe62",
+      "nativeLocalPose": 4,
+      "notes": "S12 return-to-guard wide stance with LEFT foot outward, RIGHT source grip supports the whole flamer and LEFT watch palm opens outward; source-visible diagonal strap ends at the weapon, no closed black triangle or chains.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim. Complete1979 gray flamer cylinder/body/red bottle/upper hose/dark perforated muzzle and source-visible diagonal black strap remain inside the cell, without a complete exposed rear sling route or chains.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 13,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-13.png",
+      "sha256": "3ef83bb99e4ac839948aa802ce3089a3781ec3b6de22a0ef3998624ca9c8f345",
+      "bytes": 41363,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 3,
+      "positionInViewedQuadrant": "bottom-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-46b352c6-f2d4-41fc-a3dd-d5ffc789ee89.png",
+      "nativeSha256": "562d689fe0ccc72d1b1694c3eec9f3d5011788c29a009e274fcef3e92227521d",
+      "nativeLocalPose": 1,
+      "notes": "S13 low wide protective guard, RIGHT forearm near chest, LEFT watch palm outward; both entire gray thin-soled boots and curls visible, no wounds or extra equipment.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 14,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-14.png",
+      "sha256": "ba03e7dc9fa8580b6d42e6071a75e4ebac4956b286d182cfc67ff6d7dca047cc",
+      "bytes": 37710,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 3,
+      "positionInViewedQuadrant": "bottom-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-46b352c6-f2d4-41fc-a3dd-d5ffc789ee89.png",
+      "nativeSha256": "562d689fe0ccc72d1b1694c3eec9f3d5011788c29a009e274fcef3e92227521d",
+      "nativeLocalPose": 2,
+      "notes": "S14 intact backward recoil, RIGHT boot supports and LEFT knee/whole boot lifted; RIGHT empty hand near sternum and LEFT watch arm spread outward. Different body lean and hand positions from passing motion.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 15,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-15.png",
+      "sha256": "4d0cd76d02253fdb207463f257bdc3f1bf1877a36ba541a64358183387393e36",
+      "bytes": 37830,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 4,
+      "positionInViewedQuadrant": "bottom-left",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-46b352c6-f2d4-41fc-a3dd-d5ffc789ee89.png",
+      "nativeSha256": "562d689fe0ccc72d1b1694c3eec9f3d5011788c29a009e274fcef3e92227521d",
+      "nativeLocalPose": 3,
+      "notes": "S15 deep balanced squat, RIGHT hand on own RIGHT thigh, LEFT watch hand extended sideways; two whole separated gray boots/heels. LEFT fingertips cross the virtual2x2 center line but are not cropped or touching another silhouette; preserve complete connected body.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "frame": 16,
+      "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/atlas/prepared/frame-16.png",
+      "sha256": "1cfcc480b2d08e719680c4c8b5bc0c56ae52638af1829aadc4f705eec1fbbcf9",
+      "bytes": 38217,
+      "viewed": true,
+      "actuallyViewed": true,
+      "directFrameFileOpened": false,
+      "actuallyViewedViaPixelExactNeutralMatteQuadrant": true,
+      "quadrant": 4,
+      "positionInViewedQuadrant": "bottom-right",
+      "decision": "accepted-with-source-limitations",
+      "nativePath": "/workspace/generated_images/exec-46b352c6-f2d4-41fc-a3dd-d5ffc789ee89.png",
+      "nativeSha256": "562d689fe0ccc72d1b1694c3eec9f3d5011788c29a009e274fcef3e92227521d",
+      "nativeLocalPose": 4,
+      "notes": "S16 calm upright reset/upward gaze, RIGHT hand at own hip and LEFT watch palm open; actual RIGHT foot supports and LEFT boot extends sideways, opposite requested support/extension legs. Watch/wing stay anatomical LEFT, so this is observed choreography, not a flipped costume.",
+      "normalizedAppearanceReview": "Whole source-like actor/curls, blue-gray coveralls/cream collar/olive inner layer, anatomical LEFT wing/watch and both complete gray ankle lace footwear remain readable as pixel clusters. Low-profile continuous gray sole/shallow heel retained; no exact brand/heel microgeometry claim.",
+      "footSupportReview": "Whole footwear outlines and separate heels/toes visually checked, including crossed-shin S07, lifted passing/recoil boots, deep crouch S11 and squat S15. Lowest-alpha packing baseline is not a claim that every raised foot touches the ground.",
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "technicalPacking": {
+    "sourceIsTechnicalAssemblyNotSingleImageGenNative": true,
+    "genuineSelectedNativePages": 4,
+    "wholeNativePoses": 16,
+    "selectedVisiblePixelsBeforeNearest": 1267908,
+    "allSelectedVisiblePixelsAssigned": true,
+    "sourcePixelsDeletedBeforeNearest": 0,
+    "commonNearestScale": 0.35802469135802467,
+    "minimumGuard": 13,
+    "perFrameResizing": false,
+    "mirror": false,
+    "semanticPainting": false
+  },
+  "preservationScope": {
+    "freshBaselineMaps": 59,
+    "freshBaselineVariantMaps": 59,
+    "rosterIds": 1912,
+    "contextsPerId": 10,
+    "otherRosterIdsToRemainUnchangedAfterRootSelection": 1911,
+    "distinctRipleyAliensId": "ripley_aliens",
+    "finalCGProducerGelPinsVerifiedAtBaseline": 225,
+    "rootOnlyRuntimeSelectionPending": true
+  },
+  "limitations": [
+    "Source identity/body/equipment roles remain scoped: film4 face/upper costume, film3 torso corroboration, licensed NECA body/boots/watch/equipment with false face identity. Neither film proves complete footwear from this crop.",
+    "Pixel rendering at256px preserves the principal source appearance and gear; exact iris hue, sleeve lettering, footwear brand/eyelet count, tiny heel microgeometry and muzzle perforation count are not established.",
+    "Only source-visible strap segments/attachments are asserted; hidden rear sling routing, weapon reverse/underside and closed-loop geometry are not invented or certified.",
+    "Requested75percent cell coverage was not exact: natives remain whole with actual transparent external guards. S11 is a deeper crouch and S16 support leg is opposite request; exact submitted prompts and requested choreography remain preserved.",
+    "All16 bodies genuinely differ by stance/arm/leg/equipment choreography; no software mirror, limb repaint, CG identity borrowing or generated pose clone. No absolute1:1 fidelity certification."
+  ],
+  "frozenCgEvidenceStillIndependentAndImmutable": true,
+  "publicHistoricalPriorityUnmodified": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/selected-roster-visual-priorities.json",
+    "sha256": "f4ea8e9651766c71ac3686ff8c80042151b4d0ada10a175d9c03e6c73f608710",
+    "bytes": 12129
+  },
+  "registryWritten": false,
+  "pixelsModifiedByReviewer": false,
+  "canonicalFidelityApproved": false,
+  "absoluteVisualFidelityCertified": false
+}

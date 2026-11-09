@@ -1,0 +1,27 @@
+{
+  "attempt": 4,
+  "command": "taskset --cpu-list 0,1 npm run build -- --config scripts/viteCodeOnly.config.js",
+  "args": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "npm",
+    "run",
+    "build",
+    "--",
+    "--config",
+    "scripts/viteCodeOnly.config.js"
+  ],
+  "cwd": "/workspace/multiverse-breach",
+  "nodeVersion": "v22.23.4",
+  "nodeExecutable": "/tmp/multiverse-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+  "nodeOptions": "--max-old-space-size=4096",
+  "startedAt": "2026-11-09T10:59:27.815716+00:00",
+  "finishedAt": "2026-11-09T12:37:45.825607+00:00",
+  "exitCode": 0,
+  "status": "completed",
+  "prebuildBypassed": false,
+  "staticMediaCopied": false,
+  "log": "/tmp/merged-integration-build.log",
+  "childPid": 57705
+}

@@ -1,0 +1,2243 @@
+{
+  "schemaVersion": "equipment-delivery-evidence-v2",
+  "asOfDate": "2026-10-26",
+  "repository": "https://github.com/darknigthmare/multiverse-breach",
+  "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+  "previousCommit": "8ce15c779db1e911f0db8723c681a6b0b740bd78",
+  "summary": {
+    "version": "equipment-inventory-v2",
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "asOfDate": "2026-10-26",
+    "repository": "https://github.com/darknigthmare/multiverse-breach",
+    "actors": 4936,
+    "actorKinds": {
+      "boss": 1110,
+      "enemy": 1518,
+      "hero": 1912,
+      "worldBoss": 396
+    },
+    "actorUniverses": 525,
+    "actorsWithDeclaredEquipment": 54,
+    "declaredEquipmentEntries": 141,
+    "actorsWithSourceProps": 1,
+    "actorsWithNamedWeaponFields": 1234,
+    "sourceSignatures": 124,
+    "catalogRecords": 5241,
+    "catalogs": {
+      "BATTLE": 2628,
+      "EQUIPMENT": 1587,
+      "EVENT": 525,
+      "SEASON_REWARD": 3,
+      "SHOP": 498
+    },
+    "distinctRuntimeUniverseItemKeys": 4724,
+    "distinctPhysicalObjects": null,
+    "catalogRecordsAreNotDistinctPhysicalObjects": true,
+    "originalActorIdentities": 312,
+    "itemNatures": {
+      "ABSTRACTION_OU_RELIQUE_A_REVOIR": 72,
+      "ARME_OU_OUTIL_NOMME": 295,
+      "DESIGN_ORIGINAL_A_PRECISER": 122,
+      "EVENEMENT_OU_ATTAQUE": 1544,
+      "INVOCATION_OU_RENFORT": 525,
+      "NATURE_A_DETERMINER": 2202,
+      "OBJET_OU_CONSOMMABLE_NOMME": 336,
+      "POUVOIR_OU_INFORMATION": 2,
+      "PROTECTION_OU_EQUIPEMENT": 126,
+      "TENUE_OU_ACCESSOIRE": 17
+    },
+    "iconStatuses": {
+      "ABSENT_DANS_GIT": 1816,
+      "PRESENT_DANS_GIT": 3425
+    },
+    "uniqueIconPaths": 2755,
+    "uniqueIconStatuses": {
+      "ABSENT_DANS_GIT": 1184,
+      "PRESENT_DANS_GIT": 1571
+    },
+    "unresolvedSourceItemLinks": 0,
+    "associations": 1500,
+    "associationKinds": {
+      "CHAMP_ARME_DECLARE": 1234,
+      "KIT_DECLARE": 141,
+      "OBJET_DE_SCENE_DECLARE": 1,
+      "TECHNIQUE_SIGNEE_NON_EQUIPEMENT": 124
+    },
+    "gaps": 28304,
+    "gapKinds": {
+      "ALIAS_ARME_NON_MODELE": 3941,
+      "DOTATION_ET_RENDU_A_VERIFIER": 1288,
+      "EXCLUSION_DOTATION_A_CONSERVER": 1,
+      "ICONE_RESOLUE_ABSENTE": 1816,
+      "INCARNATION_NON_FIXEE": 3440,
+      "INVENTAIRE_INDIVIDUEL_ABSENT": 4882,
+      "NATURE_PHYSIQUE_A_VERIFIER": 2274,
+      "PORTEUR_TEXTE_NON_LIE": 3,
+      "REVUE_VISUELLE_1A1_OUVERTE": 5241,
+      "SOURCE_INDIVIDUELLE_ABSENTE": 3218,
+      "SOURCE_OBJET_ABSENTE": 2200
+    },
+    "defaultAssignedEquipment": 0,
+    "playerInventoryStartsWith": [
+      "nexus_anchor_coil"
+    ],
+    "actualUserSaveRead": false,
+    "newArtApprovals": 0,
+    "generatedSprites": 0,
+    "sourceFilesVerified": 213,
+    "completeness": "EXHAUSTIVE_RESOLVED_CATALOGS_AND_ACTIVE_ACTORS; CANONICAL_RESEARCH_AND_VISUAL_REVIEW_OPEN"
+  },
+  "extraction": {
+    "metadata": {
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "asOfDate": "2026-10-26",
+      "sourceDigest": "3589a551e16fbe79e20e82793f17fecccf4d78b68d5121779fad857895151f7f",
+      "sourceFiles": [
+        {
+          "path": "src/game/actorFidelityBacklog.js",
+          "gitBlob": "fd864253585814a2c70f92a61058936c86f892da",
+          "bytes": 11613
+        },
+        {
+          "path": "src/game/anchorCustomization.js",
+          "gitBlob": "ccdccce34a0e757ff239cc8a5c480f16e355d432",
+          "bytes": 1120
+        },
+        {
+          "path": "src/game/audioPreferences.js",
+          "gitBlob": "0fb2ca0a8749f8fed44660497b5641bdc13ac360",
+          "bytes": 1442
+        },
+        {
+          "path": "src/game/authRecovery.js",
+          "gitBlob": "ffc0cc46bbef3eb968162a9bf0cb2d4d83b913f3",
+          "bytes": 10074
+        },
+        {
+          "path": "src/game/battleCompletionGate.js",
+          "gitBlob": "451f327f9db08f07096243567944e1729e7c99fa",
+          "bytes": 532
+        },
+        {
+          "path": "src/game/battleItemShield.js",
+          "gitBlob": "ea4487e0ce45c7029068cadbdcb796ed2b977a8e",
+          "bytes": 1045
+        },
+        {
+          "path": "src/game/battleItems.js",
+          "gitBlob": "d26eef57295d62957ee1b20c5fe7ef69eb068c9b",
+          "bytes": 25551
+        },
+        {
+          "path": "src/game/battlePickupSemantics.js",
+          "gitBlob": "a9be470c935856717b5a3568fb6bbee8c92a89ea",
+          "bytes": 8794
+        },
+        {
+          "path": "src/game/canonAliensRescueEncounter.js",
+          "gitBlob": "0b495913e91123eb52a9c1d3c2d92a84675934d5",
+          "bytes": 5603
+        },
+        {
+          "path": "src/game/canonAliensRescueEncounterPresentation.js",
+          "gitBlob": "d68117063da59281d1cf59bf776403081436285b",
+          "bytes": 5372
+        },
+        {
+          "path": "src/game/canonBlackPearlSourceKits.js",
+          "gitBlob": "8fd288cc5ce43fb6375f944c6432c6816867d448",
+          "bytes": 13426
+        },
+        {
+          "path": "src/game/canonEncounterBriefing.js",
+          "gitBlob": "cf02a195529b7b8f53d0f53abf47ae75dba26761",
+          "bytes": 7893
+        },
+        {
+          "path": "src/game/canonFollowupSourceKits.js",
+          "gitBlob": "84934f64a987adf53bf545debac349c1586993ef",
+          "bytes": 8946
+        },
+        {
+          "path": "src/game/canonHeroAttackEffects.js",
+          "gitBlob": "19b91a8e60cb92d94fe6d1bd0d21bac953434499",
+          "bytes": 4083
+        },
+        {
+          "path": "src/game/canonNihilanthEncounter.js",
+          "gitBlob": "261b1f99ab4081c05482df687b360c95edd80839",
+          "bytes": 8069
+        },
+        {
+          "path": "src/game/canonNihilanthEncounterPresentation.js",
+          "gitBlob": "3fd065d389002f42f47a9436550507bd84718b59",
+          "bytes": 3113
+        },
+        {
+          "path": "src/game/canonP0AttackEffects.js",
+          "gitBlob": "ef474b166f7b8aa2e04b25da34a321abcba7105d",
+          "bytes": 5876
+        },
+        {
+          "path": "src/game/canonP0ParticleRenderer.js",
+          "gitBlob": "ce34ae6e7e674ec25d2ecfd249f4e171368b752a",
+          "bytes": 3092
+        },
+        {
+          "path": "src/game/canonP0SourceKits.js",
+          "gitBlob": "1f2b540c03f1d766ef16fb934ece01bf5cf2188c",
+          "bytes": 38049
+        },
+        {
+          "path": "src/game/canonPiratesCurseEncounter.js",
+          "gitBlob": "70e68203bc0d5c5ec811e6736dee107dfd9519ea",
+          "bytes": 6507
+        },
+        {
+          "path": "src/game/canonPriorityStages.js",
+          "gitBlob": "0497548a55a91ed085e284afb980d05c50371e73",
+          "bytes": 9461
+        },
+        {
+          "path": "src/game/canonRaamEncounter.js",
+          "gitBlob": "27e62fe78635dd4cc9f3ffb3d0ba54c6014c674a",
+          "bytes": 4387
+        },
+        {
+          "path": "src/game/canonRexAttackPatterns.js",
+          "gitBlob": "56e5466fcc403a2916b76363f16dbf9f6bfee3ab",
+          "bytes": 4179
+        },
+        {
+          "path": "src/game/canonRexEncounter.js",
+          "gitBlob": "67f0797c19a4fc4c1e2ee5266f815ebce5196ec7",
+          "bytes": 4698
+        },
+        {
+          "path": "src/game/canonRosterPackFactory.js",
+          "gitBlob": "bff9013411325df7a6800f7f06b48b03234d2be5",
+          "bytes": 14626
+        },
+        {
+          "path": "src/game/canonRosterWave.js",
+          "gitBlob": "9af71ac6b20c60848178f206b20ecfea16437bf8",
+          "bytes": 1366
+        },
+        {
+          "path": "src/game/canonRosterWavePartA.js",
+          "gitBlob": "ab5bef9409c229ae8452a9cd97e264e65c9542a3",
+          "bytes": 82773
+        },
+        {
+          "path": "src/game/canonRosterWavePartB.js",
+          "gitBlob": "6ba9a7858057a6a8fd0be4dea567f25589dffc46",
+          "bytes": 90062
+        },
+        {
+          "path": "src/game/canonRosterWavePartC.js",
+          "gitBlob": "5fbd3ec8184e2b06371d0cdd809a333c9067f0d1",
+          "bytes": 116114
+        },
+        {
+          "path": "src/game/canonRosterWavePartD.js",
+          "gitBlob": "aa205bcd3a02687a96ec1edfa9b60d8bff45fbfd",
+          "bytes": 148815
+        },
+        {
+          "path": "src/game/canonRosterWavePartE.js",
+          "gitBlob": "612a31bbefc19a42478a84a39b8d970655b79b7a",
+          "bytes": 135085
+        },
+        {
+          "path": "src/game/canonRosterWavePartF.js",
+          "gitBlob": "937cc2535af6f386d49b5dc334e01a9c154953e7",
+          "bytes": 119511
+        },
+        {
+          "path": "src/game/canonRosterWavePartG.js",
+          "gitBlob": "66f3639a8015c1742b5354d54a7f97fa7715eaa9",
+          "bytes": 60903
+        },
+        {
+          "path": "src/game/canonRosterWavePartH.js",
+          "gitBlob": "4917ce973c7596d970e6eeb3bd2f63068c8c0600",
+          "bytes": 6614
+        },
+        {
+          "path": "src/game/canonRosterWavePartI.js",
+          "gitBlob": "121741c5cdfabb7c3bb3c3a329d18378e360dcc5",
+          "bytes": 26309
+        },
+        {
+          "path": "src/game/canonRosterWavePartJ.js",
+          "gitBlob": "ed75b441e5206746f932937c4ba1d55ceb034939",
+          "bytes": 10691
+        },
+        {
+          "path": "src/game/canonRosterWavePartK.js",
+          "gitBlob": "64b95c89b98da654b82d2aa5528830108d47bf84",
+          "bytes": 11694
+        },
+        {
+          "path": "src/game/canonRosterWavePartL.js",
+          "gitBlob": "c6ed7d8c5ef9d20be5ed4e11ee153f5187887632",
+          "bytes": 13483
+        },
+        {
+          "path": "src/game/canonRosterWavePartM.js",
+          "gitBlob": "1b8e2f417ec14a28472bc9b584fe442c0e1b04c9",
+          "bytes": 7173
+        },
+        {
+          "path": "src/game/canonScarabEncounter.js",
+          "gitBlob": "b24ca729eb20a2fc8125b418468b6b53d6be4262",
+          "bytes": 3007
+        },
+        {
+          "path": "src/game/canonicalArchiveLore.js",
+          "gitBlob": "a43d9e27d1a9bce6cdacf76915cd13631e5be583",
+          "bytes": 24102
+        },
+        {
+          "path": "src/game/cards/cardCatalog.js",
+          "gitBlob": "82f4aeec497b6e71f056d5e5da1db66d8eeac4ff",
+          "bytes": 12162
+        },
+        {
+          "path": "src/game/cards/cardCollectionEngine.js",
+          "gitBlob": "2be96fd15213d6298a0e4ee123489a5a60e9dbb7",
+          "bytes": 11174
+        },
+        {
+          "path": "src/game/cards/cardSaveMigration.js",
+          "gitBlob": "38489eec5df79b1df980b6bfa9d0995b4f79eb00",
+          "bytes": 7703
+        },
+        {
+          "path": "src/game/cards/cardSchema.js",
+          "gitBlob": "1f648c3c750c28a5b44ed0e373974b00a97187c2",
+          "bytes": 6696
+        },
+        {
+          "path": "src/game/cards/cardSetCatalog.js",
+          "gitBlob": "29095d7997e019a92bd458e5e4887a9d74b8357b",
+          "bytes": 4469
+        },
+        {
+          "path": "src/game/catalogPagination.js",
+          "gitBlob": "557a1b5e67bb4e1c39284a5d4260401aa95c92c4",
+          "bytes": 2327
+        },
+        {
+          "path": "src/game/cg/cgCatalog.js",
+          "gitBlob": "adf712300c382beb8f95f0e06bdb48ffd0d020b3",
+          "bytes": 47467
+        },
+        {
+          "path": "src/game/cg/cgSchema.js",
+          "gitBlob": "b00e8761007e37edbfe13cb40a5d7c2fca5f34b3",
+          "bytes": 12505
+        },
+        {
+          "path": "src/game/characterArcStage.js",
+          "gitBlob": "3e80a23f349df85fc44dc83a38ad7ee110f3344d",
+          "bytes": 1790
+        },
+        {
+          "path": "src/game/characterPlaques.js",
+          "gitBlob": "ac533dc2ef4ea65cdad1fe4cf7071c2e162fd6b7",
+          "bytes": 146071
+        },
+        {
+          "path": "src/game/cloudOperationEpoch.js",
+          "gitBlob": "0a898b0131dc3f052dc2e218cef083eb6badfef1",
+          "bytes": 292
+        },
+        {
+          "path": "src/game/cloudSave.js",
+          "gitBlob": "e936507202e430aa767248c6a68ecd6c7fd79187",
+          "bytes": 12867
+        },
+        {
+          "path": "src/game/cloudSaveConflictPolicy.js",
+          "gitBlob": "a2a617f4c18082efed0626f019d731d2d227ba8b",
+          "bytes": 2785
+        },
+        {
+          "path": "src/game/cloudTransport.js",
+          "gitBlob": "7169a753897fe29557b0227a54ac5748311c3c65",
+          "bytes": 2790
+        },
+        {
+          "path": "src/game/combatActivity.js",
+          "gitBlob": "23dd28b723eea786d63beec0511f17b613bc2263",
+          "bytes": 479
+        },
+        {
+          "path": "src/game/combatDialogLifecycle.js",
+          "gitBlob": "a4ca498d221a0ddfe6a4be0eeaba622f1eb90cb0",
+          "bytes": 1234
+        },
+        {
+          "path": "src/game/combatEventBuffs.js",
+          "gitBlob": "623134bf39440b9e375c43d2b3db4cc12c33a42e",
+          "bytes": 1328
+        },
+        {
+          "path": "src/game/combatEventItem.js",
+          "gitBlob": "c3fd7d9ff63862574c84c6e4c8cde3f5d015780a",
+          "bytes": 452
+        },
+        {
+          "path": "src/game/combatHealing.js",
+          "gitBlob": "87f3aa576247bc839be954a0ce9348c53e654bd9",
+          "bytes": 672
+        },
+        {
+          "path": "src/game/combatStatPreparation.js",
+          "gitBlob": "b20b379ef39442210768c2bbab1e89f3227692ea",
+          "bytes": 1126
+        },
+        {
+          "path": "src/game/combatViewport.js",
+          "gitBlob": "e2c07c8777e6dcd23d7df9b5a9051056517f76af",
+          "bytes": 2356
+        },
+        {
+          "path": "src/game/cosmeticVisualAssets.js",
+          "gitBlob": "75df16da38a4c09d53acd5a0e1aa1b18e1e54c67",
+          "bytes": 4983
+        },
+        {
+          "path": "src/game/cosmeticVisualPackCatalog.generated.js",
+          "gitBlob": "c62bcb9bff3e1089c1739140db7be36dfb5b399a",
+          "bytes": 11462
+        },
+        {
+          "path": "src/game/customBattle.js",
+          "gitBlob": "38a7d07434c2032c587df89de6268002b0001b6b",
+          "bytes": 8887
+        },
+        {
+          "path": "src/game/dialogFocus.js",
+          "gitBlob": "5fc318dfe439d7520bd25f39a36bbd1a387be5ce",
+          "bytes": 1539
+        },
+        {
+          "path": "src/game/displayPreferences.js",
+          "gitBlob": "db1a4ca675f1e3c7077914f44d78233d4ce8810b",
+          "bytes": 2140
+        },
+        {
+          "path": "src/game/dlcConfig.js",
+          "gitBlob": "3c113261112d97316b7cd0922c5d29faedfaabe1",
+          "bytes": 1941
+        },
+        {
+          "path": "src/game/encounterDamage.js",
+          "gitBlob": "7b4be45b02ff74524c557eba2147bad2f90f33ed",
+          "bytes": 914
+        },
+        {
+          "path": "src/game/enemies.js",
+          "gitBlob": "bc71cb68b181e7d85f464e7351de8dce7c0347ab",
+          "bytes": 71651
+        },
+        {
+          "path": "src/game/enemySpriteIdentity.js",
+          "gitBlob": "d36b1285c665e4519b79268dc8537f057cb233c6",
+          "bytes": 630
+        },
+        {
+          "path": "src/game/engineFighter.js",
+          "gitBlob": "da694b42c90be522b0d7e96f21bf388d5f8892c6",
+          "bytes": 68195
+        },
+        {
+          "path": "src/game/engineRace.js",
+          "gitBlob": "dca57484c43933217a54f4b212237526ad4fca0b",
+          "bytes": 90263
+        },
+        {
+          "path": "src/game/engineRpg.js",
+          "gitBlob": "ad431a5ad62968cdca60e9be9437039f4fe1ea32",
+          "bytes": 70870
+        },
+        {
+          "path": "src/game/engineSmash.js",
+          "gitBlob": "f0e600e336f3add9180f63f2695a6a70d00b6e92",
+          "bytes": 113683
+        },
+        {
+          "path": "src/game/engineTactics.js",
+          "gitBlob": "cafc76918797da80bd0a5e0e54d09689e8c9a697",
+          "bytes": 182293
+        },
+        {
+          "path": "src/game/expandedUniverses.js",
+          "gitBlob": "e35ae91a92f0124896ed38f4ad06e04a8d60cc1a",
+          "bytes": 389484
+        },
+        {
+          "path": "src/game/extinctionContent.js",
+          "gitBlob": "80f8708b9126e7751aa6b3ebe961db0ece81cfdb",
+          "bytes": 3352
+        },
+        {
+          "path": "src/game/factionProgression.js",
+          "gitBlob": "b0bc0f7e8cafaae0017fbae956c251520b14aaba",
+          "bytes": 16776
+        },
+        {
+          "path": "src/game/featuredUniversePacks.js",
+          "gitBlob": "ee071040477aa1504f9fb4ad512e11e097d0fd22",
+          "bytes": 115391
+        },
+        {
+          "path": "src/game/fighterControlOwnership.js",
+          "gitBlob": "4765dbaccc2cdbc289222daded4d65b3567fbebe",
+          "bytes": 757
+        },
+        {
+          "path": "src/game/fighterHealing.js",
+          "gitBlob": "dfc76ceb5dc4696f15f8d59279ac80714499923f",
+          "bytes": 4014
+        },
+        {
+          "path": "src/game/fighterMeleeSignatures.js",
+          "gitBlob": "48c29f454d3699fa798428c61c6f544a3fa0f08f",
+          "bytes": 7401
+        },
+        {
+          "path": "src/game/fighterRangedSignatures.js",
+          "gitBlob": "b7e63b5975d63871475772f02ca75fbcb964b95f",
+          "bytes": 1954
+        },
+        {
+          "path": "src/game/fighterTagPlacement.js",
+          "gitBlob": "b98243ab836a0b57d547c1847ccbef73db855881",
+          "bytes": 845
+        },
+        {
+          "path": "src/game/fixedStepClock.js",
+          "gitBlob": "188283183262fc268f6a766f763a12e2f32c13e1",
+          "bytes": 1115
+        },
+        {
+          "path": "src/game/gameCanvasCosmeticPresentation.js",
+          "gitBlob": "11a94ce04f77813a4057658fe6ff68db4df563dd",
+          "bytes": 1677
+        },
+        {
+          "path": "src/game/gameDialogQueue.js",
+          "gitBlob": "b0969e755424c5e733325b9c1217998a827b40e1",
+          "bytes": 748
+        },
+        {
+          "path": "src/game/gearShopVisualContracts.js",
+          "gitBlob": "3aee8a59d39536e87f38e2d6314105d49df19f0a",
+          "bytes": 2086
+        },
+        {
+          "path": "src/game/gearShopVisualContractsFirst40.js",
+          "gitBlob": "d93af920058a125134bc6f4b7afcf75308afeed4",
+          "bytes": 15407
+        },
+        {
+          "path": "src/game/gearShopVisualContractsRemaining47.js",
+          "gitBlob": "3383a3ba3c9fbdf87c64027a83323175e79b85a8",
+          "bytes": 16584
+        },
+        {
+          "path": "src/game/generatedStageAssets.js",
+          "gitBlob": "cf76fdc17cc2a846e3ae4a85f7caba178eee1788",
+          "bytes": 3019
+        },
+        {
+          "path": "src/game/generatedStageAssets.json",
+          "gitBlob": "9a1391fab84c4ce8b0332d45a5b779d5bd06cdc8",
+          "bytes": 75863
+        },
+        {
+          "path": "src/game/heroes.js",
+          "gitBlob": "e8cb14403952bb81ed01aabcf756f016c248879c",
+          "bytes": 140776
+        },
+        {
+          "path": "src/game/immersiveHubState.js",
+          "gitBlob": "083f00683146341668faf5b3fb52e61af3b373ae",
+          "bytes": 7035
+        },
+        {
+          "path": "src/game/kartCareer.js",
+          "gitBlob": "9bc7b045f0cd737e9edd4fbb752bed5f13f394f6",
+          "bytes": 2868
+        },
+        {
+          "path": "src/game/localSaveGuard.js",
+          "gitBlob": "bed53d1f1e04f8e1949d9588c10f2a1f40279759",
+          "bytes": 2294
+        },
+        {
+          "path": "src/game/lore.js",
+          "gitBlob": "aa3e6134589be33584bedd5ddb221d3e5689812b",
+          "bytes": 25436
+        },
+        {
+          "path": "src/game/loreAccuratePacks.js",
+          "gitBlob": "a4dc5e3e5e48cd5b4a7f9bda79eb61329f89d180",
+          "bytes": 61224
+        },
+        {
+          "path": "src/game/loreBossOverrides.js",
+          "gitBlob": "3b779d5495ea4d40ef69560028227428b56c2737",
+          "bytes": 157925
+        },
+        {
+          "path": "src/game/loreDescriptions.js",
+          "gitBlob": "34aec3674046a568c0ce038251f513c93033ca90",
+          "bytes": 30597
+        },
+        {
+          "path": "src/game/loreEnemyOverrides.js",
+          "gitBlob": "c3b1b64f2d9d248e3783fe064b3746f83154d3d9",
+          "bytes": 54426
+        },
+        {
+          "path": "src/game/loreItemOverrides.js",
+          "gitBlob": "163865c513e287bff5f8097875ca28b713e6ab32",
+          "bytes": 97571
+        },
+        {
+          "path": "src/game/loreWorldBossOverrides.js",
+          "gitBlob": "9dc08c8c29aa7cd5e668c80309452fd7eb2cb56b",
+          "bytes": 101416
+        },
+        {
+          "path": "src/game/melee/meleeAnimationManifest.js",
+          "gitBlob": "78649d2ff1af85a92e4f520abcc91c4ab29b963d",
+          "bytes": 11807
+        },
+        {
+          "path": "src/game/melee/meleeCombatRuntime.js",
+          "gitBlob": "db3298f94c07b2fd269eeccec0812ce23de864f9",
+          "bytes": 16735
+        },
+        {
+          "path": "src/game/melee/meleeInputMap.js",
+          "gitBlob": "cf8b91b9817f131449e685f2010bfb95d8ef6c34",
+          "bytes": 9927
+        },
+        {
+          "path": "src/game/melee/meleeStateMachine.js",
+          "gitBlob": "fd71460e8edc055d7351ec17df045fb1949a7b31",
+          "bytes": 6832
+        },
+        {
+          "path": "src/game/melee/stageEventEngine.js",
+          "gitBlob": "54ea8148124ca12f391d414c4c0433f2581e3a30",
+          "bytes": 21172
+        },
+        {
+          "path": "src/game/melee/stageTopologyCatalog.js",
+          "gitBlob": "359a6f276ebebb935ab4a54c8e50b4c0d088959e",
+          "bytes": 10648
+        },
+        {
+          "path": "src/game/missions/arcReplayMigration.js",
+          "gitBlob": "05b51f7de101d640ecd71ffd26127a4f2235eb3e",
+          "bytes": 6467
+        },
+        {
+          "path": "src/game/missions/missionAccessRules.js",
+          "gitBlob": "c82f5f4e3d2e6f6f51df547ae704269911e55a99",
+          "bytes": 29088
+        },
+        {
+          "path": "src/game/missions/missionReplayPolicy.js",
+          "gitBlob": "8eebec346cb64041e7c3cc441a232787ca285603",
+          "bytes": 1574
+        },
+        {
+          "path": "src/game/missions/missionStageProjection.js",
+          "gitBlob": "edaf8e211050446b030231bbe5a4b0b4087704b7",
+          "bytes": 3366
+        },
+        {
+          "path": "src/game/missions/universeMissionCategory.js",
+          "gitBlob": "02e559017235fb9244176bfda153e5994c784c74",
+          "bytes": 670
+        },
+        {
+          "path": "src/game/mosaicCityRuntime.js",
+          "gitBlob": "a0aae11866115fc4bbad5c735ab569902a3a991e",
+          "bytes": 14747
+        },
+        {
+          "path": "src/game/mosaicUniversePlaces.js",
+          "gitBlob": "d57b15f9bd206e253c0a22cd7ef1f6569db78b63",
+          "bytes": 3962
+        },
+        {
+          "path": "src/game/narrativeSystems.js",
+          "gitBlob": "91f5a6cbcbc47126096c216b28aaf2e3407f1ae3",
+          "bytes": 160645
+        },
+        {
+          "path": "src/game/nonCombatTrial.js",
+          "gitBlob": "71ac0207b2b7e62e88a27244066ff7cba8c2d5ed",
+          "bytes": 44080
+        },
+        {
+          "path": "src/game/ocBoosterContentUpdates.js",
+          "gitBlob": "86a5c0ead5c3980f59fb639d84b6bb38b23cfb44",
+          "bytes": 21360
+        },
+        {
+          "path": "src/game/ocCampaign.js",
+          "gitBlob": "43914fc17ecccbb0f64aa9ddc600d028db9b77f2",
+          "bytes": 82918
+        },
+        {
+          "path": "src/game/ocCampaignUiProgress.js",
+          "gitBlob": "cc43ace442f07c6ff90602b7d95df6eb2acb2788",
+          "bytes": 2678
+        },
+        {
+          "path": "src/game/ocDlcPacks.js",
+          "gitBlob": "d435972111be0608152542462330dcaabd6dcd88",
+          "bytes": 81577
+        },
+        {
+          "path": "src/game/originalUniverseProduction.js",
+          "gitBlob": "dedb307bb3b0c03caa00a60e1a289d6f9642fb7a",
+          "bytes": 35578
+        },
+        {
+          "path": "src/game/originalUniverseWave.js",
+          "gitBlob": "136d6d560d505b37784ef92347cb7206d79cefa7",
+          "bytes": 12362
+        },
+        {
+          "path": "src/game/originalUniversesManifest.json",
+          "gitBlob": "c8779ab7b47b84d615f312f1477f6b5edb24cbf8",
+          "bytes": 523688
+        },
+        {
+          "path": "src/game/originalWorldBoosterContentUpdates.js",
+          "gitBlob": "171c955516edbeae54455c3882819c34644387ca",
+          "bytes": 12448
+        },
+        {
+          "path": "src/game/playerHero.js",
+          "gitBlob": "bb745e5ec9bb4dd4dfa78bdf41701a05752e61ba",
+          "bytes": 1102
+        },
+        {
+          "path": "src/game/portalBoosterCatalog.js",
+          "gitBlob": "17bd58d6ab87f10b78a124ae0c1a67849682b360",
+          "bytes": 35711
+        },
+        {
+          "path": "src/game/portalBoosterEconomy.js",
+          "gitBlob": "bc66572d17aeb38c253e50cbf2b85f4ff1ca5d0d",
+          "bytes": 2659
+        },
+        {
+          "path": "src/game/portalBoosterEditorialWaves.js",
+          "gitBlob": "a4df7250afebcebe204b36b8c5a23dd485c2fcc1",
+          "bytes": 3955
+        },
+        {
+          "path": "src/game/portalBoosterEngine.js",
+          "gitBlob": "2c1ccac4b7797fa970e0c5e4f5bd621a20f39320",
+          "bytes": 8099
+        },
+        {
+          "path": "src/game/portalCatalogView.js",
+          "gitBlob": "b0ddbfcd80b1fd6011ae07e484e8a4687b082dda",
+          "bytes": 2111
+        },
+        {
+          "path": "src/game/portalRotationReroll.js",
+          "gitBlob": "0f54a8b9be9d3db0bf8132af0438235175891feb",
+          "bytes": 2828
+        },
+        {
+          "path": "src/game/progressCalendar.js",
+          "gitBlob": "f85a1c78f81086eb7119c93299a6249d3c3a2484",
+          "bytes": 2997
+        },
+        {
+          "path": "src/game/raceSessionControls.js",
+          "gitBlob": "4d93e3040872e34ebb4fe789eb660f9ea2da4b8e",
+          "bytes": 1009
+        },
+        {
+          "path": "src/game/recentUniverseLevels.js",
+          "gitBlob": "0cf7818068fdfda2a712d2ed877876faff229ffc",
+          "bytes": 6689
+        },
+        {
+          "path": "src/game/recentUniverseTextureAssets.js",
+          "gitBlob": "7952738cfda8aedd3597160c599ee904e544a675",
+          "bytes": 4598
+        },
+        {
+          "path": "src/game/renderer.js",
+          "gitBlob": "2c219b8199fa35ffb8a1a24000ffec27483d83ee",
+          "bytes": 62491
+        },
+        {
+          "path": "src/game/requestedUniverseWave.js",
+          "gitBlob": "eef7950f970ebfc4738854e1032f83ae52d91cf3",
+          "bytes": 56758
+        },
+        {
+          "path": "src/game/riftDossierAssets.js",
+          "gitBlob": "8da07696ff3fbf8b6d7d7ea42eaf969882c2aea2",
+          "bytes": 7805
+        },
+        {
+          "path": "src/game/riftDossierAssets.json",
+          "gitBlob": "15a62fae9dbbe383ae65302569991456a9318f03",
+          "bytes": 552109
+        },
+        {
+          "path": "src/game/rpgActionCommitment.js",
+          "gitBlob": "2c5d8fb0274d0a3e3ad779333421bb2bf09714c4",
+          "bytes": 2831
+        },
+        {
+          "path": "src/game/rpgActionEconomy.js",
+          "gitBlob": "d30282c163da617bd4556185052ffa313f350bea",
+          "bytes": 260
+        },
+        {
+          "path": "src/game/rpgSupport.js",
+          "gitBlob": "dc657a54808e65f0637909c7cd0d3a93f474ba54",
+          "bytes": 1080
+        },
+        {
+          "path": "src/game/rpgTargeting.js",
+          "gitBlob": "71f49026a961742c5b5bfc078a566f51d4775efe",
+          "bytes": 9234
+        },
+        {
+          "path": "src/game/rpgTargetingPresentation.js",
+          "gitBlob": "c457ac0ede004d1dfa99964cd9d2034daf9f5418",
+          "bytes": 2071
+        },
+        {
+          "path": "src/game/safeStorage.js",
+          "gitBlob": "9b6373d0a79f3b5ab23dc9fa5dcba91c3ac48da7",
+          "bytes": 1153
+        },
+        {
+          "path": "src/game/saveRecovery.js",
+          "gitBlob": "6e337d3c60c62d38d47c92b2479d98d8ccda6633",
+          "bytes": 1357
+        },
+        {
+          "path": "src/game/saveValidation.js",
+          "gitBlob": "7b618daee78a0a5b6a10b7e0102bc4be8549f056",
+          "bytes": 4182
+        },
+        {
+          "path": "src/game/sceneInputs.js",
+          "gitBlob": "7bfb0e06fe501bab5f0f48acf105f68c18ccef0b",
+          "bytes": 1086
+        },
+        {
+          "path": "src/game/scenePresentation.js",
+          "gitBlob": "d4239ffd0c8dc46cfd414f9c476421b25abc606e",
+          "bytes": 2441
+        },
+        {
+          "path": "src/game/signatureCatalog.js",
+          "gitBlob": "4e5758b0be695d9d2ea8a8755018d20a5593cbbf",
+          "bytes": 4692
+        },
+        {
+          "path": "src/game/signatureCodex.js",
+          "gitBlob": "f6795567bc1c2e1938fbc12bcfb3155efa6df719",
+          "bytes": 7068
+        },
+        {
+          "path": "src/game/signatureDirector.js",
+          "gitBlob": "6b4259a6986d461aae00d098b1b29013b3fd341f",
+          "bytes": 16065
+        },
+        {
+          "path": "src/game/signatureMedicSupport.js",
+          "gitBlob": "15d102f3676f0ba6e7df64bed275aae9b6719991",
+          "bytes": 6234
+        },
+        {
+          "path": "src/game/signaturePresentation.js",
+          "gitBlob": "d4271fba9d7e358625491f81be24fc79fc2e8471",
+          "bytes": 5567
+        },
+        {
+          "path": "src/game/signatureReturningDisc.js",
+          "gitBlob": "0c6ec30c8c7026eca6d402a28b87f378193eb1bc",
+          "bytes": 7016
+        },
+        {
+          "path": "src/game/signatureSourceKits.js",
+          "gitBlob": "876de5c8f9a2349a24ea09b8d641eaf4c50d6313",
+          "bytes": 13187
+        },
+        {
+          "path": "src/game/signatureSourceRuntime.js",
+          "gitBlob": "9b21bf35693139bd0af2ad25848a5c7c39d4ba42",
+          "bytes": 15558
+        },
+        {
+          "path": "src/game/signatureSourceWave2.js",
+          "gitBlob": "6f47bcac95390eaf2459173d4567019ba76efbfa",
+          "bytes": 14795
+        },
+        {
+          "path": "src/game/signatureSourceWave3.js",
+          "gitBlob": "a031362d069e778ea19aef0dce57a4196f11acf8",
+          "bytes": 4277
+        },
+        {
+          "path": "src/game/signatureSourceWave4.js",
+          "gitBlob": "4b20f125e031a9626e38b6634c61eae30ba01896",
+          "bytes": 5335
+        },
+        {
+          "path": "src/game/signatureSourceWave5.js",
+          "gitBlob": "c8e72a9ca4b78d485866d62dbd5ed5494a51eb31",
+          "bytes": 2660
+        },
+        {
+          "path": "src/game/signatureSourceWave6.js",
+          "gitBlob": "c6a3ba618d926ff0d5c1546a1c69fddf40895da7",
+          "bytes": 3404
+        },
+        {
+          "path": "src/game/signatureSpiritSwarm.js",
+          "gitBlob": "06336fb0e008755e02ceea6b0f3ac2b3ace701f6",
+          "bytes": 7589
+        },
+        {
+          "path": "src/game/smashAbilityProfiles.js",
+          "gitBlob": "9091a5042b2e160bf46736499bfd9b41f2783a1d",
+          "bytes": 3369
+        },
+        {
+          "path": "src/game/smashArenas.js",
+          "gitBlob": "679c0a17c1a5282a53cc1dfb89e193e89234feb1",
+          "bytes": 42754
+        },
+        {
+          "path": "src/game/solarOppositesSirenStarWarsPack.js",
+          "gitBlob": "1e97d287e5f19b2d378a496dacf380722c3cb9ec",
+          "bytes": 61015
+        },
+        {
+          "path": "src/game/soundEngine.js",
+          "gitBlob": "f965210367c712e6e94a84878d701462f09e58dc",
+          "bytes": 24334
+        },
+        {
+          "path": "src/game/sourceSceneEncounter.js",
+          "gitBlob": "396b62766776fd0aa25b1b14b04828e307ece0c4",
+          "bytes": 8418
+        },
+        {
+          "path": "src/game/sourceScenePresentation.js",
+          "gitBlob": "ce08999758fa5cf01c5a8787bb21499fee8b87fd",
+          "bytes": 4933
+        },
+        {
+          "path": "src/game/sourceSceneStages.js",
+          "gitBlob": "c049aa5a47b810fa6adf2901b402c782a2e2a413",
+          "bytes": 11562
+        },
+        {
+          "path": "src/game/specialEvents.js",
+          "gitBlob": "5b666542af119429ef5e41343a40ec33a00a48a0",
+          "bytes": 11166
+        },
+        {
+          "path": "src/game/spriteAssets.js",
+          "gitBlob": "e4095835de35c7b67d3ce6744f0a56db6c3acbe6",
+          "bytes": 29310
+        },
+        {
+          "path": "src/game/squadPreparation.js",
+          "gitBlob": "592d398105c18d0704c93030396ad37853aeb538",
+          "bytes": 12108
+        },
+        {
+          "path": "src/game/stageEnemyResolver.js",
+          "gitBlob": "598f08774c7a8494a42806bba08fe1d07ac4d40f",
+          "bytes": 4955
+        },
+        {
+          "path": "src/game/stageLoreProfiles.js",
+          "gitBlob": "419f0cef3ab1ee919c31b4a21e0676e84da60ad4",
+          "bytes": 66971
+        },
+        {
+          "path": "src/game/stageMusicProfiles.js",
+          "gitBlob": "a54dd426da1c73bdc521892c524cea030f6bba86",
+          "bytes": 142874
+        },
+        {
+          "path": "src/game/standaloneOcBoosterContentUpdates.js",
+          "gitBlob": "9f73a9ab32c230061cc5e859e7c69abdc7d3c9eb",
+          "bytes": 15988
+        },
+        {
+          "path": "src/game/stockMedicModes.js",
+          "gitBlob": "7b7080c507308eef1e42b53c52d7bff6c3129217",
+          "bytes": 2329
+        },
+        {
+          "path": "src/game/tacticalFacing.js",
+          "gitBlob": "4a0a799cc09a053bb7d65790b891683ece61494d",
+          "bytes": 1737
+        },
+        {
+          "path": "src/game/tacticsAttackCommitment.js",
+          "gitBlob": "25b55223e05b296128e40332221ddaed12cc1c34",
+          "bytes": 4019
+        },
+        {
+          "path": "src/game/tacticsBattlefields.js",
+          "gitBlob": "948572855d308b89c134734890ff13fd25db1563",
+          "bytes": 19162
+        },
+        {
+          "path": "src/game/tacticsEscort.js",
+          "gitBlob": "9c7598711b877e55c15f38aa10395245047aef75",
+          "bytes": 4488
+        },
+        {
+          "path": "src/game/tacticsSourceHealing.js",
+          "gitBlob": "b50f8c68619fd30f6e96e8ea2b5b56f6031a7161",
+          "bytes": 1726
+        },
+        {
+          "path": "src/game/tacticsSupport.js",
+          "gitBlob": "90a0f362575d5f0812888e4114cb9a19b4db4d1a",
+          "bytes": 12268
+        },
+        {
+          "path": "src/game/titleNavigation.js",
+          "gitBlob": "a4ecf61b0b1e9fdb8def6bae11f1c495e1995670",
+          "bytes": 261
+        },
+        {
+          "path": "src/game/titlePresentation.js",
+          "gitBlob": "04d24fd2eba7d61688dee5e2238a1b8ac92f3433",
+          "bytes": 4744
+        },
+        {
+          "path": "src/game/translation.js",
+          "gitBlob": "36129fab5fe3eccccc342f2a42cf6630f151d2cf",
+          "bytes": 9278
+        },
+        {
+          "path": "src/game/universeArchiveView.js",
+          "gitBlob": "9ce426500b6b1fe745d4564750759001d2c5379c",
+          "bytes": 1966
+        },
+        {
+          "path": "src/game/universeUnlockables.js",
+          "gitBlob": "8a140393b4420b5b915ea2f8fd4928d5200b806d",
+          "bytes": 17138
+        },
+        {
+          "path": "src/game/visuals/portalVisualCatalog.js",
+          "gitBlob": "7878619b6f519fd02eb00fb3b04a922898205cde",
+          "bytes": 1470
+        },
+        {
+          "path": "src/game/visuals/portalVisualManifest.js",
+          "gitBlob": "45ca11317650208a081c3eb8bb86d69903f07517",
+          "bytes": 6084
+        },
+        {
+          "path": "src/game/wardrobe.js",
+          "gitBlob": "318a46185f0d261d6644adbb7be46d787d974d54",
+          "bytes": 9380
+        },
+        {
+          "path": "src/game/wardrobeBoosterRewards.js",
+          "gitBlob": "0af15bfcb05f803c92002203ec819795e7fa96e4",
+          "bytes": 7459
+        },
+        {
+          "path": "src/game/wardrobeEffects.js",
+          "gitBlob": "e8f5dc86a430dbbb56ed9f276475dbe9df72f247",
+          "bytes": 1153
+        },
+        {
+          "path": "src/game/wardrobeExpansion.js",
+          "gitBlob": "916e41eedcefaed6f64227ba18d5b298dae82c72",
+          "bytes": 21278
+        },
+        {
+          "path": "src/game/wardrobeFidelity.js",
+          "gitBlob": "d53465ff93876da62b1c565c6f7c43715bc1354e",
+          "bytes": 6344
+        },
+        {
+          "path": "src/game/wardrobeOfficial.js",
+          "gitBlob": "e3a2b30ada0b7143ad52c7708b58a7763e241303",
+          "bytes": 9392
+        },
+        {
+          "path": "src/game/wardrobeOfficialR10.js",
+          "gitBlob": "7366a92bdc2067879ace3edfff8bda63d01e999e",
+          "bytes": 9590
+        },
+        {
+          "path": "src/game/wardrobeOfficialR11.js",
+          "gitBlob": "d287d7f35bb00a0902c409774aaa57c3cfac42a9",
+          "bytes": 13566
+        },
+        {
+          "path": "src/game/wardrobeOfficialR12.js",
+          "gitBlob": "f6819b1b83c991a44780ca848439fd67c3fc1d49",
+          "bytes": 12027
+        },
+        {
+          "path": "src/game/wardrobeOfficialR13.js",
+          "gitBlob": "bc69f77fb2650712b4d31dd26b14bcb755112581",
+          "bytes": 14300
+        },
+        {
+          "path": "src/game/wardrobeOfficialR14.js",
+          "gitBlob": "d1998397e9e47a7af4cf7b239e4100d97bcf1110",
+          "bytes": 12733
+        },
+        {
+          "path": "src/game/wardrobeOfficialR7.js",
+          "gitBlob": "21d2a1583fc965b06a55a7eb167aa5b8fbfb0295",
+          "bytes": 9757
+        },
+        {
+          "path": "src/game/wardrobeOfficialR9.js",
+          "gitBlob": "e202610bc50c255566ce0f89bb700b7b6f4169fe",
+          "bytes": 10207
+        },
+        {
+          "path": "src/game/wardrobeOriginals.js",
+          "gitBlob": "cfe28be3925f04a7d29f495e544e3d2da3e6ddd6",
+          "bytes": 10184
+        },
+        {
+          "path": "src/game/wardrobeProduction.js",
+          "gitBlob": "89d825b49a218a3764afa1547da97e82a18b896c",
+          "bytes": 3982
+        },
+        {
+          "path": "src/game/wardrobeSourceCoverage.js",
+          "gitBlob": "5f320e45d64b13d5d74338188285ddc9dc37bab9",
+          "bytes": 1982
+        },
+        {
+          "path": "src/game/wave6NonCombatObjectives.js",
+          "gitBlob": "a306a680b18155770fbde9b53949e01c36def5bb",
+          "bytes": 5579
+        },
+        {
+          "path": "src/App.jsx",
+          "gitBlob": "c8837d34bd4a9aff79740c0eb31b0fe86d7aebb2",
+          "bytes": 131932
+        },
+        {
+          "path": "src/components/HubScreen.jsx",
+          "gitBlob": "49aa4963eccf84445a3b8ba59748a4d4428fd248",
+          "bytes": 759953
+        }
+      ],
+      "actorKeyFormat": "JSON [universe, id:ID or name:NAME]",
+      "limitations": [
+        "Acteurs actifs et cinq catalogues résolus ; pas tous les objets absents des œuvres.",
+        "Catégories matérielles issues d’un triage explicite ; recherche externe et revue visuelle restent ouvertes.",
+        "Statistiques et effets de combat sont des adaptations du projet.",
+        "Les références déclarées ne sont pas revalidées sur le Web par cet export."
+      ]
+    },
+    "retainedDataSha256": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80",
+    "dataRecoveredByteForByte": true,
+    "intermediateDataPublished": false,
+    "currentRegressionTests": {
+      "kind": "recovered-exporter-and-reconstructed-regression-suite",
+      "asOfDate": "2026-10-26",
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "exporter": {
+        "path": "scripts/exportEquipmentWorkbookData.mjs",
+        "bytes": 34860,
+        "sha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b"
+      },
+      "exporterRecoveredByteForByte": true,
+      "tests": {
+        "path": "scripts/exportEquipmentWorkbookData.test.mjs",
+        "bytes": 16488,
+        "sha256": "d20f344e494be5f2f2e932260b23570cf8c00dc6c0c487025e9ac9be02ccbb5b"
+      },
+      "testsReconstructed": true,
+      "originalTestFileRecovered": false,
+      "previousTestFileSha256": "18273d2e78ba42b1a97351062b6c6e076e224851f28993a71d090cb9a497696c",
+      "testLog": {
+        "path": "docs/excel/evidence/equipment-export-tests-2026-10-26.txt",
+        "bytes": 2073,
+        "sha256": "9bf08e1afc142eda1f37863d9200f7edf02c064b558031d3116182fc9ab1579c"
+      },
+      "command": "EQUIPMENT_INVENTORY_JSON=/tmp/multiverse-equipment-data-2026-10-26/equipment-workbook-data.json node --experimental-loader ./docs/excel/tools/json-loader.mjs scripts/exportEquipmentWorkbookData.test.mjs",
+      "nodeVersion": "v24.22.1",
+      "passed": 17,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "sourceFilesMatchedCurrentWorkspace": 213,
+      "data": {
+        "path": "intermediate/equipment-workbook-data.json (reproducible, not committed)",
+        "bytes": 53945223,
+        "sha256": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80"
+      },
+      "runtimeCounts": {
+        "actors": 4936,
+        "catalogOccurrences": 5241,
+        "associations": 1500,
+        "gaps": 28304,
+        "signatures": 124
+      },
+      "limits": [
+        "La nouvelle suite reprend les 17 objectifs documentés, avec des assertions reconstruites, sans prétendre restaurer le fichier de test perdu.",
+        "Les tests sont exécutés directement par node:test dans ce runtime ; le lanceur --test isolé a échoué avant de rapporter les cas, et --test-isolation=none ne chargeait pas les imports Vite sans extension.",
+        "Le tri lexical reste un outil de signalement et ne constitue pas une analyse canonique ni visuelle."
+      ]
+    }
+  },
+  "comparison": {
+    "path": "docs/excel/sources/equipment-comparison-2026-10-26.json",
+    "sameExtractor": true,
+    "extractorSha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+    "method": "Deux exports réellement exécutés sur les deux SHA, avec le même extracteur et les arbres Git complets.",
+    "metrics": [
+      {
+        "metric": "actors",
+        "label": "Acteurs actifs",
+        "before": 4936,
+        "after": 4936,
+        "delta": 0,
+        "interpretation": "Aucune identité active ajoutée ou retirée."
+      },
+      {
+        "metric": "catalogRecords",
+        "label": "Entrées des cinq catalogues",
+        "before": 5241,
+        "after": 5241,
+        "delta": 0,
+        "interpretation": "Catalogues résolus identiques ; occurrences et projections conservées, pas un nombre d’objets physiques."
+      },
+      {
+        "metric": "actorsWithDeclaredEquipment",
+        "label": "Acteurs avec equipment[]",
+        "before": 54,
+        "after": 54,
+        "delta": 0,
+        "interpretation": "Aucune nouvelle dotation individuelle déclarée."
+      },
+      {
+        "metric": "declaredEquipmentEntries",
+        "label": "Libellés equipment[]",
+        "before": 141,
+        "after": 141,
+        "delta": 0,
+        "interpretation": "Les 141 déclarations restent identiques."
+      },
+      {
+        "metric": "actorsWithNamedWeaponFields",
+        "label": "Champs weapon descriptifs",
+        "before": 1234,
+        "after": 1234,
+        "delta": 0,
+        "interpretation": "Les libellés multimots et les noms de modèle restent conservés sans attribution canonique déduite."
+      },
+      {
+        "metric": "sourceSignatures",
+        "label": "Techniques signées résolues",
+        "before": 118,
+        "after": 124,
+        "delta": 6,
+        "interpretation": "Six techniques supplémentaires de la vague 6 ; aucune conversion en équipement porté."
+      },
+      {
+        "metric": "associations",
+        "label": "Relations déclarées",
+        "before": 1494,
+        "after": 1500,
+        "delta": 6,
+        "interpretation": "Les six nouvelles relations sont uniquement des techniques signées."
+      },
+      {
+        "metric": "gaps",
+        "label": "Points ouverts recalculés",
+        "before": 28304,
+        "after": 28304,
+        "delta": 0,
+        "interpretation": "Même méthode sur les deux SHA : aucun point d’équipement fermé par les changements runtime."
+      },
+      {
+        "metric": "sourceFilesVerified",
+        "label": "Fichiers source vérifiés",
+        "before": 194,
+        "after": 213,
+        "delta": 19,
+        "interpretation": "Périmètre chargé et vérifié par empreintes Git ; inclut des modules nouveaux hors catalogue équipement."
+      },
+      {
+        "metric": "uniqueIconStatuses.ABSENT_DANS_GIT",
+        "label": "Chemins d’icônes absents, uniques",
+        "before": 1184,
+        "after": 1184,
+        "delta": 0,
+        "interpretation": "Présence dans les arbres Git complets ; aucun contrôle des pixels ou accord de fidélité implicite."
+      },
+      {
+        "metric": "uniqueIconStatuses.PRESENT_DANS_GIT",
+        "label": "Chemins d’icônes présents, uniques",
+        "before": 1571,
+        "after": 1571,
+        "delta": 0,
+        "interpretation": "Présence dans les arbres Git complets ; aucun contrôle des pixels ou accord de fidélité implicite."
+      }
+    ],
+    "methodologyCorrection": {
+      "historicalReportedGaps": 28335,
+      "historicalReportedStatus": "Compte observé lors de la méthode précédente, non utilisé comme résultat du replay homogène.",
+      "replayedBaselineGaps": 28304,
+      "currentGaps": 28304,
+      "deltaFromHistoricalReport": -31,
+      "runtimeGapDelta": 0,
+      "explanation": "La baisse de 31 points par rapport au compte historique de 28 335 provient du tri lexical corrigé (étuis, munitions, formes plurielles, combinaisons et machines). Les faux positifs Round Glasses et Round Table Dossier sont exclus de la règle des munitions. Les deux sources recalculées aboutissent à 28 304 points ouverts : aucun correctif de dotation ou de rendu n’est déduit de cette baisse méthodologique."
+    }
+  },
+  "canonicalReferences": {
+    "path": "docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+    "meta": {
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "checkedOn": "2026-10-26",
+      "reconstructed": true,
+      "originalCorpusRecovered": false,
+      "reconstructionRevision": 2,
+      "previousResearchDate": "2026-10-24",
+      "previousSourceCommit": "8ce15c779db1e911f0db8723c681a6b0b740bd78",
+      "reconstructionMethod": "Nouvelle reconstruction après nettoyage automatique des fichiers locaux. Les identités viennent de l’export conservé ; les pages ci-dessous ont été revérifiées. Le fichier perdu et ses identifiants ne sont pas présentés comme restaurés à l’identique.",
+      "scope": "Corpus documentaire ciblé complémentaire à l’inventaire du dépôt ; pas un catalogue canonique exhaustif de tous les personnages.",
+      "counts": {
+        "rows": 55,
+        "actors": 22,
+        "sources": 21,
+        "unboundIncarnationRows": 41,
+        "visuallyApproved": 0
+      },
+      "sourceAccess": {
+        "directPagesOrPdf": 20,
+        "indexedOfficialPages": 1
+      },
+      "correctionsSinceRecoverySummary": [
+        "Les anciens comptes 23 acteurs / 20 sources / 40 lignes sans incarnation ne sont pas repris : ce corpus compte 22 acteurs / 21 sources / 41 lignes sans incarnation.",
+        "Les quatre lignes FFVII distinguent Buster Sword Remake et trois familles d’armes du jeu original ; aucun modèle exact de gants, bâton ou bras-fusil de Remake n’est certifié.",
+        "M-8 Avenger I : page imprimée 24 ; M-597 Ladon : page 25, tous deux sur la page PDF index 12.",
+        "Les variantes Jill A1 et Barry Ver.II restent séparées des modèles S.T.A.R.S. ; Quint Cetcham est concepteur."
+      ],
+      "limitations": [
+        "Toutes les lignes restent sans validation artistique 1:1.",
+        "La présence d’un accessoire dans une figurine ne démontre pas à elle seule son usage à l’écran ou sa possession permanente.",
+        "Les images de produits et des œuvres doivent encore être confrontées aux sprites et animations du jeu.",
+        "La seule source par extraits indexés est le site officiel FFVII PC ; ses modèles et images restent à confirmer.",
+        "La recherche ne couvre que 22 acteurs prioritaires et ne prétend pas retrouver à l’identique toutes les lignes du corpus perdu.",
+        "Les armes, pouvoirs, costumes, anatomies et objets de scène doivent garder leur nature propre.",
+        "Aucun comportement de combat n’est déduit des alias techniques weaponType."
+      ]
+    },
+    "independentReview": {
+      "schemaVersion": 1,
+      "kind": "independent-canonical-recovery-schema-and-continuity-review",
+      "asOfDate": "2026-10-26",
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "canonicalCorpusSha256": "2bbc073f5e82a181e8e20c37db0c3b0e81fbc340b4d6e641a0a895509fb64e9f",
+      "inventorySha256": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80",
+      "readOnly": true,
+      "webSourcesRevalidatedByThisReview": false,
+      "passed": true,
+      "assertions": 1808,
+      "counts": {
+        "rows": 55,
+        "actors": 22,
+        "sources": 21,
+        "unboundIncarnationRows": 41,
+        "visuallyApproved": 0
+      },
+      "sourceAccessCounts": {
+        "directPagesOrPdf": 20,
+        "indexedOfficialPages": 1
+      },
+      "actorIdentitiesMatchResolvedData": true,
+      "sourceIdsAndUrlsConsistent": true,
+      "criticalContinuityChecks": [
+        {
+          "check": "MGS1 inventory remains conditional, not a simultaneous default loadout",
+          "passed": true
+        },
+        {
+          "check": "Ripley 1979 and 1986 remain separate",
+          "passed": true
+        },
+        {
+          "check": "P-5000 remains an exoskeleton used in a scene",
+          "passed": true
+        },
+        {
+          "check": "Dallas and Vasquez product accessories require model and scene confirmation",
+          "passed": true
+        },
+        {
+          "check": "Five Halo armor versions remain alternative unbound incarnations",
+          "passed": true
+        },
+        {
+          "check": "Later Samurai Edge variants remain separate and designer is not treated as owner",
+          "passed": true
+        },
+        {
+          "check": "Luke blue saber stays an explicit exclusion for the active ROTJ kit",
+          "passed": true
+        },
+        {
+          "check": "Gravity Gun stays bound to HL2 with its Citadel variant unresolved",
+          "passed": true
+        },
+        {
+          "check": "FFVII Remake sword and original-game weapon families are not conflated",
+          "passed": true
+        },
+        {
+          "check": "ME3 Wii U weapons remain edition-specific conditional choices",
+          "passed": true
+        }
+      ],
+      "byUniverse": {
+        "Metal Gear": 16,
+        "Alien": 4,
+        "Aliens": 9,
+        "Halo": 5,
+        "Resident Evil": 7,
+        "Star Wars": 6,
+        "Half-Life": 2,
+        "Final Fantasy VII": 4,
+        "Mass Effect": 2
+      },
+      "errors": [],
+      "limitations": [
+        "Examen du corpus, du schéma du générateur et des données du dépôt ; aucune nouvelle recherche Web réalisée par cette revue.",
+        "Les faits décrits par les pages sources restent ceux de la recherche documentaire associée, sans certification artistique.",
+        "Les traits visuels détaillés, modèles inconnus et comportements en jeu restent à compléter."
+      ]
+    }
+  },
+  "workbook": {
+    "file": {
+      "path": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+      "bytes": 3198971,
+      "sha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+      "gitBlob": "7b5caf48ff3d4020a5310f8be6b9f5a64872a6ac"
+    },
+    "generation": {
+      "nodeHeapLimitMiB": 3072,
+      "explicitGc": true,
+      "exportBeforePreviews": true,
+      "groupedActionsPreserveEveryFinding": true
+    },
+    "authoring": {
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "worksheets": [
+        "Synthèse",
+        "Évolutions",
+        "Personnages",
+        "Armes et objets",
+        "Affectations",
+        "Références 1a1",
+        "Actions"
+      ],
+      "actors": 4936,
+      "catalogRecords": 5241,
+      "associations": 1500,
+      "canonicalRows": 55,
+      "sources": 21,
+      "actions": 10232,
+      "comparisonRows": 11,
+      "groupedDossiers": 10177,
+      "automaticFindings": 28304,
+      "documentaryFollowups": 55,
+      "totalFindings": 28359,
+      "allFindingIdsPreserved": true,
+      "priorityFindingCountsAreSourceSnapshot": true,
+      "summaryCountsChecked": true,
+      "workflowWithAndWithoutProofChecked": true,
+      "testedEngine": "@oai/artifact-tool",
+      "excelDesktopTested": false,
+      "canonicalFidelityApproved": false,
+      "bytes": 3198971
+    },
+    "independentZipXmlReview": {
+      "schemaVersion": 1,
+      "kind": "independent-read-only-xlsx-xml-review",
+      "reviewedAtUtc": "2026-10-26T21:07:01.341882+00:00",
+      "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+      "workbook": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+      "bytes": 3198971,
+      "sha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+      "sheets": [
+        {
+          "name": "Synthèse",
+          "dataRows": null,
+          "formulas": 8,
+          "cachedFormulas": 8,
+          "tables": [],
+          "frozenPanes": [],
+          "validations": []
+        },
+        {
+          "name": "Évolutions",
+          "dataRows": 11,
+          "formulas": 11,
+          "cachedFormulas": 11,
+          "tables": [
+            {
+              "name": "EquipmentChanges",
+              "range": "A6:G17",
+              "filterRange": "A6:G17"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "1",
+              "ySplit": "6",
+              "topLeftCell": "B7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": []
+        },
+        {
+          "name": "Personnages",
+          "dataRows": 4936,
+          "formulas": 0,
+          "cachedFormulas": 0,
+          "tables": [
+            {
+              "name": "EquipmentActors",
+              "range": "A6:T4942",
+              "filterRange": "A6:T4942"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "3",
+              "ySplit": "6",
+              "topLeftCell": "D7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": []
+        },
+        {
+          "name": "Armes et objets",
+          "dataRows": 5241,
+          "formulas": 0,
+          "cachedFormulas": 0,
+          "tables": [
+            {
+              "name": "EquipmentItems",
+              "range": "A6:X5247",
+              "filterRange": "A6:X5247"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "3",
+              "ySplit": "6",
+              "topLeftCell": "D7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": []
+        },
+        {
+          "name": "Affectations",
+          "dataRows": 1500,
+          "formulas": 0,
+          "cachedFormulas": 0,
+          "tables": [
+            {
+              "name": "EquipmentAssociations",
+              "range": "A6:N1506",
+              "filterRange": "A6:N1506"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "3",
+              "ySplit": "6",
+              "topLeftCell": "D7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": []
+        },
+        {
+          "name": "Références 1a1",
+          "dataRows": 55,
+          "formulas": 0,
+          "cachedFormulas": 0,
+          "tables": [
+            {
+              "name": "EquipmentCanonical",
+              "range": "A6:T61",
+              "filterRange": "A6:T61"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "3",
+              "ySplit": "6",
+              "topLeftCell": "D7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": []
+        },
+        {
+          "name": "Actions",
+          "dataRows": 10232,
+          "formulas": 10232,
+          "cachedFormulas": 10232,
+          "tables": [
+            {
+              "name": "EquipmentActions",
+              "range": "A6:Q10238",
+              "filterRange": "A6:Q10238"
+            }
+          ],
+          "frozenPanes": [
+            {
+              "xSplit": "3",
+              "ySplit": "6",
+              "topLeftCell": "D7",
+              "activePane": "bottomRight",
+              "state": "frozen"
+            }
+          ],
+          "validations": [
+            {
+              "type": "list",
+              "sqref": "K7:K10238",
+              "formula1": "\"À faire,En cours,À vérifier,Terminé\""
+            }
+          ]
+        }
+      ],
+      "excelDesktopTested": false,
+      "visualReviewByThisCheck": false,
+      "workbookModified": false,
+      "builderProcessTouched": false,
+      "zipCrcOk": true,
+      "nativeTables": 6,
+      "xmlPartsParsed": 26,
+      "temporaryProofAbsent": true,
+      "passed": true,
+      "formulaCells": 10251,
+      "cachedFormulaCells": 10251,
+      "formulaErrorCells": [],
+      "formulaSamples": {
+        "Évolutions!D7": {
+          "formula": "C7-B7",
+          "cache": 0
+        },
+        "Évolutions!D12": {
+          "formula": "C12-B12",
+          "cache": 6
+        },
+        "Évolutions!D17": {
+          "formula": "C17-B17",
+          "cache": 0
+        },
+        "Actions!N7": {
+          "formula": "IF(K7=\"Terminé\",IF(L7=\"\",\"Preuve manquante\",\"Terminée avec preuve\"),K7)",
+          "cache": "À faire"
+        },
+        "Actions!N5122": {
+          "formula": "IF(K5122=\"Terminé\",IF(L5122=\"\",\"Preuve manquante\",\"Terminée avec preuve\"),K5122)",
+          "cache": "À faire"
+        },
+        "Actions!N10238": {
+          "formula": "IF(K10238=\"Terminé\",IF(L10238=\"\",\"Preuve manquante\",\"Terminée avec preuve\"),K10238)",
+          "cache": "À faire"
+        }
+      },
+      "summaryValues": {
+        "B7": 4936,
+        "B8": 1912,
+        "B9": 54,
+        "B10": 5241,
+        "B11": 1500,
+        "B12": 55,
+        "B13": 21,
+        "B14": 10232,
+        "B15": 0,
+        "B16": 0,
+        "B17": 28359,
+        "B20": 4882,
+        "B21": 3440,
+        "B22": 3941,
+        "B23": 2200,
+        "B24": 1816,
+        "B25": 5241
+      },
+      "snapshotCategoryCounts": {
+        "mode": "Fixed observations for the pinned source commit",
+        "cells": {
+          "B20": 4882,
+          "B21": 3440,
+          "B22": 3941,
+          "B23": 2200,
+          "B24": 1816,
+          "B25": 5241
+        }
+      },
+      "dynamicTrackingSummaryFormulas": {
+        "B14": "COUNTA('Actions'!O7:O10238)-COUNTIFS('Actions'!N7:N10238,\"Terminée avec preuve\")",
+        "B15": "COUNTIFS('Actions'!N7:N10238,\"Terminée avec preuve\")",
+        "B17": "SUM('Actions'!P7:P10238)"
+      },
+      "taskIds": {
+        "unique": 10232,
+        "automaticDossiers": 10177,
+        "canonicalFollowups": 55
+      },
+      "statusCounts": {
+        "À faire": 10232
+      },
+      "resultCounts": {
+        "À faire": 10232
+      },
+      "nonblankProofs": 0,
+      "nonblankOwners": 0,
+      "documentation": {
+        "ARMES_EQUIPEMENTS_2026-10-26.md": {
+          "countsAndSourceConsistent": true,
+          "missingExpectedTerms": []
+        },
+        "README.md": {
+          "countsAndSourceConsistent": true,
+          "missingExpectedTerms": []
+        }
+      },
+      "errors": [],
+      "canonicalCoverage": {
+        "rows": 55,
+        "actors": 22,
+        "sources": 21,
+        "unboundIncarnationRows": 41
+      },
+      "canonicalCellsComparedWithCorpus": 1100,
+      "groupedFindings": {
+        "dossiers": 10232,
+        "dossiersByType": {
+          "actor": 4936,
+          "item": 5241,
+          "canonical": 55
+        },
+        "points": 28359,
+        "automaticFindings": 28304,
+        "documentaryFollowups": 55,
+        "uniqueFindingIds": 28359,
+        "maximumPointsPerDossier": 5,
+        "everyOriginalIdRepresentedExactlyOnce": true,
+        "gapCategories": {
+          "ALIAS_ARME_NON_MODELE": 3941,
+          "INCARNATION_NON_FIXEE": 3440,
+          "INVENTAIRE_INDIVIDUEL_ABSENT": 4882,
+          "SOURCE_INDIVIDUELLE_ABSENTE": 3218,
+          "DOTATION_ET_RENDU_A_VERIFIER": 1288,
+          "ICONE_RESOLUE_ABSENTE": 1816,
+          "REVUE_VISUELLE_1A1_OUVERTE": 5241,
+          "SOURCE_OBJET_ABSENTE": 2200,
+          "NATURE_PHYSIQUE_A_VERIFIER": 2274,
+          "EXCLUSION_DOTATION_A_CONSERVER": 1,
+          "PORTEUR_TEXTE_NON_LIE": 3
+        }
+      },
+      "limits": [
+        "ZIP/XML and cached values checked without rewriting the XLSX.",
+        "No independent Excel Desktop recalculation or visual review in this check."
+      ]
+    },
+    "visualReview": {
+      "reviewed": true,
+      "asOfDate": "2026-10-26",
+      "sheetsReviewed": 7,
+      "finding": "Les aperçus des sept feuilles sont lisibles dans les zones rendues ; aucun rognage de titre, en-tête ou contenu observé.",
+      "scope": "Aperçus des premières lignes, pas une inspection visuelle de toutes les lignes ni une ouverture dans Excel Desktop.",
+      "newlyReviewedPreviews": [
+        "Synthese.png",
+        "Actions.png"
+      ],
+      "pixelIdenticalToPreviouslyReviewedPreviews": [
+        "Evolutions.png",
+        "Personnages.png",
+        "Armes_et_objets.png",
+        "Affectations.png",
+        "References_1a1.png"
+      ],
+      "readbackOfDeliveredXlsx": {
+        "source": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+        "workbookSha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+        "readOnly": true,
+        "workbookUnchanged": true,
+        "engine": "@oai/artifact-tool",
+        "method": "SpreadsheetFile.importXlsx then workbook.render",
+        "previews": [
+          {
+            "sheetName": "Synthèse",
+            "range": "A1:D17",
+            "filename": "Synthese.png",
+            "sha256": "9f84a0e6dba22384e20c9be5d6ca8b7ad327209d6eeb846b5294b307c0539078"
+          },
+          {
+            "sheetName": "Évolutions",
+            "range": "A1:F10",
+            "filename": "Evolutions.png",
+            "sha256": "196d26e538043ecacedc5ce63b88a79f6e011e8bcbfe5f2116da6349c1e84e61"
+          },
+          {
+            "sheetName": "Personnages",
+            "range": "A1:F10",
+            "filename": "Personnages.png",
+            "sha256": "c76b32b12b79bc64a62e80f328303322becb995a34d0d6e1342b9df320d20aca"
+          },
+          {
+            "sheetName": "Armes et objets",
+            "range": "A1:F10",
+            "filename": "Armes_et_objets.png",
+            "sha256": "bd2edd962b2eec3bc54d71bd62bfe1384aafe778a89cb7895598463e4d8458ed"
+          },
+          {
+            "sheetName": "Affectations",
+            "range": "A1:F10",
+            "filename": "Affectations.png",
+            "sha256": "952425b4b36239116c69d8e549bec701027c876205b08610a475ac0f84e5f75b"
+          },
+          {
+            "sheetName": "Références 1a1",
+            "range": "A1:F10",
+            "filename": "References_1a1.png",
+            "sha256": "7a6797df3e49b854875c494de5d82c1de6fcf8acb53bb24c081b400f812f65cc"
+          },
+          {
+            "sheetName": "Actions",
+            "range": "A1:F10",
+            "filename": "Actions.png",
+            "sha256": "ad73b18a56e96f52c6619aa7bdde0a658c78078d4b792621d6a1dd55cd137ec9"
+          }
+        ]
+      },
+      "exportCompletedBeforePreviewProcessEnded": true,
+      "originalBuilderExitCode": 137,
+      "previewRecovery": "Les sept aperçus ont été rendus par un processus séparé après import du XLSX final ; la génération initiale avait terminé le fichier avant interruption mémoire pendant les aperçus."
+    }
+  },
+  "existingWorkbooksUnchanged": {
+    "docs/excel/Multiverse_Breach_Suivi_Combats_RECONSTITUE.xlsx": "c39c5eaf1ba44f8c13e2cb3b3e38e8ea5d1d3ee2",
+    "docs/excel/Multiverse_Breach_Audit_Fidelite_1a1_Priorites.xlsx": "308c45b9695a16f146b8ae77cbcf41beb56457fe",
+    "docs/excel/Multiverse_Breach_UI_Immersion.xlsx": "f4f6d9ae3c1b4505cdf4b4725dd6ef513b6808a0",
+    "docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx": "c41fa24b2526a4626f4c3799b3a598dec2e9f334",
+    "docs/excel/Multiverse_Breach_Etat_Global.xlsx": "7ed77ade956c91247cf5e8dbfd2566b1160eb7ce",
+    "docs/excel/archives/Audit_Fidelite_ancien_6fd4fd24_OBSOLETE.xlsx": "19983686c673992fc86961d15821fa7d69bc127e"
+  },
+  "publishedSourceCheckpoint": {
+    "schemaVersion": 2,
+    "kind": "published-source-manifest-verification",
+    "asOfDate": "2026-10-26",
+    "repository": "darknigthmare/multiverse-breach",
+    "commit": "59fa9d7ec954fd01990c47a57910ddc419efb068",
+    "manifest": "/tmp/multiverse-equipment-delivery-2026-10-26/source-manifest.json",
+    "expectedFileCount": 9,
+    "checkedFileCount": 9,
+    "freshContentChecks": 3,
+    "inheritedContentChecks": 6,
+    "passed": true,
+    "method": "Three modified files downloaded through Contents API and hashed. Six unchanged files inherit the previously checked blob and content hashes. The complete one-commit GitHub comparison verifies that only those three paths changed.",
+    "previousVerifiedCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+    "comparison": {
+      "url": "https://api.github.com/repos/darknigthmare/multiverse-breach/compare/b9a91c1267e1f88e334fa69b44bfb14d3be40289...59fa9d7ec954fd01990c47a57910ddc419efb068",
+      "baseCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+      "headCommit": "59fa9d7ec954fd01990c47a57910ddc419efb068",
+      "status": "ahead",
+      "aheadBy": 1,
+      "behindBy": 0,
+      "totalCommits": 1,
+      "changedFiles": [
+        {
+          "path": "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+          "status": "modified",
+          "gitBlob": "2f27a69f354f9f5b771f89c79218b358cbbaec10"
+        },
+        {
+          "path": "docs/excel/README.md",
+          "status": "modified",
+          "gitBlob": "a95af14f11ef65377c803d1a7b0731ace3ca181b"
+        },
+        {
+          "path": "docs/excel/tools/build_equipment_workbook.mjs",
+          "status": "modified",
+          "gitBlob": "bfbdbc1b4b03fb0d16ab077c8650c02ec7f55072"
+        }
+      ]
+    },
+    "checks": [
+      {
+        "path": "docs/excel/README.md",
+        "expectedGitBlob": "a95af14f11ef65377c803d1a7b0731ace3ca181b",
+        "expectedBytes": 7874,
+        "expectedSha256": "3f4775bad3df6021dfe483f39d32fe073b2c778e1c7c39f699c0881cd359af84",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/README.md",
+        "method": "Fresh GitHub Contents API read at this commit, with decoded content hashes.",
+        "contentVerifiedAtCommit": "59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "apiUrl": "https://api.github.com/repos/darknigthmare/multiverse-breach/contents/docs/excel/README.md?ref=59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "actualPath": "docs/excel/README.md",
+        "actualGitBlob": "a95af14f11ef65377c803d1a7b0731ace3ca181b",
+        "actualBytes": 7874,
+        "type": "file",
+        "downloadedBytes": 7874,
+        "downloadedSha256": "3f4775bad3df6021dfe483f39d32fe073b2c778e1c7c39f699c0881cd359af84",
+        "downloadedGitBlob": "a95af14f11ef65377c803d1a7b0731ace3ca181b",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+        "expectedGitBlob": "2f27a69f354f9f5b771f89c79218b358cbbaec10",
+        "expectedBytes": 19427,
+        "expectedSha256": "ce30db29fb55964f8c5d30713bc3cfe7f197d95b03b540e3a1af970f608df392",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+        "method": "Fresh GitHub Contents API read at this commit, with decoded content hashes.",
+        "contentVerifiedAtCommit": "59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "apiUrl": "https://api.github.com/repos/darknigthmare/multiverse-breach/contents/docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md?ref=59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "actualPath": "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+        "actualGitBlob": "2f27a69f354f9f5b771f89c79218b358cbbaec10",
+        "actualBytes": 19427,
+        "type": "file",
+        "downloadedBytes": 19427,
+        "downloadedSha256": "ce30db29fb55964f8c5d30713bc3cfe7f197d95b03b540e3a1af970f608df392",
+        "downloadedGitBlob": "2f27a69f354f9f5b771f89c79218b358cbbaec10",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+        "expectedGitBlob": "048765b720e123b7d874c9931e62547112477304",
+        "expectedBytes": 86833,
+        "expectedSha256": "2bbc073f5e82a181e8e20c37db0c3b0e81fbc340b4d6e641a0a895509fb64e9f",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "048765b720e123b7d874c9931e62547112477304",
+        "actualBytes": 86833,
+        "type": "file",
+        "downloadedSha256": "2bbc073f5e82a181e8e20c37db0c3b0e81fbc340b4d6e641a0a895509fb64e9f",
+        "downloadedGitBlob": "048765b720e123b7d874c9931e62547112477304",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/sources/equipment-comparison-2026-10-26.json",
+        "expectedGitBlob": "911b2ccbb18e153edf2173607b32d084b4541dc4",
+        "expectedBytes": 30453,
+        "expectedSha256": "66732d0755f437469593f427a2d85c3b9d19c4c59eaaf23f78c27fa6cd96f28b",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/sources/equipment-comparison-2026-10-26.json",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "911b2ccbb18e153edf2173607b32d084b4541dc4",
+        "actualBytes": 30453,
+        "type": "file",
+        "downloadedSha256": "66732d0755f437469593f427a2d85c3b9d19c4c59eaaf23f78c27fa6cd96f28b",
+        "downloadedGitBlob": "911b2ccbb18e153edf2173607b32d084b4541dc4",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/evidence/equipment-export-tests-2026-10-26.txt",
+        "expectedGitBlob": "8361cdc066eac5a0d65e03272b164f4cbabb066e",
+        "expectedBytes": 2073,
+        "expectedSha256": "9bf08e1afc142eda1f37863d9200f7edf02c064b558031d3116182fc9ab1579c",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/evidence/equipment-export-tests-2026-10-26.txt",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "8361cdc066eac5a0d65e03272b164f4cbabb066e",
+        "actualBytes": 2073,
+        "type": "file",
+        "downloadedSha256": "9bf08e1afc142eda1f37863d9200f7edf02c064b558031d3116182fc9ab1579c",
+        "downloadedGitBlob": "8361cdc066eac5a0d65e03272b164f4cbabb066e",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/evidence/equipment-pr7-review-2026-10-26.json",
+        "expectedGitBlob": "662cb6e016de71dbed811c5ad197710ab5e54e23",
+        "expectedBytes": 13746,
+        "expectedSha256": "30c4baefb6850140d9a0f19159fb901b3b00f12fc2ab89262e3e7ec0870cf09e",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/evidence/equipment-pr7-review-2026-10-26.json",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "662cb6e016de71dbed811c5ad197710ab5e54e23",
+        "actualBytes": 13746,
+        "type": "file",
+        "downloadedSha256": "30c4baefb6850140d9a0f19159fb901b3b00f12fc2ab89262e3e7ec0870cf09e",
+        "downloadedGitBlob": "662cb6e016de71dbed811c5ad197710ab5e54e23",
+        "passed": true
+      },
+      {
+        "path": "docs/excel/tools/build_equipment_workbook.mjs",
+        "expectedGitBlob": "bfbdbc1b4b03fb0d16ab077c8650c02ec7f55072",
+        "expectedBytes": 28960,
+        "expectedSha256": "f29ca9e88781a3e0715e4d2709d2428b82c28136bbe996d2aa99d03797dcee52",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/docs/excel/tools/build_equipment_workbook.mjs",
+        "method": "Fresh GitHub Contents API read at this commit, with decoded content hashes.",
+        "contentVerifiedAtCommit": "59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "apiUrl": "https://api.github.com/repos/darknigthmare/multiverse-breach/contents/docs/excel/tools/build_equipment_workbook.mjs?ref=59fa9d7ec954fd01990c47a57910ddc419efb068",
+        "actualPath": "docs/excel/tools/build_equipment_workbook.mjs",
+        "actualGitBlob": "bfbdbc1b4b03fb0d16ab077c8650c02ec7f55072",
+        "actualBytes": 28960,
+        "type": "file",
+        "downloadedBytes": 28960,
+        "downloadedSha256": "f29ca9e88781a3e0715e4d2709d2428b82c28136bbe996d2aa99d03797dcee52",
+        "downloadedGitBlob": "bfbdbc1b4b03fb0d16ab077c8650c02ec7f55072",
+        "passed": true
+      },
+      {
+        "path": "scripts/exportEquipmentWorkbookData.mjs",
+        "expectedGitBlob": "f308281aa206ee4226538877f5aceaf044df33b4",
+        "expectedBytes": 34860,
+        "expectedSha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/scripts/exportEquipmentWorkbookData.mjs",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "f308281aa206ee4226538877f5aceaf044df33b4",
+        "actualBytes": 34860,
+        "type": "file",
+        "downloadedSha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+        "downloadedGitBlob": "f308281aa206ee4226538877f5aceaf044df33b4",
+        "passed": true
+      },
+      {
+        "path": "scripts/exportEquipmentWorkbookData.test.mjs",
+        "expectedGitBlob": "c24bf4489ec66656e2d1502f7c289d6ad1e8c2ad",
+        "expectedBytes": 16488,
+        "expectedSha256": "d20f344e494be5f2f2e932260b23570cf8c00dc6c0c487025e9ac9be02ccbb5b",
+        "sourceUrl": "https://github.com/darknigthmare/multiverse-breach/blob/59fa9d7ec954fd01990c47a57910ddc419efb068/scripts/exportEquipmentWorkbookData.test.mjs",
+        "method": "Previous content verification reused; GitHub comparison confirms path unchanged from the verified base commit.",
+        "contentVerifiedAtCommit": "b9a91c1267e1f88e334fa69b44bfb14d3be40289",
+        "actualGitBlob": "c24bf4489ec66656e2d1502f7c289d6ad1e8c2ad",
+        "actualBytes": 16488,
+        "type": "file",
+        "downloadedSha256": "d20f344e494be5f2f2e932260b23570cf8c00dc6c0c487025e9ac9be02ccbb5b",
+        "downloadedGitBlob": "c24bf4489ec66656e2d1502f7c289d6ad1e8c2ad",
+        "passed": true
+      }
+    ],
+    "scopeLimit": "Nine source files only. XLSX and global evidence are pending and outside this checkpoint.",
+    "githubMutationsPerformed": false,
+    "sourceFilesModified": false
+  },
+  "preexistingCiFailureReview": {
+    "schemaVersion": 1,
+    "kind": "read-only-ci-failure-review",
+    "asOfDate": "2026-10-26",
+    "repository": "darknigthmare/multiverse-breach",
+    "classification": "PREEXISTING_STATIC_AUDIT_ASSERTION",
+    "relatedToNineAuditFiles": false,
+    "infrastructureFailure": false,
+    "headCommit": "c1be80ba5e73c2d53f73cc86c7365cb13fa88447",
+    "baseCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "currentRun": {
+      "id": 40394344299,
+      "jobId": 121823284530,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40394344299/job/121823284530",
+      "conclusion": "failure",
+      "failingStep": "Same build lifecycle as Vercel, including assets and progression",
+      "logExcerpt": [
+        "2026-10-26T20:25:32.1713961Z file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:26",
+        "2026-10-26T20:25:32.1714724Z   throw new Error(message);",
+        "2026-10-26T20:25:32.1715213Z         ^",
+        "2026-10-26T20:25:32.1715374Z ",
+        "2026-10-26T20:25:32.1716067Z Error: FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.",
+        "2026-10-26T20:25:32.1716728Z     at fail (file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:26:9)",
+        "2026-10-26T20:25:32.1717452Z     at assert (file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:29:19)",
+        "2026-10-26T20:25:32.1718733Z     at file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:816:1",
+        "2026-10-26T20:25:32.1719285Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)",
+        "2026-10-26T20:25:32.1719781Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)",
+        "2026-10-26T20:25:32.1720330Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)",
+        "2026-10-26T20:25:32.1720627Z ",
+        "2026-10-26T20:25:32.1720711Z Node.js v22.23.3",
+        "2026-10-26T20:25:32.1934370Z ##[error]Process completed with exit code 1."
+      ]
+    },
+    "baselineRun": {
+      "id": 40326700136,
+      "jobId": 121585778141,
+      "url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40326700136/job/121585778141",
+      "conclusion": "failure",
+      "sameErrorObserved": true,
+      "logExcerpt": [
+        "2026-10-26T13:17:53.7412327Z file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:26",
+        "2026-10-26T13:17:53.7413621Z   throw new Error(message);",
+        "2026-10-26T13:17:53.7414048Z         ^",
+        "2026-10-26T13:17:53.7414243Z ",
+        "2026-10-26T13:17:53.7415056Z Error: FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.",
+        "2026-10-26T13:17:53.7416252Z     at fail (file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:26:9)",
+        "2026-10-26T13:17:53.7417120Z     at assert (file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:29:19)",
+        "2026-10-26T13:17:53.7418607Z     at file:///home/runner/work/multiverse-breach/multiverse-breach/scripts/progressionAudit.mjs:816:1",
+        "2026-10-26T13:17:53.7419418Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)",
+        "2026-10-26T13:17:53.7419975Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)",
+        "2026-10-26T13:17:53.7420591Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)",
+        "2026-10-26T13:17:53.7420932Z ",
+        "2026-10-26T13:17:53.7421040Z Node.js v22.23.3",
+        "2026-10-26T13:17:53.7630951Z ##[error]Process completed with exit code 1."
+      ]
+    },
+    "lifecycle": "npm run build -> prebuild -> npm run check:progression -> node scripts/progressionAudit.mjs",
+    "failure": {
+      "file": "scripts/progressionAudit.mjs",
+      "line": 816,
+      "error": "FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.",
+      "predicate": "hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('fpsProjectileRef')",
+      "exitCode": 1
+    },
+    "sourceObservation": {
+      "hub": "src/components/HubScreen.jsx",
+      "helper": "src/game/extinctionContent.js",
+      "currentExpression": "sheet.naturalHeight / handFrame.rows",
+      "frameResolution": "getExtinctionHandFrame(viewmodel, state)",
+      "dedicatedProjectileRefPresent": true,
+      "declaredMirelleLayout": {
+        "source": "src/game/spriteAssets.js",
+        "columns": 4,
+        "rows": 10,
+        "reloadTrimTop": 40,
+        "reloadTrimBottom": 6
+      },
+      "runtimeReloadRow": 6,
+      "interpretation": "Le contrôle textuel attend l'ancienne expression figée. Le rendu utilise désormais les dimensions et trims du profil résolu. Cela établit un décalage du garde-fou, pas un défaut visuel démontré par ce contrôle."
+    },
+    "changedPaths": [
+      "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+      "docs/excel/README.md",
+      "docs/excel/evidence/equipment-export-tests-2026-10-26.txt",
+      "docs/excel/evidence/equipment-pr7-review-2026-10-26.json",
+      "docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+      "docs/excel/sources/equipment-comparison-2026-10-26.json",
+      "docs/excel/tools/build_equipment_workbook.mjs",
+      "scripts/exportEquipmentWorkbookData.mjs",
+      "scripts/exportEquipmentWorkbookData.test.mjs"
+    ],
+    "excludedChangedPaths": [
+      "scripts/progressionAudit.mjs",
+      "src/components/HubScreen.jsx",
+      "src/game/extinctionContent.js",
+      "src/game/spriteAssets.js",
+      "package.json",
+      ".github/workflows/production-build.yml"
+    ],
+    "recommendation": "Réconcilier séparément les assertions FPS historiques avec getExtinctionViewmodel/getExtinctionHandFrame et contrôler comportement, grille 4x10, trims de recharge et overlay. Ne pas supprimer simplement le contrôle ni rétablir du texte inutile pour satisfaire includes().",
+    "limits": [
+      "Lecture des jobs, logs et sources uniquement.",
+      "Aucune relance CI, exécution complète de build, modification du jeu ou publication.",
+      "Le rendu visuel des mains n'a pas été revérifié par cette investigation."
+    ]
+  },
+  "deliveredFileHashesExcludingThisEvidence": [
+    {
+      "path": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+      "bytes": 3198971,
+      "sha256": "899fb6f741093ec633cfbd60496cdd13ce008ad63de2c8aa3ee4850f763fe657",
+      "gitBlob": "7b5caf48ff3d4020a5310f8be6b9f5a64872a6ac"
+    },
+    {
+      "path": "docs/excel/README.md",
+      "bytes": 7874,
+      "sha256": "3f4775bad3df6021dfe483f39d32fe073b2c778e1c7c39f699c0881cd359af84",
+      "gitBlob": "a95af14f11ef65377c803d1a7b0731ace3ca181b"
+    },
+    {
+      "path": "docs/excel/ARMES_EQUIPEMENTS_2026-10-26.md",
+      "bytes": 19427,
+      "sha256": "ce30db29fb55964f8c5d30713bc3cfe7f197d95b03b540e3a1af970f608df392",
+      "gitBlob": "2f27a69f354f9f5b771f89c79218b358cbbaec10"
+    },
+    {
+      "path": "docs/excel/sources/equipment-canonical-references-2026-10-26.json",
+      "bytes": 86833,
+      "sha256": "2bbc073f5e82a181e8e20c37db0c3b0e81fbc340b4d6e641a0a895509fb64e9f",
+      "gitBlob": "048765b720e123b7d874c9931e62547112477304"
+    },
+    {
+      "path": "docs/excel/sources/equipment-comparison-2026-10-26.json",
+      "bytes": 30453,
+      "sha256": "66732d0755f437469593f427a2d85c3b9d19c4c59eaaf23f78c27fa6cd96f28b",
+      "gitBlob": "911b2ccbb18e153edf2173607b32d084b4541dc4"
+    },
+    {
+      "path": "docs/excel/evidence/equipment-export-tests-2026-10-26.txt",
+      "bytes": 2073,
+      "sha256": "9bf08e1afc142eda1f37863d9200f7edf02c064b558031d3116182fc9ab1579c",
+      "gitBlob": "8361cdc066eac5a0d65e03272b164f4cbabb066e"
+    },
+    {
+      "path": "docs/excel/evidence/equipment-pr7-review-2026-10-26.json",
+      "bytes": 13746,
+      "sha256": "30c4baefb6850140d9a0f19159fb901b3b00f12fc2ab89262e3e7ec0870cf09e",
+      "gitBlob": "662cb6e016de71dbed811c5ad197710ab5e54e23"
+    },
+    {
+      "path": "docs/excel/tools/build_equipment_workbook.mjs",
+      "bytes": 28960,
+      "sha256": "f29ca9e88781a3e0715e4d2709d2428b82c28136bbe996d2aa99d03797dcee52",
+      "gitBlob": "bfbdbc1b4b03fb0d16ab077c8650c02ec7f55072"
+    },
+    {
+      "path": "scripts/exportEquipmentWorkbookData.mjs",
+      "bytes": 34860,
+      "sha256": "ebf7a241c8be03a933134d98cabc942267679c99831a9da3a006ebc10034b91b",
+      "gitBlob": "f308281aa206ee4226538877f5aceaf044df33b4"
+    },
+    {
+      "path": "scripts/exportEquipmentWorkbookData.test.mjs",
+      "bytes": 16488,
+      "sha256": "d20f344e494be5f2f2e932260b23570cf8c00dc6c0c487025e9ac9be02ccbb5b",
+      "gitBlob": "c24bf4489ec66656e2d1502f7c289d6ad1e8c2ad"
+    }
+  ],
+  "limitations": [
+    "Le relevé couvre les acteurs actifs et les catalogues résolus du dépôt ; la recherche canonique reste ciblée sur 22 acteurs.",
+    "Aucune certification artistique 1:1 ni validation globale des sprites, animations ou comportements de combat.",
+    "Aucune ouverture ou recalcul dans Excel Desktop.",
+    "Les statuts manuels doivent être rapprochés par ID tâche lors de futures régénérations.",
+    "Les données du jeu et les sauvegardes du joueur ne sont pas modifiées.",
+    "Le corpus et la suite de tests ont été reconstruits après nettoyage automatique ; leurs nouvelles empreintes sont indiquées."
+  ]
+}

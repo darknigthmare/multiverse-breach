@@ -1,0 +1,1817 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-01T03:16:56.780Z",
+  "reviewer": "/root/alien_storage_audit",
+  "technicalExecutor": "/root/alien_storage_audit/ripley_export_replay",
+  "characterId": "ripley",
+  "status": "passed-independent-CG-pixel-replay",
+  "scope": "Fifteen actual independently reviewed selected natives, exact source PNG copies and thirty nearest lossless WebP exports; actual result/argument transports and retained true drafts verified. No new visual or absolute identity certification.",
+  "verifier": {
+    "path": ".tmp/cg-alien-2026-11-01/qa/ripley-export-replay/verify-ripley-exports-v2.mjs",
+    "sha256": "b0146a7cba4c612bbe915d5bcc867a013e2da3ec606abaef63b96b14d2d2eccd",
+    "bytes": 20262
+  },
+  "receipt": {
+    "path": "docs/cg/ripley-wave12-2026-11-01.json",
+    "sha256": "19bcd0061f3d263dc4db652cce38629d200518ab01c032a89665ccfbe139a6dc",
+    "bytes": 220657
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/ripley-independent-review.json",
+    "sha256": "2333161b28d4c1729915a6a4fb2dd4d5609da0d1f94bd934ba29c2b7137ac950",
+    "bytes": 99959
+  },
+  "privateIndependentReview": {
+    "path": ".tmp/cg-alien-2026-11-01/qa/ripley/ripley-independent-review-wave12-2026-11-01.json",
+    "sha256": "2333161b28d4c1729915a6a4fb2dd4d5609da0d1f94bd934ba29c2b7137ac950",
+    "bytes": 99959
+  },
+  "publicAndPrivateQaByteIdentical": true,
+  "finalSourceEvidence": {
+    "path": "docs/cg/ripley-reference-evidence-wave12-2026-11-01.json",
+    "sha256": "5e682d5a262ec7de82b52c8ebd90b67197bfacbd5aa5d0cd6c709ff7404f73b4",
+    "bytes": 14799
+  },
+  "finalPlan": {
+    "path": "docs/cg/ripley-wave12-plan-2026-11-01.json",
+    "sha256": "9b2a33da1db270271bafa9a5b82c2415a54b3c40051d935bdbe06d1298ea7c79",
+    "bytes": 79651
+  },
+  "selectedCg": 15,
+  "verifiedMedia": 45,
+  "recordedNativeRecords": 15,
+  "selectedNativeRecords": 15,
+  "unselectedNativeRecordsInMixedReceipt": 0,
+  "uniqueNativePngHashes": 15,
+  "distinctPlannedPoseIds": 15,
+  "distinctPlannedBackgroundIds": 15,
+  "entries": [
+    {
+      "slot": "CG01",
+      "entryId": "cg:alien:ripley:characterSolo:openai-v1",
+      "type": "characterSolo",
+      "family": "Canon",
+      "themeBrief": "Unarmed selected1979 crew identity at rest.",
+      "poseId": "ripley-wave12-2026-11-01-cg01-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg01-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt2-native-independent-review.json",
+        "sha256": "8c86d50a07e7e54bc83383e23f032faced435b3865e81ad6516e7ea0c7c51abe",
+        "bytes": 4244
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt2-transport-independent.json",
+        "sha256": "29140ab1eca3d76c4565eb2637f21a851e55d9bbfca5e694fd8e79560b3be9e2",
+        "bytes": 2456
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-50b2b84e-4f86-4939-9a56-f70e89a27a6c.png",
+        "sha256": "7e393cde239b26effef890a54c240e22a2d226c31ed31e1d70a62ef29b967881",
+        "bytes": 1670668
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG01-attempt2-result.json",
+        "sha256": "aa3f2d5bf200f04b83c57496bcdb36056b13960895a982e4a815aea2f839f16c",
+        "bytes": 2228058
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG01-attempt2-submitted-args.json",
+        "sha256": "440bc9c29bd81c1070b530e46c4b1615ada40253067529c8a3d15f3966cd1cc4",
+        "bytes": 2457
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/01-characterSolo-revision1-thin-continuous-soles.txt",
+        "sha256": "b2f48d5125a8920ca133b6f5f8e546f6fb0d08922011101ba894a3ee35ac1a03",
+        "bytes": 2083
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+          "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+          "bytes": 1689196
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-50b2b84e-4f86-4939-9a56-f70e89a27a6c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-50b2b84e-4f86-4939-9a56-f70e89a27a6c.png",
+        "sha256": "7e393cde239b26effef890a54c240e22a2d226c31ed31e1d70a62ef29b967881",
+        "bytes": 1670668
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/character-solo-wave12-2026-11-01.png",
+          "sha256": "7e393cde239b26effef890a54c240e22a2d226c31ed31e1d70a62ef29b967881",
+          "bytes": 1670668,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "01b862b7bbd4ddefed1842e3ea35b7015fc2abd81b0ca390e2eca4e3d008871f"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/character-solo-wave12-2026-11-01.webp",
+          "sha256": "43df309aae9829f02d20a1051b9c08edbe50f083fd70de9a916794f076f66343",
+          "bytes": 1422392,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "99ba66144c6d933246f6254283aa0656631d46b3e2c3f83d6bdb0452a6894c4a",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/character-solo-wave12-2026-11-01-thumb.webp",
+          "sha256": "823a53080bc3cd379025c8a42f4a507aa4749a56c7da7cb7474e66f27652c20e",
+          "bytes": 218396,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "4b263c6782e3b0f0e7082f45dc2e7faa935dbf8a34a41df0e76b70c852317892",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG02",
+      "entryId": "cg:alien:ripley:weaponSolo:openai-v1",
+      "type": "weaponSolo",
+      "family": "Canon",
+      "themeBrief": "One complete source1979 flamethrower alone.",
+      "poseId": "ripley-wave12-2026-11-01-cg02-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg02-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt2-native-independent-review.json",
+        "sha256": "be4411488a25410602e079de372eee7fe545c224aa415d737976846237096f58",
+        "bytes": 3361
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt2-transport-independent.json",
+        "sha256": "c18df8741cc570c3e93ab3eb487eacbf050d1320339c89fe5d0c2e961e0c3c36",
+        "bytes": 3071
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-01e9277f-226f-4e7f-9d59-c2b1011af063.png",
+        "sha256": "5f3171406f9972cfd637fa9ec0380ed376d2378bca43b48c36f36f099449f550",
+        "bytes": 1660758
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG02-attempt2-result.json",
+        "sha256": "c11c820a797d056073791af69ff673334f25ec9f6a0ec5a74a28263fb1b21f83",
+        "bytes": 2214842
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG02-attempt2-submitted-args.json",
+        "sha256": "3502c4e325321a8e792416067991eca292f2311d3e04ff28fdd1ee1892af1d0c",
+        "bytes": 2010
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/02-weaponSolo-revision1-source-visible-sling.txt",
+        "sha256": "69894c72a4d7efd9521b8789f42eb7d061ab20d0da42b9c474867eb30a2e0232",
+        "bytes": 1733
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+          "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+          "bytes": 1815146
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-01e9277f-226f-4e7f-9d59-c2b1011af063.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-01e9277f-226f-4e7f-9d59-c2b1011af063.png",
+        "sha256": "5f3171406f9972cfd637fa9ec0380ed376d2378bca43b48c36f36f099449f550",
+        "bytes": 1660758
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/signature-weapon-wave12-2026-11-01.png",
+          "sha256": "5f3171406f9972cfd637fa9ec0380ed376d2378bca43b48c36f36f099449f550",
+          "bytes": 1660758,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "1db74d79797b99fa9a1be02bc3c1cc1e99b09acdc4ee96f4549347d2a97a598f"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/signature-weapon-wave12-2026-11-01.webp",
+          "sha256": "12f6f40a3b9531c053a053fb5323266e2233b6fa999357e36e54e902445c2c8a",
+          "bytes": 1383576,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "21f246979bbc0335760fba493580881be4b1f54db7ae6b68031f1ca6679ba13b",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/signature-weapon-wave12-2026-11-01-thumb.webp",
+          "sha256": "f0c5c04ecd2eff9c7095b0fef983822bc0fef60021065186baeea2f0d9874dee",
+          "bytes": 206250,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "dcb76e1a344311688049035b6ea1128cdacae0af4d4201dd7bc2f139004794a2",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG03",
+      "entryId": "cg:alien:ripley:decorSolo:openai-v1",
+      "type": "decorSolo",
+      "family": "Canon",
+      "themeBrief": "Empty1979 Nostromo-compatible flight-control room.",
+      "poseId": "ripley-wave12-2026-11-01-cg03-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg03-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG03-attempt1-native-independent-review.json",
+        "sha256": "f91741b43bb583f56187ee199fc0c3958cfa9f5d32bc28fc76be654c3a08cd33",
+        "bytes": 3164
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG03-attempt1-transport-independent.json",
+        "sha256": "fa10a5eac02786fc46ce87a39278ed06849b0fb76f0ac29c95c618205540c266",
+        "bytes": 2037
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-c2965beb-b0fa-4a46-8b56-88eda65e9d72.png",
+        "sha256": "9bb98e35ac3ad3c3cb172f08fe8493eaf9ae3f723b65841892dbb785bb52cd15",
+        "bytes": 2200658
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG03-attempt1-result.json",
+        "sha256": "ab2cb6a31ff8ba4746adc229dd808a8d1b3208dccfa86b901713ef72d460b7f6",
+        "bytes": 2934710
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG03-attempt1-submitted-args.json",
+        "sha256": "5fa4b6857e81ddcc50e89a0489b8a04fcb5120ab549ac2bfe9545109d167fc86",
+        "bytes": 4437
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/03-decorSolo.txt",
+        "sha256": "e7481accb850f6599e7b152cc3355443adf6e182c6b8b64b2029c69c124ab693",
+        "bytes": 4124
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-3.jpeg",
+          "sha256": "379a96d7c4448fd18a71671a58debe28c585912d6ea18e3b2ed444d6a03dbc8f",
+          "bytes": 120772
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-c2965beb-b0fa-4a46-8b56-88eda65e9d72.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-c2965beb-b0fa-4a46-8b56-88eda65e9d72.png",
+        "sha256": "9bb98e35ac3ad3c3cb172f08fe8493eaf9ae3f723b65841892dbb785bb52cd15",
+        "bytes": 2200658
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/decor-wave12-2026-11-01.png",
+          "sha256": "9bb98e35ac3ad3c3cb172f08fe8493eaf9ae3f723b65841892dbb785bb52cd15",
+          "bytes": 2200658,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "523282700a6f0e406a933fd5f56a106d186e2d80810e718d4a2f059f9341335f"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/decor-wave12-2026-11-01.webp",
+          "sha256": "95a6ddbe92df904adce4d27adcb4a757b9d894dc6ed5d857b71fdd3982c234af",
+          "bytes": 1889150,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "775342d8da49937b6b53d9bf24eb19cdcf15b399a7517043f6757da311ae90bc",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/decor-wave12-2026-11-01-thumb.webp",
+          "sha256": "f5988d481310370be75f6707f653968da7d93ece77642866b74eba7c385c13f3",
+          "bytes": 268820,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "d5ae67eefd3d4cbe168b151950e1c00f4e47e872841b8480ab8e6a71f1162e93",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG04",
+      "entryId": "cg:alien:ripley:coherentScene:openai-v1",
+      "type": "coherentScene",
+      "family": "Canon",
+      "themeBrief": "Crew communication task using optional headset observed in film4.",
+      "poseId": "ripley-wave12-2026-11-01-cg04-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg04-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt2-native-independent-review.json",
+        "sha256": "1445abf107e83f10c5a6de9b71a1c3c59a823d52d0ebe311119eba01a688c695",
+        "bytes": 3825
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt2-transport-independent.json",
+        "sha256": "692704b504157f8b46dffae73e998723f4caf4e4bf3d792bc1a42910bfec9eeb",
+        "bytes": 3275
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-3927b4ec-4e02-48d6-b25e-f2a670a66ef2.png",
+        "sha256": "69adf7d9eae5086ade552f43b57dc58a3ecee5b93971834fc63703d66f73f025",
+        "bytes": 1884354
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG04-attempt2-result.json",
+        "sha256": "349193cda0210a6401551b0b727754a08cf3f614abdd367d05e63eab0c486ab6",
+        "bytes": 2512970
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG04-attempt2-submitted-args.json",
+        "sha256": "766b8b240dd81aa35a26bbd98259040e76c4cfa6cdb302151d20886273b395bb",
+        "bytes": 2416
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/04-coherentScene-revision1-subdued-irises-thin-soles.txt",
+        "sha256": "b315d765f0846113d9ee13a8c41221ce48d4bd6a2711ccebf5e372ac1bee4308",
+        "bytes": 2041
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+          "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+          "bytes": 1935770
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-3927b4ec-4e02-48d6-b25e-f2a670a66ef2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-3927b4ec-4e02-48d6-b25e-f2a670a66ef2.png",
+        "sha256": "69adf7d9eae5086ade552f43b57dc58a3ecee5b93971834fc63703d66f73f025",
+        "bytes": 1884354
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/coherent-scene-wave12-2026-11-01.png",
+          "sha256": "69adf7d9eae5086ade552f43b57dc58a3ecee5b93971834fc63703d66f73f025",
+          "bytes": 1884354,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "1ed154c72c55a85e3a7bb30128d966fb4c59db9cea7a770f708a32ce240afe07"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/coherent-scene-wave12-2026-11-01.webp",
+          "sha256": "74b88ed44aa6854463a5c06bf5b47d3a23b974a81f344c8e6eb5cf71d613a432",
+          "bytes": 1668778,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "10603c511b1c35881935f76587e4ea99e924438e72f4306859ae40b1fa3dc8e0",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/coherent-scene-wave12-2026-11-01-thumb.webp",
+          "sha256": "f8bb30a3838b99682ddbad1eb0cacb0bfe932a5ca7ce2de6e3a3e36819ce245f",
+          "bytes": 261584,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "344a848964655e456c9e68c13ac5d3cb04a8ee15ad2ff87eec9fbaa9a397fbae",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG05",
+      "entryId": "cg:alien:ripley:actionScene:openai-v1",
+      "type": "actionScene",
+      "family": "Nexus",
+      "themeBrief": "Explicit Nexus environmental breach, source equipment unchanged.",
+      "poseId": "ripley-wave12-2026-11-01-cg05-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg05-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG05-attempt1-native-independent-review.json",
+        "sha256": "4bb7224f8ca403777df79c616476f7410a1cc23c055b9af40243071551b23b72",
+        "bytes": 4035
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG05-attempt1-transport-independent.json",
+        "sha256": "8c7c51304ae526ec4ac3cc901febbef6398c290f8491597f04b7d36c89bfd656",
+        "bytes": 2800
+      },
+      "native": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/native-recovered/CG05-94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599.png",
+        "sha256": "94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599",
+        "bytes": 2518492
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG05-attempt1-result.json",
+        "sha256": "6a98d5bc447af22f5cfb16de33c7e4fa9f4dd6f542621ea34b8f4f09715e7113",
+        "bytes": 3358037
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG05-attempt1-submitted-args.json",
+        "sha256": "49cca72f1b391ea30de19dc0e2bb86f1d234251054545834353260150a1a8044",
+        "bytes": 4979
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/05-actionScene.txt",
+        "sha256": "99f1260e764aa632fccf998b22415652ca59f824cde95438545144d56b4f0cd5",
+        "bytes": 4660
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": false,
+      "originalOutputHint": null,
+      "canonicalHintedNative": null,
+      "recoveryAttestation": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/native-recovered/CG05-attempt1-transport-attestation.json",
+        "sha256": "38fe59aceaa3fc9bef5124b8c975c85e36b7915cbe8c0ffe7338f6258c1f9090",
+        "bytes": 1914
+      },
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/action-scene-wave12-2026-11-01.png",
+          "sha256": "94ece98ed6c53ed1d8efbf48a1a05ed66f502d2e8ae1e3a46411d9fda0806599",
+          "bytes": 2518492,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "24498878b1dca800e373ed77f3b25ad0b9971f10a24947c203237b5ef3acaac0"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/action-scene-wave12-2026-11-01.webp",
+          "sha256": "f496365f5bc478b28fecdb624a232e204d270bd10bcb6a5a10be1c2dc9f95322",
+          "bytes": 2297450,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "fa53914523040bdcbcd1b8e444c43d3164452a36905b2faa998ee9d5bb396c81",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/action-scene-wave12-2026-11-01-thumb.webp",
+          "sha256": "073f2acf952f1606926021cb51ba2a71b179b82ecf9c81adafda4156a2ed5fe7",
+          "bytes": 333704,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "a404011f703a015de88631102284b825fc0b47430875af04a1d35a70b6dfc5c7",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "entryId": "cg:alien:ripley:introPose:openai-v1",
+      "type": "introPose",
+      "family": "Canon",
+      "themeBrief": "Arrival into a cargo receiving compartment.",
+      "poseId": "ripley-wave12-2026-11-01-cg06-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg06-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt2-native-independent-review.json",
+        "sha256": "4d198dae827c6a30446d07e9dbbfac1ffbb2cd42bccafe36dd1cf7643fd69ac2",
+        "bytes": 5070
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt2-transport-independent.json",
+        "sha256": "53befc666a07a9f11cd02409fbd41d7127dee43aa999488c73cede74be5bf3b6",
+        "bytes": 3267
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-38f39bcf-b40c-44ba-bcff-be180b1b7c58.png",
+        "sha256": "f15675291abfc4b729cb307df380f6cac970d3ea18f7da897086a0e33011ad97",
+        "bytes": 1949344
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG06-attempt2-result.json",
+        "sha256": "64ac2e8e88f8590a0bd838f72b10ce614b2289497894ddc0351008e0b3fa852b",
+        "bytes": 2599626
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG06-attempt2-submitted-args.json",
+        "sha256": "7b85cfc07ad944ea45153cb09a8b97c123f038021bd3c8b15f7033f4c0aa75fa",
+        "bytes": 2439
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/06-introPose-revision1-separated-whole-boots.txt",
+        "sha256": "f6d2169a3a10c57e93828a227dedfaac4615f616859fcad876080463ddbcba7d",
+        "bytes": 2065
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+          "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+          "bytes": 2317781
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-38f39bcf-b40c-44ba-bcff-be180b1b7c58.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-38f39bcf-b40c-44ba-bcff-be180b1b7c58.png",
+        "sha256": "f15675291abfc4b729cb307df380f6cac970d3ea18f7da897086a0e33011ad97",
+        "bytes": 1949344
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/intro-pose-wave12-2026-11-01.png",
+          "sha256": "f15675291abfc4b729cb307df380f6cac970d3ea18f7da897086a0e33011ad97",
+          "bytes": 1949344,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "1f246d8d443f6f8e9f1744212c2373befdf559a215bddf8733d9ae391fee00e8"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/intro-pose-wave12-2026-11-01.webp",
+          "sha256": "628a17d3f59f0180b895d9a64b957329a07dbbbfad20efe2e23db4d8dbd5a026",
+          "bytes": 1732756,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "7040dad2926511fee94714f34974d223babe63717cbc0938457280ad9072563d",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/intro-pose-wave12-2026-11-01-thumb.webp",
+          "sha256": "8db0732a087276e5604d59ea9ac7fd96843158cb0dfa2f700023d60327a96f34",
+          "bytes": 244422,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "75dc823f59753d0ff89f240a8268ae20422d82a8fbba720e23c8c698c3bc06b4",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG07",
+      "entryId": "cg:alien:ripley:victoryPose:openai-v1",
+      "type": "victoryPose",
+      "family": "Canon",
+      "themeBrief": "Restrained relief after duty, no battle trophy.",
+      "poseId": "ripley-wave12-2026-11-01-cg07-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg07-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG07-attempt1-native-independent-review.json",
+        "sha256": "a3ef5ac47100fed7ccbf202b7969593756a4cdebb3390f04ba1a21544b80ada5",
+        "bytes": 3507
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG07-attempt1-transport-independent.json",
+        "sha256": "cd6a602fedb2502a8620d17ba1000755bea3a79b16fcd839e66fb2a5ef608876",
+        "bytes": 3026
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-5e3b94f7-6611-4c83-8969-aa53e2866ee5.png",
+        "sha256": "1f254b7293c258368d6ca43908bfc31d5cba36e8ade9441e17975cc558f3b9b2",
+        "bytes": 1619972
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG07-attempt1-result.json",
+        "sha256": "bbebe6836e705631b0cd310f2a0a00bddbfe8165d5ec814a620c1ff047408d31",
+        "bytes": 2160462
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG07-attempt1-submitted-args.json",
+        "sha256": "16a67793193de0311a4280996fcf31d60e8676f0561565b9f4276559d475d7d8",
+        "bytes": 5235
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/07-victoryPose.txt",
+        "sha256": "3bf5fe9a0dd172746e4a4699a9983ec7b50e94a55b4d37bb12a7ec5dfee6812c",
+        "bytes": 4915
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-5e3b94f7-6611-4c83-8969-aa53e2866ee5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-5e3b94f7-6611-4c83-8969-aa53e2866ee5.png",
+        "sha256": "1f254b7293c258368d6ca43908bfc31d5cba36e8ade9441e17975cc558f3b9b2",
+        "bytes": 1619972
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/victory-pose-wave12-2026-11-01.png",
+          "sha256": "1f254b7293c258368d6ca43908bfc31d5cba36e8ade9441e17975cc558f3b9b2",
+          "bytes": 1619972,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "b27cc93a39597d041bd76b8bc945509ea83a581a7351251e0927ec7512a8cb49"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/victory-pose-wave12-2026-11-01.webp",
+          "sha256": "3576ed8e069ec5d70a31089cfcabdd15ea196ad4a3db8c3ab1a86c5ebb055571",
+          "bytes": 1372528,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "fd2c578698b066ed8a2536b6f82fab48edb04e9b4bea727d5de687760a382a4d",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/victory-pose-wave12-2026-11-01-thumb.webp",
+          "sha256": "c57d0390c1ada2dd6c7dc4d98e86e24f24f76a953b8446d4156f093b11b50bd1",
+          "bytes": 209964,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "7fd31adcab44370813527fd9900d27cfac67c31aced65909166e27d385ccec99",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG08",
+      "entryId": "cg:alien:ripley:defeatPose:openai-v1",
+      "type": "defeatPose",
+      "family": "Canon",
+      "themeBrief": "Dignified retreat, intact1979 crew body.",
+      "poseId": "ripley-wave12-2026-11-01-cg08-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg08-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG08-attempt1-native-independent-review.json",
+        "sha256": "918726c2695ea1076f98057fb4d0865f0748ee5163a8a4311e3c65f5fca05d61",
+        "bytes": 3747
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG08-attempt1-transport-independent.json",
+        "sha256": "d72d1d944e2597161ac3178e2e9df9eda5db0eb31bc47f513fd932cf4dc8e0a2",
+        "bytes": 3025
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-8f054972-4dd1-4293-8136-1669de39a473.png",
+        "sha256": "15171f3cb54f2b45b31b2efccda150417aaf6ed1bdb83eb4260041bacd0cd34f",
+        "bytes": 1847142
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG08-attempt1-result.json",
+        "sha256": "ab752bf0c70c382be5736c79278db312a3f67ec700762f817a5767d13aa94e4a",
+        "bytes": 2463354
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG08-attempt1-submitted-args.json",
+        "sha256": "43aa74a6d563380173aa06f007799de854f18104ec4c9daa812bbb83c769f22b",
+        "bytes": 5234
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/08-defeatPose.txt",
+        "sha256": "14d1f0af12e54ee27f4c45a5622460f7def8780643d71483b3833ccba7eae869",
+        "bytes": 4914
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-8f054972-4dd1-4293-8136-1669de39a473.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-8f054972-4dd1-4293-8136-1669de39a473.png",
+        "sha256": "15171f3cb54f2b45b31b2efccda150417aaf6ed1bdb83eb4260041bacd0cd34f",
+        "bytes": 1847142
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/defeat-pose-wave12-2026-11-01.png",
+          "sha256": "15171f3cb54f2b45b31b2efccda150417aaf6ed1bdb83eb4260041bacd0cd34f",
+          "bytes": 1847142,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "c7301bfc4e8ae4a53a40f8e84856dc34562ceeaaee0bfe417503fe5b51b359bd"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/defeat-pose-wave12-2026-11-01.webp",
+          "sha256": "79fc44c105572c36c5deecfda7b0d3297c9b5ea0fde283f3e16172d9e6c14c8b",
+          "bytes": 1624522,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "8ca09318f0ed82d490e10b7019779f52a64560ccfde4af5eed7cb356ebe6f27e",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/defeat-pose-wave12-2026-11-01-thumb.webp",
+          "sha256": "0f9e50a5514b113564ff2cbb724b1958dddf8d336e31294dd25eda80caddc936",
+          "bytes": 235386,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "7232df721a500b940081982c691ed485c87b5a73021e3e880127c29485cbf4ef",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG09",
+      "entryId": "cg:alien:ripley:beachFamily:openai-v1",
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "themeBrief": "Family-safe shore pause fully clothed in selected source outfit.",
+      "poseId": "ripley-wave12-2026-11-01-cg09-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg09-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG09-attempt1-native-independent-review.json",
+        "sha256": "3f9d024b0304cb31e2a4238f826e8c58a5a52ee948cb85af9fb15b6ed4116498",
+        "bytes": 3828
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG09-attempt1-transport-independent.json",
+        "sha256": "4e3941952ca7f88dbc96354cf48a91978cf88886db55152fa5770374a85138a1",
+        "bytes": 3026
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-072e9eca-5255-4fa8-8292-1b3eb764d480.png",
+        "sha256": "d80be704b98c18d1c3e8dc3b4f37c096d0d11bb2e29efc773ab483e8d5a59e30",
+        "bytes": 2146636
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG09-attempt1-result.json",
+        "sha256": "2b7f1bd2029fd83e8488b00e9c16d5d2906e39524f85a9de05a8fad447d44551",
+        "bytes": 2862682
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG09-attempt1-submitted-args.json",
+        "sha256": "cd2a0a42cb60d707742ca8dfae196c6033c6a8cf33aeae92b4d39156c0054458",
+        "bytes": 5302
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/09-beachFamily.txt",
+        "sha256": "3a9f0f5f1d2b6166c933540f5640f7cb65428c4c1ffe3fda70313499a4abb344",
+        "bytes": 4982
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-072e9eca-5255-4fa8-8292-1b3eb764d480.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-072e9eca-5255-4fa8-8292-1b3eb764d480.png",
+        "sha256": "d80be704b98c18d1c3e8dc3b4f37c096d0d11bb2e29efc773ab483e8d5a59e30",
+        "bytes": 2146636
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/beach-family-wave12-2026-11-01.png",
+          "sha256": "d80be704b98c18d1c3e8dc3b4f37c096d0d11bb2e29efc773ab483e8d5a59e30",
+          "bytes": 2146636,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "4e1bdc52737e133ec25b682a695f27ef50713e0232787b9ed8a1035245ae38f0"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/beach-family-wave12-2026-11-01.webp",
+          "sha256": "6d51f4a542ca92864843497f30b4db14f07ba46def09b41ca5985153cbde1769",
+          "bytes": 1906468,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "15c274e054a7ded8e79195bf3e714ab2e25d99c5f4616c95aba8b926a74b61fd",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/beach-family-wave12-2026-11-01-thumb.webp",
+          "sha256": "6b5b17830cb5543764dfcf40b0d2f0dcd59dcfc9385f5ac443e4530d98a8b7ee",
+          "bytes": 288388,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "9cbbd687c63149338f1698ef1183663a2791268c66f138ee80f9129bdc51d3d8",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG10",
+      "entryId": "cg:alien:ripley:maidService:openai-v1",
+      "type": "maidService",
+      "family": "Fan Art",
+      "themeBrief": "Professional family-safe shipboard galley service.",
+      "poseId": "ripley-wave12-2026-11-01-cg10-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg10-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG10-attempt1-native-independent-review.json",
+        "sha256": "91e8793cbdb38ad7c37b1f1b5d680711ce06eb33cd50e3424da83062b06ef075",
+        "bytes": 4136
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG10-attempt1-transport-independent.json",
+        "sha256": "fb3a5bd0a9be48c9dadc9f06f6a78095554d4340d232b8ffc1763bd3ec8371a4",
+        "bytes": 3026
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-449f310a-612a-41f9-84c3-3a9359ad0b16.png",
+        "sha256": "8c3c30e40fe735c438349b2408efae62d2b989b00c34c4c9ee34d2b8c08102c1",
+        "bytes": 1604896
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG10-attempt1-result.json",
+        "sha256": "9c7d3e6b1b90681ab6f3aeaa33abc5cdb75704a359d9937c130a658ba20ee0aa",
+        "bytes": 2140362
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG10-attempt1-submitted-args.json",
+        "sha256": "de640d097dc3c1c341f4290397e999fecd87f6c14578f6212b475d74d2121d3b",
+        "bytes": 5369
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/10-maidService.txt",
+        "sha256": "f38e91cc49690cc291b1793c00fb1c64ac24dd91bd77de29026bddbaf6ae926a",
+        "bytes": 5049
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-449f310a-612a-41f9-84c3-3a9359ad0b16.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-449f310a-612a-41f9-84c3-3a9359ad0b16.png",
+        "sha256": "8c3c30e40fe735c438349b2408efae62d2b989b00c34c4c9ee34d2b8c08102c1",
+        "bytes": 1604896
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/maid-service-wave12-2026-11-01.png",
+          "sha256": "8c3c30e40fe735c438349b2408efae62d2b989b00c34c4c9ee34d2b8c08102c1",
+          "bytes": 1604896,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "83bba67e70f06e2935fc3bccc036326ce4bd3cb022e5e6d2be8431663c3fe940"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/maid-service-wave12-2026-11-01.webp",
+          "sha256": "55343ca9c0f8a70db56a1594feee998f77b920bd5e258377ec35865501b93176",
+          "bytes": 1361170,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "d5233337168e93cc4fa228eaef0e690d98c00d51e339af5ff4b08e31739b8954",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/maid-service-wave12-2026-11-01-thumb.webp",
+          "sha256": "700d93119b53252ff49d882014a2cce8524800b14bb71f2d754b639b25126e68",
+          "bytes": 210848,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "72f47ed4c8cfd61a5f43ae1e10175392bf24867f5082ee72e1cafc873df28bb4",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG11",
+      "entryId": "cg:alien:ripley:goofy:openai-v1",
+      "type": "goofy",
+      "family": "Fan Art",
+      "themeBrief": "Mild comic mishap in a maintenance-records room.",
+      "poseId": "ripley-wave12-2026-11-01-cg11-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg11-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG11-attempt1-native-independent-review.json",
+        "sha256": "a9c2000820e40faef491338a2ebebd69839cb5a1030ca7b1022a63161b1b4673",
+        "bytes": 4207
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG11-attempt1-transport-independent.json",
+        "sha256": "3261f86aba3b8c62e338b4ccc29ad0e3c617a1d6f1a0fc025f56b5671e04590b",
+        "bytes": 3020
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-a8eda2a6-ed80-4ff5-b471-932ed701b653.png",
+        "sha256": "fa442dd8e973eca3b0c5db3b2f1f78a9de2d0dbea87f2e086c9b79edd13b188b",
+        "bytes": 1768902
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG11-attempt1-result.json",
+        "sha256": "9acbaedaa2b02fd5535fbebdcd88e00724e0ecf108d4ffb290bc94c390897e8e",
+        "bytes": 2359034
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG11-attempt1-submitted-args.json",
+        "sha256": "0e4f71578a960f92da8e5940acae02a151488227d698c5f6d8071a981f4bc907",
+        "bytes": 5289
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/11-goofy.txt",
+        "sha256": "ef32f2982c6b9b2e17a6865874b09f07f0076b6e2c9463cf676d652103450e66",
+        "bytes": 4969
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-a8eda2a6-ed80-4ff5-b471-932ed701b653.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-a8eda2a6-ed80-4ff5-b471-932ed701b653.png",
+        "sha256": "fa442dd8e973eca3b0c5db3b2f1f78a9de2d0dbea87f2e086c9b79edd13b188b",
+        "bytes": 1768902
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/goofy-wave12-2026-11-01.png",
+          "sha256": "fa442dd8e973eca3b0c5db3b2f1f78a9de2d0dbea87f2e086c9b79edd13b188b",
+          "bytes": 1768902,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "62c45105b467349c2a9697e71ad4f41d81170853820a0191dad4823c5b170904"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/goofy-wave12-2026-11-01.webp",
+          "sha256": "ecfa361fd0e0de68e43591dbe1311264c629746c17a865060e216e7e1bb7054e",
+          "bytes": 1558424,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "de0cc522e21edd4deb94040d798ac4b191e4a9711056a52e40173568e1d0a533",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/goofy-wave12-2026-11-01-thumb.webp",
+          "sha256": "e1d5c78c02295c971ecec439b73ef35930a25f402a856100b4e0d45849f1aad5",
+          "bytes": 236306,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "a2104c42dc2c7469658458a4e3a40fbb0bb07a2014fe39a0f79e49ca008474f4",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG12",
+      "entryId": "cg:alien:ripley:alignmentSwap:openai-v1",
+      "type": "alignmentSwap",
+      "family": "What If",
+      "themeBrief": "One stern alternative alignment, no canonical villain claim.",
+      "poseId": "ripley-wave12-2026-11-01-cg12-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg12-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG12-attempt1-native-independent-review.json",
+        "sha256": "433ecdf46202c646522254c93d4ae72dc8ef327e739caa9e2e023d9d3d6c4dfc",
+        "bytes": 3780
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG12-attempt1-transport-independent.json",
+        "sha256": "75a22032aa0a181c879040d74b48dafd0a4e9560f1160855a5a68ad8f810f601",
+        "bytes": 3028
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-2eeed48a-f1a7-452a-b8da-aa3a97fc1e5f.png",
+        "sha256": "4ccdb8d6642796ad9763cb530930b6b01d735ece30af36033ae43bc78c438b5a",
+        "bytes": 1840655
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG12-attempt1-result.json",
+        "sha256": "c180bae7fc9d40818431d8af0828d689f74a6d48a2149f055ccce8603a0ae5b8",
+        "bytes": 2454706
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG12-attempt1-submitted-args.json",
+        "sha256": "5d229df23520cbe345aac82f9e5a578802cc8c86d56c0f9fed241b939fbb3c08",
+        "bytes": 5285
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/12-alignmentSwap.txt",
+        "sha256": "2d1601373483fd82697002ae68305be40a644fdaf0c5fcff40d65d040bfaefb9",
+        "bytes": 4965
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-2eeed48a-f1a7-452a-b8da-aa3a97fc1e5f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-2eeed48a-f1a7-452a-b8da-aa3a97fc1e5f.png",
+        "sha256": "4ccdb8d6642796ad9763cb530930b6b01d735ece30af36033ae43bc78c438b5a",
+        "bytes": 1840655
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/alignment-swap-wave12-2026-11-01.png",
+          "sha256": "4ccdb8d6642796ad9763cb530930b6b01d735ece30af36033ae43bc78c438b5a",
+          "bytes": 1840655,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "6577c15f3b56617ef2c5ad6838454d15a6b9aad1e57d2f8ed85af5febcf5c336"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/alignment-swap-wave12-2026-11-01.webp",
+          "sha256": "0e187ac1a153df459d7df84afe2f8a4e323880b19431bed801682ed03c25751a",
+          "bytes": 1612258,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "bd1dc41d36077933b6a33940a21f5a0a99a9cf9375ac8188386dbf41a7848a41",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/alignment-swap-wave12-2026-11-01-thumb.webp",
+          "sha256": "445f2f7b0804e2568cd208de6d1cfd95299212f98a693f49ee03a5a73f4b7309",
+          "bytes": 229138,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "94226604b2e87a896207f65e4cb04c118ce96568e0c30c76f0dc6b91879dd019",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG13",
+      "entryId": "cg:alien:ripley:genderSwap:openai-v1",
+      "type": "genderSwap",
+      "family": "What If",
+      "themeBrief": "One masculine-presenting alternative in the same source costume.",
+      "poseId": "ripley-wave12-2026-11-01-cg13-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg13-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG13-attempt1-native-independent-review.json",
+        "sha256": "ab65137f073d4988b911dcd08c099c52b58a8f5ee930f9304de73008ee7a9e3f",
+        "bytes": 4211
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG13-attempt1-transport-independent.json",
+        "sha256": "fa40006e4b4bb216f02d8ec19dc490562e753e62c740ab96527f7d826ff6ff41",
+        "bytes": 3025
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-a2b11d20-6145-4d35-b73e-059f87c91183.png",
+        "sha256": "313269116e67db11e4ebd759cb6d827f0e60d785948a92e9398f1f301cd60574",
+        "bytes": 1740614
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG13-attempt1-result.json",
+        "sha256": "56d152a10118921f3d46cedfd9b7bdeea866e1997b7b98718c3e9cfd16e5b0d4",
+        "bytes": 2321318
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG13-attempt1-submitted-args.json",
+        "sha256": "d8007c6f7175727ff37ae601879db545420dc705cab3b99a79912d6a50cd4c16",
+        "bytes": 5466
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/13-genderSwap.txt",
+        "sha256": "dfd689fe4791e117e60609f4538a1a0c124cb603846d90c7d26b2ec4a6b35dff",
+        "bytes": 5146
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-a2b11d20-6145-4d35-b73e-059f87c91183.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-a2b11d20-6145-4d35-b73e-059f87c91183.png",
+        "sha256": "313269116e67db11e4ebd759cb6d827f0e60d785948a92e9398f1f301cd60574",
+        "bytes": 1740614
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/gender-swap-wave12-2026-11-01.png",
+          "sha256": "313269116e67db11e4ebd759cb6d827f0e60d785948a92e9398f1f301cd60574",
+          "bytes": 1740614,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "b631a7635bd403786747eeb62ae20755e1e2d42befd447c79b0e885bf598d9ef"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/gender-swap-wave12-2026-11-01.webp",
+          "sha256": "9bdf72572319dcd4ea7117bbc102c7be83fa6d46ea9f0a596ad2e1e6ed0bfd96",
+          "bytes": 1519198,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "592021ec212e9b871e5798b5e0811918fccaf3cd14e5d18d1833e75d35fd8ca4",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/gender-swap-wave12-2026-11-01-thumb.webp",
+          "sha256": "e3589ddee3bfcd92cb257c874dfd65154f842eb27ab27c9def3b7c7e913c8f39",
+          "bytes": 230584,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "01234649b92922fbc5043bfb38c045a7f5da7a682bcebfe9dbaa13700a7a2371",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG14",
+      "entryId": "cg:alien:ripley:zombieVersion:openai-v1",
+      "type": "zombieVersion",
+      "family": "What If",
+      "themeBrief": "Intact non-gore human zombie/corruption WhatIf, recognizable source face and opaque source costume.",
+      "poseId": "ripley-wave12-2026-11-01-cg14-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg14-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG14-attempt1-native-independent-review.json",
+        "sha256": "d739f3a2b8ac3cab3e1472e9a2a73320980cd1af1a2669d0761cdaa853346aaf",
+        "bytes": 4667
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG14-attempt1-transport-independent.json",
+        "sha256": "6c6f78fccffb2b37d2c42d8584834297c0f97f2202a3b54f5d2cc69a844f1162",
+        "bytes": 3028
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-cb096bc2-950e-40e4-9db7-397e9f0d05b7.png",
+        "sha256": "eace396cfd7bf3bd8d51d5a3263cb647f268eb1767a77f578e58f1a40fa7117b",
+        "bytes": 1863703
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG14-attempt1-result.json",
+        "sha256": "b9e0ebe76db426e0f6c1f3cbb7df759f866b983ee19d0d15ecdbc68c633f67c6",
+        "bytes": 2485438
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG14-attempt1-submitted-args.json",
+        "sha256": "9bdd1cd337dfd6556b7981f7ee77465fac71decf44d087f4557bc050b78f0b87",
+        "bytes": 5559
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/14-zombieVersion.txt",
+        "sha256": "0061b49b07561c2594d6d1345552c1ef64c91d070c367b23e628a8055b0fc317",
+        "bytes": 5239
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-cb096bc2-950e-40e4-9db7-397e9f0d05b7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-cb096bc2-950e-40e4-9db7-397e9f0d05b7.png",
+        "sha256": "eace396cfd7bf3bd8d51d5a3263cb647f268eb1767a77f578e58f1a40fa7117b",
+        "bytes": 1863703
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/zombie-version-wave12-2026-11-01.png",
+          "sha256": "eace396cfd7bf3bd8d51d5a3263cb647f268eb1767a77f578e58f1a40fa7117b",
+          "bytes": 1863703,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "a1e04984f79e7af2fdeef7b5d5008d4ce28a4f634b05c85345e1ca5ca8d16dab"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/zombie-version-wave12-2026-11-01.webp",
+          "sha256": "adf9852130fbef5fee66dacc1a3882596bfa9a86154433a15d1395c530a89c04",
+          "bytes": 1631088,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "7d6191e1813f44827315847710d8959b6aceafd6b2e85b346ee985a278c08683",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/zombie-version-wave12-2026-11-01-thumb.webp",
+          "sha256": "284074b945c5220c89ff9d44d7c9456c5a1d1c655d099ded3e61da299f75c6fb",
+          "bytes": 246666,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "ae0ce3d66ee0341e642e9e9ca19415e1ae5ee088a95f3bcdeee5e34921f3e6fb",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    },
+    {
+      "slot": "CG15",
+      "entryId": "cg:alien:ripley:futureExperienced:openai-v1",
+      "type": "futureExperienced",
+      "family": "What If",
+      "themeBrief": "One hypothetical experienced future planning a safe repair, same apparent age and subtly repaired source crew coveralls.",
+      "poseId": "ripley-wave12-2026-11-01-cg15-distinct",
+      "backgroundId": "ripley-wave12-2026-11-01-cg15-distinct",
+      "actualIndependentReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG15-attempt1-native-independent-review.json",
+        "sha256": "f42dc8f05af8aa4406111e341138652c8d88b6003166fe98d9be8c1d1eab5443",
+        "bytes": 5006
+      },
+      "transportProof": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG15-attempt1-transport-independent.json",
+        "sha256": "3af39ca67ed89ebc56bc76315fb7eac1a2535d20771e00482ae1440cec652868",
+        "bytes": 3032
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-a68bac1d-41e8-4609-92f2-a46e87dff544.png",
+        "sha256": "112dd959f2d53407987370a868089cc980380de6d391b9a016863609b65d5bc6",
+        "bytes": 1726549
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG15-attempt1-result.json",
+        "sha256": "b6b1539359ce758eb2c13ba55e060c41ede1a1b255a028693bfe79a9c5d3e6ef",
+        "bytes": 2302566
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG15-attempt1-submitted-args.json",
+        "sha256": "2bd1a9d4460a6c4b9f175d0f12b40ac097c8a13112fc138a778dc7dce78ca4bb",
+        "bytes": 5829
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/15-futureExperienced.txt",
+        "sha256": "ef5a23677af6d0594144606d8cc58062bbd2f54404c722ae307f8e73c9cab109",
+        "bytes": 5509
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-a68bac1d-41e8-4609-92f2-a46e87dff544.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-a68bac1d-41e8-4609-92f2-a46e87dff544.png",
+        "sha256": "112dd959f2d53407987370a868089cc980380de6d391b9a016863609b65d5bc6",
+        "bytes": 1726549
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false,
+      "nativeWidth": 1086,
+      "nativeHeight": 1448,
+      "conditioning": "strict-native-RGB-byte-copy",
+      "media": [
+        {
+          "kind": "source",
+          "path": "public/cg/alien/ripley/future-experienced-wave12-2026-11-01.png",
+          "sha256": "112dd959f2d53407987370a868089cc980380de6d391b9a016863609b65d5bc6",
+          "bytes": 1726549,
+          "width": 1086,
+          "height": 1448,
+          "originalNativePngByteExact": true,
+          "rawRgbSha256": "216c30520325ff3bfec232a96a1e378e92289e9ed78710e54ecec0776b78d244"
+        },
+        {
+          "kind": "master",
+          "path": "public/cg/alien/ripley/future-experienced-wave12-2026-11-01.webp",
+          "sha256": "9d2af42d45e1abd727df1beb769116c474adf32fd50200faf640782a9aa6fc17",
+          "bytes": 1509558,
+          "width": 1536,
+          "height": 2048,
+          "rawRgbSha256": "5b38217ce9a0d562999c65152767174c543079635c0965e7b234c60f42c92fac",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "public/cg/alien/ripley/future-experienced-wave12-2026-11-01-thumb.webp",
+          "sha256": "f58e18dba2be36b0cdc5ec7cec63cebddd54f74eea10ed8718a44b40f9bb77b2",
+          "bytes": 232758,
+          "width": 384,
+          "height": 512,
+          "rawRgbSha256": "0f0df8d7a2b7f0e3d09c1f2ccc6df68b0eb73341c68a7042f27ee6075ac4052b",
+          "nearestDecodedRgbByteExact": true,
+          "losslessWebpChunk": true,
+          "encodedWebpByteExact": true
+        }
+      ]
+    }
+  ],
+  "preservedTrueDrafts": [
+    {
+      "slot": "CG01",
+      "attempt": 1,
+      "decision": "revision-requested-visible-boot-sole-profile",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG01-attempt1-native-independent-review.json",
+        "sha256": "159534ce787101b76c13f7221a9796f482ec210884cd4d041fd59ec4419cbdfb",
+        "bytes": 4073
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+        "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+        "bytes": 1689196
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG01-attempt1-result.json",
+        "sha256": "f4d70e69b47c8de643e6a64d1a0398bd3ff2eda45c3cbde55a787957a0391d83",
+        "bytes": 2252762
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG01-attempt1-submitted-args.json",
+        "sha256": "4217d85f1b2fba1a3bd6ab67a2acd83480e1b5f4829b3e200ca2f0029553abf7",
+        "bytes": 4164
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/01-characterSolo.txt",
+        "sha256": "4bcc9abd0bc04f5dd26b5e93e2fce9084b775aad58b2668a005e02d3033863ad",
+        "bytes": 3846
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+        "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+        "bytes": 1689196
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false
+    },
+    {
+      "slot": "CG02",
+      "attempt": 1,
+      "decision": "revision-requested-unsupported-full-sling-route-and-long-chain-links",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG02-attempt1-native-independent-review.json",
+        "sha256": "8d6cae89b0113c98262862cd1dee34933b1c4df50d9614e7e3b0cc0560a3306b",
+        "bytes": 3542
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+        "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+        "bytes": 1815146
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG02-attempt1-result.json",
+        "sha256": "8e0a5c5906d363c8d70015935f32731214173d896f54cb18a6ebea94047baf8f",
+        "bytes": 2420694
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG02-attempt1-submitted-args.json",
+        "sha256": "62ccdc5a7519427914bceee9f8ed7734dc9ca44903209b1c1a4b36c47e3b6b13",
+        "bytes": 4542
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/02-weaponSolo.txt",
+        "sha256": "67bac7452128d6b0b66fe0bb7ea5475f58a845c6fac57067e9f85a1c5f8cb20f",
+        "bytes": 4320
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+        "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+        "bytes": 1815146
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false
+    },
+    {
+      "slot": "CG04",
+      "attempt": 1,
+      "decision": "revision-requested-unsupported-bright-cyan-iris-and-heavy-heel-profile",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG04-attempt1-native-independent-review.json",
+        "sha256": "2f0154815d13fd178b24c67d123b8dbac972e92beb8d3413d6c400576345359b",
+        "bytes": 4001
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+        "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+        "bytes": 1935770
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG04-attempt1-result.json",
+        "sha256": "950a4f666b7a18e8629ff84fa7ed4615836d63c4e8c6f3d61329b4989289756e",
+        "bytes": 2581526
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG04-attempt1-submitted-args.json",
+        "sha256": "7b52ddc2dbc66ab8b266a9a2c7deb9f2aa11e45a7038e47fdb1833ddc101013c",
+        "bytes": 4795
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/04-coherentScene.txt",
+        "sha256": "0236388a1a80958c7480208bfc95ecfaa2811f4bb90f70a17f5b404a508e4b19",
+        "bytes": 4476
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+        "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+        "bytes": 1935770
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false
+    },
+    {
+      "slot": "CG06",
+      "attempt": 1,
+      "decision": "revision-requested-rear-boot-heel-occluded-by-front-trouser",
+      "individualReview": {
+        "path": ".tmp/cg-alien-2026-11-01/qa/ripley/CG06-attempt1-native-independent-review.json",
+        "sha256": "5339fb9954b77667b15c21f361d2614e89dd6b2085f8a6703a3b93a36b3eed63",
+        "bytes": 3654
+      },
+      "native": {
+        "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+        "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+        "bytes": 2317781
+      },
+      "originalToolResult": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG06-attempt1-result.json",
+        "sha256": "14d57b00148f6d59aaebd18890064ae222ca2773189f6369afdb0870a1268696",
+        "bytes": 3090874
+      },
+      "actualSubmittedArguments": {
+        "path": ".tmp/cg-alien-2026-11-01/lot-01/ripley/tool-return-archives/CG06-attempt1-submitted-args.json",
+        "sha256": "15027324d955f6eb38d303a5504cc012ab3eddaf5f9e463e8a5dc277da2da607",
+        "bytes": 5244
+      },
+      "exactActualPrompt": {
+        "path": "docs/cg/prompts/wave12-2026-11-01/ripley/06-introPose.txt",
+        "sha256": "a7708f2c6aef568484e8701f8e328224c9d2f9f3e360967571995b8ff921fb3d",
+        "bytes": 4924
+      },
+      "actualConditioningInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+          "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+          "bytes": 84751
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+          "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+          "bytes": 117385
+        }
+      ],
+      "dataUrlEqualsPreservedNativeBytes": true,
+      "actualOutputHintKeyPresent": true,
+      "originalOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canonicalHintedNative": {
+        "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+        "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+        "bytes": 2317781
+      },
+      "recoveryAttestation": null,
+      "uuidOrHintInvented": false
+    }
+  ],
+  "actualConditioningSourcePins": [
+    {
+      "path": "/workspace/generated_images/exec-77931764-b2e0-4a06-955c-4dc5464c8f5b.png",
+      "sha256": "6d32c0f21c26bab772e61a4586b5e9a28b9bde8801705b0b0e7803c3c3903118",
+      "bytes": 1689196
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-4.jpeg",
+      "sha256": "2ec6fc72a776aeefae054c83ac48ec0d09fee70148eb4fcb5d00c7f7db8093f1",
+      "bytes": 84751
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/neca-jumpsuit-full.jpg",
+      "sha256": "590c8b783b539c3cc6e46f4790b6e09b9c5b8b3342fb007e2b29f75d655a2907",
+      "bytes": 117385
+    },
+    {
+      "path": "/workspace/generated_images/exec-d8183609-9072-40fb-940c-b38eb511519c.png",
+      "sha256": "f72d0ad30bce7bc254b72bc109d0fadd687ae8780ac01da02beb71611e714639",
+      "bytes": 1815146
+    },
+    {
+      "path": "docs/cg/references/wave12-2026-11-01/ripley/film-lead-3.jpeg",
+      "sha256": "379a96d7c4448fd18a71671a58debe28c585912d6ea18e3b2ed444d6a03dbc8f",
+      "bytes": 120772
+    },
+    {
+      "path": "/workspace/generated_images/exec-18b2f954-693c-473e-a9f6-7999cb8d6325.png",
+      "sha256": "c27c3aa2e75208aa0d3cffe8d4b5def0730d147f8cca509d5a8307a985ca8fcc",
+      "bytes": 1935770
+    },
+    {
+      "path": "/workspace/generated_images/exec-484fba8a-4c7d-4dd6-a58f-69cc6923beb0.png",
+      "sha256": "41138e8a60fb3c19c17e2b4166549e00cb3a21092cb001b2dde6d3ecde0267f8",
+      "bytes": 2317781
+    }
+  ],
+  "sourcePngByteCopyOnly": true,
+  "imageUrlOnlyReturnsPreservedWithoutInventedHints": [
+    "CG05"
+  ],
+  "pixelsModifiedByVerifier": false,
+  "imagesWrittenByVerifier": false,
+  "registryWritten": false,
+  "canonicalFidelityApproved": false,
+  "absoluteVisualFidelityCertified": false
+}

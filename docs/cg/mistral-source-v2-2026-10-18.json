@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-10-18",
+  "revisionId": "fidelity-2026-10-18-source-v2",
+  "revisions": [],
+  "blocked": [
+    {
+      "slot": 1,
+      "type": "characterSolo",
+      "revisionId": "fidelity-2026-10-18-source-v2",
+      "status": "blocked-input-moderation",
+      "attempts": [
+        {
+          "requestId": "8b702ff1-930f-407d-8944-1026ab6dd1f3",
+          "category": "sexual",
+          "stage": "input",
+          "promptFile": "docs/cg/prompts/complete-2026-10-18/mistral/character-solo-attempt1-blocked.txt"
+        },
+        {
+          "requestId": "89c55cc8-9f6a-4da7-a15b-cbb951b2e73f",
+          "category": "sexual",
+          "stage": "input",
+          "promptFile": "docs/cg/prompts/complete-2026-10-18/mistral/character-solo-attempt2-blocked.txt"
+        },
+        {
+          "requestId": "a0477925-f790-471b-96b1-ad5def0e6530",
+          "stage": "output",
+          "category": "sexual",
+          "promptFile": "docs/cg/prompts/complete-2026-10-18/mistral/character-solo.txt",
+          "reference": "corrected-project-sprite-2026-10-18",
+          "note": "Entry accepted; full-figure military composition with corrected project sprite produced no deliverable after output refusal."
+        }
+      ],
+      "oldVariantPreserved": true
+    }
+  ],
+  "existingVariantPreserved": true,
+  "referenceEvidence": "docs/cg/mistral-reference-evidence-2026-10-18.json"
+}

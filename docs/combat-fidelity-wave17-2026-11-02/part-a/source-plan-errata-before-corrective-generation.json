@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T05:13:41.874Z",
+  "sourcePlanSha256": "8235936c4a2cb3e5ec9c8505d6dffb649b55333d8d6abac5e605307fd80e567d",
+  "entries": [
+    {
+      "heroId": "rayman_rayman",
+      "generationAlreadyStartedForThisHero": true,
+      "priorRawSourceRetained": true,
+      "reason": "Rayman Legends charged punch is a short-range physical fist attack. The initial projectile interpretation is withdrawn. Its three fist-only release drawings are incomplete body poses and cannot be delivered. Corrective poses must retain the complete limbless torso, shoes and both hands.",
+      "previous": {
+        "effect": "damage",
+        "delivery": "projectile"
+      },
+      "intended": {
+        "effect": "damage",
+        "delivery": "melee",
+        "range": 130
+      },
+      "nativeCorrectionRequired": true
+    },
+    {
+      "heroId": "tail_concerto_waffle",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "A Police Robo bubble captures without HP damage. Explicit live target eligibility is mandatory; one1.25second /1turn crossover duration is declared rather than asserted as original-game timing.",
+      "intended": {
+        "effect": "control",
+        "delivery": "control",
+        "controlKind": "bubble-capture",
+        "nonlethal": true,
+        "requiresExplicitTargetEligibility": true,
+        "duration": 1.25,
+        "tacticsTurns": 1
+      },
+      "runtimeImplementation": "src/game/combat/sourceBubbleCaptureWave17.js"
+    },
+    {
+      "heroId": "beyond_good_evil_jade",
+      "generationAlreadyStartedForThisHero": false,
+      "reason": "Actual official2003 Steam screenshot inspected: green forehead headband, uncovered short black hair, green lipstick and blue-green trousers. No cap or beige trousers.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/research/steam-official-screen-0.jpg",
+      "intended": {
+        "additionalAppearance": "green lipstick; green forehead headband, no cap; blue-green trousers"
+      }
+    }
+  ]
+}

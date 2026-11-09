@@ -1,0 +1,349 @@
+{
+  "attempt": 3,
+  "receipt": {
+    "attempt": 3,
+    "command": "taskset --cpu-list 0,1 npm run build -- --config scripts/viteCodeOnly.config.js",
+    "args": [
+      "taskset",
+      "--cpu-list",
+      "0,1",
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--config",
+      "scripts/viteCodeOnly.config.js"
+    ],
+    "cwd": "/workspace/multiverse-breach",
+    "nodeVersion": "v22.23.4",
+    "nodeExecutable": "/tmp/multiverse-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "nodeOptions": "--max-old-space-size=4096",
+    "startedAt": "2026-11-09T08:36:41.320202+00:00",
+    "finishedAt": "2026-11-09T09:38:34.597779+00:00",
+    "exitCode": 1,
+    "status": "completed",
+    "prebuildBypassed": false,
+    "staticMediaCopied": false,
+    "log": "/tmp/merged-integration-build.log",
+    "childPid": 41637
+  },
+  "logSha256": "2c42cf5a493a0cd1ac7a4b542d5226f839483f381e344b770e9cceb5a22b0241",
+  "lastStage": "test:combat-fidelity",
+  "stagesReached": [
+    "prebuild",
+    "test:discipline",
+    "test:cloud-meadow",
+    "cloud-meadow:check",
+    "check:gamedev-guides",
+    "test:ui-immersion",
+    "test:reaudit",
+    "sprites:availability:check",
+    "test:audit-reliability",
+    "test:audit-followup",
+    "test:audit-combat",
+    "assets:build:audit",
+    "sprites:manifest:check",
+    "test:deployment-inputs",
+    "test:conversation",
+    "test:custom",
+    "test:boosters",
+    "boosters:audit",
+    "test:extension",
+    "test:polish",
+    "test:cg",
+    "cg:manifest:check",
+    "cg:fidelity:audit",
+    "test:melee",
+    "test:stages",
+    "test:noncombat-trials",
+    "melee:sprites:audit",
+    "sprites:provenance:audit",
+    "test:character-png",
+    "sprites:characters:audit",
+    "portals:audit",
+    "portals:prompts",
+    "cosmetics:audit",
+    "test:cosmetics",
+    "rift:audit",
+    "test:rift",
+    "music:audit",
+    "test:campaign",
+    "test:oc-dlc",
+    "test:original-universes",
+    "audit:oc-dlc",
+    "audit:original-universes",
+    "check:progression",
+    "test:audit-tactics",
+    "test:combat-fidelity"
+  ],
+  "suiteSummaries": [
+    {
+      "stage": "test:discipline",
+      "tests": 49,
+      "pass": 49,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:cloud-meadow",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:ui-immersion",
+      "tests": 157,
+      "pass": 157,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:reaudit",
+      "tests": 1048,
+      "pass": 1048,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:audit-reliability",
+      "tests": 105,
+      "pass": 105,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:audit-followup",
+      "tests": 62,
+      "pass": 62,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:audit-combat",
+      "tests": 48,
+      "pass": 48,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:deployment-inputs",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:conversation",
+      "tests": 949,
+      "pass": 949,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:custom",
+      "tests": 42,
+      "pass": 42,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:boosters",
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:extension",
+      "tests": 60,
+      "pass": 60,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:polish",
+      "tests": 54,
+      "pass": 54,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:cg",
+      "tests": 95,
+      "pass": 95,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:melee",
+      "tests": 166,
+      "pass": 166,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:stages",
+      "tests": 100,
+      "pass": 100,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:noncombat-trials",
+      "tests": 74,
+      "pass": 74,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:character-png",
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:cosmetics",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:rift",
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:campaign",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:oc-dlc",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:original-universes",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "check:progression",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:audit-tactics",
+      "tests": 116,
+      "pass": 116,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "stage": "test:combat-fidelity",
+      "tests": 974,
+      "pass": 970,
+      "fail": 4,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "assertionFailures": 4,
+  "processSignals": 0,
+  "bundleReached": false,
+  "prebuildComplete": false,
+  "failures": [
+    {
+      "number": 139,
+      "title": "current Aliens1986 Ripley keeps its exact P0 action and source-compatible native body separately from the frozen W10 kit",
+      "location": "/workspace/multiverse-breach/scripts/combatFidelityWave10.test.mjs:544:1",
+      "signal": null,
+      "details": "# Subtest: current Aliens1986 Ripley keeps its exact P0 action and source-compatible native body separately from the frozen W10 kit\nnot ok 139 - current Aliens1986 Ripley keeps its exact P0 action and source-compatible native body separately from the frozen W10 kit\n  ---\n  duration_ms: 6.691053\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/combatFidelityWave10.test.mjs:544:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    \n    + 'P-5000 Power Loader'\n    - 'Power Loader Smash'\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 'Power Loader Smash'\n  actual: 'P-5000 Power Loader'\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave10.test.mjs:547:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 184,
+      "title": "W13 retains the exact40 identities and separately measures18 additions and22 prior-version revisions",
+      "location": "/workspace/multiverse-breach/scripts/combatFidelityWave13.test.mjs:39:1",
+      "signal": null,
+      "details": "# Subtest: W13 retains the exact40 identities and separately measures18 additions and22 prior-version revisions\nnot ok 184 - W13 retains the exact40 identities and separately measures18 additions and22 prior-version revisions\n  ---\n  duration_ms: 14.426732\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/combatFidelityWave13.test.mjs:39:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    darth_maul\n    + actual - expected\n    \n    + 'double_lightsaber'\n    - 'lightsaber'\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 'lightsaber'\n  actual: 'double_lightsaber'\n  operator: 'strictEqual'\n  stack: |-\n    assertCatalogWeaponEdition (file:///workspace/multiverse-breach/scripts/combatCanonicalEditionFixtures.mjs:602:50)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave13.test.mjs:53:5)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ..."
+    },
+    {
+      "number": 413,
+      "title": "melee/player: Shield Pal persists, refuses stacking and consumes exactly one damaging contact",
+      "location": "/workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:58:3",
+      "signal": null,
+      "details": "# Subtest: melee/player: Shield Pal persists, refuses stacking and consumes exactly one damaging contact\nnot ok 413 - melee/player: Shield Pal persists, refuses stacking and consumes exactly one damaging contact\n  ---\n  duration_ms: 30.377384\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:58:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    0 !== 1\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 1\n  actual: 0\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:73:12)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 418,
+      "title": "melee/enemy: Shield Pal persists, refuses stacking and consumes exactly one damaging contact",
+      "location": "/workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:58:3",
+      "signal": null,
+      "details": "# Subtest: melee/enemy: Shield Pal persists, refuses stacking and consumes exactly one damaging contact\nnot ok 418 - melee/enemy: Shield Pal persists, refuses stacking and consumes exactly one damaging contact\n  ---\n  duration_ms: 15.375004\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:58:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    0 !== 1\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 1\n  actual: 0\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatSourceRuntimeWave16.test.mjs:73:12)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "reviewer": "referentiel_canon",
+  "characterId": "nyra_vale",
+  "status": "corrected-sprite-reviewed-with-source-limitations",
+  "incarnation": "Nyra Vale — Neon Requiem individual current V2 portrait target",
+  "selectedAsset": {
+    "path": "/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png",
+    "sha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+    "selectedInRuntime": true,
+    "independentlyViewedAsWholeSheet": true
+  },
+  "runtimeSelectionEvidence": {
+    "method": "Actual getHeroById/getHeroSpriteSheetSrc invocation and SHA verification on2026-10-20",
+    "oldFilePreserved": true,
+    "oldSha256": "f40fd1b382927de6b269a58863f317573d543f21f00652ba04ab072f9552fe9c"
+  },
+  "observed": [
+    "Final V2 replacement restores long turquoise asymmetric hair, correct left implanted temple, long black coat with cyan/magenta accents, cyan-soled boots and the signature cyberdeck/memory cube.",
+    "Principal independent reviewer inspected all16 frames. This reviewer separately opened the whole sheet and05/06/07/08/10 individually for canonical laterality, with no demonstrated inversion.",
+    "One genuine individual frame10 correction and documented technical assembly/packing are distinguished from the single whole-atlas native."
+  ],
+  "sourceComparison": [
+    {
+      "path": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+      "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+      "viewed": true,
+      "role": "canonical-original-project-portrait",
+      "referencePurpose": "identity"
+    }
+  ],
+  "independentReviewFile": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-independent-review.json",
+  "targetedCounterreview": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-canon-counterreview.json",
+  "auditFile": "docs/audits/nyra-vale-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+  "previousReview": {
+    "schemaVersion": 1,
+    "date": "2026-10-20",
+    "reviewer": "referentiel_canon",
+    "runtimeSelectionEvidence": {
+      "method": "Actual getHeroById/getHeroSpriteSheetSrc invocation on2026-10-20 and SHA verification; both portrait selectors observed separately.",
+      "portrait": "/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+      "productionAudiovisualPortrait": "/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png"
+    },
+    "characterId": "nyra_vale",
+    "incarnation": "Nyra Vale — Neon Requiem individual current V2 portrait target",
+    "selectedAsset": {
+      "path": "/sprites/generated/heroes/neon-requiem/nyra-vale.png",
+      "sha256": "f40fd1b382927de6b269a58863f317573d543f21f00652ba04ab072f9552fe9c",
+      "viewed": true,
+      "independentlyViewed": true,
+      "selectedInRuntime": true
+    },
+    "status": "current-selected-sprite-too-far-from-original-v2-portrait-target-correction-needed",
+    "observed": [
+      "Current runtime atlas uses dark hair with violet streaks, a short dark jacket and purple boot soles; the selected V2 portrait establishes long asymmetric turquoise hair with shaved implanted opposite temple, a long black cyan-edged coat with magenta lining and cyan boot soles.",
+      "Current atlas depicts unarmed fighting poses without the rectangular cyan/magenta cyberdeck or memory-key motif established by the individual V2 portrait and original Neon Requiem lore."
+    ],
+    "sourceComparison": [
+      {
+        "path": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+        "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+        "viewed": true,
+        "role": "canonical-original-project-portrait",
+        "referencePurpose": "identity"
+      }
+    ],
+    "sourceCoverageDecision": {
+      "status": "original-project-v2-identity-qualified-current-atlas-needs-correction",
+      "limitations": [
+        "Internal individual original project portrait, not an external franchise source.",
+        "Far coat fringe and hidden cyberdeck mechanics are not fully established by the portrait; no perfect fidelity certification."
+      ]
+    },
+    "correctionAttempt": {
+      "status": "not-attempted-for-sprite-atlas-in-this-wave",
+      "serviceRefusalForAtlas": false,
+      "outputProduced": false
+    },
+    "canonicalFidelityApproved": false
+  },
+  "canonicalFidelityApproved": false
+}

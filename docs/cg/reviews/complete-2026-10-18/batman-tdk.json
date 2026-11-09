@@ -1,0 +1,195 @@
+{
+  "heroId": "batman_tdk",
+  "reviewedAt": "2026-10-18",
+  "canonicalFidelityApproved": false,
+  "sourceReceipt": "docs/cg/references/batman-tdk-2008/source-receipt.json",
+  "references": [
+    {
+      "id": "batman-tdk-wb2008-18960315",
+      "path": "docs/cg/references/batman-tdk-2008/18960315.jpg",
+      "url": "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960315.jpg",
+      "sourcePage": "https://www.allocine.fr/film/fichefilm-115362/photos/detail/?cmediafile=18960315",
+      "copyright": "Warner Bros.",
+      "sourcePublicationDate": "2008-07-10",
+      "downloadHttpStatus": 200,
+      "sha256": "db8f1ef5a870c520c3b92790ae23d653fad35fd0d11bc1007d9ddc8841fadbe9",
+      "bytes": 33807,
+      "viewed": true,
+      "role": "costume-detail",
+      "limitations": "Cadrage tête–hanches : armure segmentée, cowl, ceinture et proportions du torse. Pieds et arrière du costume non visibles."
+    },
+    {
+      "id": "batman-tdk-wb2008-18960311",
+      "path": "docs/cg/references/batman-tdk-2008/18960311.jpg",
+      "url": "https://fr.web.img3.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960311.jpg",
+      "sourcePage": "https://www.allocine.fr/film/fichefilm-115362/photos/detail/?cmediafile=18960311",
+      "copyright": "Warner Bros.",
+      "sourcePublicationDate": "2008-07-10",
+      "downloadHttpStatus": 200,
+      "sha256": "e7fd0004a048a16c811d39a1f7f9f7ef2bb4e10258402cbe2c32971808245145",
+      "bytes": 46470,
+      "viewed": true,
+      "role": "full-body-film-frame",
+      "limitations": "Corps entier de profil dans une scène de chantier ; cape et pénombre masquent une partie du détail des jambes."
+    },
+    {
+      "id": "batman-tdk-wb2008-18935358",
+      "path": "docs/cg/references/batman-tdk-2008/18935358.jpg",
+      "url": "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18935358.jpg",
+      "sourcePage": "https://www.allocine.fr/film/fichefilm-115362/photos/detail/?cmediafile=18935358",
+      "copyright": "Warner Bros.",
+      "sourcePublicationDate": "2008-05-01",
+      "downloadHttpStatus": 200,
+      "sha256": "27a22660937740b85b7d9a2542f69b7ebbaf7b56b6df77ed8213df5ebcf2f770",
+      "bytes": 26544,
+      "viewed": true,
+      "role": "full-body-film-poster",
+      "limitations": "Affiche officielle 2008 : silhouette entière de dos, très petite et cape couvrante ; sert à la cohérence de Gotham, pas au comptage des plaques."
+    }
+  ],
+  "identityLocks": [
+    "Nouveau Batsuit segmenté2008, pas costume Begins du début du film",
+    "Cowl noir à oreilles fines, mâchoire visible, cou articulé",
+    "Plaques torse/abdomen séparées sur maille noire, ceinture bronze",
+    "Ne pas mélanger Affleck, Pattinson, comics ou costumeBegins"
+  ],
+  "sourceLimitations": [
+    "Détail des bottes et arrière des plaques non résolu en gros plan par les sources retenues ; comparaison partielle, pas certification1:1.",
+    "Arme CG02 fondée sur description du véritable accessoire Nolan et design de la trilogie; bitmap source inaccessible."
+  ],
+  "toolFailures": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "requestId": "96088358-9975-4a25-8aa2-7d9750c5b4f8",
+      "status": "tool-blocked",
+      "errorCode": "moderation_blocked",
+      "moderationStage": "output",
+      "categories": [
+        "other"
+      ]
+    },
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "requestId": "73c22e9e-c32c-4721-ad89-1f2b7eba9a91",
+      "status": "tool-blocked",
+      "errorCode": "moderation_blocked",
+      "moderationStage": "output",
+      "categories": [
+        "other"
+      ]
+    },
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "requestId": "5efcaf66-68f5-412b-aa14-8dc393410c5d",
+      "status": "tool-blocked",
+      "errorCode": "moderation_blocked",
+      "moderationStage": "output",
+      "categories": [
+        "other"
+      ]
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "requestId": "b3795e89-b265-46c5-b9de-9d1d9d461fb0",
+      "status": "tool-blocked",
+      "errorCode": "moderation_blocked",
+      "moderationStage": "output",
+      "categories": [
+        "other"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "cg:the-dark-knight:batman-tdk:weaponSolo:openai-v1",
+      "visualReview": {
+        "status": "needs-source-image-comparison",
+        "canonicalFidelityApproved": false,
+        "notes": [
+          "Objet seul inspecté : silhouette de batarang et décor atelier lisibles.",
+          "Les charnières et le dessin exact doivent être confrontés à un bitmap source ; ne pas présenter cette sortie comme reproduction1:1 de l’accessoire."
+        ],
+        "limitations": [
+          "Détail des bottes et arrière des plaques non résolu en gros plan par les sources retenues ; comparaison partielle, pas certification1:1.",
+          "Arme CG02 fondée sur description du véritable accessoire Nolan et design de la trilogie; bitmap source inaccessible."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/the-dark-knight/batman-tdk/signature-weapon-complete-2026-10-18.png",
+          "sha256": "4221820b1ca5de432f9498e4365a9624eebbf86305158de08fad64caa235dcdf",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3,
+          "bytes": 2267699
+        },
+        "master": {
+          "path": "/cg/the-dark-knight/batman-tdk/signature-weapon-complete-2026-10-18.webp",
+          "sha256": "c5bcfe3830c3caa4570f523f5339e20ac300c7187bf9a56e754b0daeb88cd2e1",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3,
+          "bytes": 705028
+        },
+        "thumbnail": {
+          "path": "/cg/the-dark-knight/batman-tdk/signature-weapon-complete-2026-10-18-thumb.webp",
+          "sha256": "9339fb34bf9e035690ab0097571ea67860ab351a5336c0a428734fd28c5449da",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3,
+          "bytes": 60958
+        }
+      }
+    },
+    {
+      "id": "cg:the-dark-knight:batman-tdk:decorSolo:openai-v1",
+      "visualReview": {
+        "status": "coherent-original-environment-reviewed",
+        "canonicalFidelityApproved": false,
+        "notes": [
+          "Décor inspecté : quai contemporain, ferry, barrières et skyline réaliste sans personnage.",
+          "Composition originale ; ne prétend pas reproduire exactement un plateau ou cadrage du film."
+        ],
+        "limitations": [
+          "Décor imaginé cohérent, pas une reconstitution d’un lieu attesté."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/the-dark-knight/batman-tdk/decor-complete-2026-10-18.png",
+          "sha256": "bebb6fd7eebc08d8c70ce94dccd5b6cf848228497ab10909934345564c1f5659",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3,
+          "bytes": 2915199
+        },
+        "master": {
+          "path": "/cg/the-dark-knight/batman-tdk/decor-complete-2026-10-18.webp",
+          "sha256": "98793f5cfcb5e90345a980f6ac63cb85d573164bae1c3ac76478ebef3dfc2d2b",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3,
+          "bytes": 1066190
+        },
+        "thumbnail": {
+          "path": "/cg/the-dark-knight/batman-tdk/decor-complete-2026-10-18-thumb.webp",
+          "sha256": "13a2349dfb4f0c06995d0bbb8ae8cd43813ddb3fa36dc6c33d7654b28930782b",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3,
+          "bytes": 72854
+        }
+      }
+    }
+  ]
+}

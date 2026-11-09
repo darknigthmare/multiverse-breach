@@ -1,0 +1,208 @@
+{
+  "date": "2026-10-20",
+  "characterId": "kael_venn",
+  "hero": {
+    "id": "kael_venn",
+    "name": "Kael Venn",
+    "cat": "slayer",
+    "color": "#ffb347",
+    "weapon": "minute_blades",
+    "weaponType": "minute_blades",
+    "stats": {
+      "hp": 110,
+      "atk": 15,
+      "def": 5,
+      "spd": 8
+    },
+    "skills": [
+      {
+        "id": "kael_spare_second",
+        "name": {
+          "en": "Spare Second",
+          "fr": "Seconde de rechange"
+        },
+        "desc": {
+          "en": "Inserts a stolen instant before an enemy action.",
+          "fr": "Insère un instant volé avant une action ennemie."
+        },
+        "role": "interrupt"
+      },
+      {
+        "id": "kael_shortcut",
+        "name": {
+          "en": "Unauthorized Shortcut",
+          "fr": "Raccourci non autorisé"
+        },
+        "desc": {
+          "en": "Cuts across the initiative order to strike an exposed target.",
+          "fr": "Traverse l’ordre d’initiative pour frapper une cible exposée."
+        },
+        "role": "mobility"
+      },
+      {
+        "id": "kael_refund",
+        "name": {
+          "en": "Full Refund",
+          "fr": "Remboursement total"
+        },
+        "desc": {
+          "en": "Returns accumulated delay as a chain of rapid attacks.",
+          "fr": "Restitue le retard accumulé sous forme d’une chaîne d’attaques rapides."
+        },
+        "role": "ultimate"
+      }
+    ],
+    "lore": {
+      "en": "A minute smuggler who steals tiny intervals from predatory contracts and gives them to exhausted districts. Kael never carries tomorrow, only enough now to escape.",
+      "fr": "Contrebandier de minutes qui vole de minuscules intervalles aux contrats prédateurs pour les offrir aux quartiers épuisés. Kael ne transporte jamais demain, seulement assez de présent pour s’échapper."
+    },
+    "loreLocalized": {
+      "en": "A minute smuggler who steals tiny intervals from predatory contracts and gives them to exhausted districts. Kael never carries tomorrow, only enough now to escape.",
+      "fr": "Contrebandier de minutes qui vole de minuscules intervalles aux contrats prédateurs pour les offrir aux quartiers épuisés. Kael ne transporte jamais demain, seulement assez de présent pour s’échapper."
+    },
+    "contentPackId": "oc-dlc-borrowed-hours",
+    "contentOrigin": "oc",
+    "originalContent": true,
+    "originalContentNotice": {
+      "en": "Entirely original content created for Multiverse Breach.",
+      "fr": "Contenu entièrement original créé pour Multiverse Breach."
+    },
+    "spriteSource": "/sprites/generated/heroes/meridien-creux/kael-venn.png",
+    "spritePrompt": "Entirely original character for Multiverse Breach, no existing franchise reference. A swift time smuggler in amber-black courier layers, asymmetrical clockwork goggles, coat lined with glowing stolen seconds and twin crescent minute blades. Complete 4 by 4 pixel-art combat sprite sheet: idle, run, attack, hit reactions; consistent silhouette and equipment; isolated on flat chroma green background; no text, no logo, no frame.",
+    "universe": "Méridien Creux",
+    "category": "slayer",
+    "primaryColor": "#ffb347",
+    "secondaryColor": "#ffb347",
+    "weaponColor": "#ffb347",
+    "simple": {
+      "name": "Kael Venn Signature Strike",
+      "type": "melee",
+      "dmg": 1
+    },
+    "secondary": {
+      "name": "Kael Venn Breach Technique",
+      "type": "signature",
+      "cd": 8,
+      "dmg": 2.2
+    },
+    "defense": {
+      "name": "Kael Venn Guard",
+      "type": "shield",
+      "dur": 2,
+      "reduce": 0.75
+    },
+    "special": {
+      "name": "Kael Venn Origin Burst",
+      "type": "origin_aoe",
+      "dmg": 4.5,
+      "color": "#ffb347"
+    }
+  },
+  "rawVisualText": "A swift time smuggler in amber-black courier layers, asymmetrical clockwork goggles, coat lined with glowing stolen seconds and twin crescent minute blades.",
+  "runtimeSelectedSprite": "/sprites/generated/heroes/meridien-creux/kael-venn.png",
+  "worldProfile": {
+    "key": "Méridien Creux",
+    "slug": "meridien-creux",
+    "canonicalName": "Grand Cadran district surrounding the Chronobank and its seized-hour foundry",
+    "referenceUrls": [
+      "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocDlcPacks.js"
+    ],
+    "visualAnchor": "A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates",
+    "priority": "P0",
+    "auditStatus": "ORIGINAL-OC",
+    "generationBlocked": false,
+    "modes": {
+      "Combat": {
+        "assetPath": "/backgrounds/lore-stages/meridien-creux/combat.webp",
+        "camera": "strict-side-view-16-9",
+        "composition": "One continuous flat duel floor, a clear central 1v1 lane, shallow parallax, and tag entry zones outside the center.",
+        "prompt": "Original high-detail 32-bit pixel-art environment for Méridien Creux. Canonical location: Grand Cadran district surrounding the Chronobank and its seized-hour foundry. Visual anchor: A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates. strict side-view 16:9 Combat camera, one continuous flat duel floor, clear central 1v1 lane, shallow parallax, props kept outside the fighters, no characters, logos, readable text or baked UI."
+      },
+      "Melee": {
+        "assetPath": "/backgrounds/lore-stages/meridien-creux/melee.webp",
+        "camera": "strict-side-view-platform-arena",
+        "composition": "Backdrop without baked platforms plus separately textureable platform tops, edges, walls, and readable collision silhouettes.",
+        "prompt": "Original high-detail 32-bit pixel-art environment for Méridien Creux. Canonical location: Grand Cadran district surrounding the Chronobank and its seized-hour foundry. Visual anchor: A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates. strict side-view Melee camera, backdrop without baked platforms, separate platform tops and edges, readable collision silhouettes, traversal gaps, no characters, logos, readable text or baked UI.",
+        "backdropPath": "/backgrounds/lore-stages/meridien-creux/melee-backdrop.webp",
+        "platformTexturePath": "/backgrounds/lore-stages/meridien-creux/melee-platforms.webp"
+      },
+      "RPG": {
+        "assetPath": "/backgrounds/lore-stages/meridien-creux/rpg.webp",
+        "camera": "side-view-2.5d",
+        "composition": "A broad perspective battle floor, open central lane, low foreground, layered depth, and unobstructed party and enemy positions.",
+        "prompt": "Original high-detail 32-bit pixel-art environment for Méridien Creux. Canonical location: Grand Cadran district surrounding the Chronobank and its seized-hour foundry. Visual anchor: A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates. side-view 2.5D RPG camera, broad perspective battle floor, open central lane, low foreground, layered depth, no characters, logos, readable text or baked UI."
+      },
+      "Tactics": {
+        "assetPath": "/backgrounds/lore-stages/meridien-creux/tactics.webp",
+        "camera": "elevated-three-quarter-rectangular-grid",
+        "composition": "An elevated three-quarter 8x6 rectangular grid with readable cover, traversable lanes, and lower rows visually in front of higher rows.",
+        "prompt": "Original high-detail 32-bit pixel-art environment for Méridien Creux. Canonical location: Grand Cadran district surrounding the Chronobank and its seized-hour foundry. Visual anchor: A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates. elevated three-quarter Tactics camera, 8x6 rectangular grid, readable cover and traversable lanes, lower rows visually in front of higher rows, never top-down or diamond-isometric, no characters, logos, readable text or baked UI.",
+        "tileTexturePath": "/backgrounds/lore-stages/meridien-creux/tactics-tiles.webp"
+      }
+    }
+  },
+  "dossier": {
+    "id": 10674,
+    "famille": "arc-personnage",
+    "nom": {
+      "fr": "Arc Personnage - Kael Venn",
+      "en": "Character Arc - Kael Venn"
+    },
+    "univers": [
+      "Méridien Creux"
+    ],
+    "mode": "Smash",
+    "boss": "Duelliste Sans-Auteur - Méridien Creux",
+    "personnage": "Kael Venn",
+    "ancragesVisuels": [
+      "Grand Cadran district surrounding the Chronobank and its seized-hour foundry",
+      "A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates",
+      "Cité où le temps est frappé, taxé et saisi, du Marché des minutes au Palais de l'Échéance et au Cadran du demain hypothéqué.",
+      "architecture: Ville-horloge verticale à quartiers vieillissant à des rythmes différents, marché d'intervalles, palais de traitement des vies et fabrique centrale à grand cadran mobile.",
+      "palette: Brun-noir #241709 et #050301, ambre #ffb347, secondes de contrebande cyan #67f0ff, ivoire de registre et métal argenté.",
+      "props: Registres prédateurs, bocaux de souffle, aiguilles mobiles, minute de contrebande dans une montre fendue, suture chronale et bouclier d'arriérés.",
+      "bossSilhouette: L'Horloge qui Dévore Demain est une tour-horloge vivante colossale: mâchoire circulaire faite de marques horaires, cœur-fournaise, aiguilles grandes comme des quartiers, armure ambre-noir et flux de possibles cyan à naître."
+    ],
+    "referenceUrls": [
+      "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocDlcPacks.js"
+    ],
+    "bossVisualAnchor": null,
+    "bossReferenceUrls": [],
+    "politiqueReferences": "authoritative-public",
+    "referencesLocalesOpenAI": [
+      "/sprites/generated/heroes/meridien-creux/kael-venn.png"
+    ],
+    "candidatsReferencesLocalesAudit": [
+      "/sprites/generated/heroes/meridien-creux/kael-venn.png"
+    ],
+    "cheminCibleDedie": "/images/rift-dossiers/openai/arc-personnage/stage-10674-character-arc-kael-venn-v1.webp",
+    "promptOpenAI": "OpenAI image request: create one original 32-bit pixel-art rift-dossier thumbnail for the fan-made game Multiverse Breach. Operation: \"Character Arc - Kael Venn\" (dossier FR: \"Arc Personnage - Kael Venn\"). Canonical Thread or universe: Méridien Creux. Gameplay mode: Smash. Final threat or boss: Duelliste Sans-Auteur - Méridien Creux. Character focus: Kael Venn. Approved local character reference supplied: use the approved project sprite for character identity and costume cues only; do not treat it as authority for the scene, anatomy, pose, lighting, or environment. Never copy the supplied sprite-sheet layout, repeated poses, transparent or black background, pixel placement, or framing. Available semantic character descriptors from project canon: named identity: Kael Venn | canonical home universe: Méridien Creux | combat role or archetype: slayer | signature equipment archetype: minute_blades | project primary palette cue: #ffb347 | project secondary palette cue: #ffb347 | signature techniques or posture cues: Kael Venn Signature Strike, Kael Venn Breach Technique, Kael Venn Guard, Kael Venn Origin Burst. Verified visual anchors researched before generation: Grand Cadran district surrounding the Chronobank and its seized-hour foundry | A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates | Cité où le temps est frappé, taxé et saisi, du Marché des minutes au Palais de l'Échéance et au Cadran du demain hypothéqué. | architecture: Ville-horloge verticale à quartiers vieillissant à des rythmes différents, marché d'intervalles, palais de traitement des vies et fabrique centrale à grand cadran mobile. | palette: Brun-noir #241709 et #050301, ambre #ffb347, secondes de contrebande cyan #67f0ff, ivoire de registre et métal argenté. | props: Registres prédateurs, bocaux de souffle, aiguilles mobiles, minute de contrebande dans une montre fendue, suture chronale et bouclier d'arriérés. | bossSilhouette: L'Horloge qui Dévore Demain est une tour-horloge vivante colossale: mâchoire circulaire faite de marques horaires, cœur-fournaise, aiguilles grandes comme des quartiers, armure ambre-noir et flux de possibles cyan à naître.. Build a unique scene around recognizable environmental motifs and the threat defining silhouette, preserving canonical visual logic through an original fan-art composition instead of copying official key art. Use a strict side-view platform-combat camera with readable floor edges, traversal gaps, and shallow parallax. Keep the foreground, middle ground, breach light, and combat space immediately readable at miniature size. No readable text, logos, watermark, baked UI, decorative frame, copied poster composition, photorealism, or real-person likeness. Landscape 16:9; the generated source will be installed as an optimized 640x360 RGB WebP thumbnail."
+  },
+  "authorityCheck": {
+    "production": null,
+    "portraitV2Reference": null,
+    "originalManifestMentionsKael": false,
+    "originalManifestMentionsMeridien": false,
+    "v2CandidateFilesFound": [],
+    "searchedDirectory": "public/images/oc-worlds/v2",
+    "searchIncludedIgnoredFiles": true
+  },
+  "sourceFiles": [
+    {
+      "path": "src/game/ocDlcPacks.js",
+      "sha256": "4fa362764fd8a8feafa47cdda0985b3cbb8a2d18520e70e8f4772958ab67a69e"
+    },
+    {
+      "path": "src/game/stageLoreProfiles.js",
+      "sha256": "61dc4c53de49cd9b7f4f66587c0cd2a9df916fdd05e10ec7d41eb6ec1018f282"
+    },
+    {
+      "path": "src/game/originalUniversesManifest.json",
+      "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234"
+    },
+    {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "0b81d111428cb397f205a24af5619dbbce4a42011cccf8f37b975fb4709e343c"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { resolveCombatAbility } from '../src/game/combatIdentity.js';
+import { historicalWave10Actor } from './combatSourceVersionFixturesWave10.mjs';
 import { segmentAtlas, normalizeRow } from './buildCombatEntityAssets.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -198,7 +199,7 @@ export async function buildNativeWave10PartC({ base = false, check = false } = {
     }
     for (const [index, entry] of registry.entries.entries()) {
       assert.equal(entry.universe, HEROES_DB.find(hero => hero.id === entry.heroId).universe);
-      assert.equal(entry.abilityName, resolveCombatAbility(HEROES_DB.find(hero => hero.id === entry.heroId), base ? 'simple' : 'special').name);
+      assert.equal(entry.abilityName, resolveCombatAbility(historicalWave10Actor(HEROES_DB.find(hero => hero.id === entry.heroId)), base ? 'simple' : 'special').name);
       if (!base) assert.equal(entry.abilityName, SUPER_NAMES[index]);
       const bytes = await read(`public${entry.sheet}`); assert.equal(hash(bytes), entry.sha256);
       const review = await reviewPixels(bytes, labels), key = base ? 'stateReviews' : 'phaseReviews';
@@ -236,7 +237,7 @@ export async function buildNativeWave10PartC({ base = false, check = false } = {
   }
   const entries = [], sources = [];
   for (const [index, record] of records.entries()) {
-    const hero = HEROES_DB.find(value => value.id === record.heroId); assert.equal(hero?.universe, record.universe);
+    const hero = historicalWave10Actor(HEROES_DB.find(value => value.id === record.heroId)); assert.equal(hero?.universe, record.universe);
     const ability = resolveCombatAbility(hero, base ? 'simple' : 'special'); if (!base) assert.equal(ability.name, SUPER_NAMES[index]);
     const nativeSources = await sourcesFor(record, prefix); sources.push(...nativeSources);
     const atlases = new Map(), composites = [], rows = [];

@@ -12,6 +12,7 @@ import { WAVE_13_PRESENTATION_DEFINITIONS } from './presentationCatalogWave13.js
 import { WAVE_14_PRESENTATION_DEFINITIONS } from './presentationCatalogWave14.js';
 import { WAVE_15_PRESENTATION_DEFINITIONS } from './presentationCatalogWave15.js';
 import { WAVE_16_PRESENTATION_DEFINITIONS } from './presentationCatalogWave16.js';
+import { WAVE_17_PRESENTATION_DEFINITIONS } from './presentationCatalogWave17.js';
 import { getCharacterAnimationFrame } from './characterAnimationCatalog.js';
 
 export const PRESENTATION_PHASES = Object.freeze(['intro', 'outro', 'fatality', 'victory', 'defeat', 'roundVictory', 'roundDefeat']);
@@ -30,6 +31,7 @@ const beat = (at, state, frame, x = 0, y = 0, scale = 1, opacity = 1) => ({ at, 
 // change HP, emit gameplay events, or claim to be source-game cinematics.
 const motions = {
   nativeWave15Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
+  nativeWave17Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave16Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave14Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
   nativeWave13Scene: [beat(0, 'idle', 0), beat(0.34, 'idle', 1), beat(0.67, 'idle', 2), beat(1, 'idle', 3)],
@@ -150,6 +152,7 @@ export const CHARACTER_PRESENTATIONS = freeze({
   ...Object.fromEntries(WAVE_13_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_14_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_15_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
+  ...Object.fromEntries(WAVE_17_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
   ...Object.fromEntries(WAVE_16_PRESENTATION_DEFINITIONS.map(args => [args[0], define(...args)])),
 });
 

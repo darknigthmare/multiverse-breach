@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-25",
+  "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+  "reviewer": "/root/wave9_coordination",
+  "scope": "Five old then-selected atlases personally opened and compared with their five actual currently selected internal V2 portraits before wave9 runtime integration. Findings bind only old bitmap paths and hashes, never future corrected selections.",
+  "baselineRuntimeSnapshot": {
+    "path": ".tmp/cg-wave9-2026-10-25/runtime-baseline-before-integration.json",
+    "sha256": "eeaf5c54f4e1a077ce0a60605e861db3d5242237b847de168c415410feec78d5"
+  },
+  "internalOriginalAuthorities": 5,
+  "newExternalIdentitySources": 0,
+  "referenceCopiesCountAsNewIndependentSource": false,
+  "independentFromFiveNewAtlasAndCgProducers": true,
+  "newArtworkViewedByThisReview": false,
+  "visualInspectionPerformed": {
+    "currentInternalV2Portraits": 5,
+    "oldSelectedAtlases": 5,
+    "oldRuntimeContextBindingsChecked": 25
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "doros_bronzehand",
+      "incarnation": "Aegea: War of the Moirai — Doros Main-de-Bronze current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "doros_bronzehand",
+        "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand.png",
+        "sha256": "509dcbb953e17982468abae71bf7acdd4827f7eecba6019708212400dc65c36f",
+        "bytes": 922091,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-long-leather-apron-teal-drape-and-right-hammer",
+      "observed": [
+        "L’ancien atlas représente un homme barbu aux cheveux sombres en cuirasse bronze, jupe blanche courte bordée de bleu et d’or, jambières bronze et mains vides dans les seize cellules.",
+        "Le portrait V2 sélectionné montre une barbe fournie, les cheveux bruns attachés, un long tablier de cuir brun avec sangles et outils, une grande étoffe sarcelle sur l’épaule anatomique gauche et des sandales avec protections de jambes.",
+        "La main anatomique droite tient le long marteau à grosse tête bronze sombre marquée de cyan. La main anatomique gauche repose sur la tête d’un automate bronze distinct, placé à côté du personnage ; les doigts humains restent visibles.",
+        "Le marteau entier, le volume du tablier long et l’étoffe sarcelle ne sont pas restitués par les poings nus, la cuirasse lisse et la courte jupe blanche de l’ancien atlas. L’automate distinct ne devient ni un bras du personnage ni une anatomie de substitution."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+          "sha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "La source n’établit pas les mécanismes internes du marteau ou le revers des sangles ; elle ne montre pas un corps humain remplacé par l’automate voisin.",
+          "L’automate de fond est une entité distincte et n’ajoute pas une nouvelle autorité d’identité pour Doros ; les parties de son propre corps hors champ ne sont pas inventées comme source certifiée.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave9_coordination"
+      ],
+      "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "lin_yue",
+      "incarnation": "Mandate of Nine Heavens — Lin Yue current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "lin_yue",
+        "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue.png",
+        "sha256": "dd58717bbe7684e7090f2559846e86e0e1508b88e2f5e9994c12b085d77a0c6b",
+        "bytes": 1081676,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-white-robes-and-missing-right-brush-red-talismans",
+      "observed": [
+        "L’ancien atlas montre une longue queue de cheveux noirs et une tenue majoritairement blanche et bleu clair avec ceinture bleue et dorée ; les mains sont vides et les poses sont des gestes de combat génériques.",
+        "La source V2 montre de longs vêtements bleu nuit superposés à l’ivoire, de grandes manches et panneaux brodés de constellations dorées, des liens et rubans rouges, une coiffure noire relevée et un ornement de cheveux doré.",
+        "La main anatomique droite tient un grand pinceau à manche rouge et ferrure dorée, à longues soies claires. La main anatomique gauche ouverte commande des talismans rouges et dorés ; une forme de dragon d’eau cyan séparée accompagne la composition.",
+        "La palette, les grands pans sombres, les longs rubans rouges et le pinceau entier sont des repères absents du précédent atlas blanc et bleu clair. Ni les papiers flottants ni le dragon ne sont des bras humains supplémentaires."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/mandate_nine_heavens/heroes/lin_yue.png",
+          "sha256": "34827d3b99c9580eb1d7571a4f824ac40dcdf11f7b9f68d2b7720fae4a25ca28",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "Le visage stylisé et le nom ne prouvent aucun âge précis ; les scènes restent familiales, couvertes et non romantiques.",
+          "Les soies, rubans et effets doivent rester entiers ; le petit tracé des talismans et les faces cachées de la tenue ou du pinceau ne sont pas des détails certifiés.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave9_coordination"
+      ],
+      "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "incarnation": "Nine Realms: Last Twilight — Eira Hrafnsdóttir current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "eira_hrafnsdottir",
+        "path": "/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir.png",
+        "sha256": "5553b559453cb0804bae038181e76bcc014e883d8bda0cf37260141d452846ab",
+        "bytes": 1021864,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "missing-right-axe-left-round-blue-shield-and-long-torn-drape",
+      "observed": [
+        "L’ancien atlas montre une guerrière aux cheveux tressés chauds, épaules bordées de fourrure, tunique bleue courte, pantalon sombre, bottes et mains vides ; aucune cellule ne porte la hache ou le bouclier.",
+        "La V2 sélectionnée présente de longues tresses blondes, une cape ou étoffe bleue sombre aux longs pans déchirés et bords de fourrure, une armure sombre, des ceintures de cuir et de lourdes bottes.",
+        "La main anatomique droite tient une grande hache de fer à long manche ; le bras anatomique gauche porte le grand bouclier rond en bois bleu usé avec bord riveté et bosse de métal sombre.",
+        "Le bouclier impose un volume rond majeur et la hache un long contour asymétrique, tous deux absents des poings nus de l’ancien atlas. Les pans longs et déchiquetés de la source ne se réduisent pas à la tunique courte précédente."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/nine_realms_last_twilight/heroes/eira_hrafnsdottir.png",
+          "sha256": "e599c66a39783309f3aaabe608b51e3e56fdaa817485e274d8305607bffed5ab",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "La hache, le bouclier bleu rond et les longs tissus sont visibles ; leur revers et les motifs minuscules masqués ne sont pas entièrement établis.",
+          "Aucun âge chiffré ni nom de personnage tiers n’est déduit de la seule apparence de la guerrière.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave9_coordination"
+      ],
+      "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "killa_mayu",
+      "incarnation": "Tawantinsuyu: The Split Sun — Killa Mayu current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "killa_mayu",
+        "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/killa-mayu.png",
+        "sha256": "5d55cd9204b866996d80f66e5d19604dc0825a65e23a4b96a2447561cf130694",
+        "bytes": 1106971,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-crescent-crown-white-costume-and-missing-sling-knotted-cords",
+      "observed": [
+        "L’ancien atlas présente une silhouette à longue tresse noire, couronne à croissant doré, robe blanche et rouge courte, bijoux dorés, cape rouge et mains vides.",
+        "La source V2 montre la physionomie précise d’un coureur à peau brune, cheveux noirs attachés, bandeau tissé rouge et ocre, tunique rouge sombre sur short sombre et grande étoffe ocre, violette et dorée, avec sandales à liens.",
+        "La main anatomique droite tient une fronde souple en boucle. La main anatomique gauche tient un petit support rectangulaire avec de longs faisceaux de cordons noués clairs et colorés, distincts des sangles du vêtement.",
+        "La couronne à croissant et la robe blanche du précédent atlas ne correspondent pas au bandeau, à la tunique et aux proportions du portrait actuel. Les deux équipements et le volume de l’étoffe doivent suivre cette référence sélectionnée."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/killa_mayu.png",
+          "sha256": "46f9c35b6adad34f8d22c82318072bbb400718520a1b7de96de9de346cff1c09",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "L’apparence et les proportions du portrait restent la cible ; aucun âge adulte n’est déduit du rôle de coureur ni d’une convention culturelle externe.",
+          "Le faisceau de nœuds est décrit par ses formes réellement visibles ; ni le texte historique des nœuds, ni des mécanismes ou accessoires supplémentaires ne sont certifiés.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave9_coordination"
+      ],
+      "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "incarnation": "Yomi no Kage — Aoi Mikazuki current selected individual V2 portrait, original project canon2026",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "findingKind": "historical-old-selected-baseline-only",
+      "selectedAsset": {
+        "characterId": "aoi_mikazuki",
+        "path": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki.png",
+        "sha256": "453b4cf5eb102c4c0fc4f6e9e7fda32d9d1357592a21de12c4116f84d4892ff8",
+        "bytes": 817057,
+        "viewed": true,
+        "independentlyViewed": true,
+        "selectedAtReviewTime": true,
+        "baselineContexts": [
+          "rpg",
+          "tactics",
+          "melee",
+          "fps",
+          "kart"
+        ]
+      },
+      "inspection": "old-selected-four-by-four-sheet-and-current-selected-individual-V2-portrait-personally-viewed",
+      "category": "divergent-short-school-uniform-instead-of-long-burgundy-kimono-and-cyan-katana",
+      "observed": [
+        "L’ancien atlas montre des cheveux bleu nuit attachés haut et un uniforme scolaire marin court à jupe sombre, foulard rouge et chaussettes hautes ; toutes les mains sont vides.",
+        "La V2 sélectionnée montre de longs cheveux noirs relevés avec ornements rouges et dorés, un kimono bordeaux à grandes manches et pans longs, une superposition ivoire et noire, des attaches, chaînettes et motifs dorés, ainsi que des bottes sombres.",
+        "La main anatomique droite tient une longue lame de katana cyan avec poignée et garde sombres ornées d’or. La main anatomique gauche ouverte commande un effet cyan ; des rouleaux ou talismans fermés sont des objets séparés dans la scène.",
+        "Le long kimono, le visage et la coiffure retenus, les ornements et le katana entier divergent de l’ancien uniforme scolaire court sans arme. Le nom partagé n’autorise pas à réutiliser cette ancienne tenue comme l’autorité du nouveau costume."
+      ],
+      "sourceComparison": [
+        {
+          "path": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+          "sha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+          "role": "canonical-original-project-portrait",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "independentlyViewed": true,
+          "canonicalProjectReference": true,
+          "authority": "internal-original-project-current-V2-not-external-franchise-source",
+          "sourceEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "internal-selected-V2-visually-qualified-old-selected-atlas-needs-source-correction",
+        "limitations": [
+          "La seule autorité d’identité est le portrait individuel V2 interne original du projet ; une copie ou un usage d’équipement ne devient pas une nouvelle source indépendante.",
+          "L’ancien uniforme scolaire n’établit pas l’âge du nouveau portrait ; aucune majorité n’est inventée et les variantes restent familiales et sans romance.",
+          "Les petits ornements, la face cachée de la garde et l’intérieur des rouleaux ne sont pas entièrement définis par cette unique vue ; les effets cyan ne changent pas le nombre de membres humains.",
+          "Le constat concerne exclusivement le chemin et le SHA de l’ancien atlas avant correction ; aucune nouvelle sélection ni nouvelle image n’est jugée ici."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "baseline-only-new-artwork-not-reviewed-in-this-finding",
+        "serviceRefusalForAtlas": false,
+        "generationAttemptedByThisBaselineInspection": false
+      },
+      "proposedAction": "Preserve this exact old bitmap unchanged as an accessible variant. Review genuinely redrawn artwork separately against the selected source and all sixteen poses before root selects it.",
+      "comparisonEvidenceFile": "docs/cg/reviews/wave9-2026-10-25/selected-roster-visual-priorities.json",
+      "comparisonReviewers": [
+        "/root/wave9_coordination"
+      ],
+      "reviewedAt": "2026-10-25T06:23:19.105210+00:00",
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "newArtworkViewedByThisFinding": false
+    }
+  ]
+}

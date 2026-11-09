@@ -1,0 +1,268 @@
+{
+  "passed": false,
+  "preliminary": true,
+  "startedAt": "2026-11-02T06:28:35.189Z",
+  "commands": [
+    {
+      "id": "core",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-browser.mjs"
+      ],
+      "startedAt": "2026-11-02T06:28:35.426Z",
+      "finishedAt": "2026-11-02T06:28:44.717Z",
+      "processId": 28192,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-core.log",
+      "logSha256": "6720a585683cb9d0ffdb22fa43b395988c3441da97e570f21f02eaab3460548d",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:28:44.566Z"
+    },
+    {
+      "id": "physical-ledge",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-browser.mjs"
+      ],
+      "startedAt": "2026-11-02T06:28:44.719Z",
+      "finishedAt": "2026-11-02T06:28:51.369Z",
+      "processId": 28378,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-physical-ledge.log",
+      "logSha256": "23a690be5a7ad71e2cc0bb8c2f466a9699419fe73c3355cf2d9fc94f198e1b40",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:28:51.219Z"
+    },
+    {
+      "id": "movement-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "movement",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:28:51.371Z",
+      "finishedAt": "2026-11-02T06:29:00.553Z",
+      "processId": 28525,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-movement-player.log",
+      "logSha256": "7d078d4537a39846480ce508ecffb7791722d406fa82f7fba9ef73f870c8e5ed",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:00.395Z"
+    },
+    {
+      "id": "movement-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "movement",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:29:00.555Z",
+      "finishedAt": "2026-11-02T06:29:10.088Z",
+      "processId": 28689,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-movement-cpu.log",
+      "logSha256": "508c9d9fdc85a474da63595bfdbc26d513d89f5cc6966531b378f5021c00b11e",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:09.926Z"
+    },
+    {
+      "id": "attack-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "attack",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:29:10.090Z",
+      "finishedAt": "2026-11-02T06:29:18.682Z",
+      "processId": 28851,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-attack-player.log",
+      "logSha256": "f9079d07ee016be98e52b31fbc4c56871baf1e7194369b67d0805121467be00b",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:18.512Z"
+    },
+    {
+      "id": "attack-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "attack",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:29:18.684Z",
+      "finishedAt": "2026-11-02T06:29:27.543Z",
+      "processId": 29001,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-attack-cpu.log",
+      "logSha256": "7c3c073886705f8bfe83e355e0a630dce30fc68f7930d9cf98704af1cdf574e3",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:27.388Z"
+    },
+    {
+      "id": "guard-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "guard",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:29:27.544Z",
+      "finishedAt": "2026-11-02T06:29:36.183Z",
+      "processId": 29166,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-guard-player.log",
+      "logSha256": "06d7b8d560906b75d8ef804fa538f10bf043b6d4c39380fea14794d063b1da3a",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:36.020Z"
+    },
+    {
+      "id": "guard-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "guard",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:29:36.186Z",
+      "finishedAt": "2026-11-02T06:29:45.170Z",
+      "processId": 29319,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-guard-cpu.log",
+      "logSha256": "0e0cdb66abc336648cfb085bb5a00a1ea2e26439249d7adc9d9dd4847ca1fcf4",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:45.002Z"
+    },
+    {
+      "id": "charge-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "charge",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:29:45.174Z",
+      "finishedAt": "2026-11-02T06:29:55.067Z",
+      "processId": 29469,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-charge-player.log",
+      "logSha256": "8eb056d093f0dd156f4d7bc0bc8869f536d9387f6ca1e97991c1eb7b946284bd",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:29:54.902Z"
+    },
+    {
+      "id": "charge-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "charge",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:29:55.070Z",
+      "finishedAt": "2026-11-02T06:30:04.897Z",
+      "processId": 29667,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-charge-cpu.log",
+      "logSha256": "db54a0063013cdfc089219ba618597e99c3b6feec44b1cbdcbb6d433bd3e292b",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:30:04.720Z"
+    },
+    {
+      "id": "photo-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "photo",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:30:04.899Z",
+      "finishedAt": "2026-11-02T06:30:13.866Z",
+      "processId": 29832,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-photo-player.log",
+      "logSha256": "cf2afdbc5b9034927a96205d3991e5dbed6c87f0f379983ada9fb5700d569d54",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:30:13.706Z"
+    },
+    {
+      "id": "photo-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "photo",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:30:13.869Z",
+      "finishedAt": "2026-11-02T06:30:22.529Z",
+      "processId": 29994,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-photo-cpu.log",
+      "logSha256": "238f6d20953878344be39d1f2f4a53e224ccf64b9aabfb260fa9021bf4ef5cc6",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:30:22.353Z"
+    },
+    {
+      "id": "gyrodisk-player",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "gyrodisk",
+        "player"
+      ],
+      "startedAt": "2026-11-02T06:30:22.533Z",
+      "finishedAt": "2026-11-02T06:30:31.764Z",
+      "processId": 30146,
+      "exitCode": 0,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-gyrodisk-player.log",
+      "logSha256": "16f9e85c3d72a0118543d26b4e52583f2acf3543665ff66f352a096bf7c1c896",
+      "receiptOrigin": "node-child-process-close-event",
+      "browserClosedAt": "2026-11-02T06:30:31.591Z"
+    },
+    {
+      "id": "gyrodisk-cpu",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs",
+        "gyrodisk",
+        "cpu"
+      ],
+      "startedAt": "2026-11-02T06:30:31.766Z",
+      "finishedAt": "2026-11-02T06:30:41.146Z",
+      "processId": 30391,
+      "exitCode": 1,
+      "signal": null,
+      "spawnError": null,
+      "log": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/preliminary-20261102062835189/jade-gyrodisk-cpu.log",
+      "logSha256": "2bcf5e715fa581dad8a372f17597cf62004ab4aa144241a6c7fb28823d481cf7",
+      "receiptOrigin": "node-child-process-close-event"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "preliminary": false,
+  "domain": "canonical-npc-rpg-smash",
+  "reviewedAt": "2026-11-02T09:09:10.712167+00:00",
+  "report": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-result.json",
+    "sha256": "c7e02117e87e14ae0ab95e741af0562e774b0ac959e4c8644db01004db3f573a",
+    "bytes": 476632
+  },
+  "actualCapturesInspected": 8,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-captured.png",
+      "sha256": "a7f8554aee148f19a9eebe5d01f239af14c6c29576ece883c9aebc4fbe2a7080",
+      "bytes": 610524,
+      "inspectedAt": "2026-11-02T09:07:53.850Z",
+      "observation": "RPG joueur : le Police Robo à gauche capture le chaton à droite dans une bulle, les deux corps restent sur la même ligne de sol.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-released.png",
+      "sha256": "80bc6a75e32a2421b2364223ec900e503c9d0d09d3f1d584ece3cd74a7fd5ff7",
+      "bytes": 610504,
+      "inspectedAt": "2026-11-02T09:07:53.850Z",
+      "observation": "RPG joueur : le dessin de sortie du chaton reste au sol avec un bref contour de bulle ; les deux barres et les deux camps restent distincts.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-captured.png",
+      "sha256": "a387e32ef2212b1ea4d60ba063c490daac8b1bb4bdf7f3d7fec0d0f06958ac72",
+      "bytes": 609487,
+      "inspectedAt": "2026-11-02T09:07:53.850Z",
+      "observation": "RPG ennemi : le chaton ciblé à gauche garde son identité et sa barre verte, le Police Robo déclencheur demeure à droite.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-released.png",
+      "sha256": "9fafd775a94578e3402d217019cc4d5cd599df7488dbfc6fc67fd5ba220e415d",
+      "bytes": 609011,
+      "inspectedAt": "2026-11-02T09:07:53.850Z",
+      "observation": "RPG ennemi : la pose de sortie du chaton à gauche conserve un bref contour natif de bulle, sans déplacement vers l'autre camp.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-captured.png",
+      "sha256": "f6b7dcfda3d1837c9afb9f0cb64385043eb379f0f4b556bef1c5e2133bbebff2",
+      "bytes": 536245,
+      "inspectedAt": "2026-11-02T09:08:04.641Z",
+      "observation": "Smash joueur : le Police Robo à gauche et le chaton capturé à droite restent sur la plateforme basse ; bulle lisible autour du chaton.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-released.png",
+      "sha256": "8ca81cdc097cc1b4a7c9d9528a0b4c23b71546433944e1246f5f30ae218e64d0",
+      "bytes": 528964,
+      "inspectedAt": "2026-11-02T09:08:04.641Z",
+      "observation": "Smash joueur : la pose de libération montre le contour lumineux qui s'ouvre au-dessus du chaton ; ses pieds restent sur la plateforme.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-captured.png",
+      "sha256": "6d9edf2345e685736e0feb1e8ad835019fdb5853b7d2fedf68b33cb681400434",
+      "bytes": 536192,
+      "inspectedAt": "2026-11-02T09:08:04.641Z",
+      "observation": "Smash ennemi : la bulle entoure le chaton à gauche du Police Robo, sur la même plateforme, sans transfert de côté visible.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-released.png",
+      "sha256": "a8049004b3dfd1e6af90501c3ba7ea997f96c30bbc62d1593d37bb76cb271cfb",
+      "bytes": 528741,
+      "inspectedAt": "2026-11-02T09:08:04.641Z",
+      "observation": "Smash ennemi : le chaton libéré conserve sa position au sol à gauche ; la bulle devient un halo de sortie natif, sans éjection verticale.",
+      "inspected": true,
+      "inspectionMethod": "view_image"
+    }
+  ],
+  "productionFreeze": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/production-freeze.json",
+    "sha256": "df8784285d2b1aaf509788321087131c3a6ff1538253636f24f65aaf1cc939b8",
+    "bytes": 3198113
+  },
+  "productionInputsStableDuringRun": true,
+  "observedProcessLog": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-browser.log",
+    "sha256": "f9a557598b09d98e58119c3b2ed6d4735056c1b5e294b15d1e01543b3cdbda86",
+    "bytes": 114
+  },
+  "source1to1Verified": false,
+  "scope": "Every actual final browser capture was personally opened with view_image after its browser closed. No contact sheet, substituted artwork or inferred image inspection is counted. Native generated artwork and engine timing remain declared adaptations."
+}

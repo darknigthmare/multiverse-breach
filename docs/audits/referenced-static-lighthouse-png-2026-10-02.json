@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "scope": "One explicitly static original-character PNG; animation remains pending.",
+  "policy": {
+    "canonicalFidelityApproved": false,
+    "privatePromptsAndIdentifiersPublished": false
+  },
+  "entries": [
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "drowned_testament:le_phare_qui_regarde",
+      "name": "Le Phare qui Regarde",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "52331f8ec72a8d187fb64cae61e45ea93ec3e1a18f767c4f990553ec6080a43b",
+        "bytes": 2086804,
+        "width": 1254,
+        "height": 1254
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/drowned_testament/threats/le_phare_qui_regarde.png",
+        "sha256": "5dbdfff93b2b74010f3b7f1f492df743b7a81eaac998d51b2337a6d9dcb6b415"
+      },
+      "image": {
+        "sha256": "b807f0f9bafde8cdf20c67fbb660eac6e940ee4bb3931e8743a16054947ed88c",
+        "bytes": 1516550,
+        "width": 1024,
+        "height": 1024,
+        "format": "png",
+        "channels": 4
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with transparent padding",
+        "padding": 24,
+        "sourceGuard": 13,
+        "outputGuard": 34,
+        "sourceVisiblePixels": 703270,
+        "visiblePixels": 425904,
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "b90f23596760fc17f84c19d41adbee42aad04438720679efe5791a2ab634a33a",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "peripheralEyes": 6,
+        "towerEyes": 4,
+        "canonicalFidelityApproved": false,
+        "notes": "Four tower eyes and six satellite eyes verified independently against the original portrait. Saturation, beam size and texture differ; one static image, animations pending."
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

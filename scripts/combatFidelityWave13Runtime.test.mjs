@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { before, after, afterEach, test } from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createServer } from 'vite';
+import { historicalWave13Actor, CANONICAL_BASE_EDITIONS, assertBaseSpriteEdition } from './combatCanonicalEditionFixtures.mjs';
 
 // Independent engine tests. Actual body PNG/crop, projectile flight and browser
 // provenance checks live in the new W13 browser harness, not in this SSR proof.
@@ -143,13 +144,25 @@ function recordDraw(draw) {
 const recordEnemyDraw = (actor, animTime = 900) => recordDraw(context => renderer.drawPixelEnemy(context, 300, 250, actor, animTime, -1, 68));
 
 test('opposing heroes draw their dedicated native super source cell before any monster or base sheet', () => {
-  const actor = { ...hero('ripley'), id: 'enemy:custom:ripley', sourceHeroId: 'ripley', state: 'special',
+  const frozen = plan.heroes.find(entry => entry.hero.id === 'ripley');
+  const actor = { ...historicalWave13Actor(hero('ripley'), frozen.hero, frozen.source), id: 'enemy:custom:ripley', sourceHeroId: 'ripley', state: 'special',
     presentationPhase: 'super', presentationProgress: 0.6, presentationImpactProgress: 0.41 };
   const before = structuredClone(actor), frame = getFrame(actor); assert.ok(frame);
   const calls = recordEnemyDraw(actor), draws = calls.filter(call => call[0] === 'drawImage');
   assert.equal(draws.length, 1); assert.equal(draws[0][1].src, frame.asset.sheet);
   assert.deepEqual(draws[0].slice(2, 6), [512, 7 * 256, 256, 256]);
   assert.ok(calls.some(call => call[0] === 'scale' && call[1] === -1));
+  assert.deepEqual(actor, before);
+});
+
+test('current opposing Nostromo1979 Ripley draws its pinned canonical body and never borrows the W13 Aliens1986 cell', () => {
+  const current = hero('ripley'), edition = CANONICAL_BASE_EDITIONS.ripley;
+  const actor = { ...current, id: 'enemy:custom:ripley', sourceHeroId: 'ripley', state: 'special',
+    presentationPhase: 'super', presentationProgress: 0.6, presentationImpactProgress: 0.41 };
+  const before = structuredClone(actor), draws = recordEnemyDraw(actor).filter(call => call[0] === 'drawImage');
+  assert.equal(current.incarnation, 'Alien (1979) - Nostromo / Narcissus');
+  assert.equal(getFrame(actor), null); assert.equal(draws.length, 1);
+  assertBaseSpriteEdition(current, edition.historicalAtlases[0], draws[0][1].src);
   assert.deepEqual(actor, before);
 });
 

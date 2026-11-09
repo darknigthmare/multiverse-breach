@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-01",
+  "stageId": 10,
+  "sourceIncarnation": "Half-Life (1998), Nihilanth finale on Xen",
+  "mode": "Smash",
+  "implementationStatus": "interactive-core-loop",
+  "visualReviewStatus": "pending",
+  "preserved": {
+    "savedBossName": "Alien Nihilanth Core",
+    "canonicalBossName": "Nihilanth",
+    "bossHp": 520,
+    "bossAttack": 19,
+    "goldPrize": 75,
+    "shardPrize": 25
+  },
+  "sourceEvidence": [
+    {
+      "url": "https://github.com/ValveSoftware/halflife/blob/0fc8913c542d6ba129ca8bede1505e7d2e8b4b4b/dlls/nihilanth.cpp",
+      "sha256": "0ef1b9685beadb20ac71e88bb52a0ea7d977a7ae4135ad2362b11e283688f375",
+      "verifiedSymbols": ["N_SPHERES", "HuntThink", "AbsorbSphere", "NextActivity", "FloatSequence", "TakeDamage", "TraceAttack"],
+      "supports": ["20 energy spheres", "one sphere heals public SDK max health / 20", "recharger search", "head-opening state", "lethal attack requires open-head weakpoint"]
+    },
+    {
+      "url": "https://combineoverwiki.net/wiki/Nihilanth",
+      "section": "Behavior",
+      "supports": ["purple energy projectiles", "green teleport spheres", "orange orbiting energy spheres", "crystal recharging", "open-head weakness"],
+      "doesNotEstablish": ["this game's crystal durability or 2D timings", "this game's sprite fidelity", "a pixel-exact original room layout"]
+    },
+    {
+      "url": "https://combineoverwiki.net/wiki/Half-Life_storyline#Chapter_18:_Nihilanth",
+      "supports": ["regeneration crystal destruction precedes attacking the vulnerable brain"]
+    },
+    {
+      "url": "https://store.steampowered.com/app/70/HalfLife/",
+      "supports": ["original game identity and release year"],
+      "doesNotEstablish": ["exact encounter mechanics"]
+    }
+  ],
+  "implemented": [
+    "three separately destructible healing-crystal targets",
+    "20 orange spheres consumed by healing, using the public Valve SDK ratio",
+    "surviving crystals restore depleted sphere reserves",
+    "head opens after loss of crystal recharging when HP is below half or fewer than 10 of 20 spheres remain; zero spheres is not required",
+    "explicit spatial brain target required for lethal damage",
+    "body attacks preserve at least one HP, both before and after opening",
+    "actual purple projectile movement and hero collision",
+    "boss levitation without generic grounded pursuit or ringout",
+    "normal, source-profiled and committed Melee attacks include encounter targets",
+    "external fixed-damage integration hook for items and custom supers, with nonlethal and optional shield absorption after gating",
+    "brain proxy HP and death state stay synchronized with the underlying boss",
+    "actual canvas markers, source-phase objective text and encounter result metrics"
+  ],
+  "gameplayAdaptations": {
+    "crystalHp": 60,
+    "sphereHealingRatio": 0.05,
+    "healEveryTicks": 6,
+    "rechargeEveryTicks": 90,
+    "headOpeningTicks": 90,
+    "projectileEveryTicks": 135,
+    "projectileSpeedPixelsPerTick": 4,
+    "projectileLifetimeTicks": 180,
+    "markerArt": "geometric gameplay overlays; not 1:1 artwork",
+    "arena": "existing 2D Smash chamber and platforms; not source geometry"
+  },
+  "remaining": [
+    "green teleport orbs and secondary teleport rooms",
+    "source Alien Controller and Vortigaunt summons",
+    "original two-handed projectile volleys",
+    "original head-opening and death animation, FPS camera and epilogue",
+    "independent fidelity approval of existing sprites and stage bitmaps"
+  ],
+  "verification": {
+    "testFile": "scripts/nihilanthEncounterMechanics.test.mjs",
+    "expectedTests": 25,
+    "scope": "actual EngineSmash attacks, updates, rendering, wave victory, external damage hook and unrelated stage regressions"
+  }
+}

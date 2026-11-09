@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T06:59:07.535Z",
+  "executed": false,
+  "reason": "The wide12-pose source has one unarmed ready pose in its super group. Exclude that whole4-pose group and retain the other8 complete weapon poses; draw4 new source poses with one visible complete sword in all four.",
+  "requests": [
+    {
+      "id": "metal_hellsinger_unknown",
+      "kind": "wide-held-sword-super-correction",
+      "slots": [
+        7
+      ],
+      "sourceRows": 2,
+      "sourceColumns": 2,
+      "arguments": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/part-a/sources/metal_hellsinger_unknown-wide-single-sword-action-correction.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/part-a/research/metal-official-header.jpg"
+        ],
+        "prompt": "Draw FOUR NEW complete pixel-art action figures of The Unknown, Metal:Hellsinger2022. TWO COLUMNS and TWO ROWS (2x2), exactly four complete full-body figures in reading order. Fixed appearance: The Unknown has a SMOOTH BALD RED HEAD, THREE bright YELLOW EYES (two ordinary eyes and a smaller actual third eye centered on the forehead), black sclera, rough black-brown/ivory fossil-like horns, dark lower-face wrap, dark blue-gray shoulder cowl with SHORT GRAY FUR TRIM AT THE SHOULDERS, black/dark red armour, red-black bat wings, pointed tail and boots. ABSOLUTELY NO HAIR, ponytail, mane, white hair or skull-white face. She holds the complete ivory bone-clad Terminus sword with ornate skull-like hilt.. First reference provides pixel style and complete anatomy; second official header provides true bald red3-eyed face and ivory bone sword.\n\nCRITICAL: Every one of the FOUR figures VISIBLY HOLDS EXACTLY ONE complete Terminus sword, with the hand attached to its hilt. Never show an empty hand or an invisible/holstered sword. Both hands exist, only one sword. TOP LEFT: ready with the one complete sword held diagonally forward. TOP RIGHT: windup with the one complete sword raised. BOTTOM LEFT: decisive physical FORWARD SCREEN-RIGHT sword strike at waist height, one complete blade only. BOTTOM RIGHT: lower the same one complete sword and recover. Do not add a second blade behind the head. Every figure includes full head and horns, torso, wings, tail, hands, feet and the entire blade/hilt.\n\nDraw SMALL FIGURES, standing body about130pixels high, full reach under380pixels wide, leaving generous empty transparent space. Each figure stays in its own WIDE cell; no blade or wing may touch any other figure. At least64pixel transparent gutters and48pixel outer border. All four poses DIFFERENT, no copies or mirrors. FacingRIGHT, detailed16bit pixels, transparent background. NO hair, labels, grid, text, scenery, shadow, energy blast, victim, injury or blood."
+      }
+    }
+  ]
+}

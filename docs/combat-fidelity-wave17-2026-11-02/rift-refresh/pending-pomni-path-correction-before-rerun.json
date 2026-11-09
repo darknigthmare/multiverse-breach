@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T08:37:28.031Z",
+  "timing": "Written before the second actual five-command refresh; first failed postflight is preserved separately and is not certified retroactively.",
+  "sourceCommit": "9981b73deb3ee027c86877d7c15c6698e4f02191",
+  "reason": "HEROES_DB now correctly displays Pomni, with legacyRosterName Digital Circus for historical projections. The catalog derives a dedicated image URL from that character name. Both the previous and corrected dedicated images are absent and remain pending.",
+  "publishedRegistry": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/published-wave16-rift-registry.json",
+    "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+    "bytes": 552092
+  },
+  "publishedRegistryOrigin": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/published-wave16-rift-registry-origin.json",
+    "sha256": "9dda09c400a54fb37c5fac3f4561aa3e21916b1c435a16cc174312739143fb17",
+    "bytes": 1556
+  },
+  "publishedWave16Audit": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/baseline-current-wave16.json",
+    "sha256": "0778067e03aa3b5da8880d72c004f00f7659e158653027535bfc94573be88fc9",
+    "bytes": 11705617
+  },
+  "failedAttemptArchive": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/archive-manifest.json",
+    "sha256": "01a63aa39037618da2adadee47c4089077c9b8e96aeab9fa3bb537c2b4becdcb",
+    "bytes": 4221
+  },
+  "expectedEntryCount": 3199,
+  "expectedAvailabilityCounts": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "expectedSourceIdentity": {
+    "id": "pomni",
+    "name": "Pomni",
+    "legacyRosterName": "Digital Circus"
+  },
+  "allowedPendingAssetPathCorrections": [
+    {
+      "stageId": 9330,
+      "sourceHeroId": "pomni",
+      "statusBefore": "pending",
+      "statusAfter": "pending",
+      "assetPathBefore": "/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-digital-circus-v1.webp",
+      "assetPathAfter": "/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-pomni-v1.webp",
+      "oldAssetExists": false,
+      "newAssetExists": false
+    }
+  ],
+  "observedAbsenceBeforeRerun": [
+    {
+      "path": "public/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-digital-circus-v1.webp",
+      "exists": false
+    },
+    {
+      "path": "public/images/rift-dossiers/openai/arc-personnage/stage-9330-character-arc-pomni-v1.webp",
+      "exists": false
+    }
+  ],
+  "allStageIdsAndStatusesMustRemainUnchanged": true,
+  "allAvailableAssetPathsMustRemainUnchanged": true,
+  "allOtherPendingAssetPathsMustRemainUnchanged": true,
+  "source1to1Verified": false
+}

@@ -4,6 +4,7 @@ import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15 as fields } from '../src/game/tact
 import { TACTICS_TERRAIN_MATERIALS_WAVE15 as materials, TACTICS_ENVIRONMENT_PROFILES_WAVE15 } from '../src/game/tacticsUniversePresentationWave15.js';
 import { TACTICS_TERRAIN_MATERIALS_WAVE16, TACTICS_ENVIRONMENT_PROFILES_WAVE16 } from '../src/game/tacticsUniversePresentationWave16.js';
 import { assertWave16EnvironmentExtension, assertWave16MaterialExtension } from './tacticsHistoricalBaselineWave16.mjs';
+import { projectTacticsBiomesBeforeWave17, projectTacticsMaterialsBeforeWave17 } from './tacticsHistoricalBaselineWave17.mjs';
 import {
   TACTICS_ENVIRONMENT_BIOMES, TACTICS_RUNTIME_ENVIRONMENT_BIOMES, getTacticsEnvironmentProfile,
   drawTacticsEnvironment, drawTacticsScenery, getTacticsSceneryBounds
@@ -49,7 +50,7 @@ function environment(field, options = {}) {
 }
 
 test('four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded',()=>{
-  assertWave16EnvironmentExtension(TACTICS_ENVIRONMENT_BIOMES, TACTICS_RUNTIME_ENVIRONMENT_BIOMES,
+  assertWave16EnvironmentExtension(TACTICS_ENVIRONMENT_BIOMES, projectTacticsBiomesBeforeWave17(TACTICS_RUNTIME_ENVIRONMENT_BIOMES),
     TACTICS_ENVIRONMENT_PROFILES_WAVE15, TACTICS_ENVIRONMENT_PROFILES_WAVE16);
   const signatures=new Set();
   for(const field of Object.values(fields)){
@@ -79,7 +80,7 @@ test('Spencer mist respects reduced-motion while game time drives its independen
 });
 test('seven W15 materials paint real tops and cliff faces without changing geometry',()=>{
   assert.equal(Object.keys(materials).length,7);
-  assertWave16MaterialExtension(TACTICS_TERRAIN_MATERIALS, TACTICS_TERRAIN_MATERIALS_WAVE16);
+  assertWave16MaterialExtension(projectTacticsMaterialsBeforeWave17(TACTICS_TERRAIN_MATERIALS), TACTICS_TERRAIN_MATERIALS_WAVE16);
   const project=(x,y,z)=>({x:120+x*44,y:180+y*26-z*24});
   const polygons=new Set(),samples=new Set();
   for(const [id,material] of Object.entries(materials)){

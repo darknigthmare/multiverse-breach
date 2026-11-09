@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-01T02:05:34.199403+00:00",
+  "characterId": "greyback_yautja",
+  "reviewer": "/root/alien_quality_review",
+  "status": "passed-independent-Greyback-runtime-transition-review",
+  "scope": "Targeted Greyback post-import only.115 producer-frozen files and16pose/cell replay checked;57 prior maps/variants preserved and new Greyback current+original variant verified. No global CG/sprite conservation rerun.",
+  "rootTransition": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/greyback-yautja/transition.json",
+    "sha256": "9a746ed00613fb79b9c86f4a3d620d38d662212424a4ef43dd3efdfa4f7dfc50",
+    "bytes": 2185
+  },
+  "consumedPreRuntimeGate": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/greyback-atlas/greyback-before-runtime-gate.json",
+    "sha256": "0802460c5330136c851b18a6b916ce4e1cc904651b1ae472704180d613b90f1a"
+  },
+  "postRuntimeCompanion": {
+    "path": "docs/cg/greyback-yautja-sprite-wave12-2026-11-01.json",
+    "sha256": "02625961c7bca46916fb20c08e848b96613ef69366818f2eb408e150af7d5620",
+    "bytes": 18848
+  },
+  "producerAtlasFreeze": {
+    "path": ".tmp/cg-alien-2026-11-01/lot-02/greyback-yautja/atlas/producer-atlas-freeze-wave12-2026-11-01.json",
+    "sha256": "87ad0b8278c9d815d2f9aeee83560a16274504faf8b1b34881892b9a7b97fff8",
+    "bytes": 54307
+  },
+  "immutableCompanionFieldsSha256": "553ff6fbfbb6eab654fcd238a4f73315f489af14ca914ad46d7d4aa8c24c0436",
+  "actualChangedCompanionFields": [
+    "status",
+    "previousAtlas.accessibleAsVariant",
+    "previousAtlas.pendingRootRuntimeIntegration",
+    "runtimeSelectionChanged",
+    "runtimeSelectionPending",
+    "oldAtlasAccessibleAsVariant"
+  ],
+  "onlySixAuthorizedCompanionFieldsChanged": true,
+  "producerFrozenFilesReverified": 115,
+  "independentVisualReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/greyback-yautja-sprite-independent-review.json",
+    "sha256": "368c134b7754d7f572ad9773a873862f069813ba0ddc04a0d28ee19a62789153",
+    "bytes": 48260
+  },
+  "independentPreRuntimePixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/greyback-yautja-sprite-independent-pixel-proof.json",
+    "sha256": "86da0f9be410db9afaf894f2caff690a0fef6a7404c2cd0020d444aa7a5460ca",
+    "bytes": 20809
+  },
+  "independentPostRuntimeSelectorAndPixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/greyback-yautja-sprite-runtime-selector-proof.json",
+    "sha256": "78866682c1fae15af37ad4ccdcb0adf09306ccb6a46738e16ceb7e2d07710e08",
+    "bytes": 21263
+  },
+  "currentAtlas": {
+    "path": "public/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
+    "sha256": "e5436632e464d92f27ca397b7691c50974ecd12bda784f880cd7b80d2914a60e",
+    "bytes": 778183
+  },
+  "previousAtlasPreserved": {
+    "path": "public/sprites/generated/heroes/predator/greyback-yautja.png",
+    "sha256": "1284f35efb3378e4f9755f58a1a8ac197bb19fd34bb44b4bb4667425685c9fbc",
+    "bytes": 1086996
+  },
+  "newAtlasIsCurrentAndOldAtlasAccessibleAsOriginalVariant": true,
+  "existingCorrectionAndVariantMappingsPreserved": 57,
+  "currentCorrectionAndVariantMappings": 58,
+  "protectedBishopAndBishopAliensSelectorsPreserved": true,
+  "runtimeContextsVerifiedForGreyback": 10,
+  "auditScriptOnlyExpectedNewCommandAppended": true,
+  "sourceReferencesAndCGGelPreserved": true,
+  "frozenQaAndPixelProofUnchanged": true,
+  "licensedSourceLimitationsRemainExplicit": true,
+  "reviewerPixelsModified": false,
+  "reviewerRuntimeWrites": false,
+  "canonicalFidelityApproved": false
+}

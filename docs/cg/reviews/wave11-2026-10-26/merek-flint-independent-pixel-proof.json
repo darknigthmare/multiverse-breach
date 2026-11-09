@@ -1,0 +1,740 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "reviewer": "/root/lot_05_wave11",
+  "producer": "/root/lot_01_wave11",
+  "characterId": "merek_flint",
+  "status": "pass-independent-native-rgb-and-all45-encoded-export-byte-replay",
+  "receipt": {
+    "path": "docs/cg/merek-flint-wave11-2026-10-26.json",
+    "sha256": "db5345426952b770eb68aea8dcca9967b0318a5b817894632e6f6b17ef5dba42"
+  },
+  "sourceEvidence": {
+    "path": "docs/cg/merek-flint-reference-evidence-wave11-2026-10-26.json",
+    "sha256": "85294381132f19dc522afe48c87bea3ad72c25ab4f5b3d99d152c7461efb468c"
+  },
+  "plan": {
+    "path": "docs/cg/merek-flint-wave11-plan-2026-10-26.json",
+    "sha256": "e2a60aa91d93a580499aff8df937d259b084e03bb0fa587d016d3d5735bf5e3b"
+  },
+  "cg": 15,
+  "assets": 45,
+  "nativeRgbReplays": 15,
+  "strictNativeRgbSources": 12,
+  "fullFrameNearestConditionedSources": 3,
+  "sourceEncodedPngReplays": 15,
+  "webpEncodedByteReplays": 30,
+  "preservedWhollyUnselectedNativeDrafts": 6,
+  "checks": [
+    {
+      "slot": "CG01",
+      "nativePath": "/workspace/multiverse-breach/.tmp/cg-wave11-2026-10-26/lot-01/merek-flint/native-recovered/merek-flint-CG01-218bbbf2f2a3fa7d0ed35a1a5e8f2ad8f706798175df20a83a0ea21e9ecced1c.png",
+      "nativeSha256": "218bbbf2f2a3fa7d0ed35a1a5e8f2ad8f706798175df20a83a0ea21e9ecced1c",
+      "nativeDimensions": {
+        "width": 1055,
+        "height": 1491
+      },
+      "strictNativeRgb": false,
+      "fullFrameNearestFormatting": true,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/character-solo-wave11-2026-10-26.png",
+          "sha256": "0582bcd9d0ff7bea8e690be49bc663f4c49f24ea60a15ffe7a31a4b3b0630af5",
+          "bytes": 4193825,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/character-solo-wave11-2026-10-26.webp",
+          "sha256": "808419e3912b9459be1faadec38951ebdfedd2bf2a710b1908aa8fc94ff72c2e",
+          "bytes": 1160464,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/character-solo-wave11-2026-10-26-thumb.webp",
+          "sha256": "59c04f7d0836cb9d7ad56f485f8d949c89c9789ec4a8b438beb6846dd4263159",
+          "bytes": 86120,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG02",
+      "nativePath": "/workspace/generated_images/exec-dd73a9fa-673c-4a5c-92d8-3fa7b074f696.png",
+      "nativeSha256": "9fbf64e496fae8d0f925d0645f6b6cf4557fd1727ade2235d0a376dcd341a135",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/signature-weapon-wave11-2026-10-26.png",
+          "sha256": "2045550f85b66431affdb527178dd2041c785f21c9b7acded7f5cbacf86e1974",
+          "bytes": 4180645,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/signature-weapon-wave11-2026-10-26.webp",
+          "sha256": "6070de896db4665e4dc2736429d23fc8a700ebf36cb29ff359b4032c38287848",
+          "bytes": 1142144,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/signature-weapon-wave11-2026-10-26-thumb.webp",
+          "sha256": "4bd7698cc6bd15f8f827c21b915ea1e6767407f2ee9fa2af585d8d2fe993e5e8",
+          "bytes": 86028,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG03",
+      "nativePath": "/workspace/generated_images/exec-0c2437c4-3527-4b58-9f87-a7d364d9a2fa.png",
+      "nativeSha256": "12253733e4faf461dc8b1cb37498060864fbefe3b5ec014d8bf95c2bc5cb7bb5",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/decor-wave11-2026-10-26.png",
+          "sha256": "df5a2d39045f1cd32bfa6204878395d5965b1ba05b9eebaeccb0209985e482de",
+          "bytes": 4279944,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/decor-wave11-2026-10-26.webp",
+          "sha256": "a812c78462c284d74750f744b4fafce2727a221544eadc462a5eab9a868cf23c",
+          "bytes": 1281890,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/decor-wave11-2026-10-26-thumb.webp",
+          "sha256": "e8ad5edce1b9d23d2ad19a084c556f7b32d8441388907391ef5766240db34db5",
+          "bytes": 88372,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG04",
+      "nativePath": "/workspace/generated_images/exec-b9cf376b-0034-4b49-879c-9d75f2f84b4f.png",
+      "nativeSha256": "7f79467ee35705d079fb78272b88bd03477a8a587fa60bed9920200628bd1f3b",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/coherent-scene-wave11-2026-10-26.png",
+          "sha256": "022aeecc0afea2caaf70e7586a47334d8ad145bd1d5b1b2feb9daf36aa8c6aa1",
+          "bytes": 4221965,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/coherent-scene-wave11-2026-10-26.webp",
+          "sha256": "ae408f14be1bfffe4e5e20f503a4d48ec7afd790585db31d567812af4a7ad4f5",
+          "bytes": 1161122,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/coherent-scene-wave11-2026-10-26-thumb.webp",
+          "sha256": "629e825cf41c4874021afa6510e27be57cdfe9e5a5a977e9a4918eca7fc1d009",
+          "bytes": 88474,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG05",
+      "nativePath": "/workspace/generated_images/exec-5eb4eaa5-848e-4492-b034-9cbd3f55b86f.png",
+      "nativeSha256": "9d41ca000d11e4ada668b66666a8110d2f68d8c4fc2dd7fb3232899b798fb190",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/action-scene-wave11-2026-10-26.png",
+          "sha256": "3707d8df38e1b6da3082624c921dfeadd032f93537c9aa70d90e7f17cbdae4a1",
+          "bytes": 4204515,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/action-scene-wave11-2026-10-26.webp",
+          "sha256": "c3c4fe63a2273e099cb0ec56c0eab8afc7f4f86974ccfceab046fca79dad370b",
+          "bytes": 1264174,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/action-scene-wave11-2026-10-26-thumb.webp",
+          "sha256": "031c33c5823d6024939eff5df066d8df58de375cd404e6a785a45fe06dc4259d",
+          "bytes": 88862,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "nativePath": "/workspace/generated_images/exec-a03a1ed1-6282-43cb-8249-782c5e2954da.png",
+      "nativeSha256": "9a1ba27c9051d850f55c533e5984b4eb81a01d46db9f4f62de980d6860cb58db",
+      "nativeDimensions": {
+        "width": 1087,
+        "height": 1447
+      },
+      "strictNativeRgb": false,
+      "fullFrameNearestFormatting": true,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/intro-pose-wave11-2026-10-26.png",
+          "sha256": "c131138be33f968f5ff5e22e3869d1402ec041b9809372eff47634cfc4d2abf0",
+          "bytes": 4179123,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/intro-pose-wave11-2026-10-26.webp",
+          "sha256": "4dcc25fab8dc8ff38520184d32a7ea1cd85d5278304e2eb2bfa8e8a59dbfbdb6",
+          "bytes": 1186984,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/intro-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "f5feef212758ff7783d3043df69d982f75581ef40141756767438ca96ff9f1ff",
+          "bytes": 86262,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG07",
+      "nativePath": "/workspace/generated_images/exec-d8552767-542e-4f5f-85dc-5219182cc500.png",
+      "nativeSha256": "86bbc0469790fa2e5b632d53f0fdca3b77c924ae254f355c304bbc2b3366788f",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/victory-pose-wave11-2026-10-26.png",
+          "sha256": "520b6db60d2885b2ee82c87e9268211a714881381d371b1376b586a1ad1fe86c",
+          "bytes": 4246567,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/victory-pose-wave11-2026-10-26.webp",
+          "sha256": "d231d333c1b4435bb134ec848b172cce45cc5a198de9717fb892d4ff2f8c04f6",
+          "bytes": 1232822,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/victory-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "b2e70d108c3fd9cc5f72eec26ed0dfc949a54a4438c3c0afd12b29de5f2ce293",
+          "bytes": 92262,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG08",
+      "nativePath": "/workspace/generated_images/exec-beb8d43e-ed51-44df-812b-37997e6bec43.png",
+      "nativeSha256": "a4a1e3afb81cc7d5488eb3d5190220ba56ba42004ee131ead1de8985a865ac02",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/defeat-pose-wave11-2026-10-26.png",
+          "sha256": "766207815b840730eaa3f1b21f413dfcf4de5a52ad793a596df263a115a9f71d",
+          "bytes": 4182224,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/defeat-pose-wave11-2026-10-26.webp",
+          "sha256": "cfeb70ff732e3895c8b2ca91b65968f46e7f8e2ded1b0e7159af15cc7e188de7",
+          "bytes": 1178682,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/defeat-pose-wave11-2026-10-26-thumb.webp",
+          "sha256": "faa9ba80d7fa38e8b9a4d45ef291e0c0bef3b1e07597945db21e83dac7663daa",
+          "bytes": 85764,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG09",
+      "nativePath": "/workspace/generated_images/exec-d0c5d089-75c0-42b1-85e8-7f09ee883d41.png",
+      "nativeSha256": "027997f98b653b44e120b44259f4bc17940eae8c42a544c540ab312b721a08ba",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/beach-family-wave11-2026-10-26.png",
+          "sha256": "95f344c947738d5ef5343206134454d732946a7df461265fa44b88c9003be175",
+          "bytes": 4323944,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/beach-family-wave11-2026-10-26.webp",
+          "sha256": "37e45eaa06271bc84e9672eed99c8b458f51261f305ae347de896f32db645199",
+          "bytes": 1330010,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/beach-family-wave11-2026-10-26-thumb.webp",
+          "sha256": "ed3a543786eecb0f577f3d4dc22b2cc4ea69539d4e0c4c07da04bb485b9b9bb9",
+          "bytes": 96230,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG10",
+      "nativePath": "/workspace/generated_images/exec-8bc355f8-3d68-4327-8a4d-c19992a42c54.png",
+      "nativeSha256": "f2508e2629af9591b02ada3792f6cf14f955dfc9df2586f689c347abdc90c504",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/maid-service-wave11-2026-10-26.png",
+          "sha256": "d757fa717521204f144eb31dbd515a549ed2e1f773b98facaa8d92b287709c7c",
+          "bytes": 4305878,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/maid-service-wave11-2026-10-26.webp",
+          "sha256": "c87ed4c497bbfff0f198ae552bac59ffaba24c198be98ae9ba7d6cf2fc921c81",
+          "bytes": 1111246,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/maid-service-wave11-2026-10-26-thumb.webp",
+          "sha256": "522347c6bd14ced6a0490555ff61ec87d3bc1fd935e2c3f636b9629e81d5c3a3",
+          "bytes": 87154,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG11",
+      "nativePath": "/workspace/generated_images/exec-6c9a465a-b25f-4fb2-bfe1-b3a252b6b3b0.png",
+      "nativeSha256": "b03fc92061e02b74ac906fa3d87bc7f323c75b285f3e2847b865830ad9d780f0",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/goofy-wave11-2026-10-26.png",
+          "sha256": "83bd1c65e96d00060799bfdf3ad6db3beff68ff49b982a24a774db8107eb7d41",
+          "bytes": 4292079,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/goofy-wave11-2026-10-26.webp",
+          "sha256": "909eba4b131dc0f3acc32cb62e1f14d14404623c6bf7c2ca4be6a2a45b2031d4",
+          "bytes": 1124646,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/goofy-wave11-2026-10-26-thumb.webp",
+          "sha256": "b32bc88cacc867eaa85fb570589c0dbdbaaf1fa8f135e082aa920279d55ab9db",
+          "bytes": 92488,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG12",
+      "nativePath": "/workspace/generated_images/exec-60df55ca-1f94-4777-bc97-ad03404bc507.png",
+      "nativeSha256": "c3b882d8433168c5567b8dc628cecb8a8760eec162f2bdfbc4f91d4fc86a5744",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/alignment-swap-wave11-2026-10-26.png",
+          "sha256": "4fd315dcb58e97381950829f4ae2cdea5cc32cde2739bf5480355b98b8a05392",
+          "bytes": 4153131,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/alignment-swap-wave11-2026-10-26.webp",
+          "sha256": "c2e3b3573d42599c16c71a84c30587f551d4ba041f06cd2e553f7275a3bef7ca",
+          "bytes": 1187890,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/alignment-swap-wave11-2026-10-26-thumb.webp",
+          "sha256": "0a9b3d2913ca77828c61ca416bed7b7da29b4f93b61744d9b4b88da0a510b398",
+          "bytes": 86082,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG13",
+      "nativePath": "/workspace/generated_images/exec-d5ebd1a0-8907-4232-8904-ad448c1d0d55.png",
+      "nativeSha256": "75b1a7683639cc1e286798c191890e34ee1c8cd1671ca4e139b9493684cf9dec",
+      "nativeDimensions": {
+        "width": 1087,
+        "height": 1447
+      },
+      "strictNativeRgb": false,
+      "fullFrameNearestFormatting": true,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/gender-swap-wave11-2026-10-26.png",
+          "sha256": "f6c009f0d12665a98117c1cf9b57f4b432219405c5c3b323630017ff6fab8f24",
+          "bytes": 4119838,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/gender-swap-wave11-2026-10-26.webp",
+          "sha256": "f2444891debc72e588ea4f47e8cbacc5b94c2b9b3e0cdcb138cf8d672cb2be36",
+          "bytes": 1134636,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/gender-swap-wave11-2026-10-26-thumb.webp",
+          "sha256": "956b5a58d0418f4a1e8feab56cee3f28c67ef13b536203616983e7a430dd6b84",
+          "bytes": 79348,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG14",
+      "nativePath": "/workspace/generated_images/exec-c4094c38-1c68-4908-aec5-f536744fb3f9.png",
+      "nativeSha256": "6716f6d244a448429c59983635cc38ffdf0803a68e14660919d4b1584a504a0d",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/zombie-version-wave11-2026-10-26.png",
+          "sha256": "1098adc6ed159050622e0e58a17f6adbb9cda4086c10008492abeab5939d3ada",
+          "bytes": 4233861,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/zombie-version-wave11-2026-10-26.webp",
+          "sha256": "79be13faafa14077c8436e4d9445412a75de522caf7e7985e50183e8ab5602a1",
+          "bytes": 1248298,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/zombie-version-wave11-2026-10-26-thumb.webp",
+          "sha256": "41c6f999b31d769a3043b45e4c2a19da521960f10dd9634aa06a62e40fb44423",
+          "bytes": 90534,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    },
+    {
+      "slot": "CG15",
+      "nativePath": "/workspace/generated_images/exec-5e650c9c-436d-4cca-b489-db1c42c53f59.png",
+      "nativeSha256": "78e1955e1526389a5c71fb4ca65b3f654dde6c1b48cc1520bb34060a814036c5",
+      "nativeDimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "strictNativeRgb": true,
+      "fullFrameNearestFormatting": false,
+      "cropUsed": false,
+      "semanticPixelEdits": false,
+      "sourceRgbBytesEqual": true,
+      "sourceEncodedBytesEqual": true,
+      "assets": [
+        {
+          "kind": "source",
+          "path": "/cg/the-aether-crown/merek-flint/future-experienced-wave11-2026-10-26.png",
+          "sha256": "1f70b997a89c556e7b977e0ec0d38da4c697e093585905dd51f1d93d9aa64178",
+          "bytes": 4315605,
+          "width": 1086,
+          "height": 1448,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "master",
+          "path": "/cg/the-aether-crown/merek-flint/future-experienced-wave11-2026-10-26.webp",
+          "sha256": "8116f4b4b03857787858deef24dc3220c2d3a0da3b0594290ba4e839e95cc267",
+          "bytes": 1211956,
+          "width": 1536,
+          "height": 2048,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        },
+        {
+          "kind": "thumbnail",
+          "path": "/cg/the-aether-crown/merek-flint/future-experienced-wave11-2026-10-26-thumb.webp",
+          "sha256": "bf4001f2472e6e1ac7ff9a0982dede0c30c4149b1bcb4fc01a84419e65fe2576",
+          "bytes": 91232,
+          "width": 384,
+          "height": 512,
+          "channels": 3,
+          "exactEncodedByteReplay": true
+        }
+      ]
+    }
+  ],
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "This verifies real native/source/export bytes and delivery geometry. It does not certify absolute visual1:1 fidelity.",
+    "Recovered original CG01 native has documented full-frame nearest ratio formatting; no crop or semantic repair. Visual native reviews are separately recorded."
+  ]
+}

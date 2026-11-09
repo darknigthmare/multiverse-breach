@@ -1,8 +1,15 @@
 // Opt-in enemy control. Other support/status effects keep their own rules.
 import { isPhaselockProfile, isPhaselockTargetEligible, drawCombatControl } from './combat/combatControlWave15.js';
 import { WAVE_16_REVIEWED_IDS } from './combat/cohortWave16.js';
+import { WAVE_17_REVIEWED_IDS } from './combat/cohortWave17.js';
+import { isSourceBubbleCaptureProfileWave17, isSourceBubbleCaptureTargetEligibleWave17 } from './combat/sourceBubbleCaptureWave17.js';
+import { isJadeGyrodiskProfileWave17 } from './combat/jadeGyrodiskActionWave17.js';
+import { isMelodyWave17, isMediGunProfileWave17, startMediGunBeamWave17, stopMediGunBeamWave17,
+  armBubbleCaptureWave17, isJadeInformationProfileWave17, revealPhotographicEvidenceWave17,
+  canUseOkarunAllOutWave17, consumeOkarunAllOutWave17 } from './combat/sourceMechanicsWave17.js';
 import { faceGridUnitToward } from './tacticalFacing.js';
 import { getTerrainNeighbors } from './tacticsTerrain.js';
+import { hasPreparedLegacyCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
 import { resolveCombatAbility } from './combatIdentity.js';
 import { isSourceControlTargetEligibleWave16, advanceSourceControlWave16 } from './combat/combatControlWave16.js';
 import { advanceWave16Protection } from './combat/combatProtectionWave16.js';
@@ -28,17 +35,25 @@ export function drawTacticsPhaselock(ctx, unit, height) {
   return drawCombatControl(ctx, { ...unit, combatControl: { kind: 'phaselock', remaining: 1, duration: 1 } }, height);
 }
 
-const reviewedWave16 = new Set(WAVE_16_REVIEWED_IDS);
+const reviewedWave16 = new Set([...WAVE_16_REVIEWED_IDS, ...WAVE_17_REVIEWED_IDS]);
 const living = unit => unit?.currentHp > 0;
 export const isTacticsSourceActorWave16 = unit => reviewedWave16.has(sourceHeroIdWave16(unit))
   || !!getPossessedSligActionWave16(unit);
 export const isTacticsSourceControlledWave16 = unit => isSourceImmobilizedWave16(unit)
   || unit?.tacticsSourceStunTicksWave16 > 0;
 
+const hasExplicitTacticsModeProfile = (unit, slot) => {
+  const key = slot === 'enemy' ? 'simple' : slot, action = unit?.[key];
+  // The dedicated mode override is user-authored. Existing canonical raw
+  // profiles retain the separately reviewed incarnation priority decisions.
+  return !!unit?.tacticsAttacks?.[key] || (!unit?.canonCombatPresentation
+    && !!(action?.tacticsProfile || action?.tactics || action?.attackProfile));
+};
+
 // Keep typed semantic fields before the old name/weapon inference. Distances
 // are explicitly converted from source-action pixels to grid units here.
 export function getTacticsSourceProfileWave16(unit, slot) {
-  if (!isTacticsSourceActorWave16(unit)) return null;
+  if (!isTacticsSourceActorWave16(unit) || hasExplicitTacticsModeProfile(unit, slot) || prefersCurrentCanonCombatKit(unit) || hasPreparedLegacyCombatSource(unit, slot === 'enemy' ? 'simple' : slot)) return null;
   const raw = getPossessedSligActionWave16(unit, slot === 'enemy' ? 'simple' : slot);
   const p = raw ? { ...raw.targeting, sourceHeroId: 'oddworld_slig', universe: 'Oddworld',
     name: raw.name, multiplier: raw.dmg, duration: raw.animationDuration, hitAt: raw.hitAt, sourceAbility: raw }
@@ -60,7 +75,8 @@ export class TacticsSourceRuntimeWave16 {
   get actors() { return [...this.engine.heroes, ...this.engine.enemies]; }
   storedSide = unit => this.engine.heroes.includes(unit) ? 'hero' : this.engine.enemies.includes(unit) ? 'enemy' : 'escort';
   side(unit) { return sourceEffectiveSideWave16(unit, this.actors, this.storedSide); }
-  owns(unit) { return isTacticsSourceActorWave16(unit); }
+  owns(unit, slot = null) { return isTacticsSourceActorWave16(unit)
+    && !hasExplicitTacticsModeProfile(unit, slot) && !prefersCurrentCanonCombatKit(unit) && !hasPreparedLegacyCombatSource(unit, slot === 'enemy' ? 'simple' : slot); }
   profile(unit, slot) { return getTacticsSourceProfileWave16(unit, slot); }
   record(event, target = null, accepted = true) {
     const entry = { tick: this.engine.sourceSimulationTickWave16 || 0, event, targetId: sourceRuntimeIdWave16(target) || null, accepted };
@@ -79,12 +95,13 @@ export class TacticsSourceRuntimeWave16 {
       const own = this.side(unit) === side || this.side(unit) === 'escort' && side === 'hero';
       if (profile.targetSide === 'enemy' ? own : !own) continue;
       if (profile.targetSide === 'self' && unit !== (actor._tacticsSourceUnit || actor) || profile.excludeSelf && unit === actor) continue;
-      if (profile.effect === 'control' && !isSourceControlTargetEligibleWave16(profile, unit)) continue;
+      if (profile.effect === 'control' && !(isSourceBubbleCaptureProfileWave17(profile)
+        ? isSourceBubbleCaptureTargetEligibleWave17(profile, unit) : isSourceControlTargetEligibleWave16(profile, unit))) continue;
       const clicked = unit.gridX === tx && unit.gridY === ty && (!target.surfaceId || unit.surfaceId === target.surfaceId);
       if (profile.shape === 'single' && !clicked) continue;
       if (!supports && profile.shape !== 'single' && !impact?.some(c => e.unitOccupiesCell(unit, c.x, c.y, c.surfaceId))) continue;
       if (!e.canAttackCell(actor, unit, profile)) continue;
-      if (profile.effect === 'heal' && !(unit.currentHp < unit.maxHp * (unit.statusEffects?.radiated > 0 ? .5 : 1))) continue;
+      if (profile.effect === 'heal' && !(unit.currentHp < unit.maxHp * (isMediGunProfileWave17(profile) ? 1.5 : unit.statusEffects?.radiated > 0 ? .5 : 1))) continue;
       const cell = { x: unit.gridX, y: unit.gridY, gridX: unit.gridX, gridY: unit.gridY, surfaceId: unit.surfaceId };
       const entry = { unit, type: this.side(unit), cell, order: result.candidates.length };
       result.candidates.push(entry); result.impactCells.push(cell); if (clicked) result.clickedUnit = unit;
@@ -94,23 +111,37 @@ export class TacticsSourceRuntimeWave16 {
   }
   command(x, y, surfaceId) {
     const e = this.engine, actor = e.activeUnit;
-    if (!this.owns(actor) || e.actionPhase !== 'action') return null;
+    if (!this.owns(actor, e.selectedAction) || e.actionPhase !== 'action') return null;
     return this.begin(actor, { gridX: x, gridY: y, surfaceId }, e.selectedAction);
   }
   begin(actor, target, slot) {
     const e = this.engine, profile = e.getAttackProfile(actor, slot);
     const fail = reason => ({ handled: false, reason });
+    if (!this.owns(actor, slot)) return fail('native-signature-slot');
     if (getPossessedSligActionWave16(actor) && !['simple', 'enemy'].includes(slot)) return fail('possessed-body-only-real-rifle');
     if (target?.currentHp !== undefined && !this.actors.includes(target)) return fail('removed-target');
-    if (e.paused || e.disposed || e.gameOver || this.action || actor !== e.activeUnit
-      || !living(actor) || e.isTacticsControlled(actor) || actor.terrainMotion) return fail('inactive');
+    if (e.paused || e.disposed || e.gameOver || e.activeUnit?.tacticsGyrodiskActionWave17 || this.action || actor.tacticsGyrodiskActionWave17 || actor !== e.activeUnit
+      || !living(actor) || e.isTacticsControlled(actor) || actor.state === 'hit' && actor.stateTimer > 0 || actor.terrainMotion) return fail('inactive');
     if (slot === 'secondary' && actor.cooldown > 0) return fail('cooldown');
     if (slot === 'special' && !(actor.specialCharge >= 100)) return fail('charge');
+    if (!canUseOkarunAllOutWave17(actor, profile)) return fail('source-all-out-limit');
     if (!canBeginSourceProtectionWave16(actor, profile)) return fail('protection-already-active');
     const targets = this.resolution(actor, target, slot).candidates;
     if (!targets.length) return fail('no-valid-target');
+    if (actor.sourceMediGunWave17?.connected && !isMediGunProfileWave17(profile)) stopMediGunBeamWave17(actor, 'another-command');
+    // The glove has its own sixteen-pose simulation clock and release. Keep
+    // it on that clock while sharing real target validation and command costs.
+    if (isJadeGyrodiskProfileWave17(profile)) {
+      const applied = e.beginSourceGyrodiskActionWave17(actor, target, slot, profile, this.side(actor));
+      if (!applied?.length) return fail('no-valid-target');
+      if (slot === 'secondary') { actor.cooldown = (profile.sourceAbility?.cd || actor.secondary?.cd || 3) * 60; actor.specialCharge = Math.min(100, (actor.specialCharge || 0) + 25); }
+      e.actionPhase = 'source-action'; e.movementRange = []; e.attackRange = [];
+      this.record('begin:' + slot, actor);
+      return { handled: true, type: 'action', action: slot, targets: applied, target: applied[0] };
+    }
     const sequence = getSourceHitSequenceWave16(profile), duration = sequence?.duration || Math.max(.15, profile.duration || profile.sourceAbility?.animationDuration || .55);
     this.action = { actor, actorType: this.side(actor), slot, profile, sourceProfile: resolveCombatAbility(actor, slot === 'enemy' ? 'simple' : slot) || profile, target, targets,
+      commitment: e.captureSourceActionCommitmentWave16(actor, slot, targets),
       sequenceTargetIds: targets.map(t => sourceRuntimeIdWave16(t.unit)), elapsed: 0, duration,
       hitAt: profile.hitAt ?? duration * .45, damageVersion: actor.sourceDamageVersionWave16 || 0,
       hpAtStart: actor.currentHp, released: false, sequenceCursor: 0 };
@@ -128,13 +159,31 @@ export class TacticsSourceRuntimeWave16 {
     return { handled: true, type: 'action', action: slot, targets, target: targets[0] };
   }
   accepted(action) {
-    return action.targets.filter(({ unit }) => this.actors.includes(unit)
+    return action.targets.filter(({ unit }) => action.commitment.accepts(unit) && this.actors.includes(unit)
       && (action.profile.effect === 'revive' ? !living(unit) : living(unit))
       && this.resolution(action.actor, unit, action.slot).candidates.some(t => t.unit === unit));
   }
   impact(action, portion = null) {
-    const e = this.engine, { actor, profile, slot } = action, targets = this.accepted(action);
+    const e = this.engine, { actor, profile, slot } = action;
+    if (!action.commitment.canResolve()) return;
+    const targets = this.accepted(action);
+    try {
+    // Typed W17 mechanisms resolve at the prepared action's actual release.
+    // They must never fall through to generic control, healing or buff math.
+    if (isMelodyWave17(actor) && profile.sourceGoldenLuteWave17 === true) {
+      if (targets.length) this.record('golden-lute-step', actor, e.beginSourceGoldenLuteMoveWave17(actor, action.target));
+      return;
+    }
     for (const { unit } of targets) {
+      if (isSourceBubbleCaptureProfileWave17(profile)) {
+        this.record('bubble-capture', unit, armBubbleCaptureWave17(actor, unit, profile, { hostile: this.side(actor) !== this.side(unit) })); continue;
+      }
+      if (isJadeInformationProfileWave17(profile)) {
+        this.record('photographic-evidence', unit, revealPhotographicEvidenceWave17(actor, unit, profile, { hostile: this.side(actor) !== this.side(unit) })); continue;
+      }
+      if (isMediGunProfileWave17(profile)) {
+        this.record('medi-gun-beam', unit, startMediGunBeamWave17(actor, unit, { allied: this.side(actor) === this.side(unit), range: 220, lineOfSight: e.hasLineOfSight(actor, unit, profile) })); continue;
+      }
       if (profile.effect === 'control') {
         if (!beginSourceControlWave16(actor, unit, profile, { hostile: this.side(actor) !== this.side(unit), channelCompleted: true })) continue;
         unit.tacticsSourceControlTurnsWave16 = 1;
@@ -161,11 +210,19 @@ export class TacticsSourceRuntimeWave16 {
       }
       const ticks = Math.max(1, Math.round((profile.effectDuration || profile.sourceAbility?.targeting?.duration || 2) * 60));
       if (profile.effect === 'heal') unit.currentHp = Math.min(unit.maxHp * (unit.statusEffects?.radiated > 0 ? .5 : 1), unit.currentHp + Math.round(unit.maxHp * (profile.healRatio || .15)));
-      if (profile.effect === 'revive') { unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || .3))); unit.state = 'idle'; }
+      if (profile.effect === 'revive') { e.invalidateActorActions(unit); unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || .3))); unit.state = 'idle'; }
       if (profile.effect === 'guard') { unit.tacticsGuardTicks = ticks; unit.tacticsGuardReduce = profile.guardReduce ?? .3; }
       if (profile.effect === 'buff') { unit.tacticsBuffTicks = ticks; unit.tacticsBuffMultiplier = profile.buffMultiplier || 1.12; }
       if (profile.effect === 'cleanse' || profile.cleanses) for (const key of Object.keys(unit.statusEffects || {})) unit.statusEffects[key] = 0;
       this.record('support:' + profile.effect, unit);
+    }
+    } finally {
+      // A released all-out attempt consumes one use even when its target has
+      // escaped. Resolve the full release before advancing the two-use cap.
+      if (!action.sourceOkarunCommittedWave17) {
+        consumeOkarunAllOutWave17(actor, profile);
+        action.sourceOkarunCommittedWave17 = true;
+      }
     }
   }
   finish(cancelled = false) {
@@ -223,7 +280,7 @@ export class TacticsSourceRuntimeWave16 {
     for (const unit of this.actors) {
       if (unit.sourceProtectionWave16) unit.sourceProtectionWave16 = advanceWave16Protection(unit.sourceProtectionWave16, dt, { ownerAlive: living(unit) });
       if (unit.tacticsSourceStunTicksWave16 > 0 && dt > 0) unit.tacticsSourceStunTicksWave16--;
-      for (const key of ['tacticsGuardTicks', 'tacticsBuffTicks']) if (unit[key] > 0 && dt > 0 && !this.engine.verticalTerrain) unit[key]--;
+      // The engine/vertical terrain advances shared support timers once per tick.
     }
     if (this.proxy && !getPossessedBodyWave16(this.proxy.owner, this.actors)) {
       const proxy = this.proxy; this.proxy = null;
@@ -238,7 +295,7 @@ export class TacticsSourceRuntimeWave16 {
     this.checkStatuses(1 / 60);
     const a = this.action;
     if (a) {
-      if (!living(a.actor) || !this.actors.includes(a.actor) || a.actor.currentHp < a.hpAtStart
+      if (!a.commitment.canResolve() || !living(a.actor) || !this.actors.includes(a.actor) || a.actor.currentHp < Math.min(a.hpAtStart, a.actor.maxHp)
         || e.isTacticsControlled(a.actor) || (a.actor.sourceDamageVersionWave16 || 0) !== a.damageVersion) { a.sequenceCancelled = true; this.finish(true); }
       else {
         a.elapsed += 1 / 60;
@@ -305,8 +362,9 @@ export class TacticsSourceRuntimeWave16 {
   ai() {
     const e = this.engine, actor = e.activeUnit; if (!this.owns(actor)) return false;
     if (e.paused || e.disposed || e.gameOver || !living(actor)) return true;
-    if (this.action || e.isTacticsControlled(actor)) return true;
+    if (this.action || actor.tacticsGyrodiskActionWave17 || e.isTacticsControlled(actor)) return true;
     const slot = actor.specialCharge >= 100 ? 'special' : actor.cooldown <= 0 ? 'secondary' : 'simple';
+    if (!this.owns(actor, slot)) return false;
     const p = e.getAttackProfile(actor, slot), side = this.side(actor);
     const targets = this.actors.filter(unit => p.targetSide === 'self' ? unit === actor : p.targetSide === 'enemy' ? this.side(unit) !== side : this.side(unit) === side);
     const cast = () => {

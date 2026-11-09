@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "heroId": "starfire_tt",
+  "characterId": "starfire_tt",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "status": "major-difference",
+  "canonicalFidelityApproved": false,
+  "currentSprite": {
+    "path": "public/sprites/generated/heroes/teen-titans/starfire-tt.png",
+    "sha256": "1f90eff8352ce94ccf4d569728e9bfbe357f96a07e8c94c8bc4f68363361115d",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "independentlyViewed": true,
+    "status": "major-difference",
+    "observations": [
+      "Current atlas uses a long purple/gold-trimmed mage-like coat/cape, dark trousers and plated silver knee/boot armor with star motifs. These garments materially differ from WB2003 main model.",
+      "WB2003 source has purple short top/skirt and tall purple boots with broad silver-blue cuffs, exposed hands, high silver-blue collar/green gem, two bracers/green gems and one anatomicalRIGHT upper-arm band. Gold long-coat trim and armored kneepads are unsupported by that model.",
+      "Current sprite is a previous project variant with major outfit/proportion drift; it does not establish reference fidelity for the new CGs. Original file is preserved."
+    ],
+    "requiredAction": "needs-source-correction"
+  },
+  "reference": {
+    "path": "docs/cg/references/wave3-2026-10-20/starfire/starmodel1.jpg",
+    "sha256": "7450713fcb87e7b02d166ebb9d97d9bc30a575c1d2eb75f18413e2764fad8376",
+    "role": "independent-canon-reference",
+    "referencePurpose": "identity",
+    "viewed": true,
+    "provenance": "WarnerBros Animation2003 MAINMODEL BODYTURNS, FINAL11/19/02, studio sheet hosted via Wiki mirror, not a new DCpublisher-host download."
+  },
+  "atlasGeneration": {
+    "status": "not-attempted-in-this-wave",
+    "serviceRefusalForAtlas": false,
+    "note": "CG01 and CG04 body requests were refused. No Starfire atlas request occurred here; do not relabel this open sprite discrepancy as an atlas service refusal."
+  },
+  "reviewedAt": "2026-10-20T09:09:09.830110+00:00",
+  "runtimeSelectionEvidence": {
+    "module": "src/game/spriteAssets.js#getHeroSpriteSheetSrc",
+    "characterId": "starfire_tt",
+    "context": "auto",
+    "returnedPath": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+    "matchesReviewedFile": true,
+    "executedAndVerified": true,
+    "verifiedAt": "2026-10-20T09:14:21.458Z"
+  }
+}

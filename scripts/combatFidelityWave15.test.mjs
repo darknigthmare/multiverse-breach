@@ -1,3 +1,5 @@
+import { assertCatalogActionEdition, assertBaseSpriteEdition } from './combatCanonicalEditionFixtures.mjs';
+import { projectAbilitiesBeforeWave17 } from './combatFidelityHistoricalCohortWave17.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -74,7 +76,7 @@ test('W15 composes three disjoint groups of40 and exactly42 new /78 source-versi
   assert.deepEqual(sorted(Object.keys(ABILITIES_WAVE15)), sorted(plan.heroes.filter(row => !row.alreadyAuthored).map(row => row.hero.id)));
   assert.deepEqual(sorted(Object.keys(ABILITY_REVISIONS_WAVE15)), sorted(plan.heroes.filter(row => row.alreadyAuthored).map(row => row.hero.id)));
   assert.equal(Object.keys(ABILITIES_WAVE15).length, 42); assert.equal(Object.keys(ABILITY_REVISIONS_WAVE15).length, 78);
-  assert.equal(Object.keys(COMBAT_ABILITY_OVERRIDES).length, 1582);
+  assert.equal(Object.keys(projectAbilitiesBeforeWave17(COMBAT_ABILITY_OVERRIDES)).length, 1582);
   const sourceKeys = ['universe', 'sourceWork', 'appearance', 'weapon', 'actionName', 'effect', 'delivery', 'pose', 'bodyHeight', 'sourceReference', 'kind', 'weaponType'];
   for (const row of plan.heroes) {
     const id = row.hero.id, hero = roster.get(id), source = sources[id], declared = declaredSources[id];
@@ -82,7 +84,7 @@ test('W15 composes three disjoint groups of40 and exactly42 new /78 source-versi
     for (const key of sourceKeys) assert.deepEqual(source[key], declared[key], `${id}: source ${key}`);
     assert.equal(source.source1to1Verified, false); assert.equal(source.networkVerified, false);
     assert.equal(hero.weaponType, source.weaponType);
-    for (const slot of ['simple', 'secondary', 'defense', 'special']) assert.deepEqual(hero[slot], row.hero[slot], `${id}: raw historical action rewritten`);
+    for (const slot of ['simple', 'secondary', 'defense', 'special']) assertCatalogActionEdition(hero, slot, row.hero[slot]);
     if (row.alreadyAuthored) {
       assert.equal(COMBAT_ABILITY_OVERRIDES[id].versionRevision, 'wave15-explicit-source-version');
       assert.equal(COMBAT_ABILITY_OVERRIDES[id].priorSourceWork, row.priorAuthored.sourceWork);
@@ -175,11 +177,13 @@ test('W15 native helpers reject changed identities, source universes, effects an
 
 test('W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings', () => {
   const native = getCharacterAnimationAssets().filter(entry => ids.includes(entry.heroId));
+  const bases = ['A', 'B', 'C'].flatMap(part => JSON.parse(read(`src/game/combat/characterSpriteCorrectionsWave15Part${part}.generated.json`)).entries);
   assert.equal(native.length, 120, 'Every selected identity requires native32 artwork or an explicitly reviewed scope correction');
   for (const id of ids) {
     const entry = native.find(entry => entry.heroId === id), hero = roster.get(id);
     assert.equal(entry.frames, 32); assert.equal(entry.universe, hero.universe);
-    const path = getHeroSpriteSheetSrc(hero, 'rpg'); assert.match(path, /combat-character-corrections-wave15-part-[abc]/);
+    const path = getHeroSpriteSheetSrc(hero, 'rpg');
+    assertBaseSpriteEdition(hero, bases.find(base => base.heroId === id), path);
     assert.equal(getHeroSpriteSheetSrc({ ...hero, id: 'enemy-local-' + id, sourceHeroId: id }, 'rpg'), path);
     assert.notEqual(getHeroSpriteSheetSrc({ ...hero, id: 'foreign-local-' + id, sourceHeroId: id, universe: 'Foreign continuity' }, 'rpg'), path);
   }

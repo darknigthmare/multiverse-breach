@@ -1,0 +1,2220 @@
+{
+  "schemaVersion": 1,
+  "archivedAt": "2026-11-02T09:15:00.639749+00:00",
+  "reason": "W17 native/base review harness incorrectly limited historical BT-7274 and Hakumen capture geometry to new cohort IDs; production artwork and runtime unchanged. Correct helpers, exercise full preliminary geometry, then create a new freeze and execute every final domain again. No old result is reused as a new final.",
+  "priorProductionInputsVerifiedBeforeArchiving": true,
+  "files": [
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/native-presentations.mjs",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/native-presentations.mjs",
+      "sha256": "a90cc22a800bd70c9cfbf29494ed9682d3e27c0822e670d3cbc475bc136cb0e0",
+      "bytes": 21963,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/base-corrections.mjs",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/base-corrections.mjs",
+      "sha256": "f576669453bb59fc3fc924dab24e512d77610cbdfd5818cf44eec78bc65202b3",
+      "bytes": 19055,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-failure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-failure.json",
+      "sha256": "f16f28290eddeac59cf4883ab7f870132e41ac9fcac06abeaf412563ba53594b",
+      "bytes": 740,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-inputs-after.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-inputs-after.json",
+      "sha256": "fcc36db9a4acfd68ee3c9ae8dcc2c805404aab1dc7e5b85602b80f3be8b48e8d",
+      "bytes": 3197932,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-inputs-before.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-final-20261102090439903/native-presentations-inputs-before.json",
+      "sha256": "fcc36db9a4acfd68ee3c9ae8dcc2c805404aab1dc7e5b85602b80f3be8b48e8d",
+      "bytes": 3197932,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/execution.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/execution.log",
+      "sha256": "312c39ac798cfb63da36d75cb65ea5e6e95fb4ad691972aac2df5d938aa32633",
+      "bytes": 89,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-contact-sheet.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-contact-sheet.png",
+      "sha256": "a048604470eae961e897f14628897b5af0028ab06baf3c6fa5b9138fa71cd04d",
+      "bytes": 4692666,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-runtime.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-runtime.json",
+      "sha256": "9b7e3b70bfe82766761d8c5377a4da8274062960690509f14896ea076f2d6527",
+      "bytes": 7462263,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/native-super-final-20261102090911956/native-super-trace.json",
+      "sha256": "57ad53c07b998d8a92eff5d39c0b8dc3cb7e83c606afd3f44e024fc9a0fb9875",
+      "bytes": 277786,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-opponent-recovery.png",
+      "sha256": "30ad70c9464921c5db47fba68242586d13dab1e2cb358d025bff82afec587524",
+      "bytes": 91693,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-opponent-release.png",
+      "sha256": "71aa5b5c614733b786185e0ae40ecfe51a508a2b7643a82953e2554c055c2f4d",
+      "bytes": 92760,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-player-recovery.png",
+      "sha256": "7572322af41df8335b260db041c281ad80a7e0961104839277af8336eb69b6df",
+      "bytes": 91825,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/beyond_good_evil_jade-player-release.png",
+      "sha256": "5f6d501368f3e78c76bb41142e69dc64492a3b6188d66657a160dd22bd218844",
+      "bytes": 92850,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-opponent-recovery.png",
+      "sha256": "d99bd5f6a016f360766fdc4fdd0ea2483681cd96d78daa8329bbcc01f8618e0a",
+      "bytes": 178667,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-opponent-release.png",
+      "sha256": "6384ac4b2c756a42824fd4da4f15032054013c26c0236f83468b793f98b830fc",
+      "bytes": 181483,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-player-recovery.png",
+      "sha256": "681aeb05c4a4e24bdeec9013340b5412bbc6490e642ef30c36a9297680f97976",
+      "bytes": 184430,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/crypt_necrodancer_melody-player-release.png",
+      "sha256": "d400aecc1ba589bfe18166c4c9bc17c285cfc3cee2268417b8fb8caeda156328",
+      "bytes": 187285,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/execution.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/execution.log",
+      "sha256": "7b20f2b7c2f253d07765fce8f2b9894809de6725b949636c38684a95ac8edad6",
+      "bytes": 186,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/inputs-after.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/inputs-after.json",
+      "sha256": "fcc36db9a4acfd68ee3c9ae8dcc2c805404aab1dc7e5b85602b80f3be8b48e8d",
+      "bytes": 3197932,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/inputs-before.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/inputs-before.json",
+      "sha256": "fcc36db9a4acfd68ee3c9ae8dcc2c805404aab1dc7e5b85602b80f3be8b48e8d",
+      "bytes": 3197932,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-opponent-recovery.png",
+      "sha256": "54e94df1a8364e81f4606a4ee14653e5af26124e126f0376ba2c981ab71abcf6",
+      "bytes": 184232,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-opponent-release.png",
+      "sha256": "e60e072d44427030856e6a1c0a0b90e3d05fcc9dc27d38cb2fdae7e3775a053d",
+      "bytes": 183859,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-player-recovery.png",
+      "sha256": "15920518f9fce71a13082880c756d9c52e50d2078c49c4b056b96e816ba62661",
+      "bytes": 188914,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/kaiba-player-release.png",
+      "sha256": "890700515fed24efd5c3057b827b1472112f8c32834116996a42d5277240c344",
+      "bytes": 188174,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-opponent-recovery.png",
+      "sha256": "728318108cb29243e2c673671e2e1a62ed9c7c76042897c869536650b681ed07",
+      "bytes": 177235,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-opponent-release.png",
+      "sha256": "7335b072d637b94db2e49483a27d8310bc6ae3ad8515223b634b9e1f3c7bc861",
+      "bytes": 178341,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-player-recovery.png",
+      "sha256": "37b5ddfa0c3a29aed30bdc4bd541d01aad1454a9216a2f3928abecce05483a36",
+      "bytes": 182450,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/momo_ayase-player-release.png",
+      "sha256": "df67d8e03bbfe3c1a86dd0e03005d1b6dd109a4693244eaa33f9bbbce5a55117",
+      "bytes": 182816,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-opponent-recovery.png",
+      "sha256": "9ada9d4e6af8156dd65461b72afceabffe5eb7aa467f9acfec2736b4d5bfd570",
+      "bytes": 91848,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-opponent-release.png",
+      "sha256": "905c5892e5fdf8f920a7031e43022bf465ff8fd958385d33f419cd25216c6f09",
+      "bytes": 93514,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-player-recovery.png",
+      "sha256": "bf0755199b19ba2fb3f5fe446a670aeea23e44b337d2b2e3bd1b4a8aa9ecf914",
+      "bytes": 92127,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/oken_dandadan-player-release.png",
+      "sha256": "f0d01a199b501d053286404b6245cc4582c16b6607c42e9ad917e08046eb3cc4",
+      "bytes": 95448,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-opponent-recovery.png",
+      "sha256": "f8caa11e5d57bcacc041a0f14024bb1475f827e7a7fe92ada44f6d79b87fda0a",
+      "bytes": 92880,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-opponent-release.png",
+      "sha256": "56eeb2f44ea9c89e7020c580254d4de44c2920ecc0ee4ad5ee90478c5bdd15a1",
+      "bytes": 95810,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-player-recovery.png",
+      "sha256": "acafaf8e05bdde2acb05228209e9aac2ff80489c7c599da7a5cf09c95593a909",
+      "bytes": 93149,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_batsu-player-release.png",
+      "sha256": "35afa3e2f329b6a85df6af53181f13a28439ab066a135b1669f812590e5ba0ca",
+      "bytes": 97716,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-opponent-recovery.png",
+      "sha256": "92bf0a3c818ba7879bbcb5d4510a0e86200575fea51bfcfe0b3f36004e6ed34f",
+      "bytes": 93079,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-opponent-release.png",
+      "sha256": "3d2d10b9a7a88476d364dc0b533e1c1f6ffed37dbf8c1fd41d0d1952778fe72b",
+      "bytes": 95554,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-player-recovery.png",
+      "sha256": "2012fe1482fa8e5b957edf8e08874ccab99ede3bef2384ce0f7119834bc261e7",
+      "bytes": 93165,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/rival_schools_kyosuke-player-release.png",
+      "sha256": "93e250d386b90f340b3138b2e129ed4928900d589dd99cb474642ee212cd404a",
+      "bytes": 97186,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-contact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-contact.png",
+      "sha256": "7af6ffdf8f213f9790c928498a8efc832107b8ef9477277ca725d3b2d9fa185e",
+      "bytes": 1117225,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-contracts.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-contracts.json",
+      "sha256": "ba3f484de0114a42e913b88eec3a9540125e299603dbe405af12f87bf63e4239",
+      "bytes": 10074009,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-0.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-0.png",
+      "sha256": "ade1101db9153c6a539b6e1c81747cd13db0bb5c686370bcf22198094dca823c",
+      "bytes": 751411,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-1.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-1.png",
+      "sha256": "e6e6b2998040a94f87a94cd34e27e80c19c5a5e2c61f7b4c1ff27507fbac52ed",
+      "bytes": 773180,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-2.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-2.png",
+      "sha256": "d92b48040f06d95ea9e00e9cccda9c8b1bac173691360b8e496612ba32e6a5d2",
+      "bytes": 762137,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-3.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-3.png",
+      "sha256": "9452a262b7aa88f4ac2cb0c2da21dfcba68df2ac6003e6e07381d036d491ced0",
+      "bytes": 771088,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-4.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-4.png",
+      "sha256": "cfdbf19315fbd9e5546a8881b97fcf1e8f635cf4ab09a6815c41fe75f2872fd4",
+      "bytes": 795591,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-5.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-5.png",
+      "sha256": "3d1e065bac455b17bf16d74025b46b5b8fd976c5e855c18f4e5af49398de0aa9",
+      "bytes": 772573,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-6.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-6.png",
+      "sha256": "d109e5e82204dcf50ebd5b258c9c3c0ee69d2cd46bae78b723fe3dfcca26187f",
+      "bytes": 766746,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-7.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-7.png",
+      "sha256": "959515d47240216c01253d20cb7f6b129c5895a3994a678500acbd42eaa555d7",
+      "bytes": 767195,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-8.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-8.png",
+      "sha256": "28741318b1447486eae7453975c809832ecda3f906dcc4dac15c917df9308955",
+      "bytes": 761181,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-9.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tactics-engine-focus-9.png",
+      "sha256": "412e2bb2c3fd748d9ae92a646b54b19318b7910034e1af80407e44c108e82069",
+      "bytes": 744978,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-opponent-recovery.png",
+      "sha256": "b3c99644783f4017b819a38c029ef25d58fd65e9d76d2ed89ddde9acb20bcd12",
+      "bytes": 178953,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-opponent-release.png",
+      "sha256": "868c538963c09e107d4021dab1b7b399c343fbe9205788b4ef075b4fcf37d559",
+      "bytes": 179773,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-player-recovery.png",
+      "sha256": "9e60ca67c6ca8dfef8e94f5b1d8a2cf201b94f80917c06b34c41a12356e8eccd",
+      "bytes": 184577,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/taichi-player-release.png",
+      "sha256": "43d52232d0005b3eeccb0a6687773e2e94327c538d10f650d5a7b38a56370cad",
+      "bytes": 184980,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-opponent-recovery.png",
+      "sha256": "44631d66344c5067fd4fe68572537b313425a39b3d7f16b19186704ebc2e2689",
+      "bytes": 95119,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-opponent-release.png",
+      "sha256": "8127a2de1f124ed75363e27964070896925e248baf0a935b67b12d620313b07a",
+      "bytes": 95268,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-player-recovery.png",
+      "sha256": "31e0a095535c6910b6615baaabc11ed0267396d8badeddf635c3d0b0988da91b",
+      "bytes": 97257,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/tail_concerto_waffle-player-release.png",
+      "sha256": "2efc515a6f639b1d025499035514b2e0f0e3c7a28c27f77b1684303506ca9771",
+      "bytes": 97261,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-opponent-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-opponent-recovery.png",
+      "sha256": "a02e9e2a1b94d03f62945496983c19f7a978f01f39b79c0142f42fb9ca7034c9",
+      "bytes": 94063,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-opponent-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-opponent-release.png",
+      "sha256": "c693e5f4eea31c74e1419bac484ca542214a234c719e32cbb76faa687983b5fe",
+      "bytes": 94819,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-player-recovery.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-player-recovery.png",
+      "sha256": "5569bbf6b4ad67e9ca3e3c249f8c948b1dca1ae5ff21e50db4c6469300a3a548",
+      "bytes": 96336,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-player-release.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/tactics-engine-final-20261102090910787/team_fortress_2_medic-player-release.png",
+      "sha256": "b5b5d52ae3ede68afe4a6e71a7534d1ba9ce58c522606e4f9d37142518dfa5bc",
+      "bytes": 97013,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/canonical-npc-rpg-smash-visual-review-final.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/canonical-npc-rpg-smash-visual-review-final.json",
+      "sha256": "885c72e3dae2c2fc4da352ed267064b7332458a5ae131c951dcfca4cc3de6893",
+      "bytes": 5170,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/jade-fourteen-browser-flows-visual-review-final.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/jade-fourteen-browser-flows-visual-review-final.json",
+      "sha256": "29917b4992bb47be2236fecb8620b2015f746ca6a6d467700bbed409a622ff94",
+      "bytes": 88065,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/native-super-contact-sheet.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/native-super-contact-sheet.png",
+      "sha256": "a048604470eae961e897f14628897b5af0028ab06baf3c6fa5b9138fa71cd04d",
+      "bytes": 4692666,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/native-super-runtime.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/native-super-runtime.json",
+      "sha256": "9b7e3b70bfe82766761d8c5377a4da8274062960690509f14896ea076f2d6527",
+      "bytes": 7462263,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/native-super-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/native-super-trace.json",
+      "sha256": "57ad53c07b998d8a92eff5d39c0b8dc3cb7e83c606afd3f44e024fc9a0fb9875",
+      "bytes": 277786,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/rpg-gamecanvas-visual-review-final.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/rpg-gamecanvas-visual-review-final.json",
+      "sha256": "a392a58a182d78f827f9b12fe9124500c9e429ab1a2d5ba267ae121a07fe8ece",
+      "bytes": 7705,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/browser/tactics-engine-contracts.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/browser/tactics-engine-contracts.json",
+      "sha256": "ba3f484de0114a42e913b88eec3a9540125e299603dbe405af12f87bf63e4239",
+      "bytes": 10074009,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/archive-manifest.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/archive-manifest.json",
+      "sha256": "d4aaaa10496aea0d1fdc4733b0738f00cf99c5fcde8f3442581e172c28d89f71",
+      "bytes": 30687,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-closure.json",
+      "sha256": "4ead77292620fb582c2bf4d0b536376059719f5296bc0069cdce07f30bf43952",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-impact.png",
+      "sha256": "436bf04c468bbe4c286fc9655232673aefedce295768c0dc7ff32b3dac8dc646",
+      "bytes": 499460,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-result.json",
+      "sha256": "8ec87d873fb91c61b55dfdafd78fc44ad381107c2fbc61bc297b1d4293bba116",
+      "bytes": 277281,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu-trace.json",
+      "sha256": "0b0eb9c17dd3f5dc86d86131ffb000ccdfa0c8891f8d93ebec7b5bb9ffa0c2fb",
+      "bytes": 139636,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu.log",
+      "sha256": "b15e77aaae5df0a1f05f73e2914095d710e55df3121f701c3b2a47c13f9740a4",
+      "bytes": 219,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-cpu.png",
+      "sha256": "cf477472ba425258b4b551342121616415c669d2e484a7698c90781102ff1aef",
+      "bytes": 498674,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-closure.json",
+      "sha256": "274879ef0a4aa02bd22bea7c2d07ef408a4d957fcdf4c1781730dd5e54441564",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-impact.png",
+      "sha256": "5fc712d4d1edb9f0635df0408c47331ca0ed66383d4571810793027ba87b7943",
+      "bytes": 501038,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-result.json",
+      "sha256": "e86f9d65aae2bdb780e06f3ea15a85a81cfa233d80ff3dc57014a929f4386430",
+      "bytes": 277298,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player-trace.json",
+      "sha256": "1e86a67db4032d35d5fe15b4b4edc9d428fe676f839d4a9a6641591537546bb8",
+      "bytes": 134956,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player.log",
+      "sha256": "4a581da703a1d46b0763b0aff8f362daee621c4dcc14450960cf57dfb90ad262",
+      "bytes": 222,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-attack-player.png",
+      "sha256": "a6eba7abb764fda489ed97e5606c75aaec22014c2eb56a523df0b81d284f4ca9",
+      "bytes": 499371,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-closure.json",
+      "sha256": "ff952a698f064a97f364898ec8424faf0966d4a2096b5d3e0dabd45381de6eec",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-impact.png",
+      "sha256": "4d3259f9e191002b585ded9f0765c594b98fce530fb9c3c9e6ace41e3b43f836",
+      "bytes": 499390,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-result.json",
+      "sha256": "8a7cbe588c5b0f8f7fde53d7bec76780d629ed921d08ab430741272f4c4d25be",
+      "bytes": 277270,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu-trace.json",
+      "sha256": "95644b05cb1005c4cc62a93d48f0974429018929aa4df54e0e83583f97e80393",
+      "bytes": 186758,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu.log",
+      "sha256": "64b7d639bf9454ede52c65caadbd4be7003b1d8f49a9d5fe20c4de8f59f648fe",
+      "bytes": 219,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-cpu.png",
+      "sha256": "26d7831bab9f5da7c5715f5fd4f8011ccb9b7880cf9e69301fa6e04cdb6fabed",
+      "bytes": 498796,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-closure.json",
+      "sha256": "f74f1f0ec17bc92c6f945161950ef8e2e0dbe9d7b2080c55e67478de2978f915",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-impact.png",
+      "sha256": "5613358b906c56504d82ffd23972b8318a37c2323aaa0e275398876f70411af4",
+      "bytes": 503557,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-result.json",
+      "sha256": "215b38898afc4818b2e6025d7605f935b247e29586e06bccf792560b9d80c0a1",
+      "bytes": 277286,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player-trace.json",
+      "sha256": "e4d8cbb2cff1b04f2903f14d0d296a743490f050c7597398e3f83e0e4315292f",
+      "bytes": 189457,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player.log",
+      "sha256": "ebcd82b3d407566945372b97a414a7801b940ecdc00967f8c8a6173935d97ae7",
+      "bytes": 222,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-charge-player.png",
+      "sha256": "1aa8d8596f3bdaea0cfc50e87b1a1e4e17b0583064cae5528824abc9a1d5d735",
+      "bytes": 501279,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-closure.json",
+      "sha256": "eaa7c6ec9f150ccc135302923d52c0a2547a44a9548a5438e2f9e7f8546c00e7",
+      "bytes": 273507,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-result.json",
+      "sha256": "dae45acff23cf18e574540ec3a2207ac39db56ca74c0a952dcab7ea63965b77e",
+      "bytes": 274659,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core-trace.json",
+      "sha256": "47880d1b34c2a0114de7ca1fe43a23a2e10681842bf97d7ac12039019ddc9784",
+      "bytes": 181719,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core.log",
+      "sha256": "60b73c4dc290e651608a41eba9063a26887027936378a39a525a3abd38284b78",
+      "bytes": 213,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-core.png",
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "bytes": 1442871,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-grips.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-grips.png",
+      "sha256": "1ec7b93fd5b464640ce2f6b0b9567b47d71bd3386dfc72223054d3190fde4978",
+      "bytes": 55250,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-active.png",
+      "sha256": "1b4598537b442975f549aeec1e855c30fc1f69ebe172715ca711afe3cfe4b647",
+      "bytes": 497535,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-closure.json",
+      "sha256": "be308ed5ecbfaab27127749c0c0b6f46638262bd258316b78ba6d3988bb3bccb",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-result.json",
+      "sha256": "767be106849c9edc3f1361576e761e9ec9cc6a9c1a306095e58e2a4a54c285b6",
+      "bytes": 274738,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu-trace.json",
+      "sha256": "37df92419efa97f3158fb33b2c572d4082209f3c75927a0b229bb462677ee63c",
+      "bytes": 96165,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu.log",
+      "sha256": "831b1989cd210235e7f496cb006c92e0a42a56f6ab1a11ed9d84fc19fc3d2d4d",
+      "bytes": 218,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-cpu.png",
+      "sha256": "8181abb5c05bc0b88af32324f935ed044b793e107e39a1a19207283b44156a01",
+      "bytes": 496343,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-active.png",
+      "sha256": "8cd61c004a075cc2742e51e450fdb2361fcd375d5567f5e17c598a1e3692a095",
+      "bytes": 499734,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-closure.json",
+      "sha256": "8414192f4820d8ffd6c8a93bb99942dd65f16925044bab2d3cc4a6ae8ebc003f",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-result.json",
+      "sha256": "6e911858a82010756388cc714bfff13f1b5a7af700c1ff2502d66456572be0c5",
+      "bytes": 274747,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player-trace.json",
+      "sha256": "363d1f0b982bf89ec682e5646c588e7f910c368079d96c2fbab3f65e2dbd6070",
+      "bytes": 90978,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player.log",
+      "sha256": "f729889fdc4941aea05d9aded3e0b174e6798c224e762785f991acaed10e86c2",
+      "bytes": 221,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-guard-player.png",
+      "sha256": "f853406b40038b32d47a87e13d86b8bdca0ac90718e1299c25a15c76e9585097",
+      "bytes": 498934,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-closure.json",
+      "sha256": "cd113b723fe0cf65d54334fa64ffff7cd709b32ce44484f30aab6c357f631370",
+      "bytes": 273506,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-failure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-failure.json",
+      "sha256": "fa389556ebf44521c27d8a18409e238d3e708bc81f9cbeebe5b25e9def1972c2",
+      "bytes": 160492,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-failure.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-failure.png",
+      "sha256": "dd4ca95afb704dda373aceebefb6bfacec837663b3c84382fbb9c615112ee70f",
+      "bytes": 499689,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player-impact.png",
+      "sha256": "7434dd5141140e6fd4f01d695c8e2acae744895b2292955e924cf9bf60d2b3e8",
+      "bytes": 503644,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player.log",
+      "sha256": "b9aa0bfdc0bc2f881dbae1120ec422357a140a8b7b3fa821685ef387918883b3",
+      "bytes": 427,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-gyrodisk-player.png",
+      "sha256": "b9ce48170703a2844728cca2bfc925625d84686600a59f5c8a720112206e585f",
+      "bytes": 501721,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-active.png",
+      "sha256": "0b4ccb9649f5ba761f6e3f17949c1e840d926a5e7afec6d805273a7a9981d417",
+      "bytes": 498317,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-closure.json",
+      "sha256": "890ff44f9e2159c8de0db51605a9c066f00ee3cdbed12ee5f85a3fbdffac52fd",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-result.json",
+      "sha256": "04d73068ff5111c9fa1886e2a66b410fd69782d506146a190522ca51bb4874bc",
+      "bytes": 275125,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu-trace.json",
+      "sha256": "60cdce1d8d5591112dc202af81590aec64d417a28bdcfecdb2b626b89a9e0d94",
+      "bytes": 100423,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu.log",
+      "sha256": "d633aa0ed438d82616981e85b07fcddcb962f4c360fc6b20f3b0981e284b426c",
+      "bytes": 221,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-cpu.png",
+      "sha256": "e997f824e477e34e0cff2fdf62e88e946f39551d4c2e7288cc575210f95af61c",
+      "bytes": 497210,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-active.png",
+      "sha256": "6de183e700fe3cdc9410e29d2ea31e74bf1cd0f6c34230c783f08aa1a6687aac",
+      "bytes": 500972,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-closure.json",
+      "sha256": "59b204609ebe03151f432c77e22f48e6c8d074756a5c7915ae20268534cc720d",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-result.json",
+      "sha256": "efff70aba196a7bb801248f80f197156796c19defdd44b8e42c8ac3e2870bd98",
+      "bytes": 275134,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player-trace.json",
+      "sha256": "52cda992b2c917bcc57925c8810baeb6515de89c18f67822a81de15378ff9779",
+      "bytes": 101437,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player.log",
+      "sha256": "ffba6dad6ac5fae4f8fd645cd34e5fd51b679d30873cbcf1e55d7c46614561a0",
+      "bytes": 224,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-movement-player.png",
+      "sha256": "0ddcfb6c0a585242121b7a5e2cb4e55d63bed991e44f2a68b0cf0a3c9c3ac227",
+      "bytes": 498349,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-closure.json",
+      "sha256": "32fc14ad5ff6a3d0b4d4e8a82489c791e63d048f385d39f9c692ca5a2f8b64df",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-impact.png",
+      "sha256": "85c1e64cd36548101d340b89507fe2ed50274deca2298618037875762c56c96a",
+      "bytes": 510482,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-result.json",
+      "sha256": "be6179f35824a6ebfbaf8927d3f27ab8737035663b7481fc99c5c89b1121b1cb",
+      "bytes": 275935,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu-trace.json",
+      "sha256": "46dca7f8998bc1fbad0ee410d9bf981c4e434b964d178a4bcad73da8d13848d2",
+      "bytes": 116204,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu.log",
+      "sha256": "64512fde2328785f6f5de83e2f7ff0c1f3f2ed8b2721651050952bf7dfc793e6",
+      "bytes": 218,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-cpu.png",
+      "sha256": "3f691f51c9ec44783a5e483d5a796e0d971dbb9a0111dba4b3688e2f176f22ff",
+      "bytes": 501213,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-closure.json",
+      "sha256": "4b7acd9f5b2c7005815074d46b1ba49f0a4006a84331f245c52cf7991b37fde3",
+      "bytes": 273505,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-impact.png",
+      "sha256": "fa2d7b611529fb7a29131bfabe4915efb523053279e75273be30d56b5a3f40be",
+      "bytes": 512795,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-result.json",
+      "sha256": "adda30480284b6871a25d2499b5b73a92dea5dd4d1127d9a36420c43b786b651",
+      "bytes": 275946,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player-trace.json",
+      "sha256": "9af57824f3f4b0d7ab2bfa5a6ae491421318262ca4505c386d7f308dd8642b59",
+      "bytes": 121749,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player.log",
+      "sha256": "dfbe7fe945f93bc7627746d47b6223fe0b5282c408a567e598394dc11989461f",
+      "bytes": 221,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-photo-player.png",
+      "sha256": "81a4a652515161da51c7af52c1c216e8768890791b838427c597719c82455e45",
+      "bytes": 499861,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge-closure.json",
+      "sha256": "92476cbd91c8622e2ee6f0a394a0a7ed80811f5dd8699f21796ed5df0e8b8dc0",
+      "bytes": 273517,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge-result.json",
+      "sha256": "2e396a7c92abb8756d033fdb9963271567d9f183bc396efd5157545245a5d12f",
+      "bytes": 365127,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge.log",
+      "sha256": "4bc58dbd274d2096dda81d3ba4b58877401e8b0145fbcc5d14dae10655e72a8d",
+      "bytes": 223,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/jade-physical-ledge.png",
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "bytes": 554834,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/runner-failure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/attempts/final-failed-gyrodisk-player-20261102T090040474262Z/runner-failure.json",
+      "sha256": "509b2570f5359592f70d92e998df0e4b6b329de9a674201cdf77f4c4f9594100",
+      "bytes": 9797,
+      "movedToPermitFreshRun": false,
+      "alreadyImmutableAttempt": true
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-closure.json",
+      "sha256": "3a461645fb2ee2bdb3e8fab5599f30ba9dbc79ed81c5c73667e943ad2a0d153b",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-impact.png",
+      "sha256": "cd9fc6213b4e7c26eaa121b627a307e2d43f49e069a534655f6027a52361e904",
+      "bytes": 499944,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-result.json",
+      "sha256": "76da9e65db49d07101a6c934c8cbacbcbc1792e70e525795ebb9e75473868f82",
+      "bytes": 277281,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu-trace.json",
+      "sha256": "f71cb9c21d98ae3963b96bb15c901c8809d60541fdbde3179ead715a0b69d6db",
+      "bytes": 139594,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu.log",
+      "sha256": "d34798d6f6b60edef273af604e8d6425ce61d9de990de1550bf9e688c9b1dc55",
+      "bytes": 219,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-cpu.png",
+      "sha256": "1f3a99827aea67d5e13e325c984a0030612d10d4be10f8464a1e653d9f4b1d63",
+      "bytes": 498674,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-closure.json",
+      "sha256": "f87325156cb4918bc4069334c6358d2612261816565cc81e2184c52af63bdaa8",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-impact.png",
+      "sha256": "833b016fa57ef0dfc81f6c1bf5db6440880f04fda0ec216e4a50ac0110d057ed",
+      "bytes": 501401,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-result.json",
+      "sha256": "1768c4dd4dbe1599c79906ebed4273c9b14f8a584449d54558f7e8ef2eace345",
+      "bytes": 277298,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player-trace.json",
+      "sha256": "a886864b6fcf4a134bb5401545e045d4c9224a3b8562d83c77e02bcf0b28de59",
+      "bytes": 138751,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player.log",
+      "sha256": "965c1ee5d81a90f95f0e47d7759d5efcf7858904cab297235d87ecd08982f6ba",
+      "bytes": 222,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-attack-player.png",
+      "sha256": "d691fa01b8bfd2d3d647f7968fe47569b4b8862108342570488ae25c33a114a7",
+      "bytes": 500376,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-closure.json",
+      "sha256": "2d772da336bbd7115f968f216dd3108cac44c502f76f70c9ce0f4e418fb85f16",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-impact.png",
+      "sha256": "6c9e0e42a1c791f85cdd86cdd8fc46144f5cc99e28ab83958a89c45e6d34afb4",
+      "bytes": 500423,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-result.json",
+      "sha256": "0705911908527dd371cf3b455fb6634b6c99c7654d483018c205bb6b34b9d0a6",
+      "bytes": 277270,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu-trace.json",
+      "sha256": "1f2b27f801b6303637f484a199e7fc4ea0155f9b0dcb8683f0580e2a6df845ec",
+      "bytes": 184183,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu.log",
+      "sha256": "6e48b89efab6b36c365274c0750ec984a36b766dadad889566d908bc76195f68",
+      "bytes": 219,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-cpu.png",
+      "sha256": "84a82ffaf4bb4a860ec808e5bd56725a50d46f37fa155d756afc8112ec393750",
+      "bytes": 499572,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-closure.json",
+      "sha256": "ae76327388c3f9f896e9f6dcf9a04ba2f68ec3d267f8edb3081721a3d6616901",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-impact.png",
+      "sha256": "34b52dfd8b92be037811a8d5ba0b8e382631ef9fedb165a282beada912411afd",
+      "bytes": 502688,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-result.json",
+      "sha256": "258cdac60477bbb3c217306901d762c67176277d10b404fb1591c4bc78591a69",
+      "bytes": 277286,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player-trace.json",
+      "sha256": "8d32272956bfe432255b7f9e91f4de1c631dfe66c042acf0550ee9414e84fb17",
+      "bytes": 184181,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player.log",
+      "sha256": "7ba238b44eea5b6140edff50a0ff340bb6010270da8cc76f1fee6cfeeb5b2d57",
+      "bytes": 222,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-charge-player.png",
+      "sha256": "db3af436d3bd5b54db07f70513f79c65a173a4307a964be8851a3dc7b7d45957",
+      "bytes": 500902,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-closure.json",
+      "sha256": "684cbf550ef2a7b06892767f9b8a506decf214e3b9bfcfe7ba48953e804bf5b2",
+      "bytes": 273507,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-result.json",
+      "sha256": "dbc1596671b7ebc3b828e5b4972bcf1203791abaa372ec40bf833b053565eca6",
+      "bytes": 274659,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core-trace.json",
+      "sha256": "47880d1b34c2a0114de7ca1fe43a23a2e10681842bf97d7ac12039019ddc9784",
+      "bytes": 181719,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.log",
+      "sha256": "755766508c3db9d572fcc1b99b07569a1ca1a5429fb28a0be6f80c4f8ca6cacf",
+      "bytes": 213,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-core.png",
+      "sha256": "0de2f1fee9ed7da6540e1295bef1db1d4440cb0909b3c7bacfe2e207b62b6b80",
+      "bytes": 1442871,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-evidence.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-evidence.json",
+      "sha256": "1d3f4cd61a8c091286b921db7176bf9c208a13f1a2632bb709035e420ab4f1dc",
+      "bytes": 317939,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-grips.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-grips.png",
+      "sha256": "1ec7b93fd5b464640ce2f6b0b9567b47d71bd3386dfc72223054d3190fde4978",
+      "bytes": 55250,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-active.png",
+      "sha256": "7bc3658faf056769c5ac7f503ae010b2dc3555443f912e0391eedab195501af0",
+      "bytes": 497575,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-closure.json",
+      "sha256": "0dc3ab646274fdc574e3dc6c170f98ca51107b751dfbc35dc90940da7f7d769d",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-result.json",
+      "sha256": "92d0f04b8ee75d7061a4ad9fd5a625f8d9df3f9ea57310d8b52ff548d3c5d363",
+      "bytes": 274738,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu-trace.json",
+      "sha256": "647a0a8f2272cbe4e9443300ad10933950b2efa4c3d33ec2d8b9c04715b12096",
+      "bytes": 92527,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu.log",
+      "sha256": "a020e55c545a3a0f1fe3cf2866a8cd66f0f561a706a43414d6c0b1cfafd912bf",
+      "bytes": 218,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-cpu.png",
+      "sha256": "ce02ee84d87655c149100a51f28aac34240698393c9dc2ca78f0f4ab7259b3eb",
+      "bytes": 496265,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-active.png",
+      "sha256": "85c7953b0853d2c9b6198871ed44566febe519a1ffb9c60054a73a47f6538ad3",
+      "bytes": 500207,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-closure.json",
+      "sha256": "f3d14df9d4224a59279c992d053c94be68db6af991ecb27310a8e9074309abbc",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-result.json",
+      "sha256": "0edf95aa3ccf4fe83f9bbdeb69a2d97636c58cafda77588c133df0b14c06da50",
+      "bytes": 274747,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player-trace.json",
+      "sha256": "948e39e8e20814b9cd3069865bda4e8f937a35e3d71f2360939e12eef47defef",
+      "bytes": 96788,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player.log",
+      "sha256": "dec1e9d1d523dd3c2d73aae00a6afa5c0d77c6ec6591857b73c0a3d2fa84ce53",
+      "bytes": 221,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-guard-player.png",
+      "sha256": "8345219a975dc8f34359f8d31dfdd6b408f1f663f578c2778aeb097905ea4865",
+      "bytes": 498746,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-closure.json",
+      "sha256": "a650f2bd78bddde9e0e6d42d65be6e0e50e1ea935c324e75b09aeebf37d67821",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-impact.png",
+      "sha256": "9d11fe66bb73264c6a610dcccfbdbc536adaaaf3e8e4130ebf0af2a699dd0fd1",
+      "bytes": 500497,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-result.json",
+      "sha256": "16af0e68efd4016cdfee8bcd85c5ef4adbb2ae922dd64cb7b3d5316055c5f905",
+      "bytes": 277052,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu-trace.json",
+      "sha256": "69863ceab2da2691cf8ea7294b5f6c93e74e1fb996dcb078c812cc8afd947a32",
+      "bytes": 134621,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu.log",
+      "sha256": "7b0f2a1d519da1c8aa1b1129daa9e8a93abf95a5e7fb44d67bc02ab3fa27b938",
+      "bytes": 221,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-cpu.png",
+      "sha256": "1c0be98c1f0681d4a5c0c30c065ddf0831b06787ab2d49bd9b9737df9e2c7403",
+      "bytes": 498590,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-closure.json",
+      "sha256": "7758a946648a0805e9b682c84283cc321e0be554bbd9d86663e38228ed4501cf",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-impact.png",
+      "sha256": "d18a7dc797e83f798e3924cac77a569081bea4a930f1c8295a4607e842a97139",
+      "bytes": 502669,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-result.json",
+      "sha256": "6db9c9dcf215b6aa3555ae7069510ecab04c0ba58fc0f19718e0f921d5f23423",
+      "bytes": 277061,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player-trace.json",
+      "sha256": "61a4be6b8b6b66fd39eb65a1c97c5ae9affed660a02ae89db4270e148027f3a7",
+      "bytes": 136760,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player.log",
+      "sha256": "afba5ed5e28dd0c93f0dd01e599d517855d233ce0bb273a3ec3ed02ab5b36e41",
+      "bytes": 224,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-gyrodisk-player.png",
+      "sha256": "db307b6fdf30a8950b16ede9d1361b614a994230997c9886adf108fd8ca3caef",
+      "bytes": 501163,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-active.png",
+      "sha256": "64da418eee8c428341a3e6dd48dcfdb113a3be8c6698a108a901f065debfc13e",
+      "bytes": 498239,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-closure.json",
+      "sha256": "403e83121a9a64d6c3c2a50f453d46791f8be57be919d5e94756e6e89606463b",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-result.json",
+      "sha256": "2217e2de2c5a0458384d736f84681640d5931f3d84aba6f7affc09203d85f49d",
+      "bytes": 275125,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu-trace.json",
+      "sha256": "906154ca957e87c2545a92abc8a332b275d8e1966f739f6e754469a4aa87641f",
+      "bytes": 98974,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu.log",
+      "sha256": "799becca34431bcd42205144b55e2052acc6108008218ee3b3452557295e7c8a",
+      "bytes": 221,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-cpu.png",
+      "sha256": "b5d50914f309be888218cc6a3d675adccbfa3a06021b6c1ac3b1365fb19a2528",
+      "bytes": 496668,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-active.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-active.png",
+      "sha256": "de05df4d83460db229f8581c20b6068f0e9311745956017f4ecbc2d4fa8873f5",
+      "bytes": 500765,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-closure.json",
+      "sha256": "9be46f6188be5de4250b2ba82511c1fbf5021a9f6af230094cd23973e176afa2",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-result.json",
+      "sha256": "cd7e036f25858a4c8983d45cc060235baa17906d32b3fe320a272d70041d6348",
+      "bytes": 275134,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player-trace.json",
+      "sha256": "8423cff45671f17758578c27fccfe98e6af3bf70e3effbdddaec9117a5a6e80f",
+      "bytes": 99314,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player.log",
+      "sha256": "6dd08ab531f66ef05179518af3648c533b57147d0f7aa79de8b05048511ea557",
+      "bytes": 224,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-movement-player.png",
+      "sha256": "c7e29649efd9bf42c53b62601d698b618f54640824943688f118531ed89a501e",
+      "bytes": 498947,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-closure.json",
+      "sha256": "022b35147a049c156787cdf86ff1b54fc53812a12f4abf62f465094aa48a7f7a",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-impact.png",
+      "sha256": "efcfdf7972e821d4ff4e2812c9fa4eff2324bce849c7cd0b44388ccc4f62c258",
+      "bytes": 510171,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-result.json",
+      "sha256": "cd7b2583eda54a1579f241a425efd78b53c24aefc50b4f83a1fb976b0df78fcf",
+      "bytes": 275935,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu-trace.json",
+      "sha256": "65ebfbf84c9b33bca73bf6e6f2fd71de4c9f446230da0b4a2a8112bbbc8d26cd",
+      "bytes": 122365,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu.log",
+      "sha256": "f86c9aab6d131cc286eeff221f4165329cc99e7e010532e5589b0f40c32509fa",
+      "bytes": 218,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-cpu.png",
+      "sha256": "06964b3e5d1ca4ca0a122b2bc9eb808b179aabf4af8b4290cf83c75404a792b9",
+      "bytes": 500267,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-closure.json",
+      "sha256": "f89d92aa4ab333f042176e71653d8b9e5c68ad5e9e814acdde9e7658a43487b7",
+      "bytes": 273505,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-impact.png",
+      "sha256": "0dccaef432988bf5c16742ef84a3ebf8a009edf26d75e9f4c999008edce17e51",
+      "bytes": 512328,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-result.json",
+      "sha256": "abe0682ca331e542c6dfb10380da27d27ad85d676193dfddb02bbfe46afb8578",
+      "bytes": 275946,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-trace.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player-trace.json",
+      "sha256": "1d194fd9b0003e3054640f9f66c582d4485a860a543d742278f94b4356b6d960",
+      "bytes": 120813,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player.log",
+      "sha256": "cf46f7aea8a2c439a1dac514c6462c39b6f4b49a186e2f11583c070792e17cec",
+      "bytes": 221,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-photo-player.png",
+      "sha256": "75c780b349e81e2ee88e7fcd05d7158f98c2d98cd217f3a945ce1fc81bbfa087",
+      "bytes": 499843,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-closure.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-closure.json",
+      "sha256": "d688113a873ffa906e0af417a472720f39c67b0970269690ee76e3a3f9d5af95",
+      "bytes": 273517,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge-result.json",
+      "sha256": "6d58bf99a17f79e19f13466560fbb18fe2887993e93643866e67d21e73c6b93a",
+      "bytes": 365127,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.log",
+      "sha256": "13b512bd92a547ca63baeddff5f4d66ecdbd616a4b32f476e0bc4d88c28a192a",
+      "bytes": 223,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-physical-ledge.png",
+      "sha256": "72e07f7795e01b7c4d1c01cc10848226659461d33446df9719d0ca4cb509e541",
+      "bytes": 554834,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-review-contacts.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-review-contacts.json",
+      "sha256": "3f799717fb8f15c09efdd9e7b4099d83786d4a43ac54e1d2544d47f2af639439",
+      "bytes": 71521,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-0.png",
+      "sha256": "dff920117945e789c8b1b414e78cb9fa2bfbfe7e1107c3f36debaf64d824c466",
+      "bytes": 139165,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-1.png",
+      "sha256": "6ff39f7f03682878822153ba09da837b5f2259efe9c95d810a6b7442ce976a6b",
+      "bytes": 126939,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-contactcolumn2-both-facings-2.png",
+      "sha256": "9a7634388def88fb1f9c55cc31baaa941b7258223d27099d7b8f5cdaab283b7e",
+      "bytes": 19440,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-grips.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/core-grips.png",
+      "sha256": "1ec7b93fd5b464640ce2f6b0b9567b47d71bd3386dfc72223054d3190fde4978",
+      "bytes": 55250,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-0.png",
+      "sha256": "d863635c0039823bec56039be560593796315bbcd6d8f67743b1315dbdbd4289",
+      "bytes": 56113,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-1.png",
+      "sha256": "078eddcdb4ba6168d7f7052af9d64a7131ccf32042424dc2729f4ff88c82ea7f",
+      "bytes": 55120,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-2.png",
+      "sha256": "f5cf3bec66d7f408572e78224a858932ea09659cc77ae55bd59546630fdacf0e",
+      "bytes": 56668,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/final-ui-hud-3.png",
+      "sha256": "4e63722cc943dfd037b541ca0ba15fa1bf47f8f7856ff25f03d0d166307d4e56",
+      "bytes": 55436,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-cpu.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-cpu.png",
+      "sha256": "8e54966861abf4d86cebebd1a0a42e40c0e2b5c65d8c4ea69ecdc24619c3ed2d",
+      "bytes": 469866,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-player.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/movement-player.png",
+      "sha256": "50b62c159cbd594d80e4ba31349cc3fe188357db4d40a333b93c5e8be7ba8402",
+      "bytes": 470471,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/native-actions-two-camps.png",
+      "sha256": "3cbf7ca5c72d14cd61d85b7cea1b1044787f7f79c53a9cabb59987ed69c92e51",
+      "bytes": 499284,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-0.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-0.png",
+      "sha256": "10b4f9364ec9d51219929984b181f57a8e567e62b5fc3547bdb321128ebba98b",
+      "bytes": 126285,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-1.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-1.png",
+      "sha256": "99a3d5217c9c63f094401bd2b9fe21666fda4d558cd8ba4278fb4d1756fba26f",
+      "bytes": 126415,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-2.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-2.png",
+      "sha256": "8eac41d086088094346477ccf67082a50df07d23220a2d6619ca7649ef933a2c",
+      "bytes": 127275,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-3.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/review-contacts/physical-ledge-3.png",
+      "sha256": "01225fefb97bc878a8017be60fb4c5a43c1868d03fdc188a1a904c9f4b4281c9",
+      "bytes": 127426,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-browser.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-browser.log",
+      "sha256": "f9a557598b09d98e58119c3b2ed6d4735056c1b5e294b15d1e01543b3cdbda86",
+      "bytes": 114,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-result.json",
+      "sha256": "c7e02117e87e14ae0ab95e741af0562e774b0ac959e4c8644db01004db3f573a",
+      "bytes": 476632,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-captured.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-captured.png",
+      "sha256": "a387e32ef2212b1ea4d60ba063c490daac8b1bb4bdf7f3d7fec0d0f06958ac72",
+      "bytes": 609487,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-released.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-enemy-released.png",
+      "sha256": "9fafd775a94578e3402d217019cc4d5cd599df7488dbfc6fc67fd5ba220e415d",
+      "bytes": 609011,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-captured.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-captured.png",
+      "sha256": "a7f8554aee148f19a9eebe5d01f239af14c6c29576ece883c9aebc4fbe2a7080",
+      "bytes": 610524,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-released.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-rpg-player-released.png",
+      "sha256": "80bc6a75e32a2421b2364223ec900e503c9d0d09d3f1d584ece3cd74a7fd5ff7",
+      "bytes": 610504,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-captured.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-captured.png",
+      "sha256": "6d9edf2345e685736e0feb1e8ad835019fdb5853b7d2fedf68b33cb681400434",
+      "bytes": 536192,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-released.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-enemy-released.png",
+      "sha256": "a8049004b3dfd1e6af90501c3ba7ea997f96c30bbc62d1593d37bb76cb271cfb",
+      "bytes": 528741,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-captured.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-captured.png",
+      "sha256": "f6b7dcfda3d1837c9afb9f0cb64385043eb379f0f4b556bef1c5e2133bbebff2",
+      "bytes": 536245,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-released.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-final-smash-player-released.png",
+      "sha256": "8ca81cdc097cc1b4a7c9d9528a0b4c23b71546433944e1246f5f30ae218e64d0",
+      "bytes": 528964,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-browser-final.log",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-browser-final.log",
+      "sha256": "ca3ff7341410d6ab93c3af8687546ae6636278b38f8e86750e4a60496c298efa",
+      "bytes": 4373,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-jade-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-jade-enemy-impact.png",
+      "sha256": "57677b76b0ffa3ece4ce23dbd51ccf15a8300a9f4012a392d52e4ea455c80a9a",
+      "bytes": 42528,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-jade-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-jade-player-impact.png",
+      "sha256": "03d11ece86051bfaf4196621170cd57553ee8fc3c59e934675307c4fb6803d0c",
+      "bytes": 42977,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-enemy-impact.png",
+      "sha256": "bac0de959f8a270a07584f003a6a7ad399bf673312bd51d1b2367d3313d71dfe",
+      "bytes": 44163,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-enemy-targeting.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-enemy-targeting.png",
+      "sha256": "da6828d445c162f6d4e9d9ce5b3be04ac05c576686a02ded2f19683a693fe0e4",
+      "bytes": 39112,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-player-impact.png",
+      "sha256": "db624bc7da4b89bff446d98d77661d1e8fa63bd91bd306ff220aad6dba042710",
+      "bytes": 44315,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-player-targeting.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-medic-player-targeting.png",
+      "sha256": "97b698c075f8e5a5b59caccf926ed5b4a79947be1f50df2003339d1957d7c28d",
+      "bytes": 38882,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-melody-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-melody-enemy-impact.png",
+      "sha256": "67cf59794d25e2babae7fc3595138fad4f3bc3cd954995da114404ddbc254906",
+      "bytes": 42553,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-melody-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-melody-player-impact.png",
+      "sha256": "19e934468aa23544f45119e44e848ba92d7b729b5daca9d4803c35b6ce6b5876",
+      "bytes": 42680,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-okarun-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-okarun-enemy-impact.png",
+      "sha256": "7d9c0185b37c79f8ec44ad96b98b3c57b82ac26bc3c232589efb8651bc648ef4",
+      "bytes": 41999,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-okarun-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-okarun-player-impact.png",
+      "sha256": "1935bef4253e08c287d6414e406ba05d8b88388b3ed8711da66416d63e536062",
+      "bytes": 42399,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-rayman-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-rayman-enemy-impact.png",
+      "sha256": "119f89b6b3dfd8f57bb9e7d4a6b397217e2034f15f457b0f834eec93677a6ecf",
+      "bytes": 44067,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-rayman-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-rayman-player-impact.png",
+      "sha256": "2720d386804bcaeceb742d05396c2b753966ff2d3dbc6b987749bc0dbc0f70ad",
+      "bytes": 44340,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-result.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-result.json",
+      "sha256": "d404e748ef00e3ff33320aae1bb9e8e0b6fe30826d4d558c24c497eff1bd099a",
+      "bytes": 6725797,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-skye-enemy-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-skye-enemy-impact.png",
+      "sha256": "15f59707bc1fcf87354790b4dfa9320d7583e64ddb2ec1bfa06b794063e44435",
+      "bytes": 45840,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/summon-wave17-skye-player-impact.png",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-skye-player-impact.png",
+      "sha256": "8432be9dc468abeb83e98f3c37bd11a5b89ac9d629c72f16fdf46ece956c53dc",
+      "bytes": 46130,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/production-freeze.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/production-freeze.json",
+      "sha256": "df8784285d2b1aaf509788321087131c3a6ff1538253636f24f65aaf1cc939b8",
+      "bytes": 3198113,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    },
+    {
+      "originalPath": "docs/combat-fidelity-wave17-2026-11-02/proof-source-union.json",
+      "archivedPath": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/refreeze-historical-layout-20261102T091500296638Z/files/docs/combat-fidelity-wave17-2026-11-02/proof-source-union.json",
+      "sha256": "e2fb91787a30cde80afb2cb5b62a44653cc4ba14ff6b96e5aa35aa0b4ada7be9",
+      "bytes": 503747,
+      "movedToPermitFreshRun": true,
+      "alreadyImmutableAttempt": false
+    }
+  ],
+  "frozenHelperEditsPlanned": [
+    "docs/combat-fidelity-wave17-2026-11-02/browser/native-presentations.mjs",
+    "docs/combat-fidelity-wave17-2026-11-02/browser/base-corrections.mjs"
+  ]
+}

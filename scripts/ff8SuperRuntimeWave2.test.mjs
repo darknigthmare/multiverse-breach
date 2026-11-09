@@ -61,8 +61,14 @@ const makeMelee = side => {
 };
 const makeFighter = (side, heroId = 'irvine_ff8') => {
   const opposing = [dummy('active-target'), dummy('nearby-bench')];
-  const engine = keep(new EngineFighter(1800, 500, side === 'player' ? [hero(heroId)] : opposing,
-    side === 'cpu' ? [hero(heroId)] : opposing, particles, noop, noop, { opponentControl: 'p2' }));
+  const source = hero(heroId), profile = resolveMeleeSuper(source);
+  // This suite exercises the authored W2 physical-projectile version. The
+  // current default also has a separately tested direct-fire Fighter adapter.
+  const actorSource = { ...source, special: { ...profile.sourceAbility,
+    fighterProfile: { effect: profile.effect, delivery: profile.delivery,
+      shape: profile.shape, range: profile.range, maxTargets: profile.maxTargets } } };
+  const engine = keep(new EngineFighter(1800, 500, side === 'player' ? [actorSource] : opposing,
+    side === 'cpu' ? [actorSource] : opposing, particles, noop, noop, { opponentControl: 'p2' }));
   engine.countdown = 0;
   const actor = engine.getActive(side);
   const targets = engine.getTeam(side === 'player' ? 'cpu' : 'player').fighters;

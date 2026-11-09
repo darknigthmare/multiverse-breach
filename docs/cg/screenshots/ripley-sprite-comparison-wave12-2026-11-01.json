@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "characterId": "ripley",
+  "operation": "Technical comparison canvas only: entire film4 RGB PNG and two entire atlas PNGs pasted at original dimensions over neutral background; labels outside artwork, no semantic painting",
+  "image": {
+    "path": "docs/cg/screenshots/ripley-sprite-comparison-wave12-2026-11-01.webp",
+    "sha256": "c4403c1be019b82f81c7d133637eb2d39984941c5ac9e9af96532e350c52c079",
+    "bytes": 1536876
+  },
+  "inputs": [
+    {
+      "label": "Entire Alien1979 film4 photo, actor face/hair/upper-costume authority only",
+      "path": "public/images/references/alien/ripley-alien1979-film4-wave12-2026-11-01.png",
+      "sha256": "9833e6890fc786379676d7bcaf0971d09d49d5d04596ad5c3f015740b6c59800",
+      "bytes": 2410742
+    },
+    {
+      "label": "Historical divergent atlas comparison only, not identity",
+      "path": "public/sprites/generated/heroes/alien/ripley.png",
+      "sha256": "fc125daf159e56c7df98f71a9b9881f9c21895c3ab8e6decb8484aa6fe1764ab",
+      "bytes": 818640
+    },
+    {
+      "label": "New independently accepted sixteen-whole-pose atlas",
+      "path": "public/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
+      "sha256": "9ace11dc65acf293675cbbd934a371688091b10dd4bff7112e2cd7b2aa09b35d",
+      "bytes": 591827
+    }
+  ],
+  "placements": [
+    {
+      "left": 170,
+      "top": 135,
+      "width": 1800,
+      "height": 968
+    },
+    {
+      "left": 30,
+      "top": 1170,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "left": 1086,
+      "top": 1170,
+      "width": 1024,
+      "height": 1024
+    }
+  ],
+  "independentReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/ripley-sprite-independent-review.json",
+    "sha256": "15ca9aed1315501f2eab75c48c6ae4b26c0f7770b51939f62ad0504c8e3c09a1",
+    "bytes": 54652
+  },
+  "canonicalFidelityApproved": false
+}

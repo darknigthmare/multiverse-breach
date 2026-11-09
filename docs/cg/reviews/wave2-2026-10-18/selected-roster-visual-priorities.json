@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "reviewer": "independent-agent-referentiel-canon",
+  "scope": "Read-only review of25selected P0 first frames and the full selected Sonic atlas; three of these P0 frames were enlarged again against newly obtained authentic sources. This is not a visual certification of the entire1912-character roster.",
+  "contactSheet": ".tmp/roster-wave2-audit/p0-first-frames.png",
+  "sources": {
+    "minions": {
+      "path": ".tmp/fidelity-2026-10-18/minions/universal-keyart-square.jpg",
+      "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blt5dca2b9c2c63dfe2/695728ec32fa46959ca18eb2/Minions_keyart_square_4000x4000.jpg",
+      "pageUrl": "https://www.universalpicturesathome.com/movies/minions",
+      "publisher": "Universal / Illumination",
+      "sha256": "9e63474158c874515f2b481876d0a2bb865612f8eca037fc7535a345cd2f11ea",
+      "independentlyViewed": true,
+      "perfect1to1Proof": false
+    },
+    "vader": {
+      "path": ".tmp/cg-complete-2026-10-18/vader/esb-official-platform-still.jpeg",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/image_112fc697.jpeg",
+      "publisher": "Lucasfilm / StarWars.com",
+      "sha256": "aa817357e8261cca9b4c80efb3457c1505a26657f42ca5f6e9bf37e73e088d19",
+      "independentlyViewed": true,
+      "perfect1to1Proof": false
+    },
+    "batman": {
+      "path": "docs/cg/references/batman-tdk-2008/18960315.jpg",
+      "sourceReceipt": "docs/cg/references/batman-tdk-2008/source-receipt.json",
+      "publisher": "Warner Bros., publicity still dated10July2008",
+      "sha256": "db8f1ef5a870c520c3b92790ae23d653fad35fd0d11bc1007d9ddc8841fadbe9",
+      "independentlyViewed": true,
+      "perfect1to1Proof": false
+    },
+    "sonic": {
+      "path": "docs/cg/references/wave2-2026-10-18/sonic/official-modern-profile.jpg",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+      "pageUrl": "https://sonic.sega.jp/SonicChannel/character/sonic.html",
+      "publisher": "SEGA / Sonic Channel",
+      "sha256": "e8fbfe1530684d67aabb0ccaeeee9aae28c1a85c11ace76f0c9a906b7d235ed8",
+      "independentlyViewed": true,
+      "perfect1to1Proof": false
+    },
+    "luke": {
+      "sourceEvidenceFile": "docs/cg/luke-rotj-reference-evidence-wave2-2026-10-18.json",
+      "images": 2,
+      "independentlyViewed": true,
+      "perfect1to1Proof": false,
+      "limitations": [
+        "La barge et le portrait impérial sont deux moments distincts du même film1983 ; ne pas ajouter le gant noir au début de la barge sur la seule base de la continuité ultérieure.",
+        "Bas du pantalon/bottes, dos, hilt complet et gant droit mécanique ne sont pas qualifiés visuellement par ces cadrages.",
+        "Les deux images fournissent une vraie cible visuelle sourcée et ne valident aucune image générée ou aucun atlas1:1."
+      ]
+    },
+    "harry": {
+      "sourceEvidenceFile": "docs/cg/harry-ootp-reference-evidence-wave2-2026-10-18.json",
+      "images": 3,
+      "independentlyViewed": true,
+      "perfect1to1Proof": false,
+      "limitations": [
+        "Ce sont des images du rôle et du film explicitement créditées Warner Bros. France, pas des portraits de l’acteur hors personnage.",
+        "Ces trois cadrages ne constituent pas un turntable ni une vue lisible de la baguette.",
+        "Aucune majorité n’est inventée : incarnation adolescente, usages familiaux et non romantiques.",
+        "Aucune comparaison à ces sources ne certifie automatiquement1:1 les sprites du projet.",
+        "AlloCiné héberge ces images de publicité créditées Warner Bros. France ; le crédit du distributeur est attesté, aucune licence générale de réutilisation n’est affirmée."
+      ]
+    },
+    "batman_n52": {
+      "sourceEvidenceFile": "docs/cg/batman-new52-endgame-reference-evidence-wave2-2026-10-18.json",
+      "imagesUsed": 1,
+      "imagesExcluded": 3,
+      "independentlyViewed": true,
+      "perfect1to1Proof": false,
+      "limitations": [
+        "Une couverture officielle en composition de combat ne constitue pas un turntable du modèle.",
+        "La construction verte appartient à la scène JusticeLeague et ne fait pas partie du costume ; ne pas l’importer dans la silhouette de Batman.",
+        "Abdomen, ceinture, dos et détails des bottes/accessoires non qualifiés par ce cadrage.",
+        "Les couvertures36/37et40 ont été réellement vues puis exclues explicitement ; leur publication dans le même arc ne les rend pas sources du costume de base.",
+        "Ce reçu qualifie une vraie cible de source et ne certifie aucun sprite ou image générée1:1."
+      ]
+    }
+  },
+  "findings": [
+    {
+      "characterId": "kevin_minions",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/minions/kevin-minions.png",
+        "sha256": "8596cedf12484da0ad15b8a5efcdb9f395eb6d7504ef25a5d6903fabb594f19e",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-in-contact-sheet",
+      "category": "source-identity-replaced-by-unrelated-robot",
+      "observed": "Selected sprite is a tall rectangular orange robot with cyan window panels; it lacks the yellow organic capsule body, two organic eyes and denim overalls.",
+      "sourceComparison": {
+        "path": ".tmp/fidelity-2026-10-18/minions/universal-keyart-square.jpg",
+        "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blt5dca2b9c2c63dfe2/695728ec32fa46959ca18eb2/Minions_keyart_square_4000x4000.jpg",
+        "pageUrl": "https://www.universalpicturesathome.com/movies/minions",
+        "publisher": "Universal / Illumination",
+        "sha256": "9e63474158c874515f2b481876d0a2bb865612f8eca037fc7535a345cd2f11ea",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Tall elongated organic yellow capsule, two brown eyes in silver double goggles, central black hair tuft, denim blue bib overalls, black gloves and boots. Never a rectangular vending robot.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Keep the old asset and unresolved visual discrepancy visible. One source-referenced attempt in this wave was refused at output by the generation service; no new sprite exists to inspect or install.",
+      "correctionAttemptEvidence": "docs/audits/minions-sprite-wave2-attempts-2026-10-18.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "stuart_minions",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/minions/stuart-minions.png",
+        "sha256": "0b04ef89c9039baee4441d18fd3adc624adb8feda1c4a5603b86b06154fd82cd",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-in-contact-sheet",
+      "category": "source-identity-replaced-by-unrelated-robot",
+      "observed": "Selected sprite is a round mechanical sphere with a cyan polygon lens and mechanical feet; a lens is not Stuart’s brown organic eye.",
+      "sourceComparison": {
+        "path": ".tmp/fidelity-2026-10-18/minions/universal-keyart-square.jpg",
+        "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blt5dca2b9c2c63dfe2/695728ec32fa46959ca18eb2/Minions_keyart_square_4000x4000.jpg",
+        "pageUrl": "https://www.universalpicturesathome.com/movies/minions",
+        "publisher": "Universal / Illumination",
+        "sha256": "9e63474158c874515f2b481876d0a2bb865612f8eca037fc7535a345cd2f11ea",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Medium-height organic yellow Minion, exactly one brown eye in silver single goggle, sparse black hair, blue denim bib overalls, black gloves and boots. Never a mechanical ball or cyan lens robot.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Keep the old asset and unresolved visual discrepancy visible. One source-referenced attempt in this wave was refused at output by the generation service; no new sprite exists to inspect or install.",
+      "correctionAttemptEvidence": "docs/audits/minions-sprite-wave2-attempts-2026-10-18.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "bob_minions",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/minions/bob-minions.png",
+        "sha256": "d24627706a7d66cc4d3c8f3e90f7580e593e8f31ee9e1362dd5787d6c4288998",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-in-contact-sheet",
+      "category": "source-identity-replaced-by-unrelated-robot",
+      "observed": "Selected sprite is a metal yellow diving-suit robot with cyan windows, valve and gear emblems; its face and body do not resemble Bob.",
+      "sourceComparison": {
+        "path": ".tmp/fidelity-2026-10-18/minions/universal-keyart-square.jpg",
+        "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blt5dca2b9c2c63dfe2/695728ec32fa46959ca18eb2/Minions_keyart_square_4000x4000.jpg",
+        "pageUrl": "https://www.universalpicturesathome.com/movies/minions",
+        "publisher": "Universal / Illumination",
+        "sha256": "9e63474158c874515f2b481876d0a2bb865612f8eca037fc7535a345cd2f11ea",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Short round bald organic yellow Minion, two different green/brown irises in silver double goggles, blue denim overalls, black gloves and boots. No metal helmet, valve, cyan windows or mechanical torso.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Keep the old asset and unresolved visual discrepancy visible. One source-referenced attempt in this wave was refused at output by the generation service; no new sprite exists to inspect or install.",
+      "correctionAttemptEvidence": "docs/audits/minions-sprite-wave2-attempts-2026-10-18.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "vader",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/star-wars/vader.png",
+        "sha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-in-contact-sheet",
+      "category": "helmet-and-weapon-substitution",
+      "observed": "Selected sprite has a tall rectangular flat-front helmet with narrow cyan visor and holds a crystal-tipped staff; both are major identity/equipment substitutions.",
+      "sourceComparison": {
+        "path": ".tmp/cg-complete-2026-10-18/vader/esb-official-platform-still.jpeg",
+        "url": "https://lumiere-a.akamaihd.net/v1/images/image_112fc697.jpeg",
+        "publisher": "Lucasfilm / StarWars.com",
+        "sha256": "aa817357e8261cca9b4c80efb3457c1505a26657f42ca5f6e9bf37e73e088d19",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "ESB1980 domed black helmet, triangular respirator mask, black ribbed life-support suit, chest control box, glossy shoulders, cape; one red blade emitted from a silver/black MPP-type hilt. No cyan visor or red-crystal staff.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Keep the old asset and unresolved visual discrepancy visible. One source-referenced attempt in this wave was refused at output by the generation service; no new sprite exists to inspect or install.",
+      "correctionAttemptEvidence": "docs/cg/reviews/wave2-2026-10-18/vader-batman-sprite-attempts.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "batman_tdk",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+        "sha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-in-contact-sheet",
+      "category": "unmasked-generic-tactical-substitution",
+      "observed": "Selected sprite shows uncovered brown hair, goggles, a dark tactical coat and handheld equipment. The film2008 cowl, pointed ears, segmented torso and gold belt are missing.",
+      "sourceComparison": {
+        "path": "docs/cg/references/batman-tdk-2008/18960315.jpg",
+        "sourceReceipt": "docs/cg/references/batman-tdk-2008/source-receipt.json",
+        "publisher": "Warner Bros., publicity still dated10July2008",
+        "sha256": "db8f1ef5a870c520c3b92790ae23d653fad35fd0d11bc1007d9ddc8841fadbe9",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "TheDarkKnight2008 black segmented Batsuit, black pointed-ear cowl covering head and eyes while exposing mouth/jaw only, black cape, gold segmented utility belt. No exposed hair, goggles or generic tactical-coat replacement.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Keep the old asset and unresolved visual discrepancy visible. One source-referenced attempt in this wave was refused at output by the generation service; no new sprite exists to inspect or install.",
+      "correctionAttemptEvidence": "docs/cg/reviews/wave2-2026-10-18/vader-batman-sprite-attempts.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "luke",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-blocked",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/star-wars/luke.png",
+        "sha256": "e7c5dc6bdf10918c7c5d63c31a27f5c6c799fe04c0aba35160edd55021e3e650",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-independently-enlarged",
+      "category": "source-costume-and-equipment-substitution",
+      "observed": "Selected first frame is a blond fantasy adventurer with brown cape, cream tunic, blue/gold trim and a bright blue blade, rather than the inspected ROTJ1983 dark tunic and green-blade identity.",
+      "sourceComparison": {
+        "path": "docs/cg/references/wave2-2026-10-18/additional-selected/luke-rotj-sail-barge.jpeg",
+        "url": "https://lumiere-a.akamaihd.net/v1/images/open-uri20150608-27674-1ymefwb_483d5487.jpeg?region=0%2C0%2C1200%2C675",
+        "finalUrl": "https://lumiere-a.akamaihd.net/v1/images/open-uri20150608-27674-1ymefwb_483d5487.jpeg?region=0%2C0%2C1200%2C675",
+        "bytes": 74211,
+        "sha256": "090b8d1eadf2defef4d02bfba0421239119a3b19d7b82a73c9ec02462bee8370",
+        "contentType": "image/jpeg",
+        "width": 1200,
+        "height": 675,
+        "viewed": true,
+        "visuallyInspected": true,
+        "referencePurpose": "identity",
+        "role": "official-film-image-inspected",
+        "sourcePage": "https://www.starwars.com/databank/luke-skywalker/",
+        "sourceCopyright": "TM & © Lucasfilm Ltd.",
+        "sourcePublicationDate": null,
+        "observedDetails": "Luke visible à mi-corps sur la barge de Jabba, cheveux bruns, tunique/épaules noires, sabre à lame verte. Vue publiée dans la section consacrée au Retour du Jedi.",
+        "canonicalFidelityApproved": false,
+        "referenceScope": "luke-return-of-jedi-1983-film-design",
+        "referenceCharacter": "luke",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "sourceEvidenceFile": "docs/cg/luke-rotj-reference-evidence-wave2-2026-10-18.json",
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Use the chosen ROTJ1983 incarnation: brown film hair, closed black upper clothing and green blade. Inspect a complete source for trousers/boots, hilt and the later right glove before asserting their exact geometry. Do not import the beige fantasy-knight costume or blue blade.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "One legitimate source-referenced correction request was refused at output by the generation service. No output exists to inspect or install; preserve historical sprite and unresolved differences without claiming delivery.",
+      "correctionAttemptEvidence": "docs/cg/reviews/wave2-2026-10-18/luke-harry-sprite-attempts.json",
+      "correctionAttempt": {
+        "attemptsThisWave": 1,
+        "outputProduced": false,
+        "status": "blocked-output-moderation",
+        "category": "other",
+        "historicalAssetPreserved": true
+      }
+    },
+    {
+      "characterId": "harry",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/harry-potter/harry.png",
+        "sha256": "bef3cd1d8f6751c1ca1094b14aca466f506772f5c7bcbb222ad8091407a26243",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-independently-enlarged",
+      "category": "source-costume-and-equipment-substitution",
+      "observed": "Selected first frame has an ornate long navy/gold coat, decorated waistcoat, brown high boots and a large compass-like artifact. The inspected OotP film stills show ordinary dark/gray clothes and fine round spectacles; no such ornate coat or large compass is present.",
+      "sourceComparison": {
+        "path": "docs/cg/references/wave2-2026-10-18/additional-selected/harry-ootp-18690266.jpg",
+        "url": "https://fr.web.img4.acsta.net/medias/nmedia/18/36/32/70/18690266.jpg",
+        "finalUrl": "https://fr.web.img4.acsta.net/medias/nmedia/18/36/32/70/18690266.jpg",
+        "bytes": 33135,
+        "sha256": "265bb317df34b7799aa6baa184156bef1485aa37258b93bd6d43d73819effce3",
+        "contentType": "image/jpeg",
+        "sourcePage": "https://www.allocine.fr/film/fichefilm-58608/photos/detail/?cmediafile=18690266",
+        "mediaId": "18690266",
+        "width": 600,
+        "height": 255,
+        "viewed": true,
+        "visuallyInspected": true,
+        "referencePurpose": "identity",
+        "role": "studio-publicity-film-still-inspected",
+        "sourceCopyright": "Warner Bros. France (captioned on AlloCiné)",
+        "sourcePublicationDate": "2006-11-20",
+        "observedDetails": "Harry dans la salle des prophéties : lunettes rondes fines, cheveux bruns courts irréguliers, visage adolescent, tee-shirt bleu à col foncé et veste de sport sombre à fines bandes.",
+        "canonicalFidelityApproved": false,
+        "referenceScope": "harry-order-of-phoenix-2007-film-design",
+        "referenceCharacter": "harry",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "sourceEvidenceFile": "docs/cg/harry-ootp-reference-evidence-wave2-2026-10-18.json",
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Retain the adolescent OotP2007 role face, short untidy brown hair and thin round spectacles. Choose one documented film outfit consistently; remove the invented gold-trimmed fantasy coat and compass. Wand geometry remains to qualify from a readable image, not infer from these torso stills.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "Produce a source-referenced correction under the chosen film incarnation, preserve the old PNG as a historical variant, and inspect all16frames plus packing before switching runtime. No new generation attempted in this audit.",
+      "correctionAttemptEvidence": "docs/cg/reviews/wave2-2026-10-18/luke-harry-sprite-attempts.json",
+      "sourceCoverageDecision": "Not attempted: shoe/ankle/full-leg silhouette and readable wand missing from three inspected stills."
+    },
+    {
+      "characterId": "batman_n52",
+      "priority": "P0-major-identity-correction",
+      "status": "source-identity-qualified-existing-sprite-too-far-correction-needed",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+        "sha256": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1",
+        "selectedInRuntime": true
+      },
+      "inspection": "selected-first-frame-independently-enlarged",
+      "category": "unmasked-generic-tactical-substitution",
+      "observed": "Selected first frame is an uncovered brown-haired human with hair tied back, broad rectangular goggles, gray technical parka, orange harness/cable tool and no bat cowl or cape. The official Endgame#35 source instead establishes black pointed cowl, white drawn eyes, exposed jaw, black cape/gauntlets and gray torso.",
+      "sourceComparison": {
+        "issue": 35,
+        "url": "https://static.dc.com/dc/files/default_images/batman_v2_35_5b2ad7bd4de4f7.89843609.jpg",
+        "finalUrl": "https://static.dc.com/dc/files/default_images/batman_v2_35_5b2ad7bd4de4f7.89843609.jpg",
+        "path": "docs/cg/references/wave2-2026-10-18/batman-new52-endgame/batman-2011-35-official-cover.jpg",
+        "bytes": 379865,
+        "sha256": "f93f670f415ee2b465ee7b0e17315a0cb1507564e30f092024f369b34f419818",
+        "width": 1249,
+        "height": 1920,
+        "viewed": true,
+        "visuallyInspected": true,
+        "usedForIdentity": true,
+        "excluded": false,
+        "referencePurpose": "identity",
+        "referenceScope": "dc-new52-batman-endgame-2014-2015",
+        "referenceCharacter": "batman_n52",
+        "role": "official-comic-cover-standard-identity-inspected",
+        "sourcePage": "https://www.dc.com/comics/batman-2011/batman-35",
+        "sourcePublicationDate": "2014-10-08",
+        "sourceCopyright": "© & ™ DC. ALL RIGHTS RESERVED",
+        "observedDetails": "Couverture standard New52 Batman#35, EndgamePart1. Batman au centre porte une cagoule noire à deux pointes, yeux blancs dessinés, mâchoire découverte, cape noire ample, tunique grise à emblème chauve-souris noir, gants/gauntlets noirs. Corps humain standard ; aucun casque Nolan ni JusticeBuster. La construction verte de GreenLantern masque l’abdomen/ceinture et une partie des jambes.",
+        "canonicalFidelityApproved": false,
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "sourceEvidenceFile": "docs/cg/batman-new52-endgame-reference-evidence-wave2-2026-10-18.json",
+      "documentaryIdentityAlreadyLocked": true,
+      "proposedLockAmendment": "Restore standard New52 Endgame identity from the inspected issue#35: pointed black cowl, covered hair, white comic eyes, exposed human jaw, black cape/gauntlets and gray bat-emblem torso. Do not import Nolan segmentation, generic goggles/parka, giant green fist from the surrounding scene, JusticeBuster or symbolic winged#40costume. Exact belt/back/boots remain unqualified by this cover.",
+      "canonicalFidelityApproved": false,
+      "proposedAction": "A future source-referenced sprite correction must preserve the old PNG as a historical variant and receive full16frame/packing review. No generation attempted in this audit.",
+      "sourceCoverageDecision": "Not attempted: authentic issue#35cover establishes head/torso/cape but GreenLantern construction hides abdomen/belt and much of lower body; complete costume/equipment reference still needed."
+    }
+  ],
+  "resolvedDocumentaryFindings": [
+    {
+      "characterId": "sonic_hedgehog",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+        "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108",
+        "selectedInRuntime": true
+      },
+      "sourceComparison": {
+        "path": "docs/cg/references/wave2-2026-10-18/sonic/official-modern-profile.jpg",
+        "url": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+        "pageUrl": "https://sonic.sega.jp/SonicChannel/character/sonic.html",
+        "publisher": "SEGA / Sonic Channel",
+        "sha256": "e8fbfe1530684d67aabb0ccaeeee9aae28c1a85c11ace76f0c9a906b7d235ed8",
+        "independentlyViewed": true,
+        "perfect1to1Proof": false
+      },
+      "observed": "The selected atlas is already blue Modern Sonic with long legs and green irises. The old workbook lock proposed Classic1991 and runtime primary/secondary colors are yellow; those numeric gameplay fields do not define the blue character.",
+      "correction": "Owned authored lock now targets the inspected SEGA Modern profile; runtime palette and all artwork files are unchanged.",
+      "file": "docs/cg/roster-fidelity-authored-locks-2026-10-18.json",
+      "status": "documentary-target-corrected-no-artwork-approval",
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "additionalSignalsNeedingIndependentSourceComparison": [],
+  "summary": {
+    "selectedP0FirstFramesInspected": 25,
+    "additionalFullAtlasInspected": 1,
+    "confirmedMajorIdentityFindings": 8,
+    "documentaryMismatchCorrected": 1,
+    "artworkOrRuntimeFilesChanged": 0,
+    "perfect1to1Approvals": 0,
+    "correctionAttemptsBlocked": 6,
+    "newCorrectedAtlases": 0,
+    "additionalFirstFramesEnlargedAgainstIndependentSources": 3,
+    "newCorrectionsNeededNotAttempted": 2
+  }
+}

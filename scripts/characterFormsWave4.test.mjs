@@ -9,7 +9,7 @@ import { combatBuffSource, getCharacterFormFrame } from '../src/game/combat/char
 import { getNativeSuperVisualStateWave4, drawNativeSuperVisualsWave4 } from '../src/game/combat/nativeSuperVisualsWave4.js';
 import { getCharacterSuperVisualState, drawCharacterSuperVisuals } from '../src/game/combat/characterSuperVisuals.js';
 
-let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, tickMeleeCombatActor, drawPixelSprite, getCharacterAnimationFrame, getHeroSpriteSheetSrc;
+let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, getFighterMeleeDefinition, tickMeleeCombatActor, drawPixelSprite, getCharacterAnimationFrame, getHeroSpriteSheetSrc;
 const engines = [], noop = () => {}, particles = { add: noop };
 const dummy = id => ({
   id, name: id, universe: 'Party super regression', category: 'test', weaponType: 'melee',
@@ -56,6 +56,12 @@ function make(mode, side, heroId, withAlly = false) {
   allies.slice(1).forEach((unit, i) => { unit.x = actor.x - facing * (80 + i * 15); });
   const close = [100, 115, -350];
   targets.forEach((unit, i) => { unit.x = actor.x + facing * close[i]; });
+  if (mode === 'fighter' && ['naruto_uzumaki_young', 'sasuke_uchiha_young'].includes(heroId)) {
+    const contact = getFighterMeleeDefinition(actor);
+    assert.ok(contact, 'the current Part I source uses its explicit Fighter contact adapter');
+    assert.equal(contact.hits, 1);
+    targets[0].x = actor.x + facing * (contact.range - 8);
+  }
   return { mode, side, engineSide, engine, actor, allies, targets, facing };
 }
 function commit(context, index = 0) {
@@ -110,6 +116,7 @@ before(async () => {
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js?forms-wave4'));
   ({ HEROES_DB: heroes } = await vite.ssrLoadModule('/src/game/heroes.js'));
   ({ resolveMeleeSuper } = await vite.ssrLoadModule('/src/game/combatIdentity.js'));
+  ({ getFighterMeleeDefinition } = await vite.ssrLoadModule('/src/game/fighterMeleeSignatures.js'));
   ({ tickMeleeCombatActor } = await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js'));
   ({ drawPixelSprite } = await vite.ssrLoadModule('/src/game/renderer.js'));
   ({ getCharacterAnimationFrame } = await vite.ssrLoadModule('/src/game/combat/characterAnimationCatalog.js'));
@@ -213,10 +220,11 @@ for (const mode of ['rpg', 'melee', 'fighter']) for (const side of ['player', 'o
 
 for (const mode of ['melee', 'fighter']) for (const side of ['player', 'opponent']) test(`${mode} ${side} Part I contact supers preserve their committed facing, finite range and vertical reach`, () => {
   for (const id of ['naruto_uzumaki_young', 'sasuke_uchiha_young']) for (const scenario of ['behind', 'range', 'height']) {
-    const context = make(mode, side, id), { actor, targets, facing } = context, profile = profileFor(context);
+    const context = make(mode, side, id), { actor, targets, facing } = context;
     assert.equal(commit(context), true);
+    const range = actor.action.range;
     targets.forEach((target, index) => {
-      target.x = actor.x + facing * (scenario === 'behind' ? -100 - index * 10 : scenario === 'range' ? profile.range + 100 + index * 10 : 100 + index * 10);
+      target.x = actor.x + facing * (scenario === 'behind' ? -100 - index * 10 : scenario === 'range' ? range + 100 + index * 10 : Math.min(60, range - 8) + index * 10);
       if (scenario === 'height') target.y -= 220;
     });
     const original = hp(targets); advance(context, 3); assert.deepEqual(hp(targets), original, `${id}:${scenario}`);

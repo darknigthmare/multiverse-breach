@@ -24,8 +24,8 @@ const physical = actor => ({ x: actor.x, y: actor.y, vx: actor.vx, vy: actor.vy,
 const meter = context => context.mode === 'fighter' ? context.actor.meter : context.actor.specialCharge;
 const setMeter = (context, value) => { if (context.mode === 'fighter') context.actor.meter = value; else context.actor.specialCharge = value; };
 
-function make(mode, side, heroId, withAlly = false) {
-  const own = [hero(heroId), ...(withAlly ? [dummy('allied-patient')] : [])];
+function make(mode, side, heroId, withAlly = false, sourceActor = hero(heroId)) {
+  const own = [sourceActor, ...(withAlly ? [dummy('allied-patient')] : [])];
   const opposing = [dummy('near-one'), dummy('near-two'), dummy('far-one')];
   const players = side === 'player' ? own : opposing;
   const opponents = side === 'opponent' ? own : opposing;
@@ -412,7 +412,13 @@ for (const side of ['player', 'opponent']) test(`Melee Cold Blood ${side} keeps 
 
 for (const side of ['player', 'opponent']) test(`Fighter Sazh, Prompto and Irvine ${side} keep finite forward visual aim after the opponent crosses or leaves range`, () => {
   for (const heroId of ['sazh_ff13', 'prompto_ff15', 'irvine_ff8']) for (const scenario of ['behind', 'out-of-range']) {
-    const context = make('fighter', side, heroId), { engine, actor, targets, facing } = context;
+    const source = hero(heroId), native = heroId === 'irvine_ff8' ? resolveMeleeSuper(source) : null;
+    // Select Irvine's actual authored W2 projectile version for this native
+    // visual-aim contract; his current default direct-fire adapter stays intact.
+    const sourceActor = native ? { ...source, special: { ...native.sourceAbility,
+      fighterProfile: { effect: native.effect, delivery: native.delivery,
+        shape: native.shape, range: native.range, maxTargets: native.maxTargets } } } : source;
+    const context = make('fighter', side, heroId, false, sourceActor), { engine, actor, targets, facing } = context;
     const profile = resolveMeleeSuper(actor);
     const initialDistance = scenario === 'behind' ? 160 : profile.range + 100;
     targets[0].x = actor.x + facing * initialDistance;

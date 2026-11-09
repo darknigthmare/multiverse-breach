@@ -64,6 +64,16 @@ export async function buildNativeWave8PartC({ base = false, check = false } = {}
   const provenancePath = `${DOCS}/${prefix}provenance.json`, recordsPath = `${DOCS}/${prefix}generation-records.json`;
   const { records } = await json(recordsPath);
   assert.deepEqual(records.map(record => record.heroId), EXPECTED);
+  // Reconstruct the source edition that authored these immutable W8 assets.
+  // Current canonical loadouts are checked separately below, not relabelled.
+  const planBytes = await read(`${DOCS}/batch-plan-before.json`);
+  assert.equal(hash(planBytes), 'c24e904d59b44d061942e8065dc9ce8a7c314ff2a2d94144208e4c355a0c04a3');
+  const artworkHeroes = new Map(JSON.parse(planBytes).heroes.map(row => [row.hero.id, row.hero]));
+  assert.equal(artworkHeroes.size, 20);
+  for (const id of EXPECTED) assert.equal(artworkHeroes.get(id)?.universe, HEROES_DB.find(hero => hero.id === id)?.universe);
+  const currentMistral = HEROES_DB.find(hero => hero.id === 'mistral_mgr');
+  assert.equal(resolveCombatAbility(currentMistral, 'simple').name, 'L’Étranger Polearm Thrust');
+  assert.equal(resolveCombatAbility(currentMistral, 'special').name, 'L’Étranger Close-Quarters Sweep');
   if (check) {
     const registry = await json(registryPath), provenance = await json(provenancePath), unique = new Set(), atlases = new Map();
     assert.deepEqual(registry.entries.map(entry => entry.heroId), EXPECTED);
@@ -77,7 +87,7 @@ export async function buildNativeWave8PartC({ base = false, check = false } = {}
     }
     for (const [index, entry] of registry.entries.entries()) {
       assert.equal(entry.universe, HEROES_DB.find(hero => hero.id === entry.heroId).universe);
-      assert.equal(entry.abilityName, resolveCombatAbility(HEROES_DB.find(hero => hero.id === entry.heroId), base ? 'simple' : 'special').name);
+      assert.equal(entry.abilityName, resolveCombatAbility(artworkHeroes.get(entry.heroId), base ? 'simple' : 'special').name);
       if (!base) assert.equal(entry.abilityName, SUPER_NAMES[index]);
       const bytes = await read(`public${entry.sheet}`); assert.equal(hash(bytes), entry.sha256);
       const review = await reviewPixels(bytes, labels), key = base ? 'stateReviews' : 'phaseReviews';
@@ -115,7 +125,7 @@ export async function buildNativeWave8PartC({ base = false, check = false } = {}
   }
   const entries = [], sources = [];
   for (const [index, record] of records.entries()) {
-    const hero = HEROES_DB.find(value => value.id === record.heroId); assert.equal(hero?.universe, record.universe);
+    const hero = artworkHeroes.get(record.heroId); assert.equal(hero?.universe, record.universe);
     const ability = resolveCombatAbility(hero, base ? 'simple' : 'special'); if (!base) assert.equal(ability.name, SUPER_NAMES[index]);
     const nativeSources = await sourcesFor(record, prefix); sources.push(...nativeSources);
     const atlases = new Map(), composites = [], rows = [];

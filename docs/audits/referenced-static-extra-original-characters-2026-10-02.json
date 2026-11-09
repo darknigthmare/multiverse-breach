@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reviewed static original-character PNGs; all animations remain pending.",
+  "policy": {
+    "canonicalFidelityApproved": false,
+    "privatePromptsAndIdentifiersPublished": false
+  },
+  "entries": [
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "aether_crown:lord_pneuma",
+      "name": "Lord Pneuma",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/lord-pneuma.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "b290d43ed7051d1e2a6d9f30f0ce761aaf1c22c2254c86fcb1722496290eec42",
+        "bytes": 1810112,
+        "width": 1086,
+        "height": 1448
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/aether_crown/threats/lord_pneuma.png",
+        "sha256": "3ef13165181dd5255e773735f553257d2aef731aa6a98441bb6575f8ddba3187"
+      },
+      "image": {
+        "sha256": "318df8f542c3d45f14874b8d3babb48387d2bcaaec56991856c87b3c4725b4d4",
+        "bytes": 1062710,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 46,
+        "outputGuard": 55,
+        "sourceVisiblePixels": 643416,
+        "visiblePixels": 292356,
+        "scale": 0.6740331491712708,
+        "canvasPlacement": {
+          "left": 146,
+          "top": 24,
+          "width": 732,
+          "height": 976
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "7e6b1d84f7f00a175bca5474bb24a148de59ddfdfddda65455cbb50b24627379",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "One fixed faithful source adaptation; animations pending, exact1:1 not certified.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "runtimeKind": "enemy",
+      "id": "aether_crown:aether_mite_swarm",
+      "name": "Aether Mite Swarm",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "67b54bd30b542b01122f6ec4151df3ec0adeabe50d3c637835918813a2db48ea",
+        "bytes": 1165808,
+        "width": 1200,
+        "height": 1310
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/aether_crown/threats/aether_mite_swarm.png",
+        "sha256": "d24bff93a15014b6f6a88f20c020363fa20f1a64e7a6f583e0d54dc0fcc8cdea"
+      },
+      "image": {
+        "sha256": "fefbb1ef26a4a04742ccad04c8b4dd2d9af352063582094969c09c77e898118f",
+        "bytes": 819722,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 45,
+        "outputGuard": 58,
+        "sourceVisiblePixels": 401652,
+        "visiblePixels": 222800,
+        "scale": 0.7450381679389313,
+        "canvasPlacement": {
+          "left": 65,
+          "top": 24,
+          "width": 894,
+          "height": 976
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "6bd5f4a399642cdf9811ada036008f2771edcdf3c72105e7dc3f448ad53851ac",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "Viewed the generated raw fixed PNG against the original portrait. All twelve distinguishable brass/cyan beetle-mites, including the two smaller/fainter right-cloak companions, remain individually identifiable in the source arrangement. The larger cloaked clockwork figure, two cyan eyes, brass cap/dome, ornate cuffs, long pincer limbs and full cyan-gem pronged brass staff are retained. Complete isolated group and all limbs/feet/staff tips; no scene or visible crop.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "runtimeKind": "worldBoss",
+      "id": "crownless_sea:kraken_sans_couronne",
+      "name": "Kraken Sans Couronne",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "8c776cfc605a502512a09e58ae0a98f8de73cd052e7d24f9185d3079987bda2c",
+        "bytes": 2773659,
+        "width": 1536,
+        "height": 1024
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/crownless_sea/threats/kraken_sans_couronne.png",
+        "sha256": "9d265d22278141f70480c188d78d5f2e964a37a5021c005df497a27d78abf5eb"
+      },
+      "image": {
+        "sha256": "933fc19f38eee5b72d3aed3c5d25bbee365ed924837562a8ff8625c15caeb946",
+        "bytes": 1519018,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 17,
+        "outputGuard": 79,
+        "sourceVisiblePixels": 805002,
+        "visiblePixels": 324984,
+        "scale": 0.6354166666666666,
+        "canvasPlacement": {
+          "left": 24,
+          "top": 186,
+          "width": 976,
+          "height": 651
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "4d1f56ebded0a43cf49a43c61c9e717003e2935a031682379676048be5bc9543",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "Source-inspired static full-body image; fine details and effects adapted. Animation pending, exact1:1 not certified.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "valedor_shattered_crown:reine_des_ronces",
+      "name": "Reine des Ronces",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "491fb980ee705813713549d079fa437d0d74a051a09d3d9f424dd257ddb8e7eb",
+        "bytes": 2559429,
+        "width": 1230,
+        "height": 1278
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/valedor_shattered_crown/threats/reine_des_ronces.png",
+        "sha256": "119207564c511a7b4c7145883213e4b8d5604bfb4603379798799430204b2257"
+      },
+      "image": {
+        "sha256": "7a795b230657eb182c360ab427cd8d41390d7085f8467020610e9c55b9c07315",
+        "bytes": 1779423,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 13,
+        "outputGuard": 34,
+        "sourceVisiblePixels": 817194,
+        "visiblePixels": 476605,
+        "scale": 0.7636932707355243,
+        "canvasPlacement": {
+          "left": 42,
+          "top": 24,
+          "width": 939,
+          "height": 976
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "82adce260e53358c9dfcbf2f75ba5b703f6dd8de2081ee92a9e89f45dddb605a",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "Source-inspired static full-body image; fine details and effects adapted. Animation pending, exact1:1 not certified.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "ilyr_concordat:cuirasse_nul_oblique",
+      "name": "Cuirassé Nul « Oblique »",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "c3bb4be34bd43c7cf3ba5ffd109456d848f8091a69ea14265cf429e242815c1e",
+        "bytes": 1200692,
+        "width": 1086,
+        "height": 1448
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/ilyr_concordat/threats/cuirasse_nul_oblique.png",
+        "sha256": "00c287ec7deee937c3b85a28b11f9666fe0685564719b9d6c77e35d77bf3f339"
+      },
+      "image": {
+        "sha256": "d8fc3b1c20506f0b246f63b0bf48c11d4a33a713d57bc141eb07a6186256f1dd",
+        "bytes": 663260,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 120,
+        "outputGuard": 164,
+        "sourceVisiblePixels": 410456,
+        "visiblePixels": 186478,
+        "scale": 0.6740331491712708,
+        "canvasPlacement": {
+          "left": 146,
+          "top": 24,
+          "width": 732,
+          "height": 976
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "8691ca4e349856dd182b868b0372fa28a40a94c10e107711ff69fbf12d3d8b0a",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "Original portrait and actual second cutout compared: exactly two arms/two hands, one holding full four-slab cleaver and other cupping violet orb. Slate armour, crystal-void helmet, pointed claws/back panels and long original proportions preserved. First cutout had right orb edge clipped; built-in image_gen reframing edit now retains complete hand/orb and broad transparent margins. Single pose only, animations pending; no 1:1 certification.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "runtimeKind": "boss",
+      "id": "meridian_clockwork:the_twelve_bell_judges",
+      "name": "The Twelve Bell Judges",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "1d309f6995153f5e346342cc2ce07825f64c31f5761415de6cefaa7e071c7585",
+        "bytes": 1720683,
+        "width": 1086,
+        "height": 1448
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/meridian_clockwork/threats/the_twelve_bell_judges.png",
+        "sha256": "36924d84ff273fa40d333193a89a5a8ad3aad3a26c13eec5874da3e48f7e984a"
+      },
+      "image": {
+        "sha256": "29bc77091a8feeae6cf908dde3768468267fdca3a214d6f063ba46448ee5c6ec",
+        "bytes": 1012633,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with uniform scale and transparent letterboxing",
+        "sourceGuard": 63,
+        "outputGuard": 116,
+        "sourceVisiblePixels": 594458,
+        "visiblePixels": 270002,
+        "scale": 0.6740331491712708,
+        "canvasPlacement": {
+          "left": 146,
+          "top": 24,
+          "width": 732,
+          "height": 976
+        },
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "b32af98edacbb75d236fb9eef1ecff654f6af74d2711c3d2b4261f7514eceadb",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "notes": "One static reference-inspired pose preserving nine large satellite bells clearly visible in the portrait and one staff. Ring placement, glow and textures adapted; animations pending and exact1:1 not certified.",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

@@ -12,10 +12,14 @@ const CONTACT = ['robin_tt','beast_boy_tt','kiryu_yakuza','majima_yakuza','ichib
 const MODES = ['rpg','melee','fighter'], SIDES = ['player','opponent'];
 const VERSIONED_WAVE16_IDS = new Set(['robin_tt','raven_tt','starfire_tt']);
 const observations = [], engines = [], noop = () => {}, particles = { add: noop };
-let vite, EngineRpg, EngineSmash, EngineFighter, heroes, resolveMeleeSuper, resolveCombatAbility, tickMeleeCombatActor, beginMeleeShield;
+let vite, EngineRpg, EngineSmash, EngineFighter, resolveMeleeSuper, resolveCombatAbility, tickMeleeCombatActor, beginMeleeShield;
 let supportsNative, supportsTracked, getVisual, drawVisual, sampleMotion, getCharacterVisual, drawCharacterVisual, sampleCharacterMotion, getFrame;
-let getVisualWave16, drawVisualWave16, sampleMotionWave16, historicalSupers;
-const hero = id => { const h=heroes.find(h=>h.id===id);assert.ok(h,id);return h; };
+let getVisualWave16, drawVisualWave16, sampleMotionWave16, historicalSupers, historicalWave16Actors, historicalWave8Actors;
+const hero = id => {
+  const historical=historicalWave16Actors?.get(id)||historicalWave8Actors?.get(id);
+  assert.ok(historical,`${id}: the exact historical actor must exist in its frozen source plan`);
+  return structuredClone(historical);
+};
 const dummy = id => ({id,name:id,universe:'Wave8 runtime training',category:'test',weaponType:'melee',primaryColor:'#89aacc',secondaryColor:'#ddeeff',
   stats:{hp:5000,atk:20,def:8,spd:5},simple:{name:'Training strike',type:'melee',dmg:1},secondary:{name:'Training shot',type:'bullet',dmg:1,cd:3},
   defense:{name:'Training guard',type:'shield',reduce:0.4,dur:1},special:{name:'Training finish',type:'bullet',dmg:2}});
@@ -91,15 +95,25 @@ function assertWithheldWave16State(options) {
 }
 
 before(async()=>{
+  const wave8Bytes=await readFile(new URL('../docs/combat-fidelity-wave8-2026-10-20/batch-plan-before.json',import.meta.url));
+  assert.equal(createHash('sha256').update(wave8Bytes).digest('hex'),'c24e904d59b44d061942e8065dc9ce8a7c314ff2a2d94144208e4c355a0c04a3');
+  historicalWave8Actors=new Map(JSON.parse(wave8Bytes).heroes.map(row=>[row.hero.id,row.hero]));
+  assert.equal(historicalWave8Actors.size,20);
+  for(const id of IDS)assert.ok(historicalWave8Actors.has(id),id);
   // These three source profiles were explicitly revised by W16; their rejected
   // native artwork does not change the separately retained W8 visual contract.
   const planBytes=await readFile(new URL('../docs/combat-fidelity-wave16-2026-10-28/batch-plan-before.json',import.meta.url));
   assert.equal(createHash('sha256').update(planBytes).digest('hex'),'ea8800d8e9ecde3b9cd47a8da9dab3493a41e0ff092e9d62b9c7e6682b162bf6');
-  historicalSupers=new Map(JSON.parse(planBytes).heroes.filter(row=>VERSIONED_WAVE16_IDS.has(row.hero.id)).map(row=>[row.hero.id,row.priorResolved.special]));
+  const plannedHeroes=JSON.parse(planBytes).heroes.filter(row=>VERSIONED_WAVE16_IDS.has(row.hero.id));
+  // These tests exercise the W16 native revision, not the later P0 defaults.
+  // Keep the exact pre-metadata actors from the same immutable source plan.
+  historicalWave16Actors=new Map(plannedHeroes.map(row=>[row.hero.id,row.hero]));
+  historicalSupers=new Map(plannedHeroes.map(row=>[row.hero.id,row.priorResolved.special]));
+  assert.equal(historicalWave16Actors.size,3);
   assert.equal(historicalSupers.size,3);
   vite=await createServer({root:fileURLToPath(new URL('..',import.meta.url)),appType:'custom',logLevel:'silent',server:{middlewareMode:true}});
   ({EngineRpg}=await vite.ssrLoadModule('/src/game/engineRpg.js?native-wave8'));({EngineSmash}=await vite.ssrLoadModule('/src/game/engineSmash.js?native-wave8'));({EngineFighter}=await vite.ssrLoadModule('/src/game/engineFighter.js?native-wave8'));
-  ({HEROES_DB:heroes}=await vite.ssrLoadModule('/src/game/heroes.js'));({resolveMeleeSuper,resolveCombatAbility}=await vite.ssrLoadModule('/src/game/combatIdentity.js'));
+  ({resolveMeleeSuper,resolveCombatAbility}=await vite.ssrLoadModule('/src/game/combatIdentity.js'));
   ({tickMeleeCombatActor,beginMeleeShield}=await vite.ssrLoadModule('/src/game/melee/meleeCombatRuntime.js'));
   ({supportsNativeSuperWave8:supportsNative,supportsTrackedProjectileVisualWave8:supportsTracked,getNativeSuperVisualStateWave8:getVisual,drawNativeSuperVisualsWave8:drawVisual,sampleNativeSuperMotionWave8:sampleMotion}=await vite.ssrLoadModule('/src/game/combat/nativeSuperVisualsWave8.js'));
   ({getCharacterSuperVisualState:getCharacterVisual,drawCharacterSuperVisuals:drawCharacterVisual,sampleCharacterSuperMotion:sampleCharacterMotion}=await vite.ssrLoadModule('/src/game/combat/characterSuperVisuals.js'));
@@ -246,6 +260,19 @@ for(const mode of MODES)for(const side of SIDES)test(`${mode} ${side}:Raven, Sae
     const protectedActors=profile.targetSide==='self'?[c.actor]:c.allies;
     for(const [index,target] of protectedActors.entries()){
       const unguarded=profile.targetSide==='self'?plain.actor:plain.allies[index],hpBefore=target.currentHp,hpPlain=unguarded.currentHp,random=Math.random;
+      if(mode==='fighter'&&index>0){
+        // A reserve is not an accepted Fighter damage target. Enter through
+        // the real tag API and let its native immunity expire before the hit.
+        for(const pair of [c,plain]){
+          for(let tick=0;tick<120&&!pair.engine.canAct(pair.engine.getActive(pair.engineSide));tick++)pair.engine.update(1/60);
+          assert.equal(pair.engine.requestTag(pair.engineSide,index),true);
+          const active=pair.engine.getActive(pair.engineSide);
+          for(let tick=0;tick<120&&active.invulnerable>0;tick++)pair.engine.update(1/60);
+          assert.equal(active.invulnerable,0);
+        }
+        assert.equal(c.engine.getActive(c.engineSide),target);
+        assert.equal(plain.engine.getActive(plain.engineSide),unguarded);
+      }
       try{Math.random=()=>0.5;if(mode==='fighter'){target.facing=c.facing;unguarded.facing=c.facing;const incoming={type:'light',base:40,knockback:0,guardDamage:1,facing:-c.facing};c.engine.applyHit(c.targets[0],target,incoming);plain.engine.applyHit(plain.targets[0],unguarded,incoming);}else{c.engine.applyDamage(c.targets[0],target,100);plain.engine.applyDamage(plain.targets[0],unguarded,100);}}finally{Math.random=random;}
       const reduced=hpBefore-target.currentHp,normal=hpPlain-unguarded.currentHp;assert.ok(reduced>=0&&reduced<normal,`${id}: guard metadata did not reduce actual damage (${reduced}/${normal})`);
     }

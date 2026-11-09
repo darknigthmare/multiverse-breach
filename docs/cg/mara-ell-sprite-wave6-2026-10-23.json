@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "mara_ell",
+  "heroId": "mara_ell",
+  "characterName": "Dr Mara Ell",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-redraw-with-one-true-lamp-hand-correction-and-four-new-source-side-frontal-poses",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/drowned_testament/heroes/mara_ell.png",
+    "sha256": "2c11636cc62c7adcbcce4cd042454ef44a80b5f62f800064a08d200bae3316c5",
+    "bytes": 2260579,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "c76f73edff03636bf3815a4b6e0e9868689d1a702aa8090094b2024cde695b9c",
+    "bytes": 968358,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/the-drowned-testament/mara-ell-v2-fidelity-wave6-2026-10-23.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/mara-ell-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+    "sha256": "ff56d8814e37ae9cfb098258e1d4bb1a161df8bf465fa1b575bd7b46c5464d40"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json",
+    "sha256": "aff0e67a175623623c6cf6039313d71620cc48e7e0ce9bb6e782db4f62ff04ce",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/the-drowned-testament/mara-ell.png",
+    "sha256": "cec22b2901cd358af7123aac36bb947f225b589e5579daf67b64b54bd69321ee",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "runtimeSelectionIntegrationPending": false
+  },
+  "sourceAssembly": {
+    "sha256": "3fa3cb0f37d559040d587a813d97ee7554617d51779869bce892eb10f7ff2250",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 3,
+    "selectedFramesFromMainWholeAtlasNative": 11,
+    "wholeCorrectedFrameFromSecondNative": [
+      12
+    ],
+    "newFrontalFramesFromFourPoseNative": [
+      6,
+      8,
+      13,
+      14
+    ],
+    "elevenMainRgbaComponentsUnchangedBeforeFinalNormalization": true,
+    "oneCorrectedRgbaComponentUnchangedBeforeFinalNormalization": true,
+    "commonFourPoseNearestPixelDensityConditioning": 0.5,
+    "finalCommonNearestScale": 0.7435897435897436,
+    "minimumGuard": 15,
+    "baselines": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "privateEvidenceSha256": "923c5c7b90c5515c7e856c78ad3c7052b222a2fff1b05ae8bb7ebd4a7e59a8fa",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "successfulAtlasGenerationAttempts": 8,
+  "retainedUnselectedWholeOrIndividualAttempts": 5,
+  "retainedWhollyUnselectedNativeAttempts": 5,
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/mara-ell-reference-evidence-wave6-2026-10-23.json",
+  "limitations": [
+    "The selected V2 individual portrait is an internal project authority, not an external publisher reference.",
+    "Frame12 lamp hand was genuinely edited with ImageGen. Four new frontal poses fix wrong-shoulder crystal marks that previous individual edits did not correct; all replaced natives remain retained.",
+    "Eleven whole original RGBA components and the complete edited frame12 remain unchanged before common final normalization. Four newly generated components use one shared nearest pixel-density conditioning before the final uniform nearest scale.",
+    "No semantic painting, mirroring, recoloring or pose duplication occurred in technical packing.",
+    "Single source leaves hidden construction, exact age, tiny eye/finger/gear detail limited; no perfect1:1 certification.",
+    "Root must select the new path and expose the old atlas as a variant; this installer does not edit runtime maps."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json",
+  "independentReviewSha256": "aff0e67a175623623c6cf6039313d71620cc48e7e0ce9bb6e782db4f62ff04ce"
+}

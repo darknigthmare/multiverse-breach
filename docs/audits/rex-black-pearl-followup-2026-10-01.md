@@ -1,0 +1,19 @@
+# Black Pearl 2003 et Metal Gear REX — suite des corrections
+
+Will utilise désormais son épée forgée, ses parades et ripostes physiques. Elizabeth correspond à la captive du Black Pearl en 2003, avec un couteau de table improvisé ; elle n’a ni pouvoirs du médaillon ni arsenal des films suivants. Les kits, plaques, dossiers et effets des trois modes utilisent les mêmes sources.
+
+Jack dispose d’une balle par bataille, sans recharge par cooldown, vague ou changement de héros. Les tirs invalides et annulés ne consomment aucune ressource. En Smash, P1 et P2 ont un bouton de tir visible. À Isla de Muerta, prendre sa pièce rend le Jack jouable de 2003 immortel jusqu’à la restitution, uniquement s’il est vivant à la collecte. Les autres héros restent mortels et les offrandes ne coûtent pas de PV. Les callbacks différés ne contournent plus cette protection. Jack tire avant la restitution finale ; la levée de la malédiction rend sa blessure fatale à Barbossa. Le verrou de finale protège l’équipage d’une mort supplémentaire, tandis que Jack redevient immédiatement mortel.
+
+À Shadow Moses, préparez le Stinger de mission puis cliquez sur la case de REX. Le radôme précède le cockpit ouvert après l’aide de Gray Fox. Portée et ligne de vue sont vérifiées par les mêmes règles pour joueur et IA. Les coups sur la coque, objets, supers et anomalies ne peuvent pas remplacer les deux phases. La victoire désactive REX : Liquid survit, les soldats Genome n’ont pas besoin de mourir, et le duel à mains nues reste hors mission.
+
+Les archives globales séparent aussi Davy Jones et son équipage (2006), les forces de Beckett (2007) et Calypso (2007) de la scène Isla de Muerta de 2003. Calypso Maelstrom est présenté comme une manifestation de combat originale du projet, et la boussole pointant vers le Nexus comme une fiction Multiverse, pas comme un fait du film.
+
+Les références Disney, le synopsis et l’extrait réel de Black Pearl, puis Konami, son compendium et les guides de MGS1998 ont été consultés. Le brouillon IMSDB n’est pas employé pour dater les événements du dénouement. Les faits, URLs et limites de références figurent dans [le rapport JSON](rex-black-pearl-followup-2026-10-01.json).
+
+Les dégâts, portées, enchaînements et durées restent adaptés aux moteurs existants. La réserve de Jack revient à la création d’une nouvelle bataille ; REX utilise deux réserves de 360 PV, un lanceur partagé avec réapprovisionnement et une aide de Gray Fox hors champ. Aucun bitmap n’est installé ni certifié fidèle 1:1. Le suivi compte 31 héros avec kits corrigés et sept scènes ; 25 corrections visuelles P0 et 6 601 chemins d’assets absents restent ouverts. Les prochains écarts précis sont listés dans le JSON.
+
+Les 1 318 tests des 15 groupes de `npm run build` passent pour les mécaniques, kits et récits finaux. La correction suivante du dossier mobile a reçu 36 tests ciblés supplémentaires, `rift:audit`, lint et une compilation finale réussis. Le résumé des archives est désormais borné à 180 px et défilable au clavier ; les fiches disposent de 361 px en français et 372 px en anglais sur 390 × 844.
+
+La revue indépendante passe 29 sondes moteur et UI, sans P0/P1 ouvert. Le navigateur final passe 27 cas et 190 assertions FR/EN, avec défilement clavier et restauration du focus, sans erreur console/page. Les 20 fichiers compilés correspondent par SHA-256 à ceux du snapshot parcouru. Les missions verrouillées sont vérifiées par leurs briefings dans le navigateur ; les combats et munitions relèvent des preuves moteur et du harnais React séparé. Publication sur la branche de correction, la PR brouillon et un aperçu Vercel.
+
+Le bilan de ce lot est historique pour le commit 34e222b. Les nouvelles attaques et le chaff sont suivis dans [le rapport suivant](rex-weapon-patterns-and-chaff-2026-10-01.md). Les compteurs de tests ci-dessus ne sont pas ceux du nouveau lot.

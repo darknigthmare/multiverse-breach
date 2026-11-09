@@ -3,18 +3,23 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createServer } from 'vite';
+import { HEROES_DB } from '../src/game/heroes.js';
 import {
   buildUniverseCosmeticGenerationManifest,
   buildUniverseCosmeticGenerationPrompt,
   extractReferenceEntries,
   flattenVisualAnchor,
   isThreadEchoLeadName,
+  isLeadReferenceIdentityCompatible,
   normalizeCharacterIdentity,
   normalizeOfficialWebResearch,
   normalizeUniverseAlias,
   resolveCosmeticLeadHeroName,
+  resolveRuntimeCitationFallback,
   shouldRequireWebResearch,
-  slugifyForCosmeticProcessor
+  slugifyForCosmeticProcessor,
+  validateUniverseCosmeticGenerationManifest
 } from './buildUniverseCosmeticGenerationManifest.mjs';
 
 const projectRoot = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -249,17 +254,114 @@ test('Thread Echo research overrides bitmap identity without discarding its non-
     assert.match(prompt, /Never use its face, facial geometry, biometric identity/i);
     assert.match(prompt, new RegExp(leadHeroName));
   }
+  const freeman = HEROES_DB.find(hero => hero.id === 'freeman');
+  assert.equal(isLeadReferenceIdentityCompatible({
+    leadHeroName: freeman.name, leadHeroId: freeman.id,
+    reference: { basenameName: freeman.id, characterNames: [] }
+  }), true, 'an exact real hero ID remains a usable metadata binding');
+  assert.equal(isLeadReferenceIdentityCompatible({
+    leadHeroName: 'Squall Leonhart', leadHeroId: 'squall_ff8',
+    reference: { basenameName: 'irvine-ff8', characterNames: ['Irvine Kinneas'] }
+  }), false, 'a different named character cannot supply lead identity');
+});
+
+test('manifest validation rejects missing, extra and duplicate runtime universes independently of roster size', () => {
+  const runtimeUniverseKeys = ['First test universe', 'Second test universe'];
+  const universes = runtimeUniverseKeys.map((universe, index) => {
+    const entry = {
+      universe, slug: `test-universe-${index}`, rightsClass: 'original',
+      canonicalMotif: 'Test citadel above a storm sea', canonicalStage: 'Test citadel above a storm sea',
+      visualAnchors: ['architecture: stone arches', 'palette: blue and amber'],
+      leadHeroName: 'Test Lead', heroAnchors: ['Lead character: Test Lead'],
+      leadReferencePath: null, officialReferenceUrls: ['https://example.com/official-test-world'],
+      generationAllowed: true, referenceConfidence: 'medium', needsWebResearch: true,
+      webResearch: null, webResearchVerified: false
+    };
+    return { ...entry, generationPrompt: buildUniverseCosmeticGenerationPrompt(entry) };
+  });
+  const manifest = { universes, summary: { universeCount: runtimeUniverseKeys.length } };
+  assert.doesNotThrow(() => validateUniverseCosmeticGenerationManifest(manifest, runtimeUniverseKeys));
+  assert.throws(() => validateUniverseCosmeticGenerationManifest({
+    ...manifest, universes: universes.slice(1)
+  }, runtimeUniverseKeys), /Missing runtime universes:/);
+  assert.throws(() => validateUniverseCosmeticGenerationManifest({
+    ...manifest, universes: [universes[0], { ...universes[1], universe: 'Unlisted test universe' }]
+  }, runtimeUniverseKeys), /Unexpected runtime universe:/);
+  assert.throws(() => validateUniverseCosmeticGenerationManifest({
+    ...manifest, universes: [...universes, universes[0]]
+  }, runtimeUniverseKeys), /Duplicate universe:/);
+  assert.throws(() => validateUniverseCosmeticGenerationManifest({
+    ...manifest, summary: { universeCount: 1 }
+  }, runtimeUniverseKeys), /Expected 2 runtime universes/);
+});
+
+test('same-universe runtime citations fill only empty provenance and remain unverified research leads', () => {
+  const hero = HEROES_DB.find(entry => entry.id === 'poppy_player');
+  assert.equal(hero.universe, 'Poppy Playtime');
+  assert.equal(hero.referenceUrl, 'https://poppyplaytime.com/pages/characters');
+  const citations = resolveRuntimeCitationFallback({
+    universe: hero.universe, heroes: [hero, { ...hero, id: 'other_universe_hero', universe: 'Other universe' }]
+  });
+  assert.equal(citations.length, 1);
+  assert.deepEqual(citations[0], {
+    source: 'runtime-citation', sourceFile: 'src/game/heroes.js', heroId: hero.id,
+    universe: hero.universe, sourceField: 'referenceUrl', url: hero.referenceUrl,
+    verificationStatus: 'needs-review', usedForIdentity: false, canonicalFidelityApproved: false
+  });
+  assert.deepEqual(resolveRuntimeCitationFallback({
+    universe: hero.universe, officialReferenceUrls: [hero.referenceUrl], heroes: [hero]
+  }), [], 'existing provenance takes priority without adding runtime citations');
+  const arrayCitations = resolveRuntimeCitationFallback({
+    universe: hero.universe,
+    heroes: [{ ...hero, referenceUrl: null, referenceUrls: [hero.referenceUrl, 'http://insecure.invalid/', 'https://user@example.com/', 'not a URL'] }]
+  });
+  assert.deepEqual(arrayCitations.map(citation => [citation.url, citation.sourceField]), [[hero.referenceUrl, 'referenceUrls']]);
+
+  const entry = {
+    universe: hero.universe, slug: 'poppy-playtime', rightsClass: 'third-party',
+    canonicalMotif: 'Playtime Co. factory', canonicalStage: 'Playtime Co. factory',
+    visualAnchors: [hero.visualAnchor], leadHeroName: hero.name, heroAnchors: [`Lead character: ${hero.name}`],
+    leadReferencePath: null, officialReferenceUrls: [], runtimeCitations: citations,
+    generationAllowed: true, referenceConfidence: 'medium', needsWebResearch: true,
+    webResearch: null, webResearchVerified: false
+  };
+  entry.generationPrompt = buildUniverseCosmeticGenerationPrompt(entry);
+  assert.match(entry.generationPrompt, /runtime-citation URLs, not verified official sources/);
+  assert.doesNotMatch(entry.generationPrompt, /Official source provenance URLs researched before prompt encoding/);
+  assert.match(entry.generationPrompt, /needsWebResearch=true/);
+  const manifest = { universes: [entry], summary: { universeCount: 1 } };
+  const validate = value => validateUniverseCosmeticGenerationManifest({ ...manifest, universes: [value] }, [hero.universe], [hero]);
+  assert.doesNotThrow(() => validate(entry));
+  assert.throws(() => validate({ ...entry, runtimeCitations: [{ ...citations[0], heroId: 'other_universe_hero' }] }), /same-universe hero metadata/);
+  assert.throws(() => validate({ ...entry, runtimeCitations: [{ ...citations[0], usedForIdentity: true }] }), /same-universe hero metadata/);
+  assert.throws(() => validate({ ...entry, needsWebResearch: false }), /pending source review/);
+  assert.throws(() => validateUniverseCosmeticGenerationManifest({
+    ...manifest, universes: [{ ...entry, runtimeCitations: [] }]
+  }, [hero.universe], []), /reference URLs are missing/);
 });
 
 test('full manifest follows the exact LORE_DB universe contract', async () => {
+  const vite = await createServer({
+    root: projectRoot, configFile: false, appType: 'custom', logLevel: 'silent',
+    optimizeDeps: { include: [], noDiscovery: true },
+    server: { middlewareMode: true, hmr: false, watch: null }
+  });
+  let runtimeUniverseKeys;
+  try {
+    const { LORE_DB } = await vite.ssrLoadModule('/src/game/lore.js');
+    runtimeUniverseKeys = Object.keys(LORE_DB);
+  } finally {
+    await vite.close();
+  }
   const manifest = await buildUniverseCosmeticGenerationManifest();
-  assert.equal(manifest.universes.length, 394);
-  assert.equal(manifest.summary.universeCount, 394);
+  assert.deepEqual(manifest.universes.map(entry => entry.universe).sort(), [...runtimeUniverseKeys].sort());
+  assert.equal(manifest.universes.length, runtimeUniverseKeys.length);
+  assert.equal(manifest.summary.universeCount, runtimeUniverseKeys.length);
   assert.equal(
     manifest.summary.originalCount + manifest.summary.thirdPartyCount,
     manifest.summary.universeCount
   );
-  assert.equal(new Set(manifest.universes.map(entry => entry.slug)).size, 394);
+  assert.equal(new Set(manifest.universes.map(entry => entry.slug)).size, runtimeUniverseKeys.length);
 
   const byUniverse = new Map(manifest.universes.map(entry => [entry.universe, entry]));
   assert.equal(byUniverse.has('Cells at Work!'), true);
@@ -268,14 +370,53 @@ test('full manifest follows the exact LORE_DB universe contract', async () => {
   assert.equal(byUniverse.has('Matrix'), false);
   assert.equal(byUniverse.get('Nexus de Convergence').rightsClass, 'original');
   assert.equal(byUniverse.get('Half-Life').leadHeroName, 'Gordon Freeman');
-  assert.equal(byUniverse.get('Chucky').leadHeroName, 'Tiffany Valentine');
-  assert.equal(byUniverse.get('Le Cinquième Element').leadHeroName, 'Leeloo');
-  assert.equal(byUniverse.get('Rosario + Vampire').leadHeroName, 'Tsukune Aono');
-  assert.equal(byUniverse.get('Digital Circus').leadHeroName, 'Pomni');
+  assert.equal(byUniverse.get('Chucky').leadHeroName, 'Andy Barclay');
+  assert.equal(byUniverse.get('Le Cinquième Element').leadHeroName, 'Korben Dallas');
+  assert.equal(byUniverse.get('Rosario + Vampire').leadHeroName, 'Kurumu Kurono');
+  assert.equal(byUniverse.get('Digital Circus').leadHeroName, 'Jax');
   assert.equal(byUniverse.get('Payday').leadHeroName, 'Dallas Thread Echo');
   assert.equal(byUniverse.get('Harry Potter').leadHeroName, 'Adult Hogwarts Wizard Thread Echo');
   assert.equal(byUniverse.get('Star Wars').leadHeroName, 'Luke Skywalker Thread Echo');
   assert.equal(byUniverse.get('Scary Movie').leadHeroName, 'Cindy Campbell Thread Echo');
+  const poppy = byUniverse.get('Poppy Playtime');
+  assert.deepEqual(poppy.officialReferenceUrls, []);
+  assert.equal(poppy.runtimeCitations.find(citation => citation.heroId === 'poppy_player')?.url,
+    HEROES_DB.find(hero => hero.id === 'poppy_player').referenceUrl);
+  assert.equal(poppy.needsWebResearch, true);
+  assert.equal(poppy.webResearchVerified, false);
+  const rejectedIdentities = new Map([
+    ['Joker New 52', 'public/sprites/generated/heroes/joker-new-52/batman-n52.png'],
+    ['Predator: Killer of Killers', 'public/sprites/generated/heroes/predator-killer-of-killers/ninja-kok.png'],
+    ['Spider: The Video Game', 'public/sprites/generated/heroes/spider-the-video-game/cyber-spider-electro-beam.png'],
+    ['Final Fantasy VIII', 'public/sprites/generated/heroes/final-fantasy-viii/irvine-ff8.png'],
+    ['Yakuza', 'public/sprites/generated/heroes/yakuza/akiyama-yakuza.png'],
+    ['Streets of Rage', 'public/sprites/generated/heroes/streets-of-rage/adam-sor.png'],
+    ['Gex', 'public/sprites/generated/heroes/gex/gex-agent-xtra.png']
+  ]);
+  assert.deepEqual(manifest.universes.filter(entry => entry.needsIdentityReference).map(entry => entry.universe).sort(), [...rejectedIdentities.keys()].sort());
+  for (const [universe, discardedPath] of rejectedIdentities) {
+    const entry = byUniverse.get(universe);
+    assert.equal(entry.leadReferencePath, null);
+    assert.equal(entry.localReferencePaths.includes(discardedPath), false);
+    assert.equal(entry.rejectedLeadReference.path, discardedPath);
+    assert.equal(entry.rejectedLeadReference.usedForIdentity, false);
+    assert.equal(entry.rejectedLeadReference.usedForConditioning, false);
+    assert.equal(entry.rejectedLeadReference.canonicalFidelityApproved, false);
+    assert.equal(entry.generationAllowed, false);
+    assert.equal(entry.generationReadiness, 'not-ready');
+    assert.equal(entry.identityReferenceStatus, 'needs-identity-reference');
+    assert.equal(entry.needsWebResearch, true);
+    assert.equal(entry.canonicalFidelityApproved, false);
+    assert.equal(entry.generationPrompt.includes(discardedPath), false);
+    assert.match(entry.generationPrompt, /production is blocked/);
+  }
+  const blocked = byUniverse.get('Joker New 52');
+  const validateBlocked = override => validateUniverseCosmeticGenerationManifest({
+    universes: [{ ...blocked, ...override }], summary: { universeCount: 1 }
+  }, [blocked.universe], HEROES_DB);
+  assert.throws(() => validateBlocked({ leadReferencePath: blocked.rejectedLeadReference.path }), /must not condition/);
+  assert.throws(() => validateBlocked({ generationAllowed: true }), /must not condition/);
+  assert.throws(() => validateBlocked({ localReferencePaths: [blocked.rejectedLeadReference.path] }), /must not condition/);
   const batch02LiveActionLeads = new Map([
     ['Kaamelott', 'Arthur Pendragon Thread Echo'],
     ['Prometheus', 'Elizabeth Shaw Thread Echo'],
@@ -304,8 +445,18 @@ test('full manifest follows the exact LORE_DB universe contract', async () => {
     assert.ok(entry.visualAnchors.length > 0, `${entry.universe}: visual anchors`);
     assert.ok(entry.heroAnchors.length > 0, `${entry.universe}: hero anchors`);
     assert.ok(entry.leadHeroName, `${entry.universe}: lead hero`);
-    assert.ok(entry.officialReferenceUrls.length > 0, `${entry.universe}: official URLs`);
-    assert.equal(entry.generationAllowed, true, `${entry.universe}: generation permission`);
+    assert.ok(entry.officialReferenceUrls.length > 0 || entry.runtimeCitations?.length > 0, `${entry.universe}: documentary URLs`);
+    if (entry.runtimeCitations?.length) {
+      assert.equal(entry.officialReferenceUrls.length, 0, `${entry.universe}: existing provenance has priority`);
+      assert.equal(entry.needsWebResearch, true);
+      assert.equal(entry.webResearchVerified, false);
+      for (const citation of entry.runtimeCitations) {
+        assert.equal(citation.verificationStatus, 'needs-review');
+        assert.equal(citation.usedForIdentity, false);
+        assert.equal(citation.canonicalFidelityApproved, false);
+      }
+    }
+    assert.equal(entry.generationAllowed, !entry.needsIdentityReference, `${entry.universe}: generation permission`);
     assert.match(entry.referenceConfidence, /^(?:medium|high)$/);
     assert.equal(typeof entry.needsWebResearch, 'boolean');
     assert.equal(typeof entry.webResearchVerified, 'boolean');
@@ -321,7 +472,7 @@ test('full manifest follows the exact LORE_DB universe contract', async () => {
       assert.equal(entry.generationPrompt.includes(entry.leadReferencePath), true);
     }
     if (entry.webResearchVerified) {
-      assert.equal(entry.needsWebResearch, false, `${entry.universe}: qualified Web dossier`);
+      assert.equal(entry.needsWebResearch, Boolean(entry.needsIdentityReference), `${entry.universe}: qualified Web dossier does not replace missing identity evidence`);
       if (!entry.leadReferencePath || isThreadEchoLeadName(entry.webResearch.leadCharacterName)) {
         assert.equal(
           entry.leadHeroName,
@@ -357,6 +508,12 @@ test('every approved lead identity agrees with quality metadata or its reference
     const reference = qualityByPath.get(entry.leadReferencePath);
     assert.ok(reference, `${entry.universe}: quality metadata exists`);
     assert.equal(reference.classification, 'approved', `${entry.universe}: approved classification`);
+    if (isThreadEchoLeadName(entry.leadHeroName) && entry.webResearchVerified) {
+      assert.equal(entry.leadHeroName, entry.webResearch.leadCharacterName);
+      assert.match(entry.generationPrompt, /strictly a non-biometric reference/);
+      assert.match(entry.generationPrompt, /Never use its face, facial geometry, biometric identity/);
+      continue;
+    }
     const basename = path.basename(reference.path, path.extname(reference.path)).replace(/[-_]+/g, ' ');
     const coherent = (reference.characters || []).some(character => (
       identitiesOverlap(entry.leadHeroName, character)

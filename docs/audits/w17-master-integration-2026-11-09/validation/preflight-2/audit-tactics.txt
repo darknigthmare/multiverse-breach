@@ -1,0 +1,715 @@
+
+> lively-darwin@0.0.0 test:audit-tactics
+> node --test --test-concurrency=1 scripts/auditTacticsReliability.test.mjs scripts/auditTacticsLifecycle.test.mjs scripts/auditTacticsSupport.test.mjs
+
+TAP version 13
+# Subtest: Tactics hero: paused selection and movement cannot mutate the turn
+ok 1 - Tactics hero: paused selection and movement cannot mutate the turn
+  ---
+  duration_ms: 23203.062538
+  type: 'test'
+  ...
+# Subtest: Tactics hero: KO on an entry hazard skips the turn without a ghost action
+ok 2 - Tactics hero: KO on an entry hazard skips the turn without a ghost action
+  ---
+  duration_ms: 6.220049
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: paused selection and movement cannot mutate the turn
+ok 3 - Tactics enemy: paused selection and movement cannot mutate the turn
+  ---
+  duration_ms: 1.170688
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: KO on an entry hazard skips the turn without a ghost action
+ok 4 - Tactics enemy: KO on an entry hazard skips the turn without a ghost action
+  ---
+  duration_ms: 1.625951
+  type: 'test'
+  ...
+# Subtest: Tactics: a heal tile triggers once per unit/cell/turn, not once per cancel or idle click
+ok 5 - Tactics: a heal tile triggers once per unit/cell/turn, not once per cancel or idle click
+  ---
+  duration_ms: 11.984383
+  type: 'test'
+  ...
+# Subtest: Tactics: a removed combatant cannot be selected from a stale initiative queue
+ok 6 - Tactics: a removed combatant cannot be selected from a stale initiative queue
+  ---
+  duration_ms: 0.705118
+  type: 'test'
+  ...
+# Subtest: Tactics: a stale enemy windup cannot hit or end the next hero turn
+ok 7 - Tactics: a stale enemy windup cannot hit or end the next hero turn
+  ---
+  duration_ms: 6.24692
+  type: 'test'
+  ...
+# Subtest: Tactics: a KO during an enemy windup cancels that turn, but not a world callback
+ok 8 - Tactics: a KO during an enemy windup cancels that turn, but not a world callback
+  ---
+  duration_ms: 5.34853
+  type: 'test'
+  ...
+# Subtest: Tactics: invalid/dead units cannot take manual actions
+ok 9 - Tactics: invalid/dead units cannot take manual actions
+  ---
+  duration_ms: 1.007312
+  type: 'test'
+  ...
+# Subtest: Tactics: invalid damage -20 leaves HP, shields and statuses unchanged
+ok 10 - Tactics: invalid damage -20 leaves HP, shields and statuses unchanged
+  ---
+  duration_ms: 0.827252
+  type: 'test'
+  ...
+# Subtest: Tactics: invalid damage NaN leaves HP, shields and statuses unchanged
+ok 11 - Tactics: invalid damage NaN leaves HP, shields and statuses unchanged
+  ---
+  duration_ms: 0.714132
+  type: 'test'
+  ...
+# Subtest: Tactics: invalid damage Infinity leaves HP, shields and statuses unchanged
+ok 12 - Tactics: invalid damage Infinity leaves HP, shields and statuses unchanged
+  ---
+  duration_ms: 0.781303
+  type: 'test'
+  ...
+# Subtest: Tactics: reapplying a status cannot shorten it
+ok 13 - Tactics: reapplying a status cannot shorten it
+  ---
+  duration_ms: 12.176402
+  type: 'test'
+  ...
+# Subtest: Tactics: dead targets cannot produce another hit or status
+ok 14 - Tactics: dead targets cannot produce another hit or status
+  ---
+  duration_ms: 0.54608
+  type: 'test'
+  ...
+# Subtest: Tactics: a barrier added after preview makes the shot fail without cost
+ok 15 - Tactics: a barrier added after preview makes the shot fail without cost
+  ---
+  duration_ms: 3.069849
+  type: 'test'
+  ...
+# Subtest: Tactics: paused and disposed pickups are not consumed
+ok 16 - Tactics: paused and disposed pickups are not consumed
+  ---
+  duration_ms: 0.777607
+  type: 'test'
+  ...
+# Subtest: Tactics: artifact impact counts effective damage, not requested overkill
+ok 17 - Tactics: artifact impact counts effective damage, not requested overkill
+  ---
+  duration_ms: 1.068213
+  type: 'test'
+  ...
+# Subtest: Tactics: repeated AI dispatch within one turn cannot queue duplicate attacks
+ok 18 - Tactics: repeated AI dispatch within one turn cannot queue duplicate attacks
+  ---
+  duration_ms: 10.76336
+  type: 'test'
+  ...
+# Subtest: Tactics: same-tick revival cannot resurrect the dead active actor windup
+ok 19 - Tactics: same-tick revival cannot resurrect the dead active actor windup
+  ---
+  duration_ms: 3.757821
+  type: 'test'
+  ...
+# Subtest: Tactics hero: enabling AI during a stun resumes once without duplication
+ok 20 - Tactics hero: enabling AI during a stun resumes once without duplication
+  ---
+  duration_ms: 10.546345
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: enabling AI during a stun resumes once without duplication
+ok 21 - Tactics enemy: enabling AI during a stun resumes once without duplication
+  ---
+  duration_ms: 3.758223
+  type: 'test'
+  ...
+# Subtest: Tactics: preview revalidation also rejects an AP route blocked after highlighting
+ok 22 - Tactics: preview revalidation also rejects an AP route blocked after highlighting
+  ---
+  duration_ms: 0.59943
+  type: 'test'
+  ...
+# Subtest: Tactics: large unit movement rejects a clear centre whose footprint intersects cover
+ok 23 - Tactics: large unit movement rejects a clear centre whose footprint intersects cover
+  ---
+  duration_ms: 8.435455
+  type: 'test'
+  ...
+# Subtest: Tactics invalid cell NaN,1 cannot spend movement
+ok 24 - Tactics invalid cell NaN,1 cannot spend movement
+  ---
+  duration_ms: 0.610908
+  type: 'test'
+  ...
+# Subtest: Tactics invalid cell Infinity,1 cannot spend movement
+ok 25 - Tactics invalid cell Infinity,1 cannot spend movement
+  ---
+  duration_ms: 0.383667
+  type: 'test'
+  ...
+# Subtest: Tactics invalid cell 1.5,1 cannot spend movement
+ok 26 - Tactics invalid cell 1.5,1 cannot spend movement
+  ---
+  duration_ms: 0.375103
+  type: 'test'
+  ...
+# Subtest: Tactics invalid cell -1,0 cannot spend movement
+ok 27 - Tactics invalid cell -1,0 cannot spend movement
+  ---
+  duration_ms: 0.329004
+  type: 'test'
+  ...
+# Subtest: Tactics: obstacle preview reports effective damage without inventing cover or variance
+ok 28 - Tactics: obstacle preview reports effective damage without inventing cover or variance
+  ---
+  duration_ms: 0.882485
+  type: 'test'
+  ...
+# Subtest: Tactics hero: draw movement highlights without changing the turn
+ok 29 - Tactics hero: draw movement highlights without changing the turn
+  ---
+  duration_ms: 7.634273
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: draw movement highlights without changing the turn
+ok 30 - Tactics enemy: draw movement highlights without changing the turn
+  ---
+  duration_ms: 2.463939
+  type: 'test'
+  ...
+# Subtest: Tactics: a healing skill heals an allied target, never damages the enemy
+ok 31 - Tactics: a healing skill heals an allied target, never damages the enemy
+  ---
+  duration_ms: 22487.688608
+  type: 'test'
+  ...
+# Subtest: Tactics: pause blocks movement, action selection and direct AI
+ok 32 - Tactics: pause blocks movement, action selection and direct AI
+  ---
+  duration_ms: 2.38867
+  type: 'test'
+  ...
+# Subtest: Tactics: a hero killed on entering hazardous terrain cannot attack and does not strand the turn
+ok 33 - Tactics: a hero killed on entering hazardous terrain cannot attack and does not strand the turn
+  ---
+  duration_ms: 4.586334
+  type: 'test'
+  ...
+# Subtest: Tactics: choosing the occupied current tile does not repeat its healing
+ok 34 - Tactics: choosing the occupied current tile does not repeat its healing
+  ---
+  duration_ms: 7.700515
+  type: 'test'
+  ...
+# Subtest: Tactics: negative damage cannot stagger, debuff or heal any target category
+ok 35 - Tactics: negative damage cannot stagger, debuff or heal any target category
+  ---
+  duration_ms: 1.84962
+  type: 'test'
+  ...
+# Subtest: Tactics: refreshed status does not shorten a longer existing duration
+ok 36 - Tactics: refreshed status does not shorten a longer existing duration
+  ---
+  duration_ms: 1.554366
+  type: 'test'
+  ...
+# Subtest: Tactics hero: support targets only its own team
+ok 37 - Tactics hero: support targets only its own team
+  ---
+  duration_ms: 4.82365
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: support targets only its own team
+ok 38 - Tactics enemy: support targets only its own team
+  ---
+  duration_ms: 10.627435
+  type: 'test'
+  ...
+# Subtest: Tactics healing with radiation at 95/200 HP respects its cap
+ok 39 - Tactics healing with radiation at 95/200 HP respects its cap
+  ---
+  duration_ms: 19.843307
+  type: 'test'
+  ...
+# Subtest: Tactics healing with radiation at 100/200 HP respects its cap
+ok 40 - Tactics healing with radiation at 100/200 HP respects its cap
+  ---
+  duration_ms: 2.651005
+  type: 'test'
+  ...
+# Subtest: Tactics healing with radiation at 160/200 HP respects its cap
+ok 41 - Tactics healing with radiation at 160/200 HP respects its cap
+  ---
+  duration_ms: 2.116872
+  type: 'test'
+  ...
+# Subtest: Tactics heal+cleanse at radiation cap removes only the requested status, preserving unknown and positive ones
+ok 42 - Tactics heal+cleanse at radiation cap removes only the requested status, preserving unknown and positive ones
+  ---
+  duration_ms: 2.108319
+  type: 'test'
+  ...
+# Subtest: Tactics pure cleanse cannot select allies without the requested ailment
+ok 43 - Tactics pure cleanse cannot select allies without the requested ailment
+  ---
+  duration_ms: 2.312836
+  type: 'test'
+  ...
+# Subtest: Tactics revive: wrong target state does not spend a charge or cooldown
+ok 44 - Tactics revive: wrong target state does not spend a charge or cooldown
+  ---
+  duration_ms: 2.229641
+  type: 'test'
+  ...
+# Subtest: Tactics heal: wrong target state does not spend a charge or cooldown
+ok 45 - Tactics heal: wrong target state does not spend a charge or cooldown
+  ---
+  duration_ms: 1.658553
+  type: 'test'
+  ...
+# Subtest: Tactics cleanse: wrong target state does not spend a charge or cooldown
+ok 46 - Tactics cleanse: wrong target state does not spend a charge or cooldown
+  ---
+  duration_ms: 1.611342
+  type: 'test'
+  ...
+# Subtest: Tactics hero: resurrection has real HP, clears ailments and never duplicates a turn
+ok 47 - Tactics hero: resurrection has real HP, clears ailments and never duplicates a turn
+  ---
+  duration_ms: 4.115877
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: resurrection has real HP, clears ailments and never duplicates a turn
+ok 48 - Tactics enemy: resurrection has real HP, clears ailments and never duplicates a turn
+  ---
+  duration_ms: 2.944786
+  type: 'test'
+  ...
+# Subtest: Tactics revival refuses a corpse cell occupied by another unit without spending special charge
+ok 49 - Tactics revival refuses a corpse cell occupied by another unit without spending special charge
+  ---
+  duration_ms: 3.691779
+  type: 'test'
+  ...
+# Subtest: Tactics healing obeys current range and line of sight, including a blocker added after selection
+ok 50 - Tactics healing obeys current range and line of sight, including a blocker added after selection
+  ---
+  duration_ms: 2.686038
+  type: 'test'
+  ...
+# Subtest: Tactics group healing applies once to each eligible ally and never hits foes
+ok 51 - Tactics group healing applies once to each eligible ally and never hits foes
+  ---
+  duration_ms: 2.502462
+  type: 'test'
+  ...
+# Subtest: Tactics defence with a healing definition heals the caster instead of behaving like an attack
+ok 52 - Tactics defence with a healing definition heals the caster instead of behaving like an attack
+  ---
+  duration_ms: 11.639546
+  type: 'test'
+  ...
+# Subtest: Tactics guard: temporary modifier affects real damage, pauses, expires without changing base stats
+ok 53 - Tactics guard: temporary modifier affects real damage, pauses, expires without changing base stats
+  ---
+  duration_ms: 5.15589
+  type: 'test'
+  ...
+# Subtest: Tactics buff: temporary modifier affects real damage, pauses, expires without changing base stats
+ok 54 - Tactics buff: temporary modifier affects real damage, pauses, expires without changing base stats
+  ---
+  duration_ms: 4.115376
+  type: 'test'
+  ...
+# Subtest: Tactics hero: KO followed by revival cannot restore a pending AI attack
+ok 55 - Tactics hero: KO followed by revival cannot restore a pending AI attack
+  ---
+  duration_ms: 15.246278
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: KO followed by revival cannot restore a pending AI attack
+ok 56 - Tactics enemy: KO followed by revival cannot restore a pending AI attack
+  ---
+  duration_ms: 4.252642
+  type: 'test'
+  ...
+# Subtest: Tactics removed actor cannot complete its queued turn after roster replacement
+ok 57 - Tactics removed actor cannot complete its queued turn after roster replacement
+  ---
+  duration_ms: 8.387798
+  type: 'test'
+  ...
+# Subtest: Tactics repeated auto command cannot queue multiple impacts for one turn
+ok 58 - Tactics repeated auto command cannot queue multiple impacts for one turn
+  ---
+  duration_ms: 13.267963
+  type: 'test'
+  ...
+# Subtest: Tactics end-turn double click advances once and cannot skip a pending AI attack
+ok 59 - Tactics end-turn double click advances once and cannot skip a pending AI attack
+  ---
+  duration_ms: 8.140005
+  type: 'test'
+  ...
+# Subtest: Tactics AI selects recoverable healing before damage
+ok 60 - Tactics AI selects recoverable healing before damage
+  ---
+  duration_ms: 2.829133
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input NaN cannot run geometry or consume a turn
+ok 61 - Tactics invalid grid input NaN cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.61178
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input Infinity cannot run geometry or consume a turn
+ok 62 - Tactics invalid grid input Infinity cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.675736
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input -Infinity cannot run geometry or consume a turn
+ok 63 - Tactics invalid grid input -Infinity cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.566081
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input undefined cannot run geometry or consume a turn
+ok 64 - Tactics invalid grid input undefined cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.547093
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input null cannot run geometry or consume a turn
+ok 65 - Tactics invalid grid input null cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.679421
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input 2 cannot run geometry or consume a turn
+ok 66 - Tactics invalid grid input 2 cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.380993
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input 1.5 cannot run geometry or consume a turn
+ok 67 - Tactics invalid grid input 1.5 cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.380222
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input -1 cannot run geometry or consume a turn
+ok 68 - Tactics invalid grid input -1 cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.575445
+  type: 'test'
+  ...
+# Subtest: Tactics invalid grid input 100 cannot run geometry or consume a turn
+ok 69 - Tactics invalid grid input 100 cannot run geometry or consume a turn
+  ---
+  duration_ms: 0.542726
+  type: 'test'
+  ...
+# Subtest: Tactics large-unit movement checks the whole footprint, not only the centre
+ok 70 - Tactics large-unit movement checks the whole footprint, not only the centre
+  ---
+  duration_ms: 0.852101
+  type: 'test'
+  ...
+# Subtest: Tactics barrel chains run on simulation time even while the active hero is stunned
+ok 71 - Tactics barrel chains run on simulation time even while the active hero is stunned
+  ---
+  duration_ms: 1.274746
+  type: 'test'
+  ...
+# Subtest: Tactics preview and actual impact agree for flat enemy DEF 0, pickup shields and buffs
+ok 72 - Tactics preview and actual impact agree for flat enemy DEF 0, pickup shields and buffs
+  ---
+  duration_ms: 1.261907
+  type: 'test'
+  ...
+# Subtest: Tactics preview and actual impact agree for flat enemy DEF 20, pickup shields and buffs
+ok 73 - Tactics preview and actual impact agree for flat enemy DEF 20, pickup shields and buffs
+  ---
+  duration_ms: 0.827043
+  type: 'test'
+  ...
+# Subtest: Tactics preview and actual impact agree for flat enemy DEF 60, pickup shields and buffs
+ok 74 - Tactics preview and actual impact agree for flat enemy DEF 60, pickup shields and buffs
+  ---
+  duration_ms: 0.603097
+  type: 'test'
+  ...
+# Subtest: Tactics zero-damage profile remains zero rather than acquiring fallback damage
+ok 75 - Tactics zero-damage profile remains zero rather than acquiring fallback damage
+  ---
+  duration_ms: 0.481374
+  type: 'test'
+  ...
+# Subtest: Tactics revival validates the entire footprint, not only the corpse centre
+ok 76 - Tactics revival validates the entire footprint, not only the corpse centre
+  ---
+  duration_ms: 5.265905
+  type: 'test'
+  ...
+# Subtest: Tactics queued AI support does not heal a replacement occupant
+ok 77 - Tactics queued AI support does not heal a replacement occupant
+  ---
+  duration_ms: 2.653579
+  type: 'test'
+  ...
+# Subtest: Tactics removing a selected support skill costs no resource and does not crash
+ok 78 - Tactics removing a selected support skill costs no resource and does not crash
+  ---
+  duration_ms: 2.689934
+  type: 'test'
+  ...
+# Subtest: Tactics AI without useful support falls back to an offensive action
+ok 79 - Tactics AI without useful support falls back to an offensive action
+  ---
+  duration_ms: 23.222757
+  type: 'test'
+  ...
+# Subtest: Tactics removing a prepared offensive AI skill does not throw or spend a charge
+ok 80 - Tactics removing a prepared offensive AI skill does not throw or spend a charge
+  ---
+  duration_ms: 12.751517
+  type: 'test'
+  ...
+# Subtest: Tactics complete intrinsic guard is preserved in preview and actual damage
+ok 81 - Tactics complete intrinsic guard is preserved in preview and actual damage
+  ---
+  duration_ms: 1.073754
+  type: 'test'
+  ...
+# Subtest: Tactics line support heals only allies along the selected grid segment
+ok 82 - Tactics line support heals only allies along the selected grid segment
+  ---
+  duration_ms: 4.767056
+  type: 'test'
+  ...
+# Subtest: Tactics cone support respects the authored angle and excludes a side ally
+ok 83 - Tactics cone support respects the authored angle and excludes a side ally
+  ---
+  duration_ms: 4.051781
+  type: 'test'
+  ...
+# Subtest: Tactics OC medical and barricade summons use the existing authored support semantics
+ok 84 - Tactics OC medical and barricade summons use the existing authored support semantics
+  ---
+  duration_ms: 23.194284
+  type: 'test'
+  ...
+# Subtest: Tactics hero: healing targets the correct side, spends once and never attacks opponents
+ok 85 - Tactics hero: healing targets the correct side, spends once and never attacks opponents
+  ---
+  duration_ms: 25576.345809
+  type: 'test'
+  ...
+# Subtest: Tactics hero: revive preserves the corpse cell and rejoins initiative only on rebuild
+ok 86 - Tactics hero: revive preserves the corpse cell and rejoins initiative only on rebuild
+  ---
+  duration_ms: 5.255312
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: healing targets the correct side, spends once and never attacks opponents
+ok 87 - Tactics enemy: healing targets the correct side, spends once and never attacks opponents
+  ---
+  duration_ms: 3.473934
+  type: 'test'
+  ...
+# Subtest: Tactics enemy: revive preserves the corpse cell and rejoins initiative only on rebuild
+ok 88 - Tactics enemy: revive preserves the corpse cell and rejoins initiative only on rebuild
+  ---
+  duration_ms: 3.787174
+  type: 'test'
+  ...
+# Subtest: Tactics support: preview and healing obey the radiation cap
+ok 89 - Tactics support: preview and healing obey the radiation cap
+  ---
+  duration_ms: 3.628361
+  type: 'test'
+  ...
+# Subtest: Tactics support: purification treats only the requested negatives, even at the healing cap
+ok 90 - Tactics support: purification treats only the requested negatives, even at the healing cap
+  ---
+  duration_ms: 11.042164
+  type: 'test'
+  ...
+# Subtest: Tactics support: pure cleanse never heals or damages
+ok 91 - Tactics support: pure cleanse never heals or damages
+  ---
+  duration_ms: 2.688851
+  type: 'test'
+  ...
+# Subtest: Tactics support: group healing remains range-limited and affects allies only
+ok 92 - Tactics support: group healing remains range-limited and affects allies only
+  ---
+  duration_ms: 3.56583
+  type: 'test'
+  ...
+# Subtest: Tactics support: an occupied corpse is not revivable and cannot consume the special
+ok 93 - Tactics support: an occupied corpse is not revivable and cannot consume the special
+  ---
+  duration_ms: 4.900991
+  type: 'test'
+  ...
+# Subtest: Tactics support: a large corpse cannot revive across an occupied footprint cell
+ok 94 - Tactics support: a large corpse cannot revive across an occupied footprint cell
+  ---
+  duration_ms: 4.564326
+  type: 'test'
+  ...
+# Subtest: Tactics support: LoS blocks healing through walls and can be explicitly disabled by the skill
+ok 95 - Tactics support: LoS blocks healing through walls and can be explicitly disabled by the skill
+  ---
+  duration_ms: 3.452302
+  type: 'test'
+  ...
+# Subtest: Tactics support: a target healed after preview is revalidated without spending
+ok 96 - Tactics support: a target healed after preview is revalidated without spending
+  ---
+  duration_ms: 2.958988
+  type: 'test'
+  ...
+# Subtest: Tactics support: removed skill and removed target fail without consuming resources
+ok 97 - Tactics support: removed skill and removed target fail without consuming resources
+  ---
+  duration_ms: 2.676813
+  type: 'test'
+  ...
+# Subtest: Tactics support: cancel preserves remaining movement and all action costs
+ok 98 - Tactics support: cancel preserves remaining movement and all action costs
+  ---
+  duration_ms: 1.222346
+  type: 'test'
+  ...
+# Subtest: Tactics support buff: modifies damage temporarily without mutating base stats
+ok 99 - Tactics support buff: modifies damage temporarily without mutating base stats
+  ---
+  duration_ms: 11.101942
+  type: 'test'
+  ...
+# Subtest: Tactics support shield: modifies damage temporarily without mutating base stats
+ok 100 - Tactics support shield: modifies damage temporarily without mutating base stats
+  ---
+  duration_ms: 8.239447
+  type: 'test'
+  ...
+# Subtest: Tactics support: damage preview matches the deterministic guarded, buffed, shielded hit
+ok 101 - Tactics support: damage preview matches the deterministic guarded, buffed, shielded hit
+  ---
+  duration_ms: 4.402368
+  type: 'test'
+  ...
+# Subtest: Tactics hero AI: prioritizes a useful heal and never converts it to damage
+ok 102 - Tactics hero AI: prioritizes a useful heal and never converts it to damage
+  ---
+  duration_ms: 4.015309
+  type: 'test'
+  ...
+# Subtest: Tactics enemy AI: prioritizes a useful heal and never converts it to damage
+ok 103 - Tactics enemy AI: prioritizes a useful heal and never converts it to damage
+  ---
+  duration_ms: 3.44375
+  type: 'test'
+  ...
+# Subtest: Tactics AI: moves into healing range using only remaining AP
+ok 104 - Tactics AI: moves into healing range using only remaining AP
+  ---
+  duration_ms: 1.694841
+  type: 'test'
+  ...
+# Subtest: Tactics AI: support pending before a turn change is discarded
+ok 105 - Tactics AI: support pending before a turn change is discarded
+  ---
+  duration_ms: 1.398055
+  type: 'test'
+  ...
+# Subtest: Tactics: authored arca_mirelle support kit has a beneficial secondary
+ok 106 - Tactics: authored arca_mirelle support kit has a beneficial secondary
+  ---
+  duration_ms: 0.229688
+  type: 'test'
+  ...
+# Subtest: Tactics: authored arca_loom support kit has a beneficial secondary
+ok 107 - Tactics: authored arca_loom support kit has a beneficial secondary
+  ---
+  duration_ms: 0.107608
+  type: 'test'
+  ...
+# Subtest: Tactics: authored arca_bastion support kit has a beneficial secondary
+ok 108 - Tactics: authored arca_bastion support kit has a beneficial secondary
+  ---
+  duration_ms: 0.085806
+  type: 'test'
+  ...
+# Subtest: Tactics: authored arca_nova support kit has a beneficial secondary
+ok 109 - Tactics: authored arca_nova support kit has a beneficial secondary
+  ---
+  duration_ms: 0.083182
+  type: 'test'
+  ...
+# Subtest: Tactics: support cannot be applied via the damage-only attack entry point
+ok 110 - Tactics: support cannot be applied via the damage-only attack entry point
+  ---
+  duration_ms: 0.745555
+  type: 'test'
+  ...
+# Subtest: Tactics AI: same-cell replacement cannot steal a prepared heal
+ok 111 - Tactics AI: same-cell replacement cannot steal a prepared heal
+  ---
+  duration_ms: 2.629704
+  type: 'test'
+  ...
+# Subtest: Tactics AI: a removed skill during windup has no effect and spends no cooldown
+ok 112 - Tactics AI: a removed skill during windup has no effect and spends no cooldown
+  ---
+  duration_ms: 2.289424
+  type: 'test'
+  ...
+# Subtest: Tactics AI: paused healing retains windup and resumes exactly once
+ok 113 - Tactics AI: paused healing retains windup and resumes exactly once
+  ---
+  duration_ms: 2.678215
+  type: 'test'
+  ...
+# Subtest: Tactics AI: KO then revival of the caster never restores its previous support
+ok 114 - Tactics AI: KO then revival of the caster never restores its previous support
+  ---
+  duration_ms: 3.100816
+  type: 'test'
+  ...
+# Subtest: Tactics AI: never heals through a barrier from a projected movement cell
+ok 115 - Tactics AI: never heals through a barrier from a projected movement cell
+  ---
+  duration_ms: 22.027186
+  type: 'test'
+  ...
+# Subtest: Tactics AI: remaining movement budget limits a projected healing approach
+ok 116 - Tactics AI: remaining movement budget limits a projected healing approach
+  ---
+  duration_ms: 10.578754
+  type: 'test'
+  ...
+1..116
+# tests 116
+# suites 0
+# pass 116
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 73838.633511
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

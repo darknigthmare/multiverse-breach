@@ -4,6 +4,7 @@ import { createServer } from 'vite';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15 as TACTICS_UNIVERSE_BATTLEFIELDS } from '../src/game/tacticsUniverseBattlefieldsWave15.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16 } from '../src/game/tacticsUniverseBattlefieldsWave16.js';
 import { assertWave16SectorExtension } from './tacticsHistoricalBaselineWave16.mjs';
+import { projectTacticsSectorsBeforeWave17 } from './tacticsHistoricalBaselineWave17.mjs';
 let vite, catalog, custom;
 before(async()=>{
   vite=await createServer({appType:'custom',logLevel:'silent',server:{middlewareMode:true,watch:null}});
@@ -23,7 +24,7 @@ test('each source location selects its own playable Tactics topology and materia
   }
 });
 test('W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image',()=>{
-  assertWave16SectorExtension(catalog.TACTICS_SOURCE_BATTLEFIELDS, TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16);
+  assertWave16SectorExtension(projectTacticsSectorsBeforeWave17(catalog.TACTICS_SOURCE_BATTLEFIELDS), TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16);
   for(const field of fields){
     for(const requested of ['auto',field.id]){
       const preset=custom.normalizeCustomBattlePreset({mode:'Tactics',tacticsBattlefieldId:requested});

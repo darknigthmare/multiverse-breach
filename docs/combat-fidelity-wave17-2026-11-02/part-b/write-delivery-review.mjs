@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {readBatchLineageB} from './effective-cohort.mjs';
+import {COMBAT_SOURCE_DEFINITIONS_WAVE17_PART_B as definitions} from '../../../src/game/combat/combatSourceDefinitionsWave17PartB.js';
+import {ABILITIES_WAVE17_PART_B as kits} from '../../../src/game/combat/abilities/abilitiesWave17PartB.js';
+const D='docs/combat-fidelity-wave17-2026-11-02/part-b';
+const read=p=>fs.readFileSync(p),json=p=>JSON.parse(read(p)),sha=p=>createHash('sha256').update(read(p)).digest('hex');
+const {effectiveIds,reviewedRows,amendmentPaths}=readBatchLineageB();
+const nativePath='src/game/combat/characterAnimationsWave17PartB.generated.json',basePath='src/game/combat/characterSpriteCorrectionsWave17PartB.generated.json';
+const native=json(nativePath),base=json(basePath),generation=json(D+'/generation-records.json'),provenance=json(D+'/native-provenance.json');
+assert.deepEqual(native.entries.map(e=>e.id),effectiveIds);assert.deepEqual(base.entries.map(e=>e.id),effectiveIds);
+assert.equal(Object.keys(definitions).length,43);assert.equal(Object.keys(kits).length,43);assert.equal(generation.remainingHeroIds.length,0);
+const deliveries=effectiveIds.map(id=>{
+ const n=native.entries.find(e=>e.id===id),b=base.entries.find(e=>e.id===id);
+ assert.equal(n.frames,32);assert.equal(b.frames,16);assert.equal(sha('public'+n.sheet),n.sha256);assert.equal(sha('public'+b.sheet),b.sha256);
+ const hashes=[...n.visualValidation.phaseReviews.flatMap(r=>r.frameHashes),...b.visualValidation.stateReviews.flatMap(r=>r.frameHashes)];assert.equal(new Set(hashes).size,48);
+ return {heroId:id,native:{path:'public'+n.sheet,sha256:n.sha256,poses:32},base:{path:'public'+b.sheet,sha256:b.sha256,poses:16},sourceWork:n.sourceWork,source1to1Verified:false};
+});
+const receipts=fs.readdirSync(D+'/sources').filter(f=>f.endsWith('-result.json')).map(file=>({path:D+'/sources/'+file,...json(D+'/sources/'+file)}));
+const reviewed=reviewedRows.map(row=>({heroId:row.hero.id,delivered:effectiveIds.includes(row.hero.id),priorAuthored:!!row.alreadyAuthored,missingSlotsBefore:row.missingExplicitSlots||['simple','secondary','defense'],sourceWork:definitions[row.hero.id].sourceWork,simple:kits[row.hero.id].simple.name,secondary:kits[row.hero.id].secondary.name,defense:kits[row.hero.id].defense.name,special:kits[row.hero.id].special.name,source1to1Verified:false}));
+const value={schemaVersion:1,wave:17,part:'B',observedAt:new Date().toISOString(),scope:'PartB asset delivery and scoped code checks; global browser, build, freeze and publication are performed by the root task separately.',counts:{reviewedIdentities:43,newAuthoredRecords:reviewed.filter(r=>!r.priorAuthored).length,existingAuthoredRevisions:reviewed.filter(r=>r.priorAuthored).length,newExplicitSlots:reviewed.reduce((n,r)=>n+r.missingSlotsBefore.length,0),effectiveCharacters:40,nativePng:40,basePng:40,nativePoses:1280,basePoses:640,distinctRetainedDrawings:1920,completeDrawingsObserved:provenance.nativeDrawingsObserved,completeDrawingsExcluded:provenance.combinedExcludedDrawings,incompleteCorrectiveCandidatesExcluded:0,actualImageRequests:receipts.length,successfulImageRequests:receipts.filter(r=>r.imageReturned).length,actualImageFailures:receipts.filter(r=>!r.imageReturned).length,withheldAfterSameCharacterRefusal:1},registries:[nativePath,basePath].map(path=>({path,sha256:sha(path)})),amendments:amendmentPaths.map(path=>({path,sha256:sha(path)})),sourcePlans:[D+'/source-plan.json',...generation.additionalSourcePlans].map(path=>({path,sha256:sha(path)})),generationRecords:{path:D+'/generation-records.json',sha256:sha(D+'/generation-records.json')},imageResults:receipts.map(r=>({path:r.path,sha256:sha(r.path),heroId:r.heroId,imageReturned:r.imageReturned,startedAt:r.startedAt,observedAt:r.observedAt})),deliveries,reviewed,source1to1Verified:false,canonicalVerified:false,networkVerified:false};
+assert.equal(value.counts.completeDrawingsObserved,2116);assert.equal(value.counts.completeDrawingsExcluded,196);
+fs.writeFileSync(D+'/delivery-review.json',JSON.stringify(value,null,2)+'\n');
+console.log(JSON.stringify(value.counts));

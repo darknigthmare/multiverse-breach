@@ -1,0 +1,905 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "characterId": "predator",
+  "characterName": "Jungle Hunter",
+  "actualProducer": "/root/alien_reference_audit/associated_refs",
+  "delegatedBy": "/root/alien_reference_audit",
+  "queueId": "alien-priority-40",
+  "sourceEvidenceFile": "docs/cg/predator-reference-evidence-wave12-2026-11-01.json",
+  "sourceEvidenceSha256": "01b4a281039e7dc813927ebf46da7265e6919234bf81f85731c1dcebbb24c011",
+  "status": "fifteen-real-cg-independently-reviewed-and-packaged-awaiting-root-import",
+  "plannedSlots": 15,
+  "exclusiveCG13": "iconicOutfitSwap",
+  "exclusiveCG15": "futureExperienced",
+  "slots": [
+    {
+      "slot": "CG01",
+      "slotNumber": 1,
+      "type": "characterSolo",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Reference masked hunter, unchanged source incarnation.",
+      "poseBrief": "Calm grounded full-body three-quarter front stance; RIGHT wrist lowered outwards with two blades fully visible, LEFT forearm relaxed outward so closed computer visible; shoulders level and both feet flat, no attack.",
+      "backgroundId": "cg-bg-predator-wave12-reference-fern-clearing",
+      "backgroundBrief": "Original compatible tropical forest clearing: enormous buttress-root tree on the far left, low ferns behind the body and pale overcast morning shafts, dry mossy ground; no source-photo boulder or film-still composition.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG01-characterSolo.txt",
+      "actualPromptSha256": "d78ba03b4094aaf8024972740f6c6dab3c7a8af5ba6d2e0ab47581023a28d632",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/native/CG01-characterSolo-a7db7bc0f11ec7d9d4edd7a200298549e56fb3b4652b99c357467a8ee3dfd2ac.png",
+      "nativeSha256": "a7db7bc0f11ec7d9d4edd7a200298549e56fb3b4652b99c357467a8ee3dfd2ac",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG01-characterSolo.txt",
+      "promptSha256": "d78ba03b4094aaf8024972740f6c6dab3c7a8af5ba6d2e0ab47581023a28d632",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Tropical buttress-root forest clearing",
+        "foreground": "Dry moss and low ferns around both feet",
+        "midground": "Single hunter before widely spaced forest trunks",
+        "background": "Pale canopy behind the great left buttress tree",
+        "lighting": "Soft overcast morning shafts across gray armor"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG02",
+      "slotNumber": 2,
+      "type": "weaponSolo",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Signature equipment alone: complete RIGHT wristblade gauntlet.",
+      "poseBrief": "The complete detached RIGHT gauntlet and both extended blades rest diagonally on a stone display slab; exterior face visible as supported by source, no flesh, hand, arm or body, no invented internal mechanism.",
+      "backgroundId": "cg-bg-predator-wave12-wristblade-basalt-ledge",
+      "backgroundBrief": "A dark basalt inspection ledge above a quiet rainforest stream, tiny distant foliage and neutral side light; no character silhouette.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG02-weaponSolo.txt",
+      "actualPromptSha256": "613b34678c202592c696aeb42cd42ddf447b4c281e697b9084f752a8d84921ae",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 2,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "referenceInputPurpose": "equipment-only",
+      "nativePath": "/workspace/generated_images/exec-19728700-3595-428a-864c-2da14e086946.png",
+      "nativeSha256": "8f640b87f43448be3361c7e6da7cf27474b95b21d6584b61e4745d7f1dbf39b0",
+      "previousPromptVersions": [
+        {
+          "path": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG02-weaponSolo.txt",
+          "sha256": "613b34678c202592c696aeb42cd42ddf447b4c281e697b9084f752a8d84921ae",
+          "nativeSha256": "8f640b87f43448be3361c7e6da7cf27474b95b21d6584b61e4745d7f1dbf39b0",
+          "rejectedReason": "Multiple large serrated teeth not supported by source smooth wristblades"
+        }
+      ],
+      "retractedRejectionHistory": [
+        {
+          "path": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG02-weaponSolo.txt",
+          "sha256": "613b34678c202592c696aeb42cd42ddf447b4c281e697b9084f752a8d84921ae",
+          "nativeSha256": "8f640b87f43448be3361c7e6da7cf27474b95b21d6584b61e4745d7f1dbf39b0",
+          "rejectedReason": "Multiple large serrated teeth not supported by source smooth wristblades"
+        }
+      ],
+      "sourceLimitations": [
+        "Exact notch count/profile not certifiable from overlapping blades in licensed source."
+      ],
+      "unselectedProposalSha256": "8bd8d6c29ee037b2303de1b48073b1bf3142090cd06a8c8feb4dfe54e7bfc086",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG02-weaponSolo.txt",
+      "promptSha256": "613b34678c202592c696aeb42cd42ddf447b4c281e697b9084f752a8d84921ae",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Rainforest stream-side basalt inspection shelf",
+        "foreground": "Dark flat rock displaying the complete gauntlet",
+        "midground": "Detached gauntlet with both tips inside the frame",
+        "background": "Quiet narrow stream and distant layered foliage",
+        "lighting": "Neutral side daylight defining metallic steps"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG03",
+      "slotNumber": 3,
+      "type": "decorSolo",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Original empty environment compatible with the 1987 tropical-jungle setting, not an official frame.",
+      "poseBrief": "Wide empty environment viewed through low river stones towards a distant waterfall curtain; no character, cloaked outline or equipment.",
+      "backgroundId": "cg-bg-predator-wave12-empty-waterfall-basin",
+      "backgroundBrief": "A sunlit stepped jungle waterfall and clear basin framed by dense broadleaf canopy; layered natural geology, no science-fiction architecture or city.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG03-decorSolo.txt",
+      "actualPromptSha256": "943166f79ba1645e66134d93f93c78a84d3dc215a587fce1d96c83d76d76c62a",
+      "referencePaths": [],
+      "inputReferenceSha256": [],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-6ee1df77-06da-46f6-b6fc-a7de262af57f.png",
+      "nativeSha256": "f6ccdb68e5da6f8855a02a42f261e9eb81aa03031513d899c876a4bde002e13a",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG03-decorSolo.txt",
+      "promptSha256": "943166f79ba1645e66134d93f93c78a84d3dc215a587fce1d96c83d76d76c62a",
+      "referenceInputs": [],
+      "background": {
+        "location": "Empty stepped tropical waterfall basin",
+        "foreground": "Low wet river stones without equipment or actors",
+        "midground": "Clear turquoise basin and layered stone shelves",
+        "background": "Broad waterfall curtain under dense broadleaf canopy",
+        "lighting": "Open bright daylight reflected in the clear water"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG04",
+      "slotNumber": 4,
+      "type": "coherentScene",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Calm examination of source wrist-computer exterior, closed lid retained.",
+      "poseBrief": "Standing on an uneven stream terrace, LEFT forearm lifted horizontally with closed wrist-computer towards face, RIGHT index touching its outer cover; blades safely retracted, mask inclined downward, entire body and feet clear.",
+      "backgroundId": "cg-bg-predator-wave12-moon-creek-computer",
+      "backgroundBrief": "Moonlit shallow-creek stone terrace beneath broad umbrella leaves, distant water reflections and slender trunks; no invented holographic interface.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG04-coherentScene.txt",
+      "actualPromptSha256": "9371e2b6b8a35ebf671137765ad7b6d6d642d116e71fe65bc0a577f70d7a086f",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-5ac9959e-959f-46ed-bd2f-72840ccb5ad1.png",
+      "nativeSha256": "9b19ffa31e34b4892b370a56f7f6ea20ea2085f9eed6c209c500562db17279d6",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG04-coherentScene.txt",
+      "promptSha256": "9371e2b6b8a35ebf671137765ad7b6d6d642d116e71fe65bc0a577f70d7a086f",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Moonlit creek terrace beneath broad leaves",
+        "foreground": "Uneven rock surface supporting both visible feet",
+        "midground": "Hunter inspecting the closed wrist computer",
+        "background": "Slender trees and distant blue creek reflections",
+        "lighting": "Cool blue moonlight through the umbrella leaves"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG05",
+      "slotNumber": 5,
+      "type": "actionScene",
+      "family": "Nexus",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Explicit Nexus gameplay adaptation of the source shoulder plasma caster.",
+      "poseBrief": "Low wide lateral sidestep, torso twisted slightly toward camera, RIGHT forearm with twin blades extended diagonally away from body, LEFT hand guarding the chest; a single cyan shot leaves the LEFT SHOULDER caster, never a hand or wrist cannon; no victim.",
+      "backgroundId": "cg-bg-predator-wave12-nexus-ravine-caster",
+      "backgroundBrief": "Broken rocky ravine crossed by suspended roots and a distant restrained Nexus light rift, rainy blue storm light; clearly original game scenario.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG05-actionScene.txt",
+      "actualPromptSha256": "b2e925344ea934a7487e68017924e404f5a0e1eaf2cf021778c9c272fa7a84df",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-08499a94-7d69-497b-98f8-5d27547a150d.png",
+      "nativeSha256": "2b6c33c64d70c445204c83eff9ccee568dda81d82a8fed5fe4b201d2cdf71066",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG05-actionScene.txt",
+      "promptSha256": "b2e925344ea934a7487e68017924e404f5a0e1eaf2cf021778c9c272fa7a84df",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Rainy jungle ravine beside a Nexus breach",
+        "foreground": "Wet sloping rock ledge and low tropical ferns",
+        "midground": "Hunter in a wide action stance using LEFT caster",
+        "background": "Blue Nexus opening among steep dark forest walls",
+        "lighting": "Rainy blue atmosphere with a cyan plasma shot"
+      },
+      "canonStatus": "nexus-variant"
+    },
+    {
+      "slot": "CG06",
+      "slotNumber": 6,
+      "type": "introPose",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Arrival through jungle threshold in unchanged source gear.",
+      "poseBrief": "Measured forward entrance: leading foot crossing a low root, trailing foot still grounded and fully visible, LEFT hand parting a hanging vine at shoulder height, RIGHT arm lowered with blades retracted; front three-quarter view.",
+      "backgroundId": "cg-bg-predator-wave12-mist-vine-threshold",
+      "backgroundBrief": "A curtain of hanging vines opening into a misty bamboo corridor, wet leaf litter and white dawn fog; no foreground covering the body.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG06-introPose.txt",
+      "actualPromptSha256": "d46ccc897e9c194163cd06e9c9420020dc9172e74e3f0a23f5cc392b58cd529a",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-bc39f453-ed59-45ca-ae2f-2451d66b5c9a.png",
+      "nativeSha256": "669a7b01c0d38438f238f87104bc81da5c14024fc934e50258e0ebd39f9d03e8",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG06-introPose.txt",
+      "promptSha256": "d46ccc897e9c194163cd06e9c9420020dc9172e74e3f0a23f5cc392b58cd529a",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Bamboo and liana forest entrance",
+        "foreground": "Clear dry ground and roots around the entry step",
+        "midground": "Hunter holding a vertical vine with LEFT hand",
+        "background": "Dense tall bamboo trunks and a fern-lined passage",
+        "lighting": "Warm filtered daylight on the entering silhouette"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG07",
+      "slotNumber": 7,
+      "type": "victoryPose",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Contained non-graphic victory, no trophies or opponents.",
+      "poseBrief": "Upright proud stance with LEFT foot on a low isolated rock and RIGHT foot flat below, RIGHT wrist raised at chest height with twin blades pointing upward, LEFT arm relaxed; mask tilted slightly up, no corpse or skull.",
+      "backgroundId": "cg-bg-predator-wave12-sunset-canopy-ridge",
+      "backgroundBrief": "Bright sunset ridge overlooking uninterrupted jungle canopy and distant pale clouds, warm rim light and bare rock under both feet.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG07-victoryPose.txt",
+      "actualPromptSha256": "cda629253ce4d6860a933f7452c2aedb9e18e678f825e0155deb276c165b4315",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-be1d7e77-bcf9-4520-97a9-101e752432f9.png",
+      "nativeSha256": "9905e0751a034cf7b376058579bdd190bf141bba2251a010a95c47890d97a4b4",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG07-victoryPose.txt",
+      "promptSha256": "cda629253ce4d6860a933f7452c2aedb9e18e678f825e0155deb276c165b4315",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Jungle ridge at warm sunset",
+        "foreground": "Single rock raised beneath the LEFT foot",
+        "midground": "Hunter with RIGHT twin wristblades raised in victory",
+        "background": "Distant rainforest ridge and glowing open horizon",
+        "lighting": "Orange sunset edge light against the gray equipment"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG08",
+      "slotNumber": 8,
+      "type": "defeatPose",
+      "family": "Canon",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Dignified retreat alive, intact anatomy and armor.",
+      "poseBrief": "Deep low defensive squat with BOTH feet flat and planted wide apart, both complete clawed feet clearly visible in front of the body with separated toes. LEFT forearm braced on a separate low rock with computer closed and visible, RIGHT forearm shielding the outer thigh with blades retracted, masked head turned alertly toward an exit; no kneeling, no folded hidden trailing foot and no injuries.",
+      "backgroundId": "cg-bg-predator-wave12-rain-mangrove-retreat",
+      "backgroundBrief": "Rain-soaked mangrove-root alcove with shallow still reflective puddles, cool night light and safe open ground around the figure; no waterfall, cascade or moon disc.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG08-defeatPose.txt",
+      "actualPromptSha256": "da26f161edfe486e6e28eba83ce9b9fe79537233365ef0d2060c6604edc57521",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-3f5bd68a-c2b6-4f12-97cb-0f1e55251682.png",
+      "nativeSha256": "bf38f532a8bab8951e7ec8530022e7b8664476fc667e7473347f498886f1ec32",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG08-defeatPose.txt",
+      "promptSha256": "da26f161edfe486e6e28eba83ce9b9fe79537233365ef0d2060c6604edc57521",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Low mangrove root hollow after rainfall",
+        "foreground": "Separate shallow puddles and stones around flat feet",
+        "midground": "Hunter in a deep exhausted defensive squat",
+        "background": "Dense tangled mangrove roots without waterfall or moon disc",
+        "lighting": "Muted green filtered daylight across damp armor"
+      },
+      "canonStatus": "canon-inspired"
+    },
+    {
+      "slot": "CG09",
+      "slotNumber": 9,
+      "type": "beachFamily",
+      "family": "Fan Art",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Family-safe beach leisure fan art; source mask/anatomy and gear retained.",
+      "poseBrief": "Seated sideways on a smooth driftwood log with one knee relaxed forward and both clawed feet resting clearly on dry sand, forearms relaxed on thighs, closed mask turned toward the sea; no romance or undressing.",
+      "backgroundId": "cg-bg-predator-wave12-family-tropical-shore",
+      "backgroundBrief": "Quiet tropical shoreline with pale sand, a crescent of distant palm trees and gentle turquoise surf in soft afternoon light; no beach crowd.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG09-beachFamily.txt",
+      "actualPromptSha256": "8880e468ab03dcb601f7cd888fb8cd373cf497571beb2bb57a38a223d0bb5d82",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-008b27e4-2963-4f73-9b2e-c68e89d2286a.png",
+      "nativeSha256": "1ecabfabf4bd831d462a36790103480433199fa2bfe258f3d143d0eb2fe1b31f",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG09-beachFamily.txt",
+      "promptSha256": "8880e468ab03dcb601f7cd888fb8cd373cf497571beb2bb57a38a223d0bb5d82",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Quiet family-safe tropical shoreline",
+        "foreground": "Pale sand supporting both complete alien feet",
+        "midground": "Hunter seated alone on a weathered driftwood log",
+        "background": "Ocean surf, palm leaves and distant low tropical island",
+        "lighting": "Soft clear daytime coastal light and cool sea reflections"
+      },
+      "canonStatus": "fan-art"
+    },
+    {
+      "slot": "CG10",
+      "slotNumber": 10,
+      "type": "maidService",
+      "family": "Fan Art",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Family-safe service theme, clean plain apron added over original armor as explicit fan art.",
+      "poseBrief": "Short walking service step, LEFT hand balancing one modest tray with two plain cups, RIGHT hand steadying the tray edge, twin blades retracted and shoulder gear safe; full body in a simple cream apron over unchanged source suit, no submission.",
+      "backgroundId": "cg-bg-predator-wave12-service-camp-veranda",
+      "backgroundBrief": "Empty timber expedition-pavilion veranda with a plain clay counter, simple hanging lantern and distant jungle foliage; materials compatible with a 1980s camp.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG10-maidService.txt",
+      "actualPromptSha256": "d3e1aa91373ad64c9e9067078bec8483b7ea43746dcc14664f2deceac406fc27",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-ed3323ba-7ed2-4143-ad3f-5da79f0a4358.png",
+      "nativeSha256": "4b5d1c2de5f759759c498da794f8f314811bd76cb5aec60079cb483eb4d775b6",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG10-maidService.txt",
+      "promptSha256": "d3e1aa91373ad64c9e9067078bec8483b7ea43746dcc14664f2deceac406fc27",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Rustic open-air jungle tea pavilion",
+        "foreground": "Warm timber flooring beneath a walking service step",
+        "midground": "Apron-wearing hunter carrying a tray with two cups",
+        "background": "Rough wood counter, tropical fronds and open veranda",
+        "lighting": "Gentle warm pavilion lamps mixed with late daylight"
+      },
+      "canonStatus": "fan-art"
+    },
+    {
+      "slot": "CG11",
+      "slotNumber": 11,
+      "type": "goofy",
+      "family": "Fan Art",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Gentle comic mishap with a snagged vine, dignity retained.",
+      "poseBrief": "Comic controlled balance: LEFT foot firmly planted on a broad stepping stone, RIGHT clawed foot raised clear of the ground while RIGHT fingers pluck one leaf snagged harmlessly on the knee plate; LEFT arm extends sideways for balance, mask looks down; no fall or injury.",
+      "backgroundId": "cg-bg-predator-wave12-comic-pond-stepping-stones",
+      "backgroundBrief": "Sunny shallow jungle pond with widely separated stepping stones and luminous green reeds; no other creature or person.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG11-goofy.txt",
+      "actualPromptSha256": "b778fd2a16caec1fcdd3501757516cffcd98b73181030ea4ec269f8bb3601c98",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-7014318e-cf1a-4448-bf40-aff840238957.png",
+      "nativeSha256": "41a22443ea60930a9a347c41b763af53fe23b440fd87454cd0fd24b0ecc07c3b",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG11-goofy.txt",
+      "promptSha256": "b778fd2a16caec1fcdd3501757516cffcd98b73181030ea4ec269f8bb3601c98",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Shallow tropical pond with broad stepping stones",
+        "foreground": "Clear water and separated visible support stones",
+        "midground": "Hunter balancing comically and plucking a leaf at RIGHT knee",
+        "background": "Green pond bank and a small distant waterfall curtain",
+        "lighting": "Bright playful daytime light with clear water reflections"
+      },
+      "canonStatus": "fan-art"
+    },
+    {
+      "slot": "CG12",
+      "slotNumber": 12,
+      "type": "alignmentSwap",
+      "family": "What If",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Hypothetical benevolent guardian alignment, no change of species or source gear.",
+      "poseBrief": "Protective front three-quarter open stance: LEFT palm held outward to signal a calm stop, RIGHT gauntlet lowered with blades retracted, feet planted protectively in front of an empty supply shelter; do not show back armor.",
+      "backgroundId": "cg-bg-predator-wave12-guardian-ranger-shelter",
+      "backgroundBrief": "A quiet abandoned ranger shelter on a fern-covered forest edge, plain crates and cloth tarp only, warm early-evening light; no civilians pictured.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG12-alignmentSwap.txt",
+      "actualPromptSha256": "ed9bff4f53a75a4b1b0e9f8b6657bb951ecd41929a46a3ad73352299eea7b57a",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-e88b8479-cf00-40b9-8620-27ca7461e63e.png",
+      "nativeSha256": "86faa8b7ba07f774e1a78e243a44a62027f12691b4eb3827a47abf4c5b9f216a",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG12-alignmentSwap.txt",
+      "promptSha256": "ed9bff4f53a75a4b1b0e9f8b6657bb951ecd41929a46a3ad73352299eea7b57a",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Unoccupied protected supply shelter at jungle edge",
+        "foreground": "Dry clearing and stacked sealed supply crates",
+        "midground": "Masked guardian holding LEFT palm open before the shelter",
+        "background": "Empty canvas tarps, more crates and distant tropical trees",
+        "lighting": "Warm late sunlight falling through the shelter edge"
+      },
+      "canonStatus": "what-if"
+    },
+    {
+      "slot": "CG13",
+      "slotNumber": 13,
+      "type": "iconicOutfitSwap",
+      "family": "What If",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Exclusive iconic outfit swap: Dutch 1987 green camouflage sleeveless upper shirt/vest layer ONLY, scoped donor source; no gender swap.",
+      "poseBrief": "Lateral three-quarter presentation, RIGHT foot on a small stump and LEFT foot flat, LEFT hand resting on an added green camouflage tactical upper layer over original alien net/armor, RIGHT wrist lowered; keep alien face hidden by original silver mask, body proportions/feet and all original gear.",
+      "backgroundId": "cg-bg-predator-wave12-dutch-layer-observation-platform",
+      "backgroundBrief": "A dry jungle observation platform built of rough timber, distant fern valley and pale morning sky; no invented army badges or human footwear.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG13-iconicOutfitSwap.txt",
+      "actualPromptSha256": "c63dbbf955b0713447dc477cb24ee72668a8e7d2fcc1afa8c4db9cc571cb8d4b",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-dutch-upper-costume-only.jpeg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+        "f0c251f790d035a0847703a8770c7ad685c952541d8fe5060707e3dcba65e4a2"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "independentCostumeInputReviewed": true,
+      "costumeInputReviewFile": ".tmp/cg-alien-2026-11-01/quality/predator/CG13-costume-donor-independent-review.json",
+      "nativePath": "/workspace/generated_images/exec-97e83be7-fd00-44a9-8535-ab5ff1668d4e.png",
+      "nativeSha256": "9f95110898e03f01170c27ee9a004a3dd86902dbf1d83936e9c29ffa5f3664b6",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG13-iconicOutfitSwap.txt",
+      "promptSha256": "c63dbbf955b0713447dc477cb24ee72668a8e7d2fcc1afa8c4db9cc571cb8d4b",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-dutch-upper-costume-only.jpeg",
+          "sha256": "f0c251f790d035a0847703a8770c7ad685c952541d8fe5060707e3dcba65e4a2",
+          "referencePurpose": "costume-only",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Timber observation platform above a fern valley",
+        "foreground": "Rough boards and a short stump beneath RIGHT foot",
+        "midground": "Hunter presenting scoped Dutch upper camouflage over original gear",
+        "background": "Timber rails, broad jungle valley and pale mountain distance",
+        "lighting": "Pale morning sky with clean dry daylight on the platform"
+      },
+      "canonStatus": "what-if"
+    },
+    {
+      "slot": "CG14",
+      "slotNumber": 14,
+      "type": "zombieVersion",
+      "family": "What If",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Non-graphic Nexus corruption/zombie alternative, not an established movie creature.",
+      "poseBrief": "Low advancing asymmetric crouch with anatomical RIGHT front knee deeply bent and LEFT rear leg extended onto its own rock; intact torso hunched, LEFT hand curled clearly at upper chest with closed computer visible, RIGHT arm braced outward with two source wristblades extended, both complete clawed feet visible. Local violet/cyan pixel glitch outlines existing armor edges without wounds or changed anatomy.",
+      "backgroundId": "cg-bg-predator-wave12-nexus-corrupted-root-arch",
+      "backgroundBrief": "Dark mossy stone arch in dense rainforest, faint original Nexus glow among roots and black-green still water, no gore or victims.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG14-zombieVersion-revision1-low-advancing-crouch.txt",
+      "actualPromptSha256": "017feb88467992998f7b52ecb01380b9c1b75deff2084fb8f7b0f30fdf5ce42c",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 2,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-2679c434-8e95-4e56-8ed9-9340cceab552.png",
+      "nativeSha256": "b874a63121727b142bc343ca87f3a5f46fff80974e4205702a10d4225c42b198",
+      "previousPromptVersions": [
+        {
+          "path": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG14-zombieVersion.txt",
+          "sha256": "1428f88ab7c094a3c8ccfbaf8bc8840cfa3c9ab2bb8c7e5be80c7fb4c4c9f2a5",
+          "nativeSha256": "a5e853f4bfc4434a5ef51290241f281906c245d6ce7a6f5952beb34c2e61dfe8",
+          "rejectedReason": "Actual native was nearly upright with both arms low; missing low advancing crouch and LEFT hand at chest as explicitly requested."
+        }
+      ],
+      "requestedPoseBrief": "Interrupted low advancing crouch, torso leaning forward, LEFT clawed hand curled close to chest and RIGHT wrist braced outward with blades retracted, original mask and limbs intact; restrained violet/cyan glitch light along outer armor only, no wounds or new anatomy.",
+      "observedDifferenceFromRequestedPose": "Twin RIGHT wristblades are extended rather than retracted. Independent actual-image review accepted the source-supported gear with the intended corruption theme; no third CG14 attempt.",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG14-zombieVersion-revision1-low-advancing-crouch.txt",
+      "promptSha256": "017feb88467992998f7b52ecb01380b9c1b75deff2084fb8f7b0f30fdf5ce42c",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "Mossy stone root arch above still rainforest water",
+        "foreground": "Separate dark stone ledges keeping both feet visible",
+        "midground": "Corrupted hunter advancing beneath the stone arch",
+        "background": "Black-green pool, hanging roots and faint violet Nexus traces",
+        "lighting": "Dark green ambient light edged with restrained cyan and violet"
+      },
+      "canonStatus": "what-if"
+    },
+    {
+      "slot": "CG15",
+      "slotNumber": 15,
+      "type": "futureExperienced",
+      "family": "What If",
+      "status": "native-independently-accepted-and-three-exports-packaged",
+      "themeBrief": "Exclusive hypothetical experienced future of the same masked 1987 hunter, no invented age or later-film equipment.",
+      "poseBrief": "Standing in a measured veteran rest: RIGHT palm flat against a narrow upright stone at shoulder height with blades retracted, LEFT closed-computer forearm resting across the waist, RIGHT foot forward and LEFT foot behind in an offset stance, masked head turned toward the horizon; source armor shows restrained superficial wear only. This is a STANDING pose, never seated or kneeling.",
+      "backgroundId": "cg-bg-predator-wave12-future-dawn-plateau",
+      "backgroundBrief": "A silver dawn plateau above low forest mist, sparse ferns and distant mountains, cool neutral light; no Elder/CityHunter accessories or exposed face.",
+      "actualPromptFile": ".tmp/cg-alien-2026-11-01/production/predator/prompts/CG15-futureExperienced.txt",
+      "actualPromptSha256": "5ab509381d0d70b65ce8a5f0f4b30cc737cfe6510676d38b8546548f83aa8e15",
+      "referencePaths": [
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-masked-body.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-film-mask-armor.jpeg",
+        "/workspace/multiverse-breach/.tmp/cg-alien-2026-11-01/production/predator/references/predator-1987-neca-body-gear-support.jpg"
+      ],
+      "inputReferenceSha256": [
+        "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+        "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+        "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21"
+      ],
+      "rootInputPreflightPending": false,
+      "generatedImageCount": 1,
+      "contentRating": "family-safe",
+      "ageStatus": "unknown-family-safe-only",
+      "nativePath": "/workspace/generated_images/exec-9ed9c679-24aa-47da-a48e-c3ee4e5b224d.png",
+      "nativeSha256": "82f9e472b38ea6d44f17c9ae49e7eb095b475a86852d0e4102c68d533c823ae0",
+      "promptFile": "docs/cg/prompts/wave12-2026-11-01/predator/CG15-futureExperienced.txt",
+      "promptSha256": "5ab509381d0d70b65ce8a5f0f4b30cc737cfe6510676d38b8546548f83aa8e15",
+      "referenceInputs": [
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg",
+          "sha256": "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-mask-armor.jpeg",
+          "sha256": "5b8135ef6d6e510e1f02931e4dda5679ec280f33ccef2e208ab4e65a9390352a",
+          "referencePurpose": "identity",
+          "usedForIdentity": true
+        },
+        {
+          "path": "docs/cg/references/wave12-2026-11-01/predator/predator-1987-neca-body-gear-support.jpg",
+          "sha256": "71cfc860b0953ae6e4fba77a10622aad1531481f4887feea8ec77f0d74d13c21",
+          "referencePurpose": "body-costume-support",
+          "usedForIdentity": false
+        }
+      ],
+      "background": {
+        "location": "High stone plateau above a forest mist valley",
+        "foreground": "Dry rock shelf and a narrow upright stone at RIGHT palm",
+        "midground": "Standing veteran hunter resting LEFT forearm at the waist",
+        "background": "Layered distant mountains rising above silver forest mist",
+        "lighting": "Cool dawn light with a warm restrained horizon"
+      },
+      "canonStatus": "what-if"
+    }
+  ],
+  "newImagesGenerated": 17,
+  "imageGenCallsPending": 0,
+  "canonicalFidelityApproved": false,
+  "ageStatus": "unknown-family-safe-only",
+  "selectedNativeCount": 15
+}

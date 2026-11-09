@@ -11,6 +11,10 @@ const dummy = id => ({ id, name: id, universe: 'Contact regression', stats: { hp
   simple: { name: 'Training strike', type: 'melee', dmg: 1 }, secondary: { name: 'Training shot', type: 'bullet', dmg: 1 },
   defense: { name: 'Training guard', type: 'shield', reduce: 0.4 }, special: { name: 'Training strike', type: 'melee', dmg: 2 } });
 const hero = id => { const found = heroes.find(h => h.id === id); assert.ok(found, id); return found; };
+const previousRuntimeBytes = await readFile(new URL('../docs/combat-fidelity-wave6-2026-10-20/runtime-baseline.json', import.meta.url));
+assert.equal(createHash('sha256').update(previousRuntimeBytes).digest('hex'), 'c20f760d3338dd5531181c11b736d1bd5803675d6e41c221e9dffd094335ada4');
+const previousNativeIds = new Set(JSON.parse(previousRuntimeBytes).assets.map(asset => asset.heroId));
+assert.equal(previousNativeIds.size, 50);
 before(async () => {
   vite = await createServer({ root: fileURLToPath(new URL('..', import.meta.url)), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js?contact-wave6'));
@@ -187,6 +191,9 @@ test('Wave6 controlled contact keeps miss trails while previous native visual fa
   assert.equal(JSON.stringify(options), before);
   let previousFamilies = 0;
   for (const asset of getAnimationAssets()) {
+    // The frozen pre-W6 cohort defines "previous"; later families have their
+    // own legitimate contact contracts and are tested in their own wave.
+    if (!previousNativeIds.has(asset.heroId)) continue;
     const actor = heroes.find(candidate => candidate.id === asset.heroId); if (!actor) continue;
     const source = resolveMeleeSuper(actor), base = { actor: { ...actor, x: 300, y: 350 }, profile: source,
       action: { duration: source.duration, hitAt: source.hitAt, elapsed: 0.55, facing: 1 }, target: { x: 400, y: 350 } };

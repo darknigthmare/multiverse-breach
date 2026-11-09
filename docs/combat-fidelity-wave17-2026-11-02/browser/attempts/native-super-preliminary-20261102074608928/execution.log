@@ -1,0 +1,40 @@
+{
+  "passed": false,
+  "cases": 478,
+  "failures": [
+    {
+      "id": "beyond_good_evil_jade",
+      "mode": "fighter",
+      "side": "player",
+      "error": "beyond_good_evil_jade: information camera damaged an enemy",
+      "stack": "Error: beyond_good_evil_jade: information camera damaged an enemy\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:534:5)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_jade",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "beyond_good_evil_jade: information camera damaged an enemy",
+      "stack": "Error: beyond_good_evil_jade: information camera damaged an enemy\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:534:5)\n    at async <anonymous>:337:30"
+    }
+  ],
+  "errors": [],
+  "requests": []
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+false !== true
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/browser/native-super-runtime.browser.mjs:55:8 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

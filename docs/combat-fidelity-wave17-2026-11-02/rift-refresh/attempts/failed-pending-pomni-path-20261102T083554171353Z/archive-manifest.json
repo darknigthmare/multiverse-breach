@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "archivedAt": "2026-11-02T08:35:54.194179Z",
+  "success": false,
+  "failurePhase": "postflight-availability-assertion",
+  "reason": "All five commands printed actual exit0 completion lines; the runner subsequently threw on the only pending path rename for stage9330. No result.json was produced.",
+  "observedPrintedCompletionLines": [
+    {
+      "step": 1,
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-11-02T08:22:56.601Z"
+    },
+    {
+      "step": 2,
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-11-02T08:30:23.927Z"
+    },
+    {
+      "step": 3,
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-11-02T08:30:34.429Z"
+    },
+    {
+      "step": 4,
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-11-02T08:30:35.153Z"
+    },
+    {
+      "step": 5,
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "exitCode": 0,
+      "finishedAt": "2026-11-02T08:30:45.463Z"
+    }
+  ],
+  "unavailableReceiptFields": [
+    "processId",
+    "startedAt",
+    "per-command-log-fingerprint-at-close"
+  ],
+  "doNotTreatAsCompletedRefresh": true,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/step-01.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4",
+      "bytes": 191
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/step-02.log",
+      "sha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485",
+      "bytes": 450
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/step-03.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4",
+      "bytes": 191
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/step-04.log",
+      "sha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c",
+      "bytes": 77
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/step-05.log",
+      "sha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d",
+      "bytes": 620
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/runner-stdout-stderr.log",
+      "sha256": "a9b31980bdb55f262c53741c0befaf6bf4344659754cc48cc8fb925714b3a8ff",
+      "bytes": 30004
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/catalog-after-failed-postflight.json",
+      "sha256": "3af244e3e3b1fbcd9bfba3cf9b429b56ecf76cd682b4a22e31c17f8c9d5a2d30",
+      "bytes": 10867330
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/quality-after-failed-postflight.json",
+      "sha256": "f8d219659d84d0e4666e23859fb6b9e42bedef9763cd1c14a5899454709fc839",
+      "bytes": 3597862
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/registry-after-failed-postflight.json",
+      "sha256": "bd156143b86c4e8b7ff4480f7008b5869cb95bedd13a1ab615c7334390b8a848",
+      "bytes": 552083
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rift-refresh/attempts/failed-pending-pomni-path-20261102T083554171353Z/runner-at-failed-postflight.mjs",
+      "sha256": "103ea1591af87ee5f8fc409c100b6d2a83282019c5043cbe0e9d39d265da78a3",
+      "bytes": 5949
+    }
+  ],
+  "source1to1Verified": false
+}

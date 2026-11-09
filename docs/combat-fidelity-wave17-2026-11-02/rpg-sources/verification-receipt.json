@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T06:59:19.929Z",
+  "source1to1Verified": false,
+  "checks": [
+    {
+      "command": "node --test --test-concurrency=1 scripts/sourceMechanicsWave17.test.mjs scripts/sourceBubbleCaptureWave17.test.mjs scripts/sourceEngineWave17.test.mjs",
+      "exitCode": 0,
+      "tests": 45,
+      "passed": 45,
+      "failed": 0
+    },
+    {
+      "command": "node --test --test-concurrency=1 scripts/rpgSourceControlWave16.test.mjs scripts/combatSourceRuntimeWave16.test.mjs",
+      "exitCode": 0,
+      "tests": 44,
+      "passed": 44,
+      "failed": 0
+    },
+    {
+      "command": "node scripts/buildSummonAnimationsWave17.mjs --check",
+      "exitCode": 0,
+      "atlases": 6,
+      "nativePoses": 96
+    },
+    {
+      "command": "node scripts/buildCaptureEnemyAssetsWave17.mjs --check",
+      "exitCode": 0,
+      "atlases": 1,
+      "nativePoses": 16
+    },
+    {
+      "command": "node_modules/.bin/oxlint [W17 RPG source modules, four engines, targeting, builders, tests and browser drivers]",
+      "exitCode": 0,
+      "warnings": 0,
+      "errors": 0
+    }
+  ],
+  "logs": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/source-tests-45.log",
+      "sha256": "12f07bf4aae977564fecaaab43941c240769ebb7fbe9862bdf2e15c471b7eb33"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/historical-tests-44.log",
+      "sha256": "af27334df8de49913150d356fda9b5ad712b7681819564a79acb9ed52cb50666"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/summon-builder-check.log",
+      "sha256": "3e6c1662f7895000527acaf31c982fc4d17ee88e07451318fbc0eb4d6822c276"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/capture-builder-check.log",
+      "sha256": "fc30630595f5c9202cfb0088153a99c87a99cb3369f04bde9492fcecafc426b2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/focused-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "browserFinalStatus": "Pending parent production freeze; preliminary12invocations and4RPG/SmashNPCflows passed. Final reports, when present, are authoritative."
+}

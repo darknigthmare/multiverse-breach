@@ -1,0 +1,1267 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "reviewer": "cg_starfire_suite",
+  "status": "passed",
+  "scope": "Runtime selections, preservation bindings and other-agent atlas selection checks. No new visual evaluation of Rayman or Eira CG.",
+  "preservation": {
+    "path": "docs/cg/reviews/wave4-2026-10-20/historical-preservation-verification.json",
+    "sha256": "f1561b0d17e2fdf49c6d92cdd467e09d8d6e43e58ca1cc45979da04aedaa3e42",
+    "baselineCgDefinitionsUnchanged": 302,
+    "baselineCgMediaUnchanged": 1437,
+    "revisionDefinitionsUnchanged": 94
+  },
+  "runtimeSources": [
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "78444654bb1494e3ab03e46c5602abf6b7942c96573ad4e1ce730999474873db"
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "b1e48fac52a4b321c9244949a30fdc979b5fcc39cdfd6c7e1e718e197171c847"
+    }
+  ],
+  "baselineSelectionsUnchanged": 385,
+  "newSelectedCg": 135,
+  "newSeries": 9,
+  "currentCg": 520,
+  "retainedCgVersions": 614,
+  "lockedMediaChecksPassed": 520,
+  "series": [
+    {
+      "characterId": "crash_bandicoot",
+      "receiptFile": "docs/cg/crash-bandicoot-wave4-2026-10-20.json",
+      "receiptSha256": "2e4799d356ba4000fb963d28a553c36927784b0f521291fd3ed9f71486172a3c",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/crash-bandicoot-independent-review.json",
+      "reviewSha256": "69c54d95adda54fd9be218791019114587f6be71c8a8c93c16e43a4741593870",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "spyro_spyro",
+      "receiptFile": "docs/cg/spyro-wave4-2026-10-20.json",
+      "receiptSha256": "03cf1416ecf9cedb5abb133c9a39573a5cc713d3a856afb49925575cd965ad77",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/spyro-independent-review.json",
+      "reviewSha256": "8e6537952787c011000f96352260d446682b4c4ece31b620db4dcf468706002c",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "rayman_rayman",
+      "receiptFile": "docs/cg/rayman-wave4-2026-10-20.json",
+      "receiptSha256": "e9d72f2fc904e21aea57b7c06946601e07c5c042b004c7d0be85c1ccb1554ae9",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/rayman-independent-review.json",
+      "reviewSha256": "b5526b12c1012a466efec5e67fc87d6a3bebfdf8d51d60c5afa87436ecb1da73",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "chell",
+      "receiptFile": "docs/cg/chell-wave4-2026-10-20.json",
+      "receiptSha256": "ad10aec325fc4b7604ffbb469185616f0461fac631326e6cdfda93b8c9f6ae68",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/chell-independent-review.json",
+      "reviewSha256": "bb8619b058b81a1ba7785ae13e6b319ec530c715a1fb96c483f424ea921c8f1e",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "elara_voss",
+      "receiptFile": "docs/cg/elara-voss-wave4-2026-10-20.json",
+      "receiptSha256": "47062f10689a7c5a2cd3a5d8938387e6bb82514bec10ab769bc59787b269993b",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/elara-voss-independent-review.json",
+      "reviewSha256": "50185e489c21118783ac688e485e7a24b42aba951402dafa1ecf200cb0975fdb",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "neris_vale",
+      "receiptFile": "docs/cg/neris-vale-wave4-2026-10-20.json",
+      "receiptSha256": "61611b55a0794da46beb0b9dac807dee5564dc2d8af618f4280f4c25800345ce",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/neris-vale-independent-review.json",
+      "reviewSha256": "b1224e42ae4216a1d22139d7927f3148e481380ff4cf2d234c6988003d442c08",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "kael_venn",
+      "receiptFile": "docs/cg/kael-venn-wave4-2026-10-20.json",
+      "receiptSha256": "43a26b0fe3acd0170bc42856d21becf79ca70e11505081ebf3eec6cb3219a38b",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/kael-venn-independent-review.json",
+      "reviewSha256": "faf08724768eb1e7431a23001eb16e26c1b17102d7430b6449373111c4c42e9d",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "eira_solenne",
+      "receiptFile": "docs/cg/eira-solenne-wave4-2026-10-20.json",
+      "receiptSha256": "74eb41ea605db670ca0a3df590931a2145db557276d6ae71b1798fe912ec5748",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-independent-review.json",
+      "reviewSha256": "be2405b35cb13aff0db3b75a32dd0915be61e17bc654055bc54daa8fdaba085d",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    },
+    {
+      "characterId": "nyra_vale",
+      "receiptFile": "docs/cg/nyra-vale-wave4-2026-10-20.json",
+      "receiptSha256": "292d4228f35a8cee6e2005693a3ec03024054c56bf526df32a0d827929c7e4b9",
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-independent-review.json",
+      "reviewSha256": "195fb02893022a3dea781496f8488b175931724e1cfc42930279a4ebf9a1beae",
+      "acceptedCg": 15,
+      "verifiedMedia": 45,
+      "importedSelectionsExact": true
+    }
+  ],
+  "atlasSelections": [
+    {
+      "characterId": "elara_voss",
+      "currentPath": "/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png",
+      "currentSha256": "bbc66a11cc60ae6c1df8fa5baa3d7d27deadba1059fd6088a1254b79d5a35699",
+      "previousPath": "/sprites/generated/heroes/the-aether-crown/elara-voss.png",
+      "previousSha256": "ab91a7b94adc4aba23c885d1f2bbd0a1bee6b727b1d72e6a01f8122db32a49ff",
+      "previousAccessibleAsVariant": true,
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/elara-voss-sprite-independent-review.json",
+      "framesIndependentlyAccepted": 16
+    },
+    {
+      "characterId": "nyra_vale",
+      "currentPath": "/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png",
+      "currentSha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+      "previousPath": "/sprites/generated/heroes/neon-requiem/nyra-vale.png",
+      "previousSha256": "f40fd1b382927de6b269a58863f317573d543f21f00652ba04ab072f9552fe9c",
+      "previousAccessibleAsVariant": true,
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "reviewFile": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-independent-review.json",
+      "framesIndependentlyAccepted": 16
+    }
+  ],
+  "selectedNewCg": [
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:characterSolo:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:weaponSolo:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/weapon-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/weapon-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/weapon-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:decorSolo:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/decor-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/decor-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/decor-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:coherentScene:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:actionScene:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:introPose:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:victoryPose:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:defeatPose:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:beachFamily:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:maidService:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:goofy:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:alignmentSwap:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:genderSwap:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:zombieVersion:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:crash-bandicoot:crash-bandicoot:futureExperienced:openai-v1",
+      "characterId": "crash_bandicoot",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/crash-bandicoot/crash-bandicoot/future-experienced-wave4-2026-10-20.png",
+      "imagePath": "/cg/crash-bandicoot/crash-bandicoot/future-experienced-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/crash-bandicoot/crash-bandicoot/future-experienced-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:characterSolo:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:weaponSolo:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/quest-gem-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/quest-gem-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/quest-gem-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:decorSolo:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:coherentScene:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:actionScene:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:introPose:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:victoryPose:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:defeatPose:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:beachFamily:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:maidService:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:goofy:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:alignmentSwap:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:genderSwap:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:zombieVersion:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:spyro:spyro-spyro:firstStep:openai-v1",
+      "characterId": "spyro_spyro",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/spyro/spyro-spyro/first-step-wave4-2026-10-20.png",
+      "imagePath": "/cg/spyro/spyro-spyro/first-step-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/spyro/spyro-spyro/first-step-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:characterSolo:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:weaponSolo:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/signature-weapon-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/signature-weapon-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/signature-weapon-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:decorSolo:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:coherentScene:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:actionScene:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:introPose:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:victoryPose:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:defeatPose:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:beachFamily:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:maidService:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:goofy:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:alignmentSwap:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:genderSwap:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:zombieVersion:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:rayman:rayman-rayman:firstStep:openai-v1",
+      "characterId": "rayman_rayman",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/rayman/rayman-rayman/first-step-wave4-2026-10-20.png",
+      "imagePath": "/cg/rayman/rayman-rayman/first-step-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/rayman/rayman-rayman/first-step-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:characterSolo:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:weaponSolo:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/signature-weapon-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/signature-weapon-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/signature-weapon-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:decorSolo:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:coherentScene:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:actionScene:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:introPose:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:victoryPose:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:defeatPose:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:beachFamily:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:maidService:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:goofy:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:alignmentSwap:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:genderSwap:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:zombieVersion:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:portal:chell:futureExperienced:openai-v1",
+      "characterId": "chell",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/portal/chell/future-experienced-wave4-2026-10-20.png",
+      "imagePath": "/cg/portal/chell/future-experienced-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/portal/chell/future-experienced-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:characterSolo:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:weaponSolo:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/weapon-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/weapon-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/weapon-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:decorSolo:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/decor-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/decor-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/decor-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:coherentScene:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:actionScene:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:introPose:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:victoryPose:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:defeatPose:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:beachFamily:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:maidService:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:goofy:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:alignmentSwap:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:genderSwap:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:zombieVersion:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:the-aether-crown:elara-voss:futureExperienced:openai-v1",
+      "characterId": "elara_voss",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/the-aether-crown/elara-voss/future-experienced-wave4-2026-10-20.png",
+      "imagePath": "/cg/the-aether-crown/elara-voss/future-experienced-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/the-aether-crown/elara-voss/future-experienced-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:characterSolo:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:weaponSolo:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/signature-weapon-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/signature-weapon-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/signature-weapon-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:decorSolo:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:coherentScene:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:actionScene:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:introPose:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:victoryPose:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:defeatPose:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:beachFamily:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:maidService:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:goofy:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:alignmentSwap:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:genderSwap:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:zombieVersion:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:viridienne-ultime:eira-solenne:firstStep:openai-v1",
+      "characterId": "eira_solenne",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/viridienne-ultime/eira-solenne/first-step-wave4-2026-10-20.png",
+      "imagePath": "/cg/viridienne-ultime/eira-solenne/first-step-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/viridienne-ultime/eira-solenne/first-step-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:characterSolo:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:weaponSolo:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/weapon-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/weapon-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/weapon-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:decorSolo:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/decor-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/decor-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/decor-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:coherentScene:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:actionScene:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:introPose:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:victoryPose:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:defeatPose:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:beachFamily:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:maidService:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:goofy:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:alignmentSwap:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:genderSwap:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:zombieVersion:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:thalassa-mnemique:neris-vale:futureExperienced:openai-v1",
+      "characterId": "neris_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/thalassa-mnemique/neris-vale/future-experienced-wave4-2026-10-20.png",
+      "imagePath": "/cg/thalassa-mnemique/neris-vale/future-experienced-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/thalassa-mnemique/neris-vale/future-experienced-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:characterSolo:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:weaponSolo:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/signature-weapon-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/signature-weapon-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/signature-weapon-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:decorSolo:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:coherentScene:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:actionScene:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:introPose:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:victoryPose:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:defeatPose:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:beachFamily:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:maidService:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:goofy:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:alignmentSwap:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:genderSwap:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:zombieVersion:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:meridien-creux:kael-venn:firstStep:openai-v1",
+      "characterId": "kael_venn",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/meridien-creux/kael-venn/first-step-wave4-2026-10-20.png",
+      "imagePath": "/cg/meridien-creux/kael-venn/first-step-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/meridien-creux/kael-venn/first-step-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:characterSolo:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/character-solo-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/character-solo-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/character-solo-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:weaponSolo:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/signature-weapon-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/signature-weapon-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/signature-weapon-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:decorSolo:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/decor-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/decor-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/decor-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:coherentScene:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/coherent-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/coherent-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/coherent-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:actionScene:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/action-scene-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/action-scene-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/action-scene-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:introPose:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/intro-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/intro-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/intro-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:victoryPose:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/victory-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/victory-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/victory-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:defeatPose:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/defeat-pose-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/defeat-pose-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/defeat-pose-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:beachFamily:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/beach-family-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/beach-family-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/beach-family-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:maidService:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/maid-service-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/maid-service-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/maid-service-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:goofy:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/goofy-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/goofy-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/goofy-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:alignmentSwap:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/alignment-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/alignment-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/alignment-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:genderSwap:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/gender-swap-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/gender-swap-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/gender-swap-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:zombieVersion:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/zombie-version-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/zombie-version-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/zombie-version-wave4-2026-10-20-thumb.webp"
+    },
+    {
+      "cgId": "cg:neon-requiem:nyra-vale:futureExperienced:openai-v1",
+      "characterId": "nyra_vale",
+      "revisionId": "catalog-original",
+      "sourcePath": "/cg/neon-requiem/nyra-vale/future-experienced-wave4-2026-10-20.png",
+      "imagePath": "/cg/neon-requiem/nyra-vale/future-experienced-wave4-2026-10-20.webp",
+      "thumbnailPath": "/cg/neon-requiem/nyra-vale/future-experienced-wave4-2026-10-20-thumb.webp"
+    }
+  ],
+  "canonicalFidelityApproved": false,
+  "otherProducerAtlasMacroInspection": {
+    "reviewer": "cg_starfire_suite",
+    "method": "Both actual current V2 portraits and both actual installed atlas images opened with view_image after stable signal. Macro identity/palette and sixteen-cell presentations only; not a second individual sixteen-frame anatomy certification. No Rayman/Eira CG image reopened.",
+    "inputs": [
+      {
+        "path": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+        "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+        "actuallyViewed": true
+      },
+      {
+        "path": "public/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png",
+        "sha256": "bbc66a11cc60ae6c1df8fa5baa3d7d27deadba1059fd6088a1254b79d5a35699",
+        "actuallyViewed": true
+      },
+      {
+        "path": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+        "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+        "actuallyViewed": true
+      },
+      {
+        "path": "public/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png",
+        "sha256": "3d5191674fbf4290aad965f17b9e15127fb4b1ff93013b94a25a01b55d348a7b",
+        "actuallyViewed": true
+      }
+    ],
+    "observations": {
+      "elara_voss": "Burgundy/gold long coat, dark updo, cyan rapier and gold/cyan pistol agree at macro scale with the selected portrait; all sixteen presented cells have contained figures/equipment. Individual weapon-hand QA remains attributed to referentiel_canon.",
+      "nyra_vale": "Turquoise swept hair, dark outfit and cyan/magenta long coat, cyberdeck and memory-cube abilities agree at macro scale with selected portrait; all sixteen cells presented. Full individual native review belongs to cg_raven_suite, with targeted temple/device counterreview by referentiel_canon."
+    },
+    "limitations": [
+      "Macro presentation review does not resolve hidden temple geometry, exact digits, iris colors, fine embroidery or hidden device construction.",
+      "No new perfect1:1 visual-fidelity approval; no semantic editing performed."
+    ]
+  }
+}

@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "reviewer": "independent-agent-referentiel-canon",
+  "scope": "Independent visual QA of completed series; progressive report. No raster, runtime registry or asset selection changed by reviewer.",
+  "perfectFidelityApproval": false,
+  "series": [
+    {
+      "characterId": "true_ogre_tekken",
+      "status": "all14-applicable-artworks-reviewed-eight-corrections-resolved-with-source-limitations",
+      "reviewedArtworkCount": 14,
+      "applicableSlotCount": 14,
+      "notApplicable": [
+        {
+          "slot": "CG02",
+          "reason": "No detachable canonical weapon established; snake arm is anatomy."
+        }
+      ],
+      "referenceBasis": [
+        "Selected project sprite /sprites/generated/heroes/tekken/true-ogre-tekken-3-web.png inspected as project art, not independent canon.",
+        "All14 final PNG and contact sheet inspected.",
+        "Production prompt explicitly locks left clawed arm/right single serpent arm.",
+        "Producer text-source report: https://eng.tekkenpedia.com/wiki/True_Ogre/ lines106 and114; laterality statement is laterWiiU biography and single-serpent statement distinguishesT3/Tag1 fromTag2; not an inspected primaryT3 visual."
+      ],
+      "limitations": [
+        "No independent original Tekken3 model bitmap available in this session; blocked historical URLs are not claimed visually revalidated.",
+        "Side findings establish internal inconsistency against the declared anatomy lock and between artworks; they do not certify every other model detail.",
+        "No claim of 1:1 scale, texture, horn shape, face, claw count or animation fidelity follows from these project images."
+      ],
+      "summary": {
+        "distinctPosesAndBackgrounds": true,
+        "samePoseBackgroundSwapDetected": false,
+        "obviousThirdArmDetected": false,
+        "acceptedCorrectionNativeCgIds": [
+          "cg:tekken:true-ogre-tekken:characterSolo:openai-v1",
+          "cg:tekken:true-ogre-tekken:coherentScene:openai-v1",
+          "cg:tekken:true-ogre-tekken:actionScene:openai-v1",
+          "cg:tekken:true-ogre-tekken:victoryPose:openai-v1",
+          "cg:tekken:true-ogre-tekken:beachFamily:openai-v1",
+          "cg:tekken:true-ogre-tekken:maidService:openai-v1",
+          "cg:tekken:true-ogre-tekken:alignmentSwap:openai-v1",
+          "cg:tekken:true-ogre-tekken:iconicOutfitSwap:openai-v1"
+        ],
+        "remainingCorrectionNativeTypes": [],
+        "historicalInvertedLateralityCgIds": [
+          "cg:tekken:true-ogre-tekken:characterSolo:openai-v1",
+          "cg:tekken:true-ogre-tekken:coherentScene:openai-v1",
+          "cg:tekken:true-ogre-tekken:actionScene:openai-v1",
+          "cg:tekken:true-ogre-tekken:victoryPose:openai-v1",
+          "cg:tekken:true-ogre-tekken:beachFamily:openai-v1",
+          "cg:tekken:true-ogre-tekken:maidService:openai-v1",
+          "cg:tekken:true-ogre-tekken:alignmentSwap:openai-v1",
+          "cg:tekken:true-ogre-tekken:iconicOutfitSwap:openai-v1"
+        ],
+        "invertedLateralityCgIds": [],
+        "historicalGenericOutfitCgId": "cg:tekken:true-ogre-tekken:iconicOutfitSwap:openai-v1",
+        "genericInsteadOfIconicOutfitCgId": null,
+        "resolvedFindings": 9
+      },
+      "cgReviews": [
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "assetPath": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "3a525501c23cd76ac26f1bd8254fe0e18fa9f6d0155872c1394e4c41a6bcd3be",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Garde basse lourde de face trois quarts ; bras droit-serpent à gauche de l’image, tête du serpent basse devant la cuisse, main griffue gauche tendue à droite.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18.png",
+              "assetSha256": "05da7c1b7761aadb5aa5b8a1d0fff89e7768b12561570f25d147f4bdfb5c1a69",
+              "status": "superseded-variant-retained",
+              "observation": "Vue de face/troisquarts : main griffue à gauche du spectateur, bras-serpent à droite; inversé par rapport au verrou bras gauche griffu / bras droit serpent.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Vue de face/troisquarts : main griffue à gauche du spectateur, bras-serpent à droite; inversé par rapport au verrou bras gauche griffu / bras droit serpent.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Vue de face/troisquarts : main griffue à gauche du spectateur, bras-serpent à droite; inversé par rapport au verrou bras gauche griffu / bras droit serpent.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "3a525501c23cd76ac26f1bd8254fe0e18fa9f6d0155872c1394e4c41a6bcd3be",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "assetPath": "/cg/tekken/true-ogre-tekken/decor-complete-2026-10-18.png",
+          "assetSha256": "88d4e2b16b5bcca1e9ca1c75110a256a03f2721f09fbe17dcd0438c2664c8186",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Décor vide, aucune pose de personnage forcée; lac, marches et pyramide lisibles.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "assetPath": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "2a42c72a7d945a3e13bcb2f7f204db42309d3f8f8a5e9805904022b747aaff23",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Accroupi au-dessus du canal ; bras droit-serpent abaissé au premier plan gauche vers l’eau, main griffue gauche étendue au-dessus du bord droit de l’arche, sans appui direct sur la pierre.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/coherent-scene-complete-2026-10-18.png",
+              "assetSha256": "e22f0fa0c9fe4e0ab353eacfc4eb15f39400329ace327c44bd47fae1aba1e28f",
+              "status": "superseded-variant-retained",
+              "observation": "Torse vers le spectateur sur arche : main griffue du côté gauche du spectateur, serpent de l’autre côté; latéralité inversée.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Torse vers le spectateur sur arche : main griffue du côté gauche du spectateur, serpent de l’autre côté; latéralité inversée.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Torse vers le spectateur sur arche : main griffue du côté gauche du spectateur, serpent de l’autre côté; latéralité inversée.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "2a42c72a7d945a3e13bcb2f7f204db42309d3f8f8a5e9805904022b747aaff23",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:actionScene:openai-v1",
+          "type": "actionScene",
+          "assetPath": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "7ac1a144d7351c11e6fd7fa4106527497d5a20c1a6184b7e02c3a4db56530d54",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Vol piqué oblique avec jambes repliées et ailes ouvertes ; serpent droit projeté à gauche de l’image et main griffue gauche ouverte à droite.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/action-scene-complete-2026-10-18.png",
+              "assetSha256": "cde7cbb9fd0bcf7eb97ddeff81eaf3d1c39eb2f9862102166281cb0b941b309a",
+              "status": "superseded-variant-retained",
+              "observation": "Piqué aérien corps de face : main griffue côté gauche du spectateur, bras-serpent droit du cadre; latéralité inversée.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Piqué aérien corps de face : main griffue côté gauche du spectateur, bras-serpent droit du cadre; latéralité inversée.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Piqué aérien corps de face : main griffue côté gauche du spectateur, bras-serpent droit du cadre; latéralité inversée.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "7ac1a144d7351c11e6fd7fa4106527497d5a20c1a6184b7e02c3a4db56530d54",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:introPose:openai-v1",
+          "type": "introPose",
+          "assetPath": "/cg/tekken/true-ogre-tekken/intro-pose-complete-2026-10-18.png",
+          "assetSha256": "2cede18b6f236930e51a2fe150f21ba2110036843e7667bf36ba50f2019813c8",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Vue de dos : main griffue à gauche du spectateur et serpent à droite correspondent aux côtés anatomiques attendus; ne pas corriger comme une vue de face.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "assetPath": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "4bdcebdcdc7b6087cad8582f9480050b7a7f02cf555a2ab78b93c8dcbfcbcaba",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Debout en triomphe, gueule levée et ailes ouvertes ; bras droit-serpent dressé vers le ciel à gauche de l’image, main griffue gauche basse à droite.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/victory-pose-complete-2026-10-18.png",
+              "assetSha256": "0e10f1df50092e2d684d5c4d94f6dc5e0b6421311833207cb4ad479235122967",
+              "status": "superseded-variant-retained",
+              "observation": "Torse frontal visible : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Torse frontal visible : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Torse frontal visible : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "4bdcebdcdc7b6087cad8582f9480050b7a7f02cf555a2ab78b93c8dcbfcbcaba",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "assetPath": "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+          "assetSha256": "92ba206bed7eed3e9f48c150200df5d519d18761006a2d85395dfb41afd506a4",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Le bras-serpent vient du côté gauche du spectateur et la main griffue de la droite; bonne latéralité. Le gros membre bas gauche est un pied à trois griffes, pas une main additionnelle.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "assetPath": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "f1b5433f8a946a43d294a549d20e939bca5c69120cf4411e26aad7ad3f839454",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Assis dans une baie peu profonde ; bras droit-serpent lové près du torse à gauche de l’image, main griffue gauche posée dans l’eau à droite.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/beach-family-complete-2026-10-18.png",
+              "assetSha256": "a9749dc5ecbb7f40d7e838a58915920b020145e27bbb9081026c230b4762fef6",
+              "status": "superseded-variant-retained",
+              "observation": "Torse de face en position assise : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Torse de face en position assise : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Torse de face en position assise : main griffue gauche image / serpent droit image, côtés anatomiques inversés.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "f1b5433f8a946a43d294a549d20e939bca5c69120cf4411e26aad7ad3f839454",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:maidService:openai-v1",
+          "type": "maidService",
+          "assetPath": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "80bed2585af710a36501e9af1aebf00f39d6ffcc4b5314b0849ad275892b6290",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Debout de face, bras droit-serpent à gauche de l’image versant le thé par une boucle de la théière, main griffue gauche à droite soutenant le plateau de deux tasses.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/maid-service-complete-2026-10-18.png",
+              "assetSha256": "0c24cfb3031f9ce9217f4fb7f94a26d50d5e354162537eae3240fa6c50f6f7d8",
+              "status": "superseded-variant-retained",
+              "observation": "Torse de troisquarts de face, main griffue au premier plan gauche et bras-serpent côté droit : inversion de la latéralité demandée. Le thème de service reste clair.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Torse de troisquarts de face, main griffue au premier plan gauche et bras-serpent côté droit : inversion de la latéralité demandée. Le thème de service reste clair.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Torse de troisquarts de face, main griffue au premier plan gauche et bras-serpent côté droit : inversion de la latéralité demandée. Le thème de service reste clair.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "80bed2585af710a36501e9af1aebf00f39d6ffcc4b5314b0849ad275892b6290",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Serpent gauche image en vue frontale = bras droit, main griffue droite image = bras gauche; aucun autre bras.",
+            "composition": "Corne, ailes et pieds entiers avec marges suffisantes. Pose frontale de service : serpent verse le thé, main griffue sous plateau."
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:goofy:openai-v1",
+          "type": "goofy",
+          "assetPath": "/cg/tekken/true-ogre-tekken/goofy-complete-2026-10-18.png",
+          "assetSha256": "47a10b5bb3d0f518fbbe5e1acb191f907c444a13d04d5f0ce94e68fe63c767c3",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Serpent gauche image et main griffue droite image : bon côté anatomique en vue de face, pose de glissade distincte.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "assetPath": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "0a69a6948d4a305db4e5a88d9ee00c52187c49219cfa4b89b3c785268cb2545e",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Accroupi protecteur devant une pousse ; serpent droit à gauche de l’image regardant la fleur et main griffue gauche à droite formant un abri au-dessus du plant.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/alignment-swap-complete-2026-10-18.png",
+              "assetSha256": "d4429a173762607fa4572679caf62982a8160556d8aba6babc092adb0099463f",
+              "status": "superseded-variant-retained",
+              "observation": "Torse de face accroupi protégeant une pousse : main griffue gauche image / serpent droit image, inversion de la latéralité.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Torse de face accroupi protégeant une pousse : main griffue gauche image / serpent droit image, inversion de la latéralité.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Torse de face accroupi protégeant une pousse : main griffue gauche image / serpent droit image, inversion de la latéralité.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "0a69a6948d4a305db4e5a88d9ee00c52187c49219cfa4b89b3c785268cb2545e",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": null
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:iconicOutfitSwap:openai-v1",
+          "type": "iconicOutfitSwap",
+          "assetPath": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2.png",
+          "assetSha256": "7790068d4c7e95dc05b14724afecb7383c9b7ca9e46174b8806694475967a85d",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Garde de karaté large, pantalon noir à flamme rouge sur une jambe ; bras droit-serpent nu à gauche de l’image et unique main griffue gauche gantée rouge repliée à droite.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-complete-2026-10-18.png",
+              "assetSha256": "e29f0676af61ca089cc93a231e25cb5d36e1790e74e4e9f574827f883b7e89f5",
+              "status": "superseded-variant-retained",
+              "observation": "Face/troisquarts : main griffue gauche image / serpent droit image; inversion. L’armure cérémonielle originale ne désigne aucune tenue iconique nommée.",
+              "findings": [
+                {
+                  "severity": "P1",
+                  "kind": "anatomical-laterality-inverted",
+                  "certainty": "high-relative-to-explicit-production-lock",
+                  "detail": "Face/troisquarts : main griffue gauche image / serpent droit image; inversion. L’armure cérémonielle originale ne désigne aucune tenue iconique nommée.",
+                  "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+                },
+                {
+                  "severity": "P1",
+                  "kind": "iconic-outfit-not-specified",
+                  "certainty": "high",
+                  "detail": "La tenue est une armure rituelle inventée, sans costume iconique source nommé; elle remplit changement de costume mais pas le caractère iconique du thème imposé.",
+                  "requestedCorrection": "Remplacer par un costume iconique nommé et sourcé, proposition root : JinKazama Tekken3, pantalon noir à flammes rouges et gant rouge adapté au seul bras griffu gauche, sans main ajoutée au bras-serpent. L’adaptation reste WhatIf."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P1",
+              "kind": "anatomical-laterality-inverted",
+              "certainty": "high-relative-to-explicit-production-lock",
+              "detail": "Face/troisquarts : main griffue gauche image / serpent droit image; inversion. L’armure cérémonielle originale ne désigne aucune tenue iconique nommée.",
+              "requestedCorrection": "Recréer par ImageGen en conservant pose et décor variés, avec bras anatomique droit entièrement serpent et bras anatomique gauche à main griffue; ne pas ajouter de troisième bras. Conserver cet ancien visuel comme variante."
+            },
+            {
+              "severity": "P1",
+              "kind": "iconic-outfit-not-specified",
+              "certainty": "high",
+              "detail": "La tenue est une armure rituelle inventée, sans costume iconique source nommé; elle remplit changement de costume mais pas le caractère iconique du thème imposé.",
+              "requestedCorrection": "Remplacer par un costume iconique nommé et sourcé, proposition root : JinKazama Tekken3, pantalon noir à flammes rouges et gant rouge adapté au seul bras griffu gauche, sans main ajoutée au bras-serpent. L’adaptation reste WhatIf."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-anatomy-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "7790068d4c7e95dc05b14724afecb7383c9b7ca9e46174b8806694475967a85d",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "laterality": "Bras anatomique droit serpent (gauche image en vue de face), bras gauche griffu (droite image); pas de membre ajouté.",
+            "composition": "Pose et décor conservés, corne/ailes/pieds complets et marges suffisantes.",
+            "outfit": "Tenue JinKazamaTekken3 adaptée WhatIf : pantalon noir à flammes rouges et gant rouge sur la seule main griffue."
+          },
+          "deliveryReceipt": "docs/cg/true-ogre-anatomy-revisions-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "assetPath": "/cg/tekken/true-ogre-tekken/zombie-version-complete-2026-10-18.png",
+          "assetSha256": "ae003ca44a6601c5434e298b00a203021b8b2ad0f3b472826b322b7b76432221",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Torse de face, serpent gauche image et main griffue droite image : bonne latéralité, corruption cristalline lumineuse non graphique.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:tekken:true-ogre-tekken:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "assetPath": "/cg/tekken/true-ogre-tekken/future-experienced-complete-2026-10-18.png",
+          "assetSha256": "6e4f35bb4169bb46798b566cfe800598d1f6fb249a672c2a2ef646d4da72a1de",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Vue de face assise : serpent gauche image et main griffue droite image, bonne latéralité; âge imaginé non canon correctement signalé.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        }
+      ]
+    },
+    {
+      "characterId": "saturnin_duck",
+      "status": "all15-artworks-reviewed-iconic-costume-correction-resolved-with-source-limitations",
+      "reviewedArtworkCount": 15,
+      "applicableSlotCount": 15,
+      "referenceBasis": [
+        "All15 artworks inspected in delivered contact sheet; fullsource CG04/10/13/15 inspected for anatomy and object interaction.",
+        "Generation reference remains selected project sprite and CG01; these are project images, not independent original ORTF footage.",
+        "Text evidence INA and source-review receipt distinguish real ducklings and miniature sets from inaccessible historical bitmap URLs.",
+        "ForCG13 only, an independent DisneyD23 DonaldDuck frame was also inspected; costume evidence does not validate SaturninORTF body identity."
+      ],
+      "limitations": [
+        "No original ORTF frame bitmap inspected in this QA session; no claim of exact beak, eye, down or proportions matching a source animal.",
+        "Pixelart eyes and head are stylized; fidelity to a live filmed duckling remains unapproved.",
+        "CG02 ski goggles and formerCG13 ski outfit are imagined props, not certified episode accessories.",
+        "NewCG13 uses named DonaldDuck costume, with bluecap/whiteedgedblouse from inspected D23 frame; redbow modern variant supported by DisneyStore text, not by this old blackbow frame."
+      ],
+      "summary": {
+        "distinctPosesAndBackgrounds": true,
+        "samePoseBackgroundSwapDetected": false,
+        "obviousExtraHumanLimbDetected": false,
+        "majorAnatomicalFindings": 0,
+        "pendingIconicCostumeCgId": null,
+        "acceptedCorrectionNativeCgIds": [
+          "cg:les-aventures-de-saturnin:saturnin-duck:iconicOutfitSwap:openai-v1"
+        ],
+        "resolvedFindings": 1
+      },
+      "cgReviews": [
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/character-solo-fidelity-2026-10-18.png",
+          "assetSha256": "a3fe09ade64d8f850f7e8e33f2049fcd5da8285cf01a3bdf9a16242b5b1bce4e",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Caneton jaune debout, bec ouvert et une aile levée, corps entier, jardin miniature.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/signature-weapon-complete-2026-10-18.png",
+          "assetSha256": "747bb8b128fa280c74a5cfe66c360acf2167f09013a0bf35dfd5508e9b4cb2b1",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Lunettes seules sur support, aucun caneton ni membre; accessoire WhatIf original honnêtement déclaré, pas arme canonique.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/decor-complete-2026-10-18.png",
+          "assetSha256": "f34b153e8ccc9d008f3bc11812f9d669cfebc7d7f38d8a7c94e5ed28a85517f2",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Place miniature enneigée sans personnage dominant, composition environnementale distincte.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/coherent-scene-complete-2026-10-18.png",
+          "assetSha256": "e23fa2e84136445ace97062894ea87f0f791a1b07060a4132a11811f0578365e",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Petit caneton penché au bec sur l’anse d’un arrosoir ; deux ailes naturelles repliées et deux pattes palmées.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:actionScene:openai-v1",
+          "type": "actionScene",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/action-scene-complete-2026-10-18.png",
+          "assetSha256": "df278d71ca335798e4c51fb92c881392f08fdb1d3333ff22ca85eb7e7a68edb3",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Course avec appui décalé, une patte en avant et ailes ouvertes, voiture miniature derrière ; pas de bras humain.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:introPose:openai-v1",
+          "type": "introPose",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/intro-pose-complete-2026-10-18.png",
+          "assetSha256": "5b1d434f0bc97c6b3033facb2dd3bab311e964485eb4b5ffff8e5e7bd746df3a",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Pas sur le seuil de gare et regard vers la voie, composition/axe distincts du jardin CG01.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/victory-pose-complete-2026-10-18.png",
+          "assetSha256": "7e65295b58e5a5581b107121260f49a4026acda368fc56bf1d5b0953f030c9a4",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Caneton de face aux deux ailes ouvertes près de la barque ; geste de victoire lisible.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/defeat-pose-complete-2026-10-18.png",
+          "assetSha256": "afacdb7a57fbb0bb6de687e698033e74cc75a93f5f0987c4faad5627fcced991",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Repos bas dans paille, tête nichée dans le duvet et aile repliée, pas blessure graphique.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/beach-family-complete-2026-10-18.png",
+          "assetSha256": "a7ce4578c6badba2b0b857f8eea159970f4ada89e63b62483be331ea5febb1cb",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Nage basse de profil, patte palmée visible dans eau claire ; plage lisible.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:maidService:openai-v1",
+          "type": "maidService",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/maid-service-complete-2026-10-18.png",
+          "assetSha256": "6729db77bf9b988a281fc0cb2a08c3f712327d0d52fde01c1249bc3456e10bc0",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Le bec saisit l’anse d’un panier de pain au comptoir ; ailes repliées, anatomie non humanisée.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:goofy:openai-v1",
+          "type": "goofy",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/goofy-complete-2026-10-18.png",
+          "assetSha256": "7ea9655465cba4a5aa8fefa5b5a851fca318a67523f3bad6614ba094d1ff2393",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Équilibre sur une seule patte, feuille saisie au bec, aile levée ; geste comique distinct.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/alignment-swap-complete-2026-10-18.png",
+          "assetSha256": "1b2dceaf138f54beca3d9460ac2a336eedee19f22b275bcea1c5955a85e7d69d",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Attitude accroupie de gardien possessif devant réserve de graines ; inversion d’attitude WhatIf, pas nouvelle espèce.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:iconicOutfitSwap:openai-v1",
+          "type": "iconicOutfitSwap",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/iconic-outfit-swap-fidelity-2026-10-18-iconic-v2.png",
+          "assetSha256": "9c9adb2e77840c1ae494b3685e551a6c78b2376bc01da13105b4d581f82a889b",
+          "inspection": "full-generation-native-and-final-public-contact-sheet; publicPNG hash equals viewed native",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Caneton jaune en glissade sur deux skis, ailes naturelles ouvertes ; bonnet marin bleu, blouse bleue à col/passepoils blancs et nœud rouge, sans lunettes ni membre humain.",
+          "status": "corrected-assets-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "previousRevisionSnapshots": [
+            {
+              "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/iconic-outfit-swap-complete-2026-10-18.png",
+              "assetSha256": "01455bbe377390fc12c7030eaea41d55eeb2738a4e85fc4a6403498daf6aaa92",
+              "status": "superseded-variant-retained",
+              "observation": "Skis et lunettes sur vrai caneton jaune, deux ailes et deux pattes naturelles. L’accessoire est original WhatIf, mais aucune tenue iconique source nommée n’est encore représentée.",
+              "findings": [
+                {
+                  "severity": "P2",
+                  "kind": "accessory-swap-not-named-iconic-costume",
+                  "certainty": "high",
+                  "detail": "Skis et lunettes sur vrai caneton jaune, deux ailes et deux pattes naturelles. L’accessoire est original WhatIf, mais aucune tenue iconique source nommée n’est encore représentée.",
+                  "requestedCorrection": "Root a retenu une tenue inspirée de DonaldDuck explicitement nommée et WhatIf : bonnet marin blanc, marinière bleue à bords blancs et nœud rouge, adaptés au même vrai caneton jaune sans mains ajoutées. Conserver la variante ski initiale."
+                }
+              ]
+            }
+          ],
+          "resolvedFindings": [
+            {
+              "severity": "P2",
+              "kind": "accessory-swap-not-named-iconic-costume",
+              "certainty": "high",
+              "detail": "Skis et lunettes sur vrai caneton jaune, deux ailes et deux pattes naturelles. L’accessoire est original WhatIf, mais aucune tenue iconique source nommée n’est encore représentée.",
+              "requestedCorrection": "Root a retenu une tenue inspirée de DonaldDuck explicitement nommée et WhatIf : bonnet marin blanc, marinière bleue à bords blancs et nœud rouge, adaptés au même vrai caneton jaune sans mains ajoutées. Conserver la variante ski initiale."
+            }
+          ],
+          "findings": [],
+          "revisionId": "fidelity-2026-10-18-iconic-v2",
+          "correctionReview": {
+            "date": "2026-10-18",
+            "nativeSha256": "9c9adb2e77840c1ae494b3685e551a6c78b2376bc01da13105b4d581f82a889b",
+            "status": "final-assets-verified-native-match",
+            "canonicalFidelityApproved": false,
+            "composition": "Même caneton jaune, petits yeux noirs, bec orange, deux ailes et deux pattes palmées; tenue de marin ajoutée sans humaniser le corps, deux skis et décor neige conservés.",
+            "outfit": "WhatIf tenue iconique DonaldDuck adaptée : bonnet bleu, marinière bleue à bords blancs et nœud rouge.",
+            "sourceComparison": {
+              "role": "independent-iconic-outfit-reference",
+              "referenceCharacter": "Donald Duck",
+              "url": "https://d23.com/app/uploads/2011/12/DEC22-a-present-for-donald-TDID1180x600.jpg",
+              "sha256": "017d069c1e630c3fc7c5412de93a2ae39531da06565e1044bb1423e2f6f9b423",
+              "viewed": true,
+              "limitations": "StillD23 montrant bonnet bleu, col/sweater bleus à bords blancs et nœud noir. Le nœud rouge moderne vient du texte DisneyStore consulté par le producteur, pas de ce still. Aucun visuel de corpsSaturninORTF revalidé par cette référence de costume."
+            }
+          },
+          "deliveryReceipt": "docs/cg/saturnin-iconic-revision-2026-10-18.json"
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/zombie-version-complete-2026-10-18.png",
+          "assetSha256": "57647b781d19a87e242bd49c9128a933e78395a0184f58bc7a16fc1d9ba84ebe",
+          "inspection": "complete-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Léger sursaut et traces cyan/violettes autour du duvet ; corruption non graphique WhatIf, corps intact.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:les-aventures-de-saturnin:saturnin-duck:firstStep:openai-v1",
+          "type": "firstStep",
+          "assetPath": "/cg/les-aventures-de-saturnin/saturnin-duck/first-step-complete-2026-10-18.png",
+          "assetSha256": "7998e8ae085d6dce892dfa27143b99c9acd1cba58fc22154b65013da324119ba",
+          "inspection": "full-source-image-and-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Caneton hésitant devant un écart du ponton, une patte avancée et bec baissé ; marche prudente, pas âge adulte inventé.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        }
+      ]
+    },
+    {
+      "characterId": "liquid_snake",
+      "status": "all15-compositions-reviewed-accepted-with-source-limitations",
+      "reviewedArtworkCount": 15,
+      "applicableSlotCount": 15,
+      "referenceBasis": [
+        "Independent Shinkawa character artwork at .tmp/cg-fidelity-2026-10-18/new-roster/liquid_snake/reference-1.png inspected; shows long blond hair and long coat, not full shirtless duel costume.",
+        "First12 delivered artworks inspected in currentseries contact sheet; full CG04/12/15 and later CG05/13/14 inspected."
+      ],
+      "limitations": [
+        "No independent fullbody MGS1 shirtless finalduel render inspected; costume details and black upperarm tattoo motif/side cannot be certified from the Shinkawa coat image.",
+        "Proposed future, female variant, corruption and alignment remain WhatIf; no LiquidOcelot substitution is claimed."
+      ],
+      "summary": {
+        "distinctPosesAndBackgrounds": true,
+        "samePoseBackgroundSwapDetected": false,
+        "obviousExtraHumanLimbDetected": false,
+        "majorAnatomicalFindings": 0,
+        "pendingTypes": []
+      },
+      "cgReviews": [
+        {
+          "cgId": "cg:metal-gear:liquid-snake:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "assetPath": "/cg/metal-gear/liquid-snake/character-solo-fidelity-2026-10-18.png",
+          "assetSha256": "e04cb886b863b75a2de5fed260025208cc0a2331a88c813eb2763e056bbf1486",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Garde de boxe en trois quarts, un poing levé près du visage et l’autre près de la hanche, jambes écartées.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "assetPath": "/cg/metal-gear/liquid-snake/signature-weapon-complete-2026-10-18.png",
+          "assetSha256": "04de9d73e221bd4c1669ae82d0c6c57ddf584691452998d12d3841e372d072ee",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Équipement complet posé seul : ceinture en boucle ouverte au premier plan et paire de bottes verticales sur banc, sans mains ni corps détachés.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "assetPath": "/cg/metal-gear/liquid-snake/decor-complete-2026-10-18.png",
+          "assetSha256": "a22ddd4993ba27b6e22dd561a28ad511619eeeb183ced62e098be15c5084c1d2",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Vue environnementale verticale à forte profondeur, aucune silhouette humaine centrale.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "assetPath": "/cg/metal-gear/liquid-snake/coherent-scene-complete-2026-10-18.png",
+          "assetSha256": "043466da4daf7637fd4840a4eca9ef0d59b39d869506d6e74a93f2199118e943",
+          "inspection": "full-source-image-and-current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Assis de profil sur une caisse, il serre un simple bandage au poignet, coudes proches du torse et regard vers ses mains.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:actionScene:openai-v1",
+          "type": "actionScene",
+          "assetPath": "/cg/metal-gear/liquid-snake/action-scene-complete-2026-10-18.png",
+          "assetSha256": "8d36f875dfe15ba511f2ae93643c71fbe24ed954ec8090b1002fc526ebac8c0d",
+          "inspection": "full-source-image",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Coup de pied aérien latéral, corps entier et deux bras/deux jambes visibles; pont industriel en rupture Nexus distinct.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:introPose:openai-v1",
+          "type": "introPose",
+          "assetPath": "/cg/metal-gear/liquid-snake/intro-pose-complete-2026-10-18.png",
+          "assetSha256": "f7aeb00e746c794f8de765521b4a6b0b9e8d9f2da43394df65050428c986d251",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Descend un escalier métallique, une main sur la rampe et l’autre basse, jambe avant vers la marche inférieure.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "assetPath": "/cg/metal-gear/liquid-snake/victory-pose-complete-2026-10-18.png",
+          "assetSha256": "faf6e7d5d6079267f7d863e97f94f763eb6bfabba94217215d93e3952b635c6a",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Vu de profil en contre-plongée, un bras tendu paume ouverte vers l’horizon et l’autre main à la hanche.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "assetPath": "/cg/metal-gear/liquid-snake/defeat-pose-complete-2026-10-18.png",
+          "assetSha256": "3e8d9621c4cab65e452a92e5dc118bd64e07da2255d5fca766ffea0ca131a638",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Un genou au sol et une paume appuyée au sol, buste bas, autre main au genou relevé.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "assetPath": "/cg/metal-gear/liquid-snake/beach-family-complete-2026-10-18.png",
+          "assetSha256": "cc5da12a4094004fb69f16e592e6a98e3df98160689f1d258f8ec5f095d09810",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Accroupi près d’un petit château de sable, les deux mains sculptent une arche.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:maidService:openai-v1",
+          "type": "maidService",
+          "assetPath": "/cg/metal-gear/liquid-snake/maid-service-complete-2026-10-18.png",
+          "assetSha256": "35e51b14d8c7085a96bc5ad621209366c26d7045e61e64fd576c7601a13b2148",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Debout en marche diagonale, plateau de thé tenu à deux mains au niveau de la poitrine.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:goofy:openai-v1",
+          "type": "goofy",
+          "assetPath": "/cg/metal-gear/liquid-snake/goofy-complete-2026-10-18.png",
+          "assetSha256": "5a278cd71019e4ca0822d6fc972e1c6e29acf23bd901c62b61459516310ad90e",
+          "inspection": "current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Torse penché assis sur le bord d’un banc, une main tient un plan plié et l’autre repousse une mèche.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "assetPath": "/cg/metal-gear/liquid-snake/alignment-swap-complete-2026-10-18.png",
+          "assetSha256": "343cd865bd0469e520926e4ac35e4cea7a46474798943c4185d76c77cc357887",
+          "inspection": "full-source-image-and-current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Grande fente de côté, deux mains poussent une lourde porte de refuge, épaule engagée.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "assetPath": "/cg/metal-gear/liquid-snake/gender-swap-complete-2026-10-18.png",
+          "assetSha256": "855866ae049f7270da29c54803b21d8ececf8e27088a5e50f52c5c183edd877f",
+          "inspection": "full-source-image",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Variante féminine adulte aux cheveux blonds longs, haut olive couvrant et pantalon cargo ; semiaccroupie à console, WhatIf clairement distinct du portrait masculin.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "assetPath": "/cg/metal-gear/liquid-snake/zombie-version-complete-2026-10-18.png",
+          "assetSha256": "5125010180ceaeffdb9633ff99cf261d7aa546398a6749f3f175d86f0603ad30",
+          "inspection": "full-source-image",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Corruption non graphique à veines bleutées, épaules affaissées et bras pendants ; deux bras/deux jambes et tenue du duel maintenus.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        },
+        {
+          "cgId": "cg:metal-gear:liquid-snake:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "assetPath": "/cg/metal-gear/liquid-snake/future-experienced-complete-2026-10-18.png",
+          "assetSha256": "9bcd5d8624179b875fb5e7c9dd4063f8a344d245b927be34107700113f454ec8",
+          "inspection": "full-source-image-and-current-series-contact-sheet",
+          "poseAndBackgroundDistinct": true,
+          "observation": "Assis de biais à un établi, deux mains règlent une radio de campagne, chevilles croisées.",
+          "status": "composition-accepted-with-source-limitations",
+          "canonicalFidelityApproved": false,
+          "findings": []
+        }
+      ]
+    }
+  ],
+  "pendingSeries": [],
+  "summary": {
+    "reviewedCurrentSeriesArtworks": 44,
+    "acceptedCorrectedArtworks": 9,
+    "historicalFindingsResolved": 10,
+    "openMajorFindings": 0,
+    "perfect1to1Approvals": 0,
+    "runtimeRegistryChangedByReviewer": false
+  }
+}

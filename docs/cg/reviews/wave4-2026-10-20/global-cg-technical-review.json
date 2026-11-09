@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "reviewedAt": "2026-10-20T11:26:13.494137+00:00",
+  "reviewer": "cg_stitch_suite",
+  "status": "passed",
+  "scope": "Registered CG delivery integrity after all nine wave4 series were imported; sprite generation/selection and new visual judgments are outside this receipt.",
+  "command": "node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-20 --output docs/cg/fidelity-delivery-wave4-2026-10-20.json",
+  "commandExitCode": 0,
+  "auditReport": {
+    "path": "docs/cg/fidelity-delivery-wave4-2026-10-20.json",
+    "sha256": "fe8dcb717772dc1bfba153003aadfd75016b33bed3e5e9e05b03b74cad85c20b",
+    "bytes": 1737333
+  },
+  "auditImplementation": {
+    "path": "scripts/auditCgFidelityDelivery.mjs",
+    "sha256": "4f646ec9a60885ecac939a6376a231f4edb8756f7966aee348cf3a30e41c3f5e",
+    "bytes": 14931
+  },
+  "registeredAdditionalCg": {
+    "path": "src/game/cg/cgRosterArtwork.generated.json",
+    "sha256": "78444654bb1494e3ab03e46c5602abf6b7942c96573ad4e1ce730999474873db",
+    "bytes": 2854039
+  },
+  "actualSummary": {
+    "originalCgCount": 83,
+    "originalFilesPreserved": 249,
+    "newRosterCgCount": 437,
+    "newRosterFileCount": 1311,
+    "registeredRevisionCount": 94,
+    "registeredRevisionFileCount": 282,
+    "latestCorrectedCgCount": 92,
+    "latestCorrectionFileCount": 276,
+    "currentAdditionalImages": 520,
+    "currentAdditionalFiles": 1560,
+    "retainedIntermediateRevisionVariants": 2,
+    "currentGalleryCgCount": 520,
+    "currentGalleryFileCount": 1560,
+    "totalRegisteredFileCount": 1842,
+    "distinctRegisteredFileHashes": 1842,
+    "distinctDeliveredBackgroundIds": 520,
+    "unregisteredExperimentFilesCounted": 0,
+    "privateRuntimePathsFound": 0,
+    "currentAdditionalCgWithoutWrittenPose": 0
+  },
+  "registeredVersionCount": 614,
+  "registeredVersionCalculation": {
+    "baseline": 83,
+    "additionalRoster": 437,
+    "allRegisteredRevisions": 94
+  },
+  "wave4": {
+    "currentCg": 135,
+    "currentFiles": 405,
+    "characters": [
+      "chell",
+      "crash_bandicoot",
+      "eira_solenne",
+      "elara_voss",
+      "kael_venn",
+      "neris_vale",
+      "nyra_vale",
+      "rayman_rayman",
+      "spyro_spyro"
+    ]
+  },
+  "checks": {
+    "currentGallery520": true,
+    "registeredVersions614": true,
+    "registeredMedia1842": true,
+    "pilot249PinnedFilesUnchanged": true,
+    "revisions94AndCurrent92": true,
+    "additionalRegistry437IncludingNyra15": true,
+    "noPrivateRuntimePaths": true,
+    "noUnregisteredTrialsCounted": true,
+    "noCurrentWrittenPoseMissing": true,
+    "allRegisteredMediaHashesUnique": true,
+    "wave4HasNineCompleteSeries": true
+  },
+  "ownProductionRelationship": {
+    "producedByThisTechnicalAuditor": [
+      "chell",
+      "nyra_vale"
+    ],
+    "independentVisualReviewer": "referentiel_canon",
+    "separateRootPixelAndExportVerifications": [
+      {
+        "path": "docs/cg/reviews/wave4-2026-10-20/chell-root-export-verification.json",
+        "sha256": "1193695d9a6344d68b3cdf6ea61c6db188480ac4a7e48eb4dc534770587c95e9",
+        "bytes": 5048
+      },
+      {
+        "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-root-export-verification.json",
+        "sha256": "7c2fcf288d5701e6e7a6f2ac8b95a3e1d4740b446b97481469abdcaf7fdf953f",
+        "bytes": 5060
+      }
+    ],
+    "claimOfSecondIndependentVisualQaForOwnArt": false,
+    "separateFinalVisualReviews": [
+      {
+        "path": "docs/cg/reviews/wave4-2026-10-20/chell-independent-review.json",
+        "sha256": "bb8619b058b81a1ba7785ae13e6b319ec530c715a1fb96c483f424ea921c8f1e",
+        "reviewer": "referentiel_canon"
+      },
+      {
+        "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-independent-review.json",
+        "sha256": "195fb02893022a3dea781496f8488b175931724e1cfc42930279a4ebf9a1beae",
+        "reviewer": "referentiel_canon"
+      }
+    ]
+  },
+  "canonicalFidelityApproved": false,
+  "limits": [
+    "File hashes and identifiers do not certify perfect1:1 resemblance, anatomy, pose distinctness or universe fidelity; their separate visual reviews remain authoritative.",
+    "Registered versions = 83 baseline + 437 roster + 94 revision records. The current gallery selects 520 stable CG IDs; 92 revision records are current selections and 2 are intermediate historical variants.",
+    "The1842files are all registered versions, whereas1560files serve the520currently selected CG.",
+    "Nyra/Elara sprite operations are separate and add no CG or CG file to these counts.",
+    "No old wave3 or18delivery report, runtime registry or media was modified by this verification command."
+  ]
+}

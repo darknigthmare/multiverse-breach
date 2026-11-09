@@ -6,12 +6,14 @@ import sharp from 'sharp';
 
 import { HEROES_DB } from '../src/game/heroes.js';
 import { COMBAT_CAPABILITY_COMPLETION } from '../src/game/combat/completion/catalog.js';
+import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
 import { resolveMeleeSuper, resolveUniverseSummon } from '../src/game/combatIdentity.js';
 import { attachCombatEntityAsset, getCombatEntityFrame, resolveCombatEntityAsset } from '../src/game/combat/entityAssets.js';
 import { WAVE15_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave15.mjs';
 import { WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
 import { effectiveBatchPlan } from '../docs/combat-fidelity-wave16-2026-10-28/closure-support.mjs';
 import { ABILITY_REVISIONS_WAVE16 } from '../src/game/combat/abilities/abilitiesWave16.js';
+import { WAVE17_REVIEWED_IDS } from './combatFidelityHistoricalCohortWave17.mjs';
 
 // This snapshot predates completion. Coverage is measured against its exact
 // identities, rather than a count reconstructed from the new implementation.
@@ -26,6 +28,63 @@ const identityBases = new Set(['canonical-technique', 'canonical-role', 'authore
 const sorted = values => [...values].sort();
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 const readProjectFile = path => readFileSync(new URL(`../${path}`, import.meta.url));
+
+// These exact master editions supersede raw catalog names and resolved source
+// profiles; neither original completion baseline nor completion data is rewritten.
+const masterRawBytes = readProjectFile('scripts/fixtures/masterCanonicalRaw3036cd02.json');
+assert.equal(sha256(masterRawBytes), 'c061ed857028374d6fe331d32558ed6a10072ea92b1ec2fb1d812e69690eec1e');
+const masterRaw = JSON.parse(masterRawBytes);
+assert.equal(masterRaw.sourceCommit, '3036cd021edfe544534a09df5c401eb024808b39');
+assert.equal(masterRaw.sourceHeroesSha256, '99e103e87fdb1ff6e56108a1614f5a60400c836d21affba76cf6e3bf372604c1');
+assert.equal(masterRaw.actors.length, 35);assert.equal(masterRaw.source1to1Verified, false);
+const currentCompletionSemantics = Object.freeze({
+  "batman_n52": ["melee", "single", 4.5],
+  "batman_tdk": ["melee", "single", 4.5],
+  "bob_minions": ["melee", "single", 4.5],
+  "cyber_spider_electro_beam": ["beam", "single", 4.5],
+  "cyber_spider_flamethrower": ["projectile", "single", 4.5],
+  "cyber_spider_kelly": ["melee", "single", 4.5],
+  "elizabeth_swann_potc": ["melee", "single", 4.5],
+  "grim_knight": ["projectile", "single", 4.5],
+  "harley_n52": ["melee", "single", 4.5],
+  "jack_sparrow_potc": ["melee", "single", 4.5],
+  "joker_n52": ["projectile", "single", 4.5],
+  "kevin_minions": ["melee", "single", 4.5],
+  "lilo_pelekai": ["melee", "single", 4.5],
+  "liquid_snake": ["melee", "single", 4.7],
+  "mj_performer": ["melee", "single", 4.5],
+  "raven_tt": ["projectile", "single", 4.5],
+  "rhythm_guard_mj": ["projectile", "single", 4.5],
+  "ripley_aliens": ["melee", "area", 4.2],
+  "roger_rabbit": ["melee", "single", 4.5],
+  "saturnin_duck": ["melee", "single", 4.5],
+  "stitch_626": ["melee", "single", 4.5],
+  "stuart_minions": ["area", "area", 4.5],
+  "will_turner_potc": ["melee", "single", 4.5],
+});
+const currentCompletedEditions = new Map(masterRaw.actors.filter(actor => Object.hasOwn(currentCompletionSemantics, actor.id)).map(actor => [actor.id, actor]));
+assert.equal(currentCompletedEditions.size, 23);
+assert.deepEqual(sorted(masterRaw.actors.filter(actor => completedIdentities.some(row => row.id === actor.id)).map(actor => actor.id)), sorted(currentCompletedEditions.keys()));
+const assertCurrentCompletionActor = actor => assert.deepEqual(actor, currentCompletedEditions.get(actor.id), actor.id + ': exact current master actor');
+function assertCurrentCompletionProfile(id, profile) {
+  const actor = roster.get(id), pinned = currentCompletedEditions.get(id);
+  assert.ok(pinned, id);assertCurrentCompletionActor(actor);
+  // Liquid refines the final-duel labels while retaining the separately pinned
+  // W13 local contact, timing and 4.7 damage budget, rather than raw 4.5.
+  const action = id === 'liquid_snake' ? { ...COMBAT_ABILITY_OVERRIDES[id].special, name: pinned.special.name, type: pinned.special.type,
+    ...(pinned.special.canonPresentation ? { canonPresentation: pinned.special.canonPresentation } : {}) } : pinned.special;
+  assert.deepEqual(profile.sourceAbility, { ...action, slot: 'special', sourceHeroId: id }, id);
+  const [delivery, shape, multiplier] = currentCompletionSemantics[id];
+  assert.deepEqual({ effect: profile.effect, delivery: profile.delivery, shape: profile.shape, targetSide: profile.targetSide, multiplier: profile.multiplier },
+    { effect: 'damage', delivery, shape, targetSide: 'enemy', multiplier }, id + ': current edition semantics');
+  assert.equal(profile.name, pinned.special.name, id);
+  assert.equal(profile.provenance.identityAuthored, id === 'liquid_snake', id);
+  assert.equal(profile.provenance.identityBasis, id === 'liquid_snake' ? 'canonical-role' : 'existing-catalog', id);
+  assert.equal(profile.provenance.sourceWork, pinned.incarnation, id);
+  assert.equal(profile.provenance.sourceUrl, pinned.referenceUrl || pinned.referenceUrls?.[0], id);
+  if (id === 'liquid_snake') assert.ok(profile.provenance.sourceReference.includes(`${pinned.incarnation}. ${pinned.visualAnchor} ${pinned.canonStatus}`), id);
+  else assert.equal(profile.provenance.sourceReference, pinned.canonStatus, id);
+}
 // These three completed identities later selected an explicit source version.
 // Axl also replaces the ordinary Rensen Geki super with the Xrd Overdrive.
 const wave7CompletedRevisions = {
@@ -1518,6 +1577,8 @@ const wave13CompletedRevisions = {
 const wave13SelectedIds = Object.values(JSON.parse(readProjectFile('docs/combat-fidelity-wave13-2026-10-24/batch-plan-before.json')).parts).flat();
 
 test('completion covers every exact identity in the independent 1089-character baseline', () => {
+  assert.equal(sha256(readProjectFile('docs/combat-completion-2026-10-18/baseline.json')), '170d22af2bbd085d7119601329100c9c84e8b8b06646408be2a0d02def3df9e4');
+  assert.equal(sha256(readProjectFile('docs/combat-completion-2026-10-18/decisive-baseline.json')), '09c76a81fdf59b2f35bb7a530349183ea22cab46e60898aed7f082b2fdd847fa');
   assert.equal(baseline.schemaVersion, 1);
   assert.equal(baseline.genericCapabilities.length, 1089);
   const ids = baseline.genericCapabilities.map(entry => entry.id);
@@ -1527,8 +1588,11 @@ test('completion covers every exact identity in the independent 1089-character b
     const hero = roster.get(entry.id);
     assert.ok(hero, `${entry.id}: a baseline character disappeared from the roster`);
     assert.equal(hero.universe, entry.universe, entry.id);
-    assert.equal(hero.name, entry.name, entry.id);
-    assert.equal(hero.special.name, entry.originalSpecial, `${entry.id}: completion must preserve the original catalog record`);
+    if (currentCompletedEditions.has(entry.id)) assertCurrentCompletionActor(hero);
+    else {
+      assert.equal(hero.name, entry.name, entry.id);
+      assert.equal(hero.special.name, entry.originalSpecial, `${entry.id}: completion must preserve the original catalog record`);
+    }
     assert.match(entry.originalSpecial, /Origin Burst$/i, entry.id);
     assert.equal(COMBAT_CAPABILITY_COMPLETION[entry.id].universe, entry.universe, entry.id);
   }
@@ -1661,6 +1725,78 @@ test('W16 retains all123 prior completion actions byte-for-byte as data while se
   }
 });
 
+// These expectations come from the source plans recorded before generation,
+// rather than from the live W17 ability builder being tested. The old editorial
+// tables remain protected independently by their published byte fingerprints.
+const wave17PublishedCompletionSources = {
+  'catalog.js': 'ea13d665d48e27b22c1c058ca6ebfc757ee8dd80d6e0fd16bcacef186e082e9a',
+  'capabilitiesLot1.js': 'f48cf9e29e39d8237c53383561c4362403296068ec4b60feb6a3f23c8d979813',
+  'capabilitiesLot2.js': 'b7130526c1ff898ba6f1ea4911b956e5c9f7f6b6251cb1e63b17a7089b174b1b',
+  'capabilitiesLot3.js': '356e872bd2e646eab15d2e761c11f98b7f5c9a3fd0f01a7c85395f23a5efdd06',
+  'capabilitiesLot4.js': 'ab004505172ac8493ebe4bb82b5b5f951972fa58dc9f1eb338f6133e176ff0a5',
+  'capabilitiesAdditional1.js': '4065b3986da2a6573e57befb30daf6fea4b316c93dd4243410e091d1fa282a7a',
+  'capabilitiesAdditional2.js': '8125e317de34815643f06febe718380370d110d0758ba78595c8883864ef5ade'
+};
+const wave17SourcePlanFiles = [
+  ['part-a/source-plan.json', '8235936c4a2cb3e5ec9c8505d6dffb649b55333d8d6abac5e605307fd80e567d'],
+  ['part-b/source-plan.json', '2f8fc9f0e19ee867cb409bc82a69f78481a9ea64dec9f9d54a07ea005aa7023e'],
+  ['part-c/source-plan.json', '5fde275a6d5b24a1a271ebcac6dfd92f58e1075e3a24c9ffe7b6af95960c502c'],
+  ['part-c/source-amendment-before-stella.json', 'e64c50981847479580cd6fa0e477678a762463356475f3839e488bac18cf7dbb']
+];
+const wave17PlannedSources = Object.fromEntries(wave17SourcePlanFiles.flatMap(([file, digest]) => {
+  const bytes = readProjectFile('docs/combat-fidelity-wave17-2026-11-02/' + file);
+  assert.equal(sha256(bytes), digest, file + ': pre-generation source plan changed');
+  const plan = JSON.parse(bytes);
+  return (plan.characters || plan.entries || [plan.entry]).map(source => [source.heroId,
+    { ...source, referenceClause: file.startsWith('part-a/') ? source.sourceDescription
+      : file.startsWith('part-b/') ? source.weapon : source.sourceReference }]);
+}));
+const wave17CompletionSemantics = [
+  ['winston_tr', 'heal', 'support', 'single', 'ally', 0],
+  ['prey_2006_jen', 'guard', 'support', 'group', 'ally', 0],
+  ['prey_2006_enisi', 'buff', 'support', 'group', 'ally', 0],
+  ['dantes_inferno_beatrice', 'guard', 'support', 'group', 'ally', 0],
+  ['dantes_inferno_virgil', 'buff', 'support', 'group', 'ally', 0],
+  ['shadow_man_mama_nettie', 'guard', 'support', 'group', 'ally', 0],
+  ['shadow_man_jaunty', 'buff', 'support', 'group', 'ally', 0],
+  ['croc_beany_bird', 'guard', 'support', 'group', 'ally', 0],
+  ['heart_of_darkness_amigo_evacuation', 'guard', 'support', 'group', 'ally', 0],
+  ['atomic_heart_tereshkova', 'guard', 'support', 'group', 'ally', 0],
+  ['len', 'buff', 'support', 'single', 'self', 0],
+  ['tea_ygo', 'guard', 'support', 'single', 'self', 0],
+  ['bakura_ygo', 'buff', 'support', 'single', 'self', 0],
+  ['mai_ygo', 'damage', 'melee', 'single', 'enemy', 4.2],
+  ['ragatha', 'guard', 'support', 'single', 'self', 0],
+  ['kinger', 'guard', 'support', 'single', 'self', 0],
+  ['gangle', 'buff', 'support', 'single', 'self', 0],
+  ['zooble', 'guard', 'support', 'single', 'self', 0],
+  ['sora_biyomon', 'damage', 'projectile', 'single', 'enemy', 4.2],
+  ['mimi_palmon', 'damage', 'melee', 'single', 'enemy', 4.2],
+  ['joe_gomamon', 'damage', 'projectile', 'single', 'enemy', 4.2],
+  ['kari_gatomon', 'damage', 'melee', 'single', 'enemy', 4.2],
+  ['tk_patamon', 'damage', 'projectile', 'single', 'enemy', 4.2],
+  ['stella_interstella', 'buff', 'support', 'single', 'self', 0]
+];
+const wave17CompletedRevisions = Object.fromEntries(wave17CompletionSemantics.map(([id, effect, delivery, shape, targetSide, multiplier]) => {
+  const source = wave17PlannedSources[id], prior = COMBAT_CAPABILITY_COMPLETION[id];
+  assert.ok(source && prior && WAVE17_REVIEWED_IDS.has(id), id + ': unplanned completion revision');
+  assert.equal(source.effect, effect); assert.equal(source.delivery, delivery);
+  return [id, { work: source.sourceWork, name: source.actionName, basis: 'canonical-role', referencePrefix: source.referenceClause,
+    historicalSpecial: prior.special.name, historicalWork: prior.sourceWork, historicalReference: prior.sourceReference,
+    historicalSemantics: { effect: prior.special.targeting.effect, shape: prior.special.targeting.shape,
+      targetSide: prior.special.targeting.targetSide, damage: prior.special.dmg },
+    selectedSemantics: { effect, delivery, shape, targetSide, multiplier } }];
+}));
+test('W17 retains the seven published completion files and selects only24 preplanned source revisions', () => {
+  assert.equal(WAVE17_REVIEWED_IDS.size, 125);
+  assert.equal(Object.keys(wave17CompletedRevisions).length, 24);
+  assert.deepEqual(sorted(Object.keys(wave17CompletedRevisions)),
+    sorted(completedIdentities.map(row => row.id).filter(id => WAVE17_REVIEWED_IDS.has(id))));
+  for (const [file, digest] of Object.entries(wave17PublishedCompletionSources))
+    assert.equal(sha256(readProjectFile('src/game/combat/completion/' + file)), digest,
+      file + ': original completion data changed since published commit9981b73d');
+});
+
 test('every completed action carries an explicit identity basis and source scene', () => {
   assert.equal(Object.keys(wave13CompletedRevisions).length, 20);
   assert.deepEqual(sorted(Object.keys(wave13CompletedRevisions)), sorted(wave13SelectedIds.filter(id => Object.hasOwn(COMBAT_CAPABILITY_COMPLETION, id))), 'W13 revisions must match only selected historical completion identities');
@@ -1672,18 +1808,27 @@ test('every completed action carries an explicit identity basis and source scene
     assert.ok(identityBases.has(entry.identityBasis), `${id}: unsupported identity basis ${entry.identityBasis}`);
     assert.ok(typeof entry.sourceWork === 'string' && entry.sourceWork.trim(), id);
     assert.ok(typeof entry.sourceReference === 'string' && entry.sourceReference.trim(), id);
-    assert.equal(profile.provenance.identityAuthored, true, id);
     const version8 = wave8CompletedRevisions[id];
-    const revision = wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id] || wave10CompletedRevisions[id] || wave9CompletedRevisions[id] || wave7CompletedRevisions[id] || (version8 ? { work: version8[0], name: version8[1], basis: version8[2], reference: /Selected |LQ-84i |Samuel Rodrigues |Use the early exploration-party/ } : null);
+    const revision = wave17CompletedRevisions[id] || wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id] || wave10CompletedRevisions[id] || wave9CompletedRevisions[id] || wave7CompletedRevisions[id] || (version8 ? { work: version8[0], name: version8[1], basis: version8[2], reference: /Selected |LQ-84i |Samuel Rodrigues |Use the early exploration-party/ } : null);
+    const current = currentCompletedEditions.get(id);
+    if (current) {
+      assertCurrentCompletionProfile(id, profile);
+      if (revision?.historicalSpecial) {
+        assert.equal(entry.special.name, revision.historicalSpecial, id + ': immutable historical technique');
+        assert.equal(entry.sourceWork, revision.historicalWork, id + ': immutable historical source');
+        if (revision.historicalReference) assert.equal(entry.sourceReference, revision.historicalReference, id + ': immutable historical reference');
+      }
+    } else {
+      assert.equal(profile.provenance.identityAuthored, true, id);
     if (revision) {
       assert.equal(profile.provenance.sourceWork, revision.work, id);
       if (revision.referencePrefix) assert.ok(profile.provenance.sourceReference.includes(revision.referencePrefix),id);
       else assert.match(profile.provenance.sourceReference, revision.reference, id);
       assert.equal(profile.provenance.identityBasis, revision.basis, id);
-      if (wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id]) {
+      if (wave17CompletedRevisions[id] || wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id]) {
         assert.equal(entry.special.name,revision.historicalSpecial,id+': original completion technique changed');
         assert.equal(entry.sourceWork,revision.historicalWork,id+': original completion source changed');
-        if (wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id]) {
+        if (wave17CompletedRevisions[id] || wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id]) {
           assert.equal(entry.sourceReference, revision.historicalReference, id + ': historical completion reference changed');
         }
       } else if (['baird', 'tali', 'wrex', 'agent_smith', 'hammond_sgc', 'eli_vance', 'kleiner', 'dogmeat', 'piper_wright', 'preston_garvey', 'vasquez_aliens'].includes(id)) {
@@ -1699,11 +1844,12 @@ test('every completed action carries an explicit identity basis and source scene
       assert.equal(profile.provenance.sourceReference, entry.sourceReference, id);
       assert.equal(profile.provenance.identityBasis, entry.identityBasis, id);
     }
+    }
     assert.equal(profile.provenance.sourceUniverse, universe, id);
     assert.equal(profile.provenance.canonicalVerified, false, id);
     assert.equal(profile.provenance.networkVerified, false, id);
     assert.equal(profile.provenance.gameplayAdaptation, true, id);
-    assert.equal(profile.name, revision?.name || entry.special.name, id);
+    assert.equal(profile.name, current?.special.name || revision?.name || entry.special.name, id);
     assert.doesNotMatch(profile.name, genericName, id);
   }
 });
@@ -1714,11 +1860,14 @@ test('support completion never carries damage and offensive completion has posit
     const action = COMBAT_CAPABILITY_COMPLETION[id].special;
     const profile = resolveMeleeSuper(roster.get(id));
     effectsSeen.add(profile.effect);
-    const selectedRevision=wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id];
-    if(selectedRevision){
-      assert.deepEqual({effect:action.targeting.effect,shape:action.targeting.shape,targetSide:action.targeting.targetSide,damage:action.dmg},selectedRevision.historicalSemantics,id+': immutable completion semantics');
-      assert.deepEqual({effect:profile.effect,delivery:profile.delivery,shape:profile.shape,targetSide:profile.targetSide,multiplier:profile.multiplier},selectedRevision.selectedSemantics,id+': selected source version semantics');
+    const selectedRevision=wave17CompletedRevisions[id] || wave16CompletedRevisions[id] || wave15CompletedRevisions[id] || wave14CompletedRevisions[id] || wave13CompletedRevisions[id] || wave12CompletedRevisions[id] || wave11CompletedRevisions[id];
+    if(selectedRevision)assert.deepEqual({effect:action.targeting.effect,shape:action.targeting.shape,targetSide:action.targeting.targetSide,damage:action.dmg},selectedRevision.historicalSemantics,id+': immutable completion semantics');
+    if (currentCompletedEditions.has(id)) {
+      if (supportEffects.has(action.targeting.effect)) assert.equal(action.dmg, 0, id + ': original support completion remains nonoffensive');
+      assertCurrentCompletionProfile(id, profile);
+      continue;
     }
+    if(selectedRevision)assert.deepEqual({effect:profile.effect,delivery:profile.delivery,shape:profile.shape,targetSide:profile.targetSide,multiplier:profile.multiplier},selectedRevision.selectedSemantics,id+': selected source version semantics');
     if (id === 'agent_smith') {
       assert.equal(action.targeting.effect, 'buff'); assert.equal(action.dmg, 0, 'the historical Smith completion was overwritten');
       assert.equal(profile.effect, 'damage'); assert.equal(profile.delivery, 'melee'); assert.equal(profile.multiplier, 5);
@@ -1817,11 +1966,25 @@ test('resolved completion profiles cannot mutate the source hero, catalog, or an
     const untouched = resolveMeleeSuper(hero);
     const changed = resolveMeleeSuper(hero);
     assert.notEqual(untouched, changed, id);
-    assert.notEqual(untouched.sourceAbility, changed.sourceAbility, id);
-    assert.notEqual(untouched.sourceAbility.targeting, changed.sourceAbility.targeting, id);
+    assert.deepEqual(changed, untouched, id + ': deterministic independent resolutions');
+    const isolatedNodes = [];
+    const collectNodes = (left, right, path) => {
+      if (!left || typeof left !== 'object') return;
+      assert.ok(right && typeof right === 'object', path);
+      assert.notEqual(left, right, path);isolatedNodes.push(right);
+      for (const [key, value] of Object.entries(left)) collectNodes(value, right[key], path + '.' + key);
+    };
+    collectNodes(untouched.sourceAbility, changed.sourceAbility, id + '.sourceAbility');
+    // Current raw actions need not have targeting. Probe every nested object
+    // and array that actually exists, including mode profiles/presentation data.
+    for (const node of isolatedNodes) {
+      if (Array.isArray(node)) node.push('Changed only in this result');
+      else {
+        assert.equal(Object.hasOwn(node, '__resolutionMutationProbe'), false);
+        node.__resolutionMutationProbe = 'Changed only in this result';
+      }
+    }
     changed.sourceAbility.name = 'Changed only in this result';
-    changed.sourceAbility.targeting.effect = 'damage';
-    changed.sourceAbility.targeting.range = -900;
     changed.provenance.sourceReference = 'Changed only in this result';
     changed.name = 'Changed only in this result';
     assert.deepEqual(resolveMeleeSuper(hero), untouched, id);

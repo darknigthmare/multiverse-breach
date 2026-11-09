@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "characterId": "mistral_mgr",
+  "date": "2026-10-22",
+  "status": "reference-reinspected-new-generation-refused",
+  "referenceEvidenceFile": "docs/cg/mistral-reference-evidence-wave5-2026-10-22.json",
+  "deliveredNewArtworks": 0,
+  "existingSelectedCgCount": 3,
+  "existingSelectedCg01": "source-correction-still-required",
+  "newRefusal": {
+    "slot": "CG04",
+    "type": "coherentScene",
+    "status": "blocked-input-moderation",
+    "stage": "input",
+    "category": "sexual",
+    "categories": [
+      "sexual"
+    ],
+    "requestId": "e68f63d8-58b4-453c-9163-44b680b44745",
+    "promptFile": "docs/cg/prompts/wave5-2026-10-22/mistral/04-coherentScene.txt",
+    "reason": "Real input refusal for the unchanged canonical-source maintenance scene; no artwork delivered."
+  },
+  "independentVisualReviewOfNewArtworks": null,
+  "canonicalFidelityApproved": false,
+  "notes": [
+    "No additional refused slot inferred from the single CG04 failure.",
+    "CG09/10 were not retried this wave, but their documented prior refusals still apply; do not erase their historical refusal status.",
+    "Existing deficient CG01 and corrected sprite retained byte-for-byte; CG01 was not attempted again this wave.",
+    "No pose/background-only substitute, placeholder or wrong-character image passed off as a Mistral CG."
+  ]
+}

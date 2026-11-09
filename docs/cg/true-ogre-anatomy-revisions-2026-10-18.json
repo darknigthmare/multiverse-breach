@@ -1,0 +1,871 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-10-18",
+  "scope": "Eight True Ogre anatomy/costume corrections; all prior source/master/thumbnail assets preserved.",
+  "revisions": [
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:characterSolo:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-mesoamerican-eclipse-temple-2026-10-18",
+      "promptId": "cg-true-ogre-character-solo-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Garde basse lourde de face trois quarts ; bras droit-serpent à gauche de l’image, tête du serpent basse devant la cuisse, main griffue gauche tendue à droite. Temple mésoaméricain envahi par la jungle, arène gravée, stèles serpentines et brasiers sous une éclipse violette.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing characterSolo composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 1,
+      "poseBrief": "Garde basse lourde de face trois quarts ; bras droit-serpent à gauche de l’image, tête du serpent basse devant la cuisse, main griffue gauche tendue à droite.",
+      "poseDescription": "Garde basse lourde de face trois quarts ; bras droit-serpent à gauche de l’image, tête du serpent basse devant la cuisse, main griffue gauche tendue à droite.",
+      "themeBrief": "CG01 — Identité de la forme monstrueuse finale de True Ogre dans Tekken3.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Temple mésoaméricain envahi par la jungle, arène gravée, stèles serpentines et brasiers sous une éclipse violette.",
+      "background": {
+        "location": "Temple mésoaméricain abandonné",
+        "foreground": "Dallage rituel circulaire gravé et mousse",
+        "midground": "Stèles serpentines et brasiers",
+        "background": "Pyramides, jungle et cascades sous une éclipse",
+        "lighting": "Éclipse violette et flammes orange"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/01-character-solo.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "3a525501c23cd76ac26f1bd8254fe0e18fa9f6d0155872c1394e4c41a6bcd3be",
+          "bytes": 3075921,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "fb798f6fcdf6c1621162bbbcee95a6f51470d6b4fb6256832892664077e26544",
+          "bytes": 1140272,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "f17eed8acdb7fa0c1919660e14d62402d2632966b897ba3461a15d78bb7f5f9b",
+          "bytes": 90628,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "3a525501c23cd76ac26f1bd8254fe0e18fa9f6d0155872c1394e4c41a6bcd3be",
+        "bytes": 3075921,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:coherentScene:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-temple-canal-watch-2026-10-18",
+      "promptId": "cg-true-ogre-coherent-scene-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Accroupi au-dessus du canal ; bras droit-serpent abaissé au premier plan gauche vers l’eau, main griffue gauche étendue au-dessus du bord droit de l’arche, sans appui direct sur la pierre. Canal de temple à la lumière verdâtre réfléchie, passerelles pierreuses couvertes de racines.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing coherentScene composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/coherent-scene-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 4,
+      "poseBrief": "Accroupi au-dessus du canal ; bras droit-serpent abaissé au premier plan gauche vers l’eau, main griffue gauche étendue au-dessus du bord droit de l’arche, sans appui direct sur la pierre.",
+      "poseDescription": "Accroupi au-dessus du canal ; bras droit-serpent abaissé au premier plan gauche vers l’eau, main griffue gauche étendue au-dessus du bord droit de l’arche, sans appui direct sur la pierre.",
+      "themeBrief": "CG04 — Gardien du canal.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Canal de temple à la lumière verdâtre réfléchie, passerelles pierreuses couvertes de racines.",
+      "background": {
+        "location": "Canal de temple à la lumière verdâtre réfléchie, passerelles pierreuses couvertes de racines.",
+        "foreground": "Arche basse couverte de mousse",
+        "midground": "Canal calme et passerelles de pierre",
+        "background": "Temple ruiné et cascade en forêt",
+        "lighting": "Lumière verdâtre des eaux réfléchies"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/04-coherent-scene.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "2a42c72a7d945a3e13bcb2f7f204db42309d3f8f8a5e9805904022b747aaff23",
+          "bytes": 3027669,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "57bfe13156625bac374c0da46afbc00958007b620b37f1e3d9e5b02ee4a2cbfc",
+          "bytes": 1154038,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/coherent-scene-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "a1dc32fcdc6b7fb73fff351443aea5dfb3f453ab46ae24e67ca8c1a588ef918f",
+          "bytes": 92926,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "2a42c72a7d945a3e13bcb2f7f204db42309d3f8f8a5e9805904022b747aaff23",
+        "bytes": 3027669,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:actionScene:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-nexus-transit-dive-2026-10-18",
+      "promptId": "cg-true-ogre-action-scene-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Vol piqué oblique avec jambes repliées et ailes ouvertes ; serpent droit projeté à gauche de l’image et main griffue gauche ouverte à droite. Passerelle métallique brisée entre deux failles cyan dans une gare multiverselle.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing actionScene composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/action-scene-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 5,
+      "poseBrief": "Vol piqué oblique avec jambes repliées et ailes ouvertes ; serpent droit projeté à gauche de l’image et main griffue gauche ouverte à droite.",
+      "poseDescription": "Vol piqué oblique avec jambes repliées et ailes ouvertes ; serpent droit projeté à gauche de l’image et main griffue gauche ouverte à droite.",
+      "themeBrief": "CG05 — Traversée du Nexus.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Passerelle métallique brisée entre deux failles cyan dans une gare multiverselle.",
+      "background": {
+        "location": "Passerelle métallique brisée entre deux failles cyan dans une gare multiverselle.",
+        "foreground": "Passerelle brisée suspendue dans le vide",
+        "midground": "Failles cyan et débris en suspension",
+        "background": "Tours multiverselles et ciel violet",
+        "lighting": "Énergie cyan et spirales mauves"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/05-action-scene.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "7ac1a144d7351c11e6fd7fa4106527497d5a20c1a6184b7e02c3a4db56530d54",
+          "bytes": 3328644,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "802dfe1ccba4ce71066b9bbf93ecb1cb3615a0e8b5aca2f7e21694dbec8b394e",
+          "bytes": 1282348,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/action-scene-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "7964b7859a03f1d2d0de32e1f87be1e67f17df0ef70457ff7a0e4ca88cc285e9",
+          "bytes": 102678,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "7ac1a144d7351c11e6fd7fa4106527497d5a20c1a6184b7e02c3a4db56530d54",
+        "bytes": 3328644,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:victoryPose:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-mountain-stairs-victory-2026-10-18",
+      "promptId": "cg-true-ogre-victory-pose-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Debout en triomphe, gueule levée et ailes ouvertes ; bras droit-serpent dressé vers le ciel à gauche de l’image, main griffue gauche basse à droite. Escalier de montagne au-dessus des nuages, soleil doré.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing victoryPose composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/victory-pose-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 7,
+      "poseBrief": "Debout en triomphe, gueule levée et ailes ouvertes ; bras droit-serpent dressé vers le ciel à gauche de l’image, main griffue gauche basse à droite.",
+      "poseDescription": "Debout en triomphe, gueule levée et ailes ouvertes ; bras droit-serpent dressé vers le ciel à gauche de l’image, main griffue gauche basse à droite.",
+      "themeBrief": "CG07 — Triomphe des sommets.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Escalier de montagne au-dessus des nuages, soleil doré.",
+      "background": {
+        "location": "Escalier de montagne au-dessus des nuages, soleil doré.",
+        "foreground": "Hautes marches anciennes couvertes de mousse",
+        "midground": "Parois rocheuses et ruines en altitude",
+        "background": "Mer de nuages et sommets lointains",
+        "lighting": "Soleil doré de fin de journée"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/07-victory-pose.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "4bdcebdcdc7b6087cad8582f9480050b7a7f02cf555a2ab78b93c8dcbfcbcaba",
+          "bytes": 2964792,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "45e1bf1e9d30c54d0551eaa2298192c6b5c6788104698913acf6c6ef1740ef9e",
+          "bytes": 1068144,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/victory-pose-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "f07f7c6a5ce538b33e7aff3afcb31f7a1914e8df28df44f9ee29b031b4266b2b",
+          "bytes": 90432,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "4bdcebdcdc7b6087cad8582f9480050b7a7f02cf555a2ab78b93c8dcbfcbcaba",
+        "bytes": 2964792,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:beachFamily:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-coral-bay-shell-2026-10-18",
+      "promptId": "cg-true-ogre-beach-family-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Assis dans une baie peu profonde ; bras droit-serpent lové près du torse à gauche de l’image, main griffue gauche posée dans l’eau à droite. Petite baie corallienne en plein jour avec rochers rouges et parasols lointains.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing beachFamily composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/beach-family-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 9,
+      "poseBrief": "Assis dans une baie peu profonde ; bras droit-serpent lové près du torse à gauche de l’image, main griffue gauche posée dans l’eau à droite.",
+      "poseDescription": "Assis dans une baie peu profonde ; bras droit-serpent lové près du torse à gauche de l’image, main griffue gauche posée dans l’eau à droite.",
+      "themeBrief": "CG09 — Collection de coquillages; Fan Art, déclinaison non canonique.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Petite baie corallienne en plein jour avec rochers rouges et parasols lointains.",
+      "background": {
+        "location": "Petite baie corallienne en plein jour avec rochers rouges et parasols lointains.",
+        "foreground": "Eau peu profonde et petit rocher corallien",
+        "midground": "Coquillage rose posé sur un corail",
+        "background": "Baie calme, falaises rouges et parasols",
+        "lighting": "Grand soleil et reflets bleus marins"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/09-beach-family.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "f1b5433f8a946a43d294a549d20e939bca5c69120cf4411e26aad7ad3f839454",
+          "bytes": 3175293,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "74a4028ebb51a1a6021ef211b297ed0e34ad6c3264513775d619c622ac503a05",
+          "bytes": 1160286,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/beach-family-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "7b46266bfc27013ab80cc034dfeccab94bbbba2bb5cf9336b2c0a693b249f4e3",
+          "bytes": 99962,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "f1b5433f8a946a43d294a549d20e939bca5c69120cf4411e26aad7ad3f839454",
+        "bytes": 3175293,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:maidService:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-winter-tearoom-service-2026-10-18",
+      "promptId": "cg-true-ogre-maid-service-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Debout de face, bras droit-serpent à gauche de l’image versant le thé par une boucle de la théière, main griffue gauche à droite soutenant le plateau de deux tasses. Salon de thé d’hiver avec verrière gelée, parquet clair et cheminée.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing maidService composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/maid-service-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 10,
+      "poseBrief": "Debout de face, bras droit-serpent à gauche de l’image versant le thé par une boucle de la théière, main griffue gauche à droite soutenant le plateau de deux tasses.",
+      "poseDescription": "Debout de face, bras droit-serpent à gauche de l’image versant le thé par une boucle de la théière, main griffue gauche à droite soutenant le plateau de deux tasses.",
+      "themeBrief": "CG10 — Service du thé; Fan Art, déclinaison non canonique.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Salon de thé d’hiver avec verrière gelée, parquet clair et cheminée.",
+      "background": {
+        "location": "Salon de thé d’hiver avec verrière gelée, parquet clair et cheminée.",
+        "foreground": "Plateau portant des tasses en porcelaine",
+        "midground": "Table nappée et meubles de salon",
+        "background": "Verrière hivernale, cheminée et neige",
+        "lighting": "Feu orange et lumière bleue d’hiver"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/10-maid-service.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "80bed2585af710a36501e9af1aebf00f39d6ffcc4b5314b0849ad275892b6290",
+          "bytes": 3176367,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "7b99203bf69df4755879012b7babbff7f9a0df9ce561a61998b14d50a8b1c374",
+          "bytes": 1218046,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/maid-service-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "f5b3f941ab9ff7504b3f5ae4935ff9e1d98a38c0d345641b52c34c79a60a31f0",
+          "bytes": 88632,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "80bed2585af710a36501e9af1aebf00f39d6ffcc4b5314b0849ad275892b6290",
+        "bytes": 3176367,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:alignmentSwap:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-botanical-glasshouse-guardian-2026-10-18",
+      "promptId": "cg-true-ogre-alignment-swap-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Accroupi protecteur devant une pousse ; serpent droit à gauche de l’image regardant la fleur et main griffue gauche à droite formant un abri au-dessus du plant. Grande serre botanique circulaire, lotus lumineux et statues végétalisées.",
+        "en": "True Ogre’s right serpent arm and left claw arm corrected in the existing alignmentSwap composition."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/alignment-swap-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/"
+      ],
+      "slot": 12,
+      "poseBrief": "Accroupi protecteur devant une pousse ; serpent droit à gauche de l’image regardant la fleur et main griffue gauche à droite formant un abri au-dessus du plant.",
+      "poseDescription": "Accroupi protecteur devant une pousse ; serpent droit à gauche de l’image regardant la fleur et main griffue gauche à droite formant un abri au-dessus du plant.",
+      "themeBrief": "CG12 — Protecteur de la serre; What If, déclinaison non canonique.",
+      "themeSource": "docs/cg/true-ogre-complete-2026-10-18.json; independent anatomy QA.",
+      "backgroundDescription": "Grande serre botanique circulaire, lotus lumineux et statues végétalisées.",
+      "background": {
+        "location": "Grande serre botanique circulaire, lotus lumineux et statues végétalisées.",
+        "foreground": "Pousse délicate sur un îlot de pierre",
+        "midground": "Bassin, fleurs et lotus lumineux",
+        "background": "Serre circulaire et statues végétalisées",
+        "lighting": "Lumière dorée traversant la verrière"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/12-alignment-swap.txt",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "0a69a6948d4a305db4e5a88d9ee00c52187c49219cfa4b89b3c785268cb2545e",
+          "bytes": 3328027,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "0d482ea3b292bd798f77f3bb1546b61768ec7ea58825f7648cc2b68b283a17d4",
+          "bytes": 1284468,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/alignment-swap-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "1464816824c25e356f6b721960b52afedda0fb91964627bb8895503844749c51",
+          "bytes": 106700,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "0a69a6948d4a305db4e5a88d9ee00c52187c49219cfa4b89b3c785268cb2545e",
+        "bytes": 3328027,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    },
+    {
+      "cgId": "cg:tekken:true-ogre-tekken:iconicOutfitSwap:openai-v1",
+      "revisionId": "fidelity-2026-10-18-anatomy-v2",
+      "imagePath": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2.webp",
+      "thumbnailPath": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+      "sourcePath": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2.png",
+      "publishedAt": "2026-10-18",
+      "backgroundId": "cg-true-ogre-jade-sanctuary-regalia-2026-10-18",
+      "promptId": "cg-true-ogre-iconic-outfit-swap-anatomy-v2-2026-10-18",
+      "promptSummary": {
+        "fr": "Garde de karaté large, pantalon noir à flamme rouge sur une jambe ; bras droit-serpent nu à gauche de l’image et unique main griffue gauche gantée rouge repliée à droite. Salle de jade et d’or aux piliers octogonaux, lanternes blanches et sol en onyx.",
+        "en": "What-If True Ogre wears Jin Kazama’s Tekken3 black flame trousers and one red glove, with the right serpent arm and left claw arm preserved."
+      },
+      "sourceRefs": [
+        "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-complete-2026-10-18.png",
+        "/cg/tekken/true-ogre-tekken/defeat-pose-complete-2026-10-18.png",
+        "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+        "https://eng.tekkenpedia.com/wiki/True_Ogre/",
+        "https://eng.tekkenpedia.com/www_subdomain/index_title_Jin_Kazama/",
+        "https://gamefaqs.gamespot.com/ps/198900-tekken3/faqs/1009",
+        "https://www.mobygames.com/game/3569/tekken-3/promo/group-77459/image-620805/"
+      ],
+      "slot": 13,
+      "poseBrief": "Garde de karaté large, pantalon noir à flamme rouge sur une jambe ; bras droit-serpent nu à gauche de l’image et unique main griffue gauche gantée rouge repliée à droite.",
+      "poseDescription": "Garde de karaté large, pantalon noir à flamme rouge sur une jambe ; bras droit-serpent nu à gauche de l’image et unique main griffue gauche gantée rouge repliée à droite.",
+      "themeBrief": "CG13 — Croisement WhatIf avec la tenue Player1 de Jin Kazama dans Tekken3 : pantalon noir à flamme rouge et gant rouge adapté à la seule main griffue gauche. Le bras droit-serpent reste nu. Ce costume ne fait pas partie du canon de True Ogre.",
+      "themeSource": "https://eng.tekkenpedia.com/www_subdomain/index_title_Jin_Kazama/ (Appearance and Outfits,line58); project WhatIf adaptation.",
+      "backgroundDescription": "Salle de jade et d’or aux piliers octogonaux, lanternes blanches et sol en onyx.",
+      "background": {
+        "location": "Salle de jade et d’or aux piliers octogonaux, lanternes blanches et sol en onyx.",
+        "foreground": "Dallage en onyx aux reflets dorés",
+        "midground": "Piliers verts et lanternes suspendues",
+        "background": "Grande salle cérémonielle de jade",
+        "lighting": "Lumière chaleureuse des lanternes"
+      },
+      "source": "openai",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/complete-true-ogre-revisions/2026-10-18/13-iconic-outfit-swap.txt",
+      "proposedTitle": {
+        "fr": "True Ogre — Tenue de Jin Kazama (Tekken3)",
+        "en": "True Ogre — Jin Kazama’s Tekken3 Outfit"
+      },
+      "canonStatus": "what-if",
+      "family": "What If",
+      "visualReview": {
+        "status": "accepted-anatomy-correction",
+        "reviewedAt": "2026-10-18",
+        "canonicalFidelityApproved": false,
+        "reviewers": [
+          "generating-agent-individual-visual-review",
+          "independent-agent-referentiel-canon"
+        ],
+        "notes": [
+          "En vue de face/face trois quarts, serpent à gauche de l’image relié à l’épaule droite anatomique ; unique main griffue à droite reliée à l’épaule gauche.",
+          "Deux ailes, deux jambes, une queue et deux bras ; absence de troisième bras contrôlée visuellement.",
+          "Le décor n’a pas été retourné par un miroir raster ; correction réalisée par ImageGen.",
+          "Extrémités et corne complètes dans le cadre après revue."
+        ],
+        "limitations": [
+          "Aucun modèle visuel original Tekken3 indépendant n’a été téléchargé et inspecté pour ces corrections ; l’objectif est corriger les contradictions des références de projet avec la caractérisation documentée.",
+          "Écailles, corne, visage, nombre précis de griffes et proportions restent une adaptation non certifiée1:1.",
+          "Coupe et motif JinT3 documentés par texte secondaire ; image promo originale inaccessible sur CDN403. Gant et pantalon sont adaptés à l’anatomie du monstre, pas copie exacte du costume ou de ses dix points blancs."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2.png",
+          "sha256": "7790068d4c7e95dc05b14724afecb7383c9b7ca9e46174b8806694475967a85d",
+          "bytes": 2982894,
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2.webp",
+          "sha256": "234994858b0ea1f949d61bb81b7098a85bc2bdcac4b94b5eb4d451019b925de0",
+          "bytes": 1096660,
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-fidelity-2026-10-18-anatomy-v2-thumb.webp",
+          "sha256": "42c7edc079826dc8d77bef98f20950d45b848f49ce048ee4dd439668cbf9b15f",
+          "bytes": 90424,
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "channels": 3
+        }
+      },
+      "nativeEvidence": {
+        "sha256": "7790068d4c7e95dc05b14724afecb7383c9b7ca9e46174b8806694475967a85d",
+        "bytes": 2982894,
+        "width": 1086,
+        "height": 1448,
+        "channels": 3,
+        "format": "png"
+      },
+      "conditioning": "Native RGB3:4 PNG copied unchanged; Sharp resize/encode only for1536x2048 master and384x512 thumbnail."
+    }
+  ],
+  "preservedAssets": [
+    {
+      "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18.png",
+      "sha256": "05da7c1b7761aadb5aa5b8a1d0fff89e7768b12561570f25d147f4bdfb5c1a69"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18.webp",
+      "sha256": "be3a40e898aa9a851cbe560f7cfe660dd219e48c0e777e4c09ac649c143a78dc"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/character-solo-fidelity-2026-10-18-thumb.webp",
+      "sha256": "cc1b9ff5d9a020a7ab8259c7f416492ddab730af72573ae6c560e22d75d6ebf2"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/coherent-scene-complete-2026-10-18.png",
+      "sha256": "e22f0fa0c9fe4e0ab353eacfc4eb15f39400329ace327c44bd47fae1aba1e28f"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/coherent-scene-complete-2026-10-18.webp",
+      "sha256": "ad27a427290e933bc40251b41b4d275745329f6433026c587935a758de5940d5"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/coherent-scene-complete-2026-10-18-thumb.webp",
+      "sha256": "e04e811697fac373f3ce492f267879a43ce44c0a9fc2c564cb2f6de206dd8335"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/action-scene-complete-2026-10-18.png",
+      "sha256": "cde7cbb9fd0bcf7eb97ddeff81eaf3d1c39eb2f9862102166281cb0b941b309a"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/action-scene-complete-2026-10-18.webp",
+      "sha256": "d92686289ac5c046509fd07771908019bf5e9d7de27b1976d57097c21ac3c894"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/action-scene-complete-2026-10-18-thumb.webp",
+      "sha256": "5c8ec232ca32bd2c34ac7a50bfbbdc9f96029eb746c080c9d7c17ae5ba42ec48"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/victory-pose-complete-2026-10-18.png",
+      "sha256": "0e10f1df50092e2d684d5c4d94f6dc5e0b6421311833207cb4ad479235122967"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/victory-pose-complete-2026-10-18.webp",
+      "sha256": "9bacd49627af0250190f788ed4402f64054cd94bf3cc3f758c673e3c073821be"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/victory-pose-complete-2026-10-18-thumb.webp",
+      "sha256": "402a5d4dcf72817fa4e3d480ef4ea7297ccbb45ba0173086b5ef183e7b41c117"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/beach-family-complete-2026-10-18.png",
+      "sha256": "a9749dc5ecbb7f40d7e838a58915920b020145e27bbb9081026c230b4762fef6"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/beach-family-complete-2026-10-18.webp",
+      "sha256": "09be9d0c198866df0336671dd04d832f9c0aca153be7c22fe1bd78be7d44b515"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/beach-family-complete-2026-10-18-thumb.webp",
+      "sha256": "3e725bdd07552fe586858f16268fd484ec57e2ef045478cdad101d19cf8e0c97"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/maid-service-complete-2026-10-18.png",
+      "sha256": "0c24cfb3031f9ce9217f4fb7f94a26d50d5e354162537eae3240fa6c50f6f7d8"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/maid-service-complete-2026-10-18.webp",
+      "sha256": "c356b91561484e695dedd64690559c81cc2b46b3ec1eed2d5d7a53d0b276abcf"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/maid-service-complete-2026-10-18-thumb.webp",
+      "sha256": "bf5f01a59218c6639c28cbed82d534c05f9af7622bee2d86f64f0209c9dbd220"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/alignment-swap-complete-2026-10-18.png",
+      "sha256": "d4429a173762607fa4572679caf62982a8160556d8aba6babc092adb0099463f"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/alignment-swap-complete-2026-10-18.webp",
+      "sha256": "c0ea6c21ecd9c9933ae8bc9f4b64271ae0dd4ab25a7b5a921ed88a0b443a07df"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/alignment-swap-complete-2026-10-18-thumb.webp",
+      "sha256": "950bf3988d42400ac5edd8678303eaf9fe36e491941fcf7da89aaf2761dd4c02"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-complete-2026-10-18.png",
+      "sha256": "e29f0676af61ca089cc93a231e25cb5d36e1790e74e4e9f574827f883b7e89f5"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-complete-2026-10-18.webp",
+      "sha256": "7e88174a625ae5671cd33cac15eca8cd87f0d8f66ad13c2d28ce67984a8d51da"
+    },
+    {
+      "path": "/cg/tekken/true-ogre-tekken/iconic-outfit-swap-complete-2026-10-18-thumb.webp",
+      "sha256": "e42921bae938debf5df238615b9c0a263700cb7fc626504bb20b4a609e7f0d26"
+    }
+  ],
+  "contactSheet": "docs/cg/screenshots/true-ogre-anatomy-revisions-2026-10-18.webp",
+  "visualReview": {
+    "reviewedAt": "2026-10-18",
+    "accepted": 8,
+    "rejectedCandidates": 2,
+    "canonicalFidelityApproved": false,
+    "notes": [
+      "Seven initial candidates and corrected-framing tea scene independently reviewed by referentiel_canon before packaging.",
+      "CG10 first edit retained wrong arm sides and was rejected; next had insufficient horn margin and was replaced.",
+      "CG03,CG06,CG08,CG11,CG14,CG15 left untouched; in particular the rear-view intro was not reversed."
+    ]
+  }
+}

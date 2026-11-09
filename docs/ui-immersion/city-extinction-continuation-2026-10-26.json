@@ -1,0 +1,691 @@
+{
+  "schema": 1,
+  "date": "2026-10-26",
+  "pr": 9,
+  "baseFeatureCommit": "c10f75bea5f053d0d8f91568fe263c7d3c1d4a25",
+  "testedTransportCommit": "4d6618a714e412331c6b6a50dea1259ea2bfe00c",
+  "run": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40279377677",
+  "conclusion": "success",
+  "changes": [
+    "City: source-owned held input, cancel path on opening terminal, preserve NPC positions on equivalent parent renders, bounded minimap viewport, recover rendering without resetting location.",
+    "Extinction: independent keyboard/touch aliases, captured pointers, cumulative aim drag threshold, paused Controls drawer, compact HUD and short-landscape controls.",
+    "Extinction result: native modal, focus containment and one acknowledgement; renderer failures do not create a victory or reward. Existing reward policy unchanged.",
+    "Permanent city-extinction-ui workflow tests the actual scenes with decoded committed artwork."
+  ],
+  "unit": {
+    "sceneContracts": {
+      "passed": 64,
+      "total": 64,
+      "newTestsIncluded": 14
+    },
+    "existingUI": {
+      "passed": 68,
+      "total": 68
+    },
+    "note": "Suites overlap; do not add as unique tests."
+  },
+  "browser": {
+    "scope": "Actual City/Extinction components; prepared ownership; injected terminal states and faults. Not full natural runs or physical touch.",
+    "offline": false,
+    "passed": 10,
+    "total": 10,
+    "cases": [
+      {
+        "name": "city-1280x900-fr-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "city-390x844-en-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "city-844x390-fr-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "city-2560x1080-en-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "fps-1280x900-fr-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "fps-390x844-en-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "fps-844x390-fr-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "fps-2560x1080-en-lifecycle",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": false,
+        "media": {
+          "images": [
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "city-390x844-fr-fault",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": true,
+        "media": {
+          "images": [
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-nexus-collection.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/images/campaign-oc/chapter-01-atrium-v1.png",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      },
+      {
+        "name": "fps-844x390-en-fault",
+        "passed": true,
+        "preparedState": true,
+        "injectedFault": true,
+        "media": {
+          "images": [
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-hands.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-fps-projectile.png",
+              "loaded": true,
+              "failed": false
+            },
+            {
+              "src": "/backgrounds/lore-stages/nexus-de-convergence/rpg.webp",
+              "loaded": true,
+              "failed": false
+            }
+          ],
+          "offline": null
+        }
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 0,
+    "files": 7
+  },
+  "build": {
+    "sourceSnapshot": "passed",
+    "fullProduction": "not run by the isolated verification; regular PR check runs after final publication",
+    "existingBundleSizeWarning": true
+  },
+  "visualReview": [
+    {
+      "file": "city-390x844-en-lifecycle-city.png",
+      "finding": "Atrium and heroes rendered; controls in viewport. Enlarged HUD journal preview remains clipped; full text remains in Terminal."
+    },
+    {
+      "file": "fps-390x844-en-lifecycle-run.png",
+      "finding": "Actual background and hand sprite loaded. Directive and controls visible. Generic enemy silhouettes and residual catalog strings remain."
+    },
+    {
+      "file": "fps-844x390-fr-lifecycle-result.png",
+      "finding": "Result and Continue fit in short landscape; native modal background is inert."
+    }
+  ],
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_UI_Immersion.xlsx",
+    "sha256": "3af08cf4d012a4dd4591bf56a270112b4b56569f7f1873421f2b20146e185bdf",
+    "sheets": 5,
+    "screens": 40,
+    "actionLots": 39,
+    "verificationRows": 132,
+    "cachedFormulaErrors": 0,
+    "note": "Initial audit, previous tests and partial status of City/Extinction retained. Cell edits performed by artifact_tool; ZIP repack changes metadata only."
+  },
+  "baselineChecks": {
+    "commit": "c10f75bea5f053d0d8f91568fe263c7d3c1d4a25",
+    "allPassed": true,
+    "runIds": [
+      40275358689,
+      40275358327,
+      40275358368,
+      40275358402
+    ]
+  },
+  "limits": [
+    "Prepared ownership, isolated components and injected terminal states; not complete natural runs.",
+    "Local offline rehearsal lacked the FPS background; the cited GitHub execution uses the committed backgrounds and asserts image decoding.",
+    "No physical controller, real mobile multitouch, real cloud account or exhaustive progression.",
+    "City services and other districts, further scene artwork and full forty-screen review remain open.",
+    "Existing Race objective localization and bundle-size warning remain.",
+    "No merge or production promotion."
+  ],
+  "sourceManifest": {
+    "base": "80468d2d2aa21a19c89395b632f50c757324ef63",
+    "files": [
+      {
+        "path": "src/components/HubScreen.jsx",
+        "before": "67cd9919fa4304dbd4b0f18d5617673cf01555bad9e7387281e78bd3c234633e",
+        "after": "bfbb980ed9d816badb8e0f9b0d4d279f50ad565ceaa74bc590dcf90f8880e1c0"
+      },
+      {
+        "path": "src/components/HubImmersion.css",
+        "before": "88a4d70324849be250028cd9affb62e64fbb54a5fdb90375ace5164182344548",
+        "after": "62228a41f8fa8928c6295b3d4421b9479be4bd51001040550dd1172403de31ae"
+      },
+      {
+        "path": "src/components/SceneHoldButton.jsx",
+        "before": null,
+        "after": "4afadf7cc436b1807a850136edf2e2183c345baebe0fb3a8df243146dfc40b80"
+      },
+      {
+        "path": "src/game/sceneInputs.js",
+        "before": null,
+        "after": "2a9ffded7840aa54fd07640bc1665cf010deb6d80d2a938d7238b6d3c6529353"
+      },
+      {
+        "path": "scripts/immersiveHubState.test.mjs",
+        "before": "f97df8aa0aec861cea5f06492fd19190c358ce95626077ebd2ca331f7da7111b",
+        "after": "0b9e9cda9cc816c60eb92ce7c9a2510d34c92dfab82d1fbb66c030e5e1b1a77f"
+      },
+      {
+        "path": "scripts/mosaicCityRuntime.test.mjs",
+        "before": "96fcb6c81a9ff18b33c308345f67a57dde0d2b144ff2658dfca55a085dba8f52",
+        "after": "2f332950a342ecfb1abfd510443b34a2b75530ba0890188519e987a26261c972"
+      },
+      {
+        "path": "scripts/sceneInputs.test.mjs",
+        "before": null,
+        "after": "ac943f8f140d8b3c500009683d841c9a59c8d035ac0160478b5f4c70bd95c900"
+      },
+      {
+        "path": "scripts/browserCityExtinction.py",
+        "before": null,
+        "after": "cc829a7097457d44123757313701b19b92795f2c5d3732b12653561a2603d10b"
+      },
+      {
+        "path": "scripts/fixtures/cityExtinctionHarness.jsx",
+        "before": null,
+        "after": "b2e568c705f2be7dc2e1e9a619676b7de6781f686da6858f2d4e46918df29406"
+      },
+      {
+        "path": "scripts/fixtures/city-extinction.html",
+        "before": null,
+        "after": "1370caa59e2b20280a35763e92d0824e081c1e0642a091175a3cf0ea94e8e207"
+      },
+      {
+        "path": ".github/workflows/city-extinction-ui.yml",
+        "before": null,
+        "after": "d5cd33ba18e367596a2a78a3f043b24fa6fc43195d54fd4d31cb6a9ddffe662f"
+      }
+    ],
+    "patchSha256": "1524453b29511e843a0cf82adbb4c98e0f41c7c3d67be0204ed95612b96459ff"
+  },
+  "verifiedBlobs": [
+    {
+      "path": "src/components/HubScreen.jsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1909dc68018194d53c458d460b36c59d767f1fff"
+    },
+    {
+      "path": "src/components/HubImmersion.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9352e51797432b6cabf612e39306d09109d7bcee"
+    },
+    {
+      "path": "src/components/SceneHoldButton.jsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf3dd4d94da552f5769656f42ac939dca44d2964"
+    },
+    {
+      "path": "src/game/sceneInputs.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7bfb0e06fe501bab5f0f48acf105f68c18ccef0b"
+    },
+    {
+      "path": "scripts/immersiveHubState.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58aebec402d71d59395bdf04e5b8dc0c60c0a96a"
+    },
+    {
+      "path": "scripts/mosaicCityRuntime.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12e7b439314bfe45d3307c85096427a178e4bacb"
+    },
+    {
+      "path": "scripts/sceneInputs.test.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3cc6b8e453231ea97de6b19211eed38ea7f192dc"
+    },
+    {
+      "path": "scripts/browserCityExtinction.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6008c91e2e2ecc62753a6e2ec2dee38baa9807b"
+    },
+    {
+      "path": "scripts/fixtures/cityExtinctionHarness.jsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7a12b706fc40ab7d6b9d91745b56484c272a996"
+    },
+    {
+      "path": "scripts/fixtures/city-extinction.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e64d0ae694f53765192876146f6701a3c8ef70f9"
+    },
+    {
+      "path": ".github/workflows/city-extinction-ui.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "875272864940515d4b9fc08b9e15ac0b98d403e6"
+    }
+  ]
+}

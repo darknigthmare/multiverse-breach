@@ -3,17 +3,24 @@ import { after, before, test } from 'node:test';
 import { createServer } from 'vite';
 import { getNativeSuperVisualStateWave5, supportsTrackedProjectileVisualWave5 } from '../src/game/combat/nativeSuperVisualsWave5.js';
 
-let vite, EngineFighter, heroes;
+let vite, EngineFighter, heroes, resolveMeleeSuper;
 const noop = () => {}, engines = [];
 before(async () => {
   vite = await createServer({ root: process.cwd(), appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
   ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js?projectile-wave5'));
   ({ HEROES_DB: heroes } = await vite.ssrLoadModule('/src/game/heroes.js'));
+  ({ resolveMeleeSuper } = await vite.ssrLoadModule('/src/game/combatIdentity.js'));
 });
 after(async () => { engines.forEach(engine => engine.dispose()); await vite?.close(); });
-const make = (id, side) => {
-  const hero = heroes.find(candidate => candidate.id === id);
-  assert.ok(hero, id);
+const make = (id, side, authoredBfg = false) => {
+  const source = heroes.find(candidate => candidate.id === id);
+  assert.ok(source, id);
+  const profile = authoredBfg ? resolveMeleeSuper(source) : null;
+  // The W5 BFG visual contract uses its actual authored area ability. Classic
+  // Marine's current default direct-fire plasma adapter is tested separately.
+  const hero = authoredBfg ? { ...source, special: { ...profile.sourceAbility,
+    fighterProfile: { effect: profile.effect, delivery: profile.delivery,
+      shape: profile.shape, range: profile.range, maxTargets: profile.maxTargets } } } : source;
   const dummy = { id: 'projectile-audit-dummy', name: 'Training target', universe: 'Test', stats: { hp: 5000, atk: 10, def: 8, spd: 5 } };
   const engine = new EngineFighter(1800, 500, side === 'player' ? [hero] : [dummy], side === 'player' ? [dummy] : [hero],
     { add: noop }, noop, noop, { opponentControl: 'p2' });
@@ -149,8 +156,8 @@ for (const id of ['boruto_uzumaki', 'leon']) test(`${id}: interrupted startup, m
 });
 
 for (const id of ['doomslayer', 'doom_marine_classic']) for (const side of ['player', 'cpu']) test(`${id} ${side}: BFG retains its single area impact and the condensed Melee/RPG helper path`, () => {
-  const context = make(id, side), { engine, actor, target } = context;
-  engine.triggerSideAction(side, 'super');
+  const context = make(id, side, true), { engine, actor, target } = context;
+  assert.equal(engine.triggerSideAction(side, 'super'), true);
   const action = actor.action, profile = action.identity, beforeHp = target.currentHp;
   assert.equal(profile.delivery, 'area'); assert.equal(supportsTrackedProjectileVisualWave5(profile), false);
   engine.updateActions(0.3); assert.equal(target.currentHp, beforeHp);

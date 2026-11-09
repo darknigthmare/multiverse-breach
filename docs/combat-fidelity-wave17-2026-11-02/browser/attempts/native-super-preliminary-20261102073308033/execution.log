@@ -1,0 +1,1034 @@
+{
+  "passed": false,
+  "cases": 336,
+  "failures": [
+    {
+      "id": "tomba_hero",
+      "mode": "fighter",
+      "side": "player",
+      "error": "tomba_hero/fighter/player: no accepted damage",
+      "stack": "Error: tomba_hero/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "tomba_hero/fighter/opponent: no accepted damage",
+      "stack": "Error: tomba_hero/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "melee",
+      "side": "player",
+      "error": "tomba_hero/melee/player: no accepted damage",
+      "stack": "Error: tomba_hero/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "tomba_hero/melee/opponent: no accepted damage",
+      "stack": "Error: tomba_hero/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "fighter",
+      "side": "player",
+      "error": "spyro_spyro/fighter/player: no accepted damage",
+      "stack": "Error: spyro_spyro/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "spyro_spyro/fighter/opponent: no accepted damage",
+      "stack": "Error: spyro_spyro/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "melee",
+      "side": "player",
+      "error": "spyro_spyro/melee/player: no accepted damage",
+      "stack": "Error: spyro_spyro/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "spyro_spyro/melee/opponent: no accepted damage",
+      "stack": "Error: spyro_spyro/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_hunter",
+      "mode": "fighter",
+      "side": "player",
+      "error": "spyro_hunter: physical muzzle differs from native artwork",
+      "stack": "Error: spyro_hunter: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "spyro_hunter",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "spyro_hunter: physical muzzle differs from native artwork",
+      "stack": "Error: spyro_hunter: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_globox",
+      "mode": "fighter",
+      "side": "player",
+      "error": "rayman_globox/fighter/player: no accepted damage",
+      "stack": "Error: rayman_globox/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_globox",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "rayman_globox/fighter/opponent: no accepted damage",
+      "stack": "Error: rayman_globox/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_globox",
+      "mode": "melee",
+      "side": "player",
+      "error": "rayman_globox/melee/player: no accepted damage",
+      "stack": "Error: rayman_globox/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_globox",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "rayman_globox/melee/opponent: no accepted damage",
+      "stack": "Error: rayman_globox/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "fighter",
+      "side": "player",
+      "error": "rayman_barbara/fighter/player: no accepted damage",
+      "stack": "Error: rayman_barbara/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "rayman_barbara/fighter/opponent: no accepted damage",
+      "stack": "Error: rayman_barbara/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "melee",
+      "side": "player",
+      "error": "rayman_barbara/melee/player: no accepted damage",
+      "stack": "Error: rayman_barbara/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "rayman_barbara/melee/opponent: no accepted damage",
+      "stack": "Error: rayman_barbara/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "prey_2006_tommy_tawodi",
+      "mode": "fighter",
+      "side": "player",
+      "error": "prey_2006_tommy_tawodi: physical muzzle differs from native artwork",
+      "stack": "Error: prey_2006_tommy_tawodi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "prey_2006_tommy_tawodi",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "prey_2006_tommy_tawodi: physical muzzle differs from native artwork",
+      "stack": "Error: prey_2006_tommy_tawodi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_peyj",
+      "mode": "fighter",
+      "side": "player",
+      "error": "beyond_good_evil_peyj/fighter/player: no accepted damage",
+      "stack": "Error: beyond_good_evil_peyj/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_peyj",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "beyond_good_evil_peyj/fighter/opponent: no accepted damage",
+      "stack": "Error: beyond_good_evil_peyj/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_peyj",
+      "mode": "melee",
+      "side": "player",
+      "error": "beyond_good_evil_peyj/melee/player: no accepted damage",
+      "stack": "Error: beyond_good_evil_peyj/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_peyj",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "beyond_good_evil_peyj/melee/opponent: no accepted damage",
+      "stack": "Error: beyond_good_evil_peyj/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_double_h",
+      "mode": "fighter",
+      "side": "player",
+      "error": "beyond_good_evil_double_h/fighter/player: no accepted damage",
+      "stack": "Error: beyond_good_evil_double_h/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_double_h",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "beyond_good_evil_double_h/fighter/opponent: no accepted damage",
+      "stack": "Error: beyond_good_evil_double_h/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_double_h",
+      "mode": "melee",
+      "side": "player",
+      "error": "beyond_good_evil_double_h/melee/player: no accepted damage",
+      "stack": "Error: beyond_good_evil_double_h/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "beyond_good_evil_double_h",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "beyond_good_evil_double_h/melee/opponent: no accepted damage",
+      "stack": "Error: beyond_good_evil_double_h/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_unknown",
+      "mode": "fighter",
+      "side": "player",
+      "error": "metal_hellsinger_unknown/fighter/player: no accepted damage",
+      "stack": "Error: metal_hellsinger_unknown/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_unknown",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "metal_hellsinger_unknown/fighter/opponent: no accepted damage",
+      "stack": "Error: metal_hellsinger_unknown/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_unknown",
+      "mode": "melee",
+      "side": "player",
+      "error": "metal_hellsinger_unknown/melee/player: no accepted damage",
+      "stack": "Error: metal_hellsinger_unknown/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_unknown",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "metal_hellsinger_unknown/melee/opponent: no accepted damage",
+      "stack": "Error: metal_hellsinger_unknown/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_paz",
+      "mode": "fighter",
+      "side": "player",
+      "error": "metal_hellsinger_paz: physical muzzle differs from native artwork",
+      "stack": "Error: metal_hellsinger_paz: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "metal_hellsinger_paz",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "metal_hellsinger_paz: physical muzzle differs from native artwork",
+      "stack": "Error: metal_hellsinger_paz: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dantes_inferno_dante",
+      "mode": "fighter",
+      "side": "player",
+      "error": "dantes_inferno_dante/fighter/player: no accepted damage",
+      "stack": "Error: dantes_inferno_dante/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dantes_inferno_dante",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "dantes_inferno_dante/fighter/opponent: no accepted damage",
+      "stack": "Error: dantes_inferno_dante/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dantes_inferno_dante",
+      "mode": "melee",
+      "side": "player",
+      "error": "dantes_inferno_dante/melee/player: no accepted damage",
+      "stack": "Error: dantes_inferno_dante/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dantes_inferno_dante",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "dantes_inferno_dante/melee/opponent: no accepted damage",
+      "stack": "Error: dantes_inferno_dante/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "shadow_man_michael_leroi",
+      "mode": "fighter",
+      "side": "player",
+      "error": "shadow_man_michael_leroi: physical muzzle differs from native artwork",
+      "stack": "Error: shadow_man_michael_leroi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "shadow_man_michael_leroi",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "shadow_man_michael_leroi: physical muzzle differs from native artwork",
+      "stack": "Error: shadow_man_michael_leroi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "croc_croc",
+      "mode": "fighter",
+      "side": "player",
+      "error": "croc_croc/fighter/player: no accepted damage",
+      "stack": "Error: croc_croc/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "croc_croc",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "croc_croc/fighter/opponent: no accepted damage",
+      "stack": "Error: croc_croc/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "croc_croc",
+      "mode": "melee",
+      "side": "player",
+      "error": "croc_croc/melee/player: no accepted damage",
+      "stack": "Error: croc_croc/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "croc_croc",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "croc_croc/melee/opponent: no accepted damage",
+      "stack": "Error: croc_croc/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gex_gex",
+      "mode": "fighter",
+      "side": "player",
+      "error": "gex_gex/fighter/player: no accepted damage",
+      "stack": "Error: gex_gex/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gex_gex",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "gex_gex/fighter/opponent: no accepted damage",
+      "stack": "Error: gex_gex/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gex_gex",
+      "mode": "melee",
+      "side": "player",
+      "error": "gex_gex/melee/player: no accepted damage",
+      "stack": "Error: gex_gex/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gex_gex",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "gex_gex/melee/opponent: no accepted damage",
+      "stack": "Error: gex_gex/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "heart_of_darkness_andy",
+      "mode": "fighter",
+      "side": "player",
+      "error": "heart_of_darkness_andy: physical muzzle differs from native artwork",
+      "stack": "Error: heart_of_darkness_andy: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "heart_of_darkness_andy",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "heart_of_darkness_andy: physical muzzle differs from native artwork",
+      "stack": "Error: heart_of_darkness_andy: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rival_schools_batsu",
+      "mode": "fighter",
+      "side": "player",
+      "error": "rival_schools_batsu: physical muzzle differs from native artwork",
+      "stack": "Error: rival_schools_batsu: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rival_schools_batsu",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "rival_schools_batsu: physical muzzle differs from native artwork",
+      "stack": "Error: rival_schools_batsu: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rival_schools_kyosuke",
+      "mode": "fighter",
+      "side": "player",
+      "error": "rival_schools_kyosuke: physical muzzle differs from native artwork",
+      "stack": "Error: rival_schools_kyosuke: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "rival_schools_kyosuke",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "rival_schools_kyosuke: physical muzzle differs from native artwork",
+      "stack": "Error: rival_schools_kyosuke: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "jersey_devil_jersey_devil",
+      "mode": "fighter",
+      "side": "player",
+      "error": "jersey_devil_jersey_devil/fighter/player: no accepted damage",
+      "stack": "Error: jersey_devil_jersey_devil/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "jersey_devil_jersey_devil",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "jersey_devil_jersey_devil/fighter/opponent: no accepted damage",
+      "stack": "Error: jersey_devil_jersey_devil/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "jersey_devil_jersey_devil",
+      "mode": "melee",
+      "side": "player",
+      "error": "jersey_devil_jersey_devil/melee/player: no accepted damage",
+      "stack": "Error: jersey_devil_jersey_devil/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "jersey_devil_jersey_devil",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "jersey_devil_jersey_devil/melee/opponent: no accepted damage",
+      "stack": "Error: jersey_devil_jersey_devil/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "redneck_rampage_leonard",
+      "mode": "fighter",
+      "side": "player",
+      "error": "redneck_rampage_leonard: physical muzzle differs from native artwork",
+      "stack": "Error: redneck_rampage_leonard: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "redneck_rampage_leonard",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "redneck_rampage_leonard: physical muzzle differs from native artwork",
+      "stack": "Error: redneck_rampage_leonard: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "thomas_rogan_hotd",
+      "mode": "fighter",
+      "side": "player",
+      "error": "thomas_rogan_hotd: physical muzzle differs from native artwork",
+      "stack": "Error: thomas_rogan_hotd: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "thomas_rogan_hotd",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "thomas_rogan_hotd: physical muzzle differs from native artwork",
+      "stack": "Error: thomas_rogan_hotd: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "james_taylor_hotd2",
+      "mode": "fighter",
+      "side": "player",
+      "error": "james_taylor_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: james_taylor_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "james_taylor_hotd2",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "james_taylor_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: james_taylor_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gary_stewart_hotd2",
+      "mode": "fighter",
+      "side": "player",
+      "error": "gary_stewart_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: gary_stewart_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "gary_stewart_hotd2",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "gary_stewart_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: gary_stewart_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "amy_crystal_hotd2",
+      "mode": "fighter",
+      "side": "player",
+      "error": "amy_crystal_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: amy_crystal_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "amy_crystal_hotd2",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "amy_crystal_hotd2: physical muzzle differs from native artwork",
+      "stack": "Error: amy_crystal_hotd2: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "lisa_rogan_hotd3",
+      "mode": "fighter",
+      "side": "player",
+      "error": "lisa_rogan_hotd3: physical muzzle differs from native artwork",
+      "stack": "Error: lisa_rogan_hotd3: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "lisa_rogan_hotd3",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "lisa_rogan_hotd3: physical muzzle differs from native artwork",
+      "stack": "Error: lisa_rogan_hotd3: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dan_taylor_hotd3",
+      "mode": "fighter",
+      "side": "player",
+      "error": "dan_taylor_hotd3: physical muzzle differs from native artwork",
+      "stack": "Error: dan_taylor_hotd3: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "dan_taylor_hotd3",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "dan_taylor_hotd3: physical muzzle differs from native artwork",
+      "stack": "Error: dan_taylor_hotd3: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bioshock_rapture_bouncer",
+      "mode": "fighter",
+      "side": "player",
+      "error": "bioshock_rapture_bouncer/fighter/player: no accepted damage",
+      "stack": "Error: bioshock_rapture_bouncer/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bioshock_rapture_bouncer",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "bioshock_rapture_bouncer/fighter/opponent: no accepted damage",
+      "stack": "Error: bioshock_rapture_bouncer/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bioshock_rapture_bouncer",
+      "mode": "melee",
+      "side": "player",
+      "error": "bioshock_rapture_bouncer/melee/player: no accepted damage",
+      "stack": "Error: bioshock_rapture_bouncer/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bioshock_rapture_bouncer",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "bioshock_rapture_bouncer/melee/opponent: no accepted damage",
+      "stack": "Error: bioshock_rapture_bouncer/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_sas",
+      "mode": "fighter",
+      "side": "player",
+      "error": "counter_strike_sas: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_sas: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_sas",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "counter_strike_sas: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_sas: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_gign",
+      "mode": "fighter",
+      "side": "player",
+      "error": "counter_strike_gign: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_gign: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_gign",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "counter_strike_gign: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_gign: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_fbi",
+      "mode": "fighter",
+      "side": "player",
+      "error": "counter_strike_fbi: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_fbi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "counter_strike_fbi",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "counter_strike_fbi: physical muzzle differs from native artwork",
+      "stack": "Error: counter_strike_fbi: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_scout",
+      "mode": "fighter",
+      "side": "player",
+      "error": "team_fortress_2_scout: physical muzzle differs from native artwork",
+      "stack": "Error: team_fortress_2_scout: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_scout",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "team_fortress_2_scout: physical muzzle differs from native artwork",
+      "stack": "Error: team_fortress_2_scout: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_soldier",
+      "mode": "fighter",
+      "side": "player",
+      "error": "team_fortress_2_soldier: physical muzzle differs from native artwork",
+      "stack": "Error: team_fortress_2_soldier: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_soldier",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "team_fortress_2_soldier: physical muzzle differs from native artwork",
+      "stack": "Error: team_fortress_2_soldier: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_medic",
+      "mode": "fighter",
+      "side": "player",
+      "error": "team_fortress_2_medic/fighter/player: rejected source cast",
+      "stack": "Error: team_fortress_2_medic/fighter/player: rejected source cast\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:223:4)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "team_fortress_2_medic",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "team_fortress_2_medic/fighter/opponent: rejected source cast",
+      "stack": "Error: team_fortress_2_medic/fighter/opponent: rejected source cast\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:223:4)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_skye_autumn",
+      "mode": "fighter",
+      "side": "player",
+      "error": "sanctum_skye_autumn: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_skye_autumn: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_skye_autumn",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "sanctum_skye_autumn: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_skye_autumn: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_sweet_autumn",
+      "mode": "fighter",
+      "side": "player",
+      "error": "sanctum_sweet_autumn: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_sweet_autumn: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_sweet_autumn",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "sanctum_sweet_autumn: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_sweet_autumn: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_simo",
+      "mode": "fighter",
+      "side": "player",
+      "error": "sanctum_simo: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_simo: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "sanctum_simo",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "sanctum_simo: physical muzzle differs from native artwork",
+      "stack": "Error: sanctum_simo: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_jacket",
+      "mode": "fighter",
+      "side": "player",
+      "error": "hotline_miami_jacket/fighter/player: no accepted damage",
+      "stack": "Error: hotline_miami_jacket/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_jacket",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "hotline_miami_jacket/fighter/opponent: no accepted damage",
+      "stack": "Error: hotline_miami_jacket/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_jacket",
+      "mode": "melee",
+      "side": "player",
+      "error": "hotline_miami_jacket/melee/player: no accepted damage",
+      "stack": "Error: hotline_miami_jacket/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_jacket",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "hotline_miami_jacket/melee/opponent: no accepted damage",
+      "stack": "Error: hotline_miami_jacket/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_biker",
+      "mode": "fighter",
+      "side": "player",
+      "error": "hotline_miami_biker/fighter/player: no accepted damage",
+      "stack": "Error: hotline_miami_biker/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_biker",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "hotline_miami_biker/fighter/opponent: no accepted damage",
+      "stack": "Error: hotline_miami_biker/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_biker",
+      "mode": "melee",
+      "side": "player",
+      "error": "hotline_miami_biker/melee/player: no accepted damage",
+      "stack": "Error: hotline_miami_biker/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_biker",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "hotline_miami_biker/melee/opponent: no accepted damage",
+      "stack": "Error: hotline_miami_biker/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_richter",
+      "mode": "fighter",
+      "side": "player",
+      "error": "hotline_miami_richter: physical muzzle differs from native artwork",
+      "stack": "Error: hotline_miami_richter: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "hotline_miami_richter",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "hotline_miami_richter: physical muzzle differs from native artwork",
+      "stack": "Error: hotline_miami_richter: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_lee_everett",
+      "mode": "fighter",
+      "side": "player",
+      "error": "walking_dead_telltale_lee_everett/fighter/player: no accepted damage",
+      "stack": "Error: walking_dead_telltale_lee_everett/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_lee_everett",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "walking_dead_telltale_lee_everett/fighter/opponent: no accepted damage",
+      "stack": "Error: walking_dead_telltale_lee_everett/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_lee_everett",
+      "mode": "melee",
+      "side": "player",
+      "error": "walking_dead_telltale_lee_everett/melee/player: no accepted damage",
+      "stack": "Error: walking_dead_telltale_lee_everett/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_lee_everett",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "walking_dead_telltale_lee_everett/melee/opponent: no accepted damage",
+      "stack": "Error: walking_dead_telltale_lee_everett/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "clementine_final_season",
+      "mode": "fighter",
+      "side": "player",
+      "error": "clementine_final_season/fighter/player: no accepted damage",
+      "stack": "Error: clementine_final_season/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "clementine_final_season",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "clementine_final_season/fighter/opponent: no accepted damage",
+      "stack": "Error: clementine_final_season/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "clementine_final_season",
+      "mode": "melee",
+      "side": "player",
+      "error": "clementine_final_season/melee/player: no accepted damage",
+      "stack": "Error: clementine_final_season/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "clementine_final_season",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "clementine_final_season/melee/opponent: no accepted damage",
+      "stack": "Error: clementine_final_season/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_kenny",
+      "mode": "fighter",
+      "side": "player",
+      "error": "walking_dead_telltale_kenny/fighter/player: no accepted damage",
+      "stack": "Error: walking_dead_telltale_kenny/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_kenny",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "walking_dead_telltale_kenny/fighter/opponent: no accepted damage",
+      "stack": "Error: walking_dead_telltale_kenny/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_kenny",
+      "mode": "melee",
+      "side": "player",
+      "error": "walking_dead_telltale_kenny/melee/player: no accepted damage",
+      "stack": "Error: walking_dead_telltale_kenny/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "walking_dead_telltale_kenny",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "walking_dead_telltale_kenny/melee/opponent: no accepted damage",
+      "stack": "Error: walking_dead_telltale_kenny/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "fighter",
+      "side": "player",
+      "error": "crypt_necrodancer_cadence/fighter/player: no accepted damage",
+      "stack": "Error: crypt_necrodancer_cadence/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "crypt_necrodancer_cadence/fighter/opponent: no accepted damage",
+      "stack": "Error: crypt_necrodancer_cadence/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "melee",
+      "side": "player",
+      "error": "crypt_necrodancer_cadence/melee/player: no accepted damage",
+      "stack": "Error: crypt_necrodancer_cadence/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "crypt_necrodancer_cadence/melee/opponent: no accepted damage",
+      "stack": "Error: crypt_necrodancer_cadence/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "nemesis_awaken_realms_soldier",
+      "mode": "fighter",
+      "side": "player",
+      "error": "nemesis_awaken_realms_soldier: physical muzzle differs from native artwork",
+      "stack": "Error: nemesis_awaken_realms_soldier: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "nemesis_awaken_realms_soldier",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "nemesis_awaken_realms_soldier: physical muzzle differs from native artwork",
+      "stack": "Error: nemesis_awaken_realms_soldier: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_windfall",
+      "mode": "fighter",
+      "side": "player",
+      "error": "absolver_downfall_windfall/fighter/player: no accepted damage",
+      "stack": "Error: absolver_downfall_windfall/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_windfall",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "absolver_downfall_windfall/fighter/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_windfall/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_windfall",
+      "mode": "melee",
+      "side": "player",
+      "error": "absolver_downfall_windfall/melee/player: no accepted damage",
+      "stack": "Error: absolver_downfall_windfall/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_windfall",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "absolver_downfall_windfall/melee/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_windfall/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_khalt",
+      "mode": "fighter",
+      "side": "player",
+      "error": "absolver_downfall_khalt/fighter/player: no accepted damage",
+      "stack": "Error: absolver_downfall_khalt/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_khalt",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "absolver_downfall_khalt/fighter/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_khalt/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_khalt",
+      "mode": "melee",
+      "side": "player",
+      "error": "absolver_downfall_khalt/melee/player: no accepted damage",
+      "stack": "Error: absolver_downfall_khalt/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_khalt",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "absolver_downfall_khalt/melee/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_khalt/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_forsaken",
+      "mode": "fighter",
+      "side": "player",
+      "error": "absolver_downfall_forsaken/fighter/player: no accepted damage",
+      "stack": "Error: absolver_downfall_forsaken/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_forsaken",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "absolver_downfall_forsaken/fighter/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_forsaken/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_forsaken",
+      "mode": "melee",
+      "side": "player",
+      "error": "absolver_downfall_forsaken/melee/player: no accepted damage",
+      "stack": "Error: absolver_downfall_forsaken/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "absolver_downfall_forsaken",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "absolver_downfall_forsaken/melee/opponent: no accepted damage",
+      "stack": "Error: absolver_downfall_forsaken/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "atomic_heart_granny_zina",
+      "mode": "fighter",
+      "side": "player",
+      "error": "atomic_heart_granny_zina: physical muzzle differs from native artwork",
+      "stack": "Error: atomic_heart_granny_zina: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "atomic_heart_granny_zina",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "atomic_heart_granny_zina: physical muzzle differs from native artwork",
+      "stack": "Error: atomic_heart_granny_zina: physical muzzle differs from native artwork\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at engine.spawnProjectile (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:198:7)\n    at EngineFighter.resolveFighterActionImpactWave16 (http://127.0.0.1:5192/src/game/engineFighter.js:1053:151)\n    at http://127.0.0.1:5192/src/game/engineFighter.js:987:10\n    at Array.forEach (<anonymous>)\n    at EngineFighter.updateActions (http://127.0.0.1:5192/src/game/engineFighter.js:940:21)\n    at EngineFighter.update (http://127.0.0.1:5192/src/game/engineFighter.js:765:8)\n    at advance (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:251:36)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:396:40)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_henry",
+      "mode": "fighter",
+      "side": "player",
+      "error": "bendy_ink_machine_henry/fighter/player: no accepted damage",
+      "stack": "Error: bendy_ink_machine_henry/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_henry",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "bendy_ink_machine_henry/fighter/opponent: no accepted damage",
+      "stack": "Error: bendy_ink_machine_henry/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_henry",
+      "mode": "melee",
+      "side": "player",
+      "error": "bendy_ink_machine_henry/melee/player: no accepted damage",
+      "stack": "Error: bendy_ink_machine_henry/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_henry",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "bendy_ink_machine_henry/melee/opponent: no accepted damage",
+      "stack": "Error: bendy_ink_machine_henry/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_allison",
+      "mode": "fighter",
+      "side": "player",
+      "error": "bendy_ink_machine_allison/fighter/player: no accepted damage",
+      "stack": "Error: bendy_ink_machine_allison/fighter/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_allison",
+      "mode": "fighter",
+      "side": "opponent",
+      "error": "bendy_ink_machine_allison/fighter/opponent: no accepted damage",
+      "stack": "Error: bendy_ink_machine_allison/fighter/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_allison",
+      "mode": "melee",
+      "side": "player",
+      "error": "bendy_ink_machine_allison/melee/player: no accepted damage",
+      "stack": "Error: bendy_ink_machine_allison/melee/player: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    },
+    {
+      "id": "bendy_ink_machine_allison",
+      "mode": "melee",
+      "side": "opponent",
+      "error": "bendy_ink_machine_allison/melee/opponent: no accepted damage",
+      "stack": "Error: bendy_ink_machine_allison/melee/opponent: no accepted damage\n    at must (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:16:20)\n    at runWave17RuntimeCases (http://127.0.0.1:5192/docs/combat-fidelity-wave17-2026-11-02/browser/runtime-cases.js:510:37)\n    at async <anonymous>:337:30"
+    }
+  ],
+  "errors": [],
+  "requests": []
+}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+false !== true
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/browser/native-super-runtime.browser.mjs:53:8 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

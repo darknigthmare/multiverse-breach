@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact unqualified production metadata when the seven published private identity-image sets are unavailable. Test contract only; never a source image, identity authority or fidelity approval.",
+  "notIdentityAuthority": true,
+  "expectedFields": [
+    "incarnation",
+    "identityLock",
+    "equipment",
+    "sourceRefs",
+    "evidenceStatus",
+    "missing",
+    "visualFidelityApproved"
+  ],
+  "heroInputFields": [
+    "id",
+    "incarnation",
+    "visualAnchor",
+    "equipment",
+    "referenceUrls",
+    "referenceUrl"
+  ],
+  "dossierLockInputFields": [
+    "incarnation",
+    "visualAnchor",
+    "equipment",
+    "referenceUrls"
+  ],
+  "origin": {
+    "readOnlyFreshCheckoutDiagnosticSha256": "13ea460eac808e1b38e0a7daa544436b781c6fb9dce9544729a6c316bc1d8c6f",
+    "valuesCapturedBeforeRiftCandidateResync": true,
+    "expectedValuesNotGeneratedByTheCurrentBuilder": true
+  },
+  "cases": {
+    "predator": {
+      "expectedIdentity": {
+        "incarnation": "Predator (1987) - Jungle Hunter",
+        "identityLock": "The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.",
+        "equipment": [
+          "Wristblades",
+          "Shoulder plasma caster",
+          "Biomask",
+          "Cloaking device"
+        ],
+        "sourceRefs": [
+          "https://www.20thcenturystudios.com/movies/predator",
+          "https://www.20thcenturystudios.com/movies/predators"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "e53316c2b326e7ed84c92e146c50fdbf6389685d04615401bdba97c15a168ead",
+      "sourceInputs": {
+        "hero": {
+          "id": "predator",
+          "incarnation": "Predator (1987) - Jungle Hunter",
+          "visualAnchor": "The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.",
+          "equipment": [
+            "Wristblades",
+            "Shoulder plasma caster",
+            "Biomask",
+            "Cloaking device"
+          ],
+          "referenceUrl": "https://www.20thcenturystudios.com/movies/predator"
+        },
+        "dossier": {
+          "id": 9205,
+          "lockPresent": true,
+          "verrouSourcePersonnage": {
+            "incarnation": "Predator (1987) - Jungle Hunter",
+            "visualAnchor": "The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.",
+            "equipment": [
+              "Wristblades",
+              "Shoulder plasma caster",
+              "Biomask",
+              "Cloaking device"
+            ],
+            "referenceUrls": [
+              "https://www.20thcenturystudios.com/movies/predator"
+            ]
+          },
+          "referenceUrls": [
+            "https://www.20thcenturystudios.com/movies/predator",
+            "https://www.20thcenturystudios.com/movies/predators"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "16121885e196173219ed5e5ccebf4184935475abcbe6cc28e3de595441614bc8",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/predator-reference-evidence-wave12-2026-11-01.json",
+          "sha256": "01b4a281039e7dc813927ebf46da7265e6919234bf81f85731c1dcebbb24c011"
+        }
+      ]
+    },
+    "miku": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://magicalmirai.com/"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "82e26dd126e217c83fd83dd367d4bf0fefe07baff49f2ad294bc76c3c7583d07",
+      "sourceInputs": {
+        "hero": {
+          "id": "miku"
+        },
+        "dossier": {
+          "id": 9314,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://magicalmirai.com/"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "c830b394e056a00d2a969c104d7d6d5e67fabb84ee8163cc0698b05524103c32",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/miku-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "4f6ee503ff3fc9bf3c641ccb2850107f96cda7ae0a606ed05169159027a0d7a7"
+        }
+      ]
+    },
+    "noble_six": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://news.xbox.com/en-us/2021/12/08/halo-infinite-available-now-with-xbox-game-pass/",
+          "https://news.xbox.com/en-us/2025/10/24/halo-campaign-evolved-answering-the-big-questions/"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "693c3f85b600a4aeb172378466a966ff336324640a395f97f89b2fb8413070d0",
+      "sourceInputs": {
+        "hero": {
+          "id": "noble_six"
+        },
+        "dossier": {
+          "id": 9346,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://news.xbox.com/en-us/2021/12/08/halo-infinite-available-now-with-xbox-game-pass/",
+            "https://news.xbox.com/en-us/2025/10/24/halo-campaign-evolved-answering-the-big-questions/"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "2ad1b828f8bf59c98464c4d023b5dbee4b108562a105d8d7f2d7731a5c88c0bc",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/noble-six-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "5874ae28f1ffb2967be976f8fc70b521bfc727d11af63ed299f1698c61f0e149"
+        }
+      ]
+    },
+    "buck": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://news.xbox.com/en-us/2021/12/08/halo-infinite-available-now-with-xbox-game-pass/",
+          "https://news.xbox.com/en-us/2025/10/24/halo-campaign-evolved-answering-the-big-questions/"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "693c3f85b600a4aeb172378466a966ff336324640a395f97f89b2fb8413070d0",
+      "sourceInputs": {
+        "hero": {
+          "id": "buck"
+        },
+        "dossier": {
+          "id": 9351,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://news.xbox.com/en-us/2021/12/08/halo-infinite-available-now-with-xbox-game-pass/",
+            "https://news.xbox.com/en-us/2025/10/24/halo-campaign-evolved-answering-the-big-questions/"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "06a974a290d3f4ffec68d38c720cd6f0192cd43555d9b7d9f6b69756d5ff187d",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/buck-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "321c5c5ee9976e1bd0fed18191fbf12b622e6c3ebcd7158050b362c7f66c85cb"
+        }
+      ]
+    },
+    "sam_carter": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://www.mgm.com/franchise/stargate"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "6aecf85ee8d5ac7130f6f0885ed9003ba0256b398623fb24b7630a844101e893",
+      "sourceInputs": {
+        "hero": {
+          "id": "sam_carter"
+        },
+        "dossier": {
+          "id": 9218,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://www.mgm.com/franchise/stargate"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "dcbd123174fe6a83ff01c78e7d74f5cbd59f3c639c77ec9e9002314eee22df69",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/sam-carter-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "128bede9e49dd843bc19be8a78735eec537bdfba98eaed8c4a889f436c636ca2"
+        }
+      ]
+    },
+    "rin": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://magicalmirai.com/"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "82e26dd126e217c83fd83dd367d4bf0fefe07baff49f2ad294bc76c3c7583d07",
+      "sourceInputs": {
+        "hero": {
+          "id": "rin"
+        },
+        "dossier": {
+          "id": 9426,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://magicalmirai.com/"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "0b175cf69c441f9b0683397ce595f4ca38d54ab08bda3e1789cdfc9d50e6c81a",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/rin-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "ed50aef0aee0e2496f5f12af89837b8cfbd24e254697063a01d825cc851d522c"
+        }
+      ]
+    },
+    "meiko": {
+      "expectedIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://magicalmirai.com/"
+        ],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false
+      },
+      "expectedIdentitySha256": "82e26dd126e217c83fd83dd367d4bf0fefe07baff49f2ad294bc76c3c7583d07",
+      "sourceInputs": {
+        "hero": {
+          "id": "meiko"
+        },
+        "dossier": {
+          "id": 9429,
+          "lockPresent": false,
+          "verrouSourcePersonnage": null,
+          "referenceUrls": [
+            "https://magicalmirai.com/"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceInputsSha256": "eddd3bc52150dfe758b114ad0cd856d18f4e8711c5b33ba80109e5b085d5f68f",
+      "publicSourceReceipts": [
+        {
+          "path": "docs/cg/meiko-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "0bb2a05779a128c18dcdb317ad010f1c1de5260b0e63d5d6ff3901439d0f4fee"
+        }
+      ]
+    }
+  }
+}

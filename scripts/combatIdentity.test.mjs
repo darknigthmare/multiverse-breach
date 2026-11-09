@@ -60,7 +60,8 @@ test('every roster hero has a finite super sourced from its own universe', () =>
       const expected = {
         borderlands_2_maya_phaselock: ['Borderlands 2', 'Phaselock de Maya', 'phaselock', 2.4],
         oddworld_abe_possession: ['Oddworld', 'Chant de possession d’Abe', 'possession', 2],
-        akane_tsunemori: ['Psycho-Pass', 'Dominator — Non-Lethal Paralyzer', 'paralyzer', 1.5]
+        akane_tsunemori: ['Psycho-Pass', 'Dominator — Non-Lethal Paralyzer', 'paralyzer', 1.5],
+        tail_concerto_waffle: ['Tail Concerto', 'Bulle de capture du Police Robo', 'bubble-capture', 1.25]
       }[actor.id];
       assert.ok(expected, actor.id + ': undeclared source control');
       assert.equal(profile.universe, expected[0]);
@@ -79,6 +80,14 @@ test('every roster hero has a finite super sourced from its own universe', () =>
       if (actor.id === 'akane_tsunemori') {
         assert.equal(profile.authorization, 'sibyl-s1e21-exception');
         assert.equal(profile.requiresExplicitTargetEligibility, true);
+      }
+      if (actor.id === 'tail_concerto_waffle') {
+        assert.equal(profile.requiresExplicitTargetEligibility, true);
+        assert.equal(profile.nonlethal, true);
+        assert.equal(profile.sourceAbility.targeting.nonlethal, true);
+        assert.equal(profile.sourceAbility.sourceControlKind, 'waffle-bubble-capture');
+        assert.equal(profile.sourceAbility.targeting.tacticsTurns, 1);
+        assert.equal(profile.range, 260);
       }
     }
   }

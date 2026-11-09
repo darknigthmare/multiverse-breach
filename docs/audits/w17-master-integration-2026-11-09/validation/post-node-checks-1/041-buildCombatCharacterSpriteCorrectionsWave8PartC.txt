@@ -1,0 +1,21 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'Taille de L’Étranger'
+- 'L’Étranger Polearm Thrust'
+
+    at buildNativeWave8PartC (file:///workspace/multiverse-breach/scripts/buildCombatCharacterAnimationsWave8PartC.mjs:80:14)
+    at async file:///workspace/multiverse-breach/scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs:3:28 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'Taille de L’Étranger',
+  expected: 'L’Étranger Polearm Thrust',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

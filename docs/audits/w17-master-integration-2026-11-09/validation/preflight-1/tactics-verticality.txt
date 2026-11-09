@@ -1,0 +1,3474 @@
+
+> lively-darwin@0.0.0 test:tactics-verticality
+> node --test --test-concurrency=1 scripts/tacticsTerrain.test.mjs scripts/tacticsTerrainRenderer.test.mjs scripts/tacticsVerticalityUi.test.mjs scripts/tacticsVerticalIntegration.test.mjs scripts/tacticsVerticalEffects.test.mjs scripts/tacticsVerticalReview.test.mjs scripts/tacticsUniverseBattlefields.test.mjs scripts/tacticsUniversePresentation.test.mjs scripts/tacticsUniverseRouting.test.mjs scripts/tacticsUniverseRuntime.test.mjs scripts/tacticsUniverseWave15.test.mjs scripts/tacticsUniverseWave15Presentation.test.mjs scripts/tacticsUniverseWave15Routing.test.mjs scripts/tacticsUniverseWave15Runtime.test.mjs scripts/tacticsPhaselockWave15.test.mjs scripts/tacticsValHealingWave15.test.mjs scripts/tacticsUniverseWave16.test.mjs scripts/tacticsUniversePresentationWave16.test.mjs scripts/tacticsUniverseRoutingWave16.test.mjs scripts/tacticsUniverseRuntimeWave16.test.mjs scripts/tacticsSourceRuntimeWave16.test.mjs scripts/tacticsUniverseWave17.test.mjs scripts/tacticsUniversePresentationWave17.test.mjs scripts/tacticsUniverseRoutingWave17.test.mjs scripts/tacticsUniverseRuntimeWave17.test.mjs
+
+TAP version 13
+# Subtest: training_grid/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 1 - training_grid/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 23913.462648
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 2 - training_grid/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 22.708964
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 3 - training_grid/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 28.431824
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: paused contact has no effect or charge and resumes through the real command
+ok 4 - training_grid/hero: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 4.305882
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 5 - training_grid/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 18.604595
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 6 - training_grid/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 5.56289
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 7 - training_grid/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 9.225477
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 8 - training_grid/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 8.642232
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 9 - training_grid/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 32.41967
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: paused contact has no effect or charge and resumes through the real command
+ok 10 - training_grid/enemy: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 6.328388
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 11 - training_grid/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 28.758024
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 12 - training_grid/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 4.482327
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 13 - nexus_skybridge/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 11.238808
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 14 - nexus_skybridge/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 16.362079
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 15 - nexus_skybridge/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 22.956827
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: paused contact has no effect or charge and resumes through the real command
+ok 16 - nexus_skybridge/hero: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 2.638781
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 17 - nexus_skybridge/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 9.681361
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 18 - nexus_skybridge/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 6.237602
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 19 - nexus_skybridge/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 2.729236
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 20 - nexus_skybridge/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 7.670422
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 21 - nexus_skybridge/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 14.81717
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: paused contact has no effect or charge and resumes through the real command
+ok 22 - nexus_skybridge/enemy: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 2.256487
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 23 - nexus_skybridge/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 16.806335
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 24 - nexus_skybridge/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 2.05174
+  type: 'test'
+  ...
+# Subtest: vertical/hero: opaque slabs and real 3D range reject Phaselock without taking charge
+ok 25 - vertical/hero: opaque slabs and real 3D range reject Phaselock without taking charge
+  ---
+  duration_ms: 3.060524
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: opaque slabs and real 3D range reject Phaselock without taking charge
+ok 26 - vertical/enemy: opaque slabs and real 3D range reject Phaselock without taking charge
+  ---
+  duration_ms: 2.672612
+  type: 'test'
+  ...
+# Subtest: vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses
+ok 27 - vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses
+  ---
+  duration_ms: 4.020114
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses
+ok 28 - vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses
+  ---
+  duration_ms: 1.644959
+  type: 'test'
+  ...
+# Subtest: vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body
+ok 29 - vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 14.084309
+  type: 'test'
+  ...
+# Subtest: vertical/hero: real Maya AI special pays the authored cost and restrains its opposing body
+ok 30 - vertical/hero: real Maya AI special pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 7.081218
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body
+ok 31 - vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 6.190742
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body
+ok 32 - vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 10.496644
+  type: 'test'
+  ...
+# Subtest: vertical/hero: conventional AI retains its prior damage action and resource rules
+ok 33 - vertical/hero: conventional AI retains its prior damage action and resource rules
+  ---
+  duration_ms: 6.983972
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: conventional AI retains its prior damage action and resource rules
+ok 34 - vertical/enemy: conventional AI retains its prior damage action and resource rules
+  ---
+  duration_ms: 9.565607
+  type: 'test'
+  ...
+# Subtest: vertical Phaselock interrupts a real in-progress route at an actual support and never fires its old completion
+ok 35 - vertical Phaselock interrupts a real in-progress route at an actual support and never fires its old completion
+  ---
+  duration_ms: 3.875788
+  type: 'test'
+  ...
+# Subtest: Phaselock is an opt-in Maya control; conventional fixture damage keeps its normal combat profile
+ok 36 - Phaselock is an opt-in Maya control; conventional fixture damage keeps its normal combat profile
+  ---
+  duration_ms: 0.933902
+  type: 'test'
+  ...
+# Subtest: the held-body marker draws finite geometry at the actual support without changing control, HP or coordinates
+ok 37 - the held-body marker draws finite geometry at the actual support without changing control, HP or coordinates
+  ---
+  duration_ms: 0.639089
+  type: 'test'
+  ...
+# {"passed":true,"cases":68}
+# Subtest: W16 Tactics typed source mechanics: production-command fixtures
+ok 38 - W16 Tactics typed source mechanics: production-command fixtures
+  ---
+  duration_ms: 26417.376271
+  type: 'test'
+  ...
+# Subtest: legacy high tiles keep their flat altitude and declared terrain costs
+ok 39 - legacy high tiles keep their flat altitude and declared terrain costs
+  ---
+  duration_ms: 2.451075
+  type: 'test'
+  ...
+# Subtest: bridge and lower floor retain distinct identities and ambiguous XY is refused
+ok 40 - bridge and lower floor retain distinct identities and ambiguous XY is refused
+  ---
+  duration_ms: 2.56927
+  type: 'test'
+  ...
+# Subtest: ascending to the skybridge follows the authored staircase and spends its exact cost
+ok 41 - ascending to the skybridge follows the authored staircase and spends its exact cost
+  ---
+  duration_ms: 9.034446
+  type: 'test'
+  ...
+# Subtest: a weighted alternate route relaxes costs rather than locking the first visited node
+ok 42 - a weighted alternate route relaxes costs rather than locking the first visited node
+  ---
+  duration_ms: 0.494499
+  type: 'test'
+  ...
+# Subtest: the same material or layer name does not connect separated elevations
+ok 43 - the same material or layer name does not connect separated elevations
+  ---
+  duration_ms: 0.187971
+  type: 'test'
+  ...
+# Subtest: jumping is a declared movement capability and a walk link cannot teleport
+ok 44 - jumping is a declared movement capability and a walk link cannot teleport
+  ---
+  duration_ms: 0.512906
+  type: 'test'
+  ...
+# Subtest: a unit under a bridge occupies the lower surface without blocking its deck
+ok 45 - a unit under a bridge occupies the lower surface without blocking its deck
+  ---
+  duration_ms: 1.823406
+  type: 'test'
+  ...
+# Subtest: headroom tests the thin bridge underside and large footprints require actual support
+ok 46 - headroom tests the thin bridge underside and large footprints require actual support
+  ---
+  duration_ms: 0.708098
+  type: 'test'
+  ...
+# Subtest: sight passes below and above a bridge, while its actual slab blocks an inter-floor shot
+ok 47 - sight passes below and above a bridge, while its actual slab blocks an inter-floor shot
+  ---
+  duration_ms: 1.428456
+  type: 'test'
+  ...
+# Subtest: obstacles and intervening units block only the height occupied by their real volume
+ok 48 - obstacles and intervening units block only the height occupied by their real volume
+  ---
+  duration_ms: 1.172272
+  type: 'test'
+  ...
+# Subtest: ramp and stair heights agree with the drawn slope and four physical treads
+ok 49 - ramp and stair heights agree with the drawn slope and four physical treads
+  ---
+  duration_ms: 1.119203
+  type: 'test'
+  ...
+# Subtest: attack distance and height advantage use Z rather than the screen row
+ok 50 - attack distance and height advantage use Z rather than the screen row
+  ---
+  duration_ms: 0.939094
+  type: 'test'
+  ...
+# Subtest: malformed and duplicate surface definitions fail before a battle can use them
+ok 51 - malformed and duplicate surface definitions fail before a battle can use them
+  ---
+  duration_ms: 0.271366
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge has real access routes, bound resources and room for two-by-two bosses
+ok 52 - nexus_skybridge has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 1.841413
+  type: 'test'
+  ...
+# Subtest: ruined_terraces has real access routes, bound resources and room for two-by-two bosses
+ok 53 - ruined_terraces has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 1.481054
+  type: 'test'
+  ...
+# Subtest: cyber_catwalks has real access routes, bound resources and room for two-by-two bosses
+ok 54 - cyber_catwalks has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 5.125612
+  type: 'test'
+  ...
+# Subtest: terrain corners, ramp heights and inset selection share the supplied camera projection
+ok 55 - terrain corners, ramp heights and inset selection share the supplied camera projection
+  ---
+  duration_ms: 2.183344
+  type: 'test'
+  ...
+# Subtest: an elevated bridge has only its thin fascia and distinct underside, leaving the passage empty
+ok 56 - an elevated bridge has only its thin fascia and distinct underside, leaving the passage empty
+  ---
+  duration_ms: 1.455245
+  type: 'test'
+  ...
+# Subtest: only the exposed interval of a cliff is drawn beside solid ground or an adjacent thin slab
+ok 57 - only the exposed interval of a cliff is drawn beside solid ground or an adjacent thin slab
+  ---
+  duration_ms: 1.795464
+  type: 'test'
+  ...
+# Subtest: material joins follow touching elevations and never join a bridge to a lower floor
+ok 58 - material joins follow touching elevations and never join a bridge to a lower floor
+  ---
+  duration_ms: 0.144647
+  type: 'test'
+  ...
+# Subtest: stairs use separate horizontal treads and closed stepped side walls rather than one sloping image
+ok 59 - stairs use separate horizontal treads and closed stepped side walls rather than one sloping image
+  ---
+  duration_ms: 0.606487
+  type: 'test'
+  ...
+# Subtest: picking chooses the visible bridge, rejects foreground walls and exposes the floor under a level cut
+ok 60 - picking chooses the visible bridge, rejects foreground walls and exposes the floor under a level cut
+  ---
+  duration_ms: 0.580017
+  type: 'test'
+  ...
+# Subtest: the shared painter graph masks an actor under the bridge while keeping its upper actor visible
+ok 61 - the shared painter graph masks an actor under the bridge while keeping its upper actor visible
+  ---
+  duration_ms: 0.80916
+  type: 'test'
+  ...
+# Subtest: surface overlays execute inside terrain ordering before a higher bridge and its actor
+ok 62 - surface overlays execute inside terrain ordering before a higher bridge and its actor
+  ---
+  duration_ms: 3.769636
+  type: 'test'
+  ...
+# Subtest: cover edges are visible open railings ordered behind and in front of the standing actor
+ok 63 - cover edges are visible open railings ordered behind and in front of the standing actor
+  ---
+  duration_ms: 1.414625
+  type: 'test'
+  ...
+# Subtest: eight exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 64 - eight exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 1.400394
+  type: 'test'
+  ...
+# Subtest: the eight sector topologies differ from each other and the earlier Nexus boards without relying on palette or IDs
+ok 65 - the eight sector topologies differ from each other and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 2.73624
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 66 - ff7_mt_nibel_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 94.741899
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 67 - ff13_archylte_steppe_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 41.737072
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 68 - ff15_vesperpool_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 29.254512
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 69 - lotr_caradhras_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 42.988544
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 70 - lotr_ithilien_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 36.682576
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 71 - darksouls_darkroot_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 26.712482
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 72 - masseffect_therum_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 25.341813
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 73 - halo_valhalla_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 40.949085
+  type: 'test'
+  ...
+# Subtest: Mt. Nibel has two real approaches and a thin maintenance bridge above a traversable floor
+ok 74 - Mt. Nibel has two real approaches and a thin maintenance bridge above a traversable floor
+  ---
+  duration_ms: 4.102723
+  type: 'test'
+  ...
+# Subtest: Archylte has negative-altitude travel, two accessible fords and actual cliff occlusion
+ok 75 - Archylte has negative-altitude travel, two accessible fords and actual cliff occlusion
+  ---
+  duration_ms: 2.632095
+  type: 'test'
+  ...
+# Subtest: Vesperpool deep water stays blocked while a broad costly ford admits a body that cannot use the narrow boardwalk
+ok 76 - Vesperpool deep water stays blocked while a broad costly ford admits a body that cannot use the narrow boardwalk
+  ---
+  duration_ms: 4.383933
+  type: 'test'
+  ...
+# Subtest: Caradhras has snow costs, an opaque mountain wall and a usable broad lower pass
+ok 77 - Caradhras has snow costs, an opaque mountain wall and a usable broad lower pass
+  ---
+  duration_ms: 1.791628
+  type: 'test'
+  ...
+# Subtest: Ithilien tree cover is a real sight blocker and the ravine crossing preserves two altitudes
+ok 78 - Ithilien tree cover is a real sight blocker and the ravine crossing preserves two altitudes
+  ---
+  duration_ms: 0.870521
+  type: 'test'
+  ...
+# Subtest: Darkroot objectives require the courtyard floor and the upper perimeter instead of a single flat destination
+ok 79 - Darkroot objectives require the courtyard floor and the upper perimeter instead of a single flat destination
+  ---
+  duration_ms: 3.320975
+  type: 'test'
+  ...
+# Subtest: Therum lava cannot become a walking tile and each relay has a legal, visible attack approach
+ok 80 - Therum lava cannot become a walking tile and each relay has a legal, visible attack approach
+  ---
+  duration_ms: 1.91991
+  type: 'test'
+  ...
+# Subtest: Valhalla offers costly shallow-water crossing and a separately reached Forerunner ridge
+ok 81 - Valhalla offers costly shallow-water crossing and a separately reached Forerunner ridge
+  ---
+  duration_ms: 2.725665
+  type: 'test'
+  ...
+# Subtest: the eight source sectors have dedicated deterministic environments with distinct geometry and no image reuse
+ok 82 - the eight source sectors have dedicated deterministic environments with distinct geometry and no image reuse
+  ---
+  duration_ms: 22.139325
+  type: 'test'
+  ...
+# Subtest: source-specific routes remain Tactics-only and malformed explicit source profiles are rejected
+ok 83 - source-specific routes remain Tactics-only and malformed explicit source profiles are rejected
+  ---
+  duration_ms: 0.377073
+  type: 'test'
+  ...
+# Subtest: legacy and Nexus Tactics boards receive honest original environments without changing their geometry
+ok 84 - legacy and Nexus Tactics boards receive honest original environments without changing their geometry
+  ---
+  duration_ms: 1.272362
+  type: 'test'
+  ...
+# Subtest: legacy cell art uses standalone Tactics tile atlases, with no shared full scene or other-engine tile path
+ok 85 - legacy cell art uses standalone Tactics tile atlases, with no shared full scene or other-engine tile path
+  ---
+  duration_ms: 1.408655
+  type: 'test'
+  ...
+# Subtest: forced base and suppressed DLC environments use only the Nexus profile and deterministic source-free scenery
+ok 86 - forced base and suppressed DLC environments use only the Nexus profile and deterministic source-free scenery
+  ---
+  duration_ms: 0.537654
+  type: 'test'
+  ...
+# Subtest: reduced motion freezes snow, mist and embers while simulation time owns animated scenery
+ok 87 - reduced motion freezes snow, mist and embers while simulation time owns animated scenery
+  ---
+  duration_ms: 1.740692
+  type: 'test'
+  ...
+# Subtest: source material families keep natural cliff strata distinct from architecture and preserve tile geometry
+ok 88 - source material families keep natural cliff strata distinct from architecture and preserve tile geometry
+  ---
+  duration_ms: 5.617026
+  type: 'test'
+  ...
+# Subtest: trees, boulders and source architecture draw at their real support without changing collision or HP
+ok 89 - trees, boulders and source architecture draw at their real support without changing collision or HP
+  ---
+  duration_ms: 1.065433
+  type: 'test'
+  ...
+# Subtest: all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+ok 90 - all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+  ---
+  duration_ms: 4.358316
+  type: 'test'
+  ...
+# Subtest: W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 91 - W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 18.287638
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 92 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 7.647653
+  type: 'test'
+  ...
+# Subtest: four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 93 - four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 0.799515
+  type: 'test'
+  ...
+# Subtest: all19 previous topologies and42 material definitions remain exact while ten new material profiles are added
+ok 94 - all19 previous topologies and42 material definitions remain exact while ten new material profiles are added
+  ---
+  duration_ms: 5.208216
+  type: 'test'
+  ...
+# Subtest: W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 95 - W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 22.234518
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 96 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 5.641614
+  type: 'test'
+  ...
+# Subtest: five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 97 - five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 0.718575
+  type: 'test'
+  ...
+# Subtest: historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+ok 98 - historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+  ---
+  duration_ms: 34.650359
+  type: 'test'
+  ...
+# Subtest: each source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 99 - each source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 4458.006866
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 100 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 0.497345
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 101 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 3.178852
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 102 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.278708
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 103 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.222874
+  type: 'test'
+  ...
+# Subtest: each W16 source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 104 - each W16 source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 3126.928589
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 105 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 0.415372
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 106 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 2.307737
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 107 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.556654
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 108 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.471696
+  type: 'test'
+  ...
+# Subtest: each W17 source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 109 - each W17 source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 3360.80325
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 110 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 0.388686
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 111 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 2.198946
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 112 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.431382
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 113 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.444763
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 114 - ff7_mt_nibel_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 26144.792715
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 115 - ff7_mt_nibel_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.03788
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 116 - ff13_archylte_steppe_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 28.760176
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 117 - ff13_archylte_steppe_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.025163
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 118 - ff15_vesperpool_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 11.515406
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 119 - ff15_vesperpool_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.40968
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 120 - lotr_caradhras_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 9.371503
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 121 - lotr_caradhras_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.088881
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 122 - lotr_ithilien_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 21.467849
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 123 - lotr_ithilien_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.419394
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 124 - darksouls_darkroot_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 8.883782
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 125 - darksouls_darkroot_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.003893
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 126 - masseffect_therum_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 7.942461
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 127 - masseffect_therum_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 16.824261
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 128 - halo_valhalla_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.720011
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 129 - halo_valhalla_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.375258
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 130 - nexus_skybridge: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 11.889015
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 131 - nexus_skybridge: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 5.043728
+  type: 'test'
+  ...
+# Subtest: training_grid: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+not ok 132 - training_grid: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 4.599723
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsUniverseRuntime.test.mjs:58:2'
+  failureType: 'testCodeFailure'
+  error: 'near victim 0'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsUniverseRuntime.test.mjs:72:31)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: training_grid: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+not ok 133 - training_grid: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 1.873488
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsUniverseRuntime.test.mjs:58:2'
+  failureType: 'testCodeFailure'
+  error: 'near victim 0'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsUniverseRuntime.test.mjs:72:31)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: nexus_skybridge: hero stale radial selection and an empty radius preserve charge and turn
+ok 134 - nexus_skybridge: hero stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 11.119783
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: enemy stale radial selection and an empty radius preserve charge and turn
+ok 135 - nexus_skybridge: enemy stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 4.332412
+  type: 'test'
+  ...
+# Subtest: training_grid: hero stale radial selection and an empty radius preserve charge and turn
+ok 136 - training_grid: hero stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 5.767172
+  type: 'test'
+  ...
+# Subtest: training_grid: enemy stale radial selection and an empty radius preserve charge and turn
+ok 137 - training_grid: enemy stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 5.055806
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 138 - cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 23106.977289
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 139 - cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.666245
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 140 - titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 24.313362
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 141 - titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 8.535957
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 142 - fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 11.111609
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 143 - fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.044909
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 144 - wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 21.933129
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 145 - wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 10.134687
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 146 - bge_lighthouse_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 22022.276116
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 147 - bge_lighthouse_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.037224
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 148 - rayman_teensies_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 16.812776
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 149 - rayman_teensies_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.455362
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 150 - atomic_vdnh_gallery_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 15.720612
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 151 - atomic_vdnh_gallery_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 13.751724
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 152 - zootopia_rainforest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 11.869543
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 153 - zootopia_rainforest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.460985
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 154 - bge_lighthouse_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 136.828799
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 155 - rayman_teensies_forest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 97.669498
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 156 - atomic_vdnh_gallery_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 102.72066
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 157 - zootopia_rainforest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 72.342739
+  type: 'test'
+  ...
+# Subtest: four W15 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 158 - four W15 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 2.374367
+  type: 'test'
+  ...
+# Subtest: the four W15 sector topologies differ from each other, W14 and the earlier Nexus boards without relying on palette or IDs
+ok 159 - the four W15 sector topologies differ from each other, W14 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 6.275642
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 160 - ff8_dollet_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 155.712739
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 161 - re_spencer_courtyard_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 82.89039
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 162 - fallout_red_rock_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 44.236122
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 163 - halflife_white_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 35.273385
+  type: 'test'
+  ...
+# Subtest: Dollet has two control posts at the same XY, separate headroom, occluded sight and stairs to the upper gallery
+ok 164 - Dollet has two control posts at the same XY, separate headroom, occluded sight and stairs to the upper gallery
+  ---
+  duration_ms: 3.65784
+  type: 'test'
+  ...
+# Subtest: Spencer courtyard pool stays impassable while a thin upper passage admits human movement
+ok 165 - Spencer courtyard pool stays impassable while a thin upper passage admits human movement
+  ---
+  duration_ms: 0.719838
+  type: 'test'
+  ...
+# Subtest: Red Rock combines a three-level mesa, a negative-altitude wash and a solid overhang
+ok 166 - Red Rock combines a three-level mesa, a negative-altitude wash and a solid overhang
+  ---
+  duration_ms: 2.643009
+  type: 'test'
+  ...
+# Subtest: White Forest has two independent fords and a raised industrial crossing with physical pine cover
+ok 167 - White Forest has two independent fords and a raised industrial crossing with physical pine cover
+  ---
+  duration_ms: 5.076065
+  type: 'test'
+  ...
+# Subtest: four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+ok 168 - four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+  ---
+  duration_ms: 14.200575
+  type: 'test'
+  ...
+# Subtest: W15 environments cannot enter other engines and suppression removes source-specific art
+ok 169 - W15 environments cannot enter other engines and suppression removes source-specific art
+  ---
+  duration_ms: 0.431576
+  type: 'test'
+  ...
+# Subtest: Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+ok 170 - Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+  ---
+  duration_ms: 3.341406
+  type: 'test'
+  ...
+# Subtest: seven W15 materials paint real tops and cliff faces without changing geometry
+ok 171 - seven W15 materials paint real tops and cliff faces without changing geometry
+  ---
+  duration_ms: 4.537157
+  type: 'test'
+  ...
+# Subtest: every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+ok 172 - every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+  ---
+  duration_ms: 176.697557
+  type: 'test'
+  ...
+# Subtest: lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+ok 173 - lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+  ---
+  duration_ms: 1.138565
+  type: 'test'
+  ...
+# Subtest: each source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 174 - each source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 2742.443957
+  type: 'test'
+  ...
+# Subtest: W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image
+ok 175 - W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image
+  ---
+  duration_ms: 11.111798
+  type: 'test'
+  ...
+# Subtest: W15 location matching and explicit goals keep universe/base-arena boundaries
+ok 176 - W15 location matching and explicit goals keep universe/base-arena boundaries
+  ---
+  duration_ms: 0.436354
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 177 - ff8_dollet_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 24367.82258
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 178 - ff8_dollet_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.813886
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 179 - re_spencer_courtyard_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 32.873779
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 180 - re_spencer_courtyard_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.303846
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 181 - fallout_red_rock_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.451588
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 182 - fallout_red_rock_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.297493
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 183 - halflife_white_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 19.335577
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 184 - halflife_white_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 8.913128
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 185 - ff8_dollet_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 12.214802
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 186 - re_spencer_courtyard_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 10.305061
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 187 - fallout_red_rock_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 19.423529
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 188 - halflife_white_forest_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 10.794517
+  type: 'test'
+  ...
+# Subtest: Dollet stacked control posts score only the exact occupied surface and ignore a rival on the other storey
+ok 189 - Dollet stacked control posts score only the exact occupied surface and ignore a rival on the other storey
+  ---
+  duration_ms: 4.567888
+  type: 'test'
+  ...
+# Subtest: four W16 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 190 - four W16 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 1.881969
+  type: 'test'
+  ...
+# Subtest: the four W16 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+ok 191 - the four W16 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 12.021502
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 192 - cuphead_inkwell_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 82.655574
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 193 - titanfall_reclamation_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 55.10649
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 194 - fma_central_station_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 51.398747
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 195 - wakfu_sadida_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 42.103002
+  type: 'test'
+  ...
+# Subtest: Inkwell separates a slow ford from its artifact bridge and admits only bodies fitting beneath the planks
+ok 196 - Inkwell separates a slow ford from its artifact bridge and admits only bodies fitting beneath the planks
+  ---
+  duration_ms: 5.91349
+  type: 'test'
+  ...
+# Subtest: World Foundry has two decks, negative-altitude maintenance access and a human-only low underpass
+ok 197 - World Foundry has two decks, negative-altitude maintenance access and a human-only low underpass
+  ---
+  duration_ms: 2.602522
+  type: 'test'
+  ...
+# Subtest: Central control posts share XY but keep separate floor occupancy, sight and physical rail-cutting routes
+ok 198 - Central control posts share XY but keep separate floor occupancy, sight and physical rail-cutting routes
+  ---
+  duration_ms: 2.552577
+  type: 'test'
+  ...
+# Subtest: Sadida extraction offers a canopy exit and a lower path while root slopes route around the flooded hollow
+ok 199 - Sadida extraction offers a canopy exit and a lower path while root slopes route around the flooded hollow
+  ---
+  duration_ms: 3.919192
+  type: 'test'
+  ...
+# Subtest: four W17 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 200 - four W17 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 1.280455
+  type: 'test'
+  ...
+# Subtest: the four W17 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+ok 201 - the four W17 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 5.993119
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 202 - bge_lighthouse_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 77.112642
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 203 - rayman_teensies_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 50.665104
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 204 - atomic_vdnh_gallery_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 54.744213
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 205 - zootopia_rainforest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 39.728835
+  type: 'test'
+  ...
+# Subtest: Hillys gives its two markers distinct floors, real stairs, lower dock cost and an impassable sea
+ok 206 - Hillys gives its two markers distinct floors, real stairs, lower dock cost and an impassable sea
+  ---
+  duration_ms: 4.564847
+  type: 'test'
+  ...
+# Subtest: Legends keeps the curved root route above its slow ravine without bridging the missing shortcut
+ok 207 - Legends keeps the curved root route above its slow ravine without bridging the missing shortcut
+  ---
+  duration_ms: 2.414806
+  type: 'test'
+  ...
+# Subtest: VDNH has three independently supported levels, width-two stairs and a real height-limited service slab
+ok 208 - VDNH has three independently supported levels, width-two stairs and a real height-limited service slab
+  ---
+  duration_ms: 9.406496
+  type: 'test'
+  ...
+# Subtest: Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil
+ok 209 - Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil
+  ---
+  duration_ms: 4.459801
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Healing Burst is a bounded zero-damage two-cell group heal
+not ok 210 - training_grid/hero: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 24452.88744
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:46:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:49:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: training_grid/hero: real self-target command heals only nearby allies, once, with one charge and turn
+not ok 211 - training_grid/hero: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 8.078215
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:54:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          archetypeSynergiesPrepared: true,
+          battleId: 'tactics:hero:0:evolve_val',
+          canonStatus: 'canon protagonist or allied avatar',
+    ...
+        },
+    +   {
+    +     archetypeSynergiesPrepared: true,
+    +     battleId: 'tactics:hero:2:far',
+    +     category: 'fixture',
+    +     cooldown: 0,
+    +     currentHp: 7800,
+    +     defense: {
+    +       dur: 1,
+    +       name: 'Fixture guard',
+    +       reduce: 0.3,
+    +       type: 'guard'
+    +     },
+    +     facing: 1,
+    +     facingVector: {
+    +       x: 1,
+    +       y: 0
+    +     },
+    +     gridX: 5,
+    +     gridY: 2,
+    +     id: 'far',
+    +     maxHp: 10000,
+    +     name: 'far',
+    +     primaryColor: '#70adbf',
+    +     secondary: {
+    +       cd: 3,
+    +       dmg: 2,
+    +       name: 'Fixture strong shot',
+    +       type: 'bullet'
+    +     },
+    +     simple: {
+    +       dmg: 1,
+    +       name: 'Fixture shot',
+    +       type: 'bullet'
+    +     },
+    +     special: {
+    +       dmg: 3,
+    +       name: 'Fixture special',
+    +       type: 'bullet'
+    +     },
+    +     specialCharge: 0,
+    +     state: 'idle',
+    +     stateTimer: 0,
+    +     stats: {
+    +       atk: 20,
+    +       def: 5,
+    +       hp: 10000,
+    +       spd: 1
+    +     },
+    +     statusEffects: {
+    +       glitched: 0,
+    +       infected: 0,
+    +       radiated: 0
+    +     },
+    +     surfaceId: undefined,
+    +     universe: 'Nexus de Convergence',
+    +     weaponType: 'rifle',
+    +     x: 642.71496,
+    +     y: 372.68
+    +   }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      gridX: 2
+      gridY: 2
+      x: 407.28504
+      y: 372.68
+      state: 'special'
+      stateTimer: 35
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 120
+      currentHp: 94
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:0:evolve_val'
+      sourceLuteCellWave17:
+        x: 2
+        y: 2
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 3
+      gridY: 3
+      x: 483.51768
+      y: 428.68
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:1:near'
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  actual:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      gridX: 2
+      gridY: 2
+      x: 407.28504
+      y: 372.68
+      state: 'special'
+      stateTimer: 35
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 120
+      currentHp: 94
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:0:evolve_val'
+      sourceLuteCellWave17:
+        x: 2
+        y: 2
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 3
+      gridY: 3
+      x: 483.51768
+      y: 428.68
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:1:near'
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    2:
+      id: 'far'
+      name: 'far'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 5
+      gridY: 2
+      x: 642.71496
+      y: 372.68
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:2:far'
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:60:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: training_grid/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 212 - training_grid/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 6.532308
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 213 - training_grid/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 1.826015
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 214 - training_grid/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.652166
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: the real AI uses Healing Burst on its own party and pays its special once
+ok 215 - training_grid/hero: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 252.762992
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+not ok 216 - training_grid/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 1.344867
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:46:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:49:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: training_grid/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+not ok 217 - training_grid/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 2.061877
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:54:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          atk: 11,
+          battleId: 'tactics:enemy:0:evolve_val',
+          canonStatus: 'canon protagonist or allied avatar',
+    ...
+        },
+    +   {
+    +     atk: 20,
+    +     battleId: 'tactics:enemy:2:far',
+    +     category: 'fixture',
+    +     cooldown: 0,
+    +     currentHp: 7800,
+    +     def: 5,
+    +     defense: {
+    +       dur: 1,
+    +       name: 'Fixture guard',
+    +       reduce: 0.3,
+    +       type: 'guard'
+    +     },
+    +     facing: -1,
+    +     facingVector: {
+    +       x: -1,
+    +       y: 0
+    +     },
+    +     gridX: 5,
+    +     gridY: 2,
+    +     id: 'far',
+    +     isBoss: false,
+    +     isWorldBoss: false,
+    +     maxHp: 10000,
+    +     name: 'far',
+    +     primaryColor: '#70adbf',
+    +     runtimeId: 'enemy:custom:2:far',
+    +     secondary: {
+    +       cd: 3,
+    +       dmg: 2,
+    +       name: 'Fixture strong shot',
+    +       type: 'bullet'
+    +     },
+    +     simple: {
+    +       dmg: 1,
+    +       name: 'Fixture shot',
+    +       type: 'bullet'
+    +     },
+    +     spd: 1,
+    +     special: {
+    +       dmg: 3,
+    +       name: 'Fixture special',
+    +       type: 'bullet'
+    +     },
+    +     specialCharge: 0,
+    +     state: 'idle',
+    +     stateTimer: 0,
+    +     stats: {
+    +       atk: 20,
+    +       def: 5,
+    +       hp: 10000,
+    +       spd: 1
+    +     },
+    +     statusEffects: {
+    +       glitched: 0,
+    +       infected: 0,
+    +       radiated: 0
+    +     },
+    +     surfaceId: undefined,
+    +     universe: 'Nexus de Convergence',
+    +     weaponType: 'rifle',
+    +     x: 642.71496,
+    +     y: 372.68
+    +   }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      runtimeId: 'enemy:custom:0:evolve_val'
+      gridX: 2
+      gridY: 2
+      x: 407.28504
+      y: 372.68
+      state: 'special'
+      stateTimer: 35
+      atk: 11
+      def: 7
+      spd: 4
+      maxHp: 120
+      currentHp: 94
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:0:evolve_val'
+      sourceLuteCellWave17:
+        x: 2
+        y: 2
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:1:near'
+      gridX: 3
+      gridY: 3
+      x: 483.51768
+      y: 428.68
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:1:near'
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  actual:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      runtimeId: 'enemy:custom:0:evolve_val'
+      gridX: 2
+      gridY: 2
+      x: 407.28504
+      y: 372.68
+      state: 'special'
+      stateTimer: 35
+      atk: 11
+      def: 7
+      spd: 4
+      maxHp: 120
+      currentHp: 94
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:0:evolve_val'
+      sourceLuteCellWave17:
+        x: 2
+        y: 2
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:1:near'
+      gridX: 3
+      gridY: 3
+      x: 483.51768
+      y: 428.68
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:1:near'
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    2:
+      id: 'far'
+      name: 'far'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:2:far'
+      gridX: 5
+      gridY: 2
+      x: 642.71496
+      y: 372.68
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:2:far'
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:60:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: training_grid/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 218 - training_grid/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 6.064299
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 219 - training_grid/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 1.088575
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 220 - training_grid/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 8.30957
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: the real AI uses Healing Burst on its own party and pays its special once
+ok 221 - training_grid/enemy: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 253.051893
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Healing Burst is a bounded zero-damage two-cell group heal
+not ok 222 - nexus_skybridge/hero: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 6.031
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:46:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:49:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: nexus_skybridge/hero: real self-target command heals only nearby allies, once, with one charge and turn
+not ok 223 - nexus_skybridge/hero: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 3.518872
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:54:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          archetypeSynergiesPrepared: true,
+          battleId: 'tactics:hero:0:evolve_val',
+          canonStatus: 'canon protagonist or allied avatar',
+    ...
+        },
+    +   {
+    +     archetypeSynergiesPrepared: true,
+    +     battleId: 'tactics:hero:2:far',
+    +     category: 'fixture',
+    +     cooldown: 0,
+    +     currentHp: 7800,
+    +     defense: {
+    +       dur: 1,
+    +       name: 'Fixture guard',
+    +       reduce: 0.3,
+    +       type: 'guard'
+    +     },
+    +     facing: 1,
+    +     facingVector: {
+    +       x: 1,
+    +       y: 0
+    +     },
+    +     gridX: 5,
+    +     gridY: 5,
+    +     gridZ: 0,
+    +     id: 'far',
+    +     maxHp: 10000,
+    +     name: 'far',
+    +     primaryColor: '#70adbf',
+    +     secondary: {
+    +       cd: 3,
+    +       dmg: 2,
+    +       name: 'Fixture strong shot',
+    +       type: 'bullet'
+    +     },
+    +     simple: {
+    +       dmg: 1,
+    +       name: 'Fixture shot',
+    +       type: 'bullet'
+    +     },
+    +     special: {
+    +       dmg: 3,
+    +       name: 'Fixture special',
+    +       type: 'bullet'
+    +     },
+    +     specialCharge: 0,
+    +     state: 'idle',
+    +     stateTimer: 0,
+    +     stats: {
+    +       atk: 20,
+    +       def: 5,
+    +       hp: 10000,
+    +       spd: 1
+    +     },
+    +     statusEffects: {
+    +       glitched: 0,
+    +       infected: 0,
+    +       radiated: 0
+    +     },
+    +     surfaceId: 'ground:5:5',
+    +     universe: 'Nexus de Convergence',
+    +     weaponType: 'rifle',
+    +     x: 608.6314285714286,
+    +     y: 525
+    +   }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      gridX: 2
+      gridY: 5
+      surfaceId: 'ground:2:5'
+      x: 357.7371428571428
+      y: 525
+      state: 'special'
+      stateTimer: 35
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 120
+      currentHp: 94
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:0:evolve_val'
+      gridZ: 0
+      sourceLuteCellWave17:
+        x: 2
+        y: 5
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 3
+      gridY: 6
+      surfaceId: 'ground:3:6'
+      x: 438.1628571428571
+      y: 581
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:1:near'
+      gridZ: 0
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  actual:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      gridX: 2
+      gridY: 5
+      surfaceId: 'ground:2:5'
+      x: 357.7371428571428
+      y: 525
+      state: 'special'
+      stateTimer: 35
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 120
+      currentHp: 94
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:0:evolve_val'
+      gridZ: 0
+      sourceLuteCellWave17:
+        x: 2
+        y: 5
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 3
+      gridY: 6
+      surfaceId: 'ground:3:6'
+      x: 438.1628571428571
+      y: 581
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:1:near'
+      gridZ: 0
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    2:
+      id: 'far'
+      name: 'far'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      gridX: 5
+      gridY: 5
+      surfaceId: 'ground:5:5'
+      x: 608.6314285714286
+      y: 525
+      state: 'idle'
+      stateTimer: 0
+      cooldown: 0
+      specialCharge: 0
+      maxHp: 10000
+      currentHp: 7800
+      facing: 1
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      archetypeSynergiesPrepared: true
+      facingVector:
+        x: 1
+        y: 0
+      battleId: 'tactics:hero:2:far'
+      gridZ: 0
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:60:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: nexus_skybridge/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 224 - nexus_skybridge/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 8.809417
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 225 - nexus_skybridge/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 1.531726
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 226 - nexus_skybridge/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.504335
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: the real AI uses Healing Burst on its own party and pays its special once
+ok 227 - nexus_skybridge/hero: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 33.804157
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+not ok 228 - nexus_skybridge/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 1.170316
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:46:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    5 !== 2
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 5
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:49:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: nexus_skybridge/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+not ok 229 - nexus_skybridge/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 2.118812
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:54:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          atk: 11,
+          battleId: 'tactics:enemy:0:evolve_val',
+          canonStatus: 'canon protagonist or allied avatar',
+    ...
+        },
+    +   {
+    +     atk: 20,
+    +     battleId: 'tactics:enemy:2:far',
+    +     category: 'fixture',
+    +     cooldown: 0,
+    +     currentHp: 7800,
+    +     def: 5,
+    +     defense: {
+    +       dur: 1,
+    +       name: 'Fixture guard',
+    +       reduce: 0.3,
+    +       type: 'guard'
+    +     },
+    +     facing: -1,
+    +     facingVector: {
+    +       x: -1,
+    +       y: 0
+    +     },
+    +     gridX: 5,
+    +     gridY: 5,
+    +     gridZ: 0,
+    +     id: 'far',
+    +     isBoss: false,
+    +     isWorldBoss: false,
+    +     maxHp: 10000,
+    +     name: 'far',
+    +     primaryColor: '#70adbf',
+    +     runtimeId: 'enemy:custom:2:far',
+    +     secondary: {
+    +       cd: 3,
+    +       dmg: 2,
+    +       name: 'Fixture strong shot',
+    +       type: 'bullet'
+    +     },
+    +     simple: {
+    +       dmg: 1,
+    +       name: 'Fixture shot',
+    +       type: 'bullet'
+    +     },
+    +     spd: 1,
+    +     special: {
+    +       dmg: 3,
+    +       name: 'Fixture special',
+    +       type: 'bullet'
+    +     },
+    +     specialCharge: 0,
+    +     state: 'idle',
+    +     stateTimer: 0,
+    +     stats: {
+    +       atk: 20,
+    +       def: 5,
+    +       hp: 10000,
+    +       spd: 1
+    +     },
+    +     statusEffects: {
+    +       glitched: 0,
+    +       infected: 0,
+    +       radiated: 0
+    +     },
+    +     surfaceId: 'ground:5:5',
+    +     universe: 'Nexus de Convergence',
+    +     weaponType: 'rifle',
+    +     x: 608.6314285714286,
+    +     y: 525
+    +   }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      runtimeId: 'enemy:custom:0:evolve_val'
+      gridX: 2
+      gridY: 5
+      surfaceId: 'ground:2:5'
+      x: 357.7371428571428
+      y: 525
+      state: 'special'
+      stateTimer: 35
+      atk: 11
+      def: 7
+      spd: 4
+      maxHp: 120
+      currentHp: 94
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:0:evolve_val'
+      gridZ: 0
+      sourceLuteCellWave17:
+        x: 2
+        y: 5
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:1:near'
+      gridX: 3
+      gridY: 6
+      surfaceId: 'ground:3:6'
+      x: 438.1628571428571
+      y: 581
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:1:near'
+      gridZ: 0
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  actual:
+    0:
+      referenceUrl: 'https://www.2k.com/games/evolve/'
+      visualAnchor: 'Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.'
+      canonStatus: 'canon protagonist or allied avatar'
+      lore:
+        fr: 'Val rejoint la brèche selon son rôle canonique.'
+        en: 'Val enters the breach in the canonical role.'
+      output: '/sprites/generated/heroes/evolve/evolve-val.png'
+      spritePrompt: 'Original fan-made pixel-art sprite sheet, three-quarter RPG view. Val. Preserve: Val, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity. No text, logo, UI, copied official artwork, actor likeness or cross-franchise redesign.'
+      weapon: 'Val signature action'
+      weaponType: 'medical'
+      stats:
+        hp: 120
+        atk: 11
+        def: 7
+        spd: 4
+      simple:
+        type: 'melee'
+        dmg: 1
+        name: 'Val signature action'
+      secondary:
+        type: 'signature'
+        cd: 7
+        dmg: 1.8
+        name: 'Val signature technique'
+      defense:
+        type: 'dodge'
+        dur: 1.8
+        reduce: 0.74
+        name: 'Val defensive action'
+      special:
+        type: 'origin_aoe'
+        dmg: 4
+        name: 'Val decisive action'
+      id: 'evolve_val'
+      name: 'Val'
+      cat: 'tactical'
+      color: '#84fbff'
+      universe: 'Evolve'
+      category: 'tactical'
+      primaryColor: '#84fbff'
+      secondaryColor: '#84fbff'
+      weaponColor: '#84fbff'
+      runtimeId: 'enemy:custom:0:evolve_val'
+      gridX: 2
+      gridY: 5
+      surfaceId: 'ground:2:5'
+      x: 357.7371428571428
+      y: 525
+      state: 'special'
+      stateTimer: 35
+      atk: 11
+      def: 7
+      spd: 4
+      maxHp: 120
+      currentHp: 94
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:0:evolve_val'
+      gridZ: 0
+      sourceLuteCellWave17:
+        x: 2
+        y: 5
+        z: 0
+      tacticsPresentationTicks: 35
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    1:
+      id: 'near'
+      name: 'near'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:1:near'
+      gridX: 3
+      gridY: 6
+      surfaceId: 'ground:3:6'
+      x: 438.1628571428571
+      y: 581
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:1:near'
+      gridZ: 0
+      tacticsGuardTicks: 61
+      tacticsBuffTicks: 72
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+    2:
+      id: 'far'
+      name: 'far'
+      universe: 'Nexus de Convergence'
+      category: 'fixture'
+      weaponType: 'rifle'
+      primaryColor: '#70adbf'
+      stats:
+        hp: 10000
+        atk: 20
+        def: 5
+        spd: 1
+      simple:
+        name: 'Fixture shot'
+        type: 'bullet'
+        dmg: 1
+      secondary:
+        name: 'Fixture strong shot'
+        type: 'bullet'
+        dmg: 2
+        cd: 3
+      special:
+        name: 'Fixture special'
+        type: 'bullet'
+        dmg: 3
+      defense:
+        name: 'Fixture guard'
+        type: 'guard'
+        dur: 1
+        reduce: 0.3
+      runtimeId: 'enemy:custom:2:far'
+      gridX: 5
+      gridY: 5
+      surfaceId: 'ground:5:5'
+      x: 608.6314285714286
+      y: 525
+      state: 'idle'
+      stateTimer: 0
+      atk: 20
+      def: 5
+      spd: 1
+      maxHp: 10000
+      currentHp: 7800
+      facing: -1
+      isBoss: false
+      isWorldBoss: false
+      statusEffects:
+        infected: 0
+        glitched: 0
+        radiated: 0
+      facingVector:
+        x: -1
+        y: 0
+      cooldown: 0
+      specialCharge: 0
+      battleId: 'tactics:enemy:2:far'
+      gridZ: 0
+      rpgGyrodiskActionWave17: ~
+      tacticsGyrodiskActionWave17: ~
+      sourceRpgLuteMoveWave17: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsValHealingWave15.test.mjs:60:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: nexus_skybridge/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 230 - nexus_skybridge/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 6.336987
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 231 - nexus_skybridge/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 1.2196
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 232 - nexus_skybridge/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.085851
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: the real AI uses Healing Burst on its own party and pays its special once
+ok 233 - nexus_skybridge/enemy: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 20.465862
+  type: 'test'
+  ...
+# Subtest: flat/hero: a healthy-party medic takes a defensive AI turn without spending her burst
+ok 234 - flat/hero: a healthy-party medic takes a defensive AI turn without spending her burst
+  ---
+  duration_ms: 1.047373
+  type: 'test'
+  ...
+# Subtest: flat/enemy: a healthy-party medic takes a defensive AI turn without spending her burst
+ok 235 - flat/enemy: a healthy-party medic takes a defensive AI turn without spending her burst
+  ---
+  duration_ms: 0.684341
+  type: 'test'
+  ...
+# Subtest: vertical/hero: Healing Burst respects stacked supports, floor opacity and 3D distance
+ok 236 - vertical/hero: Healing Burst respects stacked supports, floor opacity and 3D distance
+  ---
+  duration_ms: 6.558378
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: Healing Burst respects stacked supports, floor opacity and 3D distance
+ok 237 - vertical/enemy: Healing Burst respects stacked supports, floor opacity and 3D distance
+  ---
+  duration_ms: 1.214763
+  type: 'test'
+  ...
+# Subtest: vertical commands resolve the selected source identity and convert pixel reach to bounded grid reach
+ok 238 - vertical commands resolve the selected source identity and convert pixel reach to bounded grid reach
+  ---
+  duration_ms: 23211.832439
+  type: 'test'
+  ...
+# Subtest: Bishop guards actual allies without damaging opponents or supporting through the bridge slab
+ok 239 - Bishop guards actual allies without damaging opponents or supporting through the bridge slab
+  ---
+  duration_ms: 12.930683
+  type: 'test'
+  ...
+# Subtest: opposing support consumes its own meter and only guards its own side
+ok 240 - opposing support consumes its own meter and only guards its own side
+  ---
+  duration_ms: 4.309346
+  type: 'test'
+  ...
+# Subtest: an explicit healer heals its real ally once and rejects enemy targets without consuming cooldown
+ok 241 - an explicit healer heals its real ally once and rejects enemy targets without consuming cooldown
+  ---
+  duration_ms: 12.646607
+  type: 'test'
+  ...
+# Subtest: a healing defense retains its declared ally targeting and never becomes a shield or attack
+not ok 242 - a healing defense retains its declared ally targeting and never becomes a shield or attack
+  ---
+  duration_ms: 9.488605
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsVerticalEffects.test.mjs:104:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(e.attackRange.some(entry => entry.surfaceId === ally.surfaceId))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsVerticalEffects.test.mjs:112:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: revival requires an unoccupied supported surface and never overlaps a living combatant
+ok 243 - revival requires an unoccupied supported surface and never overlaps a living combatant
+  ---
+  duration_ms: 5.718527
+  type: 'test'
+  ...
+# Subtest: guard and buff timers freeze in pause and preview uses the same guard reduction as damage
+ok 244 - guard and buff timers freeze in pause and preview uses the same guard reduction as damage
+  ---
+  duration_ms: 3.943598
+  type: 'test'
+  ...
+# Subtest: local pickup effects use the addressed floor and cannot heal, damage or trigger through a bridge
+ok 245 - local pickup effects use the addressed floor and cannot heal, damage or trigger through a bridge
+  ---
+  duration_ms: 1.732025
+  type: 'test'
+  ...
+# Subtest: a one-unit custom extraction keeps a reachable target and requires the actual extraction surface
+ok 246 - a one-unit custom extraction keeps a reachable target and requires the actual extraction surface
+  ---
+  duration_ms: 1.991814
+  type: 'test'
+  ...
+# Subtest: all three vertical boards are selectable in the real catalogue and pickups keep both floors
+ok 247 - all three vertical boards are selectable in the real catalogue and pickups keep both floors
+  ---
+  duration_ms: 23627.794343
+  type: 'test'
+  ...
+# Subtest: movement spends staircase AP, animates the real route, freezes on pause and cannot refund AP
+ok 248 - movement spends staircase AP, animates the real route, freezes on pause and cannot refund AP
+  ---
+  duration_ms: 14.012305
+  type: 'test'
+  ...
+# Subtest: two units at one XY remain separately occupied and targetable by floor
+ok 249 - two units at one XY remain separately occupied and targetable by floor
+  ---
+  duration_ms: 2.329604
+  type: 'test'
+  ...
+# Subtest: real shot resolution changes the lower target only and refuses a shot through the deck
+ok 250 - real shot resolution changes the lower target only and refuses a shot through the deck
+  ---
+  duration_ms: 31.427832
+  type: 'test'
+  ...
+# Subtest: the bridge blocks cross-floor shots even when a profile ignores ordinary line of sight
+ok 251 - the bridge blocks cross-floor shots even when a profile ignores ordinary line of sight
+  ---
+  duration_ms: 1.987841
+  type: 'test'
+  ...
+# Subtest: a large splash on the bridge does not damage the unit directly beneath its floor
+ok 252 - a large splash on the bridge does not damage the unit directly beneath its floor
+  ---
+  duration_ms: 3.00704
+  type: 'test'
+  ...
+# Subtest: a capture and extraction require their declared surface rather than an XY match
+not ok 253 - a capture and extraction require their declared surface rather than an XY match
+  ---
+  duration_ms: 2.591256
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsVerticalIntegration.test.mjs:140:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsVerticalIntegration.test.mjs:145:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: barrel damage keeps its source floor and does not cross the bridge slab
+ok 254 - barrel damage keeps its source floor and does not cross the bridge slab
+  ---
+  duration_ms: 1.454761
+  type: 'test'
+  ...
+# Subtest: hazard pulses respect the source volume even when their configured radius spans both floors
+ok 255 - hazard pulses respect the source volume even when their configured radius spans both floors
+  ---
+  duration_ms: 1.855233
+  type: 'test'
+  ...
+# Subtest: reinforcement candidate selection distinguishes a free deck from its occupied lower floor
+ok 256 - reinforcement candidate selection distinguishes a free deck from its occupied lower floor
+  ---
+  duration_ms: 1.263655
+  type: 'test'
+  ...
+# Subtest: view cuts change selection visibility without changing occupancy or damage rules
+ok 257 - view cuts change selection visibility without changing occupancy or damage rules
+  ---
+  duration_ms: 1.621001
+  type: 'test'
+  ...
+# Subtest: automatic heroes choose the physical staircase when their objective is on the bridge
+not ok 258 - automatic heroes choose the physical staircase when their objective is on the bridge
+  ---
+  duration_ms: 723.019755
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/tacticsVerticalIntegration.test.mjs:196:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'hero' !== 'enemy'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'enemy'
+  actual: 'hero'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/tacticsVerticalIntegration.test.mjs:211:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: real camera selection preserves surface identity after pan, zoom and an underside cut
+ok 259 - real camera selection preserves surface identity after pan, zoom and an underside cut
+  ---
+  duration_ms: 34.436865
+  type: 'test'
+  ...
+# Subtest: panning and zooming during a move reproject its current feet without advancing the path or snapping to its destination
+ok 260 - panning and zooming during a move reproject its current feet without advancing the path or snapping to its destination
+  ---
+  duration_ms: 7.473738
+  type: 'test'
+  ...
+# Subtest: headroom excludes tall units from the underpass and forced movement stops at the deck edge
+ok 261 - headroom excludes tall units from the underpass and forced movement stops at the deck edge
+  ---
+  duration_ms: 1.4934
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge binds a six-boss custom roster to non-overlapping supported volumes
+ok 262 - nexus_skybridge binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 3.157105
+  type: 'test'
+  ...
+# Subtest: ruined_terraces binds a six-boss custom roster to non-overlapping supported volumes
+ok 263 - ruined_terraces binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 1.383895
+  type: 'test'
+  ...
+# Subtest: cyber_catwalks binds a six-boss custom roster to non-overlapping supported volumes
+ok 264 - cyber_catwalks binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 6.363213
+  type: 'test'
+  ...
+# Subtest: automatic revival keeps the selected dead ally through final action validation
+ok 265 - automatic revival keeps the selected dead ally through final action validation
+  ---
+  duration_ms: 23040.813884
+  type: 'test'
+  ...
+# Subtest: an automatic attacker killed by its landing terrain cannot fire posthumously
+ok 266 - an automatic attacker killed by its landing terrain cannot fire posthumously
+  ---
+  duration_ms: 19.499402
+  type: 'test'
+  ...
+# Subtest: losing the moving active unit releases its turn while another ally is still alive
+ok 267 - losing the moving active unit releases its turn while another ally is still alive
+  ---
+  duration_ms: 5.361938
+  type: 'test'
+  ...
+# Subtest: group revival cannot create two living bodies on one vacated surface
+ok 268 - group revival cannot create two living bodies on one vacated surface
+  ---
+  duration_ms: 4.882474
+  type: 'test'
+  ...
+# Subtest: a valid elevated line anchor cannot extend damage beyond the declared spatial reach
+ok 269 - a valid elevated line anchor cannot extend damage beyond the declared spatial reach
+  ---
+  duration_ms: 2.975003
+  type: 'test'
+  ...
+# Subtest: a unit killed by its start-of-turn terrain cannot act or spend resources
+ok 270 - a unit killed by its start-of-turn terrain cannot act or spend resources
+  ---
+  duration_ms: 1.216738
+  type: 'test'
+  ...
+# Subtest: portals retain separate objective identities on two surfaces at one XY
+ok 271 - portals retain separate objective identities on two surfaces at one XY
+  ---
+  duration_ms: 2.37033
+  type: 'test'
+  ...
+# Subtest: artifact retain separate objective identities on two surfaces at one XY
+ok 272 - artifact retain separate objective identities on two surfaces at one XY
+  ---
+  duration_ms: 0.875553
+  type: 'test'
+  ...
+# Subtest: each playable vertical terrain survives setup, saved trace migration and a Tactics runtime launch
+ok 273 - each playable vertical terrain survives setup, saved trace migration and a Tactics runtime launch
+  ---
+  duration_ms: 23444.682952
+  type: 'test'
+  ...
+# Subtest: legacy presets remain automatic and malformed or inherited terrain IDs cannot select a map
+ok 274 - legacy presets remain automatic and malformed or inherited terrain IDs cannot select a map
+  ---
+  duration_ms: 19.188096
+  type: 'test'
+  ...
+# Subtest: terrain controls expose two distinct surfaces at one XY and an explicit confirmation
+ok 275 - terrain controls expose two distinct surfaces at one XY and an explicit confirmation
+  ---
+  duration_ms: 9.634047
+  type: 'test'
+  ...
+# Subtest: pause disables every terrain control and flat battlefields have no terrain panel
+ok 276 - pause disables every terrain control and flat battlefields have no terrain panel
+  ---
+  duration_ms: 1.3822
+  type: 'test'
+  ...
+# Subtest: a resource under a bridge cannot trigger from the upper surface or an ambiguous XY
+ok 277 - a resource under a bridge cannot trigger from the upper surface or an ambiguous XY
+  ---
+  duration_ms: 0.176154
+  type: 'test'
+  ...
+# Subtest: keyboard inspection preserves the nearest visible floor and respects empty map edges
+ok 278 - keyboard inspection preserves the nearest visible floor and respects empty map edges
+  ---
+  duration_ms: 0.707459
+  type: 'test'
+  ...
+1..278
+# tests 278
+# suites 0
+# pass 265
+# fail 13
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 292547.413199
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

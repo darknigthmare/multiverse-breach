@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-11-02T08:22:23.219Z",
+  "actualCommands": [
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave17PartC.mjs --check",
+      "exitCode": 0,
+      "heroes": 40,
+      "poses": 1280,
+      "remaining": 0,
+      "failures": []
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave17PartC.mjs --check",
+      "exitCode": 0,
+      "heroes": 40,
+      "poses": 640,
+      "remaining": 0,
+      "failures": []
+    }
+  ],
+  "effectiveUnits": 40,
+  "reviewedIdentities": 42,
+  "duos": 12,
+  "solos": 28,
+  "productionPngs": 80,
+  "directoryCounts": {
+    "animations": 40,
+    "corrections": 40
+  },
+  "retainedDistinctDrawings": 1920,
+  "alphaAwareUniqueProductionFrameHashesAcrossBothRegistries": 1920,
+  "actualImagegenCalls": 64,
+  "actualPngSourcesReturned": 62,
+  "actualRefusals": 2,
+  "sourceCompleteDrawingsObserved": 2210,
+  "sourceCompleteDrawingsExcluded": 290,
+  "source1to1Verified": false,
+  "canonicalVerified": false,
+  "anchorAndProjectileRegionReview": "Owned and verified independently by wave17_part_b; see native-muzzle-review* and nativeSuperAnchorsWave17PartC.generated.json",
+  "artRegistriesAndProvenanceStable": true,
+  "sha256": {
+    "nativeRegistry": "a47aba5abe7bae414fe07c89501b69498478fee8baee3cc45bc5d5e93967ebed",
+    "baseRegistry": "d950469ccb4bd893f0c5d737dcad88d441c5816cc3a5112a2c2d705e2f7d267f",
+    "generationRecords": "008b39f96a595749230f84de37de38579bf15356774b4a26171d748deddb99ed",
+    "nativeProvenance": "b44fb48e589f599e083195372fc27fbb597fa03b74aa43f05994518d937fc3f5",
+    "baseProvenance": "5cc10fe3f0330343ae6e0981c90e9b0c47bedb39ffd7a3d5559f83d94bc95f0c"
+  }
+}

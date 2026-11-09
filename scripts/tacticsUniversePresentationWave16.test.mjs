@@ -9,6 +9,7 @@ import { TACTICS_VERTICAL_BATTLEFIELDS as nexusFields } from '../src/game/tactic
 import { TACTICS_TERRAIN_MATERIALS_WAVE16 as materials } from '../src/game/tacticsUniversePresentationWave16.js';
 import { TACTICS_TERRAIN_MATERIALS, getTerrainDrawList, getSurfacePolygon, drawTerrainFace } from '../src/game/tacticsTerrainRenderer.js';
 import { drawTacticsEnvironment, getTacticsEnvironmentProfile, drawTacticsScenery } from '../src/game/tacticsEnvironmentRenderer.js';
+import { projectTacticsMaterialsBeforeWave17 } from './tacticsHistoricalBaselineWave17.mjs';
 
 const root = new URL('../', import.meta.url);
 const baseline = JSON.parse(fs.readFileSync(new URL('docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json', root)));
@@ -35,7 +36,7 @@ function recorder() {
 test('all15 previous topologies and34 material definitions remain exact while eight new material profiles are added', () => {
   const previous = { ...nexusFields, ...oldFields, ...recentFields };
   assert.equal(Object.keys(previous).length, 15); assert.equal(Object.keys(materials).length, 8);
-  assert.equal(Object.keys(TACTICS_TERRAIN_MATERIALS).length, 42);
+  assert.equal(Object.keys(projectTacticsMaterialsBeforeWave17(TACTICS_TERRAIN_MATERIALS)).length, 42);
   for (const [id, expected] of Object.entries(baseline.fields)) assert.equal(hash(previous[id]), expected, id);
   for (const [id, expected] of Object.entries(baseline.materialDefinitions)) assert.equal(hash(TACTICS_TERRAIN_MATERIALS[id]), expected, id);
 });

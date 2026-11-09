@@ -229,7 +229,9 @@ test('locked media returns null paths so the UI makes no image request', () => {
 
 test('schema rejects unsafe fan-service, false family status and non-contract paths', () => {
   const leonBeach = CG_CATALOG.find(({ characterId, type }) => characterId === 'leon' && type === 'beachFamily');
-  assert.throws(() => createCgDefinition({ ...leonBeach, ageStatus: 'unknown-family-safe-only' }), /adult-confirmed/);
+  assert.equal(createCgDefinition({ ...leonBeach, ageStatus: 'unknown-family-safe-only' }).contentRating, 'family');
+  assert.throws(() => createCgDefinition({ ...leonBeach, ageStatus: 'unknown-family-safe-only', contentRating: 'teen' }), /family-safe|family-safe-only/);
+  assert.throws(() => createCgDefinition({ ...leonBeach, ageStatus: 'unknown-family-safe-only', consentStatus: 'adult-consensual-romance' }), /Unknown age/);
   assert.throws(() => createCgDefinition({ ...leonBeach, consentStatus: 'not-required' }), /validated ageStatus and consentStatus/);
   assert.throws(() => createCgDefinition({ ...leonBeach, canonStatus: 'canon-inspired' }), /Fan Art CG/);
 

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T06:30:24.808074+00:00",
+  "sourceHeroId": "tail_concerto_waffle",
+  "targetSourceEnemyId": "tail_concerto_red_vest_kitten",
+  "sourceWork": "Tail Concerto (1998)",
+  "source1to1Verified": false,
+  "scope": "Two actual GameCanvas Tactics flows and two actual FighterMode flows, one for each camp. This is separate from isolated engine/API fixtures.",
+  "fixtureRule": "The exact canonical nonoffensive NPC template is supplied before the first turn/update. Tactics player-side NPC replaces an initial placeholder body, retaining only runtime fields and canonical NPC data. Positions are seeded once before the first command. No eligibility flag, HP mutation, action, capture state, timer or team transfer is injected after play begins.",
+  "commands": "Actual French UI ability selection plus canvas click/keyboard confirmation in Tactics; actual FighterMode action keys for the correct camp. Pause/resume uses React session state and real UI buttons. One observer breakpoint after the first real captured/released sprite draw is declared separately from user pause input.",
+  "assertions": [
+    "Native NPC PNG is fetched, fully decoded and actually drawn by the production renderer.",
+    "Record the actual native cells/phases/columns without counting unavailable cells as observed.",
+    "Capture causes zero HP damage, zero lift, unchanged canonical identity and unchanged stored team.",
+    "Pause holds the actual capture state and native visual elapsed time.",
+    "Tactics releases through the actual target-turn-consumed path; Fighter releases through the finite1.25second runtime state.",
+    "Waffle artwork availability is reported from actual runtime bindings; historical fallback art is not claimed as new W17 delivery."
+  ],
+  "finalFreezeClaimed": false
+}

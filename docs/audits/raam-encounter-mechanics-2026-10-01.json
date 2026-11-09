@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-01",
+  "stageId": 1,
+  "incarnation": "Gears of War (2006), Xbox 360 — Lightmass Bomb train / Pale Horse",
+  "status": "source mechanics implemented as an ATB adaptation; visual fidelity remains pending",
+  "references": [
+    {
+      "url": "https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough01.txt",
+      "author": "Brad Russell (TheGum)",
+      "title": "Gears of War Walkthrough and Guide, Xbox 360, version 1.1 (2006-11-27)",
+      "section": "The COGs of War / BOSS: GENERAL RAAM",
+      "retrievedDate": "2026-10-01",
+      "sourceTextSha256": "bb2ce92b86caf9f182b95a3530f5f9502a135e421a8765fa49723138d59a94f1",
+      "verifiedClaims": [
+        "Kryll departing create attack opportunities; explosive Torque Bow bolts disperse them.",
+        "Players must move into small illuminated areas behind crates when the swarm attacks."
+      ]
+    },
+    {
+      "url": "https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough03.txt",
+      "author": "Matt Silvey (Cuzit)",
+      "title": "Gears of War Solo Hardcore with Insane Tips, Xbox 360, version 1.1",
+      "section": "Act 5: Pale Horse — preparation and normal fight; Kryll enemy entry",
+      "retrievedDate": "2026-10-01",
+      "sourceTextSha256": "8aa59ccb724033a732d1b172dbc8c6bbab4839bf5dfbed8b0e54415698f4419e",
+      "verifiedClaims": [
+        "RAAM takes no damage while covered by Kryll. Explosions or a dispatched swarm remove that cover.",
+        "Kryll avoid light; the source pre-fight supply room supports carrying four frag grenades."
+      ]
+    }
+  ],
+  "implemented": [
+    "Kryll shield blocks ordinary attacks, status effects, damage over time and external item/event damage.",
+    "A player-selected frag grenade disperses the shield on its delayed impact and uses one of four shared charges.",
+    "RAAM alternates his real Troika action and a single-target Kryll swarm action; sending that swarm exposes him until it returns.",
+    "Lit cover is a real formation position: heroes avoid swarm damage there; melee lunges out of that zone remain vulnerable.",
+    "Physical cover reduces Troika hits without granting blanket invulnerability.",
+    "Attack previews show zero damage while Kryll protect RAAM.",
+    "ATB, pause, manual targeting and dead actors constrain source encounter commands and freeze delayed impacts.",
+    "Automatic battle uses light cover and waits for real openings after ammunition is exhausted.",
+    "External direct damage keeps its precomputed fixed loss, optional pickup shield semantics and nonlethal floor after the source gate."
+  ],
+  "adaptations": [
+    "The existing perspective ATB battlefield replaces the original third-person cover-shooter camera.",
+    "Four frag charges are shared by the crossover squad; the original carry limit is four per player.",
+    "A frag opening lasts 720 simulation ticks (12 seconds at 60 Hz), deliberately allowing a slow solo ATB hero to recharge and land a follow-up hit. This is not an asserted source timing.",
+    "Swarm travel/duration, periodic damage, damage values and a 0.55 Troika cover multiplier are project balancing values.",
+    "Selecting lit cover moves a hero to one authored illuminated lane and consumes full ATB. Source controls are not reproduced.",
+    "The crossover hero kits remain available; the original train weapon availability is not certified for those kits."
+  ],
+  "remaining": [
+    "Original cover traversal, RAAM advancing between train cars, camera and active reload.",
+    "A source Torque Bow equipment/weapon selection and its explosive bolt interaction.",
+    "Original damage/animation timings and source-identical projectile/lighting art.",
+    "Existing character and backdrop bitmaps still require visual review; no bitmap is marked 1:1 by these mechanical changes."
+  ],
+  "preserved": [
+    "Stage ID 1, hero/template IDs, rewards, max HP and stored stats.",
+    "Existing first-wave Locust combat and all other stages and custom battles.",
+    "Public historical generation ledger and all image files."
+  ],
+  "validation": {
+    "testFile": "scripts/canonRaamEncounter.test.mjs",
+    "expectedTests": 29,
+    "actualEngine": "Vite SSR loads the shipped EngineRpg with the real stage resolver, source templates and hero kits.",
+    "keyScenarios": [
+      "CPU Troika/Kryll loop",
+      "Solo original-stat Marcus victory with zero initial grenades and no runtime HP/ATB manipulation",
+      "Solo frag thrower naturally recharges and lands a follow-up during the opening",
+      "Exact external fixed-damage, item-shield and nonlethal behavior",
+      "Pause, targeting, spent ammunition, light/shade, temporary melee exposure and custom-stage isolation",
+      "Original Marcus and Dom duo completes both campaign waves automatically from constructor state, without HP/ATB/stat manipulation"
+    ],
+    "balanceProbe": {
+      "fullMissionOriginalDuo": "victory, 5702 simulation ticks; Marcus 36/160 HP and Dom 130/130 HP",
+      "fullMissionSoloMarcus": "defeat on boss wave at 7165 ticks, RAAM 111/450 HP remaining; solo victory proof is the isolated boss duel",
+      "probeRandomValue": 0.5
+    },
+    "testsPassed": 29,
+    "testsFailed": 0,
+    "targetedLint": "passed",
+    "diffWhitespaceCheck": "passed",
+    "existingRpgP0RegressionTestsPassed": 104
+  }
+}

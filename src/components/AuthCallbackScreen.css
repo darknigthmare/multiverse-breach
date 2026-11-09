@@ -1,0 +1,15 @@
+.auth-callback-screen { min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px; box-sizing: border-box; }
+.auth-callback-card { position: relative; width: min(100%, 480px); padding: 28px; overflow-wrap: anywhere; }
+.auth-callback-card h1 { font-size: 26px; margin: 20px 0 12px; }
+.auth-callback-card p { font-size: 14px; line-height: 1.55; color: #c7d4d6; }
+.auth-callback-kicker, .auth-callback-email { color: #39c5bb !important; }
+.auth-callback-language { position: absolute; top: 16px; right: 16px; }
+.auth-callback-card form { display: grid; gap: 10px; }
+.auth-callback-card label { font-size: 14px; margin-top: 10px; }
+.auth-callback-card input { box-sizing: border-box; width: 100%; min-width: 0; padding: 12px; background: #080612; border: 1px solid #39c5bb; color: white; font: inherit; font-size: 16px; border-radius: 4px; }
+.auth-callback-card .btn-retro { min-height: 44px; white-space: normal; }
+.auth-callback-card :focus-visible { outline: 2px solid #ffeb3b; outline-offset: 3px; }
+.auth-callback-back { margin-top: 18px; width: 100%; }
+.auth-callback-error { color: #ff8585 !important; }
+.auth-email-tools { margin-top: 12px; display: grid; gap: 8px; }
+.auth-email-tools .btn-retro { white-space: normal; min-height: 44px; font-size: 12px; }

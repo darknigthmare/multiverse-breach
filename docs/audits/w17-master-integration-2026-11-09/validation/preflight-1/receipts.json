@@ -1,0 +1,78 @@
+{
+  "inputHashes": {
+    "scripts/sourcePreparedLegacyVersionWave17.test.mjs": "ab3d040a6b3b395833ade05174304117672e4dbd38fde2dd1d7f6a890c2ed3e3",
+    "scripts/combatCanonicalEditionFixtures.test.mjs": "d8f7e8685d75e0b2ccbd09ff85bde914adaf8e032d9b244c5f12a4b9cdc34cf0",
+    "scripts/combatFidelityWave10.test.mjs": "49fde73909d28cc2b215b9f2e8a4a6f35242499bdb60fde78aabd16864b8fce6",
+    "scripts/combatFidelityWave13.test.mjs": "3ac1c5ef8f380a4a64265706aaf98e1eb3c196adb90c7de986107dc596945948",
+    "scripts/combatSourceRuntimeWave16.test.mjs": "6d941c64add7d7fda62720fabbfb1671b3869954c8ce0bf255dbe50029756e26",
+    "src/game/combat/sourceKitPriority.js": "ae9011b3a85bf4366eb32a6f7ecce2f40305109512f60a83fe1db38e2e1ae51f",
+    "src/game/combatIdentity.js": "5ffd9257ba30ec97648610d17ce1ac5b2834f044c8f3e7dc00266e13a6182158"
+  },
+  "results": [
+    {
+      "name": "targeted-five",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "--test",
+        "--test-concurrency=1",
+        "scripts/sourcePreparedLegacyVersionWave17.test.mjs",
+        "scripts/combatCanonicalEditionFixtures.test.mjs",
+        "scripts/combatFidelityWave10.test.mjs",
+        "scripts/combatFidelityWave13.test.mjs",
+        "scripts/combatSourceRuntimeWave16.test.mjs"
+      ],
+      "node_options": "--max-old-space-size=4096",
+      "startedAt": "2026-11-09T09:43:30.752128+00:00",
+      "finishedAt": "2026-11-09T09:45:56.449628+00:00",
+      "pid": 50377,
+      "exitCode": 1,
+      "log": "/tmp/final-targeted-five-4096.log",
+      "logSha256": "e8f05c10e79612c116a55002d8fa7b48299e9d4cbbfcff5b5629bb7051d5a287",
+      "inputFiles": 7,
+      "changedInputs": {}
+    },
+    {
+      "name": "combat-presentation",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "npm",
+        "run",
+        "test:combat-presentation"
+      ],
+      "node_options": "--max-old-space-size=4096",
+      "startedAt": "2026-11-09T09:45:56.450868+00:00",
+      "finishedAt": "2026-11-09T09:51:32.956421+00:00",
+      "pid": 50606,
+      "exitCode": 1,
+      "log": "/tmp/final-combat-presentation-4096.log",
+      "logSha256": "6591e49062e48c0211a8e6dd478af426fcd8928fa33b2d37817ab78799cb8a25",
+      "inputFiles": 7,
+      "changedInputs": {}
+    },
+    {
+      "name": "tactics-verticality",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "npm",
+        "run",
+        "test:tactics-verticality"
+      ],
+      "node_options": "--max-old-space-size=4096",
+      "startedAt": "2026-11-09T09:51:32.956797+00:00",
+      "finishedAt": "2026-11-09T09:56:25.827410+00:00",
+      "pid": 51395,
+      "exitCode": 1,
+      "log": "/tmp/final-tactics-verticality-4096.log",
+      "logSha256": "0b0324ce6da71b436da4ac0b2139545700797230a80633c89d37e5f78b91d188",
+      "inputFiles": 7,
+      "changedInputs": {}
+    }
+  ]
+}

@@ -116,8 +116,8 @@ export function beginSourceControlWave16(source, target, profile, { hostile = tr
 }
 
 export function noteSourceDamageWave16(actor) {
-  if (sourceHeroIdWave16(actor) === 'oddworld_abe_possession')
-    actor.sourceDamageVersionWave16 = (actor.sourceDamageVersionWave16 || 0) + 1;
+  if (!actor || typeof actor !== 'object') return;
+  actor.sourceDamageVersionWave16 = (actor.sourceDamageVersionWave16 || 0) + 1;
 }
 
 export function advanceSourceCombatStatusesWave16(actors, seconds, { paused = false, visualSeconds = seconds } = {}) {

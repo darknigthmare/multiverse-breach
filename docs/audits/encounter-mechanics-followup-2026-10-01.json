@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-01",
+  "scope": "source encounter mechanics and their visible mission access and briefing",
+  "sourceStages": [
+    1,
+    2,
+    10
+  ],
+  "implementationFiles": [
+    "src/game/canonRaamEncounter.js",
+    "src/game/canonScarabEncounter.js",
+    "src/game/canonNihilanthEncounter.js",
+    "src/game/canonNihilanthEncounterPresentation.js",
+    "src/game/encounterDamage.js",
+    "src/game/canonEncounterBriefing.js",
+    "src/game/missions/universeMissionCategory.js"
+  ],
+  "validation": {
+    "fullPrebuild": {
+      "testCommandGroups": 15,
+      "passedTests": 1021,
+      "failedTests": 0,
+      "completed": true
+    },
+    "finalTargetedTests": {
+      "passedTests": 111,
+      "failedTests": 0,
+      "files": [
+        "scripts/canonEncounterBriefing.test.mjs",
+        "scripts/universeMissionCategory.test.mjs",
+        "scripts/canonRaamEncounter.test.mjs",
+        "scripts/raamEncounterPresentation.test.mjs",
+        "scripts/scarabEncounterMechanics.test.mjs",
+        "scripts/nihilanthEncounterMechanics.test.mjs",
+        "scripts/canonEncounterExternalDamage.test.mjs"
+      ]
+    },
+    "additionalCasesAfterPrebuild": 12,
+    "uniquePassingTests": 1033,
+    "lint": "passed",
+    "finalViteBuild": "passed",
+    "localMainBundle": "index-C3b8Yiew.js"
+  },
+  "visualFidelityApproved": false,
+  "installedImages": 0,
+  "remaining": {
+    "p0VisualCorrections": 25,
+    "distinctMissingAssetPaths": 6601,
+    "sourceSpecificFeatures": [
+      "Queen rescue and evacuation",
+      "Nihilanth teleportation rooms and summoned reinforcements",
+      "RAAM source camera, traversal and active reload",
+      "Scarab scripted movement and full Metropolis route",
+      "Pirates curse resolution"
+    ]
+  },
+  "publicationScope": "draft correction PR and Vercel preview; no production promotion",
+  "historicalSnapshot": true,
+  "followup": "rescue-mechanics-followup-2026-10-01.json implements Queen rescue/evacuation and Pirates curse resolution; validation here describes the prior RAAM/Scarab/Nihilanth lot."
+}

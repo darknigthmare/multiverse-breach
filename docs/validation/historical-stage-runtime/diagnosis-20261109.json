@@ -1,0 +1,272 @@
+{
+  "kind": "Controlled same-source Node22/24 arithmetic trace diagnosis, no source or baseline edits",
+  "runs": [
+    {
+      "node": "v22.23.4",
+      "v8": "12.4.254.21-node.57",
+      "command": "NODE_OPTIONS=--max-old-space-size=2048 taskset --cpu-list 0,1 /tmp/multiverse-node22-bin/node --test --test-concurrency=1 scripts/stageAnimationWave16.test.mjs scripts/stageAnimationWave17.test.mjs",
+      "exitCode": 1,
+      "tests": 11,
+      "pass": 9,
+      "fail": 2,
+      "log": "/tmp/renderer-stage-traces-node22-diagnosis-20261109.log"
+    },
+    {
+      "node": "v24.19.0",
+      "v8": "13.6.233.17-node.51",
+      "command": "NODE_OPTIONS=--max-old-space-size=2048 taskset --cpu-list 0,1 /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test --test-concurrency=1 scripts/stageAnimationWave16.test.mjs scripts/stageAnimationWave17.test.mjs",
+      "exitCode": 0,
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "log": "/tmp/renderer-stage-traces-node24-diagnosis-20261109.log"
+    }
+  ],
+  "sourceHashes": {
+    "src/game/melee/stageAnimationCatalog.js": "2af6890d75b9f9eda5b10d2062cb665e2b0ce54e7da126c7749fe973d41f5f3f",
+    "src/game/melee/stageAnimationCatalogWave11.js": "13549c59ce422d9e1c2b8a052cf90cc1b8a15e48562a0660d2da9d3d7c56d49d",
+    "docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json": "6063699c4e2e8424d7f9eb1574aabe6a433801442c2ec8cc1239020a6725503f",
+    "docs/combat-fidelity-wave17-2026-11-02/stages/baseline-before.json": "13339ae20d54be5f35031af959dd6d3226c5904ed3bd2dab38cde07492fee044"
+  },
+  "definitionCount": 435,
+  "drawSamples": 3480,
+  "differentSamples": 8,
+  "differentProperties": 8,
+  "maxAbsoluteDifference": 2.842170943040401e-14,
+  "cause": {
+    "operator": "** 3",
+    "base": 0.44999999999999996,
+    "node22Cube": 0.09112499999999998,
+    "node24Cube": 0.09112499999999997,
+    "drawCommandIndex": 24,
+    "propertyIndex": 2,
+    "node22Coordinate": 177.8660725,
+    "node24Coordinate": 177.86607249999997
+  },
+  "mismatches": [
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Combat",
+      "key": "at0",
+      "node22": "13e00cc9278173a0a7d678186c23a7255b5e84fb023984e75c9f695ee4f60f2d",
+      "node24": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "baseline": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Combat",
+      "key": "at23",
+      "node22": "1c8a816b9d8eade8b6198142051f28bb589bdc811b88ba96f6c4f17d504b9e72",
+      "node24": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "baseline": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Melee",
+      "key": "at0",
+      "node22": "13e00cc9278173a0a7d678186c23a7255b5e84fb023984e75c9f695ee4f60f2d",
+      "node24": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "baseline": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Melee",
+      "key": "at23",
+      "node22": "1c8a816b9d8eade8b6198142051f28bb589bdc811b88ba96f6c4f17d504b9e72",
+      "node24": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "baseline": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "RPG",
+      "key": "at0",
+      "node22": "13e00cc9278173a0a7d678186c23a7255b5e84fb023984e75c9f695ee4f60f2d",
+      "node24": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "baseline": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "RPG",
+      "key": "at23",
+      "node22": "1c8a816b9d8eade8b6198142051f28bb589bdc811b88ba96f6c4f17d504b9e72",
+      "node24": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "baseline": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Tactics",
+      "key": "at0",
+      "node22": "13e00cc9278173a0a7d678186c23a7255b5e84fb023984e75c9f695ee4f60f2d",
+      "node24": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "baseline": "a90b1f1017a78432e096b676680b43e59b9950564dc6d0f36ebb663b095663fa",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    },
+    {
+      "id": "w11-springfield-cooling-tower-vapor",
+      "mode": "Tactics",
+      "key": "at23",
+      "node22": "1c8a816b9d8eade8b6198142051f28bb589bdc811b88ba96f6c4f17d504b9e72",
+      "node24": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "baseline": "0b33f189eefd2f80b177f000994c55b134b5c6760a89419f046b52fe770efdb7",
+      "differences": [
+        [
+          [
+            24,
+            2
+          ],
+          177.8660725,
+          177.86607249999997
+        ]
+      ],
+      "firstCall22": [
+        "lineTo",
+        482.41648200000003,
+        177.8660725
+      ],
+      "firstCall24": [
+        "lineTo",
+        482.41648200000003,
+        177.86607249999997
+      ]
+    }
+  ]
+}

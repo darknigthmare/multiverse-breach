@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-28",
+  "baselineCommit": "0c4f9a165a1e00f1b897246b142c1a59878f5ac0",
+  "scope": "Two source-monochrome OVA studies; source-complete silhouettes, no confirmed color palette.",
+  "deliveredIds": [
+    "leona:ova-uniform-armband-monochrome-v5",
+    "ova-broadcasting-club-member:ova-uniform-monochrome-v5"
+  ],
+  "sources": [
+    {
+      "id": "ova-settei-rakuma-01",
+      "type": "model_sheet_photo",
+      "url": "https://img.fril.jp/img/689573559/l/2280209791.png?1717257611=",
+      "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+      "sourceMedium": "anime_ova",
+      "role": "Full clothed standing Leona model labelled レオナ・制服; body silhouette and clothing construction.",
+      "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+      "sha256": "3f9c5ea7a7c09cf9614289246f53a0bab55e8be4af08a2a01b39d0e0fc7968ca",
+      "filename": "01.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+    },
+    {
+      "id": "ova-settei-rakuma-10",
+      "type": "model_sheet_photo",
+      "url": "https://img.fril.jp/img/689573559/l/2280209821.png?1717257713=",
+      "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+      "sourceMedium": "anime_ova",
+      "role": "Accessory detail headed 社交部腕章; armband inscription 風紀 and construction; not a body-proportion authority.",
+      "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+      "sha256": "c7c228eddf772b1228c0bd715a5edc19edec42be74bee88c9b34afc28dac18ca",
+      "filename": "10.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+    },
+    {
+      "id": "ova-settei-rakuma-09",
+      "type": "model_sheet_photo",
+      "url": "https://img.fril.jp/img/689573559/l/2280209817.png?1717257709=",
+      "listingUrl": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+      "sourceMedium": "anime_ova",
+      "role": "Full clothed standing broadcasting-club model labelled 放送部員; small standing figure establishes clothing and proportions; enlarged portraits only support identity.",
+      "limitations": "Monochrome sale-listing scan; canonical color palette and studio chain of custody are not certified.",
+      "sha256": "3e5a1fc2b52ced050bffd20250750070ae7e5475b17f766274ddf93c41dba36e",
+      "filename": "09.png",
+      "dimensions": [
+        1080,
+        1080
+      ],
+      "provenanceNote": "Public sale-listing scan labelled as an OVA model sheet; studio chain of custody is not verified."
+    }
+  ],
+  "missingCostumeReview": {
+    "date": "2026-10-28",
+    "scope": "Miyuki Umezaki, Saori OVA civilian skirt, Leona OVA party dress, Linda OVA western attire; read-only source review",
+    "base_commit_reported_by_parent": "0c4f9a1",
+    "repo_modified": false,
+    "new_generation_ready_color_fullbody_references": 0,
+    "name_correction": {
+      "requested_phrase": "Leona western OVA",
+      "documented_candidate": "Linda western OVA",
+      "reason": "reference-v4-research.json pendingOutfits identifies linda-western-ova; no evidence for a Leona western costume."
+    },
+    "items": [
+      {
+        "characterId": "saori",
+        "outfitId": "saori-casual-skirt-ova",
+        "fullBodySource": true,
+        "feetVisible": true,
+        "paletteEstablished": false,
+        "newColorEvidenceFound": false,
+        "sourcePage": "https://item.fril.jp/472295f91ae459dc10279eff1b1b483b",
+        "sourceImage": "https://img.fril.jp/img/707910931/l/2359527207.jpg?1725008379=",
+        "visuallyInspectedThisPass": true,
+        "attribution": "Left drawing labelled 音川沙織 私服",
+        "observed": "Standing front; buttoned collared shirt with rolled sleeves, belt, short straight skirt, front and rear skirt construction, legs and low-heeled shoes.",
+        "limits": [
+          "Monochrome photographed sheet does not prove colors.",
+          "Photograph includes a separate Yuuki study; no isolated source was recovered.",
+          "No OVA color frame attributed to this precise outfit found.",
+          "Keep this skirt distinct from existing VN shorts."
+        ]
+      },
+      {
+        "characterId": "leona",
+        "outfitId": "leona-evening-ova",
+        "fullBodySource": true,
+        "feetVisible": true,
+        "paletteEstablished": false,
+        "newColorEvidenceFound": false,
+        "sourcePage": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+        "sourceImage": "https://img.fril.jp/img/689573559/l/2280209792.png?1717257662=",
+        "visuallyInspectedThisPass": true,
+        "attribution": "Right drawing labelled レオナ パーティドレス",
+        "observed": "Front figure with long dress and sandals; rear torso/hair detail; distinct from Reina design on left.",
+        "limits": [
+          "Monochrome source; no securely attributed color frame found.",
+          "Do not attribute an anonymous blonde guest from a different screenshot solely by hair color.",
+          "No generation performed."
+        ]
+      },
+      {
+        "characterId": "miyuki",
+        "outfitId": "undetermined",
+        "fullBodySource": false,
+        "feetVisible": false,
+        "paletteEstablished": false,
+        "sourcePage": "https://www.ymgal.games/ca46296",
+        "secondarySource": "https://mywaifulist.moe/waifu/miyuki-umezaki",
+        "newFinding": "YMGal names the character 梅崎 みゆき and links the VN; targeted Japanese-name search found no new clothed full-body source.",
+        "limits": [
+          "Existing portrait crop does not establish clothing.",
+          "A secondary OVA series category is insufficient to convert the VN portrait into an OVA costume source.",
+          "No new reference downloaded."
+        ]
+      },
+      {
+        "characterId": "linda",
+        "outfitId": "linda-western-ova",
+        "fullBodySource": false,
+        "feetVisible": false,
+        "paletteEstablished": "head-and-hat-only",
+        "sourcePage": "https://www.animecharactersdatabase.com/characters.php?id=14101&imgid=145365",
+        "sourceImage": "https://www.animecharactersdatabase.com/uploads/chars/36226-486833371.png",
+        "newFinding": "Existing v4 reference remains limited to face, cowboy hat and collar; targeted western/cowboy searches found no complete garment reference.",
+        "limits": [
+          "No lower garment or footwear evidence.",
+          "No new image inspected in this pass.",
+          "No costume transfer to Leona."
+        ]
+      }
+    ],
+    "access_checks": [
+      {
+        "url": "https://setteidreams.net/settei/discipline/",
+        "result": "Not accessible via web tool; no bypass attempted."
+      },
+      {
+        "url": "https://web.archive.org/web/20060624040935/http://www.amorz.com/discipline/index.html",
+        "result": "Not accessible via web tool; no bypass attempted."
+      },
+      {
+        "url": "https://item.fril.jp/38530a21867deea1a44e00d98bc8487b",
+        "result": "Public listing accessible; same ten previews."
+      },
+      {
+        "url": "https://item.fril.jp/472295f91ae459dc10279eff1b1b483b",
+        "result": "Public listing accessible; same two previews."
+      }
+    ],
+    "rejected_evidence": [
+      "AI/LoRA galleries, prompts and claimed colors are not canonical costume evidence.",
+      "Search results for figures with explicit or undressing imagery were not opened.",
+      "No inaccessible archive contents assumed inspected."
+    ]
+  },
+  "oneToOneCertified": false,
+  "fullArchiveInspected": false,
+  "generationInputs": "Public sale-listing scans labelled as OVA model sheets; no earlier catalogue sprite was used. A same-session draft was used for the documented Leona correction.",
+  "sourceProvenanceLimit": "Japanese labels establish the asserted character/role within the scans; no independent studio chain of custody has been verified.",
+  "generationBlocks": [
+    {
+      "characterId": "reina",
+      "requestedOutfit": "ova-party-dress",
+      "status": "not-generated",
+      "reason": "Image-generation output rejected by moderation; no asset installed.",
+      "requestId": "7a44ead0-800c-4259-84c3-1cdb04a1cce2",
+      "errorCode": "moderation_blocked",
+      "stage": "output",
+      "prompt": "Use case: stylized-concept.\nAsset type: one new full-body pixel-art game costume sprite, Reina Morimoto in the evening gown shown by the supplied references.\nImage 1 is the named costume model sheet. Reproduce ONLY the adult woman at the far LEFT labelled レイナ and her back-view drawing immediately to the right. That complete standing drawing is the authority for her individual proportions, silhouette, garment construction, hem, side slit and sandals.\nImage 2 is the color scene. The seated woman at LEFT is Reina. Use her face, light brown gathered hair with the long front locks, violet eyes, pale ice-blue gown and narrow matching scarf. Do not depict the woman in yellow, the phone, furniture or background.\nDraw Reina alone in an ordinary relaxed standing pose, three-quarter view facing the viewer's right, with calm expression and empty relaxed hands. Keep the model sheet's head-to-body scale, narrow natural neck, shoulder width, torso length, arm lengths and long leg proportions. Do not use chibi proportions or enlarge the head. Transfer the complete silhouette faithfully, rather than substituting a generic anime body.\nClothing: the same opaque one-shoulder draped floor-length pale-blue formal gown, diagonal neckline, gathered folds at the waist, side slit at her right, the matching long narrow neck scarf from the color frame, and the thin-strap heeled sandals from the model sheet. Keep the single-shoulder construction and the exact garment length. This is a neutral character-costume reference presentation.\nRendering: detailed crisp anime pixel art with coherent small pixel clusters and restrained shading, matching a high-resolution static game sprite. One character, complete hair, hands, gown hem and both sandals wholly inside the frame with clear margins. Square 1254 by1254 composition, genuinely transparent background, no shadow beneath the feet, no scenery, no text, no watermark, no border."
+    }
+  ],
+  "identityNote": "放送部員 is a role label, not a personal name; 社交部腕章 is the accessory-sheet title and 風紀 appears on the armband."
+}

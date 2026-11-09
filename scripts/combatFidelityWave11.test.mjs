@@ -1,3 +1,4 @@
+import { assertBaseSpriteEdition } from './combatCanonicalEditionFixtures.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -147,7 +148,7 @@ test('the frozen W10 assets,372 PNGs,80 registries and ten detailed manifests re
     for(const entry of data.entries||[])if(entry.sheet&&entry.sha256){assert.equal(sha256(read(`public${entry.sheet}`)),entry.sha256);if(pngs.has(entry.sheet))assert.equal(pngs.get(entry.sheet),entry.sha256);pngs.set(entry.sheet,entry.sha256);}
   }
   assert.equal(registries,80);assert.equal(pngs.size,372);assert.equal(old.baseSpriteCorrections.entries.length,103);
-  for(const e of old.baseSpriteCorrections.entries){assert.equal(getHeroSpriteSheetSrc(hero(e.heroId),'rpg'),e.sheet);const layout=getSpriteSheetLayout(e.sheet);assert.equal(layout.columns,4);assert.equal(layout.rows,4);}
+  for(const e of old.baseSpriteCorrections.entries){assertBaseSpriteEdition(hero(e.heroId),e,getHeroSpriteSheetSrc(hero(e.heroId),'rpg'));const layout=getSpriteSheetLayout(e.sheet);assert.equal(layout.columns,4);assert.equal(layout.rows,4);}
   const added=[...partPaths,...['A','B','C','D'].map(p=>`src/game/combat/characterSpriteCorrectionsWave11Part${p}.generated.json`),...fullMeleePaths,'src/game/combat/summonAnimationsWave11.generated.json'].flatMap(p=>json(p).entries);
   assert.equal(added.length,93);for(const e of added){assert.equal(pngs.has(e.sheet),false,e.sheet);assert.equal(sha256(read(`public${e.sheet}`)),e.sha256);pngs.set(e.sheet,e.sha256);}assert.equal(pngs.size,465);
 });

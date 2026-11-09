@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-01",
+  "scope": "Stage 12 — Metal Gear Solid (1998), Shadow Moses REX encounter; source Jack 2003 ammunition in Tactics",
+  "sourceIncarnation": "Metal Gear Solid (1998) - Shadow Moses",
+  "sources": [
+    {
+      "url": "https://www.konami.com/mg/archive/mgs/",
+      "type": "Konami primary title archive",
+      "retrieved": true,
+      "sha256": "663c7d962d62674ef84e684d3a746977e725f296f5fa8d8c39481d2ca1e259e7",
+      "claims": [
+        "Original Metal Gear Solid identity; character/story archive."
+      ],
+      "limitations": "Not itself a strategy guide."
+    },
+    {
+      "url": "https://archive.org/download/mgs-1-screenplay/MGS1_Screenplay_djvu.txt",
+      "type": "Konami MGS1 Screenplay Book / Story Compendium, archival OCR",
+      "retrieved": true,
+      "sha256": "371cc553e412f6d4fbf06c2a969f0984e489505167525c5e46b6222a4dac5ef7",
+      "pages": [
+        "381–385",
+        "385–387",
+        "454–455"
+      ],
+      "claims": [
+        "Stinger target is the radome on REX left arm; armored exterior is not the defeat target.",
+        "Gray Fox fires a laser at the radome sensors; the cockpit opens for manual control.",
+        "Stinger missiles into the open cockpit destroy the computer control system.",
+        "Gray Fox brings Stinger missiles during the transition.",
+        "Liquid survives disabled REX and later fights Solid Snake atop it."
+      ],
+      "limitations": "The compendium includes working screenplay material and is not alone a certification of every final-game animation or timing. The encounter order is corroborated by the original-game walkthrough."
+    },
+    {
+      "url": "https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough05.txt",
+      "type": "Matthew Reynolds / Crazyreyn original PlayStation FAQ, version 1.0 (2007)",
+      "retrieved": true,
+      "sha256": "5ef30723935b32e16f5488fc62475e119d335ecfc2f66c1849481ae43a8dc7c2",
+      "claims": [
+        "First target is radome with Stinger; second target is exposed central cockpit.",
+        "Liquid Snake fistfight follows REX disablement."
+      ],
+      "limitations": "Fan-authored gameplay guide, not an official numerical balance specification."
+    },
+    {
+      "url": "https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough04.txt",
+      "type": "Original PlayStation walkthrough, Underground Base Cave",
+      "retrieved": true,
+      "sha256": "840b22eb620dde00fdd15a8fecb2822aafee5d2e690e4aa4f12ba196958b79a3",
+      "claims": [
+        "Ninja intervention between two REX targets; chaff/radar dependence ends in manual cockpit phase.",
+        "Liquid survives the REX battle."
+      ],
+      "limitations": "Legacy guide with transcription errors; cross-checked with compendium and the other guide."
+    }
+  ],
+  "implemented": [
+    "Two playable target pools: radome first, then open cockpit after summarized Gray Fox assistance.",
+    "Source Stinger mission targeting uses actual hero turn, reachable-cell movement, target-cell click, two-to-six-cell profile and line of sight.",
+    "Body HP template is preserved at 720; ordinary attacks, external items, field supers, anomalies, infection and hazards cannot replace the weak-point sequence.",
+    "Overflow cannot spill from radome into cockpit; actual target HP loss is counted and used for lifedrain.",
+    "Completion disables REX; Liquid survives, and living Genome Soldiers do not block the encounter result.",
+    "Exact stage mode/incarnation/universe/exclusive-roster/canonical boss guards; custom stages and other incarnations are excluded.",
+    "Jack 2003 Tactics pistol has one shot per new battle, only spent on a legal hit; depleted actions are rejected before cooldown, charge and turn costs; other actions and ordinary profiles remain available.",
+    "Custom enemy Jack reserves are separate from player reserves."
+  ],
+  "adaptations": [
+    "Existing 720 boss HP are split into 360 radome and 360 cockpit points. These are game balance values, not original-game source values.",
+    "Shared Stinger supply, repeated availability to a crossover squad, a stationary one-cell target, a two-cell minimum range, damage values and tactical turn timing are adaptations.",
+    "Gray Fox laser assistance and supply are represented at the phase transition; his death cinematic and movement are not replayed.",
+    "Three baseline Genome Soldiers remain an adapted arena composition; they do not participate in the original REX duel.",
+    "REX weapon AI remains the existing railgun-based tactical attack; full source machine-gun, missile, laser and stomp patterns are not reproduced.",
+    "The later Liquid fistfight, escape sequence and source camera geometry are not included in this mission.",
+    "Jack reserve renewal is per new crossover battle, not a claim of repeated shots within the source film story."
+  ],
+  "visualStatus": "Pending — no current bitmap is certified 1:1; no newly generated image installed.",
+  "validation": {
+    "targetedScenarioTests": 106,
+    "targetedScenarioTestsPassed": 106,
+    "additionalRealTimerTests": 1,
+    "additionalRealTimerTestsPassed": 1,
+    "newRexAndJackTestCount": 22,
+    "naturalManualSquad": "Solid Snake, Master Chief, Leon; authored statistics retained; actual reachable-cell inputs and target clicks; no HP/ATB/position injection in full-path test.",
+    "naturalAiSquad": "Same authored squad and stats; legal AI route; only animation scheduling removed in deterministic scenario tests.",
+    "realTimerCheck": {
+      "passed": true,
+      "durationMs": 57734.552154,
+      "frameCadenceMs": 16,
+      "originalEngineDelaysMs": [
+        400,
+        500,
+        600
+      ],
+      "failureDeadlineMs": 75000,
+      "testTimeoutMs": 90000,
+      "modifications": "No overrides of source statistics, HP, ATB, positions, actor cooldowns or engine scheduling."
+    },
+    "lint": "oxlint for engineTactics.js, canonRexEncounter.js and canonRexEncounter.test.mjs passed; git diff --check passed."
+  },
+  "implementationInputs": [
+    {
+      "path": "src/game/engineTactics.js",
+      "sha256": "f0cfbf77f401101e25708c0b1b9e73cde2dd2d62602ab90b63425ee898ef6e7b"
+    },
+    {
+      "path": "src/game/canonRexEncounter.js",
+      "sha256": "8614c32c36d14cef4290d870c81acb160b89ef1498a3a0535b6175e6fa782b1d"
+    },
+    {
+      "path": "scripts/canonRexEncounter.test.mjs",
+      "sha256": "d00c309b8de04cd8f545c0381962b754fa47db933964fc76562ddf7d8cb353d0"
+    },
+    {
+      "path": "scripts/canonPriorityCorrections.test.mjs",
+      "sha256": "45fd4b1fa889d9d561bca161e19c254759d5a8c595d1ab583749d8f86c3c3523"
+    },
+    {
+      "path": "scripts/canonEncounterExternalDamage.test.mjs",
+      "sha256": "5150a751dfaabdd539122b0f90e8f61ad00ad7085f572801b5b11428e4113653"
+    },
+    {
+      "path": "scripts/scarabEncounterMechanics.test.mjs",
+      "sha256": "5e5b83f45342076810830e147cffe3315475cd4105b6cbcfd579b95d6b809d88"
+    },
+    {
+      "path": "src/game/canonBlackPearlSourceKits.js",
+      "sha256": "5993fe544c0dd017a11efd87a04308fca68e7ace1fbe20d76d0095c1197e0773"
+    }
+  ],
+  "finalValidationReport": "docs/audits/rex-black-pearl-followup-2026-10-01.json",
+  "historicalValidationCommit": "34e222b7036d3943aacfa6250f04f357d2216ba1",
+  "supersededForRexAttacksBy": "docs/audits/rex-weapon-patterns-and-chaff-2026-10-01.json"
+}

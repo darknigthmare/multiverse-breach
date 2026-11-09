@@ -1,0 +1,63 @@
+✔ Jade registers45 distinct four-pose native states and keeps pure frame sampling separate from combat (14052.388516ms)
+✔ Jade melee/player: actual light action applies one hit only when visible staff overlaps the real hurtbox (8.716209ms)
+✔ Jade melee/cpu: actual light action applies one hit only when visible staff overlaps the real hurtbox (1.47209ms)
+✔ Jade fighter/player: actual light action applies one hit only when visible staff overlaps the real hurtbox (3.945785ms)
+✔ Jade fighter/cpu: actual light action applies one hit only when visible staff overlaps the real hurtbox (1.353232ms)
+✖ Jade melee/player: held charge releases the Daï-Jo with its original charged clock and power, rather than a Gyrodisk (1.098619ms)
+✖ Jade melee/cpu: held charge releases the Daï-Jo with its original charged clock and power, rather than a Gyrodisk (0.402705ms)
+✔ Jade fighter/player: heavy uses a physical charged Daï-Jo while special keeps the glove projectile (0.782285ms)
+✔ Jade fighter/cpu: heavy uses a physical charged Daï-Jo while special keeps the glove projectile (0.707423ms)
+✔ Jade has196 genuinely distinct bounded visible cells in seven hashed PNGs, with only180bound to45states (230.393355ms)
+✔ Every packed source sample preserves the actual retained RGBA, including nonzero native antialias alpha below24 (1202.046465ms)
+✔ Actual generation receipts retain twelve attempts,232observed candidates and36excluded drawings without false chronology (30.684822ms)
+✔ Twelve real palms/wrists bind eleven contacts; nine staff measurements exclude photo and glove projectile (1.406593ms)
+✔ All nine native staff contact states project only inside physical contactcolumn2, in both camps, without mutation (1.93207ms)
+✔ Photographs, glove projectiles, source forgeries and unmeasured native evidence cannot borrow a Daï-Jo capsule (1.455977ms)
+✔ Capsule/hurtbox collision uses the real rounded segment and rejects a range-only hit or a square-corner false positive (0.467159ms)
+✔ Gyrodisk plays all16 distinct action frames and emits from the measured glove at exact release, including RPG/Tactics views (4.959286ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 15
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16991.236502
+
+✖ failing tests:
+
+test at scripts/jadeMeleeWave17.test.mjs:28:36
+✖ Jade melee/player: held charge releases the Daï-Jo with its original charged clock and power, rather than a Gyrodisk (1.098619ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/jadeMeleeWave17.test.mjs:29:37)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/jadeMeleeWave17.test.mjs:28:36
+✖ Jade melee/cpu: held charge releases the Daï-Jo with its original charged clock and power, rather than a Gyrodisk (0.402705ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/jadeMeleeWave17.test.mjs:29:37)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

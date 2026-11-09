@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "heroId": "raven_tt",
+  "characterId": "raven_tt",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "status": "major-difference",
+  "canonicalFidelityApproved": false,
+  "currentSprite": {
+    "path": "public/sprites/generated/heroes/teen-titans/raven-tt.png",
+    "sha256": "f7e41b655e3e6a3110aef1231c2917400729eb27b381d25ca8eb3323e8c7ffce",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "independentlyViewed": true,
+    "status": "major-difference",
+    "requiredAction": "needs-source-correction",
+    "observations": [
+      "Current atlas uses a short squat/chibi silhouette and an ornate purple/gold mage costume: dark trousers, long tabard/waist panels, gold-edged patterned cloak and boots with gold details. These materially differ from the original WB2003 main model.",
+      "WB2003 source has a plain black high-neck long-sleeve leotard, gray legs/hands, solid blue-violet hooded cape, matching cuffs/short flat cuffed boots and RED/gold round brooch plus spaced belt stones. Current purple-centered brooch/buckle and extra tabard/trim are unsupported by that source.",
+      "Visible forehead red diamond not confirmed in current tiny hooded sprite; do not assert invisible precision. Current ornate floating crystal/tablet graphics are project interpretation, not an independent identity source.",
+      "Several atlas regions visibly have horizontal transparent gaps/cuts around boots/head, an additional technical concern separate from character likeness. No technical repair or redraw was attempted in this QA task.",
+      "Current file remains preserved as previous project art; the five new CGs use qualified WB2003 sources, not this atlas as authority."
+    ]
+  },
+  "reference": {
+    "path": "docs/cg/references/wave3-2026-10-20/raven/Ravenmodel1.jpg",
+    "sha256": "c13733db2c6ff47b1dd30f3224065f50d23571d88ad6ec35c2b780b3720b8339",
+    "role": "independent-canon-reference",
+    "referencePurpose": "identity",
+    "viewed": true,
+    "provenance": "WarnerBros Animation2003 MAINMODEL RAVENBODYTURNS MM00405 FINAL12/9/02, studio sheet hosted via Wiki mirror."
+  },
+  "atlasGeneration": {
+    "status": "not-attempted-in-this-wave",
+    "serviceRefusalForAtlas": false,
+    "note": "CG04/07/08 requests were refused. No Raven atlas request occurred here; open sprite discrepancies are not atlas service refusals."
+  },
+  "reviewedAt": "2026-10-20T09:13:35.261236+00:00",
+  "runtimeSelectionEvidence": {
+    "module": "src/game/spriteAssets.js#getHeroSpriteSheetSrc",
+    "characterId": "raven_tt",
+    "context": "auto",
+    "returnedPath": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+    "matchesReviewedFile": true,
+    "executedAndVerified": true,
+    "verifiedAt": "2026-10-20T09:14:21.454Z"
+  }
+}

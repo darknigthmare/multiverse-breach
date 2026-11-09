@@ -18,7 +18,8 @@ import { getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout, g
 import { measureCombatFidelity } from './combatFidelityAudit.mjs';
 import { HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE14, WAVE14_ABILITY_COUNT_DELTA, WAVE14_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave14.mjs';
 import { WAVE15_ABILITY_COUNT_DELTA, WAVE15_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave15.mjs';
-import { projectPresentationIdsBeforeWave16, WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
+import { projectAbilitiesBeforeWave16, projectPresentationIdsBeforeWave16, WAVE16_PRESENTATION_IDS } from './combatFidelityHistoricalCohortWave16.mjs';
+import { projectAbilitiesBeforeWave17, projectPresentationIdsBeforeWave17, WAVE17_PRESENTATION_IDS, WAVE17_ABILITY_COUNT_DELTA } from './combatFidelityHistoricalCohortWave17.mjs';
 import { getCharacterAnimationAssets, getCharacterAnimationFrame, resolveCharacterAnimationAsset } from '../src/game/combat/characterAnimationCatalog.js';
 
 const root = new URL('../', import.meta.url);
@@ -37,6 +38,52 @@ const roster = new Map(HEROES_DB.map(hero => [hero.id, hero]));
 const hero = id => { assert.ok(roster.has(id), id); return roster.get(id); };
 const sorted = values => [...values].sort();
 const sha256 = value => createHash('sha256').update(value).digest('hex');
+// These exact master actors supersede specified raw catalog slots; they do not
+// rewrite the independently frozen generic-slot or authoring baselines.
+const masterRawBytes = readFileSync(new URL('fixtures/masterCanonicalRaw3036cd02.json', import.meta.url));
+assert.equal(sha256(masterRawBytes), 'c061ed857028374d6fe331d32558ed6a10072ea92b1ec2fb1d812e69690eec1e');
+const masterRaw = JSON.parse(masterRawBytes);
+assert.equal(masterRaw.sourceCommit, '3036cd021edfe544534a09df5c401eb024808b39');
+assert.equal(masterRaw.sourceHeroesSha256, '99e103e87fdb1ff6e56108a1614f5a60400c836d21affba76cf6e3bf372604c1');
+assert.equal(masterRaw.source1to1Verified, false);
+assert.equal(masterRaw.actors.length, 35);
+const masterRawActors = new Map(masterRaw.actors.map(actor => [actor.id, actor]));
+assert.equal(masterRawActors.size, 35);
+// Current P0/Black Pearl actions and the declared current chronologies are
+// contracts, even if a resolver regresses to an older authored action name.
+const currentCanonicalRuntimeIds = new Set([
+  'saturnin_duck', 'lilo_pelekai', 'stitch_626', 'jack_sparrow_potc', 'roger_rabbit',
+  'batman_tdk', 'batman_n52', 'joker_n52', 'harley_n52', 'grim_knight',
+  'raven_tt', 'starfire_tt', 'harry', 'hermione', 'cyber_spider_kelly',
+  'cyber_spider_flamethrower', 'cyber_spider_electro_beam', 'mj_performer', 'rhythm_guard_mj',
+  'will_turner_potc', 'elizabeth_swann_potc', 'mistral_mgr', 'ripley', 'han_solo',
+  'bob_minions', 'kevin_minions', 'stuart_minions', 'darth_maul', 'liquid_snake'
+]);
+assert.equal(currentCanonicalRuntimeIds.size, 29);
+for (const id of currentCanonicalRuntimeIds) assert.ok(masterRawActors.has(id), id);
+const basicSlots = ['simple', 'secondary', 'defense'];
+const broadPatterns = { simple: /Signature Strike|signature action/i,
+  secondary: /Breach Technique|signature technique/i, defense: /Signature Guard|defensive action|\bGuard$/i };
+const strictPlaceholder = (actor, slot, name) => slot === 'defense'
+  ? /Signature Guard|defensive action/i.test(name) || name === `${actor.name} Guard`
+    || actor.legacyRosterName && name === `${actor.legacyRosterName} Guard`
+  : broadPatterns[slot].test(name);
+const assertMasterRawActor = actor => {
+  const pinned = masterRawActors.get(actor.id);
+  assert.ok(pinned, actor.id + ': undeclared master canonical actor');
+  assert.deepEqual(actor, pinned, actor.id + ': master canonical raw actor changed');
+  return pinned;
+};
+const baselineKey = entry => `${entry.id}:${entry.slot}`;
+const baselineKeys = new Set(baseline.genericAbilitySlots.entries.map(baselineKey));
+const projectedCurrentRawCandidates = () => {
+  const entries = baseline.genericAbilitySlots.entries.map(entry => ({ ...entry,
+    originalAction: masterRawActors.get(entry.id)?.[entry.slot] || entry.originalAction }));
+  for (const actor of masterRaw.actors) for (const slot of basicSlots) {
+    if (!baselineKeys.has(`${actor.id}:${slot}`)) entries.push({ id: actor.id, universe: actor.universe, slot, originalAction: actor[slot] });
+  }
+  return entries.filter(entry => broadPatterns[entry.slot].test(entry.originalAction.name));
+};
 const support = new Set(['heal', 'guard', 'buff', 'cleanse', 'revive']);
 const generic = /Signature Strike|signature action|Breach Technique|signature technique|Signature Guard|defensive action/i;
 const noop = () => {};
@@ -90,18 +137,34 @@ const makeRpg = (callerId, side = 'player') => {
 const tick = (engine, n) => { for (let index = 0; index < n; index++) engine.update(); };
 
 test('the independent baseline preserves 4252 exact original slots and the original shared animations', () => {
+  assert.equal(sha256(readFileSync(new URL('docs/combat-fidelity-2026-10-18/baseline.json', root))),
+    '76be77dd643440a13a58dadb5465778b6fdd5622366ec62c82e1f253017973df');
   assert.equal(baseline.genericAbilitySlots.total, 4252);
   assert.deepEqual(baseline.genericAbilitySlots.counts, { simple: 1330, secondary: 1387, defense: 1535 });
   assert.equal(baseline.meleeAnimationBindings.counts.idleFallback, 80254);
   assert.equal(baseline.presentations.scriptedCharacterPairs, 0);
   assert.equal(baseline.entityChoreography.dedicatedEntityScripts, 0);
+  for (const pinned of masterRaw.actors) assertMasterRawActor(hero(pinned.id));
+  const canonicalChanges = baseline.genericAbilitySlots.entries.filter(entry => {
+    const pinned = masterRawActors.get(entry.id);
+    return pinned && JSON.stringify(pinned[entry.slot]) !== JSON.stringify(entry.originalAction);
+  });
+  assert.equal(canonicalChanges.length, 76);
+  assert.equal(new Set(canonicalChanges.map(entry => entry.id)).size, 28);
   for (const entry of baseline.genericAbilitySlots.entries) {
     assert.equal(hero(entry.id).universe, entry.universe);
-    assert.deepEqual(hero(entry.id)[entry.slot], entry.originalAction, `${entry.id}:${entry.slot}: original catalog was overwritten`);
+    const actor = hero(entry.id);
+    if (JSON.stringify(actor[entry.slot]) !== JSON.stringify(entry.originalAction)) {
+      const pinned = assertMasterRawActor(actor);
+      assert.deepEqual(actor[entry.slot], pinned[entry.slot], `${entry.id}:${entry.slot}: undeclared raw catalog replacement`);
+    } else assert.deepEqual(actor[entry.slot], entry.originalAction, `${entry.id}:${entry.slot}: original catalog was overwritten`);
   }
 });
 
 test('the authored union separates1365 complete kits,72 original partial records and one lore correction', () => {
+  const beforeWave17 = projectAbilitiesBeforeWave17(COMBAT_ABILITY_OVERRIDES);
+  assert.equal(Object.keys(beforeWave17).length, 1582);
+  assert.equal(Object.keys(projectAbilitiesBeforeWave16(beforeWave17)).length, 1582);
   const canonicalIds = Object.keys({ ...CANONICAL_COMBAT_OVERRIDES, ...CANONICAL_COMBAT_EXTENSIONS });
   assert.equal(canonicalIds.length, 85);
   const full = [...firstCompletion.genericCapabilities.map(entry => entry.id), ...additionalCompletion.map(entry => entry.id), ...canonicalIds];
@@ -110,7 +173,11 @@ test('the authored union separates1365 complete kits,72 original partial records
   assert.equal(residualBaseline.reduce((sum, entry) => sum + entry.missingSlots.length, 0), 114);
   for (const entry of residualBaseline) {
     assert.equal(entry.universe, hero(entry.id).universe);
-    for (const slot of entry.missingSlots) assert.deepEqual(hero(entry.id)[slot], entry[slot], `${entry.id}:${slot}: residual source catalog was overwritten`);
+    for (const slot of entry.missingSlots) {
+      const actor = hero(entry.id);
+      if (JSON.stringify(actor[slot]) !== JSON.stringify(entry[slot])) assert.deepEqual(actor[slot], assertMasterRawActor(actor)[slot]);
+      else assert.deepEqual(actor[slot], entry[slot], `${entry.id}:${slot}: residual source catalog was overwritten`);
+    }
   }
   const expected = [...full.map(id => ({ id, slots: ['simple', 'secondary', 'defense'] })),
     ...residualBaseline.map(entry => ({ id: entry.id, slots: entry.missingSlots })), loreCorrection];
@@ -130,12 +197,48 @@ test('the authored union separates1365 complete kits,72 original partial records
         assert.ok(WAVE15_PRESENTATION_IDS.has(id));
         assert.equal(record.identityBasis, 'catalogue-roster-adaptation', `${id}: an unverified catalog role must not claim an official identity`);
         assert.match(record.sourceWork, /official personal identity unverified/);
+      } else if (['absolver_downfall_windfall', 'absolver_downfall_khalt', 'absolver_downfall_forsaken'].includes(id)) {
+        assert.ok(WAVE17_PRESENTATION_IDS.has(id));
+        assert.equal(record.identityBasis, 'declared-player-configuration', `${id}: a configurable Prospect must not claim a unique official appearance`);
+        assert.match(record.sourceReference, /(?:custom|configur|avatar)/i, `${id}: the configured appearance must be declared`);
       } else assert.ok(['canonical-technique', 'canonical-role', 'authored-universe-canon'].includes(record.identityBasis), `${id}: undeclared identity basis`);
       assert.equal(record.canonicalVerified, false, id);
       assert.equal(record.networkVerified, false, id);
       assert.doesNotMatch(action.name, generic, `${id}:${slot}`);
       if (slot === 'defense') assert.notEqual(action.name, `${hero(id).name} Guard`, `${id}: defense still uses the strict character-name placeholder`);
       const profile = resolveCombatAbility(hero(id), slot);
+      if (currentCanonicalRuntimeIds.has(id)) {
+        const pinned = assertMasterRawActor(hero(id)), raw = pinned[slot];
+        // The final REX edition refines labels, not W13's independently
+        // reviewed local contact budget, targeting or release clock.
+        const selectedAction = id === 'liquid_snake' ? { ...action, name: raw.name, type: raw.type,
+          ...(raw.canonPresentation ? { canonPresentation: raw.canonPresentation } : {}) } : raw;
+        const { slot: sourceSlot, sourceHeroId, ...sourceAction } = profile.sourceAbility;
+        assert.deepEqual(sourceAction, selectedAction, `${id}:${slot}: current canonical resolution lost its exact selected action`);
+        assert.equal(profile.name, raw.name); assert.equal(sourceSlot, slot); assert.equal(sourceHeroId, id);
+        assert.equal(profile.sourceHeroId, id); assert.equal(profile.universe, pinned.universe);
+        assert.equal(profile.provenance.sourceUniverse, pinned.universe);
+        assert.equal(profile.provenance.canonicalVerified, false);
+        assert.ok(Number.isFinite(profile.hitAt) && profile.hitAt > 0 && profile.hitAt < profile.duration);
+        if (slot === 'defense') {
+          assert.equal(profile.effect, 'guard'); assert.equal(profile.delivery, 'support');
+          assert.equal(profile.targetSide, 'self'); assert.equal(profile.multiplier, 0);
+          assert.ok(raw.reduce > 0 && raw.reduce < 1 && raw.dur > 0);
+        } else {
+          assert.equal(profile.effect, 'damage'); assert.equal(profile.targetSide, 'enemy');
+          assert.equal(profile.multiplier, selectedAction.dmg); assert.ok(selectedAction.dmg > 0);
+          if (id === 'liquid_snake') {
+            assert.equal(profile.delivery, action.targeting.delivery);
+            assert.equal(profile.range, action.targeting.range);
+            assert.equal(profile.duration, action.animationDuration);
+            assert.equal(profile.hitAt, action.hitAt);
+          }
+          if (raw.attackProfile?.delivery === 'melee') assert.equal(profile.delivery, 'melee');
+          if (raw.attackProfile?.delivery === 'ranged') assert.ok(['projectile', 'beam'].includes(profile.delivery));
+          if (slot === 'secondary') assert.ok(raw.cd > 0);
+        }
+        continue;
+      }
       assert.equal(profile.name, action.name, `${id}:${slot}: authored action is not actually resolved`);
       assert.equal(profile.sourceHeroId, id);
       assert.equal(profile.sourceAbility.sourceHeroId, id);
@@ -281,7 +384,7 @@ test('45 engine states select bounded coarse poses and declare reuse instead of 
 });
 
 test('every character script has seven real frame-selection sequences and bounded interpolation', () => {
-  const historicalIds = projectPresentationIdsBeforeWave16(Object.keys(CHARACTER_PRESENTATIONS));
+  const historicalIds = projectPresentationIdsBeforeWave16(projectPresentationIdsBeforeWave17(Object.keys(CHARACTER_PRESENTATIONS)));
   assert.equal(historicalIds.filter(id => !WAVE14_PRESENTATION_IDS.has(id) && !WAVE15_PRESENTATION_IDS.has(id)).length, 281);
   assert.equal(historicalIds.filter(id => roster.has(id) && !WAVE14_PRESENTATION_IDS.has(id) && !WAVE15_PRESENTATION_IDS.has(id)).length, 280, 'player_anchor must not inflate roster coverage');
   for (const [id, record] of Object.entries(CHARACTER_PRESENTATIONS)) for (const phase of PRESENTATION_PHASES) {
@@ -648,30 +751,47 @@ test('Aria has a separately sourced dagger correction with16 actual base poses a
 
 test('the audit distinguishes raw names, effective names, missing dedicated art and unverified fidelity', () => {
   const report = measureCombatFidelity();
-  projectPresentationIdsBeforeWave16(report.presentations.entries.map(entry => entry.id));
+  projectPresentationIdsBeforeWave16(projectPresentationIdsBeforeWave17(report.presentations.entries.map(entry => entry.id)));
   assert.deepEqual(report.presentations.entries.map(entry => entry.id).sort(), Object.keys(CHARACTER_PRESENTATIONS).sort(),
     'The audit must still measure every live presentation recipe');
   const wave16RosterRecipes = report.presentations.entries.filter(entry => WAVE16_PRESENTATION_IDS.has(entry.id) && roster.has(entry.id));
+  const wave17RosterRecipes = report.presentations.entries.filter(entry => WAVE17_PRESENTATION_IDS.has(entry.id) && roster.has(entry.id));
+  const wave17Delta = report.abilities.wave17RoleCorrections?.countDelta || { authoredHeroes: 0, authoredSlots: 0, completeThreeSlotKits: 0, partialSlotKits: 0 };
+  if (report.batch.wave === 17) assert.deepEqual(wave17Delta, WAVE17_ABILITY_COUNT_DELTA);
   assert.equal(wave16RosterRecipes.length, WAVE16_PRESENTATION_IDS.size, 'Every exact new W16 recipe belongs to the real roster');
-  assert.equal(report.abilities.rawHeuristicCandidateSlots, 4252, 'the original broad candidate catalog should remain measurable');
+  const projectedRaw = projectedCurrentRawCandidates();
+  const frozenStrict = baseline.genericAbilitySlots.entries.filter(entry => strictPlaceholder(hero(entry.id), entry.slot, entry.originalAction.name));
+  assert.equal(frozenStrict.length, 4134, 'the original strict-placeholder cohort is immutable');
+  const currentStrict = projectedRaw.filter(entry => strictPlaceholder(hero(entry.id), entry.slot, entry.originalAction.name));
+  assert.equal(report.abilities.rawHeuristicCandidateSlots, projectedRaw.length, 'only the pinned master canonical raw replacements may change the current candidate count');
   assert.equal(report.abilities.baselineHeuristicCandidateSlots, 4252);
-  assert.equal(report.abilities.baselineCandidateSlotsReplaced + report.abilities.effectiveHeuristicCandidateSlots, 4252);
-  assert.equal(report.abilities.rawStrictGenericSlots, 4134);
-  assert.deepEqual(report.abilities.rawStrictCounts, { simple: 1330, secondary: 1387, defense: 1417 });
-  assert.equal(report.abilities.rawConcreteDefenseCandidatesForReview.length, 118);
+  const effectiveCandidates = HEROES_DB.flatMap(actor => basicSlots.flatMap(slot => {
+    const profile = resolveCombatAbility(actor, slot);
+    return profile && broadPatterns[slot].test(profile.name) ? [{ id: actor.id, slot, name: profile.name }] : [];
+  }));
+  const effectiveBaselineKeys = new Set(effectiveCandidates.filter(entry => baselineKeys.has(baselineKey(entry))).map(baselineKey));
+  assert.equal(report.abilities.baselineCandidateSlotsReplaced, 4252 - effectiveBaselineKeys.size);
+  assert.equal(report.abilities.effectiveHeuristicCandidateSlots, effectiveCandidates.length);
+  assert.deepEqual(frozenStrict.reduce((counts, entry) => ({ ...counts, [entry.slot]: (counts[entry.slot] || 0) + 1 }), {}),
+    { simple: 1330, secondary: 1387, defense: 1417 });
+  assert.equal(report.abilities.rawStrictGenericSlots, currentStrict.length);
+  assert.deepEqual(report.abilities.rawStrictCounts,
+    currentStrict.reduce((counts, entry) => ({ ...counts, [entry.slot]: (counts[entry.slot] || 0) + 1 }), {}));
+  assert.equal(baseline.genericAbilitySlots.entries.length - frozenStrict.length, 118);
+  assert.equal(report.abilities.rawConcreteDefenseCandidatesForReview.length, projectedRaw.length - currentStrict.length);
   assert.equal(report.abilities.effectiveStrictGenericSlots, 0, 'strict generic slots remain in the effective runtime');
-  assert.equal(report.abilities.authoredHeroes - WAVE15_ABILITY_COUNT_DELTA.authoredHeroes - WAVE14_ABILITY_COUNT_DELTA.authoredHeroes, 1528);
-  assert.equal(report.abilities.authoredSlots - WAVE15_ABILITY_COUNT_DELTA.authoredSlots - WAVE14_ABILITY_COUNT_DELTA.authoredSlots, 4480);
-  assert.equal(report.abilities.completeThreeSlotKits - WAVE15_ABILITY_COUNT_DELTA.completeThreeSlotKits - WAVE14_ABILITY_COUNT_DELTA.completeThreeSlotKits, 1455);
-  assert.equal(report.abilities.partialSlotKits - WAVE15_ABILITY_COUNT_DELTA.partialSlotKits - WAVE14_ABILITY_COUNT_DELTA.partialSlotKits, 73);
+  assert.equal(report.abilities.authoredHeroes - wave17Delta.authoredHeroes - WAVE15_ABILITY_COUNT_DELTA.authoredHeroes - WAVE14_ABILITY_COUNT_DELTA.authoredHeroes, 1528);
+  assert.equal(report.abilities.authoredSlots - wave17Delta.authoredSlots - WAVE15_ABILITY_COUNT_DELTA.authoredSlots - WAVE14_ABILITY_COUNT_DELTA.authoredSlots, 4480);
+  assert.equal(report.abilities.completeThreeSlotKits - wave17Delta.completeThreeSlotKits - WAVE15_ABILITY_COUNT_DELTA.completeThreeSlotKits - WAVE14_ABILITY_COUNT_DELTA.completeThreeSlotKits, 1455);
+  assert.equal(report.abilities.partialSlotKits - wave17Delta.partialSlotKits - WAVE15_ABILITY_COUNT_DELTA.partialSlotKits - WAVE14_ABILITY_COUNT_DELTA.partialSlotKits, 73);
   assert.equal(report.abilities.originalResidualCohort.heroes, 72);
   assert.equal(report.abilities.originalResidualCohort.slots, 114);
   assert.equal(report.abilities.separateLoreCorrections.heroes, 1);
   assert.equal(report.abilities.separateLoreCorrections.slots, 1);
   assert.deepEqual(report.abilities.separateLoreCorrections.entries.map(entry => entry.id), [loreCorrection.id]);
   assert.equal(report.abilities.unresolvedSlots, 0);
-  assert.equal(report.presentations.scriptedHeroes - wave16RosterRecipes.length - WAVE15_PRESENTATION_IDS.size - WAVE14_PRESENTATION_IDS.size, 280);
-  assert.equal(report.presentations.scriptedPairs - (wave16RosterRecipes.length + WAVE15_PRESENTATION_IDS.size + WAVE14_PRESENTATION_IDS.size) * PRESENTATION_PHASES.length, 1960);
+  assert.equal(report.presentations.scriptedHeroes - wave17RosterRecipes.length - wave16RosterRecipes.length - WAVE15_PRESENTATION_IDS.size - WAVE14_PRESENTATION_IDS.size, 280);
+  assert.equal(report.presentations.scriptedPairs - (wave17RosterRecipes.length + wave16RosterRecipes.length + WAVE15_PRESENTATION_IDS.size + WAVE14_PRESENTATION_IDS.size) * PRESENTATION_PHASES.length, 1960);
   assert.equal(report.entities.scriptedEntities, 28);
   assert.equal(report.entities.distinctSampledTrajectories, 28);
   assert.equal(report.characterPixelBaseline.summary.pixelHashedSheets, 1905);

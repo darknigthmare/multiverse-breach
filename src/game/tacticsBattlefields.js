@@ -1,13 +1,15 @@
+import { getSourceSceneBattlefield, resolveSourceScene } from './sourceSceneStages.js';
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { TACTICS_VERTICAL_BATTLEFIELDS } from './tacticsVerticalBattlefields.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS } from './tacticsUniverseBattlefields.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15 } from './tacticsUniverseBattlefieldsWave15.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16 } from './tacticsUniverseBattlefieldsWave16.js';
+import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17 } from './tacticsUniverseBattlefieldsWave17.js';
 
 // Historical wave exports remain bounded; all live selectors use this union.
 export const TACTICS_SOURCE_BATTLEFIELDS = Object.freeze({
-  ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16
+  ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17
 });
 
 const tile = (x, y, type, label = null) => ({ x, y, type, label });
@@ -175,6 +177,47 @@ export const TACTICS_BATTLEFIELDS = {
       obstacle('cyber_node_b', 'Glitch Battery', 2, 4, 'barrel', 35, '#00ff66')
     ]
   },
+  metropolis_scarab_deck: {
+    id: 'metropolis_scarab_deck',
+    label: { fr: 'Abordage du Scarab de Metropolis', en: 'Metropolis Scarab Boarding' },
+    objective: 'commander',
+    objectiveTarget: 1,
+    rows: 6,
+    cols: 9,
+    tags: ['bossArena', 'urban', 'boarding', 'halo2'],
+    tiles: [
+      tile(2, 1, 'high'), tile(3, 1, 'high'),
+      tile(5, 1, 'lightCover'), tile(6, 4, 'lightCover')
+    ],
+    heroSpawns: [{ x: 0, y: 1 }, { x: 0, y: 2 }, { x: 1, y: 3 }],
+    monsterSpawns: [{ x: 5, y: 1 }, { x: 6, y: 3 }, { x: 6, y: 5 }],
+    bossSpawns: [],
+    worldBossSpawn: { x: 7, y: 2 },
+    obstacles: [
+      obstacle('metropolis_concrete_barrier', 'Concrete Road Barrier', 3, 3, 'barrier', 95, '#7d858c'),
+      obstacle('scarab_deck_barricade', 'Scarab Deck Barricade', 5, 4, 'barrier', 95, '#625879')
+    ]
+  },
+  shadow_moses_rex_hangar: {
+    id: 'shadow_moses_rex_hangar',
+    label: { fr: 'Hangar REX de Shadow Moses', en: 'Shadow Moses REX Hangar' },
+    objective: 'commander',
+    objectiveTarget: 1,
+    rows: 6,
+    cols: 9,
+    tags: ['bossArena', 'industrial', 'metalGearSolid1998'],
+    tiles: [
+      tile(2, 1, 'lightCover'), tile(6, 1, 'lightCover'),
+      tile(2, 4, 'lightCover'), tile(6, 4, 'lightCover')
+    ],
+    heroSpawns: [{ x: 0, y: 2 }, { x: 0, y: 3 }, { x: 1, y: 4 }],
+    monsterSpawns: [{ x: 6, y: 1 }, { x: 6, y: 3 }, { x: 6, y: 5 }],
+    bossSpawns: [{ x: 7, y: 2 }],
+    obstacles: [
+      obstacle('rex_hangar_crate_a', 'Hangar Crate', 3, 2, 'barrier', 95, '#455a64'),
+      obstacle('rex_hangar_crate_b', 'Hangar Crate', 5, 3, 'barrier', 95, '#455a64')
+    ]
+  },
   boss_command_zone: {
     id: 'boss_command_zone',
     label: { fr: 'Zone de commandement boss', en: 'Boss Command Zone' },
@@ -304,6 +347,7 @@ const difficultyRank = (difficulty = 'Medium') => ({
 }[difficulty] ?? 1);
 
 export function getTacticsMissionProfile(stage = {}, battlefield = null) {
+  if (resolveSourceScene(stage)) return {tier:'source-scene',label:{fr:'Rencontre source',en:'Source encounter'},reinforcementEvery:0,hazardPulseEvery:0,hazardRadius:0,pressure:0};
   const rank = difficultyRank(stage.difficulty);
   const tags = battlefield?.tags || [];
   const hasHazards = tags.includes('hazard') || (battlefield?.tiles || []).some(cell => cell.type === 'hazard');
@@ -350,6 +394,7 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
 }
 
 const sourceLocationMatchers = {
+  ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17,
   ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16,
   ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15,
   ff7_mt_nibel_tactics: /\b(?:nibel|nibelheim)\b/i,
@@ -372,6 +417,8 @@ export function getUniverseTacticsBattlefield(stage = {}, { allowDefault = false
 }
 
 export function getTacticsBattlefield(stage = {}) {
+  const sourceField = getSourceSceneBattlefield(stage);
+  if (sourceField) return sourceField;
   const universe = stage.universe || '';
   const signature = getSignature(universe);
   const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena

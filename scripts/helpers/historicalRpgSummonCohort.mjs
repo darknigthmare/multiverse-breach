@@ -34,6 +34,14 @@ const wave15Identities = [
   ['dog_hl2-wave15', 'Half-Life::Dog::Coup du bras mécanique de Dog'],
   ['kendra_daniels-wave15', 'Dead Space::Kendra Daniels::Relais technique de Kendra Daniels'],
 ];
+const wave17Identities = [
+  ['jade-wave17', 'Beyond Good & Evil::Jade::Combo du Daï-Jo de Jade'],
+  ['rayman-wave17', 'Rayman::Rayman::Poing chargé de Rayman'],
+  ['skye-wave17', 'Sanctum::Skye Autumn::Rafale du fusil d’assaut de Skye'],
+  ['okarun-wave17', 'Dandadan::Okarun::Charge physique d’Okarun transformé'],
+  ['melody-wave17', 'Crypt of the NecroDancer::Melody::Déplacement de Melody à la Golden Lute'],
+  ['medic-wave17', 'Team Fortress 2::Medic::ÜberCharge du Medi Gun stock'],
+];
 
 export async function installHistoricalRpgSummonCohort({ wave }) {
   const validator = validators[wave];
@@ -65,12 +73,17 @@ export async function installHistoricalRpgSummonCohort({ wave }) {
   const additionsPath = 'src/game/combat/summonAnimationsWave16.generated.json';
   const additionsBytes = await read(additionsPath);
   assert.equal(sha(additionsBytes), '78f439f96ee0be5ffe6fa2cfe1cdf5941cc2c3f2ca1e88669609a6abce353f6a');
-  const additions = JSON.parse(additionsBytes).entries;
+  const wave17Bytes = await read('src/game/combat/summonAnimationsWave17.generated.json');
+  assert.equal(sha(wave17Bytes), '81e7fd7353574367dff61d8afc8ad2be89f12cdab7554b50864dcf7071e7b8bb');
+  const wave17Additions = JSON.parse(wave17Bytes).entries;
+  assert.deepEqual(wave17Additions.map(asset => [asset.id, asset.key]), wave17Identities,
+    'Admit exactly the six declared W17 summon objects into the live catalog');
+  const additions = [...JSON.parse(additionsBytes).entries, ...wave17Additions];
   const expectedLive = [...expected, ...additions];
   assert.equal(new Set(expectedLive.map(asset => asset.key)).size, expectedLive.length);
   assert.equal(new Set(expectedLive.map(asset => asset.id)).size, expectedLive.length);
   const baselineKeys = new Set(expected.map(asset => asset.key));
-  assert.ok(additions.every(asset => !baselineKeys.has(asset.key)), 'W16 additions must not replace historical objects');
+  assert.ok(additions.every(asset => !baselineKeys.has(asset.key)), 'W16/W17 additions must not replace historical objects');
   const historicalView = registries.flatMap((registry, index) => Number(registryPaths[index].match(/Wave(\d+)\./)[1]) <= wave ? registry.entries : []);
 
   const snapshotPath = 'docs/combat-fidelity-wave14-2026-10-25/rpg-historical-assets-before.json';
@@ -93,7 +106,7 @@ export async function installHistoricalRpgSummonCohort({ wave }) {
     assert.deepEqual([...actual].sort((a, b) => a.key.localeCompare(b.key)),
       [...expectedLive].sort((a, b) => a.key.localeCompare(b.key)));
     // This is a real historical list of complete objects, not a replacement
-    // numeric count. Exactly the hash-pinned W16 objects are excluded from W15.
+    // numeric count. Exactly the hash-pinned W16/W17 objects are excluded from W15.
     assert.deepEqual(actual.filter(asset => baselineKeys.has(asset.key)), expected);
     assert.deepEqual(actual.filter(asset => !baselineKeys.has(asset.key)), additions);
     for (const record of snapshot.entries) {
@@ -115,17 +128,28 @@ export async function installHistoricalRpgSummonCohort({ wave }) {
   const historicalViewKeys = historicalView.map(asset => asset.key);
   const viewKeys = new Set(historicalViewKeys);
   const excludedKeys = expectedLive.filter(asset => !viewKeys.has(asset.key)).map(asset => asset.key);
+  const historicalActors = [];
+  if (wave === 13) {
+    const planBytes = await read('docs/combat-fidelity-wave13-2026-10-24/batch-plan-before.json');
+    assert.equal(sha(planBytes), 'c2c5072ee64c0a8570b1d3229c2644b6f61ff0e2c6f7cc203e821f315326388f');
+    const records = JSON.parse(planBytes).heroes.filter(row => row.hero?.id === 'ripley');
+    assert.equal(records.length, 1);
+    assert.equal(records[0].hero.universe, 'Alien');
+    assert.equal(records[0].hero.simple.name, 'Pulse Rifle');
+    historicalActors.push(records[0].hero);
+  }
   register(new URL('./historicalRpgSummonCohortLoader.mjs', import.meta.url), import.meta.url, {
     data: { targetUrl: new URL(validator.path, root).href, validatorSha256: validator.sha256,
       countExpression: validator.countExpression, excludedKeys, historicalViewKeys,
       historicalViewCount: historicalView.length, liveCount: expectedLive.length,
-      postBaselineKeys: additions.map(asset => asset.key) },
+      postBaselineKeys: additions.map(asset => asset.key), historicalActors },
   });
   const summary = { wave, realCatalogAssets: expectedLive.length, unchangedHistoricalAssets: expected.length,
     checkedHistoricalSourcePngs: expected.length, checkedHistoricalAtlasPngs: expected.length,
     historicalViewAssets: historicalView.length, excludedExactPostBaselineKeys: additions.length,
     excludedExactKeys: excludedKeys.length, validatorSha256: validator.sha256,
-    historicalCountLiteralUnchanged: ({ 13: 43, 14: 49, 15: 55 })[wave], historicalReportWrites: 0 };
+    historicalCountLiteralUnchanged: ({ 13: 43, 14: 49, 15: 55 })[wave], historicalReportWrites: 0,
+    exactFrozenHistoricalActors: historicalActors.map(actor => actor.id) };
   console.log(JSON.stringify({ historicalRpgCohortPreflight: summary }));
   return summary;
 }

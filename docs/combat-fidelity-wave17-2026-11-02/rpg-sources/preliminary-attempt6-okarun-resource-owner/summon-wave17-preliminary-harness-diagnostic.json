@@ -1,0 +1,43 @@
+{
+  "error": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /RENFORT.*Okarun/ })\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" class=\"btn-special\" title=\"100 ATB et 100 % de charge spéciale. Une utilisation par combattant et par combat ; choisis puis confirme les cibles.\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+  "pageErrors": [],
+  "browserClosed": false,
+  "body": "Pause de contrôle\nBREACH ZONE: Invocation review ordinary room\nUnivers: Dandadan (RPG)\n🤖 COMBAT AUTO\nVITESSE 2X\nDandadan - Directive A.R.C.A.: synchroniser l ATB, declencher les reliques et fermer la breche.\nRPG: les reliques soutiennent le tempo ATB.\nArtefacts 0/0\nSFX ON / RPG\nCELLULE\nMomo ◀\n100000/100000 HP\nP2 / MENACES\n7. CLOUD STRIFE — 100000/100000 HP / ATB -99376%\nCOMBAT AUTO: OFF\nAttendre pendant le choix des cibles\nMOMO AYASE ACTIONS\n⚔️ Poussée psychique de Momo\nBasic Action\n⚡ Prise psychique de Momo\nSkill Action\n🛡️ Interception par la main psychique\nShield Defense\n🔥 POUSSÉE PSYCHIQUE CONCENTRÉE DE MOMO\nREADY!\nRENFORT · Okarun\n100 ATB + charge 100 % · 1 fois par combat · U / R1 · RB",
+  "sourceReadiness": {
+    "atb": 100,
+    "state": "idle",
+    "charge": 100,
+    "used": false,
+    "allies": [
+      {
+        "id": "momo_ayase",
+        "x": 146,
+        "y": 304,
+        "state": "idle",
+        "hp": 100000
+      }
+    ],
+    "summon": {
+      "available": true,
+      "ready": false,
+      "actorId": "hero:0:momo_ayase",
+      "side": "player",
+      "id": "momo_ayase:reinforcement:oken_dandadan:special",
+      "name": "Okarun — Charge physique d’Okarun transformé",
+      "entityName": "Okarun",
+      "actionName": "Charge physique d’Okarun transformé",
+      "universe": "Dandadan",
+      "kind": "reinforcement",
+      "entityAssetId": null,
+      "used": false,
+      "atb": 100,
+      "charge": 100,
+      "cost": {
+        "atb": 100,
+        "charge": 100
+      },
+      "assetMissing": false,
+      "reason": "busy"
+    }
+  }
+}

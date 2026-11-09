@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "jin",
+  "heroId": "jin",
+  "characterName": "Jin Kisaragi",
+  "proposedIncarnation": {
+    "label": "Jin Kisaragi — BlazBlue Centralfiction (2015), costume par défaut proposé",
+    "status": "proposed-universe-scope-needs-character-incarnation-check",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "needs-reference",
+  "sourceActuallyViewed": false,
+  "identityQualified": false,
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "attempts": [
+    {
+      "url": "https://www.arcsystemworks.com/game/BLAZBLUE-CENTRALFICTION-Special-Edition/",
+      "attemptedAt": "2026-10-26T08:14:04.855943+00:00",
+      "identityQualified": false,
+      "imageActuallyViewed": false,
+      "result": "request-error-no-qualified-image",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.blazblue.jp/cf/ac/world.html",
+      "attemptedAt": "2026-10-26T08:14:04.897884+00:00",
+      "identityQualified": false,
+      "imageActuallyViewed": false,
+      "result": "request-error-no-qualified-image",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "additionalAttemptEvidence": [
+    {
+      "path": ".tmp/cg-wave11-2026-10-26/lot-04/jin/research/correct-incarnation-attempt.json",
+      "result": {
+        "url": "https://www.blazblue.jp/cf/manual-switch/en/character/jin.html",
+        "qualified": false,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    }
+  ],
+  "scopeLimitations": [
+    "No incarnation-matching identity image has been qualified through actual inspection. URLs, snippets, page200 status and old generic project sprites do not establish visual identity.",
+    "No CG or atlas generation counted for this unresolved subject in wave11. Existing art preserved.",
+    "Age and hidden details remain undocumented; no inferred continuity fusion."
+  ],
+  "references": [],
+  "historicalProjectArtNotAuthority": [
+    {
+      "path": "/sprites/generated/heroes/blazblue/jin.png",
+      "exists": true,
+      "role": "historical-project-image-not-source-fidelity-approval"
+    }
+  ]
+}

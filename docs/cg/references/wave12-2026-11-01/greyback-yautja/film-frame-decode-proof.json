@@ -1,0 +1,29 @@
+{
+  "status": "passed-exact-full-frame-decode-replay",
+  "sourceVideo": {
+    "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-public-clip.mp4",
+    "sha256": "92e4dce3d6352e3bb29c124acc40ace869a323297188ee4a69236a118b7990bb",
+    "url": "https://clip.cafe/videos/take-it-s19.mp4",
+    "pageUrl": "https://clip.cafe/predator-2-1990/take-it-s19/",
+    "actualFetchStatus": 200,
+    "bytes": 972641
+  },
+  "retainedFrame": {
+    "path": "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-film-frame-first-fps1.png",
+    "sha256": "8a6699d0aa69ea8bb2d3ca5f4f1c26dd7fdccdfa0d16431a81e66d406903a265"
+  },
+  "replayedPngByteEqual": true,
+  "replayedRgbEqual": true,
+  "noSemanticEditing": true,
+  "independentSourceCreated": false,
+  "ffmpegCommand": [
+    "ffmpeg",
+    "-i",
+    "predator2-take-it-public-clip.mp4",
+    "-vf",
+    "fps=1",
+    "-frames:v",
+    "1",
+    "first.png"
+  ]
+}

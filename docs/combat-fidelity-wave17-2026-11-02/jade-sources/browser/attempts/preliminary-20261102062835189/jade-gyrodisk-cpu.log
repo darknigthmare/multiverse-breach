@@ -1,0 +1,38 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: All16native glove cells must actually be drawn during the real keyboard action
++ actual - expected
+
+  [
+    0,
+    1,
+    2,
+    3,
+    4,
+-   5,
+    6,
+    7,
+    8,
+    9,
+    10,
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/jade-sources/browser/jade-ui-browser.mjs:42:959 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+     0,  1,  2,  3,  4,  6,
+     7,  8,  9, 10, 11, 12,
+    13, 14, 15
+  ],
+  expected: [
+     0,  1,  2,  3,  4,  5,
+     6,  7,  8,  9, 10, 11,
+    12, 13, 14, 15
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

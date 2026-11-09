@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: all sixteen real contact clocks select sixteen different native cells and measured primary blades
+ok 1 - all sixteen real contact clocks select sixteen different native cells and measured primary blades
+  ---
+  duration_ms: 7.403289
+  type: 'test'
+  ...
+# Subtest: the real source and packed PNG SHA match and all32 blade points touch visible native metal pixels
+ok 2 - the real source and packed PNG SHA match and all32 blade points touch visible native metal pixels
+  ---
+  duration_ms: 73.963195
+  type: 'test'
+  ...
+# Subtest: ground registration, row scale, translation and both facing directions preserve exact physical projection
+ok 3 - ground registration, row scale, translation and both facing directions preserve exact physical projection
+  ---
+  duration_ms: 0.864051
+  type: 'test'
+  ...
+# Subtest: hurtbox contact uses the engine rectangle exactly, including edges and rejecting even a small real gap
+ok 4 - hurtbox contact uses the engine rectangle exactly, including edges and rejecting even a small real gap
+  ---
+  duration_ms: 0.370738
+  type: 'test'
+  ...
+# Subtest: two measured sword tips cannot become an invented segment or a second automatic contact
+ok 5 - two measured sword tips cannot become an invented segment or a second automatic contact
+  ---
+  duration_ms: 0.452922
+  type: 'test'
+  ...
+# Subtest: aliases, foreign universes, support, other actions and changed schedules never acquire source blade coordinates
+ok 6 - aliases, foreign universes, support, other actions and changed schedules never acquire source blade coordinates
+  ---
+  duration_ms: 0.361224
+  type: 'test'
+  ...
+# Subtest: missing or incompletely reviewed registries return null instead of a fabricated actor-center anchor
+ok 7 - missing or incompletely reviewed registries return null instead of a fabricated actor-center anchor
+  ---
+  duration_ms: 3.716177
+  type: 'test'
+  ...
+# Subtest: projection and collision do not mutate an accepted action, pose evidence, HP, resources or actor position
+ok 8 - projection and collision do not mutate an accepted action, pose evidence, HP, resources or actor position
+  ---
+  duration_ms: 0.419943
+  type: 'test'
+  ...
+# Subtest: translating padding, hidden transparent RGB and mirroring cannot create a new native drawing
+ok 9 - translating padding, hidden transparent RGB and mirroring cannot create a new native drawing
+  ---
+  duration_ms: 1.833391
+  type: 'test'
+  ...
+# Subtest: only bound states count, including five Senua rows and rectangular RPG cells
+ok 10 - only bound states count, including five Senua rows and rectangular RPG cells
+  ---
+  duration_ms: 0.974407
+  type: 'test'
+  ...
+# Subtest: empty, unseparated, out-of-canvas and falsely declared bound cells fail
+ok 11 - empty, unseparated, out-of-canvas and falsely declared bound cells fail
+  ---
+  duration_ms: 1.449153
+  type: 'test'
+  ...
+# Subtest: a new delivered sheet needs an actual W16 native source rather than historical public/reference/QA artwork
+ok 12 - a new delivered sheet needs an actual W16 native source rather than historical public/reference/QA artwork
+  ---
+  duration_ms: 0.464499
+  type: 'test'
+  ...
+# Subtest: Kirito uses sixteen real action cells within active contacts and four separate native32 preparation/recovery cells
+ok 13 - Kirito uses sixteen real action cells within active contacts and four separate native32 preparation/recovery cells
+  ---
+  duration_ms: 1.799323
+  type: 'test'
+  ...
+# Subtest: all sixteen published Kirito contacts are source-bound physical blade pixels with both real swords visible
+ok 14 - all sixteen published Kirito contacts are source-bound physical blade pixels with both real swords visible
+  ---
+  duration_ms: 39.971077
+  type: 'test'
+  ...
+# Subtest: autonomous Shield Pal contains sixteen genuinely distinct complete alpha cells from its actual generated source
+ok 15 - autonomous Shield Pal contains sixteen genuinely distinct complete alpha cells from its actual generated source
+  ---
+  duration_ms: 74.114175
+  type: 'test'
+  ...
+# Subtest: protection artwork provenance separates the rejected eye design, official references and unchanged RPG/historical assets
+ok 16 - protection artwork provenance separates the rejected eye design, official references and unchanged RPG/historical assets
+  ---
+  duration_ms: 199.422055
+  type: 'test'
+  ...
+# Subtest: visual lifecycle plays all sixteen cells, waits through the native cast and persists until exactly one absorbed hit
+ok 17 - visual lifecycle plays all sixteen cells, waits through the native cast and persists until exactly one absorbed hit
+  ---
+  duration_ms: 1.226388
+  type: 'test'
+  ...
+# Subtest: catalog projection stays cosmetic, follows both real facings and rejects hidden, dead or wrong-owner states
+ok 18 - catalog projection stays cosmetic, follows both real facings and rejects hidden, dead or wrong-owner states
+  ---
+  duration_ms: 0.29489
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2179.674288

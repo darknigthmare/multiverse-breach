@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "createdAt": "2026-10-25T07:20:27.045507+00:00",
+  "characterId": "aoi_mikazuki",
+  "heroId": "aoi_mikazuki",
+  "characterName": "Aoi Mikazuki",
+  "operationKind": "genuine-selected-V2-ImageGen-sixteen-whole-poses-from-four-groups",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+    "sha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+    "bytes": 2564424,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki-v2-fidelity-wave9-2026-10-25.png",
+    "sha256": "eafd6eb2ed404f16ac1cfa5d9f824f1fea00980595dd118a7d61672aee8df9f3",
+    "bytes": 1060589,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "publicAuditFile": "docs/audits/aoi-mikazuki-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+  "installerManifest": {
+    "path": "docs/audits/aoi-mikazuki-v2-reference-sprite-fidelity-wave9-2026-10-25.json",
+    "sha256": "59a73f19086e20dcb1a0c2c1662737cff1f58b60b80a78f7807823ddbfab371d"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave9-2026-10-25/aoi-mikazuki-sprite-independent-review.json",
+    "sha256": "ab69c75c8bcb5f3a4eb15c954f65391f8e86dbb073971a73287ac0c92beb153e",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki.png",
+    "sha256": "453b4cf5eb102c4c0fc4f6e9e7fda32d9d1357592a21de12c4116f84d4892ff8",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 4,
+    "strictAssemblyVisiblePixels": 1837807,
+    "strictAssemblyAssignedPixels": 1837807,
+    "allNativeVisiblePixelsAssigned": true,
+    "selectedSourcePixelsDeletedBeforeNearestResize": 0,
+    "commonNearestScale": 0.38220757825370677,
+    "minimumGuard": 14,
+    "visibleFootBaselinesByCell": [
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241,
+      241
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave9-2026-10-25/aoi-mikazuki/atlas/packing-proof.json",
+      "sha256": "67cb694f9b826933671e01c424e80bdf2e5ad2357e960bc8e499c2a64c275122"
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave9-2026-10-25/aoi-mikazuki/atlas/assembly-proof.json",
+      "sha256": "31a3069bb12cb901f98c723a3a9219ccc9dc754a414e6eba359ead9bd33f8de2"
+    }
+  },
+  "nativeInputs": [
+    {
+      "nativePath": "/workspace/generated_images/exec-9cf5ade8-4c3b-485e-bc55-5a22e274db1d.png",
+      "nativeSha256": "8d632b8058d0fa9b1e5b0f5c6c9f090cf334394bddfef9fe62badd3a2fd90ef2",
+      "nativeBytes": 1617779,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/aoi-mikazuki/atlas-group-01.txt",
+      "promptSha256": "22917feafc22cada1828105fcfb1809432856986f0ec0409f281b3bbb03d3af4",
+      "referencePath": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+      "referenceSha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+      "producerViewed": true,
+      "producerViewer": "/root/cg_aoi_wave9",
+      "technicalReplayerViewed": false,
+      "nativeEndpointInspection": "Producer /root/cg_aoi_wave9 reports personal opening of all four native groups and complete true katana, scroll-effect, hair, kimono and boot endpoints. Technical replay asserts every selected alpha>12 pixel has at least2nativepixel external canvas clearance and is assigned before nearest resizing. Entire connected poses may cross virtual quadrant boundaries; no pose is cropped at such a boundary. No endpoint repaired by padding."
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-2d2d4a77-680e-4115-afe0-bd70eef4c63e.png",
+      "nativeSha256": "9ca45ae487a99b2cf230d316ec3a70614abe75948a33276c950d8f832197e60e",
+      "nativeBytes": 1605210,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "selectedFrames": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/aoi-mikazuki/atlas-group-02.txt",
+      "promptSha256": "2bad9751bda24ae0b1f291ec653d78aaee84748e9826e6f7a5f032f30c60d532",
+      "referencePath": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+      "referenceSha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+      "producerViewed": true,
+      "producerViewer": "/root/cg_aoi_wave9",
+      "technicalReplayerViewed": false,
+      "nativeEndpointInspection": "Producer /root/cg_aoi_wave9 reports personal opening of all four native groups and complete true katana, scroll-effect, hair, kimono and boot endpoints. Technical replay asserts every selected alpha>12 pixel has at least2nativepixel external canvas clearance and is assigned before nearest resizing. Entire connected poses may cross virtual quadrant boundaries; no pose is cropped at such a boundary. No endpoint repaired by padding."
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-2f81fba8-7582-4fb6-b6ad-f1951dba6f6c.png",
+      "nativeSha256": "c230b859aaac752506e2c4b2c5d17d982b7a7b92b196693812b5f51deb13c2fd",
+      "nativeBytes": 1618258,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "selectedFrames": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/aoi-mikazuki/atlas-group-03.txt",
+      "promptSha256": "94a60f15d0752bfed8eb468acd12b02d2762e0034288f48962c2df56d7ecf4e3",
+      "referencePath": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+      "referenceSha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+      "producerViewed": true,
+      "producerViewer": "/root/cg_aoi_wave9",
+      "technicalReplayerViewed": false,
+      "nativeEndpointInspection": "Producer /root/cg_aoi_wave9 reports personal opening of all four native groups and complete true katana, scroll-effect, hair, kimono and boot endpoints. Technical replay asserts every selected alpha>12 pixel has at least2nativepixel external canvas clearance and is assigned before nearest resizing. Entire connected poses may cross virtual quadrant boundaries; no pose is cropped at such a boundary. No endpoint repaired by padding."
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-632ab5fb-4814-4ec7-947f-6696dceb924e.png",
+      "nativeSha256": "24f19786a3bbf13302348b8be1dec2e6f765759e3f0c6793cb21272722b49e6e",
+      "nativeBytes": 1564512,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "selectedFrames": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "promptFile": "docs/cg/prompts/wave9-2026-10-25/aoi-mikazuki/atlas-group-04.txt",
+      "promptSha256": "1d3f577dc826dd0d28b7ee0a5adf0f36e0bca13162a3b813a43d8a10d8113109",
+      "referencePath": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+      "referenceSha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+      "producerViewed": true,
+      "producerViewer": "/root/cg_aoi_wave9",
+      "technicalReplayerViewed": false,
+      "nativeEndpointInspection": "Producer /root/cg_aoi_wave9 reports personal opening of all four native groups and complete true katana, scroll-effect, hair, kimono and boot endpoints. Technical replay asserts every selected alpha>12 pixel has at least2nativepixel external canvas clearance and is assigned before nearest resizing. Entire connected poses may cross virtual quadrant boundaries; no pose is cropped at such a boundary. No endpoint repaired by padding."
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 4,
+  "retainedWhollyUnselectedNativeAttempts": 0,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/aoi-mikazuki-reference-evidence-wave9-2026-10-25.json",
+  "sourceReviewSha256": "fd822f46d95e59a4164348ad7de8fbad4aebf65e342d006c47530e1579b7d2c1",
+  "producerInspectionsFile": ".tmp/cg-wave9-2026-10-25/aoi-mikazuki/atlas/producer-inspections.json",
+  "notes": [
+    "Sixteen genuinely generated whole combat poses of selected Aoi V2, obtained from four2x2 transparent raw groups.",
+    "Long opaque ankle-length bordeaux/ivory/black-gold kimono, high bun and long hair, gold/red ornaments, two platform boots, RIGHT cyan katana and LEFT scroll talismans actually inspected in every final frame.",
+    "Whole connected components and satellites extracted without virtual quadrant clipping; frame9 blade crosses a native virtual boundary and remains whole. All alpha>12 assigned before one common nearest scale. No semantic painting, recoloring, mirroring or body-part assembly.",
+    "Four source natives personally opened by producer and independent reviewer; final four nearest2x row strips personally opened by both; independent technical replay matches final PNG and RGBA.",
+    "Internal original-project selected reference only. Hidden surfaces and microdetails remain uncertain; no absolute1:1 certification."
+  ],
+  "limitations": [
+    "Exact selected individual V2 portrait is an internal original-project authority, not external franchise proof.",
+    "One front three-quarter reference only; hidden back construction, exact talisman writing, concealed scabbard fittings and tiny embroideries remain unknown. No absolute 1:1 certification.",
+    "Chronological age is undocumented. Every scene is fully clothed, opaque, family safe and nonromantic.",
+    "The old atlas was personally opened: short navy school uniform and no source katana/talismans. It is preserved historical art and not identity authority.",
+    "Yomi no Kage is an original shrine-city and mountain-road setting; blade severs curse bonds without harming the spirit. CG05 is Nexus adaptation; futureExperienced is explicitly hypothetical.",
+    "Every original alpha>12 pixel of each of four contributing native groups is assigned before common nearest resampling. Resampling changes pixel counts; geometry/provenance hashes do not certify visual resemblance.",
+    "Final visible alpha baselines are241 across16cells, minimum guard14. Katana tips and scroll effects remain whole at final game scale.",
+    "The producer installer left runtime maps unchanged; root subsequently selected the new atlas and exposed the exact unchanged old atlas as a variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-25",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave9-2026-10-25/aoi-mikazuki-sprite-independent-review.json",
+  "independentReviewSha256": "ab69c75c8bcb5f3a4eb15c954f65391f8e86dbb073971a73287ac0c92beb153e"
+}

@@ -1,0 +1,912 @@
+{
+  "archivedAt": "2026-11-09T10:52:14.198298+00:00",
+  "scope": "Actual exact144post-Node CLI checks from test:combat-fidelity. Diagnostic only, not a full npm build.141pass3historical-edition failures40/41/62; full1478source inputs and26Vegeta outputs unchanged.",
+  "files": [
+    {
+      "file": "001-combatFidelityAudit.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/001-combatFidelityAudit.log",
+      "bytes": 4662322,
+      "sha256": "3a6d19f280e89a8c1059fa005575972796176c2c6e923dcf73bde3df203b176c"
+    },
+    {
+      "file": "002-buildCombatCharacterAnimations.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/002-buildCombatCharacterAnimations.log",
+      "bytes": 115,
+      "sha256": "7d1f22cf1e57abeb555721c5885c291fc64362ed075d1b2870c7292edb8f9d58"
+    },
+    {
+      "file": "003-buildCombatCharacterSpriteCorrections.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/003-buildCombatCharacterSpriteCorrections.log",
+      "bytes": 81,
+      "sha256": "6053a389f9eda4215f8a1f9ef1975ce5965be31f78791d913e8a5935ac39f78d"
+    },
+    {
+      "file": "004-buildCombatCharacterAnimationsWave2PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/004-buildCombatCharacterAnimationsWave2PartA.log",
+      "bytes": 194,
+      "sha256": "35b6ada82bd7ca933634a47dbc20abc2e5868fb17dbc35026757b3d34e87be85"
+    },
+    {
+      "file": "005-buildCombatCharacterAnimationsWave3PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/005-buildCombatCharacterAnimationsWave3PartA.log",
+      "bytes": 163,
+      "sha256": "3dcf83a2073d2c3ab78fbcf06f65d0de4ab93f126cb3353ad787405eccb33080"
+    },
+    {
+      "file": "006-buildCombatCharacterAnimationsWave3PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/006-buildCombatCharacterAnimationsWave3PartC.log",
+      "bytes": 273,
+      "sha256": "3218f49f404367ff30bb1ca33e969b1502faf976bdfcc06ffbbbe9e04d771e1b"
+    },
+    {
+      "file": "007-buildCombatCharacterAnimationsWave4PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/007-buildCombatCharacterAnimationsWave4PartA.log",
+      "bytes": 163,
+      "sha256": "5d439a5e0889b524d4c05894e607133e677b7531e063b2a5b51e0ea3b557daa2"
+    },
+    {
+      "file": "008-buildCombatCharacterAnimationsWave4PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/008-buildCombatCharacterAnimationsWave4PartC.log",
+      "bytes": 302,
+      "sha256": "7c9e00feeb31b0b6b0de7ecbcdabe00ed6345ec581989f069aaafabff00c61cd"
+    },
+    {
+      "file": "009-buildCombatCharacterFormsWave4.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/009-buildCombatCharacterFormsWave4.log",
+      "bytes": 129,
+      "sha256": "f6690c396490c8518b46183f161a0704f6233cee086a9ed1b349db6f5afe27ba"
+    },
+    {
+      "file": "010-buildCombatCharacterSpriteCorrectionsWave4.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/010-buildCombatCharacterSpriteCorrectionsWave4.log",
+      "bytes": 127,
+      "sha256": "18877e82ac8381395c0f91adb50446a9f7b928af078a3363a75c19ff696c0735"
+    },
+    {
+      "file": "011-buildCombatCharacterAnimationsWave5PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/011-buildCombatCharacterAnimationsWave5PartA.log",
+      "bytes": 227,
+      "sha256": "b77f5023eb1022dee0754116584be4701466f9b9a29d3d57f9a91618321af27e"
+    },
+    {
+      "file": "012-buildCombatCharacterAnimationsWave5PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/012-buildCombatCharacterAnimationsWave5PartB.log",
+      "bytes": 164,
+      "sha256": "90f4a429852c4454e0b34aee0ad6f3a5e6383cadaddfda208e7fac3660a77ec2"
+    },
+    {
+      "file": "013-buildCombatCharacterAnimationsWave5PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/013-buildCombatCharacterAnimationsWave5PartC.log",
+      "bytes": 304,
+      "sha256": "92256ce032fef089839441fc87eba4d370eee0742640f59ff8aa82608724a6e0"
+    },
+    {
+      "file": "014-buildCombatCharacterSpriteCorrectionsWave5.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/014-buildCombatCharacterSpriteCorrectionsWave5.log",
+      "bytes": 302,
+      "sha256": "6aef50eeab8bd60fa9db93c5fc46c16cc0ec8f1388aa9c2973622e507970d0ac"
+    },
+    {
+      "file": "015-normalize-vegeta-motion-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/015-normalize-vegeta-motion-atlases.log",
+      "bytes": 672,
+      "sha256": "9dd109b2c021b29c0f2d25c1af91834876d241ca7da089ac83dd053eed19f637"
+    },
+    {
+      "file": "016-verify-vegeta-combat.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/016-verify-vegeta-combat.log",
+      "bytes": 133,
+      "sha256": "0f1d9da01c23eaa91e533e9677c30cb25e14bf62ff8e7a68640d70fef6405be9"
+    },
+    {
+      "file": "017-buildSummonAnimationsWave5.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/017-buildSummonAnimationsWave5.log",
+      "bytes": 131,
+      "sha256": "b3861ad8f6c432a18a8b2e81a6aedaf7295ff54448f781a79392b33f76c327e9"
+    },
+    {
+      "file": "018-buildCombatCharacterAnimationsWave6PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/018-buildCombatCharacterAnimationsWave6PartA.log",
+      "bytes": 226,
+      "sha256": "3188ac85f03aa65951c54810bc8f1028cff5d136b3e5aa2d600844f0f0626d4b"
+    },
+    {
+      "file": "019-buildCombatCharacterAnimationsWave6PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/019-buildCombatCharacterAnimationsWave6PartB.log",
+      "bytes": 164,
+      "sha256": "90f4a429852c4454e0b34aee0ad6f3a5e6383cadaddfda208e7fac3660a77ec2"
+    },
+    {
+      "file": "020-buildCombatCharacterAnimationsWave6PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/020-buildCombatCharacterAnimationsWave6PartC.log",
+      "bytes": 304,
+      "sha256": "c05191188bc1c0b4d4c3b69f8df5d7aed35f0e5265476fdec063576007f215f8"
+    },
+    {
+      "file": "021-buildCombatCharacterSpriteCorrectionsWave6PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/021-buildCombatCharacterSpriteCorrectionsWave6PartA.log",
+      "bytes": 127,
+      "sha256": "9c920f69b8cca63052db3b0a7ea057ea228266ea77ada14196a1b9ef74200e5d"
+    },
+    {
+      "file": "022-buildCombatCharacterSpriteCorrectionsWave6PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/022-buildCombatCharacterSpriteCorrectionsWave6PartB.log",
+      "bytes": 302,
+      "sha256": "f07154f188cb9c618fe8fa8e592c91736e0016d3c18b6cab54693f305e1ccc57"
+    },
+    {
+      "file": "023-buildCombatCharacterSpriteCorrectionsWave6PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/023-buildCombatCharacterSpriteCorrectionsWave6PartC.log",
+      "bytes": 301,
+      "sha256": "b83b4762bde5f94b22139fef8d5904aa0a9d6d639554d7e36b71e8885eb17c26"
+    },
+    {
+      "file": "024-buildSummonAnimationsWave6.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/024-buildSummonAnimationsWave6.log",
+      "bytes": 90,
+      "sha256": "5d364fb2bd53571841c17a6ca5631c99541e4c40a919255761960ce001fd3b7b"
+    },
+    {
+      "file": "025-normalize-sonic-motion-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/025-normalize-sonic-motion-atlases.log",
+      "bytes": 3986,
+      "sha256": "4b4a4e2436b2a03232450239125e82da992fe9f7af91f9053955549116c408ac"
+    },
+    {
+      "file": "026-verify-sonic-combat.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/026-verify-sonic-combat.log",
+      "bytes": 176,
+      "sha256": "796d18be1571fb8422b03ce88c6b9c340015de87d24f1bcebbf2ed6cce0e967b"
+    },
+    {
+      "file": "027-buildCombatCharacterAnimationsWave7PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/027-buildCombatCharacterAnimationsWave7PartA.log",
+      "bytes": 227,
+      "sha256": "d132f3b4bfe916ca021988a7b85e3afbc60fdaf7eabcd6de9f0923b5a97dae49"
+    },
+    {
+      "file": "028-buildCombatCharacterSpriteCorrectionsWave7PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/028-buildCombatCharacterSpriteCorrectionsWave7PartA.log",
+      "bytes": 128,
+      "sha256": "57f1c08fa2a2836dc77505803fdd474e4d503db522b82eac993478643f5ee36c"
+    },
+    {
+      "file": "029-buildCombatCharacterAnimationsWave7PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/029-buildCombatCharacterAnimationsWave7PartB.log",
+      "bytes": 164,
+      "sha256": "90f4a429852c4454e0b34aee0ad6f3a5e6383cadaddfda208e7fac3660a77ec2"
+    },
+    {
+      "file": "030-buildCombatCharacterSpriteCorrectionsWave7PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/030-buildCombatCharacterSpriteCorrectionsWave7PartB.log",
+      "bytes": 302,
+      "sha256": "e4e826d2945394b2fbbccdbc9942266f8179584981541768d948045c13a15271"
+    },
+    {
+      "file": "031-buildCombatCharacterAnimationsWave7PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/031-buildCombatCharacterAnimationsWave7PartC.log",
+      "bytes": 248,
+      "sha256": "d5d14cd4ae732c6984ab69a7ed45504cb1cdc3e644e166840c1116de6b58417e"
+    },
+    {
+      "file": "032-buildCombatCharacterSpriteCorrectionsWave7PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/032-buildCombatCharacterSpriteCorrectionsWave7PartC.log",
+      "bytes": 246,
+      "sha256": "6f3d54bc47dadac6f488ca353e513a0c32d848b6d404142ca7245cbc6f42ed31"
+    },
+    {
+      "file": "033-buildSummonAnimationsWave7.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/033-buildSummonAnimationsWave7.log",
+      "bytes": 90,
+      "sha256": "5d364fb2bd53571841c17a6ca5631c99541e4c40a919255761960ce001fd3b7b"
+    },
+    {
+      "file": "034-normalize-ragna-motion-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/034-normalize-ragna-motion-atlases.log",
+      "bytes": 2507,
+      "sha256": "ebbf638bc475586eb4985b52b1ee8614b6763201d8c962c2f96d891e3c5abbb9"
+    },
+    {
+      "file": "035-verify-ragna-combat.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/035-verify-ragna-combat.log",
+      "bytes": 238,
+      "sha256": "751edc4a17a130be269eec3991b2aa65bc19b7341c583cbede85734ba242df72"
+    },
+    {
+      "file": "036-buildCombatCharacterAnimationsWave8PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/036-buildCombatCharacterAnimationsWave8PartA.log",
+      "bytes": 336,
+      "sha256": "ab399fe944201e9346f99b8a891b80f6951af5bc4658e33ebc904290cf428de1"
+    },
+    {
+      "file": "037-buildCombatCharacterSpriteCorrectionsWave8PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/037-buildCombatCharacterSpriteCorrectionsWave8PartA.log",
+      "bytes": 188,
+      "sha256": "ef78db3d960a53c83c7ba0c5fc5fa38c68108a239608dd504d86188e9e7845bd"
+    },
+    {
+      "file": "038-buildCombatCharacterAnimationsWave8PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/038-buildCombatCharacterAnimationsWave8PartB.log",
+      "bytes": 164,
+      "sha256": "90f4a429852c4454e0b34aee0ad6f3a5e6383cadaddfda208e7fac3660a77ec2"
+    },
+    {
+      "file": "039-buildCombatCharacterSpriteCorrectionsWave8PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/039-buildCombatCharacterSpriteCorrectionsWave8PartB.log",
+      "bytes": 302,
+      "sha256": "bf6a44f935d9b4af9193a6900afdba0f1b3957342af7812d6f2d07b2219556fc"
+    },
+    {
+      "file": "040-buildCombatCharacterAnimationsWave8PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/040-buildCombatCharacterAnimationsWave8PartC.log",
+      "bytes": 673,
+      "sha256": "63feb0725a2f3b94a5eca732da970c8f8b9f4b46aba81cbdd48bbcfd9a42af90"
+    },
+    {
+      "file": "041-buildCombatCharacterSpriteCorrectionsWave8PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/041-buildCombatCharacterSpriteCorrectionsWave8PartC.log",
+      "bytes": 663,
+      "sha256": "2f202fe55099253ff0de60ffa838b2e5253f03210a9b76994b6bde473266db27"
+    },
+    {
+      "file": "042-buildCombatCharacterAnimationsWave8PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/042-buildCombatCharacterAnimationsWave8PartD.log",
+      "bytes": 121,
+      "sha256": "2742a0e34711bc3a2da018081d5545ab56792613eaaefe4b9d97435e0dbcba8f"
+    },
+    {
+      "file": "043-buildCombatCharacterSpriteCorrectionsWave8PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/043-buildCombatCharacterSpriteCorrectionsWave8PartD.log",
+      "bytes": 118,
+      "sha256": "917548a1098fd2f6febec53b20ca8da2552e6c82aa5b20506134fc0e31462461"
+    },
+    {
+      "file": "044-buildSummonAnimationsWave8.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/044-buildSummonAnimationsWave8.log",
+      "bytes": 98,
+      "sha256": "7abdc99af03d11b2e218dd999ddb55a05547f18ba6efaa8810b02e31d9cac3e7"
+    },
+    {
+      "file": "045-normalize-kiryu-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/045-normalize-kiryu-atlases.log",
+      "bytes": 5864,
+      "sha256": "a1fc764ba31b3330c8d410adec2714d53e8fef9db9c278b49b85d1dab185fded"
+    },
+    {
+      "file": "046-verify-kiryu-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/046-verify-kiryu-atlases.log",
+      "bytes": 221,
+      "sha256": "10c0a0da83e71380b85c9f3994ad078d5042a01a32928346053378e38741ac63"
+    },
+    {
+      "file": "047-buildCombatCharacterAnimationsWave9PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/047-buildCombatCharacterAnimationsWave9PartA.log",
+      "bytes": 302,
+      "sha256": "08ccd77c9ab049badb1e0d887102903607762cb114d612fb0074f527c348943f"
+    },
+    {
+      "file": "048-buildCombatCharacterSpriteCorrectionsWave9PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/048-buildCombatCharacterSpriteCorrectionsWave9PartA.log",
+      "bytes": 154,
+      "sha256": "dcadf45b5db188aa7d565298367dd5e98e9ab95575ce0efb8f1f5f9197623674"
+    },
+    {
+      "file": "049-buildCombatCharacterAnimationsWave9PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/049-buildCombatCharacterAnimationsWave9PartB.log",
+      "bytes": 164,
+      "sha256": "90f4a429852c4454e0b34aee0ad6f3a5e6383cadaddfda208e7fac3660a77ec2"
+    },
+    {
+      "file": "050-buildCombatCharacterSpriteCorrectionsWave9PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/050-buildCombatCharacterSpriteCorrectionsWave9PartB.log",
+      "bytes": 302,
+      "sha256": "bf6a44f935d9b4af9193a6900afdba0f1b3957342af7812d6f2d07b2219556fc"
+    },
+    {
+      "file": "051-buildCombatCharacterAnimationsWave9PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/051-buildCombatCharacterAnimationsWave9PartC.log",
+      "bytes": 249,
+      "sha256": "6d37c61028927827b3e3eff7ca1f5c56036436801a4946ea020bdf46293a7790"
+    },
+    {
+      "file": "052-buildCombatCharacterSpriteCorrectionsWave9PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/052-buildCombatCharacterSpriteCorrectionsWave9PartC.log",
+      "bytes": 246,
+      "sha256": "34ab624b4f3dea98c0b56806a20c9377da7e2c940a06c6b674523a120697e83d"
+    },
+    {
+      "file": "053-buildCombatCharacterAnimationsWave9PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/053-buildCombatCharacterAnimationsWave9PartD.log",
+      "bytes": 121,
+      "sha256": "e1339636ccd19004941ff92f814546792348223439304fbb2bc089f429b405b9"
+    },
+    {
+      "file": "054-buildCombatCharacterSpriteCorrectionsWave9PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/054-buildCombatCharacterSpriteCorrectionsWave9PartD.log",
+      "bytes": 118,
+      "sha256": "495d6517cedc4ff05431a9d4871be324387bbc0a545ed500f4e389c706d7a782"
+    },
+    {
+      "file": "055-buildSummonAnimationsWave9.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/055-buildSummonAnimationsWave9.log",
+      "bytes": 98,
+      "sha256": "7abdc99af03d11b2e218dd999ddb55a05547f18ba6efaa8810b02e31d9cac3e7"
+    },
+    {
+      "file": "056-normalize-chris-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/056-normalize-chris-atlases.log",
+      "bytes": 7972,
+      "sha256": "a4be7c4cbe098122d9ee8227e935abd3784ca5abf96ad5893a6c90858e080706"
+    },
+    {
+      "file": "057-verify-chris-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/057-verify-chris-atlases.log",
+      "bytes": 221,
+      "sha256": "a0a892c467f83ae6471d83e4c63d0cb5a797084755ee3371bfd99741cd3522f0"
+    },
+    {
+      "file": "058-buildCombatCharacterAnimationsWave10PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/058-buildCombatCharacterAnimationsWave10PartA.log",
+      "bytes": 305,
+      "sha256": "e0077638144e57403fcacf4b6a5cc81e4ea8909e7a62f30b1430a6f18056109f"
+    },
+    {
+      "file": "059-buildCombatCharacterSpriteCorrectionsWave10PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/059-buildCombatCharacterSpriteCorrectionsWave10PartA.log",
+      "bytes": 158,
+      "sha256": "e9652ff59abea39a10bc176a1af0be16ea64e79b8f29b8c2a485b24b53914fe2"
+    },
+    {
+      "file": "060-buildCombatCharacterAnimationsWave10PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/060-buildCombatCharacterAnimationsWave10PartB.log",
+      "bytes": 165,
+      "sha256": "18d82e1c0e20917eefd4143f8c92dc888688529f8b57876f2ef8c2f9547d5fb3"
+    },
+    {
+      "file": "061-buildCombatCharacterSpriteCorrectionsWave10PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/061-buildCombatCharacterSpriteCorrectionsWave10PartB.log",
+      "bytes": 306,
+      "sha256": "af7cb88810436bf7702a9d0a79e95f80d6b95d5b67f7e73bcc6943612ef35395"
+    },
+    {
+      "file": "062-buildCombatCharacterAnimationsWave10PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/062-buildCombatCharacterAnimationsWave10PartC.log",
+      "bytes": 635,
+      "sha256": "192f99206af1db6b2c69e8490a4c7e535cf419582c2a89bafd77decfbb3ffa0d"
+    },
+    {
+      "file": "063-buildCombatCharacterSpriteCorrectionsWave10PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/063-buildCombatCharacterSpriteCorrectionsWave10PartC.log",
+      "bytes": 250,
+      "sha256": "e96db0fada8875458031d680943e63a93060eaa9fe92630b6ac7d357142ffe84"
+    },
+    {
+      "file": "064-buildCombatCharacterAnimationsWave10PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/064-buildCombatCharacterAnimationsWave10PartD.log",
+      "bytes": 124,
+      "sha256": "85616effac8c7ca01606fb8a36f782a7aa08e208b0e2d979fd7737776664838f"
+    },
+    {
+      "file": "065-buildCombatCharacterSpriteCorrectionsWave10PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/065-buildCombatCharacterSpriteCorrectionsWave10PartD.log",
+      "bytes": 120,
+      "sha256": "80ccac00a3ca5f32441d412710f46a64318d17ea08e8a90412b649a1f9ff40fc"
+    },
+    {
+      "file": "066-buildSummonAnimationsWave10.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/066-buildSummonAnimationsWave10.log",
+      "bytes": 99,
+      "sha256": "bde2470eaba0349be38c5687f1b48947bd9b772dc9b0de8540d2b32911222207"
+    },
+    {
+      "file": "067-normalize-neo-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/067-normalize-neo-atlases.log",
+      "bytes": 6987,
+      "sha256": "9136ca6e1a0e68f43dbc9223b35f6757a8d90870659b199f13c8005a3a31195b"
+    },
+    {
+      "file": "068-normalize-freeman-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/068-normalize-freeman-atlases.log",
+      "bytes": 7115,
+      "sha256": "58c4318088f730c28369ed376d4cc61d2596823c5cdf9f88c2c9c76e7a453728"
+    },
+    {
+      "file": "069-verify-neo-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/069-verify-neo-atlases.log",
+      "bytes": 1113,
+      "sha256": "61a667ba2f47d5fc73728e756eb46d3c4b0cee265300e4421e43e9c655b772c0"
+    },
+    {
+      "file": "070-verify-freeman-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/070-verify-freeman-atlases.log",
+      "bytes": 1140,
+      "sha256": "9eb4e93e53044e42eb5685d7169562b3d1196104e5f70e4aee10e3e92c56bec3"
+    },
+    {
+      "file": "071-buildCombatCharacterAnimationsWave11PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/071-buildCombatCharacterAnimationsWave11PartA.log",
+      "bytes": 344,
+      "sha256": "e503088562c51f673de37dc716275daf2255be7b437fb2f141c3f5db0f9c9af4"
+    },
+    {
+      "file": "072-buildCombatCharacterSpriteCorrectionsWave11PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/072-buildCombatCharacterSpriteCorrectionsWave11PartA.log",
+      "bytes": 196,
+      "sha256": "39d27cc87e7c60f89d63711290d45b6ff32ed8caed68afd6ecb174b8c3e5700d"
+    },
+    {
+      "file": "073-buildCombatCharacterAnimationsWave11PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/073-buildCombatCharacterAnimationsWave11PartB.log",
+      "bytes": 190,
+      "sha256": "5e03a81513d1add0e1c8915649561bc51353ac15a672cf5aaf6592ab0693b1b3"
+    },
+    {
+      "file": "074-buildCombatCharacterSpriteCorrectionsWave11PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/074-buildCombatCharacterSpriteCorrectionsWave11PartB.log",
+      "bytes": 306,
+      "sha256": "839565578eab53230b75f8cf06aabb05dacc27b2583ce4597c945e323ab88240"
+    },
+    {
+      "file": "075-buildCombatCharacterAnimationsWave11PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/075-buildCombatCharacterAnimationsWave11PartC.log",
+      "bytes": 250,
+      "sha256": "ef32f10a25a486ec07ffb8c4263dece2b49b5fc11e652fa33bf49330b81726f5"
+    },
+    {
+      "file": "076-buildCombatCharacterSpriteCorrectionsWave11PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/076-buildCombatCharacterSpriteCorrectionsWave11PartC.log",
+      "bytes": 250,
+      "sha256": "2503a516085ad727187cec24ab97588cadd747f5510528b355b8c396c21b7122"
+    },
+    {
+      "file": "077-buildCombatCharacterAnimationsWave11PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/077-buildCombatCharacterAnimationsWave11PartD.log",
+      "bytes": 124,
+      "sha256": "5c6190a8e9fa912f46df1ec7966220fb577ebc35b51911686ad9e49fada31029"
+    },
+    {
+      "file": "078-buildCombatCharacterSpriteCorrectionsWave11PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/078-buildCombatCharacterSpriteCorrectionsWave11PartD.log",
+      "bytes": 122,
+      "sha256": "12634b7e878374c50d641873593cb4102af5538a22b0724da95f3630148d369d"
+    },
+    {
+      "file": "079-buildSummonAnimationsWave11.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/079-buildSummonAnimationsWave11.log",
+      "bytes": 99,
+      "sha256": "d9c61235838ac3d1057ee920b19b2e63f30cf8068d668fc22b73c9dfe843899a"
+    },
+    {
+      "file": "080-normalize-buffy-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/080-normalize-buffy-atlases.log",
+      "bytes": 8865,
+      "sha256": "d98e666e8ec153b787687c7eec9406c38f6a3eaf1d8fec34465dd9491d166199"
+    },
+    {
+      "file": "081-verify-buffy-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/081-verify-buffy-atlases.log",
+      "bytes": 1135,
+      "sha256": "2553eee7beb8272e8d29f7630141360008b04af60350d6b2a5b4e2008a6711dd"
+    },
+    {
+      "file": "082-normalize-arthur-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/082-normalize-arthur-atlases.log",
+      "bytes": 8553,
+      "sha256": "e3a003d83e2407a3c20e2d9b3c0f65bf1c400f92820710226727677f1218cdd8"
+    },
+    {
+      "file": "083-verify-arthur-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/083-verify-arthur-atlases.log",
+      "bytes": 1144,
+      "sha256": "f0c864ca9bdbb72d1f5f0ed04da94e1ed9ce225a5b54be03d6631dc5d5b5d2e8"
+    },
+    {
+      "file": "084-buildCombatCharacterAnimationsWave12PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/084-buildCombatCharacterAnimationsWave12PartA.log",
+      "bytes": 93,
+      "sha256": "79fc0f247d2bb744189251e32a2033deaf415b17f3121523878d880a125d3e0b"
+    },
+    {
+      "file": "085-buildCombatCharacterSpriteCorrectionsWave12PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/085-buildCombatCharacterSpriteCorrectionsWave12PartA.log",
+      "bytes": 91,
+      "sha256": "de8e2f9380ceaf918872d54cf80fa902853a67d59d1152db760ffd8a15747882"
+    },
+    {
+      "file": "086-buildCombatCharacterAnimationsWave12PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/086-buildCombatCharacterAnimationsWave12PartB.log",
+      "bytes": 178,
+      "sha256": "b20adc3feb4a6c27224276c91c7773de73fba537dfc68d13c2a7d11724687655"
+    },
+    {
+      "file": "087-buildCombatCharacterSpriteCorrectionsWave12PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/087-buildCombatCharacterSpriteCorrectionsWave12PartB.log",
+      "bytes": 176,
+      "sha256": "16eab6a386555bc9c2570e833e096a41e6bb214f773a452f7e1d626146bfc927"
+    },
+    {
+      "file": "088-buildCombatCharacterAnimationsWave12PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/088-buildCombatCharacterAnimationsWave12PartC.log",
+      "bytes": 172,
+      "sha256": "948a2f95e49597b02ec650c97fb116c117fc59625980d680f26285eda2687e7a"
+    },
+    {
+      "file": "089-buildCombatCharacterSpriteCorrectionsWave12PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/089-buildCombatCharacterSpriteCorrectionsWave12PartC.log",
+      "bytes": 170,
+      "sha256": "9d979c6aed3b13bf9b1b3d9747f8f7c44658ae8e249fbb177f7c8fdfe7a69968"
+    },
+    {
+      "file": "090-buildCombatCharacterAnimationsWave12PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/090-buildCombatCharacterAnimationsWave12PartD.log",
+      "bytes": 130,
+      "sha256": "5aef74042a19139b79bb638cbe8227a404f73545a5ae06151c7828bacf773e15"
+    },
+    {
+      "file": "091-buildCombatCharacterSpriteCorrectionsWave12PartD.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/091-buildCombatCharacterSpriteCorrectionsWave12PartD.log",
+      "bytes": 128,
+      "sha256": "1ea272c4eab45fb09c0215023725aa9116959d12deb5cd0b780f45dec6ba2700"
+    },
+    {
+      "file": "092-buildSummonAnimationsWave12.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/092-buildSummonAnimationsWave12.log",
+      "bytes": 99,
+      "sha256": "d9c61235838ac3d1057ee920b19b2e63f30cf8068d668fc22b73c9dfe843899a"
+    },
+    {
+      "file": "093-normalize-isaac-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/093-normalize-isaac-atlases.log",
+      "bytes": 10312,
+      "sha256": "b7a61231398d7d99b50f680f3b335b2f3b906167c1be341d0e244cb59da13a02"
+    },
+    {
+      "file": "094-measure-isaac-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/094-measure-isaac-native-hands.log",
+      "bytes": 292,
+      "sha256": "98feed2c146857754b866db42ca0b7cbd9c947e8843e97a8aa49d7f91cf75f54"
+    },
+    {
+      "file": "095-verify-isaac-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/095-verify-isaac-atlases.log",
+      "bytes": 1130,
+      "sha256": "02baaafb18cb502703845bf80f4ea442619889fc141de5ab4e4ff8faff563078"
+    },
+    {
+      "file": "096-buildCombatCharacterAnimationsWave13PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/096-buildCombatCharacterAnimationsWave13PartA.log",
+      "bytes": 93,
+      "sha256": "c8e26a3a39ef45dd2f2b148087ddaa36ce16d1c4f4d78b472786c1e223b42ab2"
+    },
+    {
+      "file": "097-buildCombatCharacterSpriteCorrectionsWave13PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/097-buildCombatCharacterSpriteCorrectionsWave13PartA.log",
+      "bytes": 91,
+      "sha256": "d73e69ba7dd52331dd4d7444d0aaaafdf8953e4c907e051335b4c0f45b3f1ba8"
+    },
+    {
+      "file": "098-buildCombatCharacterAnimationsWave13PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/098-buildCombatCharacterAnimationsWave13PartB.log",
+      "bytes": 259,
+      "sha256": "077266ea4b7d8f5a612f5a424142b62dc50425d57049a0740d34a04342361c6a"
+    },
+    {
+      "file": "099-buildCombatCharacterSpriteCorrectionsWave13PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/099-buildCombatCharacterSpriteCorrectionsWave13PartB.log",
+      "bytes": 257,
+      "sha256": "8363e13bbeb7b4abb347938633da45e27e1903a28580613c3b732c0d44f265a2"
+    },
+    {
+      "file": "100-buildSummonAnimationsWave13.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/100-buildSummonAnimationsWave13.log",
+      "bytes": 98,
+      "sha256": "5a1dccdc3e0b04c5982e298fb79c1ac3cd78a8209d90cb659357596d33c1d867"
+    },
+    {
+      "file": "101-normalize-ripley-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/101-normalize-ripley-atlases.log",
+      "bytes": 10281,
+      "sha256": "0c0566dea79b4c8de526f3f037b4fcb1639ce86dfc18a23e98f8bbbe6dc0f596"
+    },
+    {
+      "file": "102-measure-ripley-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/102-measure-ripley-native-hands.log",
+      "bytes": 179,
+      "sha256": "f8d3c7f04d8ecc2abc284999cfd5cfe8ff279da9f55596e24393e3163039ce4f"
+    },
+    {
+      "file": "103-verify-ripley-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/103-verify-ripley-atlases.log",
+      "bytes": 1304,
+      "sha256": "6634f1b0a2dafe161fa75926462b50bc174b51864bc25f48bf8da842495ea593"
+    },
+    {
+      "file": "104-buildCombatCharacterAnimationsWave14PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/104-buildCombatCharacterAnimationsWave14PartA.log",
+      "bytes": 93,
+      "sha256": "c8e26a3a39ef45dd2f2b148087ddaa36ce16d1c4f4d78b472786c1e223b42ab2"
+    },
+    {
+      "file": "105-buildCombatCharacterSpriteCorrectionsWave14PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/105-buildCombatCharacterSpriteCorrectionsWave14PartA.log",
+      "bytes": 91,
+      "sha256": "d73e69ba7dd52331dd4d7444d0aaaafdf8953e4c907e051335b4c0f45b3f1ba8"
+    },
+    {
+      "file": "106-buildCombatCharacterAnimationsWave14PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/106-buildCombatCharacterAnimationsWave14PartB.log",
+      "bytes": 208,
+      "sha256": "1a049b6e519911f4108d3403a616de7832042f6e6dd654f564f4b11035fd414e"
+    },
+    {
+      "file": "107-buildCombatCharacterSpriteCorrectionsWave14PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/107-buildCombatCharacterSpriteCorrectionsWave14PartB.log",
+      "bytes": 206,
+      "sha256": "6d99715206192092eec3318bdeeadb773984918a7cce84d382789e198ca0f4d7"
+    },
+    {
+      "file": "108-buildSummonAnimationsWave14.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/108-buildSummonAnimationsWave14.log",
+      "bytes": 98,
+      "sha256": "5a1dccdc3e0b04c5982e298fb79c1ac3cd78a8209d90cb659357596d33c1d867"
+    },
+    {
+      "file": "109-normalize-aragorn-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/109-normalize-aragorn-atlases.log",
+      "bytes": 11904,
+      "sha256": "d9ed54ae88ddf353cd0ea24c1cb80710a152ce39118dca284ff76e160663d8c7"
+    },
+    {
+      "file": "110-measure-aragorn-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/110-measure-aragorn-native-hands.log",
+      "bytes": 179,
+      "sha256": "e5ab5d62130518584531da6169ba2073ce4ab9f99f0fec14983b38a8d8dd174e"
+    },
+    {
+      "file": "111-verify-aragorn-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/111-verify-aragorn-atlases.log",
+      "bytes": 1320,
+      "sha256": "39724cf4926ad15825cda04640de7d71ee6c939e1b6a72f5636e6eb87c058244"
+    },
+    {
+      "file": "112-buildCombatCharacterAnimationsWave15PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/112-buildCombatCharacterAnimationsWave15PartA.log",
+      "bytes": 94,
+      "sha256": "eb447da884527580057e71326202506785c331caf8be6965f92a7a212bc94b4b"
+    },
+    {
+      "file": "113-buildCombatCharacterSpriteCorrectionsWave15PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/113-buildCombatCharacterSpriteCorrectionsWave15PartA.log",
+      "bytes": 91,
+      "sha256": "6e57f5b2168d3299acc65d14d83b3672bf410a228148a1016a6514ae34c4590e"
+    },
+    {
+      "file": "114-buildCombatCharacterAnimationsWave15PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/114-buildCombatCharacterAnimationsWave15PartB.log",
+      "bytes": 210,
+      "sha256": "0d36d685db0e0a1bc913143cc47118798125430ca837b955695a9b6fd6cd260d"
+    },
+    {
+      "file": "115-buildCombatCharacterSpriteCorrectionsWave15PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/115-buildCombatCharacterSpriteCorrectionsWave15PartB.log",
+      "bytes": 207,
+      "sha256": "20358993fc361d6021e10de4a5ad9f8bf15229e21b5c80ede631c372709d1e22"
+    },
+    {
+      "file": "116-buildCombatCharacterAnimationsWave15PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/116-buildCombatCharacterAnimationsWave15PartC.log",
+      "bytes": 210,
+      "sha256": "04ec972a10acb37b926a490ac0cf560b1348cbb515446a85a760090f8f42c827"
+    },
+    {
+      "file": "117-buildCombatCharacterSpriteCorrectionsWave15PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/117-buildCombatCharacterSpriteCorrectionsWave15PartC.log",
+      "bytes": 207,
+      "sha256": "100cb74fa5adf31f6398b32a09ccf5c4ddafa24b655f9e90e4c187ef905b42ce"
+    },
+    {
+      "file": "118-buildSummonAnimationsWave15.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/118-buildSummonAnimationsWave15.log",
+      "bytes": 98,
+      "sha256": "5a1dccdc3e0b04c5982e298fb79c1ac3cd78a8209d90cb659357596d33c1d867"
+    },
+    {
+      "file": "119-normalize-sir-daniel-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/119-normalize-sir-daniel-atlases.log",
+      "bytes": 9583,
+      "sha256": "4a59265347a6f84e503fc3c2753ac52b3bda3acc42bd55a1b4021d1e2c6f8c46"
+    },
+    {
+      "file": "120-measure-sir-daniel-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/120-measure-sir-daniel-native-hands.log",
+      "bytes": 179,
+      "sha256": "6b059e76d4d6e02a3c7416328feb8cad31c8f29a8e4f111a0e6249fa7c91dd51"
+    },
+    {
+      "file": "121-verify-sir-daniel-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/121-verify-sir-daniel-atlases.log",
+      "bytes": 1341,
+      "sha256": "8b34693819e402d47faaeb871b3185a37dbc9e20bba326a17ac781f522645e03"
+    },
+    {
+      "file": "122-buildCombatCharacterAnimationsWave16PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/122-buildCombatCharacterAnimationsWave16PartA.log",
+      "bytes": 94,
+      "sha256": "eb447da884527580057e71326202506785c331caf8be6965f92a7a212bc94b4b"
+    },
+    {
+      "file": "123-buildCombatCharacterAnimationsWave16PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/123-buildCombatCharacterAnimationsWave16PartB.log",
+      "bytes": 221,
+      "sha256": "f268726cb438cd65366b288442aa858245c18e60caa56874f2c03439c280948b"
+    },
+    {
+      "file": "124-buildCombatCharacterAnimationsWave16PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/124-buildCombatCharacterAnimationsWave16PartC.log",
+      "bytes": 210,
+      "sha256": "6e63ceaffd50b9fadb258a4d887b5789559864441e504da9339be614de02f0cc"
+    },
+    {
+      "file": "125-buildCombatCharacterSpriteCorrectionsWave16PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/125-buildCombatCharacterSpriteCorrectionsWave16PartA.log",
+      "bytes": 91,
+      "sha256": "6e57f5b2168d3299acc65d14d83b3672bf410a228148a1016a6514ae34c4590e"
+    },
+    {
+      "file": "126-buildCombatCharacterSpriteCorrectionsWave16PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/126-buildCombatCharacterSpriteCorrectionsWave16PartB.log",
+      "bytes": 218,
+      "sha256": "9e8835c5599fef724dfcb91941a32a447deaf287770cbb6c286e437c330316aa"
+    },
+    {
+      "file": "127-buildCombatCharacterSpriteCorrectionsWave16PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/127-buildCombatCharacterSpriteCorrectionsWave16PartC.log",
+      "bytes": 207,
+      "sha256": "67832a216e39478c5df63f25c4db1225e674d0ca82a28aa3b55c8cd3c19ca55c"
+    },
+    {
+      "file": "128-buildSummonAnimationsWave16.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/128-buildSummonAnimationsWave16.log",
+      "bytes": 118,
+      "sha256": "e50669ef89b8f60c2cb649bd3ade09fcef710bae3aa1a8f36ba1e1074d78a2de"
+    },
+    {
+      "file": "129-build-native-senua-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/129-build-native-senua-atlases.log",
+      "bytes": 14002,
+      "sha256": "7395d8cc38488b11962616a9635876c90c58b065a743f0c68caef40932d464d3"
+    },
+    {
+      "file": "130-measure-senua-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/130-measure-senua-native-hands.log",
+      "bytes": 179,
+      "sha256": "b17d8a18bed47606a2dbe362ab4f7914c07e877e772055fc7565a731d5c920fb"
+    },
+    {
+      "file": "131-buildCombatCharacterActionAnimationsWave16PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/131-buildCombatCharacterActionAnimationsWave16PartC.log",
+      "bytes": 356,
+      "sha256": "e9cdbe16e7610d4f42f3f0c3dbe22ade1cd4877dcffe19bf9cdaa39172c46ad4"
+    },
+    {
+      "file": "132-buildSourceProtectionEntitiesWave16.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/132-buildSourceProtectionEntitiesWave16.log",
+      "bytes": 182,
+      "sha256": "aaceaffd17c19c400530cf0baa8c878d8f8e7f81e4c36a08efc22b0b2ff5a4af"
+    },
+    {
+      "file": "133-buildCombatCharacterAnimationsWave17PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/133-buildCombatCharacterAnimationsWave17PartA.log",
+      "bytes": 94,
+      "sha256": "eb447da884527580057e71326202506785c331caf8be6965f92a7a212bc94b4b"
+    },
+    {
+      "file": "134-buildCombatCharacterSpriteCorrectionsWave17PartA.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/134-buildCombatCharacterSpriteCorrectionsWave17PartA.log",
+      "bytes": 91,
+      "sha256": "6e57f5b2168d3299acc65d14d83b3672bf410a228148a1016a6514ae34c4590e"
+    },
+    {
+      "file": "135-buildCombatCharacterAnimationsWave17PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/135-buildCombatCharacterAnimationsWave17PartB.log",
+      "bytes": 254,
+      "sha256": "e8133b9b702cd7d0172b38b0ff7051b1497c00fce0637bc8b136e815583b5cc2"
+    },
+    {
+      "file": "136-buildCombatCharacterSpriteCorrectionsWave17PartB.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/136-buildCombatCharacterSpriteCorrectionsWave17PartB.log",
+      "bytes": 251,
+      "sha256": "8ef17f402fa46003a4dcfebd6da17a8131e3df0b29cf2f37dd698eaa14290b77"
+    },
+    {
+      "file": "137-buildCombatCharacterAnimationsWave17PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/137-buildCombatCharacterAnimationsWave17PartC.log",
+      "bytes": 136,
+      "sha256": "0b4dba628a7324ed73b48cbc7ba9c3de423590ea0c40ba16b392f6bae24c3f8d"
+    },
+    {
+      "file": "138-buildCombatCharacterSpriteCorrectionsWave17PartC.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/138-buildCombatCharacterSpriteCorrectionsWave17PartC.log",
+      "bytes": 133,
+      "sha256": "9279bb72e8949f01cf5ce3940c997c98b25b1c60f2555d7f09f551b7a9a3b2f2"
+    },
+    {
+      "file": "139-buildSummonAnimationsWave17.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/139-buildSummonAnimationsWave17.log",
+      "bytes": 117,
+      "sha256": "3e6c1662f7895000527acaf31c982fc4d17ee88e07451318fbc0eb4d6822c276"
+    },
+    {
+      "file": "140-buildCaptureEnemyAssetsWave17.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/140-buildCaptureEnemyAssetsWave17.log",
+      "bytes": 179,
+      "sha256": "fc30630595f5c9202cfb0088153a99c87a99cb3369f04bde9492fcecafc426b2"
+    },
+    {
+      "file": "141-build-native-jade-atlases.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/141-build-native-jade-atlases.log",
+      "bytes": 252,
+      "sha256": "efb7dc22d76c560620b6e4e265fb0422b4b75d118f48769d8e11c301045fe678"
+    },
+    {
+      "file": "142-measure-jade-native-hands.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/142-measure-jade-native-hands.log",
+      "bytes": 179,
+      "sha256": "9c1a8720eb24adfdda0719657d1a8b8be7023c3def0580eed97bcc5b26146349"
+    },
+    {
+      "file": "143-measure-jade-native-staff.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/143-measure-jade-native-staff.log",
+      "bytes": 604,
+      "sha256": "e78a253ba8b3a80acec8c57a0c028a3597e24413a15dbdcffbf0c55fe2a8be05"
+    },
+    {
+      "file": "144-build-jade-gyrodisk-action.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/144-build-jade-gyrodisk-action.log",
+      "bytes": 648,
+      "sha256": "32c1c85adfa15e6a94846bdcef54ecab8421af776944251a6a3e36dbfa8d476c"
+    },
+    {
+      "file": "controller-close-receipt.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/controller-close-receipt.json",
+      "bytes": 432,
+      "sha256": "9e80711af6bd7c9be2f503dbb7c89d29802310eff81a41259479fadde9058fc2"
+    },
+    {
+      "file": "controller.txt",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/controller.log",
+      "bytes": 83394,
+      "sha256": "dc57d8adc0202420bd31686a6bb0b9521a970fd1c8a22b1c19753614f34026b4"
+    },
+    {
+      "file": "inputs-after.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/inputs-after.json",
+      "bytes": 173457,
+      "sha256": "335eca69ad29365707939a83cedd74debe5fb9edeefab25c00b81472c061be35"
+    },
+    {
+      "file": "inputs-before.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/inputs-before.json",
+      "bytes": 173457,
+      "sha256": "0d36750e66f106af26c0e9e5039792e70c9cde04614f75d0c114894b2f007177"
+    },
+    {
+      "file": "post-command16-verifier-outputs-receipt.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/post-command16-verifier-outputs-receipt.json",
+      "bytes": 8461,
+      "sha256": "2015e3d41e1b7089f8b2d504ada7e913e5e46c4232c455e4da56778adb7b206b"
+    },
+    {
+      "file": "prepared-manifest.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/prepared-manifest.json",
+      "bytes": 81341,
+      "sha256": "ca1e8dd9cdca07caad600093626b7dc14ebc3fa03246a4ca5097af10bf72e99f"
+    },
+    {
+      "file": "summary.json",
+      "source": "/tmp/combat-fidelity-post-tests-checks-20261109/summary.json",
+      "bytes": 168029,
+      "sha256": "5da0aaa43353a7df32055ca8481d1671a26e13f75463355ec2f212e6312cb772"
+    }
+  ]
+}

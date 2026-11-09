@@ -1,0 +1,44 @@
+{"completed":1,"caller":"beyond_good_evil_peyj","side":"player","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":2,"caller":"beyond_good_evil_peyj","side":"enemy","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":3,"caller":"rayman_globox","side":"player","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":4,"caller":"rayman_globox","side":"enemy","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":5,"caller":"sanctum_sweet_autumn","side":"player","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":6,"caller":"sanctum_sweet_autumn","side":"enemy","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":7,"caller":"momo_ayase","side":"player","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":8,"caller":"momo_ayase","side":"enemy","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":9,"caller":"crypt_necrodancer_cadence","side":"player","kind":"native16","effects":0,"hpImpacts":1}
+{"completed":10,"caller":"crypt_necrodancer_cadence","side":"enemy","kind":"native16","effects":0,"hpImpacts":1}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /8/. Input:
+
+'Attendre pendant le choix des cibles\n' +
+  'Medic — Rafale rapprochée du Scattergun\n' +
+  'Une cible · Combat en attente\n' +
+  'Renfort · Scout · 100 ATB + 100 charge spéciale · Une fois par personnage et combat. Coût à la confirmation.\n' +
+  '✓ CLOUD STRIFE\n' +
+  '100000/100000 HP\n' +
+  'DÉGÂTS ESTIMÉS 43–53\n' +
+  'CONFIRMER LES CIBLES\n' +
+  'ANNULER SANS COÛT'
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/summon-wave17-browser.mjs:126:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'Attendre pendant le choix des cibles\n' +
+    'Medic — Rafale rapprochée du Scattergun\n' +
+    'Une cible · Combat en attente\n' +
+    'Renfort · Scout · 100 ATB + 100 charge spéciale · Une fois par personnage et combat. Coût à la confirmation.\n' +
+    '✓ CLOUD STRIFE\n' +
+    '100000/100000 HP\n' +
+    'DÉGÂTS ESTIMÉS 43–53\n' +
+    'CONFIRMER LES CIBLES\n' +
+    'ANNULER SANS COÛT',
+  expected: /8/,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

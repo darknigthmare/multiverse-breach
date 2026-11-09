@@ -141,7 +141,13 @@ test('a capture and extraction require their declared surface rather than an XY 
   const engine = makeEngine(), hero = engine.heroes[0];
   place(engine, hero, 'ground:5:3'); engine.updateTacticsObjective();
   assert.equal(engine.objectiveProgress, 0);
+  engine.endActiveTurn();
+  assert.equal(engine.objectiveProgress, 0, 'a completed turn on the lower floor cannot capture the bridge');
+  for (let frame = 0; frame < 36; frame++) engine.update();
+  assert.equal(engine.activeUnitType, 'enemy');
   place(engine, hero, 'bridge:5:3'); engine.updateTacticsObjective();
+  assert.equal(engine.objectiveProgress, 0, 'an objective refresh cannot award occupation before a completed turn');
+  engine.endActiveTurn();
   assert.equal(engine.objectiveProgress, 1);
   const extraction = makeEngine('cyber_catwalks');
   place(extraction, extraction.heroes[0], 'ground:8:5'); extraction.updateTacticsObjective();
@@ -193,7 +199,7 @@ test('view cuts change selection visibility without changing occupancy or damage
   assert.equal(engine.selectTerrainSurface('bridge:4:3'), true);
 });
 
-test('automatic heroes choose the physical staircase when their objective is on the bridge', async () => {
+test('automatic heroes choose the physical staircase when their objective is on the bridge', () => {
   const engine = makeEngine(), hero = engine.heroes[0];
   place(engine, hero, 'ground:0:3'); heroTurn(engine);
   hero.simple.tactics = profile({ delivery: 'melee', range: 1 });
@@ -207,7 +213,8 @@ test('automatic heroes choose the physical staircase when their objective is on 
   assert.equal(hero.surfaceId, 'stairs:1:3');
   assert.equal(engine.actionPhase, 'end');
   assert.equal(engine.turnsElapsed, 1);
-  await new Promise(resolve => setTimeout(resolve, 650));
+  // The same 650ms budget advances through real 60Hz simulation ticks.
+  for (let frame = 0; frame < 39; frame++) engine.update();
   assert.equal(engine.activeUnitType, 'enemy');
 });
 

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_oryn",
+  "heroId": "arca_oryn",
+  "reviewedAt": "2026-10-20",
+  "incarnation": "Nexus de Convergence — Oryn Xile, canon original du projet2026, atlas courant4×4 et dossier de Route X",
+  "sourceScope": "original-project-canon",
+  "status": "current-original-project-source-inspected",
+  "canonicalFidelityApproved": false,
+  "perfectVisualFidelityCertified": false,
+  "runtimeSelection": {
+    "function": "getHeroSpriteSheetSrc(HEROES_DB.find(id=arca_oryn))",
+    "path": "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png",
+    "layout": {
+      "columns": 4,
+      "rows": 4
+    },
+    "selectedInRuntime": true
+  },
+  "references": [
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png",
+      "sha256": "20638d42bc2af2589549cb5efd35537220dc4448b6141aa05fbbfaffc8538201",
+      "bytes": 886819,
+      "viewed": true,
+      "viewedAt": "2026-10-20",
+      "role": "current-canonical-original-project-sprite-pack",
+      "sourceScope": "original-project-canon",
+      "limitations": [
+        "Original project generated atlas retained as internal visual canon, not an independent franchise reference.",
+        "No separate orthographic blade model or facial portrait; small details remain resolution-limited."
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/oryn-xile/frame00-inspection-nearest.png",
+      "sha256": "d67dc122cc89030c0da287af4e3c79de3be1f04c487b3c999032f8f488834e3f",
+      "bytes": 86747,
+      "viewed": true,
+      "role": "derived-inspection-crop-same-canonical-project-pack",
+      "derivedFrom": "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      },
+      "usedAsIndependentReference": false
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/oryn-xile/frame01-weapon-inspection-nearest.png",
+      "sha256": "5e2fe6362fe8416af8a8554e3cf3b2d1a84e5d6b466bde2466a5c360931a4a22",
+      "bytes": 95529,
+      "viewed": true,
+      "role": "derived-inspection-crop-same-canonical-project-pack",
+      "derivedFrom": "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png",
+      "crop": {
+        "left": 256,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      },
+      "usedAsIndependentReference": false
+    }
+  ],
+  "visualLocks": {
+    "face": "Warm olive/tan skin, dark eyes, short tousled black hair with magenta-red front forelock, angular face and light stubble; no white forelock or right-cheek scar borrowed from Marrow.",
+    "anatomy": "Human, two arms/two legs and ordinary hands; no precise age established.",
+    "costume": "Long dark charcoal/plum smith coat/tabard/apron with red-coral outlined diamonds, dark shoulder guards, ivory forearm wraps, dark wrist/fingerless gloves, leather tool belt, dark trousers and strapped dark boots.",
+    "equipment": "Broad flat dark threshold greatsword, one red-coral luminous cutting edge, nested diamond engravings, angular geometric brass/steel guard, long dark wrapped grip and round small pommel. Small tools at waist belong to the workshop profession.",
+    "palette": "Primary #241f2d and secondary #e04f64, blade #ff8798; dark/plum cloth, coral marks and restrained brass/ivory.",
+    "forbiddenMixes": "No Nadir reel/drone/pistol, Anchor gauntlet, Marrow white forelock/scar/crystal blade, medical cross or wizard hat; no fixed handedness inferred from gameplay category."
+  },
+  "sourceRefs": [
+    "src/game/heroes.js#arca_oryn",
+    "src/game/characterPlaques.js#arca_oryn",
+    "src/game/spriteAssets.js#getHeroSpriteSheetSrc",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-oryn.png"
+  ],
+  "loreEvidence": {
+    "file": "src/game/characterPlaques.js",
+    "scope": "arca_oryn record189–208",
+    "role": "Route X threshold blade artisan and temporary name-bearer in ZERO.",
+    "doctrine": "Return speech to each witness rather than speak on their behalf; recut suppressed signatures and protect separate testimonies.",
+    "signatureTechniques": [
+      "Taille-Nom de Route X",
+      "Riposte du Temoin",
+      "Pas de la Route Effacee",
+      "Manifeste des Survivants"
+    ]
+  },
+  "ageStatus": "unknown-family-safe-only",
+  "limitations": [
+    "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, pas une source de licence externe.",
+    "Résolution du visage, outils et petites gravures de la lame limitée par le pixelart source; aucune certification parfaite1:1.",
+    "Âge chiffré non établi; toutes les scènes restent familiales et non romantiques.",
+    "La mèche magenta distingue Oryn de la mèche blanche et cicatrice de Marrow; ne pas transférer ces marques."
+  ]
+}

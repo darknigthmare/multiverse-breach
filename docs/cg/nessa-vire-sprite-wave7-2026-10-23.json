@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "nessa_vire",
+  "heroId": "nessa_vire",
+  "characterName": "Nessa Vire",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-redraw-plus-two-true-whole-pose-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png",
+    "sha256": "e5c26dc4dc50e9a3f3ada818dc99fe3be836f8b04edca517416bd9a27dfd0e10",
+    "bytes": 2801290,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire-v2-fidelity-wave7-2026-10-23.png",
+    "sha256": "1152f7b83a6a2c7411c6e45aa676429bd57f008b339f9d193ce962c056625e9a",
+    "bytes": 694687,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/nessa-vire-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+    "sha256": "e0e33513f13bdcbf2b706b793e9a35211764488de54956d5207338a0b049d377",
+    "bytes": 13175
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-sprite-independent-review.json",
+    "sha256": "1d116c94854c989bd084cc3f061f90b4d6e15d4708f0a72509c81d96327a158d",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire.png",
+    "sha256": "4a74c4074b90f6708529879b40642fa7f03dbc7497586e2865ed357d76b57536",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "mixedSourceSha256": "08d71b2d159547592f5fb59ad00320a0e053c703966b86bff5cfea62cf7ec47d",
+    "selectedImagegenNativeInputs": 5,
+    "fourteenWholeNativeGroupPosesPreservedBeforeFinalNormalization": true,
+    "twoGenuineCorrectiveFinalCells": [
+      2,
+      10
+    ],
+    "selectedVisiblePixelsBeforeNormalization": 1497977,
+    "assignedVisiblePixelsBeforeNormalization": 1497977,
+    "preNormalizationResizing": false,
+    "finalCommonNearestScale": 0.34017595307917886,
+    "minimumGuard": 13,
+    "visibleFootBaselinesByCell": [
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242,
+      242
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave7-2026-10-23/nessa-vire/atlas/packing-proof.json",
+      "sha256": "7a825be2b3a2def8981f0f11b517bd22570272ebc1ba9b8edf139ab290faed02",
+      "bytes": 11307
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave7-2026-10-23/nessa-vire/atlas/assembly-proof.json",
+      "sha256": "3f278216b0cb8036b55770d1eebdd8aaa1fa5be58ad7203a6d0a4f6db7725a1e",
+      "bytes": 16793
+    }
+  },
+  "nativeInputs": [
+    {
+      "path": "/workspace/generated_images/exec-295d5425-29ea-48a5-b9db-c6edebd83861.png",
+      "sha256": "c38c7a1dd2bc70ecbc5f304eb5fdaaa6f5bb64167381c11e114fcfb613744e07",
+      "bytes": 2329440,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-sprite-atlas.txt",
+      "promptSha256": "2d74c8e58a6cce1dc120a4e95dc53a17365bc4dff6dd3f40e2fc7551ba6c0e55",
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "reason": "Raw grid crowding truncates top/right sword tips and edges; genuine ImageGen reframe required."
+    },
+    {
+      "path": "/workspace/generated_images/exec-568075a9-7d83-4f3e-b1cd-610ddcd0b131.png",
+      "sha256": "3322f76177a72a2ca354d5295fb80c992db993a99c95c0a81fe06d01d8d09db3",
+      "bytes": 2299174,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-sprite-atlas-reframe.txt",
+      "promptSha256": "7849e1e091be9e5378e2e810de0f7923b5bd7bb92e4a68cd7a7384760c38a847",
+      "referencePaths": [
+        "/workspace/generated_images/exec-295d5425-29ea-48a5-b9db-c6edebd83861.png",
+        "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png"
+      ],
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "reason": "Built-in component normalizer rejected ambiguous detached satellite; orb/sparks genuinely removed in third ImageGen output."
+    },
+    {
+      "path": "/workspace/generated_images/exec-cca96b20-1178-47da-8ba1-304e4a286e24.png",
+      "sha256": "2356ad24abbe413cbbad46c51197a12cfd128238c5b0ee4182fae618c0c0ff43",
+      "bytes": 2248371,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-sprite-atlas-no-satellites.txt",
+      "promptSha256": "4d966aafbcd1077b3e6b5171528cfa2ff4694490ae73e86ff8c4a9aafb9c25b0",
+      "referencePaths": [
+        "/workspace/generated_images/exec-568075a9-7d83-4f3e-b1cd-610ddcd0b131.png",
+        "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png"
+      ],
+      "selectedFrames": [],
+      "status": "unselected-native-draft",
+      "reason": "Actual standard component normalizer rejected ambiguous or distant satellite; replaced by whole-pose native groups, not forced past validation."
+    },
+    {
+      "path": "/workspace/generated_images/exec-3a5002a2-9a77-4a6d-9cd5-ac5eabd30038.png",
+      "sha256": "ec61312aab41a0afc25335001752e5e8ef82a632ae577a396a5bb5696aabd3ee",
+      "bytes": 1352215,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-atlas-group-1.txt",
+      "promptSha256": "8bd972b3f316dd9fcfaad61d9ca61d1077d0987ab8adb9e25ecd44f7f21fc33f",
+      "selectedFrames": [
+        1,
+        3,
+        4
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        2
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-6e9edd22-555f-4913-b03d-337f4eed7fad.png",
+      "sha256": "abfcaa1f43c3075c9a4d07ef15b89321b3e3d31b6241630830ef500050d21ddc",
+      "bytes": 1241831,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-atlas-group-2.txt",
+      "promptSha256": "286ccf21b0974802e2f21525ee94510ab508ae5cbd394280291f90a7325d67d3",
+      "selectedFrames": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-f988b2f9-4353-42d9-9da0-f9532bdf573e.png",
+      "sha256": "11c9a668a48526ed5e32f4515ff7eb7e91fb3395141a5815f03e8888e7a76856",
+      "bytes": 1163694,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-atlas-group-3.txt",
+      "promptSha256": "ea4dd01a46a8202519db1ca3eee1efbd9a4c74e79fbe6afd96295e9004e0e035",
+      "selectedFrames": [
+        9,
+        11,
+        12
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": [
+        2
+      ]
+    },
+    {
+      "path": "/workspace/generated_images/exec-b1ffdd99-266b-42c4-a1cd-af9da08cf843.png",
+      "sha256": "b1ef42686de8f41c7e96e18dd2284b40f3594f8daf516ae5ac6eeb38156707bc",
+      "bytes": 1352003,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-atlas-group-4.txt",
+      "promptSha256": "1dca9a85abdaf06c8f5d6268cb1fc65f01e425590ec369f44267840a18524915",
+      "selectedFrames": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    },
+    {
+      "path": "/workspace/generated_images/exec-11356fd7-36c3-455d-83bc-fac63d3c46f8.png",
+      "sha256": "4ba63fa7bfc723ffdc75e0cee5155b5e40308d81ccc95c12bad7261f73a57845",
+      "bytes": 762746,
+      "promptFile": "docs/cg/prompts/wave7-2026-10-23/nessa-vire/16-atlas-two-complete-corrective-poses.txt",
+      "promptSha256": "676650e4e226474cc38d82727b9330c36e523b8d4bdaf1877a03c0be7b929019",
+      "selectedFrames": [
+        2,
+        10
+      ],
+      "status": "contributor-to-sixteen-pose-candidate",
+      "unusedNativePoseIndices": []
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 8,
+  "contributingAtlasNativeInputs": 5,
+  "retainedWhollyUnselectedNativeAttempts": 3,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/nessa-vire-reference-evidence-wave7-2026-10-23.json",
+  "limitations": [
+    "Current internal V2 is the selected original-project authority, without an external-franchise identity claim.",
+    "Single rear-three-quarter source leaves frontal armor microgeometry and tiny eye/runeblade markings interpreted; no perfect 1:1 certification.",
+    "Three initial whole-atlas outputs remain entirely unselected; four subsequent native groups provide fourteen whole poses and one real two-pose correction replaces frames02/10.",
+    "Only translation and bounded soft-alpha fringe extraction precede the standard shared nearest scale; no semantic painting, mirroring or recoloring.",
+    "Producer installer leaves runtime maps unchanged; root handles selection and exposing the old atlas as a variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-sprite-independent-review.json",
+  "independentReviewSha256": "1d116c94854c989bd084cc3f061f90b4d6e15d4708f0a72509c81d96327a158d"
+}

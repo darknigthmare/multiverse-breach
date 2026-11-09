@@ -3,7 +3,8 @@ import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { resolveCombatAbility, resolveUniverseSummon } from '../src/game/combatIdentity.js';
-import { COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { COMBAT_ABILITY_OVERRIDES as LIVE_COMBAT_ABILITY_OVERRIDES } from '../src/game/combat/abilities/catalog.js';
+import { projectAbilitiesBeforeWave17 } from './combatFidelityHistoricalCohortWave17.mjs';
 import { ABILITIES_WAVE16, ABILITY_REVISIONS_WAVE16 } from '../src/game/combat/abilities/abilitiesWave16.js';
 import { COMBAT_SOURCE_DEFINITIONS_WAVE16 } from '../src/game/combat/combatSourceDefinitionsWave16.js';
 import { CHARACTER_PRESENTATIONS } from '../src/game/combat/presentationCatalog.js';
@@ -22,6 +23,7 @@ const json = file => JSON.parse(read(file));
 const entries = file => existsSync(new URL(file, root)) ? json(file).entries || [] : [];
 const sort = values => [...values].sort();
 const basicSlots = ['simple', 'secondary', 'defense'];
+const COMBAT_ABILITY_OVERRIDES = projectAbilitiesBeforeWave17(LIVE_COMBAT_ABILITY_OVERRIDES);
 const summarize = table => ({ authoredHeroes: Object.keys(table).length,
   authoredSlots: Object.values(table).reduce((n, item) => n + basicSlots.filter(slot => item[slot]).length, 0),
   completeThreeSlotKits: Object.values(table).filter(item => basicSlots.every(slot => item[slot])).length,

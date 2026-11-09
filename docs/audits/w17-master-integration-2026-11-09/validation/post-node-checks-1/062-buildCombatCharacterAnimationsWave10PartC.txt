@@ -1,0 +1,21 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'P-5000 Power Loader'
+- 'Power Loader Smash'
+
+    at buildNativeWave10PartC (file:///workspace/multiverse-breach/scripts/buildCombatCharacterAnimationsWave10PartC.mjs:201:14)
+    at async file:///workspace/multiverse-breach/scripts/buildCombatCharacterAnimationsWave10PartC.mjs:282:107 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'P-5000 Power Loader',
+  expected: 'Power Loader Smash',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

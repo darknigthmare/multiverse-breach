@@ -1,0 +1,79 @@
+{
+  "verifiedAt": "2026-11-02T05:30:15.631491+00:00",
+  "readyForGlobalIntegration": true,
+  "finalFreezeClaimed": false,
+  "source1to1Verified": false,
+  "counts": {
+    "verticalMaps": 23,
+    "universeMaps": 20,
+    "nexusMaps": 3,
+    "materialProfiles": 52,
+    "runtimeBiomes": 20,
+    "stageDefinitions": 445,
+    "rosterUniversesWithLocalizedStageDefinition": 220
+  },
+  "tests": [
+    {
+      "command": "node --test --test-concurrency=1 scripts/tacticsUniverseWave17.test.mjs scripts/tacticsUniversePresentationWave17.test.mjs scripts/tacticsUniverseRoutingWave17.test.mjs scripts/tacticsUniverseRuntimeWave17.test.mjs scripts/tacticsUniversePresentationWave16.test.mjs scripts/tacticsUniverseWave15Presentation.test.mjs scripts/tacticsUniverseWave15Routing.test.mjs",
+      "passed": 45,
+      "exitCode": 0
+    },
+    {
+      "command": "node --test --test-concurrency=1 scripts/stageAnimationWave17.test.mjs scripts/stageAnimationWave16.test.mjs scripts/stageAnimationCatalog.test.mjs",
+      "passed": 21,
+      "exitCode": 0
+    },
+    {
+      "command": "node --test scripts/tacticsUniverseWave17.test.mjs scripts/stageAnimationWave17.test.mjs",
+      "passed": 15,
+      "exitCode": 0
+    }
+  ],
+  "lint": {
+    "exitCode": 0,
+    "warnings": 0
+  },
+  "browser": {
+    "tactics": {
+      "path": "docs/tactics-universes-2026-11-02/preliminary-20261102052122228/result.json",
+      "review": "docs/tactics-universes-2026-11-02/preliminary-20261102052122228/visual-review.json",
+      "launches": 6,
+      "checks": 18,
+      "captures": 10,
+      "pathSha256": "b15cff58f62ffe895c1843fa1949edc5b54d99a03026c47d01e36f29cd975f72",
+      "reviewSha256": "bd670141ec48d5af278c4fb9fe7c64a24263cbf467becd429d8c7be3054ef1c0"
+    },
+    "stages": {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/stages-preliminary-20261102052819403/stages-wave17.json",
+      "review": "docs/combat-fidelity-wave17-2026-11-02/browser/attempts/stages-preliminary-20261102052819403/visual-review.json",
+      "studies": 10,
+      "nativeCanvasFrames": 40,
+      "captures": 2,
+      "pathSha256": "a5fc8195f21e138b0656de0955a5e25cb07208adf5400ff3cc8c87f7c9fc0d5f",
+      "reviewSha256": "5b761e03bd5861f256dc1746c2fe41f7815cc5f6f92dfba2d92e9908a3d167c0"
+    }
+  },
+  "logs": [
+    {
+      "path": "docs/tactics-universes-2026-11-02/preliminary/tactics-wave17-ready-tests.log",
+      "sha256": "af10c5a4f2a363a935fc3f8c0b78224c470ece5a22c27951f858e3e7cc9233c5"
+    },
+    {
+      "path": "docs/tactics-universes-2026-11-02/preliminary/tactics-stages-wave17-final-targeted.log",
+      "sha256": "d6fd4d13265a23cb080eff95a1d2a46af55d384aa387ab24474a52b088ab267f"
+    },
+    {
+      "path": "docs/tactics-universes-2026-11-02/preliminary/tactics-stages-wave17-lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/stages/stages-wave17-tests.log",
+      "sha256": "1bf57806c69595dff6f9ad1011ba4a2b78bee0e3f63605c0146498796216de60"
+    }
+  ],
+  "finalActionsRequired": [
+    "Add new test filenames to the parent-owned package scripts.",
+    "Run all final proofs again after the global production freeze.",
+    "Review those new final captures; preliminary reviews do not certify later executions."
+  ]
+}

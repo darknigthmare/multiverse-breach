@@ -1,0 +1,34 @@
+{
+  "nodeVersion": "v22.23.4",
+  "nodeOptions": "--max-old-space-size=4096",
+  "results": [
+    {
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/combatCompletionAudit.mjs",
+        "--write"
+      ],
+      "startedAt": "2026-11-09T10:22:10.563933+00:00",
+      "exitCode": 0,
+      "pid": 54110,
+      "finishedAt": "2026-11-09T10:22:12.353960+00:00"
+    },
+    {
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/combatFidelityAudit.mjs",
+        "--write"
+      ],
+      "startedAt": "2026-11-09T10:22:12.354266+00:00",
+      "exitCode": 0,
+      "pid": 54117,
+      "finishedAt": "2026-11-09T10:23:17.967287+00:00"
+    }
+  ]
+}

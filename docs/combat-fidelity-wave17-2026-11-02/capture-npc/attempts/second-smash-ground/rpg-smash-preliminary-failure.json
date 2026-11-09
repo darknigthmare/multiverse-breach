@@ -1,0 +1,6504 @@
+{
+  "error": "page.evaluate: Error: Capture modified HP, altitude, camp or input ownership\n    at eval (eval at evaluate (:311:30), <anonymous>:15:169)\n    at async <anonymous>:337:30\n    at /workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash.browser.mjs:57:27",
+  "rows": [
+    {
+      "mode": "RPG",
+      "side": "player",
+      "initialNpcSource": {
+        "id": "tail_concerto_red_vest_kitten",
+        "sourceEnemyId": "tail_concerto_red_vest_kitten",
+        "name": "Chaton du Black Cats Gang",
+        "universe": "Tail Concerto",
+        "species": "felineko-kitten",
+        "hp": 65,
+        "atk": 0,
+        "spd": 4,
+        "stats": {
+          "hp": 65,
+          "atk": 0,
+          "def": 1,
+          "spd": 4
+        },
+        "color": "#e7bc6d",
+        "weapon": "none",
+        "weaponType": "unarmed",
+        "bubbleCaptureEligible": true,
+        "sourceNonOffensiveWave17": true,
+        "sourceNativeNpcWave17": true,
+        "canonStatus": "canon nonoffensive adversary",
+        "role": "mischief",
+        "simple": {
+          "name": "Courir et faire des farces",
+          "type": "guard",
+          "dmg": 0
+        },
+        "secondary": {
+          "name": "Se cacher",
+          "type": "guard",
+          "dmg": 0
+        },
+        "defense": {
+          "name": "Fuite du chaton",
+          "type": "guard",
+          "reduce": 0,
+          "dur": 0.5
+        },
+        "special": {
+          "name": "Rire du chaton",
+          "type": "guard",
+          "dmg": 0
+        },
+        "sourceReference": "Tail Concerto USA manual, printedpage19 /PDFpage21: kittens generally do not attack; they run, laugh, make graffiti and hide. One exact source outfit, not three recolored bodies.",
+        "source1to1Verified": false,
+        "sourceWork": "Tail Concerto (1998)"
+      },
+      "removedPlaceholderId": "tail_concerto_red_vest_kitten",
+      "bodySheet": "/sprites/generated/source-capture-enemies-wave17/black-cat-gang-kitten.png",
+      "bodySha256": "29f0fe81b38407cb3d8709ce816684abc6b7feff93bf650786fa2d5b4cfedfef",
+      "capture": {
+        "kind": "bubble-capture",
+        "active": true,
+        "phase": "captured",
+        "sourceHeroId": "tail_concerto_waffle",
+        "universe": "Tail Concerto",
+        "sourceRuntimeId": "hero:0:tail_concerto_waffle",
+        "targetRuntimeId": "w17-kit-battle-player",
+        "remaining": 1.25,
+        "duration": 1.25,
+        "turnsRemaining": 1,
+        "originalSide": null,
+        "nonlethal": true,
+        "immobilize": true,
+        "suppressActions": true,
+        "lift": 0,
+        "changesFaction": false,
+        "inputProxy": null,
+        "durationIsEngineAdaptation": true,
+        "source1to1Verified": false
+      },
+      "armedTicks": 18,
+      "expiryTicks": 75,
+      "start": [
+        {
+          "id": "hero:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "w17-kit-battle-player",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "armed": [
+        {
+          "id": "hero:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "w17-kit-battle-player",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "after": [
+        {
+          "id": "hero:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "w17-kit-battle-player",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "phases": [
+        "run",
+        "captured",
+        "released"
+      ],
+      "capturedColumns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "releasedColumns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "actualDraws": [
+        {
+          "tick": 1,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 2,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 3,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 4,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 5,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 6,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 7,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 8,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 9,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 10,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 11,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 12,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 13,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 14,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 15,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 16,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 17,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 19,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 20,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 21,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 22,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 23,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 24,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 25,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 26,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 27,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 28,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 29,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 30,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 31,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 32,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 33,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 34,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 35,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 36,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 37,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 38,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 39,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 40,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 41,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 42,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 43,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 44,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 45,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 46,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 47,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 48,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 49,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 50,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 51,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 52,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 53,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 54,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 55,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 56,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 57,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 58,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 59,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 60,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 61,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 62,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 63,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 64,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 65,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 66,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 67,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 68,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 69,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 70,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 71,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 72,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 73,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 74,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 75,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 76,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 77,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 78,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 79,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 80,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 81,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 82,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 83,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 84,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 85,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 86,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 87,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 88,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 89,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 90,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 91,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 92,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 93,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 94,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 95,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 96,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 97,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 98,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 99,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 100,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 101,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 102,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 103,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 104,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 105,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 106,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 107,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 108,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 109,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 110,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 111,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 112,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 113,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 114,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 115,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 116,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 117,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 118,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 119,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 120,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 121,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 122,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 123,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 124,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 125,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 126,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 127,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 128,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 129,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        },
+        {
+          "tick": 130,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": 1,
+          "destination": [
+            -25.295958358848743,
+            -25.295958358848743,
+            50.59191671769749,
+            50.59191671769749
+          ]
+        }
+      ],
+      "realUiCommand": true,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "noHpChange": true,
+      "noLift": true,
+      "noFactionChange": true,
+      "noInputProxy": true,
+      "mount": {
+        "mode": "RPG",
+        "side": "player",
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite-rpg17-review/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite-rpg17-review/deps/react-dom_client.js?v=d8b616dd"
+      },
+      "panel": "Attendre pendant le choix des cibles\nWaffle Ryebread — Bulle de capture du Police Robo\nUne cible · Combat en attente\nCAPTURE NON LÉTALE · 1,25 s\nSur une cible capturable uniquement. Immobilise sans blesser, soulever ou changer le camp de la cible.\n✓ CHATON DU BLACK CATS GANG\n65/65 HP\nCAPTURE NON LÉTALE · 1,25 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT"
+    },
+    {
+      "mode": "RPG",
+      "side": "enemy",
+      "initialNpcSource": {
+        "id": "tail_concerto_red_vest_kitten",
+        "sourceEnemyId": "tail_concerto_red_vest_kitten",
+        "name": "Chaton du Black Cats Gang",
+        "universe": "Tail Concerto",
+        "species": "felineko-kitten",
+        "hp": 65,
+        "atk": 0,
+        "spd": 4,
+        "stats": {
+          "hp": 65,
+          "atk": 0,
+          "def": 1,
+          "spd": 4
+        },
+        "color": "#e7bc6d",
+        "weapon": "none",
+        "weaponType": "unarmed",
+        "bubbleCaptureEligible": true,
+        "sourceNonOffensiveWave17": true,
+        "sourceNativeNpcWave17": true,
+        "canonStatus": "canon nonoffensive adversary",
+        "role": "mischief",
+        "simple": {
+          "name": "Courir et faire des farces",
+          "type": "guard",
+          "dmg": 0
+        },
+        "secondary": {
+          "name": "Se cacher",
+          "type": "guard",
+          "dmg": 0
+        },
+        "defense": {
+          "name": "Fuite du chaton",
+          "type": "guard",
+          "reduce": 0,
+          "dur": 0.5
+        },
+        "special": {
+          "name": "Rire du chaton",
+          "type": "guard",
+          "dmg": 0
+        },
+        "sourceReference": "Tail Concerto USA manual, printedpage19 /PDFpage21: kittens generally do not attack; they run, laugh, make graffiti and hide. One exact source outfit, not three recolored bodies.",
+        "source1to1Verified": false,
+        "sourceWork": "Tail Concerto (1998)"
+      },
+      "removedPlaceholderId": "cloud_ff7",
+      "bodySheet": "/sprites/generated/source-capture-enemies-wave17/black-cat-gang-kitten.png",
+      "bodySha256": "29f0fe81b38407cb3d8709ce816684abc6b7feff93bf650786fa2d5b4cfedfef",
+      "capture": {
+        "kind": "bubble-capture",
+        "active": true,
+        "phase": "captured",
+        "sourceHeroId": "tail_concerto_waffle",
+        "universe": "Tail Concerto",
+        "sourceRuntimeId": "enemy:custom:0:tail_concerto_waffle",
+        "targetRuntimeId": "w17-kit-battle-enemy",
+        "remaining": 1.25,
+        "duration": 1.25,
+        "turnsRemaining": 1,
+        "originalSide": null,
+        "nonlethal": true,
+        "immobilize": true,
+        "suppressActions": true,
+        "lift": 0,
+        "changesFaction": false,
+        "inputProxy": null,
+        "durationIsEngineAdaptation": true,
+        "source1to1Verified": false
+      },
+      "armedTicks": 18,
+      "expiryTicks": 75,
+      "start": [
+        {
+          "id": "w17-kit-battle-enemy",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "enemy:custom:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "armed": [
+        {
+          "id": "w17-kit-battle-enemy",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "enemy:custom:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "after": [
+        {
+          "id": "w17-kit-battle-enemy",
+          "sourceId": "tail_concerto_red_vest_kitten",
+          "hp": 65,
+          "y": 350,
+          "team": "hero"
+        },
+        {
+          "id": "enemy:custom:0:tail_concerto_waffle",
+          "sourceId": "tail_concerto_waffle",
+          "hp": 120,
+          "y": 350,
+          "team": "enemy"
+        }
+      ],
+      "phases": [
+        "run",
+        "captured",
+        "released"
+      ],
+      "capturedColumns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "releasedColumns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "actualDraws": [
+        {
+          "tick": 1,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 2,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 3,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 4,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 5,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 6,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 7,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 8,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 9,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 10,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 11,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 12,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 13,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 14,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 15,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 16,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 17,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 18,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 19,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 20,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 21,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 22,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 23,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 24,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 25,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 26,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 27,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 28,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 29,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 30,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 31,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 32,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 33,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 34,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 35,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 36,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 37,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 38,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 39,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 40,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 41,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 42,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 43,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 44,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 45,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 46,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 47,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 48,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 49,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 50,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 51,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 52,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 53,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 54,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 55,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 56,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 57,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 58,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 59,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 60,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 61,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 62,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 63,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 64,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 65,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 66,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 67,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 68,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 69,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 70,
+          "row": 2,
+          "col": 2,
+          "index": 10,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 71,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 72,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 73,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 74,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 75,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 76,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 77,
+          "row": 2,
+          "col": 3,
+          "index": 11,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 78,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 79,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 80,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 81,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 82,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 83,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 84,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 85,
+          "row": 2,
+          "col": 0,
+          "index": 8,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 86,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 87,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 88,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 89,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 90,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 91,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 92,
+          "row": 2,
+          "col": 1,
+          "index": 9,
+          "phase": "captured",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 93,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 94,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 95,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 96,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 97,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 98,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 99,
+          "row": 3,
+          "col": 0,
+          "index": 12,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 100,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 101,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 102,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 103,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 104,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 105,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 106,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 107,
+          "row": 3,
+          "col": 1,
+          "index": 13,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 108,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 109,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 110,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 111,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 112,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 113,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 114,
+          "row": 3,
+          "col": 2,
+          "index": 14,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 115,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 116,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 117,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 118,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 119,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 120,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 121,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 122,
+          "row": 3,
+          "col": 3,
+          "index": 15,
+          "phase": "released",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 123,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 124,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 125,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 126,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 127,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 128,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 129,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        },
+        {
+          "tick": 130,
+          "row": 1,
+          "col": 0,
+          "index": 4,
+          "phase": "run",
+          "facing": -1,
+          "destination": [
+            -26.783955909369258,
+            -26.783955909369258,
+            53.567911818738516,
+            53.567911818738516
+          ]
+        }
+      ],
+      "realUiCommand": true,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "noHpChange": true,
+      "noLift": true,
+      "noFactionChange": true,
+      "noInputProxy": true,
+      "mount": {
+        "mode": "RPG",
+        "side": "enemy",
+        "engineUrl": "/src/game/engineRpg.js",
+        "reactUrl": "/node_modules/.vite-rpg17-review/deps/react.js?v=d8b616dd",
+        "domUrl": "/node_modules/.vite-rpg17-review/deps/react-dom_client.js?v=d8b616dd"
+      },
+      "panel": "Attendre pendant le choix des cibles\nP2 · Waffle Ryebread — Bulle de capture du Police Robo\nUne cible · Combat en attente\nCAPTURE NON LÉTALE · 1,25 s\nSur une cible capturable uniquement. Immobilise sans blesser, soulever ou changer le camp de la cible.\n✓ CHATON DU BLACK CATS GANG\n65/65 HP\nCAPTURE NON LÉTALE · 1,25 S\nCONFIRMER LES CIBLES\nANNULER SANS COÛT"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-preliminary-rpg-player-captured.png",
+      "sha256": "7990cf72d95b426be7e99a9d26466e1c0976e246fd9ca5a8b35719bc16a10361"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-preliminary-rpg-player-released.png",
+      "sha256": "3ca898adfe8ae158598ee2fd223c77f18489117fa3aeccdabcd519488ebdffc9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-preliminary-rpg-enemy-captured.png",
+      "sha256": "6d33d57c6580ace854fb8a6d671c7956d9b0ce2a0cda11ea4fc2aaab77a2cccb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave17-2026-11-02/capture-npc/rpg-smash-preliminary-rpg-enemy-released.png",
+      "sha256": "1d27bf18b01476385ecee75d730572c9425db9f648634c1302ba4ee98e1b8aab"
+    }
+  ],
+  "pageErrors": []
+}

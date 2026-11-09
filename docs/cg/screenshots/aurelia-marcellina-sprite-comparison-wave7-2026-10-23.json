@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "operation": "technical-comparison-of-real-source-portrait-and-old-new-atlas-cells",
+  "semanticImageGenerationInThisComposition": false,
+  "canonicalFidelityApproved": false,
+  "perfect1to1Certified": false,
+  "oldAtlasPreserved": true,
+  "runtimeSelectionClaimed": false,
+  "sourceAuthority": "internal-original-project-selected-V2-portrait",
+  "sources": [
+    {
+      "label": "Ancien atlas conservé",
+      "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina.png",
+      "note": "Variante historique divergente",
+      "detail": "Aucune autorité pour la silhouette V2",
+      "sha256": "b7606b93b466251a0d40af5f9d2bd4d4b7801890ac5906329feef92d312fb30b",
+      "nativeSize": [
+        1024,
+        1024
+      ],
+      "comparisonCropPixels": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "resampling": "nearest-neighbor-display-only"
+    },
+    {
+      "label": "Portrait V2 interne sélectionné",
+      "path": "/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png",
+      "note": "Référence individuelle du projet",
+      "detail": "Voile ivoire · toge rouge/or · lance droite",
+      "sha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+      "nativeSize": [
+        1086,
+        1448
+      ],
+      "comparisonCropPixels": null,
+      "resampling": "nearest-neighbor-display-only"
+    },
+    {
+      "label": "Nouvel atlas — pose 01",
+      "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina-v2-fidelity-wave7-2026-10-23.png",
+      "note": "Redessin ImageGen référencé",
+      "detail": "16 poses revues · garde de 15 pixels",
+      "sha256": "9bffee414117793ff228671d542300266c68e9fe9321f537b718bbe6084c37e2",
+      "nativeSize": [
+        1024,
+        1024
+      ],
+      "comparisonCropPixels": [
+        0,
+        0,
+        256,
+        256
+      ],
+      "resampling": "nearest-neighbor-display-only"
+    }
+  ],
+  "output": {
+    "path": "docs/cg/screenshots/aurelia-marcellina-sprite-comparison-wave7-2026-10-23.webp",
+    "sha256": "428e2cefa014631ca1145e8c914fdd80fc98c423bec79390bbc2f2b8e5eb5193",
+    "width": 1600,
+    "height": 1000
+  },
+  "independentAtlasReview": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+  "limitations": [
+    "Only the first frame of each atlas is displayed here; all sixteen new frames were reviewed separately.",
+    "The selected portrait is internal original project canon, not external franchise evidence.",
+    "Composition uses technical crops, nearest-neighbor previews, text and alpha compositing; no semantic image painting or regeneration."
+  ]
+}

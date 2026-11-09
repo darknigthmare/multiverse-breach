@@ -67,8 +67,23 @@ for (const mode of ['fighter', 'melee']) for (const side of ['player', 'enemy'])
       c.engine.applyHit(c.target,c.actor,{type:'light',base:10,guardDamage:1,knockback:0,sequenceParent:{},sequenceFraction:1e-12});
     } else {
       c.engine.applyDamage(c.target,c.actor,10,0,null,1,{sequenceParent:{},sequenceFraction:1e-12});
-      c.actor.guarding = true; c.actor.perfectShieldWindow = .1; c.strike();
-      c.actor.guarding = false; c.actor.perfectShieldWindow = 0;
+      assert.equal(c.actor.sourceProtectionWave16.charges, 1, 'a zero rounded fragment cannot spend Shield Pal');
+      assert.equal(c.actor.currentHp, hp);
+      const commandSide = side === 'player' ? 'player' : 'cpu';
+      assert.equal(c.engine.setMeleeShield(commandSide, true), false, 'hit recovery cannot be bypassed by a shield input');
+      // Item-shield and zero-HP contacts still have physical recovery. Only
+      // full engine updates advance its hit lock; the isolated action clock
+      // used above deliberately does not own the engine state timer.
+      let recoveryTicks = 0;
+      while (['hit', 'hitStun'].includes(c.actor.state) && recoveryTicks++ < 90) c.engine.update({}, {});
+      assert.ok(recoveryTicks <= 90, 'the actual contact recovery must complete');
+      assert.equal(c.actor.sourceProtectionWave16.charges, 1); assert.equal(c.actor.currentHp, hp);
+      const perfectShields = c.actor.meleeMetrics.perfectShields;
+      assert.equal(c.engine.setMeleeShield(commandSide, true), true);
+      c.strike();
+      assert.equal(c.actor.meleeMetrics.perfectShields, perfectShields + 1, 'a real admitted perfect shield rejects the damaging contact');
+      assert.equal(c.actor.sourceProtectionWave16.charges, 1); assert.equal(c.actor.currentHp, hp);
+      assert.equal(c.engine.setMeleeShield(commandSide, false), true);
     }
     assert.equal(c.actor.sourceProtectionWave16.charges, 1); assert.equal(c.actor.currentHp, hp);
     c.strike(); assert.equal(c.actor.currentHp, hp); assert.equal(c.actor.sourceProtectionWave16.active, false);

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "seraphine_meridius",
+  "heroId": "seraphine_meridius",
+  "characterName": "Seraphine Meridius",
+  "incarnation": "Meridian Clockwork — original-project current selected V2 portrait (2026)",
+  "sourceKind": "original-project-internal-canon",
+  "referenceScope": "original-project-character-not-external-official-source",
+  "canonicalFidelityApproved": false,
+  "incarnationDecision": {
+    "status": "explicit-selected-current-v2-over-previous-runtime-atlas",
+    "reason": "Both actual HEROES_DB portrait fields select this V2 file; old loose-haired teal/goggle sprite differs materially.",
+    "selectedPortrait": "public/images/oc-worlds/v2/meridian_clockwork/heroes/seraphine_meridius.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/meridian-clockwork/seraphine-meridius.png"
+  },
+  "visualLocks": {
+    "face": "Warm light skin, brown eyes, dark eyeliner, same fine facial identity as the V2 portrait; tiny iris geometry unresolved.",
+    "hair": "Dark brown hair swept into a high coiled bun, mechanical gold clock ornament and dark-blue ribbons trailing behind; loose curls at temples. No goggles, no long free ponytail.",
+    "costume": "Navy-blue Renaissance military long coat with gold piping and fine gold clock embroidery, broad raised collar, gold shoulder armor (layered anatomicalRIGHT, round gear on anatomicalLEFT), white pleated neck cravat and small blue/gold brooch, brass watch/chains/belt and brown leather pouch. Cream trousers, tall navy boots with gold edge and clock ornaments, dark gloves and gold-trim forearm guards. No teal skirt or exposed shoulders.",
+    "equipment": "One narrow straight silver rapier in anatomicalRIGHT hand, ornate gold open circular basket guard with visible spring-coil assembly and small blue accents. AnatomicalLEFT hand free. Source blade exits left crop; whole length/tip are conservative extrapolation, not established exactly.",
+    "anatomy": "Natural human proportions, one head, two arms/two legs and natural hands. Keep source apparent age; no invented adult status.",
+    "universe": "Méridiana Renaissance clockpunk city, astronomical clocks, brass springs/weights/automata and deep-blue gilded towers. Seraphine protects citizens free minutes against Grand Horloger and Chronophage. Fresh settings coherent with this original internal world, not source screenshots.",
+    "silhouette": "Human fencing captain, compact high mechanical bun, high navy/gold collar, long split coat tails, cream trouser legs and separate tall navy boots; no goggles or teal exposed-shoulder dress."
+  },
+  "references": [
+    {
+      "path": "public/images/oc-worlds/v2/meridian_clockwork/heroes/seraphine_meridius.png",
+      "sha256": "a3a472b064794a32d6c998428f22b8d1420f57fc1e59dbec5033b999e27ccf68",
+      "bytes": 2418055,
+      "viewed": true,
+      "viewedAt": "2026-10-22",
+      "role": "canonical-original-project-portrait",
+      "canonicalProjectReference": true,
+      "referencePurpose": "identity",
+      "referenceScope": "original-project-seraphine-meridius-v2",
+      "limitations": [
+        "Internal original-project authority, not an external franchise reference.",
+        "V2 portrait is current in both HEROES_DB.portrait and production.audiovisual.portrait; restored tracked LFS image is not new generation.",
+        "The source rapier tip is outside its frame, so complete blade length/tip remain conservative extrapolations. Tiny facial/gear embroidery details and unseen angles are not certified1:1."
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave5-2026-10-22/seraphine-meridius/individual-canon-excerpt.json",
+      "sha256": "5315b1e69b32092103934eb8b94fcf74c4ca1913e3328bcdf87c71ca5deb89a8",
+      "viewed": true,
+      "viewedAt": "2026-10-22",
+      "role": "original-project-character-and-world-canon-text",
+      "referencePurpose": "world-and-character-specific-lore",
+      "canonicalProjectReference": false
+    }
+  ],
+  "excludedReferences": [
+    {
+      "path": "public/sprites/generated/heroes/meridian-clockwork/seraphine-meridius.png",
+      "sha256": "7a9d71be61cfaca3a5b19843508fae1029acc0648a728bae4fa754706c1996f9",
+      "viewed": true,
+      "usedForIdentity": false,
+      "reason": "Historical atlas has loose brown hair, goggles, teal tails, exposed shoulders and no rapier; preserve only as old variant."
+    }
+  ],
+  "scopeLimitations": [
+    "Internal original-project authority, not an external franchise reference.",
+    "V2 portrait is current in both HEROES_DB.portrait and production.audiovisual.portrait; restored tracked LFS image is not new generation.",
+    "The source rapier tip is outside its frame, so complete blade length/tip remain conservative extrapolations. Tiny facial/gear embroidery details and unseen angles are not certified1:1.",
+    "Same portrait can provide equipment or environment vocabulary; scoped reuse does not create an independent source.",
+    "Unknown age: family-safe only and no romance; preserve apparent source age. CG12–15 are explicit hypothetical WhatIf transformations.",
+    "All scenes are new original compositions coherent with individual canon; no automatic perfect-fidelity certification."
+  ],
+  "ageStatus": "unknown-family-safe-only",
+  "universeCoherence": {
+    "world": "Méridiana — original Renaissance clockpunk city regulated by astronomical clocks and stolen citizen minutes.",
+    "characterRole": "Former Captain of the Hour Guard protecting free minutes.",
+    "allowedSettings": [
+      "astronomical towers",
+      "spring/gear workshops",
+      "canals with brass counterweights",
+      "civic minute dispensers",
+      "blue-gold Renaissance clock city"
+    ],
+    "forbiddenCrossUniverseSubstitutions": [
+      "generic green-goggled engineer",
+      "aether airship corsair identity",
+      "modern neon city",
+      "real franchise official model sheet"
+    ]
+  }
+}

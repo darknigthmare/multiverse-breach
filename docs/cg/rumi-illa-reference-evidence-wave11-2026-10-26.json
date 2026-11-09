@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "rumi_illa",
+  "heroId": "rumi_illa",
+  "characterName": "Rumi Illa",
+  "incarnation": "Tawantinsuyu: The Split Sun — selected individual Rumi Illa V2 original-project portrait2026",
+  "qualificationStatus": "internal-selected-original-project-reference-inspected",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "references": [
+    {
+      "path": "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/rumi_illa.png",
+      "sha256": "0693ba3d72c43f23cdf426fb71c27a7d6fdbb255d2911d4de5e6bf0be6b30529",
+      "bytes": 2430330,
+      "role": "canonical-original-project-portrait",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "canonicalProjectReference": true,
+      "viewed": true,
+      "inspected": true,
+      "viewedAt": "2026-10-26T08:26:59.262732+00:00",
+      "status": "internal-current-selected-portrait-inspected",
+      "provenance": "Exact selected source restored by root, actually opened in current session."
+    },
+    {
+      "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa.png",
+      "sha256": "2d29f6e7997876e3dc259c8b94850eb98341a297c7c46115e2fc44c377c3d0a4",
+      "role": "previous-atlas-historical-only",
+      "viewed": true,
+      "actuallyViewed": true,
+      "usedForIdentity": false
+    }
+  ],
+  "visualLocks": {
+    "silhouette": [
+      "Broad strong human woman, black hair partly tied high into bun with trailing purple tie, dark stone-like rectangular chest armor and layered skirt/tunic, purple gold-patterned short cape and belt sash, strapped brown sandals with armored lower legs."
+    ],
+    "face": [
+      "Brown skin, angular serious face, dark eyes, broad gold/stone headband, large round gold earrings, black hair."
+    ],
+    "costume": [
+      "Charcoal bronze/stone plated cuirass with square seams, gold trim/pendants, purple gold-figured cape and multiple cords, asymmetric plated waist/apron panels, purple cords around calves."
+    ],
+    "equipment": [
+      "Anatomical RIGHT hand holds short dark handle of large broad crescent tumi blade with pale stone/silver face and gold edging; LEFT hand resting on wall in source.",
+      "ONE gold grille-like collar at blade/grip junction, between broad blade and gripping hand. Source hand partly obscures grip butt, so unseen pommel construction remains unknown; no second oversized cage asserted."
+    ],
+    "palette": [
+      "Charcoal stone/bronze, warm gold, deep purple, brown skin/footwear."
+    ]
+  },
+  "scopeLimitations": [
+    "Internal original-project selected V2 source only, no external franchise authority or absolute1:1 certification.",
+    "Chronological age unknown; all themes family-safe, opaque, nonromantic.",
+    "Single front/three-quarter source, hidden reverse geometry and tiny illegible insignia unknown.",
+    "Old atlas red cape/short patterned bright skirt, twin long braids and unarmed punches differ from heavy dark stone armor, purple cape and right broad tumi.",
+    "Old atlas remains byte-identical; actual divergence justifies new atlas.",
+    "CG05 Nexus adaptation; CG09-11 fan art; CG12-15 hypothetical WhatIf with one CG13 option and one CG15 option. All new settings original universe-compatible interpretations.",
+    "Source hand obscures grip butt and reverse blade construction; a restrained simple grip end is interpretation, not certified exact unseen geometry.",
+    "Historical user closure26Oct preserved9selectedCG and6unattempted slots; user explicitly resumed28Oct. The snapshot is retained separately; continuation uses unchanged source portrait and new real calls.",
+    "CG08 hand endpoints close to right edge but actual unretouched crop confirms fingers terminate inside; generous requested margin not achieved.",
+    "CG09 contextual reed boat is larger and extends through right scene edge; complete person, source cape, two sandals and whole tumi are inside. No claim of complete miniature boat."
+  ],
+  "sourceRefs": [
+    "src/game/originalUniversesManifest.json",
+    "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/rumi_illa.png"
+  ],
+  "manifestContext": {
+    "path": "src/game/originalUniversesManifest.json",
+    "sha256": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "actuallyRead": true,
+    "actualRecordRead": {
+      "worldKey": "tawantinsuyu_split_sun",
+      "lore": {
+        "origin": {
+          "fr": "Cette Trame originale s’inspire du Tawantinsuyu comme réseau de quatre quartiers, de routes andines, de maçonnerie, de textile et de mémoire nouée dans les khipu."
+        },
+        "breach": {
+          "fr": "Le Sans-Auteur coupe les cordes et les routes afin que chaque région perde le lien avec les autres, puis transforme le renversement du monde en Soleil Noir permanent."
+        },
+        "coreConflict": {
+          "fr": "Reconnecter sans uniformiser, transporter la mémoire collective et empêcher la catastrophe de devenir une nouvelle administration de l’oubli."
+        }
+      },
+      "hero": {
+        "id": "rumi_illa",
+        "name": "Rumi Illa",
+        "category": "marine",
+        "combatRole": "tank / rempart de pierre",
+        "loreRole": "Maçonne-guerrière qui sait faire tenir une cité sans mortier, même quand ses quartiers se séparent.",
+        "primaryColor": "#5c4033",
+        "secondaryColor": "#d9b44a",
+        "weaponType": "tumi_blade",
+        "stats": {
+          "hp": 164,
+          "atk": 14,
+          "def": 14,
+          "spd": 4
+        },
+        "simple": {
+          "name": "Tumi de Cuivre",
+          "type": "melee",
+          "dmg": 1.05
+        },
+        "secondary": {
+          "name": "Mur Cyclopéen",
+          "type": "melee",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Joint de Pierre",
+          "type": "shield",
+          "dur": 3.2,
+          "reduce": 0.91
+        },
+        "special": {
+          "name": "Forteresse des Quatre Côtés",
+          "type": "shield_aoe",
+          "dmg": 4.0,
+          "color": "#b5651d"
+        },
+        "universe": "Tawantinsuyu: The Split Sun",
+        "sourceType": "original",
+        "weaponColor": "#d9b44a"
+      },
+      "stages": [
+        {
+          "id": "inca_qhapaq_nan_cliffs",
+          "name": {
+            "fr": "Qhapaq Ñan des Falaises",
+            "en": "Cliff Qhapaq Nan"
+          },
+          "mode": "Tactics",
+          "difficulty": "Hard",
+          "objectiveType": "escort",
+          "boss": "Écho de la Montagne aux Neiges Noires",
+          "setting": {
+            "fr": "Route en lacets où un témoin et un khipu doivent franchir plusieurs altitudes."
+          },
+          "universe": "Tawantinsuyu: The Split Sun",
+          "sourceUniverses": [
+            "Tawantinsuyu: The Split Sun"
+          ],
+          "sourceType": "original",
+          "stageKey": "inca_qhapaq_nan_cliffs"
+        },
+        {
+          "id": "inca_qorikancha_split_sun",
+          "name": {
+            "fr": "Temple du Soleil Fendu",
+            "en": "Temple of the Split Sun"
+          },
+          "mode": "Smash",
+          "difficulty": "Hard",
+          "objectiveType": "control",
+          "boss": "Amaru de la Tempête Fendue",
+          "setting": {
+            "fr": "Cour solaire, murs d’or symboliques et plateformes divisées en quatre directions."
+          },
+          "universe": "Tawantinsuyu: The Split Sun",
+          "sourceUniverses": [
+            "Tawantinsuyu: The Split Sun"
+          ],
+          "sourceType": "original",
+          "stageKey": "inca_qorikancha_split_sun"
+        },
+        {
+          "id": "inca_uku_pacha_sunwell",
+          "name": {
+            "fr": "Puits solaire d’Uku Pacha",
+            "en": "Uku Pacha Sunwell"
+          },
+          "mode": "RPG",
+          "difficulty": "Very Hard",
+          "objectiveType": "overload",
+          "boss": "Pachakuti du Soleil Noir",
+          "setting": {
+            "fr": "Descente en anneaux sous Cusco où chaque phase renverse haut/bas, lumière/ombre et passé/futur."
+          },
+          "universe": "Tawantinsuyu: The Split Sun",
+          "sourceUniverses": [
+            "Tawantinsuyu: The Split Sun"
+          ],
+          "sourceType": "original",
+          "stageKey": "inca_uku_pacha_sunwell"
+        }
+      ]
+    }
+  },
+  "incarnationDecision": {
+    "selectedPortrait": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/rumi_illa.png",
+    "previousRuntimeSprite": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa.png",
+    "reason": "Old atlas red cape/short patterned bright skirt, twin long braids and unarmed punches differ from heavy dark stone armor, purple cape and right broad tumi."
+  },
+  "historicalCloseout20261026": {
+    "reason": "User explicitly requested finish current work and commit; no new generation after closure.",
+    "actualSuccessfulCgOutputs": 12,
+    "selectedCgCandidates": 9,
+    "preservedWhollyUnselectedDrafts": 3,
+    "actualProviderRefusalsThisWave": 0,
+    "cgCallsPending": 0,
+    "atlasCallsPending": 0,
+    "atlasGenerated": false
+  },
+  "resumption20261028": {
+    "userAuthorizedContinuation": true,
+    "sourcePortraitActuallyReopened": true,
+    "historicalPartialSnapshots": ".tmp/cg-wave11-2026-10-26/lot-01/rumi-illa/resume-2026-10-28",
+    "old9CgPixelsUnchanged": true
+  },
+  "equipmentConsistencyAttachmentEvents": [
+    {
+      "slot": "CG10",
+      "reference": {
+        "path": "/workspace/generated_images/exec-badb68b6-9910-4a5e-b93c-c76190eaddf7.png",
+        "sha256": "d97850cabbd8933d9d41869b68ff8a013715d24b07bf648c761779200ad7bd80",
+        "scope": "ApprovedCG02 visible equipment-render consistency only; original V2 portrait remains sole identity authority, no new hidden-geometry proof."
+      }
+    },
+    {
+      "slot": "CG12",
+      "reference": {
+        "path": "/workspace/generated_images/exec-badb68b6-9910-4a5e-b93c-c76190eaddf7.png",
+        "sha256": "d97850cabbd8933d9d41869b68ff8a013715d24b07bf648c761779200ad7bd80",
+        "scope": "ApprovedCG02 visible equipment-render consistency only; original V2 portrait remains sole identity authority, no new hidden-geometry proof."
+      }
+    },
+    {
+      "slot": "CG13",
+      "reference": {
+        "path": "/workspace/generated_images/exec-badb68b6-9910-4a5e-b93c-c76190eaddf7.png",
+        "sha256": "d97850cabbd8933d9d41869b68ff8a013715d24b07bf648c761779200ad7bd80",
+        "scope": "ApprovedCG02 visible equipment-render consistency only; original V2 portrait remains sole identity authority, no new hidden-geometry proof."
+      }
+    },
+    {
+      "slot": "CG14",
+      "reference": {
+        "path": "/workspace/generated_images/exec-badb68b6-9910-4a5e-b93c-c76190eaddf7.png",
+        "sha256": "d97850cabbd8933d9d41869b68ff8a013715d24b07bf648c761779200ad7bd80",
+        "scope": "ApprovedCG02 visible equipment-render consistency only; original V2 portrait remains sole identity authority, no new hidden-geometry proof."
+      }
+    },
+    {
+      "slot": "CG15",
+      "reference": {
+        "path": "/workspace/generated_images/exec-badb68b6-9910-4a5e-b93c-c76190eaddf7.png",
+        "sha256": "d97850cabbd8933d9d41869b68ff8a013715d24b07bf648c761779200ad7bd80",
+        "scope": "ApprovedCG02 visible equipment-render consistency only; original V2 portrait remains sole identity authority, no new hidden-geometry proof."
+      }
+    }
+  ],
+  "cgGenerationFinalization": {
+    "finalizedAt": "2026-10-28T08:01:48.621817+00:00",
+    "selectedRealCgNatives": 15,
+    "successfulCgImageGenOutputs": 19,
+    "preservedWhollyUnselectedDrafts": 4,
+    "toolRefusals": 0,
+    "noGenerationPendingForCg": true,
+    "historicalNineCgSnapshotPreserved": ".tmp/cg-wave11-2026-10-26/lot-01/rumi-illa/resume-2026-10-28",
+    "atlasArtAndLedgersSeparateFromCgFreeze": true
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "snake",
+  "heroId": "snake",
+  "characterName": "Solid Snake",
+  "proposedIncarnation": {
+    "label": "Metal Gear Solid original (1998) - Solid Snake",
+    "status": "proposed-production-incarnation",
+    "evidence": [
+      "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+    ]
+  },
+  "status": "needs-reference",
+  "sourceActuallyViewed": false,
+  "identityQualified": false,
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "attempts": [
+    {
+      "url": "https://www.konami.com/games/eu/en/products/mgs/",
+      "attemptedAt": "2026-10-26T08:14:02.577224+00:00",
+      "identityQualified": false,
+      "imageActuallyViewed": false,
+      "statusCode": 200,
+      "finalUrl": "https://www.konami.com/games/eu/en/products/mgs/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 171661,
+      "sha256": "85db0ab163ac05e6d9be13a284c09003e9a0879ee0660c98e36fdd2cbaccb8ec",
+      "localResponse": ".tmp/cg-wave11-2026-10-26/lot-04/snake/research/1.html",
+      "candidateImageUrls": [
+        "https://www.konami.com/games/s/eu/img/logo_konami.png",
+        "https://www.konami.com/products_master/eu_publish/mgs/eu/en/images/54_mgs_gamemain.jpg",
+        "https://www.konami.com/games/s/eu/img/PEGI_16.png",
+        "https://www.konami.com/games/s/eu/img/rec_cs_mgsv.png",
+        "https://www.konami.com/games/eu/en/products/mgs/<%= thumbnail_data[title][current_country] %>",
+        "https://www.konami.com/games/eu/en/products/mgs/<%= list[i].external_profile_image_url_https %>",
+        "https://www.konami.com/games/s/eu/img/thumb_topics_noimage.png",
+        "https://www.konami.com/games/eu/en/products/mgs/<% if(list[i].thumbnail.medium.url && list[i].thumbnail.medium.w==600){ %><%= list[i].thumbnail.medium.url %><% }else if(list[i].thumbnail.full.url){ %><%= list[i].thumbnail.full.url %><% }else if(list[i].external_type == ",
+        "https://www.konami.com/games/s/eu/img/thumb-topics-cover-yt-16x9-s.png",
+        "https://www.konami.com/games/eu/en/products/mgs/<% if(thumbnail.full.url){ %><%= thumbnail.full.url %><% }else if(game_thumbnail){ %><%= game_thumbnail %><% } %>"
+      ],
+      "result": "page-fetched-awaiting-incarnation-matching-image-inspection"
+    },
+    {
+      "url": "https://www.konami.com/games/eu/en/products/mgs3r/",
+      "attemptedAt": "2026-10-26T08:14:03.308654+00:00",
+      "identityQualified": false,
+      "imageActuallyViewed": false,
+      "statusCode": 200,
+      "finalUrl": "https://www.konami.com/games/eu/en/products/mgs3r/",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 108132,
+      "sha256": "fdd8eb8ac716d8bcf829fc8a7a3324a17f072801cb8ed8ffc9b2a1f0b7df3738",
+      "localResponse": ".tmp/cg-wave11-2026-10-26/lot-04/snake/research/2.html",
+      "candidateImageUrls": [
+        "https://www.konami.com/games/s/eu/img/logo_konami.png",
+        "https://www.konami.com/products_master/eu_publish/mgs3r/eu/en/images/metal_gear_solid_delta_snake_eater_screenshot_chopper.jpg",
+        "https://www.konami.com/products_master/eu_publish/mgs3r/eu/en/images/metal_gear_solid_delta_snake_eater_screenshot_snake_close_up.jpg",
+        "https://www.konami.com/games/s/eu/img/PEGI_18.png",
+        "https://www.konami.com/games/s/eu/img/rec_cs_mgsv.png",
+        "https://www.konami.com/games/eu/en/products/mgs3r/<%= thumbnail_data[title][current_country] %>",
+        "https://www.konami.com/games/eu/en/products/mgs3r/<%= list[i].external_profile_image_url_https %>",
+        "https://www.konami.com/games/s/eu/img/thumb_topics_noimage.png",
+        "https://www.konami.com/games/eu/en/products/mgs3r/<% if(list[i].thumbnail.medium.url && list[i].thumbnail.medium.w==600){ %><%= list[i].thumbnail.medium.url %><% }else if(list[i].thumbnail.full.url){ %><%= list[i].thumbnail.full.url %><% }else if(list[i].external_type == ",
+        "https://www.konami.com/games/s/eu/img/thumb-topics-cover-yt-16x9-s.png",
+        "https://www.konami.com/games/eu/en/products/mgs3r/<% if(thumbnail.full.url){ %><%= thumbnail.full.url %><% }else if(game_thumbnail){ %><%= game_thumbnail %><% } %>"
+      ],
+      "result": "page-fetched-awaiting-incarnation-matching-image-inspection"
+    }
+  ],
+  "additionalAttemptEvidence": [],
+  "scopeLimitations": [
+    "No incarnation-matching identity image has been qualified through actual inspection. URLs, snippets, page200 status and old generic project sprites do not establish visual identity.",
+    "No CG or atlas generation counted for this unresolved subject in wave11. Existing art preserved.",
+    "Age and hidden details remain undocumented; no inferred continuity fusion."
+  ],
+  "references": [],
+  "historicalProjectArtNotAuthority": [
+    {
+      "path": "/sprites/generated/heroes/metal-gear/snake.png",
+      "exists": true,
+      "role": "historical-project-image-not-source-fidelity-approval"
+    }
+  ]
+}

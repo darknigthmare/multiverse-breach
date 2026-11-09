@@ -1,4 +1,7 @@
 import actionWave16 from './characterActionAnimationsWave16PartC.generated.json' with { type: 'json' };
+import wave17A from './characterAnimationsWave17PartA.generated.json' with { type: 'json' };
+import wave17B from './characterAnimationsWave17PartB.generated.json' with { type: 'json' };
+import wave17C from './characterAnimationsWave17PartC.generated.json' with { type: 'json' };
 import wave16A from './characterAnimationsWave16PartA.generated.json' with { type: 'json' };
 import wave16B from './characterAnimationsWave16PartB.generated.json' with { type: 'json' };
 import wave16C from './characterAnimationsWave16PartC.generated.json' with { type: 'json' };
@@ -59,7 +62,7 @@ import wave10D from './characterAnimationsWave10PartD.generated.json' with { typ
 
 const phaseNames = new Set(['intro', 'outro', 'roundVictory', 'roundDefeat', 'fatality', 'victory', 'defeat', 'super']);
 const assets = new Map();
-for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries, ...wave12A.entries, ...wave12B.entries, ...wave12C.entries, ...wave12D.entries, ...wave13A.entries, ...wave13B.entries, ...wave14B.entries, ...wave14A.entries, ...wave15A.entries, ...wave15B.entries, ...wave15C.entries, ...wave16A.entries, ...wave16B.entries, ...wave16C.entries]) {
+for (const entry of [...registry.entries, ...wave2A.entries, ...wave2B.entries, ...wave3A.entries, ...wave3B.entries, ...wave3C.entries, ...wave4A.entries, ...wave4B.entries, ...wave4C.entries, ...wave5A.entries, ...wave5B.entries, ...wave5C.entries, ...wave6A.entries, ...wave6B.entries, ...wave6C.entries, ...wave7A.entries, ...wave7B.entries, ...wave7C.entries, ...wave8A.entries, ...wave8B.entries, ...wave8C.entries, ...wave8D.entries, ...wave9A.entries, ...wave9B.entries, ...wave9C.entries, ...wave9D.entries, ...wave10D.entries, ...wave10C.entries, ...wave10B.entries, ...wave10A.entries, ...wave11A.entries, ...wave11B.entries, ...wave11C.entries, ...wave11D.entries, ...wave12A.entries, ...wave12B.entries, ...wave12C.entries, ...wave12D.entries, ...wave13A.entries, ...wave13B.entries, ...wave14B.entries, ...wave14A.entries, ...wave15A.entries, ...wave15B.entries, ...wave15C.entries, ...wave16A.entries, ...wave16B.entries, ...wave16C.entries, ...wave17A.entries, ...wave17B.entries, ...wave17C.entries]) {
   const id = entry.heroId || entry.id;
   if (!id || assets.has(id)) throw new Error(`Invalid or duplicate character animation identity: ${id}`);
   const phases = Object.freeze(Object.fromEntries(Object.entries(entry.phases).map(([phase, spec]) => [phase, Object.freeze({ ...spec })])));
@@ -86,6 +89,14 @@ const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
 export function resolveCharacterAnimationAsset(actor) {
   const id = actor?.sourceHeroId || actor?.sourceId || actor?.id;
+  // W13's archived coat edition cannot stand in for the later selected final
+  // REX duel. The legacy atlas remains addressable by its original incarnation.
+  if (id === 'liquid_snake' && actor?.universe === 'Metal Gear' && actor.canonCombatPresentation === true
+    && actor.incarnation === 'Metal Gear Solid (1998) - Liquid Snake, final bare-handed duel on REX') return null;
+  // The retained W13 Ripley depicts Aliens1986 equipment, not the explicitly
+  // selected Nostromo/Narcissus incarnation from the first film.
+  if (id === 'ripley' && actor?.universe === 'Alien'
+    && actor.incarnation === 'Alien (1979) - Nostromo / Narcissus') return null;
   const entry = assets.get(id);
   return entry?.universe === actor?.universe ? entry : null;
 }

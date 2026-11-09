@@ -1,5 +1,8 @@
+import { isMediGunProfileWave17 } from './combat/sourceMechanicsWave17.js';
+import { isSourceBubbleCaptureProfileWave17, isSourceBubbleCaptureTargetEligibleWave17 } from './combat/sourceBubbleCaptureWave17.js';
 // RPG targeting is intentionally pure: preview, manual confirmation and AI all
 // resolve the same identities, without spending resources or choosing at random.
+import { getRpgCleansableStatuses, getRpgReviveHp } from './rpgSupport.js';
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
@@ -11,9 +14,28 @@ const positive = (value, fallback) => Number.isFinite(Number(value)) && Number(v
 export const rpgUnitId = unit => unit?.battleId || unit?.runtimeId || unit?.id;
 const beneficialEffects = new Set(['heal', 'revive', 'buff', 'guard', 'cleanse']);
 
+// These six current source locks already own explicit mode contracts. Their
+// RPG commands retain raw RPG shapes/ranges rather than Smash pixel profiles.
+const CURRENT_INLINE_RPG_SOURCES = Object.freeze({
+  han_solo: ['Star Wars', 'Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape'],
+  luke: ['Star Wars', 'Star Wars: Return of the Jedi (1983) - Death Star II Jedi Knight'],
+  vader: ['Star Wars', 'Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord'],
+  bob_minions: ['Minions', 'Minions (2015) - Bob, London crown-heist adventure'],
+  kevin_minions: ['Minions', 'Minions (2015) - Kevin, London crown-heist adventure'],
+  stuart_minions: ['Minions', 'Minions (2015) - Stuart, London rock-star finale']
+});
+const hasCurrentInlineRpgSource = actor => {
+  const id = actor?.sourceHeroId || actor?.sourceId || actor?.id;
+  const source = CURRENT_INLINE_RPG_SOURCES[id], universe = actor?.sourceUniverse || actor?.universe;
+  return !!source && universe === source[0] && actor.universe === universe && actor.incarnation === source[1]
+    && Array.isArray(actor.equipment) && actor.equipment.length > 0 && typeof actor.referenceUrl === 'string';
+};
+
 // The command label and the actual RPG resolver share the same authored action.
 // Unlisted actors keep their exact supplied ability object and custom metadata.
 export function getRpgCombatantAbility(actor, abilityType) {
+  const supplied = actor?.[abilityType];
+  if (supplied && (actor.rpgAttacks?.[abilityType] || supplied.rpgProfile || hasCurrentInlineRpgSource(actor))) return supplied;
   if (['simple', 'secondary', 'defense', 'special'].includes(abilityType)) {
     const authored = resolveCombatAbility(actor, abilityType);
     if (authored?.provenance?.identityAuthored) return authored.sourceAbility;
@@ -21,18 +43,19 @@ export function getRpgCombatantAbility(actor, abilityType) {
   return actor?.[abilityType] || null;
 }
 
-export function getRpgActionProfile(actor, abilityType, side = 'player', arena = {}) {
+export function getRpgActionProfile(actor, abilityType, side = 'player', arena = {}, suppliedAction = null) {
   const enemyFallbacks = {
     simple: { name: 'Attack', type: /gun|laser|bullet|projectile/.test(actor?.weapon || '') ? 'bullet' : 'melee', dmg: 1 },
     secondary: { name: 'Strong attack', type: 'bullet', dmg: 1.45, cd: 3 },
     special: { name: 'Special', type: 'group', dmg: 1.15, targeting: { shape: 'group' } }
   };
+  if (!['simple', 'secondary', 'special', 'defense', 'summon'].includes(abilityType)) return null;
   // An invocation is a separate command. It never aliases an actor's existing
   // secondary or special, including their medical and defensive semantics.
   const summon = abilityType === 'summon' ? resolveUniverseSummon(actor) : null;
   const possessedAction = getPossessedSligActionWave16(actor, abilityType);
-  const action = possessedAction ? { ...possessedAction, sourceSligRifle: true } : abilityType === 'summon' ? summon?.action
-    : getRpgCombatantAbility(actor, abilityType) || (side === 'enemy' ? enemyFallbacks[abilityType] : null);
+  const action = suppliedAction || (possessedAction ? { ...possessedAction, sourceSligRifle: true } : abilityType === 'summon' ? summon?.action
+    : getRpgCombatantAbility(actor, abilityType) || (side === 'enemy' ? enemyFallbacks[abilityType] : null));
   if (!action) return null;
   const explicit = Object.assign({},
     typeof action.targeting === 'object' ? action.targeting : null,
@@ -88,7 +111,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     action,
     effect,
     targetSide,
-    excludeSelf: explicit.excludeSelf === true,
+    excludeSelf: explicit.excludeSelf === true || action.sourceMediGunWave17===true,
     shape,
     delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support'
       : effect === 'control' && explicit.delivery === 'control' ? 'control' : explicit.delivery === 'radial' ? 'radial' : melee ? 'melee' : 'ranged',
@@ -96,7 +119,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     minTargets: explicit.delivery === 'radial' ? 0 : Math.max(1, Math.round(positive(explicit.minTargets, 1))),
     // Authored melee range describes contact after the existing RPG approach.
     // It must not prevent selecting an opponent in the opposing formation.
-    range: authoredMeleeApproach ? Math.hypot(arena.width || 760, arena.height || 420)
+    range: action.sourceMediGunWave17===true&&actor.universe==='Team Fortress 2'&&(actor.sourceHeroId||actor.sourceId||actor.id)==='team_fortress_2_medic'?220:authoredMeleeApproach ? Math.hypot(arena.width || 760, arena.height || 420)
       : positive(explicit.range ?? action.rpgRange, Math.hypot(arena.width || 760, arena.height || 420)),
     areaRadius: positive(explicit.areaRadius ?? explicit.radius ?? action.areaRadius, 105 * scale),
     lineWidth: positive(explicit.lineWidth ?? action.lineWidth, 38 * scale),
@@ -108,6 +131,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     ...(explicit.authorization ? { authorization: explicit.authorization } : {}),
     ...(explicit.channelDuration ? { channelDuration: explicit.channelDuration } : {}),
     ...(explicit.requiresExplicitTargetEligibility !== undefined ? { requiresExplicitTargetEligibility: explicit.requiresExplicitTargetEligibility } : {}),
+    ...(explicit.nonlethal === true ? {nonlethal:true} : {}),
     ...(explicit.hitSequence ? { hitSequence: structuredClone(explicit.hitSequence) } : {}),
     ...(explicit.postSequenceStunDuration ? { postSequenceStunDuration: explicit.postSequenceStunDuration } : {}),
     ...(explicit.invulnerabilityKind ? { invulnerabilityKind: explicit.invulnerabilityKind,
@@ -129,28 +153,31 @@ export function getRpgEligibleTargets({ actor, profile, allies, opponents }) {
   if (!actor || !profile) return [];
   const candidates = profile.targetSide === 'self' ? [actor] : profile.targetSide === 'ally' ? allies : opponents;
   return candidates.filter(unit => {
+    if (!unit || !Number.isFinite(unit.currentHp) || !Number.isFinite(unit.maxHp) || unit.maxHp <= 0) return false;
     if (profile.excludeSelf) {
       const performerId = profile.summon?.performerRole === 'reinforcement' ? profile.summon.sourceHeroId : null;
       if (performerId ? (unit.sourceHeroId || unit.sourceId || unit.id) === performerId : unit === actor) return false;
     }
-    if (profile.effect === 'revive') return unit.currentHp <= 0;
+    if (profile.effect === 'revive') return getRpgReviveHp(unit, profile.reviveRatio) > 0;
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
     if (profile.effect === 'control') {
-      if (isSourceControlProfileWave16(profile)) {
+      if (isSourceBubbleCaptureProfileWave17(profile)) { if(!isSourceBubbleCaptureTargetEligibleWave17(profile,unit))return false; }
+      else if (isSourceControlProfileWave16(profile)) {
         if (!canSourceControlTargetWave16(actor, unit, profile)) return false;
       } else if (!isPhaselockProfile(profile) || !isPhaselockTargetEligible(unit) || unit.rpgControlTicks > 0) return false;
     }
     if (profile.effect === 'heal') {
       const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
-      if (unit.currentHp >= cap) return false;
+      if (unit.currentHp >= cap && !isMediGunProfileWave17(profile) && !getRpgCleansableStatuses(unit, profile.cleanses).length) return false;
     }
-    if (profile.effect === 'cleanse' && !Object.values(unit.statusEffects || {}).some(duration => duration > 0)) return false;
+    if (profile.effect === 'cleanse' && !getRpgCleansableStatuses(unit, profile.cleanses).length) return false;
     return true;
   }).filter(unit => Math.hypot(unit.x - actor.x, unit.y - actor.y) <= profile.range + 0.001);
 }
 
 export function resolveRpgTargets({ actor, profile, eligibleTargets, selectedTargetIds = [] }) {
   if (!profile || !actor) return { valid: false, reason: 'unavailable', targets: [] };
+  if (!Array.isArray(selectedTargetIds)) return { valid: false, reason: 'invalid-selection', targets: [] };
   const ids = [...new Set(selectedTargetIds)];
   const selected = ids.map(id => eligibleTargets.find(unit => rpgUnitId(unit) === id));
   if (selected.some(unit => !unit)) return { valid: false, reason: 'ineligible-target', targets: [] };

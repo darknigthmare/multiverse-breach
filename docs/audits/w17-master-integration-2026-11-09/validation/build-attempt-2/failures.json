@@ -1,0 +1,120 @@
+{
+  "attempt": 2,
+  "receipt": {
+    "attempt": 2,
+    "command": "taskset --cpu-list 0,1 npm run build -- --config scripts/viteCodeOnly.config.js",
+    "args": [
+      "taskset",
+      "--cpu-list",
+      "0,1",
+      "npm",
+      "run",
+      "build",
+      "--",
+      "--config",
+      "scripts/viteCodeOnly.config.js"
+    ],
+    "cwd": "/workspace/multiverse-breach",
+    "nodeVersion": "v22.23.4",
+    "nodeExecutable": "/tmp/multiverse-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "nodeOptions": "--max-old-space-size=2048",
+    "startedAt": "2026-11-09T08:01:47.920260+00:00",
+    "finishedAt": "2026-11-09T08:24:08.893861+00:00",
+    "exitCode": 1,
+    "status": "completed",
+    "prebuildBypassed": false,
+    "staticMediaCopied": false,
+    "log": "/tmp/merged-integration-build.log",
+    "childPid": 38589
+  },
+  "logSha256": "3c8764c48ac7278515932a9748056e405ef173eb5f52adcbe0f29df90c56b541",
+  "conversationSummary": {
+    "tests": 945,
+    "pass": 934,
+    "fail": 11,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "assertionFailures": 10,
+  "processSignalFailures": 1,
+  "failures": [
+    {
+      "number": 219,
+      "title": "Smash liquid_snake simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash liquid_snake simple damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 219 - Smash liquid_snake simple damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 5.510594\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash liquid_snake simple: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 222,
+      "title": "Smash liquid_snake secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash liquid_snake secondary damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 222 - Smash liquid_snake secondary damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.148797\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash liquid_snake secondary: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 223,
+      "title": "RPG liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: RPG liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 223 - RPG liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.412894\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    RPG liquid_snake special: incorrect damage identity 2\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 225,
+      "title": "Smash liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 225 - Smash liquid_snake special damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.635599\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash liquid_snake special: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 235,
+      "title": "RPG true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: RPG true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 235 - RPG true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.520105\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: 'missing declared physical cue'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:294:12)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 237,
+      "title": "Smash true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 237 - Smash true_ogre_tekken simple damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.11788\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash true_ogre_tekken simple: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 238,
+      "title": "RPG true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: RPG true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 238 - RPG true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.366353\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: 'missing declared physical cue'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:294:12)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 240,
+      "title": "Smash true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 240 - Smash true_ogre_tekken secondary damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 0.788966\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash true_ogre_tekken secondary: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 241,
+      "title": "RPG true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: RPG true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 241 - RPG true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 2.30778\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    RPG true_ogre_tekken special: incorrect damage identity 2\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 243,
+      "title": "Smash true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch",
+      "location": "/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3",
+      "signal": null,
+      "details": "# Subtest: Smash true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch\nnot ok 243 - Smash true_ogre_tekken special damages one valid victim with physical feedback and no generic shot or glitch\n  ---\n  duration_ms: 1.17107\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:270:3'\n  failureType: 'testCodeFailure'\n  error: |-\n    Smash true_ogre_tekken special: incorrect damage identity 0\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:52\n    Array.forEach (<anonymous>)\n    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/canonFollowupSourceKits.test.mjs:292:20)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ..."
+    },
+    {
+      "number": 18,
+      "title": "scripts/canonPriorityCorrections.test.mjs",
+      "location": "/workspace/multiverse-breach/scripts/canonPriorityCorrections.test.mjs:1:1",
+      "signal": "SIGABRT",
+      "details": "# Subtest: scripts/canonPriorityCorrections.test.mjs\nnot ok 18 - scripts/canonPriorityCorrections.test.mjs\n  ---\n  duration_ms: 42314.475245\n  type: 'test'\n  location: '/workspace/multiverse-breach/scripts/canonPriorityCorrections.test.mjs:1:1'\n  failureType: 'testCodeFailure'\n  exitCode: ~\n  signal: 'SIGABRT'\n  error: 'test failed'\n  code: 'ERR_TEST_FAILURE'\n  ..."
+    }
+  ]
+}

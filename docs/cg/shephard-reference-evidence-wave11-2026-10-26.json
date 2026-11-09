@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "characterId": "shephard",
+  "characterName": "Adrian Shephard",
+  "incarnation": "Half-Life: Opposing Force (1999)",
+  "status": "needs-reference-researched-not-visually-qualified",
+  "canonicalFidelityApproved": false,
+  "sourceActuallyViewed": false,
+  "referenceImagesQualified": [],
+  "actualAttempts": [
+    {
+      "url": "https://www.half-life.com/en/halflife1",
+      "attemptedAt": "2026-10-26T08:15:14.963228+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://store.steampowered.com/app/220/HalfLife_2/",
+      "attemptedAt": "2026-10-26T08:15:14.980955+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://store.steampowered.com/app/220/HalfLife_2/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 176656,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/shephard/research/source-01.html",
+      "sha256": "93dd796e98ebbb06dedd685b125a409b8660175243c1644bf96ab4996669c237",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    },
+    {
+      "url": "https://store.steampowered.com/app/50/HalfLife_Opposing_Force/",
+      "attemptedAt": "2026-10-26T08:15:15.622252+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "statusCode": 200,
+      "finalUrl": "https://store.steampowered.com/app/50/HalfLife_Opposing_Force/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 137144,
+      "path": ".tmp/cg-wave11-2026-10-26/lot-03/shephard/research/source-02.html",
+      "sha256": "2d5da1ca9258096318e546e842d9ff4d3cb56d99c60032019c6b96f505950ee7",
+      "result": "fetched-needs-image-extraction-and-actual-inspection"
+    },
+    {
+      "url": "https://www.half-life.com/",
+      "attemptedAt": "2026-10-26T08:15:16.223909+00:00",
+      "kind": "source-page-fetch-not-visual-qualification",
+      "result": "fetch-failed-reference-unqualified",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "blockingFindings": [
+    "Fetched page or URL/snippet is not visual reference authority. Need incarnation-matching image bytes and actual inspection."
+  ],
+  "preservation": "No old source/art/atlas changed; all prior CG slots and N/A remain preserved.",
+  "generationStatus": "not-attempted-pending-identity-reference",
+  "toolRefusals": 0
+}

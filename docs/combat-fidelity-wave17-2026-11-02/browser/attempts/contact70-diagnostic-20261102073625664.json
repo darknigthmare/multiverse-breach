@@ -1,0 +1,1113 @@
+{
+  "results": [
+    {
+      "id": "tomba_hero",
+      "mode": "fighter",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "cpu-0-first-target",
+          "damage": 23
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "fighter",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "player-0-first-target",
+          "damage": 23
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "rpg",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:0:first-target",
+          "damage": 14
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "rpg",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:0:first-target",
+          "damage": 13
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "melee",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:first-target:0",
+          "damage": 14
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "tomba_hero",
+      "mode": "melee",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand moulinet de la boule à pointes",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "first-target",
+          "damage": 13
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/tomba_hero.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "tomba_hero",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "fighter",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "cpu-0-first-target",
+          "damage": 23
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "fighter",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "player-0-first-target",
+          "damage": 23
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "rpg",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:0:first-target",
+          "damage": 12
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "rpg",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:0:first-target",
+          "damage": 13
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "melee",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:first-target:0",
+          "damage": 13
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "spyro_spyro",
+      "mode": "melee",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Charge cornue prolongée",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "first-target",
+          "damage": 13
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/spyro_spyro.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "spyro_spyro",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "fighter",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "cpu-0-first-target",
+          "damage": 20.100000000000364
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "fighter",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "player-0-first-target",
+          "damage": 20.100000000000364
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        198.75
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "rpg",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:0:first-target",
+          "damage": 12
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "rpg",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:0:first-target",
+          "damage": 12
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "melee",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:first-target:0",
+          "damage": 11
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "rayman_barbara",
+      "mode": "melee",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Grand balayage de Barbara",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 15,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "first-target",
+          "damage": 10
+        }
+      ],
+      "duration": 0.55,
+      "hitAt": 0.2,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-a/rayman_barbara.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "rayman_barbara",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "fighter",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "cpu-0-first-target",
+          "damage": 96.5
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        223.5
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "fighter",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "player-0-first-target",
+          "damage": 96.5
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        223.5
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "rpg",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "enemy:custom:0:first-target",
+          "damage": 52
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "rpg",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "hero:0:first-target",
+          "damage": 57
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "melee",
+      "side": "player",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "p2:first-target:0",
+          "damage": 58
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "crypt_necrodancer_cadence",
+      "mode": "melee",
+      "side": "opponent",
+      "passed": true,
+      "sourceName": "Frappe de dague de Cadence sur le battement",
+      "effect": "damage",
+      "delivery": "melee",
+      "steps": [
+        {
+          "tick": 0,
+          "event": "commit",
+          "accepted": true,
+          "paid": 100
+        },
+        {
+          "tick": 31,
+          "event": "release",
+          "accepted": true
+        },
+        {
+          "tick": "simulation",
+          "event": "damage",
+          "accepted": true,
+          "targetId": "first-target",
+          "damage": 55
+        }
+      ],
+      "duration": 1.1,
+      "hitAt": 0.451,
+      "physicalProjectiles": [],
+      "pauseStable": true,
+      "acceptedDamageEvents": 1,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave17-part-b/crypt_necrodancer_cadence.png",
+      "bodyCell": null,
+      "bodyTransform": null,
+      "sequence": null,
+      "fox": null,
+      "sourceProtectionEntityProof": null,
+      "nativeAssetId": "crypt_necrodancer_cadence",
+      "allyHpDelta": [
+        0,
+        0
+      ]
+    }
+  ],
+  "failures": [],
+  "expectedCases": 24,
+  "diagnosticOnly": true,
+  "preliminary": true,
+  "browserClosed": true
+}

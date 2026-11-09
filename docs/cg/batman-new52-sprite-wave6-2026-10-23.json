@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "batman_n52",
+  "heroId": "batman_n52",
+  "characterName": "Batman New52",
+  "incarnation": "DC Comics The New52 — Batman: Endgame, Batman (2011) #35–40 (2014–2015), standard Batsuit",
+  "operationKind": "real-imagegen-atlas-correction-request-refused-no-artwork-delivered",
+  "status": "blocked-output-moderation-no-image-delivered",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceEvidenceFile": "docs/cg/batman-new52-endgame-reference-evidence-wave2-2026-10-18.json",
+  "sourceAuthority": "The same previously qualified official standard cover #35; no new independent identity source.",
+  "source": {
+    "path": "docs/cg/references/wave2-2026-10-18/batman-new52-endgame/batman-2011-35-official-cover.jpg",
+    "sha256": "f93f670f415ee2b465ee7b0e17315a0cb1507564e30f092024f369b34f419818",
+    "metadata": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "size": 379865,
+      "width": 1249,
+      "height": 1920,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "resolutionUnit": "inch",
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1249,
+        "height": 1920
+      }
+    }
+  },
+  "referencePng": {
+    "path": "public/images/references/batman-new52-endgame/endgame35-official-cover-wave6-2026-10-23.png",
+    "sha256": "e25cf19e7f0bfc315704cde4d036316dc7b9973f581c4f6164699fb3bdd67286",
+    "bytes": 4068676,
+    "decodedRgbSha256": "847a57ce9bf5d9026f32f97b239529d2ee5d0379fd769593c98fb78f433ed6e5",
+    "sameDecodedSourceRgbPixels": true,
+    "newIndependentSource": false
+  },
+  "inspectionCrop": {
+    "path": ".tmp/cg-wave6-2026-10-23/batman-new52/endgame35-batman-upperbody-inspection.png",
+    "sha256": "685b03d654fdcad848fa3b53f6d2841f967c72c1bd31b5af7223695ec06dae42",
+    "extract": {
+      "left": 320,
+      "top": 310,
+      "width": 620,
+      "height": 590
+    },
+    "role": "technical-inspection-crop-not-new-independent-reference"
+  },
+  "sourceActuallyViewed": true,
+  "previousAtlasActuallyViewed": true,
+  "excludedSourceIssues": [
+    36,
+    37,
+    40
+  ],
+  "plannedFrames": 16,
+  "generatedFrames": 0,
+  "deliveredFrames": 0,
+  "newNativeOutputCount": 0,
+  "newProviderRefusalCount": 1,
+  "newAtlasInstalled": false,
+  "selectedInRuntime": false,
+  "runtimeSelectionChanged": false,
+  "runtimeRegistryChanged": false,
+  "publicInstallationAuditCreated": false,
+  "nativeOutput": null,
+  "previousAtlas": {
+    "path": "public/sprites/generated/heroes/joker-new-52/batman-n52.png",
+    "sha256": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1",
+    "bytes": 934490,
+    "metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "size": 934490,
+      "width": 1024,
+      "height": 1024,
+      "space": "srgb",
+      "channels": 4,
+      "depth": "uchar",
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": true,
+      "autoOrient": {
+        "width": 1024,
+        "height": 1024
+      }
+    },
+    "preserved": true,
+    "sha256AfterAttempt": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1"
+  },
+  "attempts": [
+    {
+      "status": "blocked-output-moderation",
+      "stage": "output",
+      "category": "other",
+      "categories": [
+        "other"
+      ],
+      "requestId": "1b852c71-5d15-431f-8dea-1ad86279041e",
+      "promptFile": "docs/cg/prompts/wave6-2026-10-23/batman-new52-sprite/atlas-v1.txt",
+      "promptSha256": "2f4845fb6b74c8965c50f96195150e411c59f337b8276fba5abd3d042709f38f",
+      "nativeOutputCount": 0,
+      "retryAfterRefusal": false
+    }
+  ],
+  "privateAttemptEvidence": {
+    "path": ".tmp/cg-wave6-2026-10-23/batman-new52/generation-attempt-error.json",
+    "sha256": "71c3ae7a5a69a56128571827b9ad9204f30b89d9f90af22d01b5430402577b2a"
+  },
+  "independentReview": {
+    "status": "no-artwork-produced-no-sixteen-frame-review-possible",
+    "framesActuallyViewed": 0,
+    "accepted": false
+  },
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "limitations": [
+    "Only the standard Batman figure on official Endgame #35 qualifies identity.",
+    "Green construct and gold lasso belong to the scene, not the Batsuit.",
+    "Abdomen, belt hardware, back, lower legs and boot construction are not fully visible; no perfect full-body fidelity is claimed.",
+    "The historical no-atlas-without-full-body-reference readiness remains frozen; current task explicitly authorizes a conservative limited-source correction.",
+    "The actual image service refused the atlas request at output moderation, category other. No PNG or partial artwork was returned.",
+    "Source inspection and a lossless JPEG-to-PNG reference encoding are not generated artwork or a new independent authority.",
+    "No retry, alternate source or prompt change was used to bypass the refusal.",
+    "The old wrong-identity atlas remains physically unchanged and selected until a real reviewed correction can be delivered."
+  ]
+}

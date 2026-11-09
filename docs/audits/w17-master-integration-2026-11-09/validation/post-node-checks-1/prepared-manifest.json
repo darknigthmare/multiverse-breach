@@ -1,0 +1,2620 @@
+{
+  "packagePath": "/workspace/multiverse-breach/package.json",
+  "packageSha256": "c0d764eca038fed34496e49c13e62e1bda23c50cec8eff1f8d11d6e64c34f9b3",
+  "packageScriptSha256": "4e89e2249fddf552525bb84df26db25ea89bfba3f8dc59a8b9caaf1d887860f4",
+  "commandList": "/tmp/combat-fidelity-post-tests-command-list.json",
+  "commandListSha256": "710b213ced06bda310530d3f50fc86b1faae7f7acbc9ae1be9649db2862a1cd7",
+  "literalPartCount": 145,
+  "excludedFirstNodeTestCommand": "node --test --test-concurrency=1 scripts/combatFidelity.test.mjs scripts/combatAbilityRuntime.test.mjs scripts/fighterAuthoredActions.test.mjs scripts/combatFidelityWave2.test.mjs scripts/ff8SuperRuntimeWave2.test.mjs scripts/combatFidelityWave3.test.mjs scripts/partySuperRuntimeWave3.test.mjs scripts/combatFidelityWave4.test.mjs scripts/characterFormsWave4.test.mjs scripts/combatFidelityWave5.test.mjs scripts/nativeSuperRuntimeWave5.test.mjs scripts/fighterProjectileVisualWave5.test.mjs scripts/presentationStatureWave5.test.mjs scripts/combatFidelityWave6.test.mjs scripts/nativeSuperRuntimeWave6.test.mjs scripts/summonAnimationWave6.test.mjs scripts/combatContactVisualWave6.test.mjs scripts/meleeSupportCpuWave6.test.mjs scripts/combatFidelityWave7.test.mjs scripts/nativeSuperRuntimeWave7.test.mjs scripts/summonAnimationWave7.test.mjs scripts/combatFidelityWave8.test.mjs scripts/nativeSuperRuntimeWave8.test.mjs scripts/summonAnimationWave8.test.mjs scripts/combatFidelityWave9.test.mjs scripts/nativeSuperRuntimeWave9.test.mjs scripts/summonAnimationWave9.test.mjs scripts/combatFidelityWave10.test.mjs scripts/nativeSuperRuntimeWave10.test.mjs scripts/summonAnimationWave10.test.mjs scripts/combatFidelityWave11.test.mjs scripts/nativeSuperRuntimeWave11.test.mjs scripts/summonAnimationWave11.test.mjs scripts/combatFidelityWave12.test.mjs scripts/combatFidelityWave13.test.mjs scripts/rpgSummonWave13.test.mjs scripts/combatFidelityWave13Runtime.test.mjs scripts/combatFidelityWave14.test.mjs scripts/combatFidelityWave14Runtime.test.mjs scripts/rpgSummonWave14.test.mjs scripts/nativeSuperRuntimeWave14.test.mjs scripts/combatFidelityWave15.test.mjs scripts/nativeSuperRuntimeWave15.test.mjs scripts/rpgSummonWave15.test.mjs scripts/rpgControlWave15.test.mjs scripts/phaselockControlWave15.test.mjs scripts/supportRangeWave15.test.mjs scripts/combatHistoricalCohortWave16.test.mjs scripts/combatHitSequenceWave16.test.mjs scripts/combatProtectionWave16.test.mjs scripts/combatControlWave16.test.mjs scripts/combatSequenceRuntimeWave16.test.mjs scripts/combatSourceRuntimeWave16.test.mjs scripts/deliverableCellToolsWave16.test.mjs scripts/kiritoActionAssetsWave16.test.mjs scripts/combatProtectionEntityRuntimeWave16.test.mjs scripts/sourceProtectionEntityWave16.test.mjs scripts/combatBladeContactWave16.test.mjs scripts/combatHistoricalCohortWave17.test.mjs scripts/combatFidelityWave17.test.mjs scripts/nativeSuperAnchorsWave17.test.mjs scripts/combatFidelityWave17PartB.test.mjs scripts/combatCanonicalEditionFixtures.test.mjs",
+  "commandCount": 144,
+  "commands": [
+    {
+      "index": 1,
+      "literal": "node scripts/combatFidelityAudit.mjs --check",
+      "argv": [
+        "node",
+        "scripts/combatFidelityAudit.mjs",
+        "--check"
+      ],
+      "scriptSha256": "12fa5e4e558bc0787d594bc63ac41d223ba4f5a59e66d5c2059b170084a23c16",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/combatFidelityAudit.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 2,
+      "literal": "node scripts/buildCombatCharacterAnimations.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimations.mjs",
+        "--check"
+      ],
+      "scriptSha256": "147946c7f7ece3a4c7643e6c27873b597ae9018fed5e5ce128f498bd4e133747",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimations.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 3,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrections.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrections.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3b4f6e85eb3fed57a2ab316507cd1bf3775dca98d98c317c761d9b43ccf6dca3",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrections.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 4,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave2PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave2PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "88a46c4fd90895946f1857ff2ef21e8d22b83b258e177f8709dfad05f67a32fc",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave2PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 5,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave3PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave3PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "8a17a7e36842bdb6499fb61831694ad63049eda50dd481fbdccdc2cce38cced1",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave3PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 6,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave3PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave3PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "dcd0568abd45eac142ef5b01feebf577eced709fc1a676c26646c096d0b07aac",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave3PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 7,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave4PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave4PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "0a2eec5efddf3066b956545b5d06a5923101fec0f56710acb275a6c799c1937c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave4PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 8,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave4PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave4PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "19a71d4626928cf3a0759d4bfb45222db019fd36ab606f86f72aa70581eca400",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave4PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 9,
+      "literal": "node scripts/buildCombatCharacterFormsWave4.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterFormsWave4.mjs",
+        "--check"
+      ],
+      "scriptSha256": "10c13e88eedcb50c604ee47d9dbe080928c805f833aaa962a9aa01d09cc7a223",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterFormsWave4.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 10,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs",
+        "--check"
+      ],
+      "scriptSha256": "b34044b7d829c0aca4b4d5c59265a958d645ed124b480a45fc8ac9b0859af48e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 11,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave5PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "81faa410c72b80cc20fbe03509e8071b813948506073606195105178887db2cc",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 12,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave5PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "77832252c26d588a8dd65c3dcb0e5ce43df810d09963754485a86c9247fad34e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 13,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave5PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "99b36383ba2361b0ee18f916af33c8db7341880e1b76435f14721e01282e1383",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave5PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 14,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave5.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave5.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ea2937a2b864188fb9ae545079c4df8114c97e7ea39890483d9aa29e0905d1be",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave5.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 15,
+      "literal": "node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "b99c48ba83602c4d7f3093aeae036e43619ec9b55e3a444d63a680a88df74faf",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 16,
+      "literal": "node docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/verify-vegeta-combat.mjs",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/verify-vegeta-combat.mjs"
+      ],
+      "scriptSha256": "1bc3336dfae4d58be36acc2690bed1cb7a731348c25a78c27153bc3f36324020",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/verify-vegeta-combat.mjs"
+      ]
+    },
+    {
+      "index": 17,
+      "literal": "node scripts/buildSummonAnimationsWave5.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave5.mjs",
+        "--check"
+      ],
+      "scriptSha256": "df31c1322d59d93f0648eaf2cb4e3aa8f4cae2c80a6582c8bcba0959a542e063",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave5.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 18,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave6PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "33b4c2b27950060872c5fb1f8cc8529a72ad894c654a6c9f21cfbd6c7b3045f2",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 19,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave6PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "53868c6e3d2caaf8f32302858cab0139d6be027b0082942c0aea6a82aed47c62",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 20,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave6PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ccff22158d59c330599237380dd725fef5fce6b4bb0672ddc3db1006bb81ee52",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave6PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 21,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave6PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "8b2c9f308e2badf5fcbaa2a8c4a2f470cdf109b39a8fc925d596a5315f445007",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 22,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave6PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "da08ae950d5d0bcc85cf2e4de08214c169894ab8b3cbd6920e0d5261681d01a2",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 23,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave6PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "725b7991d3d530dc7840385382a784d020cebb3ad05c1482d27ddb1a9fdeff81",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave6PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 24,
+      "literal": "node scripts/buildSummonAnimationsWave6.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave6.mjs",
+        "--check"
+      ],
+      "scriptSha256": "85ce5562ff577e0dbcb268c0dcf38e6d2ee8deaeec961a7b89af61216a41489f",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave6.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 25,
+      "literal": "node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/normalize-sonic-motion-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/normalize-sonic-motion-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "97e1e96c73b7b12bc48505665172164776a65e4645f8a244a247c0d4bf615fe7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/normalize-sonic-motion-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 26,
+      "literal": "node docs/combat-fidelity-wave6-2026-10-20/sonic-sources/verify-sonic-combat.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/verify-sonic-combat.mjs",
+        "--check"
+      ],
+      "scriptSha256": "2a940e584cca72d1ee3ebfec1a7c678243fb2b848d31397a259f3099d7057276",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/verify-sonic-combat.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 27,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave7PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c7498935065f07553bbd80f273896eb4e7bc3741604a71be4cb17cb59772f9a2",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 28,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave7PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "d812044e4169dbe6a0a5a23939a791dbca79dd76957f379f755e3d35282c8efb",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 29,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave7PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "d2fe9b0323d226062f12809e30c88f53f77b0dd1cff1cbe3da689335972e3ec0",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 30,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave7PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "dcffba5210895208ca0f378139b3cc11cdb554a005afc359a510aa6874b2a6b4",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 31,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave7PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "586533ac618f8beefb9d4d35ad337ca0ca321b122cbcacea6ad0ac423e581ce9",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave7PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 32,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave7PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "bc0b68faba84cc703b28c37f98e31a8c3b407cd64fe9d9f9fbecda4a48de8b2f",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave7PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 33,
+      "literal": "node scripts/buildSummonAnimationsWave7.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave7.mjs",
+        "--check"
+      ],
+      "scriptSha256": "fabd767403669d8cfcc7504fb5942ba8dd3edee2849033303fc95ebff2e90883",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave7.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 34,
+      "literal": "node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "0082d87edd7e10af27cec6fbc2e5c8d0284cb234f8c2076a883500ccec54e38e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 35,
+      "literal": "node docs/combat-fidelity-wave7-2026-10-20/ragna-sources/verify-ragna-combat.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/verify-ragna-combat.mjs",
+        "--check"
+      ],
+      "scriptSha256": "028f3df2ab3353c19e0ad5547a513a478c8025978631014a5c9e17ea65e5562b",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/verify-ragna-combat.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 36,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave8PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "d9187a80d01abe9d1c6bb8e97261b0564ac35623d581b166004bded91f377fe8",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 37,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave8PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "d7d1d4d12ca6f73bf1670643071245b2f2a79a51f9da18ce6cfcf5b6d1c0f328",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 38,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave8PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "a07649132861dbadf29663a18ed9329b9d37f225a089407e79f749bec574af65",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 39,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "379ec9269bf6070ea0e473a73489dc6dee915084d0f71bac315d3058cb3792fa",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 40,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave8PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "d636dd85aa773b7977b6e341deb40367fc9eed244bad5bf94bfe221f49feea63",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 41,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ec7b41498dbe9f90c2dff8cfe2e9bff4d8297b7bcf8e1a63c64822a63e24c1fc",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 42,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave8PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "de33fd366628b098a5dd22f403ff693c83b5d2da4bd8432a0f8f7b46513bfda4",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave8PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 43,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave8PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5b77dd2aceff209a8726e3ac622d4f3eecc1a0d0385e1a8714bd83207b523522",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave8PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 44,
+      "literal": "node scripts/buildSummonAnimationsWave8.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave8.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e289a95da3d4dd348c042847d5df6e2d21a4467ef25200cdd576ca0b161fc863",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave8.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 45,
+      "literal": "node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "83e08c6d145c523506bcaab6d23d6eedee99f2f849dd5646724af1731d0d1e6c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 46,
+      "literal": "node docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "840fd88c9bdff42f26284314cfbb46135380ced6bb317aa5fa063c9d030cbda9",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 47,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave9PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "24e3a220b11312a3888e2e091c58f8132fa87dad59d0f12f1f12e0218006b759",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 48,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave9PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e6ff02c032476ab67ec6b934e9b97514ec10723ebee6be1de5a9fa88407ba60d",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 49,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave9PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "6da7d0ae6a41c3d40edcd1a258ed57ea250e8a17d119f5b5330de032e9656b99",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 50,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "7fa76c02fce64b1fd66c846ff06153316baf95a7d5f61a00dce0eca006a8b4ae",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 51,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave9PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c6f5dd7c097243faf61031f491d6f5718a1fbcc95de235b1c58e17ee276483e0",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 52,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave9PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "12bc865559796f3a21b18e9713d8435129669592b3ef9f844eac413862e2b9f7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 53,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave9PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "303d9382d74df3b169cab05381b848f17dcc83cc454dafa7f6a6065aaff1812d",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave9PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 54,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave9PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "24db830a8566d80d6d1c47cdf949fb94f5f043a1e709758fb5d1ef007f7256c3",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave9PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 55,
+      "literal": "node scripts/buildSummonAnimationsWave9.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave9.mjs",
+        "--check"
+      ],
+      "scriptSha256": "8e6de156194e66d00b3daed2b908455c205f9f40a2a0028b164bca16bced322f",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave9.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 56,
+      "literal": "node docs/combat-fidelity-wave9-2026-10-22/chris-sources/normalize-chris-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave9-2026-10-22/chris-sources/normalize-chris-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3eda34558d7eec3fe885175799c1334b1da40bb0487646d99f7c38fbcbd800d4",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave9-2026-10-22/chris-sources/normalize-chris-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 57,
+      "literal": "node docs/combat-fidelity-wave9-2026-10-22/chris-sources/verify-chris-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave9-2026-10-22/chris-sources/verify-chris-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5f9f537ae6504a2e6f0b3c0e745f0b7953e094c4f95c803a6f4c2a9a604bb42a",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave9-2026-10-22/chris-sources/verify-chris-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 58,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave10PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "9ca2c1aa368d738d175e3cd9e923c902a696045be41dcac7413d68cc65a5140c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 59,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave10PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "37cd80baf3fa4146ca36f0c141b333fb52c6c9e4d6ad35a0d73aa9d8927cca3e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 60,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave10PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5f8d3b4a612f8888d7ee677bd053584a5bedc32d463ab5a09f6ed9847b42ab19",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 61,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ba8b5adcaa65167d013e000088035cafd60abf941610ec25e1edc505c1e5481e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 62,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave10PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "600c714da775f37167bd1ebdedf0f7dc6dbbe8d9265846d72653dc84a127859a",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 63,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave10PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "6ab4079f1a5d3969ccb98314f13b7c35a12eb80aa9e83ab0bcf833bc703fd9bc",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 64,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave10PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c546e7eb864b3b9b6bd0ac3515e3e39366001a258aebe2179e41770e1d07cb1a",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave10PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 65,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave10PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e708e3ce4271696e2acbc2fbfbc1f257b86164791177c69b628498f183087cc7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave10PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 66,
+      "literal": "node scripts/buildSummonAnimationsWave10.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave10.mjs",
+        "--check"
+      ],
+      "scriptSha256": "04acdf2909b53ffa4d6d9b2e3805cc0ec4f8215df47baa4b62c7465ac92373ce",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave10.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 67,
+      "literal": "node docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "82ae38e93353700f695d6a4e5c400ad3d5705efbbe735208c58fd99757555114",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 68,
+      "literal": "node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "71d21ac8b62d80f6d170c1ca136d1394282ddafc8f5d9913986ce15d0c7a4f09",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 69,
+      "literal": "node docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "09ee0dae68c8cac52781ae93d3c3eb120cb8f034f5f9906cf06db1643bee97a7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 70,
+      "literal": "node docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "1b9fad9bcb7e5c931b388fd6cb22c8f57770c90adedae5218e1a917b2530de88",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 71,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave11PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e695ad69bd512ab7f4411df8e62ac8d162b7b266dac7609115b2e3234b6037ca",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 72,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave11PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "aa2f9db145257b95a03566632b21c8fed8e307cfee0f7a12384f6162c4b6a249",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 73,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave11PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "9a159c44bbd20776b84e32691c2873cbdfdc2d50b0595b7069e078be70a1990c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 74,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "12cd11893c5d582e9e197ac839446e0029193dbd7810d732faadc4490d469ec8",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 75,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave11PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "736a4e34cfaf3b7ad87467000ab2fc2af27396dcbe716cce3842d1d39e7eecfb",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 76,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave11PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "cffe53f27e279c908d61598808906708b62d20051fc0330fd41c5ef6353a8242",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 77,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave11PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ce88a94b7412c3f6a49941c952b97b6ba9b93a9d09321d6562c07486c0746066",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave11PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 78,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave11PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ff2852ab55d78dc8c234c7b41a71a8a87408bdc6507bd7764f07bba25526dba5",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave11PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 79,
+      "literal": "node scripts/buildSummonAnimationsWave11.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave11.mjs",
+        "--check"
+      ],
+      "scriptSha256": "cad887d1f4f6d3c18e9b6114de13038098afbf5562b848437d367bb1aac865a0",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave11.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 80,
+      "literal": "node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "b5d777694cb932ded6e89199ea7d880e4c010302b20cb247fafaa46f3ce9b95e",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 81,
+      "literal": "node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5f9ef952330f8e232fab87f71bd6c03613fd9ac4802bd93f4de30d2c2b850af8",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 82,
+      "literal": "node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/normalize-arthur-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/normalize-arthur-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "08441e20311ab18f472e48b4b67cf97afbf7884b637faf18194797990481d070",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/normalize-arthur-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 83,
+      "literal": "node docs/combat-fidelity-wave11-2026-10-23/arthur-sources/verify-arthur-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/verify-arthur-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "db97516aeb3b08206b8432cdcddb629580d35a773b9e654db21842f225b692bf",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/verify-arthur-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 84,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave12PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "f4429e52c856f26d5df8abe16ab005979c1d1dd9ade7aad8bd790f523133f06a",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 85,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave12PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "37a8cdb04934dd765f4b3824f36558c6876e5499e6379398809dbe374ff5f81c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 86,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave12PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "0d956a3cae58bb7ca7ab0d1d4b2a82050a50284953e837ea76a7e8d0ac5514e1",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 87,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave12PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5206e0df0acdcb0b523f62bb38e19c3cef778fcf21f9a8d2f9ff93df2c084263",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 88,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave12PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3f2e708b31d5c3d3d29010481ff4ff8a43c80ab6b40c6a36c10386b14e6e45bf",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 89,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave12PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "02c46891fd458b318247e3ad086580b2b060ba4f5e917514818ee7458a672bb6",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 90,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave12PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "2b8b49e52cc3b3a9097ef264647deb0e799cfd3f04b3582e2a59c567cdbef7a9",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave12PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 91,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c09f1a8c47d4279338c75f2bebcd6b1eb36f5134472ed21ecfe72aefe65cd8fa",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave12PartD.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 92,
+      "literal": "node scripts/buildSummonAnimationsWave12.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave12.mjs",
+        "--check"
+      ],
+      "scriptSha256": "7050f6e5f30b4aef4f4d97ee60b3ae2bd3b511ce28640ab62e97473d4a3c93ec",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave12.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 93,
+      "literal": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ec351230a0a95631eafaf6d1a8bb9127d510f8149698ae93a45c29d273176383",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/normalize-isaac-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 94,
+      "literal": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "83523c1650a64bc3f5b8b9a957a5608c56620b51677ff52ec9487baa4dc15c17",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/measure-isaac-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 95,
+      "literal": "node docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "4354cd85c139479b6b9e938478c8803009ebebdeae4cd1ddd26d340ee73c6d52",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave12-2026-10-23/isaac-sources/verify-isaac-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 96,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave13PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave13PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3b2189ae0d41a9ef2d135c7ba942a0a10dd508676816bbab7087e5d190a429eb",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave13PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 97,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave13PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave13PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "49200ccb8fedc514899d3292789db66ef7d0f5d3581b07fd30d369457de2328c",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave13PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 98,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave13PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave13PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5e629d0e01f3b5910086626914c451be22aea8cc2289f4ee5fc1705cd48722ae",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave13PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 99,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave13PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave13PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "97dd812548821e1a94a0479ee72c7a6f560f0ab2e620e561bddc6da85c112a22",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave13PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 100,
+      "literal": "node scripts/buildSummonAnimationsWave13.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave13.mjs",
+        "--check"
+      ],
+      "scriptSha256": "a54a0385a0974f08b8ca5075a466c84208e0ebaca545eaf34279596b45d0798b",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave13.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 101,
+      "literal": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "31d849bf12adb80a04ae8e85d8396986cb1537f0fc65c6d47aba401babc5d6fc",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/normalize-ripley-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 102,
+      "literal": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "2aff49d1c9543ddd50c110a5ac79285c10942b1886a592a1f25dad29c55361a2",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/measure-ripley-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 103,
+      "literal": "node docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3fa2e4fc777ad291736bf05d44084ef8ca22cd9494e282c4ed160471f0f3496b",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave13-2026-10-24/ripley-sources/verify-ripley-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 104,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave14PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave14PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "3cf7376ae4f4c418f6c204c9dd85d6b02ccd256ba92cd4d82867cb5c53090081",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave14PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 105,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave14PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave14PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "6a11ccefe142b25869c3d99c64f776eeb8a7e4a587229b104da22ba300997e2f",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave14PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 106,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave14PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave14PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "111937a6c18c244f125350c802d1f9a04ad1a36380e4a30bc5419b9cff67accb",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave14PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 107,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave14PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave14PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e5e7aef30afc09d1699ef4814725a629d05b9c06c38ad7bd291d080404d56110",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave14PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 108,
+      "literal": "node scripts/buildSummonAnimationsWave14.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave14.mjs",
+        "--check"
+      ],
+      "scriptSha256": "29a6409b1a33f783ad48c9f8d32dff118048f150bb6c2600492281fe745fa3a8",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave14.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 109,
+      "literal": "node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "43de5258893e4d8770ceba4a483c430dd97f02b3b85b4d0022ff6e7b10419b43",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/normalize-aragorn-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 110,
+      "literal": "node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5d6d75796ade126ed46f65ba7d61b01041842bd465c9e16e9bbc22ac0daddca4",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/measure-aragorn-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 111,
+      "literal": "node docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "65aad1ad60dff3a571fc7ead4aa2c4e8d1fb17c9b90f8479249a6edb4c3a8a87",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave14-2026-10-25/aragorn-sources/verify-aragorn-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 112,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave15PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "255f4baaffafad65c4a3451aa1981427f26f927149141e5a2fb619bb51087450",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 113,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "7eb0afcd45dc1e3ed1d7db4f0997aef6ddb82b20db03df480deb7daabeff6fc3",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 114,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave15PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c39b784c93c3ce416df96fd792130d163abd58b9f0470cf6878fd1b9d4330562",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 115,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave15PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "775769cf70c01f6a5ae09542666b74911412ba9954a23598cde82ffb51303aad",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 116,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave15PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "10c1cf5ebee840d52f7266024768dcce07436c7822e472adac66dcd945c189f7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave15PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 117,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave15PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "9e65ea2ed85ee7223fdacea300ae4a8a55f6558ada581a2cd73cf7081b087815",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave15PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 118,
+      "literal": "node scripts/buildSummonAnimationsWave15.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave15.mjs",
+        "--check"
+      ],
+      "scriptSha256": "dd0802ebd14adf428f06afb2b7232599475a580548e2d975fa2c607f7429889a",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave15.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 119,
+      "literal": "node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "bbd593f15ebb93b1de6f38d52b5c5fe0bc15df1ba958b4d3d936eb641f4d5873",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/normalize-sir-daniel-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 120,
+      "literal": "node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "5527b7609f26f32a69f3e48d3ffcf30144def81396a4e2228daf401d16f2f3ab",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/measure-sir-daniel-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 121,
+      "literal": "node docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c709ea77cec7b8b3693a579d876ead59aff7855c698ba2fac7e446d3365d05cf",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave15-2026-10-26/sir-daniel-sources/verify-sir-daniel-atlases.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 122,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave16PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "6199f84b729fbc65bc8f9aa3c14a7c9d15afb7760d118e8d7b4652abe4960ebe",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 123,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave16PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e3f8285a19a73e09fdde6a10db35781a2a09bbe54db2924cf2179fa846be61ce",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 124,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave16PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e124df32abdf3e36551211e3594e059b1c91981e7025138036eb41284773d927",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave16PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 125,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave16PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "28948c85513cf3b4fc2ee035dc88d22fdaeacd87ebff11b6a045ab675bfaac93",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 126,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave16PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "aa1ab787eeede8084c4d588fdbe79a220bd6be12d5d69a824eb39636cc1ea0bd",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 127,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave16PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "22b04eb75edaa87508ba8627733d435069cbc6a67f2fbe7bee57e43b33822b37",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave16PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 128,
+      "literal": "node scripts/buildSummonAnimationsWave16.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave16.mjs",
+        "--check"
+      ],
+      "scriptSha256": "470d0764414518b1bf8a18db86724317db390a72b3e0916d36ceedc137426352",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave16.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 129,
+      "literal": "node docs/combat-fidelity-wave16-2026-10-28/senua-sources/build-native-senua-atlases.mjs --config docs/combat-fidelity-wave16-2026-10-28/senua-sources/packing-plan.json --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/build-native-senua-atlases.mjs",
+        "--config",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/packing-plan.json",
+        "--check"
+      ],
+      "scriptSha256": "85b2fff8f8be9fe3b94add8aeb351888e213ff0377b44507fbd13cd69131ad16",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/build-native-senua-atlases.mjs",
+        "--config",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/packing-plan.json",
+        "--check"
+      ]
+    },
+    {
+      "index": 130,
+      "literal": "node docs/combat-fidelity-wave16-2026-10-28/senua-sources/measure-senua-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/measure-senua-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "7ccdfb655f4e6e22de3861ea879201e4f6f820035015a6b4a8c9d14d8a6a0230",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave16-2026-10-28/senua-sources/measure-senua-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 131,
+      "literal": "node scripts/buildCombatCharacterActionAnimationsWave16PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterActionAnimationsWave16PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "4557759554c2441c953288b0c4a995e43a8a9516cbca07bfa6eb36e544edcdcf",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterActionAnimationsWave16PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 132,
+      "literal": "node scripts/buildSourceProtectionEntitiesWave16.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSourceProtectionEntitiesWave16.mjs",
+        "--check"
+      ],
+      "scriptSha256": "c89edef84b7cb74e06273afbddb481b2093bb25d6ddbc7fd13dc2995b13279b5",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSourceProtectionEntitiesWave16.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 133,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave17PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "128fe8e21570b938f3227b213ec763052fea4350584bb71153b0a7d1ec2f2227",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 134,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave17PartA.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartA.mjs",
+        "--check"
+      ],
+      "scriptSha256": "167171938d38c07ea692638b43c5ea23ea5f1e1d53539e03fb7f75040907f97b",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartA.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 135,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave17PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "de9b294f9939efd730fa2a98d451d19e12bd65a37ce55ae3cb14991fd4b3ee32",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 136,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave17PartB.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartB.mjs",
+        "--check"
+      ],
+      "scriptSha256": "f861730798dda3d69013062f7e5f7c7403ee4c02419bb1a0c3ef25aee2efb9cb",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartB.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 137,
+      "literal": "node scripts/buildCombatCharacterAnimationsWave17PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "a8a6c193b9c166ff7d4af173e4e1d1df92778ede0de9be6828c4635ef1e63d80",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterAnimationsWave17PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 138,
+      "literal": "node scripts/buildCombatCharacterSpriteCorrectionsWave17PartC.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartC.mjs",
+        "--check"
+      ],
+      "scriptSha256": "e5ebcb7e5c0c618a67756dc5393af0f58759eabc44fdc31d5d562e4deb6aa167",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCombatCharacterSpriteCorrectionsWave17PartC.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 139,
+      "literal": "node scripts/buildSummonAnimationsWave17.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildSummonAnimationsWave17.mjs",
+        "--check"
+      ],
+      "scriptSha256": "ac8534096333898104612b93798de0ac5371d04e7baa3b7153202c089bb3ecab",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildSummonAnimationsWave17.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 140,
+      "literal": "node scripts/buildCaptureEnemyAssetsWave17.mjs --check",
+      "argv": [
+        "node",
+        "scripts/buildCaptureEnemyAssetsWave17.mjs",
+        "--check"
+      ],
+      "scriptSha256": "bfda73db421511459d4f5551ba06c76f7be1d25cf532fc5e46eadc955d228f7b",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "scripts/buildCaptureEnemyAssetsWave17.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 141,
+      "literal": "node docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-native-jade-atlases.mjs --config docs/combat-fidelity-wave17-2026-11-02/jade-sources/packing-plan.json --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-native-jade-atlases.mjs",
+        "--config",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/packing-plan.json",
+        "--check"
+      ],
+      "scriptSha256": "aba13ee1d1d08d083b0547218d182b4fa2c3ec00e18136e9a67d3816092fcba7",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-native-jade-atlases.mjs",
+        "--config",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/packing-plan.json",
+        "--check"
+      ]
+    },
+    {
+      "index": 142,
+      "literal": "node docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-hands.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-hands.mjs",
+        "--check"
+      ],
+      "scriptSha256": "1ce2c334f2b9d1e44c2700d4eacb3c2611d9e4c46f1ebe598d5a55fa4542df58",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-hands.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 143,
+      "literal": "node docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-staff.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-staff.mjs",
+        "--check"
+      ],
+      "scriptSha256": "2d482b60119c2e4982d55f5a9b212fec0fd480c22a4a93db0e3f9bbdae9e9587",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/measure-jade-native-staff.mjs",
+        "--check"
+      ]
+    },
+    {
+      "index": 144,
+      "literal": "node docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-jade-gyrodisk-action.mjs --check",
+      "argv": [
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-jade-gyrodisk-action.mjs",
+        "--check"
+      ],
+      "scriptSha256": "9b062f612cab149ebb10d800178b56b3db94a38bac4b41a4c26bc9a04bcaeb7f",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "node",
+        "docs/combat-fidelity-wave17-2026-11-02/jade-sources/build-jade-gyrodisk-action.mjs",
+        "--check"
+      ]
+    }
+  ],
+  "preparedAt": "2026-11-09T10:25:09.017984+00:00",
+  "cwd": "/workspace/multiverse-breach",
+  "nodeVersionExpected": "v22.23.4",
+  "cpuAffinity": "0,1",
+  "nodeOptions": "--max-old-space-size=4096",
+  "expectedInputs": "/tmp/final-source-reference-validation-4096.inputs-after.json",
+  "expectedInputsSha256": "345521c8991952673b0b638876da7ae89b69acc2fb8776776d1cee98c2fcd3bc",
+  "inputFileCount": 1478,
+  "executeGuard": "--execute-after-root-go required; parent GO is external and never inferred",
+  "notAFullNpmBuild": true
+}

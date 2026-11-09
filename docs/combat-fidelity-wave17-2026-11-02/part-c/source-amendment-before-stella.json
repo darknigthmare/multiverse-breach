@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T05:53:44.196Z",
+  "beforeGeneration": true,
+  "globalAmendmentFile": "docs/combat-fidelity-wave17-2026-11-02/batch-amendments-3-before-generation.json",
+  "globalAmendmentSha256": "ce899059e88d6320860c5e7fee0f2fe0c038c22950bede5e3cb589170f8f7485",
+  "withheldHeroId": "judy_hopps",
+  "replacementHeroId": "stella_interstella",
+  "reason": "Actual Judy Hopps output moderation refusal is kept without retry. Stella is a distinct existing source identity and retains a non-offensive bass role.",
+  "entry": {
+    "id": "stella_interstella",
+    "heroId": "stella_interstella",
+    "displayName": "Stella (Interstella 5555)",
+    "universe": "Daft Punk",
+    "sourceWork": "Interstella5555: The5tory of The5ecret5tar5ystem (2003), Stella as the blue alien bassist of the Crescendolls, before the Earth disguise",
+    "appearance": "Adult cyan-blue alien woman with very long voluminous golden-blond hair, lifted front fringe, small pink/red forehead ornament on a slim silver band, white high collar. White/gold full performance suit with matching sleek trousers/boots is a declared coherent lower-body reconstruction; the official publisher portrait independently shows face, hair, forehead ornament and collar, not full-body clothing.",
+    "weapon": "Complete strapped four-string electric bass with intact full neck and headstock; source-role music performance and protective positioning, no laser, music-damage beam or magical healing",
+    "simpleName": "Première ligne de basse de Stella",
+    "secondaryName": "Relais des Crescendolls sur One More Time",
+    "defenseName": "Retrait au repère de basse",
+    "actionName": "Ligne de basse des Crescendolls par Stella",
+    "name": "Ligne de basse des Crescendolls par Stella",
+    "effect": "buff",
+    "delivery": "support",
+    "kind": "support",
+    "bodyHeight": 184,
+    "pose": "Four genuinely different physical bass-playing gestures, fingers pluck actual strings while the instrument remains complete and strapped. No damaging sound, sword-like swing, cyan energy crescent, invented power shield or unseen band member.",
+    "partner": null,
+    "sourceReference": "Official publisher portrait actually downloaded from https://daftpunk.com/img/interstella5555movie.jpg (SHA ded5b6dbc0b498e1325dd30e6d53c34996909d61d0e70de76f5f0e40d91120e6) and visually inspected via original and exact enlarged crop. Film role: Stella is the Crescendolls bassist in Interstella5555(2003). Primary full-body film comparison is unavailable; no1:1 source certification.",
+    "sourceDescription": "Stella performs bass with the Crescendolls; song and stage presence adapt support, never personal damaging music or a firearm.",
+    "source1to1Verified": false,
+    "canonicalVerified": false,
+    "networkVerified": false,
+    "gameplayAdaptation": true,
+    "continuityNote": "Blue alien incarnation stays distinct from the human Earth-disguise artwork also archived from the official publisher. Whole-body pixel art remains an acknowledged reconstruction outside the verified portrait.",
+    "contactAnchorRole": "bass-performance",
+    "weaponType": "melee",
+    "referenceAsset": "/sprites/generated/heroes/daft-punk/stella-interstella.png",
+    "referenceSha256": "b4b04091567bd7804c22b1156d8f8033854cb35b6f24d225514f2d7680c7c7d2",
+    "referenceArchive": "docs/combat-fidelity-wave17-2026-11-02/part-c/references/stella_interstella-historical.png",
+    "priorAuthored": {
+      "sourceHeroId": "stella_interstella",
+      "universe": "Daft Punk",
+      "sourceWork": "Daft Punk — One More Time ; Interstella 5555 (2003)",
+      "sourceReference": "Interstella 5555 définit Stella comme bassiste des Crescendolls ; les trois gestes sont musicaux et protecteurs.",
+      "sourceUrl": null,
+      "identityBasis": "canonical-role",
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "gameplayAdaptation": true,
+      "simple": {
+        "name": "Première ligne de basse de Stella",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Relais des Crescendolls sur One More Time",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        }
+      },
+      "defense": {
+        "name": "Retrait au repère de basse",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2
+      }
+    },
+    "appearanceReference": "docs/combat-fidelity-wave17-2026-11-02/part-c/source-evidence/official-stella-portrait-input.png",
+    "appearanceReferenceSha256": "263abf45054cd5d990b87a03ac2dce650eb5e8cc8c28daa32ae8945f006361cc"
+  },
+  "request": {
+    "heroId": "stella_interstella",
+    "promptFile": "docs/combat-fidelity-wave17-2026-11-02/part-c/requests/stella_interstella-prompt.txt",
+    "promptSha256": "55ad19bcf6328f4347fed2b5bb0916f53d12c11c018c314f05af171dad458c42",
+    "arguments": {
+      "prompt": "Create one professional detailed native PIXEL-ART animation SOURCE ATLAS for Stella (Interstella 5555), exact selected incarnation: Interstella5555: The5tory of The5ecret5tar5ystem (2003), Stella as the blue alien bassist of the Crescendolls, before the Earth disguise.\n\nAPPEARANCE: Adult cyan-blue alien woman with very long voluminous golden-blond hair, lifted front fringe, small pink/red forehead ornament on a slim silver band, white high collar. White/gold full performance suit with matching sleek trousers/boots is a declared coherent lower-body reconstruction; the official publisher portrait independently shows face, hair, forehead ornament and collar, not full-body clothing.\nEXACT EQUIPMENT / SOURCE ROLE: Complete strapped four-string electric bass with intact full neck and headstock; source-role music performance and protective positioning, no laser, music-damage beam or magical healing\nEach source drawing contains only the one named complete character, with their actual equipment.\n\nClean detailed16-bit game sprites, full complete heads, bodies, feet and complete equipment inside every cell. Same design, palette and true body proportions across ALL48 drawings. Naturally crouched figures remain shorter; do not stretch them. All source units face screen-right in three-quarter side-view. Neutral practical game character poses, modest source clothing, non-graphic actions.\n\nSTRICT GRID: exactly EIGHT COLUMNS by SIX ROWS = FORTY-EIGHT COMPLETE SEPARATE SOURCE UNITS. Landscape4:3 arrangement, equal square cells, transparent background. Large empty transparent gutters separate every cell. No floor, shadow, scene, text, names, labels, borders, gridlines, panels or additional characters. Every row must have exactly8 units, not7 or9. Every four consecutive units form one FOUR-POSE sequence: four independently drawn DIFFERENT bodily poses, never copied static bodies with only effect changes. Bodies, ears, tail, ribbons and complete actual equipment never cross into neighbouring cells.\n\nROW1 col1-4 INTRO: four distinct source-specific readiness poses. Col5-8 OUTRO: four different lowering/settling/turning poses, no attack.\nROW2 col1-4 ROUND VICTORY: four distinct restrained acknowledgements. Col5-8 ROUND DEFEAT: four distinct tired, lowered or kneeling poses, complete bodies, no injury.\nROW3 col1-4 FINALE: Ligne de basse des Crescendolls par Stella: four genuinely different practical communication, readiness, supportive or safe positioning gestures consistent with Complete strapped four-string electric bass with intact full neck and headstock; source-role music performance and protective positioning, no laser, music-damage beam or magical healing. These gestures are NON-OFFENSIVE: no damaging rays, attacking music, fabricated healing, magical shields or power borrowed from another identity. Decisive finale is a reassuring safe resolution, not an execution. Col5-8 VICTORY: four distinct restrained final winning poses, not copies of round victory.\nROW4 col1-4 DEFEAT: four distinct exhausted lowered poses with complete equipment. Col5-8 SUPER: Ligne de basse des Crescendolls par Stella: four genuinely different practical communication, readiness, supportive or safe positioning gestures consistent with Complete strapped four-string electric bass with intact full neck and headstock; source-role music performance and protective positioning, no laser, music-damage beam or magical healing. These gestures are NON-OFFENSIVE: no damaging rays, attacking music, fabricated healing, magical shields or power borrowed from another identity. Decisive finale is a reassuring safe resolution, not an execution. Do not copy the finale drawings.\nROW5 col1-4 IDLE: four different breathing/weight shifts. Col5-8 RUN: four genuine different locomotion poses with source anatomy retained.\nROW6 col1-4 BASIC ACTION Première ligne de basse de Stella: four different appropriate physical or NON-OFFENSIVE support gestures; actual release/contact in THIRD drawing if the source action attacks. Col5-8 HIT REACTION: four different non-graphic full-body recoils, complete limbs, no injury detail.\n\nAll48 complete units must be distinct, separated and readable. Keep each unit compact within its cell and at least20pixels transparent around complete equipment and all bodies. For duos, the complete partner is beside the human, never behind another cell or a detached icon. No long detached VFX, no glowing aura substitute for actual body action, no translucent extra body.\n\nSTELLA SOURCE LOCK: attached official publisher portrait defines her CYAN blue face, golden-blond hair, central pink/red forehead ornament and white collar. This is her ALIEN incarnation, not the human disguise with sunglasses. Hold the complete electric BASS guitar by a proper strap in EVERY frame, including all run and tired poses. Exactly4 strings with complete headstock and neck; do not draw a sword, gun, magical music arc or damage beam. All actions are real bass-playing, communication and safe physical movement. Full modest performance suit and whole boots remain inside the cell with wide transparent gutters. No additional band member.",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/part-c/source-evidence/official-stella-portrait-input.png"
+      ],
+      "transparent_background": true
+    },
+    "beforeGeneration": true
+  },
+  "primaryPortraitCrop": {
+    "source": "https://daftpunk.com/img/interstella5555movie.jpg",
+    "sourceSha256": "ded5b6dbc0b498e1325dd30e6d53c34996909d61d0e70de76f5f0e40d91120e6",
+    "rect": {
+      "left": 351,
+      "top": 821,
+      "width": 43,
+      "height": 39
+    },
+    "resize": {
+      "width": 344,
+      "height": 312,
+      "kernel": "nearest"
+    },
+    "newDrawingCount": 0,
+    "fullBodyIndependentComparison": false
+  }
+}

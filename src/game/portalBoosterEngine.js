@@ -1,5 +1,15 @@
 export const BOOSTER_CARD_COUNT = 5;
 
+/** Only character draws affect character pity; order matters inside a pack. */
+export function advanceBoosterHeroStreak(previous, rewards = []) {
+  let streak = Number.isFinite(previous) ? Math.max(0, Math.floor(previous)) : 0;
+  for (const reward of rewards) {
+    if (!reward || !HERO_KINDS.has(reward.kind)) continue;
+    streak = reward.wasDuplicate ? Math.min(Number.MAX_SAFE_INTEGER, streak + 1) : 0;
+  }
+  return streak;
+}
+
 const HERO_KINDS = new Set(['hero', 'character', 'perso']);
 const RARITY_RANKS = {
   common: 0,

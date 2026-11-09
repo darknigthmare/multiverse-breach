@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "scope": "Wave2 selected sprite source-fidelity correction attempts; both blocked without deliverable",
+  "records": [
+    {
+      "characterId": "vader",
+      "incarnation": "Star Wars: The Empire Strikes Back (1980), Bespin",
+      "status": "blocked-output-moderation",
+      "requestId": "e64cfe83-fa48-4e5c-9423-992d7c2d21bf",
+      "moderationStage": "output",
+      "moderationCategories": [
+        "other"
+      ],
+      "attemptCount": 1,
+      "outputProduced": false,
+      "normalizationPerformed": false,
+      "canonicalFidelityApproved": false,
+      "oldAsset": {
+        "path": "/sprites/generated/heroes/star-wars/vader.png",
+        "sha256": "0a234abe4276eae8bdfaa1ff200528dd2673ec1ce09560c6076e1a547dd99464",
+        "unchanged": true
+      },
+      "promptSha256": "8880bed0c24a96c1238d810fba8c23b7c85442bd25d11c61a959b37685a30163",
+      "requestedLayout": {
+        "columns": 4,
+        "rows": 4,
+        "width": 1024,
+        "height": 1024,
+        "transparent": true,
+        "animationRows": [
+          "idle",
+          "run",
+          "attack",
+          "hit-recovery"
+        ]
+      },
+      "references": [
+        {
+          "url": "https://lumiere-a.akamaihd.net/v1/images/the-empire-strikes-back-desktop_d6f5c74f.jpeg",
+          "sha256": "ad580406d07ecfde22f39083fccf4a8efc476c22732343bae15d50756770032a",
+          "bytes": 253542,
+          "viewed": true,
+          "role": "official-visual-inspected",
+          "sourcePublicationDate": null
+        },
+        {
+          "url": "https://lumiere-a.akamaihd.net/v1/images/image_112fc697.jpeg",
+          "sha256": "aa817357e8261cca9b4c80efb3457c1505a26657f42ca5f6e9bf37e73e088d19",
+          "bytes": 413772,
+          "viewed": true,
+          "role": "official-visual-inspected",
+          "sourcePublicationDate": null
+        },
+        {
+          "url": "https://lumiere-a.akamaihd.net/v1/images/vaders-lightsaber_7a490d47.jpeg",
+          "sha256": "2a93c04c632ae7b0aee43d3411d2216c9e5d3caa6fd0287f154c6a4998157ab8",
+          "bytes": 130375,
+          "viewed": true,
+          "role": "official-visual-inspected",
+          "sourcePublicationDate": null
+        }
+      ],
+      "notes": [
+        "Une nouvelle demande fidèle au personnage masqué source ; refus après génération, aucun fichier image final fourni.",
+        "Aucune reformulation ni tentative supplémentaire de contournement.",
+        "Aucune normalisation ni modification d’asset, de sélection runtime ou de registre.",
+        "Les écarts de l’ancienne image restent ouverts ; ce refus ne constitue pas une correction."
+      ]
+    },
+    {
+      "characterId": "batman_tdk",
+      "incarnation": "The Dark Knight (2008), segmented Batsuit",
+      "status": "blocked-output-moderation",
+      "requestId": "edf31927-5cf5-4c67-aca8-5b446fb26ac6",
+      "moderationStage": "output",
+      "moderationCategories": [
+        "other"
+      ],
+      "attemptCount": 1,
+      "outputProduced": false,
+      "normalizationPerformed": false,
+      "canonicalFidelityApproved": false,
+      "oldAsset": {
+        "path": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+        "sha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+        "unchanged": true
+      },
+      "promptSha256": "91ebf55402fb5d116c05bf71867cb370f7846164ec7b985e41b5eb209ef15754",
+      "requestedLayout": {
+        "columns": 4,
+        "rows": 4,
+        "width": 1024,
+        "height": 1024,
+        "transparent": true,
+        "animationRows": [
+          "idle",
+          "run",
+          "attack",
+          "hit-recovery"
+        ]
+      },
+      "references": [
+        {
+          "url": "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960315.jpg",
+          "sha256": "db8f1ef5a870c520c3b92790ae23d653fad35fd0d11bc1007d9ddc8841fadbe9",
+          "bytes": 33807,
+          "viewed": true,
+          "role": "costume-detail",
+          "sourcePublicationDate": "2008-07-10"
+        },
+        {
+          "url": "https://fr.web.img3.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960311.jpg",
+          "sha256": "e7fd0004a048a16c811d39a1f7f9f7ef2bb4e10258402cbe2c32971808245145",
+          "bytes": 46470,
+          "viewed": true,
+          "role": "full-body-film-frame",
+          "sourcePublicationDate": "2008-07-10"
+        }
+      ],
+      "notes": [
+        "Une nouvelle demande fidèle au personnage masqué source ; refus après génération, aucun fichier image final fourni.",
+        "Aucune reformulation ni tentative supplémentaire de contournement.",
+        "Aucune normalisation ni modification d’asset, de sélection runtime ou de registre.",
+        "Les écarts de l’ancienne image restent ouverts ; ce refus ne constitue pas une correction."
+      ]
+    }
+  ],
+  "summary": {
+    "requests": 2,
+    "deliveredSprites": 0,
+    "blocked": 2,
+    "oldAssetsPreserved": true,
+    "globalRegistryChanged": false
+  }
+}

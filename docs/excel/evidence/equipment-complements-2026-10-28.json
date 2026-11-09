@@ -1,0 +1,1217 @@
+{
+  "schema": "equipment-complements-delivery-v1",
+  "checkedOn": "2026-10-28",
+  "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+  "basePrCommit": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+  "scope": "Enrichissement documentaire, colonnes de consultation et suivi Excel ; aucune donnée du jeu modifiée.",
+  "workbook": {
+    "path": "docs/excel/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+    "bytes": 3316230,
+    "sha256": "b3df823f4c89e21ef92c2a1a092ac80dfb7775a0490822d106895df5a7c748b7"
+  },
+  "generator": {
+    "path": "docs/excel/tools/build_equipment_workbook.mjs",
+    "sha256": "1c48089e5f78f55218e844489882b50635ab56a106984eec09259787af8d2e44"
+  },
+  "corpusValidation": {
+    "schema": "equipment-documentary-batch-v1",
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "before": {
+      "rows": 55,
+      "actors": 22,
+      "sources": 21,
+      "unboundIncarnationRows": 41,
+      "visuallyApproved": 0
+    },
+    "after": {
+      "rows": 169,
+      "actors": 79,
+      "sources": 79,
+      "unboundIncarnationRows": 144,
+      "visuallyApproved": 0
+    },
+    "sourceAccess": {
+      "directPagesOrPdf": 70,
+      "directImages": 8,
+      "indexedOfficialPages": 1
+    },
+    "newReferences": 114,
+    "enrichedActors": 60,
+    "newlyDocumentedActors": 57,
+    "actorsWithoutTargetedReference": 4857,
+    "expectedActions": 10346,
+    "expectedFindings": 28473,
+    "oldRowsAndSourcesPreserved": true,
+    "exactActorIdentitiesChecked": 169,
+    "fragments": [
+      {
+        "id": "starwars",
+        "sha256": "30647bf6e718e6f506da7848f8c216b459b3108fd2909ebd560526fe2779405d",
+        "rows": 40,
+        "actors": 24,
+        "newSources": 17,
+        "referenceIds": [
+          "REF-EQP-20261028-SW-001",
+          "REF-EQP-20261028-SW-002",
+          "REF-EQP-20261028-SW-003",
+          "REF-EQP-20261028-SW-004",
+          "REF-EQP-20261028-SW-005",
+          "REF-EQP-20261028-SW-006",
+          "REF-EQP-20261028-SW-007",
+          "REF-EQP-20261028-SW-008",
+          "REF-EQP-20261028-SW-009",
+          "REF-EQP-20261028-SW-010",
+          "REF-EQP-20261028-SW-011",
+          "REF-EQP-20261028-SW-012",
+          "REF-EQP-20261028-SW-013",
+          "REF-EQP-20261028-SW-014",
+          "REF-EQP-20261028-SW-015",
+          "REF-EQP-20261028-SW-016",
+          "REF-EQP-20261028-SW-017",
+          "REF-EQP-20261028-SW-018",
+          "REF-EQP-20261028-SW-019",
+          "REF-EQP-20261028-SW-020",
+          "REF-EQP-20261028-SW-021",
+          "REF-EQP-20261028-SW-022",
+          "REF-EQP-20261028-SW-023",
+          "REF-EQP-20261028-SW-024",
+          "REF-EQP-20261028-SW-025",
+          "REF-EQP-20261028-SW-026",
+          "REF-EQP-20261028-SW-027",
+          "REF-EQP-20261028-SW-028",
+          "REF-EQP-20261028-SW-029",
+          "REF-EQP-20261028-SW-030",
+          "REF-EQP-20261028-SW-031",
+          "REF-EQP-20261028-SW-032",
+          "REF-EQP-20261028-SW-033",
+          "REF-EQP-20261028-SW-034",
+          "REF-EQP-20261028-SW-035",
+          "REF-EQP-20261028-SW-036",
+          "REF-EQP-20261028-SW-037",
+          "REF-EQP-20261028-SW-038",
+          "REF-EQP-20261028-SW-039",
+          "REF-EQP-20261028-SW-040"
+        ],
+        "sourceIds": [
+          "SW28-001",
+          "SW28-002",
+          "SW28-003",
+          "SW28-004",
+          "SW28-005",
+          "SW28-006",
+          "SW28-007",
+          "SW28-008",
+          "SW28-009",
+          "SW28-010",
+          "SW28-011",
+          "SW28-012",
+          "SW28-013",
+          "SW28-014",
+          "SW28-015",
+          "SW28-016",
+          "SW28-017"
+        ]
+      },
+      {
+        "id": "capcom",
+        "sha256": "18a482b9feb6ed87ddb8f618e20a0a1d8dfd2547b11fddf1ae8d466d3ba11fec",
+        "rows": 29,
+        "actors": 7,
+        "newSources": 12,
+        "referenceIds": [
+          "REF-EQP-20261028-CP-001",
+          "REF-EQP-20261028-CP-002",
+          "REF-EQP-20261028-CP-003",
+          "REF-EQP-20261028-CP-004",
+          "REF-EQP-20261028-CP-005",
+          "REF-EQP-20261028-CP-006",
+          "REF-EQP-20261028-CP-007",
+          "REF-EQP-20261028-CP-008",
+          "REF-EQP-20261028-CP-009",
+          "REF-EQP-20261028-CP-010",
+          "REF-EQP-20261028-CP-011",
+          "REF-EQP-20261028-CP-012",
+          "REF-EQP-20261028-CP-013",
+          "REF-EQP-20261028-CP-014",
+          "REF-EQP-20261028-CP-015",
+          "REF-EQP-20261028-CP-016",
+          "REF-EQP-20261028-CP-017",
+          "REF-EQP-20261028-CP-018",
+          "REF-EQP-20261028-CP-019",
+          "REF-EQP-20261028-CP-020",
+          "REF-EQP-20261028-CP-021",
+          "REF-EQP-20261028-CP-022",
+          "REF-EQP-20261028-CP-023",
+          "REF-EQP-20261028-CP-024",
+          "REF-EQP-20261028-CP-025",
+          "REF-EQP-20261028-CP-026",
+          "REF-EQP-20261028-CP-027",
+          "REF-EQP-20261028-CP-028",
+          "REF-EQP-20261028-CP-029"
+        ],
+        "sourceIds": [
+          "CP28-001",
+          "CP28-002",
+          "CP28-003",
+          "CP28-004",
+          "CP28-005",
+          "CP28-006",
+          "CP28-007",
+          "CP28-008",
+          "CP28-009",
+          "CP28-010",
+          "CP28-011",
+          "CP28-012"
+        ]
+      },
+      {
+        "id": "finalfantasy",
+        "sha256": "5dcf4ddc95f4cec92f342e67e0226d1dd8f694199d91d08da5e053af3d4d8cd7",
+        "rows": 32,
+        "actors": 20,
+        "newSources": 19,
+        "referenceIds": [
+          "REF-EQP-20261028-FF-001",
+          "REF-EQP-20261028-FF-002",
+          "REF-EQP-20261028-FF-003",
+          "REF-EQP-20261028-FF-004",
+          "REF-EQP-20261028-FF-005",
+          "REF-EQP-20261028-FF-006",
+          "REF-EQP-20261028-FF-007",
+          "REF-EQP-20261028-FF-008",
+          "REF-EQP-20261028-FF-009",
+          "REF-EQP-20261028-FF-010",
+          "REF-EQP-20261028-FF-011",
+          "REF-EQP-20261028-FF-012",
+          "REF-EQP-20261028-FF-013",
+          "REF-EQP-20261028-FF-014",
+          "REF-EQP-20261028-FF-015",
+          "REF-EQP-20261028-FF-016",
+          "REF-EQP-20261028-FF-017",
+          "REF-EQP-20261028-FF-018",
+          "REF-EQP-20261028-FF-019",
+          "REF-EQP-20261028-FF-020",
+          "REF-EQP-20261028-FF-021",
+          "REF-EQP-20261028-FF-022",
+          "REF-EQP-20261028-FF-023",
+          "REF-EQP-20261028-FF-024",
+          "REF-EQP-20261028-FF-025",
+          "REF-EQP-20261028-FF-026",
+          "REF-EQP-20261028-FF-027",
+          "REF-EQP-20261028-FF-028",
+          "REF-EQP-20261028-FF-029",
+          "REF-EQP-20261028-FF-030",
+          "REF-EQP-20261028-FF-031",
+          "REF-EQP-20261028-FF-032"
+        ],
+        "sourceIds": [
+          "FF28-001",
+          "FF28-002",
+          "FF28-003",
+          "FF28-004",
+          "FF28-005",
+          "FF28-006",
+          "FF28-007",
+          "FF28-008",
+          "FF28-009",
+          "FF28-010",
+          "FF28-011",
+          "FF28-012",
+          "FF28-013",
+          "FF28-014",
+          "FF28-015",
+          "FF28-016",
+          "FF28-017",
+          "FF28-018",
+          "FF28-019"
+        ]
+      },
+      {
+        "id": "ffvii-halo",
+        "sha256": "bf263288c68f8b027f8d70dfdbe1194bba2781d9c118e98aff1ebe2b458e0e61",
+        "rows": 13,
+        "actors": 9,
+        "newSources": 10,
+        "referenceIds": [
+          "REF-EQP-20261028-RT-001",
+          "REF-EQP-20261028-RT-002",
+          "REF-EQP-20261028-RT-003",
+          "REF-EQP-20261028-RT-004",
+          "REF-EQP-20261028-RT-005",
+          "REF-EQP-20261028-RT-006",
+          "REF-EQP-20261028-RT-007",
+          "REF-EQP-20261028-RT-008",
+          "REF-EQP-20261028-RT-009",
+          "REF-EQP-20261028-RT-010",
+          "REF-EQP-20261028-RT-011",
+          "REF-EQP-20261028-RT-012",
+          "REF-EQP-20261028-RT-013"
+        ],
+        "sourceIds": [
+          "RT28-001",
+          "RT28-002",
+          "RT28-003",
+          "RT28-004",
+          "RT28-005",
+          "RT28-006",
+          "RT28-007",
+          "RT28-008",
+          "RT28-009",
+          "RT28-010"
+        ]
+      }
+    ],
+    "corpusSha256": "bb040e29923b2db40e896b342ed9c9aac315170f1bef72a0b7c6eb7d9f38974e",
+    "newActorsByUniverse": {
+      "Devil May Cry": 3,
+      "Final Fantasy VII": 3,
+      "Final Fantasy VIII": 8,
+      "Final Fantasy XIII": 6,
+      "Final Fantasy XV": 6,
+      "Halo": 3,
+      "Resident Evil": 4,
+      "Star Wars": 24
+    },
+    "referencesByUniverse": {
+      "Alien": 4,
+      "Aliens": 9,
+      "Devil May Cry": 17,
+      "Final Fantasy VII": 14,
+      "Final Fantasy VIII": 9,
+      "Final Fantasy XIII": 7,
+      "Final Fantasy XV": 16,
+      "Half-Life": 2,
+      "Halo": 8,
+      "Mass Effect": 2,
+      "Metal Gear": 16,
+      "Resident Evil": 19,
+      "Star Wars": 46
+    }
+  },
+  "sourceIntegrity": {
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "sourceFilesChecked": 213,
+    "mismatches": [],
+    "ok": true
+  },
+  "tests": [
+    {
+      "command": "EQUIPMENT_INVENTORY_JSON=DATA/equipment-workbook-data.json node --experimental-loader ./docs/excel/tools/json-loader.mjs scripts/exportEquipmentWorkbookData.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "logSha256": "9dce6665155a47036d42922706613a687c0bddddeeeefd942420361c369611b5",
+      "log": "(node:5) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"./docs/excel/tools/json-loader.mjs\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n✔ anatomy, natural powers, and creatures in equipment remain non-gear (3.228999ms)\n✔ summon and event identity override a weapon-like displayed name (2.938916ms)\n✔ scene props, clothing, original designs, and unknown materiality stay separate (2.354233ms)\n✔ holsters and magazines are distinct from their weapons; plural blades and suits remain recognizable (0.479727ms)\n✔ render aliases do not erase multiword descriptions copied into weaponType (3.255556ms)\n✔ references accept HTTPS sources only and reject credentials or executable protocols (79.716492ms)\n✔ asset membership uses the full supplied Git tree without probing sparse media (3.140551ms)\n✔ shop parser keeps static projections and rejects unrecognized source shapes (72.492198ms)\n✔ inventory ownership does not become a default equipped assignment (7.192542ms)\n✔ actor keys preserve adversaries without IDs and different incarnations (1.760753ms)\n✔ CSV escapes embedded quotes and formula prefixes while retaining Unicode (0.496291ms)\n✔ export preserves every exact runtime actor and all registry cardinalities (6.449225ms)\n✔ sourceOwner and cross-incarnation exclusions create no fabricated assignment (6.018863ms)\n✔ sourceItemId resolves only explicit same-universe catalog IDs (212.565294ms)\n✔ resolved signatures are derived techniques, not newly equipped physical items (12.482027ms)\n✔ all relationships and gaps point to real rows and never award 1:1 approval (49.825658ms)\n✔ original identities use internal design requirements and icon counts distinguish duplicate paths (380.099849ms)\nℹ tests 17\nℹ suites 0\nℹ pass 17\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 856.847481\n"
+    },
+    {
+      "command": "node docs/excel/tools/equipment_progress.test.mjs",
+      "passed": 18,
+      "failed": 0,
+      "logSha256": "d4fb5584499d877043c4611837a68994ac11890f0ade9c82e282c80127689260",
+      "log": "✔ all four manual statuses and exact input strings survive a row reorder (7.859747ms)\n✔ headers are mapped by exact name even after every column is moved (1.488121ms)\n✔ the calculated result is optional and never used as saved progress (0.512439ms)\n✔ new dossiers start À faire and do not borrow another dossier’s proof (0.69407ms)\n✔ a new finding reopens a completed dossier while retaining its evidence (0.531663ms)\n✔ changed review content reopens the same stable IDs for every A:J field (3.385146ms)\n✔ both reopening reasons are retained without overwriting manual columns (0.464198ms)\n✔ removed dossiers retain all prior progress and are never auto-completed (0.496339ms)\n✔ removing finding IDs alone does not close or reopen unchanged review work (1.180243ms)\n✔ whitespace-only proof is not counted as completed with proof (0.632546ms)\n✔ normalization of review cells does not normalize manual proof or owner (0.556109ms)\n✔ repinning this repository’s source commit preserves progress but path and external URL changes reopen it (1.165449ms)\n✔ literal formula-looking strings remain safe text; actual formula objects are rejected (2.097379ms)\n✔ invalid headers, incomplete rows, missing IDs and invalid statuses fail closed (0.98601ms)\n✔ duplicate dossier and finding IDs are rejected in both old and current data (1.469179ms)\n✔ a finding cannot silently migrate to a different dossier and inherit a wrong review (0.657188ms)\n✔ JSON snapshot callers receive the same strict validation as worksheet imports (1.567953ms)\n✔ no previous snapshot initializes all records and an empty new set retains all retired records (0.445987ms)\nℹ tests 18\nℹ suites 0\nℹ pass 18\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 43.869888\n"
+    }
+  ],
+  "builderValidation": {
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "worksheets": [
+      "Synthèse",
+      "Évolutions",
+      "Personnages",
+      "Armes et objets",
+      "Affectations",
+      "Références 1a1",
+      "Actions"
+    ],
+    "actors": 4936,
+    "catalogRecords": 5241,
+    "associations": 1500,
+    "canonicalRows": 169,
+    "sources": 79,
+    "documentedActors": 79,
+    "actorsWithoutDocumentaryReference": 4857,
+    "actions": 10346,
+    "comparisonRows": 11,
+    "groupedDossiers": 10177,
+    "automaticFindings": 28304,
+    "documentaryFollowups": 169,
+    "totalFindings": 28473,
+    "allFindingIdsPreserved": true,
+    "priorityFindingCountsAreSourceSnapshot": true,
+    "progressCarryforward": {
+      "total": 10346,
+      "previous": 10232,
+      "new": 114,
+      "matched": 10232,
+      "reopened": 0,
+      "retired": 0,
+      "completedWithProof": 0
+    },
+    "summaryCountsChecked": true,
+    "workflowWithAndWithoutProofChecked": true,
+    "testedEngine": "@oai/artifact-tool",
+    "excelDesktopTested": false,
+    "canonicalFidelityApproved": false,
+    "bytes": 3316230
+  },
+  "progressCarryforward": {
+    "schema": "equipment-progress-carryforward-v1",
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "previousWorkbook": {
+      "filename": "baseline-1ad9174.xlsx",
+      "sha256": "afc73cbbab1574c1a7220ca184eca7415f24c936c18b654c258194c690c2d855",
+      "bytes": 3208604
+    },
+    "summary": {
+      "total": 10346,
+      "previous": 10232,
+      "new": 114,
+      "matched": 10232,
+      "reopened": 0,
+      "retired": 0,
+      "completedWithProof": 0
+    },
+    "outputWorkbook": {
+      "filename": "Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+      "sha256": "b3df823f4c89e21ef92c2a1a092ac80dfb7775a0490822d106895df5a7c748b7",
+      "bytes": 3316230
+    },
+    "reopened": [],
+    "retiredRecords": [],
+    "retiredRecordsAreCompleted": false
+  },
+  "independentXmlQa": {
+    "schema": "equipment-missing-workbook-independent-xml-qa-v1",
+    "reviewedAtUtc": "2026-10-28T10:41:27.993086+00:00",
+    "method": "Independent Python standard-library ZIP/XML comparison; no builder import and no workbook writes",
+    "inputs": {
+      "/tmp/equipment-missing-2026-10-28/baseline-1ad9174.xlsx": {
+        "sha256": "afc73cbbab1574c1a7220ca184eca7415f24c936c18b654c258194c690c2d855",
+        "bytes": 3208604
+      },
+      "/workspace/scratch/5f2cb68eafd3/outputs/equipment_2026_10_28/Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx": {
+        "sha256": "b3df823f4c89e21ef92c2a1a092ac80dfb7775a0490822d106895df5a7c748b7",
+        "bytes": 3316230
+      },
+      "/workspace/scratch/5f2cb68eafd3/multiverse-breach/docs/excel/sources/equipment-canonical-references-2026-10-26.json": {
+        "sha256": "bb040e29923b2db40e896b342ed9c9aac315170f1bef72a0b7c6eb7d9f38974e",
+        "bytes": 293536
+      },
+      "/tmp/equipment-resume-2026-10-27/data/equipment-workbook-data.json": {
+        "sha256": "251aaf1815cf2a0471c3fd6dcf0703b6c286b126d7a2e1b77bd94e653a77ee80",
+        "bytes": 53945223
+      },
+      "/tmp/equipment-missing-2026-10-28/final-previews/progress-carryforward.json": {
+        "sha256": "19c71be3847240125b8d05b542743ff7fea987d20f06b671c725989475222a04",
+        "bytes": 740
+      }
+    },
+    "passed": true,
+    "checksCount": 140,
+    "checks": [
+      {
+        "name": "Baseline ZIP CRC",
+        "passed": true
+      },
+      {
+        "name": "Output ZIP CRC",
+        "passed": true
+      },
+      {
+        "name": "No duplicate ZIP archive members",
+        "passed": true
+      },
+      {
+        "name": "Exactly seven physical worksheet declarations",
+        "passed": true
+      },
+      {
+        "name": "Seven original worksheets in original order",
+        "passed": true
+      },
+      {
+        "name": "Baseline worksheet order",
+        "passed": true
+      },
+      {
+        "name": "Six original native table identities",
+        "passed": true
+      },
+      {
+        "name": "ZIP members preserved",
+        "passed": true
+      },
+      {
+        "name": "Baseline contains 55 original references",
+        "passed": true
+      },
+      {
+        "name": "Baseline contains 10232 original dossiers",
+        "passed": true
+      },
+      {
+        "name": "No duplicate workbook IDs",
+        "passed": true
+      },
+      {
+        "name": "Unique corpus reference IDs",
+        "passed": true
+      },
+      {
+        "name": "Unique corpus source IDs",
+        "passed": true
+      },
+      {
+        "name": "All canonical reference IDs exported once",
+        "passed": true
+      },
+      {
+        "name": "All actor identities retained",
+        "passed": true
+      },
+      {
+        "name": "Old reference IDs retained",
+        "passed": true
+      },
+      {
+        "name": "Old dossier IDs retained",
+        "passed": true
+      },
+      {
+        "name": "Only new canonical dossiers added",
+        "passed": true
+      },
+      {
+        "name": "Personnages contiguous data rows",
+        "passed": true
+      },
+      {
+        "name": "References contiguous data rows",
+        "passed": true
+      },
+      {
+        "name": "Actions contiguous data rows",
+        "passed": true
+      },
+      {
+        "name": "EquipmentChanges bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Évolutions original table attachment",
+        "passed": true
+      },
+      {
+        "name": "Two new native Personnages table columns",
+        "passed": true
+      },
+      {
+        "name": "Unique native Personnages table column IDs",
+        "passed": true
+      },
+      {
+        "name": "EquipmentActors bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Personnages original table attachment",
+        "passed": true
+      },
+      {
+        "name": "EquipmentItems bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets original table attachment",
+        "passed": true
+      },
+      {
+        "name": "EquipmentAssociations bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Affectations original table attachment",
+        "passed": true
+      },
+      {
+        "name": "Two new native Références 1a1 table columns",
+        "passed": true
+      },
+      {
+        "name": "Unique native Références 1a1 table column IDs",
+        "passed": true
+      },
+      {
+        "name": "EquipmentCanonical bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 original table attachment",
+        "passed": true
+      },
+      {
+        "name": "EquipmentActions bounds, autofilter, headers and style preserved",
+        "passed": true
+      },
+      {
+        "name": "Actions original table attachment",
+        "passed": true
+      },
+      {
+        "name": "Synthèse sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Synthèse views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Synthèse existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Synthèse no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Synthèse no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Synthèse every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Évolutions sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Évolutions views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Évolutions existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Évolutions no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Évolutions no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Évolutions every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Personnages sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Personnages views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Personnages existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Personnages no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Personnages no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Personnages every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Affectations sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Affectations views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Affectations existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Affectations no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Affectations no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Affectations every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Actions sheet attributes preserved",
+        "passed": true
+      },
+      {
+        "name": "Actions views, panes, validation, conditional formats and native features",
+        "passed": true
+      },
+      {
+        "name": "Actions existing column widths/styles preserved",
+        "passed": true
+      },
+      {
+        "name": "Actions no duplicate cell addresses",
+        "passed": true
+      },
+      {
+        "name": "Actions no formula/error cells",
+        "passed": true
+      },
+      {
+        "name": "Actions every formula has a cache",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets all values, formulas and effective cell styles identical",
+        "passed": true
+      },
+      {
+        "name": "Armes et objets all row dimensions preserved",
+        "passed": true
+      },
+      {
+        "name": "Affectations all values, formulas and effective cell styles identical",
+        "passed": true
+      },
+      {
+        "name": "Affectations all row dimensions preserved",
+        "passed": true
+      },
+      {
+        "name": "Évolutions all values, formulas and effective cell styles identical",
+        "passed": true
+      },
+      {
+        "name": "Évolutions all row dimensions preserved",
+        "passed": true
+      },
+      {
+        "name": "Personnages A:T values and formulas identical except A3",
+        "passed": true
+      },
+      {
+        "name": "Personnages A:T styles preserved with the explicit T6 interior-border adaptation",
+        "passed": true
+      },
+      {
+        "name": "Personnages T6 has the complete original interior-header S6 style",
+        "passed": true
+      },
+      {
+        "name": "Personnages T6 changes only its right border after A:T to A:V extension",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 T6 has the complete original interior-header S6 style",
+        "passed": true
+      },
+      {
+        "name": "Références 1a1 T6 changes only its right border after A:T to A:V extension",
+        "passed": true
+      },
+      {
+        "name": "Personnages new header U6",
+        "passed": true
+      },
+      {
+        "name": "Personnages new header V6",
+        "passed": true
+      },
+      {
+        "name": "Personnages only two new columns",
+        "passed": true
+      },
+      {
+        "name": "Every U formula and cache count matches the exact actor key",
+        "passed": true
+      },
+      {
+        "name": "New U/V columns retain readable numeric and wrapped text formats",
+        "passed": true
+      },
+      {
+        "name": "Only documented Personnages rows may increase in height",
+        "passed": true
+      },
+      {
+        "name": "References only two new columns",
+        "passed": true
+      },
+      {
+        "name": "References new header U6",
+        "passed": true
+      },
+      {
+        "name": "References new header V6",
+        "passed": true
+      },
+      {
+        "name": "All reference A:T fields, editions and URLs match the corpus",
+        "passed": true
+      },
+      {
+        "name": "Corpus actor identity and unapproved fidelity match source data",
+        "passed": true
+      },
+      {
+        "name": "All 55 old references retain A:T content and effective styles",
+        "passed": true
+      },
+      {
+        "name": "Old reference row height may only increase to fit new U/V context",
+        "passed": true
+      },
+      {
+        "name": "Reference header A:T preserved except A3 subtitle and explicit T6 interior border",
+        "passed": true
+      },
+      {
+        "name": "10232 old dossiers preserve A:J, K:M, O:Q, styles and row dimensions",
+        "passed": true
+      },
+      {
+        "name": "New canonical dossiers conform to corpus and start À faire with empty manual fields",
+        "passed": true
+      },
+      {
+        "name": "All action result formulas and caches agree with status and proof",
+        "passed": true
+      },
+      {
+        "name": "Every dossier P count equals the number of Q finding IDs",
+        "passed": true
+      },
+      {
+        "name": "Source finding IDs are unique",
+        "passed": true
+      },
+      {
+        "name": "Every expected finding appears exactly once",
+        "passed": true
+      },
+      {
+        "name": "No duplicate finding IDs",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B12 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B13 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B14 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B15 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B17 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B39 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B40 independently reconciled value and formula",
+        "passed": true
+      },
+      {
+        "name": "Synthèse B39 + B40 covers all actors",
+        "passed": true
+      },
+      {
+        "name": "No new visual fidelity approvals claimed",
+        "passed": true
+      },
+      {
+        "name": "Existing summary cells preserved outside stated updates",
+        "passed": true
+      },
+      {
+        "name": "Summary new research block label",
+        "passed": true
+      },
+      {
+        "name": "Summary no data beyond column D",
+        "passed": true
+      },
+      {
+        "name": "Workbook relationships, themes and remaining native package parts preserved",
+        "passed": true
+      },
+      {
+        "name": "Receipt schema",
+        "passed": true
+      },
+      {
+        "name": "Receipt source commit",
+        "passed": true
+      },
+      {
+        "name": "Receipt baseline hash",
+        "passed": true
+      },
+      {
+        "name": "Receipt baseline bytes",
+        "passed": true
+      },
+      {
+        "name": "Receipt final output hash",
+        "passed": true
+      },
+      {
+        "name": "Receipt final output bytes",
+        "passed": true
+      },
+      {
+        "name": "Receipt exact progress reconciliation",
+        "passed": true
+      },
+      {
+        "name": "No old dossier reopened",
+        "passed": true
+      },
+      {
+        "name": "No old dossier retired",
+        "passed": true
+      },
+      {
+        "name": "Retirement never treated as completion",
+        "passed": true
+      },
+      {
+        "name": "Read-only input hash retained: baseline-1ad9174.xlsx",
+        "passed": true
+      },
+      {
+        "name": "Read-only input hash retained: Multiverse_Breach_Armes_Equipements_Par_Personnage.xlsx",
+        "passed": true
+      },
+      {
+        "name": "Read-only input hash retained: equipment-canonical-references-2026-10-26.json",
+        "passed": true
+      },
+      {
+        "name": "Read-only input hash retained: equipment-workbook-data.json",
+        "passed": true
+      },
+      {
+        "name": "Read-only input hash retained: progress-carryforward.json",
+        "passed": true
+      }
+    ],
+    "failures": [],
+    "counts": {
+      "sheets": 7,
+      "tables": 6,
+      "actors": 4936,
+      "originalReferences": 55,
+      "newReferences": 114,
+      "totalReferences": 169,
+      "sources": 79,
+      "documentedActors": 79,
+      "undocumentedActors": 4857,
+      "oldDossiers": 10232,
+      "newDossiers": 114,
+      "totalDossiers": 10346,
+      "uniqueFindingIds": 28473,
+      "formulaCachesChecked": 15303
+    },
+    "intentionalStyleAdaptations": [
+      {
+        "cell": "Personnages!T6",
+        "change": "Former table edge becomes an interior header after addition of U/V; right border is thin white.",
+        "verification": "Full style must equal original S6; all style components other than the right border must equal original T6."
+      },
+      {
+        "cell": "Références 1a1!T6",
+        "change": "Former table edge becomes an interior header after addition of U/V; right border is thin white.",
+        "verification": "Full style must equal original S6; all style components other than the right border must equal original T6."
+      }
+    ],
+    "limitations": [
+      "Formula text and cached outputs are checked independently; this script does not execute an Excel formula engine.",
+      "Visual rendering and Excel Desktop interaction are outside this read-only XML review.",
+      "Spreadsheet string equality can be case-insensitive; actual U caches must still equal the exact-key corpus counts.",
+      "Document property metadata may change; native worksheet, table and package features are checked.",
+      "Only the explicit right-border change at Personnages!T6 and Références 1a1!T6 is normalized for table extension; every other existing style stays strictly compared."
+    ]
+  },
+  "visualReview": {
+    "passed": true,
+    "reviewedAtUtc": "2026-10-28T10:41:56.104246+00:00",
+    "method": "Inspection visuelle des rendus Artifact Tool, dont cinq régions après réouverture du XLSX exporté.",
+    "regions": [
+      {
+        "filename": "Synthese.png",
+        "sha256": "6b8a5fb28c1afa441abb33435243db1b9ac05ccfa9d70b28794710f873ac3fdf"
+      },
+      {
+        "filename": "Personnages.png",
+        "sha256": "2820291aa8b4bd0f60b8b622b55e27a64479b1322204838f1df5247d1032c6d3"
+      },
+      {
+        "filename": "Armes_et_objets.png",
+        "sha256": "bd2edd962b2eec3bc54d71bd62bfe1384aafe778a89cb7895598463e4d8458ed"
+      },
+      {
+        "filename": "Affectations.png",
+        "sha256": "952425b4b36239116c69d8e549bec701027c876205b08610a475ac0f84e5f75b"
+      },
+      {
+        "filename": "References_1a1.png",
+        "sha256": "b62e7ffae45155913f3644b1eeaed50fe657628bb4c9aded05291538517fe42a"
+      },
+      {
+        "filename": "Actions.png",
+        "sha256": "ad73b18a56e96f52c6619aa7bdde0a658c78078d4b792621d6a1dd55cd137ec9"
+      },
+      {
+        "filename": "Evolutions.png",
+        "sha256": "196d26e538043ecacedc5ce63b88a79f6e011e8bcbfe5f2116da6349c1e84e61"
+      },
+      {
+        "filename": "Synthese_couverture.png",
+        "sha256": "2d31c782a5f3176890bf7cd15a5f09faff169f577181e6a2c3fa8d1229c7297b"
+      },
+      {
+        "filename": "Personnages_references.png",
+        "sha256": "94d92ba98217e67f33c788711d20046b4ec2b7ae8e8a9ddcdf7ae4a135ba2754"
+      },
+      {
+        "filename": "References_ajouts_conditions.png",
+        "sha256": "29559fb9254b2e00d99212076658e1105c8a5d345c6f90fcc5059fc334ea1a2c"
+      },
+      {
+        "filename": "References_ajouts_reperes.png",
+        "sha256": "9f21cb41197a967a8307f396dd14b445bebee48f6219e95a4d6c28478fe52c7b"
+      },
+      {
+        "filename": "Personnages_entetes_references.png",
+        "sha256": "3445e96fe38174a5673caf9efccd5dd6272e8ef5985a7e52f86c5c2275debd5e"
+      },
+      {
+        "filename": "References_entetes_reperes.png",
+        "sha256": "9e393d9c53dda7ec53eed6545dc75b396ac22d13e9f7d65e54d8d381c051eb8d"
+      },
+      {
+        "filename": "References_contexte_images.png",
+        "sha256": "9e6c8921a162c899da6062094aea0d393cd976edd001f7e57d99d02fdc9ebd0a"
+      },
+      {
+        "filename": "Personnages_Nero_editions.png",
+        "sha256": "89f79f22987abb4091be26a861db1e229cd4ed8167169cef24e8863507211995"
+      },
+      {
+        "filename": "References_nouvelles_Ahsoka.png",
+        "sha256": "b5b16fb3a41b445479e6810b55d26f9bae86630d1b33731d9682d7673e018462"
+      }
+    ],
+    "observations": [
+      "Titres, sous-titres, bandes, alignements et en-têtes lisibles.",
+      "Couverture de 79 acteurs et 4857 sans référence ciblée visible en Synthèse.",
+      "Nouvelles colonnes U/V lisibles ; liste Nero répartie par édition, sources d’images avec leur page parente.",
+      "Versions Ahsoka distinctes ; contraintes Linda et Arbiter conservées."
+    ],
+    "limitations": [
+      "Aperçus représentatifs ; le contrôle XML indépendant couvre toutes les valeurs et les styles effectifs.",
+      "Cette inspection vérifie la présentation du classeur, pas la fidélité visuelle du jeu."
+    ]
+  },
+  "targetedFixture": {
+    "sourceCommit": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "worksheets": [
+      "Synthèse",
+      "Évolutions",
+      "Personnages",
+      "Armes et objets",
+      "Affectations",
+      "Références 1a1",
+      "Actions"
+    ],
+    "actors": 5,
+    "catalogRecords": 3,
+    "associations": 2,
+    "canonicalRows": 3,
+    "sources": 2,
+    "documentedActors": 3,
+    "actorsWithoutDocumentaryReference": 2,
+    "actions": 11,
+    "comparisonRows": 11,
+    "groupedDossiers": 8,
+    "automaticFindings": 20,
+    "documentaryFollowups": 3,
+    "totalFindings": 23,
+    "allFindingIdsPreserved": true,
+    "priorityFindingCountsAreSourceSnapshot": true,
+    "progressCarryforward": {
+      "total": 11,
+      "previous": 7,
+      "new": 5,
+      "matched": 6,
+      "reopened": 2,
+      "retired": 1,
+      "completedWithProof": 1
+    },
+    "summaryCountsChecked": true,
+    "workflowWithAndWithoutProofChecked": true,
+    "testedEngine": "@oai/artifact-tool",
+    "excelDesktopTested": false,
+    "canonicalFidelityApproved": false,
+    "bytes": 29773
+  },
+  "fixtureScope": "Comptage littéral avec clés contenant *?~ et conservation du suivi. Même logique de comptage que la livraison ; les colonnes de repérage des sources et aperçus supplémentaires ont été ajoutés ensuite, puis contrôlés sur le classeur complet.",
+  "independentReviews": [
+    {
+      "scope": "Star Wars et FFVII/Halo",
+      "referencesChecked": 53,
+      "result": "Conformes aux sources avec restrictions de version, scène et représentation."
+    },
+    {
+      "scope": "Capcom",
+      "result": "SLS 60 DMS031 précisé enhanced bullet ; cadre renforcé DMS038 non transposé."
+    },
+    {
+      "scope": "Final Fantasy VIII/XIII/XV",
+      "referencesChecked": 32,
+      "imagesReviewed": 8,
+      "result": "Identités exactes et preuves conformes ; repères de Laguna et Fang précisés dans lignes et sources."
+    },
+    {
+      "scope": "Diff du générateur",
+      "result": "Aucun bug matériel identifié ; absence de collision des 4936 clés ne différant que par la casse."
+    }
+  ],
+  "githubBeforeBatch": {
+    "verifiedAtUtc": "2026-10-28T10:34:09.791Z",
+    "pr": 10,
+    "branch": "codex/armes-equipements-audit-2026-10-26",
+    "prHead": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+    "master": "1460d0ebbb67f1809ac2f8b4bf76d5f8126f4aa6",
+    "runs": [
+      {
+        "id": 40631736588,
+        "name": "Full production build",
+        "status": "completed",
+        "conclusion": "failure",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736588"
+      },
+      {
+        "id": 40631736644,
+        "name": "Signature combat",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736644"
+      },
+      {
+        "id": 40631736603,
+        "name": "Reliability and source build",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736603"
+      },
+      {
+        "id": 40631736538,
+        "name": "Extinction identities and City catalog",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736538"
+      },
+      {
+        "id": 40631736510,
+        "name": "Race immersive UI",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736510"
+      },
+      {
+        "id": 40631736425,
+        "name": "City and Extinction immersive UI",
+        "status": "completed",
+        "conclusion": "success",
+        "head_sha": "1ad917401cba0476ebf602dcc273cfcc3ef4820f",
+        "html_url": "https://github.com/darknigthmare/multiverse-breach/actions/runs/40631736425"
+      }
+    ]
+  },
+  "limitations": [
+    "Une référence documentée ne signifie ni inventaire exhaustif, ni attribution au jeu, ni validation visuelle 1:1.",
+    "Les sources du corpus initial conservent leur date de vérification ; aucune nouvelle relecture de toutes les anciennes sources n’est revendiquée.",
+    "Le contrôle XML vérifie les formules et leurs résultats enregistrés ; les calculs ont été exécutés par Artifact Tool.",
+    "Excel Desktop, le rendu du jeu et les animations n’ont pas été testés par cette livraison.",
+    "Les CI du commit antérieur ne valident pas ce nouveau commit. Les résultats de publication sont suivis dans la PR."
+  ]
+}

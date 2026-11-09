@@ -1,0 +1,75 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 12\n",
+  "pageErrors": [],
+  "browserClosed": false,
+  "body": "",
+  "sourceReadiness": {
+    "atb": 100,
+    "state": "idle",
+    "charge": 100,
+    "pending": false,
+    "used": true,
+    "precharge": {
+      "realMediGunCommand": true,
+      "initialCharge": 0.0033333333333333335,
+      "simulationTicks": 2392,
+      "simulationSeconds": 39.86666666666667,
+      "charge": 0.999999999999953,
+      "beamConnected": true,
+      "patientId": "enemy:custom:0:team_fortress_2_scout",
+      "medicId": "enemy:custom:1:team_fortress_2_medic",
+      "scenarioInjuryPulses": 2392
+    },
+    "allies": [
+      {
+        "id": "team_fortress_2_scout",
+        "x": 770,
+        "y": 304,
+        "state": "idle",
+        "hp": 88793.00000000223
+      },
+      {
+        "id": "team_fortress_2_medic",
+        "x": 835,
+        "y": 304,
+        "state": "idle",
+        "hp": 60000,
+        "mediGun": {
+          "kind": "tf2-stock-medi-gun",
+          "patientRuntimeId": "enemy:custom:0:team_fortress_2_scout",
+          "medicRuntimeId": "enemy:custom:1:team_fortress_2_medic",
+          "charge": 1,
+          "range": 220,
+          "connected": false,
+          "elapsed": 40.649999999998975,
+          "uberRemaining": 0,
+          "chargeBuilt": 1,
+          "activationCount": 1,
+          "endedBy": "dispose"
+        }
+      }
+    ],
+    "summon": {
+      "available": true,
+      "ready": false,
+      "actorId": "enemy:custom:0:team_fortress_2_scout",
+      "side": "enemy",
+      "id": "team_fortress_2_scout:reinforcement:team_fortress_2_medic:special",
+      "name": "Medic — ÜberCharge du Medi Gun stock",
+      "entityName": "Medic",
+      "actionName": "ÜberCharge du Medi Gun stock",
+      "universe": "Team Fortress 2",
+      "kind": "reinforcement",
+      "entityAssetId": null,
+      "used": true,
+      "atb": 100,
+      "charge": 100,
+      "cost": {
+        "atb": 100,
+        "charge": 100
+      },
+      "assetMissing": false,
+      "reason": "used"
+    }
+  }
+}

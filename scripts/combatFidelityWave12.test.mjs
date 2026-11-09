@@ -1,3 +1,4 @@
+import { assertCatalogActionEdition } from './combatCanonicalEditionFixtures.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -59,7 +60,7 @@ test('W12 source identities retain the frozen forty characters, nineteen additio
     assert.equal(h.weaponType, d.weaponType); assert.ok(d.sourceWork && d.sourceReference.startsWith('https://'));
     assert.notEqual(d.source1to1Verified, true);
     for (const slot of ['simple', 'secondary', 'defense', 'special']) {
-      assert.deepEqual(h[slot], row.hero[slot], h.id + ': source catalog action changed');
+      assertCatalogActionEdition(h, slot, row.hero[slot]);
       const action = resolveCombatAbility(h, slot);
       assert.equal(action.sourceHeroId, h.id); assert.equal(action.universe, h.universe);
       assert.doesNotMatch(action.name, /Signature Strike|Breach Technique|Signature Guard|Origin Burst/i);

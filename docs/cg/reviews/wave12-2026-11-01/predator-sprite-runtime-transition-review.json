@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "recordedAt": "2026-11-01T02:11:32.894860+00:00",
+  "characterId": "predator",
+  "reviewer": "/root/alien_associated_quality",
+  "technicalExecutor": "/root/alien_storage_audit",
+  "status": "passed-independent-Hunter-runtime-transition-review",
+  "scope": "Targeted Hunter post-import.137 producer-frozen files and16pose/cell replay verified; fresh58 prior maps/variants and1911 other heroes across10 contexts preserved.2002 prior atlas files and672 frozen CG pins were reverified by linked post-runtime replay. No global4320-CG conservation rerun.",
+  "rootTransition": {
+    "path": ".tmp/cg-alien-2026-11-01/runtime-integrations/predator/transition.json",
+    "sha256": "e81522f2179ea51f9a0f853910e53b19c27b2345dd59f26bde4c75ce7223c4ad",
+    "bytes": 2104
+  },
+  "consumedPreRuntimeGate": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/hunter-atlas/hunter-before-runtime-gate.json",
+    "sha256": "46a194702365777a3d754fc1a68d149778aa1a95fad29716a1ed597c95bdd798",
+    "bytes": 182664
+  },
+  "freshPreRuntimeBaseline": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/hunter-atlas/selector-baseline-fresh-after-greyback.json",
+    "sha256": "0d46a4616aac4c1ca0520abc02c7cb450671e56641982fd85b9a6d0ae3312e0d",
+    "bytes": 2765458
+  },
+  "independentPreRuntimeReplay": {
+    "path": ".tmp/cg-alien-2026-11-01/quality/hunter-atlas/independent-pre-runtime-replay.json",
+    "sha256": "eee5310442c65a470de3e5fd62da6042ebda24462453d636ed048fb15304ff7e",
+    "bytes": 448195
+  },
+  "postRuntimeCompanion": {
+    "path": "docs/cg/predator-sprite-wave12-2026-11-01.json",
+    "sha256": "ec3aef3d64afc0f995bf8df50cabef2004e1eda6090c35a1339125401480581e",
+    "bytes": 24129
+  },
+  "producerAtlasFreeze": {
+    "path": ".tmp/cg-alien-2026-11-01/production/predator/atlas/producer-atlas-freeze-wave12-2026-11-01.json",
+    "sha256": "2a02545bc9d361dbb8d56fcd87c9882a7a86f0725efac0a362f54b85c1b68a36",
+    "bytes": 63204
+  },
+  "immutableCompanionFieldsSha256": "4c4405da093409376acac299d79493d25b9efda30e38295b3e74b6f1d04e769c",
+  "actualChangedCompanionFields": [
+    "status",
+    "previousAtlas.accessibleAsVariant",
+    "previousAtlas.pendingRootRuntimeIntegration",
+    "runtimeSelectionChanged",
+    "runtimeSelectionPending",
+    "oldAtlasAccessibleAsVariant"
+  ],
+  "onlySixAuthorizedCompanionFieldsChanged": true,
+  "producerFrozenFilesReverified": 137,
+  "independentVisualReview": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/predator-sprite-independent-review.json",
+    "sha256": "c5b9a5c33c19e08c0d6fd787e8183939b75fd632d053f3ac8c9fae65ca881b45",
+    "bytes": 22219
+  },
+  "independentPixelOnlyAndPublicPngProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/predator-sprite-independent-pixel-proof.json",
+    "sha256": "6717da8423f24f9868380edb762a7fbe9bfee6140257b92ddd17a73dc71f82ec",
+    "bytes": 23723
+  },
+  "independentPostRuntimeSelectorAndPixelProof": {
+    "path": "docs/cg/reviews/wave12-2026-11-01/predator-sprite-runtime-selector-proof.json",
+    "sha256": "194cb2264f522c536eba0900ac0862f886a9b839a2f9ba4d319b54b845fe1505",
+    "bytes": 448842
+  },
+  "currentAtlas": {
+    "path": "public/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
+    "sha256": "14c9b09cd7854c804d8daa0f60b0968c93ac7f9ede921e38b3185e9efec0b53b",
+    "bytes": 720188
+  },
+  "previousAtlasPreserved": {
+    "path": "public/sprites/generated/heroes/predator/predator.png",
+    "sha256": "63f01ec64ddd3fd3fd1b6dee73a7b87511e9605b74da6cc9f5f279a5f265b5ba",
+    "bytes": 1020379
+  },
+  "newAtlasIsCurrentAndOldAtlasAccessibleAsOriginalVariant": true,
+  "existingCorrectionAndVariantMappingsPreserved": 58,
+  "currentCorrectionAndVariantMappings": 59,
+  "otherRosterHeroesPreserved": 1911,
+  "runtimeContextsVerifiedPerHero": 10,
+  "runtimeContextsVerifiedTotal": 19120,
+  "previousAtlasFilesPreserved": 2002,
+  "frozenCgPinsPreserved": 672,
+  "protectedBishopBishopAliensAndGreybackSelectorsPreserved": true,
+  "allowedConcurrentSelectorCorrections": [],
+  "frozenQaAndPixelProofUnchanged": true,
+  "sourceReferencesAndCgGelsPreserved": true,
+  "licensedSourceLimitationsRemainExplicit": true,
+  "reviewerPixelsModified": false,
+  "reviewerRuntimeWrites": false,
+  "canonicalFidelityApproved": false,
+  "absoluteVisualFidelityCertified": false
+}

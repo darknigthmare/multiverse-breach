@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T05:03:15.847Z",
+  "sourcePlansFrozenBeforeProduction": true,
+  "source1to1Verified": false,
+  "geometryRule": "Four new authored Tactics sectors. Location, period and architectural vocabulary are pinned here; tactical grid, paths, palettes and ARCA objectives are gameplay adaptations, not official map reproductions.",
+  "sectors": [
+    {
+      "id": "bge_lighthouse_tactics",
+      "universe": "Beyond Good & Evil",
+      "work": "Beyond Good & Evil (2003)",
+      "period": "Original game, Lighthouse Island on Hillys; no Anniversary Edition treasure-hunt additions",
+      "location": "Lighthouse Island — grassy terrace, rocky stairs and lower wooden landing",
+      "reference": "https://www.ubisoft.com/en-us/games/beyond-good-and-evil",
+      "corroboration": "https://www.mobygames.com/game/11290/beyond-good-evil/screenshots/ps2/66926/",
+      "sourceFacts": "The 2003 island lighthouse is Jade and Pey'j's home. Water, island greenery and the lighthouse define the setting; the two-storey tactical crossing is authored for this engine.",
+      "geometry": "A grass approach reaches two rock terraces by stairs. A wooden upper crossing passes above a lower landing, with two separately addressable recovery markers at the same XY. Deep water remains impassable.",
+      "objective": "artifact",
+      "newMaterials": [
+        "hillys-grass",
+        "hillys-stone",
+        "hillys-dock"
+      ],
+      "canonicalLayoutVerified": false,
+      "networkVerified": false
+    },
+    {
+      "id": "rayman_teensies_forest_tactics",
+      "universe": "Rayman",
+      "work": "Rayman Legends (2013)",
+      "period": "Original Teensies in Trouble forest world; no Rayman 2 Fairy Glade or later game locale substituted",
+      "location": "Teensies in Trouble — enchanted forest roots and broken upper route",
+      "reference": "https://dlassets-ssl.xboxlive.com/public/content/b1613d47-2330-459a-a99f-4cc84a481db9/GameManual/e96fd3f2-bfa7-4c10-9437-7fb79f597d52/en-NZ/index.html",
+      "corroboration": "https://www.raymanpc.com/wiki/en/Teensies_In_Trouble",
+      "sourceFacts": "The original Rayman Legends manual locates Teensies in Trouble in a magical forest. The tree-root geometry and tactical control posts are new gameplay adaptations.",
+      "geometry": "A sinuous root crossing joins high forest ledges over a low, slower ravine. Root slopes form the only legal ascent; the upper interruption cannot be crossed as an invisible floor.",
+      "objective": "control",
+      "newMaterials": [
+        "legends-moss",
+        "legends-root"
+      ],
+      "canonicalLayoutVerified": false,
+      "networkVerified": false
+    },
+    {
+      "id": "atomic_vdnh_gallery_tactics",
+      "universe": "Atomic Heart",
+      "work": "Atomic Heart (2023)",
+      "period": "Base-game VDNH Exhibition complex at Facility 3826, alternate 1955; no real contemporary Moscow museum plan or DLC geometry",
+      "location": "VDNH Exhibition — stone gallery, service trench and low maintenance crossing",
+      "reference": "https://store.steampowered.com/app/668580/Atomic_Heart/",
+      "corroboration": "https://store.steampowered.com/oldnews/?appids=668580&feed=steam_community_announcements",
+      "sourceFacts": "The base game includes an exhibition complex with upper galleries, stairs and a basement. The technical trench, two tactical relays and their dimensions are authored here, not an official level plan.",
+      "geometry": "Broad stone stairs lead onto the gallery. A service trench runs beneath it, while a second lower slab admits a human below but excludes a taller body. Gallery pillars block sight at their true support height.",
+      "objective": "disable",
+      "newMaterials": [
+        "vdnh-marble",
+        "vdnh-inlay",
+        "vdnh-grate"
+      ],
+      "canonicalLayoutVerified": false,
+      "networkVerified": false
+    },
+    {
+      "id": "zootopia_rainforest_tactics",
+      "universe": "Zootopia",
+      "work": "Zootopia (2016)",
+      "period": "Original film Rainforest District, before any sequel locations or theme-park reinterpretations",
+      "location": "Rainforest District — canopy walkways, wet lower path and riverbank",
+      "reference": "https://disneyanimation.com/films/zootopia/",
+      "corroboration": "https://media.disneyanimation.com/uploads/production/publication_asset/139/asset/ZootopiaProductionPanel.pdf",
+      "sourceFacts": "The original film features a dense rainforest district with very tall vegetation and elevated walkways. The new tactical route and extraction markers are adaptations; no sequel Marsh Market is used.",
+      "geometry": "An upper boardwalk curves around trees above a muddy lower trail and a pool. Two real slopes reach the canopy exit; the lower exit stays accessible to large footprints without stepping into water.",
+      "objective": "extract",
+      "newMaterials": [
+        "rainforest-fern",
+        "rainforest-boardwalk"
+      ],
+      "canonicalLayoutVerified": false,
+      "networkVerified": false
+    }
+  ]
+}

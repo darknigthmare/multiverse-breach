@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T06:43:31.097427+00:00",
+  "appliesTo": "The two Tactics GameCanvas flows only; FighterMode retains two bodies.",
+  "additionalCanonicalActor": "tail_concerto_cyan",
+  "role": "A same-camp, manually controlled spectator turn between Waffle and the target kitten.",
+  "reason": "The preserved two-body attempt reached the real target-turn-consumed release after only0.1167seconds of active captured simulation following the observer hold. A legitimate additional turn allows the capture row to animate before the target consumes its one captured turn; no timer or capture state is changed.",
+  "commandRule": "The actual end-turn UI passes any initial kitten turn, starts the Waffle turn, then later passes Cyan’s manual spectator turn. Native capture columns are observed during the live manual turn. No turn queue, AP, duration, target state or command is injected after the initial fixture.",
+  "source1to1Verified": false,
+  "finalFreezeClaimed": false
+}

@@ -1,0 +1,790 @@
+TAP version 13
+# Subtest: RPG explicit single target previews and hits only the selected identity for player
+ok 1 - RPG explicit single target previews and hits only the selected identity for player
+  ---
+  duration_ms: 19611.864583
+  type: 'test'
+  ...
+# Subtest: RPG explicit single target previews and hits only the selected identity for enemy
+ok 2 - RPG explicit single target previews and hits only the selected identity for enemy
+  ---
+  duration_ms: 1.644298
+  type: 'test'
+  ...
+# Subtest: RPG invalid cooldown, charge, dead target and cancellation spend nothing
+ok 3 - RPG invalid cooldown, charge, dead target and cancellation spend nothing
+  ---
+  duration_ms: 0.847081
+  type: 'test'
+  ...
+# Subtest: RPG Patch de Trame heals a wounded ally and cannot target a hostile unit
+ok 4 - RPG Patch de Trame heals a wounded ally and cannot target a hostile unit
+  ---
+  duration_ms: 3.407583
+  type: 'test'
+  ...
+# Subtest: RPG Ligne de Vie Nexus heals the eligible squad, not enemies or dead allies
+ok 5 - RPG Ligne de Vie Nexus heals the eligible squad, not enemies or dead allies
+  ---
+  duration_ms: 8.275348
+  type: 'test'
+  ...
+# Subtest: RPG medical summons, buffs and revive keep their support semantics
+ok 6 - RPG medical summons, buffs and revive keep their support semantics
+  ---
+  duration_ms: 2.564869
+  type: 'test'
+  ...
+# Subtest: RPG single resolves identical preview and impact sets
+ok 7 - RPG single resolves identical preview and impact sets
+  ---
+  duration_ms: 1.027492
+  type: 'test'
+  ...
+# Subtest: RPG multi resolves identical preview and impact sets
+ok 8 - RPG multi resolves identical preview and impact sets
+  ---
+  duration_ms: 0.891537
+  type: 'test'
+  ...
+# Subtest: RPG group resolves identical preview and impact sets
+ok 9 - RPG group resolves identical preview and impact sets
+  ---
+  duration_ms: 1.569565
+  type: 'test'
+  ...
+# Subtest: RPG area resolves identical preview and impact sets
+ok 10 - RPG area resolves identical preview and impact sets
+  ---
+  duration_ms: 1.090476
+  type: 'test'
+  ...
+# Subtest: RPG line resolves identical preview and impact sets
+ok 11 - RPG line resolves identical preview and impact sets
+  ---
+  duration_ms: 0.797467
+  type: 'test'
+  ...
+# Subtest: RPG cone resolves identical preview and impact sets
+ok 12 - RPG cone resolves identical preview and impact sets
+  ---
+  duration_ms: 0.648213
+  type: 'test'
+  ...
+# Subtest: RPG finite multi-target selection enforces its authored maximum
+ok 13 - RPG finite multi-target selection enforces its authored maximum
+  ---
+  duration_ms: 0.281863
+  type: 'test'
+  ...
+# Subtest: RPG never retargets a queued action after target death and stops dead casters
+ok 14 - RPG never retargets a queued action after target death and stops dead casters
+  ---
+  duration_ms: 1.105429
+  type: 'test'
+  ...
+# Subtest: RPG wait/active mode freezes or advances all simulation action clocks explicitly
+ok 15 - RPG wait/active mode freezes or advances all simulation action clocks explicitly
+  ---
+  duration_ms: 0.953601
+  type: 'test'
+  ...
+# Subtest: RPG pause holds impacts at the exact simulation tick and dispose clears them
+ok 16 - RPG pause holds impacts at the exact simulation tick and dispose clears them
+  ---
+  duration_ms: 1.053461
+  type: 'test'
+  ...
+# Subtest: RPG ranged FX aims toward the selected target from either camp and never lunges
+ok 17 - RPG ranged FX aims toward the selected target from either camp and never lunges
+  ---
+  duration_ms: 0.42629
+  type: 'test'
+  ...
+# Subtest: RPG clamps sprite and HP/ATB envelopes, including huge authored bosses
+ok 18 - RPG clamps sprite and HP/ATB envelopes, including huge authored bosses
+  ---
+  duration_ms: 0.294271
+  type: 'test'
+  ...
+# Subtest: RPG DEF and guard reduce damage exactly once and identically for both camps
+ok 19 - RPG DEF and guard reduce damage exactly once and identically for both camps
+  ---
+  duration_ms: 0.345569
+  type: 'test'
+  ...
+# Subtest: RPG auto support eligibility falls back to an attack without spending an unusable heal
+ok 20 - RPG auto support eligibility falls back to an attack without spending an unusable heal
+  ---
+  duration_ms: 0.756435
+  type: 'test'
+  ...
+# Subtest: RPG: changed caster sourceHeroId cannot inherit the same battle ID and numbers
+ok 21 - RPG: changed caster sourceHeroId cannot inherit the same battle ID and numbers
+  ---
+  duration_ms: 21918.99638
+  type: 'test'
+  ...
+# Subtest: RPG: changed target sourceHeroId cannot inherit the same battle ID and numbers
+ok 22 - RPG: changed target sourceHeroId cannot inherit the same battle ID and numbers
+  ---
+  duration_ms: 1.55775
+  type: 'test'
+  ...
+# Subtest: RPG: an unchanged source contract resolves once while HP, buffs and display metadata stay live
+ok 23 - RPG: an unchanged source contract resolves once while HP, buffs and display metadata stay live
+  ---
+  duration_ms: 1.916388
+  type: 'test'
+  ...
+# Subtest: RPG: changing selected nonlethal metadata invalidates a pending shot
+ok 24 - RPG: changing selected nonlethal metadata invalidates a pending shot
+  ---
+  duration_ms: 1.586564
+  type: 'test'
+  ...
+# Subtest: Tactics: changed caster sourceHeroId cannot inherit the same battle ID and numbers
+ok 25 - Tactics: changed caster sourceHeroId cannot inherit the same battle ID and numbers
+  ---
+  duration_ms: 25.585689
+  type: 'test'
+  ...
+# Subtest: Tactics: changed target sourceHeroId cannot inherit the same battle ID and numbers
+ok 26 - Tactics: changed target sourceHeroId cannot inherit the same battle ID and numbers
+  ---
+  duration_ms: 18.797899
+  type: 'test'
+  ...
+# Subtest: Tactics: an unchanged source contract resolves once while HP, buffs and display metadata stay live
+ok 27 - Tactics: an unchanged source contract resolves once while HP, buffs and display metadata stay live
+  ---
+  duration_ms: 14.396184
+  type: 'test'
+  ...
+# Subtest: Tactics: changing selected nonlethal metadata invalidates a pending shot
+ok 28 - Tactics: changing selected nonlethal metadata invalidates a pending shot
+  ---
+  duration_ms: 21.875491
+  type: 'test'
+  ...
+# Subtest: RPG: selected source Jade action admission name cannot mutate in place during a commitment
+ok 29 - RPG: selected source Jade action admission name cannot mutate in place during a commitment
+  ---
+  duration_ms: 1.050284
+  type: 'test'
+  ...
+# Subtest: RPG: selected source Jade selected slot cannot mutate in place during a commitment
+ok 30 - RPG: selected source Jade selected slot cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.511091
+  type: 'test'
+  ...
+# Subtest: RPG: selected source source effect cannot mutate in place during a commitment
+ok 31 - RPG: selected source source effect cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.441715
+  type: 'test'
+  ...
+# Subtest: RPG: selected source control turn bound cannot mutate in place during a commitment
+ok 32 - RPG: selected source control turn bound cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.394192
+  type: 'test'
+  ...
+# Subtest: RPG: selected source control kind cannot mutate in place during a commitment
+ok 33 - RPG: selected source control kind cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.263662
+  type: 'test'
+  ...
+# Subtest: RPG: selected source control duration cannot mutate in place during a commitment
+ok 34 - RPG: selected source control duration cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.17723
+  type: 'test'
+  ...
+# Subtest: RPG: selected source explicit eligibility cannot mutate in place during a commitment
+ok 35 - RPG: selected source explicit eligibility cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.173826
+  type: 'test'
+  ...
+# Subtest: RPG: selected source source use limit cannot mutate in place during a commitment
+ok 36 - RPG: selected source source use limit cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.40546
+  type: 'test'
+  ...
+# Subtest: RPG: selected source sequence kind cannot mutate in place during a commitment
+ok 37 - RPG: selected source sequence kind cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.414734
+  type: 'test'
+  ...
+# Subtest: RPG: selected source sequence count cannot mutate in place during a commitment
+ok 38 - RPG: selected source sequence count cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.355884
+  type: 'test'
+  ...
+# Subtest: RPG: selected source sequence release start cannot mutate in place during a commitment
+ok 39 - RPG: selected source sequence release start cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.213667
+  type: 'test'
+  ...
+# Subtest: RPG: selected source sequence release window cannot mutate in place during a commitment
+ok 40 - RPG: selected source sequence release window cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.629552
+  type: 'test'
+  ...
+# Subtest: RPG: selected source sequence recovery cannot mutate in place during a commitment
+ok 41 - RPG: selected source sequence recovery cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.280739
+  type: 'test'
+  ...
+# Subtest: RPG: selected source selected animation timing cannot mutate in place during a commitment
+ok 42 - RPG: selected source selected animation timing cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.262641
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source Jade action admission name cannot mutate in place during a commitment
+ok 43 - Tactics: selected source Jade action admission name cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.980958
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source Jade selected slot cannot mutate in place during a commitment
+ok 44 - Tactics: selected source Jade selected slot cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.524391
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source source effect cannot mutate in place during a commitment
+ok 45 - Tactics: selected source source effect cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.256943
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source control turn bound cannot mutate in place during a commitment
+ok 46 - Tactics: selected source control turn bound cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.208629
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source control kind cannot mutate in place during a commitment
+ok 47 - Tactics: selected source control kind cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.232626
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source control duration cannot mutate in place during a commitment
+ok 48 - Tactics: selected source control duration cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.212405
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source explicit eligibility cannot mutate in place during a commitment
+ok 49 - Tactics: selected source explicit eligibility cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.169348
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source source use limit cannot mutate in place during a commitment
+ok 50 - Tactics: selected source source use limit cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.233537
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source sequence kind cannot mutate in place during a commitment
+ok 51 - Tactics: selected source sequence kind cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.416637
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source sequence count cannot mutate in place during a commitment
+ok 52 - Tactics: selected source sequence count cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.294099
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source sequence release start cannot mutate in place during a commitment
+ok 53 - Tactics: selected source sequence release start cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.27497
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source sequence release window cannot mutate in place during a commitment
+ok 54 - Tactics: selected source sequence release window cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.211453
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source sequence recovery cannot mutate in place during a commitment
+ok 55 - Tactics: selected source sequence recovery cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.368403
+  type: 'test'
+  ...
+# Subtest: Tactics: selected source selected animation timing cannot mutate in place during a commitment
+ok 56 - Tactics: selected source selected animation timing cannot mutate in place during a commitment
+  ---
+  duration_ms: 0.186896
+  type: 'test'
+  ...
+# Subtest: zero sequence values are preserved and unrelated callbacks are excluded from the source contract
+ok 57 - zero sequence values are preserved and unrelated callbacks are excluded from the source contract
+  ---
+  duration_ms: 0.229421
+  type: 'test'
+  ...
+# Subtest: fighter: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 58 - fighter: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 18984.505392
+  type: 'test'
+  ...
+# Subtest: melee: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 59 - melee: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 6.380995
+  type: 'test'
+  ...
+# Subtest: rpg: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 60 - rpg: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 8.653883
+  type: 'test'
+  ...
+# Subtest: tactics: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+ok 61 - tactics: Waffle captures only an explicitly admitted actual target with zero HP, lift, faction change or input proxy
+  ---
+  duration_ms: 9.772991
+  type: 'test'
+  ...
+# Subtest: fighter: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 62 - fighter: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.707696
+  type: 'test'
+  ...
+# Subtest: melee: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 63 - melee: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.833165
+  type: 'test'
+  ...
+# Subtest: rpg: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 64 - rpg: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 1.72334
+  type: 'test'
+  ...
+# Subtest: tactics: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+ok 65 - tactics: Jade’s photo reveals the selected opponent without attack buff, guard, healing or HP damage
+  ---
+  duration_ms: 2.130964
+  type: 'test'
+  ...
+# Subtest: RPG: ordinary Melody performs a physical cardinal step; an immobile replay never damages
+ok 66 - RPG: ordinary Melody performs a physical cardinal step; an immobile replay never damages
+  ---
+  duration_ms: 4.195829
+  type: 'test'
+  ...
+# Subtest: RPG: stock Medic really channels, charges through40 injured-patient seconds, and gives8s protection only through an existing ally beam
+ok 67 - RPG: stock Medic really channels, charges through40 injured-patient seconds, and gives8s protection only through an existing ally beam
+  ---
+  duration_ms: 74.416925
+  type: 'test'
+  ...
+# Subtest: fighter: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 68 - fighter: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 4.065142
+  type: 'test'
+  ...
+# Subtest: melee: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 69 - melee: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 3.060406
+  type: 'test'
+  ...
+# Subtest: rpg: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 70 - rpg: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 2.318297
+  type: 'test'
+  ...
+# Subtest: tactics: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+ok 71 - tactics: the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks
+  ---
+  duration_ms: 5.054594
+  type: 'test'
+  ...
+# Subtest: rpg: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+ok 72 - rpg: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+  ---
+  duration_ms: 6.07956
+  type: 'test'
+  ...
+# Subtest: tactics: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+ok 73 - tactics: Gyrodisk advances its real sixteen-pose clock, freezes in pause, releases from the glove and clears after recovery
+  ---
+  duration_ms: 4.31627
+  type: 'test'
+  ...
+# Subtest: rpg: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+ok 74 - rpg: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+  ---
+  duration_ms: 1.61789
+  type: 'test'
+  ...
+# Subtest: tactics: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+ok 75 - tactics: damage before the Gyrodisk release cancels its native action and cannot ghost-hit later
+  ---
+  duration_ms: 3.75271
+  type: 'test'
+  ...
+# Subtest: fighter: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 76 - fighter: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 3.389432
+  type: 'test'
+  ...
+# Subtest: melee: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 77 - melee: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 3.317223
+  type: 'test'
+  ...
+# Subtest: rpg: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 78 - rpg: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 3.849606
+  type: 'test'
+  ...
+# Subtest: tactics: Okarun can commit only two source all-out actions, and the third consumes no charge
+ok 79 - tactics: Okarun can commit only two source all-out actions, and the third consumes no charge
+  ---
+  duration_ms: 7.611491
+  type: 'test'
+  ...
+# Subtest: fighter: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 80 - fighter: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 8.463726
+  type: 'test'
+  ...
+# Subtest: melee: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 81 - melee: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 7.011035
+  type: 'test'
+  ...
+# Subtest: tactics: Melody’s real source action moves a cardinal step and only movement contacts may damage
+ok 82 - tactics: Melody’s real source action moves a cardinal step and only movement contacts may damage
+  ---
+  duration_ms: 8.107779
+  type: 'test'
+  ...
+# Subtest: RPG: Momo’s actual reinforcement and an already present Okarun share the same two-use all-out resource
+ok 83 - RPG: Momo’s actual reinforcement and an already present Okarun share the same two-use all-out resource
+  ---
+  duration_ms: 16.625817
+  type: 'test'
+  ...
+# Subtest: the default current Medic keeps its reviewed beam and never receives the old self-only Fighter adapter
+ok 84 - the default current Medic keeps its reviewed beam and never receives the old self-only Fighter adapter
+  ---
+  duration_ms: 20487.045713
+  type: 'test'
+  ...
+# Subtest: RPG: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 85 - RPG: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 10.710535
+  type: 'test'
+  ...
+# Subtest: Smash: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 86 - Smash: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 8.735702
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 87 - Tactics: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 8.476112
+  type: 'test'
+  ...
+# Subtest: Fighter: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+ok 88 - Fighter: an explicitly prepared legacy Medic resolves its actual version without changing the default kit
+  ---
+  duration_ms: 1.73923
+  type: 'test'
+  ...
+# Subtest: an unrelated key, unknown legacy definition, or crossed universe cannot select the legacy version
+ok 89 - an unrelated key, unknown legacy definition, or crossed universe cannot select the legacy version
+  ---
+  duration_ms: 0.496415
+  type: 'test'
+  ...
+# Subtest: ripley: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+ok 90 - ripley: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+  ---
+  duration_ms: 0.627132
+  type: 'test'
+  ...
+# Subtest: darth_maul: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+ok 91 - darth_maul: the exact current incarnation retains all four raw actions while historical actors retain the reviewed source
+  ---
+  duration_ms: 0.484617
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicit current Medic mode profile heals only the actual selected patient
+ok 92 - Tactics: an explicit current Medic mode profile heals only the actual selected patient
+  ---
+  duration_ms: 3.77146
+  type: 'test'
+  ...
+# Subtest: Tactics: an explicit prepared legacy Medic mode profile heals only the actual selected patient
+ok 93 - Tactics: an explicit prepared legacy Medic mode profile heals only the actual selected patient
+  ---
+  duration_ms: 9.136689
+  type: 'test'
+  ...
+# Subtest: Tactics: real unmaintained Medi Gun overheal decay preserves an actual source windup through its release
+ok 94 - Tactics: real unmaintained Medi Gun overheal decay preserves an actual source windup through its release
+  ---
+  duration_ms: 17.152895
+  type: 'test'
+  ...
+# Subtest: Tactics: a real hit above maximum HP still interrupts the overhealed source cast without repeating its cost
+ok 95 - Tactics: a real hit above maximum HP still interrupts the overhealed source cast without repeating its cost
+  ---
+  duration_ms: 11.825899
+  type: 'test'
+  ...
+# Subtest: Tactics: zero and item-shielded hits neither mark actual HP damage nor interrupt the overhealed cast
+ok 96 - Tactics: zero and item-shielded hits neither mark actual HP damage nor interrupt the overhealed cast
+  ---
+  duration_ms: 12.910768
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: all 125 reviewed source actors retain typed profiles and converted grid ranges
+ok 97 - training_grid/hero: all 125 reviewed source actors retain typed profiles and converted grid ranges
+  ---
+  duration_ms: 21694.989603
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: ordinary guard, healing and buff preserve their typed support effects at release
+ok 98 - training_grid/hero: ordinary guard, healing and buff preserve their typed support effects at release
+  ---
+  duration_ms: 14.943296
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: ordinary damage has one real release, pause, cost and turn
+ok 99 - training_grid/hero: ordinary damage has one real release, pause, cost and turn
+  ---
+  duration_ms: 5.150904
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Waffle captures the real eligible kitten only at release, for one target turn
+ok 100 - training_grid/hero: Waffle captures the real eligible kitten only at release, for one target turn
+  ---
+  duration_ms: 7.571488
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+ok 101 - training_grid/hero: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+  ---
+  duration_ms: 6.760901
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Jade's camera releases information without a buff or HP mutation
+ok 102 - training_grid/hero: Jade's camera releases information without a buff or HP mutation
+  ---
+  duration_ms: 2.457419
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Melody's prepared action damages only through the accepted physical cardinal step
+ok 103 - training_grid/hero: Melody's prepared action damages only through the accepted physical cardinal step
+  ---
+  duration_ms: 11.319615
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+ok 104 - training_grid/hero: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+  ---
+  duration_ms: 12.488851
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: all 125 reviewed source actors retain typed profiles and converted grid ranges
+ok 105 - training_grid/enemy: all 125 reviewed source actors retain typed profiles and converted grid ranges
+  ---
+  duration_ms: 31.961136
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: ordinary guard, healing and buff preserve their typed support effects at release
+ok 106 - training_grid/enemy: ordinary guard, healing and buff preserve their typed support effects at release
+  ---
+  duration_ms: 7.05985
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: ordinary damage has one real release, pause, cost and turn
+ok 107 - training_grid/enemy: ordinary damage has one real release, pause, cost and turn
+  ---
+  duration_ms: 3.532033
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Waffle captures the real eligible kitten only at release, for one target turn
+ok 108 - training_grid/enemy: Waffle captures the real eligible kitten only at release, for one target turn
+  ---
+  duration_ms: 4.726757
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+ok 109 - training_grid/enemy: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+  ---
+  duration_ms: 4.771013
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Jade's camera releases information without a buff or HP mutation
+ok 110 - training_grid/enemy: Jade's camera releases information without a buff or HP mutation
+  ---
+  duration_ms: 1.669396
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Melody's prepared action damages only through the accepted physical cardinal step
+ok 111 - training_grid/enemy: Melody's prepared action damages only through the accepted physical cardinal step
+  ---
+  duration_ms: 2.875117
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+ok 112 - training_grid/enemy: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+  ---
+  duration_ms: 14.123515
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: all 125 reviewed source actors retain typed profiles and converted grid ranges
+ok 113 - nexus_skybridge/hero: all 125 reviewed source actors retain typed profiles and converted grid ranges
+  ---
+  duration_ms: 45.493815
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: ordinary guard, healing and buff preserve their typed support effects at release
+ok 114 - nexus_skybridge/hero: ordinary guard, healing and buff preserve their typed support effects at release
+  ---
+  duration_ms: 9.677359
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: ordinary damage has one real release, pause, cost and turn
+ok 115 - nexus_skybridge/hero: ordinary damage has one real release, pause, cost and turn
+  ---
+  duration_ms: 3.579204
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Waffle captures the real eligible kitten only at release, for one target turn
+ok 116 - nexus_skybridge/hero: Waffle captures the real eligible kitten only at release, for one target turn
+  ---
+  duration_ms: 7.140741
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+ok 117 - nexus_skybridge/hero: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+  ---
+  duration_ms: 9.935077
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Jade's camera releases information without a buff or HP mutation
+ok 118 - nexus_skybridge/hero: Jade's camera releases information without a buff or HP mutation
+  ---
+  duration_ms: 2.819854
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Melody's prepared action damages only through the accepted physical cardinal step
+ok 119 - nexus_skybridge/hero: Melody's prepared action damages only through the accepted physical cardinal step
+  ---
+  duration_ms: 7.991217
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+ok 120 - nexus_skybridge/hero: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+  ---
+  duration_ms: 10.6636
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: all 125 reviewed source actors retain typed profiles and converted grid ranges
+ok 121 - nexus_skybridge/enemy: all 125 reviewed source actors retain typed profiles and converted grid ranges
+  ---
+  duration_ms: 41.746879
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: ordinary guard, healing and buff preserve their typed support effects at release
+ok 122 - nexus_skybridge/enemy: ordinary guard, healing and buff preserve their typed support effects at release
+  ---
+  duration_ms: 12.192687
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: ordinary damage has one real release, pause, cost and turn
+ok 123 - nexus_skybridge/enemy: ordinary damage has one real release, pause, cost and turn
+  ---
+  duration_ms: 3.259463
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Waffle captures the real eligible kitten only at release, for one target turn
+ok 124 - nexus_skybridge/enemy: Waffle captures the real eligible kitten only at release, for one target turn
+  ---
+  duration_ms: 5.777825
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+ok 125 - nexus_skybridge/enemy: stock beam starts at release, heals 24 HP/s and never performs a ratio burst
+  ---
+  duration_ms: 6.543233
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Jade's camera releases information without a buff or HP mutation
+ok 126 - nexus_skybridge/enemy: Jade's camera releases information without a buff or HP mutation
+  ---
+  duration_ms: 2.934826
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Melody's prepared action damages only through the accepted physical cardinal step
+ok 127 - nexus_skybridge/enemy: Melody's prepared action damages only through the accepted physical cardinal step
+  ---
+  duration_ms: 5.869702
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+ok 128 - nexus_skybridge/enemy: Okarun's two actual releases count hits and misses; interruption and denied third cost no use
+  ---
+  duration_ms: 17.637752
+  type: 'test'
+  ...
+# Subtest: RPG/hero: Melody's real moving actor retains the native lute four-pose clock
+ok 129 - RPG/hero: Melody's real moving actor retains the native lute four-pose clock
+  ---
+  duration_ms: 11.573876
+  type: 'test'
+  ...
+# Subtest: RPG/enemy: Melody's real moving actor retains the native lute four-pose clock
+ok 130 - RPG/enemy: Melody's real moving actor retains the native lute four-pose clock
+  ---
+  duration_ms: 2.872994
+  type: 'test'
+  ...
+1..130
+# tests 130
+# suites 0
+# pass 130
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105488.690782

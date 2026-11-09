@@ -4,17 +4,19 @@ Jeu de crossover indépendant et non officiel, jouable dans le navigateur. Le jo
 
 Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge ATB**, **Tactics sur grille**, **Mêlée sur plateformes** et **Combat en duel**. L’interface utilise React ; les combats sont dessinés en Canvas 2D. Les univers, personnages et marques cités appartiennent à leurs ayants droit.
 
-**État de référence : lot 16 validé le 1 novembre 2026.** Le développement continue en parallèle, par groupes disjoints de 40 personnages par agent. Les chiffres de cette page décrivent la dernière livraison clôturée ; un lot en cours ne compte pas comme une livraison validée.
+**État courant : W17 intégré avec master `3036cd02`, revue du 9 novembre 2026.** Les livraisons et mesures actuelles sont décrites ci-dessous. La clôture W16 reste une référence historique ; le protocole de gel, build et revue visuelle finale W17 n’est pas déclaré terminé. L’[amendement d’intégration](docs/audits/w17-master-integration-2026-11-09.md) distingue les vérifications courantes des anciennes preuves.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
 
 ## Installation
 
-Prérequis : **Node.js 22.12 ou version ultérieure** et npm. Le dépôt contient les ressources graphiques ; son téléchargement et l’installation occupent plusieurs gigaoctets.
+Prérequis : **Node.js 22.x (22.12 minimum)**, npm et Git LFS. Le dépôt contient les ressources graphiques ; son téléchargement et l’installation occupent plusieurs gigaoctets.
 
 Depuis la racine du projet :
 
 ```bash
+git lfs install --local
+git lfs pull
 npm ci
 npm run dev
 ```
@@ -61,7 +63,7 @@ Les noms internes et les noms utilisés dans les rapports ne sont pas toujours i
 | Nom utilisé | Identifiant du mode | Fonctionnement actuel |
 | --- | --- | --- |
 | **RPG** | `RPG` | Jauges ATB, ciblage manuel, actions simples, secondaires, défense, super et invocation ou renfort selon le profil du personnage. Les protections et soutiens agissent sur les alliés sans créer de dégâts offensifs. |
-| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission ; dix-neuf terrains verticaux, dont seize secteurs d’univers avec reliefs naturels, gués, ravins, passerelles et décors physiques. Caméra avec déplacement et zoom. |
+| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission ; vingt-trois terrains verticaux, dont vingt secteurs d’univers avec reliefs naturels, gués, ravins, passerelles et décors physiques. Caméra avec déplacement et zoom. |
 | **Mêlée / Smash** | `Smash` | Combat sur plateformes, déplacements physiques, sauts, garde, charge, prises de rebord et objectifs d’arène. Les personnages couverts possèdent un manifeste d’animation par état. |
 | **Combat / Fighter** | `Fighter` | Moteur de duel distinct, avec sa préparation, ses séquences de présentation, ses actions et ses conditions de victoire. |
 
@@ -69,31 +71,39 @@ Les épreuves sans combat réutilisent certaines commandes d’arène pour des o
 
 ## Couverture réelle
 
-Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les compteurs proviennent de l’[audit figé du lot 16](docs/combat-fidelity-wave16-2026-10-28/current.json). La [couverture cumulative](docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv) comprend chaque personnage ; le [tableau du lot](docs/combat-fidelity-wave16-2026-10-28/coverage.csv) conserve les versions revues et les quatre identités suspendues.
+Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les compteurs proviennent de l’[audit courant W17 + master](docs/combat-fidelity-wave17-2026-11-02/current.json), régénéré le 9 novembre 2026. Ils mesurent les fichiers livrés et les profils résolus ; ils ne constituent pas une revue visuelle complète de l’intégration.
 
-| Périmètre au terme du lot 16 | Mesure vérifiée |
+| Périmètre mesuré après intégration | Résultat |
 | --- | --- |
 | Catalogue | **1 911 personnages**, **525 univers** |
-| Capacités explicitement rédigées | 1 582 personnages, 4 650 actions simples, secondaires et défenses ; 1 517 kits complets et 65 partiels |
-| Présentations complètes32 | **546 personnages** ; 1 365 manquantes |
+| Capacités de base explicitement rédigées | 1 662 personnages, 4 911 actions simples, secondaires et défenses ; 1 618 kits complets et 44 partiels |
+| Emplacements de base sans enregistrement explicite | 822 sur 5 733 ; les profils résolus peuvent utiliser un repli |
+| Supers résolus | 1 911, dont 1 591 portent des métadonnées d’override ; aucun placeholder générique restant |
+| Présentations complètes32 livrées, inventaire incluant les archives | **666 personnages** ; 1 245 sans atlas complet |
 | Présentations partielles | 2, suivies séparément |
-| Animation Mêlée complète45 | **17 personnages** ; 1 894 manquantes |
-| Bases de combat16 corrigées | 494 personnages |
-| Recettes de présentation | 560 personnages, 3 920 associations personnage/phase |
-| Invocations et renforts natifs16 | 62 planches |
-| Actions supplémentaires16 | 1 planche, 16 poses |
+| Animation Mêlée complète45 | **18 personnages** ; 1 893 manquantes |
+| Bases de combat16 corrigées | 614 personnages |
+| Recettes de présentation | 680 personnages, 4 760 associations personnage/phase |
+| Invocations et renforts natifs16 | 68 planches |
+| Actions supplémentaires16 | 2 planches, 32 poses |
 | Familier de protection autonome16 | 1 planche, distincte des invocations RPG |
-| Terrains Tactics verticaux | 19 : seize secteurs d’univers et trois Nexus |
-| Décors animés | 435 mécanismes dans 216 univers ; 309 univers sans mécanisme localisé |
-| Ressources de cet audit combat | 1 237 PNG dans 138 registres ; 982 PNG et 127 registres antérieurs préservés |
+| Terrains Tactics verticaux | 23 : vingt secteurs d’univers et trois Nexus ; 52 matières |
+| Décors animés | 445 mécanismes dans 220 univers ; 305 univers sans mécanisme localisé |
+| Ressources de cet audit combat | 1 491 PNG dans 149 registres ; les 1 237 PNG et 138 registres W16 restent préservés |
+
+Les métadonnées d’override et l’absence de placeholder générique ne certifient pas une identité de source ni une animation vérifiée. Les 822 emplacements sans enregistrement explicite restent un manque de couverture rédigée, même lorsque le moteur résout une action.
 
 Cet inventaire combat ne comprend pas toutes les images du jeu : portraits, décors, objets, cartes et illustrations possèdent leurs propres catalogues. Les 525 univers ont une ambiance par défaut ; les mécanismes liés à des scènes précises constituent une couverture supplémentaire.
 
-Le **lot 16** livre **120 personnages en trois groupes parallèles de 40** : 120 présentations32 et 120 bases16, Senua avec 45 états/180 poses, six renforts RPG16, le Fox Devil16,16 dessins supplémentaires pour Starburst Stream de Kirito et un Shield Pal autonome16. Cela représente **6 084 poses distinctes dans 255 nouveaux PNG**. Les 124 identités revues possédaient déjà leurs trois actions de base ; ces révisions n’augmentent pas le nombre de kits rédigés. Les [sources et exclusions](docs/combat-fidelity-wave16-2026-10-28/README.md) distinguent les dessins retenus, les corrections et les manquants cumulés.
+Le **lot W17** conserve **120 personnages avec de nouveaux dessins**, en trois groupes de 40 : 120 présentations32 et 120 bases16. Les **125 identités revues** comprennent 80 nouvelles définitions de capacités et 45 révisions ; les cinq identités suspendues ne deviennent pas cinq livraisons artistiques supplémentaires. Jade ajoute un manifeste Mêlée45 ; six renforts RPG16, un NPC de capture16 et une action gyrodisk16 ont des registres distincts. L’inventaire ajoute 254 PNG aux fichiers W16. Le [plan et ses annexes](docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json) et le [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) conservent leurs périmètres historiques.
 
 Une présentation32 réunit huit phases de quatre dessins : intro, sortie, victoire et défaite de manche, finale, victoire et défaite finales, super. Une base16 couvre quatre états ; elle ne remplace pas les 45 états physiques du manifeste Mêlée.
 
 Abe canalise puis contrôle un vrai Slig admissible ; ses commandes utilisent le corps, le fusil et la ressource du Slig. Akane utilise un Paralyzer explicitement autorisé, sans dégâts ni élévation. Les renforts d’Abe appelés par Munch ou l’Étranger et ceux d’Akane appelés par Shinya ou Ginoza respectent les mêmes cibles admissibles ; le contrôle persiste après la cinématique et reste lié à son véritable invocateur. Mugman possède une invulnérabilité de 4,85 secondes simulées ; le Shield Pal de Chalice absorbe un coup positif et persiste jusque-là. Yukikaze de Hakumen prépare une riposte dont le contact doit être réellement atteint. Kirito, Aya et BT déclenchent16, 7 et 14 événements temporisés, avec pause, interruption et dépense unique de la jauge. Maya et Val conservent leur contrôle et leur soin de proximité précédemment validés.
+
+Le Medi Gun W17 maintient un vrai lien allié : 24 HP par seconde simulée, charge complète en 40 secondes sous le seuil d’overheal ou 80 secondes au-dessus, puis huit secondes d’ÜberCharge. Son activation ne devient pas un soin instantané ; le Syringe Gun reste une autre action offensive. Waffle capture uniquement un NPC explicitement admissible, sans dégâts, élévation ou changement de camp, pendant 1,25 seconde ou un tour de la cible. Melody touche les voisins cardinaux de son déplacement accepté ; Okarun partage son plafond de deux utilisations avec son renfort chez Momo. La photo de Jade reste informative et les trois poissons de Joe gardent leur émetteur natif.
+
+Les [priorités de source](src/game/combat/sourceKitPriority.js) empêchent une préparation générique plus ancienne de remplacer ces profils ou de doubler leur dispatch. Liquid utilise par défaut son duel final à mains nues sur REX ; l’ancien atlas W13 avec manteau reste une édition archivée et comptée dans l’inventaire, sans être activé pour cette incarnation. Ripley utilise l’équipement du Nostromo et du Narcissus de 1979 ; son atlas W13 au M41A de 1986 est également conservé en archive. Les actions de Maul et son arme à double lame gardent sa période Clone Wars explicitement sélectionnée. Les actions P0 actuelles de Raven et Starfire restent le choix par défaut ; leurs versions W16 demeurent des éditions historiques distinctes. True Ogre garde la frappe de griffe gauche W15 et son unique bras-vipère droit.
 
 John Wick, Robin, Raven et Starfire restent sans nouveaux native32/base16, avec les refus et périmètres exacts archivés. Tank, MEIKO, KAITO et l’Oracle sont quatre ajouts distincts aux lots effectifs. Le Starfire RPG16, produit avant son refus native48 séparé, garde sa propre provenance et son rôle RPG.
 
@@ -101,13 +111,13 @@ John Wick, Robin, Raven et Starfire restent sans nouveaux native32/base16, avec 
 
 Chaque ajout doit préciser l’œuvre, la version et la période retenues : costume, équipement, capacités et partenaires doivent appartenir à cette continuité. Les pouvoirs d’une autre époque, les gestes incompatibles et les effets offensifs inventés pour un personnage de soutien sont exclus de cette intention.
 
-Les dessins générés et les adaptations de mécaniques **ne constituent pas une reproduction 1:1 certifiée**. Les supers suivent leurs poses de relâchement et leurs points mesurés ; la synchronisation de toutes les attaques ordinaires des bases16 avec leurs frames source reste non certifiée. Les données conservent ce statut explicitement. Une animation manquante peut utiliser un repli existant déclaré ; un agrandissement, une inversion, une capture de contrôle ou une réutilisation ne crée pas une nouvelle pose native.
+Les dessins générés et les adaptations de mécaniques **ne constituent pas une reproduction 1:1 certifiée**. Pour les séquences natives couvertes, les supers suivent leurs poses de relâchement et leurs points mesurés ; la synchronisation de toutes les attaques ordinaires des bases16 avec leurs frames source reste non certifiée. Les données conservent ce statut explicitement. Une animation manquante peut utiliser un repli existant déclaré ; un agrandissement, une inversion, une capture de contrôle ou une réutilisation ne crée pas une nouvelle pose native.
 
 Les provenances gardent les sources, prompts, empreintes, corrections et refus. Une génération refusée reste un manque identifié. Les dossiers Rift distinguent l’approbation d’une référence de la disponibilité de son illustration ; un dossier `pending` reste en attente de sa propre image. Le registre d’autorisations [Survivaure](docs/licensing/SURVIVAURE_AUTHORIZATION.md) concerne ce pack et ce projet ; il ne décrit pas les droits des autres univers.
 
 ## Tactics — textures par case et verticalité
 
-La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom → TACTIQUE → TERRAIN TACTIQUE**. Le choix **Auto** prend un secteur de l’univers sélectionné lorsqu’un secteur dédié existe ; le choix explicite affiche son lieu, son œuvre et son objectif avant le lancement.
+La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom**, choisir **TACTIQUE**, puis **ARÈNE → TERRAIN TACTIQUE**. Après le choix du terrain, passer à **RÈGLES** pour lancer le combat. Le choix **Auto** prend un secteur de l’univers sélectionné lorsqu’un secteur dédié existe ; le choix explicite affiche son lieu, son œuvre et son objectif avant le lancement.
 
 | Secteur dédié | Version retenue | Terrain jouable |
 | --- | --- | --- |
@@ -127,18 +137,22 @@ La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom → TAC
 | Chaîne de fabrication IMC | Titanfall2, 2016, Into the Abyss | Plateformes de production, coursives et passages superposés |
 | Central City | Fullmetal Alchemist: Brotherhood, 2009 | Place, voies ferrées, escaliers et maçonnerie |
 | Royaume Sadida | Wakfu, saison1 | Racines, sous-bois, canopée et passages naturels |
+| Île du phare | Beyond Good & Evil, 2003 | Terrasses, escalier, passerelle haute et débarcadère |
+| Forêt des Ptizêtres | Rayman Legends, 2013 | Racines, détour supérieur et ravin |
+| Galerie VDNH | Atomic Heart, 2023 | Balcon, fosse, piliers et surfaces superposées |
+| Rainforest District | Zootopia, film de 2016 | Canopée, chemin bas humide et bassin |
 
-Les trois arènes originales du Nexus restent disponibles : pont et passage inférieur, terrasses des ruines, passerelles du réseau. Les dix-neuf terrains distinguent les surfaces à plusieurs hauteurs ; deux unités peuvent occuper un pont et son passage inférieur à la même coordonnée.
+Les trois arènes originales du Nexus restent disponibles : pont et passage inférieur, terrasses des ruines, passerelles du réseau. Les vingt-trois terrains distinguent les surfaces à plusieurs hauteurs ; deux unités peuvent occuper un pont et son passage inférieur à la même coordonnée.
 
 Cliquer une surface ou utiliser les flèches du plateau pour l’inspecter, puis confirmer avec **ALLER / CIBLER CETTE CASE** ou **Entrée**. La coupe de vue, la liste des surfaces et les touches `[` / `]` permettent de choisir un étage ; l’inspection ne dépense aucun point d’action. Les boutons de zoom et de recadrage complètent le glissement de caméra et la molette, y compris au tactile.
 
-Les déplacements suivent un chemin et son coût réel ; occupation, hauteur libre, empreinte des grandes unités, ligne de vue, objectifs et ressources distinguent les étages. Les arbres et obstacles ont des volumes physiques. Une coupe n’autorise pas un tir à travers un plancher opaque. Dans les seize secteurs d’univers, le contrôle de zone progresse une fois par tour réellement terminé. Les anciennes cartes plates conservent leur géométrie.
+Les déplacements suivent un chemin et son coût réel ; occupation, hauteur libre, empreinte des grandes unités, ligne de vue, objectifs et ressources distinguent les étages. Les arbres et obstacles ont des volumes physiques. Une coupe n’autorise pas un tir à travers un plancher opaque. Dans les vingt secteurs d’univers, le contrôle de zone progresse une fois par tour réellement terminé. Les anciennes cartes plates conservent leur géométrie.
 
-Les **42 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins : une pente, un pont et son passage inférieur restent distincts, même à la même position horizontale. Le [rendu du terrain](src/game/tacticsTerrainRenderer.js) projette les motifs sur leurs faces : herbe ou pavés sur le dessus, terre ou strates rocheuses sur les flancs, dessous des plateformes et contremarches des escaliers. Les raccords suivent les arêtes à la bonne altitude ; la surface occupée et les volumes déterminent le placement et le masquage des personnages. Les [matériaux W16](src/game/tacticsUniversePresentationWave16.js) et les [quatre secteurs supplémentaires](src/game/tacticsUniverseBattlefieldsWave16.js) associent reliefs et matières au lieu retenu.
+Les **52 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins : une pente, un pont et son passage inférieur restent distincts, même à la même position horizontale. Le [rendu du terrain](src/game/tacticsTerrainRenderer.js) projette les motifs sur leurs faces : herbe ou pavés sur le dessus, terre ou strates rocheuses sur les flancs, dessous des plateformes et contremarches des escaliers. Les raccords suivent les arêtes à la bonne altitude ; la surface occupée et les volumes déterminent le placement et le masquage des personnages. Les [matériaux W17](src/game/tacticsUniversePresentationWave17.js) et les [quatre secteurs supplémentaires W17](src/game/tacticsUniverseBattlefieldsWave17.js) associent reliefs et matières au lieu retenu.
 
 Chaque niveau Tactics utilise un environnement propre à ce mode, y compris les anciennes cartes. Les atlas de tuiles Tactics sont distincts de ceux des autres moteurs ; leurs images d’arène ne servent plus de fond Tactics.
 
-Le **[guide Tactics W16 jouable](docs/tactics-universes-2026-10-28/README.md)** décrit les commandes, les règles, les matériaux et l’ajout d’un secteur. La [galerie des huit secteurs W14](docs/tactics-universes-2026-10-25/index.html) et celle des [quatre secteurs W15](docs/tactics-universes-2026-10-26/index.html) conservent leurs captures historiques. La [galerie W16](docs/tactics-universes-2026-10-28/index.html) montre les nouveaux secteurs desktop/mobile et les contrôles réels. Les géométries sont des secteurs tactiques originaux adaptés à ces lieux et périodes ; elles ne reproduisent pas un plan officiel à l’identique. Les matières procédurales ne sont pas certifiées comme textures officielles. Le rendu conserve sa perspective 3/4 en Canvas 2D.
+Le **[guide Tactics W17](docs/tactics-universes-2026-11-02/README.md)** décrit les commandes, les règles, les matériaux et l’ajout d’un secteur. La [galerie des huit secteurs W14](docs/tactics-universes-2026-10-25/index.html) et celle des [quatre secteurs W15](docs/tactics-universes-2026-10-26/index.html) conservent leurs captures historiques. La [galerie W16](docs/tactics-universes-2026-10-28/index.html) montre les nouveaux secteurs desktop/mobile et les contrôles réels. Les géométries sont des secteurs tactiques originaux adaptés à ces lieux et périodes ; elles ne reproduisent pas un plan officiel à l’identique. Les matières procédurales ne sont pas certifiées comme textures officielles. Le rendu conserve sa perspective 3/4 en Canvas 2D.
 
 L’[ancienne maquette HTML](docs/tactics-terrain-demo.html) reste une illustration historique autonome. L’accès à la fonctionnalité intégrée passe par Combat custom.
 
@@ -159,9 +173,13 @@ Le dépôt n’a pas de script global `npm test`. Les groupes sont déclarés da
 | `npm run check:progression` | Contrats de progression |
 | `npm run build` | Cycle complet `prebuild`, puis compilation Vite |
 
-La clôture du lot 16 a exécuté le véritable build complet avec un **code de sortie 0** et **2 076 tests réussis dans 18 groupes**. Sa preuve de production vérifie les 1 237 PNG dans public, dist et les réponses HTTP, avec décodage libvips et Chromium. Les preuves navigateur couvrent les présentations, les bases, les quatre moteurs, les commandes particulières, les invocations, Senua, les terrains et les scènes. Les résultats sont datés et liés aux entrées figées ; les cinq étapes Rift précèdent le gel de production.
+À titre historique, la clôture du lot 16 a exécuté le véritable build complet avec un **code de sortie 0** et **2 076 tests réussis dans 18 groupes**. Sa preuve de production vérifie les 1 237 PNG dans public, dist et les réponses HTTP, avec décodage libvips et Chromium. Les preuves navigateur couvrent les présentations, les bases, les quatre moteurs, les commandes particulières, les invocations, Senua, les terrains et les scènes. Les résultats sont datés et liés aux entrées figées ; les cinq étapes Rift précèdent le gel de production.
 
 [Validation du lot 16](docs/combat-fidelity-wave16-2026-10-28/validation.json) · [Preuves navigateur](docs/combat-fidelity-wave16-2026-10-28/browser-checks.json) · [Ressources servies](docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json)
+
+Ces résultats W16 et les essais W17 antérieurs ne valident pas le code intégré le 9 novembre. La revue comprend un parcours Tactics de six lancements, 18 vérifications et dix captures inspectées, puis quatre cas Fighter pour Raven et Starfire avec huit captures inspectées, sans erreur de page. Chaque preuve conserve son propre instantané : treize fichiers source diffèrent depuis le parcours Tactics et six depuis le parcours Fighter, selon la comparaison des empreintes d’origine avec les fichiers courants. Aucun ne constitue un gel de production final.
+
+Le 9 novembre, `npm run build -- --config scripts/viteCodeOnly.config.js` a réellement terminé avec le **code de sortie 0**, après les 45 étapes normales du prébuild. Les 30 sorties TAP rapportent **4 975 exécutions réussies**, sans échec ni assertion ignorée ; les groupes se recoupent et ces exécutions ne sont pas un nombre de tests uniques. Le profil de compilation utilisé conserve tout le prébuild, puis produit un bundle de code sans recopier les médias de `public/` ; ce dist seul ne constitue pas une livraison statique complète. Les tests, reçus et limites sont consignés dans l’[amendement d’intégration](docs/audits/w17-master-integration-2026-11-09.md).
 
 Les captures et parcours navigateur sont des vérifications supplémentaires : les tests Node seuls ne prouvent ni le chargement d’un PNG dans une page ni la justesse visuelle d’un geste. Certains outils de capture archivés utilisent les chemins Playwright et Chromium de leur environnement d’exécution ; ils ne font pas partie de l’installation npm standard.
 
@@ -193,17 +211,36 @@ Les captures et parcours navigateur sont des vérifications supplémentaires : l
 5. Contrôler les ressources en jeu, les refus, les replis et l’absence de régression sur les anciens fichiers.
 6. Clôturer par les tests, le build réel et un rapport donnant les livraisons et les manquants séparément.
 
-Le [plan du lot 16](docs/combat-fidelity-wave16-2026-10-28/batch-plan-before.json), complété par ses deux annexes préalables aux générations correspondantes, conserve cette répartition antérieure aux éditions. Chaque agent garde ses références, dessins retenus, corrections et mesures dans son répertoire ; les [définitions des personnages](src/game/combat/combatSourceDefinitionsWave16.js) précisent les apparences, armes et actions choisies. L’intégration rassemble les livraisons avant les contrôles communs des moteurs et la revue visuelle finale.
+Le [plan du lot W17](docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json), complété par ses quatre annexes préalables aux générations correspondantes, conserve cette répartition antérieure aux éditions. Chaque agent garde ses références, dessins retenus, corrections et mesures dans son répertoire ; les [définitions des personnages W17](src/game/combat/combatSourceDefinitionsWave17.js) précisent les apparences, armes et actions choisies. L’intégration rassemble les livraisons avant les contrôles communs des moteurs et la revue visuelle finale.
 
 Pour les capacités déjà présentes dans les [tests de complétion](scripts/combatCompletion.test.mjs), déclarer explicitement toute nouvelle version retenue : conserver les attentes historiques sur l’action et l’œuvre, puis vérifier séparément le nom, la version et les règles du profil résolu.
 
 Les anciennes preuves sont des instantanés : ajouter un nouveau rapport plutôt que réécrire les résultats d’un lot antérieur. Les outils de vérification doivent lire les ressources réellement livrées ; l’existence d’un chemin ou d’une entrée JSON ne suffit pas.
 
+## Guides de développement et intégration
+
+Les consignes de [AGENTS.md](AGENTS.md), le [guide du projet](docs/development/GAMEDEV_GUIDE.md) et les guides embarqués dans `vendor/gamedev-skills/` décrivent les contrats des moteurs, des commandes, des sauvegardes et des assets. Les outils IA facultatifs sont documentés dans [.ai-tools/README.md](.ai-tools/README.md).
+
+```bash
+npm run check:gamedev-guides
+npm run test:gamedev
+```
+
+Les médias CG et certains exports utilisent Git LFS. Un pointeur LFS dans un checkout incomplet ne constitue pas une image utilisable. Les audits d'assets exigent les vrais fichiers. Sur un disque contraint, le profil déjà fourni évite seulement la recopie de `public/` et conserve tout le cycle `prebuild` :
+
+```bash
+npm run build -- --config scripts/viteCodeOnly.config.js
+```
+
+Ce profil produit le code exécutable sans recopier les médias de `public/` dans `dist/` ; une livraison statique complète comprend aussi ces médias. Le résultat du prébuild intégré reste suivi séparément dans le rapport d’intégration. Les fixtures de commandes, de stockage et d'affichage sont décrites dans le guide du projet ; elles ne remplacent pas les parcours de combat.
+
 ## Documentation
 
-- [Dernier lot combat clôturé — W16](docs/combat-fidelity-wave16-2026-10-28/README.md) : détails des trois groupes de 40 personnages et de la livraison.
+- [Intégration W17 + master — 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) : livraisons, mesures courantes, tests et limites de validation.
+- [Mesures courantes W17](docs/combat-fidelity-wave17-2026-11-02/current.md) et [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) : inventaire actuel et barrières historiques distinctes.
+- [Dernier lot combat clôturé historiquement — W16](docs/combat-fidelity-wave16-2026-10-28/README.md) : détails des trois groupes de 40 personnages et de la livraison.
 - [Couverture cumulative par personnage — W16](docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv) : couvertures complètes, partielles et manquantes pour les 1 911 personnages.
-- [Terrain Tactics et verticalité — W16](docs/tactics-universes-2026-10-28/README.md) : nouveaux secteurs, commandes, objectifs et 42 matériaux par face et étage. Le [guide W15](docs/tactics-terrain-verticality.md) conserve son état historique.
+- [Terrain Tactics et verticalité — W17](docs/tactics-universes-2026-11-02/README.md) : 23 cartes, commandes, objectifs et 52 matières par face et étage. Le [guide W15](docs/tactics-terrain-verticality.md) conserve son état historique.
 - [Production des illustrations CG](docs/cg/README.md) : familles d’images, registres, sources et contrôle de livraison.
 - [Catalogue Rift](docs/rift-dossiers/catalog.json) : registre des dossiers et de leurs références.
 - [Pipeline des boosters](scripts/PORTAL_BOOSTER_PIPELINE.md) : données de collection et outils associés.

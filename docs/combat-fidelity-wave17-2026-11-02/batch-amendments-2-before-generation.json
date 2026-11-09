@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "wave": 17,
+  "createdAt": "2026-11-02T05:33:33.811Z",
+  "initialPlan": {
+    "path": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+    "sha256": "1f8685e68f25a13ca1c321d6899257f102f5a327ce01f8f58678931832926604"
+  },
+  "replacements": [
+    {
+      "part": "C",
+      "withheldId": "mai_ygo",
+      "replacementId": "shep_interstella",
+      "nativeRequestStatus": "actual-generation-refused",
+      "refusal": {
+        "path": "docs/combat-fidelity-wave17-2026-11-02/part-c/requests/mai_ygo-result.json",
+        "sha256": "d68c6ec1a1b2384ab12595916062e55b57b581c4338e5f04e56f055f062dcb85"
+      },
+      "replacementHero": {
+        "id": "shep_interstella",
+        "name": "Shep (Interstella 5555)",
+        "cat": "slayer",
+        "color": "#4aa3df",
+        "weaponType": "guitar",
+        "weaponColor": "#4aa3df",
+        "stats": {
+          "hp": 118,
+          "atk": 15,
+          "def": 6,
+          "spd": 7
+        },
+        "simple": {
+          "name": "Crescendolls Guitar Shot",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Digital Rescue Dive",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Cosmic Fan Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Interstella Sacrifice",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#4aa3df"
+        },
+        "universe": "Daft Punk",
+        "category": "slayer",
+        "primaryColor": "#4aa3df",
+        "secondaryColor": "#4aa3df"
+      },
+      "alreadyAuthored": false,
+      "priorAuthored": null,
+      "reason": "Unrelated Interstella5555 pilot; no alternate Harpie, Mai version or refusal retry."
+    }
+  ],
+  "reviewedIdentityCount": 123,
+  "effectiveDrawingCharacters": 120,
+  "additionalNative16": [
+    {
+      "id": "tail_concerto_red_vest_kitten",
+      "kind": "source-npc",
+      "sourceWork": "Tail Concerto (1998)",
+      "sourcePlan": "docs/combat-fidelity-wave17-2026-11-02/rpg-sources/kitten-source-plan-before.json",
+      "frames": 16,
+      "countsAsCohortHero": false,
+      "countsAsRpgPerformer": false,
+      "role": "Non-offensive red-vest kitten from the inspected primary manual, idle/run/captured/released; separate from the six RPG performers."
+    },
+    {
+      "id": "jade_gyrodisk_action",
+      "kind": "character-action",
+      "sourceWork": "Beyond Good & Evil (2003)",
+      "sourcePlan": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/gyrodisk-source-plan-before.json",
+      "frames": 16,
+      "countsAsCohortHero": false,
+      "countsAsFull45State": false,
+      "role": "Actual Gyrodisk glove release, separate from Daï-Jo heavy/charged full45 poses and informative photography."
+    }
+  ],
+  "source1to1Verified": false,
+  "rules": {
+    "appendOnly": true,
+    "existingReviewedKitsRetained": true,
+    "replacementSourcePlansBeforeGeneration": true,
+    "additionalNativeSourcePlansBeforeGeneration": true,
+    "noRefusedCharacterRetry": true
+  }
+}

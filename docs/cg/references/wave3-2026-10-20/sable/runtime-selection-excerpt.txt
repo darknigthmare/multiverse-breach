@@ -1,0 +1,11 @@
+Observed 2026-10-20 from src/game/spriteAssets.js; Sable-specific declaration only.
+export const SABLE_COMPLETE_SPRITES = {
+  universal: '/sprites/generated/heroes/nexus-de-convergence/arca-sable.png'
+};
+
+export const SABLE_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: SABLE_COMPLETE_SPRITES.universal }
+];
+
+
+Runtime getHeroSpriteSheetSrc({id: arca_sable, universe: Nexus de Convergence}) observed path: /sprites/generated/heroes/nexus-de-convergence/arca-sable.png

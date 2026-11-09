@@ -1,0 +1,611 @@
+{
+  "schemaVersion": 1,
+  "characterId": "doomslayer",
+  "characterName": "Doom Slayer",
+  "incarnation": "DOOM Eternal (2020), base Praetor Suit",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "reviewStartedAt": "2026-10-18T04:46:57.379654+00:00",
+  "status": "complete-with-source-limitations",
+  "scope": "Individual native image comparison against inspected source references; composition and continuity review, not perfect resemblance certification.",
+  "axes": [
+    "identity-and-incarnation",
+    "silhouette-and-anatomy",
+    "face-and-hair",
+    "costume-and-palette",
+    "equipment-and-laterality",
+    "pose-distinctness",
+    "universe-and-background",
+    "special-theme-readability"
+  ],
+  "sourceReferences": [
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-library.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/782330/library_600x900_2x.jpg",
+      "sha256": "32be46381b984ab1a1e99815f5f74032a06d676ed0bdf46214c334d7c80f7f6b",
+      "bytes": 290827,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-promotional-identity-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Official Steam-distributed DOOM Eternal key art; visible armor, exposed upper arms and left-forearm blade. Stylized lighting obscures minor hardware; not a 360-degree model sheet."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        600,
+        900
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hero.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/782330/library_hero.jpg",
+      "sha256": "e0ef3b261a20bd20ec90cc342a0a50801e925093d777af8f5b9e8dcee5c331b8",
+      "bytes": 461578,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-promotional-identity-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Same official key artwork in horizontal crop; not a second independent design. Body proportions and blade are readable, lower legs partly obscured."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        1920,
+        620
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-ss-00.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/782330/ss_4f93a7c5003d49cb32f6c0c6e547452b284580a0.1920x1080.jpg?t=1783432602",
+      "sha256": "485642d909a3feb0e596d4dfd4cd7fe703d47ede7edf49135ba6d533cac63030",
+      "bytes": 307548,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-in-game-helmet-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Official Steam screenshot, close helmet detail; armor outside the crop is not verified by this image."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        1902,
+        1080
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/trailer-frame-10.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie480.mp4",
+      "sha256": "218ed7bc480f8f86dbe5696d88e4c5a9c54bcf0442e5ca9f0715f87cabf36d3f",
+      "bytes": 23714,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-armor-equipment-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Frame near 36 seconds from official Launch Trailer linked by Steam app782330 API; 480p side view shows exposed upper arm and shoulder launcher, no reverse-side 360 review."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        480,
+        270
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/ssg-detail-03.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie480.mp4",
+      "sha256": "031bec784547359270cf202aed836ea8256d69a93869bfe2093303103ce32bd8",
+      "bytes": 43893,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-weapon-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Frame near 7 seconds from official Launch Trailer; two parallel barrels, engraved break-action receiver, dark stock and underside twin-point Meathook are visible; camera crops part of stock and low resolution limits tiny engravings."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        640,
+        360
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/trailer-frame-03.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie480.mp4",
+      "sha256": "baf2c55d835e948b7e35ec581e64dafaf7be756c1b63463d38c5322e422447f3",
+      "bytes": 27671,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-weapon-reload-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "limitations": [
+        "Frame near 8 seconds; open breech and two barrel chambers visible; does not alone show full Meathook geometry."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        480,
+        270
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/classic-library.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2280/library_600x900.jpg",
+      "sha256": "60142af062675f20d31ee289a3a1ed5fd96ddd29b5dd5a065d16b75d490e07b6",
+      "bytes": 76882,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "independent-iconic-outfit-reference",
+      "referenceScope": "iconic-outfit-only",
+      "limitations": [
+        "DOOM+DOOMII official Steam cover containing DOOM1993 illustrated classic marine. Used for CG13 costume only: grey helmet, green chest/shoulders, bare upper arms and torn abdominal gap; low-resolution combined cover limits exact trouser/boot details."
+      ],
+      "slot": "CG13",
+      "referenceCharacter": "Classic Doom Marine, DOOM (1993)",
+      "inspectedBy": "excel_fidelite",
+      "dimensions": [
+        300,
+        450
+      ],
+      "sourceScope": "external-reference"
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hires-left-side-38s.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie_max.mp4",
+      "sha256": "757a51c4b76a8eb443c3c60f5a3dc03c45ad4746e408c871790bbcb83b501b45",
+      "bytes": 96447,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-high-resolution-side-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "extraction": {
+        "tool": "ffmpeg",
+        "timestampSeconds": 38,
+        "sourceVideoSha256": "f5949c87374eb5b1d6d94182c60e399d5fd5fcb3557e26e2a79a5dcca3399c80"
+      },
+      "limitations": [
+        "Official1080p frame of the left side: exposed biceps, armor profiles and shoulder launcher visible; far-side surfaces are hidden."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "sourceScope": "external-reference",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hires-full-body-82s.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie_max.mp4",
+      "sha256": "319b7ed646758b3983c4a1c27ba0ad1b319ec24c81f7f2870e232f89b8ae46bf",
+      "bytes": 141337,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-high-resolution-full-body-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "extraction": {
+        "tool": "ffmpeg",
+        "timestampSeconds": 82,
+        "sourceVideoSha256": "f5949c87374eb5b1d6d94182c60e399d5fd5fcb3557e26e2a79a5dcca3399c80"
+      },
+      "limitations": [
+        "Official1080p final promotional model stance with both legs/boots visible. Strong orange lighting alters color and lower boots partly overlap foreground demon shapes; not a neutral360-degree sheet."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "sourceScope": "external-reference",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hires-super-shotgun.jpg",
+      "url": "https://steamcdn-a.akamaihd.net/steam/apps/256778598/movie_max.mp4",
+      "sha256": "c796a44293e93ea59184b71b5a8d915a60b2a02d49d803d578e927c397e71c3c",
+      "bytes": 89786,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "publisher-trailer-high-resolution-weapon-reference",
+      "referenceScope": "doom-eternal-2020-design",
+      "extraction": {
+        "tool": "ffmpeg",
+        "timestampSeconds": 7,
+        "sourceVideoSha256": "f5949c87374eb5b1d6d94182c60e399d5fd5fcb3557e26e2a79a5dcca3399c80"
+      },
+      "limitations": [
+        "Official1080p weapon close-up, metal engraving and underside Meathook clear. Stock and muzzle extend out of the frame; this complements the480p side/reload views."
+      ],
+      "inspectedBy": "excel_fidelite",
+      "sourceScope": "external-reference",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "nativePath": "/workspace/generated_images/exec-8b7f7b14-841d-4174-b971-e3bcfc1a6437.png",
+      "sha256": "82703cd41b2582f0b06dec315f842b4588f0f53c2a5d424f78ca987157f45435",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.822484+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Eternal olive helmet, dark green visor and metallic jaw, segmented chest/abdomen, exposed biceps and full armored boots. Exactly one Doomblade and one launcher on anatomical left, no duplicated limbs. Right hand at belt, left foot on step, orbital balcony with Earth visible."
+      },
+      "findings": [],
+      "limitations": [
+        "Minor armor plates, markings and exact launcher dimensions remain interpreted from cover art and480p trailer frames."
+      ]
+    },
+    {
+      "slot": "CG02",
+      "type": "weaponSolo",
+      "nativePath": "/workspace/generated_images/exec-3ee11f05-eaf2-4cc5-a97d-0ffffaf250d9.png",
+      "sha256": "800bec81641d24921510c892b5f21a4324364bf77a0210e29f326d731b6b56ba",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.826299+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "One complete Super Shotgun on two supports: exactly two adjacent barrels, engraved break-action receiver, brown stock and separate two-point underside Meathook; no assault-rifle magazine or pump substitution. Original Mars workshop; no person."
+      },
+      "findings": [],
+      "limitations": [
+        "Microengraving and exact Meathook curvature not certified from480p. A small stored helmet is a background workshop object, not a character or canonical identity reference."
+      ]
+    },
+    {
+      "slot": "CG03",
+      "type": "decorSolo",
+      "nativePath": "/workspace/generated_images/exec-f1cb39ff-6100-4f50-a3a0-81c40e7ef4de.png",
+      "sha256": "8d9f93416030bd9334e58aba343669f3a87da3441109f9309822089ed174a4e2",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:52:44.946099+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "composition": "Empty engraved bridge leads to an inactive ring forge with tall technical pylons.",
+        "background": "Gothic Sentinel-compatible orbital chamber, copper/teal machinery and purple space visible through windows.",
+        "theme": "Environment-only; no character, creature or held weapon observed."
+      },
+      "findings": [],
+      "limitations": [
+        "Original Sentinel/Fortress-compatible environment, not a reproduced or independently verified canonical room.",
+        "Source qualification is stronger for Doom identity/equipment than this invented architecture."
+      ]
+    },
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "nativePath": "/workspace/generated_images/exec-ee840224-aef2-4f13-9cdc-4042bee5799d.png",
+      "sha256": "aa84adaae3cbae97e0907e280c13689f70ef305a85217b859232b45c7145f391",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:59:33.357599+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Eternal Slayer crouches with one hand holding a cyan power cell and the other bracing the device. Two distinct hands, exposed biceps, green helmet and left shoulder launcher remain coherent; rainy Sentinel-compatible ruins differ from orbital CG01/forge CG03."
+      },
+      "findings": [],
+      "limitations": [
+        "The power cell and machinery are original scene props, not certified replicas of a specific in-game object; retractable blade is not deployed."
+      ]
+    },
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "nativePath": "/workspace/generated_images/exec-73efdf54-b40a-440d-9364-e851310f3f84.png",
+      "sha256": "c4cb98149a2514d456bce157735694595e6c6f6c555ce70e725d31593194a9c0",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.983632+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Corrected chain attaches to a separate underside ring below two free SuperShotgun muzzles. Airborne pose, two hands/two legs, left-side launcher and original foundry preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG05",
+          "type": "actionScene",
+          "nativePath": "/workspace/generated_images/exec-83ddbce3-d92b-488f-954a-0b1093ab72ee.png",
+          "sha256": "cbceb803c950686b311a1f2f61c8ef3fa05d51bae6b096f152599ac8dd55de5d",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-18T04:59:33.360274+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Dynamic complete airborne Slayer with two hands on SuperShotgun, two bent legs and left shoulder launcher; armor/anatomy otherwise coherent in a foundry."
+          },
+          "findings": [
+            "Chain visibly leaves a shotgun barrel muzzle instead of a separate underside Meathook mechanism. Reattach below both barrels; leave both muzzles unobstructed."
+          ],
+          "limitations": [
+            "Not accepted as current artwork until corrected mechanical attachment is reviewed."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "nativePath": "/workspace/generated_images/exec-1f78b303-8d44-4bbd-a530-18c327436a52.png",
+      "sha256": "4c97ea8d8736446747ad9442085bdbfb7fd1e7c6b0c6c819b1d992708ad84f95",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:59:33.367563+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Large forward step through a blue portal; anatomical left hand pushes the door at image right, right fist lowered, two complete legs/boots and left shoulder launcher. Dark green visor, olive plates and exposed biceps stable."
+      },
+      "findings": [],
+      "limitations": [
+        "Blade is retracted: complete internal gauntlet geometry is not verified. Gothic chamber is original, not a documented game room."
+      ]
+    },
+    {
+      "slot": "CG07",
+      "type": "victoryPose",
+      "nativePath": "/workspace/generated_images/exec-5a24e9bb-56bc-4335-929e-883a4ce9ca1c.png",
+      "sha256": "2af1eb637763f04ecfcf84cff974ee05dce5c0af10c591c4305e4e13abcfb043",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.927025+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Complete Eternal Slayer in a victory stance; right hand holds vertical SuperShotgun with two uncropped muzzles, left fist at chest and launcher on anatomical left shoulder. Exposed biceps, green visor and segmented armor stable."
+      },
+      "findings": [],
+      "limitations": [
+        "Muzzle margin is short but complete; original Sentinel city and hidden hardware are not certified exact replicas."
+      ]
+    },
+    {
+      "slot": "CG08",
+      "type": "defeatPose",
+      "nativePath": "/workspace/generated_images/exec-fa7f1ad8-6d87-4fdd-b032-e68b218abc92.png",
+      "sha256": "bea0554ac8b7a1c732482f46c418e530117b1082bacdaaa336dfcc17d6c6f199",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.934226+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Alive Slayer seated against a pillar, right leg extended and left knee raised; right hand on rubble, left hand at knee, two arms/two legs, closed green visor and left launcher. Hell-compatible ash/orange setting distinct from sunrise victory."
+      },
+      "findings": [],
+      "limitations": [
+        "Sole pattern and retracted blade mechanics are outside the inspected reference views."
+      ]
+    },
+    {
+      "slot": "CG09",
+      "type": "beachFamily",
+      "nativePath": "/workspace/generated_images/exec-d95e2948-a9bb-445c-96f1-778ae603222f.png",
+      "sha256": "f1c6183357486f8029f40f68c8b506477e15c72be0165383955cb11000b69193",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.942774+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Fully armored Eternal Slayer kneels at a sandcastle, right gloved hand uses a yellow shovel and left hand steadies sand. Helmet, exposed biceps, body armor and left shoulder launcher remain; no active weapon. Family beach theme clear."
+      },
+      "findings": [],
+      "limitations": [
+        "Fictional leisure scene, no claim of a canonical event or numerical age."
+      ]
+    },
+    {
+      "slot": "CG10",
+      "type": "maidService",
+      "nativePath": "/workspace/generated_images/exec-cffe82c0-1a35-4c39-a531-ce94a8799d07.png",
+      "sha256": "9b73dc61c32b132d72939dab5962cfa63757cb9b562f4680fcb093cfbab5273d",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.990546+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Two distinct hands: right supports tray with two mugs, left places a third mug. Cream apron over full Eternal armor, green visor/exposed biceps and left launcher retained; family space-canteen setting."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG11",
+      "type": "goofy",
+      "nativePath": "/workspace/generated_images/exec-893fd7b1-6305-473f-b5c9-f347f3697dbe.png",
+      "sha256": "b2850ac39bebd7def8c47f647a99b5601857124c22acf8f76412a7e9adf533d6",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:56.998495+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "True comic gag is rabbit at left glove and carrot in right hand, not an unobservable bootlace gag. Two arms/two legs, intact armor, left launcher and orbital greenhouse; no injury or romance."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG12",
+      "type": "alignmentSwap",
+      "nativePath": "/workspace/generated_images/exec-a5eab6fe-f779-4aae-8f2c-5b2cdcc45115.png",
+      "sha256": "01f70a383777b9b8b5c7fc50455e9f64f21bfbc6b5ffb971607e055a16eb1afb",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:57.006864+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "WhatIf red alignment scene: half-kneeling stance, one hand over red seal/crystal and other open. Eternal helmet/armor/exposed biceps and left launcher stable, no extra limbs; original red crystal lake distinct."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG13",
+      "type": "iconicOutfitSwap",
+      "nativePath": "/workspace/generated_images/exec-6a318479-b5b0-4291-b58d-a729c9af8252.png",
+      "sha256": "6859bb563864cd563e87318d61c56b0d07938ed33607ebb8ef1d09d70fa0598d",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:17:06.162127+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Classic1993 costume-only WhatIf: gray helmet slit now dark/opaque without invented eyes or face; green chest/shoulders, exposed upper arms, green trousers, full boots, pointing pose and Mars scene preserved. Eternal hardware intentionally omitted for this outfit slot."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art composition; hidden model faces, exact microgeometry and perfect visual likeness remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG13",
+          "type": "iconicOutfitSwap",
+          "nativePath": "/workspace/generated_images/exec-aa53bb80-dda0-44a4-afc6-b196b237592f.png",
+          "sha256": "a9887a7c864130b9711113e9cf39c1329e4fda82b8d388411b788dcc5c692818",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-18T05:14:57.009250+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Classic1993 outfit matches inspected costume scope: gray helmet, green chest/shoulders, exposed upper arms, green trousers and full boots; distinct pointing pose."
+          },
+          "findings": [
+            "Visible eyes/face in the helmet slit are not documented for the selected Eternal identity. Darken slit without invented eyes, preserve gray classic helmet, outfit, pose and scene."
+          ],
+          "limitations": [
+            "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG14",
+      "type": "zombieVersion",
+      "nativePath": "/workspace/generated_images/exec-3bb5d991-de2c-4471-8324-579145b214c8.png",
+      "sha256": "dd6582121f88b8c1c00e3bce398cce780183ff03fb84475c2dbb554afef8a283",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:17:06.168200+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Non-gory fictional armor corruption: cyan markings/cracks on olive Eternal suit, skin/anatomy intact, two arms/two legs, green visor and left launcher stable. Leaning walk with one hand reaching forward through original flooded UAC tunnel."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art composition; hidden model faces, exact microgeometry and perfect visual likeness remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG15",
+      "type": "futureExperienced",
+      "nativePath": "/workspace/generated_images/exec-63e26f4f-637c-43a3-8de5-ad1d2ff66cc2.png",
+      "sha256": "141b4879d9f9a8d511fdffd66f67ea660cfd2a7cef98c1b44d86eff3454cd5ea",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:17:06.170740+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Hypothetical future maintenance: seated on crate, right hand wipes complete twin-barrel SuperShotgun with cloth, left hand steadies stock; underside Meathook remains. Two arms/two complete legs/boots, olive armor and left launcher stable. Original lunar hangar at sunset, no canon aging/face invented."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art composition; hidden model faces, exact microgeometry and perfect visual likeness remain uncertified."
+      ]
+    }
+  ],
+  "summary": {
+    "reviewedCurrentSlots": 15,
+    "acceptedForPackaging": 15,
+    "openIssues": 0,
+    "correctionsRequested": 0,
+    "perfectVisualFidelityCertified": false
+  },
+  "limitations": [
+    "480p trailer frames and cropped weapon stock limit certainty about small engravings and hidden hardware.",
+    "Promotional cover crops lower legs and does not provide a complete turnaround.",
+    "Classic1993 cover concerns CG13 costume only, not the identity target for the other slots.",
+    "Three official1080p trailer frames were additionally inspected before final approval; they improve body/launcher/weapon evidence but still do not show a full model turnaround."
+  ],
+  "incarnationDecision": {
+    "status": "explicit-target-change-from-previous-doom-2016-plan",
+    "reason": "The roster loadout names Doomblade, Flame Belch and Super Shotgun Meathook, matching Eternal2020. This wave selects Eternal2020; the previous 2016 plan is not blended into the design."
+  },
+  "sourceEvidenceFile": "docs/cg/doomslayer-reference-evidence-wave2-2026-10-18.json",
+  "observedIdentityLocks": [
+    "Eternal2020: olive segmented helmet, black brow vents, broad dark green visor and metallic respirator/jaw.",
+    "Muscular two-arm/two-leg silhouette; natural upper arms remain exposed between rounded shoulder plates and forearm armor.",
+    "Doomblade on anatomical left forearm, shoulder launcher above/behind anatomical left shoulder; source side view supports the mounting.",
+    "SuperShotgun: exactly two adjacent barrels, break-action engraved receiver and separate underside Meathook; no generic rifle substitution.",
+    "CG13 alone uses separately sourced Classic1993 marine costume."
+  ],
+  "updatedAt": "2026-10-18T05:14:57.009271+00:00",
+  "reviewCompletedAt": "2026-10-18T05:17:06.170764+00:00",
+  "deliveryReceiptFile": "docs/cg/doomslayer-wave2-2026-10-18.json"
+}

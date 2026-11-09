@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const D = 'docs/combat-fidelity-wave17-2026-11-02/part-c';
+const id = process.argv[2];
+if (!/^[a-z0-9_]+$/.test(id || '')) throw Error('Invalid planned identity');
+const initial = JSON.parse(fs.readFileSync(D + '/pre-generation-receipt.json'));
+const amended = JSON.parse(fs.readFileSync(D + '/pre-generation-amendment-1.json'));
+const second = fs.existsSync(D + '/pre-generation-amendment-2.json') ? JSON.parse(fs.readFileSync(D + '/pre-generation-amendment-2.json')) : { requests: [] };
+const request = second.requests.find(r => r.heroId === id) || amended.requests.find(r => r.heroId === id) || initial.requests.find(r => r.heroId === id);
+if (!request) throw Error('Identity is outside the frozen40');
+console.log(JSON.stringify(request));

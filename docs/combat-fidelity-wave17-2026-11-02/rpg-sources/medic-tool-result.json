@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen",
+  "provider": "OpenAI",
+  "toolArguments": {
+    "prompt": "Create exactly ONE transparent-background pixel-art sprite atlas, 4 columns by 4 rows, containing exactly SIXTEEN complete independently drawn poses of RED Medic in Team Fortress 2, stock loadout: adult man with slicked-back dark hair, round spectacles, long white lab coat, dark trousers and boots, RED gloves and medical backpack. Complete two-handed stock Medi Gun with thick backpack hose. No Kritzkrieg, Vaccinator, shotgun or syringe-ray damage.\nSource: Team Fortress 2, RED Medic with stock Medi Gun.\nStock Medi Gun support, zero damage. Row 1: four rightward arrivals carrying complete Medi Gun and attached hose/backpack. Row 2: four different beam-targeting preparations. Row 3: aimed nozzle, steady stance, active Über-ready nozzle aimed at a patient outside the cell at column 3, stable follow-through. Row 4: four lowering/recovery steps. Do not draw a patient, a beam outside the cell, a shield bubble or damaging shot; engine draws only a validated connected healing beam.\nAll figures face RIGHT. Wide empty transparent gutters separate every figure and every row. Each character, all hair, hands, feet, equipment and full weapon must fit wholly in its own cell, never touch or cross a cell edge. Keep one consistent body scale and recognisable source clothing in all16 poses. Pixel-art videogame side view, clean silhouette, neutral non-graphic action, fully clothed. Exactly four complete figures per row; no extra thumbnails, text, labels, grid lines, ground, background, shadows on floor, opponent or scenery. Transparent alpha background is required. Each pose is genuinely different; no duplicates or mirrored frames. Row order: arrival, preparation, action, recovery; release/contact is column3 (zero-based column2).",
+    "transparent_background": true
+  },
+  "actualReturnedFile": "/workspace/generated_images/exec-88214db7-5fae-4b1e-9bb4-dc5b8af5f964.png",
+  "actualOutputHint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-88214db7-5fae-4b1e-9bb4-dc5b8af5f964.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "base64RetainedAsActualPng": true,
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "generatedPosesObserved": null,
+  "reviewed": false
+}

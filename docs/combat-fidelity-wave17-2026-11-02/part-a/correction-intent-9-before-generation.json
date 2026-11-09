@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-02T07:12:19.829Z",
+  "executed": false,
+  "reason": "Independent anchor reviewer confirmed that the complete replacement atlas still has a darker grayer face than the actually viewed primary manual portrait. Correct its warm light tan/orange face via image_gen; preserve the existing48 poses and count zero additional poses.",
+  "additionalPosesClaimed": 0,
+  "requests": [
+    {
+      "id": "tail_concerto_alicia",
+      "kind": "primary-face-tone-correction",
+      "slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sourceRows": 6,
+      "sourceColumns": 8,
+      "arguments": {
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/part-a/sources/tail_concerto_alicia-primary-feline-role-correction.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave17-2026-11-02/part-a/research/tail-alicia-page19.png"
+        ],
+        "prompt": "Edit the FIRST attached48-pose pixel-art source atlas of Alicia Pris to match her FACE COLOUR in the SECOND attached actual Tail Concerto1998 manual portrait. Preserve the exact48 complete independent poses,8columns6rows, black hair/ears/tail, white-blond front bangs, blue eye, right-eye eyepatch, white gloves, red-and-gold top, loose red trousers and boots. Keep all hands empty; no radio, device or weapon. Preserve transparent background and clear gutters.\n\nThe ONLY required visual correction is the exposed FACE AND MUZZLE complexion in EVERY one of48 figures: it must be a LIGHT WARM GOLDEN-ORANGE TAN, visibly lighter and much warmer than the present dark charcoal/gray-brown face. Use the SECOND official manual portrait as the authority for that warm tan/orange face skin. A representative midtone is a warm amber-tan around#D59B68, with warm lighter highlights and warm brown shadows. The face must NOT remain dark gray, charcoal, gray-brown or black. Keep the surrounding short BLACK HAIR/fur framing the cheeks and BLACK cat ears distinct from the LIGHT WARM TAN FACE. Keep WHITE-BLOND front bangs distinct. Do not recolour clothes, hair, gloves, background or the black cat tail. No other anatomy changes, extra figures, missing limbs, duplicated poses, labels, text, scenery, injury or blood."
+      }
+    }
+  ]
+}

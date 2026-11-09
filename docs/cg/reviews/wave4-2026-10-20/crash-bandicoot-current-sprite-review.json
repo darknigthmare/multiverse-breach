@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "crash_bandicoot",
+  "reviewer": "cg_jack_sparrow_suite",
+  "status": "divergence-incarnation",
+  "priority": "incarnation-followup-after-current-wave4-lot",
+  "runtimeSelection": {
+    "function": "getHeroSpriteSheetSrc(HEROES_DB.find(id=crash_bandicoot))",
+    "path": "/sprites/generated/heroes/crash-bandicoot/crash-bandicoot.png",
+    "selectedInRuntime": true,
+    "sha256": "b5436a3c3256a012527c6fbb225f89a0b0cb9bd560360634ef54d90cd9b1a2c2",
+    "bytes": 1029115,
+    "width": 1024,
+    "height": 1024,
+    "layout": {
+      "columns": 4,
+      "rows": 4
+    }
+  },
+  "actuallyViewedWholeAtlas": true,
+  "wholeAtlasContextFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "detailedFramesActuallyViewed": [
+    {
+      "frame": 0,
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-current-sprite-inspection/frame00-nearest.png",
+      "sha256": "bb6626a4744d6a4c64dff8c97e7e9ace37a7c6ec4601438c26bec5dcd6f7d00d",
+      "actuallyViewed": true,
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      },
+      "usedAsIndependentReference": false
+    },
+    {
+      "frame": 12,
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-current-sprite-inspection/frame12-nearest.png",
+      "sha256": "1a3929245d8b9044ed2a85125a514c6246a7984af293477720e63e9d71eca16b",
+      "actuallyViewed": true,
+      "crop": {
+        "left": 0,
+        "top": 768,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      },
+      "usedAsIndependentReference": false
+    }
+  ],
+  "targetIncarnation": "Crash Bandicoot4 It’s About Time(2020), base Toys for Bob design from actual official Activision screenshots/keyart",
+  "franchiseAuthority": false,
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "officialComparisonSources": [
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-keyart-foreground.png",
+      "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/hero/Header_Keyart_FG.png",
+      "sha256": "7b556f658d637432c97d24474851218ddceb39b8924b6dbd9829f930a1c39280",
+      "actuallyViewed": true
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-launch-crash.jpg",
+      "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/CB4_Screenshot_Launch_1_Crash.jpg",
+      "sha256": "086f3a279d80eae740c7bb6566f29f03228ad26db2adb26e3866171b6515573b",
+      "actuallyViewed": true
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-reveal-01.png",
+      "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/Quantum_Screenshot_Marketing_Reveal_01.png",
+      "sha256": "7e047643f8e329264f6b02df490b98557b5eb36f594de676379874fedcdf06f8",
+      "actuallyViewed": true
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/crash-bandicoot/official-reveal-04.png",
+      "url": "https://www.crashbandicoot.com/content/dam/atvi/Crash/crash-touchui/quantum/home/gallery/Quantum_Screenshot_Marketing_Reveal_04.png",
+      "sha256": "809aec6c189a1024540cb98669c31fdcfcf0df39dfe9a9047902e9f8fdec5359",
+      "actuallyViewed": true
+    }
+  ],
+  "findings": [
+    {
+      "scope": "frame00 and whole atlas",
+      "severity": "incarnation-divergence",
+      "finding": "Selected sprite remains recognizable Crash but uses a more compact classic-style head/torso and short narrow jagged hair tufts, unlike the broad flowing red-orange swept tuft and larger rounded expressive eye/muzzle proportions documented for Crash4.",
+      "limit": "No exact earlier game incarnation is inferred from resemblance; it is a project-generated rendering, not an official historical Crash model."
+    },
+    {
+      "scope": "frame00",
+      "severity": "costume-detail-divergence",
+      "finding": "Selected blue cropped trousers and small red shoes broadly preserve Crash colors but do not establish the specific broad light rolled denim cuffs and rounded broad-toe sneaker design seen in official Crash4 reveal01.",
+      "limit": "Small pixel-art seam and lace details cannot be certified1:1."
+    },
+    {
+      "scope": "frame00 and official keyart",
+      "severity": "supporting-palette-difference",
+      "finding": "Selected nose is rendered mostly black/grey while the official keyart uses a warm dark-maroon nose.",
+      "limit": "Lighting can darken the official nose too; this color alone is not used to establish incarnation divergence."
+    }
+  ],
+  "framingObservation": {
+    "initialHypothesis": "Whole-sheet glance suggested possible last-row top overlap.",
+    "checkedFrame": 12,
+    "result": "No cropped hair/ears/shoes observed in the actual frame12 technical crop; initial suspicion is not confirmed for this checked cell.",
+    "limit": "Detailed individual packing was checked only for frames00 and12; no claim that all16 cells pass or fail packing."
+  },
+  "recommendation": "Keep the current sprite as the selected historical project variant until a separately reviewed Crash4 atlas replacement is produced from the official source set; preserve the old bytes as a selectable prior variant. Root scheduled any new atlas work after Neris/current lot.",
+  "mutations": {
+    "runtimeChanged": false,
+    "selectedSpriteChanged": false,
+    "wave3Changed": false,
+    "finalCrashCgChanged": false
+  },
+  "limits": [
+    "Read-only visual comparison, not a full16-cell independent animation QA.",
+    "Generated project sprite is never promoted as independent franchise authority.",
+    "No perfect1:1 certification and no source game assigned to the older rendering."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "heroId": "beyond_good_evil_jade",
+  "reviewedAt": "2026-11-02T05:25:15.882Z",
+  "actuallyViewedSourceImages": [
+    {
+      "id": "jade-motion-a",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-a.native.png",
+      "sha256": "e7349dcaa5bca31428038f5adee21adaa0530938f3abbe05a9a872a8989af16d"
+    },
+    {
+      "id": "jade-motion-b",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.native.png",
+      "sha256": "3f36a1194b9fb7e971705265e5641ac0cb34411361ac47125cd46433182f4d7d"
+    },
+    {
+      "id": "jade-defense",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-defense.native.png",
+      "sha256": "8adfb1dab14b29d1515923becbddbe2c53d776376c6bcf6319a6067d271dcff3"
+    },
+    {
+      "id": "jade-combat-a-1",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-1.native.png",
+      "sha256": "4ba09f7ad39b1e9c4106d688aa9edb935f58c031097342f82f9e291051099818"
+    },
+    {
+      "id": "jade-combat-a-2",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-a-2.native.png",
+      "sha256": "3457178cba10dc3e8d4d64f5348a674bc223a1c27a8638729cb5457f904340c4"
+    },
+    {
+      "id": "jade-combat-b-1",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-1.native.png",
+      "sha256": "95ddaf6f010b207f166cfb291e41d8146bddcf3f79648bbe2f6da75d20bdad56"
+    },
+    {
+      "id": "jade-combat-b-2",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.native.png",
+      "sha256": "87adce36581d38d54fd283a3905882f3001cec11b04b204b74acb9881b95544f"
+    },
+    {
+      "id": "jade-ledge-1",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-1.native.png",
+      "sha256": "05f602be0c5e179a3cc0cebc854c44f304946c854aa496ae04a7a163ee6e424d"
+    },
+    {
+      "id": "jade-ledge-2",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png",
+      "sha256": "dd1599e5deefc61c6a04d75c1cdbb86d291d0bf21b3dc39780d032712dbdfdad"
+    },
+    {
+      "id": "jade-correction-a",
+      "path": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.native.png",
+      "sha256": "517d26e8c62ee9246988bd8bdb5aa6ceb6afbe8a8942bf2b13c864845a676dcc"
+    }
+  ],
+  "source1to1Verified": false,
+  "complete": true,
+  "retainedStates": 45,
+  "retainedDistinctPoses": 180,
+  "observedBodies": 200,
+  "excludedCompleteDrawings": 16,
+  "excludedRows": [
+    {
+      "state": "taunt1",
+      "row": 5,
+      "poses": 4,
+      "reason": "Camera row was drawn as cropped lower bodies; all four native drawings excluded, no body repair or compositing.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-motion-b.native.png"
+    },
+    {
+      "state": "reservedGripStudy",
+      "row": 3,
+      "poses": 4,
+      "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-combat-b-2.native.png"
+    },
+    {
+      "state": "reservedStandingStudy",
+      "row": 2,
+      "poses": 4,
+      "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png"
+    },
+    {
+      "state": "reservedCameraStudy",
+      "row": 3,
+      "poses": 4,
+      "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-ledge-2.native.png"
+    },
+    {
+      "state": "reservedStandingStudy",
+      "row": 3,
+      "poses": 4,
+      "reason": "Reserved study, excluded from gameplay and delivered-pose counts.",
+      "sourceImage": "docs/combat-fidelity-wave17-2026-11-02/jade-sources/jade-correction-a.native.png"
+    }
+  ],
+  "notes": "All ten actual image_gen returns were individually seen. Exact complete-body state rows were classified by returned content; 200observed native drawings include180retained and20excluded. No correction constructs a pose from body parts or borrows a different-state drawing.",
+  "excludedCandidateDrawings": 20,
+  "excludedIncompleteDrawings": 4,
+  "observedFullBodyCompleteCandidates": 196,
+  "completenessClarifiedAt": "2026-11-02T06:36:20.902424+00:00"
+}
