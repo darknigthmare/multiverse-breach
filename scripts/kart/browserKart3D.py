@@ -47,6 +47,9 @@ def main():
                     page.locator(f'[data-pilot-id="{hero}"]').click()
                     expected_model = {'arca_mirelle': 'suture-disc', 'masterchief': 'warthog', 'ripley': 'narcissus'}[hero]
                     expect(page.locator('.kart-identity-brief')).to_have_attribute('data-vehicle-model', expected_model)
+                    kart_preview = page.locator('.race-preflight-karts .race-kart-option.active').first
+                    expect(kart_preview.locator('.kart-sprite-preview')).to_have_attribute('data-sprite-status', 'ready')
+                    kart_preview.screenshot(path=str(out / f'{name}-vehicle-card.png'))
                     page.get_by_role('combobox', name='Univers des circuits').select_option(universe)
                     # Pick the curated universe circuit, not a legacy Nexus loop.
                     page.locator('.race-track-option[data-track-id^="kart-"]').first.click()

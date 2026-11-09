@@ -17,7 +17,14 @@
 .kart-sprite-preview canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
 .kart-sprite-preview > span { position: absolute; font-size: 22px; color: #9dbebd; }
 .kart-garage-preview { width: min(100%, 240px); height: 200px; margin: 12px auto; }
-.race-kart-option .kart-sprite-preview { width: 128px; height: 112px; }
+.race-preflight-shell .race-kart-option {
+  grid-template-columns: minmax(0, 1fr); align-content: start; align-items: start; gap: 6px; min-width: 0;
+}
+.race-kart-option > .kart-sprite-preview {
+  grid-row: auto; justify-self: center; width: min(100%, 128px); height: 112px;
+  border: 0; border-radius: 4px; background: radial-gradient(ellipse, #24585b66, #06121d00);
+}
+.race-kart-option > strong, .race-kart-option > small { overflow-wrap: anywhere; }
 .kart-presentation-choice { display: flex; flex-wrap: wrap; gap: 18px; margin: 18px 0 0; padding: 14px; border: 1px solid #7bdfcb44; color: #d6fff7; }
 .kart-presentation-choice label { display: flex; align-items: center; min-height: 44px; gap: 8px; cursor: pointer; }
 .kart-presentation-choice input { accent-color: #65eec8; width: 18px; height: 18px; }
