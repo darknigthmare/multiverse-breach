@@ -119,7 +119,7 @@ export const collectAssetReferences = (root, packs) => {
   return references;
 };
 
-const directoryUniverseSlug = path => path.match(/^public\/(?:sprites\/generated\/(?:heroes|bosses|items)|cg|backgrounds\/lore-stages|reviews)\/([^/]+)\//)?.[1];
+const directoryUniverseSlug = path => path.match(/^public\/(?:sprites\/generated\/(?:heroes|bosses|items)|cg|kart|backgrounds\/lore-stages|reviews)\/([^/]+)\//)?.[1];
 
 const historicalDirectoryReason = new Map([
   ['alien-1979', 'historical-directory-without-current-universe-alias'],

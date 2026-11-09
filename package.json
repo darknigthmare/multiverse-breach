@@ -8,6 +8,9 @@
   },
   "scripts": {
     "dev": "vite",
+    "test:kart": "node --test scripts/kartModels.test.mjs scripts/kart/*.test.mjs scripts/raceKeyboardInput.test.mjs scripts/raceSessionControls.test.mjs scripts/kartCareerSave.test.mjs scripts/fighterRaceGameplayAudit.test.mjs",
+    "kart:assets:build": "node scripts/kart/buildKartAssets.mjs --all",
+    "kart:assets:check": "node scripts/kart/buildKartAssets.mjs --check",
     "test:reaudit": "node --test --test-concurrency=2 scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs scripts/fixedStepClock.test.mjs",
     "prebuild": "npm run assets:prepare && npm run test:dlc && npm run test:discipline && npm run test:cloud-meadow && npm run check:gamedev-guides && npm run test:ui-immersion && npm run test:reaudit && npm run sprites:availability:check && npm run test:audit-reliability && npm run test:audit-followup && npm run test:audit-combat && npm run assets:build:audit && npm run sprites:manifest:check && npm run test:deployment-inputs && npm run test:conversation && npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run cg:fidelity:audit && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run sprites:provenance:audit && npm run test:character-png && npm run sprites:characters:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression && npm run test:audit-tactics",
     "test:deployment-inputs": "node --test scripts/vercelUploadManifest.test.mjs",

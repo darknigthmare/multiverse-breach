@@ -66,6 +66,7 @@ const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const rpgEngineSource = readGameSource('src/game/engineRpg.js');
 const raceModeSource = read('../src/components/RaceMode.jsx');
+const kartSpritePreviewSource = read('../src/components/KartSpritePreview.jsx');
 const kartCareerSource = readGameSource('src/game/kartCareer.js');
 const fighterModeSource = read('../src/components/FighterMode.jsx');
 const fighterEngineSource = readGameSource('src/game/engineFighter.js');
@@ -775,11 +776,19 @@ assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCa
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
-assert(raceEngineSource.includes('arca-mirelle-hud-avatar.png') && raceModeSource.includes('race-mode-pilot-icon'), 'Race pilot HUD must use a cropped Mirelle icon instead of a full sprite plaque.');
+assert(raceModeSource.includes('<KartSpritePreview spec={pilotSpec}')
+  && kartSpritePreviewSource.includes('getKartDriverFrame(spec, source)')
+  && kartSpritePreviewSource.includes('ctx.drawImage(drawable, sx, sy, sw, sh,'),
+  'Race pilot previews must crop the selected character\'s declared atlas cell.');
 assert(raceEngineSource.includes('drawRaceCameraBackdrop') && raceEngineSource.includes('drawRearRoad') && raceEngineSource.includes('drawRearPlayerKart'), 'Race mode must render from a rear kart camera, not only a top-down circuit.');
 assert(raceEngineSource.includes('const sprite = this.images.kartDirections') && raceEngineSource.includes('const row = 1'), 'Rear kart camera must crop Mirelle from the rear-facing direction row.');
 assert(raceEngineSource.includes('projectToRearCamera') && raceEngineSource.includes('drawProjectedRaceObjects'), 'Race objects and rivals must be projected into the rear camera view.');
-assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.includes('vue de dessus reste limitee a la mini-map'), 'Race top-down view must stay limited to the minimap.');
+assert(raceEngineSource.includes('drawTopDownMinimap')
+  && raceModeSource.includes('new KartRenderer3D')
+  && raceModeSource.includes('rendererRef.current?.setCameraMode(cameraMode)')
+  && raceModeSource.includes('<option value="overview">')
+  && raceModeSource.includes('<option value="chase">'),
+  'Race must retain its minimap and expose both real 3D cameras on the shared simulation.');
 [
   'arca-mirelle-rpg.png',
   'arca-mirelle-tactics.png',
@@ -850,7 +859,10 @@ assert(hubSource.includes('drawExtinctionProtocols(ctx, state, canvas.width, can
   && hubSource.includes('ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, effect.x, effect.y, effect.w, effect.h)'),
   'FPS projectile rendering must keep world protocol effects and the decoded dedicated overlay with its own aspect and muzzle timing.');
 assert(raceEngineSource.includes('drawRearKartActionOverlay') && raceEngineSource.includes('KART_ITEM_FRAMES') && raceEngineSource.includes('this.images.kartItems') && raceEngineSource.includes('this.images.hudIcons'), 'Race mode must render Mirelle kart actions, item sheet, and HUD icon sheet in playable views.');
-assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('RACE_ASSETS.hudGarage') && raceModeSource.includes('RACE_ASSETS.kartItems'), 'Race tab must expose Mirelle garage and item sheets outside admin preview.');
+assert(raceModeSource.includes('race-garage-card')
+  && raceModeSource.includes('<KartSpritePreview spec={displayedKartSpec} kind="kart"')
+  && raceModeSource.includes('RACE_ASSETS.kartItems'),
+  'Race garage must show the chosen pilot\'s painted kart and its playable item controls.');
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
 assert(raceEngineSource.includes('getClosestRoadPoint') && raceEngineSource.includes('this.track.roadWidth') && raceEngineSource.includes('this.track.shortcuts'), 'Race physics and minimap must follow the active track path instead of one fixed oval.');
 assert(raceEngineSource.includes('getProjectedTrackSegments') && raceEngineSource.includes('normalizeTrackObjects') && raceEngineSource.includes('closestPointOnPath'), 'Race rear camera, physics, and objects must be anchored to the same track geometry.');
@@ -864,7 +876,17 @@ assert(
 assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes('setTrackId') && raceModeSource.includes('trackList.map'), 'Race tab must let the player switch between available kart tracks.');
 assert(raceModeSource.includes('keyPulseRef') && raceModeSource.includes('pulseVirtualKey'), 'Race controls must keep short keyboard and touch inputs alive long enough for the engine loop.');
 assert(raceModeSource.includes('autoAccelerateRef') && raceModeSource.includes('recoverPlayer') && raceModeSource.includes('data-track-factor'), 'Race controls must provide assisted acceleration, manual recovery, and visible track-lock telemetry.');
-assert(raceEngineSource.includes('lapArmed') && raceEngineSource.includes('previousRouteProgress') && raceEngineSource.includes('previousProgress - routeProgress > 0.28'), 'Race laps must use ordered route gates so figure-eight and portal tracks cannot become impossible to finish.');
+// The selected pilot, cropped frame, cameras and ordered lap gates are runtime
+// contracts. Do not require the former Mirelle-only panel or lap formula.
+const kartRuntimeAudit = spawnSync(process.execPath,
+  ['--test', '--test-concurrency=1',
+    fileURLToPath(new URL('./kart/kartRaceIntegration.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartDriver2D.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartRenderer3D.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./kart/kartLapProgress.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!kartRuntimeAudit.error && kartRuntimeAudit.status === 0,
+  'Race selected-pilot identity, atlas crops, 3D cameras and ordered lap/portal contracts failed.');
 assert(raceEngineSource.includes('getTrackPointAhead(road, lookAhead)') && raceEngineSource.includes('assistStrength'), 'Race steering must use a forward route target for player stability and AI navigation.');
 assert(raceEngineSource.includes('startBoostWindow') && raceEngineSource.includes('driftCharge') && raceEngineSource.includes('Mini-turbo violet'), 'Race mode must include start boost and charged mini-turbo handling.');
 assert(raceEngineSource.includes("zone.type === 'jump'") && raceEngineSource.includes("zone.type === 'portal'") && raceEngineSource.includes("zone.type === 'slow'"), 'Race mode must include jump, portal, and slow interactive surfaces.');
@@ -1200,7 +1222,8 @@ console.log(JSON.stringify({
   fighterGameplay: ['flat-arena', 'one-active-fighter', 'three-slot-tag', 'guard-break', 'combos', 'specials', 'projectiles', 'crouch', 'ai-difficulties'],
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
-  racePilotSprite: 'mirelle-kart-openai-sheet',
+  racePilotSprite: 'selected-character-cropped-atlas',
+  racePresentations: ['webgl-3d', 'rear-camera-2d-sprites'],
   mirelleCompleteSpritePack: 16,
   mirelleSpriteRouting: ['rpg', 'tactics', 'melee', 'nexus', 'hud', 'fps', 'kart', 'admin-preview'],
   meleeArenaLayouts: 17,
