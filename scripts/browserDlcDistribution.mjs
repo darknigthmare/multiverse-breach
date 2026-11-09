@@ -19,6 +19,7 @@ await access(resolve(dist, 'index.html'));
 const profile = JSON.parse(await readFile(resolve(root, 'DLC/distribution.json'), 'utf8'));
 const identities = JSON.parse(await readFile(resolve(root, 'DLC/content-identities.json'), 'utf8'));
 const { DLC_PACK_MANIFESTS } = await import(pathToFileURL(resolve(root, 'DLC/index.js')).href);
+const { PERMANENT_OC_BOOSTERS } = await import(pathToFileURL(resolve(root, 'src/game/portalBoosterCatalog.js')).href);
 const installedIds = new Set(profile.mode === 'all'
   ? DLC_PACK_MANIFESTS.map(pack => pack.id) : profile.packIds);
 const halo = DLC_PACK_MANIFESTS.find(pack => pack.universe === 'Halo');
@@ -318,7 +319,31 @@ async function scenario(viewport) {
     await page.getByRole('button', { name: 'BACK TO NEXUS', exact: true }).waitFor();
     await activateWithKeyboard(page, page.getByRole('button', { name: 'CHOOSE A BOOSTER', exact: true }));
     const catalog = page.getByRole('dialog', { name: 'Booster catalog', exact: true });
-    await catalog.getByLabel('Search an active booster', { exact: true }).waitFor();
+    const boosterSearch = catalog.getByRole('searchbox', { name: 'Search every booster', exact: true });
+    await boosterSearch.waitFor({ state: 'visible' });
+    const boosterScope = catalog.getByRole('combobox', { name: 'Show', exact: true });
+    assert.equal(await boosterScope.inputValue(), 'available');
+    const searches = [];
+    const checkBoosterSearch = async (query, expectedIds) => {
+      await boosterSearch.fill(query);
+      await page.waitForFunction(count => document.querySelector('.portal-catalog-results')?.textContent === `${count} matching booster(s)`, expectedIds.length);
+      const ids = await catalog.locator('[data-preview-booster]').evaluateAll(nodes => nodes.map(node => node.dataset.previewBooster));
+      assert.deepEqual(ids.sort(), [...expectedIds].sort(), `Incorrect booster search for ${query}`);
+      assert.equal(await boosterScope.inputValue(), 'all', 'Search must include the complete installed, active catalogue');
+      assert.equal(await boosterScope.isDisabled(), true);
+      searches.push({ query, ids, count: ids.length });
+    };
+    const nexusIds = PERMANENT_OC_BOOSTERS.filter(pack => pack.universe === 'Nexus de Convergence').map(pack => pack.id);
+    assert.ok(nexusIds.length > 0, 'The exported base must retain its authored Nexus boosters');
+    await checkBoosterSearch('Nexus de Convergence', nexusIds);
+    // Halo was placed back in reserve above, including in Halo distributions.
+    // Global search must not resurrect a reserved or uninstalled universe.
+    for (const universe of new Set([halo.universe, absent?.universe].filter(Boolean))) await checkBoosterSearch(universe, []);
+    await catalog.getByRole('button', { name: 'Clear search', exact: true }).click();
+    assert.equal(await boosterSearch.inputValue(), '');
+    assert.equal(await boosterScope.inputValue(), 'available');
+    assert.equal(await boosterScope.isDisabled(), false);
+    result.portalSearches = searches;
     await assertResponsive(page, 'portal', result);
     await screenshot('portal');
     assertPreserved(await savedTrace(page));

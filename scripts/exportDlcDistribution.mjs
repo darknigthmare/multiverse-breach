@@ -9,6 +9,7 @@ import {
   buildDlcDistributionPlan, createDlcDistributionReceipt, readDlcDistributionManifests, resolveDlcSelection,
 } from './dlcDistribution.mjs';
 import { createDlcProfileTransformer } from './dlcProfileTransform.mjs';
+import { DLC_SHARED_DEPENDENCIES } from './dlcSharedAssetDependencies.mjs';
 import { auditDlcDistribution, DLC_DISTRIBUTION_RECEIPT } from './auditDlcDistribution.mjs';
 import {
   assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile, slash,
@@ -57,6 +58,7 @@ function loadProfile(root, profile) {
 function collectSourceFiles(root, selection) {
   const files = new Set(COMMON_DLC_FILES);
   for (const file of COMMON_DLC_FILES) inspectDistributionPath(root, file);
+  if (inspectDistributionPath(root, DLC_SHARED_DEPENDENCIES, { optional: true })) files.add(DLC_SHARED_DEPENDENCIES);
   inspectDistributionPath(root, 'src', { directory: true });
   for (const relative of SOURCE_TREES) {
     for (const file of listDistributionFiles({ root, relative, ignore: ignoredSource })) files.add(file);
@@ -214,23 +216,41 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
   }
 }
 
+const EXPORT_USAGE = `Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY [--source-revision FULL_GIT_SHA]
+
+Export an independent source distribution and audit its files before publishing.
+Without --source-revision, the export remains valid for standalone builds.
+Pin the actual full source commit explicitly when preparing differential packages;
+their base and target exports must declare the same revision. This value is not a signature.
+The output must be a new directory outside the canonical source tree.`;
+
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
   try {
     const args = process.argv.slice(2);
-    let profile;
-    let out;
-    for (let index = 0; index < args.length; index += 2) {
-      const flag = args[index];
-      const value = args[index + 1];
-      if (!value || value.startsWith('--')) throw new Error('Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY');
-      if (flag === '--profile' && profile === undefined) profile = value;
-      else if (flag === '--out' && out === undefined) out = value;
-      else throw new Error('Unknown or duplicate export option: ' + flag);
+    if (args.length === 1 && ['--help', '-h'].includes(args[0])) {
+      console.log(EXPORT_USAGE);
+    } else {
+      let profile;
+      let out;
+      let sourceRevision;
+      for (let index = 0; index < args.length; index += 2) {
+        const flag = args[index];
+        const value = args[index + 1];
+        if (!value || value.startsWith('--')) throw new Error(EXPORT_USAGE);
+        if (flag === '--profile' && profile === undefined) profile = value;
+        else if (flag === '--out' && out === undefined) out = value;
+        else if (flag === '--source-revision' && sourceRevision === undefined) sourceRevision = value;
+        else throw new Error('Unknown or duplicate export option: ' + flag);
+      }
+      if (sourceRevision !== undefined && !/^[a-f0-9]{40}$/.test(sourceRevision)) {
+        throw new Error('--source-revision must be a full lowercase Git commit SHA (40 hexadecimal characters).');
+      }
+      if (!profile || !out) throw new Error(EXPORT_USAGE);
+      const result = exportDlcDistribution({ profile, out, sourceRevision });
+      console.log(JSON.stringify({ passed: true, output: slash(result.out), profile: result.profile,
+        sourceRevision: result.receipt.sourceRevision ?? null,
+        packs: result.packCount, assets: result.assetCount, sources: result.sourceFileCount, transformedFiles: result.transformedFiles.length }));
     }
-    if (!profile || !out) throw new Error('Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY');
-    const result = exportDlcDistribution({ profile, out });
-    console.log(JSON.stringify({ passed: true, output: slash(result.out), profile: result.profile,
-      packs: result.packCount, assets: result.assetCount, sources: result.sourceFileCount, transformedFiles: result.transformedFiles.length }));
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

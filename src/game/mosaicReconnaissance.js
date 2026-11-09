@@ -1,3 +1,4 @@
+import { getFieldOperationPreferences } from './fieldOperationPreferences.js';
 import { MOSAIC_INTERACTION_RANGE } from './mosaicCityRuntime.js';
 
 const identifier = value => typeof value === 'string' && value.trim() ? value : null;
@@ -30,8 +31,13 @@ export function normalizeMosaicReconnaissance(saved = {}) {
     const value = record(raw), universe = identifier(value.universe);
     if (!identifier(id) || !universe) return [];
     const residentId = identifier(value.residentId);
-    const exhibitId = residentId ? identifier(value.exhibitId) : null;
-    return [[id, { universe, residentId, exhibitId, completed: Boolean(exhibitId && value.completed === true) }]];
+    const crossCheck = value.exhibitGoal === 2;
+    const evidenceIds = crossCheck && residentId && Array.isArray(value.evidenceIds)
+      ? [...new Set(value.evidenceIds.map(identifier).filter(Boolean))].slice(0, 2) : [];
+    const exhibitId = residentId && (!crossCheck || evidenceIds.length === 2)
+      ? (crossCheck ? evidenceIds[1] : identifier(value.exhibitId)) : null;
+    return [[id, { universe, residentId, exhibitId, completed: Boolean(exhibitId && value.completed === true),
+      ...(crossCheck ? { exhibitGoal: 2, evidenceIds } : {}) }]];
   }));
   const activeDistrictId = identifier(source.activeDistrictId);
   return {
@@ -61,21 +67,33 @@ export function getMosaicReconnaissanceObjective(progress, dossier, lang = 'fr')
     report: ['Rejoins l’ancre locale et transmets ton rapport.', 'Reach the local anchor and submit your report.'],
     done: ['Rapport transmis. Cette reconnaissance est archivée.', 'Report submitted. This reconnaissance is archived.']
   };
+  const evidenceIds = saved?.exhibitGoal === 2 ? saved.evidenceIds || [] : [];
+  if (step === 'exhibit' && saved?.exhibitGoal === 2) texts.exhibit = [
+    `Enquête croisée : examine deux reliques distinctes de ${dossier.universe} (${evidenceIds.length}/2).`,
+    `Cross-check: inspect two distinct ${dossier.universe} relics (${evidenceIds.length}/2).`
+  ];
   const [fr, en] = texts[step];
+  const crossCheck = saved?.exhibitGoal === 2;
+  const index = crossCheck
+    ? ({ accept: 0, resident: 0, exhibit: 1 + evidenceIds.length, report: 3, done: 4, unavailable: 0 })[step]
+    : ({ accept: 0, resident: 0, exhibit: 1, report: 2, done: 3, unavailable: 0 })[step];
   return {
     districtId: dossier.districtId, universe: dossier.universe,
     status: incompatible ? 'unavailable' : !saved ? 'available' : saved.completed ? 'completed'
       : progress.activeDistrictId === dossier.districtId ? 'active' : 'paused',
-    step, index: ({ accept: 0, resident: 0, exhibit: 1, report: 2, done: 3, unavailable: 0 })[step], total: 3,
+    step, index, total: crossCheck ? 4 : 3,
     title: localize(`Reconnaissance — ${dossier.universe}`, `Reconnaissance — ${dossier.universe}`, lang),
     text: localize(fr, en, lang),
     targetType: step === 'resident' ? 'npc' : ['exhibit', 'report'].includes(step) ? 'zone' : null,
     targetIds: step === 'resident' ? [...dossier.residentIds] : step === 'exhibit'
-      ? [...dossier.exhibitTargetIds] : step === 'report' ? [dossier.anchorId] : []
+      ? dossier.exhibitIds.filter(id => !evidenceIds.includes(id)).map(id => `${dossier.districtId}::exhibit::${id}`) : step === 'report' ? [dossier.anchorId] : []
   };
 }
 
 const feedback = {
+  insufficient_exhibits: ['L’enquête croisée exige deux reliques accessibles. Choisis un autre quartier ou le mode standard.', 'Cross-check requires two accessible relics. Choose another district or standard mode.'],
+  evidence_recorded: ['Première trace recueillie. Examine une autre relique du quartier.', 'First trace recorded. Inspect a different district relic.'],
+  already_examined: ['Cette relique a déjà été examinée. Cherche une autre trace.', 'This relic has already been inspected. Find a different trace.'],
   unavailable: ['Ce dossier n’est pas disponible. Ta progression est conservée.', 'This dossier is unavailable. Your progress is retained.'],
   started: ['Dossier accepté. Rencontre un habitant du quartier.', 'Dossier accepted. Meet a district resident.'],
   resumed: ['Reconnaissance reprise à la dernière étape validée.', 'Reconnaissance resumed from the last completed step.'],
@@ -95,16 +113,21 @@ function outcome(previous, progress, dossier, reason, lang) {
     feedback: localize(fr, en, lang), objective: getMosaicReconnaissanceObjective(progress, dossier, lang) };
 }
 
-export function startMosaicReconnaissance(progress, dossier, lang = 'fr') {
+export function startMosaicReconnaissance(progress, dossier, lang = 'fr', options = {}) {
   const previous = own(progress?.dossiers, dossier?.districtId);
   if (!dossier || (previous && previous.universe !== dossier.universe)) return outcome(progress, progress, dossier, 'unavailable', lang);
   if (previous?.completed) return outcome(progress, progress, dossier, 'already_completed', lang);
   if (previous && progress.activeDistrictId === dossier.districtId) return outcome(progress, progress, dossier, 'active', lang);
+  // Lock the contract at acceptance; changing preferences never rewrites a dossier.
+  const crossCheck = !previous && (options.exhibitGoal === undefined
+    ? getFieldOperationPreferences().reconnaissance === 'cross-check' : options.exhibitGoal === 2);
+  if (crossCheck && dossier.exhibitIds.length < 2) return outcome(progress, progress, dossier, 'insufficient_exhibits', lang);
   const next = normalizeMosaicReconnaissance(progress);
   next.activeDistrictId = dossier.districtId;
   next.dossiers = { ...next.dossiers, [dossier.districtId]: previous
     ? { ...next.dossiers[dossier.districtId] }
-    : { universe: dossier.universe, residentId: null, exhibitId: null, completed: false } };
+    : { universe: dossier.universe, residentId: null, exhibitId: null, completed: false,
+      ...(crossCheck ? { exhibitGoal: 2, evidenceIds: [] } : {}) } };
   return outcome(progress, next, dossier, previous ? 'resumed' : 'started', lang);
 }
 
@@ -127,7 +150,13 @@ export function advanceMosaicReconnaissance(progress, dossier, interaction, lang
     && target?.action === 'exhibit' && target.id === interaction.id && target.universe === dossier.universe
     && dossier.exhibitIds.includes(target.exhibitId)
     && interaction.id === `${dossier.districtId}::exhibit::${target.exhibitId}`) {
-    update = { exhibitId: target.exhibitId }; reason = 'exhibit_recorded';
+    if (saved.exhibitGoal === 2) {
+      const evidenceIds = [...new Set(saved.evidenceIds || [])];
+      if (evidenceIds.includes(target.exhibitId)) return outcome(progress, progress, dossier, 'already_examined', lang);
+      evidenceIds.push(target.exhibitId);
+      update = { evidenceIds, exhibitId: evidenceIds.length >= 2 ? target.exhibitId : null };
+      reason = evidenceIds.length >= 2 ? 'exhibit_recorded' : 'evidence_recorded';
+    } else { update = { exhibitId: target.exhibitId }; reason = 'exhibit_recorded'; }
   } else if (saved.exhibitId && interaction.type === 'zone' && target?.action === 'anchor'
     && target.id === interaction.id && target.universe === dossier.universe && interaction.id === dossier.anchorId) {
     update = { completed: true }; reason = 'completed';

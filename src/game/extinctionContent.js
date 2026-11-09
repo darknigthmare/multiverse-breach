@@ -1,5 +1,7 @@
 /** Extinction presentation only. Never grants ownership or changes combat stats. */
 import { getHeroCompleteSpritePack, getSpriteSheetLayout } from './spriteAssets.js';
+import { drawExtinctionSchematicView } from './extinctionSchematicView.js';
+import { fitExtinctionView } from './extinctionViewLayout.js';
 
 // The separators in these two authored PNGs are not an equal 4×10 grid.
 // Bounds exclude their visible grid lines, retain the actual row height, and
@@ -52,7 +54,9 @@ export function getExtinctionViewmodel(hero) {
 export function getExtinctionHandFrame(profile, state = {}) {
   if (!profile?.src || !profile.layout || (state.weapon?.type && state.weapon.type !== 'pistol')) return null;
   const layout = profile.layout;
-  const phase = state.muzzle > 0 ? 'attack' : state.reloadPulse > 0 ? 'reload'
+  const personalAttack = state.protocols?.activeSlot === 'simple' && state.protocols.activeFrames > 0
+    && state.protocols.ownerId === profile.heroId && state.protocols.runId === state.runId;
+  const phase = state.muzzle > 0 || personalAttack ? 'attack' : state.reloadPulse > 0 ? 'reload'
     : Math.hypot(state.vx || 0, state.vy || 0) > 0.01 ? 'run' : 'idle';
   const row = layout.rowByState?.[phase] ?? layout.rowByState?.idle ?? 0;
   const col = Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns;
@@ -67,19 +71,8 @@ export function getExtinctionHandFrame(profile, state = {}) {
 /** Explicit neutral schematic for a missing asset or a different pickup weapon.
  * Not a canonical hand model. Geometry contains no anatomy/character identity.
  */
-export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb') {
-  const type = state.weapon?.type || 'pistol';
-  const w = type === 'rocket' ? 100 : type === 'shotgun' ? 68 : 52;
-  const x = width / 2 - w / 2, y = height - 106 + (state.muzzle > 0 ? 7 : 0);
-  ctx.save();
-  ctx.fillStyle = '#17232c'; ctx.strokeStyle = color; ctx.lineWidth = 2;
-  ctx.fillRect(x, y, w, 100); ctx.strokeRect(x, y, w, 100);
-  ctx.fillStyle = color; ctx.fillRect(x + w * 0.22, y + 8, w * 0.56, 5);
-  if (state.muzzle > 0) {
-    ctx.globalAlpha = 0.65;
-    ctx.beginPath(); ctx.arc(width / 2, y - 7, type === 'plasma' ? 18 : 11, 0, Math.PI * 2); ctx.fill();
-  }
-  ctx.restore();
+export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb', layout = null) {
+  return drawExtinctionSchematicView(ctx, state, width, height, color, layout);
 }
 
 /** Source pixels stay in one declared cell, including every trim edge.
@@ -110,13 +103,14 @@ export function getExtinctionHandSourceRect(frame, width, height) {
 }
 
 /** Contain the source aspect inside the existing lower-screen envelope. */
-export function getExtinctionHandPlacement(source, width, height, state = {}) {
+export function getExtinctionHandPlacement(source, width, height, state = {}, layout = null) {
   if (!source || ![source.w, source.h, width, height].every(n => Number.isFinite(n) && n > 0)) return null;
   const maxW = Math.min(300, width * 0.6), maxH = Math.min(188, height * 0.44);
   const scale = Math.min(maxW / source.w, maxH / source.h);
   const w = source.w * scale, h = source.h * scale;
   const finite = n => Number.isFinite(n) ? n : 0;
   const sway = Math.max(-maxW * 0.15, Math.min(maxW * 0.15, -finite(state.turnVel) * 430 + finite(state.vx) * 85));
+  if (layout) return fitExtinctionView(width, w, h, sway, layout);
   return { x: Math.max(0, Math.min(width - w, (width - w) / 2 + sway)), y: Math.max(0, height - h - Math.min(4, height * 0.02)), w, h };
 }
 

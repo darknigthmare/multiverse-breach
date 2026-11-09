@@ -11,6 +11,7 @@ export * as loreAccuratePacks from './data/loreAccuratePacks.js';
 export * as loreBossOverrides from './data/loreBossOverrides.js';
 export * as loreDescriptions from './data/loreDescriptions.js';
 export * as loreWorldBossOverrides from './data/loreWorldBossOverrides.js';
+export * as mosaicCharacterMissions from './data/mosaicCharacterMissions.js';
 export * as mosaicUniversePlaces from './data/mosaicUniversePlaces.js';
 export * as narrativeSystems from './data/narrativeSystems.js';
 export * as renderer from './data/renderer.js';

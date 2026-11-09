@@ -77,9 +77,11 @@ def residents(page, args, width, height, lang, out, name):
     check(frozen['snapshot']==after_pause['snapshot'],'City advanced during a real-time clock pause')
     check(frozen['checkpoints']==after_pause['checkpoints'],'City checkpoint escaped the virtual clock')
     check(prepared_clock==clock_reading(page),'virtual City clock advanced during a real-time pause')
-    visits=[];checkpoints_during_movement=0
+    visits=[];conversations=[];checkpoints_during_movement=0
     for identity in ['torbahead_community_remix_curator','bioshock_rapture_tenenbaum','arca_bastion']:
-        page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        if not page.get_by_role('dialog').count():
+            page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        page.locator('[data-city-terminal-tab="district"]').click()
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)
@@ -103,10 +105,25 @@ def residents(page, args, width, height, lang, out, name):
         published=page.evaluate('window.__sceneQA.saves.length')-checkpoints
         check(published>0,'City checkpoint did not follow virtual movement time')
         checkpoints_during_movement+=published
-        page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
-        log=page.locator('.mosaic-rpg-log span').inner_text()
-        expected=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
-        check(log.startswith(expected),f'resident not reached through normal movement: {identity}: {log}')
+        if identity == 'arca_bastion':
+            expect(page.locator('[data-city-conversation="arca_bastion"]')).to_be_visible()
+        if not page.get_by_role('dialog').count():
+            page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        expected_log=resident_name+(' synchronise sa Trame' if fr else ' synchronizes their Thread')
+        exact_log=False
+        if page.locator('[data-city-quest-offer]').count():
+            conversation=page.locator(f'[data-city-conversation="{identity}"]')
+            expect(conversation).to_be_visible()
+            offer=conversation.locator('[data-city-quest-offer]')
+            expect(offer).to_have_count(1)
+            speech=conversation.locator('[data-dialogue-quest]')
+            check(speech.get_attribute('data-dialogue-quest')==offer.get_attribute('data-city-quest-offer'),
+                  'resident offer and dialogue belong to different missions')
+            expect(speech.locator('cite')).to_have_text(resident_name)
+            line=speech.locator('blockquote p').inner_text()
+            check(bool(line),'resident offer has no spoken request')
+            expected_log=f'{resident_name} : {line}'
+            exact_log=True
         # The QA parent is intentionally outside the inert game dialog. Trigger
         # its rerender programmatically without mutating the simulation.
         before=page.evaluate('window.__sceneQA.snapshot()')
@@ -114,6 +131,23 @@ def residents(page, args, width, height, lang, out, name):
         page.locator('#qa-render').evaluate('node => node.click()')
         page.wait_for_function('v => window.__sceneQA.revision === v + 1', arg=revision)
         check(before==page.evaluate('window.__sceneQA.snapshot()'),'parent render moved residents or player in terminal')
+        conversation=page.locator(f'[data-city-conversation="{identity}"]')
+        if conversation.count():
+            expect(page.locator('[data-resident-conversation-modal]')).to_be_visible()
+            expect(page.get_by_role('dialog')).to_have_count(1)
+            expect(page.locator('.mosaic-resident-directory, .mosaic-character-missions, .mosaic-evidence-ledger')).to_have_count(0)
+            check(before==page.evaluate('window.__sceneQA.snapshot()'),'resident conversation advanced the City')
+            page.screenshot(path=str(out/f'{name}-{identity}-conversation.png'))
+            conversation.locator('[data-dialogue-journal]').click()
+            expect(conversation).to_have_count(0)
+            expect(page.get_by_role('dialog')).to_have_count(1)
+            check(before==page.evaluate('window.__sceneQA.snapshot()'),'opening the journal resumed the City or changed its progress')
+            conversations.append(identity)
+        page.locator('[data-city-terminal-tab="transmissions"]').click()
+        log=page.locator('.mosaic-rpg-log span').inner_text()
+        check(log==expected_log if exact_log else log.startswith(expected_log),
+              f'resident not reached through normal movement or request differs from the encounter: {identity}: {log}')
+        page.locator('[data-city-terminal-tab="district"]').click()
         directory=page.locator('.mosaic-resident-directory')
         if not directory.evaluate('e=>e.open'):directory.locator('summary').click()
         search=page.get_by_label('Rechercher un habitant' if fr else 'Find a resident',exact=True)
@@ -121,10 +155,24 @@ def residents(page, args, width, height, lang, out, name):
         page.keyboard.press('Escape')
         visits.append(identity)
     page.screenshot(path=str(out/f'{name}-city.png'))
-    return {'residentsReached':visits,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True,
+    return {'residentsReached':visits,'separateConversations':conversations,'populationLimit':18,'nonCombatResidents':2,'preparedOwnership':True,'virtualClock':True,
             'clockPrepared':prepared_clock,'realPauseVerifiedMs':CITY_REAL_PAUSE_MS,'checkpointsDuringMovement':checkpoints_during_movement}
 
 def viewmodel(page,args,identity,width,height,lang,out,name):
+    action_states = {'heroId': identity, 'states': {}}
+    action_states_file = f'{name}-action-states.json'
+    def observe_action(label):
+        value = page.evaluate('''() => { const s=window.__sceneQA.state(), p=s.protocols;
+          return {heroId:s.heroId,runId:s.runId,phase:s.phase,t:s.t,weaponType:s.weapon?.type,
+            resource:s.weapon?.resource,ammo:s.weapon?.ammo,reserveAmmo:s.reserveAmmo,reloadPulse:s.reloadPulse,
+            ownerId:p?.ownerId,protocolRunId:p?.runId,profileHeroId:p?.profile?.heroId,
+            kind:p?.profile?.actions.simple?.kind,configuredCooldown:p?.profile?.actions.simple?.cooldown,
+            casts:p?.casts.simple,cooldown:p?.cooldowns?.simple === undefined ? 0 : p.cooldowns.simple,
+            activeSlot:p?.activeSlot,activeFrames:p?.activeFrames}; }''')
+        action_states['states'][label] = value
+        # Keep the observed states even when a following assertion fails in CI.
+        (out / action_states_file).write_text(json.dumps(action_states, ensure_ascii=False, indent=2))
+        return value
     page.add_init_script('''(()=>{window.__fpsDraws=[];const draw=CanvasRenderingContext2D.prototype.drawImage;
       CanvasRenderingContext2D.prototype.drawImage=function(image,...args){
         if(this.canvas.classList.contains('fps-royale-canvas') && /fps/.test(image?.src||'') && args.length===8){
@@ -141,16 +189,51 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
           'FPS did not start at zero simulated time')
     # Respect the existing initial fire cooldown; never force ammunition or timers.
     page.clock.run_for(450)
-    before_ammo=page.evaluate('window.__sceneQA.state().weapon.ammo')
+    before = observe_action('before-primary')
+    check(before['heroId'] == before['ownerId'] == before['profileHeroId'] == identity, 'selected personal kit has a foreign owner')
+    check(before['runId'] and before['runId'] == before['protocolRunId'], 'personal kit has a foreign run')
+    check(before['phase'] == 'running' and before['weaponType'] == 'pistol', 'expected an active personal kit')
+    expected_resource = {'arca_mirelle': 'ammo', 'arthur_kaamelott': 'cooldown', 'serj_tankian': 'cooldown'}
+    resource = before['resource']
+    check(resource in ['ammo', 'cooldown'] and resource == expected_resource.get(identity), 'selected kit resource contract changed')
+    for key in ['t', 'ammo', 'reserveAmmo', 'reloadPulse', 'casts', 'cooldown', 'configuredCooldown']:
+        check(type(before[key]) is int and before[key] >= 0, f'invalid observed personal action value: {key}')
+    check(before['configuredCooldown'] > 0 and before['cooldown'] == 0, 'primary was not ready before native input')
+    before_ammo = before['ammo']
     page.locator('.fps-royale-canvas').focus();page.keyboard.press('Space');page.clock.run_for(100)
-    check(page.evaluate('window.__sceneQA.state().weapon.ammo')==before_ammo-1,'native fire did not consume one round')
+    fired = observe_action('after-primary')
+    check(fired['casts'] == before['casts'] + 1 and fired['cooldown'] > 0, 'native primary did not activate its personal cooldown')
+    if resource == 'ammo':
+        check(fired['ammo'] == before_ammo - 1, 'native fire did not consume one round')
+    else:
+        check(fired['ammo'] == before_ammo and fired['reserveAmmo'] == before['reserveAmmo'], 'cooldown primary consumed ammunition')
     page.screenshot(path=str(out/f'{name}-fire.png'))
     firing=page.evaluate('window.__fpsDraws');page.evaluate('window.__fpsDraws=[]')
-    page.clock.run_for(650)
-    check(page.evaluate('window.__sceneQA.state().muzzle')==0,'fire phase still active before reload')
-    page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
-    check(page.evaluate('window.__sceneQA.state().reloadPulse')>0,'native reload phase was not entered')
-    check(page.evaluate('window.__sceneQA.state().weapon.ammo')==before_ammo,'reload did not restore the spent round')
+    if resource == 'ammo':
+        page.clock.run_for(650)
+        check(page.evaluate('window.__sceneQA.state().muzzle')==0,'fire phase still active before reload')
+        observe_action('before-reload')
+        page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
+        reloaded = observe_action('after-reload')
+        check(reloaded['reloadPulse'] > 0, 'native reload phase was not entered')
+        check(reloaded['ammo'] == before_ammo, 'reload did not restore the spent round')
+        recovery_phase = 'reload'
+    else:
+        before_reload = observe_action('before-reload-attempt')
+        check(before_reload['cooldown'] > 0, 'reload refusal must be tested during the active cooldown')
+        page.locator('.fps-royale-canvas').focus();page.keyboard.press('r');page.clock.run_for(80)
+        after_reload = observe_action('after-reload-attempt')
+        check(after_reload['reloadPulse'] == 0, 'cooldown kit entered an ammunition reload')
+        check(after_reload['ammo'] == before_ammo and after_reload['reserveAmmo'] == before['reserveAmmo'], 'reload changed the cooldown kit stock')
+        check(after_reload['casts'] == fired['casts'], 'reload activated another personal action')
+        elapsed_ticks = after_reload['t'] - before_reload['t']
+        check(elapsed_ticks > 0 and after_reload['cooldown'] == max(0, before_reload['cooldown'] - elapsed_ticks),
+              'reload reset or cancelled the personal cooldown')
+        page.clock.run_for(650)
+        recovered = observe_action('after-cooldown')
+        check(recovered['cooldown'] == 0 and recovered['activeFrames'] == 0, 'personal action did not return to idle after recovery')
+        check(recovered['ammo'] == before_ammo and recovered['reserveAmmo'] == before['reserveAmmo'], 'recovery changed the personal stock')
+        recovery_phase = 'idle'
     reload=page.evaluate('window.__fpsDraws')
     check(bool(reload),'no actual reload/idle draw observed')
     for record in firing+reload:
@@ -174,10 +257,10 @@ def viewmodel(page,args,identity,width,height,lang,out,name):
             check(any(abs(sy-top)<.001 and abs(sh-(bottom-top))<.001 for top,bottom in rows),'FPS crop does not follow the authored row boundaries')
             authored_checked+=1
         check(any(abs(d['args'][1]-rows[2][0])<.001 for d in firing),'authored attack row was not drawn')
-        check(any(abs(d['args'][1]-rows[0][0])<.001 for d in reload),'authored idle fallback was not used during reload')
-    page.screenshot(path=str(out/f'{name}-reload.png'))
+        check(any(abs(d['args'][1]-rows[0][0])<.001 for d in reload),'authored idle row was not drawn after the action')
+    page.screenshot(path=str(out/f'{name}-{recovery_phase}.png'))
     return {'heroId':identity,'drawCallsChecked':len(firing)+len(reload),'aspectPreserved':True,'preparedOwnership':True,'virtualClock':True,
-            'clockPrepared':prepared_clock,'authoredCellsChecked':authored_checked}
+            'clockPrepared':prepared_clock,'authoredCellsChecked':authored_checked,'resource':resource,'actionStatesFile':action_states_file}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:4173');p.add_argument('--evidence',default='/tmp/resident-viewmodels');p.add_argument('--executable');p.add_argument('--case',default='');a=p.parse_args()

@@ -403,6 +403,31 @@ const drawMeleeManifestSpriteSheet = (
   return 'drawn';
 };
 
+/** World rectangle of the generated hero sheet already selected for drawing.
+ * This only reads the cache: an unseen/loading first candidate must not cause a
+ * load or expose a later fallback. Procedural art and effects have separate bounds. */
+export const getGeneratedSpriteBounds = (x, y, entity, animTime, targetHeight = 72, context = 'auto') => {
+  if (typeof Image === 'undefined' || ![x, y, targetHeight].every(Number.isFinite) || targetHeight <= 0) return null;
+  let entry = null;
+  for (const src of getHeroSpriteSheetSources(entity, context)) {
+    const candidate = spriteSheetCache.get(src);
+    if (!candidate) return null;
+    if (candidate.status === 'error') continue;
+    entry = candidate;
+    break;
+  }
+  if (!entry || entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) return null;
+
+  const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const frame = getSpriteFrameForLayout(entity.state, animTime, layout);
+  const trim = frame.trim || {};
+  const sourceW = Math.max(1, entry.image.naturalWidth / layout.columns - (trim.left || 0) - (trim.right || 0));
+  const sourceH = Math.max(1, entry.image.naturalHeight / layout.rows - (trim.top || 0) - (trim.bottom || 0));
+  const scale = targetHeight / sourceH;
+  const width = sourceW * scale;
+  return { x: x - width / 2, y: y - targetHeight + 24 * scale, width, height: targetHeight };
+};
+
 const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
   const entry = getFirstAvailableSpriteSheet(srcGetter(entity, context));
   if (!entry) return 'missing';

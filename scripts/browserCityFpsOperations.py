@@ -16,6 +16,7 @@ from playwright.sync_api import sync_playwright, expect
 from browserCityExtinction import check, load_scene
 from browserResidentViewmodels import CLOCK_EPOCH, CLOCK_START, prepare_fps_clock
 from browserSceneServices import aim, state
+from hudTextProof import BUTTON_TEXT_PROOF_JS
 from mosaicMotionProof import validate_mosaic_motion
 
 
@@ -35,8 +36,13 @@ def reconnaissance(page):
 
 
 def open_city_terminal(page):
+    conversation = page.locator('.mosaic-resident-dialogue')
+    if conversation.count():
+        conversation.locator('[data-dialogue-journal]').click()
+        expect(conversation).to_have_count(0)
     if not page.get_by_role('dialog').count():
         page.get_by_role('button', name='TERMINAL · JOURNAL', exact=True).click()
+    page.locator('[data-city-terminal-tab="transmissions"]').click()
     expect(page.locator('[data-reconnaissance-objective]')).to_be_visible()
 
 
@@ -186,7 +192,7 @@ def operation_state(page):
     return {**current, **extra}
 
 
-def check_relay_hud_geometry(page, label):
+def check_relay_hud_geometry(page, label, expected_text_scale='1.4'):
     result = page.evaluate("""label => {
       const state=window.__sceneQA.state();
       if(state?.phase!=='running')return {label,skipped:true,phase:state?.phase};
@@ -222,39 +228,7 @@ def check_relay_hud_geometry(page, label):
         }
         return true;
       };
-      const buttonTextProof=button=>{
-        const buttonBox=rect(button),fragments=[];
-        const walker=document.createTreeWalker(button,NodeFilter.SHOW_TEXT);
-        let node;
-        while((node=walker.nextNode())){
-          if(!node.textContent.trim()||node.parentElement.closest('svg'))continue;
-          const clip={x:Math.max(buttonBox.x,viewport.x),y:Math.max(buttonBox.y,viewport.y),
-            right:Math.min(buttonBox.right,viewport.right),bottom:Math.min(buttonBox.bottom,viewport.bottom)};
-          const clipSources=[];
-          let ellipsized=false;
-          // A range can fit inside the button while a nested strong/small
-          // clips it. Intersect every effective ancestor overflow clip too.
-          for(let ancestor=node.parentElement;ancestor;ancestor=ancestor.parentElement){
-            const css=getComputedStyle(ancestor);
-            const clipX=css.overflowX!=='visible',clipY=css.overflowY!=='visible';
-            if(!clipX&&!clipY)continue;
-            const box=rect(ancestor),left=box.x+ancestor.clientLeft,top=box.y+ancestor.clientTop;
-            const paddingBox={x:left,y:top,right:left+ancestor.clientWidth,bottom:top+ancestor.clientHeight};
-            if(clipX){clip.x=Math.max(clip.x,paddingBox.x);clip.right=Math.min(clip.right,paddingBox.right);}
-            if(clipY){clip.y=Math.max(clip.y,paddingBox.y);clip.bottom=Math.min(clip.bottom,paddingBox.bottom);}
-            const overflowed=ancestor.scrollWidth>ancestor.clientWidth+1;
-            if(clipX&&css.textOverflow==='ellipsis'&&overflowed)ellipsized=true;
-            clipSources.push({tag:ancestor.tagName,className:ancestor.className,overflowX:css.overflowX,
-              overflowY:css.overflowY,textOverflow:css.textOverflow,overflowed,paddingBox});
-          }
-          const range=document.createRange();range.selectNodeContents(node);
-          const boxes=Array.from(range.getClientRects()).filter(box=>box.width&&box.height)
-            .map(box=>({x:box.x,y:box.y,right:box.right,bottom:box.bottom}));
-          fragments.push({text:node.textContent.trim(),boxes,clip,clipSources,ellipsized,
-            fullyVisible:visible(node.parentElement)&&boxes.length>0&&!ellipsized&&boxes.every(box=>within(box,clip))});
-        }
-        return {fragments,fullyVisible:fragments.length>0&&fragments.every(fragment=>fragment.fullyVisible)};
-      };
+      const buttonTextProof=__BUTTON_TEXT_PROOF__;
       // The dock and its layout groups are transparent. Test the painted
       // buttons and stat cards individually, so empty grid space remains free.
       // Hit-testing does not click a control or consume a simulation tick.
@@ -311,9 +285,9 @@ def check_relay_hud_geometry(page, label):
         stripInsideViewport:within(s,viewport),relayInsideStrip:within(r,s),
         reticleClear:!intersects(s,reticle),dockClear:!intersects(s,d),radarClear:!intersects(s,radarBounds),
         clippedText:textRects.filter(box=>!within(box,s)||!within(box,viewport)),textRects};
-    }""", label)
+    }""".replace('__BUTTON_TEXT_PROOF__', BUTTON_TEXT_PROOF_JS), label)
     check(not result.get('skipped') and not result.get('missing'), f'active relay HUD unavailable: {result}')
-    check(result['hudScale'] == '1.4' and result['textScale'] == '1.4' and result['safeArea'] == '32px',
+    check(result['hudScale'] == '1.4' and result['textScale'] == expected_text_scale and result['safeArea'] == '32px',
           f'relay HUD accessibility scale was not applied: {result}')
     for field in ['visible', 'stripInsideViewport', 'relayInsideStrip', 'reticleClear', 'dockClear', 'radarClear']:
         check(result[field], f'relay HUD geometry failed ({field}): {result}')
@@ -325,27 +299,35 @@ def check_relay_hud_geometry(page, label):
     return result
 
 
-def relay_full_run(page, lang, out, name, record):
+def relay_full_run(page, lang, out, name, record, hooks=None):
+    # Optional real-Hub integration hooks; historical isolated-scene calls keep
+    # their preparation, controls, report assertions and trace shape unchanged.
+    hooks = hooks or {}
     # Prepare actual display preferences while the scene is still ready, before
     # the fixed replay clock and seed. No gameplay tick is consumed here.
-    page.evaluate("""async () => {
+    if hooks.get('prepare'):
+        record['clockPrepared'] = hooks['prepare'](page)
+    else:
+        page.evaluate("""async () => {
       const root=document.documentElement;
       root.style.setProperty('--game-hud-scale','1.4');root.style.setProperty('--game-text-scale','1.4');
       root.style.setProperty('--game-safe-area','32px');
       window.dispatchEvent(new Event('multiverse:display-preferences'));
       await document.fonts.ready;
       await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
-    }""")
-    record['clockPrepared'] = prepare_fps_clock(page)
-    page.locator('input[data-relay-operation]').check()
+        }""")
+        record['clockPrepared'] = prepare_fps_clock(page)
+        page.locator('input[data-relay-operation]').check()
     page.clock.run_for(32)
-    seed = relay_seed()
+    seed = hooks.get('seed', relay_seed())
     page.evaluate('seed => window.__sceneQA.prepareReplay(seed)', seed)
     trace = []
     digest = hashlib.sha256()
 
     def observe(action):
         current = operation_state(page)
+        if hooks.get('state'):
+            current.update(hooks['state'](page, current))
         check(current['relayOwnerMatches'], 'relay progress belongs to another run')
         entry = {'action': action, 'state': current, 'random': page.evaluate('window.__sceneQA.replayRandom()')}
         trace.append(entry)
@@ -363,7 +345,7 @@ def relay_full_run(page, lang, out, name, record):
         check(current['t'] == 0 and current['relay'] is not None, 'relay operation did not start at tick zero')
         page.clock.run_for(350)
         current = observe({'kind': 'advance', 'milliseconds': 350})
-        record['hudGeometry'].append(check_relay_hud_geometry(page, 'active'))
+        record['hudGeometry'].append(check_relay_hud_geometry(page, 'active', hooks.get('expectedTextScale', '1.4')))
         actions = 0
         while current['phase'] == 'running' and actions < 650:
             actions += 1
@@ -377,22 +359,34 @@ def relay_full_run(page, lang, out, name, record):
                 pickup = next((entry for entry in loot if entry.get('effect') == 'ammo'), pickup)
             if current['hp'] < 50:
                 pickup = next((entry for entry in loot if entry.get('effect') == 'heal'), pickup)
-            if pickup:
+            extra_action = hooks['advance'](page, current) if hooks.get('advance') else None
+            if extra_action is not None:
+                action = extra_action
+            elif pickup:
                 distance = math.hypot(pickup['wx'] - current['px'], pickup['wy'] - current['py'])
                 relay = (current.get('relay') or {}).get('beacons', {}).get(pickup['id'])
                 if distance < 1.15 and relay and relay['status'] == 'synchronizing':
                     if not probed:
-                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'synchronizing'))
+                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'synchronizing', hooks.get('expectedTextScale', '1.4')))
                         before_pause = operation_state(page)
-                        page.locator('#qa-pause').click()
-                        page.locator('#qa-render').click()
+                        if hooks.get('pause'):
+                            hooks['pause'](page, True)
+                        else:
+                            page.locator('#qa-pause').click()
+                        if hooks.get('rerender'):
+                            hooks['rerender'](page)
+                        else:
+                            page.locator('#qa-render').click()
                         page.clock.run_for(1000)
                         paused = operation_state(page)
                         check(paused['t'] == before_pause['t'] and paused['relay'] == before_pause['relay'],
                               'pause or parent render advanced synchronization')
-                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'paused-synchronization'))
+                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'paused-synchronization', hooks.get('expectedTextScale', '1.4')))
                         page.screenshot(path=str(out / f'{name}-relay-paused.png'))
-                        page.locator('#qa-pause').click()
+                        if hooks.get('pause'):
+                            hooks['pause'](page, False)
+                        else:
+                            page.locator('#qa-pause').click()
                         page.locator('.fps-royale-canvas').focus()
                         page.clock.run_for(32)
                         current = observe({'kind': 'relay-pause-resume', 'pausedMilliseconds': 1000, 'resumeMilliseconds': 32})
@@ -413,7 +407,7 @@ def relay_full_run(page, lang, out, name, record):
                               'relay projection did not expose the suspended perimeter')
                         expect(page.locator('[data-relay-status]')).to_contain_text(
                             'Reviens dans le périmètre' if lang == 'fr' else 'Return to the perimeter')
-                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'outside-perimeter'))
+                        record['hudGeometry'].append(check_relay_hud_geometry(page, 'outside-perimeter', hooks.get('expectedTextScale', '1.4')))
                         record['perimeterProof'] = {'beaconId': pickup['id'], 'pausedMilliseconds': 1000,
                             'outsideTicksBefore': ticks, 'outsideTicksAfter': suspended['relay']['beacons'][pickup['id']]['ticks'],
                             'outsideSimulationTicks': suspended['t'] - outside['t'], 'visibleSuspensionFeedback': True}
@@ -480,25 +474,35 @@ def relay_full_run(page, lang, out, name, record):
               f'optional relay run did not win: phase={current["phase"]}, result={current["result"]}, t={current["t"]}, HP={current["hp"]}')
         check(current['beacons'] == 3 and len(secured_proof) == 3, 'victory without three synchronized beacons')
         check(current['relay'] is None and current['relaySummary'] == {'secured': 3}, 'result did not clean run state and retain the relay summary')
-        reports = page.evaluate('window.__sceneQA.reports')
-        check(len(reports) == 1 and reports[0]['reason'] == 'completed' and reports[0]['result'] == 'victory', 'completion report missing or duplicated')
+        if hooks.get('result'):
+            reports = [hooks['result'](page, current)]
+        else:
+            reports = page.evaluate('window.__sceneQA.reports')
+            check(len(reports) == 1 and reports[0]['reason'] == 'completed' and reports[0]['result'] == 'victory', 'completion report missing or duplicated')
         page.screenshot(path=str(out / f'{name}-victory.png'))
         page.get_by_role('button', name='CONTINUER' if lang == 'fr' else 'CONTINUE', exact=True).click()
         page.clock.run_for(1000)
-        page.locator('#qa-render').click()
-        reports_after = page.evaluate('window.__sceneQA.reports')
-        check(len(reports_after) == 2 and reports_after[-1]['reason'] == 'acknowledged', 'result acknowledgement did not exit exactly once')
-        check(sum(entry['reason'] == 'completed' for entry in reports_after) == 1, 'acknowledgement produced another reward report')
+        if hooks.get('rerender'):
+            hooks['rerender'](page)
+        else:
+            page.locator('#qa-render').click()
+        if hooks.get('acknowledged'):
+            hooks['acknowledged'](page, reports[0])
+        else:
+            reports_after = page.evaluate('window.__sceneQA.reports')
+            check(len(reports_after) == 2 and reports_after[-1]['reason'] == 'acknowledged', 'result acknowledgement did not exit exactly once')
+            check(sum(entry['reason'] == 'completed' for entry in reports_after) == 1, 'acknowledgement produced another reward report')
         check(page.evaluate('window.__sceneQA.state().relayOperation') is None, 'exit retained operation progress')
         record.update(result=current['result'], frames=current['t'], hp=current['hp'], kills=current['kills'],
                       beacons=current['beacons'], inputActions=actions, relayProof=secured_proof,
-                      completionReports=1, acknowledgementReports=1, rewards=reports[0]['rewards'],
+                      completionReports=1, **({'acknowledgementVerifiedInHub': True} if hooks.get('acknowledged') else {'acknowledgementReports': 1}), rewards=reports[0]['rewards'],
                       injectedEnding=False, preparedOwnership=True, virtualClock=True)
     finally:
         filename = f'{name}-replay.json'
-        (out / filename).write_text(json.dumps({'seed': seed, 'seedPolicy': f'fnv1a32:{SEED_NAME}',
+        seed_policy = hooks.get('seedPolicy', f'fnv1a32:{SEED_NAME}')
+        (out / filename).write_text(json.dumps({'seed': seed, 'seedPolicy': seed_policy,
             'clockEpoch': CLOCK_START.isoformat(), 'traceDigest': digest.hexdigest(), 'decisionTrace': trace}, indent=2, ensure_ascii=False))
-        record.update(seed=seed, seedPolicy=f'fnv1a32:{SEED_NAME}', traceDigest=digest.hexdigest(), traceFile=filename)
+        record.update(seed=seed, seedPolicy=seed_policy, traceDigest=digest.hexdigest(), traceFile=filename)
 
 
 def main():

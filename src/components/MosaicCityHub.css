@@ -53,3 +53,14 @@
   .mosaic-city-guide p { font-size: 12px; }
   .hub-screen.is-dedicated-game .mosaic-rpg-canvas { max-height: none; }
 }
+.mosaic-carried-item {
+  margin: 0;
+  padding: 9px 14px;
+  border-left: 3px solid #ffe2a8;
+  background: #101d29;
+  color: #f6e6c5;
+  font-size: calc(12px * var(--game-hud-scale, 1));
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.mosaic-carried-item strong { color: #ffe2a8; }

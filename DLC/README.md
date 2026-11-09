@@ -13,6 +13,10 @@ Le Nexus de Convergence et les vingt univers de la campagne originale restent
 dans le jeu de base. Les règles de croisement entre plusieurs univers, le moteur,
 les sauvegardes et les services communs restent dans `src/`.
 
+La [vérification des points ouverts du 8 novembre](../docs/development/DLC_REVIEW_STATUS_2026-11-08.md)
+et la [preuve des dépendances du lot Cité/personnages](../docs/development/dlc-shared-dependency-proof-2026-11-08-characters.json)
+complètent les reçus historiques de migration et de distribution.
+
 ## Structure d'un univers
 
 | Chemin | Rôle |
@@ -27,6 +31,7 @@ les sauvegardes et les services communs restent dans `src/`.
 | `DLC/distribution.json` | Profil installé : tous les packs, base seule ou sélection exacte. |
 | `DLC/content-identities.json` | Identifiants historiques des héros, missions et arcs ; conservés dans tous les profils. |
 | `DLC/shared-assets.json` | Ressources de base, de campagne, communes à plusieurs univers ou sans attribution suffisamment établie. |
+| `DLC/shared-asset-dependencies.json` | Dépendances explicites des ressources partagées dont l'inclusion conditionnelle a été vérifiée. |
 
 Les noms des dossiers utilisent des lettres et chiffres sans espace ni accent,
 par exemple `DLC/GearsOfWar/` et `DLC/HalfLife/`. La propriété `universe` du
@@ -170,8 +175,9 @@ Le dépôt canonique garde le profil `all`. Son `npm run build` conserve tous le
 audits de production existants. L'exporteur assemble une nouvelle arborescence
 autonome pour le profil demandé, sans modifier ce dépôt.
 
-Trois exemples sont fournis dans `config/dlc-profiles/` : `all.json`,
-`base.json` et `halo.json`. Une sélection utilise les IDs exacts des manifestes :
+Cinq exemples sont fournis dans `config/dlc-profiles/` : `all.json`,
+`base.json`, `halo.json`, `base-reviewed.json` et `halo-reviewed.json`.
+Une sélection utilise les IDs exacts des manifestes :
 
 ```json
 {
@@ -184,6 +190,9 @@ Trois exemples sont fournis dans `config/dlc-profiles/` : `all.json`,
 
 Les modes `all` et `base` exigent une liste `packIds` vide. Une sélection exige
 au moins un ID connu, sans doublon. L'ordre de sortie suit `catalogOrder`.
+La politique historique `preserve-all` conserve toutes les ressources communes.
+Les profils `*-reviewed` choisissent explicitement `reviewed-dependencies` :
+seules les ressources possédant une preuve de dépendances peuvent être omises.
 
 ### Créer et construire une distribution
 
@@ -212,18 +221,99 @@ restent complets pour décrire les contenus absents et préserver les sauvegarde
 empreintes des sources et médias, la fermeture des imports puis le contenu du
 bundle. Ce cycle est propre à l'export ; le prébuild du dépôt canonique continue
 de valider le jeu complet. La CI exerce séparément les profils base et Halo,
-avec leurs vrais fichiers et un parcours navigateur.
+historiques et allégés, avec leurs vrais fichiers et un parcours navigateur.
 
-Les 5 977 ressources communes ou sans attribution certaine restent dans tous
-les profils. Elles représentent environ 7,17 Go dans la référence actuelle.
-Une sélection de packs n'est donc pas encore une optimisation exhaustive de
-ces ressources. Les URL historiques restent identiques.
+Les profils historiques conservent les 5 977 ressources communes ou sans
+attribution certaine, soit environ 7,17 Go dans la référence actuelle.
+Les profils base-reviewed et halo-reviewed omettent quatorze décors, représentant
+38 474 464 octets, après vérification de leurs 38 packs consommateurs. Un seul
+consommateur sélectionné suffit à conserver le même fichier. Le reste du fonds
+commun est préservé et les URL historiques restent identiques. Voir le
+[contrat de dépendances](../docs/development/DLC_SHARED_ASSET_DEPENDENCIES_2026-11-07.md).
 
 La [suite du 7 novembre](../docs/development/DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md)
 ferme la dépendance de création du profil vers le décor Stargate : ce fichier est
 désormais commun, avec ses octets conservés. Les références statiques de l’UI
 sont vérifiées avant export. Un rapport reproductible documente les usages des
 ressources partagées et les résolutions dynamiques encore à établir.
+
+### Préparer, inspecter et appliquer un changement d'édition
+
+Un export simple, sans révision déclarée, reste valable pour construire une
+édition autonome avec les commandes ci-dessus. Pour préparer un paquet
+différentiel, produire les deux exports depuis les mêmes sources figées et
+passer explicitement leur SHA Git complet. La valeur est enregistrée dans les
+reçus ; elle ne déduit pas la révision de fichiers modifiés et ne constitue pas
+une signature de l'éditeur.
+
+Depuis le checkout correspondant à la révision à distribuer :
+
+```sh
+DLC_SOURCE_REVISION=$(git rev-parse HEAD)
+npm run dlc:export -- --profile config/dlc-profiles/base-reviewed.json \
+  --out ../edition-base --source-revision "$DLC_SOURCE_REVISION"
+npm run dlc:export -- --profile config/dlc-profiles/halo-reviewed.json \
+  --out ../edition-halo --source-revision "$DLC_SOURCE_REVISION"
+
+node scripts/dlcDistributionDelta.mjs create \
+  --base ../edition-base --target ../edition-halo --out ../delta-halo
+```
+
+La création fournit `manifestSha256`. Utiliser l'empreinte obtenue du producteur
+par un canal fiable pour `SHA256_FIABLE` dans les deux commandes suivantes :
+
+```sh
+node scripts/dlcDistributionDelta.mjs inspect \
+  --base ../edition-base --delta ../delta-halo --sha256 SHA256_FIABLE
+node scripts/dlcDistributionDelta.mjs apply \
+  --base ../edition-base --delta ../delta-halo \
+  --out ../edition-halo-reconstruite --sha256 SHA256_FIABLE
+
+npm ci --prefix ../edition-halo-reconstruite --no-audit --no-fund
+npm run build:distribution --prefix ../edition-halo-reconstruite
+```
+
+`inspect` n'écrit aucun fichier. Il audite la base, vérifie l'empreinte et la
+composition du paquet, lit chaque blob pour contrôler ses octets, valide le
+reçu cible et sa concordance avec la liste de fichiers et le profil. Son statut
+`inputs-verified` concerne ces entrées. Le rapport nomme aussi les contrôles
+restants : audit strict de l'arbre reconstruit, compilation et parcours
+navigateur/sauvegardes. `apply` refait la vérification des entrées, reconstruit
+un nouveau dossier et exécute l'audit strict avant de le publier.
+
+Le rapport distingue les tailles suivantes :
+
+| Champ | Signification |
+| --- | --- |
+| `transfer.payloadBytes` | Octets non compressés des blobs uniques à transférer. Deux fichiers de sortie identiques peuvent réutiliser le même blob. |
+| `transfer.packageBytes` | Blobs et manifeste du paquet, sans compression. |
+| `reconstruction.fileContentBytes` | Octets de tous les fichiers du nouveau dossier source, y compris ses copies publiques et son reçu. |
+| `reconstruction.reusedBytes` | Octets repris depuis la base ; ils sont recopiés dans le nouveau dossier. |
+
+La taille des fichiers reconstruits exclut les blocs et métadonnées du système
+de fichiers, ainsi que les futurs `node_modules/` et `dist/`. La base reste
+présente : économiser le transfert n'économise pas tout cet espace disque.
+
+Pour retirer Halo, créer un paquet dans le sens inverse vers l'export de base
+conservé, puis inspecter et appliquer ce paquet avec sa propre empreinte :
+
+```sh
+node scripts/dlcDistributionDelta.mjs create \
+  --base ../edition-halo-reconstruite --target ../edition-base --out ../delta-retour-base
+node scripts/dlcDistributionDelta.mjs inspect \
+  --base ../edition-halo-reconstruite --delta ../delta-retour-base --sha256 SHA256_RETOUR_FIABLE
+node scripts/dlcDistributionDelta.mjs apply \
+  --base ../edition-halo-reconstruite --delta ../delta-retour-base \
+  --out ../edition-base-restauree --sha256 SHA256_RETOUR_FIABLE
+```
+
+Les dossiers existants sont conservés, y compris en cas d'échec. Un export
+historique sans `sourceRevision` se reproduit depuis ses sources avec l'option
+explicite avant de participer à un delta. Après chaque reconstruction, compiler
+et vérifier la nouvelle édition avant publication. Les commandes
+`node scripts/exportDlcDistribution.mjs --help` et
+`node scripts/dlcDistributionDelta.mjs --help` rappellent ce parcours.
+Voir la [validation de la chaîne CLI](../docs/development/DLC_DIFFERENTIAL_CLI_2026-11-07.md).
 
 ### Sauvegardes et menu
 

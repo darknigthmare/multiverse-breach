@@ -52,6 +52,7 @@ const hubSource = [
   readGameSource('src/game/legacyStageCatalog.js'),
   readGameSource('src/game/universeModifiers.js')
 ].join('\n');
+const extinctionSignaturesSource = read('../src/game/extinctionSignatures.js');
 const regulationImagePreviewSource = read('../src/components/RegulationImagePreview.jsx');
 const ocCampaignSource = readGameSource('src/game/ocCampaign.js');
 const characterPlaquesSource = readGameSource('src/game/characterPlaques.js');
@@ -832,7 +833,22 @@ assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.include
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
 verifyExtinctionViewmodelContract();
 assert(hubSource.includes('getExtinctionHandFrame(viewmodel, state)') && hubSource.includes('getExtinctionHandSourceRect(handFrame, sheet.naturalWidth, sheet.naturalHeight)') && hubSource.includes('getExtinctionHandPlacement(handSource'), 'FPS renderer must use the verified identity, crop and aspect contract.');
-assert(hubSource.includes('reloadPulse') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('projectileSheet.naturalWidth'), 'FPS firing must keep a dedicated projectile overlay and existing fire/reload timing.');
+assert(hubSource.includes('fireExtinctionPickupWeapon(state, { onKill: triggerEnemyDrop, damageMultiplier: role.dmg, lang })')
+  && extinctionSignaturesSource.includes("if (state.reloadPulse > 0) return refusal('reload');")
+  && extinctionSignaturesSource.includes('finite(weapon.fireRate, 1) * 18')
+  && extinctionSignaturesSource.includes("state.t - state.lastFireTime < cooldown) return refusal('cooldown');")
+  && extinctionSignaturesSource.includes('weapon.ammo -= 1; state.ammo = weapon.ammo;')
+  && extinctionSignaturesSource.includes('state.lastFireTime = state.t; state.muzzle = 36;'),
+  'FPS pickup firing must keep its scene binding, ammo consumption, active-tick cadence and 36-tick muzzle feedback in the protocol helper.');
+assert(hubSource.includes("if (state.phase !== 'running' || state.reloadPulse > 0) return;")
+  && hubSource.includes('state.reserveAmmo -= loaded;') && hubSource.includes('state.reloadPulse = 36;')
+  && hubSource.includes('state.reloadPulse = Math.max(0, (state.reloadPulse || 0) - 1);'),
+  'FPS reload timing must keep its running-state guard, finite reserve, 36-tick delay and active-tick countdown.');
+assert(hubSource.includes('drawExtinctionProtocols(ctx, state, canvas.width, canvas.height, projectWorld, { ownerId: viewmodel.id, image: fpsProjectileRef.current })')
+  && hubSource.includes('state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth')
+  && hubSource.includes('getExtinctionProjectilePlacement(projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width, canvas.height)')
+  && hubSource.includes('ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, effect.x, effect.y, effect.w, effect.h)'),
+  'FPS projectile rendering must keep world protocol effects and the decoded dedicated overlay with its own aspect and muzzle timing.');
 assert(raceEngineSource.includes('drawRearKartActionOverlay') && raceEngineSource.includes('KART_ITEM_FRAMES') && raceEngineSource.includes('this.images.kartItems') && raceEngineSource.includes('this.images.hudIcons'), 'Race mode must render Mirelle kart actions, item sheet, and HUD icon sheet in playable views.');
 assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('RACE_ASSETS.hudGarage') && raceModeSource.includes('RACE_ASSETS.kartItems'), 'Race tab must expose Mirelle garage and item sheets outside admin preview.');
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
@@ -870,11 +886,12 @@ assert(
   mosaicCitySource.includes('const hero = npc.hero;')
     && /drawPixelPerson\([^;\n]*false,\s*\{\s*\.\.\.hero,\s*state:\s*npc\.sceneState\s*\}\s*\)/.test(mosaicCitySource)
     && mosaicCitySource.includes("const spriteState = hero.state || 'idle';")
-    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, \{ \.\.\.hero, state: spriteState \}, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return;\s*\}/.test(mosaicCitySource),
+    && mosaicCitySource.includes('const renderedHero = { ...hero, state: spriteState };')
+    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, renderedHero, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return protectedRects;\s*\}/.test(mosaicCitySource),
   'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
 );
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
-verifyExtinctionRendererBinding(hubSource);
+verifyExtinctionRendererBinding(read('../src/components/HubScreen.jsx'));
 assert(
   hubSource.includes("kind: completePack ? 'pack' : 'hero'") &&
   regulationImagePreviewSource.includes('preview.sheets'),

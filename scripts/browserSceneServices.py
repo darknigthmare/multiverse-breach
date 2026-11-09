@@ -67,6 +67,7 @@ def city_services(page, lang, out, name):
         page.evaluate('window.__sceneQA.remount()')
         page.wait_for_function('window.__sceneQA.state()?.player')
         page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+        page.locator('[data-city-terminal-tab="district"]').click()
         action=page.locator('.mosaic-room-actions button')
         expect(action).to_be_visible()
         before=snapshot(page)['player'];count=page.evaluate('window.__sceneQA.services.length')

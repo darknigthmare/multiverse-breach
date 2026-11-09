@@ -118,6 +118,7 @@ export default function CgGallery({
   const [selectedCgId, setSelectedCgId] = useState(null);
   const [previewCgId, setPreviewCgId] = useState(null);
   const [fullscreenMessage, setFullscreenMessage] = useState('');
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [zoom, setZoom] = useState(1);
   const [selectedRevisionId, setSelectedRevisionId] = useState(null);
   const [comparisonMode, setComparisonMode] = useState(null);
@@ -204,24 +205,36 @@ export default function CgGallery({
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const serializableIds = [...favoriteIds].filter((cgId) => fullCatalog.some((entry) => entry.id === cgId));
+    // An absent DLC is not a request to forget its favourites. Keep the stable
+    // IDs so reinstalling a pack restores the player's choices.
+    const serializableIds = [...favoriteIds];
     try {
       window.localStorage.setItem(CG_FAVORITES_STORAGE_KEY, JSON.stringify(serializableIds));
     } catch {
       // Storage can be unavailable in private/restricted browser contexts.
     }
-  }, [favoriteIds, fullCatalog]);
+  }, [favoriteIds]);
 
   useEffect(() => {
     if (selectedCgId && !selectedMedia?.imagePath) setSelectedCgId(null);
   }, [selectedCgId, selectedMedia?.imagePath]);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    const syncFullscreen = () => setIsFullscreen(Boolean(lightboxRef.current)
+      && document.fullscreenElement === lightboxRef.current);
+    syncFullscreen();
+    document.addEventListener('fullscreenchange', syncFullscreen);
+    return () => document.removeEventListener('fullscreenchange', syncFullscreen);
+  }, [selectedCgId]);
 
   useModalDialog({
     open: Boolean(selectedCg && selectedMedia?.imagePath),
     overlayRef: lightboxRef, dialogRef: lightboxRef, initialFocusRef: closeLightboxRef,
     onClose: () => closeLightbox(),
     onKeyDown: event => {
-      if (event.target?.matches('input, select, textarea')) return;
+      if (event.ctrlKey || event.metaKey || event.altKey
+        || event.target?.closest?.('input, select, textarea, [contenteditable="true"]')) return;
       if (event.key === '+' || event.key === '=') {
         event.preventDefault();
         setZoom((current) => clampZoom(current + 0.25));
@@ -273,7 +286,7 @@ export default function CgGallery({
 
   const closeLightbox = () => {
     if (typeof document !== 'undefined' && document.fullscreenElement === lightboxRef.current) {
-      void document.exitFullscreen?.().catch(() => {});
+      void Promise.resolve(document.exitFullscreen?.()).catch(() => {});
     }
     setSelectedCgId(null);
     setZoom(1);
@@ -283,12 +296,16 @@ export default function CgGallery({
 
   const toggleFullscreen = async () => {
     if (typeof document === 'undefined' || !lightboxRef.current) return;
+    const viewer = lightboxRef.current;
     try {
-      if (document.fullscreenElement === lightboxRef.current) await document.exitFullscreen?.();
-      else if (lightboxRef.current.requestFullscreen) await lightboxRef.current.requestFullscreen();
+      if (document.fullscreenElement === viewer) await document.exitFullscreen?.();
+      else if (viewer.requestFullscreen) await viewer.requestFullscreen();
       else throw new Error('fullscreen-unavailable');
+      if (lightboxRef.current !== viewer) return;
+      setIsFullscreen(document.fullscreenElement === viewer);
       setFullscreenMessage('');
     } catch {
+      if (lightboxRef.current !== viewer) return;
       setFullscreenMessage(locale === 'fr' ? 'Le plein écran système est indisponible. La visionneuse reste ouverte sur toute la fenêtre.' : 'System fullscreen is unavailable. The viewer still fills the window.');
     }
   };
@@ -556,17 +573,23 @@ export default function CgGallery({
                 <button type="button" onClick={() => setZoom((current) => clampZoom(current - 0.25))} disabled={zoom <= 1} aria-label={locale === 'fr' ? 'Réduire le zoom' : 'Zoom out'}>−</button>
                 <button type="button" onClick={() => setZoom(1)} aria-label={locale === 'fr' ? 'Réinitialiser le zoom' : 'Reset zoom'}>{Math.round(zoom * 100)}%</button>
                 <button type="button" onClick={() => setZoom((current) => clampZoom(current + 0.25))} disabled={zoom >= 3} aria-label={locale === 'fr' ? 'Augmenter le zoom' : 'Zoom in'}>+</button>
-                <button type="button" onClick={toggleFullscreen}>{locale === 'fr' ? 'PLEIN ÉCRAN' : 'FULLSCREEN'}</button>
+                <button type="button" onClick={toggleFullscreen} aria-pressed={isFullscreen} data-cg-fullscreen>
+                  {isFullscreen
+                    ? (locale === 'fr' ? 'QUITTER LE PLEIN ÉCRAN' : 'EXIT FULLSCREEN')
+                    : (locale === 'fr' ? 'PLEIN ÉCRAN' : 'FULLSCREEN')}
+                </button>
                 <button ref={closeLightboxRef} type="button" onClick={closeLightbox}>{locale === 'fr' ? 'FERMER' : 'CLOSE'}</button>
               </div>
             </header>
             {fullscreenMessage && <p className="cg-fullscreen-message" role="status">{fullscreenMessage}</p>}
 
             <div className="cg-lightbox__layout">
-              <div className={`cg-lightbox__viewport ${compareWithBase || compareWithPrevious ? 'is-comparing' : ''}`}>
+              <div className={`cg-lightbox__viewport ${compareWithBase || compareWithPrevious ? 'is-comparing' : ''}`}
+                tabIndex={0} role="region" aria-label={locale === 'fr' ? 'Illustration agrandie, zone défilante' : 'Enlarged artwork, scrollable area'}
+                aria-keyshortcuts="+ - 0">
                 {(compareWithBase || compareWithPrevious) && comparisonLeftMedia?.imagePath ? (
                   <div className="cg-lightbox__comparison">
-                    <figure>
+                    <figure tabIndex={0} role="region" aria-label={compareWithPrevious ? versionLabel(currentVersion) : 'CG01 / BASE'}>
                       <img
                         src={comparisonLeftMedia.imagePath}
                         alt={getImageAlt(comparisonLeftCg, `${getText(comparisonLeftCg.title, locale)}${compareWithPrevious ? `, ${versionLabel(currentVersion)}` : ''}`, locale)}
@@ -576,7 +599,7 @@ export default function CgGallery({
                       />
                       <figcaption>{compareWithPrevious ? versionLabel(currentVersion) : 'CG01 / BASE'}</figcaption>
                     </figure>
-                    <figure>
+                    <figure tabIndex={0} role="region" aria-label={compareWithPrevious ? versionLabel(previousComparisonVersion) : getText(TYPE_LABELS[selectedCg.type], locale, selectedCg.type)}>
                       <img
                         src={comparisonRightMedia.imagePath}
                         alt={getImageAlt(selectedCg, `${getText(selectedCg.title, locale)}, ${versionLabel(comparisonRightMedia)}`, locale)}
@@ -600,7 +623,10 @@ export default function CgGallery({
                 )}
               </div>
 
-              <details className="cg-lightbox__details"><summary>{locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}</summary>
+              <details className="cg-lightbox__details"><summary title={locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}>
+                <span className="cg-lightbox__details-label">{locale === 'fr' ? 'Dossier, crédits et sources' : 'Record, credits and sources'}</span>
+                <span className="cg-lightbox__details-icon" aria-hidden="true">i</span>
+              </summary>
                 <div className="cg-lightbox__details-content">
                 <div className="cg-lightbox__badges">
                   <span>{selectedCg.family}</span>

@@ -117,6 +117,10 @@ const manifests = [
         "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
       },
       {
+        "path": "data/mosaicCharacterMissions.js",
+        "runtimeAdapter": "src/game/mosaicCharacterMissions.js"
+      },
+      {
         "path": "data/mosaicUniversePlaces.js",
         "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
       },
@@ -202,6 +206,10 @@ const manifests = [
       {
         "path": "data/loreWorldBossOverrides.js",
         "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+      },
+      {
+        "path": "data/mosaicCharacterMissions.js",
+        "runtimeAdapter": "src/game/mosaicCharacterMissions.js"
       },
       {
         "path": "data/narrativeSystems.js",

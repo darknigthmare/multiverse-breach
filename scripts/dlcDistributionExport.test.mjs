@@ -236,6 +236,8 @@ test('CLI reads an explicit profile and emits a bounded audit summary', (t) => {
     { cwd: f.root, encoding: 'utf8' });
   assert.equal(exported.status, 0, exported.stderr);
   assert.equal(JSON.parse(exported.stdout).packs, 1);
+  assert.equal(JSON.parse(exported.stdout).sourceRevision, null);
+  assert.equal(Object.hasOwn(JSON.parse(readFileSync(path.join(f.out, DLC_DISTRIBUTION_RECEIPT))), 'sourceRevision'), false);
   const audited = spawnSync(process.execPath, [AUDIT_SCRIPT, '--root', f.out], { cwd: f.root, encoding: 'utf8' });
   assert.equal(audited.status, 0, audited.stderr);
   assert.equal(JSON.parse(audited.stdout).passed, true);
@@ -243,6 +245,41 @@ test('CLI reads an explicit profile and emits a bounded audit summary', (t) => {
     { cwd: f.root, encoding: 'utf8' });
   assert.equal(duplicate.status, 1);
   assert.match(duplicate.stderr, /already exists/);
+});
+
+test('CLI pins an explicit complete source revision without changing standalone export defaults', (t) => {
+  const f = fixture(t), sourceRevision = '1234567890abcdef1234567890abcdef12345678';
+  const exported = spawnSync(process.execPath, [EXPORT_SCRIPT, '--profile', 'config/dlc-profiles/halo.json',
+    '--out', f.out, '--source-revision', sourceRevision], { cwd: f.root, encoding: 'utf8' });
+  assert.equal(exported.status, 0, exported.stderr);
+  assert.equal(JSON.parse(exported.stdout).sourceRevision, sourceRevision);
+  assert.equal(auditDlcDistribution({ root: f.out }).receipt.sourceRevision, sourceRevision);
+});
+
+test('CLI rejects invalid or repeated revisions before creating output parents or staging', (t) => {
+  const f = fixture(t), out = path.join(f.parent, 'not-created', 'edition');
+  for (const revision of ['HEAD', 'abc123', 'A'.repeat(40), 'g'.repeat(40), 'a'.repeat(41)]) {
+    const result = spawnSync(process.execPath, [EXPORT_SCRIPT, '--profile', 'config/dlc-profiles/halo.json',
+      '--out', out, '--source-revision', revision], { cwd: f.root, encoding: 'utf8' });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /source-revision.*full lowercase Git/);
+    assert.deepEqual(readdirSync(f.parent), ['source']);
+  }
+  const duplicate = spawnSync(process.execPath, [EXPORT_SCRIPT, '--profile', 'config/dlc-profiles/halo.json',
+    '--out', out, '--source-revision', '1'.repeat(40), '--source-revision', '2'.repeat(40)],
+  { cwd: f.root, encoding: 'utf8' });
+  assert.equal(duplicate.status, 1);
+  assert.match(duplicate.stderr, /duplicate export option/);
+  assert.deepEqual(readdirSync(f.parent), ['source']);
+});
+
+test('CLI export help explains standalone and differential use without requiring a source checkout', (t) => {
+  const f = fixture(t);
+  const result = spawnSync(process.execPath, [EXPORT_SCRIPT, '--help'], { cwd: f.parent, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /--source-revision FULL_GIT_SHA/);
+  assert.match(result.stdout, /Without --source-revision.*standalone builds/);
+  assert.deepEqual(readdirSync(f.parent), ['source']);
 });
 
 test('an existing distribution cannot be re-exported as a false all installation', (t) => {

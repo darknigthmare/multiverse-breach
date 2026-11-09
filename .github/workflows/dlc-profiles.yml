@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        profile: [base, halo]
+        profile: [base, halo, base-reviewed, halo-reviewed]
     env:
       PLAYWRIGHT_MODULE_PATH: file:///tmp/dlc-playwright/node_modules/playwright/index.mjs
       PLAYWRIGHT_BROWSERS_PATH: /tmp/dlc-browsers

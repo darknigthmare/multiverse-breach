@@ -1,25 +1,75 @@
-[data-universe-archive] > [data-archive-section] {
-  flex: 1 1 auto;
-  overscroll-behavior: contain;
-}
 .universe-archive-overlay { position: fixed; inset: 0; z-index: 1400; background: #02070c; color: #e6f4f0; }
-.universe-archive-reader { width: 100%; height: 100dvh; max-width: none; overflow: hidden; display: flex; flex-direction: column; background: radial-gradient(ellipse at 85% 15%, #123c4444, transparent 70%), #060c13; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); box-sizing: border-box; }
-.universe-archive-reader > div:first-child { flex-shrink: 0; padding-inline: max(20px, env(safe-area-inset-left)) !important; }
-.universe-archive-reader > [data-archive-section] { min-height: 0; overflow: auto; scrollbar-gutter: stable; padding-inline: max(24px, env(safe-area-inset-left)) !important; align-content: start; }
-.universe-archive-reader [data-archive-close], .universe-archive-reader button { min-height: 40px; }
-.universe-archive-reader .universe-archive-lore { max-width: 88ch; max-height: 17dvh; overflow-y: auto; overscroll-behavior: contain; padding-right: 12px; font-size: .9rem !important; line-height: 1.65 !important; }
-.universe-archive-reader :focus-visible { outline: 2px solid var(--archive-accent); outline-offset: 3px; }
-.universe-archive-reader > [data-archive-section] p { max-width: 88ch; font-size: .9rem !important; line-height: 1.65 !important; }
-.universe-archive-lore:focus-visible {
-  outline: 2px solid #39c5bb;
-  outline-offset: 3px;
+.universe-archive-reader {
+  --archive-left: max(16px, var(--game-safe-area, 12px), env(safe-area-inset-left, 0px));
+  --archive-right: max(16px, var(--game-safe-area, 12px), env(safe-area-inset-right, 0px));
+  width: 100%; height: 100dvh; overflow: hidden; display: flex; flex-direction: column;
+  background: radial-gradient(ellipse at 85% 15%, #123c4444, transparent 70%), #060c13;
+  padding-top: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top, 0px));
+  padding-bottom: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box; font-size: .9rem; line-height: 1.55; overflow-wrap: anywhere;
 }
-@media (max-width: 640px), (max-height: 640px) {
-  [data-universe-archive] > div:first-child { flex-shrink: 0; }
-  .universe-archive-lore {
-    max-height: min(22vh, 180px);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
-  }
+.universe-archive-reader *, .universe-archive-reader *::before, .universe-archive-reader *::after { box-sizing: border-box; }
+.universe-archive-reader :is(button, input, select, summary) { min-width: 44px; min-height: 44px; font-family: inherit; font-size: .85rem; line-height: 1.4; }
+.universe-archive-reader :is(button, input, select) { padding: 8px 10px; border: 1px solid #55747f; border-radius: 5px; color: #e6f4f0; background: #0d1d28; }
+.universe-archive-reader button { cursor: pointer; white-space: normal; overflow-wrap: anywhere; }
+.universe-archive-reader button:disabled { cursor: default; opacity: .45; }
+.universe-archive-reader button:hover:not(:disabled) { background: #173541; border-color: var(--archive-accent); }
+.universe-archive-reader :focus-visible { outline: 2px solid var(--archive-accent); outline-offset: 3px; }
+.universe-archive-header { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 var(--archive-right) 10px var(--archive-left); border-bottom: 1px solid #38505d; }
+.universe-archive-header strong { font-size: .85rem; color: var(--archive-accent); }
+.universe-archive-header button { flex-shrink: 0; }
+.universe-archive-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 16px var(--archive-right) 16px var(--archive-left); }
+.universe-archive-intro { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.universe-archive-intro > div { min-width: 0; }
+.universe-archive-intro img { width: 58px; height: 58px; object-fit: cover; flex-shrink: 0; border: 1px solid #74814b; border-radius: 5px; }
+.universe-archive-intro h2 { margin: 0; font-size: 1.4rem; color: var(--archive-accent); line-height: 1.3; }
+.universe-archive-intro p { margin: 8px 0 0; color: #b7cbd5; font-size: .85rem; }
+.universe-archive-lore { margin: 0 0 14px; border-block: 1px solid #2b4855; }
+.universe-archive-lore summary { cursor: pointer; padding: 10px 2px; color: #cae9e3; }
+.universe-archive-lore p { max-width: 88ch; font-size: .9rem; line-height: 1.65; }
+.universe-archive-lore p:last-child { color: #b7cbd5; }
+.universe-archive-neighbours { display: flex; gap: 8px; flex-wrap: wrap; }
+.universe-archive-neighbours button { flex: 1 1 12rem; }
+.universe-archive-counts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 5.5rem), 1fr)); gap: 8px; margin: 14px 0; }
+.universe-archive-counts > div { background: #11222c; border: 1px solid #2c4c57; padding: 8px 10px; }
+.universe-archive-counts dt { color: #b7cbd5; font-size: .8rem; }
+.universe-archive-counts dd { margin: 0; color: var(--archive-accent); font-size: 1.15rem; font-weight: bold; }
+.universe-archive-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: 8px; margin: 16px 0; }
+.universe-archive-tabs [aria-selected="true"] { border-color: var(--archive-accent); background: #183c42; color: #d8fff3; }
+.universe-archive-chapter { min-width: 0; scroll-margin-block: 12px; }
+.universe-archive-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr)); gap: 16px; align-items: start; }
+.universe-archive-stack { min-width: 0; display: grid; gap: 16px; }
+.universe-archive-columns > [data-archive-catalog="world-items"] { grid-column: 1 / -1; }
+.universe-archive-reader [data-archive-catalog="world-items"] .universe-archive-entries { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.universe-archive-catalog { min-width: 0; padding: 12px; border: 1px solid #34505b; background: #0b1c2680; border-radius: 5px; }
+.universe-archive-catalog h3 { margin: 0 0 14px; color: #bdebe2; font-size: 1rem; line-height: 1.45; scroll-margin-block: 12px; }
+.universe-archive-catalog h3 span { color: #b7cbd5; white-space: nowrap; font-size: .85em; }
+.universe-archive-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
+.universe-archive-filters label { min-width: 0; display: grid; gap: 6px; font-size: .82rem; }
+.universe-archive-filters label:first-child { flex: 1 1 100%; }
+.universe-archive-filters input { width: 100%; min-width: 0; }
+.universe-archive-filters select { width: 100%; }
+.universe-archive-pages { margin-block: 10px; font-size: .82rem; }
+.universe-archive-pages p { margin: 8px 0; font-variant-numeric: tabular-nums; }
+.universe-archive-pages > div { display: flex; gap: 8px; flex-wrap: wrap; }
+.universe-archive-pages button { font-size: 1.05rem; }
+.universe-archive-pages[data-archive-pagination="bottom"] { padding-top: 8px; border-top: 1px solid #2c4c57; }
+.universe-archive-entries { display: grid; gap: 10px; }
+.universe-archive-entries article { min-width: 0; }
+.universe-archive-actor > div:last-child > div:first-child { flex-wrap: wrap; }
+.universe-archive-illustration-placeholder { display: grid; place-items: center; width: 100%; height: 100%; color: #b7cbd5; font-size: 1.4rem; }
+.universe-archive-illustration-status { margin: 4px 0; color: #b7cbd5; font-size: .8rem; line-height: 1.5; }
+.universe-archive-empty { margin: 12px 0; font-size: .85rem; color: #b7cbd5; }
+.universe-archive-event-item { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; font-size: .85rem; }
+.universe-archive-event-item img { width: 34px; height: 34px; object-fit: contain; image-rendering: pixelated; }
+.universe-archive-reader .character-wardrobe { font-size: .82rem; }
+.universe-archive-reader .character-wardrobe summary { font-size: .82rem; }
+.universe-archive-reader .character-wardrobe__card h5 { font-size: .95rem; }
+.universe-archive-reader :is(.character-wardrobe__badge, .character-wardrobe__muted, .character-wardrobe__footer p) { font-size: .8rem; }
+.universe-archive-reader .character-wardrobe a { min-height: 44px; }
+@media (max-width: 480px) {
+  .universe-archive-intro img { width: 44px; height: 44px; }
+  .universe-archive-intro h2 { font-size: 1.2rem; }
+  .universe-archive-catalog { padding: 10px; }
+  .universe-archive-actor { grid-template-columns: minmax(0, 1fr) !important; }
 }

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { parseAst } from 'rolldown/parseAst';
 import { verifyExtinctionViewmodelContract, verifyExtinctionRendererBinding } from './extinctionViewmodelContract.mjs';
 import { getExtinctionViewmodel, getExtinctionHandFrame, getExtinctionHandSourceRect, getExtinctionHandPlacement, getExtinctionProjectilePlacement } from '../src/game/extinctionContent.js';
 test('progression contract executes current owner, reload, crop, pickup and aspect rules',()=>assert.equal(verifyExtinctionViewmodelContract(),true));
@@ -68,11 +69,15 @@ test('invalid authored source cells fall back instead of sampling a different as
 });
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
-test('progression hookup accepts the selected owner instead of a hardcoded Mirelle constant', () => {
-  assert.equal(verifyExtinctionRendererBinding(hubSource), true);
+const profileSource = readFileSync(new URL('../src/game/extinctionFighterProfiles.js', import.meta.url), 'utf8');
+test('progression hookup follows the selected owner through the fighter profile and exact-owner view resolver', () => {
+  assert.equal(verifyExtinctionRendererBinding(hubSource, profileSource), true);
+  assert.equal(verifyExtinctionRendererBinding(hubSource), true, 'the progression audit default reads the current adapter');
 });
 for (const [name, before, after] of [
-  ['wrong owner', 'getExtinctionViewmodel(selectedHero)', "getExtinctionViewmodel({id:'arca_mirelle'})"],
+  ['wrong owner', 'getExtinctionFighterProfile(selectedHero)', "getExtinctionFighterProfile({id:'arca_mirelle'})"],
+  ['stale owner memo', 'getExtinctionFighterProfile(selectedHero), [selectedHero]', 'getExtinctionFighterProfile(selectedHero), []'],
+  ['bypassed owner profile', 'const viewmodel = fighterProfile.view;', "const viewmodel = getExtinctionViewmodel({id:'arca_mirelle'});"],
   ['borrowed hands', 'hands.src = viewmodel.src;', "hands.src = '/borrowed-hands.png';"],
   ['unbound hand reference', 'fpsHandsRef.current = hands;', 'fpsHandsRef.current = null;'],
   ['borrowed effect', 'projectile.src = viewmodel.projectile;', "projectile.src = '/borrowed-effect.png';"],
@@ -80,4 +85,55 @@ for (const [name, before, after] of [
 ]) test(`progression hookup rejects ${name}`, () => {
   assert.ok(hubSource.includes(before));
   assert.throws(() => verifyExtinctionRendererBinding(hubSource.replace(before, after)), /hookup missing/);
+});
+for (const [name, before, after] of [
+  ['wrong adapter owner', 'getExtinctionViewmodel(hero)', "getExtinctionViewmodel({id:'arca_mirelle'})"],
+  ['borrowed adapter view', 'view: { ...view,', "view: { ...getExtinctionViewmodel({id:'arca_mirelle'}),"],
+  ['overridden adapter owner id', 'view: { ...view,', "view: { ...view, id: 'borrowed-owner',"],
+  ['overridden adapter hands', 'view: { ...view,', "view: { ...view, src: '/borrowed-hands.png',"],
+  ['overridden adapter effect', 'view: { ...view,', "view: { ...view, projectile: '/borrowed-effect.png',"],
+  ['overridden adapter crop', 'view: { ...view,', 'view: { ...view, layout: {},']
+]) test(`progression hookup rejects ${name}`, () => {
+  assert.ok(profileSource.includes(before));
+  assert.throws(() => verifyExtinctionRendererBinding(hubSource, profileSource.replace(before, after)), /hookup missing/);
+});
+test('a comment containing the old owner expression cannot satisfy the selected-owner hookup', () => {
+  const bad = hubSource.replace('getExtinctionFighterProfile(selectedHero)', "getExtinctionFighterProfile({id:'arca_mirelle'})");
+  assert.throws(() => verifyExtinctionRendererBinding(`${bad}\n// getExtinctionFighterProfile(selectedHero)`), /hookup missing/);
+});
+
+// Execute the actual progression assertions, without importing its unrelated
+// whole-game audits. Faults leave imports/other rendering code in place, so an
+// unwired implementation cannot pass merely because its module is mentioned.
+const progressionSource = readFileSync(new URL('./progressionAudit.mjs', import.meta.url), 'utf8');
+const firingGuards = parseAst(progressionSource).body.filter(node => node.type === 'ExpressionStatement'
+  && node.expression.type === 'CallExpression' && node.expression.callee.name === 'assert'
+  && /^FPS (pickup firing|reload timing|projectile rendering) must /.test(node.expression.arguments[1]?.value || ''));
+assert.equal(firingGuards.length, 3, 'production keeps all three firing obligations');
+const verifyFiringGuards = new Function('assert', 'hubSource', 'extinctionSignaturesSource',
+  firingGuards.map(node => progressionSource.slice(node.start, node.end)).join('\n'));
+const protocolSource = readFileSync(new URL('../src/game/extinctionSignatures.js', import.meta.url), 'utf8');
+test('production firing guards accept the extracted runtime while retaining the real scene renderer and reload', () => {
+  assert.ok(!hubSource.includes('state.muzzle = 36'), 'muzzle ownership moved out of the component');
+  assert.doesNotThrow(() => verifyFiringGuards(assert.ok, hubSource, protocolSource));
+});
+for (const [name, inProtocol, before, after, failure] of [
+  ['disconnected pickup call', false, 'const outcome = fireExtinctionPickupWeapon(', 'const outcome = disconnectedPickup(', 'pickup firing'],
+  ['reload bypass while firing', true, 'if (state.reloadPulse > 0)', 'if (false)', 'pickup firing'],
+  ['disabled cadence', true, '< cooldown)', '< 0)', 'pickup firing'],
+  ['lost shot timestamp', true, 'state.lastFireTime = state.t', 'state.lastFireTime = 0', 'pickup firing'],
+  ['free ammunition', true, 'weapon.ammo -= 1', 'weapon.ammo -= 0', 'pickup firing'],
+  ['lost muzzle feedback', true, 'state.muzzle = 36', 'state.muzzle = 0', 'pickup firing'],
+  ['unlimited reload reserve', false, 'state.reserveAmmo -= loaded', 'state.reserveAmmo -= 0', 'reload timing'],
+  ['instant reload', false, 'state.reloadPulse = 36', 'state.reloadPulse = 0', 'reload timing'],
+  ['frozen reload delay', false, '(state.reloadPulse || 0) - 1', '(state.reloadPulse || 0) - 0', 'reload timing'],
+  ['disconnected world effects', false, 'drawExtinctionProtocols(ctx,', 'discardedProtocolDraw(ctx,', 'projectile rendering'],
+  ['undrawn dedicated overlay', false, 'ctx.drawImage(projectileSheet,', 'discardedOverlay(projectileSheet,', 'projectile rendering'],
+  ['overlay outside firing frames', false, 'state.muzzle && fpsProjectileRef.current?.complete', 'fpsProjectileRef.current?.complete', 'projectile rendering']
+]) test(`production firing guards reject ${name}`, () => {
+  const source = inProtocol ? protocolSource : hubSource;
+  assert.ok(source.includes(before), `fault must alter current executable code: ${name}`);
+  const broken = source.replaceAll(before, after);
+  assert.throws(() => verifyFiringGuards(assert.ok, inProtocol ? hubSource : broken, inProtocol ? broken : protocolSource),
+    new RegExp(`FPS ${failure} must`));
 });

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Extinction — vues des techniques</title>
+<style>
+  * { box-sizing: border-box; } body { margin: 0; background: #071019; color: #e2f2f5; font: 15px/1.45 system-ui, sans-serif; }
+  main { width: min(1440px, 100%); margin: auto; padding: 24px; } h1 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 36px); }
+  p { color: #a3bdc9; margin: 8px 0 20px; max-width: 900px; } label { display: grid; gap: 5px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 20px 0; }
+  select, button { min-height: 44px; border: 1px solid #426170; border-radius: 6px; padding: 8px 12px; color: inherit; background: #122833; font: inherit; }
+  select { max-width: 100%; } .controls label { max-width: 100%; } button[aria-pressed="true"] { background: #28545d; border-color: #70d6cf; }
+  button:focus-visible, select:focus-visible { outline: 3px solid #e8d69c; outline-offset: 3px; }
+  #phase-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stage { position: relative; border: 1px solid #304b5a; border-radius: 9px; overflow: hidden; background: linear-gradient(#0b1a27 50%, #152c37 50%); }
+  .stage canvas { width: 100%; height: clamp(160px, 45vh, 430px); display: block; }
+  .aim { position: absolute; width: 16px; height: 16px; left: calc(50% - 8px); top: calc(50% - 8px); opacity: .55;
+    background: linear-gradient(#d7e8eb,#d7e8eb) center / 2px 16px no-repeat, linear-gradient(#d7e8eb,#d7e8eb) center / 16px 2px no-repeat; pointer-events: none; }
+  #stage-caption { margin: 10px 0 26px; font-size: 15px; color: #c8dce3; }
+  #matrix { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  article { min-width: 0; border: 1px solid #294652; border-radius: 9px; overflow: hidden; background: #0b1c27; }
+  article header { padding: 12px 14px 4px; min-height: 80px; } article strong { display: block; } article small { color: #a9c0c9; display: block; }
+  article canvas { width: 100%; height: auto; aspect-ratio: 1.65; display: block; background: linear-gradient(#0b1a27 50%, #152c37 50%); }
+  article footer { padding: 8px 14px; border-top: 1px solid #294652; color: #8fbdc4; font: 12px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; }
+  @media(max-width: 960px) { #matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media(max-width: 540px) { main { padding: 16px; } #matrix { grid-template-columns: 1fr; } .controls { align-items: stretch; } }
+</style></head><body><main>
+<h1>Extinction — vues des techniques</h1>
+<p>Neuf techniques principales issues des profils et trois armes de terrain. Ce banc vérifie le rendu Canvas à partir des vraies actions et de leurs délais. Les formes sont des schémas fonctionnels ; elles ne représentent ni les mains ni l’apparence canonique des personnages.</p>
+<div class="controls"><label>Profil ou équipement<select id="sample"></select></label>
+<div id="phase-controls" role="group" aria-label="État observé">
+<button type="button" data-phase="idle" aria-pressed="true">Prêt</button>
+<button type="button" data-phase="attack" aria-pressed="false">Action</button>
+<button type="button" data-phase="recovery" aria-pressed="false">Récupération</button>
+<button type="button" data-phase="reload" aria-pressed="false">Recharge</button>
+<button type="button" data-phase="empty" aria-pressed="false">Stock vide</button>
+</div></div>
+<div class="stage"><canvas id="stage" aria-label="Vue schématique à la taille du jeu"></canvas><span class="aim" aria-hidden="true"></span></div>
+<div id="stage-caption"></div><section id="matrix" aria-label="Comparaison des techniques"></section>
+</main><script type="module" src="./extinctionSchematicHarness.js"></script></body></html>

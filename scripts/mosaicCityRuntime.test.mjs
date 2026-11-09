@@ -9,6 +9,9 @@ import {
 } from '../src/game/mosaicCityRuntime.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 import { advanceMosaicReconnaissance, normalizeMosaicReconnaissance } from '../src/game/mosaicReconnaissance.js';
+import { MOSAIC_CHARACTER_MISSIONS, advanceMosaicCharacterMission, getMosaicCharacterMissionObjective, normalizeMosaicCharacterMissions,
+  startMosaicCharacterMission } from '../src/game/mosaicCharacterMissions.js';
+import { getMosaicMissionOperation } from '../src/game/mosaicMissionOperations.js';
 
 const district = { worldW: 2000, worldH: 1000 };
 const makeState = (keys = {}) => ({ player: { x: 100, y: 100, facing: 1, speed: 2.35 }, keys, npcs: [], destination: null });
@@ -70,6 +73,46 @@ test('collision substeps prevent tunneling through NPC bodies and allow escaping
   state.keys = { arrowleft: true };
   advanceMosaicPlayer(state, district);
   assert.ok(state.player.x < 130);
+});
+
+for (const targetType of ['zone', 'point']) test(`${targetType} approach replans when a passer-by enters the existing route`, () => {
+  const state = makeState();
+  const requested = { x: 450, y: 100 };
+  const zone = { id: 'relay', action: 'anchor', x: 430, y: 80, w: 40, h: 40 };
+  state.destination = { ...requested };
+  state.pendingInteraction = targetType === 'zone' ? { type: 'zone', id: zone.id } : null;
+  state.npcs = [{ hero: { id: 'passing-resident' }, x: 250, y: 300 }];
+  advanceMosaicPlayer(state, district);
+  // The resident arrives at the collision boundary after the route was built.
+  Object.assign(state.npcs[0], { x: state.player.x + 28, y: state.player.y });
+  assert.equal(advanceMosaicPlayer(state, district), 0, 'physical bodies still stop this step');
+  assert.deepEqual(state.destination, requested, 'a moving bystander must not discard the requested place');
+  for (let tick = 0; tick < 500 && state.destination; tick++) {
+    const previous = { ...state.player };
+    advanceMosaicPlayer(state, district);
+    assert.ok(Math.hypot(state.player.x - previous.x, state.player.y - previous.y) <= 2.35 + 1e-7, 'ordinary speed budget retained');
+    assert.ok(Math.hypot(state.player.x - state.npcs[0].x, state.player.y - state.npcs[0].y) >= 28 - 1e-7, 'no passing through the resident');
+    if (targetType === 'zone' && resolveMosaicInteraction(state.player, { zones: [zone] }, state.pendingInteraction)) break;
+  }
+  if (targetType === 'zone') assert.equal(resolveMosaicInteraction(state.player, { zones: [zone] }, state.pendingInteraction)?.id, zone.id);
+  else { near(state.player.x, requested.x); near(state.player.y, requested.y); }
+});
+
+test('manual input still cancels a zone route waiting to be replanned', () => {
+  const state = makeState();
+  state.destination = { x: 450, y: 100 };
+  state.pendingInteraction = { type: 'zone', id: 'relay' };
+  state.npcs = [];
+  advanceMosaicPlayer(state, district);
+  state.npcs = [{ hero: { id: 'passing-resident' }, x: state.player.x + 28, y: state.player.y }];
+  advanceMosaicPlayer(state, district);
+  state.keys = { arrowdown: true };
+  advanceMosaicPlayer(state, district);
+  assert.equal(state.destination, null); assert.equal(state.pendingInteraction, null);
+  state.keys = {};
+  const stopped = { ...state.player };
+  for (let tick = 0; tick < 60; tick++) advanceMosaicPlayer(state, district);
+  assert.equal(state.player.x, stopped.x); assert.equal(state.player.y, stopped.y);
 });
 
 test('collision slides along an NPC instead of canceling the whole movement', () => {
@@ -255,6 +298,13 @@ test('the Archives Codex terminal opens the actual global archive only after app
   assert.equal(zone.universe, null, 'the global archive does not request an invented A.R.C.A. universe');
   const stateRef = { current: makeState() };
   const opened = [];
+  const mission = { ...MOSAIC_CHARACTER_MISSIONS.find(entry => entry.heroId === 'player_anchor'),
+    districtId: 'universe-nexus-de-convergence', anchorId: 'universe-nexus-de-convergence-core' };
+  const characterMissionsRef = { current: normalizeMosaicCharacterMissions(startMosaicCharacterMission(
+    normalizeMosaicCharacterMissions(), mission).progress) };
+  assert.equal(characterMissionsRef.current.activeId, mission.id);
+  assert.equal(characterMissionsRef.current.records[mission.id].districtId, mission.districtId);
+  const savedContract = JSON.stringify(characterMissionsRef.current);
   const source = city.slice(city.indexOf('const openCityService ='), city.indexOf('  useEffect(() => {\n    const onKeyDown'));
   const args = {
     useCallback: callback => callback, sessionPausedRef: { current: false }, stateRef,
@@ -262,13 +312,18 @@ test('the Archives Codex terminal opens the actual global archive only after app
     locationCallbackRef: { current: () => {} }, currentDistrictRef: { current: 'archives' }, currentZoneRef: { current: 'codex' },
     snapshotMosaicLocation: (state, districtId, zoneId) => ({ player: {...state.player}, districtId, zoneId }),
     resolveMosaicInteraction, district: { portals: [] }, zones, exhibits: [], lang: 'fr',
+    // The live callback also depends on the owned residents used by its NPC
+    // branch. This global-archive fixture intentionally owns no resident.
+    unlockedHeroes: [],
     advanceMosaicReconnaissance, reconnaissanceRef: { current: normalizeMosaicReconnaissance() }, reconnaissanceDossier: null,
     commitReconnaissance: () => assert.fail('The global archive cannot validate a district reconnaissance'),
+    advanceMosaicCharacterMission, getMosaicCharacterMissionObjective, getMosaicMissionOperation, characterMissionsRef, characterMissionCatalog: [],
+    commitCharacterMissions: () => assert.fail('The global archive cannot validate a character contract from another district'),
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
     onOpenService: () => assert.fail('Codex cannot open another service'),
     onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),
     playerName: 'Ancre', universeStageStats: {}, sound: { playSfx: () => {} }, setSelectedHeroId: () => {},
-    setWelcomeIndex: () => {}, setWelcomeOpen: () => {}, MOSAIC_WELCOME
+    setWelcomeIndex: () => {}, setWelcomeOpen: () => {}, setGuideAutoDeferred: () => {}, MOSAIC_WELCOME
   };
   const interact = new Function(...Object.keys(args), `${source}; return interactWithNearby;`)(...Object.values(args));
   interact({ type: 'zone', id: zone.id });
@@ -276,6 +331,7 @@ test('the Archives Codex terminal opens the actual global archive only after app
   Object.assign(stateRef.current.player, getMosaicZoneAnchor(zone));
   interact({ type: 'zone', id: zone.id });
   assert.deepEqual(opened, [null]);
+  assert.equal(JSON.stringify(characterMissionsRef.current), savedContract, 'opening the global archive preserves the tracked Nexus contract');
 });
 
 test('onboarding advances through walking, interaction and freely selected objective', () => {
@@ -504,4 +560,178 @@ test('city saves tutorial and location independently and keeps pause, resume, sk
   assert.doesNotMatch(invocation, /setGold|setActiveTeam|setEquippedGear|setInventory/);
   for (const command of ['pause', 'resume', 'skip', 'restart', 'welcome-read']) assert.ok(city.includes(`controlGuide('${command}')`), command);
   assert.match(city, /guideProgressCallbackRef\.current\?\.\(snapshot\)/);
+});
+
+// Execute the actual initializer/effect block with persistent hook slots.
+// Setters queue another render; effects run only after the whole block and when
+// their dependencies change. Parent save callbacks feed their real snapshots
+// back as props, as the Hub does, rather than resetting the guide in this test.
+const guideInitialization = city.slice(city.indexOf('  const guideRef ='), city.indexOf("  const [destinationQuery,"));
+const initializeGuide = new Function('environment', `
+  const { useRef, useState, useEffect, useCallback, tutorialProgress,
+    characterMissionProgress, reconnaissanceProgress, onTutorialProgress,
+    onCharacterMissionProgress, onReconnaissanceProgress, createMosaicGuide,
+    getMosaicGuideStep, normalizeMosaicReconnaissance, normalizeMosaicCharacterMissions,
+    advanceMosaicGuide, transitionMosaicGuide } = environment;
+  ${guideInitialization}
+  return { guideRef, guideState, guideStep, characterMissionsRef, guideAutoDeferred,
+    welcomeOpen, welcomeIndex, setGuideAutoDeferred, setWelcomeOpen,
+    setWelcomeIndex, controlGuide, recordGuide };
+`);
+const guidePanelCondition = city.match(/\{([^{}\n]+)\?\s*\(\s*<MosaicGuidePanel/)?.[1];
+assert.ok(guidePanelCondition, 'the actual guide panel condition must exist');
+const isGuidePanelVisible = new Function('guideState', 'welcomeOpen', 'guideAutoDeferred', `return Boolean(${guidePanelCondition});`);
+
+const guideButtonCallback = label => {
+  const labelAt = city.indexOf(`'${label}'`);
+  const buttonAt = city.lastIndexOf('<button', labelAt);
+  const button = city.slice(buttonAt, labelAt);
+  const start = button.indexOf('onClick={');
+  const end = button.lastIndexOf('}>');
+  assert.ok(labelAt >= 0 && buttonAt >= 0 && start >= 0 && end > start, `actual ${label} callback exists`);
+  return button.slice(start + 'onClick={'.length, end);
+};
+
+const activeGuideContract = () => {
+  const mission = { ...MOSAIC_CHARACTER_MISSIONS.find(entry => entry.heroId === 'player_anchor'),
+    districtId: 'universe-nexus-de-convergence', anchorId: 'universe-nexus-de-convergence-core' };
+  const result = startMosaicCharacterMission(normalizeMosaicCharacterMissions(), mission);
+  assert.equal(result.progress.activeId, mission.id);
+  return result.progress;
+};
+
+const makeGuideLifecycle = (initial = {}) => {
+  const slots = [], savedGuides = [], savedContracts = [];
+  let props = { tutorialProgress: null, characterMissionProgress: null, reconnaissanceProgress: null, ...initial };
+  let cursor = 0, dirty = false, effects = [], value, menuOpen = true;
+  const nextSlot = (kind, initialize) => {
+    const index = cursor++;
+    if (!slots[index]) slots[index] = { kind, value: initialize() };
+    assert.equal(slots[index].kind, kind, `stable ${kind} hook slot ${index}`);
+    return slots[index];
+  };
+  const hooks = {
+    useRef: initialValue => nextSlot('ref', () => ({ current: initialValue })).value,
+    useState: initialValue => {
+      const slot = nextSlot('state', () => typeof initialValue === 'function' ? initialValue() : initialValue);
+      slot.set ||= next => {
+        const result = typeof next === 'function' ? next(slot.value) : next;
+        if (!Object.is(slot.value, result)) { slot.value = result; dirty = true; }
+      };
+      return [slot.value, slot.set];
+    },
+    useCallback: callback => callback,
+    useEffect: (callback, dependencies) => {
+      const slot = nextSlot('effect', () => null);
+      if (!slot.value || dependencies.some((dependency, index) => !Object.is(slot.value[index], dependency))) {
+        slot.value = [...dependencies];
+        effects.push(callback);
+      }
+    }
+  };
+  const render = (updates = {}) => {
+    props = { ...props, ...updates };
+    for (let attempt = 0; attempt < 10; attempt++) {
+      cursor = 0; dirty = false; effects = [];
+      value = initializeGuide({ ...hooks, ...props, createMosaicGuide, getMosaicGuideStep,
+        normalizeMosaicReconnaissance, normalizeMosaicCharacterMissions, advanceMosaicGuide, transitionMosaicGuide,
+        onTutorialProgress: snapshot => { savedGuides.push(snapshot); props.tutorialProgress = snapshot; dirty = true; },
+        onCharacterMissionProgress: snapshot => { savedContracts.push(snapshot); props.characterMissionProgress = snapshot; dirty = true; },
+        onReconnaissanceProgress: () => assert.fail('guide presentation cannot publish reconnaissance') });
+      for (const effect of effects) effect();
+      if (!dirty) return value;
+    }
+    assert.fail('guide initialization/effects must settle');
+  };
+  const click = label => {
+    const bindings = { ...value, setCityMenuOpen: open => { menuOpen = open; } };
+    new Function(...Object.keys(bindings), `return (${guideButtonCallback(label)});`)(...Object.values(bindings))();
+    return render();
+  };
+  render();
+  return { render, click, savedGuides, savedContracts,
+    get value() { return value; }, get menuOpen() { return menuOpen; },
+    get panelVisible() { return isGuidePanelVisible(value.guideState, value.welcomeOpen, value.guideAutoDeferred); } };
+};
+
+test('actual active-contract initialization defers unread help without changing tutorial checkpoints or contract data', () => {
+  const tutorialProgress = Object.freeze(createMosaicGuide({ distance: 32 }));
+  const characterMissionProgress = activeGuideContract();
+  const original = JSON.stringify({ tutorialProgress, characterMissionProgress });
+  const lifecycle = makeGuideLifecycle({ tutorialProgress, characterMissionProgress });
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.panelVisible, false);
+  assert.equal(lifecycle.value.guideAutoDeferred, true);
+  assert.equal(lifecycle.value.guideRef.current.welcomeSeen, false);
+  assert.equal(lifecycle.value.guideRef.current.distance, 32);
+  assert.deepEqual(lifecycle.savedGuides, []);
+  assert.deepEqual(lifecycle.savedContracts, []);
+  assert.equal(JSON.stringify({ tutorialProgress, characterMissionProgress }), original);
+});
+
+test('actual first arrival keeps its welcome, while Later defers locally across a subsequent tutorial import', () => {
+  const lifecycle = makeGuideLifecycle();
+  assert.equal(lifecycle.value.welcomeOpen, true);
+  assert.equal(lifecycle.value.guideAutoDeferred, false);
+  lifecycle.click('Plus tard');
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.panelVisible, false);
+  assert.equal(lifecycle.value.guideRef.current.welcomeSeen, false);
+  lifecycle.render({ tutorialProgress: createMosaicGuide({ distance: 21 }) });
+  assert.equal(lifecycle.value.guideRef.current.distance, 21);
+  assert.equal(lifecycle.value.welcomeOpen, false, 'importing a checkpoint does not undo Later');
+  assert.equal(lifecycle.panelVisible, false);
+  assert.deepEqual(lifecycle.savedGuides, []);
+});
+
+test('actual late contract import closes automatic welcome and keeps an imported partial tutorial unread', () => {
+  const lifecycle = makeGuideLifecycle();
+  assert.equal(lifecycle.value.welcomeOpen, true);
+  const characterMissionProgress = activeGuideContract();
+  lifecycle.render({ characterMissionProgress });
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.panelVisible, false);
+  const tutorialProgress = createMosaicGuide({ distance: 47 });
+  lifecycle.render({ tutorialProgress });
+  assert.deepEqual(lifecycle.value.guideRef.current, tutorialProgress);
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.value.guideAutoDeferred, true);
+  assert.deepEqual(lifecycle.value.characterMissionsRef.current, characterMissionProgress);
+  assert.deepEqual(lifecycle.savedGuides, []);
+  assert.deepEqual(lifecycle.savedContracts, []);
+});
+
+test('actual welcome replay, resume, pause and restart callbacks remain usable during a tracked contract', () => {
+  const characterMissionProgress = activeGuideContract();
+  const lifecycle = makeGuideLifecycle({ characterMissionProgress,
+    tutorialProgress: createMosaicGuide({ distance: 32 }) });
+  lifecycle.click('Revoir l accueil');
+  assert.equal(lifecycle.value.welcomeOpen, true);
+  assert.equal(lifecycle.value.guideAutoDeferred, false);
+  assert.equal(lifecycle.menuOpen, false);
+  assert.equal(lifecycle.value.welcomeIndex, 0);
+  assert.equal(lifecycle.value.guideRef.current.welcomeSeen, false, 'replaying is not reading');
+  assert.deepEqual(lifecycle.savedGuides, []);
+  lifecycle.click('Plus tard');
+  lifecycle.click('REPRENDRE LE GUIDE');
+  assert.equal(lifecycle.value.guideState.status, 'active');
+  assert.equal(lifecycle.value.guideRef.current.distance, 32, 'resume retains actual walking progress');
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.panelVisible, true, 'the import effect does not immediately hide an explicit resume');
+  assert.deepEqual(lifecycle.savedGuides, [], 'showing an already active guide is not a checkpoint');
+  lifecycle.click('REPRENDRE LE GUIDE'); // The same real button now offers Pause.
+  assert.equal(lifecycle.value.guideState.status, 'paused');
+  lifecycle.click('REPRENDRE LE GUIDE');
+  assert.equal(lifecycle.value.guideState.status, 'active');
+  assert.equal(lifecycle.panelVisible, true);
+  lifecycle.click('Rejouer les reperes');
+  assert.equal(lifecycle.value.guideState.status, 'active');
+  assert.equal(lifecycle.value.guideRef.current.distance, 0);
+  assert.equal(lifecycle.value.guideRef.current.welcomeSeen, false);
+  assert.equal(lifecycle.value.welcomeOpen, false);
+  assert.equal(lifecycle.panelVisible, true);
+  assert.equal(lifecycle.menuOpen, false);
+  assert.deepEqual(lifecycle.value.characterMissionsRef.current, characterMissionProgress);
+  assert.deepEqual(lifecycle.savedContracts, []);
+  assert.deepEqual(lifecycle.savedGuides.map(guide => [guide.status, guide.distance]), [['paused', 32], ['active', 32], ['active', 0]]);
 });

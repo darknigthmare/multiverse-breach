@@ -9,6 +9,7 @@ import { KNOWN_DLC_HERO_IDS, KNOWN_ARC_REPLAY_DEFINITIONS, OC_DLC_SAVE_METADATA,
 import { getRuntimeHiddenUniverses, isStageContentAvailable, mergeDlcCampaignProgress, projectPlayableTeam, updateInstalledUniverseVisibility } from '../src/game/dlcPlayerState.js';
 import { projectUniverseArcDeploymentPhases } from '../src/game/missions/missionStageProjection.js';
 import { getProgressKeys } from '../src/game/progressCalendar.js';
+import { MOSAIC_CHARACTER_MISSIONS } from '../src/game/mosaicCharacterMissions.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const installation = mode => createDlcInstallation({
@@ -61,6 +62,14 @@ const sampleTrace = version => ({
   },
   activityProgress: {
     ...getProgressKeys(), lastSeenDay: getProgressKeys().dayKey, lifetimeWins: 4, heroInstability: { masterchief: 2 },
+    mosaicCharacterMissions: {
+      version: 1,
+      activeId: MOSAIC_CHARACTER_MISSIONS.find(mission => mission.universe === 'Halo')?.id,
+      records: Object.fromEntries(MOSAIC_CHARACTER_MISSIONS.filter(mission => ['Halo', 'Alien'].includes(mission.universe)).map(mission => [mission.id, {
+        heroId: mission.heroId, universe: mission.universe, districtId: 'universe-' + mission.universe.toLowerCase(),
+        completedStepIds: [mission.steps[0].id], choiceId: null, completed: false, futureField: { preserve: true }
+      }]))
+    },
     mosaicReconnaissance: {
       version: 1, activeDistrictId: 'universe-halo',
       dossiers: {
@@ -92,6 +101,10 @@ test('actual App normalization and serialization retain dormant data through a b
   assert.equal(reserialized.portalCollection.customLoadout.battleMusic, 'future_track');
   assert.deepEqual(reserialized.activityProgress.mosaicReconnaissance, raw.activityProgress.mosaicReconnaissance,
     'City dossiers survive the actual App normalization/serialization when their DLC is absent');
+  assert.ok(Object.keys(raw.activityProgress.mosaicCharacterMissions.records).length >= 2,
+    'exercise actual Halo and Alien contracts, not an empty mission fixture');
+  assert.deepEqual(reserialized.activityProgress.mosaicCharacterMissions, raw.activityProgress.mosaicCharacterMissions,
+    'character mission checkpoints survive the actual App normalization and serialization with absent DLC');
   assert.equal('installedPackIds' in persisted, false);
 });
 
