@@ -26,7 +26,7 @@
 .mosaic-contract-filters { display: flex; flex-wrap: wrap; gap: .4rem; min-width: 0; }
 .mosaic-character-missions .mosaic-contract-filters button { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex: 1 1 8rem; }
 .mosaic-character-missions [aria-pressed="true"] { border-color: #f3d58e; background: #413a24; box-shadow: inset .2rem 0 #f3d58e; }
-.mosaic-contract-filters button > span:last-child { color: #f3d58e; }
+.mosaic-contract-filters button > span:last-child { flex-shrink: 0; white-space: nowrap; color: #f3d58e; }
 .mosaic-contract-match-count { color: #b3c9d6; }
 .mosaic-character-missions .mosaic-contract-list { list-style: none; display: grid; gap: .5rem; padding: 0; margin: 0; }
 .mosaic-character-missions .mosaic-contract-list li { min-width: 0; padding: 0; }
