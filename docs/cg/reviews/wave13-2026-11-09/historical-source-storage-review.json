@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "status": "independently-verified-historical-storage-recovery",
+  "scope": "Restore existing historical source bytes in a fresh clone without changing any target incarnation, lock or source-use restriction.",
+  "receipts": [
+    {
+      "path": "docs/cg/bob-minions-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "1b83b68647c3efe2b863138b4261bb7e00361ea048e1ebf77cef41e9596526c8",
+      "characterId": "bob_minions",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/cyber-spider-kelly-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "971095882fa8da569f60d13eb567e789dd3220308509c1e5cf44ed632d8307b3",
+      "characterId": "cyber_spider_kelly",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/harrigan-predator-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "35bdacc469092d6509acdfdf037c67a1b96d2a04a265e33f3ba6350741fa2166",
+      "characterId": "harrigan_predator",
+      "references": 1
+    },
+    {
+      "path": "docs/cg/kevin-minions-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "8e08ed8658b15d89423318871ded8cfa93ffe88849d6a41ba786c6620f859533",
+      "characterId": "kevin_minions",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/liquid-snake-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "d867f2424ab6063915f9bdd5ef1980db7f6439942e5952c30e040bab2eaffd50",
+      "characterId": "liquid_snake",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/meiko-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "e537931aca8673868492152814617fc259782020583781afa2594e5a43afa1dd",
+      "characterId": "meiko",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/miku-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "3668d7dcf06e539d07958b3772cdd338c97cb6e7879b1657d6256956c79fc4a0",
+      "characterId": "miku",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/mistral-mgr-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "ebf4a3d5c052d6e719b440b99b3a7e47ba2a1384d2cde9bfd7ceb4dfe62fd9b6",
+      "characterId": "mistral_mgr",
+      "references": 3
+    },
+    {
+      "path": "docs/cg/pbody-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "770c54a04ab228fd605c648f94885c8d1a1da2d6339696188687a1b6bddea092",
+      "characterId": "pbody",
+      "references": 1
+    },
+    {
+      "path": "docs/cg/rin-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "f4edca51b21b5dd85fa92c1d567dd19ab35bc6ba5291f01a2f4380fc98ae5f08",
+      "characterId": "rin",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/sam-carter-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "8232f053df9ddb14b5009dad8e41e3cf84921f044679982fbdef8304ca3b6e2d",
+      "characterId": "sam_carter",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/saturnin-duck-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "f2baa150246b0c0ddd51b1432417987861206412f2fdac525e12a305f2790fe9",
+      "characterId": "saturnin_duck",
+      "references": 1
+    },
+    {
+      "path": "docs/cg/stuart-minions-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "6af7fa99e93a3add7fbe01e5610db71c02ad137bcf49bb3a39a4318b3ebb5cd8",
+      "characterId": "stuart_minions",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/tealc-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "72ab6fbee0dbb0259abf3f54706ffe82301131bd8e8fc81260ec92fb15644fa0",
+      "characterId": "tealc",
+      "references": 2
+    },
+    {
+      "path": "docs/cg/vader-storage-alias-reference-evidence-wave13-2026-11-09.json",
+      "sha256": "baef5b86352c984834025042f6888a0d43ae8994c67bfd04d401edb02fba68ed",
+      "characterId": "vader",
+      "references": 3
+    }
+  ],
+  "historicalReferences": 29,
+  "uniqueNativeFilesVerified": 23,
+  "exactHistoricalUrlDownloads": 20,
+  "originalIncarnationsChanged": 0,
+  "newImagesGenerated": 0,
+  "newIndependentSources": 0,
+  "newSourceInspectionClaimed": false,
+  "canonicalFidelityApproved": false,
+  "privateIndependentReviewSha256": "46dfb0ef45421b413214068ccb6b066d62e770b86eecb805b8c19aaedc83ec3f",
+  "diagnosisBeforeRecoverySha256": "f9bc29b22fe134cd8bf9028365df1bdc3fe950b4e25cf2d8dfd2b2293f87626d",
+  "notes": [
+    "Declared Predator publicByteExactCopy references are also resolved by the tested loader, with hash and byte-count checks and original-file priority.",
+    "Existing Bishop copies are not added again. The historical Chell comparison does not qualify P-body.",
+    "Mistral’s two unviewed Steam screenshots retain viewed:false. Teal’c’s recorded inspection and Liquid’s later curated inspection remain traceable.",
+    "Five unavailable private candidate bitmaps are not recreated from workbook thumbnails or promoted to identity evidence."
+  ]
+}

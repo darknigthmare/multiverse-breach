@@ -851,6 +851,16 @@ def build(output: Path, no_images=False) -> dict:
     bible_doc = read_json(BIBLE, {})
     bible = {row["characterId"]: row for row in bible_doc.get("subjects", bible_doc.get("characters", []))}
     manual = read_manual(output)
+    planned_subjects = {subject["characterId"] for subject in plan["subjects"]}
+    planned_slots = {slot["slot"] for slot in plan["slots"]}
+    orphan_controls = sorted((key[0] for key in manual["Contrôles"] if key[0] not in planned_subjects), key=str)
+    orphan_matrix = sorted((key for key in manual["Matrice CG"]
+                            if key[0] not in planned_subjects or key[1] not in planned_slots), key=repr)
+    if orphan_controls or orphan_matrix:
+        raise ValueError(
+            "Manual review rows are absent from the current plan; reconcile or export them by ID before rebuilding. "
+            f"Existing workbook unchanged. Contrôles: {orphan_controls}; Matrice CG: {orphan_matrix}"
+        )
     versions, entry_by_id = collect_versions(plan)
     current = {key: values[-1] for key, values in versions.items() if values}
     visual_evidence = collect_visual_evidence(bible)

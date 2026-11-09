@@ -10,9 +10,9 @@
     "src/game/kart/kartIdentityCatalogB.js": "bccaea9e865c27c5019e8052227bb2c3ae6a429b559edc702d8661258d379f0a",
     "src/game/kart/kartIdentityGeometry.js": "72f094f4956a98db32c6a0fc51cab9b373956513f4595d8dca4fef08b07d944d",
     "scripts/kart/buildKartAssets.mjs": "03c1dcdb38d348b04ba7accbc4cebe5df1fba458b073161855a9b07cf68a2754",
-    "src/game/spriteAssets.js": "c2ab4e4c5b12504335499a6fea433647e0ecebaa44547ee39966d6de9ba06f0a"
+    "src/game/spriteAssets.js": "097715350f1594dd07adc7b338dd40106ffd9e167ef0dcd74333ec07bec7e49a"
   },
-  "rosterSha256": "2c63bf97974856912af9bca71dd3ca767f5c62a58ff482f2c8d3f608da3e9baa",
+  "rosterSha256": "ee89669f6495c48cc26e385c70b457c52cfe70db53b7945057221ec9f7282745",
   "sourceRights": "Kart meshes authored from vehicle references or original universe briefs; referenced vehicle designs, characters and art retain their source rights. No licence to franchise IP is asserted.",
   "spriteTreatment": "Kart-only RGBA eight-view atlas. Existing character sprite remains a separate driver layer in game.",
   "fidelity": "Every model has an explicit vehicle or universe design. Racing proportions, an open seat and simplified geometry adapt the reference; individual 1:1 visual fidelity remains unverified.",
@@ -24,7 +24,7 @@
     "spriteAtlases": 1912,
     "directionalFrames": 15296,
     "driverSpritesPresentInGit": 1912,
-    "driverSpritesMaterialized": 12,
+    "driverSpritesMaterialized": 14,
     "driverSpritesUnresolved": 0,
     "identityAuthored": 430,
     "universeFamily": 1482,
@@ -34,7 +34,7 @@
     "originalUniverseDesigns": 81,
     "vehicleSilhouettes": 57,
     "distinctDesignProfiles": 893,
-    "bytes": 226980695
+    "bytes": 226982015
   },
   "assets": [
     {
@@ -14784,15 +14784,16 @@
         "accent": "#c2b67f",
         "detailColor": "#e5b25f",
         "sourceUrls": [
-          "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model"
+          "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model",
+          "https://www.20thcenturystudios.com/movies/aliens"
         ],
         "width": 1.9,
         "wheelbase": 2.12,
         "variant": null,
         "id": "kart-design:hicks",
         "designScope": "character-specific",
-        "sourceIncarnation": "",
-        "sourceAnchor": "",
+        "sourceIncarnation": "Aliens (1986) - Corporal Dwayne Hicks, uninjured field appearance",
+        "sourceAnchor": "Michael Biehn as Corporal Dwayne Hicks in Aliens (1986): short swept-back brown hair, light stubble, anatomical left-ear communications headset, worn gray-green Colonial Marine armor with a small red heart accent, camouflage trousers, shin guards and brown combat boots. Keep the legacy Alien roster ID; do not substitute Hudson, an Alien (1979) crew uniform or an acid-injured appearance.",
         "dimensions": {
           "wheelbase": 2.12,
           "width": 1.9,
@@ -14810,14 +14811,15 @@
       "fidelityStatus": "unreviewed-original-kart-adaptation",
       "referenceAsset": null,
       "sourceReferences": [
-        "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model"
+        "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model",
+        "https://www.20thcenturystudios.com/movies/aliens"
       ],
-      "driverFidelityStatus": "inherits-existing-sprite-review",
+      "driverFidelityStatus": "pending",
       "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
       "driverAvailable": true,
       "driverSprites": [
         {
-          "src": "/sprites/generated/heroes/alien/hicks.png",
+          "src": "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
           "columns": 4,
           "rows": 4,
           "col": 0,
@@ -14825,10 +14827,10 @@
           "trim": null,
           "sourceContext": "rpg",
           "upperBodyRatio": 0.68,
-          "sourcePath": "DLC/Alien/assets/sprites/generated/heroes/alien/hicks.png",
+          "sourcePath": "DLC/Alien/assets/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
           "tracked": true,
-          "materialized": false,
-          "sha256": null,
+          "materialized": true,
+          "sha256": "45940c8b7deed2ae81652cc2a4e709c3546e19224251868c677b872552b55617",
           "availability": "present-in-git-tree"
         }
       ],
@@ -14836,8 +14838,8 @@
         "sourcePath": "DLC/Alien/assets/kart/alien/hicks/kart.glb",
         "publicPath": "/kart/alien/hicks/kart.glb",
         "format": "glTF 2.0 binary",
-        "bytes": 94432,
-        "sha256": "fde0ed4122d0c201bfd45d3e436ca1ec268490fb24315d7cf166e0351577d096",
+        "bytes": 95080,
+        "sha256": "b2bd9ae33b7d7935fbc195cfb51d54e1fd655f30a262790af21192f40a1e61fc",
         "triangleCount": 1472,
         "parts": 9,
         "bounds": {
@@ -94029,15 +94031,17 @@
           "Mandibules et griffes"
         ],
         "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
-        "sourceUrls": [],
+        "sourceUrls": [
+          "https://www.20thcenturystudios.com/movies/prey"
+        ],
         "color": "#8b8063",
         "accent": "#c3b49b",
         "detailColor": "#dbe8ec",
         "variant": null,
         "id": "kart-design:feral_predator",
         "designScope": "character-specific",
-        "sourceIncarnation": "",
-        "sourceAnchor": "",
+        "sourceIncarnation": "Prey (2022) - masked Feral Predator, intact default appearance",
+        "sourceAnchor": "The masked Feral Predator from Prey (2022): elongated pale cracked bone biomask, long dark tendrils, lean mottled tan-brown alien body, layered waist covering, wrapped ankles and bare clawed feet. Twin curved wrist blades belong to the anatomical right arm and the folding circular shield to the left. Keep the mask on; no classic silver biomask, diamond body net, shoulder plasma caster, human boots or action-figure joints.",
         "referenceScope": "existing-universe-anchor",
         "dimensions": {
           "wheelbase": 2,
@@ -94055,13 +94059,15 @@
       "designSource": "authored-character-adaptation",
       "fidelityStatus": "unreviewed-original-kart-adaptation",
       "referenceAsset": null,
-      "sourceReferences": [],
-      "driverFidelityStatus": "inherits-existing-sprite-review",
+      "sourceReferences": [
+        "https://www.20thcenturystudios.com/movies/prey"
+      ],
+      "driverFidelityStatus": "pending",
       "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
       "driverAvailable": true,
       "driverSprites": [
         {
-          "src": "/sprites/generated/heroes/prey/feral-predator.png",
+          "src": "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
           "columns": 4,
           "rows": 4,
           "col": 0,
@@ -94069,10 +94075,10 @@
           "trim": null,
           "sourceContext": "rpg",
           "upperBodyRatio": 0.68,
-          "sourcePath": "DLC/Prey/assets/sprites/generated/heroes/prey/feral-predator.png",
+          "sourcePath": "DLC/Prey/assets/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
           "tracked": true,
-          "materialized": false,
-          "sha256": null,
+          "materialized": true,
+          "sha256": "d849a1132a61aab634b480d8da5194a81b5d1255af7a1105a0cf4cef2db4ee49",
           "availability": "present-in-git-tree"
         }
       ],
@@ -94080,8 +94086,8 @@
         "sourcePath": "DLC/Prey/assets/kart/prey/feral-predator/kart.glb",
         "publicPath": "/kart/prey/feral-predator/kart.glb",
         "format": "glTF 2.0 binary",
-        "bytes": 97120,
-        "sha256": "1f862a5981838a182d489508d070dffe146f9af1c8177c161b7d5a5ebb128ff6",
+        "bytes": 97792,
+        "sha256": "9e176fda3995e974184a0fad619dc1f9a5f6a11295f1056fdb53e2fa68fb646c",
         "triangleCount": 1516,
         "parts": 9,
         "bounds": {

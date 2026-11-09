@@ -18,7 +18,15 @@ export function createExpandedUniverses() {
     hero: { id: 'naru_prey', name: 'Naru', cat: 'tactical', color: '#8c6a45' },
     allies: [
       { id: 'taabe_prey', name: 'Taabe', cat: 'slayer', color: '#6f4e37' },
-      { id: 'feral_predator', name: 'Feral Predator', cat: 'horror', color: '#6a5c44' }
+      {
+        id: 'feral_predator', name: 'Feral Predator', cat: 'horror', color: '#6a5c44',
+        incarnation: 'Prey (2022) - masked Feral Predator, intact default appearance',
+        referenceUrl: 'https://www.20thcenturystudios.com/movies/prey',
+        visualAnchor: 'The masked Feral Predator from Prey (2022): elongated pale cracked bone biomask, long dark tendrils, lean mottled tan-brown alien body, layered waist covering, wrapped ankles and bare clawed feet. Twin curved wrist blades belong to the anatomical right arm and the folding circular shield to the left. Keep the mask on; no classic silver biomask, diamond body net, shoulder plasma caster, human boots or action-figure joints.',
+        canonStatus: 'source-locked-gameplay-adaptation',
+        visualReviewStatus: 'pending',
+        equipment: ['Bone biomask', 'Right-wrist twin blades', 'Left-forearm folding shield']
+      }
     ],
     monsters: ['Feral Trap Drone', 'Cloaked River Stalker', 'Shield Hunter'],
     bosses: ['Bear Hunt Echo', 'Feral Predator'],
