@@ -460,17 +460,46 @@ def add_list_validation(ws, col: int, list_col: int, last_list_row: int):
     validation.add(f"{get_column_letter(col)}4:{get_column_letter(col)}{ws.max_row}")
 
 
+def runtime_sprite_quarantine(subject: dict, bible: dict) -> dict | None:
+    """The shared JS gate is recorded with its exact actor scope by both builders."""
+    identity = subject.get("identity") or {}
+    incarnation = bible.get("incarnation") or {}
+    incarnation = incarnation.get("label") if isinstance(incarnation, dict) else incarnation
+    for record in [identity.get("runtimeSpriteQuarantine"), bible.get("runtimeSpriteQuarantine")]:
+        if not isinstance(record, dict) or not all(isinstance(record.get(key), str) and record[key].strip()
+                                                   for key in ["characterId", "universe", "incarnation"]):
+            continue
+        if record["characterId"] != subject.get("characterId"):
+            continue
+        if record.get("universe") != subject.get("universe") or record.get("incarnation") not in [identity.get("incarnation"), incarnation]:
+            continue
+        return record
+    return None
+
+
+def current_project_candidate(subject: dict, bible: dict, candidate: dict) -> bool:
+    if candidate.get("archivalOnly") is True or candidate.get("runtimeEligible") is False:
+        return False
+    # No alternate path or manifest bitmap can undo a runtime selection of no
+    # sprite. Real delivered CGs have their own explicit branch below.
+    return runtime_sprite_quarantine(subject, bible) is None
+
+
 def subject_visual(subject: dict, bible: dict, current: dict, entry_by_id: dict) -> tuple[str, str]:
     for candidate in bible.get("localVisuals", []):
-        if isinstance(candidate, dict) and candidate.get("selectedInRuntime") and local_path(candidate.get("path")):
+        if isinstance(candidate, dict) and current_project_candidate(subject, bible, candidate) and candidate.get("selectedInRuntime") and local_path(candidate.get("path")):
             return candidate["path"], "Sprite / planche réellement sélectionné dans le jeu — pas une source canon indépendante"
     for cg_id in subject.get("entryIds", []):
         entry = entry_by_id.get(cg_id, {})
         if entry.get("type") == "characterSolo" and cg_id in current:
             value = current[cg_id]
             return value.get("thumbnailPath") or value.get("imagePath"), "CG actuelle générée du projet — pas une source canon indépendante"
+    if runtime_sprite_quarantine(subject, bible):
+        return "", "Sprite en quarantaine — anciens bitmaps OLD conservés, aucune image runtime sélectionnée"
     for candidate in bible.get("localVisuals", []) + subject.get("identity", {}).get("localCandidates", []):
         path = candidate.get("path") if isinstance(candidate, dict) else candidate
+        if not current_project_candidate(subject, bible, candidate if isinstance(candidate, dict) else {"path": path}):
+            continue
         if local_path(path):
             return path, "Planche / sprite actuel du projet — pas une source canon indépendante"
     return "", "Aucune image locale disponible"
@@ -1218,7 +1247,7 @@ def build(output: Path, no_images=False) -> dict:
         original_project = isinstance(incarnation, dict) and incarnation.get("status") == "original-project-canon"
         local_candidates = [v for v in dossier.get("localVisuals", []) if isinstance(v, dict) and v.get("selectedInRuntime")]
         local_candidates += subject.get("identity", {}).get("localCandidates", [])
-        project_path = next((c.get("path") for c in local_candidates if local_path(c.get("path"))), None)
+        project_path = next((c.get("path") for c in local_candidates if current_project_candidate(subject, dossier, c) and local_path(c.get("path"))), None)
         references = visual_evidence.get(char_id) or [{}]
         if references and all(e.get("referencePurpose") in {"costume-only", "equipment-only", "environment-only", "body-costume-support"} for e in references):
             references = [{}, *references]
@@ -1307,7 +1336,8 @@ def build(output: Path, no_images=False) -> dict:
         if len(actual_variants) < 2:
             continue
         for visual in actual_variants:
-            append_row(sprite_variants, ["", char_id, subject["characterName"], subject["universe"], bool(visual.get("selectedInRuntime")), visual["path"], visual.get("role") or "Sprite généré du projet", visual.get("status") or "Fidélité 1:1 non certifiée", "Roster"])
+            selected = bool(visual.get("selectedInRuntime")) and current_project_candidate(subject, bible.get(char_id, {}), visual)
+            append_row(sprite_variants, ["", char_id, subject["characterName"], subject["universe"], selected, visual["path"], visual.get("role") or "Sprite généré du projet", visual.get("status") or "Fidélité 1:1 non certifiée", "Roster"])
             vr = sprite_variants._current_row
             link_cell(sprite_variants.cell(vr, 6), visual["path"])
             link_cell(sprite_variants.cell(vr, 9), f"#'Roster'!A{roster_rows[char_id]}")
