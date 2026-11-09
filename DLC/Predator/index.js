@@ -11,6 +11,7 @@ export * as loreDescriptions from './data/loreDescriptions.js';
 export * as narrativeSystems from './data/narrativeSystems.js';
 export * as renderer from './data/renderer.js';
 export * as signatureSourceWave4 from './data/signatureSourceWave4.js';
+export * as sourceSceneStages from './data/sourceSceneStages.js';
 export * as stageMusicProfiles from './data/stageMusicProfiles.js';
 export * as universeModifiers from './data/universeModifiers.js';
 export * as wardrobeExpansion from './data/wardrobeExpansion.js';

@@ -303,6 +303,10 @@ const manifests = [
         "runtimeAdapter": "src/game/signatureSourceWave4.js"
       },
       {
+        "path": "data/sourceSceneStages.js",
+        "runtimeAdapter": "src/game/sourceSceneStages.js"
+      },
+      {
         "path": "data/stageMusicProfiles.js",
         "runtimeAdapter": "src/game/stageMusicProfiles.js"
       },
@@ -2790,6 +2794,10 @@ const manifests = [
       {
         "path": "data/renderer.js",
         "runtimeAdapter": "src/game/renderer.js"
+      },
+      {
+        "path": "data/sourceSceneStages.js",
+        "runtimeAdapter": "src/game/sourceSceneStages.js"
       },
       {
         "path": "data/stageLoreProfiles.js",
