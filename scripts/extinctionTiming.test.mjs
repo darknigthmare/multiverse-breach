@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy } from '../src/game/extinctionSignatures.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
+import { tickExtinctionRelayOperation } from '../src/game/extinctionRelayOperation.js';
 
 const hub = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const extinction = hub.slice(hub.indexOf('function ExtinctionRoyale('));
@@ -10,7 +11,7 @@ const loopStart = extinction.indexOf('for (let step = 0; step < simulationSteps'
 const simulationSource = extinction.slice(loopStart, extinction.indexOf('      ctx.save();', loopStart));
 assert.ok(loopStart >= 0 && simulationSource.includes('state.t += 1;'));
 // Execute the actual simulation block from the component; rendering is excluded.
-const compileUpdate = new Function('tickExtinctionProtocols', 'mitigateExtinctionProtocolDamage', 'damageExtinctionEnemy', `return function update(state, simulationSteps, finishRun) {
+const compileUpdate = new Function('tickExtinctionProtocols', 'mitigateExtinctionProtocolDamage', 'damageExtinctionEnemy', 'tickExtinctionRelayOperation', `return function update(state, simulationSteps, finishRun) {
   const runMode = 'extraction', lang = 'en';
   const selectedHero = { stats: { spd: 6 }, category: 'marine' };
   const EXTINCTION_BEACON_TARGET = 3, EXTINCTION_INFESTATION_TARGET_FRAMES = 5400;
@@ -20,7 +21,7 @@ const compileUpdate = new Function('tickExtinctionProtocols', 'mitigateExtinctio
   const projectWorld = (enemy, current) => ({ dist: Math.hypot(enemy.wx - current.px, enemy.wy - current.py) });
   ${simulationSource}
 };`);
-const update = compileUpdate(tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy);
+const update = compileUpdate(tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy, tickExtinctionRelayOperation);
 
 const makeState = () => ({
   phase: 'running', t: 0, hp: 10000, armor: 0, wave: 1, zone: 1,

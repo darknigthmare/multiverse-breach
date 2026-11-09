@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { tickExtinctionProtocols, mitigateExtinctionProtocolDamage, damageExtinctionEnemy } from '../src/game/extinctionSignatures.js';
 import { createFixedStepClock } from '../src/game/fixedStepClock.js';
 import { createSceneInputs, emptySceneAim } from '../src/game/sceneInputs.js';
+import { createExtinctionRelayOperation, interactExtinctionRelayOperation, tickExtinctionRelayOperation } from '../src/game/extinctionRelayOperation.js';
 
 const hub = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const extinction = hub.slice(hub.indexOf('function ExtinctionRoyale('));
@@ -43,6 +44,7 @@ const makeHarness = () => {
   const environment = {
     createFixedStepClock,
     tickExtinctionProtocols,
+    tickExtinctionRelayOperation,
     mitigateExtinctionProtocolDamage,
     damageExtinctionEnemy,
     simulationClockRef: { current: null },
@@ -124,6 +126,30 @@ test('Extinction pause effects are safe before the first renderer mounts', () =>
 });
 
 for (const kind of ['shell', 'intel']) {
+  test(`Extinction relay synchronization uses actual fixed steps across ${kind} pause`, () => {
+    const harness = makeHarness();
+    const run = harness.state;
+    run.runId = 'relay-pause-contract';
+    const beacon = { id: 'beacon-1', type: 'beacon', wave: 1, wx: 0, wy: 0 };
+    run.loot = [beacon];
+    run.relayOperation = interactExtinctionRelayOperation(
+      createExtinctionRelayOperation({ enabled: true, runId: run.runId }), run, beacon
+    ).operation;
+    const renderer = harness.mountRenderer();
+    warmUp(harness, renderer);
+    assert.equal(run.relayOperation.beacons[beacon.id].ticks, 1);
+    harness.setPause(kind, true);
+    const frozen = structuredClone(run.relayOperation);
+    renderer.frame(8000);
+    assert.deepEqual(run.relayOperation, frozen, 'Paused render frames must not synchronize a beacon');
+    harness.setPause(kind, false);
+    renderer.frame(16000);
+    assert.deepEqual(run.relayOperation, frozen, 'The first resumed frame is only a new clock baseline');
+    renderer.frame(16020);
+    assert.equal(run.relayOperation.beacons[beacon.id].ticks, 2);
+    renderer.dispose();
+  });
+
   test(`Extinction ${kind} pause and resume discard elapsed time without a paused animation frame`, () => {
     const harness = makeHarness();
     const renderer = harness.mountRenderer();

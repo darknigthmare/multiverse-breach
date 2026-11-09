@@ -2,8 +2,10 @@
 
 > Ce document décrit la première phase du 6 novembre 2026. La reprise a ensuite
 > déplacé physiquement les ressources et adapté leur publication : voir
-> [la deuxième phase](DLC_ASSETS_REORGANIZATION_2026-11-07.md) et le mode d'emploi
-> actuel dans [`DLC/README.md`](../../DLC/README.md).
+> [la deuxième phase](DLC_ASSETS_REORGANIZATION_2026-11-07.md), puis les
+> [profils de distribution indépendants](DLC_INSTALLATION_PROFILES_2026-11-07.md).
+> Le mode d’emploi courant est dans [`DLC/README.md`](../../DLC/README.md) ; les
+> limites et nombres ci-dessous restent ceux de cette première phase.
 
 ## Point de reprise
 

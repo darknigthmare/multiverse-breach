@@ -1,6 +1,22 @@
 /** Extinction presentation only. Never grants ownership or changes combat stats. */
 import { getHeroCompleteSpritePack, getSpriteSheetLayout } from './spriteAssets.js';
 
+// The separators in these two authored PNGs are not an equal 4×10 grid.
+// Bounds exclude their visible grid lines, retain the actual row height, and
+// apply only to first-person hands. No other use of either atlas is changed.
+const AUTHORED_HAND_CELLS = Object.freeze({
+  arthur_kaamelott: {
+    width: 792, height: 1980,
+    columns: [[2, 197], [200, 394], [397, 592], [595, 790]],
+    rows: [[2, 201], [204, 403], [406, 606]]
+  },
+  serj_tankian: {
+    width: 796, height: 1990,
+    columns: [[2, 198], [201, 394], [397, 591], [594, 790]],
+    rows: [[2, 202], [205, 406], [409, 610]]
+  }
+});
+
 export const isExtinctionCombatant = hero => Boolean(hero?.id)
   && hero.nonCombat !== true && hero.category !== 'trial' && hero.cat !== 'trial';
 
@@ -27,7 +43,8 @@ export function getExtinctionViewmodel(hero) {
   const layout = getSpriteSheetLayout(hands.src);
   return { id: hero.id, heroId: hero.id, src: hands.src,
     projectile: pack.find(sheet => sheet.id === 'fpsProjectile')?.src || '',
-    layout: { ...layout, rowByState: { ...layout.rowByState, ...(hero.id === 'arca_mirelle' ? {reload: 6} : {}) } },
+    layout: { ...layout, rowByState: { ...layout.rowByState, ...(hero.id === 'arca_mirelle' ? {reload: 6} : {}) },
+      ...(AUTHORED_HAND_CELLS[hero.id] ? { authoredCells: AUTHORED_HAND_CELLS[hero.id] } : {}) },
     status: 'BOUND_PARTIAL', reason: 'source-layout-not-art-approval' };
 }
 
@@ -38,8 +55,12 @@ export function getExtinctionHandFrame(profile, state = {}) {
   const phase = state.muzzle > 0 ? 'attack' : state.reloadPulse > 0 ? 'reload'
     : Math.hypot(state.vx || 0, state.vy || 0) > 0.01 ? 'run' : 'idle';
   const row = layout.rowByState?.[phase] ?? layout.rowByState?.idle ?? 0;
+  const col = Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns;
+  const authored = layout.authoredCells;
+  const x = authored?.columns[col], y = authored?.rows[row];
   return { phase, row: Math.max(0, Math.min(layout.rows - 1, row)),
-    col: Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns,
+    col,
+    ...(x && y ? { sourceCell: { x: x[0], y: y[0], w: x[1] - x[0], h: y[1] - y[0], width: authored.width, height: authored.height } } : {}),
     trim: layout.trimByState?.[phase] || {}, columns: layout.columns, rows: layout.rows };
 }
 
@@ -70,6 +91,15 @@ export function getExtinctionHandSourceRect(frame, width, height) {
   if (![columns, rows].every(n => Number.isInteger(n) && n > 0)
       || !Number.isInteger(col) || col < 0 || col >= columns
       || !Number.isInteger(row) || row < 0 || row >= rows) return null;
+  if (frame.sourceCell) {
+    const cell = frame.sourceCell;
+    if (![cell.x, cell.y, cell.w, cell.h, cell.width, cell.height].every(Number.isFinite)
+        || cell.x < 0 || cell.y < 0 || cell.w <= 0 || cell.h <= 0 || cell.width <= 0 || cell.height <= 0
+        || cell.x + cell.w > cell.width || cell.y + cell.h > cell.height
+        || Math.abs(width / height - cell.width / cell.height) > 1e-9) return null;
+    const scale = width / cell.width;
+    return { x: cell.x * scale, y: cell.y * scale, w: cell.w * scale, h: cell.h * scale };
+  }
   const cellW = width / columns, cellH = height / rows;
   if (cellW < 1 || cellH < 1) return null;
   const edge = n => Number.isFinite(n) ? Math.max(0, n) : 0;

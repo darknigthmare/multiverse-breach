@@ -56,10 +56,10 @@ un téléchargement ou un déverrouillage dans une sauvegarde.
 
 ## Ressources graphiques
 
-Les 8 187 ressources attribuées à un seul dossier vivent physiquement sous
+Les 8 186 ressources attribuées à un seul dossier vivent physiquement sous
 `DLC/NomDeLUnivers/assets/`. Leur chemin après `assets/` conserve celui de leur
 ancienne URL publique. Par exemple, une image servie à `/boosters/halo.webp`
-a pour source `DLC/Halo/assets/boosters/halo.webp`. Les 5 976 ressources de base,
+a pour source `DLC/Halo/assets/boosters/halo.webp`. Les 5 977 ressources de base,
 de campagne, communes ou sans attribution certaine restent dans `public/`.
 
 Chaque `assets.json` indique `sourcePath`, `publicPath` et la justification du
@@ -214,10 +214,16 @@ bundle. Ce cycle est propre à l'export ; le prébuild du dépôt canonique cont
 de valider le jeu complet. La CI exerce séparément les profils base et Halo,
 avec leurs vrais fichiers et un parcours navigateur.
 
-Les 5 976 ressources communes ou sans attribution certaine restent dans tous
-les profils. Elles représentent environ 7,16 Go dans la référence actuelle.
+Les 5 977 ressources communes ou sans attribution certaine restent dans tous
+les profils. Elles représentent environ 7,17 Go dans la référence actuelle.
 Une sélection de packs n'est donc pas encore une optimisation exhaustive de
 ces ressources. Les URL historiques restent identiques.
+
+La [suite du 7 novembre](../docs/development/DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md)
+ferme la dépendance de création du profil vers le décor Stargate : ce fichier est
+désormais commun, avec ses octets conservés. Les références statiques de l’UI
+sont vérifiées avant export. Un rapport reproductible documente les usages des
+ressources partagées et les résolutions dynamiques encore à établir.
 
 ### Sauvegardes et menu
 

@@ -1,5 +1,10 @@
 # Extinction & Cité — catalogue de production, 26 octobre 2026
 
+Suite du 7 novembre : [rapport de reconnaissance et Relais sous pression](../development/DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md).
+La Ville gagne une mission persistante reliant habitants, vitrines et ancre ;
+Extraction propose une synchronisation de balises sur place. Les catalogues
+artistiques historiques ci-dessous conservent leur portée et leurs limites.
+
 Ce **second classeur** complète, sans le remplacer, `docs/excel/Multiverse_Breach_UI_Immersion.xlsx`.
 
 Fichier : `docs/excel/Multiverse_Breach_Extinction_Cite_Production.xlsx`.

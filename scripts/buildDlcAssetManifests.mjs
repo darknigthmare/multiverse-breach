@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { listAssetSourceEntries, listGitAssetSources, projectAssetPath } from './dlcAssetPaths.mjs';
+import { collectCommonUiAssetReferences } from './dlcCommonUiAssets.mjs';
 
 // In a checkout, inventory paths come from its Git index even when files are
 // absent in a sparse checkout. Source exports without usable Git metadata use
@@ -67,6 +68,10 @@ export const collectAssetReferences = (root, packs) => {
     if (!entries.some(entry => entry.universe === universe && entry.basis === basis)) entries.push({ universe, basis });
     references.set(publicPath, entries);
   };
+
+  for (const { publicPath, sourcePath } of collectCommonUiAssetReferences({ root })) {
+    add(publicPath, 'Nexus de Convergence', sourcePath + '#common-ui');
+  }
 
   const boosterSource = 'src/game/portalBoosterCatalog.js';
   const boosterMap = JSON.parse(`{${staticObjectBody(readSource(root, boosterSource), 'BOOSTER_ART_BY_UNIVERSE')}\n}`);
@@ -203,7 +208,7 @@ export const buildDlcAssetInventory = ({ packs, publicPaths, sourcePaths = new M
     sharedManifest: {
       schemaVersion: 1,
       classificationScope: CLASSIFICATION_SCOPE,
-      sharedDependencyCoverage: 'Explicit static references and directory affiliations only; common engine/UI dependencies are not exhaustively inferred.',
+      sharedDependencyCoverage: 'Explicit static references, common UI literals and directory affiliations only; dynamic UI and common engine dependencies are not exhaustively inferred.',
       distribution: {
         dlcManifests: packs.length,
         trackedPublicPaths: publicPaths.length,

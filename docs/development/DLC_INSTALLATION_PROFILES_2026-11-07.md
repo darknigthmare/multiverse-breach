@@ -1,5 +1,11 @@
 # Profils d’installation et de distribution DLC — 7 novembre 2026
 
+> La [reprise DLC, UI et Ville/FPS](DLC_UI_CITY_FPS_COMPLETION_2026-11-07.md)
+> complète cette étape par la vérification des références UI statiques et de la
+> création d’un profil neuf dans les distributions base et Halo. Elle conserve
+> l’URL et les octets du décor Stargate utilisé par la création du profil, dont
+> la source devient commune. Les volumes ci-dessous sont ceux de cette étape.
+
 ## Objectif
 
 Cette étape poursuit la réorganisation de la PR #22, commit
