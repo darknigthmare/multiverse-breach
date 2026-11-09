@@ -211,6 +211,26 @@ La régression de position échoue sur le hook de `6342f3c` puis réussit avec
 l'observation des styles ; les 33 tests de projection/placement/cycle de vie
 et les 25 tests ciblés de préférences et de FPS réussissent sous Node 22.
 
+La recette de `5451123` confirme ensuite tous les jobs Cité sauf le Nexus EN :
+son offre de bureau passe avec les neuf frontières enregistrées, mais son cas
+portrait expose un agrandissement du panneau pendant une image. Aux frames
+2790 et 2791, le temps, le joueur, la caméra et le cartouche restent identiques,
+alors que le rectangle DOM du panneau passe de 83 à 97 pixels de haut. Le dessin
+suivant utilise la nouvelle hauteur. Le JSX et la sortie de la zone de balise
+expliquent le remplacement du sous-titre court par le nom du quartier sur deux
+lignes ; cette correspondance de textes est déduite du source et des coordonnées,
+les anciennes frames n'ayant enregistré que leurs rectangles DOM.
+
+La mesure du viewport passe donc en phase `useLayoutEffect`, avec une clé stable
+des trois textes effectivement rendus dans le panneau. Après le commit du texte,
+la mesure précède le `loop()` synchronisé de l'effet de scène, sans attendre
+`ResizeObserver`. Les observateurs de taille et de style restent en place pour
+les autres changements. Un contenu identique ne provoque aucune mesure ni
+réinstallation supplémentaire. La régression reproduit les coordonnées natives
+de la frame 2791 sans avancer le temps, le joueur ou la caméra, et exige le bon
+placement dès ce premier dessin. Les fixtures, le garde et ses seuils restent
+inchangés.
+
 ## Limites restant à développer
 
 Ces scènes préparent des chemins et des installations dans le quartier Nexus

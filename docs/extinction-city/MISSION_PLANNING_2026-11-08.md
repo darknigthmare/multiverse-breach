@@ -120,15 +120,15 @@ sources des contrats et des trois entrées de `fieldEquipmentSources`,
 `spriteAssets.js`, ainsi que `immersiveHubState.js` et `useSceneViewport.js`
 pour le cadrage lors du montage, de la restauration et du redimensionnement,
 ainsi que `mosaicMissionWalks.js`, `MosaicPocketTerminal.jsx`, son CSS et
-`MosaicCharacterMissions.jsx`. `ImmersiveDrawer.jsx` conserve aussi sa provenance
+`MosaicCharacterMissions.jsx` et son CSS. `ImmersiveDrawer.jsx` conserve aussi sa provenance
 pour l’ouverture, la fermeture et le retour du focus du terminal.
 Le groupe `fpsPresentationSources` contrôle
 `extinctionAimReadout.js`, `extinctionSignatures.js`, `extinctionFieldDirectives.js`,
 `HubScreen.jsx`, `ExtinctionPrimaryAction.jsx` et `ExtinctionAimReadout.css`. La lecture de visée modifie
 la présentation, sans réécrire les données des feuilles « Profils FPS » et
 « Modes FPS ».
-Le reçu comporte 21 sources de contrats, 3 sources d’équipement, 12 sources de
-présentation de Cité et 6 sources de visée FPS, soit 37 fichiers distincts.
+Le reçu comporte 21 sources de contrats, 3 sources d’équipement, 13 sources de
+présentation de Cité et 6 sources de visée FPS, soit 38 fichiers distincts.
 Ces groupes peuvent partager des fichiers. Le rendu des sprites, sa géométrie
 et ces dépendances de caméra ne figurent pas dans le manifeste de planification ;
 ce groupe externe conserve leurs empreintes sans ajouter de cellules.
@@ -187,6 +187,14 @@ Le suivi des changements de position après `6342f3c` actualise ensuite la seule
 empreinte de `useSceneViewport.js`. Le JSON de planification complet et l'Excel
 restent encore identiques ; leurs empreintes et la conservation des données
 ont été vérifiées avant cette actualisation du reçu.
+
+Après `5451123`, la mesure en phase de layout après un changement du texte du
+bandeau actualise les empreintes de `HubScreen.jsx` et `useSceneViewport.js`.
+Le reçu suit aussi `MosaicCharacterMissions.css`, dont le compteur de filtre
+garde désormais ses chiffres sur une seule ligne.
+La relecture vérifie ces sources et conserve le JSON complet de planification,
+les octets du classeur et toutes les cellules suivies. Le reçu relie ce correctif
+de présentation à la provenance précédente, sans réexporter le classeur.
 
 ## Reproduction
 
