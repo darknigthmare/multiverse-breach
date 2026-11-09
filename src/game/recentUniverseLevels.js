@@ -1,38 +1,72 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcChainsawMan from '../../DLC/ChainsawMan/data/recentUniverseLevels.js';
+import * as dlcCyberpunkEdgerunners from '../../DLC/CyberpunkEdgerunners/data/recentUniverseLevels.js';
+import * as dlcDemonSlayer from '../../DLC/DemonSlayer/data/recentUniverseLevels.js';
+import * as dlcParasyte from '../../DLC/Parasyte/data/recentUniverseLevels.js';
+import * as dlcSteinsGate from '../../DLC/SteinsGate/data/recentUniverseLevels.js';
+import * as dlcZeroEscapeTheNonaryGames from '../../DLC/ZeroEscapeTheNonaryGames/data/recentUniverseLevels.js';
+import * as dlcJoJosBizarreAdventure from '../../DLC/JoJosBizarreAdventure/data/recentUniverseLevels.js';
+import * as dlcRurouniKenshin from '../../DLC/RurouniKenshin/data/recentUniverseLevels.js';
+import * as dlcTokyoGhoul from '../../DLC/TokyoGhoul/data/recentUniverseLevels.js';
+import * as dlcCowboyBebop from '../../DLC/CowboyBebop/data/recentUniverseLevels.js';
+import * as dlcDragonBallZ from '../../DLC/DragonBallZ/data/recentUniverseLevels.js';
+import * as dlcElfenLied from '../../DLC/ElfenLied/data/recentUniverseLevels.js';
+import * as dlcFullmetalAlchemist from '../../DLC/FullmetalAlchemist/data/recentUniverseLevels.js';
+import * as dlcGantz from '../../DLC/Gantz/data/recentUniverseLevels.js';
+import * as dlcPsychoPass from '../../DLC/PsychoPass/data/recentUniverseLevels.js';
+import * as dlcMashle from '../../DLC/Mashle/data/recentUniverseLevels.js';
+import * as dlcSoloLeveling from '../../DLC/SoloLeveling/data/recentUniverseLevels.js';
+import * as dlcFrierenBeyondJourneysEnd from '../../DLC/FrierenBeyondJourneysEnd/data/recentUniverseLevels.js';
+import * as dlcDeadmanWonderland from '../../DLC/DeadmanWonderland/data/recentUniverseLevels.js';
+import * as dlcDevilman from '../../DLC/Devilman/data/recentUniverseLevels.js';
+import * as dlcNeonGenesisEvangelion from '../../DLC/NeonGenesisEvangelion/data/recentUniverseLevels.js';
+import * as dlcNaruto from '../../DLC/Naruto/data/recentUniverseLevels.js';
+import * as dlcNarutoShippuden from '../../DLC/NarutoShippuden/data/recentUniverseLevels.js';
+import * as dlcBorutoNarutoNextGenerations from '../../DLC/BorutoNarutoNextGenerations/data/recentUniverseLevels.js';
+import * as dlcBorutoTwoBlueVortex from '../../DLC/BorutoTwoBlueVortex/data/recentUniverseLevels.js';
+import * as dlcOnePunchMan from '../../DLC/OnePunchMan/data/recentUniverseLevels.js';
+import * as dlcSwordArtOnlineGunGaleOnline from '../../DLC/SwordArtOnlineGunGaleOnline/data/recentUniverseLevels.js';
+import * as dlcSwordArtOnline from '../../DLC/SwordArtOnline/data/recentUniverseLevels.js';
+import * as dlcLesAventuresDeSaturnin from '../../DLC/LesAventuresDeSaturnin/data/recentUniverseLevels.js';
+import * as dlcMagiCJacK from '../../DLC/MagiCJacK/data/recentUniverseLevels.js';
+import * as dlcTeenTitans from '../../DLC/TeenTitans/data/recentUniverseLevels.js';
+import * as dlcGodzilla from '../../DLC/Godzilla/data/recentUniverseLevels.js';
+
 import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave.js';
 
 const LEVEL_OVERRIDES = {
-  'Chainsaw Man': { pattern: 'asphalt', melee: 'city_rooftops', tactics: 'horror_chokepoint' },
-  'Cyberpunk: Edgerunners': { pattern: 'circuit', melee: 'city_rooftops', tactics: 'cyber_vertical_node' },
-  'Demon Slayer': { pattern: 'wood', melee: 'arcane_ruins', tactics: 'ruined_highground' },
-  Parasyte: { pattern: 'organic', melee: 'containment_lab', tactics: 'facility_lockdown' },
-  'Steins;Gate': { pattern: 'lab', melee: 'city_rooftops', tactics: 'facility_lockdown' },
-  'Zero Escape: The Nonary Games': { pattern: 'steel', melee: 'containment_lab', tactics: 'facility_lockdown' },
-  "JoJo's Bizarre Adventure": { pattern: 'stone', melee: 'triplat_duel', tactics: 'boss_command_zone' },
-  'Rurouni Kenshin': { pattern: 'wood', melee: 'triplat_duel', tactics: 'ruined_highground' },
-  'Tokyo Ghoul': { pattern: 'concrete', melee: 'city_rooftops', tactics: 'urban_crossfire' },
-  'Cowboy Bebop': { pattern: 'hangar', melee: 'city_rooftops', tactics: 'urban_crossfire' },
-  'Dragon Ball Z': { pattern: 'crater', melee: 'boss_coliseum', tactics: 'boss_command_zone' },
-  'Elfen Lied': { pattern: 'concrete', melee: 'split_pit', tactics: 'horror_chokepoint' },
-  'Fullmetal Alchemist': { pattern: 'alchemy', melee: 'arcane_ruins', tactics: 'war_frontline' },
-  Gantz: { pattern: 'glass', melee: 'city_rooftops', tactics: 'urban_crossfire' },
-  'Psycho-Pass': { pattern: 'glass', melee: 'city_rooftops', tactics: 'urban_crossfire' },
-  Mashle: { pattern: 'stone', melee: 'arcane_ruins', tactics: 'ruined_highground' },
-  'Solo Leveling': { pattern: 'dungeon', melee: 'arcane_ruins', tactics: 'portal_lockdown' },
-  'Frieren: Beyond Journeys End': { pattern: 'moss', melee: 'arcane_ruins', tactics: 'ruined_highground' },
-  'Deadman Wonderland': { pattern: 'prison', melee: 'split_pit', tactics: 'horror_chokepoint' },
-  Devilman: { pattern: 'infernal', melee: 'split_pit', tactics: 'horror_chokepoint' },
-  'Neon Genesis Evangelion': { pattern: 'armor', melee: 'boss_coliseum', tactics: 'boss_command_zone' },
-  Naruto: { pattern: 'ninja', melee: 'arcane_ruins', tactics: 'ruined_highground' },
-  'Naruto Shippuden': { pattern: 'wetStone', melee: 'triplat_duel', tactics: 'war_frontline' },
-  'Boruto: Naruto Next Generations': { pattern: 'concrete', melee: 'city_rooftops', tactics: 'urban_crossfire' },
-  'Boruto: Two Blue Vortex': { pattern: 'roots', melee: 'arcane_ruins', tactics: 'portal_lockdown' },
-  'One Punch Man': { pattern: 'asphalt', melee: 'boss_coliseum', tactics: 'boss_command_zone' },
-  'Sword Art Online: Gun Gale Online': { pattern: 'sand', melee: 'war_front', tactics: 'war_frontline' },
-  'Sword Art Online': { pattern: 'stone', melee: 'arcane_ruins', tactics: 'artifact_bastion' },
-  'Les Aventures de Saturnin': { pattern: 'miniature', melee: 'absurd_party', tactics: 'nexus_escort_route' },
-  'MagiC JacK': { pattern: 'studio', melee: 'absurd_party', tactics: 'urban_crossfire' },
-  'Teen Titans': { pattern: 'alloy', melee: 'city_rooftops', tactics: 'cyber_vertical_node' },
-  Godzilla: { pattern: 'crater', melee: 'boss_coliseum', tactics: 'boss_command_zone' }
+  'Chainsaw Man': dlcChainsawMan.createLevelOverrides(),
+  'Cyberpunk: Edgerunners': dlcCyberpunkEdgerunners.createLevelOverrides(),
+  'Demon Slayer': dlcDemonSlayer.createLevelOverrides(),
+  Parasyte: dlcParasyte.createLevelOverrides(),
+  'Steins;Gate': dlcSteinsGate.createLevelOverrides(),
+  'Zero Escape: The Nonary Games': dlcZeroEscapeTheNonaryGames.createLevelOverrides(),
+  "JoJo's Bizarre Adventure": dlcJoJosBizarreAdventure.createLevelOverrides(),
+  'Rurouni Kenshin': dlcRurouniKenshin.createLevelOverrides(),
+  'Tokyo Ghoul': dlcTokyoGhoul.createLevelOverrides(),
+  'Cowboy Bebop': dlcCowboyBebop.createLevelOverrides(),
+  'Dragon Ball Z': dlcDragonBallZ.createLevelOverrides(),
+  'Elfen Lied': dlcElfenLied.createLevelOverrides(),
+  'Fullmetal Alchemist': dlcFullmetalAlchemist.createLevelOverrides(),
+  Gantz: dlcGantz.createLevelOverrides(),
+  'Psycho-Pass': dlcPsychoPass.createLevelOverrides(),
+  Mashle: dlcMashle.createLevelOverrides(),
+  'Solo Leveling': dlcSoloLeveling.createLevelOverrides(),
+  'Frieren: Beyond Journeys End': dlcFrierenBeyondJourneysEnd.createLevelOverrides(),
+  'Deadman Wonderland': dlcDeadmanWonderland.createLevelOverrides(),
+  Devilman: dlcDevilman.createLevelOverrides(),
+  'Neon Genesis Evangelion': dlcNeonGenesisEvangelion.createLevelOverrides(),
+  Naruto: dlcNaruto.createLevelOverrides(),
+  'Naruto Shippuden': dlcNarutoShippuden.createLevelOverrides(),
+  'Boruto: Naruto Next Generations': dlcBorutoNarutoNextGenerations.createLevelOverrides(),
+  'Boruto: Two Blue Vortex': dlcBorutoTwoBlueVortex.createLevelOverrides(),
+  'One Punch Man': dlcOnePunchMan.createLevelOverrides(),
+  'Sword Art Online: Gun Gale Online': dlcSwordArtOnlineGunGaleOnline.createLevelOverrides(),
+  'Sword Art Online': dlcSwordArtOnline.createLevelOverrides(),
+  'Les Aventures de Saturnin': dlcLesAventuresDeSaturnin.createLevelOverrides(),
+  'MagiC JacK': dlcMagiCJacK.createLevelOverrides(),
+  'Teen Titans': dlcTeenTitans.createLevelOverrides(),
+  Godzilla: dlcGodzilla.createLevelOverrides()
 };
 
 const normalizeHex = (value, fallback) => /^#[0-9a-f]{6}$/i.test(value || '') ? value : fallback;

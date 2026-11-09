@@ -1,3 +1,18 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcGex from '../../DLC/Gex/data/canonRosterWavePartE.js';
+import * as dlcSpyro from '../../DLC/Spyro/data/canonRosterWavePartE.js';
+import * as dlcRayman from '../../DLC/Rayman/data/canonRosterWavePartE.js';
+import * as dlcNieR from '../../DLC/NieR/data/canonRosterWavePartE.js';
+import * as dlcDisciplineTheRecordOfACrusade from '../../DLC/DisciplineTheRecordOfACrusade/data/canonRosterWavePartE.js';
+import * as dlcBibleBlack from '../../DLC/BibleBlack/data/canonRosterWavePartE.js';
+import * as dlcHotlineMiami from '../../DLC/HotlineMiami/data/canonRosterWavePartE.js';
+import * as dlcWarhammer40000SpaceMarine from '../../DLC/Warhammer40000SpaceMarine/data/canonRosterWavePartE.js';
+import * as dlcBackToTheFuture from '../../DLC/BackToTheFuture/data/canonRosterWavePartE.js';
+import * as dlcTerminator from '../../DLC/Terminator/data/canonRosterWavePartE.js';
+import * as dlcRoboCop from '../../DLC/RoboCop/data/canonRosterWavePartE.js';
+import * as dlcTheWalkingDeadTelltale from '../../DLC/TheWalkingDeadTelltale/data/canonRosterWavePartE.js';
+import * as dlcHorizonZeroDawn from '../../DLC/HorizonZeroDawn/data/canonRosterWavePartE.js';
+
 const RESEARCH_DATE = '2026-08-02';
 
 const slugify = value => String(value || 'unknown')
@@ -215,19 +230,19 @@ const definePack = (source, config) => {
 };
 
 const SOURCES = Object.freeze({
-  gex: Object.freeze({ key: 'gex', universe: 'Gex', url: 'https://gextrilogy.com/' }),
-  spyro: Object.freeze({ key: 'spyro', universe: 'Spyro', url: 'https://www.spyrothedragon.com/pl/spyroreignitedtrilogy' }),
-  rayman: Object.freeze({ key: 'rayman', universe: 'Rayman', url: 'https://www.ubisoft.com/en-us/company/about-us/our-brands/rayman' }),
-  nier: Object.freeze({ key: 'nier', universe: 'NieR', url: 'https://www.jp.square-enix.com/nierautomata/' }),
-  discipline: Object.freeze({ key: 'discipline', universe: 'Discipline: The Record of a Crusade', url: 'https://www.mobygames.com/game/106070/discipline-the-record-of-a-crusade/' }),
-  bibleBlack: Object.freeze({ key: 'bible_black', universe: 'Bible Black', url: 'https://www.mobygames.com/game/27648/bible-black-the-game/' }),
-  hotlineMiami: Object.freeze({ key: 'hotline_miami', universe: 'Hotline Miami', url: 'https://www.hotlinemiami.com/' }),
-  spaceMarine: Object.freeze({ key: 'space_marine', universe: 'Warhammer 40,000: Space Marine', url: 'https://www.warhammer-community.com/en-gb/articles/wr3d2srg/who-is-lieutenant-titus-the-long-and-glorious-history-of-the-space-marine-2-hero/' }),
-  backToTheFuture: Object.freeze({ key: 'back_to_the_future', universe: 'Back to the Future', url: 'https://www.backtothefuture.com/movies/backtothefuture1' }),
-  terminator: Object.freeze({ key: 'terminator', universe: 'Terminator', url: 'https://skydance.com/news/linda-hamilton-set-return-terminator-franchise/' }),
-  robocop: Object.freeze({ key: 'robocop', universe: 'RoboCop', url: 'https://www.mgm.com/' }),
-  walkingDead: Object.freeze({ key: 'walking_dead_telltale', universe: 'The Walking Dead — Telltale', url: 'https://help.skybound.com/support/solutions/folders/30000056389' }),
-  horizon: Object.freeze({ key: 'horizon_zero_dawn', universe: 'Horizon Zero Dawn', url: 'https://www.playstation.com/en-us/editorial/horizon-zero-dawn-the-story-so-far/' })
+  gex: dlcGex.createSources(),
+  spyro: dlcSpyro.createSources(),
+  rayman: dlcRayman.createSources(),
+  nier: dlcNieR.createSources(),
+  discipline: dlcDisciplineTheRecordOfACrusade.createSources(),
+  bibleBlack: dlcBibleBlack.createSources(),
+  hotlineMiami: dlcHotlineMiami.createSources(),
+  spaceMarine: dlcWarhammer40000SpaceMarine.createSources(),
+  backToTheFuture: dlcBackToTheFuture.createSources(),
+  terminator: dlcTerminator.createSources(),
+  robocop: dlcRoboCop.createSources(),
+  walkingDead: dlcTheWalkingDeadTelltale.createSources(),
+  horizon: dlcHorizonZeroDawn.createSources()
 });
 
 const gex = definePack(SOURCES.gex, {

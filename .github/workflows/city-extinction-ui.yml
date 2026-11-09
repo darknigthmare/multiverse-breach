@@ -2,6 +2,7 @@ name: City and Extinction immersive UI
 on:
   pull_request:
     paths:
+      - 'DLC/**'
       - 'src/components/HubScreen.jsx'
       - 'src/components/HubImmersion.css'
       - 'src/components/SceneHoldButton.jsx'
@@ -24,7 +25,7 @@ concurrency:
 jobs:
   scenes:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -34,6 +35,9 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             **/*.json
             **/*.jsonl
@@ -44,6 +48,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Scene input, timing, city and progression contracts
         run: |

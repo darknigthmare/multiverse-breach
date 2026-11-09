@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "tanya-the-evil",
+  "universe": "Tanya the Evil",
+  "directory": "DLC/TanyaTheEvil",
+  "registration": "runtime",
+  "catalogOrder": 119,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

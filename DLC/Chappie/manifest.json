@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "chappie",
+  "universe": "Chappie",
+  "directory": "DLC/Chappie",
+  "registration": "runtime",
+  "catalogOrder": 139,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

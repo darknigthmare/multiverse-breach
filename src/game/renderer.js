@@ -1,3 +1,68 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcGearsOfWar from '../../DLC/GearsOfWar/data/renderer.js';
+import * as dlcHalo from '../../DLC/Halo/data/renderer.js';
+import * as dlcAlien from '../../DLC/Alien/data/renderer.js';
+import * as dlcPredator from '../../DLC/Predator/data/renderer.js';
+import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/renderer.js';
+import * as dlcSilentHill from '../../DLC/SilentHill/data/renderer.js';
+import * as dlcDinoCrisis from '../../DLC/DinoCrisis/data/renderer.js';
+import * as dlcTheMatrix from '../../DLC/TheMatrix/data/renderer.js';
+import * as dlcStargate from '../../DLC/Stargate/data/renderer.js';
+import * as dlcHalfLife from '../../DLC/HalfLife/data/renderer.js';
+import * as dlcPortal from '../../DLC/Portal/data/renderer.js';
+import * as dlcMetalGear from '../../DLC/MetalGear/data/renderer.js';
+import * as dlcPayday from '../../DLC/Payday/data/renderer.js';
+import * as dlcVocaloid from '../../DLC/Vocaloid/data/renderer.js';
+import * as dlcYuGiOh from '../../DLC/YuGiOh/data/renderer.js';
+import * as dlcGuiltyGear from '../../DLC/GuiltyGear/data/renderer.js';
+import * as dlcBlazBlue from '../../DLC/BlazBlue/data/renderer.js';
+import * as dlcSlenderMan from '../../DLC/SlenderMan/data/renderer.js';
+import * as dlcChucky from '../../DLC/Chucky/data/renderer.js';
+import * as dlcHellraiser from '../../DLC/Hellraiser/data/renderer.js';
+import * as dlcMassEffect from '../../DLC/MassEffect/data/renderer.js';
+import * as dlcFallout from '../../DLC/Fallout/data/renderer.js';
+import * as dlcDoom from '../../DLC/Doom/data/renderer.js';
+import * as dlcUnreal from '../../DLC/Unreal/data/renderer.js';
+import * as dlcHarryPotter from '../../DLC/HarryPotter/data/renderer.js';
+import * as dlcStarWars from '../../DLC/StarWars/data/renderer.js';
+import * as dlcLeCinquiemeElement from '../../DLC/LeCinquiemeElement/data/renderer.js';
+import * as dlcScaryMovie from '../../DLC/ScaryMovie/data/renderer.js';
+import * as dlcDeadSpace from '../../DLC/DeadSpace/data/renderer.js';
+import * as dlcRickMorty from '../../DLC/RickMorty/data/renderer.js';
+import * as dlcDigitalCircus from '../../DLC/DigitalCircus/data/renderer.js';
+import * as dlcDigimon from '../../DLC/Digimon/data/renderer.js';
+import * as dlcSaw from '../../DLC/Saw/data/renderer.js';
+import * as dlcRosarioVampire from '../../DLC/RosarioVampire/data/renderer.js';
+import * as dlcNegima from '../../DLC/Negima/data/renderer.js';
+import * as dlcGhostInTheShell from '../../DLC/GhostInTheShell/data/renderer.js';
+import * as dlcMadMax from '../../DLC/MadMax/data/renderer.js';
+import * as dlcDiscworld from '../../DLC/Discworld/data/renderer.js';
+import * as dlcKaamelott from '../../DLC/Kaamelott/data/renderer.js';
+import * as dlcAlien3 from '../../DLC/Alien3/data/renderer.js';
+import * as dlcAlienCovenant from '../../DLC/AlienCovenant/data/renderer.js';
+import * as dlcThePredator from '../../DLC/ThePredator/data/renderer.js';
+import * as dlcPredatorBadlands from '../../DLC/PredatorBadlands/data/renderer.js';
+import * as dlcDungeonMeshi from '../../DLC/DungeonMeshi/data/renderer.js';
+import * as dlcHazbinHotel from '../../DLC/HazbinHotel/data/renderer.js';
+import * as dlcTheBatmanWhoLaughs from '../../DLC/TheBatmanWhoLaughs/data/renderer.js';
+import * as dlcPrometheus from '../../DLC/Prometheus/data/renderer.js';
+import * as dlcAlienResurrection from '../../DLC/AlienResurrection/data/renderer.js';
+import * as dlcPredators from '../../DLC/Predators/data/renderer.js';
+import * as dlcPredatorKillerOfKillers from '../../DLC/PredatorKillerOfKillers/data/renderer.js';
+import * as dlcAlienVsPredator from '../../DLC/AlienVsPredator/data/renderer.js';
+import * as dlcNoob from '../../DLC/Noob/data/renderer.js';
+import * as dlcSystemOfADown from '../../DLC/SystemOfADown/data/renderer.js';
+import * as dlcDaftPunk from '../../DLC/DaftPunk/data/renderer.js';
+import * as dlcJokerNew52 from '../../DLC/JokerNew52/data/renderer.js';
+import * as dlcAliens from '../../DLC/Aliens/data/renderer.js';
+import * as dlcAlienRomulus from '../../DLC/AlienRomulus/data/renderer.js';
+import * as dlcPredator2 from '../../DLC/Predator2/data/renderer.js';
+import * as dlcPrey from '../../DLC/Prey/data/renderer.js';
+import * as dlcAliensVsPredatorRequiem from '../../DLC/AliensVsPredatorRequiem/data/renderer.js';
+import * as dlcRammstein from '../../DLC/Rammstein/data/renderer.js';
+import * as dlcRobZombie from '../../DLC/RobZombie/data/renderer.js';
+import * as dlcOliverTree from '../../DLC/OliverTree/data/renderer.js';
+
 import { drawWardrobeEffect } from './wardrobeEffects.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
@@ -1071,43 +1136,43 @@ export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
 };
 
 const DECOR_THEMES = {
-  'Gears of War': { sky: ['#301615', '#080303'], floor: 'rgba(101, 64, 55, 0.2)', grid: 'rgba(190, 45, 36, 0.35)', motif: 'fortress', accent: '#d84a36' },
-  'Halo': { sky: ['#0e3022', '#02100b'], floor: 'rgba(52, 178, 125, 0.14)', grid: 'rgba(80, 214, 205, 0.35)', motif: 'ringworld', accent: '#5af2d6' },
-  'Alien': { sky: ['#0b2530', '#02080c'], floor: 'rgba(98, 122, 129, 0.18)', grid: 'rgba(103, 208, 218, 0.24)', motif: 'hive', accent: '#8adbe6' },
-  'Predator': { sky: ['#21320f', '#050a02'], floor: 'rgba(41, 151, 74, 0.18)', grid: 'rgba(111, 211, 90, 0.28)', motif: 'jungle', accent: '#9bff62' },
-  'Resident Evil': { sky: ['#272325', '#070707'], floor: 'rgba(117, 40, 35, 0.18)', grid: 'rgba(209, 61, 50, 0.25)', motif: 'biohazard', accent: '#e95444' },
-  'Silent Hill': { sky: ['#2c2926', '#090807'], floor: 'rgba(135, 124, 105, 0.14)', grid: 'rgba(199, 170, 122, 0.18)', motif: 'fogtown', accent: '#c4a56f' },
-  'Dino Crisis': { sky: ['#17332a', '#030d09'], floor: 'rgba(44, 160, 116, 0.16)', grid: 'rgba(253, 87, 68, 0.24)', motif: 'facility', accent: '#ff6b56' },
-  'The Matrix': { sky: ['#032403', '#000500'], floor: 'rgba(45, 206, 90, 0.1)', grid: 'rgba(57, 255, 110, 0.42)', motif: 'code', accent: '#39ff6e' },
-  'Stargate': { sky: ['#132c43', '#030812'], floor: 'rgba(196, 151, 58, 0.16)', grid: 'rgba(80, 200, 255, 0.3)', motif: 'stargate', accent: '#d7b45a' },
-  'Half-Life': { sky: ['#33200f', '#080401'], floor: 'rgba(230, 104, 26, 0.16)', grid: 'rgba(255, 134, 37, 0.32)', motif: 'lab', accent: '#ff7a1a' },
-  'Portal': { sky: ['#10151c', '#030507'], floor: 'rgba(232, 232, 232, 0.11)', grid: 'rgba(80, 180, 255, 0.32)', motif: 'testchamber', accent: '#ff9f1a' },
-  'Metal Gear': { sky: ['#1d2624', '#050807'], floor: 'rgba(107, 133, 123, 0.16)', grid: 'rgba(133, 166, 151, 0.25)', motif: 'stealthbase', accent: '#9eb79d' },
-  'Payday': { sky: ['#172235', '#03060b'], floor: 'rgba(40, 88, 145, 0.16)', grid: 'rgba(248, 198, 56, 0.28)', motif: 'vault', accent: '#f8c638' },
-  'Vocaloid': { sky: ['#153043', '#050616'], floor: 'rgba(37, 218, 197, 0.14)', grid: 'rgba(255, 75, 190, 0.32)', motif: 'concert', accent: '#39e5d0' },
-  'Yu-Gi-Oh': { sky: ['#221335', '#05030d'], floor: 'rgba(218, 164, 45, 0.16)', grid: 'rgba(174, 92, 255, 0.28)', motif: 'duelarena', accent: '#e4b449' },
-  'Guilty Gear': { sky: ['#351419', '#090304'], floor: 'rgba(206, 57, 46, 0.17)', grid: 'rgba(255, 205, 70, 0.3)', motif: 'gearstage', accent: '#f2c744' },
-  'BlazBlue': { sky: ['#111b3d', '#030511'], floor: 'rgba(47, 107, 218, 0.16)', grid: 'rgba(107, 210, 255, 0.32)', motif: 'arcanecity', accent: '#68d6ff' },
-  'Slender Man': { sky: ['#151818', '#020303'], floor: 'rgba(111, 125, 112, 0.13)', grid: 'rgba(210, 224, 210, 0.16)', motif: 'forest', accent: '#cbd8c8' },
-  'Chucky': { sky: ['#2e1d21', '#080304'], floor: 'rgba(205, 70, 60, 0.16)', grid: 'rgba(70, 170, 255, 0.24)', motif: 'toyfactory', accent: '#ffcf4a' },
-  'Hellraiser': { sky: ['#2b1511', '#070202'], floor: 'rgba(146, 45, 35, 0.18)', grid: 'rgba(218, 160, 72, 0.26)', motif: 'labyrinth', accent: '#d19845' },
-  'Mass Effect': { sky: ['#071a34', '#01040a'], floor: 'rgba(66, 117, 170, 0.16)', grid: 'rgba(73, 179, 255, 0.34)', motif: 'citadel', accent: '#58baff' },
-  'Fallout': { sky: ['#352a14', '#0a0702'], floor: 'rgba(177, 142, 77, 0.18)', grid: 'rgba(73, 210, 95, 0.24)', motif: 'wasteland', accent: '#49d25f' },
-  'Doom': { sky: ['#4b0807', '#110101'], floor: 'rgba(229, 64, 42, 0.22)', grid: 'rgba(255, 80, 42, 0.42)', motif: 'hellgate', accent: '#ff4f2b' },
-  'Unreal': { sky: ['#17283f', '#03060d'], floor: 'rgba(47, 129, 195, 0.18)', grid: 'rgba(255, 92, 51, 0.35)', motif: 'tournament', accent: '#ff5c33' },
-  'Harry Potter': { sky: ['#1a1730', '#05040c'], floor: 'rgba(170, 121, 42, 0.16)', grid: 'rgba(215, 184, 105, 0.3)', motif: 'castle', accent: '#d9b86b' },
-  'Star Wars': { sky: ['#05061a', '#000107'], floor: 'rgba(88, 103, 130, 0.16)', grid: 'rgba(84, 179, 255, 0.3)', motif: 'trench', accent: '#54b3ff' },
-  'Le Cinquième Element': { sky: ['#1d2740', '#050713'], floor: 'rgba(236, 135, 57, 0.14)', grid: 'rgba(83, 225, 255, 0.3)', motif: 'cruise', accent: '#ff9d4c' },
-  'Scary Movie': { sky: ['#221a23', '#060306'], floor: 'rgba(158, 68, 115, 0.15)', grid: 'rgba(255, 255, 255, 0.18)', motif: 'hauntedset', accent: '#f05aa7' },
-  'Dead Space': { sky: ['#10202b', '#03070b'], floor: 'rgba(104, 116, 128, 0.18)', grid: 'rgba(76, 201, 210, 0.26)', motif: 'shipdeck', accent: '#65d7de' },
-  'Rick & Morty': { sky: ['#102d27', '#030806'], floor: 'rgba(83, 224, 95, 0.15)', grid: 'rgba(173, 80, 255, 0.3)', motif: 'portalgarage', accent: '#4de65c' },
-  'Digital Circus': { sky: ['#251041', '#07020f'], floor: 'rgba(251, 80, 154, 0.16)', grid: 'rgba(255, 226, 68, 0.34)', motif: 'circus', accent: '#ffe244' },
-  'Digimon': { sky: ['#0f263e', '#03070d'], floor: 'rgba(50, 155, 225, 0.15)', grid: 'rgba(250, 205, 60, 0.3)', motif: 'digitalfield', accent: '#facd3c' },
-  'Saw': { sky: ['#231b18', '#070403'], floor: 'rgba(111, 45, 35, 0.18)', grid: 'rgba(199, 58, 42, 0.24)', motif: 'traproom', accent: '#c73a2a' },
-  'Rosario + Vampire': { sky: ['#2a1735', '#07030d'], floor: 'rgba(203, 76, 165, 0.15)', grid: 'rgba(98, 214, 255, 0.27)', motif: 'academy', accent: '#df64c5' },
-  'Negima': { sky: ['#183323', '#040a05'], floor: 'rgba(82, 175, 94, 0.16)', grid: 'rgba(244, 214, 93, 0.28)', motif: 'worldtree', accent: '#f4d65d' },
-  'Ghost in the Shell': { sky: ['#061f2b', '#010508'], floor: 'rgba(54, 158, 184, 0.15)', grid: 'rgba(65, 255, 172, 0.32)', motif: 'cybercity', accent: '#41ffac' },
-  'Mad Max': { sky: ['#412409', '#0c0501'], floor: 'rgba(221, 116, 36, 0.2)', grid: 'rgba(255, 150, 58, 0.28)', motif: 'desert', accent: '#ff963a' },
+  'Gears of War': dlcGearsOfWar.createDecorThemes(),
+  'Halo': dlcHalo.createDecorThemes(),
+  'Alien': dlcAlien.createDecorThemes(),
+  'Predator': dlcPredator.createDecorThemes(),
+  'Resident Evil': dlcResidentEvil.createDecorThemes(),
+  'Silent Hill': dlcSilentHill.createDecorThemes(),
+  'Dino Crisis': dlcDinoCrisis.createDecorThemes(),
+  'The Matrix': dlcTheMatrix.createDecorThemes(),
+  'Stargate': dlcStargate.createDecorThemes(),
+  'Half-Life': dlcHalfLife.createDecorThemes(),
+  'Portal': dlcPortal.createDecorThemes(),
+  'Metal Gear': dlcMetalGear.createDecorThemes(),
+  'Payday': dlcPayday.createDecorThemes(),
+  'Vocaloid': dlcVocaloid.createDecorThemes(),
+  'Yu-Gi-Oh': dlcYuGiOh.createDecorThemes(),
+  'Guilty Gear': dlcGuiltyGear.createDecorThemes(),
+  'BlazBlue': dlcBlazBlue.createDecorThemes(),
+  'Slender Man': dlcSlenderMan.createDecorThemes(),
+  'Chucky': dlcChucky.createDecorThemes(),
+  'Hellraiser': dlcHellraiser.createDecorThemes(),
+  'Mass Effect': dlcMassEffect.createDecorThemes(),
+  'Fallout': dlcFallout.createDecorThemes(),
+  'Doom': dlcDoom.createDecorThemes(),
+  'Unreal': dlcUnreal.createDecorThemes(),
+  'Harry Potter': dlcHarryPotter.createDecorThemes(),
+  'Star Wars': dlcStarWars.createDecorThemes(),
+  'Le Cinquième Element': dlcLeCinquiemeElement.createDecorThemes(),
+  'Scary Movie': dlcScaryMovie.createDecorThemes(),
+  'Dead Space': dlcDeadSpace.createDecorThemes(),
+  'Rick & Morty': dlcRickMorty.createDecorThemes(),
+  'Digital Circus': dlcDigitalCircus.createDecorThemes(),
+  'Digimon': dlcDigimon.createDecorThemes(),
+  'Saw': dlcSaw.createDecorThemes(),
+  'Rosario + Vampire': dlcRosarioVampire.createDecorThemes(),
+  'Negima': dlcNegima.createDecorThemes(),
+  'Ghost in the Shell': dlcGhostInTheShell.createDecorThemes(),
+  'Mad Max': dlcMadMax.createDecorThemes(),
   Matrix: { sky: ['#061706', '#000300'], floor: 'rgba(50, 255, 98, 0.12)', grid: 'rgba(50, 255, 98, 0.45)', motif: 'singularity', accent: '#32ff62' }
 };
 
@@ -1115,77 +1180,77 @@ Object.assign(DECOR_THEMES, EXPANDED_DECOR_THEMES);
 
 export const OPENAI_BACKDROPS = {
   RPG: {
-    'Gears of War': '/backgrounds/gears-of-war-rpg-openai.png',
-    Predator: '/backgrounds/predator-rpg-openai.png',
-    'Silent Hill': '/backgrounds/silent-hill-rpg-openai.png',
-    Stargate: '/backgrounds/stargate-rpg-openai.png',
-    Portal: '/backgrounds/portal-rpg-openai.png',
-    BlazBlue: '/backgrounds/blazblue-rpg-openai.png',
-    Hellraiser: '/backgrounds/hellraiser-rpg-openai.png',
-    Doom: '/backgrounds/doom-rpg-openai.png',
-    'Harry Potter': '/backgrounds/harry-potter-rpg-openai.png',
-    'Scary Movie': '/backgrounds/scary-movie-rpg-openai.png',
-    Vocaloid: '/backgrounds/vocaloid-smash-openai.png',
-    'Digital Circus': '/backgrounds/digital-circus-rpg-openai.png',
-    'Rosario + Vampire': '/backgrounds/rosario-vampire-rpg-openai.png',
-    'Mad Max': '/backgrounds/mad-max-rpg-openai.png',
-    Discworld: '/backgrounds/harry-potter-rpg-openai.png',
-    Kaamelott: '/backgrounds/harry-potter-rpg-openai.png',
-    'Alien 3': '/backgrounds/alien-smash-openai.png',
-    'Alien: Covenant': '/backgrounds/alien-smash-openai.png',
-    'The Predator': '/backgrounds/predator-rpg-openai.png',
-    'Predator: Badlands': '/backgrounds/predator-rpg-openai.png',
-    'Dungeon Meshi': '/backgrounds/rosario-vampire-rpg-openai.png',
-    'Hazbin Hotel': '/backgrounds/digital-circus-rpg-openai.png',
+    'Gears of War': dlcGearsOfWar.createOpenaiBackdropsRpg(),
+    Predator: dlcPredator.createOpenaiBackdropsRpg(),
+    'Silent Hill': dlcSilentHill.createOpenaiBackdropsRpg(),
+    Stargate: dlcStargate.createOpenaiBackdropsRpg(),
+    Portal: dlcPortal.createOpenaiBackdropsRpg(),
+    BlazBlue: dlcBlazBlue.createOpenaiBackdropsRpg(),
+    Hellraiser: dlcHellraiser.createOpenaiBackdropsRpg(),
+    Doom: dlcDoom.createOpenaiBackdropsRpg(),
+    'Harry Potter': dlcHarryPotter.createOpenaiBackdropsRpg(),
+    'Scary Movie': dlcScaryMovie.createOpenaiBackdropsRpg(),
+    Vocaloid: dlcVocaloid.createOpenaiBackdropsRpg(),
+    'Digital Circus': dlcDigitalCircus.createOpenaiBackdropsRpg(),
+    'Rosario + Vampire': dlcRosarioVampire.createOpenaiBackdropsRpg(),
+    'Mad Max': dlcMadMax.createOpenaiBackdropsRpg(),
+    Discworld: dlcDiscworld.createOpenaiBackdropsRpg(),
+    Kaamelott: dlcKaamelott.createOpenaiBackdropsRpg(),
+    'Alien 3': dlcAlien3.createOpenaiBackdropsRpg(),
+    'Alien: Covenant': dlcAlienCovenant.createOpenaiBackdropsRpg(),
+    'The Predator': dlcThePredator.createOpenaiBackdropsRpg(),
+    'Predator: Badlands': dlcPredatorBadlands.createOpenaiBackdropsRpg(),
+    'Dungeon Meshi': dlcDungeonMeshi.createOpenaiBackdropsRpg(),
+    'Hazbin Hotel': dlcHazbinHotel.createOpenaiBackdropsRpg(),
     Matrix: '/backgrounds/matrix-rpg-openai.png'
   },
   Tactics: {
-    Halo: '/backgrounds/halo-tactics-openai.png',
-    'Resident Evil': '/backgrounds/resident-evil-tactics-openai.png',
-    'The Matrix': '/backgrounds/matrix-tactics-openai.png',
-    'Metal Gear': '/backgrounds/metal-gear-tactics-openai.png',
-    'Yu-Gi-Oh': '/backgrounds/yu-gi-oh-tactics-openai.png',
-    'Mass Effect': '/backgrounds/mass-effect-tactics-openai.png',
-    'Le Cinquième Element': '/backgrounds/fifth-element-tactics-openai.png',
-    'Dead Space': '/backgrounds/dead-space-tactics-openai.png',
-    Digimon: '/backgrounds/digimon-tactics-openai.png',
-    Negima: '/backgrounds/negima-tactics-openai.png',
-    'Slender Man': '/backgrounds/slender-man-smash-openai.png',
-    Unreal: '/backgrounds/unreal-smash-openai.png',
-    'The Batman Who Laughs': '/backgrounds/metal-gear-tactics-openai.png',
-    Prometheus: '/backgrounds/dead-space-tactics-openai.png',
-    'Alien Resurrection': '/backgrounds/dead-space-tactics-openai.png',
-    Predators: '/backgrounds/halo-tactics-openai.png',
-    'Predator: Killer of Killers': '/backgrounds/yu-gi-oh-tactics-openai.png',
-    'Alien vs Predator': '/backgrounds/resident-evil-tactics-openai.png',
-    Noob: '/backgrounds/digimon-tactics-openai.png',
-    'System of a Down': '/backgrounds/metal-gear-tactics-openai.png',
-    'Daft Punk': '/backgrounds/matrix-tactics-openai.png'
+    Halo: dlcHalo.createOpenaiBackdropsTactics(),
+    'Resident Evil': dlcResidentEvil.createOpenaiBackdropsTactics(),
+    'The Matrix': dlcTheMatrix.createOpenaiBackdropsTactics(),
+    'Metal Gear': dlcMetalGear.createOpenaiBackdropsTactics(),
+    'Yu-Gi-Oh': dlcYuGiOh.createOpenaiBackdropsTactics(),
+    'Mass Effect': dlcMassEffect.createOpenaiBackdropsTactics(),
+    'Le Cinquième Element': dlcLeCinquiemeElement.createOpenaiBackdropsTactics(),
+    'Dead Space': dlcDeadSpace.createOpenaiBackdropsTactics(),
+    Digimon: dlcDigimon.createOpenaiBackdropsTactics(),
+    Negima: dlcNegima.createOpenaiBackdropsTactics(),
+    'Slender Man': dlcSlenderMan.createOpenaiBackdropsTactics(),
+    Unreal: dlcUnreal.createOpenaiBackdropsTactics(),
+    'The Batman Who Laughs': dlcTheBatmanWhoLaughs.createOpenaiBackdropsTactics(),
+    Prometheus: dlcPrometheus.createOpenaiBackdropsTactics(),
+    'Alien Resurrection': dlcAlienResurrection.createOpenaiBackdropsTactics(),
+    Predators: dlcPredators.createOpenaiBackdropsTactics(),
+    'Predator: Killer of Killers': dlcPredatorKillerOfKillers.createOpenaiBackdropsTactics(),
+    'Alien vs Predator': dlcAlienVsPredator.createOpenaiBackdropsTactics(),
+    Noob: dlcNoob.createOpenaiBackdropsTactics(),
+    'System of a Down': dlcSystemOfADown.createOpenaiBackdropsTactics(),
+    'Daft Punk': dlcDaftPunk.createOpenaiBackdropsTactics()
   },
   Smash: {
-    Alien: '/backgrounds/alien-smash-openai.png',
-    'Dino Crisis': '/backgrounds/dino-crisis-smash-openai.png',
-    'Half-Life': '/backgrounds/half-life-smash-openai.png',
-    Payday: '/backgrounds/payday-smash-openai.png',
-    Vocaloid: '/backgrounds/vocaloid-smash-openai.png',
-    'Guilty Gear': '/backgrounds/guilty-gear-smash-openai.png',
-    'Slender Man': '/backgrounds/slender-man-smash-openai.png',
-    Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png',
-    Fallout: '/backgrounds/fallout-smash-openai.png',
-    Unreal: '/backgrounds/unreal-smash-openai.png',
-    'Star Wars': '/backgrounds/star-wars-smash-openai.png',
-    'Rick & Morty': '/backgrounds/rick-morty-smash-openai.png',
-    Saw: '/backgrounds/saw-smash-openai.png',
-    'Ghost in the Shell': '/backgrounds/ghost-in-the-shell-smash-openai.png',
-    'Joker New 52': '/backgrounds/chucky-smash-openai.png',
-    Aliens: '/backgrounds/alien-smash-openai.png',
-    'Alien: Romulus': '/backgrounds/alien-smash-openai.png',
-    'Predator 2': '/backgrounds/predator-rpg-openai.png',
-    Prey: '/backgrounds/predator-rpg-openai.png',
-    'Aliens vs Predator: Requiem': '/backgrounds/alien-smash-openai.png',
-    Rammstein: '/backgrounds/doom-rpg-openai.png',
-    'Rob Zombie': '/backgrounds/chucky-smash-openai.png',
-    'Oliver Tree': '/backgrounds/rick-morty-smash-openai.png'
+    Alien: dlcAlien.createOpenaiBackdropsSmash(),
+    'Dino Crisis': dlcDinoCrisis.createOpenaiBackdropsSmash(),
+    'Half-Life': dlcHalfLife.createOpenaiBackdropsSmash(),
+    Payday: dlcPayday.createOpenaiBackdropsSmash(),
+    Vocaloid: dlcVocaloid.createOpenaiBackdropsSmash(),
+    'Guilty Gear': dlcGuiltyGear.createOpenaiBackdropsSmash(),
+    'Slender Man': dlcSlenderMan.createOpenaiBackdropsSmash(),
+    Chucky: dlcChucky.createOpenaiBackdropsSmash(),
+    Fallout: dlcFallout.createOpenaiBackdropsSmash(),
+    Unreal: dlcUnreal.createOpenaiBackdropsSmash(),
+    'Star Wars': dlcStarWars.createOpenaiBackdropsSmash(),
+    'Rick & Morty': dlcRickMorty.createOpenaiBackdropsSmash(),
+    Saw: dlcSaw.createOpenaiBackdropsSmash(),
+    'Ghost in the Shell': dlcGhostInTheShell.createOpenaiBackdropsSmash(),
+    'Joker New 52': dlcJokerNew52.createOpenaiBackdropsSmash(),
+    Aliens: dlcAliens.createOpenaiBackdropsSmash(),
+    'Alien: Romulus': dlcAlienRomulus.createOpenaiBackdropsSmash(),
+    'Predator 2': dlcPredator2.createOpenaiBackdropsSmash(),
+    Prey: dlcPrey.createOpenaiBackdropsSmash(),
+    'Aliens vs Predator: Requiem': dlcAliensVsPredatorRequiem.createOpenaiBackdropsSmash(),
+    Rammstein: dlcRammstein.createOpenaiBackdropsSmash(),
+    'Rob Zombie': dlcRobZombie.createOpenaiBackdropsSmash(),
+    'Oliver Tree': dlcOliverTree.createOpenaiBackdropsSmash()
   }
 };
 

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "aural-vampire",
+  "universe": "Aural Vampire",
+  "directory": "DLC/AuralVampire",
+  "registration": "runtime",
+  "catalogOrder": 260,
+  "modules": [
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

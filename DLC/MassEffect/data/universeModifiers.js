@@ -1,0 +1,2 @@
+// Mass Effect — mission modifiers consumed by the Hub.
+export const createUniverseModifier = () => ({ id: 'spectre_authority', name: { fr: 'Autorite Spectre', en: 'Spectre Authority' }, desc: { fr: 'Le commandement galactique coordonne mieux l equipe: defense +8%, cache +17%.', en: 'Galactic command coordinates the team better: defense +8%, cache +17%.' }, heroDef: 1.08, reward: 1.17, color: '#4cb4ff' });

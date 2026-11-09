@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "unreal",
+  "universe": "Unreal",
+  "directory": "DLC/Unreal",
+  "registration": "runtime",
+  "catalogOrder": 23,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartC.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartC.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/legacyStages.js",
+      "runtimeAdapter": "src/game/legacyStageCatalog.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

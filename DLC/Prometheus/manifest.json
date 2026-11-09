@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "prometheus",
+  "universe": "Prometheus",
+  "directory": "DLC/Prometheus",
+  "registration": "runtime",
+  "catalogOrder": 41,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

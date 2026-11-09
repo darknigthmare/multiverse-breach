@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "spider-the-video-game",
+  "universe": "Spider: The Video Game",
+  "directory": "DLC/SpiderTheVideoGame",
+  "registration": "runtime",
+  "catalogOrder": 170,
+  "modules": [
+    {
+      "path": "data/canonP0SourceKits.js",
+      "runtimeAdapter": "src/game/canonP0SourceKits.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/mosaicUniversePlaces.js",
+      "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

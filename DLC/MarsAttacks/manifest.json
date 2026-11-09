@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "mars-attacks",
+  "universe": "Mars Attacks",
+  "directory": "DLC/MarsAttacks",
+  "registration": "runtime",
+  "catalogOrder": 146,
+  "modules": [
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

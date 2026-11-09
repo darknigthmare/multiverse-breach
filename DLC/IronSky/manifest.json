@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "iron-sky",
+  "universe": "Iron Sky",
+  "directory": "DLC/IronSky",
+  "registration": "runtime",
+  "catalogOrder": 153,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

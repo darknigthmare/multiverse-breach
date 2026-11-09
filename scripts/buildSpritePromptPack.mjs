@@ -2,13 +2,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
+import { createServer } from 'vite';
 import {
   applySpriteCatalogContracts,
   LEGACY_SPRITE_ID_ALIASES
 } from './spriteCatalogContracts.mjs';
 
 const root = process.cwd();
-const tmpDir = process.env.MULTIVERSE_SPRITE_TMP_DIR || path.join(root, '.sprite-prompt-tmp');
 const sourceDir = path.join(root, 'src', 'game');
 const outDir = path.join(root, 'public', 'sprites', 'generated');
 const outJsonl = path.join(outDir, 'openai-sprite-prompts.jsonl');
@@ -31,43 +31,18 @@ const slugify = (value) => String(value || 'unknown')
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '') || 'unknown';
 
-const rewriteImports = (source) => source
-  .replaceAll("from './expandedUniverses'", "from './expandedUniverses.js'")
-  .replaceAll("from './ocDlcPacks'", "from './ocDlcPacks.js'")
-  .replaceAll("from './originalUniverseProduction'", "from './originalUniverseProduction.js'")
-  .replaceAll("from './originalUniverseWave'", "from './originalUniverseWave.js'")
-  .replaceAll("from './requestedUniverseWave'", "from './requestedUniverseWave.js'")
-  .replaceAll("from './canonRosterWave'", "from './canonRosterWave.js'")
-  .replaceAll("from './canonRosterWavePartA'", "from './canonRosterWavePartA.js'")
-  .replaceAll("from './canonRosterWavePartB'", "from './canonRosterWavePartB.js'")
-  .replaceAll("from './canonRosterWavePartC'", "from './canonRosterWavePartC.js'")
-  .replaceAll("from './canonRosterWavePartD'", "from './canonRosterWavePartD.js'")
-  .replaceAll("from './canonRosterWavePartE'", "from './canonRosterWavePartE.js'")
-  .replaceAll("from './canonRosterWavePartF'", "from './canonRosterWavePartF.js'")
-  .replaceAll("from './nonCombatTrial'", "from './nonCombatTrial.js'")
-  .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
-  .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
-  .replaceAll("from './loreEnemyOverrides'", "from './loreEnemyOverrides.js'")
-  .replaceAll("from './loreItemOverrides'", "from './loreItemOverrides.js'")
-  .replaceAll("from './loreWorldBossOverrides'", "from './loreWorldBossOverrides.js'")
-  .replaceAll("from './stageLoreProfiles'", "from './stageLoreProfiles.js'")
-  .replaceAll("from './loreAccuratePacks'", "from './loreAccuratePacks.js'")
-  .replaceAll("from './solarOppositesSirenStarWarsPack'", "from './solarOppositesSirenStarWarsPack.js'")
-  .replaceAll("from './lore'", "from './lore.js'")
-  .replaceAll("from './heroes'", "from './heroes.js'")
-  .replaceAll("from './enemies'", "from './enemies.js'");
-
-const copyRuntimeModules = async () => {
-  await fs.rm(tmpDir, { recursive: true, force: true });
-  await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'canonRosterWave.js', 'canonRosterWavePartA.js', 'canonRosterWavePartB.js', 'canonRosterWavePartC.js', 'canonRosterWavePartD.js', 'canonRosterWavePartE.js', 'canonRosterWavePartF.js', 'nonCombatTrial.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js', 'melee/meleeAnimationManifest.js', 'melee/meleeStateMachine.js'];
-  files.push('canonRosterPackFactory.js', ...'GHIJKLM'.split('').map(part => `canonRosterWavePart${part}.js`));
-  await Promise.all(files.map(async (file) => {
-    const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
-    const destination = path.join(tmpDir, file);
-    await fs.mkdir(path.dirname(destination), { recursive: true });
-    await fs.writeFile(destination, rewriteImports(raw), 'utf8');
-  }));
+// Resolve the same module graph as the game, including DLC directories. A flat
+// temporary copy cannot preserve imports to package data and shared factories.
+export const loadSpritePromptCatalogs = async () => {
+  const vite = await createServer({ configFile: false, root, logLevel: 'silent', server: { middlewareMode: true } });
+  try {
+    return await Promise.all([
+      'heroes', 'enemies', 'battleItems', 'loreItemOverrides',
+      'loreWorldBossOverrides', 'stageLoreProfiles', 'spriteAssets'
+    ].map(name => vite.ssrLoadModule(`/src/game/${name}.js`)));
+  } finally {
+    await vite.close();
+  }
 };
 
 const buildPrompt = ({ kind, name, universe, role, weapon, color, special }) => [
@@ -138,7 +113,6 @@ const verifyProvenanceRecord = async (item, record) => {
 };
 
 const main = async () => {
-  await copyRuntimeModules();
   const [
     { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB },
     { ENEMIES_DB, FINAL_GAME_BOSS },
@@ -147,15 +121,7 @@ const main = async () => {
     { LORE_WORLD_BOSS_POLICIES },
     { STAGE_LORE_PROFILES, STAGE_ARC_LORE_PROFILES },
     { getItemSpriteSrc }
-  ] = await Promise.all([
-    import(pathToFileURL(path.join(tmpDir, 'heroes.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'loreItemOverrides.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'loreWorldBossOverrides.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'stageLoreProfiles.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'spriteAssets.js')).href)
-  ]);
+  ] = await loadSpritePromptCatalogs();
 
   const heroEntries = HEROES_DB.map(hero => {
     const universeSlug = slugify(hero.universe);
@@ -493,7 +459,6 @@ const main = async () => {
     },
     entries: manifestEntries
   }, null, 2), 'utf8');
-  await fs.rm(tmpDir, { recursive: true, force: true });
   const enemyCount = bossEntries.filter(entry => entry.kind === 'enemy').length;
   const bossCount = bossEntries.filter(entry => entry.kind === 'boss').length;
   const trialCount = bossEntries.filter(entry => entry.kind === 'trial').length;
@@ -503,8 +468,9 @@ const main = async () => {
   console.log(outStageRegistry);
 };
 
-main().catch(async (error) => {
-  await fs.rm(tmpDir, { recursive: true, force: true }).catch(() => {});
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
+  main().catch(error => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}

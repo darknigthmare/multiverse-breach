@@ -1,4 +1,4 @@
-import { LORE_DB } from './lore';
+import { DLC_UNIVERSE_KEYS } from '../../DLC/index.js';
 import { OC_DLC_PACKS, UNIVERSE_KEYS } from './ocDlcPacks';
 import { ORIGINAL_CAMPAIGN_UNIVERSES } from './originalUniverseWave.js';
 
@@ -12,9 +12,9 @@ export const isOriginalCampaignUniverse = (universe) => (
   ORIGINAL_CAMPAIGN_UNIVERSES.includes(universe)
 );
 
-export const getDlcUniverseKeys = () => Object.keys(LORE_DB).filter(universe => (
-  !isBaseGameUniverse(universe) && !isOriginalCampaignUniverse(universe)
-));
+// Keep the historical catalog order and return a new array for existing callers.
+// Package registration describes content; activation remains a save-game choice.
+export const getDlcUniverseKeys = () => [...DLC_UNIVERSE_KEYS];
 
 export const migrateHiddenUniversesForOcDlc = (hiddenUniverses, fromVersion) => {
   const migrated = new Set(

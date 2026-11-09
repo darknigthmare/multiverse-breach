@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "uzumaki",
+  "universe": "Uzumaki",
+  "directory": "DLC/Uzumaki",
+  "registration": "runtime",
+  "catalogOrder": 83,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

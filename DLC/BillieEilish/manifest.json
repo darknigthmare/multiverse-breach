@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "billie-eilish",
+  "universe": "Billie Eilish",
+  "directory": "DLC/BillieEilish",
+  "registration": "runtime",
+  "catalogOrder": 226,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

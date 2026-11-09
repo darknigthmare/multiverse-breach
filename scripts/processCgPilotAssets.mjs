@@ -3,9 +3,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { CG_CATALOG } from '../src/game/cg/cgCatalog.js';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const SCRIPT_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(SCRIPT_DIRECTORY, '..');
+const resolveAssetSource = createAssetSourceResolver(PROJECT_ROOT);
 
 const MASTER_SIZE = { width: 1536, height: 2048 };
 const THUMBNAIL_SIZE = { width: 384, height: 512 };
@@ -76,9 +78,10 @@ const renderWebp = async (sourcePath, outputPath, size, quality, exclusive) => {
 const assets = [];
 for (const definition of CG_CATALOG) {
   const sourcePublicPath = definition.imagePath.replace(/\.webp$/, '.png');
-  const sourcePath = path.join(PROJECT_ROOT, 'public', sourcePublicPath.replace(/^\//, ''));
-  const masterPath = path.join(PROJECT_ROOT, 'public', definition.imagePath.replace(/^\//, ''));
-  const thumbnailPath = path.join(PROJECT_ROOT, 'public', definition.thumbnailPath.replace(/^\//, ''));
+  const universe = definition.universeName?.en || definition.universeName?.fr;
+  const sourcePath = path.join(PROJECT_ROOT, resolveAssetSource(sourcePublicPath, universe));
+  const masterPath = path.join(PROJECT_ROOT, resolveAssetSource(definition.imagePath, universe));
+  const thumbnailPath = path.join(PROJECT_ROOT, resolveAssetSource(definition.thumbnailPath, universe));
   const metadata = await sharp(sourcePath).metadata();
   assertPortraitRatio(metadata, sourcePath);
   assets.push({ definition, sourcePath, masterPath, thumbnailPath, metadata });
@@ -98,6 +101,7 @@ for (const { definition, sourcePath, masterPath, thumbnailPath, metadata } of as
   }
 
   await mkdir(path.dirname(masterPath), { recursive: true });
+  await mkdir(path.dirname(thumbnailPath), { recursive: true });
 
   const renderedMaster = shouldRenderMaster
     ? await renderWebp(sourcePath, masterPath, MASTER_SIZE, 92, ONLY_MISSING)

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "rugrats",
+  "universe": "Rugrats",
+  "directory": "DLC/Rugrats",
+  "registration": "runtime",
+  "catalogOrder": 185,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "linkin-park",
+  "universe": "Linkin Park",
+  "directory": "DLC/LinkinPark",
+  "registration": "runtime",
+  "catalogOrder": 133,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "final-fantasy-xv",
+  "universe": "Final Fantasy XV",
+  "directory": "DLC/FinalFantasyXV",
+  "registration": "runtime",
+  "catalogOrder": 175,
+  "modules": [
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR11.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR11.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR9.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR9.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

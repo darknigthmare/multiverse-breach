@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "wrong-turn",
+  "universe": "Wrong Turn",
+  "directory": "DLC/WrongTurn",
+  "registration": "runtime",
+  "catalogOrder": 222,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

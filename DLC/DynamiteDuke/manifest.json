@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "dynamite-duke",
+  "universe": "Dynamite Duke",
+  "directory": "DLC/DynamiteDuke",
+  "registration": "runtime",
+  "catalogOrder": 204,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

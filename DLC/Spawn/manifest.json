@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "spawn",
+  "universe": "Spawn",
+  "directory": "DLC/Spawn",
+  "registration": "runtime",
+  "catalogOrder": 131,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

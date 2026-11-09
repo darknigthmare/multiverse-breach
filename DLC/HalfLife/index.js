@@ -1,0 +1,25 @@
+// Generated package entry point. Shared constructors remain supplied by the runtime adapters.
+export { default as manifest } from './manifest.json' with { type: 'json' };
+export * as battleItems from './data/battleItems.js';
+export * as canonicalArchiveLore from './data/canonicalArchiveLore.js';
+export * as canonPriorityStages from './data/canonPriorityStages.js';
+export * as characterPlaques from './data/characterPlaques.js';
+export * as enemies from './data/enemies.js';
+export * as heroes from './data/heroes.js';
+export * as lore from './data/lore.js';
+export * as loreAccuratePacks from './data/loreAccuratePacks.js';
+export * as loreBossOverrides from './data/loreBossOverrides.js';
+export * as loreDescriptions from './data/loreDescriptions.js';
+export * as loreWorldBossOverrides from './data/loreWorldBossOverrides.js';
+export * as mosaicUniversePlaces from './data/mosaicUniversePlaces.js';
+export * as narrativeSystems from './data/narrativeSystems.js';
+export * as renderer from './data/renderer.js';
+export * as signatureSourceWave2 from './data/signatureSourceWave2.js';
+export * as signatureSourceWave3 from './data/signatureSourceWave3.js';
+export * as sourceSceneStages from './data/sourceSceneStages.js';
+export * as stageLoreProfiles from './data/stageLoreProfiles.js';
+export * as universeModifiers from './data/universeModifiers.js';
+export * as wardrobeExpansion from './data/wardrobeExpansion.js';
+export * as wardrobeOriginals from './data/wardrobeOriginals.js';
+export * as canonNihilanthEncounter from './runtime/canonNihilanthEncounter.js';
+export * as canonNihilanthEncounterPresentation from './runtime/canonNihilanthEncounterPresentation.js';

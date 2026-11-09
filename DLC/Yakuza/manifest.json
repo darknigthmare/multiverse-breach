@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "yakuza",
+  "universe": "Yakuza",
+  "directory": "DLC/Yakuza",
+  "registration": "runtime",
+  "catalogOrder": 194,
+  "modules": [
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

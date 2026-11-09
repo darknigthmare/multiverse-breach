@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "chicken-run",
+  "universe": "Chicken Run",
+  "directory": "DLC/ChickenRun",
+  "registration": "runtime",
+  "catalogOrder": 127,
+  "modules": [
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

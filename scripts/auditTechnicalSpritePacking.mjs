@@ -7,6 +7,7 @@ import sharp from 'sharp';
 import { getHeroById } from '../src/game/heroes.js';
 import { CORRECTED_CANON_HERO_SPRITES, CORRECTED_HERO_SPRITE_VARIANTS, getHeroCompleteSpritePack, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { inspectReferencedCharacterPng, normalizeReferencedCharacterPng } from './installReferencedCharacterImages.mjs';
+import { verifyTechnicalPackingRevalidation } from './revalidateTechnicalSpritePacking.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -21,7 +22,11 @@ const readPinned = async record => {
 };
 
 const promotionPath = process.argv[2];
-assert(promotionPath, 'Usage: node scripts/auditTechnicalSpritePacking.mjs RUNTIME_PROMOTION.json');
+const options = process.argv.slice(3);
+assert(promotionPath && (options.length === 0
+  || (options.length === 2 && options[0] === '--implementation-revalidation' && options[1])),
+'Usage: node scripts/auditTechnicalSpritePacking.mjs RUNTIME_PROMOTION.json [--implementation-revalidation REVALIDATION.json]');
+const revalidationPath = options[1];
 const promotion = JSON.parse(await readFile(path.resolve(root, promotionPath), 'utf8'));
 assert.equal(promotion.status, 'installed-after-independent-technical-review');
 assert.equal(promotion.newImageGenerationUsed, false);
@@ -39,7 +44,11 @@ assert.equal(review.characterId, promotion.characterId);
 assert.equal(receipt.technicalProvenance.newImageGenerationUsed, false);
 assert.equal(receipt.technicalProvenance.semanticArtworkCreated, false);
 assert.equal(receipt.technicalProvenance.sourceUnmodified, true);
-await readPinned({ path: receipt.technicalProvenance.implementation, sha256: receipt.technicalProvenance.implementationSha256 });
+if (revalidationPath) {
+  await verifyTechnicalPackingRevalidation({ root, promotionPath, revalidationPath });
+} else {
+  await readPinned({ path: receipt.technicalProvenance.implementation, sha256: receipt.technicalProvenance.implementationSha256 });
+}
 const source = await readPinned(receipt.source);
 assert.equal(digest(await readFile(path.resolve(root, receipt.source.snapshotPath))), digest(source));
 const output = await readPinned(receipt.output);

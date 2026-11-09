@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "cells-at-work",
+  "universe": "Cells at Work!",
+  "directory": "DLC/CellsAtWork",
+  "registration": "runtime",
+  "catalogOrder": 77,
+  "modules": [
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

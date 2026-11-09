@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "spy-xfamily",
+  "universe": "Spy x Family",
+  "directory": "DLC/SpyXFamily",
+  "registration": "runtime",
+  "catalogOrder": 89,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

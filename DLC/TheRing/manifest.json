@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "the-ring",
+  "universe": "The Ring",
+  "directory": "DLC/TheRing",
+  "registration": "runtime",
+  "catalogOrder": 110,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/featuredUniversePacks.js",
+      "runtimeAdapter": "src/game/featuredUniversePacks.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

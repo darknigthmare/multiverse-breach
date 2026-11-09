@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "doom",
+  "universe": "Doom",
+  "directory": "DLC/Doom",
+  "registration": "runtime",
+  "catalogOrder": 22,
+  "modules": [
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/legacyStages.js",
+      "runtimeAdapter": "src/game/legacyStageCatalog.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/mosaicUniversePlaces.js",
+      "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/signatureSourceWave2.js",
+      "runtimeAdapter": "src/game/signatureSourceWave2.js"
+    },
+    {
+      "path": "data/signatureSourceWave3.js",
+      "runtimeAdapter": "src/game/signatureSourceWave3.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    },
+    {
+      "path": "data/wardrobeOriginals.js",
+      "runtimeAdapter": "src/game/wardrobeOriginals.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}
