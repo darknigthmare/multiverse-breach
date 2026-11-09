@@ -1,3 +1,5 @@
+import { buildKartIdentityGeometry } from './kartIdentityGeometry.js';
+
 /**
  * A small, engine-independent kart modeller. Positions use metres: +Y is up,
  * -Z forward and +X the driver's right. Render it at 12 race units per metre.
@@ -120,7 +122,14 @@ export function buildKartMesh(spec = {}) {
   };
   const feature = (name, draw) => { features.push(name); draw(); };
 
-  if (family === 'suture-disc') {
+  const identityBuilt = family !== 'suture-disc' && buildKartIdentityGeometry(spec, {
+    box, hull, cylinder, ring, strut, triangle, quad, positions, parts, features,
+    primary, accent, detail, metal, dark, rubber, shade, light, kartColor
+  });
+
+  if (identityBuilt) {
+    // The identity module owns every body, motif, cockpit and wheel vertex.
+  } else if (family === 'suture-disc') {
     // The existing Mirelle kart atlas establishes a hovering black/gold disc,
     // cyan hologram cards, a circular guard rail and no exposed road wheels.
     // This is a new mesh interpretation of that asset, still awaiting 1:1 review.

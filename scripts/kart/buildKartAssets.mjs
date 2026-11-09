@@ -61,11 +61,12 @@ export function exportKartGlb(spec, mesh = buildKartMesh(spec)) {
   nodes.push({ name: spec.kartName.fr, children: Array.from({ length: driverNode + 1 }, (_, index) => index),
     extras: { heroId: spec.heroId, universe: spec.universe, modelVersion: KART_MODEL_VERSION,
       forwardAxis: '-Z', upAxis: '+Y', unit: 'metre', sourceReferences: spec.sourceReferences,
-      referenceAsset: spec.referenceAsset, fidelityStatus: spec.fidelityStatus, originalCrossoverAdaptation: true } });
+      referenceAsset: spec.referenceAsset, fidelityStatus: spec.fidelityStatus,
+      vehicleIdentity: spec.vehicleIdentity, originalCrossoverAdaptation: true } });
   const binary = Buffer.concat(chunks);
   const document = {
-    asset: { version: '2.0', generator: 'Multiverse Breach kartModel.js / deterministic mesh export v1',
-      copyright: 'Original parametric kart mesh adaptation for the Multiverse Breach fan project. Character references retain their original rights.' },
+    asset: { version: '2.0', generator: 'Multiverse Breach kartModel.js / authored vehicle mesh export v2',
+      copyright: 'Kart adaptation mesh authored for the Multiverse Breach fan project. Referenced vehicles and characters retain their original rights.' },
     scene: 0, scenes: [{ name: spec.kartName.fr, nodes: [rootNode] }], nodes, meshes,
     materials: [
       { name: 'Chassis vertex colours', pbrMetallicRoughness: { baseColorFactor: [1, 1, 1, 1], metallicFactor: 0.35, roughnessFactor: 0.58 } },
@@ -160,6 +161,8 @@ export async function exportKartAtlas(mesh, size = 128) {
 
 const readSources = root => Object.fromEntries([
   'src/game/kart/kartRoster.js', 'src/game/kart/kartModel.js',
+  'src/game/kart/kartIdentityCatalog.js', 'src/game/kart/kartIdentityCatalogA.js',
+  'src/game/kart/kartIdentityCatalogB.js', 'src/game/kart/kartIdentityGeometry.js',
   'scripts/kart/buildKartAssets.mjs', 'src/game/spriteAssets.js'
 ].map(path => [path, hash(readFileSync(resolve(root, path)))]));
 
@@ -196,13 +199,14 @@ export async function buildKartAssets({ root = ROOT, heroIds = null } = {}) {
     });
     assets.push({
       id: spec.id, heroId: spec.heroId, name: spec.name, universe: spec.universe,
+      kartName: spec.kartName, vehicleIdentity: spec.vehicleIdentity,
       bodyStyle: spec.bodyStyle, signature: spec.signature, designSource: spec.designSource,
       fidelityStatus: spec.fidelityStatus, referenceAsset: spec.referenceAsset, sourceReferences: spec.sourceReferences,
       driverFidelityStatus: spec.driverFidelityStatus, driverDirections: spec.driverSprite.directionalStatus,
       driverAvailable: drivers.some(driver => driver.tracked || driver.materialized), driverSprites: drivers,
       model: { sourcePath: modelPath, publicPath: spec.modelAsset, format: 'glTF 2.0 binary', bytes: glb.length,
         sha256: hash(glb), triangleCount: mesh.positions.length / 9, parts: mesh.parts.length, bounds: mesh.bounds,
-        driverAnchor: mesh.driverAnchor, forwardAxis: '-Z', upAxis: '+Y', units: mesh.units },
+        features: mesh.features, driverAnchor: mesh.driverAnchor, forwardAxis: '-Z', upAxis: '+Y', units: mesh.units },
       sprite: { sourcePath: spritePath, publicPath: spec.sprite2D.src, bytes: atlas.png.length, sha256: hash(atlas.png),
         width: atlas.width, height: atlas.height, frameWidth: 128, frameHeight: 128, columns: 8, rows: 1,
         anchor: spec.sprite2D.anchor, containsDriver: false, projection: 'orthographic mesh raster',
@@ -211,12 +215,12 @@ export async function buildKartAssets({ root = ROOT, heroIds = null } = {}) {
     if (assets.length % 100 === 0) console.log(`Karts exported ${assets.length}/${specs.length}`);
   }
   const manifest = {
-    schemaVersion: 1, modelVersion: KART_MODEL_VERSION, generation: 'deterministic procedural geometry and software projection',
+    schemaVersion: 2, modelVersion: KART_MODEL_VERSION, generation: 'explicit vehicle designs, deterministic authored geometry and software projection',
     sourceHashes: readSources(root),
     rosterSha256: hash(Buffer.from(JSON.stringify(KART_ROSTER))),
-    sourceRights: 'Original authored kart meshes; character identities and referenced character art retain their existing project provenance and source rights. No licence to franchise IP is asserted.',
+    sourceRights: 'Kart meshes authored from vehicle references or original universe briefs; referenced vehicle designs, characters and art retain their source rights. No licence to franchise IP is asserted.',
     spriteTreatment: 'Kart-only RGBA eight-view atlas. Existing character sprite remains a separate driver layer in game.',
-    fidelity: 'Models are authored crossover adaptations or character-role prototypes. None is marked as a reviewed 1:1 reproduction.',
+    fidelity: 'Every model has an explicit vehicle or universe design. Racing proportions, an open seat and simplified geometry adapt the reference; individual 1:1 visual fidelity remains unverified.',
     geometryScope: 'Visual mesh and wheel nodes only. Collision and performance remain governed by the existing race simulation.',
     counts: { characters: assets.length, universes: new Set(assets.map(asset => asset.universe)).size,
       models: assets.length, spriteAtlases: assets.length, directionalFrames: assets.length * 8,
@@ -226,6 +230,11 @@ export async function buildKartAssets({ root = ROOT, heroIds = null } = {}) {
       identityAuthored: assets.filter(asset => asset.designSource === 'authored-character-adaptation').length,
       universeFamily: assets.filter(asset => asset.designSource === 'universe-family-adaptation').length,
       roleAndPalette: assets.filter(asset => asset.designSource === 'character-palette-and-role').length,
+      canonicalVehicleAdaptations: assets.filter(asset => asset.vehicleIdentity.sourceKind === 'canonical-vehicle-adaptation').length,
+      universeInventions: assets.filter(asset => asset.vehicleIdentity.sourceKind === 'universe-invention').length,
+      originalUniverseDesigns: assets.filter(asset => asset.vehicleIdentity.sourceKind === 'original-universe-design').length,
+      vehicleSilhouettes: new Set(assets.map(asset => asset.vehicleIdentity.model)).size,
+      distinctDesignProfiles: new Set(assets.map(asset => asset.vehicleIdentity.id)).size,
       bytes }, assets
   };
   mkdirSync(resolve(root, 'docs/kart'), { recursive: true });
@@ -243,6 +252,7 @@ export async function checkKartAssets({ root = ROOT } = {}) {
   for (const asset of manifest.assets) {
     const spec = byId.get(asset.id);
     if (!spec || asset.model.publicPath !== spec.modelAsset || asset.sprite.publicPath !== spec.sprite2D.src) throw new Error(`Wrong kart asset identity: ${asset.id}`);
+    if (JSON.stringify(asset.vehicleIdentity) !== JSON.stringify(spec.vehicleIdentity)) throw new Error(`Stale vehicle identity: ${asset.id}`);
     for (const entry of [asset.model, asset.sprite]) {
       const data = readFileSync(resolve(root, entry.sourcePath));
       if (data.length !== entry.bytes || hash(data) !== entry.sha256) throw new Error(`Kart asset bytes changed: ${entry.sourcePath}`);

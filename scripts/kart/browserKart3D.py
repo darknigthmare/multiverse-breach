@@ -45,6 +45,8 @@ def main():
                     page.goto(args.base + '/scripts/fixtures/race-lifecycle.html?lang=fr', wait_until='domcontentloaded')
                     page.get_by_role('searchbox', name='Rechercher un pilote').fill(query)
                     page.locator(f'[data-pilot-id="{hero}"]').click()
+                    expected_model = {'arca_mirelle': 'suture-disc', 'masterchief': 'warthog', 'ripley': 'narcissus'}[hero]
+                    expect(page.locator('.kart-identity-brief')).to_have_attribute('data-vehicle-model', expected_model)
                     page.get_by_role('combobox', name='Univers des circuits').select_option(universe)
                     # Pick the curated universe circuit, not a legacy Nexus loop.
                     page.locator('.race-track-option[data-track-id^="kart-"]').first.click()
@@ -54,6 +56,20 @@ def main():
                     page.wait_for_function('window.__raceLifecycle.engine.renderer3D.getTelemetry().drivers.length === 4 && window.__raceLifecycle.engine.renderer3D.getTelemetry().drivers.every(d => d.status === "ready")')
                     page.wait_for_function('window.__raceLifecycle.engine.time > 1.5')
                     assert page.evaluate('window.__raceLifecycle.engine.player.kartSpec.heroId') == hero
+                    report['vehicleIdentity'] = page.evaluate('window.__raceLifecycle.engine.player.kartSpec.vehicleIdentity')
+                    assert report['vehicleIdentity']['model'] == expected_model
+                    report['uploadedKartParts'] = page.evaluate('''() => {
+                        const e=window.__raceLifecycle.engine;
+                        return [...e.renderer3D.kartMeshes.entries()]
+                            .find(([key])=>key.startsWith(e.player.kartSpec.id+':'))[1].parts.map(p=>({id:p.id,count:p.count}));
+                    }''')
+                    assert all(part['count'] > 0 for part in report['uploadedKartParts'])
+                    required_parts = {
+                        'warthog': {'identity-warthog-warthog-sloped-armored-bonnet', 'identity-warthog-warthog-open-cage-and-cargo-bed'},
+                        'narcissus': {'identity-narcissus-narcissus-chamfered-shuttle-wedge', 'identity-narcissus-narcissus-paired-rounded-aft-thrusters-and-docking-hatch'},
+                        'suture-disc': {'hover-disc'},
+                    }[expected_model]
+                    assert required_parts.issubset({part['id'] for part in report['uploadedKartParts']}), report['uploadedKartParts']
                     expect(page.locator('[data-race-runtime-error]')).to_have_count(0)
                     expect(page.locator('.race-stat-grid')).to_be_visible()
                     assert page.locator('.race-telemetry').bounding_box()['width'] > 100
@@ -156,16 +172,28 @@ def main():
                         assert page.evaluate('Object.keys(window.__raceLifecycle.engine.keys).length') == 0
                         page.screenshot(path=str(out / f'{name}-context-loss.png'))
                         page.get_by_role('button', name='RETOUR À LA GRILLE', exact=True).click()
+                    if name == 'alien-portrait':
+                        # Start a fresh real UI session to inspect the same
+                        # Narcissus in 2D; no race outcome is forced.
+                        page.goto(args.base + '/scripts/fixtures/race-lifecycle.html?lang=fr', wait_until='domcontentloaded')
+                        page.get_by_role('searchbox', name='Rechercher un pilote').fill(query)
+                        page.locator(f'[data-pilot-id="{hero}"]').click()
+                        page.get_by_role('combobox', name='Univers des circuits').select_option(universe)
+                        page.locator('.race-track-option[data-track-id^="kart-"]').first.click()
+                    if name in ('halo-desktop', 'alien-portrait'):
                         page.get_by_role('radio', name='2D · sprites', exact=True).check()
                         page.get_by_role('button', name='VALIDER LA GRILLE', exact=True).click()
                         page.wait_for_function('window.__raceLifecycle.engine.time>0.3')
                         assert page.evaluate('window.__raceLifecycle.engine.renderer3D') is None
                         assert page.evaluate('window.__raceLifecycle.engine.player.kartSpec.heroId') == hero
+                        assert page.evaluate('window.__raceLifecycle.engine.player.kartSpec.vehicleIdentity.model') == expected_model
                         page.wait_for_function('window.__raceLifecycle.engine.kartImages.size>0 && [...window.__raceLifecycle.engine.kartImages.values()].every(i=>i.complete&&i.naturalWidth>0)')
                         page.wait_for_function('(hero)=>[...window.__raceLifecycle.engine.driverBusts.values()].some(b=>b?.heroId===hero)', arg=hero)
                         report['drivers2D'] = page.evaluate('''() => [...window.__raceLifecycle.engine.driverBusts.values()]
                             .filter(Boolean).map(b=>({heroId:b.heroId,source:b.source,width:b.width,height:b.height}))''')
-                        page.wait_for_timeout(80)
+                        time_2d = page.evaluate('window.__raceLifecycle.engine.time')
+                        page.wait_for_function('(time)=>window.__raceLifecycle.engine.time>time+0.2', arg=time_2d)
+                        expect(page.locator('[data-race-runtime-error]')).to_have_count(0)
                         page.screenshot(path=str(out / f'{name}-2d.png'))
                     assert not errors, errors
                     report['passed'] = True

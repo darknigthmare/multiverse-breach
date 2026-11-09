@@ -695,6 +695,12 @@ export default function RaceMode({
           <section className="race-preflight-section">
             <span className="race-preflight-label">{lang === 'fr' ? '2. CHÂSSIS ET LIVRÉE' : '2. CHASSIS AND LIVERY'}</span>
             <p className="race-preflight-description">{lang === 'fr' ? 'Le châssis appartient au pilote. Vos karts de collection apportent leur peinture ; les améliorations du garage règlent les performances.' : 'The pilot keeps their personal chassis. Collection karts provide their paint; garage upgrades determine performance.'}</p>
+            {pilotSpec?.vehicleIdentity && <div className="kart-identity-brief" data-vehicle-model={pilotSpec.vehicleIdentity.model}>
+              <strong>{pilotSpec.vehicleIdentity.referenceVehicle
+                ? (lang === 'fr' ? `Référence : ${pilotSpec.vehicleIdentity.referenceVehicle}` : `Inspired by ${pilotSpec.vehicleIdentity.referenceVehicle}`)
+                : (lang === 'fr' ? `Création pour ${pilotSpec.universe}` : `Created for ${pilotSpec.universe}`)}</strong>
+              {lang === 'fr' && <span>{pilotSpec.vehicleIdentity.recognition.join(' · ')}</span>}
+            </div>}
             <div className="race-preflight-karts" role="group" aria-label={lang === 'fr' ? 'Livrée active' : 'Active livery'}>
               <button
                 type="button"

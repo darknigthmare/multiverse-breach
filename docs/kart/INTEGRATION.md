@@ -40,13 +40,13 @@ commandes maintenues. Une erreur de rendu ne distribue pas de récompense.
 | --- | --- |
 | Pilotes | 1 911 personnages du catalogue et l’Ancre, soit 1 912 identités |
 | Exports | 1 912 GLB autonomes et 1 912 atlas RGBA, soit 15 296 vues |
-| Karts individualisés | 32 conceptions nommées ; 229 adaptations de familles d’univers ; 1 651 variantes de rôle et de palette |
+| Identités de véhicules | 525 fiches d’univers explicites, exceptions par personnage et aucun repli sur le rôle ; comptes détaillés dans `kart-identity-review.json` |
 | Circuits | 525 circuits d’univers et six circuits Nexus historiques |
 | Décors | 30 adaptations rédigées individuellement, 20 autres univers originaux, 475 prototypes |
 | Univers sans combat | 39 rallyes sans objets offensifs ni dangers de contact |
 | Fidélité graphique 1:1 validée | Zéro ; ce statut exige encore une comparaison artistique aux références |
 
-Les châssis sont des créations de crossover. Les pistes adaptées ne sont pas
+Les châssis sont des adaptations de véhicules de référence ou des créations de crossover explicitement distinguées. Les pistes adaptées ne sont pas
 des plans canoniques reproduits à l’échelle. Les matériaux, détails et
 proportions demandent encore un travail spécifique par univers. Le catalogue
 et le classeur de production conservent ces tâches ouvertes ; le succès d’un
@@ -96,6 +96,7 @@ révisions exactes, après exécution.
 
 ## Documents de production
 
+- [Véhicules, cohérence des incarnations et planches](VEHICLE_IDENTITIES.md)
 - [Modèles et sprites](KART_ASSETS.md)
 - [Rendu et cycle de vie WebGL](RENDERER_3D.md)
 - [Circuits, lieux et références](tracks.md)

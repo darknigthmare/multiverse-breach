@@ -16,8 +16,8 @@ const option = (name, fallback) => {
   return index < 0 ? fallback : args[index + 1];
 };
 const repo = path.resolve(option('--repo', process.cwd()));
-const outputDir = path.resolve(option('--output-dir', path.join(repo, 'outputs/kart-workbook-2026-11-08')));
-const outputName = 'Multiverse_Breach_Kart_3D_2026-11-08.xlsx';
+const outputDir = path.resolve(option('--output-dir', path.join(repo, 'outputs/kart-workbook-2026-11-09')));
+const outputName = 'Multiverse_Breach_Kart_3D_2026-11-09.xlsx';
 const finalPath = path.join(repo, 'docs/excel', outputName);
 const [pilotManifest, trackManifest] = await Promise.all([
   fs.readFile(path.join(repo, 'docs/kart/kart-assets.json'), 'utf8').then(JSON.parse),
@@ -60,7 +60,13 @@ const pilotRows = pilotManifest.assets.map(asset => [
   unique(asset.driverSprites.map(sprite => sprite.sourceContext)).join(', '),
   asset.bodyStyle, asset.signature,
   unique([asset.referenceAsset, ...asset.sourceReferences]).join('\n') || 'Références artistiques à documenter',
-  asset.fidelityStatus, null
+  asset.fidelityStatus, null,
+  asset.kartName?.fr || '',
+  asset.vehicleIdentity?.referenceVehicle || 'Véhicule inventé pour l’univers',
+  asset.vehicleIdentity?.recognition.join('\n') || '',
+  ({ 'canonical-vehicle-adaptation': 'Véhicule emblématique adapté', 'universe-invention': 'Création d’univers', 'original-universe-design': 'Création univers original' })[asset.vehicleIdentity?.sourceKind] || '',
+  asset.vehicleIdentity?.rationale || '',
+  asset.vehicleIdentity?.id || ''
 ]);
 const trackRows = trackManifest.tracks.map(track => [
   track.id, track.name, track.universe, trackDesignLabels[track.designStatus] || track.designStatus,
@@ -83,7 +89,7 @@ function initializeSheet(sheet, lastColumn, end, title, source, note, widths, he
   sheet.getRange('A2').format.font = { name: 'Arial', size: 16, bold: true, color: colors.navy };
   sheet.getRange('A2:H2').format.rowHeight = 26;
   sheet.getRange('G2').values = [['État au']];
-  sheet.getRange('H2').values = [[new Date('2026-11-08T12:00:00Z')]];
+  sheet.getRange('H2').values = [[new Date('2026-11-09T12:00:00Z')]];
   sheet.getRange('H2').setNumberFormat('dd/mm/yyyy');
   sheet.getRange('H2').format.horizontalAlignment = 'left';
   sheet.getRange('A3:H3').format.borders = { bottom: { style: 'thin', color: colors.line } };
@@ -135,17 +141,17 @@ function initializeSheet(sheet, lastColumn, end, title, source, note, widths, he
   sheet.freezePanes.freezeColumns(3);
 }
 
-initializeSheet(pilots, 'S', pilotEnd, 'Multiverse Breach — Pilotes kart',
+initializeSheet(pilots, 'Y', pilotEnd, 'Multiverse Breach — Pilotes kart',
   'Sources : docs/kart/kart-assets.json. Les chemins correspondent aux fichiers du projet.',
   'Revues en jaune : saisie manuelle. Les fichiers générés ne valident ni le conducteur assis ni une fidélité 1:1.',
-  { A: 34, B: 27, C: 29, D: 25, E: 18, F: 20, G: 18, H: 64, I: 90, J: 90, K: 105, L: 15, M: 18, N: 18, O: 26, P: 28, Q: 110, R: 48, S: 65 },
+  { A: 34, B: 27, C: 29, D: 25, E: 18, F: 20, G: 18, H: 64, I: 90, J: 90, K: 105, L: 15, M: 18, N: 18, O: 26, P: 28, Q: 110, R: 48, S: 65, T: 44, U: 42, V: 62, W: 34, X: 90, Y: 46 },
   ['ID stable', 'Personnage', 'Univers', 'Conception source', 'Revue design', 'Revue pilote / 2D', 'Fidélité 1:1', 'Travail restant',
-    'Modèle GLB', 'Atlas kart 2D', 'Sprite conducteur', 'Vues kart 2D', 'Sprite disponible', 'Contexte sprite', 'Carrosserie', 'Signature', 'Références artistiques', 'Statut de fidélité source', 'Notes de revue'],
+    'Modèle GLB', 'Atlas kart 2D', 'Sprite conducteur', 'Vues kart 2D', 'Sprite disponible', 'Contexte sprite', 'Carrosserie', 'Signature', 'Références artistiques', 'Statut de fidélité source', 'Notes de revue', 'Nom du kart', 'Véhicule de référence', 'Repères visibles', 'Origine du véhicule', 'Choix artistique', 'Profil de conception'],
   pilotRows, 'PilotesKart');
 
 initializeSheet(circuits, 'P', trackEnd, 'Multiverse Breach — Circuits kart',
   'Sources : docs/kart/kart-tracks.json et références de chaque univers.',
-  'Test IA : au moins un des quatre pilotes finit trois tours. La revue visuelle et la comparaison 1:1 restent manuelles.',
+  'Simulation : arrivée du joueur sur trois tours. La revue visuelle des décors et la comparaison 1:1 restent manuelles.',
   { A: 37, B: 38, C: 29, D: 30, E: 44, F: 19, G: 18, H: 64, I: 23, J: 15, K: 20, L: 20, M: 17, N: 110, O: 34, P: 65 },
   ['ID stable', 'Circuit', 'Univers', 'Conception source', 'Lieu de référence', 'Revue visuelle', 'Fidélité 1:1', 'Travail restant',
     'Simulation IA', 'Repères 3D', 'Thème', 'Tracé', 'Sans combat', 'Références', 'Statut de fidélité source', 'Notes de revue'],
@@ -176,7 +182,7 @@ circuits.getRange(`H${firstRow}:H${trackEnd}`).format.fill = colors.formula;
 
 pilots.getRange('A5:H6').values = [
   ['Pilotes', null, 'Modèles GLB', null, 'Atlas 2D', null, 'Vues kart 2D', null],
-  ['Designs spécifiques', null, 'Revues terminées', null, 'Fidélité 1:1 validée', null, 'Sprite disponible', null]
+  ['Designs personnels', null, 'Revues terminées', null, 'Fidélité 1:1 validée', null, 'Sprite disponible', null]
 ];
 pilots.getRange('B5').formulas = [[`=COUNTA(A${firstRow}:A${pilotEnd})`]];
 pilots.getRange('D5').formulas = [[`=COUNTA(I${firstRow}:I${pilotEnd})`]];
@@ -249,9 +255,11 @@ for (const sheetName of ['Pilotes', 'Circuits']) {
   await fs.writeFile(path.join(outputDir, `${sheetName.toLowerCase()}-preview.png`), new Uint8Array(await preview.arrayBuffer()));
 }
 await fs.writeFile(path.join(outputDir, 'workbook-verification.json'), JSON.stringify({
-  date: '2026-11-08', counts: { pilots: pilotRows.length, circuits: trackRows.length },
+  date: '2026-11-09', counts: { pilots: pilotRows.length, circuits: trackRows.length },
   formulaEditsVerified: true, humanReviewsCompleted: 0, errorScan: errors.ndjson, summaries: inspected
 }, null, 2));
+const identityPreview = await workbook.render({ sheetName: 'Pilotes', range: 'T11:W18', scale: 1, format: 'png' });
+await fs.writeFile(path.join(outputDir, 'identites-preview.png'), new Uint8Array(await identityPreview.arrayBuffer()));
 const output = await SpreadsheetFile.exportXlsx(workbook);
 await output.save(path.join(outputDir, outputName));
 await fs.mkdir(path.dirname(finalPath), { recursive: true });

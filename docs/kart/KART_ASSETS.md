@@ -29,37 +29,33 @@ ou des sprites dans un module DLC, même si l’agrégateur `heroes.js` ne chang
 
 ## Modèles et langage visuel
 
-Les châssis sont des créations de crossover pour Multiverse. Les personnages
-sources ne sont pas présentés comme possédant canoniquement ces véhicules.
-Les palettes viennent du personnage courant, avec adaptations explicites
-pour les conceptions individuelles. Quatre roues, un siège, le volant, les
-essieux, les feux, la carrosserie et les accessoires sont de véritables volumes.
+Le [catalogue d’identités](VEHICLE_IDENTITIES.md) distingue les adaptations de
+véhicules emblématiques, les inventions pour un univers existant et les
+créations des univers originaux. Les silhouettes viennent de choix explicites
+par univers et par personnage ; le rôle de combat et le hash ne choisissent
+plus le châssis ou ses proportions.
 
-Quinze familles de structure sont disponibles : classique, suture, disque de
-suture, militaire, blindé, aérodynamique, industriel, scientifique, rallye,
-récupération, chasseur, gothique, arcanique, médiéval et scène musicale.
-Les proportions, l’empattement, le nez et les ailerons varient de façon stable
-avec l’identité du personnage. Les statistiques continuent de venir du moteur
-de course et du garage ; un changement cosmétique n’accorde pas un avantage.
+Les palettes sont fixées par la référence du véhicule ou le brief de la
+création. Les peintures de collection restent disponibles. Les statistiques
+continuent de venir du moteur et du garage : un changement de carrosserie
+ou de peinture n’accorde pas d’avantage.
 
-**32 identités ont une conception nommée individuellement**, **229 utilisent
-une famille d’univers**, et **1 651 restent des variantes fondées sur leur rôle
-et leur palette**. Ce dernier compte est un périmètre de prototypes à enrichir,
-pas une validation artistique de 1 651 designs spécifiques.
+Le [rapport de revue](kart-identity-review.json) donne les comptes exacts des
+fiches personnelles, des familles partagées et des types de référence. Les
+anciens prototypes fondés uniquement sur le rôle et la palette sont supprimés
+pour toutes les entrées actuelles. Une nouvelle clé d’univers doit recevoir
+une fiche explicite avant de pouvoir entrer dans le roster.
 
 | Pilote | Trait de son châssis |
 | --- | --- |
-| Mirelle | Disque flottant noir et or, cercles cyan, garde-corps et huit cartes holographiques. |
-| Bastion | Plaques blindées, empattement large et bouclier sur le nez. |
-| Nova | Châssis fin, aile arrière et anneau d’horloge. |
-| Tessera | Panneaux latéraux évoquant ses réflecteurs. |
-| Quillon | Mécanique exposée et deux réservoirs de pompe. |
-| Nadir | Nacelles de sondes et mât de télémétrie. |
-| Master Chief | Carrosserie militaire, garde-boue et arceau. |
-| Ripley | Carrosserie de manutention jaune, arceau et fourches. |
-| Predator | Arêtes métalliques, défenses et supports de trophées. |
-| Arthur | Cadre de bois et de bronze et bouclier frontal. |
-| Serj / Bucket | Plateforme de scène, enceintes et amplificateurs. |
+| Mirelle | Disque flottant noir et or conservé, cercles cyan, garde-corps et cartes holographiques. |
+| Master Chief | Warthog : capot incliné, grandes roues, cage ouverte et benne. |
+| Ripley 1979 | Narcissus : coque claire, vitrages sombres et deux propulseurs arrière arrondis. |
+| Arbiter | Banshee : coque violette lobée et ailes courbes. |
+| Luke / Vador / Han | X-wing / TIE Advanced / Faucon, avec géométries distinctes. |
+| Shepard | Mako à six roues, coque blanche et bande rouge. |
+| Chell | Création Aperture avec portails orange et bleu. |
+| Serj / Miku | Scènes de course et accessoires musicaux propres à leur identité. |
 
 Pour Mirelle, la référence locale réellement inspectée est
 `arca-mirelle-complete/arca-mirelle-kart-directions.png`. Le disque remplace
@@ -82,8 +78,8 @@ fichier suivi, fichier matérialisé et empreinte effectivement lue.
 
 Chaque candidat conserve sa grille, sa ligne idle, sa colonne et les marges
 en pixels du registre `spriteAssets.js`. Un repli vers une autre source du même
-héros conserve la grille de cette source. Le cadrage du buste utilise les 68 %
-supérieurs de la cellule après ses marges. L’échec de toutes les sources doit
+héros conserve la grille de cette source. Le cadrage du buste isole la cellule, retire les marges transparentes selon
+son alpha, puis conserve les 68 % supérieurs du personnage visible. L’échec de toutes les sources doit
 laisser un siège vide avec l’identité annoncée, pas dessiner un faux conducteur.
 
 **Les sprites dédiés à une conduite assise dans huit directions restent à
@@ -98,8 +94,8 @@ restent deux couches ; l’atlas PNG n’incorpore pas un deuxième conducteur.
 - Échelle dans la course : **12 unités de simulation pour un mètre**.
 - `buildKartMesh(spec)` retourne positions, normales et couleurs RGBA non
   indexées, plages de parties, limites et point d’ancrage du conducteur.
-- Les roues avant ont `steering: true`, les quatre roues possèdent un pivot
-  et un axe de roulement `x`. Le disque de Mirelle ne possède pas de roues.
+- Les roues avant ont `steering: true`, chaque roue possède un pivot
+  et un axe de roulement `x`. Le nombre de roues dépend du véhicule. Le disque de Mirelle ne possède pas de roues.
 - Le GLB indexe les sommets et transforme chaque roue en nœud autonome.
   Les couleurs de vertex y sont converties en espace linéaire conformément
   au format glTF. Le point `DriverSpriteAnchor` reste un nœud sans personnage 3D.
@@ -141,8 +137,10 @@ fidélité des univers : leurs preuves appartiennent aux recettes du moteur.
 
 ## Provenance et limites
 
-Les maillages sont définis par `src/game/kart/kartModel.js`, avec les décisions
-de silhouette dans `kartRoster.js`. Le générateur et les empreintes figurent
+Les maillages sont définis par `src/game/kart/kartModel.js` et
+`kartIdentityGeometry.js`, avec les décisions de silhouette dans les catalogues
+`kartIdentityCatalogA.js` et `kartIdentityCatalogB.js`, puis leurs exceptions
+Nexus dans `kartIdentityCatalog.js`. Le générateur et les empreintes figurent
 dans le manifeste ; les sprites conducteurs héritent des sources et règles
 du projet. Les références de franchise conservent leurs droits d’origine.
 Cette création de fan game ne prétend pas accorder une licence sur ces droits.
