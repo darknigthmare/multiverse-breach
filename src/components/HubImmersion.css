@@ -19,7 +19,7 @@
 .hub-screen .hub-resource-strip { display: flex !important; flex-wrap: nowrap !important; min-width: 0; max-width: 100%; gap: 6px !important; margin-left: auto; overflow-x: auto; justify-content: flex-start !important; }
 .hub-screen .hub-resource { flex: 0 0 auto; border: 0 !important; background: transparent !important; padding: 5px 6px !important; font-size: 11px !important; white-space: nowrap; }
 .hub-screen:not(.is-dedicated-game) .hub-navigation { grid-area: navigation; width: auto; max-width: none; margin: 0; padding: 18px 10px 70px; display: flex; flex-direction: column; gap: 24px; overflow-y: auto; border-right: 1px solid #73d6d42e; background: #030910ea; }
-.hub-screen .hub-navigation-primary { display: grid; gap: 6px; padding: 0; border: 0; background: none; }
+.hub-screen .hub-navigation-primary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 0; border: 0; background: none; }
 .hub-screen .hub-navigation-primary > button { min-height: 48px; padding: 11px 13px; text-align: left; font-size: 11px; line-height: 1.4; letter-spacing: .08em; border: 0; border-left: 3px solid transparent; border-radius: 0; background: transparent; color: #a3bbc6; }
 .hub-screen .hub-navigation-primary > button.is-active { background: linear-gradient(90deg, #36c5b323, transparent); border-left-color: #7fffe1; color: #edffff; }
 .hub-screen .hub-navigation-secondary { display: flex !important; flex-direction: column; gap: 12px; padding: 8px 0; border: 0; background: none; }
@@ -186,7 +186,7 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .hub-screen .hub-header-copy { display: none; }
   .hub-screen:not(.is-dedicated-game) .hub-navigation { flex-direction: column; padding: 6px 10px; gap: 5px; overflow: visible; border-right: 0; border-bottom: 1px solid #3a6c7244; }
   .hub-screen .hub-navigation-primary { display: flex; gap: 2px; overflow-x: auto; }
-  .hub-screen .hub-navigation-primary > button { min-height: 36px; min-width: 96px; font-size: 9px; padding: 7px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .hub-screen .hub-navigation-primary > button { flex-shrink: 0; min-height: 36px; min-width: 96px; font-size: 9px; padding: 7px; border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
   .hub-screen .hub-navigation-primary > button.is-active { border-bottom-color: #7fffe1; }
   .hub-screen .hub-navigation-secondary { padding: 0; flex-direction: row; gap: 5px; }
   .hub-screen .hub-navigation-context { display: none; }
