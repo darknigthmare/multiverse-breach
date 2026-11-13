@@ -14,7 +14,7 @@ import subprocess
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
-ASSET = re.compile(r'^/(?:backgrounds|sprites|fonts|images|boosters|oc-worlds|models)/')
+ASSET = re.compile(r'^/(?:favicon\.png$|(?:backgrounds|sprites|fonts|images|boosters|oc-worlds|models)/)')
 DLC_ASSET = re.compile(r'^/DLC/[^/]+/assets/')
 
 

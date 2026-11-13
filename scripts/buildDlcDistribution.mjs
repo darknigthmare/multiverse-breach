@@ -1,15 +1,38 @@
-import { readFileSync, lstatSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'vite';
 import { auditDlcDistribution } from './auditDlcDistribution.mjs';
+import { assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile } from './dlcDistributionFilesystem.mjs';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 const slash = value => value.split(path.sep).join('/');
 
+/** Vite may empty dist; refuse an existing link/file before it can write there. */
+export function assertDlcBuildDirectory({ root = process.cwd(), optional = true } = {}) {
+  const absolute = assertDistributionDirectory(root);
+  const directory = inspectDistributionPath(absolute, 'dist', { directory: true, optional });
+  return directory || path.join(absolute, 'dist');
+}
+
+/** Verify the actual published PNG/audio/etc bytes, including every path ancestor. */
+export function auditDlcBuiltMedia({ root = process.cwd(), assets = [] } = {}) {
+  const directory = assertDlcBuildDirectory({ root, optional: false });
+  const files = listDistributionFiles({ root: directory });
+  for (const asset of assets) {
+    const relative = asset.publicPath.slice(1);
+    const bytes = readDistributionFile(directory, relative);
+    if (bytes.length !== asset.bytes || sha256(bytes) !== asset.sha256) {
+      throw new Error('Built distribution media differs: ' + asset.publicPath);
+    }
+  }
+  return { media: assets.length, files: files.length };
+}
+
 export async function buildDlcDistribution({ root = process.cwd() } = {}) {
-  root = path.resolve(root);
+  root = assertDistributionDirectory(root);
+  assertDlcBuildDirectory({ root });
   const audited = auditDlcDistribution({ root });
   const receipt = audited.receipt || JSON.parse(readFileSync(path.join(root, 'DLC/distribution-receipt.json'), 'utf8'));
   const selectedDirectories = new Set(receipt.packs.map(pack => pack.directory.split('/')[1]));
@@ -39,15 +62,9 @@ export async function buildDlcDistribution({ root = process.cwd() } = {}) {
     plugins: [closurePlugin],
     build: { outDir: path.join(root, 'dist'), emptyOutDir: true }
   });
-  for (const asset of receipt.assets) {
-    const file = path.join(root, 'dist', asset.publicPath.slice(1));
-    const stat = lstatSync(file, { throwIfNoEntry: false });
-    if (!stat?.isFile() || stat.isSymbolicLink()) throw new Error('Missing built distribution media: ' + asset.publicPath);
-    const bytes = readFileSync(file);
-    if (bytes.length !== asset.bytes || sha256(bytes) !== asset.sha256) throw new Error('Built distribution media differs: ' + asset.publicPath);
-  }
+  const published = auditDlcBuiltMedia({ root, assets: receipt.assets });
   auditDlcDistribution({ root });
-  const result = { mode: receipt.profile.mode, packs: receipt.packs.length, media: receipt.assets.length, moduleCount, dlcModuleCount, javascriptBytes };
+  const result = { mode: receipt.profile.mode, packs: receipt.packs.length, media: published.media, builtFiles: published.files, moduleCount, dlcModuleCount, javascriptBytes };
   console.log('DLC distribution build: ' + JSON.stringify(result));
   return result;
 }

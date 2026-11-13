@@ -1,5 +1,5 @@
 import { createRequire } from 'node:module';
-import { assertDistributionDirectory, listDistributionFiles, readDistributionFile } from './dlcDistributionFilesystem.mjs';
+import { assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile } from './dlcDistributionFilesystem.mjs';
 
 const SCRIPT = /\.(?:[cm]?js|jsx|ts|tsx)$/;
 const compare = (left, right) => left < right ? -1 : left > right ? 1 : 0;
@@ -51,10 +51,65 @@ function publicPaths(value, sourcePath) {
   return paths;
 }
 
+const HTML_MEDIA_ATTRIBUTES = new Map([
+  ['img', ['src', 'srcset']], ['source', ['src', 'srcset']], ['video', ['src', 'poster']],
+  ['audio', ['src']], ['track', ['src']], ['object', ['data']], ['embed', ['src']],
+]);
+const HTML_RESOURCE_LINKS = new Set(['icon', 'apple-touch-icon', 'mask-icon', 'manifest', 'stylesheet', 'preload', 'prefetch']);
+const htmlEntities = value => value.replace(/&(#(?:x[0-9a-f]+|[0-9]+)|amp|quot|apos|lt|gt);/gi, (entity, name) => {
+  if (name[0] !== '#') return ({ amp: '&', quot: '"', apos: "'", lt: '<', gt: '>' })[name.toLowerCase()];
+  const hex = name[1]?.toLowerCase() === 'x';
+  const code = Number.parseInt(name.slice(hex ? 2 : 1), hex ? 16 : 10);
+  return code > 0 && code <= 0x10ffff ? String.fromCodePoint(code) : entity;
+});
+
+/** Observe media-bearing HTML attributes only, never strings inside scripts or prose. */
+function htmlAssetValues(source) {
+  const values = [];
+  // Script/title/textarea bodies use raw text rules. A quoted <img> in those
+  // bodies does not request an image and must not become a local dependency.
+  let html = source.replace(/<(script|title|textarea)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '');
+  html = html.replace(/<!--[\s\S]*?-->/g, '');
+  html = html.replace(/<style\b[^>]*>([\s\S]*?)<\/style\s*>/gi, (_tag, css) => {
+    values.push(css.replace(/\/\*[\s\S]*?\*\//g, ''));
+    return '';
+  });
+  const tags = [];
+  for (const match of html.matchAll(/<([a-z][a-z0-9:-]*)\b((?:[^<>"']|"[^"]*"|'[^']*')*)>/gi)) {
+    const attributes = new Map();
+    for (const attribute of match[2].matchAll(/([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g)) {
+      const name = attribute[1].toLowerCase();
+      // Browsers use the first duplicate attribute, including an empty value.
+      if (!attributes.has(name)) attributes.set(name, htmlEntities(attribute[2] ?? attribute[3] ?? attribute[4] ?? ''));
+    }
+    tags.push({ name: match[1].toLowerCase(), attributes });
+  }
+  // A remote base makes even /root-relative media remote. Do not infer local
+  // files for that document. Relative base paths do not affect /root URLs.
+  const base = tags.find(tag => tag.name === 'base' && tag.attributes.has('href'))?.attributes.get('href')?.trim();
+  if (base && /^(?:https?:)?\/\//i.test(base)) return [];
+  for (const { name, attributes } of tags) {
+    const requested = [...(HTML_MEDIA_ATTRIBUTES.get(name) || [])];
+    if (name === 'input' && attributes.get('type')?.toLowerCase() === 'image') requested.push('src');
+    if (name === 'link' && (attributes.get('rel') || '').toLowerCase().split(/\s+/).some(rel => HTML_RESOURCE_LINKS.has(rel))) {
+      requested.push('href', 'imagesrcset');
+    }
+    for (const attribute of requested) {
+      const value = attributes.get(attribute);
+      // Vite owns /src imports in development HTML; these are source modules,
+      // not files to copy into public. Root-relative public URLs stay literal.
+      if (value && !value.trim().startsWith('/src/')) values.push(value);
+    }
+    if (attributes.has('style')) values.push(attributes.get('style'));
+  }
+  return values;
+}
+
 /** Literal observations only; even a returned URL is not proof of reachability. */
 export function extractStaticPublicAssetPaths({ sourcePath, source }) {
   const values = [];
-  if (sourcePath.endsWith('.css')) values.push(source.replace(/\/\*[\s\S]*?\*\//g, ''));
+  if (sourcePath.endsWith('.html')) values.push(...htmlAssetValues(source));
+  else if (sourcePath.endsWith('.css')) values.push(source.replace(/\/\*[\s\S]*?\*\//g, ''));
   else if (sourcePath.endsWith('.json')) {
     const strings = value => {
       if (typeof value === 'string') values.push(value);
@@ -92,6 +147,7 @@ export function collectCommonUiAssetReferences({ root = process.cwd() } = {}) {
     ignore: (file, entry) => entry.isDirectory() && file !== 'src/components' && !file.startsWith('src/components/'),
   }).filter(file => (file.startsWith('src/components/') && (SCRIPT.test(file) || file.endsWith('.css')))
     || /^src\/App\.(?:[cm]?js|jsx|ts|tsx)$/.test(file) || /^src\/[^/]+\.css$/.test(file));
+  if (inspectDistributionPath(absolute, 'index.html', { optional: true })) files.push('index.html');
   const references = [];
   for (const sourcePath of files) {
     const source = readDistributionFile(absolute, sourcePath).toString('utf8');

@@ -100,6 +100,7 @@ const contracts = Object.freeze({
     module: 'DLC/PiratesOfTheCaribbean/runtime/canonPiratesCurseEncounter.js',
     code: [
       'export const PIRATES_CURSE_RULES = Object.freeze({});',
+      'export const PIRATES_CURSE_MEDALLION_FRONT_ART = null;',
       'export const isCanonPiratesCurseStage = () => false;',
       'export const createPiratesCurseEncounter = () => null;',
       'export const isPiratesCursedCombatant = () => false;',

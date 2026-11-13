@@ -62,7 +62,7 @@ export const isStageContentAvailable = (stage, {
   ));
 };
 
-/** Keep progress for dormant and future packs while refreshing known missions. */
+/** Keep dormant packs and mission identities while refreshing known missions. */
 export const mergeDlcCampaignProgress = (completedStages, existingProgress, packs) => {
   const stored = existingProgress && typeof existingProgress === 'object' && !Array.isArray(existingProgress)
     ? existingProgress : {};
@@ -73,9 +73,15 @@ export const mergeDlcCampaignProgress = (completedStages, existingProgress, pack
   const progress = Object.fromEntries(safeEntries);
   const completed = new Set(asArray(completedStages).map(String));
   for (const pack of packs) {
+    const knownMissionIds = new Set(pack.missionIds.map(String));
+    const dormantMissionIds = asArray(progress[pack.id]?.missionIds).filter(id => (
+      !knownMissionIds.has(typeof id === 'number' ? String(id) : id)
+    ));
     progress[pack.id] = {
       ...progress[pack.id],
-      missionIds: pack.missionIds.filter(id => completed.has(String(id)))
+      // Current missions retain catalog order; opaque IDs retain saved order.
+      // Preserving an absent identity never adds it to the playable catalog.
+      missionIds: [...pack.missionIds.filter(id => completed.has(String(id))), ...dormantMissionIds]
     };
   }
   return progress;

@@ -1,0 +1,52 @@
+.dlc-installation-panel { min-width: 0; font-size: .9375rem; line-height: 1.65; }
+.dlc-installation-panel p { margin: 0; }
+.dlc-installation-edition { padding: 20px; border: 1px solid #4e858a; border-top: 3px solid #83e9de; border-radius: 7px; background: linear-gradient(135deg, #12323c, #0b1c27); }
+.dlc-installation-panel .dlc-installation-kicker { margin-bottom: 8px; color: #a7dedf; font-size: .75rem; letter-spacing: .08em; }
+.dlc-installation-panel .dlc-installation-edition h3 { margin: 0 0 12px; font-size: 1.375rem; line-height: 1.4; color: #f1fafb; }
+.dlc-installation-panel .system-edition-count { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 12px; font-size: .9375rem; font-weight: 400; color: #bde2e4; }
+.dlc-installation-panel .system-edition-count strong { font-size: 1.625rem; color: #a3f3e5; font-variant-numeric: tabular-nums; line-height: 1.4; }
+.dlc-installation-guidance { margin: 16px 0 20px; padding-left: 14px; border-left: 2px solid #7196a1; color: #c7dbe2; }
+.dlc-installation-guidance > summary { box-sizing: border-box; min-height: 44px; padding: 10px 0; color: #b5e8e2; font-size: .875rem; cursor: pointer; }
+.dlc-installation-panel .dlc-installation-guidance p { margin: 12px 0; }
+.dlc-installation-panel .dlc-installation-filters { grid-template-columns: minmax(0, 1fr); padding: 16px; background: #0b1a25; border: 1px solid #476571; border-radius: 6px; }
+.dlc-installation-filters label { font-size: .875rem; color: #d7eaef; }
+.dlc-installation-panel .dlc-installation-filters :is(input, select) { font-size: 1rem; min-height: 44px; line-height: 1.5; border-color: #6a909b; }
+.dlc-installation-filters input::placeholder { color: #a8bdc6; opacity: 1; }
+.dlc-installation-action { min-width: 44px; min-height: 44px; padding: 10px 14px; box-sizing: border-box; font: inherit; font-size: .875rem; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; border: 1px solid #80b5bd; border-radius: 5px; color: #e4f5f7; background: #14313d; cursor: pointer; }
+.dlc-installation-action:not(:disabled):hover { border-color: #b1eee5; background: #1c4350; }
+.dlc-installation-action:disabled { color: #adc0ca; border-color: #536d79; background: #15232e; cursor: not-allowed; opacity: 1; }
+.dlc-installation-reset { justify-self: stretch; }
+.dlc-installation-panel .dlc-installation-results { margin: 18px 0 12px; color: #c9e3e9; font-size: .875rem; font-variant-numeric: tabular-nums; }
+.dlc-installation-panel .dlc-installation-list { margin: 0 0 18px; gap: 12px; }
+.dlc-installation-panel .dlc-installation-list > li { display: block; padding: 0; border: 0; background: none; min-width: 0; }
+.dlc-installation-record { min-width: 0; border: 1px solid #4f737f; border-radius: 6px; background: #0b1c27; overflow-wrap: anywhere; }
+.dlc-installation-record[data-included='true'] { border-left: 3px solid #7bd9ca; }
+.dlc-installation-record[data-included='false'] { border-left: 3px solid #d3b17f; }
+.dlc-installation-record > summary { min-height: 44px; box-sizing: border-box; padding: 16px; cursor: pointer; color: #e7f7fa; }
+.dlc-installation-record > summary::marker { color: #9be9df; }
+.dlc-installation-record > summary:hover { background: #15323d; }
+.dlc-installation-record[open] > summary { border-bottom: 1px solid #4f737f; background: #12303b; }
+.dlc-installation-record-heading { display: inline-flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 12px; width: calc(100% - 22px); vertical-align: top; }
+.dlc-installation-record-heading strong { min-width: 0; font-size: 1.0625rem; line-height: 1.5; }
+.dlc-installation-panel .system-pack-state { display: inline-block; border: 1px solid #947c5a; border-radius: 3px; padding: 3px 8px; background: #2d261e; color: #ffdcaa; font-size: .75rem; font-weight: 700; line-height: 1.5; }
+.dlc-installation-panel .system-pack-state[data-included='true'] { color: #a4f1d6; border-color: #538b7b; background: #13322e; }
+.dlc-installation-record-type, .dlc-installation-record-hint { display: block; margin-top: 6px; color: #c5dce2; font-size: .875rem; }
+.dlc-installation-record-hint { color: #8fded8; font-size: .8125rem; }
+.dlc-installation-record-body { display: grid; gap: 16px; padding: 18px; color: #d4e7ed; }
+.dlc-installation-record-body h4 { margin: 0 0 10px; font-size: .9375rem; color: #eef8fa; }
+.dlc-installation-record .dlc-installation-content-kinds { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.dlc-installation-record .dlc-installation-content-kinds > li { display: block; flex: none; padding: 5px 9px; border: 1px solid #52717e; border-radius: 4px; background: #102733; color: #d1e6ec; font-size: .8125rem; }
+.dlc-installation-record-note, .dlc-installation-artwork-note { padding-left: 12px; border-left: 2px solid #859aaa; color: #bdced8; font-size: .875rem; }
+.dlc-installation-panel .dlc-installation-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.dlc-installation-pagination > span { grid-column: 1 / -1; text-align: center; color: #bdd9e2; font-size: .875rem; }
+.dlc-installation-empty { padding: 20px; margin-block: 12px 18px; border: 1px dashed #6a929d; border-radius: 6px; background: #0b1c27; }
+.dlc-installation-empty h4 { margin: 0 0 10px; color: #eef9fb; font-size: 1.0625rem; }
+.dlc-installation-empty .dlc-installation-action { width: 100%; margin-top: 16px; }
+.dlc-installation-panel .dlc-installation-delivery-note { margin-top: 22px; padding-top: 16px; border-top: 1px solid #476571; font-size: .8125rem; color: #afc7d0; }
+.dlc-installation-panel :is(button, input, select, summary):focus-visible { outline: 3px solid #ffdf9c; outline-offset: 3px; }
+html[data-game-contrast='high'] .dlc-installation-panel :is(.dlc-installation-edition, .dlc-installation-filters, .dlc-installation-record, .dlc-installation-empty) { background: #020b12; border-color: #b0eee5; }
+@media (max-width: 520px) {
+  .dlc-installation-edition, .dlc-installation-empty { padding: 16px; }
+  .dlc-installation-panel .dlc-installation-filters { padding: 12px; }
+  .dlc-installation-record > summary, .dlc-installation-record-body { padding: 14px; }
+}

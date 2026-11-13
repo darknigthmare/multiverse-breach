@@ -36,7 +36,7 @@ jobs:
           npm run dlc:identities:check
           npm run test:dlc:profiles
       - name: Export selected modules and real media
-        run: npm run dlc:export -- --profile config/dlc-profiles/${{ matrix.profile }}.json --out /tmp/dlc-profile-${{ matrix.profile }}
+        run: npm run dlc:export:runtime -- --profile config/dlc-profiles/${{ matrix.profile }}.json --out /tmp/dlc-profile-${{ matrix.profile }}
       - name: Build the standalone distribution with strict receipt checks
         run: |
           set -euo pipefail

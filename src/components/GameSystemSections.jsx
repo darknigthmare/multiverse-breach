@@ -1,47 +1,8 @@
 import React, { useId, useRef, useState } from 'react';
-import { DLC_PACK_MANIFESTS } from '../../DLC/index.js';
-import { getDlcInstallationSummary, isDlcPackInstalled } from '../game/dlcInstallation.js';
 import { fieldOperationPreferenceStore } from '../game/fieldOperationPreferences.js';
+import DlcInstallationPanel from './DlcInstallationPanel.jsx';
+export { default as DlcInstallationPanel } from './DlcInstallationPanel.jsx';
 import './GameSystemSections.css';
-
-export function DlcInstallationPanel({ lang = 'fr' }) {
-  const fr = lang === 'fr';
-  const [query, setQuery] = useState('');
-  const [filter, setFilter] = useState('all');
-  const [page, setPage] = useState(0);
-  const summary = getDlcInstallationSummary();
-  const found = DLC_PACK_MANIFESTS.filter(pack =>
-    `${pack.universe} ${pack.id}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
-    && (filter === 'all' || isDlcPackInstalled(pack.id) === (filter === 'installed')));
-  const pageCount = Math.max(1, Math.ceil(found.length / 12));
-  const current = Math.min(page, pageCount - 1);
-  return <section className="system-pack-panel">
-    <h3>{fr ? 'Univers de cette édition' : 'Universes in this edition'}</h3>
-    <p className="system-edition-count">{summary.installedCount} / {summary.availableCount} {fr ? 'packs inclus' : 'included packs'}</p>
-    <p>{fr ? 'Inclus ne veut pas dire débloqué : la progression et les choix de visibilité restent séparés. Les possessions des packs absents sont conservées.' : 'Included does not mean unlocked: progression and visibility choices remain separate. Possessions from absent packs are retained.'}</p>
-    <div className="system-pack-filters">
-      <label><span>{fr ? 'Rechercher un univers' : 'Search a universe'}</span>
-        <input type="search" value={query} onChange={e => { setQuery(e.target.value); setPage(0); }} /></label>
-      <label><span>{fr ? 'État du pack' : 'Pack state'}</span>
-        <select value={filter} onChange={e => { setFilter(e.target.value); setPage(0); }}>
-          <option value="all">{fr ? 'Tous' : 'All'}</option>
-          <option value="installed">{fr ? 'Inclus' : 'Included'}</option>
-          <option value="missing">{fr ? 'Non inclus' : 'Not included'}</option>
-        </select></label>
-    </div>
-    <p role="status">{found.length} {fr ? 'résultat(s)' : 'result(s)'}</p>
-    <ul className="system-pack-list">{found.slice(current * 12, current * 12 + 12).map(pack => <li key={pack.id}>
-      <span><strong>{pack.universe}</strong>{pack.registration === 'artwork-only' && <small>{fr ? 'Illustrations uniquement' : 'Artwork only'}</small>}</span>
-      <span className="system-pack-state" data-included={isDlcPackInstalled(pack.id)}>{isDlcPackInstalled(pack.id) ? (fr ? 'INCLUS' : 'INCLUDED') : (fr ? 'NON INCLUS' : 'NOT INCLUDED')}</span>
-    </li>)}</ul>
-    <nav className="system-pack-pagination" aria-label={fr ? 'Pages des packs' : 'Pack pages'}>
-      <button type="button" className="btn-retro" disabled={current === 0} onClick={() => setPage(current - 1)}>{fr ? 'Précédent' : 'Previous'}</button>
-      <span>{current + 1} / {pageCount}</span>
-      <button type="button" className="btn-retro" disabled={current + 1 >= pageCount} onClick={() => setPage(current + 1)}>{fr ? 'Suivant' : 'Next'}</button>
-    </nav>
-    <p className="game-setting-note">{fr ? 'Ce panneau décrit les packs livrés. Il ne télécharge ni n’installe de code pendant une partie.' : 'This panel describes the delivered packs. It does not download or install code during a run.'}</p>
-  </section>;
-}
 
 export function FieldOperationSettings({ lang = 'fr', store = fieldOperationPreferenceStore }) {
   const fr = lang === 'fr';

@@ -108,6 +108,31 @@ test('actual App normalization and serialization retain dormant data through a b
   assert.equal('installedPackIds' in persisted, false);
 });
 
+test('actual App normalization and serialization preserve unknown missions inside a known pack without completing them', () => {
+  const pack = OC_DLC_SAVE_METADATA[0];
+  const futureMissionId = 999999997;
+  assert.ok(!OC_DLC_SAVE_METADATA.some(entry => entry.missionIds.includes(futureMissionId)));
+  const raw = sampleTrace(9);
+  raw.completedStages = [pack.missionIds[0]];
+  raw.campaignProgress[pack.id] = {
+    missionIds: [pack.missionIds[0], futureMissionId],
+    ending: 'future-ending',
+    futureField: { preserve: true }
+  };
+  const before = clone(raw);
+  for (const harness of [fullSave, baseSave]) {
+    const normalized = harness.normalize(clone(raw), { existing: true });
+    const serialized = clone(harness.serialize(normalized));
+    const restored = harness.normalize(serialized, { existing: true });
+    for (const save of [normalized, serialized, restored]) {
+      assert.deepEqual(save.campaignProgress[pack.id], raw.campaignProgress[pack.id]);
+      assert.equal(save.completedStages.includes(futureMissionId), false,
+        'retaining opaque metadata must not grant a completion');
+    }
+  }
+  assert.deepEqual(raw, before);
+});
+
 test('actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles', () => {
   for (const [requested, expected] of [['nexus_skybridge', 'nexus_skybridge'], ['__unknown_battlefield__', 'auto']]) {
     const raw = sampleTrace(9);

@@ -1,0 +1,45 @@
+name: DLC application bundle contracts
+on:
+  pull_request:
+    paths: ['src/**', 'DLC/**', 'scripts/**', 'config/dlc-profiles/**', 'package*.json', 'vite.config.js', '.github/workflows/dlc-code-profiles.yml']
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: dlc-code-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [all, base, halo]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /api/
+            /scripts/
+            /config/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
+            /public/sprites/generated/sprite-availability.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Compile the actual app and verify selected modules
+        run: npm run dlc:bundle:check -- --profile config/dlc-profiles/${{ matrix.profile }}.json
+      - name: Verify optional API exports with a production bundler
+        run: node --test --test-concurrency=1 scripts/dlcPiratesAbsenceContract.test.mjs

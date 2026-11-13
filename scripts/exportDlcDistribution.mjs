@@ -9,6 +9,7 @@ import {
   buildDlcDistributionPlan, createDlcDistributionReceipt, readDlcDistributionManifests, resolveDlcSelection,
 } from './dlcDistribution.mjs';
 import { createDlcProfileTransformer } from './dlcProfileTransform.mjs';
+import { collectDlcRuntimeDocumentation } from './dlcDistributionDocumentation.mjs';
 import { DLC_SHARED_DEPENDENCIES } from './dlcSharedAssetDependencies.mjs';
 import { auditDlcDistribution, DLC_DISTRIBUTION_RECEIPT } from './auditDlcDistribution.mjs';
 import {
@@ -55,7 +56,7 @@ function loadProfile(root, profile) {
   return JSON.parse(readDistributionFile(parent, path.basename(file)).toString('utf8'));
 }
 
-function collectSourceFiles(root, selection) {
+function collectSourceFiles(root, selection, { documentation = 'all', transformSource } = {}) {
   const files = new Set(COMMON_DLC_FILES);
   for (const file of COMMON_DLC_FILES) inspectDistributionPath(root, file);
   if (inspectDistributionPath(root, DLC_SHARED_DEPENDENCIES, { optional: true })) files.add(DLC_SHARED_DEPENDENCIES);
@@ -63,8 +64,10 @@ function collectSourceFiles(root, selection) {
   for (const relative of SOURCE_TREES) {
     for (const file of listDistributionFiles({ root, relative, ignore: ignoredSource })) files.add(file);
   }
-  for (const file of listDistributionFiles({ root, relative: 'docs', ignore: ignoredSource })) {
-    if (file.endsWith('.json')) files.add(file);
+  if (documentation === 'all') {
+    for (const file of listDistributionFiles({ root, relative: 'docs', ignore: ignoredSource })) {
+      if (file.endsWith('.json')) files.add(file);
+    }
   }
   for (const file of ROOT_FILES) {
     if (inspectDistributionPath(root, file, { optional: true })) files.add(file);
@@ -83,10 +86,48 @@ function collectSourceFiles(root, selection) {
       if (!files.has(file)) throw new Error('Selected DLC module is missing from the source export: ' + file);
     }
   }
+  if (documentation === 'runtime') {
+    const required = collectDlcRuntimeDocumentation({ root, sourceFiles: [...files], transformSource });
+    for (const file of required.files) files.add(file);
+  }
   if (files.has(DLC_DISTRIBUTION_RECEIPT) || files.has('DLC/distribution.json')) {
     throw new Error('Generated distribution metadata must not be copied from a previous export.');
   }
   return [...files].sort(compare);
+}
+
+function documentationSummary(root, sourceFiles, mode) {
+  const jsonFiles = listDistributionFiles({ root, relative: 'docs', ignore: ignoredSource }).filter(file => file.endsWith('.json'));
+  const copied = new Set(sourceFiles.filter(file => file.startsWith('docs/')));
+  const bytes = file => lstatSync(inspectDistributionPath(root, file)).size;
+  const omitted = jsonFiles.filter(file => !copied.has(file));
+  return { mode, copiedFiles: copied.size, copiedBytes: [...copied].reduce((total, file) => total + bytes(file), 0),
+    omittedJsonFiles: omitted.length, omittedJsonBytes: omitted.reduce((total, file) => total + bytes(file), 0) };
+}
+
+function collectProfileSources(root, selection, documentation) {
+  const transformer = createDlcProfileTransformer({ root, manifests: selection.manifests, installedPackIds: selection.packIds });
+  const runtimeModules = new Set(selection.selectedManifests.flatMap(manifest =>
+    manifest.modules.map(module => manifest.directory + '/' + module.path)));
+  const transformSource = (file, source) => file.startsWith('src/') || runtimeModules.has(file)
+    ? transformer.transform(source, path.join(root, file))?.code ?? source : source;
+  const sourceFiles = collectSourceFiles(root, selection, { documentation, transformSource });
+  return { transformer, runtimeModules, transformSource, sourceFiles };
+}
+
+/** Inspect the exact export source closure without hashing/copying media or writing an output. */
+export function inspectDlcExportSources({ root = process.cwd(), profile, documentation = 'all' } = {}) {
+  root = assertDistributionDirectory(root);
+  if (!['all', 'runtime'].includes(documentation)) throw new Error('Documentation mode must be all or runtime.');
+  if (inspectDistributionPath(root, DLC_DISTRIBUTION_RECEIPT, { optional: true })) {
+    throw new Error('An existing distribution cannot be an export source; use the complete canonical source repository.');
+  }
+  const manifests = readDlcDistributionManifests({ root });
+  const selection = resolveDlcSelection({ manifests, profile: loadProfile(root, profile) });
+  const { sourceFiles } = collectProfileSources(root, selection, documentation);
+  return { mode: selection.mode, packIds: selection.packIds, sourceFileCount: sourceFiles.length,
+    sourceBytes: sourceFiles.reduce((total, file) => total + lstatSync(inspectDistributionPath(root, file)).size, 0),
+    documentation: documentationSummary(root, sourceFiles, documentation), sourceFiles };
 }
 
 function writeNewFile(root, relative, data) {
@@ -140,8 +181,9 @@ function compareSnapshots(before, after) {
  * Export into a fresh sibling staging directory; publish only after all receipt,
  * source-closure and runtime-import checks succeed.
  */
-export function exportDlcDistribution({ root = process.cwd(), profile, out, sourceRevision } = {}) {
+export function exportDlcDistribution({ root = process.cwd(), profile, out, sourceRevision, documentation = 'all' } = {}) {
   root = assertDistributionDirectory(root);
+  if (!['all', 'runtime'].includes(documentation)) throw new Error('Documentation mode must be all or runtime.');
   if (inspectDistributionPath(root, DLC_DISTRIBUTION_RECEIPT, { optional: true })) {
     throw new Error('An existing distribution cannot be an export source; use the complete canonical source repository.');
   }
@@ -153,10 +195,7 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
   const selection = resolveDlcSelection({ manifests, profile: loadProfile(root, profile) });
   const plan = buildDlcDistributionPlan({ root, selection });
   const before = createDlcDistributionReceipt({ root, plan, sourceRevision });
-  const sourceFiles = collectSourceFiles(root, selection);
-  const transformer = createDlcProfileTransformer({ root, manifests: selection.manifests, installedPackIds: selection.packIds });
-  const runtimeModules = new Set(selection.selectedManifests.flatMap((manifest) =>
-    manifest.modules.map((module) => manifest.directory + '/' + module.path)));
+  const { transformer, runtimeModules, transformSource, sourceFiles } = collectProfileSources(root, selection, documentation);
   const parent = ensureParentDirectory(path.dirname(destination));
   const staging = mkdtempSync(path.join(parent, '.' + path.basename(destination) + '.dlc-staging-'));
   const sourceDigests = new Map();
@@ -195,7 +234,7 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
     }
     writeNewFile(staging, DLC_DISTRIBUTION_RECEIPT, JSON.stringify(receipt, null, 2) + '\n');
     const { receipt: _auditedReceipt, ...audit } = auditDlcDistribution({ root: staging });
-    const currentSourceFiles = collectSourceFiles(root, selection);
+    const currentSourceFiles = collectSourceFiles(root, selection, { documentation, transformSource });
     if (JSON.stringify(currentSourceFiles) !== JSON.stringify(sourceFiles)) {
       throw new Error('Canonical source inventory changed during distribution export.');
     }
@@ -206,22 +245,26 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
       }
     }
     if (outputExists(destination)) throw new Error('Distribution output appeared during export: ' + destination);
+    const documentationReport = documentationSummary(root, sourceFiles, documentation);
     renameSync(staging, destination);
     published = true;
     return { root: destination, out: destination, profile: receipt.profile, receipt, audit,
       packCount: selection.packIds.length, assetCount: receipt.assets.length, sourceFileCount: receipt.files.length,
-      transformedFiles };
+      transformedFiles, documentation: documentationReport };
   } finally {
     if (!published) rmSync(staging, { recursive: true, force: true });
   }
 }
 
-const EXPORT_USAGE = `Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY [--source-revision FULL_GIT_SHA]
+const EXPORT_USAGE = `Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY [--source-revision FULL_GIT_SHA] [--documentation all|runtime]
 
 Export an independent source distribution and audit its files before publishing.
 Without --source-revision, the export remains valid for standalone builds.
 Pin the actual full source commit explicitly when preparing differential packages;
 their base and target exports must declare the same revision. This value is not a signature.
+--documentation all preserves the historical JSON research corpus (default).
+--documentation runtime keeps production import dependencies, including transitive
+JSON/modules under docs/. It does not include the historical research/audit corpus.
 The output must be a new directory outside the canonical source tree.`;
 
 if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === import.meta.url) {
@@ -233,6 +276,7 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
       let profile;
       let out;
       let sourceRevision;
+      let documentation;
       for (let index = 0; index < args.length; index += 2) {
         const flag = args[index];
         const value = args[index + 1];
@@ -240,16 +284,18 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
         if (flag === '--profile' && profile === undefined) profile = value;
         else if (flag === '--out' && out === undefined) out = value;
         else if (flag === '--source-revision' && sourceRevision === undefined) sourceRevision = value;
+        else if (flag === '--documentation' && documentation === undefined) documentation = value;
         else throw new Error('Unknown or duplicate export option: ' + flag);
       }
       if (sourceRevision !== undefined && !/^[a-f0-9]{40}$/.test(sourceRevision)) {
         throw new Error('--source-revision must be a full lowercase Git commit SHA (40 hexadecimal characters).');
       }
       if (!profile || !out) throw new Error(EXPORT_USAGE);
-      const result = exportDlcDistribution({ profile, out, sourceRevision });
+      const result = exportDlcDistribution({ profile, out, sourceRevision, documentation });
       console.log(JSON.stringify({ passed: true, output: slash(result.out), profile: result.profile,
         sourceRevision: result.receipt.sourceRevision ?? null,
-        packs: result.packCount, assets: result.assetCount, sources: result.sourceFileCount, transformedFiles: result.transformedFiles.length }));
+        packs: result.packCount, assets: result.assetCount, sources: result.sourceFileCount, transformedFiles: result.transformedFiles.length,
+        documentation: result.documentation }));
     }
   } catch (error) {
     console.error(error.message);

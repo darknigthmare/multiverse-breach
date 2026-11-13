@@ -11,12 +11,13 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { auditDlcDistribution, DLC_DISTRIBUTION_RECEIPT } from './auditDlcDistribution.mjs';
-import { exportDlcDistribution } from './exportDlcDistribution.mjs';
+import { exportDlcDistribution, inspectDlcExportSources } from './exportDlcDistribution.mjs';
 
 const EXPORT_SCRIPT = fileURLToPath(new URL('./exportDlcDistribution.mjs', import.meta.url));
 const AUDIT_SCRIPT = fileURLToPath(new URL('./auditDlcDistribution.mjs', import.meta.url));
 const profile = (packIds = []) => ({ schemaVersion: 1, mode: packIds.length ? 'selected' : 'base', packIds, sharedPolicy: 'preserve-all' });
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const CANONICAL_PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4nGN023LnPwMDAwMTAxQAACryAtmZNLxsAAAAAElFTkSuQmCC', 'base64');
 const write = (root, file, bytes) => {
   mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
   writeFileSync(path.join(root, file), bytes);
@@ -129,6 +130,121 @@ test('all mode preserves all contributions and empty packIds in metadata', (t) =
   assert.equal(result.profile.mode, 'all');
   assert.deepEqual(result.profile.packIds, []);
   assert.deepEqual(readFileSync(path.join(f.root, 'src/game/catalog.js')), readFileSync(path.join(f.out, 'src/game/catalog.js')));
+});
+
+for (const [label, selected] of [['base', []], ['Halo', ['halo']], ['mixed', ['halo', 'drop']], ['all', null]]) {
+  test('HTML shared media keeps canonical PNG bytes and its original URL in ' + label, t => {
+    const f = fixture(t);
+    const publicPath = '/icons/menu art.png';
+    const sourcePath = 'public' + publicPath;
+    const inventory = JSON.parse(readFileSync(path.join(f.root, 'DLC/shared-assets.json')));
+    inventory.assets.push({ sourcePath, publicPath });
+    writeJson(f.root, 'DLC/shared-assets.json', inventory);
+    write(f.root, sourcePath, CANONICAL_PNG);
+    const html = '<link rel="icon" href="/icons/menu%20art.png?revision=1&amp;theme=dark#icon"><main id="root"></main><script type="module" src="/src/App.jsx"></script>\n';
+    write(f.root, 'index.html', html);
+    const result = exportDlcDistribution({ root: f.root, out: f.out,
+      profile: selected === null ? { ...profile(), mode: 'all' } : profile(selected) });
+    const media = result.receipt.assets.find(asset => asset.publicPath === publicPath);
+    assert.equal(media.sha256, digest(CANONICAL_PNG));
+    assert.equal(media.sourcePath, sourcePath);
+    assert.deepEqual(readFileSync(path.join(f.out, media.destinationPath)), CANONICAL_PNG);
+    assert.deepEqual(readFileSync(path.join(f.root, sourcePath)), CANONICAL_PNG);
+    assert.equal(readFileSync(path.join(f.out, 'index.html'), 'utf8'), html);
+    assert.equal(auditDlcDistribution({ root: f.out }).passed, true);
+  });
+}
+
+test('an entry image owned by an omitted DLC cannot silently leave a broken base distribution', t => {
+  const f = fixture(t);
+  const publicPath = '/icons/halo.png';
+  const sourcePath = 'DLC/Halo/assets' + publicPath;
+  const inventory = JSON.parse(readFileSync(path.join(f.root, 'DLC/Halo/assets.json')));
+  inventory.assets.push({ sourcePath, publicPath });
+  writeJson(f.root, 'DLC/Halo/assets.json', inventory);
+  write(f.root, sourcePath, CANONICAL_PNG);
+  write(f.root, 'index.html', '<link rel="icon" href="/icons/halo.png?revision=1#icon">');
+  assert.throws(() => runExport(f), /Common UI asset would be excluded: index.html -> \/icons\/halo.png/);
+  assert.deepEqual(readdirSync(f.parent), ['source']);
+  const selected = runExport(f, ['halo']);
+  assert.deepEqual(readFileSync(path.join(selected.out, 'public' + publicPath)), CANONICAL_PNG);
+});
+
+for (const [label, selected] of [['base', []], ['Halo', ['halo']], ['mixed', ['halo', 'drop']], ['all', null]]) {
+  test('explicit runtime documentation preserves required JSON/modules and canonical media in ' + label, async t => {
+    const f = fixture(t);
+    const historical = JSON.stringify({ archivedResearch: true, unneededPayload: 'history'.repeat(100) });
+    write(f.root, 'docs/research/unused.json', historical);
+    write(f.root, 'docs/runtime/entry.mjs', "import info from '../runtime.json' with {type:'json'};export const version=info.version;\n");
+    write(f.root, 'src/runtime-check.mjs', "export {version} from '../docs/runtime/entry.mjs';\n");
+    write(f.root, 'src/profile-check.mjs', "export {default as installation} from '../DLC/distribution.json' with {type:'json'};\n");
+    const provenance = '{"provenancePath":"docs/research/unused.json","canonicalArchive":{"title":"Nexus"}}';
+    write(f.root, 'src/canonicalArchive.json', provenance);
+    const result = exportDlcDistribution({ root: f.root, out: f.out, documentation: 'runtime',
+      profile: selected === null ? { ...profile(), mode: 'all' } : profile(selected) });
+    assert.equal(result.audit.passed, true);
+    assert.equal(result.documentation.mode, 'runtime');
+    assert.equal(result.documentation.copiedFiles, 2);
+    assert.equal(result.documentation.omittedJsonFiles, 1);
+    assert.equal(result.documentation.omittedJsonBytes, Buffer.byteLength(historical));
+    assert.equal(existsSync(path.join(f.out, 'docs/research/unused.json')), false);
+    assert.equal(readFileSync(path.join(f.out, 'src/canonicalArchive.json'), 'utf8'), provenance);
+    const runtime = await import(pathToFileURL(path.join(f.out, 'src/runtime-check.mjs')).href);
+    assert.equal(runtime.version, 1);
+    const { installation } = await import(pathToFileURL(path.join(f.out, 'src/profile-check.mjs')).href);
+    assert.equal(installation.mode, selected === null ? 'all' : selected.length ? 'selected' : 'base');
+    assert.deepEqual(installation.packIds, selected || []);
+    for (const asset of result.receipt.assets) {
+      assert.deepEqual(readFileSync(path.join(f.out, asset.destinationPath)), readFileSync(path.join(f.root, asset.sourcePath)));
+    }
+  });
+}
+
+test('default documentation keeps historical JSON and rejects invalid explicit modes before staging', t => {
+  const f = fixture(t);
+  writeJson(f.root, 'docs/research/historical.json', { preserved: true });
+  assert.throws(() => exportDlcDistribution({ root: f.root, out: f.out, profile: profile(), documentation: 'unknown' }), /Documentation mode must be all or runtime/);
+  assert.deepEqual(readdirSync(f.parent), ['source']);
+  const result = runExport(f);
+  assert.equal(result.documentation.mode, 'all');
+  assert.equal(result.documentation.omittedJsonFiles, 0);
+  assert.equal(existsSync(path.join(f.out, 'docs/research/historical.json')), true);
+});
+
+test('CLI runtime documentation is explicit and reports omitted research bytes', t => {
+  const f = fixture(t);
+  const history = '{"researchOnly":true}';
+  write(f.root, 'docs/research/unused.json', history);
+  const result = spawnSync(process.execPath, [EXPORT_SCRIPT, '--profile', 'config/dlc-profiles/base.json', '--out', f.out,
+    '--documentation', 'runtime'], { cwd: f.root, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.documentation.mode, 'runtime');
+  assert.equal(report.documentation.omittedJsonFiles, 1);
+  assert.equal(report.documentation.omittedJsonBytes, Buffer.byteLength(history));
+  assert.equal(existsSync(path.join(f.out, 'docs/runtime.json')), true);
+  assert.equal(existsSync(path.join(f.out, 'docs/research/unused.json')), false);
+});
+
+test('read-only source inspection uses the runtime export closure without requiring materialized media', t => {
+  const f = fixture(t);
+  const original = readFileSync(path.join(f.root, 'src/game/catalog.js'));
+  const history = '{"researchOnly":true}'; write(f.root, 'docs/research/unused.json', history);
+  rmSync(path.join(f.root, 'DLC/Halo/assets/images/halo.bin'));
+  rmSync(path.join(f.root, 'public/common.bin'));
+  for (const selected of [[], ['halo'], ['halo', 'drop'], null]) {
+    const report = inspectDlcExportSources({ root: f.root, documentation: 'runtime',
+      profile: selected === null ? { ...profile(), mode: 'all' } : profile(selected) });
+    assert.equal(report.documentation.omittedJsonFiles, 1);
+    assert.equal(report.documentation.omittedJsonBytes, Buffer.byteLength(history));
+    assert.ok(report.sourceFiles.includes('docs/runtime.json'));
+    assert.ok(!report.sourceFiles.includes('docs/research/unused.json'));
+    assert.equal(report.sourceFileCount, report.sourceFiles.length);
+    assert.ok(report.sourceBytes > 0);
+  }
+  assert.deepEqual(readFileSync(path.join(f.root, 'src/game/catalog.js')), original);
+  assert.deepEqual(readdirSync(f.parent), ['source']);
+  assert.equal(existsSync(path.join(f.root, 'public/common.bin')), false);
 });
 
 test('refuses an existing output and preserves its contents', (t) => {
