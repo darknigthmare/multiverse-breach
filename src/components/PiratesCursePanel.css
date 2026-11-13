@@ -1,0 +1,28 @@
+.canon-rescue-panel-pirates .pirates-curse-treasure-illustrated {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.canon-rescue-panel-pirates .pirates-curse-medallion {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.canon-rescue-panel-pirates .pirates-curse-treasure-illustrated .canon-rescue-panel-status {
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.canon-rescue-panel-pirates .pirates-curse-object-name {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffe29d;
+  font-weight: 700;
+  line-height: 1.4;
+}

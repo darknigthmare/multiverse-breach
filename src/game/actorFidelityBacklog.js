@@ -1,11 +1,42 @@
 /** Read-only per-actor gaps. Source metadata and file presence are not visual approval. */
 import { wardrobeActorKey, getOfficialCostumes, getOriginalCostumes, getWardrobeResearchTargets } from './wardrobe.js';
+import { getLoreWorldBossOverride } from './loreWorldBossOverrides.js';
 const text = value => typeof value === 'string' ? value : value?.en || value?.fr || '';
 const httpReference = value => {
   if (typeof value !== 'string') return '';
   try { const u = new URL(value); return u.protocol === 'https:' && !u.username && !u.password ? u.href : ''; }
   catch { return ''; }
 };
+
+// The world-boss registry declares continuity as a locked object, not a string.
+// Recover only that exact source contract: an arbitrary object.label is not an
+// incarnation declaration and an edition label never approves any artwork.
+export function inspectActorLockedContinuity(actor, kind = 'hero') {
+  const continuity = actor?.continuity;
+  if (kind !== 'worldBoss' || actor?.type !== 'worldBoss' || actor.isWorldBoss !== true
+    || !continuity || typeof continuity !== 'object' || Array.isArray(continuity)) return null;
+  const declared = getLoreWorldBossOverride(actor.universe);
+  if (!declared || declared.type !== 'worldBoss' || Object.keys(continuity).length !== 4
+    || !['id', 'label', 'status', 'source'].every(key => Object.hasOwn(continuity, key)
+      && continuity[key] === declared.continuity[key])
+    || continuity.status !== 'locked'
+    || !['id', 'universe', 'name', 'legacyWorldBossId', 'source', 'type', 'referenceUrl', 'visualAnchor']
+      .every(key => actor[key] === declared[key])
+    || !httpReference(actor.referenceUrl)) return null;
+  const ambiguous = /\b(?:manga|anime|film|comic|game|novel)\s*\/\s*(?:manga|anime|film|comic|game|novel)\b|\s(?:\/|\+)\s/i
+    .test(continuity.label);
+  return {
+    label: continuity.label,
+    evidence: ambiguous ? 'AMBIGUOUS_ACTOR_CONTINUITY' : 'ACTOR_LOCKED_CONTINUITY',
+    sourceField: 'continuity.label',
+    source: continuity.source,
+    sourceId: continuity.id,
+    referenceUrl: declared.referenceUrl,
+    requiresModelReview: true,
+    source1to1Verified: false,
+    artApproved: false
+  };
+}
 export function actorSourceScope(actor, originalUniverses = new Set()) {
   if (actor.originalContent === true || actor.contentOrigin === 'oc' || originalUniverses.has(actor.universe)
     || /^Multiverse Breach original (?:companion|tribute persona)\b/i.test(text(actor.incarnation))
@@ -55,10 +86,16 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   if(!actorKey) throw new TypeError('Exact actor identity and universe required.');
   const scope=actorSourceScope(actor,originalUniverses);
   const official=getOfficialCostumes(actor), originals=getOriginalCostumes(actor), research=getWardrobeResearchTargets(actor);
-  const actorIncarnation=text(actor.incarnation)||text(actor.sourceIncarnation)||text(actor.continuity);
+  const explicitActorIncarnation=text(actor.incarnation)||text(actor.sourceIncarnation)||text(actor.continuity);
+  const declaredContinuity=explicitActorIncarnation ? null : inspectActorLockedContinuity(actor,kind);
+  const structuredIncarnation=declaredContinuity?.evidence==='ACTOR_LOCKED_CONTINUITY' ? declaredContinuity.label : '';
+  const actorIncarnation=explicitActorIncarnation||structuredIncarnation;
   const packContinuities=continuityIndex.get(actorKey)||[];
-  const incarnation=actorIncarnation||(packContinuities.length===1?packContinuities[0].continuity:'');
-  const incarnationEvidence=actorIncarnation?'ACTOR_DECLARED':packContinuities.length===1?'EXACT_PACK_BINDING':packContinuities.length>1?'AMBIGUOUS_PACK_BINDING':'UNSPECIFIED';
+  // An ambiguous actor declaration cannot silently fall back to a broader pack.
+  const ambiguousActorContinuity=declaredContinuity?.evidence==='AMBIGUOUS_ACTOR_CONTINUITY';
+  const incarnation=actorIncarnation||(!ambiguousActorContinuity&&packContinuities.length===1?packContinuities[0].continuity:'');
+  const incarnationEvidence=explicitActorIncarnation?'ACTOR_DECLARED':declaredContinuity?.evidence
+    || (packContinuities.length===1?'EXACT_PACK_BINDING':packContinuities.length>1?'AMBIGUOUS_PACK_BINDING':'UNSPECIFIED');
   const anchor=text(actor.visualAnchor);
   const declaredSource=text(actor.referenceUrl);
   const reference=httpReference(declaredSource);
@@ -68,11 +105,15 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   const staticGameplay=[...new Map(rasterProbes.filter(p=>p.present&&p.columns===1&&p.rows===1&&!['hud','collection'].includes(p.context)).map(p=>[p.path,p])).values()];
   const tasks=[];
   const add=(code,priority,reason,action,evidence='')=>tasks.push({id:`${actorKey}::${code}`,code,priority,status:'OPEN',reason,action,evidence,artApproved:false});
-  if(!incarnation)add('INCARNATION_UNSPECIFIED','P1',`L’édition ou incarnation n’est pas renseignée explicitement pour ${actor.name}.`,
+  if(ambiguousActorContinuity)add('ACTOR_CONTINUITY_AMBIGUOUS','P1','La continuité déclarée associe plusieurs supports ou versions.',
+    'Choisir le support et la version de source exacts avant production ; un statut locked ne départage pas manga et anime.',declaredContinuity.label);
+  else if(!incarnation)add('INCARNATION_UNSPECIFIED','P1',`L’édition ou incarnation n’est pas renseignée explicitement pour ${actor.name}.`,
     scope==='ORIGINAL_DESIGN'?'Fixer la version du design interne avant déclinaisons.':'Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.',String(actor.canonStatus||''));
+  if(incarnationEvidence==='ACTOR_LOCKED_CONTINUITY')add('ACTOR_CONTINUITY_PRECISION','P2','La continuité provient du contrat structuré et verrouillé de cet acteur exact.',
+    'Conserver cette déclaration de source puis préciser modèle, tenue et scène avant dessin. La continuité déclarée ne valide ni le raster ni la ressemblance.',declaredContinuity.label);
   if(incarnationEvidence==='EXACT_PACK_BINDING')add('PACK_CONTINUITY_PRECISION','P2','La continuité a été retrouvée dans un pack lié par identité exacte.',
     'Conserver cette continuité, puis préciser le modèle, la tenue et la scène de l’acteur. Un pack n’est pas une comparaison visuelle.',incarnation);
-  if(incarnationEvidence==='AMBIGUOUS_PACK_BINDING')add('PACK_CONTINUITY_CONFLICT','P1','Plusieurs continuités de pack sont déclarées pour la même identité.',
+  if(incarnationEvidence==='AMBIGUOUS_PACK_BINDING'||(ambiguousActorContinuity&&packContinuities.length>1))add('PACK_CONTINUITY_CONFLICT','P1','Plusieurs continuités de pack sont déclarées pour la même identité.',
     'Choisir une cible explicite ; ne pas fusionner automatiquement les versions.',packContinuities.map(p=>p.continuity).join(' | '));
   if(!anchor)add('VISUAL_CONTRACT_MISSING','P1',`Pas de visualAnchor individuel pour ${actor.name}.`,
     'Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.');
@@ -110,7 +151,7 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   add('ANIMATION_AND_VISUAL_REVIEW','P2','Aucune certification visuelle individuelle créée par cet export.',
     'Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.');
   return {actorKey,actorId:actor.id||'',actorName:actor.name,universe:actor.universe,kind,sourceScope:scope,
-    incarnation,incarnationEvidence,packContinuities,declaredReference:declaredSource,visualAnchor:anchor,canonStatus:text(actor.canonStatus),
+    incarnation,incarnationEvidence,declaredContinuity,packContinuities,declaredReference:declaredSource,visualAnchor:anchor,canonStatus:text(actor.canonStatus),
     sourceRecord:`${kind==='hero'?'HEROES_DB + player anchor':'ENEMIES_DB after overrides'}`,sourceCommit,
     primaryColor:actor.primaryColor||actor.color||'',weapon:actor.weapon||actor.weaponType||'',
     officialCount:official.length,officialNames:official.map(c=>c.name.fr),originalCount:originals.length,

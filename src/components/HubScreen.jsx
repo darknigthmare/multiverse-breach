@@ -91,10 +91,13 @@ import { isArcReplayProgressionBypassed } from '../game/missions/missionReplayPo
 import { projectUniverseArcDeploymentPhases } from '../game/missions/missionStageProjection';
 import { resolveRiftDossierAssetSrc } from '../game/riftDossierAssets';
 import CatalogPagination from './CatalogPagination';
+import HubCodexRecords from './HubCodexRecords.jsx';
+import { HubLogisticsHero, HubEquipmentSlot, HubLogisticsItem, HubRelicFusionCard, HubLogisticsEmpty, HubShopCard } from './HubLogisticsWorkspace.jsx';
 import { catalogSearchText, paginateCatalog, updateCatalogView } from '../game/catalogPagination';
 import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad } from '../game/squadPreparation';
 import SquadProposalPanel from './SquadProposalPanel';
 import AnchorCustomizationPanel from './AnchorCustomizationPanel';
+import { HeroRosterList, HeroTrainingControls, SquadMemberCard, SquadReserveCard, AnchorIdentityPanel } from './HubCommandDeck';
 import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, findMosaicWalkablePosition, getMosaicDestinationView, getMosaicDrawDepth, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicScenery, getMosaicSceneObstacles, getMosaicUniverseCatalog, getMosaicZoneAnchor, isMosaicPositionBlocked, isMosaicSegmentClear, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
 import { createFixedStepClock } from '../game/fixedStepClock';
 import {
@@ -104,6 +107,7 @@ import {
 } from '../game/characterArcStage';
 import './MosaicCityHub.css';
 import './HubImmersion.css';
+import HubWorkspaceFrame from './HubWorkspaceFrame.jsx';
 import ImmersiveDrawer from './ImmersiveDrawer.jsx';
 import MosaicGuidePanel from './MosaicGuidePanel.jsx';
 import { MosaicEvidenceLedger } from './MosaicResidentDialogue.jsx';
@@ -10132,7 +10136,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     });
   }, [rosterPageIndex, reservePageIndex, arsenalHeroPageIndex, inventoryPageIndex, shopPageIndex]);
   const getCatalogControlsProps = (key, title, filters = []) => ({
-    catalogId: key, title, lang, page: catalogPages[key], query: catalogViews[key].query,
+    catalogId: key, title, lang, collapsibleFilters: true, page: catalogPages[key], query: catalogViews[key].query,
     onQueryChange: query => updateCatalog(key, { query }),
     onPageChange: page => updateCatalog(key, { page }),
     onPageSizeChange: pageSize => updateCatalog(key, { pageSize }), filters
@@ -11673,70 +11677,29 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {/* Tab 2: Roster */}
         {activeTab === 'roster' && (
-          <div className="hub-catalog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '20px' }}>
+          <HubWorkspaceFrame section="roster" lang={lang} metrics={[{ label: lang === 'fr' ? 'Alliés recrutés' : 'Recruited allies', value: visibleUnlockedHeroes.length }, { label: lang === 'fr' ? 'Équipe active' : 'Active team', value: activeTeam.length + ' / 3' }]}>
+          <div className="hub-catalog-layout hub-command-workspace" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '20px' }}>
             {/* List */}
-            <div className="glass-panel" style={{ padding: '16px', maxHeight: '70vh', overflowY: 'auto' }}>
-              <h3 style={{ margin: '0 0 10px 0', fontSize: '15px', color: '#39c5bb' }}>{getTranslation(lang, 'recountedHeroes')}</h3>
+            <div className="glass-panel hub-command-roster-catalog">
+              <h3>{getTranslation(lang, 'recountedHeroes')}</h3>
               <CatalogPagination {...getCatalogControlsProps('roster', lang === 'fr' ? 'Résonance héroïque' : 'Hero resonance', getHeroCatalogFilters('roster'))} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {rosterPage.items.map((hero) => {
-                  const isSelected = hero.id === selectedHeroId;
-                  const isActive = activeTeam.includes(hero.id);
-                  const lvl = heroLevels[hero.id] || 1;
-                  const plaque = getCharacterPlaque(hero);
-                  return (
-                    <button
-                      type="button"
-                      key={hero.id}
-                      aria-pressed={isSelected}
-                      onClick={() => { setSelectedHeroId(hero.id); sound.playSfx('click'); }}
-                      style={{
-                        width: '100%',
-                        padding: '10px',
-                        background: isSelected ? 'rgba(57, 197, 187, 0.15)' : 'rgba(255,255,255,0.02)',
-                        border: isSelected ? '1px solid #39c5bb' : '1px solid rgba(255,255,255,0.06)',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        gap: '10px',
-                        color: 'inherit',
-                        font: 'inherit',
-                        textAlign: 'left'
-                      }}
-                    >
-                      <span style={{ minWidth: 0, display: 'block' }}>
-                        <span style={{ display: 'block', fontSize: '9px', color: hero.primaryColor, fontWeight: 'bold', letterSpacing: '0.08em' }}>
-                          {plaque.clearance} / {hero.universe}
-                        </span>
-                        <span style={{ display: 'block', fontWeight: 'bold', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{hero.name}</span>
-                        <span style={{ display: 'block', fontSize: '10px', color: '#888' }}>{plaque.role[lang]}</span>
-                      </span>
-                      <span style={{ display: 'block', textAlign: 'right', flexShrink: 0 }}>
-                        <span style={{ display: 'block', fontSize: '11px', color: '#39c5bb' }}>LVL {lvl}</span>
-                        {isActive && <span style={{ fontSize: '8px', color: '#2ecc71' }}>● {getTranslation(lang, 'activeLabel')}</span>}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
+              <HeroRosterList lang={lang} heroes={rosterPage.items} selectedId={selectedHeroId} activeIds={activeTeam} levels={heroLevels} getPlaque={getCharacterPlaque} onSelect={heroId => { setSelectedHeroId(heroId); sound.playSfx('click'); }} />
             </div>
 
             {/* Details */}
             {selectedHero && (
-              <div className="glass-panel" style={{ padding: '20px', border: `2px solid ${selectedHero.primaryColor}` }}>
+              <div className="glass-panel hub-command-roster-detail" style={{ padding: '20px', border: `2px solid ${selectedHero.primaryColor}` }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start' }}>
                   <div>
-                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                    <div style={{ fontSize: '.75rem', color: selectedHero.primaryColor, fontWeight: 'bold', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
                       {selectedPlaque.clearance} / {selectedPlaque.rank[lang]}
                     </div>
                     <h2 style={{ margin: '2px 0 0 0', fontSize: '22px' }}>{selectedHero.name}</h2>
                     <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px' }}>
-                      <span style={{ fontSize: '11px', padding: '2px 8px', background: selectedHero.primaryColor, borderRadius: '3px', display: 'inline-block' }}>
+                      <span style={{ fontSize: '.8125rem', padding: '2px 8px', background: selectedHero.primaryColor, borderRadius: '3px', display: 'inline-block' }}>
                         {selectedHero.universe}
                       </span>
-                      <span style={{ fontSize: '11px', padding: '2px 8px', border: '1px solid rgba(255,255,255,0.16)', borderRadius: '3px', color: '#bbb' }}>
+                      <span style={{ fontSize: '.8125rem', padding: '2px 8px', border: '1px solid rgba(255,255,255,0.16)', borderRadius: '3px', color: '#bbb' }}>
                         {selectedPlaque.role[lang]}
                       </span>
                     </div>
@@ -11784,7 +11747,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
                   <div>
                     <div style={{ marginBottom: '10px', padding: '10px', border: `1px solid ${selectedHero.primaryColor}55`, background: `${selectedHero.primaryColor}10`, borderRadius: '4px' }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '4px 10px', fontSize: '11px', lineHeight: 1.35 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '4px 10px', fontSize: '.8125rem', lineHeight: 1.35 }}>
                         <span style={{ color: '#777', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Indicatif' : 'Callsign'}</span>
                         <strong style={{ color: '#fff' }}>{selectedPlaque.callSign}</strong>
                         <span style={{ color: '#777', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Origine' : 'Origin'}</span>
@@ -11792,70 +11755,45 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       </div>
                     </div>
                     <h4 style={{ margin: '0 0 8px 0', borderBottom: '1px solid #333', paddingBottom: '3px' }}>{getTranslation(lang, 'attributes')}</h4>
-                    <div style={{ fontSize: '13px', lineHeight: '22px' }}>
+                    <div style={{ fontSize: '.875rem', lineHeight: '22px' }}>
                       <div>MAX HP: <strong style={{ color: '#2ecc71', float: 'right' }}>{selectedHeroStats.hp}</strong></div>
                       <div>ATTACK: <strong style={{ color: '#e74c3c', float: 'right' }}>{selectedHeroStats.atk}</strong></div>
                       <div>DEFENSE: <strong style={{ color: '#3498db', float: 'right' }}>{selectedHeroStats.def}</strong></div>
                       <div>SPEED: <strong style={{ color: '#f1c40f', float: 'right' }}>{selectedHeroStats.spd}</strong></div>
                     </div>
-                    <button
-                      onClick={() => handleLevelUp(selectedHero.id)}
-                      disabled={gold < getUpgradeCost(selectedHero.id)}
-                      className={`btn-retro ${gold < getUpgradeCost(selectedHero.id) ? 'btn-disabled' : ''}`}
-                      title={lang === 'fr'
-                        ? `Depense ${getUpgradeCost(selectedHero.id)} Or pour augmenter ce heros d un niveau.`
-                        : `Spend ${getUpgradeCost(selectedHero.id)} Gold to increase this hero by one level.`}
-                      style={{ width: '100%', fontSize: '12px', padding: '8px', marginTop: '12px' }}
-                    >
-                      {getTranslation(lang, 'levelUpBtn')} (🪙 {getUpgradeCost(selectedHero.id)})
-                    </button>
-                    <button
-                      onClick={() => handleLevelUpPotion(selectedHero.id)}
-                      disabled={breachShards < 20}
-                      className={`btn-retro ${breachShards < 20 ? 'btn-disabled' : ''}`}
-                      title={lang === 'fr'
-                        ? 'Depense 20 Fragments pour augmenter ce heros d un niveau.'
-                        : 'Spend 20 Shards to increase this hero by one level.'}
-                      style={{
-                        width: '100%',
-                        fontSize: '11px',
-                        padding: '6px',
-                        marginTop: '8px',
-                        background: 'rgba(155, 89, 182, 0.15)',
-                        borderColor: '#9b59b6',
-                        color: '#9b59b6'
-                      }}
-                    >
-                      {getTranslation(lang, 'btnUsePotion')} (20 fragments)
-                    </button>
+                    <HeroTrainingControls
+                      lang={lang} heroName={selectedHero.name} gold={gold} fragments={breachShards} cost={getUpgradeCost(selectedHero.id)}
+                      goldLabel={getTranslation(lang, 'levelUpBtn')} fragmentLabel={getTranslation(lang, 'btnUsePotion')}
+                      onGold={() => handleLevelUp(selectedHero.id)} onFragments={() => handleLevelUpPotion(selectedHero.id)}
+                    />
                   </div>
                 </div>
 
                 <details className="hub-dossier-section"><summary>{lang === 'fr' ? 'ORIGINES, DOCTRINE & DOSSIER' : 'ORIGIN, DOCTRINE & DOSSIER'}</summary>
                 <div style={{ marginTop: '15px', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
-                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                    <div style={{ fontSize: '.75rem', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
                       {lang === 'fr' ? 'Lore Breach Multiverse' : 'Breach Multiverse lore'}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                    <div style={{ fontSize: '.8125rem', color: '#d8d8d8', lineHeight: 1.45 }}>
                       {selectedBreachLore}
                     </div>
                   </div>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
-                    <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                    <div style={{ fontSize: '.75rem', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
                       {lang === 'fr' ? 'Doctrine BP' : 'BP Doctrine'}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#bbb', lineHeight: 1.4, marginBottom: '8px' }}>
+                    <div style={{ fontSize: '.8125rem', color: '#bbb', lineHeight: 1.4, marginBottom: '8px' }}>
                       {selectedPlaque.doctrine[lang]}
                     </div>
                     {selectedPlaque.protocol && (
-                      <div style={{ fontSize: '10px', color: '#9fd8ff', lineHeight: 1.35, marginBottom: '8px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '7px' }}>
+                      <div style={{ fontSize: '.75rem', color: '#9fd8ff', lineHeight: 1.35, marginBottom: '8px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '7px' }}>
                         <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Protocole' : 'Protocol'}:</strong> {selectedPlaque.protocol[lang]}
                       </div>
                     )}
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                       {selectedPlaque.tags.map(tag => (
-                        <span key={tag} style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid ${selectedHero.primaryColor}66`, color: '#ddd', borderRadius: '3px', background: `${selectedHero.primaryColor}12` }}>
+                        <span key={tag} style={{ fontSize: '.75rem', padding: '2px 6px', border: `1px solid ${selectedHero.primaryColor}66`, color: '#ddd', borderRadius: '3px', background: `${selectedHero.primaryColor}12` }}>
                           {tag}
                         </span>
                       ))}
@@ -11865,27 +11803,27 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
                 <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div style={{ padding: '12px', border: `1px solid ${selectedHero.primaryColor}44`, background: `${selectedHero.primaryColor}0f`, borderRadius: '4px' }}>
-                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                    <div style={{ fontSize: '.75rem', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
                       {lang === 'fr' ? 'Monde d origine' : 'Origin world'}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                    <div style={{ fontSize: '.8125rem', color: '#d8d8d8', lineHeight: 1.45 }}>
                       {selectedOriginLore}
                     </div>
                   </div>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
-                    <div style={{ fontSize: '10px', color: '#ff8c00', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                    <div style={{ fontSize: '.75rem', color: '#ff8c00', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
                       {lang === 'fr' ? 'Dossier personnage' : 'Character dossier'}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                    <div style={{ fontSize: '.8125rem', color: '#d8d8d8', lineHeight: 1.45 }}>
                       {selectedPlaque.dossier[lang]}
                     </div>
                     {selectedPlaque.resonance && (
-                      <div style={{ marginTop: '9px', fontSize: '11px', color: '#cfc3ff', lineHeight: 1.4 }}>
+                      <div style={{ marginTop: '9px', fontSize: '.8125rem', color: '#cfc3ff', lineHeight: 1.4 }}>
                         <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Resonance' : 'Resonance'}:</strong> {selectedPlaque.resonance[lang]}
                       </div>
                     )}
                     {selectedPlaque.threat && (
-                      <div style={{ marginTop: '8px', fontSize: '11px', color: '#ffb3aa', lineHeight: 1.4 }}>
+                      <div style={{ marginTop: '8px', fontSize: '.8125rem', color: '#ffb3aa', lineHeight: 1.4 }}>
                         <strong style={{ color: '#e74c3c' }}>{lang === 'fr' ? 'Risque' : 'Risk'}:</strong> {selectedPlaque.threat[lang]}
                       </div>
                     )}
@@ -11924,16 +11862,16 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 <div style={{ marginTop: '12px', padding: '12px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
                     <div>
-                      <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: '.75rem', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
                         {lang === 'fr' ? 'Palettes héritées' : 'Legacy palettes'}
                       </div>
-                      <div style={{ marginTop: '4px', fontSize: '11px', color: '#aeb8c2', lineHeight: 1.35 }}>
+                      <div style={{ marginTop: '4px', fontSize: '.8125rem', color: '#aeb8c2', lineHeight: 1.35 }}>
                         {lang === 'fr'
                           ? 'Palettes historiques : ce ne sont pas des costumes 1:1 et elles ne remplacent pas les PNG existants.'
                           : 'Legacy palettes: not 1:1 outfits, and they do not replace existing PNGs.'}
                       </div>
                     </div>
-                    <div style={{ flexShrink: 0, fontSize: '10px', color: selectedHero.primaryColor, textTransform: 'uppercase' }}>
+                    <div style={{ flexShrink: 0, fontSize: '.75rem', color: selectedHero.primaryColor, textTransform: 'uppercase' }}>
                       {selectedHero.activeSkin?.name?.[lang] || SKIN_CATALOG.default.name[lang]}
                     </div>
                   </div>
@@ -11975,10 +11913,10 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                             boxShadow: isActive ? `0 0 10px ${skinPrimary}66` : 'none'
                           }} />
                           <span style={{ minWidth: 0 }}>
-                            <span style={{ display: 'block', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', overflowWrap: 'anywhere' }}>
+                            <span style={{ display: 'block', fontSize: '.8125rem', fontWeight: 'bold', textTransform: 'uppercase', overflowWrap: 'anywhere' }}>
                               {skin.name[lang]}
                             </span>
-                            <span style={{ display: 'block', marginTop: '2px', fontSize: '9px', color: isActive ? '#ffffff' : '#8f98a3', textTransform: 'uppercase' }}>
+                            <span style={{ display: 'block', marginTop: '2px', fontSize: '.75rem', color: isActive ? '#ffffff' : '#8f98a3', textTransform: 'uppercase' }}>
                               {isActive ? (lang === 'fr' ? 'Equipe' : 'Equipped') : (lang === 'fr' ? 'Disponible' : 'Available')}
                             </span>
                           </span>
@@ -11995,7 +11933,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
                 {/* Talent Mods Panel */}
                 <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255, 235, 59, 0.02)', border: '1px solid rgba(255, 235, 59, 0.15)', borderRadius: '4px' }}>
-                  <h4 style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#ffea00', textTransform: 'uppercase', textShadow: '0 0 3px #ffea00' }}>
+                  <h4 style={{ margin: '0 0 10px 0', fontSize: '.875rem', color: '#ffea00', textTransform: 'uppercase', textShadow: '0 0 3px #ffea00' }}>
                     {lang === 'fr' ? 'MODS CYBERNETIQUES (TALENTS)' : 'CYBERNETIC MODS (TALENTS)'}
                   </h4>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
@@ -12054,8 +11992,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                               transition: 'all 0.2s ease'
                             }}
                           >
-                            <div style={{ fontWeight: 'bold', fontSize: '11px', color: isActive ? '#fff' : '#aaa' }}>{opt.name[lang]}</div>
-                            <div style={{ fontSize: '9px', color: '#888', marginTop: '4px' }}>{opt.desc[lang]}</div>
+                            <div style={{ fontWeight: 'bold', fontSize: '.8125rem', color: isActive ? '#fff' : '#d3e0e5' }}>{opt.name[lang]}</div>
+                            <div style={{ fontSize: '.75rem', color: '#b9cbd2', marginTop: '4px' }}>{opt.desc[lang]}</div>
                           </button>
                         );
                       });
@@ -12066,11 +12004,13 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </div>
             )}
           </div>
+          </HubWorkspaceFrame>
         )}
 
         {activeTab === 'anchorProfile' && (
+          <HubWorkspaceFrame section="anchorProfile" lang={lang}>
           <div
-            className="glass-panel squad-panel"
+            className="glass-panel squad-panel hub-command-workspace"
             data-profile-banner={activeProfileBanner?.style || 'nexus'}
             style={{
               borderColor: activeProfileBanner?.color || undefined,
@@ -12088,60 +12028,34 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 </p>
               </div>
               <button
+                type="button"
+                aria-pressed={publicProfile?.visibility === 'public'}
                 className="btn-retro"
                 onClick={() => setPublicProfile(prev => ({ ...prev, shareCode: prev?.shareCode || generateShareCode(), visibility: prev?.visibility === 'public' ? 'private' : 'public' }))}
                 title={lang === 'fr' ? 'Active ou desactive la visibilite publique du profil et genere un code ami si besoin.' : 'Toggle public profile visibility and generate a friend code if needed.'}
-                style={{ fontSize: '10px', borderColor: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00', color: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00' }}
+                style={{ fontSize: '.8125rem', borderColor: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00', color: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00' }}
               >
                 {publicProfile?.visibility === 'public'
                   ? (lang === 'fr' ? 'Profil public' : 'Public profile')
                   : (lang === 'fr' ? 'Activer partage' : 'Enable share')}
               </button>
             </div>
-            <div className="squad-command-grid" style={{ marginTop: '14px', marginBottom: 0 }}>
-              <div className="squad-readiness-card">
-                <div className="squad-kicker">{lang === 'fr' ? 'Commandant' : 'Commander'}</div>
-                <div className="squad-grade-row">
-                  <div className="squad-grade">{String(playerProfile?.name || 'A').slice(0, 2).toUpperCase()}</div>
-                  <div>
-                    <strong>{playerProfile?.name || 'Ancre'}</strong>
-                    <small
-                      className={activeProfileTitle ? 'anchor-profile-title-badge' : undefined}
-                      style={activeProfileTitle ? {
-                        '--profile-title-color': activeProfileTitle.color || '#39c5bb',
-                        backgroundImage: `url(${activeProfileTitle.visual?.image || OPENAI_COSMETIC_VISUALS.profileTitle.image})`
-                      } : undefined}
-                    >
-                      {activeProfileTitle
-                        ? getLocalizedText(activeProfileTitle.name, lang)
-                        : (publicProfile?.title || 'Prime Anchor')}
-                    </small>
-                  </div>
-                </div>
-              </div>
-              <div className="squad-plan-card">
-                <div className="squad-kicker">{lang === 'fr' ? 'Code ami' : 'Friend code'}</div>
-                <p style={{ color: '#fff', fontSize: '15px', letterSpacing: '0.08em' }}>{publicProfile?.shareCode || (lang === 'fr' ? 'Non genere' : 'Not generated')}</p>
-                <span>{lang === 'fr' ? 'Pret pour profil public, code ami et matchmaking plus tard.' : 'Ready for public profile, friend code, and later matchmaking.'}</span>
-              </div>
-              <div className="squad-section-card">
-                <div className="squad-section-title">{lang === 'fr' ? 'Collection' : 'Collection'}</div>
-                <div className="squad-stat-grid">
-                  <div><span>{lang === 'fr' ? 'Heros' : 'Heroes'}</span><strong>{collectionSummary.heroes}/{collectionSummary.totalHeroes}</strong></div>
-                  <div><span>{lang === 'fr' ? 'Mondes' : 'Worlds'}</span><strong>{collectionSummary.worlds}</strong></div>
-                  <div><span>{lang === 'fr' ? 'Arcs' : 'Arcs'}</span><strong>{collectionSummary.arcs}</strong></div>
-                  <div><span>{lang === 'fr' ? 'Apparences' : 'Appearances'}</span><strong>{collectionSummary.skins}</strong></div>
-                </div>
-              </div>
-            </div>
+            <AnchorIdentityPanel
+              lang={lang} name={playerProfile?.name} profile={publicProfile} collection={collectionSummary}
+              title={activeProfileTitle ? getLocalizedText(activeProfileTitle.name, lang) : publicProfile?.title}
+              titleImage={activeProfileTitle ? activeProfileTitle.visual?.image || OPENAI_COSMETIC_VISUALS.profileTitle.image : undefined}
+              titleColor={activeProfileTitle?.color}
+            />
             <AnchorCustomizationPanel lang={lang} portalCollection={portalCollection} setPortalCollection={setPortalCollection} />
           </div>
+          </HubWorkspaceFrame>
         )}
 
         {/* Tab 3: Party Setup */}
         {activeTab === 'party' && (
+          <HubWorkspaceFrame section="party" lang={lang} metrics={[{ label: lang === 'fr' ? 'Équipe active' : 'Active team', value: activeTeam.length + ' / 3' }, { label: lang === 'fr' ? 'Alliés recrutés' : 'Recruited allies', value: visibleUnlockedHeroes.length }]}>
           <>
-          <div className="glass-panel squad-panel">
+          <div className="glass-panel squad-panel hub-command-workspace">
             <div className="squad-header">
               <div>
                 <h3>{getTranslation(lang, 'teamDeployTitle')}</h3>
@@ -12157,6 +12071,11 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 {lang === 'fr' ? 'PROPOSER LES RELIQUES' : 'PREVIEW RELIC LOADOUT'}
               </button>
             </div>
+            <nav className="hub-command-section-nav" aria-label={lang === 'fr' ? 'Sections de la cellule' : 'Cell sections'}>
+              <a href="#hub-command-active">{lang === 'fr' ? 'Équipe active' : 'Active team'} · {deployedHeroes.length}/3</a>
+              <a href="#hub-command-tactics">{lang === 'fr' ? 'Synthèse tactique' : 'Tactical summary'}</a>
+              <a href="#hub-command-reserve">{lang === 'fr' ? 'Réserve et déploiement' : 'Reserve and deployment'}</a>
+            </nav>
 
             {unavailableTeamCount > 0 && (
               <p role="status" style={{ padding: '12px', border: '1px solid #697b85', color: '#cfd8dc', fontSize: '12px', lineHeight: 1.5 }}>
@@ -12165,10 +12084,20 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   : `${unavailableTeamCount} member(s) of your selection are unavailable in this version or in reserve. Their selection and possessions remain saved. Choosing a new squad replaces that selection.`}
               </p>
             )}
-            <div className="squad-zone-title">
+            <div className="squad-zone-title" id="hub-command-active">
               <span>{lang === 'fr' ? 'Equipe active' : 'Active team'}</span>
-              <small>{lang === 'fr' ? 'Les trois cartes qui partiront en mission.' : 'The three cards that will enter missions.'}</small>
+              <small>{lang === 'fr' ? 'Jusqu’à trois signatures déployées. Au moins un héros reste actif.' : 'Deploy up to three signatures. At least one hero stays active.'}</small>
             </div>
+            <div className="squad-slot-grid">
+              {[0, 1, 2].map(slot => {
+                const hero = HEROES_DB.find(candidate => candidate.id === activeTeam[slot]);
+                return <SquadMemberCard key={slot} lang={lang} slot={slot} hero={hero} stats={hero ? getHeroStats(hero) : null}
+                  gear={hero ? getGearDisplay(equippedGear[hero.id]) : null} eventItem={hero ? getEventItemDisplay(equippedEventItems[hero.id]) : null}
+                  categoryLabel={hero ? categoryLabels[hero.category]?.[lang] || hero.category : ''} memberCount={activeTeam.length}
+                  onToggle={toggleActiveHero} onOpen={openHeroArsenal} drawSprite={drawPixelSprite} />;
+              })}
+            </div>
+
             <div className="squad-composition-controls" aria-label={lang === 'fr' ? 'Propositions d’équipe' : 'Team proposals'}>
               <button type="button" className="btn-retro" disabled={squadProposalBusy} onClick={() => previewSquad('random')}>{lang === 'fr' ? 'PROPOSER UNE ÉQUIPE ALÉATOIRE' : 'PROPOSE RANDOM TEAM'}</button>
               <button type="button" className="btn-retro" disabled={squadProposalBusy} onClick={() => previewSquad('optimize')}>{lang === 'fr' ? 'MAXIMISER LA PRÉPARATION A.R.C.A.' : 'MAXIMIZE A.R.C.A. READINESS'}</button>
@@ -12183,77 +12112,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             </div>
             {squadProposalBusy && <div role="status">{lang === 'fr' ? 'Calcul des équipes légales' : 'Checking legal teams'} — {squadProposalChecked} <button type="button" className="btn-retro" onClick={cancelSquadProposal}>{lang === 'fr' ? 'ANNULER LE CALCUL' : 'CANCEL CALCULATION'}</button></div>}
             <SquadProposalPanel proposal={squadProposal} lang={lang} heroes={HEROES_DB} getGearDisplay={getGearDisplay} valid={squadProposalValid} onConfirm={confirmSquadProposal} onCancel={cancelSquadProposal} />
-            <div className="squad-slot-grid">
-              {[0, 1, 2].map((idx) => {
-                const id = activeTeam[idx];
-                const hero = HEROES_DB.find(h => h.id === id);
-                const stats = hero ? getHeroStats(hero) : null;
-                const gear = hero ? getGearDisplay(equippedGear[hero.id]) : null;
-                const eventItem = hero ? getEventItemDisplay(equippedEventItems[hero.id]) : null;
-                return (
-                  <div key={idx} className={`squad-slot ${hero ? 'filled' : 'empty'}`} style={{ '--slot-color': hero?.primaryColor || '#444' }}>
-                    {hero ? (
-                      <>
-                        <div className="squad-slot-top">
-                          <span>Slot {idx + 1}</span>
-                          <button onClick={() => toggleActiveHero(hero.id)} title={lang === 'fr' ? 'Retirer' : 'Remove'}>X</button>
-                        </div>
-                        <div className="squad-hero-row">
-                          <div className="squad-hero-frame">
-                            <canvas width="112" height="118" ref={(el) => {
-                              if (!el) return;
-                              const ctx = el.getContext('2d');
-                              ctx.clearRect(0, 0, 112, 118);
-                      drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud');
-                            }} />
-                          </div>
-                          <div className="squad-hero-info">
-                            <strong>{hero.name}</strong>
-                            <small>{hero.universe}</small>
-                            <em>{categoryLabels[hero.category]?.[lang] || hero.category}</em>
-                          </div>
-                        </div>
-                        <div className="squad-mini-stats">
-                          <span>HP {stats.hp}</span>
-                          <span>ATK {stats.atk}</span>
-                          <span>DEF {stats.def}</span>
-                          <span>SPD {stats.spd}</span>
-                        </div>
-                        <div className="squad-loadout-line">
-                          <span>{gear ? gear.name[lang] : (lang === 'fr' ? 'Relique vide' : 'No relic')}</span>
-                          <span>{eventItem ? eventItem.name[lang] : (lang === 'fr' ? 'Event vide' : 'No event')}</span>
-                        </div>
-                        <div className="squad-slot-actions">
-                          <button
-                            type="button"
-                            onClick={() => openHeroArsenal(hero.id, 'roster')}
-                            className="btn-retro"
-                            title={lang === 'fr' ? 'Ouvre la resonance, les niveaux et les talents de ce heros.' : 'Open this hero resonance, levels, and talents.'}
-                          >
-                            {lang === 'fr' ? 'RESONANCE' : 'RESONANCE'}
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => openHeroArsenal(hero.id, 'inventory')}
-                            className="btn-retro"
-                            title={lang === 'fr' ? 'Ouvre l inventaire pour changer les reliques et objets de ce heros.' : 'Open inventory to change this hero relics and event items.'}
-                          >
-                            {lang === 'fr' ? 'EQUIPEMENT' : 'GEAR'}
-                          </button>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <span>{getTranslation(lang, 'emptySlot')}</span>
-                        <small>{lang === 'fr' ? 'Choisis une reserve ci-dessous.' : 'Pick a reserve below.'}</small>
-                      </>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
 
-            <div className="squad-zone-title">
+            <div className="squad-zone-title" id="hub-command-tactics">
               <span>{lang === 'fr' ? 'Synthese tactique' : 'Tactical summary'}</span>
               <small>{lang === 'fr' ? 'Lecture A.R.C.A., resonances et failles tactiques.' : 'A.R.C.A. reading, resonances, and tactical faults.'}</small>
             </div>
@@ -12369,80 +12229,17 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </div>
             </div>
 
-            <div className="squad-reserve-title">
-              <h4>{getTranslation(lang, 'reserves')}</h4>
-              <span>{lang === 'fr' ? 'Clique pour deployer ou retirer. Les cartes montrent la valeur actuelle avec bonus.' : 'Click to deploy or bench. Cards show current value with bonuses.'}</span>
+            <div className="squad-reserve-title" id="hub-command-reserve">
+              <h4>{lang === 'fr' ? 'Réserve et déploiement' : 'Reserve and deployment'}</h4>
+              <span>{lang === 'fr' ? 'Déploie ou retire une signature avec son bouton. Les valeurs incluent les bonus actuels.' : 'Use each signature’s button to deploy or bench it. Values include current bonuses.'}</span>
             </div>
             <CatalogPagination {...getCatalogControlsProps('reserve', lang === 'fr' ? 'Réserve' : 'Reserve', getHeroCatalogFilters('reserve'))} />
             <div className="squad-reserve-grid">
-              {reservePage.items.map((hero) => {
-                const isActive = activeTeam.includes(hero.id);
-                const stats = getHeroStats(hero);
-                const gear = getGearDisplay(equippedGear[hero.id]);
-                const wouldPair = !isActive && deployedCategories[hero.category] === 1;
-                return (
-                  <div
-                    key={hero.id}
-                    onClick={() => toggleActiveHero(hero.id)}
-                    className={`squad-reserve-card ${isActive ? 'active' : ''}`}
-                    title={isActive
-                      ? (lang === 'fr' ? 'Clique pour retirer ce heros de l equipe active.' : 'Click to remove this hero from the active team.')
-                      : (lang === 'fr' ? 'Clique pour ajouter ce heros a l equipe active si une place est libre.' : 'Click to add this hero to the active team if a slot is free.')}
-                    style={{ '--slot-color': hero.primaryColor }}
-                  >
-                    <div className="squad-reserve-head">
-                      <strong>{hero.name}</strong>
-                      <span>{isActive ? getTranslation(lang, 'deployed') : getTranslation(lang, 'standby')}</span>
-                    </div>
-                    <div className="squad-reserve-body">
-                      <div className="squad-reserve-frame">
-                        <canvas width="76" height="82" ref={(el) => {
-                          if (!el) return;
-                          const ctx = el.getContext('2d');
-                          ctx.clearRect(0, 0, 76, 82);
-                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud');
-                        }} />
-                      </div>
-                      <div>
-                        <small>{hero.universe}</small>
-                        <em>{categoryLabels[hero.category]?.[lang] || hero.category}</em>
-                      </div>
-                    </div>
-                    <div className="squad-reserve-stats">
-                      <span>ATK {stats.atk}</span>
-                      <span>DEF {stats.def}</span>
-                      <span>SPD {stats.spd}</span>
-                    </div>
-                    <div className="squad-reserve-tags">
-                      <span>LVL {heroLevels[hero.id] || 1}</span>
-                      {gear && <span>{gear.name[lang]}</span>}
-                      {wouldPair && <span>{lang === 'fr' ? 'Synergie +' : 'Synergy +'}</span>}
-                    </div>
-                    <div className="squad-slot-actions" onClick={(event) => event.stopPropagation()}>
-                      <button
-                        type="button"
-                        className="btn-retro"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          openHeroArsenal(hero.id, 'roster');
-                        }}
-                      >
-                        {lang === 'fr' ? 'RESONANCE' : 'RESONANCE'}
-                      </button>
-                      <button
-                        type="button"
-                        className="btn-retro"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          openHeroArsenal(hero.id, 'inventory');
-                        }}
-                      >
-                        {lang === 'fr' ? 'EQUIPEMENT' : 'GEAR'}
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+              {reservePage.items.map(hero => <SquadReserveCard key={hero.id} lang={lang} hero={hero} stats={getHeroStats(hero)}
+                gear={getGearDisplay(equippedGear[hero.id])} categoryLabel={categoryLabels[hero.category]?.[lang] || hero.category}
+                level={heroLevels[hero.id] || 1} active={activeTeam.includes(hero.id)} memberCount={activeTeam.length}
+                wouldPair={!activeTeam.includes(hero.id) && deployedCategories[hero.category] === 1}
+                onToggle={toggleActiveHero} onOpen={openHeroArsenal} drawSprite={drawPixelSprite} />)}
             </div>
           </div>
           <div className="glass-panel" style={{ display: 'none' }}>
@@ -12560,6 +12357,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             </div>
           </div>
           </>
+          </HubWorkspaceFrame>
         )}
 
         {activeTab === 'collection' && (
@@ -12736,133 +12534,44 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {/* Tab 4: Inventory & Equipment */}
         {activeTab === 'inventory' && (
-          <div className="hub-catalog-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 2.2fr', gap: '20px' }}>
-            {/* Recruited list */}
-            <div className="glass-panel" style={{ padding: '15px' }}>
-              <h3 style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#39c5bb' }}>{getTranslation(lang, 'equipTitle')}</h3>
+          <HubWorkspaceFrame section="inventory" lang={lang} metrics={[{ label: lang === 'fr' ? 'Alliés recrutés' : 'Recruited allies', value: visibleUnlockedHeroes.length }, { label: lang === 'fr' ? 'Objets possédés' : 'Owned items', value: inventory.length }]}>
+          <div className="hub-catalog-layout hub-logistics-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 2.2fr', gap: '20px' }}>
+            <div className="glass-panel hub-logistics-heroes-panel" style={{ padding: '15px' }}>
+              <h3 className="hub-logistics-heading hub-logistics-choose-hero">{lang === 'fr' ? 'Choisir un héros' : 'Choose a hero'}</h3>
               <CatalogPagination {...getCatalogControlsProps('arsenalHeroes', lang === 'fr' ? 'Personnages à équiper' : 'Heroes to equip', getHeroCatalogFilters('arsenalHeroes'))} />
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {arsenalHeroesPage.items.map(h => {
-                  const isSelected = h.id === selectedHeroId;
-                  return (
-                    <button
-                      type="button"
-                      key={h.id}
-                      aria-pressed={isSelected}
-                      onClick={() => setSelectedHeroId(h.id)}
-                      style={{
-                        width: '100%',
-                        padding: '10px',
-                        background: isSelected ? 'rgba(57,197,187,0.12)' : 'rgba(0,0,0,0.2)',
-                        border: isSelected ? '1px solid #39c5bb' : '1px solid #222',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                        color: 'inherit',
-                        font: 'inherit',
-                        textAlign: 'left'
-                      }}
-                    >
-                      <span style={{ display: 'block', fontWeight: 'bold', fontSize: '13px' }}>{h.name}</span>
-                      <span style={{ display: 'block', fontSize: '10px', color: '#888' }}>{h.universe}</span>
-                    </button>
-                  );
-                })}
+              <div className="hub-logistics-heroes">
+                {arsenalHeroesPage.items.map(hero => (
+                  <HubLogisticsHero key={hero.id} hero={hero} lang={lang} selected={hero.id === selectedHeroId} onSelect={() => setSelectedHeroId(hero.id)} />
+                ))}
               </div>
             </div>
-
-            {/* Inventory gear details */}
-            <div className="glass-panel" style={{ padding: '20px' }}>
+            <div className="glass-panel hub-logistics-equipment-panel" style={{ padding: '20px' }}>
               {selectedHero && (
                 <>
-                  <div className="arsenal-workspace-heading">
-                    <h3 style={{ margin: 0, color: selectedHero.primaryColor }}>
-                      {selectedHero.name.toUpperCase()} - {lang === 'fr' ? 'EMPLACEMENTS D EQUIPEMENT' : 'GEAR SLOTS'}
-                    </h3>
-                    <div>
-                      <button
-                        type="button"
-                        className="btn-retro"
-                        onClick={() => openHeroArsenal(selectedHero.id, 'roster')}
-                      >
-                        {lang === 'fr' ? 'VOIR RESONANCE' : 'VIEW RESONANCE'}
-                      </button>
-                      <button
-                        type="button"
-                        className="btn-retro"
-                        onClick={() => openHeroArsenal(selectedHero.id, 'party')}
-                      >
-                        {lang === 'fr' ? 'RETOUR CELLULE' : 'BACK TO CELL'}
-                      </button>
-                    </div>
+                  <h3 className="hub-logistics-heading">{selectedHero.name} · {lang === 'fr' ? 'Équipement' : 'Equipment'}</h3>
+                  <p className="hub-logistics-hint">{lang === 'fr' ? 'Sélectionnez un objet compatible pour équiper ce héros ou remplacer son équipement actuel.' : 'Select a compatible item to equip this hero or replace their current equipment.'}</p>
+                  <div className="hub-logistics-nav">
+                    <button type="button" className="hub-logistics-action" onClick={() => openHeroArsenal(selectedHero.id, 'roster')}>{lang === 'fr' ? 'Voir la résonance' : 'View resonance'}</button>
+                    <button type="button" className="hub-logistics-action" onClick={() => openHeroArsenal(selectedHero.id, 'party')}>{lang === 'fr' ? 'Retour à la cellule' : 'Back to squad'}</button>
+                  </div>
+                  <div className="hub-logistics-slots">
+                    <HubEquipmentSlot kind="gear" label={getTranslation(lang, 'weaponRelic')} lang={lang}
+                      name={equippedGear[selectedHero.id] ? getEquippedGearName(equippedGear[selectedHero.id]) : null}
+                      summary={selectedEquippedGear ? formatBoostText(selectedEquippedGear.boost) : null}
+                      lore={selectedEquippedGear ? getGearLore(selectedEquippedGear) : null}
+                      onUnequip={() => unequipItem(selectedHero.id)} />
+                    <HubEquipmentSlot kind="event" label={getTranslation(lang, 'eventItem')} lang={lang}
+                      name={selectedEquippedEvent?.name[lang]}
+                      summary={selectedEquippedEvent?.desc?.[lang]}
+                      lore={selectedEquippedEvent ? getEventLore(selectedEquippedEvent) : null}
+                      onUnequip={() => unequipEventItem(selectedHero.id)} />
                   </div>
 
-                  {/* Equipped summary */}
-                  <div style={{ display: 'flex', gap: '15px', marginBottom: '20px' }}>
-                    {/* Weapon slot */}
-                    <div style={{ flex: 1, padding: '12px', background: 'rgba(0,0,0,0.3)', border: '1px dashed #333' }}>
-                      <div style={{ fontSize: '10px', color: '#888' }}>{getTranslation(lang, 'weaponRelic')}</div>
-                      {equippedGear[selectedHero.id] ? (
-                        <div>
-                          <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '13px', margin: '4px 0' }}>
-                            {getEquippedGearName(equippedGear[selectedHero.id])}
-                          </div>
-                          {selectedEquippedGear && (
-                            <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginBottom: '6px' }}>
-                              {formatBoostText(selectedEquippedGear.boost)}<br />
-                              {getGearLore(selectedEquippedGear)}
-                            </div>
-                          )}
-                          <button onClick={() => unequipItem(selectedHero.id)} className="btn-retro" title={lang === 'fr' ? 'Retire cette relique du heros et la remet dans l inventaire.' : 'Remove this relic from the hero and return it to inventory.'} style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
-                            {getTranslation(lang, 'unequipBtn')}
-                          </button>
-                        </div>
-                      ) : (
-                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>AUCUNE RELIQUE</div>
-                      )}
-                    </div>
-
-                    {/* Event item slot */}
-                    <div style={{ flex: 1, padding: '12px', background: 'rgba(0,0,0,0.3)', border: '1px dashed #333' }}>
-                      <div style={{ fontSize: '10px', color: '#888' }}>{getTranslation(lang, 'eventItem')}</div>
-                      {selectedEquippedEvent ? (
-                        <div>
-                          <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '13px', margin: '4px 0' }}>
-                            {selectedEquippedEvent?.name[lang]}
-                          </div>
-                          {selectedEquippedEvent && (
-                            <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginBottom: '6px' }}>
-                              {getEventLore(selectedEquippedEvent)}
-                            </div>
-                          )}
-                          <button onClick={() => unequipEventItem(selectedHero.id)} className="btn-retro" title={lang === 'fr' ? 'Retire cet objet evenementiel du heros.' : 'Remove this event item from the hero.'} style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
-                            {getTranslation(lang, 'unequipBtn')}
-                          </button>
-                        </div>
-                      ) : (
-                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>AUCUN OBJET EVENEMENT</div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* List of items in Inventory */}
-                  <h4 style={{ margin: '0 0 10px 0', borderTop: '1px solid #222', paddingTop: '10px', fontSize: '13px' }}>
-                    {getTranslation(lang, 'inventoryTitle')}
-                  </h4>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
+                  <h4 className="hub-logistics-section-title">{getTranslation(lang, 'inventoryTitle')}</h4>
+                  <div className="hub-logistics-filters" role="group" aria-label={lang === 'fr' ? 'Famille d’objets' : 'Item category'}>
                     {inventoryGroups.map(group => (
-                      <button
-                        key={group.id}
-                        type="button"
-                        onClick={() => { setInventoryFilter(group.id); updateCatalog('inventory', { page: 1 }); }}
-                        className="btn-retro"
-                        title={lang === 'fr' ? `Filtre l inventaire sur: ${group.label.fr}.` : `Filter inventory to: ${group.label.en}.`}
-                        style={{
-                          fontSize: '9px',
-                          padding: '5px 7px',
-                          borderColor: inventoryFilter === group.id ? '#ffea00' : '#444',
-                          color: inventoryFilter === group.id ? '#ffea00' : '#aaa'
-                        }}
-                      >
+                      <button key={group.id} type="button" aria-pressed={inventoryFilter === group.id}
+                        onClick={() => { setInventoryFilter(group.id); updateCatalog('inventory', { page: 1 }); }}>
                         {group.label[lang]} ({group.count})
                       </button>
                     ))}
@@ -12873,209 +12582,88 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     options: [{ value: 'all', label: lang === 'fr' ? 'Tout' : 'All' }, { value: 'compatible', label: lang === 'fr' ? 'Compatible avec ce héros' : 'Compatible with this hero' }, { value: 'available', label: lang === 'fr' ? 'Compatible et libre' : 'Compatible and free' }, { value: 'equipped', label: lang === 'fr' ? 'Déjà équipé' : 'Already equipped' }]
                   }])} />
                   {inventoryPage.total === 0 ? (
-                    <div style={{ color: '#555', fontSize: '12px' }}>{getTranslation(lang, 'noItems')}</div>
+                    <HubLogisticsEmpty title={lang === 'fr' ? 'Aucun objet dans cette sélection' : 'No items in this selection'}
+                      actionLabel={lang === 'fr' ? 'Afficher tout l’inventaire' : 'Show all inventory'}
+                      onAction={() => { setInventoryFilter('all'); updateCatalog('inventory', { query: '', status: 'all', page: 1 }); }}>
+                      {lang === 'fr' ? 'Retirez les filtres pour retrouver vos objets. Les reliques et objets événementiels acquis apparaîtront ici.' : 'Clear filters to find your items. Acquired relics and event items will appear here.'}
+                    </HubLogisticsEmpty>
                   ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '35vh', overflowY: 'auto' }}>
-                      {/* Weapon Gear */}
+                    <div className="hub-logistics-items">
                       {inventoryPage.items.filter(item => item.catalogKind === 'gear').map(item => {
                         const isEquippedElsewhere = Object.keys(equippedGear).some(id => equippedGear[id] === item.id);
                         const isEquippedOnSelf = equippedGear[selectedHero.id] === item.id;
-
                         return (
-                          <div key={item.id} style={{
-                            padding: '8px 12px',
-                            background: 'rgba(255,255,255,0.01)',
-                            border: '1px solid #222',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
-                          }}>
-                            <div>
-                              <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{item.name[lang]}</div>
-                              <span style={{ fontSize: '10px', color: '#b8cbd1' }}>
-                                Univers: {item.universe} | Boost: {formatBoostText(item.boost)}
-                              </span>
-                              {!isEquippedOnSelf && <div className="gear-comparison" aria-label={lang === 'fr' ? 'Différence de bonus de relique' : 'Relic boost difference'}>
-                                <small>{lang === 'fr' ? 'Par rapport à la relique équipée : ' : 'Compared with equipped relic: '}</small>
-                                {compareGearBoosts(item, selectedEquippedGear).map(({ stat, delta }) => <span key={stat} data-change={delta > 0 ? 'gain' : delta < 0 ? 'loss' : 'same'}>{stat.toUpperCase()} {delta > 0 ? '+' : ''}{delta}</span>)}
-                              </div>}
-                              <details className="gear-item-lore"><summary>{lang === 'fr' ? 'Histoire de la relique' : 'Relic lore'}</summary><p>{getGearLore(item)}</p></details>
-                            </div>
-
-                            {!isEquippedOnSelf && (
-                              <button
-                                onClick={() => equipItem(selectedHero.id, item.id)}
-                                disabled={isEquippedElsewhere}
-                                className="btn-retro"
-                                title={isEquippedElsewhere
-                                  ? (lang === 'fr' ? 'Cette relique est deja equipee par un autre heros.' : 'This relic is already equipped by another hero.')
-                                  : (lang === 'fr' ? 'Equipe cette relique sur le heros selectionne.' : 'Equip this relic on the selected hero.')}
-                                style={{ fontSize: '11px', padding: '4px 10px' }}
-                              >
-                                {isEquippedElsewhere ? 'ASSIGNEE' : getTranslation(lang, 'equipBtn')}
-                              </button>
-                            )}
-                          </div>
+                          <HubLogisticsItem key={item.id} kind="gear" name={item.name[lang]} lang={lang}
+                            meta={item.universe} effect={formatBoostText(item.boost)}
+                            status={isEquippedOnSelf ? 'equipped' : isEquippedElsewhere ? 'assigned' : 'available'}
+                            statusLabel={isEquippedOnSelf ? (lang === 'fr' ? 'Équipé sur ce héros' : 'Equipped on this hero') : isEquippedElsewhere ? (lang === 'fr' ? 'Équipé par un autre héros' : 'Equipped by another hero') : (lang === 'fr' ? 'Disponible' : 'Available')}
+                            action={!isEquippedOnSelf && <button type="button" className="hub-logistics-action" onClick={() => equipItem(selectedHero.id, item.id)} disabled={isEquippedElsewhere}
+                              aria-label={lang === 'fr' ? `${isEquippedElsewhere ? 'Déjà assigné' : 'Équiper'} : ${item.name[lang]}` : `${isEquippedElsewhere ? 'Already assigned' : 'Equip'}: ${item.name[lang]}`}>
+                              {isEquippedElsewhere ? (lang === 'fr' ? 'Déjà assigné' : 'Already assigned') : equippedGear[selectedHero.id] ? (lang === 'fr' ? 'Remplacer la relique' : 'Replace relic') : getTranslation(lang, 'equipBtn')}
+                            </button>}>
+                            {!isEquippedOnSelf && <div className="gear-comparison" aria-label={lang === 'fr' ? 'Différence de bonus de relique' : 'Relic boost difference'}>
+                              <small>{lang === 'fr' ? 'Par rapport à la relique équipée : ' : 'Compared with equipped relic: '}</small>
+                              {compareGearBoosts(item, selectedEquippedGear).map(({ stat, delta }) => <span key={stat} data-change={delta > 0 ? 'gain' : delta < 0 ? 'loss' : 'same'}>{stat.toUpperCase()} {delta > 0 ? '+' : ''}{delta}</span>)}
+                            </div>}
+                            <details className="hub-logistics-lore"><summary>{lang === 'fr' ? 'Histoire de la relique' : 'Relic lore'}</summary><p>{getGearLore(item)}</p></details>
+                          </HubLogisticsItem>
                         );
                       })}
-
-                      {/* Event Items */}
                       {inventoryPage.items.filter(item => item.catalogKind === 'event').map(item => {
-                        // Event items match hero universe to be equipped
                         const matchesUniverse = item.id === EVENT_ITEMS_DB[selectedHero.universe]?.id;
                         const isEquippedOnSelf = equippedEventItems[selectedHero.id] === item.id;
-
                         return (
-                          <div key={item.id} style={{
-                            padding: '8px 12px',
-                            background: 'rgba(255,255,255,0.01)',
-                            border: '1px solid #222',
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            borderColor: matchesUniverse ? '#ff4500' : '#222'
-                          }}>
-                            <div>
-                              <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff4500' }}>
-                                {item.name[lang]}
-                              </div>
-                              <span style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, display: 'block', maxWidth: '520px' }}>
-                                {getEventLore(item)}
-                              </span>
-                            </div>
-
-                            {!isEquippedOnSelf && (
-                              <button
-                                onClick={() => equipEventItem(selectedHero.id, item.id)}
-                                disabled={!matchesUniverse}
-                                className="btn-retro"
-                                title={matchesUniverse
-                                  ? (lang === 'fr' ? 'Equipe cet objet evenementiel compatible sur le heros selectionne.' : 'Equip this compatible event item on the selected hero.')
-                                  : (lang === 'fr' ? 'Objet incompatible: il ne correspond pas a l univers de ce heros.' : 'Incompatible item: it does not match this hero universe.')}
-                                style={{ fontSize: '11px', padding: '4px 10px', borderColor: matchesUniverse ? '#ff4500' : '#444', color: matchesUniverse ? '#ff4500' : '#444' }}
-                              >
-                                {matchesUniverse ? getTranslation(lang, 'equipBtn') : 'LORE INCOMPATIBLE'}
-                              </button>
-                            )}
-                          </div>
+                          <HubLogisticsItem key={item.id} kind="event" name={item.name[lang]} lang={lang} effect={item.desc?.[lang]}
+                            status={isEquippedOnSelf ? 'equipped' : matchesUniverse ? 'available' : 'blocked'}
+                            statusLabel={isEquippedOnSelf ? (lang === 'fr' ? 'Équipé sur ce héros' : 'Equipped on this hero') : matchesUniverse ? (lang === 'fr' ? 'Univers compatible' : 'Matching universe') : (lang === 'fr' ? 'Univers incompatible avec ce héros' : 'Universe does not match this hero')}
+                            action={!isEquippedOnSelf && <button type="button" className="hub-logistics-action" onClick={() => equipEventItem(selectedHero.id, item.id)} disabled={!matchesUniverse}
+                              aria-label={lang === 'fr' ? `${matchesUniverse ? 'Équiper' : 'Objet incompatible'} : ${item.name[lang]}` : `${matchesUniverse ? 'Equip' : 'Incompatible item'}: ${item.name[lang]}`}>
+                              {!matchesUniverse ? (lang === 'fr' ? 'Univers incompatible' : 'Incompatible universe') : selectedEquippedEvent ? (lang === 'fr' ? 'Remplacer l’objet' : 'Replace item') : getTranslation(lang, 'equipBtn')}
+                            </button>}>
+                            <details className="hub-logistics-lore"><summary>{lang === 'fr' ? 'Histoire de l’objet' : 'Item lore'}</summary><p>{getEventLore(item)}</p></details>
+                          </HubLogisticsItem>
                         );
                       })}
-
                       {inventoryPage.items.filter(item => item.catalogKind === 'nexus').map(item => (
-                        <div key={item.id} style={{
-                          padding: '8px 12px',
-                          background: 'rgba(255,235,59,0.04)',
-                          border: '1px solid rgba(255,235,59,0.25)',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          gap: '12px'
-                        }}>
-                          <div>
-                            <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ffeb3b' }}>
-                              {item.name[lang]}
-                            </div>
-                            <span style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, display: 'block', maxWidth: '560px' }}>
-                              {item.desc[lang]}
-                            </span>
-                          </div>
-                          <span style={{ fontSize: '9px', color: '#ffeb3b', border: '1px solid rgba(255,235,59,0.35)', padding: '3px 6px', borderRadius: '3px' }}>
-                            NEXUS
-                          </span>
-                        </div>
+                        <HubLogisticsItem key={item.id} kind="nexus" name={item.name[lang]} lang={lang} status="equipped" statusLabel="Nexus">
+                          <p className="hub-logistics-effect">{item.desc[lang]}</p>
+                        </HubLogisticsItem>
                       ))}
                     </div>
                   )}
 
-                  {/* Relic Fusion Station */}
-                  <div style={{ marginTop: '20px', borderTop: '1px solid #333', paddingTop: '15px' }}>
-                    <h4 style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#ff9900', textTransform: 'uppercase', textShadow: '0 0 3px #ff9900' }}>
-                      {lang === 'fr' ? 'NOYAU DE FUSION DE RELIQUES' : 'RELIC FUSION CORE'}
-                    </h4>
-                    {(() => {
-                      const counts = {};
-                      inventory.forEach(invId => {
-                        if (!invId.endsWith('_plus')) {
-                          counts[invId] = (counts[invId] || 0) + 1;
-                        }
-                      });
-                      const fusables = EQUIP_ITEMS_DB.filter(it => (
-                        isGearContentPackVisible(it)
-                        && !isAssetDisabled('gear', it.id)
-                        && (counts[it.id] || 0) >= 3
-                      ));
-
-                      if (fusables.length === 0) {
-                        return (
-                          <div style={{ fontSize: '11px', color: '#666', background: 'rgba(0,0,0,0.2)', padding: '10px', border: '1px dashed #222', borderRadius: '4px' }}>
-                            {lang === 'fr' ? 'Accumulez 3 exemplaires de la même relique standard dans votre inventaire pour réaliser une fusion (+100% de bonus).' : 'Accumulate 3 copies of the same standard relic in your inventory to perform a fusion (+100% bonus boosts).'}
-                          </div>
-                        );
-                      }
-
-                      return (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                          {fusables.map(item => {
-                            const copies = counts[item.id];
-                            const canAfford = gold >= 150;
-                            return (
-                              <div key={item.id} style={{
-                                padding: '10px 14px',
-                                background: 'rgba(255, 153, 0, 0.03)',
-                                border: '1px solid rgba(255, 153, 0, 0.2)',
-                                borderRadius: '4px',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center'
-                              }}>
-                                <div>
-                                  <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff9900' }}>
-                                    {item.name[lang]} ({copies} indexes)
-                                  </div>
-                                  <span style={{ fontSize: '10px', color: '#aaa' }}>
-                                    Cible: {item.name[lang]} + (echo renforce)
-                                  </span>
-                                </div>
-                                <button
-                                  onClick={() => handleFuseRelic(item.id)}
-                                  disabled={!canAfford}
-                                  className={`btn-retro ${!canAfford ? 'btn-disabled' : ''}`}
-                                  title={lang === 'fr'
-                                    ? 'Consomme 3 exemplaires de cette relique et 150 Or pour creer une version amelioree.'
-                                    : 'Consume 3 copies of this relic and 150 Gold to create an upgraded version.'}
-                                  style={{
-                                    fontSize: '11px',
-                                    padding: '5px 12px',
-                                    borderColor: '#ff9900',
-                                    color: '#ff9900',
-                                    background: 'rgba(255, 153, 0, 0.1)'
-                                  }}
-                                >
-                                  {lang === 'fr' ? `FUSIONNER (🪙 150)` : `FUSE (🪙 150)`}
-                                </button>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      );
-                    })()}
-                  </div>
+                  <h4 className="hub-logistics-section-title" data-tone="fusion">{lang === 'fr' ? 'Noyau de fusion de reliques' : 'Relic fusion core'}</h4>
+                  {(() => {
+                    const counts = {};
+                    inventory.forEach(invId => {
+                      if (!invId.endsWith('_plus')) counts[invId] = (counts[invId] || 0) + 1;
+                    });
+                    const fusables = EQUIP_ITEMS_DB.filter(it => (
+                      isGearContentPackVisible(it) && !isAssetDisabled('gear', it.id) && (counts[it.id] || 0) >= 3
+                    ));
+                    if (fusables.length === 0) return (
+                      <HubLogisticsEmpty title={lang === 'fr' ? '3 exemplaires pour une fusion' : '3 copies for a fusion'}>
+                        {lang === 'fr' ? 'Réunissez 3 exemplaires identiques d’une relique standard et 150 Or. La fusion consomme ces ressources et crée une relique + aux bonus doublés.' : 'Gather 3 identical copies of a standard relic and 150 Gold. Fusion consumes these resources and creates a + relic with doubled boosts.'}
+                      </HubLogisticsEmpty>
+                    );
+                    return <div className="hub-logistics-fusions">{fusables.map(item => (
+                      <HubRelicFusionCard key={item.id} name={item.name[lang]} copies={counts[item.id]} lang={lang}
+                        canAfford={gold >= 150} balance={gold} cost={150} onFuse={() => handleFuseRelic(item.id)} />
+                    ))}</div>;
+                  })()}
                 </>
               )}
             </div>
           </div>
+          </HubWorkspaceFrame>
         )}
 
         {/* Tab 5: Event Shop */}
         {activeTab === 'shop' && (
-          <div className="glass-panel" style={{ padding: '20px' }}>
-            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#e74c3c' }}>
-              {getTranslation(lang, 'tabShop')}
-            </h3>
-            <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
-              {lang === 'fr' ? 'Depense tes jetons evenement pour acheter des prototypes, reliques rares et declencheurs de combat synchronises au Nexus.' : 'Spend Event Tokens on prototypes, rare relics, and combat triggers synchronized by the Nexus.'}
-            </p>
-
+          <HubWorkspaceFrame section="shop" lang={lang} metrics={[{ label: lang === 'fr' ? 'Or disponible' : 'Available gold', value: gold }, { label: lang === 'fr' ? 'Jetons événement' : 'Event tokens', value: eventTokens }]}>
+          <div className="glass-panel hub-logistics-shop" style={{ padding: '20px' }}>
+            <h3 className="hub-logistics-heading">{getTranslation(lang, 'tabShop')}</h3>
+            <p className="hub-logistics-shop-intro">{lang === 'fr' ? 'Échangez vos jetons événement contre des reliques et des déclencheurs de combat liés à leur univers. Chaque achat rejoint votre inventaire.' : 'Exchange Event Tokens for relics and combat triggers tied to their universe. Each purchase is added to your inventory.'}</p>
             <CatalogPagination {...getCatalogControlsProps('shop', lang === 'fr' ? 'Boutique' : 'Shop', [
               {
                 id: 'category', label: lang === 'fr' ? 'Type' : 'Type', value: catalogViews.shop.category,
@@ -13088,186 +12676,38 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 options: [{ value: 'all', label: lang === 'fr' ? 'Tout' : 'All' }, { value: 'unowned', label: lang === 'fr' ? 'Non possédé' : 'Not owned' }, { value: 'owned', label: lang === 'fr' ? 'Possédé' : 'Owned' }, { value: 'affordable', label: lang === 'fr' ? 'Achetable maintenant' : 'Affordable now' }]
               }
             ])} />
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '15px' }}>
-              {shopPage.total === 0 && (
-                <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(231,76,60,0.22)', background: 'rgba(231,76,60,0.045)', borderRadius: '5px', color: '#ffb1a8', fontSize: '11px', lineHeight: 1.45 }}>
-                  {lang === 'fr'
-                    ? (visibleEventShopItems.length ? 'Aucun prototype ne correspond aux filtres. Modifie la recherche, le type ou l acquisition.' : 'Aucun prototype disponible dans cette rotation. Consulte la Regulation A.R.C.A. pour rouvrir des Trames et leur stock.')
-                    : (visibleEventShopItems.length ? 'No prototype matches these filters. Change search, type or ownership.' : 'No prototype is available in this rotation. Review A.R.C.A. Regulation to reopen Threads and their stock.')}
-                </div>
-              )}
+            <div className="hub-logistics-shop-grid">
+              {shopPage.total === 0 && <HubLogisticsEmpty title={lang === 'fr' ? 'Aucun prototype disponible' : 'No prototypes available'}
+                actionLabel={visibleEventShopItems.length ? (lang === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters') : (lang === 'fr' ? 'Ouvrir la régulation' : 'Open regulation')}
+                onAction={() => visibleEventShopItems.length ? updateCatalog('shop', { query: '', category: 'all', status: 'all', page: 1 }) : setActiveTab('admin')}>
+                {lang === 'fr' ? (visibleEventShopItems.length ? 'Aucun résultat pour cette recherche. Réinitialisez les filtres pour retrouver la rotation disponible.' : 'Cette rotation ne contient aucun prototype. Consultez la régulation A.R.C.A. pour rouvrir des Trames et leur stock.') : (visibleEventShopItems.length ? 'No results for this search. Reset filters to see the available rotation.' : 'This rotation contains no prototypes. Review A.R.C.A. Regulation to reopen Threads and their stock.')}
+              </HubLogisticsEmpty>}
               {shopPage.items.map(item => {
                 const owned = inventory.includes(item.id);
                 const visualUniverse = getShopItemUniverse(item);
                 const accent = getShopItemAccent(item);
                 const backdropSrc = visualUniverse ? getOpenAiBackdropSrc(visualUniverse, 'Smash') || getOpenAiBackdropSrc(visualUniverse, 'RPG') || getOpenAiBackdropSrc(visualUniverse, 'Tactics') : null;
                 const canBuy = eventTokens >= item.tokenCost && !owned;
-                return (
-                  <div key={item.id} style={{
-                    padding: 0,
-                    background: owned ? 'rgba(46,204,113,0.045)' : 'rgba(255,255,255,0.018)',
-                    border: `1px solid ${owned ? '#2ecc71' : `${accent}55`}`,
-                    borderRadius: '6px',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    minHeight: '322px',
-                    boxShadow: owned ? '0 0 18px rgba(46,204,113,0.12)' : `0 0 18px ${accent}18`
-                  }}>
-                    <div style={{
-                      position: 'relative',
-                      minHeight: '142px',
-                      backgroundImage: backdropSrc
-                        ? `linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.76)), url(${backdropSrc})`
-                        : `radial-gradient(circle at 50% 34%, ${accent}66, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0.85) 72%), linear-gradient(135deg, ${accent}28, #06050d)`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      borderBottom: `1px solid ${accent}55`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      overflow: 'hidden'
-                    }}>
-                      <div style={{
-                        position: 'absolute',
-                        inset: 0,
-                        backgroundImage: 'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
-                        backgroundSize: '18px 18px',
-                        opacity: 0.55
-                      }} />
-                      <div style={{
-                        position: 'relative',
-                        width: 'clamp(68px, 18vw, 84px)',
-                        height: 'clamp(68px, 18vw, 84px)',
-                        border: `2px solid ${accent}`,
-                        background: 'rgba(0,0,0,0.68)',
-                        boxShadow: `0 0 18px ${accent}77, inset 0 0 18px ${accent}22`,
-                        transform: 'rotate(45deg)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}>
-                        <GearShopItemVisual
-                          item={item}
-                          lang={lang}
-                          accent={accent}
-                          fallbackGlyph={getShopItemGlyph(item)}
-                        />
-                      </div>
-                      <div style={{
-                        position: 'absolute',
-                        top: '9px',
-                        left: '9px',
-                        padding: '3px 7px',
-                        border: `1px solid ${accent}88`,
-                        background: 'rgba(0,0,0,0.7)',
-                        color: accent,
-                        borderRadius: '3px',
-                        fontSize: '9px',
-                        fontWeight: 'bold',
-                        textTransform: 'uppercase'
-                      }}>
-                        {item.isCombatEvent ? (lang === 'fr' ? 'Evenement' : 'Event') : (lang === 'fr' ? 'Relique' : 'Relic')}
-                      </div>
-                      <div style={{
-                        position: 'absolute',
-                        top: '9px',
-                        right: '9px',
-                        padding: '4px 8px',
-                        border: '1px solid rgba(231,76,60,0.8)',
-                        background: 'rgba(0,0,0,0.74)',
-                        color: '#ffb1a8',
-                        borderRadius: '3px',
-                        fontSize: '11px',
-                        fontWeight: 'bold'
-                      }}>
-                        TICKETS {item.tokenCost}
-                      </div>
-                      <div style={{
-                        position: 'absolute',
-                        bottom: '8px',
-                        left: '9px',
-                        right: '9px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        gap: '8px',
-                        alignItems: 'center'
-                      }}>
-                        <span style={{ color: '#ddd', fontSize: '9px', textTransform: 'uppercase' }}>
-                          {visualUniverse || 'Nexus Prototype'}
-                        </span>
-                        <span style={{ color: owned ? '#2ecc71' : '#aaa', fontSize: '9px', border: '1px solid rgba(255,255,255,0.16)', padding: '2px 5px', borderRadius: '3px' }}>
-                          {owned ? 'INDEXE' : (canBuy ? (lang === 'fr' ? 'OUVERT' : 'OPEN') : (lang === 'fr' ? 'SCELLE' : 'SEALED'))}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
-                        <span style={{ fontWeight: 'bold', fontSize: '13px', color: accent, lineHeight: 1.25 }}>
-                          {item.name[lang]}
-                        </span>
-                      </div>
-                      <div style={{ fontSize: '10px', color: '#aaa', marginTop: '6px', lineHeight: 1.35 }}>
-                        {getShopItemSummary(item)}
-                      </div>
-                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px' }}>
-                        <span style={{ color: '#ddd', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 6px', borderRadius: '3px' }}>
-                          {item.isCombatEvent ? 'Combat' : formatBoostText(item.boost || {})}
-                        </span>
-                        <span style={{ color: accent, fontSize: '9px', border: `1px solid ${accent}66`, padding: '2px 6px', borderRadius: '3px' }}>
-                          {visualUniverse ? getMediaTypeLabel(LORE_DB[visualUniverse]?.mediaType) : 'Nexus'}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div style={{ padding: '0 12px 12px' }}>
-                      <button
-                        onClick={() => buyShopItem(item)}
-                        disabled={!canBuy}
-                        className="btn-retro"
-                        title={owned
-                          ? (lang === 'fr' ? 'Objet deja possede.' : 'Item already owned.')
-                          : canBuy
-                            ? (lang === 'fr' ? `Achete cet objet pour ${item.tokenCost} tickets evenement.` : `Buy this item for ${item.tokenCost} event tickets.`)
-                            : (lang === 'fr' ? `Tickets insuffisants: il faut ${item.tokenCost} tickets evenement.` : `Not enough tickets: requires ${item.tokenCost} event tickets.`)}
-                        style={{
-                          width: '100%',
-                          fontSize: '11px',
-                          padding: '8px 12px',
-                          borderColor: owned ? '#2ecc71' : canBuy ? accent : '#444',
-                          color: owned ? '#2ecc71' : canBuy ? accent : '#666',
-                          background: canBuy ? `${accent}14` : 'rgba(0,0,0,0.22)'
-                        }}
-                      >
-                        {owned
-                          ? 'INDEXE'
-                          : canBuy
-                            ? (lang === 'fr' ? 'ACHETER' : 'BUY')
-                            : (lang === 'fr' ? 'JETONS INSUFFISANTS' : 'NEED TOKENS')}
-                      </button>
-                    </div>
-                  </div>
-                );
+                return <HubShopCard key={item.id} item={item} lang={lang} owned={owned} canBuy={canBuy} balance={eventTokens}
+                  accent={accent} universe={visualUniverse} mediaType={visualUniverse ? getMediaTypeLabel(LORE_DB[visualUniverse]?.mediaType) : 'Nexus'}
+                  summary={getShopItemSummary(item)}
+                  boost={item.isCombatEvent ? (EVENT_ITEMS_DB[item.universe]?.desc?.[lang] || (lang === 'fr' ? 'Déclencheur de combat' : 'Combat trigger')) : formatBoostText(item.boost || {})}
+                  backdropSrc={backdropSrc} onBuy={() => buyShopItem(item)}
+                  visual={<GearShopItemVisual item={item} lang={lang} accent={accent} fallbackGlyph={getShopItemGlyph(item)} />} />;
               })}
             </div>
           </div>
+          </HubWorkspaceFrame>
         )}
 
         {/* Admin: Universe visibility controls */}
         {activeTab === 'admin' && (
-          <div className="glass-panel" style={{ padding: '20px' }}>
-            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#ff4500' }}>
-              {lang === 'fr' ? 'REGISTRE DE REGULATION A.R.C.A.' : 'A.R.C.A. REGULATION REGISTER'}
-            </h3>
-            <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '16px', lineHeight: 1.45 }}>
-              {lang === 'fr'
-                ? 'Place une Trame en reserve pour la retirer des missions, portails, heros, archives et echanges sans effacer ses donnees. Les infobulles precisent l effet technique de chaque commande.'
-                : 'Place a Thread in reserve to remove it from missions, portals, heroes, archives, and exchanges without deleting its data. Tooltips state each command technical effect.'}
-            </p>
+          <HubWorkspaceFrame section="admin" lang={lang} metrics={[{ label: lang === 'fr' ? 'Trames actives' : 'Active Threads', value: visibleUniverseCount, tone: 'positive' }, { label: lang === 'fr' ? 'En réserve' : 'In reserve', value: hiddenUniverseCount }]}>
+          <div className="glass-panel hub-archive-body hub-regulation-body" style={{ padding: '20px' }}>
 
+
+            <details className="hub-regulation-diagnostics">
+              <summary>{lang === 'fr' ? 'Installation, progression et diagnostics' : 'Installation, progress and diagnostics'}</summary>
             <div
               data-dlc-installation-mode={installationSummary.mode}
               style={{ padding: '12px', marginBottom: '16px', border: '1px solid #697b85', borderRadius: '5px', color: '#cfd8dc', fontSize: '12px', lineHeight: 1.5 }}
@@ -13378,8 +12818,11 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </div>
             </div>
 
+            </details>
+
+            <label className="hub-regulation-search" htmlFor="hub-regulation-search">{lang === 'fr' ? 'Rechercher une Trame' : 'Find a Thread'}</label>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
-              <input
+              <input id="hub-regulation-search" type="search"
                 value={adminUniverseSearch}
                 onChange={(event) => setAdminUniverseSearch(event.target.value)}
                 placeholder={lang === 'fr' ? 'Rechercher un univers...' : 'Search universe...'}
@@ -13616,6 +13059,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               })}
             </div>
           </div>
+          </HubWorkspaceFrame>
         )}
 
         {selectedUniverseArchive && (
@@ -13649,17 +13093,11 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
         {/* Tab 6: Codex & Lore */}
         {activeTab === 'codex' && (
-          <div className="glass-panel" style={{ padding: '20px' }}>
-            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#ffeb3b', textShadow: '0 0 5px #ffeb3b' }}>
-              {lang === 'fr' ? 'ARCHIVES ET LORE DES UNIVERS' : 'MULTIVERSE CODEX & HISTORICAL RECORDS'}
-            </h3>
-            <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
-              {lang === 'fr'
-                ? `Consultez les enregistrements historiques des anomalies détectées sur les ${TOTAL_UNIVERSE_COUNT} univers connus du Multivers.`
-                : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
-            </p>
+          <HubWorkspaceFrame section="codex" lang={lang} metrics={[{ label: lang === 'fr' ? 'Univers consultables' : 'Available universes', value: codexUniverseKeys.length }]}>
+          <div className="glass-panel hub-archive-body" style={{ padding: '20px' }}>
 
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
+
+            <nav className="hub-codex-navigation" aria-label={lang === 'fr' ? 'Rubriques des Archives' : 'Archive sections'}>
               {[
                 { id: 'canon', label: { fr: 'Canon', en: 'Canon' } },
                 { id: 'universes', label: { fr: 'Univers', en: 'Universes' } },
@@ -13669,6 +13107,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               ].map(view => (
                 <button
                   key={view.id}
+                  type="button"
+                  aria-pressed={codexView === view.id}
                   onClick={() => { setCodexView(view.id); sound.playSfx('click'); }}
                   className={`btn-retro ${codexView === view.id ? 'active-tab' : ''}`}
                   title={lang === 'fr' ? `Affiche la section Codex: ${view.label.fr}.` : `Show Codex section: ${view.label.en}.`}
@@ -13682,7 +13122,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   {view.label[lang]}
                 </button>
               ))}
-            </div>
+            </nav>
 
             <div style={{ display: codexView === 'canon' ? 'block' : 'none', marginBottom: '16px' }}>
               <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
@@ -13718,7 +13158,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '8px' }}>
                 {ocCampaignUi.acts.map(({ act, unlocked: visible, complete, awaitingEnding, completedCount, totalCount }) => {
                   return (
-                    <div key={act.id} data-codex-act={act.id} data-act-status={complete ? 'complete' : awaitingEnding ? 'ending-choice' : visible ? 'available' : 'locked'} style={{
+                    <div className="hub-codex-card" key={act.id} data-codex-act={act.id} data-act-status={complete ? 'complete' : awaitingEnding ? 'ending-choice' : visible ? 'available' : 'locked'} style={{
                       padding: '10px',
                       border: visible ? '1px solid rgba(255,140,0,0.35)' : '1px dashed #333',
                       background: visible ? 'rgba(255,140,0,0.05)' : 'rgba(0,0,0,0.2)',
@@ -13744,17 +13184,17 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               <p style={{ color: '#aaa', fontSize: '10px' }}>{lang === 'fr' ? 'Archives historiques de l exploration multiverselle : ces jalons utilisent le total des failles stabilisees. Ils ne debloquent aucun acte OC et ne constituent pas la fin de la campagne.' : 'Historical multiverse exploration archives: these milestones use total stabilized rifts. They unlock no OC act and do not mark campaign completion.'}</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
               {timelineProgress.map(entry => (
-                <div key={entry.id} style={{
+                <div className="hub-codex-card" key={entry.id} style={{
                   padding: '10px',
                   border: entry.active ? '1px solid rgba(57,197,187,0.45)' : '1px dashed #333',
                   background: entry.active ? 'rgba(57,197,187,0.06)' : 'rgba(0,0,0,0.2)',
                   borderRadius: '4px',
-                  opacity: entry.active ? 1 : 0.55
+                  opacity: 1
                 }}>
                   <div style={{ fontSize: '10px', color: entry.active ? '#39c5bb' : '#777', fontWeight: 'bold', marginBottom: '5px' }}>
                     {entry.title[lang]} {entry.active ? '' : `(${entry.unlockClears})`}
                   </div>
-                  <div style={{ fontSize: '10px', color: entry.active ? '#ccc' : '#666', lineHeight: 1.35 }}>
+                  <div style={{ fontSize: '10px', color: entry.active ? '#ccc' : '#b9c7d2', lineHeight: 1.35 }}>
                     {entry.text[lang]}
                   </div>
                 </div>
@@ -13763,9 +13203,9 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             </details>
 
             {codexView === 'groups' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {arcProgress.map(arc => (
-                  <div key={arc.id} style={{ padding: '13px', border: `1px solid ${arc.color}55`, background: `${arc.color}10`, borderRadius: '5px' }}>
+              <HubCodexRecords id="codex-groups" title={lang === 'fr' ? 'Arcs de groupe' : 'Group arcs'} lang={lang} records={arcProgress}>
+                {arc => (
+                  <div className="hub-codex-card" key={arc.id} style={{ padding: '13px', border: `1px solid ${arc.color}55`, background: `${arc.color}10`, borderRadius: '5px' }}>
                     <strong style={{ color: arc.color, fontSize: '12px' }}>{arc.title[lang]}</strong>
                     <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro?.[lang] || arc.premise[lang]}</p>
                     <div style={{ display: 'grid', gap: '4px' }}>
@@ -13775,13 +13215,13 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     </div>
                     <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{arc.outro?.[lang]}</div>
                   </div>
-                ))}
-              </div>
+                )}
+              </HubCodexRecords>
             )}
 
             {codexView === 'characters' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {CHARACTER_NARRATIVE_ARCS.filter(isNarrativeArcAvailable).map(arc => {
+              <HubCodexRecords id="codex-characters" title={lang === 'fr' ? 'Arcs personnels' : 'Personal arcs'} lang={lang} records={CHARACTER_NARRATIVE_ARCS.filter(isNarrativeArcAvailable)}>
+                {arc => {
                   const hero = HEROES_DB.find(item => item.id === arc.heroId);
                   const heroUnlocked = Boolean(hero && unlockedHeroes.includes(hero.id));
                   const heroLevel = hero ? (heroLevels[hero.id] || 1) : 0;
@@ -13789,7 +13229,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   const requiredClears = arc.unlock?.type === 'clears' ? arc.unlock.value : 0;
                   const characterArcReady = heroUnlocked && heroLevel >= requiredLevel && completedStages.length >= requiredClears;
                   return (
-                    <div key={arc.id} style={{ padding: '13px', border: characterArcReady ? '1px solid #2ecc71' : '1px solid rgba(57,197,187,0.28)', background: characterArcReady ? 'rgba(46,204,113,0.06)' : 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
+                    <div className="hub-codex-card" key={arc.id} style={{ padding: '13px', border: characterArcReady ? '1px solid #2ecc71' : '1px solid rgba(57,197,187,0.28)', background: characterArcReady ? 'rgba(46,204,113,0.06)' : 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
                       <strong style={{ color: '#39c5bb', fontSize: '12px' }}>{arc.title[lang]}{hero ? ` / ${hero.name}` : ''}</strong>
                       <div style={{ color: characterArcReady ? '#2ecc71' : '#888', fontSize: '9px', marginTop: '5px' }}>
                         {characterArcReady
@@ -13809,25 +13249,25 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{arc.reward[lang]}</div>
                     </div>
                   );
-                })}
-              </div>
+                }}
+              </HubCodexRecords>
             )}
 
             {codexView === 'fusions' && (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {[
+              <HubCodexRecords id="codex-fusions" title={lang === 'fr' ? 'Fusions et arcs univers' : 'Fusions and universe arcs'} lang={lang} records={[
                   ...FUSION_MISSIONS.filter(entry => {
                     const stage = ADMIN_VISIBLE_STAGES.find(item => item.fusionMission?.id === entry.id);
                     return stage ? isStageUnlocked(stage) : false;
                   }),
                   ...UNIVERSE_NARRATIVE_ARCS.filter(isNarrativeArcAvailable)
-                ].map(entry => {
+                ]}>
+                {entry => {
                   const rewardId = entry.itemId;
                   const rewardOwned = rewardId ? inventory.includes(rewardId) : false;
                   const unlockClears = entry.unlockClears || 0;
                   const unlocked = completedStages.length >= unlockClears;
                   return (
-                    <div key={entry.id} style={{ padding: '13px', border: '1px solid rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.06)', borderRadius: '5px' }}>
+                    <div className="hub-codex-card" key={entry.id} style={{ padding: '13px', border: '1px solid rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.06)', borderRadius: '5px' }}>
                       <strong style={{ color: '#ff8c00', fontSize: '12px' }}>{entry.title[lang]}</strong>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', margin: '6px 0' }}>
                         <span style={{ color: '#fff', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 5px' }}>{entry.mode || (lang === 'fr' ? 'Arc univers' : 'Universe arc')}</span>
@@ -13849,19 +13289,19 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{entry.reward?.[lang] || entry.item?.[lang]}</div>
                     </div>
                   );
-                })}
-              </div>
+                }}
+              </HubCodexRecords>
             )}
 
             {codexView === 'universes' && (
               <section aria-label={lang === 'fr' ? 'Dossiers des univers' : 'Universe dossiers'}>
                 <div style={{ color: '#a9c8d5', fontSize: '11px', marginBottom: '10px' }}>
                   {lang === 'fr'
-                    ? `${codexUniverseKeys.length} univers affichés / ${TOTAL_UNIVERSE_COUNT} visibles. Ouvre un dossier pour consulter ses rubriques sans quitter le Codex.`
-                    : `${codexUniverseKeys.length} universes shown / ${TOTAL_UNIVERSE_COUNT} visible. Open a dossier to browse its sections without leaving the Codex.`}
+                    ? `${codexUniverseKeys.length} univers consultables. Ouvre un dossier pour consulter ses rubriques sans quitter le Codex.`
+                    : `${codexUniverseKeys.length} available universes. Open a dossier to browse its sections without leaving the Codex.`}
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '10px', maxHeight: 'min(60vh, 650px)', overflowY: 'auto', paddingRight: '5px' }}>
-                  {codexUniverseKeys.map(universe => {
+                <HubCodexRecords id="codex-universes" title={lang === 'fr' ? 'Univers accessibles' : 'Available universes'} lang={lang} records={codexUniverseKeys}>
+                  {universe => {
                     const lore = LORE_DB[universe];
                     const stageId = UNIVERSE_TO_STAGE_ID[universe];
                     const cleared = !stageId || completedStages.includes(stageId);
@@ -13876,11 +13316,12 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                         <span style={{ fontSize: '10px', color: '#fff' }}>{lang === 'fr' ? 'OUVRIR LE DOSSIER →' : 'OPEN DOSSIER →'}</span>
                       </button>
                     );
-                  })}
-                </div>
+                  }}
+                </HubCodexRecords>
               </section>
             )}
           </div>
+          </HubWorkspaceFrame>
         )}
 
       </div>

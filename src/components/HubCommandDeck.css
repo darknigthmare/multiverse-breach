@@ -1,0 +1,127 @@
+.hub-command-workspace {
+  --command-line: #50747f70;
+  --command-muted: #b0c4cc;
+  --command-accent: #7fe5d9;
+  color: #edf7fa;
+  min-width: 0;
+}
+.hub-command-workspace :is(button, input, select, summary, a):focus-visible {
+  outline: 3px solid #ffe594;
+  outline-offset: 3px;
+}
+.hub-command-workspace :is(button, input, select) { min-height: 44px; }
+.hub-command-workspace :is(button, input, select, p, dd, strong, small) { overflow-wrap: anywhere; }
+.hub-command-workspace .btn-retro { white-space: normal; line-height: 1.4; font-size: calc(.75rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .catalog-pagination { font-size: calc(.8125rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .catalog-pagination label { min-width: 0; }
+.hub-command-workspace .catalog-pagination input,
+.hub-command-workspace .catalog-pagination select { font-size: calc(.8125rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .catalog-page-controls button { min-width: 44px; }
+.hub-command-kicker { color: var(--command-accent, #7fe5d9); font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; letter-spacing: .06em; text-transform: uppercase; }
+.hub-command-note { margin: .6rem 0 0; color: var(--command-muted, #b0c4cc); font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.6; }
+.hub-command-roster-list { display: grid; gap: .5rem; max-height: min(52dvh, 580px); overflow-y: auto; padding: 4px; margin: -4px; scrollbar-color: #77b4b1 #0b1b28; }
+.hub-command-roster-entry { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .75rem; padding: .875rem; border: 1px solid var(--command-line, #50747f70); border-left: 3px solid color-mix(in srgb, var(--signature-color) 70%, #b3d7d9); border-radius: 5px; color: #e7f2f7; background: #06101caa; text-align: left; font: inherit; cursor: pointer; }
+.hub-command-roster-entry:hover { background: #132937; }
+.hub-command-roster-entry.is-selected { border-color: #7fe5d9; background: linear-gradient(100deg, #17383f, #0b1927); box-shadow: inset 3px 0 #7fe5d9; }
+.hub-command-roster-identity { min-width: 0; display: grid; gap: .3rem; }
+.hub-command-roster-identity strong { font-size: calc(.9375rem * var(--game-text-scale, 1)); line-height: 1.3; }
+.hub-command-roster-identity > span:last-child { color: #b0c4cc; font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-roster-state { display: grid; justify-items: end; gap: .3rem; font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.4; color: #b0c4cc; }
+.hub-command-roster-state .is-active { color: #91e8b6; }
+.hub-command-selected-mark { color: #05151c; background: #9feadd; padding: .15rem .35rem; border-radius: 3px; }
+.hub-screen .hub-command-workspace.hub-catalog-layout { grid-template-columns: minmax(290px, 31%) minmax(0, 1fr) !important; align-items: start; }
+.hub-screen .hub-command-workspace.hub-catalog-layout > div.hub-command-roster-catalog { padding: 1rem; max-height: none !important; overflow: visible !important; position: static; }
+.hub-command-roster-catalog > h3 { margin: 0 0 1rem; color: #92e4dc; font-size: calc(1rem * var(--game-text-scale, 1)); }
+.hub-command-roster-detail > div:first-child { flex-wrap: wrap; }
+.hub-command-roster-detail .hero-resonance-actions { min-width: 0; }
+.hub-command-roster-detail .hero-resonance-actions > div:last-child { flex-wrap: wrap; }
+.hub-command-roster-detail .hub-dossier-section > summary { min-height: 44px; display: list-item; align-content: center; font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-training { margin-top: 1rem; padding-top: .875rem; border-top: 1px solid var(--command-line); }
+.hub-command-section-heading { display: flex; gap: .5rem; justify-content: space-between; align-items: baseline; flex-wrap: wrap; font-size: calc(.8125rem * var(--game-text-scale, 1)); }
+.hub-command-section-heading > span { font-size: calc(.75rem * var(--game-text-scale, 1)); color: #91e8b6; }
+.hub-command-training-options { display: grid; gap: .5rem; margin-top: .75rem; }
+.hub-command-action { min-height: 44px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; padding: .7rem .8rem; background: #0c2830; color: #b9f7eb; border: 1px solid #68cfc5; border-radius: 4px; font: inherit; font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.45; text-align: left; cursor: pointer; }
+.hub-command-action:hover:not(:disabled) { background: #17414a; }
+.hub-command-action.is-fragment { background: #211d35; border-color: #b7a1e0; color: #e2d4fc; }
+.hub-command-action:disabled { opacity: 1; border-color: #526570; color: #a9bbc3; background: #13202a; cursor: not-allowed; }
+.hub-command-workspace .squad-header h3 { font-size: calc(1.125rem * var(--game-text-scale, 1)); }
+.hub-command-section-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--command-line); }
+.hub-command-section-nav a { min-height: 44px; display: flex; align-items: center; padding: .65rem .875rem; color: #ceeae8; background: #122c35; border: 1px solid #7bafac70; border-radius: 4px; font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; text-decoration: none; }
+.hub-command-section-nav a:hover { color: #fff; background: #22444c; }
+.hub-command-workspace :is(#hub-command-active, #hub-command-tactics, #hub-command-reserve) { scroll-margin-top: 1rem; }
+.hub-command-workspace :is(.squad-header p, .squad-reserve-title span) { font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.6; color: #bacbd2; }
+.hub-command-workspace .squad-zone-title { flex-wrap: wrap; padding: .7rem .8rem; }
+.hub-command-workspace .squad-zone-title span { font-size: calc(.8125rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .squad-zone-title small { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-workspace .squad-composition-controls { padding: .875rem; border: 1px solid var(--command-line); border-radius: 5px; background: #06121dd9; }
+.hub-command-workspace .squad-composition-controls label { font-size: calc(.75rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .squad-composition-controls select { font-size: calc(.8125rem * var(--game-text-scale, 1)); }
+.hub-command-workspace .squad-slot-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.hub-command-workspace .squad-slot-top span { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; color: #a9d5d6; }
+.hub-command-workspace .squad-slot-top .hub-command-bench { width: auto; height: auto; min-height: 44px; padding: .5rem .65rem; flex-shrink: 0; font: inherit; font-size: calc(.75rem * var(--game-text-scale, 1)); border: 1px solid #bf8c88; border-radius: 3px; color: #ffd1c9; background: #381e24; }
+.hub-command-workspace .hub-command-bench:disabled { color: #b0bec4; border-color: #56656c; background: #1e2830; }
+.hub-command-member-card { min-width: 0; display: flex; flex-direction: column; gap: .4rem; }
+.hub-command-member-card.empty { min-height: 220px; padding: 1.5rem; }
+.hub-command-member-card.empty p { font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.6; max-width: 28ch; color: #b0c4cc; }
+.hub-command-workspace .squad-hero-row { grid-template-columns: 80px minmax(0, 1fr); gap: .75rem; margin-top: .4rem; }
+.hub-command-workspace .squad-hero-frame { width: 80px; height: auto; aspect-ratio: 112 / 118; }
+.hub-command-workspace .squad-hero-info strong { font-size: calc(1rem * var(--game-text-scale, 1)); line-height: 1.4; }
+.hub-command-workspace :is(.squad-hero-info small, .squad-reserve-card small) { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; color: #c0cfd4; }
+.hub-command-workspace :is(.squad-hero-info em, .squad-reserve-body em) { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; color: #f3dc92; }
+.hub-command-workspace :is(.squad-mini-stats span, .squad-reserve-stats span, .squad-reserve-tags span) { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; color: #d3e1e6; padding: .25rem .4rem; }
+.hub-command-loadout { display: grid; gap: .4rem; margin: .5rem 0; font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-loadout > div { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); gap: .5rem; }
+.hub-command-loadout dt { color: #aac0c9; }
+.hub-command-loadout dd { margin: 0; color: #eef4f6; }
+.hub-command-hero-actions { margin-top: auto; padding-top: .5rem; }
+.hub-command-workspace .hub-command-hero-actions .btn-retro { font-size: calc(.75rem * var(--game-text-scale, 1)); min-height: 44px; flex: 1 1 100px; }
+.hub-command-workspace .squad-kicker,
+.hub-command-workspace .squad-section-title { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; color: #eadb9d; }
+.hub-command-workspace :is(.squad-grade-row small, .squad-plan-card span, .squad-stat-grid span) { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.6; color: #bacbd2; }
+.hub-command-workspace :is(.squad-bonus-list span, .squad-warning-list p) { font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.6; color: #c8d7dc; }
+.hub-command-workspace .squad-bonus-list strong { font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-workspace .squad-reserve-title { margin-top: 1.5rem; }
+.hub-command-workspace .squad-reserve-grid { grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); padding: .75rem; gap: .75rem; }
+.hub-command-workspace .hub-command-reserve-card { display: flex; flex-direction: column; min-width: 0; cursor: default; padding: .875rem; }
+.hub-command-workspace .squad-reserve-head { align-items: flex-start; flex-wrap: wrap; }
+.hub-command-workspace .squad-reserve-head strong { margin: 0; font-size: calc(.9375rem * var(--game-text-scale, 1)); line-height: 1.45; }
+.hub-command-workspace .squad-reserve-head > span { font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-deploy { width: 100%; margin-top: .875rem; justify-content: center; text-align: center; }
+.hub-command-deploy.is-deployed { border-color: #9dc8af; background: #1b302c; color: #d3edde; }
+.hub-command-identity-grid { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: .875rem; }
+.hub-command-identity-card { min-width: 0; padding: 1.125rem; border: 1px solid var(--command-line, #50747f70); border-radius: 5px; background: #071620c9; }
+.hub-command-identity-name { display: flex; gap: .875rem; align-items: center; margin: 1rem 0; }
+.hub-command-identity-name > div { min-width: 0; }
+.hub-command-monogram { width: 54px; min-height: 54px; flex-shrink: 0; display: grid; place-items: center; color: #9fede1; background: #183c42; border: 1px solid #7ebdbb; border-radius: 4px; font-size: calc(1.5rem * var(--game-text-scale, 1)); }
+.hub-command-identity-name h4 { margin: 0; font-size: calc(1.125rem * var(--game-text-scale, 1)); line-height: 1.4; }
+.hub-command-identity-name p { margin: .35rem 0 0; color: #bdd0d7; font-size: calc(.8125rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-identity-name .hub-command-title-art { padding: .5rem .75rem; border: 1px solid var(--title-color); border-radius: 3px; background-size: cover; background-position: center; color: #fff; text-shadow: 0 1px 3px #000; }
+.hub-command-visibility { display: inline-block; border: 1px solid #7a8a91; border-radius: 3px; padding: .3rem .5rem; font-size: calc(.75rem * var(--game-text-scale, 1)); color: #d5dee2; }
+.hub-command-visibility.is-public { color: #b8f1cd; border-color: #7cad8e; background: #173627; }
+.hub-command-share-code { margin: 1rem 0; font-size: calc(1.125rem * var(--game-text-scale, 1)); line-height: 1.5; letter-spacing: .06em; }
+.hub-command-collection { margin: 1rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.hub-command-collection > div { padding: .65rem; background: #020d17a3; border: 1px solid #45606a60; border-radius: 3px; }
+.hub-command-collection dt { color: #bdcdd3; font-size: calc(.75rem * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-command-collection dd { margin: .4rem 0 0; font-size: calc(1.125rem * var(--game-text-scale, 1)); font-weight: 700; }
+@media (max-width: 1150px) {
+  .hub-screen .hub-command-workspace.hub-catalog-layout { grid-template-columns: minmax(260px, 34%) minmax(0, 1fr) !important; }
+  .hub-command-workspace .squad-slot-grid { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+  .hub-command-identity-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hub-command-identity-card:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .hub-screen .hub-command-workspace.hub-catalog-layout { grid-template-columns: minmax(0, 1fr) !important; }
+  .hub-command-workspace.squad-panel { padding: 1rem; }
+  .hub-command-workspace .squad-command-grid,
+  .hub-command-workspace .squad-meta-grid { grid-template-columns: minmax(0, 1fr); }
+  .hub-command-workspace .squad-slot-grid { grid-template-columns: minmax(0, 1fr); }
+  .hub-command-workspace .squad-composition-controls { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .hub-command-workspace .squad-composition-controls .btn-retro { width: 100%; }
+  .hub-command-identity-grid { grid-template-columns: minmax(0, 1fr); }
+  .hub-command-identity-card:last-child { grid-column: auto; }
+  .hub-command-workspace .squad-reserve-grid { padding: 0; border: 0; background: transparent; }
+  .hub-command-section-nav a { flex: 1 1 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-command-workspace *, .anchor-customization * { scroll-behavior: auto !important; transition: none !important; }
+}

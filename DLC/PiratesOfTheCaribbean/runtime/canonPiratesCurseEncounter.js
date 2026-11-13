@@ -4,6 +4,9 @@
 // these source characters rather than replacing either donor.
 import { BLACK_PEARL_JACK_INCARNATION, BLACK_PEARL_SOURCE_UNIVERSE } from '../../../src/game/canonBlackPearlSourceKits.js';
 
+// Source-guided front-face illustration only; no combat or curse mechanic.
+export const PIRATES_CURSE_MEDALLION_FRONT_ART = '/sprites/source-scenes/curse-of-the-black-pearl-2003/aztec-medallion-front-20261113.png';
+
 export const PIRATES_CURSE_RULES = Object.freeze({
   totalPieces: 882,
   initialReturnedPieces: 880,

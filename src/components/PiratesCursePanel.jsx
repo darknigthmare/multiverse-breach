@@ -1,9 +1,14 @@
 import React from 'react';
+import { isCanonPiratesCurseStage, PIRATES_CURSE_MEDALLION_FRONT_ART } from '../game/canonPiratesCurseEncounter.js';
 import './CanonRescuePanel.css';
+import './PiratesCursePanel.css';
 
-export default function PiratesCursePanel({ encounter, hero, lang = 'fr', paused = false, targeting = false, onCommand }) {
+export default function PiratesCursePanel({ encounter, stage, hero, lang = 'fr', paused = false, targeting = false, onCommand }) {
   if (!encounter?.bossId) return null;
   const fr = lang === 'fr';
+  // The legacy snapshot carries no edition identity. Require the stage guard
+  // before illustrating the 2003 prop; an arbitrary bossId is insufficient.
+  const showMedallion = Boolean(stage && isCanonPiratesCurseStage(stage) && encounter.totalPieces === 882);
   const ready = Boolean(hero && hero.currentHp > 0 && hero.atb >= 100 && hero.state === 'idle'
     && !hero.actionPending && !paused && !targeting && !encounter.commandPending && !encounter.ritualPending);
   const cursed = encounter.curseActive === true;
@@ -43,10 +48,21 @@ export default function PiratesCursePanel({ encounter, hero, lang = 'fr', paused
         ? 'Barbossa et ses pirates maudits survivent aux coups tant que le trésor et les paiements ne sont pas restitués.'
         : 'Barbossa and his cursed pirates survive attacks until the treasure and payments are restored.'}</p>}
       {encounter.cursedHeroIds?.length > 0 && <p>{fr ? "Jack jouable est maudit : ses PV sont protégés jusqu’à la restitution." : "Playable Jack is cursed: his HP is protected until restitution."}</p>}
-      <div className="canon-rescue-panel-status" aria-live="polite">
-        {fr ? 'Pièces rendues au coffre' : 'Coins restored to the chest'} : {encounter.returnedPieces ?? 0}/{encounter.totalPieces ?? 882}
-        {' · '}{encounter.finalCoinsCollected ? (fr ? 'Deux dernières pièces rassemblées' : 'Final two coins collected') : (fr ? 'Deux dernières pièces manquantes' : 'Final two coins missing')}
-        {encounter.willBloodReady && encounter.jackBloodReady && <>{' · '}{fr ? 'Offrandes de Will et Jack prêtes' : 'Will and Jack’s offerings ready'}</>}
+      <div className={showMedallion ? 'pirates-curse-treasure pirates-curse-treasure-illustrated' : 'pirates-curse-treasure'}>
+        {showMedallion && <img
+          className="pirates-curse-medallion"
+          src={PIRATES_CURSE_MEDALLION_FRONT_ART} width={64} height={64} alt="" aria-hidden="true" decoding="async"
+          onError={event => {
+            event.currentTarget.style.display = 'none';
+            event.currentTarget.parentElement?.classList.remove('pirates-curse-treasure-illustrated');
+          }}
+        />}
+        <div className="canon-rescue-panel-status" aria-live="polite">
+          {showMedallion && <span className="pirates-curse-object-name">{fr ? 'Médaillon aztèque' : 'Aztec medallion'}</span>}
+          {fr ? 'Pièces rendues au coffre' : 'Coins restored to the chest'} : {encounter.returnedPieces ?? 0}/{encounter.totalPieces ?? 882}
+          {' · '}{encounter.finalCoinsCollected ? (fr ? 'Deux dernières pièces rassemblées' : 'Final two coins collected') : (fr ? 'Deux dernières pièces manquantes' : 'Final two coins missing')}
+          {encounter.willBloodReady && encounter.jackBloodReady && <>{' · '}{fr ? 'Offrandes de Will et Jack prêtes' : 'Will and Jack’s offerings ready'}</>}
+        </div>
       </div>
       <div className="canon-rescue-panel-actions canon-rescue-panel-actions-three">
         {commands.map(command => {

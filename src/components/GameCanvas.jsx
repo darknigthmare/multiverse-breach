@@ -3142,7 +3142,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             onChaff={handleRexChaff}
           />}
           {stage.mode === 'RPG' && !opponentHasCommand && <PiratesCursePanel
-            encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}
+            stage={stage} encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted || rpgSceneActive} targeting={Boolean(rpgTargeting)}
             onCommand={handlePiratesCurseCommand}
           />}

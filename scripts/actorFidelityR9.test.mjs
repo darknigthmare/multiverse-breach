@@ -11,7 +11,8 @@ import { createPlayerHero } from '../src/game/playerHero.js';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 import { OFFICIAL_COSTUMES_R9, WARDROBE_SOURCES_R9, WARDROBE_RESEARCH_R9 } from '../src/game/wardrobeOfficialR9.js';
 import { OFFICIAL_WARDROBE } from '../src/game/wardrobeOfficial.js';
-import { OFFICIAL_COSTUME_EXTENSION } from '../src/game/wardrobeExpansion.js';
+import { ORIGINAL_COLLECTIONS, SIGNATURE_DESIGNS } from '../src/game/wardrobeOriginals.js';
+import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DESIGN_EXTENSION } from '../src/game/wardrobeExpansion.js';
 import { OFFICIAL_COSTUMES_R7 } from '../src/game/wardrobeOfficialR7.js';
 import { getOfficialCostumes, getWardrobeResearchTargets, wardrobeActorKey, applyActorAppearance, ALL_OFFICIAL_WARDROBE } from '../src/game/wardrobe.js';
 import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool } from '../src/game/wardrobeBoosterRewards.js';
@@ -45,7 +46,12 @@ test('R5 to R7 designs and saved identifiers are all retained',()=>{
   const actor=byKey.get(wardrobeActorKey({id,universe:r.universe}));assert.ok(actor);
   assert.ok(getOfficialCostumes(actor).some(e=>e.key===r.key));
  }
- assert.equal(all.length,19895+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R14.reduce((n,c)=>n+c.actorIds.length,0));assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,91+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R14.reduce((n,c)=>n+c.actorIds.length,0));
+ const boundOriginalDesigns=[...SIGNATURE_DESIGNS,...SIGNATURE_DESIGN_EXTENSION].filter(design=>byKey.has(wardrobeActorKey(design))).length;
+ const expectedOriginal=actors.length*(ORIGINAL_COLLECTIONS.length+ORIGINAL_COLLECTION_EXTENSION.length)+boundOriginalDesigns;
+ const expectedOfficial=91+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R14.reduce((n,c)=>n+c.actorIds.length,0);
+ assert.equal(all.filter(e=>e.origin==='ORIGINAL').length,expectedOriginal);
+ assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,expectedOfficial);
+ assert.equal(all.length,expectedOriginal+expectedOfficial);
 });
 test('Lightning crossover garbs never become Cloud or Lara rewards',()=>{
  for(const id of ['cloud_ff7','lara_croft_tr'])assert.ok(!getOfficialCostumes(actors.find(a=>a.id===id)).some(e=>e.key.startsWith('lr-')));
@@ -126,10 +132,10 @@ test('conflicting pack continuities stay unresolved',()=>{
  assert.ok(row.tasks.some(t=>t.code==='PACK_CONTINUITY_CONFLICT'));
 });
 test('actor-declared incarnation is not overwritten by a pack',()=>assert.equal(buildActorFidelityBacklog({...sample,incarnation:'Exact model'},{continuityIndex:indexActorContinuities([pack])}).incarnation,'Exact model'));
-test('all 4936 current actors receive separate dossiers without mutating the roster',()=>{
+test('all current runtime actors receive separate dossiers without mutating the roster',()=>{
  const before=JSON.stringify(actors),ix=indexActorContinuities(CANON_ROSTER_WAVE),keys=new Set();
  for(const a of actors){const row=buildActorFidelityBacklog(a,{continuityIndex:ix});assert.ok(!keys.has(row.actorKey));keys.add(row.actorKey);assert.ok(row.tasks.length>0);assert.equal(row.actorName,a.name);}
- assert.equal(keys.size,4936);assert.equal(JSON.stringify(actors),before);
+ assert.equal(keys.size,actors.length);assert.equal(JSON.stringify(actors),before);
 });
 test('all official sources retain publishers and checked date, without inventing visual review',()=>{
  assert.equal(WARDROBE_SOURCES_R9.length,7);assert.ok(WARDROBE_SOURCES_R9.every(s=>s.checkedOn==='2026-10-24'&&s.publisher));

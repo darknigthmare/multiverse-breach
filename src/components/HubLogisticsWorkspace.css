@@ -1,0 +1,83 @@
+.hub-logistics-layout { min-width: 0; }
+.hub-logistics-heroes, .hub-logistics-items, .hub-logistics-fusions { display: grid; gap: 12px; }
+.hub-logistics-hero, .hub-logistics-action, .hub-logistics-filters button {
+  min-height: 44px; min-width: 44px; font: inherit; font-size: calc(14px * var(--game-text-scale, 1));
+  color: #e4f8fa; border: 1px solid #597b86; border-radius: 4px; background: #102731;
+  padding: 11px 14px; line-height: 1.5; cursor: pointer; overflow-wrap: anywhere;
+}
+.hub-logistics-hero { display: grid; gap: 6px; width: 100%; text-align: left; background: #0a1822; border-color: #344f5c; }
+.hub-logistics-hero-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.hub-logistics-hero-heading strong { font-size: calc(16px * var(--game-text-scale, 1)); }
+.hub-logistics-hero[aria-pressed='true'] { border-color: #82e3d8; background: #123338; box-shadow: inset 4px 0 #82e3d8; }
+.hub-logistics-hero:hover, .hub-logistics-action:not(:disabled):hover, .hub-logistics-filters button:hover { background: #1a3f49; border-color: #a8eee4; }
+.hub-logistics-state { display: inline-flex; align-items: center; gap: 5px; font-size: calc(12px * var(--game-text-scale, 1)); line-height: 1.5; border: 1px solid #537280; border-radius: 3px; padding: 3px 7px; color: #d3e6ed; background: #0b1a24; }
+.hub-logistics-state[data-state='equipped'] { border-color: #4a9177; color: #a5f1c9; background: #12332e; }
+.hub-logistics-state[data-state='blocked'], .hub-logistics-state[data-state='assigned'] { border-color: #9b7950; color: #ffdaa4; background: #2c241c; }
+.hub-logistics-meta, .hub-logistics-hint { color: #bacfd6; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.65; margin: 0; overflow-wrap: anywhere; }
+.hub-logistics-meta { display: block; }
+.hub-logistics-effect { color: #e0f6ef; font-size: calc(15px * var(--game-text-scale, 1)); line-height: 1.65; margin: 0; overflow-wrap: anywhere; }
+.hub-logistics-heading { margin: 0 0 14px; color: #b5eeeb; font-size: calc(20px * var(--game-text-scale, 1)); line-height: 1.45; overflow-wrap: anywhere; }
+.hub-logistics-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px 18px; }
+.hub-logistics-nav .hub-logistics-action { flex: 1 1 160px; }
+.hub-logistics-section-title { margin: 26px 0 14px; padding-top: 20px; border-top: 1px solid #34515b; color: #e4f5f8; font-size: calc(18px * var(--game-text-scale, 1)); line-height: 1.5; }
+.hub-logistics-section-title[data-tone='fusion'] { color: #ffcf8a; }
+.hub-logistics-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-block: 16px; }
+.hub-logistics-slot { display: flex; flex-direction: column; align-items: stretch; gap: 12px; min-width: 0; padding: 18px; border: 1px solid #477b7d; background: #0b202a; border-radius: 5px; }
+.hub-logistics-slot[data-filled='false'] { border-style: dashed; border-color: #536d79; background: #0a1720; }
+.hub-logistics-slot-heading, .hub-logistics-item-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.hub-logistics-slot-heading h4 { color: #b5d6dd; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.6; margin: 0; }
+.hub-logistics-slot-name { color: #f0f9fa; font-size: calc(17px * var(--game-text-scale, 1)); line-height: 1.5; overflow-wrap: anywhere; }
+.hub-logistics-slot > .hub-logistics-action { margin-top: auto; }
+.hub-logistics-action[data-tone='remove'] { color: #ffd1c6; border-color: #b58379; background: #30242a; }
+.hub-logistics-action[data-tone='fusion'] { color: #ffdfae; border-color: #be965e; background: #332a1c; }
+.hub-logistics-action:disabled { cursor: not-allowed; color: #b9c7ce; border-color: #60717d; background: #19252e; box-shadow: none; opacity: 1; }
+.hub-logistics-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.hub-logistics-filters button[aria-pressed='true'] { color: #ffdfa5; border-color: #e0b875; background: #352d21; box-shadow: inset 0 -3px #e0b875; }
+.hub-logistics-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 18px; min-width: 0; padding: 18px; border: 1px solid #365361; border-radius: 5px; background: #0a1a25; }
+.hub-logistics-item[data-kind='event'] { border-inline-start: 3px solid #ce9f77; }
+.hub-logistics-item[data-kind='nexus'] { border-inline-start: 3px solid #d4c277; }
+.hub-logistics-item-content { display: grid; gap: 8px; min-width: 0; }
+.hub-logistics-item h5, .hub-logistics-fusion-card h5 { margin: 0; font-size: calc(17px * var(--game-text-scale, 1)); line-height: 1.5; color: #edf8fa; overflow-wrap: anywhere; }
+.hub-logistics-item-action { display: grid; gap: 8px; align-self: center; max-width: 230px; }
+.hub-logistics-item .gear-comparison { padding: 6px 0; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.6; }
+.hub-logistics-item .gear-comparison small { font-size: inherit; flex-basis: 100%; }
+.hub-logistics-lore { color: #c4d8e0; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.7; min-width: 0; }
+.hub-logistics-lore summary { display: list-item; min-height: 44px; padding: 10px 4px; box-sizing: border-box; color: #a1e0df; cursor: pointer; }
+.hub-logistics-lore p { margin: 8px 0; max-width: 75ch; overflow-wrap: anywhere; }
+.hub-logistics-fusion-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(190px, .7fr); align-items: center; gap: 18px; padding: 18px; background: #251f17; border: 1px solid #846944; border-radius: 5px; }
+.hub-logistics-fusion-card > div, .hub-logistics-fusion-action { display: grid; gap: 8px; }
+.hub-logistics-fusion-action strong { display: block; color: #ffcf9c; }
+.hub-logistics-empty { grid-column: 1 / -1; padding: 22px; border: 1px dashed #65828d; border-radius: 5px; background: #0a1b25; color: #d5e6ec; font-size: calc(15px * var(--game-text-scale, 1)); line-height: 1.7; }
+.hub-logistics-empty strong { font-size: calc(17px * var(--game-text-scale, 1)); color: #f0f8fa; }
+.hub-logistics-empty p { max-width: 70ch; margin: 10px 0; }
+.hub-logistics-shop-intro { margin: 0 0 18px; color: #c6dbe1; font-size: calc(15px * var(--game-text-scale, 1)); line-height: 1.7; max-width: 75ch; }
+.hub-logistics-shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr)); align-items: start; gap: 20px; }
+.hub-logistics-shop-card { min-width: 0; border: 1px solid #516777; border-top: 3px solid var(--logistics-accent, #8edbd6); background: #0b1a25; border-radius: 6px; overflow: hidden; }
+.hub-logistics-shop-card[data-owned='true'] { border-color: #6ca387; }
+.hub-logistics-shop-art { position: relative; display: flex; align-items: center; justify-content: center; min-height: 158px; background-size: cover; background-position: center; border-bottom: 1px solid #3d5462; }
+.hub-logistics-shop-kind { position: absolute; top: 10px; left: 10px; z-index: 1; padding: 4px 8px; color: #f1f8fa; background: #06111bef; border: 1px solid #81949d; border-radius: 3px; font-size: calc(12px * var(--game-text-scale, 1)); line-height: 1.5; max-width: calc(100% - 20px); box-sizing: border-box; overflow-wrap: anywhere; }
+.hub-logistics-shop-diamond { display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; transform: rotate(45deg); border: 2px solid var(--logistics-accent, #8edbd6); background: #000b; box-shadow: 0 0 18px color-mix(in srgb, var(--logistics-accent, #8edbd6) 38%, transparent); }
+.hub-logistics-shop-content { display: grid; gap: 12px; padding: 20px; min-width: 0; }
+.hub-logistics-shop-origin { margin: 0; color: #b4cbd5; font-size: calc(13px * var(--game-text-scale, 1)); line-height: 1.6; overflow-wrap: anywhere; }
+.hub-logistics-shop-content h4 { margin: 0; font-size: calc(20px * var(--game-text-scale, 1)); line-height: 1.4; color: #f0f8fa; overflow-wrap: anywhere; }
+.hub-logistics-shop-purchase { display: grid; gap: 8px; margin-top: 4px; padding-top: 14px; border-top: 1px solid #3b5361; }
+.hub-logistics-price { margin: 0; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.6; color: #dce9ef; }
+.hub-logistics-price strong { font-size: calc(25px * var(--game-text-scale, 1)); color: #ffe1a8; font-variant-numeric: tabular-nums; }
+.hub-logistics-shop-status { margin: 0; color: #bde8dc; font-size: calc(14px * var(--game-text-scale, 1)); line-height: 1.6; }
+.hub-logistics-shop-status[data-state='blocked'] { color: #ffcf9c; }
+.hub-logistics-shop-status[data-state='equipped'] { color: #a5f1c9; }
+.hub-logistics-shop-card .hub-logistics-lore { border-top: 1px solid #3b5361; }
+.hub-logistics-hero:focus-visible, .hub-logistics-action:focus-visible, .hub-logistics-filters button:focus-visible, .hub-logistics-lore summary:focus-visible { outline: 3px solid #ffdc8d; outline-offset: 3px; }
+html[data-game-contrast='high'] :is(.hub-logistics-item, .hub-logistics-slot, .hub-logistics-shop-card, .hub-logistics-hero, .hub-logistics-empty, .hub-logistics-fusion-card) { background: #020b12; border-color: #b0eee5; }
+@media (max-width: 1100px) {
+  .hub-logistics-slots { grid-template-columns: minmax(0, 1fr); }
+  .hub-logistics-item, .hub-logistics-fusion-card { grid-template-columns: minmax(0, 1fr); }
+  .hub-logistics-item-action { max-width: none; justify-items: stretch; }
+}
+@media (max-width: 700px) {
+  .hub-logistics-item, .hub-logistics-slot, .hub-logistics-fusion-card { padding: 15px; }
+  .hub-logistics-shop-content { padding: 16px; }
+  .hub-logistics-shop-grid { gap: 16px; }
+  .hub-logistics-filters button { flex: 1 1 125px; }
+  .hub-logistics-item-action .hub-logistics-action { width: 100%; }
+}
