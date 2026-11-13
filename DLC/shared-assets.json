@@ -4,17 +4,17 @@
   "sharedDependencyCoverage": "Explicit static references, common UI literals and directory affiliations only; dynamic UI and common engine dependencies are not exhaustively inferred.",
   "distribution": {
     "dlcManifests": 505,
-    "trackedPublicPaths": 19581,
-    "assignedToDlc": 11968,
+    "trackedPublicPaths": 19582,
+    "assignedToDlc": 11969,
     "unclaimedByDlc": 7613,
     "unclaimedReasons": {
-      "base-game": 681,
+      "base-game": 682,
       "global-final-boss-directory-not-the-matrix-dlc": 1,
       "historical-bucket-guitar-echo-identity-not-buckethead": 9,
       "historical-directory-without-current-universe-alias": 42,
       "multiple-universe-references": 16,
       "original-campaign": 2844,
-      "shared-or-unclassified": 4019,
+      "shared-or-unclassified": 4018,
       "unregistered-runtime-key": 1
     }
   },
@@ -33649,7 +33649,13 @@
     {
       "publicPath": "/favicon.png",
       "sourcePath": "public/favicon.png",
-      "reason": "shared-or-unclassified"
+      "reason": "base-game",
+      "basis": [
+        "index.html#common-ui"
+      ],
+      "referencedBy": [
+        "Nexus de Convergence"
+      ]
     },
     {
       "publicPath": "/favicon.svg",
