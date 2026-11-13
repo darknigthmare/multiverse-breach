@@ -1,0 +1,80 @@
+TAP version 13
+# Subtest: base: the real Pirates panel bundles with a complete optional API and only selected source modules
+not ok 1 - base: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 83.860084
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcPiratesAbsenceContract.test.mjs:16:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Build failed with 1 error:
+    
+    [31m[MISSING_EXPORT] [0m"PIRATES_CURSE_MEDALLION_FRONT_ART" is not exported by "src/game/canonPiratesCurseEncounter.js".
+       [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/PiratesCursePanel.jsx:2:36 [38;5;246m][0m
+       [38;5;246m│[0m
+     [38;5;246m2 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mP[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mg[0m[38;5;249me[0m[38;5;249m,[0m[38;5;249m [0mPIRATES_CURSE_MEDALLION_FRONT_ART[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m.[0m[38;5;249m.[0m[38;5;249m/[0m[38;5;249mg[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mP[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mu[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249m.[0m[38;5;249mj[0m[38;5;249ms[0m[38;5;249m"[0m[38;5;249m;[0m
+     [38;5;240m  │[0m                                    ────────────────┬────────────────  
+     [38;5;240m  │[0m                                                    ╰────────────────── Missing export
+    [38;5;246m───╯[0m
+    
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    aggregateBindingErrorsIntoJsError (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/error-B68YLzl3.mjs:48:18)
+    unwrapBindingResult (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/error-B68YLzl3.mjs:18:128)
+    #build (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/rolldown-build-DR0wzp0V.mjs:3256:34)
+    async buildEnvironment (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:32575:66)
+    async Object.build (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:32997:19)
+    async TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcPiratesAbsenceContract.test.mjs:18:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: Halo: the real Pirates panel bundles with a complete optional API and only selected source modules
+not ok 2 - Halo: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 42.463145
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcPiratesAbsenceContract.test.mjs:16:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Build failed with 1 error:
+    
+    [31m[MISSING_EXPORT] [0m"PIRATES_CURSE_MEDALLION_FRONT_ART" is not exported by "src/game/canonPiratesCurseEncounter.js".
+       [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/components/PiratesCursePanel.jsx:2:36 [38;5;246m][0m
+       [38;5;246m│[0m
+     [38;5;246m2 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[0m[38;5;249mr[0m[38;5;249mt[0m[38;5;249m [0m[38;5;249m{[0m[38;5;249m [0m[38;5;249mi[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mP[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mS[0m[38;5;249mt[0m[38;5;249ma[0m[38;5;249mg[0m[38;5;249me[0m[38;5;249m,[0m[38;5;249m [0mPIRATES_CURSE_MEDALLION_FRONT_ART[38;5;249m [0m[38;5;249m}[0m[38;5;249m [0m[38;5;249mf[0m[38;5;249mr[0m[38;5;249mo[0m[38;5;249mm[0m[38;5;249m [0m[38;5;249m"[0m[38;5;249m.[0m[38;5;249m.[0m[38;5;249m/[0m[38;5;249mg[0m[38;5;249ma[0m[38;5;249mm[0m[38;5;249me[0m[38;5;249m/[0m[38;5;249mc[0m[38;5;249ma[0m[38;5;249mn[0m[38;5;249mo[0m[38;5;249mn[0m[38;5;249mP[0m[38;5;249mi[0m[38;5;249mr[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249ms[0m[38;5;249mC[0m[38;5;249mu[0m[38;5;249mr[0m[38;5;249ms[0m[38;5;249me[0m[38;5;249mE[0m[38;5;249mn[0m[38;5;249mc[0m[38;5;249mo[0m[38;5;249mu[0m[38;5;249mn[0m[38;5;249mt[0m[38;5;249me[0m[38;5;249mr[0m[38;5;249m.[0m[38;5;249mj[0m[38;5;249ms[0m[38;5;249m"[0m[38;5;249m;[0m
+     [38;5;240m  │[0m                                    ────────────────┬────────────────  
+     [38;5;240m  │[0m                                                    ╰────────────────── Missing export
+    [38;5;246m───╯[0m
+    
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    aggregateBindingErrorsIntoJsError (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/error-B68YLzl3.mjs:48:18)
+    unwrapBindingResult (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/error-B68YLzl3.mjs:18:128)
+    #build (file:///workspace/multiverse-breach/node_modules/rolldown/dist/shared/rolldown-build-DR0wzp0V.mjs:3256:34)
+    async buildEnvironment (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:32575:66)
+    async Object.build (file:///workspace/multiverse-breach/node_modules/vite/dist/node/chunks/node.js:32997:19)
+    async TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcPiratesAbsenceContract.test.mjs:18:20)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Pirates: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 3 - Pirates: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 72.083456
+  type: 'test'
+  ...
+# Subtest: all: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 4 - all: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 30.056829
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 2
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 606.683703

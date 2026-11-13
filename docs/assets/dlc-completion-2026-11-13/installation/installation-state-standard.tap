@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: a known pack retains historical and future mission IDs absent from this catalog
+ok 1 - a known pack retains historical and future mission IDs absent from this catalog
+  ---
+  duration_ms: 2.856594
+  type: 'test'
+  ...
+# Subtest: current missions still follow completed stages and catalog order without restoring stale unlocks
+ok 2 - current missions still follow completed stages and catalog order without restoring stale unlocks
+  ---
+  duration_ms: 0.512842
+  type: 'test'
+  ...
+# Subtest: a newer save survives an older catalog round trip and resumes after catalog restoration
+ok 3 - a newer save survives an older catalog round trip and resumes after catalog restoration
+  ---
+  duration_ms: 0.53695
+  type: 'test'
+  ...
+# Subtest: refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+ok 4 - refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+  ---
+  duration_ms: 1.909137
+  type: 'test'
+  ...
+# Subtest: base keeps campaign availability separate from installation, including artwork-only packs
+ok 5 - base keeps campaign availability separate from installation, including artwork-only packs
+  ---
+  duration_ms: 2.272154
+  type: 'test'
+  ...
+# Subtest: selected installation has canonical order and immutable snapshots
+ok 6 - selected installation has canonical order and immutable snapshots
+  ---
+  duration_ms: 0.728828
+  type: 'test'
+  ...
+# Subtest: installation rejects ambiguous, unknown, duplicate and misspelled profiles
+ok 7 - installation rejects ambiguous, unknown, duplicate and misspelled profiles
+  ---
+  duration_ms: 1.096322
+  type: 'test'
+  ...
+# Subtest: complete registry can be imported with every package directory physically absent
+ok 8 - complete registry can be imported with every package directory physically absent
+  ---
+  duration_ms: 2.15685
+  type: 'test'
+  ...
+# Subtest: stable indexes retain removed identities and append without reusing their numbers
+ok 9 - stable indexes retain removed identities and append without reusing their numbers
+  ---
+  duration_ms: 0.482277
+  type: 'test'
+  ...
+# Subtest: partial profiles never derive mission numbers from reduced array positions
+ok 10 - partial profiles never derive mission numbers from reduced array positions
+  ---
+  duration_ms: 0.432502
+  type: 'test'
+  ...
+# Subtest: replay identity history preserves completed stages after authored catalogue removal
+ok 11 - replay identity history preserves completed stages after authored catalogue removal
+  ---
+  duration_ms: 0.590901
+  type: 'test'
+  ...
+# Subtest: actual App normalization and serialization retain dormant data through a base-only round trip
+ok 12 - actual App normalization and serialization retain dormant data through a base-only round trip
+  ---
+  duration_ms: 6261.823506
+  type: 'test'
+  ...
+# Subtest: actual App normalization and serialization preserve unknown missions inside a known pack without completing them
+ok 13 - actual App normalization and serialization preserve unknown missions inside a known pack without completing them
+  ---
+  duration_ms: 17.039936
+  type: 'test'
+  ...
+# Subtest: actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+ok 14 - actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+  ---
+  duration_ms: 6.318272
+  type: 'test'
+  ...
+# Subtest: legacy v6 save migrates identically with complete and absent runtime catalogs
+ok 15 - legacy v6 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 24.932093
+  type: 'test'
+  ...
+# Subtest: legacy v8 save migrates identically with complete and absent runtime catalogs
+ok 16 - legacy v8 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 10.583369
+  type: 'test'
+  ...
+# Subtest: runtime squad falls back to the Anchor without rewriting the saved slots
+ok 17 - runtime squad falls back to the Anchor without rewriting the saved slots
+  ---
+  duration_ms: 3.914639
+  type: 'test'
+  ...
+# Subtest: show/hide installed content preserves absent and future reserve preferences
+ok 18 - show/hide installed content preserves absent and future reserve preferences
+  ---
+  duration_ms: 1.641874
+  type: 'test'
+  ...
+# Subtest: unloaded and future OC campaign records survive progress rebuilding
+ok 19 - unloaded and future OC campaign records survive progress rebuilding
+  ---
+  duration_ms: 0.909561
+  type: 'test'
+  ...
+# Subtest: a multi-universe phase cannot bypass missing or reserved sources
+ok 20 - a multi-universe phase cannot bypass missing or reserved sources
+  ---
+  duration_ms: 0.799946
+  type: 'test'
+  ...
+# Subtest: selected arc retains the complete catalog final and phase identities
+ok 21 - selected arc retains the complete catalog final and phase identities
+  ---
+  duration_ms: 0.999957
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7187.925098

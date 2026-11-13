@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "reviewedAtUtc": "2026-11-13T10:18:28.370715+00:00",
+  "reviewer": {
+    "role": "Independent secondary review",
+    "agent": "/root/p1_metadata_lot",
+    "producerAgent": "/root/p1_assets_lot002",
+    "notProducerOfArtwork": true
+  },
+  "status": "VISUAL_CANDIDATE_ACCEPTED_RUNTIME_BINDING_BLOCKED_SOURCE_EDITION_MISMATCH",
+  "boundedVisualCandidateAccepted": true,
+  "runtimeBindingApproved": false,
+  "runtimeBound": false,
+  "asset": {
+    "path": "DLC/AsterixObelix/assets/sprites/generated/bosses/asterix-1992/roman-legionary.png",
+    "sha256": "1417e0bb3b54ea7cbe3ec3be6294ce36cbde085ef0685bbd2604e0d7bfcbd14e",
+    "bytes": 819662,
+    "size": [
+      1536,
+      1024
+    ],
+    "frameCount": 16,
+    "columns": 4,
+    "rows": 4,
+    "cellSize": [
+      384,
+      256
+    ],
+    "baseline": 232,
+    "authoredFacing": "right"
+  },
+  "qualifiedSource": {
+    "game": "Astérix",
+    "developer": "Konami",
+    "publisher": "Konami",
+    "platform": "Arcade",
+    "year": 1992,
+    "unit": "Legionary 01",
+    "referencesManifest": "../references.json",
+    "sourceMetadataExtracts": "../source-page-extracts.json",
+    "referenceEvidenceHashesVerified": true,
+    "visuallyInspectedReferenceIds": [
+      "asterix-arcade-legionary01-sheet",
+      "qualified-spear-seed",
+      "qualified-spear-thrust-detail"
+    ],
+    "metadataIndependentlyRead": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Asterix_(arcade_game)",
+        "facts": [
+          "Developer Konami",
+          "Publisher Konami",
+          "Platform Arcade",
+          "Release 1992"
+        ]
+      },
+      {
+        "url": "https://www.spriters-resource.com/arcade/asterix/asset/147491/",
+        "facts": [
+          "Name Legionary 01",
+          "Category Arcade",
+          "Game Asterix",
+          "Uploaded By jones",
+          "1725x602"
+        ]
+      }
+    ],
+    "excludedAdaptations": [
+      "Sega / Master System homonym Asterix_(1992_video_game)",
+      "SNES adaptation; initial reviewer platform assumption withdrawn before any binding"
+    ]
+  },
+  "currentRuntimeTarget": {
+    "actorKey": "[\"Asterix & Obelix\",\"name:Roman Legionary\"]",
+    "actorId": "",
+    "kind": "enemy",
+    "existingIncarnation": "",
+    "existingReference": "",
+    "existingVisualAnchor": "",
+    "existingRasterPath": "/sprites/generated/bosses/asterix-obelix/roman-legionary.png",
+    "sourceExport": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actors.json",
+    "rosterSource": "DLC/AsterixObelix/data/expandedUniverses.js",
+    "rosterMediaType": "manga",
+    "activeSceneSource": "src/game/melee/stageAtmosphereUniverseDefaultsPartA.js:183",
+    "activeSceneContinuity": "Astérix — albums de Goscinny et Uderzo",
+    "compatiblePlayableArcadeTargetVerified": false,
+    "bindingBlocker": "The candidate is an arcade Konami1992 interpretation, while the active atmosphere is explicitly comic-album continuity and the generic actor has no edition lock. Do not apply the arcade body globally to comic scenes. No compatible playable source-specific target is demonstrated."
+  },
+  "observations": [
+    {
+      "feature": "weapon",
+      "result": "PASS_AS_SOURCE_ANCHORED_CANDIDATE",
+      "observation": "A slender brown shaft and silver spear point replace the first attempt's wrong short metal weapon. Upright and horizontal thrust poses retain the shaft and full point."
+    },
+    {
+      "feature": "helmet",
+      "result": "PASS_AS_SOURCE_ANCHORED_CANDIDATE",
+      "observation": "The low silver-gray cap and cheek guards match the qualified source family. The tall spike of the rejected first attempt is absent in the16 inspected poses; the separate spear point is not treated as a helmet spike."
+    },
+    {
+      "feature": "costume_and_palette",
+      "result": "PASS_AS_SOURCE_ANCHORED_CANDIDATE",
+      "observation": "Green short tunic, gray cuirass and shoulder pieces, red waist detail, brown sandals, blue rectangular shield with silver rim and gold boss/corners remain coherent. The generated shading and microgeometry are authored interpretations."
+    },
+    {
+      "feature": "anatomy",
+      "result": "PASS_AT_INSPECTED_SCALES",
+      "observation": "One stocky adult body, one head, attached limbs, continuous weapon grip and consistent facial identity are visible throughout. No duplicated or detached limb was observed; fine finger/toe microanatomy is not certified."
+    },
+    {
+      "feature": "alpha_and_cropping",
+      "result": "PASS",
+      "observation": "Real transparent alpha is present. No visible red/yellow fringe, cropped sandal or truncated spear point appears in the normalized contact sheets at native68/96 target heights. All16 alpha64 bounds remain inside their384x256 cells."
+    },
+    {
+      "feature": "pivots_and_walk",
+      "result": "PASS_AFTER_CORRECTION",
+      "observation": "The initial normalization followed whichever foot was lowest and introduced a large lateral torso sweep. Centering the low zone containing both feet removes that artificial sweep. Small remaining stride motion is visible and acceptable for this coarse four-frame candidate. Ground contact differs by one source pixel between rows."
+    }
+  ],
+  "reviewedFrames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "state": "idle",
+      "observation": "Neutral guard: low cap, cheek guards, green tunic, blue/gold shield and separate upright spear remain legible."
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "state": "idle",
+      "observation": "Small head/hand variation; shield shape and warm skin palette remain consistent."
+    },
+    {
+      "index": 2,
+      "row": 0,
+      "column": 2,
+      "state": "idle",
+      "observation": "Raised chest/head pose keeps the same helmet, nose and equipment; no tall helmet spike."
+    },
+    {
+      "index": 3,
+      "row": 0,
+      "column": 3,
+      "state": "idle",
+      "observation": "Return to guard; both sandals and the complete spear point remain inside the cell."
+    },
+    {
+      "index": 4,
+      "row": 1,
+      "column": 0,
+      "state": "run",
+      "observation": "Forward step with one planted sandal; the corrected lower-body pivot no longer pulls the torso far sideways."
+    },
+    {
+      "index": 5,
+      "row": 1,
+      "column": 1,
+      "state": "run",
+      "observation": "Opposite leg lifts; the body scale, green garment and shield remain stable."
+    },
+    {
+      "index": 6,
+      "row": 1,
+      "column": 2,
+      "state": "run",
+      "observation": "Alternate support pose; there are no duplicated legs or detached feet visible at the inspected scales."
+    },
+    {
+      "index": 7,
+      "row": 1,
+      "column": 3,
+      "state": "run",
+      "observation": "Trailing sandal lifts into the next step; residual lateral motion is small and follows the stride."
+    },
+    {
+      "index": 8,
+      "row": 2,
+      "column": 0,
+      "state": "attack",
+      "observation": "Guard/anticipation begins with the spear held upright and the shield forward."
+    },
+    {
+      "index": 9,
+      "row": 2,
+      "column": 1,
+      "state": "attack",
+      "observation": "Spear lowers diagonally, with the grip and shaft connected to the weapon hand."
+    },
+    {
+      "index": 10,
+      "row": 2,
+      "column": 2,
+      "state": "attack",
+      "observation": "The arm extends into a horizontal thrust; the full spear tip is retained and no extra arm appears."
+    },
+    {
+      "index": 11,
+      "row": 2,
+      "column": 3,
+      "state": "attack",
+      "observation": "Recovery returns the spear upright without replacing its wooden shaft or shield."
+    },
+    {
+      "index": 12,
+      "row": 3,
+      "column": 0,
+      "state": "hit",
+      "observation": "Surprised open-mouth reaction retains helmet, spear and shield."
+    },
+    {
+      "index": 13,
+      "row": 3,
+      "column": 1,
+      "state": "hit",
+      "observation": "Backward lean and tilted shield read as recoil; the lifted foot remains attached."
+    },
+    {
+      "index": 14,
+      "row": 3,
+      "column": 2,
+      "state": "hit",
+      "observation": "Recovery pose keeps the same face, costume and weapon ownership."
+    },
+    {
+      "index": 15,
+      "row": 3,
+      "column": 3,
+      "state": "hit",
+      "observation": "Return toward guard; this is a coarse hit/recovery frame, not a complete canonical death animation."
+    }
+  ],
+  "nativeScaleInspection": {
+    "targetCellHeightsPx": [
+      68,
+      96,
+      256
+    ],
+    "sourceCellHeightPx": 256,
+    "rendererDefaultEnemyTargetHeightPx": 68,
+    "approxVisibleBodyHeightAt68Px": 52,
+    "views": [
+      "roman-legionary-contact.png",
+      "roman-legionary-contact-96px.png",
+      "roman-legionary-contact-68px.png"
+    ],
+    "result": "Spear, low helmet, green tunic and blue/gold shield remain distinguishable at the68px renderer target; the thrust silhouette is different from guard and recoil."
+  },
+  "motionInspection": {
+    "method": "All four sequential poses per state inspected through contact sheets and decoded GIF frame metadata; this is not an engine playthrough.",
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "framesPerState": 4,
+    "previewDurationsMs": [
+      160,
+      160,
+      160,
+      160
+    ],
+    "runSilhouetteCenterAmplitudeBeforeCellPx": 59.5,
+    "runSilhouetteCenterAmplitudeAfterCellPx": 7.5,
+    "runSilhouetteCenterAmplitudeBeforeAt68Px": 15.8046875,
+    "runSilhouetteCenterAmplitudeAfterAt68Px": 1.9921875,
+    "measurementMeaning": "Range of the per-frame alpha64 bounding-box center, not an exact head-tracking or in-game foot-sliding measurement.",
+    "canonicalAnimationTimingVerified": false,
+    "realTimeEnginePlaybackObserved": false
+  },
+  "iterationHistory": [
+    {
+      "status": "REJECTED",
+      "artifact": "../generation/attempt-1-rejected.raw.png",
+      "reason": "Wrong weapon and tall helmet spike; independently viewed against the qualified source."
+    },
+    {
+      "status": "REJECTED_FOR_ANCHORING",
+      "artifact": "attempt-before-body-pivot/",
+      "atlasSha256": "feaac1dd7570f54e48537f79dc41b047205abda9873ff66ecf323eaa6f62217b",
+      "reason": "Planted-foot pivot changed sides and moved the entire run silhouette laterally."
+    },
+    {
+      "status": "ACCEPTED_VISUAL_CANDIDATE_ONLY",
+      "atlasSha256": "1417e0bb3b54ea7cbe3ec3be6294ce36cbde085ef0685bbd2604e0d7bfcbd14e",
+      "reason": "Complete spear, low helmet, stable source palette and corrected low-body anchoring; runtime source-edition compatibility remains unresolved."
+    }
+  ],
+  "evidence": {
+    "technicalQa": "roman-legionary-technical-qa.json",
+    "independentMeasurements": "roman-legionary-independent-measurements.json",
+    "generationReceipt": "../generation/roman-legionary-generation.json",
+    "referenceManifestSha256": "3811df1d172d6abda3b85f651279ee6227f3d57975211ac38b09ec339d1f9c04",
+    "technicalQaSha256": "090d3089d41a5a967f432f1974a02884832e0d75c248f41450455edaa06cf3ef",
+    "independentMeasurementsSha256": "48d6dacf938715ca4b0e2a286fdb294fa2a2787ae39a43821f5b6df4a7ce38d1"
+  },
+  "remainingLimits": [
+    "No pixel-for-pixel or canonical timing certification; the source sprite has been interpreted in the project art style.",
+    "Only four coarse legacy animation rows are supplied; dedicated intro/outro/victory/defeat/fatality and all source frames are not delivered by this candidate.",
+    "No in-game rendering or battle playthrough performed by this review.",
+    "Do not set the whole universe or generic Roman Legionary roster entry to arcade1992, do not bind this body into comic scenes, and do not create a generic scene merely to close this finding."
+  ],
+  "source1to1Verified": false,
+  "artApprovedAsExactReplica": false,
+  "inGameReviewPerformed": false,
+  "actorRasterFindingClosed": false,
+  "actorDossierClosed": false,
+  "p0ClosuresClaimed": 0,
+  "p1ClosuresClaimed": 0,
+  "reviewProcess": {
+    "newGenerationCalls": 0,
+    "heavyNodeProcesses": 0,
+    "sharedRuntimeFilesModified": false
+  }
+}

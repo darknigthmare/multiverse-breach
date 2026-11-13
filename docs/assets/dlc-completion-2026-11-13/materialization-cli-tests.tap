@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: missing real Git blobs, hydrated cache and unresolved LFS payloads have different identities and sizes
+ok 1 - missing real Git blobs, hydrated cache and unresolved LFS payloads have different identities and sizes
+  ---
+  duration_ms: 65.165848
+  type: 'test'
+  ...
+# Subtest: same-size corrupted LFS cache fails SHA verification and cannot count as locally recoverable
+ok 2 - same-size corrupted LFS cache fails SHA verification and cannot count as locally recoverable
+  ---
+  duration_ms: 28.799854
+  type: 'test'
+  ...
+# Subtest: truncated LFS headers and missing pointer fields never become materialized image data
+ok 3 - truncated LFS headers and missing pointer fields never become materialized image data
+  ---
+  duration_ms: 72.780078
+  type: 'test'
+  ...
+# Subtest: hydrated LFS files require payload SHA verification and changed-size native files lose the old dedup identity
+ok 4 - hydrated LFS files require payload SHA verification and changed-size native files lose the old dedup identity
+  ---
+  duration_ms: 47.648531
+  type: 'test'
+  ...
+# Subtest: base selection excludes optional DLC; export budgets never silently omit non-media costs
+ok 5 - base selection excludes optional DLC; export budgets never silently omit non-media costs
+  ---
+  duration_ms: 72.751664
+  type: 'test'
+  ...
+# Subtest: a standalone source export reports unknown missing payloads and never borrows a parent Git index
+ok 6 - a standalone source export reports unknown missing payloads and never borrows a parent Git index
+  ---
+  duration_ms: 15.91022
+  type: 'test'
+  ...
+# Subtest: symlinked sources are blocked without reading through them
+ok 7 - symlinked sources are blocked without reading through them
+  ---
+  duration_ms: 22.035625
+  type: 'test'
+  ...
+# Subtest: missing promisor Git objects stay missing without invoking a remote helper
+ok 8 - missing promisor Git objects stay missing without invoking a remote helper
+  ---
+  duration_ms: 35.442558
+  type: 'test'
+  ...
+# Subtest: strict CLI writes only an explicit new report, exits nonzero for missing media and refuses overwrite
+ok 9 - strict CLI writes only an explicit new report, exits nonzero for missing media and refuses overwrite
+  ---
+  duration_ms: 284.502325
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 745.229304

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=8192",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/dlcProfileRuntime.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 100.298,
+  "sourceBase": "632d8bb9fab5e8dedb3e97abb6f8d979b8cb8ab0"
+}

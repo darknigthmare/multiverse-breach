@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "assetId": "roman-legionary01-asterix-konami-arcade1992-v1",
+  "actorKey": "[\"Asterix & Obelix\",\"name:Roman Legionary\"]",
+  "sourceIncarnation": "Astérix (Konami, arcade, 1992), Legionary01",
+  "attempts": [
+    {
+      "attempt": 1,
+      "date": "2026-11-13",
+      "tool": "image_gen.imagegen",
+      "toolModelVersion": "not exposed",
+      "sourceIncarnation": "Astérix (Konami, arcade, 1992), Legionary01",
+      "status": "VISUAL_REJECTED",
+      "reason": "Producer incorrectly described source spear as sword and read upright spear point as helmet spike. Result contains a wrong metal sword and tall helmet spike. No runtime use.",
+      "toolOutputOriginalPath": "/workspace/generated_images/exec-7c3f8764-be03-4642-82b4-ea2a28d407d2.png",
+      "rawPath": "generation/attempt-1-rejected.raw.png",
+      "rawSha256": "2639d7d936cf3a369611899bb8b9903cbe586b276f65508b192028854904975f",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "promptPath": "generation/attempt-1-rejected.prompt.txt",
+      "promptFileSha256": "efeac6d09549a51603a6e4844f1e10b55e1850d9b4c49409854d7c65fe612dee",
+      "referenceIds": [
+        "initial-multiframe-reference"
+      ],
+      "transparentBackground": true,
+      "providerRefusal": false
+    },
+    {
+      "attempt": 2,
+      "date": "2026-11-13",
+      "tool": "image_gen.imagegen",
+      "toolModelVersion": "not exposed",
+      "sourceIncarnation": "Astérix (Konami, arcade, 1992), Legionary01",
+      "status": "VISUAL_CANDIDATE_ACCEPTED_UNBOUND",
+      "reason": "Corrected from closer source crops: brown-shafted spear and low cap without spike. Packing and motion anchoring reviewed independently.",
+      "toolOutputOriginalPath": "/workspace/generated_images/exec-112a23e6-b659-4d9c-b039-f1c78b7fad00.png",
+      "rawPath": "generation/attempt-2-corrected.raw.png",
+      "rawSha256": "d9f6c28594ebef6d8f9b494b7c2eea905e4f6219f43edae28af71da08ae71109",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "promptPath": "generation/attempt-2-corrected.prompt.txt",
+      "promptFileSha256": "54c3b9e5010cf3587cb5da3a8561556ea06a5d0dfd5ee87c59ffdc7a2e87f2cc",
+      "referenceIds": [
+        "qualified-spear-seed",
+        "qualified-spear-thrust-detail",
+        "attempt-1-rejected.raw.png"
+      ],
+      "transparentBackground": true,
+      "providerRefusal": false
+    }
+  ],
+  "normalizationScript": "../normalize_roman_legionary.py",
+  "normalizationIterations": 2,
+  "beforePivotCorrection": "../validation/attempt-before-body-pivot/",
+  "finalAssetPath": "DLC/AsterixObelix/assets/sprites/generated/bosses/asterix-1992/roman-legionary.png",
+  "finalAssetSha256": "1417e0bb3b54ea7cbe3ec3be6294ce36cbde085ef0685bbd2604e0d7bfcbd14e",
+  "finalAssetBytes": 819662,
+  "outputSize": [
+    1536,
+    1024
+  ],
+  "cellSize": [
+    384,
+    256
+  ],
+  "columns": 4,
+  "rows": 4,
+  "facing": "right",
+  "baseline": 232,
+  "frameGroups": {
+    "idle": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "run": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "attack": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "hit": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "source1to1Verified": false,
+  "canonicalAnimationTimingVerified": false,
+  "runtimeBound": false,
+  "rightsRecord": {
+    "creationType": "AI-generated franchise fan art from cited visual reference",
+    "generationTermsUrl": "https://openai.com/policies/terms-of-use/",
+    "sourceRights": "Asterix and original arcade artwork belong to their respective owners; cited extraction is reference only",
+    "franchiseCommercialRightsVerified": false
+  },
+  "status": "VISUAL_CANDIDATE_ACCEPTED_RUNTIME_BINDING_BLOCKED_SOURCE_EDITION_MISMATCH",
+  "independentReview": "../validation/roman-legionary-independent-review.json",
+  "boundedVisualCandidateAccepted": true,
+  "runtimeBindingApproved": false
+}

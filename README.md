@@ -4,7 +4,7 @@ Jeu de crossover indépendant et non officiel, jouable dans le navigateur. Le jo
 
 Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge ATB**, **Tactics sur grille**, **Mêlée sur plateformes** et **Combat en duel**. L’interface utilise React ; les combats sont dessinés en Canvas 2D. Les univers, personnages et marques cités appartiennent à leurs ayants droit.
 
-**État courant : W17 intégré avec GitHub `2333c2c0`, revue du 13 novembre 2026.** La [reprise des menus et P0/P1](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) harmonise sept espaces du Hub, raccorde le médaillon de 2003 et corrige la lecture de 60 continuités déjà déclarées. Un nouveau lot de 40 acteurs ajoute une planche candidate du sorcier Neff, sans remplacer sa forme de boss. Les [six PNG et deux liaisons de la reprise précédente](docs/assets/p0-p1-continuation-2026-11-13/README.md) sont préservés. Les priorités et la fidélité 1:1 restent ouvertes selon leurs preuves ; la clôture W16 et l’[intégration du 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) restent historiques.
+**État courant : W17 intégré avec GitHub `2333c2c0`, revue du 13 novembre 2026.** La [reprise DLC](docs/assets/dlc-completion-2026-11-13/README.md) ajoute le panneau **Système → Packs DLC**, préserve les missions futures lors des sauvegardes et corrige les compilations des éditions réduites. Le traitement des médias se fait par lots bornés, avec reçus et reprise, pour fonctionner sur un disque contraint. La [reprise des menus et P0/P1](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conserve ses sept espaces du Hub, le médaillon de 2003 et ses corrections de continuité. Les [six PNG et deux liaisons précédents](docs/assets/p0-p1-continuation-2026-11-13/README.md) sont préservés. Les priorités et la fidélité 1:1 restent ouvertes selon leurs preuves ; la clôture W16 et l’[intégration du 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) restent historiques.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
 
@@ -35,6 +35,14 @@ La prévisualisation utilise **http://localhost:4173** par défaut. `npm run bui
 Les données et médias propres aux univers sont rangés dans `DLC/<Univers>/`. La préparation des assets publie leurs URL de jeu dans `public/`. Le lancement et le build normaux exigent leurs sources complètes et les fichiers Git LFS réels ; un checkout sparse incomplet peut échouer à `assets:prepare` sans prouver une absence en production.
 
 Le jeu peut démarrer avec une **Trace locale**, sans compte cloud. La synchronisation de compte dépend d’un service configuré sur le déploiement ; elle ne fait pas partie des prérequis pour explorer le jeu localement.
+
+### Éditions DLC et espace disque limité
+
+**Système → Packs DLC** indique l’édition définie par le profil de distribution, les packs inclus ou absents et leurs contenus déclarés. Recherche, filtres et pagination permettent de parcourir le catalogue. Les préférences de visibilité restent distinctes de l’installation ; ce panneau ne télécharge pas de contenu et ne contrôle pas les médias sur disque.
+
+Les profils d’édition se trouvent dans [config/dlc-profiles/](config/dlc-profiles/). Un export avec `npm run dlc:export:runtime -- --profile config/dlc-profiles/halo.json --out /volume/multiverse-halo` conserve les dépendances de production sans recopier les JSON de recherche. Les médias de cette édition restent requis pour la construire et la jouer.
+
+Sur un disque contraint, `npm run dlc:assets:batches` permet de lire, contrôler puis libérer uniquement les copies temporaires : jusqu’à 40 ressources par lot, avec plafonds de taille, vérification SHA-256 et décodage des rasters. Le plan fige les sources et le vérificateur ; la reprise conserve les résultats déjà acquis. La passe du 13 novembre valide **19 582 fichiers en 490 lots**, dont 17 087 rasters décodés, sans indisponibilité restante. Voir [les commandes, reçus et résultats](docs/assets/dlc-completion-2026-11-13/README.md). Cette validation ne produit pas à elle seule une distribution contenant tous les médias.
 
 ## Jouer
 
@@ -71,7 +79,7 @@ Les noms internes et les noms utilisés dans les rapports ne sont pas toujours i
 
 Les épreuves sans combat réutilisent certaines commandes d’arène pour des objectifs spécifiques. Une mission d’escorte ou de sauvetage conserve sa propre condition de réussite ; elle n’est pas automatiquement un combat d’élimination.
 
-Les espaces Équipement, Boutique, Résonance, Équipe, Dossier de l’Ancre, Archives et Régulation partagent désormais une hiérarchie A.R.C.A. plus lisible. Les filtres se replient, les réservistes se déploient au clavier, les achats montrent le prix et le solde manquant, et les grands catalogues du Codex se recherchent par pages. Les commandes conservent les IDs, les coûts et les règles de sauvegarde existants. Voir [les parcours vérifiés et leurs limites](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md).
+Les espaces Équipement, Boutique, Résonance, Équipe, Dossier de l’Ancre, Archives et Régulation partagent désormais une hiérarchie A.R.C.A. plus lisible. Les filtres se replient, les réservistes se déploient au clavier, les achats montrent le prix et le solde manquant, et les grands catalogues du Codex se recherchent par pages. Le panneau Packs DLC reprend cette organisation avec recherche sans accents, contenus par famille et pages de douze packs. Les commandes conservent les IDs, les coûts et les règles de sauvegarde existants. Voir [les parcours vérifiés et leurs limites](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) et [les quatre éditions DLC testées](docs/assets/dlc-completion-2026-11-13/ui/AFTER/VALIDATION.md).
 
 ## Couverture réelle
 
@@ -103,7 +111,7 @@ Le **lot W17** conserve **120 personnages avec de nouveaux dessins**, en trois g
 
 La [reprise P0/P1 du 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) ajoute trois fonds tactiques distincts (Predator 1987, Predator 2 et Prey), les portraits de Naru/Sarii et une icône extérieure du masque osseux. Le masque porté, transporté et monté ne se duplique pas ; les scènes source n’annoncent plus d’anomalie crossover. Le Feral courant possède un kit physique borné à ses lames et à son bouclier.
 
-L’[inventaire courant](docs/assets/p0-p1-continuation-2026-11-13/backlog/audit.json) compte 4 937 acteurs, 17 318 constats P1 et 1 474 rasters absents de l’arbre Git projeté, répartis dans une [file de 124 lots de 40 au maximum](docs/assets/p0-p1-continuation-2026-11-13/backlog/actor-batches-40.json). Deux raccords Alien 1979 ferment quatre constats ; les dossiers conservent d’autres travaux. Les 22 P0 historiques sont suivis séparément. Ces tâches de recherche, de données et d’art ne se confondent pas avec les supers effectivement résolus.
+L’[inventaire courant](docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/audit.json) compte 4 937 acteurs, **17 258 constats P1** et 1 474 acteurs avec raster absent de l’arbre Git projeté, répartis dans une [file de 124 lots de 40 au maximum](docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actor-batches-40.json). Les deux raccords Alien 1979 précédents ferment quatre constats. La lecture corrigée de 60 contrats de continuité déjà déclarés réduit ensuite les 17 318 constats de la reprise précédente à 17 258 ; elle ne produit pas 60 dessins. Les 4 935 dossiers conservant un P1 et les 22 P0 visuels historiques restent ouverts. Ces tâches de recherche, de données et d’art ne se confondent pas avec les supers effectivement résolus.
 
 Une présentation32 réunit huit phases de quatre dessins : intro, sortie, victoire et défaite de manche, finale, victoire et défaite finales, super. Une base16 couvre quatre états ; elle ne remplace pas les 45 états physiques du manifeste Mêlée.
 
@@ -177,6 +185,9 @@ Le dépôt n’a pas de script global `npm test`. Les groupes sont déclarés da
 | `npm run test:conversation` | Parcours applicatifs, ciblage, orientation, escorte, sauvegardes et progression |
 | `npm run test:melee` | Entrées, états, manifestes et résolution du combat Mêlée |
 | `npm run test:stages` | Topologies, événements et mécanismes de décor |
+| `npm run test:dlc` | Manifestes, identités, éditions, distribution et sauvegardes DLC |
+| `npm run test:dlc:batches` | Sources Git/LFS, limites des temporaires, reçus et reprise des lots |
+| `npm run dlc:bundle:check -- --profile config/dlc-profiles/base.json` | Compilation de l’application pour ce profil, sans copie des médias ni prébuild global |
 | `npm run rift:audit` | Cohérence du catalogue Rift et de ses ressources enregistrées |
 | `npm run check:progression` | Contrats de progression |
 | `npm run build` | Cycle complet `prebuild`, puis compilation Vite |
@@ -191,7 +202,9 @@ Le 9 novembre, `npm run build -- --config scripts/viteCodeOnly.config.js` a rée
 
 Les captures et parcours navigateur sont des vérifications supplémentaires : les tests Node seuls ne prouvent ni le chargement d’un PNG dans une page ni la justesse visuelle d’un geste. Certains outils de capture archivés utilisent les chemins Playwright et Chromium de leur environnement d’exécution ; ils ne font pas partie de l’installation npm standard.
 
-Le 13 novembre, 31 tests du kit Feral et 29 tests d’assets/liaisons passent, les audits courants sont synchronisés et le parcours final Prey desktop/mobile ne montre aucune erreur HTTP/page ni anomalie crossover après plus de 1 560 mises à jour. La compilation directe de code passe ; **le build normal reste bloqué par 9 007 sources DLC non matérialisées dans ce workspace partiel**. Le contrôle CG de cette reprise est explicitement limité aux métadonnées et préserve 1 436 déclarations de livraison, sans prétendre revalider leurs bitmaps. Voir les [preuves et limites](docs/assets/p0-p1-continuation-2026-11-13/README.md#vérifications-et-limites).
+Lors de la première reprise du 13 novembre, 31 tests du kit Feral et 29 tests d’assets/liaisons passaient, et le parcours final Prey desktop/mobile ne montrait aucune erreur HTTP/page ni anomalie crossover après plus de 1 560 mises à jour. La compilation directe de code passait ; le build normal était bloqué par 9 007 sources DLC non matérialisées dans ce workspace partiel. Le contrôle CG de cette étape était limité aux métadonnées et préservait 1 436 déclarations de livraison. Voir les [preuves datées](docs/assets/p0-p1-continuation-2026-11-13/README.md#vérifications-et-limites).
+
+La reprise DLC suivante exécute la suite standard avec succès (groupes 113/113 et 234/234), les 31 tests des lots v2, cinq compilations de profils réels et huit cas navigateur du panneau. Les vrais médias sont vérifiés séparément par lots, avec décodage raster et comparaison aux sources Git/LFS figées ; les copies temporaires sont libérées après contrôle. Les [résultats et limites de cette reprise](docs/assets/dlc-completion-2026-11-13/validation/README.md) distinguent ces vérifications d’un export de production assemblé et d’une validation visuelle de chaque personnage.
 
 ## Architecture
 
@@ -246,6 +259,8 @@ Ce profil produit le code exécutable sans recopier les médias de `public/` dan
 
 ## Documentation
 
+- [DLC, sauvegardes et médias par lots — 13 novembre](docs/assets/dlc-completion-2026-11-13/README.md) : panneau de packs, éditions réduites, export runtime, contrôles bornés et preuves de compilation.
+- [Lot de 40 acteurs supplémentaire](docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/README.md) : atlas Roman Legionary arcade 1992 candidat, revue des poses et distinction de la continuité BD active.
 - [Reprise P0/P1 — 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) : six PNG réels, raccords de sprites, sources exactes, file par 40 et vérifications courantes.
 - [Reprise menus et P0/P1 — 13 novembre](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) : sept espaces du Hub, médaillon raccordé, lot de 40 et continuités structurées.
 - [Intégration W17 + master — 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) : livraisons, mesures courantes, tests et limites de validation.

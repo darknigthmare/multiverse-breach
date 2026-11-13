@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T10:59:53.044178+00:00",
+  "v1ProviderSha256": "79645ac90b77ef99001df2410a2af9b8a890e7bba0ff74e637c9735d5dad3aa9",
+  "v2ProviderSha256": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+  "reproduction": {
+    "report": "docs/assets/dlc-completion-2026-11-13/source-provider/owned-cache-rename-reproduction.json",
+    "error": "OWNER_GUARD_FAILED",
+    "filesystemCause": "ENOENT between readdir and lstat after legitimate atomic rename in active owned LFS cache",
+    "sameInode": true,
+    "foreignFileIntroduced": false
+  },
+  "fixScope": "Only ENOENT beneath the active owned cache is transient in size monitoring. Final measurements, symlink rejection and ownership inventory remain strict. Pending monitor is drained before final checks.",
+  "regressionTests": {
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "skipped": 0
+  },
+  "v1BatchReceiptsRewritten": false,
+  "productionMediaRetried": false,
+  "sourceAssetsOrCoreCacheMutated": false,
+  "requiresNewRunnerCheckpointAndPlan": true
+}

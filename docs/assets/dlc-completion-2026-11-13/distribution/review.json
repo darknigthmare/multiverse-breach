@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "scope": "Distribution source/export/build guards; production profile exports are verified separately by the root agent.",
+  "acceptance": [
+    "Base/Halo/mixed/all retain the exact canonical media bytes and stable public URLs.",
+    "An HTML entry cannot reference a declared-but-excluded or undeclared local media asset without failing before export publication.",
+    "Vite never empties a pre-existing dist symlink or non-directory; published media paths reject symlink ancestors.",
+    "Explicit runtime documentation omits historical JSON snapshots while retaining statically imported production JSON/modules. Default all behavior remains compatible."
+  ],
+  "beforeReproduction": {
+    "case": "HTML favicon path omitted from inventory",
+    "indexHtml": "<link rel=\"icon\" href=\"/images/not-declared.png?rev=1#icon\">",
+    "observedReferences": [],
+    "basePlanAssets": 0,
+    "result": "Incorrectly accepted before the HTML guard."
+  },
+  "historicalDocumentationBaseline": {
+    "measurement": "Filesystem stat only, before adding this report; not an export or byte-hydration test.",
+    "jsonFiles": 7400,
+    "jsonBytes": 3743865330,
+    "directDocsImportsObservedInSrcJsJsx": 0
+  },
+  "changes": {
+    "html": "Static root-relative media attributes and style URLs in index.html join the common UI inventory guard. Comments, script bodies, remote URLs and computed templates are not inferred. Query/fragment are removed only for inventory lookup; original HTML bytes remain unchanged.",
+    "buildOutput": "Existing dist directories and all output path ancestors are inspected before Vite and during canonical media verification. No source publisher or generic asset fallback is introduced.",
+    "runtimeDocumentation": "Opt-in documentation=runtime follows production imports/reexports/literal dynamic imports/require/new URL dependencies after DLC profile transformation, including transitive JSON/MJS. Unknown imports, globs, escapes and symlinks fail. JSON provenance strings remain data.",
+    "compatibility": "Default documentation=all keeps the existing JSON research-copy behavior. Runtime mode does not promise historical research tests, generation tools, or the complete audit corpus.",
+    "readOnlyInspection": "inspectDlcExportSources uses the same profile transformer and source collection as export, without creating a receipt or reading/copying media."
+  },
+  "validation": {
+    "node": "Node22; max-old-space-size=2048; test-concurrency=1",
+    "focusedTests": 172,
+    "passed": 172,
+    "failed": 0,
+    "durationMs": 5897.26025,
+    "lastRunIncludesCliRuntimeOptionTest": true,
+    "viteBuildRunByThisAgent": false,
+    "actualCanonicalProfilesVerifiedByThisAgent": false,
+    "testFiles": [
+      "scripts/dlcDistributionDocumentation.test.mjs",
+      "scripts/dlcDistributionExport.test.mjs",
+      "scripts/dlcDistributionHtml.test.mjs",
+      "scripts/dlcDistributionBuild.test.mjs",
+      "scripts/dlcDistribution.test.mjs",
+      "scripts/dlcDistributionSharedDependencies.test.mjs",
+      "scripts/dlcDistributionDelta.test.mjs",
+      "scripts/dlcAssetManifests.test.mjs"
+    ],
+    "actualCanonicalSourceClosuresVerifiedByThisAgent": true
+  },
+  "remaining": [
+    "Root agent to verify actual canonical base/Halo/mixed/all profiles and selected builds after media materialization.",
+    "Regenerate asset classification metadata: the existing favicon gains index.html common-UI provenance; its runtime URL and canonical PNG stay unchanged."
+  ],
+  "limits": [
+    "Fixtures verify source/import/export contracts and exact PNG bytes. Five canonical source closures were additionally inspected read-only; neither check proves complete media hydration or an executable distribution build.",
+    "No full research audit corpus is promised by documentation=runtime.",
+    "No new canonical image, generic stand-in asset, or runtime sprite binding was introduced."
+  ],
+  "canonicalSourceInspection": {
+    "report": "canonical-source-inspection.json",
+    "profiles": 5,
+    "allPassed": true,
+    "sourceSnapshotUnchanged": true,
+    "documentationMode": "runtime",
+    "omittedJsonFilesAtInspection": 7426,
+    "omittedJsonBytesAtInspection": 3745275764,
+    "mediaHydrationValidated": false,
+    "distributionBuildValidated": false
+  }
+}

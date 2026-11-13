@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "scripts/dlcAssetBatches.mjs",
+    "validate",
+    "--plan",
+    "/tmp/dlc-all-smoke-plan-before-cache.json",
+    "--receipts",
+    "docs/assets/dlc-completion-2026-11-13/batches/smoke",
+    "--batch",
+    "00000",
+    "--allow-lfs",
+    "--historical-lfs-map",
+    "docs/assets/dlc-completion-2026-11-13/historical-lfs/verified-historical-lfs-map.json"
+  ],
+  "exitCode": 1,
+  "seconds": 0.503
+}

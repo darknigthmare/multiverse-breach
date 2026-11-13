@@ -1,0 +1,187 @@
+
+> lively-darwin@0.0.0 test:dlc:batches
+> node --test --test-concurrency=1 scripts/dlcBatchAssetSource.test.mjs scripts/dlcAssetBatchDecode.test.mjs scripts/dlcAssetBatches.test.mjs
+
+TAP version 13
+# Subtest: decodes a canonical png payload at its actual dimensions without changing its bytes
+ok 1 - decodes a canonical png payload at its actual dimensions without changing its bytes
+  ---
+  duration_ms: 26.040503
+  type: 'test'
+  ...
+# Subtest: decodes a canonical webp payload at its actual dimensions without changing its bytes
+ok 2 - decodes a canonical webp payload at its actual dimensions without changing its bytes
+  ---
+  duration_ms: 26.954426
+  type: 'test'
+  ...
+# Subtest: decodes a canonical jpg payload at its actual dimensions without changing its bytes
+ok 3 - decodes a canonical jpg payload at its actual dimensions without changing its bytes
+  ---
+  duration_ms: 16.72683
+  type: 'test'
+  ...
+# Subtest: rejects corrupted pixel data even when a valid PNG header still supplies metadata
+ok 4 - rejects corrupted pixel data even when a valid PNG header still supplies metadata
+  ---
+  duration_ms: 7.583687
+  type: 'test'
+  ...
+# Subtest: rejects truncated rasters and does not expose native input paths in safe errors
+ok 5 - rejects truncated rasters and does not expose native input paths in safe errors
+  ---
+  duration_ms: 5.791137
+  type: 'test'
+  ...
+# Subtest: enforces the total pixel budget and identifies every GIF page
+ok 6 - enforces the total pixel budget and identifies every GIF page
+  ---
+  duration_ms: 19.721512
+  type: 'test'
+  ...
+# Subtest: a renamed raster cannot pass as a different declared format
+ok 7 - a renamed raster cannot pass as a different declared format
+  ---
+  duration_ms: 3.30552
+  type: 'test'
+  ...
+# Subtest: non-raster media explicitly keep an integrity-only scope without a decoder claim
+ok 8 - non-raster media explicitly keep an integrity-only scope without a decoder claim
+  ---
+  duration_ms: 0.708466
+  type: 'test'
+  ...
+# Subtest: invalid limits, missing payloads, directories and symlink payloads fail safely
+ok 9 - invalid limits, missing payloads, directories and symlink payloads fail safely
+  ---
+  duration_ms: 2.67305
+  type: 'test'
+  ...
+# Subtest: base, selected, mixed and all plans select canonical frozen inventories and enforce count caps
+ok 10 - base, selected, mixed and all plans select canonical frozen inventories and enforce count caps
+  ---
+  duration_ms: 252.846742
+  type: 'test'
+  ...
+# Subtest: one real PNG lot validates, decodes, cleans temporary payloads and resumes idempotently
+ok 11 - one real PNG lot validates, decodes, cleans temporary payloads and resumes idempotently
+  ---
+  duration_ms: 228.857983
+  type: 'test'
+  ...
+# Subtest: unavailable LFS does not block later lots and retry reuses verified successful asset results
+ok 12 - unavailable LFS does not block later lots and retry reuses verified successful asset results
+  ---
+  duration_ms: 184.292395
+  type: 'test'
+  ...
+# Subtest: size and decode failures are explicit UNAVAILABLE results with no permanent payloads
+ok 13 - size and decode failures are explicit UNAVAILABLE results with no permanent payloads
+  ---
+  duration_ms: 141.23898
+  type: 'test'
+  ...
+# Subtest: tampered manifests and receipts, changed options and unowned receipt files fail before cleanup
+ok 14 - tampered manifests and receipts, changed options and unowned receipt files fail before cleanup
+  ---
+  duration_ms: 209.655879
+  type: 'test'
+  ...
+# Subtest: bounded passes continue from pending lots and CLI rejects an invalid bound
+ok 15 - bounded passes continue from pending lots and CLI rejects an invalid bound
+  ---
+  duration_ms: 276.381868
+  type: 'test'
+  ...
+# Subtest: a loaded plan is canonically checked once across two batches and cached mutations still fail
+ok 16 - a loaded plan is canonically checked once across two batches and cached mutations still fail
+  ---
+  duration_ms: 217.110239
+  type: 'test'
+  ...
+# Subtest: CLI plans and validates a real canonical PNG batch then resumes without materializing it again
+ok 17 - CLI plans and validates a real canonical PNG batch then resumes without materializing it again
+  ---
+  duration_ms: 574.974786
+  type: 'test'
+  ...
+# Subtest: bulk immutable metadata distinguishes raw blobs, valid pointers, missing assets and malformed pointers without materializing
+ok 18 - bulk immutable metadata distinguishes raw blobs, valid pointers, missing assets and malformed pointers without materializing
+  ---
+  duration_ms: 57.286018
+  type: 'test'
+  ...
+# Subtest: native streaming and core cache reuse verify exact bytes; cleanup owns only its own temporary files
+ok 19 - native streaming and core cache reuse verify exact bytes; cleanup owns only its own temporary files
+  ---
+  duration_ms: 78.90923
+  type: 'test'
+  ...
+# Subtest: historical Git fallback must match payload SHA, pointer length and historical blob identity
+ok 20 - historical Git fallback must match payload SHA, pointer length and historical blob identity
+  ---
+  duration_ms: 91.716432
+  type: 'test'
+  ...
+# Subtest: asset size, aggregate temporary budget and unavailable LFS fail before unbounded writes
+ok 21 - asset size, aggregate temporary budget and unavailable LFS fail before unbounded writes
+  ---
+  duration_ms: 72.01673
+  type: 'test'
+  ...
+# Subtest: isolated smudge creates only owned cache/output, verifies real fixture hashes and cleans them after receipt
+ok 22 - isolated smudge creates only owned cache/output, verifies real fixture hashes and cleans them after receipt
+  ---
+  duration_ms: 116.833696
+  type: 'test'
+  ...
+# Subtest: smudge pointer fallback, same-size corruption, overlong media and auth errors never yield an accepted receipt
+ok 23 - smudge pointer fallback, same-size corruption, overlong media and auth errors never yield an accepted receipt
+  ---
+  duration_ms: 334.096915
+  type: 'test'
+  ...
+# Subtest: output tampering and ownership-marker replacement block verification/cleanup rather than touching foreign data
+ok 24 - output tampering and ownership-marker replacement block verification/cleanup rather than touching foreign data
+  ---
+  duration_ms: 57.539007
+  type: 'test'
+  ...
+# Subtest: an unknown file added inside the owned root blocks cleanup and close before any deletion
+ok 25 - an unknown file added inside the owned root blocks cleanup and close before any deletion
+  ---
+  duration_ms: 55.843449
+  type: 'test'
+  ...
+# Subtest: a same-size corrupted canonical cache is never changed or accepted by the source provider
+ok 26 - a same-size corrupted canonical cache is never changed or accepted by the source provider
+  ---
+  duration_ms: 83.584336
+  type: 'test'
+  ...
+# Subtest: a stalled smudge is terminated within its deadline and owned output/cache are removed
+ok 27 - a stalled smudge is terminated within its deadline and owned output/cache are removed
+  ---
+  duration_ms: 162.815717
+  type: 'test'
+  ...
+# Subtest: source path traversal and source symlinks never become production payloads
+ok 28 - source path traversal and source symlinks never become production payloads
+  ---
+  duration_ms: 60.188087
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3714.620115
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

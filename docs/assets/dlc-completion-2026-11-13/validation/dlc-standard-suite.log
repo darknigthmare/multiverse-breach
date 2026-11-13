@@ -1,0 +1,2173 @@
+
+> lively-darwin@0.0.0 test:dlc
+> npm run dlc:registry:check && npm run dlc:assets:check && node --test --test-concurrency=1 scripts/dlcRegistry.test.mjs scripts/dlcAssetManifests.test.mjs scripts/spritePromptCatalogLoader.test.mjs scripts/legacyDlcStages.test.mjs scripts/dlcAuditSources.test.mjs scripts/dlcAssetPaths.test.mjs scripts/prepareDlcAssets.test.mjs scripts/assetSourceResolver.test.mjs scripts/exportDlcAssetPaths.test.mjs && npm run dlc:identities:check && npm run test:dlc:profiles
+
+
+> lively-darwin@0.0.0 dlc:registry:check
+> node scripts/buildDlcRegistry.mjs --check
+
+DLC registry: 505 packages, 504 registered universes, 506 entry points verified.
+
+> lively-darwin@0.0.0 dlc:assets:check
+> node scripts/buildDlcAssetManifests.mjs --check
+
+{
+  "mode": "check",
+  "dlcManifests": 505,
+  "trackedPublicPaths": 19582,
+  "assignedToDlc": 11969,
+  "unclaimedByDlc": 7613,
+  "unclaimedReasons": {
+    "base-game": 682,
+    "global-final-boss-directory-not-the-matrix-dlc": 1,
+    "historical-bucket-guitar-echo-identity-not-buckethead": 9,
+    "historical-directory-without-current-universe-alias": 42,
+    "multiple-universe-references": 16,
+    "original-campaign": 2844,
+    "shared-or-unclassified": 4018,
+    "unregistered-runtime-key": 1
+  },
+  "inputSource": "git-index"
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+TAP version 13
+# Subtest: repositories without DLC metadata retain public paths and the convenience API
+ok 1 - repositories without DLC metadata retain public paths and the convenience API
+  ---
+  duration_ms: 2.424862
+  type: 'test'
+  ...
+# Subtest: registered URL ownership and shared sources take priority over an optional universe hint
+ok 2 - registered URL ownership and shared sources take priority over an optional universe hint
+  ---
+  duration_ms: 2.302973
+  type: 'test'
+  ...
+# Subtest: an existing public file outside the inventory keeps overwrite protection
+ok 3 - an existing public file outside the inventory keeps overwrite protection
+  ---
+  duration_ms: 1.212691
+  type: 'test'
+  ...
+# Subtest: unsafe URLs cannot produce repository paths
+ok 4 - unsafe URLs cannot produce repository paths
+  ---
+  duration_ms: 0.971249
+  type: 'test'
+  ...
+# Subtest: manifest paths must be canonical, match their URL and remain with their declared owner
+ok 5 - manifest paths must be canonical, match their URL and remain with their declared owner
+  ---
+  duration_ms: 1.960594
+  type: 'test'
+  ...
+# Subtest: duplicate URL ownership across packs or a shared manifest is rejected
+ok 6 - duplicate URL ownership across packs or a shared manifest is rejected
+  ---
+  duration_ms: 1.078245
+  type: 'test'
+  ...
+# Subtest: duplicate universe identities, IDs and mismatched inventory identities are rejected
+ok 7 - duplicate universe identities, IDs and mismatched inventory identities are rejected
+  ---
+  duration_ms: 0.979811
+  type: 'test'
+  ...
+# Subtest: shared inventory cannot assign a private or DLC file as a common public source
+ok 8 - shared inventory cannot assign a private or DLC file as a common public source
+  ---
+  duration_ms: 0.472811
+  type: 'test'
+  ...
+# Subtest: symlinked manifests and public ancestors cannot bypass ownership or destination checks
+ok 9 - symlinked manifests and public ancestors cannot bypass ownership or destination checks
+  ---
+  duration_ms: 0.858404
+  type: 'test'
+  ...
+# Subtest: CLI exposes one relative path or one JSON record for shell integrations
+ok 10 - CLI exposes one relative path or one JSON record for shell integrations
+  ---
+  duration_ms: 126.855362
+  type: 'test'
+  ...
+# Subtest: partitions paths without claiming shared backgrounds, historical aliases, base or campaign artwork
+ok 11 - partitions paths without claiming shared backgrounds, historical aliases, base or campaign artwork
+  ---
+  duration_ms: 3.359988
+  type: 'test'
+  ...
+# Subtest: a reference from another DLC keeps a directory-attributed file shared
+ok 12 - a reference from another DLC keeps a directory-attributed file shared
+  ---
+  duration_ms: 0.38322
+  type: 'test'
+  ...
+# Subtest: kart model and sprite directories retain their universe ownership
+ok 13 - kart model and sprite directories retain their universe ownership
+  ---
+  duration_ms: 0.449507
+  type: 'test'
+  ...
+# Subtest: rejects duplicate, unsafe and ambiguous classification inputs
+ok 14 - rejects duplicate, unsafe and ambiguous classification inputs
+  ---
+  duration_ms: 0.644091
+  type: 'test'
+  ...
+# Subtest: common UI collection reads JSX, CSS URLs and static templates without inferring dynamic or external paths
+ok 15 - common UI collection reads JSX, CSS URLs and static templates without inferring dynamic or external paths
+  ---
+  duration_ms: 24.360343
+  type: 'test'
+  ...
+# Subtest: common UI references reject invalid syntax, unsafe URLs and symlink sources
+ok 16 - common UI references reject invalid syntax, unsafe URLs and symlink sources
+  ---
+  duration_ms: 2.848251
+  type: 'test'
+  ...
+# Subtest: common UI collection canonicalizes encoded filenames and keeps quoted spaces intact
+ok 17 - common UI collection canonicalizes encoded filenames and keeps quoted spaces intact
+  ---
+  duration_ms: 1.928257
+  type: 'test'
+  ...
+# Subtest: common UI use prevents exclusive DLC ownership and survives a byte-identical promotion to shared public sources
+ok 18 - common UI use prevents exclusive DLC ownership and survives a byte-identical promotion to shared public sources
+  ---
+  duration_ms: 5.3266
+  type: 'test'
+  ...
+# Subtest: write/check uses the Git index in a sparse checkout and detects staged inventory changes
+ok 19 - write/check uses the Git index in a sparse checkout and detects staged inventory changes
+  ---
+  duration_ms: 63.418575
+  type: 'test'
+  ...
+# Subtest: a source export with absent Git metadata validates the same inventories and rejects missing or added assets
+ok 20 - a source export with absent Git metadata validates the same inventories and rejects missing or added assets
+  ---
+  duration_ms: 22.461609
+  type: 'test'
+  ...
+# Subtest: a source export with empty Git metadata validates the same inventories and rejects missing or added assets
+ok 21 - a source export with empty Git metadata validates the same inventories and rejects missing or added assets
+  ---
+  duration_ms: 26.355673
+  type: 'test'
+  ...
+# Subtest: an export never uses a containing repository index, including with an empty .git directory
+ok 22 - an export never uses a containing repository index, including with an empty .git directory
+  ---
+  duration_ms: 10.939884
+  type: 'test'
+  ...
+# Subtest: canonical DLC sources retain public URLs and exclude generated copies from source exports
+ok 23 - canonical DLC sources retain public URLs and exclude generated copies from source exports
+  ---
+  duration_ms: 27.004625
+  type: 'test'
+  ...
+# Subtest: publication ignore generation preserves unrelated rules and treats filenames literally
+ok 24 - publication ignore generation preserves unrelated rules and treats filenames literally
+  ---
+  duration_ms: 0.332356
+  type: 'test'
+  ...
+# Subtest: projects both physical layouts without changing URL spelling or Unicode
+ok 25 - projects both physical layouts without changing URL spelling or Unicode
+  ---
+  duration_ms: 2.164952
+  type: 'test'
+  ...
+# Subtest: an export never borrows its parent Git index, even with an empty .git directory
+ok 26 - an export never borrows its parent Git index, even with an empty .git directory
+  ---
+  duration_ms: 26.958297
+  type: 'test'
+  ...
+# Subtest: Git inventory preserves absent assets and adds legacy aliases without losing raw source files
+ok 27 - Git inventory preserves absent assets and adds legacy aliases without losing raw source files
+  ---
+  duration_ms: 26.071242
+  type: 'test'
+  ...
+# Subtest: two tracked sources claiming one public URL are rejected rather than deduplicated
+ok 28 - two tracked sources claiming one public URL are rejected rather than deduplicated
+  ---
+  duration_ms: 16.736082
+  type: 'test'
+  ...
+# Subtest: an unsafe tracked asset path is rejected, not omitted from coverage
+ok 29 - an unsafe tracked asset path is rejected, not omitted from coverage
+  ---
+  duration_ms: 9.731874
+  type: 'test'
+  ...
+# Subtest: a materialized export prefers the canonical DLC source over its generated public copy
+ok 30 - a materialized export prefers the canonical DLC source over its generated public copy
+  ---
+  duration_ms: 1.269465
+  type: 'test'
+  ...
+# Subtest: materialized DLC collisions are rejected even if a generated public copy exists
+ok 31 - materialized DLC collisions are rejected even if a generated public copy exists
+  ---
+  duration_ms: 0.987613
+  type: 'test'
+  ...
+# Subtest: materialized scans do not follow leaf symlinks and retain them for the byte audit
+ok 32 - materialized scans do not follow leaf symlinks and retain them for the byte audit
+  ---
+  duration_ms: 0.72597
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the public root
+ok 33 - materialized scans reject a symlink at the public root
+  ---
+  duration_ms: 0.673283
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC root
+ok 34 - materialized scans reject a symlink at the DLC root
+  ---
+  duration_ms: 0.630491
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC/Halo root
+ok 35 - materialized scans reject a symlink at the DLC/Halo root
+  ---
+  duration_ms: 0.382279
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC/Halo/assets root
+ok 36 - materialized scans reject a symlink at the DLC/Halo/assets root
+  ---
+  duration_ms: 0.865475
+  type: 'test'
+  ...
+# Subtest: materialized scanning supports a DLC-only archive and an empty inventory
+ok 37 - materialized scanning supports a DLC-only archive and an empty inventory
+  ---
+  duration_ms: 0.473001
+  type: 'test'
+  ...
+# Subtest: source audits follow declared adapter modules without borrowing unrelated definitions
+ok 38 - source audits follow declared adapter modules without borrowing unrelated definitions
+  ---
+  duration_ms: 5.233675
+  type: 'test'
+  ...
+# Subtest: source audits recover the current Chucky definitions through package manifests
+ok 39 - source audits recover the current Chucky definitions through package manifests
+  ---
+  duration_ms: 72.771416
+  type: 'test'
+  ...
+# Subtest: renderer and signature loadout assertions inspect the assembled runtime values
+ok 40 - renderer and signature loadout assertions inspect the assembled runtime values
+  ---
+  duration_ms: 2801.616535
+  type: 'test'
+  ...
+# Subtest: DLC registration covers the runtime lore catalog in its existing order
+ok 41 - DLC registration covers the runtime lore catalog in its existing order
+  ---
+  duration_ms: 12698.174129
+  type: 'test'
+  ...
+# Subtest: artwork-only packages stay outside unlocks and saved hidden-universe defaults
+ok 42 - artwork-only packages stay outside unlocks and saved hidden-universe defaults
+  ---
+  duration_ms: 0.341033
+  type: 'test'
+  ...
+# Subtest: every package module is declared and generated entry points match manifests
+ok 43 - every package module is declared and generated entry points match manifests
+  ---
+  duration_ms: 130.038524
+  type: 'test'
+  ...
+# Subtest: an omitted content file fails registry validation
+ok 44 - an omitted content file fails registry validation
+  ---
+  duration_ms: 2.032923
+  type: 'test'
+  ...
+# Subtest: duplicate universe keys and ambiguous catalog order are rejected
+ok 45 - duplicate universe keys and ambiguous catalog order are rejected
+  ---
+  duration_ms: 1.335271
+  type: 'test'
+  ...
+# Subtest: case-only folder collisions are rejected before crossing operating systems
+ok 46 - case-only folder collisions are rejected before crossing operating systems
+  ---
+  duration_ms: 1.033086
+  type: 'test'
+  ...
+# Subtest: package paths cannot escape their directory or name missing modules
+ok 47 - package paths cannot escape their directory or name missing modules
+  ---
+  duration_ms: 0.894748
+  type: 'test'
+  ...
+# Subtest: a declared JavaScript module must be a regular file
+ok 48 - a declared JavaScript module must be a regular file
+  ---
+  duration_ms: 0.693415
+  type: 'test'
+  ...
+# Subtest: data and runtime roots cannot be symbolic links outside their package
+ok 49 - data and runtime roots cannot be symbolic links outside their package
+  ---
+  duration_ms: 1.372678
+  type: 'test'
+  ...
+# Subtest: a symbolic link at package level is rejected instead of silently omitted
+ok 50 - a symbolic link at package level is rejected instead of silently omitted
+  ---
+  duration_ms: 0.684101
+  type: 'test'
+  ...
+# Subtest: a newly declared pack is detected until all registry entry points are regenerated
+ok 51 - a newly declared pack is detected until all registry entry points are regenerated
+  ---
+  duration_ms: 1.18838
+  type: 'test'
+  ...
+# Subtest: historical public trees keep their original paths and blob metadata
+ok 52 - historical public trees keep their original paths and blob metadata
+  ---
+  duration_ms: 2.486446
+  type: 'test'
+  ...
+# Subtest: DLC source paths produce the same actor and equipment probes as public paths
+ok 53 - DLC source paths produce the same actor and equipment probes as public paths
+  ---
+  duration_ms: 0.38537
+  type: 'test'
+  ...
+# Subtest: supplied trees alone decide presence, including encoded Unicode URLs and unknown sizes
+ok 54 - supplied trees alone decide presence, including encoded Unicode URLs and unknown sizes
+  ---
+  duration_ms: 0.260843
+  type: 'test'
+  ...
+# Subtest: colliding exported sources are rejected: public/hero.png / DLC/Halo/assets/hero.png
+ok 55 - colliding exported sources are rejected: public/hero.png / DLC/Halo/assets/hero.png
+  ---
+  duration_ms: 0.5374
+  type: 'test'
+  ...
+# Subtest: colliding exported sources are rejected: DLC/Halo/assets/hero.png / DLC/Doom/assets/hero.png
+ok 56 - colliding exported sources are rejected: DLC/Halo/assets/hero.png / DLC/Doom/assets/hero.png
+  ---
+  duration_ms: 0.180712
+  type: 'test'
+  ...
+# Subtest: invalid asset source paths fail instead of disappearing from the export
+ok 57 - invalid asset source paths fail instead of disappearing from the export
+  ---
+  duration_ms: 0.173952
+  type: 'test'
+  ...
+# Subtest: DLC catalog modules and manifests remain source entries, not public assets
+ok 58 - DLC catalog modules and manifests remain source entries, not public assets
+  ---
+  duration_ms: 0.182605
+  type: 'test'
+  ...
+# Subtest: equipment source verification still supports a historical checkout without DLC
+ok 59 - equipment source verification still supports a historical checkout without DLC
+  ---
+  duration_ms: 3.184558
+  type: 'test'
+  ...
+# Subtest: equipment source verification pins DLC definitions and notices changed data
+ok 60 - equipment source verification pins DLC definitions and notices changed data
+  ---
+  duration_ms: 2.777745
+  type: 'test'
+  ...
+# Subtest: equipment source verification rejects omitted and unpinned DLC source modules
+ok 61 - equipment source verification rejects omitted and unpinned DLC source modules
+  ---
+  duration_ms: 1.474612
+  type: 'test'
+  ...
+# Subtest: equipment source validation never demands materialized media or treats asset JSON as runtime code
+ok 62 - equipment source validation never demands materialized media or treats asset JSON as runtime code
+  ---
+  duration_ms: 0.954368
+  type: 'test'
+  ...
+# Subtest: the Hub keeps all static mission IDs while loading legacy DLC definitions
+ok 63 - the Hub keeps all static mission IDs while loading legacy DLC definitions
+  ---
+  duration_ms: 3.287573
+  type: 'test'
+  ...
+# Subtest: the static reader rejects removed, duplicated and unknown DLC stage references
+ok 64 - the static reader rejects removed, duplicated and unknown DLC stage references
+  ---
+  duration_ms: 5.444593
+  type: 'test'
+  ...
+# Subtest: render-local stage and modifier changes cannot leak into the next Hub projection
+ok 65 - render-local stage and modifier changes cannot leak into the next Hub projection
+  ---
+  duration_ms: 2.240065
+  type: 'test'
+  ...
+# Subtest: the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency
+ok 66 - the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency
+  ---
+  duration_ms: 144.681555
+  type: 'test'
+  ...
+# Subtest: reads migrated mappings deterministically and ignores legacy public sources without writing
+ok 67 - reads migrated mappings deterministically and ignores legacy public sources without writing
+  ---
+  duration_ms: 2.04445
+  type: 'test'
+  ...
+# Subtest: publishes exact binary bytes as independent files and is idempotent including the state file
+ok 68 - publishes exact binary bytes as independent files and is idempotent including the state file
+  ---
+  duration_ms: 4.027648
+  type: 'test'
+  ...
+# Subtest: adopts an identical existing file but never overwrites a different unowned file
+ok 69 - adopts an identical existing file but never overwrites a different unowned file
+  ---
+  duration_ms: 1.862295
+  type: 'test'
+  ...
+# Subtest: prevalidates all destinations before publishing an earlier valid asset
+ok 70 - prevalidates all destinations before publishing an earlier valid asset
+  ---
+  duration_ms: 1.132697
+  type: 'test'
+  ...
+# Subtest: removes unchanged managed outputs when an entry is retired and preserves shared files
+ok 71 - removes unchanged managed outputs when an entry is retired and preserves shared files
+  ---
+  duration_ms: 1.733472
+  type: 'test'
+  ...
+# Subtest: releases a matching copy that becomes a canonical public source in shared metadata
+ok 72 - releases a matching copy that becomes a canonical public source in shared metadata
+  ---
+  duration_ms: 4.517106
+  type: 'test'
+  ...
+# Subtest: releases a changed copy that becomes a canonical public source in shared metadata
+ok 73 - releases a changed copy that becomes a canonical public source in shared metadata
+  ---
+  duration_ms: 2.060364
+  type: 'test'
+  ...
+# Subtest: releases a matching copy that becomes a canonical public source in pack metadata
+ok 74 - releases a matching copy that becomes a canonical public source in pack metadata
+  ---
+  duration_ms: 1.980034
+  type: 'test'
+  ...
+# Subtest: releases a changed copy that becomes a canonical public source in pack metadata
+ok 75 - releases a changed copy that becomes a canonical public source in pack metadata
+  ---
+  duration_ms: 2.436591
+  type: 'test'
+  ...
+# Subtest: releasing a public source still protects a different modified retired copy and preserves state on failure
+ok 76 - releasing a public source still protects a different modified retired copy and preserves state on failure
+  ---
+  duration_ms: 2.634269
+  type: 'test'
+  ...
+# Subtest: conflicting public and DLC ownership cannot release or overwrite a managed copy
+ok 77 - conflicting public and DLC ownership cannot release or overwrite a managed copy
+  ---
+  duration_ms: 1.126977
+  type: 'test'
+  ...
+# Subtest: a mismatched canonical public source cannot release a managed copy
+ok 78 - a mismatched canonical public source cannot release a managed copy
+  ---
+  duration_ms: 1.452639
+  type: 'test'
+  ...
+# Subtest: recreates an absent managed copy without treating absence as an overwrite
+ok 79 - recreates an absent managed copy without treating absence as an overwrite
+  ---
+  duration_ms: 1.204654
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during update
+ok 80 - preserves a locally modified managed copy and state during update
+  ---
+  duration_ms: 1.129873
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during retire
+ok 81 - preserves a locally modified managed copy and state during retire
+  ---
+  duration_ms: 1.66594
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during skip-missing
+ok 82 - preserves a locally modified managed copy and state during skip-missing
+  ---
+  duration_ms: 1.062812
+  type: 'test'
+  ...
+# Subtest: strict missing-source failure does not publish valid entries or clean retired entries
+ok 83 - strict missing-source failure does not publish valid entries or clean retired entries
+  ---
+  duration_ms: 1.696597
+  type: 'test'
+  ...
+# Subtest: partial publication reports missing sources and LFS pointers while copying only hydrated assets
+ok 84 - partial publication reports missing sources and LFS pointers while copying only hydrated assets
+  ---
+  duration_ms: 1.289262
+  type: 'test'
+  ...
+# Subtest: partial mode retains verified managed copies for temporarily missing sources
+ok 85 - partial mode retains verified managed copies for temporarily missing sources
+  ---
+  duration_ms: 2.069168
+  type: 'test'
+  ...
+# Subtest: partial mode cannot hide an unowned destination collision behind a missing source
+ok 86 - partial mode cannot hide an unowned destination collision behind a missing source
+  ---
+  duration_ms: 0.824652
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: public traversal
+ok 87 - rejects unsafe publication metadata: public traversal
+  ---
+  duration_ms: 0.539543
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: source traversal
+ok 88 - rejects unsafe publication metadata: source traversal
+  ---
+  duration_ms: 0.924332
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: double slash
+ok 89 - rejects unsafe publication metadata: double slash
+  ---
+  duration_ms: 0.51783
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: backslash
+ok 90 - rejects unsafe publication metadata: backslash
+  ---
+  duration_ms: 0.380834
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: Windows drive
+ok 91 - rejects unsafe publication metadata: Windows drive
+  ---
+  duration_ms: 1.248701
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: control character
+ok 92 - rejects unsafe publication metadata: control character
+  ---
+  duration_ms: 0.471921
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: wrong owning folder
+ok 93 - rejects unsafe publication metadata: wrong owning folder
+  ---
+  duration_ms: 0.401645
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: mismatched suffix
+ok 94 - rejects unsafe publication metadata: mismatched suffix
+  ---
+  duration_ms: 0.432582
+  type: 'test'
+  ...
+# Subtest: rejects duplicate public URLs across DLCs and file/directory collisions
+ok 95 - rejects duplicate public URLs across DLCs and file/directory collisions
+  ---
+  duration_ms: 0.952285
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: source-file
+ok 96 - rejects symlinks before mutation, including in partial mode: source-file
+  ---
+  duration_ms: 0.880507
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: source-parent
+ok 97 - rejects symlinks before mutation, including in partial mode: source-parent
+  ---
+  duration_ms: 3.158568
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: destination-file
+ok 98 - rejects symlinks before mutation, including in partial mode: destination-file
+  ---
+  duration_ms: 0.839726
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: destination-parent
+ok 99 - rejects symlinks before mutation, including in partial mode: destination-parent
+  ---
+  duration_ms: 0.813235
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: manifest
+ok 100 - rejects symlinks before mutation, including in partial mode: manifest
+  ---
+  duration_ms: 1.291646
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: state-file
+ok 101 - rejects symlinks before mutation, including in partial mode: state-file
+  ---
+  duration_ms: 0.565011
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: state-parent
+ok 102 - rejects symlinks before mutation, including in partial mode: state-parent
+  ---
+  duration_ms: 0.623219
+  type: 'test'
+  ...
+# Subtest: partial mode still rejects a dangling destination link when its source is missing
+ok 103 - partial mode still rejects a dangling destination link when its source is missing
+  ---
+  duration_ms: 0.535126
+  type: 'test'
+  ...
+# Subtest: rejects malformed state instead of trusting it for cleanup
+ok 104 - rejects malformed state instead of trusting it for cleanup
+  ---
+  duration_ms: 0.61064
+  type: 'test'
+  ...
+# Subtest: CLI partial output is bounded and explicit; strict mode fails with unavailable sources
+ok 105 - CLI partial output is bounded and explicit; strict mode fails with unavailable sources
+  ---
+  duration_ms: 119.588801
+  type: 'test'
+  ...
+# Subtest: profile transitions remove and reinstall only untouched generated copies
+ok 106 - profile transitions remove and reinstall only untouched generated copies
+  ---
+  duration_ms: 10.875734
+  type: 'test'
+  ...
+# Subtest: selection-aware entry reads distinguish undefined from the empty base selection
+ok 107 - selection-aware entry reads distinguish undefined from the empty base selection
+  ---
+  duration_ms: 8.956574
+  type: 'test'
+  ...
+# Subtest: modified managed copies block pack removal before any state or file mutation
+ok 108 - modified managed copies block pack removal before any state or file mutation
+  ---
+  duration_ms: 2.052723
+  type: 'test'
+  ...
+# Subtest: strict selection ignores missing excluded media and rejects missing selected media before removing copies
+ok 109 - strict selection ignores missing excluded media and rejects missing selected media before removing copies
+  ---
+  duration_ms: 5.077941
+  type: 'test'
+  ...
+# Subtest: public ownership transfer declared by an excluded pack preserves the canonical source
+ok 110 - public ownership transfer declared by an excluded pack preserves the canonical source
+  ---
+  duration_ms: 2.021415
+  type: 'test'
+  ...
+# Subtest: invalid profiles and partial publication cannot create distribution state
+ok 111 - invalid profiles and partial publication cannot create distribution state
+  ---
+  duration_ms: 0.925535
+  type: 'test'
+  ...
+# Subtest: profile publication rejects symlinked excluded metadata before modifying published files
+ok 112 - profile publication rejects symlinked excluded metadata before modifying published files
+  ---
+  duration_ms: 1.956688
+  type: 'test'
+  ...
+# Subtest: sprite tooling loads the complete game graph after content moves into DLC folders
+ok 113 - sprite tooling loads the complete game graph after content moves into DLC folders
+  ---
+  duration_ms: 19766.604557
+  type: 'test'
+  ...
+1..113
+# tests 113
+# suites 0
+# pass 113
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 39420.104876
+
+> lively-darwin@0.0.0 dlc:identities:check
+> node scripts/buildDlcContentIdentities.mjs --check
+
+DLC identities: 1911 heroes, 1973 replay arcs, 3 OC saves.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+
+> lively-darwin@0.0.0 test:dlc:profiles
+> node --max-old-space-size=8192 --test --test-concurrency=1 scripts/dlcDistribution*.test.mjs scripts/dlcProfile*.test.mjs scripts/dlcInstallation.test.mjs scripts/dlcPlayerState.test.mjs scripts/dlcPiratesAbsenceContract.test.mjs scripts/dlcCampaignProgressContinuity.test.mjs scripts/dlcInstallationCatalog.test.mjs scripts/auditDlcMaterialization.test.mjs
+
+TAP version 13
+# Subtest: missing real Git blobs, hydrated cache and unresolved LFS payloads have different identities and sizes
+ok 1 - missing real Git blobs, hydrated cache and unresolved LFS payloads have different identities and sizes
+  ---
+  duration_ms: 59.443899
+  type: 'test'
+  ...
+# Subtest: same-size corrupted LFS cache fails SHA verification and cannot count as locally recoverable
+ok 2 - same-size corrupted LFS cache fails SHA verification and cannot count as locally recoverable
+  ---
+  duration_ms: 38.587858
+  type: 'test'
+  ...
+# Subtest: truncated LFS headers and missing pointer fields never become materialized image data
+ok 3 - truncated LFS headers and missing pointer fields never become materialized image data
+  ---
+  duration_ms: 72.371563
+  type: 'test'
+  ...
+# Subtest: hydrated LFS files require payload SHA verification and changed-size native files lose the old dedup identity
+ok 4 - hydrated LFS files require payload SHA verification and changed-size native files lose the old dedup identity
+  ---
+  duration_ms: 105.580191
+  type: 'test'
+  ...
+# Subtest: base selection excludes optional DLC; export budgets never silently omit non-media costs
+ok 5 - base selection excludes optional DLC; export budgets never silently omit non-media costs
+  ---
+  duration_ms: 76.020575
+  type: 'test'
+  ...
+# Subtest: a standalone source export reports unknown missing payloads and never borrows a parent Git index
+ok 6 - a standalone source export reports unknown missing payloads and never borrows a parent Git index
+  ---
+  duration_ms: 24.817784
+  type: 'test'
+  ...
+# Subtest: symlinked sources are blocked without reading through them
+ok 7 - symlinked sources are blocked without reading through them
+  ---
+  duration_ms: 30.965554
+  type: 'test'
+  ...
+# Subtest: missing promisor Git objects stay missing without invoking a remote helper
+ok 8 - missing promisor Git objects stay missing without invoking a remote helper
+  ---
+  duration_ms: 45.914537
+  type: 'test'
+  ...
+# Subtest: strict CLI writes only an explicit new report, exits nonzero for missing media and refuses overwrite
+ok 9 - strict CLI writes only an explicit new report, exits nonzero for missing media and refuses overwrite
+  ---
+  duration_ms: 293.832296
+  type: 'test'
+  ...
+# Subtest: a known pack retains historical and future mission IDs absent from this catalog
+ok 10 - a known pack retains historical and future mission IDs absent from this catalog
+  ---
+  duration_ms: 2.159666
+  type: 'test'
+  ...
+# Subtest: current missions still follow completed stages and catalog order without restoring stale unlocks
+ok 11 - current missions still follow completed stages and catalog order without restoring stale unlocks
+  ---
+  duration_ms: 0.274023
+  type: 'test'
+  ...
+# Subtest: a newer save survives an older catalog round trip and resumes after catalog restoration
+ok 12 - a newer save survives an older catalog round trip and resumes after catalog restoration
+  ---
+  duration_ms: 0.408206
+  type: 'test'
+  ...
+# Subtest: refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+ok 13 - refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+  ---
+  duration_ms: 1.761286
+  type: 'test'
+  ...
+# Subtest: a static common UI reference refuses an export that would omit its declared DLC media
+ok 14 - a static common UI reference refuses an export that would omit its declared DLC media
+  ---
+  duration_ms: 26.82522
+  type: 'test'
+  ...
+# Subtest: an unlisted static common UI asset cannot silently escape the inventory guard
+ok 15 - an unlisted static common UI asset cannot silently escape the inventory guard
+  ---
+  duration_ms: 4.493837
+  type: 'test'
+  ...
+# Subtest: encoding a static UI asset filename does not allow it to be omitted from an export
+ok 16 - encoding a static UI asset filename does not allow it to be omitted from an export
+  ---
+  duration_ms: 4.093162
+  type: 'test'
+  ...
+# Subtest: promoting common UI media preserves its URL and SHA in base and selected distributions
+ok 17 - promoting common UI media preserves its URL and SHA in base and selected distributions
+  ---
+  duration_ms: 10.970222
+  type: 'test'
+  ...
+# Subtest: profiles resolve in catalogue order and preserve immutable complete identities
+ok 18 - profiles resolve in catalogue order and preserve immutable complete identities
+  ---
+  duration_ms: 0.600044
+  type: 'test'
+  ...
+# Subtest: rejects profile unknown IDs
+ok 19 - rejects profile unknown IDs
+  ---
+  duration_ms: 0.211288
+  type: 'test'
+  ...
+# Subtest: rejects profile duplicate IDs
+ok 20 - rejects profile duplicate IDs
+  ---
+  duration_ms: 0.124638
+  type: 'test'
+  ...
+# Subtest: rejects profile empty selected
+ok 21 - rejects profile empty selected
+  ---
+  duration_ms: 0.067532
+  type: 'test'
+  ...
+# Subtest: rejects profile IDs in base
+ok 22 - rejects profile IDs in base
+  ---
+  duration_ms: 0.142625
+  type: 'test'
+  ...
+# Subtest: rejects profile IDs in all
+ok 23 - rejects profile IDs in all
+  ---
+  duration_ms: 0.180683
+  type: 'test'
+  ...
+# Subtest: rejects profile unknown mode
+ok 24 - rejects profile unknown mode
+  ---
+  duration_ms: 0.086019
+  type: 'test'
+  ...
+# Subtest: rejects profile different shared policy
+ok 25 - rejects profile different shared policy
+  ---
+  duration_ms: 0.078729
+  type: 'test'
+  ...
+# Subtest: rejects profile unknown fields
+ok 26 - rejects profile unknown fields
+  ---
+  duration_ms: 0.066781
+  type: 'test'
+  ...
+# Subtest: rejects profile path-like IDs
+ok 27 - rejects profile path-like IDs
+  ---
+  duration_ms: 0.052779
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous catalogue ID
+ok 28 - rejects ambiguous catalogue ID
+  ---
+  duration_ms: 0.161724
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous catalogue universe
+ok 29 - rejects ambiguous catalogue universe
+  ---
+  duration_ms: 0.114593
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous catalogue case-insensitive directory
+ok 30 - rejects ambiguous catalogue case-insensitive directory
+  ---
+  duration_ms: 0.085969
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous catalogue catalogue order
+ok 31 - rejects ambiguous catalogue catalogue order
+  ---
+  duration_ms: 0.080041
+  type: 'test'
+  ...
+# Subtest: rejects ambiguous catalogue module path traversal
+ok 32 - rejects ambiguous catalogue module path traversal
+  ---
+  duration_ms: 0.098007
+  type: 'test'
+  ...
+# Subtest: plans retain all shared assets and require no excluded asset blobs
+ok 33 - plans retain all shared assets and require no excluded asset blobs
+  ---
+  duration_ms: 3.654401
+  type: 'test'
+  ...
+# Subtest: a resolved full catalogue permits absent excluded folders and rejects absent selected folders
+ok 34 - a resolved full catalogue permits absent excluded folders and rejects absent selected folders
+  ---
+  duration_ms: 2.330084
+  type: 'test'
+  ...
+# Subtest: public source declarations in excluded packs survive selection and source export
+ok 35 - public source declarations in excluded packs survive selection and source export
+  ---
+  duration_ms: 10.982161
+  type: 'test'
+  ...
+# Subtest: excluded pack declarations still participate in ownership and collision checks
+ok 36 - excluded pack declarations still participate in ownership and collision checks
+  ---
+  duration_ms: 1.46587
+  type: 'test'
+  ...
+# Subtest: missing shared dependency declarations fail before receipt materialization
+ok 37 - missing shared dependency declarations fail before receipt materialization
+  ---
+  duration_ms: 1.601265
+  type: 'test'
+  ...
+# Subtest: foreign asset ownership and traversal declarations are refused
+ok 38 - foreign asset ownership and traversal declarations are refused
+  ---
+  duration_ms: 2.156482
+  type: 'test'
+  ...
+# Subtest: changed identities and modified resolved selections cannot be silently used
+ok 39 - changed identities and modified resolved selections cannot be silently used
+  ---
+  duration_ms: 1.363275
+  type: 'test'
+  ...
+# Subtest: symlinked identity metadata is refused even for an excluded pack
+ok 40 - symlinked identity metadata is refused even for an excluded pack
+  ---
+  duration_ms: 1.424058
+  type: 'test'
+  ...
+# Subtest: receipts attest actual canonical bytes and selected metadata deterministically
+ok 41 - receipts attest actual canonical bytes and selected metadata deterministically
+  ---
+  duration_ms: 4.913911
+  type: 'test'
+  ...
+# Subtest: a published copy never substitutes for a missing canonical source
+ok 42 - a published copy never substitutes for a missing canonical source
+  ---
+  duration_ms: 1.660534
+  type: 'test'
+  ...
+# Subtest: receipts reject LFS placeholders and symlinked canonical sources
+ok 43 - receipts reject LFS placeholders and symlinked canonical sources
+  ---
+  duration_ms: 2.773692
+  type: 'test'
+  ...
+# Subtest: inventory edits invalidate an already resolved media plan
+ok 44 - inventory edits invalidate an already resolved media plan
+  ---
+  duration_ms: 1.613823
+  type: 'test'
+  ...
+# Subtest: an autonomous selected source export passes with exact canonical hashes
+ok 45 - an autonomous selected source export passes with exact canonical hashes
+  ---
+  duration_ms: 3.816425
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects missing source
+ok 46 - strict export audit rejects missing source
+  ---
+  duration_ms: 3.738107
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects changed source
+ok 47 - strict export audit rejects changed source
+  ---
+  duration_ms: 3.261358
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects extra public file
+ok 48 - strict export audit rejects extra public file
+  ---
+  duration_ms: 2.627762
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects extra pack file
+ok 49 - strict export audit rejects extra pack file
+  ---
+  duration_ms: 3.108777
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects excluded empty folder
+ok 50 - strict export audit rejects excluded empty folder
+  ---
+  duration_ms: 3.040264
+  type: 'test'
+  ...
+# Subtest: strict export audit rejects changed inventory
+ok 51 - strict export audit rejects changed inventory
+  ---
+  duration_ms: 4.338412
+  type: 'test'
+  ...
+# Subtest: a receipt cannot omit an inventory entry owned by halo
+ok 52 - a receipt cannot omit an inventory entry owned by halo
+  ---
+  duration_ms: 4.572316
+  type: 'test'
+  ...
+# Subtest: a receipt cannot omit an inventory entry owned by shared
+ok 53 - a receipt cannot omit an inventory entry owned by shared
+  ---
+  duration_ms: 4.418513
+  type: 'test'
+  ...
+# Subtest: audit rejects symlinks both on expected paths and on unexpected paths
+ok 54 - audit rejects symlinks both on expected paths and on unexpected paths
+  ---
+  duration_ms: 3.605536
+  type: 'test'
+  ...
+# Subtest: audit rejects a placeholder even when it is a regular file
+ok 55 - audit rejects a placeholder even when it is a regular file
+  ---
+  duration_ms: 2.763597
+  type: 'test'
+  ...
+# Subtest: both layout checks generated public copies as well as canonical DLC files
+ok 56 - both layout checks generated public copies as well as canonical DLC files
+  ---
+  duration_ms: 16.994297
+  type: 'test'
+  ...
+# Subtest: a base-only export contains all common files and no pack directory
+ok 57 - a base-only export contains all common files and no pack directory
+  ---
+  duration_ms: 3.292505
+  type: 'test'
+  ...
+# Subtest: a single receipt binds canonical media to transformed files from a separate export root
+ok 58 - a single receipt binds canonical media to transformed files from a separate export root
+  ---
+  duration_ms: 7.560731
+  type: 'test'
+  ...
+# Subtest: receipt schema errors fail closed before audit
+ok 59 - receipt schema errors fail closed before audit
+  ---
+  duration_ms: 8.458524
+  type: 'test'
+  ...
+# Subtest: the all profile produces a consistent strict receipt
+ok 60 - the all profile produces a consistent strict receipt
+  ---
+  duration_ms: 5.831234
+  type: 'test'
+  ...
+# Subtest: the artwork-only profile produces a consistent strict receipt
+ok 61 - the artwork-only profile produces a consistent strict receipt
+  ---
+  duration_ms: 3.416452
+  type: 'test'
+  ...
+# Subtest: build output accepts an absent or regular dist without creating or emptying it
+ok 62 - build output accepts an absent or regular dist without creating or emptying it
+  ---
+  duration_ms: 2.366939
+  type: 'test'
+  ...
+# Subtest: a dist symlink is refused by the build entry point before Vite can empty its target
+ok 63 - a dist symlink is refused by the build entry point before Vite can empty its target
+  ---
+  duration_ms: 1.07378
+  type: 'test'
+  ...
+# Subtest: build output rejects files and symlinked root ancestors
+ok 64 - build output rejects files and symlinked root ancestors
+  ---
+  duration_ms: 0.705955
+  type: 'test'
+  ...
+# Subtest: built publication retains the exact canonical PNG bytes and refuses changed or missing images
+ok 65 - built publication retains the exact canonical PNG bytes and refuses changed or missing images
+  ---
+  duration_ms: 3.354788
+  type: 'test'
+  ...
+# Subtest: built publication refuses symlinked media ancestors even when the target bytes match
+ok 66 - built publication refuses symlinked media ancestors even when the target bytes match
+  ---
+  duration_ms: 0.843051
+  type: 'test'
+  ...
+# Subtest: shared coverage is deterministic, counts canonical bytes once, and never authorizes pruning from missing literals
+ok 67 - shared coverage is deterministic, counts canonical bytes once, and never authorizes pruning from missing literals
+  ---
+  duration_ms: 28.201687
+  type: 'test'
+  ...
+# Subtest: shared coverage refuses missing real media and LFS placeholders instead of reporting their pointer size
+ok 68 - shared coverage refuses missing real media and LFS placeholders instead of reporting their pointer size
+  ---
+  duration_ms: 2.214699
+  type: 'test'
+  ...
+# Subtest: base to Halo reuses shared bytes, deduplicates publication and reconstructs an independent audited tree
+ok 69 - base to Halo reuses shared bytes, deduplicates publication and reconstructs an independent audited tree
+  ---
+  duration_ms: 69.844352
+  type: 'test'
+  ...
+# Subtest: Halo removal reconstructs base only and leaves the original installation intact
+ok 70 - Halo removal reconstructs base only and leaves the original installation intact
+  ---
+  duration_ms: 54.684562
+  type: 'test'
+  ...
+# Subtest: a trusted manifest hash is mandatory; mismatched bytes never produce an output
+ok 71 - a trusted manifest hash is mandatory; mismatched bytes never produce an output
+  ---
+  duration_ms: 34.748529
+  type: 'test'
+  ...
+# Subtest: corrupted payload fails and cleans only temporary output
+ok 72 - corrupted payload fails and cleans only temporary output
+  ---
+  duration_ms: 35.742077
+  type: 'test'
+  ...
+# Subtest: modified base media cannot be reused
+ok 73 - modified base media cannot be reused
+  ---
+  duration_ms: 24.448727
+  type: 'test'
+  ...
+# Subtest: different canonical source revisions are refused
+ok 74 - different canonical source revisions are refused
+  ---
+  duration_ms: 30.196125
+  type: 'test'
+  ...
+# Subtest: existing outputs and overlapping paths are refused
+ok 75 - existing outputs and overlapping paths are refused
+  ---
+  duration_ms: 34.661868
+  type: 'test'
+  ...
+# Subtest: unexpected payload files are not imported
+ok 76 - unexpected payload files are not imported
+  ---
+  duration_ms: 23.069417
+  type: 'test'
+  ...
+# Subtest: symlinked payloads are refused
+ok 77 - symlinked payloads are refused
+  ---
+  duration_ms: 27.923978
+  type: 'test'
+  ...
+# Subtest: dangling output symlinks are refused
+ok 78 - dangling output symlinks are refused
+  ---
+  duration_ms: 32.599348
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses traversal
+ok 79 - even a repinned malformed manifest refuses traversal
+  ---
+  duration_ms: 32.775004
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses duplicate
+ok 80 - even a repinned malformed manifest refuses duplicate
+  ---
+  duration_ms: 32.254779
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses missing receipt
+ok 81 - even a repinned malformed manifest refuses missing receipt
+  ---
+  duration_ms: 27.035107
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses unattested reuse
+ok 82 - even a repinned malformed manifest refuses unattested reuse
+  ---
+  duration_ms: 18.758237
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses incompatible base
+ok 83 - even a repinned malformed manifest refuses incompatible base
+  ---
+  duration_ms: 20.547133
+  type: 'test'
+  ...
+# Subtest: even a repinned malformed manifest refuses unmanaged secret
+ok 84 - even a repinned malformed manifest refuses unmanaged secret
+  ---
+  duration_ms: 19.064438
+  type: 'test'
+  ...
+# Subtest: CLI creates and applies the same verified delta, and rejects duplicate arguments
+ok 85 - CLI creates and applies the same verified delta, and rejects duplicate arguments
+  ---
+  duration_ms: 377.810962
+  type: 'test'
+  ...
+# Subtest: inspection verifies inputs without any writes and distinguishes transfer from reconstructed file bytes
+ok 86 - inspection verifies inputs without any writes and distinguishes transfer from reconstructed file bytes
+  ---
+  duration_ms: 32.139591
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject changed payload bytes before creating a directory
+ok 87 - inspection and application both reject changed payload bytes before creating a directory
+  ---
+  duration_ms: 28.307165
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject unexpected payload file before creating a directory
+ok 88 - inspection and application both reject unexpected payload file before creating a directory
+  ---
+  duration_ms: 21.434122
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject incomplete target file list before creating a directory
+ok 89 - inspection and application both reject incomplete target file list before creating a directory
+  ---
+  duration_ms: 21.474353
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject invalid target receipt selection before creating a directory
+ok 90 - inspection and application both reject invalid target receipt selection before creating a directory
+  ---
+  duration_ms: 23.122607
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject mismatched target receipt revision before creating a directory
+ok 91 - inspection and application both reject mismatched target receipt revision before creating a directory
+  ---
+  duration_ms: 21.977051
+  type: 'test'
+  ...
+# Subtest: inspection and application both reject mismatched target profile bytes before creating a directory
+ok 92 - inspection and application both reject mismatched target profile bytes before creating a directory
+  ---
+  duration_ms: 35.170557
+  type: 'test'
+  ...
+# Subtest: inspection handles a delta with no changed blobs and no selection change
+ok 93 - inspection handles a delta with no changed blobs and no selection change
+  ---
+  duration_ms: 19.16547
+  type: 'test'
+  ...
+# Subtest: CLI exports pinned editions, inspects and applies Halo, then returns to the exact base with original trees retained
+ok 94 - CLI exports pinned editions, inspects and applies Halo, then returns to the exact base with original trees retained
+  ---
+  duration_ms: 774.983486
+  type: 'test'
+  ...
+# Subtest: a normal unpinned CLI export remains valid and gives an actionable diagnostic when used for a delta
+ok 95 - a normal unpinned CLI export remains valid and gives an actionable diagnostic when used for a delta
+  ---
+  duration_ms: 187.387668
+  type: 'test'
+  ...
+# Subtest: CLI inspection requires a trusted pin and accepts no output or duplicate options; help creates nothing
+ok 96 - CLI inspection requires a trusted pin and accepts no output or duplicate options; help creates nothing
+  ---
+  duration_ms: 351.314332
+  type: 'test'
+  ...
+# Subtest: runtime documentation follows transitive imports, reexports, literal dynamic imports and config helpers
+ok 97 - runtime documentation follows transitive imports, reexports, literal dynamic imports and config helpers
+  ---
+  duration_ms: 6.854236
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses missing local import instead of claiming an unknown closure
+ok 98 - runtime documentation refuses missing local import instead of claiming an unknown closure
+  ---
+  duration_ms: 1.2468
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses computed import instead of claiming an unknown closure
+ok 99 - runtime documentation refuses computed import instead of claiming an unknown closure
+  ---
+  duration_ms: 1.628416
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses import glob instead of claiming an unknown closure
+ok 100 - runtime documentation refuses import glob instead of claiming an unknown closure
+  ---
+  duration_ms: 0.996302
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses parent escape instead of claiming an unknown closure
+ok 101 - runtime documentation refuses parent escape instead of claiming an unknown closure
+  ---
+  duration_ms: 0.86885
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses environment input instead of claiming an unknown closure
+ok 102 - runtime documentation refuses environment input instead of claiming an unknown closure
+  ---
+  duration_ms: 0.62972
+  type: 'test'
+  ...
+# Subtest: runtime documentation refuses symlinked inputs and untransformed excluded DLC imports
+ok 103 - runtime documentation refuses symlinked inputs and untransformed excluded DLC imports
+  ---
+  duration_ms: 1.14011
+  type: 'test'
+  ...
+# Subtest: the generated installation profile is not copied as canonical documentation
+ok 104 - the generated installation profile is not copied as canonical documentation
+  ---
+  duration_ms: 0.834418
+  type: 'test'
+  ...
+# Subtest: exports an autonomous source tree for base
+ok 105 - exports an autonomous source tree for base
+  ---
+  duration_ms: 37.700551
+  type: 'test'
+  ...
+# Subtest: exports an autonomous source tree for halo
+ok 106 - exports an autonomous source tree for halo
+  ---
+  duration_ms: 17.905671
+  type: 'test'
+  ...
+# Subtest: exports an autonomous source tree for halo+drop
+ok 107 - exports an autonomous source tree for halo+drop
+  ---
+  duration_ms: 34.81491
+  type: 'test'
+  ...
+# Subtest: all mode preserves all contributions and empty packIds in metadata
+ok 108 - all mode preserves all contributions and empty packIds in metadata
+  ---
+  duration_ms: 20.983171
+  type: 'test'
+  ...
+# Subtest: HTML shared media keeps canonical PNG bytes and its original URL in base
+ok 109 - HTML shared media keeps canonical PNG bytes and its original URL in base
+  ---
+  duration_ms: 12.786972
+  type: 'test'
+  ...
+# Subtest: HTML shared media keeps canonical PNG bytes and its original URL in Halo
+ok 110 - HTML shared media keeps canonical PNG bytes and its original URL in Halo
+  ---
+  duration_ms: 14.101023
+  type: 'test'
+  ...
+# Subtest: HTML shared media keeps canonical PNG bytes and its original URL in mixed
+ok 111 - HTML shared media keeps canonical PNG bytes and its original URL in mixed
+  ---
+  duration_ms: 14.907299
+  type: 'test'
+  ...
+# Subtest: HTML shared media keeps canonical PNG bytes and its original URL in all
+ok 112 - HTML shared media keeps canonical PNG bytes and its original URL in all
+  ---
+  duration_ms: 19.588303
+  type: 'test'
+  ...
+# Subtest: an entry image owned by an omitted DLC cannot silently leave a broken base distribution
+ok 113 - an entry image owned by an omitted DLC cannot silently leave a broken base distribution
+  ---
+  duration_ms: 19.535098
+  type: 'test'
+  ...
+# Subtest: explicit runtime documentation preserves required JSON/modules and canonical media in base
+ok 114 - explicit runtime documentation preserves required JSON/modules and canonical media in base
+  ---
+  duration_ms: 76.385036
+  type: 'test'
+  ...
+# Subtest: explicit runtime documentation preserves required JSON/modules and canonical media in Halo
+ok 115 - explicit runtime documentation preserves required JSON/modules and canonical media in Halo
+  ---
+  duration_ms: 19.697673
+  type: 'test'
+  ...
+# Subtest: explicit runtime documentation preserves required JSON/modules and canonical media in mixed
+ok 116 - explicit runtime documentation preserves required JSON/modules and canonical media in mixed
+  ---
+  duration_ms: 27.081508
+  type: 'test'
+  ...
+# Subtest: explicit runtime documentation preserves required JSON/modules and canonical media in all
+ok 117 - explicit runtime documentation preserves required JSON/modules and canonical media in all
+  ---
+  duration_ms: 27.370142
+  type: 'test'
+  ...
+# Subtest: default documentation keeps historical JSON and rejects invalid explicit modes before staging
+ok 118 - default documentation keeps historical JSON and rejects invalid explicit modes before staging
+  ---
+  duration_ms: 7.514882
+  type: 'test'
+  ...
+# Subtest: CLI runtime documentation is explicit and reports omitted research bytes
+ok 119 - CLI runtime documentation is explicit and reports omitted research bytes
+  ---
+  duration_ms: 118.216515
+  type: 'test'
+  ...
+# Subtest: read-only source inspection uses the runtime export closure without requiring materialized media
+ok 120 - read-only source inspection uses the runtime export closure without requiring materialized media
+  ---
+  duration_ms: 10.030896
+  type: 'test'
+  ...
+# Subtest: refuses an existing output and preserves its contents
+ok 121 - refuses an existing output and preserves its contents
+  ---
+  duration_ms: 1.751632
+  type: 'test'
+  ...
+# Subtest: rejects a destination nested inside the source before staging
+ok 122 - rejects a destination nested inside the source before staging
+  ---
+  duration_ms: 1.339189
+  type: 'test'
+  ...
+# Subtest: strict media failures leave no destination or staging directory
+ok 123 - strict media failures leave no destination or staging directory
+  ---
+  duration_ms: 9.696451
+  type: 'test'
+  ...
+# Subtest: audit failure cleans only the newly created staging directory
+ok 124 - audit failure cleans only the newly created staging directory
+  ---
+  duration_ms: 6.851352
+  type: 'test'
+  ...
+# Subtest: audit rejects an unlisted JavaScript file anywhere in the delivered sources
+ok 125 - audit rejects an unlisted JavaScript file anywhere in the delivered sources
+  ---
+  duration_ms: 10.170156
+  type: 'test'
+  ...
+# Subtest: audit rejects changed code and corrupted public or canonical media
+ok 126 - audit rejects changed code and corrupted public or canonical media
+  ---
+  duration_ms: 17.331215
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects excluded pack import even when its source hash is attested
+ok 127 - AST import audit rejects excluded pack import even when its source hash is attested
+  ---
+  duration_ms: 9.109337
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects missing relative import even when its source hash is attested
+ok 128 - AST import audit rejects missing relative import even when its source hash is attested
+  ---
+  duration_ms: 7.279447
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects missing static dynamic import even when its source hash is attested
+ok 129 - AST import audit rejects missing static dynamic import even when its source hash is attested
+  ---
+  duration_ms: 7.683247
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects computed runtime import even when its source hash is attested
+ok 130 - AST import audit rejects computed runtime import even when its source hash is attested
+  ---
+  duration_ms: 17.081568
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects escape from source root even when its source hash is attested
+ok 131 - AST import audit rejects escape from source root even when its source hash is attested
+  ---
+  duration_ms: 11.281983
+  type: 'test'
+  ...
+# Subtest: AST import audit rejects invalid JavaScript even when its source hash is attested
+ok 132 - AST import audit rejects invalid JavaScript even when its source hash is attested
+  ---
+  duration_ms: 7.705559
+  type: 'test'
+  ...
+# Subtest: generated build directories are outside source closure, but new environment files are rejected
+ok 133 - generated build directories are outside source closure, but new environment files are rejected
+  ---
+  duration_ms: 11.856949
+  type: 'test'
+  ...
+# Subtest: symlinked source files and output ancestors are refused
+ok 134 - symlinked source files and output ancestors are refused
+  ---
+  duration_ms: 3.669043
+  type: 'test'
+  ...
+# Subtest: an empty excluded pack directory is refused after export
+ok 135 - an empty excluded pack directory is refused after export
+  ---
+  duration_ms: 6.500794
+  type: 'test'
+  ...
+# Subtest: CLI reads an explicit profile and emits a bounded audit summary
+ok 136 - CLI reads an explicit profile and emits a bounded audit summary
+  ---
+  duration_ms: 241.020688
+  type: 'test'
+  ...
+# Subtest: CLI pins an explicit complete source revision without changing standalone export defaults
+ok 137 - CLI pins an explicit complete source revision without changing standalone export defaults
+  ---
+  duration_ms: 102.819698
+  type: 'test'
+  ...
+# Subtest: CLI rejects invalid or repeated revisions before creating output parents or staging
+ok 138 - CLI rejects invalid or repeated revisions before creating output parents or staging
+  ---
+  duration_ms: 397.623699
+  type: 'test'
+  ...
+# Subtest: CLI export help explains standalone and differential use without requiring a source checkout
+ok 139 - CLI export help explains standalone and differential use without requiring a source checkout
+  ---
+  duration_ms: 70.047218
+  type: 'test'
+  ...
+# Subtest: an existing distribution cannot be re-exported as a false all installation
+ok 140 - an existing distribution cannot be re-exported as a false all installation
+  ---
+  duration_ms: 7.366028
+  type: 'test'
+  ...
+# Subtest: a concurrent source modification during transformation prevents publication and cleans staging
+ok 141 - a concurrent source modification during transformation prevents publication and cleans staging
+  ---
+  duration_ms: 11.647038
+  type: 'test'
+  ...
+# Subtest: a concurrent source addition during transformation prevents publication and cleans staging
+ok 142 - a concurrent source addition during transformation prevents publication and cleans staging
+  ---
+  duration_ms: 7.414861
+  type: 'test'
+  ...
+# Subtest: entry HTML observes local media URLs and normalizes only the inventory paths
+ok 143 - entry HTML observes local media URLs and normalizes only the inventory paths
+  ---
+  duration_ms: 3.523934
+  type: 'test'
+  ...
+# Subtest: entry HTML does not infer media from scripts, comments, remote URLs, routes or templates
+ok 144 - entry HTML does not infer media from scripts, comments, remote URLs, routes or templates
+  ---
+  duration_ms: 0.994439
+  type: 'test'
+  ...
+# Subtest: entry HTML refuses encoded traversal and malformed local media URLs
+ok 145 - entry HTML refuses encoded traversal and malformed local media URLs
+  ---
+  duration_ms: 0.428316
+  type: 'test'
+  ...
+# Subtest: a local HTML image absent from the public inventory fails the base plan
+ok 146 - a local HTML image absent from the public inventory fails the base plan
+  ---
+  duration_ms: 4.593227
+  type: 'test'
+  ...
+# Subtest: reviewed policy removes only explicitly proven shared backdrops while preserve-all stays compatible
+ok 147 - reviewed policy removes only explicitly proven shared backdrops while preserve-all stays compatible
+  ---
+  duration_ms: 59.244448
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for base
+ok 148 - audited source export retains the same backdrop bytes for base
+  ---
+  duration_ms: 68.05712
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for halo
+ok 149 - audited source export retains the same backdrop bytes for halo
+  ---
+  duration_ms: 61.158252
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for alien
+ok 150 - audited source export retains the same backdrop bytes for alien
+  ---
+  duration_ms: 53.285936
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for aliens
+ok 151 - audited source export retains the same backdrop bytes for aliens
+  ---
+  duration_ms: 51.956168
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for halo,aliens
+ok 152 - audited source export retains the same backdrop bytes for halo,aliens
+  ---
+  duration_ms: 70.455355
+  type: 'test'
+  ...
+# Subtest: audited source export retains the same backdrop bytes for all
+ok 153 - audited source export retains the same backdrop bytes for all
+  ---
+  duration_ms: 62.604179
+  type: 'test'
+  ...
+# Subtest: an unrelated shared resource is retained even when no literal consumer is observed
+ok 154 - an unrelated shared resource is retained even when no literal consumer is observed
+  ---
+  duration_ms: 23.879671
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses common JSX reference and leaves no output
+ok 155 - reviewed export refuses common JSX reference and leaves no output
+  ---
+  duration_ms: 26.246057
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses encoded JSX reference and leaves no output
+ok 156 - reviewed export refuses encoded JSX reference and leaves no output
+  ---
+  duration_ms: 25.292504
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses computed constant reference and leaves no output
+ok 157 - reviewed export refuses computed constant reference and leaves no output
+  ---
+  duration_ms: 32.090108
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses CSS reference and leaves no output
+ok 158 - reviewed export refuses CSS reference and leaves no output
+  ---
+  duration_ms: 29.906917
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses generated registry value and leaves no output
+ok 159 - reviewed export refuses generated registry value and leaves no output
+  ---
+  duration_ms: 22.642411
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses public JSON alias and leaves no output
+ok 160 - reviewed export refuses public JSON alias and leaves no output
+  ---
+  duration_ms: 92.415022
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses dynamic template producer and leaves no output
+ok 161 - reviewed export refuses dynamic template producer and leaves no output
+  ---
+  duration_ms: 41.019936
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses dynamic concatenation producer and leaves no output
+ok 162 - reviewed export refuses dynamic concatenation producer and leaves no output
+  ---
+  duration_ms: 22.500389
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses implicit mode fallback and leaves no output
+ok 163 - reviewed export refuses implicit mode fallback and leaves no output
+  ---
+  duration_ms: 22.074078
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses missing dependency identity and leaves no output
+ok 164 - reviewed export refuses missing dependency identity and leaves no output
+  ---
+  duration_ms: 33.671094
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses unknown dependency identity and leaves no output
+ok 165 - reviewed export refuses unknown dependency identity and leaves no output
+  ---
+  duration_ms: 22.084955
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses duplicate declaration and leaves no output
+ok 166 - reviewed export refuses duplicate declaration and leaves no output
+  ---
+  duration_ms: 37.083861
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses new registry alias and leaves no output
+ok 167 - reviewed export refuses new registry alias and leaves no output
+  ---
+  duration_ms: 21.940407
+  type: 'test'
+  ...
+# Subtest: reviewed export refuses unclassified dependency and leaves no output
+ok 168 - reviewed export refuses unclassified dependency and leaves no output
+  ---
+  duration_ms: 21.560677
+  type: 'test'
+  ...
+# Subtest: missing opt-in metadata fails closed without breaking the historical preserve-all profile
+ok 169 - missing opt-in metadata fails closed without breaking the historical preserve-all profile
+  ---
+  duration_ms: 40.321366
+  type: 'test'
+  ...
+# Subtest: selected pack inventory cannot request an asset excluded by the reviewed mapping
+ok 170 - selected pack inventory cannot request an asset excluded by the reviewed mapping
+  ---
+  duration_ms: 31.612832
+  type: 'test'
+  ...
+# Subtest: audits reject both a missing required shared image and an extra excluded image
+ok 171 - audits reject both a missing required shared image and an extra excluded image
+  ---
+  duration_ms: 64.597383
+  type: 'test'
+  ...
+# Subtest: a repinned receipt cannot silently omit a selected shared dependency
+ok 172 - a repinned receipt cannot silently omit a selected shared dependency
+  ---
+  duration_ms: 44.724192
+  type: 'test'
+  ...
+# Subtest: deltas preserve reviewed policy across base, both consumers, Halo and the complete edition
+ok 173 - deltas preserve reviewed policy across base, both consumers, Halo and the complete edition
+  ---
+  duration_ms: 357.372854
+  type: 'test'
+  ...
+# Subtest: base keeps campaign availability separate from installation, including artwork-only packs
+ok 174 - base keeps campaign availability separate from installation, including artwork-only packs
+  ---
+  duration_ms: 1.49125
+  type: 'test'
+  ...
+# Subtest: selected installation has canonical order and immutable snapshots
+ok 175 - selected installation has canonical order and immutable snapshots
+  ---
+  duration_ms: 0.557768
+  type: 'test'
+  ...
+# Subtest: installation rejects ambiguous, unknown, duplicate and misspelled profiles
+ok 176 - installation rejects ambiguous, unknown, duplicate and misspelled profiles
+  ---
+  duration_ms: 0.304308
+  type: 'test'
+  ...
+# Subtest: complete registry can be imported with every package directory physically absent
+ok 177 - complete registry can be imported with every package directory physically absent
+  ---
+  duration_ms: 1.353083
+  type: 'test'
+  ...
+# Subtest: stable indexes retain removed identities and append without reusing their numbers
+ok 178 - stable indexes retain removed identities and append without reusing their numbers
+  ---
+  duration_ms: 0.319259
+  type: 'test'
+  ...
+# Subtest: partial profiles never derive mission numbers from reduced array positions
+ok 179 - partial profiles never derive mission numbers from reduced array positions
+  ---
+  duration_ms: 0.221283
+  type: 'test'
+  ...
+# Subtest: replay identity history preserves completed stages after authored catalogue removal
+ok 180 - replay identity history preserves completed stages after authored catalogue removal
+  ---
+  duration_ms: 0.294382
+  type: 'test'
+  ...
+# Subtest: base, full and selected editions filter the actual installation API without changing inclusion
+ok 181 - base, full and selected editions filter the actual installation API without changing inclusion
+  ---
+  duration_ms: 2.563723
+  type: 'test'
+  ...
+# Subtest: accent-insensitive search sees the full register and clamps a stale page after filtering
+ok 182 - accent-insensitive search sees the full register and clamps a stale page after filtering
+  ---
+  duration_ms: 0.410908
+  type: 'test'
+  ...
+# Subtest: twelve-item pages preserve source order, references and immutable inputs
+ok 183 - twelve-item pages preserve source order, references and immutable inputs
+  ---
+  duration_ms: 0.242995
+  type: 'test'
+  ...
+# Subtest: empty results and invalid saved pages expose bounded, explicit ranges
+ok 184 - empty results and invalid saved pages expose bounded, explicit ranges
+  ---
+  duration_ms: 0.174021
+  type: 'test'
+  ...
+# Subtest: content families come only from known declarations and never make artwork-only packs playable
+ok 185 - content families come only from known declarations and never make artwork-only packs playable
+  ---
+  duration_ms: 0.404278
+  type: 'test'
+  ...
+# Subtest: the real Halo manifest declares its content families while artwork-only stays distinct
+ok 186 - the real Halo manifest declares its content families while artwork-only stays distinct
+  ---
+  duration_ms: 0.391969
+  type: 'test'
+  ...
+# Subtest: base: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 187 - base: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 62.511689
+  type: 'test'
+  ...
+# Subtest: Halo: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 188 - Halo: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 55.839935
+  type: 'test'
+  ...
+# Subtest: Pirates: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 189 - Pirates: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 48.814548
+  type: 'test'
+  ...
+# Subtest: all: the real Pirates panel bundles with a complete optional API and only selected source modules
+ok 190 - all: the real Pirates panel bundles with a complete optional API and only selected source modules
+  ---
+  duration_ms: 52.044211
+  type: 'test'
+  ...
+# Subtest: actual App normalization and serialization retain dormant data through a base-only round trip
+ok 191 - actual App normalization and serialization retain dormant data through a base-only round trip
+  ---
+  duration_ms: 5654.29019
+  type: 'test'
+  ...
+# Subtest: actual App normalization and serialization preserve unknown missions inside a known pack without completing them
+ok 192 - actual App normalization and serialization preserve unknown missions inside a known pack without completing them
+  ---
+  duration_ms: 13.272466
+  type: 'test'
+  ...
+# Subtest: actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+ok 193 - actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+  ---
+  duration_ms: 4.523873
+  type: 'test'
+  ...
+# Subtest: legacy v6 save migrates identically with complete and absent runtime catalogs
+ok 194 - legacy v6 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 24.217723
+  type: 'test'
+  ...
+# Subtest: legacy v8 save migrates identically with complete and absent runtime catalogs
+ok 195 - legacy v8 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 12.171606
+  type: 'test'
+  ...
+# Subtest: runtime squad falls back to the Anchor without rewriting the saved slots
+ok 196 - runtime squad falls back to the Anchor without rewriting the saved slots
+  ---
+  duration_ms: 3.281187
+  type: 'test'
+  ...
+# Subtest: show/hide installed content preserves absent and future reserve preferences
+ok 197 - show/hide installed content preserves absent and future reserve preferences
+  ---
+  duration_ms: 1.389917
+  type: 'test'
+  ...
+# Subtest: unloaded and future OC campaign records survive progress rebuilding
+ok 198 - unloaded and future OC campaign records survive progress rebuilding
+  ---
+  duration_ms: 0.590977
+  type: 'test'
+  ...
+# Subtest: a multi-universe phase cannot bypass missing or reserved sources
+ok 199 - a multi-universe phase cannot bypass missing or reserved sources
+  ---
+  duration_ms: 0.587342
+  type: 'test'
+  ...
+# Subtest: selected arc retains the complete catalog final and phase identities
+ok 200 - selected arc retains the complete catalog final and phase identities
+  ---
+  duration_ms: 0.83892
+  type: 'test'
+  ...
+# Subtest: City contracts follow their installed packs and dormant dossiers resume after source-only removal
+    # Subtest: base
+    ok 1 - base
+      ---
+      duration_ms: 77.582324
+      type: 'test'
+      ...
+    # Subtest: halo
+    ok 2 - halo
+      ---
+      duration_ms: 51.290783
+      type: 'test'
+      ...
+    # Subtest: alien
+    ok 3 - alien
+      ---
+      duration_ms: 59.877337
+      type: 'test'
+      ...
+    # Subtest: halo+alien
+    ok 4 - halo+alien
+      ---
+      duration_ms: 50.199123
+      type: 'test'
+      ...
+    1..4
+ok 201 - City contracts follow their installed packs and dormant dossiers resume after source-only removal
+  ---
+  duration_ms: 241.003482
+  type: 'test'
+  ...
+# Subtest: Halo: old visits retain their exact published story while new operations keep save identities
+ok 202 - Halo: old visits retain their exact published story while new operations keep save identities
+  ---
+  duration_ms: 1.207633
+  type: 'test'
+  ...
+# Subtest: Alien: old visits retain their exact published story while new operations keep save identities
+ok 203 - Alien: old visits retain their exact published story while new operations keep save identities
+  ---
+  duration_ms: 0.435895
+  type: 'test'
+  ...
+# Subtest: complete and reduced profiles instantiate the real game catalogs and React app
+    # Subtest: all
+    ok 1 - all
+      ---
+      duration_ms: 26082.419797
+      type: 'test'
+      ...
+    # {"heroes":1911,"enemies":525,"expandedStages":1175,"packModules":1784}
+    # Subtest: base
+    ok 2 - base
+      ---
+      duration_ms: 26293.728216
+      type: 'test'
+      ...
+    # {"heroes":71,"enemies":21,"expandedStages":60,"packModules":0}
+    # Subtest: Halo
+    ok 3 - Halo
+      ---
+      duration_ms: 24161.427436
+      type: 'test'
+      ...
+    # {"heroes":81,"enemies":22,"expandedStages":60,"packModules":20}
+    # Subtest: mixed
+    ok 4 - mixed
+      ---
+      duration_ms: 19471.923749
+      type: 'test'
+      ...
+    # {"heroes":87,"enemies":24,"expandedStages":74,"packModules":23}
+    1..4
+ok 204 - complete and reduced profiles instantiate the real game catalogs and React app
+  ---
+  duration_ms: 96012.205742
+  type: 'test'
+  ...
+# Subtest: real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+    # Subtest: all
+    ok 1 - all
+      ---
+      duration_ms: 26955.189858
+      type: 'test'
+      ...
+    # {"label":"all","installedPacks":505,"checkedModes":3162,"optionalEntries":38,"excludedShared":0,"publicAssets":7613}
+    # Subtest: base
+    ok 2 - base
+      ---
+      duration_ms: 23637.499911
+      type: 'test'
+      ...
+    # {"label":"base","installedPacks":0,"checkedModes":132,"optionalEntries":0,"excludedShared":14,"publicAssets":7599}
+    # Subtest: halo
+    ok 3 - halo
+      ---
+      duration_ms: 23131.788199
+      type: 'test'
+      ...
+    # {"label":"halo","installedPacks":1,"checkedModes":138,"optionalEntries":0,"excludedShared":14,"publicAssets":7599}
+    # Subtest: consumers
+    ok 4 - consumers
+      ---
+      duration_ms: 22632.914582
+      type: 'test'
+      ...
+    # {"label":"consumers","installedPacks":38,"checkedModes":360,"optionalEntries":38,"excludedShared":0,"publicAssets":7613}
+    1..4
+ok 205 - real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+  ---
+  duration_ms: 96359.768939
+  type: 'test'
+  ...
+# Subtest: all profile returns the original source unchanged
+ok 206 - all profile returns the original source unchanged
+  ---
+  duration_ms: 2.463704
+  type: 'test'
+  ...
+# Subtest: array pruning removes entries and spreads without sparse holes or order changes
+ok 207 - array pruning removes entries and spreads without sparse holes or order changes
+  ---
+  duration_ms: 5.99709
+  type: 'test'
+  ...
+# Subtest: JSX runtime modules retain their React source while optional contributions are removed
+ok 208 - JSX runtime modules retain their React source while optional contributions are removed
+  ---
+  duration_ms: 1.09499
+  type: 'test'
+  ...
+# Subtest: dictionary keys are removed instead of receiving empty data objects
+ok 209 - dictionary keys are removed instead of receiving empty data objects
+  ---
+  duration_ms: 0.791052
+  type: 'test'
+  ...
+# Subtest: private factory values and aliases are removed at their contribution sites
+ok 210 - private factory values and aliases are removed at their contribution sites
+  ---
+  duration_ms: 0.900197
+  type: 'test'
+  ...
+# Subtest: named constant imports are omitted without evaluating an absent pack
+ok 211 - named constant imports are omitted without evaluating an absent pack
+  ---
+  duration_ms: 0.494516
+  type: 'test'
+  ...
+# Subtest: a selected profile executes with the excluded directory physically absent
+ok 212 - a selected profile executes with the excluded directory physically absent
+  ---
+  duration_ms: 19.61008
+  type: 'test'
+  ...
+# Subtest: unknown uses, exports, side effects and shadowed bindings fail closed
+ok 213 - unknown uses, exports, side effects and shadowed bindings fail closed
+  ---
+  duration_ms: 1.902838
+  type: 'test'
+  ...
+# Subtest: a retained factory cannot silently lose an excluded dependency
+ok 214 - a retained factory cannot silently lose an excluded dependency
+  ---
+  duration_ms: 1.323355
+  type: 'test'
+  ...
+# Subtest: excluded dynamic imports, globs and graph entries are rejected
+ok 215 - excluded dynamic imports, globs and graph entries are rejected
+  ---
+  duration_ms: 0.656339
+  type: 'test'
+  ...
+# Subtest: independent complete identity metadata remains available in reduced profiles
+ok 216 - independent complete identity metadata remains available in reduced profiles
+  ---
+  duration_ms: 0.196266
+  type: 'test'
+  ...
+# Subtest: manifest and installation identities are validated
+ok 217 - manifest and installation identities are validated
+  ---
+  duration_ms: 0.3516
+  type: 'test'
+  ...
+# Subtest: explicit wardrobe exports keep a stable empty public interface
+ok 218 - explicit wardrobe exports keep a stable empty public interface
+  ---
+  duration_ms: 0.717011
+  type: 'test'
+  ...
+# Subtest: every explicit adapter has exactly the actual module export surface
+ok 219 - every explicit adapter has exactly the actual module export surface
+  ---
+  duration_ms: 67.256763
+  type: 'test'
+  ...
+# Subtest: absence contracts preserve shared combat defaults without mutating actors
+ok 220 - absence contracts preserve shared combat defaults without mutating actors
+  ---
+  duration_ms: 1.783077
+  type: 'test'
+  ...
+# Subtest: every repository aggregate can be assembled for base and representative selections
+ok 221 - every repository aggregate can be assembled for base and representative selections
+  ---
+  duration_ms: 2309.902005
+  type: 'test'
+  ...
+# Subtest: shared sprite brief prefix remains identical through its historical compatibility API
+ok 222 - shared sprite brief prefix remains identical through its historical compatibility API
+  ---
+  duration_ms: 4.33887
+  type: 'test'
+  ...
+1..222
+# tests 234
+# suites 0
+# pass 234
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 210575.513218
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

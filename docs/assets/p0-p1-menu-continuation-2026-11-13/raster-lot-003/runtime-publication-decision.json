@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "decision": "UNBOUND_CANDIDATE_ONLY",
+  "actorKey": "[\"Asterix & Obelix\",\"name:Roman Legionary\"]",
+  "sourceIncarnation": "Astérix (Konami, arcade,1992), Legionary01",
+  "reason": "Current Asterix atmosphere declares comic-album sourcing. No compatible exclusive arcade scene has been established. Do not apply a global arcade body/weapon to the comic-sourced slot.",
+  "currentActorUnchanged": {
+    "name": "Roman Legionary",
+    "idPresent": false,
+    "weapon": "magic",
+    "incarnation": ""
+  },
+  "incompatibleStageEvidence": {
+    "path": "src/game/melee/stageAtmosphereUniverseDefaultsPartA.js",
+    "declaredSource": "Astérix — albums de Goscinny et Uderzo",
+    "location": "Village gaulois — bord de la palissade"
+  },
+  "noGenericStageAdded": true,
+  "sharedRuntimeFilesModified": false,
+  "bindingApproved": false,
+  "metadataOnlyP1ClosureClaimed": false,
+  "assetPublicationMeaning": "The generated bitmap and provenance may be versioned. Publication does not activate it in the existing actor roster.",
+  "remaining": [
+    "Establish a source-compatible playable target without imposing arcade1992 on comic-sourced scenes",
+    "Review full animation loops and engine placements",
+    "Perform runtime source guard and renderer checks only after a compatible target is approved",
+    "Keep costume and source1to1 review open"
+  ]
+}

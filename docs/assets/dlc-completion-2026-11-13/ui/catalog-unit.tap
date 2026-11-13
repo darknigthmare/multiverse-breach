@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: base, full and selected editions filter the actual installation API without changing inclusion
+ok 1 - base, full and selected editions filter the actual installation API without changing inclusion
+  ---
+  duration_ms: 2.758695
+  type: 'test'
+  ...
+# Subtest: accent-insensitive search sees the full register and clamps a stale page after filtering
+ok 2 - accent-insensitive search sees the full register and clamps a stale page after filtering
+  ---
+  duration_ms: 0.443588
+  type: 'test'
+  ...
+# Subtest: twelve-item pages preserve source order, references and immutable inputs
+ok 3 - twelve-item pages preserve source order, references and immutable inputs
+  ---
+  duration_ms: 0.251409
+  type: 'test'
+  ...
+# Subtest: empty results and invalid saved pages expose bounded, explicit ranges
+ok 4 - empty results and invalid saved pages expose bounded, explicit ranges
+  ---
+  duration_ms: 0.175915
+  type: 'test'
+  ...
+# Subtest: content families come only from known declarations and never make artwork-only packs playable
+ok 5 - content families come only from known declarations and never make artwork-only packs playable
+  ---
+  duration_ms: 0.662088
+  type: 'test'
+  ...
+# Subtest: the real Halo manifest declares its content families while artwork-only stays distinct
+ok 6 - the real Halo manifest declares its content families while artwork-only stays distinct
+  ---
+  duration_ms: 0.467614
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 151.137074

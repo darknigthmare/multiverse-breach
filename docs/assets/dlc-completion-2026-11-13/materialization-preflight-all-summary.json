@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T10:11:12.865Z",
+  "root": "/workspace/multiverse-breach",
+  "profile": {
+    "schemaVersion": 1,
+    "mode": "all",
+    "packIds": [],
+    "sharedPolicy": "preserve-all"
+  },
+  "operation": "canonical-hydration",
+  "readOnly": true,
+  "networkAllowed": false,
+  "lazyFetchAllowed": false,
+  "productionBuildVerified": false,
+  "sourceGitHead": "632d8bb9fab5e8dedb3e97abb6f8d979b8cb8ab0",
+  "gitIndexSnapshotSha256": "e380a2579dc7d2c5ac00be1d44cfca966ad15c49f672a0b66e1901f41563d261",
+  "lfsCacheRoot": "/workspace/multiverse-breach/.git/lfs/objects",
+  "counts": {
+    "selectedPacks": 505,
+    "sharedAssets": 7613,
+    "selectedDlcAssets": 11968,
+    "excludedDlcAssets": 0,
+    "publishedAssets": 19581,
+    "materializedSources": 6476,
+    "missingOrUnhydratedSources": 13105,
+    "nativeGitBlobs": 17630,
+    "lfsPointers": 1951,
+    "verifiedLocalLfsCache": 202,
+    "uncachedOrInvalidLfsPayloads": 1749,
+    "remoteLfsPayloadsRequired": 1749,
+    "recoverableWithoutNetwork": 17832
+  },
+  "sizes": {
+    "allSizesKnown": true,
+    "payloadBytes": 15276185811,
+    "missingOrUnhydratedPayloadBytes": 10859317770,
+    "deduplicatedByContentIdentityBytes": 15234292099,
+    "nativeGitObjectBytes": 8544920680,
+    "lfsPayloadBytes": 6731265131,
+    "uncachedOrInvalidLfsPayloadBytes": 6210866295,
+    "remoteLfsPayloadBytesRequired": 6210866295,
+    "currentPipelineMediaOnlyEstimates": {
+      "canonical-hydration": 10859317770,
+      "source-cache": 15234292099,
+      "export": 22062942590,
+      "export-build": 37339128401
+    }
+  },
+  "budget": {
+    "operation": "canonical-hydration",
+    "volume": {
+      "root": "/workspace/multiverse-breach",
+      "availableBytes": 320004096,
+      "blockSize": 4096
+    },
+    "sourceVolume": {
+      "root": "/workspace/multiverse-breach",
+      "availableBytes": 320004096,
+      "blockSize": 4096
+    },
+    "storageVolume": {
+      "root": "/tmp",
+      "availableBytes": 8659460096,
+      "blockSize": 4096
+    },
+    "mediaLogicalBytes": 10859317770,
+    "mediaAllocated4KiBBytes": 10885558272,
+    "extraBytes": null,
+    "reserveBytes": 268435456,
+    "requiredBytes": 11153993728,
+    "mediaLowerBoundFits": false,
+    "completeBudgetKnown": true,
+    "caveat": "Export/build estimates exclude code, documentation, dependencies, receipts and compiled JavaScript unless included explicitly in extraBytes. No reflink, cross-filesystem hardlink or pruning is assumed."
+  },
+  "requiredSourcesMaterialized": false,
+  "strictPass": false,
+  "approval": {
+    "canonicalFidelityApproved": false,
+    "actorBacklogClosed": false
+  },
+  "contentHashSemantics": "Git object IDs hash Git blob headers plus bytes; they are not payload SHA-256. LFS identities are payload SHA-256. Deduplication uses these explicit identity namespaces; cross-namespace equality is not assumed.",
+  "limitations": [
+    "Native regular working files are checked for availability and size, not compared byte-for-byte with staged Git objects. Materialized LFS payloads are verified with SHA-256.",
+    "This preflight does not attest gameplay, source fidelity, publication collision freedom or a production build.",
+    "Only Git blobs of at most 1024 bytes are read to identify valid LFS pointers; large native blob content is not decompressed."
+  ]
+}

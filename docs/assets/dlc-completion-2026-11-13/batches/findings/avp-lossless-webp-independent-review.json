@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "reviewer": "/root/p1_metadata_lot",
+  "scope": "Independent read-only codec/container check against frozen Git payloads; includes RGB values under fully transparent alpha, no image edit or identity assessment.",
+  "originalSourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "tools": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "webp": "1.6.0"
+  },
+  "decodingPipeline": "Pillow Image.open(...).load().convert(RGBA).tobytes(); no resize, orientation, colour transform or premultiplication requested.",
+  "entries": [
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+      "publicPath": "/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+      "original": {
+        "sourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+        "gitBlobOid": "d8e09fc2417674319a5edf4eca539761201c2ffe",
+        "bytes": 1364361,
+        "fileSha256": "210e7709fcac37674df12826ff7134ba117fa6221ed97408de2c13f5d95d67be",
+        "format": "PNG",
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "rgbaBytes": 4194304,
+        "rgbaSha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaSha256": "3ae1f569bbd9818259dfee10dfa86cff39101ac45889251adaa34989bac39799",
+        "iccBytes": 0,
+        "iccSha256": null,
+        "exifBytes": 0,
+        "exifSha256": null,
+        "orientation": null
+      },
+      "current": {
+        "bytes": 942016,
+        "fileSha256": "f4b6afd7a9410c5e94e4fc44a4fd391a4601647fc577601c83c5b83ccb089b9a",
+        "chunks": [
+          {
+            "type": "VP8L",
+            "bytes": 941996,
+            "lossless": true,
+            "width": 1024,
+            "height": 1024,
+            "alphaHint": true,
+            "version": 0
+          }
+        ],
+        "format": "WEBP",
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "rgbaBytes": 4194304,
+        "rgbaSha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaSha256": "3ae1f569bbd9818259dfee10dfa86cff39101ac45889251adaa34989bac39799",
+        "iccBytes": 0,
+        "iccSha256": null,
+        "exifBytes": 0,
+        "exifSha256": null,
+        "orientation": null
+      },
+      "rgbaPixelMismatchCount": 0,
+      "checks": {
+        "originalGitBlobVerified": true,
+        "originalWasPngUnderWebpPath": true,
+        "currentRiffWebpParses": true,
+        "currentDecoderFormatIsWebp": true,
+        "usesVp8lLossless": true,
+        "sameDimensions": true,
+        "sameMode": true,
+        "sameSingleFrame": true,
+        "exactAllRgbaBytes": true,
+        "exactRgbaSha256": true,
+        "exactAlphaBytes": true,
+        "sameAlphaRange": true,
+        "exactIccProfileIncludingAbsence": true,
+        "sameOrientation": true,
+        "containerActuallyChanged": true,
+        "sourceNotChangedDuringReview": true
+      },
+      "status": "PASSED"
+    },
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/tactics-tiles.webp",
+      "publicPath": "/backgrounds/lore-stages/alien-vs-predator/tactics-tiles.webp",
+      "original": {
+        "sourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+        "gitBlobOid": "ebfe774bdeff72e25da750999fd58ce1694b9fdc",
+        "bytes": 1706428,
+        "fileSha256": "7129d8da0a2d8859b7aa228def32d33624171b45ef563a2ca8dd81ab4fd552d1",
+        "format": "PNG",
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "rgbaBytes": 4194304,
+        "rgbaSha256": "44beb133be7df97560f5104d3f6727fdb265cd86277714d82cd52483bd093204",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaSha256": "fa7b935fc9daae7c90fb35fd23a3f99b57fe6bbf118e6865b8db237f031c0750",
+        "iccBytes": 0,
+        "iccSha256": null,
+        "exifBytes": 0,
+        "exifSha256": null,
+        "orientation": null
+      },
+      "current": {
+        "bytes": 1157754,
+        "fileSha256": "4788974496deaae647b7135d9048b4a8fdc9ca66c363fb2a8b1cca9dd7ad87bd",
+        "chunks": [
+          {
+            "type": "VP8L",
+            "bytes": 1157733,
+            "lossless": true,
+            "width": 1024,
+            "height": 1024,
+            "alphaHint": true,
+            "version": 0
+          }
+        ],
+        "format": "WEBP",
+        "size": [
+          1024,
+          1024
+        ],
+        "mode": "RGBA",
+        "frames": 1,
+        "rgbaBytes": 4194304,
+        "rgbaSha256": "44beb133be7df97560f5104d3f6727fdb265cd86277714d82cd52483bd093204",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alphaSha256": "fa7b935fc9daae7c90fb35fd23a3f99b57fe6bbf118e6865b8db237f031c0750",
+        "iccBytes": 0,
+        "iccSha256": null,
+        "exifBytes": 0,
+        "exifSha256": null,
+        "orientation": null
+      },
+      "rgbaPixelMismatchCount": 0,
+      "checks": {
+        "originalGitBlobVerified": true,
+        "originalWasPngUnderWebpPath": true,
+        "currentRiffWebpParses": true,
+        "currentDecoderFormatIsWebp": true,
+        "usesVp8lLossless": true,
+        "sameDimensions": true,
+        "sameMode": true,
+        "sameSingleFrame": true,
+        "exactAllRgbaBytes": true,
+        "exactRgbaSha256": true,
+        "exactAlphaBytes": true,
+        "sameAlphaRange": true,
+        "exactIccProfileIncludingAbsence": true,
+        "sameOrientation": true,
+        "containerActuallyChanged": true,
+        "sourceNotChangedDuringReview": true
+      },
+      "status": "PASSED"
+    }
+  ],
+  "frozenPlanPreservation": {
+    "path": "docs/assets/dlc-completion-2026-11-13/batches/all-plan.json",
+    "sha256Before": "80c15c218fda3c2129198d57d22dea176a310b4d72619e95738746555251ce52",
+    "sha256After": "80c15c218fda3c2129198d57d22dea176a310b4d72619e95738746555251ce52",
+    "unchanged": true,
+    "interpretation": "The803 runner plan remains a historical frozen plan; these corrected files require a separate later source snapshot for future batch validation."
+  },
+  "status": "PASSED",
+  "rasterFilesModifiedByReview": 0,
+  "sourceCodeModifiedByReview": 0,
+  "networkAllowed": false,
+  "lazyFetchAllowed": false,
+  "browserMimeDecodePerformed": false,
+  "browserMimeDecodeNote": "Optional browser probe not performed by this independent Pillow review.",
+  "visualIdentityInspectionPerformed": false,
+  "canonicalFidelityApproved": false,
+  "source1to1Verified": false,
+  "actorBacklogClosed": false
+}

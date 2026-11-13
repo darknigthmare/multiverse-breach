@@ -1,0 +1,60 @@
+{
+  "scope": "Canonical byte integrity and raster decoding in bounded temporary batches; no assembled production distribution or source-fidelity certification.",
+  "sourceRevision": "9e690725dd06588e6b389e3df75d0e5e3ffeb6fa",
+  "planSha256": "62b7b2ad3dd4e6e4dea12bc64c3ef094ed5269454c6293db7197983fcb73b02d",
+  "runnerSha256": "7592f1940732d7371bae4a30fafec224d3e2e1bfca33727271667148837dfea2",
+  "firstPassSummary": "run-summary.json",
+  "firstPassFailures": "first-pass-failures/",
+  "retrySeconds": 1.919,
+  "attempts": [
+    {
+      "batchId": "00090",
+      "beforeReceiptSha256": "a4c2829d941794003db9ddeb75aa859518aca8ec571a176e474e61a14f799f0c",
+      "afterReceiptSha256": "1216189f4b1fcf5bc757f306b1869ed0560be01256476692d96c8cf8b4cf3a6f",
+      "retriedPaths": [
+        "public/cg/nexus-de-convergence/arca-nova/alignment-swap-wave2-2026-10-18.png"
+      ],
+      "preservedPassedAssets": 39,
+      "preservedPassedAssetsUnchanged": true,
+      "status": "PASSED"
+    }
+  ],
+  "resume": {
+    "scope": "Batch validation only; not production readiness.",
+    "planSha256": "62b7b2ad3dd4e6e4dea12bc64c3ef094ed5269454c6293db7197983fcb73b02d",
+    "attemptedBatches": 0,
+    "passedBatches": 490,
+    "unavailableBatches": 0,
+    "pendingBatches": 0,
+    "passedAssets": 19582,
+    "unavailableAssets": 0
+  },
+  "batches": 490,
+  "passedBatches": 490,
+  "unavailableBatches": 0,
+  "pendingBatches": 0,
+  "passedAssets": 19582,
+  "unavailableAssets": 0,
+  "rasterDecoded": 17087,
+  "integrityOnly": 2495,
+  "verifiedPayloadBytes": 15276034454,
+  "sourceKinds": {
+    "git-blob": 17631,
+    "fetched-lfs": 1746,
+    "core-lfs-cache": 202,
+    "historical-git-lfs": 3
+  },
+  "unavailableCodes": {},
+  "coreLfsCacheBefore": {
+    "files": 202,
+    "bytes": 520398836,
+    "sha256": "58c8c0768bfc033006294ba0dedc36349e85bb244ba7f4c3b6f77d5252d52b5a"
+  },
+  "coreLfsCacheAfter": {
+    "files": 202,
+    "bytes": 520398836,
+    "sha256": "58c8c0768bfc033006294ba0dedc36349e85bb244ba7f4c3b6f77d5252d52b5a"
+  },
+  "coreLfsCacheUnchanged": true,
+  "temporaryDirectoriesLeft": []
+}

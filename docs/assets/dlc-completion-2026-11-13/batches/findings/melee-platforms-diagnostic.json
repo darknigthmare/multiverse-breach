@@ -1,0 +1,122 @@
+{
+  "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+  "publicPath": "/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+  "sourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "runnerBaseCommit": "803ea18f9",
+  "expectedBytes": 1364361,
+  "expectedGitBlobOid": "d8e09fc2417674319a5edf4eca539761201c2ffe",
+  "sourceHashes": {
+    "scripts/dlcBatchAssetSource.mjs": "79645ac90b77ef99001df2410a2af9b8a890e7bba0ff74e637c9735d5dad3aa9",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90"
+  },
+  "limits": {
+    "maxOwnedTempBytes": 67108864,
+    "maxAssetBytes": 33554432,
+    "allowLfsFetch": false
+  },
+  "scope": "Read-only frozen-payload forensic inspection; no canonical repair, validator changes, export or 1:1 artwork certification.",
+  "sourceMetadata": {
+    "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+    "revision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+    "status": "available",
+    "gitBlobOid": "d8e09fc2417674319a5edf4eca539761201c2ffe",
+    "gitBlobBytes": 1364361,
+    "payloadBytes": 1364361,
+    "expectedSha256": null,
+    "lfsPayloadOid": null,
+    "contentKind": "git-blob"
+  },
+  "payload": {
+    "bytes": 1364361,
+    "sha256": "210e7709fcac37674df12826ff7134ba117fa6221ed97408de2c13f5d95d67be",
+    "sourceKind": "git-blob"
+  },
+  "verified": {
+    "verified": true,
+    "bytes": 1364361,
+    "sha256": "210e7709fcac37674df12826ff7134ba117fa6221ed97408de2c13f5d95d67be"
+  },
+  "magicHex": "89504e470d0a1a0a0000000d49484452000004000000040008060000007f1d2b",
+  "magicAscii": ".PNG........IHDR",
+  "batchDecode": {
+    "code": "DLC_BATCH_DECODE_FAILED",
+    "reason": "extension-format-mismatch",
+    "status": "UNAVAILABLE",
+    "message": "Raster payload could not be decoded."
+  },
+  "sharpMetadata": {
+    "format": "png",
+    "width": 1024,
+    "height": 1024,
+    "space": "srgb",
+    "channels": 4,
+    "depth": "uchar",
+    "density": 72,
+    "isProgressive": false,
+    "hasProfile": false,
+    "hasAlpha": true
+  },
+  "sharpNativeStats": {
+    "status": "PASSED",
+    "isOpaque": false,
+    "channels": [
+      {
+        "min": 0,
+        "max": 255,
+        "sum": 19519844,
+        "mean": 18.61557388305664,
+        "stdev": 31.184242893214254
+      },
+      {
+        "min": 0,
+        "max": 255,
+        "sum": 211318204,
+        "mean": 201.52874374389648,
+        "stdev": 85.73772575359362
+      },
+      {
+        "min": 0,
+        "max": 255,
+        "sum": 25732368,
+        "mean": 24.540298461914062,
+        "stdev": 34.98578558361858
+      },
+      {
+        "min": 0,
+        "max": 255,
+        "sum": 61685415,
+        "mean": 58.82779598236084,
+        "stdev": 106.9305813040735
+      }
+    ]
+  },
+  "decodedRgba": {
+    "sha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+    "bytes": 4194304,
+    "pipeline": "sharp(input,{failOn:error,limitInputPixels:33554432,animated:true,sequentialRead:true}).ensureAlpha().raw()",
+    "sharpVersion": "0.35.3",
+    "vipsVersion": "8.18.3"
+  },
+  "classification": "extension-format-mismatch: intact PNG payload under .webp public/source path",
+  "recommendations": [
+    "Keep current validator strict; do not mark mismatched format as passed.",
+    "Preserve this frozen revision and hashes; diagnose/correct only in a later explicit source revision and regenerate a separate plan/receipt.",
+    "Choose either a true .png URL with every manifest/runtime reference updated, or encode a genuine lossless WebP; verify dimensions, alpha and decoded RGBA equality before accepting.",
+    "Do not overwrite canonical payload during the running batch plan; PNG decoding success is not visual 1:1 fidelity approval."
+  ],
+  "cleanup": {
+    "cleaned": 1,
+    "ownedBytes": 123
+  },
+  "close": {
+    "closed": true
+  },
+  "ownedRootRemoved": true,
+  "sourceCodeUnchanged": true,
+  "sourceHashesAfter": {
+    "scripts/dlcBatchAssetSource.mjs": "79645ac90b77ef99001df2410a2af9b8a890e7bba0ff74e637c9735d5dad3aa9",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90"
+  }
+}

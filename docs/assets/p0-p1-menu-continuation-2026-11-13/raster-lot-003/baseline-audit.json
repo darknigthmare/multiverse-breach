@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "sourceTree": "632d8bb9fab5e8dedb3e97abb6f8d979b8cb8ab0",
+  "sourceExport": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actors.json",
+  "sourceExportSha256": "696e1b510f8303630d9118755025843ee5efcf9af4b4895b444628f4aaab8abf",
+  "scope": "Next40 RASTER_MISSING actors after excluding all actorKey values from raster-lot-001 and002, sorted universe.casefold/actorName.casefold/actorId.casefold/actorKey. Selection is not general actor-batches-40 batch003.",
+  "previousLots": [
+    "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-001/baseline-audit.json",
+    "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-002/baseline-audit.json"
+  ],
+  "selectionValidatedAgainstCurrentBacklog": true,
+  "sparseCheckoutNotCountedAsMissing": true,
+  "summary": {
+    "actorsAudited": 40,
+    "universes": {
+      "Assassin's Creed": 2,
+      "Asterix & Obelix": 6,
+      "Attack on Titan": 6,
+      "Baby Cart": 5,
+      "Banlieue 13": 6,
+      "Battle Royale": 6,
+      "Ben 10": 6,
+      "Big Mouth": 3
+    },
+    "excludedPreviousActorKeys": 80,
+    "safeExistingBindings": 0,
+    "actorsWithRelatedLegacyAssets": 2,
+    "newGeneratedAtlasesRetained": 1,
+    "generationCalls": 2,
+    "visualGenerationRejections": 1,
+    "normalizationIterations": 2,
+    "newGeneratedCells": 16,
+    "runtimeBindingsChanged": 0,
+    "actorRasterFindingsClosed": 0,
+    "actorsStillOpen": 40,
+    "refusedIdentitiesRetried": 0
+  },
+  "actors": [
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Templar Grand Master Sequence\"]",
+      "actorId": "",
+      "actorName": "Templar Grand Master Sequence",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/templar-grand-master-sequence.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ENCOUNTER_AND_EDITION_CLARIFICATION_REQUIRED",
+      "reviewNote": "A grand-master sequence is a composite encounter. Select the specific game/master before deriving bodies and equipment.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Templar Guard\"]",
+      "actorId": "",
+      "actorName": "Templar Guard",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/templar-guard.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "GAME_ERA_AND_UNIT_REFERENCE_REQUIRED",
+      "reviewNote": "Templar guard uniforms, weapons and silhouettes vary across games and eras. No exact body resource was found.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Centurion Caius Bonus\"]",
+      "actorId": "",
+      "actorName": "Centurion Caius Bonus",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/centurion-caius-bonus.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "COMIC_INCARNATION_REFERENCE_REQUIRED",
+      "reviewNote": "Named centurion from Asterix the Gaul must not receive a generic arcade centurion or Legionary01 model by rank alone.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Julius Caesar Expedition\"]",
+      "actorId": "",
+      "actorName": "Julius Caesar Expedition",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/julius-caesar-expedition.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ENCOUNTER_LAYER_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Separate Caesar, expedition troops, orders and environment rather than giving a campaign one invented body.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Norman Warrior\"]",
+      "actorId": "",
+      "actorName": "Norman Warrior",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/norman-warrior.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "COMIC_UNIT_REFERENCE_REQUIRED",
+      "reviewNote": "Choose an exact Norman warrior model from the named album/adaptation; no generic Viking substitution.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Pirate Crew\"]",
+      "actorId": "",
+      "actorName": "Pirate Crew",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/pirate-crew.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CREW_ASSET_DECOMPOSITION_REQUIRED",
+      "reviewNote": "The crew contains distinct identities. One generic pirate cannot represent all members, poses and proportions.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Roman Camp Grand Assault\"]",
+      "actorId": "",
+      "actorName": "Roman Camp Grand Assault",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/roman-camp-grand-assault.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ENCOUNTER_LAYER_DECOMPOSITION_REQUIRED",
+      "reviewNote": "A camp assault requires stage/formation/troop layers, not a single new monster.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Asterix & Obelix\",\"name:Roman Legionary\"]",
+      "actorId": "",
+      "actorName": "Roman Legionary",
+      "universe": "Asterix & Obelix",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/asterix-obelix/roman-legionary.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ARCADE_1992_ATLAS_RETAINED_UNBOUND",
+      "reviewNote": "An arcade1992 Legionary01 atlas is produced and technically reviewed. Current Asterix atmosphere is explicitly sourced to the comic albums, so no global binding or weapon change is applied.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Armored Titan\"]",
+      "actorId": "",
+      "actorName": "Armored Titan",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/armored-titan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ANIME_OR_MANGA_FORM_REFERENCE_REQUIRED",
+      "reviewNote": "Lock Reiner form, adaptation and transformation period; source palette and armor/flesh plating must be qualified before art.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Crawler Titan\"]",
+      "actorId": "",
+      "actorName": "Crawler Titan",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/crawler-titan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_INDIVIDUAL_AND_FORM_REQUIRED",
+      "reviewNote": "Select the exact crawling Titan and source scene rather than inventing a generic quadrupedal species.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Eren's Founding Titan\"]",
+      "actorId": "",
+      "actorName": "Eren's Founding Titan",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://attackontitan.fandom.com/wiki/Founding_Titan",
+      "visualAnchorInBacklog": "Eren's horizon-sized skeletal Founding Titan with suspended head, vast rib cage and layered marching Colossal Titans.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/eren-s-founding-titan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_FORM_SCALE_AND_LAYER_REFERENCE_REQUIRED",
+      "reviewNote": "The declared Founding Titan source is a starting point. Lock manga/anime form, enormous skeletal silhouette, camera scale and separate environmental effects.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Female Titan\"]",
+      "actorId": "",
+      "actorName": "Female Titan",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/female-titan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ANIME_OR_MANGA_FORM_REFERENCE_REQUIRED",
+      "reviewNote": "Lock Annie Titan incarnation, plating/musculature and source adaptation before anatomy or animation production.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Pure Titan\"]",
+      "actorId": "",
+      "actorName": "Pure Titan",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/pure-titan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_INDIVIDUAL_REQUIRED",
+      "reviewNote": "Pure Titan is a category of visually distinct individuals. Choose the intended body and scene before authoring one atlas.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Attack on Titan\",\"name:Wall Cult Fanatic\"]",
+      "actorId": "",
+      "actorName": "Wall Cult Fanatic",
+      "universe": "Attack on Titan",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/attack-on-titan/wall-cult-fanatic.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_FACTION_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the Wall cult member and outfit from the source; no invented monster body or generic fantasy priest.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Baby Cart\",\"name:Baby Cart Anomaly Pack\"]",
+      "actorId": "",
+      "actorName": "Baby Cart Anomaly Pack",
+      "universe": "Baby Cart",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/baby-cart/baby-cart-anomaly-pack.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "This is an engine slot label, not a film character. Establish the intended Lone Wolf and Cub encounter before art.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Baby Cart\",\"name:Baby Cart Breach Stalker\"]",
+      "actorId": "",
+      "actorName": "Baby Cart Breach Stalker",
+      "universe": "Baby Cart",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/baby-cart/baby-cart-breach-stalker.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "This is an engine slot label, not a film character. Do not invent a franchise assassin species.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Baby Cart\",\"name:Baby Cart Rift Drone\"]",
+      "actorId": "",
+      "actorName": "Baby Cart Rift Drone",
+      "universe": "Baby Cart",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/baby-cart/baby-cart-rift-drone.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "This is an engine slot label, not a film character. Do not insert a science-fiction drone into the period source.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Baby Cart\",\"name:Retsudo Yagyu\"]",
+      "actorId": "",
+      "actorName": "Retsudo Yagyu",
+      "universe": "Baby Cart",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://en.wikipedia.org/wiki/Lone_Wolf_and_Cub",
+      "visualAnchorInBacklog": "Exact elderly Yagyu patriarch appearance from the selected Lone Wolf and Cub screen continuity, formal samurai robes and katana.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/baby-cart/retsudo-yagyu.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_AND_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Film/manga and installment performances must be distinguished. The broad franchise page does not establish one exact costume/model.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Baby Cart\",\"name:Yagyu Ambush Clan\"]",
+      "actorId": "",
+      "actorName": "Yagyu Ambush Clan",
+      "universe": "Baby Cart",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/baby-cart/yagyu-ambush-clan.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "UNIT_AND_SCENE_REFERENCE_REQUIRED",
+      "reviewNote": "An ambush clan is a group. Select the source film and individual unit costume, weapons and stance.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:Banlieue 13 Anomaly Pack\"]",
+      "actorId": "",
+      "actorName": "Banlieue 13 Anomaly Pack",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/banlieue-13-anomaly-pack.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot needs a real District13 character/encounter; no invented anomaly creature.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:Banlieue 13 Breach Stalker\"]",
+      "actorId": "",
+      "actorName": "Banlieue 13 Breach Stalker",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/banlieue-13-breach-stalker.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot needs a real District13 character/encounter; no invented franchise stalker.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:Banlieue 13 Rift Drone\"]",
+      "actorId": "",
+      "actorName": "Banlieue 13 Rift Drone",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/banlieue-13-rift-drone.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot needs a source-appropriate unit/prop; no generic franchise robot.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:K2\"]",
+      "actorId": "",
+      "actorName": "K2",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://en.wikipedia.org/wiki/District_13",
+      "visualAnchorInBacklog": "Exact Tony D Amario likeness, massive build, shaved head, black street clothing and film assault rifle.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/k2.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2004_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the named film character and outfit. K2 substring hits in FAKK2/Turok2 assets are unrelated and rejected.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:Neutron Bomb Countdown\"]",
+      "actorId": "",
+      "actorName": "Neutron Bomb Countdown",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/neutron-bomb-countdown.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "PROP_EFFECT_AND_UI_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Countdown, bomb prop and hazard resolution need separate assets; the label does not justify a humanoid body.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Banlieue 13\",\"name:Taha Bemamud\"]",
+      "actorId": "",
+      "actorName": "Taha Bemamud",
+      "universe": "Banlieue 13",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://en.wikipedia.org/wiki/District_13",
+      "visualAnchorInBacklog": "Exact Bibi Naceri likeness, shaved head, dark streetwear and handgun from District 13.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/banlieue-13/taha-bemamud.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/Banlieue13/assets/sprites/generated/items/banlieue-13/taha-s-pistol.png",
+          "gitBlob": "28f076395802afd55a1f8d781444a218e1488971",
+          "bytes": 202514,
+          "status": "WRONG_ASSET_ROLE",
+          "reason": "Pistol item belongs to the encounter but cannot replace the full-body entity atlas.",
+          "accepted": false
+        }
+      ],
+      "disposition": "FILM_2004_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "A Taha pistol item exists but is not his body. Qualify the film2004 costume, silhouette and weapon handling.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Battle Royale Anomaly Pack\"]",
+      "actorId": "",
+      "actorName": "Battle Royale Anomaly Pack",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/battle-royale-anomaly-pack.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot must be resolved to film characters/encounter; no invented anomaly creature.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Battle Royale Breach Stalker\"]",
+      "actorId": "",
+      "actorName": "Battle Royale Breach Stalker",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/battle-royale-breach-stalker.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot must be resolved to film characters/encounter; no invented stalker species.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Battle Royale Rift Drone\"]",
+      "actorId": "",
+      "actorName": "Battle Royale Rift Drone",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/battle-royale-rift-drone.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot must be resolved to a film prop/character; no invented robot.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Collar Detonation Network\"]",
+      "actorId": "",
+      "actorName": "Collar Detonation Network",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/collar-detonation-network.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "PROP_EFFECT_AND_ENCOUNTER_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Explosive collars, communications/countdown and encounter effects are separate roles, not one creature body.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Kazuo Kiriyama\"]",
+      "actorId": "",
+      "actorName": "Kazuo Kiriyama",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://en.wikipedia.org/wiki/Battle_Royale_(film)",
+      "visualAnchorInBacklog": "Exact Japanese school uniform, black hair, cold expression and source-accurate firearm loadout from the 2000 film.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/kazuo-kiriyama.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/BattleRoyale/assets/sprites/generated/heroes/battle-royale/kazuo-kiriyama.png",
+          "gitBlob": "41679f9e39af9eaa5583fb1f8f6115d84ddd6fdf",
+          "bytes": 817931,
+          "status": "EDITION_AND_COMBAT_ROLE_UNPROVEN",
+          "reason": "Complete sheet viewed: school-uniform body with unarmed actions. Source prompt does not lock film/costume; unsuitable for a strict compact-firearm boss binding.",
+          "accepted": false
+        }
+      ],
+      "disposition": "FILM_COSTUME_AND_WEAPON_REFERENCE_REQUIRED",
+      "reviewNote": "An existing hero atlas is named Kazuo, but its prompt has no reference URL/visual anchor and its action row is unarmed. The film boss requires compact-firearm choreography; no alias is approved.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Battle Royale\",\"name:Mitsuko Souma\"]",
+      "actorId": "",
+      "actorName": "Mitsuko Souma",
+      "universe": "Battle Royale",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "https://en.wikipedia.org/wiki/Battle_Royale_(film)",
+      "visualAnchorInBacklog": "Exact school uniform, hair, facial likeness and sickle from the 2000 film, with no armor.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/battle-royale/mitsuko-souma.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2000_COSTUME_AND_EQUIPMENT_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the film uniform, source appearance, sickle and acquired sidearm before producing source-specific poses.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:DNA Alien\"]",
+      "actorId": "",
+      "actorName": "DNA Alien",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/dna-alien.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ALIEN_FORCE_INCARNATION_REFERENCE_REQUIRED",
+      "reviewNote": "Select the AlienForce DNAlien body and costume/form; do not mix reboot or generic alien designs.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:Forever Knight\"]",
+      "actorId": "",
+      "actorName": "Forever Knight",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/forever-knight.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SERIES_ERA_AND_ARMOR_REFERENCE_REQUIRED",
+      "reviewNote": "The order has different armor models across Ben10 series. Lock a specific unit incarnation before art.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:Kevin 11 Mutation\"]",
+      "actorId": "",
+      "actorName": "Kevin 11 Mutation",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/kevin-11-mutation.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_MUTATION_FORM_REFERENCE_REQUIRED",
+      "reviewNote": "Original Kevin11 amalgam, later Ultimate Kevin and other transformations have different anatomy. Select the exact form.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:Vilgax\"]",
+      "actorId": "",
+      "actorName": "Vilgax",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/vilgax.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SERIES_INCARNATION_REFERENCE_REQUIRED",
+      "reviewNote": "Original-series biomechanical Vilgax and later armored incarnations differ substantially; lock one source form.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:Vilgax Drone\"]",
+      "actorId": "",
+      "actorName": "Vilgax Drone",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/vilgax-drone.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SERIES_UNIT_MODEL_REFERENCE_REQUIRED",
+      "reviewNote": "Qualify the actual robotic unit and series, weapon arrangement and body topology; no generic sci-fi drone.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ben 10\",\"name:Vilgax Omnitrix Override\"]",
+      "actorId": "",
+      "actorName": "Vilgax Omnitrix Override",
+      "universe": "Ben 10",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ben-10/vilgax-omnitrix-override.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ENCOUNTER_AND_FORM_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the specific Vilgax/Omnitrix scene and its body, device and effect layers; an override is not a separate humanoid species.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Big Mouth\",\"name:Anxiety Mosquito\"]",
+      "actorId": "",
+      "actorName": "Anxiety Mosquito",
+      "universe": "Big Mouth",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/big-mouth/anxiety-mosquito.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "NAMED_SERIES_CREATURE_REFERENCE_REQUIRED",
+      "reviewNote": "Qualify Tito/source episode and exact mosquito anatomy before art; no generic insect substitution.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Big Mouth\",\"name:Depression Kitty Spiral\"]",
+      "actorId": "",
+      "actorName": "Depression Kitty Spiral",
+      "universe": "Big Mouth",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/big-mouth/depression-kitty-spiral.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "BODY_AND_ENCOUNTER_EFFECT_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Separate the source Depression Kitty body from the gameplay spiral/effects; preserve source silhouette and proportions.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Big Mouth\",\"name:Hate Worm Outbreak\"]",
+      "actorId": "",
+      "actorName": "Hate Worm Outbreak",
+      "universe": "Big Mouth",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "incarnationInBacklog": "",
+      "declaredReference": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/big-mouth/hate-worm-outbreak.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "NAMED_SERIES_CREATURE_AND_GROUP_REFERENCE_REQUIRED",
+      "reviewNote": "Specify the source worm identity and outbreak composition; do not derive a new generic parasite.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    }
+  ],
+  "rejectedFalseSubstringMatches": {
+    "K2": [
+      "DLC/HeavyMetal2000/assets/sprites/generated/items/heavy-metal-2000/fakk2-talisman.png",
+      "docs/combat-fidelity-wave15-2026-10-26/adon-source-research/Adonandturok2.png"
+    ]
+  },
+  "sourceSearchEvidence": {
+    "indexedSpriteReferenceCatalog": "public/sprites/generated/sprite-reference-sources.json",
+    "gitBlob": "e5f0486e996c9a95c3bf6d4a5dc9379c8dc12df7",
+    "exactCharacterOrRequestedPathMatches": 0,
+    "generationPromptSearch": "All actor names searched across docs/openai-generation-prompts*: only Kazuo source records found; K2 short substring handled separately to avoid FAKK2/Turok2 collisions.",
+    "safeAdditionalReuseFound": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-11-13T10:58:33.463Z",
+  "sourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "scope": "Authorized format repair of two PNG payloads under WebP URLs; pixel-exact RGBA8 preservation, no visual redesign or 1:1 fidelity certification.",
+  "versions": {
+    "node": "v22.23.5",
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  },
+  "command": "sharp(frozenPayload,{failOn:\"error\",limitInputPixels:33554432,animated:true,sequentialRead:true}).keepMetadata().webp({lossless:true,quality:100,alphaQuality:100,effort:6,exact:true}).toFile(ownedTemporaryWebp)",
+  "exactOptionReference": "node_modules/sharp/dist/output.mjs:801 documents options.exact=false: preserve the colour data in transparent pixels",
+  "limits": {
+    "providerOwnedBytes": 67108864,
+    "allOwnedTemporaryBytes": 134217728,
+    "allowLfsFetch": false
+  },
+  "protectedFilesBefore": {
+    "scripts/dlcAssetBatches.mjs": "fdeade68f4a387c782a842f12cc1e99f9049cf1ae92716ec85b588ecf468708e",
+    "scripts/dlcBatchAssetSource.mjs": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcDistribution.mjs": "5fff6600c4693ce94452fe25d22119b40ed403252694f9e153672f790814c52f",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90",
+    "scripts/dlcCommonUiAssets.mjs": "6664a2fc22b3bb00a2a0f952c68fac774bbc5f90fd305466c7424c8306969c10",
+    "scripts/dlcSharedAssetDependencies.mjs": "0e39585cb5c0f82c97aa10fd7beb9aa31ec71fab7b24210802009782f97e76e5",
+    ".git/index": "f55a9a2a10f63ebb39b67de28cb32801ce5d7672b4696bc3612db7038e8fca41"
+  },
+  "assets": [],
+  "status": "FAILED",
+  "error": {
+    "message": "Format or metadata-preservation gate failed"
+  },
+  "providerCleanup": {
+    "cleaned": 1,
+    "ownedBytes": 123
+  },
+  "providerClose": {
+    "closed": true
+  },
+  "providerOwnedRootRemoved": true,
+  "conversionOwnedTempRemoved": true,
+  "protectedFilesAfter": {
+    "scripts/dlcAssetBatches.mjs": "fdeade68f4a387c782a842f12cc1e99f9049cf1ae92716ec85b588ecf468708e",
+    "scripts/dlcBatchAssetSource.mjs": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcDistribution.mjs": "5fff6600c4693ce94452fe25d22119b40ed403252694f9e153672f790814c52f",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90",
+    "scripts/dlcCommonUiAssets.mjs": "6664a2fc22b3bb00a2a0f952c68fac774bbc5f90fd305466c7424c8306969c10",
+    "scripts/dlcSharedAssetDependencies.mjs": "0e39585cb5c0f82c97aa10fd7beb9aa31ec71fab7b24210802009782f97e76e5",
+    ".git/index": "f55a9a2a10f63ebb39b67de28cb32801ce5d7672b4696bc3612db7038e8fca41"
+  },
+  "protectedCodeAndIndexUnchanged": true
+}

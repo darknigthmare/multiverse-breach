@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: a known pack retains historical and future mission IDs absent from this catalog
+ok 1 - a known pack retains historical and future mission IDs absent from this catalog
+  ---
+  duration_ms: 1.951748
+  type: 'test'
+  ...
+# Subtest: current missions still follow completed stages and catalog order without restoring stale unlocks
+ok 2 - current missions still follow completed stages and catalog order without restoring stale unlocks
+  ---
+  duration_ms: 0.209945
+  type: 'test'
+  ...
+# Subtest: a newer save survives an older catalog round trip and resumes after catalog restoration
+ok 3 - a newer save survives an older catalog round trip and resumes after catalog restoration
+  ---
+  duration_ms: 0.329174
+  type: 'test'
+  ...
+# Subtest: refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+ok 4 - refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+  ---
+  duration_ms: 15.483875
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 123.896722

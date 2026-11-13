@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sourceAssetSnapshot": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "preflight": {
+    "path": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-all.json.gz",
+    "sha256": "e996a3ce85a93c6fa3506e458816d858661a23f766612474ccba0e830b7c2930"
+  },
+  "readOnly": true,
+  "networkAllowed": false,
+  "lazyFetchAllowed": false,
+  "payloadFilesWritten": 0,
+  "scanComplete": true,
+  "verification": "Exact payload SHA-256, byte length and canonical Git blob SHA-1 recomputed by streaming local cat-file output. No path/name-only matches.",
+  "counts": {
+    "pointerSources": 1951,
+    "uniqueLfsSha256Targets": 1951,
+    "uncachedLfsTargets": 1749,
+    "verifiedHistoricalMatches": 3,
+    "uncachedTargetsRecoveredFromGit": 3,
+    "unmatchedTargets": 1948,
+    "objectsEnumerated": 80221,
+    "blobsEnumerated": 58295,
+    "sameSizeCandidates": 3,
+    "candidateBlobsHashed": 3,
+    "payloadBytesHashed": 7579714,
+    "nonmatchingSameSizeBlobs": 0,
+    "skippedCandidatesAfterSizeGroupSatisfied": 0,
+    "unmatchedUncachedTargets": 1746,
+    "unmatchedLocallyCachedTargets": 202
+  },
+  "bytes": {
+    "allPointerPayloadBytes": 6731265131,
+    "verifiedHistoricalPayloadBytes": 7579714,
+    "uncachedPayloadBytesRecoveredFromGit": 7579714,
+    "unmatchedUncachedPayloadBytes": 6203286581
+  },
+  "entries": [
+    {
+      "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+      "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+      "bytes": 2544671,
+      "verified": true,
+      "gitBlobOidRecomputed": true,
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png"
+      ],
+      "publicPaths": [
+        "/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png"
+      ],
+      "ownerPackIds": [],
+      "lfsCacheStates": [
+        "absent"
+      ],
+      "pathAmbiguity": false,
+      "nativeReferencePath": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "presentInSourceAssetSnapshotTree": true,
+      "presentInObservedOriginMasterTree": true,
+      "observedOriginMasterCommit": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+      "introducedInCommit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+      "danglingOnly": false
+    },
+    {
+      "sha256": "991d671c83f3aab4b2471c87d62773097941823468b273def59c9c9f11d5cf26",
+      "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+      "bytes": 2412928,
+      "verified": true,
+      "gitBlobOidRecomputed": true,
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png"
+      ],
+      "publicPaths": [
+        "/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png"
+      ],
+      "ownerPackIds": [],
+      "lfsCacheStates": [
+        "absent"
+      ],
+      "pathAmbiguity": false,
+      "nativeReferencePath": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png",
+      "presentInSourceAssetSnapshotTree": true,
+      "presentInObservedOriginMasterTree": true,
+      "observedOriginMasterCommit": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+      "introducedInCommit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+      "danglingOnly": false
+    },
+    {
+      "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+      "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+      "bytes": 2622115,
+      "verified": true,
+      "gitBlobOidRecomputed": true,
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png"
+      ],
+      "publicPaths": [
+        "/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png"
+      ],
+      "ownerPackIds": [],
+      "lfsCacheStates": [
+        "absent"
+      ],
+      "pathAmbiguity": false,
+      "nativeReferencePath": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "presentInSourceAssetSnapshotTree": true,
+      "presentInObservedOriginMasterTree": true,
+      "observedOriginMasterCommit": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+      "introducedInCommit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+      "danglingOnly": false
+    }
+  ],
+  "source1to1Verified": false,
+  "actorBacklogClosed": false,
+  "unmatchedTargetsMeaning": "No exact payload was found in local Git blobs; this includes targets already available from the separate LFS cache.",
+  "unmatchedSourceList": "Reconstruct from the pinned preflight entries whose SHA256 is absent from entries; no duplicate 1948-row path list is stored here.",
+  "reachabilityProof": "reachability.json",
+  "consumerRequirement": "Provider must reverify local availability, Git blob OID, payload SHA256 and length against the frozen pointer for every read; this map alone never authorizes bytes."
+}

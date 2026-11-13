@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T10:54:39.054Z",
+  "fixtureOnly": true,
+  "providerSha256": "79645ac90b77ef99001df2410a2af9b8a890e7bba0ff74e637c9735d5dad3aa9",
+  "fixturePayloadSha256": "b23f99e1f653e62fa5bc14cc528a9ec3b6d11be482b2ee51b519d1d6ad8c5466",
+  "fixturePayloadBytes": 4096,
+  "caughtCode": "OWNER_GUARD_FAILED",
+  "observed": {
+    "interceptedInsideMeasuredFiles": true,
+    "transition": "owned incomplete file renamed atomically to owned object file",
+    "regularFile": true,
+    "sameInode": true,
+    "beforeInode": 223896,
+    "afterInode": 223896,
+    "payloadBytes": 4096,
+    "symlinkOrForeignFileIntroduced": false,
+    "originalFilesystemError": "ENOENT"
+  },
+  "ownedRootCleaned": true,
+  "sourceProviderModified": false,
+  "realAssetsOrReceiptsModified": false,
+  "networkUsed": false,
+  "conclusion": "The active cache-size monitor treats an ordinary atomic rename ENOENT as an ownership violation."
+}

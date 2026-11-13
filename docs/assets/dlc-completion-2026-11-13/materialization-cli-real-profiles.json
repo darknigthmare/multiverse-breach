@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T10:11:24.696198+00:00",
+  "sourceAssetsMutated": false,
+  "downloadsPerformed": false,
+  "normalBuildAttempted": false,
+  "runs": [
+    {
+      "name": "all",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "scripts/auditDlcMaterialization.mjs",
+        "--profile",
+        "config/dlc-profiles/all.json",
+        "--storage-root",
+        "/tmp",
+        "--strict",
+        "--json",
+        "/tmp/dlc-materialization-all-b108be8acb.json"
+      ],
+      "exitCode": 1,
+      "expectedStrictFailure": true,
+      "seconds": 8.299,
+      "summary": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-all-summary.json",
+      "completeReportGzip": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-all.json.gz",
+      "completeReportSha256": "e9ddce4e887f2b5657b0da325fbc43a81619a34d281a21cbe679860918b6dec3",
+      "completeReportCompressedBytes": 1245979,
+      "requiredSourcesMaterialized": false,
+      "counts": {
+        "selectedPacks": 505,
+        "sharedAssets": 7613,
+        "selectedDlcAssets": 11968,
+        "excludedDlcAssets": 0,
+        "publishedAssets": 19581,
+        "materializedSources": 6476,
+        "missingOrUnhydratedSources": 13105,
+        "nativeGitBlobs": 17630,
+        "lfsPointers": 1951,
+        "verifiedLocalLfsCache": 202,
+        "uncachedOrInvalidLfsPayloads": 1749,
+        "remoteLfsPayloadsRequired": 1749,
+        "recoverableWithoutNetwork": 17832
+      },
+      "sizes": {
+        "allSizesKnown": true,
+        "payloadBytes": 15276185811,
+        "missingOrUnhydratedPayloadBytes": 10859317770,
+        "deduplicatedByContentIdentityBytes": 15234292099,
+        "nativeGitObjectBytes": 8544920680,
+        "lfsPayloadBytes": 6731265131,
+        "uncachedOrInvalidLfsPayloadBytes": 6210866295,
+        "remoteLfsPayloadBytesRequired": 6210866295,
+        "currentPipelineMediaOnlyEstimates": {
+          "canonical-hydration": 10859317770,
+          "source-cache": 15234292099,
+          "export": 22062942590,
+          "export-build": 37339128401
+        }
+      },
+      "budget": {
+        "operation": "canonical-hydration",
+        "volume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 320004096,
+          "blockSize": 4096
+        },
+        "sourceVolume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 320004096,
+          "blockSize": 4096
+        },
+        "storageVolume": {
+          "root": "/tmp",
+          "availableBytes": 8659460096,
+          "blockSize": 4096
+        },
+        "mediaLogicalBytes": 10859317770,
+        "mediaAllocated4KiBBytes": 10885558272,
+        "extraBytes": null,
+        "reserveBytes": 268435456,
+        "requiredBytes": 11153993728,
+        "mediaLowerBoundFits": false,
+        "completeBudgetKnown": true,
+        "caveat": "Export/build estimates exclude code, documentation, dependencies, receipts and compiled JavaScript unless included explicitly in extraBytes. No reflink, cross-filesystem hardlink or pruning is assumed."
+      }
+    },
+    {
+      "name": "base-reviewed",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "scripts/auditDlcMaterialization.mjs",
+        "--profile",
+        "config/dlc-profiles/base-reviewed.json",
+        "--storage-root",
+        "/tmp",
+        "--strict",
+        "--json",
+        "/tmp/dlc-materialization-base-reviewed-0be7c036ff.json"
+      ],
+      "exitCode": 1,
+      "expectedStrictFailure": true,
+      "seconds": 5.65,
+      "summary": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-base-reviewed-summary.json",
+      "completeReportGzip": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-base-reviewed.json.gz",
+      "completeReportSha256": "ed7ee23f90f425342174bd049cc95ecd71340fff98995036f17039143cf4ec43",
+      "completeReportCompressedBytes": 512525,
+      "requiredSourcesMaterialized": false,
+      "counts": {
+        "selectedPacks": 0,
+        "sharedAssets": 7599,
+        "selectedDlcAssets": 0,
+        "excludedDlcAssets": 11968,
+        "publishedAssets": 7599,
+        "materializedSources": 3501,
+        "missingOrUnhydratedSources": 4098,
+        "nativeGitBlobs": 6116,
+        "lfsPointers": 1483,
+        "verifiedLocalLfsCache": 0,
+        "uncachedOrInvalidLfsPayloads": 1483,
+        "remoteLfsPayloadsRequired": 1483,
+        "recoverableWithoutNetwork": 6116
+      },
+      "sizes": {
+        "allSizesKnown": true,
+        "payloadBytes": 8450954568,
+        "missingOrUnhydratedPayloadBytes": 6421903676,
+        "deduplicatedByContentIdentityBytes": 8449572101,
+        "nativeGitObjectBytes": 3252241037,
+        "lfsPayloadBytes": 5198713531,
+        "uncachedOrInvalidLfsPayloadBytes": 5198713531,
+        "remoteLfsPayloadBytesRequired": 5198713531,
+        "currentPipelineMediaOnlyEstimates": {
+          "canonical-hydration": 6421903676,
+          "source-cache": 8449572101,
+          "export": 8450954568,
+          "export-build": 16901909136
+        }
+      },
+      "budget": {
+        "operation": "canonical-hydration",
+        "volume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 318701568,
+          "blockSize": 4096
+        },
+        "sourceVolume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 318701568,
+          "blockSize": 4096
+        },
+        "storageVolume": {
+          "root": "/tmp",
+          "availableBytes": 8642076672,
+          "blockSize": 4096
+        },
+        "mediaLogicalBytes": 6421903676,
+        "mediaAllocated4KiBBytes": 6430339072,
+        "extraBytes": null,
+        "reserveBytes": 268435456,
+        "requiredBytes": 6698774528,
+        "mediaLowerBoundFits": false,
+        "completeBudgetKnown": true,
+        "caveat": "Export/build estimates exclude code, documentation, dependencies, receipts and compiled JavaScript unless included explicitly in extraBytes. No reflink, cross-filesystem hardlink or pruning is assumed."
+      }
+    },
+    {
+      "name": "halo-reviewed",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "scripts/auditDlcMaterialization.mjs",
+        "--profile",
+        "config/dlc-profiles/halo-reviewed.json",
+        "--storage-root",
+        "/tmp",
+        "--strict",
+        "--json",
+        "/tmp/dlc-materialization-halo-reviewed-e06cb2745e.json"
+      ],
+      "exitCode": 1,
+      "expectedStrictFailure": true,
+      "seconds": 5.488,
+      "summary": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-halo-reviewed-summary.json",
+      "completeReportGzip": "docs/assets/dlc-completion-2026-11-13/materialization-preflight-halo-reviewed.json.gz",
+      "completeReportSha256": "75a6e0862c902d1c136af345c899151f31ad400d5392856e1f79a0a2e3b3daf5",
+      "completeReportCompressedBytes": 525654,
+      "requiredSourcesMaterialized": false,
+      "counts": {
+        "selectedPacks": 1,
+        "sharedAssets": 7599,
+        "selectedDlcAssets": 221,
+        "excludedDlcAssets": 11747,
+        "publishedAssets": 7820,
+        "materializedSources": 3517,
+        "missingOrUnhydratedSources": 4303,
+        "nativeGitBlobs": 6311,
+        "lfsPointers": 1509,
+        "verifiedLocalLfsCache": 0,
+        "uncachedOrInvalidLfsPayloads": 1509,
+        "remoteLfsPayloadsRequired": 1509,
+        "recoverableWithoutNetwork": 6311
+      },
+      "sizes": {
+        "allSizesKnown": true,
+        "payloadBytes": 8688580794,
+        "missingOrUnhydratedPayloadBytes": 6649698303,
+        "deduplicatedByContentIdentityBytes": 8686422793,
+        "nativeGitObjectBytes": 3384645388,
+        "lfsPayloadBytes": 5303935406,
+        "uncachedOrInvalidLfsPayloadBytes": 5303935406,
+        "remoteLfsPayloadBytesRequired": 5303935406,
+        "currentPipelineMediaOnlyEstimates": {
+          "canonical-hydration": 6649698303,
+          "source-cache": 8686422793,
+          "export": 8926207020,
+          "export-build": 17614787814
+        }
+      },
+      "budget": {
+        "operation": "canonical-hydration",
+        "volume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 318181376,
+          "blockSize": 4096
+        },
+        "sourceVolume": {
+          "root": "/workspace/multiverse-breach",
+          "availableBytes": 318181376,
+          "blockSize": 4096
+        },
+        "storageVolume": {
+          "root": "/tmp",
+          "availableBytes": 8635301888,
+          "blockSize": 4096
+        },
+        "mediaLogicalBytes": 6649698303,
+        "mediaAllocated4KiBBytes": 6658572288,
+        "extraBytes": null,
+        "reserveBytes": 268435456,
+        "requiredBytes": 6927007744,
+        "mediaLowerBoundFits": false,
+        "completeBudgetKnown": true,
+        "caveat": "Export/build estimates exclude code, documentation, dependencies, receipts and compiled JavaScript unless included explicitly in extraBytes. No reflink, cross-filesystem hardlink or pruning is assumed."
+      }
+    }
+  ]
+}

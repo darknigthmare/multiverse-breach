@@ -338,3 +338,10 @@ implémentés.
 
 Voir le suivi détaillé :
 [`DLC_INSTALLATION_PROFILES_2026-11-07.md`](../docs/development/DLC_INSTALLATION_PROFILES_2026-11-07.md).
+
+
+## Reprise du 13 novembre : contrôles par lots
+
+La [chaîne DLC et ses preuves](../docs/assets/dlc-completion-2026-11-13/README.md) ajoute les compilations des profils réels, le contrôle des médias HTML, la conservation des missions opaques en sauvegarde et l’inspection accessible des packs. `dlc:export:runtime` conserve les dépendances de production sans recopier les archives JSON de recherche ; l’export historique conserve son défaut `all`.
+
+Lorsque les médias ne tiennent pas simultanément sur le disque, `npm run dlc:assets:batches -- plan ...` puis `validate ...` lit les véritables blobs Git et payloads LFS en lots bornés, avec SHA, décodage raster et reçus reprenables. `--allow-lfs` autorise explicitement les téléchargements dans le cache temporaire du lot. Un reçu ne constitue ni un paquet de production assemblé ni une validation artistique 1:1.

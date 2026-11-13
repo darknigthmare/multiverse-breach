@@ -1,0 +1,168 @@
+TAP version 13
+# Subtest: a known pack retains historical and future mission IDs absent from this catalog
+not ok 1 - a known pack retains historical and future mission IDs absent from this catalog
+  ---
+  duration_ms: 3.119641
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:7:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        10,
+    -   99,
+    -   'future-phase'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 10
+    1: 99
+    2: 'future-phase'
+  actual:
+    0: 10
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:11:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: current missions still follow completed stages and catalog order without restoring stale unlocks
+not ok 2 - current missions still follow completed stages and catalog order without restoring stale unlocks
+  ---
+  duration_ms: 0.612082
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        10,
+    -   99
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 10
+    1: 99
+  actual:
+    0: 10
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:19:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a newer save survives an older catalog round trip and resumes after catalog restoration
+not ok 3 - a newer save survives an older catalog round trip and resumes after catalog restoration
+  ---
+  duration_ms: 1.154811
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:24:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    serializing an older catalog keeps opaque progress
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        absent: {
+          choice: 'dormant',
+          missionIds: [
+            900
+    ...
+            10,
+    -       99
+          ]
+        }
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    known:
+      missionIds:
+        0: 10
+        1: 99
+      ending: 'future-ending'
+    absent:
+      missionIds:
+        0: 900
+      choice: 'dormant'
+  actual:
+    known:
+      missionIds:
+        0: 10
+      ending: 'future-ending'
+    absent:
+      missionIds:
+        0: 900
+      choice: 'dormant'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:27:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+not ok 4 - refreshing known missions preserves dormant ID order and leaves unrelated records untouched
+  ---
+  duration_ms: 0.616269
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:33:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        10,
+    -   'future-b',
+    -   98,
+    -   'future-a'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 10
+    1: 'future-b'
+    2: 98
+    3: 'future-a'
+  actual:
+    0: 10
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcCampaignProgressContinuity.test.mjs:36:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 0
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 134.56489

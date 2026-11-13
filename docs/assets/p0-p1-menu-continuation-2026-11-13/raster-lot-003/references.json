@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "sourceIncarnation": "Astérix (Konami, arcade, 1992), Legionary 01",
+  "references": [
+    {
+      "id": "asterix-konami-arcade-game",
+      "url": "https://en.wikipedia.org/wiki/Asterix_(arcade_game)",
+      "localResearchPath": "/tmp/p1-lot003-exact-arcade-game-0.html",
+      "kind": "secondary game metadata",
+      "qualified": true,
+      "facts": {
+        "developer": "Konami",
+        "publisher": "Konami",
+        "platform": "Arcade",
+        "release": "1992"
+      },
+      "imageUsedForGeneration": false,
+      "downloadedAtDate": "2026-11-13",
+      "sha256": "1fb9e488554f0c08cb3a0fa33c67d8aec9ecf0d1190777c645c95053a02114d2",
+      "bytes": 128794,
+      "rawThirdPartyAssetCommitted": false
+    },
+    {
+      "id": "asterix-arcade-legionary01-page",
+      "url": "https://www.spriters-resource.com/arcade/asterix/asset/147491/",
+      "localResearchPath": "/tmp/p1-lot003-legionary01-page.html",
+      "kind": "community arcade sprite extraction metadata",
+      "qualified": true,
+      "facts": {
+        "name": "Legionary 01",
+        "category": "Arcade",
+        "game": "Asterix",
+        "uploader": "jones",
+        "submitted": "January 20, 2021",
+        "size": "1725x602",
+        "weaponTag": "Spear / Javelin / Pike"
+      },
+      "imageUsedForGeneration": false,
+      "downloadedAtDate": "2026-11-13",
+      "sha256": "d16200117ed7cf202823d56137c876f98afc9e04794e10e19c08743d31704c1d",
+      "bytes": 35295,
+      "rawThirdPartyAssetCommitted": false
+    },
+    {
+      "id": "asterix-arcade-legionary01-sheet",
+      "url": "https://www.spriters-resource.com/media/assets/144/147491.png?updated=1755482901",
+      "localResearchPath": "/tmp/p1-lot003-legionary01-source.png",
+      "kind": "visual authority for this exact arcade unit",
+      "qualified": true,
+      "size": [
+        1725,
+        602
+      ],
+      "imageUsedForGeneration": true,
+      "downloadedAtDate": "2026-11-13",
+      "sha256": "7f247c743f01536402698353dc4fc7b8f52192bfac957541ba6c1fd963376e6e",
+      "bytes": 138519,
+      "rawThirdPartyAssetCommitted": false
+    }
+  ],
+  "crops": [
+    {
+      "id": "initial-multiframe-reference",
+      "sourceId": "asterix-arcade-legionary01-sheet",
+      "cropRect": [
+        0,
+        0,
+        450,
+        238
+      ],
+      "inspectionResize": [
+        1350,
+        714
+      ],
+      "resampling": "nearest",
+      "localResearchPath": "/tmp/p1-lot003-legionary01-reference.png",
+      "sha256": "9c0b15e85690c721e9071d2f6d42c90069a18361a5c38b5263d6f46cc05df2d4",
+      "viewedBeforeUse": true,
+      "rawThirdPartyAssetCommitted": false
+    },
+    {
+      "id": "qualified-spear-seed",
+      "sourceId": "asterix-arcade-legionary01-sheet",
+      "cropRect": [
+        83,
+        0,
+        143,
+        76
+      ],
+      "inspectionResize": [
+        600,
+        760
+      ],
+      "resampling": "nearest",
+      "localResearchPath": "/tmp/p1-lot003-legionary01-seed-reference.png",
+      "sha256": "5c71cb807cfff13c2a711dc4de868e7fb601645641db5a16bb93c32961ea2430",
+      "viewedBeforeUse": true,
+      "rawThirdPartyAssetCommitted": false
+    },
+    {
+      "id": "qualified-spear-thrust-detail",
+      "sourceId": "asterix-arcade-legionary01-sheet",
+      "cropRect": [
+        210,
+        160,
+        420,
+        236
+      ],
+      "inspectionResize": [
+        1470,
+        532
+      ],
+      "resampling": "nearest",
+      "localResearchPath": "/tmp/p1-lot003-weapon-attack-detail.png",
+      "sha256": "ee161df2ff239d127ff2dd596444346155c0393c75cbf3911e879a7cb3471b2d",
+      "viewedBeforeUse": true,
+      "rawThirdPartyAssetCommitted": false
+    }
+  ],
+  "sourceVisualContract": {
+    "helmet": "Low silver-gray cap, short raised crown ridge and cheek guards; no tall spike, horn or plume.",
+    "weapon": "Slender brown wood shaft, long narrow silver spear point; held partway along shaft. The upright weapon point is separate from the helmet.",
+    "shield": "Blue rectangular scutum, silver rim, small gold corner rivets and gold central boss.",
+    "body": "Stocky adult comic legionary, bulbous nose, warm tan skin, green short tunic, gray cuirass/shoulders, red belt and brown sandals."
+  },
+  "rejectedResearchSources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Asterix_(1992_video_game)",
+      "reason": "Actual page metadata is Sega/Master System. Wrong adaptation; excluded from source authority and never supplied as a generation image.",
+      "imageUsedForGeneration": false,
+      "sha256": "3318e3341c40641e389632b5a46dae76f6e2869460dff061a0c706bd193b5fe5"
+    }
+  ],
+  "platformDisambiguation": "Arcade Konami1992; not Sega MasterSystem1992, not SNES/Infogrames1993. Sheet-page category and separately read game metadata match.",
+  "referenceRights": "Original franchise and arcade artwork belong to their respective owners. Community sheet and crops are research references only, not committed as runtime pixels. No franchise commercial license is asserted.",
+  "reproduction": "Fetch the qualified sheet URL, verify SHA256, crop recorded rectangles and resize using nearest. Temporary research paths are not repository artifacts."
+}

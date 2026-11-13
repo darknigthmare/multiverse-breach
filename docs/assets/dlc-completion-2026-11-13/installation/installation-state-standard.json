@@ -1,0 +1,36 @@
+{
+  "startedUtc": "2026-11-13T10:00:08.421752+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=8192",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/dlcInstallation.test.mjs",
+    "scripts/dlcPlayerState.test.mjs",
+    "scripts/dlcCampaignProgressContinuity.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 7.262,
+  "counts": {
+    "tests": 21,
+    "pass": 21,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "src/game/dlcInstallation.js": "9a04ce97f4c8ea07c6457add8ab8587e233401ed5bc8f651af881e53339dae8f",
+    "src/game/dlcPlayerState.js": "b3d24765ed91b90a40ee52ab0e140442875c17639a38357b31c55507c589a803",
+    "src/game/dlcContentIdentity.js": "0e9ab481d46eb6fa57490fa7a97b352b543c5d69aef5d3d0dc28d7e02fe0767c",
+    "src/App.jsx": "acf3eb693e156dfed0c18b3d1cc25d29e2e1df5fd6ee52790ccb7877aea3e679",
+    "scripts/dlcInstallation.test.mjs": "e60ec88ea5b1d4c13d055c69313f5e5aff1fde2bd29b6a7c8f06340087c1a7e9",
+    "scripts/dlcPlayerState.test.mjs": "e83e1b071bc27a7c99e12c9196c5d03468315530ab6d2b9d921281f49d9338b0",
+    "scripts/dlcCampaignProgressContinuity.test.mjs": "e0007fb279e80d50b55856780f9d2c87eb5995b3d0c4c878c6b4ee07f543a803",
+    "scripts/fixtures/dlcSaveFixturePlugin.mjs": "dd587860357433dd2982436cedbd20a04d093a1aeaeac84587386babfcab143b",
+    "scripts/fixtures/ssrTestServer.mjs": "d1b2c344131a145671d6f882e186e294c3d6ba96632324e54fe8df161a5a512c"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Standard installation/player-state tests with actual App normalization/serialization SSR fixture, plus pure dormant mission continuity regressions. No loader changes.",
+  "limits": "Does not validate exported media payloads, production compilation, or browser interaction across profiles."
+}

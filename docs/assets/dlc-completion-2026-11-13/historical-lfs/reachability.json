@@ -1,0 +1,242 @@
+{
+  "sourceAssetSnapshot": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "networkAllowed": false,
+  "lazyFetchAllowed": false,
+  "readOnly": true,
+  "checks": [
+    {
+      "scope": "assetSnapshot",
+      "command": [
+        "git",
+        "-C",
+        "/workspace/multiverse-breach",
+        "rev-list",
+        "--objects",
+        "3fb49277809f28d11d4886c847558fca6ee91f21"
+      ],
+      "startedAt": "2026-11-13T10:34:08.179322+00:00",
+      "completedAt": "2026-11-13T10:34:08.426386+00:00",
+      "exitCode": 0,
+      "reachableObjectsEnumerated": 79933,
+      "matches": {
+        "33176834de62a64bd42f1a9a7db7bdd50d016ded": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+        "4c0ac1e3ddd69df587d60e7375fc78360371379b": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+        "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+      }
+    },
+    {
+      "scope": "allRefs",
+      "command": [
+        "git",
+        "-C",
+        "/workspace/multiverse-breach",
+        "rev-list",
+        "--objects",
+        "--all"
+      ],
+      "startedAt": "2026-11-13T10:34:08.426523+00:00",
+      "completedAt": "2026-11-13T10:34:08.591211+00:00",
+      "exitCode": 0,
+      "reachableObjectsEnumerated": 80104,
+      "matches": {
+        "33176834de62a64bd42f1a9a7db7bdd50d016ded": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+        "4c0ac1e3ddd69df587d60e7375fc78360371379b": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+        "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+      }
+    }
+  ],
+  "entries": [
+    {
+      "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+      "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png"
+      ],
+      "reachableFromAssetSnapshotAncestry": true,
+      "sampleHistoricalPathFromAssetSnapshotTraversal": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "reachableFromAnyLocalRef": true,
+      "sampleHistoricalPathFromAnyRefTraversal": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "presentInAssetSnapshotTree": true,
+      "presentInCurrentHeadTree": true,
+      "presentInObservedOriginMasterTree": true
+    },
+    {
+      "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+      "sha256": "991d671c83f3aab4b2471c87d62773097941823468b273def59c9c9f11d5cf26",
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png"
+      ],
+      "reachableFromAssetSnapshotAncestry": true,
+      "sampleHistoricalPathFromAssetSnapshotTraversal": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png",
+      "reachableFromAnyLocalRef": true,
+      "sampleHistoricalPathFromAnyRefTraversal": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png",
+      "presentInAssetSnapshotTree": true,
+      "presentInCurrentHeadTree": true,
+      "presentInObservedOriginMasterTree": true
+    },
+    {
+      "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+      "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+      "sourcePaths": [
+        "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png"
+      ],
+      "reachableFromAssetSnapshotAncestry": true,
+      "sampleHistoricalPathFromAssetSnapshotTraversal": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "reachableFromAnyLocalRef": true,
+      "sampleHistoricalPathFromAnyRefTraversal": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "presentInAssetSnapshotTree": true,
+      "presentInCurrentHeadTree": true,
+      "presentInObservedOriginMasterTree": true
+    }
+  ],
+  "assetSnapshotTree": {
+    "revision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+    "command": [
+      "git",
+      "-C",
+      "/workspace/multiverse-breach",
+      "ls-tree",
+      "-r",
+      "3fb49277809f28d11d4886c847558fca6ee91f21",
+      "--",
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+    ],
+    "paths": {
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png": {
+        "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+        "type": "blob",
+        "mode": "100644"
+      }
+    }
+  },
+  "currentHeadTree": {
+    "revision": "632d8bb9fab5e8dedb3e97abb6f8d979b8cb8ab0",
+    "command": [
+      "git",
+      "-C",
+      "/workspace/multiverse-breach",
+      "ls-tree",
+      "-r",
+      "HEAD",
+      "--",
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+    ],
+    "paths": {
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png": {
+        "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+        "type": "blob",
+        "mode": "100644"
+      }
+    }
+  },
+  "boundedPathHistory": {
+    "command": [
+      "git",
+      "-C",
+      "/workspace/multiverse-breach",
+      "log",
+      "--all",
+      "--max-count=12",
+      "--no-abbrev",
+      "--no-renames",
+      "--date=iso-strict",
+      "--format=commit %H %aI %s",
+      "--raw",
+      "--",
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+    ],
+    "maxCommits": 12,
+    "matchingIntroductionsOrUpdates": [
+      {
+        "commit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+        "date": "2026-10-23T06:03:32Z",
+        "subject": "feat(cg): publish fidelity deliveries through wave 6",
+        "path": "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+        "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+        "changeStatus": "A"
+      },
+      {
+        "commit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+        "date": "2026-10-23T06:03:32Z",
+        "subject": "feat(cg): publish fidelity deliveries through wave 6",
+        "path": "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+        "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+        "changeStatus": "A"
+      },
+      {
+        "commit": "d8aca0d799c734a56fc9eadecf366255ebecd8bd",
+        "date": "2026-10-23T06:03:32Z",
+        "subject": "feat(cg): publish fidelity deliveries through wave 6",
+        "path": "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png",
+        "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+        "changeStatus": "A"
+      }
+    ],
+    "rawEvidence": "path-history.txt"
+  },
+  "remoteTrackingRefsObserved": [
+    "refs/remotes/origin/HEAD 2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+    "refs/remotes/origin/master 2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+    "refs/remotes/origin/work 9981b73deb3ee027c86877d7c15c6698e4f02191"
+  ],
+  "cloneAvailabilityMeaning": "All three blobs are present in the exact frozen tree and current HEAD tree, and reachable from local refs; they are not dangling-only discoveries. A full unfiltered clone of a revision containing those document paths has their ordinary Git blobs. This audit did not fetch or validate current remote availability; partial/promisor clones must still prove local availability and the provider must rehash length, SHA256 and Git OID on every read.",
+  "observedOriginMasterTree": {
+    "revision": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+    "command": [
+      "git",
+      "-C",
+      "/workspace/multiverse-breach",
+      "ls-tree",
+      "-r",
+      "refs/remotes/origin/master",
+      "--",
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png",
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png",
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png"
+    ],
+    "paths": {
+      "docs/cg/references/wave4-2026-10-20/elara/canonical-v2-portrait.png": {
+        "gitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave4-2026-10-20/nyra/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+        "type": "blob",
+        "mode": "100644"
+      },
+      "docs/cg/references/wave5-2026-10-22/jax-rook/canonical-selected-portrait-v2.png": {
+        "gitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+        "type": "blob",
+        "mode": "100644"
+      }
+    },
+    "remoteWasContacted": false
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "atUtc": "2026-11-13T11:00:53.266Z",
+  "sourceRevision": "3fb49277809f28d11d4886c847558fca6ee91f21",
+  "scope": "Authorized format repair of two PNG payloads under WebP URLs; pixel-exact RGBA8 preservation, no visual redesign or 1:1 fidelity certification.",
+  "versions": {
+    "node": "v22.23.5",
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  },
+  "command": "sharp(frozenPayload,{failOn:\"error\",limitInputPixels:33554432,animated:true,sequentialRead:true}).webp({lossless:true,quality:100,alphaQuality:100,effort:6,exact:true}).toFile(ownedTemporaryWebp)",
+  "exactOptionReference": "node_modules/sharp/dist/output.mjs:801 documents options.exact=false: preserve the colour data in transparent pixels",
+  "limits": {
+    "providerOwnedBytes": 67108864,
+    "allOwnedTemporaryBytes": 134217728,
+    "allowLfsFetch": false
+  },
+  "protectedFilesBefore": {
+    "scripts/dlcAssetBatches.mjs": "fdeade68f4a387c782a842f12cc1e99f9049cf1ae92716ec85b588ecf468708e",
+    "scripts/dlcBatchAssetSource.mjs": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcDistribution.mjs": "5fff6600c4693ce94452fe25d22119b40ed403252694f9e153672f790814c52f",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90",
+    "scripts/dlcCommonUiAssets.mjs": "6664a2fc22b3bb00a2a0f952c68fac774bbc5f90fd305466c7424c8306969c10",
+    "scripts/dlcSharedAssetDependencies.mjs": "0e39585cb5c0f82c97aa10fd7beb9aa31ec71fab7b24210802009782f97e76e5",
+    ".git/index": "f55a9a2a10f63ebb39b67de28cb32801ce5d7672b4696bc3612db7038e8fca41"
+  },
+  "assets": [
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+      "publicPath": "/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+      "before": {
+        "bytes": 1364361,
+        "containerSha256": "210e7709fcac37674df12826ff7134ba117fa6221ed97408de2c13f5d95d67be",
+        "metadata": {
+          "format": "png",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": null,
+          "exifBytes": null,
+          "orientation": null
+        },
+        "rgba8": {
+          "sha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 803942,
+          "rgbNonZeroUnderAlpha0Pixels": 803942
+        }
+      },
+      "defaultLosslessProbe": {
+        "exact": false,
+        "usesKeepMetadata": true,
+        "containerBytes": 486336,
+        "metadata": {
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": "26d3871c81f06acf3b4df8312a15c3f6375d2318894e840c65eb10b2762b1ca7",
+          "exifBytes": 186,
+          "orientation": 1
+        },
+        "rgba8": {
+          "sha256": "cde02732f6d4bc13ec950534787fed881d754685300a17cf6b78e1d055e342ac",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 803942,
+          "rgbNonZeroUnderAlpha0Pixels": 232737
+        },
+        "pixelsEqual": false,
+        "changedPixels": 803942,
+        "changedChannels": 2404341,
+        "changedUnderAlpha0": 803942
+      },
+      "after": {
+        "bytes": 942016,
+        "containerSha256": "f4b6afd7a9410c5e94e4fc44a4fd391a4601647fc577601c83c5b83ccb089b9a",
+        "magicAscii": "RIFF._..WEBPVP8L",
+        "metadata": {
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": null,
+          "exifBytes": null,
+          "orientation": null
+        },
+        "rgba8": {
+          "sha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 803942,
+          "rgbNonZeroUnderAlpha0Pixels": 803942
+        },
+        "decoder": {
+          "status": "PASSED",
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "pages": 1,
+          "decodedPixels": 1048576,
+          "scope": "sharp-raster-decode-supported-pages"
+        }
+      },
+      "pixelEquality": {
+        "exactBufferEqual": true,
+        "changedPixels": 0,
+        "changedChannels": 0,
+        "changedUnderAlpha0": 0
+      },
+      "canonicalReplacement": "completed",
+      "writtenCanonicalVerified": {
+        "containerSha256": "f4b6afd7a9410c5e94e4fc44a4fd391a4601647fc577601c83c5b83ccb089b9a",
+        "rgba8": {
+          "sha256": "71f060b3d7c7b596efaf15280d572930f851153791e73371dbf6847f65f227d2",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 803942,
+          "rgbNonZeroUnderAlpha0Pixels": 803942
+        },
+        "decoder": {
+          "status": "PASSED",
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "pages": 1,
+          "decodedPixels": 1048576,
+          "scope": "sharp-raster-decode-supported-pages"
+        }
+      }
+    },
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/tactics-tiles.webp",
+      "publicPath": "/backgrounds/lore-stages/alien-vs-predator/tactics-tiles.webp",
+      "before": {
+        "bytes": 1706428,
+        "containerSha256": "7129d8da0a2d8859b7aa228def32d33624171b45ef563a2ca8dd81ab4fd552d1",
+        "metadata": {
+          "format": "png",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": null,
+          "exifBytes": null,
+          "orientation": null
+        },
+        "rgba8": {
+          "sha256": "44beb133be7df97560f5104d3f6727fdb265cd86277714d82cd52483bd093204",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 626150,
+          "rgbNonZeroUnderAlpha0Pixels": 626150
+        }
+      },
+      "defaultLosslessProbe": {
+        "exact": false,
+        "usesKeepMetadata": true,
+        "containerBytes": 768982,
+        "metadata": {
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": "26d3871c81f06acf3b4df8312a15c3f6375d2318894e840c65eb10b2762b1ca7",
+          "exifBytes": 186,
+          "orientation": 1
+        },
+        "rgba8": {
+          "sha256": "33a04075fe0f2198ed3d4ea327cc104da011b94409a7626f344c9da531179843",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 626150,
+          "rgbNonZeroUnderAlpha0Pixels": 234593
+        },
+        "pixelsEqual": false,
+        "changedPixels": 626150,
+        "changedChannels": 1850078,
+        "changedUnderAlpha0": 626150
+      },
+      "after": {
+        "bytes": 1157754,
+        "containerSha256": "4788974496deaae647b7135d9048b4a8fdc9ca66c363fb2a8b1cca9dd7ad87bd",
+        "magicAscii": "RIFFr...WEBPVP8L",
+        "metadata": {
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "space": "srgb",
+          "hasAlpha": true,
+          "hasProfile": false,
+          "iccSha256": null,
+          "iccBytes": null,
+          "exifSha256": null,
+          "exifBytes": null,
+          "orientation": null
+        },
+        "rgba8": {
+          "sha256": "44beb133be7df97560f5104d3f6727fdb265cd86277714d82cd52483bd093204",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 626150,
+          "rgbNonZeroUnderAlpha0Pixels": 626150
+        },
+        "decoder": {
+          "status": "PASSED",
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "pages": 1,
+          "decodedPixels": 1048576,
+          "scope": "sharp-raster-decode-supported-pages"
+        }
+      },
+      "pixelEquality": {
+        "exactBufferEqual": true,
+        "changedPixels": 0,
+        "changedChannels": 0,
+        "changedUnderAlpha0": 0
+      },
+      "canonicalReplacement": "completed",
+      "writtenCanonicalVerified": {
+        "containerSha256": "4788974496deaae647b7135d9048b4a8fdc9ca66c363fb2a8b1cca9dd7ad87bd",
+        "rgba8": {
+          "sha256": "44beb133be7df97560f5104d3f6727fdb265cd86277714d82cd52483bd093204",
+          "bytes": 4194304,
+          "width": 1024,
+          "height": 1024,
+          "channels": 4,
+          "depth": "uchar",
+          "alpha0Pixels": 626150,
+          "rgbNonZeroUnderAlpha0Pixels": 626150
+        },
+        "decoder": {
+          "status": "PASSED",
+          "format": "webp",
+          "width": 1024,
+          "height": 1024,
+          "pages": 1,
+          "decodedPixels": 1048576,
+          "scope": "sharp-raster-decode-supported-pages"
+        }
+      }
+    }
+  ],
+  "metadataPolicy": "Preserve only metadata present in source; both frozen PNGs contain IHDR/IDAT/IEND only, so no metadata-keep API is invoked. This avoids keepMetadata() synthesizing 186-byte EXIF orientation metadata.",
+  "sourcePngChunks": [
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/melee-platforms.webp",
+      "chunkTypes": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ]
+    },
+    {
+      "sourcePath": "DLC/AlienVsPredator/assets/backgrounds/lore-stages/alien-vs-predator/tactics-tiles.webp",
+      "chunkTypes": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ]
+    }
+  ],
+  "status": "PASSED",
+  "providerCleanup": {
+    "cleaned": 2,
+    "ownedBytes": 123
+  },
+  "providerClose": {
+    "closed": true
+  },
+  "providerOwnedRootRemoved": true,
+  "conversionOwnedTempRemoved": true,
+  "protectedFilesAfter": {
+    "scripts/dlcAssetBatches.mjs": "fdeade68f4a387c782a842f12cc1e99f9049cf1ae92716ec85b588ecf468708e",
+    "scripts/dlcBatchAssetSource.mjs": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcDistribution.mjs": "5fff6600c4693ce94452fe25d22119b40ed403252694f9e153672f790814c52f",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90",
+    "scripts/dlcCommonUiAssets.mjs": "6664a2fc22b3bb00a2a0f952c68fac774bbc5f90fd305466c7424c8306969c10",
+    "scripts/dlcSharedAssetDependencies.mjs": "0e39585cb5c0f82c97aa10fd7beb9aa31ec71fab7b24210802009782f97e76e5",
+    ".git/index": "f55a9a2a10f63ebb39b67de28cb32801ce5d7672b4696bc3612db7038e8fca41"
+  },
+  "protectedCodeAndIndexUnchanged": true,
+  "ownedTemporaryAccounting": {
+    "recordedFileByteUpperBound": 7583754,
+    "maxPermittedBytes": 134217728,
+    "withinLimit": true,
+    "method": "Both input payloads plus all probe/final temporary container files, largest one-at-a-time atomic staging copy and provider owner marker. This is a bound from recorded file lengths, not a claim about process RAM."
+  }
+}

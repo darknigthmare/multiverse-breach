@@ -1,0 +1,27 @@
+{
+  "atUtc": "2026-11-13T10:08:48.467584+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--test",
+    "scripts/dlcInstallationCatalog.test.mjs"
+  ],
+  "exitCode": 0,
+  "counts": {
+    "tests": 6,
+    "pass": 6,
+    "fail": 0,
+    "skipped": 0
+  },
+  "sourceSha256": {
+    "src/game/dlcInstallationCatalog.js": "a23cd0fdc1419c40b6170cee0d709473b3f928206daa7399b26056d7be0fccfa",
+    "scripts/dlcInstallationCatalog.test.mjs": "376b8b88588ab29c55c536618c8c6a50ef434b0a439bbf12321bea9e8e77b5ad",
+    "src/components/DlcInstallationPanel.jsx": "2536415dd3b6fcc8eb9d7b894b564c10f16867fac142f230b76b329d2546869e",
+    "src/components/DlcInstallationPanel.css": "1dd53ee65c99d1957a76c076f35f87b3fa37b3453b8a5ee3678895d604333087",
+    "src/components/GameSystemSections.jsx": "5465906c09f26fb152134733abd356188a5cf29dfc994c167e83f6369a7e10ff",
+    "src/components/GameSystemMenu.jsx": "52be13b755b10e4282b1b05998de32d4b62966f0a9fbb1bf963ba1250c44b4f7"
+  },
+  "otherGameSystemSectionsUnchanged": true,
+  "scope": "Pure read-only catalog projection: actual installation API full/base/selected, accent search, pages12, bounds and declared content. Product components parsed separately with transformWithOxc.",
+  "limits": "No browser layout, profile export or full game compilation implied by these unit tests."
+}

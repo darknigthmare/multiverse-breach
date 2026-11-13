@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "status": "TECHNICAL_QA_PASSED_VISUAL_REVIEW_PENDING",
+  "tools": {
+    "python": "3.12.14",
+    "pillow": "12.3.0"
+  },
+  "source": "docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/generation/attempt-2-corrected.raw.png",
+  "sourceSha256": "d9f6c28594ebef6d8f9b494b7c2eea905e4f6219f43edae28af71da08ae71109",
+  "output": "DLC/AsterixObelix/assets/sprites/generated/bosses/asterix-1992/roman-legionary.png",
+  "outputSha256": "feaac1dd7570f54e48537f79dc41b047205abda9873ff66ecf323eaa6f62217b",
+  "outputBytes": 819584,
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "cellSize": [
+    384,
+    256
+  ],
+  "columns": 4,
+  "rows": 4,
+  "frameCount": 16,
+  "sharedScale": 0.76,
+  "baseline": 232,
+  "alphaTreatment": "alpha<=8 becomes0; alpha>=248 becomes255; other alpha and RGB retained; no anatomy painted",
+  "packingBoundaryCorrection": {
+    "row": 2,
+    "nominalBoundaryX": 627,
+    "correctedBoundaryX": 606,
+    "neighborAlpha64EndX": 587,
+    "nextAlpha64StartX": 623
+  },
+  "rendererContract": "drawGeneratedSpriteSheet uses naturalWidth/columns, naturalHeight/rows and default baseline sourceH-24; no square-cell assumption",
+  "frames": [
+    {
+      "index": 0,
+      "sourceRect": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        48,
+        275,
+        297
+      ],
+      "sourceContactPivot": [
+        130.5,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        93,
+        6
+      ],
+      "alpha64Bounds": [
+        130,
+        43,
+        303,
+        232
+      ]
+    },
+    {
+      "index": 1,
+      "sourceRect": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        45,
+        271,
+        297
+      ],
+      "sourceContactPivot": [
+        132.0,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        92,
+        6
+      ],
+      "alpha64Bounds": [
+        128,
+        40,
+        298,
+        232
+      ]
+    },
+    {
+      "index": 2,
+      "sourceRect": [
+        627,
+        0,
+        940,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        50,
+        37,
+        273,
+        297
+      ],
+      "sourceContactPivot": [
+        131.5,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        92,
+        6
+      ],
+      "alpha64Bounds": [
+        130,
+        34,
+        300,
+        232
+      ]
+    },
+    {
+      "index": 3,
+      "sourceRect": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        49,
+        54,
+        274,
+        297
+      ],
+      "sourceContactPivot": [
+        133.0,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        91,
+        6
+      ],
+      "alpha64Bounds": [
+        129,
+        47,
+        300,
+        232
+      ]
+    },
+    {
+      "index": 4,
+      "sourceRect": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        31,
+        53,
+        268,
+        297
+      ],
+      "sourceContactPivot": [
+        65.0,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        143,
+        6
+      ],
+      "alpha64Bounds": [
+        166,
+        46,
+        347,
+        232
+      ]
+    },
+    {
+      "index": 5,
+      "sourceRect": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        40,
+        32,
+        271,
+        297
+      ],
+      "sourceContactPivot": [
+        96.5,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        119,
+        6
+      ],
+      "alpha64Bounds": [
+        150,
+        31,
+        325,
+        232
+      ]
+    },
+    {
+      "index": 6,
+      "sourceRect": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        30,
+        42,
+        265,
+        296
+      ],
+      "sourceContactPivot": [
+        130.5,
+        296
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        93,
+        7
+      ],
+      "alpha64Bounds": [
+        116,
+        39,
+        295,
+        232
+      ]
+    },
+    {
+      "index": 7,
+      "sourceRect": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        30,
+        43,
+        269,
+        297
+      ],
+      "sourceContactPivot": [
+        143.0,
+        297
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        83,
+        6
+      ],
+      "alpha64Bounds": [
+        106,
+        38,
+        288,
+        232
+      ]
+    },
+    {
+      "index": 8,
+      "sourceRect": [
+        0,
+        627,
+        314,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        38,
+        38,
+        263,
+        293
+      ],
+      "sourceContactPivot": [
+        120.5,
+        293
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        100,
+        9
+      ],
+      "alpha64Bounds": [
+        129,
+        38,
+        300,
+        232
+      ]
+    },
+    {
+      "index": 9,
+      "sourceRect": [
+        314,
+        627,
+        606,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        15,
+        45,
+        273,
+        293
+      ],
+      "sourceContactPivot": [
+        105.5,
+        293
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        112,
+        9
+      ],
+      "alpha64Bounds": [
+        123,
+        43,
+        320,
+        232
+      ]
+    },
+    {
+      "index": 10,
+      "sourceRect": [
+        606,
+        627,
+        940,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        17,
+        52,
+        327,
+        291
+      ],
+      "sourceContactPivot": [
+        111.0,
+        291
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        108,
+        11
+      ],
+      "alpha64Bounds": [
+        121,
+        50,
+        357,
+        232
+      ]
+    },
+    {
+      "index": 11,
+      "sourceRect": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        37,
+        38,
+        262,
+        293
+      ],
+      "sourceContactPivot": [
+        122.5,
+        293
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        99,
+        9
+      ],
+      "alpha64Bounds": [
+        127,
+        38,
+        298,
+        232
+      ]
+    },
+    {
+      "index": 12,
+      "sourceRect": [
+        0,
+        940,
+        314,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        44,
+        44,
+        260,
+        298
+      ],
+      "sourceContactPivot": [
+        130.0,
+        298
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        93,
+        6
+      ],
+      "alpha64Bounds": [
+        126,
+        40,
+        291,
+        233
+      ]
+    },
+    {
+      "index": 13,
+      "sourceRect": [
+        314,
+        940,
+        627,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        24,
+        51,
+        246,
+        298
+      ],
+      "sourceContactPivot": [
+        133.5,
+        298
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        91,
+        6
+      ],
+      "alpha64Bounds": [
+        109,
+        45,
+        278,
+        233
+      ]
+    },
+    {
+      "index": 14,
+      "sourceRect": [
+        627,
+        940,
+        940,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        32,
+        50,
+        253,
+        298
+      ],
+      "sourceContactPivot": [
+        128.0,
+        298
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        95,
+        6
+      ],
+      "alpha64Bounds": [
+        119,
+        44,
+        288,
+        233
+      ]
+    },
+    {
+      "index": 15,
+      "sourceRect": [
+        940,
+        940,
+        1254,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        36,
+        51,
+        262,
+        298
+      ],
+      "sourceContactPivot": [
+        131.0,
+        298
+      ],
+      "sharedScale": 0.76,
+      "destinationOffset": [
+        92,
+        6
+      ],
+      "alpha64Bounds": [
+        120,
+        45,
+        291,
+        233
+      ]
+    }
+  ],
+  "source1to1Verified": false,
+  "inGameReviewPerformed": false,
+  "runtimeBound": false,
+  "canonicalAnimationTimingVerified": false
+}
