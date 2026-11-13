@@ -456,7 +456,18 @@ export function measureCombatFidelity() {
       extractionRoutes: (field.extractionZone || []).map(goal => routeTo(field.heroSpawns[1], goal)),
       originalNexusArena: field.source?.universe === 'Nexus de Convergence', source1to1Verified: false };
   });
+  // DLC factories now own the runtime data; pin them as well as the facades.
+  const dlcSources = directory => readdirSync(new URL(`${directory}/`, root), { withFileTypes: true })
+    .flatMap(entry => entry.isDirectory()
+      ? entry.name === 'assets' ? [] : dlcSources(`${directory}/${entry.name}`)
+      : /\.(?:js|json)$/.test(entry.name) ? [`${directory}/${entry.name}`] : []);
   const inputPaths = [
+    ...dlcSources('DLC'),
+    'src/game/canonicalSpriteQuarantine.js',
+    'src/game/enemySpriteBindings.js', 'src/game/combat/sourceLoadoutFeralMasked20261113.js',
+    'src/game/sourceScenePreyPortraitAssets.js', 'src/game/sourceScenePreyPropAssets.js',
+    'src/game/sourceSceneStages.js', 'src/game/sourceSceneEncounter.js', 'src/game/sourceScenePresentation.js',
+    'src/game/sourceSceneArtAssets.js', 'src/game/sourceSceneThreatAssets.js', 'src/game/sourceSceneCompanionAssets.js',
     'src/game/heroes.js', 'src/game/combatIdentity.js', 'src/game/combat/sourceKitPriority.js',
     'src/game/tacticsSupport.js', 'src/game/spriteAssets.js', 'src/game/renderer.js',
     'src/game/canonicalCombatOverrides.js', 'src/game/combatCanonExtensions.js', 'src/game/combat/ff8SuperVisuals.js',
@@ -693,7 +704,7 @@ export function measureCombatFidelity() {
       registries: assetRegistries.map(record => record.file), sheets: [...assetFiles.keys()].sort(),
       method: 'Declared asset registries with real PNG/hash/dimension/alpha checks; shared sheets counted once. This does not certify source-frame fidelity.', source1to1Verified: false },
     schemaVersion: 1, date: '2026-10-25',
-    integrationReview: { date: '2026-11-09', upstreamMaster: '3036cd02',
+    integrationReview: { date: '2026-11-13', upstreamMaster: '2333c2c0',
       scope: 'Current W17 plus upstream catalog and file measurement; historical browser and production freezes are not revalidated.',
       source1to1Verified: false },
     evidenceRules: baseline.evidenceRules,
@@ -900,9 +911,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     writeFileSync(new URL(output, root), encoded);
     const ability = report.abilities;
     const animation = report.meleeBindings;
-    const markdown = `# Mesures des combats — W17 du 2 novembre, intégration du 9 novembre 2026
+    const markdown = `# Mesures des combats — W17 du 2 novembre, intégration du 13 novembre 2026
 
-Mesure courante après intégration de master 3036cd02. Les trois groupes effectifs de 40 personnages sont séparés des 125 identités revues et des demandes refusées. Les feuilles, capacités explicites et preuves d'exécution ont des compteurs distincts. Le [protocole W17](CLOSURE.md) ne constitue pas une clôture finale ; les anciens gels et navigateurs ne valident pas cette intégration. Voir l'[amendement du 9 novembre](../audits/w17-master-integration-2026-11-09.md).
+Mesure courante après intégration de master 2333c2c0 le 13 novembre 2026. Les trois groupes effectifs de 40 personnages sont séparés des 125 identités revues et des demandes refusées. Les feuilles, capacités explicites et preuves d'exécution ont des compteurs distincts. Le [protocole W17](CLOSURE.md) ne constitue pas une clôture finale ; les anciens gels et navigateurs ne valident pas cette intégration. Voir le [suivi P0/P1 du 13 novembre](../assets/p0-p1-continuation-2026-11-13/README.md) et l'[amendement historique du 9 novembre](../audits/w17-master-integration-2026-11-09.md).
 
 | Couverture mesurée | Résultat |
 | --- | --- |

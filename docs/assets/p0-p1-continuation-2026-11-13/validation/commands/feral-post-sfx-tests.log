@@ -1,0 +1,196 @@
+TAP version 13
+# Subtest: the current raw Feral source and archived source dispatch remain unchanged
+ok 1 - the current raw Feral source and archived source dispatch remain unchanged
+  ---
+  duration_ms: 25847.080527
+  type: 'test'
+  ...
+# Subtest: all four effective actions use the selected physical loadout with independent game timings
+ok 2 - all four effective actions use the selected physical loadout with independent game timings
+  ---
+  duration_ms: 2.93398
+  type: 'test'
+  ...
+# Subtest: different actors, incarnations, equipment, custom actions and prepared signatures cannot enter this override
+ok 3 - different actors, incarnations, equipment, custom actions and prepared signatures cannot enter this override
+  ---
+  duration_ms: 2.171892
+  type: 'test'
+  ...
+# Subtest: technical source projections keep the exact loadout, while a non-incarnated legacy caller retains Lot 3
+ok 4 - technical source projections keep the exact loadout, while a non-incarnated legacy caller retains Lot 3
+  ---
+  duration_ms: 0.933626
+  type: 'test'
+  ...
+# Subtest: RPG simple: selected wrist contact damages one identity without a projectile
+ok 5 - RPG simple: selected wrist contact damages one identity without a projectile
+  ---
+  duration_ms: 13.339054
+  type: 'test'
+  ...
+# Subtest: Tactics flat simple: wrist contact is one cell and one victim
+ok 6 - Tactics flat simple: wrist contact is one cell and one victim
+  ---
+  duration_ms: 15.34052
+  type: 'test'
+  ...
+# Subtest: Tactics vertical simple: wrist contact is one cell and one victim
+ok 7 - Tactics vertical simple: wrist contact is one cell and one victim
+  ---
+  duration_ms: 104.210043
+  type: 'test'
+  ...
+# Subtest: Melee simple: authored physical contact does not damage the second nearby opponent
+ok 8 - Melee simple: authored physical contact does not damage the second nearby opponent
+  ---
+  duration_ms: 31.198464
+  type: 'test'
+  ...
+# Subtest: RPG secondary: selected wrist contact damages one identity without a projectile
+ok 9 - RPG secondary: selected wrist contact damages one identity without a projectile
+  ---
+  duration_ms: 4.952871
+  type: 'test'
+  ...
+# Subtest: Tactics flat secondary: wrist contact is one cell and one victim
+ok 10 - Tactics flat secondary: wrist contact is one cell and one victim
+  ---
+  duration_ms: 6.639953
+  type: 'test'
+  ...
+# Subtest: Tactics vertical secondary: wrist contact is one cell and one victim
+ok 11 - Tactics vertical secondary: wrist contact is one cell and one victim
+  ---
+  duration_ms: 4.833361
+  type: 'test'
+  ...
+# Subtest: Melee secondary: authored physical contact does not damage the second nearby opponent
+ok 12 - Melee secondary: authored physical contact does not damage the second nearby opponent
+  ---
+  duration_ms: 8.777002
+  type: 'test'
+  ...
+# Subtest: RPG special: selected wrist contact damages one identity without a projectile
+ok 13 - RPG special: selected wrist contact damages one identity without a projectile
+  ---
+  duration_ms: 12.747113
+  type: 'test'
+  ...
+# Subtest: Tactics flat special: wrist contact is one cell and one victim
+ok 14 - Tactics flat special: wrist contact is one cell and one victim
+  ---
+  duration_ms: 5.81504
+  type: 'test'
+  ...
+# Subtest: Tactics vertical special: wrist contact is one cell and one victim
+ok 15 - Tactics vertical special: wrist contact is one cell and one victim
+  ---
+  duration_ms: 5.375418
+  type: 'test'
+  ...
+# Subtest: Melee special: authored physical contact does not damage the second nearby opponent
+ok 16 - Melee special: authored physical contact does not damage the second nearby opponent
+  ---
+  duration_ms: 6.672772
+  type: 'test'
+  ...
+# Subtest: a separate vertical projectile kit keeps its original gun cue and ranged action
+ok 17 - a separate vertical projectile kit keeps its original gun cue and ranged action
+  ---
+  duration_ms: 6.8235
+  type: 'test'
+  ...
+# Subtest: RPG: the left shield guards self with zero outgoing damage or healing
+ok 18 - RPG: the left shield guards self with zero outgoing damage or healing
+  ---
+  duration_ms: 3.087492
+  type: 'test'
+  ...
+# Subtest: Tactics flat: the left shield guards self with zero outgoing damage or healing
+ok 19 - Tactics flat: the left shield guards self with zero outgoing damage or healing
+  ---
+  duration_ms: 1.937379
+  type: 'test'
+  ...
+# Subtest: Tactics vertical: the left shield guards self with zero outgoing damage or healing
+ok 20 - Tactics vertical: the left shield guards self with zero outgoing damage or healing
+  ---
+  duration_ms: 2.372354
+  type: 'test'
+  ...
+# Subtest: Melee left shield retains a bounded physical guard without outgoing damage or healing
+ok 21 - Melee left shield retains a bounded physical guard without outgoing damage or healing
+  ---
+  duration_ms: 2.495379
+  type: 'test'
+  ...
+# Subtest: Fighter player/light: the selected wrist kit remains physical against the active opponent only
+ok 22 - Fighter player/light: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 5.944505
+  type: 'test'
+  ...
+# Subtest: Fighter player/heavy: the selected wrist kit remains physical against the active opponent only
+ok 23 - Fighter player/heavy: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.653962
+  type: 'test'
+  ...
+# Subtest: Fighter player/special: the selected wrist kit remains physical against the active opponent only
+ok 24 - Fighter player/special: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.595924
+  type: 'test'
+  ...
+# Subtest: Fighter player/super: the selected wrist kit remains physical against the active opponent only
+ok 25 - Fighter player/super: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 5.63603
+  type: 'test'
+  ...
+# Subtest: Fighter cpu/light: the selected wrist kit remains physical against the active opponent only
+ok 26 - Fighter cpu/light: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.444365
+  type: 'test'
+  ...
+# Subtest: Fighter cpu/heavy: the selected wrist kit remains physical against the active opponent only
+ok 27 - Fighter cpu/heavy: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.205376
+  type: 'test'
+  ...
+# Subtest: Fighter cpu/special: the selected wrist kit remains physical against the active opponent only
+ok 28 - Fighter cpu/special: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.068289
+  type: 'test'
+  ...
+# Subtest: Fighter cpu/super: the selected wrist kit remains physical against the active opponent only
+ok 29 - Fighter cpu/super: the selected wrist kit remains physical against the active opponent only
+  ---
+  duration_ms: 1.012886
+  type: 'test'
+  ...
+# Subtest: Fighter held guard uses the left shield reduction without an offensive ability
+ok 30 - Fighter held guard uses the left shield reduction without an offensive ability
+  ---
+  duration_ms: 0.720045
+  type: 'test'
+  ...
+# Subtest: Naru’s actual initiative slot uses the portrait only for the scene actor, centered inside its 28×24 badge
+ok 31 - Naru’s actual initiative slot uses the portrait only for the scene actor, centered inside its 28×24 badge
+  ---
+  duration_ms: 2.501208
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26538.219839

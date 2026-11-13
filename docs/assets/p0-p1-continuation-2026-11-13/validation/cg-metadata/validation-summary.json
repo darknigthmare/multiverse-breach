@@ -1,0 +1,51 @@
+[
+  {
+    "name": "metadata-unit",
+    "startedAt": "2026-11-13T07:37:55.660559+00:00",
+    "endedAt": "2026-11-13T07:38:07.138591+00:00",
+    "exitCode": 0,
+    "maxResidentSetSizeKiB": 1168880,
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--experimental-loader",
+      "/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/cgProductionMetadataScope20261113.test.mjs"
+    ],
+    "validationScope": "metadata-only",
+    "physicalMediaChecked": false
+  },
+  {
+    "name": "metadata-captured-plan-check",
+    "startedAt": "2026-11-13T07:38:07.139264+00:00",
+    "endedAt": "2026-11-13T07:38:11.556786+00:00",
+    "exitCode": 0,
+    "maxResidentSetSizeKiB": 1198900,
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--experimental-loader",
+      "/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs",
+      "/tmp/p0-p1-cg-snapshot-20261113/metadata-check.mjs"
+    ],
+    "validationScope": "metadata-only",
+    "physicalMediaChecked": false
+  },
+  {
+    "name": "metadata-lint",
+    "startedAt": "2026-11-13T07:38:11.557197+00:00",
+    "endedAt": "2026-11-13T07:38:11.622946+00:00",
+    "exitCode": 0,
+    "maxResidentSetSizeKiB": 58836,
+    "command": [
+      "/workspace/multiverse-breach/node_modules/.bin/oxlint",
+      "scripts/buildCgRosterProductionPlan.mjs",
+      "scripts/cgPublishedDeliveryMetadata.mjs",
+      "scripts/cgRosterPlanSnapshot.mjs",
+      "scripts/cgRosterProductionPlan.test.mjs",
+      "scripts/cgProductionMetadataScope20261113.test.mjs"
+    ],
+    "validationScope": "metadata-only",
+    "physicalMediaChecked": false
+  }
+]

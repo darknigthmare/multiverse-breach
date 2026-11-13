@@ -19,6 +19,10 @@ for (const id of EXTINCTION_SIGNATURE_IDS) {
       assert.deepEqual(p.actions[slot].name,hero[slot].name);assert.equal(p.actions[slot].sourceType,hero[slot].type);
       const s=make(id);s.enemies=[enemy(0,1)];s.protocols.charge=100;
       assert.equal(cast(s,slot).activated,true);assert.equal(s.protocols.casts[slot],1);
+      if(p.actions[slot].kind==='return_probe') {
+        assert.equal(cast(s,slot).reason,'returned');
+        assert.equal(s.protocols.returns,1);
+      }
       assert.equal(cast(s,slot).reason,'cooldown');
       assert.equal(s.protocols.charge,slot==='special'?0:s.protocols.charge);
     }

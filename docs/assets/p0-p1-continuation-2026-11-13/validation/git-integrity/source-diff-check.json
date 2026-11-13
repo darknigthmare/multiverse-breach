@@ -1,0 +1,21 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "diff",
+    "--cached",
+    "--no-renames",
+    "--check",
+    "--",
+    ".",
+    ":!*.log",
+    ":!docs/assets/p0-p1-continuation-2026-11-13/browser/build-attempt1-stdout.txt",
+    ":!docs/assets/p0-p1-continuation-2026-11-13/browser/build-attempt2-stdout.txt",
+    ":!docs/assets/p0-p1-continuation-2026-11-13/browser/build-attempt3-stdout.txt",
+    ":!docs/assets/p0-p1-continuation-2026-11-13/browser/build-attempt4-stdout.txt"
+  ],
+  "exitCode": 0,
+  "excluded": "Immutable raw logs/compiler stdout are preserved including their original trailing spaces; CSV CRLF is allowed.",
+  "issues": []
+}

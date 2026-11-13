@@ -1,0 +1,2 @@
+// Dead Space — mission modifiers consumed by the Hub.
+export const createUniverseModifier = () => ({ id: 'necromorph_pressure', name: { fr: 'Pression necromorphe', en: 'Necromorph Pressure' }, desc: { fr: 'La station isolee augmente la violence: attaque +12%, cache +24%.', en: 'The isolated station increases violence: attack +12%, cache +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d17a42' });

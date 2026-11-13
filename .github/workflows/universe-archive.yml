@@ -1,0 +1,89 @@
+name: Universe archive reader
+on:
+  pull_request:
+    paths:
+      - 'DLC/**'
+      - 'src/components/HubScreen.jsx'
+      - 'src/components/UniverseArchive*'
+      - 'src/components/CharacterWardrobe*'
+      - 'src/components/collection/**'
+      - 'src/components/GameDisplaySettings*'
+      - 'src/components/GameSystemMenu*'
+      - 'src/game/universeArchiveView.js'
+      - 'src/game/catalogPagination.js'
+      - 'src/game/characterPlaques.js'
+      - 'src/game/loreDescriptions.js'
+      - 'src/index.css'
+      - 'scripts/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/universe-archive.yml'
+  push:
+    branches: [master]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: universe-archive-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  reader:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
+            /scripts/
+            **/*.json
+            **/*.jsonl
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
+      - run: npm ci --no-audit --no-fund
+      - name: Archive content, paging and modal contracts
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/universe-archive-evidence"
+          git rev-parse HEAD > "$RUNNER_TEMP/universe-archive-evidence/tested-commit.txt"
+          node --version > "$RUNNER_TEMP/universe-archive-evidence/node-version.txt"
+          node --test --test-concurrency=1 scripts/universeArchiveReader.test.mjs scripts/universeArchiveView.test.mjs scripts/catalogPagination.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/dialogFocus.test.mjs 2>&1 | tee "$RUNNER_TEMP/universe-archive-evidence/unit.log"
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/UniverseArchiveReader.jsx src/components/UniverseArchiveCatalog.jsx src/components/UniverseArchiveDialog.jsx src/components/HubScreen.jsx src/game/universeArchiveView.js scripts/universeArchiveReader.test.mjs scripts/universeArchiveView.test.mjs scripts/browserUniverseArchive.mjs scripts/buildUniverseArchiveFixture.mjs scripts/fixtures/universeArchiveHarness.jsx scripts/fixtures/universeArchiveData.mjs 2>&1 | tee "$RUNNER_TEMP/universe-archive-evidence/lint.log"
+      - name: Build the actual archive reader fixture
+        run: |
+          set -euo pipefail
+          node scripts/buildUniverseArchiveFixture.mjs 2>&1 | tee "$RUNNER_TEMP/universe-archive-evidence/fixture-build.log"
+          test -s .tmp/universe-archive/scripts/fixtures/universe-archive.html
+      - name: Install pinned browser tooling separately from the game
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/archive-browsers
+        run: |
+          set -euo pipefail
+          npm install --prefix "$RUNNER_TEMP/archive-playwright" --no-audit --no-fund --no-package-lock --ignore-scripts playwright@1.62.1
+          node "$RUNNER_TEMP/archive-playwright/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: French and English reading across desktop and both mobile orientations
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/archive-browsers
+          PLAYWRIGHT_MODULE_PATH: file://${{ runner.temp }}/archive-playwright/node_modules/playwright/index.mjs
+          PLAYWRIGHT_FIXTURE_DIR: .tmp/universe-archive
+          PLAYWRIGHT_EVIDENCE_DIR: ${{ runner.temp }}/universe-archive-evidence/browser
+        run: |
+          set -euo pipefail
+          node scripts/browserUniverseArchive.mjs 2>&1 | tee "$RUNNER_TEMP/universe-archive-evidence/browser.log"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: universe-archive-${{ github.sha }}
+          path: ${{ runner.temp }}/universe-archive-evidence/
+          retention-days: 14

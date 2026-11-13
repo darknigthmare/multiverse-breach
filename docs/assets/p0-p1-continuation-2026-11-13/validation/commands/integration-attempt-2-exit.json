@@ -1,0 +1,26 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/combatCanonicalEditionFixtures.test.mjs",
+    "scripts/dlcPlayerState.test.mjs",
+    "scripts/githubDataIntegration20261113.test.mjs",
+    "scripts/dlcProfileRuntime.test.mjs",
+    "scripts/dlcProfileSharedBackdrops.test.mjs",
+    "scripts/feralSourceSceneAssets.test.mjs",
+    "scripts/reauditSourceScenes.test.mjs",
+    "scripts/sourceSceneCompanionAssets.test.mjs",
+    "scripts/sourceSceneArtAssets.test.mjs"
+  ],
+  "startedAt": "2026-11-13T06:56:58.568892+00:00",
+  "endedAt": "2026-11-13T07:00:25.839249+00:00",
+  "exitCode": 0,
+  "scope": "re-run failed edition/save/profile suites plus new source-scene asset regressions",
+  "heapMiB": 8192,
+  "concurrency": 1,
+  "fullNpmLifecycle": false
+}

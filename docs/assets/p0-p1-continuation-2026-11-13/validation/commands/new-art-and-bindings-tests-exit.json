@@ -1,0 +1,21 @@
+{
+  "name": "new-art-and-bindings-tests",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--no-warnings",
+    "--experimental-loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/enemySpriteBindings.test.mjs",
+    "scripts/feralSourceSceneAssets.test.mjs",
+    "scripts/sourceSceneArtAssets.test.mjs",
+    "scripts/sourceSceneCompanionAssets.test.mjs",
+    "scripts/sourceScenePreyPortraitAssets.test.mjs",
+    "scripts/sourceScenePreyPropAssets.test.mjs"
+  ],
+  "startedAt": "2026-11-13T08:05:29.863570+00:00",
+  "endedAt": "2026-11-13T08:05:33.588650+00:00",
+  "exitCode": 0,
+  "fullNpmLifecycle": false
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "scope": "Two bounded source-referenced P0 portrait attempts; no full-body synthesis or approval requested.",
+  "attempts": [
+    {
+      "actorId": "lilo_pelekai",
+      "stage": "input",
+      "category": "public-figure",
+      "requestId": "7352fd7c-3fd7-482a-94d5-796d6e846d7a",
+      "canonicalDirectory": "DLC/LiloStitch",
+      "tool": "image_gen.imagegen",
+      "status": "refused-no-image",
+      "attemptCount": 1,
+      "retried": false,
+      "errorCode": "moderation_blocked",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 7352fd7c-3fd7-482a-94d5-796d6e846d7a.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"input\\\",\\n      \\\"categories\\\": [\\n        \\\"public-figure\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "transparent_background": true,
+      "actuallyViewedReferences": true,
+      "source1to1Verified": false,
+      "fullBodyQualified": false,
+      "newPngFiles": 0,
+      "runtimeBound": false
+    },
+    {
+      "actorId": "roger_rabbit",
+      "stage": "output",
+      "category": "other",
+      "requestId": "c962d3be-6790-412c-b78a-1e62a76e66cb",
+      "canonicalDirectory": "DLC/RogerRabbit",
+      "tool": "image_gen.imagegen",
+      "status": "refused-no-image",
+      "attemptCount": 1,
+      "retried": false,
+      "errorCode": "moderation_blocked",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID c962d3be-6790-412c-b78a-1e62a76e66cb.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "transparent_background": true,
+      "actuallyViewedReferences": true,
+      "source1to1Verified": false,
+      "fullBodyQualified": false,
+      "newPngFiles": 0,
+      "runtimeBound": false
+    }
+  ],
+  "newAssets": 0,
+  "newP0Closures": 0
+}

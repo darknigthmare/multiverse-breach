@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "buffy-the-vampire-slayer",
+  "universe": "Buffy the Vampire Slayer",
+  "directory": "DLC/BuffyTheVampireSlayer",
+  "registration": "runtime",
+  "catalogOrder": 74,
+  "modules": [
+    {
+      "path": "data/battleItems.js",
+      "runtimeAdapter": "src/game/battleItems.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

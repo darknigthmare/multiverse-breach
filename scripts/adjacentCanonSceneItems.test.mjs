@@ -1,6 +1,6 @@
 import { after, afterEach, before, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getExpandedStages, EXPANDED_GEAR, EXPANDED_UNIVERSES } from '../src/game/expandedUniverses.js';
 import { EQUIP_ITEMS_DB, getHeroById } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';

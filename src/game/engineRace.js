@@ -1,4 +1,8 @@
 import { formatRaceObjective, raceObjectiveLabel } from './scenePresentation.js';
+import { getKartForHero, getKartDriverFrame } from './kart/kartRoster.js';
+import { applyKartLivery, getKartRelativeDirection, recolorKartAtlas } from './kart/kartLivery.js';
+import { getKartDriverBustBounds, getKartDriver2DPlacement } from './kart/kartDriver2D.js';
+import { getKartUniverseTracks, getKartTrackEnvironment } from './kart/kartTracks.js';
 
 const MIRELLE_KART_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
 
@@ -15,6 +19,12 @@ export const RACE_ASSETS = {
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (a, b, t) => a + (b - a) * t;
 const TAU = Math.PI * 2;
+
+const mixRaceEnvironmentColor = (color, other, amount) => {
+  const a = parseInt(color.slice(1), 16), b = parseInt(other.slice(1), 16);
+  return `#${[16, 8, 0].map(shift => Math.round(lerp((a >> shift) & 255, (b >> shift) & 255, amount))
+    .toString(16).padStart(2, '0')).join('')}`;
+};
 
 const KART_ITEM_FRAMES = {
   boost: { col: 0, row: 0 },
@@ -481,7 +491,7 @@ export const KART_TRACK_LAYOUTS = {
   }
 };
 
-export const RACE_TRACKS = KART_TRACK_LAYOUTS;
+export const RACE_TRACKS = { ...KART_TRACK_LAYOUTS, ...getKartUniverseTracks() };
 
 export class EngineRace {
   constructor(
@@ -490,7 +500,8 @@ export class EngineRace {
     onFinish = () => {},
     trackId = 'nexus_archive_loop',
     garageUpgrades = {},
-    kartLoadout = null
+    kartLoadout = null,
+    pilotSpec = null
   ) {
     this.lang = 'fr';
     this.width = width;
@@ -499,6 +510,12 @@ export class EngineRace {
     this.trackId = trackId;
     this.garageUpgrades = garageUpgrades || {};
     this.kartLoadout = kartLoadout;
+    this.pilotSpec = pilotSpec || getKartForHero('arca_mirelle');
+    this.renderer3D = null;
+    this.kartImages = new Map();
+    this.kartLiveryImages = new Map();
+    this.driverImages = new Map();
+    this.driverBusts = new Map();
     this.garageStats = this.computeGarageStats(this.garageUpgrades);
     this.track = this.createTrackState(trackId);
     this.images = {};
@@ -616,8 +633,9 @@ export class EngineRace {
     this.objective = this.createObjectiveState();
     this.player = this.createKart({
       id: 'mirelle',
-      name: this.kartLoadout?.name?.fr || 'Mirelle Suture',
-      color: this.kartLoadout?.color || '#39c5bb',
+      name: this.pilotSpec?.name || 'Mirelle Suture',
+      color: this.kartLoadout?.color || this.pilotSpec?.color || '#39c5bb',
+      kartSpec: applyKartLivery(this.pilotSpec, this.kartLoadout),
       visualStyle: this.kartLoadout?.style || 'suture',
       x: start.x,
       y: start.y,
@@ -629,9 +647,9 @@ export class EngineRace {
       turnRate: 3.2 + this.garageStats.turnBonus
     });
     this.opponents = [
-      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: startAngle, ai: true, laneOffset: -26, maxSpeed: 244 }),
-      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: start.x + 42, y: start.y + 30, angle: startAngle, ai: true, laneOffset: 22, maxSpeed: 252 }),
-      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: start.x, y: start.y + 58, angle: startAngle, ai: true, laneOffset: 8, maxSpeed: 238 })
+      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', kartSpec: getKartForHero('arca_bastion'), x: start.x - 40, y: start.y + 28, angle: startAngle, ai: true, laneOffset: -26, maxSpeed: 244 }),
+      this.createKart({ id: 'loom', name: 'Loom Ivara', color: '#d9b6ff', kartSpec: getKartForHero('arca_loom'), x: start.x + 42, y: start.y + 30, angle: startAngle, ai: true, laneOffset: 22, maxSpeed: 252 }),
+      this.createKart({ id: 'sable', name: 'Sable Orison', color: '#e74c3c', kartSpec: getKartForHero('arca_sable'), x: start.x, y: start.y + 58, angle: startAngle, ai: true, laneOffset: 8, maxSpeed: 238 })
     ];
   }
 
@@ -640,6 +658,7 @@ export class EngineRace {
     name,
     color,
     visualStyle = 'standard',
+    kartSpec = null,
     x,
     y,
     angle,
@@ -654,6 +673,7 @@ export class EngineRace {
       name,
       color,
       visualStyle,
+      kartSpec,
       x,
       y,
       angle,
@@ -685,6 +705,8 @@ export class EngineRace {
       routeSegment: 0,
       routeProgress: 0,
       previousRouteProgress: 0,
+      routeInitialized: false,
+      nextLapGate: 1,
       lapArmed: false,
       stuckTimer: 0,
       recoveryCooldown: 0
@@ -701,6 +723,7 @@ export class EngineRace {
 
   useKartItem(kart) {
     if (!kart?.item || this.finished || this.countdown > 0 || kart.itemCooldown > 0) return false;
+    if (this.track.raceRules?.contactItems === false && !['boost', 'shield', 'anchor'].includes(kart.item)) return false;
     const item = kart.item;
     kart.item = null;
     kart.itemCooldown = 1.1;
@@ -737,6 +760,8 @@ export class EngineRace {
     if (item === 'mirror') {
       const target = this.findMirrorSwapTarget(kart);
       if (target) {
+        const sourceRoad = this.getKartRoadAnchor(kart);
+        const targetRoad = this.getKartRoadAnchor(target);
         const swap = { x: kart.x, y: kart.y, angle: kart.angle, speed: kart.speed };
         kart.x = target.x;
         kart.y = target.y;
@@ -746,6 +771,10 @@ export class EngineRace {
         target.y = swap.y;
         target.angle = swap.angle;
         target.speed = Math.max(swap.speed * 0.72, 90);
+        // A position swap is not a driven crossing of the finish line. Keep
+        // each racer's own gate receipts, and start sampling at the new seat.
+        this.reanchorKartRoute(kart, targetRoad);
+        this.reanchorKartRoute(target, sourceRoad);
         kart.portalCooldown = 1.2;
         target.portalCooldown = 1.2;
         this.spawnParticles(kart.x, kart.y, '#39c5bb', 20);
@@ -901,7 +930,8 @@ export class EngineRace {
     const speedRatio = clamp(Math.abs(kart.speed) / 220, 0, 1);
     const turnPower = (0.24 + speedRatio * 1.02) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += kart.steerInput * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
-    if (!kart.ai && Math.abs(input.turn || 0) < 0.42 && Math.abs(kart.speed) > 48) {
+    const autoOffroadAssist = this.keys.autoAccel && kart.speed > 8 && road.factor < 0.42;
+    if (!kart.ai && Math.abs(input.turn || 0) < 0.42 && (Math.abs(kart.speed) > 48 || autoOffroadAssist)) {
       const lookAhead = 62 + clamp(Math.abs(kart.speed), 0, 280) * 0.28;
       const target = this.getTrackPointAhead(road, lookAhead);
       const desired = target ? Math.atan2(target.y - kart.y, target.x - kart.x) : road.angle;
@@ -1032,28 +1062,42 @@ export class EngineRace {
   getKartRoadAnchor(kart) {
     const points = this.track.waypoints || [];
     if (!kart || points.length < 2) return this.getClosestRoadPoint(kart?.x || 0, kart?.y || 0);
-    const preferred = Number.isInteger(kart.routeSegment) ? kart.routeSegment : 0;
-    let best = null;
-    points.forEach((point, segment) => {
-      const next = points[(segment + 1) % points.length];
-      const projected = projectPointToSegment(point, next, kart.x, kart.y);
-      const rawGap = Math.abs(segment - preferred);
-      const segmentGap = Math.min(rawGap, points.length - rawGap);
-      const continuityPenalty = segmentGap > 2 ? this.track.roadWidth * 0.34 : segmentGap * 2;
-      const headingPenalty = Math.abs(kart.speed) > 24
-        ? Math.abs(angleDelta(kart.angle, projected.angle)) * this.track.roadWidth * 0.08
-        : 0;
-      const score = projected.distance + continuityPenalty + headingPenalty;
-      if (!best || score < best.score) {
-        best = { ...projected, segment, score };
-      }
-    });
-    if (!best || best.distance > this.track.roadWidth * 1.65) {
+    const previous = kart._roadAnchor;
+    if (previous?.sampleX === kart.x && previous?.sampleY === kart.y
+      && previous.segment === kart.routeSegment) return previous;
+    let best;
+    if (!previous) {
       best = this.getClosestRoadPoint(kart.x, kart.y);
+    } else {
+      // Follow the connected road, including off-road recovery. A nearby arm
+      // of a figure eight is not reachable merely because it projects closer.
+      const preferred = kart.routeSegment;
+      const candidates = [preferred, (preferred + 1) % points.length, (preferred + points.length - 1) % points.length];
+      for (const segment of candidates) {
+        const projected = projectPointToSegment(points[segment], points[(segment + 1) % points.length], kart.x, kart.y);
+        const score = projected.distance + (segment === preferred ? 0 : 2);
+        if (!best || score < best.score) best = { ...projected, segment, score };
+      }
     }
     best.factor = clamp(1 - best.distance / (this.track.roadWidth * 0.9), 0, 1);
+    best.sampleX = kart.x;
+    best.sampleY = kart.y;
+    kart._roadAnchor = best;
     kart.routeSegment = best.segment;
     return best;
+  }
+
+  reanchorKartRoute(kart, road) {
+    const points = this.track.waypoints;
+    const anchored = projectPointToSegment(points[road.segment], points[(road.segment + 1) % points.length], kart.x, kart.y);
+    kart._roadAnchor = { ...anchored, segment: road.segment, sampleX: kart.x, sampleY: kart.y,
+      factor: clamp(1 - anchored.distance / (this.track.roadWidth * 0.9), 0, 1) };
+    kart.routeSegment = road.segment;
+    kart.waypoint = (road.segment + 1) % points.length;
+    kart.routeProgress = this.getRouteProgress(kart._roadAnchor);
+    kart.previousRouteProgress = kart.routeProgress;
+    kart.routeInitialized = true;
+    kart._portalRouteTransition = null;
   }
 
   getRouteProgress(road) {
@@ -1064,12 +1108,11 @@ export class EngineRace {
 
   recoverKart(kart, message = null) {
     if (!kart || kart.recoveryCooldown > 0) return false;
-    const road = this.getClosestRoadPoint(kart.x, kart.y);
+    const road = this.getKartRoadAnchor(kart);
     kart.x = road.x;
     kart.y = road.y;
     kart.angle = road.angle;
-    kart.routeSegment = road.segment;
-    kart.waypoint = (road.segment + 1) % this.track.waypoints.length;
+    this.reanchorKartRoute(kart, road);
     kart.speed = Math.max(72, Math.min(Math.abs(kart.speed), 118));
     kart.spin = 0;
     kart.stuckTimer = 0;
@@ -1109,9 +1152,33 @@ export class EngineRace {
         if (!kart.ai) this.showMessage('Tremplin de faille: trick boost');
       }
       if (zone.type === 'portal' && kart.portalCooldown <= 0 && zone.exit) {
+        const entryRoad = this.getKartRoadAnchor(kart);
+        const entryProgress = this.getRouteProgress(entryRoad);
+        const sourceProgress = this.getRouteProgress(this.getClosestRoadPoint(zone.x, zone.y));
+        const sourceGap = Math.abs(((entryProgress - sourceProgress + 1.5) % 1) - 0.5);
+        // At an intersection, only the branch containing this entrance owns
+        // the portal; the other arm must remain an ordinary road crossing.
+        if (sourceGap * this.track.pathMetrics.totalLength > zone.r + this.track.roadWidth * 0.2) return;
+        const exitRoad = this.getClosestRoadPoint(zone.exit.x, zone.exit.y);
+        const exitProgress = this.getRouteProgress(exitRoad);
+        const goesForward = exitProgress >= entryProgress || zone.crossesStart === true;
+        if (!goesForward && kart._backwardPortals?.get(zone) === kart.lap) return;
+        this.updateCheckpoints(kart);
+        if (kart.finished) return;
+        const forwardEntry = kart.speed * Math.cos(kart.angle - entryRoad.angle) > 0;
+        if (!goesForward) {
+          kart._backwardPortals ||= new Map();
+          kart._backwardPortals.set(zone, kart.lap);
+        }
         kart.x = zone.exit.x;
         kart.y = zone.exit.y;
         kart.angle = zone.exit.angle ?? kart.angle;
+        this.reanchorKartRoute(kart, exitRoad);
+        if (goesForward && forwardEntry) {
+          // Only a declared forward link can stand in for skipped gates. A
+          // backwards portal is usable once per lap, never a synthetic lap.
+          kart._portalRouteTransition = { from: entryProgress, to: exitProgress, crossesStart: zone.crossesStart === true };
+        }
         kart.portalCooldown = 1.8;
         kart.boost = Math.max(kart.boost, 0.38 + (kart.ai ? 0 : this.garageStats.boostBonus * 0.45));
         this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
@@ -1190,6 +1257,7 @@ export class EngineRace {
   }
 
   rollItem(kart) {
+    if (this.track.raceRules?.contactItems === false) return ['boost', 'shield', 'anchor'][Math.floor(Math.abs(this.time * 997 + kart.x + kart.y) % 3)];
     const pool = kart.rank >= 3
       ? ['boost', 'boost', 'projectile', 'shield', 'trap', 'anchor', 'mirror', 'pulse']
       : ['projectile', 'shield', 'trap', 'boost', 'anchor', 'pulse'];
@@ -1215,17 +1283,48 @@ export class EngineRace {
     const checkpointCount = Math.max(1, this.track.checkpoints.length);
     kart.routeProgress = routeProgress;
     kart.checkpoint = Math.min(checkpointCount - 1, Math.floor(routeProgress * checkpointCount));
-    if (routeProgress > 0.4) kart.lapArmed = true;
-    const crossedStart = kart.lapArmed && previousProgress > 0.4 && routeProgress < 0.18 && previousProgress - routeProgress > 0.28;
     kart.previousRouteProgress = routeProgress;
-    if (!crossedStart) return;
-    kart.lap += 1;
-    kart.lapArmed = false;
-    if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
-    if (kart.lap >= this.track.laps) {
-      kart.finished = true;
-      kart.finishTime = this.time;
+    // Rear grid slots can begin on the final segment. Merely seeing progress
+    // near 1 must not award them a free lap at their first start-line crossing.
+    if (!kart.routeInitialized) {
+      kart.routeInitialized = true;
+      return;
     }
+    if (kart.finished) return;
+    const advanceGates = (from, to) => {
+      while (kart.nextLapGate < checkpointCount
+        && from <= kart.nextLapGate / checkpointCount
+        && to >= kart.nextLapGate / checkpointCount) kart.nextLapGate += 1;
+    };
+    const transition = kart._portalRouteTransition;
+    kart._portalRouteTransition = null;
+    const from = transition ? transition.from : previousProgress;
+    const to = transition ? transition.to : routeProgress;
+    const delta = (to - from + 1) % 1;
+    const forward = transition ? to > from || transition.crossesStart : delta > 0 && delta < 0.22;
+    const wraps = forward && to < from;
+    if (!forward) {
+      // Backing over the line cannot leave an armed lap waiting to be cashed
+      // by immediately driving forward over that same line again.
+      if (!transition && from < 0.22 && to > 0.78) kart.nextLapGate = 1;
+      kart.lapArmed = kart.nextLapGate >= checkpointCount;
+      return;
+    }
+    advanceGates(from, wraps ? 1 : to);
+    if (wraps) {
+      const crossedStart = kart.nextLapGate >= checkpointCount;
+      kart.nextLapGate = 1;
+      if (crossedStart) {
+        kart.lap += 1;
+        if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
+        if (kart.lap >= this.track.laps) {
+          kart.finished = true;
+          kart.finishTime = this.time;
+        }
+      }
+      advanceGates(0, to);
+    }
+    kart.lapArmed = kart.nextLapGate >= checkpointCount && !kart.finished;
   }
 
   updateProgressAndRanks() {
@@ -1411,14 +1510,83 @@ export class EngineRace {
     };
   }
 
-  draw(ctx) {
+  draw(ctx, dt = 1 / 60) {
     ctx.clearRect(0, 0, this.width, this.height);
+    if (this.renderer3D) {
+      this.renderer3D.draw(this, dt);
+      this.draw3DOverlay(ctx);
+      return;
+    }
     this.drawRaceCameraBackdrop(ctx);
     this.drawRearRoad(ctx);
     this.drawProjectedRaceObjects(ctx);
     this.drawRearPlayerKart(ctx);
     this.drawSlipstreamWindLines(ctx);
     this.drawHud(ctx);
+  }
+
+  // WebGL owns world rendering only. The existing simulation, UI, minimap,
+  // clock, finish guard and career remain shared by both presentations.
+  draw3DOverlay(ctx) {
+    // CSS-pixel layout follows the actual HUD and controls, independently of
+    // the simulation's 960×540 coordinate space and the WebGL backing buffer.
+    const width = this.overlayViewport?.width || this.width;
+    const height = this.overlayViewport?.height || this.height;
+    const top = this.overlayViewport?.top ?? 88;
+    const bottom = this.overlayViewport?.bottom ?? 80;
+    const minimap = {
+      x: width - (width <= 480 ? 128 : 150) - 12,
+      y: top,
+      width: width <= 480 ? 128 : 150,
+      height: height <= 500 ? 72 : 94
+    };
+    const boost = { x: 12, y: Math.max(top, height - bottom - 36), width: 180, height: 36 };
+    this.overlayLayout = { width, height, minimap, boost };
+    ctx.save();
+    ctx.scale(this.width / width, this.height / height);
+    this.drawTopDownMinimap(ctx, minimap);
+    const charge = clamp(this.player.driftCharge / 2.4, 0, 1);
+    ctx.fillStyle = 'rgba(5,12,22,0.78)';
+    ctx.fillRect(boost.x, boost.y, boost.width, boost.height);
+    ctx.fillStyle = charge > .72 ? '#d9b6ff' : charge > .45 ? '#ffb15c' : this.player.color;
+    ctx.fillRect(boost.x + 10, boost.y + 25, (boost.width - 20) * charge, 4);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = '#effffc';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText(this.player.boost > 0 ? 'TURBO' : this.player.air > 0 ? (this.lang === 'en' ? 'JUMP' : 'SAUT') : 'DRIFT', boost.x + boost.width / 2, boost.y + 17);
+    if (this.countdown > 0) {
+      ctx.fillStyle = 'rgba(0,0,0,.28)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = '#fff3b8';
+      ctx.font = 'bold 64px sans-serif';
+      ctx.fillText(this.countdown > 1 ? Math.ceil(this.countdown) : 'GO', width / 2, top + Math.max(0, height - top - bottom) * .45);
+    } else if (this.messageTimer > 0) {
+      const messageWidth = Math.min(360, minimap.x - 24);
+      ctx.font = 'bold 13px sans-serif';
+      const lines = [''];
+      for (const word of this.message.split(/\s+/)) {
+        const last = lines.length - 1;
+        const candidate = `${lines[last]} ${word}`.trim();
+        if (lines[last] && ctx.measureText(candidate).width > messageWidth - 20) lines.push(word);
+        else lines[last] = candidate;
+      }
+      ctx.fillStyle = 'rgba(5,12,22,.82)';
+      ctx.fillRect(12, top, messageWidth, 16 + lines.length * 18);
+      ctx.fillStyle = '#effffc';
+      lines.forEach((line, index) => ctx.fillText(line, 12 + messageWidth / 2, top + 20 + index * 18));
+    }
+    ctx.restore();
+  }
+
+  dispose() {
+    this.renderer3D?.dispose();
+    this.renderer3D = null;
+    this.kartImages.clear();
+    this.kartLiveryImages.clear();
+    this.driverImages.clear();
+    this.driverBusts.clear();
+    this.setInput({});
   }
 
   drawSlipstreamWindLines(ctx) {
@@ -1450,6 +1618,12 @@ export class EngineRace {
   }
 
   drawRaceCameraBackdrop(ctx) {
+    // Universe courses share their art profile across the WebGL and sprite
+    // views. The six historical Nexus courses retain their original backdrop.
+    if (this.track.environment) {
+      this.drawUniverseRaceBackdrop(ctx, getKartTrackEnvironment(this.track));
+      return;
+    }
     const trackId = this.trackId || '';
     let skyColor1 = '#020106';
     let skyColor2 = '#081527';
@@ -1522,6 +1696,210 @@ export class EngineRace {
     }
   }
 
+  drawUniverseRaceBackdrop(ctx, environment) {
+    const horizon = this.getRaceCameraHorizon();
+    const sky = ctx.createLinearGradient(0, 0, 0, horizon + 22);
+    sky.addColorStop(0, environment.sky);
+    sky.addColorStop(1, environment.fog || environment.sky);
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, this.width, this.height);
+    const ground = ctx.createLinearGradient(0, horizon, 0, this.height);
+    ground.addColorStop(0, mixRaceEnvironmentColor(environment.ground, environment.fog || environment.sky, .36));
+    ground.addColorStop(1, environment.ground);
+    ctx.fillStyle = ground;
+    ctx.fillRect(0, horizon, this.width, this.height - horizon);
+
+    if (['coast', 'ocean'].includes(environment.theme)) {
+      ctx.fillStyle = mixRaceEnvironmentColor(environment.sky, environment.accent, .34);
+      ctx.fillRect(0, horizon - 3, this.width, this.height * .075);
+      ctx.fillStyle = `${environment.shoulder}99`;
+      for (let index = 0; index < 4; index += 1) {
+        ctx.fillRect(0, horizon + 5 + index * 9, this.width, 1 + index * .4);
+      }
+    } else if (['industrial', 'laboratory', 'orbital', 'clockwork'].includes(environment.theme)) {
+      ctx.strokeStyle = `${environment.shoulder}35`;
+      ctx.lineWidth = 1;
+      for (let index = -4; index <= 4; index += 1) {
+        ctx.beginPath();
+        ctx.moveTo(this.width / 2 + index * 16, horizon);
+        ctx.lineTo(this.width / 2 + index * this.width * .18, this.height);
+        ctx.stroke();
+      }
+    }
+
+    // Very large sky landmarks form the 2D panorama. This is a simplified
+    // silhouette of the shared landmark, not another canonical scene asset.
+    (environment.landmarks || []).filter(landmark => landmark.kind === 'halo-ring' || landmark.height > 700)
+      .forEach(landmark => this.drawUniverseLandmark2D(ctx, landmark, {
+        x: this.width * .64 + Math.sin(this.player.angle) * this.width * .055,
+        y: horizon + this.height * .10,
+        width: this.width * .38, height: this.height * .90,
+        rotation: -.18 + Math.sin(this.player.angle) * .05, alpha: .86
+      }));
+  }
+
+  getUniverseLandmarkProjections() {
+    if (!this.track.environment) return [];
+    return (getKartTrackEnvironment(this.track).landmarks || []).flatMap(landmark => {
+      if (landmark.kind === 'halo-ring' || landmark.height > 700) return [];
+      const point = this.projectToRearCamera({ x: landmark.x, y: landmark.z });
+      if (!point) return [];
+      const width = clamp((landmark.width || 38) * (landmark.scale || 1) * point.scale, 10, this.width * .46);
+      const height = clamp((landmark.height || 80) * (landmark.scale || 1) * point.scale, 14, this.height * .7);
+      // The continuous sprite road is wider than its world-space centerline.
+      // Keep scenery outside its visible verge without moving simulation data.
+      const side = point.lateral >= 0 ? 1 : -1;
+      const center = this.width / 2 + this.getRoadCurveOffset(point.t);
+      const verge = center + side * (lerp(42, 470, point.t ** 1.08) + width * .42 + 8);
+      const x = side < 0 ? Math.min(point.x, verge) : Math.max(point.x, verge);
+      if (x + width < 0 || x - width > this.width) return [];
+      return [{ landmark, projection: { ...point, x, width, height, alpha: lerp(.64, 1, point.t) } }];
+    }).sort((a, b) => b.projection.forward - a.projection.forward);
+  }
+
+  drawUniverseRaceLandmarks(ctx) {
+    this.getUniverseLandmarkProjections().forEach(({ landmark, projection }) => {
+      this.drawUniverseLandmark2D(ctx, landmark, projection);
+    });
+  }
+
+  drawUniverseLandmark2D(ctx, landmark, projection) {
+    const { width: w, height: h } = projection;
+    if (!(w > 0 && h > 0)) return;
+    const color = landmark.color || '#647687';
+    const accent = landmark.accent || color;
+    const shadow = mixRaceEnvironmentColor(color, '#081019', .56);
+    const light = mixRaceEnvironmentColor(color, '#ffffff', .22);
+    ctx.save();
+    ctx.translate(projection.x, projection.y);
+    if (projection.rotation) ctx.rotate(projection.rotation);
+    ctx.globalAlpha = projection.alpha ?? 1;
+    const polygon = (points, fill) => {
+      ctx.fillStyle = fill;
+      ctx.beginPath();
+      points.forEach(([x, y], index) => index ? ctx.lineTo(x * w, y * h) : ctx.moveTo(x * w, y * h));
+      ctx.closePath(); ctx.fill();
+    };
+    const box = (x, y, width, height, fill) => {
+      ctx.fillStyle = fill; ctx.fillRect(x * w, y * h, width * w, height * h);
+    };
+    const oval = (x, y, rx, ry, fill) => {
+      ctx.fillStyle = fill; ctx.beginPath(); ctx.ellipse(x * w, y * h, rx * w, ry * h, 0, 0, TAU); ctx.fill();
+    };
+    const line = (points, stroke = accent, thickness = 2) => {
+      ctx.strokeStyle = stroke; ctx.lineWidth = thickness; ctx.beginPath();
+      points.forEach(([x, y], index) => index ? ctx.lineTo(x * w, y * h) : ctx.moveTo(x * w, y * h));
+      ctx.stroke();
+    };
+    const kind = landmark.kind;
+    if (['ring', 'halo-ring', 'portal'].includes(kind)) {
+      ctx.strokeStyle = color; ctx.lineWidth = Math.max(3, w * (kind === 'halo-ring' ? .045 : .09));
+      ctx.beginPath(); ctx.ellipse(0, -h * .5, w * .43, h * .46, 0, 0, TAU); ctx.stroke();
+      ctx.strokeStyle = accent; ctx.lineWidth = Math.max(1, w * .012);
+      ctx.beginPath(); ctx.ellipse(0, -h * .5, w * .39, h * .46, 0, 0, TAU); ctx.stroke();
+      if (kind !== 'halo-ring') for (let index = 0; index < 7; index += 1) {
+        const angle = index / 7 * TAU;
+        oval(Math.cos(angle) * .43, -.5 + Math.sin(angle) * .46, .025, .025, accent);
+      }
+    } else if (kind === 'forerunner') {
+      polygon([[-.5, 0], [-.34, -.84], [-.15, -1], [.32, -.9], [.5, 0]], color);
+      polygon([[-.36, -.04], [-.22, -.68], [.18, -.72], [.32, -.04]], shadow);
+      polygon([[-.14, 0], [-.11, -.45], [.1, -.48], [.17, 0]], '#08131b');
+      line([[-.31, -.12], [-.2, -.67], [.17, -.7], [.29, -.14]], accent, Math.max(1, w * .018));
+      polygon([[.32, -.9], [.5, 0], [.37, -.05], [.22, -.84]], light);
+    } else if (kind === 'bulkhead') {
+      box(-.5, -1, 1, 1, shadow); box(-.38, -.86, .76, .86, color);
+      box(-.2, -.63, .4, .63, '#101c22');
+      for (let index = 0; index < 4; index += 1) {
+        const inset = index * .065;
+        line([[-.48 + inset, 0], [-.48 + inset, -.96 + inset], [.48 - inset, -.96 + inset], [.48 - inset, 0]], index % 2 ? shadow : light, Math.max(2, w * .025));
+      }
+      box(-.14, -.72, .28, .035, accent);
+    } else if (kind === 'sandstone-terrace' || kind === 'pyramid') {
+      if (kind === 'pyramid') {
+        polygon([[-.5, 0], [0, -1], [.5, 0]], color);
+        polygon([[0, -1], [.5, 0], [.1, 0]], shadow);
+      } else {
+        polygon([[-.5, 0], [-.4, -.86], [-.16, -1], [-.14, 0]], color);
+        polygon([[.14, 0], [.16, -1], [.4, -.86], [.5, 0]], color);
+        box(-.2, -.55, .4, .1, shadow); box(-.5, -.1, 1, .1, light);
+      }
+    } else if (['crystal', 'spire'].includes(kind)) {
+      polygon([[-.25, 0], [-.5, -.65], [0, -1], [.46, -.62], [.2, 0]], color);
+      polygon([[0, -1], [.46, -.62], [.2, 0], [.05, -.62]], light);
+      line([[-.25, -.05], [.05, -.62], [0, -.98]], accent, Math.max(1, w * .025));
+    } else if (['tree', 'palm', 'voxel-tree', 'mushroom'].includes(kind)) {
+      box(-.065, -.62, .13, .62, kind === 'mushroom' ? light : shadow);
+      if (kind === 'palm') {
+        for (const side of [-1, 1]) {
+          polygon([[0, -.82], [side * .46, -.68], [side * .3, -.94]], color);
+          polygon([[0, -.82], [side * .45, -.48], [side * .22, -.76]], color);
+        }
+        polygon([[-.06, -.75], [0, -1], [.1, -.8]], light);
+      } else if (kind === 'voxel-tree') {
+        box(-.48, -.84, .96, .42, color); box(-.3, -1, .6, .24, light);
+      } else if (kind === 'mushroom') {
+        oval(0, -.7, .49, .28, color);
+        oval(-.2, -.77, .09, .07, accent); oval(.19, -.65, .11, .07, accent);
+      } else {
+        oval(-.19, -.6, .3, .25, color); oval(.2, -.67, .29, .26, color);
+        oval(0, -.83, .31, .18, light);
+      }
+    } else if (['rock', 'mountain', 'canyon', 'checker-hill'].includes(kind)) {
+      const outline = [[-.5, 0], [-.42, -.56], [-.18, -.87], [.12, -1], [.39, -.58], [.5, 0]];
+      polygon(outline, color);
+      polygon([[.12, -1], [.39, -.58], [.5, 0], [.12, -.18], [-.02, -.64]], shadow);
+      if (kind === 'checker-hill') {
+        ctx.save(); ctx.beginPath();
+        outline.forEach(([x, y], index) => index ? ctx.lineTo(x * w, y * h) : ctx.moveTo(x * w, y * h));
+        ctx.closePath(); ctx.clip();
+        for (let row = 0; row < 5; row += 1) for (let column = 0; column < 5; column += 1) {
+          if ((row + column) % 2 === 0) box(-.5 + column * .2, -1 + row * .2, .2, .2, light);
+        }
+        ctx.restore(); line([[-.42, -.56], [-.18, -.87], [.12, -1], [.39, -.58]], accent, Math.max(3, h * .06));
+      }
+    } else if (['industrial', 'reactor', 'pipe'].includes(kind)) {
+      box(-.3, -.87, .6, .87, color); oval(0, -.87, .3, .11, light);
+      box(.17, -.83, .13, .79, shadow); box(-.2, -.62, .37, .12, accent);
+      if (kind !== 'pipe') {
+        box(-.5, -.25, 1, .25, shadow);
+        box(-.47, -.8, .14, .65, color); box(.33, -.62, .14, .47, color);
+        line([[-.42, -.81], [-.42, -.94], [-.16, -.94]], accent);
+      }
+    } else if (['arch', 'gate', 'temple', 'ruins', 'castle'].includes(kind)) {
+      box(-.5, -.78, .22, .78, color); box(.28, -.78, .22, .78, color);
+      box(-.5, -.9, 1, .16, light);
+      if (kind === 'temple') polygon([[-.5, -.9], [0, -1], [.5, -.9]], color);
+      else if (kind === 'castle') {
+        box(-.28, -.58, .56, .58, shadow);
+        for (const x of [-.5, -.34, .28, .44]) box(x, -1, .07, .14, color);
+      } else if (kind === 'ruins') {
+        box(-.5, -.9, .2, .12, shadow); box(.35, -.78, .15, .16, shadow);
+      } else line([[-.38, -.68], [-.38, -.8], [.38, -.8], [.38, -.68]], accent);
+    } else if (['ship', 'frigate', 'antenna', 'dish'].includes(kind)) {
+      if (kind === 'ship' || kind === 'frigate') {
+        polygon([[-.5, -.33], [.5, -.24], [.33, 0], [-.3, 0]], color);
+        box(-.15, -.62, .43, .3, shadow); box(-.01, -1, .04, .5, light);
+        if (kind === 'ship') polygon([[.03, -.97], [.03, -.51], [.34, -.51]], accent);
+      } else {
+        box(-.04, -.94, .08, .94, shadow);
+        if (kind === 'dish') oval(0, -.76, .45, .21, color);
+        else line([[-.4, -.68], [.4, -.68], [0, -.87], [-.28, -.87], [.28, -.87]], light);
+      }
+    } else {
+      box(-.46, -.82, .92, .82, color); box(.25, -.82, .21, .82, shadow);
+      if (['house', 'hangar'].includes(kind)) polygon([[-.5, -.82], [0, -1], [.5, -.82]], light);
+      else box(-.4, -1, .8, .18, light);
+      if (kind === 'clock-tower') {
+        oval(0, -.71, .23, .15, shadow);
+        line([[0, -.82], [0, -.71], [.14, -.66]], accent, Math.max(1, w * .023));
+      } else if (kind !== 'block') {
+        for (let index = 0; index < 3; index += 1) box(-.3, -.68 + index * .19, .47, .045, accent);
+      }
+    }
+    ctx.restore();
+  }
+
   getRaceCameraHorizon() {
     return this.height * 0.34;
   }
@@ -1543,6 +1921,7 @@ export class EngineRace {
   }
 
   drawRearRoad(ctx) {
+    const environment = this.track.environment ? getKartTrackEnvironment(this.track) : null;
     const segments = this.getProjectedTrackSegments();
     // Une perspective continue reste toujours presente. Les segments issus de
     // la vraie topologie ne sont ajoutes que s'ils couvrent reellement la
@@ -1560,7 +1939,10 @@ export class EngineRace {
       && hasNearRoad
       && hasFarRoad
       && maxY - minY >= this.height * 0.24;
-    if (!hasUsefulCoverage) return;
+    if (!hasUsefulCoverage) {
+      if (environment) this.drawUniverseRaceLandmarks(ctx);
+      return;
+    }
 
     ctx.save();
     ctx.globalAlpha = 0.58;
@@ -1585,7 +1967,9 @@ export class EngineRace {
         const byR = segment.b.y;
 
         // Draw main road surface polygon
-        ctx.fillStyle = segment.index % 2 === 0 ? '#34394a' : '#3d4356';
+        ctx.fillStyle = environment
+          ? segment.index % 2 === 0 ? environment.road : mixRaceEnvironmentColor(environment.road, '#ffffff', .06)
+          : segment.index % 2 === 0 ? '#34394a' : '#3d4356';
         ctx.beginPath();
         ctx.moveTo(axL, ayL);
         ctx.lineTo(bxL, byL);
@@ -1597,7 +1981,9 @@ export class EngineRace {
         // Draw red/white rumble strip borders
         const aBorderW = Math.max(3, aWidth * 0.055);
         const bBorderW = Math.max(3, bWidth * 0.055);
-        ctx.fillStyle = segment.index % 2 === 0 ? '#e74c3c' : '#ffffff';
+        ctx.fillStyle = environment
+          ? segment.index % 2 === 0 ? environment.shoulder : mixRaceEnvironmentColor(environment.shoulder, environment.road, .35)
+          : segment.index % 2 === 0 ? '#e74c3c' : '#ffffff';
 
         // Left border
         ctx.beginPath();
@@ -1619,7 +2005,7 @@ export class EngineRace {
 
         // Draw center dashed yellow line
         if (segment.index % 2 === 0) {
-          ctx.strokeStyle = '#ffeb3b';
+          ctx.strokeStyle = environment?.accent || '#ffeb3b';
           ctx.lineWidth = Math.max(1.5, ((aWidth + bWidth) * 0.5) * 0.016);
           ctx.beginPath();
           ctx.moveTo(segment.a.x, segment.a.y);
@@ -1630,9 +2016,9 @@ export class EngineRace {
 
     ctx.lineCap = 'round';
     [
-      { side: -1, color: 'rgba(57,197,187,0.88)', width: 4.5 },
-      { side: 1, color: 'rgba(57,197,187,0.88)', width: 4.5 },
-      { side: 0, color: 'rgba(255,235,59,0.7)', width: 2.5, dash: [18, 18] }
+      { side: -1, color: environment ? `${environment.shoulder}e0` : 'rgba(57,197,187,0.88)', width: 4.5 },
+      { side: 1, color: environment ? `${environment.shoulder}e0` : 'rgba(57,197,187,0.88)', width: 4.5 },
+      { side: 0, color: environment ? `${environment.accent}b3` : 'rgba(255,235,59,0.7)', width: 2.5, dash: [18, 18] }
     ].forEach(edge => {
       ctx.strokeStyle = edge.color;
       ctx.lineWidth = edge.width;
@@ -1653,6 +2039,7 @@ export class EngineRace {
     ctx.setLineDash([]);
 
     ctx.restore();
+    if (environment) this.drawUniverseRaceLandmarks(ctx);
   }
 
   getPlayerRoadAnchor() {
@@ -1749,6 +2136,7 @@ export class EngineRace {
   }
 
   drawFallbackRearRoad(ctx) {
+    const environment = this.track.environment ? getKartTrackEnvironment(this.track) : null;
     const horizon = this.getRaceCameraHorizon();
     const centerX = this.width / 2;
     const roadBottom = this.height + 32;
@@ -1762,7 +2150,19 @@ export class EngineRace {
       const w1 = lerp(42, 470, t1 ** 1.08);
       const c0 = centerX + this.getRoadCurveOffset(t0);
       const c1 = centerX + this.getRoadCurveOffset(t1);
-      ctx.fillStyle = i % 2 === 0 ? '#303443' : '#272b39';
+      if (environment) {
+        const shoulder0 = lerp(3, 22, t0), shoulder1 = lerp(3, 22, t1);
+        ctx.fillStyle = environment.shoulder;
+        ctx.beginPath();
+        ctx.moveTo(c0 - w0 - shoulder0, y0);
+        ctx.lineTo(c0 + w0 + shoulder0, y0);
+        ctx.lineTo(c1 + w1 + shoulder1, y1);
+        ctx.lineTo(c1 - w1 - shoulder1, y1);
+        ctx.closePath(); ctx.fill();
+      }
+      ctx.fillStyle = environment
+        ? i % 2 === 0 ? environment.road : mixRaceEnvironmentColor(environment.road, '#ffffff', .055)
+        : i % 2 === 0 ? '#303443' : '#272b39';
       ctx.beginPath();
       ctx.moveTo(c0 - w0, y0);
       ctx.lineTo(c0 + w0, y0);
@@ -1772,7 +2172,7 @@ export class EngineRace {
       ctx.fill();
     }
 
-    ctx.strokeStyle = 'rgba(57,197,187,0.72)';
+    ctx.strokeStyle = environment ? `${environment.shoulder}cc` : 'rgba(57,197,187,0.72)';
     ctx.lineWidth = 4;
     [-1, 1].forEach(side => {
       ctx.beginPath();
@@ -1787,7 +2187,7 @@ export class EngineRace {
       ctx.stroke();
     });
 
-    ctx.strokeStyle = 'rgba(255,235,59,0.5)';
+    ctx.strokeStyle = environment ? `${environment.accent}99` : 'rgba(255,235,59,0.5)';
     ctx.lineWidth = 3;
     ctx.setLineDash([24, 26]);
     ctx.beginPath();
@@ -2004,6 +2404,16 @@ export class EngineRace {
   }
 
   drawProjectedOpponent(ctx, kart, p) {
+    const direction = getKartRelativeDirection(kart.angle, this.player.angle);
+    if (this.drawCharacterKart2D(ctx, kart, p.x, p.y + 32 * p.scale, 94 * p.scale, 80 * p.scale, direction)) {
+      ctx.save();
+      ctx.fillStyle = '#eefdf9';
+      ctx.font = `${Math.max(8, 10 * p.scale)}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(kart.name, p.x, p.y - 62 * p.scale);
+      ctx.restore();
+      return;
+    }
     ctx.save();
     ctx.translate(p.x, p.y - 20 * p.scale);
     ctx.scale(p.scale, p.scale);
@@ -2047,7 +2457,13 @@ export class EngineRace {
     const baseY = this.height - 92;
     const kartW = 218;
     const kartH = 142;
-    if (sprite?.complete && sprite.naturalWidth) {
+    const turn = this.getPlayerInput().turn || 0;
+    const direction = this.player.spin > 0 ? Math.floor(this.time * 10) % 8 : turn < -.25 ? 7 : turn > .25 ? 1 : 0;
+    const personalDrawn = this.drawCharacterKart2D(ctx, this.player, centerX, baseY + 8, kartW, kartH, direction);
+    if (personalDrawn) {
+      // Chassis is the exact orthographic export of the 3D model. Its pilot is
+      // composed separately from that character's registered sprite.
+    } else if (this.player.kartSpec?.heroId === 'arca_mirelle' && sprite?.complete && sprite.naturalWidth) {
       const cols = 4;
       const rows = 4;
       const frameW = sprite.naturalWidth / cols;
@@ -2067,7 +2483,7 @@ export class EngineRace {
       this.drawRearKartActionOverlay(ctx, centerX, baseY, kartW, kartH);
       ctx.restore();
     } else {
-      ctx.fillStyle = '#39c5bb';
+      ctx.fillStyle = this.player.color;
       ctx.strokeStyle = '#050307';
       ctx.lineWidth = 5;
       ctx.beginPath();
@@ -2119,6 +2535,82 @@ export class EngineRace {
     }
   }
 
+  getCharacterImage(cache, source) {
+    if (!source) return null;
+    if (!cache.has(source)) {
+      const image = new Image();
+      image.src = source;
+      cache.set(source, image);
+    }
+    const image = cache.get(source);
+    return image.complete && image.naturalWidth > 0 ? image : null;
+  }
+
+  getCharacterDriverBust(spec, source, driver, ownerDocument = globalThis.document) {
+    const frame = getKartDriverFrame(spec, source);
+    if (!frame) return null;
+    const key = `${spec.heroId}|${source}|${JSON.stringify(frame)}`;
+    if (this.driverBusts.has(key)) return this.driverBusts.get(key);
+    const makeCanvas = (width, height) => {
+      const canvas = ownerDocument?.createElement('canvas')
+        || (typeof OffscreenCanvas === 'function' ? new OffscreenCanvas(width, height) : null);
+      if (!canvas) return null;
+      canvas.width = width; canvas.height = height;
+      return canvas;
+    };
+    try {
+      const trim = frame.trim || {};
+      const fw = driver.naturalWidth / frame.columns, fh = driver.naturalHeight / frame.rows;
+      const sw = Math.max(1, fw - (trim.left || 0) - (trim.right || 0));
+      const sh = Math.max(1, fh - (trim.top || 0) - (trim.bottom || 0));
+      const ratio = Math.min(1, 512 / Math.max(sw, sh));
+      const cell = makeCanvas(Math.max(1, Math.round(sw * ratio)), Math.max(1, Math.round(sh * ratio)));
+      const context = cell?.getContext('2d', { willReadFrequently: true });
+      if (!context) return null;
+      context.drawImage(driver, frame.col * fw + (trim.left || 0), frame.row * fh + (trim.top || 0), sw, sh, 0, 0, cell.width, cell.height);
+      const bounds = getKartDriverBustBounds(context.getImageData(0, 0, cell.width, cell.height).data,
+        cell.width, cell.height, frame.upperBodyRatio);
+      if (!bounds) { this.driverBusts.set(key, null); return null; }
+      const image = makeCanvas(bounds.width, bounds.height);
+      const target = image?.getContext('2d');
+      if (!target) return null;
+      target.drawImage(cell, bounds.x, bounds.y, bounds.width, bounds.height, 0, 0, bounds.width, bounds.height);
+      const bust = { image, width: bounds.width, height: bounds.height, source, heroId: spec.heroId };
+      this.driverBusts.set(key, bust);
+      return bust;
+    } catch {
+      this.driverBusts.set(key, null);
+      return null;
+    }
+  }
+
+  drawCharacterKart2D(ctx, kart, x, bottom, width, height, direction = 0) {
+    const spec = kart.kartSpec;
+    const image = this.getCharacterImage(this.kartImages, spec?.sprite2D?.src);
+    if (!image) return false;
+    const liveryKey = `${spec.sprite2D.src}|${spec.livery?.sourceColor || ''}|${spec.color}`;
+    if (spec.livery && !this.kartLiveryImages.has(liveryKey)) {
+      try { this.kartLiveryImages.set(liveryKey, recolorKartAtlas(image, spec)); }
+      catch { this.kartLiveryImages.set(liveryKey, image); }
+    }
+    const kartImage = this.kartLiveryImages.get(liveryKey) || image;
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
+    for (const source of spec.driverSprite?.sources || []) {
+      const driver = this.getCharacterImage(this.driverImages, source);
+      if (!driver) continue;
+      const bust = this.getCharacterDriverBust(spec, source, driver, ctx.canvas?.ownerDocument);
+      if (!bust) continue;
+      const seat = getKartDriver2DPlacement(bust, x, bottom, width, height, direction, spec.driverAnchor);
+      ctx.drawImage(bust.image, seat.x, seat.y, seat.width, seat.height);
+      break;
+    }
+    const fw = image.naturalWidth / 8;
+    ctx.drawImage(kartImage, (direction % 8) * fw, 0, fw, image.naturalHeight, x - width / 2, bottom - height, width, height);
+    ctx.restore();
+    return true;
+  }
+
   drawRearKartActionOverlay(ctx, centerX, baseY, kartW = 218, kartH = 142) {
     const actions = this.images.kartActions;
     if (!actions?.complete || !actions.naturalWidth) return;
@@ -2142,17 +2634,17 @@ export class EngineRace {
     ctx.restore();
   }
 
-  drawTopDownMinimap(ctx) {
+  drawTopDownMinimap(ctx, bounds = { x: this.width - 172, y: 16, width: 150, height: 94 }) {
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
-    ctx.fillRect(this.width - 172, 16, 150, 94);
+    ctx.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
     ctx.strokeStyle = 'rgba(255,235,59,0.45)';
-    ctx.strokeRect(this.width - 172, 16, 150, 94);
+    ctx.strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
     ctx.save();
     ctx.beginPath();
-    ctx.rect(this.width - 172, 16, 150, 94);
+    ctx.rect(bounds.x, bounds.y, bounds.width, bounds.height);
     ctx.clip();
-    ctx.translate(this.width - 172, 16);
-    ctx.scale(150 / this.width, 94 / this.height);
+    ctx.translate(bounds.x, bounds.y);
+    ctx.scale(bounds.width / this.width, bounds.height / this.height);
     ctx.strokeStyle = '#ffeb3b';
     ctx.lineWidth = 24;
     ctx.lineCap = 'round';
@@ -2210,6 +2702,21 @@ export class EngineRace {
   }
 
   drawBackdrop(ctx) {
+    if (this.track.environment) {
+      const environment = getKartTrackEnvironment(this.track);
+      ctx.fillStyle = environment.ground;
+      ctx.fillRect(0, 0, this.width, this.height);
+      environment.landmarks.filter(landmark => landmark.kind !== 'halo-ring').forEach(landmark => {
+        ctx.save();
+        ctx.translate(landmark.x, landmark.z);
+        ctx.rotate(landmark.rotation || 0);
+        ctx.fillStyle = landmark.color;
+        const scale = landmark.scale || 1;
+        ctx.fillRect(-landmark.width * scale / 2, -landmark.depth * scale / 2, landmark.width * scale, landmark.depth * scale);
+        ctx.restore();
+      });
+      return;
+    }
     const gradient = ctx.createRadialGradient(this.width / 2, this.height / 2, 80, this.width / 2, this.height / 2, 620);
     gradient.addColorStop(0, '#13242c');
     gradient.addColorStop(0.45, '#070b16');
@@ -2233,6 +2740,19 @@ export class EngineRace {
   }
 
   drawTrack(ctx) {
+    if (this.track.environment) {
+      const environment = getKartTrackEnvironment(this.track);
+      ctx.save();
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.beginPath();
+      this.track.waypoints.forEach((point, index) => index ? ctx.lineTo(point.x, point.y) : ctx.moveTo(point.x, point.y));
+      ctx.closePath();
+      ctx.strokeStyle = environment.shoulder; ctx.lineWidth = this.track.roadWidth + 12; ctx.stroke();
+      ctx.strokeStyle = environment.road; ctx.lineWidth = this.track.roadWidth; ctx.stroke();
+      ctx.strokeStyle = `${environment.accent}99`; ctx.lineWidth = 2; ctx.setLineDash([18, 18]); ctx.stroke();
+      ctx.restore();
+      return;
+    }
     ctx.save();
     ctx.translate(this.width / 2, this.height / 2 + 4);
     ctx.lineCap = 'round';

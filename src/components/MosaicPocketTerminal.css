@@ -1,0 +1,21 @@
+.mosaic-pocket-terminal { display: grid; gap: 1rem; min-width: 0; }
+.mosaic-pocket-tabs { position: sticky; top: -1px; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .4rem; padding-block: .25rem .6rem; background: #071722; border-bottom: 1px solid #739b9a; }
+.mosaic-pocket-tabs > button { box-sizing: border-box; min-width: 0; min-height: 44px; padding: .65rem .5rem; border: 1px solid #63838c; border-radius: .25rem; background: #102832; color: #e5f3f5; font: 500 .875rem/1.4 system-ui, sans-serif; white-space: normal; overflow-wrap: anywhere; cursor: pointer; }
+.mosaic-pocket-tabs > button[aria-selected="true"] { border-color: #f3d58e; background: #342f20; box-shadow: inset 0 -.2rem #f3d58e; font-weight: 700; color: #fff1c8; }
+.mosaic-pocket-tabs > button:hover { border-color: #cef4ec; }
+.mosaic-pocket-panel { display: grid; align-content: start; gap: 1rem; min-width: 0; }
+.mosaic-pocket-panel[hidden] { display: none; }
+.mosaic-pocket-panel > * { min-width: 0; }
+.mosaic-pocket-terminal .mosaic-terminal-intro { display: grid; gap: .4rem; }
+.nexus-play-copy .mosaic-pocket-terminal .mosaic-terminal-intro h3 { margin: 0; font-size: 1.125rem; line-height: 1.5; overflow-wrap: anywhere; }
+.nexus-play-copy .mosaic-pocket-terminal .mosaic-terminal-intro p { margin: 0; color: #cee0e8; font-size: .875rem; line-height: 1.6; overflow-wrap: anywhere; }
+.mosaic-terminal-intro label { display: grid; gap: .5rem; font-size: .875rem; }
+.mosaic-terminal-intro input { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; min-height: 44px; font: inherit; }
+.mosaic-pocket-terminal .mosaic-terminal-guide { display: grid; gap: .75rem; min-width: 0; }
+.mosaic-pocket-terminal .mosaic-terminal-guide strong { font-size: 1rem; line-height: 1.5; }
+.nexus-play-copy .mosaic-pocket-terminal .mosaic-terminal-guide p { font-size: .9rem; line-height: 1.6; }
+.mosaic-pocket-terminal .mosaic-city-guide-restore, .mosaic-pocket-terminal .mosaic-terminal-guide button { min-height: 44px; padding: .5rem .65rem; font: 500 .875rem/1.5 system-ui, sans-serif; white-space: normal; overflow-wrap: anywhere; }
+.mosaic-pocket-tabs > button:focus-visible, .mosaic-pocket-panel:focus-visible, .mosaic-expedition-entry:focus-visible { outline: 3px solid #ffdc79; outline-offset: -3px; }
+@media (max-width: 600px) {
+  .mosaic-pocket-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -1,8 +1,8 @@
 # Couverture des identités de combat
 
-Mesure courante W17 du 2 novembre, après intégration de master 3036cd02 le 9 novembre 2026 : `node scripts/combatCompletionAudit.mjs --check`.
+Mesure courante W17 du 2 novembre, après intégration de master 2333c2c0 le 13 novembre 2026 : `node scripts/combatCompletionAudit.mjs --check`.
 
-1911 héros, 525 univers, 1911 supers résolus. 1591 identités ont une définition explicite par ID ; les autres conservent leur capacité nommée du catalogue.
+1911 héros, 525 univers, 1911 supers résolus. 1588 identités ont une définition explicite par ID ; les autres conservent leur capacité nommée du catalogue.
 
 Les **1 089 capacités génériques initiales** et **191 autres « decisive action »** sont couvertes par des tables explicites. Génériques restants : **0**. Les baselines antérieures aux corrections sont conservées séparément dans `docs/combat-completion-2026-10-18/`. Le catalogue source reste intact ; le moteur résout les capacités effectives partagées.
 
@@ -12,7 +12,7 @@ Les **255 ambiances manquantes** sont rédigées par univers : **525/525** unive
 
 Ces contrôles certifient la couverture et les contrats du moteur, pas la fidélité 1:1 aux œuvres. Les capacités distinguent technique nommée, adaptation du rôle et canon original du projet. Les références ne sont pas vérifiées sur le réseau. Les PNG sont des adaptations générées ; les intros, sorties et finales restent des séquences adaptées. Les coûts, portées, dégâts, soins et timings sont équilibrés pour ce moteur. La provenance conserve ces limites.
 
-Les anciens gels et parcours navigateur restent des preuves historiques ; cette mesure ne clôture pas le protocole W17. Voir l’amendement d’intégration [du 9 novembre](../audits/w17-master-integration-2026-11-09.md). Les lignes comptent les personnages appelants, pas les entités uniques.
+Les anciens gels et parcours navigateur restent des preuves historiques ; cette mesure ne clôture pas le protocole W17. Voir le [suivi P0/P1 du 13 novembre](../assets/p0-p1-continuation-2026-11-13/README.md) et l’amendement historique [du 9 novembre](../audits/w17-master-integration-2026-11-09.md). Les lignes comptent les personnages appelants, pas les entités uniques.
 
 | Univers | Héros | Supers | Identités écrites | Génériques | Invocations | Renforts | Profils avec PNG d’entité | Assets absents |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -430,7 +430,7 @@ Les anciens gels et parcours navigateur restent des preuves historiques ; cette 
 | Squid Game | 3 | 3 | 3 | 0 | 0 | 3 | 0 | 0 |
 | Squirrel with a Gun | 3 | 3 | 3 | 0 | 0 | 3 | 0 | 0 |
 | Stan Helsing | 3 | 3 | 3 | 0 | 0 | 3 | 0 | 0 |
-| Star Wars | 15 | 15 | 8 | 0 | 0 | 15 | 0 | 0 |
+| Star Wars | 15 | 15 | 5 | 0 | 0 | 15 | 0 | 0 |
 | Stargate | 10 | 10 | 8 | 0 | 0 | 10 | 0 | 0 |
 | Stargate Atlantis | 6 | 6 | 5 | 0 | 0 | 6 | 0 | 0 |
 | Stargate Infinity | 3 | 3 | 3 | 0 | 0 | 3 | 0 | 0 |

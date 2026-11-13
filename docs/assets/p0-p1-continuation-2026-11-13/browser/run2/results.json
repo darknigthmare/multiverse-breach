@@ -1,0 +1,2809 @@
+{
+  "scope": "Native GameCanvas/EngineTactics, real browser canvas and UI clicks; three authored source scenes, desktop/mobile viewports. Not a full campaign, physical mobile device or film-fidelity certification.",
+  "passed": 6,
+  "total": 6,
+  "cases": [
+    {
+      "name": "source-art-50104-1280",
+      "passed": true,
+      "initial": {
+        "stageId": 50104,
+        "backdrop": {
+          "id": "predator-jungle-background-20261113",
+          "stageId": 50104,
+          "sourceSceneId": "predator_1987_jungle_finale",
+          "universe": "Predator",
+          "mode": "Tactics",
+          "incarnation": "Predator (1987) — Dutch / Jungle Hunter final confrontation",
+          "path": "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+          "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Official film still: nocturnal riverbank rocks, water and tropical vegetation only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "trapArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator-jungle-manifest.json"
+        },
+        "draws": {
+          "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png": {
+            "calls": 2,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          }
+        },
+        "actor": {
+          "id": "dutch",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": null,
+        "maskedThreat": "",
+        "source": {
+          "id": "predator_1987_jungle_finale",
+          "name": {
+            "fr": "Predator 1987 — duel final dans la jungle",
+            "en": "Predator 1987 — Jungle Finale"
+          },
+          "incarnation": "Predator (1987) — Dutch / Jungle Hunter final confrontation",
+          "objective": {
+            "fr": {
+              "objective": "Dutch seul : utilise la boue froide pour masquer sa chaleur, fabrique arc et pieux, prépare une bûche à contrepoids, puis attire le Jungle Hunter avec un brasier. Endommage son camouflage, traverse la rivière qui enlève ta boue, dévie-le vers le piège et libère la bûche. Dès son autodestruction activée, rejoins l abri avant la fin du compte à rebours. Le tuer en diminuant ses PV ne remplace pas le piège.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Neuf commandes de scénario condensent le duel final du film en grille 2D. La rivière enlève la protection thermique ; le piège ne peut être déclenché avant la préparation. Échelle, distances, agressions et minuteur (8 fins de tour après la bûche) sont des adaptations, non la chorégraphie exacte du film. Maximum : 38 tours. Assets existants non certifiés visuellement."
+            },
+            "en": {
+              "objective": "Dutch alone: use cold mud to hide your heat, make a bow and stakes, rig a log counterweight, then lure the Jungle Hunter with a signal fire. Disrupt his cloak, cross the river and lose your mud cover, draw him toward the trap and release the log. Once his wrist self-destruct starts, reach shelter before the countdown ends. Ordinary HP damage cannot replace the trap.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. Nine story commands compress the film finale into a 2D grid. The river removes thermal concealment; the counterweight requires preparation. Scale, distances, hazards and countdown (8 turn endings after the log) adapt the film rather than reproduce exact choreography. Maximum: 38 turns. Existing art is not visually certified."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 38,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 9,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "AUTODESTRUCTION",
+            "en": "SELF-DESTRUCT"
+          },
+          "sourceBeat": {
+            "fr": "Dutch est seul dans la jungle face au chasseur de 1987.",
+            "en": "Dutch is alone in the jungle against the 1987 hunter."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 4
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "mud",
+              "label": {
+                "fr": "Camouflage à la boue froide",
+                "en": "Apply cold mud camouflage"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "bow",
+              "label": {
+                "fr": "Fabriquer l arc et les pieux",
+                "en": "Make bow and stakes"
+              },
+              "cell": {
+                "x": 3,
+                "y": 1
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "rig",
+              "label": {
+                "fr": "Préparer la bûche à contrepoids",
+                "en": "Rig the log counterweight"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "lure",
+              "label": {
+                "fr": "Allumer le brasier de défi",
+                "en": "Light the challenge fire"
+              },
+              "cell": {
+                "x": 5,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "disrupt",
+              "label": {
+                "fr": "Briser le camouflage du chasseur",
+                "en": "Disable the hunter cloak"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "wash",
+              "label": {
+                "fr": "Traverser la rivière, perdre la boue",
+                "en": "Cross river and lose mud cover"
+              },
+              "cell": {
+                "x": 5,
+                "y": 5
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "bait",
+              "label": {
+                "fr": "Attirer le chasseur près du piège",
+                "en": "Draw the hunter toward the trap"
+              },
+              "cell": {
+                "x": 6,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "crush",
+              "label": {
+                "fr": "Libérer le contrepoids sur le chasseur",
+                "en": "Drop the counterweight on the hunter"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "escape",
+              "label": {
+                "fr": "Se mettre à couvert de l explosion",
+                "en": "Take shelter from the explosion"
+              },
+              "cell": {
+                "x": 0,
+                "y": 1
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": null,
+      "pageErrors": [],
+      "missingRequests": []
+    },
+    {
+      "name": "source-art-50105-1280",
+      "passed": true,
+      "initial": {
+        "stageId": 50105,
+        "backdrop": {
+          "id": "predator2-ship-background-20261113",
+          "stageId": 50105,
+          "sourceSceneId": "predator_2_lost_tribe_ship_1990",
+          "universe": "Predator",
+          "mode": "Tactics",
+          "incarnation": "Predator 2 (1990) — Los Angeles subterranean Lost Tribe ship / trophy chamber",
+          "path": "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+          "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Film frame: bronze wall relief, amber light and low orange haze only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "trophyArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator2-ship-manifest.json"
+        },
+        "draws": {
+          "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png": {
+            "calls": 3,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          }
+        },
+        "actor": {
+          "id": "harrigan_predator",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": null,
+        "maskedThreat": "",
+        "source": {
+          "id": "predator_2_lost_tribe_ship_1990",
+          "name": {
+            "fr": "Predator 2 — vaisseau du clan perdu",
+            "en": "Predator 2 — Lost Tribe Ship"
+          },
+          "incarnation": "Predator 2 (1990) — Los Angeles subterranean Lost Tribe ship / trophy chamber",
+          "objective": {
+            "fr": {
+              "objective": "Harrigan seul : après avoir désarmé le dispositif au poignet du City Hunter sur le toit, poursuis-le dans son vaisseau souterrain de Los Angeles. Traverse la salle des trophées, résiste au filet, libère-toi avec le disque intelligent récupéré puis vaincs le City Hunter avec cette arme. Le clan reprend son mort sans combattre ; reçois de l Ancien un pistolet à silex marqué Raphael Adolini 1715. Dès l allumage des moteurs, gagne la sortie avant le souffle du décollage. Aucun massacre du clan ni victoire par PV.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel du toit et son autodestruction désamorcée sont des événements antérieurs, pas un nouveau compte à rebours ici. Salle des trophées, filet, duel, Ancien et échappée condensés en une carte 9×7. Le pistolet est une preuve narrative, pas un équipement gratuit ajouté à l inventaire. Décollage sur 8 fins de tour, limite totale de 38 tours, graphismes et gestes non certifiés 1:1."
+            },
+            "en": {
+              "objective": "Harrigan alone: after disarming the City Hunter wrist device on the roof, follow the wounded hunter into its underground Los Angeles ship. Cross the trophy room, survive the net, cut free with the recovered smart disc and defeat the City Hunter using that disc. The Lost Tribe retrieves its fallen member rather than attacking; receive Greyback elder’s Raphael Adolini 1715 flintlock. When the engines ignite, reach the cavern exit before take-off blast. No clan massacre or ordinary HP victory.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The rooftop duel and already-disarmed wrist device happen before this scene, not another countdown here. Trophy room, net, duel, elder and escape are compressed into one 9×7 tactical map. The flintlock is narrative evidence, NOT a free inventory item. An eight-turn launch window and 38-turn total are gameplay adaptations; visuals and choreography are not certified 1:1."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 38,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 9,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "DÉCOLLAGE",
+            "en": "SHIP LAUNCH"
+          },
+          "sourceBeat": {
+            "fr": "Le vaisseau caché sous Los Angeles abrite les trophées du clan. Le City Hunter n’a pas encore été vaincu.",
+            "en": "The ship hidden beneath Los Angeles houses the tribe’s trophies. The City Hunter is still alive."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 2
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "enter",
+              "label": {
+                "fr": "Franchir le sas du vaisseau",
+                "en": "Enter the hidden ship"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "trophies",
+              "label": {
+                "fr": "Observer la salle des trophées",
+                "en": "Inspect the trophy chamber"
+              },
+              "cell": {
+                "x": 2,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "net",
+              "label": {
+                "fr": "Survivre à l embuscade au filet",
+                "en": "Survive the net ambush"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "cut_net",
+              "label": {
+                "fr": "Couper le filet avec le Smart Disc",
+                "en": "Cut the net with the smart disc"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "duel",
+              "label": {
+                "fr": "Vaincre le City Hunter avec son disque",
+                "en": "Defeat City Hunter using its own disc"
+              },
+              "cell": {
+                "x": 5,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "tribe",
+              "label": {
+                "fr": "Laisser le clan reprendre son mort",
+                "en": "Let the Lost Tribe reclaim its fallen hunter"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "gift",
+              "label": {
+                "fr": "Recevoir le pistolet Adolini 1715",
+                "en": "Receive the Adolini 1715 flintlock"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "ignite",
+              "label": {
+                "fr": "Repérer le démarrage des moteurs",
+                "en": "Detect the engines powering up"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "escape",
+              "label": {
+                "fr": "Fuir le souffle du vaisseau",
+                "en": "Escape the ship take-off blast"
+              },
+              "cell": {
+                "x": 0,
+                "y": 5
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": null,
+      "pageErrors": [],
+      "missingRequests": []
+    },
+    {
+      "name": "source-art-50106-1280",
+      "passed": true,
+      "initial": {
+        "stageId": 50106,
+        "backdrop": {
+          "id": "prey-2022-forest-duel-background-20261113",
+          "stageId": 50106,
+          "sourceSceneId": "prey_1719_naru_feral_bog",
+          "universe": "Prey",
+          "mode": "Tactics",
+          "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+          "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+          "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "bogArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+        },
+        "draws": {
+          "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+            "calls": 2,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          },
+          "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+            "calls": 2,
+            "lastArgs": [
+              262.7228571428571,
+              283.5,
+              32,
+              32
+            ]
+          },
+          "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+            "calls": 3,
+            "lastArgs": [
+              0,
+              0,
+              256,
+              256,
+              -38,
+              -68.875,
+              76,
+              76
+            ]
+          }
+        },
+        "actor": {
+          "id": "naru_prey",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": {
+          "x": 1,
+          "y": 4
+        },
+        "maskedThreat": "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
+        "source": {
+          "id": "prey_1719_naru_feral_bog",
+          "name": {
+            "fr": "Prey — Naru et le marécage",
+            "en": "Prey — Naru and the Bog"
+          },
+          "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+          "objective": {
+            "fr": {
+              "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+            },
+            "en": {
+              "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 48,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 10,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "AUTODESTRUCTION",
+            "en": "SELF-DESTRUCT"
+          },
+          "sourceBeat": {
+            "fr": "Naru, seule après la mort de Taabe, doit vaincre le Feral Predator de 1719 par son propre ciblage.",
+            "en": "Naru, alone after Taabe’s death, must defeat the 1719 Feral Predator through its own targeting system."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": 3
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "herb",
+              "label": {
+                "fr": "Prendre la plante refroidissante",
+                "en": "Take the cooling medicinal herb"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "bait",
+              "label": {
+                "fr": "Préparer le piège avec le trappeur",
+                "en": "Set bait using the surviving trapper"
+              },
+              "cell": {
+                "x": 2,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "flintlock",
+              "label": {
+                "fr": "Tirer avec le pistolet de Raphaël",
+                "en": "Fire Raphael’s flintlock"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "take_mask",
+              "label": {
+                "fr": "Récupérer le masque de visée en os",
+                "en": "Recover the bone targeting mask"
+              },
+              "cell": {
+                "x": 4,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "set_mask",
+              "label": {
+                "fr": "Placer le masque face au marécage",
+                "en": "Set the targeting mask facing the bog"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "sarii_hatchet",
+              "label": {
+                "fr": "Récupérer la hache rapportée par Sarii",
+                "en": "Recover the rope-hatchet brought back by Sarii"
+              },
+              "cell": {
+                "x": 5,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "bog",
+              "label": {
+                "fr": "Attirer le Feral Predator dans la vase",
+                "en": "Lure the Feral Predator into the bog"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "redirect",
+              "label": {
+                "fr": "Détourner son propre projectile vers sa tête",
+                "en": "Redirect its guided bolt into its head"
+              },
+              "cell": {
+                "x": 5,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "trophy",
+              "label": {
+                "fr": "Récupérer le trophée du duel",
+                "en": "Recover the victory trophy"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "return",
+              "label": {
+                "fr": "Retourner au village avec Sarii",
+                "en": "Return to the village with Sarii"
+              },
+              "cell": {
+                "x": 0,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": {
+        "before": {
+          "stageId": 50106,
+          "backdrop": {
+            "id": "prey-2022-forest-duel-background-20261113",
+            "stageId": 50106,
+            "sourceSceneId": "prey_1719_naru_feral_bog",
+            "universe": "Prey",
+            "mode": "Tactics",
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "width": 960,
+            "height": 540,
+            "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+            "geometryStatus": "adapted-camera-not-film-geography",
+            "bogArtworkComplete": false,
+            "visualFidelityApproved": false,
+            "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+          },
+          "draws": {
+            "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+              "calls": 429,
+              "lastArgs": [
+                -5.684341886080802e-14,
+                57.69230769230768,
+                960.0000000000001,
+                424.61538461538464,
+                0,
+                0,
+                1040,
+                460
+              ]
+            },
+            "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+              "calls": 429,
+              "lastArgs": [
+                504,
+                242.5,
+                32,
+                32
+              ]
+            },
+            "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+              "calls": 208,
+              "lastArgs": [
+                256,
+                0,
+                256,
+                256,
+                -38,
+                -68.875,
+                76,
+                76
+              ]
+            }
+          },
+          "actor": {
+            "id": "naru_prey",
+            "gridX": 5,
+            "gridY": 3
+          },
+          "companion": {
+            "x": 4,
+            "y": 3
+          },
+          "maskedThreat": "",
+          "source": {
+            "id": "prey_1719_naru_feral_bog",
+            "name": {
+              "fr": "Prey — Naru et le marécage",
+              "en": "Prey — Naru and the Bog"
+            },
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "objective": {
+              "fr": {
+                "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+                "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+              },
+              "en": {
+                "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+                "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+              }
+            },
+            "turnToken": 9,
+            "turns": 8,
+            "turnLimit": 48,
+            "complete": false,
+            "failed": false,
+            "reason": "",
+            "progress": 6,
+            "target": 10,
+            "decoys": 3,
+            "escapeTurnsRemaining": null,
+            "countdownLabel": {
+              "fr": "AUTODESTRUCTION",
+              "en": "SELF-DESTRUCT"
+            },
+            "sourceBeat": {
+              "fr": "Sarii rapporte la hache reliée à Naru. Le masque vise correctement la vase.",
+              "en": "Sarii brings back Naru’s rope hatchet. The mask is correctly aimed at the bog."
+            },
+            "honorTrophy": null,
+            "narrativeProof": null,
+            "maskAimTarget": {
+              "x": 6,
+              "y": 4
+            },
+            "maskAim": {
+              "available": false,
+              "mountCell": {
+                "x": 6,
+                "y": 2
+              },
+              "options": [
+                {
+                  "cell": {
+                    "x": 5,
+                    "y": 4
+                  },
+                  "selected": false
+                },
+                {
+                  "cell": {
+                    "x": 6,
+                    "y": 4
+                  },
+                  "selected": true
+                },
+                {
+                  "cell": {
+                    "x": 7,
+                    "y": 4
+                  },
+                  "selected": false
+                }
+              ]
+            },
+            "companionAid": "sarii_returns_hatchet",
+            "thermalConcealment": true,
+            "danger": [
+              {
+                "x": 3,
+                "y": 3
+              },
+              {
+                "x": 4,
+                "y": 3
+              }
+            ],
+            "artApproved": false,
+            "commands": [
+              {
+                "id": "herb",
+                "label": {
+                  "fr": "Prendre la plante refroidissante",
+                  "en": "Take the cooling medicinal herb"
+                },
+                "cell": {
+                  "x": 1,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bait",
+                "label": {
+                  "fr": "Préparer le piège avec le trappeur",
+                  "en": "Set bait using the surviving trapper"
+                },
+                "cell": {
+                  "x": 2,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "flintlock",
+                "label": {
+                  "fr": "Tirer avec le pistolet de Raphaël",
+                  "en": "Fire Raphael’s flintlock"
+                },
+                "cell": {
+                  "x": 3,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "take_mask",
+                "label": {
+                  "fr": "Récupérer le masque de visée en os",
+                  "en": "Recover the bone targeting mask"
+                },
+                "cell": {
+                  "x": 4,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "set_mask",
+                "label": {
+                  "fr": "Placer le masque face au marécage",
+                  "en": "Set the targeting mask facing the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "sarii_hatchet",
+                "label": {
+                  "fr": "Récupérer la hache rapportée par Sarii",
+                  "en": "Recover the rope-hatchet brought back by Sarii"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bog",
+                "label": {
+                  "fr": "Attirer le Feral Predator dans la vase",
+                  "en": "Lure the Feral Predator into the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "position"
+              },
+              {
+                "id": "redirect",
+                "label": {
+                  "fr": "Détourner son propre projectile vers sa tête",
+                  "en": "Redirect its guided bolt into its head"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "trophy",
+                "label": {
+                  "fr": "Récupérer le trophée du duel",
+                  "en": "Recover the victory trophy"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "return",
+                "label": {
+                  "fr": "Retourner au village avec Sarii",
+                  "en": "Return to the village with Sarii"
+                },
+                "cell": {
+                  "x": 0,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              }
+            ]
+          },
+          "nativeCommandAvailable": true,
+          "turnPhase": "move",
+          "movementRemaining": 2,
+          "disposed": false,
+          "resultCount": 0,
+          "storageIntact": true
+        },
+        "after": {
+          "stageId": 50106,
+          "backdrop": {
+            "id": "prey-2022-forest-duel-background-20261113",
+            "stageId": 50106,
+            "sourceSceneId": "prey_1719_naru_feral_bog",
+            "universe": "Prey",
+            "mode": "Tactics",
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "width": 960,
+            "height": 540,
+            "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+            "geometryStatus": "adapted-camera-not-film-geography",
+            "bogArtworkComplete": false,
+            "visualFidelityApproved": false,
+            "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+          },
+          "draws": {
+            "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+              "calls": 436,
+              "lastArgs": [
+                -5.684341886080802e-14,
+                57.69230769230768,
+                960.0000000000001,
+                424.61538461538464,
+                0,
+                0,
+                1040,
+                460
+              ]
+            },
+            "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+              "calls": 436,
+              "lastArgs": [
+                581.22,
+                242.5,
+                32,
+                32
+              ]
+            },
+            "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+              "calls": 208,
+              "lastArgs": [
+                256,
+                0,
+                256,
+                256,
+                -38,
+                -68.875,
+                76,
+                76
+              ]
+            }
+          },
+          "actor": {
+            "id": "naru_prey",
+            "gridX": 6,
+            "gridY": 3
+          },
+          "companion": {
+            "x": 5,
+            "y": 3
+          },
+          "maskedThreat": "",
+          "source": {
+            "id": "prey_1719_naru_feral_bog",
+            "name": {
+              "fr": "Prey — Naru et le marécage",
+              "en": "Prey — Naru and the Bog"
+            },
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "objective": {
+              "fr": {
+                "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+                "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+              },
+              "en": {
+                "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+                "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+              }
+            },
+            "turnToken": 9,
+            "turns": 8,
+            "turnLimit": 48,
+            "complete": false,
+            "failed": false,
+            "reason": "",
+            "progress": 6,
+            "target": 10,
+            "decoys": 3,
+            "escapeTurnsRemaining": null,
+            "countdownLabel": {
+              "fr": "AUTODESTRUCTION",
+              "en": "SELF-DESTRUCT"
+            },
+            "sourceBeat": {
+              "fr": "Sarii rapporte la hache reliée à Naru. Le masque vise correctement la vase.",
+              "en": "Sarii brings back Naru’s rope hatchet. The mask is correctly aimed at the bog."
+            },
+            "honorTrophy": null,
+            "narrativeProof": null,
+            "maskAimTarget": {
+              "x": 6,
+              "y": 4
+            },
+            "maskAim": {
+              "available": false,
+              "mountCell": {
+                "x": 6,
+                "y": 2
+              },
+              "options": [
+                {
+                  "cell": {
+                    "x": 5,
+                    "y": 4
+                  },
+                  "selected": false
+                },
+                {
+                  "cell": {
+                    "x": 6,
+                    "y": 4
+                  },
+                  "selected": true
+                },
+                {
+                  "cell": {
+                    "x": 7,
+                    "y": 4
+                  },
+                  "selected": false
+                }
+              ]
+            },
+            "companionAid": "sarii_returns_hatchet",
+            "thermalConcealment": true,
+            "danger": [
+              {
+                "x": 3,
+                "y": 3
+              },
+              {
+                "x": 4,
+                "y": 3
+              }
+            ],
+            "artApproved": false,
+            "commands": [
+              {
+                "id": "herb",
+                "label": {
+                  "fr": "Prendre la plante refroidissante",
+                  "en": "Take the cooling medicinal herb"
+                },
+                "cell": {
+                  "x": 1,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bait",
+                "label": {
+                  "fr": "Préparer le piège avec le trappeur",
+                  "en": "Set bait using the surviving trapper"
+                },
+                "cell": {
+                  "x": 2,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "flintlock",
+                "label": {
+                  "fr": "Tirer avec le pistolet de Raphaël",
+                  "en": "Fire Raphael’s flintlock"
+                },
+                "cell": {
+                  "x": 3,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "take_mask",
+                "label": {
+                  "fr": "Récupérer le masque de visée en os",
+                  "en": "Recover the bone targeting mask"
+                },
+                "cell": {
+                  "x": 4,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "set_mask",
+                "label": {
+                  "fr": "Placer le masque face au marécage",
+                  "en": "Set the targeting mask facing the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "sarii_hatchet",
+                "label": {
+                  "fr": "Récupérer la hache rapportée par Sarii",
+                  "en": "Recover the rope-hatchet brought back by Sarii"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bog",
+                "label": {
+                  "fr": "Attirer le Feral Predator dans la vase",
+                  "en": "Lure the Feral Predator into the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "position"
+              },
+              {
+                "id": "redirect",
+                "label": {
+                  "fr": "Détourner son propre projectile vers sa tête",
+                  "en": "Redirect its guided bolt into its head"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "trophy",
+                "label": {
+                  "fr": "Récupérer le trophée du duel",
+                  "en": "Recover the victory trophy"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "return",
+                "label": {
+                  "fr": "Retourner au village avec Sarii",
+                  "en": "Return to the village with Sarii"
+                },
+                "cell": {
+                  "x": 0,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              }
+            ]
+          },
+          "nativeCommandAvailable": true,
+          "turnPhase": "move",
+          "movementRemaining": 1,
+          "disposed": false,
+          "resultCount": 0,
+          "storageIntact": true
+        }
+      },
+      "pageErrors": [],
+      "missingRequests": [
+        {
+          "path": "/sprites/generated/bosses/prey/feral-predator.png",
+          "status": 404
+        }
+      ]
+    },
+    {
+      "name": "source-art-50104-390",
+      "passed": true,
+      "initial": {
+        "stageId": 50104,
+        "backdrop": {
+          "id": "predator-jungle-background-20261113",
+          "stageId": 50104,
+          "sourceSceneId": "predator_1987_jungle_finale",
+          "universe": "Predator",
+          "mode": "Tactics",
+          "incarnation": "Predator (1987) — Dutch / Jungle Hunter final confrontation",
+          "path": "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+          "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Official film still: nocturnal riverbank rocks, water and tropical vegetation only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "trapArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator-jungle-manifest.json"
+        },
+        "draws": {
+          "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png": {
+            "calls": 3,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          }
+        },
+        "actor": {
+          "id": "dutch",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": null,
+        "maskedThreat": "",
+        "source": {
+          "id": "predator_1987_jungle_finale",
+          "name": {
+            "fr": "Predator 1987 — duel final dans la jungle",
+            "en": "Predator 1987 — Jungle Finale"
+          },
+          "incarnation": "Predator (1987) — Dutch / Jungle Hunter final confrontation",
+          "objective": {
+            "fr": {
+              "objective": "Dutch seul : utilise la boue froide pour masquer sa chaleur, fabrique arc et pieux, prépare une bûche à contrepoids, puis attire le Jungle Hunter avec un brasier. Endommage son camouflage, traverse la rivière qui enlève ta boue, dévie-le vers le piège et libère la bûche. Dès son autodestruction activée, rejoins l abri avant la fin du compte à rebours. Le tuer en diminuant ses PV ne remplace pas le piège.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Neuf commandes de scénario condensent le duel final du film en grille 2D. La rivière enlève la protection thermique ; le piège ne peut être déclenché avant la préparation. Échelle, distances, agressions et minuteur (8 fins de tour après la bûche) sont des adaptations, non la chorégraphie exacte du film. Maximum : 38 tours. Assets existants non certifiés visuellement."
+            },
+            "en": {
+              "objective": "Dutch alone: use cold mud to hide your heat, make a bow and stakes, rig a log counterweight, then lure the Jungle Hunter with a signal fire. Disrupt his cloak, cross the river and lose your mud cover, draw him toward the trap and release the log. Once his wrist self-destruct starts, reach shelter before the countdown ends. Ordinary HP damage cannot replace the trap.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. Nine story commands compress the film finale into a 2D grid. The river removes thermal concealment; the counterweight requires preparation. Scale, distances, hazards and countdown (8 turn endings after the log) adapt the film rather than reproduce exact choreography. Maximum: 38 turns. Existing art is not visually certified."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 38,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 9,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "AUTODESTRUCTION",
+            "en": "SELF-DESTRUCT"
+          },
+          "sourceBeat": {
+            "fr": "Dutch est seul dans la jungle face au chasseur de 1987.",
+            "en": "Dutch is alone in the jungle against the 1987 hunter."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 4
+            },
+            {
+              "x": 4,
+              "y": 4
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "mud",
+              "label": {
+                "fr": "Camouflage à la boue froide",
+                "en": "Apply cold mud camouflage"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "bow",
+              "label": {
+                "fr": "Fabriquer l arc et les pieux",
+                "en": "Make bow and stakes"
+              },
+              "cell": {
+                "x": 3,
+                "y": 1
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "rig",
+              "label": {
+                "fr": "Préparer la bûche à contrepoids",
+                "en": "Rig the log counterweight"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "lure",
+              "label": {
+                "fr": "Allumer le brasier de défi",
+                "en": "Light the challenge fire"
+              },
+              "cell": {
+                "x": 5,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "disrupt",
+              "label": {
+                "fr": "Briser le camouflage du chasseur",
+                "en": "Disable the hunter cloak"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "wash",
+              "label": {
+                "fr": "Traverser la rivière, perdre la boue",
+                "en": "Cross river and lose mud cover"
+              },
+              "cell": {
+                "x": 5,
+                "y": 5
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "bait",
+              "label": {
+                "fr": "Attirer le chasseur près du piège",
+                "en": "Draw the hunter toward the trap"
+              },
+              "cell": {
+                "x": 6,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "crush",
+              "label": {
+                "fr": "Libérer le contrepoids sur le chasseur",
+                "en": "Drop the counterweight on the hunter"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "escape",
+              "label": {
+                "fr": "Se mettre à couvert de l explosion",
+                "en": "Take shelter from the explosion"
+              },
+              "cell": {
+                "x": 0,
+                "y": 1
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": null,
+      "pageErrors": [],
+      "missingRequests": []
+    },
+    {
+      "name": "source-art-50105-390",
+      "passed": true,
+      "initial": {
+        "stageId": 50105,
+        "backdrop": {
+          "id": "predator2-ship-background-20261113",
+          "stageId": 50105,
+          "sourceSceneId": "predator_2_lost_tribe_ship_1990",
+          "universe": "Predator",
+          "mode": "Tactics",
+          "incarnation": "Predator 2 (1990) — Los Angeles subterranean Lost Tribe ship / trophy chamber",
+          "path": "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+          "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Film frame: bronze wall relief, amber light and low orange haze only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "trophyArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator2-ship-manifest.json"
+        },
+        "draws": {
+          "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png": {
+            "calls": 4,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          }
+        },
+        "actor": {
+          "id": "harrigan_predator",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": null,
+        "maskedThreat": "",
+        "source": {
+          "id": "predator_2_lost_tribe_ship_1990",
+          "name": {
+            "fr": "Predator 2 — vaisseau du clan perdu",
+            "en": "Predator 2 — Lost Tribe Ship"
+          },
+          "incarnation": "Predator 2 (1990) — Los Angeles subterranean Lost Tribe ship / trophy chamber",
+          "objective": {
+            "fr": {
+              "objective": "Harrigan seul : après avoir désarmé le dispositif au poignet du City Hunter sur le toit, poursuis-le dans son vaisseau souterrain de Los Angeles. Traverse la salle des trophées, résiste au filet, libère-toi avec le disque intelligent récupéré puis vaincs le City Hunter avec cette arme. Le clan reprend son mort sans combattre ; reçois de l Ancien un pistolet à silex marqué Raphael Adolini 1715. Dès l allumage des moteurs, gagne la sortie avant le souffle du décollage. Aucun massacre du clan ni victoire par PV.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel du toit et son autodestruction désamorcée sont des événements antérieurs, pas un nouveau compte à rebours ici. Salle des trophées, filet, duel, Ancien et échappée condensés en une carte 9×7. Le pistolet est une preuve narrative, pas un équipement gratuit ajouté à l inventaire. Décollage sur 8 fins de tour, limite totale de 38 tours, graphismes et gestes non certifiés 1:1."
+            },
+            "en": {
+              "objective": "Harrigan alone: after disarming the City Hunter wrist device on the roof, follow the wounded hunter into its underground Los Angeles ship. Cross the trophy room, survive the net, cut free with the recovered smart disc and defeat the City Hunter using that disc. The Lost Tribe retrieves its fallen member rather than attacking; receive Greyback elder’s Raphael Adolini 1715 flintlock. When the engines ignite, reach the cavern exit before take-off blast. No clan massacre or ordinary HP victory.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The rooftop duel and already-disarmed wrist device happen before this scene, not another countdown here. Trophy room, net, duel, elder and escape are compressed into one 9×7 tactical map. The flintlock is narrative evidence, NOT a free inventory item. An eight-turn launch window and 38-turn total are gameplay adaptations; visuals and choreography are not certified 1:1."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 38,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 9,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "DÉCOLLAGE",
+            "en": "SHIP LAUNCH"
+          },
+          "sourceBeat": {
+            "fr": "Le vaisseau caché sous Los Angeles abrite les trophées du clan. Le City Hunter n’a pas encore été vaincu.",
+            "en": "The ship hidden beneath Los Angeles houses the tribe’s trophies. The City Hunter is still alive."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 2
+            },
+            {
+              "x": 4,
+              "y": 2
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "enter",
+              "label": {
+                "fr": "Franchir le sas du vaisseau",
+                "en": "Enter the hidden ship"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "trophies",
+              "label": {
+                "fr": "Observer la salle des trophées",
+                "en": "Inspect the trophy chamber"
+              },
+              "cell": {
+                "x": 2,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "net",
+              "label": {
+                "fr": "Survivre à l embuscade au filet",
+                "en": "Survive the net ambush"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "cut_net",
+              "label": {
+                "fr": "Couper le filet avec le Smart Disc",
+                "en": "Cut the net with the smart disc"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "duel",
+              "label": {
+                "fr": "Vaincre le City Hunter avec son disque",
+                "en": "Defeat City Hunter using its own disc"
+              },
+              "cell": {
+                "x": 5,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "tribe",
+              "label": {
+                "fr": "Laisser le clan reprendre son mort",
+                "en": "Let the Lost Tribe reclaim its fallen hunter"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "gift",
+              "label": {
+                "fr": "Recevoir le pistolet Adolini 1715",
+                "en": "Receive the Adolini 1715 flintlock"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "ignite",
+              "label": {
+                "fr": "Repérer le démarrage des moteurs",
+                "en": "Detect the engines powering up"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "escape",
+              "label": {
+                "fr": "Fuir le souffle du vaisseau",
+                "en": "Escape the ship take-off blast"
+              },
+              "cell": {
+                "x": 0,
+                "y": 5
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": null,
+      "pageErrors": [],
+      "missingRequests": []
+    },
+    {
+      "name": "source-art-50106-390",
+      "passed": true,
+      "initial": {
+        "stageId": 50106,
+        "backdrop": {
+          "id": "prey-2022-forest-duel-background-20261113",
+          "stageId": 50106,
+          "sourceSceneId": "prey_1719_naru_feral_bog",
+          "universe": "Prey",
+          "mode": "Tactics",
+          "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+          "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+          "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+          "width": 960,
+          "height": 540,
+          "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+          "geometryStatus": "adapted-camera-not-film-geography",
+          "bogArtworkComplete": false,
+          "visualFidelityApproved": false,
+          "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+        },
+        "draws": {
+          "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+            "calls": 3,
+            "lastArgs": [
+              262.7228571428571,
+              283.5,
+              32,
+              32
+            ]
+          },
+          "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+            "calls": 2,
+            "lastArgs": [
+              -5.684341886080802e-14,
+              57.69230769230768,
+              960.0000000000001,
+              424.61538461538464,
+              0,
+              0,
+              1040,
+              460
+            ]
+          },
+          "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+            "calls": 3,
+            "lastArgs": [
+              256,
+              0,
+              256,
+              256,
+              -38,
+              -68.875,
+              76,
+              76
+            ]
+          }
+        },
+        "actor": {
+          "id": "naru_prey",
+          "gridX": 0,
+          "gridY": 3
+        },
+        "companion": {
+          "x": 1,
+          "y": 4
+        },
+        "maskedThreat": "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
+        "source": {
+          "id": "prey_1719_naru_feral_bog",
+          "name": {
+            "fr": "Prey — Naru et le marécage",
+            "en": "Prey — Naru and the Bog"
+          },
+          "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+          "objective": {
+            "fr": {
+              "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+              "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+            },
+            "en": {
+              "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+              "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+            }
+          },
+          "turnToken": 1,
+          "turns": 0,
+          "turnLimit": 48,
+          "complete": false,
+          "failed": false,
+          "reason": "",
+          "progress": 0,
+          "target": 10,
+          "decoys": 3,
+          "escapeTurnsRemaining": null,
+          "countdownLabel": {
+            "fr": "AUTODESTRUCTION",
+            "en": "SELF-DESTRUCT"
+          },
+          "sourceBeat": {
+            "fr": "Naru, seule après la mort de Taabe, doit vaincre le Feral Predator de 1719 par son propre ciblage.",
+            "en": "Naru, alone after Taabe’s death, must defeat the 1719 Feral Predator through its own targeting system."
+          },
+          "honorTrophy": null,
+          "narrativeProof": null,
+          "maskAimTarget": null,
+          "maskAim": null,
+          "companionAid": null,
+          "thermalConcealment": false,
+          "danger": [
+            {
+              "x": 3,
+              "y": 3
+            },
+            {
+              "x": 4,
+              "y": 3
+            }
+          ],
+          "artApproved": false,
+          "commands": [
+            {
+              "id": "herb",
+              "label": {
+                "fr": "Prendre la plante refroidissante",
+                "en": "Take the cooling medicinal herb"
+              },
+              "cell": {
+                "x": 1,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "position"
+            },
+            {
+              "id": "bait",
+              "label": {
+                "fr": "Préparer le piège avec le trappeur",
+                "en": "Set bait using the surviving trapper"
+              },
+              "cell": {
+                "x": 2,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "flintlock",
+              "label": {
+                "fr": "Tirer avec le pistolet de Raphaël",
+                "en": "Fire Raphael’s flintlock"
+              },
+              "cell": {
+                "x": 3,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "take_mask",
+              "label": {
+                "fr": "Récupérer le masque de visée en os",
+                "en": "Recover the bone targeting mask"
+              },
+              "cell": {
+                "x": 4,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "set_mask",
+              "label": {
+                "fr": "Placer le masque face au marécage",
+                "en": "Set the targeting mask facing the bog"
+              },
+              "cell": {
+                "x": 6,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "sarii_hatchet",
+              "label": {
+                "fr": "Récupérer la hache rapportée par Sarii",
+                "en": "Recover the rope-hatchet brought back by Sarii"
+              },
+              "cell": {
+                "x": 5,
+                "y": 3
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "bog",
+              "label": {
+                "fr": "Attirer le Feral Predator dans la vase",
+                "en": "Lure the Feral Predator into the bog"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "redirect",
+              "label": {
+                "fr": "Détourner son propre projectile vers sa tête",
+                "en": "Redirect its guided bolt into its head"
+              },
+              "cell": {
+                "x": 5,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "trophy",
+              "label": {
+                "fr": "Récupérer le trophée du duel",
+                "en": "Recover the victory trophy"
+              },
+              "cell": {
+                "x": 6,
+                "y": 4
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            },
+            {
+              "id": "return",
+              "label": {
+                "fr": "Retourner au village avec Sarii",
+                "en": "Return to the village with Sarii"
+              },
+              "cell": {
+                "x": 0,
+                "y": 2
+              },
+              "anywhere": false,
+              "done": false,
+              "enabled": false,
+              "reason": "prerequisite"
+            }
+          ]
+        },
+        "nativeCommandAvailable": true,
+        "turnPhase": "move",
+        "movementRemaining": 2,
+        "disposed": false,
+        "resultCount": 0,
+        "storageIntact": true
+      },
+      "route": {
+        "before": {
+          "stageId": 50106,
+          "backdrop": {
+            "id": "prey-2022-forest-duel-background-20261113",
+            "stageId": 50106,
+            "sourceSceneId": "prey_1719_naru_feral_bog",
+            "universe": "Prey",
+            "mode": "Tactics",
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "width": 960,
+            "height": 540,
+            "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+            "geometryStatus": "adapted-camera-not-film-geography",
+            "bogArtworkComplete": false,
+            "visualFidelityApproved": false,
+            "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+          },
+          "draws": {
+            "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+              "calls": 396,
+              "lastArgs": [
+                504,
+                242.5,
+                32,
+                32
+              ]
+            },
+            "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+              "calls": 395,
+              "lastArgs": [
+                -5.684341886080802e-14,
+                57.69230769230768,
+                960.0000000000001,
+                424.61538461538464,
+                0,
+                0,
+                1040,
+                460
+              ]
+            },
+            "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+              "calls": 176,
+              "lastArgs": [
+                512,
+                0,
+                256,
+                256,
+                -38,
+                -68.875,
+                76,
+                76
+              ]
+            }
+          },
+          "actor": {
+            "id": "naru_prey",
+            "gridX": 5,
+            "gridY": 3
+          },
+          "companion": {
+            "x": 4,
+            "y": 3
+          },
+          "maskedThreat": "",
+          "source": {
+            "id": "prey_1719_naru_feral_bog",
+            "name": {
+              "fr": "Prey — Naru et le marécage",
+              "en": "Prey — Naru and the Bog"
+            },
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "objective": {
+              "fr": {
+                "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+                "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+              },
+              "en": {
+                "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+                "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+              }
+            },
+            "turnToken": 9,
+            "turns": 8,
+            "turnLimit": 48,
+            "complete": false,
+            "failed": false,
+            "reason": "",
+            "progress": 6,
+            "target": 10,
+            "decoys": 3,
+            "escapeTurnsRemaining": null,
+            "countdownLabel": {
+              "fr": "AUTODESTRUCTION",
+              "en": "SELF-DESTRUCT"
+            },
+            "sourceBeat": {
+              "fr": "Sarii rapporte la hache reliée à Naru. Le masque vise correctement la vase.",
+              "en": "Sarii brings back Naru’s rope hatchet. The mask is correctly aimed at the bog."
+            },
+            "honorTrophy": null,
+            "narrativeProof": null,
+            "maskAimTarget": {
+              "x": 6,
+              "y": 4
+            },
+            "maskAim": {
+              "available": false,
+              "mountCell": {
+                "x": 6,
+                "y": 2
+              },
+              "options": [
+                {
+                  "cell": {
+                    "x": 5,
+                    "y": 4
+                  },
+                  "selected": false
+                },
+                {
+                  "cell": {
+                    "x": 6,
+                    "y": 4
+                  },
+                  "selected": true
+                },
+                {
+                  "cell": {
+                    "x": 7,
+                    "y": 4
+                  },
+                  "selected": false
+                }
+              ]
+            },
+            "companionAid": "sarii_returns_hatchet",
+            "thermalConcealment": true,
+            "danger": [
+              {
+                "x": 3,
+                "y": 3
+              },
+              {
+                "x": 4,
+                "y": 3
+              }
+            ],
+            "artApproved": false,
+            "commands": [
+              {
+                "id": "herb",
+                "label": {
+                  "fr": "Prendre la plante refroidissante",
+                  "en": "Take the cooling medicinal herb"
+                },
+                "cell": {
+                  "x": 1,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bait",
+                "label": {
+                  "fr": "Préparer le piège avec le trappeur",
+                  "en": "Set bait using the surviving trapper"
+                },
+                "cell": {
+                  "x": 2,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "flintlock",
+                "label": {
+                  "fr": "Tirer avec le pistolet de Raphaël",
+                  "en": "Fire Raphael’s flintlock"
+                },
+                "cell": {
+                  "x": 3,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "take_mask",
+                "label": {
+                  "fr": "Récupérer le masque de visée en os",
+                  "en": "Recover the bone targeting mask"
+                },
+                "cell": {
+                  "x": 4,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "set_mask",
+                "label": {
+                  "fr": "Placer le masque face au marécage",
+                  "en": "Set the targeting mask facing the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "sarii_hatchet",
+                "label": {
+                  "fr": "Récupérer la hache rapportée par Sarii",
+                  "en": "Recover the rope-hatchet brought back by Sarii"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bog",
+                "label": {
+                  "fr": "Attirer le Feral Predator dans la vase",
+                  "en": "Lure the Feral Predator into the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "position"
+              },
+              {
+                "id": "redirect",
+                "label": {
+                  "fr": "Détourner son propre projectile vers sa tête",
+                  "en": "Redirect its guided bolt into its head"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "trophy",
+                "label": {
+                  "fr": "Récupérer le trophée du duel",
+                  "en": "Recover the victory trophy"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "return",
+                "label": {
+                  "fr": "Retourner au village avec Sarii",
+                  "en": "Return to the village with Sarii"
+                },
+                "cell": {
+                  "x": 0,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              }
+            ]
+          },
+          "nativeCommandAvailable": true,
+          "turnPhase": "move",
+          "movementRemaining": 2,
+          "disposed": false,
+          "resultCount": 0,
+          "storageIntact": true
+        },
+        "after": {
+          "stageId": 50106,
+          "backdrop": {
+            "id": "prey-2022-forest-duel-background-20261113",
+            "stageId": 50106,
+            "sourceSceneId": "prey_1719_naru_feral_bog",
+            "universe": "Prey",
+            "mode": "Tactics",
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+            "width": 960,
+            "height": 540,
+            "sourceScope": "Official film stills: forest materials and nocturnal lighting only",
+            "geometryStatus": "adapted-camera-not-film-geography",
+            "bogArtworkComplete": false,
+            "visualFidelityApproved": false,
+            "provenancePath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-manifest.json"
+          },
+          "draws": {
+            "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png": {
+              "calls": 403,
+              "lastArgs": [
+                581.22,
+                242.5,
+                32,
+                32
+              ]
+            },
+            "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png": {
+              "calls": 402,
+              "lastArgs": [
+                -5.684341886080802e-14,
+                57.69230769230768,
+                960.0000000000001,
+                424.61538461538464,
+                0,
+                0,
+                1040,
+                460
+              ]
+            },
+            "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png": {
+              "calls": 176,
+              "lastArgs": [
+                512,
+                0,
+                256,
+                256,
+                -38,
+                -68.875,
+                76,
+                76
+              ]
+            }
+          },
+          "actor": {
+            "id": "naru_prey",
+            "gridX": 6,
+            "gridY": 3
+          },
+          "companion": {
+            "x": 5,
+            "y": 3
+          },
+          "maskedThreat": "",
+          "source": {
+            "id": "prey_1719_naru_feral_bog",
+            "name": {
+              "fr": "Prey — Naru et le marécage",
+              "en": "Prey — Naru and the Bog"
+            },
+            "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+            "objective": {
+              "fr": {
+                "objective": "Naru seule, en 1719 : après avoir compris les limites de la vision thermique du Feral Predator et perdu Taabe, mange la plante médicinale refroidissante, prépare le piège avec le trappeur survivant, utilise le pistolet de Raphaël pour distraire et blesser le chasseur, récupère son masque de visée en os, place-le face au marécage, attire-y le chasseur et détourne son propre projectile grâce aux pointeurs du masque. Reprends la preuve du duel et rejoins le village avec Sarii. Aucun adversaire crossover et aucune victoire par simple baisse de PV.",
+                "adaptation": "Reconstruction tactique en grille : distances, tours, dégâts et positions sont adaptés. Seul le protagoniste requis participe ; les équipiers restent hors scène. Les commandes de mission remplacent armes, objets et événements crossover. Décors procéduraux et sprites existants : fidélité artistique non certifiée. Le duel final et le retour au village sont condensés en une grille 9×7. Le marécage a déjà été découvert auparavant ; le masque dirige les projectiles, il ne lance pas de tir de plasma. La plante réduit la signature thermique sans supprimer les autres moyens de repérage. Sarii rapporte la hache reliée à Naru pendant le duel, sans devenir un héros jouable. La dernière case est une sortie vers le village, pas un village dans le marécage. Total adapté : 48 tours ; positions, vitesse et dégâts non certifiés cinématographiquement."
+              },
+              "en": {
+                "objective": "Naru alone, in 1719: after learning the Feral Predator’s thermal weakness and losing Taabe, eat the cooling medicinal herb, arrange a trap using the surviving French trapper, use Raphael’s flintlock to wound and distract the hunter, steal its bone targeting mask, aim that mask at the bog, draw the hunter into the mire and let its own guided projectile return to its head. Recover proof of the duel and return to the Comanche village with Sarii. No crossover enemies or HP-only victory.",
+                "adaptation": "Tactical grid reconstruction: distances, turns, damage and positions are adapted. Only the required protagonist participates; teammates stay off-scene. Mission commands replace crossover weapons, items and events. Procedural scenery and existing sprites: artistic fidelity is not certified. The film finale and village return are compressed to one 9×7 grid. Naru previously discovered the bog; the bone mask GUIDES the Feral Predator’s projectiles, it does not fire plasma. The herb lowers thermal visibility without preventing hearing or direct sight. Sarii returns Naru’s rope-tethered hatchet during the duel without becoming a playable fighter. The last cell represents the route back to the village, not a village inside the bog. Adapted limit: 48 turns; geometry, speeds and damage are not film-certified."
+              }
+            },
+            "turnToken": 9,
+            "turns": 8,
+            "turnLimit": 48,
+            "complete": false,
+            "failed": false,
+            "reason": "",
+            "progress": 6,
+            "target": 10,
+            "decoys": 3,
+            "escapeTurnsRemaining": null,
+            "countdownLabel": {
+              "fr": "AUTODESTRUCTION",
+              "en": "SELF-DESTRUCT"
+            },
+            "sourceBeat": {
+              "fr": "Sarii rapporte la hache reliée à Naru. Le masque vise correctement la vase.",
+              "en": "Sarii brings back Naru’s rope hatchet. The mask is correctly aimed at the bog."
+            },
+            "honorTrophy": null,
+            "narrativeProof": null,
+            "maskAimTarget": {
+              "x": 6,
+              "y": 4
+            },
+            "maskAim": {
+              "available": false,
+              "mountCell": {
+                "x": 6,
+                "y": 2
+              },
+              "options": [
+                {
+                  "cell": {
+                    "x": 5,
+                    "y": 4
+                  },
+                  "selected": false
+                },
+                {
+                  "cell": {
+                    "x": 6,
+                    "y": 4
+                  },
+                  "selected": true
+                },
+                {
+                  "cell": {
+                    "x": 7,
+                    "y": 4
+                  },
+                  "selected": false
+                }
+              ]
+            },
+            "companionAid": "sarii_returns_hatchet",
+            "thermalConcealment": true,
+            "danger": [
+              {
+                "x": 3,
+                "y": 3
+              },
+              {
+                "x": 4,
+                "y": 3
+              }
+            ],
+            "artApproved": false,
+            "commands": [
+              {
+                "id": "herb",
+                "label": {
+                  "fr": "Prendre la plante refroidissante",
+                  "en": "Take the cooling medicinal herb"
+                },
+                "cell": {
+                  "x": 1,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bait",
+                "label": {
+                  "fr": "Préparer le piège avec le trappeur",
+                  "en": "Set bait using the surviving trapper"
+                },
+                "cell": {
+                  "x": 2,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "flintlock",
+                "label": {
+                  "fr": "Tirer avec le pistolet de Raphaël",
+                  "en": "Fire Raphael’s flintlock"
+                },
+                "cell": {
+                  "x": 3,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "take_mask",
+                "label": {
+                  "fr": "Récupérer le masque de visée en os",
+                  "en": "Recover the bone targeting mask"
+                },
+                "cell": {
+                  "x": 4,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "set_mask",
+                "label": {
+                  "fr": "Placer le masque face au marécage",
+                  "en": "Set the targeting mask facing the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "sarii_hatchet",
+                "label": {
+                  "fr": "Récupérer la hache rapportée par Sarii",
+                  "en": "Recover the rope-hatchet brought back by Sarii"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 3
+                },
+                "anywhere": false,
+                "done": true,
+                "enabled": false,
+                "reason": "done"
+              },
+              {
+                "id": "bog",
+                "label": {
+                  "fr": "Attirer le Feral Predator dans la vase",
+                  "en": "Lure the Feral Predator into the bog"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "position"
+              },
+              {
+                "id": "redirect",
+                "label": {
+                  "fr": "Détourner son propre projectile vers sa tête",
+                  "en": "Redirect its guided bolt into its head"
+                },
+                "cell": {
+                  "x": 5,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "trophy",
+                "label": {
+                  "fr": "Récupérer le trophée du duel",
+                  "en": "Recover the victory trophy"
+                },
+                "cell": {
+                  "x": 6,
+                  "y": 4
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              },
+              {
+                "id": "return",
+                "label": {
+                  "fr": "Retourner au village avec Sarii",
+                  "en": "Return to the village with Sarii"
+                },
+                "cell": {
+                  "x": 0,
+                  "y": 2
+                },
+                "anywhere": false,
+                "done": false,
+                "enabled": false,
+                "reason": "prerequisite"
+              }
+            ]
+          },
+          "nativeCommandAvailable": true,
+          "turnPhase": "move",
+          "movementRemaining": 1,
+          "disposed": false,
+          "resultCount": 0,
+          "storageIntact": true
+        }
+      },
+      "pageErrors": [],
+      "missingRequests": [
+        {
+          "path": "/sprites/generated/bosses/prey/feral-predator.png",
+          "status": 404
+        }
+      ]
+    }
+  ]
+}

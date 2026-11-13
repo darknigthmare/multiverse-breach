@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { before, after, afterEach, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { preparedLegacySignature } from './fixtures/preparedLegacySignature.mjs';
 let vite, Fighter, heroes, enemies, kits, ranged, melee, codex;
 const engines = [];

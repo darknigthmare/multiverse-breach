@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "team-fortress2",
+  "universe": "Team Fortress 2",
+  "directory": "DLC/TeamFortress2",
+  "registration": "runtime",
+  "catalogOrder": 200,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartG.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartG.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/signatureSourceWave2.js",
+      "runtimeAdapter": "src/game/signatureSourceWave2.js"
+    },
+    {
+      "path": "data/signatureSourceWave3.js",
+      "runtimeAdapter": "src/game/signatureSourceWave3.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

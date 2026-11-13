@@ -10,7 +10,7 @@ before(async () => {
     ({ HEROES_DB } = await import('../src/game/heroes.js'));
     ({ SIGNATURE_SOURCE_KITS } = await import('../src/game/signatureSourceKits.js'));
   } else {
-    const { createServer } = await import('vite');
+    const { createServer } = await import('./fixtures/ssrTestServer.mjs');
     vite = await createServer({ appType: 'custom', logLevel: 'silent', server: { middlewareMode: true } });
     ({ EngineFighter } = await vite.ssrLoadModule('/src/game/engineFighter.js'));
     ({ HEROES_DB } = await vite.ssrLoadModule('/src/game/heroes.js'));

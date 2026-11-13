@@ -115,6 +115,64 @@ const fixture = async t => {
     writeGeneration, options, assertNoPublicWrites };
 };
 
+const registerFixtureDlc = async f => {
+  const directory = 'DLC/WebInstallerTest';
+  await fs.mkdir(path.join(f.root, directory), { recursive: true });
+  await fs.writeFile(path.join(f.root, directory, 'manifest.json'), JSON.stringify({
+    schemaVersion: 1, id: 'web-installer-test', universe: 'Web Installer Test', directory, assetManifest: 'assets.json'
+  }));
+  await fs.writeFile(path.join(f.root, directory, 'assets.json'), JSON.stringify({
+    schemaVersion: 1, universe: 'Web Installer Test', assets: []
+  }));
+  return url => path.join(f.root, `${directory}/assets${url}`);
+};
+
+test('DLC outputs remain auditable at their canonical source while web references stay private', async t => {
+  const f = await fixture(t);
+  const assetFile = await registerFixtureDlc(f);
+  await installWebReferencedCharacterImages(f.options);
+  assert.equal(hash(await fs.readFile(assetFile(output))), hash(f.normalized.buffer));
+  assert.equal(await exists(publicFile(f.root, output)), false);
+  const text = await fs.readFile(path.join(f.root, publicManifestPath), 'utf8');
+  const entry = JSON.parse(text).entries[0];
+  assert.equal(entry.output, output);
+  assert.equal(entry.references[0].url, f.job.references[0].url);
+  assert.equal(entry.references[0].publiclyRedistributed, false);
+  assert.ok(!text.includes(f.privateDir));
+  assert.ok(!text.includes('DLC/WebInstallerTest/assets'));
+  assert.equal((await auditWebReferencedCharacterImages({ root: f.root, manifestPath: publicManifestPath })).verified, 1);
+});
+
+test('a concurrent canonical DLC destination keeps its bytes and rolls back only owned outputs', async t => {
+  const f = await fixture(t);
+  const assetFile = await registerFixtureDlc(f);
+  await f.writePlan([f.job, { ...f.job, id: 'second', output: secondOutput }]);
+  await assert.rejects(installWebReferencedCharacterImages({ ...f.options, hooks: {
+    async afterAssetWrite(index) {
+      if (index === 0) await fs.writeFile(assetFile(secondOutput), 'concurrent source', { flag: 'wx' });
+    }
+  } }), /overwrite/);
+  assert.equal(await fs.readFile(assetFile(secondOutput), 'utf8'), 'concurrent source');
+  assert.equal(await exists(assetFile(output)), false);
+  assert.equal(await exists(path.join(f.root, publicManifestPath)), false);
+});
+
+test('DLC rollback cannot follow a swapped canonical parent to delete an outside file', async t => {
+  const f = await fixture(t);
+  const assetFile = await registerFixtureDlc(f);
+  const outside = path.join(f.directory, 'outside');
+  await fs.mkdir(outside);
+  const victim = path.join(outside, 'first.png');
+  await fs.writeFile(victim, 'outside original');
+  await assert.rejects(installWebReferencedCharacterImages({ ...f.options, hooks: {
+    async beforeFinalAudit() {
+      await fs.rename(path.dirname(assetFile(output)), path.join(f.privateDir, 'moved-owned-output'));
+      await fs.symlink(outside, path.dirname(assetFile(output)), 'dir');
+    }
+  } }), /symlink/);
+  assert.equal(await fs.readFile(victim, 'utf8'), 'outside original');
+});
+
 test('installs exact packed PNG and records truthful web digests without redistributing references or private evidence', async t => {
   const f = await fixture(t);
   const privateBefore = new Map(await Promise.all((await listFiles(f.privateDir)).map(async file => [file, hash(await fs.readFile(file))])));

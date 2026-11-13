@@ -1,9 +1,9 @@
 /** Read-only production inventory. Source facts and proposed mode adaptations remain separate. */
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { listTrackedRuntimePaths } from '../dlcAssetPaths.mjs';
 import { HEROES_DB, EQUIP_ITEMS_DB } from '../../src/game/heroes.js';
 import { ENEMIES_DB, FINAL_GAME_BOSS } from '../../src/game/enemies.js';
 import { LORE_DB } from '../../src/game/lore.js';
@@ -234,7 +234,7 @@ export function buildCatalog(sourceCommit, trackedFiles) {
 if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const commit=process.argv[2],output=process.argv[3];
  const trackedFile=path.join(root,'TRACKED_FILES.txt');
- const tracked=existsSync(trackedFile)?readFileSync(trackedFile,'utf8').split('\n'):execFileSync('git',['ls-files'],{cwd:root,encoding:'utf8',maxBuffer:32*1024*1024}).split('\n');
+ const tracked=existsSync(trackedFile)?readFileSync(trackedFile,'utf8').split('\n'):listTrackedRuntimePaths(root);
  const catalog=buildCatalog(commit,tracked);
  catalog.dataSha256=createHash('sha256').update(JSON.stringify(catalog.tables)).digest('hex');
  if(output){mkdirSync(path.dirname(path.resolve(output)),{recursive:true});writeFileSync(output,JSON.stringify(catalog));console.log(JSON.stringify({counts:catalog.counts,rows:Object.fromEntries(Object.entries(catalog.tables).map(([k,t])=>[k,t.rows.length])),dataSha256:catalog.dataSha256}));}

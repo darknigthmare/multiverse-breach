@@ -1,0 +1,2 @@
+// Ghost in the Shell — mission modifiers consumed by the Hub.
+export const createUniverseModifier = () => ({ id: 'cyberbrain_sync', name: { fr: 'Synchro cybercerveau', en: 'Cyberbrain Sync' }, desc: { fr: 'La coordination cybernetique anticipe les vagues: defense +8%, cache +18%.', en: 'Cybernetic coordination anticipates waves: defense +8%, cache +18%.' }, heroDef: 1.08, reward: 1.18, color: '#7fe7d7' });

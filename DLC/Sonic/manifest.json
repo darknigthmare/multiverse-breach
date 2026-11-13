@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "sonic",
+  "universe": "Sonic",
+  "directory": "DLC/Sonic",
+  "registration": "runtime",
+  "catalogOrder": 295,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR11.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR11.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR9.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR9.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

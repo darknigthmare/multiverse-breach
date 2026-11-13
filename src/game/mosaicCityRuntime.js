@@ -266,8 +266,10 @@ export const advanceMosaicPlayer = (state, district, elapsedMs = 1000 / 60) => {
     if (!state.destinationRoute.points.length) state.destination = null;
   }
   if (state.destination && distance > 0 && moved < 0.01) {
-    if (state.pendingInteraction?.type === 'npc') state.destinationRoute = null;
-    else state.destination = null;
+    // A passer-by can enter a route after it was planned. Keep the requested
+    // place and replan around the current bodies on the next active tick.
+    // Manual input, menus and an actually unreachable path still cancel it.
+    state.destinationRoute = null;
   }
   if (!state.destination) state.destinationRoute = null;
   return moved;

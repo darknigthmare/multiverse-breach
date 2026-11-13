@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "breaking-bad",
+  "universe": "Breaking Bad",
+  "directory": "DLC/BreakingBad",
+  "registration": "runtime",
+  "catalogOrder": 65,
+  "modules": [
+    {
+      "path": "data/battleItems.js",
+      "runtimeAdapter": "src/game/battleItems.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

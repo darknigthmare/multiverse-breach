@@ -1,0 +1,5 @@
+// Metal Gear Rising — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'mgsr', universe: 'Metal Gear Rising', mediaType: 'game', faction: 'cyber', mode: 'Smash', difficulty: 'Very Hard', titleFr: 'Metal Gear Rising', stage: 'Denver Cyborg Duel', boss: 'Senator Armstrong Nanomachine Core', hero: ['raiden_mgr', 'Raiden', 'slayer'], allies: [['blade_wolf_mgr', 'Blade Wolf', 'tactical'], ['jetstream_sam', 'Jetstream Sam', 'slayer']], monsters: ['Cyborg Soldier', 'Gekko UG', 'Dwarf Gekko Swarm'], bosses: ['Sundowner', 'Mistral'], gear: [['hf_blade', 'HF Blade', 'Lame HF', { atk: 5 }], ['sombrero_shield', 'Sombrero Shield', 'Bouclier Sombrero', { def: 4 }], ['ripper_mode_chip', 'Ripper Mode Chip', 'Puce Mode Éventreur', { atk: 3, spd: 2 }]], event: ['evt_zandatsu', 'Zandatsu', 'Zandatsu', 'Slice an enemy in blade mode to restore HP and energy', 'Tranche un ennemi en mode lame pour restaurer PV et énergie'], theme: 'cyborg sword duels, private armies, memes, and nanomachine brutality', motif: 'facility', colors: ['#15202b', '#030507', '#58d6ff'] });
+}

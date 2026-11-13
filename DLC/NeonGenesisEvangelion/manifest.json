@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "neon-genesis-evangelion",
+  "universe": "Neon Genesis Evangelion",
+  "directory": "DLC/NeonGenesisEvangelion",
+  "registration": "runtime",
+  "catalogOrder": 341,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/recentUniverseLevels.js",
+      "runtimeAdapter": "src/game/recentUniverseLevels.js"
+    },
+    {
+      "path": "data/requestedUniverseWave.js",
+      "runtimeAdapter": "src/game/requestedUniverseWave.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

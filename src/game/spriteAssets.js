@@ -34,6 +34,8 @@ import { buildPresentationFallbacksWave10 } from './combat/characterPresentation
 import { getSourceCaptureEnemyFrameWave17 } from './combat/sourceCaptureEnemyCatalogWave17.js';
 import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
+import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
+import { getBoundEnemySpriteSrc } from './enemySpriteBindings.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
@@ -133,6 +135,8 @@ export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi
 // Reviewed sprite corrections have their own audited sheets. Historical PNGs
 // remain available with their original provenance and as documented variants.
 export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  hicks: "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
+  feral_predator: "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
   ripley: "/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png",
   predator: "/sprites/generated/heroes/predator/predator-v2-fidelity-wave12-2026-11-01.png",
   greyback_yautja: "/sprites/generated/heroes/predator/greyback-yautja-v2-fidelity-wave12-2026-11-01.png",
@@ -198,6 +202,14 @@ export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
 const canonicalHeroUniverses = new Map(HEROES_DB.map(hero => [hero.id, hero.universe]));
 
 export const CORRECTED_HERO_SPRITE_VARIANTS = Object.freeze({
+  hicks: Object.freeze([
+    Object.freeze({ id: "fidelity-wave13-2026-11-09", label: "Hicks — Aliens 1986, fidélité revue et 16 poses (2026-11-09)", src: CORRECTED_CANON_HERO_SPRITES.hicks, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/hicks.png", current: false })
+  ]),
+  feral_predator: Object.freeze([
+    Object.freeze({ id: "fidelity-wave13-2026-11-09", label: "Feral Predator — Prey 2022, fidélité revue et 16 poses (2026-11-09)", src: CORRECTED_CANON_HERO_SPRITES.feral_predator, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/prey/feral-predator.png", current: false })
+  ]),
   ripley: Object.freeze([
     Object.freeze({ id: "fidelity-wave12-2026-11-01", label: "Ripley — Nostromo 1979, tenue et équipement corrigés", src: CORRECTED_CANON_HERO_SPRITES.ripley, current: true }),
     Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: "/sprites/generated/heroes/alien/ripley.png", current: false })
@@ -602,6 +614,14 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
+  '/sprites/generated/bosses/predator/feral-predator.png': {
+    // Reuse the existing full-body Prey Feral image as one static figure.
+    // No invented animation frames or 4x4 cropping of a single character.
+    // Film 2022 visual acceptance and independent animation still pending.
+    columns: 1,
+    rows: 1,
+    rowByState: { idle:0,run:0,attack:0,defense:0,support:0,special:0,hit:0,dead:0 }
+  },
   '/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png': {
     // One complete static figure. Movement/combat animation is not supplied.
     columns: 1,
@@ -880,6 +900,7 @@ export const SPRITE_SHEET_LAYOUTS = {
 };
 
 export const getHeroCompleteSpritePack = (hero) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   if (CORRECTED_HERO_SPRITE_VARIANTS[hero?.id]) return CORRECTED_HERO_SPRITE_VARIANTS[hero.id];
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
@@ -976,6 +997,7 @@ const normalizeHeroMeleeState = state => (
 );
 
 export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
+  if (getQuarantinedCanonSprite(hero)) return null;
   const manifest = getMeleeAnimationManifest(hero?.sourceHeroId || hero?.sourceId || hero?.id);
   if (!manifest) return null;
   if (manifest.universe && manifest.universe !== hero?.universe) return null;
@@ -986,7 +1008,7 @@ export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
 };
 
 export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
-  getMeleeAnimationSheetSources(heroOrId)
+  getQuarantinedCanonSprite(heroOrId) ? [] : getMeleeAnimationSheetSources(heroOrId)
 );
 
 const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
@@ -1027,7 +1049,7 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(assetId)}.png`;
 };
 
-export const getHeroSpriteSheetSources = (hero, context = 'auto') => [...new Set([
+export const getHeroSpriteSheetSources = (hero, context = 'auto') => getQuarantinedCanonSprite(hero) ? [] : [...new Set([
   ...getDisciplineSpriteSources(hero),
   getOriginalHeroSpriteSheetSrc(hero, context)
 ].filter(Boolean))];
@@ -1042,6 +1064,8 @@ export const getEnemySpriteSheetSrc = (enemy) => {
   if (captureFrame) return captureFrame.asset.sheet;
   if (!enemy?.name) return '';
   if (enemy.spriteSource) return enemy.spriteSource;
+  const boundSprite = getBoundEnemySpriteSrc(enemy);
+  if (boundSprite) return boundSprite;
   const universe = enemy.universe || enemy.sourceUniverse || 'unknown';
   return `/sprites/generated/bosses/${slugifyAsset(universe)}/${slugifyAsset(enemy.name)}.png`;
 };

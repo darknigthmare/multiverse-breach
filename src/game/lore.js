@@ -1,3 +1,42 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcGearsOfWar from '../../DLC/GearsOfWar/data/lore.js';
+import * as dlcHalo from '../../DLC/Halo/data/lore.js';
+import * as dlcAlien from '../../DLC/Alien/data/lore.js';
+import * as dlcPredator from '../../DLC/Predator/data/lore.js';
+import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/lore.js';
+import * as dlcSilentHill from '../../DLC/SilentHill/data/lore.js';
+import * as dlcDinoCrisis from '../../DLC/DinoCrisis/data/lore.js';
+import * as dlcTheMatrix from '../../DLC/TheMatrix/data/lore.js';
+import * as dlcStargate from '../../DLC/Stargate/data/lore.js';
+import * as dlcHalfLife from '../../DLC/HalfLife/data/lore.js';
+import * as dlcPortal from '../../DLC/Portal/data/lore.js';
+import * as dlcMetalGear from '../../DLC/MetalGear/data/lore.js';
+import * as dlcPayday from '../../DLC/Payday/data/lore.js';
+import * as dlcVocaloid from '../../DLC/Vocaloid/data/lore.js';
+import * as dlcYuGiOh from '../../DLC/YuGiOh/data/lore.js';
+import * as dlcGuiltyGear from '../../DLC/GuiltyGear/data/lore.js';
+import * as dlcBlazBlue from '../../DLC/BlazBlue/data/lore.js';
+import * as dlcSlenderMan from '../../DLC/SlenderMan/data/lore.js';
+import * as dlcChucky from '../../DLC/Chucky/data/lore.js';
+import * as dlcHellraiser from '../../DLC/Hellraiser/data/lore.js';
+import * as dlcMassEffect from '../../DLC/MassEffect/data/lore.js';
+import * as dlcFallout from '../../DLC/Fallout/data/lore.js';
+import * as dlcDoom from '../../DLC/Doom/data/lore.js';
+import * as dlcUnreal from '../../DLC/Unreal/data/lore.js';
+import * as dlcHarryPotter from '../../DLC/HarryPotter/data/lore.js';
+import * as dlcStarWars from '../../DLC/StarWars/data/lore.js';
+import * as dlcLeCinquiemeElement from '../../DLC/LeCinquiemeElement/data/lore.js';
+import * as dlcScaryMovie from '../../DLC/ScaryMovie/data/lore.js';
+import * as dlcDeadSpace from '../../DLC/DeadSpace/data/lore.js';
+import * as dlcRickMorty from '../../DLC/RickMorty/data/lore.js';
+import * as dlcDigitalCircus from '../../DLC/DigitalCircus/data/lore.js';
+import * as dlcDigimon from '../../DLC/Digimon/data/lore.js';
+import * as dlcSaw from '../../DLC/Saw/data/lore.js';
+import * as dlcRosarioVampire from '../../DLC/RosarioVampire/data/lore.js';
+import * as dlcNegima from '../../DLC/Negima/data/lore.js';
+import * as dlcGhostInTheShell from '../../DLC/GhostInTheShell/data/lore.js';
+import * as dlcMadMax from '../../DLC/MadMax/data/lore.js';
+
 import { EXPANDED_LORE_DB } from './expandedUniverses';
 import { SOLAR_OPPOSITES_SIREN_STAR_WARS_LORE_DB } from './solarOppositesSirenStarWarsPack.js';
 
@@ -163,302 +202,43 @@ export const LORE_DB = {
       fr: 'Hub stable forme apres la Premiere Breche. Ce n est pas un univers normal, mais l Atrium ou les Ancres, A.R.C.A., les heros deplaces et les Eclats d Origine recuperes peuvent coexister sans effondrement immediat.'
     }
   },
-  'Gears of War': {
-    mediaType: 'game',
-    title: { en: 'Gears of War', fr: 'Gears of War' },
-    desc: {
-      en: 'A war-torn industrial planet, Sera, devastated by the subterranean Locust Horde threat.',
-      fr: 'Une planète industrielle ravagée par la guerre contre la Horde de Locustes souterraines.'
-    }
-  },
-  'Halo': {
-    mediaType: 'game',
-    title: { en: 'Halo', fr: 'Halo' },
-    desc: {
-      en: 'A military science-fiction universe where the UNSC fights the Covenant across ancient Forerunner ringworlds, while the Flood and the true purpose of the Halo array threaten every living civilization.',
-      fr: 'Un univers de science-fiction militaire ou l UNSC affronte le Covenant sur d anciens anneaux Forerunner, tandis que le Parasite et la vraie fonction du reseau Halo menacent toute civilisation vivante.'
-    }
-  },
-  'Alien': {
-    mediaType: 'movie',
-    title: { en: 'Alien', fr: 'Alien' },
-    desc: {
-      en: 'Deep-space sci-fi horror centered around Weyland-Yutani and the lethal Xenomorphs.',
-      fr: 'Horreur de science-fiction spatiale centrée sur Weyland-Yutani et les Xenomorphes.'
-    }
-  },
-  'Predator': {
-    mediaType: 'movie',
-    title: { en: 'Predator', fr: 'Predator' },
-    desc: {
-      en: 'An interstellar clan of honorable trophy hunters stalking deadly prey.',
-      fr: 'Un clan de chasseurs extraterrestres honorables traquant les proies les plus dangereuses.'
-    }
-  },
-  'Resident Evil': {
-    mediaType: 'game',
-    title: { en: 'Resident Evil', fr: 'Resident Evil' },
-    desc: {
-      en: 'A survival-horror universe shaped by Umbrella Corporation experiments, Raccoon City outbreak, T-Virus and G-Virus contamination, scarce resources, locked routes, and bio-organic weapons such as Lickers, Tyrants, Nemesis, and William Birkin mutations.',
-      fr: 'Un univers survival-horror faconne par les experiences d Umbrella Corporation, l epidemie de Raccoon City, les contaminations T-Virus et G-Virus, les ressources rares, les routes verrouillees et les armes bio-organiques comme les Lickers, les Tyrants, Nemesis et les mutations de William Birkin.'
-    }
-  },
-  'Silent Hill': {
-    mediaType: 'game',
-    title: { en: 'Silent Hill', fr: 'Silent Hill' },
-    desc: {
-      en: 'A psychological survival-horror universe where the town of Silent Hill reshapes guilt, grief, trauma, cult ritual, and buried truth into fog streets, rust Otherworld cycles, symbolic monsters, sirens, radios, and personal trials that cannot be solved by violence alone.',
-      fr: 'Un univers survival-horror psychologique ou la ville de Silent Hill transforme culpabilite, deuil, trauma, rituel de culte et verite enfouie en rues de brouillard, cycles Otherworld rouilles, monstres symboliques, sirenes, radios parasites et proces personnels qui ne se resolvent pas seulement par la violence.'
-    }
-  },
-  'Dino Crisis': {
-    mediaType: 'game',
-    title: { en: 'Dino Crisis', fr: 'Dino Crisis' },
-    desc: {
-      en: 'A survival-action universe where Third Energy research on Ibis Island and later temporal disasters around Edward City tear prehistoric predators into modern facilities, forcing SORT and TRAT operatives to balance infiltration, key-card routes, scarce supplies, dinosaur pursuit, and scientific containment.',
-      fr: 'Recherches sur la Troisième Énergie ouvrant des failles temporelles remplies de dinosaures.'
-    }
-  },
-  'The Matrix': {
-    mediaType: 'movie',
-    title: { en: 'The Matrix', fr: 'The Matrix' },
-    desc: {
-      en: 'A cyberpunk universe where humanity is imprisoned inside a machine-made simulation while Zion resists underground, operators jack free minds into the Matrix, Agents enforce control, rogue programs exploit causality, and the Source turns prophecy, choice, and rebellion into system-level conflict.',
-      fr: 'Un univers cyberpunk ou l humanite est enfermee dans une simulation creee par les Machines pendant que Zion resiste sous terre, les operateurs connectent les esprits libres, les Agents maintiennent le controle, les programmes exiles manipulent la causalite et la Source transforme prophetie, choix et rebellion en conflit systeme.'
-    }
-  },
-  'Stargate': {
-    mediaType: 'series',
-    title: { en: 'Stargate', fr: 'Stargate' },
-    desc: {
-      en: 'A military exploration universe where the SGC uses an Ancient Stargate network to reach alien worlds, confront Goa uld false gods, protect Earth with the iris, ally with free Jaffa, study naquadah and Ancient technology, and survive threats like Replicators and Anubis.',
-      fr: 'Un univers d exploration militaire ou le SGC utilise le reseau de Portes des Anciens pour atteindre d autres mondes, affronter les faux dieux Goa uld, proteger la Terre avec l iris, s allier aux Jaffa libres, etudier le naquadah et survivre aux Replicateurs comme a Anubis.'
-    }
-  },
-  'Half-Life': {
-    mediaType: 'game',
-    title: { en: 'Half-Life', fr: 'Half-Life' },
-    desc: {
-      en: 'A science-fiction disaster universe born from Black Mesa resonance cascade: Xen creatures, HEV survival, HECU cleanup, G-Man manipulation, Resistance cells, and Combine occupation turn one experiment into a planetary rupture.',
-      fr: 'Un univers de catastrophe science-fiction ne de la cascade de resonance de Black Mesa: creatures de Xen, survie HEV, intervention HECU, manipulation du G-Man, cellules de Resistance et occupation Combine transforment une experience en rupture planetaire.'
-    }
-  },
-  'Portal': {
-    mediaType: 'game',
-    title: { en: 'Portal', fr: 'Portal' },
-    desc: {
-      en: 'Aperture Science quantum testing loops monitored by the passive-aggressive AI GLaDOS.',
-      fr: 'Salles de tests d\'Aperture Science gérées par l\'IA passive-agressive GLaDOS.'
-    }
-  },
-  'Metal Gear': {
-    mediaType: 'game',
-    title: { en: 'Metal Gear', fr: 'Metal Gear' },
-    desc: {
-      en: 'Tactical espionage stealth operations against giant nuclear weapon mechs.',
-      fr: 'Opérations d\'infiltration tactique contre des méchas nucléaires bipèdes.'
-    }
-  },
-  'Payday': {
-    mediaType: 'game',
-    title: { en: 'Payday', fr: 'Payday' },
-    desc: {
-      en: 'A notorious mask-wearing crew conducting high-stakes robberies and bank heists.',
-      fr: 'Un gang de braqueurs masqués effectuant des casses de banques spectaculaires.'
-    }
-  },
-  'Vocaloid': {
-    mediaType: 'manga',
-    title: { en: 'Vocaloid', fr: 'Vocaloid' },
-    desc: {
-      en: 'Synthesized voice music idols performing on virtual holographic neon stages.',
-      fr: 'Idoles de chant synthétisé performant sur des scènes holographiques néon.'
-    }
-  },
-  'Yu-Gi-Oh': {
-    mediaType: 'manga',
-    title: { en: 'Yu-Gi-Oh', fr: 'Yu-Gi-Oh' },
-    desc: {
-      en: 'Ancient Egyptian magic manifest through modern trading card duel monsters.',
-      fr: 'La magie de l\'Égypte ancienne manifestée à travers des cartes de duels de monstres.'
-    }
-  },
-  'Guilty Gear': {
-    mediaType: 'game',
-    title: { en: 'Guilty Gear', fr: 'Guilty Gear' },
-    desc: {
-      en: 'High-octane magical brawls in a future shaped by living biological weapons.',
-      fr: 'Combats magiques intenses dans un futur façonné par des armes biologiques vivantes.'
-    }
-  },
-  'BlazBlue': {
-    mediaType: 'game',
-    title: { en: 'BlazBlue', fr: 'BlazBlue' },
-    desc: {
-      en: 'A magical technological loop centered around the Grimoires and the Boundary.',
-      fr: 'Une boucle temporelle magico-technologique centrée sur les Grimoires et la Frontière.'
-    }
-  },
-  'Slender Man': {
-    mediaType: 'manga',
-    title: { en: 'Slender Man', fr: 'Slender Man' },
-    desc: {
-      en: 'A tall, faceless entity in a suit stalking and abducting victims in dark woods.',
-      fr: 'Une entité longiligne sans visage traquant ses victimes dans les bois sombres.'
-    }
-  },
-  'Chucky': {
-    mediaType: 'movie',
-    title: { en: 'Chucky', fr: 'Chucky' },
-    desc: {
-      en: 'Charles Lee Ray transfers his soul into a Good Guy doll through Damballa voodoo, later splitting it across distinct dolls. Tiffany Valentine, Tiffany doll bodies and Jennifer Tilly remain separate identities, while the 2019 Buddi remake is an independent artificial-intelligence continuity. The leather-jacket bride and all-black human looks are canon-inspired 1998 Tiffany variants; dark-haired Wedding Belle, burned bald Tiffany, Street Siren, Synthetic Doll, Leather Mistress, Voluptuous Original and the two-piece swimwear forms are explicitly non-canon Nexus AU costumes for fictional Tiffany.',
-      fr: 'Charles Lee Ray transfere son ame dans une poupee Good Guy par le vaudou de Damballa, puis la divise entre plusieurs corps distincts. Tiffany Valentine, les corps de poupee Tiffany et Jennifer Tilly restent des identites separees, tandis que le Buddi du remake de 2019 appartient a une continuite independante fondee sur une intelligence artificielle. La mariee a veste en cuir et la Tiffany humaine tout en noir sont des variantes inspirees du canon 1998; Dark-Haired Wedding Belle, Tiffany brulee et chauve, Street Siren, Synthetic Doll, Leather Mistress, Voluptuous Original et les formes en maillot deux pieces sont explicitement des costumes Nexus AU non canoniques pour la Tiffany fictive.'
-    }
-  },
-  'Hellraiser': {
-    mediaType: 'movie',
-    title: { en: 'Hellraiser', fr: 'Hellraiser' },
-    desc: {
-      en: 'Lemarchand configurations open Leviathans Labyrinth, where distinct Cenobite orders interpret desire, sensation, transformation, and loss as ritual bargains.',
-      fr: 'Les configurations de Lemarchand ouvrent le Labyrinthe de Leviathan, ou plusieurs ordres cenobites interpretent desir, sensation, transformation et perte comme des pactes rituels.'
-    }
-  },
-  'Mass Effect': {
-    mediaType: 'game',
-    title: { en: 'Mass Effect', fr: 'Mass Effect' },
-    desc: {
-      en: 'A galaxy-wide space opera defending organic life from the machine Reapers.',
-      fr: 'Un space-opera galactique défendant les organiques contre les machines Moissonneurs.'
-    }
-  },
-  'Fallout': {
-    mediaType: 'game',
-    title: { en: 'Fallout', fr: 'Fallout' },
-    desc: {
-      en: 'A retro-futuristic post-apocalyptic nuclear wasteland survival world.',
-      fr: 'Un monde rétro-futuriste post-apocalyptique ravagé par la guerre nucléaire.'
-    }
-  },
-  'Doom': {
-    mediaType: 'game',
-    title: { en: 'Doom', fr: 'Doom' },
-    desc: {
-      en: 'Hellish portals on Mars producing waves of demons crushed by the Doom Slayer.',
-      fr: 'Des portails infernaux s\'ouvrant sur Mars, terrassés par le Doom Slayer.'
-    }
-  },
-  'Unreal': {
-    mediaType: 'game',
-    title: { en: 'Unreal Tournament', fr: 'Unreal Tournament' },
-    desc: {
-      en: 'Galactic blood sport tournaments featuring high-velocity weapons.',
-      fr: 'Tournois de combats sanglants galactiques avec des armes à haute vélocité.'
-    }
-  },
-  'Harry Potter': {
-    mediaType: 'manga',
-    title: { en: 'Harry Potter', fr: 'Harry Potter' },
-    desc: {
-      en: 'A secret wizarding world fighting the dark forces of Voldemort.',
-      fr: 'Un monde secret de sorcellerie combattant les forces obscures de Voldemort.'
-    }
-  },
-  'Star Wars': {
-    mediaType: 'movie',
-    title: { en: 'Star Wars', fr: 'Star Wars' },
-    desc: {
-      en: 'A space conflict between the Jedi Knights and the Sith Lords.',
-      fr: 'Un conflit spatial galactique opposant les Chevaliers Jedi aux Seigneurs Sith.'
-    }
-  },
-  'Le Cinquième Element': {
-    mediaType: 'movie',
-    title: { en: 'The Fifth Element', fr: 'Le Cinquième Élément' },
-    desc: {
-      en: 'A colorful future defending the universe from the Ultimate Cosmic Evil.',
-      fr: 'Un futur coloré défendant l\'univers contre le Mal Cosmique Suprême.'
-    }
-  },
-  'Scary Movie': {
-    mediaType: 'movie',
-    title: { en: 'Scary Movie', fr: 'Scary Movie' },
-    desc: {
-      en: 'A hilarious parody franchise spoofing popular horror movies.',
-      fr: 'Une franchise de parodies hilarantes tournant en dérision les films d\'horreur.'
-    }
-  },
-  'Dead Space': {
-    mediaType: 'game',
-    title: { en: 'Dead Space', fr: 'Dead Space' },
-    desc: {
-      en: 'An industrial space miner fighting mutated Necromorphs spawned by Marker signals.',
-      fr: 'Un ingénieur spatial combattant des Nécromorphes mutants générés par le Monolithe.'
-    }
-  },
-  'Rick & Morty': {
-    mediaType: 'movie',
-    title: { en: 'Rick & Morty', fr: 'Rick & Morty' },
-    desc: {
-      en: 'Crazed multiversal dimension hopping adventures of a cynical scientist and his grandson.',
-      fr: 'Les aventures dimensionnelles d\'un scientifique cynique et de son petit-fils.'
-    }
-  },
-  'Digital Circus': {
-    mediaType: 'movie',
-    title: { en: 'The Amazing Digital Circus', fr: 'The Amazing Digital Circus' },
-    desc: {
-      en: 'Humans trapped in a whimsical yet distressing digital virtual reality circus.',
-      fr: 'Des humains piégés dans un cirque virtuel de réalité numérique loufoque.'
-    }
-  },
-  'Digimon': {
-    mediaType: 'game',
-    title: { en: 'Digimon', fr: 'Digimon' },
-    desc: {
-      en: 'Digital monsters bred in the internet networking parallel world.',
-      fr: 'Des monstres numériques élevés dans le monde virtuel parallèle du réseau internet.'
-    }
-  },
-  'Saw': {
-    mediaType: 'movie',
-    title: { en: 'Saw', fr: 'Saw' },
-    desc: {
-      en: 'Moral testing traps designed by the Jigsaw killer to value human life.',
-      fr: 'Des pièges moraux mortels conçus par le tueur au puzzle pour évaluer la volonté de vivre.'
-    }
-  },
-  'Rosario + Vampire': {
-    mediaType: 'manga',
-    title: { en: 'Rosario + Vampire', fr: 'Rosario + Vampire' },
-    desc: {
-      en: 'A human boy accidentally enrolling in a boarding school for Yokai monsters.',
-      fr: 'Un garçon humain inscrit par erreur dans un lycée secret pour monstres Yokai.'
-    }
-  },
-  'Negima': {
-    mediaType: 'manga',
-    title: { en: 'Negima!', fr: 'Negima!' },
-    desc: {
-      en: 'A child wizard tutor training class 3-A in magic and fighting off dark mages.',
-      fr: 'Un enfant magicien enseignant à la classe 3-A et combattant des mages noirs.'
-    }
-  },
-  'Ghost in the Shell': {
-    mediaType: 'manga',
-    title: { en: 'Ghost in the Shell', fr: 'Ghost in the Shell' },
-    desc: {
-      en: 'Cybernetic counter-terrorism Section 9 chasing cyber-brain hackers.',
-      fr: 'La Section 9 cyber-antiterroriste traquant les pirates de cyber-cerveaux.'
-    }
-  },
-  'Mad Max': {
-    mediaType: 'movie',
-    title: { en: 'Mad Max', fr: 'Mad Max' },
-    desc: {
-      en: 'A desolate apocalyptic desert wasteland ruled by high-speed vehicular gangs.',
-      fr: 'Un désert apocalyptique gouverné par des gangs motorisés de bolides armés.'
-    }
-  }
+  'Gears of War': dlcGearsOfWar.createLoreDb(),
+  'Halo': dlcHalo.createLoreDb(),
+  'Alien': dlcAlien.createLoreDb(),
+  'Predator': dlcPredator.createLoreDb(),
+  'Resident Evil': dlcResidentEvil.createLoreDb(),
+  'Silent Hill': dlcSilentHill.createLoreDb(),
+  'Dino Crisis': dlcDinoCrisis.createLoreDb(),
+  'The Matrix': dlcTheMatrix.createLoreDb(),
+  'Stargate': dlcStargate.createLoreDb(),
+  'Half-Life': dlcHalfLife.createLoreDb(),
+  'Portal': dlcPortal.createLoreDb(),
+  'Metal Gear': dlcMetalGear.createLoreDb(),
+  'Payday': dlcPayday.createLoreDb(),
+  'Vocaloid': dlcVocaloid.createLoreDb(),
+  'Yu-Gi-Oh': dlcYuGiOh.createLoreDb(),
+  'Guilty Gear': dlcGuiltyGear.createLoreDb(),
+  'BlazBlue': dlcBlazBlue.createLoreDb(),
+  'Slender Man': dlcSlenderMan.createLoreDb(),
+  'Chucky': dlcChucky.createLoreDb(),
+  'Hellraiser': dlcHellraiser.createLoreDb(),
+  'Mass Effect': dlcMassEffect.createLoreDb(),
+  'Fallout': dlcFallout.createLoreDb(),
+  'Doom': dlcDoom.createLoreDb(),
+  'Unreal': dlcUnreal.createLoreDb(),
+  'Harry Potter': dlcHarryPotter.createLoreDb(),
+  'Star Wars': dlcStarWars.createLoreDb(),
+  'Le Cinquième Element': dlcLeCinquiemeElement.createLoreDb(),
+  'Scary Movie': dlcScaryMovie.createLoreDb(),
+  'Dead Space': dlcDeadSpace.createLoreDb(),
+  'Rick & Morty': dlcRickMorty.createLoreDb(),
+  'Digital Circus': dlcDigitalCircus.createLoreDb(),
+  'Digimon': dlcDigimon.createLoreDb(),
+  'Saw': dlcSaw.createLoreDb(),
+  'Rosario + Vampire': dlcRosarioVampire.createLoreDb(),
+  'Negima': dlcNegima.createLoreDb(),
+  'Ghost in the Shell': dlcGhostInTheShell.createLoreDb(),
+  'Mad Max': dlcMadMax.createLoreDb()
 };
 
 Object.assign(LORE_DB, EXPANDED_LORE_DB, SOLAR_OPPOSITES_SIREN_STAR_WARS_LORE_DB);

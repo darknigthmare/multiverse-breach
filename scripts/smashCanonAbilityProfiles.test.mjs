@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { after, afterEach, before, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 
 import { getHeroById } from '../src/game/heroes.js';
 import { grantCombatEventBuff } from '../src/game/combatEventBuffs.js';

@@ -1,0 +1,15 @@
+.nexus-field-briefing { min-width: 0; display: grid; gap: .7rem; padding: 1rem; border: 1px solid #5fa9ae; border-radius: 8px; background: #081c28; color: #e4f4f8; font-size: .875rem; overflow-wrap: anywhere; }
+.nexus-field-briefing .nexus-field-kicker { color: #9ef2db; letter-spacing: .08em; font-size: .75rem; }
+.nexus-play-copy .nexus-field-briefing h3 { margin: 0; font-size: 1.15rem; }
+.nexus-play-copy .nexus-field-briefing p { margin: 0; color: #d3e5ed; font-size: .875rem; line-height: 1.6; }
+.nexus-field-briefing small { color: #b9cbd6; font-size: .8rem; line-height: 1.5; }
+.nexus-field-source summary { min-height: 44px; cursor: pointer; line-height: 1.6; }
+.nexus-field-source ul { margin: .6rem 0; padding-left: 1.4rem; }
+.nexus-field-source li { margin: .35rem 0; }
+.nexus-play-copy .nexus-field-briefing .nexus-field-lock { border-left: 3px solid #ffc68c; padding-left: .6rem; }
+.nexus-play-copy .nexus-field-briefing .nexus-field-completion { color: #a1f1cd; }
+.nexus-field-actions { min-width: 0; display: grid; gap: .7rem; }
+.nexus-field-actions .btn-retro { min-height: 44px; white-space: normal; font-size: .875rem; }
+.nexus-field-toggle { display: flex; align-items: flex-start; gap: .65rem; min-height: 44px; line-height: 1.6; cursor: pointer; }
+.nexus-field-toggle input { flex: 0 0 auto; width: 22px; height: 22px; margin-top: .15rem; accent-color: #9ef2db; }
+.nexus-field-briefing :is(button, input, summary):focus-visible { outline: 3px solid #ffea76; outline-offset: 3px; }

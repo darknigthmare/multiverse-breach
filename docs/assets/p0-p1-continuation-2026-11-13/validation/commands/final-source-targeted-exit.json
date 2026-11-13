@@ -1,0 +1,22 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/feralMaskedSourceLoadout.test.mjs",
+    "scripts/enemySpriteBindings.test.mjs",
+    "scripts/canonPriorityCorrections.test.mjs",
+    "scripts/githubDataIntegration20261113.test.mjs",
+    "scripts/combatCanonicalEditionFixtures.test.mjs",
+    "scripts/tacticsSourceIntegrationWave17.test.mjs",
+    "scripts/reauditSourceScenes.test.mjs"
+  ],
+  "startedAt": "2026-11-13T07:54:10.196452+00:00",
+  "endedAt": "2026-11-13T07:56:37.695060+00:00",
+  "exitCode": 1,
+  "scope": "new Feral physical loadout and Naru timeline, exact Alien sprite bindings, source-edition and Tactics scene regressions",
+  "fullNpmLifecycle": false
+}

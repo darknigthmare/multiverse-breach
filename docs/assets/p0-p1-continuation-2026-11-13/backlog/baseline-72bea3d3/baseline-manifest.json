@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-13",
+  "sourceCommit": "72bea3d324e144c00b5f61677ee9f66b431ba43c",
+  "sourceRef": "refs/codex/p0-p1-runtime-source-20261113",
+  "scope": "Numeric audit and source-integrity baseline. Large actors/tasks/whole queue are not duplicated; reproduce from the immutable source ref.",
+  "originalDataHashes": {
+    "actors.json": {
+      "bytes": 31717721,
+      "sha256": "b34adfd30b1afe8b0a5ae5d6e416dd83c6e673f27d160aa08029242d885f7404"
+    },
+    "tasks.csv": {
+      "bytes": 12125526,
+      "sha256": "fa39f5d98b9901ffb927234802078f1d531f029ce0e6db7f478984ea37cee3a0"
+    },
+    "actor-batches-40.json": {
+      "bytes": 4753463,
+      "sha256": "0b1c1c924c4bd90270076c6454415387cc786ade5bb2849bccdfc74dff1b1db6"
+    }
+  },
+  "reproductionCommand": "NODE_OPTIONS=--max-old-space-size=1024 GIT_NO_LAZY_FETCH=1 node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportActorFidelityBacklog.mjs /tmp/mb-p0-p1-baseline-72bea3d3 72bea3d324e144c00b5f61677ee9f66b431ba43c",
+  "reproductionCondition": "Run with working modules byte-identical to the pinned source commit, using a loader from the same snapshot. The commit argument alone does not check imported working files.",
+  "source1to1Verified": false
+}

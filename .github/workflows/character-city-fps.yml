@@ -1,0 +1,226 @@
+name: Character City missions and FPS directives
+on:
+  pull_request:
+    paths: ['src/**', 'scripts/**', 'DLC/**', 'package.json', 'docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx', '.github/workflows/character-city-fps.yml']
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: character-city-fps-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PLAYWRIGHT_MODULE_PATH: file:///tmp/character-browser/node_modules/playwright/index.mjs
+      WORKBOOK_SOURCE_COMMIT: 8b14b9abda89f7030250aa5fa38cc8af69b5d12e
+      WORKBOOK_SOURCE_LABEL: 4ca3b2b87f4b7234612f11fc5c17ba205d36d340
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /config/
+            /DLC/
+            !/DLC/*/assets/
+            **/*.json
+            **/*.jsonl
+            /docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /public/backgrounds/lore-stages/nexus-de-convergence/rpg.webp
+            /DLC/Kaamelott/assets/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete/arthur-kaamelott-fps.png
+            /DLC/SystemOfADown/assets/sprites/generated/heroes/system-of-a-down/serj-tankian-complete/serj-tankian-fps.png
+      - name: Check out the frozen workbook sources
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ env.WORKBOOK_SOURCE_COMMIT }}
+          path: .tmp/character-city-workbook-source
+          persist-credentials: false
+          fetch-depth: 1
+          lfs: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /src/
+            /DLC/index.js
+            /DLC/content-identities.json
+            /DLC/distribution.json
+            /DLC/*/data/
+            /scripts/extinction-city/missionPlanning.mjs
+            /scripts/extinction-city/catalog.mjs
+            /scripts/dlcAssetPaths.mjs
+            /scripts/sourceSceneTestLoader.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Source contracts and workbook coverage
+        id: contracts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/character-city-fps-evidence
+          git rev-parse HEAD > /tmp/character-city-fps-evidence/commit.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/character-city-fps-evidence/tree.txt
+          node --version > /tmp/character-city-fps-evidence/node-version.txt
+          node scripts/prepareDlcAssets.mjs --available
+          python3 scripts/testMosaicMotionProof.py
+          python3 scripts/testMosaicCargoObservation.py 2>&1 | tee /tmp/character-city-fps-evidence/cargo-observation.log
+          python3 scripts/testExtinctionPickupAim.py 2>&1 | tee /tmp/character-city-fps-evidence/pickup-aim.log
+          node --test --test-concurrency=2 scripts/mosaicCharacterMissions.test.mjs scripts/mosaicMissionOperations.test.mjs scripts/mosaicMissionCargo.test.mjs scripts/mosaicContractJournal.test.mjs scripts/cityMotionObservation.test.mjs scripts/dlcProfileCharacterMissions.test.mjs scripts/generatedSpriteBounds.test.mjs scripts/mosaicCameraFraming.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldEquipment.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs | tee /tmp/character-city-fps-evidence/contracts.log
+          node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/extinctionCityMissionPlanning.test.mjs scripts/extinctionCityCatalog.test.mjs | tee /tmp/character-city-fps-evidence/planning.log
+          workbook_source="$GITHUB_WORKSPACE/.tmp/character-city-workbook-source"
+          test "$(git -C "$workbook_source" rev-parse HEAD)" = "$WORKBOOK_SOURCE_COMMIT"
+          git -C "$workbook_source" rev-parse HEAD > /tmp/character-city-fps-evidence/workbook-source-commit.txt
+          git -C "$workbook_source" rev-parse 'HEAD^{tree}' > /tmp/character-city-fps-evidence/workbook-source-tree.txt
+          # The original catalog label is part of the frozen JSON; the actual source files come from the checked-out commit.
+          # node_modules is reused from the parent checkout; the snapshot contains code only, without artwork or LFS hydration.
+          (
+            cd "$workbook_source"
+            node --no-warnings --loader ./scripts/sourceSceneTestLoader.mjs scripts/extinction-city/missionPlanning.mjs "$WORKBOOK_SOURCE_LABEL" /tmp/character-city-fps-evidence/mission-planning.json /tmp/character-city-fps-evidence/mission-coverage.json
+          )
+          python3 scripts/extinction-city/verifyCharacterMissionWorkbook.py docs/excel/Multiverse_Breach_Missions_Cite_Par_Personnage_2026-11-08.xlsx --planning /tmp/character-city-fps-evidence/mission-planning.json --receipt /tmp/character-city-fps-evidence/workbook-readback.json --provenance-receipt docs/extinction-city/character-mission-workbook-receipt-2026-11-08.json --repo "$workbook_source"
+          rm /tmp/character-city-fps-evidence/mission-planning.json
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/components/MosaicCharacterMissions.jsx src/components/ImmersiveDrawer.jsx src/components/PortalCatalogPager.jsx src/components/PortalScreen.jsx src/components/PortalBoosterDossier.jsx src/game/mosaicCharacterMissions.js src/game/mosaicCharacterStories.js src/game/mosaicMissionOperations.js scripts/mosaicMissionOperations.test.mjs src/game/extinctionFighterProfiles.js src/game/extinctionFieldDirectives.js scripts/extinctionFighterCatalog.mjs scripts/portalDenseCatalogs.test.mjs scripts/browserPortalDenseCatalogs.mjs scripts/buildPortalDenseCatalogsFixture.mjs | tee /tmp/character-city-fps-evidence/lint.log
+          node scripts/buildPortalDenseCatalogsFixture.mjs | tee /tmp/character-city-fps-evidence/portal-build.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/game/extinctionFieldEquipment.js scripts/extinctionFieldEquipment.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs src/game/mosaicCityDeliveries.js src/game/mosaicMissionCargo.js scripts/mosaicMissionCargo.test.mjs src/components/MosaicResidentConversation.jsx src/components/MosaicResidentDialogue.jsx | tee /tmp/character-city-fps-evidence/equipment-cargo-conversation-lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/game/renderer.js scripts/generatedSpriteBounds.test.mjs src/game/immersiveHubState.js scripts/mosaicCameraFraming.test.mjs | tee /tmp/character-city-fps-evidence/sprite-bounds-lint.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/game/mosaicContractJournal.js src/game/mosaicCharacterFollowups.js scripts/extinction-city/missionPlanning.mjs scripts/mosaicContractJournal.test.mjs scripts/cityMotionObservation.test.mjs scripts/fixtures/cityExtinctionHarness.jsx scripts/fixtures/mosaicContractJournalData.mjs scripts/fixtures/mosaicContractJournalHarness.jsx scripts/browserMosaicContractJournal.mjs scripts/buildMosaicContractJournalFixture.mjs | tee /tmp/character-city-fps-evidence/journal-lint.log
+          node scripts/buildMosaicContractJournalFixture.mjs | tee /tmp/character-city-fps-evidence/journal-build.log
+      - name: Install pinned browser tools
+        id: browsers
+        run: |
+          set -euo pipefail
+          npm install --prefix /tmp/character-browser playwright@1.57.0 --no-audit --no-fund
+          node /tmp/character-browser/node_modules/playwright/cli.js install --with-deps chromium
+          python3 -m venv /tmp/character-browser-py
+          /tmp/character-browser-py/bin/pip install playwright==1.57.0
+      - name: City journal search, prerequisites, evidence and focus
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          PLAYWRIGHT_FIXTURE_DIR=.tmp/mosaic-contract-journal PLAYWRIGHT_EVIDENCE_DIR=/tmp/character-city-fps-evidence/journal node scripts/browserMosaicContractJournal.mjs | tee /tmp/character-city-fps-evidence/journal.log
+      - name: Portal catalogue and card dossier
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          PLAYWRIGHT_FIXTURE_DIR=.tmp/portal-dense-catalogs PLAYWRIGHT_EVIDENCE_DIR=/tmp/character-city-fps-evidence/portal node scripts/browserPortalDenseCatalogs.mjs | tee /tmp/character-city-fps-evidence/portal.log
+      - name: Publish Portal diagnostics before the next scene
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
+        with:
+          name: character-portal-${{ github.sha }}
+          path: |
+            /tmp/character-city-fps-evidence/portal/
+            /tmp/character-city-fps-evidence/portal.log
+            /tmp/character-city-fps-evidence/journal/
+            /tmp/character-city-fps-evidence/journal.log
+            /tmp/character-city-fps-evidence/commit.txt
+            /tmp/character-city-fps-evidence/tree.txt
+          retention-days: 14
+      - name: Fighter profiles and optional mode directives
+        if: ${{ !cancelled() && steps.contracts.outcome == 'success' && steps.browsers.outcome == 'success' }}
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/character-city-fps-evidence/fps-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          /tmp/character-browser-py/bin/python scripts/browserExtinctionRosterDirectives.py --require-art --evidence /tmp/character-city-fps-evidence/fps | tee /tmp/character-city-fps-evidence/fps.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: character-city-fps-${{ github.sha }}
+          path: /tmp/character-city-fps-evidence/
+          retention-days: 14
+  city-contracts:
+    name: City contracts (${{ matrix.district }}, ${{ matrix.lang }}, ${{ matrix.story || 'main' }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        district: [nexus, halo, alien]
+        lang: [fr, en]
+        suite: [main]
+        include:
+          - { district: nexus, lang: fr, suite: deliveries, story: city-mirelle-night-watch-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-mirelle-night-watch-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-quillon-refuge-pump-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-quillon-refuge-pump-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-nadir-buried-probe-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-nadir-buried-probe-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-tessera-chosen-window-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-tessera-chosen-window-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-anchor-shared-beacon-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-anchor-shared-beacon-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-bastion-bulwark-relief-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-bastion-bulwark-relief-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-nova-present-pulse-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-nova-present-pulse-v1 }
+          - { district: nexus, lang: fr, suite: deliveries, story: city-sable-night-signs-v1 }
+          - { district: nexus, lang: en, suite: deliveries, story: city-sable-night-signs-v1 }
+    env:
+      CITY_CASE_SUITE: ${{ matrix.suite }}
+      CITY_DELIVERY_STORY: ${{ matrix.story || '' }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /config/
+            /DLC/
+            !/DLC/*/assets/
+            **/*.json
+            **/*.jsonl
+            /public/images/campaign-oc/chapter-01-atrium-v1.png
+            /public/sprites/generated/heroes/nexus-de-convergence/
+            /DLC/Halo/assets/sprites/generated/heroes/halo/master-chief-complete/master-chief-universal.png
+            /DLC/Alien/assets/sprites/generated/heroes/alien/ripley-v2-fidelity-wave12-2026-11-01.png
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Prepare selected artwork and pinned browser
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/city-contract-evidence
+          git rev-parse HEAD > /tmp/city-contract-evidence/commit.txt
+          git rev-parse 'HEAD^{tree}' > /tmp/city-contract-evidence/tree.txt
+          node --version > /tmp/city-contract-evidence/node-version.txt
+          node scripts/prepareDlcAssets.mjs --available
+          python3 -m venv /tmp/city-contract-browser-py
+          /tmp/city-contract-browser-py/bin/pip install playwright==1.57.0
+          /tmp/city-contract-browser-py/bin/python -m playwright install --with-deps chromium
+      - name: Walk, reject contradictory choices and restore real checkpoints
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/city-contract-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ >/dev/null && break; sleep 1; done
+          curl -fsS http://127.0.0.1:4173/ >/dev/null
+          case_args=(--suite "$CITY_CASE_SUITE")
+          if [[ -n "$CITY_DELIVERY_STORY" ]]; then case_args+=(--delivery-story "$CITY_DELIVERY_STORY"); fi
+          /tmp/city-contract-browser-py/bin/python scripts/browserMosaicCharacterMissions.py --require-art --district '${{ matrix.district }}' --lang '${{ matrix.lang }}' "${case_args[@]}" --evidence /tmp/city-contract-evidence/browser | tee /tmp/city-contract-evidence/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: character-city-${{ matrix.district }}-${{ matrix.lang }}-${{ matrix.story || 'main' }}-${{ github.sha }}
+          path: /tmp/city-contract-evidence/
+          retention-days: 14

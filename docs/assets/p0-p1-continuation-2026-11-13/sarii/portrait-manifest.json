@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T06:51:51.877679+00:00",
+  "id": "prey-sarii-companion-portrait-20261113",
+  "backlogTaskId": "prey-2022-09",
+  "backlogAssetKey": "prey-sarii-companion",
+  "priority": "P1",
+  "subject": "Sarii, canine companion of Naru",
+  "sourceWork": "Prey (2022)",
+  "storyYear": 1719,
+  "kind": "companion-portrait",
+  "status": "BOUNDED_PORTRAIT_GENERATED_AND_INSPECTED_FULLBODY_TASK_REMAINS_OPEN",
+  "acceptanceCriteria": [
+    "Replace the anonymous companion marker with a recognizable portrait of Sarii, using only head/ear/neck/chest details visible in the source.",
+    "Keep Sarii a non-combat companion on the existing source-scene cell; do not create a roster actor or imply a full-body animation.",
+    "Retain loading/failure fallback and the existing companion-following rules."
+  ],
+  "sourceReference": {
+    "path": "docs/assets/p0-p1-continuation-2026-11-13/sarii/references/prey-official-06.jpeg",
+    "url": "https://lumiere-a.akamaihd.net/v1/images/g_prey_246_06_87d32f84.jpeg?region=1%2C0%2C1298%2C730",
+    "sourcePageUrl": "https://www.20thcenturystudios.com/movies/prey",
+    "sourceKind": "official-film-publicity-still",
+    "creatorCredit": "20th Century Studios / David Bukach",
+    "sha256": "3271435dc9986ed6bc87659394d78d3f8266e84369153b5940e4420ac39cd59f",
+    "bytes": 225568,
+    "dimensions": [
+      1298,
+      730
+    ],
+    "actuallyInspected": true,
+    "reviewer": "/root/priority_assets",
+    "qualifiedScope": [
+      "face",
+      "upright ears",
+      "visible tawny coat",
+      "dark muzzle",
+      "visible cream/white throat and upper chest"
+    ],
+    "excludedScope": [
+      "feet cut by lower image edge",
+      "hidden hindquarters",
+      "hidden tail",
+      "full-body turnaround",
+      "retrieval motion or hatchet geometry"
+    ],
+    "termsNote": "Official publicity reference; source availability is not an independent redistribution license."
+  },
+  "generation": {
+    "provider": "OpenAI",
+    "interface": "built-in image_gen",
+    "attemptCount": 1,
+    "result": "image-returned",
+    "transparentBackground": true,
+    "promptFile": "docs/assets/p0-p1-continuation-2026-11-13/sarii/portrait-prompt.txt",
+    "promptFileSha256": "b9e03e9f052ab86fc9b7289c6a639b2e6c1a7214bf3a60777471b516080f126d",
+    "promptTextSha256": "0679217b89423d0f0b03fde8f3bfa03402d83d115fcd426441212ecdde2d47b3",
+    "promptTextReadRule": "Remove the single final LF from promptFile to reproduce the exact submitted string.",
+    "referencedImagePaths": [
+      "/tmp/p0p1-scene-research-20261113/g_prey_246_06_87d32f84.jpeg"
+    ],
+    "nativeFile": "docs/assets/p0-p1-continuation-2026-11-13/sarii/portrait-native.png",
+    "nativeSha256": "3fa5f9947c7fe482f56c5b9f936f2e01403c9ff56dc8ae26474cce4495302052",
+    "nativeBytes": 809634,
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "originalToolOutputPath": "/workspace/generated_images/exec-18297eee-9c04-45d1-b0f9-106bc194b887.png",
+    "originalRetained": true,
+    "generationId": null
+  },
+  "processing": {
+    "operation": "alpha-noise-threshold-12+visible-bounds-crop+uniform-nearest-fit+transparent-center",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "alphaNoisePixelsCleared": 53506,
+    "sourceVisibleBounds": [
+      255,
+      66,
+      923,
+      1174
+    ],
+    "uniformScale": 0.21660649819494585,
+    "resizedDimensions": [
+      145,
+      240
+    ],
+    "offset": [
+      55,
+      8
+    ],
+    "outputDimensions": [
+      256,
+      256
+    ],
+    "outputVisibleBounds": [
+      55,
+      8,
+      200,
+      248
+    ],
+    "sourceSha256": "3fa5f9947c7fe482f56c5b9f936f2e01403c9ff56dc8ae26474cce4495302052",
+    "outputSha256": "38e3db2711324c9f860fe5c95263caa34d36d1b288264be36b351e255dfc5c71",
+    "semanticPaintingPerformed": false
+  },
+  "asset": {
+    "path": "/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png",
+    "sha256": "38e3db2711324c9f860fe5c95263caa34d36d1b288264be36b351e255dfc5c71",
+    "bytes": 59351,
+    "format": "png",
+    "mode": "RGBA",
+    "width": 256,
+    "height": 256,
+    "columns": 1,
+    "rows": 1,
+    "frameCount": 1,
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "visibleBounds": [
+      55,
+      8,
+      200,
+      248
+    ],
+    "minimumGuardPixels": 8,
+    "intendedRenderPixels": 32,
+    "portraitOnly": true,
+    "sourcePath": "DLC/Prey/assets/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png",
+    "publicationPath": "public/sprites/source-scenes/prey-2022/sarii-portrait-20261113.png"
+  },
+  "visualReview": {
+    "reviewer": "/root/priority_assets",
+    "sourceActuallyViewed": true,
+    "nativeActuallyViewed": true,
+    "normalizedActuallyViewed": true,
+    "gameScalePreviewActuallyViewed": true,
+    "previewPath": "docs/assets/p0-p1-continuation-2026-11-13/sarii/portrait-game-scale-preview.png",
+    "previewSha256": "fb49bf24279feebe8a923c7d9de19f6e12aa2af7ac62fc872062b7a9f5229816",
+    "reviewedPreviewSizes": [
+      40,
+      80,
+      112
+    ],
+    "observations": [
+      "Alert tawny canine head, upright triangular ears, dark muzzle and cream/white throat remain legible in the small preview.",
+      "No human, full body, tail, paws, weapon, harness or invented collar was generated.",
+      "Both ears fit within the normalized transparent canvas; alpha-noise removal discards only pixels at alpha <=12 before nearest packing."
+    ],
+    "limitations": [
+      "The pixel-art portrait is an adaptation of the visible photographic region. Exact color, shape and markings are not certified 1:1.",
+      "No browser or in-engine review has been performed by this producer. A preview is not evidence of the runtime hookup."
+    ],
+    "canonicalFidelityApproved": false,
+    "visualFidelityApproved": false
+  },
+  "runtimeProposal": {
+    "module": "src/game/sourceSceneCompanionAssets.js",
+    "function": "drawSariiPortrait(ctx, scene, at)",
+    "stageId": 50106,
+    "sourceSceneId": "prey_1719_naru_feral_bog",
+    "universe": "Prey",
+    "mode": "Tactics",
+    "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+    "propId": "sarii",
+    "appearance": "36px portrait badge with a pointer toward the existing companion cell; portrait rendered at32px",
+    "newCombatUnit": false,
+    "changesStatsOrEquipment": false,
+    "hookIntegrationBy": "/root/p0_p1_scene_assets"
+  },
+  "remainingWork": {
+    "fullBodyArtworkComplete": false,
+    "animationArtworkComplete": false,
+    "fullBodyStatesStillOpen": [
+      "idle",
+      "follow",
+      "alert",
+      "retrieve-rope-hatchet",
+      "return-to-naru",
+      "village-reunion"
+    ],
+    "backlogP1Closed": false,
+    "required": "Qualify independent full-body views and retrieval references, then produce and review the body/animation family separately."
+  }
+}

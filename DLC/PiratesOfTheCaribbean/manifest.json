@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "pirates-of-the-caribbean",
+  "universe": "Pirates of the Caribbean",
+  "directory": "DLC/PiratesOfTheCaribbean",
+  "registration": "runtime",
+  "catalogOrder": 267,
+  "modules": [
+    {
+      "path": "data/canonBlackPearlSourceKits.js",
+      "runtimeAdapter": "src/game/canonBlackPearlSourceKits.js"
+    },
+    {
+      "path": "data/canonicalArchiveLore.js",
+      "runtimeAdapter": "src/game/canonicalArchiveLore.js"
+    },
+    {
+      "path": "data/canonP0SourceKits.js",
+      "runtimeAdapter": "src/game/canonP0SourceKits.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "runtime/canonPiratesCurseEncounter.js",
+      "runtimeAdapter": "src/game/canonPiratesCurseEncounter.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

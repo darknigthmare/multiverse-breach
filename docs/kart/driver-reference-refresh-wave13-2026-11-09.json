@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "status": "pass",
+  "scope": "Connect the two corrected character driver layers and their source metadata to the latest universe kart catalogue. No vehicle geometry or kart raster redesign.",
+  "characters": [
+    "hicks",
+    "feral_predator"
+  ],
+  "manifest": "docs/kart/kart-assets.json",
+  "manifestSha256": "5cfc2b5e3c8a9c1573ad459ca841f7ed4bf7ba76b6a064b8f1b57e0cadad020d",
+  "manifestEntries": 1912,
+  "otherManifestRowsByteEquivalent": 1910,
+  "currentVehicleAtlasFilesByteExactLatestGit": 2,
+  "currentModelMeshBinariesByteExactLatestGit": 2,
+  "modelMetadataChangedFields": [
+    "DriverSpriteAnchor.extras.sprite",
+    "sourceReferences",
+    "referenceAsset",
+    "sourceAnchor",
+    "sourceIncarnation",
+    "sourceUrls"
+  ],
+  "originalModelCopies": [
+    {
+      "path": "docs/kart/archives/wave13-2026-11-09/hicks-before-driver-reference-refresh.glb",
+      "sha256": "fde0ed4122d0c201bfd45d3e436ca1ec268490fb24315d7cf166e0351577d096"
+    },
+    {
+      "path": "docs/kart/archives/wave13-2026-11-09/feral_predator-before-driver-reference-refresh.glb",
+      "sha256": "1f862a5981838a182d489508d070dffe146f9af1c8177c161b7d5a5ebb128ff6"
+    }
+  ],
+  "kartAssetsCheckPassed": true,
+  "kartTestsPassed": 121,
+  "canonicalFidelityApproved": false,
+  "privateGenerationReconciliationProofSha256": "90b54c841e5237c2a8a3a8a5f1ee0c9cc9c5b8e15af196c2a30c00c9176bea4e",
+  "derivedCountChanges": {
+    "driverSpritesMaterialized": {
+      "before": 12,
+      "after": 14
+    },
+    "bytesAdded": 1320
+  },
+  "allOtherCountsUnchanged": true,
+  "independentReview": {
+    "status": "pass",
+    "privateReportSha256": "eb6f8d23f06ca8137d972fb6428448a0e40ce954d7d08572669709071665729e"
+  }
+}

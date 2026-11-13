@@ -1,0 +1,5 @@
+// The Last of Us — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'last_of_us', universe: 'The Last of Us', mediaType: 'game', faction: 'horror', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'The Last of Us', stage: 'Cordyceps Quarantine Zone', boss: 'Bloater Spore Nest', hero: ['ellie_tlou', 'Ellie', 'slayer'], allies: [['joel_tlou', 'Joel', 'marine'], ['tess_tlou', 'Tess', 'tactical']], monsters: ['Runner', 'Clicker', 'Bloater'], bosses: ['David', 'Rat King'], gear: [['shiv', 'Shiv', 'Cisaille', { atk: 7, spd: 2 }], ['molotov_kit', 'Molotov Kit', 'Kit Molotov', { atk: 10 }], ['ellies_switchblade', 'Ellie s Switchblade', 'Cran d arret d Ellie', { atk: 8, spd: 1 }]], event: ['evt_listen_mode_pulse', 'Listen Mode Pulse', 'Impulsion mode ecoute', 'Enhanced hearing reveals all enemies and boosts squad evasion.', 'L ouie amplifiee revele tous les ennemis et ameliore l esquive de l escouade.'], theme: 'cordyceps infection, ruined cities, stealth survival, and found-family desperation', motif: 'wasteland', colors: ['#1d2518', '#030403', '#a0b86a'] });
+}

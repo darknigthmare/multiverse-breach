@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 import { BOOSTER_ART_BY_UNIVERSE } from '../src/game/portalBoosterCatalog.js';
 import { slugifyBoosterUniverse } from './buildPortalBoosterGenerationPlan.mjs';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const BOOSTER_WIDTH = 640;
 const BOOSTER_HEIGHT = 960;
@@ -18,7 +19,7 @@ const CHROMA_TOLERANCE = 32;
 const EXPECTED_BOOSTER_COUNT = 172;
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const boosterDirectory = path.join(repositoryRoot, 'public', 'boosters');
+const resolveAssetSource = createAssetSourceResolver(repositoryRoot);
 
 const slugify = value => String(value || 'unknown')
   .normalize('NFD')
@@ -62,15 +63,8 @@ const threatName = threat => typeof threat === 'string' ? threat : threat?.name;
 const spritePath = ({ universe, heroId, name }) => {
   const directory = heroId ? 'heroes' : 'bosses';
   const entitySlug = slugify(heroId || name);
-  return path.join(
-    repositoryRoot,
-    'public',
-    'sprites',
-    'generated',
-    directory,
-    slugify(universe),
-    `${entitySlug}.png`
-  );
+  const publicPath = `/sprites/generated/${directory}/${slugify(universe)}/${entitySlug}.png`;
+  return path.join(repositoryRoot, resolveAssetSource(publicPath, universe));
 };
 
 const boosterTitle = entry => {
@@ -108,7 +102,8 @@ const makePlans = wave => {
       universe,
       title: boosterTitle(entry),
       slug,
-      outputPath: path.join(repositoryRoot, 'public', ...outputSegments),
+      outputPublicPath,
+      outputPath: path.join(repositoryRoot, resolveAssetSource(outputPublicPath, universe)),
       sources: [
         ...heroes.map((hero, index) => ({
           role: `hero-${index + 1}`,
@@ -473,8 +468,8 @@ const main = async () => {
     hashOwners.set(digest, output.plan.universe);
   }
 
-  await mkdir(boosterDirectory, { recursive: true });
   for (const output of outputs.filter(item => item.action === 'written')) {
+    await mkdir(path.dirname(output.plan.outputPath), { recursive: true });
     await writeFile(output.plan.outputPath, output.source, { flag: force ? 'w' : 'wx' });
   }
 
@@ -484,10 +479,10 @@ const main = async () => {
     rightsTreatment: 'original fan-made OpenAI game art only; no official bitmap asset used',
     force,
     written: outputs.filter(output => output.action === 'written').map(output => (
-      `/boosters/${path.basename(output.plan.outputPath)}`
+      output.plan.outputPublicPath
     )),
     skipped: outputs.filter(output => output.action === 'skipped').map(output => (
-      `/boosters/${path.basename(output.plan.outputPath)}`
+      output.plan.outputPublicPath
     ))
   }, null, 2));
 };

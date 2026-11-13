@@ -1,0 +1,43 @@
+TAP version 13
+# (node:9940) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Chestburster Larva: the live DLC catalogue resolves the already delivered 1979 sheet
+ok 1 - Chestburster Larva: the live DLC catalogue resolves the already delivered 1979 sheet
+  ---
+  duration_ms: 5.315608
+  type: 'test'
+  ...
+# Subtest: Chestburster Larva: another edition, weapon, universe or organism cannot borrow the sheet
+ok 2 - Chestburster Larva: another edition, weapon, universe or organism cannot borrow the sheet
+  ---
+  duration_ms: 0.384651
+  type: 'test'
+  ...
+# Subtest: Synthetic Ash Protocol: the live DLC catalogue resolves the already delivered 1979 sheet
+ok 3 - Synthetic Ash Protocol: the live DLC catalogue resolves the already delivered 1979 sheet
+  ---
+  duration_ms: 1.419732
+  type: 'test'
+  ...
+# Subtest: Synthetic Ash Protocol: another edition, weapon, universe or organism cannot borrow the sheet
+ok 4 - Synthetic Ash Protocol: another edition, weapon, universe or organism cannot borrow the sheet
+  ---
+  duration_ms: 0.189036
+  type: 'test'
+  ...
+# Subtest: the source-scene facehugger and egg keep their Aliens1986 identity instead of receiving the 1979 body
+ok 5 - the source-scene facehugger and egg keep their Aliens1986 identity instead of receiving the 1979 body
+  ---
+  duration_ms: 0.659675
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3177.241963

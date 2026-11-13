@@ -1,0 +1,59 @@
+PASS source-art-50104-1280
+PASS source-art-50105-1280
+FAIL source-art-50106-1280 Locator.click: Timeout 25000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name=re.compile(r"END TURN|FINIR LE TOUR", re.IGNORECASE))
+    - locator resolved to <button class="btn-retro" title="End the active hero turn without another action.">⏭️ END TURN</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    46 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+PASS source-art-50104-390
+PASS source-art-50105-390
+FAIL source-art-50106-390 Locator.click: Timeout 25000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name=re.compile(r"END TURN|FINIR LE TOUR", re.IGNORECASE))
+    - locator resolved to <button class="btn-retro" title="End the active hero turn without another action.">⏭️ END TURN</button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    46 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <button disabled title="Done" type="button">…</button> from <dialog open="" aria-labelledby="_r_0_" data-combat-drawer="true" class="combat-drawer is-live ">…</dialog> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+{"passed": 4, "total": 6}

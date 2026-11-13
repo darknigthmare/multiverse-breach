@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "baselineTree": "72bea3d324e144c00b5f61677ee9f66b431ba43c",
+  "baselineAuditRetainedByteForByte": true,
+  "auditedActors": 40,
+  "exactRuntimeBindingsRepaired": 2,
+  "remainingActorsInBatch": 38,
+  "remainingNeeds": {
+    "noExactIdentityRasterFoundInProjectedGit": 36,
+    "existing1979ArtRejectedFor1986Scene": 2
+  },
+  "newRasterFiles": 0,
+  "reusedExistingPoseFrames": 32,
+  "source1to1Verified": false,
+  "newArtApprovals": 0,
+  "browserVerificationPerformed": false,
+  "rasterMissingClosureScope": "Only the two individual resolver paths are repaired. Source fidelity, costume research, visual contracts and unrelated animation tasks remain open.",
+  "bindings": [
+    {
+      "name": "Chestburster Larva",
+      "universe": "Alien",
+      "incarnation": "Alien (1979)",
+      "missingBindingStatus": "FIXED",
+      "sheet": "/sprites/generated/bosses/alien-1979/chestburster-larva.png",
+      "otherPrioritiesClosed": false
+    },
+    {
+      "name": "Synthetic Ash Protocol",
+      "universe": "Alien",
+      "incarnation": "Alien (1979)",
+      "missingBindingStatus": "FIXED",
+      "sheet": "/sprites/generated/bosses/alien-1979/synthetic-ash-protocol.png",
+      "otherPrioritiesClosed": false
+    }
+  ],
+  "validation": {
+    "testFile": "scripts/enemySpriteBindings.test.mjs",
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "receipt": "validation/targeted-tests-exit.json",
+    "scope": "Node22 direct loader: actual catalogue, runtime getters, original PNG SHA and 4x4 layout, identity projections and negative source-version/weapon/universe cases; no Vite or browser."
+  },
+  "finalOwnedSourceSha256": {
+    "DLC/Alien/data/enemies.js": "3bfd05d630b72b91cd29c5e162a6a5ca1622889d9752d753c8cae79b5afcb820",
+    "DLC/Alien/data/loreAccuratePacks.js": "e99bbb740c5184026894f9577e1a40d3920d904148d32fbd413ed0f996897f1a",
+    "src/game/enemySpriteBindings.js": "088ed413c1411968dd294b08b5dd94f7983b0333f8dc2c7fda7757cb79a2b0af",
+    "src/game/spriteAssets.js": "d0ed94ef131095ef705d24a0bc3be52a13a83b3e532245b95ab598492801b159",
+    "scripts/enemySpriteBindings.test.mjs": "75b3e344cc36e16a8f6854b0c1ad86952754332af797cda98f2ae937884273cb"
+  }
+}

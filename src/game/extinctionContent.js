@@ -1,5 +1,23 @@
 /** Extinction presentation only. Never grants ownership or changes combat stats. */
 import { getHeroCompleteSpritePack, getSpriteSheetLayout } from './spriteAssets.js';
+import { drawExtinctionSchematicView } from './extinctionSchematicView.js';
+import { fitExtinctionView } from './extinctionViewLayout.js';
+
+// The separators in these two authored PNGs are not an equal 4×10 grid.
+// Bounds exclude their visible grid lines, retain the actual row height, and
+// apply only to first-person hands. No other use of either atlas is changed.
+const AUTHORED_HAND_CELLS = Object.freeze({
+  arthur_kaamelott: {
+    width: 792, height: 1980,
+    columns: [[2, 197], [200, 394], [397, 592], [595, 790]],
+    rows: [[2, 201], [204, 403], [406, 606]]
+  },
+  serj_tankian: {
+    width: 796, height: 1990,
+    columns: [[2, 198], [201, 394], [397, 591], [594, 790]],
+    rows: [[2, 202], [205, 406], [409, 610]]
+  }
+});
 
 export const isExtinctionCombatant = hero => Boolean(hero?.id)
   && hero.nonCombat !== true && hero.category !== 'trial' && hero.cat !== 'trial';
@@ -27,7 +45,8 @@ export function getExtinctionViewmodel(hero) {
   const layout = getSpriteSheetLayout(hands.src);
   return { id: hero.id, heroId: hero.id, src: hands.src,
     projectile: pack.find(sheet => sheet.id === 'fpsProjectile')?.src || '',
-    layout: { ...layout, rowByState: { ...layout.rowByState, ...(hero.id === 'arca_mirelle' ? {reload: 6} : {}) } },
+    layout: { ...layout, rowByState: { ...layout.rowByState, ...(hero.id === 'arca_mirelle' ? {reload: 6} : {}) },
+      ...(AUTHORED_HAND_CELLS[hero.id] ? { authoredCells: AUTHORED_HAND_CELLS[hero.id] } : {}) },
     status: 'BOUND_PARTIAL', reason: 'source-layout-not-art-approval' };
 }
 
@@ -35,30 +54,25 @@ export function getExtinctionViewmodel(hero) {
 export function getExtinctionHandFrame(profile, state = {}) {
   if (!profile?.src || !profile.layout || (state.weapon?.type && state.weapon.type !== 'pistol')) return null;
   const layout = profile.layout;
-  const phase = state.muzzle > 0 ? 'attack' : state.reloadPulse > 0 ? 'reload'
+  const personalAttack = state.protocols?.activeSlot === 'simple' && state.protocols.activeFrames > 0
+    && state.protocols.ownerId === profile.heroId && state.protocols.runId === state.runId;
+  const phase = state.muzzle > 0 || personalAttack ? 'attack' : state.reloadPulse > 0 ? 'reload'
     : Math.hypot(state.vx || 0, state.vy || 0) > 0.01 ? 'run' : 'idle';
   const row = layout.rowByState?.[phase] ?? layout.rowByState?.idle ?? 0;
+  const col = Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns;
+  const authored = layout.authoredCells;
+  const x = authored?.columns[col], y = authored?.rows[row];
   return { phase, row: Math.max(0, Math.min(layout.rows - 1, row)),
-    col: Math.floor(Math.max(0, Number(state.t) || 0) / 12) % layout.columns,
+    col,
+    ...(x && y ? { sourceCell: { x: x[0], y: y[0], w: x[1] - x[0], h: y[1] - y[0], width: authored.width, height: authored.height } } : {}),
     trim: layout.trimByState?.[phase] || {}, columns: layout.columns, rows: layout.rows };
 }
 
 /** Explicit neutral schematic for a missing asset or a different pickup weapon.
  * Not a canonical hand model. Geometry contains no anatomy/character identity.
  */
-export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb') {
-  const type = state.weapon?.type || 'pistol';
-  const w = type === 'rocket' ? 100 : type === 'shotgun' ? 68 : 52;
-  const x = width / 2 - w / 2, y = height - 106 + (state.muzzle > 0 ? 7 : 0);
-  ctx.save();
-  ctx.fillStyle = '#17232c'; ctx.strokeStyle = color; ctx.lineWidth = 2;
-  ctx.fillRect(x, y, w, 100); ctx.strokeRect(x, y, w, 100);
-  ctx.fillStyle = color; ctx.fillRect(x + w * 0.22, y + 8, w * 0.56, 5);
-  if (state.muzzle > 0) {
-    ctx.globalAlpha = 0.65;
-    ctx.beginPath(); ctx.arc(width / 2, y - 7, type === 'plasma' ? 18 : 11, 0, Math.PI * 2); ctx.fill();
-  }
-  ctx.restore();
+export function drawExtinctionSchematic(ctx, state, width, height, color = '#39c5bb', layout = null) {
+  return drawExtinctionSchematicView(ctx, state, width, height, color, layout);
 }
 
 /** Source pixels stay in one declared cell, including every trim edge.
@@ -70,6 +84,15 @@ export function getExtinctionHandSourceRect(frame, width, height) {
   if (![columns, rows].every(n => Number.isInteger(n) && n > 0)
       || !Number.isInteger(col) || col < 0 || col >= columns
       || !Number.isInteger(row) || row < 0 || row >= rows) return null;
+  if (frame.sourceCell) {
+    const cell = frame.sourceCell;
+    if (![cell.x, cell.y, cell.w, cell.h, cell.width, cell.height].every(Number.isFinite)
+        || cell.x < 0 || cell.y < 0 || cell.w <= 0 || cell.h <= 0 || cell.width <= 0 || cell.height <= 0
+        || cell.x + cell.w > cell.width || cell.y + cell.h > cell.height
+        || Math.abs(width / height - cell.width / cell.height) > 1e-9) return null;
+    const scale = width / cell.width;
+    return { x: cell.x * scale, y: cell.y * scale, w: cell.w * scale, h: cell.h * scale };
+  }
   const cellW = width / columns, cellH = height / rows;
   if (cellW < 1 || cellH < 1) return null;
   const edge = n => Number.isFinite(n) ? Math.max(0, n) : 0;
@@ -80,13 +103,14 @@ export function getExtinctionHandSourceRect(frame, width, height) {
 }
 
 /** Contain the source aspect inside the existing lower-screen envelope. */
-export function getExtinctionHandPlacement(source, width, height, state = {}) {
+export function getExtinctionHandPlacement(source, width, height, state = {}, layout = null) {
   if (!source || ![source.w, source.h, width, height].every(n => Number.isFinite(n) && n > 0)) return null;
   const maxW = Math.min(300, width * 0.6), maxH = Math.min(188, height * 0.44);
   const scale = Math.min(maxW / source.w, maxH / source.h);
   const w = source.w * scale, h = source.h * scale;
   const finite = n => Number.isFinite(n) ? n : 0;
   const sway = Math.max(-maxW * 0.15, Math.min(maxW * 0.15, -finite(state.turnVel) * 430 + finite(state.vx) * 85));
+  if (layout) return fitExtinctionView(width, w, h, sway, layout);
   return { x: Math.max(0, Math.min(width - w, (width - w) / 2 + sway)), y: Math.max(0, height - h - Math.min(4, height * 0.02)), w, h };
 }
 

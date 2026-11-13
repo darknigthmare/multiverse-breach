@@ -1,0 +1,28 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--no-warnings",
+    "--experimental-loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "scripts/exportActorFidelityBacklog.mjs",
+    "/tmp/mb-p0-p1-final-20261113/actor-backlog",
+    "daca0f002eaa94cf16b06d5ad366b0423ea294d2"
+  ],
+  "startedAt": "2026-11-13T08:04:01.084140+00:00",
+  "sourceCommit": "daca0f002eaa94cf16b06d5ad366b0423ea294d2",
+  "heapMiB": 1024,
+  "cpuAffinity": [
+    0,
+    1
+  ],
+  "cwd": "/workspace/multiverse-breach",
+  "nodeVersion": "v22.23.5",
+  "nodeExecutableSha256": "2f822d544601dfff107f57d945b649d15c5bf6302595735a6bd9cdc7ee9669bd",
+  "pid": 12543,
+  "exitCode": 0,
+  "endedAt": "2026-11-13T08:04:12.063230+00:00"
+}

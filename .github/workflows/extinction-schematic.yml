@@ -1,0 +1,78 @@
+name: Extinction schematic views
+on:
+  pull_request:
+    paths:
+      - 'src/game/extinctionContent.js'
+      - 'src/game/extinctionSchematicView.js'
+      - 'src/game/extinctionFighterProfiles.js'
+      - 'src/game/extinctionSignatures.js'
+      - 'DLC/**/data/**'
+      - 'src/game/playerHero.js'
+      - 'scripts/extinctionSchematicView.test.mjs'
+      - 'scripts/buildExtinctionSchematicFixture.mjs'
+      - 'scripts/browserExtinctionSchematic.py'
+      - 'scripts/fixtures/extinction-schematic.html'
+      - 'scripts/fixtures/extinctionSchematicHarness.js'
+      - '.github/workflows/extinction-schematic.yml'
+  push:
+    branches: [master]
+permissions:
+  contents: read
+concurrency:
+  group: extinction-schematic-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  canvas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
+            /scripts/
+            **/*.json
+            **/*.jsonl
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Source profiles, geometry and held-resource contracts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/extinction-schematic-evidence
+          git rev-parse HEAD > /tmp/extinction-schematic-evidence/tested-commit.txt
+          node --test scripts/extinctionSchematicView.test.mjs scripts/extinctionContent.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionSignatures.test.mjs | tee /tmp/extinction-schematic-evidence/unit.log
+          node node_modules/oxlint/bin/oxlint --max-warnings 0 src/game/extinctionSchematicView.js src/game/extinctionContent.js scripts/extinctionSchematicView.test.mjs scripts/buildExtinctionSchematicFixture.mjs scripts/fixtures/extinctionSchematicHarness.js | tee /tmp/extinction-schematic-evidence/lint.log
+          node scripts/buildExtinctionSchematicFixture.mjs | tee /tmp/extinction-schematic-evidence/build.log
+      - name: Prepare native Chromium
+        run: |
+          python3 -m venv /tmp/extinction-schematic-browser
+          /tmp/extinction-schematic-browser/bin/pip install playwright==1.57.0
+          /tmp/extinction-schematic-browser/bin/python -m playwright install --with-deps chromium
+      - name: Render and measure desktop, portrait and landscape views
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4182 --bind 127.0.0.1 --directory .tmp/extinction-schematic > /tmp/extinction-schematic-evidence/server.log 2>&1 &
+          schematic_server_pid=$!
+          trap 'kill "$schematic_server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4182/scripts/fixtures/extinction-schematic.html > /dev/null; then break; fi
+            sleep 1
+          done
+          /tmp/extinction-schematic-browser/bin/python scripts/browserExtinctionSchematic.py --evidence /tmp/extinction-schematic-evidence/browser | tee /tmp/extinction-schematic-evidence/browser.log
+      - name: Preserve native raster evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: extinction-schematic-views-${{ github.run_id }}
+          path: /tmp/extinction-schematic-evidence
+          if-no-files-found: error

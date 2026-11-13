@@ -1,6 +1,15 @@
 const list = value => Array.isArray(value) ? value.filter(entry => entry != null) : [];
 const object = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
 
+// Include localized source fields and derived descriptions before pagination.
+// This projection never writes to the archive or to player progression.
+export function archiveSearchText(value) {
+  if (value == null) return '';
+  if (Array.isArray(value)) return value.map(archiveSearchText).join(' ');
+  if (typeof value === 'object') return Object.values(value).map(archiveSearchText).join(' ');
+  return String(value);
+}
+
 export const canInspectUniverseArchive = (universe, loreDb, isVisible = () => true) => (
   typeof universe === 'string' && Boolean(loreDb && Object.hasOwn(loreDb, universe) && loreDb[universe]) && isVisible(universe)
 );

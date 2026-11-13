@@ -11,8 +11,10 @@ import { CG_GALLERY_CATALOG } from '../src/game/cg/cgRosterCatalog.js';
 import { createCgRevisionRegistry, resolveCgVersions } from '../src/game/cg/cgRevisions.js';
 import { buildCgId, buildCgPaths } from '../src/game/cg/cgSchema.js';
 import { STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
+import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
 import { loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
 import { validateCgRosterProductionSnapshot } from './cgRosterPlanSnapshot.mjs';
+import { assertCgRecordedAssetMetadata, loadCgPublishedDeliveryMetadata } from './cgPublishedDeliveryMetadata.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const JSON_OUTPUT = 'docs/cg/roster-production-2026-10-18.json';
@@ -173,26 +175,31 @@ async function loadArcs() {
   }
 }
 
-function evidenceForSubject(hero, dossier, pilot, p0, imageEvidence, qualified) {
+export function evidenceForSubject(hero, dossier, pilot, p0, imageEvidence, qualified) {
+  const quarantine = getQuarantinedCanonSprite(hero);
   const lock = dossier?.verrouSourcePersonnage || (hero.incarnation && hero.visualAnchor ? hero : null);
-  const incarnation = qualified?.incarnation || pilot?.continuityId || lock?.incarnation || null;
+  const incarnation = qualified?.incarnation || pilot?.continuityId || quarantine?.incarnation || lock?.incarnation || null;
   const sourceRefs = qualified
     ? unique([...qualified.sourceEvidenceFiles, ...qualified.referenceUrls])
     : unique([...(pilot?.sourceRefs || []), ...(lock?.referenceUrls || []), ...(hero.referenceUrls || []), hero.referenceUrl, ...(dossier?.referenceUrls || [])]);
-  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || [])])
-    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)), role: 'historical-project-image-not-source-fidelity-approval' }));
+  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || []), quarantine?.asset])
+    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)), role: 'historical-project-image-not-source-fidelity-approval',
+      ...(quarantine ? { archivalOnly: true, selectedInRuntime: false, runtimeEligible: false,
+        status: 'OLD-quarantined-project-art-not-current-or-canon-reference', quarantineReason: quarantine.reason } : {}) }));
   const missing = [];
   if (!incarnation) missing.push('Choisir l’incarnation précise et sa continuité.');
   if (qualified) missing.push('Comparer chaque nouvelle image à la référence inspectée, sur les huit axes visuels; la cible sourcée ne certifie pas automatiquement les productions.');
   else if (!pilot) missing.push('Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.');
   if (!sourceRefs.length) missing.push('Renseigner une source d’identité vérifiable.');
   if (p0) missing.push('Les anciennes substitutions P0 ne constituent pas une référence fidèle; réviser explicitement leur ressemblance.');
+  if (quarantine) missing.push(`Sprite runtime en quarantaine (${quarantine.reason}); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source.`);
   return {
     incarnation,
     identityLock: qualified?.visualAnchor || (pilot ? text(pilot.promptSummary) : lock?.visualAnchor || null),
     equipment: qualified?.equipment || lock?.equipment || hero.equipment || [],
     sourceRefs,
     localCandidates,
+    ...(quarantine ? { runtimeSpriteQuarantine: { characterId: hero.id, ...quarantine } } : {}),
     historicalWebImageEvidence: imageEvidence || [],
     evidenceStatus: qualified?.evidenceStatus || (pilot ? 'approved-pilot-reference' : 'needs-reference'),
     ...(qualified ? { sourceEvidenceFiles: qualified.sourceEvidenceFiles, identityVisualReferences: qualified.identityVisualReferences } : {}),
@@ -309,8 +316,8 @@ function makeBackground({ hero, type, universeRank, dossier, researched, authore
   };
 }
 
-export async function buildCgRosterProductionPlan() {
-  const arcs = await loadArcs();
+async function buildCgRosterProductionPlanCore({ deliveryMetadata = null, sourceArcs = null } = {}) {
+  const arcs = sourceArcs || await loadArcs();
   const arcByHero = new Map(arcs.map(arc => [arc.heroId, arc]));
   const dossierById = new Map(readJson('docs/rift-dossiers/catalog.json').entrees.filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
   const p0Entries = readJson(P0_AUDIT).entries;
@@ -384,7 +391,7 @@ export async function buildCgRosterProductionPlan() {
         background.authoredBriefFile = pendingBrief.authoredBriefFile;
       }
       if (artwork) {
-        for (const asset of Object.values(artwork.assets || {})) assert.ok(existsSync(publicFile(asset.path)), `Missing generated CG asset: ${asset.path}`);
+        if (!deliveryMetadata) for (const asset of Object.values(artwork.assets || {})) assert.ok(existsSync(publicFile(asset.path)), `Missing generated CG asset: ${asset.path}`);
         assert.equal(Object.keys(artwork.assets || {}).length, 3, `Three delivered assets required for ${definition.id}`);
       }
       if (newlyGenerated) {
@@ -397,6 +404,13 @@ export async function buildCgRosterProductionPlan() {
         assert.ok(existsSync(path.join(ROOT, newlyGenerated.referenceReviewFile)), 'Missing generated CG visual-review evidence');
         const fingerprints = [];
         for (const [variant, asset] of Object.entries(newlyGenerated.assets)) {
+          if (deliveryMetadata) {
+            // This separate API reads pinned delivery declarations only. The
+            // physical default below still reads, hashes and decodes each file.
+            assertCgRecordedAssetMetadata(asset, variant);
+            fingerprints.push(asset.sha256);
+            continue;
+          }
           const bytes = readFileSync(publicFile(asset.path));
           assert.equal(digest(bytes), asset.sha256, `Generated CG fingerprint mismatch: ${asset.path}`);
           assert.equal(bytes.length, asset.bytes);
@@ -421,8 +435,9 @@ export async function buildCgRosterProductionPlan() {
       if (currentRevision) {
         // Older revision records predate asset fingerprints. Inspect the media
         // actually selected by the gallery rather than borrowing v1 metadata.
-        const assets = {};
-        for (const [variant, assetPath] of Object.entries({ source: currentVersion.sourcePath, master: currentVersion.imagePath, thumbnail: currentVersion.thumbnailPath })) {
+        const assets = deliveryMetadata
+          ? deliveryMetadata.assetsForRevision(definition, hero, currentVersion, currentRevision) : {};
+        if (!deliveryMetadata) for (const [variant, assetPath] of Object.entries({ source: currentVersion.sourcePath, master: currentVersion.imagePath, thumbnail: currentVersion.thumbnailPath })) {
           const bytes = readFileSync(publicFile(assetPath));
           const metadata = await sharp(bytes).metadata();
           assert.equal(metadata.channels, 3);
@@ -563,7 +578,7 @@ export async function buildCgRosterProductionPlan() {
     matrixExtensionsAwaitingThemeReference: subjects.flatMap(subject => Object.values(subject.matrix)).filter(cell => cell.status === 'needs-theme/reference').length,
     totalRequestedSlotsNotProduced: subjects.length * 15 - notApplicableCount - entries.filter(entry => entry.status === 'generated').length
   };
-  return {
+  const plan = {
     schemaVersion: 1,
     date: '2026-10-18',
     generator: 'scripts/buildCgRosterProductionPlan.mjs',
@@ -596,6 +611,27 @@ export async function buildCgRosterProductionPlan() {
     entries,
     backgrounds
   };
+  deliveryMetadata?.assertDeliveredEntries(plan);
+  return plan;
+}
+
+
+/** Full production validation: real CG files, SHA-256 and Sharp remain required. */
+export async function buildCgRosterProductionPlan() {
+  return buildCgRosterProductionPlanCore();
+}
+
+/**
+ * Source/planning metadata only, for a partial media checkout. Historical
+ * delivery declarations stay pinned; this is never used by the production CLI.
+ * The returned scope explicitly excludes rechecking historical CG image bytes.
+ */
+export async function buildCgRosterProductionMetadataPlan() {
+  const deliveryMetadata = loadCgPublishedDeliveryMetadata(ROOT);
+  const { CHARACTER_NARRATIVE_ARCS } = await import('../src/game/narrativeSystems.js');
+  const plan = await buildCgRosterProductionPlanCore({ deliveryMetadata, sourceArcs: CHARACTER_NARRATIVE_ARCS });
+  return { plan, validationScope: 'metadata-only', physicalMediaChecked: false,
+    deliveryMetadataPins: deliveryMetadata.pins };
 }
 
 export function buildCgRosterProductionReport(plan) {

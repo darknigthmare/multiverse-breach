@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "tomb-raider",
+  "universe": "Tomb Raider",
+  "directory": "DLC/TombRaider",
+  "registration": "runtime",
+  "catalogOrder": 177,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/mosaicUniversePlaces.js",
+      "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/wardrobeExpansion.js",
+      "runtimeAdapter": "src/game/wardrobeExpansion.js"
+    },
+    {
+      "path": "data/wardrobeOfficial.js",
+      "runtimeAdapter": "src/game/wardrobeOfficial.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR9.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR9.js"
+    },
+    {
+      "path": "data/wardrobeOriginals.js",
+      "runtimeAdapter": "src/game/wardrobeOriginals.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

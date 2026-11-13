@@ -2,7 +2,7 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { CG_CATALOG } from '../src/game/cg/cgCatalog.js';
 import { CG_REVISION_REGISTRY } from '../src/game/cg/cgRevisions.js';
 

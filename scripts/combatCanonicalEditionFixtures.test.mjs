@@ -9,7 +9,7 @@ import { resolveCharacterAnimationAsset } from '../src/game/combat/characterAnim
 import { prefersCurrentCanonCombatKit } from '../src/game/combat/sourceKitPriority.js';
 import { supportsNativeSuperWave13 } from '../src/game/combat/nativeSuperVisualsWave13.js';
 import { CANONICAL_BASE_EDITIONS, RAW_CANONICAL_EDITIONS, NATIVE_SOURCE_BASE_EDITIONS, assertNativeSourceBaseEdition, assertBaseSpriteEdition,
-  assertCatalogActionEdition, assertCatalogWeaponEdition, historicalWave13Actor } from './combatCanonicalEditionFixtures.mjs';
+  assertCatalogActionEdition, assertCatalogWeaponEdition, historicalWave13Actor, assertLatestGitHubStarWarsEdition } from './combatCanonicalEditionFixtures.mjs';
 
 const roster = new Map(HEROES_DB.map(hero => [hero.id, hero]));
 const json = path => JSON.parse(readFileSync(new URL('../' + path, import.meta.url)));
@@ -64,7 +64,13 @@ for (const id of ['ripley', 'liquid_snake']) test(`${id}: current canonical edit
 test('Maul keeps exact shared master base bytes and separates current Mandalore from the frozen Naboo native-art refusal', () => {
   const current = roster.get('darth_maul'), row = wave13.heroes.find(entry => entry.hero.id === current.id);
   const historical = historicalWave13Actor(current, row.hero, row.source);
-  assert.equal(current.incarnation, 'The Clone Wars - ruler of Mandalore');
+  assertLatestGitHubStarWarsEdition(current);
+  assert.equal(current.incarnation, 'The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)');
+  assert.deepEqual(current.bodyProsthetics, ['Mandalorian-Issue Humanoid Cybernetic Legs']);
+  const earlier = json('scripts/fixtures/masterCanonicalRaw3036cd02.json').actors.find(actor => actor.id === 'darth_maul');
+  assert.equal(earlier.incarnation, 'The Clone Wars - ruler of Mandalore');
+  assertCatalogWeaponEdition(earlier, 'lightsaber');
+  assert.deepEqual(historicalWave13Actor(earlier, row.hero, row.source), historical);
   assert.equal(current.weaponType, 'double_lightsaber');
   assert.equal(historical.weaponType, 'lightsaber');
   assertCatalogWeaponEdition(current, 'lightsaber');
@@ -80,6 +86,29 @@ test('Maul keeps exact shared master base bytes and separates current Mandalore 
   assert.equal(supportsNativeSuperWave13(resolveCombatAbility(historical, 'special')), true);
   assert.equal(getHeroSpriteSheetSrc(current, 'rpg'), '/sprites/generated/heroes/star-wars/darth-maul.png');
   assert.equal(hash(readFileSync(new URL('../public/sprites/generated/heroes/star-wars/darth-maul.png', import.meta.url))), '88ad49c11b99a5a5322252092e63029668dce6378be143db7b5d9b4e5b67dccd');
+});
+
+
+
+test('latest Star Wars source comparisons reject changed current fields and changed historical actors, actions or equipment', () => {
+  for (const id of ['ahsoka_adult', 'aayla_secura', 'darth_revan', 'darth_maul']) {
+    const actor = roster.get(id), row = wave13.heroes.find(entry => entry.hero.id === id);
+    assertLatestGitHubStarWarsEdition(actor);
+    for (const slot of ['simple', 'secondary', 'defense', 'special']) {
+      assertCatalogActionEdition(actor, slot, row.hero[slot]);
+      assert.throws(() => assertCatalogActionEdition(actor, slot, { ...row.hero[slot], dmg: -1 }));
+      assert.throws(() => assertCatalogActionEdition({ ...actor, [slot]: { ...actor[slot], name: 'Changed action' } }, slot, row.hero[slot]));
+    }
+    for (const changed of [
+      { ...actor, id: 'unregistered' },
+      { ...actor, universe: 'Foreign continuity' },
+      { ...actor, incarnation: 'Unreviewed edition' },
+      { ...actor, equipment: [...actor.equipment, 'Unreviewed weapon'] }
+    ]) assert.throws(() => assertLatestGitHubStarWarsEdition(changed));
+    assert.throws(() => assertCatalogWeaponEdition(actor, 'unreviewed-weapon'));
+    assert.throws(() => historicalWave13Actor(actor, { ...row.hero, incarnation: 'Changed historical actor' }, row.source));
+    assert.throws(() => historicalWave13Actor(actor, row.hero, { ...row.source, sourceWork: 'Changed historical source' }));
+  }
 });
 
 

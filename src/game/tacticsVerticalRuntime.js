@@ -8,6 +8,7 @@ import { getTerrainSurface, getSurfacesAt, terrainSurfaceRef, reachableTerrainSu
 import { getSurfacePolygon, hitTestTacticsSurface, drawTacticsTerrain } from './tacticsTerrainRenderer.js';
 import { faceGridUnitToward } from './tacticalFacing.js';
 import { resolveCombatAbility, resolveCombatHeroSpriteActor } from './combatIdentity.js';
+import { isMaskedFeralSourceLoadoutProfile } from './combat/sourceLoadoutFeralMasked20261113.js';
 import { getCharacterAnimationFrame } from './combat/characterAnimationCatalog.js';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout } from './spriteAssets.js';
 import { drawTacticsScenery, getTacticsSceneryBounds } from './tacticsEnvironmentRenderer.js';
@@ -660,7 +661,8 @@ export class TacticsVerticalRuntime {
     unit.state = action === 'special' ? 'special' : profile.effect === 'damage' ? 'attack' : 'idle';
     unit.stateTimer = action === 'special' ? 35 : 25;
     if (action === 'special') unit.tacticsPresentationTicks = 35;
-    e.playSfx(profile.effect === 'damage' ? action === 'special' ? 'special' : 'shoot' : 'shield');
+    const loadoutContact = isMaskedFeralSourceLoadoutProfile(profile) && profile.effect === 'damage' && profile.delivery === 'melee';
+    e.playSfx(loadoutContact ? 'slash' : profile.effect === 'damage' ? action === 'special' ? 'special' : 'shoot' : 'shield');
     e.applyProfiledAttack(unit, cell(surface), action, e.getActionBaseDamage(unit, action), null, e.activeUnitType);
     e.endActiveTurn();
     return { handled: true, type: 'action', action, target: targets[0], targets };

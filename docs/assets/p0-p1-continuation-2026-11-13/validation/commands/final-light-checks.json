@@ -1,0 +1,31 @@
+[
+  {
+    "name": "final-lint",
+    "command": [
+      "node_modules/.bin/oxlint"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-13T08:16:32.057414+00:00",
+    "endedAt": "2026-11-13T08:16:33.054189+00:00"
+  },
+  {
+    "name": "guidance-check",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/checkGamedevGuidance.mjs"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-13T08:16:33.054396+00:00",
+    "endedAt": "2026-11-13T08:16:33.124213+00:00"
+  },
+  {
+    "name": "reference-quarantine-negative-tests",
+    "command": [
+      "python",
+      "scripts/testAuditCharacterReferenceQuarantine.py"
+    ],
+    "exitCode": 0,
+    "startedAt": "2026-11-13T08:16:33.124392+00:00",
+    "endedAt": "2026-11-13T08:16:33.267351+00:00"
+  }
+]

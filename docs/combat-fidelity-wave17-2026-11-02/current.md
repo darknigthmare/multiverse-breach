@@ -1,6 +1,6 @@
-# Mesures des combats — W17 du 2 novembre, intégration du 9 novembre 2026
+# Mesures des combats — W17 du 2 novembre, intégration du 13 novembre 2026
 
-Mesure courante après intégration de master 3036cd02. Les trois groupes effectifs de 40 personnages sont séparés des 125 identités revues et des demandes refusées. Les feuilles, capacités explicites et preuves d'exécution ont des compteurs distincts. Le [protocole W17](CLOSURE.md) ne constitue pas une clôture finale ; les anciens gels et navigateurs ne valident pas cette intégration. Voir l'[amendement du 9 novembre](../audits/w17-master-integration-2026-11-09.md).
+Mesure courante après intégration de master 2333c2c0 le 13 novembre 2026. Les trois groupes effectifs de 40 personnages sont séparés des 125 identités revues et des demandes refusées. Les feuilles, capacités explicites et preuves d'exécution ont des compteurs distincts. Le [protocole W17](CLOSURE.md) ne constitue pas une clôture finale ; les anciens gels et navigateurs ne valident pas cette intégration. Voir le [suivi P0/P1 du 13 novembre](../assets/p0-p1-continuation-2026-11-13/README.md) et l'[amendement historique du 9 novembre](../audits/w17-master-integration-2026-11-09.md).
 
 | Couverture mesurée | Résultat |
 | --- | --- |

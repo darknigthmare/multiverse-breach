@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "puppet-master",
+  "universe": "Puppet Master",
+  "directory": "DLC/PuppetMaster",
+  "registration": "runtime",
+  "catalogOrder": 126,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartC.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartC.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

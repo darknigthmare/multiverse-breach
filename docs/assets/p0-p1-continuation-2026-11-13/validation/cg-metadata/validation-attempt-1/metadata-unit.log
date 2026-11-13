@@ -1,0 +1,121 @@
+TAP version 13
+# (node:10011) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+ok 1 - the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+  ---
+  duration_ms: 2659.250535
+  type: 'test'
+  ...
+# Subtest: the newer published snapshot is exact after only the pinned 604 candidates and 211 descriptor fields
+not ok 2 - the newer published snapshot is exact after only the pinned 604 candidates and 211 descriptor fields
+  ---
+  duration_ms: 3416.8673
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgProductionMetadataScope20261113.test.mjs:35:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Frozen CG source byte count changed: src/game/cg/cgRosterArtwork.generated.json
+    + actual - expected
+    
+    + 9345009
+    - 9139593
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 9139593
+  actual: 9345009
+  operator: 'strictEqual'
+  stack: |-
+    verifyFrozenCgFile (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:122:10)
+    validateCurrentDescriptorAmendment (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:205:52)
+    validateCgGithub2333Snapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:517:32)
+    validateCgRosterProductionSnapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:279:12)
+    validate (file:///workspace/multiverse-breach/scripts/cgProductionMetadataScope20261113.test.mjs:21:26)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgProductionMetadataScope20261113.test.mjs:36:17)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+    # Subtest: prompt
+    ok 1 - prompt
+      ---
+      duration_ms: 1.470243
+      type: 'test'
+      ...
+    # Subtest: assetPath
+    ok 2 - assetPath
+      ---
+      duration_ms: 0.380774
+      type: 'test'
+      ...
+    # Subtest: reference
+    ok 3 - reference
+      ---
+      duration_ms: 0.298329
+      type: 'test'
+      ...
+    # Subtest: approval
+    ok 4 - approval
+      ---
+      duration_ms: 0.27246
+      type: 'test'
+      ...
+    # Subtest: revision
+    ok 5 - revision
+      ---
+      duration_ms: 0.253521
+      type: 'test'
+      ...
+    # Subtest: deliveryCount
+    ok 6 - deliveryCount
+      ---
+      duration_ms: 0.352761
+      type: 'test'
+      ...
+    # Subtest: gallery
+    ok 7 - gallery
+      ---
+      duration_ms: 0.469066
+      type: 'test'
+      ...
+    # Subtest: new delivery
+    ok 8 - new delivery
+      ---
+      duration_ms: 0.489627
+      type: 'test'
+      ...
+    # Subtest: removed delivery
+    ok 9 - removed delivery
+      ---
+      duration_ms: 0.421345
+      type: 'test'
+      ...
+    1..9
+ok 3 - metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+  ---
+  duration_ms: 6.35763
+  type: 'test'
+  ...
+# Subtest: metadata-only revision lookup rejects a different owner, revision or output path
+ok 4 - metadata-only revision lookup rejects a different owner, revision or output path
+  ---
+  duration_ms: 316.225404
+  type: 'test'
+  ...
+# Subtest: the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+ok 5 - the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+  ---
+  duration_ms: 3101.899615
+  type: 'test'
+  ...
+1..5
+# tests 14
+# suites 0
+# pass 13
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12449.463978

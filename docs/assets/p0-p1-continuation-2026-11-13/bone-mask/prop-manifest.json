@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T07:47:09.573256+00:00",
+  "id": "prey-feral-bone-mask-front-20261113",
+  "backlogTaskId": "prey-2022-05",
+  "backlogAssetKey": "prey-feral-bolt-mask-lock",
+  "priority": "P0",
+  "sourceWork": "Prey (2022)",
+  "kind": "prop-exterior-icon",
+  "status": "BOUNDED_EXTERIOR_ICON_GENERATED_AND_INSPECTED_FULL_EQUIPMENT_TASK_REMAINS_OPEN",
+  "acceptanceCriteria": [
+    "Represent the documented exterior bone panel as a small single-object prop after it is recovered or mounted.",
+    "Keep the mask separate from its wearer and projectile launcher; never fire a projectile from this image.",
+    "Do not display a separate physical mask on the ground while the existing Feral sprite still wears it.",
+    "Preserve source-scene phase progression, actor identity and command alignment."
+  ],
+  "references": [
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/references/g_prey_246_12_c7154c40.jpeg",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/g_prey_246_12_c7154c40.jpeg?region=1%2C0%2C1298%2C730",
+      "sourcePageUrl": "https://www.20thcenturystudios.com/movies/prey",
+      "sourceKind": "official-film-publicity-still",
+      "creatorCredit": "20th Century Studios / David Bukach",
+      "sha256": "069c8bc49f426e3518d8195184bd4dc96e6a6a0a160dbc421a870f47cd19bc06",
+      "bytes": 81114,
+      "actuallyInspected": true,
+      "reviewer": "/root/priority_assets",
+      "qualifiedScope": "Whole exterior mask silhouette in the fog, limited low-contrast detail; no interior or exact targeting hardware.",
+      "termsNote": "Official publicity reference; source availability is not an independent redistribution license."
+    },
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/references/g_prey_246_04_dc7d419a.jpeg",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/g_prey_246_04_dc7d419a.jpeg?region=1%2C0%2C1298%2C730",
+      "sourcePageUrl": "https://www.20thcenturystudios.com/movies/prey",
+      "sourceKind": "official-film-publicity-still",
+      "creatorCredit": "20th Century Studios / David Bukach",
+      "sha256": "cad522a824a4b6ac962bf84c5e43ed6d926eafee9893cba954ee879fc95aa905",
+      "bytes": 116505,
+      "actuallyInspected": true,
+      "reviewer": "/root/priority_assets",
+      "qualifiedScope": "Visible bone cracks, relief and lower cheek contours; top is cropped, shield and wearer excluded.",
+      "termsNote": "Official publicity reference; source availability is not an independent redistribution license."
+    }
+  ],
+  "generationAttemptsPath": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/generation-attempts.json",
+  "generationAttemptsSha256": "660557dc0fcb700d7a962ff8582ff7f9467f68101d64153a34ab96ca2426a9c6",
+  "selectedAttempt": 2,
+  "nativePath": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/edit2-native.png",
+  "nativeSha256": "d1a07483fd937e5a0b394aad6ce44ea060177bc891d74b6af2a2ac5b840268f0",
+  "nativeBytes": 916494,
+  "processing": {
+    "operation": "alpha-noise-threshold-12+visible-bounds-crop+uniform-nearest-fit+transparent-center",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "alphaNoisePixelsCleared": 16011,
+    "sourceVisibleBounds": [
+      267,
+      139,
+      990,
+      1019
+    ],
+    "uniformScale": 0.2727272727272727,
+    "resizedDimensions": [
+      197,
+      240
+    ],
+    "offset": [
+      29,
+      8
+    ],
+    "outputDimensions": [
+      256,
+      256
+    ],
+    "outputVisibleBounds": [
+      29,
+      8,
+      226,
+      248
+    ],
+    "sourceSha256": "d1a07483fd937e5a0b394aad6ce44ea060177bc891d74b6af2a2ac5b840268f0",
+    "outputSha256": "655ee9810273a91753a2fc8cddf6fdef08b47dbe0783a003ed4e20714351c7ad",
+    "semanticPaintingPerformed": false
+  },
+  "normalizerPath": "docs/assets/p0-p1-continuation-2026-11-13/sarii/normalize_portrait.py",
+  "asset": {
+    "path": "/sprites/source-scenes/prey-2022/feral-bone-mask-front-20261113.png",
+    "sourcePath": "DLC/Prey/assets/sprites/source-scenes/prey-2022/feral-bone-mask-front-20261113.png",
+    "publicationPath": "public/sprites/source-scenes/prey-2022/feral-bone-mask-front-20261113.png",
+    "publicationKind": "regular-file-hardlink-to-canonical-DLC-asset",
+    "sha256": "655ee9810273a91753a2fc8cddf6fdef08b47dbe0783a003ed4e20714351c7ad",
+    "bytes": 89660,
+    "format": "png",
+    "mode": "RGBA",
+    "width": 256,
+    "height": 256,
+    "columns": 1,
+    "rows": 1,
+    "frameCount": 1,
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "visibleBounds": [
+      29,
+      8,
+      226,
+      248
+    ],
+    "minimumGuardPixels": 8,
+    "exteriorFaceOnly": true
+  },
+  "visualReview": {
+    "producer": "/root/priority_assets",
+    "independentReviewer": "/root/p0_p1_scene_assets",
+    "peerReviewRecord": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/independent-visual-review.json",
+    "peerReviewRecordSha256": "4c1aa5a150377ea979cc08774efee93ed1aabe7160a159dfaa6de11054cea2bc",
+    "sourcesInspectedIndividually": true,
+    "nativeActuallyViewed": true,
+    "normalizedActuallyViewed": true,
+    "gameScalePreviewActuallyViewed": true,
+    "previewPath": "docs/assets/p0-p1-continuation-2026-11-13/bone-mask/game-scale-preview.png",
+    "previewSha256": "b98563efe09b8e6799242e0bc9b6586d0e3d52ba2a979a310a8dfa9603ae434d",
+    "reviewedPreviewSizes": [
+      24,
+      32,
+      64,
+      128
+    ],
+    "observations": [
+      "Selected final edit removes the unsupported long lower extension and nested geometric grooves.",
+      "The exterior icon remains legible on a dark game-like background at 24px and 32px.",
+      "The mask is a detached outward-facing panel with no body, shield, eyes, mandibles, launcher or laser emission."
+    ],
+    "limitations": [
+      "Exact crack layout and lower edge remain approximate.",
+      "Still04 crops the top and has shield occlusion; still12 is foggy.",
+      "No qualified rear, depth, straps, laser system or launcher geometry.",
+      "No 1:1 certification and no closure of the entire P0 equipment task.",
+      "A small icon does not establish complete prop depth, exact costume reconstruction or film-accurate motion.",
+      "Producer has not performed the final browser hookup review; that evidence belongs to a separate runtime receipt."
+    ],
+    "canonicalFidelityApproved": false,
+    "visualFidelityApproved": false
+  },
+  "runtimeProposal": {
+    "module": "src/game/sourceScenePreyPropAssets.js",
+    "getter": "getSourceSceneBoneMaskArt(scene, role)",
+    "drawFunction": "drawSourceSceneBoneMask(ctx, scene, at, role)",
+    "stageId": 50106,
+    "sourceSceneId": "prey_1719_naru_feral_bog",
+    "actorId": "naru_prey",
+    "universe": "Prey",
+    "mode": "Tactics",
+    "physicalRoles": [
+      "carried",
+      "mounted"
+    ],
+    "groundPhysicalIconAllowed": false,
+    "roleRules": {
+      "carried": "take_mask completed, set_mask not completed",
+      "mounted": "take_mask and set_mask completed",
+      "ground": "never: the earlier tile denotes a command objective while Feral still wears his mask"
+    },
+    "renderPixels": {
+      "carried": 24,
+      "mounted": 32
+    },
+    "carriedRoleIsBadgeOnly": true,
+    "graspAnimationDelivered": false,
+    "aimingAndProjectilesChanged": false,
+    "hookIntegrationBy": "/root/p0_p1_scene_assets"
+  },
+  "remainingWork": {
+    "backlogP0Closed": false,
+    "fullEquipmentArtworkComplete": false,
+    "animationArtworkComplete": false,
+    "statesStillOpen": [
+      "pointers",
+      "launcher",
+      "bolt",
+      "projectile-impact"
+    ],
+    "required": "Qualify and deliver targeting details, independent launcher and bolt/impact animation separately. The exterior face icon does not supply these assets or certify 1:1."
+  }
+}

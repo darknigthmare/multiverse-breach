@@ -1,0 +1,5 @@
+// Killzone — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'killzone', universe: 'Killzone', mediaType: 'game', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Killzone', stage: 'Helghan Warzone Breach', boss: 'Helghast MAWLR Command', hero: ['sev_killzone', 'Sev', 'marine'], allies: [['rico_killzone', 'Rico', 'slayer'], ['echo_killzone', 'Echo', 'tactical']], monsters: ['Helghast Trooper', 'Helghast Sniper', 'Spider Mine'], bosses: ['Colonel Radec', 'MAWLR'], gear: [['sta52_rifle_mod', 'StA52 Rifle Mod', 'Mod fusil StA52', { atk: 10, def: 3 }], ['petrusite_cell', 'Petrusite Cell', 'Cellule de petrusite', { atk: 8, hp: 45 }], ['isa_medpack', 'ISA Medpack', 'Medikit ISA', { hp: 85, def: 3 }]], event: ['evt_arc_cannon_burst', 'Arc Cannon Burst', 'Salve de canon a arc', 'A devastating arc cannon blast electrifies the battlefield.', 'Un tir devastateur de canon a arc electrifie le champ de bataille.'], theme: 'Helghast warfare, ISA squads, industrial planets, and red-eyed battlefield pressure', motif: 'fortress', colors: ['#171d22', '#030405', '#ff3d32'] });
+}

@@ -1,0 +1,5 @@
+// Left 4 Dead — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'left_4_dead', universe: 'Left 4 Dead', mediaType: 'game', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Left 4 Dead', stage: 'No Mercy Rooftop Horde', boss: 'Tank Witch Crescendo', hero: ['zoey_l4d', 'Zoey', 'slayer'], allies: [['bill_l4d', 'Bill', 'marine'], ['ellis_l4d', 'Ellis', 'tactical']], monsters: ['Common Infected', 'Smoker', 'Hunter'], bosses: ['Tank', 'Witch'], gear: [['first_aid_kit_l4d', 'First Aid Kit', 'Trousse de premiers soins', { hp: 90, def: 3 }], ['pipe_bomb_l4d', 'Pipe Bomb', 'Bombe artisanale', { atk: 10 }], ['auto_shotgun_mod', 'Auto Shotgun Mod', 'Mod fusil a pompe auto', { atk: 9, def: 4 }]], event: ['evt_panic_event_horde', 'Panic Event Horde', 'Horde de panique', 'A massive infected horde swarms the battlefield, overwhelming enemies.', 'Une horde massive d infectes envahit le terrain et submerge les ennemis.'], theme: 'co-op zombie hordes, safe rooms, special infected, and desperate extraction finales', motif: 'hauntedset', colors: ['#1a1812', '#030302', '#d6563c'] });
+}

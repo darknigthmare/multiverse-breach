@@ -1,0 +1,19 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/enemySpriteBindings.test.mjs"
+  ],
+  "startedAt": "2026-11-13T07:36:02.196297+00:00",
+  "finishedAt": "2026-11-13T07:36:05.433306+00:00",
+  "exitCode": 0,
+  "viteUsed": false,
+  "sourceArtApproval": false
+}

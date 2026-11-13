@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ArchiveDrawer from './collection/ArchiveDrawer.jsx';
 import GameDisplaySettings from './GameDisplaySettings.jsx';
+import GameSystemSections from './GameSystemSections.jsx';
 import './game-system.css';
 
 export default function GameSystemMenu({ lang = 'fr', children }) {
@@ -10,8 +11,10 @@ export default function GameSystemMenu({ lang = 'fr', children }) {
       <span aria-hidden="true">☰</span>
     </button>
     {open && <ArchiveDrawer title={lang === 'fr' ? 'SYSTÈME' : 'SYSTEM'} lang={lang} onClose={() => setOpen(false)} className="game-system-menu">
-      <div className="game-system-controls">{children}</div>
-      <GameDisplaySettings lang={lang} />
+      <GameSystemSections lang={lang}>
+        <div className="game-system-controls">{children}</div>
+        <GameDisplaySettings lang={lang} />
+      </GameSystemSections>
     </ArchiveDrawer>}
   </>;
 }

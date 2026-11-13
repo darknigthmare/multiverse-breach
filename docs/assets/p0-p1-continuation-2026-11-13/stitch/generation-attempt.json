@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T06:40:55.713477+00:00",
+  "characterId": "stitch_626",
+  "universe": "Lilo & Stitch",
+  "incarnation": "Lilo & Stitch (2002 animated film), Stitch / Experiment 626, terrestrial two-arm form",
+  "operation": "neutral-transparent-seed-before-base16-and-presentation32-production",
+  "status": "PROVIDER_REFUSED_NO_IMAGE_DELIVERED",
+  "priority": "P0",
+  "attemptCount": 1,
+  "playerVisibleAcceptanceCriteria": [
+    "Replace the historical humanoid substitution with the source-locked 2002 terrestrial Stitch silhouette.",
+    "Exactly two arms, two legs, large notched ears, blue palette and broad clawed feet, without clothing or permanent equipment.",
+    "Deliver technically valid and visually reviewed animation families before selecting any new runtime asset."
+  ],
+  "input": {
+    "provider": "OpenAI",
+    "interface": "built-in image_gen",
+    "transparentBackground": true,
+    "referencedImagePaths": [
+      "docs/cg/references/wave3-2026-10-20/stitch/official-2002-animated-poster.jpeg"
+    ],
+    "promptFile": "docs/assets/p0-p1-continuation-2026-11-13/stitch/seed-prompt.txt",
+    "promptFileSha256": "57c6f7c89c028d7b6cbe8ba0797a7b5409114c4b7eaeec738d6705e1519339a8",
+    "sourceReferenceFile": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-animated-poster.jpeg",
+    "sourceReferenceSha256": "9fc95af50e006c5e1fe65c7a8bd070eadb80411908cfa485d8f5e4042058bf18",
+    "sourceReferenceBytes": 135449,
+    "sourceLocksRecord": "docs/cg/stitch-reference-evidence-wave3-2026-10-20.json",
+    "sourceLocksRecordSha256": "3468ca294aef84019a14a69d740846d74b0d1d5e23b61525d4a9d013dece0eb8",
+    "promptTextSha256": "24e56418ecf65bdc958d822ecc2ae6db890ca9e16722a6d5e7a9d4544d9c2d05",
+    "promptTextReadRule": "Remove the single final LF from promptFile to reproduce the exact string supplied to image_gen."
+  },
+  "sourceReview": {
+    "actuallyInspected": true,
+    "reviewer": "/root/priority_assets",
+    "method": "view_image of the saved official 2002 animated poster; additional official 2002 hula still inspected separately",
+    "scope": "Poster supports terrestrial blue body, face, ears and limbs. Hula outfit is a separate costume; promotional necklace was not made permanent.",
+    "notIndependentSource": false
+  },
+  "providerResponse": {
+    "httpStatus": 400,
+    "type": "image_generation_user_error",
+    "code": "moderation_blocked",
+    "stage": "output",
+    "categories": [
+      "other"
+    ],
+    "requestId": "23337115-00da-4f43-b8eb-c72a527606aa",
+    "message": "Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 23337115-00da-4f43-b8eb-c72a527606aa."
+  },
+  "delivery": {
+    "imagesReturned": 0,
+    "spritesInstalled": 0,
+    "animationFramesDelivered": 0,
+    "runtimeRegistriesChanged": false,
+    "canonicalFidelityApproved": false,
+    "visualFidelityApproved": false
+  },
+  "continuation": {
+    "retryPerformed": false,
+    "promptChangeToBypassRefusal": false,
+    "alternateAliasUsed": false,
+    "statusChangedToComplete": false,
+    "remainingWork": "The seed, base16 and presentation32 remain undelivered. Retain the unresolved P0 and the actual provider refusal without claiming technical or visual completion."
+  }
+}

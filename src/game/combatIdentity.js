@@ -15,6 +15,7 @@ import { resolvePresentationScript } from './combat/presentationCatalog.js';
 import { ROSTER_REINFORCEMENTS_WAVE10 } from './combat/rosterReinforcementsWave10.js';
 import { ROSTER_REINFORCEMENTS_WAVE11 } from './combat/rosterReinforcementsWave11.js';
 import { resolveSelectedCombatSource, hasPreparedLegacyCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
+import { resolveMaskedFeralSourceLoadout } from './combat/sourceLoadoutFeralMasked20261113.js';
 
 // This catalog preserves the source of each action. A runtime adaptation and an
 // actual source-game animation are different claims; no animation is certified
@@ -59,7 +60,9 @@ const overrideFor = actor => {
   return record?.universe === actor?.universe ? record : null;
 };
 const provenanceFor = (actor, slot, action, override = null) => ({
-  kind: override ? 'authored-canonical-identity' : 'existing-catalog-ability',
+  kind: override?.sourceLoadoutKey ? 'explicit-source-loadout-adaptation'
+    : override ? 'authored-canonical-identity' : 'existing-catalog-ability',
+  ...(override?.sourceLoadoutKey ? { sourceLoadoutKey: override.sourceLoadoutKey } : {}),
   sourceHeroId: identity(actor),
   sourceUniverse: actor.universe,
   sourceSlot: slot,
@@ -152,10 +155,11 @@ function abilityProfile(actor, slot, action) {
 
 export function resolveMeleeSuper(actor) {
   if (!actor?.universe || !hasAbility(actor.special)) return null;
+  const sourceLoadout = resolveMaskedFeralSourceLoadout(actor);
   const preparedLegacy = hasPreparedLegacyCombatSource(actor, 'special') || prefersSuppliedCanonAction(actor, 'special');
   const selected = resolveSelectedCombatSource(actor, 'special');
   const authored = preparedLegacy ? null : selected?.authored || COMBAT_ABILITY_OVERRIDES[identity(actor)];
-  const canonical = preparedLegacy ? null : authored?.universe === actor.universe && authored.special ? authored : overrideFor(actor);
+  const canonical = sourceLoadout || (preparedLegacy ? null : authored?.universe === actor.universe && authored.special ? authored : overrideFor(actor));
   // A selected source version applies to the super as well as basic commands.
   // Retain its canonical action and reference, and record the explicit revision.
   const override = canonical && authored?.universe === actor.universe && authored.versionRevision
@@ -191,9 +195,10 @@ export function resolveMeleeSuper(actor) {
 export function resolveCombatAbility(actor, slot = 'special') {
   if (slot === 'special') return resolveMeleeSuper(actor);
   if (!['simple', 'secondary', 'defense'].includes(slot) || !actor?.universe || !hasAbility(actor[slot])) return null;
+  const sourceLoadout = resolveMaskedFeralSourceLoadout(actor);
   const candidate = prefersSuppliedCanonAction(actor, slot) ? null : COMBAT_ABILITY_OVERRIDES[identity(actor)];
   const selected = resolveSelectedCombatSource(actor, slot);
-  const override = selected?.authored || (candidate?.universe === actor.universe && candidate[slot] ? candidate : null);
+  const override = sourceLoadout || selected?.authored || (candidate?.universe === actor.universe && candidate[slot] ? candidate : null);
   const action = clone(override?.[slot] || actor[slot]);
   if (!hasAbility(action)) return null;
   const profile = abilityProfile(actor, slot, action);

@@ -1,0 +1,98 @@
+TAP version 13
+# (node:10216) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+ok 1 - the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+  ---
+  duration_ms: 2501.041148
+  type: 'test'
+  ...
+# Subtest: the newer published snapshot is exact after only the pinned 604 candidates and 211 descriptor fields
+ok 2 - the newer published snapshot is exact after only the pinned 604 candidates and 211 descriptor fields
+  ---
+  duration_ms: 3286.326118
+  type: 'test'
+  ...
+# Subtest: metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+    # Subtest: prompt
+    ok 1 - prompt
+      ---
+      duration_ms: 1.500145
+      type: 'test'
+      ...
+    # Subtest: assetPath
+    ok 2 - assetPath
+      ---
+      duration_ms: 0.470277
+      type: 'test'
+      ...
+    # Subtest: reference
+    ok 3 - reference
+      ---
+      duration_ms: 0.314303
+      type: 'test'
+      ...
+    # Subtest: approval
+    ok 4 - approval
+      ---
+      duration_ms: 0.338729
+      type: 'test'
+      ...
+    # Subtest: revision
+    ok 5 - revision
+      ---
+      duration_ms: 0.344929
+      type: 'test'
+      ...
+    # Subtest: deliveryCount
+    ok 6 - deliveryCount
+      ---
+      duration_ms: 0.382194
+      type: 'test'
+      ...
+    # Subtest: gallery
+    ok 7 - gallery
+      ---
+      duration_ms: 0.37253
+      type: 'test'
+      ...
+    # Subtest: new delivery
+    ok 8 - new delivery
+      ---
+      duration_ms: 0.267142
+      type: 'test'
+      ...
+    # Subtest: removed delivery
+    ok 9 - removed delivery
+      ---
+      duration_ms: 0.448754
+      type: 'test'
+      ...
+    1..9
+ok 3 - metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+  ---
+  duration_ms: 5.737475
+  type: 'test'
+  ...
+# Subtest: metadata-only revision lookup rejects a different owner, revision or output path
+ok 4 - metadata-only revision lookup rejects a different owner, revision or output path
+  ---
+  duration_ms: 333.09906
+  type: 'test'
+  ...
+# Subtest: the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+ok 5 - the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+  ---
+  duration_ms: 2703.727054
+  type: 'test'
+  ...
+1..5
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11424.326857

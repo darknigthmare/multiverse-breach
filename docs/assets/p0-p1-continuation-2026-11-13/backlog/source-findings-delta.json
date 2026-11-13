@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "baselineSourceCommit": "72bea3d324e144c00b5f61677ee9f66b431ba43c",
+  "currentSourceCommit": "daca0f002eaa94cf16b06d5ad366b0423ea294d2",
+  "before": {
+    "actors": 4937,
+    "taskRows": 30728,
+    "tasksByPriority": {
+      "P1": 17322,
+      "P2": 13406
+    },
+    "actorsWithMissingRaster": 1476
+  },
+  "after": {
+    "actors": 4937,
+    "taskRows": 30724,
+    "tasksByPriority": {
+      "P1": 17318,
+      "P2": 13406
+    },
+    "actorsWithMissingRaster": 1474
+  },
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Alien\",\"name:Synthetic Ash Protocol\"]",
+      "actorId": "",
+      "name": "Synthetic Ash Protocol",
+      "universe": "Alien",
+      "kind": "enemy",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1",
+      "oldEvidence": "",
+      "beforeIncarnation": "",
+      "afterIncarnation": "Alien (1979)",
+      "beforeRasterPaths": [
+        "/sprites/generated/bosses/alien/synthetic-ash-protocol.png"
+      ],
+      "afterRasterPaths": [
+        "/sprites/generated/bosses/alien-1979/synthetic-ash-protocol.png"
+      ],
+      "beforeMissingRasterPaths": [
+        "/sprites/generated/bosses/alien/synthetic-ash-protocol.png"
+      ],
+      "afterMissingRasterPaths": [],
+      "resolutionEvidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-001/synthetic-ash-protocol-existing-asset-proof.json",
+      "resolution": "Existing1979 sprite path connected and explicit1979 incarnation propagated. No new image generation or1:1 approval."
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Synthetic Ash Protocol\"]",
+      "actorId": "",
+      "name": "Synthetic Ash Protocol",
+      "universe": "Alien",
+      "kind": "enemy",
+      "code": "RASTER_MISSING",
+      "priority": "P1",
+      "oldEvidence": "/sprites/generated/bosses/alien/synthetic-ash-protocol.png",
+      "beforeIncarnation": "",
+      "afterIncarnation": "Alien (1979)",
+      "beforeRasterPaths": [
+        "/sprites/generated/bosses/alien/synthetic-ash-protocol.png"
+      ],
+      "afterRasterPaths": [
+        "/sprites/generated/bosses/alien-1979/synthetic-ash-protocol.png"
+      ],
+      "beforeMissingRasterPaths": [
+        "/sprites/generated/bosses/alien/synthetic-ash-protocol.png"
+      ],
+      "afterMissingRasterPaths": [],
+      "resolutionEvidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-001/synthetic-ash-protocol-existing-asset-proof.json",
+      "resolution": "Existing1979 sprite path connected and explicit1979 incarnation propagated. No new image generation or1:1 approval."
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Chestburster Larva\"]",
+      "actorId": "",
+      "name": "Chestburster Larva",
+      "universe": "Alien",
+      "kind": "enemy",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1",
+      "oldEvidence": "",
+      "beforeIncarnation": "",
+      "afterIncarnation": "Alien (1979)",
+      "beforeRasterPaths": [
+        "/sprites/generated/bosses/alien/chestburster-larva.png"
+      ],
+      "afterRasterPaths": [
+        "/sprites/generated/bosses/alien-1979/chestburster-larva.png"
+      ],
+      "beforeMissingRasterPaths": [
+        "/sprites/generated/bosses/alien/chestburster-larva.png"
+      ],
+      "afterMissingRasterPaths": [],
+      "resolutionEvidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-001/chestburster-larva-existing-asset-proof.json",
+      "resolution": "Existing1979 sprite path connected and explicit1979 incarnation propagated. No new image generation or1:1 approval."
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Chestburster Larva\"]",
+      "actorId": "",
+      "name": "Chestburster Larva",
+      "universe": "Alien",
+      "kind": "enemy",
+      "code": "RASTER_MISSING",
+      "priority": "P1",
+      "oldEvidence": "/sprites/generated/bosses/alien/chestburster-larva.png",
+      "beforeIncarnation": "",
+      "afterIncarnation": "Alien (1979)",
+      "beforeRasterPaths": [
+        "/sprites/generated/bosses/alien/chestburster-larva.png"
+      ],
+      "afterRasterPaths": [
+        "/sprites/generated/bosses/alien-1979/chestburster-larva.png"
+      ],
+      "beforeMissingRasterPaths": [
+        "/sprites/generated/bosses/alien/chestburster-larva.png"
+      ],
+      "afterMissingRasterPaths": [],
+      "resolutionEvidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-001/chestburster-larva-existing-asset-proof.json",
+      "resolution": "Existing1979 sprite path connected and explicit1979 incarnation propagated. No new image generation or1:1 approval."
+    }
+  ],
+  "addedSourceFindings": [],
+  "sourceFindingResolutionCounts": {
+    "INCARNATION_UNSPECIFIED": 2,
+    "RASTER_MISSING": 2
+  },
+  "affectedActorKeys": [
+    "[\"Alien\",\"name:Chestburster Larva\"]",
+    "[\"Alien\",\"name:Synthetic Ash Protocol\"]"
+  ],
+  "firstBatchProgress": "first-batch-progress.json",
+  "fullActorClosuresClaimed": 0,
+  "newImageGenerationsClaimed": 0,
+  "source1to1Verified": false
+}

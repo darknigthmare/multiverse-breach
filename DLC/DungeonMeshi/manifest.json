@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "dungeon-meshi",
+  "universe": "Dungeon Meshi",
+  "directory": "DLC/DungeonMeshi",
+  "registration": "runtime",
+  "catalogOrder": 55,
+  "modules": [
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

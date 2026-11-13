@@ -1,0 +1,921 @@
+{
+  "schemaVersion": 1,
+  "originalPrivateReportSha256": "512216ccb83ae7d0debe37c80cb0dedda64ed20d10521c6134428b173cee35bf",
+  "canonicalFidelityApproved": false,
+  "report": {
+    "kind": "independent-standard-atlas-technical-and-view-review",
+    "status": "passed",
+    "reviewer": "/root/alien_storage_audit",
+    "reviewedAt": "2026-11-09T05:49:18.991138+00:00",
+    "scope": "Review of ROOT-produced standard normalizeReferencedCharacterPng strict-grid outputs and byte-identical installed assets. No canonical/code/runtime writes by reviewer. Old352 private candidates are separate historical technical proposals, not installed outputs.",
+    "canonicalFidelityApproved": false,
+    "visualFidelityApproved": false,
+    "absoluteVisualFidelityCertified": false,
+    "technicalPackingPassed": true,
+    "visualGeometryPassed": true,
+    "onlyFileWrittenByThisReview": "private-evidence-basename:atlas-standard-review.json",
+    "normalizer": {
+      "module": {
+        "path": "scripts/installReferencedCharacterImages.mjs",
+        "sha256": "dc71c5c6501f6c12aee0de32b2f4800d3729365ff8b4a10f16b9dc32fc142a3b",
+        "bytes": 32863
+      },
+      "export": "normalizeReferencedCharacterPng",
+      "mode": "strict-grid",
+      "sourceGridEdges": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "sourceBoundsConvention": "left,top,rightInclusive,bottomInclusive; width=right-left+1",
+      "outputDimensions": [
+        1024,
+        1024
+      ],
+      "outputFrames": [
+        4,
+        4
+      ],
+      "outputCell": [
+        256,
+        256
+      ],
+      "alphaThreshold": 12,
+      "sourceFringe": 4,
+      "commonScaleThenRoundDimensions": true,
+      "perFrameIndependentScaleChosen": false
+    },
+    "actuallyViewedMethods": [
+      "Original1024RGBA standardcandidate files opened with view_image detailoriginal, both16poses inspected.",
+      "Two288x288 diagnostic contact sheets (16frames72px) produced in memory only by nearest resize and alpha-over-gray, viewed in tool output; no previewfiles written. JPEG75 diagnosticencoding only, nevercandidate conversion.",
+      "Installed primary-reference PNGs actually opened with view_image; their decodedRGB independently equals the corresponding documentaryJPEG exactly."
+    ],
+    "independentReplays": {
+      "primaryReviewerPythonDirectRGBA": {
+        "performed": true,
+        "language": "Python/Numpy/Pillow",
+        "algorithm": "Use standardinclusive sourcebounds and perframe dimensions from metadata; independently recount alpha>12 bbox; copy only nonzero RGBA inside4pxexpandedframe bounds, nearestcenter-indexresize, centerx/bottomguard12 directcopy into1024RGBA.",
+        "differentRGBAPixelsExpectedVsCandidateBothAtlases": 0,
+        "visibleAndSoftAlphaCountsMatchMetadata": true
+      },
+      "secondReviewerNode": {
+        "reviewer": "/root/alien_storage_audit/ripley_export_replay",
+        "performed": true,
+        "runtime": "Nodev22.23.4",
+        "sharp": "0.35.3",
+        "method": "Read-only rerun existing normalizeReferencedCharacterPng on both originalnatives; compare generatedPNGbytes and source/processing deepEqual; verify installs/audits; independently recountgeometry.",
+        "candidatePNGByteExact": true,
+        "normalizationMetadataDeepEqual": true,
+        "installedAssetsByteExact": true,
+        "auditMetadataAndPinsMatch": true,
+        "inputHashesCheckedBeforeAndAfter": 11,
+        "inputHashesUnchanged": true,
+        "wroteFiles": false,
+        "usedNetwork": false,
+        "calledImageGen": false
+      }
+    },
+    "atlases": {
+      "hicks": {
+        "status": "passed",
+        "sourceNative": {
+          "path": "private-evidence-basename:exec-b91e8e69-9f7a-4d72-a01b-9b5fe2e05b2d.png",
+          "sha256": "17c397dc7b233490045e3d18dbcd82c220ea64250f6e396d7ed54847bf723eaf",
+          "bytes": 1406439
+        },
+        "nativeC2paCaBXPresent": true,
+        "nativeHashStillOriginal": true,
+        "candidate": {
+          "path": "private-evidence-basename:candidate.png",
+          "sha256": "45940c8b7deed2ae81652cc2a4e709c3546e19224251868c677b872552b55617",
+          "bytes": 919947
+        },
+        "normalization": {
+          "path": "private-evidence-basename:normalization.json",
+          "sha256": "ad7ec2e651597f6033e9a869f168110cb4b246c74f409f3b4fad4a3f6ed5f2bc",
+          "bytes": 9592
+        },
+        "installedAsset": {
+          "path": "DLC/Alien/assets/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
+          "sha256": "45940c8b7deed2ae81652cc2a4e709c3546e19224251868c677b872552b55617",
+          "bytes": 919947
+        },
+        "publicAudit": {
+          "path": "docs/audits/hicks-v2-reference-sprite-fidelity-wave13-2026-11-09.json",
+          "sha256": "08495e9c0f4da5ac90c50b2f79708f659d4949ad5b1c7f592d342512c12a2360",
+          "bytes": 12919
+        },
+        "sourceEvidenceDocument": {
+          "path": "docs/cg/hicks-reference-evidence-wave13-2026-11-09.json",
+          "sha256": "698259a4687e4fc2ac3dd3c47d61b7d043e0ad4b124157fe75f02d4b978233fa",
+          "bytes": 38594
+        },
+        "candidateEqualsInstalledBytes": true,
+        "privateAndAuditProcessingDeepEqual": true,
+        "sourceImageMetadataAndHashMatchAudit": true,
+        "installedFilmReference": {
+          "path": "DLC/Alien/assets/images/references/alien/hicks-aliens1986-film-wave13-2026-11-09.png",
+          "sha256": "e9ff9aa860fa0991977565e6376c46a29a60d10e275d86b709f6773d1db4a76a",
+          "bytes": 779411
+        },
+        "documentaryJpegCorrespondence": {
+          "jpeg": {
+            "path": "docs/cg/references/wave13-2026-11-09/hicks/film-hicks-syfy-credit20th.jpg",
+            "sha256": "fd07f689df1f0a6807e118e132a60a818c45268afa5ed47a28330e37e1a219b0",
+            "bytes": 64948
+          },
+          "decodedRGBExact": true,
+          "maxChannelDifference": 0,
+          "actuallyViewedInstalledPNG": true,
+          "scope": "Hicksactorface/helmet/headset closeup only; Feralmaskedhead/upperbody fog only. Neither reference certifies filmedfeet/fullbody."
+        },
+        "sourceVisibleAlphaGreaterThan12Pixels": 361423,
+        "allSourceVisiblePixelsAssignedBeforeResize": true,
+        "retainedSoftAlphaPixels": 157158,
+        "discardedSoftAlpha1to12Outside4pxFringe": 37669,
+        "minimumSourceGuard": 8,
+        "nominalCommonScale": 0.7891156462585034,
+        "normalizedDimensionRounding": "Math.round each sourceframe dimension times one common scale, then directnearest center sampling",
+        "geometry": {
+          "nonemptyFrames": 16,
+          "uniqueRawRGBAFrameHashes": 16,
+          "minimumGuard": 15,
+          "minimumMarginsLTRB": [
+            33,
+            15,
+            33,
+            15
+          ],
+          "footBaselinesInclusive": [
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240
+          ],
+          "allVisibleFrameBordersEmpty": true
+        },
+        "frames": [
+          {
+            "slot": 1,
+            "rawRGBAsha256": "02d94f3e6df4bda49a9e4fe364f9d3f15c4d18c905dffc5cb20baba72c0deac3",
+            "visibleBboxInclusive": [
+              72,
+              17,
+              182,
+              240
+            ],
+            "visiblePixelCount": 14141,
+            "visibleMarginsLTRB": [
+              72,
+              17,
+              73,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 2,
+            "rawRGBAsha256": "afda5fa7c26ae2bfcc9a852d91eda7f378200a87d215620dc9a6065376e45b2a",
+            "visibleBboxInclusive": [
+              66,
+              17,
+              189,
+              240
+            ],
+            "visiblePixelCount": 13398,
+            "visibleMarginsLTRB": [
+              66,
+              17,
+              66,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 3,
+            "rawRGBAsha256": "13cacec9e0b7be815fb7b604f782af7a3adc0fa4b832bc72111f73890650bf04",
+            "visibleBboxInclusive": [
+              65,
+              18,
+              189,
+              240
+            ],
+            "visiblePixelCount": 13955,
+            "visibleMarginsLTRB": [
+              65,
+              18,
+              66,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 4,
+            "rawRGBAsha256": "2ccd6c7ef153c82d20d0ff811740b1f6cff5c9fc4391a8904750a08e3bae34ed",
+            "visibleBboxInclusive": [
+              55,
+              18,
+              200,
+              240
+            ],
+            "visiblePixelCount": 14701,
+            "visibleMarginsLTRB": [
+              55,
+              18,
+              55,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 5,
+            "rawRGBAsha256": "8677428870a72b7196fd27dc11d10eafa597064f0d7456e9aa90f79d64c8ac76",
+            "visibleBboxInclusive": [
+              62,
+              23,
+              193,
+              240
+            ],
+            "visiblePixelCount": 12479,
+            "visibleMarginsLTRB": [
+              62,
+              23,
+              62,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 6,
+            "rawRGBAsha256": "c39ab60fabc88b69d3a69947c328cf914d0753800007a03ae4b8573f65e20643",
+            "visibleBboxInclusive": [
+              68,
+              23,
+              186,
+              240
+            ],
+            "visiblePixelCount": 11106,
+            "visibleMarginsLTRB": [
+              68,
+              23,
+              69,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 7,
+            "rawRGBAsha256": "0d2034ca55a9c1e800180317731680f00e00257a4dcba87de512c3691e8f5987",
+            "visibleBboxInclusive": [
+              55,
+              22,
+              200,
+              240
+            ],
+            "visiblePixelCount": 12891,
+            "visibleMarginsLTRB": [
+              55,
+              22,
+              55,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 8,
+            "rawRGBAsha256": "654eb6392cb1483d04efc69af3d129d52f6dae1ab2765575e48066105717e583",
+            "visibleBboxInclusive": [
+              58,
+              20,
+              196,
+              240
+            ],
+            "visiblePixelCount": 12145,
+            "visibleMarginsLTRB": [
+              58,
+              20,
+              59,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 9,
+            "rawRGBAsha256": "c698e784259ef11fd6383deea3ba2558196047cd342fd5f05715dcd66160197f",
+            "visibleBboxInclusive": [
+              52,
+              24,
+              202,
+              240
+            ],
+            "visiblePixelCount": 14498,
+            "visibleMarginsLTRB": [
+              52,
+              24,
+              53,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 10,
+            "rawRGBAsha256": "9b264539d6821ab1f1e52a51297532169c4e1c3c3f0b4782bef86f25383f4732",
+            "visibleBboxInclusive": [
+              33,
+              24,
+              222,
+              240
+            ],
+            "visiblePixelCount": 15383,
+            "visibleMarginsLTRB": [
+              33,
+              24,
+              33,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 11,
+            "rawRGBAsha256": "c46139d5a4338878735951e93e2a8671d5707ab2b3dcdec427e3ea4b5928833b",
+            "visibleBboxInclusive": [
+              48,
+              15,
+              207,
+              240
+            ],
+            "visiblePixelCount": 15818,
+            "visibleMarginsLTRB": [
+              48,
+              15,
+              48,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 12,
+            "rawRGBAsha256": "979ed2d560a36021f467fd45e61a1d9a7173ed8efcc9caadbe5d5c39a186a246",
+            "visibleBboxInclusive": [
+              55,
+              21,
+              200,
+              240
+            ],
+            "visiblePixelCount": 14495,
+            "visibleMarginsLTRB": [
+              55,
+              21,
+              55,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 13,
+            "rawRGBAsha256": "4d15b37e11004dcb31eb275fe214ed289e87dbe4e489710a0ae6d72c3f8ec506",
+            "visibleBboxInclusive": [
+              46,
+              23,
+              209,
+              240
+            ],
+            "visiblePixelCount": 16152,
+            "visibleMarginsLTRB": [
+              46,
+              23,
+              46,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 14,
+            "rawRGBAsha256": "d70a844ac750db491da77b600d8fc4d0225b7d90fd5b3fb05c613d322c22b9d5",
+            "visibleBboxInclusive": [
+              61,
+              44,
+              194,
+              240
+            ],
+            "visiblePixelCount": 15062,
+            "visibleMarginsLTRB": [
+              61,
+              44,
+              61,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 15,
+            "rawRGBAsha256": "c94e49aa9e320b5179d3df1408feab83a201d49b05231796765c8da10e6d4182",
+            "visibleBboxInclusive": [
+              58,
+              75,
+              197,
+              240
+            ],
+            "visiblePixelCount": 14217,
+            "visibleMarginsLTRB": [
+              58,
+              75,
+              58,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 16,
+            "rawRGBAsha256": "83fb43d37d949fa6db0143ec10565691ca7f17c261db8dcb6ba2de1380b7521d",
+            "visibleBboxInclusive": [
+              56,
+              58,
+              199,
+              240
+            ],
+            "visiblePixelCount": 14727,
+            "visibleMarginsLTRB": [
+              56,
+              58,
+              56,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          }
+        ],
+        "observations": [
+          "All16 originalnativepose arrangements remain represented in originalslotorder. Heads, hands, limbs, feet and heldgear remain visuallywithin each256cell.",
+          "Standardoutput is larger than prior352proposal by the declaredbbox/common-scale packing. Baseline240 is inclusive; it is not previousproposalexclusive236.",
+          "No synthesized/copied pose or generative redraw added by standardpacking; actualdirectRGBA replay matches everycandidatepixel.",
+          "At72px neutralgray the silhouettes remain distinct with no vividfringe or visiblecellclipping. Tinyface/equipmentdetails are not certified at thatresolution."
+        ],
+        "old352Comparison": {
+          "path": "private-evidence-basename:candidate.png",
+          "sha256": "ea009320652fc36b9790cb4e2bcbdeeb57b8519de1cb53e2c6e15078312a4aee",
+          "candidateIsByteDifferent": true,
+          "differingRGBAPixelCount": 343462,
+          "old352ProofUsedForStandardApproval": false
+        }
+      },
+      "feral_predator": {
+        "status": "passed",
+        "sourceNative": {
+          "path": "private-evidence-basename:exec-52a283a9-a58e-4462-b28a-381714501a83.png",
+          "sha256": "94cbdf1be48aa70992a874df539b3c9d62feb85e28327b41b049ab79b9cabbd9",
+          "bytes": 1766052
+        },
+        "nativeC2paCaBXPresent": true,
+        "nativeHashStillOriginal": true,
+        "candidate": {
+          "path": "private-evidence-basename:candidate.png",
+          "sha256": "d849a1132a61aab634b480d8da5194a81b5d1255af7a1105a0cf4cef2db4ee49",
+          "bytes": 1054514
+        },
+        "normalization": {
+          "path": "private-evidence-basename:normalization.json",
+          "sha256": "d4f1ff9dcc91cb51c64c29aa63c76c594042a708d67b7efa09dc994e87caf738",
+          "bytes": 9590
+        },
+        "installedAsset": {
+          "path": "DLC/Prey/assets/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
+          "sha256": "d849a1132a61aab634b480d8da5194a81b5d1255af7a1105a0cf4cef2db4ee49",
+          "bytes": 1054514
+        },
+        "publicAudit": {
+          "path": "docs/audits/feral-predator-v2-reference-sprite-fidelity-wave13-2026-11-09.json",
+          "sha256": "bd49e2dbfd77c9abbf72a72888cffacee0a16526f367d81bc07ffb3c2c40a5ac",
+          "bytes": 12931
+        },
+        "sourceEvidenceDocument": {
+          "path": "docs/cg/feral-predator-reference-evidence-wave13-2026-11-09.json",
+          "sha256": "2dcd618e08865f8a439c96087004031d7eee83ca1ac7eb50f4ed0a13c05f8523",
+          "bytes": 26670
+        },
+        "candidateEqualsInstalledBytes": true,
+        "privateAndAuditProcessingDeepEqual": true,
+        "sourceImageMetadataAndHashMatchAudit": true,
+        "installedFilmReference": {
+          "path": "DLC/Prey/assets/images/references/prey/feral-predator-film-wave13-2026-11-09.png",
+          "sha256": "72af4d0e541dd7999485b328e61a0ffe0fe102df034ce96e016b700ae68a8a74",
+          "bytes": 723470
+        },
+        "documentaryJpegCorrespondence": {
+          "jpeg": {
+            "path": "docs/cg/references/wave13-2026-11-09/feral-predator/primary-film-prey2022-fog.jpeg",
+            "sha256": "069c8bc49f426e3518d8195184bd4dc96e6a6a0a160dbc421a870f47cd19bc06",
+            "bytes": 81114
+          },
+          "decodedRGBExact": true,
+          "maxChannelDifference": 0,
+          "actuallyViewedInstalledPNG": true,
+          "scope": "Hicksactorface/helmet/headset closeup only; Feralmaskedhead/upperbody fog only. Neither reference certifies filmedfeet/fullbody."
+        },
+        "sourceVisibleAlphaGreaterThan12Pixels": 432416,
+        "allSourceVisiblePixelsAssignedBeforeResize": true,
+        "retainedSoftAlphaPixels": 125485,
+        "discardedSoftAlpha1to12Outside4pxFringe": 19784,
+        "minimumSourceGuard": 10,
+        "nominalCommonScale": 0.7759197324414716,
+        "normalizedDimensionRounding": "Math.round each sourceframe dimension times one common scale, then directnearest center sampling",
+        "geometry": {
+          "nonemptyFrames": 16,
+          "uniqueRawRGBAFrameHashes": 16,
+          "minimumGuard": 15,
+          "minimumMarginsLTRB": [
+            38,
+            15,
+            39,
+            15
+          ],
+          "footBaselinesInclusive": [
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240,
+            240
+          ],
+          "allVisibleFrameBordersEmpty": true
+        },
+        "frames": [
+          {
+            "slot": 1,
+            "rawRGBAsha256": "7913eec3f9a727acadcdecba3a838aa950d9f071fd2b3eea49ea461ab4b5c1da",
+            "visibleBboxInclusive": [
+              64,
+              15,
+              191,
+              240
+            ],
+            "visiblePixelCount": 15353,
+            "visibleMarginsLTRB": [
+              64,
+              15,
+              64,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 2,
+            "rawRGBAsha256": "4ed56297b0955988cb3c0c742568535dd5735c5fc5ed9fb9c849b70bcff1d3bd",
+            "visibleBboxInclusive": [
+              69,
+              17,
+              185,
+              240
+            ],
+            "visiblePixelCount": 15290,
+            "visibleMarginsLTRB": [
+              69,
+              17,
+              70,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 3,
+            "rawRGBAsha256": "9abbfebce1c9c4e40c34321c14c7d9991f30a04896ba37ffdb18d4f9cb7956db",
+            "visibleBboxInclusive": [
+              57,
+              18,
+              198,
+              240
+            ],
+            "visiblePixelCount": 15725,
+            "visibleMarginsLTRB": [
+              57,
+              18,
+              57,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 4,
+            "rawRGBAsha256": "bc36a08b3b7ef1de948f3d664af8a511d7a7ffa66a1c3e78296e1d133353a937",
+            "visibleBboxInclusive": [
+              50,
+              27,
+              205,
+              240
+            ],
+            "visiblePixelCount": 17278,
+            "visibleMarginsLTRB": [
+              50,
+              27,
+              50,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 5,
+            "rawRGBAsha256": "cde50c0f959b6c561373dc114d928440e5d6c7303fedf8bf27cb296eb1d202b2",
+            "visibleBboxInclusive": [
+              66,
+              22,
+              189,
+              240
+            ],
+            "visiblePixelCount": 14872,
+            "visibleMarginsLTRB": [
+              66,
+              22,
+              66,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 6,
+            "rawRGBAsha256": "a63947ae559fec5bfb78320f53369633e12cbd22fadd1fec97d9540993720d1b",
+            "visibleBboxInclusive": [
+              69,
+              24,
+              186,
+              240
+            ],
+            "visiblePixelCount": 13913,
+            "visibleMarginsLTRB": [
+              69,
+              24,
+              69,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 7,
+            "rawRGBAsha256": "89908e917538f1d795a5164a4c90a172514038c29dce7aa586f648c53382f7d9",
+            "visibleBboxInclusive": [
+              61,
+              30,
+              194,
+              240
+            ],
+            "visiblePixelCount": 14884,
+            "visibleMarginsLTRB": [
+              61,
+              30,
+              61,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 8,
+            "rawRGBAsha256": "d22d8e2093658784af34c56ea32f8c82306febb26cd809bf37298e26ac61dc2b",
+            "visibleBboxInclusive": [
+              47,
+              38,
+              207,
+              240
+            ],
+            "visiblePixelCount": 15869,
+            "visibleMarginsLTRB": [
+              47,
+              38,
+              48,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 9,
+            "rawRGBAsha256": "606ba8aa31f7c1d7d9a27accd1cde39e69aaeb165c4f3f1ad15870bbee949e98",
+            "visibleBboxInclusive": [
+              53,
+              22,
+              201,
+              240
+            ],
+            "visiblePixelCount": 16042,
+            "visibleMarginsLTRB": [
+              53,
+              22,
+              54,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 10,
+            "rawRGBAsha256": "4b63357adef09dd104a8ecd77e523a0f2fb18484ad73ddad88a3601880be7489",
+            "visibleBboxInclusive": [
+              44,
+              26,
+              208,
+              240
+            ],
+            "visiblePixelCount": 17155,
+            "visibleMarginsLTRB": [
+              44,
+              26,
+              47,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 11,
+            "rawRGBAsha256": "7e4860bce7b68c3a3593a763b7b84718335b444fc233b67062639c85e7111795",
+            "visibleBboxInclusive": [
+              50,
+              41,
+              204,
+              240
+            ],
+            "visiblePixelCount": 17887,
+            "visibleMarginsLTRB": [
+              50,
+              41,
+              51,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 12,
+            "rawRGBAsha256": "a338f219202c75c89155ba3d2a8e91c705cfcef72b0a5cc98bbbb466efc39075",
+            "visibleBboxInclusive": [
+              50,
+              17,
+              205,
+              240
+            ],
+            "visiblePixelCount": 17511,
+            "visibleMarginsLTRB": [
+              50,
+              17,
+              50,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 13,
+            "rawRGBAsha256": "f7e3afa3508aba8d0202fb6ddd34127e8a5a25375e83996714811cb7322628c6",
+            "visibleBboxInclusive": [
+              40,
+              31,
+              214,
+              240
+            ],
+            "visiblePixelCount": 19018,
+            "visibleMarginsLTRB": [
+              40,
+              31,
+              41,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 14,
+            "rawRGBAsha256": "ee4c4ec20e925339baa4d6536257039bcf334dbcf52f567895f3758275190a9f",
+            "visibleBboxInclusive": [
+              38,
+              39,
+              216,
+              240
+            ],
+            "visiblePixelCount": 16174,
+            "visibleMarginsLTRB": [
+              38,
+              39,
+              39,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 15,
+            "rawRGBAsha256": "c474c8beb1daf12c551b4ff81a664f0f387dbe6fcd64850a121ec33a6cd591ba",
+            "visibleBboxInclusive": [
+              51,
+              84,
+              203,
+              240
+            ],
+            "visiblePixelCount": 15535,
+            "visibleMarginsLTRB": [
+              51,
+              84,
+              52,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          },
+          {
+            "slot": 16,
+            "rawRGBAsha256": "1a391309bc7b763f402b47f54edbb5760b45af0a94e965163989e3641e189c35",
+            "visibleBboxInclusive": [
+              53,
+              52,
+              201,
+              240
+            ],
+            "visiblePixelCount": 17688,
+            "visibleMarginsLTRB": [
+              53,
+              52,
+              54,
+              15
+            ],
+            "visiblePixelsTouchingFrameBorders": 0,
+            "actuallyViewedWithin1024SheetAnd72Diagnostic": true
+          }
+        ],
+        "observations": [
+          "All16 originalnativepose arrangements remain represented in originalslotorder. Heads, hands, limbs, feet and heldgear remain visuallywithin each256cell.",
+          "Standardoutput is larger than prior352proposal by the declaredbbox/common-scale packing. Baseline240 is inclusive; it is not previousproposalexclusive236.",
+          "No synthesized/copied pose or generative redraw added by standardpacking; actualdirectRGBA replay matches everycandidatepixel.",
+          "At72px neutralgray the silhouettes remain distinct with no vividfringe or visiblecellclipping. Tinyface/equipmentdetails are not certified at thatresolution."
+        ],
+        "old352Comparison": {
+          "path": "private-evidence-basename:candidate.png",
+          "sha256": "461c35f8cab4f10c0e74d0326869a720df278af6a723e1770611a99610f75b0b",
+          "candidateIsByteDifferent": true,
+          "differingRGBAPixelCount": 344447,
+          "old352ProofUsedForStandardApproval": false
+        }
+      }
+    },
+    "limits": [
+      "Technical and visiblegeometry PASS does not certify absolute1:1 identity or unobserved canonical details. Source-evidence authority remains scoped to actual film/qualifiedlicensed support.",
+      "Unlike the old352 copy-only intermediate, standard normalization explicitly discards alpha1–12 outside each alpha>12 bbox expanded4px. Everyalpha>12 pixel is assigned before resize, not every originalRGBA sample preserved in finaloutput.",
+      "Final nearest sampling is noninvertible; no claim that all nativepixels or all hiddenalpha0 RGB survive. OriginalnativeC2PA files remain hash-identical.",
+      "Threshold12 is visibility/packing policy of the existing normalizer. NativefringeRGB can look vivid in the directRGBA viewer at opacity1–3; actual gray-composited72px diagnostics showed no vividhalo.",
+      "Selectedregistryentries, old8state variants and runtimebehavior are outside this review; ROOT remains their writer."
+    ],
+    "noMutationsTo": [
+      "nativeImageGenC2PAfiles",
+      "standardcandidatePNGs",
+      "standardnormalizationJSONs",
+      "DLCinstalledPNGs",
+      "publicaudits",
+      "sourceevidencedocuments",
+      "canonicalregistries",
+      "normalizerOrProjectCode",
+      "old352candidatesOrProofs"
+    ]
+  }
+}

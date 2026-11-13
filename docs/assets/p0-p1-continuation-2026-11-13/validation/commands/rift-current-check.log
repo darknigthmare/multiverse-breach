@@ -1,0 +1,255 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Generated rift dossier catalog is stale; run this script without --check
++ actual - expected
+... Skipped lines
+
+  '{\n' +
+    '  "schemaVersion": 1,\n' +
+    '  "generateur": "scripts/buildRiftDossierCatalog.mjs",\n' +
+    '  "contratImage": {\n' +
+    '    "source": "openai",\n' +
+...
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
++   '        "palette: Ivoi'... 10472837 more characters
+-   '        "palette: Ivoi'... 10860823 more characters
+
+    at file:///workspace/multiverse-breach/scripts/buildRiftDossierCatalog.mjs:1447:10
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '{\n' +
+    '  "schemaVersion": 1,\n' +
+    '  "generateur": "scripts/buildRiftDossierCatalog.mjs",\n' +
+    '  "contratImage": {\n' +
+    '    "source": "openai",\n' +
+    '    "style": "32-bit pixel art",\n' +
+    '    "largeur": 640,\n' +
+    '    "hauteur": 360,\n' +
+    '    "format": "webp",\n' +
+    '    "espaceCouleur": "RGB"\n' +
+    '  },\n' +
+    '  "total": 3199,\n' +
+    '  "comptesParFamille": {\n' +
+    '    "campagne-oc": 12,\n' +
+    '    "expanded": 1175,\n' +
+    '    "statique": 39,\n' +
+    '    "fusion": 16,\n' +
+    '    "arc-univers": 41,\n' +
+    '    "arc-personnage": 1912,\n' +
+    '    "trio": 4\n' +
+    '  },\n' +
+    '  "entrees": [\n' +
+    '    {\n' +
+    '      "id": 8801,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Prologue - Le Verrou des noms",\n' +
+    '        "en": "Prologue - The Lock of Names"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "RPG",\n' +
+    '      "boss": "Greffier du Voile",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Central Atrium, Mosaic City",\n' +
+    '        "Find Mirelle and Bastion, reactivate three name beacons, then anchor your own record.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    `        "palette: Ivoire palimpseste #f3eee2, cyan A.R.C.A. #7df9ff, turquoise d'ancrage #39c5bb, or d'archive #d9b86b et danger corail #ff5b6e.",\n` +
+    `        "props: Balises de nom, Éclats d'Origine, registres A.R.C.A., portails brisés, cartes suspendues de ruptures, six Verrous d'Origine et consoles de décision.",\n` +
+    `        "bossSilhouette: L'Avatar du Sans-Auteur doit évoquer une pression causale de Route X faite d'absence et de ratures, pas une divinité extérieure; sa signature canonique est la Rature de Destin."\n` +
+    '      ],\n' +
+    '      "referenceUrls": [\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/lore.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/smashArenas.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/enemies.js"\n' +
+    '      ],\n' +
+    '      "bossVisualAnchor": null,\n' +
+    '      "bossReferenceUrls": [],\n' +
+    '      "politiqueReferences": "authoritative-public",\n' +
+    '      "referencesLocalesOpenAI": [],\n' +
+    '      "cheminCibleDedie": "/images/rift-dossiers/openai/mission-8801-name-lock-v1.png",\n' +
+    '      "promptOpenAI": "Use case: stylized-concept\\nAsset type: wide 16:9 rift-dossier illustration for the browser game Multiverse Breach\\nPrimary request: create one original, mission-specific environment image for operation 8801, “Prologue - Le Verrou des noms”.\\nScene/backdrop: the Central Atrium of Mosaic City, a monumental dark archive-city interior fractured by suspended architecture and one controlled cyan causal rift.\\nSubject: three distinct empty name-beacons being reactivated around a blank personal ledger pedestal; nearby nameless humanoid silhouettes copy residual gestures without identifiable faces. The distant Veil Clerk is suggested only as an ominous administrative silhouette, not a featured character.\\nStyle/medium: polished high-detail 32-bit-era pixel art, deliberate pixel clusters, crisp edges, rich stone, brass and black archive machinery textures; unmistakably raster pixel art, original project artwork.\\nComposition/framing: cinematic wide establishing view with clear foreground ledger pedestal, three readable beacon landmarks in the middle distance, deep Atrium architecture behind; designed to crop well inside a small dossier header.\\nLighting/mood: cyan beacon light, restrained warm amber archive lamps, tense first-contact atmosphere.\\nColor palette: near-black, gunmetal, cyan #39c5bb, small amber accents.\\nLore fidelity: this is the Verrou des noms; blank space waits for a name rather than erasing it. Show restoration and unstable identity, not generic destruction.\\nConstraints: exactly one coherent image; environment-focused; no readable text, letters, numbers, labels, logo, caption, UI, signature, watermark, collage or split panels; wholly original visual design; no copied franchise art."\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "id": 8802,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Mission 01 - Ce que l Archive refuse",\n' +
+    '        "en": "Mission 01 - What the Archive Refuses"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "Tactics",\n' +
+    '      "boss": "Juge des Trames",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Static Archives, inner ring",\n' +
+    '        "Compare conflicting agent memories and protect the only evidence preserved in three minds.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    `        "palette: Ivoire palimpseste #f3eee2, cyan A.R.C.A. #7df9ff, turquoise d'ancrage #39c5bb, or d'archive #d9b86b et danger corail #ff5b6e.",\n` +
+    `        "props: Balises de nom, Éclats d'Origine, registres A.R.C.A., portails brisés, cartes suspendues de ruptures, six Verrous d'Origine et consoles de décision.",\n` +
+    `        "bossSilhouette: L'Avatar du Sans-Auteur doit évoquer une pression causale de Route X faite d'absence et de ratures, pas une divinité extérieure; sa signature canonique est la Rature de Destin."\n` +
+    '      ],\n' +
+    '      "referenceUrls": [\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/lore.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/smashArenas.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/enemies.js"\n' +
+    '      ],\n' +
+    '      "bossVisualAnchor": null,\n' +
+    '      "bossReferenceUrls": [],\n' +
+    '      "politiqueReferences": "authoritative-public",\n' +
+    '      "referencesLocalesOpenAI": [],\n' +
+    '      "cheminCibleDedie": "/images/rift-dossiers/openai/mission-8802-static-archives-v1.png",\n' +
+    '      "promptOpenAI": "Use case: stylized-concept\\nAsset type: wide environmental illustration for the mission rift dossier in the original browser game Multiverse Breach\\nPrimary request: create one original high-detail 32-bit pixel-art environment for mission 8802, \\"What the Archive Refuses\\". Depict the Static Archives inner ring of the Nexus of Convergence: a circular black and gunmetal archive corridor opening into an elevated three-quarter tactical chamber. At the heart of the scene, show exactly three distinct evidence nodes that must remain active together: one cyan memory reliquary, one amber memory reliquary, and one split cyan-amber reliquary. Their projected architectural memories visibly contradict one another without using written symbols, yet all three share one fragile preserved proof connected by luminous threads. An isolated secondary proof at the edge is visibly being swallowed and reclassified by static. The Thread Judge, an original monumental faceless arbiter made of dark segmented archive plates and restrained cyan light, presides in the middle distance as the mission boss.\\nCanonical location: Static Archives, inner ring.\\nCanonical objective: compare conflicting agent memories and protect the only evidence preserved in three minds.\\nCanonical stakes: false evidence can stabilize a lying chronology as firmly as truth.\\nCanonical mission rule: all three evidence nodes must be occupied during the same turn; an isolated node is reclassified as false by the Judge.\\nStyle/medium: polished high-detail 32-bit-era pixel art, deliberate crisp pixel clusters, rich worn metal texture, subtle scanline/static fragments, strong readable silhouettes, unmistakably raster pixel art rather than smooth vector art.\\nComposition/framing: exact wide 16:9 environmental establishing image; elevated three-quarter tactical perspective; broad readable floor and lanes; keep the three evidence nodes, shared proof, and Thread Judge inside the central 80 percent safe-crop area; outer 10 percent on every edge contains only noncritical corridor continuation and atmosphere. One coherent scene, not a collage or contact sheet.\\nLighting/mood: severe archival darkness, cold cyan memory light opposed by warm amber evidence light, tense but legible.\\nColor palette: Nexus black, gunmetal, cyan and amber, with tiny neutral white static accents only.\\nConstraints: environment-led composition; original OC design; no recognizable licensed imagery; no readable text, letters, numbers, glyph labels, logos, interface, UI grid, frame, border, caption, signature or watermark. No split panels. No photorealism. No smooth vector shapes."\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "id": 8803,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Mission 02 - La Forge des vies possibles",\n' +
+    '        "en": "Mission 02 - The Forge of Possible Lives"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "Smash",\n' +
+    '      "boss": "Usurpateur des Vies Possibles",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Origin Shard Foundry",\n' +
+    '        "Defend origin matrices while Nova separates lived possibilities from manufactured bait.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    '        "palette: Ivoi'... 10472837 more characters,
+  expected: '{\n' +
+    '  "schemaVersion": 1,\n' +
+    '  "generateur": "scripts/buildRiftDossierCatalog.mjs",\n' +
+    '  "contratImage": {\n' +
+    '    "source": "openai",\n' +
+    '    "style": "32-bit pixel art",\n' +
+    '    "largeur": 640,\n' +
+    '    "hauteur": 360,\n' +
+    '    "format": "webp",\n' +
+    '    "espaceCouleur": "RGB"\n' +
+    '  },\n' +
+    '  "total": 3199,\n' +
+    '  "comptesParFamille": {\n' +
+    '    "campagne-oc": 12,\n' +
+    '    "expanded": 1175,\n' +
+    '    "statique": 39,\n' +
+    '    "fusion": 16,\n' +
+    '    "arc-univers": 41,\n' +
+    '    "arc-personnage": 1912,\n' +
+    '    "trio": 4\n' +
+    '  },\n' +
+    '  "entrees": [\n' +
+    '    {\n' +
+    '      "id": 8801,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Prologue - Le Verrou des noms",\n' +
+    '        "en": "Prologue - The Lock of Names"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "RPG",\n' +
+    '      "boss": "Greffier du Voile",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Central Atrium, Mosaic City",\n' +
+    '        "Find Mirelle and Bastion, reactivate three name beacons, then anchor your own record.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    `        "palette: Ivoire palimpseste #f3eee2, cyan A.R.C.A. #7df9ff, turquoise d'ancrage #39c5bb, or d'archive #d9b86b et danger corail #ff5b6e.",\n` +
+    `        "props: Balises de nom, Éclats d'Origine, registres A.R.C.A., portails brisés, cartes suspendues de ruptures, six Verrous d'Origine et consoles de décision.",\n` +
+    `        "bossSilhouette: L'Avatar du Sans-Auteur doit évoquer une pression causale de Route X faite d'absence et de ratures, pas une divinité extérieure; sa signature canonique est la Rature de Destin."\n` +
+    '      ],\n' +
+    '      "referenceUrls": [\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/lore.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/smashArenas.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/enemies.js"\n' +
+    '      ],\n' +
+    '      "bossVisualAnchor": null,\n' +
+    '      "bossReferenceUrls": [],\n' +
+    '      "politiqueReferences": "authoritative-public",\n' +
+    '      "referencesLocalesOpenAI": [],\n' +
+    '      "cheminCibleDedie": "/images/rift-dossiers/openai/mission-8801-name-lock-v1.png",\n' +
+    '      "promptOpenAI": "Use case: stylized-concept\\nAsset type: wide 16:9 rift-dossier illustration for the browser game Multiverse Breach\\nPrimary request: create one original, mission-specific environment image for operation 8801, “Prologue - Le Verrou des noms”.\\nScene/backdrop: the Central Atrium of Mosaic City, a monumental dark archive-city interior fractured by suspended architecture and one controlled cyan causal rift.\\nSubject: three distinct empty name-beacons being reactivated around a blank personal ledger pedestal; nearby nameless humanoid silhouettes copy residual gestures without identifiable faces. The distant Veil Clerk is suggested only as an ominous administrative silhouette, not a featured character.\\nStyle/medium: polished high-detail 32-bit-era pixel art, deliberate pixel clusters, crisp edges, rich stone, brass and black archive machinery textures; unmistakably raster pixel art, original project artwork.\\nComposition/framing: cinematic wide establishing view with clear foreground ledger pedestal, three readable beacon landmarks in the middle distance, deep Atrium architecture behind; designed to crop well inside a small dossier header.\\nLighting/mood: cyan beacon light, restrained warm amber archive lamps, tense first-contact atmosphere.\\nColor palette: near-black, gunmetal, cyan #39c5bb, small amber accents.\\nLore fidelity: this is the Verrou des noms; blank space waits for a name rather than erasing it. Show restoration and unstable identity, not generic destruction.\\nConstraints: exactly one coherent image; environment-focused; no readable text, letters, numbers, labels, logo, caption, UI, signature, watermark, collage or split panels; wholly original visual design; no copied franchise art."\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "id": 8802,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Mission 01 - Ce que l Archive refuse",\n' +
+    '        "en": "Mission 01 - What the Archive Refuses"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "Tactics",\n' +
+    '      "boss": "Juge des Trames",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Static Archives, inner ring",\n' +
+    '        "Compare conflicting agent memories and protect the only evidence preserved in three minds.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    `        "palette: Ivoire palimpseste #f3eee2, cyan A.R.C.A. #7df9ff, turquoise d'ancrage #39c5bb, or d'archive #d9b86b et danger corail #ff5b6e.",\n` +
+    `        "props: Balises de nom, Éclats d'Origine, registres A.R.C.A., portails brisés, cartes suspendues de ruptures, six Verrous d'Origine et consoles de décision.",\n` +
+    `        "bossSilhouette: L'Avatar du Sans-Auteur doit évoquer une pression causale de Route X faite d'absence et de ratures, pas une divinité extérieure; sa signature canonique est la Rature de Destin."\n` +
+    '      ],\n' +
+    '      "referenceUrls": [\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/lore.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/smashArenas.js",\n' +
+    '        "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/enemies.js"\n' +
+    '      ],\n' +
+    '      "bossVisualAnchor": null,\n' +
+    '      "bossReferenceUrls": [],\n' +
+    '      "politiqueReferences": "authoritative-public",\n' +
+    '      "referencesLocalesOpenAI": [],\n' +
+    '      "cheminCibleDedie": "/images/rift-dossiers/openai/mission-8802-static-archives-v1.png",\n' +
+    '      "promptOpenAI": "Use case: stylized-concept\\nAsset type: wide environmental illustration for the mission rift dossier in the original browser game Multiverse Breach\\nPrimary request: create one original high-detail 32-bit pixel-art environment for mission 8802, \\"What the Archive Refuses\\". Depict the Static Archives inner ring of the Nexus of Convergence: a circular black and gunmetal archive corridor opening into an elevated three-quarter tactical chamber. At the heart of the scene, show exactly three distinct evidence nodes that must remain active together: one cyan memory reliquary, one amber memory reliquary, and one split cyan-amber reliquary. Their projected architectural memories visibly contradict one another without using written symbols, yet all three share one fragile preserved proof connected by luminous threads. An isolated secondary proof at the edge is visibly being swallowed and reclassified by static. The Thread Judge, an original monumental faceless arbiter made of dark segmented archive plates and restrained cyan light, presides in the middle distance as the mission boss.\\nCanonical location: Static Archives, inner ring.\\nCanonical objective: compare conflicting agent memories and protect the only evidence preserved in three minds.\\nCanonical stakes: false evidence can stabilize a lying chronology as firmly as truth.\\nCanonical mission rule: all three evidence nodes must be occupied during the same turn; an isolated node is reclassified as false by the Judge.\\nStyle/medium: polished high-detail 32-bit-era pixel art, deliberate crisp pixel clusters, rich worn metal texture, subtle scanline/static fragments, strong readable silhouettes, unmistakably raster pixel art rather than smooth vector art.\\nComposition/framing: exact wide 16:9 environmental establishing image; elevated three-quarter tactical perspective; broad readable floor and lanes; keep the three evidence nodes, shared proof, and Thread Judge inside the central 80 percent safe-crop area; outer 10 percent on every edge contains only noncritical corridor continuation and atmosphere. One coherent scene, not a collage or contact sheet.\\nLighting/mood: severe archival darkness, cold cyan memory light opposed by warm amber evidence light, tense but legible.\\nColor palette: Nexus black, gunmetal, cyan and amber, with tiny neutral white static accents only.\\nConstraints: environment-led composition; original OC design; no recognizable licensed imagery; no readable text, letters, numbers, glyph labels, logos, interface, UI grid, frame, border, caption, signature or watermark. No split panels. No photorealism. No smooth vector shapes."\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "id": 8803,\n' +
+    '      "famille": "campagne-oc",\n' +
+    '      "nom": {\n' +
+    '        "fr": "Mission 02 - La Forge des vies possibles",\n' +
+    '        "en": "Mission 02 - The Forge of Possible Lives"\n' +
+    '      },\n' +
+    '      "univers": [\n' +
+    '        "Nexus de Convergence"\n' +
+    '      ],\n' +
+    '      "mode": "Smash",\n' +
+    '      "boss": "Usurpateur des Vies Possibles",\n' +
+    '      "personnage": null,\n' +
+    '      "ancragesVisuels": [\n' +
+    '        "Origin Shard Foundry",\n' +
+    '        "Defend origin matrices while Nova separates lived possibilities from manufactured bait.",\n' +
+    '        "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure",\n' +
+    `        "Atrium central de la Cité-Mosaïque et infrastructure d'ancrage A.R.C.A., des Archives statiques jusqu'à la Brèche Primordiale.",\n` +
+    `        "architecture: Hub stable composé de l'Atrium central, d'anneaux d'archives, de fonderies d'Éclats d'Origine, de cours de portails, de l'Observatoire Veyr et d'anneaux causaux autour des Brèches.",\n` +
+    '        "palette: Ivoi'... 10860823 more characters,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.5

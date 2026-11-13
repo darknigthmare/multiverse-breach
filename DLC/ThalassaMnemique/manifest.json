@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "thalassa-mnemique",
+  "universe": "Thalassa Mnémique",
+  "directory": "DLC/ThalassaMnemique",
+  "registration": "runtime",
+  "catalogOrder": 356,
+  "modules": [
+    {
+      "path": "data/ocDlcPacks.js",
+      "runtimeAdapter": "src/game/ocDlcPacks.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

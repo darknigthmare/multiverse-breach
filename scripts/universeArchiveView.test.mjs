@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { canInspectUniverseArchive, getArchiveNeighbour, normalizeArchiveLivingWorld } from '../src/game/universeArchiveView.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -130,17 +130,18 @@ test('OC chronicle resolves a missing current chapter from the canonical campaig
 
 test('Codex and collection use one modal with live counts and no stale encrypted duplicate dossier', () => {
   const source = readFileSync(path.join(root, 'src/components/HubScreen.jsx'), 'utf8');
-  assert.equal((source.match(/<UniverseArchiveDialog /g) || []).length, 1);
+  assert.equal((source.match(/<UniverseArchiveReader[\s>]/g) || []).length, 1);
   assert.match(source, /data-universe-open=\{universe\} aria-haspopup="dialog" onClick=\{\(\) => openUniverseArchive\(universe\)\}/);
   assert.match(source, /openUniverseArchive\(universe\); sound\.playSfx\('coin'\)/);
   assert.match(source, /codexUniverseKeys\.length\} univers affichés/);
-  assert.match(source, /selectedUniverseArchive\.worldItems\.length\} objets/);
+  const reader = readFileSync(path.join(root, 'src/components/UniverseArchiveReader.jsx'), 'utf8');
+  assert.match(reader, /catalogProps\('world-items', selectedUniverseArchive\.worldItems/);
   assert.doesNotMatch(source, /const encryptString/);
   assert.doesNotMatch(source, /\b(?:522|525)\s+univers/);
   for (const section of ['acts', 'locks', 'dossier']) assert.ok(source.includes(`chronicleSection === '${section}' && (`));
-  for (const section of ['signatures', 'items', 'world', 'missions']) assert.ok(source.includes(`universeArchiveSection === '${section}' &&`));
-  assert.match(source, /plaque\?\.origin/);
-  assert.match(source, /Adaptation Breach/);
+  for (const section of ['signatures', 'items', 'world', 'missions']) assert.ok(reader.includes(`activeSection === '${section}' &&`));
+  assert.match(reader, /plaque\?\.origin/);
+  assert.match(reader, /Adaptation Breach/);
 });
 
 test('OC chronicle resume after six locks targets Act V and not a completed mission', () => {

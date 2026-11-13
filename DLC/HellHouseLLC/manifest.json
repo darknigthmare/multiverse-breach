@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "hell-house-llc",
+  "universe": "Hell House LLC",
+  "directory": "DLC/HellHouseLLC",
+  "registration": "runtime",
+  "catalogOrder": 86,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

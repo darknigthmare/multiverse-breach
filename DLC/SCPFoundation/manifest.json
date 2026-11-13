@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "scpfoundation",
+  "universe": "SCP Foundation",
+  "directory": "DLC/SCPFoundation",
+  "registration": "runtime",
+  "catalogOrder": 165,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartB.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartB.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreEnemyOverrides.js",
+      "runtimeAdapter": "src/game/loreEnemyOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

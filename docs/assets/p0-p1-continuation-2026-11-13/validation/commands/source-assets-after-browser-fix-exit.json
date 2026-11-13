@@ -1,0 +1,19 @@
+{
+  "name": "source-assets-after-browser-fix",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--no-warnings",
+    "--experimental-loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/feralSourceSceneAssets.test.mjs",
+    "scripts/sourceSceneCompanionAssets.test.mjs",
+    "scripts/sourceSceneArtAssets.test.mjs"
+  ],
+  "exitCode": 0,
+  "startedAt": "2026-11-13T07:08:20.400423+00:00",
+  "endedAt": "2026-11-13T07:08:22.612038+00:00",
+  "fullNpmLifecycle": false,
+  "staticMediaCopy": false
+}

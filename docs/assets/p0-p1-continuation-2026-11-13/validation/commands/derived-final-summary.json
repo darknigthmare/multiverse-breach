@@ -1,0 +1,33 @@
+[
+  {
+    "name": "rift-embed-final-quality",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/buildRiftDossierCatalog.mjs"
+    ],
+    "startedAt": "2026-11-13T07:27:32.111250+00:00",
+    "endedAt": "2026-11-13T07:27:45.289638+00:00",
+    "exitCode": 0
+  },
+  {
+    "name": "rift-final-check",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/buildRiftDossierCatalog.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-11-13T07:27:45.290342+00:00",
+    "endedAt": "2026-11-13T07:27:57.359992+00:00",
+    "exitCode": 0
+  },
+  {
+    "name": "completion-current-write",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/combatCompletionAudit.mjs"
+    ],
+    "startedAt": "2026-11-13T07:27:57.360552+00:00",
+    "endedAt": "2026-11-13T07:27:58.967967+00:00",
+    "exitCode": 1
+  }
+]

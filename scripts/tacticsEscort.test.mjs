@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { after, afterEach, before, test } from 'node:test';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getTacticsEscortBriefing, getTacticsEscortPose, resolveTacticsEscort } from '../src/game/tacticsEscort.js';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');

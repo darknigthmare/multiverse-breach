@@ -99,7 +99,14 @@ test('publisher hosts accepted only with exact HTTPS host and no credentials',()
 });
 // Mutation tests model an author omitting a delivered row BEFORE module evaluation.
 // With the old circular implementation, the expected list silently lost that row too.
-const r13Source=fs.readFileSync(new URL('../src/game/wardrobeOfficialR13.js',import.meta.url),'utf8');
+const readMutationSource = relativePath => {
+ const location = new URL(relativePath, import.meta.url);
+ // Data-URL evaluation has no filesystem base. Keep the mutated aggregate,
+ // while resolving its new DLC imports against the original module location.
+ return fs.readFileSync(location, 'utf8').replace(/\bfrom\s+(['"])(\.{1,2}\/[^'"]+)\1/g,
+  (_, quote, specifier) => `from ${quote}${new URL(specifier, location).href}${quote}`);
+};
+const r13Source=readMutationSource('../src/game/wardrobeOfficialR13.js');
 for(const [group,replacement,lost,scopeId] of [
  ['payday','[...payday.slice(1),...magicka]','r13-pd2-lawless-named-components-wild-bunch','pd2-lawless-named-components'],
  ['magicka','[...payday,...magicka.slice(1)]','r13-magicka-gamer-zombie','magicka-gamer-named-robes']
@@ -112,7 +119,7 @@ for(const [group,replacement,lost,scopeId] of [
  assert.deepEqual(r.missing,[lost]);assert.equal(r.status,'NAMED_SCOPE_INCOMPLETE');
 });
 test('R14 omitted generated delivery also retains the source requirement',async()=>{
- const raw=fs.readFileSync(new URL('../src/game/wardrobeOfficialR14.js',import.meta.url),'utf8');
+ const raw=readMutationSource('../src/game/wardrobeOfficialR14.js');
  const marker='WARDROBE_NAMED_PACKS_R14.flatMap(p=>p.items.map';assert.equal(raw.split(marker).length,2);
  const changed=raw.replace(marker,"WARDROBE_NAMED_PACKS_R14.flatMap(p=>p.items.filter(i=>i.key!=='r14-rapacious').map");
  const m=await import(`data:text/javascript;base64,${Buffer.from(changed).toString('base64')}`);

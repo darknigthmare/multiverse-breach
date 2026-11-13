@@ -1,0 +1,1424 @@
+TAP version 13
+# Subtest: all nine pinned master canonical bodies retain exact historical bytes and resolve source aliases only in their real universe
+ok 1 - all nine pinned master canonical bodies retain exact historical bytes and resolve source aliases only in their real universe
+  ---
+  duration_ms: 54.0048
+  type: 'test'
+  ...
+# Subtest: edition fixtures reject changed historical hashes, selected paths, raw slots, universe and incarnation
+ok 2 - edition fixtures reject changed historical hashes, selected paths, raw slots, universe and incarnation
+  ---
+  duration_ms: 70.029514
+  type: 'test'
+  ...
+# Subtest: ripley: current canonical edition rejects incompatible W13 art while the independently frozen older source stays addressable
+ok 3 - ripley: current canonical edition rejects incompatible W13 art while the independently frozen older source stays addressable
+  ---
+  duration_ms: 6.290709
+  type: 'test'
+  ...
+# Subtest: liquid_snake: current canonical edition rejects incompatible W13 art while the independently frozen older source stays addressable
+ok 4 - liquid_snake: current canonical edition rejects incompatible W13 art while the independently frozen older source stays addressable
+  ---
+  duration_ms: 3.886656
+  type: 'test'
+  ...
+# Subtest: Maul keeps exact shared master base bytes and separates current Mandalore from the frozen Naboo native-art refusal
+ok 5 - Maul keeps exact shared master base bytes and separates current Mandalore from the frozen Naboo native-art refusal
+  ---
+  duration_ms: 5.181497
+  type: 'test'
+  ...
+# Subtest: latest Star Wars source comparisons reject changed current fields and changed historical actors, actions or equipment
+ok 6 - latest Star Wars source comparisons reject changed current fields and changed historical actors, actions or equipment
+  ---
+  duration_ms: 4.968596
+  type: 'test'
+  ...
+# Subtest: declared source-compatible native bases retain exact editions and byte-identical master reference PNGs
+ok 7 - declared source-compatible native bases retain exact editions and byte-identical master reference PNGs
+  ---
+  duration_ms: 380.021533
+  type: 'test'
+  ...
+# Subtest: actual App normalization and serialization retain dormant data through a base-only round trip
+ok 8 - actual App normalization and serialization retain dormant data through a base-only round trip
+  ---
+  duration_ms: 5605.051252
+  type: 'test'
+  ...
+# Subtest: actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+ok 9 - actual App save round trips preserve a vertical battlefield and normalize an unknown battlefield in both DLC profiles
+  ---
+  duration_ms: 22.000757
+  type: 'test'
+  ...
+# Subtest: legacy v6 save migrates identically with complete and absent runtime catalogs
+ok 10 - legacy v6 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 27.787606
+  type: 'test'
+  ...
+# Subtest: legacy v8 save migrates identically with complete and absent runtime catalogs
+ok 11 - legacy v8 save migrates identically with complete and absent runtime catalogs
+  ---
+  duration_ms: 11.732882
+  type: 'test'
+  ...
+# Subtest: runtime squad falls back to the Anchor without rewriting the saved slots
+ok 12 - runtime squad falls back to the Anchor without rewriting the saved slots
+  ---
+  duration_ms: 2.499856
+  type: 'test'
+  ...
+# Subtest: show/hide installed content preserves absent and future reserve preferences
+ok 13 - show/hide installed content preserves absent and future reserve preferences
+  ---
+  duration_ms: 1.195221
+  type: 'test'
+  ...
+# Subtest: unloaded and future OC campaign records survive progress rebuilding
+ok 14 - unloaded and future OC campaign records survive progress rebuilding
+  ---
+  duration_ms: 0.377008
+  type: 'test'
+  ...
+# Subtest: a multi-universe phase cannot bypass missing or reserved sources
+ok 15 - a multi-universe phase cannot bypass missing or reserved sources
+  ---
+  duration_ms: 0.428776
+  type: 'test'
+  ...
+# Subtest: selected arc retains the complete catalog final and phase identities
+ok 16 - selected arc retains the complete catalog final and phase identities
+  ---
+  duration_ms: 1.051323
+  type: 'test'
+  ...
+# Subtest: complete and reduced profiles instantiate the real game catalogs and React app
+    # Subtest: all
+    ok 1 - all
+      ---
+      duration_ms: 26099.214111
+      type: 'test'
+      ...
+    # {"heroes":1911,"enemies":525,"expandedStages":1175,"packModules":1784}
+    # Subtest: base
+    ok 2 - base
+      ---
+      duration_ms: 27408.023661
+      type: 'test'
+      ...
+    # {"heroes":71,"enemies":21,"expandedStages":60,"packModules":0}
+    # Subtest: Halo
+    ok 3 - Halo
+      ---
+      duration_ms: 23211.434877
+      type: 'test'
+      ...
+    # {"heroes":81,"enemies":22,"expandedStages":60,"packModules":20}
+    # Subtest: mixed
+    ok 4 - mixed
+      ---
+      duration_ms: 18655.692568
+      type: 'test'
+      ...
+    # {"heroes":87,"enemies":24,"expandedStages":74,"packModules":23}
+    1..4
+ok 17 - complete and reduced profiles instantiate the real game catalogs and React app
+  ---
+  duration_ms: 95376.533545
+  type: 'test'
+  ...
+# Subtest: real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+    # Subtest: all
+    ok 1 - all
+      ---
+      duration_ms: 27373.6817
+      type: 'test'
+      ...
+    # {"label":"all","installedPacks":505,"checkedModes":3162,"optionalEntries":38,"excludedShared":0,"publicAssets":6122}
+    # Subtest: base
+    ok 2 - base
+      ---
+      duration_ms: 23595.148102
+      type: 'test'
+      ...
+    # {"label":"base","installedPacks":0,"checkedModes":132,"optionalEntries":0,"excludedShared":14,"publicAssets":6108}
+    # Subtest: halo
+    ok 3 - halo
+      ---
+      duration_ms: 21148.898998
+      type: 'test'
+      ...
+    # {"label":"halo","installedPacks":1,"checkedModes":138,"optionalEntries":0,"excludedShared":14,"publicAssets":6108}
+    # Subtest: consumers
+    ok 4 - consumers
+      ---
+      duration_ms: 23409.530157
+      type: 'test'
+      ...
+    # {"label":"consumers","installedPacks":38,"checkedModes":360,"optionalEntries":38,"excludedShared":0,"publicAssets":6122}
+    1..4
+ok 18 - real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+  ---
+  duration_ms: 95530.105215
+  type: 'test'
+  ...
+# Subtest: Naru’s authored Prey scene reuses the actual masked sixteen-pose delivery without mutating the catalog
+ok 19 - Naru’s authored Prey scene reuses the actual masked sixteen-pose delivery without mutating the catalog
+  ---
+  duration_ms: 2.844786
+  type: 'test'
+  ...
+# Subtest: the real Prey enemy roster binds its locked 1719 world boss without requiring the playable ally incarnation
+ok 20 - the real Prey enemy roster binds its locked 1719 world boss without requiring the playable ally incarnation
+  ---
+  duration_ms: 0.334434
+  type: 'test'
+  ...
+# Subtest: stealing the mask prevents reuse before mounting it, in the bog, and after the guided bolt
+ok 21 - stealing the mask prevents reuse before mounting it, in the bog, and after the guided bolt
+  ---
+  duration_ms: 0.220322
+  type: 'test'
+  ...
+# Subtest: other film scenes, copied definitions and replacement protagonists cannot borrow Feral’s masked atlas
+ok 22 - other film scenes, copied definitions and replacement protagonists cannot borrow Feral’s masked atlas
+  ---
+  duration_ms: 0.206351
+  type: 'test'
+  ...
+# Subtest: a conflicting threat identity, universe, mask state or explicit incarnation keeps its own art
+ok 23 - a conflicting threat identity, universe, mask state or explicit incarnation keeps its own art
+  ---
+  duration_ms: 0.335576
+  type: 'test'
+  ...
+# Subtest: absent or unresolved Feral does not create a substitute body
+ok 24 - absent or unresolved Feral does not create a substitute body
+  ---
+  duration_ms: 0.120231
+  type: 'test'
+  ...
+# Subtest: latest GitHub source factories have an independent exact fixture; historical sources remain pinned
+ok 25 - latest GitHub source factories have an independent exact fixture; historical sources remain pinned
+  ---
+  duration_ms: 2.962925
+  type: 'test'
+  ...
+# Subtest: all seven real runtime actors retain the exact current DLC source fields including saber geometry
+ok 26 - all seven real runtime actors retain the exact current DLC source fields including saber geometry
+  ---
+  duration_ms: 1.168581
+  type: 'test'
+  ...
+# Subtest: current source actions survive combat resolution and side-prefixed aliases without acquiring a W13 incarnation
+ok 27 - current source actions survive combat resolution and side-prefixed aliases without acquiring a W13 incarnation
+  ---
+  duration_ms: 3.458231
+  type: 'test'
+  ...
+# Subtest: a shared name, foreign source identity, mixed equipment or altered action does not gain the current edition gate
+ok 28 - a shared name, foreign source identity, mixed equipment or altered action does not gain the current edition gate
+  ---
+  duration_ms: 0.51124
+  type: 'test'
+  ...
+# Subtest: real battle-local signature preparation preserves current basic actions and the same source edition
+ok 29 - real battle-local signature preparation preserves current basic actions and the same source edition
+  ---
+  duration_ms: 2.244602
+  type: 'test'
+  ...
+# Subtest: the independently frozen W13 actors keep their own actions instead of inheriting the latest source equipment
+ok 30 - the independently frozen W13 actors keep their own actions instead of inheriting the latest source equipment
+  ---
+  duration_ms: 0.987969
+  type: 'test'
+  ...
+# Subtest: the DLC facade retains Aria’s dagger and the exact nonoffensive capture NPC alongside the installed roster
+ok 31 - the DLC facade retains Aria’s dagger and the exact nonoffensive capture NPC alongside the installed roster
+  ---
+  duration_ms: 0.335425
+  type: 'test'
+  ...
+# Subtest: 50101: exact native stage, no fallback army or automatic empty-arena victory
+ok 32 - 50101: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 13.555675
+  type: 'test'
+  ...
+# Subtest: 50101: complete manual route through native cells and commands
+ok 33 - 50101: complete manual route through native cells and commands
+  ---
+  duration_ms: 21.965108
+  type: 'test'
+  ...
+# Subtest: 50101: native autoBattle reaches the real victory condition
+ok 34 - 50101: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 7.879454
+  type: 'test'
+  ...
+# Subtest: 50101: distant, unknown and premature final commands cannot consume a turn
+ok 35 - 50101: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 1.219808
+  type: 'test'
+  ...
+# Subtest: 50101: native pause rejects commands and movement without advancing pressure
+ok 36 - 50101: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 1.206488
+  type: 'test'
+  ...
+# Subtest: 50101: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 37 - 50101: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 1.195071
+  type: 'test'
+  ...
+# Subtest: 50101: source actor replacement, even same id, invalidates mission
+ok 38 - 50101: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.716279
+  type: 'test'
+  ...
+# Subtest: 50101: a KO followed by resurrection cannot resume an old encounter
+ok 39 - 50101: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 0.746835
+  type: 'test'
+  ...
+# Subtest: 50101: source identity/edition changes cannot retain active commands
+ok 40 - 50101: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 1.042871
+  type: 'test'
+  ...
+# Subtest: 50101: expired turns fail, no free empty-roster reward
+ok 41 - 50101: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 31.593506
+  type: 'test'
+  ...
+# Subtest: 50101: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 42 - 50101: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 2.070831
+  type: 'test'
+  ...
+# Subtest: 50101: team and global templates stay unchanged; no substitute granted
+ok 43 - 50101: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 2.718296
+  type: 'test'
+  ...
+# Subtest: 50101: native movement spends AP and cannot jump blocked geometry
+ok 44 - 50101: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 2.636903
+  type: 'test'
+  ...
+# Subtest: 50101: marked danger resolves once per ended turn and not during idle
+ok 45 - 50101: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 1.774744
+  type: 'test'
+  ...
+# Subtest: 50101: cancelled/disposed scene cannot issue delayed victory
+ok 46 - 50101: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.991574
+  type: 'test'
+  ...
+# Subtest: 50101: exact source briefing exists in FR and EN
+ok 47 - 50101: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.426312
+  type: 'test'
+  ...
+# Subtest: 50101: custom does not inherit source controller/battlefield
+ok 48 - 50101: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.19898
+  type: 'test'
+  ...
+# Subtest: 50101: isCustom does not inherit source controller/battlefield
+ok 49 - 50101: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.139881
+  type: 'test'
+  ...
+# Subtest: 50101: p2 does not inherit source controller/battlefield
+ok 50 - 50101: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.182615
+  type: 'test'
+  ...
+# Subtest: 50101: wrongMode does not inherit source controller/battlefield
+ok 51 - 50101: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.152109
+  type: 'test'
+  ...
+# Subtest: 50101: wrongUniverse does not inherit source controller/battlefield
+ok 52 - 50101: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.171889
+  type: 'test'
+  ...
+# Subtest: 50101: wrongEdition does not inherit source controller/battlefield
+ok 53 - 50101: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.130066
+  type: 'test'
+  ...
+# Subtest: 50101: wrongId does not inherit source controller/battlefield
+ok 54 - 50101: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.11277
+  type: 'test'
+  ...
+# Subtest: 50101: baseArena does not inherit source controller/battlefield
+ok 55 - 50101: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.194844
+  type: 'test'
+  ...
+# Subtest: 50101: hidden does not inherit source controller/battlefield
+ok 56 - 50101: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.144798
+  type: 'test'
+  ...
+# Subtest: 50101: protagonist required by native mission access even on replay
+ok 57 - 50101: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 3.911614
+  type: 'test'
+  ...
+# Subtest: 50102: exact native stage, no fallback army or automatic empty-arena victory
+ok 58 - 50102: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 3.045348
+  type: 'test'
+  ...
+# Subtest: 50102: complete manual route through native cells and commands
+ok 59 - 50102: complete manual route through native cells and commands
+  ---
+  duration_ms: 4.530346
+  type: 'test'
+  ...
+# Subtest: 50102: native autoBattle reaches the real victory condition
+ok 60 - 50102: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 8.054627
+  type: 'test'
+  ...
+# Subtest: 50102: distant, unknown and premature final commands cannot consume a turn
+ok 61 - 50102: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 0.745053
+  type: 'test'
+  ...
+# Subtest: 50102: native pause rejects commands and movement without advancing pressure
+ok 62 - 50102: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 0.837051
+  type: 'test'
+  ...
+# Subtest: 50102: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 63 - 50102: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 4.622205
+  type: 'test'
+  ...
+# Subtest: 50102: source actor replacement, even same id, invalidates mission
+ok 64 - 50102: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.660075
+  type: 'test'
+  ...
+# Subtest: 50102: a KO followed by resurrection cannot resume an old encounter
+ok 65 - 50102: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 0.59099
+  type: 'test'
+  ...
+# Subtest: 50102: source identity/edition changes cannot retain active commands
+ok 66 - 50102: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 0.55078
+  type: 'test'
+  ...
+# Subtest: 50102: expired turns fail, no free empty-roster reward
+ok 67 - 50102: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 9.844824
+  type: 'test'
+  ...
+# Subtest: 50102: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 68 - 50102: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 0.623269
+  type: 'test'
+  ...
+# Subtest: 50102: team and global templates stay unchanged; no substitute granted
+ok 69 - 50102: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 1.156943
+  type: 'test'
+  ...
+# Subtest: 50102: native movement spends AP and cannot jump blocked geometry
+ok 70 - 50102: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 0.983612
+  type: 'test'
+  ...
+# Subtest: 50102: marked danger resolves once per ended turn and not during idle
+ok 71 - 50102: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 1.507712
+  type: 'test'
+  ...
+# Subtest: 50102: cancelled/disposed scene cannot issue delayed victory
+ok 72 - 50102: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.589218
+  type: 'test'
+  ...
+# Subtest: 50102: exact source briefing exists in FR and EN
+ok 73 - 50102: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.148814
+  type: 'test'
+  ...
+# Subtest: 50102: custom does not inherit source controller/battlefield
+ok 74 - 50102: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.121423
+  type: 'test'
+  ...
+# Subtest: 50102: isCustom does not inherit source controller/battlefield
+ok 75 - 50102: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.178569
+  type: 'test'
+  ...
+# Subtest: 50102: p2 does not inherit source controller/battlefield
+ok 76 - 50102: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.128173
+  type: 'test'
+  ...
+# Subtest: 50102: wrongMode does not inherit source controller/battlefield
+ok 77 - 50102: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.102384
+  type: 'test'
+  ...
+# Subtest: 50102: wrongUniverse does not inherit source controller/battlefield
+ok 78 - 50102: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.103726
+  type: 'test'
+  ...
+# Subtest: 50102: wrongEdition does not inherit source controller/battlefield
+ok 79 - 50102: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.11984
+  type: 'test'
+  ...
+# Subtest: 50102: wrongId does not inherit source controller/battlefield
+ok 80 - 50102: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.144578
+  type: 'test'
+  ...
+# Subtest: 50102: baseArena does not inherit source controller/battlefield
+ok 81 - 50102: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.204077
+  type: 'test'
+  ...
+# Subtest: 50102: hidden does not inherit source controller/battlefield
+ok 82 - 50102: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.134002
+  type: 'test'
+  ...
+# Subtest: 50102: protagonist required by native mission access even on replay
+ok 83 - 50102: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 1.501142
+  type: 'test'
+  ...
+# Subtest: 50103: exact native stage, no fallback army or automatic empty-arena victory
+ok 84 - 50103: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 2.38271
+  type: 'test'
+  ...
+# Subtest: 50103: complete manual route through native cells and commands
+ok 85 - 50103: complete manual route through native cells and commands
+  ---
+  duration_ms: 9.197469
+  type: 'test'
+  ...
+# Subtest: 50103: native autoBattle reaches the real victory condition
+ok 86 - 50103: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 17.533871
+  type: 'test'
+  ...
+# Subtest: 50103: distant, unknown and premature final commands cannot consume a turn
+ok 87 - 50103: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 1.26798
+  type: 'test'
+  ...
+# Subtest: 50103: native pause rejects commands and movement without advancing pressure
+ok 88 - 50103: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 1.444627
+  type: 'test'
+  ...
+# Subtest: 50103: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 89 - 50103: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 1.759221
+  type: 'test'
+  ...
+# Subtest: 50103: source actor replacement, even same id, invalidates mission
+ok 90 - 50103: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.701207
+  type: 'test'
+  ...
+# Subtest: 50103: a KO followed by resurrection cannot resume an old encounter
+ok 91 - 50103: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 0.662779
+  type: 'test'
+  ...
+# Subtest: 50103: source identity/edition changes cannot retain active commands
+ok 92 - 50103: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 0.661386
+  type: 'test'
+  ...
+# Subtest: 50103: expired turns fail, no free empty-roster reward
+ok 93 - 50103: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 18.737975
+  type: 'test'
+  ...
+# Subtest: 50103: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 94 - 50103: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 0.825524
+  type: 'test'
+  ...
+# Subtest: 50103: team and global templates stay unchanged; no substitute granted
+ok 95 - 50103: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 1.628153
+  type: 'test'
+  ...
+# Subtest: 50103: native movement spends AP and cannot jump blocked geometry
+ok 96 - 50103: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 0.732264
+  type: 'test'
+  ...
+# Subtest: 50103: marked danger resolves once per ended turn and not during idle
+ok 97 - 50103: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 1.618648
+  type: 'test'
+  ...
+# Subtest: 50103: cancelled/disposed scene cannot issue delayed victory
+ok 98 - 50103: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.665462
+  type: 'test'
+  ...
+# Subtest: 50103: exact source briefing exists in FR and EN
+ok 99 - 50103: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.130666
+  type: 'test'
+  ...
+# Subtest: 50103: custom does not inherit source controller/battlefield
+ok 100 - 50103: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.104577
+  type: 'test'
+  ...
+# Subtest: 50103: isCustom does not inherit source controller/battlefield
+ok 101 - 50103: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.10599
+  type: 'test'
+  ...
+# Subtest: 50103: p2 does not inherit source controller/battlefield
+ok 102 - 50103: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.097347
+  type: 'test'
+  ...
+# Subtest: 50103: wrongMode does not inherit source controller/battlefield
+ok 103 - 50103: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.088714
+  type: 'test'
+  ...
+# Subtest: 50103: wrongUniverse does not inherit source controller/battlefield
+ok 104 - 50103: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.083226
+  type: 'test'
+  ...
+# Subtest: 50103: wrongEdition does not inherit source controller/battlefield
+ok 105 - 50103: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.121433
+  type: 'test'
+  ...
+# Subtest: 50103: wrongId does not inherit source controller/battlefield
+ok 106 - 50103: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.093831
+  type: 'test'
+  ...
+# Subtest: 50103: baseArena does not inherit source controller/battlefield
+ok 107 - 50103: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.087943
+  type: 'test'
+  ...
+# Subtest: 50103: hidden does not inherit source controller/battlefield
+ok 108 - 50103: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.083746
+  type: 'test'
+  ...
+# Subtest: 50103: protagonist required by native mission access even on replay
+ok 109 - 50103: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 1.38095
+  type: 'test'
+  ...
+# Subtest: 50104: exact native stage, no fallback army or automatic empty-arena victory
+ok 110 - 50104: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 17.731889
+  type: 'test'
+  ...
+# Subtest: 50104: complete manual route through native cells and commands
+ok 111 - 50104: complete manual route through native cells and commands
+  ---
+  duration_ms: 16.208062
+  type: 'test'
+  ...
+# Subtest: 50104: native autoBattle reaches the real victory condition
+ok 112 - 50104: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 20.427141
+  type: 'test'
+  ...
+# Subtest: 50104: distant, unknown and premature final commands cannot consume a turn
+ok 113 - 50104: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 0.792995
+  type: 'test'
+  ...
+# Subtest: 50104: native pause rejects commands and movement without advancing pressure
+ok 114 - 50104: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 0.820626
+  type: 'test'
+  ...
+# Subtest: 50104: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 115 - 50104: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 0.673455
+  type: 'test'
+  ...
+# Subtest: 50104: source actor replacement, even same id, invalidates mission
+ok 116 - 50104: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.70345
+  type: 'test'
+  ...
+# Subtest: 50104: a KO followed by resurrection cannot resume an old encounter
+ok 117 - 50104: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 3.445321
+  type: 'test'
+  ...
+# Subtest: 50104: source identity/edition changes cannot retain active commands
+ok 118 - 50104: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 0.619073
+  type: 'test'
+  ...
+# Subtest: 50104: expired turns fail, no free empty-roster reward
+ok 119 - 50104: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 6.688148
+  type: 'test'
+  ...
+# Subtest: 50104: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 120 - 50104: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 0.667937
+  type: 'test'
+  ...
+# Subtest: 50104: team and global templates stay unchanged; no substitute granted
+ok 121 - 50104: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 1.397165
+  type: 'test'
+  ...
+# Subtest: 50104: native movement spends AP and cannot jump blocked geometry
+ok 122 - 50104: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 0.609198
+  type: 'test'
+  ...
+# Subtest: 50104: marked danger resolves once per ended turn and not during idle
+ok 123 - 50104: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 0.954017
+  type: 'test'
+  ...
+# Subtest: 50104: cancelled/disposed scene cannot issue delayed victory
+ok 124 - 50104: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.561727
+  type: 'test'
+  ...
+# Subtest: 50104: exact source briefing exists in FR and EN
+ok 125 - 50104: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.129575
+  type: 'test'
+  ...
+# Subtest: 50104: custom does not inherit source controller/battlefield
+ok 126 - 50104: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.103996
+  type: 'test'
+  ...
+# Subtest: 50104: isCustom does not inherit source controller/battlefield
+ok 127 - 50104: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.143546
+  type: 'test'
+  ...
+# Subtest: 50104: p2 does not inherit source controller/battlefield
+ok 128 - 50104: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.101272
+  type: 'test'
+  ...
+# Subtest: 50104: wrongMode does not inherit source controller/battlefield
+ok 129 - 50104: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.090316
+  type: 'test'
+  ...
+# Subtest: 50104: wrongUniverse does not inherit source controller/battlefield
+ok 130 - 50104: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.078568
+  type: 'test'
+  ...
+# Subtest: 50104: wrongEdition does not inherit source controller/battlefield
+ok 131 - 50104: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.07956
+  type: 'test'
+  ...
+# Subtest: 50104: wrongId does not inherit source controller/battlefield
+ok 132 - 50104: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.078278
+  type: 'test'
+  ...
+# Subtest: 50104: baseArena does not inherit source controller/battlefield
+ok 133 - 50104: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.085018
+  type: 'test'
+  ...
+# Subtest: 50104: hidden does not inherit source controller/battlefield
+ok 134 - 50104: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.081222
+  type: 'test'
+  ...
+# Subtest: 50104: protagonist required by native mission access even on replay
+ok 135 - 50104: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 1.450876
+  type: 'test'
+  ...
+# Subtest: 50105: exact native stage, no fallback army or automatic empty-arena victory
+ok 136 - 50105: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 1.030473
+  type: 'test'
+  ...
+# Subtest: 50105: complete manual route through native cells and commands
+ok 137 - 50105: complete manual route through native cells and commands
+  ---
+  duration_ms: 6.895069
+  type: 'test'
+  ...
+# Subtest: 50105: native autoBattle reaches the real victory condition
+ok 138 - 50105: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 5.119664
+  type: 'test'
+  ...
+# Subtest: 50105: distant, unknown and premature final commands cannot consume a turn
+ok 139 - 50105: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 0.529418
+  type: 'test'
+  ...
+# Subtest: 50105: native pause rejects commands and movement without advancing pressure
+ok 140 - 50105: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 0.517871
+  type: 'test'
+  ...
+# Subtest: 50105: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 141 - 50105: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 0.593855
+  type: 'test'
+  ...
+# Subtest: 50105: source actor replacement, even same id, invalidates mission
+ok 142 - 50105: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.375125
+  type: 'test'
+  ...
+# Subtest: 50105: a KO followed by resurrection cannot resume an old encounter
+ok 143 - 50105: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 0.392761
+  type: 'test'
+  ...
+# Subtest: 50105: source identity/edition changes cannot retain active commands
+ok 144 - 50105: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 0.402256
+  type: 'test'
+  ...
+# Subtest: 50105: expired turns fail, no free empty-roster reward
+ok 145 - 50105: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 5.223751
+  type: 'test'
+  ...
+# Subtest: 50105: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 146 - 50105: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 0.692063
+  type: 'test'
+  ...
+# Subtest: 50105: team and global templates stay unchanged; no substitute granted
+ok 147 - 50105: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 4.046758
+  type: 'test'
+  ...
+# Subtest: 50105: native movement spends AP and cannot jump blocked geometry
+ok 148 - 50105: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 0.428185
+  type: 'test'
+  ...
+# Subtest: 50105: marked danger resolves once per ended turn and not during idle
+ok 149 - 50105: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 1.250274
+  type: 'test'
+  ...
+# Subtest: 50105: cancelled/disposed scene cannot issue delayed victory
+ok 150 - 50105: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.514586
+  type: 'test'
+  ...
+# Subtest: 50105: exact source briefing exists in FR and EN
+ok 151 - 50105: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.138368
+  type: 'test'
+  ...
+# Subtest: 50105: custom does not inherit source controller/battlefield
+ok 152 - 50105: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.131829
+  type: 'test'
+  ...
+# Subtest: 50105: isCustom does not inherit source controller/battlefield
+ok 153 - 50105: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.118348
+  type: 'test'
+  ...
+# Subtest: 50105: p2 does not inherit source controller/battlefield
+ok 154 - 50105: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.096175
+  type: 'test'
+  ...
+# Subtest: 50105: wrongMode does not inherit source controller/battlefield
+ok 155 - 50105: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.104157
+  type: 'test'
+  ...
+# Subtest: 50105: wrongUniverse does not inherit source controller/battlefield
+ok 156 - 50105: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.080731
+  type: 'test'
+  ...
+# Subtest: 50105: wrongEdition does not inherit source controller/battlefield
+ok 157 - 50105: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.080731
+  type: 'test'
+  ...
+# Subtest: 50105: wrongId does not inherit source controller/battlefield
+ok 158 - 50105: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.09271
+  type: 'test'
+  ...
+# Subtest: 50105: baseArena does not inherit source controller/battlefield
+ok 159 - 50105: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.134903
+  type: 'test'
+  ...
+# Subtest: 50105: hidden does not inherit source controller/battlefield
+ok 160 - 50105: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.154022
+  type: 'test'
+  ...
+# Subtest: 50105: protagonist required by native mission access even on replay
+ok 161 - 50105: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 1.643866
+  type: 'test'
+  ...
+# Subtest: 50106: exact native stage, no fallback army or automatic empty-arena victory
+ok 162 - 50106: exact native stage, no fallback army or automatic empty-arena victory
+  ---
+  duration_ms: 1.706611
+  type: 'test'
+  ...
+# Subtest: 50106: complete manual route through native cells and commands
+ok 163 - 50106: complete manual route through native cells and commands
+  ---
+  duration_ms: 5.668171
+  type: 'test'
+  ...
+# Subtest: 50106: native autoBattle reaches the real victory condition
+ok 164 - 50106: native autoBattle reaches the real victory condition
+  ---
+  duration_ms: 6.969181
+  type: 'test'
+  ...
+# Subtest: 50106: distant, unknown and premature final commands cannot consume a turn
+ok 165 - 50106: distant, unknown and premature final commands cannot consume a turn
+  ---
+  duration_ms: 0.710611
+  type: 'test'
+  ...
+# Subtest: 50106: native pause rejects commands and movement without advancing pressure
+ok 166 - 50106: native pause rejects commands and movement without advancing pressure
+  ---
+  duration_ms: 0.777401
+  type: 'test'
+  ...
+# Subtest: 50106: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+ok 167 - 50106: a command consumes one turn; duplicate/stale/non-numeric tokens are refused
+  ---
+  duration_ms: 0.843091
+  type: 'test'
+  ...
+# Subtest: 50106: source actor replacement, even same id, invalidates mission
+ok 168 - 50106: source actor replacement, even same id, invalidates mission
+  ---
+  duration_ms: 0.587055
+  type: 'test'
+  ...
+# Subtest: 50106: a KO followed by resurrection cannot resume an old encounter
+ok 169 - 50106: a KO followed by resurrection cannot resume an old encounter
+  ---
+  duration_ms: 0.538191
+  type: 'test'
+  ...
+# Subtest: 50106: source identity/edition changes cannot retain active commands
+ok 170 - 50106: source identity/edition changes cannot retain active commands
+  ---
+  duration_ms: 0.506994
+  type: 'test'
+  ...
+# Subtest: 50106: expired turns fail, no free empty-roster reward
+ok 171 - 50106: expired turns fail, no free empty-roster reward
+  ---
+  duration_ms: 11.428461
+  type: 'test'
+  ...
+# Subtest: 50106: ordinary kits, pickups and crossover events cannot bypass source actions
+ok 172 - 50106: ordinary kits, pickups and crossover events cannot bypass source actions
+  ---
+  duration_ms: 0.556819
+  type: 'test'
+  ...
+# Subtest: 50106: team and global templates stay unchanged; no substitute granted
+ok 173 - 50106: team and global templates stay unchanged; no substitute granted
+  ---
+  duration_ms: 0.9627
+  type: 'test'
+  ...
+# Subtest: 50106: native movement spends AP and cannot jump blocked geometry
+ok 174 - 50106: native movement spends AP and cannot jump blocked geometry
+  ---
+  duration_ms: 0.456157
+  type: 'test'
+  ...
+# Subtest: 50106: marked danger resolves once per ended turn and not during idle
+ok 175 - 50106: marked danger resolves once per ended turn and not during idle
+  ---
+  duration_ms: 0.828569
+  type: 'test'
+  ...
+# Subtest: 50106: cancelled/disposed scene cannot issue delayed victory
+ok 176 - 50106: cancelled/disposed scene cannot issue delayed victory
+  ---
+  duration_ms: 0.407825
+  type: 'test'
+  ...
+# Subtest: 50106: exact source briefing exists in FR and EN
+ok 177 - 50106: exact source briefing exists in FR and EN
+  ---
+  duration_ms: 0.098218
+  type: 'test'
+  ...
+# Subtest: 50106: custom does not inherit source controller/battlefield
+ok 178 - 50106: custom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.20574
+  type: 'test'
+  ...
+# Subtest: 50106: isCustom does not inherit source controller/battlefield
+ok 179 - 50106: isCustom does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.108724
+  type: 'test'
+  ...
+# Subtest: 50106: p2 does not inherit source controller/battlefield
+ok 180 - 50106: p2 does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.096856
+  type: 'test'
+  ...
+# Subtest: 50106: wrongMode does not inherit source controller/battlefield
+ok 181 - 50106: wrongMode does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.081032
+  type: 'test'
+  ...
+# Subtest: 50106: wrongUniverse does not inherit source controller/battlefield
+ok 182 - 50106: wrongUniverse does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.120081
+  type: 'test'
+  ...
+# Subtest: 50106: wrongEdition does not inherit source controller/battlefield
+ok 183 - 50106: wrongEdition does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.096425
+  type: 'test'
+  ...
+# Subtest: 50106: wrongId does not inherit source controller/battlefield
+ok 184 - 50106: wrongId does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.084397
+  type: 'test'
+  ...
+# Subtest: 50106: baseArena does not inherit source controller/battlefield
+ok 185 - 50106: baseArena does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.124257
+  type: 'test'
+  ...
+# Subtest: 50106: hidden does not inherit source controller/battlefield
+ok 186 - 50106: hidden does not inherit source controller/battlefield
+  ---
+  duration_ms: 0.095995
+  type: 'test'
+  ...
+# Subtest: 50106: protagonist required by native mission access even on replay
+ok 187 - 50106: protagonist required by native mission access even on replay
+  ---
+  duration_ms: 1.362012
+  type: 'test'
+  ...
+# Subtest: Narcissus: harness locks movement, without locking the remaining controls
+ok 188 - Narcissus: harness locks movement, without locking the remaining controls
+  ---
+  duration_ms: 2.126674
+  type: 'test'
+  ...
+# Subtest: Blast Pit: fuel/oxygen/power can be restored in another order
+ok 189 - Blast Pit: fuel/oxygen/power can be restored in another order
+  ---
+  duration_ms: 4.30716
+  type: 'test'
+  ...
+# Subtest: Blast Pit: diversion has finite stock, two turn endings, no invented bonus grenade
+ok 190 - Blast Pit: diversion has finite stock, two turn endings, no invented bonus grenade
+  ---
+  duration_ms: 3.628608
+  type: 'test'
+  ...
+# Subtest: Existing static stage inventory is retained, new scenes appended separately
+ok 191 - Existing static stage inventory is retained, new scenes appended separately
+  ---
+  duration_ms: 4.833785
+  type: 'test'
+  ...
+# Subtest: Legacy combat still spawns its original active opponents
+ok 192 - Legacy combat still spawns its original active opponents
+  ---
+  duration_ms: 3.741618
+  type: 'test'
+  ...
+# Subtest: Predator 1987: the Dutch finale uses the original Hunter, never a generic fight
+ok 193 - Predator 1987: the Dutch finale uses the original Hunter, never a generic fight
+  ---
+  duration_ms: 1.20815
+  type: 'test'
+  ...
+# Subtest: Predator 1987: mud masks thermal search and the river removes concealment
+ok 194 - Predator 1987: mud masks thermal search and the river removes concealment
+  ---
+  duration_ms: 4.933794
+  type: 'test'
+  ...
+# Subtest: Predator 1987: the log triggers an eight-turn self-destruct escape, not an HP victory
+ok 195 - Predator 1987: the log triggers an eight-turn self-destruct escape, not an HP victory
+  ---
+  duration_ms: 9.05914
+  type: 'test'
+  ...
+# Subtest: Predator 1987: reaching shelter wins while preserving the existing completion/reward gate
+ok 196 - Predator 1987: reaching shelter wins while preserving the existing completion/reward gate
+  ---
+  duration_ms: 8.830026
+  type: 'test'
+  ...
+# Subtest: Predator 1987: unmasked duel and secondary log trap keep the film beats distinct
+ok 197 - Predator 1987: unmasked duel and secondary log trap keep the film beats distinct
+  ---
+  duration_ms: 8.341644
+  type: 'test'
+  ...
+# Subtest: Predator 2: exact 1990 source-locked ship, Harrigan and original City Hunter
+ok 198 - Predator 2: exact 1990 source-locked ship, Harrigan and original City Hunter
+  ---
+  duration_ms: 1.123272
+  type: 'test'
+  ...
+# Subtest: Predator 2: net disables manual and AI movement until the recovered smart disc cuts it
+ok 199 - Predator 2: net disables manual and AI movement until the recovered smart disc cuts it
+  ---
+  duration_ms: 1.379278
+  type: 'test'
+  ...
+# Subtest: Predator 2: the Lost Tribe does not attack, and the honor pistol is narrative-only
+ok 200 - Predator 2: the Lost Tribe does not attack, and the honor pistol is narrative-only
+  ---
+  duration_ms: 1.986033
+  type: 'test'
+  ...
+# Subtest: Predator 2: ship launch, not wrist self-destruct, expires after 8 turn endings
+ok 201 - Predator 2: ship launch, not wrist self-destruct, expires after 8 turn endings
+  ---
+  duration_ms: 3.98238
+  type: 'test'
+  ...
+# Subtest: Predator 2: correct manual extraction grants one victory and records the 1715 gift
+ok 202 - Predator 2: correct manual extraction grants one victory and records the 1715 gift
+  ---
+  duration_ms: 2.888082
+  type: 'test'
+  ...
+# Subtest: Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter or City Hunter
+ok 203 - Prey 2022: Naru and Feral are exact 1719 roles, never silver Jungle Hunter or City Hunter
+  ---
+  duration_ms: 19.3182
+  type: 'test'
+  ...
+# Subtest: Prey 2022: herb blocks thermal pressure but a flintlock shot can still attract pursuit
+ok 204 - Prey 2022: herb blocks thermal pressure but a flintlock shot can still attract pursuit
+  ---
+  duration_ms: 1.419259
+  type: 'test'
+  ...
+# Subtest: Prey 2022: the bone targeting mask requires authentic line-up above the bog
+ok 205 - Prey 2022: the bone targeting mask requires authentic line-up above the bog
+  ---
+  duration_ms: 19.551952
+  type: 'test'
+  ...
+# Subtest: Prey 2022: a trophy alone is not a reward and returning to the village wins exactly once
+ok 206 - Prey 2022: a trophy alone is not a reward and returning to the village wins exactly once
+  ---
+  duration_ms: 19.351949
+  type: 'test'
+  ...
+# Subtest: Cross-film Adolini 1715: 1719 origin and 1990 gift are not invented as a save-item transfer
+ok 207 - Cross-film Adolini 1715: 1719 origin and 1990 gift are not invented as a save-item transfer
+  ---
+  duration_ms: 0.880827
+  type: 'test'
+  ...
+# Subtest: Prey 2022: story props enter and leave the board at the actual narrative beats
+ok 208 - Prey 2022: story props enter and leave the board at the actual narrative beats
+  ---
+  duration_ms: 3.259983
+  type: 'test'
+  ...
+# Subtest: Prey 2022: prop gating is source-identity specific and does not mutate the historical boards
+ok 209 - Prey 2022: prop gating is source-identity specific and does not mutate the historical boards
+  ---
+  duration_ms: 0.715698
+  type: 'test'
+  ...
+# Subtest: Prey 2022: Sarii remains a scene companion through the bog, not stranded in a village on the battle board
+ok 210 - Prey 2022: Sarii remains a scene companion through the bog, not stranded in a village on the battle board
+  ---
+  duration_ms: 4.155091
+  type: 'test'
+  ...
+# Subtest: Prey 2022: mask-aim interaction is one turn, guarded and only for the active source hero
+ok 211 - Prey 2022: mask-aim interaction is one turn, guarded and only for the active source hero
+  ---
+  duration_ms: 7.125296
+  type: 'test'
+  ...
+# Subtest: Prey 2022: autoplay deliberately aims the bone mask, then finishes true 1719 story
+ok 212 - Prey 2022: autoplay deliberately aims the bone mask, then finishes true 1719 story
+  ---
+  duration_ms: 13.938523
+  type: 'test'
+  ...
+# Subtest: Prey 2022: mission UI dispatches real aim action while the legacy scenes remain unaffected
+ok 213 - Prey 2022: mission UI dispatches real aim action while the legacy scenes remain unaffected
+  ---
+  duration_ms: 7.531169
+  type: 'test'
+  ...
+# Subtest: Prey 2022: Sarii follows Naru to the bog and village route without becoming a fighter
+ok 214 - Prey 2022: Sarii follows Naru to the bog and village route without becoming a fighter
+  ---
+  duration_ms: 85.240162
+  type: 'test'
+  ...
+# Subtest: Prey 2022: masked Feral bitmap disappears when the mask is stolen, without fabricated replacement art
+ok 215 - Prey 2022: masked Feral bitmap disappears when the mask is stolen, without fabricated replacement art
+  ---
+  duration_ms: 28.761559
+  type: 'test'
+  ...
+# Subtest: Predator 1987: the river duel no longer falsely reuses a biomasked Jungle Hunter portrait
+ok 216 - Predator 1987: the river duel no longer falsely reuses a biomasked Jungle Hunter portrait
+  ---
+  duration_ms: 9.447095
+  type: 'test'
+  ...
+# Subtest: Source scenes: audio feedback follows authored 1719 actions without plasma or silent control cues
+ok 217 - Source scenes: audio feedback follows authored 1719 actions without plasma or silent control cues
+  ---
+  duration_ms: 4.775105
+  type: 'test'
+  ...
+# Subtest: Prey forest stays with its exact tactical source scene, never another mode or edition
+ok 218 - Prey forest stays with its exact tactical source scene, never another mode or edition
+  ---
+  duration_ms: 2.955783
+  type: 'test'
+  ...
+# Subtest: the three source finales have distinct DLC artwork and retain their unfinished source-specific props
+ok 219 - the three source finales have distinct DLC artwork and retain their unfinished source-specific props
+  ---
+  duration_ms: 13.201563
+  type: 'test'
+  ...
+# Subtest: real-image loading keeps the schematic until ready, then draws with a centered cover crop
+ok 220 - real-image loading keeps the schematic until ready, then draws with a centered cover crop
+  ---
+  duration_ms: 0.803851
+  type: 'test'
+  ...
+# Subtest: failed images stay on the schematic rather than drawing a broken or wrong scene
+ok 221 - failed images stay on the schematic rather than drawing a broken or wrong scene
+  ---
+  duration_ms: 1.470796
+  type: 'test'
+  ...
+# Subtest: Sarii portrait is restricted to the exact Prey source encounter and companion
+ok 222 - Sarii portrait is restricted to the exact Prey source encounter and companion
+  ---
+  duration_ms: 0.92246
+  type: 'test'
+  ...
+# Subtest: published portrait is the single transparent image recorded by provenance, not a body sheet
+ok 223 - published portrait is the single transparent image recorded by provenance, not a body sheet
+  ---
+  duration_ms: 1.648073
+  type: 'test'
+  ...
+# Subtest: portrait waits for the real dimensions, then follows its supplied cell without mutating the scene
+ok 224 - portrait waits for the real dimensions, then follows its supplied cell without mutating the scene
+  ---
+  duration_ms: 2.503622
+  type: 'test'
+  ...
+# Subtest: load errors and unexpected image dimensions keep the existing fallback available
+ok 225 - load errors and unexpected image dimensions keep the existing fallback available
+  ---
+  duration_ms: 1.555374
+  type: 'test'
+  ...
+# Subtest: SSR and invalid anchor positions draw nothing
+ok 226 - SSR and invalid anchor positions draw nothing
+  ---
+  duration_ms: 0.818553
+  type: 'test'
+  ...
+1..226
+# tests 234
+# suites 0
+# pass 234
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 207182.569638

@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { CATALOG_PAGE_SIZES, catalogSearchText, createCatalogView, normalizeCatalogQuery, paginateCatalog, updateCatalogView } from '../src/game/catalogPagination.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');

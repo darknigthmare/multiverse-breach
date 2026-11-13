@@ -3,6 +3,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 import {
   CLOUD_MEADOW_CHARACTERS,
   CLOUD_MEADOW_REFERENCES,
@@ -10,10 +11,12 @@ import {
 } from '../src/game/cloudMeadowCharacters.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const resolveAssetSource = createAssetSourceResolver(root);
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
-export async function inspectCloudMeadowImage(src, requireTransparency = true) {
-  const bytes = await readFile(resolve(root, `public${src}`));
+export async function inspectCloudMeadowImage(src, requireTransparency = true, { root: sourceRoot = root } = {}) {
+  const resolveSource = sourceRoot === root ? resolveAssetSource : createAssetSourceResolver(sourceRoot);
+  const bytes = await readFile(resolve(sourceRoot, resolveSource(src, 'Cloud Meadow')));
   const metadata = await sharp(bytes).metadata();
   if (requireTransparency && metadata.format !== 'png') throw new Error(`${src}: artwork must be PNG`);
   if (!['png', 'webp', 'jpeg'].includes(metadata.format)) throw new Error(`${src}: unsupported reference image format`);
@@ -139,7 +142,7 @@ export async function buildCloudMeadowReviewCatalog() {
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const { catalog, manifest } = await buildCloudMeadowReviewCatalog();
   for (const [name, value] of [
-    ['public/reviews/cloud-meadow/catalog.json', catalog],
+    [resolveAssetSource('/reviews/cloud-meadow/catalog.json', 'Cloud Meadow'), catalog],
     ['docs/cloud-meadow/manifest.json', manifest]
   ]) {
     const output = resolve(root, name);

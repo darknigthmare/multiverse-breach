@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "police-squad",
+  "universe": "Police Squad",
+  "directory": "DLC/PoliceSquad",
+  "registration": "runtime",
+  "catalogOrder": 64,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

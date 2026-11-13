@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T08:07:10.125608+00:00",
+  "status": "PASSED_SCOPED_NATIVE_PREY_FOLLOWUP",
+  "finalBrowserRun": "run5/results.json",
+  "passed": 2,
+  "total": 2,
+  "scope": "Native GameCanvas/EngineTactics, real browser canvas and UI clicks; selected authored source scenes, desktop/mobile viewports. Not a full campaign, physical mobile device or film-fidelity certification.",
+  "stageIds": [
+    50106
+  ],
+  "viewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      390,
+      900
+    ]
+  ],
+  "nodeVersion": "v22.23.5",
+  "browserVersion": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+  "build": {
+    "entry": "scripts/buildSourceSceneArtFixture.mjs",
+    "exitCode": 0,
+    "seconds": 7.21,
+    "stdout": "build-attempt4-stdout.txt",
+    "nativeProductionModules": true,
+    "prebuildExecuted": false,
+    "publicMediaCopied": false
+  },
+  "pageErrors": 0,
+  "failedHttpRequests": 0,
+  "sourceInputCount": 3838,
+  "sourceBefore": "input-hashes-run5-before.json",
+  "sourceAfter": "input-hashes-run5-after.json",
+  "changedSourcesDuringRun": [],
+  "assetBefore": "asset-hashes-run5-before.json",
+  "assetAfter": "asset-hashes-run5-after.json",
+  "changedPinnedPNGsDuringRun": [],
+  "ownershipPhases": [
+    {
+      "phase": "before theft",
+      "maskOwner": "Feral",
+      "detachedIconDrawn": false,
+      "representation": "existing masked Feral Nov9 actor sheet plus neutral objective locator"
+    },
+    {
+      "phase": "after take_mask, before set_mask",
+      "maskOwner": "Naru",
+      "detachedIconRole": "carried-item badge",
+      "nativePixels": 24
+    },
+    {
+      "phase": "after take_mask and set_mask",
+      "maskOwner": "target mount",
+      "detachedIconRole": "mounted",
+      "nativePixels": 32
+    }
+  ],
+  "naruPortraitNativePixels": [
+    24,
+    24
+  ],
+  "sariiPortraitNativePixels": [
+    32,
+    32
+  ],
+  "nativeSchedulerObservations": [
+    {
+      "case": "source-art-50106-1280",
+      "realObservationMilliseconds": 26000,
+      "nativeEngineUpdates": 1561,
+      "anomalyMessages": [],
+      "hpBefore": 120,
+      "hpAfter": 120,
+      "turnsBefore": 8,
+      "turnsAfter": 8,
+      "objectivesBefore": 6,
+      "objectivesAfter": 6,
+      "maskDrawsPerNativeFrameMaximum": 1
+    },
+    {
+      "case": "source-art-50106-390",
+      "realObservationMilliseconds": 26000,
+      "nativeEngineUpdates": 1562,
+      "anomalyMessages": [],
+      "hpBefore": 120,
+      "hpAfter": 120,
+      "turnsBefore": 8,
+      "turnsAfter": 8,
+      "objectivesBefore": 6,
+      "objectivesAfter": 6,
+      "maskDrawsPerNativeFrameMaximum": 1
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "run5/source-art-50106-1280-after-native-scheduler-observation.png",
+      "sha256": "a7aea2082aff351f76e24a41d9db25118884888fbcd5ce4eca276fd6b16750be",
+      "bytes": 1109083,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-1280-before-theft-no-ground-mask.png",
+      "sha256": "f8f52448d8215deeb44983962e699f961ac6dd533d53be6fd64259cbb08a4b6b",
+      "bytes": 1106401,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-1280-initial.png",
+      "sha256": "3adf3b30bb3761c4462a9c111635c642cf02f14c0c1b4c19692892e19d5d9dbc",
+      "bytes": 1105494,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-1280-mask-carried.png",
+      "sha256": "6dc61d336e73a344a53ba7bf19578601674724189ba955011183b77fe7716c63",
+      "bytes": 1108493,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-1280-mask-mounted-before-aim.png",
+      "sha256": "21ab8739fb0cca85efbfdaf9a5bd0c6a7d28b1c815f3ec6a22b22a6e68d826d2",
+      "bytes": 1106380,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-1280-sarii-follow-mask-off.png",
+      "sha256": "25d5985e61df09edeacd5063758959dfe375227bd61d3bca1d2fda7a63e860d5",
+      "bytes": 1109393,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-after-native-scheduler-observation.png",
+      "sha256": "e5a8fd946c39bad69cc73814bc771b1032c764483c54564078654b6ce008d661",
+      "bytes": 311494,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-before-theft-no-ground-mask.png",
+      "sha256": "16efbbcc5c243433924d62a2108e01809b11a026cba7861fd22e1d3add1e3a0c",
+      "bytes": 310686,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-initial.png",
+      "sha256": "8b7e95fbc176ffaa27150eaab681d69591c1c091a3ab1c9c06d66a2055a1e9d9",
+      "bytes": 311297,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-mask-carried.png",
+      "sha256": "be8dee6d146c32e0af455b5bbecc1ed62d644949334e0449a624bd50ad006b5e",
+      "bytes": 310755,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-mask-mounted-before-aim.png",
+      "sha256": "adf323be34598b79ca222039c1dc1e3377c9192352dea7cd3f08af95d9352de7",
+      "bytes": 310332,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run5/source-art-50106-390-sarii-follow-mask-off.png",
+      "sha256": "729b141dc770e27a38d10bac4d7e585be73066f821a8b66732de4f31d02d37af",
+      "bytes": 311631,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    }
+  ],
+  "earlierEvidence": [
+    {
+      "path": "validation-manifest.json",
+      "scope": "RUN3 three source scenes, six cases, eight images, before later portrait/prop additions"
+    },
+    {
+      "path": "run4-review.json",
+      "scope": "RUN4 portrait/ownership checks passed; actual unrelated crossover banner found and preserved"
+    }
+  ],
+  "limitations": [
+    "No whole-body Naru or Sarii animation delivered by these portrait assets.",
+    "Masked Feral uses the already delivered Nov9 sheet; unmasked Feral remains an explicit unapproved locator.",
+    "Detached mask graphic qualifies only the outward-facing panel; exact crack layout and lower border remain approximate.",
+    "No exact film geography, full prop depth, grasp animation, laser/launcher art or complete equipment approval.",
+    "The390px viewport downscales the board heavily; no physical-device legibility or1:1 certification is inferred.",
+    "Normal Nexus anomaly behavior is covered by separate unit controls; no synthetic Nexus browser result is claimed."
+  ],
+  "source1to1Verified": false,
+  "allP0P1Closed": false
+}

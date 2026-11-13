@@ -305,3 +305,155 @@ test('merge complementary axes and provenance without blending incompatible inca
   assert.equal(lock.ageStatus, 'unknown-family-safe-only');
   assert.equal(lock.equipment.length, 2);
 });
+
+const declaredCopyFixture = t => {
+  const f = fixture(t), legacy = '.tmp/archive/film.png';
+  const copy = f.image('docs/cg/references/fixture/film.png');
+  const bitmap = readFileSync(path.join(f.root, copy));
+  const sha256 = createHash('sha256').update(bitmap).digest('hex');
+  const reference = { path: legacy, sha256, bytes: bitmap.length, viewed: true, usedForIdentity: true,
+    role: 'independent-canon-reference', referencePurpose: 'identity', referenceScope: 'film-face-only',
+    publicByteExactCopy: { path: copy, sha256, bytes: bitmap.length } };
+  const receipt = 'docs/cg/fixture-reference-evidence.json';
+  const document = { characterId: 'target', incarnation: 'Selected film2022 masked edition',
+    visualLocks: { face: 'Elongated pale bone mask and long dark tendrils' }, references: [reference] };
+  const write = (refs = [reference]) => f.write(receipt, { ...document, references: refs });
+  write();
+  return { ...f, legacy, copy, bitmap, sha256, reference, receipt, document, writeDocument: f.write, write };
+};
+
+test('a declared exact public copy restores only available viewed identity and preserves historical bytes, roles and incarnation', t => {
+  const f = declaredCopyFixture(t);
+  f.write([f.reference,
+    { ...f.reference, path: '.tmp/body.png', referencePurpose: 'body-costume-support', usedForIdentity: false },
+    { ...f.reference, path: '.tmp/unviewed.png', viewed: false },
+    { ...f.reference, path: '.tmp/environment.png', role: 'environment-art', referencePurpose: 'environment-only' },
+    { ...f.reference, path: '.tmp/other-edition.png', incarnation: 'Other incompatible film1980' }]);
+  const before = readFileSync(path.join(f.root, f.receipt));
+  const lock = loadQualifiedCgIdentityLocks(f.root).get('target');
+  assert.equal(lock.incarnation, f.document.incarnation);
+  assert.equal(lock.identityVisualReferences.length, 1);
+  const [ref] = lock.identityVisualReferences;
+  assert.equal(ref.path, f.copy);
+  assert.equal(ref.role, f.reference.role);
+  assert.equal(ref.referenceScope, 'film-face-only');
+  assert.equal(ref.viewed, true);
+  assert.equal(ref.usedForIdentity, true);
+  assert.deepEqual(ref.resolvedAlias, { originalPath: f.legacy, path: f.copy, sha256: f.sha256,
+    bytes: f.bitmap.length, originalAvailable: false, originalHashVerifiedInThisRun: false,
+    publicCopyHashVerified: true, additionalIndependentSource: false });
+  assert.equal(ref.canonicalFidelityApproved, false);
+  const body = loadCgSourceEvidence(f.root).get('target').references.find(r => r.referencePurpose === 'body-costume-support');
+  assert.equal(body.path, f.copy);
+  assert.equal(body.usedForIdentity, false);
+  assert.deepEqual(readFileSync(path.join(f.root, f.receipt)), before);
+});
+
+test('an existing original stays authoritative and a corrupt original never falls back to a valid copy', t => {
+  const f = declaredCopyFixture(t), original = path.join(f.root, f.legacy), alias = path.join(f.root, f.copy);
+  mkdirSync(path.dirname(original), { recursive: true });writeFileSync(original, f.bitmap);
+  writeFileSync(alias, 'unused corrupt alias');
+  const ref = loadQualifiedCgIdentityLocks(f.root).get('target').identityVisualReferences[0];
+  assert.equal(ref.path, f.legacy);
+  assert.equal(ref.resolvedAlias, undefined, 'No replacement metadata while original is available');
+  writeFileSync(alias, f.bitmap);writeFileSync(original, 'corrupt original');
+  assert.throws(() => loadCgSourceEvidence(f.root), /original SHA-256 mismatch/);
+  unlinkSync(original);writeFileSync(alias, 'corrupt public copy');
+  assert.throws(() => loadCgSourceEvidence(f.root), /public alias SHA-256 mismatch/);
+});
+
+test('declared aliases reject noncanonical paths, mismatched hashes and wrong byte counts', t => {
+  const f = declaredCopyFixture(t);
+  for (const badPath of ['/tmp/source.png', '../film.png', 'docs/cg/references/../film.png',
+    'docs/cg/references//film.png', 'docs/cg/references/fixture\\film.png', 'public/images/film.png']) {
+    f.write([{ ...f.reference, publicByteExactCopy: { ...f.reference.publicByteExactCopy, path: badPath } }]);
+    assert.throws(() => loadCgSourceEvidence(f.root), /invalid canonical alias/, badPath);
+  }
+  for (const bad of [
+    { ...f.reference, sha256: '0'.repeat(64) },
+    { ...f.reference, publicByteExactCopy: { ...f.reference.publicByteExactCopy, sha256: '0'.repeat(64) } },
+    { ...f.reference, bytes: f.bitmap.length + 1 },
+    { ...f.reference, publicByteExactCopy: { ...f.reference.publicByteExactCopy, bytes: f.bitmap.length + 1 } },
+    { ...f.reference, publicByteExactCopy: { ...f.reference.publicByteExactCopy, bytes: -1 } }
+  ]) {
+    f.write([bad]);assert.throws(() => loadCgSourceEvidence(f.root), /declared SHA-256|byte count/);
+  }
+});
+
+test('missing copy is unqualified and no undeclared public image is inferred', t => {
+  const f = declaredCopyFixture(t), alias = path.join(f.root, f.copy);
+  unlinkSync(alias);
+  assert.equal(loadQualifiedCgIdentityLocks(f.root).has('target'), false);
+  assert.equal(loadCgSourceEvidence(f.root).get('target').references[0].path, f.legacy);
+  writeFileSync(alias, f.bitmap);
+  const { publicByteExactCopy, ...undeclared } = f.reference;
+  assert.ok(publicByteExactCopy);
+  f.write([undeclared]);
+  assert.equal(loadQualifiedCgIdentityLocks(f.root).has('target'), false);
+});
+
+test('broken links and symlinked alias or original ancestors cannot masquerade as absence', t => {
+  const f = declaredCopyFixture(t), original = path.join(f.root, f.legacy), alias = path.join(f.root, f.copy);
+  mkdirSync(path.dirname(original), { recursive: true });
+  for (const refPath of [f.legacy, original]) {
+    symlinkSync('missing-target.png', original);f.write([{ ...f.reference, path: refPath }]);
+    assert.throws(() => loadCgSourceEvidence(f.root), /symlinks/);unlinkSync(original);
+  }
+  f.write();unlinkSync(alias);symlinkSync('missing-target.png', alias);
+  assert.throws(() => loadCgSourceEvidence(f.root), /symlinks/);unlinkSync(alias);
+  const linked = path.join(f.root, 'docs/cg/references/linked');
+  symlinkSync(path.dirname(original), linked, 'dir');
+  f.write([{ ...f.reference, publicByteExactCopy: { ...f.reference.publicByteExactCopy,
+    path: 'docs/cg/references/linked/film.png' } }]);
+  assert.throws(() => loadCgSourceEvidence(f.root), /symlinks/);
+  f.write();rmSync(path.dirname(original), { recursive: true });writeFileSync(path.dirname(original), 'not a directory');
+  assert.throws(() => loadCgSourceEvidence(f.root), /directory ancestors/);
+});
+
+test('reused bitmap identity is deduplicated per selected cohort and purpose without changing ordinary historical aliases', t => {
+  const f = declaredCopyFixture(t);
+  f.write([f.reference,
+    { ...f.reference, path: f.copy, url: 'https://example.test/same-photo' },
+    { ...f.reference, path: '.tmp/other-copy.png', url: 'https://example.test/another-alias' },
+    { ...f.reference, path: '.tmp/detail.png', referencePurpose: 'identity-detail' }]);
+  const refs = loadQualifiedCgIdentityLocks(f.root).get('target').identityVisualReferences;
+  assert.equal(refs.length, 2);
+  assert.equal(refs.filter(r => r.referencePurpose === 'identity').length, 1);
+  assert.ok(refs.every(r => r.resolvedAlias?.additionalIndependentSource === false));
+  const plain = f.image('second-film.png');
+  f.write([{ path: f.copy, sha256: f.sha256, viewed: true }, { path: plain, sha256: f.sha256, viewed: true }]);
+  assert.equal(loadQualifiedCgIdentityLocks(f.root).get('target').identityVisualReferences.length, 2,
+    'No broad hash deduplication of historical references without declared fallback');
+});
+
+test('restrictive correction runs on the legacy key before public-copy resolution', t => {
+  const f = declaredCopyFixture(t), authority = 'docs/cg/body-source-evidence.json';
+  f.writeDocument(authority, { characterId: 'target', references: [{ path: f.copy, sha256: f.sha256,
+    referencePurpose: 'body-costume-support', usedForIdentity: false, referenceScope: 'licensed-body-only-not-face' }] });
+  f.writeDocument(REFERENCE_USE_CORRECTIONS_FILE, { schemaVersion: 1, corrections: [{ id: 'body-restriction',
+    characterId: 'target', legacyPath: f.legacy, currentPath: f.copy, sha256: f.sha256,
+    fromPurpose: 'identity', toPurpose: 'body-costume-support', usedForIdentity: false,
+    referenceScope: 'licensed-body-only-not-face', authorityFile: authority,
+    authoritySha256: createHash('sha256').update(readFileSync(path.join(f.root, authority))).digest('hex') }] });
+  const evidence = loadCgSourceEvidence(f.root).get('target');
+  const ref = evidence.documents.find(doc => doc.file === f.receipt).references[0];
+  assert.equal(ref.path, f.copy);assert.equal(ref.usedForIdentity, false);
+  assert.equal(ref.referenceUseCorrection.original.referencePurpose, 'identity');
+  assert.equal(ref.referenceUseCorrection.legacyAndCurrentHashesVerified, false);
+  assert.equal(ref.resolvedAlias.additionalIndependentSource, false);
+  assert.equal(loadQualifiedCgIdentityLocks(f.root).has('target'), false);
+  writeFileSync(path.join(f.root, f.copy), 'tampered corrected body');
+  assert.throws(() => loadCgSourceEvidence(f.root), /current bitmap SHA-256 mismatch/);
+});
+
+test('a public copy cannot launder generated targets into independent source identity', t => {
+  const f = declaredCopyFixture(t);
+  for (const source of ['.tmp/generated_images/native.png', '/cg/generated.png', path.join(f.root, 'public/cg/generated.png')]) {
+    f.write([{ ...f.reference, path: source }]);
+    const evidence = loadCgSourceEvidence(f.root).get('target');
+    assert.equal(evidence.references[0].path, f.copy);
+    assert.equal(evidence.references[0].resolvedAlias.originalPath, source);
+    assert.equal(evidence.identityVisualReferences.length, 0);
+    assert.equal(loadQualifiedCgIdentityLocks(f.root).has('target'), false);
+  }
+});

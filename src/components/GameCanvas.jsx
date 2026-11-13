@@ -1,5 +1,7 @@
 import { applyActorAppearance } from '../game/wardrobe.js';
 import { resolveSourceScene } from '../game/sourceSceneStages.js';
+import { getSourceSceneEnemyPreloadOverride } from '../game/sourceSceneThreatAssets.js';
+import { getSourceSceneBackdropArt } from '../game/sourceSceneArtAssets.js';
 import SourceScenePanel from './SourceScenePanel.jsx';
 import { drawSourceSceneBackdrop } from '../game/sourceScenePresentation.js';
 import { drawSignatureCinematic } from '../game/signaturePresentation.js';
@@ -1187,7 +1189,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const heroSpriteContext = stage.mode === 'Tactics' ? 'tactics' : stage.mode === 'Smash' ? 'melee' : 'rpg';
     const spriteSources = [
       ...squadHeroes.map(hero => getHeroSpriteSheetSrc(hero, heroSpriteContext)),
-      ...enemyList.map(getEnemySpriteSheetSrc),
+      ...enemyList.map(enemy => getSourceSceneEnemyPreloadOverride(arenaStage, squadHeroes, enemy)
+        || getEnemySpriteSheetSrc(enemy)),
       ...[...squadHeroes, ...enemyList].map(hero => resolveCharacterAnimationAsset(hero)?.sheet),
       ...battleItemPool.map(getItemSpriteSrc)
     ].filter(Boolean);
@@ -1706,7 +1709,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
           const anomalyRate = stage.isSurvival ? 420 : 720;
           const anomalyWave = Math.floor(combatTime / anomalyRate);
-          if (gameplayAdvancing && !stage.disableHazards && anomalyWave > 0 && anomalyWave !== lastAnomalyWaveRef.current) {
+          if (gameplayAdvancing && !stage.disableHazards && !resolveSourceScene(arenaStage)
+            && anomalyWave > 0 && anomalyWave !== lastAnomalyWaveRef.current) {
             lastAnomalyWaveRef.current = anomalyWave;
             const anomaly = BATTLE_ANOMALIES[
               (getStableNumericSeed(stage.id) + anomalyWave) % BATTLE_ANOMALIES.length
@@ -2056,6 +2060,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const engine = engineRef.current;
     if (engine?.triggerSourceSceneAction?.(id, token)) { setSelectedAction(null); setTeamState([...engine.heroes]); }
   };
+  const handleSourceSceneMaskAim = (x, y, token) => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.aimSourceSceneMask?.(x, y, token)) {
+      setSelectedAction(null);
+      setTeamState([...engine.heroes]);
+    }
+  };
   const rexEncounter = stage.mode === 'Tactics' ? engineRef.current?.getRexEncounterState?.() : null;
   const sourceAmmoHero = stage.mode === 'Smash' ? engineRef.current?.getActiveHero?.() || activeHeroObj : activeHeroObj;
   const sourceAmmunition = getBlackPearlSourceAmmunition(sourceAmmoHero);
@@ -2232,7 +2244,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       ? (lang === 'fr' ? 'Melee: les drops se ramassent dans l arene ou via le panneau.' : 'Melee: drops can be collected in-arena or from the panel.')
       : (lang === 'fr' ? 'RPG: les reliques soutiennent le tempo ATB.' : 'RPG: relics support ATB tempo.');
 
-  const backdropSrc = getOpenAiBackdropSrc(arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena ? 'Nexus de Convergence' : arenaStage.universe, stage.mode);
+  const backdropSrc = getSourceSceneBackdropArt(resolveSourceScene(arenaStage))?.path
+    || getOpenAiBackdropSrc(arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena ? 'Nexus de Convergence' : arenaStage.universe, stage.mode);
   const missionCommandsAvailable = Boolean(sourceScene || raamEncounter || rexEncounter || piratesCurseEncounter || aliensRescueEncounter || sourceAmmunition || sourceAmmoOpponent || tacticsSupportState);
   const targetingPanel = stage.mode === 'RPG' && (
     <RpgTargetingPanel targeting={rpgTargeting} lang={lang} paused={sessionPaused}
@@ -3120,7 +3133,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             onCommand={handleRaamCommand}
           />}
           {stage.mode === 'Tactics' && <SourceScenePanel scene={sourceScene} lang={lang}
-            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand} />}
+            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand}
+            onAim={handleSourceSceneMaskAim} />}
           {stage.mode === 'Tactics' && !opponentHasCommand && <RexEncounterPanel
             encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}

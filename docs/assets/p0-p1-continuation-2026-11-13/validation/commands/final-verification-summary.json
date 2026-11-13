@@ -1,0 +1,99 @@
+[
+  {
+    "name": "feral-post-sfx-tests",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/feralMaskedSourceLoadout.test.mjs"
+    ],
+    "startedAt": "2026-11-13T08:05:03.263349+00:00",
+    "endedAt": "2026-11-13T08:05:29.862308+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "new-art-and-bindings-tests",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--no-warnings",
+      "--experimental-loader",
+      "./scripts/sourceSceneTestLoader.mjs",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/enemySpriteBindings.test.mjs",
+      "scripts/feralSourceSceneAssets.test.mjs",
+      "scripts/sourceSceneArtAssets.test.mjs",
+      "scripts/sourceSceneCompanionAssets.test.mjs",
+      "scripts/sourceScenePreyPortraitAssets.test.mjs",
+      "scripts/sourceScenePreyPropAssets.test.mjs"
+    ],
+    "startedAt": "2026-11-13T08:05:29.863570+00:00",
+    "endedAt": "2026-11-13T08:05:33.588650+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "completion-final-write",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/combatCompletionAudit.mjs"
+    ],
+    "startedAt": "2026-11-13T08:05:33.589248+00:00",
+    "endedAt": "2026-11-13T08:05:35.143573+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "fidelity-final-write",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/combatFidelityAudit.mjs",
+      "--write"
+    ],
+    "startedAt": "2026-11-13T08:05:35.143994+00:00",
+    "endedAt": "2026-11-13T08:06:34.002117+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "completion-final-check",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/combatCompletionAudit.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-11-13T08:06:34.002565+00:00",
+    "endedAt": "2026-11-13T08:06:35.727624+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "fidelity-final-check",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/combatFidelityAudit.mjs",
+      "--check"
+    ],
+    "startedAt": "2026-11-13T08:06:35.731602+00:00",
+    "endedAt": "2026-11-13T08:07:12.584879+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false
+  },
+  {
+    "name": "app-code-only-bundle",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "node_modules/vite/bin/vite.js",
+      "build",
+      "--config",
+      "scripts/viteCodeOnly.config.js"
+    ],
+    "startedAt": "2026-11-13T08:07:12.585245+00:00",
+    "endedAt": "2026-11-13T08:07:19.395769+00:00",
+    "exitCode": 0,
+    "fullNpmLifecycle": false,
+    "prebuildBypassed": true,
+    "staticMediaCopied": false
+  }
+]

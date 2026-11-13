@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "the-brave-little-toaster",
+  "universe": "The Brave Little Toaster",
+  "directory": "DLC/TheBraveLittleToaster",
+  "registration": "runtime",
+  "catalogOrder": 69,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsFirst40.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsFirst40.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

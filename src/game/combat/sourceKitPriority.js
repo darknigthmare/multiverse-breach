@@ -37,12 +37,222 @@ const overlapPriority = Object.freeze({
   starfire_tt: 'wave16-selected-source'
 });
 
+// GitHub 2333c2c0 source editions, independently pinned in
+// scripts/fixtures/githubStarWarsRaw2333c2c0.json. Match identity, incarnation,
+// equipment and actions together: an alias or a familiar name is insufficient.
+// W13's frozen actors remain eligible for their own historical source kits.
+const currentStarWarsEditions = Object.freeze({
+  "ahsoka_padawan": {
+    "incarnation": "The Clone Wars - early Padawan, age fourteen",
+    "weaponType": "lightsaber",
+    "equipment": [
+      "Green Lightsaber"
+    ],
+    "actions": {
+      "simple": [
+        "Reverse-Grip Green Saber",
+        "melee"
+      ],
+      "secondary": [
+        "Padawan Force Leap",
+        "force"
+      ],
+      "defense": [
+        "Shien Deflection",
+        "shield"
+      ],
+      "special": [
+        "Skyguy Battlefield Lesson",
+        "force_aoe"
+      ]
+    },
+    "preparedSignature": "Padawan Lightsaber Combination"
+  },
+  "ahsoka": {
+    "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+    "weaponType": "dual_lightsaber",
+    "equipment": [
+      "Twin Blue Lightsabers"
+    ],
+    "actions": {
+      "simple": [
+        "Twin Blue Saber Cut",
+        "melee"
+      ],
+      "secondary": [
+        "Mandalore Throne-Room Counter",
+        "force"
+      ],
+      "defense": [
+        "Order 66 Deflection",
+        "shield"
+      ],
+      "special": [
+        "Siege of Mandalore Break",
+        "force_aoe"
+      ]
+    },
+    "preparedSignature": "Mandalore Twin Sabers"
+  },
+  "ahsoka_adult": {
+    "incarnation": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
+    "weaponType": "dual_lightsaber",
+    "equipment": [
+      "Twin White Lightsabers"
+    ],
+    "actions": {
+      "simple": [
+        "White Saber Crosscut",
+        "melee"
+      ],
+      "secondary": [
+        "Fulcrum Route Read",
+        "force"
+      ],
+      "defense": [
+        "Fulcrum Evasive Guard",
+        "dodge"
+      ],
+      "special": [
+        "Fulcrum Twin-Saber Sweep",
+        "light_aoe"
+      ]
+    },
+    "preparedSignature": "White Sabers Combination"
+  },
+  "aayla_secura": {
+    "incarnation": "The Clone Wars - Aayla Secura as Jedi General",
+    "weaponType": "lightsaber",
+    "equipment": [
+      "Blue Lightsaber"
+    ],
+    "actions": {
+      "simple": [
+        "Blue Saber Advance",
+        "melee"
+      ],
+      "secondary": [
+        "Felucia Flank",
+        "force"
+      ],
+      "defense": [
+        "Jedi General Guard",
+        "shield"
+      ],
+      "special": [
+        "Commander Bly Formation",
+        "force_aoe"
+      ]
+    },
+    "preparedSignature": "Aayla Lightsaber Combination"
+  },
+  "darth_maul": {
+    "incarnation": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
+    "weaponType": "double_lightsaber",
+    "equipment": [
+      "Double-Bladed Red Lightsaber (The Clone Wars S7)"
+    ],
+    "bodyProsthetics": [
+      "Mandalorian-Issue Humanoid Cybernetic Legs"
+    ],
+    "actions": {
+      "simple": [
+        "Mandalore Twin-Blade Assault",
+        "melee"
+      ],
+      "secondary": [
+        "Dathomirian Force Choke",
+        "force"
+      ],
+      "defense": [
+        "Cybernetic Spin Parry",
+        "shield"
+      ],
+      "special": [
+        "Shadow Collective Dominion",
+        "dark_aoe"
+      ]
+    },
+    "preparedSignature": "Maul Double-Bladed Saber"
+  },
+  "darth_revan": {
+    "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+    "weaponType": "lightsaber",
+    "equipment": [
+      "Red Lightsaber"
+    ],
+    "actions": {
+      "simple": [
+        "Red Saber Judgment",
+        "melee"
+      ],
+      "secondary": [
+        "Force Reversal",
+        "force"
+      ],
+      "defense": [
+        "Revanite Mask Focus",
+        "shield"
+      ],
+      "special": [
+        "Star Forge Command",
+        "force_aoe"
+      ]
+    }
+  },
+  "darth_talon": {
+    "incarnation": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
+    "weaponType": "lightsaber",
+    "equipment": [
+      "Red Lightsaber",
+      "Forearm and Bicep Armor",
+      "Leg Armor"
+    ],
+    "actions": {
+      "simple": [
+        "One Sith Saber Cut",
+        "melee"
+      ],
+      "secondary": [
+        "Twi lek Hunter Lunge",
+        "force"
+      ],
+      "defense": [
+        "Sith Tattoo Focus",
+        "dodge"
+      ],
+      "special": [
+        "Hand of Darth Krayt",
+        "dark_aoe"
+      ]
+    }
+  }
+});
+const exactEquipment = (actual, expected) => Array.isArray(actual)
+  && actual.length === expected.length && expected.every(item => actual.includes(item));
+function matchesCurrentStarWarsEdition(actor, id, universe) {
+  const edition = currentStarWarsEditions[id];
+  if (!edition || universe !== 'Star Wars' || actor.incarnation !== edition.incarnation
+    || actor.weaponType !== edition.weaponType || !exactEquipment(actor.equipment, edition.equipment)
+    || edition.bodyProsthetics && !exactEquipment(actor.bodyProsthetics, edition.bodyProsthetics)) return false;
+  return Object.entries(edition.actions).every(([slot, [name, type]]) => {
+    const action = actor[slot];
+    if (action?.name === name && action.type === type) return true;
+    // Battle-local signature preparation changes only the special's name and
+    // delivery. It must not make the basics fall back to another source edition.
+    return slot === 'special' && edition.preparedSignature
+      && action?.sourceSignatureKey === id && action.name === edition.preparedSignature
+      && action.type === 'melee';
+  });
+}
+
 // These current master incarnations explicitly exclude the older reviewed kit.
 // Historical actors without this exact incarnation/equipment keep their source.
 export function prefersCurrentCanonCombatKit(actor) {
   const id = actor?.sourceHeroId || actor?.sourceId || actor?.id;
   const universe = actor?.sourceUniverse || actor?.universe;
   if (!actor || actor.universe && actor.universe !== universe) return false;
+  if (matchesCurrentStarWarsEdition(actor, id, universe)) return true;
   const selected = actor.canonCombatPresentation === true && ['raven_tt', 'starfire_tt'].includes(id) && universe === 'Teen Titans'
     ? { incarnation: 'Teen Titans (2003-2006 animated series) - original Jump City team',
       equipment: id === 'raven_tt' ? ['Mystical Powers', 'Hooded Purple Cloak'] : ['Tamaranean Starbolts', 'Purple Animated-Series Costume'] }

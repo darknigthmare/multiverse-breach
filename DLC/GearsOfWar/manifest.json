@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "gears-of-war",
+  "universe": "Gears of War",
+  "directory": "DLC/GearsOfWar",
+  "registration": "runtime",
+  "catalogOrder": 0,
+  "modules": [
+    {
+      "path": "data/canonicalArchiveLore.js",
+      "runtimeAdapter": "src/game/canonicalArchiveLore.js"
+    },
+    {
+      "path": "data/canonPriorityStages.js",
+      "runtimeAdapter": "src/game/canonPriorityStages.js"
+    },
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    },
+    {
+      "path": "runtime/canonRaamEncounter.js",
+      "runtimeAdapter": "src/game/canonRaamEncounter.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

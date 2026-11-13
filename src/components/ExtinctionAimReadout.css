@@ -1,0 +1,26 @@
+/* Aiming feedback lives inside the existing primary button; no extra HUD row. */
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions > .extinction-aim-action {
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  line-height: 1.2;
+}
+.extinction-aim-action > small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.extinction-aim-action > span { min-width: 0; overflow-wrap: anywhere; }
+.extinction-aim-action > small {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #d8f7ff;
+}
+.extinction-aim-action[data-fps-aim-state='mark'],
+.extinction-aim-action[data-fps-aim-state='shield'],
+.extinction-aim-action[data-fps-aim-state='out_of_range'],
+.extinction-aim-action[data-fps-aim-state='boundary'] { border-color: #ffe49d; }
+.extinction-aim-action[data-fps-aim-state='target'],
+.extinction-aim-action[data-fps-aim-state='flight'] { border-color: #91e9bd; }

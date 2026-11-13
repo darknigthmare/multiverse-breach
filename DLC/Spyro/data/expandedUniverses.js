@@ -1,0 +1,5 @@
+// Spyro — definitions consumed by src/game/expandedUniverses.js.
+
+export function createExpandedUniverseRecord() {
+  return ({ key: 'spyro', universe: 'Spyro', mediaType: 'game', faction: 'arcane', mode: 'Smash', difficulty: 'Medium', titleFr: 'Spyro', stage: 'Artisans Dragon Realm', boss: 'Gnasty Gnorc Crystal Trap', hero: ['spyro_dragon', 'Spyro', 'slayer'], allies: [['sparx_spyro', 'Sparx', 'hacker'], ['hunter_spyro', 'Hunter', 'tactical']], monsters: ['Gnorc Soldier', 'Dream Weaver Ghost', 'Lava Toad'], bosses: ['Gnasty Gnorc', 'Ripto'], gear: [['dragonfly_jar', 'Dragonfly Jar', 'Bocal a libellule', { hp: 70, def: 3 }], ['gem_shard', 'Gem Shard', 'Eclat de gemme', { atk: 7, spd: 1 }], ['dragon_egg', 'Dragon Egg', 'Oeuf de dragon', { hp: 60, atk: 5 }]], event: ['evt_superflame_breath', 'Superflame Breath', 'Souffle de superflamme', 'Spyro unleashes a powered-up flame that scorches all enemies.', 'Spyro libere une flamme surpuissante qui calcine tous les ennemis.'], theme: 'dragon realms, gems, portals, gliding, and colorful platforming magic', motif: 'castle', colors: ['#2b1750', '#05020a', '#b56dff'] });
+}

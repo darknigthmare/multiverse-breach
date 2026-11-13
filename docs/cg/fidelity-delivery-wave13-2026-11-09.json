@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "scope": "Wave13: two complete character series within the existing Alien-associated priority batches; preserve historical artwork and reconcile current GitHub game data, source references, Rift and Excel.",
+  "upstreamBaseline": "057646da62061e9d37724f431cdc0278661432eb",
+  "newCharacterSeries": [
+    {
+      "characterId": "hicks",
+      "receipt": "docs/cg/hicks-delivery-receipt-wave13-2026-11-09.json",
+      "sha256": "182aa61e0a1b779a3280605b850a65c92587566d87132a8727690dea40543447",
+      "deliveredCg": 15,
+      "retainedRejectedNativeAttempts": 4,
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "feral_predator",
+      "receipt": "docs/cg/feral-predator-delivery-receipt-wave13-2026-11-09.json",
+      "sha256": "c53ab7ddb500c3a55a6052ab65dc342762fa9c2ca9fe930dbc7b5e6598a0946b",
+      "deliveredCg": 15,
+      "retainedRejectedNativeAttempts": 7,
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "newCurrentCg": 30,
+  "newCgMedia": 90,
+  "newCorrectedAtlases": 2,
+  "newReviewedSpritePoses": 32,
+  "newFilmReferencePngCopies": 2,
+  "sourceOwnership": {
+    "hicks": "DLC/Alien",
+    "feral_predator": "DLC/Prey"
+  },
+  "originalCharacterIdsAndGameStatsPreserved": true,
+  "previousSelectedAtlasesRetainedAsOriginalVariants": true,
+  "preexistingAdditionalCgUnmodified": 1323,
+  "historicalCgRevisionRegistryUnmodified": true,
+  "currentCg": 1436,
+  "retainedVersions": 1530,
+  "registeredMedia": 4590,
+  "correctedSpriteMaps": 62,
+  "priorityProgress": {
+    "scopeSubjects": 66,
+    "completedSubjects": 6,
+    "completedCg": 90,
+    "remainingSubjects": 60,
+    "remainingCg": 900,
+    "assignmentGroupsUnchanged": [
+      40,
+      26
+    ],
+    "originalGlobalDispatcherUnchanged": true
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "model": "not-reported",
+    "successfulImageGenerationCalls": 43,
+    "selectedCgNativeOutputs": 30,
+    "retainedDiscardedCgNativeOutputs": 11,
+    "nativeAtlasOutputs": 2,
+    "style": "pixel-art",
+    "absoluteVisualFidelityCertified": false
+  },
+  "reviews": {
+    "hicks": "docs/cg/reviews/wave13-2026-11-09/hicks-independent-review.json",
+    "feralPredator": "docs/cg/reviews/wave13-2026-11-09/feral-predator-independent-review.json",
+    "atlases": "docs/cg/reviews/wave13-2026-11-09/atlas-independent-review.json",
+    "browser": "docs/cg/reviews/wave13-2026-11-09/browser-integration-review.json",
+    "historicalSourceStorage": "docs/cg/reviews/wave13-2026-11-09/historical-source-storage-review.json"
+  },
+  "workbook": {
+    "path": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+    "sha256": "bda4014fab60c350d7dd3200624ca903e3f7f7e353aef38ee375e58174496937",
+    "subjects": 1912,
+    "universes": 525,
+    "sheets": 14,
+    "matrixRows": 28680,
+    "currentCg": 1436,
+    "retainedVersions": 1530,
+    "embeddedImages": 4188,
+    "verifiedLocalHyperlinks": 20946,
+    "actualManualRowsBefore": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "actualManualRowsAfter": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "syntheticManualFieldsTested": 16,
+    "syntheticReviewsAreHumanApproval": false,
+    "productionBuildsDuringTask": 2,
+    "finalPassReason": "Resolve unavailable historical private reference paths and refresh the two Rift sprite links before the final workbook freeze.",
+    "baselineAndInterimWorkbooksRetainedPrivately": true,
+    "publicAuditPassed": true,
+    "independentReview": {
+      "status": "pass",
+      "privateReportSha256": "1f8d8ad66e0a1270bd4c005149dbdedb93c85d7a07fe91cb32770dd90c457759",
+      "manualCellsComparedByStableId": 84128,
+      "oldSpriteVariantRowsRetained": 142,
+      "threeGameplayWorkbooksByteExactLatestGit": true
+    }
+  },
+  "sourceStorageRecovery": {
+    "historicalAliasReceipts": 15,
+    "historicalReferences": 29,
+    "uniqueFilesVerified": 23,
+    "exactHistoricalUrlDownloads": 20,
+    "newIndependentSources": 0,
+    "historicalSourceRolesAndScopesRetained": true,
+    "unavailablePrivateCandidateBitmapsNotPromoted": 5
+  },
+  "rift": {
+    "changedCharacterArcIds": [
+      9352,
+      9675
+    ],
+    "otherDossiersUnmodified": 3197,
+    "catalogueEntries": 3199,
+    "availableAssets": 1021,
+    "pendingAssets": 2178,
+    "qualityApprovalIsBitmapTechnicalOnly": true,
+    "sourceLocksRemainPending": true,
+    "auditPassed": true,
+    "targetedTestsPassed": 87
+  },
+  "validation": {
+    "sourceEvidenceTestsPassed": 21,
+    "manualWorkbookTestsPassed": 5,
+    "browserPassed": true,
+    "fullProductionBuild": {
+      "status": "pass",
+      "command": "npm run build",
+      "nodeVersion": "22.23.4",
+      "completePrebuildPassed": true,
+      "viteCompilationPassed": true,
+      "normalNativePublicCopyCompleted": true,
+      "exportedFiles": 18139,
+      "exportedBytes": 13976413572,
+      "newCgMediaHashesMatched": 90,
+      "atlasAndFilmReferenceHashesMatched": 4,
+      "privateSuccessProofSha256": "45052e1232bc9f03c54a65fce52b2b8bcb022e37519f3a4efe31a4bd3d0ce9f3",
+      "temporaryStorageRestored": true,
+      "generatedDistributionRemovedAfterVerificationToKeepWorkspaceUsable": true
+    },
+    "independentFinalDiffReview": {
+      "status": "pass",
+      "privateReportSha256": "c2ccbfc17f99757a5df19331247bd10ab25eb04bd600b7c11499d9c5ad42350f",
+      "scope": "CG, sources, original variants, 94 new canonical images, Rift and initial 240 staged files; subsequent Kart metadata has its own review."
+    }
+  },
+  "canonicalFidelityApproved": false,
+  "notes": [
+    "Hicks keeps the legacy Alien owner and uses Aliens1986; Feral remains the masked Prey2022 incarnation.",
+    "Every selected slot has a distinct actual pose or object/environment composition and a distinct authored background. CG02 and CG03 do not require a character body.",
+    "Hicks CG13 is genderSwap only; Feral CG13 is iconicOutfitSwap only. Both CG15 use futureExperienced only.",
+    "Existing source photographs support only their documented regions and purposes. Licensed body/equipment references do not become film identity authority.",
+    "No new not-applicable slot or perfect-fidelity approval was created."
+  ],
+  "kartIntegration": {
+    "status": "pass",
+    "receipt": "docs/kart/driver-reference-refresh-wave13-2026-11-09.json",
+    "sourceDriverRowsUpdated": 2,
+    "otherVehiclesUnmodified": 1910,
+    "vehicleMeshBinariesAndRastersUnmodified": true,
+    "originalGlbMetadataCopiesRetained": 2,
+    "assetCatalogueCheckPassed": true,
+    "testsPassed": 121,
+    "independentReview": {
+      "status": "pass",
+      "privateReportSha256": "eb6f8d23f06ca8137d972fb6428448a0e40ce954d7d08572669709071665729e"
+    }
+  },
+  "recordedAt": "2026-11-09T06:47:03.608317+00:00"
+}

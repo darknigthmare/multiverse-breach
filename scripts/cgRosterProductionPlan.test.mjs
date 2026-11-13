@@ -10,7 +10,7 @@ import { filterCgCatalogByRegulation } from '../src/game/cg/cgSchema.js';
 import { resolveCgVersions } from '../src/game/cg/cgRevisions.js';
 import { buildCgRosterProductionPlan, buildCgRosterProductionReport, rosterDefinitionsForHero, serializeCgRosterProductionPlan } from './buildCgRosterProductionPlan.mjs';
 import { loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
-import { CG_LOCAL_CANDIDATE_AMENDMENT_SHA256, CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256, validateCgRosterProductionSnapshot, verifyCgCandidateAsset } from './cgRosterPlanSnapshot.mjs';
+import { CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256, CG_SOURCE_METADATA_AMENDMENT_SHA256, validateCgRosterProductionSnapshot, verifyCgCandidateAsset } from './cgRosterPlanSnapshot.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 const plan = JSON.parse(readFileSync(path.join(ROOT, 'docs/cg/roster-production-2026-10-18.json'), 'utf8'));
@@ -299,11 +299,12 @@ test('historical production plan and concise report remain exact after the pinne
   const proof = validateCgRosterProductionSnapshot({ root: ROOT, rebuilt, heroes: HEROES_DB, catalog: CG_CATALOG,
     serialize: serializeCgRosterProductionPlan, buildReport: buildCgRosterProductionReport,
     diagnostic: message => t.diagnostic(message) });
-  assert.equal(proof.candidateSubjects, 606);
-  assert.equal(proof.amendmentSha256, CG_LOCAL_CANDIDATE_AMENDMENT_SHA256);
+  assert.equal(proof.candidateSubjects, 604);
+  assert.equal(proof.amendmentSha256, CG_SOURCE_METADATA_AMENDMENT_SHA256);
   assert.equal(proof.descriptorFields, 211);
   assert.equal(proof.descriptorAmendmentSha256, CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256);
-  assert.equal(proof.deliveredEntriesPreserved, 30);
+  assert.equal(proof.deliveredEntriesPreserved, 1436);
+  assert.equal(proof.deliveredDescriptorEntriesPreserved, 30);
 });
 
 
@@ -361,7 +362,7 @@ test('current descriptor amendments preserve delivered CG prompts, qualified ref
   await t.test('a delivered Dante prompt cannot be rewritten as a descriptor correction', () => {
     const index = rebuilt.entries.findIndex(entry => entry.characterId === 'devil_may_cry_dante');
     const entries = rebuilt.entries.slice(); entries[index] = { ...entries[index], promptBrief: 'A new unreviewed full-blade generation prompt' };
-    assert.throws(() => validate({ ...rebuilt, entries }), /Delivered CG entry changed/);
+    assert.throws(() => validate({ ...rebuilt, entries }), /[Dd]elivered CG entry changed/);
   });
   await t.test('a planning label cannot create a Pomni image or delivery', () => {
     const index = rebuilt.entries.findIndex(entry => entry.characterId === 'pomni');

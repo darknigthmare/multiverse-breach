@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-13T06:55:04.334031+00:00",
+  "assetId": "predator2-ship-background-20261113",
+  "stageId": 50105,
+  "sourceSceneId": "predator_2_lost_tribe_ship_1990",
+  "universe": "Predator",
+  "mode": "Tactics",
+  "sourceWork": "Predator2 (1990)",
+  "backlogTaskId": "predator-source-12",
+  "status": "PARTIAL_ENVIRONMENT_LAYER_GENERATED_AND_WIRED",
+  "path": "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+  "source": {
+    "tool": "image_gen.imagegen",
+    "modelVersion": "not exposed by tool",
+    "toolResultImagePath": "/workspace/generated_images/exec-04a45b63-7572-4515-bcee-5e320669e938.png",
+    "originalCopy": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/predator2-ship-generated-original.png",
+    "promptPath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator2-ship-prompt.txt",
+    "referencePaths": [
+      "docs/cg/references/wave12-2026-11-01/greyback-yautja/predator2-take-it-film-frame-first-fps1.png"
+    ],
+    "referenceSHA256": [
+      "8a6699d0aa69ea8bb2d3ca5f4f1c26dd7fdccdfa0d16431a81e66d406903a265"
+    ],
+    "referenceActuallyViewed": true,
+    "referenceScope": "Film1990Greybackscene visible copper/bronze wall relief, narrow recesses, amberlight and orange floorhaze only. Sourceframe doesnotqualifytrophywall",
+    "priorEvidencePath": "docs/cg/references/wave12-2026-11-01/greyback-yautja/film-frame-decode-proof.json"
+  },
+  "normalization": {
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "outputSize": [
+      960,
+      540
+    ],
+    "operation": "Full-canvas nearest-neighbor resize; no semantic edit, paintover or crop",
+    "opaque": true
+  },
+  "visualReview": {
+    "actuallyViewed": true,
+    "reviewer": "/root/p0_p1_scene_assets",
+    "method": "Generated output and native PNG actually opened with view_image.",
+    "source1to1Verified": false,
+    "visualFidelityApproved": false,
+    "inGameReviewCompleted": true,
+    "observations": [
+      "No actors, body fragments, UI, labels, weapons or legible text observed.",
+      "Environmental materials and light palette follow the scoped reference.",
+      "Wide camera and open floor support the adapted tactical board; no exact film geography claim."
+    ],
+    "browserEvidencePath": "docs/assets/p0-p1-continuation-2026-11-13/browser/validation-manifest.json",
+    "reviewScope": "Actual native GameCanvas/EngineTactics screenshot inspection at1280×900and390×900; scoped environmental cues only, no film geometry certification."
+  },
+  "remainingOpen": [
+    "P0 trophy wall and skull arrangement still require source qualification and artwork.",
+    "Separate hatch, engine and take-off VFX layers remain open.",
+    "Film geography and collision"
+  ],
+  "rights": {
+    "generatedAsset": "Generated with OpenAI image_gen; no film bitmap is served as the production backdrop.",
+    "references": "Existing reference retained with its origin receipt; no license inferred."
+  },
+  "files": [
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/predator2-ship-generated-original.png",
+      "bytes": 1857451,
+      "sha256": "739a53a8ab1183b9087515d6f05d5ce72dc89b0b8a086b362b88cc172be4ac64"
+    },
+    {
+      "path": "DLC/Predator/assets/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+      "bytes": 647069,
+      "sha256": "9708bef2a329cf00662c007c7e2921eea6cb68b6eabc9b305322e65c9dd990f4"
+    },
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator2-ship-prompt.txt",
+      "bytes": 1906,
+      "sha256": "47cc5ca8778a60bf71f76358d1edcee287e1c0a308d0c6412ec9735a6ee365a3"
+    }
+  ],
+  "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+  "runtimeUrl": "/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+  "localPublication": {
+    "path": "public/backgrounds/source-scenes/predator2-1990-ship-chamber-tactics-20261113.png",
+    "kind": "hardlink-to-DLC-source",
+    "trackedAsCanonical": false
+  }
+}

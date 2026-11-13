@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import path from 'node:path';
 import { HEROES_DB } from '../src/game/heroes.js';
+import { getQuarantinedCanonSprite, QUARANTINED_CANON_SPRITES } from '../src/game/canonicalSpriteQuarantine.js';
 
 const catalog = JSON.parse(readFileSync(new URL('../docs/rift-dossiers/catalog.json', import.meta.url), 'utf8'));
 const remediation = JSON.parse(readFileSync(new URL('../docs/rift-dossiers/canon-remediation-2026-10-01.json', import.meta.url), 'utf8'));
@@ -10,6 +12,56 @@ const sourceIds = new Map([
   ['luke', 9325], ['vader', 9530], ['han_solo', 9531],
   ['kevin_minions', 10483], ['stuart_minions', 10484], ['bob_minions', 10485]
 ]);
+
+// Exercise the production selection block without importing the catalog CLI,
+// whose top-level execution would rewrite the generated catalog.
+const builderSource = readFileSync(new URL('./buildRiftDossierCatalog.mjs', import.meta.url), 'utf8');
+const selectionStart = builderSource.indexOf('        const quarantinedSourceSprite = ');
+const selectionEnd = builderSource.indexOf('        const reportedEntry = ', selectionStart);
+assert.ok(selectionStart >= 0 && selectionEnd > selectionStart);
+const selectLocalCandidates = new Function('hero', 'arc', 'source', 'heroSpriteById',
+  'projectRoot', 'path', 'existsSync', 'normalizePublicAssetPath', 'getQuarantinedCanonSprite',
+  `${builderSource.slice(selectionStart, selectionEnd)}\nreturn { localReferenceCandidatePaths, sourceSpriteQuarantine };`);
+const selection = (hero, current, manifest, fileExists = true) => selectLocalCandidates(
+  hero, { heroId: hero.id }, { getHeroSpriteSheetSrc: () => current }, new Map([[hero.id, manifest]]),
+  '/fixture', path, () => fileExists, value => value, getQuarantinedCanonSprite
+);
+const candidates = (...args) => selection(...args).localReferenceCandidatePaths;
+
+test('Rift selection carries the explicit reviewed quarantine policy without approving its artwork', () => {
+  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+    const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
+    assert.deepEqual(selection(hero, null, record.asset).sourceSpriteQuarantine,
+      { heroId: id, ...record, artApproved: false });
+  }
+  const aayla = HEROES_DB.find(actor => actor.id === 'aayla_secura' && actor.universe === 'Star Wars');
+  assert.equal(selection(aayla, '/aayla.png', null).sourceSpriteQuarantine, null);
+});
+
+test('quarantined source editions cannot return through the Rift manifest fallback', () => {
+  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+    const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
+    assert.ok(hero && getQuarantinedCanonSprite(hero), id);
+    assert.deepEqual(candidates(hero, null, record.asset), [], `${id}: empty public getter`);
+    assert.deepEqual(candidates(hero, record.asset, record.asset), [], `${id}: existing old bitmap`);
+  }
+});
+
+test('Rift quarantine matching preserves other incarnations and other universes', () => {
+  for (const [id, record] of Object.entries(QUARANTINED_CANON_SPRITES)) {
+    const hero = HEROES_DB.find(actor => actor.id === id && actor.universe === record.universe);
+    assert.deepEqual(candidates({ ...hero, incarnation: `${record.incarnation} - other edition` }, null, record.asset), [record.asset]);
+    assert.deepEqual(candidates({ ...hero, universe: 'Custom fixture' }, null, record.asset), [record.asset]);
+  }
+});
+
+test('unaffected Rift references keep current-file priority and the existing manifest fallback', () => {
+  const hero = HEROES_DB.find(actor => actor.id === 'aayla_secura' && actor.universe === 'Star Wars');
+  assert.equal(getQuarantinedCanonSprite(hero), null);
+  assert.deepEqual(candidates(hero, '/current-aayla.png', '/legacy-aayla.png'), ['/current-aayla.png']);
+  assert.deepEqual(candidates(hero, '/current-aayla.png', '/legacy-aayla.png', false), ['/legacy-aayla.png']);
+  assert.deepEqual(candidates(hero, null, null), []);
+});
 
 test('source-locked characters carry their exact incarnation, equipment and visual anchor into their dossiers', () => {
   for (const [heroId, stageId] of sourceIds) {

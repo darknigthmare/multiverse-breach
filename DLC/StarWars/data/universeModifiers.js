@@ -1,0 +1,2 @@
+// Star Wars — mission modifiers consumed by the Hub.
+export const createUniverseModifier = () => ({ id: 'force_balance', name: { fr: 'Equilibre de la Force', en: 'Force Balance' }, desc: { fr: 'La Force renforce les actions decisives: attaque +8%, defense +6%, cache +15%.', en: 'The Force reinforces decisive actions: attack +8%, defense +6%, cache +15%.' }, heroAtk: 1.08, heroDef: 1.06, reward: 1.15, color: '#ffe066' });

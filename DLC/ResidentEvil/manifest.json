@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "resident-evil",
+  "universe": "Resident Evil",
+  "directory": "DLC/ResidentEvil",
+  "registration": "runtime",
+  "catalogOrder": 4,
+  "modules": [
+    {
+      "path": "data/battleItems.js",
+      "runtimeAdapter": "src/game/battleItems.js"
+    },
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/legacyStages.js",
+      "runtimeAdapter": "src/game/legacyStageCatalog.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/mosaicUniversePlaces.js",
+      "runtimeAdapter": "src/game/mosaicUniversePlaces.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    },
+    {
+      "path": "data/wardrobeExpansion.js",
+      "runtimeAdapter": "src/game/wardrobeExpansion.js"
+    },
+    {
+      "path": "data/wardrobeOfficial.js",
+      "runtimeAdapter": "src/game/wardrobeOfficial.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR10.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR10.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR7.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR7.js"
+    },
+    {
+      "path": "data/wardrobeOriginals.js",
+      "runtimeAdapter": "src/game/wardrobeOriginals.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

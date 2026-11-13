@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "elfen-lied",
+  "universe": "Elfen Lied",
+  "directory": "DLC/ElfenLied",
+  "registration": "runtime",
+  "catalogOrder": 332,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartL.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartL.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsRemaining47.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsRemaining47.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/recentUniverseLevels.js",
+      "runtimeAdapter": "src/game/recentUniverseLevels.js"
+    },
+    {
+      "path": "data/requestedUniverseWave.js",
+      "runtimeAdapter": "src/game/requestedUniverseWave.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
+import { projectAssetPath } from './dlcAssetPaths.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const columns = 4;
@@ -38,6 +40,46 @@ const localInput = async (input, base, label, expectedHash) => {
   } catch { throw new Error(`${label} must be an existing regular file.`); }
   if (!bytes.length || sha256(bytes) !== expected) throw new Error(`${label} SHA-256 mismatch.`);
   return { file, bytes, sha256: expected };
+};
+
+const regularFileWithoutLinks = async (file, label) => {
+  const resolved = path.resolve(file);
+  const volumeRoot = path.parse(resolved).root;
+  const segments = resolved.slice(volumeRoot.length).split(path.sep).filter(Boolean);
+  let current = volumeRoot;
+  for (const [index, segment] of segments.entries()) {
+    current = path.join(current, segment);
+    const stat = await fs.lstat(current);
+    if (stat.isSymbolicLink()) throw new Error(`${label} paths cannot contain symlinks.`);
+    if (index === segments.length - 1 ? !stat.isFile() : !stat.isDirectory()) {
+      throw new Error(`${label} must be a regular file with directory parents.`);
+    }
+  }
+  return resolved;
+};
+
+const referenceSource = (root, declared, base, resolveAssetSource) => {
+  if (typeof declared !== 'string' || !declared || /^(?:[a-z]+:|\/\/)/iu.test(declared)
+    || declared.split(/[\\/]/u).some(segment => segment === '..')) throw new Error('Invalid reference path.');
+  let publicPath;
+  if (/^\/(?:images|sprites)\//u.test(declared)) {
+    publicPath = declared;
+  } else {
+    const relative = projectAssetPath(declared)?.sourcePath
+      ?? path.relative(root, path.resolve(base, declared)).split(path.sep).join('/');
+    const projected = projectAssetPath(relative);
+    if (!projected) throw new Error('Reference must exist inside the repository public image tree or its registered DLC source.');
+    publicPath = projected.publicPath;
+    // No universe hint here: only an inventory entry can authorize a DLC reference.
+    if (relative.startsWith('DLC/') && resolveAssetSource(publicPath) !== relative) {
+      throw new Error('Reference DLC source must have a registered mapping for the same public URL.');
+    }
+  }
+  if (!/^\/(?:images|sprites)\/[a-z0-9_./-]+\.png$/iu.test(publicPath)
+    || publicPath.split('/').some(segment => segment === '.' || segment === '..')) {
+    throw new Error('Reference must exist inside the repository public image tree or its registered DLC source.');
+  }
+  return { sourcePath: resolveAssetSource(publicPath), publicPath };
 };
 
 const safeDestination = async (root, relative) => {
@@ -357,6 +399,7 @@ export const installReferencedCharacterImages = async ({ root = defaultRoot, man
   catch { throw new Error('Private manifest must be an existing valid JSON file.'); }
   if (document.schemaVersion !== 1 || !Array.isArray(document.jobs) || !document.jobs.length) throw new Error('Expected a private schemaVersion 1 jobs manifest.');
   const publicDestination = await safeDestination(root, publicManifestPath);
+  const resolveAssetSource = createAssetSourceResolver(root);
   const identities = new Set();
   const outputs = new Set();
   const prepared = [];
@@ -371,23 +414,16 @@ export const installReferencedCharacterImages = async ({ root = defaultRoot, man
     const identity = `${job.kind}:${job.id}`;
     if (identities.has(identity) || outputs.has(job.output)) throw new Error('Duplicate job identity or output.');
     identities.add(identity); outputs.add(job.output);
-    const destination = await safeDestination(root, `public${job.output}`);
+    const sourcePath = resolveAssetSource(job.output, job.universe);
+    const destination = await safeDestination(root, sourcePath);
     const source = await localInput(job.source, path.dirname(planFile), 'source', job.sourceSha256);
     const declaredReference = typeof job.reference === 'string' ? job.reference : job.reference?.path;
-    const mappedReference = typeof declaredReference === 'string' && /^\/(?:images|sprites)\//u.test(declaredReference)
-      ? path.join(root, 'public', declaredReference.slice(1)) : declaredReference;
+    const referenceLocation = referenceSource(root, declaredReference, path.dirname(planFile), resolveAssetSource);
+    const mappedReference = await regularFileWithoutLinks(path.join(root, referenceLocation.sourcePath), 'Reference');
     const reference = await localInput(typeof job.reference === 'object'
       ? { ...job.reference, path: mappedReference } : mappedReference,
     path.dirname(planFile), 'reference', job.referenceSha256);
-    const referenceRelative = path.relative(path.join(root, 'public'), reference.file).split(path.sep).join('/');
-    if (!/^(?:images|sprites)\/[a-z0-9_./-]+\.png$/iu.test(referenceRelative)
-      || referenceRelative.split('/').some(segment => segment === '.' || segment === '..')) throw new Error('Reference must exist inside the repository public image tree.');
-    let referenceParent = path.join(root, 'public');
-    for (const segment of referenceRelative.split('/')) {
-      if ((await fs.lstat(referenceParent)).isSymbolicLink()) throw new Error('Reference paths cannot contain symlinks.');
-      referenceParent = path.join(referenceParent, segment);
-    }
-    reference.output = `/${referenceRelative}`;
+    reference.output = referenceLocation.publicPath;
     if (path.extname(source.file).toLowerCase() !== '.png' || path.extname(reference.file).toLowerCase() !== '.png') throw new Error('Source and reference must be PNG files.');
     const referenceMetadata = await sharp(reference.bytes, { animated: false, failOn: 'error' }).metadata();
     if (referenceMetadata.format !== 'png' || referenceMetadata.pages > 1) throw new Error('Reference must be a real static PNG.');
@@ -395,7 +431,7 @@ export const installReferencedCharacterImages = async ({ root = defaultRoot, man
     const normalized = await normalizeReferencedCharacterPng(source.bytes, {
       componentLayout: componentLayout || job.componentLayout === true || job.component === true
     });
-    prepared.push({ destination, buffer: normalized.buffer, record: publicRecord(job, source, reference, normalized, proof) });
+    prepared.push({ destination, sourcePath, buffer: normalized.buffer, record: publicRecord(job, source, reference, normalized, proof) });
   }
   const publicDocument = { schemaVersion: 1, scope: 'New referenced PNG character sheets; historical generation records are unchanged.',
     policy: { privatePromptsAndIdentifiersPublished: false, canonicalFidelityApproved: false,
@@ -405,13 +441,14 @@ export const installReferencedCharacterImages = async ({ root = defaultRoot, man
   const created = [];
   const writeNew = async (file, bytes) => {
     const handle = await fs.open(file, 'wx');
-    created.push(file);
+    const stat = await handle.stat();
+    created.push({ file, dev: stat.dev, ino: stat.ino });
     try { await handle.writeFile(bytes); await handle.sync(); } finally { await handle.close(); }
   };
   try {
     for (let index = 0; index < prepared.length; index += 1) {
       const asset = prepared[index];
-      await safeDestination(root, `public${asset.record.output}`);
+      await safeDestination(root, asset.sourcePath);
       await fs.mkdir(path.dirname(asset.destination), { recursive: true });
       await writeNew(asset.destination, asset.buffer);
       await hooks.afterAssetWrite?.(index, asset);
@@ -422,7 +459,13 @@ export const installReferencedCharacterImages = async ({ root = defaultRoot, man
     await hooks.beforeFinalAudit?.();
     await auditReferencedCharacterImages({ root, manifestPath: publicManifestPath });
   } catch (error) {
-    for (const file of created.reverse()) await fs.rm(file, { force: true });
+    for (const item of created.reverse()) {
+      try {
+        await regularFileWithoutLinks(item.file, 'Rollback');
+        const stat = await fs.lstat(item.file);
+        if (stat.dev === item.dev && stat.ino === item.ino) await fs.unlink(item.file);
+      } catch { /* Do not follow a replaced parent or remove somebody else's inode. */ }
+    }
     throw error;
   }
   return { installed: prepared.length, publicManifestPath, outputs: prepared.map(asset => asset.record.output) };
@@ -434,6 +477,7 @@ export const auditReferencedCharacterImages = async ({ root = defaultRoot, manif
   if (manifest.schemaVersion !== 1 || !Array.isArray(manifest.entries) || !manifest.entries.length) throw new Error('Invalid public character image manifest.');
   const serialized = JSON.stringify(manifest);
   if (/"(?:generationId|generationPrompt|catalogPrompt|prompt|historicalPrompt|historicalGenerationId|currentLocalReferencePaths|proofFile)"\s*:/u.test(serialized)) throw new Error('Public manifest contains private generation fields.');
+  const resolveAssetSource = createAssetSourceResolver(root);
   for (const entry of manifest.entries) {
     if (!outputPattern.test(entry.output || '') || entry.canonicalFidelityApproved !== false
       || entry.visualReview?.canonicalFidelityApproved !== false
@@ -441,14 +485,10 @@ export const auditReferencedCharacterImages = async ({ root = defaultRoot, manif
       || !digestPattern.test(entry.reference?.sha256 || '')
       || !/^\/(?:images|sprites)\/[a-z0-9_./-]+\.png$/iu.test(entry.reference?.output || '')
       || entry.reference.output.split('/').some(segment => segment === '.' || segment === '..')) throw new Error('Invalid public image record.');
-    const referenceFile = path.join(root, 'public', entry.reference.output.slice(1));
-    const referenceStat = await fs.lstat(referenceFile);
-    if (!referenceStat.isFile() || referenceStat.isSymbolicLink()) throw new Error('Actual public reference must be a regular PNG file.');
+    const referenceFile = await regularFileWithoutLinks(path.join(root, resolveAssetSource(entry.reference.output)), 'Reference');
     const referenceBytes = await fs.readFile(referenceFile);
     if (sha256(referenceBytes) !== entry.reference.sha256 || referenceBytes.length !== entry.reference.bytes) throw new Error('Actual public reference PNG differs from the manifest.');
-    const file = path.join(root, 'public', entry.output.slice(1));
-    const stat = await fs.lstat(file);
-    if (!stat.isFile() || stat.isSymbolicLink()) throw new Error('Installed PNG must be a regular file.');
+    const file = await regularFileWithoutLinks(path.join(root, resolveAssetSource(entry.output, entry.universe)), 'Installed PNG');
     const bytes = await fs.readFile(file);
     if (sha256(bytes) !== entry.image.sha256 || bytes.length !== entry.image.bytes) throw new Error('Installed PNG SHA-256 or byte count differs from the public manifest.');
     const geometry = await inspectReferencedCharacterPng(bytes);

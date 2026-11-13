@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 export const projectRoot = path.resolve(path.dirname(scriptPath), '..');
@@ -21,10 +22,9 @@ const isInside = (parent, child) => {
 const resolveInput = (value, base) => (
   path.isAbsolute(value) ? path.normalize(value) : path.resolve(base, value)
 );
-const resolvePublicOutput = (root, output) => {
-  const publicRoot = path.resolve(root, 'public');
-  const destination = path.resolve(publicRoot, String(output || '').replace(/^\/+/, ''));
-  assert(isInside(publicRoot, destination), `Output escapes public/: ${output}`);
+const resolveAssetOutput = (root, output, universe, resolveAssetSource) => {
+  const destination = path.resolve(root, resolveAssetSource(output, universe));
+  assert(isInside(root, destination), `Output escapes repository: ${output}`);
   return destination;
 };
 const readJsonl = async file => {
@@ -56,6 +56,7 @@ export const parseArguments = values => {
 };
 
 export const buildInstallPlan = async ({ root = projectRoot, batchPath }) => {
+  const resolveAssetSource = createAssetSourceResolver(root);
   const absoluteBatchPath = path.resolve(root, batchPath);
   const batchDirectory = path.dirname(absoluteBatchPath);
   const batchBytes = await fs.readFile(absoluteBatchPath);
@@ -97,7 +98,8 @@ export const buildInstallPlan = async ({ root = projectRoot, batchPath }) => {
     const source = resolveInput(rawJob.source, batchDirectory);
     assert(await fileExists(source), `${label}: source PNG is missing`);
     assert(path.extname(source).toLowerCase() === '.png', `${label}: source must be PNG`);
-    const destination = resolvePublicOutput(root, rawJob.output);
+    const universe = Array.isArray(entry.univers) && entry.univers.length === 1 ? entry.univers[0] : null;
+    const destination = resolveAssetOutput(root, rawJob.output, universe, resolveAssetSource);
     const extension = path.extname(rawJob.output);
     assert(['.png', '.webp'].includes(extension.toLowerCase()), `${label}: unsupported destination format`);
     jobs.push({
@@ -181,6 +183,7 @@ const runSingleInstaller = ({ root, job }) => {
     '-File', path.join(root, 'scripts', 'installRiftDossierThumbnail.ps1'),
     '-Source', job.source,
     '-Destination', job.destination,
+    '-OutputPath', job.output,
     '-AssetId', job.assetId,
     '-MissionId', String(job.stageId),
     '-PromptFile', job.promptFile,

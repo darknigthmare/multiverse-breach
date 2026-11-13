@@ -76,6 +76,7 @@ def city(page,args,lang,out,name):
     page.wait_for_function('window.__sceneQA.state()?.npcs')
     page.clock.install(time=datetime(2026,10,28,tzinfo=timezone.utc));page.clock.pause_at(datetime(2026,10,28,0,1,tzinfo=timezone.utc));page.clock.run_for(150)
     page.get_by_role('button',name='TERMINAL · JOURNAL',exact=True).click()
+    page.locator('[data-city-terminal-tab="district"]').click()
     section=page.locator('.mosaic-exhibit-section');expect(section).to_be_visible()
     expect(section.locator('[data-exhibit-id]')).to_have_count(3)
     search=section.get_by_role('searchbox');search.fill('impossible-id-nothing');expect(section.locator('[data-exhibit-id]')).to_have_count(0);search.fill('')

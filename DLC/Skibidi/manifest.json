@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "skibidi",
+  "universe": "Skibidi",
+  "directory": "DLC/Skibidi",
+  "registration": "runtime",
+  "catalogOrder": 214,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartA.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartA.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

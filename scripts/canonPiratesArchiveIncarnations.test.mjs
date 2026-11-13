@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getCanonicalArchiveEnemyLore } from '../src/game/canonicalArchiveLore.js';
 
 const universe = 'Pirates of the Caribbean';

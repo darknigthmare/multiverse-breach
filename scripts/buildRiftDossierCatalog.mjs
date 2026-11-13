@@ -11,6 +11,7 @@ import { createServer } from 'vite';
 import { applyWave6ProductionPromptOverrides } from './riftDossierWave6PromptOverrides.mjs';
 import { resolveCatalogOutputPath, writeCatalogAtomically } from './riftDossierCatalogOutput.mjs';
 import { readStaticStages } from './riftDossierStaticStages.mjs';
+import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -558,6 +559,7 @@ const makeEntry = ({
   characterName = null,
   characterDescriptors = [],
   characterSourceLock = null,
+  sourceSpriteQuarantine = null,
   referencePolicy = 'authoritative-public'
 }) => {
   const normalizedName = normalizeLocalizedName(nom);
@@ -637,6 +639,7 @@ const makeEntry = ({
       ? { candidatsReferencesLocalesAudit: normalizedLocalReferenceCandidatePaths }
       : {}),
     ...(characterSourceLock ? { verrouSourcePersonnage: characterSourceLock } : {}),
+    ...(sourceSpriteQuarantine ? { sourceSpriteQuarantine } : {}),
     cheminCibleDedie: buildTargetPath({
       id,
       famille,
@@ -1077,11 +1080,16 @@ const buildCatalog = async () => {
           ? 'Nexus de Convergence'
           : heroById.get(arc.heroId)?.universe;
         const hero = heroById.get(arc.heroId);
+        const quarantinedSourceSprite = getQuarantinedCanonSprite(hero);
+        const sourceSpriteQuarantine = quarantinedSourceSprite
+          ? { heroId: hero.id, ...quarantinedSourceSprite, artApproved: false }
+          : null;
         const resolvedHeroSprite = hero ? source.getHeroSpriteSheetSrc(hero, 'rpg') : null;
         const resolvedHeroSpriteFile = resolvedHeroSprite
           ? path.join(projectRoot, 'public', resolvedHeroSprite.replace(/^\//, ''))
           : null;
-        const localReferencePath = (
+        // A rejected source edition must not re-enter through the older manifest.
+        const localReferencePath = sourceSpriteQuarantine ? null : (
           resolvedHeroSpriteFile && existsSync(resolvedHeroSpriteFile)
             ? resolvedHeroSprite
             : heroSpriteById.get(arc.heroId)
@@ -1152,6 +1160,7 @@ const buildCatalog = async () => {
           characterName: hero?.name || arc.title?.en || arc.heroId,
           characterDescriptors,
           characterSourceLock,
+          sourceSpriteQuarantine,
           bossVisualAnchor: subjectReference?.bossVisualAnchor,
           bossReferenceUrls: subjectReference?.bossReferenceUrls,
           localReferencePaths: approvedLocalReferencePaths,

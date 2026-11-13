@@ -1,7 +1,7 @@
 import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { createFighterHeldInputs, synchronizeFighterControlOwners as syncOwners } from '../src/game/fighterControlOwnership.js';
 let vite, Fighter;
 const source = readFileSync(new URL('../src/components/FighterMode.jsx', import.meta.url), 'utf8');

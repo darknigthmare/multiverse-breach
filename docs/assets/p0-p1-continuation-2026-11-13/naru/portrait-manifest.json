@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T07:37:23.378901+00:00",
+  "id": "prey-naru-black-eye-paint-portrait-20261113",
+  "backlogTaskId": "prey-2022-01",
+  "backlogAssetKey": "prey-naru-1719",
+  "priority": "P0",
+  "actorId": "naru_prey",
+  "universe": "Prey",
+  "sourceWork": "Prey (2022)",
+  "storyYear": 1719,
+  "look": "Naru wearing the broad charcoal-black eye-band paint visible in official stills01 and06",
+  "kind": "actor-portrait",
+  "status": "BOUNDED_PORTRAIT_GENERATED_AND_INSPECTED_FULLBODY_TASK_REMAINS_OPEN",
+  "acceptanceCriteria": [
+    "Identify the existing source-scene lead in a real HUD portrait using visible film-specific face, hair, paint and shoulder details.",
+    "Keep the portrait separate from the walking/combat body and preserve the existing roster ID, equipment, stats and source-scene progression.",
+    "Deliver usable transparency and game-scale readability without claiming a whole-body animation or absolute likeness certification."
+  ],
+  "historicalRefusalReview": {
+    "exactIdsChecked": [
+      "naru",
+      "naru_prey"
+    ],
+    "atlasCorrectionRefusalsFound": 0,
+    "rosterQueue": "docs/cg/roster-global-batch-2026-10-25.json",
+    "historicalReferenceRecord": "docs/cg/naru-reference-evidence-wave11-2026-10-26.json",
+    "historicalReferenceRecordScope": "The older naru/Predator source research was needs-reference and explicitly reports no generation attempted. It is not a provider refusal or authority for this Prey identity.",
+    "unrelatedAggregateCatalogMentionsNotCountedAsRefusals": true
+  },
+  "references": [
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/naru/references/g_prey_246_01_473e547d.jpeg",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/g_prey_246_01_473e547d.jpeg?region=1%2C0%2C1298%2C730",
+      "sourcePageUrl": "https://www.20thcenturystudios.com/movies/prey",
+      "sourceKind": "official-film-publicity-still",
+      "creatorCredit": "20th Century Studios / David Bukach",
+      "sha256": "c883b21dcb7600a979c8c40267ec9d6c4eeba005aa0e1adf432d28ab6e1dbe1c",
+      "bytes": 108492,
+      "dimensions": [
+        1298,
+        730
+      ],
+      "actuallyInspected": true,
+      "reviewer": "/root/priority_assets",
+      "qualifiedScope": "face, hair, black eye-band paint, neck and the visible shoulder edge",
+      "termsNote": "Official publicity reference; source availability is not an independent redistribution license."
+    },
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/naru/references/g_prey_246_06_87d32f84.jpeg",
+      "url": "https://lumiere-a.akamaihd.net/v1/images/g_prey_246_06_87d32f84.jpeg?region=1%2C0%2C1298%2C730",
+      "sourcePageUrl": "https://www.20thcenturystudios.com/movies/prey",
+      "sourceKind": "official-film-publicity-still",
+      "creatorCredit": "20th Century Studios / David Bukach",
+      "sha256": "3271435dc9986ed6bc87659394d78d3f8266e84369153b5940e4420ac39cd59f",
+      "bytes": 225568,
+      "dimensions": [
+        1298,
+        730
+      ],
+      "actuallyInspected": true,
+      "reviewer": "/root/priority_assets",
+      "qualifiedScope": "matching black eye-band look, upper earth-tone hide shoulder garment, visible fringe and cords only",
+      "termsNote": "Official publicity reference; source availability is not an independent redistribution license."
+    }
+  ],
+  "generation": {
+    "provider": "OpenAI",
+    "interface": "built-in image_gen",
+    "attemptCount": 1,
+    "result": "image-returned",
+    "transparentBackground": true,
+    "promptFile": "docs/assets/p0-p1-continuation-2026-11-13/naru/portrait-prompt.txt",
+    "promptFileSha256": "f238e89a0543af1c81d1c5517d2a072deb96c61c2251e7a801a6242f829ec450",
+    "promptTextSha256": "a80c9219b4608c8f23e48886968a7c31ced7cefec8cabb8314ccc70694ee61d3",
+    "promptTextReadRule": "Remove the single final LF from promptFile to reproduce the submitted string.",
+    "referencedImagePaths": [
+      "/tmp/p0p1-scene-research-20261113/g_prey_246_01_473e547d.jpeg",
+      "/tmp/p0p1-scene-research-20261113/g_prey_246_06_87d32f84.jpeg"
+    ],
+    "nativeFile": "docs/assets/p0-p1-continuation-2026-11-13/naru/native.png",
+    "nativeSha256": "3b0300accd3f23c12ab3d899bf5ceac82e65da846f4ae431e516b9c59cdeb3fc",
+    "nativeBytes": 1175202,
+    "nativeDimensions": [
+      1254,
+      1254
+    ],
+    "originalToolOutputPath": "/workspace/generated_images/exec-bf67f88d-0761-408b-91d9-3a38919cbd7a.png",
+    "originalRetained": true,
+    "generationId": null
+  },
+  "processing": {
+    "operation": "alpha-noise-threshold-12+visible-bounds-crop+uniform-nearest-fit+transparent-center",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "alphaNoisePixelsCleared": 21685,
+    "sourceVisibleBounds": [
+      28,
+      88,
+      1227,
+      1224
+    ],
+    "uniformScale": 0.20016680567139283,
+    "resizedDimensions": [
+      240,
+      227
+    ],
+    "offset": [
+      8,
+      14
+    ],
+    "outputDimensions": [
+      256,
+      256
+    ],
+    "outputVisibleBounds": [
+      8,
+      14,
+      248,
+      241
+    ],
+    "sourceSha256": "3b0300accd3f23c12ab3d899bf5ceac82e65da846f4ae431e516b9c59cdeb3fc",
+    "outputSha256": "dde3b146974e14a5e5e21a9cd79eb8f239a7d9f2205d906a8039b9e6b0e012e9",
+    "semanticPaintingPerformed": false
+  },
+  "normalizerPath": "docs/assets/p0-p1-continuation-2026-11-13/sarii/normalize_portrait.py",
+  "asset": {
+    "path": "/sprites/source-scenes/prey-2022/naru-portrait-20261113.png",
+    "sha256": "dde3b146974e14a5e5e21a9cd79eb8f239a7d9f2205d906a8039b9e6b0e012e9",
+    "bytes": 75949,
+    "format": "png",
+    "mode": "RGBA",
+    "width": 256,
+    "height": 256,
+    "columns": 1,
+    "rows": 1,
+    "frameCount": 1,
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "visibleBounds": [
+      8,
+      14,
+      248,
+      241
+    ],
+    "minimumGuardPixels": 8,
+    "portraitOnly": true,
+    "sourcePath": "DLC/Prey/assets/sprites/source-scenes/prey-2022/naru-portrait-20261113.png",
+    "publicationPath": "public/sprites/source-scenes/prey-2022/naru-portrait-20261113.png",
+    "publicationKind": "regular-file-hardlink-to-canonical-DLC-asset"
+  },
+  "visualReview": {
+    "reviewer": "/root/priority_assets",
+    "sourceActuallyViewed": true,
+    "nativeActuallyViewed": true,
+    "normalizedActuallyViewed": true,
+    "gameScalePreviewActuallyViewed": true,
+    "previewPath": "docs/assets/p0-p1-continuation-2026-11-13/naru/game-scale-preview.png",
+    "previewSha256": "82aed4b3ca3529bb67a84fa62f9d0733df7f80b59cabc3ea9c8a7b4f813cd4d8",
+    "reviewedPreviewSizes": [
+      40,
+      80,
+      112
+    ],
+    "observations": [
+      "Face, dark loose hair and the wide black eye-band remain legible in the small preview.",
+      "Only the visible upper shoulders are included; no lower garment, feet, weapon, hand or new costume is presented.",
+      "The generated portrait is a pixel-art adaptation; a single expression is delivered, not animated action frames."
+    ],
+    "limitations": [
+      "Exact likeness, paint texture, hair strands and costume geometry are not certified 1:1.",
+      "No browser or in-engine validation of the HUD hookup was performed by this producer."
+    ],
+    "canonicalFidelityApproved": false,
+    "visualFidelityApproved": false
+  },
+  "runtimeProposal": {
+    "module": "src/game/sourceScenePreyPortraitAssets.js",
+    "getter": "getSourceSceneNaruPortraitArt(scene)",
+    "drawFunction": "drawSourceSceneNaruPortrait(ctx, scene, x, y, size)",
+    "stageId": 50106,
+    "sourceSceneId": "prey_1719_naru_feral_bog",
+    "actorId": "naru_prey",
+    "universe": "Prey",
+    "mode": "Tactics",
+    "replacesFullBodySheet": false,
+    "newCombatUnit": false,
+    "changesStatsOrEquipment": false,
+    "hookPending": true,
+    "canonicalSourcePath": "DLC/Prey/assets/sprites/source-scenes/prey-2022/naru-portrait-20261113.png"
+  },
+  "remainingWork": {
+    "fullBodyArtworkComplete": false,
+    "animationArtworkComplete": false,
+    "backlogP0Closed": false,
+    "statesStillOpen": [
+      "idle",
+      "run",
+      "throw",
+      "rope-hatchet",
+      "flintlock",
+      "herb",
+      "victory"
+    ],
+    "required": "Qualify and review the existing full-body sprite and any missing action variants separately; this portrait completes only the bounded portrait deliverable."
+  }
+}

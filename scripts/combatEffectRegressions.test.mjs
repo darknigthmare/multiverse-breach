@@ -1,6 +1,6 @@
 import { after, afterEach, before, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from '../src/game/combatEventBuffs.js';
 import { applyMeleeHitStun } from '../src/game/melee/meleeCombatRuntime.js';
 

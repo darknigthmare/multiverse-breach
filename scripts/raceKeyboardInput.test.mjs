@@ -35,7 +35,7 @@ const fixture = () => {
   const noop = () => {};
   const env = {
     runGuard, runGuardRef: { current: runGuard },
-    engine, engineRef: { current: engine }, sessionPausedRef: { current: false },
+    engine, engineRef: { current: engine }, rendererRef: { current: null }, sessionPausedRef: { current: false },
     sessionPaused: false, raceMenuOpen: false,
     document: { hidden: false, removeEventListener: noop },
     window: { removeEventListener: noop }, cancelAnimationFrame: noop, animationId: 1,
@@ -46,7 +46,7 @@ const fixture = () => {
     setRaceMenuOpen: noop, setRaceStarted: noop, setSummary: noop, setSnapshot: noop,
     setRuntimeError: noop, setRaceNonce: noop, setTrackId: noop,
     onSessionStart: noop, onSessionEndRef: { current: noop },
-    summary: null, pilotId: 'pilot', trackId: 'atrium',
+    summary: null, pilotId: 'pilot', trackId: 'atrium', canLaunch: true,
     raceMusicStateRef: { current: 'running' }, raceMusicStage: {},
     sound: { stopBgm: noop, playStageBgm: noop }
   };

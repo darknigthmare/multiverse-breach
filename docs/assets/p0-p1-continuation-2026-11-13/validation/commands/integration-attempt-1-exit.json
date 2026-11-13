@@ -1,0 +1,42 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/canonicalSpriteQuarantine.test.mjs",
+    "scripts/githubDataIntegration20261113.test.mjs",
+    "scripts/canonicalEquipmentIncarnations.test.mjs",
+    "scripts/canonicalStarWarsSpriteEvidence.test.mjs",
+    "scripts/energyBladeFallback.test.mjs",
+    "scripts/canonPriorityCorrections.test.mjs",
+    "scripts/combatCanonicalEditionFixtures.test.mjs",
+    "scripts/dlcProfileRuntime.test.mjs",
+    "scripts/dlcProfileSharedBackdrops.test.mjs",
+    "scripts/dlcPlayerState.test.mjs",
+    "scripts/dlcInstallation.test.mjs",
+    "scripts/reauditSourceSceneDlcFactories.test.mjs"
+  ],
+  "startedAt": "2026-11-13T06:47:10.349787+00:00",
+  "endedAt": "2026-11-13T06:52:16.664813+00:00",
+  "exitCode": 1,
+  "node": "v22.23.5",
+  "files": [
+    "scripts/canonicalSpriteQuarantine.test.mjs",
+    "scripts/githubDataIntegration20261113.test.mjs",
+    "scripts/canonicalEquipmentIncarnations.test.mjs",
+    "scripts/canonicalStarWarsSpriteEvidence.test.mjs",
+    "scripts/energyBladeFallback.test.mjs",
+    "scripts/canonPriorityCorrections.test.mjs",
+    "scripts/combatCanonicalEditionFixtures.test.mjs",
+    "scripts/dlcProfileRuntime.test.mjs",
+    "scripts/dlcProfileSharedBackdrops.test.mjs",
+    "scripts/dlcPlayerState.test.mjs",
+    "scripts/dlcInstallation.test.mjs",
+    "scripts/reauditSourceSceneDlcFactories.test.mjs"
+  ],
+  "prebuildBypassed": true,
+  "scope": "targeted merge regressions; not full npm lifecycle"
+}

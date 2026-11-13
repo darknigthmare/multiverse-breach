@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import { SoundEngine } from '../src/game/soundEngine.js';
 
 const stage = id => ({ id, name: id, universe: 'Nexus de Convergence', mode: 'RPG' });
@@ -203,3 +204,41 @@ test('a fresh request after cancelling a locked request starts only the new scen
   assert.equal(intervals.size, 1);
   assert.equal(sound.currentMusicPlan.key, fresh.key);
 }));
+
+
+test('source scene cues are audible and route only through SFX without reviving cancelled music', () => withAudio(({ sound, start, nodes, intervals }) => {
+  start('prey-2022');
+  sound.stopBgm();
+  for (const [cue, expectedOscillators] of [['click', 1], ['confirm', 2], ['explosion', 1]]) {
+    const before = nodes.length;
+    sound.playSfx(cue);
+    const created = nodes.slice(before);
+    const oscillators = created.filter(node => node.kind === 'oscillator');
+    assert.equal(oscillators.length, expectedOscillators, cue + ' must create a real sound');
+    for (const oscillator of oscillators) {
+      assert.equal(oscillator.connections[0]?.connections[0], sound.sfxOutput, cue + ' routes to the SFX bus');
+      assert.equal(oscillator.stops.length, 1, cue + ' has a bounded lifetime');
+    }
+    assert.equal(intervals.size, 0, cue + ' must not restart the cancelled music');
+    assert.equal(sound.activeSources.length, 0, cue + ' must not resurrect music notes');
+  }
+}));
+test('audio cues called directly by core modes are all implemented by the synthesizer', () => {
+  const cases = readFileSync(new URL('../src/game/soundEngine.js', import.meta.url), 'utf8');
+  const ids = new Set([...cases.matchAll(/case '([^']+)':/g)].map(match => match[1]));
+  const sourceFiles = [
+    '../src/game/sourceSceneEncounter.js',
+    '../src/game/engineTactics.js',
+    '../src/game/engineRpg.js',
+    '../src/game/engineSmash.js',
+    '../src/components/GameCanvas.jsx',
+    '../src/components/HubScreen.jsx',
+    '../src/components/PortalScreen.jsx'
+  ];
+  for (const filename of sourceFiles) {
+    const content = readFileSync(new URL(filename, import.meta.url), 'utf8');
+    const used = [...content.matchAll(/(?:this\.)?playSfx\(\s*['`]([^'`]+)['`]/g)]
+      .map(match => match[1]);
+    for (const cue of used) assert.ok(ids.has(cue), filename + ' requests missing audio cue ' + cue);
+  }
+});

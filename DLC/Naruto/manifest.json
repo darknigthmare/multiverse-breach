@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "naruto",
+  "universe": "Naruto",
+  "directory": "DLC/Naruto",
+  "registration": "runtime",
+  "catalogOrder": 342,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/recentUniverseLevels.js",
+      "runtimeAdapter": "src/game/recentUniverseLevels.js"
+    },
+    {
+      "path": "data/requestedUniverseWave.js",
+      "runtimeAdapter": "src/game/requestedUniverseWave.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

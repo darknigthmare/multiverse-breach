@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "digimon-celestial-rift",
+  "universe": "Digimon Celestial Rift",
+  "directory": "DLC/DigimonCelestialRift",
+  "registration": "runtime",
+  "catalogOrder": 259,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

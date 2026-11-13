@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorId": "grim_knight",
+  "incarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+  "sourceFile": "DLC/TheBatmanWhoLaughs/data/canonP0SourceKits.js",
+  "observedContract": [
+    "Official one-shot article header shows short pointed bat ears, white eye slits, dark cowl and armored torso, ammunition/weapon attachments and multiple firearms.",
+    "Article interior page5 shows gray torso, dark bat emblem, dark cowl/cape/gauntlets and yellow-gold belt. This is a page-local costume depiction; do not merge its colors with the cover lighting as a fully verified uniform."
+  ],
+  "missingContract": [
+    "Both legs, boots, complete cape and rear armor remain outside the acquired clear source views.",
+    "No exact firearm make/model is established; do not derive one from a familiar silhouette.",
+    "Weapon ownership in each animation and the precise neutral-body loadout still require source-panel review."
+  ],
+  "rejected": [
+    {
+      "candidate": "grim-panel1",
+      "reason": "Child Bruce in the origin scene; does not establish adult armored gameplay appearance."
+    }
+  ],
+  "status": "partial-primary-reference-ready-for-bounded-art-candidates-full-body-review-open",
+  "references": [
+    {
+      "url": "https://static.dc.com/dc/files/default_images/ComicsGallery_DC_20190313__BMWLTGK_Cv1_5c8ab20eacb1e7.74964892.jpg",
+      "finalUrl": "https://static.dc.com/dc/files/default_images/ComicsGallery_DC_20190313__BMWLTGK_Cv1_5c8ab20eacb1e7.74964892.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 168509,
+      "sha256": "14503abb9a1268cdc6333d262fa4c1ecf1fcdd9d28e439b077eff28a15b28ea0",
+      "retrievedAt": "2026-11-13T06:42:22.080062+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/grim_knight/grim-cover.jpg",
+      "sourcePageUrl": "https://www.dc.com/blog/2019/03/15/the-grim-knight-a-dark-reflection-of-what-could-have-been",
+      "sourceKind": "PRIMARY_PUBLISHER_ARTICLE_HEADER",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Masked head, upper armor, chest mounts and hand-held firearms; lower body and some weapon ends cropped.",
+      "sourceScope": "masked-upper-body-and-equipment",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    },
+    {
+      "url": "https://static.dc.com/sites/default/files/imce/2019/03-MAR/GrimKnight_5_5c8ab1fd268f79.48109813.jpg",
+      "finalUrl": "https://static.dc.com/sites/default/files/imce/2019/03-MAR/GrimKnight_5_5c8ab1fd268f79.48109813.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 174898,
+      "sha256": "890c4b1ea47eb8544e328e130bd60db957087d648f95c3772bb41317757cd41e",
+      "retrievedAt": "2026-11-13T06:40:53.207672+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        701,
+        1080
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/grim_knight/grim-panel5.jpg",
+      "sourcePageUrl": "https://www.dc.com/blog/2019/03/15/the-grim-knight-a-dark-reflection-of-what-could-have-been",
+      "sourceKind": "PRIMARY_PUBLISHER_REPRODUCED_COMIC_PAGE",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "One-shot page5 upper body/cowl/cape/gauntlets and belt; lower body not clear.",
+      "sourceScope": "interior-page-upper-body",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    }
+  ],
+  "productionGate": {
+    "usableScopes": [
+      "masked-head-and-upper-armor",
+      "one-shot-upper-body-costume",
+      "visible-firearm-silhouettes-without-model-names"
+    ],
+    "boundedCandidateGenerationSupported": true,
+    "fullBodyQualified": false,
+    "fullBodyGapsRemain": true,
+    "mayUseFor": "Produce separate candidates limited to the listed observed surfaces. Preserve edition and record generated adaptation. Full-body production and exact hidden details remain unsupported by this acquisition.",
+    "source1to1Verified": false,
+    "automaticFidelityApproval": false
+  },
+  "scope": "Source acquisition and bounded observation only. No game sprite, animation, runtime binding or1:1 approval created."
+}

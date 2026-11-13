@@ -1,27 +1,19 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcStarWars from '../../DLC/StarWars/data/smashAbilityProfiles.js';
+import * as dlcMinions from '../../DLC/Minions/data/smashAbilityProfiles.js';
+
 // Source-locked kits opt into spatial combat rules. Distances, hit limits and
 // musical/comic damage are game adaptations, not measurements from the films.
 const contact = Object.freeze({ delivery: 'melee', shape: 'single', range: 70, verticalRange: 35 });
 const ranged = Object.freeze({ delivery: 'ranged', shape: 'single', range: 300, verticalRange: 35 });
 
 export const CANON_SMASH_ABILITY_PROFILES = Object.freeze({
-  han_solo: Object.freeze({
-    simple: ranged,
-    secondary: ranged,
-    special: Object.freeze({ ...ranged, shape: 'multi', maxTargets: 3 })
-  }),
-  luke: Object.freeze({ simple: contact, secondary: ranged, special: contact }),
-  vader: Object.freeze({
-    simple: contact,
-    secondary: ranged,
-    special: Object.freeze({ ...ranged, knockback: 0 })
-  }),
-  bob_minions: Object.freeze({ simple: contact, secondary: ranged, special: contact }),
-  kevin_minions: Object.freeze({ simple: contact, secondary: ranged, special: contact }),
-  stuart_minions: Object.freeze({
-    simple: contact,
-    secondary: ranged,
-    special: Object.freeze({ delivery: 'ranged', shape: 'area', range: 160, verticalRange: 100, directional: false })
-  })
+  han_solo: dlcStarWars.createCanonSmashAbilityProfiles({ ranged }),
+  luke: dlcStarWars.createCanonSmashAbilityProfiles2({ contact, ranged }),
+  vader: dlcStarWars.createCanonSmashAbilityProfiles3({ contact, ranged }),
+  bob_minions: dlcMinions.createCanonSmashAbilityProfiles({ contact, ranged }),
+  kevin_minions: dlcMinions.createCanonSmashAbilityProfiles2({ contact, ranged }),
+  stuart_minions: dlcMinions.createCanonSmashAbilityProfiles3({ contact, ranged })
 });
 
 const positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;

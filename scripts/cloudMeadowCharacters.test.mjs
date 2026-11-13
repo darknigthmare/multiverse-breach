@@ -1,8 +1,13 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
 import { after, before, test } from 'node:test';
 import { register } from 'node:module';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import sharp from 'sharp';
 import { HEROES_DB } from '../src/game/heroes.js';
 import {
   CLOUD_MEADOW_CHARACTERS,
@@ -42,6 +47,36 @@ const additionalIds = [
   'golden_barmaid', 'mantis_warrior', 'crystal_mage', 'diving_suit', 'lamia_female', 'coral_mermaid',
   'cat_female', 'crab', 'cyclops_female', 'centaur_female', 'lamia_male', 'wolf_female', 'holstaur_male', 'harpy_male'
 ].map(id => `cloud_meadow_${id}`);
+
+test('image review inspects the canonical DLC source instead of a stale public copy', async context => {
+  const root = await mkdtemp(join(tmpdir(), 'cloud-meadow-source-'));
+  context.after(() => rm(root, { recursive: true, force: true }));
+  const src = '/sprites/generated/heroes/cloud-meadow/fixture.png';
+  const sourcePath = 'DLC/CloudMeadow/assets' + src;
+  const write = async (relative, value) => {
+    await mkdir(dirname(join(root, relative)), { recursive: true });
+    await writeFile(join(root, relative), value);
+  };
+  await write('DLC/CloudMeadow/manifest.json', JSON.stringify({
+    schemaVersion: 1, id: 'cloud-meadow', universe: 'Cloud Meadow',
+    directory: 'DLC/CloudMeadow', assetManifest: 'assets.json'
+  }));
+  await write('DLC/CloudMeadow/assets.json', JSON.stringify({
+    schemaVersion: 1, universe: 'Cloud Meadow', assets: [{ publicPath: src, sourcePath }]
+  }));
+  const pixels = Buffer.alloc(6 * 6 * 4);
+  for (let y = 1; y < 5; y++) for (let x = 1; x < 5; x++) {
+    pixels.set([40, 80, 160, 255], (y * 6 + x) * 4);
+  }
+  const image = await sharp(pixels, { raw: { width: 6, height: 6, channels: 4 } }).png().toBuffer();
+  await write(sourcePath, image);
+  await write('public' + src, 'stale generated copy must not be read');
+  const result = await inspectCloudMeadowImage(src, true, { root });
+  assert.equal(result.sha256, createHash('sha256').update(image).digest('hex'));
+  assert.deepEqual(result.contentBounds, { x: 1, y: 1, width: 4, height: 4 });
+  assert.equal(result.transparentPixels, 20);
+  assert.equal(result.boundaryPixels, 0);
+});
 
 test('reference identities remain separate artwork records without invented gameplay or certification', () => {
   assert.deepEqual(CLOUD_MEADOW_CHARACTERS.map(character => character.id), [...initialIds, ...additionalIds]);

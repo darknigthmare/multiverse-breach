@@ -9,6 +9,7 @@ import { getBoosterPrice } from '../game/portalBoosterEconomy';
 import { getPortalBoosterArt, getPortalBoosterPackArt } from '../game/portalBoosterCatalog';
 import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
 import { resolvePortalBoosterEditorialWave } from '../game/portalBoosterEditorialWaves';
+import PortalCatalogPager from './PortalCatalogPager.jsx';
 
 const localize = (value, lang) => typeof value === 'string' ? value : value?.[lang] || value?.fr || value?.en || '';
 const rateLabel = (rate, lang) => `${((Number(rate) || 0) * 100).toLocaleString(lang, { maximumFractionDigits: 4 })}% ${lang === 'fr' ? 'par slot libre' : 'per free slot'}`;
@@ -17,9 +18,11 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
   const overlayRef = useRef(null);
+  const overviewRef = useRef(null);
+  const rewardsRef = useRef(null);
   useModalDialog({ overlayRef, dialogRef, initialFocusRef: closeRef, onClose });
   const [query, setQuery] = useState('');
-  const [pageSize, setPageSize] = useState(24);
+  const [pageSize, setPageSize] = useState(12);
   const [kind, setKind] = useState('all');
   const [page, setPage] = useState(0);
   const rates = useMemo(() => getBoosterFreeDrawRates(candidates), [candidates]);
@@ -40,22 +43,41 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
   }, {}), [candidates]);
   const art = getPortalBoosterPackArt(banner.id) || getPortalBoosterArt(banner.universe);
   const ownedCount = candidates.filter(isCandidateOwned).length;
+  const focusSection = ref => {
+    ref.current?.focus({ preventScroll: true });
+    ref.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  const changePage = value => {
+    setPage(value);
+    window.requestAnimationFrame(() => focusSection(rewardsRef));
+  };
+  const pager = position => <PortalCatalogPager
+    lang={lang} label={lang === 'fr' ? 'Cartes du booster' : 'Booster cards'} controlsId="booster-dossier-cards" position={position}
+    {...rewardPage} pageSize={pageSize} onPageChange={changePage}
+    onPageSizeChange={value => { setPageSize(value); setPage(0); }}
+  />;
 
-  return createPortal(
+  const content = (
     <div ref={overlayRef} className="booster-art-lightbox booster-dossier-overlay" style={{ '--portal-color': banner.color }} onMouseDown={event => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <section ref={dialogRef} tabIndex={-1} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" data-booster-dossier={banner.id}>
+      <section ref={dialogRef} tabIndex={-1} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" aria-describedby="booster-dossier-overview-title" data-booster-dossier={banner.id}>
         <header>
           <div>
-            <span>{lang === 'fr' ? 'DOSSIER COMPLET · CONSULTATION SANS ACHAT' : 'COMPLETE DOSSIER · NO PURCHASE ON PREVIEW'}</span>
-            <strong id="booster-dossier-title" style={{ whiteSpace: 'normal' }}>{localize(banner.label, lang)}</strong>
+            <strong id="booster-dossier-title">{lang === 'fr' ? 'Dossier du booster' : 'Booster dossier'}</strong>
           </div>
           <button ref={closeRef} type="button" className="booster-art-preview-close" onClick={onClose} aria-label={lang === 'fr' ? 'Fermer le dossier du booster' : 'Close booster dossier'}>×</button>
         </header>
-        <div style={{ minHeight: 0, overflowY: 'auto', padding: '4px 6px 12px', overscrollBehavior: 'contain' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: 20 }}>
-            {art && <img src={art} alt={localize(banner.label, lang)} style={{ width: '100%', height: 300, objectFit: 'contain' }} />}
+        <div className="booster-dossier-content" tabIndex={0} role="region" aria-label={lang === 'fr' ? 'Contenu du dossier du booster' : 'Booster dossier contents'}>
+          <nav className="booster-dossier-sections" aria-label={lang === 'fr' ? 'Sections du dossier' : 'Dossier sections'}>
+            <button type="button" className="btn-retro" onClick={() => focusSection(overviewRef)}>{lang === 'fr' ? 'GARANTIES ET SÉLECTION' : 'GUARANTEES AND SELECTION'}</button>
+            <button type="button" className="btn-retro" onClick={() => focusSection(rewardsRef)}>{lang === 'fr' ? 'TOUTES LES CARTES' : 'EVERY CARD'} ({candidates.length})</button>
+          </nav>
+          <section aria-labelledby="booster-dossier-overview-title" className="booster-dossier-overview">
+            <h2 ref={overviewRef} tabIndex={-1} id="booster-dossier-overview-title">{localize(banner.label, lang)}</h2>
+            <p className="booster-dossier-preview-note">{lang === 'fr' ? 'DOSSIER COMPLET · CONSULTATION SANS ACHAT' : 'COMPLETE DOSSIER · NO PURCHASE ON PREVIEW'}</p>
+            <div className="booster-dossier-intro">
+            {art && <img src={art} alt={localize(banner.label, lang)} className="booster-dossier-art" />}
             <div>
               <p>{localize(banner.desc, lang)}</p>
               <p>{localize(banner.meta, lang)}</p>
@@ -80,12 +102,19 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
                 : (lang === 'fr' ? `Compas Nexus dans ${pityLimit - duplicateStreak} écho(s) de personnage.` : `Nexus Compass in ${pityLimit - duplicateStreak} character echo(es).`)}</p>
               <small>{lang === 'fr' ? 'Aucune mission ni aucun mode ne se débloque par achat. Remboursement des échos plafonné à 70 % du prix payé.' : 'Purchases never unlock missions or modes. Echo refunds are capped at 70% of the paid price.'}</small>
             </div>
-          </div>
-          <section aria-labelledby="booster-dossier-rewards-title" style={{ marginTop: 22 }}>
-            <h3 id="booster-dossier-rewards-title">{lang === 'fr' ? 'CATALOGUE COMPLET DES CARTES' : 'COMPLETE CARD CATALOG'} ({candidates.length})</h3>
-            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 12 }}>
-              <input type="search" value={query} onChange={event => { setQuery(event.target.value); setPage(0); }} placeholder={lang === 'fr' ? 'Nom ou univers...' : 'Name or universe...'} aria-label={lang === 'fr' ? 'Rechercher dans toutes les cartes du booster' : 'Search every card in this booster'} style={{ flex: '1 1 200px', minWidth: 0, padding: 10 }} />
-              <select value={kind} onChange={event => { setKind(event.target.value); setPage(0); }} aria-label={lang === 'fr' ? 'Type de carte' : 'Card type'} style={{ maxWidth: '100%', padding: 10 }}>
+            </div>
+            <footer className="booster-dossier-actions">
+              <button type="button" className="btn-retro" onClick={onClose}>{lang === 'fr' ? 'RETOUR AU CATALOGUE' : 'BACK TO CATALOG'}</button>
+              <button type="button" className="btn-retro" disabled={!available} onClick={() => onSelect(banner.id)} data-select-previewed-booster={banner.id}>
+                {!available ? (lang === 'fr' ? 'HORS ROTATION' : 'OFF ROTATION') : selected ? (lang === 'fr' ? 'REVENIR AU BOOSTER SÉLECTIONNÉ' : 'RETURN TO SELECTED BOOSTER') : (lang === 'fr' ? 'SÉLECTIONNER SANS ACHETER' : 'SELECT WITHOUT BUYING')}
+              </button>
+            </footer>
+          </section>
+          <section aria-labelledby="booster-dossier-rewards-title" className="booster-dossier-rewards">
+            <h3 ref={rewardsRef} tabIndex={-1} id="booster-dossier-rewards-title">{lang === 'fr' ? 'CATALOGUE COMPLET DES CARTES' : 'COMPLETE CARD CATALOG'} ({candidates.length})</h3>
+            <div className="booster-dossier-filters">
+              <input type="search" value={query} onChange={event => { setQuery(event.target.value); setPage(0); }} placeholder={lang === 'fr' ? 'Nom ou univers...' : 'Name or universe...'} aria-label={lang === 'fr' ? 'Rechercher dans toutes les cartes du booster' : 'Search every card in this booster'} />
+              <select value={kind} onChange={event => { setKind(event.target.value); setPage(0); }} aria-label={lang === 'fr' ? 'Type de carte' : 'Card type'}>
                 <option value="all">{lang === 'fr' ? 'TOUS LES TYPES' : 'ALL TYPES'} ({candidates.length})</option>
                 {kindOrder.filter(id => kindCounts[id]).map(id => <option key={id} value={id}>{kindLabels[id]?.[lang] || id} ({kindCounts[id]})</option>)}
               </select>
@@ -93,33 +122,25 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
             <p className="booster-drop-rate-note">{lang === 'fr'
               ? 'Probabilité par slot libre, avant retrait des cartes déjà tirées. Les garanties et le Compas Nexus peuvent modifier le tirage. Toutes les cartes sont consultables dans les pages ci-dessous.'
               : 'Probability per free slot, before removing previously drawn cards. Guarantees and the Nexus Compass may alter the draw. Every card is accessible through the pages below.'}</p>
-            <div className="booster-reward-manifest-grid" style={{ maxHeight: 'none', overflow: 'visible', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))' }}>
-              {rewardPage.items.map(reward => <article key={reward.id} className="booster-reward-manifest-group" style={{ padding: 10, minWidth: 0 }}>
+            {pager('top')}
+            <div id="booster-dossier-cards" className="booster-reward-manifest-grid">
+              {rewardPage.items.map(reward => <article key={reward.id} data-dossier-card={reward.id} className="booster-reward-manifest-group">
                 <div style={{ height: 112, overflow: 'hidden', display: 'grid', placeItems: 'center' }}><Artwork reward={reward} lang={lang} /></div>
-                <h4 style={{ margin: '8px 0', overflowWrap: 'anywhere' }}>{localize(reward.name, lang)}</h4>
+                <h4>{localize(reward.name, lang)}</h4>
                 <small>{kindLabels[reward.kind]?.[lang] || reward.kind} · {reward.universe}</small>
-                <p style={{ fontSize: 11 }}>{synchronizeSignatureText(getRewardDetail(reward, lang), getRewardSignatureCodex(reward))}</p>
+                <p>{synchronizeSignatureText(getRewardDetail(reward, lang), getRewardSignatureCodex(reward))}</p>
                 {getRewardSignatureCodex(reward) && <SignatureCodexPanel codex={getRewardSignatureCodex(reward)} lang={lang} />}
-                <p style={{ color: reward.rarity.color, fontSize: 11 }}>{localize(reward.rarity.label, lang)} · {rateLabel(rates.get(reward.id), lang)}</p>
+                <p style={{ color: reward.rarity.color }}>{localize(reward.rarity.label, lang)} · {rateLabel(rates.get(reward.id), lang)}</p>
                 <small>{isCandidateOwned(reward) ? (lang === 'fr' ? 'OBTENUE' : 'OWNED') : (lang === 'fr' ? 'À OBTENIR' : 'NOT OWNED')}{featuredIds.has(reward.id) ? (lang === 'fr' ? ' · SÉLECTION' : ' · FEATURED') : ''}</small>
               </article>)}
             </div>
             {rewardPage.total === 0 && <p role="status">{lang === 'fr' ? 'Aucune carte ne correspond à ces filtres.' : 'No cards match these filters.'}</p>}
-            <nav aria-label={lang === 'fr' ? 'Pages du catalogue de cartes' : 'Card catalog pages'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, flexWrap: 'wrap', marginTop: 14 }}>
-              <label>{lang === 'fr' ? 'Cartes par page ' : 'Cards per page '}<select value={pageSize} onChange={event => { setPageSize(Number(event.target.value)); setPage(0); }}>{[12, 24, 48].map(size => <option key={size} value={size}>{size}</option>)}</select></label>
-              <button type="button" className="btn-retro" disabled={rewardPage.page === 0} onClick={() => setPage(rewardPage.page - 1)}>{lang === 'fr' ? 'PRÉCÉDENT' : 'PREVIOUS'}</button>
-              <span aria-live="polite">{rewardPage.start}–{rewardPage.end}/{rewardPage.total} · {rewardPage.page + 1}/{rewardPage.pageCount}</span>
-              <button type="button" className="btn-retro" disabled={rewardPage.page + 1 >= rewardPage.pageCount} onClick={() => setPage(rewardPage.page + 1)}>{lang === 'fr' ? 'SUIVANT' : 'NEXT'}</button>
-            </nav>
+            {rewardPage.pageCount > 1 && pager('bottom')}
+            <button type="button" className="btn-retro booster-dossier-back-to-overview" onClick={() => focusSection(overviewRef)}>{lang === 'fr' ? 'REVOIR LES GARANTIES ET LA SÉLECTION' : 'REVIEW GUARANTEES AND SELECTION'}</button>
           </section>
         </div>
-        <footer style={{ display: 'flex', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', borderTop: '1px solid #284047', paddingTop: 10 }}>
-          <button type="button" className="btn-retro" onClick={onClose}>{lang === 'fr' ? 'RETOUR AU CATALOGUE' : 'BACK TO CATALOG'}</button>
-          <button type="button" className="btn-retro" disabled={!available} onClick={() => onSelect(banner.id)} data-select-previewed-booster={banner.id}>
-            {!available ? (lang === 'fr' ? 'HORS ROTATION' : 'OFF ROTATION') : selected ? (lang === 'fr' ? 'REVENIR AU BOOSTER SÉLECTIONNÉ' : 'RETURN TO SELECTED BOOSTER') : (lang === 'fr' ? 'SÉLECTIONNER SANS ACHETER' : 'SELECT WITHOUT BUYING')}
-          </button>
-        </footer>
       </section>
-    </div>, document.body
+    </div>
   );
+  return typeof document === 'undefined' || !document.body ? content : createPortal(content, document.body);
 }

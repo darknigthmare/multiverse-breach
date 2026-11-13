@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-13T06:45:46.233533+00:00",
+  "assetId": "prey-2022-forest-duel-background-20261113",
+  "stageId": 50106,
+  "sourceSceneId": "prey_1719_naru_feral_bog",
+  "universe": "Prey",
+  "mode": "Tactics",
+  "incarnation": "Prey (2022) — 1719 Comanche territory, Naru versus Feral Predator bog finale",
+  "backlogTaskId": "prey-2022-08",
+  "status": "PARTIAL_FOREST_LAYER_GENERATED_AND_WIRED",
+  "path": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+  "source": {
+    "tool": "image_gen.imagegen",
+    "modelVersion": "not exposed by tool",
+    "toolResultImagePath": "/workspace/generated_images/exec-4035977d-7e5d-48a5-90ee-9490a5d82e6d.png",
+    "originalCopy": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/prey-forest-generated-original.png",
+    "promptPath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-prompt.txt",
+    "referenceReceiptPath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/references/prey-official-receipts.json",
+    "generationReferencePaths": [
+      "docs/assets/p0-p1-continuation-2026-11-13/scenes/references/g_prey_246_15_6e096d25.jpeg",
+      "docs/assets/p0-p1-continuation-2026-11-13/scenes/references/g_prey_246_16_c2e108b6.jpeg"
+    ]
+  },
+  "normalization": {
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "outputSize": [
+      960,
+      540
+    ],
+    "operation": "Full-canvas nearest-neighbor resize to 960×540; no semantic edit, paintover or background substitution.",
+    "alphaRange": [
+      255,
+      255
+    ]
+  },
+  "visualReview": {
+    "actuallyViewed": true,
+    "reviewer": "/root/p0_p1_scene_assets",
+    "method": "Generated output and native PNG opened with view_image; official source stills 15 and 16 individually opened.",
+    "observations": [
+      "Empty forest: no actor, face, weapon, dog, UI or text observed.",
+      "Desaturated blue/slate atmosphere, narrow dark trunks, mossed branches and leaf-litter material agree with source-frame environmental cues.",
+      "Central ground/open depth has low visual contrast; brighter detail stays at borders/upper branches.",
+      "Camera layout is a tactical adaptation; it is not the film frame’s original layout."
+    ],
+    "source1to1Verified": false,
+    "visualFidelityApproved": false,
+    "inGameReviewCompleted": true,
+    "browserEvidencePath": "docs/assets/p0-p1-continuation-2026-11-13/browser/validation-manifest.json",
+    "reviewScope": "Actual native GameCanvas/EngineTactics screenshot inspection at1280×900and390×900; scoped environmental cues only, no film geometry certification."
+  },
+  "remainingOpen": [
+    "Exact bog outline, mud depth and footprints need source comparison.",
+    "Separate foreground parallax layer remains open.",
+    "Task prey-2022-08 remains open; the forest layer alone does not close it."
+  ],
+  "rights": {
+    "generatedAsset": "Generated with OpenAI image_gen; no film bitmap used as the shipped scene",
+    "references": "Official 20th Century Studios publicity stills, reference only; no independent redistribution license inferred."
+  },
+  "files": [
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/prey-forest-generated-original.png",
+      "sha256": "8b34d762c45677bf850dece135925a4f6021303b693c1dba787a135e2aa6c8b4",
+      "bytes": 2154416
+    },
+    {
+      "path": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+      "sha256": "489912e0b7b7f0ae1f748eb06ead47f8cb6a78290344187eae21149a6eea4b01",
+      "bytes": 779722
+    },
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/prey-forest-prompt.txt",
+      "sha256": "7daa15aa7a0ab6ae7e5baa4d5152a7bc274536407ca431a5d4f54fb1e8e3a936",
+      "bytes": 1869
+    }
+  ],
+  "sourcePath": "DLC/Prey/assets/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+  "runtimeUrl": "/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+  "localPublication": {
+    "path": "public/backgrounds/source-scenes/prey-2022-forest-duel-tactics-20261113.png",
+    "kind": "hardlink-to-DLC-source",
+    "trackedAsCanonical": false
+  }
+}

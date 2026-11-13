@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorId": "lilo_pelekai",
+  "incarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+  "sourceFile": "DLC/LiloStitch/data/canonP0SourceKits.js",
+  "observedContract": [
+    "D23 release article image depicts animated Lilo, long black hair, red dress with large light leaf shapes, child proportions and visible sandal, seated in a hammock with ukulele.",
+    "The flower and ukulele belong to this pictured scene; they do not replace camera/Scrump throughout gameplay."
+  ],
+  "missingContract": [
+    "No unobstructed neutral standing red-dress body or rear view acquired.",
+    "Camera and Scrump shapes are not established by the selected image.",
+    "Hula costume, concept-art yellow floral dress and surfing swimsuit are separate outfits; do not mix them with the default red-dress body."
+  ],
+  "rejected": [
+    {
+      "candidate": "lilo-poster",
+      "reason": "Official2002 poster shows surfing/swim outfit and occluded body, not default red-dress fullbody."
+    },
+    {
+      "candidate": "lilo-nowstreaming",
+      "reason": "Live-action2025 Stitch promotion embedded in the current2002 movie page; wrong edition and no Lilo."
+    },
+    {
+      "candidate": "lilo-concept4",
+      "reason": "Production drawing of separate hula costume; cannot establish final red dress."
+    },
+    {
+      "candidate": "lilo-concept10",
+      "reason": "Pencil concept art, not a final rendered target model."
+    },
+    {
+      "candidate": "lilo-concept11",
+      "reason": "Early yellow/floral costume concept differs from selected red/light-leaf dress."
+    }
+  ],
+  "status": "partial-primary-reference-ready-for-bounded-art-candidates-full-body-review-open",
+  "references": [
+    {
+      "url": "https://d23.com/app/uploads/2002/06/06.21.2002-lilo-and-stitch-1180x600.jpg",
+      "finalUrl": "https://d23.com/app/uploads/2002/06/06.21.2002-lilo-and-stitch-1180x600.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 233428,
+      "sha256": "4664382a5cb80d3fd3e2f478fc637dc54f084b1c5a7cf7f1024598448c21a9f7",
+      "retrievedAt": "2026-11-13T06:44:21.482775+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1180,
+        600
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/lilo_pelekai/lilo-thisday.jpg",
+      "sourcePageUrl": "https://d23.com/this-day/lilo-stitch-is-released/",
+      "sourceKind": "PRIMARY_DISNEY_ARCHIVE_ARTICLE_IMAGE",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Red/light-leaf dress, face, hair and one sandal; seated pose, other limb partly occluded. Image is associated with the2002 release article; exact source frame not asserted.",
+      "sourceScope": "red-dress-partly-occluded-body",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    }
+  ],
+  "productionGate": {
+    "usableScopes": [
+      "face-hair-and-child-proportions",
+      "front-red-leaf-dress",
+      "visible-sandal-only"
+    ],
+    "boundedCandidateGenerationSupported": true,
+    "fullBodyQualified": false,
+    "fullBodyGapsRemain": true,
+    "mayUseFor": "Produce separate candidates limited to the listed observed surfaces. Preserve edition and record generated adaptation. Full-body production and exact hidden details remain unsupported by this acquisition.",
+    "source1to1Verified": false,
+    "automaticFidelityApproval": false
+  },
+  "scope": "Source acquisition and bounded observation only. No game sprite, animation, runtime binding or1:1 approval created."
+}

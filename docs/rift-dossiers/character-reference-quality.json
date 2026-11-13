@@ -61,19 +61,20 @@
   },
   "summary": {
     "characterArcEntryCount": 1912,
-    "entriesWithLocalReferences": 1912,
-    "entriesWithoutLocalReferences": 0,
-    "uniqueReferencePathCount": 1912,
+    "entriesWithLocalReferences": 1909,
+    "entriesWithoutLocalReferences": 3,
+    "uniqueReferencePathCount": 1909,
+    "explicitSourceSpriteQuarantineCount": 3,
     "missingReferenceFileCount": 0,
     "referenceClassifications": {
-      "approved": 1912,
+      "approved": 1909,
       "rejected-placeholder": 0,
       "needs-review": 0
     },
     "entryClassifications": {
-      "approved": 1912,
+      "approved": 1909,
       "rejected-placeholder": 0,
-      "needs-review": 0
+      "needs-review": 3
     }
   },
   "knownCaseExpectations": {
@@ -6876,59 +6877,6 @@
       }
     },
     {
-      "path": "/sprites/generated/combat-character-corrections-wave13-part-a/hicks.png",
-      "classification": "approved",
-      "reasons": [
-        "meets-detailed-sprite-reference-thresholds"
-      ],
-      "usedByEntryCount": 1,
-      "entryIds": [
-        9352
-      ],
-      "characters": [
-        "Corporal Hicks"
-      ],
-      "universes": [
-        "Alien"
-      ],
-      "metrics": {
-        "fileBytes": 330209,
-        "fileSha256": "88f1c00e5bf9fbcd53001d7c935f72a426b6ff1651510d11d17d5d6e82a519f9",
-        "format": "PNG",
-        "sourceMode": "RGBA",
-        "width": 1024,
-        "height": 1024,
-        "pixelCount": 1048576,
-        "hasAlpha": true,
-        "alphaLevelCount": 255,
-        "opaquePixels": 81074,
-        "alphaOccupancy": 0.077318,
-        "semiTransparentPixelShare": 0.022243,
-        "occupiedBoundingBox": [
-          50,
-          125,
-          984,
-          1012
-        ],
-        "occupiedBoundingBoxFill": 0.097861,
-        "opaqueColorCount": 45284,
-        "quantizedColorCount16": 465,
-        "dominantOpaqueColorShare": 0.003158,
-        "colorEntropyBits": 14.792135,
-        "luminanceEntropyBits": 7.266405,
-        "bytesPerPixel": 0.314912,
-        "validOpaqueNeighborPairs": 157258,
-        "colorTransitionRate": 0.996007,
-        "strongDetailRate": 0.622239,
-        "meanNeighborDifference": 24.6641,
-        "tileDiversity4x4": {
-          "tileCount": 16,
-          "uniqueCoarseTileCount": 16,
-          "uniqueCoarseTileShare": 1.0
-        }
-      }
-    },
-    {
       "path": "/sprites/generated/combat-character-corrections-wave13-part-a/lambert_alien.png",
       "classification": "approved",
       "reasons": [
@@ -7504,59 +7452,6 @@
         "colorTransitionRate": 0.94366,
         "strongDetailRate": 0.427872,
         "meanNeighborDifference": 15.392674,
-        "tileDiversity4x4": {
-          "tileCount": 16,
-          "uniqueCoarseTileCount": 16,
-          "uniqueCoarseTileShare": 1.0
-        }
-      }
-    },
-    {
-      "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
-      "classification": "approved",
-      "reasons": [
-        "meets-detailed-sprite-reference-thresholds"
-      ],
-      "usedByEntryCount": 1,
-      "entryIds": [
-        9535
-      ],
-      "characters": [
-        "Darth Revan"
-      ],
-      "universes": [
-        "Star Wars"
-      ],
-      "metrics": {
-        "fileBytes": 367081,
-        "fileSha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
-        "format": "PNG",
-        "sourceMode": "RGBA",
-        "width": 1024,
-        "height": 1024,
-        "pixelCount": 1048576,
-        "hasAlpha": true,
-        "alphaLevelCount": 256,
-        "opaquePixels": 101188,
-        "alphaOccupancy": 0.0965,
-        "semiTransparentPixelShare": 0.019545,
-        "occupiedBoundingBox": [
-          68,
-          123,
-          956,
-          1010
-        ],
-        "occupiedBoundingBoxFill": 0.128467,
-        "opaqueColorCount": 33080,
-        "quantizedColorCount16": 436,
-        "dominantOpaqueColorShare": 0.006681,
-        "colorEntropyBits": 13.675089,
-        "luminanceEntropyBits": 6.493178,
-        "bytesPerPixel": 0.350076,
-        "validOpaqueNeighborPairs": 197242,
-        "colorTransitionRate": 0.992071,
-        "strongDetailRate": 0.390946,
-        "meanNeighborDifference": 15.868963,
         "tileDiversity4x4": {
           "tileCount": 16,
           "uniqueCoarseTileCount": 16,
@@ -34428,6 +34323,59 @@
         "colorTransitionRate": 0.995392,
         "strongDetailRate": 0.564995,
         "meanNeighborDifference": 25.608909,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    },
+    {
+      "path": "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "usedByEntryCount": 1,
+      "entryIds": [
+        9352
+      ],
+      "characters": [
+        "Corporal Hicks"
+      ],
+      "universes": [
+        "Alien"
+      ],
+      "metrics": {
+        "fileBytes": 919947,
+        "fileSha256": "45940c8b7deed2ae81652cc2a4e709c3546e19224251868c677b872552b55617",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 256,
+        "opaquePixels": 227713,
+        "alphaOccupancy": 0.217164,
+        "semiTransparentPixelShare": 0.040295,
+        "occupiedBoundingBox": [
+          46,
+          16,
+          969,
+          1009
+        ],
+        "occupiedBoundingBoxFill": 0.248449,
+        "opaqueColorCount": 106492,
+        "quantizedColorCount16": 524,
+        "dominantOpaqueColorShare": 0.000769,
+        "colorEntropyBits": 16.187149,
+        "luminanceEntropyBits": 7.519992,
+        "bytesPerPixel": 0.87733,
+        "validOpaqueNeighborPairs": 445958,
+        "colorTransitionRate": 0.998056,
+        "strongDetailRate": 0.59082,
+        "meanNeighborDifference": 23.08884,
         "tileDiversity4x4": {
           "tileCount": 16,
           "uniqueCoarseTileCount": 16,
@@ -76519,7 +76467,7 @@
       }
     },
     {
-      "path": "/sprites/generated/heroes/prey/feral-predator.png",
+      "path": "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png",
       "classification": "approved",
       "reasons": [
         "meets-detailed-sprite-reference-thresholds"
@@ -76535,35 +76483,35 @@
         "Prey"
       ],
       "metrics": {
-        "fileBytes": 1058761,
-        "fileSha256": "8b1478a0128fdaedf67223633ef0ceb4ed8f685c37dd657bbb0888aad8265b34",
+        "fileBytes": 1054514,
+        "fileSha256": "d849a1132a61aab634b480d8da5194a81b5d1255af7a1105a0cf4cef2db4ee49",
         "format": "PNG",
         "sourceMode": "RGBA",
         "width": 1024,
         "height": 1024,
         "pixelCount": 1048576,
         "hasAlpha": true,
-        "alphaLevelCount": 2,
-        "opaquePixels": 329123,
-        "alphaOccupancy": 0.313876,
-        "semiTransparentPixelShare": 0.0,
+        "alphaLevelCount": 256,
+        "opaquePixels": 263007,
+        "alphaOccupancy": 0.250823,
+        "semiTransparentPixelShare": 0.054163,
         "occupiedBoundingBox": [
-          22,
-          12,
-          990,
-          1012
+          40,
+          15,
+          976,
+          1010
         ],
-        "occupiedBoundingBoxFill": 0.340003,
-        "opaqueColorCount": 114830,
-        "quantizedColorCount16": 465,
-        "dominantOpaqueColorShare": 0.024334,
-        "colorEntropyBits": 15.548953,
-        "luminanceEntropyBits": 7.457028,
-        "bytesPerPixel": 1.009713,
-        "validOpaqueNeighborPairs": 646752,
-        "colorTransitionRate": 0.982312,
-        "strongDetailRate": 0.64249,
-        "meanNeighborDifference": 30.303778,
+        "occupiedBoundingBoxFill": 0.282402,
+        "opaqueColorCount": 122267,
+        "quantizedColorCount16": 544,
+        "dominantOpaqueColorShare": 0.002201,
+        "colorEntropyBits": 16.182841,
+        "luminanceEntropyBits": 7.468941,
+        "bytesPerPixel": 1.005663,
+        "validOpaqueNeighborPairs": 513841,
+        "colorTransitionRate": 0.998673,
+        "strongDetailRate": 0.701908,
+        "meanNeighborDifference": 29.944658,
         "tileDiversity4x4": {
           "tileCount": 16,
           "uniqueCoarseTileCount": 16,
@@ -87588,112 +87536,6 @@
         "colorTransitionRate": 0.991894,
         "strongDetailRate": 0.597089,
         "meanNeighborDifference": 31.16265,
-        "tileDiversity4x4": {
-          "tileCount": 16,
-          "uniqueCoarseTileCount": 16,
-          "uniqueCoarseTileShare": 1.0
-        }
-      }
-    },
-    {
-      "path": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
-      "classification": "approved",
-      "reasons": [
-        "meets-detailed-sprite-reference-thresholds"
-      ],
-      "usedByEntryCount": 1,
-      "entryIds": [
-        9532
-      ],
-      "characters": [
-        "Ahsoka Tano (Padawan)"
-      ],
-      "universes": [
-        "Star Wars"
-      ],
-      "metrics": {
-        "fileBytes": 1099842,
-        "fileSha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
-        "format": "PNG",
-        "sourceMode": "RGBA",
-        "width": 1024,
-        "height": 1024,
-        "pixelCount": 1048576,
-        "hasAlpha": true,
-        "alphaLevelCount": 2,
-        "opaquePixels": 321589,
-        "alphaOccupancy": 0.306691,
-        "semiTransparentPixelShare": 0.0,
-        "occupiedBoundingBox": [
-          39,
-          12,
-          994,
-          1012
-        ],
-        "occupiedBoundingBoxFill": 0.336742,
-        "opaqueColorCount": 187751,
-        "quantizedColorCount16": 633,
-        "dominantOpaqueColorShare": 0.001651,
-        "colorEntropyBits": 17.160417,
-        "luminanceEntropyBits": 7.654391,
-        "bytesPerPixel": 1.048891,
-        "validOpaqueNeighborPairs": 630489,
-        "colorTransitionRate": 0.997618,
-        "strongDetailRate": 0.646766,
-        "meanNeighborDifference": 30.136331,
-        "tileDiversity4x4": {
-          "tileCount": 16,
-          "uniqueCoarseTileCount": 16,
-          "uniqueCoarseTileShare": 1.0
-        }
-      }
-    },
-    {
-      "path": "/sprites/generated/heroes/star-wars/ahsoka.png",
-      "classification": "approved",
-      "reasons": [
-        "meets-detailed-sprite-reference-thresholds"
-      ],
-      "usedByEntryCount": 1,
-      "entryIds": [
-        9543
-      ],
-      "characters": [
-        "Ahsoka Tano (Siege of Mandalore)"
-      ],
-      "universes": [
-        "Star Wars"
-      ],
-      "metrics": {
-        "fileBytes": 1132903,
-        "fileSha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
-        "format": "PNG",
-        "sourceMode": "RGBA",
-        "width": 1024,
-        "height": 1024,
-        "pixelCount": 1048576,
-        "hasAlpha": true,
-        "alphaLevelCount": 2,
-        "opaquePixels": 329303,
-        "alphaOccupancy": 0.314048,
-        "semiTransparentPixelShare": 0.0,
-        "occupiedBoundingBox": [
-          29,
-          12,
-          985,
-          1012
-        ],
-        "occupiedBoundingBoxFill": 0.344459,
-        "opaqueColorCount": 202431,
-        "quantizedColorCount16": 788,
-        "dominantOpaqueColorShare": 0.001725,
-        "colorEntropyBits": 17.186193,
-        "luminanceEntropyBits": 7.862405,
-        "bytesPerPixel": 1.08042,
-        "validOpaqueNeighborPairs": 645347,
-        "colorTransitionRate": 0.994242,
-        "strongDetailRate": 0.693253,
-        "meanNeighborDifference": 36.447194,
         "tileDiversity4x4": {
           "tileCount": 16,
           "uniqueCoarseTileCount": 16,
@@ -102948,7 +102790,7 @@
         "Alien"
       ],
       "localReferences": [
-        "/sprites/generated/combat-character-corrections-wave13-part-a/hicks.png"
+        "/sprites/generated/heroes/alien/hicks-v2-fidelity-wave13-2026-11-09.png"
       ],
       "classification": "approved",
       "reasons": [
@@ -105467,13 +105309,20 @@
       "universes": [
         "Star Wars"
       ],
-      "localReferences": [
-        "/sprites/generated/heroes/star-wars/ahsoka-padawan.png"
-      ],
-      "classification": "approved",
+      "localReferences": [],
+      "classification": "needs-review",
       "reasons": [
-        "all-local-references-approved"
-      ]
+        "no-local-reference"
+      ],
+      "sourceSpriteQuarantine": {
+        "heroId": "ahsoka_padawan",
+        "universe": "Star Wars",
+        "incarnation": "The Clone Wars - early Padawan, age fourteen",
+        "asset": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+        "sha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+        "reason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER",
+        "artApproved": false
+      }
     },
     {
       "id": 9533,
@@ -105509,13 +105358,20 @@
       "universes": [
         "Star Wars"
       ],
-      "localReferences": [
-        "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png"
-      ],
-      "classification": "approved",
+      "localReferences": [],
+      "classification": "needs-review",
       "reasons": [
-        "all-local-references-approved"
-      ]
+        "no-local-reference"
+      ],
+      "sourceSpriteQuarantine": {
+        "heroId": "darth_revan",
+        "universe": "Star Wars",
+        "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+        "asset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+        "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+        "reason": "KOTOR_I_WRONG_RED_PURPLE_PAIR",
+        "artApproved": false
+      }
     },
     {
       "id": 9536,
@@ -105621,13 +105477,20 @@
       "universes": [
         "Star Wars"
       ],
-      "localReferences": [
-        "/sprites/generated/heroes/star-wars/ahsoka.png"
-      ],
-      "classification": "approved",
+      "localReferences": [],
+      "classification": "needs-review",
       "reasons": [
-        "all-local-references-approved"
-      ]
+        "no-local-reference"
+      ],
+      "sourceSpriteQuarantine": {
+        "heroId": "ahsoka",
+        "universe": "Star Wars",
+        "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+        "asset": "/sprites/generated/heroes/star-wars/ahsoka.png",
+        "sha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+        "reason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS",
+        "artApproved": false
+      }
     },
     {
       "id": 9544,
@@ -107470,7 +107333,7 @@
         "Prey"
       ],
       "localReferences": [
-        "/sprites/generated/heroes/prey/feral-predator.png"
+        "/sprites/generated/heroes/prey/feral-predator-v2-fidelity-wave13-2026-11-09.png"
       ],
       "classification": "approved",
       "reasons": [

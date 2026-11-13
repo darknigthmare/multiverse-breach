@@ -7,8 +7,10 @@ import {
 } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { createAssetSourceResolver } from './assetSourceResolver.mjs';
 
 const repositoryRoot = process.cwd();
+const resolveAssetSource = createAssetSourceResolver(repositoryRoot);
 const publicRoot = path.join(repositoryRoot, 'public');
 const promptCatalogPath = path.join(publicRoot, 'sprites', 'generated', 'openai-sprite-prompts.jsonl');
 const spriteManifestPath = path.join(publicRoot, 'sprites', 'generated', 'sprite-manifest.json');
@@ -27,7 +29,7 @@ const shouldBuildReview = process.argv.includes('--review');
 
 const sha256Buffer = value => createHash('sha256').update(value).digest('hex');
 const sha256File = filePath => sha256Buffer(readFileSync(filePath));
-const publicFile = publicPath => path.join(publicRoot, String(publicPath).replace(/^\/+/, ''));
+const assetFile = (publicPath, universe = null) => path.resolve(repositoryRoot, resolveAssetSource(publicPath, universe));
 const readJsonLines = filePath => readFileSync(filePath, 'utf8')
   .split(/\r?\n/u)
   .filter(Boolean)
@@ -222,13 +224,13 @@ const writeMissingCompanions = async derivationManifest => {
   const refused = [];
 
   for (const entry of promptEntries) {
-    const sourcePath = publicFile(entry.output);
+    const sourcePath = assetFile(entry.output, entry.universe);
     if (!existsSync(sourcePath)) continue;
     const sourceSha256 = sha256File(sourcePath);
     const provenance = getSourceProvenance(entry, sourceSha256);
 
     for (const companion of entry.companionOutputs || []) {
-      const destinationPath = publicFile(companion);
+      const destinationPath = assetFile(companion, entry.universe);
       const isOwnedDerivative = recordsByCompanion.has(companion);
       if (existsSync(destinationPath) && !(shouldRefresh && isOwnedDerivative)) continue;
       if (provenance.status === 'unverified') {
@@ -283,8 +285,8 @@ const checkDerivedCompanions = async derivationManifest => {
   const outputHashes = new Map();
 
   for (const record of derivationManifest.entries || []) {
-    const sourcePath = publicFile(record.source);
-    const companionPath = publicFile(record.companion);
+    const sourcePath = assetFile(record.source, record.universe);
+    const companionPath = assetFile(record.companion, record.universe);
     if (!existsSync(sourcePath)) {
       issues.push(`${record.companion}: missing primary source ${record.source}`);
       continue;
@@ -348,9 +350,9 @@ const checkDerivedCompanions = async derivationManifest => {
 
   const missingActiveCompanions = [];
   for (const entry of promptEntries) {
-    if (!existsSync(publicFile(entry.output))) continue;
+    if (!existsSync(assetFile(entry.output, entry.universe))) continue;
     for (const companion of entry.companionOutputs || []) {
-      if (!existsSync(publicFile(companion))) {
+      if (!existsSync(assetFile(companion, entry.universe))) {
         missingActiveCompanions.push({ id: entry.id, source: entry.output, companion });
       }
     }
@@ -373,7 +375,7 @@ const buildReviewSheets = async derivationManifest => {
     const rows = Math.ceil(records.length / columns);
     const composites = [];
     for (let index = 0; index < records.length; index += 1) {
-      const preview = await sharp(publicFile(records[index].companion))
+      const preview = await sharp(assetFile(records[index].companion, records[index].universe))
         .resize(cellWidth - 12, cellHeight - 12, {
           fit: companionKind === 'melee-backdrop' ? 'cover' : 'contain',
           kernel: 'nearest',

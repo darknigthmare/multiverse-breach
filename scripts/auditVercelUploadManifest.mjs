@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { auditLocalPublicAssets, listGitTrackedPublicPaths } from './auditLocalPublicAssets.mjs';
+import { auditLocalAssetSources } from './auditLocalPublicAssets.mjs';
+import { listGitAssetSources, projectAssetPath } from './dlcAssetPaths.mjs';
 
 const safeRelativePath = (value, context) => {
   if (typeof value !== 'string' || !value || /[\\:]/.test(value)
@@ -34,10 +35,16 @@ export function validateVercelUploadManifest(manifest, trackedPublicPaths) {
   }
 
   const expectedPaths = new Set();
+  const expectedUrls = new Map();
   for (const value of trackedPublicPaths) {
     const path = safeRelativePath(value, 'Git-tracked public path');
-    if (!path.startsWith('public/')) throw new Error(`Expected a path under public/: ${JSON.stringify(path)}`);
+    const entry = projectAssetPath(path);
+    if (!entry) throw new Error(`Expected a path under public/ or DLC/<Alnum>/assets/: ${JSON.stringify(path)}`);
     if (expectedPaths.has(path)) throw new Error(`Duplicate Git-tracked path: ${JSON.stringify(path)}`);
+    if (expectedUrls.has(entry.publicPath)) {
+      throw new Error(`Asset URL collision for ${JSON.stringify(entry.publicPath)}: ${JSON.stringify(expectedUrls.get(entry.publicPath))} and ${JSON.stringify(path)}`);
+    }
+    expectedUrls.set(entry.publicPath, path);
     expectedPaths.add(path);
   }
   const missingPaths = [...expectedPaths].filter(path => !uploadedPaths.has(path)).sort();
@@ -68,10 +75,10 @@ async function main() {
   } catch {
     throw new Error('Expected one JSON manifest on stdin from vercel deploy --dry --json; do not merge stderr into stdout.');
   }
-  const trackedPublicPaths = listGitTrackedPublicPaths();
-  auditLocalPublicAssets({ trackedPublicPaths });
-  const result = validateVercelUploadManifest(manifest, trackedPublicPaths);
-  process.stdout.write(`Vercel upload audit passed: ${result.matchedPublicFileCount}/${result.trackedPublicFileCount} Git-tracked public files present (${result.manifestFileCount} upload files).\n`);
+  const sourcePaths = listGitAssetSources();
+  auditLocalAssetSources({ sourcePaths });
+  const result = validateVercelUploadManifest(manifest, sourcePaths);
+  process.stdout.write(`Vercel upload audit passed: ${result.matchedPublicFileCount}/${result.trackedPublicFileCount} Git-tracked asset source files present (${result.manifestFileCount} upload files).\n`);
 }
 
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {

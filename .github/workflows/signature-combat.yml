@@ -22,6 +22,9 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /.github/workflows/signature-combat.yml
@@ -32,6 +35,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - run: npm ci --no-audit --no-fund
       - name: Signature contracts, interruption safety and coverage inventory
         run: |
@@ -49,7 +54,7 @@ jobs:
           python3 -m venv /tmp/signature-playwright
           /tmp/signature-playwright/bin/pip install playwright==1.57.0
           /tmp/signature-playwright/bin/python -m playwright install --with-deps chromium
-          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/signature-evidence/server.log 2>&1 &
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/signature-evidence/server.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" || true' EXIT
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done

@@ -124,6 +124,53 @@ export class SoundEngine {
     const now = ctx.currentTime;
 
     switch (type) {
+      case 'click': {
+        // Quiet original UI interaction cue. Do not sample franchise audio.
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(760, now);
+        osc.frequency.exponentialRampToValueAtTime(540, now + 0.055);
+        gain.gain.setValueAtTime(0.065, now);
+        gain.gain.exponentialRampToValueAtTime(0.005, now + 0.055);
+        osc.connect(gain);
+        gain.connect(this.sfxOutput);
+        osc.start(now);
+        osc.stop(now + 0.06);
+        break;
+      }
+      case 'confirm': {
+        // A two-note acknowledgement distinct from a menu tap.
+        [523.25, 783.99].forEach((frequency, index) => {
+          const start = now + index * 0.065;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(frequency, start);
+          gain.gain.setValueAtTime(0.09, start);
+          gain.gain.exponentialRampToValueAtTime(0.005, start + 0.105);
+          osc.connect(gain);
+          gain.connect(this.sfxOutput);
+          osc.start(start);
+          osc.stop(start + 0.11);
+        });
+        break;
+      }
+      case 'explosion': {
+        // Synthesized low-frequency impact, not sound ripped from a film.
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(180, now);
+        osc.frequency.exponentialRampToValueAtTime(35, now + 0.32);
+        gain.gain.setValueAtTime(0.17, now);
+        gain.gain.exponentialRampToValueAtTime(0.005, now + 0.32);
+        osc.connect(gain);
+        gain.connect(this.sfxOutput);
+        osc.start(now);
+        osc.stop(now + 0.33);
+        break;
+      }
       case 'hit': {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();

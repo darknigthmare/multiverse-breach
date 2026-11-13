@@ -1,6 +1,6 @@
 import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { synchronizeFighterControlOwners as syncOwners } from '../src/game/fighterControlOwnership.js';
 let vite, Fighter;
 before(async () => {

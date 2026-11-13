@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-13T06:55:04.041215+00:00",
+  "assetId": "predator-jungle-background-20261113",
+  "stageId": 50104,
+  "sourceSceneId": "predator_1987_jungle_finale",
+  "universe": "Predator",
+  "mode": "Tactics",
+  "sourceWork": "Predator (1987)",
+  "backlogTaskId": "predator-source-04",
+  "status": "PARTIAL_ENVIRONMENT_LAYER_GENERATED_AND_WIRED",
+  "path": "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+  "source": {
+    "tool": "image_gen.imagegen",
+    "modelVersion": "not exposed by tool",
+    "toolResultImagePath": "/workspace/generated_images/exec-c33ea434-348b-49f1-ba10-109739dccaa1.png",
+    "originalCopy": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/predator-jungle-generated-original.png",
+    "promptPath": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator-jungle-prompt.txt",
+    "referencePaths": [
+      "docs/cg/references/wave12-2026-11-01/predator/predator-1987-film-masked-body.jpeg"
+    ],
+    "referenceSHA256": [
+      "cf734714c827760495cb4a96a38c960dde43c8af0dbbd7ed4ab4dbc2cb4ee369"
+    ],
+    "referenceActuallyViewed": true,
+    "referenceScope": "Official1987 filmstill visible rock, river, vines and nighttime tropical vegetation only; no log trap geometry qualification",
+    "priorEvidencePath": "docs/cg/predator-reference-evidence-wave12-2026-11-01.json"
+  },
+  "normalization": {
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "outputSize": [
+      960,
+      540
+    ],
+    "operation": "Full-canvas nearest-neighbor resize; no semantic edit, paintover or crop",
+    "opaque": true
+  },
+  "visualReview": {
+    "actuallyViewed": true,
+    "reviewer": "/root/p0_p1_scene_assets",
+    "method": "Generated output and native PNG actually opened with view_image.",
+    "source1to1Verified": false,
+    "visualFidelityApproved": false,
+    "inGameReviewCompleted": true,
+    "observations": [
+      "No actors, body fragments, UI, labels, weapons or legible text observed.",
+      "Environmental materials and light palette follow the scoped reference.",
+      "Wide camera and open floor support the adapted tactical board; no exact film geography claim."
+    ],
+    "browserEvidencePath": "docs/assets/p0-p1-continuation-2026-11-13/browser/validation-manifest.json",
+    "reviewScope": "Actual native GameCanvas/EngineTactics screenshot inspection at1280×900and390×900; scoped environmental cues only, no film geometry certification."
+  },
+  "remainingOpen": [
+    "Separate suspended log, counterweight, stakes and campfire layers remain open.",
+    "Film geography and collision"
+  ],
+  "rights": {
+    "generatedAsset": "Generated with OpenAI image_gen; no film bitmap is served as the production backdrop.",
+    "references": "Existing reference retained with its origin receipt; no license inferred."
+  },
+  "files": [
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/sources/predator-jungle-generated-original.png",
+      "bytes": 2506046,
+      "sha256": "9f35845ad0bf66e41a7db46377ac9d1d7ba5fdec75d71daf0d748fbb677f02de"
+    },
+    {
+      "path": "DLC/Predator/assets/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+      "bytes": 892093,
+      "sha256": "1cf3e91375e9f271c4d051cf93f38e4d683889a5e34861dec098f30c4703488d"
+    },
+    {
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/scenes/predator-jungle-prompt.txt",
+      "bytes": 1893,
+      "sha256": "52d14538c4fd6ba79f517428216c33cef3c67f453604d434e70c8661a3574940"
+    }
+  ],
+  "sourcePath": "DLC/Predator/assets/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+  "runtimeUrl": "/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+  "localPublication": {
+    "path": "public/backgrounds/source-scenes/predator-1987-riverbank-tactics-20261113.png",
+    "kind": "hardlink-to-DLC-source",
+    "trackedAsCanonical": false
+  }
+}

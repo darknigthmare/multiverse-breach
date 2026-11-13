@@ -1,15 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import useModalDialog from './collection/useModalDialog.js';
 import './RegulationImagePreview.css';
-
-const FOCUSABLE_SELECTOR = [
-  'a[href]',
-  'button:not([disabled])',
-  'input:not([disabled])',
-  'select:not([disabled])',
-  'textarea:not([disabled])',
-  '[tabindex]:not([tabindex="-1"])'
-].join(',');
 
 function getPreviewAssets(preview) {
   if (!preview) return [];
@@ -47,8 +39,8 @@ export default function RegulationImagePreview({
   const titleId = useId();
   const descriptionId = useId();
   const dialogRef = useRef(null);
+  const overlayRef = useRef(null);
   const closeButtonRef = useRef(null);
-  const previousFocusRef = useRef(null);
   const onCloseRef = useRef(onClose);
   const [failedAssets, setFailedAssets] = useState(() => new Set());
   const assets = useMemo(() => getPreviewAssets(preview), [preview]);
@@ -65,57 +57,7 @@ export default function RegulationImagePreview({
     setFailedAssets(new Set());
   }, [assetKey]);
 
-  useEffect(() => {
-    if (!isOpen || typeof document === 'undefined') return undefined;
-
-    previousFocusRef.current = document.activeElement;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    const focusCloseButton = window.requestAnimationFrame(() => {
-      closeButtonRef.current?.focus();
-    });
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onCloseRef.current?.();
-        return;
-      }
-
-      if (event.key !== 'Tab' || !dialogRef.current) return;
-
-      const focusableElements = Array.from(
-        dialogRef.current.querySelectorAll(FOCUSABLE_SELECTOR)
-      ).filter(element => !element.hasAttribute('disabled') && element.getAttribute('aria-hidden') !== 'true');
-
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        dialogRef.current.focus();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.cancelAnimationFrame(focusCloseButton);
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = previousOverflow;
-      previousFocusRef.current?.focus?.();
-    };
-  }, [isOpen]);
+  useModalDialog({ open: isOpen, overlayRef, dialogRef, initialFocusRef: closeButtonRef, onClose });
 
   if (!isOpen || typeof document === 'undefined') return null;
 
@@ -130,6 +72,7 @@ export default function RegulationImagePreview({
 
   return createPortal(
     <div
+      ref={overlayRef}
       className={`arca-preview-backdrop ${className}`.trim()}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) closePreview();
@@ -168,6 +111,8 @@ export default function RegulationImagePreview({
         <div
           className={`arca-preview-content ${isGallery ? 'is-gallery' : 'is-single'}`}
           role="document"
+          tabIndex={0}
+          aria-label={lang === 'fr' ? 'Images de la prévisualisation' : 'Preview images'}
         >
           {assets.map(asset => (
             <figure className="arca-preview-figure" key={asset.id}>

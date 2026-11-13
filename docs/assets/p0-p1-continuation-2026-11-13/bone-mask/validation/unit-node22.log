@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: Naru portrait is owned by the exact Prey scene and lead, never the separate Predator roster identity
+ok 1 - Naru portrait is owned by the exact Prey scene and lead, never the separate Predator roster identity
+  ---
+  duration_ms: 1.146837
+  type: 'test'
+  ...
+# Subtest: Naru production PNG matches provenance and remains a single portrait
+ok 2 - Naru production PNG matches provenance and remains a single portrait
+  ---
+  duration_ms: 1.865398
+  type: 'test'
+  ...
+# Subtest: HUD portrait waits for loading and draws only in the requested rectangle
+ok 3 - HUD portrait waits for loading and draws only in the requested rectangle
+  ---
+  duration_ms: 2.195184
+  type: 'test'
+  ...
+# Subtest: failed images retain fallback and SSR does not construct an image
+ok 4 - failed images retain fallback and SSR does not construct an image
+  ---
+  duration_ms: 2.746244
+  type: 'test'
+  ...
+# Subtest: mask has one physical owner and never duplicates the mask still worn by Feral on the ground
+ok 5 - mask has one physical owner and never duplicates the mask still worn by Feral on the ground
+  ---
+  duration_ms: 1.76709
+  type: 'test'
+  ...
+# Subtest: the icon is unavailable for other scenes, actors, universes, modes and custom battles
+ok 6 - the icon is unavailable for other scenes, actors, universes, modes and custom battles
+  ---
+  duration_ms: 0.481755
+  type: 'test'
+  ...
+# Subtest: the canonical DLC icon and its publication match the selected final edit receipt
+ok 7 - the canonical DLC icon and its publication match the selected final edit receipt
+  ---
+  duration_ms: 4.331159
+  type: 'test'
+  ...
+# Subtest: loading/error fallback and the carried/mounted sizes preserve scene state
+ok 8 - loading/error fallback and the carried/mounted sizes preserve scene state
+  ---
+  duration_ms: 6.996702
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 113.756847

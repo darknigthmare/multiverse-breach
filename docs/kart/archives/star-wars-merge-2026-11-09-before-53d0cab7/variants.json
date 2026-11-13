@@ -1,0 +1,1762 @@
+{
+  "schemaVersion": 1,
+  "sourceManifestSha256": "5cfc2b5e3c8a9c1573ad459ca841f7ed4bf7ba76b6a064b8f1b57e0cadad020d",
+  "baselineModelManifestCommit": "69d6c2aa",
+  "appliedSourceCommit": "53d0cab7",
+  "variants": [
+    {
+      "heroId": "ahsoka_padawan",
+      "variantId": "before-star-wars-merge-2026-11-09-ahsoka_padawan",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/ahsoka_padawan-kart-before-star-wars-merge.glb",
+      "sha256": "990fc2e1d055d1eedeb3078b975889c4d8cad92cb8a06c8e7b7597e03895cc0c",
+      "bytes": 94744,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": {
+        "universe": "Star Wars",
+        "incarnation": "The Clone Wars - early Padawan, age fourteen",
+        "asset": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+        "sha256": "1a7f3488717f94d3789982e6acb1f7e961f9298c4b065cbdd3f8af89c9448b3c",
+        "reason": "WRONG_FANTASY_MAGE_STAFF_NO_GREEN_SABER"
+      },
+      "previousRecord": {
+        "id": "kart-hero:ahsoka_padawan",
+        "heroId": "ahsoka_padawan",
+        "name": "Ahsoka Tano (Padawan)",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Chasseur de la Padawan — kart",
+          "en": "Jedi starfighter — adaptation Clone Wars"
+        },
+        "vehicleIdentity": {
+          "label": "Chasseur de la Padawan — kart",
+          "model": "starfighter",
+          "motifs": [
+            "scanner",
+            "circuit"
+          ],
+          "sourceKind": "canonical-vehicle-adaptation",
+          "referenceVehicle": "Jedi starfighter — adaptation Clone Wars",
+          "recognition": [
+            "Chasseur de la guerre des Clones",
+            "Ailes triangulaires",
+            "Scanner et circuits républicains"
+          ],
+          "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#b97a52",
+          "accent": "#d3d6c9",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:ahsoka_padawan",
+          "designScope": "character-specific",
+          "sourceIncarnation": "The Clone Wars - early Padawan, age fourteen",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "starfighter",
+        "signature": "scanner+circuit",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka-padawan/kart.glb",
+          "publicPath": "/kart/star-wars/ahsoka-padawan/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 94744,
+          "sha256": "990fc2e1d055d1eedeb3078b975889c4d8cad92cb8a06c8e7b7597e03895cc0c",
+          "triangleCount": 1532,
+          "parts": 8,
+          "bounds": {
+            "min": [
+              -1.57,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.57,
+              1.179098005181683,
+              1.3425
+            ]
+          },
+          "features": [
+            "identity:starfighter",
+            "landmark:starfighter-flight-planform",
+            "motif:scanner",
+            "motif:circuit"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka-padawan/kart-directions.png",
+          "publicPath": "/kart/star-wars/ahsoka-padawan/kart-directions.png",
+          "bytes": 10587,
+          "sha256": "71153491c9d641d59c59e66e5b4b679cc67a566dc20f5a6fe48c5285a242d667",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 51,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 1884,
+                "transparentPixels": 13989
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 52,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2105,
+                "transparentPixels": 13767
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 29,
+                "top": 50,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2069,
+                "transparentPixels": 13725
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 49,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2069,
+                "transparentPixels": 13681
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 43,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 1880,
+                "transparentPixels": 13702
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 43,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2098,
+                "transparentPixels": 13640
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 50,
+                "right": 98,
+                "bottom": 102,
+                "opaquePixels": 2163,
+                "transparentPixels": 13633
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 52,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2120,
+                "transparentPixels": 13760
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "ahsoka_adult",
+      "variantId": "before-star-wars-merge-2026-11-09-ahsoka_adult",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/ahsoka_adult-kart-before-star-wars-merge.glb",
+      "sha256": "861460da05351ecf9ffc9ea78248418e8185b1cc23fdea05e26c50227ff4b708",
+      "bytes": 85436,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": null,
+      "previousRecord": {
+        "id": "kart-hero:ahsoka_adult",
+        "heroId": "ahsoka_adult",
+        "name": "Ahsoka Tano (Adult)",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "T-6 d’Ahsoka — kart",
+          "en": "T-6 shuttle"
+        },
+        "vehicleIdentity": {
+          "label": "T-6 d’Ahsoka — kart",
+          "model": "shuttle",
+          "motifs": [
+            "engine-pods",
+            "antenna"
+          ],
+          "sourceKind": "canonical-vehicle-adaptation",
+          "referenceVehicle": "T-6 shuttle",
+          "recognition": [
+            "Cabine de navette T-6",
+            "Grande aile simplifiée",
+            "Nacelles et antenne de voyage"
+          ],
+          "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#bab8a9",
+          "accent": "#996547",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:ahsoka_adult",
+          "designScope": "character-specific",
+          "sourceIncarnation": "Rebels and Ahsoka - mature former Jedi",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "shuttle",
+        "signature": "engine-pods+antenna",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka-adult.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka-adult/kart.glb",
+          "publicPath": "/kart/star-wars/ahsoka-adult/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 85436,
+          "sha256": "861460da05351ecf9ffc9ea78248418e8185b1cc23fdea05e26c50227ff4b708",
+          "triangleCount": 1384,
+          "parts": 8,
+          "bounds": {
+            "min": [
+              -1.18,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.18,
+              1.7149999999999999,
+              1.3425
+            ]
+          },
+          "features": [
+            "identity:shuttle",
+            "landmark:shuttle-flight-planform",
+            "motif:engine-pods",
+            "motif:antenna"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka-adult/kart-directions.png",
+          "publicPath": "/kart/star-wars/ahsoka-adult/kart-directions.png",
+          "bytes": 10144,
+          "sha256": "e9f9b929e34a5cfdc77153562ee2001895bd00e315ded11db1812dec685e7c2a",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 33,
+                "top": 52,
+                "right": 95,
+                "bottom": 102,
+                "opaquePixels": 2030,
+                "transparentPixels": 13998
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 54,
+                "right": 100,
+                "bottom": 102,
+                "opaquePixels": 2220,
+                "transparentPixels": 13636
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 29,
+                "top": 53,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2228,
+                "transparentPixels": 13568
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 45,
+                "right": 100,
+                "bottom": 102,
+                "opaquePixels": 2391,
+                "transparentPixels": 13484
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 33,
+                "top": 34,
+                "right": 95,
+                "bottom": 102,
+                "opaquePixels": 2225,
+                "transparentPixels": 13615
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 27,
+                "top": 31,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2413,
+                "transparentPixels": 13446
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 38,
+                "right": 98,
+                "bottom": 102,
+                "opaquePixels": 2298,
+                "transparentPixels": 13497
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 27,
+                "top": 51,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2249,
+                "transparentPixels": 13615
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "aayla_secura",
+      "variantId": "before-star-wars-merge-2026-11-09-aayla_secura",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/aayla_secura-kart-before-star-wars-merge.glb",
+      "sha256": "54a35013238827844d90ceb500e59504cf3afa3265f1161df4132d74dfa82c58",
+      "bytes": 89396,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": null,
+      "previousRecord": {
+        "id": "kart-hero:aayla_secura",
+        "heroId": "aayla_secura",
+        "name": "Aayla Secura",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Chasseur Jedi d’Aayla — kart",
+          "en": "Jedi starfighter — adaptation Clone Wars"
+        },
+        "vehicleIdentity": {
+          "label": "Chasseur Jedi d’Aayla — kart",
+          "model": "starfighter",
+          "motifs": [
+            "scanner",
+            "thrusters"
+          ],
+          "sourceKind": "canonical-vehicle-adaptation",
+          "referenceVehicle": "Jedi starfighter — adaptation Clone Wars",
+          "recognition": [
+            "Nez de chasseur républicain",
+            "Ailes bleues",
+            "Réacteurs et capteur"
+          ],
+          "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#8eacbb",
+          "accent": "#d8d4bb",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:aayla_secura",
+          "designScope": "character-specific",
+          "sourceIncarnation": "Clone Wars Jedi General",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "starfighter",
+        "signature": "scanner+thrusters",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/aayla-secura.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/aayla-secura.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/aayla-secura/kart.glb",
+          "publicPath": "/kart/star-wars/aayla-secura/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 89396,
+          "sha256": "54a35013238827844d90ceb500e59504cf3afa3265f1161df4132d74dfa82c58",
+          "triangleCount": 1452,
+          "parts": 8,
+          "bounds": {
+            "min": [
+              -1.57,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.57,
+              1.179098005181683,
+              1.4425000000000001
+            ]
+          },
+          "features": [
+            "identity:starfighter",
+            "landmark:starfighter-flight-planform",
+            "motif:scanner",
+            "motif:thrusters"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/aayla-secura/kart-directions.png",
+          "publicPath": "/kart/star-wars/aayla-secura/kart-directions.png",
+          "bytes": 10342,
+          "sha256": "500b485641f2853edaa03b1a606d10a73c772ad64b2a18b0873241080f4ec9f5",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 51,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 1924,
+                "transparentPixels": 14007
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 54,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2127,
+                "transparentPixels": 13745
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 26,
+                "top": 50,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2109,
+                "transparentPixels": 13685
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 22,
+                "top": 46,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2166,
+                "transparentPixels": 13584
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 43,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 1971,
+                "transparentPixels": 13581
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 43,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2163,
+                "transparentPixels": 13575
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 50,
+                "right": 101,
+                "bottom": 102,
+                "opaquePixels": 2197,
+                "transparentPixels": 13599
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 54,
+                "right": 105,
+                "bottom": 102,
+                "opaquePixels": 2141,
+                "transparentPixels": 13739
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "darth_revan",
+      "variantId": "before-star-wars-merge-2026-11-09-darth_revan",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/darth_revan-kart-before-star-wars-merge.glb",
+      "sha256": "3e09acfc054e6e0e485f780790129e42cfe64eb1b5dd5f13e241a773766d4bf5",
+      "bytes": 86040,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": {
+        "universe": "Star Wars",
+        "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+        "asset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+        "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+        "reason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
+      },
+      "previousRecord": {
+        "id": "kart-hero:darth_revan",
+        "heroId": "darth_revan",
+        "name": "Darth Revan",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Intercepteur de Revan",
+          "en": "Intercepteur de Revan"
+        },
+        "vehicleIdentity": {
+          "label": "Intercepteur de Revan",
+          "model": "starfighter",
+          "motifs": [
+            "armor",
+            "wings",
+            "crystals"
+          ],
+          "sourceKind": "universe-invention",
+          "referenceVehicle": null,
+          "recognition": [
+            "Chasseur de l’Ancienne République",
+            "Blindage sombre",
+            "Cristaux rouges et ailettes"
+          ],
+          "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#524650",
+          "accent": "#b14b4f",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:darth_revan",
+          "designScope": "character-specific",
+          "sourceIncarnation": "Knights of the Old Republic iconic masked identity",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "starfighter",
+        "signature": "armor+wings+crystals",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/darth-revan.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-revan.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-revan/kart.glb",
+          "publicPath": "/kart/star-wars/darth-revan/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 86040,
+          "sha256": "3e09acfc054e6e0e485f780790129e42cfe64eb1b5dd5f13e241a773766d4bf5",
+          "triangleCount": 1372,
+          "parts": 9,
+          "bounds": {
+            "min": [
+              -1.57,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.57,
+              1.315,
+              1.3425
+            ]
+          },
+          "features": [
+            "identity:starfighter",
+            "landmark:starfighter-flight-planform",
+            "motif:armor",
+            "motif:wings",
+            "motif:crystals"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-revan/kart-directions.png",
+          "publicPath": "/kart/star-wars/darth-revan/kart-directions.png",
+          "bytes": 11550,
+          "sha256": "066a009c659dab91058525825ab3930f76df2cb8979c5458d198fad6df652efe",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 52,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 1920,
+                "transparentPixels": 13953
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 52,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2194,
+                "transparentPixels": 13700
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 29,
+                "top": 47,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2237,
+                "transparentPixels": 13557
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 41,
+                "right": 99,
+                "bottom": 102,
+                "opaquePixels": 2368,
+                "transparentPixels": 13391
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 43,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 2285,
+                "transparentPixels": 13363
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 42,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2394,
+                "transparentPixels": 13356
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 47,
+                "right": 98,
+                "bottom": 102,
+                "opaquePixels": 2294,
+                "transparentPixels": 13502
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 28,
+                "top": 52,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2207,
+                "transparentPixels": 13695
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "darth_talon",
+      "variantId": "before-star-wars-merge-2026-11-09-darth_talon",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/darth_talon-kart-before-star-wars-merge.glb",
+      "sha256": "03f0dcc4494c0c9f52e52370e4534e222efbe034d74de358e5f07f348c40b37f",
+      "bytes": 97528,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": null,
+      "previousRecord": {
+        "id": "kart-hero:darth_talon",
+        "heroId": "darth_talon",
+        "name": "Darth Talon",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Intercepteur Sith de Talon",
+          "en": "Intercepteur Sith de Talon"
+        },
+        "vehicleIdentity": {
+          "label": "Intercepteur Sith de Talon",
+          "model": "starfighter",
+          "motifs": [
+            "wings",
+            "horns",
+            "plasma"
+          ],
+          "sourceKind": "universe-invention",
+          "referenceVehicle": null,
+          "recognition": [
+            "Chasseur Sith rouge et noir",
+            "Ailettes pointues",
+            "Cornes et énergie"
+          ],
+          "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#9e3b48",
+          "accent": "#2e2b37",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:darth_talon",
+          "designScope": "character-specific",
+          "sourceIncarnation": "Star Wars Legacy - Hand of Darth Krayt",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "starfighter",
+        "signature": "wings+horns+plasma",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/darth-talon.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-talon.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-talon/kart.glb",
+          "publicPath": "/kart/star-wars/darth-talon/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 97528,
+          "sha256": "03f0dcc4494c0c9f52e52370e4534e222efbe034d74de358e5f07f348c40b37f",
+          "triangleCount": 1572,
+          "parts": 9,
+          "bounds": {
+            "min": [
+              -1.57,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.57,
+              1.290689930663518,
+              1.3425
+            ]
+          },
+          "features": [
+            "identity:starfighter",
+            "landmark:starfighter-flight-planform",
+            "motif:wings",
+            "motif:horns",
+            "motif:plasma"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-talon/kart-directions.png",
+          "publicPath": "/kart/star-wars/darth-talon/kart-directions.png",
+          "bytes": 11834,
+          "sha256": "a5ee00772a983d797a3480606c2e40575e1d38a9fd8eea581e2e3c00c0edf02d",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 46,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 2098,
+                "transparentPixels": 13775
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 41,
+                "right": 103,
+                "bottom": 102,
+                "opaquePixels": 2302,
+                "transparentPixels": 13587
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 29,
+                "top": 45,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2315,
+                "transparentPixels": 13517
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 45,
+                "right": 103,
+                "bottom": 102,
+                "opaquePixels": 2445,
+                "transparentPixels": 13368
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 23,
+                "top": 43,
+                "right": 104,
+                "bottom": 102,
+                "opaquePixels": 2349,
+                "transparentPixels": 13454
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 24,
+                "top": 43,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2471,
+                "transparentPixels": 13333
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 45,
+                "right": 98,
+                "bottom": 102,
+                "opaquePixels": 2377,
+                "transparentPixels": 13454
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 24,
+                "top": 41,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2316,
+                "transparentPixels": 13581
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "darth_maul",
+      "variantId": "before-star-wars-merge-2026-11-09-darth_maul",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/darth_maul-kart-before-star-wars-merge.glb",
+      "sha256": "86b9a605d48f6ab04e594c5f49af7e45c159956366da941e76cb8f27fbf815b8",
+      "bytes": 85584,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": null,
+      "previousRecord": {
+        "id": "kart-hero:darth_maul",
+        "heroId": "darth_maul",
+        "name": "Darth Maul",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Speeder de Mandalore de Maul",
+          "en": "Speeder de Mandalore de Maul"
+        },
+        "vehicleIdentity": {
+          "label": "Speeder de Mandalore de Maul",
+          "model": "speeder",
+          "motifs": [
+            "horns",
+            "armor",
+            "swords"
+          ],
+          "sourceKind": "universe-invention",
+          "referenceVehicle": null,
+          "recognition": [
+            "Châssis de speeder sombre",
+            "Cornes stylisées",
+            "Blindage et lame double évoquée"
+          ],
+          "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#43343a",
+          "accent": "#b34544",
+          "detailColor": "#dbe8ec",
+          "id": "kart-design:darth_maul",
+          "designScope": "character-specific",
+          "sourceIncarnation": "The Clone Wars - ruler of Mandalore",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "speeder",
+        "signature": "horns+armor+swords",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/darth-maul.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/darth-maul.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-maul/kart.glb",
+          "publicPath": "/kart/star-wars/darth-maul/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 85584,
+          "sha256": "86b9a605d48f6ab04e594c5f49af7e45c159956366da941e76cb8f27fbf815b8",
+          "triangleCount": 1340,
+          "parts": 9,
+          "bounds": {
+            "min": [
+              -1.05,
+              0,
+              -1.67
+            ],
+            "max": [
+              1.05,
+              1.290689930663518,
+              1.3075
+            ]
+          },
+          "features": [
+            "identity:speeder",
+            "landmark:speeder-long-cowl-and-stern-turbines",
+            "motif:horns",
+            "motif:armor",
+            "motif:swords"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/darth-maul/kart-directions.png",
+          "publicPath": "/kart/star-wars/darth-maul/kart-directions.png",
+          "bytes": 10704,
+          "sha256": "35761af88ef59247eb32609f8822be0e883994fde608a08695362584b50b34b6",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 33,
+                "top": 46,
+                "right": 95,
+                "bottom": 102,
+                "opaquePixels": 1932,
+                "transparentPixels": 13852
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 41,
+                "right": 102,
+                "bottom": 102,
+                "opaquePixels": 2233,
+                "transparentPixels": 13448
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 30,
+                "top": 45,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2407,
+                "transparentPixels": 13392
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 47,
+                "right": 102,
+                "bottom": 102,
+                "opaquePixels": 2285,
+                "transparentPixels": 13616
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 33,
+                "top": 50,
+                "right": 95,
+                "bottom": 102,
+                "opaquePixels": 2078,
+                "transparentPixels": 13910
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 25,
+                "top": 47,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2285,
+                "transparentPixels": 13598
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 45,
+                "right": 97,
+                "bottom": 102,
+                "opaquePixels": 2407,
+                "transparentPixels": 13390
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 25,
+                "top": 41,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2233,
+                "transparentPixels": 13456
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "heroId": "ahsoka",
+      "variantId": "before-star-wars-merge-2026-11-09-ahsoka",
+      "label": "OLD — before Star Wars source/driver metadata reconciliation",
+      "path": "docs/kart/archives/star-wars-merge-2026-11-09-before-53d0cab7/ahsoka-kart-before-star-wars-merge.glb",
+      "sha256": "ca5759d302e14c8b583549732dae98eaca38964b70ceb2beac344ee95ed5bdb6",
+      "bytes": 88356,
+      "archivedOnly": true,
+      "usableAsCurrent": false,
+      "artApproved": false,
+      "sourceSpriteQuarantine": {
+        "universe": "Star Wars",
+        "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+        "asset": "/sprites/generated/heroes/star-wars/ahsoka.png",
+        "sha256": "d5c49fd412868d187aca84241af1a191ffa55337a248982f2e79edd0daff22f3",
+        "reason": "WRONG_FANTASY_ROBES_NO_TWIN_BLUE_SABERS"
+      },
+      "previousRecord": {
+        "id": "kart-hero:ahsoka",
+        "heroId": "ahsoka",
+        "name": "Ahsoka Tano (Siege of Mandalore)",
+        "universe": "Star Wars",
+        "kartName": {
+          "fr": "Navette du siège de Mandalore",
+          "en": "Navette du siège de Mandalore"
+        },
+        "vehicleIdentity": {
+          "label": "Navette du siège de Mandalore",
+          "model": "shuttle",
+          "motifs": [
+            "wings",
+            "scanner",
+            "armor"
+          ],
+          "sourceKind": "universe-invention",
+          "referenceVehicle": null,
+          "recognition": [
+            "Navette de la guerre des Clones",
+            "Ailes et blindage bleu-gris",
+            "Scanner de commandement"
+          ],
+          "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+          "sourceUrls": [
+            "https://www.starwars.com/databank/"
+          ],
+          "color": "#5f8198",
+          "accent": "#d1d6d1",
+          "detailColor": "#dbe8ec",
+          "variant": null,
+          "id": "kart-design:ahsoka",
+          "designScope": "character-specific",
+          "sourceIncarnation": "The Clone Wars - Siege of Mandalore",
+          "sourceAnchor": "",
+          "referenceScope": "vehicle-and-universe-references",
+          "dimensions": {
+            "wheelbase": 2,
+            "width": 1.68,
+            "wheelRadius": 0.32,
+            "nose": 0.78,
+            "fin": 0.4
+          },
+          "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+          "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+          "modelVersion": "universe-vehicles-v2"
+        },
+        "bodyStyle": "shuttle",
+        "signature": "wings+scanner+armor",
+        "designSource": "authored-character-adaptation",
+        "fidelityStatus": "unreviewed-original-kart-adaptation",
+        "referenceAsset": null,
+        "sourceReferences": [
+          "https://www.starwars.com/databank/"
+        ],
+        "driverFidelityStatus": "inherits-existing-sprite-review",
+        "driverDirections": "existing-hero-idle-billboard; dedicated seated directions pending",
+        "driverAvailable": true,
+        "driverSprites": [
+          {
+            "src": "/sprites/generated/heroes/star-wars/ahsoka.png",
+            "columns": 4,
+            "rows": 4,
+            "col": 0,
+            "row": 0,
+            "trim": null,
+            "sourceContext": "rpg",
+            "upperBodyRatio": 0.68,
+            "sourcePath": "DLC/StarWars/assets/sprites/generated/heroes/star-wars/ahsoka.png",
+            "tracked": true,
+            "materialized": false,
+            "sha256": null,
+            "availability": "present-in-git-tree"
+          }
+        ],
+        "model": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka/kart.glb",
+          "publicPath": "/kart/star-wars/ahsoka/kart.glb",
+          "format": "glTF 2.0 binary",
+          "bytes": 88356,
+          "sha256": "ca5759d302e14c8b583549732dae98eaca38964b70ceb2beac344ee95ed5bdb6",
+          "triangleCount": 1396,
+          "parts": 9,
+          "bounds": {
+            "min": [
+              -1.46,
+              0,
+              -1.65
+            ],
+            "max": [
+              1.46,
+              1.2764646446822205,
+              1.3425
+            ]
+          },
+          "features": [
+            "identity:shuttle",
+            "landmark:shuttle-flight-planform",
+            "motif:wings",
+            "motif:scanner",
+            "motif:armor"
+          ],
+          "driverAnchor": [
+            0,
+            0.78,
+            0.18
+          ],
+          "forwardAxis": "-Z",
+          "upAxis": "+Y",
+          "units": "metres"
+        },
+        "sprite": {
+          "sourcePath": "DLC/StarWars/assets/kart/star-wars/ahsoka/kart-directions.png",
+          "publicPath": "/kart/star-wars/ahsoka/kart-directions.png",
+          "bytes": 10572,
+          "sha256": "fc5d80eb69378adda7eff0208be0f192390892114a1f50d7e18d485e71b8d42d",
+          "width": 1024,
+          "height": 128,
+          "frameWidth": 128,
+          "frameHeight": 128,
+          "columns": 8,
+          "rows": 1,
+          "anchor": {
+            "x": 0.5,
+            "y": 0.86
+          },
+          "containsDriver": false,
+          "projection": "orthographic mesh raster",
+          "frames": [
+            {
+              "direction": "rear",
+              "col": 0,
+              "row": 0,
+              "bounds": {
+                "left": 26,
+                "top": 51,
+                "right": 101,
+                "bottom": 102,
+                "opaquePixels": 2070,
+                "transparentPixels": 13851
+              }
+            },
+            {
+              "direction": "rear-right",
+              "col": 1,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 52,
+                "right": 100,
+                "bottom": 102,
+                "opaquePixels": 2307,
+                "transparentPixels": 13533
+              }
+            },
+            {
+              "direction": "right",
+              "col": 2,
+              "row": 0,
+              "bounds": {
+                "left": 29,
+                "top": 49,
+                "right": 106,
+                "bottom": 102,
+                "opaquePixels": 2355,
+                "transparentPixels": 13432
+              }
+            },
+            {
+              "direction": "front-right",
+              "col": 3,
+              "row": 0,
+              "bounds": {
+                "left": 20,
+                "top": 45,
+                "right": 100,
+                "bottom": 102,
+                "opaquePixels": 2436,
+                "transparentPixels": 13417
+              }
+            },
+            {
+              "direction": "front",
+              "col": 4,
+              "row": 0,
+              "bounds": {
+                "left": 26,
+                "top": 42,
+                "right": 101,
+                "bottom": 102,
+                "opaquePixels": 2305,
+                "transparentPixels": 13619
+              }
+            },
+            {
+              "direction": "front-left",
+              "col": 5,
+              "row": 0,
+              "bounds": {
+                "left": 27,
+                "top": 41,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2469,
+                "transparentPixels": 13368
+              }
+            },
+            {
+              "direction": "left",
+              "col": 6,
+              "row": 0,
+              "bounds": {
+                "left": 21,
+                "top": 49,
+                "right": 98,
+                "bottom": 102,
+                "opaquePixels": 2446,
+                "transparentPixels": 13340
+              }
+            },
+            {
+              "direction": "rear-left",
+              "col": 7,
+              "row": 0,
+              "bounds": {
+                "left": 27,
+                "top": 52,
+                "right": 107,
+                "bottom": 102,
+                "opaquePixels": 2330,
+                "transparentPixels": 13518
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

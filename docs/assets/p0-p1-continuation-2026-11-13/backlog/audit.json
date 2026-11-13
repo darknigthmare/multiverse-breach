@@ -1,0 +1,935 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "sourceCommit": "daca0f002eaa94cf16b06d5ad366b0423ea294d2",
+  "sourceSnapshotPurpose": "Immutable final runtime graph/complete asset-tree snapshot for this audit, with parents66f8691 and GitHub2333c2c0; not final delivery commit.",
+  "sourceTree": "56ff8f6cdb1578e266797571e59fe2db25ed58bc",
+  "githubMasterCommit": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+  "exportVersionLabel": "R14",
+  "exportVersionCaution": "R14 is the existing exporter schema label; the actual input commit above is from the Nov13 integrated runtime.",
+  "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+  "actors": 4937,
+  "actorsByKind": {
+    "hero": 1912,
+    "enemy": 1519,
+    "boss": 1110,
+    "worldBoss": 396
+  },
+  "universes": 525,
+  "taskRows": 30724,
+  "tasksByPriority": {
+    "P1": 17318,
+    "P2": 13406
+  },
+  "actorsWithP1": 4935,
+  "p1ActorsByKind": {
+    "hero": 1910,
+    "enemy": 1519,
+    "boss": 1110,
+    "worldBoss": 396
+  },
+  "p1ByCode": [
+    {
+      "code": "OFFICIAL_COSTUME_RESEARCH",
+      "tasks": 4570,
+      "actors": 4570
+    },
+    {
+      "code": "INCARNATION_UNSPECIFIED",
+      "tasks": 3436,
+      "actors": 3436
+    },
+    {
+      "code": "VISUAL_CONTRACT_MISSING",
+      "tasks": 3215,
+      "actors": 3215
+    },
+    {
+      "code": "REFERENCE_MISSING",
+      "tasks": 2900,
+      "actors": 2900
+    },
+    {
+      "code": "RASTER_MISSING",
+      "tasks": 1474,
+      "actors": 1474
+    },
+    {
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "tasks": 1363,
+      "actors": 1363
+    },
+    {
+      "code": "VISUAL_CONTRACT_GENERIC",
+      "tasks": 213,
+      "actors": 213
+    },
+    {
+      "code": "OFFICIAL_COSTUME_ARTWORK",
+      "tasks": 55,
+      "actors": 55
+    },
+    {
+      "code": "SOURCE_FACE_CONTRACT_REVIEW",
+      "tasks": 47,
+      "actors": 47
+    },
+    {
+      "code": "STATIC_GAMEPLAY_REVIEW",
+      "tasks": 11,
+      "actors": 11
+    },
+    {
+      "code": "RESEARCH_r13-payday-wearer-fit",
+      "tasks": 6,
+      "actors": 6
+    },
+    {
+      "code": "RASTER_SCOPE_UNRESOLVED",
+      "tasks": 3,
+      "actors": 3
+    },
+    {
+      "code": "RESEARCH_r13-magicka-gameplay-separation",
+      "tasks": 3,
+      "actors": 3
+    },
+    {
+      "code": "RESEARCH_classic-models",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dbd-charity-claudette-morel",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dbd-charity-dwight-fairfield",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dbd-charity-huntress",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dbd-charity-nurse",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dbd-pharoah-eddie-identity",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_dr2-skills-attire",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_drdr-base-wardrobe",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_ff15-half-life-main",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_ffxv-royal-raiment-reference",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_first-contact",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_hzd-nora-keeper",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_kf2-variants-dj-scully-dj-masque",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_kf2-variants-mr-foster-masque-a-gaz",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_lr-aerith-console",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_otr-skills-attire",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_r14-breach-response",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_r14-legends-names",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_r14-other-six-sins",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_r14-vanguard-components",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_superstars-mech-battle",
+      "tasks": 1,
+      "actors": 1
+    },
+    {
+      "code": "RESEARCH_worn-armor",
+      "tasks": 1,
+      "actors": 1
+    }
+  ],
+  "actorsWithMissingRaster": 1474,
+  "actorsWithStaticGameplay": 11,
+  "actorsWithUnresolvedRasterScope": 3,
+  "staticGameplayReview": [
+    {
+      "actorKey": "[\"Predator\",\"name:Feral Predator\"]",
+      "actorId": "",
+      "name": "Feral Predator",
+      "universe": "Predator",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/predator/feral-predator.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Godzilla The Animated Series\",\"name:Crustaceous Rex\"]",
+      "actorId": "",
+      "name": "Crustaceous Rex",
+      "universe": "Godzilla The Animated Series",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorId": "aether_crown:aether_mite_swarm",
+      "name": "Aether Mite Swarm",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "paths": [
+        "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:lord_pneuma\"]",
+      "actorId": "aether_crown:lord_pneuma",
+      "name": "Lord Pneuma",
+      "universe": "The Aether Crown",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/the-aether-crown/lord-pneuma.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:the_twelve_bell_judges\"]",
+      "actorId": "meridian_clockwork:the_twelve_bell_judges",
+      "name": "The Twelve Bell Judges",
+      "universe": "Meridian Clockwork",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Yomi no Kage\",\"id:yomi_no_kage:amas_des_huit_orochi\"]",
+      "actorId": "yomi_no_kage:amas_des_huit_orochi",
+      "name": "Amas des Huit Orochi",
+      "universe": "Yomi no Kage",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:kraken_sans_couronne\"]",
+      "actorId": "crownless_sea:kraken_sans_couronne",
+      "name": "Kraken Sans Couronne",
+      "universe": "The Crownless Sea",
+      "kind": "worldBoss",
+      "paths": [
+        "/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:cuirasse_nul_oblique\"]",
+      "actorId": "ilyr_concordat:cuirasse_nul_oblique",
+      "name": "Cuirassé Nul « Oblique »",
+      "universe": "Ilyr Concordat",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_phare_qui_regarde\"]",
+      "actorId": "drowned_testament:le_phare_qui_regarde",
+      "name": "Le Phare qui Regarde",
+      "universe": "The Drowned Testament",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:reine_des_ronces\"]",
+      "actorId": "valedor_shattered_crown:reine_des_ronces",
+      "name": "Reine des Ronces",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "boss",
+      "paths": [
+        "/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:vaelgor_premier_wyrm\"]",
+      "actorId": "valedor_shattered_crown:vaelgor_premier_wyrm",
+      "name": "Vaelgor, Premier Wyrm",
+      "universe": "Valedor: The Shattered Crown",
+      "kind": "worldBoss",
+      "paths": [
+        "/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png"
+      ]
+    }
+  ],
+  "unresolvedRasterScope": [
+    {
+      "actorKey": "[\"Star Wars\",\"id:ahsoka_padawan\"]",
+      "actorId": "ahsoka_padawan",
+      "name": "Ahsoka Tano (Padawan)",
+      "universe": "Star Wars",
+      "priority": "P1",
+      "code": "RASTER_SCOPE_UNRESOLVED",
+      "reason": "Known exact-byte canonical sprite quarantine; an empty resolver URL is unresolved, not a missing-file claim."
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:darth_revan\"]",
+      "actorId": "darth_revan",
+      "name": "Darth Revan",
+      "universe": "Star Wars",
+      "priority": "P1",
+      "code": "RASTER_SCOPE_UNRESOLVED",
+      "reason": "Known exact-byte canonical sprite quarantine; an empty resolver URL is unresolved, not a missing-file claim."
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:ahsoka\"]",
+      "actorId": "ahsoka",
+      "name": "Ahsoka Tano (Siege of Mandalore)",
+      "universe": "Star Wars",
+      "priority": "P1",
+      "code": "RASTER_SCOPE_UNRESOLVED",
+      "reason": "Known exact-byte canonical sprite quarantine; an empty resolver URL is unresolved, not a missing-file claim."
+    }
+  ],
+  "historicalP0Count": 22,
+  "historicalP0": [
+    {
+      "actorKey": "[\"Harry Potter\",\"id:harry\"]",
+      "actorId": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "sourceIncarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/harry-potter/harry.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:luke\"]",
+      "actorId": "luke",
+      "name": "Luke Skywalker",
+      "universe": "Star Wars",
+      "sourceIncarnation": "Star Wars: Return of the Jedi (1983) - Death Star II Jedi Knight",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_ARTWORK"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/combat-character-corrections-wave13-part-b/luke.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Harry Potter\",\"id:hermione\"]",
+      "actorId": "hermione",
+      "name": "Hermione Granger",
+      "universe": "Harry Potter",
+      "sourceIncarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/harry-potter/hermione.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:vader\"]",
+      "actorId": "vader",
+      "name": "Darth Vader",
+      "universe": "Star Wars",
+      "sourceIncarnation": "Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/star-wars/vader.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:han_solo\"]",
+      "actorId": "han_solo",
+      "name": "Han Solo",
+      "universe": "Star Wars",
+      "sourceIncarnation": "Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_ARTWORK"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/combat-character-corrections-wave7/han_solo.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:joker_n52\"]",
+      "actorId": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "sourceIncarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/joker-new-52/joker-n52.png"
+      ],
+      "providerRefusal": {
+        "actorId": "joker_n52",
+        "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/dc-portraits/generation-attempts.json",
+        "status": "generation-refused-no-image",
+        "attemptCount": 1,
+        "requestId": "999c7c59-68e9-4cab-aac0-c0b8ac22c4ec",
+        "refusalStage": "output",
+        "newImageDelivered": false,
+        "retryScheduled": false,
+        "priorityClosed": false,
+        "evidenceSha256": "f9050098c8a88c1d699d609d103765bb88378f88b911ccef593db79ffd314fe5"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:harley_n52\"]",
+      "actorId": "harley_n52",
+      "name": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "sourceIncarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/joker-new-52/harley-n52.png"
+      ],
+      "providerRefusal": {
+        "actorId": "harley_n52",
+        "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/dc-portraits/generation-attempts.json",
+        "status": "generation-refused-no-image",
+        "attemptCount": 1,
+        "requestId": "14c5148e-0a5c-448b-880f-91a9ddcfecca",
+        "refusalStage": "output",
+        "newImageDelivered": false,
+        "retryScheduled": false,
+        "priorityClosed": false,
+        "evidenceSha256": "f9050098c8a88c1d699d609d103765bb88378f88b911ccef593db79ffd314fe5"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:batman_n52\"]",
+      "actorId": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "sourceIncarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - Bruce Wayne",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/joker-new-52/batman-n52.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"The Batman Who Laughs\",\"id:grim_knight\"]",
+      "actorId": "grim_knight",
+      "name": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "sourceIncarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/the-batman-who-laughs/grim-knight.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Roger Rabbit\",\"id:roger_rabbit\"]",
+      "actorId": "roger_rabbit",
+      "name": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "sourceIncarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/roger-rabbit/roger-rabbit.png"
+      ],
+      "providerRefusal": {
+        "actorId": "roger_rabbit",
+        "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/lilo-roger-portraits/generation-attempts.json",
+        "status": "refused-no-image",
+        "attemptCount": 1,
+        "requestId": "c962d3be-6790-412c-b78a-1e62a76e66cb",
+        "refusalStage": "output",
+        "newImageDelivered": false,
+        "retryScheduled": false,
+        "priorityClosed": false,
+        "evidenceSha256": "5190c3733d56f333d59ae308e5068db84f1b6052b07ebcfdcc25c6ea280970aa"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]",
+      "actorId": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "sourceIncarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]",
+      "actorId": "cyber_spider_flamethrower",
+      "name": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "sourceIncarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/spider-the-video-game/cyber-spider-flamethrower.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]",
+      "actorId": "cyber_spider_electro_beam",
+      "name": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "sourceIncarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/spider-the-video-game/cyber-spider-electro-beam.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+      "actorId": "jack_sparrow_potc",
+      "name": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "sourceIncarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/pirates-of-the-caribbean/jack-sparrow-potc.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"The Dark Knight\",\"id:batman_tdk\"]",
+      "actorId": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "sourceIncarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/the-dark-knight/batman-tdk.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:kevin_minions\"]",
+      "actorId": "kevin_minions",
+      "name": "Kevin",
+      "universe": "Minions",
+      "sourceIncarnation": "Minions (2015) - Kevin, London crown-heist adventure",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/minions/kevin-minions.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:stuart_minions\"]",
+      "actorId": "stuart_minions",
+      "name": "Stuart",
+      "universe": "Minions",
+      "sourceIncarnation": "Minions (2015) - Stuart, London rock-star finale",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/minions/stuart-minions.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:bob_minions\"]",
+      "actorId": "bob_minions",
+      "name": "Bob",
+      "universe": "Minions",
+      "sourceIncarnation": "Minions (2015) - Bob, London crown-heist adventure",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/minions/bob-minions.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+      "actorId": "stitch_626",
+      "name": "Stitch",
+      "universe": "Lilo & Stitch",
+      "sourceIncarnation": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/lilo-stitch/stitch-626.png"
+      ],
+      "providerRefusal": {
+        "actorId": "stitch_626",
+        "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/stitch/generation-attempt.json",
+        "status": "PROVIDER_REFUSED_NO_IMAGE_DELIVERED",
+        "attemptCount": 1,
+        "requestId": null,
+        "refusalStage": null,
+        "newImageDelivered": false,
+        "retryScheduled": false,
+        "priorityClosed": false,
+        "evidenceSha256": "5611ffbdeb9cd61a8a08d0ea6d26a9535d37d9968da7c0c967a6af014883a998"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+      "actorId": "lilo_pelekai",
+      "name": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "sourceIncarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/lilo-stitch/lilo-pelekai.png"
+      ],
+      "providerRefusal": {
+        "actorId": "lilo_pelekai",
+        "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/lilo-roger-portraits/generation-attempts.json",
+        "status": "refused-no-image",
+        "attemptCount": 1,
+        "requestId": "7352fd7c-3fd7-482a-94d5-796d6e846d7a",
+        "refusalStage": "input",
+        "newImageDelivered": false,
+        "retryScheduled": false,
+        "priorityClosed": false,
+        "evidenceSha256": "5190c3733d56f333d59ae308e5068db84f1b6052b07ebcfdcc25c6ea280970aa"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Teen Titans\",\"id:raven_tt\"]",
+      "actorId": "raven_tt",
+      "name": "Raven",
+      "universe": "Teen Titans",
+      "sourceIncarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/teen-titans/raven-tt.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Teen Titans\",\"id:starfire_tt\"]",
+      "actorId": "starfire_tt",
+      "name": "Starfire",
+      "universe": "Teen Titans",
+      "sourceIncarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "priority": "P0",
+      "status": "OPEN_VISUAL_REVIEW_OR_PRODUCTION",
+      "prioritySource": "docs/excel/exports/priorites-P0-P1-2026-10-24.csv",
+      "reclassificationSource": "docs/excel/REPRISE_MANQUANTS_R3_2026-10-24.md",
+      "currentP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "currentRasterPaths": [
+        "/sprites/generated/heroes/teen-titans/starfire-tt.png"
+      ],
+      "providerRefusal": null,
+      "source1to1Verified": false
+    }
+  ],
+  "newProviderRefusals": [
+    {
+      "actorId": "stitch_626",
+      "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/stitch/generation-attempt.json",
+      "status": "PROVIDER_REFUSED_NO_IMAGE_DELIVERED",
+      "attemptCount": 1,
+      "requestId": null,
+      "refusalStage": null,
+      "newImageDelivered": false,
+      "retryScheduled": false,
+      "priorityClosed": false,
+      "evidenceSha256": "5611ffbdeb9cd61a8a08d0ea6d26a9535d37d9968da7c0c967a6af014883a998"
+    },
+    {
+      "actorId": "harley_n52",
+      "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/dc-portraits/generation-attempts.json",
+      "status": "generation-refused-no-image",
+      "attemptCount": 1,
+      "requestId": "14c5148e-0a5c-448b-880f-91a9ddcfecca",
+      "refusalStage": "output",
+      "newImageDelivered": false,
+      "retryScheduled": false,
+      "priorityClosed": false,
+      "evidenceSha256": "f9050098c8a88c1d699d609d103765bb88378f88b911ccef593db79ffd314fe5"
+    },
+    {
+      "actorId": "joker_n52",
+      "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/dc-portraits/generation-attempts.json",
+      "status": "generation-refused-no-image",
+      "attemptCount": 1,
+      "requestId": "999c7c59-68e9-4cab-aac0-c0b8ac22c4ec",
+      "refusalStage": "output",
+      "newImageDelivered": false,
+      "retryScheduled": false,
+      "priorityClosed": false,
+      "evidenceSha256": "f9050098c8a88c1d699d609d103765bb88378f88b911ccef593db79ffd314fe5"
+    },
+    {
+      "actorId": "lilo_pelekai",
+      "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/lilo-roger-portraits/generation-attempts.json",
+      "status": "refused-no-image",
+      "attemptCount": 1,
+      "requestId": "7352fd7c-3fd7-482a-94d5-796d6e846d7a",
+      "refusalStage": "input",
+      "newImageDelivered": false,
+      "retryScheduled": false,
+      "priorityClosed": false,
+      "evidenceSha256": "5190c3733d56f333d59ae308e5068db84f1b6052b07ebcfdcc25c6ea280970aa"
+    },
+    {
+      "actorId": "roger_rabbit",
+      "evidenceFile": "docs/assets/p0-p1-continuation-2026-11-13/lilo-roger-portraits/generation-attempts.json",
+      "status": "refused-no-image",
+      "attemptCount": 1,
+      "requestId": "c962d3be-6790-412c-b78a-1e62a76e66cb",
+      "refusalStage": "output",
+      "newImageDelivered": false,
+      "retryScheduled": false,
+      "priorityClosed": false,
+      "evidenceSha256": "5190c3733d56f333d59ae308e5068db84f1b6052b07ebcfdcc25c6ea280970aa"
+    }
+  ],
+  "newProviderRefusalCount": 5,
+  "sourceIntegrity": {
+    "graphFiles": 1778,
+    "loaderFiles": 1,
+    "pinnedFiles": 1779,
+    "beforeMatchesSnapshot": true,
+    "afterMatchesSnapshot": true,
+    "changedSources": [],
+    "sourceBytes": 33280023,
+    "beforeReceipt": "inputs-before.json",
+    "afterReceipt": "inputs-after.json"
+  },
+  "execution": {
+    "exitCode": 0,
+    "startedAt": "2026-11-13T08:04:01.084140+00:00",
+    "endedAt": "2026-11-13T08:04:12.063230+00:00",
+    "nodeVersion": "v22.23.5",
+    "heapMiB": 1024,
+    "cpuAffinity": [
+      0,
+      1
+    ],
+    "commandReceipt": "export-receipt.json",
+    "stdout": "export.stdout.txt",
+    "stderr": "export.stderr.txt"
+  },
+  "queue": {
+    "file": "actor-batches-40.json",
+    "actors": 4935,
+    "batches": 124,
+    "fullBatches": 123,
+    "lastBatchSize": 15
+  },
+  "findingsAre": "Source/declared contract and Git-resolver observations, not individual manual pixel diagnoses or runtime playthroughs.",
+  "artApprovalClaims": 0,
+  "p0ClosuresClaimed": 0,
+  "testsRunByThisAudit": [],
+  "fullMediaValidation": false,
+  "source1to1Verified": false,
+  "baselineSourceCommit": "72bea3d324e144c00b5f61677ee9f66b431ba43c",
+  "baselineDirectory": "baseline-72bea3d3",
+  "p1SourceFindingsResolvedAgainstBaseline": 4,
+  "sourceFindingsDelta": "source-findings-delta.json",
+  "firstBatchProgress": "first-batch-progress.json",
+  "fullyClosedActorDossiers": 0
+}

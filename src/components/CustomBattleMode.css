@@ -1,0 +1,82 @@
+/* The free-battle lobby is one preparation screen. Its four sections keep their
+   local choices mounted while only the active section receives input. */
+.custom-battle-lobby {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  min-height: 100%;
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font: .875rem/1.5 system-ui, sans-serif;
+  color: #e5f4f7;
+  overflow-wrap: anywhere;
+}
+.custom-battle-lobby *, .custom-battle-lobby *::before, .custom-battle-lobby *::after { box-sizing: border-box; }
+.custom-battle-lobby :is(button, input, select) { min-height: 44px; min-width: 0; max-width: 100%; font: inherit; }
+.custom-battle-lobby button { white-space: normal; overflow-wrap: anywhere; }
+.custom-battle-lobby :is(button, input, select):focus-visible,
+.custom-lobby-panel:focus-visible { outline: 3px solid #ffdc79; outline-offset: 3px; }
+.custom-battle-lobby button[aria-disabled='true'] { cursor: not-allowed; }
+.custom-lobby-header { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 14px; }
+.custom-lobby-header > div:first-child { flex: 1 1 380px; min-width: 0; }
+.custom-lobby-header h2 { margin: 6px 0; font-size: 1.45rem; line-height: 1.2; letter-spacing: .06em; }
+.custom-lobby-header p { margin: 0; color: #b8ced5; max-width: 78ch; }
+.custom-lobby-kicker { color: #89eedc; font-size: .85em; letter-spacing: .12em; }
+.custom-lobby-progression { padding: 8px 12px; border: 1px solid #8a7d3e; color: #ffe79d; background: #a0821820; font-size: .85em; }
+.custom-battle-lobby .custom-lobby-steps { gap: 8px; }
+.custom-battle-lobby .custom-lobby-steps button { padding: 10px 12px; font: inherit; flex-direction: row; }
+.custom-battle-lobby .custom-lobby-steps b { font-size: 1.2em; }
+.custom-lobby-panel { flex: 1 0 auto; display: grid; gap: 12px; min-width: 0; scroll-margin: 12px; }
+.custom-battle-lobby .fighter-section-label { font-size: .85em; color: #b9dce3; letter-spacing: .06em; }
+.custom-mode-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 10px; }
+.custom-opponent-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 10px; }
+.custom-mode-choice strong, .custom-mode-choice small { display: block; }
+.custom-mode-choice strong { font-size: 1em; }
+.custom-mode-choice small { margin-top: 6px; font-size: .875em; color: #b7cdd3; line-height: 1.5; }
+.custom-lobby-teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); align-items: start; gap: 12px; min-width: 0; }
+.custom-picker-heading { color: var(--custom-picker-accent); font-size: 1em; margin: 0 0 12px; letter-spacing: .06em; }
+.custom-picker-status { margin: 10px 0; color: #b8cdd4; font-size: .9em; }
+.custom-selected-roster { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 10px; }
+.custom-roster-token { padding: 8px 10px; text-align: left; border: 1px solid var(--custom-picker-accent); color: #efffff; background: #102630; border-radius: 4px; cursor: pointer; }
+.custom-roster-token span { color: var(--custom-picker-accent); }
+.custom-roster-token[aria-disabled='true'] span { visibility: hidden; }
+.custom-hero-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(158px, 100%), 1fr)); gap: 8px; min-width: 0; }
+.custom-hero-choice { display: flex; flex-direction: column; align-items: stretch; }
+.custom-hero-choice canvas { width: 72px; height: 66px; display: block; margin: 0 auto 6px; }
+.custom-hero-choice strong { font-size: 1em; }
+.custom-hero-choice small { margin-top: 5px; color: #bed4da; font-size: .875em; }
+.custom-hero-choice[aria-disabled='true']:not([aria-pressed='true']) { border-style: dashed; }
+.custom-battle-lobby .catalog-pagination { font-size: 1em; }
+.custom-battle-lobby .catalog-pagination :is(label, input, select),
+.custom-battle-lobby .catalog-page-status,
+.custom-battle-lobby .catalog-page-controls,
+.custom-battle-lobby .catalog-empty { font-size: .9em; }
+.custom-battle-lobby .catalog-pagination label :is(input, select) { font-size: 1em; }
+.custom-battle-lobby .catalog-page-controls button { min-width: 44px; min-height: 44px; }
+.custom-threat-add { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px; }
+.custom-threat-add > label { grid-column: 1 / -1; color: #cce7eb; }
+.custom-candidate-preview { display: grid; gap: 4px; margin: 8px 0; min-width: 0; color: #d2e6eb; }
+.custom-candidate-preview span { font-size: .875em; color: #b8cdd4; }
+.custom-lobby-toggle { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 10px; border: 1px solid #4b6871; border-radius: 4px; color: #d0e8ea; }
+.custom-battle-lobby input[type='checkbox'] { flex: 0 0 20px; min-height: 20px; width: 20px; height: 20px; accent-color: #8af3d9; }
+.custom-battle-lobby .custom-melee-stage-rules { grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); min-width: 0; font: inherit; }
+.custom-battle-lobby .custom-melee-stage-rules legend { font-size: 1em; }
+.custom-battle-lobby .custom-melee-stage-rules small,
+.custom-battle-lobby .custom-melee-countdown-rule span { font-size: .9em; color: #bfd3d9; }
+.custom-battle-lobby .custom-melee-countdown-rule { min-width: 0; font-size: 1em; }
+.custom-battle-lobby .custom-melee-countdown-rule label { min-height: 44px; font-size: .9em; }
+.custom-lobby-note { margin: 6px 0 0; color: #bdd1d7; }
+.custom-lobby-p2-note { padding: 12px; border: 1px solid #c083555e; background: #ff8a5014; color: #ffdbbe; }
+.custom-battle-lobby .custom-lobby-footer { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px 0 0; margin: 0; border-top: 1px solid #73c6c755; box-shadow: none; background: #07131d; }
+.custom-battle-lobby .custom-lobby-summary { flex: 1 1 340px; min-width: 0; font-size: .7875rem; }
+.custom-lobby-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; flex: 1 1 300px; gap: 8px; min-width: 0; }
+.custom-lobby-actions button { flex: 1 1 auto; }
+:root[data-game-contrast='high'] .custom-battle-lobby :is(p, small, .fighter-section-label, .custom-lobby-summary) { color: #e6f6ff; }
+@media (max-width: 640px) {
+  .custom-battle-lobby .custom-lobby-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .custom-battle-lobby .custom-lobby-steps button { padding: 10px; }
+  .custom-threat-add { grid-template-columns: minmax(0, 1fr); }
+  .custom-battle-lobby .custom-melee-countdown-rule { grid-column: 1 / -1; }
+}

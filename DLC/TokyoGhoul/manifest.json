@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "tokyo-ghoul",
+  "universe": "Tokyo Ghoul",
+  "directory": "DLC/TokyoGhoul",
+  "registration": "runtime",
+  "catalogOrder": 329,
+  "modules": [
+    {
+      "path": "data/loreItemOverrides.js",
+      "runtimeAdapter": "src/game/loreItemOverrides.js"
+    },
+    {
+      "path": "data/recentUniverseLevels.js",
+      "runtimeAdapter": "src/game/recentUniverseLevels.js"
+    },
+    {
+      "path": "data/requestedUniverseWave.js",
+      "runtimeAdapter": "src/game/requestedUniverseWave.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

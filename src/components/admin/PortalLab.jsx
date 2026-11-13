@@ -7,6 +7,7 @@ import React, {
   useState
 } from 'react';
 import { createPortal } from 'react-dom';
+import useModalDialog from '../collection/useModalDialog.js';
 import {
   PORTAL_FALLBACK_VISUAL,
   PORTAL_VISUAL_MANIFEST,
@@ -92,9 +93,8 @@ export default function PortalLab({
   const titleId = useId();
   const descriptionId = useId();
   const dialogRef = useRef(null);
+  const overlayRef = useRef(null);
   const closeButtonRef = useRef(null);
-  const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
   const [query, setQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedUniverse, setSelectedUniverse] = useState(
@@ -125,43 +125,7 @@ export default function PortalLab({
     });
   }, [initialUniverse, isOpen, labManifest]);
 
-  useEffect(() => {
-    if (!isOpen || typeof document === 'undefined') return undefined;
-    const previouslyFocused = document.activeElement;
-    const previousOverflow = document.body.style.overflow;
-
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onCloseRef.current();
-        return;
-      }
-      if (event.key !== 'Tab' || !dialogRef.current) return;
-      const focusable = Array.from(dialogRef.current.querySelectorAll(
-        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      ));
-      if (focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable.at(-1);
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', handleKeyDown);
-    closeButtonRef.current?.focus();
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handleKeyDown);
-      if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus();
-    };
-  }, [isOpen]);
+  useModalDialog({ open: isOpen, overlayRef, dialogRef, initialFocusRef: closeButtonRef, onClose });
 
   const filteredManifest = useMemo(() => labManifest.filter(entry => {
     if (statusFilter !== 'all' && entry.status !== statusFilter) return false;
@@ -196,6 +160,7 @@ export default function PortalLab({
 
   const lab = (
     <div
+      ref={overlayRef}
       className="portal-lab-overlay"
       data-portal-lab-overlay="true"
       onMouseDown={event => {
@@ -204,6 +169,7 @@ export default function PortalLab({
     >
       <section
         ref={dialogRef}
+        tabIndex={-1}
         className="portal-lab"
         role="dialog"
         aria-modal="true"
@@ -278,7 +244,7 @@ export default function PortalLab({
             </div>
           </aside>
 
-          <main className="portal-lab__inspection">
+          <main className="portal-lab__inspection" tabIndex={0} aria-label={locale === 'fr' ? 'Dossier du portail sélectionné' : 'Selected portal dossier'}>
             {metadata && atlas ? (
               <>
                 <div className="portal-lab__inspection-heading">

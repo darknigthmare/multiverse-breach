@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T07:10:35.165726+00:00",
+  "build": {
+    "entry": "scripts/buildSourceSceneArtFixture.mjs",
+    "exitCode": 0,
+    "seconds": 5.6,
+    "modulesTransformed": 2431,
+    "prebuildExecuted": false,
+    "publicMediaCopied": false,
+    "productionModulesBundled": true,
+    "stdout": "build-attempt2-stdout.txt"
+  },
+  "finalBrowserRun": "run3/results.json",
+  "passed": 6,
+  "total": 6,
+  "browser": "Chromium /usr/bin/chromium via Python Playwright",
+  "scope": "Native GameCanvas/EngineTactics, real browser canvas and UI clicks; three authored source scenes, desktop/mobile viewports. Not a full campaign, physical mobile device or film-fidelity certification.",
+  "viewports": [
+    [
+      1280,
+      900
+    ],
+    [
+      390,
+      900
+    ]
+  ],
+  "language": "en",
+  "allPageErrors": 0,
+  "allFailedHttpRequests": 0,
+  "sourceSnapshotBefore": "input-hashes-final-before.json",
+  "sourceSnapshotAfter": "input-hashes-final-after.json",
+  "changedAfterFinalBuild": [],
+  "earlierRuns": [
+    {
+      "run": "run1/results.json",
+      "passed": 4,
+      "total": 6,
+      "reason": "Two QA script failures: attempted END TURN outside an open modal; two old Prey preload404requests also recorded."
+    },
+    {
+      "run": "run2/results.json",
+      "passed": 6,
+      "total": 6,
+      "reason": "Fixed QA modal ordering; old production bundle still requests a missing Prey boss asset twice and uses the generic daylight UI background. Diagnostic only."
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "run3/source-art-50104-1280-initial.png",
+      "sha256": "dae6604a9895ed744c679d9d243c28920fa7996735834eb2b4b551c5ff5a349e",
+      "bytes": 1259716,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50104-390-initial.png",
+      "sha256": "37a2619e3c9e63dd07c8e4fb3fcbacc4e2de224f64d44de18df0ef27d0735d67",
+      "bytes": 345254,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50105-1280-initial.png",
+      "sha256": "67e42138e2edc15fee17d45b01e6c3548a1c5152c96341d8b068ac4eb12ea122",
+      "bytes": 978404,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50105-390-initial.png",
+      "sha256": "47b628655a1114fa35c1680f1cc2a9838d5a5458a016c44a3f56ffeb7fdcf6ae",
+      "bytes": 285150,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50106-1280-initial.png",
+      "sha256": "7847dd314c8ce8dea36936ab1ad39ca2e3f7dba3b8b7b8274bdcebc812c88fc3",
+      "bytes": 1105594,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50106-1280-sarii-follow-mask-off.png",
+      "sha256": "937c5d66b7c75cfe93f9b1c6b9d10fbd956e7f5d93afb52b244261523d22de95",
+      "bytes": 1108331,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50106-390-initial.png",
+      "sha256": "156378b4f508644e84f17a224ed46d49ff387822396cadc3fdb0850444a39efb",
+      "bytes": 311298,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    },
+    {
+      "path": "run3/source-art-50106-390-sarii-follow-mask-off.png",
+      "sha256": "c9ff48e395074bd438d10b75dd6bedf69e3e64455653dd507d2262cae07e3822",
+      "bytes": 311537,
+      "actuallyViewed": true,
+      "viewMethod": "tools.view_image actual saved screenshot",
+      "reviewer": "/root/p0_p1_scene_assets"
+    }
+  ],
+  "source1to1Verified": false,
+  "geometryCertified": false,
+  "visualObservations": [
+    "Three distinct environments visible behind the actual native grid and in the surrounding UI: 1987 tropical riverbank, 1990 bronze/amber ship, 2022 blue nocturnal forest.",
+    "Grid highlights, hazard cells and mission markers remain separate code layers and readable at desktop viewport.",
+    "Prey initial masked Feral uses the Nov9 native sheet; after six native commands its masked bitmap stops drawing and the unapproved-maskless locator remains.",
+    "Sarii stays a bounded head/chest portrait attached to the actual companion cell, moving from (4,3) to(5,3) after native retrieval and movement. No full-body or16-frame animation has been delivered.",
+    "The390px viewport contains the full battlefield but downscales it substantially; desktop/mobile screenshots are viewport tests, not native-device legibility or1:1 art certification."
+  ]
+}

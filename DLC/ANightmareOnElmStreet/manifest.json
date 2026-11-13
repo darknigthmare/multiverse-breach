@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "anightmare-on-elm-street",
+  "universe": "A Nightmare on Elm Street",
+  "directory": "DLC/ANightmareOnElmStreet",
+  "registration": "runtime",
+  "catalogOrder": 355,
+  "modules": [
+    {
+      "path": "data/canonRosterWavePartM.js",
+      "runtimeAdapter": "src/game/canonRosterWavePartM.js"
+    },
+    {
+      "path": "data/featuredUniversePacks.js",
+      "runtimeAdapter": "src/game/featuredUniversePacks.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

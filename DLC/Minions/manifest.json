@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "minions",
+  "universe": "Minions",
+  "directory": "DLC/Minions",
+  "registration": "runtime",
+  "catalogOrder": 292,
+  "modules": [
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/smashAbilityProfiles.js",
+      "runtimeAdapter": "src/game/smashAbilityProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,6 +1,6 @@
 import { before, after, afterEach, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 let vite, Rpg, install;
 const engines = [];
 const actor = id => ({ id, name: id, universe: 'QA', stats: { hp: 200, atk: 30, def: 0, spd: 1 },

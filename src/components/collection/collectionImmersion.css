@@ -1,62 +1,140 @@
-/* The album owns the viewport; only its collection and optional panels scroll. */
+/* One viewport and one reading surface: filters must not consume the cards'
+   remaining height when text grows or the device turns to landscape. */
 .tcg-album-overlay { padding: 0; overflow: hidden; }
-.tcg-album { width: 100%; height: 100dvh; min-height: 0; max-width: none; margin: 0; border: 0; border-radius: 0; display: flex; flex-direction: column; overflow: hidden; }
-.tcg-album > :not(.tcg-album-content) { flex-shrink: 0; }
-.tcg-album-header { padding: max(12px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left)); gap: 12px; }
-.tcg-album-header h1 { font-size: clamp(22px, 2.4vw, 34px); line-height: 1.1; }
-.tcg-album-header p { margin-top: 5px; font-size: .85rem; }
-.tcg-album-stats { display: flex; flex-wrap: wrap; background: #07141a; }
-.tcg-album-stats > div { display: flex; gap: 10px; align-items: center; padding: 9px 18px; }
-.tcg-album-stats span, .tcg-album-stats strong { font-size: .8rem; }
-.tcg-album-tabs { padding: 8px 18px; }
-.tcg-album-tabs button, .tcg-close-button, .tcg-pagination button { min-height: 44px; font-size: .8rem; }
-.tcg-album-content { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; padding: 18px max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); }
-.tcg-filter-drawer { border-bottom: 1px solid #27474d; max-height: min(37dvh, 300px); overflow: auto; overscroll-behavior: contain; background: #08171d; }
-.tcg-filter-drawer > summary { cursor: pointer; padding: 10px 18px; font-size: .9rem; color: #cefaf3; }
-.tcg-filter-drawer > summary span { float: right; color: #a6c8cf; }
-.tcg-album-toolbar { padding: 6px 18px 10px; }
-.tcg-album-toolbar label, .tcg-album-toolbar input, .tcg-album-toolbar select { font-size: .85rem; }
-.tcg-album-toolbar input, .tcg-album-toolbar select { min-height: 42px; }
-.tcg-filter-scope { margin: 0; padding: 0 18px 10px; color: #adc4ca; font-size: .8rem; line-height: 1.45; }
-.tcg-universe-tile { min-height: 140px; }
+.tcg-album,
+.tcg-card-detail { font-size: .875rem; line-height: 1.5; overflow-wrap: anywhere; }
+.tcg-album *,
+.tcg-card-detail * { box-sizing: border-box; }
+.tcg-album {
+  --album-safe-left: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left));
+  --album-safe-right: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right));
+  --album-safe-bottom: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-bottom));
+  width: 100%; height: 100dvh; min-height: 0; max-width: none; margin: 0;
+  border: 0; border-radius: 0; display: flex; flex-direction: column; overflow: hidden;
+}
+.tcg-album-header {
+  flex: 0 0 auto; display: flex; align-items: center; gap: 12px;
+  padding: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top)) var(--album-safe-right) 12px var(--album-safe-left);
+}
+.tcg-album-header > div { flex: 1; min-width: 0; }
+.tcg-album-header > .tcg-close-button { flex: 0 0 auto; max-width: 100%; }
+.tcg-album-header > div > span { font-size: .7rem; }
+.tcg-album-header h1 { font-size: 1.35rem; line-height: 1.2; margin: 4px 0 0; }
+.tcg-album-workspace {
+  flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain;
+  scrollbar-gutter: stable; scroll-padding-block: 12px var(--album-safe-bottom);
+}
+.tcg-album-stats { display: flex; flex-wrap: wrap; padding-inline: var(--album-safe-left) var(--album-safe-right); background: #07141a; }
+.tcg-album-stats > div { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; min-width: 0; padding: 8px 12px 8px 0; margin-right: 12px; }
+.tcg-album-stats span { font-size: .75rem; }
+.tcg-album-stats strong { font-size: .9rem; }
+.tcg-album-tabs { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px var(--album-safe-right) 12px var(--album-safe-left); }
+.tcg-album-tabs button { flex: 1 1 auto; max-width: 100%; }
+.tcg-album-tabs button,
+.tcg-close-button,
+.tcg-pagination button,
+.tcg-favorite-button,
+.tcg-library-return {
+  min-width: 44px; min-height: 44px; max-width: 100%; padding: 8px 12px;
+  border: 1px solid #57e6db; border-radius: 4px; background: #02080ee0; color: #dffffc;
+  font: 700 .8rem/1.5 'Share Tech Mono', ui-monospace, monospace;
+  letter-spacing: .04em; white-space: normal; cursor: pointer;
+}
+.tcg-library-return { margin-bottom: 14px; }
+.tcg-album :is(button, input, select, summary):focus-visible,
+.tcg-card-detail :is(button, summary):focus-visible,
+.tcg-album-view:focus-visible,
+#tcg-milestones-title:focus-visible,
+#tcg-binder-title:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.tcg-album :is(button, input, select, summary),
+.tcg-card-detail :is(button, summary) { scroll-margin-block: 12px; }
+.tcg-album-content {
+  min-width: 0; min-height: 0; overflow: visible;
+  padding: 18px var(--album-safe-right) var(--album-safe-bottom) var(--album-safe-left);
+}
+.tcg-album-view[hidden] { display: none; }
+.tcg-filter-drawer { max-height: none; overflow: visible; margin-inline: var(--album-safe-left) var(--album-safe-right); border: 1px solid #27474d; border-radius: 4px; background: #08171d; }
+.tcg-filter-drawer > summary { min-height: 44px; padding: 10px 12px; cursor: pointer; font-size: .9rem; color: #cefaf3; }
+.tcg-filter-drawer > summary span { float: none; display: inline-block; margin-left: 12px; color: #a6c8cf; }
+.tcg-album-toolbar {
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+  gap: 12px; padding: 6px 12px 12px;
+}
+.tcg-album-toolbar label,
+.tcg-universe-select { min-width: 0; font-size: .8rem; }
+.tcg-search-field { grid-column: 1 / -1; }
+.tcg-album-toolbar input[type='search'],
+.tcg-album-toolbar select,
+.tcg-universe-select select { min-width: 0; min-height: 44px; max-width: 100%; font-size: .875rem; }
+.tcg-album-toolbar .tcg-toggle { grid-row: auto; gap: 8px; min-height: 44px; padding: 8px; white-space: normal; border: 1px solid #34535b; border-radius: 4px; }
+.tcg-toggle input { flex: 0 0 20px; width: 20px; height: 20px; margin: 0; accent-color: #57e6db; }
+.tcg-filter-scope { margin: 0; padding: 0 12px 12px; color: #adc4ca; font-size: .8rem; line-height: 1.5; }
+.tcg-section-title,
+.tcg-binder-heading { flex-wrap: wrap; gap: 8px 18px; }
+.tcg-section-title > div,
+.tcg-binder-heading > div { min-width: 0; }
+.tcg-section-title span,
+.tcg-binder-heading span { font-size: .75rem; }
+.tcg-section-title h2,
+.tcg-binder-heading h3 { font-size: 1.1rem; line-height: 1.35; }
+.tcg-section-title > strong,
+.tcg-binder-heading > strong { font-size: 1rem; }
+.tcg-universe-grid { grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr)); }
+.tcg-universe-tile { min-width: 0; min-height: 140px; }
 .tcg-universe-tile strong { font-size: 1rem; }
-.tcg-universe-tile small, .tcg-universe-tile > span { font-size: .75rem; }
-.tcg-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr)); }
-.tcg-card-topline { font-size: .67rem; }
-.tcg-card-copy strong { font-size: .9rem; white-space: normal; }
-.tcg-card-copy small, .tcg-card-meta { font-size: .7rem; }
-.tcg-card-visual-status, .tcg-card-new-badge { font-size: .58rem; }
+.tcg-universe-tile small,
+.tcg-universe-tile > span { font-size: .75rem; }
+.tcg-universe-select { max-width: 100%; }
+.tcg-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr)); gap: 16px; }
+.tcg-card { aspect-ratio: auto; align-content: start; gap: 4px; }
+.tcg-card-topline { flex-wrap: wrap; font-size: .7rem; }
+.tcg-card-art { aspect-ratio: 1; }
+.tcg-card-copy strong { overflow: visible; font-size: .95rem; line-height: 1.3; white-space: normal; text-overflow: clip; }
+.tcg-card-copy small { overflow: visible; font-size: .75rem; white-space: normal; text-overflow: clip; }
+.tcg-card-meta { flex-wrap: wrap; font-size: .7rem; }
+.tcg-card-visual-status,
+.tcg-card-new-badge { position: static; justify-self: start; font-size: .65rem; }
+.tcg-card-draft-art { font-size: .65rem; }
 .tcg-card-pose { display: block; width: 100%; aspect-ratio: 1; max-height: 100%; background-repeat: no-repeat; image-rendering: pixelated; }
-.tcg-card-detail-overlay { overflow: hidden; padding: clamp(8px, 2vw, 24px); }
-.tcg-card-detail { max-height: calc(100dvh - 32px); overflow: auto; overscroll-behavior: contain; }
+.tcg-binder-range { margin: 0 0 12px; color: #bdd4dc; font-size: .8rem; }
+.tcg-pagination { flex-wrap: wrap; gap: 8px 12px; margin: 14px 0; }
+.tcg-pagination button { flex: 1 1 10rem; }
+.tcg-pagination span { color: #ffcf5a; font-size: .85rem; }
+.tcg-empty-state { font-size: .875rem; }
+.tcg-milestones > div:first-child { flex-wrap: wrap; gap: 8px; font-size: .8rem; }
+.tcg-milestone-list { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 10px; }
+.tcg-milestone-list button { min-width: 0; min-height: 70px; font-size: .875rem; }
+.tcg-milestone-list button span { font-size: .8rem; }
+.tcg-milestone-list button small { font-size: .7rem; }
+.tcg-opening-history li { grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); font-size: .875rem; }
+.tcg-opening-history li > * { min-width: 0; }
+.tcg-opening-history li small { display: block; grid-column: auto; font-size: .8rem; }
+.tcg-opening-history li em { text-align: start; }
+.tcg-data-warning { max-height: none; overflow: visible; margin: 12px var(--album-safe-right) 0 var(--album-safe-left); font-size: .8rem; }
+.tcg-album-about { font-size: .8rem; color: #abc5c9; margin-bottom: 14px; max-width: 85ch; }
+.tcg-album-about summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.tcg-album-about p { line-height: 1.6; }
+
+/* A card record keeps its own close control and safe inset above the album. */
+.tcg-card-detail-overlay {
+  box-sizing: border-box; overflow: hidden;
+  padding: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top)) max(12px, var(--game-safe-area, 12px), env(safe-area-inset-right)) max(12px, var(--game-safe-area, 12px), env(safe-area-inset-bottom)) max(12px, var(--game-safe-area, 12px), env(safe-area-inset-left));
+}
+.tcg-card-detail { min-width: 0; max-height: 100%; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scroll-padding-block: 70px 16px; }
+.tcg-card-detail-header { z-index: 6; padding: 12px 16px; }
+.tcg-card-detail-layout { grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: 20px; padding: 16px; }
+.tcg-card-detail-layout > .tcg-card { width: 100%; max-width: 24rem; margin: 0 auto; }
+.tcg-card-detail-copy { min-width: 0; }
+.tcg-card-detail-copy > span { font-size: .75rem; }
+.tcg-card-detail-copy h2 { font-size: 1.35rem; line-height: 1.3; }
 .tcg-card-detail-copy p { font-size: .9rem; }
-.tcg-card-detail-copy dl > div, .tcg-card-detail-badges span { font-size: .78rem; }
+.tcg-card-detail-copy dl > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(12em, 100%), 1fr)); gap: 6px 12px; font-size: .8rem; }
+.tcg-card-detail-copy dd { min-width: 0; text-align: start; }
+.tcg-card-detail-badges span { max-width: 100%; font-size: .78rem; }
 .tcg-card-provenance { margin: 14px 0; padding: 10px; border: 1px solid #34535b; border-radius: 4px; }
-.tcg-card-provenance summary { cursor: pointer; font-size: .85rem; color: #b9ede6; }
+.tcg-card-provenance summary { min-height: 44px; padding-block: 8px; cursor: pointer; font-size: .85rem; color: #b9ede6; }
 .tcg-card-provenance figure { margin: 12px 0 0; }
 .tcg-card-provenance img { width: 100%; height: auto; object-fit: contain; }
 .tcg-card-provenance figcaption { color: #a9bfc3; font-size: .78rem; }
-.tcg-opening-history li, .tcg-milestone-list button { font-size: .85rem; }
-.tcg-data-warning { max-height: 15dvh; overflow: auto; }
-.tcg-album-about { font-size: .8rem; color: #abc5c9; margin-bottom: 14px; max-width: 85ch; }
-.tcg-album-about summary { cursor: pointer; }
-.tcg-album-about p { line-height: 1.6; }
-.tcg-album-header { padding-left: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left)); padding-right: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)); }
-.tcg-album-content { padding-left: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-left)); padding-right: max(18px, var(--game-safe-area, 12px), env(safe-area-inset-right)); }
 :root[data-game-contrast='high'] :is(.tcg-album, .tcg-card-detail, .tcg-filter-drawer) { background: #03090e; color: #fff; }
-:root[data-game-contrast='high'] :is(.tcg-filter-scope, .tcg-card-copy small, .tcg-card-meta, .tcg-card-detail-copy p, .tcg-album-about) { color: #eaf8ff; }
-@media (max-width: 760px) {
-  .tcg-album-header { display: flex; }
-  .tcg-album-header p { max-width: 55ch; }
-  .tcg-album-stats > div { padding: 6px 12px; }
-  .tcg-card-grid { grid-template-columns: repeat(auto-fill, minmax(min(145px, 45%), 1fr)); }
-  .tcg-album-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tcg-opening-history li small { display: block; grid-column: 1 / -1; }
-}
-@media (max-height: 600px) {
-  .tcg-album-header p, .tcg-album-header > div > span { display: none; }
-  .tcg-album-header { padding-block: 6px; }
-  .tcg-album-stats > div { padding-block: 3px; }
-  .tcg-album-tabs { padding-block: 3px; }
-  .tcg-filter-drawer { max-height: 26dvh; }
-}
+:root[data-game-contrast='high'] :is(.tcg-filter-scope, .tcg-card-copy small, .tcg-card-meta, .tcg-card-detail-copy p, .tcg-album-about, .tcg-binder-range, .tcg-opening-history li small) { color: #eaf8ff; }

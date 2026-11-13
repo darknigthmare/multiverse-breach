@@ -8,7 +8,7 @@ import { registerSourceWorldWave17 } from './combat/sourceMechanicsWave17.js';
 import { isSourceBubbleCaptureProfileWave17, isSourceBubbleCaptureTargetEligibleWave17 } from './combat/sourceBubbleCaptureWave17.js';
 import { armBubbleCaptureWave17, isBubbleActorImmobilizedWave17, drawBubbleCapturesWave17 } from './combat/sourceMechanicsWave17.js';
 import { isMelodyWave17, isMediGunProfileWave17, startMediGunBeamWave17, hasStockUberProtectionWave17, advanceSourceMechanicsWave17, drawMediGunBeamsWave17, sourceCellWave17, resolveGoldenLuteStepWave17 } from './combat/sourceMechanicsWave17.js';
-import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
+import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, aimSourceSceneMask, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
 import { drawSourceSceneBoard } from './sourceScenePresentation.js';
 import { canUseTacticsAttack, captureTacticsAttackCommitment } from './tacticsAttackCommitment.js';
 import { prepareTacticsHealing } from './tacticsSourceHealing.js';
@@ -29,6 +29,8 @@ import { normalizeTacticsTerrain } from './tacticsTerrain.js';
 import { TacticsVerticalRuntime } from './tacticsVerticalRuntime.js';
 import { drawTacticsEnvironment, getTacticsEnvironmentProfile } from './tacticsEnvironmentRenderer.js';
 import { resolveCombatAbility } from './combatIdentity.js';
+import { isMaskedFeralSourceLoadoutProfile } from './combat/sourceLoadoutFeralMasked20261113.js';
+import { drawSourceSceneNaruPortrait } from './sourceScenePreyPortraitAssets.js';
 import { isTacticsPhaselockProfile, isTacticsUnitControlled, isTacticsPhaselockTargetEligible, drawTacticsPhaselock, TacticsSourceRuntimeWave16, isTacticsSourceControlledWave16 } from './tacticsControl.js';
 import { noteSourceDamageWave16 } from './combat/sourceCombatRuntimeWave16.js';
 import { isSourceControlProfileWave16 as legacyisSourceControlProfileWave16, isSourceControlTargetEligibleWave16 as legacyisSourceControlTargetEligibleWave16 } from './combat/combatControlWave16.js';
@@ -768,8 +770,12 @@ export class EngineTactics {
     if (source) return this.getStableSourceActionDefinitionWave16(unit, actionType, source.sourceAbility);
     if (this.rexEncounter && actionType === 'rex_stinger' && this.heroes.some(hero => hero === unit || hero === unit._tacticsSourceUnit)) return REX_STINGER_ACTION;
     if (this.verticalTerrain) return this.getStableSourceActionDefinitionWave16(unit, actionType, this.verticalTerrain.definition(unit, actionType));
-    if (!unit || actionType === 'defense') return null;
+    if (!unit) return null;
     const authored = resolveCombatAbility(unit, actionType === 'enemy' ? 'simple' : actionType);
+    if (isMaskedFeralSourceLoadoutProfile(authored)) {
+      return this.getStableSourceActionDefinitionWave16(unit, actionType, authored.sourceAbility);
+    }
+    if (actionType === 'defense') return null;
     if (authored?.delivery === 'radial' || isTacticsPhaselockProfile(authored) || isValHealingBurstProfile(authored)) {
       return this.getStableSourceActionDefinitionWave16(unit, actionType, authored.sourceAbility);
     }
@@ -787,6 +793,12 @@ export class EngineTactics {
     const support = getTacticsSupportProfile(unit, actionType);
     if (support) return support;
     if (this.verticalTerrain) return this.verticalTerrain.attackProfile(unit, actionType);
+    const loadoutDefense = actionType === 'defense' && resolveCombatAbility(unit, 'defense');
+    if (isMaskedFeralSourceLoadoutProfile(loadoutDefense)) {
+      return { ...loadoutDefense, actionType, delivery: 'self', range: 0, minRange: 0, areaRadius: 0,
+        axes: 1, directions: 4, pierceUnits: false, pierceObstacles: false,
+        blocksOnUnits: false, requiresLineOfSight: false, maxTargets: 1 };
+    }
     if (!unit || actionType === 'defense') {
       return {
         actionType,
@@ -1041,6 +1053,9 @@ export class EngineTactics {
       return profile.effect === 'damage' ? (attacker.stats?.atk ?? attacker.atk ?? 0) * profile.multiplier : 0;
     }
     const authored = resolveCombatAbility(attacker, actionType === 'enemy' ? 'simple' : actionType);
+    if (isMaskedFeralSourceLoadoutProfile(authored)) {
+      return authored.effect === 'damage' ? (attacker.stats?.atk ?? attacker.atk ?? 0) * authored.multiplier : 0;
+    }
     if (isValHealingBurstProfile(authored)) return 0;
     if (isTacticsPhaselockProfile(authored)) return 0;
     if (authored?.delivery === 'radial') return authored.effect === 'damage' ? (attacker.atk || 10) * authored.multiplier : 0;
@@ -1612,6 +1627,11 @@ export class EngineTactics {
 
   canOccupyCell(unit, c, r) {
     if (this.sourceScene?.definition.material === 'shuttle' && this.sourceScene.done.has('harness')
+      && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
+    // Predator 2: the recovered smart disc must cut the net before Harrigan
+    // can move; AI and manual movement share the same collision rule.
+    if (this.sourceScene?.definition.material === 'ship'
+      && this.sourceScene.done.has('net') && !this.sourceScene.done.has('cut_net')
       && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
     if (!unit || !this.isInsideGrid(c, r)) return false;
     if (!unit.tacticsFootprint) return !this.isCellOccupied(c, r, unit);
@@ -2298,7 +2318,9 @@ export class EngineTactics {
             attacker.stateTimer = 25;
             attacker.cooldown = ((isTacticsPhaselockProfile(this.getAttackProfile(attacker, 'secondary'))
               ? this.getActionDefinition(attacker, 'secondary')?.cd : attacker.secondary?.cd) ?? 3) * 60;
-            if (!resolveCanonHeroAttackEffect(attacker, attacker.secondary)) this.playSfx('shoot');
+            if (!resolveCanonHeroAttackEffect(attacker, attacker.secondary)) {
+              this.playSfx(isMaskedFeralSourceLoadoutProfile(resolveCombatAbility(attacker, 'secondary')) ? 'slash' : 'shoot');
+            }
             
             this.applyProfiledAttack(
               attacker,
@@ -2318,10 +2340,11 @@ export class EngineTactics {
             attacker.state = 'special';
             attacker.stateTimer = 35;
             const canonEffect = resolveCanonHeroAttackEffect(attacker, attacker.special);
-            if (!canonEffect) this.playSfx('special');
+            const physicalLoadout = isMaskedFeralSourceLoadoutProfile(resolveCombatAbility(attacker, 'special'));
+            if (!canonEffect) this.playSfx(physicalLoadout ? 'slash' : 'special');
 
             const specialScreen = this.gridToScreen(c, r);
-            if (!canonEffect) this.particles.add(
+            if (!canonEffect && !physicalLoadout) this.particles.add(
               specialScreen.x,
               specialScreen.y,
               0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
@@ -3321,6 +3344,8 @@ export class EngineTactics {
   getSourceSceneState() { return getSourceSceneState(this); }
 
   triggerSourceSceneAction(id, turnToken) { return executeSourceSceneCommand(this, id, turnToken); }
+
+  aimSourceSceneMask(x, y, turnToken) { return aimSourceSceneMask(this, x, y, turnToken); }
 
   getRexEncounterState() {
     const encounter = this.rexEncounter;
@@ -4386,7 +4411,9 @@ export class EngineTactics {
     ctx.fill();
     ctx.fillRect(x + 7, y + 13, width - 14, height - 11);
 
-    drawCombatantBust(ctx, x, y, width, height, entry.unit, entry.type);
+    const sourcePortrait = entry.type === 'hero' && entry.unit === this.sourceScene?.actor
+      && drawSourceSceneNaruPortrait(ctx, this.sourceScene, x + (width - height) / 2, y, height);
+    if (!sourcePortrait) drawCombatantBust(ctx, x, y, width, height, entry.unit, entry.type);
     ctx.restore();
   }
 

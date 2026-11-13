@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "meridien-creux",
+  "universe": "Méridien Creux",
+  "directory": "DLC/MeridienCreux",
+  "registration": "runtime",
+  "catalogOrder": 357,
+  "modules": [
+    {
+      "path": "data/ocDlcPacks.js",
+      "runtimeAdapter": "src/game/ocDlcPacks.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/stageMusicProfiles.js",
+      "runtimeAdapter": "src/game/stageMusicProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

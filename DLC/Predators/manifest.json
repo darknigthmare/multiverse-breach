@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "predators",
+  "universe": "Predators",
+  "directory": "DLC/Predators",
+  "registration": "runtime",
+  "catalogOrder": 48,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/signatureSourceWave4.js",
+      "runtimeAdapter": "src/game/signatureSourceWave4.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

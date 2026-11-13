@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "zero-escape-the-nonary-games",
+  "universe": "Zero Escape: The Nonary Games",
+  "directory": "DLC/ZeroEscapeTheNonaryGames",
+  "registration": "runtime",
+  "catalogOrder": 326,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/gearShopVisualContractsRemaining47.js",
+      "runtimeAdapter": "src/game/gearShopVisualContractsRemaining47.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/recentUniverseLevels.js",
+      "runtimeAdapter": "src/game/recentUniverseLevels.js"
+    },
+    {
+      "path": "data/requestedUniverseWave.js",
+      "runtimeAdapter": "src/game/requestedUniverseWave.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

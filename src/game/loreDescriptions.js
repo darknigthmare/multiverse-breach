@@ -1,3 +1,42 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcGearsOfWar from '../../DLC/GearsOfWar/data/loreDescriptions.js';
+import * as dlcHalo from '../../DLC/Halo/data/loreDescriptions.js';
+import * as dlcAlien from '../../DLC/Alien/data/loreDescriptions.js';
+import * as dlcPredator from '../../DLC/Predator/data/loreDescriptions.js';
+import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/loreDescriptions.js';
+import * as dlcSilentHill from '../../DLC/SilentHill/data/loreDescriptions.js';
+import * as dlcDinoCrisis from '../../DLC/DinoCrisis/data/loreDescriptions.js';
+import * as dlcTheMatrix from '../../DLC/TheMatrix/data/loreDescriptions.js';
+import * as dlcBuckethead from '../../DLC/Buckethead/data/loreDescriptions.js';
+import * as dlcSystemOfADown from '../../DLC/SystemOfADown/data/loreDescriptions.js';
+import * as dlcKaamelott from '../../DLC/Kaamelott/data/loreDescriptions.js';
+import * as dlcStargate from '../../DLC/Stargate/data/loreDescriptions.js';
+import * as dlcHalfLife from '../../DLC/HalfLife/data/loreDescriptions.js';
+import * as dlcPortal from '../../DLC/Portal/data/loreDescriptions.js';
+import * as dlcMetalGear from '../../DLC/MetalGear/data/loreDescriptions.js';
+import * as dlcPayday from '../../DLC/Payday/data/loreDescriptions.js';
+import * as dlcVocaloid from '../../DLC/Vocaloid/data/loreDescriptions.js';
+import * as dlcYuGiOh from '../../DLC/YuGiOh/data/loreDescriptions.js';
+import * as dlcGuiltyGear from '../../DLC/GuiltyGear/data/loreDescriptions.js';
+import * as dlcBlazBlue from '../../DLC/BlazBlue/data/loreDescriptions.js';
+import * as dlcSlenderMan from '../../DLC/SlenderMan/data/loreDescriptions.js';
+import * as dlcChucky from '../../DLC/Chucky/data/loreDescriptions.js';
+import * as dlcHellraiser from '../../DLC/Hellraiser/data/loreDescriptions.js';
+import * as dlcMassEffect from '../../DLC/MassEffect/data/loreDescriptions.js';
+import * as dlcFallout from '../../DLC/Fallout/data/loreDescriptions.js';
+import * as dlcDoom from '../../DLC/Doom/data/loreDescriptions.js';
+import * as dlcUnreal from '../../DLC/Unreal/data/loreDescriptions.js';
+import * as dlcHarryPotter from '../../DLC/HarryPotter/data/loreDescriptions.js';
+import * as dlcStarWars from '../../DLC/StarWars/data/loreDescriptions.js';
+import * as dlcScaryMovie from '../../DLC/ScaryMovie/data/loreDescriptions.js';
+import * as dlcDeadSpace from '../../DLC/DeadSpace/data/loreDescriptions.js';
+import * as dlcRickMorty from '../../DLC/RickMorty/data/loreDescriptions.js';
+import * as dlcDigitalCircus from '../../DLC/DigitalCircus/data/loreDescriptions.js';
+import * as dlcDigimon from '../../DLC/Digimon/data/loreDescriptions.js';
+import * as dlcSaw from '../../DLC/Saw/data/loreDescriptions.js';
+import * as dlcGhostInTheShell from '../../DLC/GhostInTheShell/data/loreDescriptions.js';
+import * as dlcMadMax from '../../DLC/MadMax/data/loreDescriptions.js';
+
 import { getSignatureCodex, getSignatureSummary, signatureText } from './signatureCodex.js';
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE } from './featuredUniversePacks';
 import { getCanonicalArchiveEnemyLore, getCanonicalArchiveStageLore } from './canonicalArchiveLore.js';
@@ -65,238 +104,43 @@ const CORE_UNIVERSE_SIGNATURES = {
     stageName: 'Atrium Nexus',
     bossName: 'Ombre du Sans-Auteur'
   },
-  'Gears of War': {
-    faction: 'sciFi',
-    theme: 'guerre de tranchées industrielle, couverture lourde, Horde Locuste et fraternite COG sous pression',
-    stageName: 'Front Sera',
-    bossName: 'General Locuste'
-  },
-  Halo: {
-    faction: 'sciFi',
-    theme: 'UNSC, programme Spartan-II, Covenant, anneaux Forerunner, Sentinelles, Parasite et boucliers MJOLNIR',
-    stageName: 'Installation 04',
-    bossName: 'Scarab Covenant',
-    worldBoss: 'Covenant Scarab Mech'
-  },
-  Alien: {
-    faction: 'sciFi',
-    theme: 'couloirs Weyland-Yutani, horreur spatiale, acide, ruche et survie contre le specimen parfait',
-    stageName: 'Derelict Hive',
-    bossName: 'Reine Xenomorphe'
-  },
-  Predator: {
-    faction: 'sciFi',
-    theme: 'chasse Yautja, honneur rituel, camouflage, plasma et trophees preleves sur les proies dignes',
-    stageName: 'Terrain de chasse Yautja',
-    bossName: 'Champion Yautja'
-  },
-  'Resident Evil': {
-    faction: 'horror',
-    theme: 'Raccoon City, Umbrella, T-Virus, G-Virus, B.O.W., commissariat R.P.D., ressources rares et extraction de survivants',
-    stageName: 'Raccoon City Police Department',
-    bossName: 'Tyrant T-00',
-    worldBoss: 'William Birkin G-Stage 4'
-  },
-  'Silent Hill': {
-    faction: 'horror',
-    theme: 'South Vale, Brookhaven, Lakeview, brouillard, radio parasite, sirenes, Otherworld rouille, l Ordre, culpabilite et monstres symboliques',
-    stageName: 'South Vale Fog Street',
-    bossName: 'Pyramid Head Executioner',
-    worldBoss: 'God of the Otherworld Core'
-  },
-  'Dino Crisis': {
-    faction: 'horror',
-    theme: 'Ibis Island, Third Energy, SORT, TRAT, Edward City, key cards, laboratoires militaires, raptors, T-Rex et derives temporelles',
-    stageName: 'Ibis Island Third Energy Lab',
-    bossName: 'Tyrannosaurus Pursuer',
-    worldBoss: 'Third Energy Tyrant Rex'
-  },
-  'The Matrix': {
-    faction: 'cyber',
-    theme: 'simulation verte, Zion, Nebuchadnezzar, pilule rouge, Agents, Sentinels, programmes exiles, Source, bullet time et choix contre controle',
-    stageName: 'Matrice Source',
-    bossName: 'Agent Smith Clone',
-    worldBoss: 'Deus Ex Machina Source Core'
-  },
-  Buckethead: {
-    faction: 'cyber',
-    theme: 'Bucketheadland, masque blanc, bucket, guitare instrumentale, Pike Series, Death Cube K, riffs labyrinthiques et silence de scene',
-    stageName: 'Bucketheadland Guitar Labyrinth',
-    bossName: 'Giant Robot Riff Engine',
-    worldBoss: 'Bucketheadland Automaton'
-  },
-  'System of a Down': {
-    faction: 'horror',
-    theme: 'Toxicity, Chop Suey, Prison Song, Aerials, protestation anti-guerre, satire absurde, memoire armenienne-americaine, voix contrastees et riffs syncopes',
-    stageName: 'Toxicity Protest Stage',
-    bossName: 'Chop Suey Pulse',
-    worldBoss: 'Toxicity Riot Core'
-  },
-  Kaamelott: {
-    faction: 'arcane',
-    theme: 'Royaume de Logres, Table Ronde, quete du Graal, Excalibur, Bretagne, Perceval, Karadoc, Lancelot Noir, Meleagant et conseils qui derapent',
-    stageName: 'Kaamelott Table Ronde',
-    bossName: 'Lancelot Noir',
-    worldBoss: 'Graal Rift'
-  },
-  Stargate: {
-    faction: 'sciFi',
-    theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, Bra tac, gardes Serpent, Anubis, guerriers Kull, naquadah, Anciens, Replicateurs et iris',
-    stageName: 'Salle de Porte SGC',
-    bossName: 'Seigneur Goa uld et garde d elite',
-    worldBoss: 'Anubis Flagship Nexus'
-  },
-  'Half-Life': {
-    faction: 'cyber',
-    theme: 'Black Mesa, cascade de resonance, combinaison HEV, Xen, Race X, G-Man, Resistance et occupation Combine',
-    stageName: 'Anomalous Materials Lab',
-    bossName: 'Combine Strider',
-    worldBoss: 'Combine Strider Heavy'
-  },
-  Portal: {
-    faction: 'cyber',
-    theme: 'salles de test Aperture, portails, cubes, tourelles, sarcasme de laboratoire et logique mortelle',
-    stageName: 'Chambre de test',
-    bossName: 'Noyau Aperture'
-  },
-  'Metal Gear': {
-    faction: 'tactical',
-    theme: 'infiltration, armes autonomes, conspirations militaires, codec et duels de soldats legende',
-    stageName: 'Operation furtive',
-    bossName: 'Metal Gear fantome'
-  },
-  Payday: {
-    faction: 'tactical',
-    theme: 'braquage, masques, otages, foreuse thermique, plans qui derapent et pression policiere',
-    stageName: 'Casse sous alarme',
-    bossName: 'Assaut final'
-  },
-  Vocaloid: {
-    faction: 'stage',
-    theme: 'idole virtuelle, scene holographique, choeurs synthetiques et memoire collective numerique',
-    stageName: 'Scene holographique',
-    bossName: 'Choeur fantome'
-  },
-  'Yu-Gi-Oh': {
-    faction: 'tactical',
-    theme: 'duels, cartes, invocations, phases, pieges et destin scelle par une main bien jouee',
-    stageName: 'Arene de duel',
-    bossName: 'Duelliste Sans-Auteur'
-  },
-  'Guilty Gear': {
-    faction: 'tactical',
-    theme: 'tension de duel, gears, rock metal, attaques explosives et rivalites a haute vitesse',
-    stageName: 'Scene Gear',
-    bossName: 'Gear de Tension'
-  },
-  BlazBlue: {
-    faction: 'tactical',
-    theme: 'Azure, grimoires, boucles temporelles, drives arcaniques et villes de combat animees',
-    stageName: 'Cite Azure',
-    bossName: 'Noyau Azure'
-  },
-  'Slender Man': {
-    faction: 'horror',
-    theme: 'pages perdues, foret statique, silhouette impossible et peur qui efface les reperes',
-    stageName: 'Bois statique',
-    bossName: 'Silhouette blanche'
-  },
-  Chucky: {
-    faction: 'horror',
-    theme: 'Good Guy possedes par Damballa, division d ame, variantes Scout, Buff, Colonel, Belle, Noel et vieillissement accelere; Buddi 2019 reste une continuite IA separee; Tiffany humaine, Tiffany poupee et Jennifer Tilly restent separees; les costumes adultes AU, dont les formes deux pieces humaine et poupee, ainsi que Wedding Belle/brulee sont des variantes Nexus non canoniques',
-    stageName: 'Usine Play Pals et reseau Buddi fracture',
-    bossName: 'Incarnation de Charles Lee Ray'
-  },
-  Hellraiser: {
-    faction: 'horror',
-    theme: 'configurations de Lemarchand, ordres cenobites de 1987 a Judgment et 2022, chaines, desir rituel et juridiction de Leviathan',
-    stageName: 'Labyrinthe Cenobite',
-    bossName: 'Oracle des Chaines'
-  },
-  'Mass Effect': {
-    faction: 'sciFi',
-    theme: 'Spectres, relais cosmodésiques, equipage inter-especes, biotique et guerre de civilisation',
-    stageName: 'Relais galactique',
-    bossName: 'Moissonneur fantome'
-  },
-  Fallout: {
-    faction: 'apocalypse',
-    theme: 'wasteland retrofuturiste, abris, radiations, factions de survie et ironie nucleaire',
-    stageName: 'Abri fissure',
-    bossName: 'Seigneur Mutant'
-  },
-  Doom: {
-    faction: 'horror',
-    theme: 'portails infernaux, Mars, demons, metal violent et rage de purification absolue',
-    stageName: 'Base UAC infernale',
-    bossName: 'Cyberdemon Nexus'
-  },
-  Unreal: {
-    faction: 'tactical',
-    theme: 'tournois de sang galactiques, arènes rapides, armes lisibles et spectacle de combat',
-    stageName: 'Tournoi Liandri',
-    bossName: 'Champion Unreal'
-  },
-  'Harry Potter': {
-    faction: 'arcane',
-    theme: 'sorcellerie secrete, baguettes, maisons, sortileges, reliques et guerre contre l ombre',
-    stageName: 'Chateau sorcier',
-    bossName: 'Mage noir'
-  },
-  'Star Wars': {
-    faction: 'sciFi',
-    theme: 'Force, Jedi, Sith, sabres, bataille spatiale et destin d une galaxie ancienne',
-    stageName: 'Temple stellaire',
-    bossName: 'Seigneur Sith'
-  },
-  'Scary Movie': {
-    faction: 'horror',
-    theme: 'parodie horrifique, gags de slasher, logique absurde et peur detournee par le chaos comique',
-    stageName: 'Plateau de parodie',
-    bossName: 'Tueur rate'
-  },
-  'Dead Space': {
-    faction: 'horror',
-    theme: 'Ishimura, Monolithe, demembrement strategique, vide industriel et folie necromorphe',
-    stageName: 'Coursive Ishimura',
-    bossName: 'Monolithe vivant'
-  },
-  'Rick & Morty': {
-    faction: 'cyber',
-    theme: 'portails improvises, science cynique, realites jetables et consequences multiverselles absurdes',
-    stageName: 'Garage dimensionnel',
-    bossName: 'Conseil instable'
-  },
-  'Digital Circus': {
-    faction: 'cyber',
-    theme: 'cirque numerique, avatars pieges, couleurs trompeuses et anxiete codee en spectacle',
-    stageName: 'Piste abstraite',
-    bossName: 'Maitre de piste glitch'
-  },
-  Digimon: {
-    faction: 'cyber',
-    theme: 'monde digital, partenaires monstres, evolutions, symboles et conflit entre donnees vivantes',
-    stageName: 'Portail digital',
-    bossName: 'Mega rupture'
-  },
-  Saw: {
-    faction: 'horror',
-    theme: 'pieges moraux, chronometres, choix impossibles et survie mesuree par sacrifice',
-    stageName: 'Atelier du Jugement',
-    bossName: 'Marionnette du Verdict'
-  },
-  'Ghost in the Shell': {
-    faction: 'cyber',
-    theme: 'cybercerveaux, Section 9, identite numerique, corps augmentes et fantomes dans le reseau',
-    stageName: 'Reseau Section 9',
-    bossName: 'Puppet Core'
-  },
-  'Mad Max': {
-    faction: 'apocalypse',
-    theme: 'desert post-apocalyptique, moteurs, convois, eau rare et survie par vitesse brute',
-    stageName: 'Route furieuse',
-    bossName: 'Seigneur du convoi'
-  }
+  'Gears of War': dlcGearsOfWar.createCoreUniverseSignatures(),
+  Halo: dlcHalo.createCoreUniverseSignatures(),
+  Alien: dlcAlien.createCoreUniverseSignatures(),
+  Predator: dlcPredator.createCoreUniverseSignatures(),
+  'Resident Evil': dlcResidentEvil.createCoreUniverseSignatures(),
+  'Silent Hill': dlcSilentHill.createCoreUniverseSignatures(),
+  'Dino Crisis': dlcDinoCrisis.createCoreUniverseSignatures(),
+  'The Matrix': dlcTheMatrix.createCoreUniverseSignatures(),
+  Buckethead: dlcBuckethead.createCoreUniverseSignatures(),
+  'System of a Down': dlcSystemOfADown.createCoreUniverseSignatures(),
+  Kaamelott: dlcKaamelott.createCoreUniverseSignatures(),
+  Stargate: dlcStargate.createCoreUniverseSignatures(),
+  'Half-Life': dlcHalfLife.createCoreUniverseSignatures(),
+  Portal: dlcPortal.createCoreUniverseSignatures(),
+  'Metal Gear': dlcMetalGear.createCoreUniverseSignatures(),
+  Payday: dlcPayday.createCoreUniverseSignatures(),
+  Vocaloid: dlcVocaloid.createCoreUniverseSignatures(),
+  'Yu-Gi-Oh': dlcYuGiOh.createCoreUniverseSignatures(),
+  'Guilty Gear': dlcGuiltyGear.createCoreUniverseSignatures(),
+  BlazBlue: dlcBlazBlue.createCoreUniverseSignatures(),
+  'Slender Man': dlcSlenderMan.createCoreUniverseSignatures(),
+  Chucky: dlcChucky.createCoreUniverseSignatures(),
+  Hellraiser: dlcHellraiser.createCoreUniverseSignatures(),
+  'Mass Effect': dlcMassEffect.createCoreUniverseSignatures(),
+  Fallout: dlcFallout.createCoreUniverseSignatures(),
+  Doom: dlcDoom.createCoreUniverseSignatures(),
+  Unreal: dlcUnreal.createCoreUniverseSignatures(),
+  'Harry Potter': dlcHarryPotter.createCoreUniverseSignatures(),
+  'Star Wars': dlcStarWars.createCoreUniverseSignatures(),
+  'Scary Movie': dlcScaryMovie.createCoreUniverseSignatures(),
+  'Dead Space': dlcDeadSpace.createCoreUniverseSignatures(),
+  'Rick & Morty': dlcRickMorty.createCoreUniverseSignatures(),
+  'Digital Circus': dlcDigitalCircus.createCoreUniverseSignatures(),
+  Digimon: dlcDigimon.createCoreUniverseSignatures(),
+  Saw: dlcSaw.createCoreUniverseSignatures(),
+  'Ghost in the Shell': dlcGhostInTheShell.createCoreUniverseSignatures(),
+  'Mad Max': dlcMadMax.createCoreUniverseSignatures()
 };
 
 export const getUniverseSignature = (universe, lore) => ({

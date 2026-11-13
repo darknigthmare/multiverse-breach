@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad, scoreRelicPriority } from '../src/game/squadPreparation.js';
 import { evaluateMissionAccess } from '../src/game/missions/missionAccessRules.js';
 

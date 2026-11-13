@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "twisted-metal",
+  "universe": "Twisted Metal",
+  "directory": "DLC/TwistedMetal",
+  "registration": "runtime",
+  "catalogOrder": 169,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,1136 @@
+{
+  "date": "2026-11-09",
+  "baselineCommit": "e2a48558aa8e174b21e331b65298bdf0e3c23415",
+  "modelVersion": "universe-vehicles-v2",
+  "counts": {
+    "characters": 1912,
+    "universes": 525,
+    "models": 1912,
+    "spriteAtlases": 1912,
+    "directionalFrames": 15296,
+    "driverSpritesPresentInGit": 1912,
+    "driverSpritesMaterialized": 12,
+    "driverSpritesUnresolved": 0,
+    "identityAuthored": 430,
+    "universeFamily": 1482,
+    "roleAndPalette": 0,
+    "canonicalVehicleAdaptations": 509,
+    "universeInventions": 1322,
+    "originalUniverseDesigns": 81,
+    "vehicleSilhouettes": 57,
+    "distinctDesignProfiles": 893,
+    "bytes": 226980695
+  },
+  "profileKinds": {
+    "original-universe-design": 81,
+    "canonical-vehicle-adaptation": 509,
+    "universe-invention": 1322
+  },
+  "designScopes": {
+    "character-specific": 430,
+    "universe-shared": 1482
+  },
+  "shapes": {
+    "suture": 1,
+    "suture-disc": 1,
+    "tank": 28,
+    "clockwork": 23,
+    "buggy": 53,
+    "jeep": 75,
+    "apc": 51,
+    "crystal": 15,
+    "truck": 77,
+    "lab-pod": 61,
+    "reliquary": 86,
+    "warthog": 9,
+    "narcissus": 2,
+    "gunship": 29,
+    "police-car": 27,
+    "starfighter": 33,
+    "mech": 61,
+    "van": 72,
+    "stage": 131,
+    "hoverboard": 23,
+    "motorbike": 54,
+    "wagon": 85,
+    "toy-car": 95,
+    "mako": 7,
+    "sedan": 99,
+    "x-wing": 1,
+    "speeder": 37,
+    "train": 32,
+    "saucer": 22,
+    "beast": 74,
+    "carriage": 67,
+    "book": 38,
+    "interceptor": 14,
+    "ship": 39,
+    "banshee": 1,
+    "dropship": 17,
+    "shuttle": 57,
+    "sports-car": 45,
+    "muscle-car": 43,
+    "dragon": 7,
+    "biplane": 22,
+    "cauldron": 7,
+    "nature": 39,
+    "tie-fighter": 1,
+    "falcon": 1,
+    "submarine": 25,
+    "batmobile": 3,
+    "food-cart": 43,
+    "minecart": 14,
+    "puddle-jumper": 6,
+    "ecto-wagon": 10,
+    "camera-rig": 32,
+    "bus": 6,
+    "tumbler": 2,
+    "mushroom": 3,
+    "delorean": 3,
+    "pumpkin": 3
+  },
+  "inheritedRoleFallbacks": [],
+  "sharedUniverseGeometry": [
+    {
+      "geometry": "muscle-car||books|exhaust|tools",
+      "universes": [
+        "Ash vs Evil Dead",
+        "Evil Dead"
+      ]
+    },
+    {
+      "geometry": "ecto-wagon||antenna|ghost-trap|tanks",
+      "universes": [
+        "Extreme Ghostbusters",
+        "Ghostbusters"
+      ]
+    }
+  ],
+  "visualReview": {
+    "automatedScope": "All exported models and 8 projection crops checked; explicit model/motif coverage tested.",
+    "interpretation": "Comparison images are actual mesh projections, not concept illustrations.",
+    "canonical1to1Approved": 0,
+    "status": "Individual reference fidelity, materials and seated driver animation remain open for artistic review."
+  },
+  "gallery": [
+    {
+      "heroId": "ripley",
+      "name": "Ellen Ripley",
+      "universe": "Alien",
+      "kartName": "Narcissus de Ripley",
+      "label": "Narcissus de Ripley",
+      "model": "narcissus",
+      "motifs": [
+        "pipes",
+        "hazard-stripes"
+      ],
+      "recognition": [
+        "navette blanche trapézoïdale de 1979",
+        "cockpit noir ouvert au pilote",
+        "deux gros moteurs arrière"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Narcissus — Alien (1979)",
+      "rationale": "Adaptation de Narcissus — Alien (1979) au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#d6d8d1",
+      "accent": "#60686b",
+      "detailColor": "#e5b25f",
+      "sourceUrls": [
+        "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model",
+        "https://www.20thcenturystudios.com/movies/alien"
+      ],
+      "width": 1.9,
+      "wheelbase": 2.12,
+      "incarnationLock": "Alien (1979); no power loader, pulse rifle or Aliens marine APC",
+      "id": "kart-design:ripley",
+      "designScope": "character-specific",
+      "sourceIncarnation": "Alien (1979) - Nostromo / Narcissus",
+      "sourceAnchor": "Ellen Ripley as played by Sigourney Weaver in Alien (1979): short curly brown hair, Nostromo flight suit and improvised flamethrower. No M41A pulse rifle, M240 incinerator or power loader from Aliens.",
+      "dimensions": {
+        "wheelbase": 2.12,
+        "width": 1.9,
+        "wheelRadius": 0.27,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "masterchief",
+      "name": "Master Chief",
+      "universe": "Halo",
+      "kartName": "Warthog du Major",
+      "label": "Warthog du Major",
+      "model": "warthog",
+      "motifs": [
+        "antenna",
+        "armor"
+      ],
+      "recognition": [
+        "capot olive très incliné",
+        "quatre grands pneus de Warthog",
+        "arceau ouvert et benne arrière"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "M12 Warthog",
+      "rationale": "Adaptation de M12 Warthog au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#657648",
+      "accent": "#aeb5a0",
+      "sourceUrls": [
+        "https://support.halowaypoint.com/hc/en-us/articles/6882880281364-Halo-Infinite-Weapon-Equipment-and-Vehicle-Inventory"
+      ],
+      "width": 1.91,
+      "wheelbase": 2.18,
+      "faction": "UNSC",
+      "id": "kart-design:masterchief",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "dimensions": {
+        "wheelbase": 2.18,
+        "width": 1.91,
+        "wheelRadius": 0.38,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "arbiter",
+      "name": "The Arbiter",
+      "universe": "Halo",
+      "kartName": "Banshee de l’Arbiter",
+      "label": "Banshee de l’Arbiter",
+      "model": "banshee",
+      "motifs": [
+        "plasma",
+        "scanner"
+      ],
+      "recognition": [
+        "coque violette courbe de Banshee",
+        "deux ailes en croissant",
+        "tuyères de plasma bleues"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Banshee",
+      "rationale": "Adaptation de Banshee au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#6e618c",
+      "accent": "#9fb9d8",
+      "sourceUrls": [
+        "https://support.halowaypoint.com/hc/en-us/articles/6882880281364-Halo-Infinite-Weapon-Equipment-and-Vehicle-Inventory"
+      ],
+      "width": 1.88,
+      "wheelbase": 2.05,
+      "faction": "Sangheili",
+      "variant": null,
+      "id": "kart-design:arbiter",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "dimensions": {
+        "wheelbase": 2.05,
+        "width": 1.88,
+        "wheelRadius": 0.27,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "bishop",
+      "name": "Bishop",
+      "universe": "Alien",
+      "kartName": "Cheyenne de Bishop",
+      "label": "Cheyenne de Bishop",
+      "model": "dropship",
+      "motifs": [
+        "engine-pods",
+        "wings",
+        "scanner"
+      ],
+      "recognition": [
+        "navette de débarquement militaire",
+        "ailes repliées et doubles moteurs",
+        "scanner de navigation"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "UD-4L Cheyenne — Aliens (1986)",
+      "rationale": "Adaptation de UD-4L Cheyenne — Aliens (1986) au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#6c7668",
+      "accent": "#a1bbb6",
+      "detailColor": "#e5b25f",
+      "sourceUrls": [
+        "https://www.sciencefictionarchives.com/en/collections/60/narcissus-shuttlecraft-model"
+      ],
+      "width": 1.9,
+      "wheelbase": 2.12,
+      "variant": null,
+      "id": "kart-design:bishop",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "dimensions": {
+        "wheelbase": 2.12,
+        "width": 1.9,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "luke",
+      "name": "Luke Skywalker",
+      "universe": "Star Wars",
+      "kartName": "X-wing de Luke — kart",
+      "label": "X-wing de Luke — kart",
+      "model": "x-wing",
+      "motifs": [
+        "scanner",
+        "circuit"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "T-65 X-wing de Luke",
+      "recognition": [
+        "Quatre ailes en X",
+        "Quatre nacelles de moteurs",
+        "Nez blanc et bandes rouges"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://www.starwars.com/databank/",
+        "https://www.starwars.com/databank/luke-skywalker",
+        "https://www.starwars.com/databank/x-wing-starfighter",
+        "https://www.starwars.com/databank/luke-skywalkers-lightsaber"
+      ],
+      "color": "#deddd1",
+      "accent": "#a94a42",
+      "detailColor": "#dbe8ec",
+      "variant": null,
+      "id": "kart-design:luke",
+      "designScope": "character-specific",
+      "sourceIncarnation": "Star Wars: Return of the Jedi (1983) - Death Star II Jedi Knight",
+      "sourceAnchor": "Luke Skywalker in Return of the Jedi: young adult, short brown hair, black Jedi tunic and trousers, black boots, black glove on the mechanical right hand, single silver-and-black hilt with one green lightsaber blade. Death Star II duel outfit; no blue inherited saber, old hermit beard, white farm tunic or electrical mind beam.",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 2.15,
+        "width": 1.68,
+        "wheelRadius": 0.28,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "vader",
+      "name": "Darth Vader",
+      "universe": "Star Wars",
+      "kartName": "TIE Advanced x1 de Vader — kart",
+      "label": "TIE Advanced x1 de Vader — kart",
+      "model": "tie-fighter",
+      "motifs": [
+        "armor",
+        "thrusters"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Darth Vader’s TIE Advanced x1",
+      "recognition": [
+        "Panneaux latéraux coudés",
+        "Cockpit central noir",
+        "Poupe élargie de TIE Advanced"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://www.starwars.com/databank/",
+        "https://www.starwars.com/databank/darth-vader",
+        "https://www.starwars.com/databank/darth-vaders-lightsaber",
+        "https://www.starwars.com/databank/admiral-piett"
+      ],
+      "color": "#697583",
+      "accent": "#282d37",
+      "detailColor": "#dbe8ec",
+      "variant": "advanced-x1",
+      "id": "kart-design:vader",
+      "designScope": "character-specific",
+      "sourceIncarnation": "Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord",
+      "sourceAnchor": "Darth Vader in The Empire Strikes Back: full black domed helmet and triangular respirator mask, glossy black shoulder armor, ribbed black suit, chest life-support control box, black cape, gloves and boots, silver-and-black hilt with one red lightsaber blade. Closed helmet throughout; no hooded human substitute, bare Anakin face, blue blade or Force lightning.",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 1.9,
+        "width": 1.7,
+        "wheelRadius": 0.28,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "han_solo",
+      "name": "Han Solo",
+      "universe": "Star Wars",
+      "kartName": "Faucon Millenium de Han — kart",
+      "label": "Faucon Millenium de Han — kart",
+      "model": "falcon",
+      "motifs": [
+        "radar",
+        "armor"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Millennium Falcon",
+      "recognition": [
+        "Coque en disque avec fourche avant",
+        "Cockpit décentré",
+        "Radar et bande moteur arrière"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://www.starwars.com/databank/",
+        "https://www.starwars.com/databank/Millennium-Falcon",
+        "https://www.starwars.com/databank/han-solo",
+        "https://www.starwars.com/databank/dl-44-blaster-pistol"
+      ],
+      "color": "#b8b7a9",
+      "accent": "#746e68",
+      "detailColor": "#dbe8ec",
+      "variant": null,
+      "id": "kart-design:han_solo",
+      "designScope": "character-specific",
+      "sourceIncarnation": "Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape",
+      "sourceAnchor": "Han Solo in A New Hope: brown hair, cream open-collar shirt, black sleeveless vest, dark blue trousers with red side stripes, brown belt and right-thigh DL-44 holster, black boots. Modified DL-44 blaster pistol; no Jedi saber, carbonite armor, older sequel beard or winter coat.",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 1.86,
+        "width": 1.76,
+        "wheelRadius": 0.28,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "freeman",
+      "name": "Gordon Freeman",
+      "universe": "Half-Life",
+      "kartName": "Scout Car de Freeman",
+      "label": "Scout Car de Freeman",
+      "model": "buggy",
+      "motifs": [
+        "rollbar",
+        "lambda",
+        "crowbar",
+        "flux-coils"
+      ],
+      "recognition": [
+        "châssis tubulaire du buggy de la côte",
+        "lambda orange sur l’avant",
+        "pied-de-biche et bobine énergétique"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Scout Car — Half-Life 2",
+      "rationale": "Adaptation de Scout Car — Half-Life 2 au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#9a8154",
+      "accent": "#df9948",
+      "sourceUrls": [
+        "https://www.half-life.com/en/halflife2"
+      ],
+      "incarnationLock": "Half-Life 2 (2004), no HL1 long-jump or gluon-gun kit",
+      "id": "kart-design:freeman",
+      "designScope": "character-specific",
+      "sourceIncarnation": "Half-Life 2 (2004) - HEV Mark V / Citadel",
+      "sourceAnchor": "Half-Life 2 Gordon Freeman: brown hair, beard, rectangular glasses, orange and gray HEV Mark V suit, crowbar and zero-point energy field manipulator. No HEV Mark IV, long-jump module or gluon gun from Half-Life (1998).",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "chell",
+      "name": "Chell",
+      "universe": "Portal",
+      "kartName": "Épreuve mobile de Chell",
+      "label": "Épreuve mobile de Chell",
+      "model": "lab-pod",
+      "motifs": [
+        "portal-rings",
+        "blocks",
+        "scanner"
+      ],
+      "sourceKind": "universe-invention",
+      "referenceVehicle": null,
+      "recognition": [
+        "Coque blanche d’Aperture",
+        "Anneaux orange et bleu",
+        "Cube et capteur de test"
+      ],
+      "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+      "sourceUrls": [],
+      "color": "#e5e8e5",
+      "accent": "#e89346",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:chell",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "oneill",
+      "name": "Jack O'Neill",
+      "universe": "Stargate",
+      "kartName": "F-302 — kart d’interception",
+      "label": "F-302 — kart d’interception",
+      "model": "starfighter",
+      "motifs": [
+        "engine-pods",
+        "gate-ring"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "F-302",
+      "recognition": [
+        "Profil de chasseur terrien",
+        "Réacteurs jumelés",
+        "Anneau de Porte réduit en équipement"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [],
+      "color": "#7c8a93",
+      "accent": "#6fa9c4",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:Stargate",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "shepard",
+      "name": "Commander Shepard",
+      "universe": "Mass Effect",
+      "kartName": "M35 Mako de Shepard",
+      "label": "M35 Mako de Shepard",
+      "model": "mako",
+      "motifs": [
+        "armor",
+        "thrusters",
+        "scanner"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "M35 Mako",
+      "recognition": [
+        "Rover à six roues",
+        "Bandes rouge et blanc de l’Alliance",
+        "Scanner de reconnaissance"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://www.ea.com/ea-play/news/gameplay-calibrations"
+      ],
+      "color": "#d5dcda",
+      "accent": "#b4403a",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:shepard",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 2.18,
+        "width": 1.84,
+        "wheelRadius": 0.35,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "marty_mcfly",
+      "name": "Marty McFly",
+      "universe": "Back to the Future",
+      "kartName": "DeLorean temporelle",
+      "label": "DeLorean temporelle",
+      "model": "delorean",
+      "motifs": [
+        "flux-coils",
+        "clock",
+        "electric"
+      ],
+      "recognition": [
+        "carrosserie inox en coin",
+        "aérations noires arrière",
+        "bobines temporelles extérieures"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "DeLorean Time Machine",
+      "rationale": "Adaptation de DeLorean Time Machine au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "vehicle-and-universe-references",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#aab4b8",
+      "accent": "#6bc7df",
+      "sourceUrls": [
+        "https://www.backtothefuture.com/movies/backtothefuture1/",
+        "https://www.backtothefuture.com/movies/backtothefuture1"
+      ],
+      "id": "kart-design:Back to the Future",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "",
+      "sourceAnchor": "Fully clothed teenage time traveller in red-orange padded vest, denim jacket, jeans and white sneakers with skateboard; stylised original face, no actor likeness.",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "kartName": "Tumbler de Batman",
+      "label": "Tumbler de Batman",
+      "model": "tumbler",
+      "motifs": [
+        "armor",
+        "thrusters",
+        "bat-fins"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Tumbler",
+      "recognition": [
+        "Coin de blindage noir",
+        "Grandes roues",
+        "Réacteur arrière"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://en.wikipedia.org/wiki/The_Dark_Knight",
+        "https://www.dc.com/characters/batman"
+      ],
+      "color": "#282c30",
+      "accent": "#a0a7a4",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:batman_tdk",
+      "designScope": "character-specific",
+      "sourceIncarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "sourceAnchor": "Batman in The Dark Knight (2008): Christian Bale s Bruce Wayne in the black segmented armored Batsuit, narrow pointed ears, exposed mouth and jaw, black cape and gold utility belt. Batarangs and grapnel equipment; no ordinary pistol, Grim Knight rifle, Justice Buster, blue-gray animated suit or The Batman 2022 costume.",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "name": "Sonic",
+      "universe": "Sonic",
+      "kartName": "Cyclone de Sonic",
+      "label": "Cyclone de Sonic",
+      "model": "sports-car",
+      "motifs": [
+        "ring",
+        "star",
+        "wings"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Cyclone de Sonic Drift",
+      "recognition": [
+        "Coupé rouge de Sonic Drift",
+        "Anneau d’or",
+        "Étoile et ailerons"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://manuals.sega.com/origins/en/index.html"
+      ],
+      "color": "#c84e42",
+      "accent": "#e4dcd4",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:sonic_hedgehog",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "miles_tails_prower",
+      "name": "Miles Tails Prower",
+      "universe": "Sonic",
+      "kartName": "Tornado piloté par Tails — kart",
+      "label": "Tornado piloté par Tails — kart",
+      "model": "biplane",
+      "motifs": [
+        "tail",
+        "tools"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Tornado",
+      "recognition": [
+        "Petit biplan rouge et blanc",
+        "Deux plans d’ailes superposés et hélice",
+        "Outils de mécanicien et queue décorative"
+      ],
+      "rationale": "Le biplan Tornado de Sonic, piloté par Tails, fournit la silhouette rouge à deux plans d’ailes ; les outils et la queue sont des ornements propres à l’adaptation kart.",
+      "sourceUrls": [
+        "https://manuals.sega.com/origins/en/index.html",
+        "https://sonic.sega.jp/SonicChannel/character/classic-tails.html"
+      ],
+      "color": "#ce463b",
+      "accent": "#efede2",
+      "detailColor": "#dbe8ec",
+      "variant": null,
+      "id": "kart-design:miles_tails_prower",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "vehicle-and-universe-references",
+      "dimensions": {
+        "wheelbase": 2.06,
+        "width": 1.64,
+        "wheelRadius": 0.29,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "gandalf_lotr",
+      "name": "Gandalf",
+      "universe": "The Lord of the Rings",
+      "kartName": "Charrette de Gandalf",
+      "label": "Charrette de Gandalf",
+      "model": "wagon",
+      "motifs": [
+        "lanterns",
+        "star",
+        "books"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Charrette de Gandalf",
+      "recognition": [
+        "Bois de la Comté",
+        "Livre et lanterne",
+        "Étoiles de feu d’artifice"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [],
+      "color": "#796445",
+      "accent": "#b7af82",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:gandalf_lotr",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 1.94,
+        "width": 1.74,
+        "wheelRadius": 0.35,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "guybrush_threepwood",
+      "name": "Guybrush Threepwood",
+      "universe": "Secret of Monkey Island",
+      "kartName": "Sea Monkey — kart",
+      "label": "Sea Monkey — kart",
+      "model": "ship",
+      "motifs": [
+        "sail",
+        "skull",
+        "treasure"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Sea Monkey",
+      "recognition": [
+        "Petit bateau pirate en bois",
+        "Voile et crâne",
+        "Coffre de trésor burlesque"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [],
+      "color": "#876142",
+      "accent": "#cfb36c",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:Secret of Monkey Island",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2.08,
+        "width": 1.68,
+        "wheelRadius": 0.29,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "homer_simpson",
+      "name": "Homer Simpson",
+      "universe": "The Simpsons",
+      "kartName": "Berline rose d’Homer",
+      "label": "Berline rose d’Homer",
+      "model": "sedan",
+      "motifs": [
+        "food",
+        "television",
+        "bottles"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Berline rose des Simpson",
+      "recognition": [
+        "Berline rose de Springfield",
+        "Donut et écran",
+        "Bouteilles du comptoir"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [],
+      "color": "#cf8ca4",
+      "accent": "#ead15e",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:homer_simpson",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "spyro_spyro",
+      "name": "Spyro",
+      "universe": "Spyro",
+      "kartName": "Kart-dragon des gemmes",
+      "label": "Kart-dragon des gemmes",
+      "model": "dragon",
+      "motifs": [
+        "horns",
+        "gems",
+        "fire"
+      ],
+      "sourceKind": "universe-invention",
+      "referenceVehicle": null,
+      "recognition": [
+        "Carénage de petit dragon violet",
+        "Cornes de dragon",
+        "Gemmes et souffle décoratif"
+      ],
+      "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+      "sourceUrls": [
+        "https://www.spyrothedragon.com/pl/spyroreignitedtrilogy"
+      ],
+      "color": "#8157ad",
+      "accent": "#d4aa46",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:Spyro",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "",
+      "sourceAnchor": "Small quadrupedal purple dragon with yellow-orange curved horns, orange wing membranes, golden belly scales and a compact charge posture.",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "crash_bandicoot",
+      "name": "Crash Bandicoot",
+      "universe": "Crash Bandicoot",
+      "kartName": "Kart du trophée Wumpa",
+      "label": "Kart du trophée Wumpa",
+      "model": "toy-car",
+      "motifs": [
+        "food",
+        "exhaust",
+        "flag"
+      ],
+      "recognition": [
+        "kart arrondi bleu de CTR",
+        "moteur arrière à deux sorties",
+        "fruits Wumpa accrochés au flanc"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Kart de Crash Team Racing",
+      "rationale": "Adaptation de Kart de Crash Team Racing au cockpit ouvert et au gabarit de course.",
+      "referenceScope": "existing-universe-anchor",
+      "visualReviewStatus": "pending-game-scale-review",
+      "color": "#386cbd",
+      "accent": "#df9240",
+      "sourceUrls": [],
+      "id": "kart-design:Crash Bandicoot",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "miku",
+      "name": "Hatsune Miku",
+      "universe": "Vocaloid",
+      "kartName": "Tempo de Miku",
+      "label": "Tempo de Miku",
+      "model": "stage",
+      "motifs": [
+        "equalizer",
+        "microphone",
+        "circuit"
+      ],
+      "sourceKind": "universe-invention",
+      "referenceVehicle": null,
+      "recognition": [
+        "Plateau turquoise numérique",
+        "Micro de voix synthétique",
+        "Égaliseur et circuits"
+      ],
+      "rationale": "Création kart propre à cet univers : la forme et les accessoires priment sur une simple livrée.",
+      "sourceUrls": [],
+      "color": "#4ca8ac",
+      "accent": "#d5dce0",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:miku",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.8,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "arca_mirelle",
+      "name": "Mirelle Suture",
+      "universe": "Nexus de Convergence",
+      "kartName": "Disque de Suture",
+      "label": "Disque de Suture",
+      "model": "suture-disc",
+      "motifs": [
+        "cards",
+        "suture"
+      ],
+      "sourceKind": "original-universe-design",
+      "referenceVehicle": null,
+      "recognition": [
+        "Disque noir et or",
+        "Garde-corps circulaire",
+        "Cartes holographiques cyan"
+      ],
+      "rationale": "Conservation du disque déjà dessiné pour Mirelle : le véhicule et ses cartes sont la référence existante du projet.",
+      "sourceUrls": [],
+      "color": "#17272a",
+      "accent": "#d5a342",
+      "detailColor": "#71e9f2",
+      "width": 1.55,
+      "wheelbase": 2.08,
+      "referenceAsset": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-kart-directions.png",
+      "variant": null,
+      "id": "kart-design:arca_mirelle",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2.08,
+        "width": 1.55,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "predator",
+      "name": "Jungle Hunter",
+      "universe": "Predator",
+      "kartName": "Navette de chasse Yautja",
+      "label": "Navette de chasse Yautja",
+      "model": "gunship",
+      "motifs": [
+        "tusks",
+        "plasma",
+        "scanner"
+      ],
+      "sourceKind": "canonical-vehicle-adaptation",
+      "referenceVehicle": "Navette de chasse Yautja",
+      "recognition": [
+        "Coque extraterrestre oblique",
+        "Mandibules de proue",
+        "Émetteurs plasma et scanner"
+      ],
+      "rationale": "Véhicule de référence compacté pour la course, avec poste de conduite ouvert pour le sprite du personnage ; géométrie artistique à revoir.",
+      "sourceUrls": [
+        "https://www.20thcenturystudios.com/movies/predator"
+      ],
+      "color": "#756b52",
+      "accent": "#d9b75a",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:Predator",
+      "designScope": "universe-shared",
+      "sourceIncarnation": "Predator (1987) - Jungle Hunter",
+      "sourceAnchor": "The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    },
+    {
+      "heroId": "player_anchor",
+      "name": "Ancre",
+      "universe": "Nexus de Convergence",
+      "kartName": "Balise d’Ancre",
+      "label": "Balise d’Ancre",
+      "model": "suture",
+      "motifs": [
+        "antenna",
+        "runes",
+        "suture"
+      ],
+      "sourceKind": "original-universe-design",
+      "referenceVehicle": null,
+      "recognition": [
+        "Plateforme de convergence",
+        "Balise dressée",
+        "Ligatures de lumière cyan"
+      ],
+      "rationale": "Véhicule de course original construit à partir du métier, de la silhouette et des accessoires du personnage du Nexus.",
+      "sourceUrls": [],
+      "color": "#263747",
+      "accent": "#5dd8d0",
+      "detailColor": "#dbe8ec",
+      "id": "kart-design:player_anchor",
+      "designScope": "character-specific",
+      "sourceIncarnation": "",
+      "sourceAnchor": "",
+      "referenceScope": "existing-universe-anchor",
+      "dimensions": {
+        "wheelbase": 2,
+        "width": 1.68,
+        "wheelRadius": 0.32,
+        "nose": 0.78,
+        "fin": 0.4
+      },
+      "adaptation": "Single-seat racing proportions and open cockpit; source silhouette and visual cues retained.",
+      "reviewStatus": "recognizable-adaptation-awaiting-individual-visual-review",
+      "modelVersion": "universe-vehicles-v2"
+    }
+  ]
+}

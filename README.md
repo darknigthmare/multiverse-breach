@@ -4,7 +4,7 @@ Jeu de crossover indépendant et non officiel, jouable dans le navigateur. Le jo
 
 Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge ATB**, **Tactics sur grille**, **Mêlée sur plateformes** et **Combat en duel**. L’interface utilise React ; les combats sont dessinés en Canvas 2D. Les univers, personnages et marques cités appartiennent à leurs ayants droit.
 
-**État courant : W17 intégré avec master `3036cd02`, revue du 9 novembre 2026.** Les livraisons et mesures actuelles sont décrites ci-dessous. La clôture W16 reste une référence historique ; le protocole de gel, build et revue visuelle finale W17 n’est pas déclaré terminé. L’[amendement d’intégration](docs/audits/w17-master-integration-2026-11-09.md) distingue les vérifications courantes des anciennes preuves.
+**État courant : W17 intégré avec GitHub `2333c2c0`, revue du 13 novembre 2026.** La [reprise P0/P1](docs/assets/p0-p1-continuation-2026-11-13/README.md) livre six PNG de scène, corrige deux liaisons d’atlas et préserve la nouvelle organisation DLC. Les priorités et la fidélité 1:1 restent ouvertes selon leurs preuves ; la clôture W16 et l’[intégration du 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) restent historiques.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
 
@@ -31,6 +31,8 @@ npm run preview
 ```
 
 La prévisualisation utilise **http://localhost:4173** par défaut. `npm run build` lance d’abord le cycle `prebuild` complet : tests, audits des données, registres d’assets et progression. Cette commande peut prendre plusieurs minutes. Les fichiers produits se trouvent dans `dist/`.
+
+Les données et médias propres aux univers sont rangés dans `DLC/<Univers>/`. La préparation des assets publie leurs URL de jeu dans `public/`. Le lancement et le build normaux exigent leurs sources complètes et les fichiers Git LFS réels ; un checkout sparse incomplet peut échouer à `assets:prepare` sans prouver une absence en production.
 
 Le jeu peut démarrer avec une **Trace locale**, sans compte cloud. La synchronisation de compte dépend d’un service configuré sur le déploiement ; elle ne fait pas partie des prérequis pour explorer le jeu localement.
 
@@ -71,14 +73,14 @@ Les épreuves sans combat réutilisent certaines commandes d’arène pour des o
 
 ## Couverture réelle
 
-Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les compteurs proviennent de l’[audit courant W17 + master](docs/combat-fidelity-wave17-2026-11-02/current.json), régénéré le 9 novembre 2026. Ils mesurent les fichiers livrés et les profils résolus ; ils ne constituent pas une revue visuelle complète de l’intégration.
+Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les compteurs proviennent de l’[audit courant W17 + master](docs/combat-fidelity-wave17-2026-11-02/current.json), régénéré le 13 novembre 2026. Ils mesurent les fichiers livrés et les profils résolus ; ils ne constituent pas une revue visuelle complète de l’intégration.
 
 | Périmètre mesuré après intégration | Résultat |
 | --- | --- |
 | Catalogue | **1 911 personnages**, **525 univers** |
 | Capacités de base explicitement rédigées | 1 662 personnages, 4 911 actions simples, secondaires et défenses ; 1 618 kits complets et 44 partiels |
 | Emplacements de base sans enregistrement explicite | 822 sur 5 733 ; les profils résolus peuvent utiliser un repli |
-| Supers résolus | 1 911, dont 1 591 portent des métadonnées d’override ; aucun placeholder générique restant |
+| Supers résolus | 1 911, dont 1 588 portent des métadonnées d’override ; aucun placeholder générique restant |
 | Présentations complètes32 livrées, inventaire incluant les archives | **666 personnages** ; 1 245 sans atlas complet |
 | Présentations partielles | 2, suivies séparément |
 | Animation Mêlée complète45 | **18 personnages** ; 1 893 manquantes |
@@ -96,6 +98,10 @@ Les métadonnées d’override et l’absence de placeholder générique ne cert
 Cet inventaire combat ne comprend pas toutes les images du jeu : portraits, décors, objets, cartes et illustrations possèdent leurs propres catalogues. Les 525 univers ont une ambiance par défaut ; les mécanismes liés à des scènes précises constituent une couverture supplémentaire.
 
 Le **lot W17** conserve **120 personnages avec de nouveaux dessins**, en trois groupes de 40 : 120 présentations32 et 120 bases16. Les **125 identités revues** comprennent 80 nouvelles définitions de capacités et 45 révisions ; les cinq identités suspendues ne deviennent pas cinq livraisons artistiques supplémentaires. Jade ajoute un manifeste Mêlée45 ; six renforts RPG16, un NPC de capture16 et une action gyrodisk16 ont des registres distincts. L’inventaire ajoute 254 PNG aux fichiers W16. Le [plan et ses annexes](docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json) et le [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) conservent leurs périmètres historiques.
+
+La [reprise P0/P1 du 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) ajoute trois fonds tactiques distincts (Predator 1987, Predator 2 et Prey), les portraits de Naru/Sarii et une icône extérieure du masque osseux. Le masque porté, transporté et monté ne se duplique pas ; les scènes source n’annoncent plus d’anomalie crossover. Le Feral courant possède un kit physique borné à ses lames et à son bouclier.
+
+L’[inventaire courant](docs/assets/p0-p1-continuation-2026-11-13/backlog/audit.json) compte 4 937 acteurs, 17 318 constats P1 et 1 474 rasters absents de l’arbre Git projeté, répartis dans une [file de 124 lots de 40 au maximum](docs/assets/p0-p1-continuation-2026-11-13/backlog/actor-batches-40.json). Deux raccords Alien 1979 ferment quatre constats ; les dossiers conservent d’autres travaux. Les 22 P0 historiques sont suivis séparément. Ces tâches de recherche, de données et d’art ne se confondent pas avec les supers effectivement résolus.
 
 Une présentation32 réunit huit phases de quatre dessins : intro, sortie, victoire et défaite de manche, finale, victoire et défaite finales, super. Une base16 couvre quatre états ; elle ne remplace pas les 45 états physiques du manifeste Mêlée.
 
@@ -177,11 +183,13 @@ Le dépôt n’a pas de script global `npm test`. Les groupes sont déclarés da
 
 [Validation du lot 16](docs/combat-fidelity-wave16-2026-10-28/validation.json) · [Preuves navigateur](docs/combat-fidelity-wave16-2026-10-28/browser-checks.json) · [Ressources servies](docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json)
 
-Ces résultats W16 et les essais W17 antérieurs ne valident pas le code intégré le 9 novembre. La revue comprend un parcours Tactics de six lancements, 18 vérifications et dix captures inspectées, puis quatre cas Fighter pour Raven et Starfire avec huit captures inspectées, sans erreur de page. Chaque preuve conserve son propre instantané : treize fichiers source diffèrent depuis le parcours Tactics et six depuis le parcours Fighter, selon la comparaison des empreintes d’origine avec les fichiers courants. Aucun ne constitue un gel de production final.
+Ces résultats W16 et les essais W17 antérieurs ne valident pas le code intégré le 9 novembre. La revue comprend un parcours Tactics de six lancements, 18 vérifications et dix captures inspectées, puis quatre cas Fighter pour Raven et Starfire avec huit captures inspectées, sans erreur de page. Chaque preuve conserve son propre instantané : treize fichiers source diffèrent depuis le parcours Tactics et six depuis le parcours Fighter, selon la comparaison des empreintes d’origine avec les fichiers du 9 novembre. Aucun ne constitue un gel de production final.
 
 Le 9 novembre, `npm run build -- --config scripts/viteCodeOnly.config.js` a réellement terminé avec le **code de sortie 0**, après les 45 étapes normales du prébuild. Les 30 sorties TAP rapportent **4 975 exécutions réussies**, sans échec ni assertion ignorée ; les groupes se recoupent et ces exécutions ne sont pas un nombre de tests uniques. Le profil de compilation utilisé conserve tout le prébuild, puis produit un bundle de code sans recopier les médias de `public/` ; ce dist seul ne constitue pas une livraison statique complète. Les tests, reçus et limites sont consignés dans l’[amendement d’intégration](docs/audits/w17-master-integration-2026-11-09.md).
 
 Les captures et parcours navigateur sont des vérifications supplémentaires : les tests Node seuls ne prouvent ni le chargement d’un PNG dans une page ni la justesse visuelle d’un geste. Certains outils de capture archivés utilisent les chemins Playwright et Chromium de leur environnement d’exécution ; ils ne font pas partie de l’installation npm standard.
+
+Le 13 novembre, 31 tests du kit Feral et 29 tests d’assets/liaisons passent, les audits courants sont synchronisés et le parcours final Prey desktop/mobile ne montre aucune erreur HTTP/page ni anomalie crossover après plus de 1 560 mises à jour. La compilation directe de code passe ; **le build normal reste bloqué par 9 007 sources DLC non matérialisées dans ce workspace partiel**. Le contrôle CG de cette reprise est explicitement limité aux métadonnées et préserve 1 436 déclarations de livraison, sans prétendre revalider leurs bitmaps. Voir les [preuves et limites](docs/assets/p0-p1-continuation-2026-11-13/README.md#vérifications-et-limites).
 
 ## Architecture
 
@@ -236,6 +244,7 @@ Ce profil produit le code exécutable sans recopier les médias de `public/` dan
 
 ## Documentation
 
+- [Reprise P0/P1 — 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) : six PNG réels, raccords de sprites, sources exactes, file par 40 et vérifications courantes.
 - [Intégration W17 + master — 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) : livraisons, mesures courantes, tests et limites de validation.
 - [Mesures courantes W17](docs/combat-fidelity-wave17-2026-11-02/current.md) et [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) : inventaire actuel et barrières historiques distinctes.
 - [Dernier lot combat clôturé historiquement — W16](docs/combat-fidelity-wave16-2026-10-28/README.md) : détails des trois groupes de 40 personnages et de la livraison.

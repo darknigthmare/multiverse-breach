@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "createdOn": "2026-10-31",
+  "stageId": 50106,
+  "film": "Prey (2022)",
+  "yearInStory": 1719,
+  "kind": "source-locked-visual-asset-review",
+  "sourceLock": "Comanche Naru versus original Feral Predator, not Jungle Hunter/City Hunter lookalikes.",
+  "imageGenerationPerformed": false,
+  "newPngsInstalled": 0,
+  "visualReviewStatus": "pending",
+  "artApproved": false,
+  "purpose": "Per-sprite visual reviews across RPG, Tactics, Smash and story overlays; no asset is approved based on metadata alone.",
+  "qualityGates": [
+    "separate file per character or prop",
+    "full-body silhouette where applicable",
+    "film accurate costumes, equipment and body proportions",
+    "transparent alpha for isolated actors",
+    "consistent world-space ground anchors",
+    "direction/turn and animation states",
+    "reference image comparison with edition/year identified",
+    "manual browser review on widescreen and narrow view",
+    "explicit art provenance and use rights"
+  ],
+  "items": [
+    {
+      "id": "prey-2022-01",
+      "assetKey": "prey-naru-1719",
+      "kind": "hero",
+      "priority": "P0",
+      "description": "Naru 1719 period costume, dark long hair and braided details, earth-tone clothing, exact silhouette and facial proportions; separate gameplay full body and portrait",
+      "requiredStates": [
+        "idle",
+        "run",
+        "throw",
+        "rope-hatchet",
+        "flintlock",
+        "herb",
+        "victory"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": "/sprites/generated/heroes/prey/naru-prey.png",
+      "status": "REUSED_EXISTING_ART_UNVERIFIED",
+      "visualReviewStatus": "pending",
+      "artApproved": false,
+      "notes": "Base hero bitmap is already present in the dedicated Prey hero folder. The single sprite still requires source-film visual, proportion, costume and animation checks; this task is for 1:1 review and missing variants, not a nonexistent base file."
+    },
+    {
+      "id": "prey-2022-02",
+      "assetKey": "prey-naru-rope-hatchet",
+      "kind": "weapon",
+      "priority": "P1",
+      "description": "A small axe on a rope, explicitly returning to Naru; different from City Hunter disc, one standalone prop and arc frames",
+      "requiredStates": [
+        "hand",
+        "throw",
+        "trajectory",
+        "return"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-03",
+      "assetKey": "prey-feral-predator-bone-mask",
+      "kind": "boss",
+      "priority": "P0",
+      "description": "Prey 2022 Feral leaner body, distinctive elongated organic skull helmet, dreadlocks, sparse primitive-pattern armor, no 1987 silver biomask",
+      "requiredStates": [
+        "idle",
+        "search",
+        "projectile-aim",
+        "hit",
+        "charge"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": "/sprites/generated/bosses/predator/feral-predator.png",
+      "status": "REUSED_EXISTING_STATIC_UNVERIFIED",
+      "visualReviewStatus": "pending",
+      "artApproved": false,
+      "existingSourceUniverse": "Predator",
+      "notes": "The existing generic Predator Feral PNG is used in the dedicated Prey source encounter. It is a provisional one-frame renderer asset, not an approved 2022 facial/body comparison or an animation pack. New variant and visual review still required."
+    },
+    {
+      "id": "prey-2022-04",
+      "assetKey": "prey-feral-unmasked",
+      "kind": "boss-variant",
+      "priority": "P0",
+      "description": "Same Feral face and mandible layout without its bone mask, after Naru steals the mask; avoid replacing with conventional Jungle Hunter face",
+      "requiredStates": [
+        "idle",
+        "injured",
+        "bog-stuck",
+        "death"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-05",
+      "assetKey": "prey-feral-bolt-mask-lock",
+      "kind": "equipment",
+      "priority": "P0",
+      "description": "Bone mask aiming system and Feral guided projectile launcher, physically separate from the mask. Three pointer marks and independent projectile line",
+      "requiredStates": [
+        "mask",
+        "pointers",
+        "launcher",
+        "bolt",
+        "projectile-impact"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-06",
+      "assetKey": "prey-cooling-orange-medicine",
+      "kind": "prop",
+      "priority": "P1",
+      "description": "Orange cooling medicinal flower/herb with era-plausible gathered stem; source screen comparison pending, no invented lab pharmaceutical vial",
+      "requiredStates": [
+        "flower",
+        "gather",
+        "consume",
+        "thermal-effect"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-07",
+      "assetKey": "prey-raphael-flintlock",
+      "kind": "prop",
+      "priority": "P0",
+      "description": "French trapper Raphael flintlock in 1719 as Naru's borrowed weapon. Mark engraving details only once verified from film still; no forged pre-1990 provenance",
+      "requiredStates": [
+        "side",
+        "top",
+        "hand",
+        "fire",
+        "antique-trigger"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-08",
+      "assetKey": "prey-bog-forest-props",
+      "kind": "environment",
+      "priority": "P0",
+      "description": "North American Great Plains forest and bog, soil, natural branches, moss, pit in mud; not rain forest Predator 1987 or Los Angeles ship",
+      "requiredStates": [
+        "foreground",
+        "background",
+        "bog-depth",
+        "footprints"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-09",
+      "assetKey": "prey-sarii-companion",
+      "kind": "protected-marker",
+      "priority": "P1",
+      "description": "Sarii, Naru's companion dog in Prey (2022), returns her rope-tethered tomahawk in the forest duel BEFORE she draws Feral into the bog. Faithful body, coat, markings, proportions and distinct retrieval animation; never an armed playable unit.",
+      "requiredStates": [
+        "idle",
+        "follow",
+        "alert",
+        "retrieve-rope-hatchet",
+        "return-to-naru",
+        "village-reunion"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained",
+        "https://www.avpgalaxy.net/characters/naru/"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false,
+      "notes": "The current 1719 mission moves a schematic Canvas dog marker for the authentic pre-bog tomahawk return, but this is NOT a 1:1 sprite or approved animation. Film-frame review and separate full-body PNGs remain open."
+    },
+    {
+      "id": "prey-2022-10",
+      "assetKey": "prey-comanche-village",
+      "kind": "environment",
+      "priority": "P1",
+      "description": "1719 Comanche village return with appropriate tipi shapes, materials, spatial scale, daylight atmosphere, no modern appliances",
+      "requiredStates": [
+        "village",
+        "exterior",
+        "epilogue"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false,
+      "notes": "The tactical bog board contains a forest EXIT ROUTE, not an entire village inside the bog. The detailed 1719 Comanche village belongs to a separate epilogue visual, still open."
+    },
+    {
+      "id": "prey-2022-11",
+      "assetKey": "prey-french-trapper-bait",
+      "kind": "protected-story-marker",
+      "priority": "P2",
+      "description": "Historically grounded 1719 French trapper scenario cue; only a narrative setup without invented hostile combatants or generic army",
+      "requiredStates": [
+        "cutscene",
+        "marker"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    },
+    {
+      "id": "prey-2022-12",
+      "assetKey": "prey-finale-bolt-vfx",
+      "kind": "effects",
+      "priority": "P0",
+      "description": "Naru places bone mask toward bog, three guiding red dots aim into Feral Predator's head; bolt originates from Feral launcher, never from the mask",
+      "requiredStates": [
+        "aim",
+        "lock",
+        "bolt",
+        "impact",
+        "aftermath"
+      ],
+      "referenceUrls": [
+        "https://www.20thcenturystudios.com/movies/prey",
+        "https://www.whattowatch.com/features/prey-ending-explained"
+      ],
+      "path": null,
+      "status": "OPEN_NOT_GENERATED",
+      "visualReviewStatus": "pending",
+      "artApproved": false
+    }
+  ],
+  "existingAssetReused": "/sprites/generated/bosses/predator/feral-predator.png",
+  "reuseApprovedAsCanon": false,
+  "existingVisualsReused": [
+    "/sprites/generated/heroes/prey/naru-prey.png",
+    "/sprites/generated/bosses/predator/feral-predator.png"
+  ]
+}

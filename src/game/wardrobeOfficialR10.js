@@ -1,3 +1,7 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcMassEffect from '../../DLC/MassEffect/data/wardrobeOfficialR10.js';
+import * as dlcResidentEvil from '../../DLC/ResidentEvil/data/wardrobeOfficialR10.js';
+
 // R10: named publisher evidence only. A design brief is NOT an observed or approved sprite.
 const L = (fr, en) => Object.freeze({ fr, en });
 export const WARDROBE_SOURCES_R10 = Object.freeze([
@@ -52,13 +56,11 @@ export const OFFICIAL_COSTUMES_R10 = Object.freeze([
   ...armor, ...accessories,
   squad('garrus', 'Garrus', 'me2', 'Alternate Appearance Pack 1', 'me2-2010', 'Préserver tête turienne, mandibules, proportions et articulations ; vérifier séparément les réparations et l’asymétrie.', 'Preserve the turian head, mandibles, proportions and joints; check repairs and asymmetry separately.'),
   squad('tali', 'Tali', 'me2', 'Alternate Appearance Pack 2', 'me2-2010', 'Préserver masque, combinaison environnementale et anatomie quarienne ; relever tissus et connecteurs sans inventer un visage découvert.', 'Preserve the mask, environmental suit and quarian anatomy; record fabric and connectors without inventing an exposed face.'),
-  make('Mass Effect', 'shepard', 'me3-n7-defender', 'N7 Defender Armor', 'Mass Effect 3 (2012) — N7 Warfare Gear', 'me3-2012', 'outfit-only', n7.fr, n7.en),
+  dlcMassEffect.createOfficialCostumesR10({ make, n7 }),
   squad('shepard', 'Shepard', 'me3', 'Alternate Appearance Pack', 'me3-2012', 'Conserver le Shepard choisi ; ne pas déduire un nom d’armure, un casque ou une palette non précisés par la fiche.', 'Preserve the selected Shepard; do not infer an armor name, helmet or palette not specified in the listing.'),
   squad('garrus', 'Garrus', 'me3', 'Alternate Appearance Pack', 'me3-2012', 'Conserver la morphologie turienne et comparer le set ME3 à celui de ME2 sans les fusionner.', 'Keep the turian anatomy and compare the ME3 set with ME2 without merging them.'),
   squad('liara', 'Liara', 'me3', 'Alternate Appearance Pack', 'me3-2012', 'Préserver la tête asari, les proportions et les mains ; relever la coupe de ce set sans ajouter une coiffure humaine.', 'Preserve the asari head, proportions and hands; record this set’s tailoring without adding human hair.'),
-  make('Resident Evil', 'leon', 're4-romantic', 'Romantic', 'Resident Evil 4 (2023) — Leon & Ashley Costumes: Romantic', 're4-romantic', 'outfit-only',
-    'Tenue Romantic de Leon uniquement, version remake 2023. Relever col, manches, couches textiles, ceinture et bottes dans le jeu. Garder le visage et la silhouette de Leon, pas le vêtement d’Ashley ; ne pas remplacer par un costume romantique inventé. Aucun filtre ou pouvoir ajouté.',
-    'Leon’s Romantic outfit only, 2023 remake. Record collar, sleeves, fabric layers, belt and boots in-game. Keep Leon’s face and silhouette, not Ashley’s clothing; do not substitute an invented romantic outfit. No added screen filter or ability.')
+  dlcResidentEvil.createOfficialCostumesR10({ make })
 ]);
 export const UNBOUND_COSTUME_RESEARCH_R10 = Object.freeze([
   ['Thane', 'Mass Effect 2 (2010) — Alternate Appearance Pack 1', 'me2-2010'],

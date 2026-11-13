@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorId": "joker_n52",
+  "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+  "sourceFile": "DLC/JokerNew52/data/canonP0SourceKits.js",
+  "observedContract": [
+    "Issue37 cover shows pale restored face, slicked-back green hair with short sides, red lips, yellowed teeth and dark bow tie.",
+    "Issue39 cover shows a dark gray/charcoal suit, pale shirt, dark bow tie and purple pocket accent. The body is seated and partly occluded by other figures.",
+    "The detached face held on issue37 is a hand-held prop in this cover, not a mask worn by the restored-faced Endgame Joker."
+  ],
+  "missingContract": [
+    "No unobstructed neutral standing body or back view acquired.",
+    "Exact costume colors are affected by cover lighting; the broad current phrase purple-associated civilian clothing is insufficient to certify a purple jacket.",
+    "Weapon model and toxin dispenser geometry are not established by these covers."
+  ],
+  "rejected": [
+    {
+      "candidate": "joker-issue40-cover",
+      "reason": "Symbolic Batman-versus-dragon cover; does not show the target Joker body."
+    }
+  ],
+  "status": "partial-primary-reference-ready-for-bounded-art-candidates-full-body-review-open",
+  "references": [
+    {
+      "url": "https://static.dc.com/dc/files/default_images/batman_v2_37_5b2ad7d5cfffb9.44857923.jpg",
+      "finalUrl": "https://static.dc.com/dc/files/default_images/batman_v2_37_5b2ad7d5cfffb9.44857923.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 256622,
+      "sha256": "390c83b270de7fa51507a1bb6c434bd2c0ff891683ae7a6169491c7c919365db",
+      "retrievedAt": "2026-11-13T06:42:22.182121+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1249,
+        1920
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/joker_n52/joker-issue37-cover.jpg",
+      "sourcePageUrl": "https://www.dc.com/comics/batman-2011/batman-37",
+      "sourceKind": "PRIMARY_PUBLISHER_COVER",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Restored face, hair, mouth, collar and hands; body largely hidden in black. Hand-held detached-face prop is not a worn mask.",
+      "sourceScope": "head-and-collar-only",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    },
+    {
+      "url": "https://static.dc.com/dc/files/default_images/batman_v2_39_5b2ad7f2d69976.72740862.jpg",
+      "finalUrl": "https://static.dc.com/dc/files/default_images/batman_v2_39_5b2ad7f2d69976.72740862.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 231262,
+      "sha256": "23362164cc64d87267f3191bd0b0d475a0becff60c5830e43c681cb87d212227",
+      "retrievedAt": "2026-11-13T06:42:22.150054+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1249,
+        1920
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/joker_n52/joker-issue39-cover.jpg",
+      "sourcePageUrl": "https://www.dc.com/comics/batman-2011/batman-39",
+      "sourceKind": "PRIMARY_PUBLISHER_COVER",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Seated Joker, jacket, bow tie, purple pocket accent, trousers and part of a shoe; other figures hide much of the legs/body.",
+      "sourceScope": "partly-occluded-body-clothing",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    }
+  ],
+  "productionGate": {
+    "usableScopes": [
+      "portrait-restored-face-and-hair",
+      "front-jacket-collar-bowtie-pocket-accent"
+    ],
+    "boundedCandidateGenerationSupported": true,
+    "fullBodyQualified": false,
+    "fullBodyGapsRemain": true,
+    "mayUseFor": "Produce separate candidates limited to the listed observed surfaces. Preserve edition and record generated adaptation. Full-body production and exact hidden details remain unsupported by this acquisition.",
+    "source1to1Verified": false,
+    "automaticFidelityApproval": false
+  },
+  "scope": "Source acquisition and bounded observation only. No game sprite, animation, runtime binding or1:1 approval created."
+}

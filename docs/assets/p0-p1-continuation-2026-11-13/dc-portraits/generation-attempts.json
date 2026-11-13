@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "scope": "Two unique bounded P0 portrait generation attempts; no output images, no retry or actor alias substitution.",
+  "referenceInspection": {
+    "method": "tools.view_image",
+    "individuallyViewed": [
+      "references/harley_n52/harley-issue1-cover.jpg",
+      "references/joker_n52/joker-issue37-cover.jpg",
+      "references/joker_n52/joker-issue39-cover.jpg"
+    ],
+    "reviewer": "/root/p0_portraits_dc"
+  },
+  "attempts": [
+    {
+      "actorId": "harley_n52",
+      "status": "generation-refused-no-image",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "attempts": 1,
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 14c5148e-0a5c-448b-880f-91a9ddcfecca.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "refusalStage": "output",
+      "errorCode": "moderation_blocked",
+      "category": "other",
+      "requestId": "14c5148e-0a5c-448b-880f-91a9ddcfecca",
+      "imageReturned": false,
+      "newPngFiles": 0,
+      "retried": false,
+      "source1to1Verified": false,
+      "portraitReady": false,
+      "runtimeBound": false,
+      "fullBodyQualified": false
+    },
+    {
+      "actorId": "joker_n52",
+      "status": "generation-refused-no-image",
+      "tool": "image_gen.imagegen",
+      "transparent_background": true,
+      "attempts": 1,
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 999c7c59-68e9-4cab-aac0-c0b8ac22c4ec.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "refusalStage": "output",
+      "errorCode": "moderation_blocked",
+      "category": "other",
+      "requestId": "999c7c59-68e9-4cab-aac0-c0b8ac22c4ec",
+      "imageReturned": false,
+      "newPngFiles": 0,
+      "retried": false,
+      "source1to1Verified": false,
+      "portraitReady": false,
+      "runtimeBound": false,
+      "fullBodyQualified": false
+    }
+  ],
+  "newAssets": 0,
+  "newP0Closures": 0
+}

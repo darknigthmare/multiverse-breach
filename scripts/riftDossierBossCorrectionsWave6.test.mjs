@@ -2,8 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { createDlcSourceReader } from './dlcAuditSources.mjs';
 
 const read = file => readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+const readGameSource = createDlcSourceReader();
 const entries = JSON.parse(read('docs/rift-dossiers/catalog.json')).entrees;
 const find = id => entries.find(entry => entry.id === id);
 
@@ -26,7 +28,7 @@ for (const [id, name, boss, slug] of [
 });
 
 test('Eyedol follows the explicitly locked 2013 reboot, split skull and blunt war-club', () => {
-  assert.match(read('src/game/canonRosterWavePartJ.js'), /continuity:'Reboot Xbox 2013\.'/);
+  assert.match(readGameSource('src/game/canonRosterWavePartJ.js'), /continuity:'Reboot Xbox 2013\.'/);
   const prompt = find(34430).promptOpenAI;
   for (const pattern of [/SINGLE skull split vertically/, /one eye per half/, /WAR-CLUB/, /No axe/, /no two intact heads on separate necks/, /not a claim that Eyedol has this canonical home stage/, /no Fulgore, no ARIA, no Gargos/]) assert.match(prompt, pattern);
 });

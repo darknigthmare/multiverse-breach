@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-13",
+  "entry": "scripts/exportActorFidelityBacklog.mjs",
+  "nodeVersionContract": "22.x",
+  "staticFilesReachable": 1777,
+  "jsonFilesReachable": 84,
+  "jsxFilesReachable": 0,
+  "missingStaticRelativePaths": [],
+  "bareImports": [
+    "node:child_process",
+    "node:fs",
+    "node:path",
+    "node:url"
+  ],
+  "loader": "scripts/sourceSceneTestLoader.mjs",
+  "command": "NODE_OPTIONS=--max-old-space-size=4096 GIT_NO_LAZY_FETCH=1 node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportActorFidelityBacklog.mjs /tmp/mb-p0-p1-20261113/actor-backlog <FROZEN_SHA40>",
+  "executed": false,
+  "requiredBeforeExecution": [
+    "Wait for the root Node worker chain to finish.",
+    "Freeze the merged working source files and bind their exact commitSHA.",
+    "Capture relevant input hashes before and after; exporter imports current files while its argument identifies the Git asset tree."
+  ],
+  "filesystemScope": "Exporter writes only its /tmp output directory; asset presence comes from the Git tree with DLC URL projection. No LFS hydration needed."
+}

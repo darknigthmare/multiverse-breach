@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "rubber",
+  "universe": "Rubber",
+  "directory": "DLC/Rubber",
+  "registration": "runtime",
+  "catalogOrder": 81,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

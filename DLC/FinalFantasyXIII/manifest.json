@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "final-fantasy-xiii",
+  "universe": "Final Fantasy XIII",
+  "directory": "DLC/FinalFantasyXIII",
+  "registration": "runtime",
+  "catalogOrder": 174,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/wardrobeOfficialR9.js",
+      "runtimeAdapter": "src/game/wardrobeOfficialR9.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

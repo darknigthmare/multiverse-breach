@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { before, after, test } from 'node:test';
 import { readFileSync } from 'node:fs';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { createSceneInputs } from '../src/game/sceneInputs.js';
 import { readBrowserGamepads } from '../src/game/browserGamepads.js';
 import { createMeleeGamepadInput } from '../src/game/melee/meleeGamepadInput.js';

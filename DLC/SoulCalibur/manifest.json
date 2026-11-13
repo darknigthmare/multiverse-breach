@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "soul-calibur",
+  "universe": "Soul Calibur",
+  "directory": "DLC/SoulCalibur",
+  "registration": "runtime",
+  "catalogOrder": 195,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

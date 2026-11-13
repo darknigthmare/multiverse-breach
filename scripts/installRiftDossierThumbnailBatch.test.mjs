@@ -4,7 +4,8 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
-import { buildInstallPlan, parseArguments } from './installRiftDossierThumbnailBatch.mjs';
+import sharp from 'sharp';
+import { buildInstallPlan, installBatch, parseArguments } from './installRiftDossierThumbnailBatch.mjs';
 
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
@@ -61,6 +62,57 @@ test('batch installer validates dossier identity, prompt, output and provenance 
   assert.equal(plan.jobs[0].assetId, 'stage-59-test-v1');
   assert.equal(plan.jobs[0].promptSha256, promptSha);
   assert.ok(plan.jobs[0].destination.startsWith(path.join(root, 'public')));
+
+  const writeJson = async (relative, value) => {
+    const file = path.join(root, relative);
+    await fs.mkdir(path.dirname(file), { recursive: true });
+    await fs.writeFile(file, JSON.stringify(value));
+  };
+  const canonicalSource = 'DLC/Halo/assets' + output;
+  await writeJson('DLC/Halo/manifest.json', {
+    schemaVersion: 1, id: 'halo', universe: 'Halo', directory: 'DLC/Halo', assetManifest: 'assets.json'
+  });
+  await writeJson('DLC/Halo/assets.json', {
+    schemaVersion: 1, universe: 'Halo', assets: [{ publicPath: output, sourcePath: canonicalSource }]
+  });
+  catalog.entrees[0].univers = ['Halo'];
+  await writeJson('docs/rift-dossiers/catalog.json', catalog);
+  const migrated = await buildInstallPlan({ root, batchPath });
+  assert.equal(migrated.jobs[0].destination, path.join(root, canonicalSource));
+  assert.equal(migrated.jobs[0].output, output);
+  assert.equal(migrated.jobs[0].promptSha256, promptSha);
+
+  // A verified retry reads the canonical image and the unchanged shared ledger.
+  const image = await sharp({ create: {
+    width: 640, height: 360, channels: 3, background: { r: 20, g: 40, b: 60 }
+  } }).webp().toBuffer();
+  await fs.mkdir(path.dirname(path.join(root, canonicalSource)), { recursive: true });
+  await fs.writeFile(path.join(root, canonicalSource), image);
+  const ledgerPath = path.join(root, 'public/images/rift-dossiers/openai/openai-prompts.jsonl');
+  await fs.mkdir(path.dirname(ledgerPath), { recursive: true });
+  await fs.writeFile(ledgerPath, JSON.stringify({
+    kind: 'rift-dossier-thumbnail', assetId: migrated.jobs[0].assetId, output, prompt,
+    generation: {
+      provider: 'OpenAI', interface: 'built-in image_gen',
+      generationId: batch.jobs[0].generationId, promptSha256: promptSha
+    },
+    image: { sha256: sha256(image) }
+  }) + '\n');
+  const installed = await installBatch({ root, batchPath });
+  assert.equal(installed.records[0].output, output);
+  await assert.rejects(() => fs.stat(path.join(root, 'public' + output)), { code: 'ENOENT' });
+
+  // New URLs need one exact owning universe; declared shared ownership wins.
+  await writeJson('DLC/Halo/assets.json', { schemaVersion: 1, universe: 'Halo', assets: [] });
+  assert.equal((await buildInstallPlan({ root, batchPath })).jobs[0].destination, path.join(root, canonicalSource));
+  await writeJson('DLC/shared-assets.json', {
+    schemaVersion: 1, assets: [{ publicPath: output, sourcePath: 'public' + output }]
+  });
+  assert.equal((await buildInstallPlan({ root, batchPath })).jobs[0].destination, path.join(root, 'public' + output));
+  await writeJson('DLC/shared-assets.json', { schemaVersion: 1, assets: [] });
+  catalog.entrees[0].univers = ['Halo', 'Alien'];
+  await writeJson('docs/rift-dossiers/catalog.json', catalog);
+  assert.equal((await buildInstallPlan({ root, batchPath })).jobs[0].destination, path.join(root, 'public' + output));
 
   const malformed = structuredClone(batch);
   malformed.jobs[0].generationPromptSha256 = '0'.repeat(64);

@@ -565,7 +565,42 @@ export const RAW_CANONICAL_EDITIONS = Object.freeze({
   }
 });
 
+// A second, additive snapshot validates the newer GitHub Star Wars editions.
+// It does not replace the 3036 raw actors or the independently frozen W13 plan.
+const githubStarWarsBytes = read('scripts/fixtures/githubStarWarsRaw2333c2c0.json');
+assert.equal(hash(githubStarWarsBytes), '089937eb9a918a458cc717066585543be5aa80efdc5bd8be9222fd7cb3c78b89');
+const githubStarWars = JSON.parse(githubStarWarsBytes);
+assert.equal(githubStarWars.sourceCommit, '2333c2c0c524414c6c7ab84ca86d7e3e40c187ac');
+const githubStarWarsById = new Map(githubStarWars.actors.map(actor => [actor.id, actor]));
+const frozenWave13Bytes = read('docs/combat-fidelity-wave13-2026-10-24/batch-plan-before.json');
+assert.equal(hash(frozenWave13Bytes), 'c2c5072ee64c0a8570b1d3229c2644b6f61ff0e2c6f7cc203e821f315326388f');
+const frozenWave13ById = new Map(JSON.parse(frozenWave13Bytes).heroes.map(row => [row.hero.id, row]));
+
+export function assertLatestGitHubStarWarsEdition(actor) {
+  const selected = githubStarWarsById.get(actor?.id);
+  assert.ok(selected, actor?.id + ': undeclared GitHub Star Wars source identity');
+  for (const [field, expected] of Object.entries(selected)) {
+    assert.deepEqual(actor[field], expected, actor.id + ': selected 2333c2c0 source field ' + field + ' changed');
+  }
+  return selected;
+}
+const isLatestGitHubStarWarsCandidate = actor => {
+  const selected = githubStarWarsById.get(actor?.id);
+  return !!selected && (actor.incarnation === selected.incarnation
+    || Object.hasOwn(actor, 'equipmentEvidenceStatus'));
+};
+function assertLatestWave13Comparison(actor) {
+  assertLatestGitHubStarWarsEdition(actor);
+  const frozen = frozenWave13ById.get(actor.id);
+  assert.ok(frozen, actor.id + ': undeclared W13 historical comparison');
+  return frozen;
+}
+
 export function assertCatalogActionEdition(actor, slot, historical) {
+  if (isLatestGitHubStarWarsCandidate(actor)) {
+    const frozen = assertLatestWave13Comparison(actor);
+    return assert.deepEqual(historical, frozen.hero[slot], actor.id + ': frozen W13 raw action changed');
+  }
   const edition = RAW_CANONICAL_EDITIONS[actor.id], revision = edition?.slots[slot];
   if (!revision) return assert.deepEqual(actor[slot], historical, actor.id + ':' + slot);
   assert.equal(actor.universe, edition.universe, actor.id + ': unexpected canonical universe');
@@ -587,6 +622,13 @@ export function assertBaseSpriteEdition(actor, historical, actualSrc) {
 }
 
 export function historicalWave13Actor(current, frozen, source) {
+  if (isLatestGitHubStarWarsCandidate(current)) {
+    const retained = assertLatestWave13Comparison(current);
+    assert.deepEqual(frozen, retained.hero, current.id + ': frozen W13 actor changed');
+    assert.deepEqual(source, retained.source, current.id + ': frozen W13 source changed');
+    return { ...structuredClone(frozen), weaponType: source.weaponType,
+      incarnation: source.sourceWork, canonCombatPresentation: false };
+  }
   if (!['liquid_snake', 'ripley', 'darth_maul'].includes(current.id)) return current;
   assert.equal(frozen.id, current.id); assert.equal(source.universe, current.universe);
   if (current.id === 'darth_maul') {
@@ -599,6 +641,11 @@ export function historicalWave13Actor(current, frozen, source) {
 }
 
 export function assertCatalogWeaponEdition(actor, historicalWeaponType) {
+  if (isLatestGitHubStarWarsCandidate(actor)) {
+    const frozen = assertLatestWave13Comparison(actor);
+    assert.equal(historicalWeaponType, frozen.source.weaponType, actor.id + ': frozen W13 weapon changed');
+    return;
+  }
   if (actor.id === 'darth_maul' && actor.incarnation === 'The Clone Wars - ruler of Mandalore') {
     assert.equal(actor.universe, 'Star Wars');
     assert.deepEqual(actor.equipment, ['Double-Bladed Red Lightsaber', 'Cybernetic Legs', 'Mandalore Command Seal']);

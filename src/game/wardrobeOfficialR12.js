@@ -1,3 +1,8 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcDeadByDaylight from '../../DLC/DeadByDaylight/data/wardrobeOfficialR12.js';
+import * as dlcKillingFloor2 from '../../DLC/KillingFloor2/data/wardrobeOfficialR12.js';
+import * as dlcDeadRising from '../../DLC/DeadRising/data/wardrobeOfficialR12.js';
+
 // Publisher-backed existence and exact wearers; not finished artwork or global completeness.
 const L=(fr,en)=>Object.freeze({fr,en});
 const checkedOn='2026-10-25';
@@ -44,22 +49,16 @@ const masks=[
  `Masque « ${name} » sur son tueur exact. Relever sa géométrie, ses attaches et les zones du visage occultées ; conserver corps, arme et animations du porteur. Ce n'est pas une tenue complète, un membre du groupe jouable ou une nouvelle capacité. Ne pas attribuer ce masque aux autres tueurs.`,
  `The ${name} mask on its exact killer. Record geometry, attachment and facial occlusion; preserve the wearer's body, weapon and animations. This is not a full outfit, a playable band member or a new ability. Do not give this mask to another killer.`));
 export const OFFICIAL_COSTUMES_R12=Object.freeze([...frank,...masks,
- costume('Dead by Daylight',['dead_by_daylight_dwight_fairfield','dead_by_daylight_meg_thomas','dead_by_daylight_claudette_morel'],
-  'dbd-eddies-live-shirt','Eddie’s Live Shirt','Dead by Daylight — Iron Maiden Collection (2024)','bhvr-maiden','official-costume','torso-only',
-  'T-shirt de tournée pour ces trois Survivants originaux présents. Produire une coupe et un raccord propres à Dwight, Meg et Claudette ; la source annonce des différences selon le porteur, donc ne pas déclarer les trois impressions identiques sans captures. Conserver tête, bas et identité ; ne pas équiper automatiquement les Survivants sous licence ni importer une musique.',
-  'Tour shirt for these three present original Survivors. Produce wearer-specific fit and joints for Dwight, Meg and Claudette; the source mentions wearer-dependent differences, so do not assert identical prints without screenshots. Preserve head, lower body and identity; no automatic licensed-Survivor assignment or music import.'),
- costume('Killing Floor 2',['killing_floor_2_dj_scully_dj_masque','killing_floor_2_mr_foster_masque_a_gaz'],
-  'kf2-scullyphones','Scullyphones','Killing Floor 2 — Digital Deluxe Edition','tripwire-deluxe','official-accessory','headphones',
-  'Casque audio Scullyphones : raccord distinct sur DJ Scully et sur le masque à gaz de Mr Foster. Relever arceau, oreillettes, attaches et occultations sur chaque modèle. Les variantes de couleur ne sont pas nommées dans l’extrait : ne pas inventer des droits supplémentaires. Aucun personnage, voix, tenue de corps ou avantage accordé.',
-  'Scullyphones headphones: separate fit on DJ Scully and Mr Foster’s gas mask. Record headband, earcups, attachment and occlusion on each model. The excerpt does not name color variants: do not invent extra entitlements. No character, voice pack, body outfit or advantage is granted.')
+ dlcDeadByDaylight.createOfficialCostumesR12({ costume }),
+ dlcKillingFloor2.createOfficialCostumesR12({ costume })
 ]);
 const research=(universe,id,key,sourceId,fr,en,status='REFERENCE_DETAILS_REQUIRED')=>Object.freeze({universe,id,key,
  sourceUrl:sources.get(sourceId).url,question:L(fr,en),status,note:'Research only. No entitlement, art approval or automatic substitution.'});
 export const WARDROBE_RESEARCH_R12=Object.freeze([
- research('Dead Rising','dead_rising_frank_west','drdr-base-wardrobe','capcom-drdr-packs','Compléter les vêtements du jeu de base et les autres épisodes : les vingt noms des six packs ne sont pas toute la garde-robe de Frank.','Research base-game clothing and other releases: twenty names from six packs do not exhaust Frank’s wardrobe.'),
- research('Dead Rising','dead_rising_frank_west','otr-skills-attire','capcom-otr-research','BBQ Chef, COSPLAY, Firefighter, Cyborg : distinguer composant vestimentaire, porteur et effets avant tout ajout.','BBQ Chef, COSPLAY, Firefighter, Cyborg: establish clothing component, wearer and gameplay effects before adding rights.','CLOTHING_COMPONENT_UNRESOLVED'),
- research('Dead Rising','dead_rising_chuck_greene','dr2-skills-attire','capcom-dr2-research','Ninja, Psychopath, Soldier of Fortune, Sports Fan : documenter séparément la tenue de Chuck et les capacités du pack.','Ninja, Psychopath, Soldier of Fortune, Sports Fan: separately document Chuck’s attire and pack abilities.','CLOTHING_COMPONENT_UNRESOLVED'),
- research('Dead by Daylight','dead_by_daylight_doctor','dbd-pharoah-eddie-identity','bhvr-maiden','Pharoah Eddie, modèle Legendary du Doctor : définir identité représentée et compatibilité avant de le traiter comme un vêtement.','Pharoah Eddie, the Doctor Legendary model: establish depicted identity and compatibility before treating it as clothing.','LEGENDARY_IDENTITY_REVIEW'),
+ dlcDeadRising.createWardrobeResearchR12({ research }),
+ dlcDeadRising.createWardrobeResearchR122({ research }),
+ dlcDeadRising.createWardrobeResearchR123({ research }),
+ dlcDeadByDaylight.createWardrobeResearchR12({ research }),
  ...['dwight_fairfield','claudette_morel','nurse','huntress'].map(id=>research('Dead by Daylight',`dead_by_daylight_${id}`,`dbd-charity-${id.replaceAll('_','-')}`,'bhvr-charity-research','Charity Chest : relever le nom exact, le composant et le modèle de cette récompense ; la liste de porteurs seule ne suffit pas.','Charity Chest: obtain this reward’s exact name, component and model; a recipient list alone is insufficient.','NAMED_ITEM_AND_COMPONENT_UNRESOLVED')),
  ...['dj_scully_dj_masque','mr_foster_masque_a_gaz'].map(id=>research('Killing Floor 2',`killing_floor_2_${id}`,`kf2-variants-${id.replaceAll('_','-')}`,'tripwire-deluxe','Documenter chaque variante de Scullyphones ; ne pas fabriquer de noms ou de couleurs à partir de « multiple variants ».','Document each Scullyphones variant; do not invent names or colors from “multiple variants”.','VARIANT_NAMES_UNRESOLVED'))
 ]);
@@ -70,8 +69,5 @@ export const UNBOUND_COSTUME_RESEARCH_R12=Object.freeze([
  sourceEvidence:'PUBLISHER_NAMED_VARIANT_AND_WEARER',status:'ACTOR_BINDING_MISSING',equippable:false,
  note:'Exact DBD wearer not linked. Legion Frank is not Frank West; no fuzzy name or cross-universe reward.'})));
 export const WARDROBE_SOURCE_SCOPES_R12=Object.freeze([
- Object.freeze({id:'drdr-six-named-packs-2024',universe:'Dead Rising',actorId:'dead_rising_frank_west',
-  sourceUrl:sources.get('capcom-drdr-packs').url,checkedOn,
-  expectedItems:Object.freeze(DRDR_NAMED_PACKS_R12.flatMap(p=>p.items)),
-  boundary:'Only the 20 named costumes in six listed DLC packs; excludes base-game unlocks, other games, BGM, weapons and full visual review.'})
+ dlcDeadRising.createWardrobeSourceScopesR12({ DRDR_NAMED_PACKS_R12, checkedOn, sources })
 ]);

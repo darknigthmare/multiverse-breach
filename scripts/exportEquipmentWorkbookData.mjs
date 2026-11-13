@@ -1,5 +1,5 @@
 /** Read-only, reproducible inventory of resolved actors and five item registries.
- * node --experimental-loader ./docs/excel/tools/json-loader.mjs \
+ * node --loader ./scripts/sourceSceneTestLoader.mjs \
  *   scripts/exportEquipmentWorkbookData.mjs OUT_DIR SOURCE_COMMIT [TREE_JSON] [YYYY-MM-DD]
  * TREE_JSON, when supplied: {sourceCommit,truncated:false,raw:<complete output of
  * git ls-tree -r -z --full-tree SOURCE_COMMIT>}. No media blob download is needed.
@@ -26,6 +26,7 @@ import { wardrobeActorKey } from '../src/game/wardrobe.js';
 import { getItemSpriteSrc } from '../src/game/spriteAssets.js';
 import { GEAR_SHOP_VISUAL_CONTRACTS } from '../src/game/gearShopVisualContracts.js';
 import { resolveSourceSignature } from '../src/game/signatureSourceKits.js';
+import { projectExportAssetTree } from './exportAssetTree.mjs';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const REPO = 'https://github.com/darknigthmare/multiverse-breach';
@@ -102,7 +103,7 @@ function gitTree(sha, suppliedFile) {
     raw = snapshot.raw;
   } else {
     // No -l: requesting blob sizes would download omitted media in a partial clone.
-    raw = execFileSync('git', ['-C', ROOT, 'ls-tree', '-r', '-z', '--full-tree', sha], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    raw = execFileSync('git', ['-C', ROOT, 'ls-tree', '-r', '-z', '--full-tree', sha], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: { ...process.env, GIT_NO_LAZY_FETCH: '1' } });
   }
   return new Map(raw.split('\0').filter(Boolean).map(line => {
     const [head, ...name] = line.split('\t'), [mode, type, blob] = head.split(/\s+/);
@@ -110,18 +111,28 @@ function gitTree(sha, suppliedFile) {
   }).filter(([, row]) => row.type === 'blob'));
 }
 
-function validateSources(tree) {
+export function validateEquipmentSources(tree, root = ROOT) {
   const files = [];
   function walk(folder) {
-    for (const entry of fs.readdirSync(path.join(ROOT, folder), { withFileTypes: true }).sort((a, b) => cmp(a.name, b.name))) {
+    // Assets are audited from the supplied Git tree, not read or downloaded.
+    if (/^DLC\/[^/]+\/assets$/.test(folder)) return;
+    for (const entry of fs.readdirSync(path.join(root, folder), { withFileTypes: true }).sort((a, b) => cmp(a.name, b.name))) {
       const filename = `${folder}/${entry.name}`;
       if (entry.isDirectory()) walk(filename);
-      else if (entry.isFile() && /\.(js|json)$/.test(entry.name)) files.push(filename);
+      else if (entry.isFile() && /\.(m?js|json)$/.test(entry.name)) files.push(filename);
     }
   }
-  walk('src/game'); files.push('src/App.jsx', 'src/components/HubScreen.jsx');
+  walk('src/game');
+  if (fs.existsSync(path.join(root, 'DLC'))) walk('DLC');
+  files.push('src/App.jsx', 'src/components/HubScreen.jsx');
+  const materialized = new Set(files);
+  for (const filename of tree.keys()) {
+    const source = /^(?:src\/game|DLC)\/.+\.(?:m?js|json)$/.test(filename)
+      && !/^DLC\/[^/]+\/assets\//.test(filename);
+    if (source && !materialized.has(filename)) throw new Error(`Source missing from checkout: ${filename}`);
+  }
   return files.map(filename => {
-    const bytes = fs.readFileSync(path.join(ROOT, filename));
+    const bytes = fs.readFileSync(path.join(root, filename));
     const blob = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
     if (tree.get(filename)?.sha !== blob) throw new Error(`Source differs from pinned commit: ${filename}`);
     return { path: filename, gitBlob: blob, bytes: bytes.length };
@@ -167,7 +178,8 @@ const tally = (rows, key) => {
 
 export function buildEquipmentInventory(sourceCommit, suppliedTree = '', asOfDate = '2026-10-26') {
   if (!/^[a-f0-9]{40}$/.test(sourceCommit || '') || !/^\d{4}-\d{2}-\d{2}$/.test(asOfDate)) throw new Error('Full source SHA and YYYY-MM-DD date required.');
-  const tree = gitTree(sourceCommit, suppliedTree), sourceFiles = validateSources(tree);
+  const tree = gitTree(sourceCommit, suppliedTree), sourceFiles = validateEquipmentSources(tree);
+  const assetIndex = projectExportAssetTree(tree);
   const runtimeCatalogs = () => [HEROES_DB, ENEMIES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, BATTLE_ITEM_CATALOG, SPECIAL_EVENT_REWARD_ITEMS, EXPANDED_EVENT_SHOP_ITEMS];
   const sourceDigest = digest(runtimeCatalogs());
   const originals = new Set(['Nexus de Convergence', ...ORIGINAL_UNIVERSE_DEFINITIONS.filter(row => row.isOriginal === true || row.sourceType === 'original').map(row => row.universe), ...OC_DLC_UNIVERSE_KEYS]);
@@ -212,7 +224,7 @@ export function buildEquipmentInventory(sourceCommit, suppliedTree = '', asOfDat
       slot: text(row.slot), role: text(row.role), tier: text(row.tier), canonicalName: text(row.canonicalName), sourceOwner: text(row.sourceOwner), incarnation: text(row.incarnation),
       canonicalItemId: text(row.canonicalItemId), sourceItemId: text(row.sourceItemId), linkedItemKeys: [], catalogPeerKeys: [], sourceItemLinkStatus: row.sourceItemId ? 'A_RESOUDRE' : 'NON_APPLICABLE',
       description: text(row.desc) || text(row.description), descriptionEn: text(row.desc, 'en') || text(row.description, 'en'),
-      visualAnchor: text(row.visualAnchor) || text(contract?.visualAnchor), referenceUrls: safeReferences([refs(row), refs(contract)]), ...inspectItemAsset(getItemSpriteSrc(row), tree),
+      visualAnchor: text(row.visualAnchor) || text(contract?.visualAnchor), referenceUrls: safeReferences([refs(row), refs(contract)]), ...inspectItemAsset(getItemSpriteSrc(row), assetIndex),
       declaredIconPath: row.icon || '', iconPrompt: row.iconPrompt || row.prompt || '', boost: row.boost || {}, cost: row.cost ?? null, tokenCost: row.tokenCost ?? null,
       effect: row.effect ?? null, effectSource: row.effectSource || '', gameplayPolicy: row.gameplayPolicy || {}, defaultKitPolicy: text(row.defaultKitPolicy),
       sourceScope: original ? 'ORIGINAL_DESIGN_OR_ADAPTATION' : 'EXTERNAL_OR_UNRESOLVED', sourcePath, sourceUrl: url(sourceCommit, sourcePath), sourceRecord,
@@ -305,7 +317,7 @@ export function buildEquipmentInventory(sourceCommit, suppliedTree = '', asOfDat
     ['ASSET_TREE', 'Chemins résolus par spriteAssets.js et présence contrôlée dans l’arbre Git complet, sans inspection des pixels.', 'src/game/spriteAssets.js']
   ].map(([rule, detail, sourcePath]) => ({ rule, detail, sourcePath, sourceUrl: url(sourceCommit, sourcePath) }));
   if (sourceDigest !== digest(runtimeCatalogs())) throw new Error('Export mutated runtime catalogs.');
-  if (digest(sourceFiles) !== digest(validateSources(tree))) throw new Error('Sources changed during export.');
+  if (digest(sourceFiles) !== digest(validateEquipmentSources(tree))) throw new Error('Sources changed during export.');
   return { metadata: { sourceCommit, asOfDate, sourceDigest, sourceFiles, actorKeyFormat: 'JSON [universe, id:ID or name:NAME]',
     limitations: ['Acteurs actifs et cinq catalogues résolus ; pas tous les objets absents des œuvres.', 'Catégories matérielles issues d’un triage explicite ; recherche externe et revue visuelle restent ouvertes.', 'Statistiques et effets de combat sont des adaptations du projet.', 'Les références déclarées ne sont pas revalidées sur le Web par cet export.'] },
     summary, compatibilityRules, initialLoadout, defaultAssignments, actors, items, associations, gaps };

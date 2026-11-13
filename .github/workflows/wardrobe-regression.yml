@@ -3,7 +3,7 @@ on:
   push:
     branches: [codex/costumes-fidelite-r14-2026-10-25]
   pull_request:
-    paths: ['src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
+    paths: ['DLC/**', 'src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
 permissions:
   contents: read
 concurrency:
@@ -23,12 +23,19 @@ jobs:
             /*
             !/*/
             /src/
+            /DLC/
+            !/DLC/*/assets/
+            /DLC/*/assets/**/*.json
             /scripts/
             /api/
             /public/**/*.json
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
+      - name: Install locked source tooling before structural tests
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Prepare available DLC assets
+        run: node scripts/prepareDlcAssets.mjs --available
       - name: Archive exact source without downloading bitmap blobs
         run: |
           mkdir -p /tmp/wardrobe-review
@@ -46,7 +53,10 @@ jobs:
               manifest=[]
               for e in rows:
                   p=pathlib.Path(e['path'])
-                  include=(p.parts[0] in ('src','scripts','api') and p.suffix in ('.js','.jsx','.json','.mjs','.css','.py','.html')) or (p.parts[0]=='public' and p.suffix=='.json') or (len(p.parts)==1 and p.suffix in ('.json','.js','.mjs','.html'))
+                  # Match the sparse checkout: asset metadata is included, review
+                  # pages and bitmaps are omitted just as they were under public/.
+                  if p.parts[0]=='DLC' and len(p.parts)>2 and p.parts[2]=='assets' and p.suffix!='.json': continue
+                  include=(p.parts[0] in ('src','scripts','api','DLC') and p.suffix in ('.js','.jsx','.json','.mjs','.css','.py','.html')) or (p.parts[0]=='public' and p.suffix=='.json') or (len(p.parts)==1 and p.suffix in ('.json','.js','.mjs','.html'))
                   if not include: continue
                   b=(root/p).read_bytes()
                   assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['sha'],e['path']
@@ -74,7 +84,6 @@ jobs:
       - name: Build sources without regenerating bitmap library
         run: |
           set -euo pipefail
-          npm ci --ignore-scripts --no-audit --no-fund
           npx vite build 2>&1 | tee /tmp/wardrobe-review/build.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

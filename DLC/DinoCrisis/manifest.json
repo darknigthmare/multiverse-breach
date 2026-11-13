@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "dino-crisis",
+  "universe": "Dino Crisis",
+  "directory": "DLC/DinoCrisis",
+  "registration": "runtime",
+  "catalogOrder": 6,
+  "modules": [
+    {
+      "path": "data/battleItems.js",
+      "runtimeAdapter": "src/game/battleItems.js"
+    },
+    {
+      "path": "data/characterPlaques.js",
+      "runtimeAdapter": "src/game/characterPlaques.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/legacyStages.js",
+      "runtimeAdapter": "src/game/legacyStageCatalog.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/narrativeSystems.js",
+      "runtimeAdapter": "src/game/narrativeSystems.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

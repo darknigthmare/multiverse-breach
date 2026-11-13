@@ -98,6 +98,60 @@ const localPath = (root, value) => {
   return path.resolve(root, value.replace(/^\//, ''));
 };
 const isVisualFile = file => file && /\.(?:png|jpe?g|webp|gif|avif|svg|pdf)$/i.test(file) && existsSync(file) && statSync(file).isFile();
+// Reuse only an explicitly declared exact copy. Absence is ENOENT alone: a
+// symlink, broken link, non-directory ancestor or unreadable path is not absence.
+const resolveDeclaredPublicCopy = (root, reference) => {
+  const copy = reference.publicByteExactCopy;
+  if (copy == null) return reference;
+  const fail = detail => { throw new Error(`CG public byte-exact copy: ${detail}`); };
+  if (!copy || typeof copy !== 'object' || Array.isArray(copy)
+    || !relativeFile(copy.path) || !copy.path.startsWith('docs/cg/references/')
+    || /[\\:%?#\x00-\x1f\x7f]/.test(copy.path)
+    || !shaPattern.test(reference.sha256 || '') || copy.sha256 !== reference.sha256) {
+    fail('invalid canonical alias path or declared SHA-256');
+  }
+  for (const item of [reference, copy]) if (Object.hasOwn(item, 'bytes')
+    && (!Number.isSafeInteger(item.bytes) || item.bytes < 0)) fail('invalid declared byte count');
+  const inspect = file => {
+    let current = path.parse(file).root;
+    const parts = file.slice(current.length).split(path.sep);
+    for (let index = 0; index < parts.length; index += 1) {
+      current = path.join(current, parts[index]);
+      let info;
+      try { info = lstatSync(current); }
+      catch (error) { if (error.code === 'ENOENT') return false; throw error; }
+      if (info.isSymbolicLink()) fail('reference paths must not contain symlinks');
+      if (index < parts.length - 1 ? !info.isDirectory() : !info.isFile()) {
+        fail('reference path must have directory ancestors and a regular file');
+      }
+    }
+    return true;
+  };
+  const checkedBytes = (file, label) => {
+    const bytes = readFileSync(file);
+    if (digest(bytes) !== reference.sha256) fail(`${label} SHA-256 mismatch`);
+    if ([reference, copy].some(item => Object.hasOwn(item, 'bytes') && item.bytes !== bytes.length)) {
+      fail(`${label} byte count mismatch`);
+    }
+    return bytes;
+  };
+  const original = typeof reference.path === 'string' && path.isAbsolute(reference.path)
+    && !/^\/(?:sprites|cg|visuals|images)\//.test(reference.path)
+    ? path.resolve(reference.path) : localPath(root, reference.path);
+  if (!original) fail('original reference must be a local file');
+  if (inspect(original)) {
+    checkedBytes(original, 'original');
+    return reference;
+  }
+  const alias = path.resolve(root, copy.path);
+  if (!inspect(alias)) return reference;
+  const bytes = checkedBytes(alias, 'public alias');
+  return { ...reference, path: copy.path, resolvedAlias: {
+    originalPath: reference.path, path: copy.path, sha256: reference.sha256, bytes: bytes.length,
+    originalAvailable: false, originalHashVerifiedInThisRun: false,
+    publicCopyHashVerified: true, additionalIndependentSource: false
+  } };
+};
 const locksFrom = document => {
   const result = {};
   for (const supplied of [document.visualLocks, document.identityLocks, document.visualLockAxes]) {
@@ -133,8 +187,13 @@ const identityReference = (root, reference, document, incarnation = document.inc
   // Generated target artwork is never evidence of its own identity. Explicit
   // original-project sprite references can qualify; style-only sprites cannot.
   const resolved = localPath(root, reference.path);
+  const originalPath = reference.resolvedAlias?.originalPath;
+  const originalResolved = originalPath && path.isAbsolute(originalPath)
+    && !/^\/(?:sprites|cg|visuals|images)\//.test(originalPath)
+    ? path.resolve(originalPath) : originalPath ? localPath(root, originalPath) : null;
   const generatedCgDirectory = path.resolve(root, 'public', 'cg') + path.sep;
   if (/(?:^|\/)generated_images\/|^\/?(?:public\/)?cg\//.test(reference.path || '') || resolved?.startsWith(generatedCgDirectory)
+    || /(?:^|\/)generated_images\/|^\/?(?:public\/)?cg\//.test(originalPath || '') || originalResolved?.startsWith(generatedCgDirectory)
     || /generated[- ]project[- ]reference[- ]not[- ]independent/i.test(role)) return false;
   if (!compatibleIncarnation(reference.sourceIncarnation, incarnation)) return false;
   if (reference.referenceCharacter) {
@@ -176,7 +235,8 @@ export function loadCgSourceEvidence(root) {
     if (!id || Array.isArray(raw)) continue;
     const document = { ...raw, file, visualLocks: locksFrom(raw) };
     const refs = [...list(raw.references), ...(raw.path || raw.localPath ? [raw] : [])];
-    document.references = refs.map(ref => applyCgReferenceUseCorrection(root, id, normalizeReference(ref, document), corrections));
+    document.references = refs.map(ref => resolveDeclaredPublicCopy(root,
+      applyCgReferenceUseCorrection(root, id, normalizeReference(ref, document), corrections)));
     groups.set(id, [...(groups.get(id) || []), document]);
   }
   const result = new Map();
@@ -199,7 +259,17 @@ export function loadCgSourceEvidence(root) {
     }
     const references = documents.flatMap(doc => doc.references);
     const identityVisualReferences = selected ? cohort.flatMap(doc => doc.references.filter(ref => identityReference(root, ref, doc, selected.incarnation))) : [];
-    const dedupeRefs = refs => [...new Map(refs.map(ref => [`${ref.path}|${ref.url}|${ref.referenceScope}|${ref.referencePurpose}|${ref.slot}`, ref])).values()];
+    const dedupeRefs = refs => [...new Map(refs.map(ref => [`${ref.resolvedAlias?.originalPath || ref.path}|${ref.url}|${ref.referenceScope}|${ref.referencePurpose}|${ref.slot}`, ref])).values()];
+    // Within this selected incarnation cohort, a reused bitmap is one identity
+    // source per purpose. Leave historical aliases without a fallback unchanged.
+    const reused = new Set(identityVisualReferences.filter(ref => ref.resolvedAlias)
+      .map(ref => `${ref.sha256}|${ref.referencePurpose}`));
+    const identityBySource = new Map();
+    for (const ref of dedupeRefs(identityVisualReferences)) {
+      const hashPurpose = `${ref.sha256}|${ref.referencePurpose}`;
+      const identity = reused.has(hashPurpose) ? hashPurpose : `${ref.path}|${ref.url}|${ref.referenceScope}|${ref.referencePurpose}|${ref.slot}`;
+      if (!identityBySource.has(identity) || ref.resolvedAlias) identityBySource.set(identity, ref);
+    }
     const evidence = {
       ...(selected || {}), characterId: id,
       incarnation: text(selected?.incarnation) || null,
@@ -211,7 +281,7 @@ export function loadCgSourceEvidence(root) {
       ageStatus: selected?.ageStatus || cohort.findLast(doc => doc.ageStatus)?.ageStatus || 'not-established',
       sourceRefs: unique(documents.flatMap(doc => lines(doc.sourceRefs))),
       limitations: unique(documents.flatMap(doc => [...lines(doc.limitations), ...lines(doc.scopeLimitations), ...lines(doc.limits)])),
-      references: dedupeRefs(references), identityVisualReferences: dedupeRefs(identityVisualReferences),
+      references: dedupeRefs(references), identityVisualReferences: [...identityBySource.values()],
       documents,
       canonicalFidelityApproved: false, visualFidelityApproved: false
     };

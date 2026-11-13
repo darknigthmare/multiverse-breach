@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "little-big-planet",
+  "universe": "LittleBigPlanet",
+  "directory": "DLC/LittleBigPlanet",
+  "registration": "runtime",
+  "catalogOrder": 197,
+  "modules": [
+    {
+      "path": "data/expandedUniverses.js",
+      "runtimeAdapter": "src/game/expandedUniverses.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/stageLoreProfiles.js",
+      "runtimeAdapter": "src/game/stageLoreProfiles.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: Naru’s authored Prey scene reuses the actual masked sixteen-pose delivery without mutating the catalog
+ok 1 - Naru’s authored Prey scene reuses the actual masked sixteen-pose delivery without mutating the catalog
+  ---
+  duration_ms: 2.965703
+  type: 'test'
+  ...
+# Subtest: the real Prey enemy roster binds its locked 1719 world boss without requiring the playable ally incarnation
+ok 2 - the real Prey enemy roster binds its locked 1719 world boss without requiring the playable ally incarnation
+  ---
+  duration_ms: 0.495457
+  type: 'test'
+  ...
+# Subtest: stealing the mask prevents reuse before mounting it, in the bog, and after the guided bolt
+ok 3 - stealing the mask prevents reuse before mounting it, in the bog, and after the guided bolt
+  ---
+  duration_ms: 0.27861
+  type: 'test'
+  ...
+# Subtest: other film scenes, copied definitions and replacement protagonists cannot borrow Feral’s masked atlas
+ok 4 - other film scenes, copied definitions and replacement protagonists cannot borrow Feral’s masked atlas
+  ---
+  duration_ms: 0.19243
+  type: 'test'
+  ...
+# Subtest: a conflicting threat identity, universe, mask state or explicit incarnation keeps its own art
+ok 5 - a conflicting threat identity, universe, mask state or explicit incarnation keeps its own art
+  ---
+  duration_ms: 0.430119
+  type: 'test'
+  ...
+# Subtest: absent or unresolved Feral does not create a substitute body
+ok 6 - absent or unresolved Feral does not create a substitute body
+  ---
+  duration_ms: 0.15966
+  type: 'test'
+  ...
+# Subtest: the real stage pool preloads the rendered Feral atlas without requesting its absent default boss path
+ok 7 - the real stage pool preloads the rendered Feral atlas without requesting its absent default boss path
+  ---
+  duration_ms: 0.791333
+  type: 'test'
+  ...
+# Subtest: Prey forest stays with its exact tactical source scene, never another mode or edition
+ok 8 - Prey forest stays with its exact tactical source scene, never another mode or edition
+  ---
+  duration_ms: 3.563965
+  type: 'test'
+  ...
+# Subtest: the three source finales have distinct DLC artwork and retain their unfinished source-specific props
+ok 9 - the three source finales have distinct DLC artwork and retain their unfinished source-specific props
+  ---
+  duration_ms: 7.606742
+  type: 'test'
+  ...
+# Subtest: real-image loading keeps the schematic until ready, then draws with a centered cover crop
+ok 10 - real-image loading keeps the schematic until ready, then draws with a centered cover crop
+  ---
+  duration_ms: 0.427004
+  type: 'test'
+  ...
+# Subtest: failed images stay on the schematic rather than drawing a broken or wrong scene
+ok 11 - failed images stay on the schematic rather than drawing a broken or wrong scene
+  ---
+  duration_ms: 14.812841
+  type: 'test'
+  ...
+# Subtest: Sarii portrait is restricted to the exact Prey source encounter and companion
+ok 12 - Sarii portrait is restricted to the exact Prey source encounter and companion
+  ---
+  duration_ms: 0.85542
+  type: 'test'
+  ...
+# Subtest: published portrait is the single transparent image recorded by provenance, not a body sheet
+ok 13 - published portrait is the single transparent image recorded by provenance, not a body sheet
+  ---
+  duration_ms: 0.736702
+  type: 'test'
+  ...
+# Subtest: portrait waits for the real dimensions, then follows its supplied cell without mutating the scene
+ok 14 - portrait waits for the real dimensions, then follows its supplied cell without mutating the scene
+  ---
+  duration_ms: 5.19138
+  type: 'test'
+  ...
+# Subtest: load errors and unexpected image dimensions keep the existing fallback available
+ok 15 - load errors and unexpected image dimensions keep the existing fallback available
+  ---
+  duration_ms: 2.909558
+  type: 'test'
+  ...
+# Subtest: SSR and invalid anchor positions draw nothing
+ok 16 - SSR and invalid anchor positions draw nothing
+  ---
+  duration_ms: 1.407833
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2121.534449

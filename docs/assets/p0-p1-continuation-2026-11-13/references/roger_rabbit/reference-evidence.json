@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorId": "roger_rabbit",
+  "incarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+  "sourceFile": "DLC/RogerRabbit/data/canonP0SourceKits.js",
+  "observedContract": [
+    "OfficialD23 film image shows white toon rabbit, pink nose, orange/red hair tuft, blue bow tie with yellow/orange dots, yellow/orange gloves and red overalls.",
+    "The visible scene shows elastic toon body in a bar; no armor or energy weapon."
+  ],
+  "missingContract": [
+    "Ear tips and feet are cropped/hidden; exact neutral standing body, sole geometry and rear view remain unresolved.",
+    "Do not infer all animation extremes or copy source motion from one still."
+  ],
+  "rejected": [
+    {
+      "candidate": "roger-poster",
+      "reason": "HTTP403; no local image acquired; not qualified."
+    }
+  ],
+  "status": "partial-primary-reference-ready-for-bounded-art-candidates-full-body-review-open",
+  "references": [
+    {
+      "url": "https://d23.com/app/uploads/2015/07/who-framed-roger-rabbit-1180x6001-1180x600.jpg",
+      "finalUrl": "https://d23.com/app/uploads/2015/07/who-framed-roger-rabbit-1180x6001-1180x600.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 134112,
+      "sha256": "44635a2b03c66d7a4f8070566ab71de30d2ec662ec31fcf78f90ec2c93499a96",
+      "retrievedAt": "2026-11-13T06:42:22.372886+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1180,
+        600
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/roger_rabbit/roger-d23-still.jpg",
+      "sourcePageUrl": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "sourceKind": "PRIMARY_DISNEY_FILM_ENTRY_IMAGE",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Head with cropped ear tips, face, bow tie, gloves and red overalls; feet and full lower body not established.",
+      "sourceScope": "head-outfit-and-hands-only",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    }
+  ],
+  "productionGate": {
+    "usableScopes": [
+      "face-hair-tuft-nose",
+      "bowtie-overalls-gloves",
+      "upper-body-within-source-crop"
+    ],
+    "boundedCandidateGenerationSupported": true,
+    "fullBodyQualified": false,
+    "fullBodyGapsRemain": true,
+    "mayUseFor": "Produce separate candidates limited to the listed observed surfaces. Preserve edition and record generated adaptation. Full-body production and exact hidden details remain unsupported by this acquisition.",
+    "source1to1Verified": false,
+    "automaticFidelityApproval": false
+  },
+  "scope": "Source acquisition and bounded observation only. No game sprite, animation, runtime binding or1:1 approval created."
+}

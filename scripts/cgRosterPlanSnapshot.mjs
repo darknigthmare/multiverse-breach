@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
+import { CG_PUBLISHED_DELIVERY_METADATA_PINS, loadCgPublishedDeliveryMetadata } from './cgPublishedDeliveryMetadata.mjs';
 
 // This append-only amendment changes current unqualified local-candidate
 // metadata only. It cannot rewrite inspected CG evidence or generation history.
@@ -42,6 +43,10 @@ export function validateCgLocalCandidateAmendment({ root, rebuilt, published, pu
   assert.equal(digest(reportText), amendment.historicalReport.sha256, 'Historical CG production report changed');
   assert.equal(amendment.historicalPlan.path, 'docs/cg/roster-production-2026-10-18.json');
   assert.equal(amendment.historicalReport.path, 'docs/cg/roster-production-2026-10-18.md');
+  return projectCgCandidateEntries({ root, rebuilt, published, entries: amendment.entries });
+}
+
+function projectCgCandidateEntries({ root, rebuilt, published, entries }) {
   assert.equal(rebuilt.subjects.length, published.subjects.length, 'CG subject count changed');
   const projected = structuredClone(rebuilt);
   const indices = new Map(published.subjects.map((subject, index) => [subject.characterId, index]));
@@ -49,7 +54,7 @@ export function validateCgLocalCandidateAmendment({ root, rebuilt, published, pu
   const dossiers = new Map(readJson(path.join(root, 'docs/rift-dossiers/catalog.json')).entrees
     .filter(entry => entry.famille === 'arc-personnage').map(entry => [entry.id, entry]));
   const nativeRegistries = new Map(), subjectIds = [];
-  for (const entry of amendment.entries) {
+  for (const entry of entries) {
     assert.ok(!subjectIds.includes(entry.characterId), 'Duplicate amended CG owner');
     const index = indices.get(entry.characterId);
     assert.notEqual(index, undefined, `Unknown amended CG owner: ${entry.characterId}`);
@@ -126,10 +131,10 @@ function restoreDescriptorValue(plan, fieldPath, previous) {
   parent[key] = structuredClone(previous);
 }
 
-function validateCurrentDescriptorAmendment({ root, rebuilt, published, projected, heroes }) {
+function validateCurrentDescriptorAmendment({ root, rebuilt, published, projected, heroes, currentAmendment = null, verifyHistoricalCgBitmaps = true }) {
   const bytes = readFileSync(path.join(root, CG_CURRENT_DESCRIPTOR_AMENDMENT_PATH));
   assert.equal(digest(bytes), CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256, 'Current descriptor amendment changed; append a reviewed record instead');
-  const amendment = JSON.parse(bytes);
+  const amendment = currentAmendment || JSON.parse(bytes);
   assert.equal(amendment.schemaVersion, 1);
   assert.equal(amendment.fieldCount, 211);
   assert.equal(amendment.changes.length, 211);
@@ -197,7 +202,8 @@ function validateCurrentDescriptorAmendment({ root, rebuilt, published, projecte
     assert.equal(receipt.characterId, pin.characterId);
     for (const field of ['promptId', 'promptFile', 'referenceReviewFile']) assert.equal(receipt[field], pin[field], `CG generation receipt changed: ${pin.id}`);
   }
-  for (const pin of [...amendment.frozenEvidenceFiles, ...amendment.frozenAssets]) verifyFrozenCgFile(root, pin);
+  for (const pin of amendment.frozenEvidenceFiles) verifyFrozenCgFile(root, pin);
+  if (verifyHistoricalCgBitmaps) for (const pin of amendment.frozenAssets) verifyFrozenCgFile(root, pin);
   const pomni = amendment.pomni, oldPomni = historicalSubjects.get(pomni.characterId), currentPomni = currentSubjects.get(pomni.characterId);
   const pomniHero = byHero.get(pomni.characterId);
   assert.equal(pomni.characterId, 'pomni'); assert.equal(pomni.universe, 'Digital Circus');
@@ -269,6 +275,10 @@ export function validateCgRosterProductionSnapshot({ root, rebuilt, heroes: HERO
   };
   const plan = JSON.parse(publishedText);
   assertExact(buildCgRosterProductionReport(plan), reportText, 'Frozen CG plan must still render its original Markdown byte-for-byte');
+  if (digest(publishedText) === CG_GITHUB_2333_PUBLISHED_SHA256) {
+    return validateCgGithub2333Snapshot({ root: ROOT, rebuilt, heroes: HEROES_DB, published: plan, publishedText, reportText,
+      serialize: serializeCgRosterProductionPlan, buildReport: buildCgRosterProductionReport, diagnostic });
+  }
   const candidateProjection = validateCgLocalCandidateAmendment({ root: ROOT, rebuilt, published: plan, publishedText, reportText });
   const projected = candidateProjection.projected;
   const descriptorProjection = validateCurrentDescriptorAmendment({ root: ROOT, rebuilt, published: plan, projected, heroes: HEROES_DB });
@@ -427,4 +437,110 @@ export function validateCgRosterProductionSnapshot({ root, rebuilt, heroes: HERO
     'Concise report must remain exact after the validated source-availability projection');
   diagnostic(`Pinned private sources unavailable for ${projectedIds.join(', ')}; derived unproduced CG01 only: ${projectedCells.join(', ')}; current candidate metadata amended for ${candidateProjection.subjectIds.length} exact native owners and ${descriptorProjection.fields} exact descriptor fields; delivered CG records unchanged.`);
   return { mode: 'candidate-metadata-and-source-availability-amendment', candidateSubjects: candidateProjection.subjectIds.length, amendmentSha256: CG_LOCAL_CANDIDATE_AMENDMENT_SHA256, descriptorFields: descriptorProjection.fields, descriptorAmendmentSha256: CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256, deliveredEntriesPreserved: descriptorProjection.deliveredEntriesPreserved, missingPrivateSubjects: projectedIds, unproducedCg01: projectedCells };
+}
+
+export const CG_GITHUB_2333_PUBLISHED_SHA256 = 'ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e';
+export const CG_SOURCE_METADATA_AMENDMENT_PATH = 'scripts/fixtures/cg-source-metadata-amendment-2026-11-13.json';
+export const CG_SOURCE_METADATA_AMENDMENT_SHA256 = 'eba38c68b819869fc4cc31fd8b430c8562c9cc763fdc1c76a2ed632e30fbb0b4';
+
+function validateCgGithub2333Snapshot({ root, rebuilt, heroes, published, publishedText, reportText, serialize, buildReport, diagnostic }) {
+  const bytes = readFileSync(path.join(root, CG_SOURCE_METADATA_AMENDMENT_PATH));
+  assert.equal(digest(bytes), CG_SOURCE_METADATA_AMENDMENT_SHA256, 'Nov13 CG source metadata amendment changed; append a reviewed amendment');
+  const amendment = JSON.parse(bytes);
+  assert.equal(amendment.schemaVersion, 1);
+  assert.equal(amendment.upstreamMaster, '2333c2c0c524414c6c7ab84ca86d7e3e40c187ac');
+  assert.equal(amendment.identityAuthority, false);
+  assert.equal(amendment.changesGenerationHistory, false);
+  assert.equal(amendment.source1to1Verified, false);
+  assert.equal(amendment.captureValidationScope, 'metadata-only');
+  assert.equal(amendment.historicalCgMediaRevalidated, false);
+  assert.equal(amendment.historicalPlan.path, 'docs/cg/roster-production-2026-10-18.json');
+  assert.equal(amendment.historicalReport.path, 'docs/cg/roster-production-2026-10-18.md');
+  assert.equal(digest(publishedText), amendment.historicalPlan.sha256);
+  assert.equal(digest(reportText), amendment.historicalReport.sha256);
+  assert.equal(amendment.priorCandidateAmendment.path, CG_LOCAL_CANDIDATE_AMENDMENT_PATH);
+  assert.equal(amendment.priorCandidateAmendment.sha256, CG_LOCAL_CANDIDATE_AMENDMENT_SHA256);
+  assert.equal(amendment.priorDescriptorAmendment.path, CG_CURRENT_DESCRIPTOR_AMENDMENT_PATH);
+  assert.equal(amendment.priorDescriptorAmendment.sha256, CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256);
+  for (const pin of [amendment.historicalPlan, amendment.historicalReport, amendment.priorCandidateAmendment, amendment.priorDescriptorAmendment]) verifyFrozenCgFile(root, pin);
+  const priorCandidates = readJson(path.join(root, amendment.priorCandidateAmendment.path));
+  const priorDescriptors = readJson(path.join(root, amendment.priorDescriptorAmendment.path));
+  assert.equal(priorCandidates.entries.length, 606);
+  assert.equal(priorDescriptors.changes.length, 211);
+  assert.equal(amendment.candidateSubjectCount, 604);
+  assert.equal(amendment.candidateSelection.length, 604);
+  assert.equal(amendment.descriptorFieldCount, 211);
+  assert.equal(amendment.descriptorChanges.length, 211);
+  const seen = new Set();
+  const entries = amendment.candidateSelection.map(selection => {
+    assert.ok(Number.isInteger(selection.priorEntryIndex));
+    const entry = priorCandidates.entries[selection.priorEntryIndex];
+    assert.ok(entry, 'Unknown prior candidate index');
+    for (const key of ['characterId', 'universe', 'characterArcStageId']) assert.equal(selection[key], entry[key], 'Candidate receipt binding changed');
+    assert.ok(!seen.has(entry.characterId), 'Duplicate selected current CG candidate');
+    seen.add(entry.characterId);
+    return entry;
+  });
+  assert.equal(amendment.excludedPriorCandidateOwners.length, 2);
+  exact(amendment.excludedPriorCandidateOwners.map(entry => entry.characterId), ['hicks', 'darth_revan'], 'Only current Hicks and quarantined Revan leave the prior candidate projection');
+  const oldSubjects = new Map(published.subjects.map(subject => [subject.characterId, subject]));
+  const currentSubjects = new Map(rebuilt.subjects.map(subject => [subject.characterId, subject]));
+  for (const excluded of amendment.excludedPriorCandidateOwners) {
+    assert.ok(!seen.has(excluded.characterId));
+    seen.add(excluded.characterId);
+    for (const subject of [oldSubjects.get(excluded.characterId), currentSubjects.get(excluded.characterId)]) {
+      assert.ok(subject, 'Excluded candidate source disappeared');
+      assert.equal(subject.universe, excluded.universe);
+      assert.equal(subject.characterArcStageId, excluded.characterArcStageId);
+      exact(subject.identity.localCandidates, excluded.publishedLocalCandidates, 'Excluded candidate must retain its published correction/quarantine');
+      if (excluded.runtimeSpriteQuarantine) exact(subject.identity.runtimeSpriteQuarantine, excluded.runtimeSpriteQuarantine, 'Rejected source sprite quarantine changed');
+    }
+  }
+  exact([...seen].sort(), priorCandidates.entries.map(entry => entry.characterId).sort(), 'Prior candidate owner partition changed');
+  const candidateProjection = projectCgCandidateEntries({ root, rebuilt, published, entries });
+  const oldChanges = new Map(priorDescriptors.changes.map(change => [change.path, change]));
+  const seenChanges = new Set();
+  for (const change of amendment.descriptorChanges) {
+    const previous = oldChanges.get(change.previousAmendmentPath);
+    assert.ok(previous, 'Unknown prior descriptor amendment field');
+    assert.ok(!seenChanges.has(change.previousAmendmentPath), 'Duplicate prior descriptor amendment field');
+    seenChanges.add(change.previousAmendmentPath);
+    const oldKeys = previous.path.split('.'), newKeys = change.path.split('.');
+    assert.equal(newKeys[1], oldKeys[1], 'Descriptor family cannot change');
+    assert.equal(newKeys.slice(3).join('.'), oldKeys.slice(3).join('.'), 'Descriptor suffix cannot change');
+    exact(change, { ...previous, previousAmendmentPath: previous.path, path: change.path }, 'Only descriptor row indices may move after the new published deliveries');
+  }
+  assert.equal(seenChanges.size, oldChanges.size);
+  assert.equal(amendment.updatedEvidenceFiles.length, 1);
+  const updatedEvidence = amendment.updatedEvidenceFiles[0];
+  const registryPath = 'src/game/cg/cgRosterArtwork.generated.json';
+  assert.equal(updatedEvidence.previous.path, registryPath);
+  assert.equal(updatedEvidence.current.path, registryPath);
+  exact(updatedEvidence.previous, priorDescriptors.frozenEvidenceFiles.find(pin => pin.path === registryPath), 'Original registry evidence pin changed');
+  assert.equal(updatedEvidence.current.sha256, CG_PUBLISHED_DELIVERY_METADATA_PINS[registryPath], 'Only the exact newer published registry may replace that evidence pin');
+  verifyFrozenCgFile(root, updatedEvidence.current);
+  const currentDescriptors = { ...priorDescriptors,
+    historicalPlan: amendment.historicalPlan, historicalReport: amendment.historicalReport,
+    frozenEvidenceFiles: priorDescriptors.frozenEvidenceFiles.map(pin => pin.path === registryPath ? updatedEvidence.current : pin),
+    changes: amendment.descriptorChanges };
+  const descriptorProjection = validateCurrentDescriptorAmendment({ root, rebuilt, published,
+    projected: candidateProjection.projected, heroes, currentAmendment: currentDescriptors,
+    // The published declaration pins all historical CG output metadata. The
+    // production builder independently requires actual pixels; this snapshot
+    // comparison never pretends a partial checkout revalidated those bitmaps.
+    verifyHistoricalCgBitmaps: false });
+  const deliveryMetadata = loadCgPublishedDeliveryMetadata(root);
+  deliveryMetadata.assertDeliveredEntries(rebuilt);
+  assert.equal(amendment.unchangedGeneratedEntries, 1436);
+  const projectedText = serialize(candidateProjection.projected);
+  assert.equal(digest(projectedText), digest(publishedText), 'Plan changed outside pinned current-reference metadata amendments for GitHub 2333c2c0');
+  assert.equal(projectedText, publishedText, 'Projected GitHub 2333c2c0 plan must remain byte-exact');
+  assert.equal(buildReport(candidateProjection.projected), reportText, 'Projected GitHub 2333c2c0 report must remain byte-exact');
+  diagnostic('GitHub 2333c2c0 snapshot is byte-exact after 604 native-candidate and 211 descriptor projections; all 1436 published delivery declarations are preserved. Snapshot comparison does not revalidate historical CG pixels.');
+  return { mode: 'github-2333-source-metadata-amendment', candidateSubjects: candidateProjection.subjectIds.length,
+    amendmentSha256: CG_SOURCE_METADATA_AMENDMENT_SHA256, descriptorFields: descriptorProjection.fields,
+    descriptorAmendmentSha256: CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256,
+    deliveredEntriesPreserved: 1436, deliveredDescriptorEntriesPreserved: descriptorProjection.deliveredEntriesPreserved,
+    publishedPlanSha256: CG_GITHUB_2333_PUBLISHED_SHA256,
+    historicalCgMediaRevalidated: false, missingPrivateSubjects: [], unproducedCg01: [] };
 }

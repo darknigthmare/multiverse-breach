@@ -1,3 +1,7 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcSonic from '../../DLC/Sonic/data/wardrobeOfficialR11.js';
+import * as dlcFinalFantasyXV from '../../DLC/FinalFantasyXV/data/wardrobeOfficialR11.js';
+
 // R11: publisher-confirmed appearances, never completed art or an equipment/stat grant.
 const L = (fr, en) => Object.freeze({ fr, en });
 export const WARDROBE_SOURCES_R11 = Object.freeze([
@@ -64,10 +68,6 @@ export const UNBOUND_COSTUME_RESEARCH_R11 = Object.freeze([
 ].map(([actorName,costume,universe,sourceWork,sourceId,note])=>Object.freeze({actorName,costume,universe,sourceWork,sourceId,
   sourceUrl:sourceById.get(sourceId).url,sourceEvidence:'PUBLISHER_NAMED_VARIANT',status:'ACTOR_BINDING_MISSING',equippable:false,note})));
 export const WARDROBE_RESEARCH_R11 = Object.freeze([
-  Object.freeze({universe:'Sonic',id:'sonic_hedgehog',key:'superstars-mech-battle',sourceUrl:sourceById.get('sega-superstars').url,
-    question:L('Mech Sonic : définir le porteur et la portée Battle Mode avant tout droit de tenue.','Mech Sonic: establish the wearer and Battle Mode scope before defining a costume right.'),
-    status:'SOURCE_MODE_BINDING_UNRESOLVED',note:'Named mode-specific pack content. Not automatically a Sonic outfit or a Metal Sonic boss skin.'}),
-  Object.freeze({universe:'Final Fantasy XV',id:'noctis_ff15',key:'ffxv-royal-raiment-reference',sourceUrl:sourceById.get('square-ffxv-research').url,
-    question:L('Royal Raiment : compléter la preuve du porteur exact et ses vues dans cette édition.','Royal Raiment: complete exact-wearer evidence and views for this edition.'),
-    status:'WEARER_AND_TURNAROUND_REVIEW',note:'Outfit existence documented; do not infer a complete wearer reference from the pack list alone.'})
+  dlcSonic.createWardrobeResearchR11({ L, sourceById }),
+  dlcFinalFantasyXV.createWardrobeResearchR11({ L, sourceById })
 ]);

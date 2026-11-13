@@ -1,0 +1,60 @@
+.mosaic-resident-dialogue,
+.mosaic-evidence-ledger {
+  min-width: 0;
+  padding: 1em;
+  border: 1px solid rgba(57, 197, 187, .5);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(18, 41, 53, .95), rgba(9, 17, 31, .98));
+  color: #e4f4f8;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.mosaic-resident-dialogue { display: grid; gap: .9em; margin-bottom: 1.1em; }
+.mosaic-resident-dialogue *, .mosaic-resident-dialogue *::before, .mosaic-resident-dialogue *::after { box-sizing: border-box; }
+.mosaic-resident-dialogue h3,
+.mosaic-resident-dialogue h4,
+.mosaic-resident-dialogue p,
+.mosaic-evidence-ledger h4 { margin: 0; line-height: 1.6; }
+.mosaic-dialogue-heading > span { color: #8ae4dd; font-size: .85rem; letter-spacing: .08em; }
+.mosaic-resident-dialogue .mosaic-dialogue-heading > h3 { font-size: 1.25rem; }
+.mosaic-dialogue-quest { display: grid; gap: .65rem; min-width: 0; margin: 0; padding: 1rem; border-inline-start: .2rem solid #f3d58e; border-radius: .25rem; background: #312e23; }
+.mosaic-dialogue-quest figcaption { color: #f5dfab; font-size: .85rem; line-height: 1.6; }
+.mosaic-dialogue-quest blockquote { display: grid; gap: .75rem; margin: 0; min-width: 0; }
+.mosaic-dialogue-quest blockquote p,
+.nexus-play-copy .mosaic-dialogue-quest blockquote p { font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #f5f0e3; }
+.mosaic-dialogue-quest cite { font-size: .875rem; font-style: normal; color: #bce4df; }
+.mosaic-dialogue-offer { display: grid; gap: .5rem; min-width: 0; }
+.mosaic-dialogue-offer > button { width: 100%; color: #f7e9bc; border-color: #d6b96f; background: #403721; }
+.mosaic-resident-dialogue .mosaic-dialogue-location { color: #d8d1bb; font-size: .875rem; }
+.mosaic-dialogue-next { display: grid; gap: .35rem; padding: .85rem; border-inline-start: .2rem solid #8ae4dd; background: #102f39; }
+.mosaic-dialogue-next > span { color: #b4eee5; font-size: .875rem; font-weight: 600; }
+.mosaic-resident-dialogue .mosaic-dialogue-next > p { font-size: 1rem; }
+.mosaic-dialogue-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: .65rem; }
+.mosaic-dialogue-actions > button { width: 100%; min-width: 0; }
+.mosaic-dialogue-actions [data-dialogue-return] { border-color: #8ae4dd; background: #16464c; color: #f3fffb; }
+.mosaic-dialogue-actions .mosaic-dialogue-journal { border-color: #698893; background: #142530; color: #dcecef; }
+.mosaic-dialogue-background { min-width: 0; border-top: 1px solid #536b7c; padding-block-start: .5rem; }
+.mosaic-dialogue-background > summary { min-height: 44px; padding-block: .5rem; cursor: pointer; font-size: .875rem; line-height: 1.6; }
+.mosaic-dialogue-background .mosaic-dialogue-topics { margin-block: .5rem; }
+/* The terminal's legacy paragraph rule uses pixels; the root already applies
+   the reading preference, so rem follows it exactly once. */
+.mosaic-resident-dialogue p,
+.mosaic-evidence-ledger p,
+.nexus-play-copy .mosaic-resident-dialogue p,
+.nexus-play-copy .mosaic-evidence-ledger p { font-size: .875rem; line-height: 1.6; }
+.mosaic-dialogue-topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12em), 1fr)); gap: .5em; }
+.mosaic-dialogue-record { padding: 1em; border-left: 3px solid #39c5bb; background: rgba(3, 10, 20, .6); }
+.mosaic-dialogue-record > p { margin-top: .6em; }
+.mosaic-resident-dialogue .btn-retro,
+.mosaic-evidence-ledger .btn-retro { min-height: 44px; white-space: normal; font-size: 1rem; line-height: 1.4; }
+.mosaic-dialogue-topics [aria-pressed="true"] { border-color: #b5fff1; background: #214b54; text-decoration: underline; text-underline-offset: .25em; }
+.mosaic-resident-dialogue button:focus-visible,
+.mosaic-resident-dialogue summary:focus-visible,
+.mosaic-evidence-ledger button:focus-visible,
+.mosaic-evidence-ledger summary:focus-visible { outline: 3px solid #ffea76; outline-offset: 3px; }
+.mosaic-evidence-ledger summary { min-height: 44px; display: list-item; cursor: pointer; line-height: 1.5; }
+.mosaic-evidence-list { display: grid; gap: .8em; }
+.mosaic-evidence-list article { min-width: 0; padding: .8em; background: rgba(3, 10, 20, .55); border: 1px solid #34515f; }
+.mosaic-evidence-list h4 { font-size: 1.1rem; }
+.mosaic-evidence-list p { margin: .5em 0; }
+.mosaic-evidence-ledger nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5em; margin-top: .8em; }

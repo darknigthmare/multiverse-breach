@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorId": "harley_n52",
+  "incarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+  "sourceFile": "DLC/JokerNew52/data/canonP0SourceKits.js",
+  "observedContract": [
+    "Pale skin; red/blue divided hair in high bunches; dark eye mask; ruffled light collar; red/blue laced corset and short bottoms; studded belt.",
+    "Issue1 cover shows a raised knife, not a mallet. Issue3 cover supports the large rectangular-headed mallet as an adjacent early-series equipment reference."
+  ],
+  "missingContract": [
+    "Both complete lower legs and footwear are not visible in the acquired issue1/issue3 covers.",
+    "The exact rear view, mallet dimensions and issue1 interior-panel weapon availability remain unresolved."
+  ],
+  "rejected": [
+    {
+      "candidate": "harley-volume1-cover",
+      "reason": "Same issue1 cover art with further cropping; not an independent view."
+    },
+    {
+      "candidate": "harley-issue5-cover",
+      "reason": "No useful Harley body view in this acquired cover."
+    }
+  ],
+  "status": "partial-primary-reference-ready-for-bounded-art-candidates-full-body-review-open",
+  "references": [
+    {
+      "url": "https://static.dc.com/dc/files/default_images/ssquad_v4_1_5b186b4591d146.44897704.jpg",
+      "finalUrl": "https://static.dc.com/dc/files/default_images/ssquad_v4_1_5b186b4591d146.44897704.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 345358,
+      "sha256": "e8ef2f57d4fe3939321a7c1ed54d811f62d0593aaae9ac2c137d60c4b775609f",
+      "retrievedAt": "2026-11-13T06:40:52.896286+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1249,
+        1920
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/harley_n52/harley-issue1-cover.jpg",
+      "sourcePageUrl": "https://www.dc.com/comics/suicide-squad-2011/suicide-squad-1",
+      "sourceKind": "PRIMARY_PUBLISHER_COVER",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Head, face, collar, corset, belt and upper thighs; lower legs/feet cropped. No mallet visible.",
+      "sourceScope": "selected-incarnation-upper-body",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    },
+    {
+      "url": "https://static.dc.com/dc/files/default_images/ssquad_v4_3_5b186b5b22d336.70798387.jpg",
+      "finalUrl": "https://static.dc.com/dc/files/default_images/ssquad_v4_3_5b186b5b22d336.70798387.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 366992,
+      "sha256": "4ae8e4f1e8cad3b138ef3c9d084bbab9e15a579f9180fa48cfaa8ea72446c010",
+      "retrievedAt": "2026-11-13T06:44:21.111868+00:00",
+      "tlsVerified": true,
+      "dimensions": [
+        1249,
+        1920
+      ],
+      "path": "docs/assets/p0-p1-continuation-2026-11-13/references/harley_n52/harley-issue3-cover.jpg",
+      "sourcePageUrl": "https://www.dc.com/comics/suicide-squad-2011/suicide-squad-3",
+      "sourceKind": "PRIMARY_PUBLISHER_COVER_ADJACENT_ISSUE",
+      "actuallyViewed": true,
+      "reviewedAt": "2026-11-13T06:47:05.856162+00:00",
+      "reviewer": "/root/priority_inventory",
+      "viewMethod": "tools.view_image of the byte-identical downloaded image",
+      "visibleCoverage": "Early-series hair/corset/gloves and raised mallet. Lower legs/feet obscured by foreground figures; does not establish issue1 interior continuity.",
+      "sourceScope": "adjacent-issue-equipment-only",
+      "fullBodyQualified": false,
+      "canonicalFidelityApproved": false,
+      "visualFidelityApproved": false,
+      "artworkGenerated": false,
+      "sourceCropApplied": false,
+      "reencoded": false
+    }
+  ],
+  "productionGate": {
+    "usableScopes": [
+      "portrait-head-and-hair",
+      "front-upper-body-costume",
+      "mallet-reference-from-adjacent-issue3"
+    ],
+    "boundedCandidateGenerationSupported": true,
+    "fullBodyQualified": false,
+    "fullBodyGapsRemain": true,
+    "mayUseFor": "Produce separate candidates limited to the listed observed surfaces. Preserve edition and record generated adaptation. Full-body production and exact hidden details remain unsupported by this acquisition.",
+    "source1to1Verified": false,
+    "automaticFidelityApproval": false
+  },
+  "scope": "Source acquisition and bounded observation only. No game sprite, animation, runtime binding or1:1 approval created."
+}

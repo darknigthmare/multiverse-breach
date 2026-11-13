@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "fallout",
+  "universe": "Fallout",
+  "directory": "DLC/Fallout",
+  "registration": "runtime",
+  "catalogOrder": 21,
+  "modules": [
+    {
+      "path": "data/canonicalArchiveLore.js",
+      "runtimeAdapter": "src/game/canonicalArchiveLore.js"
+    },
+    {
+      "path": "data/canonPriorityStages.js",
+      "runtimeAdapter": "src/game/canonPriorityStages.js"
+    },
+    {
+      "path": "data/enemies.js",
+      "runtimeAdapter": "src/game/enemies.js"
+    },
+    {
+      "path": "data/heroes.js",
+      "runtimeAdapter": "src/game/heroes.js"
+    },
+    {
+      "path": "data/lore.js",
+      "runtimeAdapter": "src/game/lore.js"
+    },
+    {
+      "path": "data/loreAccuratePacks.js",
+      "runtimeAdapter": "src/game/loreAccuratePacks.js"
+    },
+    {
+      "path": "data/loreBossOverrides.js",
+      "runtimeAdapter": "src/game/loreBossOverrides.js"
+    },
+    {
+      "path": "data/loreDescriptions.js",
+      "runtimeAdapter": "src/game/loreDescriptions.js"
+    },
+    {
+      "path": "data/loreWorldBossOverrides.js",
+      "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+    },
+    {
+      "path": "data/renderer.js",
+      "runtimeAdapter": "src/game/renderer.js"
+    },
+    {
+      "path": "data/universeModifiers.js",
+      "runtimeAdapter": "src/game/universeModifiers.js"
+    }
+  ],
+  "assetManifest": "assets.json"
+}

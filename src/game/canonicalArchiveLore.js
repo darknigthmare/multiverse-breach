@@ -1,3 +1,12 @@
+// Universe definitions live in DLC/<Universe>/data; this module preserves the public runtime API.
+import * as dlcGearsOfWar from '../../DLC/GearsOfWar/data/canonicalArchiveLore.js';
+import * as dlcHalo from '../../DLC/Halo/data/canonicalArchiveLore.js';
+import * as dlcAlien from '../../DLC/Alien/data/canonicalArchiveLore.js';
+import * as dlcHalfLife from '../../DLC/HalfLife/data/canonicalArchiveLore.js';
+import * as dlcMetalGear from '../../DLC/MetalGear/data/canonicalArchiveLore.js';
+import * as dlcPiratesOfTheCaribbean from '../../DLC/PiratesOfTheCaribbean/data/canonicalArchiveLore.js';
+import * as dlcFallout from '../../DLC/Fallout/data/canonicalArchiveLore.js';
+
 import { CANON_PRIORITY_STAGES } from './canonPriorityStages.js';
 
 // These notices do not certify the historical sprites. Other episodes of each
@@ -7,140 +16,13 @@ const notice = (name, incarnation, referenceUrl, fr, en) => Object.freeze({
 });
 
 export const CANONICAL_ARCHIVE_ENEMY_LORE = Object.freeze({
-  'Gears of War': Object.freeze({
-    'Locust Drone': notice(
-      'Locust Drone', 'Gears of War (2006)',
-      'https://gearsofwar.fandom.com/wiki/Drone',
-      'Fantassin de la Horde Locuste sur Sera, le Drone combat avec les armes de la Horde, notamment le fusil Hammerburst. Sur le train de la bombe Lightmass, il appartient aux forces de RAAM.',
-      'A Locust Horde infantryman on Sera, the Drone uses Horde weapons including the Hammerburst rifle. On the Lightmass Bomb train, it belongs to RAAM’s forces.'
-    ),
-    'Theron Guard': notice(
-      'Theron Guard', 'Gears of War (2006)',
-      'https://gearsofwar.fandom.com/wiki/Theron_Guard',
-      'Garde d’élite Locuste en armure rouge sombre, le Theron utilise le Torque Bow et ses traits explosifs. Il est présent dans le premier Gears of War, pendant l’offensive contre la Horde.',
-      'A Locust elite guard in dark red armor, the Theron uses the Torque Bow and its explosive bolts. It appears in the original Gears of War during the offensive against the Horde.'
-    ),
-    'General RAAM': notice(
-      'General RAAM', 'Gears of War (2006)',
-      'https://gearsofwar.fandom.com/wiki/RAAM',
-      'Le général Locuste affronte Marcus Fenix et Dominic Santiago sur le train de la bombe Lightmass. Il porte une lourde armure et une mitrailleuse Troika ; les Kryll qui l’entourent le protègent et peuvent attaquer ses adversaires.',
-      'The Locust general confronts Marcus Fenix and Dominic Santiago aboard the Lightmass Bomb train. He carries heavy armor and a Troika machine gun; the Kryll surrounding him provide protection and can attack his opponents.'
-    )
-  }),
-  Halo: Object.freeze({
-    'Covenant Grunt': notice(
-      'Covenant Grunt', 'Halo 2 (2004)',
-      'https://www.halopedia.org/Unggoy',
-      'L’Unggoy, surnommé Grunt, est un fantassin du Covenant équipé d’un masque respiratoire et d’un réservoir de méthane dorsal. À New Mombasa, il utilise notamment le pistolet à plasma sous le commandement des Sangheili.',
-      'The Unggoy, nicknamed Grunt, is a Covenant infantryman equipped with a breathing mask and a dorsal methane tank. In New Mombasa it uses weapons including the plasma pistol under Sangheili command.'
-    ),
-    'Jackal Sniper': notice(
-      'Jackal Sniper', 'Halo 2 (2004)',
-      'https://www.halopedia.org/Kig-Yar_Sniper',
-      'Le tireur d’élite Kig-Yar du Covenant utilise le Beam Rifle dans Halo 2. Les rues et positions surélevées de New Mombasa lui permettent de couvrir l’avancée des forces Covenant.',
-      'The Covenant Kig-Yar sniper uses the Beam Rifle in Halo 2. New Mombasa’s streets and elevated positions allow it to cover the advance of Covenant forces.'
-    ),
-    'Elite Minor': notice(
-      'Elite Minor', 'Halo 2 (2004)',
-      'https://www.halopedia.org/Sangheili_Minor',
-      'Le Sangheili Minor porte une armure de combat bleue et un bouclier énergétique personnel. Ce rang d’Elite du Covenant emploie notamment le fusil à plasma et dirige des fantassins pendant l’invasion de New Mombasa.',
-      'The Sangheili Minor wears blue combat armor and a personal energy shield. This Covenant Elite rank uses weapons including the plasma rifle and leads infantry during the invasion of New Mombasa.'
-    ),
-    'Covenant Scarab Mech': notice(
-      'Protos-pattern Scarab', 'Halo 2 (2004)',
-      'https://www.halopedia.org/Protos-pattern_Scarab',
-      'Le Scarab Protos de Metropolis est le grand marcheur Covenant à quatre pattes qui traverse New Mombasa. Son armement comprend un canon à concentration ultra-lourd et des répéteurs à plasma. Master Chief l’aborde depuis les passerelles et neutralise son équipage ; cette scène n’utilise pas le réacteur arrière du Scarab de Halo 3.',
-      'The Protos Scarab in Metropolis is the large four-legged Covenant walker advancing through New Mombasa. Its armament includes an ultra-heavy focus cannon and plasma repeaters. Master Chief boards it from the walkways and neutralizes its crew; this encounter does not use the Halo 3 Scarab’s rear reactor.'
-    )
-  }),
-  Alien: Object.freeze({
-    'Warrior Xenomorph': notice(
-      'Warrior Xenomorph', 'Aliens (1986)',
-      'https://www.20thcenturystudios.com/movies/aliens',
-      'Le guerrier xénomorphe d’Aliens possède un crâne allongé aux reliefs visibles, une mâchoire interne, des griffes et une longue queue. Les guerriers infestent les installations de Hadley’s Hope et la ruche du processeur atmosphérique de LV-426.',
-      'The Aliens warrior xenomorph has an elongated ridged head, an inner jaw, claws and a long tail. Warriors infest Hadley’s Hope and the atmosphere processor hive on LV-426.'
-    ),
-    'Skittering Facehugger': notice(
-      'Facehugger', 'Aliens (1986)',
-      'https://imsdb.com/scripts/Aliens.html',
-      'Le facehugger est le parasite à doigts articulés et longue queue qui sort d’un œuf xénomorphe et se fixe au visage d’un hôte. Dans Aliens, des spécimens sont étudiés à Hadley’s Hope et les œufs occupent la ruche du processeur.',
-      'The facehugger is the parasite with articulated finger-like limbs and a long tail that emerges from a xenomorph egg and attaches to a host’s face. In Aliens, specimens are studied at Hadley’s Hope and eggs occupy the processor hive.'
-    ),
-    'Egg Chamber Sac': notice(
-      'Xenomorph Egg', 'Aliens (1986)',
-      'https://imsdb.com/scripts/Aliens.html',
-      'L’œuf xénomorphe, ou ovomorphe, s’ouvre pour libérer un facehugger. La Reine pond ces œufs dans son nid du processeur atmosphérique ; ce sont des organismes du cycle reproductif, pas des soldats armés.',
-      'The xenomorph egg, or ovomorph, opens to release a facehugger. The Queen lays these eggs in her atmosphere processor nest; they are organisms in the reproductive cycle rather than armed soldiers.'
-    ),
-    'Alien Queen': notice(
-      'Alien Queen', 'Aliens (1986)',
-      'https://www.20thcenturystudios.com/movies/aliens',
-      'La Reine d’Aliens possède une large crête crânienne, deux grands bras, deux petits bras thoraciques et une longue queue. Ripley la rencontre dans le nid du processeur en sauvant Newt. La confrontation au power loader et l’expulsion dans le vide ont lieu plus tard à bord du Sulaco.',
-      'The Aliens Queen has a broad cranial crest, two large arms, two small chest arms and a long tail. Ripley encounters her in the processor nest while rescuing Newt. The power-loader confrontation and expulsion into space occur later aboard the Sulaco.'
-    )
-  }),
-  'Half-Life': Object.freeze({
-    'Vortigaunt Shock Trooper': notice(
-      'Vortigaunt', 'Half-Life (1998)',
-      'https://combineoverwiki.net/wiki/Vortigaunt',
-      'Dans le premier Half-Life, le Vortigaunt de Xen porte des entraves et attaque avec une décharge d’énergie verte. Il est alors asservi par Nihilanth ; ce rôle diffère de celui des Vortigaunts alliés de Gordon Freeman dans Half-Life 2.',
-      'In the original Half-Life, the Xen Vortigaunt wears shackles and attacks with a green energy discharge. It is enslaved by Nihilanth; this role differs from that of Gordon Freeman’s Vortigaunt allies in Half-Life 2.'
-    ),
-    'Alien Nihilanth Core': notice(
-      'Nihilanth', 'Half-Life (1998)',
-      'https://combineoverwiki.net/wiki/Nihilanth',
-      'Nihilanth est l’immense créature en lévitation affrontée dans la dernière chambre de Xen. Des cristaux alimentent sa réserve d’énergie ; il lance des projectiles et des sphères de téléportation. Sa tête s’ouvre et expose son point faible cérébral pendant la phase finale.',
-      'Nihilanth is the immense levitating creature fought in Xen’s final chamber. Crystals replenish its energy reserve; it launches projectiles and teleportation spheres. Its head opens and exposes its brain weak point during the final phase.'
-    )
-  }),
-  'Metal Gear': Object.freeze({
-    'Genome Soldier Patrol': notice(
-      'Genome Soldier', 'Metal Gear Solid (1998)',
-      'https://metalgear.fandom.com/wiki/Genome_Soldier',
-      'Les Genome Soldiers sont les soldats des forces spéciales qui participent à l’insurrection de FOXHOUND à Shadow Moses. Ils patrouillent dans les installations de l’île avec leur équipement militaire ; ils ne sont pas les FROG ou les Gekko des jeux ultérieurs.',
-      'The Genome Soldiers are the special forces soldiers participating in FOXHOUND’s Shadow Moses uprising. They patrol the island’s facilities with military equipment; they are not the FROGs or Gekko of later games.'
-    ),
-    'Metal Gear REX Shadow': notice(
-      'Metal Gear REX', 'Metal Gear Solid (1998)',
-      'https://www.konami.com/mg/history/us/en/',
-      'Le REX de Shadow Moses est le mécha nucléaire bipède piloté par Liquid Snake. Il possède un railgun, un radôme et des lance-missiles. Solid Snake endommage le radôme, puis affronte le cockpit exposé ; REX n’est pas le Metal Gear RAY des épisodes suivants.',
-      'The Shadow Moses REX is the bipedal nuclear mech piloted by Liquid Snake. It has a railgun, a radome and missile launchers. Solid Snake damages the radome and then attacks the exposed cockpit; REX is not the Metal Gear RAY of later installments.'
-    )
-  }),
-  'Pirates of the Caribbean': Object.freeze({
-    'Davy Jones': notice(
-      'Davy Jones', "Pirates of the Caribbean: Dead Man's Chest (2006)",
-      'https://d23.com/a-to-z/pirates-of-the-caribbean-dead-mans-chest-film/',
-      'Davy Jones est le capitaine du Hollandais volant dans Le Secret du coffre maudit (2006). Son visage porte des tentacules et sa main gauche est une pince. Il tient Jack à son pacte de service et garde son cœur séparé de son corps dans le coffre du mort. Il commande son propre équipage marin, distinct des pirates de Barbossa maudits par le trésor aztèque.',
-      'Davy Jones captains the Flying Dutchman in Dead Man’s Chest (2006). His face has tentacles and his left hand is a claw. He holds Jack to his service bargain and keeps his heart separate from his body in the Dead Man’s Chest. He commands his own sea-encrusted crew, distinct from Barbossa’s pirates cursed by the Aztec treasure.'
-    ),
-    'Flying Dutchman Crew': notice(
-      'Flying Dutchman Crew', "Pirates of the Caribbean: Dead Man's Chest (2006)",
-      'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_Dead_Man%27s_Chest',
-      'L’équipage du Hollandais volant sert Davy Jones dans Le Secret du coffre maudit (2006), puis revient dans Jusqu’au bout du monde (2007). Ses marins ont des corps mêlés à des organismes marins ; Bootstrap Bill Turner en fait partie. Leur servitude auprès de Jones ne vient pas des pièces aztèques de Barbossa. Le libellé regroupe ces marins pour le jeu ; leur nombre et leurs actions de combat sont adaptés.',
-      'The Flying Dutchman crew serves Davy Jones in Dead Man’s Chest (2006) and returns in At World’s End (2007). The sailors’ bodies incorporate marine organisms; Bootstrap Bill Turner is among them. Their service to Jones does not come from Barbossa’s Aztec coins. This label groups those sailors for the game; their number and combat actions are adaptations.'
-    ),
-    'East India Company Marine': notice(
-      'East India Company Marine', "Pirates of the Caribbean: At World's End (2007)",
-      'https://d23.com/a-to-z/pirates-of-the-caribbean-at-worlds-end-film/',
-      'Dans Jusqu’au bout du monde (2007), Lord Cutler Beckett utilise les forces de la Compagnie des Indes orientales pour éliminer les pirates et contrôle Davy Jones par son cœur. East India Company Marine est le libellé de jeu d’un soldat humain de ces forces, équipé d’armes à feu et d’une tenue militaire. Il ne représente ni un marin transformé du Hollandais volant ni un pirate rendu immortel par le trésor aztèque ; son profil de combat est adapté au jeu.',
-      'In At World’s End (2007), Lord Cutler Beckett uses the East India Trading Company’s forces against the pirates and controls Davy Jones through his heart. East India Company Marine is the game label for a human soldier of those forces, carrying firearms and military clothing. It represents neither a transformed Dutchman sailor nor a pirate made immortal by the Aztec treasure; its combat profile is a game adaptation.'
-    ),
-    'Calypso Maelstrom': notice(
-      'Calypso Maelstrom — manifestation originale Multiverse', "Pirates of the Caribbean: At World's End (2007) - Calypso; original Multiverse manifestation",
-      'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_At_World%27s_End',
-      'Dans Jusqu’au bout du monde (2007), Tia Dalma est la forme humaine de Calypso, déesse de la mer emprisonnée par les seigneurs pirates. Barbossa accomplit le rite qui la libère ; elle se disperse en crabes et provoque la tempête avec son maelström. Calypso Maelstrom désigne ici une manifestation de combat originale du projet Multiverse inspirée de cette tempête. Son nom de boss et ses attaques numériques sont des adaptations ; le film ne présente pas ce duel de boss ni une arme correspondante.',
-      'In At World’s End (2007), Tia Dalma is the human form of Calypso, the sea goddess bound by the pirate lords. Barbossa performs the rite that releases her; she disperses into crabs and causes the storm and its maelstrom. Calypso Maelstrom here names an original Multiverse combat manifestation inspired by that storm. Its boss name and numerical attacks are adaptations; the film depicts no corresponding boss duel or weapon.'
-    )
-  }),
-  Fallout: Object.freeze({
-    'Legate Lanius General': notice(
-      'Legate Lanius', 'Fallout: New Vegas (2010)',
-      'https://fallout.fandom.com/wiki/Legate_Lanius',
-      'Le Légat Lanius commande l’assaut de la Légion de César pendant la seconde bataille de Hoover Dam. Il porte une lourde armure et un masque d’acier, et manie la Blade of the East. Le Courrier le rencontre dans le camp du Légat à l’est du barrage et peut le combattre ou le convaincre de se retirer.',
-      'Legate Lanius commands Caesar’s Legion assault during the Second Battle of Hoover Dam. He wears heavy armor and a steel mask, and wields the Blade of the East. The Courier meets him at the Legate’s camp east of the dam and can fight him or persuade him to withdraw.'
-    )
-  })
+  'Gears of War': dlcGearsOfWar.createCanonicalArchiveEnemyLore({ notice }),
+  Halo: dlcHalo.createCanonicalArchiveEnemyLore({ notice }),
+  Alien: dlcAlien.createCanonicalArchiveEnemyLore({ notice }),
+  'Half-Life': dlcHalfLife.createCanonicalArchiveEnemyLore({ notice }),
+  'Metal Gear': dlcMetalGear.createCanonicalArchiveEnemyLore({ notice }),
+  'Pirates of the Caribbean': dlcPiratesOfTheCaribbean.createCanonicalArchiveEnemyLore({ notice }),
+  Fallout: dlcFallout.createCanonicalArchiveEnemyLore({ notice })
 });
 
 export const getCanonicalArchiveEnemyLore = (universe, enemy) => {
@@ -208,9 +90,10 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     'La mission Smash choisit le duel contre Lanius ; les résidus de brèche des vagues ordinaires appartiennent à Multiverse Breach.',
     'The Smash mission selects the Lanius duel; the regular waves’ breach residue belongs to Multiverse Breach.'
   )
-]);
+].filter(entry => entry.source));
 
 export const getCanonicalArchiveStageLore = stage => {
+  if (!stage) return null;
   if (
     stage?.incarnation && stage.referenceUrl?.startsWith('https://')
     && stage.sourceSceneLore?.fr && stage.sourceSceneLore?.en

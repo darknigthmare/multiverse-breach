@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+  "scope": "Exact source fighter fields emitted by seven Star Wars DLC factories and the shared fighter helper at GitHub master 2333c2c0. Runtime catalog fields outside these source factories are not projected. Historical 3036cd02 raw actors and W13 plans remain separate immutable evidence.",
+  "source1to1Verified": false,
+  "sourceFiles": {
+    "DLC/StarWars/data/solarOppositesSirenStarWarsPack.js": "67472527b746607d6208a3fb2b819de5402665d8191e41cde79d3bcdb36d0851",
+    "src/game/solarOppositesSirenStarWarsPack.js": "63bb705689e23f5cd4bf6b6ef07dfab21ec87545efae383ccc1761d261b76502"
+  },
+  "actors": [
+    {
+      "id": "ahsoka_padawan",
+      "name": "Ahsoka Tano (Padawan)",
+      "cat": "slayer",
+      "color": "#e77836",
+      "primaryColor": "#e77836",
+      "secondaryColor": "#7ed957",
+      "weaponType": "lightsaber",
+      "weaponColor": "#7ed957",
+      "stats": {
+        "hp": 110,
+        "atk": 14,
+        "def": 6,
+        "spd": 9
+      },
+      "simple": {
+        "name": "Reverse-Grip Green Saber",
+        "type": "melee",
+        "dmg": 1.08
+      },
+      "secondary": {
+        "name": "Padawan Force Leap",
+        "type": "force",
+        "dmg": 1.7,
+        "cd": 5
+      },
+      "defense": {
+        "name": "Shien Deflection",
+        "type": "shield",
+        "dmg": 0,
+        "dur": 1.9,
+        "reduce": 0.82
+      },
+      "special": {
+        "name": "Skyguy Battlefield Lesson",
+        "type": "force_aoe",
+        "dmg": 4.35,
+        "color": "#7ed957"
+      },
+      "equipment": [
+        "Green Lightsaber"
+      ],
+      "incarnation": "The Clone Wars - early Padawan, age fourteen",
+      "canonStatus": "canon",
+      "referenceUrl": "https://www.starwars.com/databank/ahsokas-lightsabers",
+      "equipmentSource": "Star Wars Databank — Ahsoka lightsabers, early Padawan",
+      "equipmentEvidenceStatus": "SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "ahsoka",
+      "name": "Ahsoka Tano (Siege of Mandalore)",
+      "cat": "slayer",
+      "color": "#e77836",
+      "primaryColor": "#e77836",
+      "secondaryColor": "#4ea8ff",
+      "weaponType": "dual_lightsaber",
+      "weaponColor": "#4ea8ff",
+      "stats": {
+        "hp": 122,
+        "atk": 16,
+        "def": 7,
+        "spd": 9
+      },
+      "simple": {
+        "name": "Twin Blue Saber Cut",
+        "type": "melee",
+        "dmg": 1.15
+      },
+      "secondary": {
+        "name": "Mandalore Throne-Room Counter",
+        "type": "force",
+        "dmg": 1.95,
+        "cd": 5
+      },
+      "defense": {
+        "name": "Order 66 Deflection",
+        "type": "shield",
+        "dmg": 0,
+        "dur": 2.1,
+        "reduce": 0.86
+      },
+      "special": {
+        "name": "Siege of Mandalore Break",
+        "type": "force_aoe",
+        "dmg": 4.8,
+        "color": "#4ea8ff"
+      },
+      "equipment": [
+        "Twin Blue Lightsabers"
+      ],
+      "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+      "canonStatus": "canon",
+      "referenceUrl": "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten",
+      "equipmentSource": "Star Wars / The Clone Wars S7E9 — Anakin returns her blue-bladed sabers",
+      "equipmentEvidenceStatus": "SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "ahsoka_adult",
+      "name": "Ahsoka Tano (Adult)",
+      "cat": "tactical",
+      "color": "#d96f35",
+      "primaryColor": "#d96f35",
+      "secondaryColor": "#f4f8ff",
+      "weaponType": "dual_lightsaber",
+      "weaponColor": "#f4f8ff",
+      "stats": {
+        "hp": 130,
+        "atk": 15,
+        "def": 9,
+        "spd": 8
+      },
+      "simple": {
+        "name": "White Saber Crosscut",
+        "type": "melee",
+        "dmg": 1.12
+      },
+      "secondary": {
+        "name": "Fulcrum Route Read",
+        "type": "force",
+        "dmg": 1.75,
+        "cd": 5
+      },
+      "defense": {
+        "name": "Fulcrum Evasive Guard",
+        "type": "dodge",
+        "dmg": 0,
+        "dur": 2.3,
+        "reduce": 0.9
+      },
+      "special": {
+        "name": "Fulcrum Twin-Saber Sweep",
+        "type": "light_aoe",
+        "dmg": 4.75,
+        "color": "#f4f8ff"
+      },
+      "equipment": [
+        "Twin White Lightsabers"
+      ],
+      "incarnation": "Star Wars Rebels - Fulcrum era (adult former Jedi)",
+      "canonStatus": "canon",
+      "referenceUrl": "https://www.starwars.com/databank/ahsokas-lightsabers",
+      "referenceUrls": [
+        "https://www.starwars.com/databank/ahsoka-tano",
+        "https://www.starwars.com/databank/malachor-sith-temple"
+      ],
+      "visualAnchor": "Star Wars Rebels Fulcrum era: two white-bladed sabers, Rebels-era outfit; NOT the later white-cloaked epilogue or New Republic outfit",
+      "combatMoveStatus": "ADAPTATION_DE_JEU_NON_TELEPORTATION_TEMPORELLE",
+      "equipmentSource": "Star Wars Databank — Fulcrum uses the white-bladed pair; Ezra rescues her through the World Between Worlds, which is not her personal dodge power",
+      "equipmentEvidenceStatus": "SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "aayla_secura",
+      "name": "Aayla Secura",
+      "cat": "slayer",
+      "color": "#4ba6d8",
+      "primaryColor": "#4ba6d8",
+      "secondaryColor": "#6cc7ff",
+      "weaponType": "lightsaber",
+      "weaponColor": "#6cc7ff",
+      "stats": {
+        "hp": 120,
+        "atk": 15,
+        "def": 7,
+        "spd": 8
+      },
+      "simple": {
+        "name": "Blue Saber Advance",
+        "type": "melee",
+        "dmg": 1.1
+      },
+      "secondary": {
+        "name": "Felucia Flank",
+        "type": "force",
+        "dmg": 1.8,
+        "cd": 6
+      },
+      "defense": {
+        "name": "Jedi General Guard",
+        "type": "shield",
+        "dmg": 0,
+        "dur": 2,
+        "reduce": 0.82
+      },
+      "special": {
+        "name": "Commander Bly Formation",
+        "type": "force_aoe",
+        "dmg": 4.55,
+        "color": "#6cc7ff"
+      },
+      "equipment": [
+        "Blue Lightsaber"
+      ],
+      "incarnation": "The Clone Wars - Aayla Secura as Jedi General",
+      "canonStatus": "canon",
+      "referenceUrl": "https://www.starwars.com/databank/aayla-secura",
+      "equipmentSource": "Star Wars Databank — sabre attesté ; les attributs secondaires et leur appartenance à Aayla ne sont pas établis.",
+      "equipmentEvidenceStatus": "ARME_ATTESTEE_MODELE_ET_VISUEL_A_VALIDER",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "darth_maul",
+      "name": "Darth Maul",
+      "cat": "slayer",
+      "color": "#b72822",
+      "primaryColor": "#b72822",
+      "secondaryColor": "#ff2d24",
+      "weaponType": "double_lightsaber",
+      "weaponColor": "#ff2d24",
+      "stats": {
+        "hp": 134,
+        "atk": 17,
+        "def": 6,
+        "spd": 9
+      },
+      "simple": {
+        "name": "Mandalore Twin-Blade Assault",
+        "type": "melee",
+        "dmg": 1.2
+      },
+      "secondary": {
+        "name": "Dathomirian Force Choke",
+        "type": "force",
+        "dmg": 2.05,
+        "cd": 6
+      },
+      "defense": {
+        "name": "Cybernetic Spin Parry",
+        "type": "shield",
+        "dmg": 0,
+        "dur": 1.8,
+        "reduce": 0.84
+      },
+      "special": {
+        "name": "Shadow Collective Dominion",
+        "type": "dark_aoe",
+        "dmg": 5,
+        "color": "#ff2d24"
+      },
+      "equipment": [
+        "Double-Bladed Red Lightsaber (The Clone Wars S7)"
+      ],
+      "incarnation": "The Clone Wars - Season 7, Siege of Mandalore (The Phantom Apprentice)",
+      "canonStatus": "canon",
+      "bodyProsthetics": [
+        "Mandalorian-Issue Humanoid Cybernetic Legs"
+      ],
+      "referenceUrl": "https://www.starwars.com/series/clone-wars/the-phantom-apprentice-episode-guide",
+      "referenceUrls": [
+        "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-the-phantom-apprentice",
+        "https://www.starwars.com/databank/darth-mauls-lightsaber",
+        "https://www.starwars.com/news/what-is-the-darksaber",
+        "https://www.starwars.com/news/star-wars-maul-shadow-lord-leg-list"
+      ],
+      "equipmentSource": "The Phantom Apprentice (S7E10) — double red saber is equipped; Mandalorian-issued humanoid mechanical legs are intrinsic prostheses, not removable loot. Earlier half-saber, Darksaber and legs belong to other scenes.",
+      "visualAnchor": "The Clone Wars S7: red double blade, Mandalorian-issued humanoid prosthetic legs (not Lotho Minor spider legs or Talzin claw legs)",
+      "equipmentEvidenceStatus": "SOURCE_OFFICIELLE_INCARNATION_VERROUILLEE_VALIDATION_VISUELLE_REQUISE",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "darth_revan",
+      "name": "Darth Revan",
+      "cat": "tactical",
+      "color": "#282329",
+      "primaryColor": "#282329",
+      "secondaryColor": "#8f4dff",
+      "weaponType": "lightsaber",
+      "weaponColor": "#ff4242",
+      "stats": {
+        "hp": 138,
+        "atk": 16,
+        "def": 9,
+        "spd": 7
+      },
+      "simple": {
+        "name": "Red Saber Judgment",
+        "type": "melee",
+        "dmg": 1.14
+      },
+      "secondary": {
+        "name": "Force Reversal",
+        "type": "force",
+        "dmg": 1.95,
+        "cd": 6
+      },
+      "defense": {
+        "name": "Revanite Mask Focus",
+        "type": "shield",
+        "dmg": 0,
+        "dur": 2.2,
+        "reduce": 0.86
+      },
+      "special": {
+        "name": "Star Forge Command",
+        "type": "force_aoe",
+        "dmg": 4.95,
+        "color": "#8f4dff"
+      },
+      "equipment": [
+        "Red Lightsaber"
+      ],
+      "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+      "canonStatus": "legends",
+      "costumeParts": [
+        "KOTOR I Revan Mask (weathered rust red and graphite, two-pronged chin)",
+        "Dark Hood and Capelet",
+        "Armored Cuirass and Vambraces"
+      ],
+      "alternateIncarnations": [
+        "KOTOR II costume reference: two lightsabers, one red and one purple",
+        "SWTOR: Fallen Revan red blade and Redeemed Revan purple blade are separately listed",
+        "LEGO Rebuild the Galaxy (2025): red-and-purple dual-wield cameo"
+      ],
+      "referenceUrl": "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+      "referenceUrls": [
+        "https://www.starwars.com/games-apps/knights-of-the-old-republic",
+        "https://www.swtor.com/info/news/article/20201209-0",
+        "https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts"
+      ],
+      "visualAnchor": "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask",
+      "equipmentSource": "501st CRL: KOTOR I permits a single red blade, KOTOR II depicts two red/purple blades; SWTOR hilts are a separate edition. Approved cosplay reference only, not an in-game art certificate.",
+      "equipmentEvidenceStatus": "KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE",
+      "universe": "Star Wars"
+    },
+    {
+      "id": "darth_talon",
+      "name": "Darth Talon",
+      "cat": "slayer",
+      "color": "#b52c32",
+      "primaryColor": "#b52c32",
+      "secondaryColor": "#ef2828",
+      "weaponType": "lightsaber",
+      "weaponColor": "#ef2828",
+      "stats": {
+        "hp": 118,
+        "atk": 16,
+        "def": 6,
+        "spd": 9
+      },
+      "simple": {
+        "name": "One Sith Saber Cut",
+        "type": "melee",
+        "dmg": 1.15
+      },
+      "secondary": {
+        "name": "Twi lek Hunter Lunge",
+        "type": "force",
+        "dmg": 1.95,
+        "cd": 5
+      },
+      "defense": {
+        "name": "Sith Tattoo Focus",
+        "type": "dodge",
+        "dmg": 0,
+        "dur": 1.8,
+        "reduce": 0.84
+      },
+      "special": {
+        "name": "Hand of Darth Krayt",
+        "type": "dark_aoe",
+        "dmg": 4.85,
+        "color": "#ef2828"
+      },
+      "equipment": [
+        "Red Lightsaber",
+        "Forearm and Bicep Armor",
+        "Leg Armor"
+      ],
+      "incarnation": "Star Wars: Legacy (Legends) - One Sith Hand of Darth Krayt",
+      "canonStatus": "legends",
+      "costumeParts": [
+        "Armored Bandeau",
+        "Armored Hand Strap",
+        "Black Gloves",
+        "Belt with Front Buckle Plate and Straps",
+        "Black Boots and Leggings"
+      ],
+      "bodyMarkings": [
+        "Black Sith Ritual Tattoos (face, chest, abdomen, arms, legs and lekku)"
+      ],
+      "referenceUrl": "https://crls.501st.com/tfe/darth-talon",
+      "referenceUrls": [
+        "https://starwars.fandom.com/wiki/Darth_Talon"
+      ],
+      "visualAnchor": "Legacy Darth Talon: red Lethan Twi-lek, black ritual tattoos, sleeveless armored bandeau, separate arm and leg plates; actual comic and sprite match unverified",
+      "equipmentSource": "501st Costume Reference Library, Legends visual costume reconstruction; reference for garment/armor shape, NOT a Lucasfilm certificate for in-game art.",
+      "equipmentEvidenceStatus": "LEGENDS_COSTUME_501ST_APPROUVEE_SPRITE_NON_VERIFIE",
+      "universe": "Star Wars"
+    }
+  ]
+}

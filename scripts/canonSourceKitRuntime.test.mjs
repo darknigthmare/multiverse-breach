@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { after, afterEach, before, test } from 'node:test';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite';
+import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getHeroById } from '../src/game/heroes.js';
 import { resolveCanonHeroAttackEffect } from '../src/game/canonHeroAttackEffects.js';
 
