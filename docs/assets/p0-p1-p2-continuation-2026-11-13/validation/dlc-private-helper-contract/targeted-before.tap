@@ -1,0 +1,80 @@
+TAP version 13
+# Subtest: private modules without an aggregate adapter remain in the selected catalogue
+not ok 1 - private modules without an aggregate adapter remain in the selected catalogue
+  ---
+  duration_ms: 1.518728
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcDistribution.test.mjs:161:1'
+  failureType: 'testCodeFailure'
+  error: 'Invalid DLC module declaration: halo'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    validateManifests (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:96:23)
+    resolveDlcSelection (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:114:5)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcDistribution.test.mjs:167:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: an optional runtime adapter still rejects invalid types and unsafe paths
+ok 2 - an optional runtime adapter still rejects invalid types and unsafe paths
+  ---
+  duration_ms: 1.025796
+  type: 'test'
+  ...
+# Subtest: private helper code is exported only with its selected pack: base
+not ok 3 - private helper code is exported only with its selected pack: base
+  ---
+  duration_ms: 7.054981
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcDistributionExport.test.mjs:126:3'
+  failureType: 'testCodeFailure'
+  error: 'Invalid DLC module declaration: drop'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    validateManifests (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:96:23)
+    readDlcDistributionManifests (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:146:5)
+    inspectDlcExportSources (file:///workspace/multiverse-breach/scripts/exportDlcDistribution.mjs:125:21)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcDistributionExport.test.mjs:139:23)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: private helper code is exported only with its selected pack: halo
+not ok 4 - private helper code is exported only with its selected pack: halo
+  ---
+  duration_ms: 3.717591
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/dlcDistributionExport.test.mjs:126:3'
+  failureType: 'testCodeFailure'
+  error: 'Invalid DLC module declaration: drop'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    validateManifests (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:96:23)
+    readDlcDistributionManifests (file:///workspace/multiverse-breach/scripts/dlcDistribution.mjs:146:5)
+    inspectDlcExportSources (file:///workspace/multiverse-breach/scripts/exportDlcDistribution.mjs:125:21)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/dlcDistributionExport.test.mjs:139:23)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: private helpers remain owned modules without a public aggregate adapter
+ok 5 - private helpers remain owned modules without a public aggregate adapter
+  ---
+  duration_ms: 24.508324
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 2
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 383.174159

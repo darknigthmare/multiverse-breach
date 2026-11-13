@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+ok 1 - historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+  ---
+  duration_ms: 2.870485
+  type: 'test'
+  ...
+# Subtest: same-edition structured CG equipment is retained instead of taking runtime defaults
+ok 2 - same-edition structured CG equipment is retained instead of taking runtime defaults
+  ---
+  duration_ms: 0.151568
+  type: 'test'
+  ...
+# Subtest: incomplete CG authority leaves equipment unknown even when edition labels agree
+ok 3 - incomplete CG authority leaves equipment unknown even when edition labels agree
+  ---
+  duration_ms: 0.349667
+  type: 'test'
+  ...
+# Subtest: qualified identity without equipment cannot borrow a runtime weapon
+ok 4 - qualified identity without equipment cannot borrow a runtime weapon
+  ---
+  duration_ms: 0.253832
+  type: 'test'
+  ...
+# Subtest: a pilot without an explicit runtime edition has no invented runtime authority
+ok 5 - a pilot without an explicit runtime edition has no invented runtime authority
+  ---
+  duration_ms: 0.107512
+  type: 'test'
+  ...
+# Subtest: production modes preserve strict full-media check and explicit metadata-only routing
+ok 6 - production modes preserve strict full-media check and explicit metadata-only routing
+  ---
+  duration_ms: 0.939393
+  type: 'test'
+  ...
+# Subtest: conflicting or unknown CLI modes fail before any build or write
+ok 7 - conflicting or unknown CLI modes fail before any build or write
+  ---
+  duration_ms: 1.124939
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3501.436013

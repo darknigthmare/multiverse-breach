@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: the amendment closes 58 owners and exact image receipts without changing any historical pin
+ok 1 - the amendment closes 58 owners and exact image receipts without changing any historical pin
+  ---
+  duration_ms: 219.022546
+  type: 'test'
+  ...
+# Subtest: a physically absent image can later be hydrated with its exact real pixels and become available
+ok 2 - a physically absent image can later be hydrated with its exact real pixels and become available
+  ---
+  duration_ms: 172.319048
+  type: 'test'
+  ...
+# Subtest: LFS pointers, HTML and truncated PNGs cannot become positive evidence even with their own matching text SHA
+ok 3 - LFS pointers, HTML and truncated PNGs cannot become positive evidence even with their own matching text SHA
+  ---
+  duration_ms: 232.357912
+  type: 'test'
+  ...
+# Subtest: path traversal, symlinks and invalid ancestor types are errors rather than absence
+ok 4 - path traversal, symlinks and invalid ancestor types are errors rather than absence
+  ---
+  duration_ms: 2.347803
+  type: 'test'
+  ...
+# Subtest: AURA identity remains separate from valid Sonic CG13 costume support before and after body hydration
+ok 5 - AURA identity remains separate from valid Sonic CG13 costume support before and after body hydration
+  ---
+  duration_ms: 1.633738
+  type: 'test'
+  ...
+# Subtest: the closed availability projection preserves all complete historical bytes and does not mutate its inputs
+ok 6 - the closed availability projection preserves all complete historical bytes and does not mutate its inputs
+  ---
+  duration_ms: 3184.495068
+  type: 'test'
+  ...
+# Subtest: extra identity claims, changed public inputs, generated CG01s and changed receipts are refused
+ok 7 - extra identity claims, changed public inputs, generated CG01s and changed receipts are refused
+  ---
+  duration_ms: 2988.093607
+  type: 'test'
+  ...
+# Subtest: unrelated edits remain visible for the caller full historical guard instead of being erased
+ok 8 - unrelated edits remain visible for the caller full historical guard instead of being erased
+  ---
+  duration_ms: 1771.730504
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11867.6682

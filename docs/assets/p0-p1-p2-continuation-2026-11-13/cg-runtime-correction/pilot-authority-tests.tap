@@ -1,0 +1,43 @@
+TAP version 13
+# (node:152562) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+ok 1 - historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+  ---
+  duration_ms: 2.677284
+  type: 'test'
+  ...
+# Subtest: same-edition structured CG equipment is retained instead of taking runtime defaults
+ok 2 - same-edition structured CG equipment is retained instead of taking runtime defaults
+  ---
+  duration_ms: 0.176666
+  type: 'test'
+  ...
+# Subtest: incomplete CG authority leaves equipment unknown even when edition labels agree
+ok 3 - incomplete CG authority leaves equipment unknown even when edition labels agree
+  ---
+  duration_ms: 0.375185
+  type: 'test'
+  ...
+# Subtest: qualified identity without equipment cannot borrow a runtime weapon
+ok 4 - qualified identity without equipment cannot borrow a runtime weapon
+  ---
+  duration_ms: 0.185149
+  type: 'test'
+  ...
+# Subtest: a pilot without an explicit runtime edition has no invented runtime authority
+ok 5 - a pilot without an explicit runtime edition has no invented runtime authority
+  ---
+  duration_ms: 0.138188
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2382.848228

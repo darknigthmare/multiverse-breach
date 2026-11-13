@@ -1,0 +1,31 @@
+{
+  "utc": "2026-11-13T13:36:50.766522+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 11.584,
+  "counts": {
+    "tests": 8,
+    "pass": 5,
+    "fail": 3,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "scripts/cgReviewedAvailabilityAmendment.mjs": "15462cbbdc68363fd542a680c07bf8e51a968501b7e41c3f1993deca39f218fa",
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs": "e27ebc0c53bdb179acbc3f867b1402d46dc077f58e1144aca61cab54e1aa4bb6",
+    "scripts/fixtures/cg-reviewed-availability-amendment-2026-11-13.json": "65fd79dc231ab247c15fc788b50e4edf7645bfff61cdb60610761aec6196699f",
+    "scripts/cgSourceEvidence.mjs": "9487b5b85385d8ea1a6530460379dd5520ec35cb77c4a3ab10204db0749666a0"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Pure contract and physical-availability tests; no Vite or image hydration. Before shared full-decode strengthening."
+}

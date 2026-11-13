@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "dateUtc": "2026-11-13T13:18:45.047047+00:00",
+  "scope": "Incremental byte lineage only. Old payloads were actually verified by the frozen v2 run; this check compares their immutable Git object identities, not a second payload download or decode. Checkout availability and source fidelity remain separate.",
+  "oldPlanFile": "docs/assets/dlc-completion-2026-11-13/batches/verified-v2/all-plan.json",
+  "oldPlanSha256": "62b7b2ad3dd4e6e4dea12bc64c3ef094ed5269454c6293db7197983fcb73b02d",
+  "oldPlanIntegrityChecked": true,
+  "previousPayloadSourceRevision": "9e690725dd06588e6b389e3df75d0e5e3ffeb6fa",
+  "currentSourceRevision": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+  "previousAssets": 19582,
+  "unchangedCanonicalGitBlobs": 19582,
+  "changedOrMissing": [],
+  "newCanonicalRaster": {
+    "sourcePath": "DLC/Doom/assets/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+    "gitBlobOid": "acd5ba3ff94184392a8b74133cae6ff838376e9a",
+    "sha256": "4fe055c5d0e4f06258316b0a5cd4fd078af913c41788b355d69aa2ed7645aa4c",
+    "bytes": 769529
+  },
+  "newRasterValidation": "pinkyClassicAssets.test.mjs + realGameCanvas/browser SHA/frames evidence in raster-lot-004",
+  "totalCurrentInventory": 19583,
+  "allPassed": true
+}

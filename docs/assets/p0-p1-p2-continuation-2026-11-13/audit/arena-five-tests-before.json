@@ -1,0 +1,18 @@
+{
+  "scope": "Same five final regression tests against exact Git5952 or explicit final eight-source overlay. No new production files copied into the baseline.",
+  "testFile": "scripts/arenaSourceContracts20261113.test.mjs",
+  "testSha256": "85e459b2ba9b7ed71a71b56db9c5f2b2e9da7f5c516256eba0e7233b6faa32ad",
+  "sourceManifest": "before-source-inputs.json",
+  "exitCode": 1,
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--no-warnings",
+    "--loader",
+    "/tmp/p0-p1-p2-before-5952-source/scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/arenaSourceContracts20261113.test.mjs"
+  ],
+  "log": "arena-five-tests-before.tap"
+}

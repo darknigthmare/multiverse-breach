@@ -1,0 +1,665 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "sha256": "929b24ccbaadfa926ade265120b924e2815429cb0d10b8b4126e5efcdd8c53e3"
+    },
+    "before": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-runtime-before-lossless.json",
+      "sha256": "2a38c9b70abc661fca7e76340ae2c28adb9ba8c35804539fcde2df9e27192050"
+    },
+    "after": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-runtime.json",
+      "sha256": "31fdd5c1d5f4723340f1930b51e05a440373dc29def8f32ad013711b1631a3fa"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "sha256": "98197563e6d213d8f65ba9700ce1731cc655fee96e5ae732f2c9c89cc46b23bf"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_gina\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_dante\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_kurgan\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_malcom\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_brock\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_lauren\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ranger\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_bitterman\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_matthew_kane\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_gorge\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_gorge\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_sapphire\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_sapphire\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_frostbite\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_frostbite\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_skaarj_warrior\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_brute\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_krall\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_titan\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_stone_titan\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_warlord\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_queen\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_vector\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_cathode\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_matrix\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_damien\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_rampage\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_dominator\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_xan\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ogre\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_berserker\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_gladiator\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_chthon\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_makron_q2\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_network_guardian\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_shub_niggurath\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_skaarj_warrior\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_gen_mokai\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_damarus\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_clanlord\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_xan\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_malcolm\"]",
+      "code": "PACK_CONTINUITY_PRECISION",
+      "priority": "P2"
+    }
+  ],
+  "addedSourceFindings": [],
+  "removedSourceFindingsByCode": {
+    "PACK_CONTINUITY_PRECISION": 39,
+    "GENERIC_TECHNIQUE_NAMES": 3
+  },
+  "addedSourceFindingsByCode": {},
+  "unchangedPreparedRpgHeroes": 12,
+  "unchangedPreparedRpgHeroSlots": 48,
+  "changedPreparedRpgProfiles": [
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_skaarj_warrior\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Predator Leap",
+            "after": "Link Gun Beam"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_gen_mokai\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Wall Dodge",
+            "after": "Shock Combo"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_necris\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_damarus\"]",
+      "kind": "boss",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Team Assault",
+            "after": "Shock Combo"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_clanlord\"]",
+      "kind": "boss",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Skaarj Roar",
+            "after": "Flak Cannon Secondary Fire"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_xan\"]",
+      "kind": "boss",
+      "slots": {
+        "special": {
+          "action": {
+            "before": "Liandri Overcharge",
+            "after": "Minigun Secondary Fire"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Unreal Tournament 2004\",\"id:unreal_tournament_2004_malcolm\"]",
+      "kind": "worldBoss",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Champion Adrenaline",
+            "after": "Rocket Launcher Volley"
+          }
+        }
+      }
+    }
+  ],
+  "selectedLegacySignatureChanges": [
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_gladiator\"]",
+      "beforeKey": "Quake::Strogg Gladiator",
+      "afterKey": "Quake::Strogg Gladiator",
+      "lost": false,
+      "changedDefinitionFields": [
+        "requiredContinuity"
+      ]
+    }
+  ],
+  "preservedSelectedLegacySignatures": 3,
+  "rawEffectiveLabelDifferences": [
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_gina\"]",
+      "slot": "simple",
+      "rawName": "Dispersion Pistol",
+      "effectiveName": "Tir de Dispersion Pistol de Gina"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_gina\"]",
+      "slot": "secondary",
+      "rawName": "Shared Weapon Pickup",
+      "effectiveName": "Visée de Dispersion Pistol de Gina"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_gina\"]",
+      "slot": "defense",
+      "rawName": "Prisoner 849 Dodge",
+      "effectiveName": "Repli de Gina en Unreal (1998)"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_gina\"]",
+      "slot": "special",
+      "rawName": "Shared Na Pali Arsenal Cycle",
+      "effectiveName": "Décoche du Dispersion Pistol de Gina"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_dante\"]",
+      "slot": "simple",
+      "rawName": "Dispersion Pistol",
+      "effectiveName": "Tir de Dispersion Pistol de Dante"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_dante\"]",
+      "slot": "secondary",
+      "rawName": "Shared Weapon Pickup",
+      "effectiveName": "Visée de Dispersion Pistol de Dante"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_dante\"]",
+      "slot": "defense",
+      "rawName": "Prisoner 849 Dodge",
+      "effectiveName": "Repli de Dante en Unreal (1998)"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_dante\"]",
+      "slot": "special",
+      "rawName": "Shared Na Pali Arsenal Cycle",
+      "effectiveName": "Décoche du Dispersion Pistol de Dante"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_kurgan\"]",
+      "slot": "simple",
+      "rawName": "Dispersion Pistol",
+      "effectiveName": "Tir de Dispersion Pistol de Kurgan"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_kurgan\"]",
+      "slot": "secondary",
+      "rawName": "Shared Weapon Pickup",
+      "effectiveName": "Visée de Dispersion Pistol de Kurgan"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_kurgan\"]",
+      "slot": "defense",
+      "rawName": "Prisoner 849 Dodge",
+      "effectiveName": "Repli de Kurgan en Unreal (1998)"
+    },
+    {
+      "actorKey": "[\"Unreal\",\"id:unreal_1998_kurgan\"]",
+      "slot": "special",
+      "rawName": "Shared Na Pali Arsenal Cycle",
+      "effectiveName": "Décoche du Dispersion Pistol de Kurgan"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_malcom\"]",
+      "slot": "simple",
+      "rawName": "Tournament Enforcer",
+      "effectiveName": "Tir de UT99 Enforcer de Malcom"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_malcom\"]",
+      "slot": "secondary",
+      "rawName": "Shared Arena Pickup",
+      "effectiveName": "Visée de UT99 Enforcer de Malcom"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_malcom\"]",
+      "slot": "defense",
+      "rawName": "Tournament Dodge",
+      "effectiveName": "Repli de Malcom en Unreal Tournament (1999)"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_malcom\"]",
+      "slot": "special",
+      "rawName": "Liandri Arsenal Cycle",
+      "effectiveName": "Tir de l’Enforcer de Malcom"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_brock\"]",
+      "slot": "simple",
+      "rawName": "Tournament Enforcer",
+      "effectiveName": "Tir de UT99 Enforcer de Brock"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_brock\"]",
+      "slot": "secondary",
+      "rawName": "Shared Arena Pickup",
+      "effectiveName": "Visée de UT99 Enforcer de Brock"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_brock\"]",
+      "slot": "defense",
+      "rawName": "Tournament Dodge",
+      "effectiveName": "Repli de Brock en Unreal Tournament (1999)"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_brock\"]",
+      "slot": "special",
+      "rawName": "Liandri Arsenal Cycle",
+      "effectiveName": "Tir de l’Enforcer de Brock"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_lauren\"]",
+      "slot": "simple",
+      "rawName": "Tournament Enforcer",
+      "effectiveName": "Tir de UT99 Enforcer de Lauren"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_lauren\"]",
+      "slot": "secondary",
+      "rawName": "Shared Arena Pickup",
+      "effectiveName": "Visée de UT99 Enforcer de Lauren"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_lauren\"]",
+      "slot": "defense",
+      "rawName": "Tournament Dodge",
+      "effectiveName": "Repli de Lauren en Unreal Tournament (1999)"
+    },
+    {
+      "actorKey": "[\"Unreal Tournament\",\"id:unreal_tournament_lauren\"]",
+      "slot": "special",
+      "rawName": "Liandri Arsenal Cycle",
+      "effectiveName": "Tir de l’Enforcer de Lauren"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ranger\"]",
+      "slot": "simple",
+      "rawName": "Shotgun blast",
+      "effectiveName": "Coupe de Starting axe de Ranger"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ranger\"]",
+      "slot": "secondary",
+      "rawName": "Rocket jump",
+      "effectiveName": "Reprise de Starting axe de Ranger"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ranger\"]",
+      "slot": "defense",
+      "rawName": "Slipgate strafe",
+      "effectiveName": "Repli de Ranger en Quake (1996)"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_ranger\"]",
+      "slot": "special",
+      "rawName": "Rune-powered arsenal",
+      "effectiveName": "Taille de la hache de Ranger"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_bitterman\"]",
+      "slot": "simple",
+      "rawName": "Blaster bolt",
+      "effectiveName": "Tir de Quake II Blaster de Bitterman"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_bitterman\"]",
+      "slot": "secondary",
+      "rawName": "Railgun line shot",
+      "effectiveName": "Visée de Quake II Blaster de Bitterman"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_bitterman\"]",
+      "slot": "defense",
+      "rawName": "Power Shield brace",
+      "effectiveName": "Repli de Bitterman en Quake II (1997)"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_bitterman\"]",
+      "slot": "special",
+      "rawName": "Operation Alien Overlord strike",
+      "effectiveName": "Tir du blaster de Bitterman"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_matthew_kane\"]",
+      "slot": "simple",
+      "rawName": "Marine burst",
+      "effectiveName": "Tir de Quake 4 machinegun de Corporal Matthew Kane"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_matthew_kane\"]",
+      "slot": "secondary",
+      "rawName": "Strogg implant overdrive",
+      "effectiveName": "Visée de Quake 4 machinegun de Corporal Matthew Kane"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_matthew_kane\"]",
+      "slot": "defense",
+      "rawName": "Rhino Squad cover",
+      "effectiveName": "Repli de Corporal Matthew Kane en Quake 4 (2005)"
+    },
+    {
+      "actorKey": "[\"Quake\",\"id:quake_franchise_matthew_kane\"]",
+      "slot": "special",
+      "rawName": "Nexus infiltration",
+      "effectiveName": "Rafale du machinegun de Kane"
+    }
+  ],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false
+}

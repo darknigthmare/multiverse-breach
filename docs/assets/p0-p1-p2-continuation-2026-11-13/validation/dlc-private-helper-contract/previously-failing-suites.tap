@@ -1,0 +1,153 @@
+TAP version 13
+# Subtest: real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+    # Subtest: all
+    ok 1 - all
+      ---
+      duration_ms: 27428.882261
+      type: 'test'
+      ...
+    # {"label":"all","installedPacks":505,"checkedModes":3162,"optionalEntries":38,"excludedShared":0,"publicAssets":7613}
+    # Subtest: base
+    ok 2 - base
+      ---
+      duration_ms: 22043.561941
+      type: 'test'
+      ...
+    # {"label":"base","installedPacks":0,"checkedModes":132,"optionalEntries":0,"excludedShared":14,"publicAssets":7599}
+    # Subtest: halo
+    ok 3 - halo
+      ---
+      duration_ms: 23659.196749
+      type: 'test'
+      ...
+    # {"label":"halo","installedPacks":1,"checkedModes":138,"optionalEntries":0,"excludedShared":14,"publicAssets":7599}
+    # Subtest: consumers
+    ok 4 - consumers
+      ---
+      duration_ms: 22607.766645
+      type: 'test'
+      ...
+    # {"label":"consumers","installedPacks":38,"checkedModes":360,"optionalEntries":38,"excludedShared":0,"publicAssets":7613}
+    1..4
+ok 1 - real transformed renderer keeps backdrop closure for all, base, Halo and every reviewed consumer
+  ---
+  duration_ms: 95741.634061
+  type: 'test'
+  ...
+# Subtest: all profile returns the original source unchanged
+ok 2 - all profile returns the original source unchanged
+  ---
+  duration_ms: 2.505125
+  type: 'test'
+  ...
+# Subtest: array pruning removes entries and spreads without sparse holes or order changes
+ok 3 - array pruning removes entries and spreads without sparse holes or order changes
+  ---
+  duration_ms: 6.817851
+  type: 'test'
+  ...
+# Subtest: JSX runtime modules retain their React source while optional contributions are removed
+ok 4 - JSX runtime modules retain their React source while optional contributions are removed
+  ---
+  duration_ms: 1.151104
+  type: 'test'
+  ...
+# Subtest: dictionary keys are removed instead of receiving empty data objects
+ok 5 - dictionary keys are removed instead of receiving empty data objects
+  ---
+  duration_ms: 0.767787
+  type: 'test'
+  ...
+# Subtest: private factory values and aliases are removed at their contribution sites
+ok 6 - private factory values and aliases are removed at their contribution sites
+  ---
+  duration_ms: 0.823851
+  type: 'test'
+  ...
+# Subtest: named constant imports are omitted without evaluating an absent pack
+ok 7 - named constant imports are omitted without evaluating an absent pack
+  ---
+  duration_ms: 0.511591
+  type: 'test'
+  ...
+# Subtest: a selected profile executes with the excluded directory physically absent
+ok 8 - a selected profile executes with the excluded directory physically absent
+  ---
+  duration_ms: 11.433015
+  type: 'test'
+  ...
+# Subtest: private helpers remain owned modules without a public aggregate adapter
+ok 9 - private helpers remain owned modules without a public aggregate adapter
+  ---
+  duration_ms: 6.788126
+  type: 'test'
+  ...
+# Subtest: unknown uses, exports, side effects and shadowed bindings fail closed
+ok 10 - unknown uses, exports, side effects and shadowed bindings fail closed
+  ---
+  duration_ms: 1.924549
+  type: 'test'
+  ...
+# Subtest: a retained factory cannot silently lose an excluded dependency
+ok 11 - a retained factory cannot silently lose an excluded dependency
+  ---
+  duration_ms: 0.490239
+  type: 'test'
+  ...
+# Subtest: excluded dynamic imports, globs and graph entries are rejected
+ok 12 - excluded dynamic imports, globs and graph entries are rejected
+  ---
+  duration_ms: 0.654556
+  type: 'test'
+  ...
+# Subtest: independent complete identity metadata remains available in reduced profiles
+ok 13 - independent complete identity metadata remains available in reduced profiles
+  ---
+  duration_ms: 0.242425
+  type: 'test'
+  ...
+# Subtest: manifest and installation identities are validated
+ok 14 - manifest and installation identities are validated
+  ---
+  duration_ms: 0.278459
+  type: 'test'
+  ...
+# Subtest: explicit wardrobe exports keep a stable empty public interface
+ok 15 - explicit wardrobe exports keep a stable empty public interface
+  ---
+  duration_ms: 0.6706
+  type: 'test'
+  ...
+# Subtest: every explicit adapter has exactly the actual module export surface
+ok 16 - every explicit adapter has exactly the actual module export surface
+  ---
+  duration_ms: 46.461897
+  type: 'test'
+  ...
+# Subtest: absence contracts preserve shared combat defaults without mutating actors
+ok 17 - absence contracts preserve shared combat defaults without mutating actors
+  ---
+  duration_ms: 1.879041
+  type: 'test'
+  ...
+# Subtest: every repository aggregate can be assembled for base and representative selections
+ok 18 - every repository aggregate can be assembled for base and representative selections
+  ---
+  duration_ms: 2358.446661
+  type: 'test'
+  ...
+# Subtest: shared sprite brief prefix remains identical through its historical compatibility API
+ok 19 - shared sprite brief prefix remains identical through its historical compatibility API
+  ---
+  duration_ms: 2.215147
+  type: 'test'
+  ...
+1..19
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 98992.283422

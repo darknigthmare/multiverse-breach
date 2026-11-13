@@ -1,0 +1,181 @@
+TAP version 13
+# (node:158345) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: exact historical reference-use corrections restrict Bishop body images without changing other identities or trusting bad hashes
+ok 1 - exact historical reference-use corrections restrict Bishop body images without changing other identities or trusting bad hashes
+  ---
+  duration_ms: 26896.712982
+  type: 'test'
+  ...
+# Subtest: a missing private archive keeps public hashes and body-only authority mandatory, including already restricted references
+ok 2 - a missing private archive keeps public hashes and body-only authority mandatory, including already restricted references
+  ---
+  duration_ms: 3.698578
+  type: 'test'
+  ...
+# Subtest: actual Dante identity excludes Nero/V environment screenshots and weapon-only images
+ok 3 - actual Dante identity excludes Nero/V environment screenshots and weapon-only images
+  ---
+  duration_ms: 223.747135
+  type: 'test'
+  ...
+# Subtest: actual Modern Sonic and Eternal2020 locks do not regress to historical Classic/2016 proposals
+ok 4 - actual Modern Sonic and Eternal2020 locks do not regress to historical Classic/2016 proposals
+  ---
+  duration_ms: 217.412845
+  type: 'test'
+  ...
+# Subtest: Elara current V2 portrait keeps the divergent navy atlas outside identity evidence
+not ok 5 - Elara current V2 portrait keeps the divergent navy atlas outside identity evidence
+  ---
+  duration_ms: 382.61842
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:171:1'
+  failureType: 'testCodeFailure'
+  error: 'The actually viewed current project portrait must qualify'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:173:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Rayman woodland concept art remains environment-only evidence for CG03
+ok 6 - Rayman woodland concept art remains environment-only evidence for CG03
+  ---
+  duration_ms: 477.855373
+  type: 'test'
+  ...
+# Subtest: original characters keep their selected V2 portrait without qualifying divergent old atlases
+not ok 7 - original characters keep their selected V2 portrait without qualifying divergent old atlases
+  ---
+  duration_ms: 219.441338
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:196:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/workspace/multiverse-breach/public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png'"
+  code: 'ENOENT'
+  stack: |-
+    Object.openSync (node:fs:560:18)
+    readFileSync (node:fs:444:35)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:213:27)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Seyra keeps her crystal identity when CG13 borrows only Aurelia’s internal costume
+not ok 8 - Seyra keeps her crystal identity when CG13 borrows only Aurelia’s internal costume
+  ---
+  duration_ms: 626.437993
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:221:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'identityVisualReferences')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgSourceEvidence.test.mjs:224:21)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: scoped costume/equipment/environment documents and references never qualify identity
+ok 9 - scoped costume/equipment/environment documents and references never qualify identity
+  ---
+  duration_ms: 2.12945
+  type: 'test'
+  ...
+# Subtest: qualified target is backed by an actually present viewed visual, with no generated-target self-approval
+ok 10 - qualified target is backed by an actually present viewed visual, with no generated-target self-approval
+  ---
+  duration_ms: 1.509476
+  type: 'test'
+  ...
+# Subtest: documentary-only incarnation stays available to the Bible without visual qualification
+ok 11 - documentary-only incarnation stays available to the Bible without visual qualification
+  ---
+  duration_ms: 0.813377
+  type: 'test'
+  ...
+# Subtest: explicit unused identity images and historical/location artwork stay provenance only
+ok 12 - explicit unused identity images and historical/location artwork stay provenance only
+  ---
+  duration_ms: 1.144816
+  type: 'test'
+  ...
+# Subtest: merge complementary axes and provenance without blending incompatible incarnations or other characters
+ok 13 - merge complementary axes and provenance without blending incompatible incarnations or other characters
+  ---
+  duration_ms: 1.218076
+  type: 'test'
+  ...
+# Subtest: a declared exact public copy restores only available viewed identity and preserves historical bytes, roles and incarnation
+ok 14 - a declared exact public copy restores only available viewed identity and preserves historical bytes, roles and incarnation
+  ---
+  duration_ms: 2.7525
+  type: 'test'
+  ...
+# Subtest: an existing original stays authoritative and a corrupt original never falls back to a valid copy
+ok 15 - an existing original stays authoritative and a corrupt original never falls back to a valid copy
+  ---
+  duration_ms: 1.872453
+  type: 'test'
+  ...
+# Subtest: declared aliases reject noncanonical paths, mismatched hashes and wrong byte counts
+ok 16 - declared aliases reject noncanonical paths, mismatched hashes and wrong byte counts
+  ---
+  duration_ms: 1.954206
+  type: 'test'
+  ...
+# Subtest: missing copy is unqualified and no undeclared public image is inferred
+ok 17 - missing copy is unqualified and no undeclared public image is inferred
+  ---
+  duration_ms: 1.035321
+  type: 'test'
+  ...
+# Subtest: broken links and symlinked alias or original ancestors cannot masquerade as absence
+ok 18 - broken links and symlinked alias or original ancestors cannot masquerade as absence
+  ---
+  duration_ms: 1.409575
+  type: 'test'
+  ...
+# Subtest: reused bitmap identity is deduplicated per selected cohort and purpose without changing ordinary historical aliases
+ok 19 - reused bitmap identity is deduplicated per selected cohort and purpose without changing ordinary historical aliases
+  ---
+  duration_ms: 1.431048
+  type: 'test'
+  ...
+# Subtest: restrictive correction runs on the legacy key before public-copy resolution
+ok 20 - restrictive correction runs on the legacy key before public-copy resolution
+  ---
+  duration_ms: 1.314331
+  type: 'test'
+  ...
+# Subtest: a public copy cannot launder generated targets into independent source identity
+ok 21 - a public copy cannot launder generated targets into independent source identity
+  ---
+  duration_ms: 1.499991
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 18
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30535.040345

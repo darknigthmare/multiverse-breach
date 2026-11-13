@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-13T14:06:39.858469+00:00",
+  "command": [
+    "python3",
+    "/tmp/p0-p1-p2-document-links-audit.py"
+  ],
+  "commandSource": "import hashlib\nimport json\nimport re\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom urllib.parse import unquote, urlsplit\n\nrepo = Path.cwd()\nroot = repo / 'docs/assets/p0-p1-p2-continuation-2026-11-13'\nfiles = [repo / 'README.md', *sorted(root.rglob('*.md'))]\nchecked, missing, ignored, documents = [], [], [], []\ninline = re.compile(r'!?\\[(?:\\\\.|[^\\]\\\\])*\\]\\(\\s*(<[^>]*>|(?:\\\\.|[^\\s()])+(?:\\([^()]*\\)[^\\s()]*)*)(?:\\s+(?:\"[^\"]*\"|\\x27[^\\x27]*\\x27|\\([^)]*\\)))?\\s*\\)')\ndefinitions = re.compile(r'^ {0,3}\\[[^\\]]+\\]:\\s*(<[^>]*>|\\S+)', re.M)\nfor file in files:\n    raw = file.read_text()\n    clean, fence = [], None\n    for line in raw.splitlines(keepends=True):\n        marker = re.match(r'^\\s*(`{3,}|~{3,})', line)\n        if marker:\n            char = marker.group(1)[0]\n            if fence is None:\n                fence = char\n            elif fence == char:\n                fence = None\n            clean.append(''.join('\\n' if c == '\\n' else ' ' for c in line))\n        elif fence:\n            clean.append(''.join('\\n' if c == '\\n' else ' ' for c in line))\n        else:\n            clean.append(line)\n    text = ''.join(clean)\n    file_checks = 0\n    for match in [*inline.finditer(text), *definitions.finditer(text)]:\n        target = match.group(1).strip('<>')\n        record = {'file': file.relative_to(repo).as_posix(), 'line': text.count('\\n', 0, match.start()) + 1, 'target': target}\n        if target.startswith('#') or re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) or target.startswith('//'):\n            ignored.append(record)\n            continue\n        local = re.sub(r'\\\\([\\\\() ])', r'\\1', unquote(urlsplit(target).path))\n        destination = (repo / local.lstrip('/') if local.startswith('/') else file.parent / local).resolve()\n        record['resolved'] = destination.relative_to(repo).as_posix() if destination.is_relative_to(repo) else str(destination)\n        checked.append(record)\n        file_checks += 1\n        if not destination.exists():\n            missing.append(record)\n    documents.append({'path': file.relative_to(repo).as_posix(), 'sha256': hashlib.sha256(file.read_bytes()).hexdigest(), 'checked': file_checks})\n\nreport = {\n    'schemaVersion': 1,\n    'recordedAtUtc': datetime.now(timezone.utc).isoformat(),\n    'command': ['python3', '/tmp/p0-p1-p2-document-links-audit.py'],\n    'commandSource': Path(__file__).read_text(),\n    'scope': 'Existence of inline Markdown/image links and reference definitions in root README.md plus every .md below this continuation directory. URI schemes, protocol-relative URLs and anchor-only targets ignored; fragment/query removed from local paths. Fenced code examples excluded. No anchor validation, source/image qualification or HTTP requests.',\n    'documentCount': len(files), 'checked': len(checked), 'ignoredCount': len(ignored),\n    'missing': missing, 'allPassed': not missing, 'documents': documents, 'links': checked,\n    'compiledSourceContinuity': {\n        'receipt': 'validation/compiled-source-continuity.json',\n        'explanationRechecked': True,\n        'onlyChangedInput': 'package.json',\n        'registeredCommands': ['test:cg', 'test:cg:metadata', 'cg:roster:plan:check:metadata'],\n        'reconstructedAndExpectedCompilationPackageSha256': '7f2d12dff51a7750a56f0c6180d3a83956af6fe4aba6f1fe13123837f1b1a357',\n        'checkedInputs': 4371,\n        'scope': 'Read the current receipt and confirm its explanation is updated; original source hashes are covered by that receipt, not independently rerun by this link audit.'\n    }\n}\noutput = root / 'validation/document-links.json'\noutput.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\\n')\nprint(json.dumps({'documents': len(files), 'checked': len(checked), 'missing': missing, 'report': output.relative_to(repo).as_posix()}))\nraise SystemExit(bool(missing))\n",
+  "scope": "Existence of inline Markdown/image links and reference definitions in root README.md plus every .md below this continuation directory. URI schemes, protocol-relative URLs and anchor-only targets ignored; fragment/query removed from local paths. Fenced code examples excluded. No anchor validation, source/image qualification or HTTP requests.",
+  "documentCount": 16,
+  "checked": 192,
+  "ignoredCount": 8,
+  "missing": [],
+  "allPassed": true,
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "eb262a93ec58449b607e42684de9fa6bf0f3ad094d68527fcd7c4941bda3750e",
+      "checked": 84
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "sha256": "a466054f73fbda950ea0a5fd70837be5e0c3e37c8f959819b0e5aa1b2a931f1d",
+      "checked": 17
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/arena-lot-040/README.md",
+      "sha256": "5ea4b28f5555f72a9984c22f403673ac885992ae5ed20b90de2988d392c94adc",
+      "checked": 2
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "sha256": "206918e4b4517cbad308d772daece52031b1a341180b36e611f60877ac3ed40a",
+      "checked": 25
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "sha256": "88c3a7dfc56243d6744b7c567c0b11e7d2f0e6504298a503b61fdfd9d4fa8595",
+      "checked": 15
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "sha256": "3141d62fed305a4757a317a666e7f9f7824debde3fb7213d23b50019fc680052",
+      "checked": 4
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/availability/REPORT.md",
+      "sha256": "00a30ac7c45458b7354042441d07bac8b023cfd759a21755318f471422cb661f",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "sha256": "402d38926569fc7b257575975f1d1c8105832485e5b2896e9717fad0be43ec42",
+      "checked": 6
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "sha256": "9184043381bf65181134fcf9522024755925c78cc2dc3a8941985d1771c184f8",
+      "checked": 11
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/PLAN.md",
+      "sha256": "de910a673ffbe5e8e22c58490b80e8a924fd5d4e86f4329d05b57b7519c76152",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "sha256": "8650a71f3fa868895292aeec156caf9b4f7430bdcc25475b7bb570db55b4dc4b",
+      "checked": 9
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/p0-lot-004/README.md",
+      "sha256": "7e144e189a3541e77d2bf44cc56780219ab14ce4764a28a2f161944034733770",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/README.md",
+      "sha256": "9217df94947228032e5db757c0915a3ba35e9a37776da347abae5146fb73097b",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/scifi-lot-040/REPORT.md",
+      "sha256": "36bfc4018bf452d2484497aeb11fdf38a7d9556c8812e5a6e762d62e24e89e0a",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "sha256": "e995a41d81275733dabd77dc466b3ee66062c9d251beadf839e5d23aed8186c8",
+      "checked": 19
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/dlc-private-helper-contract/REPORT.md",
+      "sha256": "6cce6c9381d8707fb91db908f4c56df612cc46766c95175627df2fb8ab21fb6d",
+      "checked": 0
+    }
+  ],
+  "links": [
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/audits/w17-master-integration-2026-11-09.md",
+      "resolved": "docs/audits/w17-master-integration-2026-11-09.md"
+    },
+    {
+      "file": "README.md",
+      "line": 24,
+      "target": "vite.config.js",
+      "resolved": "vite.config.js"
+    },
+    {
+      "file": "README.md",
+      "line": 43,
+      "target": "config/dlc-profiles/",
+      "resolved": "config/dlc-profiles"
+    },
+    {
+      "file": "README.md",
+      "line": 45,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 82,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 82,
+      "target": "docs/assets/dlc-completion-2026-11-13/ui/AFTER/VALIDATION.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/ui/AFTER/VALIDATION.md"
+    },
+    {
+      "file": "README.md",
+      "line": 86,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/current.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/current.json"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 112,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/summary.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-task-delta.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actor-batches-40.json",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actor-batches-40.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 122,
+      "target": "src/game/combat/sourceKitPriority.js",
+      "resolved": "src/game/combat/sourceKitPriority.js"
+    },
+    {
+      "file": "README.md",
+      "line": 132,
+      "target": "docs/licensing/SURVIVAURE_AUTHORIZATION.md",
+      "resolved": "docs/licensing/SURVIVAURE_AUTHORIZATION.md"
+    },
+    {
+      "file": "README.md",
+      "line": 167,
+      "target": "src/game/tacticsTerrainRenderer.js",
+      "resolved": "src/game/tacticsTerrainRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 167,
+      "target": "src/game/tacticsUniversePresentationWave17.js",
+      "resolved": "src/game/tacticsUniversePresentationWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 167,
+      "target": "src/game/tacticsUniverseBattlefieldsWave17.js",
+      "resolved": "src/game/tacticsUniverseBattlefieldsWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "target": "docs/tactics-universes-2026-11-02/README.md",
+      "resolved": "docs/tactics-universes-2026-11-02/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "target": "docs/tactics-universes-2026-10-25/index.html",
+      "resolved": "docs/tactics-universes-2026-10-25/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "target": "docs/tactics-universes-2026-10-26/index.html",
+      "resolved": "docs/tactics-universes-2026-10-26/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "target": "docs/tactics-universes-2026-10-28/index.html",
+      "resolved": "docs/tactics-universes-2026-10-28/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 173,
+      "target": "docs/tactics-terrain-demo.html",
+      "resolved": "docs/tactics-terrain-demo.html"
+    },
+    {
+      "file": "README.md",
+      "line": 177,
+      "target": "package.json",
+      "resolved": "package.json"
+    },
+    {
+      "file": "README.md",
+      "line": 197,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/validation.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/validation.json"
+    },
+    {
+      "file": "README.md",
+      "line": 197,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/browser-checks.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/browser-checks.json"
+    },
+    {
+      "file": "README.md",
+      "line": 197,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json"
+    },
+    {
+      "file": "README.md",
+      "line": 201,
+      "target": "docs/audits/w17-master-integration-2026-11-09.md",
+      "resolved": "docs/audits/w17-master-integration-2026-11-09.md"
+    },
+    {
+      "file": "README.md",
+      "line": 205,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md#vérifications-et-limites",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 207,
+      "target": "docs/assets/dlc-completion-2026-11-13/validation/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/validation/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 209,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 211,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 217,
+      "target": "src/App.jsx",
+      "resolved": "src/App.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 218,
+      "target": "src/components/",
+      "resolved": "src/components"
+    },
+    {
+      "file": "README.md",
+      "line": 219,
+      "target": "src/components/GameCanvas.jsx",
+      "resolved": "src/components/GameCanvas.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 220,
+      "target": "src/components/FighterMode.jsx",
+      "resolved": "src/components/FighterMode.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 221,
+      "target": "src/game/engineRpg.js",
+      "resolved": "src/game/engineRpg.js"
+    },
+    {
+      "file": "README.md",
+      "line": 221,
+      "target": "src/game/engineTactics.js",
+      "resolved": "src/game/engineTactics.js"
+    },
+    {
+      "file": "README.md",
+      "line": 221,
+      "target": "src/game/engineSmash.js",
+      "resolved": "src/game/engineSmash.js"
+    },
+    {
+      "file": "README.md",
+      "line": 221,
+      "target": "src/game/engineFighter.js",
+      "resolved": "src/game/engineFighter.js"
+    },
+    {
+      "file": "README.md",
+      "line": 222,
+      "target": "src/game/combat/",
+      "resolved": "src/game/combat"
+    },
+    {
+      "file": "README.md",
+      "line": 222,
+      "target": "src/game/combatIdentity.js",
+      "resolved": "src/game/combatIdentity.js"
+    },
+    {
+      "file": "README.md",
+      "line": 223,
+      "target": "src/game/melee/",
+      "resolved": "src/game/melee"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsBattlefields.js",
+      "resolved": "src/game/tacticsBattlefields.js"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsUniverseBattlefields.js",
+      "resolved": "src/game/tacticsUniverseBattlefields.js"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsEnvironmentRenderer.js",
+      "resolved": "src/game/tacticsEnvironmentRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsTerrain.js",
+      "resolved": "src/game/tacticsTerrain.js"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsVerticalRuntime.js",
+      "resolved": "src/game/tacticsVerticalRuntime.js"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/game/tacticsTerrainRenderer.js",
+      "resolved": "src/game/tacticsTerrainRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 225,
+      "target": "src/game/tacticsUniverseBattlefieldsWave15.js",
+      "resolved": "src/game/tacticsUniverseBattlefieldsWave15.js"
+    },
+    {
+      "file": "README.md",
+      "line": 225,
+      "target": "src/game/tacticsUniversePresentationWave15.js",
+      "resolved": "src/game/tacticsUniversePresentationWave15.js"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/heroes.js",
+      "resolved": "src/game/heroes.js"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/enemies.js",
+      "resolved": "src/game/enemies.js"
+    },
+    {
+      "file": "README.md",
+      "line": 227,
+      "target": "src/game/cards/",
+      "resolved": "src/game/cards"
+    },
+    {
+      "file": "README.md",
+      "line": 227,
+      "target": "src/game/missions/",
+      "resolved": "src/game/missions"
+    },
+    {
+      "file": "README.md",
+      "line": 228,
+      "target": "public/",
+      "resolved": "public"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "scripts/",
+      "resolved": "scripts"
+    },
+    {
+      "file": "README.md",
+      "line": 230,
+      "target": "docs/",
+      "resolved": "docs"
+    },
+    {
+      "file": "README.md",
+      "line": 241,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json"
+    },
+    {
+      "file": "README.md",
+      "line": 241,
+      "target": "src/game/combat/combatSourceDefinitionsWave17.js",
+      "resolved": "src/game/combat/combatSourceDefinitionsWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 243,
+      "target": "scripts/combatCompletion.test.mjs",
+      "resolved": "scripts/combatCompletion.test.mjs"
+    },
+    {
+      "file": "README.md",
+      "line": 249,
+      "target": "AGENTS.md",
+      "resolved": "AGENTS.md"
+    },
+    {
+      "file": "README.md",
+      "line": 249,
+      "target": "docs/development/GAMEDEV_GUIDE.md",
+      "resolved": "docs/development/GAMEDEV_GUIDE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 249,
+      "target": ".ai-tools/README.md",
+      "resolved": ".ai-tools/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 266,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 267,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 268,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 269,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 270,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 271,
+      "target": "docs/audits/w17-master-integration-2026-11-09.md",
+      "resolved": "docs/audits/w17-master-integration-2026-11-09.md"
+    },
+    {
+      "file": "README.md",
+      "line": 272,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/current.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/current.md"
+    },
+    {
+      "file": "README.md",
+      "line": 272,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 273,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/README.md",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 274,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv"
+    },
+    {
+      "file": "README.md",
+      "line": 275,
+      "target": "docs/tactics-universes-2026-11-02/README.md",
+      "resolved": "docs/tactics-universes-2026-11-02/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 275,
+      "target": "docs/tactics-terrain-verticality.md",
+      "resolved": "docs/tactics-terrain-verticality.md"
+    },
+    {
+      "file": "README.md",
+      "line": 276,
+      "target": "docs/cg/README.md",
+      "resolved": "docs/cg/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 277,
+      "target": "docs/rift-dossiers/catalog.json",
+      "resolved": "docs/rift-dossiers/catalog.json"
+    },
+    {
+      "file": "README.md",
+      "line": 278,
+      "target": "scripts/PORTAL_BOOSTER_PIPELINE.md",
+      "resolved": "scripts/PORTAL_BOOSTER_PIPELINE.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 7,
+      "target": "raster-lot-004/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 8,
+      "target": "p0-lot-004/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/p0-lot-004/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 9,
+      "target": "ff-lot-040/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 10,
+      "target": "scifi-lot-040/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/scifi-lot-040/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 11,
+      "target": "arena-lot-040/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/arena-lot-040/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 12,
+      "target": "mission-menu/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 13,
+      "target": "validation/dlc-private-helper-contract/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/dlc-private-helper-contract/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 14,
+      "target": "cg-runtime-correction/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 18,
+      "target": "audit/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 20,
+      "target": "audit/checkpoint-b9e616b/validation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/validation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 20,
+      "target": "audit/checkpoint-b9e616b/actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-task-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 30,
+      "target": "audit/checkpoint-b9e616b/final-cg-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/final-cg-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 34,
+      "target": "audit/checkpoint-b9e616b/actor-tasks.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-tasks.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 34,
+      "target": "audit/checkpoint-b9e616b/retention.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/retention.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 34,
+      "target": "audit/checkpoint-b9e616b/historical-controls.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/historical-controls.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 36,
+      "target": "audit/checkpoint-b9e616b/work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/work-batches-40.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "line": 51,
+      "target": "audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/arena-lot-040/README.md",
+      "line": 26,
+      "target": "../audit/arena-tests-before-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-tests-before-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/arena-lot-040/README.md",
+      "line": 26,
+      "target": "../audit/arena-tests-after-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-tests-after-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 3,
+      "target": "before-source-inputs.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-source-inputs.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 3,
+      "target": "before-source-validation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-source-validation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-b9e616b/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-b9e616b/final-cg-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/final-cg-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-b9e616b/work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/work-batches-40.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 7,
+      "target": "before-summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-summary.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 7,
+      "target": "before-actor-tasks.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 11,
+      "target": "before-runtime-techniques.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-runtime-techniques.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 19,
+      "target": "actor_task_delta.py",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/actor_task_delta.py"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 23,
+      "target": "arena-targeting-source-overlay-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-targeting-source-overlay-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 23,
+      "target": "arena-runtime-before.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-runtime-before.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 23,
+      "target": "arena-runtime-targeting-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-runtime-targeting-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 26,
+      "target": "arena-factory-propagation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-factory-propagation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 27,
+      "target": "arena-runtime-after.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-runtime-after.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 30,
+      "target": "arena-targeting-fix-isolated.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-targeting-fix-isolated.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 32,
+      "target": "arena-five-tests-before.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-five-tests-before.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 32,
+      "target": "arena-five-tests-after.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-five-tests-after.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 32,
+      "target": "arena-targeting-final-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-targeting-final-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 46,
+      "target": "ff-final-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/ff-final-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 46,
+      "target": "ff-source-overlay-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/ff-source-overlay-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 46,
+      "target": "scifi-final-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/scifi-final-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 46,
+      "target": "scifi-source-overlay-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/scifi-source-overlay-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 46,
+      "target": "review_actor_lot.py",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 52,
+      "target": "revan-bounded-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/revan-bounded-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/README.md",
+      "line": 58,
+      "target": "pinky-bounded-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/pinky-bounded-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 32,
+      "target": "validation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/validation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 32,
+      "target": "summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/summary.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 32,
+      "target": "actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-task-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 32,
+      "target": "historical-controls.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/historical-controls.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 32,
+      "target": "runtime-media-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/runtime-media-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 34,
+      "target": "arena-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 34,
+      "target": "ff-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 34,
+      "target": "scifi-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 36,
+      "target": "work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/work-batches-40.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 38,
+      "target": "actor-tasks.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-tasks.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 38,
+      "target": "retention.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/retention.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 46,
+      "target": "final-cg-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/final-cg-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 52,
+      "target": "cg-source-evidence-baseline5952.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 52,
+      "target": "cg-source-evidence-baseline5952.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md",
+      "line": 52,
+      "target": "cg5952-preserved-root-loader.mjs",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/cg5952-preserved-root-loader.mjs"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "line": 15,
+      "target": "./availability/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/availability/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "line": 23,
+      "target": "./source64/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "line": 23,
+      "target": "./availability/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/availability/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "line": 40,
+      "target": "../validation/cg-metadata-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/cg-metadata-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 15,
+      "target": "validation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/validation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 16,
+      "target": "actual-projection-evidence.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/actual-projection-evidence.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 17,
+      "target": "field-inventory.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/field-inventory.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 18,
+      "target": "unit-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/unit-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 19,
+      "target": "../../../../../scripts/cgSource64Amendment.mjs",
+      "resolved": "scripts/cgSource64Amendment.mjs"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source64/README.md",
+      "line": 20,
+      "target": "../../../../../scripts/fixtures/cg-source64-amendment-2026-11-13.json",
+      "resolved": "scripts/fixtures/cg-source64-amendment-2026-11-13.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 3,
+      "target": "plan.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/plan.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 19,
+      "target": "runtime-before.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/runtime-before.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 20,
+      "target": "baseline-actor-backlog.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/baseline-actor-backlog.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 21,
+      "target": "runtime-after.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/runtime-after.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 21,
+      "target": "delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 22,
+      "target": "source-declarations.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/source-declarations.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 23,
+      "target": "references.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/references.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 24,
+      "target": "test-receipt.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/test-receipt.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 24,
+      "target": "tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 25,
+      "target": "../audit/ff-final-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/ff-final-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/README.md",
+      "line": 26,
+      "target": "historical-catalog-editions-receipt.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/historical-catalog-editions-receipt.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 25,
+      "target": "validation/build-matrix.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/validation/build-matrix.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 25,
+      "target": "validation/browser-matrix.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/validation/browser-matrix.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 25,
+      "target": "validation/unit-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/validation/unit-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 25,
+      "target": "validation/hub-extraction-proof.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/validation/hub-extraction-proof.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 29,
+      "target": "BEFORE/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/BEFORE/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 30,
+      "target": "AFTER/all/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/all/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 30,
+      "target": "AFTER/base/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/base/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 30,
+      "target": "AFTER/thalassa/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/thalassa/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md",
+      "line": 30,
+      "target": "AFTER/cover-captures.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/cover-captures.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 5,
+      "target": "dlc-standard-suite.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/dlc-standard-suite.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 6,
+      "target": "source-and-sprite-contracts.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/source-and-sprite-contracts.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 7,
+      "target": "batch-tests-current.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/batch-tests-current.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 8,
+      "target": "app-bundle-matrix.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/app-bundle-matrix.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 8,
+      "target": "compiled-source-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/compiled-source-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 9,
+      "target": "../mission-menu/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 10,
+      "target": "../raster-lot-004/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 11,
+      "target": "../p0-lot-004/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/p0-lot-004/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 12,
+      "target": "runtime-source-lint.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/runtime-source-lint.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 13,
+      "target": "asset-byte-lineage.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/asset-byte-lineage.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 14,
+      "target": "cg-metadata-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/cg-metadata-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 15,
+      "target": "../cg-runtime-correction/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 16,
+      "target": "cg-bible-pilots-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/cg-bible-pilots-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 17,
+      "target": "cg-source-lint.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/cg-source-lint.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 19,
+      "target": "dlc-private-helper-contract/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/dlc-private-helper-contract/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 23,
+      "target": "../audit/checkpoint-b9e616b/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 25,
+      "target": "../audit/checkpoint-b9e616b/final-cg-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/final-cg-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 25,
+      "target": "compiled-source-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/compiled-source-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-2026-11-13/validation/README.md",
+      "line": 27,
+      "target": "../audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/cg-source-evidence-baseline5952.json"
+    }
+  ],
+  "compiledSourceContinuity": {
+    "receipt": "validation/compiled-source-continuity.json",
+    "explanationRechecked": true,
+    "onlyChangedInput": "package.json",
+    "registeredCommands": [
+      "test:cg",
+      "test:cg:metadata",
+      "cg:roster:plan:check:metadata"
+    ],
+    "reconstructedAndExpectedCompilationPackageSha256": "7f2d12dff51a7750a56f0c6180d3a83956af6fe4aba6f1fe13123837f1b1a357",
+    "checkedInputs": 4371,
+    "scope": "Read the current receipt and confirm its explanation is updated; original source hashes are covered by that receipt, not independently rerun by this link audit."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "scope": "Same final four regression tests as before; explicit seven-source overlay, no shared working imports.",
+  "testFile": "scripts/arenaSourceContracts20261113.test.mjs",
+  "testSha256": "335a62894d0b347c0032fa125c28a708fb3d157ceed9fe341c7a0d80be50974d",
+  "sourceOverlay": "arena-source-overlay-final.json",
+  "exitCode": 0,
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--no-warnings",
+    "--loader",
+    "/tmp/p0-p1-p2-arena-final-source/scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/arenaSourceContracts20261113.test.mjs"
+  ],
+  "log": "arena-tests-after-final.tap"
+}

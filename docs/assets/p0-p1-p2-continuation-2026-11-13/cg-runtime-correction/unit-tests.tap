@@ -1,0 +1,49 @@
+TAP version 13
+# (node:142179) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: metadata reports the exact reviewed current sprite without granting artistic approval
+ok 1 - metadata reports the exact reviewed current sprite without granting artistic approval
+  ---
+  duration_ms: 1.404616
+  type: 'test'
+  ...
+# Subtest: the rejected asset and unrelated old candidates remain archival when a correction is selected
+ok 2 - the rejected asset and unrelated old candidates remain archival when a correction is selected
+  ---
+  duration_ms: 0.325571
+  type: 'test'
+  ...
+# Subtest: no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+ok 3 - no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+  ---
+  duration_ms: 1.598459
+  type: 'test'
+  ...
+# Subtest: other quarantined actors retain their old annotations and gain no correction
+ok 4 - other quarantined actors retain their old annotations and gain no correction
+  ---
+  duration_ms: 0.24563
+  type: 'test'
+  ...
+# Subtest: the production evidence keeps both current and rejected images with distinct provenance
+ok 5 - the production evidence keeps both current and rejected images with distinct provenance
+  ---
+  duration_ms: 0.861969
+  type: 'test'
+  ...
+# Subtest: the exact KOTOR I edition uses a documented place without inventing visual architecture
+ok 6 - the exact KOTOR I edition uses a documented place without inventing visual architecture
+  ---
+  duration_ms: 0.329546
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2219.827485

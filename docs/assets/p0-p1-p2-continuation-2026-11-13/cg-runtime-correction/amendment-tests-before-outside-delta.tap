@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: the real metadata producer passes the unchanged historical guards after exactly the bounded Revan amendment
+not ok 1 - the real metadata producer passes the unchanged historical guards after exactly the bounded Revan amendment
+  ---
+  duration_ms: 8007.438776
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgReviewedRuntimeAmendment.test.mjs:30:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Plan changed outside pinned current-reference metadata amendments for GitHub 2333c2c0
+    + actual - expected
+    
+    + '662eac6311d53910d434505dbd8caa52aa0d471da009079ade68fe30d83e8add'
+    - 'ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e'
+  actual: '662eac6311d53910d434505dbd8caa52aa0d471da009079ade68fe30d83e8add'
+  operator: 'strictEqual'
+  stack: |-
+    validateCgGithub2333Snapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:539:10)
+    validateCgRosterProductionSnapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:281:24)
+    validate (file:///workspace/multiverse-breach/scripts/cgReviewedRuntimeAmendment.test.mjs:22:29)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgReviewedRuntimeAmendment.test.mjs:31:42)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+    # Subtest: approval
+    ok 1 - approval
+      ---
+      duration_ms: 515.967261
+      type: 'test'
+      ...
+    # Subtest: correctionApproval
+    ok 2 - correctionApproval
+      ---
+      duration_ms: 585.892449
+      type: 'test'
+      ...
+    # Subtest: sourceApproval
+    ok 3 - sourceApproval
+      ---
+      duration_ms: 368.238509
+      type: 'test'
+      ...
+    # Subtest: correctionHash
+    ok 4 - correctionHash
+      ---
+      duration_ms: 317.599422
+      type: 'test'
+      ...
+    # Subtest: oldBitmapSelected
+    ok 5 - oldBitmapSelected
+      ---
+      duration_ms: 336.45565
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 6 - extraField
+      ---
+      duration_ms: 519.632305
+      type: 'test'
+      ...
+    # Subtest: otherEdition
+    ok 7 - otherEdition
+      ---
+      duration_ms: 335.43141
+      type: 'test'
+      ...
+    1..7
+ok 2 - the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+  ---
+  duration_ms: 2982.106601
+  type: 'test'
+  ...
+# Subtest: the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+    # Subtest: delivered
+    ok 1 - delivered
+      ---
+      duration_ms: 388.327427
+      type: 'test'
+      ...
+    # Subtest: registered
+    ok 2 - registered
+      ---
+      duration_ms: 485.733952
+      type: 'test'
+      ...
+    # Subtest: prompt
+    ok 3 - prompt
+      ---
+      duration_ms: 550.677017
+      type: 'test'
+      ...
+    # Subtest: assets
+    ok 4 - assets
+      ---
+      duration_ms: 323.187799
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 5 - extraField
+      ---
+      duration_ms: 326.5027
+      type: 'test'
+      ...
+    1..5
+ok 3 - the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+  ---
+  duration_ms: 2075.751895
+  type: 'test'
+  ...
+# Subtest: the source-place proposal rejects Yavin, invented visual details and image approval
+    # Subtest: wrongPlace
+    ok 1 - wrongPlace
+      ---
+      duration_ms: 328.769758
+      type: 'test'
+      ...
+    # Subtest: inventedVisuals
+    ok 2 - inventedVisuals
+      ---
+      duration_ms: 312.038982
+      type: 'test'
+      ...
+    # Subtest: approvedImage
+    ok 3 - approvedImage
+      ---
+      duration_ms: 305.099395
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 4 - extraField
+      ---
+      duration_ms: 453.134619
+      type: 'test'
+      ...
+    1..4
+ok 4 - the source-place proposal rejects Yavin, invented visual details and image approval
+  ---
+  duration_ms: 1400.371353
+  type: 'test'
+  ...
+# Subtest: unrelated identities, delivered entries and totals remain subject to the full historical validator
+ok 5 - unrelated identities, delivered entries and totals remain subject to the full historical validator
+  ---
+  duration_ms: 5703.354206
+  type: 'test'
+  ...
+# Subtest: the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+ok 6 - the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+  ---
+  duration_ms: 116.309061
+  type: 'test'
+  ...
+# Subtest: the original published plan and its three prior amendment pins stay byte-exact
+ok 7 - the original published plan and its three prior amendment pins stay byte-exact
+  ---
+  duration_ms: 67.588279
+  type: 'test'
+  ...
+1..7
+# tests 23
+# suites 0
+# pass 22
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23530.431694

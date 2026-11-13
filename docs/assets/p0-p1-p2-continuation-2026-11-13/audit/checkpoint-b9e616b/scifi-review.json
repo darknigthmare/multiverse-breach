@@ -1,0 +1,1319 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "sha256": "929b24ccbaadfa926ade265120b924e2815429cb0d10b8b4126e5efcdd8c53e3"
+    },
+    "before": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/scifi-runtime-before-lossless.json",
+      "sha256": "102c0a9024f82d901d4d5316eb8bc56d5673d3523c688f7a086ddb461b367a2c"
+    },
+    "after": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-runtime.json",
+      "sha256": "845db4d77bc3df703c304699bb79a804702966e104ff92481f767067211188d8"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "sha256": "98197563e6d213d8f65ba9700ce1731cc655fee96e5ae732f2c9c89cc46b23bf"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Elite Minor\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "addedSourceFindings": [
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    }
+  ],
+  "removedSourceFindingsByCode": {
+    "INCARNATION_UNSPECIFIED": 38,
+    "REFERENCE_MISSING": 38,
+    "VISUAL_CONTRACT_MISSING": 39,
+    "GENERIC_TECHNIQUE_NAMES": 13
+  },
+  "addedSourceFindingsByCode": {
+    "REFERENCE_SCENE_REVIEW": 38
+  },
+  "unchangedPreparedRpgHeroes": 23,
+  "unchangedPreparedRpgHeroSlots": 92,
+  "changedPreparedRpgProfiles": [
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "kind": "hero",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Data Spike",
+              "type": "energy",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Fragment Data Relay",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.08
+              }
+            }
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.08
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "name": {
+            "before": "Data Spike",
+            "after": "Fragment Data Relay"
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        "secondary": {
+          "action": {
+            "before": {
+              "name": "Forerunner Door Override",
+              "type": "signature",
+              "cd": 7,
+              "dmg": 1.8
+            },
+            "after": {
+              "name": "Mantle s Approach Data Access",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.14
+              },
+              "cd": 6
+            }
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.14
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "name": {
+            "before": "Forerunner Door Override",
+            "after": "Mantle s Approach Data Access"
+          },
+          "multiplier": {
+            "before": 1.8,
+            "after": 0
+          }
+        },
+        "defense": {
+          "duration": {
+            "before": 2,
+            "after": 1.2
+          },
+          "action": {
+            "before": {
+              "name": "Hardlight Decoy",
+              "type": "hack",
+              "dur": 2,
+              "reduce": 0.8
+            },
+            "after": {
+              "name": "Fragment Redundancy",
+              "type": "guard",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "guard",
+                "delivery": "support",
+                "shape": "single",
+                "range": 1,
+                "targetSide": "self",
+                "duration": 1.2,
+                "reduce": 0.5
+              },
+              "reduce": 0.5,
+              "dur": 1.2
+            }
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 1
+          },
+          "name": {
+            "before": "Hardlight Decoy",
+            "after": "Fragment Redundancy"
+          },
+          "guardReduce": {
+            "before": 0.8,
+            "after": 0.5
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        "special": {
+          "duration": {
+            "before": 3,
+            "after": 4
+          },
+          "action": {
+            "before": {
+              "name": "Rampancy Logic Storm",
+              "type": "nexus_aoe",
+              "dmg": 4.6,
+              "color": "#5fd7ff"
+            },
+            "after": {
+              "name": "Master Chief Tactical Relay",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 1.1,
+              "hitAt": 0.451,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 4,
+                "buffMultiplier": 1.25
+              },
+              "meterCost": 100
+            }
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.25
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "shape": {
+            "before": "area",
+            "after": "group"
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "name": {
+            "before": "Rampancy Logic Storm",
+            "after": "Master Chief Tactical Relay"
+          },
+          "multiplier": {
+            "before": 4.6,
+            "after": 0
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "kind": "hero",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "ODST SMG Burst",
+              "type": "bullet",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Tir du M7S silencieux de Buck",
+              "type": "projectile",
+              "dmg": 1.15,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "damage",
+                "delivery": "projectile",
+                "shape": "single",
+                "range": 480,
+                "targetSide": "enemy"
+              }
+            }
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 480
+          },
+          "name": {
+            "before": "ODST SMG Burst",
+            "after": "Tir du M7S silencieux de Buck"
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 1.15
+          }
+        },
+        "secondary": {
+          "action": {
+            "before": {
+              "name": "Drop Pod Flank",
+              "type": "signature",
+              "cd": 7,
+              "dmg": 1.8
+            },
+            "after": {
+              "name": "Visée du M7S de l’ODST Buck",
+              "type": "projectile",
+              "dmg": 1.85,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "damage",
+                "delivery": "projectile",
+                "shape": "single",
+                "range": 480,
+                "targetSide": "enemy"
+              },
+              "cd": 6
+            }
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 480
+          },
+          "name": {
+            "before": "Drop Pod Flank",
+            "after": "Visée du M7S de l’ODST Buck"
+          },
+          "multiplier": {
+            "before": 1.8,
+            "after": 1.85
+          }
+        },
+        "defense": {
+          "duration": {
+            "before": 2,
+            "after": 1.2
+          },
+          "action": {
+            "before": {
+              "name": "Helljumper Cover",
+              "type": "shield",
+              "dur": 2,
+              "reduce": 0.8
+            },
+            "after": {
+              "name": "Repli de Buck en armure ODST",
+              "type": "guard",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "guard",
+                "delivery": "support",
+                "shape": "single",
+                "range": 1,
+                "targetSide": "self",
+                "duration": 1.2,
+                "reduce": 0.5
+              },
+              "reduce": 0.5,
+              "dur": 1.2
+            }
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 1
+          },
+          "name": {
+            "before": "Helljumper Cover",
+            "after": "Repli de Buck en armure ODST"
+          },
+          "guardReduce": {
+            "before": 0.8,
+            "after": 0.5
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          }
+        },
+        "special": {
+          "action": {
+            "before": {
+              "name": "Orbital Drop Shock",
+              "type": "nexus_aoe",
+              "dmg": 4.6,
+              "color": "#556b5d"
+            },
+            "after": {
+              "name": "Rafale du M7S de Buck",
+              "type": "projectile",
+              "dmg": 4.65,
+              "animationDuration": 1.1,
+              "hitAt": 0.451,
+              "targeting": {
+                "effect": "damage",
+                "delivery": "projectile",
+                "shape": "single",
+                "range": 640,
+                "targetSide": "enemy"
+              },
+              "meterCost": 100
+            }
+          },
+          "range": {
+            "before": 868.3317338436964,
+            "after": 640
+          },
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "shape": {
+            "before": "area",
+            "after": "single"
+          },
+          "name": {
+            "before": "Orbital Drop Shock",
+            "after": "Rafale du M7S de Buck"
+          },
+          "multiplier": {
+            "before": 4.6,
+            "after": 4.65
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            }
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "ranged"
+          }
+        }
+      }
+    }
+  ],
+  "selectedLegacySignatureChanges": [],
+  "preservedSelectedLegacySignatures": 7,
+  "rawEffectiveLabelDifferences": [],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false
+}

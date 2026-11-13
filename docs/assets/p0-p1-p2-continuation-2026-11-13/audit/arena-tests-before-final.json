@@ -1,0 +1,20 @@
+{
+  "scope": "Current final four regression tests run against exact Git5952 production sources. Only test copied; no new UT2004 helper or production source added.",
+  "baseSourceCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "testFile": "scripts/arenaSourceContracts20261113.test.mjs",
+  "testSha256": "335a62894d0b347c0032fa125c28a708fb3d157ceed9fe341c7a0d80be50974d",
+  "sourceManifest": "before-source-inputs.json",
+  "cwd": "/tmp/p0-p1-p2-before-5952-source",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--no-warnings",
+    "--loader",
+    "/tmp/p0-p1-p2-before-5952-source/scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/arenaSourceContracts20261113.test.mjs"
+  ],
+  "exitCode": 1,
+  "log": "arena-tests-before-final.tap"
+}

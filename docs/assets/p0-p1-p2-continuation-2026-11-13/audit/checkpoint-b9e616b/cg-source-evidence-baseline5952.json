@@ -1,0 +1,61 @@
+{
+  "scope": "Actual Git5952 test and implementation executed with original repository fileURLs/import.meta.url and actual unchanged docs/media root; no new fixtures, altered expectations, Vite, media fetch or source mutation introduced by this audit. Existing test-owned fixtures remain exactly the existing baseline code.",
+  "baselineRevision": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "cwd": "/workspace/multiverse-breach",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "/tmp/cg5952-source-loader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/cgSourceEvidence.test.mjs"
+  ],
+  "nodeVersion": "v22.23.5",
+  "loaderSha256": "d7f2cbfb0d6bf8eaec090bf01612de39e04c7b00947ecbb813987850fd3f7fe2",
+  "loaderPreservesActualRepositoryFileUrls": true,
+  "baselineSourcePins": [
+    {
+      "path": "scripts/cgSourceEvidence.test.mjs",
+      "baselineGitSha256": "146744d98f57b007a88d91c6101f369c90ecb93b252d5d37c015b924bcbee757",
+      "loaderOrigin": "EXACT_GIT_CAT_FILE_5952",
+      "workingSha256": "d37b543451c776bf0cc044c34676074e9a0c440337e1ca4a4c21f59ecf185616"
+    },
+    {
+      "path": "scripts/cgSourceEvidence.mjs",
+      "baselineGitSha256": "6fae02b588230a16a584a2ac8917532c4e4f92c6f3649b38550a577a5df23352",
+      "loaderOrigin": "EXACT_GIT_CAT_FILE_5952",
+      "workingSha256": "897bfc3ffb4017a5130e722520533a8dc6333f90065547772cc026d9d57ba083"
+    }
+  ],
+  "baselineLogSha256": "fd0688a621c2fd76e40ce5793dc7234da629802cea42884ad8e8f23276428e69",
+  "currentComparisonLog": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/source-evidence-checkout-limitations.tap",
+  "currentComparisonLogSha256": "c85724c1ef6cafea11bd5f23d5acf41c48b486cc3157b3271a1f78c5dc022841",
+  "exitCode": 1,
+  "baselineTests": 21,
+  "baselinePass": 18,
+  "baselineFail": 3,
+  "exactAllStatusesAndLabelsMatch": true,
+  "exactErrorMessagesMatch": true,
+  "failedLabels": [
+    "not ok - Elara current V2 portrait keeps the divergent navy atlas outside identity evidence",
+    "not ok - original characters keep their selected V2 portrait without qualifying divergent old atlases",
+    "not ok - Seyra keeps her crystal identity when CG13 borrows only Aurelia’s internal costume"
+  ],
+  "baselineErrorMessages": [
+    "'The actually viewed current project portrait must qualify'",
+    "\"ENOENT: no such file or directory, open '/workspace/multiverse-breach/public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png'\"",
+    "\"Cannot read properties of undefined (reading 'identityVisualReferences')\""
+  ],
+  "currentErrorMessages": [
+    "'The actually viewed current project portrait must qualify'",
+    "\"ENOENT: no such file or directory, open '/workspace/multiverse-breach/public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png'\"",
+    "\"Cannot read properties of undefined (reading 'identityVisualReferences')\""
+  ],
+  "mediaCopiedOrFetched": 0,
+  "artApprovals": 0,
+  "trackedDocsAndPublicImagesChangedSinceBaseline": [],
+  "untrackedDocsAndPublicImages": [],
+  "interpretation": "Same pre-existing failures in the current partially materialized checkout, not proof that these three fail with all original media hydrated. Actual expected-test source is unchanged and both real implementations use the same on-disk references.",
+  "retainedLoaderSource": "cg5952-preserved-root-loader.mjs"
+}

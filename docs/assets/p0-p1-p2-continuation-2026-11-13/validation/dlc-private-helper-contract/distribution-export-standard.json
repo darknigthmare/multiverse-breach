@@ -1,0 +1,36 @@
+{
+  "startedUtc": "2026-11-13T12:44:43.225754+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/dlcDistribution.test.mjs",
+    "scripts/dlcDistributionExport.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 2.063,
+  "counts": {
+    "tests": 90,
+    "pass": 90,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "scripts/dlcDistribution.mjs": "cdf31d96c7979ea5fa76816bb375e12687cfe6432436b585ddf54f2b15d24dbe",
+    "scripts/dlcDistribution.test.mjs": "79483fff4cc8eebae4e4fb0bcab207f9b1781f420abaf8fe8d91c512bb194973",
+    "scripts/dlcDistributionExport.test.mjs": "8211019a907efb93a186a0f293411b43d2cfacb2f829ad6ae2b266320cbbce45",
+    "scripts/dlcProfileTransform.test.mjs": "8bc45c80f11a1698def541666c530a0cd0221cb669221241477b20a79f9a9cf5",
+    "scripts/dlcProfileTransform.mjs": "7220be880a976786b0ea76740d6c069c3867b1401f4f827bc15b97d39bb56247",
+    "scripts/exportDlcDistribution.mjs": "3d35dcb0dacb73fde72069ffdc94504faa9148eaa02f767ff9ba87a2fb26d8eb",
+    "scripts/auditDlcDistribution.mjs": "00b5126b6842f258821c1e4f27d28f168714d443b36df2780f1b10346086b36b"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Complete native Distribution and Export suites, including selected/base private-helper source closure and executable exported modules.",
+  "limits": "Synthetic export fixtures; production DLC profiles are covered separately by unchanged standard profile suites."
+}

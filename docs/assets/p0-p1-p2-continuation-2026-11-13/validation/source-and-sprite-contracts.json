@@ -1,0 +1,24 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/arenaSourceContracts20261113.test.mjs",
+    "scripts/ffActorSourceContracts20261113.test.mjs",
+    "scripts/scifiSourceContracts20261113.test.mjs",
+    "scripts/pinkyClassicAssets.test.mjs",
+    "scripts/reviewedRevanSprite.test.mjs",
+    "scripts/cgCanonicalSpriteQuarantine.test.mjs",
+    "scripts/combatFidelityWave14.test.mjs",
+    "scripts/combatFidelityWave15.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 44.421,
+  "scope": "Current source contracts and real engine regressions, delivered PNG/renderer guards, historical edition fixtures. No complete production distribution."
+}

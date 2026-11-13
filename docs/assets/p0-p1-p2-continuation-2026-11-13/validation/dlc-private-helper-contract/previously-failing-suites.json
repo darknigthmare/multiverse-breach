@@ -1,0 +1,32 @@
+{
+  "startedUtc": "2026-11-13T12:42:12.011966+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=8192",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/dlcProfileTransform.test.mjs",
+    "scripts/dlcProfileSharedBackdrops.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 99.063,
+  "counts": {
+    "tests": 23,
+    "pass": 23,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "scripts/dlcDistribution.mjs": "cdf31d96c7979ea5fa76816bb375e12687cfe6432436b585ddf54f2b15d24dbe",
+    "scripts/dlcProfileTransform.test.mjs": "8bc45c80f11a1698def541666c530a0cd0221cb669221241477b20a79f9a9cf5",
+    "scripts/dlcProfileSharedBackdrops.test.mjs": "e9d86de945b40e86e1dab89ae2f5fb1251ffde18c2867df73c1e782d1eedeff8",
+    "scripts/dlcProfileTransform.mjs": "7220be880a976786b0ea76740d6c069c3867b1401f4f827bc15b97d39bb56247",
+    "scripts/buildDlcRegistry.mjs": "81dc91ece0d2f79731bee4d9e0d355d114df586d2175394f5385da8b106fad9c",
+    "DLC/index.js": "d8ccd1fab7bd4e5c49d9b352713f150b9b27d641e7542a60d12443723a6e46a6"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Unmodified standard Vite/SSR renderer profile suites and full repository aggregate assembly; no custom loader or fixture bypass.",
+  "limits": "Not a production build or exported media payload certification."
+}

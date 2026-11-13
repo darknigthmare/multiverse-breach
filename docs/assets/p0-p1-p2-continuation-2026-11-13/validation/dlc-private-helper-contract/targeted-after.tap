@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: private modules without an aggregate adapter remain in the selected catalogue
+ok 1 - private modules without an aggregate adapter remain in the selected catalogue
+  ---
+  duration_ms: 4.826103
+  type: 'test'
+  ...
+# Subtest: an optional runtime adapter still rejects invalid types and unsafe paths
+ok 2 - an optional runtime adapter still rejects invalid types and unsafe paths
+  ---
+  duration_ms: 0.93557
+  type: 'test'
+  ...
+# Subtest: private helper code is exported only with its selected pack: base
+ok 3 - private helper code is exported only with its selected pack: base
+  ---
+  duration_ms: 44.552361
+  type: 'test'
+  ...
+# Subtest: private helper code is exported only with its selected pack: halo
+ok 4 - private helper code is exported only with its selected pack: halo
+  ---
+  duration_ms: 19.032593
+  type: 'test'
+  ...
+# Subtest: private helpers remain owned modules without a public aggregate adapter
+ok 5 - private helpers remain owned modules without a public aggregate adapter
+  ---
+  duration_ms: 14.945002
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 413.350716

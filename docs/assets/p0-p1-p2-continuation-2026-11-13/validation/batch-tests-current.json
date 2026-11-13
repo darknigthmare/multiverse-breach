@@ -1,0 +1,17 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/dlcBatchAssetSource.test.mjs",
+    "scripts/dlcAssetBatchDecode.test.mjs",
+    "scripts/dlcAssetBatches.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 4.15,
+  "scope": "Provider/decode/frozen-plan resume regressions with updated manifest contract; no repeat of the historical15GBpayload traversal."
+}

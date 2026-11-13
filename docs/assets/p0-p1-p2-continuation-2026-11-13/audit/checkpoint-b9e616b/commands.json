@@ -1,0 +1,165 @@
+[
+  {
+    "name": "snapshot",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/prepare_source_snapshot.py",
+      "--repo",
+      "/workspace/multiverse-breach",
+      "--revision",
+      "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "--out",
+      "/tmp/p0-p1-p2-final-b9e616b-source",
+      "--manifest",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json"
+    ],
+    "exitCode": 0,
+    "log": "snapshot.log",
+    "logSha256": "e1a850ee06f3f0d093c5ab3ece3f563d1d263e1510aeae5d646fb243c2218743"
+  },
+  {
+    "name": "export",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--max-old-space-size=1024",
+      "--no-warnings",
+      "--loader",
+      "/tmp/p0-p1-p2-final-b9e616b-source/scripts/sourceSceneTestLoader.mjs",
+      "/tmp/p0-p1-p2-final-b9e616b-source/scripts/exportActorFidelityBacklog.mjs",
+      "/tmp/p0-p1-p2-final-b9e616b-export",
+      "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "/tmp/p0-p1-p2-final-b9e616b-source/complete-tree.json",
+      "b9e616b331e4d93efcd63b607736ae6b6c59415b"
+    ],
+    "exitCode": 0,
+    "log": "export.log",
+    "logSha256": "c8efe467b0681e47b9e312f38cf3264f7d5950433908606dac72634ecb330bbe"
+  },
+  {
+    "name": "global-delta",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/actor_task_delta.py",
+      "--before",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "--after",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-tasks.json",
+      "--out",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-task-delta.json"
+    ],
+    "exitCode": 0,
+    "log": "global-delta.log",
+    "logSha256": "e894416bb6892e90e6a1146898ed9fa98ac8bd8a233c0f0a87422d041a5d38c5"
+  },
+  {
+    "name": "arena-probe",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--max-old-space-size=1024",
+      "--no-warnings",
+      "--loader",
+      "/tmp/p0-p1-p2-final-b9e616b-source/scripts/sourceSceneTestLoader.mjs",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+      "/tmp/p0-p1-p2-final-b9e616b-source",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-keys.json",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-runtime.json"
+    ],
+    "exitCode": 0,
+    "log": "arena-probe.log",
+    "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+  },
+  {
+    "name": "arena-review",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+      "--baseline",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "--before",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/arena-runtime-before-lossless.json",
+      "--after",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-runtime.json",
+      "--overlay",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "--out",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/arena-review.json"
+    ],
+    "exitCode": 0,
+    "log": "arena-review.log",
+    "logSha256": "1440dbc01bc096765cb7d63ce10ee457e44ba44b29dc4ae439c0505800554117"
+  },
+  {
+    "name": "ff-probe",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--max-old-space-size=1024",
+      "--no-warnings",
+      "--loader",
+      "/tmp/p0-p1-p2-final-b9e616b-source/scripts/sourceSceneTestLoader.mjs",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+      "/tmp/p0-p1-p2-final-b9e616b-source",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-keys.json",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-runtime.json"
+    ],
+    "exitCode": 0,
+    "log": "ff-probe.log",
+    "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+  },
+  {
+    "name": "ff-review",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+      "--baseline",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "--before",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/ff-runtime-before-lossless.json",
+      "--after",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-runtime.json",
+      "--overlay",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "--out",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-review.json"
+    ],
+    "exitCode": 0,
+    "log": "ff-review.log",
+    "logSha256": "f9fc81badc59eab156d5b5516afb68f90a4b2cbb8d239e0ca9e1b087bcc847d4"
+  },
+  {
+    "name": "scifi-probe",
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--max-old-space-size=1024",
+      "--no-warnings",
+      "--loader",
+      "/tmp/p0-p1-p2-final-b9e616b-source/scripts/sourceSceneTestLoader.mjs",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+      "/tmp/p0-p1-p2-final-b9e616b-source",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-keys.json",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-runtime.json"
+    ],
+    "exitCode": 0,
+    "log": "scifi-probe.log",
+    "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+  },
+  {
+    "name": "scifi-review",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+      "--baseline",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "--before",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/scifi-runtime-before-lossless.json",
+      "--after",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-runtime.json",
+      "--overlay",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "--out",
+      "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/scifi-review.json"
+    ],
+    "exitCode": 0,
+    "log": "scifi-review.log",
+    "logSha256": "4506fae7c0d7eaf272d2c6f24fe389bf5a524db7a3c81548e3327f6ae43a58a5"
+  }
+]

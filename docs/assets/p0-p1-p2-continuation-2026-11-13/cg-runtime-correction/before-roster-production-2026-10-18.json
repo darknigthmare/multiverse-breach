@@ -1,0 +1,328 @@
+{
+  "characterId": "darth_revan",
+  "characterName": "Darth Revan",
+  "universe": "Star Wars",
+  "universeKey": "star-wars",
+  "inHeroesDb": true,
+  "characterArcStageId": 9535,
+  "priority": "P1",
+  "p0Reason": null,
+  "identity": {
+    "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+    "identityLock": "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask",
+    "equipment": [
+      "Red Lightsaber"
+    ],
+    "sourceRefs": [
+      "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+      "https://www.starwars.com/games-apps/knights-of-the-old-republic",
+      "https://www.swtor.com/info/news/article/20201209-0",
+      "https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts"
+    ],
+    "localCandidates": [
+      {
+        "path": "/sprites/generated/heroes/star-wars/darth-revan.png",
+        "exists": true,
+        "role": "historical-project-image-not-source-fidelity-approval",
+        "archivalOnly": true,
+        "selectedInRuntime": false,
+        "runtimeEligible": false,
+        "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+        "quarantineReason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
+      }
+    ],
+    "runtimeSpriteQuarantine": {
+      "characterId": "darth_revan",
+      "universe": "Star Wars",
+      "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+      "asset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+      "sha256": "78200992ef619c3e7d16907db20496df67b018c1fb99697bcf75dce3ea43169c",
+      "reason": "KOTOR_I_WRONG_RED_PURPLE_PAIR"
+    },
+    "historicalWebImageEvidence": [],
+    "evidenceStatus": "needs-reference",
+    "missing": [
+      "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.",
+      "Sprite runtime en quarantaine (KOTOR_I_WRONG_RED_PURPLE_PAIR); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source."
+    ],
+    "visualFidelityApproved": false,
+    "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+    "adaptationNote": "legends"
+  },
+  "entryIds": [
+    "cg:star-wars:darth-revan:characterSolo:openai-v1"
+  ],
+  "matrix": {
+    "CG01": {
+      "status": "needs-reference",
+      "type": "characterSolo",
+      "entryId": "cg:star-wars:darth-revan:characterSolo:openai-v1",
+      "generatedImageCount": 0,
+      "poseBrief": "Portrait entier en trois quarts, appui calme, silhouette dégagée et équipement complet; attitude de référence sans attaque.",
+      "themeBrief": "Personnage de référence dans une incarnation source précise, sans transformation.",
+      "themeStatus": "needs-reference",
+      "themeSource": [
+        "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+        "https://www.starwars.com/games-apps/knights-of-the-old-republic",
+        "https://www.swtor.com/info/news/article/20201209-0",
+        "https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts",
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-charactersolo"
+    },
+    "CG02": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "weaponSolo"
+      ],
+      "poseBrief": "Arme ou équipement signature seul, entièrement visible en diagonale sur un support; aucun corps ni membre coupé.",
+      "themeBrief": "Arme ou équipement signature confirmé pour cette incarnation; N/A si aucun équipement distinct cohérent.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg02",
+      "backgroundTemplateId": "CG02",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG03": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "decorSolo"
+      ],
+      "poseBrief": "Décor seul en vue d’ensemble avec premier plan bas et profondeur ouverte; aucun personnage dominant et donc aucune pose humaine.",
+      "themeBrief": "Lieu de l’univers source, fidèle à l’époque et à la continuité retenues.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg03",
+      "backgroundTemplateId": "CG03",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG04": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "coherentScene"
+      ],
+      "poseBrief": "Interaction calme avec un élément source validé, buste ou axe du corps légèrement incliné, attention orientée vers cet élément.",
+      "themeBrief": "Scène cohérente avec le rôle et les objets documentés de cette incarnation.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg04",
+      "backgroundTemplateId": "CG04",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG05": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "actionScene"
+      ],
+      "poseBrief": "Mouvement d’action asymétrique et dirigé, appui décalé et trajectoire de technique source lisible; anatomie et équipement verrouillés.",
+      "themeBrief": "Action Nexus utilisant une technique documentée ou une adaptation de jeu explicitement identifiée.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg05",
+      "backgroundTemplateId": "CG05",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG06": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "introPose"
+      ],
+      "poseBrief": "Franchissement du seuil d’arrivée, un appui en avant et regard vers la route; équipement porté sans déclencher une attaque.",
+      "themeBrief": "Arrivée du personnage dans le lieu retenu, identité et équipement source conservés.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg06",
+      "backgroundTemplateId": "CG06",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG07": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "victoryPose"
+      ],
+      "poseBrief": "Victoire contenue, axe du corps redressé et ouvert, équipement abaissé en sécurité; aucune pose de conquête humiliante.",
+      "themeBrief": "Victoire sobre cohérente avec la personnalité et la source.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg07",
+      "backgroundTemplateId": "CG07",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG08": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "defeatPose"
+      ],
+      "poseBrief": "Repli défensif bas vers un abri, appuis rapprochés et axe protégé; vivant et digne, sans blessure graphique.",
+      "themeBrief": "Repli vivant, digne et non graphique, cohérent avec la source.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg08",
+      "backgroundTemplateId": "CG08",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG09": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "beachFamily"
+      ],
+      "poseBrief": "Pause de loisir assise ou flottante selon l’anatomie, orientation latérale et membres relâchés; applicabilité et tenue à vérifier.",
+      "themeBrief": "Beach/family : déclinaison de loisir familiale uniquement si anatomie, âge et identité rendent le thème cohérent.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg09",
+      "backgroundTemplateId": "CG09",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG10": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "maidService"
+      ],
+      "poseBrief": "Geste de service en déplacement court, objet de service tenu seulement si l’anatomie le permet; applicabilité à vérifier, aucune soumission.",
+      "themeBrief": "Maid/service : déclinaison de service familiale applicable seulement après validation du personnage et de la tenue.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg10",
+      "backgroundTemplateId": "CG10",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG11": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "goofy"
+      ],
+      "poseBrief": "Déséquilibre comique contrôlé, axe du corps déporté et geste de rattrapage; ni chute grave ni humiliation.",
+      "themeBrief": "Goofy : mésaventure comique originale cohérente avec la personnalité, sans altérer l’identité.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg11",
+      "backgroundTemplateId": "CG11",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG12": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "alignmentSwap"
+      ],
+      "poseBrief": "Posture de faction alternative vue de trois quarts arrière, tête ou regard revenu vers le spectateur; opposition morale What If à sourcer.",
+      "themeBrief": "Alignment swap : faction ou alignement inversé What If; thème précis à résoudre dans les références.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg12",
+      "backgroundTemplateId": "CG12",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG13": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "genderSwap",
+        "iconicOutfitSwap"
+      ],
+      "poseBrief": "Présentation latérale de la seule transformation retenue, silhouette déployée et appui extérieur; choisir genre OU tenue iconique, jamais les fusionner.",
+      "themeBrief": "Une seule variante : gender swap OU iconic outfit swap; source et thème exacts à choisir séparément.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg13",
+      "backgroundTemplateId": "CG13",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG14": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "zombieVersion"
+      ],
+      "poseBrief": "Posture de corruption contenue, axe penché et mouvement interrompu, membres source lisibles; aucun gore ni ajout anatomique non validé.",
+      "themeBrief": "Zombie/corruption What If : mécanisme et motifs compatibles avec l’univers, sans gore.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg14",
+      "backgroundTemplateId": "CG14",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    },
+    "CG15": {
+      "status": "needs-theme/reference",
+      "selectedType": null,
+      "typeOptions": [
+        "firstStep",
+        "futureExperienced"
+      ],
+      "poseBrief": "Pose temporelle en transition de profil, appui arrière quittant le sol ou équivalent anatomique; époque initiale OU expérimentée à sourcer.",
+      "themeBrief": "Une seule époque : first step OU future experienced; continuité et thème temporels à documenter.",
+      "themeStatus": "documented-template-character-theme-unresolved",
+      "themeSource": [
+        "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      ],
+      "backgroundId": "cg-bg-star-wars-darth-revan-cg15",
+      "backgroundTemplateId": "CG15",
+      "environmentSourceId": "cg-bg-star-wars-darth-revan-charactersolo",
+      "applicability": "requires-source-and-character-review",
+      "generatedImageCount": 0
+    }
+  }
+}

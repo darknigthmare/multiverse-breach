@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: source64 closes only its exact metadata fixture and preserves all historical records
+ok 1 - source64 closes only its exact metadata fixture and preserves all historical records
+  ---
+  duration_ms: 2066.774047
+  type: 'test'
+  ...
+# Subtest: source64 rejects changed values inside every allowed identity/entry/background field
+ok 2 - source64 rejects changed values inside every allowed identity/entry/background field
+  ---
+  duration_ms: 4088.392788
+  type: 'test'
+  ...
+# Subtest: source64 refuses generation/status/assets/rewards/approval changes for its own actors
+ok 3 - source64 refuses generation/status/assets/rewards/approval changes for its own actors
+  ---
+  duration_ms: 3339.959966
+  type: 'test'
+  ...
+# Subtest: runtime provenance is exact and nonauthoritative for only the two historical Halo pilots
+ok 4 - runtime provenance is exact and nonauthoritative for only the two historical Halo pilots
+  ---
+  duration_ms: 5880.407145
+  type: 'test'
+  ...
+# Subtest: all sixty-four runtime declaration pins and both pilot catalog sources reject altered clones
+ok 5 - all sixty-four runtime declaration pins and both pilot catalog sources reject altered clones
+  ---
+  duration_ms: 1399.688189
+  type: 'test'
+  ...
+# Subtest: unknown outside changes survive the bounded projection and fail the complete historical comparison
+ok 6 - unknown outside changes survive the bounded projection and fail the complete historical comparison
+  ---
+  duration_ms: 7212.589496
+  type: 'test'
+  ...
+# Subtest: known parent key order is restored without accepting unknown values
+ok 7 - known parent key order is restored without accepting unknown values
+  ---
+  duration_ms: 696.40266
+  type: 'test'
+  ...
+# Subtest: closed fixture and frozen b9e source bytes reject tampering without changing canonical files
+ok 8 - closed fixture and frozen b9e source bytes reject tampering without changing canonical files
+  ---
+  duration_ms: 19.425431
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26834.172782

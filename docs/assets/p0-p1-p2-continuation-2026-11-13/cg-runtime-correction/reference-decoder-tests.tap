@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: valid PNG and JPEG are fully decoded from stdin and report bounded metadata
+ok 1 - valid PNG and JPEG are fully decoded from stdin and report bounded metadata
+  ---
+  duration_ms: 281.960629
+  type: 'test'
+  ...
+# Subtest: empty input, PNG/JPEG signatures, HTML and LFS pointers never become visual evidence
+ok 2 - empty input, PNG/JPEG signatures, HTML and LFS pointers never become visual evidence
+  ---
+  duration_ms: 516.061406
+  type: 'test'
+  ...
+# Subtest: headers with truncated PNG or JPEG pixel data are rejected by full decode
+ok 3 - headers with truncated PNG or JPEG pixel data are rejected by full decode
+  ---
+  duration_ms: 185.42463
+  type: 'test'
+  ...
+# Subtest: animated GIF decodes every reported page and returns per-page dimensions
+ok 4 - animated GIF decodes every reported page and returns per-page dimensions
+  ---
+  duration_ms: 96.574792
+  type: 'test'
+  ...
+# Subtest: a complete valid image above the pixel budget is rejected before allocation
+ok 5 - a complete valid image above the pixel budget is rejected before allocation
+  ---
+  duration_ms: 92.367142
+  type: 'test'
+  ...
+# Subtest: stdin above 64 MiB fails without returning payload or decoder diagnostics
+ok 6 - stdin above 64 MiB fails without returning payload or decoder diagnostics
+  ---
+  duration_ms: 470.956033
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1854.640195

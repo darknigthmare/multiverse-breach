@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: explicit costume-only and CG13 support never qualify the target identity on their own
+ok 1 - explicit costume-only and CG13 support never qualify the target identity on their own
+  ---
+  duration_ms: 12.244857
+  type: 'test'
+  ...
+# Subtest: a real identity plus valid support qualifies only the identity while preserving support history
+ok 2 - a real identity plus valid support qualifies only the identity while preserving support history
+  ---
+  duration_ms: 4.27212
+  type: 'test'
+  ...
+# Subtest: a missing V2 or LFS pointer cannot borrow a costume support image as identity
+ok 3 - a missing V2 or LFS pointer cannot borrow a costume support image as identity
+  ---
+  duration_ms: 2.727321
+  type: 'test'
+  ...
+# Subtest: HTML, wrong byte count or a mismatched recorded SHA cannot qualify as a viewed image
+ok 4 - HTML, wrong byte count or a mismatched recorded SHA cannot qualify as a viewed image
+  ---
+  duration_ms: 1.504518
+  type: 'test'
+  ...
+# Subtest: an unknown role with a real viewed identity remains eligible rather than being rejected globally
+ok 5 - an unknown role with a real viewed identity remains eligible rather than being rejected globally
+  ---
+  duration_ms: 1.243314
+  type: 'test'
+  ...
+# Subtest: an explicit face or identity reference is not rejected just because its role also discusses costume or equipment
+ok 6 - an explicit face or identity reference is not rejected just because its role also discusses costume or equipment
+  ---
+  duration_ms: 1.033828
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 112.563419

@@ -1,0 +1,21 @@
+(node:161567) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing generated CG asset: /cg/nexus-de-convergence/player-anchor/character-solo-openai-v1.png
+    at buildCgRosterProductionPlanCore (file:///workspace/multiverse-breach/scripts/buildCgRosterProductionPlan.mjs:405:96)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async main (file:///workspace/multiverse-breach/scripts/buildCgRosterProductionPlan.mjs:682:16)
+    at async file:///workspace/multiverse-breach/scripts/buildCgRosterProductionPlan.mjs:695:90 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.5

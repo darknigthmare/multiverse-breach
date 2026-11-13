@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-13T13:43:02.453480+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 11.917,
+  "counts": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "scripts/cgReviewedAvailabilityAmendment.mjs": "93e8b42dffdbea7fb63e32842a7bd3b03f5e09af9214c9e7011f82caece0460f",
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs": "47db2b3972fa56dbf9915e563ee49018a7de3baa883e7f60c02c8097af9d558f",
+    "scripts/fixtures/cg-reviewed-availability-amendment-2026-11-13.json": "65fd79dc231ab247c15fc788b50e4edf7645bfff61cdb60610761aec6196699f",
+    "scripts/cgSourceEvidence.mjs": "897bfc3ffb4017a5130e722520533a8dc6333f90065547772cc026d9d57ba083",
+    "scripts/cgReferenceImageDecode.mjs": "88339f313d75adfa452f627ab394b507a258e411b463a146f805aece754a3c04",
+    "scripts/buildCgRosterProductionPlan.mjs": "e9f7fbf7b724fec291b820e72f8ca20579d71605c8ee777eb8b71e50f2e22aee",
+    "scripts/cgRosterPlanSnapshot.mjs": "d2707fb50db92aae500c047033940cd7e27464cee9f4765df13f48b021681fd8"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Native Node contract and filesystem availability tests using the shared full Sharp decoder and canonical repository serializer. No server, Vite/SSR build, production image fetch or image hydration.",
+  "limits": "Tiny synthetic image hydrations validate the technical transition; the 58 historical portraits themselves remain absent. Complete producer/global amendment suites are run separately by the owner."
+}

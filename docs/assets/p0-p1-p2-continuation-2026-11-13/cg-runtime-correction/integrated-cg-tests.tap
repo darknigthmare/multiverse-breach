@@ -1,0 +1,314 @@
+TAP version 13
+# Subtest: historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+ok 1 - historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+  ---
+  duration_ms: 2.955287
+  type: 'test'
+  ...
+# Subtest: same-edition structured CG equipment is retained instead of taking runtime defaults
+ok 2 - same-edition structured CG equipment is retained instead of taking runtime defaults
+  ---
+  duration_ms: 0.235565
+  type: 'test'
+  ...
+# Subtest: incomplete CG authority leaves equipment unknown even when edition labels agree
+ok 3 - incomplete CG authority leaves equipment unknown even when edition labels agree
+  ---
+  duration_ms: 0.42517
+  type: 'test'
+  ...
+# Subtest: qualified identity without equipment cannot borrow a runtime weapon
+ok 4 - qualified identity without equipment cannot borrow a runtime weapon
+  ---
+  duration_ms: 0.183135
+  type: 'test'
+  ...
+# Subtest: a pilot without an explicit runtime edition has no invented runtime authority
+ok 5 - a pilot without an explicit runtime edition has no invented runtime authority
+  ---
+  duration_ms: 0.105669
+  type: 'test'
+  ...
+# Subtest: the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+ok 6 - the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+  ---
+  duration_ms: 26164.984543
+  type: 'test'
+  ...
+# Subtest: the historical snapshot is exact after closed candidate, descriptor, current-source, availability and Revan amendments
+ok 7 - the historical snapshot is exact after closed candidate, descriptor, current-source, availability and Revan amendments
+  ---
+  duration_ms: 5253.920253
+  type: 'test'
+  ...
+# Subtest: metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+    # Subtest: prompt
+    ok 1 - prompt
+      ---
+      duration_ms: 2.534991
+      type: 'test'
+      ...
+    # Subtest: assetPath
+    ok 2 - assetPath
+      ---
+      duration_ms: 0.522389
+      type: 'test'
+      ...
+    # Subtest: reference
+    ok 3 - reference
+      ---
+      duration_ms: 0.339333
+      type: 'test'
+      ...
+    # Subtest: approval
+    ok 4 - approval
+      ---
+      duration_ms: 0.525093
+      type: 'test'
+      ...
+    # Subtest: revision
+    ok 5 - revision
+      ---
+      duration_ms: 0.322888
+      type: 'test'
+      ...
+    # Subtest: deliveryCount
+    ok 6 - deliveryCount
+      ---
+      duration_ms: 0.359814
+      type: 'test'
+      ...
+    # Subtest: gallery
+    ok 7 - gallery
+      ---
+      duration_ms: 0.456339
+      type: 'test'
+      ...
+    # Subtest: new delivery
+    ok 8 - new delivery
+      ---
+      duration_ms: 0.506546
+      type: 'test'
+      ...
+    # Subtest: removed delivery
+    ok 9 - removed delivery
+      ---
+      duration_ms: 0.53597
+      type: 'test'
+      ...
+    1..9
+ok 8 - metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+  ---
+  duration_ms: 7.637982
+  type: 'test'
+  ...
+# Subtest: metadata-only revision lookup rejects a different owner, revision or output path
+ok 9 - metadata-only revision lookup rejects a different owner, revision or output path
+  ---
+  duration_ms: 280.802779
+  type: 'test'
+  ...
+# Subtest: the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+ok 10 - the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+  ---
+  duration_ms: 3105.130091
+  type: 'test'
+  ...
+# Subtest: production modes preserve strict full-media check and explicit metadata-only routing
+ok 11 - production modes preserve strict full-media check and explicit metadata-only routing
+  ---
+  duration_ms: 1.337435
+  type: 'test'
+  ...
+# Subtest: conflicting or unknown CLI modes fail before any build or write
+ok 12 - conflicting or unknown CLI modes fail before any build or write
+  ---
+  duration_ms: 1.078936
+  type: 'test'
+  ...
+# Subtest: metadata reports the exact reviewed current sprite without granting artistic approval
+ok 13 - metadata reports the exact reviewed current sprite without granting artistic approval
+  ---
+  duration_ms: 0.750661
+  type: 'test'
+  ...
+# Subtest: the rejected asset and unrelated old candidates remain archival when a correction is selected
+ok 14 - the rejected asset and unrelated old candidates remain archival when a correction is selected
+  ---
+  duration_ms: 0.243547
+  type: 'test'
+  ...
+# Subtest: no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+ok 15 - no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+  ---
+  duration_ms: 1.346388
+  type: 'test'
+  ...
+# Subtest: other quarantined actors retain their old annotations and gain no correction
+ok 16 - other quarantined actors retain their old annotations and gain no correction
+  ---
+  duration_ms: 0.302936
+  type: 'test'
+  ...
+# Subtest: the production evidence keeps both current and rejected images with distinct provenance
+ok 17 - the production evidence keeps both current and rejected images with distinct provenance
+  ---
+  duration_ms: 0.919044
+  type: 'test'
+  ...
+# Subtest: the exact KOTOR I edition uses a documented place without inventing visual architecture
+ok 18 - the exact KOTOR I edition uses a documented place without inventing visual architecture
+  ---
+  duration_ms: 0.283957
+  type: 'test'
+  ...
+# Subtest: the real metadata producer passes the unchanged historical guards with the bounded Revan and closed source/availability amendments
+ok 19 - the real metadata producer passes the unchanged historical guards with the bounded Revan and closed source/availability amendments
+  ---
+  duration_ms: 30274.766407
+  type: 'test'
+  ...
+# Subtest: the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+    # Subtest: approval
+    ok 1 - approval
+      ---
+      duration_ms: 489.302886
+      type: 'test'
+      ...
+    # Subtest: correctionApproval
+    ok 2 - correctionApproval
+      ---
+      duration_ms: 547.476891
+      type: 'test'
+      ...
+    # Subtest: sourceApproval
+    ok 3 - sourceApproval
+      ---
+      duration_ms: 598.507518
+      type: 'test'
+      ...
+    # Subtest: correctionHash
+    ok 4 - correctionHash
+      ---
+      duration_ms: 633.676726
+      type: 'test'
+      ...
+    # Subtest: oldBitmapSelected
+    ok 5 - oldBitmapSelected
+      ---
+      duration_ms: 340.584261
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 6 - extraField
+      ---
+      duration_ms: 323.383486
+      type: 'test'
+      ...
+    # Subtest: otherEdition
+    ok 7 - otherEdition
+      ---
+      duration_ms: 328.694952
+      type: 'test'
+      ...
+    1..7
+ok 20 - the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+  ---
+  duration_ms: 3263.945985
+  type: 'test'
+  ...
+# Subtest: the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+    # Subtest: delivered
+    ok 1 - delivered
+      ---
+      duration_ms: 321.785688
+      type: 'test'
+      ...
+    # Subtest: registered
+    ok 2 - registered
+      ---
+      duration_ms: 323.126564
+      type: 'test'
+      ...
+    # Subtest: prompt
+    ok 3 - prompt
+      ---
+      duration_ms: 367.004699
+      type: 'test'
+      ...
+    # Subtest: assets
+    ok 4 - assets
+      ---
+      duration_ms: 348.533638
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 5 - extraField
+      ---
+      duration_ms: 487.424087
+      type: 'test'
+      ...
+    1..5
+ok 21 - the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+  ---
+  duration_ms: 1849.259713
+  type: 'test'
+  ...
+# Subtest: the source-place proposal rejects Yavin, invented visual details and image approval
+    # Subtest: wrongPlace
+    ok 1 - wrongPlace
+      ---
+      duration_ms: 351.368332
+      type: 'test'
+      ...
+    # Subtest: inventedVisuals
+    ok 2 - inventedVisuals
+      ---
+      duration_ms: 357.375896
+      type: 'test'
+      ...
+    # Subtest: approvedImage
+    ok 3 - approvedImage
+      ---
+      duration_ms: 318.562004
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 4 - extraField
+      ---
+      duration_ms: 567.386039
+      type: 'test'
+      ...
+    1..4
+ok 22 - the source-place proposal rejects Yavin, invented visual details and image approval
+  ---
+  duration_ms: 1595.732629
+  type: 'test'
+  ...
+# Subtest: unrelated identities, delivered entries and totals remain subject to the full historical validator
+ok 23 - unrelated identities, delivered entries and totals remain subject to the full historical validator
+  ---
+  duration_ms: 5298.64512
+  type: 'test'
+  ...
+# Subtest: the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+ok 24 - the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+  ---
+  duration_ms: 121.801079
+  type: 'test'
+  ...
+# Subtest: the original published plan and its three prior amendment pins stay byte-exact
+ok 25 - the original published plan and its three prior amendment pins stay byte-exact
+  ---
+  duration_ms: 47.887976
+  type: 'test'
+  ...
+1..25
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86336.985453

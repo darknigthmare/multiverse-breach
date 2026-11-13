@@ -1,0 +1,1325 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/before-actor-tasks.json",
+      "sha256": "929b24ccbaadfa926ade265120b924e2815429cb0d10b8b4126e5efcdd8c53e3"
+    },
+    "before": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/ff-runtime-before-lossless.json",
+      "sha256": "150d4c0be2dd6bbc53ad2f2a895d9d32357facdda111aa1961b12aa219248051"
+    },
+    "after": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/ff-runtime.json",
+      "sha256": "3878addf15a762007a801dfb2aba63dc081d03a52b4e538ae70c75b9cfd24623"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+      "sha256": "98197563e6d213d8f65ba9700ce1731cc655fee96e5ae732f2c9c89cc46b23bf"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "addedSourceFindings": [
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    }
+  ],
+  "removedSourceFindingsByCode": {
+    "GENERIC_TECHNIQUE_NAMES": 21,
+    "INCARNATION_UNSPECIFIED": 40,
+    "REFERENCE_MISSING": 40,
+    "VISUAL_CONTRACT_MISSING": 40
+  },
+  "addedSourceFindingsByCode": {
+    "REFERENCE_SCENE_REVIEW": 40
+  },
+  "unchangedPreparedRpgHeroes": 28,
+  "unchangedPreparedRpgHeroSlots": 112,
+  "changedPreparedRpgProfiles": [
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "delivery": {
+            "before": "ranged",
+            "after": "melee"
+          },
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Machine Gun"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "kind": "boss",
+      "slots": {
+        "simple": {
+          "delivery": {
+            "before": "ranged",
+            "after": "melee"
+          },
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            }
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Jenova BIRTH Breach Pattern",
+            "after": "Tail Laser"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Sword Attack"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Bite"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Tail Swipe"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "kind": "boss",
+      "slots": {
+        "special": {
+          "action": {
+            "before": "Edea Kramer Breach Pattern",
+            "after": "Maelstrom"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "kind": "enemy",
+      "slots": {
+        "simple": {
+          "delivery": {
+            "before": "ranged",
+            "after": "melee"
+          },
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            }
+          }
+        },
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Firearm Attack"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "kind": "boss",
+      "slots": {
+        "simple": {
+          "delivery": {
+            "before": "ranged",
+            "after": "melee"
+          },
+          "action": {
+            "before": {
+              "name": "Attack",
+              "type": "bullet",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Attack",
+              "type": "melee",
+              "dmg": 1
+            }
+          }
+        },
+        "special": {
+          "action": {
+            "before": "Barthandelus Breach Pattern",
+            "after": "Destrudo"
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Magitek Rifle Fire"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "kind": "enemy",
+      "slots": {
+        "special": {
+          "maxTargets": {
+            "before": {
+              "$auditNumber": "Infinity"
+            },
+            "after": 1
+          },
+          "name": {
+            "before": "Special",
+            "after": "special"
+          },
+          "shape": {
+            "before": "group",
+            "after": "single"
+          },
+          "action": {
+            "before": {
+              "name": "Special",
+              "type": "group",
+              "dmg": 1.15,
+              "targeting": {
+                "shape": "group"
+              }
+            },
+            "after": "Greatsword Sweep"
+          },
+          "multiplier": {
+            "before": 1.15,
+            "after": 1
+          }
+        }
+      }
+    }
+  ],
+  "selectedLegacySignatureChanges": [],
+  "preservedSelectedLegacySignatures": 21,
+  "rawEffectiveLabelDifferences": [],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false
+}

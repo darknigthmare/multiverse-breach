@@ -1,0 +1,63 @@
+{
+  "scope": "Historical queue is independent of newly exported P1/P2; no risk/refusal policy or full actor closure is inferred from a removed source finding.",
+  "queue": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actor-batches-40.json",
+  "baselineSourceCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "runtimeCheckpoint": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+  "baselineCheckpointWorkingBytesAllEqual": true,
+  "queueSha256": "b44f08f2428708380959b676d21950466bc1674be9b9b8eed0b727fe6a0affbf",
+  "historicalP0Count": 22,
+  "historicalP0ActorKeys": [
+    "[\"Harry Potter\",\"id:harry\"]",
+    "[\"Harry Potter\",\"id:hermione\"]",
+    "[\"Joker New 52\",\"id:batman_n52\"]",
+    "[\"Joker New 52\",\"id:harley_n52\"]",
+    "[\"Joker New 52\",\"id:joker_n52\"]",
+    "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+    "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+    "[\"Minions\",\"id:bob_minions\"]",
+    "[\"Minions\",\"id:kevin_minions\"]",
+    "[\"Minions\",\"id:stuart_minions\"]",
+    "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+    "[\"Roger Rabbit\",\"id:roger_rabbit\"]",
+    "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]",
+    "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]",
+    "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]",
+    "[\"Star Wars\",\"id:vader\"]",
+    "[\"Star Wars\",\"id:han_solo\"]",
+    "[\"Star Wars\",\"id:luke\"]",
+    "[\"Teen Titans\",\"id:raven_tt\"]",
+    "[\"Teen Titans\",\"id:starfire_tt\"]",
+    "[\"The Batman Who Laughs\",\"id:grim_knight\"]",
+    "[\"The Dark Knight\",\"id:batman_tdk\"]"
+  ],
+  "allHistoricalIdentitiesStillInCurrentRuntimeExport": true,
+  "automaticGenerationRetryDisallowedCount": 6,
+  "controlledActorKeys": [
+    "[\"Joker New 52\",\"id:harley_n52\"]",
+    "[\"Joker New 52\",\"id:joker_n52\"]",
+    "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+    "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+    "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+    "[\"Roger Rabbit\",\"id:roger_rabbit\"]"
+  ],
+  "historicalRefusalOverlays": [
+    {
+      "actorKey": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+      "actorId": "jack_sparrow_potc",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "evidence": "docs/cg/reviews/wave3-2026-10-20/jack-sparrow-generation-attempts.json",
+      "evidenceSha256": "a2452a3c371f6512e07208570a3a3c8633164fd9287086125e9f787ce608ff93",
+      "prompt": "docs/cg/prompts/wave3-2026-10-20/jack-sparrow/01-characterSolo.txt",
+      "promptSha256": "47aa793c2db5c673015fd36f79c3966d8b142e1712935fbd9f05d22f4869b885",
+      "requestId": "73e8ffbe-83c1-42e8-bead-73905e33f31c",
+      "status": "blocked-input-moderation",
+      "historicalDate": "2026-10-20",
+      "newGenerationAttempt": false,
+      "automaticGenerationRetryAllowed": false,
+      "workMode": "SOURCE_REVIEW_ONLY",
+      "scope": "Exact Jack Sparrow first-film 2003 actor only; no identity aliases or later-film versions inferred."
+    }
+  ],
+  "actorClosuresApproved": 0,
+  "artApprovals": 0
+}
