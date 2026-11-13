@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "workingBase": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "upstreamMaster": "2333c2c0c524414c6c7ab84ca86d7e3e40c187ac",
+  "actorAuditSnapshot": "de22d79e903b9995766e5a9628c3ec22198da561",
+  "menuWorkspaces": 7,
+  "newCanonicalPngFiles": 2,
+  "newBoundPropIcons": 1,
+  "newUnboundAnimationCandidates": 1,
+  "newCandidateCells": 16,
+  "newActorRasterBindings": 0,
+  "source1to1Verified": false,
+  "actorDossiersClosed": 0,
+  "actorsWithP1": 4935,
+  "remainingP1Findings": 17258,
+  "remainingMissingRasterActors": 1474,
+  "checks": {
+    "hubNodeSsr": {
+      "pass": 72,
+      "fail": 0,
+      "receipt": "hub-ui-standard-final.json"
+    },
+    "continuityNode": {
+      "pass": 99,
+      "fail": 0,
+      "receipt": "../locked-continuity/validation-exit.json"
+    },
+    "piratesPanelSsrContract": {
+      "pass": 25,
+      "fail": 0,
+      "receipt": "../art/aztec-medallion/runtime-validation.json"
+    },
+    "dlcPublication": {
+      "pass": 85,
+      "fail": 0,
+      "receipt": "dlc-publication-final.json"
+    },
+    "browserNativeActionGroups": {
+      "pass": 10,
+      "total": 10,
+      "receipt": "../browser/actions/report.json"
+    },
+    "browserCssAmendment": "See ../browser/manifest.json for the separate 2/2 mobile follow-up and source hashes.",
+    "fullExecutableCodeBuild": {
+      "exitCode": 0,
+      "seconds": 7.768,
+      "sourcesUnchanged": true,
+      "receipt": "code-build-final.json"
+    },
+    "normalNpmBuild": {
+      "exitCode": 1,
+      "failedAt": "assets:prepare",
+      "omittedDlcSources": 9007,
+      "receipt": "normal-build.log"
+    },
+    "lintChangedSource": {
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 1,
+      "warningScope": "Fast Refresh in test-only fixture entry",
+      "receipt": "changed-source-lint.log"
+    }
+  },
+  "testCountsNotUniqueAcrossGroups": true,
+  "buildDoesNotPackageAllMedia": true,
+  "spriteFidelityAndFullCampaignNotCertified": true,
+  "csvExportLineEndings": "BOM and CRLF preserved exactly from exporter. Diff whitespace check treats CR-at-EOL as a line ending and still checks ordinary trailing whitespace.",
+  "loadedActorExportSourcesStillMatch": {
+    "files": 1784,
+    "unchanged": true
+  }
+}

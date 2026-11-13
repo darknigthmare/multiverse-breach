@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "assetId": "neff-wizard-altered-beast-arcade-1988-v1",
+  "actorKey": "[\"Altered Beast\",\"name:Neff Demon God\"]",
+  "sourceIncarnation": "Altered Beast (1988 arcade), Neff wizard form",
+  "assetRole": "One wizard subform; not a complete world-boss pack",
+  "date": "2026-11-13",
+  "tool": "image_gen.imagegen",
+  "toolModelVersion": "not exposed by tool",
+  "generationAttempts": 1,
+  "attemptOutcome": "Generated successfully; no refusal",
+  "toolOutputOriginalPath": "/workspace/generated_images/exec-feff2aec-5e2b-4f4f-8177-8bdc72ac7c24.png",
+  "rawPath": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-002/generation/neff-wizard.raw.png",
+  "rawSha256": "40ae9ec0d4b6738505d1887416df50aaa92e846a9a190faf5f0818c78a78d9e4",
+  "promptPath": "docs/assets/p0-p1-continuation-2026-11-13/raster-lot-002/generation/neff-wizard.prompt.txt",
+  "promptSha256": "f910e5f4f8d781a71243a45b5929ea0d25cc72d7023cfa8b3909359824514281",
+  "referenceManifest": "../references.json",
+  "referenceIds": [
+    "arcade-bosses"
+  ],
+  "transparentBackground": true,
+  "normalizationScript": "../normalize_neff_wizard.py",
+  "outputPath": "DLC/AlteredBeast/assets/sprites/generated/forms/altered-beast-1988/neff-wizard.png",
+  "outputSha256": "3b99eb6eba77615c1c3cd743818389a5d1c385496d4bf359c1a6dc5f69978e3b",
+  "outputBytes": 562942,
+  "frameSize": [
+    256,
+    256
+  ],
+  "columns": 4,
+  "rows": 4,
+  "facing": "left",
+  "frameGroups": {
+    "idle_variants": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "robe_stance_motion": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "command_gesture": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "recoil_and_collapse": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "approval": {
+    "technicalQaPassed": true,
+    "completeContactSheetViewed": true,
+    "robeAndSilhouetteMatchesQualifiedReference": true,
+    "frameAccurateArcadeTimingVerified": false,
+    "inGameReviewPerformed": false,
+    "source1to1Verified": false,
+    "runtimeBound": false,
+    "worldBossP1Closed": false,
+    "remaining": [
+      "Final rhinoceros form and palette qualification",
+      "Transformation and independent VFX assets",
+      "Engine state mapping and in-game scale/motion review",
+      "Frame-by-frame source fidelity review"
+    ],
+    "independentVisualReviewPerformed": true
+  },
+  "rightsRecord": {
+    "creationType": "AI-generated franchise fan art from cited visual reference",
+    "generationTermsUrl": "https://openai.com/policies/terms-of-use/",
+    "sourceRights": "Sega / respective owners; cited third-party arcade extraction is reference only",
+    "franchiseCommercialRightsVerified": false,
+    "attribution": "Neff and Altered Beast belong to Sega; generated candidate authored using OpenAI image generation, 2026-11-13."
+  },
+  "independentVisualReview": "../validation/neff-wizard-independent-review.json"
+}

@@ -6783,7 +6783,6 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     ? ADMIN_VISIBLE_STAGES.find(stage => stage.id === briefingStageId)
     : null;
   const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => !stage.finalGameBoss && !stage.characterArc).length;
-  const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length;
   const OC_STORY_STAGE_COUNT = BASE_OC_STAGES.length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(0, OC_STORY_STAGE_COUNT - 1);
   const META_RANK_THRESHOLDS = {
@@ -10797,7 +10796,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
 
       {/* Media Category Filter Bar */}
       {['missions', 'roster', 'codex', 'collection'].includes(activeTab) && (
-        <div className="hub-media-filter" style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
+        <div role="group" aria-label={lang === 'fr' ? 'Type d’univers' : 'Universe type'} className="hub-media-filter" style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
             {activeTab === 'missions'
               ? (lang === 'fr' ? 'Filtre des missions :' : 'Mission filter:')
@@ -10805,7 +10804,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 ? (lang === 'fr' ? 'Filtre des heros :' : 'Hero filter:')
                 : (lang === 'fr' ? 'Filtre des archives :' : 'Archive filter:')}
           </span>
-          <button
+          <button type="button" aria-pressed={mediaFilter === 'all'}
             onClick={() => { setMediaFilter('all'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'all' ? 'active-tab' : ''}`}
             title={lang === 'fr' ? 'Affiche tous les types d univers.' : 'Show every universe type.'}
@@ -10813,7 +10812,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           >
             {lang === 'fr' ? 'TOUT' : 'ALL'}
           </button>
-          <button
+          <button type="button" aria-pressed={mediaFilter === 'game'}
             onClick={() => { setMediaFilter('game'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'game' ? 'active-tab' : ''}`}
             title={lang === 'fr' ? 'Filtre sur les univers de jeux video.' : 'Filter to video game universes.'}
@@ -10821,7 +10820,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           >
             {lang === 'fr' ? 'JEUX VIDEO' : 'VIDEO GAMES'}
           </button>
-          <button
+          <button type="button" aria-pressed={mediaFilter === 'movie'}
             onClick={() => { setMediaFilter('movie'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'movie' ? 'active-tab' : ''}`}
             title={lang === 'fr' ? 'Filtre sur les univers films et series.' : 'Filter to movie and TV universes.'}
@@ -10829,7 +10828,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           >
             {lang === 'fr' ? 'FILMS & SERIES' : 'MOVIES & TV'}
           </button>
-          <button
+          <button type="button" aria-pressed={mediaFilter === 'manga'}
             onClick={() => { setMediaFilter('manga'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'manga' ? 'active-tab' : ''}`}
             title={lang === 'fr' ? 'Filtre sur les univers manga, anime et web.' : 'Filter to manga, anime, and web universes.'}
@@ -10837,7 +10836,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           >
             {lang === 'fr' ? 'MANGA & WEB' : 'MANGA & WEB'}
           </button>
-          <button
+          <button type="button" aria-pressed={mediaFilter === 'music'}
             onClick={() => { setMediaFilter('music'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'music' ? 'active-tab' : ''}`}
             title={lang === 'fr' ? 'Filtre sur les personas et univers musicaux.' : 'Filter to music personas and music universes.'}

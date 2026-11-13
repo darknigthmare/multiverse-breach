@@ -1,0 +1,35 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--no-warnings",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/actorLockedContinuity20261113.test.mjs",
+    "scripts/actorFidelityR9.test.mjs"
+  ],
+  "startedAt": "2026-11-13T09:16:11.205056+00:00",
+  "completedAt": "2026-11-13T09:16:23.245464+00:00",
+  "exitCode": 0,
+  "scope": "Full dedicated continuity tests plus existing actorFidelityR9 suite, direct source imports, 1GB Node heap, CPU0; temporary exporter tree is synthetic, not raster evidence.",
+  "sourceBefore": {
+    "src/game/actorFidelityBacklog.js": "ebc1d56b5c5e6f72bbe7352dfb59d556bffbcbc0ae2819ad39ebb8bc0561f33a",
+    "scripts/exportActorFidelityBacklog.mjs": "06e7e4afa5b1b5c5cdcf5f123e4739e3b468d9660c52f664b4ca97a5e136e0ae",
+    "scripts/actorLockedContinuity20261113.test.mjs": "7b6c2319d33687876ece1697c3f00223424d9f3dd007bf8ff39d14d193c9c533",
+    "scripts/fixtures/actorLockedContinuity20261113.json": "57debbb157dbb18020a9535f9c2cb1a07aa44164e395ed8c9df17c8d8d309dbd",
+    "scripts/actorFidelityR9.test.mjs": "67c36f8cdff2a94ad02f68bf3576889da3d4adf4b553e9f62aee85e8357c6710"
+  },
+  "sourceAfter": {
+    "src/game/actorFidelityBacklog.js": "ebc1d56b5c5e6f72bbe7352dfb59d556bffbcbc0ae2819ad39ebb8bc0561f33a",
+    "scripts/exportActorFidelityBacklog.mjs": "06e7e4afa5b1b5c5cdcf5f123e4739e3b468d9660c52f664b4ca97a5e136e0ae",
+    "scripts/actorLockedContinuity20261113.test.mjs": "7b6c2319d33687876ece1697c3f00223424d9f3dd007bf8ff39d14d193c9c533",
+    "scripts/fixtures/actorLockedContinuity20261113.json": "57debbb157dbb18020a9535f9c2cb1a07aa44164e395ed8c9df17c8d8d309dbd",
+    "scripts/actorFidelityR9.test.mjs": "67c36f8cdff2a94ad02f68bf3576889da3d4adf4b553e9f62aee85e8357c6710"
+  },
+  "sourceUnchangedDuringTests": true
+}

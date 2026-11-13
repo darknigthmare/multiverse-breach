@@ -1,0 +1,442 @@
+TAP version 13
+# Subtest: moving customization keeps saved ownership, loadouts and gameplay support separate
+ok 1 - moving customization keeps saved ownership, loadouts and gameplay support separate
+  ---
+  duration_ms: 8.569601
+  type: 'test'
+  ...
+# Subtest: catalog pages default to 24 and offer only bounded 12/24/48 sizes
+ok 2 - catalog pages default to 24 and offer only bounded 12/24/48 sizes
+  ---
+  duration_ms: 416.388446
+  type: 'test'
+  ...
+# Subtest: search sees the full catalog before pagination, including its final entry
+ok 3 - search sees the full catalog before pagination, including its final entry
+  ---
+  duration_ms: 1.120688
+  type: 'test'
+  ...
+# Subtest: query normalizes accents and case across localized names, universes and abilities
+ok 4 - query normalizes accents and case across localized names, universes and abilities
+  ---
+  duration_ms: 0.393252
+  type: 'test'
+  ...
+# Subtest: filters are applied before page size so complete matching pages stay reachable
+ok 5 - filters are applied before page size so complete matching pages stay reachable
+  ---
+  duration_ms: 0.53747
+  type: 'test'
+  ...
+# Subtest: page bounds survive empty/shrinking catalogs and invalid saved cursors
+ok 6 - page bounds survive empty/shrinking catalogs and invalid saved cursors
+  ---
+  duration_ms: 0.400223
+  type: 'test'
+  ...
+# Subtest: changing a catalog only resets its page and never another view or selected details
+ok 7 - changing a catalog only resets its page and never another view or selected details
+  ---
+  duration_ms: 0.447654
+  type: 'test'
+  ...
+# Subtest: catalog slicing preserves source identity and order
+ok 8 - catalog slicing preserves source identity and order
+  ---
+  duration_ms: 0.23858
+  type: 'test'
+  ...
+# Subtest: pagination renders labeled search, page size, explicit ranges and bounded buttons
+ok 9 - pagination renders labeled search, page size, explicit ranges and bounded buttons
+  ---
+  duration_ms: 8.111731
+  type: 'test'
+  ...
+# Subtest: Hub wires independent roster/reserve/armory/shop pagination without replacing selected details
+ok 10 - Hub wires independent roster/reserve/armory/shop pagination without replacing selected details
+  ---
+  duration_ms: 1520.945442
+  type: 'test'
+  ...
+# Subtest: closing a card then immediately returning cannot reopen the card from a late restoration frame
+ok 11 - closing a card then immediately returning cannot reopen the card from a late restoration frame
+  ---
+  duration_ms: 3.461726
+  type: 'test'
+  ...
+# Subtest: an old fallback frame cannot consume a library request made before its view commits
+ok 12 - an old fallback frame cannot consume a library request made before its view commits
+  ---
+  duration_ms: 1.174319
+  type: 'test'
+  ...
+# Subtest: a delayed fallback never steals focus that the player moved to another control
+ok 13 - a delayed fallback never steals focus that the player moved to another control
+  ---
+  duration_ms: 0.952555
+  type: 'test'
+  ...
+# Subtest: two pending requests for the same destination remain independently owned
+ok 14 - two pending requests for the same destination remain independently owned
+  ---
+  duration_ms: 2.1438
+  type: 'test'
+  ...
+# Subtest: a cancelled callback replay cannot clear or focus a newer request of the same destination
+ok 15 - a cancelled callback replay cannot clear or focus a newer request of the same destination
+  ---
+  duration_ms: 0.911663
+  type: 'test'
+  ...
+# Subtest: removing the original card still restores the binder heading when the player has not moved focus
+ok 16 - removing the original card still restores the binder heading when the player has not moved focus
+  ---
+  duration_ms: 0.923151
+  type: 'test'
+  ...
+# Subtest: a pending restoration cannot target a newly inert, hidden or detached destination
+ok 17 - a pending restoration cannot target a newly inert, hidden or detached destination
+  ---
+  duration_ms: 2.271311
+  type: 'test'
+  ...
+# Subtest: collection diagnostics can label hidden media types before the helper declaration
+ok 18 - collection diagnostics can label hidden media types before the helper declaration
+  ---
+  duration_ms: 5.718515
+  type: 'test'
+  ...
+# Subtest: leaving a walked city district and restoring it preserves position, facing and district
+ok 19 - leaving a walked city district and restoring it preserves position, facing and district
+  ---
+  duration_ms: 3.292781
+  type: 'test'
+  ...
+# Subtest: a hidden/unavailable district falls back safely while valid world positions are clamped
+ok 20 - a hidden/unavailable district falls back safely while valid world positions are clamped
+  ---
+  duration_ms: 0.244718
+  type: 'test'
+  ...
+# Subtest: Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+ok 21 - Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+  ---
+  duration_ms: 0.508496
+  type: 'test'
+  ...
+# Subtest: abandonment and malformed reports cannot award XP or rewards
+ok 22 - abandonment and malformed reports cannot award XP or rewards
+  ---
+  duration_ms: 0.339852
+  type: 'test'
+  ...
+# Subtest: canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+ok 23 - canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+  ---
+  duration_ms: 0.461876
+  type: 'test'
+  ...
+# Subtest: measured HUD bounds project through the actual canvas offset and backing size in every format
+ok 24 - measured HUD bounds project through the actual canvas offset and backing size in every format
+  ---
+  duration_ms: 0.863161
+  type: 'test'
+  ...
+# Subtest: the production viewport hook measures committed title text and preference changes before painting, then disconnects
+ok 25 - the production viewport hook measures committed title text and preference changes before painting, then disconnects
+  ---
+  duration_ms: 2.23699
+  type: 'test'
+  ...
+# Subtest: real scene handlers resume W/E with button focus while reserving native activation and text entry
+ok 26 - real scene handlers resume W/E with button focus while reserving native activation and text entry
+  ---
+  duration_ms: 1.302392
+  type: 'test'
+  ...
+# Subtest: the real pause focus trap yields to a modal that made its parent inert
+ok 27 - the real pause focus trap yields to a modal that made its parent inert
+  ---
+  duration_ms: 0.519342
+  type: 'test'
+  ...
+# Subtest: UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+ok 28 - UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+  ---
+  duration_ms: 0.708708
+  type: 'test'
+  ...
+# Subtest: real launch handler writes mission context before navigation and never bypasses access checks
+ok 29 - real launch handler writes mission context before navigation and never bypasses access checks
+  ---
+  duration_ms: 0.759484
+  type: 'test'
+  ...
+# Subtest: real category effect preserves restored selection on mount, and resets only on a category change
+ok 30 - real category effect preserves restored selection on mount, and resets only on a category change
+  ---
+  duration_ms: 0.760435
+  type: 'test'
+  ...
+# Subtest: real Hub callback credits wallets once and keeps results until acknowledgement
+ok 31 - real Hub callback credits wallets once and keeps results until acknowledgement
+  ---
+  duration_ms: 0.34498
+  type: 'test'
+  ...
+# Subtest: gear comparison includes both gained stats and bonuses lost by replacing the slot
+ok 32 - gear comparison includes both gained stats and bonuses lost by replacing the slot
+  ---
+  duration_ms: 0.17212
+  type: 'test'
+  ...
+# Subtest: franchise victories and consulted scenes cannot unlock OC acts
+ok 33 - franchise victories and consulted scenes cannot unlock OC acts
+  ---
+  duration_ms: 2.159684
+  type: 'test'
+  ...
+# Subtest: each canonical prefix opens exactly the same next operation regardless of unrelated victories
+ok 34 - each canonical prefix opens exactly the same next operation regardless of unrelated victories
+  ---
+  duration_ms: 0.751492
+  type: 'test'
+  ...
+# Subtest: six Origin Locks open Act V but do not complete the campaign
+ok 35 - six Origin Locks open Act V but do not complete the campaign
+  ---
+  duration_ms: 0.861127
+  type: 'test'
+  ...
+# Subtest: all operations and chapters without a chosen ending remain awaiting conclusion
+ok 36 - all operations and chapters without a chosen ending remain awaiting conclusion
+  ---
+  duration_ms: 0.225369
+  type: 'test'
+  ...
+# Subtest: only a valid ending plus all canonical operations marks the final act complete
+ok 37 - only a valid ending plus all canonical operations marks the final act complete
+  ---
+  duration_ms: 0.297208
+  type: 'test'
+  ...
+# Subtest: non-contiguous legacy clears do not skip missing operations or unlock a future act
+ok 38 - non-contiguous legacy clears do not skip missing operations or unlock a future act
+  ---
+  duration_ms: 0.124618
+  type: 'test'
+  ...
+# Subtest: missing or disabled canonical stage is blocked without a fallback to DLC or a later operation
+ok 39 - missing or disabled canonical stage is blocked without a fallback to DLC or a later operation
+  ---
+  duration_ms: 0.212981
+  type: 'test'
+  ...
+# Subtest: resume returns the exact runtime projection and normalizes string save IDs without mutation
+ok 40 - resume returns the exact runtime projection and normalizes string save IDs without mutation
+  ---
+  duration_ms: 0.164689
+  type: 'test'
+  ...
+# Subtest: Hub uses one canonical projection while historical timeline is explicitly separate
+ok 41 - Hub uses one canonical projection while historical timeline is explicitly separate
+  ---
+  duration_ms: 3.263466
+  type: 'test'
+  ...
+# Subtest: readiness is exactly the pre-existing displayed ARCA formula, including faction eligibility
+ok 42 - readiness is exactly the pre-existing displayed ARCA formula, including faction eligibility
+  ---
+  duration_ms: 318.59064
+  type: 'test'
+  ...
+# Subtest: relic proposal retains old priority but never touches reserve, inventory, or caller state
+ok 43 - relic proposal retains old priority but never touches reserve, inventory, or caller state
+  ---
+  duration_ms: 1.988696
+  type: 'test'
+  ...
+# Subtest: relic locks, unknown references, partial inventory and equal scores do not strip current gear
+ok 44 - relic locks, unknown references, partial inventory and equal scores do not strip current gear
+  ---
+  duration_ms: 0.426703
+  type: 'test'
+  ...
+# Subtest: random proposals are unique, owned, eligible and keep the Anchor when legal
+ok 45 - random proposals are unique, owned, eligible and keep the Anchor when legal
+  ---
+  duration_ms: 2.185713
+  type: 'test'
+  ...
+# Subtest: universe preparation needs only two owned same-world partners around the Anchor
+ok 46 - universe preparation needs only two owned same-world partners around the Anchor
+  ---
+  duration_ms: 0.818924
+  type: 'test'
+  ...
+# Subtest: universe insufficiency explains the missing partner count without falling back to foreign heroes
+ok 47 - universe insufficiency explains the missing partner count without falling back to foreign heroes
+  ---
+  duration_ms: 0.460714
+  type: 'test'
+  ...
+# Subtest: canonical exact trio takes precedence over Anchor and excludes every foreign identity
+ok 48 - canonical exact trio takes precedence over Anchor and excludes every foreign identity
+  ---
+  duration_ms: 0.794577
+  type: 'test'
+  ...
+# Subtest: required character and explicit locked heroes remain present
+ok 49 - required character and explicit locked heroes remain present
+  ---
+  duration_ms: 0.943531
+  type: 'test'
+  ...
+# Subtest: mission universe allowAnchor and minCount determine Anchor compatibility faithfully
+ok 50 - mission universe allowAnchor and minCount determine Anchor compatibility faithfully
+  ---
+  duration_ms: 3.229786
+  type: 'test'
+  ...
+# Subtest: three source universes do not preserve the Anchor at the cost of an impossible mission
+ok 51 - three source universes do not preserve the Anchor at the cost of an impossible mission
+  ---
+  duration_ms: 0.907097
+  type: 'test'
+  ...
+# Subtest: two source universes plus a locked foreign hero do not overfill three slots with the Anchor
+ok 52 - two source universes plus a locked foreign hero do not overfill three slots with the Anchor
+  ---
+  duration_ms: 0.455175
+  type: 'test'
+  ...
+# Subtest: completed narrative arc replays permit the existing free-team policy
+ok 53 - completed narrative arc replays permit the existing free-team policy
+  ---
+  duration_ms: 0.504871
+  type: 'test'
+  ...
+# Subtest: exact optimizer matches exhaustive enumeration below 100 with strict equivalence reduction
+ok 54 - exact optimizer matches exhaustive enumeration below 100 with strict equivalence reduction
+  ---
+  duration_ms: 16.686876
+  type: 'test'
+  ...
+# Subtest: 100 is an explicit upper bound and a legal current maximum is retained without search
+ok 55 - 100 is an explicit upper bound and a legal current maximum is retained without search
+  ---
+  duration_ms: 0.456518
+  type: 'test'
+  ...
+# Subtest: optimizer cancellation never yields a partial optimum as a confirmable proposal
+ok 56 - optimizer cancellation never yields a partial optimum as a confirmable proposal
+  ---
+  duration_ms: 0.262215
+  type: 'test'
+  ...
+# Subtest: small owned rosters remain unique legal partial teams outside universe requests
+ok 57 - small owned rosters remain unique legal partial teams outside universe requests
+  ---
+  duration_ms: 0.312501
+  type: 'test'
+  ...
+# Subtest: proposal panel shows before/after and stale previews cannot be confirmed
+ok 58 - proposal panel shows before/after and stale previews cannot be confirmed
+  ---
+  duration_ms: 12.924643
+  type: 'test'
+  ...
+# Subtest: Hub shares readiness, gates mutations behind confirmation and compiles all proposal controls
+ok 59 - Hub shares readiness, gates mutations behind confirmation and compiles all proposal controls
+  ---
+  duration_ms: 1983.245956
+  type: 'test'
+  ...
+# Subtest: fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 60 - fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 16245.10912
+  type: 'test'
+  ...
+# Subtest: fr: every item family keeps its source count, event item and bounded first page
+ok 61 - fr: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 12.783802
+  type: 'test'
+  ...
+# Subtest: fr: mission, arc and collection dossiers retain their distinct text and progress
+ok 62 - fr: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 9.322723
+  type: 'test'
+  ...
+# Subtest: fr: living-world reading preserves all eight authoring areas and optional bonus
+ok 63 - fr: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 2.298976
+  type: 'test'
+  ...
+# Subtest: en: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 64 - en: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 22.178964
+  type: 'test'
+  ...
+# Subtest: en: every item family keeps its source count, event item and bounded first page
+ok 65 - en: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 10.684387
+  type: 'test'
+  ...
+# Subtest: en: mission, arc and collection dossiers retain their distinct text and progress
+ok 66 - en: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 7.70191
+  type: 'test'
+  ...
+# Subtest: en: living-world reading preserves all eight authoring areas and optional bonus
+ok 67 - en: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 2.22208
+  type: 'test'
+  ...
+# Subtest: an adjacent universe without a living world falls back to an available chapter
+ok 68 - an adjacent universe without a living world falls back to an available chapter
+  ---
+  duration_ms: 3.539596
+  type: 'test'
+  ...
+# Subtest: empty item and mission catalogues expose their absence instead of fabricating entries
+ok 69 - empty item and mission catalogues expose their absence instead of fabricating entries
+  ---
+  duration_ms: 9.228331
+  type: 'test'
+  ...
+# Subtest: a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+ok 70 - a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+  ---
+  duration_ms: 3.281356
+  type: 'test'
+  ...
+# Subtest: every source entry remains reachable with each page-size option without source mutation
+ok 71 - every source entry remains reachable with each page-size option without source mutation
+  ---
+  duration_ms: 9.673403
+  type: 'test'
+  ...
+# Subtest: a stale page clamps to the current source and keeps its exact total
+ok 72 - a stale page clamps to the current source and keeps its exact total
+  ---
+  duration_ms: 0.674327
+  type: 'test'
+  ...
+1..72
+# tests 72
+# suites 0
+# pass 72
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22588.310287

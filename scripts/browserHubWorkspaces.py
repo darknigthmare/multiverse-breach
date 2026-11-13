@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--tabs', nargs='+', default=['inventory', 'shop', 'party', 'roster', 'codex'])
     parser.add_argument('--lang', choices=['fr', 'en'], default='fr')
     parser.add_argument('--text-scale', type=float, default=1)
+    parser.add_argument('--sizes', nargs='+', choices=['desktop', 'mobile'], default=['desktop', 'mobile'])
     args = parser.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -25,6 +26,8 @@ def main():
         browser = playwright.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox'])
         try:
             for name, width, height in [('desktop', 1440, 1000), ('mobile', 390, 844)]:
+                if name not in args.sizes:
+                    continue
                 context = browser.new_context(viewport={'width': width, 'height': height}, device_scale_factor=1, reduced_motion='reduce')
                 context.route('https://fonts.googleapis.com/**', lambda route: route.abort())
                 context.route('https://fonts.gstatic.com/**', lambda route: route.abort())

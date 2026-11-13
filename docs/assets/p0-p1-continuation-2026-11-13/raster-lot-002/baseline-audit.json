@@ -1,0 +1,1073 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-13",
+  "sourceTree": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "sourceExport": "docs/assets/p0-p1-continuation-2026-11-13/backlog/actors.json",
+  "sourceExportSha256": "bbfb2387e56fc661cf4313d46bae85cc27603828208b9df111aacb84a541fea0",
+  "scope": "Next 40 RASTER_MISSING actors after excluding every actorKey in raster-lot-001; stable priority/universe.casefold/actorId.casefold/actorKey order. This is not actor-batches-40 batch 002.",
+  "excludedLot": "../raster-lot-001/baseline-audit.json",
+  "excludedActorKeysCount": 40,
+  "selectionValidatedAgainstCurrentBacklog": true,
+  "sparseCheckoutNotCountedAsMissing": true,
+  "summary": {
+    "actorsAudited": 40,
+    "universes": {
+      "Alien: Romulus": 6,
+      "Aliens": 6,
+      "Aliens vs Predator: Requiem": 6,
+      "Altered Beast": 6,
+      "American Dad": 6,
+      "Ash vs Evil Dead": 6,
+      "Assassin's Creed": 4
+    },
+    "safeExistingBindings": 0,
+    "actorsWithLegacyCandidate": 5,
+    "exactBasenameCandidateActors": 2,
+    "exactBasenameCandidateFiles": 5,
+    "newGeneratedSubformAtlases": 1,
+    "newGeneratedCells": 16,
+    "runtimeBindingsChanged": 0,
+    "actorRasterFindingsClosed": 0,
+    "actorsStillOpen": 40,
+    "refusedIdentitiesRetried": 0
+  },
+  "actors": [
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:Facehugger Swarm\"]",
+      "actorId": "",
+      "actorName": "Facehugger Swarm",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/facehugger-swarm.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2024_ENCOUNTER_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the Romulus 2024 swarm scene and facehugger scale; a swarm must not become one invented species.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:Romulus Hive Cluster\"]",
+      "actorId": "",
+      "actorName": "Romulus Hive Cluster",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/romulus-hive-cluster.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "COMPOSITE_ENTITY_REFERENCE_REQUIRED",
+      "reviewNote": "Separate hive architecture, eggs and animated organisms before producing an entity atlas.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:Rook Science Core\"]",
+      "actorId": "",
+      "actorName": "Rook Science Core",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/rook-science-core.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2024_ENTITY_BOUNDARY_REQUIRED",
+      "reviewNote": "Rook is the damaged Renaissance synthetic; distinguish the physical synthetic from terminal/equipment and avoid an Ash 1979 alias.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:Station Xeno\"]",
+      "actorId": "",
+      "actorName": "Station Xeno",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/station-xeno.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2024_CREATURE_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the Renaissance station Xenomorph incarnation and exact anatomy; do not reuse Big Chap by species alone.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:The Offspring\"]",
+      "actorId": "",
+      "actorName": "The Offspring",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://avp.fandom.com/wiki/Offspring",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "The very tall pale Offspring with Engineer-like proportions and its own tail and appendages, kept distinct from Resurrection's Newborn.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/the-offspring.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2024_CREATURE_REFERENCE_REQUIRED",
+      "reviewNote": "Declared Offspring source identifies the target, but no qualified in-game body atlas or source-anchored image has been delivered.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Alien: Romulus\",\"name:Zero-G Acid Cloud\"]",
+      "actorId": "",
+      "actorName": "Zero-G Acid Cloud",
+      "universe": "Alien: Romulus",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/alien-romulus/zero-g-acid-cloud.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "EFFECT_AND_ENVIRONMENT_LAYERS_REQUIRED",
+      "reviewNote": "The acid cloud is a 2024 zero-gravity encounter effect; separate acid particles, hazards and creature sprites.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Acid Spitter\"]",
+      "actorId": "",
+      "actorName": "Acid Spitter",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/acid-spitter.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CONTINUITY_CLARIFICATION_REQUIRED",
+      "reviewNote": "A dedicated acid-spitter caste is not established by Aliens 1986. Name the game/comic incarnation before assigning an anatomy.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Alien Queen\"]",
+      "actorId": "",
+      "actorName": "Alien Queen",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://avp.fandom.com/wiki/Queen_%28LV-426%29",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "The LV-426 Queen with broad crest, six limbs, long segmented tail and acid saliva; the power loader and airlock are separate arena assets.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/alien-queen.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/Alien/assets/sprites/generated/bosses/alien/alien-queen.png",
+          "gitBlob": "e7a0be2d1c08ead1b3b6fecd20d571a394364a95",
+          "bytes": 1111346,
+          "status": "VISUAL_IDENTITY_NOT_ESTABLISHED",
+          "reason": "Inspected complete 4x4 sheet: the broad 1986 crown and small thoracic arm pair are not established clearly enough to approve this legacy alias.",
+          "accepted": false
+        },
+        {
+          "gitPath": "DLC/DukeNukem/assets/sprites/generated/bosses/duke-nukem/alien-queen.png",
+          "gitBlob": "017df41ddc62e182687c30179e1f933f75af9caa",
+          "bytes": 757674,
+          "status": "WRONG_FRANCHISE",
+          "reason": "Duke Nukem boss; same basename does not establish an Aliens 1986 identity.",
+          "accepted": false
+        },
+        {
+          "gitPath": "DLC/GoatSimulator/assets/sprites/generated/bosses/goat-simulator/alien-queen.png",
+          "gitBlob": "5f2c3330910e14729cc46f371a9f543f29299135",
+          "bytes": 1168838,
+          "status": "WRONG_FRANCHISE",
+          "reason": "Goat Simulator source; not the LV-426 Queen.",
+          "accepted": false
+        }
+      ],
+      "disposition": "EXACT_1986_BODY_REFERENCE_REQUIRED",
+      "reviewNote": "LV-426 1986 Queen is declared by the local lore override. Legacy filename matches do not certify the huge crown/six-limb silhouette.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Facehugger Nest\"]",
+      "actorId": "",
+      "actorName": "Facehugger Nest",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/facehugger-nest.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "COMPOSITE_ENTITY_REFERENCE_REQUIRED",
+      "reviewNote": "A nest is an egg/facehugger/environment composition; isolate its entity boundary rather than inventing a new creature.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Power Loader Duel\"]",
+      "actorId": "",
+      "actorName": "Power Loader Duel",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/power-loader-duel.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "DUEL_ASSET_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Use separate Ripley, power loader, Queen and arena/effects layers from the 1986 duel; this encounter name is not one character.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Praetorian Guard\"]",
+      "actorId": "",
+      "actorName": "Praetorian Guard",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/praetorian-guard.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CONTINUITY_CLARIFICATION_REQUIRED",
+      "reviewNote": "A dedicated Praetorian caste needs its specific game/comic source; it must not be asserted as a 1986 film creature.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens\",\"name:Warrior Xenomorph\"]",
+      "actorId": "",
+      "actorName": "Warrior Xenomorph",
+      "universe": "Aliens",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens/warrior-xenomorph.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "EXACT_1986_BODY_REFERENCE_REQUIRED",
+      "reviewNote": "Use Aliens 1986 LV-426 ridged-head warriors; the 1979 Big Chap smooth dome is a different incarnation.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:Hospital Hive Host\"]",
+      "actorId": "",
+      "actorName": "Hospital Hive Host",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/hospital-hive-host.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2007_ENTITY_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the 2007 Gunnison hospital scene and identify the host/entity before art. No generation attempted.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:National Guard Collapse\"]",
+      "actorId": "",
+      "actorName": "National Guard Collapse",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/national-guard-collapse.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ENCOUNTER_LAYER_REFERENCE_REQUIRED",
+      "reviewNote": "A military collapse is an encounter, requiring human units, vehicles and environment separately.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:Predalien Larva\"]",
+      "actorId": "",
+      "actorName": "Predalien Larva",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/predalien-larva.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_FORM_CLARIFICATION_REQUIRED",
+      "reviewNote": "The requested larval form needs an explicit 2007 film/source depiction; do not derive a new hybrid stage from the adult.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:Predalien\"]",
+      "actorId": "",
+      "actorName": "Predalien",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://avp.fandom.com/wiki/Predalien_%28Earth%29",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "The Earth Predalien with Yautja mandibles, dreadlocks, hybrid crest and brown-black body; not a giant Xenomorph Queen.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/predalien.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/Alien/assets/sprites/generated/bosses/alien/predalien-monstrosity.png",
+          "gitBlob": "9a986f36ed669c9d6d81eeed6514584e7bf4737f",
+          "bytes": 994498,
+          "status": "WRONG_CONTINUITY_AND_VISUAL_IDENTITY",
+          "reason": "Legacy override resolves this slot to 1979 Big Chap. Viewed sheet does not establish the Earth Predalien mandibles and tendrils; visible grid separators also need repair.",
+          "accepted": false
+        },
+        {
+          "gitPath": "DLC/Predator/assets/sprites/generated/bosses/predator/predalien-trophy-spawn.png",
+          "gitBlob": "0bf52b76b1313dce75db01789062cb5fc44467a4",
+          "bytes": 808149,
+          "status": "EDITION_UNPROVEN",
+          "reason": "Predator bucket/trophy encounter is not proof of the Earth Predalien in AVPR 2007.",
+          "accepted": false
+        }
+      ],
+      "disposition": "EXACT_2007_BODY_REFERENCE_REQUIRED",
+      "reviewNote": "Earth Predalien from AVPR 2007 requires mandibles, Predator-like tendrils and its ridged hybrid head, without Queen anatomy.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:Sewer Xenomorph\"]",
+      "actorId": "",
+      "actorName": "Sewer Xenomorph",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/sewer-xenomorph.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "FILM_2007_CREATURE_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the AVPR 2007 sewer creature; same franchise or species is insufficient for a 1979/1986 atlas alias.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Aliens vs Predator: Requiem\",\"name:Wolf Cleanup Duel\"]",
+      "actorId": "",
+      "actorName": "Wolf Cleanup Duel",
+      "universe": "Aliens vs Predator: Requiem",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/aliens-vs-predator-requiem/wolf-cleanup-duel.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "DUEL_ASSET_DECOMPOSITION_REQUIRED",
+      "reviewNote": "Wolf Predator, cleanup equipment, opposing xenos and the 2007 location require separate source-specific assets.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Aggar\"]",
+      "actorId": "",
+      "actorName": "Aggar",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://www.sega.com/games/altered-beast",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Faithful high-detail expansion of Aggar s arcade sprite, swollen gray humanoid body and detachable head projectiles.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/aggar.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "LOCAL_LORE_PALETTE_CONFLICT",
+      "reviewNote": "Local visualAnchor says grey. The arcade Bosses sheet depicts a brown/red skull-mound form; resolve platform/palette before production.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Chicken Stinger\"]",
+      "actorId": "",
+      "actorName": "Chicken Stinger",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://alteredbeast.fandom.com/wiki/Chicken_Stinger",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Small winged reptile/bird monster matching the original arcade sprite palette and hooked attack silhouette.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/chicken-stinger.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_NAME_AND_ANATOMY_CLARIFICATION_REQUIRED",
+      "reviewNote": "The local hooked-beak small-bird description is not enough to select a particular arcade enemy from the extracted sheet.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Crocodile Worm\"]",
+      "actorId": "",
+      "actorName": "Crocodile Worm",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://alteredbeast.fandom.com/wiki/Crocodile_Worm",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Faithful high-detail expansion of the arcade hybrid, elongated worm body, crocodile head, original palette and no added limbs.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/crocodile-worm.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "SOURCE_NAME_AND_ANATOMY_CLARIFICATION_REQUIRED",
+      "reviewNote": "Do not map the requested long worm to a visually different multi-head/shell boss merely because both have crocodilian heads.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Neff Demon God\"]",
+      "actorId": "",
+      "actorName": "Neff Demon God",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/neff-demon-god.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "WIZARD_SUBFORM_CANDIDATE_DELIVERED",
+      "reviewNote": "A source-anchored wizard atlas was generated and technically normalized. Final rhino form, transformation/VFX and frame-accurate source review remain open; the world-boss P1 is not closed.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Two-Headed Wolf\"]",
+      "actorId": "",
+      "actorName": "Two-Headed Wolf",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://alteredbeast.fandom.com/wiki/Two-Headed_Wolf",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Four-legged wolf monster with two distinct heads, dark arcade palette and low running posture.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/two-headed-wolf.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ARCADE_PALETTE_VARIANT_CLARIFICATION_REQUIRED",
+      "reviewNote": "Arcade sheet contains white and brown wolf variants. The local dark-palette anchor and the white Spirit Ball carrier must be distinguished.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Altered Beast\",\"name:Zombie\"]",
+      "actorId": "",
+      "actorName": "Zombie",
+      "universe": "Altered Beast",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://alteredbeast.fandom.com/wiki/Zombie",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Grey undead humanoid from Altered Beast, bare torso, torn ancient loincloth/armor scraps and stiff raised-arm pose.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/altered-beast/zombie.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/CryptOfTheNecroDancer/assets/sprites/generated/bosses/crypt-of-the-necrodancer/zombie.png",
+          "gitBlob": "0096ef0ca56d472e2be7700afedf12d31ff379dc",
+          "bytes": 448949,
+          "status": "WRONG_FRANCHISE",
+          "reason": "Crypt of the NecroDancer identity cannot satisfy Altered Beast.",
+          "accepted": false
+        },
+        {
+          "gitPath": "DLC/DeadRising/assets/sprites/generated/bosses/dead-rising/zombie.png",
+          "gitBlob": "305803f6705a3e12074fae155289a7e08f41b1a8",
+          "bytes": 556530,
+          "status": "WRONG_FRANCHISE",
+          "reason": "Dead Rising identity cannot satisfy Altered Beast.",
+          "accepted": false
+        }
+      ],
+      "disposition": "LOCAL_LORE_IDENTITY_OR_PALETTE_CONFLICT",
+      "reviewNote": "Local anchor says grey. A gameplay screenshot depicts tall purple undead; the arcade enemy sheet has several humanoid species. Confirm the exact enemy before changing art or lore.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:American Dad Anomaly Pack\"]",
+      "actorId": "",
+      "actorName": "American Dad Anomaly Pack",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/american-dad-anomaly-pack.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot name has no canonical actor or episode anchor; define the intended American Dad encounter before creating imagery.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:American Dad Breach Stalker\"]",
+      "actorId": "",
+      "actorName": "American Dad Breach Stalker",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/american-dad-breach-stalker.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot name has no canonical actor or episode anchor; do not create an invented franchise creature.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:American Dad Rift Drone\"]",
+      "actorId": "",
+      "actorName": "American Dad Rift Drone",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/american-dad-rift-drone.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Engine slot name has no canonical actor or episode anchor; do not create an invented franchise robot.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:Roger Persona Cascade\"]",
+      "actorId": "",
+      "actorName": "Roger Persona Cascade",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/roger-persona-cascade.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "PRIOR_IDENTITY_REFUSAL_DO_NOT_RETRY",
+      "reviewNote": "Roger has an existing refusal record. No new request, alternate wording or persona-based retry was made.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:Santa Claus\"]",
+      "actorId": "",
+      "actorName": "Santa Claus",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://americandad.fandom.com/wiki/Santa_Claus",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Exact American Dad Santa design, red suit, white beard, muscular build and documented military equipment.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/santa-claus.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "EPISODE_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the American Dad Santa incarnation/episode and military sleigh equipment, not generic holiday imagery.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"American Dad\",\"name:Tearjerker\"]",
+      "actorId": "",
+      "actorName": "Tearjerker",
+      "universe": "American Dad",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "https://americandad.fandom.com/wiki/Tearjerker",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "Exact Tearjerker persona from American Dad, white villain suit, styled hair, glasses and series proportions.",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/american-dad/tearjerker.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ROGER_PERSONA_REFUSAL_HOLD",
+      "reviewNote": "Tearjerker is a Roger persona. The earlier Roger refusal is preserved; no generation or workaround attempted.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Baal\"]",
+      "actorId": "",
+      "actorName": "Baal",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/baal.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "TV_SEASON_AND_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Lock Ash vs Evil Dead season 2 Baal incarnation and human/disguised/demonic form boundaries.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Demonic Delta\"]",
+      "actorId": "",
+      "actorName": "Demonic Delta",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/demonic-delta.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "POSSESSED_PROP_REFERENCE_REQUIRED",
+      "reviewNote": "This is the possessed Delta vehicle from the television continuity; use a vehicle atlas with correct body/model, not a humanoid demon.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Elk Grove Deadite\"]",
+      "actorId": "",
+      "actorName": "Elk Grove Deadite",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/elk-grove-deadite.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "public/images/rift-dossiers/openai/expanded/stage-288-elk-grove-deadite-festival-v1.webp",
+          "gitBlob": "8bd09d6e250e9d50d293aaf6e10335182c53a1f9",
+          "bytes": 65392,
+          "status": "WRONG_ASSET_ROLE",
+          "reason": "Environment/dossier key art; no isolated full-body animation atlas.",
+          "accepted": false
+        }
+      ],
+      "disposition": "CREATURE_REFERENCE_REQUIRED",
+      "reviewNote": "A location-key-art match does not establish an individual Deadite body or an animation atlas.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Kandar the Destroyer\"]",
+      "actorId": "",
+      "actorName": "Kandar the Destroyer",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "worldBoss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/kandar-the-destroyer.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "TV_SEASON_3_SCALE_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the television giant form and camera scale; do not substitute a generic fantasy giant.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Kandarian Spawn\"]",
+      "actorId": "",
+      "actorName": "Kandarian Spawn",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/kandarian-spawn.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "CANONICAL_IDENTITY_REQUIRED",
+      "reviewNote": "Clarify the precise television creature or label an original gameplay adaptation explicitly instead of certifying an invented canon body.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Ash vs Evil Dead\",\"name:Ruby Knowby\"]",
+      "actorId": "",
+      "actorName": "Ruby Knowby",
+      "universe": "Ash vs Evil Dead",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/ash-vs-evil-dead/ruby-knowby.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [
+        {
+          "gitPath": "DLC/EvilDead/assets/sprites/generated/heroes/evil-dead/ruby-evil-dead.png",
+          "gitBlob": "8e9d7f429eb3e40e7c7e4a958546da960a4da6cb",
+          "bytes": 776315,
+          "status": "EDITION_AND_COSTUME_UNPROVEN",
+          "reason": "Viewed heroine atlas: brunette, blue shirt, jeans. Generation prompt declares Evil Dead with no season, reference URL, or source costume anchor; do not bind to a particular Ash vs Evil Dead Ruby.",
+          "accepted": false
+        }
+      ],
+      "disposition": "TV_SEASON_AND_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Disambiguate Ruby season/incarnation and costume before binding the old Evil Dead heroine sheet.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Abstergo Security\"]",
+      "actorId": "",
+      "actorName": "Abstergo Security",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/abstergo-security.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "GAME_ERA_AND_UNIT_REFERENCE_REQUIRED",
+      "reviewNote": "Abstergo security designs vary by game/era. Select a specific unit, uniform and equipment first.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Animus Corruption\"]",
+      "actorId": "",
+      "actorName": "Animus Corruption",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "enemy",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/animus-corruption.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "ABSTRACT_EFFECT_LAYER_REQUIRED",
+      "reviewNote": "Treat this as an Animus visual/environment effect with a locked game version, not an invented humanoid sprite.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Cesare Borgia\"]",
+      "actorId": "",
+      "actorName": "Cesare Borgia",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/cesare-borgia.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "BROTHERHOOD_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Lock the specific Assassin's Creed Brotherhood costume/scene and equipment rather than a generic Renaissance soldier.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Assassin's Creed\",\"name:Rodrigo Borgia\"]",
+      "actorId": "",
+      "actorName": "Rodrigo Borgia",
+      "universe": "Assassin's Creed",
+      "priority": "P1",
+      "kind": "boss",
+      "backlogSourceRecord": "ENEMIES_DB after overrides",
+      "declaredReference": "",
+      "incarnationInBacklog": "",
+      "visualAnchorInBacklog": "",
+      "rasterProbes": [
+        {
+          "requestedPath": "/sprites/generated/bosses/assassin-s-creed/rodrigo-borgia.png",
+          "indexedPublicOrDlcProjectionExists": false,
+          "physicalSparseAbsenceUsed": false
+        }
+      ],
+      "legacyCandidates": [],
+      "disposition": "GAME_AND_COSTUME_REFERENCE_REQUIRED",
+      "reviewNote": "Assassin's Creed II versus Brotherhood and cardinal/papal appearances require explicit selection before production.",
+      "runtimeRasterRepaired": false,
+      "source1to1Verified": false
+    }
+  ]
+}

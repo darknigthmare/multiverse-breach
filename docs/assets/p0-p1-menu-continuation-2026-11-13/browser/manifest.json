@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-13T09:31:58.638830+00:00",
+  "repositoryBaseCommit": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "sourceSnapshotSha256": "bace6790cb4afd8187b18529ce28db6ac148cf816fc6c7c5a9b8e274e4536f7b",
+  "sourceFileCount": 4357,
+  "beforeSourceCommit": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "routes": [
+    "inventory",
+    "shop",
+    "party",
+    "roster",
+    "anchorProfile",
+    "codex",
+    "admin"
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "captureSets": {
+    "before": {
+      "count": 14,
+      "lang": "fr",
+      "textScale": 1
+    },
+    "after-fr": {
+      "count": 14,
+      "lang": "fr",
+      "textScale": 1
+    },
+    "after-en-150": {
+      "count": 14,
+      "lang": "en",
+      "textScale": 1.5
+    }
+  },
+  "checks": {
+    "finalCaptureCount": 28,
+    "pageErrors": 0,
+    "failedMediaResponses": 0,
+    "documentHorizontalOverflows": 0,
+    "workspaceCatalogueResourceHorizontalOverflows": 0,
+    "nativeActionGroupsPassed": 10,
+    "nativeActionGroupsTotal": 10,
+    "textScaleProbe": {
+      "heroNameBasePx": 15,
+      "heroNameAt150PercentPx": 22.5
+    },
+    "keyboardDossierEscapeRestoresFocus": true,
+    "latestMobileCapturesManuallyInspected": 14,
+    "mobilePrimaryNavigationWholeWordsVerified": true
+  },
+  "scope": "Real HubScreen, production catalogues, native menu handlers and production renderer; only initial ownership, currency and parent state are prepared. Fixture state is in memory.",
+  "media": {
+    "delivery": "Exact native media from checkout or Git index via serveSourceSceneArtFixture.py; no synthetic replacement artwork. External Google Fonts blocked for reproducibility; browser/system monospace fallback is visible.",
+    "limits": "No 1:1 artwork or full-roster sprite acceptance is claimed. Canvas portraits use the production sprite selection/fallback logic; the fixture does not count or distinguish every canvas fallback. No failed media HTTP responses were observed in the 28 final captures."
+  },
+  "limits": [
+    "No real account, cloud sync, save-file persistence, complete campaign or all-universe progression validation.",
+    "Only the seven listed Hub workspaces are covered; these captures do not certify every game mode or menu.",
+    "At 390px and 150% text, whole navigation labels wrap between rows or words; long content remains accessible through the native workspace scroll."
+  ],
+  "build": {
+    "tool": "Vite direct fixture build, Node22, no prebuild/public media copying",
+    "durationSeconds": 11.01,
+    "output": "/tmp/multiverse-hub-workspaces-after",
+    "bundleSha256": {
+      "assets/CustomBattleMode-DjheXLGW.js": "2c930874144aefad19a47443e8d099290974fe5351a5c60397133c69af0638e6",
+      "assets/CustomBattleMode-DkEeY2mv.css": "7e097d72a8cc1fefd59ac24552f4dbe7387e784cf2be448c25993ade20f0c750",
+      "assets/FighterMode-B5USixHX.css": "75b0b07fa23f3458374d662b2c496fdd0ab2fb15f9aff950aaac9fe0db663d61",
+      "assets/FighterMode-BT5z91-h.js": "db51c13da19db3ef37bc4e59824262a1ccc60a8c8049e91ed68d0f5415c75f18",
+      "assets/RaceMode-BfRZ78Ie.js": "baf4ca585210c41a0e5d6acdd39f96d6869004f578fddedf33486c222489f1a3",
+      "assets/RaceMode-CKmLbbLl.css": "a72562558eb6d2a3b8d8b0353e361e93072ebbcbb7eb56029711d34b7f9d0d96",
+      "assets/hub-workspaces-DMTE0b9r.js": "2d2fafd1613330c777f233feecf9bdf7bb1d512e4f155cb82974035875c30cfe",
+      "assets/hub-workspaces-wcScGs1S.css": "a232fecd3630e28eb5994c6bef6781b4b506bcdc347f1bd0d239e1dd1293a4de",
+      "scripts/fixtures/hub-workspaces.html": "677f7124a1272106574163644ca83dd72c573646371712611c5239eb9b5ca1e7"
+    }
+  },
+  "evidenceSha256": {
+    "actions/anchor-owned-equipped.png": "b9ab635370ff4644ffaed0f001895a64716cacdb5a92219e6141a0e8922dccb9",
+    "actions/en-mobile-150-keyboard-dossier-return.png": "3ea75090d27331bb6d5d42ad48d9dd2fdd77641bf7034d0c586b236d3c91c629",
+    "actions/mobile-navigation-amendment.json": "2d59b3030bce5054c2143090d32312cf08a862032447ed1b609410e14ab580f4",
+    "actions/report.json": "1c2b9e3b5d2f7425bb6776ee6012c7d0ae3047f966eb93a7831a9c4d5091c292",
+    "after-en-150/desktop-admin.png": "b7ad304ec09f04edef262012ea94a5251182b7b1023a700d8a31f9dac4609ce9",
+    "after-en-150/desktop-anchorProfile.png": "14dcb181fc3be051814256d2f5f2450d0fe5b4ec0023498f671ef8c59b3c58dd",
+    "after-en-150/desktop-codex.png": "7da0371bd743836788234cbb55287fe30284c1401b986f49fe8c7fbb9f48a0a3",
+    "after-en-150/desktop-inventory.png": "52eae2a9df29eff0e8ed31d8a7e49979564510bc4d7a886f0dd776004643e4d3",
+    "after-en-150/desktop-party.png": "a786168fe1b7ac1ec5790ea4eadee7fc755801425e639aedd5e88d91f60ebc22",
+    "after-en-150/desktop-roster.png": "a475f602d883a968d245fbb42f2e56b41ecae6b5ba96efb398a15a5496e4ca40",
+    "after-en-150/desktop-shop.png": "d7ee3ccd809c162cf993951dd69f38324337172cdfbb903637901fb7eea34594",
+    "after-en-150/mobile-admin.png": "aa4f13da52f4ac11be8f6cca87d75475673a839cd86b114e225d699d796c6417",
+    "after-en-150/mobile-anchorProfile.png": "551d19cac0f8b83ef9b175e3096a5d10dbc7bfaeda591d836a17a73cc0e99e69",
+    "after-en-150/mobile-codex.png": "3f6ab2423cbc70f180c1cdce00a50493be99800951a659b25a889e955e382067",
+    "after-en-150/mobile-inventory.png": "364b8c607e4e5e1af8e8ade412b7def450729c682ee9bb2dce2e7617afc69a46",
+    "after-en-150/mobile-party.png": "fe8efc6c85e390031f55601ecd9197454bb980ef5f12eb70c9f83e0d68b5bddd",
+    "after-en-150/mobile-roster.png": "9b74c64f0250db5e21747ef8d1c07499dea375c3a6c8e90f00e0476646744af1",
+    "after-en-150/mobile-shop.png": "2b633caf18ac2f0133169975e18b278c6c5802b255f3e57af5251b0520e90bb9",
+    "after-en-150/report.json": "aeab91a319d4496d08a80f7ef88e6d7dbb31c605fc29b9968d04c3cc4284c396",
+    "after-fr/desktop-admin.png": "5bd916b01db4320f5af8dcfdf1dad93b3d9341d8cc1b2dcc3d77c3313722c0dd",
+    "after-fr/desktop-anchorProfile.png": "5dbfec08c88c56f6c54dae367ea88aa8454ad88ee15e4a48f02952760b3bfa17",
+    "after-fr/desktop-codex.png": "4008971302e91f34637b2c87bdc22770c84cb017acbf5cae9efea97b8c3f412f",
+    "after-fr/desktop-inventory.png": "d27614836229f5fad7bf625cee859fd540b78c394c8f47e970106f85f4df9c1b",
+    "after-fr/desktop-party.png": "7749469ee896638b134748a82694d81e25c2cf472f4afa47d3a7603c35c5426b",
+    "after-fr/desktop-roster.png": "79f31c96b483084172fe6d41172cc9fc8f4fb86c320a084aaa8a66bde70d8a2b",
+    "after-fr/desktop-shop.png": "e37931e435bfcfb7e3c1c24dfd2d6b8a91680c5b9e0c31b3fecf77f8c18ca231",
+    "after-fr/mobile-admin.png": "f6b785ef427b3eacdd3e3cd64bbc7a7a0de7583fd7da93ab66356a9cce1eb31a",
+    "after-fr/mobile-anchorProfile.png": "6ebf7cac35c8f7893c00b6e18a238c4940032388b1ac1e60b9b44c660d9f653e",
+    "after-fr/mobile-codex.png": "6a6d16e2f729ee6255c68594ba30f434d06abbc02f982008a24543c3779db15c",
+    "after-fr/mobile-inventory.png": "4c6043d2fc883cb0951a4282d1a354654a16f6f1f366a7ec039526d2ab78cbef",
+    "after-fr/mobile-party.png": "876137b0fe5f2304fde7b25f06abec21c1740f66b6d9d8edd131a2bc2ccdc699",
+    "after-fr/mobile-roster.png": "c0cbe07b544cc5d21e4edab350b76037088eaf3f792153f7b70a789ecc05af2e",
+    "after-fr/mobile-shop.png": "c3a722ba018f4f3717cdee52ec093b87d9e809101909d5f879b42194bfa02bba",
+    "after-fr/report.json": "078984ecb887dc9faefa0d87b807ea74b74dfe7c8399e363fef19fc310633819",
+    "before/desktop-admin.png": "dbd5c9618b6606f962ec386af724f795ebe167c483783c9791203238bf76127a",
+    "before/desktop-anchorProfile.png": "d80b06608453ee1f9b8e47734b3a27c142a1d88a835c9c920e49009be9b72491",
+    "before/desktop-codex.png": "11dc184019c2959327076b15aa15e23bd8c25cf68ba3bce1e7c2e77c12dac6db",
+    "before/desktop-inventory.png": "74b92cf00478dbc6b1b3d6a3a84be4b2fb5dbeaf9a420696a9034246e41395d3",
+    "before/desktop-party.png": "a6783580b8f06573246404ef84b682e41451f0152e6e754ba0fb2ada7d1fa9ed",
+    "before/desktop-roster.png": "e64a5a27a73c45b33aedd3414d1482cb23b2810fd7fc6330ee5dafa77e94bbfc",
+    "before/desktop-shop.png": "88c72ae87aca3580ff4e1a3cf010708289efa79283bd32f68664aec66b523846",
+    "before/mobile-admin.png": "275b51cdaaae6fb1cba21b31329b573cdeef0a08114b0085e1be0ed5ac40884b",
+    "before/mobile-anchorProfile.png": "cd0acf7b0fd678d38653be5b8fbafcb5def26b715a29e8efb0e6e6f4f0a1761a",
+    "before/mobile-codex.png": "fe4a1d3a16e0d8582adb6243f1eaa964b52f38ea9f5bd20cd01bd235ec898f1b",
+    "before/mobile-inventory.png": "cffb31e02a4d3762f6fdb282dc9af8052b69f9c630bbc7a3a48044ebf945baf4",
+    "before/mobile-party.png": "f7c091e22c68f0168235cf88dcb1750700338bcec9d1f456a291392207772b4b",
+    "before/mobile-roster.png": "b14c21326225379e24d861e5e464580f1f47aad19e226deb7526ca4be4cbc703",
+    "before/mobile-shop.png": "48b120fb59481a8b6b8b0a1716118f8ec027933c54ae3d2c631e65ced370fbb3",
+    "before/report.json": "a3e5abf32fd93ce04bcdf514a87b36a1d35b3a2bdbac7737deb38ce97f77a925",
+    "source-sha256.json": "8516aa682525d40a69819d69caab0117893b690c9852823d191820eedaf5c065"
+  },
+  "mobileNavigationCssAmendment": {
+    "scope": "Mobile-only CSS changes primary navigation from five narrow columns to wrapping whole-word buttons; no game/progression/economy handlers changed.",
+    "sourceSnapshotBeforeSha256": "ba31700f24dab2598ad5329eea736595ae62d9a777dd45388bc9454f439c6e55",
+    "sourceSnapshotAfterSha256": "bace6790cb4afd8187b18529ce28db6ac148cf816fc6c7c5a9b8e274e4536f7b",
+    "changedSourceFiles": [
+      "scripts/browserHubWorkspaces.py",
+      "src/components/HubWorkspaceFrame.css"
+    ],
+    "cssSha256Before": "863feac82806caafea82d8fe222c48bd108cb13697046bda9112831ad718aba3",
+    "cssSha256After": "7c87c5ad4a7a63b638695f0296a39e61818d3600961be9ffb5df83e2e6a96803",
+    "freshMobileCaptures": 14,
+    "nativeActionGroupsRechecked": [
+      "inventory",
+      "en-mobile-150-keyboard"
+    ],
+    "passed": 2,
+    "total": 2,
+    "desktopBundleAtCaptureSha256": {
+      "assets/CustomBattleMode-Dg6a2e0j.js": "0db7ce45d76782e848bb64c86b07f7b6144067ad9d94aaf8f92584e9c74b9857",
+      "assets/CustomBattleMode-DkEeY2mv.css": "7e097d72a8cc1fefd59ac24552f4dbe7387e784cf2be448c25993ade20f0c750",
+      "assets/FighterMode-B5USixHX.css": "75b0b07fa23f3458374d662b2c496fdd0ab2fb15f9aff950aaac9fe0db663d61",
+      "assets/FighterMode-DQQ4Z-qn.js": "83323ab16a672928bf541d0a5e6bb1dc445aed22de91ed7fbe6a954d50a322c4",
+      "assets/RaceMode-CKmLbbLl.css": "a72562558eb6d2a3b8d8b0353e361e93072ebbcbb7eb56029711d34b7f9d0d96",
+      "assets/RaceMode-bdbuEa2d.js": "03484f4bdd738ef9608ce0b0b8ea423196643336ca4dbe36d64f6f73c40f953c",
+      "assets/hub-workspaces-BuK7bev2.css": "42fd1c829934678db77df7ba14d315401bd4a9bb6faf9f70d07a18cb9e928983",
+      "assets/hub-workspaces-ClvJJBV-.js": "90dc4c2cee4542a5b9a496e53da87cfea8d1b09b039bd85befd5a2f4dc799217",
+      "scripts/fixtures/hub-workspaces.html": "88031353549484a7af3c609241213460b2db16343a9f19b543513998c2a97e82"
+    },
+    "validationScope": "Earlier unit/SSR suites and the ten-group native-action run preceded this CSS-only amendment. Fourteen fresh mobile captures and two native-action groups verify the amendment; desktop rules are unchanged."
+  }
+}

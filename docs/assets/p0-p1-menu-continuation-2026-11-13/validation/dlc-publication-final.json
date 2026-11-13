@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T09:25:49.006976+00:00",
+  "scope": "Pure DLC manifest, publication, path and export regression checks; no Vite bundle/SSR and no artwork approval.",
+  "nodeVersion": "v22.23.5",
+  "heapLimitMiB": 1024,
+  "testConcurrency": 1,
+  "tests": {
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "--test",
+      "--test-concurrency=1",
+      "scripts/dlcAssetManifests.test.mjs",
+      "scripts/prepareDlcAssets.test.mjs",
+      "scripts/dlcAssetPaths.test.mjs",
+      "scripts/exportDlcAssetPaths.test.mjs"
+    ],
+    "exitCode": 0,
+    "tapPath": "docs/assets/p0-p1-menu-continuation-2026-11-13/validation/dlc-publication-final.tap",
+    "tapSha256": "6d3c4b9053106cf821752d792698dc2609dbedf0e45e15540772c3d327b0a6fb",
+    "tests": 85,
+    "suites": 0,
+    "pass": 85,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "manifestCheck": {
+    "command": [
+      "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+      "scripts/buildDlcAssetManifests.mjs",
+      "--check"
+    ],
+    "exitCode": 0,
+    "logPath": "docs/assets/p0-p1-menu-continuation-2026-11-13/validation/dlc-publication-final-manifest-check.log",
+    "logSha256": "051fffa90f4937e50b333399ca9d7fe56c5b8fea442de53f26ec0eb39d5e9819",
+    "distribution": {
+      "mode": "check",
+      "dlcManifests": 505,
+      "trackedPublicPaths": 19581,
+      "assignedToDlc": 11968,
+      "unclaimedByDlc": 7613,
+      "unclaimedReasons": {
+        "base-game": 681,
+        "global-final-boss-directory-not-the-matrix-dlc": 1,
+        "historical-bucket-guitar-echo-identity-not-buckethead": 9,
+        "historical-directory-without-current-universe-alias": 42,
+        "multiple-universe-references": 16,
+        "original-campaign": 2844,
+        "shared-or-unclassified": 4019,
+        "unregistered-runtime-key": 1
+      },
+      "inputSource": "git-index"
+    }
+  },
+  "inventoryInputs": {
+    "files": 508,
+    "beforeAggregateSha256": "ba236bc8828cf214be1dee84ff57932d3950b728f2e2eed22ff547665fd11ce7",
+    "afterAggregateSha256": "ba236bc8828cf214be1dee84ff57932d3950b728f2e2eed22ff547665fd11ce7",
+    "unchanged": true,
+    "changedPaths": []
+  },
+  "seconds": 4.385,
+  "canonicalFidelityApproved": false,
+  "newP0ActorClosures": 0,
+  "assetApprovalScopeRecord": "docs/assets/p0-p1-menu-continuation-2026-11-13/validation/dlc-new-assets-publication-scope.json",
+  "assetApprovalScopeRecordSha256": "837ae8115c686ab49f424df7f054aa808ef98e5c3c6ddeecaeca855ad773c0e1"
+}

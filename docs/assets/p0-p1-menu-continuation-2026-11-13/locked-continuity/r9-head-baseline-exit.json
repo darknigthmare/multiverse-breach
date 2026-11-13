@@ -1,0 +1,21 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--no-warnings",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--loader",
+    "/tmp/p1-metadata-continuity-20261113/baseline-loader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/actorFidelityR9.test.mjs"
+  ],
+  "startedAt": "2026-11-13T09:12:38.432191+00:00",
+  "completedAt": "2026-11-13T09:12:41.187946+00:00",
+  "exitCode": 1,
+  "scope": "Existing R9 suite against HEAD actorFidelityBacklog source via a read-only temporary loader. Actual workspace and actors unmodified."
+}

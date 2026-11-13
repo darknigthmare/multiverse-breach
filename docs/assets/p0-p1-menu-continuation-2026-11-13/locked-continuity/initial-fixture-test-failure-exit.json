@@ -1,0 +1,19 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--no-warnings",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/actorLockedContinuity20261113.test.mjs"
+  ],
+  "startedAt": "2026-11-13T09:09:48.030025+00:00",
+  "completedAt": "2026-11-13T09:09:58.057215+00:00",
+  "exitCode": 1,
+  "scope": "Dedicated direct-source runtime tests; exporter counters use an explicitly synthetic empty tree, not asset evidence."
+}

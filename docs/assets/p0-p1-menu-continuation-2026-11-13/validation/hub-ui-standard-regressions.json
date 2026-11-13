@@ -1,0 +1,37 @@
+{
+  "startedUtc": "2026-11-13T09:17:43.092024+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/universeArchiveReader.test.mjs",
+    "scripts/hubMediaFilterRegression.test.mjs",
+    "scripts/collectionFocusLifecycle.test.mjs",
+    "scripts/immersiveHubState.test.mjs",
+    "scripts/ocCampaignUiProgress.test.mjs"
+  ],
+  "nodeVersion": "v22.23.5",
+  "baseCommit": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "sourceSha256": {
+    "src/components/HubScreen.jsx": "c5645472f025f78070cd9cf24d5b1de3f8a46081c71e7e3738ef25639cf2541d",
+    "src/components/HubWorkspaceFrame.jsx": "3e670b79232fc95314e4a03bafa475cde80a2d71a0da07a150178a5c58de2ed8",
+    "src/components/HubLogisticsWorkspace.jsx": "d54a40fb13e6a348fc2d8f1271a39e5509bb4e6048c1be71416c85587fb45e7e",
+    "src/components/CatalogPagination.jsx": "efc58160564d53b56e87cd61894add4a202b556d6cd4b6764a4f626f7efe3208",
+    "src/components/HubCodexRecords.jsx": "6f4aa6d6530c1528e45997f9c0a42c49b067421f8542cdccc0de5647a3c7eb52"
+  },
+  "exitCode": 0,
+  "durationSeconds": 17.389,
+  "counts": {
+    "tests": 44,
+    "suites": 0,
+    "pass": 44,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "tap": "hub-ui-standard-regressions.tap",
+  "scope": "Existing standard Node/SSR regression suites using the production SSR fixture without loader changes.",
+  "limits": "Does not replace Chromium interaction checks, production build/prebuild, or campaign/save persistence verification."
+}

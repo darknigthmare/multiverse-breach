@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: closing a card then immediately returning cannot reopen the card from a late restoration frame
+ok 1 - closing a card then immediately returning cannot reopen the card from a late restoration frame
+  ---
+  duration_ms: 3.306359
+  type: 'test'
+  ...
+# Subtest: an old fallback frame cannot consume a library request made before its view commits
+ok 2 - an old fallback frame cannot consume a library request made before its view commits
+  ---
+  duration_ms: 1.046349
+  type: 'test'
+  ...
+# Subtest: a delayed fallback never steals focus that the player moved to another control
+ok 3 - a delayed fallback never steals focus that the player moved to another control
+  ---
+  duration_ms: 0.868082
+  type: 'test'
+  ...
+# Subtest: two pending requests for the same destination remain independently owned
+ok 4 - two pending requests for the same destination remain independently owned
+  ---
+  duration_ms: 2.114171
+  type: 'test'
+  ...
+# Subtest: a cancelled callback replay cannot clear or focus a newer request of the same destination
+ok 5 - a cancelled callback replay cannot clear or focus a newer request of the same destination
+  ---
+  duration_ms: 0.782744
+  type: 'test'
+  ...
+# Subtest: removing the original card still restores the binder heading when the player has not moved focus
+ok 6 - removing the original card still restores the binder heading when the player has not moved focus
+  ---
+  duration_ms: 0.859028
+  type: 'test'
+  ...
+# Subtest: a pending restoration cannot target a newly inert, hidden or detached destination
+ok 7 - a pending restoration cannot target a newly inert, hidden or detached destination
+  ---
+  duration_ms: 2.212639
+  type: 'test'
+  ...
+# Subtest: collection diagnostics can label hidden media types before the helper declaration
+ok 8 - collection diagnostics can label hidden media types before the helper declaration
+  ---
+  duration_ms: 5.463084
+  type: 'test'
+  ...
+# Subtest: leaving a walked city district and restoring it preserves position, facing and district
+ok 9 - leaving a walked city district and restoring it preserves position, facing and district
+  ---
+  duration_ms: 3.365267
+  type: 'test'
+  ...
+# Subtest: a hidden/unavailable district falls back safely while valid world positions are clamped
+ok 10 - a hidden/unavailable district falls back safely while valid world positions are clamped
+  ---
+  duration_ms: 0.221883
+  type: 'test'
+  ...
+# Subtest: Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+ok 11 - Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+  ---
+  duration_ms: 0.499039
+  type: 'test'
+  ...
+# Subtest: abandonment and malformed reports cannot award XP or rewards
+ok 12 - abandonment and malformed reports cannot award XP or rewards
+  ---
+  duration_ms: 0.316404
+  type: 'test'
+  ...
+# Subtest: canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+ok 13 - canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+  ---
+  duration_ms: 0.534832
+  type: 'test'
+  ...
+# Subtest: measured HUD bounds project through the actual canvas offset and backing size in every format
+ok 14 - measured HUD bounds project through the actual canvas offset and backing size in every format
+  ---
+  duration_ms: 0.995573
+  type: 'test'
+  ...
+# Subtest: the production viewport hook measures committed title text and preference changes before painting, then disconnects
+ok 15 - the production viewport hook measures committed title text and preference changes before painting, then disconnects
+  ---
+  duration_ms: 2.450576
+  type: 'test'
+  ...
+# Subtest: real scene handlers resume W/E with button focus while reserving native activation and text entry
+ok 16 - real scene handlers resume W/E with button focus while reserving native activation and text entry
+  ---
+  duration_ms: 1.475674
+  type: 'test'
+  ...
+# Subtest: the real pause focus trap yields to a modal that made its parent inert
+ok 17 - the real pause focus trap yields to a modal that made its parent inert
+  ---
+  duration_ms: 0.489054
+  type: 'test'
+  ...
+# Subtest: UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+ok 18 - UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+  ---
+  duration_ms: 0.937937
+  type: 'test'
+  ...
+# Subtest: real launch handler writes mission context before navigation and never bypasses access checks
+ok 19 - real launch handler writes mission context before navigation and never bypasses access checks
+  ---
+  duration_ms: 0.895293
+  type: 'test'
+  ...
+# Subtest: real category effect preserves restored selection on mount, and resets only on a category change
+ok 20 - real category effect preserves restored selection on mount, and resets only on a category change
+  ---
+  duration_ms: 0.972799
+  type: 'test'
+  ...
+# Subtest: real Hub callback credits wallets once and keeps results until acknowledgement
+ok 21 - real Hub callback credits wallets once and keeps results until acknowledgement
+  ---
+  duration_ms: 0.40676
+  type: 'test'
+  ...
+# Subtest: gear comparison includes both gained stats and bonuses lost by replacing the slot
+ok 22 - gear comparison includes both gained stats and bonuses lost by replacing the slot
+  ---
+  duration_ms: 0.171757
+  type: 'test'
+  ...
+# Subtest: franchise victories and consulted scenes cannot unlock OC acts
+ok 23 - franchise victories and consulted scenes cannot unlock OC acts
+  ---
+  duration_ms: 2.509775
+  type: 'test'
+  ...
+# Subtest: each canonical prefix opens exactly the same next operation regardless of unrelated victories
+ok 24 - each canonical prefix opens exactly the same next operation regardless of unrelated victories
+  ---
+  duration_ms: 1.157927
+  type: 'test'
+  ...
+# Subtest: six Origin Locks open Act V but do not complete the campaign
+ok 25 - six Origin Locks open Act V but do not complete the campaign
+  ---
+  duration_ms: 0.963495
+  type: 'test'
+  ...
+# Subtest: all operations and chapters without a chosen ending remain awaiting conclusion
+ok 26 - all operations and chapters without a chosen ending remain awaiting conclusion
+  ---
+  duration_ms: 0.181833
+  type: 'test'
+  ...
+# Subtest: only a valid ending plus all canonical operations marks the final act complete
+ok 27 - only a valid ending plus all canonical operations marks the final act complete
+  ---
+  duration_ms: 0.420821
+  type: 'test'
+  ...
+# Subtest: non-contiguous legacy clears do not skip missing operations or unlock a future act
+ok 28 - non-contiguous legacy clears do not skip missing operations or unlock a future act
+  ---
+  duration_ms: 0.321793
+  type: 'test'
+  ...
+# Subtest: missing or disabled canonical stage is blocked without a fallback to DLC or a later operation
+ok 29 - missing or disabled canonical stage is blocked without a fallback to DLC or a later operation
+  ---
+  duration_ms: 0.349775
+  type: 'test'
+  ...
+# Subtest: resume returns the exact runtime projection and normalizes string save IDs without mutation
+ok 30 - resume returns the exact runtime projection and normalizes string save IDs without mutation
+  ---
+  duration_ms: 0.178408
+  type: 'test'
+  ...
+# Subtest: Hub uses one canonical projection while historical timeline is explicitly separate
+ok 31 - Hub uses one canonical projection while historical timeline is explicitly separate
+  ---
+  duration_ms: 4.927401
+  type: 'test'
+  ...
+# Subtest: fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 32 - fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 16424.182321
+  type: 'test'
+  ...
+# Subtest: fr: every item family keeps its source count, event item and bounded first page
+ok 33 - fr: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 12.454541
+  type: 'test'
+  ...
+# Subtest: fr: mission, arc and collection dossiers retain their distinct text and progress
+ok 34 - fr: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 14.929855
+  type: 'test'
+  ...
+# Subtest: fr: living-world reading preserves all eight authoring areas and optional bonus
+ok 35 - fr: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 3.232742
+  type: 'test'
+  ...
+# Subtest: en: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 36 - en: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 30.361153
+  type: 'test'
+  ...
+# Subtest: en: every item family keeps its source count, event item and bounded first page
+ok 37 - en: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 10.625231
+  type: 'test'
+  ...
+# Subtest: en: mission, arc and collection dossiers retain their distinct text and progress
+ok 38 - en: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 7.686731
+  type: 'test'
+  ...
+# Subtest: en: living-world reading preserves all eight authoring areas and optional bonus
+ok 39 - en: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 2.425308
+  type: 'test'
+  ...
+# Subtest: an adjacent universe without a living world falls back to an available chapter
+ok 40 - an adjacent universe without a living world falls back to an available chapter
+  ---
+  duration_ms: 3.322957
+  type: 'test'
+  ...
+# Subtest: empty item and mission catalogues expose their absence instead of fabricating entries
+ok 41 - empty item and mission catalogues expose their absence instead of fabricating entries
+  ---
+  duration_ms: 5.984701
+  type: 'test'
+  ...
+# Subtest: a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+ok 42 - a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+  ---
+  duration_ms: 3.819535
+  type: 'test'
+  ...
+# Subtest: every source entry remains reachable with each page-size option without source mutation
+ok 43 - every source entry remains reachable with each page-size option without source mutation
+  ---
+  duration_ms: 10.687854
+  type: 'test'
+  ...
+# Subtest: a stale page clamps to the current source and keeps its exact total
+ok 44 - a stale page clamps to the current source and keeps its exact total
+  ---
+  duration_ms: 0.710769
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17304.452377

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "reviewer": "independent visual review by /root/menus_command",
+  "status": "CANDIDATE_RETAINED_WITH_SOURCE_FIDELITY_AND_RUNTIME_GATES_OPEN",
+  "scope": "Neff wizard/human guise only, Altered Beast original 1988 arcade. This review does not approve a complete boss pack or the rhinoceros final form.",
+  "guidance": "vendor/gamedev-skills/skills/disciplines/create-game-assets/SKILL.md",
+  "artifact": {
+    "path": "DLC/AlteredBeast/assets/sprites/generated/forms/altered-beast-1988/neff-wizard.png",
+    "sha256": "3b99eb6eba77615c1c3cd743818389a5d1c385496d4bf359c1a6dc5f69978e3b",
+    "size": [
+      1024,
+      1024
+    ],
+    "cellSize": [
+      256,
+      256
+    ],
+    "frames": 16
+  },
+  "referenceInspectedBeforeCandidate": {
+    "sourcePage": "https://www.spriters-resource.com/arcade/alteredbeast/asset/576867/",
+    "sourceSheetSha256": "cce72a87e33e23971ec2f989fdde6b64055b1fd6ff566d5b6d38b90f805cdb35",
+    "temporarySourceSheet": "/tmp/p1-lot002-arcade-576867.png",
+    "cropRect": [
+      0,
+      0,
+      296,
+      263
+    ],
+    "inspectionResize": [
+      888,
+      789
+    ],
+    "resampling": "nearest",
+    "temporaryInspectedCrop": "/tmp/p1-lot002-neff-wizard-reference.png",
+    "cropSha256": "c83523633631ae57c240d68ba91b1f15298f90f693a77a9251eb9e81c51a7c4d",
+    "provenanceManifest": "../references.json",
+    "thirdPartyPixelsImportedIntoCandidate": false
+  },
+  "inspectedPreviews": [
+    {
+      "path": "validation/neff-wizard-contact.png",
+      "cellDisplayPixels": 256,
+      "purpose": "all sixteen poses, silhouette and hand/robe detail"
+    },
+    {
+      "path": "validation/neff-wizard-contact-96px.png",
+      "cellDisplayPixels": 96,
+      "purpose": "small-scale readability on a neutral opaque background; offline preview, not a production engine capture"
+    }
+  ],
+  "visualFindings": [
+    {
+      "area": "silhouette and identity",
+      "result": "QUALIFIED_AS_WIZARD_CANDIDATE",
+      "observation": "Tall left-facing human sorcerer, bald pale head with short fringe, long nose, floor-length draped robe and exposed hands remain recognizable in the 256px and 96px contacts. No rhinoceros body, staff, crown or armor is introduced."
+    },
+    {
+      "area": "robe",
+      "result": "BROAD_COSTUME_MATCH_NOT_PIXEL_IDENTICAL",
+      "observation": "Dusty plum/mauve full-length drapery, wrapped chest, exposed arm in the open stance and pooled fabric during collapse follow the qualified arcade reference. The generated folds, highlights and edge treatment are reconstructed at higher resolution, not the original arcade clusters."
+    },
+    {
+      "area": "hands and gesture",
+      "result": "READABLE_GESTURE_WITH_FRAME_RECONSTRUCTION_UNVERIFIED",
+      "observation": "Bare hands and the extended open command gesture read at small scale. Finger anatomy and the exact source hand shapes are not certified frame by frame. Frames 10–11 show the extended gesture; these do not establish original animation timing."
+    },
+    {
+      "area": "palette and shading",
+      "result": "PALETTE_FAMILY_MATCH_EXACT_PALETTE_UNVERIFIED",
+      "observation": "Plum/mauve cloth and pale gray skin preserve the source color roles. Generated highlights and smooth modeling differ from the extracted arcade palette; color identity is supported, exact indexed colors are not verified."
+    },
+    {
+      "area": "proportions",
+      "result": "COHERENT_SORCERER_PROPORTIONS_NOT_SOURCE_MEASURED",
+      "observation": "The tall body, compact head and draped hem remain coherent between poses. Standing alpha heights span 216–221 px at 256 px per cell; the residual body/head bob needs an animation review before engine state mapping."
+    },
+    {
+      "area": "animation scope",
+      "result": "POSE_SEQUENCE_ONLY",
+      "observation": "The second row contains robe/stance variations, not a verified locomotion cycle. A static contact review does not establish continuity, loop quality, source durations, transition rules, attack events or hit windows."
+    }
+  ],
+  "independentTechnicalObservations": {
+    "rgbaAndTransparentBackground": true,
+    "nonemptyCells": 16,
+    "alpha64BottomRange": [
+      240,
+      241
+    ],
+    "alpha64StandingHeightRangeFrames0to12": [
+      216,
+      221
+    ],
+    "lowest12pxContactBandCenterXRange": [
+      127.5,
+      129.0
+    ],
+    "contactCentersX": [
+      128.0,
+      128.0,
+      128.0,
+      128.5,
+      128.5,
+      128.0,
+      128.0,
+      127.5,
+      128.5,
+      127.5,
+      128.0,
+      129.0,
+      127.5,
+      127.5,
+      127.5,
+      128.0
+    ],
+    "visibleClippingObserved": false,
+    "interpretation": "The packed ground contact is stable within 1 px vertically and 1.5 px horizontally at 256 px cell size. These measures do not prove engine placement, collision fit or visual continuity."
+  },
+  "approval": {
+    "referenceAndAllSixteenCandidateCellsVisuallyInspected": true,
+    "offline96pxReadabilityReviewed": true,
+    "inGameReviewPerformed": false,
+    "animatedLoopReviewed": false,
+    "frameAccurateArcadeTimingVerified": false,
+    "source1to1Verified": false,
+    "runtimeBindingApproved": false,
+    "wizardMaySubstituteForRhinocerosBoss": false,
+    "worldBossP1Closed": false
+  },
+  "requiredBeforeRuntimeApproval": [
+    "Qualify the independent final rhinoceros form and its arcade palette; keep this human/wizard atlas separate.",
+    "Compare individual poses and motion against original arcade gameplay, including loop/recovery/collapse timing.",
+    "Map only supported wizard animation states and review actual RPG/Tactics/Melee scale, floor placement and background readability.",
+    "Produce and qualify transformation and independent VFX assets required by the complete Neff encounter."
+  ]
+}

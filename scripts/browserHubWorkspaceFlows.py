@@ -15,6 +15,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--base-url', default='http://127.0.0.1:4179')
     parser.add_argument('--out', default='/tmp/qa-hub-workspaces-after/flows')
+    parser.add_argument('--only', nargs='*', default=[])
     args = parser.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
@@ -29,6 +30,8 @@ def main():
             return page.evaluate('structuredClone(window.__hubQA.model)')
 
         def run(name, tab, callback, query='', lang='fr'):
+            if args.only and name not in args.only:
+                return
             page = context.new_page()
             page.set_default_timeout(10000)
             errors = []
@@ -187,7 +190,6 @@ def main():
             baseline = page.locator('.hub-command-roster-identity strong').first.evaluate('node=>parseFloat(getComputedStyle(node).fontSize)')
             page.evaluate("document.documentElement.style.setProperty('--game-text-scale','1.5')")
             scaled = page.locator('.hub-command-roster-identity strong').first.evaluate('node=>parseFloat(getComputedStyle(node).fontSize)')
-            assert abs(scaled - baseline * 1.5) < .1, (baseline, scaled)
             page.get_by_role('button', name='ARCHIVES', exact=True).focus()
             page.keyboard.press('Enter')
             page.locator('.hub-navigation-secondary').get_by_role('button', name='CODEX & LORE', exact=True).focus()
@@ -213,6 +215,7 @@ def main():
             assert geometry['body'] <= geometry['viewport'], geometry
             assert geometry['workspaceScroll'] <= geometry['workspace'] + 1, geometry
             page.screenshot(path=str(out / 'en-mobile-150-keyboard-dossier-return.png'))
+            assert abs(scaled - baseline * 1.5) < .1, (baseline, scaled)
             return {'englishKeyboardNavigation': True, 'textScale': {'baseline': baseline, 'scaled': scaled}, 'dossierEscapeRestoresFocus': True, 'geometry': geometry}
 
         run('inventory', 'inventory', inventory)

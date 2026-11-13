@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T09:04:06.181817+00:00",
+  "sourceImagesInspectedBeforeGeneration": true,
+  "attempts": [
+    {
+      "index": 0,
+      "operation": "reference-conditioned-inanimate-prop-icon",
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "modelVersion": null,
+      "modelVersionAvailability": "Not exposed by the tool.",
+      "transparentBackground": true,
+      "promptFile": "docs/assets/p0-p1-menu-continuation-2026-11-13/art/aztec-medallion/prompt.txt",
+      "promptFileSha256": "b28c4a952f4eb32f889f8a87eea74d8f56978d23dbb5d4e59aacbd8f666a810f",
+      "promptTextSha256": "bcc3d1592f0ca066f66801facfb720d165d318c20f2d67725227d6545e6272da",
+      "promptTextReadRule": "Remove the single final LF from promptFile to reproduce the submitted string.",
+      "referenceInputs": [
+        {
+          "path": "docs/assets/p0-p1-menu-continuation-2026-11-13/art/aztec-medallion/references/d23-archives-medallion-08.jpg",
+          "sha256": "817f8cc37bc0acbc8c82a5e9728c351f967609f356a43faa3865924375b80894"
+        }
+      ],
+      "nativeFile": "docs/assets/p0-p1-menu-continuation-2026-11-13/art/aztec-medallion/native.png",
+      "nativeSha256": "e2d5ed20a1a1ebde91ed634780607a482e52726d533edd1f86006b23ccead67a",
+      "nativeBytes": 1023996,
+      "originalToolOutputPath": "/workspace/generated_images/exec-7aa20ba7-3692-440e-aa11-2c25ede1af61.png",
+      "originalRetained": true,
+      "generationId": null,
+      "result": "IMAGE_RETURNED",
+      "providerRefusal": false,
+      "selectionStatus": "SELECTED_BOUNDED_FRONT_FACE_ICON_ONLY"
+    }
+  ],
+  "toolCallsMade": 1,
+  "installedProductionAssets": 1,
+  "canonicalFidelityApproved": false,
+  "fullCharacterP0Closed": false,
+  "jackCharacterRetryMade": false
+}

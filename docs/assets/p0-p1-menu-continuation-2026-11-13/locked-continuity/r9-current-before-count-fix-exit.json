@@ -1,0 +1,20 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--no-warnings",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/actorLockedContinuity20261113.test.mjs",
+    "scripts/actorFidelityR9.test.mjs"
+  ],
+  "startedAt": "2026-11-13T09:10:45.771979+00:00",
+  "completedAt": "2026-11-13T09:10:57.885344+00:00",
+  "exitCode": 1,
+  "scope": "Full dedicated continuity tests and existing actorFidelityR9 suite, direct source imports, 1GB Node heap and CPU0; temporary exporter tree is synthetic, not raster evidence."
+}

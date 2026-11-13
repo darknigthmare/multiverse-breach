@@ -1,0 +1,34 @@
+{
+  "scriptSha256": "26b8b5f46f0613401b99abc6a3c6e7b4845a908a2f06ac3c757729dee5e8be03",
+  "processes": [
+    {
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0",
+        "python",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/refresh-inherited-actor-batches-40.py"
+      ],
+      "startedAt": "2026-11-13T09:35:55.003367+00:00",
+      "completedAt": "2026-11-13T09:35:56.258569+00:00",
+      "exitCode": 0,
+      "stdout": "{\"actorCount\": 4935, \"batchCount\": 124, \"changedActorCount\": 63, \"changedFields\": {\"openP1Codes\": 62, \"incarnation\": 60, \"providerRefusalEvidence\": 1, \"automaticGenerationRetryAllowed\": 1, \"workMode\": 1}, \"activitiesOverlap\": 3, \"distinctActorsAcrossActivities\": 77, \"checks\": {\"noDuplicateKeys\": true, \"allExactIdentitiesMatchCurrentExport\": true, \"membershipEqualsAllCurrentP1Actors\": true, \"batchAndActorOrderPreserved\": true, \"batchStatusAndMetadataPreserved\": true, \"nonUpdatedActorFieldsPreserved\": true, \"historicalP0Preserved\": true, \"quarantinesPreserved\": true, \"refusalPoliciesPreserved\": true, \"jackOverlayBoundToExact2003IdentityAndReceipt\": true, \"noDossierClosed\": true, \"inputBytesUnchanged\": true}}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "0",
+        "python",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/refresh-inherited-actor-batches-40.py",
+        "--check"
+      ],
+      "startedAt": "2026-11-13T09:35:56.258634+00:00",
+      "completedAt": "2026-11-13T09:35:56.960440+00:00",
+      "exitCode": 0,
+      "stdout": "{\"actorCount\": 4935, \"batchCount\": 124, \"changedActorCount\": 63, \"changedFields\": {\"openP1Codes\": 62, \"incarnation\": 60, \"providerRefusalEvidence\": 1, \"automaticGenerationRetryAllowed\": 1, \"workMode\": 1}, \"activitiesOverlap\": 3, \"distinctActorsAcrossActivities\": 77, \"checks\": {\"noDuplicateKeys\": true, \"allExactIdentitiesMatchCurrentExport\": true, \"membershipEqualsAllCurrentP1Actors\": true, \"batchAndActorOrderPreserved\": true, \"batchStatusAndMetadataPreserved\": true, \"nonUpdatedActorFieldsPreserved\": true, \"historicalP0Preserved\": true, \"quarantinesPreserved\": true, \"refusalPoliciesPreserved\": true, \"jackOverlayBoundToExact2003IdentityAndReceipt\": true, \"noDossierClosed\": true, \"inputBytesUnchanged\": true}}\n",
+      "stderr": ""
+    }
+  ]
+}

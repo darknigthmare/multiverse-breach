@@ -1,0 +1,62 @@
+{
+  "startedUtc": "2026-11-13T09:24:16.976532+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/anchorCustomization.test.mjs",
+    "scripts/squadPreparation.test.mjs",
+    "scripts/catalogPagination.test.mjs",
+    "scripts/universeArchiveReader.test.mjs",
+    "scripts/hubMediaFilterRegression.test.mjs",
+    "scripts/collectionFocusLifecycle.test.mjs",
+    "scripts/immersiveHubState.test.mjs",
+    "scripts/ocCampaignUiProgress.test.mjs"
+  ],
+  "nodeVersion": "v22.23.5",
+  "baseCommit": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "sourceSha256": {
+    "src/components/HubScreen.jsx": "0012626ea0def202347208df3eed03c2364aa72a29b742331b3b9c550d805ad1",
+    "src/components/HubWorkspaceFrame.jsx": "3e670b79232fc95314e4a03bafa475cde80a2d71a0da07a150178a5c58de2ed8",
+    "src/components/HubLogisticsWorkspace.jsx": "d54a40fb13e6a348fc2d8f1271a39e5509bb4e6048c1be71416c85587fb45e7e",
+    "src/components/CatalogPagination.jsx": "efc58160564d53b56e87cd61894add4a202b556d6cd4b6764a4f626f7efe3208",
+    "src/components/HubCodexRecords.jsx": "6f4aa6d6530c1528e45997f9c0a42c49b067421f8542cdccc0de5647a3c7eb52",
+    "src/components/HubWorkspaceFrame.css": "863feac82806caafea82d8fe222c48bd108cb13697046bda9112831ad718aba3",
+    "src/components/HubLogisticsWorkspace.css": "6339964afa8ef670a4801255ecf298f1bf7d45005bbdf5686f58138a1b83e899",
+    "src/components/HubCommandDeck.jsx": "f037b85c2d17f2ba663e2621fb390b6ecef47557b0103c9ce409988656a22e48",
+    "src/components/HubCommandDeck.css": "ebac4a59cd2970af44c87d85d3ae7882df60b82540fecd72be136487102c86aa",
+    "src/components/AnchorCustomizationPanel.jsx": "348700f1d99870b454cf22508c5907360b6a7f5804fa1814df378f2dab83a910",
+    "src/components/AnchorCustomizationPanel.css": "dacfa7f3ce1254fd21240e72254f3c0626188cc16974850555a1bbb1313c2ec5",
+    "src/components/CatalogPagination.css": "5e0c2480e3dde811736d2f35f745b2e6c10662bab43e87955bf70d4e4c6ef686",
+    "src/components/HubImmersion.css": "ae40a779aef0e1dfceda85b17c537b542e411dfa7dc50aec231854fa91cb4402",
+    "src/components/UniverseArchiveReader.jsx": "4e6f054a1ca5e28260fcd3094df42a4015c5c8bc95c1c8b1e85d3f199adb3ac2",
+    "src/components/UniverseArchiveCatalog.jsx": "b63a4b67c8200e3c0e9c8015e14f7dac4f249c08f2dea5dd6207893a06c0166f",
+    "scripts/fixtures/ssrTestServer.mjs": "d1b2c344131a145671d6f882e186e294c3d6ba96632324e54fe8df161a5a512c"
+  },
+  "exitCode": 0,
+  "durationSeconds": 22.679,
+  "counts": {
+    "tests": 72,
+    "suites": 0,
+    "pass": 72,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "tap": "hub-ui-standard-final.tap",
+  "scope": "Existing standard Node/SSR regression suites using the production SSR fixture without loader changes.",
+  "limits": "Does not replace Chromium interaction checks, production build/prebuild, or campaign/save persistence verification.",
+  "testSha256": {
+    "scripts/anchorCustomization.test.mjs": "72c18eaa98d442c3f745bff1446eda8e1676272a76d9e718a80357af187deb4d",
+    "scripts/squadPreparation.test.mjs": "0abb925ad9e253bea82b1120b6b15edac74665f4e7776a1b0f6f4281a3cdd550",
+    "scripts/catalogPagination.test.mjs": "5da5e054a06d8fe14c9e2498ad651ba548607bbee95291b92d437de012283215",
+    "scripts/universeArchiveReader.test.mjs": "fcf9a98f8dfcddfea70aa539223b0c2ee424b4ffdee2535ebf7629c0a56c4b4c",
+    "scripts/hubMediaFilterRegression.test.mjs": "ffce2ebce8a5c7f454e046f8520acf36789f07f3e3e66e98181ecc4c9375086d",
+    "scripts/collectionFocusLifecycle.test.mjs": "5692b21d769e1ddafd5a4d58d99406007ce8213df5b64be92d19a429e8e27f2e",
+    "scripts/immersiveHubState.test.mjs": "62e1d9cfbdc77382e85acff5b8929632966f0a3a8f38445c9b1082ed30ca61d8",
+    "scripts/ocCampaignUiProgress.test.mjs": "b4741c01b78e1508ed785888460f7797c0aaa12c44075cf5d796bcef309fa78a"
+  },
+  "sourceHashScope": "Source and stylesheet identities at final receipt, including modified workspaces; static Node/SSR assertions do not measure Chromium layout."
+}

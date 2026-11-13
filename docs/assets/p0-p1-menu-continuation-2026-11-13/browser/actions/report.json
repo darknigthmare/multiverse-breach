@@ -1,0 +1,78 @@
+{
+  "scope": "Production Hub handlers and catalogue data, prepared in-memory parent state; no real account/save-file/full campaign validation.",
+  "results": [
+    {
+      "name": "inventory",
+      "passed": true,
+      "equipUnequipRetainsInventory": true,
+      "foreignEventDisabled": true,
+      "emptyReset": true
+    },
+    {
+      "name": "shop-purchase",
+      "passed": true,
+      "purchaseAddsOnce": true,
+      "tokenCost": 3,
+      "ownedButtonDisabled": true,
+      "emptyReset": true
+    },
+    {
+      "name": "shop-insufficient",
+      "passed": true,
+      "insufficientDisabled": true,
+      "exactShortfall": 3
+    },
+    {
+      "name": "hero-navigation",
+      "passed": true,
+      "selectedHeroRetainedAcrossRosterGearSquad": true
+    },
+    {
+      "name": "squad-keyboard",
+      "passed": true,
+      "keyboardDeploy": true,
+      "fullSquadBlocked": true,
+      "lastMemberProtected": true
+    },
+    {
+      "name": "squad-preview-cancel",
+      "passed": true,
+      "previewAndCancelDoNotMutateParent": true
+    },
+    {
+      "name": "anchor-owned-search",
+      "passed": true,
+      "ownedOnly": true,
+      "equippedChoiceRetainedThroughSearch": true
+    },
+    {
+      "name": "codex-reading",
+      "passed": true,
+      "keyboardCanonDisclosure": true,
+      "personalArcPaginationAndEmptySearch": true,
+      "readOnlyParent": true
+    },
+    {
+      "name": "regulation-reserve-restore",
+      "passed": true,
+      "keyboardDiagnostics": true,
+      "reserveRestorePreservesProgressAndPossessions": true
+    },
+    {
+      "name": "en-mobile-150-keyboard",
+      "passed": true,
+      "englishKeyboardNavigation": true,
+      "textScale": {
+        "baseline": 15,
+        "scaled": 22.5
+      },
+      "dossierEscapeRestoresFocus": true,
+      "geometry": {
+        "viewport": 390,
+        "body": 390,
+        "workspace": 384,
+        "workspaceScroll": 384
+      }
+    }
+  ]
+}

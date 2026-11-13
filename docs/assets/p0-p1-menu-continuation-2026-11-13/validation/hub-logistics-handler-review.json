@@ -1,0 +1,17 @@
+{
+  "scope": "Read-only exact comparison of production state/economy handlers against HEAD; not browser execution.",
+  "unchangedHandlers": {
+    "equipItem": true,
+    "unequipItem": true,
+    "equipEventItem": true,
+    "unequipEventItem": true,
+    "buyShopItem": true,
+    "handleFuseRelic": true,
+    "getGearDisplay": true,
+    "getEventItemDisplay": true
+  },
+  "allUnchanged": true,
+  "baseCommit": "fc8a57f795b7d1e68c7f1f7ff82593c7cef8916b",
+  "method": "Exact source comparison of each anchored production const function body against git show HEAD:src/components/HubScreen.jsx.",
+  "limits": "Source review only. Shop purchase, fusion and equip flows require Chromium interaction checks."
+}

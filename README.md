@@ -4,7 +4,7 @@ Jeu de crossover indépendant et non officiel, jouable dans le navigateur. Le jo
 
 Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge ATB**, **Tactics sur grille**, **Mêlée sur plateformes** et **Combat en duel**. L’interface utilise React ; les combats sont dessinés en Canvas 2D. Les univers, personnages et marques cités appartiennent à leurs ayants droit.
 
-**État courant : W17 intégré avec GitHub `2333c2c0`, revue du 13 novembre 2026.** La [reprise P0/P1](docs/assets/p0-p1-continuation-2026-11-13/README.md) livre six PNG de scène, corrige deux liaisons d’atlas et préserve la nouvelle organisation DLC. Les priorités et la fidélité 1:1 restent ouvertes selon leurs preuves ; la clôture W16 et l’[intégration du 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) restent historiques.
+**État courant : W17 intégré avec GitHub `2333c2c0`, revue du 13 novembre 2026.** La [reprise des menus et P0/P1](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) harmonise sept espaces du Hub, raccorde le médaillon de 2003 et corrige la lecture de 60 continuités déjà déclarées. Un nouveau lot de 40 acteurs ajoute une planche candidate du sorcier Neff, sans remplacer sa forme de boss. Les [six PNG et deux liaisons de la reprise précédente](docs/assets/p0-p1-continuation-2026-11-13/README.md) sont préservés. Les priorités et la fidélité 1:1 restent ouvertes selon leurs preuves ; la clôture W16 et l’[intégration du 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) restent historiques.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
 
@@ -70,6 +70,8 @@ Les noms internes et les noms utilisés dans les rapports ne sont pas toujours i
 | **Combat / Fighter** | `Fighter` | Moteur de duel distinct, avec sa préparation, ses séquences de présentation, ses actions et ses conditions de victoire. |
 
 Les épreuves sans combat réutilisent certaines commandes d’arène pour des objectifs spécifiques. Une mission d’escorte ou de sauvetage conserve sa propre condition de réussite ; elle n’est pas automatiquement un combat d’élimination.
+
+Les espaces Équipement, Boutique, Résonance, Équipe, Dossier de l’Ancre, Archives et Régulation partagent désormais une hiérarchie A.R.C.A. plus lisible. Les filtres se replient, les réservistes se déploient au clavier, les achats montrent le prix et le solde manquant, et les grands catalogues du Codex se recherchent par pages. Les commandes conservent les IDs, les coûts et les règles de sauvegarde existants. Voir [les parcours vérifiés et leurs limites](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md).
 
 ## Couverture réelle
 
@@ -245,6 +247,7 @@ Ce profil produit le code exécutable sans recopier les médias de `public/` dan
 ## Documentation
 
 - [Reprise P0/P1 — 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) : six PNG réels, raccords de sprites, sources exactes, file par 40 et vérifications courantes.
+- [Reprise menus et P0/P1 — 13 novembre](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) : sept espaces du Hub, médaillon raccordé, lot de 40 et continuités structurées.
 - [Intégration W17 + master — 9 novembre](docs/audits/w17-master-integration-2026-11-09.md) : livraisons, mesures courantes, tests et limites de validation.
 - [Mesures courantes W17](docs/combat-fidelity-wave17-2026-11-02/current.md) et [protocole de clôture](docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md) : inventaire actuel et barrières historiques distinctes.
 - [Dernier lot combat clôturé historiquement — W16](docs/combat-fidelity-wave16-2026-10-28/README.md) : détails des trois groupes de 40 personnages et de la livraison.

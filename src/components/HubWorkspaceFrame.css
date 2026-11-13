@@ -59,8 +59,8 @@
   .hub-workspace .hub-catalog-layout > .glass-panel:first-child { position: static !important; max-height: none !important; overflow: visible !important; }
   .hub-workspace .hub-catalog-layout { gap: 16px !important; }
   .hub-archive-body { padding: 14px !important; }
-  .hub-screen .hub-navigation-primary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; overflow: visible; }
-  .hub-screen .hub-navigation-primary > button { min-width: 0; min-height: 44px; padding: 7px 4px; font-size: calc(10px * var(--game-text-scale, 1)); white-space: normal; overflow-wrap: anywhere; }
+  .hub-screen .hub-navigation-primary { display: flex; flex-wrap: wrap; gap: 4px; overflow: visible; }
+  .hub-screen .hub-navigation-primary > button { flex: 1 1 100px; min-width: 100px; min-height: 44px; padding: 7px 4px; font-size: calc(10px * var(--game-text-scale, 1)); letter-spacing: 0; white-space: normal; overflow-wrap: normal; }
   .hub-screen .hub-resource-strip { display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)); width: 100%; gap: 5px !important; margin-left: 0; }
   .hub-screen .hub-resource-strip .hub-resource { min-width: 0; padding: 7px !important; font-size: calc(11px * var(--game-text-scale, 1)) !important; }
   .hub-screen .hub-resource-strip .hub-resource strong { font-size: calc(17px * var(--game-text-scale, 1)) !important; }
@@ -80,3 +80,5 @@
   .hub-workspace-metrics dd { font-size: calc(18px * var(--game-text-scale, 1)); margin: 0; }
   .hub-workspace .hub-logistics-choose-hero { font-size: calc(16px * var(--game-text-scale, 1)); margin-bottom: 10px; }
 }
+
+.hub-screen .hub-media-filter .btn-retro { min-height: 44px; font-size: calc(12px * var(--game-text-scale, 1)) !important; }

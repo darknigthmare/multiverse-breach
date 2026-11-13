@@ -1,0 +1,520 @@
+TAP version 13
+# Subtest: partitions paths without claiming shared backgrounds, historical aliases, base or campaign artwork
+ok 1 - partitions paths without claiming shared backgrounds, historical aliases, base or campaign artwork
+  ---
+  duration_ms: 2.998752
+  type: 'test'
+  ...
+# Subtest: a reference from another DLC keeps a directory-attributed file shared
+ok 2 - a reference from another DLC keeps a directory-attributed file shared
+  ---
+  duration_ms: 0.383288
+  type: 'test'
+  ...
+# Subtest: kart model and sprite directories retain their universe ownership
+ok 3 - kart model and sprite directories retain their universe ownership
+  ---
+  duration_ms: 0.334375
+  type: 'test'
+  ...
+# Subtest: rejects duplicate, unsafe and ambiguous classification inputs
+ok 4 - rejects duplicate, unsafe and ambiguous classification inputs
+  ---
+  duration_ms: 0.621427
+  type: 'test'
+  ...
+# Subtest: common UI collection reads JSX, CSS URLs and static templates without inferring dynamic or external paths
+ok 5 - common UI collection reads JSX, CSS URLs and static templates without inferring dynamic or external paths
+  ---
+  duration_ms: 26.108518
+  type: 'test'
+  ...
+# Subtest: common UI references reject invalid syntax, unsafe URLs and symlink sources
+ok 6 - common UI references reject invalid syntax, unsafe URLs and symlink sources
+  ---
+  duration_ms: 3.231312
+  type: 'test'
+  ...
+# Subtest: common UI collection canonicalizes encoded filenames and keeps quoted spaces intact
+ok 7 - common UI collection canonicalizes encoded filenames and keeps quoted spaces intact
+  ---
+  duration_ms: 1.795077
+  type: 'test'
+  ...
+# Subtest: common UI use prevents exclusive DLC ownership and survives a byte-identical promotion to shared public sources
+ok 8 - common UI use prevents exclusive DLC ownership and survives a byte-identical promotion to shared public sources
+  ---
+  duration_ms: 5.230267
+  type: 'test'
+  ...
+# Subtest: write/check uses the Git index in a sparse checkout and detects staged inventory changes
+ok 9 - write/check uses the Git index in a sparse checkout and detects staged inventory changes
+  ---
+  duration_ms: 70.155516
+  type: 'test'
+  ...
+# Subtest: a source export with absent Git metadata validates the same inventories and rejects missing or added assets
+ok 10 - a source export with absent Git metadata validates the same inventories and rejects missing or added assets
+  ---
+  duration_ms: 17.748282
+  type: 'test'
+  ...
+# Subtest: a source export with empty Git metadata validates the same inventories and rejects missing or added assets
+ok 11 - a source export with empty Git metadata validates the same inventories and rejects missing or added assets
+  ---
+  duration_ms: 28.000707
+  type: 'test'
+  ...
+# Subtest: an export never uses a containing repository index, including with an empty .git directory
+ok 12 - an export never uses a containing repository index, including with an empty .git directory
+  ---
+  duration_ms: 11.705395
+  type: 'test'
+  ...
+# Subtest: canonical DLC sources retain public URLs and exclude generated copies from source exports
+ok 13 - canonical DLC sources retain public URLs and exclude generated copies from source exports
+  ---
+  duration_ms: 25.997395
+  type: 'test'
+  ...
+# Subtest: publication ignore generation preserves unrelated rules and treats filenames literally
+ok 14 - publication ignore generation preserves unrelated rules and treats filenames literally
+  ---
+  duration_ms: 0.29154
+  type: 'test'
+  ...
+# Subtest: projects both physical layouts without changing URL spelling or Unicode
+ok 15 - projects both physical layouts without changing URL spelling or Unicode
+  ---
+  duration_ms: 2.746281
+  type: 'test'
+  ...
+# Subtest: an export never borrows its parent Git index, even with an empty .git directory
+ok 16 - an export never borrows its parent Git index, even with an empty .git directory
+  ---
+  duration_ms: 28.123336
+  type: 'test'
+  ...
+# Subtest: Git inventory preserves absent assets and adds legacy aliases without losing raw source files
+ok 17 - Git inventory preserves absent assets and adds legacy aliases without losing raw source files
+  ---
+  duration_ms: 19.320743
+  type: 'test'
+  ...
+# Subtest: two tracked sources claiming one public URL are rejected rather than deduplicated
+ok 18 - two tracked sources claiming one public URL are rejected rather than deduplicated
+  ---
+  duration_ms: 15.181292
+  type: 'test'
+  ...
+# Subtest: an unsafe tracked asset path is rejected, not omitted from coverage
+ok 19 - an unsafe tracked asset path is rejected, not omitted from coverage
+  ---
+  duration_ms: 12.453719
+  type: 'test'
+  ...
+# Subtest: a materialized export prefers the canonical DLC source over its generated public copy
+ok 20 - a materialized export prefers the canonical DLC source over its generated public copy
+  ---
+  duration_ms: 1.332679
+  type: 'test'
+  ...
+# Subtest: materialized DLC collisions are rejected even if a generated public copy exists
+ok 21 - materialized DLC collisions are rejected even if a generated public copy exists
+  ---
+  duration_ms: 0.837172
+  type: 'test'
+  ...
+# Subtest: materialized scans do not follow leaf symlinks and retain them for the byte audit
+ok 22 - materialized scans do not follow leaf symlinks and retain them for the byte audit
+  ---
+  duration_ms: 0.703701
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the public root
+ok 23 - materialized scans reject a symlink at the public root
+  ---
+  duration_ms: 0.684902
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC root
+ok 24 - materialized scans reject a symlink at the DLC root
+  ---
+  duration_ms: 0.827127
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC/Halo root
+ok 25 - materialized scans reject a symlink at the DLC/Halo root
+  ---
+  duration_ms: 0.469729
+  type: 'test'
+  ...
+# Subtest: materialized scans reject a symlink at the DLC/Halo/assets root
+ok 26 - materialized scans reject a symlink at the DLC/Halo/assets root
+  ---
+  duration_ms: 0.56323
+  type: 'test'
+  ...
+# Subtest: materialized scanning supports a DLC-only archive and an empty inventory
+ok 27 - materialized scanning supports a DLC-only archive and an empty inventory
+  ---
+  duration_ms: 0.538462
+  type: 'test'
+  ...
+# Subtest: historical public trees keep their original paths and blob metadata
+ok 28 - historical public trees keep their original paths and blob metadata
+  ---
+  duration_ms: 2.689913
+  type: 'test'
+  ...
+# Subtest: DLC source paths produce the same actor and equipment probes as public paths
+ok 29 - DLC source paths produce the same actor and equipment probes as public paths
+  ---
+  duration_ms: 0.397359
+  type: 'test'
+  ...
+# Subtest: supplied trees alone decide presence, including encoded Unicode URLs and unknown sizes
+ok 30 - supplied trees alone decide presence, including encoded Unicode URLs and unknown sizes
+  ---
+  duration_ms: 0.304338
+  type: 'test'
+  ...
+# Subtest: colliding exported sources are rejected: public/hero.png / DLC/Halo/assets/hero.png
+ok 31 - colliding exported sources are rejected: public/hero.png / DLC/Halo/assets/hero.png
+  ---
+  duration_ms: 0.623469
+  type: 'test'
+  ...
+# Subtest: colliding exported sources are rejected: DLC/Halo/assets/hero.png / DLC/Doom/assets/hero.png
+ok 32 - colliding exported sources are rejected: DLC/Halo/assets/hero.png / DLC/Doom/assets/hero.png
+  ---
+  duration_ms: 0.218709
+  type: 'test'
+  ...
+# Subtest: invalid asset source paths fail instead of disappearing from the export
+ok 33 - invalid asset source paths fail instead of disappearing from the export
+  ---
+  duration_ms: 0.23873
+  type: 'test'
+  ...
+# Subtest: DLC catalog modules and manifests remain source entries, not public assets
+ok 34 - DLC catalog modules and manifests remain source entries, not public assets
+  ---
+  duration_ms: 0.217377
+  type: 'test'
+  ...
+# Subtest: equipment source verification still supports a historical checkout without DLC
+ok 35 - equipment source verification still supports a historical checkout without DLC
+  ---
+  duration_ms: 3.264219
+  type: 'test'
+  ...
+# Subtest: equipment source verification pins DLC definitions and notices changed data
+ok 36 - equipment source verification pins DLC definitions and notices changed data
+  ---
+  duration_ms: 2.746468
+  type: 'test'
+  ...
+# Subtest: equipment source verification rejects omitted and unpinned DLC source modules
+ok 37 - equipment source verification rejects omitted and unpinned DLC source modules
+  ---
+  duration_ms: 1.528263
+  type: 'test'
+  ...
+# Subtest: equipment source validation never demands materialized media or treats asset JSON as runtime code
+ok 38 - equipment source validation never demands materialized media or treats asset JSON as runtime code
+  ---
+  duration_ms: 1.099987
+  type: 'test'
+  ...
+# Subtest: the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency
+ok 39 - the sparse-checkout CLI publishes available assets before npm ci without loading a parser dependency
+  ---
+  duration_ms: 140.506494
+  type: 'test'
+  ...
+# Subtest: reads migrated mappings deterministically and ignores legacy public sources without writing
+ok 40 - reads migrated mappings deterministically and ignores legacy public sources without writing
+  ---
+  duration_ms: 1.976077
+  type: 'test'
+  ...
+# Subtest: publishes exact binary bytes as independent files and is idempotent including the state file
+ok 41 - publishes exact binary bytes as independent files and is idempotent including the state file
+  ---
+  duration_ms: 4.462194
+  type: 'test'
+  ...
+# Subtest: adopts an identical existing file but never overwrites a different unowned file
+ok 42 - adopts an identical existing file but never overwrites a different unowned file
+  ---
+  duration_ms: 2.58148
+  type: 'test'
+  ...
+# Subtest: prevalidates all destinations before publishing an earlier valid asset
+ok 43 - prevalidates all destinations before publishing an earlier valid asset
+  ---
+  duration_ms: 1.185817
+  type: 'test'
+  ...
+# Subtest: removes unchanged managed outputs when an entry is retired and preserves shared files
+ok 44 - removes unchanged managed outputs when an entry is retired and preserves shared files
+  ---
+  duration_ms: 1.974334
+  type: 'test'
+  ...
+# Subtest: releases a matching copy that becomes a canonical public source in shared metadata
+ok 45 - releases a matching copy that becomes a canonical public source in shared metadata
+  ---
+  duration_ms: 3.884052
+  type: 'test'
+  ...
+# Subtest: releases a changed copy that becomes a canonical public source in shared metadata
+ok 46 - releases a changed copy that becomes a canonical public source in shared metadata
+  ---
+  duration_ms: 2.023679
+  type: 'test'
+  ...
+# Subtest: releases a matching copy that becomes a canonical public source in pack metadata
+ok 47 - releases a matching copy that becomes a canonical public source in pack metadata
+  ---
+  duration_ms: 2.1897
+  type: 'test'
+  ...
+# Subtest: releases a changed copy that becomes a canonical public source in pack metadata
+ok 48 - releases a changed copy that becomes a canonical public source in pack metadata
+  ---
+  duration_ms: 2.633568
+  type: 'test'
+  ...
+# Subtest: releasing a public source still protects a different modified retired copy and preserves state on failure
+ok 49 - releasing a public source still protects a different modified retired copy and preserves state on failure
+  ---
+  duration_ms: 2.549121
+  type: 'test'
+  ...
+# Subtest: conflicting public and DLC ownership cannot release or overwrite a managed copy
+ok 50 - conflicting public and DLC ownership cannot release or overwrite a managed copy
+  ---
+  duration_ms: 1.430385
+  type: 'test'
+  ...
+# Subtest: a mismatched canonical public source cannot release a managed copy
+ok 51 - a mismatched canonical public source cannot release a managed copy
+  ---
+  duration_ms: 1.532559
+  type: 'test'
+  ...
+# Subtest: recreates an absent managed copy without treating absence as an overwrite
+ok 52 - recreates an absent managed copy without treating absence as an overwrite
+  ---
+  duration_ms: 1.205988
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during update
+ok 53 - preserves a locally modified managed copy and state during update
+  ---
+  duration_ms: 1.231226
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during retire
+ok 54 - preserves a locally modified managed copy and state during retire
+  ---
+  duration_ms: 0.978634
+  type: 'test'
+  ...
+# Subtest: preserves a locally modified managed copy and state during skip-missing
+ok 55 - preserves a locally modified managed copy and state during skip-missing
+  ---
+  duration_ms: 1.043853
+  type: 'test'
+  ...
+# Subtest: strict missing-source failure does not publish valid entries or clean retired entries
+ok 56 - strict missing-source failure does not publish valid entries or clean retired entries
+  ---
+  duration_ms: 1.748475
+  type: 'test'
+  ...
+# Subtest: partial publication reports missing sources and LFS pointers while copying only hydrated assets
+ok 57 - partial publication reports missing sources and LFS pointers while copying only hydrated assets
+  ---
+  duration_ms: 1.312108
+  type: 'test'
+  ...
+# Subtest: partial mode retains verified managed copies for temporarily missing sources
+ok 58 - partial mode retains verified managed copies for temporarily missing sources
+  ---
+  duration_ms: 1.475714
+  type: 'test'
+  ...
+# Subtest: partial mode cannot hide an unowned destination collision behind a missing source
+ok 59 - partial mode cannot hide an unowned destination collision behind a missing source
+  ---
+  duration_ms: 0.851644
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: public traversal
+ok 60 - rejects unsafe publication metadata: public traversal
+  ---
+  duration_ms: 0.505803
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: source traversal
+ok 61 - rejects unsafe publication metadata: source traversal
+  ---
+  duration_ms: 0.405852
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: double slash
+ok 62 - rejects unsafe publication metadata: double slash
+  ---
+  duration_ms: 0.381605
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: backslash
+ok 63 - rejects unsafe publication metadata: backslash
+  ---
+  duration_ms: 0.538902
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: Windows drive
+ok 64 - rejects unsafe publication metadata: Windows drive
+  ---
+  duration_ms: 0.604481
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: control character
+ok 65 - rejects unsafe publication metadata: control character
+  ---
+  duration_ms: 0.477971
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: wrong owning folder
+ok 66 - rejects unsafe publication metadata: wrong owning folder
+  ---
+  duration_ms: 0.514325
+  type: 'test'
+  ...
+# Subtest: rejects unsafe publication metadata: mismatched suffix
+ok 67 - rejects unsafe publication metadata: mismatched suffix
+  ---
+  duration_ms: 0.578542
+  type: 'test'
+  ...
+# Subtest: rejects duplicate public URLs across DLCs and file/directory collisions
+ok 68 - rejects duplicate public URLs across DLCs and file/directory collisions
+  ---
+  duration_ms: 1.338727
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: source-file
+ok 69 - rejects symlinks before mutation, including in partial mode: source-file
+  ---
+  duration_ms: 0.892144
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: source-parent
+ok 70 - rejects symlinks before mutation, including in partial mode: source-parent
+  ---
+  duration_ms: 0.657972
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: destination-file
+ok 71 - rejects symlinks before mutation, including in partial mode: destination-file
+  ---
+  duration_ms: 0.768038
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: destination-parent
+ok 72 - rejects symlinks before mutation, including in partial mode: destination-parent
+  ---
+  duration_ms: 0.687636
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: manifest
+ok 73 - rejects symlinks before mutation, including in partial mode: manifest
+  ---
+  duration_ms: 1.087268
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: state-file
+ok 74 - rejects symlinks before mutation, including in partial mode: state-file
+  ---
+  duration_ms: 0.555447
+  type: 'test'
+  ...
+# Subtest: rejects symlinks before mutation, including in partial mode: state-parent
+ok 75 - rejects symlinks before mutation, including in partial mode: state-parent
+  ---
+  duration_ms: 0.529859
+  type: 'test'
+  ...
+# Subtest: partial mode still rejects a dangling destination link when its source is missing
+ok 76 - partial mode still rejects a dangling destination link when its source is missing
+  ---
+  duration_ms: 0.502547
+  type: 'test'
+  ...
+# Subtest: rejects malformed state instead of trusting it for cleanup
+ok 77 - rejects malformed state instead of trusting it for cleanup
+  ---
+  duration_ms: 0.626254
+  type: 'test'
+  ...
+# Subtest: CLI partial output is bounded and explicit; strict mode fails with unavailable sources
+ok 78 - CLI partial output is bounded and explicit; strict mode fails with unavailable sources
+  ---
+  duration_ms: 120.355797
+  type: 'test'
+  ...
+# Subtest: profile transitions remove and reinstall only untouched generated copies
+ok 79 - profile transitions remove and reinstall only untouched generated copies
+  ---
+  duration_ms: 12.146372
+  type: 'test'
+  ...
+# Subtest: selection-aware entry reads distinguish undefined from the empty base selection
+ok 80 - selection-aware entry reads distinguish undefined from the empty base selection
+  ---
+  duration_ms: 1.901065
+  type: 'test'
+  ...
+# Subtest: modified managed copies block pack removal before any state or file mutation
+ok 81 - modified managed copies block pack removal before any state or file mutation
+  ---
+  duration_ms: 1.954646
+  type: 'test'
+  ...
+# Subtest: strict selection ignores missing excluded media and rejects missing selected media before removing copies
+ok 82 - strict selection ignores missing excluded media and rejects missing selected media before removing copies
+  ---
+  duration_ms: 2.601069
+  type: 'test'
+  ...
+# Subtest: public ownership transfer declared by an excluded pack preserves the canonical source
+ok 83 - public ownership transfer declared by an excluded pack preserves the canonical source
+  ---
+  duration_ms: 2.107696
+  type: 'test'
+  ...
+# Subtest: invalid profiles and partial publication cannot create distribution state
+ok 84 - invalid profiles and partial publication cannot create distribution state
+  ---
+  duration_ms: 1.064383
+  type: 'test'
+  ...
+# Subtest: profile publication rejects symlinked excluded metadata before modifying published files
+ok 85 - profile publication rejects symlinked excluded metadata before modifying published files
+  ---
+  duration_ms: 1.662585
+  type: 'test'
+  ...
+1..85
+# tests 85
+# suites 0
+# pass 85
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2992.976311

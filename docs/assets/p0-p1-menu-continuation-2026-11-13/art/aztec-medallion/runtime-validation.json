@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T09:16:09.599617+00:00",
+  "runtimeConnected": true,
+  "canonicalStageGuard": "isCanonPiratesCurseStage(stage) plus stage presence, boss-bearing encounter and totalPieces === 882",
+  "callerForwardsStage": true,
+  "uiContract": {
+    "cssPixels": [
+      64,
+      64
+    ],
+    "decorativeImage": true,
+    "nativeLocalizedObjectName": true,
+    "nativeLiveCounter": true,
+    "failedImageHidesAndReleasesGridColumn": true,
+    "gameRulesOrHandlersChanged": false
+  },
+  "tests": {
+    "command": "NODE_OPTIONS='--max-old-space-size=768' /tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node --test --test-concurrency=1 scripts/piratesCurseMedallion.test.mjs scripts/canonRescuePanels.test.mjs",
+    "nodeVersion": "22.x",
+    "tests": 25,
+    "passed": 25,
+    "failed": 0,
+    "durationMs": 3359.513415,
+    "coverage": [
+      "SSR rendering of the exact 2003 RPG encounter and rejection of absent/other/custom stage identities",
+      "Sequential source commands, pause/target/ATB guards and non-mutation of ritual state",
+      "Image-error fallback and native counter after restitution",
+      "DLC PNG/publication/hash agreement and forwarded caller stage",
+      "Production publication entry with unambiguous Pirates ownership"
+    ]
+  },
+  "cssParse": {
+    "tool": "lightningcss transform",
+    "file": "src/components/PiratesCursePanel.css",
+    "warnings": 0,
+    "passed": true
+  },
+  "publication": {
+    "manifest": "DLC/PiratesOfTheCaribbean/assets.json",
+    "entries": 18,
+    "scopedFactoryGenerated": true,
+    "virtualUnstagedCanonicalEntryUsed": true,
+    "onlyPiratesManifestWritten": true,
+    "factory": "scripts/buildDlcAssetManifests.mjs#buildDlcAssetInventory",
+    "localPublicFile": "regular hardlink to canonical DLC PNG",
+    "bulkAssetsPrepareRun": false,
+    "rootMustRegenerateGlobalPublicationIgnoresAfterStaging": false,
+    "rootRegeneratedGlobalInventoriesAndIgnoresAfterStaging": true,
+    "finalPureValidationRecord": "docs/assets/p0-p1-menu-continuation-2026-11-13/validation/dlc-publication-final.json",
+    "finalManifestCheckPassed": true
+  },
+  "fidelity": {
+    "sourceAndScalePreviewInspectedAgainBeforeRuntimeEdit": true,
+    "canonicalFidelityApproved": false,
+    "fullCharacterP0Closed": false,
+    "liveBrowserBattleExecutedByThisAgent": false,
+    "limitation": "SSR + production-publication contract validated. This record does not claim a browser-run combat finale or full image fidelity."
+  }
+}
