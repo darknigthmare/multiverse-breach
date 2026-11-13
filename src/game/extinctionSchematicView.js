@@ -8,7 +8,8 @@ const PRIMARY_STYLES = Object.freeze({
   hitscan: 'ballistic', scatter: 'scatter', volley: 'scatter',
   melee: 'contact', sweep: 'contact', counter: 'contact',
   projectile: 'projectile', beam: 'beam', cone: 'cone', control: 'control',
-  focus: 'focus', dash: 'movement', teleport: 'movement'
+  focus: 'focus', dash: 'movement', teleport: 'movement',
+  guard: 'support', buff: 'support', heal: 'support', support: 'support'
 });
 const PICKUP_STYLES = Object.freeze({ shotgun: 'scatter', rocket: 'launcher', plasma: 'plasma' });
 const finite = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
@@ -162,6 +163,12 @@ function diagram(ctx, view) {
       line(ctx, points); stroke(ctx, color);
     }
     if (activation > 0) circle(ctx, 80, 59, 5, color, true);
+  } else if (style === 'support') {
+    // A delivery symbol only: no hands, firearm or invented source prop.
+    line(ctx, [[80, 26], [114, 43], [109, 83], [97, 103], [80, 115], [63, 103], [51, 83], [46, 43]], true);
+    stroke(ctx, color);
+    line(ctx, [[63, 69], [75, 82], [98, 54]]); stroke(ctx, color);
+    if (activation > 0) circle(ctx, 80, 69, 13 + activation * 5, color);
   } else if (style === 'movement') {
     for (const [y, half] of [[45, 25], [79, 37], [109, 37]]) {
       line(ctx, [[80 - half, y], [80, y - 24], [80 + half, y]]); stroke(ctx, color);

@@ -141,7 +141,7 @@
    summary must never cover HP or commands when the mobile dock grows. */
 .combat-terrain-overlay {
   position: absolute; z-index: 20; left: 0; bottom: calc(100% + 10px);
-  width: min(520px, 100%); max-height: min(45dvh, 540px);
+  width: min(520px, 100%); max-height: min(var(--combat-terrain-max-height, 45dvh), 45dvh, 540px);
   padding: 12px; box-sizing: border-box; overflow: auto;
   border: 1px solid #70a8b0; border-radius: 4px; background: #061b25f5;
   color: #e7ffff; pointer-events: auto;

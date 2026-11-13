@@ -23,7 +23,7 @@ const DELIVERY = Object.freeze({
   water: 'projectile', rocket: 'projectile', projectile_aoe: 'projectile', cannon_aoe: 'projectile',
   beam: 'beam', beam_aoe: 'beam', laser: 'beam', zap: 'beam', shrink: 'control',
   fire: 'cone', spray: 'cone', poison: 'cone',
-  heal: 'heal', heal_aoe: 'heal', shield: 'guard', shield_aoe: 'guard', dodge: 'guard',
+  heal: 'heal', heal_aoe: 'heal', shield: 'guard', shield_aoe: 'guard', guard: 'guard', dodge: 'guard',
   dash: 'dash', teleport: 'teleport', dodge_strike: 'counter', buff: 'buff', tactical: 'buff',
   support: 'support', support_aoe: 'support', summon: 'summon', summon_aoe: 'summon',
   trap: 'mine', trap_aoe: 'mine',
@@ -33,7 +33,7 @@ const DELIVERY = Object.freeze({
   music: 'focus', glitch: 'focus', gravity: 'focus', force: 'focus', radiation: 'focus',
   temporal_aoe: 'control_pulse', time_aoe: 'control_pulse', hack_aoe: 'control_pulse',
   shrink_aoe: 'control_pulse', fear_aoe: 'control_pulse', mind_aoe: 'control_pulse',
-  nexus_aoe: 'pulse', origin_aoe: 'pulse', glitch_aoe: 'pulse', magic_aoe: 'pulse',
+  area: 'pulse', nexus_aoe: 'pulse', origin_aoe: 'pulse', glitch_aoe: 'pulse', magic_aoe: 'pulse',
   fire_aoe: 'pulse', dark_aoe: 'pulse', gravity_aoe: 'pulse', ritual_aoe: 'pulse',
   explosive_aoe: 'pulse', plasma_aoe: 'pulse', energy_aoe: 'pulse', light_aoe: 'pulse',
   science_aoe: 'pulse', gadget_aoe: 'pulse', sound_aoe: 'pulse', horror_aoe: 'pulse',
@@ -43,18 +43,58 @@ const DELIVERY = Object.freeze({
 
 export const EXTINCTION_SOURCE_DELIVERY_TYPES = Object.freeze(Object.keys(DELIVERY));
 
+// The source projections use "projectile" for these two actual cartridge
+// rifles. Preserve their existing FPS hitscan/ammunition contract without
+// turning arbitrary projectiles, energy weapons or custom profiles into guns.
+const BALLISTIC_SOURCE_BINDINGS = Object.freeze({
+  marcus: { universe: 'Gears of War', name: 'Marcus Fenix',
+    incarnation: 'Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor',
+    marker: 'sourceFidelityAudit', revision: 'gears-deadspace-040-2026-11-13',
+    referenceUrl: 'https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix',
+    weaponType: 'chainsaw', equipment: 'Lancer Mk2 assault rifle with chainsaw bayonet',
+    actionName: 'Lancer Fire', damage: 1, range: 640, actorAbilityMetadata: true },
+  masterchief: { universe: 'Halo', name: 'Master Chief', incarnation: 'Halo 3',
+    marker: 'sourceContractRevision', revision: 'scifi-lot-040-2026-11-13',
+    referenceUrl: 'https://www.halopedia.org/John-117', weaponType: 'gun', equipment: 'MA5C assault rifle',
+    actionName: 'Rafale du MA5C', damage: 1.2, range: 480 }
+});
+function selectedBallisticSource(hero, slot, source) {
+  const binding = Object.hasOwn(BALLISTIC_SOURCE_BINDINGS, hero?.id) ? BALLISTIC_SOURCE_BINDINGS[hero.id] : null;
+  if (slot !== 'simple' || !binding || hero.universe !== binding.universe || hero.name !== binding.name
+    || hero.incarnation !== binding.incarnation || hero[binding.marker] !== binding.revision
+    || hero.referenceUrl !== binding.referenceUrl || hero.weaponType !== binding.weaponType
+    || !Array.isArray(hero.equipment) || !hero.equipment.includes(binding.equipment)) return false;
+  const keys = ['name', 'type', 'dmg', 'animationDuration', 'hitAt', 'targeting',
+    ...(binding.actorAbilityMetadata ? ['slot', 'sourceHeroId'] : [])];
+  if (Object.keys(source).length !== keys.length || !keys.every(key => Object.hasOwn(source, key))
+    || source.type !== 'projectile' || source.name !== binding.actionName || source.dmg !== binding.damage
+    || source.animationDuration !== 0.55 || source.hitAt !== 0.2
+    || binding.actorAbilityMetadata && (source.slot !== 'simple' || source.sourceHeroId !== hero.id)) return false;
+  const targeting = source.targeting;
+  return targeting && Object.keys(targeting).length === 5
+    && Object.hasOwn(targeting, 'effect') && targeting.effect === 'damage'
+    && Object.hasOwn(targeting, 'delivery') && targeting.delivery === 'projectile'
+    && Object.hasOwn(targeting, 'shape') && targeting.shape === 'single'
+    && Object.hasOwn(targeting, 'range') && targeting.range === binding.range
+    && Object.hasOwn(targeting, 'targetSide') && targeting.targetSide === 'enemy';
+}
+
 export function adaptExtinctionSourceAction(hero, slot) {
   const source = hero?.[slot];
-  if (!source || typeof source !== 'object' || !DELIVERY[source.type]) return null;
+  if (!source || typeof source !== 'object' || typeof source.type !== 'string' || !Object.hasOwn(DELIVERY, source.type)) return null;
   // Explicit delivery on the source action is stronger than a generic type.
-  const declared = source.attackProfile?.delivery;
-  const kind = ['signature', 'ability', 'origin_aoe'].includes(source.type) && declared === 'melee'
-    ? (source.attackProfile?.shape === 'aoe' ? 'sweep' : 'melee') : DELIVERY[source.type];
+  const explicit = Object.assign({}, source.targeting, source.attackProfile, source.rpgProfile);
+  const declared = explicit.delivery;
+  const beneficial = ['guard', 'buff', 'heal', 'support'].includes(explicit.effect) ? explicit.effect : null;
+  const ballistic = selectedBallisticSource(hero, slot, source);
+  const kind = beneficial || (ballistic ? 'hitscan'
+    : ['signature', 'ability', 'origin_aoe'].includes(source.type) && declared === 'melee'
+      ? (explicit.shape === 'aoe' ? 'sweep' : 'melee') : DELIVERY[source.type]);
   const contact = ['melee', 'sweep', 'counter'].includes(kind);
   const control = ['control', 'control_pulse'].includes(kind);
-  const ammo = slot === 'simple' && ['bullet', 'shotgun'].includes(source.type);
+  const ammo = slot === 'simple' && (ballistic || ['bullet', 'shotgun'].includes(source.type));
   const generic = GENERIC_NAME.test(text(source.name)) || ['signature', 'origin_aoe', 'ability'].includes(source.type);
-  const duration = Math.round(clamp(finite(source.dur, control ? 2 : 3), 0.2, 8) * 60);
+  const duration = Math.round(clamp(finite(explicit.duration ?? source.duration ?? source.dur, control ? 2 : 3), 0.2, 8) * 60);
   const sourceRange = contact ? (slot === 'simple' ? 2.3 : 3.2)
     : ['cone', 'scatter'].includes(kind) ? 9 : ['pulse', 'control_pulse', 'focus'].includes(kind) ? 8 : 24;
   return Object.freeze({
@@ -62,8 +102,8 @@ export function adaptExtinctionSourceAction(hero, slot) {
     cooldown: slot === 'simple' ? (contact ? 26 : control ? 45 : 20)
       : slot === 'defense' ? Math.max(360, duration + 60)
         : Math.round(clamp(finite(source.cd ?? source.cooldown, slot === 'special' ? 12 : 7), 1, 60) * 60),
-    duration, reduction: clamp(finite(source.reduce, 0.6), 0, 0.95),
-    damage: control ? 0 : Math.round(28 * clamp(finite(source.dmg, 1), 0.1, 8)),
+    duration, reduction: clamp(finite(explicit.reduce ?? source.reduce, 0.6), 0, 0.95),
+    damage: control || ['guard', 'buff', 'heal', 'support'].includes(kind) ? 0 : Math.round(28 * clamp(finite(source.dmg, 1), 0.1, 8)),
     range: getExtinctionActionReach({ kind, range: sourceRange }).value,
     color: source.color || hero.secondaryColor || hero.primaryColor || '#39c5bb',
     resource: ammo ? 'ammo' : 'cooldown',
@@ -72,7 +112,8 @@ export function adaptExtinctionSourceAction(hero, slot) {
     sourceReference: hero.referenceUrl || hero.referenceUrls?.[0] || '',
     adaptationStatus: generic ? 'GENERIC_SOURCE_REVIEW_REQUIRED' : 'SOURCE_TYPE_ADAPTED',
     sourceDelivery: declared || null,
-    sourcePresentation: source.canonPresentation?.kind || null
+    sourcePresentation: source.canonPresentation?.kind || null,
+    ...(ballistic ? { sourceBallisticCompatibility: 'exact-source-rifle-projectile-to-existing-FPS-hitscan' } : {})
   });
 }
 

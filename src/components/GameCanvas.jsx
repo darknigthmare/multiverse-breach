@@ -20,6 +20,7 @@ import {
 } from '../game/gameCanvasCosmeticPresentation';
 import { isCombatGameplayAdvancing } from '../game/combatActivity.js';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import useCombatTerrainMenuBounds from './useCombatTerrainMenuBounds.js';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
@@ -254,6 +255,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [autoBattle, setAutoBattle] = useState(false);
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
+  useCombatTerrainMenuBounds(canvasRef, stage.mode === 'Tactics' && tacticsTerrainState?.vertical && !battleCompleted);
   const [battleResult, setBattleResult] = useState(null);
   const [battleSummary, setBattleSummary] = useState(null);
   const [battleAnomaly, setBattleAnomaly] = useState(null);
