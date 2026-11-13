@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { spawn, spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, renameSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import fsPromises from 'node:fs/promises';
+import { syncBuiltinESMExports } from 'node:module';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -38,8 +40,10 @@ const correct=Buffer.from(${JSON.stringify(remote.toString('base64'))},'base64')
 if(mode==='failure'){process.stderr.write('sensitive-auth-text-never-in-receipts');process.exit(9);}
 if(mode==='hang')await new Promise(()=>{setInterval(()=>{},1000);});
 fs.mkdirSync(path.join(storage,'objects'),{recursive:true});
-fs.writeFileSync(path.join(storage,'objects','payload'),mode==='cache-overflow'?Buffer.alloc(2*1024*1024):correct);
+if(mode==='rename-held')fs.mkdirSync(path.join(storage,'incomplete'),{recursive:true});
+fs.writeFileSync(path.join(storage,mode==='rename-held'?'incomplete':'objects',mode==='rename-held'?'transfer.tmp':'payload'),mode==='cache-overflow'?Buffer.alloc(2*1024*1024):correct);
 process.stdout.write(mode==='fallback'?original:mode==='corrupt'?Buffer.alloc(correct.length,99):mode==='overlong'?Buffer.alloc(correct.length+1024):correct);
+if(mode==='rename-held')await new Promise(resolve=>setTimeout(resolve,150));
 `);
   const spawnLfs = mode => (args, options) => spawn(process.execPath, [fake, ...args], { ...options, env: { ...options.env, BATCH_TEST_MODE: mode } });
   return { root, parent, revision, raw, cached, remote, historical, historicalOid, cachePath, files, spawnLfs, providers };
@@ -161,6 +165,71 @@ test('a stalled smudge is terminated within its deadline and owned output/cache 
   await assert.rejects(source.materialize(f.files.remote), error => error.code === 'SOURCE_PROCESS_TIMEOUT');
   assert.deepEqual(readdirSync(path.join(source.ownedRoot, 'payloads')), []);
   assert.deepEqual(readdirSync(path.join(source.ownedRoot, 'cache')), []);
+});
+
+test('an atomic owned LFS cache rename between readdir and lstat is tolerated only during the active size monitor', async t => {
+  const f = fixture(t), source = await provider(f, { allowLfsFetch: true }, { spawnLfs: f.spawnLfs('rename-held') });
+  const original = fsPromises.lstat; let transition = null;
+  fsPromises.lstat = async function (file, ...args) {
+    if (!transition && String(file).endsWith(path.join('incomplete', 'transfer.tmp'))) {
+      const old = lstatSync(file), final = path.join(path.dirname(path.dirname(String(file))), 'objects', 'payload');
+      assert.match(new Error().stack, /measuredFiles/);
+      renameSync(file, final); const after = lstatSync(final);
+      transition = { sameInode: old.ino === after.ino, bytes: after.size };
+    }
+    return original(file, ...args);
+  };
+  syncBuiltinESMExports();
+  try {
+    const receipt = await source.materialize(f.files.remote);
+    assert.deepEqual(transition, { sameInode: true, bytes: f.remote.length });
+    assert.equal(receipt.sha256, hash(f.remote)); assert.equal((await source.verify(receipt)).verified, true);
+    await source.cleanup([receipt]);
+  } finally { fsPromises.lstat = original; syncBuiltinESMExports(); }
+});
+
+test('an owned cache staging directory removed before readdir is transient while final inventory stays strict', async t => {
+  const f = fixture(t), source = await provider(f, { allowLfsFetch: true }, { spawnLfs: f.spawnLfs('rename-held') });
+  const original = fsPromises.readdir; let transitioned = false;
+  fsPromises.readdir = async function (directory, ...args) {
+    if (!transitioned && String(directory).endsWith(path.sep + 'incomplete')) {
+      assert.match(new Error().stack, /measuredFiles/);
+      const final = path.join(path.dirname(String(directory)), 'objects', 'payload');
+      renameSync(path.join(directory, 'transfer.tmp'), final); rmSync(directory, { recursive: true }); transitioned = true;
+    }
+    return original(directory, ...args);
+  };
+  syncBuiltinESMExports();
+  try {
+    const receipt = await source.materialize(f.files.remote);
+    assert.equal(transitioned, true); assert.equal(receipt.sha256, hash(f.remote));
+    assert.equal((await source.verify(receipt)).verified, true); await source.cleanup([receipt]);
+  } finally { fsPromises.readdir = original; syncBuiltinESMExports(); }
+});
+
+test('transient measurement still rejects non-cache disappearance, cache symlinks and non-ENOENT cache errors', async t => {
+  const f = fixture(t), original = fsPromises.lstat;
+  for (const mode of ['non-cache-disappearance', 'cache-symlink', 'cache-permission-error']) {
+    const source = await provider(f, { allowLfsFetch: true }, { spawnLfs: f.spawnLfs('rename-held') }); let intercepted = false;
+    fsPromises.lstat = async function (file, ...args) {
+      const target = String(file), match = mode === 'non-cache-disappearance'
+        ? target.startsWith(path.join(source.ownedRoot, 'payloads') + path.sep)
+        : target.endsWith(path.join('incomplete', 'transfer.tmp'));
+      if (!intercepted && match && new Error().stack.includes('measuredFiles')) {
+        intercepted = true;
+        if (mode === 'cache-permission-error') throw Object.assign(new Error('fixture permission error'), { code: 'EACCES' });
+        rmSync(file);
+        if (mode === 'cache-symlink') symlinkSync(path.join(f.root, f.files.raw), file);
+      }
+      return original(file, ...args);
+    };
+    syncBuiltinESMExports();
+    try {
+      await assert.rejects(source.materialize(f.files.remote), error => error.code === 'OWNER_GUARD_FAILED');
+      assert.equal(intercepted, true, mode);
+      assert.deepEqual(readdirSync(path.join(source.ownedRoot, 'payloads')), []);
+    } finally { fsPromises.lstat = original; syncBuiltinESMExports(); await source.close(); }
+  }
 });
 
 test('source path traversal and source symlinks never become production payloads', async t => {

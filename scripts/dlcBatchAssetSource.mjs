@@ -150,14 +150,25 @@ export async function inspectDlcBatchAssetSources({ repoRoot = process.cwd(), re
   return { revision: snapshot.revision, assets: await inspect(snapshot, sourcePaths) };
 }
 
-async function measuredFiles(root) {
+async function measuredFiles(root, { transientCacheRoot = null } = {}) {
   let bytes = 0;
+  const transientMissing = (error, file) => error.code === 'ENOENT' && transientCacheRoot
+    && (file === transientCacheRoot || file.startsWith(transientCacheRoot + path.sep));
   const walk = async directory => {
-    for (const entry of await readdir(directory, { withFileTypes: true })) {
+    let entries;
+    try { entries = await readdir(directory, { withFileTypes: true }); }
+    catch (error) { if (transientMissing(error, directory)) return; throw error; }
+    for (const entry of entries) {
       const file = path.join(directory, entry.name);
       if (entry.isSymbolicLink()) throw fail('OWNER_GUARD_FAILED', 'invalid');
       if (entry.isDirectory()) await walk(file);
-      else if (entry.isFile()) bytes += (await lstat(file)).size;
+      else if (entry.isFile()) {
+        try {
+          const stat = await lstat(file);
+          if (!stat.isFile() || stat.isSymbolicLink()) throw fail('OWNER_GUARD_FAILED', 'invalid');
+          bytes += stat.size;
+        } catch (error) { if (!transientMissing(error, file)) throw error; }
+      }
       else throw fail('OWNER_GUARD_FAILED', 'invalid');
     }
   };
@@ -279,6 +290,8 @@ export async function createDlcBatchAssetSource({ repoRoot = process.cwd(), revi
       const receiptId = randomUUID(), output = path.join(ownedRoot, 'payloads', receiptId), cacheRoot = path.join(ownedRoot, 'cache', receiptId);
       const hash = createHash('sha256'), rawHash = rawGitOid ? createHash(rawGitOid.length === 40 ? 'sha1' : 'sha256').update(`blob ${entry.payloadBytes}\0`) : null;
       let bytes = 0, head = Buffer.alloc(0), child = null, monitor = null, deadline = null, budgetError = null, cacheScanRunning = false;
+      let monitorPending = Promise.resolve();
+      const stopMonitor = async () => { if (monitor) { clearInterval(monitor); monitor = null; } await monitorPending; };
       const transform = new Transform({ transform(chunk, _encoding, callback) {
         bytes += chunk.length;
         if (bytes > entry.payloadBytes || bytes > assetLimit) { callback(fail('LENGTH_MISMATCH', 'invalid', { bytes })); return; }
@@ -303,16 +316,19 @@ export async function createDlcBatchAssetSource({ repoRoot = process.cwd(), revi
           input = child.stdout; completed = exitOf(child, sourceKind === 'fetched-lfs' ? 'LFS_SMUDGE_FAILED' : 'GIT_OBJECT_UNAVAILABLE');
           deadline = setTimeout(() => { budgetError = fail('SOURCE_PROCESS_TIMEOUT'); stopProcess(child); }, processTimeoutMs); deadline.unref();
           child.stdin.on('error', () => {}); child.stdin.end(sourceKind === 'fetched-lfs' ? pointer.raw : undefined);
-          if (sourceKind === 'fetched-lfs') monitor = setInterval(async () => {
+          if (sourceKind === 'fetched-lfs') monitor = setInterval(() => {
             if (cacheScanRunning) return; cacheScanRunning = true;
-            try { if (await measuredFiles(ownedRoot) > limit) { budgetError = fail('TEMP_BUDGET_EXCEEDED', 'budget'); stopProcess(child); } }
-            catch { budgetError = fail('OWNER_GUARD_FAILED', 'invalid'); stopProcess(child); }
-            finally { cacheScanRunning = false; }
+            monitorPending = (async () => {
+              try { if (await measuredFiles(ownedRoot, { transientCacheRoot: cacheRoot }) > limit) { budgetError = fail('TEMP_BUDGET_EXCEEDED', 'budget'); stopProcess(child); } }
+              catch { budgetError = fail('OWNER_GUARD_FAILED', 'invalid'); stopProcess(child); }
+              finally { cacheScanRunning = false; }
+            })();
           }, 25);
         }
         const writing = pipeline(input, transform, createWriteStream(output, { flags: 'wx', mode: 0o600 }));
         writing.catch(() => { stopProcess(child); });
         const results = await Promise.allSettled([writing, completed]);
+        await stopMonitor();
         if (budgetError) throw budgetError;
         const rejected = results.find(result => result.status === 'rejected');
         if (rejected) throw rejected.reason;
@@ -332,10 +348,11 @@ export async function createDlcBatchAssetSource({ repoRoot = process.cwd(), revi
         inventory = after; records.set(receiptId, record); return { ...record };
       } catch (error) {
         stopProcess(child);
+        await stopMonitor();
         await rm(output, { force: true }); await rm(cacheRoot, { recursive: true, force: true });
         if (error instanceof DlcBatchAssetSourceError) throw error;
         throw fail('SOURCE_STREAM_FAILED');
-      } finally { if (monitor) clearInterval(monitor); if (deadline) clearTimeout(deadline); }
+      } finally { await stopMonitor(); if (deadline) clearTimeout(deadline); }
     }),
     verify: receipt => queue(async () => { await ownerGuard(); return verifyRecord(receiptRecord(receipt)); }),
     cleanup: receipts => queue(async () => {
