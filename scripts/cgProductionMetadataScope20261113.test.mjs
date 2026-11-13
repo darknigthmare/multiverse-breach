@@ -32,7 +32,7 @@ test('the separate source-plan API explicitly checks metadata and preserves all 
   metadata.assertDeliveredEntries(envelope.plan);
 });
 
-test('the newer published snapshot is exact after only the pinned 604 candidates and 211 descriptor fields', async () => {
+test('the historical snapshot is exact after closed candidate, descriptor, current-source, availability and Revan amendments', async () => {
   const proof = validate((await result()).plan);
   assert.equal(proof.mode, 'github-2333-source-metadata-amendment');
   assert.equal(proof.candidateSubjects, 604);
@@ -41,6 +41,10 @@ test('the newer published snapshot is exact after only the pinned 604 candidates
   assert.equal(proof.deliveredEntriesPreserved, 1436);
   assert.equal(proof.deliveredDescriptorEntriesPreserved, 30);
   assert.equal(proof.historicalCgMediaRevalidated, false);
+  assert.equal(proof.reviewedRuntimeCorrection.objectsVerified, 3);
+  assert.equal(proof.reviewedRuntimeCorrection.visualFidelityApproved, false);
+  assert.ok(proof.currentSourceMetadataAmendment);
+  assert.ok(proof.historicalReferenceAvailabilityAmendment);
   assert.equal(hash(read('scripts/fixtures/cg-local-candidates-amendment-2026-11-09.json')), CG_LOCAL_CANDIDATE_AMENDMENT_SHA256);
   assert.equal(hash(read('scripts/fixtures/cg-current-descriptors-amendment-2026-11-09.json')), CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256);
 });

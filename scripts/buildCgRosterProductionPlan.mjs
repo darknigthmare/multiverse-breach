@@ -12,6 +12,9 @@ import { createCgRevisionRegistry, resolveCgVersions } from '../src/game/cg/cgRe
 import { buildCgId, buildCgPaths } from '../src/game/cg/cgSchema.js';
 import { STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
 import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
+import { getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { getCgQuarantineSelectionMessage, getCgQuarantineVisualFlags, getCgQuarantineWorldScope, getCgReviewedQuarantineSprite, KOTOR_I_CG_MIDGROUND } from './cgReviewedQuarantineMetadata.mjs';
+import { getCgPilotAuthority, CG_PILOT_EQUIPMENT_MISSING } from './cgIdentityAuthorityMetadata.mjs';
 import { loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
 import { validateCgRosterProductionSnapshot } from './cgRosterPlanSnapshot.mjs';
 import { assertCgRecordedAssetMetadata, loadCgPublishedDeliveryMetadata } from './cgPublishedDeliveryMetadata.mjs';
@@ -177,29 +180,35 @@ async function loadArcs() {
 
 export function evidenceForSubject(hero, dossier, pilot, p0, imageEvidence, qualified) {
   const quarantine = getQuarantinedCanonSprite(hero);
+  const runtimeSpriteCorrection = getCgReviewedQuarantineSprite(hero, getHeroSpriteSheetSrc(hero));
+  const pilotAuthority = qualified ? null : getCgPilotAuthority(hero, pilot);
   const lock = dossier?.verrouSourcePersonnage || (hero.incarnation && hero.visualAnchor ? hero : null);
   const incarnation = qualified?.incarnation || pilot?.continuityId || quarantine?.incarnation || lock?.incarnation || null;
   const sourceRefs = qualified
     ? unique([...qualified.sourceEvidenceFiles, ...qualified.referenceUrls])
+    : pilotAuthority?.currentRuntimeSource ? unique(pilot.sourceRefs || [])
     : unique([...(pilot?.sourceRefs || []), ...(lock?.referenceUrls || []), ...(hero.referenceUrls || []), hero.referenceUrl, ...(dossier?.referenceUrls || [])]);
-  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || []), quarantine?.asset])
-    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)), role: 'historical-project-image-not-source-fidelity-approval',
-      ...(quarantine ? { archivalOnly: true, selectedInRuntime: false, runtimeEligible: false,
-        status: 'OLD-quarantined-project-art-not-current-or-canon-reference', quarantineReason: quarantine.reason } : {}) }));
+  const localCandidates = unique([...(dossier?.candidatsReferencesLocalesAudit || []), ...(dossier?.referencesLocalesOpenAI || []), quarantine?.asset, runtimeSpriteCorrection?.path])
+    .map(referencePath => ({ path: referencePath, exists: existsSync(publicFile(referencePath)),
+      role: referencePath === runtimeSpriteCorrection?.path ? 'current-reviewed-project-sprite-not-independent-canon-proof' : 'historical-project-image-not-source-fidelity-approval',
+      ...getCgQuarantineVisualFlags(referencePath, quarantine, runtimeSpriteCorrection) }));
   const missing = [];
   if (!incarnation) missing.push('Choisir l’incarnation précise et sa continuité.');
   if (qualified) missing.push('Comparer chaque nouvelle image à la référence inspectée, sur les huit axes visuels; la cible sourcée ne certifie pas automatiquement les productions.');
   else if (!pilot) missing.push('Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement.');
   if (!sourceRefs.length) missing.push('Renseigner une source d’identité vérifiable.');
   if (p0) missing.push('Les anciennes substitutions P0 ne constituent pas une référence fidèle; réviser explicitement leur ressemblance.');
-  if (quarantine) missing.push(`Sprite runtime en quarantaine (${quarantine.reason}); les anciens bitmaps restent OLD, sans sélection runtime ni qualification de source.`);
+  if (quarantine) missing.push(getCgQuarantineSelectionMessage(quarantine, runtimeSpriteCorrection));
+  if (pilotAuthority?.equipmentMissing) missing.push(CG_PILOT_EQUIPMENT_MISSING);
   return {
     incarnation,
     identityLock: qualified?.visualAnchor || (pilot ? text(pilot.promptSummary) : lock?.visualAnchor || null),
-    equipment: qualified?.equipment || lock?.equipment || hero.equipment || [],
+    equipment: qualified ? qualified.equipment || [] : pilotAuthority ? pilotAuthority.equipment : lock?.equipment || hero.equipment || [],
     sourceRefs,
     localCandidates,
     ...(quarantine ? { runtimeSpriteQuarantine: { characterId: hero.id, ...quarantine } } : {}),
+    ...(runtimeSpriteCorrection ? { runtimeSpriteCorrection } : {}),
+    ...(pilotAuthority?.currentRuntimeSource ? { currentRuntimeSource: pilotAuthority.currentRuntimeSource } : {}),
     historicalWebImageEvidence: imageEvidence || [],
     evidenceStatus: qualified?.evidenceStatus || (pilot ? 'approved-pilot-reference' : 'needs-reference'),
     ...(qualified ? { sourceEvidenceFiles: qualified.sourceEvidenceFiles, identityVisualReferences: qualified.identityVisualReferences } : {}),
@@ -279,11 +288,12 @@ function loadPendingCharacterBriefs() {
   return result;
 }
 
-function makeBackground({ hero, type, universeRank, dossier, researched, authored, pilot }) {
+export function makeBackground({ hero, type, universeRank, dossier, researched, authored, pilot }) {
   const profile = STAGE_LORE_PROFILES[hero.universe];
-  const sourceSetting = authored?.location || researched?.canonicalLocationOrMotif || profile?.canonicalName
+  const actorWorld = getCgQuarantineWorldScope(hero);
+  const sourceSetting = actorWorld?.world.locations[0] || authored?.location || researched?.canonicalLocationOrMotif || profile?.canonicalName
     || `${hero.universe} — localisation précise à vérifier dans la source`;
-  const anchors = authored?.sourceContext || researched?.visualAnchor || profile?.visualAnchor || dossier?.ancragesVisuels || [];
+  const anchors = actorWorld?.sourceContext || authored?.sourceContext || researched?.visualAnchor || profile?.visualAnchor || dossier?.ancragesVisuels || [];
   const [niche, groundPlan] = GROUND_PLANS[universeRank % GROUND_PLANS.length];
   const [typePlace, typePhysical] = TYPE_ENVIRONMENTS[type];
   const originalScene = authored && type === 'characterSolo'
@@ -297,7 +307,7 @@ function makeBackground({ hero, type, universeRank, dossier, researched, authore
     : {
         location: `${sourceSetting} — ${typePlace}, ${niche}`,
         foreground: `${typePhysical} Organisation spatiale propre à ce sujet : ${groundPlan}.`,
-        midground: `Matériaux, végétation, objets fixes et échelle à dériver exclusivement des ancrages de ${hero.universe}; garder la silhouette du personnage entièrement lisible.`,
+        midground: actorWorld ? KOTOR_I_CG_MIDGROUND : `Matériaux, végétation, objets fixes et échelle à dériver exclusivement des ancrages de ${hero.universe}; garder la silhouette du personnage entièrement lisible.`,
         background: `Profondeur originale du lieu source : ${sourceSetting}. Aucun fond uni, aucun motif de portail utilisé par défaut.`,
         lighting: 'Lumière cohérente avec les matériaux et l’époque de la source; décision finale après lecture de la référence.'
       };
@@ -307,7 +317,8 @@ function makeBackground({ hero, type, universeRank, dossier, researched, authore
     type,
     sourceSetting,
     sourceContext: anchors,
-    characterContext: hero.incarnation || pilot?.continuityId || text(dossier?.nom),
+    characterContext: CG_CATALOG.some(entry => entry.id === pilot?.id) && pilot?.continuityId
+      ? pilot.continuityId : hero.incarnation || pilot?.continuityId || text(dossier?.nom),
     originalScene,
     sceneIsOriginal: true,
     status: 'proposed-needs-source-and-visual-review',
@@ -648,10 +659,29 @@ export function serializeCgRosterProductionPlan(plan) {
   ].map(([key, rows]) => `  "${key}": [\n${rows.map(row => `    ${JSON.stringify(row)}`).join(',\n')}\n  ]`).join(',\n')}\n}\n`;
 }
 
+export function parseCgRosterProductionMode(args) {
+  assert.ok(Array.isArray(args), 'CG production arguments must be a list');
+  const modes = new Map([['--check', 'check'], ['--check-metadata', 'check-metadata'], ['--write', 'write']]);
+  assert.ok(args.every(arg => modes.has(arg)), 'Unknown CG production argument; use --check, --check-metadata or --write');
+  assert.ok(args.length <= 1, 'Choose exactly one CG production mode; full-media check, metadata-only check and write cannot be combined');
+  return args.length ? modes.get(args[0]) : 'write';
+}
+
 async function main() {
+  const mode = parseCgRosterProductionMode(process.argv.slice(2));
+  if (mode === 'check-metadata') {
+    const envelope = await buildCgRosterProductionMetadataPlan();
+    const snapshotValidation = validateCgRosterProductionSnapshot({ root: ROOT, rebuilt: envelope.plan,
+      heroes: HEROES_DB, catalog: CG_CATALOG, serialize: serializeCgRosterProductionPlan,
+      buildReport: buildCgRosterProductionReport });
+    console.log(JSON.stringify({ validationScope: envelope.validationScope,
+      physicalMediaChecked: envelope.physicalMediaChecked, deliveryMetadataPins: envelope.deliveryMetadataPins,
+      summary: envelope.plan.summary, snapshotValidation }, null, 2));
+    return;
+  }
   const plan = await buildCgRosterProductionPlan();
   const files = [[JSON_OUTPUT, serializeCgRosterProductionPlan(plan)], [REPORT_OUTPUT, buildCgRosterProductionReport(plan)]];
-  if (process.argv.includes('--check')) {
+  if (mode === 'check') {
     const snapshotValidation = validateCgRosterProductionSnapshot({ root: ROOT, rebuilt: plan,
       heroes: HEROES_DB, catalog: CG_CATALOG, serialize: serializeCgRosterProductionPlan,
       buildReport: buildCgRosterProductionReport });

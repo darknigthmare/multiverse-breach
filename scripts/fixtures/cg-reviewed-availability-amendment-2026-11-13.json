@@ -1,0 +1,4122 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-historical-CG-identity-image-availability",
+  "identityAuthority": false,
+  "changesGenerationHistory": false,
+  "source1to1Verified": false,
+  "visualFidelityApproved": false,
+  "historicalMediaRevalidated": false,
+  "subjectCount": 58,
+  "baselineSourceCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "historicalPlanSha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e",
+  "scope": "Verify an exact historical inspected image when its original bytes are physically available; otherwise permit only the exact unqualified fallback on 58 closed owners after the prior candidate/descriptor amendments. AURA-7 is a separate restrictive identity-use correction: Sonic CG13 costume support never establishes AURA identity. No new qualification, generated image, delivery, runtime selection or fidelity approval. Future exact source hydration remains supported.",
+  "heroInputFields": [
+    "id",
+    "universe",
+    "name",
+    "incarnation",
+    "visualAnchor",
+    "equipment",
+    "referenceUrls",
+    "referenceUrl",
+    "canonStatus"
+  ],
+  "dossierInputFields": [
+    "id",
+    "verrouSourcePersonnage",
+    "referenceUrls"
+  ],
+  "pilotInputFields": [
+    "id",
+    "continuityId",
+    "sourceRefs",
+    "promptSummary"
+  ],
+  "entryFields": [
+    "themeSource",
+    "themeContinuity",
+    "missing"
+  ],
+  "cases": [
+    {
+      "characterId": "imani_quell",
+      "universe": "Neon Requiem",
+      "characterArcStageId": 10682,
+      "subjectIndex": 1419,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "4ad4a0575790a87427b699f6ae0805422db8b197ea75abeb9ac8bb0c0cd4476c",
+      "sourceInputs": {
+        "hero": {
+          "id": "imani_quell",
+          "universe": "Neon Requiem",
+          "name": "Imani Quell"
+        },
+        "dossier": {
+          "id": 10682,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/imani-quell-reference-evidence-wave8-2026-10-24.json",
+          "sha256": "592658fd848ce3ecaea3e566e88c048c0ba34c7124e2a33dc19bd1854de048f9"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/neon_requiem/heroes/imani_quell.png",
+          "path": "public/images/oc-worlds/v2/neon_requiem/heroes/imani_quell.png",
+          "sha256": "c3cb7634f1da60106cd40654f66f4d1e47c37e5c2f8d81fc569c96e50822479e",
+          "bytes": 2292540,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6265a91dc5c8f61f92d10034c9da5d1075577d369f7876d8b89bcf80f0433f79.json",
+            "sha256": "080d677e8197199212a8c9f7752da1ca556cefc62845eab7b595601c3200b31a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/neon-requiem/imani-quell-v2-fidelity-wave8-2026-10-24.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "elara_voss",
+      "universe": "The Aether Crown",
+      "characterArcStageId": 10683,
+      "subjectIndex": 1420,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "9fe424b83b803b4781f9f4a0e5512498bdac79e6b2e6f1ec97c257998c8d00ba",
+      "sourceInputs": {
+        "hero": {
+          "id": "elara_voss",
+          "universe": "The Aether Crown",
+          "name": "Elara Voss"
+        },
+        "dossier": {
+          "id": 10683,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/elara-voss-reference-evidence-wave4-2026-10-20.json",
+          "sha256": "fe7f2b9e68f35ed3176b625e5b08b343b4cd6d566b991299cfeceba726b0e824"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+          "path": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+          "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+          "bytes": 2622115,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/624838c62551e8a518f78f0f2e964b5e4cbb4251e5d6d25ff0562ce3c9a19e36.json",
+            "sha256": "2b6455c51847aa3491eea6fc4b6d6cfec47f47849c58c81623cb615e2a28f9ae"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "bram_quill",
+      "universe": "The Aether Crown",
+      "characterArcStageId": 10684,
+      "subjectIndex": 1421,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "34f8932641c04f5d703e58eefeef016c1793af2972dadc00dd0921c263dd93a6",
+      "sourceInputs": {
+        "hero": {
+          "id": "bram_quill",
+          "universe": "The Aether Crown",
+          "name": "Bram Quill"
+        },
+        "dossier": {
+          "id": 10684,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/bram-quill-reference-evidence-wave8-2026-10-24.json",
+          "sha256": "92a7ac8046448fe7f46a077104ad02979f194d2a3aefee2fb19e6248e484336a"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aether_crown/heroes/bram_quill.png",
+          "path": "public/images/oc-worlds/v2/aether_crown/heroes/bram_quill.png",
+          "sha256": "10c13af2db62e5a24528f979eb0a8e2bb1c0c5adbefcb5db51e0af76d3cf6d52",
+          "bytes": 2387979,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/e27f3f277c6ee7b6a81f39f8d8d63e3e37b46c9c6dff19c2b20063323851f55f.json",
+            "sha256": "f196b8315955dce0b685a13f0c6344a7ea89e5909ceb3b4da491cd65baa2b128"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-aether-crown/bram-quill-v2-fidelity-wave8-2026-10-24.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "merek_flint",
+      "universe": "The Aether Crown",
+      "characterArcStageId": 10685,
+      "subjectIndex": 1422,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "c06e7d4e6b816e6a711c1b81f5135876c3665773813c837d9c953239c717b8e3",
+      "sourceInputs": {
+        "hero": {
+          "id": "merek_flint",
+          "universe": "The Aether Crown",
+          "name": "Merek Flint"
+        },
+        "dossier": {
+          "id": 10685,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/merek-flint-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "85294381132f19dc522afe48c87bea3ad72c25ab4f5b3d99d152c7461efb468c"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aether_crown/heroes/merek_flint.png",
+          "path": "public/images/oc-worlds/v2/aether_crown/heroes/merek_flint.png",
+          "sha256": "78a29598fe63b3d15b4121dea1c811b84b1b649532c5e58680654613a59fa891",
+          "bytes": 2587156,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f307deb7b02e0d2f72fe3d8afc66e3b9b945fad3982c2cfd277a9ecc94d889d9.json",
+            "sha256": "24f309cbfedd2063c1f8e357b70deff9395a79fbf291515d7f26dbf798e49879"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-aether-crown/merek-flint-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "seraphine_meridius",
+      "universe": "Meridian Clockwork",
+      "characterArcStageId": 10686,
+      "subjectIndex": 1423,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "dbd8a39eb0bcf17aa68c1c5d5968313fb8df06063fec8d87c1679be883c174d9",
+      "sourceInputs": {
+        "hero": {
+          "id": "seraphine_meridius",
+          "universe": "Meridian Clockwork",
+          "name": "Seraphine Meridius"
+        },
+        "dossier": {
+          "id": 10686,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/seraphine-meridius-reference-evidence-wave5-2026-10-22.json",
+          "sha256": "bf616e3df858179745b04bee38b7b79b89fe9e615c4079bd006ca8fd1d48bc70"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "public/images/oc-worlds/v2/meridian_clockwork/heroes/seraphine_meridius.png",
+          "path": "public/images/oc-worlds/v2/meridian_clockwork/heroes/seraphine_meridius.png",
+          "sha256": "a3a472b064794a32d6c998428f22b8d1420f57fc1e59dbec5033b999e27ccf68",
+          "bytes": 2418055,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/5a2133ed7f4572f3185750620efe8befb96807d326a6c5969d898fc34227e2e8.json",
+            "sha256": "5612e9d941fcf1d2ea79c398e2ee9aeb3155314f2c2f1c1986adfadaf843a576"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/meridian-clockwork/seraphine-meridius-v2-fidelity-wave5-2026-10-22.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "lio_ferrante",
+      "universe": "Meridian Clockwork",
+      "characterArcStageId": 10687,
+      "subjectIndex": 1424,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "fc30a27cb9d1df093bf00560af229ff182ddaef1b813d2662e5220cc5ebfe918",
+      "sourceInputs": {
+        "hero": {
+          "id": "lio_ferrante",
+          "universe": "Meridian Clockwork",
+          "name": "Lio Ferrante"
+        },
+        "dossier": {
+          "id": 10687,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/lio-ferrante-reference-evidence-wave8-2026-10-24.json",
+          "sha256": "e242825923dd01fa1fd39e00d7c2bfd4d55e4ac96e2fc723b07529be8d1f6fa3"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/meridian_clockwork/heroes/lio_ferrante.png",
+          "path": "public/images/oc-worlds/v2/meridian_clockwork/heroes/lio_ferrante.png",
+          "sha256": "33e29a8860faf61ab08a169399acdd005c4e94b10e8a6f2c940088505efcc302",
+          "bytes": 2805457,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/d067ac75bc2e2366c36bd92626ef170faee4a30975e44d9faa94c4b1b6f2cb55.json",
+            "sha256": "9f7f1225cffb5a99b3b0b68be9162bc1bbbd8c4c8c240096763efbd7ceabc820"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante-v2-fidelity-wave8-2026-10-24.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "brother_ors",
+      "universe": "Meridian Clockwork",
+      "characterArcStageId": 10688,
+      "subjectIndex": 1425,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "a992469dd09e07e94faedcc06dd3d4c3dc639882fbf2f7e1ca587419808f5f1d",
+      "sourceInputs": {
+        "hero": {
+          "id": "brother_ors",
+          "universe": "Meridian Clockwork",
+          "name": "Frère Ors"
+        },
+        "dossier": {
+          "id": 10688,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/brother-ors-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "19ae42eee54bd4f729c57686faf81e21de11d3cb63cf594127b07848d137a2ae"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/meridian_clockwork/heroes/brother_ors.png",
+          "path": "public/images/oc-worlds/v2/meridian_clockwork/heroes/brother_ors.png",
+          "sha256": "4004d0b99b8907ceeee426408fa721b135634e5ca0e513c2ee0f73c9a7027535",
+          "bytes": 2637678,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/ee613ea24710a2b947fb4acad71d04ef602da9ff0d3235ff1d9e6f60e67dec3b.json",
+            "sha256": "340e6bc42f7725b66d9af88cdbf872bc6aa389124831a90836a738bb51d2dfff"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/meridian-clockwork/brother-ors-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "mara_veylan",
+      "universe": "Iron Tempest",
+      "characterArcStageId": 10689,
+      "subjectIndex": 1426,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "f725b0b2427c75051d1f54a207f5a5368efe30eb2aa37aea71b60dff83acf355",
+      "sourceInputs": {
+        "hero": {
+          "id": "mara_veylan",
+          "universe": "Iron Tempest",
+          "name": "Mara Veylan"
+        },
+        "dossier": {
+          "id": 10689,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/mara-veylan-reference-evidence-wave5-2026-10-22.json",
+          "sha256": "87b0ec9f1139e472231daa6bd7a3c1f65bb17dd5a1c4ec8964aa8f2956fadfa4"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/iron_tempest/heroes/mara_veylan.png",
+          "path": "public/images/oc-worlds/v2/iron_tempest/heroes/mara_veylan.png",
+          "sha256": "831defa50271b7f728aa36d5962bcde166427c6a9f411a45285656cd4ecdada5",
+          "bytes": 2283917,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/72b46e548598f21734f45c70c53d8505b58ff9f5b1fa3378efa5ff67e3069ba1.json",
+            "sha256": "0fff3f5d52b6b85aa95f3dd4cefc2ba5382af8f467956b565ad8a23bd5b60b3b"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/iron-tempest/mara-veylan-v2-fidelity-wave5-2026-10-22.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "anton_rook",
+      "universe": "Iron Tempest",
+      "characterArcStageId": 10690,
+      "subjectIndex": 1427,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "0ada273df8980ce4ba2030ca963fb7efccc5f1ca4f7754719595dc254e35ce1e",
+      "sourceInputs": {
+        "hero": {
+          "id": "anton_rook",
+          "universe": "Iron Tempest",
+          "name": "Anton Rook"
+        },
+        "dossier": {
+          "id": 10690,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/anton-rook-reference-evidence-wave8-2026-10-24.json",
+          "sha256": "bf594ba2a955d5f8ee6c8626edb577b38a8337e58632dd2c97fc728cf85b0dc8"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/iron_tempest/heroes/anton_rook.png",
+          "path": "public/images/oc-worlds/v2/iron_tempest/heroes/anton_rook.png",
+          "sha256": "5ef00237c5b89a9b846c53a6790b14750fcd307a41377dfb33c42b7fb59e8b5b",
+          "bytes": 2510244,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/e3f6bfa5fe210844d895524123a80ff9e7044505dbb130859e24b66697ae688e.json",
+            "sha256": "880c97d03d6d1b15cb351ddab473c35ae5a561ed28493065be6b55a696eb6871"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/iron-tempest/anton-rook-v2-fidelity-wave8-2026-10-24.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "ilya_cross",
+      "universe": "Iron Tempest",
+      "characterArcStageId": 10691,
+      "subjectIndex": 1428,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "980f3fead6a96bada29ccfe185f01e6e584a24c05201e2427d4c8fba07d81b71",
+      "sourceInputs": {
+        "hero": {
+          "id": "ilya_cross",
+          "universe": "Iron Tempest",
+          "name": "Ilya Cross"
+        },
+        "dossier": {
+          "id": 10691,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/ilya-cross-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "ef44076a01369a49dfc5c694dd0766c7cad3bc75f63aafd0359b48af39c2e201"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png",
+          "path": "public/images/oc-worlds/v2/iron_tempest/heroes/ilya_cross.png",
+          "sha256": "1ec60ba62abd81a378f9abe440adc74e1e58b5554365803d9c81cac414a986fb",
+          "bytes": 2358185,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6d661acbaf9d56ae63108f8dcd4dfecc69026282e6b1c12eee8db144631ba7c7.json",
+            "sha256": "3311eb49dd95501f75c2643cf9a8e0447f5de8316f58a811ae06e72074a79179"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/iron-tempest/ilya-cross-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "celeste_ray",
+      "universe": "Helios 56",
+      "characterArcStageId": 10692,
+      "subjectIndex": 1429,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "5f4f52ad446c5f05a85e9671037c1c75dcf2c48a1934feed44fc6842553b7c3b",
+      "sourceInputs": {
+        "hero": {
+          "id": "celeste_ray",
+          "universe": "Helios 56",
+          "name": "Dr Celeste Ray"
+        },
+        "dossier": {
+          "id": 10692,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/celeste-ray-reference-evidence-wave5-2026-10-22.json",
+          "sha256": "bf5c6ee2fc82b9c0e367ef97ab971ca4ae1e98e6d78fae26a29bcea4672ffff2"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "public/images/oc-worlds/v2/helios_56/heroes/celeste_ray.png",
+          "path": "public/images/oc-worlds/v2/helios_56/heroes/celeste_ray.png",
+          "sha256": "4b92050c24ea36ff916e3e6183cefd23a679c0023bc686ec2918904f3797014b",
+          "bytes": 2467820,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/9a94a05b39d7a9ba0b772dbb710fccd5e24ed41aa12a3321d530a324b9791651.json",
+            "sha256": "d820ab15d4cbcde61958e19047fa3d3035afa55fdac519f09d4159ca3810a649"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/helios-56/celeste-ray-v2-fidelity-wave5-2026-10-22.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "nova_bell",
+      "universe": "Helios 56",
+      "characterArcStageId": 10693,
+      "subjectIndex": 1430,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "0bd1aaa826a123d5b28bcb71b77c12aff446300344303a2c16c4ee4a27075303",
+      "sourceInputs": {
+        "hero": {
+          "id": "nova_bell",
+          "universe": "Helios 56",
+          "name": "Nova Bell"
+        },
+        "dossier": {
+          "id": 10693,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/nova-bell-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "43d45f1cfcd28610324498fa3e1a3308c908818a2ec64ee9a451b5950f5dc893"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/helios_56/heroes/nova_bell.png",
+          "path": "public/images/oc-worlds/v2/helios_56/heroes/nova_bell.png",
+          "sha256": "8cdc5e3ca4086c275dc3384ad2033642b9abda2bf8c2ae56bb8227dcfb401327",
+          "bytes": 2236692,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/05dc17c4fd3fc54beaa985fb99aeda6450c5638a9dba5f591a9a18f2b79e496e.json",
+            "sha256": "e473f84e6a9e9d61803341460c329ae0adc8d1252fac4114030fc269afd3c62d"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/helios-56/nova-bell-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "aura_7",
+      "universe": "Helios 56",
+      "characterArcStageId": 10694,
+      "subjectIndex": 1431,
+      "transition": "restrict-costume-only-identity-use",
+      "historicalIdentitySha256": "161e0387cf672f7c8eaa29a0bfe3bf25baec0669098473d1a9be116cd490b03a",
+      "sourceInputs": {
+        "hero": {
+          "id": "aura_7",
+          "universe": "Helios 56",
+          "name": "AURA-7"
+        },
+        "dossier": {
+          "id": 10694,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/aura-7-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "7b96824bb0c2577493771224e05988f9845e848dca2c7a25cfec7ce1c96d58c9"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/helios_56/heroes/aura_7.png",
+          "path": "public/images/oc-worlds/v2/helios_56/heroes/aura_7.png",
+          "sha256": "57c151a10f090834237ed36e9eeefe36d5b3581b10bd209621aaa307a68c88d7",
+          "bytes": 2468857,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1449,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/329a45d6520cbd2496f4a4e2c3a481fbfbca62c6d52f5030b027bcfcc19475ef.json",
+            "sha256": "4b3fa42d4c80a92b5c25f863d0a695222138078ddc50216bbbf1a8b8e7b7746c"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/helios-56/aura-7-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "nefra_balance",
+      "universe": "Kemet: The Devoured Sun",
+      "characterArcStageId": 10695,
+      "subjectIndex": 1432,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "4567c9967d69906e653252b5f23134b3f2fdb52110fa2652ac9005c56cc3e5e8",
+      "sourceInputs": {
+        "hero": {
+          "id": "nefra_balance",
+          "universe": "Kemet: The Devoured Sun",
+          "name": "Nefra de la Balance"
+        },
+        "dossier": {
+          "id": 10695,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/nefra-balance-reference-evidence-wave5-2026-10-22.json",
+          "sha256": "af08aaf23aa4111c18d9709e934c8f49809d4b8bef783da696c6fd5697c4ee6a"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/nefra_balance.png",
+          "path": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/nefra_balance.png",
+          "sha256": "676db7253cf77fd8132903c7a65e5df15b0c7cbd25e9f2d5bbe08b0f8b189149",
+          "bytes": 2330487,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/81cd0004ec0c6389fc10d1709350eb74f6818938cf7225c2154a1277d37ef964.json",
+            "sha256": "83697af5d4f4f45ca9576e17ec77a45a6d442ca32f9fd507a445ecbb4ef249f1"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/kemet-the-devoured-sun/nefra-balance-v2-fidelity-wave5-2026-10-22.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "khepri_sen",
+      "universe": "Kemet: The Devoured Sun",
+      "characterArcStageId": 10696,
+      "subjectIndex": 1433,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "cf36d98a0d22ad06d46d19edd27d9aef3ef95e78553e253b9b49be2bb98e778e",
+      "sourceInputs": {
+        "hero": {
+          "id": "khepri_sen",
+          "universe": "Kemet: The Devoured Sun",
+          "name": "Khepri-Sen"
+        },
+        "dossier": {
+          "id": 10696,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/khepri-sen-reference-evidence-wave8-2026-10-24.json",
+          "sha256": "1666fe225a1e1ba9416253318e31d081795fb08782f44243930bac84d23cb397"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/kemet_devoured_sun/heroes/khepri_sen.png",
+          "path": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/khepri_sen.png",
+          "sha256": "26830c1508238bd4aa62b244eadc8a177bf6ee230534a5aec9f3fc1e497e0c23",
+          "bytes": 2472418,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/2cdffa1546d8b91bf738506d181f197e340300633679666d1ff7a8a5bf8f0abc.json",
+            "sha256": "75925bc1ac6c6ad94e5948ad8e893b6919d600e943d30860c31a4ce7b2caf731"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen-v2-fidelity-wave8-2026-10-24.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "taset_lioness",
+      "universe": "Kemet: The Devoured Sun",
+      "characterArcStageId": 10697,
+      "subjectIndex": 1434,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "9da967b546338296fc193292ea48a034a5627cfa3cf88efd8d3469d5a7f25944",
+      "sourceInputs": {
+        "hero": {
+          "id": "taset_lioness",
+          "universe": "Kemet: The Devoured Sun",
+          "name": "Taset la Lionne"
+        },
+        "dossier": {
+          "id": 10697,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/taset-lioness-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "01178444ce1461a84de8876a73c6ffaeaee57b1da816c1ff90761827f8b8d252"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/kemet_devoured_sun/heroes/taset_lioness.png",
+          "path": "public/images/oc-worlds/v2/kemet_devoured_sun/heroes/taset_lioness.png",
+          "sha256": "c6e85ecacf5851e5a2f01163ab74ff1e95280f3c1dce90b7ce364ad64402b41a",
+          "bytes": 2206868,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/732757f653ca701cb7c5b22c12ef2dde01b2c251c3d81ff0198b3f67805a0c76.json",
+            "sha256": "af86a3b951e40adb212664448d715fceb9ca9092960f657bde85cdf534aa21e8"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/kemet-the-devoured-sun/taset-lioness-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "aurelia_marcellina",
+      "universe": "Imperium Aeternum",
+      "characterArcStageId": 10698,
+      "subjectIndex": 1435,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "7d26584605515ba4f6b5eb96ceb3e3723443eb93d60bb612eddb4c61ca480aeb",
+      "sourceInputs": {
+        "hero": {
+          "id": "aurelia_marcellina",
+          "universe": "Imperium Aeternum",
+          "name": "Aurelia Marcellina"
+        },
+        "dossier": {
+          "id": 10698,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/aurelia-marcellina-reference-evidence-wave7-2026-10-23.json",
+          "sha256": "5804a5abad66700af51223d694ef8dd153bcc1e0e1ab0436f26a318115cc8be3"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png",
+          "path": "public/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png",
+          "sha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+          "bytes": 2546267,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/965e1dda1030f0cfd727348fe43a8a72bccdb997d53b238386d2a758f3a042e8.json",
+            "sha256": "e9a05488897c3fd600817267b68a4692331101f3d8d9081db8cf2d5877bfa84a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina-v2-fidelity-wave7-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "cassian_varro",
+      "universe": "Imperium Aeternum",
+      "characterArcStageId": 10699,
+      "subjectIndex": 1436,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "db8b20790f53c80c70bfdc32aab80520dadc93d1d619f4ea10a5dc07a71431b1",
+      "sourceInputs": {
+        "hero": {
+          "id": "cassian_varro",
+          "universe": "Imperium Aeternum",
+          "name": "Cassian Varro"
+        },
+        "dossier": {
+          "id": 10699,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/cassian-varro-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "79250d8e648046ac8696417817c0c79e6aca9c5d6ddb0def516bc67de3ec6bec"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/imperium_aeternum/heroes/cassian_varro.png",
+          "path": "public/images/oc-worlds/v2/imperium_aeternum/heroes/cassian_varro.png",
+          "sha256": "b8462b7fe0f131445ffb6fe1bb18d8f2302f06840dbe47969ecfd0a9ea45dbca",
+          "bytes": 2550998,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f61919f8d0a4f731d7731530da74b7a4023fb368ccc08c7a2c630f59c701c1bc.json",
+            "sha256": "3e5585af10bac8a9e5e2e47276f6f5b4fc89afa5f460fc9a7228ea97a4c882ff"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/imperium-aeternum/cassian-varro-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "numa_corvinus",
+      "universe": "Imperium Aeternum",
+      "characterArcStageId": 10700,
+      "subjectIndex": 1437,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "0b27b5dd97c7606f507485e46133e10e7dcc189759ffba6ad8b220da6fc6c85b",
+      "sourceInputs": {
+        "hero": {
+          "id": "numa_corvinus",
+          "universe": "Imperium Aeternum",
+          "name": "Numa Corvinus"
+        },
+        "dossier": {
+          "id": 10700,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/numa-corvinus-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "5b1ceb165fefa7512d8a4ea3bcd68e08f49d2f3b2114269d642bff348d260685"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/imperium_aeternum/heroes/numa_corvinus.png",
+          "path": "public/images/oc-worlds/v2/imperium_aeternum/heroes/numa_corvinus.png",
+          "sha256": "2da35bbde58602e0e81f878e2b75d2e0d4516696c6ae6357c5506aa06ac08b2b",
+          "bytes": 2425101,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/e602cf9c35ac468711c65b0583a14afb3579d20183455e7586e583a790b97153.json",
+            "sha256": "499cc7f4e05a3194ed46de1803bbe5b2323b821789618413fb4652eea0024b2a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/imperium-aeternum/numa-corvinus-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "thaleia_naxos",
+      "universe": "Aegea: War of the Moirai",
+      "characterArcStageId": 10701,
+      "subjectIndex": 1438,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "b4d244b97e8d0beee76ca723fab092d9ad107e32251d149991619f682c59e101",
+      "sourceInputs": {
+        "hero": {
+          "id": "thaleia_naxos",
+          "universe": "Aegea: War of the Moirai",
+          "name": "Thaleia de Naxos"
+        },
+        "dossier": {
+          "id": 10701,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/thaleia-naxos-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "d975214406b1a0511efa6f51824d907b14ca58f09dfd5b07718449f426d881ab"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aegea_moirai/heroes/thaleia_naxos.png",
+          "path": "public/images/oc-worlds/v2/aegea_moirai/heroes/thaleia_naxos.png",
+          "sha256": "21bdfe0dec7e3ecae26e36c3efa4390d21ec9ec8832ef5e0a448f6bd0ec218c7",
+          "bytes": 2445987,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/06b9c99242844887e00abe84d0d5e69a105c6457c95c1b8672d5b6d3122be2b8.json",
+            "sha256": "e0ca8a60058901b6eba416d304a4eb628cdea76a325cfed7e7680ee39b81e97a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "melantho_seer",
+      "universe": "Aegea: War of the Moirai",
+      "characterArcStageId": 10702,
+      "subjectIndex": 1439,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "c95fc1e14f649de5062ae7d3e77437fe8b12136a8184806342ae6c1b1320f128",
+      "sourceInputs": {
+        "hero": {
+          "id": "melantho_seer",
+          "universe": "Aegea: War of the Moirai",
+          "name": "Melantho l’Inachevée"
+        },
+        "dossier": {
+          "id": 10702,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/melantho-seer-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "1d706014226b5098360a005d128b2aa0679a60f270d6603b1150d6b2b9ab754b"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aegea_moirai/heroes/melantho_seer.png",
+          "path": "public/images/oc-worlds/v2/aegea_moirai/heroes/melantho_seer.png",
+          "sha256": "b326cf0f9f774fc0de73f4679ad108d4d48e3f67f739f2fafed095fd61213e3d",
+          "bytes": 2594836,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/b2b1c082f9aab5b68602666cb669cc9a8d50c0b95e63bb06baf6f18a5f7c0372.json",
+            "sha256": "6f6991c126782132858302ce513d8261de25b72b17d144c50248b25ccdf9147a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/melantho-seer-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "doros_bronzehand",
+      "universe": "Aegea: War of the Moirai",
+      "characterArcStageId": 10703,
+      "subjectIndex": 1440,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "48df9dcadea08cfc2c22d3470548ab488095a0b8087e8a421e83bc435e7425aa",
+      "sourceInputs": {
+        "hero": {
+          "id": "doros_bronzehand",
+          "universe": "Aegea: War of the Moirai",
+          "name": "Doros Main-de-Bronze"
+        },
+        "dossier": {
+          "id": 10703,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/doros-bronzehand-reference-evidence-wave9-2026-10-25.json",
+          "sha256": "c3c0a39fac45cf613234af9e33bf0615efe683eb0fe0b4f7c7d4770521c9a2b2"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+          "path": "public/images/oc-worlds/v2/aegea_moirai/heroes/doros_bronzehand.png",
+          "sha256": "bc1cf65bbfc06f9a1fc128924b531061083a688c6c2c4c682629782ff6fd8b30",
+          "bytes": 2610560,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/65ea94db016adf41924e6aa9254e17ff8cd023bd5aa950cf1f2e8538a96aed7c.json",
+            "sha256": "e8f8d60a62facc3a3e3e45532db0500e54dcc1ac98111ed5309549300664574a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand-v2-fidelity-wave9-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "universe": "Nine Realms: Last Twilight",
+      "characterArcStageId": 10704,
+      "subjectIndex": 1441,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "8f66ecc94cca5e7cbd912f978e7e5755533710952c7455ba00e7aa82c07765bd",
+      "sourceInputs": {
+        "hero": {
+          "id": "eira_hrafnsdottir",
+          "universe": "Nine Realms: Last Twilight",
+          "name": "Eira Hrafnsdóttir"
+        },
+        "dossier": {
+          "id": 10704,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/eira-hrafnsdottir-reference-evidence-wave9-2026-10-25.json",
+          "sha256": "d93dcb4ebfcb5acf0cc9807b946c6da0119ba1b6a13fb7f24a2a22994298c32d"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/nine_realms_last_twilight/heroes/eira_hrafnsdottir.png",
+          "path": "public/images/oc-worlds/v2/nine_realms_last_twilight/heroes/eira_hrafnsdottir.png",
+          "sha256": "e599c66a39783309f3aaabe608b51e3e56fdaa817485e274d8305607bffed5ab",
+          "bytes": 2633579,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/11d8e7215d18662b334ce4c3da17c1ecfe1596799a12618ca2308687ae6c5d76.json",
+            "sha256": "f110eb8c0447ec39622a1e969a7e5de24d2f6a9483826483df7833f2ec01030d"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir-v2-fidelity-wave9-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "sten_ulfsson",
+      "universe": "Nine Realms: Last Twilight",
+      "characterArcStageId": 10705,
+      "subjectIndex": 1442,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "96992a9b5d4edc469db531f4183c2318362babb2e9cb8652daa4dd5997827f88",
+      "sourceInputs": {
+        "hero": {
+          "id": "sten_ulfsson",
+          "universe": "Nine Realms: Last Twilight",
+          "name": "Sten Ulfsson"
+        },
+        "dossier": {
+          "id": 10705,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/sten-ulfsson-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "eedb9fdea86701a175d58a23bad4e9c77f2ac88d0ca7f0d9be99f4cb6c2b8489"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/nine_realms_last_twilight/heroes/sten_ulfsson.png",
+          "path": "public/images/oc-worlds/v2/nine_realms_last_twilight/heroes/sten_ulfsson.png",
+          "sha256": "68797f668c9db82c2cf8fe5cc913c934c2cd1c16c9125c439a8f5589db2fd25d",
+          "bytes": 2314176,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/0c8abffeed5e53e199ccd60f1b4f60d1c663009219dd7d2dcd0bcedfa546f263.json",
+            "sha256": "8877e64aa1214a791a916a91685b219c17d0cefdb5432ded3e0b97e7e7b24a0c"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/nine-realms-last-twilight/sten-ulfsson-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "universe": "Nine Realms: Last Twilight",
+      "characterArcStageId": 10706,
+      "subjectIndex": 1443,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "dfb3b2387d6628152c382bb645cb8231a78401764b0429944fe8ca0b9936aefb",
+      "sourceInputs": {
+        "hero": {
+          "id": "yrsa_rune_binder",
+          "universe": "Nine Realms: Last Twilight",
+          "name": "Yrsa Lieuse-de-Runes"
+        },
+        "dossier": {
+          "id": 10706,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/yrsa-rune-binder-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "da32df1f443a350d75019ba7ae16b9626f9c3823f10db275c146f921e4d7d927"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/nine_realms_last_twilight/heroes/yrsa_rune_binder.png",
+          "path": "public/images/oc-worlds/v2/nine_realms_last_twilight/heroes/yrsa_rune_binder.png",
+          "sha256": "8fa4123779d716fe46bad7cb5294538b23726efa6c3084f17bce0e337077dbd0",
+          "bytes": 2504806,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/857eb2cb99451c367cb19370a76d5f250ab9dc488bdac008c685792a5b75ce71.json",
+            "sha256": "7c5fc7b3cedb2e83b85aa1f5f942f52571d9f2be19f947789f08605aa4951c25"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/nine-realms-last-twilight/yrsa-rune-binder-v2-fidelity-wave10-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "killa_mayu",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "characterArcStageId": 10707,
+      "subjectIndex": 1444,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "1ffd0e6d894b3f7c21a8b6df4407a6a99309f28f576c0483a3d37a0fcb206436",
+      "sourceInputs": {
+        "hero": {
+          "id": "killa_mayu",
+          "universe": "Tawantinsuyu: The Split Sun",
+          "name": "Killa Mayu"
+        },
+        "dossier": {
+          "id": 10707,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/killa-mayu-reference-evidence-wave9-2026-10-25.json",
+          "sha256": "2b233d26edff12ffcd67ec6068a1255b399084aade6bab33b09b3db5edf90890"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/killa_mayu.png",
+          "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/killa_mayu.png",
+          "sha256": "46f9c35b6adad34f8d22c82318072bbb400718520a1b7de96de9de346cff1c09",
+          "bytes": 2172642,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/b25ffd4b20b0cd5f3663b64cb165c08b0082816745fdc92aeba36e8a3cbeb6cb.json",
+            "sha256": "999a7dc86ab6cac4273ab3d419e29ebf1fb05a2b5474e814d94a5bc97e4375e6"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/killa-mayu-v2-fidelity-wave9-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "rumi_illa",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "characterArcStageId": 10708,
+      "subjectIndex": 1445,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "682857d58ef5d999128caee80c0b43578e00adf06078b85f1dc8bb34679c05d8",
+      "sourceInputs": {
+        "hero": {
+          "id": "rumi_illa",
+          "universe": "Tawantinsuyu: The Split Sun",
+          "name": "Rumi Illa"
+        },
+        "dossier": {
+          "id": 10708,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/rumi-illa-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "f9b0ec55c74d195bf4bba4e50d006e7e53b2e49a42ea03271bc4d87abe52abd7"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/rumi_illa.png",
+          "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/rumi_illa.png",
+          "sha256": "0693ba3d72c43f23cdf426fb71c27a7d6fdbb255d2911d4de5e6bf0be6b30529",
+          "bytes": 2430330,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/678577862379355644c659bf1b033933ed682a661c4f2d52a3498f457ceca4dd.json",
+            "sha256": "9c99d95ca29647a9b716856d5ceef7cb2e8305f75f74f2c822b1b9d2fce1d71c"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/rumi-illa-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "characterArcStageId": 10709,
+      "subjectIndex": 1446,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "91c0e1068431a3e61e57448252a7cf5d2b3f6a8d443fd3d4fa4df4962aaa94c3",
+      "sourceInputs": {
+        "hero": {
+          "id": "sumaq_khipu",
+          "universe": "Tawantinsuyu: The Split Sun",
+          "name": "Sumaq Khipu"
+        },
+        "dossier": {
+          "id": 10709,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/sumaq-khipu-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "793bc228f724d95d2d3e438b26c8afc43c8229c6c10a27db7db17a4c6bd4866f"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+          "path": "public/images/oc-worlds/v2/tawantinsuyu_split_sun/heroes/sumaq_khipu.png",
+          "sha256": "c94a76a1f9e54a28cd097401c7b8af853d5deb60462500f56d35757cf9efa666",
+          "bytes": 2580548,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/847e565f14b64770d999f55013aa8a54b350e5f9c65d58448a1cc3a1d124fb66.json",
+            "sha256": "fa16324374e731fe74d44325e34fefbcfc25bc8eedb32e24b5808709c143e71d"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/sumaq-khipu-v2-fidelity-wave10-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "rei_kagetsu",
+      "universe": "Yomi no Kage",
+      "characterArcStageId": 10710,
+      "subjectIndex": 1447,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "c024546d838a98e7641f042352aa3816ddafe554c0c88a80d04f6182e13e0e67",
+      "sourceInputs": {
+        "hero": {
+          "id": "rei_kagetsu",
+          "universe": "Yomi no Kage",
+          "name": "Rei Kagetsu"
+        },
+        "dossier": {
+          "id": 10710,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/rei-kagetsu-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "e5459dce36a9da0ddef17fe9a6ca0e7f1c568a83c998e657b6f3282a420016bc"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/yomi_no_kage/heroes/rei_kagetsu.png",
+          "path": "public/images/oc-worlds/v2/yomi_no_kage/heroes/rei_kagetsu.png",
+          "sha256": "4976ff611d70e9962ad8fc8b38c2c65cd909c86042c6996ba0c5363ecf7c68fd",
+          "bytes": 2305872,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/3f0a006ddf6bb450a38e75202b57e87f88d7c6e5c4af9ad3420d75a74626d56a.json",
+            "sha256": "93cd577d2825a98c705569ea3fa9e17a72a677729bf4c7f22498c3d6d9012e9d"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "universe": "Yomi no Kage",
+      "characterArcStageId": 10711,
+      "subjectIndex": 1448,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "a7446c0481b00a0710fe4c8606ca38c38abd514795697f3842916269eeaa11f6",
+      "sourceInputs": {
+        "hero": {
+          "id": "aoi_mikazuki",
+          "universe": "Yomi no Kage",
+          "name": "Aoi Mikazuki"
+        },
+        "dossier": {
+          "id": 10711,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/aoi-mikazuki-reference-evidence-wave9-2026-10-25.json",
+          "sha256": "fd822f46d95e59a4164348ad7de8fbad4aebf65e342d006c47530e1579b7d2c1"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+          "path": "public/images/oc-worlds/v2/yomi_no_kage/heroes/aoi_mikazuki.png",
+          "sha256": "b790f7aef804c4061362caac966775a91627d0c96f23f602b9d105a631312dfa",
+          "bytes": 2564424,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/49b08ea361848f8055e8e1349aaa98fabf9668edb33e20f1f54a5f29b8f85410.json",
+            "sha256": "4c76ef5da4037897e28163a28ffecb7f5d3af1cae1623e95ebe390013c589a9f"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki-v2-fidelity-wave9-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "daichi_kurogane",
+      "universe": "Yomi no Kage",
+      "characterArcStageId": 10712,
+      "subjectIndex": 1449,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "f6c40eabc1af4e3382c8c0c9fa687feea3bbc45b43ab7b234ef8e7563e0faa5d",
+      "sourceInputs": {
+        "hero": {
+          "id": "daichi_kurogane",
+          "universe": "Yomi no Kage",
+          "name": "Daichi Kurogane"
+        },
+        "dossier": {
+          "id": 10712,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/daichi-kurogane-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "8d870854da0a7f9107f8952d055a42414195566d0b8b99fafc1deaeb98518cc3"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/yomi_no_kage/heroes/daichi_kurogane.png",
+          "path": "public/images/oc-worlds/v2/yomi_no_kage/heroes/daichi_kurogane.png",
+          "sha256": "ffe280134f8ae8476fbca4d61ef55aec79388b64de7a2eedf4a498eb8b62690f",
+          "bytes": 2353301,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/baa9a4d893d57764ad21532b553afeb588de1765de2697be49ce9a76b60c5f20.json",
+            "sha256": "ca27b8d02c0e9eaca8ea8049b4b7dff1972d568425702f2385a1222d9ea994a1"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/yomi-no-kage/daichi-kurogane-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "lin_yue",
+      "universe": "Mandate of Nine Heavens",
+      "characterArcStageId": 10713,
+      "subjectIndex": 1450,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "da3feae8faac5e4da7c1ac68f1846b9002b7ec3036536e5942708a680e881fc9",
+      "sourceInputs": {
+        "hero": {
+          "id": "lin_yue",
+          "universe": "Mandate of Nine Heavens",
+          "name": "Lin Yue"
+        },
+        "dossier": {
+          "id": 10713,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/lin-yue-reference-evidence-wave9-2026-10-25.json",
+          "sha256": "c55506abcce3793b7d55f49fec9f540155a1e98b13fa4fa0e9fb0b4b36e88b17"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mandate_nine_heavens/heroes/lin_yue.png",
+          "path": "public/images/oc-worlds/v2/mandate_nine_heavens/heroes/lin_yue.png",
+          "sha256": "34827d3b99c9580eb1d7571a4f824ac40dcdf11f7b9f68d2b7720fae4a25ca28",
+          "bytes": 2635350,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/d267f333f4d6ab4c48b87b2d54e6e9cba453bff3db91ab3f2fc829c6c44f9dae.json",
+            "sha256": "7de8ff05c523e6fc49afd017338f043eeeb7911ac8c1d00bb9fbc1201b234971"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "wei_long",
+      "universe": "Mandate of Nine Heavens",
+      "characterArcStageId": 10714,
+      "subjectIndex": 1451,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "4f80eee3dd5af4e57592a52994e932d241cd232efe5a04dd207f5cbca5d8fed3",
+      "sourceInputs": {
+        "hero": {
+          "id": "wei_long",
+          "universe": "Mandate of Nine Heavens",
+          "name": "Wei Long"
+        },
+        "dossier": {
+          "id": 10714,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/wei-long-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "80ff9ee9fa56a69a1743f6e956bd1ab74d0e8ee67dcfdd6b946868f32e820619"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mandate_nine_heavens/heroes/wei_long.png",
+          "path": "public/images/oc-worlds/v2/mandate_nine_heavens/heroes/wei_long.png",
+          "sha256": "b3c41852561abf208cd56ff8c56b05e0e1ddf5e4460ad9e9efd7792f7a6b59de",
+          "bytes": 2493981,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6e3e78e48104cfa416fc577942078ee03c8c444e7c24ce42fd15f3d0163a08fd.json",
+            "sha256": "44c695c0f9bd63f4c5b4e1ed55a3ccdc16dfc884675d35cc54a98f33abcd31f7"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mandate-of-nine-heavens/wei-long-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "mei_zhen",
+      "universe": "Mandate of Nine Heavens",
+      "characterArcStageId": 10715,
+      "subjectIndex": 1452,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "734566247cfb92ac6b7422f1752d5d8af986adcbda61aebb253eb21a54a13c20",
+      "sourceInputs": {
+        "hero": {
+          "id": "mei_zhen",
+          "universe": "Mandate of Nine Heavens",
+          "name": "Mei Zhen"
+        },
+        "dossier": {
+          "id": 10715,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/mei-zhen-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "ba963bbaf186169bf64cd32a92519f38402b59ae9f695531eee46c929466e962"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mandate_nine_heavens/heroes/mei_zhen.png",
+          "path": "public/images/oc-worlds/v2/mandate_nine_heavens/heroes/mei_zhen.png",
+          "sha256": "70a6df87290200ab7bc354f418bafc0e4ab01eb75e8ad48366a07daabc620441",
+          "bytes": 2627173,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/933fa74ca8b238af7d14077755595f22b9303f4d5ac9672a8f1e88b41ab26d08.json",
+            "sha256": "d7e2b6f284529ea1d5005dc8ede99123e9172e6d14575ce311c34824a8456af3"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mandate-of-nine-heavens/mei-zhen-v2-fidelity-wave10-2026-10-25.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "astra_vey",
+      "universe": "Mythos Primordia",
+      "characterArcStageId": 10716,
+      "subjectIndex": 1453,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "ceb0adc7af078cb5057facf7475084fd40ac385c3683ac049404375bf232b553",
+      "sourceInputs": {
+        "hero": {
+          "id": "astra_vey",
+          "universe": "Mythos Primordia",
+          "name": "Astra Vey"
+        },
+        "dossier": {
+          "id": 10716,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/astra-vey-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "5e811579da1a620a97e2943c84b2d67f0c7fd20f1f469f74bb8b8841b163eba6"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mythos_primordia/heroes/astra_vey.png",
+          "path": "public/images/oc-worlds/v2/mythos_primordia/heroes/astra_vey.png",
+          "sha256": "b54272937062e9c02aeff38a2ae0ea84ea946b32fa159028b3c97015c94d8c65",
+          "bytes": 2608814,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/830ebbb45d2e4c53cac7d762092ae7cc14205bf53647c9d81af1710a9e79a18f.json",
+            "sha256": "8b4c37a9bb6c7b0d28604d4b13466687f0655da3a2816ed781b6b4c6846a75ec"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mythos-primordia/astra-vey.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "korun_stoneborn",
+      "universe": "Mythos Primordia",
+      "characterArcStageId": 10717,
+      "subjectIndex": 1454,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "d36369af015da19361cbe70fabc0845525715f60824421ceede0c7bee09f8b48",
+      "sourceInputs": {
+        "hero": {
+          "id": "korun_stoneborn",
+          "universe": "Mythos Primordia",
+          "name": "Korun Né-de-Pierre"
+        },
+        "dossier": {
+          "id": 10717,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/korun-stoneborn-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "1e447822190d1856b5768227ad74ca7e28dc5fc141b3495e28896ae7054881c3"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mythos_primordia/heroes/korun_stoneborn.png",
+          "path": "public/images/oc-worlds/v2/mythos_primordia/heroes/korun_stoneborn.png",
+          "sha256": "70d9a6fc1a701ca53abf2c1a8988e8f5891592678cd987a8fc8d1ac24cc33729",
+          "bytes": 2880613,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/d887ea8abbe1b5d5a2bc992ca6e3a0df5ba4d1a330fdec3928171a046d22eae7.json",
+            "sha256": "f0ea5e8be1e290b0505064952b1c97e8333a475b9012f7f428610b77b160741d"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mythos-primordia/korun-stoneborn.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "nyme_first_song",
+      "universe": "Mythos Primordia",
+      "characterArcStageId": 10718,
+      "subjectIndex": 1455,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "e560502151c302a8a1f8d82e11a3a56ece2675cc59d61e0369519343c2395c3e",
+      "sourceInputs": {
+        "hero": {
+          "id": "nyme_first_song",
+          "universe": "Mythos Primordia",
+          "name": "Nyme du Premier Chant"
+        },
+        "dossier": {
+          "id": 10718,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/nyme-first-song-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "8e7a33628dca68505c675f318662e2ead4759b1a6b86da6de0b0a8ba9bc9ed04"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png",
+          "path": "public/images/oc-worlds/v2/mythos_primordia/heroes/nyme_first_song.png",
+          "sha256": "43ffe79a49eeb10fe653944d4d3fb3b10ed19660dbc33b78ef1c84021feaf659",
+          "bytes": 2404318,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/aa71f01283f48718df76df75009adeefa8dabea59044a4cdbf0600baeba02cdd.json",
+            "sha256": "283b4fd54348396d71ee99b87f3bc58f1763be5defdb867c140a06faf6138a70"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/mythos-primordia/nyme-first-song-v2-fidelity-wave11-2026-10-26.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "ysara_flint",
+      "universe": "The Crownless Sea",
+      "characterArcStageId": 10719,
+      "subjectIndex": 1456,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "946384f0dcef90b4bc51a80219cccb7e581d875ac73924370f09797ec4b1890d",
+      "sourceInputs": {
+        "hero": {
+          "id": "ysara_flint",
+          "universe": "The Crownless Sea",
+          "name": "Capitaine Ysara Flint"
+        },
+        "dossier": {
+          "id": 10719,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/ysara-flint-reference-evidence-wave7-2026-10-23.json",
+          "sha256": "40d6ddb8b45cba5be66d0a01331e19f9ab16259a5a52d77979559d3dad8a7012"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/crownless_sea/heroes/ysara_flint.png",
+          "path": "public/images/oc-worlds/v2/crownless_sea/heroes/ysara_flint.png",
+          "sha256": "4ac6a4c8cfbe185c8308c6013acaef65d1e3f72b107df497f80abe781df3f696",
+          "bytes": 2584447,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/5d41aa3c75fdb3782f51ec9873943e381b0becf3d2732c943f7d81993dff1999.json",
+            "sha256": "c29b31c5f69b92b8ab459daacfc26125d6596095bf26b5a655305514b6eb71ef"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-crownless-sea/ysara-flint-v2-fidelity-wave7-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "milo_quill",
+      "universe": "The Crownless Sea",
+      "characterArcStageId": 10720,
+      "subjectIndex": 1457,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "b662e94b55d1929aca6ac2f6a981e53b2fc0574ec68fb9c6591a1f3320f2f050",
+      "sourceInputs": {
+        "hero": {
+          "id": "milo_quill",
+          "universe": "The Crownless Sea",
+          "name": "Milo Quill"
+        },
+        "dossier": {
+          "id": 10720,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/milo-quill-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "68403910a18d9250712572024a77c7b881b55209ee74f4a08b94028c7e73fcca"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/crownless_sea/heroes/milo_quill.png",
+          "path": "public/images/oc-worlds/v2/crownless_sea/heroes/milo_quill.png",
+          "sha256": "f44aa7c128a809ffe0b244240927d2bc8a924ae8a7842fc68a080ff22e439f21",
+          "bytes": 2475972,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/c27a040a8115ceb2ecffd6775e307395b6b9400acb02ef6d10218efc0b772ddf.json",
+            "sha256": "b153e65c36c23071d6ea48239f5341d8f05563e9f68f91f192bbf08b939e6092"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-crownless-sea/milo-quill.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "brann_crow",
+      "universe": "The Crownless Sea",
+      "characterArcStageId": 10721,
+      "subjectIndex": 1458,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "ef2d7d6dba9b62652936ff403ee7268b128084349df845f35631c0a91c4d37dd",
+      "sourceInputs": {
+        "hero": {
+          "id": "brann_crow",
+          "universe": "The Crownless Sea",
+          "name": "Brann Crow"
+        },
+        "dossier": {
+          "id": 10721,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/brann-crow-reference-evidence-wave6-2026-10-23.json",
+          "sha256": "baf2afbeb2d12971cbdad1c07dbf5b4435bbbefb1fc37d0265d8140065e4a02c"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/crownless_sea/heroes/brann_crow.png",
+          "path": "public/images/oc-worlds/v2/crownless_sea/heroes/brann_crow.png",
+          "sha256": "7f43fe9b56fc4afae65bb3950a432cf645608c6316df31248dd4162046a6ce88",
+          "bytes": 2523594,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/33445d6e1853c83b79365efb608fb26df2b28de76ab33cad5e63371822f3a9dd.json",
+            "sha256": "dc3523d38991cc83ee9d6b477bbb693617031f3570281284179e5aa6609845af"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-crownless-sea/brann-crow-v2-fidelity-wave6-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "lyra_hexwind",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "characterArcStageId": 10722,
+      "subjectIndex": 1459,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "70120caa9dfc660482f25dab34d948743bd42a534b63722525c55e9a8767f19f",
+      "sourceInputs": {
+        "hero": {
+          "id": "lyra_hexwind",
+          "universe": "Aetherion: Seven Laws of Magic",
+          "name": "Lyra Hexwind"
+        },
+        "dossier": {
+          "id": 10722,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/lyra-hexwind-reference-evidence-wave6-2026-10-23.json",
+          "sha256": "38a0f69107da43b0d225e231812470c0e2cdf48965b9b838b9dab3df5a95de92"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/lyra_hexwind.png",
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/lyra_hexwind.png",
+          "sha256": "ed446cb1fe7ca4694985c06a19866f78e522b3257f8f6c512d04665deb636940",
+          "bytes": 2586994,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f758022be0f6654b87a9697d49e0b4fdfcc33e4918bd1b3181aa4850759e9e3c.json",
+            "sha256": "79e0fc4fa8b831dc9d3393db16ec0d18f8191c09d1a8f5d0abc8ff606315fe48"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "orin_vale",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "characterArcStageId": 10723,
+      "subjectIndex": 1460,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "6581e142a6658bf52285a1e3b5a1205329528a4e40e1702f7063756881b753fc",
+      "sourceInputs": {
+        "hero": {
+          "id": "orin_vale",
+          "universe": "Aetherion: Seven Laws of Magic",
+          "name": "Orin Vale"
+        },
+        "dossier": {
+          "id": 10723,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/orin-vale-reference-evidence-wave6-2026-10-23.json",
+          "sha256": "45d971b89034c78254b2ff5445afa8b00f2f9ba9dd99d53d782ee3680e608596"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/orin_vale.png",
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/orin_vale.png",
+          "sha256": "499c665e5ada18a1848c2f979315bbbfa30f204d7a6b285f5f1ab828c4abc7e0",
+          "bytes": 2302771,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/2ec04e2f279ba791aa49e74eb07066e1c77b008a42e006efb6ad3174156c8e40.json",
+            "sha256": "d145ae8d4791119267032e56028608022bc73804b863940f264ce454154dfa13"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale-v2-fidelity-wave6-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "nessa_vire",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "characterArcStageId": 10724,
+      "subjectIndex": 1461,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "b4404242ba7a1d00b39abe6ac2858b351cc6ca797f5581501315ea051b5c7e1f",
+      "sourceInputs": {
+        "hero": {
+          "id": "nessa_vire",
+          "universe": "Aetherion: Seven Laws of Magic",
+          "name": "Nessa Vire"
+        },
+        "dossier": {
+          "id": 10724,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/nessa-vire-reference-evidence-wave7-2026-10-23.json",
+          "sha256": "baee425eb112fd01de1022a9b29692ca4393c9c69e78192d551665fe651e4a80"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png",
+          "path": "public/images/oc-worlds/v2/aetherion_seven_laws/heroes/nessa_vire.png",
+          "sha256": "e5c26dc4dc50e9a3f3ada818dc99fe3be836f8b04edca517416bd9a27dfd0e10",
+          "bytes": 2801290,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/1f492518514149864df9b3136248c5a8e0057a34d96e6ee51525ccaf15f20d79.json",
+            "sha256": "adc1d57678135b05d889d6d154a460cf3d7a30b1138ff1584749c3237f64edb3"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire-v2-fidelity-wave7-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "mercy_ash",
+      "universe": "Infernum: Nine Pits",
+      "characterArcStageId": 10725,
+      "subjectIndex": 1462,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "0eada11881c56a90fdff42b69240be4711b5b58841baafc18bd140ee26888fb3",
+      "sourceInputs": {
+        "hero": {
+          "id": "mercy_ash",
+          "universe": "Infernum: Nine Pits",
+          "name": "Mercy Ash"
+        },
+        "dossier": {
+          "id": 10725,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/mercy-ash-reference-evidence-wave6-2026-10-23.json",
+          "sha256": "1247e89dc52d283fc29a8358856b5f4b441b357a2bb39c85ab1ce17fc0cd653c"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/infernum_nine_pits/heroes/mercy_ash.png",
+          "path": "public/images/oc-worlds/v2/infernum_nine_pits/heroes/mercy_ash.png",
+          "sha256": "2c78d2844181d02dab26c7cd07de88c10f8c59c40ab40cbbb48aeb410b699dc5",
+          "bytes": 2416616,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/b56fc927222103d3a33b02df837791b8aa2e378da6af84e48b9d15fc10de910e.json",
+            "sha256": "66e7880c6a85872ef701b386e4bb479f38d02e6b559e6494057be649a8fb1093"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "azael_vorn",
+      "universe": "Infernum: Nine Pits",
+      "characterArcStageId": 10726,
+      "subjectIndex": 1463,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "3d93d495913968408e6a11123fc5688ec183e203f9d9c8085e2564b8b7c4b422",
+      "sourceInputs": {
+        "hero": {
+          "id": "azael_vorn",
+          "universe": "Infernum: Nine Pits",
+          "name": "Azael Vorn"
+        },
+        "dossier": {
+          "id": 10726,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/azael-vorn-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "639ee3d96f343f105f5d322a1c9216e8126e8a159f5dab5a396370b99abb7280"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/infernum_nine_pits/heroes/azael_vorn.png",
+          "path": "public/images/oc-worlds/v2/infernum_nine_pits/heroes/azael_vorn.png",
+          "sha256": "e905841f32e7e468f7cb04a2cc7aa4da690ab9f6a60246fb23c69e8bb14877cd",
+          "bytes": 2193626,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/21fde17363eb7d9272def0a1e030fc9bcb5992a162cd19dd9a6256efe31e16a1.json",
+            "sha256": "e7fb9359c366709b1743caa4da3e0365b00651024c64c141891107ae095913a7"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/infernum-nine-pits/azael-vorn.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": [
+        {
+          "entryId": "cg:infernum-nine-pits:azael-vorn:characterSolo:openai-v1",
+          "entryIndex": 2664,
+          "fallback": {
+            "themeSource": [
+              "docs/cg/azael-vorn-wave11-plan-2026-10-26.json"
+            ],
+            "themeContinuity": "Infernum: Nine Pits — Azael Vorn, canon original du projet (2026) — selected current V2",
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "morcant_bound",
+      "universe": "Infernum: Nine Pits",
+      "characterArcStageId": 10727,
+      "subjectIndex": 1464,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "cb5f8bd3f2c12b8bd82481f1b6a2ff0b41d7c0a4465139a0f4b93f7e2691da9d",
+      "sourceInputs": {
+        "hero": {
+          "id": "morcant_bound",
+          "universe": "Infernum: Nine Pits",
+          "name": "Morcant l’Enchaîné"
+        },
+        "dossier": {
+          "id": 10727,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/morcant-bound-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "32c773f92094c1cde73a5bbe8588ba3fe2492cbcf83802c19b3e53a20efb4773"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/infernum_nine_pits/heroes/morcant_bound.png",
+          "path": "public/images/oc-worlds/v2/infernum_nine_pits/heroes/morcant_bound.png",
+          "sha256": "e01df24a6f8049d8e0b7b957e63a5642f998356a2731f24b0d1fca6ba5a3d72c",
+          "bytes": 2648768,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6f16545f35320a093cddb42cc75912ad8961d1d681f79bd0676e8c3d58c2dcdb.json",
+            "sha256": "69aa983c6c77571d6425b36b36c25c25d85d82b5d1d470e37a88e7e6b60305e8"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/infernum-nine-pits/morcant-bound.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "seyra_tal",
+      "universe": "Ilyr Concordat",
+      "characterArcStageId": 10728,
+      "subjectIndex": 1465,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "6e6ab76df3d4dda445d102653a37a8c814398e14a7e5a139d36a6a9e3a9fbc45",
+      "sourceInputs": {
+        "hero": {
+          "id": "seyra_tal",
+          "universe": "Ilyr Concordat",
+          "name": "Seyra Tal"
+        },
+        "dossier": {
+          "id": 10728,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/seyra-tal-reference-evidence-wave7-2026-10-23.json",
+          "sha256": "27e06c967ec0468c7be9bd7332905cb0fd1c9053b9a3b94e2f28bd8ea3e720a0"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/ilyr_concordat/heroes/seyra_tal.png",
+          "path": "public/images/oc-worlds/v2/ilyr_concordat/heroes/seyra_tal.png",
+          "sha256": "1aa75604977fde631c5629d99039ef2b4f9fdfe8728822e5a3a4ab04b8b0ffc9",
+          "bytes": 2478392,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/523fa4bc1876e6e53531e1900a43e5f81a9981d9e5f7aaa71c1035597386e5a2.json",
+            "sha256": "31a7c196a2d00dc42765095f989908416a48e6949083f09c80e4bb291df71e9a"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "korr_venn",
+      "universe": "Ilyr Concordat",
+      "characterArcStageId": 10729,
+      "subjectIndex": 1466,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "6836b7952ce3e6103beaf94cb34e2e47f165aa29c1a13ab98ec042f0fa7422ec",
+      "sourceInputs": {
+        "hero": {
+          "id": "korr_venn",
+          "universe": "Ilyr Concordat",
+          "name": "Korr Venn"
+        },
+        "dossier": {
+          "id": 10729,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/korr-venn-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "1ce86af65d7c58be16bd539fb38aa7d8af8f7f64cfbd15bfd16cd359da609a38"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/ilyr_concordat/heroes/korr_venn.png",
+          "path": "public/images/oc-worlds/v2/ilyr_concordat/heroes/korr_venn.png",
+          "sha256": "b333edbd275965fb7eeee7770979e8b3c27e714e94c0fc51aa5a0862a3b7fecd",
+          "bytes": 2411851,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/40548c3b4989d3b867cfb6752484adf4c59fb5f53df4060eb97d94a01a21299b.json",
+            "sha256": "44f8290ecacac683dd7e683ebc8dd09fbb0b11471142b630b3db4c820a74af40"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/ilyr-concordat/korr-venn.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": [
+        {
+          "entryId": "cg:ilyr-concordat:korr-venn:characterSolo:openai-v1",
+          "entryIndex": 2687,
+          "fallback": {
+            "themeSource": [
+              "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "ixo_9",
+      "universe": "Ilyr Concordat",
+      "characterArcStageId": 10730,
+      "subjectIndex": 1467,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "3117950151f47e54470570df9c1739f2f9ebc1e5fefee6f69cdfd68fe0331bc0",
+      "sourceInputs": {
+        "hero": {
+          "id": "ixo_9",
+          "universe": "Ilyr Concordat",
+          "name": "Ixo-9"
+        },
+        "dossier": {
+          "id": 10730,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/ixo-9-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "6454b07be813308c4fb3429aee3752cc1f995f6448402c60a7f0bbf187d73cb7"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/ilyr_concordat/heroes/ixo_9.png",
+          "path": "public/images/oc-worlds/v2/ilyr_concordat/heroes/ixo_9.png",
+          "sha256": "b5edc20da450a13088888f66d9b356286e36d25c2cb6c182d8f924b99b8978be",
+          "bytes": 2487572,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f38d850efb55843c68eeace324f55dd55f9a909cd2817325ee5d88e95df52e9a.json",
+            "sha256": "9c8af3f29c73aabf0e89a6e21b1ad0af73cfceb0ee4b45c72e52e6e420d887f4"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/ilyr-concordat/ixo-9.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "mara_ell",
+      "universe": "The Drowned Testament",
+      "characterArcStageId": 10731,
+      "subjectIndex": 1468,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "392187606c646d4884d7f4d932a0fdca3152a5a03e52eeb00619f3c56338ff39",
+      "sourceInputs": {
+        "hero": {
+          "id": "mara_ell",
+          "universe": "The Drowned Testament",
+          "name": "Dr Mara Ell"
+        },
+        "dossier": {
+          "id": 10731,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/mara-ell-reference-evidence-wave6-2026-10-23.json",
+          "sha256": "6de0b71625518181139d1eb38827a8371443658e9fb9ee2a7bfeda7bbc74d8d5"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/drowned_testament/heroes/mara_ell.png",
+          "path": "public/images/oc-worlds/v2/drowned_testament/heroes/mara_ell.png",
+          "sha256": "2c11636cc62c7adcbcce4cd042454ef44a80b5f62f800064a08d200bae3316c5",
+          "bytes": 2260579,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/d7525bdf0ab87440e029dd61019dbb25848b9e4059ff3d0445e8e027142c8c57.json",
+            "sha256": "32982c950156b3a892a8752ebfbe36520a9b0378fe696c4faa226e673ee29ae3"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-drowned-testament/mara-ell-v2-fidelity-wave6-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "jonas_mire",
+      "universe": "The Drowned Testament",
+      "characterArcStageId": 10732,
+      "subjectIndex": 1469,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "5152a304e81e126cde91eb17e565fca3decbca9c6f3058cac9a93735b0918240",
+      "sourceInputs": {
+        "hero": {
+          "id": "jonas_mire",
+          "universe": "The Drowned Testament",
+          "name": "Jonas Mire"
+        },
+        "dossier": {
+          "id": 10732,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/jonas-mire-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "a060df449f161432e3e9b4353fd5f34f3a7ce38b0584f928738530aade36b7dd"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/drowned_testament/heroes/jonas_mire.png",
+          "path": "public/images/oc-worlds/v2/drowned_testament/heroes/jonas_mire.png",
+          "sha256": "5a83efcaa82128e6dc2070b8c6f700c90e4af4f814f9187b2197f996958ece11",
+          "bytes": 2202033,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/c1cf8ff06471be6172edbd086220e8223209921b8b2a4cace1365e686f95df48.json",
+            "sha256": "16c5326bb1b7d6fcf11e5b8794823d0e729a0caa5e60e3da415fcc75646e1d9b"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-drowned-testament/jonas-mire.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "oona_vell",
+      "universe": "The Drowned Testament",
+      "characterArcStageId": 10733,
+      "subjectIndex": 1470,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "b31c6b11ab61f2e22b569ae260ba819f94eaf808ad66c5121dae9f95f588f625",
+      "sourceInputs": {
+        "hero": {
+          "id": "oona_vell",
+          "universe": "The Drowned Testament",
+          "name": "Oona Vell"
+        },
+        "dossier": {
+          "id": 10733,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/oona-vell-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "8b5466f8a6e58419db2acc8148e13ac9c66079cf0c7753fff694b134cdb0b3ef"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/drowned_testament/heroes/oona_vell.png",
+          "path": "public/images/oc-worlds/v2/drowned_testament/heroes/oona_vell.png",
+          "sha256": "5510d160f63162686c4690060ee274d1cf03816f6a5d00ab7097898ee0c2d533",
+          "bytes": 2408159,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6c2f1ec78fc6e5e148386bf624e0cf175c8910c5f16346fdffbef4a56ccc4965.json",
+            "sha256": "ebdbf3649cc02beea19166ea907a8be500a4a61a2a71cad579aa791ae0f81c90"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/the-drowned-testament/oona-vell-v2-fidelity-wave11-2026-10-28.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "aelwen_starbough",
+      "universe": "Valedor: The Shattered Crown",
+      "characterArcStageId": 10734,
+      "subjectIndex": 1471,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "a0dd7982931b5414dc249038d1cb9694fdc5876cf84dda7a202f42b32e11a8a6",
+      "sourceInputs": {
+        "hero": {
+          "id": "aelwen_starbough",
+          "universe": "Valedor: The Shattered Crown",
+          "name": "Aelwen Starbough"
+        },
+        "dossier": {
+          "id": 10734,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/aelwen-starbough-reference-evidence-wave7-2026-10-23.json",
+          "sha256": "cf3a3e47657ecae96a3a6d33b29bbb377c500601d2e01e8d0ebe58b10d58ac3e"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/valedor_shattered_crown/heroes/aelwen_starbough.png",
+          "path": "public/images/oc-worlds/v2/valedor_shattered_crown/heroes/aelwen_starbough.png",
+          "sha256": "e6dddff9b04d8f24b63ab2b0971d93a6192e1fced2e4e8fbea97548a3868c5b6",
+          "bytes": 2644446,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/242b1a269dc22d4b34d5faf0f0e68a7587d8bb493bddf1c2f53798e0356538a3.json",
+            "sha256": "963ca9c9b1bb714fa29f501a1ed9dac7c382cbd55a0c0fbe89aa0ef3359e6a07"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough-v2-fidelity-wave7-2026-10-23.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "brokk_embervein",
+      "universe": "Valedor: The Shattered Crown",
+      "characterArcStageId": 10735,
+      "subjectIndex": 1472,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "eef09e4b0bc9622ed9279dff38fd8f799cee8a6197e25a12588e02f059f33a90",
+      "sourceInputs": {
+        "hero": {
+          "id": "brokk_embervein",
+          "universe": "Valedor: The Shattered Crown",
+          "name": "Brokk Embervein"
+        },
+        "dossier": {
+          "id": 10735,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/brokk-embervein-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "221e015130d6cfda75da2e85a8016bba0a082838dab017e30b11d41654a793eb"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/valedor_shattered_crown/heroes/brokk_embervein.png",
+          "path": "public/images/oc-worlds/v2/valedor_shattered_crown/heroes/brokk_embervein.png",
+          "sha256": "55a67509843e0e45b4f2a66ac92b4ddcbbb0d1874f4e5360c4e815ab1ab97579",
+          "bytes": 2451363,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/98410f27272dbd6cfba5c6190fce3ada6924b1383b13a4a6cc9f7b6b059dd5a4.json",
+            "sha256": "6b4519c65fb1e1a39b8d7641fcdb15276a09006087573e4bc52a8417a1e9d509"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/valedor-the-shattered-crown/brokk-embervein.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": [
+        {
+          "entryId": "cg:valedor-the-shattered-crown:brokk-embervein:characterSolo:openai-v1",
+          "entryIndex": 2752,
+          "fallback": {
+            "themeSource": [
+              "docs/cg/brokk-embervein-wave11-plan-2026-10-26.json"
+            ],
+            "themeContinuity": "Valedor: The Shattered Crown — Brokk Embervein, canon original du projet (2026) — selected V2",
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "goruk_ash_tusk",
+      "universe": "Valedor: The Shattered Crown",
+      "characterArcStageId": 10736,
+      "subjectIndex": 1473,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "712d9d413cee0d3f14973f2167775a78fac9d1de42ab9f0f4d85bf725c68acd5",
+      "sourceInputs": {
+        "hero": {
+          "id": "goruk_ash_tusk",
+          "universe": "Valedor: The Shattered Crown",
+          "name": "Goruk Ash-Tusk"
+        },
+        "dossier": {
+          "id": 10736,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/goruk-ash-tusk-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "5a9312fed13903e105734014ad19bce25028a0651fbaeb65490ac0ea72efb0f0"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/valedor_shattered_crown/heroes/goruk_ash_tusk.png",
+          "path": "public/images/oc-worlds/v2/valedor_shattered_crown/heroes/goruk_ash_tusk.png",
+          "sha256": "61569ad4fc919bf0d1f8ddaf4a12ec4c489116f09e630e4a0923d4b7201f2530",
+          "bytes": 2702790,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/6cf148ac797811957845e29f40aeca5f11ed684d6ef456fed9e161055e13a83f.json",
+            "sha256": "70d95e0d959a3844f4e880d4209cabc14552a431421d94989edd17342fd33b6c"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/valedor-the-shattered-crown/goruk-ash-tusk.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    },
+    {
+      "characterId": "elise_varenne",
+      "universe": "Aevum Fracture",
+      "characterArcStageId": 10737,
+      "subjectIndex": 1474,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "a1d97db681282cb3ed09d5bae48e3cd06fbbc72e9f0eddb1463d0a9000dfc4aa",
+      "sourceInputs": {
+        "hero": {
+          "id": "elise_varenne",
+          "universe": "Aevum Fracture",
+          "name": "Élise Varenne"
+        },
+        "dossier": {
+          "id": 10737,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/elise-varenne-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "b950b86f127b4157a113a68825194b4d7d9c0643525535cdc2e33bc01bbfa80e"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aevum_fracture/heroes/elise_varenne.png",
+          "path": "public/images/oc-worlds/v2/aevum_fracture/heroes/elise_varenne.png",
+          "sha256": "7b2a7638651cf2c7ab6380d60eb1f095488170a4dc91bfa4aaaf08d9b648c712",
+          "bytes": 2124394,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f4d13c95a57a402ccad2c32c6bda3e863e78d9ed5b4673430a6e4af5b6803d77.json",
+            "sha256": "0a1a082f67bd8adb61abf7c5a16c9cf1260938a98ddb06e3faeaacc54c890cb1"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aevum-fracture/elise-varenne.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": [
+        {
+          "entryId": "cg:aevum-fracture:elise-varenne:characterSolo:openai-v1",
+          "entryIndex": 2768,
+          "fallback": {
+            "themeSource": [
+              "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "tomas_grey",
+      "universe": "Aevum Fracture",
+      "characterArcStageId": 10738,
+      "subjectIndex": 1475,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "50db02cad7e64fa5919fc0e08388b97d9fb1feb4d06b9e3a7ce40b27ec4fa5f6",
+      "sourceInputs": {
+        "hero": {
+          "id": "tomas_grey",
+          "universe": "Aevum Fracture",
+          "name": "Tomas Grey"
+        },
+        "dossier": {
+          "id": 10738,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/tomas-grey-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "6ee77a62a9ed09cd4895dc3705079510b096352be312f225bdfb0e7eb817f4e9"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aevum_fracture/heroes/tomas_grey.png",
+          "path": "public/images/oc-worlds/v2/aevum_fracture/heroes/tomas_grey.png",
+          "sha256": "2c6deedd4a1011502969699e22b2c670a2a05d40b465d0c0fb9464458fb2edc5",
+          "bytes": 2535060,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/f32c258ea6649e7e60d453ba9165c275e6ea21ff0cec0c208784bfcbe0f400e9.json",
+            "sha256": "d81bcefd855e0b3698e88a8635673e874b873d8e353b4fe3d8d67d3c184feef7"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aevum-fracture/tomas-grey.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": [
+        {
+          "entryId": "cg:aevum-fracture:tomas-grey:characterSolo:openai-v1",
+          "entryIndex": 2769,
+          "fallback": {
+            "themeSource": [
+              "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "safiya_nadir",
+      "universe": "Aevum Fracture",
+      "characterArcStageId": 10739,
+      "subjectIndex": 1476,
+      "transition": "historical-identity-image-unavailable",
+      "historicalIdentitySha256": "10521ab18a7737a12565f47f9b9dad47e28f4d24f13f750f039cdd83a130b988",
+      "sourceInputs": {
+        "hero": {
+          "id": "safiya_nadir",
+          "universe": "Aevum Fracture",
+          "name": "Safiya Nadir"
+        },
+        "dossier": {
+          "id": 10739,
+          "referenceUrls": [
+            "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+          ]
+        },
+        "pilot": null,
+        "p0": false
+      },
+      "sourceReceipts": [
+        {
+          "path": "docs/cg/safiya-nadir-reference-evidence-wave11-2026-10-26.json",
+          "sha256": "67c4f7f02636744e06e01666e607357338fc88281bbd8b4a75308d65fc7b7357"
+        }
+      ],
+      "identityImages": [
+        {
+          "referencePath": "/images/oc-worlds/v2/aevum_fracture/heroes/safiya_nadir.png",
+          "path": "public/images/oc-worlds/v2/aevum_fracture/heroes/safiya_nadir.png",
+          "sha256": "064446c3c72a249fe2afc1cbcb6df0b24228baa1710abff3d65b77c0ed9825cc",
+          "bytes": 2321311,
+          "format": "PNG",
+          "width": 1086,
+          "height": 1448,
+          "ledgerReceipt": {
+            "path": "docs/original-universes/openai-image-v2-ledger/entries/87856f1c49ef23bb896de83110cc2eafe29880cbd2e1cb1caeeb5c73ff43e04f.json",
+            "sha256": "8fdae56fecc876fcb7ed61e4338f5bd9e69e20e3dea33dad53a6d2f8928229d8"
+          }
+        }
+      ],
+      "fallbackIdentity": {
+        "incarnation": null,
+        "identityLock": null,
+        "equipment": [],
+        "sourceRefs": [
+          "https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"
+        ],
+        "localCandidates": [
+          {
+            "path": "/sprites/generated/heroes/aevum-fracture/safiya-nadir.png",
+            "exists": true,
+            "role": "historical-project-image-not-source-fidelity-approval"
+          }
+        ],
+        "historicalWebImageEvidence": [],
+        "evidenceStatus": "needs-reference",
+        "missing": [
+          "Choisir l’incarnation précise et sa continuité.",
+          "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+        ],
+        "visualFidelityApproved": false,
+        "identityRule": "Conserver la même incarnation, silhouette, proportions, anatomie, visage, tenue et équipement. Le décor peut changer. Ne pas remplacer un personnage par un original ressemblant à sa classe de jeu.",
+        "adaptationNote": null
+      },
+      "unproducedCells": []
+    }
+  ]
+}

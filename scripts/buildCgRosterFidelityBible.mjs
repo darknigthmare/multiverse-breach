@@ -7,8 +7,11 @@ import { HEROES_DB } from '../src/game/heroes.js';
 import { EXPANDED_UNIVERSES } from '../src/game/expandedUniverses.js';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 import { STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
+import { CG_CATALOG } from '../src/game/cg/cgCatalog.js';
 import { CORRECTED_HERO_SPRITE_VARIANTS, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { getQuarantinedCanonSprite } from '../src/game/canonicalSpriteQuarantine.js';
+import { getCgQuarantineVisualFlags, getCgQuarantineWorldScope, getCgReviewedQuarantineSprite } from './cgReviewedQuarantineMetadata.mjs';
+import { getCgPilotAuthority, getCgPilotWorldAuthority, CG_PILOT_EQUIPMENT_MISSING } from './cgIdentityAuthorityMetadata.mjs';
 import { discoverCgSourceEvidenceFiles, loadCgSourceEvidence, loadQualifiedCgIdentityLocks } from './cgSourceEvidence.mjs';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -188,6 +191,10 @@ const subjects = plan.subjects.map(subject => {
  const qualifiedSource = qualifiedIdentityLocks.get(hero.id);
  const review = specificReviews.get(hero.id);
  const pilot = subject.priority === 'pilot-existing';
+ const pilotDefinition = pilot ? CG_CATALOG.find(entry => entry.characterId === hero.id && entry.type === 'characterSolo') : null;
+ const declaredPilotAuthority = pilot ? getCgPilotAuthority(hero, pilotDefinition || { continuityId: subject.identity?.incarnation,
+  promptSummary: subject.identity?.identityLock, equipment: subject.identity?.equipment }) : null;
+ const pilotAuthority = declaredPilotAuthority?.currentRuntimeSource ? declaredPilotAuthority : null;
  const sourceAnchor = generic(hero.visualAnchor) ? '' : hero.visualAnchor;
  const proposalAnchor = sourceEvidence?.incarnation && Object.keys(sourceEvidence.visualLocks || {}).length ? '' : proposal?.identityLock || '';
  const dossierAnchors = dossierIsThisHero ? (dossier.heroAnchors || []).filter(a => !generic(a) && !/^Approved local/.test(a)) : [];
@@ -200,9 +207,10 @@ const subjects = plan.subjects.map(subject => {
  if (!incarnationLabel) incarnationLabel = `${subject.characterName} — ${subject.universe}; époque et version précises à fixer`;
  if (hero.id === 'saturnin_duck') { incarnationLabel = 'Les Aventures de Saturnin, RTF/ORTF 1965–1970 — vrai caneton filmé en décors miniatures'; incarnationStatus = 'primary-ina-source-identity-record'; }
  const originalSpriteAnchor = isProjectOriginal && hero.spritePrompt ? hero.spritePrompt.replace(/^Entirely original character for Multiverse Breach, no existing franchise reference\.\s*/i, '').split(/Complete 4 by 4|No text|No copied|exact 4x4|Full 4x4/i)[0].trim() : '';
- const evidenceVisualLocks = sourceEvidence?.visualLocks || {};
+ const evidenceVisualLocks = pilotAuthority ? {} : sourceEvidence?.visualLocks || {};
  const authoritativeVisualEvidence = sourceEvidence?.incarnation && Object.keys(evidenceVisualLocks).length;
  const anchorParts = unique([...(authoritativeVisualEvidence ? [] : [sourceAnchor, proposalAnchor, originalSpriteAnchor]), ...Object.values(evidenceVisualLocks).flat(), ...dossierAnchors, originalHero?.loreRole, ...(!authoritativeVisualEvidence && subject.identity?.identityLock && !generic(subject.identity.identityLock) ? [subject.identity.identityLock] : [])]);
+ if (pilotAuthority) anchorParts.splice(0, anchorParts.length, pilotAuthority.identityLock);
  if (hero.id === 'player_anchor') anchorParts.unshift('Humanoïde original adulte à deux bras et deux jambes, visage entièrement couvert par casque fermé sombre à visière jaune étroite; armure charbon et manteau à longs pans fendus. Gantelet mécanique cyan A.R.C.A. sur le bras anatomique gauche, conformément au visuel projet comparé le18octobre2026.');
  if (hero.id === 'mistral_mgr') anchorParts.unshift('Mistral Revengeance2013 : jambe anatomique droite rouge (à gauche pour le spectateur de face), jambe gauche noire, corps cyborg asymétrique et deux lames argent étroites pour L’Étranger; bras DwarfGekko surnuméraires en couronne, nombre/configuration à comparer au rendu officiel miroir.');
  const identityLock = anchorParts.join(' ');
@@ -210,11 +218,12 @@ const subjects = plan.subjects.map(subject => {
  const visual = {};
  for (const key of Object.keys(visualMatchers)) visual[key] = splitDetails(detailText, key);
  for (const key of Object.keys(visualMatchers)) if (evidenceVisualLocks[key]) visual[key].unshift(...[evidenceVisualLocks[key]].flat());
- const explicitEquipment = hero.id === 'player_anchor' ? ['Gantelet mécanique cyan A.R.C.A. sur le bras anatomique gauche; accessoire isolé complet pour CG02, sans main ni avant-bras coupé.'] : qualifiedSource?.equipment?.length ? qualifiedSource.equipment : hero.equipment || subject.identity?.equipment || [];
+ const explicitEquipment = hero.id === 'player_anchor' ? ['Gantelet mécanique cyan A.R.C.A. sur le bras anatomique gauche; accessoire isolé complet pour CG02, sans main ni avant-bras coupé.'] : qualifiedSource ? qualifiedSource.equipment || [] : pilotAuthority ? pilotAuthority.equipment : hero.equipment || subject.identity?.equipment || [];
  visual.equipment = explicitEquipment.length ? [...explicitEquipment] : unique(detailText.split(/(?<=[.!?;])\s+|\s*\|\s*/).filter(a => /MA40|MA5C|M392|ASHPD|Nornfang|Oathsworn|Dominator|Gunblade|shuriken|fouet|harpoon|sonar|gantelet|gauntlet|arme|gun|pistol|rifle|fusil|sabre|sword|épée|bâton|staff|weapon|bouclier|shield|lance|polearm|micro|blaster|knife|blade|launcher|couteau|cyberdeck|\bbow\b|spear|\bFocus\b|\barc\b/i.test(a)));
  const pilotEquipment = { masterchief: ['Fusil d’assaut MA40 (HaloInfinite) ; pas le MA5C du vieux manifeste Halo3.'], arbiter: ['Épée à énergie Sangheili bleue, deux lames et poignée alien; doigts et proportions de ThelVadam.'], leon: ['Pistolet VP70 de Leon RE2original1998, holster et ceinturon de recrue RPD.'], jill: ['Pistolet SamuraiEdge de Jill S.T.A.R.S., holster et équipement RE1HD.'], wesker: ['Pistolet SamuraiEdge de Wesker RE5 humain, lunettes noires et gants noirs.'] };
  if (pilotEquipment[hero.id]) visual.equipment = pilotEquipment[hero.id];
  if (evidenceVisualLocks.equipment) visual.equipment = [evidenceVisualLocks.equipment].flat();
+ if (pilotAuthority?.equipmentMissing) visual.equipment = [CG_PILOT_EQUIPMENT_MISSING];
  const forbiddenSentences = detailText.split(/(?<=[.!?;])\s+|\s*\|\s*/).filter(a => /\b(ne pas|aucun|pas |never|without|not |no |ni |exclude|excluding)\b/i.test(a));
  visual.forbiddenMixes = unique([...(hero.prohibitedConcepts || []), ...forbiddenSentences, ...(pack?.fidelityNotes ? [pack.fidelityNotes] : []),
   `Ne pas fusionner plusieurs continuités ou variantes de ${subject.characterName}; toute transformation spéciale garde son étiquette WhatIf.`,
@@ -263,6 +272,10 @@ const subjects = plan.subjects.map(subject => {
   for (const key of ['period', 'architecture', 'palette', 'props']) if (evidenceWorld[key]) world[key] = key === 'period' ? text(evidenceWorld[key]) : lines(evidenceWorld[key]);
   world.boundaries.push(...lines(evidenceWorld.boundaries), ...lines(evidenceWorld.excludedSharedDossierSetting));
  }
+ const pilotWorldAuthority = getCgPilotWorldAuthority(pilotAuthority);
+ if (pilotWorldAuthority) Object.assign(world, pilotWorldAuthority);
+ const quarantineWorld = getCgQuarantineWorldScope(hero);
+ if (quarantineWorld) Object.assign(world, quarantineWorld.world);
  if (hero.id === 'mistral_mgr') { world.locations = ['Sukhumi, Abkhazie, contexte industriel de la confrontation Mistral dans MetalGearRising:Revengeance2013; scènes originales dans cette région.']; world.architecture = ['Complexe industriel de Sukhumi, tuyauteries, cuves et passerelles métalliques; ne pas lui transférer les lieux WorldMarshal de Raiden.']; world.props = ['L’Étranger composé de DwarfGekko; supports techniques et bras détachables de sa propre configuration.']; }
  if (hero.id === 'true_ogre_tekken') { world.locations = ['Temple mésoaméricain associé à Ogre dans Tekken3; composition originale à vérifier contre le modèle de l’arène, pas HonMaru.']; world.boundaries.push('HonMaru du dossier Tekken partagé n’est pas la localisation de référence Tekken3 de TrueOgre.'); }
  if (subject.universe === 'Michael Jackson') { world.locations = ['Scène musicale originale du projet MultiverseBreach; décor nouveau sans prétendre reproduire Thriller, Moonwalker ou un concert réel.']; world.boundaries.push('Le décor ThrillerPalace du dossier partagé est une adaptation de scène; il ne change pas ces avatars originaux en personnages historiques.'); }
@@ -279,16 +292,23 @@ const subjects = plan.subjects.map(subject => {
  };
  if (specificWorldLocations[hero.id]) { world.locations = specificWorldLocations[hero.id]; world.boundaries.push('Les lieux du dossier monde partagé ne remplacent pas le lieu de cette incarnation individuelle.'); }
  const refs = [];
+ if (pilotAuthority) {
+  for (const value of pilotDefinition.sourceRefs || []) refs.push(source(value, 'historical-cg-pilot-target-reference', 'src/game/cg/cgCatalog.js', 'published-pilot-reference-not-new-source-inspection'));
+  for (const value of pilotAuthority.currentRuntimeSource.referenceUrls) refs.push({ ...source(value,
+   'current-runtime-declaration-not-cg-identity-authority', 'src/game/heroes.js', 'runtime-metadata-only'), authority: false });
+ }
  for (const file of sourceEvidence?.files || []) refs.push(source(file, 'character-reference-evidence-receipt', file, 'reference-evidence-with-stated-inspection-status-and-limitations'));
  for (const value of unique([...(sourceEvidence?.sourceRefs || []), sourceEvidence?.sourceText?.url])) refs.push(source(value, 'source-evidence-provenance', sourceEvidence.file));
- for (const value of unique([...(hero.referenceUrls || []), hero.referenceUrl, ...(refRecord?.referencePages || []), ...(pack?.referenceUrls || []), pack?.referenceUrl, ...(dossier?.officialReferenceUrls || []), ...(subject.identity?.sourceRefs || [])])) refs.push(source(value, 'source-identity-or-world-reference', refRecord?.referencePages?.includes(value) ? 'public/sprites/generated/sprite-reference-sources.json' : 'src/game/heroes.js / dossier / source-pack'));
+ for (const value of pilotAuthority ? [] : unique([...(hero.referenceUrls || []), hero.referenceUrl, ...(refRecord?.referencePages || []), ...(pack?.referenceUrls || []), pack?.referenceUrl, ...(dossier?.officialReferenceUrls || []), ...(subject.identity?.sourceRefs || [])])) refs.push(source(value, 'source-identity-or-world-reference', refRecord?.referencePages?.includes(value) ? 'public/sprites/generated/sprite-reference-sources.json' : 'src/game/heroes.js / dossier / source-pack'));
  for (const value of refRecord?.referenceImages || []) refs.push(source(value, 'independent-image-url-candidate', 'public/sprites/generated/sprite-reference-sources.json', 'recorded-historical-image-url-not-loaded-now'));
  if (proposal || universeTarget) refs.push(source(AUTHOR_FILE, 'authored-target-proposal-not-source-proof', AUTHOR_FILE, 'proposal-needs-source-comparison'));
  if (originalSpriteAnchor) refs.push(source('/src/game/heroes.js', 'authored-original-character-prompt', 'src/game/heroes.js', 'authored-project-canon'));
  if (sourceAnchor) refs.push(source('/src/game/heroes.js', 'character-specific-identity-description', 'src/game/heroes.js', 'authored-project-record'));
  if (original) refs.push(source('/src/game/originalUniversesManifest.json', 'original-project-canon', 'src/game/originalUniversesManifest.json', 'authored-project-canon'));
+ if (quarantineWorld) refs.push(source(quarantineWorld.referenceUrl, 'source-place-plot-reference-not-visual-approval', quarantineWorld.evidenceFile, 'text-reference-only-no-image-inspected'));
  const quarantine = getQuarantinedCanonSprite(hero);
  const selectedSprite = getHeroSpriteSheetSrc(hero);
+ const runtimeSpriteCorrection = getCgReviewedQuarantineSprite(hero, selectedSprite);
  const recordedSpriteFinding = selectedSpriteFindings.get(hero.id);
  // Findings apply to the exact reviewed asset. Installing a later variant must
  // not inherit a defect observed only in its historical predecessor.
@@ -296,10 +316,10 @@ const subjects = plan.subjects.map(subject => {
  const currentSpriteCorrection = (correctedSpriteAudits.get(hero.id) || []).find(entry => entry.output === selectedSprite && entry.visualReview?.status === 'close-to-reference' && existsSync(localFile(selectedSprite)) && entry.image?.sha256 === hash(localFile(selectedSprite)));
  const recordedTechnicalPacking = technicalSpritePackings.get(hero.id);
  const currentTechnicalPacking = recordedTechnicalPacking?.currentRuntimePath === selectedSprite && existsSync(localFile(selectedSprite)) && recordedTechnicalPacking.preparation.output.sha256 === hash(localFile(selectedSprite)) ? recordedTechnicalPacking : null;
- const currentSpriteReview = quarantine ? { path: quarantine.asset, sha256: quarantine.sha256, status: 'OLD-quarantined-art-not-selected-in-runtime', reason: quarantine.reason, selectedInRuntime: false, visualFidelityApproved: false }
+ const currentSpriteReview = runtimeSpriteCorrection || (quarantine ? { path: quarantine.asset, sha256: quarantine.sha256, status: 'OLD-quarantined-art-not-selected-in-runtime', reason: quarantine.reason, selectedInRuntime: false, visualFidelityApproved: false }
   : currentSpriteFinding ? { path: selectedSprite, sha256: currentSpriteFinding.selectedAsset.sha256, status: currentSpriteFinding.status, observation: currentSpriteFinding.observed, sourceComparison: currentSpriteFinding.sourceComparison, evidenceFile: currentSpriteFinding.evidenceFile, correctionAttemptEvidence: currentSpriteFinding.correctionAttemptEvidence, ...(currentSpriteFinding.sourceCoverageDecision ? { sourceCoverageDecision: currentSpriteFinding.sourceCoverageDecision } : {}), visualFidelityApproved: false }
   : currentSpriteCorrection ? { path: selectedSprite, sha256: currentSpriteCorrection.image.sha256, status: 'corrected-sprite-reviewed-with-source-limitations', evidenceFile: currentSpriteCorrection.file, frames: currentSpriteCorrection.processing?.dominantBodies || currentSpriteCorrection.processing?.sourceGridCells || null, observations: currentSpriteCorrection.visualReview.notes || [], canonicalFidelityApproved: false, visualFidelityApproved: false }
-  : currentTechnicalPacking ? { path: selectedSprite, sha256: currentTechnicalPacking.preparation.output.sha256, status: 'technical-frame-packing-reviewed-original-art-preserved', operationKind: currentTechnicalPacking.operationKind, evidenceFile: currentTechnicalPacking.file, preparationReceipt: currentTechnicalPacking.preparationReceipt, independentReview: currentTechnicalPacking.independentReview, frames: currentTechnicalPacking.preparation.processing.dominantBodies, uniformScale: currentTechnicalPacking.uniformScale, previousAtlasRetainedAsVariant: currentTechnicalPacking.previousAtlasRetainedAsVariant, newImageGenerationUsed: false, semanticArtworkCreated: false, limitations: currentTechnicalPacking.limitations, canonicalFidelityApproved: false, visualFidelityApproved: false } : null;
+  : currentTechnicalPacking ? { path: selectedSprite, sha256: currentTechnicalPacking.preparation.output.sha256, status: 'technical-frame-packing-reviewed-original-art-preserved', operationKind: currentTechnicalPacking.operationKind, evidenceFile: currentTechnicalPacking.file, preparationReceipt: currentTechnicalPacking.preparationReceipt, independentReview: currentTechnicalPacking.independentReview, frames: currentTechnicalPacking.preparation.processing.dominantBodies, uniformScale: currentTechnicalPacking.uniformScale, previousAtlasRetainedAsVariant: currentTechnicalPacking.previousAtlasRetainedAsVariant, newImageGenerationUsed: false, semanticArtworkCreated: false, limitations: currentTechnicalPacking.limitations, canonicalFidelityApproved: false, visualFidelityApproved: false } : null);
  if (currentSpriteFinding) {
   refs.push(source(currentSpriteFinding.evidenceFile, 'current-selected-sprite-independent-comparison', currentSpriteFinding.evidenceFile, currentSpriteFinding.status));
   if (currentSpriteFinding.correctionAttemptEvidence) refs.push(source(currentSpriteFinding.correctionAttemptEvidence, 'sprite-correction-attempt-evidence', currentSpriteFinding.correctionAttemptEvidence, currentSpriteFinding.correctionAttempt?.status));
@@ -308,14 +328,17 @@ const subjects = plan.subjects.map(subject => {
  if (currentTechnicalPacking) refs.push(source(currentTechnicalPacking.file, 'current-selected-sprite-technical-frame-packing-audit', currentTechnicalPacking.file, 'existing-project-frame-packing-no-new-art-or-fidelity-certification'));
  const visualPaths = unique([selectedSprite, ...(CORRECTED_HERO_SPRITE_VARIANTS[hero.id] || []).map(variant => variant.src), manifestRow?.output, quarantine?.asset, ...(subject.identity?.localCandidates || []).map(v => v.path), ...(rosterArt.filter(cg => cg.characterId === hero.id).flatMap(cg => [cg.assets?.source?.path, cg.assets?.master?.path, cg.sourcePath].filter(Boolean)))]);
  const localVisuals = visualPaths.map(value => {
-  const archival = quarantine && (/^(?:\/|public\/)?sprites\//.test(value) || (subject.identity?.localCandidates || []).some(candidate => candidate.path === value));
+  const archival = quarantine && value !== runtimeSpriteCorrection?.path && (/^(?:\/|public\/)?sprites\//.test(value) || (subject.identity?.localCandidates || []).some(candidate => candidate.path === value));
   return { path: value, role: 'project-generated-art', exists: existsSync(localFile(value)), selectedInRuntime: !archival && value === selectedSprite,
    status: archival ? 'OLD-quarantined-project-art-not-current-or-canon-reference' : 'existing-project-art-not-independent-canon-proof',
-   ...(archival ? { archivalOnly: true, runtimeEligible: false, quarantineReason: quarantine.reason } : {}) };
+   ...(archival ? getCgQuarantineVisualFlags(value, quarantine, runtimeSpriteCorrection) : value === runtimeSpriteCorrection?.path ? runtimeSpriteCorrection : {}) };
  });
  for (const ref of independentRefs.get(hero.id) || []) {
-  localVisuals.push(ref);
-  if (ref.url) refs.push({ ...source(ref.url, ref.role, ref.sourceFile, ref.status), referencePurpose: ref.referencePurpose, referenceScope: ref.referenceScope, slot: ref.slot });
+  const currentReference = pilotAuthority ? { ...ref,
+   role: 'current-runtime-reference-not-historical-cg-authority', authority: false, usedForCgIdentity: false } : ref;
+  localVisuals.push(currentReference);
+  if (ref.url) refs.push({ ...source(ref.url, currentReference.role, ref.sourceFile, ref.status),
+   ...(pilotAuthority ? { authority: false } : {}), referencePurpose: ref.referencePurpose, referenceScope: ref.referenceScope, slot: ref.slot });
  }
  const allRefs = [...new Map(refs.map(r => [`${r.url || r.path}|${r.role}`, r])).values()];
  const inspectedIndependentIdentity = localVisuals.some(ref => ref.role === 'independent-canon-reference' && ref.viewed === true);
@@ -351,6 +374,7 @@ const subjects = plan.subjects.map(subject => {
   };
  }
  const missing = unique([
+  ...(pilotAuthority?.equipmentMissing ? [CG_PILOT_EQUIPMENT_MISSING] : []),
   ...(!sourceIncarnation && !pilotIncarnation && !proposal?.incarnation && !original && !universeTarget ? ['Incarnation exacte encore à choisir; le nom de franchise ne suffit pas.'] : []),
   ...(!identityLock ? ['Silhouette, anatomie, visage, tenue et équipement non décrits spécifiquement; la vignette actuelle sert uniquement de point de comparaison.'] : []),
   ...(!inspectedIndependentIdentity && !original ? ['Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.'] : []),
@@ -361,12 +385,13 @@ const subjects = plan.subjects.map(subject => {
   ...(currentSpriteFinding?.sourceCoverageDecision ? [currentSpriteFinding.sourceCoverageDecision] : []),
   ...(hero.id === 'cyber_spider_kelly' ? kellyReview?.unresolvedVisualDetails || [] : [])
  ]);
- const qualificationStatus = currentSpriteFinding ? currentSpriteFinding.status : original ? 'original-project-reference-to-compare' : review ? 'reference-compared-close-to-reference-not-certified' : qualifiedSource ? 'source-evidence-qualified-needs-final-comparison' : Object.keys(evidenceVisualLocks).length ? 'documentary-lock-needs-inspected-identity-image' : sourceAnchor ? 'character-specific-lock-needs-image-comparison' : proposal ? 'specific-target-proposed-needs-source-review' : 'identity-or-visual-locks-incomplete';
+ const qualificationStatus = pilotAuthority ? 'published-pilot-target-needs-edition-specific-source-comparison' : currentSpriteFinding ? currentSpriteFinding.status : original ? 'original-project-reference-to-compare' : review ? 'reference-compared-close-to-reference-not-certified' : qualifiedSource ? 'source-evidence-qualified-needs-final-comparison' : Object.keys(evidenceVisualLocks).length ? 'documentary-lock-needs-inspected-identity-image' : sourceAnchor ? 'character-specific-lock-needs-image-comparison' : proposal ? 'specific-target-proposed-needs-source-review' : 'identity-or-visual-locks-incomplete';
  return {
   characterId: subject.characterId, characterName: subject.characterName, name: subject.characterName,
   universe: subject.universe, universeName: subject.universe, universeId: subject.universeKey, priority: subject.priority,
   incarnation: { label: incarnationLabel, status: incarnationStatus, evidence: unique([...(original ? ['src/game/heroes.js / originalUniversesManifest'] : []), ...(sourceEvidence?.files || []), ...(universeTarget ? [AUTHOR_FILE] : []), ...(hero.incarnation ? ['src/game/heroes.js'] : []), ...(refRecord ? ['public/sprites/generated/sprite-reference-sources.json'] : []), ...(pack?.continuity ? ['src/game/canonRosterWave.js'] : []), ...(proposal ? [AUTHOR_FILE] : [])]) },
   identityLock: identityLock || `${subject.characterName}, ${subject.universe} : l’identité nominative est conservée; les détails de ressemblance ne sont pas établis par les données actuelles.`,
+  ...(pilotAuthority?.currentRuntimeSource ? { currentRuntimeSource: pilotAuthority.currentRuntimeSource } : {}),
   visualLocks: visual, universeCoherence: world, sourceRefs: allRefs, sources: allRefs, localVisuals,
   ...(quarantine ? { runtimeSpriteQuarantine: { characterId: hero.id, ...quarantine } } : {}),
   cgRequirements: { canonSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'source-identity-in-original-scene'), nexusSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'nexus-game-adaptation'), fanArtSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'fan-art-special-theme-original-scene'), whatIfSlots: Object.keys(themes).filter(slot => themes[slot].continuityStatus === 'what-if-transformation-not-source-canon'), themes, commonRule: 'Une pose et une composition de décor distinctes par CG; pour objet/décor seul, aucun personnage forcé. Préserver incarnation/anatomie/tenue sauf transformation spéciale explicitement étiquetée. Préserver tous les anciens assets comme variantes.' },
@@ -386,7 +411,19 @@ assert(subjects.every(s => s.readiness.visualFidelityApproved === false));
 assert(subjects.every(s => Object.keys(s.cgRequirements.themes).length === 15));
 assert(subjects.every(s => s.localVisuals.some(r => r.role === 'project-generated-art' && r.exists)));
 assert(subjects.find(s => s.characterId === 'player_anchor').visualLocks.equipment.some(line => /gauche/.test(line)));
-assert(subjects.find(s => s.characterId === 'masterchief').visualLocks.equipment.some(line => /MA40/.test(line)));
+for (const characterId of ['masterchief', 'arbiter']) {
+ const current = subjects.find(subject => subject.characterId === characterId);
+ const pilot = CG_CATALOG.find(entry => entry.characterId === characterId && entry.type === 'characterSolo');
+ const hero = heroes.get(characterId);
+ assert.equal(current.incarnation.label, pilot.continuityId, 'The historical CG pilot keeps its own edition');
+ assert.deepEqual(current.visualLocks.equipment, [CG_PILOT_EQUIPMENT_MISSING], 'Missing structured pilot equipment cannot be filled by the runtime edition');
+ assert.equal(current.currentRuntimeSource.authority, false);
+ assert.equal(current.currentRuntimeSource.incarnation, hero.incarnation);
+ assert.deepEqual(current.currentRuntimeSource.equipment, hero.equipment);
+ assert.equal(current.universeCoherence.sourceWork, pilot.continuityId);
+ assert.equal(current.qualificationStatus, 'published-pilot-target-needs-edition-specific-source-comparison');
+ assert(current.localVisuals.filter(reference => reference.role.includes('current-runtime-reference')).every(reference => reference.authority === false && reference.usedForCgIdentity === false));
+}
 assert(subjects.find(s => s.characterId === 'mistral_mgr').universeCoherence.locations.every(line => /Sukhumi|Abkhazie/.test(line)));
 assert(subjects.every(s => s.localVisuals.filter(r => r.role === 'independent-canon-reference').every(r => r.url && r.sha256 && r.exists)));
 assert(subjects.every(s => !s.visualLocks.forbiddenMixes.some(line => /avec le personnage principal/.test(line))));

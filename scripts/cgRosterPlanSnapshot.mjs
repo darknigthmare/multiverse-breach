@@ -1,4 +1,7 @@
 import assert from 'node:assert/strict';
+import { projectCgReviewedRuntimeAmendment } from './cgReviewedRuntimeAmendment.mjs';
+import { projectCgSource64Amendment } from './cgSource64Amendment.mjs';
+import { projectCgReviewedAvailabilityAmendment } from './cgReviewedAvailabilityAmendment.mjs';
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -276,8 +279,10 @@ export function validateCgRosterProductionSnapshot({ root, rebuilt, heroes: HERO
   const plan = JSON.parse(publishedText);
   assertExact(buildCgRosterProductionReport(plan), reportText, 'Frozen CG plan must still render its original Markdown byte-for-byte');
   if (digest(publishedText) === CG_GITHUB_2333_PUBLISHED_SHA256) {
-    return validateCgGithub2333Snapshot({ root: ROOT, rebuilt, heroes: HEROES_DB, published: plan, publishedText, reportText,
+    const reviewedRuntime = projectCgReviewedRuntimeAmendment({ root: ROOT, rebuilt, published: plan, publishedText, heroes: HEROES_DB });
+    const historical = validateCgGithub2333Snapshot({ root: ROOT, rebuilt: reviewedRuntime.projected, heroes: HEROES_DB, catalog: CG_CATALOG, published: plan, publishedText, reportText,
       serialize: serializeCgRosterProductionPlan, buildReport: buildCgRosterProductionReport, diagnostic });
+    return { ...historical, reviewedRuntimeCorrection: reviewedRuntime.evidence };
   }
   const candidateProjection = validateCgLocalCandidateAmendment({ root: ROOT, rebuilt, published: plan, publishedText, reportText });
   const projected = candidateProjection.projected;
@@ -443,7 +448,7 @@ export const CG_GITHUB_2333_PUBLISHED_SHA256 = 'ce0e0a87c4308f39207b550721b94a1c
 export const CG_SOURCE_METADATA_AMENDMENT_PATH = 'scripts/fixtures/cg-source-metadata-amendment-2026-11-13.json';
 export const CG_SOURCE_METADATA_AMENDMENT_SHA256 = 'eba38c68b819869fc4cc31fd8b430c8562c9cc763fdc1c76a2ed632e30fbb0b4';
 
-function validateCgGithub2333Snapshot({ root, rebuilt, heroes, published, publishedText, reportText, serialize, buildReport, diagnostic }) {
+function validateCgGithub2333Snapshot({ root, rebuilt, heroes, catalog, published, publishedText, reportText, serialize, buildReport, diagnostic }) {
   const bytes = readFileSync(path.join(root, CG_SOURCE_METADATA_AMENDMENT_PATH));
   assert.equal(digest(bytes), CG_SOURCE_METADATA_AMENDMENT_SHA256, 'Nov13 CG source metadata amendment changed; append a reviewed amendment');
   const amendment = JSON.parse(bytes);
@@ -532,15 +537,21 @@ function validateCgGithub2333Snapshot({ root, rebuilt, heroes, published, publis
   const deliveryMetadata = loadCgPublishedDeliveryMetadata(root);
   deliveryMetadata.assertDeliveredEntries(rebuilt);
   assert.equal(amendment.unchangedGeneratedEntries, 1436);
-  const projectedText = serialize(candidateProjection.projected);
+  const source64Projection = projectCgSource64Amendment({ root, published,
+    projected: candidateProjection.projected, heroes, catalog });
+  const availabilityProjection = projectCgReviewedAvailabilityAmendment({ root, published,
+    projected: source64Projection.projected, heroes, catalog });
+  const projectedText = serialize(availabilityProjection.projected);
   assert.equal(digest(projectedText), digest(publishedText), 'Plan changed outside pinned current-reference metadata amendments for GitHub 2333c2c0');
   assert.equal(projectedText, publishedText, 'Projected GitHub 2333c2c0 plan must remain byte-exact');
-  assert.equal(buildReport(candidateProjection.projected), reportText, 'Projected GitHub 2333c2c0 report must remain byte-exact');
-  diagnostic('GitHub 2333c2c0 snapshot is byte-exact after 604 native-candidate and 211 descriptor projections; all 1436 published delivery declarations are preserved. Snapshot comparison does not revalidate historical CG pixels.');
+  assert.equal(buildReport(availabilityProjection.projected), reportText, 'Projected GitHub 2333c2c0 report must remain byte-exact');
+  diagnostic('GitHub 2333c2c0 snapshot is byte-exact after closed candidate, descriptor, current-source and historical-reference-availability projections; all 1436 published delivery declarations are preserved. Snapshot comparison does not revalidate historical CG pixels.');
   return { mode: 'github-2333-source-metadata-amendment', candidateSubjects: candidateProjection.subjectIds.length,
     amendmentSha256: CG_SOURCE_METADATA_AMENDMENT_SHA256, descriptorFields: descriptorProjection.fields,
     descriptorAmendmentSha256: CG_CURRENT_DESCRIPTOR_AMENDMENT_SHA256,
     deliveredEntriesPreserved: 1436, deliveredDescriptorEntriesPreserved: descriptorProjection.deliveredEntriesPreserved,
     publishedPlanSha256: CG_GITHUB_2333_PUBLISHED_SHA256,
+    currentSourceMetadataAmendment: source64Projection.evidence,
+    historicalReferenceAvailabilityAmendment: availabilityProjection.evidence,
     historicalCgMediaRevalidated: false, missingPrivateSubjects: [], unproducedCg01: [] };
 }

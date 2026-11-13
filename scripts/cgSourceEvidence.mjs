@@ -1,6 +1,8 @@
 import { existsSync, lstatSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const REFERENCE_USE_CORRECTIONS_FILE = 'docs/cg/reference-use-corrections-wave12-2026-11-01.json';
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -98,6 +100,66 @@ const localPath = (root, value) => {
   return path.resolve(root, value.replace(/^\//, ''));
 };
 const isVisualFile = file => file && /\.(?:png|jpe?g|webp|gif|avif|svg|pdf)$/i.test(file) && existsSync(file) && statSync(file).isFile();
+const hasVisualBytes = bytes => bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+  || bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255
+  || /^GIF8[79]a/.test(bytes.subarray(0, 6).toString('ascii'))
+  || bytes.subarray(0, 4).toString('ascii') === 'RIFF' && bytes.subarray(8, 12).toString('ascii') === 'WEBP'
+  || bytes.subarray(4, 8).toString('ascii') === 'ftyp' && /avif|avis/.test(bytes.subarray(8, 32).toString('ascii'))
+  || bytes.subarray(0, 5).toString('ascii') === '%PDF-'
+  || /^\s*(?:<\?xml[^>]*>\s*)?(?:<!--[^]*?-->\s*)?<svg(?:\s|>)/i.test(bytes.subarray(0, 4096).toString('utf8'));
+const MAX_REFERENCE_BYTES = 64 * 1024 * 1024;
+const MAX_REFERENCE_PIXELS = 33_554_432;
+const imageDecodeCache = new Map();
+const decoderFile = fileURLToPath(new URL('./cgReferenceImageDecode.mjs', import.meta.url));
+const normalizeImageFormat = value => typeof value === 'string' ? value.toLowerCase().replace(/^jpg$/, 'jpeg') : null;
+const decodeReferenceImage = (bytes, sha256) => {
+  const cacheKey = `${sha256}:${bytes.length}`;
+  if (imageDecodeCache.has(cacheKey)) return imageDecodeCache.get(cacheKey);
+  let result = null;
+  try {
+    // Decode the exact already-hashed buffer, never a path substituted after
+    // attestation. A bounded child keeps this historical API synchronous.
+    const decoded = JSON.parse(execFileSync(process.execPath, [decoderFile], {
+      input: bytes, encoding: 'utf8', timeout: 15_000, maxBuffer: 4096,
+      cwd: path.dirname(decoderFile), stdio: ['pipe', 'pipe', 'pipe'],
+      env: { ...process.env, VIPS_CONCURRENCY: '1' }
+    }));
+    if (decoded.ok === true && typeof decoded.format === 'string'
+      && Number.isSafeInteger(decoded.width) && decoded.width > 0
+      && Number.isSafeInteger(decoded.height) && decoded.height > 0
+      && decoded.width * decoded.height <= MAX_REFERENCE_PIXELS
+      && Number.isSafeInteger(decoded.pages) && decoded.pages > 0
+      && decoded.width * decoded.height * decoded.pages <= MAX_REFERENCE_PIXELS) result = decoded;
+  } catch { /* Missing, truncated, unsupported or undecodable input is not proof. */ }
+  imageDecodeCache.set(cacheKey, result);
+  return result;
+};
+
+export function hasCgIdentityPurpose(reference) {
+  if (reference.usedForIdentity === false) return false;
+  if (/^(?:body[-_ ]costume[-_ ]support|costume[-_ ]only|outfit[-_ ]only)$/i.test(reference.referencePurpose || '')
+    || /^(?:costume|outfit)[-_ ](?:only|scoped[-_ ]support|support[-_ ]only)/i.test(reference.role || '')
+    || /(?:costume|outfit)[-_ ]support[-_ ]only/i.test(reference.referenceScope || '')) return false;
+  const explicitIdentity = reference.usedForIdentity === true || reference.usedAsIdentityReference === true;
+  return !(reference.slot === 'CG13' && /^(?:costume|outfit)$/i.test(reference.referencePurpose || '') && !explicitIdentity);
+}
+
+export function isCgReferenceImageAttested(root, reference) {
+  const resolved = localPath(root, reference.path);
+  if (!isVisualFile(resolved)) return false;
+  if (statSync(resolved).size > MAX_REFERENCE_BYTES) return false;
+  const bytes = readFileSync(resolved);
+  if (bytes.length > MAX_REFERENCE_BYTES || !hasVisualBytes(bytes)) return false;
+  const sha256 = digest(bytes);
+  if (reference.sha256 != null && (!shaPattern.test(reference.sha256) || sha256 !== reference.sha256)) return false;
+  if (reference.bytes != null && reference.bytes !== bytes.length) return false;
+  const decoded = decodeReferenceImage(bytes, sha256);
+  if (!decoded) return false;
+  if (reference.width != null && reference.width !== decoded.width) return false;
+  if (reference.height != null && reference.height !== decoded.height) return false;
+  if (reference.format != null && normalizeImageFormat(reference.format) !== normalizeImageFormat(decoded.format)) return false;
+  return true;
+}
 // Reuse only an explicitly declared exact copy. Absence is ENOENT alone: a
 // symlink, broken link, non-directory ancestor or unreadable path is not absence.
 const resolveDeclaredPublicCopy = (root, reference) => {
@@ -182,6 +244,7 @@ const identityReference = (root, reference, document, incarnation = document.inc
   if (!identityDocument(document) || !reference.viewed || reference.usedForIdentity === false || reference.excluded === true || reference.excludedFromGeneration === true) return false;
   if ([reference.referenceScope, reference.referencePurpose].some(nonIdentityScope)) return false;
   const role = reference.role || '';
+  if (!hasCgIdentityPurpose(reference)) return false;
   if (/style[- ]only|not[- ](?:independent[- ]source|body[- ]reference|.{0,35}identity)|iconic.*outfit|outfit.*reference|(?:environment|location)[-_ ](?:art|reference)|historical.*not[-_ ]selected|world[- ]and[- ]architecture|weapon[- ]reference|pistol[- ]render|weapon[- ]only/i.test(role)) return false;
   if (/equipment[- ]reference/i.test(role) && !/armor|body|identity|character/i.test(role)) return false;
   // Generated target artwork is never evidence of its own identity. Explicit
@@ -201,7 +264,7 @@ const identityReference = (root, reference, document, incarnation = document.inc
     const owners = [document.characterId, document.heroId, document.characterName, document.name].map(key).filter(Boolean);
     if (!owners.some(owner => owner === ref || ref.length > 2 && owner.endsWith(ref))) return false;
   }
-  return isVisualFile(resolved);
+  return isCgReferenceImageAttested(root, reference);
 };
 
 /** Return repository-relative receipt names, recursively and deterministically. */

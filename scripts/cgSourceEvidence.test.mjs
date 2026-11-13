@@ -14,7 +14,7 @@ const fixture = t => {
   const root = mkdtempSync(path.join(os.tmpdir(), 'cg-evidence-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   const write = (name, value) => { mkdirSync(path.dirname(path.join(root, name)), { recursive: true }); writeFileSync(path.join(root, name), JSON.stringify(value)); };
-  const image = name => { mkdirSync(path.dirname(path.join(root, name)), { recursive: true }); writeFileSync(path.join(root, name), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl6T7AAAAAASUVORK5CYII=', 'base64')); return name; };
+  const image = name => { mkdirSync(path.dirname(path.join(root, name)), { recursive: true }); writeFileSync(path.join(root, name), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAADUlEQVQImWMwCsj7DwADmAHwphbYCgAAAABJRU5ErkJggg==', 'base64')); return name; };
   return { root, write, image };
 };
 

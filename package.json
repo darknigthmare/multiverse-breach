@@ -21,7 +21,7 @@
     "test:boosters": "node --test scripts/portalBoosterEngine.test.mjs scripts/portalBoosterCatalog.test.mjs scripts/portalBoosterEconomy.test.mjs scripts/universeUnlockables.test.mjs scripts/canonRosterBoosterArt.test.mjs scripts/canonRosterBoosterCatalogCoverage.test.mjs scripts/portalBoosterEditorialWaves.test.mjs scripts/portalBoosterRuntimeStandard.test.mjs",
     "test:extension": "node --test scripts/cardCatalog.test.mjs scripts/cardCollectionEngine.test.mjs scripts/cardSaveMigration.test.mjs scripts/missionAccessRules.test.mjs scripts/missionStageProjection.test.mjs scripts/missionReplayPolicy.test.mjs scripts/arcReplayMigration.test.mjs scripts/portalVisualManifest.test.mjs scripts/portalVisualCatalog.test.mjs scripts/featuredVisualProvenance.test.mjs scripts/gameCanvasCosmeticPresentation.test.mjs",
     "test:polish": "node --test scripts/audioPreferences.test.mjs scripts/soundEngineGesture.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/titleNavigation.test.mjs scripts/titlePresentation.test.mjs scripts/kartCareerSave.test.mjs scripts/factionProgression.test.mjs scripts/specialEvents.test.mjs scripts/progressionRuntimeIntegration.test.mjs scripts/audioStorageFallback.test.mjs scripts/audioLifecycle.test.mjs",
-    "test:cg": "node --test scripts/cgCatalog.test.mjs scripts/cgAssets.test.mjs scripts/cgManifest.test.mjs scripts/cgRevisions.test.mjs scripts/cgRosterProductionPlan.test.mjs scripts/cgRosterDeliveries.test.mjs scripts/cgSourceEvidence.test.mjs scripts/buildCgGlobalBatch.test.mjs scripts/cgAgentBatches.test.mjs scripts/cgProductionMetadataScope20261113.test.mjs scripts/cgReviewedQuarantineMetadata.test.mjs scripts/cgReviewedRuntimeAmendment.test.mjs",
+    "test:cg": "node --max-old-space-size=2048 --test --test-concurrency=1 scripts/cgCatalog.test.mjs scripts/cgAssets.test.mjs scripts/cgManifest.test.mjs scripts/cgRevisions.test.mjs scripts/cgRosterProductionPlan.test.mjs scripts/cgRosterDeliveries.test.mjs scripts/cgSourceEvidence.test.mjs scripts/buildCgGlobalBatch.test.mjs scripts/cgAgentBatches.test.mjs && npm run test:cg:metadata && npm run test:cg:bible",
     "cg:assets:process": "node scripts/processCgPilotAssets.mjs --only-missing",
     "cg:assets:process:missing": "node scripts/processCgPilotAssets.mjs --only-missing",
     "cg:assets:refresh:stale": "node scripts/processCgPilotAssets.mjs --refresh-stale",
@@ -176,7 +176,10 @@
     "dlc:materialization:check": "node scripts/auditDlcMaterialization.mjs --strict",
     "dlc:assets:batches": "node scripts/dlcAssetBatches.mjs",
     "test:source-contracts": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/arenaSourceContracts20261113.test.mjs scripts/ffActorSourceContracts20261113.test.mjs scripts/scifiSourceContracts20261113.test.mjs",
-    "test:dlc:batches": "node --test --test-concurrency=1 scripts/dlcBatchAssetSource.test.mjs scripts/dlcAssetBatchDecode.test.mjs scripts/dlcAssetBatches.test.mjs"
+    "test:dlc:batches": "node --test --test-concurrency=1 scripts/dlcBatchAssetSource.test.mjs scripts/dlcAssetBatchDecode.test.mjs scripts/dlcAssetBatches.test.mjs",
+    "test:cg:metadata": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/cgProductionMetadataScope20261113.test.mjs scripts/cgIdentityAuthorityMetadata.test.mjs scripts/cgProductionMode20261113.test.mjs scripts/cgReferenceImageDecode.test.mjs scripts/cgReferenceImageAttestation.test.mjs scripts/cgSourceIdentityScope.test.mjs scripts/cgReviewedQuarantineMetadata.test.mjs scripts/cgReviewedRuntimeAmendment.test.mjs scripts/cgSource64Amendment.test.mjs scripts/cgReviewedAvailabilityAmendment.test.mjs",
+    "cg:roster:plan:check:metadata": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs scripts/buildCgRosterProductionPlan.mjs --check-metadata",
+    "test:cg:bible": "node --max-old-space-size=2048 --test --test-concurrency=1 scripts/cgPilotBibleAuthority.test.mjs"
   },
   "dependencies": {
     "react": "^19.2.7",
