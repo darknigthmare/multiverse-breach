@@ -1,0 +1,13 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "scripts/signatureWave3.test.mjs"
+  ],
+  "exitCode": 1,
+  "seconds": 25.71
+}

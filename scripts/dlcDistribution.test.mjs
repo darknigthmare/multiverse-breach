@@ -158,6 +158,29 @@ for (const [name, change] of [
     });
 }
 
+test('private modules without an aggregate adapter remain in the selected catalogue', () => {
+    for (const privateModule of [{ path: 'data/private.js' }, { path: 'data/private.js', runtimeAdapter: null }]) {
+        const manifests = identities();
+        manifests[0].modules = [
+            { path: 'data/heroes.js', runtimeAdapter: 'src/game/catalog.js' }, privateModule,
+        ];
+        const selected = resolveDlcSelection({ manifests, profile: profile('selected', ['halo']) });
+        assert.deepEqual(selected.selectedManifests[0].modules, manifests[0].modules);
+        assert.deepEqual(resolveDlcSelection({ manifests, profile: profile('base') }).selectedManifests, []);
+        assert.deepEqual(manifests[0].modules[1], privateModule);
+    }
+});
+
+test('an optional runtime adapter still rejects invalid types and unsafe paths', () => {
+    for (const runtimeAdapter of [false, 0, {}, [], '', '../src/game/catalog.js', '/src/game/catalog.js',
+        'src/../private.js', 'src\\game\\catalog.js', 'src/game/%2e%2e/private.js']) {
+        const manifests = identities();
+        manifests[0].modules = [{ path: 'data/private.js', runtimeAdapter }];
+        assert.throws(() => resolveDlcSelection({ manifests, profile: profile('base') }),
+            /Invalid DLC module|Unsafe distribution path/, String(runtimeAdapter));
+    }
+});
+
 test('plans retain all shared assets and require no excluded asset blobs', (t) => {
     const f = fixture(t);
     rmSync(join(f.root, 'DLC/HalfLife/assets'), { recursive: true });

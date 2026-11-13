@@ -1,0 +1,924 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "baselineCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "actorCount": 40,
+  "beforeFindingsByPriority": {
+    "P1": 192,
+    "P2": 83
+  },
+  "afterFindingsByPriority": {
+    "P2": 123,
+    "P1": 51
+  },
+  "removedByCode": {
+    "INCARNATION_UNSPECIFIED": 40,
+    "VISUAL_CONTRACT_MISSING": 40,
+    "REFERENCE_MISSING": 40,
+    "GENERIC_TECHNIQUE_NAMES": 21
+  },
+  "addedByCode": {
+    "REFERENCE_SCENE_REVIEW": 40
+  },
+  "closedActorDossiers": 0,
+  "rasterChanges": 0,
+  "artworkApprovals": 0,
+  "resolvedHeroAbilitySemanticChanges": 0,
+  "preparedSignatureCompatibilityCount": 18,
+  "existingPreparedKitsPreserved": 21,
+  "tacticsRoleChanges": [
+    {
+      "name": "Midgar Zolom",
+      "before": "shooter",
+      "after": "monster"
+    },
+    {
+      "name": "MT Trooper",
+      "before": "monster",
+      "after": "shooter"
+    }
+  ],
+  "note": "Generic-name closures describe the raw catalog only: existing resolved combat profiles already supplied these techniques. Edition/reference/visual contracts do not approve source choreography, balance or artwork.",
+  "sourceFiles": [
+    {
+      "path": "src/game/signatureSourceKits.js",
+      "sha256": "fda784a8f9d45ae9178c6dbfb562345180d364912b80b002ecb507bf441162de"
+    },
+    {
+      "path": "DLC/FinalFantasyVII/data/enemies.js",
+      "sha256": "213003efc6181bc44b9f6d77c49a0d6328aaf3526dc1cec1f8aaeb8f56894bcb"
+    },
+    {
+      "path": "DLC/FinalFantasyVII/manifest.json",
+      "sha256": "d0835db9fd83c14ba9eebcbda3019000215d9b62aebcad0bb175858d6daf0f0d"
+    },
+    {
+      "path": "DLC/FinalFantasyVII/data/actorSourceContracts.js",
+      "sha256": "6998a51162a01a871b547835de540797a2d259ff147847e0588a867c8ff8493f"
+    },
+    {
+      "path": "DLC/FinalFantasyVII/data/heroes.js",
+      "sha256": "a9a843b05845f5e7198c942a247e7220ddef1cb6b24193bee5b9a61325b82aff"
+    },
+    {
+      "path": "DLC/FinalFantasyVII/data/expandedUniverses.js",
+      "sha256": "62653badf5a0eb89653d90a7f9c83856e7f34f689efbdb155e817485fed9308c"
+    },
+    {
+      "path": "DLC/FinalFantasyVIII/manifest.json",
+      "sha256": "17d994ad8258f9f9867e3836353233d40b5efdb6fadca440c7f255e51994dd21"
+    },
+    {
+      "path": "DLC/FinalFantasyVIII/data/actorSourceContracts.js",
+      "sha256": "911441e7c877f7abec1aabb2332f4a6e111fd7df0483e97378a3034e869967d7"
+    },
+    {
+      "path": "DLC/FinalFantasyVIII/data/heroes.js",
+      "sha256": "5b5310e8b72c98c90cfdc111617a6120902d57a70e5c38ad877abcba3305c689"
+    },
+    {
+      "path": "DLC/FinalFantasyVIII/data/expandedUniverses.js",
+      "sha256": "dd0cb708d587c831f8d18843022ed2aab0e43cc523b036a6e7824c2490542d95"
+    },
+    {
+      "path": "DLC/FinalFantasyXIII/manifest.json",
+      "sha256": "d053b0e2e782a2cedb6286893ee20bca2dd90635158c75322e79176344885549"
+    },
+    {
+      "path": "DLC/FinalFantasyXIII/data/actorSourceContracts.js",
+      "sha256": "21d11ebc2af58de354df89290071ee63e16e6852550caff268395c1b9f1532c7"
+    },
+    {
+      "path": "DLC/FinalFantasyXIII/data/heroes.js",
+      "sha256": "73477c8c9b8dfc7c6da47493768a6033f0abb9fad6da4340fa2d41b2d4165e21"
+    },
+    {
+      "path": "DLC/FinalFantasyXIII/data/expandedUniverses.js",
+      "sha256": "6be31a6db41f0ecb8fc29b98243de508033a6c6e31fac24a574a0a0f3375781e"
+    },
+    {
+      "path": "DLC/FinalFantasyXV/manifest.json",
+      "sha256": "7bc7471df6759e8605f6fdfe21b5d09aa15633d076ab159f07bdf43d11f204b6"
+    },
+    {
+      "path": "DLC/FinalFantasyXV/data/actorSourceContracts.js",
+      "sha256": "a3d7cd1476b63bff25cedf5df06e561870bb64ef02a846abfa2b5e8ca9431156"
+    },
+    {
+      "path": "DLC/FinalFantasyXV/data/heroes.js",
+      "sha256": "e4268c09e298000361ed3bee140aa1a4d1ceaa39d54a1bc1ec216beedb5c65c2"
+    },
+    {
+      "path": "DLC/FinalFantasyXV/data/expandedUniverses.js",
+      "sha256": "2b2b9dfbe28f4838cb638248adac12fc0f7bce957cdd943504e777a2158c1103"
+    }
+  ],
+  "immutableEvidence": [
+    {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/plan.json",
+      "sha256": "c394de2466ca020f3c4df8fdc06f7cacbb137651425a71e8d9dec7c97c78b03c"
+    },
+    {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/runtime-before.json",
+      "sha256": "27c27cd1cb074d495245fbed19b8fb6e195265620e5095b861c00958f0e2100c"
+    },
+    {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/ff-lot-040/baseline-actor-backlog.json",
+      "sha256": "9220c4192109d31536fe668f7828e5c472920144fc699187845aa55ad535faa2"
+    }
+  ],
+  "actors": [
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "name": "Cloud Strife",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_ARTWORK"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "name": "Tifa Lockhart",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_ARTWORK"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "melee",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "name": "Aerith Gainsborough",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "staff",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "name": "Barret Wallace",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "name": "Red XIII",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "melee",
+      "afterWeapon": "melee",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "name": "Yuffie Kisaragi",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "shuriken",
+      "afterWeapon": "shuriken",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "name": "Vincent Valentine",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "name": "Squall Leonhart",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "name": "Rinoa Heartilly",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "laser",
+      "afterWeapon": "boomerang",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "name": "Quistis Trepe",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "whip",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "name": "Seifer Almasy",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "name": "Laguna Loire",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "name": "Zell Dincht",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "melee",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "name": "Selphie Tilmitt",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "laser",
+      "afterWeapon": "nunchaku",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "name": "Irvine Kinneas",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "name": "Lightning",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_ARTWORK",
+        "RESEARCH_lr-aerith-console"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "name": "Fang",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "spear",
+      "afterWeapon": "spear",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "name": "Vanille",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "staff",
+      "afterWeapon": "staff",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "name": "Snow Villiers",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "melee",
+      "afterWeapon": "melee",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "name": "Sazh Katzroy",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "name": "Hope Estheim",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "boomerang",
+      "afterWeapon": "boomerang",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "name": "Noctis Lucis Caelum",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH",
+        "RESEARCH_ff15-half-life-main",
+        "RESEARCH_ffxv-royal-raiment-reference"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "name": "Gladiolus",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "sword",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "name": "Ignis",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "slash",
+      "afterWeapon": "slash",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "name": "Lunafreya",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "laser",
+      "afterWeapon": "staff",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "name": "Prompto Argentum",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "name": "Ardyn Izunia",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "sword",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "name": "Cor Leonis",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "katana",
+      "afterWeapon": "katana",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "name": "Midgar Zolom",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "bite",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "name": "Shinra Guard",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "rifle",
+      "afterWeapon": "rifle",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "name": "Sweeper Machine",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "machine_gun",
+      "afterWeapon": "machine_gun",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "name": "Jenova BIRTH",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "tentacles",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "name": "Galbadian Soldier",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "name": "Bite Bug",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "bite",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "name": "T-Rexaur",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "bite",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "name": "Edea Kramer",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "magic",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "name": "PSICOM Soldier",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "rifle",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "name": "Barthandelus",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "gun",
+      "afterWeapon": "magic",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "name": "MT Trooper",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "rifle",
+      "artApproved": false,
+      "source1to1Verified": false
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "name": "Iron Giant",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1Codes": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "beforeWeapon": "magic",
+      "afterWeapon": "sword",
+      "artApproved": false,
+      "source1to1Verified": false
+    }
+  ]
+}

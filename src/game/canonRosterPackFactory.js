@@ -38,6 +38,13 @@ const normalizeDefinition = (value, index, fallbackPrefix) => (
     : { id: `${fallbackPrefix}_${index + 1}`, ...value }
 );
 
+// Keep explicit actor-level source declarations through the pack adapter.
+// This whitelist carries provenance only, never arbitrary identity/approval flags.
+const actorSourceDeclaration = definition => Object.fromEntries(
+  ['incarnation', 'referenceUrl'].filter(key => typeof definition[key] === 'string' && definition[key].trim())
+    .map(key => [key, definition[key]])
+);
+
 const makeHero = (pack, rawDefinition, index) => {
   const definition = normalizeDefinition(rawDefinition, index, 'hero');
   const name = definition.name;
@@ -46,6 +53,7 @@ const makeHero = (pack, rawDefinition, index) => {
   const visualAnchor = definition.visualAnchor
     || `${name}, preserving the canonical silhouette, palette, outfit and signature prop from the locked continuity.`;
   const common = {
+    ...actorSourceDeclaration(definition),
     output: `/sprites/generated/heroes/${slugify(pack.universe)}/${slugify(id)}.png`,
     spritePrompt: nonCombat
       ? `Original fan-made pixel-art environmental Trial sheet. ${name}. Preserve: ${visualAnchor} Four readable objective states; no combat pose, weapon, opponent, UI, text, logo, copied official artwork or actor likeness.`
@@ -114,7 +122,7 @@ const makeThreat = (pack, rawDefinition, index, kind) => {
       ...fidelity(pack, visualAnchor, lore(
         definition.fr || `${name} est une épreuve objective, jamais une cible vivante.`,
         definition.en || `${name} is an objective Trial, never a living target.`
-      ), definition.canonStatus || 'canon objective represented as a non-combat Trial'),
+      ), definition.canonStatus || 'canon objective represented as a non-combat Trial', actorSourceDeclaration(definition)),
       nonCombat: true,
       trialType: definition.trialType || 'Trial',
       objective: definition.objective || `Resolve ${name} through timing, navigation, investigation or interaction.`,
@@ -133,7 +141,7 @@ const makeThreat = (pack, rawDefinition, index, kind) => {
     ...fidelity(pack, visualAnchor, lore(
       definition.fr || `${name} conserve son rôle d'adversaire dans la continuité verrouillée.`,
       definition.en || `${name} keeps the adversarial role from the locked continuity.`
-    ), definition.canonStatus || `canon ${kind}`)
+    ), definition.canonStatus || `canon ${kind}`, actorSourceDeclaration(definition))
   });
 };
 

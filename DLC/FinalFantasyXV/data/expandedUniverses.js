@@ -1,5 +1,13 @@
+import { sourceHeroContract, sourceEnemyContract } from './actorSourceContracts.js';
 // Final Fantasy XV — definitions consumed by src/game/expandedUniverses.js.
 
 export function createExpandedUniverseRecord() {
-  return ({ key: 'ff15', universe: 'Final Fantasy XV', mediaType: 'game', faction: 'arcane', mode: 'RPG', difficulty: 'Hard', titleFr: 'Final Fantasy XV', stage: 'Lucis Roadtrip Nightfall', boss: 'Ardyn Starscourge Throne', hero: ['noctis_ff15', 'Noctis Lucis Caelum', 'slayer'], allies: [['gladiolus_ff15', 'Gladiolus', 'marine'], ['ignis_ff15', 'Ignis', 'tactical']], monsters: ['MT Trooper', 'Iron Giant', 'Red Giant'], bosses: ['Ardyn Izunia', 'Ifrit Infernian'], gear: [['engine_blade_core', 'Engine Blade Core', 'Noyau de lame motrice', { atk: 4 }], ['royal_arm_shard', 'Royal Arm Shard', 'Éclat d\'arme royale', { atk: 3, def: 2 }], ['camping_utensils', 'Camping Utensils', 'Ustensiles de camping', { hp: 4, def: 1 }]], event: ['evt_armiger_unleashed', 'Armiger Unleashed', 'Arsenal fantôme libéré', 'Unleash all Royal Arms in a devastating spectral barrage around Noctis', 'Libère toutes les armes royales dans un barrage spectral dévastateur autour de Noctis'], theme: 'royal road trips, astral pacts, daemon nights, and warp-strike brotherhood', motif: 'wasteland', colors: ['#171b2b', '#030407', '#7d9bff'] });
+  const record = ({ key: 'ff15', universe: 'Final Fantasy XV', mediaType: 'game', faction: 'arcane', mode: 'RPG', difficulty: 'Hard', titleFr: 'Final Fantasy XV', stage: 'Lucis Roadtrip Nightfall', boss: 'Ardyn Starscourge Throne', hero: ['noctis_ff15', 'Noctis Lucis Caelum', 'slayer'], allies: [['gladiolus_ff15', 'Gladiolus', 'marine'], ['ignis_ff15', 'Ignis', 'tactical']], monsters: ['MT Trooper', 'Iron Giant', 'Red Giant'], bosses: ['Ardyn Izunia', 'Ifrit Infernian'], gear: [['engine_blade_core', 'Engine Blade Core', 'Noyau de lame motrice', { atk: 4 }], ['royal_arm_shard', 'Royal Arm Shard', 'Éclat d\'arme royale', { atk: 3, def: 2 }], ['camping_utensils', 'Camping Utensils', 'Ustensiles de camping', { hp: 4, def: 1 }]], event: ['evt_armiger_unleashed', 'Armiger Unleashed', 'Arsenal fantôme libéré', 'Unleash all Royal Arms in a devastating spectral barrage around Noctis', 'Libère toutes les armes royales dans un barrage spectral dévastateur autour de Noctis'], theme: 'royal road trips, astral pacts, daemon nights, and warp-strike brotherhood', motif: 'wasteland', colors: ['#171b2b', '#030407', '#7d9bff'] });
+  const authoredEnemyNames = new Set(['Iron Giant', 'MT Trooper']);
+  const enemy = value => authoredEnemyNames.has(value) ? { name: value, ...sourceEnemyContract(value) } : value;
+  record.hero = [...record.hero, sourceHeroContract(record.hero[0])];
+  record.allies = record.allies.map(tuple => [...tuple, sourceHeroContract(tuple[0])]);
+  record.monsters = record.monsters.map(enemy);
+  record.bosses = record.bosses.map(enemy);
+  return record;
 }

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: active, reserve and absent remain distinct while absent progress and preference survive
+ok 1 - active, reserve and absent remain distinct while absent progress and preference survive
+  ---
+  duration_ms: 2.0112
+  type: 'test'
+  ...
+# Subtest: next and final briefing keep authored order and prerequisites without changing completion
+ok 2 - next and final briefing keep authored order and prerequisites without changing completion
+  ---
+  duration_ms: 0.459765
+  type: 'test'
+  ...
+# Subtest: a broken or unavailable prerequisite does not choose or unlock a later mission
+ok 3 - a broken or unavailable prerequisite does not choose or unlock a later mission
+  ---
+  duration_ms: 0.712847
+  type: 'test'
+  ...
+# Subtest: filtering searches both languages and mission names with accent-insensitive words
+ok 4 - filtering searches both languages and mission names with accent-insensitive words
+  ---
+  duration_ms: 1.015054
+  type: 'test'
+  ...
+# Subtest: a base edition keeps metadata-only dossiers and never invents content
+ok 5 - a base edition keeps metadata-only dossiers and never invents content
+  ---
+  duration_ms: 0.3572
+  type: 'test'
+  ...
+# Subtest: projection and searches preserve packs, progression, preferences and source order
+ok 6 - projection and searches preserve packs, progression, preferences and source order
+  ---
+  duration_ms: 0.676683
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 129.86202

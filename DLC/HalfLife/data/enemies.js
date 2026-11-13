@@ -2,7 +2,7 @@
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createEnemiesDb() {
-  return ({
+  return applyHalfLifeEnemySourceContracts({
     monsters: [
       { name: 'Leaping Headcrab Zombie', hp: 70, atk: 8, spd: 4, color: '#8d6e63', weapon: 'claws' },
       { name: 'Combine Overwatch Soldier', hp: 85, atk: 10, spd: 5, color: '#34495e', weapon: 'gun' },
@@ -28,7 +28,7 @@ export function createEnemiesDb() {
 }
 
 export function createCanonEnemyExpansion() {
-  return ({
+  return applyHalfLifeEnemySourceContracts({
     monsters: [
       { name: 'Houndeye Pack', hp: 75, atk: 11, spd: 6, color: '#7d6f3f', weapon: 'sonic_blast' },
       { name: 'Barnacle Ceiling Trap', hp: 65, atk: 10, spd: 2, color: '#a36b6b', weapon: 'tongue_grab' },
@@ -39,4 +39,83 @@ export function createCanonEnemyExpansion() {
       { name: 'Advisor Pod Core', hp: 650, atk: 22, spd: 4, color: '#5d4a73', weapon: 'psychic_lift', special: 'Neural Harvest' }
     ]
   });
+}
+
+// Exact legacy names remain the runtime/signature identities.
+const SCIFI_ENEMY_SOURCE_CONTRACTS = {
+  "Combine Overwatch Soldier": {
+    "incarnation": "Half-Life 2 (2004) - standard Overwatch soldier with AR2",
+    "referenceUrl": "https://combineoverwiki.net/wiki/Overwatch_Soldier",
+    "visualAnchor": "Human-sized standard Combine Overwatch soldier in blue-grey armor, black enclosed gas-mask helmet with pale lenses and an AR2 pulse rifle. No white Elite armor or exposed Resistance face.",
+    "equipment": [
+      "Standard blue-grey Overwatch armor",
+      "AR2 pulse rifle"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Acid-Spitting Bullsquid": {
+    "incarnation": "Half-Life (1998) - Xen bullsquid",
+    "referenceUrl": "https://github.com/ValveSoftware/halflife/blob/master/dlls/bullsquid.cpp",
+    "visualAnchor": "Stocky biped Xen bullsquid with thick orange-brown hide, two legs, a heavy tail and red mouth tentacles around the snout. Acid spit leaves the mouth; no humanoid arms, gun or Combine armor.",
+    "equipment": [
+      "Mouth acid spit",
+      "Tail and mouth tentacles"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Houndeye Pack": {
+    "incarnation": "Half-Life (1998) - Houndeye, pack encounter abstraction",
+    "referenceUrl": "https://github.com/ValveSoftware/halflife/blob/master/dlls/houndeye.cpp",
+    "visualAnchor": "Stocky three-legged Houndeye with brown-yellow hide, pale belly and one large compound eye at the front. Sonic rings are centered on the animal; the legacy Pack label does not certify several bodies in one sprite.",
+    "equipment": [
+      "Sonic discharge organ"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Barnacle Ceiling Trap": {
+    "incarnation": "Half-Life (1998) - ceiling-attached barnacle",
+    "referenceUrl": "https://combineoverwiki.net/wiki/Barnacle",
+    "visualAnchor": "Sessile fleshy Xen barnacle attached to a ceiling, downward mouth and a long hanging sticky tongue. Its source movement is ceiling-fixed; no walking legs or handheld weapon. Ceiling attachment and tongue choreography still require mode-specific visual review.",
+    "equipment": [
+      "Hanging tongue and mouth"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Zombie Poison Headcrab Host": {
+    "incarnation": "Half-Life 2 (2004) - poison zombie host",
+    "referenceUrl": "https://combineoverwiki.net/wiki/Poison_Zombie",
+    "visualAnchor": "Bulky hunched human poison zombie in a worn jacket, carrying dark poison headcrabs across the shoulders and back, with one grasped for throwing. Preserve the distinct crab shapes; no green fire breath or ordinary bare zombie head.",
+    "equipment": [
+      "Carried poison headcrabs",
+      "Infected hands"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  }
+};
+
+export function applyHalfLifeEnemySourceContracts(roster) {
+  return { ...roster, monsters: (roster.monsters || []).map(actor => {
+    const contract = SCIFI_ENEMY_SOURCE_CONTRACTS[actor.name];
+    return contract ? { ...actor, ...structuredClone(contract) } : actor;
+  }) };
 }

@@ -4,8 +4,8 @@
   "sharedDependencyCoverage": "Explicit static references, common UI literals and directory affiliations only; dynamic UI and common engine dependencies are not exhaustively inferred.",
   "distribution": {
     "dlcManifests": 505,
-    "trackedPublicPaths": 19582,
-    "assignedToDlc": 11969,
+    "trackedPublicPaths": 19583,
+    "assignedToDlc": 11970,
     "unclaimedByDlc": 7613,
     "unclaimedReasons": {
       "base-game": 682,
@@ -33738,7 +33738,8 @@
       "sourcePath": "public/images/missions/campaign-oc.webp",
       "reason": "base-game",
       "basis": [
-        "src/components/HubScreen.jsx#common-ui"
+        "src/components/HubScreen.jsx#common-ui",
+        "src/components/OcDlcLibrary.jsx#common-ui"
       ],
       "referencedBy": [
         "Nexus de Convergence"

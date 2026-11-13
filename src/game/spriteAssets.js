@@ -34,7 +34,7 @@ import { buildPresentationFallbacksWave10 } from './combat/characterPresentation
 import { getSourceCaptureEnemyFrameWave17 } from './combat/sourceCaptureEnemyCatalogWave17.js';
 import { DISCIPLINE_SPRITE_LAYOUTS, getDisciplineSpriteLayout, getDisciplineSpriteSources } from './disciplineSprites.js';
 import { getCloudMeadowSpriteLayout, getCloudMeadowSpriteSrc } from './cloudMeadowCharacters.js';
-import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
+import { getQuarantinedCanonSprite, getReviewedQuarantineCorrection, REVIEWED_KOTOR_I_REVAN_CORRECTION } from './canonicalSpriteQuarantine.js';
 import { getBoundEnemySpriteSrc } from './enemySpriteBindings.js';
 import {
   getMeleeAnimationFrame,
@@ -76,6 +76,7 @@ import characterSpriteCorrectionsWave10D from './combat/characterSpriteCorrectio
 const wave6BaseEntries = [...characterSpriteCorrectionsWave6A.entries, ...characterSpriteCorrectionsWave6B.entries, ...characterSpriteCorrectionsWave6C.entries];
 const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries, ...characterSpriteCorrectionsWave12A.entries, ...characterSpriteCorrectionsWave12B.entries, ...characterSpriteCorrectionsWave12C.entries, ...characterSpriteCorrectionsWave12D.entries, ...characterSpriteCorrectionsWave13A.entries, ...characterSpriteCorrectionsWave13B.entries, ...characterSpriteCorrectionsWave14B.entries, ...characterSpriteCorrectionsWave14A.entries, ...characterSpriteCorrectionsWave15A.entries, ...characterSpriteCorrectionsWave15B.entries, ...characterSpriteCorrectionsWave15C.entries, ...characterSpriteCorrectionsWave16A.entries, ...characterSpriteCorrectionsWave16B.entries, ...characterSpriteCorrectionsWave16C.entries, ...characterSpriteCorrectionsWave17A.entries, ...characterSpriteCorrectionsWave17B.entries, ...characterSpriteCorrectionsWave17C.entries];
 const correctedCharacterSprites = new Map([...characterSpriteCorrections.entries, ...characterSpriteCorrectionsWave2.entries, ...characterSpriteCorrectionsWave4.entries, ...characterSpriteCorrectionsWave5.entries, ...calibratedBaseEntries].map(entry => [entry.heroId, entry]));
+export const getReviewedQuarantinedHeroSprite = hero => getReviewedQuarantineCorrection(hero, correctedCharacterSprites.get(hero?.id));
 const calmSupportSheetsWave11 = new Set(Object.entries({ ...COMBAT_SOURCE_DEFINITIONS_WAVE11, ...COMBAT_SOURCE_DEFINITIONS_WAVE12, ...COMBAT_SOURCE_DEFINITIONS_WAVE13, ...COMBAT_SOURCE_DEFINITIONS_WAVE14, ...COMBAT_SOURCE_DEFINITIONS_WAVE15, ...COMBAT_SOURCE_DEFINITIONS_WAVE16, ...COMBAT_SOURCE_DEFINITIONS_WAVE17 })
   .filter(([, source]) => source.effect === 'damage')
   .map(([id]) => correctedCharacterSprites.get(id)?.sheet || (id === 'harry_potter' ? '/sprites/generated/heroes/harry-potter/harry-potter.png' : null)).filter(Boolean));
@@ -1024,7 +1025,8 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
     if (meleeFrame?.animation?.sheet) return meleeFrame.animation.sheet;
   }
   const correctedSprite = correctedCharacterSprites.get(hero.sourceHeroId || hero.sourceId || hero.id);
-  if (correctedSprite?.universe === hero.universe) return correctedSprite.sheet;
+  if (correctedSprite?.universe === hero.universe
+    && (correctedSprite.sheet !== REVIEWED_KOTOR_I_REVAN_CORRECTION.sheet || getReviewedQuarantinedHeroSprite(hero))) return correctedSprite.sheet;
   const adaptedPresentation = adaptedPresentationSpritesWave10.get(hero.sourceHeroId || hero.sourceId || hero.id);
   if (adaptedPresentation?.universe === hero.universe) return adaptedPresentation.sheet;
   const blockedLegacySource = blockedLegacySourcesWave11.get(hero.sourceHeroId || hero.sourceId || hero.id);
@@ -1049,10 +1051,15 @@ const getOriginalHeroSpriteSheetSrc = (hero, context = 'auto') => {
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(assetId)}.png`;
 };
 
-export const getHeroSpriteSheetSources = (hero, context = 'auto') => getQuarantinedCanonSprite(hero) ? [] : [...new Set([
-  ...getDisciplineSpriteSources(hero),
-  getOriginalHeroSpriteSheetSrc(hero, context)
-].filter(Boolean))];
+export const getHeroSpriteSheetSources = (hero, context = 'auto') => {
+  const reviewed = getReviewedQuarantinedHeroSprite(hero);
+  if (reviewed) return [reviewed.sheet];
+  if (getQuarantinedCanonSprite(hero)) return [];
+  return [...new Set([
+    ...getDisciplineSpriteSources(hero),
+    getOriginalHeroSpriteSheetSrc(hero, context)
+  ].filter(Boolean))];
+};
 
 export const getHeroSpriteSheetSrc = (hero, context = 'auto') => (
   getHeroSpriteSheetSources(hero, context)[0] || ''

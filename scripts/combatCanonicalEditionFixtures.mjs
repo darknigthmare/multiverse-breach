@@ -596,7 +596,1592 @@ function assertLatestWave13Comparison(actor) {
   return frozen;
 }
 
+// Additive source projections accepted in the November13 actor batches.
+// Historical actions remain pinned per slot; current raw actions are the exact
+// previously authored W14/W15 objects, not newly invented gameplay or art approval.
+export const PROJECTED_SOURCE_EDITIONS_20261113 = Object.freeze({
+  "ardyn_ff15": {
+    "id": "ardyn_ff15",
+    "universe": "Final Fantasy XV",
+    "incarnation": "Final Fantasy XV (2016), main-game chancellor outfit",
+    "weaponType": "sword",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceFidelityAudit": "ff-lot-040-2026-11-13",
+    "canonStatus": "Source edition declared individually; existing authored ability rules reused. Numeric effects, timing, poses and artwork remain adaptations requiring review.",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Starscourge Cut",
+          "type": "melee",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Coupe de la lame royale d’Ardyn",
+          "type": "melee",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Royal Parry Theft",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Contre de la lame spectrale d’Ardyn",
+          "type": "melee",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Immortal Feint",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Garde de la lame d’Ardyn",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Usurper Throne Collapse",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7b241c"
+        },
+        "selected": {
+          "name": "Taille de la lame royale d’Ardyn",
+          "type": "melee",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 165,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "cor_ff15": {
+    "id": "cor_ff15",
+    "universe": "Final Fantasy XV",
+    "incarnation": "Final Fantasy XV (2016), main-game Crownsguard marshal outfit",
+    "weaponType": "katana",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceFidelityAudit": "ff-lot-040-2026-11-13",
+    "canonStatus": "Source edition declared individually; existing authored ability rules reused. Numeric effects, timing, poses and artwork remain adaptations requiring review.",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Katana Draw",
+          "type": "melee",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Coupe du katana du Maréchal",
+          "type": "melee",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Immortal Counter",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Contre du katana de Cor",
+          "type": "melee",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Crownsguard Stance",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Garde de katana de Cor",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Lucian Veteran Rush",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        },
+        "selected": {
+          "name": "Taille du katana de Cor",
+          "type": "melee",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 165,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "noble_six": {
+    "id": "noble_six",
+    "universe": "Halo",
+    "incarnation": "Halo: Reach (2010), default adult Noble Six",
+    "weaponType": "gun",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Noble Six Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Tir du MA37 de Noble Six",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Noble Six Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée du MA37 de Reach",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Noble Six Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Garde de l’armure Mark V(B)",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Noble Six Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#566573"
+        },
+        "selected": {
+          "name": "Rafale du MA37 de Noble Six",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "buck_odst": {
+    "id": "buck_odst",
+    "universe": "Halo",
+    "incarnation": "Halo 3: ODST (2009), Buck before Spartan conversion",
+    "weaponType": "gun",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Edward Buck Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Tir du M7S silencieux de Buck",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Edward Buck Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée du M7S de l’ODST Buck",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Edward Buck Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Repli de Buck en armure ODST",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Edward Buck Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#34495e"
+        },
+        "selected": {
+          "name": "Rafale du M7S de Buck",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "kelly_087": {
+    "id": "kelly_087",
+    "universe": "Halo",
+    "incarnation": "Halo 5: Guardians (2015)",
+    "weaponType": "gun",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Kelly-087 Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Tir de l’Oathsworn de Kelly",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Kelly-087 Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée du M45D de Kelly",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Kelly-087 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Garde de Kelly en armure Hermes",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Kelly-087 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#1f7a3f"
+        },
+        "selected": {
+          "name": "Tir du fusil Oathsworn de Kelly",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "linda_058": {
+    "id": "linda_058",
+    "universe": "Halo",
+    "incarnation": "Halo 5: Guardians (2015)",
+    "weaponType": "rifle",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Linda-058 Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Tir de précision du Nornfang",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Linda-058 Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée Argus de Linda",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Linda-058 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Repli de Linda en armure Argus",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Linda-058 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#255f3f"
+        },
+        "selected": {
+          "name": "Tir du Nornfang de Linda",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "ashley_williams": {
+    "id": "ashley_williams",
+    "universe": "Mass Effect",
+    "incarnation": "Mass Effect 3 (2012), Alliance officer Ashley",
+    "weaponType": "gun",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Ashley Williams Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Tir du M8 Avenger d’Ashley",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Ashley Williams Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée de l’officière Ashley",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Ashley Williams Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Garde de l’armure Alliance d’Ashley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Ashley Williams Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#34495e"
+        },
+        "selected": {
+          "name": "Rafale du M8 Avenger d’Ashley",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "mordin": {
+    "id": "mordin",
+    "universe": "Mass Effect",
+    "incarnation": "Mass Effect 2 (2010)",
+    "weaponType": "omnitool",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Mordin Solus Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Projection incendiaire du omni-outil",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Mordin Solus Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Visée du omni-outil de Mordin",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Mordin Solus Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Retrait du scientifique Mordin",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Mordin Solus Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#95a5a6"
+        },
+        "selected": {
+          "name": "Incinération du omni-outil de Mordin",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "shephard": {
+    "id": "shephard",
+    "universe": "Half-Life",
+    "incarnation": "Half-Life: Opposing Force (1999), Adrian Shephard HECU loadout",
+    "weaponType": "gun",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "HECU Rifle Burst",
+          "type": "bullet",
+          "dmg": 1.05
+        },
+        "selected": {
+          "name": "Tir de HECU submachinegun de Adrian Shephard",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Pipe Wrench Breach",
+          "type": "melee",
+          "cd": 6,
+          "dmg": 1.8
+        },
+        "selected": {
+          "name": "Visée de HECU submachinegun de Adrian Shephard",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Marine Cover Order",
+          "type": "shield",
+          "dur": 2.1,
+          "reduce": 0.78
+        },
+        "selected": {
+          "name": "Repli de Adrian Shephard en Half-Life: Opposing Force (1999)",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Race X Suppression",
+          "type": "explosive_aoe",
+          "dmg": 4.6,
+          "color": "#7f8c8d"
+        },
+        "selected": {
+          "name": "Rafale HECU d’Adrian Shephard",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "vortigaunt_ally": {
+    "id": "vortigaunt_ally",
+    "universe": "Half-Life",
+    "incarnation": "Half-Life 2 (2004), freed allied Vortigaunt",
+    "weaponType": "energy",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Vortigaunt Ally Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Décharge de Vortessence",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Vortigaunt Ally Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Concentration du Vortigaunt libre",
+          "type": "projectile",
+          "dmg": 1.65,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Vortigaunt Ally Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Repli du Vortigaunt allié",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Vortigaunt Ally Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#6f8f4f"
+        },
+        "selected": {
+          "name": "Décharge du Vortigaunt libre",
+          "type": "projectile",
+          "dmg": 4.4,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "dog_hl2": {
+    "id": "dog_hl2",
+    "universe": "Half-Life",
+    "incarnation": "Half-Life 2 (2004), Alyx’s robot Dog",
+    "weaponType": "fist",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Dog Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Poussée du bras mécanique de Dog",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Dog Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Reprise de l’appui hydraulique",
+          "type": "melee",
+          "dmg": 1.65,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Dog Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Blocage des bras de Dog",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Dog Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#95a5a6"
+        },
+        "selected": {
+          "name": "Coup du bras mécanique de Dog",
+          "type": "melee",
+          "dmg": 4.4,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 165,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "cortana": {
+    "id": "cortana",
+    "universe": "Halo",
+    "incarnation": "Halo 3 (2007), Cortana holographic AI",
+    "weaponType": "terminal",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13",
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "slots": {
+      "simple": {
+        "historical": {
+          "name": "Cortana Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "selected": {
+          "name": "Lecture tactique de Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "name": "Cortana Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "selected": {
+          "name": "Repérage du relais par Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        }
+      },
+      "defense": {
+        "historical": {
+          "name": "Cortana Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "selected": {
+          "name": "Redondance de l’IA Cortana",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        }
+      },
+      "special": {
+        "historical": {
+          "name": "Cortana Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#4dd2ff"
+        },
+        "selected": {
+          "name": "Guidage tactique de Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "unreal_tournament_2004_gorge": {
+    "id": "unreal_tournament_2004_gorge",
+    "universe": "Unreal Tournament 2004",
+    "incarnation": "Unreal Tournament 2004 (2004), PC — Gorge, Juggernaut competitor model, standard tournament armor",
+    "weaponType": "gun",
+    "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower",
+    "slots": {
+      "simple": {
+        "historical": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Flak Cannon"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 1,
+          "name": "Tir du Flak Cannon de Gorge",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Gorge signature technique"
+        },
+        "selected": {
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.65,
+          "name": "Visée lourde du Juggernaut",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "defense": {
+        "historical": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Gorge defensive action"
+        },
+        "selected": {
+          "type": "guard",
+          "dur": 1.2,
+          "reduce": 0.5,
+          "name": "Appui de l’armure de Gorge",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          }
+        }
+      },
+      "special": {
+        "historical": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Juggernaut Charge"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 4.4,
+          "name": "Décharge du Flak Cannon de Gorge",
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "unreal_tournament_2004_sapphire": {
+    "id": "unreal_tournament_2004_sapphire",
+    "universe": "Unreal Tournament 2004",
+    "incarnation": "Unreal Tournament 2004 (2004), PC — Sapphire, Mercenary competitor model, standard tournament armor",
+    "weaponType": "gun",
+    "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower",
+    "slots": {
+      "simple": {
+        "historical": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Shock Rifle"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 1,
+          "name": "Orbe secondaire du Shock Rifle",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Sapphire signature technique"
+        },
+        "selected": {
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.65,
+          "name": "Visée du Shock Rifle de Sapphire",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "defense": {
+        "historical": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Sapphire defensive action"
+        },
+        "selected": {
+          "type": "guard",
+          "dur": 1.2,
+          "reduce": 0.5,
+          "name": "Dodge de Sapphire",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          }
+        }
+      },
+      "special": {
+        "historical": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Shock Combo"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 4.4,
+          "name": "Orbe du Shock Rifle de Sapphire",
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  },
+  "unreal_tournament_2004_frostbite": {
+    "id": "unreal_tournament_2004_frostbite",
+    "universe": "Unreal Tournament 2004",
+    "incarnation": "Unreal Tournament 2004 (2004), PC — Frostbite, Juggernaut competitor model, standard tournament armor",
+    "weaponType": "gun",
+    "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower",
+    "slots": {
+      "simple": {
+        "historical": {
+          "type": "melee",
+          "dmg": 1,
+          "name": "Rocket Launcher"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 1,
+          "name": "Roquette du lanceur de Frostbite",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "secondary": {
+        "historical": {
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8,
+          "name": "Frostbite signature technique"
+        },
+        "selected": {
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.65,
+          "name": "Visée du lance-roquettes de Frostbite",
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        }
+      },
+      "defense": {
+        "historical": {
+          "type": "dodge",
+          "dur": 1.8,
+          "reduce": 0.74,
+          "name": "Frostbite defensive action"
+        },
+        "selected": {
+          "type": "guard",
+          "dur": 1.2,
+          "reduce": 0.5,
+          "name": "Dodge de Frostbite",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          }
+        }
+      },
+      "special": {
+        "historical": {
+          "type": "origin_aoe",
+          "dmg": 4,
+          "name": "Adrenaline Burst"
+        },
+        "selected": {
+          "type": "projectile",
+          "dmg": 4.4,
+          "name": "Roquette de Frostbite",
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    }
+  }
+});
+
 export function assertCatalogActionEdition(actor, slot, historical) {
+  const projected = PROJECTED_SOURCE_EDITIONS_20261113[actor.id];
+  if (projected) {
+    for (const [field, expected] of Object.entries(projected)) {
+      if (field !== 'slots') assert.deepEqual(actor[field], expected, actor.id + ': projected source ' + field + ' changed');
+    }
+    const revision = projected.slots[slot];
+    assert.ok(revision, actor.id + ': undeclared projected slot ' + slot);
+    assert.deepEqual(historical, revision.historical, actor.id + ': historical raw action changed');
+    return assert.deepEqual(actor[slot], revision.selected, actor.id + ': projected W14/W15 raw action changed');
+  }
   if (isLatestGitHubStarWarsCandidate(actor)) {
     const frozen = assertLatestWave13Comparison(actor);
     return assert.deepEqual(historical, frozen.hero[slot], actor.id + ': frozen W13 raw action changed');

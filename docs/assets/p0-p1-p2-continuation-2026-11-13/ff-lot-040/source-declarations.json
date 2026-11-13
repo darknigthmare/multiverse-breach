@@ -1,0 +1,943 @@
+{
+  "scope": "Exact metadata declarations and compatibility aliases; no art certification.",
+  "actors": [
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:cloud_ff7\"]",
+      "name": "Cloud Strife",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original battle model and default SOLDIER-style outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/cloud/1",
+      "visualAnchor": "Adult Cloud with spiky blond hair, blue-green eyes, sleeveless dark violet SOLDIER-style clothing, single left metal pauldron, brown harness/gloves/boots and Buster Sword. No Advent Children sleeve, Fenrir gear or Remake-only costume.",
+      "equipment": [
+        "Buster Sword"
+      ],
+      "weaponType": "sword",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "cloud_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), original battle model and default SOLDIER-style outfit",
+        "currentName": "Omnislash",
+        "preparedName": "Omnislash"
+      },
+      "special": {
+        "name": "Omnislash",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#6dff8d"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:tifa_ff7\"]",
+      "name": "Tifa Lockhart",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original battle model and Seventh Heaven outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/tifa",
+      "visualAnchor": "Adult Tifa with long dark hair, white cropped tank top, black mini skirt, suspenders, red gloves and red boots; bare-handed martial arts. No Remake pleated skirt or Advent Children leather suit.",
+      "equipment": [
+        "Leather Glove"
+      ],
+      "weaponType": "melee",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "tifa_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), original battle model and Seventh Heaven outfit",
+        "currentName": "Final Heaven",
+        "preparedName": "Beat Rush"
+      },
+      "special": {
+        "name": "Final Heaven",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#90ffb0"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:aerith_ff7\"]",
+      "name": "Aerith Gainsborough",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), living party member in original pink dress",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/aeris",
+      "visualAnchor": "Aerith with long brown braid and pink ribbon, short red bolero jacket, pink button-front dress, brown boots and Guard Stick. She uses a staff and healing Limits; no rifle, white wing or later-film costume.",
+      "equipment": [
+        "Guard Stick"
+      ],
+      "weaponType": "staff",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "aerith_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), living party member in original pink dress",
+        "currentName": "Great Gospel",
+        "preparedName": "Healing Wind"
+      },
+      "special": {
+        "name": "Great Gospel",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#4adc6a"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:barret_ff7\"]",
+      "name": "Barret Wallace",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original AVALANCHE field outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/barret",
+      "visualAnchor": "Large muscular dark-skinned Barret with flat-top hair and beard, sleeveless brown vest, green trousers, heavy boots, dog tags and the gun-arm replacing his right forearm. No sunglasses-only Remake model or human right hand gripping a rifle.",
+      "equipment": [
+        "Gatling Gun gun-arm"
+      ],
+      "weaponType": "gun",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "barret_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), original AVALANCHE field outfit",
+        "currentName": "Catastrophe",
+        "preparedName": "Catastrophe"
+      },
+      "special": {
+        "name": "Catastrophe",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#566573"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:redxiii_ff7\"]",
+      "name": "Red XIII",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original Nanaki quadruped model",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/red-xiii",
+      "visualAnchor": "Red XIII/Nanaki is a red-furred quadruped with a dark mane, one scarred eye, tattoo XIII, bracelets and a flame-tipped tail. Preserve four-legged locomotion and his head ornaments; no humanoid body, sword or gun.",
+      "equipment": [
+        "Mythril Clip"
+      ],
+      "weaponType": "melee",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "redxiii_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), original Nanaki quadruped model",
+        "currentName": "Cosmo Memory",
+        "preparedName": "Cosmo Memory"
+      },
+      "special": {
+        "name": "Cosmo Memory",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#c0392b"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:yuffie_ff7\"]",
+      "name": "Yuffie Kisaragi",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original Wutai ninja outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/yuffie",
+      "visualAnchor": "Teenage Yuffie with short dark hair, green sleeveless crop top, light shorts, headband, asymmetric arm protection and large four-point shuriken. No INTERmission moogle cloak or later Dirge outfit.",
+      "equipment": [
+        "4-point Shuriken"
+      ],
+      "weaponType": "shuriken",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-vii-base",
+        "actorId": "yuffie_ff7",
+        "universe": "Final Fantasy VII",
+        "incarnation": "Final Fantasy VII (1997), original Wutai ninja outfit",
+        "currentName": "All Creation",
+        "preparedName": "All Creation"
+      },
+      "special": {
+        "name": "All Creation",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#27ae60"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"id:vincent_ff7\"]",
+      "name": "Vincent Valentine",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original red-cloaked party member",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/characters/vincent",
+      "visualAnchor": "Vincent has long black hair and red headband, red high-collared ragged cape, black clothing and gold left gauntlet/boots, carrying the original Quicksilver handgun. No three-barrel Cerberus from Dirge of Cerberus.",
+      "equipment": [
+        "Quicksilver"
+      ],
+      "weaponType": "gun",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Midgar Zolom\"]",
+      "name": "Midgar Zolom",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), marsh serpent encounter near Mythril Mine",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/midgar-zolom",
+      "visualAnchor": "Enormous limbless swamp serpent with long coiled body, raised neck, broad fanged head and segmented belly. Preserve the snake body without humanoid torso, arms, rifles or Remake Midgardsormr redesign.",
+      "weapon": "bite",
+      "sourceTechniqueName": "Beta",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Shinra Guard\"]",
+      "name": "Shinra Guard",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), Midgar MP security infantry",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/mp",
+      "visualAnchor": "Shinra MP infantry in the original Midgar security uniform, enclosed helmet with red optics, torso/shoulder armor, trousers and carried firearm. No SOLDIER sword, Remake-only heavy shield or uncovered civilian face.",
+      "weapon": "rifle",
+      "special": "Machine Gun",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Sweeper Machine\"]",
+      "name": "Sweeper Machine",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), Midgar Sweeper machine",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/sweeper",
+      "visualAnchor": "Original Sweeper is a squat bipedal industrial combat machine with armored central chassis, two mechanical legs and paired gun arms. No scorpion tail, human rider or Guard Scorpion body.",
+      "weapon": "machine_gun",
+      "sourceTechniqueName": "Machine Gun",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VII\",\"name:Jenova BIRTH\"]",
+      "name": "Jenova BIRTH",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), Jenova-BIRTH cargo-ship battle",
+      "referenceUrl": "https://guides.gamercorner.net/ffvii/monsters/jenova-birth",
+      "visualAnchor": "Jenova-BIRTH is the original cargo-ship form, with alien upper body, long red hair and multiple large fleshy tentacles. Keep its appendages separate and avoid Jenova-LIFE/DEATH palettes, SYNTHESIS lower body or a carried gun.",
+      "weapon": "tentacles",
+      "special": "Tail Laser",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:squall_ff8\"]",
+      "name": "Squall Leonhart",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), casual Balamb field outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Young Squall with brown hair, scar between the eyes, black leather jacket with white fur collar, white shirt, black belts/trousers and Revolver gunblade. No SeeD dress uniform, Dissidia redesign or projectile bullets from a sword swing.",
+      "equipment": [
+        "Revolver gunblade"
+      ],
+      "weaponType": "sword",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "squall_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), casual Balamb field outfit",
+        "currentName": "Lion Heart",
+        "preparedName": "Renzokuken"
+      },
+      "special": {
+        "name": "Lion Heart",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#8fb6ff"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:rinoa_ff8\"]",
+      "name": "Rinoa Heartilly",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), blue-knit Forest Owls field outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Rinoa with dark shoulder-length hair, blue sleeveless knit duster with white wing motif, black top/shorts, black arm warmers and blue boots. Blaster Edge is mounted on her arm; Angelo remains a separate dog partner, not a laser cannon.",
+      "equipment": [
+        "Pinwheel Blaster Edge",
+        "Angelo"
+      ],
+      "weaponType": "boomerang",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "rinoa_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), blue-knit Forest Owls field outfit",
+        "currentName": "Wishing Star",
+        "preparedName": "Angelo Cannon"
+      },
+      "special": {
+        "name": "Wishing Star",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#b2d9ff"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:quistis_ff8\"]",
+      "name": "Quistis Trepe",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original instructor field outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Quistis has blond tied-back hair, glasses, peach sleeveless high-neck long outfit with belt, dark gloves and boots, and a whip. Preserve her glasses, whip and Blue Magic role; no rifle or gunblade.",
+      "equipment": [
+        "Chain Whip"
+      ],
+      "weaponType": "whip",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "quistis_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), original instructor field outfit",
+        "currentName": "Shockwave Pulsar",
+        "preparedName": "Laser Eye"
+      },
+      "special": {
+        "name": "Shockwave Pulsar",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#6c93dc"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:seifer_ff8\"]",
+      "name": "Seifer Almasy",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), Dollet temporary-party coat",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Seifer has short blond hair, diagonal facial scar, long pale coat with red crosses on the sleeves, dark shirt and gloves, holding Hyperion one-handed. No Squall fur collar, SeeD dress uniform or firearm stance.",
+      "equipment": [
+        "Hyperion gunblade"
+      ],
+      "weaponType": "sword",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "seifer_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), Dollet temporary-party coat",
+        "currentName": "No Mercy",
+        "preparedName": "No Mercy"
+      },
+      "special": {
+        "name": "No Mercy",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#d7dbdd"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:laguna_ff8\"]",
+      "name": "Laguna Loire",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), young Galbadian soldier flashback outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Young Laguna with shoulder-length dark hair, blue military jacket, light shirt, dark trousers, dog tags and a two-handed machine gun. No presidential suit or older grey-haired redesign.",
+      "equipment": [
+        "Galbadian machine gun"
+      ],
+      "weaponType": "gun",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "laguna_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), young Galbadian soldier flashback outfit",
+        "currentName": "Desperado",
+        "preparedName": "Desperado"
+      },
+      "special": {
+        "name": "Desperado",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#5dade2"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:zell_ff8\"]",
+      "name": "Zell Dincht",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original Balamb casual outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Zell has spiked blond hair and the dark tattoo on the left side of his face, short blue jacket with red trim, dark shorts, red gloves and red shoes. He fights with fists and kicks; no sword or projectile gun.",
+      "equipment": [
+        "Metal Knuckle"
+      ],
+      "weaponType": "melee",
+      "special": {
+        "name": "My Final Heaven",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#f4d03f"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:selphie_ff8\"]",
+      "name": "Selphie Tilmitt",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original yellow field dress",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Selphie has short brown outward-flipped hair, sleeveless yellow zip-front dress and boots, using a linked nunchaku. No laser weapon or SeeD parade uniform; Slots outcomes are separate source commands.",
+      "equipment": [
+        "Flail nunchaku"
+      ],
+      "weaponType": "nunchaku",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"id:irvine_ff8\"]",
+      "name": "Irvine Kinneas",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original Galbadian sharpshooter outfit",
+      "referenceUrl": "https://na.finalfantasy.com/en/titles/finalfantasy8/",
+      "visualAnchor": "Irvine has long brown tied-back hair, cowboy hat, long pale coat with fur collar, purple shirt, gloves and boots, carrying Valiant rifle. No pistol, gunblade or generic military helmet.",
+      "equipment": [
+        "Valiant rifle"
+      ],
+      "weaponType": "gun",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-viii-base",
+        "actorId": "irvine_ff8",
+        "universe": "Final Fantasy VIII",
+        "incarnation": "Final Fantasy VIII (1999), original Galbadian sharpshooter outfit",
+        "currentName": "Hyper Shot",
+        "preparedName": "Quick Shot"
+      },
+      "special": {
+        "name": "Hyper Shot",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#7f5c38"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Galbadian Soldier\"]",
+      "name": "Galbadian Soldier",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), standard Galbadian infantry",
+      "referenceUrl": "https://guides.gamercorner.net/ffviii/monsters/g-soldier",
+      "visualAnchor": "Original G-Soldier infantry with closed helmet, blue combat uniform, shoulder armor, boots and a sword. Its original attack family includes sword attacks and low-level magic; no Esthar cyborg limbs, elite red variant or carried rifle.",
+      "weapon": "sword",
+      "special": "Sword Attack",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Bite Bug\"]",
+      "name": "Bite Bug",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), Balamb-area Bite Bug",
+      "referenceUrl": "https://guides.gamercorner.net/ffviii/monsters/bite-bug",
+      "visualAnchor": "Small flying insect with rounded abdomen, large compound eyes, paired wings, thin legs and biting mouthparts. It hovers as the original Bite Bug rather than holding a gun, staff or human accessories.",
+      "weapon": "bite",
+      "special": "Bite",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:T-Rexaur\"]",
+      "name": "T-Rexaur",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), Balamb Garden training-center T-Rexaur",
+      "referenceUrl": "https://guides.gamercorner.net/ffviii/monsters/t-rexaur",
+      "visualAnchor": "Huge biped tyrannosaur with large toothed head, long balancing tail, two short forearms and powerful clawed feet. Keep the source creature anatomy and markings, without plate armor, gun or spellcasting staff.",
+      "weapon": "bite",
+      "special": "Tail Swipe",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy VIII\",\"name:Edea Kramer\"]",
+      "name": "Edea Kramer",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), possessed Edea at Galbadia Garden",
+      "referenceUrl": "https://guides.gamercorner.net/ffviii/monsters/edea/2",
+      "visualAnchor": "Possessed sorceress Edea wears the original black gown, broad feathered collar and elaborate gold wire headdress. Preserve her long dark hair and sorceress silhouette; no Ultimecia wings, Griever anatomy or gunblade.",
+      "weapon": "magic",
+      "special": "Maelstrom",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:lightning_ff13\"]",
+      "name": "Lightning",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Guardian Corps outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/lightning",
+      "visualAnchor": "Lightning has pink side-swept hair, pale sleeveless Guardian Corps coat, dark undershirt, short skirt, red cape, gloves and brown high boots, with Blazefire Saber. No XIII-2 Etro armor or Lightning Returns garb.",
+      "equipment": [
+        "Blazefire Saber"
+      ],
+      "weaponType": "sword",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "lightning_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), main-game Guardian Corps outfit",
+        "currentName": "Army of One",
+        "preparedName": "Odin — Zantetsuken"
+      },
+      "special": {
+        "name": "Army of One",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#f0a8d8"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:fang_ff13\"]",
+      "name": "Fang",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/fang",
+      "visualAnchor": "Oerba Yun Fang has dark wavy hair, blue draped sari-like outfit, fur pelt, jewelry, visible l'Cie brand and a long segmented spear. No firearm, Ragnarok body or borrowed Bahamut anatomy.",
+      "equipment": [
+        "Bladed Lance"
+      ],
+      "weaponType": "spear",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "fang_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+        "currentName": "Highwind",
+        "preparedName": "Bahamut — Megaflare"
+      },
+      "special": {
+        "name": "Highwind",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#ffcbfb"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:vanille_ff13\"]",
+      "name": "Vanille",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/vanille",
+      "visualAnchor": "Oerba Dia Vanille has red-orange twin pigtails, pink halter top, short orange skirt, fur pelt and beads, with the branching Binding Rod and its flexible wires. No rifle, XIII sequel outfit or Hecatoncheir body parts.",
+      "equipment": [
+        "Binding Rod"
+      ],
+      "weaponType": "staff",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "vanille_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+        "currentName": "Death",
+        "preparedName": "Hecatoncheir — Gaian Salvo"
+      },
+      "special": {
+        "name": "Death",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#cd85b5"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:snow_ff13\"]",
+      "name": "Snow Villiers",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game NORA leader outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/snow",
+      "visualAnchor": "Snow is tall and muscular with blond hair under a dark knit cap, long pale coat, dark shirt, fingerless gloves and boots. Weapons are his power-enhancing emblems and fists; no rifle, XIII-2 fur costume or Lightning Returns long hair.",
+      "equipment": [
+        "Wild Bear emblem"
+      ],
+      "weaponType": "melee",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "snow_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), main-game NORA leader outfit",
+        "currentName": "Sovereign Fist",
+        "preparedName": "Stiria & Nix — Diamond Dust"
+      },
+      "special": {
+        "name": "Sovereign Fist",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#d7dbdd"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:sazh_ff13\"]",
+      "name": "Sazh Katzroy",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game pilot outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/sazh",
+      "visualAnchor": "Sazh has a rounded afro, goatee, green pilot coat over a light shirt, dark trousers and two pistols. His chocobo chick stays a small companion, not a projectile or offensive summoned animal.",
+      "equipment": [
+        "Vega 42 dual pistols"
+      ],
+      "weaponType": "gun",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "sazh_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), main-game pilot outfit",
+        "currentName": "Cold Blood",
+        "preparedName": "Brynhildr — Múspell Flame"
+      },
+      "special": {
+        "name": "Cold Blood",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#34495e"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"id:hope_ff13\"]",
+      "name": "Hope Estheim",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), teenage main-game field outfit",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/characters/hope",
+      "visualAnchor": "Teenage Hope has silver hair, orange short jacket, patterned green scarf, light trousers and gloves, carrying Airwing boomerang. No adult XIII-2 model, gun or Alexander parts on his body.",
+      "equipment": [
+        "Airwing boomerang"
+      ],
+      "weaponType": "boomerang",
+      "sourceSignatureDeclaration": {
+        "audit": "ff-lot-040-2026-11-13",
+        "sourceKey": "ff-xiii-base",
+        "actorId": "hope_ff13",
+        "universe": "Final Fantasy XIII",
+        "incarnation": "Final Fantasy XIII (2009), teenage main-game field outfit",
+        "currentName": "Last Resort",
+        "preparedName": "Alexander — Divine Judgment"
+      },
+      "special": {
+        "name": "Last Resort",
+        "type": "origin_aoe",
+        "dmg": 4.5,
+        "color": "#d5dbdb"
+      },
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:PSICOM Soldier\"]",
+      "name": "PSICOM Soldier",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), PSICOM Warden infantry at the Hanging Edge",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/monsters/psicom-warden",
+      "visualAnchor": "This previously generic PSICOM infantry slot targets the original PSICOM Warden: enclosed military helmet, armored uniform, carried firearm and human infantry proportions. No Cie'th growths, giant armor or unqualified later-game PSICOM variant.",
+      "weapon": "rifle",
+      "special": "Firearm Attack",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XIII\",\"name:Barthandelus\"]",
+      "name": "Barthandelus",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), first fal'Cie form aboard the Palamecia",
+      "referenceUrl": "https://guides.gamercorner.net/ffxiii/monsters/barthandelus/1",
+      "visualAnchor": "Barthandelus in the first Palamecia battle is a huge white-and-gold fal'Cie construct with central face and four distinct side-head armor structures. No human Galenth Dysley robe, second/third-form body or generic floating core.",
+      "weapon": "magic",
+      "special": "Destrudo",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:noctis_ff15\"]",
+      "name": "Noctis Lucis Caelum",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), young pre-timeskip Prince's Fatigues",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/noctis/",
+      "visualAnchor": "Young Noctis has spiky black hair, black short jacket and shirt, cropped dark trousers and boots, with Engine Blade. No ten-years-later beard, Kingly Raiment or Armiger Unleashed Royal Edition accessory.",
+      "equipment": [
+        "Engine Blade"
+      ],
+      "weaponType": "sword",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:gladiolus_ff15\"]",
+      "name": "Gladiolus",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), pre-timeskip Crownsguard outfit",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/gladiolus/",
+      "visualAnchor": "Gladiolus is tall and muscular with brown tied-back hair, beard/scars, open black jacket showing chest and arm tattoos, dark trousers and a greatsword. No firearm or later-timeskip outfit.",
+      "equipment": [
+        "Two-Handed Sword"
+      ],
+      "weaponType": "sword",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ignis_ff15\"]",
+      "name": "Ignis",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), sighted pre-Altissia Crownsguard outfit",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/ignis/",
+      "visualAnchor": "Sighted Ignis has swept-up brown hair, glasses, dark tailored jacket and patterned shirt, gloves and dark trousers, using paired daggers. No rifle, post-Altissia eye scars or alternate Episode Ignis powers.",
+      "equipment": [
+        "Daggers"
+      ],
+      "weaponType": "slash",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:lunafreya_ff15\"]",
+      "name": "Lunafreya",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), living Oracle in white main-game dress",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/luna/",
+      "visualAnchor": "Lunafreya has blond braided-up hair and a white sleeveless layered main-game dress with waist detail, holding the Oracle's trident as a ceremonial/support implement. No rifle, laser or wedding-dress replacement; healing and blessing remain non-offensive.",
+      "equipment": [
+        "Trident of the Oracle"
+      ],
+      "weaponType": "staff",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:prompto_ff15\"]",
+      "name": "Prompto Argentum",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), pre-timeskip Crownsguard outfit",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/prompto/",
+      "visualAnchor": "Young Prompto has spiky blond hair and freckles, a sleeveless dark vest, patterned dark trousers and gloves, carrying a pistol and a separate camera. No Episode Prompto snow coat or camera used as a gun.",
+      "equipment": [
+        "Handgun",
+        "camera"
+      ],
+      "weaponType": "gun",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:ardyn_ff15\"]",
+      "name": "Ardyn Izunia",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), main-game chancellor outfit",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/ardyn/",
+      "visualAnchor": "Adult Ardyn has auburn hair, dark fedora, layered black coat and patterned red scarf; one spectral royal blade is held locally. No Episode Ardyn historical royal armor or borrowed Astral body.",
+      "equipment": [
+        "Spectral royal blade"
+      ],
+      "weaponType": "sword",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"id:cor_ff15\"]",
+      "name": "Cor Leonis",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), main-game Crownsguard marshal outfit",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/character/cor/",
+      "visualAnchor": "Mature Cor has short dark-grey hair, black Crownsguard jacket, practical dark trousers and a physical katana. No Armiger, royal spectral weapon or invented magic wave.",
+      "equipment": [
+        "Kotetsu katana"
+      ],
+      "weaponType": "katana",
+      "referenceScope": "Character model declaration + existing explicit source ability contracts; not visual approval."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:MT Trooper\"]",
+      "name": "MT Trooper",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), Niflheim Magitek rifle infantry",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/screenshot/monster/",
+      "visualAnchor": "Humanoid Niflheim Magitek infantry with enclosed helmet/faceplate, segmented artificial limbs, dark imperial armor and carried rifle. This slot selects rifle infantry, not the axe-bearing elite variant, a human Crownsguard or an Astral.",
+      "weapon": "rifle",
+      "special": "Magitek Rifle Fire",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    },
+    {
+      "actorKey": "[\"Final Fantasy XV\",\"name:Iron Giant\"]",
+      "name": "Iron Giant",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), standard night-time Iron Giant daemon",
+      "referenceUrl": "https://www.jp.square-enix.com/ff15/screenshot/monster/",
+      "visualAnchor": "Large humanoid daemon in heavy dark iron armor and a horned enclosed helmet, carrying a massive physical greatsword. No Red Giant red color variant, ranged rifle or magical staff replacing the sword.",
+      "weapon": "sword",
+      "special": "Greatsword Sweep",
+      "referenceScope": "Explicit original-game enemy form; original labels/roles and unresolved artwork retained."
+    }
+  ],
+  "signatureAliases": [
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original battle model and default SOLDIER-style outfit",
+      "currentName": "Omnislash",
+      "preparedName": "Omnislash"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original battle model and Seventh Heaven outfit",
+      "currentName": "Final Heaven",
+      "preparedName": "Beat Rush"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "aerith_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), living party member in original pink dress",
+      "currentName": "Great Gospel",
+      "preparedName": "Healing Wind"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "barret_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original AVALANCHE field outfit",
+      "currentName": "Catastrophe",
+      "preparedName": "Catastrophe"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "redxiii_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original Nanaki quadruped model",
+      "currentName": "Cosmo Memory",
+      "preparedName": "Cosmo Memory"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-vii-base",
+      "actorId": "yuffie_ff7",
+      "universe": "Final Fantasy VII",
+      "incarnation": "Final Fantasy VII (1997), original Wutai ninja outfit",
+      "currentName": "All Creation",
+      "preparedName": "All Creation"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "squall_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), casual Balamb field outfit",
+      "currentName": "Lion Heart",
+      "preparedName": "Renzokuken"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "rinoa_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), blue-knit Forest Owls field outfit",
+      "currentName": "Wishing Star",
+      "preparedName": "Angelo Cannon"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "quistis_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original instructor field outfit",
+      "currentName": "Shockwave Pulsar",
+      "preparedName": "Laser Eye"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "seifer_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), Dollet temporary-party coat",
+      "currentName": "No Mercy",
+      "preparedName": "No Mercy"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "laguna_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), young Galbadian soldier flashback outfit",
+      "currentName": "Desperado",
+      "preparedName": "Desperado"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-viii-base",
+      "actorId": "irvine_ff8",
+      "universe": "Final Fantasy VIII",
+      "incarnation": "Final Fantasy VIII (1999), original Galbadian sharpshooter outfit",
+      "currentName": "Hyper Shot",
+      "preparedName": "Quick Shot"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "lightning_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Guardian Corps outfit",
+      "currentName": "Army of One",
+      "preparedName": "Odin — Zantetsuken"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "fang_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+      "currentName": "Highwind",
+      "preparedName": "Bahamut — Megaflare"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "vanille_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+      "currentName": "Death",
+      "preparedName": "Hecatoncheir — Gaian Salvo"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "snow_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game NORA leader outfit",
+      "currentName": "Sovereign Fist",
+      "preparedName": "Stiria & Nix — Diamond Dust"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "sazh_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), main-game pilot outfit",
+      "currentName": "Cold Blood",
+      "preparedName": "Brynhildr — Múspell Flame"
+    },
+    {
+      "audit": "ff-lot-040-2026-11-13",
+      "sourceKey": "ff-xiii-base",
+      "actorId": "hope_ff13",
+      "universe": "Final Fantasy XIII",
+      "incarnation": "Final Fantasy XIII (2009), teenage main-game field outfit",
+      "currentName": "Last Resort",
+      "preparedName": "Alexander — Divine Judgment"
+    }
+  ]
+}

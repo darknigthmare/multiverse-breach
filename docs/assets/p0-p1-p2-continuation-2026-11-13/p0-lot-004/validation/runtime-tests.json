@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T12:16:29.260200+00:00",
+  "command": [
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/reviewedRevanSprite.test.mjs",
+    "scripts/canonicalSpriteQuarantine.test.mjs",
+    "scripts/cgCanonicalSpriteQuarantine.test.mjs",
+    "scripts/canonStarWarsMinionsCorrections.test.mjs",
+    "scripts/cgReviewedQuarantineMetadata.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 36.105,
+  "counts": {
+    "tests": 26,
+    "pass": 26,
+    "fail": 0,
+    "skipped": 0
+  },
+  "tapSha256": "f2dc1c37f547e95764497751baa0aab626dbe02592a9af3e010413f04e3c2d63",
+  "scope": "Runtime sprite-source contract, retained quarantine, source-edition guards and truthful CG correction metadata; no full-game source-fidelity certification."
+}

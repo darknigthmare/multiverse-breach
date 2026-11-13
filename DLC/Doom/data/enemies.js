@@ -6,7 +6,14 @@ export function createEnemiesDb() {
     monsters: [
       { name: 'Imp Fireball Thrower', hp: 70, atk: 10, spd: 5, color: '#d35400', weapon: 'fire' },
       { name: 'Possessed Combat Soldier', hp: 85, atk: 9, spd: 5, color: '#2ecc71', weapon: 'shotgun' },
-      { name: 'Leaping Pinky Demon', hp: 110, atk: 12, spd: 6, color: '#e74c3c', weapon: 'charge' }
+      {
+        name: 'Leaping Pinky Demon', hp: 110, atk: 12, spd: 6, color: '#e74c3c', weapon: 'bite',
+        sourceSpeciesName: 'Demon (Pinky)',
+        incarnation: 'Doom (1993) - classic Demon/Pinky (SARG)',
+        referenceUrl: 'https://github.com/id-Software/DOOM/blob/master/linuxdoom-1.10/p_enemy.c',
+        visualAnchor: 'Classic Doom pink fleshy Demon: massive hunched torso and low broad jaw, ivory teeth, golden-yellow eyes, short gray temporal horns, short forearms and thick bowed legs with flat dark feet. No armor, mechanical parts, oversized later-game horns or long Doom 2016/Eternal tail. The inherited word Leaping does not grant a jump attack; A_SargAttack is a close-range bite.',
+        visualReviewStatus: 'pending'
+      }
     ],
     bosses: [
       { name: 'Cyberdemon Lord', hp: 750, atk: 26, spd: 4, color: '#5d4037', weapon: 'rocket_launcher', special: 'Tyrant Rocket Storm' },

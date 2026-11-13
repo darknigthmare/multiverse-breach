@@ -1,0 +1,4141 @@
+{
+  "schemaVersion": 1,
+  "reservedAtUtc": "2026-11-13T11:43:44.970909+00:00",
+  "sourceCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c",
+  "backlogPath": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actors.json",
+  "backlogSha256": "696e1b510f8303630d9118755025843ee5efcf9af4b4895b444628f4aaab8abf",
+  "scope": "40 existing actor identities: all25heroes in Halo/Half-Life/MassEffect plus15existing enemy identities. No new IDs or closure by renaming.",
+  "ownedFiles": [
+    "DLC/Halo/data/heroes.js",
+    "DLC/Halo/data/loreAccuratePacks.js",
+    "DLC/Halo/data/enemies.js",
+    "DLC/HalfLife/data/heroes.js",
+    "DLC/HalfLife/data/loreAccuratePacks.js",
+    "DLC/HalfLife/data/enemies.js",
+    "DLC/MassEffect/data/heroes.js",
+    "DLC/MassEffect/data/loreAccuratePacks.js",
+    "DLC/MassEffect/data/enemies.js"
+  ],
+  "actors": [
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "actorId": "masterchief",
+      "actorName": "Master Chief",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Master Chief.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Master Chief.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "6 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Sentinelle de Convergence | Vigile de cérémonie",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::RESEARCH_worn-armor",
+          "code": "RESEARCH_worn-armor",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Armor actually worn by John-117: separate episodes from multiplayer cosmetics.",
+          "action": "Résoudre cette piste avant tout ajout actif au registre de récompenses.",
+          "evidence": "https://www.halowaypoint.com/news/canon-fodder-armory-amore",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:masterchief\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Assault Rifle",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Plasma Grenade",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Bubble Shield",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Spartan Laser",
+          "type": "beam",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:freeman\"]",
+      "actorId": "freeman",
+      "actorName": "Gordon Freeman",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:freeman\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Un lien est déclaré dans le code, mais sa scène et sa portée restent à contrôler.",
+          "action": "Relier ce lien à l’incarnation exacte et collecter les vues ; une URL ne prouve pas la ressemblance.",
+          "evidence": "https://www.half-life.com/en/halflife2",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:freeman\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:freeman\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "6 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Ingénieur de Résonance | Géomètre des Failles",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:freeman\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "Half-Life 2 (2004) - HEV Mark V / Citadel",
+      "beforeReference": "https://www.half-life.com/en/halflife2",
+      "beforeVisualAnchor": "Half-Life 2 Gordon Freeman: brown hair, beard, rectangular glasses, orange and gray HEV Mark V suit, crowbar and zero-point energy field manipulator. No HEV Mark IV, long-jump module or gluon gun from Half-Life (1998).",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Crowbar Vector",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Gravity Gun Punt",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "HEV Aux Power",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Overcharged Gravity Gun",
+          "type": "beam",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "actorId": "shepard",
+      "actorName": "Commander Shepard",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Commander Shepard.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Commander Shepard.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "13 variante(s) documentée(s), sans recensement exhaustif.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "Cerberus Assault Armor — Mass Effect 2 (2010) — Cerberus Weapon and Armor pack | Kestrel Armor — Mass Effect 2 (2010) — Aegis Pack | Inferno Armor — Mass Effect 2 (2010) — Equalizer Pack | Collector Armor — Mass Effect 2 (2010) — Collectors’ Weapon and Armor pack | Terminus Assault Armor — Mass Effect 2 (2010) — Terminus Weapon and Armor pack | Blood Dragon Armor — Mass Effect 2 (2010) — Blood Dragon Armor | Capacitor Helmet — Mass Effect 2 (2010) — Equalizer Pack | Archon Visor — Mass Effect 2 (2010) — Equalizer Pack | Umbra Visor — Mass Effect 2 (2010) — promo bundle | Sentry Interface — Mass Effect 2 (2010) — promo bundle | Recon Hood — Mass Effect 2 (2010) — promo bundle | N7 Defender Armor — Mass Effect 3 (2012) — N7 Warfare Gear | Shepard — Alternate Appearance Pack — Mass Effect 3 (2012) — Alternate Appearance Pack",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "13 variante(s) officielle(s) sans planche dédiée livrée.",
+          "action": "Produire portraits, planches et animations propres à chaque variante, puis revue 1:1. Ne pas changer le porteur ni transférer les bonus du pack.",
+          "evidence": "wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-cerberus-assault | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-kestrel | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-inferno | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-collector | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-terminus-assault | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-blood-dragon | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-capacitor-helmet | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-archon-visor | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-umbra-visor | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-sentry-interface | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me2-recon-hood | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me3-n7-defender | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Ashepard%22%5D:me3-shepard-appearance",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:shepard\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Omni-Blade / Rifle",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Singularity Field",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Tech Shield",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Mako Strike",
+          "type": "melee_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "actorId": "arbiter",
+      "actorName": "The Arbiter",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour The Arbiter.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour The Arbiter.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "6 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Gardien du Seuil | Éclaireur du Seuil",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:arbiter\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Energy Sword Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Active Camo Flank",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Sangheili Honor Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Great Schism Strike",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "actorId": "johnson",
+      "actorName": "Sgt. Avery Johnson",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Sgt. Avery Johnson.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Sgt. Avery Johnson.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "5 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Vétéran de Convergence",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:johnson\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Marine Sergeant Burst",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Spartan Morale Rally",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Cigar Smoke Cover",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Send Me Out With A Bang",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "actorId": "cortana",
+      "actorName": "Cortana",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Cortana.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Cortana.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Cortana Signature Strike | secondary: Cortana Breach Technique | special: Cortana Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "5 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Interface des constellations",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Cortana Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Cortana Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Cortana Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Cortana Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "actorId": "noble_six",
+      "actorName": "Noble Six",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Noble Six.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Noble Six.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Noble Six Signature Strike | secondary: Noble Six Breach Technique | special: Noble Six Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:noble_six\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Noble Six Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Noble Six Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Noble Six Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Noble Six Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "actorId": "buck_odst",
+      "actorName": "Edward Buck",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Edward Buck.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Edward Buck.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Edward Buck Signature Strike | secondary: Edward Buck Breach Technique | special: Edward Buck Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck_odst\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Edward Buck Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Edward Buck Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Edward Buck Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Edward Buck Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "actorId": "kelly_087",
+      "actorName": "Kelly-087",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Kelly-087.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Kelly-087.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Kelly-087 Signature Strike | secondary: Kelly-087 Breach Technique | special: Kelly-087 Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:kelly_087\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Kelly-087 Signature Strike",
+          "type": "melee",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Kelly-087 Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Kelly-087 Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Kelly-087 Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "actorId": "linda_058",
+      "actorName": "Linda-058",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Linda-058.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Linda-058.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Linda-058 Signature Strike | secondary: Linda-058 Breach Technique | special: Linda-058 Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:linda_058\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Linda-058 Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Linda-058 Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Linda-058 Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Linda-058 Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "actorId": "cortana_fragment",
+      "actorName": "Cortana Fragment",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Cortana Fragment.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Cortana Fragment.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:cortana_fragment\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Data Spike",
+          "type": "energy",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Forerunner Door Override",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Hardlight Decoy",
+          "type": "hack",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Rampancy Logic Storm",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "actorId": "buck",
+      "actorName": "Edward Buck",
+      "universe": "Halo",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"id:buck\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Edward Buck.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Edward Buck.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"id:buck\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "ODST SMG Burst",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Drop Pod Flank",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Helljumper Cover",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Orbital Drop Shock",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "actorId": "barney",
+      "actorName": "Barney Calhoun",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Barney Calhoun.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Barney Calhoun.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:barney\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Black Mesa 9mm Cover",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Resistance Crossfire",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Security Door Hold",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "City 17 Evac Route",
+          "type": "support_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "actorId": "shephard",
+      "actorName": "Adrian Shephard",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Adrian Shephard.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Adrian Shephard.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:shephard\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "HECU Rifle Burst",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Pipe Wrench Breach",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Marine Cover Order",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Race X Suppression",
+          "type": "explosive_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "actorId": "alyx_vance",
+      "actorName": "Alyx Vance",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Alyx Vance.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Alyx Vance.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "5 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Éclaireuse des relais",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:alyx_vance\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Resistance Pistol",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Combine Lock Hack",
+          "type": "hack",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Gravity Glove Pull",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Dog Breach Assist",
+          "type": "summon_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "actorId": "eli_vance",
+      "actorName": "Eli Vance",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Eli Vance.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Eli Vance.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Eli Vance Signature Strike | secondary: Eli Vance Breach Technique | special: Eli Vance Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:eli_vance\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Eli Vance Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Eli Vance Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Eli Vance Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Eli Vance Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "actorId": "kleiner",
+      "actorName": "Dr. Kleiner",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Dr. Kleiner.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Dr. Kleiner.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Dr. Kleiner Signature Strike | secondary: Dr. Kleiner Breach Technique | special: Dr. Kleiner Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:kleiner\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Dr. Kleiner Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Dr. Kleiner Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Dr. Kleiner Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Dr. Kleiner Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "actorId": "vortigaunt_ally",
+      "actorName": "Vortigaunt Ally",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Vortigaunt Ally.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Vortigaunt Ally.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Vortigaunt Ally Signature Strike | secondary: Vortigaunt Ally Breach Technique | special: Vortigaunt Ally Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "5 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Guide des résonances",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:vortigaunt_ally\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Vortigaunt Ally Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Vortigaunt Ally Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Vortigaunt Ally Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Vortigaunt Ally Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "actorId": "dog_hl2",
+      "actorName": "Dog",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Dog.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Dog.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Dog Signature Strike | secondary: Dog Breach Technique | special: Dog Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "5 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "Récupération du Nexus",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"id:dog_hl2\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Dog Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Dog Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Dog Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Dog Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "actorId": "garrus",
+      "actorName": "Garrus Vakarian",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Garrus Vakarian.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Garrus Vakarian.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "2 variante(s) documentée(s), sans recensement exhaustif.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "Garrus — Alternate Appearance Pack 1 — Mass Effect 2 (2010) — Alternate Appearance Pack 1 | Garrus — Alternate Appearance Pack — Mass Effect 3 (2012) — Alternate Appearance Pack",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "2 variante(s) officielle(s) sans planche dédiée livrée.",
+          "action": "Produire portraits, planches et animations propres à chaque variante, puis revue 1:1. Ne pas changer le porteur ni transférer les bonus du pack.",
+          "evidence": "wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Agarrus%22%5D:me2-garrus-appearance | wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Agarrus%22%5D:me3-garrus-appearance",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:garrus\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Turian Sniper Shot",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Concussive Mine",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Calibrated Cover",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Archangel Killbox",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "actorId": "liara",
+      "actorName": "Liara T'Soni",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Liara T'Soni.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Liara T'Soni.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "1 variante(s) documentée(s), sans recensement exhaustif.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "Liara — Alternate Appearance Pack — Mass Effect 3 (2012) — Alternate Appearance Pack",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 variante(s) officielle(s) sans planche dédiée livrée.",
+          "action": "Produire portraits, planches et animations propres à chaque variante, puis revue 1:1. Ne pas changer le porteur ni transférer les bonus du pack.",
+          "evidence": "wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Aliara%22%5D:me3-liara-appearance",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:liara\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Warp Field",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Singularity Lift",
+          "type": "signature",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Asari Barrier",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Shadow Broker Data Storm",
+          "type": "nexus_aoe",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "actorId": "tali",
+      "actorName": "Tali Zorah",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Tali Zorah.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Tali Zorah.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Tali Zorah Signature Strike | secondary: Tali Zorah Breach Technique | special: Tali Zorah Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "1 variante(s) documentée(s), sans recensement exhaustif.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "Tali — Alternate Appearance Pack 2 — Mass Effect 2 (2010) — Alternate Appearance Pack 2",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 variante(s) officielle(s) sans planche dédiée livrée.",
+          "action": "Produire portraits, planches et animations propres à chaque variante, puis revue 1:1. Ne pas changer le porteur ni transférer les bonus du pack.",
+          "evidence": "wardrobe-v1:%5B%22Mass%20Effect%22%2C%22id%3Atali%22%5D:me2-tali-appearance",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:tali\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Tali Zorah Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Tali Zorah Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Tali Zorah Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Tali Zorah Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "actorId": "wrex",
+      "actorName": "Urdnot Wrex",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Urdnot Wrex.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Urdnot Wrex.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Urdnot Wrex Signature Strike | secondary: Urdnot Wrex Breach Technique | special: Urdnot Wrex Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:wrex\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Urdnot Wrex Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Urdnot Wrex Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Urdnot Wrex Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Urdnot Wrex Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "actorId": "ashley_williams",
+      "actorName": "Ashley Williams",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Ashley Williams.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Ashley Williams.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Ashley Williams Signature Strike | secondary: Ashley Williams Breach Technique | special: Ashley Williams Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:ashley_williams\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Ashley Williams Signature Strike",
+          "type": "bullet",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Ashley Williams Breach Technique",
+          "type": "projectile",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Ashley Williams Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Ashley Williams Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "actorId": "mordin",
+      "actorName": "Mordin Solus",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Mordin Solus.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Mordin Solus.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::GENERIC_TECHNIQUE_NAMES",
+          "code": "GENERIC_TECHNIQUE_NAMES",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "3 technique(s) portent encore un nom générique.",
+          "action": "Comparer les actions, animations et règles réelles aux techniques de source ; un nom générique seul ne prouve pas un moteur manquant.",
+          "evidence": "simple: Mordin Solus Signature Strike | secondary: Mordin Solus Breach Technique | special: Mordin Solus Origin Burst",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"id:mordin\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "Mordin Solus Signature Strike",
+          "type": "energy",
+          "genericName": true
+        },
+        {
+          "slot": "secondary",
+          "name": "Mordin Solus Breach Technique",
+          "type": "signature",
+          "genericName": true
+        },
+        {
+          "slot": "defense",
+          "name": "Mordin Solus Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Mordin Solus Origin Burst",
+          "type": "origin_aoe",
+          "genericName": true
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "actorId": "",
+      "actorName": "Covenant Grunt",
+      "universe": "Halo",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Covenant Grunt.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Covenant Grunt.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Covenant Grunt\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "actorId": "",
+      "actorName": "Jackal Sniper",
+      "universe": "Halo",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Jackal Sniper.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Jackal Sniper.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Jackal Sniper\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Elite Minor\"]",
+      "actorId": "",
+      "actorName": "Elite Minor",
+      "universe": "Halo",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"name:Elite Minor\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Elite Minor.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Elite Minor\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Un lien est déclaré dans le code, mais sa scène et sa portée restent à contrôler.",
+          "action": "Relier ce lien à l’incarnation exacte et collecter les vues ; une URL ne prouve pas la ressemblance.",
+          "evidence": "https://www.halopedia.org/Sangheili_Minor",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Elite Minor\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Elite Minor\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Elite Minor\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "Halo 2 (2004) - blue-armored Sangheili Minor",
+      "beforeReference": "https://www.halopedia.org/Sangheili_Minor",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "actorId": "",
+      "actorName": "Forerunner Sentinel",
+      "universe": "Halo",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Forerunner Sentinel.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Forerunner Sentinel.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Forerunner Sentinel\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "actorId": "",
+      "actorName": "Flood Combat Form",
+      "universe": "Halo",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Flood Combat Form.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Flood Combat Form.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Halo\",\"name:Flood Combat Form\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "actorId": "",
+      "actorName": "Combine Overwatch Soldier",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Combine Overwatch Soldier.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Combine Overwatch Soldier.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "actorId": "",
+      "actorName": "Acid-Spitting Bullsquid",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Acid-Spitting Bullsquid.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Acid-Spitting Bullsquid.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "actorId": "",
+      "actorName": "Houndeye Pack",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Houndeye Pack.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Houndeye Pack.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Houndeye Pack\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "actorId": "",
+      "actorName": "Barnacle Ceiling Trap",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Barnacle Ceiling Trap.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Barnacle Ceiling Trap.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "actorId": "",
+      "actorName": "Zombie Poison Headcrab Host",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Zombie Poison Headcrab Host.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Zombie Poison Headcrab Host.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "actorId": "",
+      "actorName": "Geth Rocket Trooper",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Geth Rocket Trooper.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Geth Rocket Trooper.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.",
+          "action": "Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.",
+          "evidence": "/sprites/generated/bosses/mass-effect/geth-rocket-trooper.png",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "actorId": "",
+      "actorName": "Cerberus Phantom",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Cerberus Phantom.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Cerberus Phantom.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.",
+          "action": "Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.",
+          "evidence": "/sprites/generated/bosses/mass-effect/cerberus-phantom.png",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Cerberus Phantom\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "actorId": "",
+      "actorName": "Collector Drone",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Collector Drone.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Collector Drone.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.",
+          "action": "Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.",
+          "evidence": "/sprites/generated/bosses/mass-effect/collector-drone.png",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Collector Drone\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "actorId": "",
+      "actorName": "Husk Shock Trooper",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Husk Shock Trooper.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Husk Shock Trooper.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.",
+          "action": "Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.",
+          "evidence": "/sprites/generated/bosses/mass-effect/husk-shock-trooper.png",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "actorId": "",
+      "actorName": "Geth Prime Platform",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "beforeTasks": [
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "L’édition ou incarnation n’est pas renseignée explicitement pour Geth Prime Platform.",
+          "action": "Fixer opus, époque, forme et modèle cible avant production ; ne pas mélanger les épisodes.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de visualAnchor individuel pour Geth Prime Platform.",
+          "action": "Décrire tête, proportions, silhouette, tenue, palette, marquages et accessoires à partir de références validées.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Pas de référence HTTPS exploitable déclarée sur la fiche acteur.",
+          "action": "Documenter la source primaire exacte et les vues nécessaires. Ne pas considérer un lien de costume comme validation du sprite de base.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "1 fichier(s) résolu(s) absent(s) de l’arbre Git contrôlé.",
+          "action": "Produire ou raccorder ces fichiers puis rejouer le rendu. Un affichage de secours éventuel n’est pas une réparation 1:1.",
+          "evidence": "/sprites/generated/bosses/mass-effect/geth-prime-platform.png",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "reason": "Aucune variante officielle documentée pour cette identité dans le registre courant.",
+          "action": "Comparer opus par opus les tenues, modèles, palettes et accessoires. Marquer recherche terminée seulement avec un périmètre et des sources, jamais par défaut.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "4 concepts originaux, pas des costumes graphiques terminés.",
+          "action": "Adapter les concepts au corps et au rôle exacts puis produire les assets ; aucune approbation automatique.",
+          "evidence": "",
+          "artApproved": false
+        },
+        {
+          "id": "[\"Mass Effect\",\"name:Geth Prime Platform\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "reason": "Aucune certification visuelle individuelle créée par cet export.",
+          "action": "Contrôler les états et directions, silhouette, visage, tenue, équipement, proportions et raccords dans chaque mode. Revue séparée des mains FPS et du kart.",
+          "evidence": "",
+          "artApproved": false
+        }
+      ],
+      "beforeIncarnation": "",
+      "beforeReference": "",
+      "beforeVisualAnchor": "",
+      "beforeTechniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ]
+    }
+  ]
+}

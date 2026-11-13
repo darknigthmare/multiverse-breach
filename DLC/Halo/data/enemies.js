@@ -2,7 +2,7 @@
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createEnemiesDb() {
-  return ({
+  return applyHaloEnemySourceContracts({
     monsters: [
       { name: 'Covenant Grunt', hp: 70, atk: 7, spd: 5, color: '#33527a', weapon: 'plasma_pistol' },
       { name: 'Jackal Sniper', hp: 80, atk: 11, spd: 6, color: '#e67e22', weapon: 'beam_rifle' },
@@ -28,7 +28,7 @@ export function createEnemiesDb() {
 }
 
 export function createCanonEnemyExpansion() {
-  return ({
+  return applyHaloEnemySourceContracts({
     monsters: [
       { name: 'Hunter Bond Pair', hp: 165, atk: 16, spd: 3, color: '#34495e', weapon: 'fuel_rod' },
       { name: 'Brute Captain', hp: 125, atk: 14, spd: 5, color: '#5c5146', weapon: 'spiker' },
@@ -41,4 +41,82 @@ export function createCanonEnemyExpansion() {
       { name: 'Ur-Didact Echo', hp: 640, atk: 23, spd: 5, color: '#dfefff', weapon: 'constraint_field', special: 'Composer Pulse' }
     ]
   });
+}
+
+// Exact legacy names remain the runtime/signature identities.
+const SCIFI_ENEMY_SOURCE_CONTRACTS = {
+  "Covenant Grunt": {
+    "incarnation": "Halo 2 (2004) - blue-armored Unggoy Major",
+    "referenceUrl": "https://www.halopedia.org/Unggoy_Major",
+    "visualAnchor": "Short stocky Unggoy Major with blue armor, methane backpack, snout respirator, small limbs and a green-charged Type-25 plasma pistol. Keep the alien respirator and tank rather than a human face or Spartan helmet.",
+    "equipment": [
+      "Methane respirator and tank",
+      "Type-25 plasma pistol"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Jackal Sniper": {
+    "incarnation": "Halo 2 (2004) - Kig-Yar sniper with beam rifle",
+    "referenceUrl": "https://www.halopedia.org/Kig-Yar_Sniper",
+    "visualAnchor": "Lean bird-reptile Kig-Yar sniper with elongated head and muzzle, digitigrade legs, compact armor and long purple Type-50 beam rifle. The sniper loadout is not a shield-bearing pistol Jackal.",
+    "equipment": [
+      "Type-50 beam rifle"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Elite Minor": {
+    "incarnation": "Halo 2 (2004) - blue-armored Sangheili Minor",
+    "referenceUrl": "https://www.halopedia.org/Sangheili_Minor",
+    "visualAnchor": "Tall blue-armored Sangheili Minor with a curved helmet, four mandibles, digitigrade feet and purple-blue Type-25 plasma rifle. Preserve the blue Minor rank armor and rifle rather than Arbiter ceremonial armor.",
+    "equipment": [
+      "Blue Sangheili Minor armor",
+      "Type-25 plasma rifle"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Forerunner Sentinel": {
+    "incarnation": "Halo 2 (2004) - standard Aggressor Sentinel",
+    "referenceUrl": "https://www.halopedia.org/Aggressor_Sentinel",
+    "visualAnchor": "Floating bronze-grey standard Aggressor Sentinel with central glowing eye, small angular body and articulated side appendages; its focused beam originates at the eye. It has no humanoid legs or handheld rifle.",
+    "equipment": [
+      "Integrated Sentinel beam emitter"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  },
+  "Flood Combat Form": {
+    "incarnation": "Halo 2 (2004) - unarmed human Flood combat form",
+    "referenceUrl": "https://www.halopedia.org/Flood_combat_form",
+    "visualAnchor": "Infected human combat form with collapsed head, burst chest infection mass, mottled human remnants and elongated striking tendrils. This contract selects an unarmed human host, not an armored infected Sangheili or carrier form.",
+    "equipment": [
+      "Flood striking tendrils"
+    ],
+    "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+    "visualReviewStatus": "pending",
+    "source1to1Verified": false,
+    "artApproved": false,
+    "sourceContractRevision": "scifi-lot-040-2026-11-13"
+  }
+};
+
+export function applyHaloEnemySourceContracts(roster) {
+  return { ...roster, monsters: (roster.monsters || []).map(actor => {
+    const contract = SCIFI_ENEMY_SOURCE_CONTRACTS[actor.name];
+    return contract ? { ...actor, ...structuredClone(contract) } : actor;
+  }) };
 }

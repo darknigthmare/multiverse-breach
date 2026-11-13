@@ -1,0 +1,2470 @@
+{
+  "schemaVersion": 1,
+  "source1to1Verified": false,
+  "artApproved": false,
+  "actors": [
+    {
+      "actorKey": "[\"Halo\",\"id:masterchief\"]",
+      "actorId": "masterchief",
+      "actorName": "Master Chief",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 3",
+        "referenceUrl": "https://www.halopedia.org/John-117",
+        "visualAnchor": "Halo 3 Master Chief: tall Spartan-II in olive-green MJOLNIR Mark VI, closed helmet with gold visor, black undersuit, MA5C assault rifle and red-emitting M6 Spartan Laser. Full helmet throughout; this target is not Mark V or GEN3 armor.",
+        "equipment": [
+          "MJOLNIR Mark VI armor",
+          "MA5C assault rifle",
+          "Plasma grenade",
+          "Bubble Shield equipment",
+          "M6 Spartan Laser"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Rafale du MA5C",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Grenade à plasma du Major",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "area",
+            "range": 480,
+            "targetSide": "enemy",
+            "areaRadius": 80
+          }
+        },
+        "defense": {
+          "name": "Bubble Shield",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.8,
+            "reduce": 0.65
+          },
+          "reduce": 0.65,
+          "dur": 1.8
+        },
+        "special": {
+          "name": "Spartan Laser",
+          "type": "beam",
+          "dmg": 4.5,
+          "color": "#ff3333",
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "line",
+            "lineWidth": 42
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:freeman\"]",
+      "actorId": "freeman",
+      "actorName": "Gordon Freeman",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004) - HEV Mark V / Citadel",
+        "referenceUrl": "https://www.half-life.com/en/halflife2",
+        "visualAnchor": "Half-Life 2 Gordon Freeman: brown hair, beard, rectangular glasses, orange and grey HEV Mark V suit, crowbar and zero-point energy field manipulator. The Citadel overcharge is the blue Gravity Gun state, not the HL1 gluon gun or Mark IV suit.",
+        "equipment": [
+          "Crowbar",
+          "HEV Mark V suit",
+          "Gravity Gun"
+        ],
+        "weaponType": "crowbar",
+        "canonStatus": "source-locked-gameplay-adaptation",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Coup de pied-de-biche de Freeman",
+          "type": "melee",
+          "dmg": 1.1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 100,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Projection au pistolet antigravité",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 550,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Protection de la combinaison HEV",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Pistolet antigravité surchargé",
+          "type": "projectile",
+          "dmg": 4.8,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "color": "#8edaff",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:shepard\"]",
+      "actorId": "shepard",
+      "actorName": "Commander Shepard",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010), male default Shepard, Soldier",
+        "referenceUrl": "https://guides.gamercorner.net/me2/classes/soldier",
+        "visualAnchor": "Mass Effect 2 default male Soldier Shepard: short dark hair, adult human face, black N7 armor with red-white N7 marking and physical M-8 Avenger rifle. Class actions are personal Adrenaline Rush and single-target Concussive Shot; no ME3 omni-blade, Singularity or Sentinel Tech Armor.",
+        "equipment": [
+          "ME2 N7 armor",
+          "M-8 Avenger assault rifle"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du M-8 Avenger",
+          "type": "projectile",
+          "dmg": 1.1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Adrenaline Rush",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Couvert N7 de Shepard",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Concussive Shot",
+          "type": "projectile",
+          "dmg": 5.1,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "color": "#72aee8",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:arbiter\"]",
+      "actorId": "arbiter",
+      "actorName": "The Arbiter",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 2",
+        "referenceUrl": "https://www.halopedia.org/Thel_%27Vadam",
+        "visualAnchor": "Halo 2 Arbiter Thel: tall digitigrade Sangheili, four mandibles, silver ceremonial Arbiter armor and helmet, blue-violet energy sword and Covenant plasma rifle. Active camouflage belongs to this Halo 2 armor.",
+        "equipment": [
+          "Halo 2 Arbiter ceremonial armor",
+          "Type-1 energy sword",
+          "Type-25 plasma rifle",
+          "Active camouflage"
+        ],
+        "weaponType": "energy_sword",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Taille de l’épée à énergie",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Rafale du fusil à plasma",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Camouflage actif de l’Arbiter",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.55
+          },
+          "reduce": 0.55,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Energy Sword Lunge",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#95a5a6"
+        },
+        "sourceSignatureDeclaration": {
+          "audit": "scifi-lot-040-2026-11-13",
+          "sourceKey": "halo-2",
+          "actorId": "arbiter",
+          "universe": "Halo",
+          "incarnation": "Halo 2",
+          "currentName": "Energy Sword Lunge",
+          "preparedName": "Arbiter — Energy Sword Strike"
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:johnson\"]",
+      "actorId": "johnson",
+      "actorName": "Sgt. Avery Johnson",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 3",
+        "referenceUrl": "https://www.halopedia.org/Avery_Johnson",
+        "visualAnchor": "Halo 3 Avery Johnson: adult Black human Marine sergeant major, black moustache, olive field cap, green fatigues, Marine combat vest and boots. BR55-family battle rifle and the finale Spartan Laser are physical UNSC weapons; his cigar is not a smoke shield.",
+        "equipment": [
+          "UNSC Marine fatigues and field cap",
+          "BR55-family battle rifle",
+          "M6 Spartan Laser"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Rafale du BR55 de Johnson",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Ordre de regroupement du sergent",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Couvert du Marine Johnson",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Spartan Laser",
+          "type": "beam",
+          "dmg": 4.3,
+          "color": "#ff3333",
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "line",
+            "lineWidth": 38
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana\"]",
+      "actorId": "cortana",
+      "actorName": "Cortana",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 3 (2007), Cortana holographic AI",
+        "referenceUrl": "https://www.halopedia.org/Cortana",
+        "visualAnchor": "Halo 3 Cortana: translucent blue-violet feminine holographic AI, short dark bob, luminous body circuitry and digital projection edges. She is a projected intelligence without a physical firearm; tactical guidance is support.",
+        "equipment": [
+          "Holographic data interface"
+        ],
+        "weaponType": "terminal",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Lecture tactique de Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Repérage du relais par Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Redondance de l’IA Cortana",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Guidage tactique de Cortana",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:noble_six\"]",
+      "actorId": "noble_six",
+      "actorName": "Noble Six",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo: Reach (2010), default adult Noble Six",
+        "referenceUrl": "https://www.halopedia.org/SPARTAN-B312",
+        "visualAnchor": "Halo Reach default adult Noble Six: opaque grey Mark V(B) Spartan helmet, amber visor, grey armor and black undersuit; hold a physical MA37 assault rifle. This target keeps the default helmet and does not borrow GEN2 Kelly or Linda armor.",
+        "equipment": [
+          "Default Mark V(B) armor",
+          "MA37 assault rifle"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du MA37 de Noble Six",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée du MA37 de Reach",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Garde de l’armure Mark V(B)",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Rafale du MA37 de Noble Six",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck_odst\"]",
+      "actorId": "buck_odst",
+      "actorName": "Edward Buck",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 3: ODST (2009), Buck before Spartan conversion",
+        "referenceUrl": "https://www.halopedia.org/Edward_Buck",
+        "visualAnchor": "Halo 3 ODST Buck before Spartan conversion: adult human in dark charcoal ODST ballistic armor, opaque visor helmet and black undersuit, holding a suppressed M7S SMG. He has neither Spartan armor nor a personal MJOLNIR shield.",
+        "equipment": [
+          "Halo 3 ODST ballistic armor and helmet",
+          "M7S suppressed SMG"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du M7S silencieux de Buck",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée du M7S de l’ODST Buck",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Repli de Buck en armure ODST",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Rafale du M7S de Buck",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:kelly_087\"]",
+      "actorId": "kelly_087",
+      "actorName": "Kelly-087",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 5: Guardians (2015)",
+        "referenceUrl": "https://www.halopedia.org/Kelly-087",
+        "visualAnchor": "Halo 5 Guardians Kelly-087: adult Spartan-II in white-and-grey GEN2 Hermes armor and closed Hermes helmet, carrying the physical Oathsworn M45D shotgun. Her armored proportions and shotgun remain distinct from Linda and her long Nornfang.",
+        "equipment": [
+          "GEN2 Hermes armor",
+          "Oathsworn M45D shotgun"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir de l’Oathsworn de Kelly",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée du M45D de Kelly",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Garde de Kelly en armure Hermes",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Tir du fusil Oathsworn de Kelly",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:linda_058\"]",
+      "actorId": "linda_058",
+      "actorName": "Linda-058",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 5: Guardians (2015)",
+        "referenceUrl": "https://www.halopedia.org/Linda-058",
+        "visualAnchor": "Halo 5 Guardians Linda-058: adult Spartan-II in green GEN2 Argus armor, closed multi-optic Argus helmet and long red Nornfang sniper rifle. Keep the optic cluster and long rifle rather than a generic short assault rifle.",
+        "equipment": [
+          "GEN2 Argus armor",
+          "Nornfang sniper rifle"
+        ],
+        "weaponType": "rifle",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir de précision du Nornfang",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée Argus de Linda",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Repli de Linda en armure Argus",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Tir du Nornfang de Linda",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:cortana_fragment\"]",
+      "actorId": "cortana_fragment",
+      "actorName": "Cortana Fragment",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 4 (2012) - rampant Cortana fragment, Mantle s Approach",
+        "referenceUrl": "https://www.halopedia.org/Cortana",
+        "visualAnchor": "Halo 4 Mantle s Approach Cortana fragment: fragmented blue holographic AI projection derived from the rampant Cortana, with short bob and interrupted luminous circuitry. It is data-support imagery, not a solid duplicate human or a handheld laser fighter.",
+        "equipment": [
+          "Fragmented holographic data interface"
+        ],
+        "weaponType": "terminal",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Fragment Data Relay",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Mantle s Approach Data Access",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Fragment Redundancy",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Master Chief Tactical Relay",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"id:buck\"]",
+      "actorId": "buck",
+      "actorName": "Edward Buck",
+      "universe": "Halo",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Halo 3: ODST (2009), Buck before Spartan conversion",
+        "referenceUrl": "https://www.halopedia.org/Edward_Buck",
+        "visualAnchor": "Halo 3 ODST Edward Buck: same pre-Spartan human incarnation as the historical buck_odst roster entry; dark ODST armor, helmet visor and compact suppressed M7S. Keep this legacy roster identity without inventing an orbital strike power.",
+        "equipment": [
+          "Halo 3 ODST ballistic armor and helmet",
+          "M7S suppressed SMG"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du M7S silencieux de Buck",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée du M7S de l’ODST Buck",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Repli de Buck en armure ODST",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Rafale du M7S de Buck",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:barney\"]",
+      "actorId": "barney",
+      "actorName": "Barney Calhoun",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004), unmasked undercover Civil Protection and Resistance leader",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Barney_Calhoun",
+        "visualAnchor": "Half-Life 2 unmasked Barney: adult human, short dark hair and stubble, blue-grey undercover Civil Protection uniform and armored vest, black boots, AR2 pulse rifle in the Resistance fighting phase. No Black Mesa security helmet or Blue Shift uniform is implied.",
+        "equipment": [
+          "Civil Protection disguise and armored vest",
+          "AR2 pulse rifle"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir de l’AR2 de Barney",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Barney guide la Résistance",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Couvert de Barney",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Tir de couverture à l’AR2",
+          "type": "projectile",
+          "dmg": 4.1,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "color": "#e4c18b",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:shephard\"]",
+      "actorId": "shephard",
+      "actorName": "Adrian Shephard",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life: Opposing Force (1999), Adrian Shephard HECU loadout",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Adrian_Shephard",
+        "visualAnchor": "Opposing Force 1999 Adrian Shephard: HECU Marine with olive helmet, dark gas mask and round eye lenses, PCV combat vest, camouflage fatigues and boots; physical HECU submachine gun. Keep the masked Marine instead of Freeman s glasses or HEV suit.",
+        "equipment": [
+          "HECU helmet and gas mask",
+          "Powered Combat Vest",
+          "HECU submachine gun"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir de HECU submachinegun de Adrian Shephard",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée de HECU submachinegun de Adrian Shephard",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Repli de Adrian Shephard en Half-Life: Opposing Force (1999)",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Rafale HECU d’Adrian Shephard",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:alyx_vance\"]",
+      "actorId": "alyx_vance",
+      "actorName": "Alyx Vance",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004)",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Alyx_Vance",
+        "visualAnchor": "Half-Life 2 2004 Alyx: adult woman with brown hair tied behind an orange headband, worn brown jacket over grey Black Mesa hoodie, jeans and fingerless gloves; Alyx Gun and her electrical multitool. This version does not wear the 2020 VR Gravity Gloves.",
+        "equipment": [
+          "Alyx Gun",
+          "Electrical multitool",
+          "Brown jacket and grey Black Mesa hoodie"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du pistolet d’Alyx",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 600,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Ouverture du passage au multitool",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Couvert d’Alyx",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Tir de précision d’Alyx",
+          "type": "projectile",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 600,
+            "targetSide": "enemy"
+          },
+          "color": "#edc388",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:eli_vance\"]",
+      "actorId": "eli_vance",
+      "actorName": "Eli Vance",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004), Black Mesa East",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Eli_Vance",
+        "visualAnchor": "Half-Life 2 Black Mesa East Eli Vance: older Black man with grey hair and beard, green jacket over a grey Harvard shirt, visible left lower-leg prosthesis. His lab coordination is non-offensive support; keep his civilian clothes and prosthesis without an energy rifle.",
+        "equipment": [
+          "Civilian laboratory clothing",
+          "Left lower-leg prosthesis",
+          "Black Mesa East laboratory equipment"
+        ],
+        "weaponType": "terminal",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Eli compare les données de la Résistance",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Transmettre le briefing de Black Mesa East",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Retrait dans le laboratoire d’Eli",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Coordination de Black Mesa East",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.2
+          },
+          "color": "#b9c8ae",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:kleiner\"]",
+      "actorId": "kleiner",
+      "actorName": "Dr. Kleiner",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004), Kleiner’s laboratory",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Isaac_Kleiner",
+        "visualAnchor": "Half-Life 2 Isaac Kleiner: older balding white scientist, round glasses, white lab coat over shirt and tie, dark trousers, laboratory instruments and teleportation console. Lamarr is a separate debeaked headcrab and is not grafted to his body or used as a firearm.",
+        "equipment": [
+          "White laboratory coat",
+          "Glasses",
+          "Teleportation laboratory console"
+        ],
+        "weaponType": "terminal",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Kleiner vérifie les relais du laboratoire",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Préparer le transfert de secours",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.3
+          }
+        },
+        "defense": {
+          "name": "Se couvrir au pupitre de téléportation",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Calibration du téléporteur",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.5
+          },
+          "color": "#a8ddeb",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:vortigaunt_ally\"]",
+      "actorId": "vortigaunt_ally",
+      "actorName": "Vortigaunt Ally",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004), freed allied Vortigaunt",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Vortigaunt",
+        "visualAnchor": "Half-Life 2 freed allied Vortigaunt: olive-brown cyclopean alien, one large red eye, two long arms and a small chest arm, digitigrade legs; green Vortessence originates in its palms. No enslaved HL1 collar, gun or human soldier armor.",
+        "equipment": [
+          "Vortessence hands"
+        ],
+        "weaponType": "energy",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Décharge de Vortessence",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Concentration du Vortigaunt libre",
+          "type": "projectile",
+          "dmg": 1.65,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Repli du Vortigaunt allié",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Décharge du Vortigaunt libre",
+          "type": "projectile",
+          "dmg": 4.4,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"id:dog_hl2\"]",
+      "actorId": "dog_hl2",
+      "actorName": "Dog",
+      "universe": "Half-Life",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004), Alyx’s robot Dog",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Dog",
+        "visualAnchor": "Half-Life 2 Dog: very large asymmetric rust-brown and cream industrial biped robot, small bright sensor head, hydraulic torso, two long mechanical arms with large hands and industrial feet. Strikes are local mechanical hand contacts; no rifle or detached beam.",
+        "equipment": [
+          "Mechanical arms and hands",
+          "Hydraulic industrial body"
+        ],
+        "weaponType": "fist",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Poussée du bras mécanique de Dog",
+          "type": "melee",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Reprise de l’appui hydraulique",
+          "type": "melee",
+          "dmg": 1.65,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 85,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Blocage des bras de Dog",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Coup du bras mécanique de Dog",
+          "type": "melee",
+          "dmg": 4.4,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "melee",
+            "shape": "single",
+            "range": 165,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:garrus\"]",
+      "actorId": "garrus",
+      "actorName": "Garrus Vakarian",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010), Garrus after Archangel recruitment",
+        "referenceUrl": "https://guides.gamercorner.net/me2/party-members/garrus",
+        "visualAnchor": "Mass Effect 2 Garrus after Archangel recruitment: tall male turian with swept cranial plates, facial blue markings, recruitment scars and damaged blue-black armor, visor and M-92 Mantis sniper rifle. Overload is tech; his personal cover does not generate an allied barrier.",
+        "equipment": [
+          "Damaged blue-black Archangel armor",
+          "Targeting visor",
+          "M-92 Mantis sniper rifle"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir de précision de Garrus",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Overload",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 600,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert de Garrus",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Concussive Shot",
+          "type": "projectile",
+          "dmg": 4.6,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "color": "#8fc4f4",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:liara\"]",
+      "actorId": "liara",
+      "actorName": "Liara T'Soni",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 2: Lair of the Shadow Broker (2010)",
+        "referenceUrl": "https://guides.gamercorner.net/me2/party-members/liara",
+        "visualAnchor": "Mass Effect 2 Lair of the Shadow Broker Liara: adult blue asari with swept cranial crest, selected white-blue DLC combat outfit and M-3 Predator heavy pistol. Warp and localized Singularity are biotics; no hair, hacking data storm or ME1 Barrier loadout.",
+        "equipment": [
+          "White-blue Shadow Broker DLC outfit",
+          "M-3 Predator heavy pistol"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du M-3 Predator de Liara",
+          "type": "projectile",
+          "dmg": 1,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 520,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Warp",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 600,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert de Liara",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Singularity",
+          "type": "area",
+          "dmg": 4.6,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "area",
+            "shape": "area",
+            "range": 640,
+            "targetSide": "enemy",
+            "areaRadius": 115
+          },
+          "color": "#84a9ff",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:tali\"]",
+      "actorId": "tali",
+      "actorName": "Tali Zorah",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010)",
+        "referenceUrl": "https://guides.gamercorner.net/me2/party-members/tali",
+        "visualAnchor": "Mass Effect 2 Tali: short adult quarian fully sealed in a purple hooded environmental suit, opaque mask and visor, breathing fittings and patterned fabric panels. Keep the face concealed and the shotgun separate from the projected Attack Drone. The shotgun model remains a separate art/model review question.",
+        "equipment": [
+          "Sealed purple ME2 environmental suit",
+          "ME2 shotgun",
+          "Omni-tool Combat Drone projection"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Fusil à pompe de Tali",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Combat Drone de Tali",
+          "type": "projectile",
+          "dmg": 1.7,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert de la technicienne quarienne",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Drone de combat de Tali",
+          "type": "projectile",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 570,
+            "targetSide": "enemy"
+          },
+          "color": "#c08de8",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:wrex\"]",
+      "actorId": "wrex",
+      "actorName": "Urdnot Wrex",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect (2007)",
+        "referenceUrl": "https://www.gamerguides.com/mass-effect-1-legendary-edition/guide/talents/biotic/",
+        "visualAnchor": "Mass Effect 2007 Wrex: very broad krogan with high ridged crest, red face markings and scars, heavy red armor over a dark undersuit, shotgun and wrist omni-tool. Barrier protects Wrex personally; ME3 Vanguard Biotic Charge is not part of this ME1 kit.",
+        "equipment": [
+          "Heavy red ME1 krogan armor",
+          "ME1 shotgun",
+          "Wrist omni-tool"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Fusil à pompe de Wrex",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Throw biotique de Wrex",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Barrier du Krogan biotique",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.6
+          },
+          "reduce": 0.6,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Barrière biotique de Wrex",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 4,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 4,
+          "color": "#8da8f5",
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:ashley_williams\"]",
+      "actorId": "ashley_williams",
+      "actorName": "Ashley Williams",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 3 (2012), Alliance officer Ashley",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Ashley_Williams",
+        "visualAnchor": "Mass Effect 3 Alliance officer Ashley Williams: adult human woman with long dark hair, blue Alliance combat armor and physical M8 Avenger assault rifle. Keep the Alliance officer outfit, human anatomy and firearm; she has no biotic casting.",
+        "equipment": [
+          "Blue ME3 Alliance combat armor",
+          "M8 Avenger assault rifle"
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Tir du M8 Avenger d’Ashley",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée de l’officière Ashley",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Garde de l’armure Alliance d’Ashley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Rafale du M8 Avenger d’Ashley",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"id:mordin\"]",
+      "actorId": "mordin",
+      "actorName": "Mordin Solus",
+      "universe": "Mass Effect",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010)",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Mordin_Solus",
+        "visualAnchor": "Mass Effect 2 Mordin Solus: adult salarian with tall orange-tan head, distinct facial markings, white-blue STG scientist suit and wrist omni-tool. Incinerate is a finite orange thermal tech discharge from that tool, not a rifle or a sustained beam.",
+        "equipment": [
+          "White-blue ME2 STG scientist suit",
+          "Wrist omni-tool"
+        ],
+        "weaponType": "omnitool",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "simple": {
+          "name": "Projection incendiaire du omni-outil",
+          "type": "projectile",
+          "dmg": 1.15,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Visée du omni-outil de Mordin",
+          "type": "projectile",
+          "dmg": 1.85,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Retrait du scientifique Mordin",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Incinération du omni-outil de Mordin",
+          "type": "projectile",
+          "dmg": 4.65,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 640,
+            "targetSide": "enemy"
+          },
+          "meterCost": 100
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Covenant Grunt\"]",
+      "actorId": "",
+      "actorName": "Covenant Grunt",
+      "universe": "Halo",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Halo 2 (2004) - blue-armored Unggoy Major",
+        "referenceUrl": "https://www.halopedia.org/Unggoy_Major",
+        "visualAnchor": "Short stocky Unggoy Major with blue armor, methane backpack, snout respirator, small limbs and a green-charged Type-25 plasma pistol. Keep the alien respirator and tank rather than a human face or Spartan helmet.",
+        "equipment": [
+          "Methane respirator and tank",
+          "Type-25 plasma pistol"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Jackal Sniper\"]",
+      "actorId": "",
+      "actorName": "Jackal Sniper",
+      "universe": "Halo",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Halo 2 (2004) - Kig-Yar sniper with beam rifle",
+        "referenceUrl": "https://www.halopedia.org/Kig-Yar_Sniper",
+        "visualAnchor": "Lean bird-reptile Kig-Yar sniper with elongated head and muzzle, digitigrade legs, compact armor and long purple Type-50 beam rifle. The sniper loadout is not a shield-bearing pistol Jackal.",
+        "equipment": [
+          "Type-50 beam rifle"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Elite Minor\"]",
+      "actorId": "",
+      "actorName": "Elite Minor",
+      "universe": "Halo",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Halo 2 (2004) - blue-armored Sangheili Minor",
+        "referenceUrl": "https://www.halopedia.org/Sangheili_Minor",
+        "visualAnchor": "Tall blue-armored Sangheili Minor with a curved helmet, four mandibles, digitigrade feet and purple-blue Type-25 plasma rifle. Preserve the blue Minor rank armor and rifle rather than Arbiter ceremonial armor.",
+        "equipment": [
+          "Blue Sangheili Minor armor",
+          "Type-25 plasma rifle"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Forerunner Sentinel\"]",
+      "actorId": "",
+      "actorName": "Forerunner Sentinel",
+      "universe": "Halo",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Halo 2 (2004) - standard Aggressor Sentinel",
+        "referenceUrl": "https://www.halopedia.org/Aggressor_Sentinel",
+        "visualAnchor": "Floating bronze-grey standard Aggressor Sentinel with central glowing eye, small angular body and articulated side appendages; its focused beam originates at the eye. It has no humanoid legs or handheld rifle.",
+        "equipment": [
+          "Integrated Sentinel beam emitter"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Halo\",\"name:Flood Combat Form\"]",
+      "actorId": "",
+      "actorName": "Flood Combat Form",
+      "universe": "Halo",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Halo 2 (2004) - unarmed human Flood combat form",
+        "referenceUrl": "https://www.halopedia.org/Flood_combat_form",
+        "visualAnchor": "Infected human combat form with collapsed head, burst chest infection mass, mottled human remnants and elongated striking tendrils. This contract selects an unarmed human host, not an armored infected Sangheili or carrier form.",
+        "equipment": [
+          "Flood striking tendrils"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Combine Overwatch Soldier\"]",
+      "actorId": "",
+      "actorName": "Combine Overwatch Soldier",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004) - standard Overwatch soldier with AR2",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Overwatch_Soldier",
+        "visualAnchor": "Human-sized standard Combine Overwatch soldier in blue-grey armor, black enclosed gas-mask helmet with pale lenses and an AR2 pulse rifle. No white Elite armor or exposed Resistance face.",
+        "equipment": [
+          "Standard blue-grey Overwatch armor",
+          "AR2 pulse rifle"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Acid-Spitting Bullsquid\"]",
+      "actorId": "",
+      "actorName": "Acid-Spitting Bullsquid",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Half-Life (1998) - Xen bullsquid",
+        "referenceUrl": "https://github.com/ValveSoftware/halflife/blob/master/dlls/bullsquid.cpp",
+        "visualAnchor": "Stocky biped Xen bullsquid with thick orange-brown hide, two legs, a heavy tail and red mouth tentacles around the snout. Acid spit leaves the mouth; no humanoid arms, gun or Combine armor.",
+        "equipment": [
+          "Mouth acid spit",
+          "Tail and mouth tentacles"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Houndeye Pack\"]",
+      "actorId": "",
+      "actorName": "Houndeye Pack",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Half-Life (1998) - Houndeye, pack encounter abstraction",
+        "referenceUrl": "https://github.com/ValveSoftware/halflife/blob/master/dlls/houndeye.cpp",
+        "visualAnchor": "Stocky three-legged Houndeye with brown-yellow hide, pale belly and one large compound eye at the front. Sonic rings are centered on the animal; the legacy Pack label does not certify several bodies in one sprite.",
+        "equipment": [
+          "Sonic discharge organ"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Barnacle Ceiling Trap\"]",
+      "actorId": "",
+      "actorName": "Barnacle Ceiling Trap",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Half-Life (1998) - ceiling-attached barnacle",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Barnacle",
+        "visualAnchor": "Sessile fleshy Xen barnacle attached to a ceiling, downward mouth and a long hanging sticky tongue. Its source movement is ceiling-fixed; no walking legs or handheld weapon. Ceiling attachment and tongue choreography still require mode-specific visual review.",
+        "equipment": [
+          "Hanging tongue and mouth"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Half-Life\",\"name:Zombie Poison Headcrab Host\"]",
+      "actorId": "",
+      "actorName": "Zombie Poison Headcrab Host",
+      "universe": "Half-Life",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Half-Life 2 (2004) - poison zombie host",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Poison_Zombie",
+        "visualAnchor": "Bulky hunched human poison zombie in a worn jacket, carrying dark poison headcrabs across the shoulders and back, with one grasped for throwing. Preserve the distinct crab shapes; no green fire breath or ordinary bare zombie head.",
+        "equipment": [
+          "Carried poison headcrabs",
+          "Infected hands"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Rocket Trooper\"]",
+      "actorId": "",
+      "actorName": "Geth Rocket Trooper",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010) - geth rocket trooper",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Geth_Rocket_Trooper",
+        "visualAnchor": "Synthetic geth trooper with plated grey armor, exposed synthetic joints, backward-swept head and single bright optic, carrying a physical rocket launcher. No human face, organic muscles or biotic casting.",
+        "equipment": [
+          "Geth rocket launcher"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Cerberus Phantom\"]",
+      "actorId": "",
+      "actorName": "Cerberus Phantom",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Mass Effect 3 (2012) - Cerberus Phantom",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Phantom",
+        "visualAnchor": "Slim human Cerberus Phantom in white-black segmented armor, enclosed orange visor helmet, monomolecular sword and integrated palm blaster. Keep the sword and armored human body distinct from an asari biotic or geth platform.",
+        "equipment": [
+          "Monomolecular sword",
+          "Integrated palm blaster",
+          "Phantom combat armor"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Collector Drone\"]",
+      "actorId": "",
+      "actorName": "Collector Drone",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010) - Collector drone with Collector assault rifle",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Collector_Drone",
+        "visualAnchor": "Insectoid Collector drone with brown-gold segmented carapace, narrow limbs, multi-eye head and organic Collector assault rifle. It is an ordinary drone; no Harbinger possession glow or Collector Particle Beam heavy weapon is assigned.",
+        "equipment": [
+          "Collector assault rifle"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "weapon": "gun"
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Husk Shock Trooper\"]",
+      "actorId": "",
+      "actorName": "Husk Shock Trooper",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Mass Effect (2007) - Husk, legacy Shock Trooper label",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Husk",
+        "visualAnchor": "Emaciated converted human Husk with exposed dark cybernetic ribbing, blue circuitry and glowing blue eyes. The legacy Shock Trooper label denotes a game encounter variant; source identity remains a ME1 Husk, not a new Cerberus soldier species.",
+        "equipment": [
+          "Cybernetic claws",
+          "ME1 electrical discharge"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    },
+    {
+      "actorKey": "[\"Mass Effect\",\"name:Geth Prime Platform\"]",
+      "actorId": "",
+      "actorName": "Geth Prime Platform",
+      "universe": "Mass Effect",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Mass Effect 2 (2010) - geth prime",
+        "referenceUrl": "https://masseffect.fandom.com/wiki/Geth_Prime",
+        "visualAnchor": "Very large broad-shouldered synthetic geth prime with heavy red-rust plating, exposed black joints, single bright optic and geth pulse rifle. No ME3 turret or combat-drone deployment is granted to this ME2 target.",
+        "equipment": [
+          "Heavy geth prime plating",
+          "Geth pulse rifle"
+        ],
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "scifi-lot-040-2026-11-13"
+      }
+    }
+  ]
+}

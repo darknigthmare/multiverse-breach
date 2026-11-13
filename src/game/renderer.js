@@ -93,6 +93,7 @@ import {
   getHeroMeleeAnimationFrame,
   getHeroMeleeSpriteSheetSrcs,
   getHeroSpriteSheetSources,
+  getReviewedQuarantinedHeroSprite,
   getItemSpriteSrc,
   getSpriteFrameForLayout,
   getSpriteSheetLayout,
@@ -274,7 +275,7 @@ const drawQuarantinedCombatantBust = (ctx, x, y, width, height) => {
 };
 
 export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
-  if (kind === 'hero' && getQuarantinedCanonSprite(entity)) {
+  if (kind === 'hero' && getQuarantinedCanonSprite(entity) && !getReviewedQuarantinedHeroSprite(entity)) {
     return drawQuarantinedCombatantBust(ctx, x, y, width, height);
   }
   const sources = kind === 'hero'
@@ -294,12 +295,13 @@ export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout('idle', 0, layout);
   const trim = frame.trim || {};
-  const sourceX = frame.col * frameWidth + (trim.left || 0);
-  const sourceY = frame.row * frameHeight + (trim.top || 0);
-  const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
+  const reviewedPortrait = kind === 'hero' ? getReviewedQuarantinedHeroSprite(entity)?.portrait : null;
+  const sourceX = frame.col * frameWidth + (reviewedPortrait?.x ?? trim.left ?? 0);
+  const sourceY = frame.row * frameHeight + (reviewedPortrait?.y ?? trim.top ?? 0);
+  const sourceW = reviewedPortrait?.width ?? Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const sourceH = Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
-  const scale = layout.fullBodyPortrait
+  const sourceH = reviewedPortrait?.height ?? Math.max(1, layout.fullBodyPortrait ? trimmedH : trimmedH * 0.68);
+  const scale = reviewedPortrait || layout.fullBodyPortrait
     ? Math.min(width / sourceW, height / sourceH)
     : Math.max(width / sourceW, height / sourceH);
   const drawW = sourceW * scale;
@@ -713,7 +715,7 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
 
   // Suppress the *display* of three source-verified incorrect sheets while
   // preserving their asset records, authoring history and gameplay identities.
-  const generatedStatus = quarantinedArt ? 'missing' : drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
+  const generatedStatus = quarantinedArt && !getReviewedQuarantinedHeroSprite(character) ? 'missing' : drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);
   if (generatedStatus !== 'missing') {

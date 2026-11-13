@@ -1,0 +1,35 @@
+{
+  "scope": "Production Hub compiled with actual all/base/selected DLC source transformations. No media export, prebuild or assembled distribution.",
+  "checks": [
+    {
+      "profile": "all",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=8192",
+        "scripts/buildOcDlcLibraryFixture.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 8.984
+    },
+    {
+      "profile": "base",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=8192",
+        "scripts/buildOcDlcLibraryFixture.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 7.221
+    },
+    {
+      "profile": "thalassa",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=8192",
+        "scripts/buildOcDlcLibraryFixture.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 7.591
+    }
+  ]
+}

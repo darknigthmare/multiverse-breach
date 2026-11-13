@@ -1,0 +1,768 @@
+{
+  "scope": "Capture the production Hub side-act library; --verify exercises its callbacks.\n\nParent ownership/progress are prepared before mount. This does not simulate a\nbattle, a campaign completion or real save-file persistence.\n",
+  "cases": [
+    {
+      "size": "desktop",
+      "lang": "fr",
+      "scale": 1,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Les Veilleurs de l’Aube Noyée",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "La Dette des Heures",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "Le Jardin après les Étoiles",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Récif des cartes effacées",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bibliothèque Bathyscaphe",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crête de l’Aube Noyée",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          }
+        ]
+      }
+    },
+    {
+      "size": "desktop",
+      "lang": "en",
+      "scale": 1,
+      "width": 1440,
+      "scrollWidth": 1440,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Wardens of the Drowned Dawn",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "The Hours We Owe",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "The Garden Beyond Stars",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Reef of Erased Charts",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bathyscaphe Library",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crest of the Drowned Dawn",
+            "titleClientWidth": 275,
+            "titleScrollWidth": 275,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          }
+        ]
+      }
+    },
+    {
+      "size": "mobile",
+      "lang": "fr",
+      "scale": 1,
+      "width": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Les Veilleurs de l’Aube Noyée",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "La Dette des Heures",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "Le Jardin après les Étoiles",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Récif des cartes effacées",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bibliothèque Bathyscaphe",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crête de l’Aube Noyée",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          }
+        ]
+      }
+    },
+    {
+      "size": "mobile",
+      "lang": "en",
+      "scale": 1,
+      "width": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Wardens of the Drowned Dawn",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "The Hours We Owe",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "The Garden Beyond Stars",
+          "bodyFont": "15px",
+          "missionFonts": [
+            "12.3047px",
+            "12.3047px",
+            "12.3047px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Reef of Erased Charts",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bathyscaphe Library",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crest of the Drowned Dawn",
+            "titleClientWidth": 237,
+            "titleScrollWidth": 237,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "12.3047px",
+            "height": 66.5625
+          }
+        ]
+      }
+    },
+    {
+      "size": "mobile-150",
+      "lang": "fr",
+      "scale": 1.5,
+      "width": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Les Veilleurs de l’Aube Noyée",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "La Dette des Heures",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "Le Jardin après les Étoiles",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Récif des cartes effacées",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bibliothèque Bathyscaphe",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crête de l’Aube Noyée",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          }
+        ]
+      }
+    },
+    {
+      "size": "mobile-150",
+      "lang": "en",
+      "scale": 1.5,
+      "width": 390,
+      "scrollWidth": 390,
+      "cards": [
+        {
+          "id": "oc-dlc-drowned-dawn",
+          "active": "true",
+          "included": "true",
+          "heading": "Wardens of the Drowned Dawn",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        },
+        {
+          "id": "oc-dlc-borrowed-hours",
+          "active": "true",
+          "included": "true",
+          "heading": "The Hours We Owe",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        },
+        {
+          "id": "oc-dlc-star-garden",
+          "active": "true",
+          "included": "true",
+          "heading": "The Garden Beyond Stars",
+          "bodyFont": "22.5px",
+          "missionFonts": [
+            "18.457px",
+            "18.457px",
+            "18.457px"
+          ]
+        }
+      ],
+      "state": {
+        "gold": 50000,
+        "breachShards": 400,
+        "eventTokens": 120,
+        "unlockedHeroes": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion",
+          "arca_nova",
+          "neris_vale",
+          "oryn_pell",
+          "sio_lume",
+          "kael_venn",
+          "ysolde_quarz",
+          "bramm_treize",
+          "eira_solenne",
+          "cael_rhizome",
+          "mousse_noeud"
+        ],
+        "heroLevels": {},
+        "activeTeam": [
+          "player_anchor",
+          "arca_mirelle",
+          "arca_bastion"
+        ],
+        "inventory": [],
+        "equippedGear": {},
+        "equippedEventItems": {},
+        "heroTalents": {},
+        "heroSkins": {},
+        "activityProgress": {},
+        "portalCollection": {},
+        "publicProfile": {},
+        "hiddenUniverses": [],
+        "disabledAssets": {}
+      },
+      "completed": [],
+      "pageErrors": [],
+      "failedMedia": [],
+      "verification": {
+        "searchAndEmptyReset": true,
+        "searchFilterPreservesState": true,
+        "keyboardDetails": true,
+        "lockedMissionBlocked": true,
+        "reserveBlocksBriefings": true,
+        "reserveRoundtripPreservesState": true,
+        "nextBriefingId": 47001,
+        "combatNotLaunched": true,
+        "missions": [
+          {
+            "id": "47001",
+            "ariaDisabled": "false",
+            "title": "Reef of Erased Charts",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          },
+          {
+            "id": "47002",
+            "ariaDisabled": "true",
+            "title": "Bathyscaphe Library",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          },
+          {
+            "id": "47003",
+            "ariaDisabled": "true",
+            "title": "Crest of the Drowned Dawn",
+            "titleClientWidth": 229,
+            "titleScrollWidth": 229,
+            "titleWhiteSpace": "normal",
+            "metadataFont": "18.457px",
+            "height": 117.953125
+          }
+        ]
+      }
+    }
+  ],
+  "sourceSha256": {
+    "src/components/HubScreen.jsx": "edefca5d590fefcaa61923f93e3383ba709bb3a577a40afaa31a83db088377ce",
+    "src/components/OcDlcLibrary.jsx": "a440c09857ece6801d04595e46da7c5f41ba7bdf8747d6fdf8adbab55d320ecb",
+    "src/components/OcDlcLibrary.css": "c624d3a015b469614927275e0beb52c09a63b8d963ff7e786567b4146093d198",
+    "src/game/ocDlcLibraryView.js": "e32e745cb039ba163cf5220f0d4cf7ca810844595ee8a1259f2c32a29c914b18",
+    "scripts/fixtures/ocDlcLibraryHarness.jsx": "caac8c1afe40ff5cdb8c5da975f4adb8279ebae8388c4a2c331750f9e1e985d1"
+  }
+}

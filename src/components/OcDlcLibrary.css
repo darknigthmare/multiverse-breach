@@ -1,0 +1,57 @@
+.oc-act-library { min-width: 0; font-size: calc(15px * var(--game-text-scale, 1)); line-height: 1.65; color: #cddfe5; }
+.oc-act-library p { margin: 0; }
+.oc-act-heading { padding: 22px; border: 1px solid #527b88; border-top: 3px solid #86e5dd; border-radius: 7px; background: linear-gradient(135deg, #16333d, #091924 75%); }
+.oc-act-kicker { display: block; color: #a5dedc; font-size: .8em; letter-spacing: .06em; }
+.oc-act-library .oc-act-heading h4 { color: #f0fafb; font-size: 1.45em; line-height: 1.4; margin: 10px 0; }
+.oc-act-guidance { margin-top: 16px; border-top: 1px solid #42606b; padding-top: 6px; }
+.oc-act-guidance p { margin-top: 10px; }
+.oc-act-library summary { min-height: 44px; box-sizing: border-box; padding: 10px 0; cursor: pointer; color: #b5e9e2; font-size: .9375em; }
+.oc-act-controls { display: flex; flex-wrap: wrap; gap: 14px; margin: 20px 0 12px; padding: 16px; border: 1px solid #42616e; border-radius: 6px; background: #0b1a25; }
+.oc-act-controls label { flex: 1 1 240px; min-width: 0; display: grid; gap: 6px; color: #d4e8ef; }
+.oc-act-controls label > span { font-size: .9375em; }
+.oc-act-library .oc-act-controls :is(input, select) { font: inherit; width: 100%; min-width: 0; min-height: 44px; border: 1px solid #698c99; border-radius: 4px; padding: 10px; color: #effbff; background: #0c202b; box-sizing: border-box; }
+.oc-act-controls input::placeholder { color: #a8c0cc; opacity: 1; }
+.oc-act-library .oc-act-button { min-height: 44px; min-width: 44px; padding: 10px 13px; box-sizing: border-box; font: inherit; font-size: .9375em; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; border: 1px solid #718e9b; border-radius: 5px; color: #e4f4f8; background: #17303e; cursor: pointer; }
+.oc-act-library .oc-act-button:hover:not(:disabled):not([aria-disabled='true']) { border-color: #b4eee5; background: #214553; }
+.oc-act-library .oc-act-button:disabled, .oc-act-library .oc-act-button[aria-disabled='true'] { color: #b8c8d0; background: #14232e; border-color: #536773; cursor: not-allowed; opacity: 1; }
+.oc-act-controls > button { align-self: end; flex: 0 1 auto; }
+.oc-act-library .oc-act-results { font-size: .875em; margin: 14px 0; color: #bfd8e1; }
+.oc-act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; }
+.oc-act-card { min-width: 0; border: 1px solid #597580; border-top: 3px solid var(--oc-act-accent); border-radius: 7px; overflow: hidden; background: #0b1924; overflow-wrap: anywhere; }
+.oc-act-cover { min-height: 180px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: end; gap: 8px; padding: 18px; background-color: #102c36; background-size: cover; background-position: center; }
+.oc-act-badges { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: 8px; margin-bottom: auto; padding-bottom: 15px; font-size: .8em; }
+.oc-act-badges > :is(span, strong) { border: 1px solid #78919a; border-radius: 4px; padding: 3px 7px; background: #10212ce8; color: #d4e5ed; }
+.oc-act-badges strong[data-oc-act-state='active'] { border-color: #65ab91; color: #bcf6d5; background: #16362de8; }
+.oc-act-badges strong[data-oc-act-state='absent'] { border-color: #ae9267; color: #f5d5a6; background: #332c20; }
+.oc-act-universe { font-size: .875em; color: #c2e5e7; }
+.oc-act-library .oc-act-cover h4 { margin: 0; color: #f5fcff; font-size: 1.25em; line-height: 1.45; }
+.oc-act-body { display: grid; gap: 16px; padding: 18px; }
+.oc-act-description { color: #d1e3e9; }
+.oc-act-progress { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; font-size: .875em; }
+.oc-act-progress strong { color: #b7f5dc; font-variant-numeric: tabular-nums; }
+.oc-act-progress progress { display: block; flex-basis: 100%; width: 100%; height: 10px; accent-color: var(--oc-act-accent); }
+.oc-act-primary-actions { display: grid; gap: 10px; }
+.oc-act-library .oc-act-next:not(:disabled) { background: #18423f; border-color: #8bdccc; color: #e1fff7; }
+.oc-act-missions, .oc-act-content { border-top: 1px solid #41616d; }
+.oc-act-missions summary > span { margin-left: 8px; font-variant-numeric: tabular-nums; color: #c2d8df; }
+.oc-act-missions ol { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 16px; }
+.oc-act-mission { display: grid; width: 100%; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; row-gap: 5px; text-align: left; }
+.oc-act-mission-index { color: #9eddd3; font-variant-numeric: tabular-nums; }
+.oc-act-mission-title { min-width: 0; white-space: normal; }
+.oc-act-mission small { grid-column: 2; color: #b9d1dc; font-size: .875em; }
+.oc-act-library .oc-act-explanation { margin-top: 8px; color: #c0d2db; font-size: .875em; }
+.oc-act-content dl { margin: 10px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; font-size: .875em; }
+.oc-act-content dl > div { min-width: 0; padding: 8px; background: #112a35; border: 1px solid #41616d; border-radius: 4px; }
+.oc-act-content dt { color: #c5dbe4; }
+.oc-act-content dd { margin: 4px 0 0; font-size: 1.2em; color: #e9f9fb; }
+.oc-act-empty { padding: 24px; border: 1px dashed #688b98; border-radius: 6px; background: #0b1b26; }
+.oc-act-library .oc-act-empty h4 { font-size: 1.2em; color: #e4f5f8; margin: 0 0 12px; }
+.oc-act-empty button { margin-top: 18px; }
+.oc-act-library :is(button, input, select, summary):focus-visible { outline: 3px solid #ffdd9e; outline-offset: 3px; }
+html[data-game-contrast='high'] .oc-act-library :is(.oc-act-card, .oc-act-controls, .oc-act-heading, .oc-act-empty) { background: #020b13; border-color: #b6eae5; }
+@media (max-width: 520px) {
+  .oc-act-heading, .oc-act-cover, .oc-act-body { padding: 16px; }
+  .oc-act-controls { padding: 12px; }
+  .oc-act-controls > button { flex: 1 1 100%; }
+  .oc-act-content dl { grid-template-columns: 1fr; }
+}

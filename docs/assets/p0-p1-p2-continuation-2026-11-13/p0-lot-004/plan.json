@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T11:46:52.959771+00:00",
+  "scope": "P0/P1 actor source-art and exact bindings only; no shared audit/menu/export/manifest edits.",
+  "selectedCandidate": {
+    "actorId": "darth_revan",
+    "priority": "P1",
+    "hypothesis": "An identity-wide quarantine of the known incorrect dual red/purple original atlas also blocks the already delivered, visually distinct single-red KOTOR I correction.",
+    "oldAsset": "/sprites/generated/heroes/star-wars/darth-revan.png",
+    "candidateAsset": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+    "candidateSha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+    "approvalBeforeImplementationRequired": false,
+    "candidateBytesVerified": true,
+    "reviewScope": "Single-red correction family, costume compared to published source specification; fine costume/animation fidelity still pending.",
+    "candidateHash": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+    "reviewStatus": "BROAD_SINGLE_RED_SOURCE_CORRECTION_ACCEPTED_FOR_SCOPED_BINDING_FINE_DETAILS_UNVERIFIED"
+  },
+  "playerVisibleAcceptanceCriteria": [
+    "The exact masked KOTOR I incarnation can use only a source-inspected single-red corrected pose family.",
+    "The rejected original dual red/purple bitmap remains blocked, including fallback and preload paths.",
+    "Other editions, aliases with conflicting identity, saved cosmetics and other quarantined actors cannot bypass the gate.",
+    "Inspect native atlas and source references individually; validate actual engine-scale before/after."
+  ],
+  "refusalPolicy": "No retry, persona rewrite, age/alias or stylistic bypass for any historically refused identity. No image generation scheduled.",
+  "p0Review": "Historical refusals for Harry/Hermione/Luke/Ahsoka and other selected P0 identities found or inherited; Spider source audit explicitly lacks full leg/mount references. Existing art is inspected before considering any generation.",
+  "filesProposed": [
+    "src/game/canonicalSpriteQuarantine.js",
+    "src/game/spriteAssets.js",
+    "src/game/renderer.js",
+    "scripts/reviewedRevanSprite.test.mjs"
+  ],
+  "canonicalFidelityApproved": false,
+  "fullP0OrP1Closed": false
+}

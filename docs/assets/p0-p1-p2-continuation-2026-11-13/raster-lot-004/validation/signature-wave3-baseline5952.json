@@ -1,0 +1,20 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "scripts/signatureWave3.test.mjs"
+  ],
+  "cwd": "/tmp/p0-p1-p2-before-5952-source",
+  "exitCode": 1,
+  "seconds": 26.597,
+  "tapTotals": {
+    "tests": 62,
+    "pass": 27,
+    "fail": 35,
+    "skipped": 0
+  }
+}

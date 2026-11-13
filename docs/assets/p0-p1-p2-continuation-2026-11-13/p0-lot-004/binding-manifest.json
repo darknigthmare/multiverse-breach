@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-13T12:20:57.155180+00:00",
+  "id": "revan-kotor-i-reviewed-existing-correction-binding-20261113",
+  "actorId": "darth_revan",
+  "universe": "Star Wars",
+  "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+  "kind": "source-scoped-binding-of-existing-generated-art",
+  "status": "BOUNDED_CORRECTION_BOUND_AND_ENGINE_SCALE_INSPECTED",
+  "newImageGenerationCalls": 0,
+  "existingAsset": {
+    "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+    "sourcePath": "public/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+    "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+    "bytes": 367081,
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "columns": 4,
+    "rows": 4,
+    "frames": 16,
+    "nativeSource": "docs/combat-fidelity-wave13-2026-10-24/part-b/sources/darth_revan-native48.png",
+    "nativeSourceSha256": "82d719a4a639896dd39c37d9b19e3dc87f23ffb6f3ddbc2d7e9193039604e03b",
+    "generationProvenance": "docs/combat-fidelity-wave13-2026-10-24/part-b/generation-records.json",
+    "generationProvider": "Existing OpenAI image generation recorded by the Wave13 project provenance; no generation performed in this lot.",
+    "frameBytesModified": false,
+    "nativeSourceBytesVerified": true,
+    "nativeSourceBytes": 1501550
+  },
+  "sourceReferenceRecord": "source-reference.json",
+  "sourceReferenceScope": "Published 501st KOTOR specification for single red saber and broad dark/bronze/red costume; not a new visual mesh authority.",
+  "runtime": {
+    "files": [
+      "src/game/canonicalSpriteQuarantine.js",
+      "src/game/spriteAssets.js",
+      "src/game/renderer.js"
+    ],
+    "selectionGuard": [
+      "stable actor ID, exact universe and KOTOR I incarnation",
+      "no contradictory sourceHeroId/sourceId",
+      "candidate URL, PNG SHA, native-image SHA and sourceWork exact",
+      "1024 RGBA grid 4x4, 16 frames, baseline244 and reviewed row scale exact"
+    ],
+    "oldQuarantineRetained": true,
+    "oldDualSaberAtlasSelected": false,
+    "unreviewed48FrameAnimationEnabled": false,
+    "browserCryptographicIntegrityVerificationAdded": false,
+    "integrityNote": "Repository bytes are checked by focused tests and pinned metadata; no browser cryptographic authentication is asserted.",
+    "hudCrop": [
+      100,
+      116,
+      58,
+      72
+    ]
+  },
+  "playerVisibleChange": {
+    "before": "Canonical Revan uses ART PENDING placeholder and no sprite draw call.",
+    "after": "Single-red corrected body at nominal72/108 renderer heights and readable64px HUD portrait.",
+    "beforeSourceCount": 0,
+    "afterSourceCount": 1,
+    "afterDrawImageCalls": 13
+  },
+  "validation": {
+    "technicalQa": "technical-qa.json",
+    "rendererBefore": "before-engine-scale.png",
+    "rendererBeforeSha256": "b31217dc3fe4319c9b7b4d75c2a32bc3947237b62d9215aab5c9144fb6e83fe0",
+    "rendererAfter": "after-engine-scale.png",
+    "rendererAfterSha256": "54aed845fb0983e7b9a04417d7dd0588882fdb26f35e8b039af9dce29e05bcb6",
+    "cycle": "engine-pose-cycle.gif",
+    "cycleSha256": "e055743811f1ab1f8ef500ae82f4b2809ac6f32f808f19c009bff413518d05ca",
+    "all16CellsObserved": true,
+    "pageErrors": [],
+    "testReceipt": "validation/runtime-tests.json",
+    "tests": {
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "skipped": 0
+    },
+    "independentReviewByRoot": "independent-review.json",
+    "independentCurrentAuditReview": "../audit/revan-bounded-independent-review.json",
+    "independentCurrentAuditReviewSha256": "ae381ca0167f55538bd53a57d8b5b6811971a22372e9ef032e2f08c3f35a89f8"
+  },
+  "rights": {
+    "creationType": "Reuse of existing generated franchise fan art; source availability is not a redistribution licence.",
+    "newSourcePixelsCopiedIntoProduction": false,
+    "originalAttributionAndGenerationRecordsRetained": true
+  },
+  "closure": {
+    "knownBindingDefectsClosed": 1,
+    "fullActorClosures": 0,
+    "otherReservedActorsClosed": 0,
+    "source1to1Verified": false,
+    "visualFidelityApproved": false,
+    "canonicalFidelityApproved": false
+  },
+  "remaining": [
+    "Fine KOTOR I mask, armour topology and all costume details require better native visual comparison.",
+    "Source choreography, dedicated48-frame actions and full combat playthrough not certified.",
+    "Other39 dossiers remain open; historical image-generation refusals stay in force."
+  ]
+}

@@ -92,11 +92,14 @@ function validateManifests(manifests) {
         }
         const modulePaths = new Set();
         for (const module of manifest.modules) {
-            if (!isObject(module) || typeof module.path !== 'string' || typeof module.runtimeAdapter !== 'string') {
+            if (!isObject(module) || typeof module.path !== 'string'
+                || (module.runtimeAdapter != null && typeof module.runtimeAdapter !== 'string')) {
                 throw new Error('Invalid DLC module declaration: ' + manifest.id);
             }
             safeRelativePath(module.path);
-            safeRelativePath(module.runtimeAdapter);
+            // Private pack helpers have no aggregate adapter, but remain owned
+            // source modules and must still participate in export/closure.
+            if (module.runtimeAdapter != null) safeRelativePath(module.runtimeAdapter);
             if (modulePaths.has(module.path)) throw new Error('Duplicate DLC module declaration: ' + manifest.id + '/' + module.path);
             modulePaths.add(module.path);
         }

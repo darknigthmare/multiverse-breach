@@ -1,0 +1,53 @@
+{
+  "scope": "Actual Hub, actual production edition transformer and prepared parent state, not complete campaign/save persistence.",
+  "checks": [
+    {
+      "edition": "all",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/browserOcDlcLibrary.py",
+        "--base-url",
+        "http://127.0.0.1:4186",
+        "--edition",
+        "all",
+        "--out",
+        "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/all",
+        "--verify"
+      ],
+      "exitCode": 0,
+      "seconds": 37.011
+    },
+    {
+      "edition": "base",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/browserOcDlcLibrary.py",
+        "--base-url",
+        "http://127.0.0.1:4187",
+        "--edition",
+        "base",
+        "--out",
+        "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/base",
+        "--verify"
+      ],
+      "exitCode": 0,
+      "seconds": 21.659
+    },
+    {
+      "edition": "thalassa",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/browserOcDlcLibrary.py",
+        "--base-url",
+        "http://127.0.0.1:4188",
+        "--edition",
+        "thalassa",
+        "--out",
+        "docs/assets/p0-p1-p2-continuation-2026-11-13/mission-menu/AFTER/thalassa",
+        "--verify"
+      ],
+      "exitCode": 0,
+      "seconds": 23.526
+    }
+  ]
+}

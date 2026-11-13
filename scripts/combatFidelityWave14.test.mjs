@@ -10,6 +10,7 @@ import { COMBAT_CAPABILITY_COMPLETION } from '../src/game/combat/completion/cata
 import { COMBAT_SOURCE_DEFINITIONS_WAVE14 as sources } from '../src/game/combat/combatSourceDefinitionsWave14.js';
 import { CHARACTER_PRESENTATIONS, PRESENTATION_PHASES } from '../src/game/combat/presentationCatalog.js';
 import { supportsNativeSuperWave14, supportsTrackedProjectileVisualWave14, getNativeSuperVisualStateWave14 } from '../src/game/combat/nativeSuperVisualsWave14.js';
+import { assertCatalogActionEdition, PROJECTED_SOURCE_EDITIONS_20261113 } from './combatCanonicalEditionFixtures.mjs';
 const plan=JSON.parse(fs.readFileSync(new URL('../docs/combat-fidelity-wave14-2026-10-25/batch-plan-before.json',import.meta.url)));
 const sorted=a=>[...a].sort(), ids=Object.values(plan.parts).flat(), roster=new Map(HEROES_DB.map(h=>[h.id,h]));
 test('W14 uses the exact frozen40 source versions and separates12 new abilities from28 revisions',()=>{
@@ -20,7 +21,25 @@ test('W14 uses the exact frozen40 source versions and separates12 new abilities 
  assert.equal(Object.keys(ABILITIES_WAVE14).length,12);assert.equal(Object.keys(ABILITY_REVISIONS_WAVE14).length,28);
  assert.equal(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).length,1540);
  assert.equal(Object.keys(HISTORICAL_ABILITY_OVERRIDES_BEFORE_WAVE15).filter(id=>!Object.hasOwn(ABILITIES_WAVE14,id)).length,1528);
- for(const e of plan.heroes){const h=roster.get(e.hero.id),s=sources[h.id];for(const [key,value] of Object.entries(e.source))assert.deepEqual(s[key],value,h.id+': '+key);assert.equal(h.weaponType,s.weaponType);for(const slot of ['simple','secondary','defense','special'])assert.deepEqual(h[slot],e.hero[slot],h.id+': raw action retained');}
+ for(const e of plan.heroes){const h=roster.get(e.hero.id),s=sources[h.id];for(const [key,value] of Object.entries(e.source))assert.deepEqual(s[key],value,h.id+': '+key);assert.equal(h.weaponType,s.weaponType);for(const slot of ['simple','secondary','defense','special'])assertCatalogActionEdition(h,slot,e.hero[slot]);}
+ // These exact fifteen projections have independent historical and selected
+ // action pins. A declaration flag alone must never bypass the action gates.
+ assert.deepEqual(sorted(Object.keys(PROJECTED_SOURCE_EDITIONS_20261113)), sorted(["ardyn_ff15", "cor_ff15", "noble_six", "buck_odst", "kelly_087", "linda_058", "ashley_williams", "mordin", "shephard", "vortigaunt_ally", "dog_hl2", "cortana", "unreal_tournament_2004_gorge", "unreal_tournament_2004_sapphire", "unreal_tournament_2004_frostbite"]));
+ for (const [id, edition] of Object.entries(PROJECTED_SOURCE_EDITIONS_20261113)) {
+  const actor = roster.get(id);
+  for (const [slot, revision] of Object.entries(edition.slots)) {
+   assertCatalogActionEdition(actor, slot, revision.historical);
+   for (const field of Object.keys(edition).filter(key => key !== 'slots')) {
+    assert.throws(() => assertCatalogActionEdition({ ...actor, [field]: 'Foreign source' }, slot, revision.historical), `${id}/${slot}/${field}`);
+   }
+   for (const [field, value] of [['name','Changed action'],['type','unknown'],['dmg',-1],['targeting',{shape:'group'}],['extra',true]]) {
+    assert.throws(() => assertCatalogActionEdition({ ...actor, [slot]: { ...actor[slot], [field]: value } }, slot, revision.historical), `${id}/${slot}/${field}`);
+   }
+   assert.throws(() => assertCatalogActionEdition({ ...actor, source1to1Verified: true,
+    [slot]: { ...actor[slot], name: 'Flag cannot approve a changed action' } }, slot, revision.historical));
+   assert.throws(() => assertCatalogActionEdition(actor, slot, { ...revision.historical, name: 'Changed historical action' }));
+  }
+ }
  assert.equal(sources.gimli_lotr.bodyHeight,150);assert.equal(sources.no_mans_sky_polo.bodyHeight,120);for(const id of ['space_marine_titus','space_marine_sidonus','space_marine_leandros'])assert.equal(sources[id].bodyHeight,220);
 });
 test('W14 resolves160 named slots with zero-damage support and exact special effects/delivery',()=>{

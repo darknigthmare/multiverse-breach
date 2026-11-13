@@ -6662,6 +6662,9 @@ const manifests = [
     "catalogOrder": 172,
     "modules": [
       {
+        "path": "data/actorSourceContracts.js"
+      },
+      {
         "path": "data/enemies.js",
         "runtimeAdapter": "src/game/enemies.js"
       },
@@ -6717,6 +6720,9 @@ const manifests = [
     "catalogOrder": 173,
     "modules": [
       {
+        "path": "data/actorSourceContracts.js"
+      },
+      {
         "path": "data/expandedUniverses.js",
         "runtimeAdapter": "src/game/expandedUniverses.js"
       },
@@ -6743,6 +6749,9 @@ const manifests = [
     "registration": "runtime",
     "catalogOrder": 174,
     "modules": [
+      {
+        "path": "data/actorSourceContracts.js"
+      },
       {
         "path": "data/expandedUniverses.js",
         "runtimeAdapter": "src/game/expandedUniverses.js"
@@ -6774,6 +6783,9 @@ const manifests = [
     "registration": "runtime",
     "catalogOrder": 175,
     "modules": [
+      {
+        "path": "data/actorSourceContracts.js"
+      },
       {
         "path": "data/expandedUniverses.js",
         "runtimeAdapter": "src/game/expandedUniverses.js"
@@ -12335,6 +12347,9 @@ const manifests = [
       {
         "path": "data/canonRosterWavePartG.js",
         "runtimeAdapter": "src/game/canonRosterWavePartG.js"
+      },
+      {
+        "path": "data/actorCatalogCombat.js"
       }
     ],
     "assetManifest": "assets.json"

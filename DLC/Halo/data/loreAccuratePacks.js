@@ -1,8 +1,10 @@
+import { applyHaloHeroSourceContracts } from './heroes.js';
+import { applyHaloEnemySourceContracts } from './enemies.js';
 // Halo — definitions consumed by src/game/loreAccuratePacks.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createLoreAccurateHeroExpansions({ hero }) {
-  return ([
+  return applyHaloHeroSourceContracts([
     hero('cortana_fragment', 'Cortana Fragment', 'hacker', '#5fd7ff', 'laser', 'Data Spike', 'Forerunner Door Override', 'Hardlight Decoy', 'Rampancy Logic Storm'),
     hero('noble_six', 'Noble Six', 'marine', '#4d5f64', 'gun', 'DMR Precision Burst', 'Armor Lock Counter', 'Reach Last Stand', 'Sabre Strike Beacon'),
     hero('buck', 'Edward Buck', 'tactical', '#556b5d', 'gun', 'ODST SMG Burst', 'Drop Pod Flank', 'Helljumper Cover', 'Orbital Drop Shock')
@@ -10,15 +12,15 @@ export function createLoreAccurateHeroExpansions({ hero }) {
 }
 
 export function createLoreAccurateHeroOverrides({ loadout }) {
-  return (loadout('energy_sword', 'Energy Sword Cut', 'Active Camo Flank', 'Sangheili Honor Guard', 'Great Schism Strike', '#95a5a6'));
+  return applyHaloHeroSourceContracts(loadout('energy_sword', 'Energy Sword Cut', 'Active Camo Flank', 'Sangheili Honor Guard', 'Great Schism Strike', '#95a5a6'), 'arbiter');
 }
 
 export function createLoreAccurateHeroOverrides2({ loadout }) {
-  return (loadout('gun', 'Marine Sergeant Burst', 'Spartan Morale Rally', 'Cigar Smoke Cover', 'Send Me Out With A Bang', '#27ae60'));
+  return applyHaloHeroSourceContracts(loadout('gun', 'Marine Sergeant Burst', 'Spartan Morale Rally', 'Cigar Smoke Cover', 'Send Me Out With A Bang', '#27ae60'), 'johnson');
 }
 
 export function createLoreAccurateEnemyExpansions({ boss, monster }) {
-  return ({
+  return applyHaloEnemySourceContracts({
     monsters: [
       monster('Hunter Bond Brother', 180, 18, 3, '#1f7a66', 'fuel_rod'),
       monster('Brute Captain', 145, 16, 5, '#6f4e37', 'spiker'),

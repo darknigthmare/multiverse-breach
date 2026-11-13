@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-13",
+  "node": "v22.23.5",
+  "heapLimitMiB": 1024,
+  "cpuAffinity": "0",
+  "command": "taskset --cpu-list 0 /tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node --max-old-space-size=1024 --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/ffActorSourceContracts20261113.test.mjs",
+  "exitCode": 0,
+  "tests": 10,
+  "pass": 10,
+  "fail": 0,
+  "scope": [
+    "40 stable actor identities",
+    "112 resolved profiles before preparation",
+    "112 resolved profiles after preparation",
+    "21 existing prepared kits",
+    "18 strict declaration aliases and negative cases",
+    "18 EngineSmash supers compared before/after, including partners and one meter spend",
+    "EngineRpg Knights: 13 contacts, 260 damage, one ATB/item spend",
+    "Actual tactics role corrections",
+    "Actual base profile transform and selected private helpers"
+  ],
+  "iterations": [
+    {
+      "result": "Failed",
+      "reason": "Missing explicit enemy adaptation flag and uncontrolled damage variance in comparison. Added explicit provenance and deterministic Math.random during real engine test, without changing combat."
+    },
+    {
+      "result": "Passed8tests",
+      "limitation": "Only15preexistingFFaliasescovered. Independent audit found other wave6kits/regression; this run was not accepted as final."
+    },
+    {
+      "result": "Passed10tests",
+      "fix": "Expanded all40 prepared comparisons; added3 explicit FFVIII aliases, retained Zell raw special and absent raw special for Zolom/Sweeper."
+    }
+  ],
+  "artApproved": false,
+  "source1to1Verified": false,
+  "sourceTestSha256": "46d4970c0850e2a8bc6a6376809da7f48c2fca88253afe677a054a1833b62733",
+  "sharedSignatureSourceSha256": "fda784a8f9d45ae9178c6dbfb562345180d364912b80b002ecb507bf441162de",
+  "finalRunIncludesSharedArbiterCompatibility": true,
+  "finalArbiterGuard": "Declared-name alias requires exactly four own special keys (name,type,dmg,color), exact legacy values except name; original legacy-name branch unchanged."
+}

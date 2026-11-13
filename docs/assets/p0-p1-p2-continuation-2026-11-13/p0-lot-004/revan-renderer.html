@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Revan KOTOR I — renderer review</title>
+<style>body{margin:16px;background:#101923;color:#e5eef5;font:14px system-ui}h1{font-size:20px}canvas{display:block;border:1px solid #466171;image-rendering:pixelated;max-width:100%}p{max-width:980px;color:#bcd0df}</style>
+<h1>Masked Revan — KOTOR I: native renderer at 72 / 108 pixels</h1>
+<p>Actual drawPixelSprite / drawCombatantBust paths. Idle, run, attack and hit share a fixed source edition. This is an asset-binding review, not a completed combat playthrough.</p>
+<canvas width="1000" height="620"></canvas><p id="status">Loading renderer…</p>
+<script type="module">
+import { getHeroById } from '/src/game/heroes.js';
+import { drawPixelSprite, drawCombatantBust, preloadSpriteSheetSrcs } from '/src/game/renderer.js';
+import * as sprites from '/src/game/spriteAssets.js';
+import { getQuarantinedCanonSprite } from '/src/game/canonicalSpriteQuarantine.js';
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),hero=getHeroById('darth_revan');
+const draws=[],nativeDraw=ctx.drawImage.bind(ctx);
+ctx.drawImage=(image,...args)=>{draws.push({src:image.currentSrc||image.src||'',args});nativeDraw(image,...args);};
+const states=['idle','run','attack','hit'];
+function render(){
+ const reviewTick=Number.isFinite(window.__revanReviewTick)?window.__revanReviewTick:7;
+ draws.length=0;ctx.fillStyle='#172634';ctx.fillRect(0,0,1000,620);ctx.font='14px system-ui';
+ for(const [r,spec] of [{context:'auto',height:72,label:'RPG / 72 px'},{context:'melee',height:72,label:'Melee / 72 px'},{context:'tactics',height:108,label:'Tactics / 108 px'}].entries()){
+  const baseline=155+r*170;ctx.strokeStyle='#779091';ctx.beginPath();ctx.moveTo(15,baseline);ctx.lineTo(985,baseline);ctx.stroke();ctx.fillStyle='#cae7ee';ctx.fillText(spec.label,15,baseline-125);
+  for(let i=0;i<states.length;i++){
+   const actor={...hero,state:states[i],stateTimer:0,action:states[i]==='attack'?{type:'melee'}:null};
+   const x=175+i*210;ctx.fillStyle='#adc5d5';ctx.fillText(states[i],x-35,baseline+23);
+   drawPixelSprite(ctx,x,baseline,actor,reviewTick,i%2?-1:1,spec.height,spec.context);
+  }
+ }
+ drawCombatantBust(ctx,20,548,64,64,hero,'hero');ctx.fillStyle='#bad0df';ctx.fillText('HUD bust / 64 px',95,580);
+ const sources=sprites.getHeroSpriteSheetSources(hero,'auto');
+ window.__revanArtReview={ready:true,hero:{id:hero.id,universe:hero.universe,incarnation:hero.incarnation},sources,
+  quarantineStillRecorded:Boolean(getQuarantinedCanonSprite(hero)),reviewed:sprites.getReviewedQuarantinedHeroSprite?.(hero)||null,
+  draws:draws.slice(),canvasSize:[1000,620],states,reviewTick,scope:'actual renderer at declared engine heights, no game-state edits'};
+ document.querySelector('#status').textContent=sources.length?'Source correction selected; exact costume details still under review.':'Original sheet blocked; no reviewed source correction selected.';
+}
+preloadSpriteSheetSrcs(sprites.getHeroSpriteSheetSources(hero,'auto'));render();setInterval(render,100);
+</script></html>

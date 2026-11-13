@@ -122,6 +122,39 @@ for (const packIds of [[], ['halo'], ['halo', 'drop']]) {
   });
 }
 
+for (const packIds of [[], ['halo']]) {
+  test('private helper code is exported only with its selected pack: ' + (packIds.join('+') || 'base'), async t => {
+    const f = fixture(t);
+    const manifests = [];
+    for (const universe of ['Halo', 'Drop']) {
+      const directory = 'DLC/' + universe;
+      const manifest = JSON.parse(readFileSync(path.join(f.root, directory, 'manifest.json'), 'utf8'));
+      manifest.modules.push({ path: 'data/privateHelper.js' });
+      manifests.push(manifest);
+      writeJson(f.root, directory + '/manifest.json', manifest);
+      write(f.root, directory + '/data/privateHelper.js', "export const makeHero = id => ({ id, source: 'private-helper' });\n");
+      write(f.root, directory + '/data/heroes.js', "import { makeHero } from './privateHelper.js';\nexport const " + universe.toUpperCase() + '_HEROES = [makeHero(' + JSON.stringify(manifest.id) + ')];\n');
+    }
+    write(f.root, 'DLC/index.js', 'export const DLC_PACK_MANIFESTS = ' + JSON.stringify(manifests) + ';\n');
+    const inspected = inspectDlcExportSources({ root: f.root, profile: profile(packIds) });
+    for (const universe of ['Halo', 'Drop']) {
+      assert.equal(inspected.sourceFiles.includes('DLC/' + universe + '/data/privateHelper.js'), packIds.includes(universe.toLowerCase()));
+    }
+    const result = runExport(f, packIds);
+    assert.equal(result.audit.passed, true);
+    assert.equal(existsSync(path.join(f.out, 'DLC/Drop/data/privateHelper.js')), false);
+    const helperPath = 'DLC/Halo/data/privateHelper.js';
+    assert.equal(existsSync(path.join(f.out, helperPath)), packIds.includes('halo'));
+    if (packIds.includes('halo')) {
+      assert.deepEqual(readFileSync(path.join(f.out, helperPath)), readFileSync(path.join(f.root, helperPath)));
+      const loaded = await import(pathToFileURL(path.join(f.out, 'DLC/Halo/data/heroes.js')).href);
+      assert.deepEqual(loaded.HALO_HEROES, [{ id: 'halo', source: 'private-helper' }]);
+      const delivered = JSON.parse(readFileSync(path.join(f.out, 'DLC/Halo/manifest.json'), 'utf8'));
+      assert.deepEqual(delivered.modules.find(module => module.path === 'data/privateHelper.js'), { path: 'data/privateHelper.js' });
+    }
+  });
+}
+
 test('all mode preserves all contributions and empty packIds in metadata', (t) => {
   const f = fixture(t);
   const result = exportDlcDistribution({ root: f.root,

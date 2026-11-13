@@ -93,6 +93,34 @@ test('a selected profile executes with the excluded directory physically absent'
   await assert.rejects(fs.stat(path.join(directory, 'DLC/Drop')), { code: 'ENOENT' });
 });
 
+test('private helpers remain owned modules without a public aggregate adapter', async t => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'dlc-private-helper-profile-'));
+  t.after(() => fs.rm(directory, { recursive: true, force: true }));
+  const manifests = fixtures.map(pack => ({ ...pack, modules: [...pack.modules, { path: 'data/privateHelper.js' }] }));
+  await fs.mkdir(path.join(directory, 'DLC/Keep/data'), { recursive: true });
+  await fs.mkdir(path.join(directory, 'src'), { recursive: true });
+  await fs.writeFile(path.join(directory, 'package.json'), '{"type":"module"}\n');
+  const helper = "export const makeEntry = () => ({ id: 'retained-private-helper', score: 7 });\n";
+  const factory = "import { makeEntry } from './privateHelper.js'; export const create = () => makeEntry();\n";
+  await fs.writeFile(path.join(directory, 'DLC/Keep/data/privateHelper.js'), helper);
+  await fs.writeFile(path.join(directory, 'DLC/Keep/data/entries.js'), factory);
+  const source = imports + "import * as kept from '../DLC/Keep/data/entries.js';\nexport const values = [gone.create(), kept.create()];";
+  const selected = createDlcProfileTransformer({ root: directory, manifests, installedPackIds: ['keep'] });
+  const target = path.join(directory, 'src/selected.js');
+  await fs.writeFile(target, selected.transform(source, target).code);
+  assert.deepEqual((await import(pathToFileURL(target))).values, [{ id: 'retained-private-helper', score: 7 }]);
+  assert.equal(selected.transform(helper, path.join(directory, 'DLC/Keep/data/privateHelper.js')), null);
+  assert.throws(() => selected.transform(helper, path.join(directory, 'DLC/Drop/data/privateHelper.js')), /Excluded DLC module/);
+  const base = createDlcProfileTransformer({ root: directory, manifests, installedPackIds: [] });
+  const baseTarget = path.join(directory, 'src/base.js');
+  const reduced = base.transform(source, baseTarget).code;
+  assert.ok(!reduced.includes('/DLC/'));
+  await fs.writeFile(baseTarget, reduced);
+  await fs.rm(path.join(directory, 'DLC/Keep'), { recursive: true });
+  assert.deepEqual((await import(pathToFileURL(baseTarget))).values, []);
+  await assert.rejects(fs.stat(path.join(directory, 'DLC/Keep/data/privateHelper.js')), { code: 'ENOENT' });
+});
+
 test('unknown uses, exports, side effects and shadowed bindings fail closed', () => {
   const cases = [
     'export const result = gone.create();',
@@ -202,7 +230,8 @@ test('every repository aggregate can be assembled for base and representative se
     }
   }
   assert.ok(manifests.length >= 505, 'run repository-wide source coverage in the complete source checkout');
-  const adapters = [...new Set(manifests.flatMap(pack => pack.modules.map(module => module.runtimeAdapter)))];
+  const adapters = [...new Set(manifests.flatMap(pack => pack.modules
+    .filter(module => module.runtimeAdapter != null).map(module => module.runtimeAdapter)))];
   const sources = await Promise.all(adapters.map(async adapter => [adapter, await fs.readFile(path.join(root, adapter), 'utf8')]));
   for (const selected of [[], ['halo'], ['alien', 'aliens'], ['payday', 'magicka']]) {
     const transformer = createDlcProfileTransformer({ root, manifests, installedPackIds: selected });

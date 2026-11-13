@@ -1,0 +1,685 @@
+TAP version 13
+# (node:138970) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the reserved cohort contains forty exact existing identities and no visual approvals
+ok 1 - the reserved cohort contains forty exact existing identities and no visual approvals
+  ---
+  duration_ms: 2.631021
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:masterchief"]
+ok 2 - source contract: ["Halo","id:masterchief"]
+  ---
+  duration_ms: 1.728289
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:freeman"]
+ok 3 - source contract: ["Half-Life","id:freeman"]
+  ---
+  duration_ms: 0.511402
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","id:shepard"]
+ok 4 - source contract: ["Mass Effect","id:shepard"]
+  ---
+  duration_ms: 0.527776
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:arbiter"]
+ok 5 - source contract: ["Halo","id:arbiter"]
+  ---
+  duration_ms: 0.280073
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:johnson"]
+ok 6 - source contract: ["Halo","id:johnson"]
+  ---
+  duration_ms: 0.359883
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:cortana"]
+ok 7 - source contract: ["Halo","id:cortana"]
+  ---
+  duration_ms: 0.197728
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:noble_six"]
+ok 8 - source contract: ["Halo","id:noble_six"]
+  ---
+  duration_ms: 0.354435
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:buck_odst"]
+ok 9 - source contract: ["Halo","id:buck_odst"]
+  ---
+  duration_ms: 4.394584
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:kelly_087"]
+ok 10 - source contract: ["Halo","id:kelly_087"]
+  ---
+  duration_ms: 0.542759
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:linda_058"]
+ok 11 - source contract: ["Halo","id:linda_058"]
+  ---
+  duration_ms: 0.176086
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:cortana_fragment"]
+ok 12 - source contract: ["Halo","id:cortana_fragment"]
+  ---
+  duration_ms: 0.140192
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","id:buck"]
+ok 13 - source contract: ["Halo","id:buck"]
+  ---
+  duration_ms: 0.107342
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:barney"]
+ok 14 - source contract: ["Half-Life","id:barney"]
+  ---
+  duration_ms: 0.109195
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:shephard"]
+ok 15 - source contract: ["Half-Life","id:shephard"]
+  ---
+  duration_ms: 0.097367
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:alyx_vance"]
+ok 16 - source contract: ["Half-Life","id:alyx_vance"]
+  ---
+  duration_ms: 0.117227
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:eli_vance"]
+not ok 17 - source contract: ["Half-Life","id:eli_vance"]
+  ---
+  duration_ms: 0.853538
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:34:35'
+  failureType: 'testCodeFailure'
+  error: |-
+    weaponType
+    + actual - expected
+    
+    + 'tablet'
+    - 'terminal'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'terminal'
+  actual: 'tablet'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:40:67)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source contract: ["Half-Life","id:kleiner"]
+not ok 18 - source contract: ["Half-Life","id:kleiner"]
+  ---
+  duration_ms: 0.151699
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:34:35'
+  failureType: 'testCodeFailure'
+  error: |-
+    weaponType
+    + actual - expected
+    
+    + 'tablet'
+    - 'terminal'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'terminal'
+  actual: 'tablet'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:40:67)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source contract: ["Half-Life","id:vortigaunt_ally"]
+ok 19 - source contract: ["Half-Life","id:vortigaunt_ally"]
+  ---
+  duration_ms: 0.176656
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","id:dog_hl2"]
+ok 20 - source contract: ["Half-Life","id:dog_hl2"]
+  ---
+  duration_ms: 0.178018
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","id:garrus"]
+not ok 21 - source contract: ["Mass Effect","id:garrus"]
+  ---
+  duration_ms: 0.13921
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:34:35'
+  failureType: 'testCodeFailure'
+  error: |-
+    weaponType
+    
+    'gun' !== 'rifle'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'rifle'
+  actual: 'gun'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:40:67)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source contract: ["Mass Effect","id:liara"]
+ok 22 - source contract: ["Mass Effect","id:liara"]
+  ---
+  duration_ms: 0.138088
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","id:tali"]
+not ok 23 - source contract: ["Mass Effect","id:tali"]
+  ---
+  duration_ms: 0.11198
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:34:35'
+  failureType: 'testCodeFailure'
+  error: |-
+    weaponType
+    
+    'gun' !== 'shotgun'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'shotgun'
+  actual: 'gun'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:40:67)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source contract: ["Mass Effect","id:wrex"]
+not ok 24 - source contract: ["Mass Effect","id:wrex"]
+  ---
+  duration_ms: 0.095704
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:34:35'
+  failureType: 'testCodeFailure'
+  error: |-
+    weaponType
+    
+    'gun' !== 'shotgun'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'shotgun'
+  actual: 'gun'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:40:67)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source contract: ["Mass Effect","id:ashley_williams"]
+ok 25 - source contract: ["Mass Effect","id:ashley_williams"]
+  ---
+  duration_ms: 0.121583
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","id:mordin"]
+ok 26 - source contract: ["Mass Effect","id:mordin"]
+  ---
+  duration_ms: 0.115415
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","name:Covenant Grunt"]
+ok 27 - source contract: ["Halo","name:Covenant Grunt"]
+  ---
+  duration_ms: 0.162175
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","name:Jackal Sniper"]
+ok 28 - source contract: ["Halo","name:Jackal Sniper"]
+  ---
+  duration_ms: 0.125099
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","name:Elite Minor"]
+ok 29 - source contract: ["Halo","name:Elite Minor"]
+  ---
+  duration_ms: 0.117587
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","name:Forerunner Sentinel"]
+ok 30 - source contract: ["Halo","name:Forerunner Sentinel"]
+  ---
+  duration_ms: 0.145049
+  type: 'test'
+  ...
+# Subtest: source contract: ["Halo","name:Flood Combat Form"]
+ok 31 - source contract: ["Halo","name:Flood Combat Form"]
+  ---
+  duration_ms: 0.093281
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","name:Combine Overwatch Soldier"]
+ok 32 - source contract: ["Half-Life","name:Combine Overwatch Soldier"]
+  ---
+  duration_ms: 0.15278
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","name:Acid-Spitting Bullsquid"]
+ok 33 - source contract: ["Half-Life","name:Acid-Spitting Bullsquid"]
+  ---
+  duration_ms: 0.098348
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","name:Houndeye Pack"]
+ok 34 - source contract: ["Half-Life","name:Houndeye Pack"]
+  ---
+  duration_ms: 0.084377
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","name:Barnacle Ceiling Trap"]
+ok 35 - source contract: ["Half-Life","name:Barnacle Ceiling Trap"]
+  ---
+  duration_ms: 0.083175
+  type: 'test'
+  ...
+# Subtest: source contract: ["Half-Life","name:Zombie Poison Headcrab Host"]
+ok 36 - source contract: ["Half-Life","name:Zombie Poison Headcrab Host"]
+  ---
+  duration_ms: 0.115744
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","name:Geth Rocket Trooper"]
+ok 37 - source contract: ["Mass Effect","name:Geth Rocket Trooper"]
+  ---
+  duration_ms: 0.086601
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","name:Cerberus Phantom"]
+ok 38 - source contract: ["Mass Effect","name:Cerberus Phantom"]
+  ---
+  duration_ms: 0.110727
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","name:Collector Drone"]
+ok 39 - source contract: ["Mass Effect","name:Collector Drone"]
+  ---
+  duration_ms: 0.091098
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","name:Husk Shock Trooper"]
+ok 40 - source contract: ["Mass Effect","name:Husk Shock Trooper"]
+  ---
+  duration_ms: 0.083636
+  type: 'test'
+  ...
+# Subtest: source contract: ["Mass Effect","name:Geth Prime Platform"]
+ok 41 - source contract: ["Mass Effect","name:Geth Prime Platform"]
+  ---
+  duration_ms: 0.111298
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: masterchief
+not ok 42 - authored runtime semantics remain unchanged: masterchief
+  ---
+  duration_ms: 2.1531
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG secondary/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: freeman
+ok 43 - authored runtime semantics remain unchanged: freeman
+  ---
+  duration_ms: 1.13317
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: shepard
+ok 44 - authored runtime semantics remain unchanged: shepard
+  ---
+  duration_ms: 0.626857
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: arbiter
+ok 45 - authored runtime semantics remain unchanged: arbiter
+  ---
+  duration_ms: 0.805495
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: johnson
+not ok 46 - authored runtime semantics remain unchanged: johnson
+  ---
+  duration_ms: 0.327475
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG secondary/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: cortana
+not ok 47 - authored runtime semantics remain unchanged: cortana
+  ---
+  duration_ms: 0.310058
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG simple/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: noble_six
+ok 48 - authored runtime semantics remain unchanged: noble_six
+  ---
+  duration_ms: 0.381926
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: buck_odst
+ok 49 - authored runtime semantics remain unchanged: buck_odst
+  ---
+  duration_ms: 0.475848
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: kelly_087
+ok 50 - authored runtime semantics remain unchanged: kelly_087
+  ---
+  duration_ms: 0.27823
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: linda_058
+ok 51 - authored runtime semantics remain unchanged: linda_058
+  ---
+  duration_ms: 0.305001
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: barney
+not ok 52 - authored runtime semantics remain unchanged: barney
+  ---
+  duration_ms: 0.378811
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG secondary/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: shephard
+ok 53 - authored runtime semantics remain unchanged: shephard
+  ---
+  duration_ms: 0.286773
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: alyx_vance
+not ok 54 - authored runtime semantics remain unchanged: alyx_vance
+  ---
+  duration_ms: 0.257299
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG secondary/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: eli_vance
+not ok 55 - authored runtime semantics remain unchanged: eli_vance
+  ---
+  duration_ms: 0.192661
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG simple/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: kleiner
+not ok 56 - authored runtime semantics remain unchanged: kleiner
+  ---
+  duration_ms: 0.21204
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG simple/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: vortigaunt_ally
+ok 57 - authored runtime semantics remain unchanged: vortigaunt_ally
+  ---
+  duration_ms: 0.288415
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: dog_hl2
+ok 58 - authored runtime semantics remain unchanged: dog_hl2
+  ---
+  duration_ms: 0.285331
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: garrus
+ok 59 - authored runtime semantics remain unchanged: garrus
+  ---
+  duration_ms: 0.293584
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: liara
+not ok 60 - authored runtime semantics remain unchanged: liara
+  ---
+  duration_ms: 0.327995
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:55:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    RPG special/maxTargets
+    
+    Infinity !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: Infinity
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/scifiSourceContracts20261113.test.mjs:61:16)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: authored runtime semantics remain unchanged: tali
+ok 61 - authored runtime semantics remain unchanged: tali
+  ---
+  duration_ms: 0.305121
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: wrex
+ok 62 - authored runtime semantics remain unchanged: wrex
+  ---
+  duration_ms: 0.330189
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: ashley_williams
+ok 63 - authored runtime semantics remain unchanged: ashley_williams
+  ---
+  duration_ms: 0.291219
+  type: 'test'
+  ...
+# Subtest: authored runtime semantics remain unchanged: mordin
+ok 64 - authored runtime semantics remain unchanged: mordin
+  ---
+  duration_ms: 0.578794
+  type: 'test'
+  ...
+# Subtest: Cortana, Eli and Kleiner never turn their support instructions into damaging rays
+ok 65 - Cortana, Eli and Kleiner never turn their support instructions into damaging rays
+  ---
+  duration_ms: 1.143596
+  type: 'test'
+  ...
+# Subtest: the historical Buck entry uses his ODST firearm instead of an invented orbital area strike
+ok 66 - the historical Buck entry uses his ODST firearm instead of an invented orbital area strike
+  ---
+  duration_ms: 0.54327
+  type: 'test'
+  ...
+# Subtest: ME2 Soldier and squad class boundaries remain distinct from other editions
+ok 67 - ME2 Soldier and squad class boundaries remain distinct from other editions
+  ---
+  duration_ms: 0.462278
+  type: 'test'
+  ...
+# Subtest: legacy enemy signature identities still resolve after source contracts
+ok 68 - legacy enemy signature identities still resolve after source contracts
+  ---
+  duration_ms: 0.230698
+  type: 'test'
+  ...
+1..68
+# tests 68
+# suites 0
+# pass 55
+# fail 13
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2320.241193

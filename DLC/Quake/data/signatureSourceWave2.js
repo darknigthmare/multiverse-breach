@@ -18,5 +18,5 @@ export function createSignatureWave2Rows4({ enemy }) {
 }
 
 export function createSignatureWave2Rows5({ enemy }) {
-  return (enemy("Quake", "Strogg Gladiator", "Precision rail shot", "Gladiator Railgun", "beam", 390, "q2-gladiator", {"enemyId":"quake_franchise_gladiator","minRange":42,"note":"Quake II rail shot. Melee uses a small no-fire zone; the RPG has no pixel-distance constraint. Source telegraph and ray geometry remain adapted.","requiredContinuity":"Quake II and Quake 4"}));
+  return (enemy("Quake", "Strogg Gladiator", "Precision rail shot", "Gladiator Railgun", "beam", 390, "q2-gladiator", {"enemyId":"quake_franchise_gladiator","minRange":42,"note":"Quake II rail shot. Melee uses a small no-fire zone; the RPG has no pixel-distance constraint. Source telegraph and ray geometry remain adapted.","requiredContinuity":"Quake II (1997)"}));
 }

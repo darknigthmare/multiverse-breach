@@ -94,6 +94,198 @@ const heroes = new Map(rows.filter(row => row.actorId).map(row => [row.actorId, 
 const enemies = new Map(rows.filter(row => row.enemyName).map(row => [`${row.universe}::${row.enemyName}`, SIGNATURE_SOURCE_KITS[row.key]]));
 const allowedActor = actor => actor && !actor.nonCombatTrial && actor.nonCombat !== true
   && actor.combatEnabled !== false && actor.combatEligible !== false;
+// Only these explicitly reviewed source records may replace a catalog legacy name.
+// Current RPG labels and older Smash signatures can differ within the same game;
+// the exact table keeps that existing preparation, rather than inventing a kit.
+const REVIEWED_DECLARED_SIGNATURES_20261113 = Object.freeze({
+  "cloud_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "cloud_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), original battle model and default SOLDIER-style outfit",
+    "currentName": "Omnislash",
+    "preparedName": "Omnislash"
+  },
+  "tifa_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "tifa_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), original battle model and Seventh Heaven outfit",
+    "currentName": "Final Heaven",
+    "preparedName": "Beat Rush"
+  },
+  "aerith_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "aerith_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), living party member in original pink dress",
+    "currentName": "Great Gospel",
+    "preparedName": "Healing Wind"
+  },
+  "barret_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "barret_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), original AVALANCHE field outfit",
+    "currentName": "Catastrophe",
+    "preparedName": "Catastrophe"
+  },
+  "redxiii_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "redxiii_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), original Nanaki quadruped model",
+    "currentName": "Cosmo Memory",
+    "preparedName": "Cosmo Memory"
+  },
+  "yuffie_ff7": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-vii-base",
+    "actorId": "yuffie_ff7",
+    "universe": "Final Fantasy VII",
+    "incarnation": "Final Fantasy VII (1997), original Wutai ninja outfit",
+    "currentName": "All Creation",
+    "preparedName": "All Creation"
+  },
+  "squall_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "squall_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), casual Balamb field outfit",
+    "currentName": "Lion Heart",
+    "preparedName": "Renzokuken"
+  },
+  "rinoa_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "rinoa_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), blue-knit Forest Owls field outfit",
+    "currentName": "Wishing Star",
+    "preparedName": "Angelo Cannon"
+  },
+  "quistis_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "quistis_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), original instructor field outfit",
+    "currentName": "Shockwave Pulsar",
+    "preparedName": "Laser Eye"
+  },
+  "seifer_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "seifer_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), Dollet temporary-party coat",
+    "currentName": "No Mercy",
+    "preparedName": "No Mercy"
+  },
+  "laguna_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "laguna_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), young Galbadian soldier flashback outfit",
+    "currentName": "Desperado",
+    "preparedName": "Desperado"
+  },
+  "irvine_ff8": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-viii-base",
+    "actorId": "irvine_ff8",
+    "universe": "Final Fantasy VIII",
+    "incarnation": "Final Fantasy VIII (1999), original Galbadian sharpshooter outfit",
+    "currentName": "Hyper Shot",
+    "preparedName": "Quick Shot"
+  },
+  "lightning_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "lightning_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), main-game Guardian Corps outfit",
+    "currentName": "Army of One",
+    "preparedName": "Odin — Zantetsuken"
+  },
+  "fang_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "fang_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+    "currentName": "Highwind",
+    "preparedName": "Bahamut — Megaflare"
+  },
+  "vanille_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "vanille_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), main-game Oerba l'Cie outfit",
+    "currentName": "Death",
+    "preparedName": "Hecatoncheir — Gaian Salvo"
+  },
+  "snow_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "snow_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), main-game NORA leader outfit",
+    "currentName": "Sovereign Fist",
+    "preparedName": "Stiria & Nix — Diamond Dust"
+  },
+  "sazh_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "sazh_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), main-game pilot outfit",
+    "currentName": "Cold Blood",
+    "preparedName": "Brynhildr — Múspell Flame"
+  },
+  "hope_ff13": {
+    "audit": "ff-lot-040-2026-11-13",
+    "sourceKey": "ff-xiii-base",
+    "actorId": "hope_ff13",
+    "universe": "Final Fantasy XIII",
+    "incarnation": "Final Fantasy XIII (2009), teenage main-game field outfit",
+    "currentName": "Last Resort",
+    "preparedName": "Alexander — Divine Judgment"
+  },
+  "arbiter": {
+    "audit": "scifi-lot-040-2026-11-13",
+    "sourceKey": "halo-2",
+    "actorId": "arbiter",
+    "universe": "Halo",
+    "incarnation": "Halo 2",
+    "currentName": "Energy Sword Lunge",
+    "preparedName": "Arbiter — Energy Sword Strike"
+  }
+});
+const acceptsDeclaredSignatureName = (actor, definition, name) => {
+  const sourceId = actor.sourceHeroId || actor.sourceId || actor.id;
+  const expected = REVIEWED_DECLARED_SIGNATURES_20261113[sourceId];
+  const declared = actor.sourceSignatureDeclaration;
+  if (!expected || !declared || typeof declared !== 'object' || Array.isArray(declared)
+    || actor.universe !== expected.universe || actor.incarnation !== expected.incarnation
+    || definition.actorId !== sourceId || definition.key !== sourceId
+    || definition.name !== expected.preparedName || name !== expected.currentName
+    || Object.keys(declared).length !== Object.keys(expected).length) return false;
+  if (sourceId === 'arbiter' && (actor.weaponType !== 'energy_sword'
+    || actor.sourceContractRevision !== 'scifi-lot-040-2026-11-13' || actor.special?.type !== 'nexus_aoe'
+    || actor.special.dmg !== 4.6 || actor.special.color !== '#95a5a6'
+    || Object.keys(actor.special).length !== 4
+    || !['name', 'type', 'dmg', 'color'].every(key => Object.hasOwn(actor.special, key)))) return false;
+  return Object.keys(expected).every(key => Object.hasOwn(declared, key) && declared[key] === expected[key]);
+};
 export function resolveSourceSignature(actor) {
   if (!allowedActor(actor)) return null;
   // Reviewed selected-source actions already have their own simulation and
@@ -112,7 +304,7 @@ export function resolveSourceSignature(actor) {
   if (actor.canonCombatPresentation === true || current?.smashProfile || current?.rpgProfile
     || actor.smashAttacks?.special || actor.rpgAttacks?.special) return null;
   const name = typeof current === 'string' ? current : current?.name;
-  if (name != null && name !== definition.legacyName) return null;
+  if (name != null && name !== definition.legacyName && !acceptsDeclaredSignatureName(actor, definition, name)) return null;
   if (definition.actorId && name == null) return null;
   return definition;
 }

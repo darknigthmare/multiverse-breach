@@ -1,15 +1,17 @@
+import { applyHalfLifeHeroSourceContracts } from './heroes.js';
+import { applyHalfLifeEnemySourceContracts } from './enemies.js';
 // Half-Life — definitions consumed by src/game/loreAccuratePacks.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createLoreAccurateHeroExpansions({ hero }) {
-  return ([
+  return applyHalfLifeHeroSourceContracts([
     hero('eli_vance', 'Eli Vance', 'hacker', '#5d4f42', 'terminal', 'Resistance Lab Pulse', 'Gravity Tech Insight', 'Black Mesa Mentor Guard', 'White Forest Rocket Launch'),
     hero('vortigaunt_ally', 'Vortigaunt Ally', 'hacker', '#6f8f4f', 'laser', 'Vortessence Bolt', 'Antlion Guard Tame', 'Vortigaunt Healing Chant', 'Collective Shockwave')
   ]);
 }
 
 export function createLoreAccurateEnemyExpansions({ boss, monster }) {
-  return ({
+  return applyHalfLifeEnemySourceContracts({
     monsters: [
       monster('Antlion Guard Spawn', 150, 17, 5, '#b07d3c', 'horn_charge'),
       monster('Combine Hunter', 120, 15, 7, '#5d6d7e', 'flechette'),

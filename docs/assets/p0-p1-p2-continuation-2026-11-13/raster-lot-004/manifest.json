@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "scope": "Bounded lot delivery plus preserved unsuccessful attempts; no source1:1 or full actor closure claim.",
+  "files": [
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/README.md",
+      "bytes": 6647,
+      "sha256": "9217df94947228032e5db757c0915a3ba35e9a37776da347abae5146fb73097b"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/actor-triage.json",
+      "bytes": 25650,
+      "sha256": "fe2278d68f88ad1ac76940141c8c17ea59bf4601f4571bc46945a069d8fe33da"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/baseline-audit.json",
+      "bytes": 65348,
+      "sha256": "a5395b2e3ad080810f1ff1017c37e8f35fa4f05857d4865f8c89ebc957590d31"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/browser_pinky.py",
+      "bytes": 8639,
+      "sha256": "2197f638ccd13f71694b784a3f3aac171675bc0eeb90bee3254c87962b708ead"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/build_fixture.mjs",
+      "bytes": 537,
+      "sha256": "268867983da9c11238c111e5911e628a64b422defcf90fc848018c6c9a9c0522"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/delivery.json",
+      "bytes": 1620,
+      "sha256": "b5c75d85deb3433e552522159a03d1d26c9a5ff56e961b7edd93169edadff9f3"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/attempt-1-source-plan-rejected.json",
+      "bytes": 1906,
+      "sha256": "3bca65ce09b1430e957796b45b170b005cfe4d72417ff6846dc3df5f947179d4"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/generation.json",
+      "bytes": 648,
+      "sha256": "3fb02aa4b60e6ca2fca864a23457fadf9763171aaa2ec1a8fd60efcddd6c3722"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/pinky-classic.prompt.txt",
+      "bytes": 1747,
+      "sha256": "83ef30a3524e76a1c461006a3a96933e7d22b2c7828d1a3dc829d9861a2bc962"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/pinky-classic.raw.png",
+      "bytes": 1384545,
+      "sha256": "19b5389fef215de6baa5aed0523ee7652b0badd7c2bde0336741b1fae36d71c9"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/pinky-source-correction.prompt.txt",
+      "bytes": 1439,
+      "sha256": "50a621b91d64e817268ce768afca5b73afa01737fe493dc15e57e8f59f7e491b"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/pinky-source-correction.raw.png",
+      "bytes": 1821717,
+      "sha256": "fa103ebe78cda22957c8c64820023bdd1b2511ec0d1b1f5146f394789622a98c"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/source-correction.json",
+      "bytes": 521,
+      "sha256": "5e71f1f483ed4ac51e989b5609a06f50c17394cf78a896ab75f8b1f2db3c5cce"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/normalize_pinky.py",
+      "bytes": 5043,
+      "sha256": "a5328c9585fdc43b097304714c3df9ced93042905eab127bf4d04471c018db05"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/existing-doom-imp-style.png",
+      "bytes": 991856,
+      "sha256": "d81016911bfa5271d24759ff0052d1415675e2d680ce888e197870f9b64559ac"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/front-bite-nearest.png",
+      "bytes": 5793,
+      "sha256": "5487faa791d7ba99bfe7aec6c3a5c4946cce1f189702ae3a7fb620dbc5311807"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/front-walk-nearest.png",
+      "bytes": 6028,
+      "sha256": "9c9bea4fd89778205056a43366de9e1daa33a0247ec9566e57bcbbe0d5773ebf"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/p_enemy.c.txt",
+      "bytes": 36693,
+      "sha256": "bfe1e3c039443d787e4a0dcb485720c9707f3381b69b00ad35f3e52796bfeec0"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/pinky-classic-sprite-reference.png",
+      "bytes": 160739,
+      "sha256": "633fc53546e35e9e1d80d00f708ff6ec572232c693aff969ed46f8820ab2f8e2"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/side-walk-nearest.png",
+      "bytes": 6227,
+      "sha256": "fe38e1737ae711bde1788fc15eea4802c10fe92e6b7b2174f8b0e925b870c070"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/source-plan.json",
+      "bytes": 2238,
+      "sha256": "2c4a2e567d72b05db0c739950c1bc1b1811d60f8fb3e02bb6cb0d688ed2003e9"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-1280-FAILED.png",
+      "bytes": 333392,
+      "sha256": "8def2546772cfcfecb1904a10df882a60c4db68f92959a4f7914af8e374ca9a9"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-1280-attack.png",
+      "bytes": 336615,
+      "sha256": "f3c7e95f6a2aa1836aad46a10d34c4a7648beedaf0a40b3a476632ee3593cde3"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-1280-hit.png",
+      "bytes": 337683,
+      "sha256": "33df2a703c2fc76aeb29d2d1ccf0c9840b8e10ecc22d50e700e6be83a49fc86f"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-1280-idle.png",
+      "bytes": 332259,
+      "sha256": "96a9e7abcade3ef4b1ae94cd08f3605e43d17a31d731fd98d575fcdf15381904"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-1280-run.png",
+      "bytes": 331911,
+      "sha256": "9a96b18e88490cbf6a1da91c2cebc669e717cf716ecce930f3e7a4c7d2df1f20"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-390-FAILED.png",
+      "bytes": 86026,
+      "sha256": "eb441d3f2bbb6e0b6bcbe4fbb66ac7268984c2f47b6fccc3ff295f27633f4ff3"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-390-attack.png",
+      "bytes": 112684,
+      "sha256": "8aa1211964442aa7e185eafa3f7333408272023bcfd8645e5c06ea5e1a2cc544"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-390-hit.png",
+      "bytes": 112669,
+      "sha256": "584e87d6c90c6ad3d804f8f1ea2fc5e994e1677ddb6f943f14137140c5fadbfd"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-390-idle.png",
+      "bytes": 112743,
+      "sha256": "a1f8e7c37982631051333bc7431b7f7aece0ab40812feae83f64feabcf918622"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/after-390-run.png",
+      "bytes": 112771,
+      "sha256": "0826bf954343d84a5dc6d8ae718341c530fb11743e337b223fb971cded2e3171"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/before-1280-attack.png",
+      "bytes": 333740,
+      "sha256": "61f006baa5ed9efa625bec7ab6f79430e98943c63054b2f04a749ddff98188d6"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/before-1280-hit.png",
+      "bytes": 332993,
+      "sha256": "044a7987a002a344d0cd2c030ab994d0d928ad7a4d9e53cab9baf37726de4379"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/before-1280-idle.png",
+      "bytes": 329050,
+      "sha256": "30552227a194409d5c9dd1f3ff61706dcb06a038bf7afc4305f6054abc6f8fb7"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/before-1280-run.png",
+      "bytes": 333411,
+      "sha256": "7b50225940a0cfca3347038fc3930a87531fc54197142c11b5164cf9574faca2"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/browser/results.json",
+      "bytes": 3631,
+      "sha256": "1a78673d1bf3deba617716fbede8cfb1922f1662a15f61d024727f453753a773"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/signature-wave3.json",
+      "bytes": 266,
+      "sha256": "eb1d0c2c28b1a8ff3a3622b617ba129c0ad1ce29d26cbcf07452651ce0f27a6b"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/signature-wave3.log",
+      "bytes": 42782,
+      "sha256": "6d431fa0393c0f493a681e74a49c4e3c0d2f998570c5a0203e29bf3ad6ef60db"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-identity-fix/unit-tests.json",
+      "bytes": 295,
+      "sha256": "b7bdc70b38d7f782765d74b4f10e2d0920983c19b46603de47c34eea9133e60d"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/fixture-build.json",
+      "bytes": 298,
+      "sha256": "20ed62fd701ee90c8a0c89fa31324a5f4e6049827547c0d872dda3e8035b027c"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/fixture-build.log",
+      "bytes": 1134,
+      "sha256": "0c29fdb5f8fd2021cae5bfca6113da90bfdec60587a8992954f272c03a1593f9"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/normalize_pinky.py",
+      "bytes": 4950,
+      "sha256": "d05641844ddd618895529cddfd2c87f471adf277babcda4eefd2e79e9b472e3a"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-attack.gif",
+      "bytes": 18623,
+      "sha256": "9fe4e65502ea8627cd8d45a9c36c80b622cf296b54a116d52f8b1561006dfa11"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-contact-68px.png",
+      "bytes": 62319,
+      "sha256": "320c7c8a78c2ef6647e02c7d16e595cde32ecde6ff6ff465e62f9141c5a53883"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-contact-96px.png",
+      "bytes": 111353,
+      "sha256": "c9ab5e723b1a624c463adce0d1b783685ba5eafe485b0b418b5ff42f43d19c9d"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-hit.gif",
+      "bytes": 18662,
+      "sha256": "2e8e2206cf997c38abba60a38f005c8a9b66182878c37ce7e87c6215d85be7a6"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-idle.gif",
+      "bytes": 18569,
+      "sha256": "f527d610946521ccb68e67242ecec2295dd283aa1476b21e22b4389636916587"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-run.gif",
+      "bytes": 18796,
+      "sha256": "19a36c5e7c5acb9028d842fbf0e0912c94416375cdb9f73fcd801cfce279b8aa"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-technical-qa.json",
+      "bytes": 10337,
+      "sha256": "128d91fd66b124e6d15746569617ae4e5955982ba7d4663d7f6a07fb1516b0ce"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/pinky-without-classic-horns.png",
+      "bytes": 689207,
+      "sha256": "2d7e92ee4caf8ec2d334aaead17c7f51df18f8bbebc4f6b511167f94d613aaba"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/unit-tests.json",
+      "bytes": 213,
+      "sha256": "b0b0e65402a24ad1d1c9b17ef4540aedfb459b92d84175cb5636545aa67cd389"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/attempt-before-source-horns/unit-tests.log",
+      "bytes": 1200,
+      "sha256": "522d02d5ab13cfebeb1bbab33ef3f7c29a4ed2ece827bcb21a0c5350b0eabb8d"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/baseline-test-inputs.json",
+      "bytes": 866,
+      "sha256": "10ca36ce921c921b94a1a73f958b16aff6e793b662bf04d468ebbbce44099ab8"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/baseline-vs-current.json",
+      "bytes": 3278,
+      "sha256": "be8a507f51dc4bb6d8fa737ffd18c20c3aeb9cc748aaf9b8fcf3c0f6a404c85a"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-1280-attack.png",
+      "bytes": 336567,
+      "sha256": "f30bb7e9dafb7abb718e516bec752db0c62ce4b9770b181091231935a431d32f"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-1280-bite-result.png",
+      "bytes": 317851,
+      "sha256": "ab02527ee53a810fb9e4b418c1b47023545cafc7681c4434bb90ce4528b16331"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-1280-hit.png",
+      "bytes": 337903,
+      "sha256": "8e5977c326bf01c32345a6565879cdc9a2890f3b0a5177e20d26f0bbb3ef49a9"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-1280-idle.png",
+      "bytes": 332484,
+      "sha256": "e4a07697034691f8ed905b18804b42b56d805a4cdb23485a86ec312518bcc1ed"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-1280-run.png",
+      "bytes": 331504,
+      "sha256": "c31e6cbe62a0947c01773e981ff272048480bba5379e021dbab81ac14396fb82"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-390-attack.png",
+      "bytes": 112694,
+      "sha256": "b2172e69122c47b50c646ad4ae86ccb7aa3c641694d222c8b7df4ae20b7c9fb5"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-390-bite-result.png",
+      "bytes": 92782,
+      "sha256": "965e5cd0d5f7b336e7e36d93ef1abe4ae460f4f2276ad3f53949abd8a9b4dffc"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-390-hit.png",
+      "bytes": 112673,
+      "sha256": "bbc69a9fb00dfe89da34ef509f46eac707631cbe7e71721c4cfc6b1bfe6c8226"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-390-idle.png",
+      "bytes": 112730,
+      "sha256": "b91d48d141df2c423cf909aaa85d5bfde1b437f54be132ed9f76e4f98268ad90"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/after-390-run.png",
+      "bytes": 112837,
+      "sha256": "49163600015a251390ccb752176541744f490855359ad52e4b6bbb70274fd4ef"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/before-1280-attack.png",
+      "bytes": 333758,
+      "sha256": "6687c8b29b30b1e08b50f7708e3736c5f6df4f215569946f0a4fb1c73f906317"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/before-1280-hit.png",
+      "bytes": 332381,
+      "sha256": "1af560ecd0e36efe41d6f9a9088a6154cc6285706b7cdf35e847996e51cbf1ca"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/before-1280-idle.png",
+      "bytes": 329050,
+      "sha256": "30552227a194409d5c9dd1f3ff61706dcb06a038bf7afc4305f6054abc6f8fb7"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/before-1280-run.png",
+      "bytes": 333487,
+      "sha256": "e7e2577746259975a397f175474b7aae888a2ce5e55266b3db8ee44cd06931f5"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/browser/results.json",
+      "bytes": 18569,
+      "sha256": "a26b0bafbc0997b54ffc8ad9576221f9052c57eb11547f304c6d7fcf3b0c0361"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/fixture-build.json",
+      "bytes": 386,
+      "sha256": "b539052d998ca163501f6a76795248308b26d54209aa8cc6cf1feb09c469dad3"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/fixture-build.log",
+      "bytes": 1134,
+      "sha256": "0a8d32d4953d5a214a67b8b136b27200fbf558d9e1fc82965524d34c77b99add"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/independent-source-review.json",
+      "bytes": 1896,
+      "sha256": "870a97f3a7e14a51d9e6786caa16b735bf7dec376c27286525d3ca81e5b5bb38"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/normalization-reproduction.json",
+      "bytes": 340,
+      "sha256": "0cb21f70d9a9cbb7f483c24379e5365fa8aef36a1f4899657ea1784aa841a4bf"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/packing-attempt-before-wide-cells.json",
+      "bytes": 356,
+      "sha256": "0127497b262e41c6af339a6b3ca50b3a00c43e50cf99685095a93e70c08728e2"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-attack.gif",
+      "bytes": 19546,
+      "sha256": "37569d02ccad73a58c91c7cf89a713856283a8ea4aaed186de24cda07d6a1fb1"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-contact-68px.png",
+      "bytes": 65875,
+      "sha256": "290b78dcd24f88da93b806bc23b6c202bdd7723f4ac2a95170f58897f39c5205"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-contact-96px.png",
+      "bytes": 118179,
+      "sha256": "ef6d663cd19970ecfc9517c17363a2b9bf8a8e8a9b8ba7db2abac06576ad9dc6"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-hit.gif",
+      "bytes": 19359,
+      "sha256": "e42a25ad6fbe896feedc0bb8c3548307ecb023ed435beeb6b59b577ac1633119"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-idle.gif",
+      "bytes": 19446,
+      "sha256": "2a2e0a7807c51f93a6c0a57f3fa837546b7783f1cf8a5896abb797ea473cb5bf"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-run.gif",
+      "bytes": 19569,
+      "sha256": "5347f11fae9e096dbc6b91207d124fa00b6da160bf47604b3ec3f3c753e1336d"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/pinky-technical-qa.json",
+      "bytes": 10404,
+      "sha256": "3d2fafdfddf2b71c6c02f2aae56b1547bff1e3bd2e8d5257b64e64539c0f479a"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/signature-wave3-after.json",
+      "bytes": 396,
+      "sha256": "f5f6180ee4acdc7db4b9a5c62c9537720ea20e9587d51b990f74c51720358aa3"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/signature-wave3-after.log",
+      "bytes": 39872,
+      "sha256": "83ed1a56feacba55c30dc84494b77b7bdb6b7ecb334dbfe557aacac58196e0ea"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/signature-wave3-baseline5952.json",
+      "bytes": 400,
+      "sha256": "7b10040480076e15b80a8febe5e249c978b656ba17d134dc47cf64a4748e1f6d"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/signature-wave3-baseline5952.log",
+      "bytes": 40231,
+      "sha256": "c4c5b80f7a8b5eb686147e3f8c16d7cfdc0ffb5730d8f7037efcb3fd7f618e92"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/source-identity-correction.json",
+      "bytes": 679,
+      "sha256": "31129947bd4e9124176135206481d92cca18991a1d619a76cbb5d45bafd8cc1c"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/unit-tests.json",
+      "bytes": 305,
+      "sha256": "decc0f7103357728c810f7b4f9bb823877982eba1630ff796c81215c7a98c1b6"
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/validation/unit-tests.log",
+      "bytes": 1200,
+      "sha256": "34fbe7a0e6e3147331fba6bcde3457242ce6980658db24f7c57ad1a768353c3f"
+    },
+    {
+      "path": "DLC/Doom/assets/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+      "bytes": 769529,
+      "sha256": "4fe055c5d0e4f06258316b0a5cd4fd078af913c41788b355d69aa2ed7645aa4c"
+    },
+    {
+      "path": "DLC/Doom/data/enemies.js",
+      "bytes": 2426,
+      "sha256": "eb7ac63440fb098c12fc28e6e05af26354e3a82593dd8012fa09c0ebe447e5de"
+    },
+    {
+      "path": "scripts/pinkyClassicAssets.test.mjs",
+      "bytes": 4825,
+      "sha256": "8a0a7ff15d949e09da6222c00161526a358e19cd33bd87eb63894a6b2751e106"
+    }
+  ]
+}

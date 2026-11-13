@@ -1,0 +1,1061 @@
+TAP version 13
+# Subtest: wave 3 adds eight checked identities and leaves the original 88 unchanged
+not ok 1 - wave 3 adds eight checked identities and leaves the original 88 unchanged
+  ---
+  duration_ms: 25325.256415
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:51:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + null
+    - {
+    -   actorId: 'team_fortress_2_medic',
+    -   canonicalFidelityApproved: false,
+    -   color: '#8af0ac',
+    -   delivery: 'ranged',
+    -   directional: false,
+    -   distribution: 'all',
+    -   durationTicks: 480,
+    -   effect: 'guard',
+    -   fidelity: 'source-described-adaptation',
+    -   hitGapTicks: 1,
+    -   hits: 1,
+    -   key: 'team_fortress_2_medic',
+    -   kind: 'support',
+    -   legacyName: 'ÜberCharge',
+    -   name: 'ÜberCharge — Stock Medi Gun',
+    -   note: 'Stock Medi Gun: caster and at most one patient, eight gameplay seconds of protection against dispatched combat hits. No group damage, resurrection, critical boost, overheal, patient flashing, flag rules or immunity to world/direct status damage. Existing special-meter economy is an adaptation.',
+    -   outroTicks: 24,
+    -   protection: 'stock-uber',
+    -   range: 320,
+    -   referenceUrl: 'https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/game/shared/tf/tf_weapon_medigun.cpp',
+    -   revealTicks: 24,
+    -   shape: 'single',
+    -   source: 'tf-stock-medigun',
+    -   style: 'healing',
+    -   universe: 'Team Fortress 2',
+    -   visualStatus: 'existing-artwork; source animation missing',
+    -   wave: 3,
+    -   windupTicks: 30
+    - }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    hits: 1
+    shape: 'single'
+    kind: 'support'
+    distribution: 'all'
+    effect: 'guard'
+    note: 'Stock Medi Gun: caster and at most one patient, eight gameplay seconds of protection against dispatched combat hits. No group damage, resurrection, critical boost, overheal, patient flashing, flag rules or immunity to world/direct status damage. Existing special-meter economy is an adaptation.'
+    delivery: 'ranged'
+    directional: false
+    color: '#8af0ac'
+    key: 'team_fortress_2_medic'
+    universe: 'Team Fortress 2'
+    actorId: 'team_fortress_2_medic'
+    legacyName: 'ÜberCharge'
+    name: 'ÜberCharge — Stock Medi Gun'
+    style: 'healing'
+    range: 320
+    source: 'tf-stock-medigun'
+    wave: 3
+    protection: 'stock-uber'
+    durationTicks: 480
+    fidelity: 'source-described-adaptation'
+    canonicalFidelityApproved: false
+    referenceUrl: 'https://github.com/ValveSoftware/source-sdk-2013/blob/master/src/game/shared/tf/tf_weapon_medigun.cpp'
+    visualStatus: 'existing-artwork; source animation missing'
+    windupTicks: 30
+    revealTicks: 24
+    hitGapTicks: 1
+    outroTicks: 24
+  actual: ~
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:57:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: all eight profiles execute in both engines and both sides
+    # Subtest: team_fortress_2_medic / RPG / player
+    not ok 1 - team_fortress_2_medic / RPG / player
+      ---
+      duration_ms: 19.832559
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        false !== true
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:76:40)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: team_fortress_2_medic / RPG / enemy
+    not ok 2 - team_fortress_2_medic / RPG / enemy
+      ---
+      duration_ms: 1.749626
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        false !== true
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:76:40)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: team_fortress_2_medic / Smash / player
+    not ok 3 - team_fortress_2_medic / Smash / player
+      ---
+      duration_ms: 12.575216
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        false !== true
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:76:40)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: team_fortress_2_medic / Smash / enemy
+    not ok 4 - team_fortress_2_medic / Smash / enemy
+      ---
+      duration_ms: 2.658805
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        false !== true
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:76:40)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: dog_hl2 / RPG / player
+    ok 5 - dog_hl2 / RPG / player
+      ---
+      duration_ms: 17.256167
+      type: 'test'
+      ...
+    # Subtest: dog_hl2 / RPG / enemy
+    ok 6 - dog_hl2 / RPG / enemy
+      ---
+      duration_ms: 31.817014
+      type: 'test'
+      ...
+    # Subtest: dog_hl2 / Smash / player
+    ok 7 - dog_hl2 / Smash / player
+      ---
+      duration_ms: 12.251677
+      type: 'test'
+      ...
+    # Subtest: dog_hl2 / Smash / enemy
+    ok 8 - dog_hl2 / Smash / enemy
+      ---
+      duration_ms: 5.38957
+      type: 'test'
+      ...
+    # Subtest: hicks_aliens / RPG / player
+    ok 9 - hicks_aliens / RPG / player
+      ---
+      duration_ms: 5.508478
+      type: 'test'
+      ...
+    # Subtest: hicks_aliens / RPG / enemy
+    ok 10 - hicks_aliens / RPG / enemy
+      ---
+      duration_ms: 3.288374
+      type: 'test'
+      ...
+    # Subtest: hicks_aliens / Smash / player
+    ok 11 - hicks_aliens / Smash / player
+      ---
+      duration_ms: 5.804544
+      type: 'test'
+      ...
+    # Subtest: hicks_aliens / Smash / enemy
+    ok 12 - hicks_aliens / Smash / enemy
+      ---
+      duration_ms: 4.406078
+      type: 'test'
+      ...
+    # Subtest: hudson_aliens / RPG / player
+    not ok 13 - hudson_aliens / RPG / player
+      ---
+      duration_ms: 4.617327
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        0 !== 4
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 4
+      actual: 0
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: hudson_aliens / RPG / enemy
+    not ok 14 - hudson_aliens / RPG / enemy
+      ---
+      duration_ms: 4.265206
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        0 !== 4
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 4
+      actual: 0
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: hudson_aliens / Smash / player
+    not ok 15 - hudson_aliens / Smash / player
+      ---
+      duration_ms: 13.244629
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        0 !== 4
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 4
+      actual: 0
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: hudson_aliens / Smash / enemy
+    not ok 16 - hudson_aliens / Smash / enemy
+      ---
+      duration_ms: 9.117837
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        0 !== 4
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 4
+      actual: 0
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: vasquez_aliens / RPG / player
+    not ok 17 - vasquez_aliens / RPG / player
+      ---
+      duration_ms: 7.245175
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        1 !== 6
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 6
+      actual: 1
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: vasquez_aliens / RPG / enemy
+    not ok 18 - vasquez_aliens / RPG / enemy
+      ---
+      duration_ms: 5.636071
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        1 !== 6
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 6
+      actual: 1
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: vasquez_aliens / Smash / player
+    not ok 19 - vasquez_aliens / Smash / player
+      ---
+      duration_ms: 7.30764
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        1 !== 6
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 6
+      actual: 1
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: vasquez_aliens / Smash / enemy
+    not ok 20 - vasquez_aliens / Smash / enemy
+      ---
+      duration_ms: 7.290744
+      type: 'test'
+      location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        1 !== 6
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 6
+      actual: 1
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:79:21)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        TestContext.test (node:internal/test_runner/test:373:20)
+        TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:70:13)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: Quake::Makron — Quake II / RPG / player
+    ok 21 - Quake::Makron — Quake II / RPG / player
+      ---
+      duration_ms: 4.297645
+      type: 'test'
+      ...
+    # Subtest: Quake::Makron — Quake II / RPG / enemy
+    ok 22 - Quake::Makron — Quake II / RPG / enemy
+      ---
+      duration_ms: 1.859411
+      type: 'test'
+      ...
+    # Subtest: Quake::Makron — Quake II / Smash / player
+    ok 23 - Quake::Makron — Quake II / Smash / player
+      ---
+      duration_ms: 2.893619
+      type: 'test'
+      ...
+    # Subtest: Quake::Makron — Quake II / Smash / enemy
+    ok 24 - Quake::Makron — Quake II / Smash / enemy
+      ---
+      duration_ms: 2.002517
+      type: 'test'
+      ...
+    # Subtest: Doom::Leaping Pinky Demon / RPG / player
+    ok 25 - Doom::Leaping Pinky Demon / RPG / player
+      ---
+      duration_ms: 1.040277
+      type: 'test'
+      ...
+    # Subtest: Doom::Leaping Pinky Demon / RPG / enemy
+    ok 26 - Doom::Leaping Pinky Demon / RPG / enemy
+      ---
+      duration_ms: 1.057253
+      type: 'test'
+      ...
+    # Subtest: Doom::Leaping Pinky Demon / Smash / player
+    ok 27 - Doom::Leaping Pinky Demon / Smash / player
+      ---
+      duration_ms: 1.645109
+      type: 'test'
+      ...
+    # Subtest: Doom::Leaping Pinky Demon / Smash / enemy
+    ok 28 - Doom::Leaping Pinky Demon / Smash / enemy
+      ---
+      duration_ms: 0.999396
+      type: 'test'
+      ...
+    # Subtest: Hexen::Centaur / RPG / player
+    ok 29 - Hexen::Centaur / RPG / player
+      ---
+      duration_ms: 1.053377
+      type: 'test'
+      ...
+    # Subtest: Hexen::Centaur / RPG / enemy
+    ok 30 - Hexen::Centaur / RPG / enemy
+      ---
+      duration_ms: 0.833296
+      type: 'test'
+      ...
+    # Subtest: Hexen::Centaur / Smash / player
+    ok 31 - Hexen::Centaur / Smash / player
+      ---
+      duration_ms: 1.162602
+      type: 'test'
+      ...
+    # Subtest: Hexen::Centaur / Smash / enemy
+    ok 32 - Hexen::Centaur / Smash / enemy
+      ---
+      duration_ms: 1.257163
+      type: 'test'
+      ...
+    1..32
+not ok 2 - all eight profiles execute in both engines and both sides
+  ---
+  duration_ms: 206.21492
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:68:1'
+  failureType: 'subtestsFailed'
+  error: '12 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: RPG: stock Uber protects only Medic and the selected patient, without healing
+not ok 3 - RPG: stock Uber protects only Medic and the selected patient, without healing
+  ---
+  duration_ms: 6.281463
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:84:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:86:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: no protection before manifestation and an interruption spends no second charge
+not ok 4 - RPG: no protection before manifestation and an interruption spends no second charge
+  ---
+  duration_ms: 1.589474
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:101:52)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: protection lasts exactly 480 gameplay ticks and freezes during pause
+not ok 5 - RPG: protection lasts exactly 480 gameplay ticks and freezes during pause
+  ---
+  duration_ms: 9.187231
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:103:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'ticks')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:105:58)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: removal, KO and revival of a patient cannot transfer a beam
+not ok 6 - RPG: removal, KO and revival of a patient cannot transfer a beam
+  ---
+  duration_ms: 2.803904
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:113:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'patientId')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:116:58)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: an out-of-range patient disconnects without silent reacquisition
+not ok 7 - RPG: an out-of-range patient disconnects without silent reacquisition
+  ---
+  duration_ms: 4.585599
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:122:3'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'patientName')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:125:58)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: Medic attack ends only his own protection, never keeps a free attack shield
+ok 8 - RPG: Medic attack ends only his own protection, never keeps a free attack shield
+  ---
+  duration_ms: 4.040467
+  type: 'test'
+  ...
+# Subtest: RPG: protection does not block unknown environment damage
+ok 9 - RPG: protection does not block unknown environment damage
+  ---
+  duration_ms: 3.542697
+  type: 'test'
+  ...
+# Subtest: RPG: caster KO, side change, weapon change and disposal clean owned links
+ok 10 - RPG: caster KO, side change, weapon change and disposal clean owned links
+  ---
+  duration_ms: 26.798323
+  type: 'test'
+  ...
+# Subtest: RPG: Kritzkrieg, Quick-Fix and Vaccinator never acquire stock invulnerability
+not ok 11 - RPG: Kritzkrieg, Quick-Fix and Vaccinator never acquire stock invulnerability
+  ---
+  duration_ms: 1.555413
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:153:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:156:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG: duplicate activation while active does not overwrite or extend the beam
+not ok 12 - RPG: duplicate activation while active does not overwrite or extend the beam
+  ---
+  duration_ms: 18.128031
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:160:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:163:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: stock Uber protects only Medic and the selected patient, without healing
+not ok 13 - Smash: stock Uber protects only Medic and the selected patient, without healing
+  ---
+  duration_ms: 2.690153
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:84:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:85:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: no protection before manifestation and an interruption spends no second charge
+not ok 14 - Smash: no protection before manifestation and an interruption spends no second charge
+  ---
+  duration_ms: 1.213969
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:97:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:98:34)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: protection lasts exactly 480 gameplay ticks and freezes during pause
+not ok 15 - Smash: protection lasts exactly 480 gameplay ticks and freezes during pause
+  ---
+  duration_ms: 0.764352
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:103:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:104:40)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: removal, KO and revival of a patient cannot transfer a beam
+not ok 16 - Smash: removal, KO and revival of a patient cannot transfer a beam
+  ---
+  duration_ms: 0.988199
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:113:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:114:47)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: an out-of-range patient disconnects without silent reacquisition
+not ok 17 - Smash: an out-of-range patient disconnects without silent reacquisition
+  ---
+  duration_ms: 0.995239
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:122:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:123:40)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: Medic attack ends only his own protection, never keeps a free attack shield
+not ok 18 - Smash: Medic attack ends only his own protection, never keeps a free attack shield
+  ---
+  duration_ms: 1.45304
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:130:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:131:40)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: protection does not block unknown environment damage
+not ok 19 - Smash: protection does not block unknown environment damage
+  ---
+  duration_ms: 1.676626
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:136:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:137:26)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: caster KO, side change, weapon change and disposal clean owned links
+not ok 20 - Smash: caster KO, side change, weapon change and disposal clean owned links
+  ---
+  duration_ms: 0.78991
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:141:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:143:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash: Kritzkrieg, Quick-Fix and Vaccinator never acquire stock invulnerability
+ok 21 - Smash: Kritzkrieg, Quick-Fix and Vaccinator never acquire stock invulnerability
+  ---
+  duration_ms: 7.549948
+  type: 'test'
+  ...
+# Subtest: Smash: duplicate activation while active does not overwrite or extend the beam
+not ok 22 - Smash: duplicate activation while active does not overwrite or extend the beam
+  ---
+  duration_ms: 0.848107
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:160:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    activate (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:48:36)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:161:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Smash self-only activation remains possible with an out-of-range teammate
+not ok 23 - Smash self-only activation remains possible with an out-of-range teammate
+  ---
+  duration_ms: 1.008679
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:167:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:169:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG invalid far patient is absent from targeting and cannot consume resources
+ok 24 - RPG invalid far patient is absent from targeting and cannot consume resources
+  ---
+  duration_ms: 0.711462
+  type: 'test'
+  ...
+# Subtest: RPG manual self selection is not silently replaced with another ally
+not ok 25 - RPG manual self selection is not silently replaced with another ally
+  ---
+  duration_ms: 0.762448
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:179:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:181:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: RPG an enemy attack preview reflects stock protection without spending it
+not ok 26 - RPG an enemy attack preview reflects stock protection without spending it
+  ---
+  duration_ms: 4.409513
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:185:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + undefined
+    - true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:190:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: two Medic links stay independent, removing one never removes the other
+not ok 27 - two Medic links stay independent, removing one never removes the other
+  ---
+  duration_ms: 0.833135
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:193:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:196:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: pure support rejects noncombat, dead, foreign, unpositioned and malformed links
+ok 28 - pure support rejects noncombat, dead, foreign, unpositioned and malformed links
+  ---
+  duration_ms: 0.67036
+  type: 'test'
+  ...
+# Subtest: Dog basic gun is corrected only when the exact generic action remains uncustomized
+not ok 29 - Dog basic gun is corrected only when the exact generic action remains uncustomized
+  ---
+  duration_ms: 0.357899
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/signatureWave3.test.mjs:211:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'fist' !== 'fists'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'fists'
+  actual: 'fist'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/signatureWave3.test.mjs:213:94)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Makron is restricted to its Quake II identity and never grants Jorg or Korax a generic finisher
+ok 30 - Makron is restricted to its Quake II identity and never grants Jorg or Korax a generic finisher
+  ---
+  duration_ms: 0.507665
+  type: 'test'
+  ...
+1..30
+# tests 62
+# suites 0
+# pass 27
+# fail 35
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26095.089238

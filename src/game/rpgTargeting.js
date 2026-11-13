@@ -13,6 +13,10 @@ const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;
 export const rpgUnitId = unit => unit?.battleId || unit?.runtimeId || unit?.id;
 const beneficialEffects = new Set(['heal', 'revive', 'buff', 'guard', 'cleanse']);
+// Literal source-weapon names are also used by enemy catalogues. They must not
+// turn a real arena firearm into a contact attack merely because "Gun" is
+// capitalized or the name says "Rifle"/"Cannon" instead of the legacy token.
+const rangedArenaPickups = new Set(['Link Gun', 'Shock Rifle', 'Flak Cannon', 'Rocket Launcher', 'Lightning Gun']);
 
 // These six current source locks already own explicit mode contracts. Their
 // RPG commands retain raw RPG shapes/ranges rather than Smash pixel profiles.
@@ -45,7 +49,7 @@ export function getRpgCombatantAbility(actor, abilityType) {
 
 export function getRpgActionProfile(actor, abilityType, side = 'player', arena = {}, suppliedAction = null) {
   const enemyFallbacks = {
-    simple: { name: 'Attack', type: /gun|laser|bullet|projectile/.test(actor?.weapon || '') ? 'bullet' : 'melee', dmg: 1 },
+    simple: { name: 'Attack', type: /gun|laser|bullet|projectile/.test(actor?.weapon || '') || rangedArenaPickups.has(actor?.weapon) ? 'bullet' : 'melee', dmg: 1 },
     secondary: { name: 'Strong attack', type: 'bullet', dmg: 1.45, cd: 3 },
     special: { name: 'Special', type: 'group', dmg: 1.15, targeting: { shape: 'group' } }
   };

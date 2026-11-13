@@ -1,0 +1,34 @@
+{
+  "reviewer": "parent/root independent peer review",
+  "date": "2026-11-13",
+  "assetSha256": "4fe055c5d0e4f06258316b0a5cd4fd078af913c41788b355d69aa2ed7645aa4c",
+  "inspected": [
+    "references/pinky-classic-sprite-reference.png",
+    "references/front-walk-nearest.png",
+    "references/side-walk-nearest.png",
+    "validation/pinky-contact-68px.png",
+    "validation/pinky-contact-96px.png",
+    "validation/browser/after-1280-attack.png",
+    "validation/browser/after-390-idle.png"
+  ],
+  "findings": [
+    "First candidate rejected for absent classic short gray horns and wrong blue eye color.",
+    "Second source-referenced edit shows short lateral gray horns and golden-yellow eyes.",
+    "General classic hunched pink Demon silhouette, massive jaw, thick bowed legs and short forearms retained.",
+    "No Eternal armor plate, modern long tail, jump attack or projectile added."
+  ],
+  "boundedIdentityAndTechnicalReviewPassed": true,
+  "canonicalPixelCopyVerified": false,
+  "canonicalAnimationTimingVerified": false,
+  "source1to1Verified": false,
+  "native45StatesDelivered": false,
+  "eightDirectionsDelivered": false,
+  "inGameReviewEvidence": "validation/browser/results.json",
+  "independentInGameScreenshotReview": "PASSED_BOUNDED_NATIVE_RENDERING_REVIEW",
+  "nativeRenderingFindings": [
+    "Desktop actual GameCanvas shows the delivered classic Pinky next to Cloud; atlas rendering and melee attack are visible.",
+    "Mobile actual GameCanvas also loads the Pinky. The arena is strongly scaled down at 390 px, so this screenshot alone cannot validate fine source details.",
+    "The fixture is an isolated synthetic state; it does not certify a complete source-faithful Doom stage or full campaign.",
+    "Reported successful bite/contact/meter consumption and two auxiliary fixture404s remain documented in the browser receipt; no zero-HTTP-error claim is inferred."
+  ]
+}

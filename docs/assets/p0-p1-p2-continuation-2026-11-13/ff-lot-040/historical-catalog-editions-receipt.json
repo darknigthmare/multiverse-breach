@@ -1,0 +1,289 @@
+{
+  "date": "2026-11-13",
+  "scope": "Historical catalog edition assertions only; no gameplay source or frozen plans changed.",
+  "before": {
+    "tests": 11,
+    "pass": 9,
+    "fail": 2,
+    "receipt": "historical-catalog-tests-before.tap"
+  },
+  "after": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "receipt": "historical-catalog-tests-after.tap"
+  },
+  "command": "taskset --cpu-list 0 /tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node --max-old-space-size=1024 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/combatFidelityWave14.test.mjs scripts/combatFidelityWave15.test.mjs",
+  "node": "v22.23.5",
+  "fixtureActors": 15,
+  "pinnedSlots": 60,
+  "entireWavesTraversed": {
+    "W14Actors": 40,
+    "W15Actors": 120,
+    "resolvedSlots": 640
+  },
+  "cohortCountsPreserved": {
+    "W14New": 12,
+    "W14Revisions": 28,
+    "W15New": 42,
+    "W15Revisions": 78
+  },
+  "baselinePlans": [
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/batch-plan-before.json",
+      "sha256": "458be3e604ee16a49b06da0d355c9328db7b9799a9bda242679702db201918f0",
+      "unchangedAgainstCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/batch-plan-before.json",
+      "sha256": "08c143270255b5bc83fc051d37f5203351da868b232856d9f43a4dc943463dd1",
+      "unchangedAgainstCommit": "5952da01c54a0dc8235ab4d0cea9463ba531443c"
+    }
+  ],
+  "testSources": [
+    {
+      "path": "scripts/combatFidelityWave14.test.mjs",
+      "sha256": "d36cb1e51fcee0c92b4ab41ce12bf1f0d94c7bf616b67ffff9d55f5ddd755466"
+    },
+    {
+      "path": "scripts/combatCanonicalEditionFixtures.mjs",
+      "sha256": "3028e104ae8d232187bf2ce7e53053857c56e291fa60bc165325eaa5d691fcf6"
+    }
+  ],
+  "negativeChecks": [
+    "Every pinned actor identity/universe/incarnation/weapon and declared contract metadata value altered separately must fail.",
+    "Each of60 selected actions rejects changed name/type/damage/targeting and additional property.",
+    "Each historical action rejects a changed name.",
+    "An approval flag cannot accept a changed action."
+  ],
+  "actors": [
+    {
+      "id": "ardyn_ff15",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), main-game chancellor outfit",
+      "contract": {
+        "sourceFidelityAudit": "ff-lot-040-2026-11-13",
+        "canonStatus": "Source edition declared individually; existing authored ability rules reused. Numeric effects, timing, poses and artwork remain adaptations requiring review."
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "cor_ff15",
+      "universe": "Final Fantasy XV",
+      "incarnation": "Final Fantasy XV (2016), main-game Crownsguard marshal outfit",
+      "contract": {
+        "sourceFidelityAudit": "ff-lot-040-2026-11-13",
+        "canonStatus": "Source edition declared individually; existing authored ability rules reused. Numeric effects, timing, poses and artwork remain adaptations requiring review."
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "noble_six",
+      "universe": "Halo",
+      "incarnation": "Halo: Reach (2010), default adult Noble Six",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "buck_odst",
+      "universe": "Halo",
+      "incarnation": "Halo 3: ODST (2009), Buck before Spartan conversion",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "kelly_087",
+      "universe": "Halo",
+      "incarnation": "Halo 5: Guardians (2015)",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "linda_058",
+      "universe": "Halo",
+      "incarnation": "Halo 5: Guardians (2015)",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "ashley_williams",
+      "universe": "Mass Effect",
+      "incarnation": "Mass Effect 3 (2012), Alliance officer Ashley",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "mordin",
+      "universe": "Mass Effect",
+      "incarnation": "Mass Effect 2 (2010)",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "shephard",
+      "universe": "Half-Life",
+      "incarnation": "Half-Life: Opposing Force (1999), Adrian Shephard HECU loadout",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "vortigaunt_ally",
+      "universe": "Half-Life",
+      "incarnation": "Half-Life 2 (2004), freed allied Vortigaunt",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "dog_hl2",
+      "universe": "Half-Life",
+      "incarnation": "Half-Life 2 (2004), Alyx’s robot Dog",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "cortana",
+      "universe": "Halo",
+      "incarnation": "Halo 3 (2007), Cortana holographic AI",
+      "contract": {
+        "sourceContractRevision": "scifi-lot-040-2026-11-13",
+        "canonStatus": "source-documented-gameplay-adaptation; individual visual review remains pending"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "unreal_tournament_2004_gorge",
+      "universe": "Unreal Tournament 2004",
+      "incarnation": "Unreal Tournament 2004 (2004), PC — Gorge, Juggernaut competitor model, standard tournament armor",
+      "contract": {
+        "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "unreal_tournament_2004_sapphire",
+      "universe": "Unreal Tournament 2004",
+      "incarnation": "Unreal Tournament 2004 (2004), PC — Sapphire, Mercenary competitor model, standard tournament armor",
+      "contract": {
+        "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    },
+    {
+      "id": "unreal_tournament_2004_frostbite",
+      "universe": "Unreal Tournament 2004",
+      "incarnation": "Unreal Tournament 2004 (2004), PC — Frostbite, Juggernaut competitor model, standard tournament armor",
+      "contract": {
+        "canonStatus": "canon UT2004 competitor using shared arena weapon pickups; no personal superpower"
+      },
+      "slots": [
+        "simple",
+        "secondary",
+        "defense",
+        "special"
+      ]
+    }
+  ],
+  "iterations": [
+    "Initial two failures stopped on Ardyn and Shephard; exhaustive follow-up revealed Cor and 12 further source-projected actors. Root approved all 15 exact identities.",
+    "Intermediate negative expected a new source1to1 flag alone to fail even on UT actors where it was never declared. Final gate checks that such a flag cannot bypass a changed exact action; all declared metadata remain pinned."
+  ],
+  "source1to1Verified": false,
+  "artApproved": false
+}

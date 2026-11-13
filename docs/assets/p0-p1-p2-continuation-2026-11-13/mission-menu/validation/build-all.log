@@ -1,0 +1,22 @@
+vite v8.1.0 building client environment for production...
+[2Ktransforming...✓ 2783 modules transformed.
+rendering chunks...
+computing gzip size...
+../../tmp/multiverse-oc-dlc-library/scripts/fixtures/oc-dlc-library.html       0.40 kB │ gzip:     0.28 kB
+../../tmp/multiverse-oc-dlc-library/assets/RaceMode-CKmLbbLl.css               5.45 kB │ gzip:     1.58 kB
+../../tmp/multiverse-oc-dlc-library/assets/CustomBattleMode-DkEeY2mv.css      11.57 kB │ gzip:     2.65 kB
+../../tmp/multiverse-oc-dlc-library/assets/FighterMode-B5USixHX.css           25.49 kB │ gzip:     5.40 kB
+../../tmp/multiverse-oc-dlc-library/assets/oc-dlc-library-Y1Nv7qkq.css       315.74 kB │ gzip:    58.79 kB
+../../tmp/multiverse-oc-dlc-library/assets/FighterMode-CLd8r5hp.js           136.57 kB │ gzip:    42.63 kB
+../../tmp/multiverse-oc-dlc-library/assets/RaceMode-BnrWock8.js              427.16 kB │ gzip:   150.89 kB
+../../tmp/multiverse-oc-dlc-library/assets/CustomBattleMode-O1bSnIKk.js      837.18 kB │ gzip:   257.02 kB
+../../tmp/multiverse-oc-dlc-library/assets/oc-dlc-library-CZmciHMv.js     51,052.50 kB │ gzip: 9,143.92 kB
+
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugin `oc-library-edition-profile`. See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 8.59s

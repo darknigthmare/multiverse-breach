@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "actorKey": "[\"Doom\",\"name:Leaping Pinky Demon\"]",
+  "edition": "Doom (1993), classic Demon/Pinky, not Doom2016 or Eternal",
+  "spritePage": "https://www.spriters-resource.com/ms_dos/doomdoomii/asset/27871/",
+  "spriteImage": "https://www.spriters-resource.com/media/assets/25/27871.png?updated=1755472606",
+  "spriteReferenceSha256": "633fc53546e35e9e1d80d00f708ff6ec572232c693aff969ed46f8820ab2f8e2",
+  "attribution": "Original source sprites id Software/Bethesda; sheet arranged/ripped by Dolphman. Used as visual reference, not newly licensed by this generation.",
+  "sourceCode": "https://github.com/id-Software/DOOM/blob/master/linuxdoom-1.10/p_enemy.c",
+  "activeRuntimeSource": "DLC/Doom/data/signatureSourceWave3.js",
+  "sourceAction": "A_SargAttack, classic melee bite only",
+  "target": "Side/three-quarter facing right, 4 columns x4 rows idle/run/bite/hit.16distinct poses, no projectiles,jump attack,armor,modern tail,mechanical parts,fire or summoning.",
+  "referenceInspection": "Viewed full838x815source sheet. Pink flesh, very broad hunched torso/neck, short forearms, massive mouth, strong bowed legs, flat dark feet, pale eyes. Head has no horns or armor.",
+  "forbiddenContinuityMixes": [
+    "Eternal armored frontal plate",
+    "2016/Eternal long balancing tail",
+    "any horned imp appearance",
+    "catalog adjective Leaping does not authorizejump"
+  ],
+  "providerRefusalSearch": "No exact Pinky generation refusal found in prior CG reviews/combat generation reports; no historical refused identity reused or aliased.",
+  "acceptance": [
+    "4x4 animation rows map renderer idle/run/attack/hit",
+    "distinct native poses with stablebody size andfacing",
+    "realalpha,clipping,pivot QA",
+    "source-scale68/96pixelreview",
+    "actualrenderer drawcalls with4animationstates",
+    "noartistic1:1globalcertification"
+  ]
+}

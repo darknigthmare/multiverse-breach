@@ -1,0 +1,175 @@
+TAP version 13
+# Subtest: Luke keeps the Return of the Jedi green saber and his special reaches one opponent through melee
+ok 1 - Luke keeps the Return of the Jedi green saber and his special reaches one opponent through melee
+  ---
+  duration_ms: 3.028157
+  type: 'test'
+  ...
+# Subtest: Vader keeps a red Sith blade and Force choke targets one enemy rather than a musical area explosion
+ok 2 - Vader keeps a red Sith blade and Force choke targets one enemy rather than a musical area explosion
+  ---
+  duration_ms: 0.389066
+  type: 'test'
+  ...
+# Subtest: Han uses his DL-44 and an evasion defense without carbonite protection or a Kessel-run explosion
+ok 3 - Han uses his DL-44 and an evasion defense without carbonite protection or a Kessel-run explosion
+  ---
+  duration_ms: 0.532752
+  type: 'test'
+  ...
+# Subtest: Bob and Kevin basic attacks use melee instead of class-generated lasers and guns
+ok 4 - Bob and Kevin basic attacks use melee instead of class-generated lasers and guns
+  ---
+  duration_ms: 0.490598
+  type: 'test'
+  ...
+# Subtest: Stuart uses the documented red guitar while his sound damage remains an explicit game adaptation
+ok 5 - Stuart uses the documented red guitar while his sound damage remains an explicit game adaptation
+  ---
+  duration_ms: 0.7379
+  type: 'test'
+  ...
+# Subtest: the six corrected identities preserve saved IDs, stats, categories and existing sprite paths
+ok 6 - the six corrected identities preserve saved IDs, stats, categories and existing sprite paths
+  ---
+  duration_ms: 16.28753
+  type: 'test'
+  ...
+# Subtest: the playable character plaques use the same incarnations and label musical/comic combat as an adaptation
+ok 7 - the playable character plaques use the same incarnations and label musical/comic combat as an adaptation
+  ---
+  duration_ms: 6872.476951
+  type: 'test'
+  ...
+# Subtest: ahsoka_padawan: combat projections retain the exact source-art rejection
+ok 8 - ahsoka_padawan: combat projections retain the exact source-art rejection
+  ---
+  duration_ms: 0.911282
+  type: 'test'
+  ...
+# Subtest: ahsoka: combat projections retain the exact source-art rejection
+ok 9 - ahsoka: combat projections retain the exact source-art rejection
+  ---
+  duration_ms: 0.118128
+  type: 'test'
+  ...
+# Subtest: darth_revan: combat projections retain the exact source-art rejection
+ok 10 - darth_revan: combat projections retain the exact source-art rejection
+  ---
+  duration_ms: 0.113581
+  type: 'test'
+  ...
+# Subtest: quarantine aliases follow the sprite resolver precedence and reject malformed identities
+ok 11 - quarantine aliases follow the sprite resolver precedence and reject malformed identities
+  ---
+  duration_ms: 0.223626
+  type: 'test'
+  ...
+# (node:142663) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:142675) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# (node:142687) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/workspace/multiverse-breach/scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ahsoka_padawan: rejected original stays OLD while a bounded reviewed correction is tracked separately
+ok 12 - ahsoka_padawan: rejected original stays OLD while a bounded reviewed correction is tracked separately
+  ---
+  duration_ms: 8089.235615
+  type: 'test'
+  ...
+# Subtest: ahsoka: rejected original stays OLD while a bounded reviewed correction is tracked separately
+ok 13 - ahsoka: rejected original stays OLD while a bounded reviewed correction is tracked separately
+  ---
+  duration_ms: 7829.002042
+  type: 'test'
+  ...
+# Subtest: darth_revan: rejected original stays OLD while a bounded reviewed correction is tracked separately
+ok 14 - darth_revan: rejected original stays OLD while a bounded reviewed correction is tracked separately
+  ---
+  duration_ms: 7844.644473
+  type: 'test'
+  ...
+# Subtest: the same ID in another universe or incarnation receives no quarantine annotations
+ok 15 - the same ID in another universe or incarnation receives no quarantine annotations
+  ---
+  duration_ms: 1.425199
+  type: 'test'
+  ...
+# Subtest: metadata reports the exact reviewed current sprite without granting artistic approval
+ok 16 - metadata reports the exact reviewed current sprite without granting artistic approval
+  ---
+  duration_ms: 0.93767
+  type: 'test'
+  ...
+# Subtest: the rejected asset and unrelated old candidates remain archival when a correction is selected
+ok 17 - the rejected asset and unrelated old candidates remain archival when a correction is selected
+  ---
+  duration_ms: 0.289723
+  type: 'test'
+  ...
+# Subtest: no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+ok 18 - no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+  ---
+  duration_ms: 1.215566
+  type: 'test'
+  ...
+# Subtest: other quarantined actors retain their old annotations and gain no correction
+ok 19 - other quarantined actors retain their old annotations and gain no correction
+  ---
+  duration_ms: 0.208452
+  type: 'test'
+  ...
+# Subtest: the production evidence keeps both current and rejected images with distinct provenance
+ok 20 - the production evidence keeps both current and rejected images with distinct provenance
+  ---
+  duration_ms: 1.295525
+  type: 'test'
+  ...
+# Subtest: the exact KOTOR I edition uses a documented place without inventing visual architecture
+ok 21 - the exact KOTOR I edition uses a documented place without inventing visual architecture
+  ---
+  duration_ms: 0.29456
+  type: 'test'
+  ...
+# Subtest: the exact inspected single-red correction is selected while the rejected original remains quarantined
+ok 22 - the exact inspected single-red correction is selected while the rejected original remains quarantined
+  ---
+  duration_ms: 2.161878
+  type: 'test'
+  ...
+# Subtest: path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+ok 23 - path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+  ---
+  duration_ms: 0.290754
+  type: 'test'
+  ...
+# Subtest: other editions, universes and conflicting aliases cannot obtain the reviewed correction
+ok 24 - other editions, universes and conflicting aliases cannot obtain the reviewed correction
+  ---
+  duration_ms: 0.638253
+  type: 'test'
+  ...
+# Subtest: saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+ok 25 - saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+  ---
+  duration_ms: 0.150896
+  type: 'test'
+  ...
+# Subtest: the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+ok 26 - the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+  ---
+  duration_ms: 1.228715
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36008.901497

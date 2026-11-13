@@ -1,0 +1,859 @@
+[
+  {
+    "case": "before-1280",
+    "ok": true,
+    "mediaAvailabilityReproduction": true,
+    "mediaResponses": [
+      {
+        "status": 404,
+        "sha256": null
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": null
+      }
+    ],
+    "sequence": null,
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  },
+  {
+    "case": "after-1280",
+    "ok": true,
+    "mediaAvailabilityReproduction": false,
+    "mediaResponses": [
+      {
+        "status": 200,
+        "sha256": "4fe055c5d0e4f06258316b0a5cd4fd078af913c41788b355d69aa2ed7645aa4c"
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      }
+    ],
+    "sequence": {
+      "charge": 0,
+      "contacts": [
+        {
+          "defender": "Cloud Strife",
+          "base": 18
+        }
+      ],
+      "before": 105,
+      "after": 88,
+      "definition": {
+        "name": "Pinky \u2014 Bite",
+        "style": "slash",
+        "range": 75,
+        "hits": 1
+      },
+      "actor": {
+        "name": "Leaping Pinky Demon",
+        "weapon": "bite",
+        "incarnation": "Doom (1993) - classic Demon/Pinky (SARG)"
+      },
+      "canvas": {
+        "x": 0,
+        "y": 60,
+        "width": 1280,
+        "height": 840,
+        "top": 60,
+        "right": 1280,
+        "bottom": 900,
+        "left": 0
+      }
+    },
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  },
+  {
+    "case": "after-390",
+    "ok": true,
+    "mediaAvailabilityReproduction": false,
+    "mediaResponses": [
+      {
+        "status": 200,
+        "sha256": "4fe055c5d0e4f06258316b0a5cd4fd078af913c41788b355d69aa2ed7645aa4c"
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            0,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            384,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            768,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4193/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+          "args": [
+            1152,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      }
+    ],
+    "sequence": {
+      "charge": 0,
+      "contacts": [
+        {
+          "defender": "Cloud Strife",
+          "base": 18
+        }
+      ],
+      "before": 105,
+      "after": 88,
+      "definition": {
+        "name": "Pinky \u2014 Bite",
+        "style": "slash",
+        "range": 75,
+        "hits": 1
+      },
+      "actor": {
+        "name": "Leaping Pinky Demon",
+        "weapon": "bite",
+        "incarnation": "Doom (1993) - classic Demon/Pinky (SARG)"
+      },
+      "canvas": {
+        "x": 0,
+        "y": 60,
+        "width": 390,
+        "height": 840,
+        "top": 60,
+        "right": 390,
+        "bottom": 900,
+        "left": 0
+      }
+    },
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  }
+]

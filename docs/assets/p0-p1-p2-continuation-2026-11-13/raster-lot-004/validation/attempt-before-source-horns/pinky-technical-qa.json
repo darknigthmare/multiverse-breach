@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 1,
+  "status": "TECHNICAL_QA_PASSED_VISUAL_REVIEW_PENDING",
+  "source": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/generation/pinky-classic.raw.png",
+  "sourceSha256": "19b5389fef215de6baa5aed0523ee7652b0badd7c2bde0336741b1fae36d71c9",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "output": "DLC/Doom/assets/sprites/generated/bosses/doom/leaping-pinky-demon.png",
+  "outputSha256": "2d7e92ee4caf8ec2d334aaead17c7f51df18f8bbebc4f6b511167f94d613aaba",
+  "outputBytes": 689207,
+  "size": [
+    1536,
+    1024
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    255
+  ],
+  "columns": 4,
+  "rows": 4,
+  "frameCount": 16,
+  "uniqueRgbaFrames": 16,
+  "cellSize": [
+    384,
+    256
+  ],
+  "wideCellReason": "The forward bite extends past x256 at the common feet pivot. Rectangular cells preserve it without changing body scale; renderer already divides image width/columns and height/rows independently.",
+  "sharedScale": 0.76,
+  "baseline": 232,
+  "resampling": "nearest-neighbor",
+  "pillow": "12.3.0",
+  "alphaTreatment": "alpha<=8 becomes0; alpha>=248 becomes255; remaining alpha/RGB retained. No anatomy repainted.",
+  "pivot": "Both feet lower80 source pixels midpoint. Uniform shared scale; no per-pose size normalization.",
+  "frames": [
+    {
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "state": "idle",
+      "sourceRect": [
+        0,
+        0,
+        314,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        53,
+        273,
+        282
+      ],
+      "sourceBothFeetPivot": [
+        142.5,
+        282
+      ],
+      "destinationOffset": [
+        84,
+        18
+      ],
+      "alpha64Bounds": [
+        121,
+        58,
+        292,
+        233
+      ],
+      "rgbaSha256": "1345fa9b2c75d0e83a197238cce2360bfc6d1774317622f92a54e87ffe78755a"
+    },
+    {
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "state": "idle",
+      "sourceRect": [
+        314,
+        0,
+        627,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        47,
+        272,
+        282
+      ],
+      "sourceBothFeetPivot": [
+        140.5,
+        282
+      ],
+      "destinationOffset": [
+        85,
+        18
+      ],
+      "alpha64Bounds": [
+        121,
+        54,
+        292,
+        233
+      ],
+      "rgbaSha256": "4d9f92cfbca4c8904b89ffad2e6dbfc0466264d47df534f53bf28a53e91629fc"
+    },
+    {
+      "index": 2,
+      "row": 0,
+      "column": 2,
+      "state": "idle",
+      "sourceRect": [
+        627,
+        0,
+        940,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        54,
+        270,
+        282
+      ],
+      "sourceBothFeetPivot": [
+        140.5,
+        282
+      ],
+      "destinationOffset": [
+        85,
+        18
+      ],
+      "alpha64Bounds": [
+        121,
+        59,
+        290,
+        233
+      ],
+      "rgbaSha256": "7da939846138fdff48dbfbfb04b10c51ea941299c12564a6b7182eb90a42cdff"
+    },
+    {
+      "index": 3,
+      "row": 0,
+      "column": 3,
+      "state": "idle",
+      "sourceRect": [
+        940,
+        0,
+        1254,
+        314
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        53,
+        269,
+        282
+      ],
+      "sourceBothFeetPivot": [
+        141.0,
+        282
+      ],
+      "destinationOffset": [
+        85,
+        18
+      ],
+      "alpha64Bounds": [
+        122,
+        58,
+        290,
+        233
+      ],
+      "rgbaSha256": "15927aef339126dae33c5c7f73451e9b045dc9ca70fcc77bb0f3f0bb41408771"
+    },
+    {
+      "index": 4,
+      "row": 1,
+      "column": 0,
+      "state": "run",
+      "sourceRect": [
+        0,
+        314,
+        314,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        42,
+        50,
+        277,
+        279
+      ],
+      "sourceBothFeetPivot": [
+        123.0,
+        279
+      ],
+      "destinationOffset": [
+        99,
+        20
+      ],
+      "alpha64Bounds": [
+        131,
+        58,
+        310,
+        232
+      ],
+      "rgbaSha256": "7008d1fd08850286e4e8533a11186d8611815a1d542b40e0fe825d0c4d1e7ee3"
+    },
+    {
+      "index": 5,
+      "row": 1,
+      "column": 1,
+      "state": "run",
+      "sourceRect": [
+        314,
+        314,
+        627,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        14,
+        49,
+        281,
+        280
+      ],
+      "sourceBothFeetPivot": [
+        143.5,
+        280
+      ],
+      "destinationOffset": [
+        83,
+        19
+      ],
+      "alpha64Bounds": [
+        94,
+        56,
+        297,
+        232
+      ],
+      "rgbaSha256": "51b33e2a9d485bb0756898ef90af2627f566b5ada0f889cc1950d72e06dd1bf7"
+    },
+    {
+      "index": 6,
+      "row": 1,
+      "column": 2,
+      "state": "run",
+      "sourceRect": [
+        627,
+        314,
+        940,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        37,
+        53,
+        276,
+        280
+      ],
+      "sourceBothFeetPivot": [
+        130.5,
+        280
+      ],
+      "destinationOffset": [
+        93,
+        19
+      ],
+      "alpha64Bounds": [
+        121,
+        59,
+        303,
+        232
+      ],
+      "rgbaSha256": "a37e6f0da0805901cabab3c56d403b3a03765c7f5024b9641e40aac74ba9ad84"
+    },
+    {
+      "index": 7,
+      "row": 1,
+      "column": 3,
+      "state": "run",
+      "sourceRect": [
+        940,
+        314,
+        1254,
+        627
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        49,
+        280,
+        278
+      ],
+      "sourceBothFeetPivot": [
+        139.0,
+        278
+      ],
+      "destinationOffset": [
+        86,
+        21
+      ],
+      "alpha64Bounds": [
+        123,
+        58,
+        299,
+        232
+      ],
+      "rgbaSha256": "8f519e4a66b172cdc0f277a96b24a692cbb9d58e7db43d8cd750041d551be99b"
+    },
+    {
+      "index": 8,
+      "row": 2,
+      "column": 0,
+      "state": "attack",
+      "sourceRect": [
+        0,
+        627,
+        314,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        44,
+        52,
+        273,
+        279
+      ],
+      "sourceBothFeetPivot": [
+        132.0,
+        279
+      ],
+      "destinationOffset": [
+        92,
+        20
+      ],
+      "alpha64Bounds": [
+        125,
+        60,
+        300,
+        232
+      ],
+      "rgbaSha256": "bc36605d2bbf2791409cef2ca0044d9e32d61fa4f8657b2bb5e3c2870f377665"
+    },
+    {
+      "index": 9,
+      "row": 2,
+      "column": 1,
+      "state": "attack",
+      "sourceRect": [
+        314,
+        627,
+        627,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        10,
+        45,
+        271,
+        279
+      ],
+      "sourceBothFeetPivot": [
+        113.5,
+        279
+      ],
+      "destinationOffset": [
+        106,
+        20
+      ],
+      "alpha64Bounds": [
+        114,
+        54,
+        312,
+        232
+      ],
+      "rgbaSha256": "f86fdf47bc6fabe8334e458c7203b9db643e120b46d263f7fa57975809a526db"
+    },
+    {
+      "index": 10,
+      "row": 2,
+      "column": 2,
+      "state": "attack",
+      "sourceRect": [
+        627,
+        627,
+        940,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        12,
+        56,
+        293,
+        279
+      ],
+      "sourceBothFeetPivot": [
+        110.0,
+        279
+      ],
+      "destinationOffset": [
+        108,
+        20
+      ],
+      "alpha64Bounds": [
+        117,
+        63,
+        331,
+        232
+      ],
+      "rgbaSha256": "f52aebaa186706ecd16063e1972a500901e16fb56cef56b11eb45597ec28eb06"
+    },
+    {
+      "index": 11,
+      "row": 2,
+      "column": 3,
+      "state": "attack",
+      "sourceRect": [
+        940,
+        627,
+        1254,
+        940
+      ],
+      "sourceAlpha64Bounds": [
+        40,
+        46,
+        274,
+        279
+      ],
+      "sourceBothFeetPivot": [
+        119.5,
+        279
+      ],
+      "destinationOffset": [
+        101,
+        20
+      ],
+      "alpha64Bounds": [
+        131,
+        55,
+        310,
+        232
+      ],
+      "rgbaSha256": "541e329c9c636247427600b02d2c68ced12accc274372c4778c315f8870dfbc5"
+    },
+    {
+      "index": 12,
+      "row": 3,
+      "column": 0,
+      "state": "hit",
+      "sourceRect": [
+        0,
+        940,
+        314,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        47,
+        34,
+        244,
+        282
+      ],
+      "sourceBothFeetPivot": [
+        134.0,
+        282
+      ],
+      "destinationOffset": [
+        90,
+        18
+      ],
+      "alpha64Bounds": [
+        126,
+        44,
+        276,
+        233
+      ],
+      "rgbaSha256": "45f05a825be0eb8d19fb493f276fe03f60455f62d52f079ca97c715ee9fa6a05"
+    },
+    {
+      "index": 13,
+      "row": 3,
+      "column": 1,
+      "state": "hit",
+      "sourceRect": [
+        314,
+        940,
+        627,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        36,
+        26,
+        262,
+        280
+      ],
+      "sourceBothFeetPivot": [
+        127.0,
+        280
+      ],
+      "destinationOffset": [
+        95,
+        19
+      ],
+      "alpha64Bounds": [
+        122,
+        39,
+        294,
+        232
+      ],
+      "rgbaSha256": "62d38007b4be9d3f1a7927ab754ba68c37d320d99e75a95006a6e7b9f5bf75f3"
+    },
+    {
+      "index": 14,
+      "row": 3,
+      "column": 2,
+      "state": "hit",
+      "sourceRect": [
+        627,
+        940,
+        940,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        36,
+        52,
+        274,
+        281
+      ],
+      "sourceBothFeetPivot": [
+        140.0,
+        281
+      ],
+      "destinationOffset": [
+        86,
+        18
+      ],
+      "alpha64Bounds": [
+        113,
+        58,
+        294,
+        232
+      ],
+      "rgbaSha256": "7daaaf45fc5d7f1f45aef86cb3b2725a584e00ac6a9698a00c5aa3bd665ab482"
+    },
+    {
+      "index": 15,
+      "row": 3,
+      "column": 3,
+      "state": "hit",
+      "sourceRect": [
+        940,
+        940,
+        1254,
+        1254
+      ],
+      "sourceAlpha64Bounds": [
+        48,
+        51,
+        275,
+        281
+      ],
+      "sourceBothFeetPivot": [
+        140.5,
+        281
+      ],
+      "destinationOffset": [
+        85,
+        18
+      ],
+      "alpha64Bounds": [
+        122,
+        57,
+        294,
+        232
+      ],
+      "rgbaSha256": "af21fb43a14cfa35f0a17e1fe85fae6d8dddc2565b3c35cde70892eb8f1f3d0d"
+    }
+  ],
+  "source1to1Verified": false,
+  "canonicalAnimationTimingVerified": false,
+  "inGameReviewPerformed": false
+}
