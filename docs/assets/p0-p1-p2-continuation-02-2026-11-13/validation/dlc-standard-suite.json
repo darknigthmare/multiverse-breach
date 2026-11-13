@@ -1,0 +1,37 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "npm",
+    "run",
+    "test:dlc"
+  ],
+  "node": "v22.23.5",
+  "nodeOptions": "--max-old-space-size=2048",
+  "exitCode": 0,
+  "seconds": 329.694,
+  "checkedRuntimeSourceFiles": 4333,
+  "runtimeSourcesChanged": [],
+  "summaryLines": [
+    "# tests 245",
+    "# suites 0",
+    "# pass 245",
+    "# fail 0",
+    "# cancelled 0",
+    "# skipped 0",
+    "# todo 0",
+    "# duration_ms 264575.506387",
+    "npm notice",
+    "npm notice New major version of npm available! 11.9.0 -> 12.2.2",
+    "npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2",
+    "npm notice To update run: npm install -g npm@12.2.2",
+    "npm notice",
+    "npm notice",
+    "npm notice New major version of npm available! 11.9.0 -> 12.2.2",
+    "npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2",
+    "npm notice To update run: npm install -g npm@12.2.2",
+    "npm notice"
+  ],
+  "scope": "Standard DLC registry/assets/source/profile suite; no full-media hydration or assembled export."
+}

@@ -1,0 +1,43 @@
+TAP version 13
+# (node:217313) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: C-Rex is a real transparent single-frame PNG with recorded generation and reference review
+ok 1 - C-Rex is a real transparent single-frame PNG with recorded generation and reference review
+  ---
+  duration_ms: 4.332279
+  type: 'test'
+  ...
+# Subtest: the recorded alpha bounds retain the full silhouette and only negligible fringe is trimmed
+ok 2 - the recorded alpha bounds retain the full silhouette and only negligible fringe is trimmed
+  ---
+  duration_ms: 16.885456
+  type: 'test'
+  ...
+# Subtest: the live boss, full catalog and UI index resolve the same reviewed static asset
+ok 3 - the live boss, full catalog and UI index resolve the same reviewed static asset
+  ---
+  duration_ms: 7.699373
+  type: 'test'
+  ...
+# Subtest: every boss state consumes the same whole source image rather than a 4 by 4 atlas cell
+ok 4 - every boss state consumes the same whole source image rather than a 4 by 4 atlas cell
+  ---
+  duration_ms: 1.561403
+  type: 'test'
+  ...
+# Subtest: the real generated-sprite draw routine keeps the silhouette grounded at game scales in both facings
+ok 5 - the real generated-sprite draw routine keeps the silhouette grounded at game scales in both facings
+  ---
+  duration_ms: 11.895135
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2318.115668

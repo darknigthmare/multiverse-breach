@@ -1,0 +1,14 @@
+# node:internal/fs/promises:639
+#   return new FileHandle(await PromisePrototypeThen(
+#                         ^
+# Error: ENOENT: no such file or directory, open '/workspace/multiverse-breach/public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png'
+#     at async open (node:internal/fs/promises:639:25)
+#     at async readFile (node:internal/fs/promises:1252:14)
+#     at async file:///workspace/multiverse-breach/scripts/crustaceousRexSprite.test.mjs:19:15 {
+#   errno: -2,
+#   code: 'ENOENT',
+#   syscall: 'open',
+#   path: '/workspace/multiverse-breach/public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png'
+# }
+# Node.js v22.23.5
+# Subtest: scripts/crustaceousRexSprite.test.mjs

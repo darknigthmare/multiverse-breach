@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "sourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "actorKey": "[\"Doom\",\"name:Imp Fireballer\"]",
+  "actorName": "Imp Fireballer",
+  "universe": "Doom",
+  "edition": "Doom (1993), classic Imp (TROO); not Doom2016/Eternal",
+  "actorSource": "DLC/Doom/data/enemies.js#createCanonEnemyExpansion",
+  "sourceVisual": {
+    "page": "https://www.spriters-resource.com/ms_dos/doomdoomii/asset/27875/",
+    "image": "https://www.spriters-resource.com/media/assets/25/27875.png?updated=1755472606",
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/references/imp-classic-source.png",
+    "sha256": "753fef7a2f8b73be59195feff2b28e65da8cbd961566945beb21d48f1bb4a072",
+    "bytes": 113354,
+    "dimensions": [
+      829,
+      921
+    ],
+    "status": 200,
+    "attribution": "Original sprites id Software/Bethesda; sprite sheet ripped/arranged by Dolphman; reference availability does not create a new license."
+  },
+  "sourceCode": {
+    "url": "https://github.com/id-Software/DOOM/blob/master/linuxdoom-1.10/p_enemy.c",
+    "frozenPath": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/p_enemy.c.txt",
+    "sha256": "bfe1e3c039443d787e4a0dcb485720c9707f3381b69b00ad35f3e52796bfeec0",
+    "action": "A_TroopAttack: claws in melee range, MT_TROOPSHOT at distance"
+  },
+  "generationReference": {
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/references/imp-movement-and-cast-reference.png",
+    "crop": [
+      0,
+      0,
+      829,
+      744
+    ],
+    "operation": "Original movement/cast/hit portion cropped, no character pixels repainted. Lower death/gore poses are outside this atlas scope.",
+    "sha256": "8bce0bf8829eedb4b290fb0e42ff96e238af6f01c326f751cd5df8c46014c02d"
+  },
+  "styleOnlyReference": {
+    "path": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/existing-doom-imp-style.png",
+    "sha256": "d81016911bfa5271d24759ff0052d1415675e2d680ce888e197870f9b64559ac",
+    "identityAuthority": false
+  },
+  "output": "DLC/Doom/assets/sprites/generated/bosses/doom/imp-fireballer.png",
+  "publicUrl": "/sprites/generated/bosses/doom/imp-fireballer.png",
+  "layout": {
+    "columns": 4,
+    "rows": 4,
+    "cellSize": [
+      384,
+      256
+    ],
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "baseline": 232
+  },
+  "mustPreserve": {
+    "name": "Imp Fireballer",
+    "hp": 75,
+    "atk": 11,
+    "spd": 6,
+    "weapon": "fireball",
+    "signatureKey": "Doom::Imp Fireballer",
+    "signatureName": "Imp Fireball"
+  },
+  "acceptance": [
+    "True transparent RGBA PNG and sixteen distinct generated poses",
+    "Original-source inspected brown/red-eye/short-pale-spike silhouette",
+    "No clipping and stable feet/baseline at common shared scale",
+    "Actual GameCanvas draw calls for all16cells in four renderer states",
+    "Actual signature fire attack, resource/contact/hit and cleanup",
+    "No global visual1:1 approval or full actor closure"
+  ],
+  "refusalCheck": {
+    "searched": "Prior docs/cg and combat-fidelity JSON reports for exact Imp Fireballer / Imp Fireball Thrower / classic Imp / Doom Imp",
+    "exactHistoricalRefusalFound": false,
+    "retryOfRefusedIdentity": false,
+    "aliasUsedToBypassRefusal": false
+  },
+  "source1to1Verified": false,
+  "canonicalAnimationTimingVerified": false,
+  "visualFidelityApproved": false,
+  "fullActorClosed": false
+}

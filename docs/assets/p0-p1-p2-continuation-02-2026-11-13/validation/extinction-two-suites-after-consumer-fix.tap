@@ -1,0 +1,334 @@
+TAP version 13
+# Subtest: every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+ok 1 - every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+  ---
+  duration_ms: 1041.029184
+  type: 'test'
+  ...
+# Subtest: the twelve authored Nexus kits remain byte-for-byte primary to the shared adapter
+ok 2 - the twelve authored Nexus kits remain byte-for-byte primary to the shared adapter
+  ---
+  duration_ms: 1.086888
+  type: 'test'
+  ...
+# Subtest: equipment, incarnation and generic source limits are copied from the exact identity
+ok 3 - equipment, incarnation and generic source limits are copied from the exact identity
+  ---
+  duration_ms: 0.896811
+  type: 'test'
+  ...
+# Subtest: real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback
+ok 4 - real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback
+  ---
+  duration_ms: 20996.939396
+  type: 'test'
+  ...
+# Subtest: personal sheets stay exact-owner and costume-bound; new profiles never manufacture art
+ok 5 - personal sheets stay exact-owner and costume-bound; new profiles never manufacture art
+  ---
+  duration_ms: 48.030699
+  type: 'test'
+  ...
+# Subtest: ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+ok 6 - ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+  ---
+  duration_ms: 6.783468
+  type: 'test'
+  ...
+# Subtest: control is non-damaging, earns charge on actual contact, expires and freezes during pause
+ok 7 - control is non-damaging, earns charge on actual contact, expires and freezes during pause
+  ---
+  duration_ms: 0.688218
+  type: 'test'
+  ...
+# Subtest: scatter and sweep cover a cone; ordinary contact remains close and aimed
+ok 8 - scatter and sweep cover a cone; ordinary contact remains close and aimed
+  ---
+  duration_ms: 0.347064
+  type: 'test'
+  ...
+# Subtest: shared summon is delayed, world-anchored, owner-bound and respects the Champion shield
+ok 9 - shared summon is delayed, world-anchored, owner-bound and respects the Champion shield
+  ---
+  duration_ms: 1.1273
+  type: 'test'
+  ...
+# Subtest: returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+ok 10 - returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+  ---
+  duration_ms: 0.500684
+  type: 'test'
+  ...
+# Subtest: the abstract non-ballistic view never draws a gun body or mutates simulation
+ok 11 - the abstract non-ballistic view never draws a gun body or mutates simulation
+  ---
+  duration_ms: 1.015672
+  type: 'test'
+  ...
+# Subtest: future unsupported source types are explicit instead of becoming a borrowed gun or a no-op action
+ok 12 - future unsupported source types are explicit instead of becoming a borrowed gun or a no-op action
+  ---
+  duration_ms: 0.332972
+  type: 'test'
+  ...
+# Subtest: workbook export is deterministic and covers all four modes with provenance and honest production states
+ok 13 - workbook export is deterministic and covers all four modes with provenance and honest production states
+  ---
+  duration_ms: 235.437202
+  type: 'test'
+  ...
+# Subtest: movement reach matches actual dash/teleport displacement and preserves historical authored metadata
+ok 14 - movement reach matches actual dash/teleport displacement and preserves historical authored metadata
+  ---
+  duration_ms: 25.295879
+  type: 'test'
+  ...
+# Subtest: personal effects report no target while summons and reflections expose their actual eight-unit radius
+ok 15 - personal effects report no target while summons and reflections expose their actual eight-unit radius
+  ---
+  duration_ms: 36.692575
+  type: 'test'
+  ...
+# Subtest: mine metadata distinguishes actual deployment distance from the explosion radius without changing either
+ok 16 - mine metadata distinguishes actual deployment distance from the explosion radius without changing either
+  ---
+  duration_ms: 34.302289
+  type: 'test'
+  ...
+# Subtest: the actual pickup fire callback preserves unmarked-Hunt refusal and shows an impact only after real damage
+ok 17 - the actual pickup fire callback preserves unmarked-Hunt refusal and shows an impact only after real damage
+  ---
+  duration_ms: 2.37498
+  type: 'test'
+  ...
+# Subtest: actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+ok 18 - actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+  ---
+  duration_ms: 22.313744
+  type: 'test'
+  ...
+# Subtest: actual collection, fire, reload and V/B callbacks keep separate stocks and reloads in all 48 mode/profile/pickup combinations
+ok 19 - actual collection, fire, reload and V/B callbacks keep separate stocks and reloads in all 48 mode/profile/pickup combinations
+  ---
+  duration_ms: 121.785493
+  type: 'test'
+  ...
+# Subtest: actual collection announces replacement of the active or stored weapon and refuses invalid drops before consumption
+ok 20 - actual collection announces replacement of the active or stored weapon and refuses invalid drops before consumption
+  ---
+  duration_ms: 5.805563
+  type: 'test'
+  ...
+# Subtest: actual completion clears carried equipment and retains one unchanged reward receipt per mode
+ok 21 - actual completion clears carried equipment and retains one unchanged reward receipt per mode
+  ---
+  duration_ms: 7.608673
+  type: 'test'
+  ...
+# Subtest: pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+ok 22 - pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+  ---
+  duration_ms: 0.47045
+  type: 'test'
+  ...
+# Subtest: all three mobility kits earn their first legal ultimate from zero through five actual evasions, without a foreign weapon
+ok 23 - all three mobility kits earn their first legal ultimate from zero through five actual evasions, without a foreign weapon
+  ---
+  duration_ms: 25.745778
+  type: 'test'
+  ...
+# Subtest: mobility charge rejects empty, harmless, distant, approaching, wall-clipped, paused and foreign-run activations
+ok 24 - mobility charge rejects empty, harmless, distant, approaching, wall-clipped, paused and foreign-run activations
+  ---
+  duration_ms: 1.75095
+  type: 'test'
+  ...
+# Subtest: the real fire callback gives all three pickups their own delivery in each mode and preserves personal actions
+ok 25 - the real fire callback gives all three pickups their own delivery in each mode and preserves personal actions
+  ---
+  duration_ms: 24.348651
+  type: 'test'
+  ...
+# Subtest: shotgun pellets stop at their first body, stay within nine units and concentrate only at close range
+ok 26 - shotgun pellets stop at their first body, stay within nine units and concentrate only at close range
+  ---
+  duration_ms: 0.49072
+  type: 'test'
+  ...
+# Subtest: a shotgun spreads across separate targets without penetrating a centre target or multiplying charge
+ok 27 - a shotgun spreads across separate targets without penetrating a centre target or multiplying charge
+  ---
+  duration_ms: 0.261875
+  type: 'test'
+  ...
+# Subtest: plasma travels, can miss a moving target and collides with the closest body before a farther one
+ok 28 - plasma travels, can miss a moving target and collides with the closest body before a farther one
+  ---
+  duration_ms: 0.433804
+  type: 'test'
+  ...
+# Subtest: Slayer pickup projectiles keep close damage at impact, including movement and individual blast victims
+ok 29 - Slayer pickup projectiles keep close damage at impact, including movement and individual blast victims
+  ---
+  duration_ms: 2.757167
+  type: 'test'
+  ...
+# Subtest: projectile segment collision catches fast shots and range exhaustion does not create a remote explosion
+ok 30 - projectile segment collision catches fast shots and range exhaustion does not create a remote explosion
+  ---
+  duration_ms: 0.736581
+  type: 'test'
+  ...
+# Subtest: rocket impact damages nearby threats with falloff, counts each kill once and gives one charge credit
+ok 31 - rocket impact damages nearby threats with falloff, counts each kill once and gives one charge credit
+  ---
+  duration_ms: 0.820627
+  type: 'test'
+  ...
+# Subtest: travelling pickups handle point-blank overlap, stale metadata and consecutive contacts without duplicate drops
+ok 32 - travelling pickups handle point-blank overlap, stale metadata and consecutive contacts without duplicate drops
+  ---
+  duration_ms: 0.945155
+  type: 'test'
+  ...
+# Subtest: one explosion cannot strip drones then damage the shielded Champion through target array order
+ok 33 - one explosion cannot strip drones then damage the shielded Champion through target array order
+  ---
+  duration_ms: 4.966989
+  type: 'test'
+  ...
+# Subtest: Hunt marking is evaluated on projectile impact, not remembered from the trigger press
+ok 34 - Hunt marking is evaluated on projectile impact, not remembered from the trigger press
+  ---
+  duration_ms: 0.911765
+  type: 'test'
+  ...
+# Subtest: a pickup projectile survives a legal kit switch, freezes in pause and never borrows its owner’s personal art
+ok 35 - a pickup projectile survives a legal kit switch, freezes in pause and never borrows its owner’s personal art
+  ---
+  duration_ms: 1.978664
+  type: 'test'
+  ...
+# Subtest: pickup fire obeys reload, empty stock, cadence, source ownership and run cleanup without rewards
+ok 36 - pickup fire obeys reload, empty stock, cadence, source ownership and run cleanup without rewards
+  ---
+  duration_ms: 6.200088
+  type: 'test'
+  ...
+# Subtest: projectile feedback aligns with the scene projection and the held pickup has bilingual instructions
+ok 37 - projectile feedback aligns with the scene projection and the held pickup has bilingual instructions
+  ---
+  duration_ms: 0.685414
+  type: 'test'
+  ...
+# Subtest: aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+ok 38 - aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+  ---
+  duration_ms: 616.846975
+  type: 'test'
+  ...
+# Subtest: contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+ok 39 - contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+  ---
+  duration_ms: 2.957329
+  type: 'test'
+  ...
+# Subtest: a broad contact cone or a hidden projection never reveals an off-screen target
+ok 40 - a broad contact cone or a hidden projection never reveals an off-screen target
+  ---
+  duration_ms: 0.462598
+  type: 'test'
+  ...
+# Subtest: instant shotgun guidance uses the first collision of the actual seven rays, never a continuous spread cone
+ok 41 - instant shotgun guidance uses the first collision of the actual seven rays, never a continuous spread cone
+  ---
+  duration_ms: 0.667627
+  type: 'test'
+  ...
+# Subtest: projectile guidance describes a current path and never predicts or manufactures a later hit
+ok 42 - projectile guidance describes a current path and never predicts or manufactures a later hit
+  ---
+  duration_ms: 1.65851
+  type: 'test'
+  ...
+# Subtest: marking and shield feedback follow real damage rules, while non-damaging control remains valid
+ok 43 - marking and shield feedback follow real damage rules, while non-damaging control remains valid
+  ---
+  duration_ms: 0.852575
+  type: 'test'
+  ...
+# Subtest: movement guidance uses the actual arena boundary and presents no gun command or target
+ok 44 - movement guidance uses the actual arena boundary and presents no gun command or target
+  ---
+  duration_ms: 0.360163
+  type: 'test'
+  ...
+# Subtest: aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+ok 45 - aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+  ---
+  duration_ms: 0.674887
+  type: 'test'
+  ...
+# Subtest: the real snapshot follows collected, holstered and restored equipment without changing an input or resource
+ok 46 - the real snapshot follows collected, holstered and restored equipment without changing an input or resource
+  ---
+  duration_ms: 2.590817
+  type: 'test'
+  ...
+# Subtest: the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+ok 47 - the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+  ---
+  duration_ms: 5.773585
+  type: 'test'
+  ...
+# Subtest: all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+ok 48 - all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+  ---
+  duration_ms: 189.741174
+  type: 'test'
+  ...
+# Subtest: foreign owners, stale runs and absent profiles cannot lend a personal silhouette or colour
+ok 49 - foreign owners, stale runs and absent profiles cannot lend a personal silhouette or colour
+  ---
+  duration_ms: 1.435143
+  type: 'test'
+  ...
+# Subtest: real primary activations and cooldown ticks drive attack, recovery and ready states
+ok 50 - real primary activations and cooldown ticks drive attack, recovery and ready states
+  ---
+  duration_ms: 2.859198
+  type: 'test'
+  ...
+# Subtest: ammunition, reload and pickup recoil read the actual held resource
+ok 51 - ammunition, reload and pickup recoil read the actual held resource
+  ---
+  duration_ms: 0.31815
+  type: 'test'
+  ...
+# Subtest: every primary delivery has different geometry even with one colour, and pause rendering is pure
+ok 52 - every primary delivery has different geometry even with one colour, and pause rendering is pure
+  ---
+  duration_ms: 3.475157
+  type: 'test'
+  ...
+# Subtest: all diagram states fit the lower envelope on portrait, landscape, ultrawide and small canvases
+ok 53 - all diagram states fit the lower envelope on portrait, landscape, ultrawide and small canvases
+  ---
+  duration_ms: 30.948858
+  type: 'test'
+  ...
+# Subtest: measured HUD regions keep real paths and personal sheet bounds clear at every aspect and display scale
+ok 54 - measured HUD regions keep real paths and personal sheet bounds clear at every aspect and display scale
+  ---
+  duration_ms: 24.455783
+  type: 'test'
+  ...
+1..54
+# tests 54
+# suites 0
+# pass 54
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 30298.469599

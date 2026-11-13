@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "sourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "actorKey": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+  "actorName": "Mancubus Flame Tank",
+  "universe": "Doom",
+  "edition": "Doom II (1994), classic Mancubus (FATT); not Doom2016/Eternal",
+  "sourceVisual": {
+    "page": "https://www.spriters-resource.com/ms_dos/doomdoomii/asset/27879/",
+    "image": "https://www.spriters-resource.com/media/assets/25/27879.png?updated=1755472606",
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/references/mancubus-classic-source.png",
+    "sha256": "46893e8ff219f5d1fd17f75364e5205d3d834432752afb9cd469807a41978137",
+    "bytes": 485610,
+    "dimensions": [
+      732,
+      1261
+    ],
+    "imageHttpStatus": 200,
+    "attribution": "Original sprites id Software/Bethesda, ripped/arranged by Dolphman. Visual reference availability is not a new license."
+  },
+  "generationReference": {
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/references/mancubus-movement-and-cast-reference.png",
+    "crop": [
+      0,
+      0,
+      732,
+      1110
+    ],
+    "sha256": "bee2e1ddbfb8f605f352bf93a28f9d30b69a3ed4181c09d5116d596c510fee11",
+    "operation": "Crop to actual movement/cast/pain source frames only; lower death/gore poses are outside the requested atlas scope. No source pixels repainted."
+  },
+  "sourceCode": {
+    "url": "https://github.com/id-Software/DOOM/blob/master/linuxdoom-1.10/p_enemy.c",
+    "frozenPath": "docs/assets/p0-p1-p2-continuation-2026-11-13/raster-lot-004/references/p_enemy.c.txt",
+    "sha256": "bfe1e3c039443d787e4a0dcb485720c9707f3381b69b00ad35f3e52796bfeec0",
+    "action": "A_FatRaise and A_FatAttack1/2/3: three volleys, two cannon fireballs per volley; Nexus timing/balance remains adapted"
+  },
+  "output": "DLC/Doom/assets/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+  "publicUrl": "/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+  "layout": {
+    "columns": 4,
+    "rows": 4,
+    "cellSize": [
+      384,
+      256
+    ],
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "baseline": 232
+  },
+  "mustPreserve": {
+    "name": "Mancubus Flame Tank",
+    "hp": 150,
+    "atk": 17,
+    "spd": 3,
+    "weapon": "flame_cannons",
+    "signatureKey": "Doom::Mancubus Flame Tank",
+    "signatureName": "Mancubus Fireball Salvo",
+    "signatureHits": 6
+  },
+  "acceptance": [
+    "Two actual forearm cannons and squat source silhouette",
+    "16distinct generated poses with usablealpha and stable common baseline",
+    "No clipped cannons or invented modern armor",
+    "Actual GameCanvas desktop/mobile, signature6contacts andnative received-hit row",
+    "Unchanged stable identity/stats/kit",
+    "No full actor,45state or source1:1 certification"
+  ],
+  "refusalCheck": {
+    "exactHistoricalRefusalFound": false,
+    "retryOfRefusedIdentity": false,
+    "aliasUsedToBypassRefusal": false,
+    "searchScope": "Prior docs/cg and combat-fidelity JSON exact Mancubus Flame Tank / classic Mancubus generation evidence."
+  },
+  "source1to1Verified": false,
+  "visualFidelityApproved": false,
+  "canonicalAnimationTimingVerified": false,
+  "fullActorClosed": false
+}

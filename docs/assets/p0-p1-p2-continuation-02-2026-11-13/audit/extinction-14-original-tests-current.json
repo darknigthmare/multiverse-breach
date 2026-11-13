@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent replay of the exact14 historically failing Git9899 test cases against CURRENT real implementations. Only test bytes are pinned to Git9899; data, implementations and direct filesystem reads remain current. SSR/Vite case excluded.",
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "currentCoreCommit": "5667556bfb3d00e2cf9959c3d22c3038712cd5a2",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--no-warnings",
+    "--loader",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/original-extinction-tests-current-loader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "--test-name-pattern=^(?:every\\ actual\\ combatant\\ has\\ four\\ executable\\ source\\ actions;\\ no\\ source\\ catalog\\ mutation\\ or\\ implicit\\ ownership|ammunition\\ is\\ consumed\\ by\\ ballistic\\ primaries;\\ contact\\ and\\ non\\-ballistic\\ effects\\ use\\ cooldowns|returning\\ to\\ the\\ personal\\ kit\\ retains\\ its\\ actual\\ stock\\ and\\ cooldowns\\ without\\ refill\\ or\\ repeated\\ return|workbook\\ export\\ is\\ deterministic\\ and\\ covers\\ all\\ four\\ modes\\ with\\ provenance\\ and\\ honest\\ production\\ states|actual\\ reload,\\ pickup\\ and\\ kit\\ return\\ retain\\ 36/26/11/0\\ active\\ reload\\ ticks\\ and\\ the\\ independent\\ primary\\ cooldown|pause\\ cannot\\ age\\ a\\ stored\\ personal\\ reload,\\ and\\ ordinary\\ loot\\ cannot\\ shorten\\ an\\ active\\ reload|aim\\ feedback\\ follows\\ every\\ current\\ primary\\ kit\\ in\\ all\\ four\\ modes\\ without\\ drawing\\ randomness\\ or\\ mutating\\ the\\ run|contact\\ and\\ control\\ readouts\\ agree\\ with\\ actual\\ reach,\\ facing\\ and\\ successful\\ actions\\ at\\ the\\ boundaries|marking\\ and\\ shield\\ feedback\\ follow\\ real\\ damage\\ rules,\\ while\\ non\\-damaging\\ control\\ remains\\ valid|aim\\ readiness\\ follows\\ independent\\ primary\\ cooldowns,\\ reloads,\\ empty\\ ammunition\\ and\\ paused\\ ownership|the\\ actual\\ aiming\\ draw\\ stays\\ inside\\ the\\ reserved\\ reticle\\ and\\ cancels\\ camera\\ shake\\ without\\ altering\\ the\\ hit\\ marker|all\\ 1,811\\ eligible\\ identities\\ resolve\\ their\\ actual\\ primary\\ delivery,\\ without\\ manufacturing\\ art|real\\ primary\\ activations\\ and\\ cooldown\\ ticks\\ drive\\ attack,\\ recovery\\ and\\ ready\\ states|every\\ primary\\ delivery\\ has\\ different\\ geometry\\ even\\ with\\ one\\ colour,\\ and\\ pause\\ rendering\\ is\\ pure)$",
+    "scripts/extinctionFighterProfiles.test.mjs",
+    "scripts/extinctionSchematicView.test.mjs"
+  ],
+  "exitCode": 1,
+  "expectedExitReason": "Three historical fixed inventory assertions remain red; no behavioral failure remains among these14 selected original tests.",
+  "loaderSha256": "f0370ebe9393caf6ce24c898db89371aa0b5b18f3f3ed7b9f07c02673d0dc1c7",
+  "baselineReceiptSha256": "0ce4510f617576750054f60ae093fe6a11d75d58c37813ab57823a6053c9adca",
+  "selectedPassBefore": 0,
+  "selectedFailBefore": 14,
+  "selectedPassCurrent": 11,
+  "selectedFailCurrent": 3,
+  "selectedResults": [
+    {
+      "label": "every actual combatant has four executable source actions; no source catalog mutation or implicit ownership",
+      "status": "PASS"
+    },
+    {
+      "label": "ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns",
+      "status": "PASS"
+    },
+    {
+      "label": "returning to the personal kit retains its actual stock and cooldowns without refill or repeated return",
+      "status": "PASS"
+    },
+    {
+      "label": "workbook export is deterministic and covers all four modes with provenance and honest production states",
+      "status": "FAIL"
+    },
+    {
+      "label": "actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown",
+      "status": "PASS"
+    },
+    {
+      "label": "pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload",
+      "status": "PASS"
+    },
+    {
+      "label": "aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run",
+      "status": "FAIL"
+    },
+    {
+      "label": "contact and control readouts agree with actual reach, facing and successful actions at the boundaries",
+      "status": "PASS"
+    },
+    {
+      "label": "marking and shield feedback follow real damage rules, while non-damaging control remains valid",
+      "status": "PASS"
+    },
+    {
+      "label": "aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership",
+      "status": "PASS"
+    },
+    {
+      "label": "the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker",
+      "status": "PASS"
+    },
+    {
+      "label": "all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art",
+      "status": "FAIL"
+    },
+    {
+      "label": "real primary activations and cooldown ticks drive attack, recovery and ready states",
+      "status": "PASS"
+    },
+    {
+      "label": "every primary delivery has different geometry even with one colour, and pause rendering is pure",
+      "status": "PASS"
+    }
+  ],
+  "originalTests": [
+    {
+      "path": "scripts/extinctionFighterProfiles.test.mjs",
+      "git9899Sha256": "6263b338230e630a15d199ff2395a11fa5a7a01c9b0ac9dfc3b4c49a281b756a",
+      "bytes": 67947,
+      "source": "Original Git9899 test, loaded at original URL; no assertion amended."
+    },
+    {
+      "path": "scripts/extinctionSchematicView.test.mjs",
+      "git9899Sha256": "316e8484a29b622d6ff2d262c6a61dc2d1447bc36594772792804d0e406677c6",
+      "bytes": 14748,
+      "source": "Original Git9899 test, loaded at original URL; no assertion amended."
+    }
+  ],
+  "currentImplementations": [
+    {
+      "path": "src/game/extinctionFighterProfiles.js",
+      "sha256": "4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc",
+      "bytes": 22907
+    },
+    {
+      "path": "src/game/extinctionSchematicView.js",
+      "sha256": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191",
+      "bytes": 12068
+    },
+    {
+      "path": "scripts/extinctionFighterCatalog.mjs",
+      "sha256": "4b39595e105d4d5cf6a483771a02bd55f8531e38640fc201af494c7629d4221d",
+      "bytes": 3493
+    }
+  ],
+  "remainingHistoricalInventoryAssertions": [
+    {
+      "label": "workbook export is deterministic and covers all four modes with provenance and honest production states",
+      "expectedGenericSourceReview": 1633,
+      "actualGenericSourceReview": 1576,
+      "expectedActions": 7244,
+      "actualActions": 7244
+    },
+    {
+      "label": "aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run",
+      "expectedKinds": 9,
+      "actualKinds": 11,
+      "addedKinds": [
+        "buff",
+        "guard"
+      ]
+    },
+    {
+      "label": "all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art",
+      "expectedStyles": 9,
+      "actualStyles": 10,
+      "actualSupportStyles": 17,
+      "actualTotalEligibleIdentities": 1811
+    }
+  ],
+  "limits": "11 selected behavioral tests now pass. This is not a claim that all original tests or all FPS profiles are unchanged. Current guarded inventory amendments and full suites were verified separately by their owner.",
+  "log": "extinction-14-original-tests-current.tap",
+  "logSha256": "0913c6884fbe577654c34c888fa9ca5e52fee6a78f668a4343b4bece2024f0e9",
+  "testAssertionsModifiedByThisAudit": 0,
+  "viteServersStarted": 0,
+  "mediaHydrated": 0,
+  "visual1to1Verified": false
+}

@@ -1,0 +1,34 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/reviewedRevanPresentation20261113.test.mjs",
+    "scripts/reviewedRevanPresentationRuntime20261113.test.mjs",
+    "scripts/combatFidelityWave14.test.mjs",
+    "scripts/combatFidelityWave15.test.mjs"
+  ],
+  "node": "v22.23.5",
+  "exitCode": 0,
+  "seconds": 11.297,
+  "summaryLines": [
+    "  duration_ms: 1.479811",
+    "  type: 'test'",
+    "  ...",
+    "1..23",
+    "# tests 23",
+    "# suites 0",
+    "# pass 23",
+    "# fail 0",
+    "# cancelled 0",
+    "# skipped 0",
+    "# todo 0",
+    "# duration_ms 11233.683751"
+  ]
+}

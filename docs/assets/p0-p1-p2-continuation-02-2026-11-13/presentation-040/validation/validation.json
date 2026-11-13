@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sourceCheckpoint": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "scope": "40 reserved actors; only reviewed KOTOR I Revan presentation changed. Source actor contracts, media bytes, combat numbers, saved IDs and historical priorities are not modified by this activity.",
+  "reservedActorCount": 40,
+  "actorsWithNewBoundedClips": 1,
+  "otherReservedActorsUncorrected": 39,
+  "newCanonicalImages": 0,
+  "sourceLedgerFindingsClosed": 0,
+  "fullActorClosures": 0,
+  "artApprovals": 0,
+  "visual1to1Verified": false,
+  "clips": {
+    "intro": {
+      "engines": [
+        "Fighter",
+        "Smash"
+      ],
+      "sourceRows": [
+        0,
+        1
+      ],
+      "dedicatedPhaseArtwork": false
+    },
+    "victory": {
+      "engines": [
+        "Fighter",
+        "Smash"
+      ],
+      "sourceRows": [
+        0
+      ],
+      "dedicatedPhaseArtwork": false
+    },
+    "outro": {
+      "engines": [
+        "Fighter"
+      ],
+      "sourceRows": [
+        0,
+        1
+      ],
+      "dedicatedPhaseArtwork": false
+    }
+  },
+  "regressions": {
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/final-runtime-tests.tap",
+    "sha256": "2d5b36ca4778427de7d8a6a7125b0662e877c5804c4380bbe85c4ec8b58003a5",
+    "tests": 17,
+    "pass": 17,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "baselineExpectedFailures": {
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/baseline-final-tests.tap",
+    "sha256": "43fa5374f1834161b31d997a5547cbbf56b166e0dd6370284bdc364a21d885a5",
+    "tests": 5,
+    "pass": 0,
+    "fail": 5,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "existingFighterPresentationSuite": {
+    "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/fighter-presentation-regressions.tap",
+    "sha256": "f4db9770c3dc1192512d262a0a06007a0ea859397c98270838eadc64a2170949",
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "cases": 10,
+    "captures": 27,
+    "errors": 0,
+    "resultPath": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/browser/results.json",
+    "resultSha256": "92070b3c716d8cc02dc9faa52c72ca093e44699dfb49ce34711a835e78760914",
+    "scope": "Prepared outcomes and true engine/renderer, two sides and viewport1280/390, paused time and disposal, original-source technical alias before/after. Not a complete campaign, full App or mobile UI certification."
+  },
+  "sourceHashes": {
+    "src/game/combat/reviewedBasePresentations20261113.js": "7f0c09493894949f5a633b2a2d139b990b6a6c0526720e4bdd63f5ee136d8178",
+    "src/game/combat/presentationCatalog.js": "bb7e3fd274d1e8e1cbad652ed6cfa508fed8435e079a29c87d8fdeacd81a6b8a",
+    "src/game/engineFighter.js": "26d2457c02f9cf5f4f94bb28d31da31855f6576d8d4d10104cd54cd94e16cbfb",
+    "src/game/engineSmash.js": "609f644fec66bb96e929da0cac499cdab5a839e41024a570f499393a5aa162f6",
+    "scripts/reviewedRevanPresentation20261113.test.mjs": "104b8b3faf9903e2d536201a23921585f544db71278b0287b69647e2fe665c09",
+    "scripts/reviewedRevanPresentationRuntime20261113.test.mjs": "24e8552a3a5bde85d8d260ab57502dd67f7bbfac5ce4dffe504b1355c0208d5d",
+    "scripts/fixtures/reviewedRevanPresentationHarness.js": "55aa44c0ba24035e0ed07cae00f8e77dd3bfe4fdd6c3900dafcef9ab861ea0a4",
+    "scripts/fixtures/reviewed-revan-presentation.html": "f04486b7392d919f4d283376fe5bcc363e0402a960188ee2845728c9c42d5bdb"
+  },
+  "preservedBitmap": {
+    "path": "public/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+    "bytes": 367081,
+    "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf",
+    "columns": 4,
+    "rows": 4,
+    "baseline": 244
+  },
+  "priorPhaseAtlas": {
+    "path": "public/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+    "sha256": "dbfed15b1acd9bf16f42499e03045229149ba27e470f82b0e4591281d7783076",
+    "columns": 4,
+    "rows": 8,
+    "frames": 32,
+    "retained": true,
+    "approvedForCurrentRevan": false
+  },
+  "review": {
+    "sourceCostumeReference": "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+    "sourceChoreographyVerified": false,
+    "ordinaryFallbackPhases": [
+      "fatality",
+      "defeat",
+      "roundVictory",
+      "roundDefeat"
+    ],
+    "globalAnimationAndVisualReviewClosed": false
+  },
+  "node": "v22.23.5",
+  "finalUnitCommand": [
+    "node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/reviewedRevanPresentation20261113.test.mjs",
+    "scripts/reviewedRevanPresentationRuntime20261113.test.mjs",
+    "scripts/reviewedRevanSprite.test.mjs"
+  ]
+}

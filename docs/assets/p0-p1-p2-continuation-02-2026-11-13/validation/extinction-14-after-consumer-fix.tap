@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+ok 1 - every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+  ---
+  duration_ms: 845.68171
+  type: 'test'
+  ...
+# Subtest: ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+ok 2 - ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+  ---
+  duration_ms: 1.183773
+  type: 'test'
+  ...
+# Subtest: returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+ok 3 - returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+  ---
+  duration_ms: 0.793856
+  type: 'test'
+  ...
+# Subtest: workbook export is deterministic and covers all four modes with provenance and honest production states
+ok 4 - workbook export is deterministic and covers all four modes with provenance and honest production states
+  ---
+  duration_ms: 143.787674
+  type: 'test'
+  ...
+# Subtest: actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+ok 5 - actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+  ---
+  duration_ms: 4.533749
+  type: 'test'
+  ...
+# Subtest: pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+ok 6 - pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+  ---
+  duration_ms: 0.507765
+  type: 'test'
+  ...
+# Subtest: aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+ok 7 - aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+  ---
+  duration_ms: 662.055009
+  type: 'test'
+  ...
+# Subtest: contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+ok 8 - contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+  ---
+  duration_ms: 2.178491
+  type: 'test'
+  ...
+# Subtest: marking and shield feedback follow real damage rules, while non-damaging control remains valid
+ok 9 - marking and shield feedback follow real damage rules, while non-damaging control remains valid
+  ---
+  duration_ms: 1.649505
+  type: 'test'
+  ...
+# Subtest: aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+ok 10 - aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+  ---
+  duration_ms: 1.12806
+  type: 'test'
+  ...
+# Subtest: the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+ok 11 - the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+  ---
+  duration_ms: 22.517166
+  type: 'test'
+  ...
+# Subtest: all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+ok 12 - all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+  ---
+  duration_ms: 327.582438
+  type: 'test'
+  ...
+# Subtest: real primary activations and cooldown ticks drive attack, recovery and ready states
+ok 13 - real primary activations and cooldown ticks drive attack, recovery and ready states
+  ---
+  duration_ms: 3.538019
+  type: 'test'
+  ...
+# Subtest: every primary delivery has different geometry even with one colour, and pause rendering is pure
+ok 14 - every primary delivery has different geometry even with one colour, and pause rendering is pure
+  ---
+  duration_ms: 3.510057
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7686.384293

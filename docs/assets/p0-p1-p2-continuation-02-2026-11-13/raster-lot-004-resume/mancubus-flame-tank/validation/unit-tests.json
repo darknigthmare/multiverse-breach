@@ -1,0 +1,21 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=1024",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/impClassicAssets.test.mjs",
+    "scripts/mancubusClassicAssets.test.mjs",
+    "scripts/pinkyClassicAssets.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 6.798,
+  "tests": 12,
+  "passed": 12,
+  "scope": "Eight new Imp/Mancubus focused checks plus four unchanged Pinky neighbor checks; no full prebuild or complete source animation certification."
+}

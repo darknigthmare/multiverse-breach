@@ -1,0 +1,82 @@
+TAP version 13
+# (node:176674) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the actually inspected civilian atlas stays intact but is unavailable for the exact 2008 Batsuit
+not ok 1 - the actually inspected civilian atlas stays intact but is unavailable for the exact 2008 Batsuit
+  ---
+  duration_ms: 6.068756
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/batmanReviewedQuarantine20261113.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    '' !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/batmanReviewedQuarantine20261113.test.mjs:22:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: combat aliases keep the gate, while another edition, universe or actor is not inferred from a name
+ok 2 - combat aliases keep the gate, while another edition, universe or actor is not inferred from a name
+  ---
+  duration_ms: 0.68119
+  type: 'test'
+  ...
+# Subtest: real body and HUD renderers draw an explicit pending silhouette without loading an unrelated bitmap
+ok 3 - real body and HUD renderers draw an explicit pending silhouette without loading an unrelated bitmap
+  ---
+  duration_ms: 1.918802
+  type: 'test'
+  ...
+# (node:176717) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: each spawn, pickup and stacked recovery marker has a physically reachable authored support
+ok 4 - each spawn, pickup and stacked recovery marker has a physically reachable authored support
+  ---
+  duration_ms: 51.860224
+  type: 'test'
+  ...
+# Subtest: the same XY has two independently accessible levels and cannot teleport through a solid catwalk
+ok 5 - the same XY has two independently accessible levels and cannot teleport through a solid catwalk
+  ---
+  duration_ms: 7.550867
+  type: 'test'
+  ...
+# Subtest: the live Custom selector resolves the Portal sector while other engines and forced base keep their contracts
+ok 6 - the live Custom selector resolves the Portal sector while other engines and forced base keep their contracts
+  ---
+  duration_ms: 1.828545
+  type: 'test'
+  ...
+# Subtest: real engine movement charges AP, pauses in flight and finishes on the selected supported level
+ok 7 - real engine movement charges AP, pauses in flight and finishes on the selected supported level
+  ---
+  duration_ms: 19.342345
+  type: 'test'
+  ...
+# Subtest: real engine recovers the two same-XY markers exactly once and completes the objective
+ok 8 - real engine recovers the two same-XY markers exactly once and completes the objective
+  ---
+  duration_ms: 2.237924
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 7
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5854.861007

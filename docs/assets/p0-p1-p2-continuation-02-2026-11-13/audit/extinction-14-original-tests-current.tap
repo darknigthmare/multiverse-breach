@@ -1,0 +1,241 @@
+TAP version 13
+# Subtest: every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+ok 1 - every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+  ---
+  duration_ms: 795.137688
+  type: 'test'
+  ...
+# Subtest: ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+ok 2 - ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+  ---
+  duration_ms: 1.366348
+  type: 'test'
+  ...
+# Subtest: returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+ok 3 - returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+  ---
+  duration_ms: 0.815238
+  type: 'test'
+  ...
+# Subtest: workbook export is deterministic and covers all four modes with provenance and honest production states
+not ok 4 - workbook export is deterministic and covers all four modes with provenance and honest production states
+  ---
+  duration_ms: 131.528802
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:214:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        actions: 7244,
+        authoredKits: 12,
+        boundPersonalViews: 3,
+        characters: 1912,
+        combatants: 1811,
+    +   genericSourceReview: 1576,
+    -   genericSourceReview: 1633,
+        peaceful: 101,
+        sourceAdaptedKits: 1799
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    characters: 1912
+    combatants: 1811
+    peaceful: 101
+    authoredKits: 12
+    sourceAdaptedKits: 1799
+    genericSourceReview: 1633
+    boundPersonalViews: 3
+    actions: 7244
+  actual:
+    characters: 1912
+    combatants: 1811
+    peaceful: 101
+    authoredKits: 12
+    sourceAdaptedKits: 1799
+    genericSourceReview: 1576
+    boundPersonalViews: 3
+    actions: 7244
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:217:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+ok 5 - actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+  ---
+  duration_ms: 4.287919
+  type: 'test'
+  ...
+# Subtest: pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+ok 6 - pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+  ---
+  duration_ms: 0.489007
+  type: 'test'
+  ...
+# Subtest: aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+not ok 7 - aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+  ---
+  duration_ms: 281.017958
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:787:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'beam',
+    +   'buff',
+        'cone',
+        'control',
+        'dash',
+        'focus',
+    +   'guard',
+        'hitscan',
+        'melee',
+        'projectile',
+        'scatter'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'beam'
+    1: 'cone'
+    2: 'control'
+    3: 'dash'
+    4: 'focus'
+    5: 'hitscan'
+    6: 'melee'
+    7: 'projectile'
+    8: 'scatter'
+  actual:
+    0: 'beam'
+    1: 'buff'
+    2: 'cone'
+    3: 'control'
+    4: 'dash'
+    5: 'focus'
+    6: 'guard'
+    7: 'hitscan'
+    8: 'melee'
+    9: 'projectile'
+    10: 'scatter'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:807:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+ok 8 - contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+  ---
+  duration_ms: 1.344175
+  type: 'test'
+  ...
+# Subtest: marking and shield feedback follow real damage rules, while non-damaging control remains valid
+ok 9 - marking and shield feedback follow real damage rules, while non-damaging control remains valid
+  ---
+  duration_ms: 1.428031
+  type: 'test'
+  ...
+# Subtest: aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+ok 10 - aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+  ---
+  duration_ms: 2.291732
+  type: 'test'
+  ...
+# Subtest: the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+ok 11 - the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+  ---
+  duration_ms: 4.108018
+  type: 'test'
+  ...
+# Subtest: all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+not ok 12 - all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+  ---
+  duration_ms: 95.532142
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:59:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   ballistic: 552,
+    +   beam: 7,
+    -   ballistic: 577,
+    -   beam: 8,
+        cone: 2,
+    +   contact: 813,
+    -   contact: 817,
+        control: 19,
+        focus: 43,
+        movement: 3,
+    +   projectile: 350,
+    -   projectile: 337,
+        scatter: 5,
+    +   support: 17
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    contact: 817
+    projectile: 337
+    ballistic: 577
+    cone: 2
+    beam: 8
+    scatter: 5
+    control: 19
+    focus: 43
+    movement: 3
+  actual:
+    contact: 813
+    projectile: 350
+    ballistic: 552
+    cone: 2
+    support: 17
+    beam: 7
+    scatter: 5
+    control: 19
+    focus: 43
+    movement: 3
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:72:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: real primary activations and cooldown ticks drive attack, recovery and ready states
+ok 13 - real primary activations and cooldown ticks drive attack, recovery and ready states
+  ---
+  duration_ms: 3.561789
+  type: 'test'
+  ...
+# Subtest: every primary delivery has different geometry even with one colour, and pause rendering is pure
+ok 14 - every primary delivery has different geometry even with one colour, and pause rendering is pure
+  ---
+  duration_ms: 3.541838
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 11
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5518.504328

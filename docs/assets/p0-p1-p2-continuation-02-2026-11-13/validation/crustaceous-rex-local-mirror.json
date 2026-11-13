@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "/tmp/materialize-one-crustaceous-rex.mjs"
+  ],
+  "scope": "One temporary physical public QA mirror of existing immutable Git bytes for a historical test after DLC migration; no generation, canonical edit, symlink, global hydration or network fetch.",
+  "sourceRevision": "5667556bfb3d00e2cf9959c3d22c3038712cd5a2",
+  "sourcePath": "DLC/GodzillaTheAnimatedSeries/assets/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png",
+  "publicMirror": "public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png",
+  "before": {
+    "status": "absent",
+    "code": "ENOENT",
+    "path": "public/sprites/generated/bosses/godzilla-the-animated-series/crustaceous-rex.png"
+  },
+  "provenance": {
+    "path": "docs/assets/CRUSTACEOUS_REX_STATIC_2026-10-29.json",
+    "sha256": "0cc7b1859e21d9a8e7639753c2493f870fb17de3881ef3f6cbf05378da3b6a99",
+    "expectedImageSha256": "5d758f8884a14065eb835e300dda13085baf68a296458d4326d0486917a9d2bc",
+    "expectedBytes": 1084360
+  },
+  "source": {
+    "sourceKind": "git-blob",
+    "gitBlobOid": "992630fa5f4ebb4db41aa89d2f9abb7aa2def7bc",
+    "gitBlobAuditVerified": true,
+    "payloadLengthVerified": true,
+    "payloadSha256Verified": true,
+    "verified": {
+      "verified": true,
+      "bytes": 1084360,
+      "sha256": "5d758f8884a14065eb835e300dda13085baf68a296458d4326d0486917a9d2bc"
+    }
+  },
+  "decoded": {
+    "format": "png",
+    "width": 1254,
+    "height": 1254,
+    "channels": 4,
+    "hasAlpha": true,
+    "fullStatsDecodePassed": true
+  },
+  "after": {
+    "status": "materialized-task-owned-regular-file",
+    "bytes": 1084360,
+    "sha256": "5d758f8884a14065eb835e300dda13085baf68a296458d4326d0486917a9d2bc",
+    "dev": "27",
+    "ino": "1719359",
+    "nlink": 1
+  },
+  "createdDirectories": [
+    {
+      "path": "public/sprites/generated/bosses/godzilla-the-animated-series",
+      "dev": "27",
+      "ino": "1719358"
+    }
+  ],
+  "allowLfsFetch": false,
+  "networkFetch": false,
+  "tempPayloadCleanup": {
+    "cleaned": 1,
+    "ownedBytes": 123
+  },
+  "mirrorRetainedUntilParentFullCharacterPngSuiteCompletes": true,
+  "cleanupScope": "Only this exact task-owned public copy may be removed after parent confirmation, using dev/ino/size/SHA ownership checks. Canonical Git/LFS/private files remain untouched."
+}

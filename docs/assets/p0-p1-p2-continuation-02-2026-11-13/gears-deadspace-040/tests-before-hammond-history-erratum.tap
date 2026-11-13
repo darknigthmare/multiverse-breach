@@ -1,0 +1,474 @@
+TAP version 13
+# (node:187686) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# node:internal/modules/run_main:123
+#     triggerUncaughtException(
+#     ^
+# AssertionError [ERR_ASSERTION]: zach_hammond: authoring outside the W17 cohort changed
+# + actual - expected
+# ... Skipped lines
+#   {
+#     canonicalVerified: false,
+#     defense: {
+#       animationDuration: 0.55,
+#       dmg: 0,
+# ...
+#     sourceHeroId: 'zach_hammond',
+# +   sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace SWS Motorized Pulse Rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+# -   sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace 211-V plasma pulse rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+#     sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond',
+#     sourceWork: 'Dead Space (2008), security chief Zach Hammond',
+#     special: {
+#       animationDuration: 1.1,
+#       dmg: 4.4,
+#     at projectAbilitiesBeforeWave17 (file:///workspace/multiverse-breach/scripts/combatFidelityHistoricalCohortWave17.mjs:48:14)
+#     at file:///workspace/multiverse-breach/scripts/combatFidelityHistoricalCohortWave16.mjs:50:88
+#     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+#     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+#     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+#   generatedMessage: false,
+#   code: 'ERR_ASSERTION',
+#   actual: {
+#     universe: 'Dead Space',
+#     sourceWork: 'Dead Space (2008), security chief Zach Hammond',
+#     sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace SWS Motorized Pulse Rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+#     sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond',
+#     identityBasis: 'canonical-role',
+#     canonicalVerified: false,
+#     networkVerified: false,
+#     gameplayAdaptation: true,
+#     simple: {
+#       name: 'Tir du Pulse Rifle de Hammond',
+#       type: 'projectile',
+#       dmg: 1,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 480,
+#         targetSide: 'enemy'
+#       }
+#     },
+#     secondary: {
+#       name: 'Rafale du chef de sécurité',
+#       type: 'projectile',
+#       dmg: 1.65,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 480,
+#         targetSide: 'enemy'
+#       },
+#       cd: 6
+#     },
+#     defense: {
+#       name: 'Appui du RIG de Hammond',
+#       type: 'guard',
+#       dmg: 0,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'guard',
+#         delivery: 'support',
+#         shape: 'single',
+#         range: 1,
+#         targetSide: 'self',
+#         duration: 1.2,
+#         reduce: 0.5
+#       },
+#       reduce: 0.5,
+#       dur: 1.2
+#     },
+#     sourceHeroId: 'zach_hammond',
+#     source1to1Verified: false,
+#     special: {
+#       name: 'Rafale du Pulse Rifle de Hammond',
+#       type: 'projectile',
+#       dmg: 4.4,
+#       animationDuration: 1.1,
+#       hitAt: 0.451,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 640,
+#         targetSide: 'enemy'
+#       },
+#       meterCost: 100
+#     },
+#     priorSourceReference: 'Hammond assure la sécurité et l’appui armé de l’équipe ; la garde utilise une position de terrain.',
+#     versionRevision: 'wave15-explicit-source-version',
+#     priorSourceWork: 'Dead Space'
+#   },
+#   expected: {
+#     universe: 'Dead Space',
+#     sourceWork: 'Dead Space (2008), security chief Zach Hammond',
+#     sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace 211-V plasma pulse rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+#     sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond',
+#     identityBasis: 'canonical-role',
+#     canonicalVerified: false,
+#     networkVerified: false,
+#     gameplayAdaptation: true,
+#     simple: {
+#       name: 'Tir du Pulse Rifle de Hammond',
+#       type: 'projectile',
+#       dmg: 1,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 480,
+#         targetSide: 'enemy'
+#       }
+#     },
+#     secondary: {
+#       name: 'Rafale du chef de sécurité',
+#       type: 'projectile',
+#       dmg: 1.65,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 480,
+#         targetSide: 'enemy'
+#       },
+#       cd: 6
+#     },
+#     defense: {
+#       name: 'Appui du RIG de Hammond',
+#       type: 'guard',
+#       dmg: 0,
+#       animationDuration: 0.55,
+#       hitAt: 0.2,
+#       targeting: {
+#         effect: 'guard',
+#         delivery: 'support',
+#         shape: 'single',
+#         range: 1,
+#         targetSide: 'self',
+#         duration: 1.2,
+#         reduce: 0.5
+#       },
+#       reduce: 0.5,
+#       dur: 1.2
+#     },
+#     sourceHeroId: 'zach_hammond',
+#     source1to1Verified: false,
+#     special: {
+#       name: 'Rafale du Pulse Rifle de Hammond',
+#       type: 'projectile',
+#       dmg: 4.4,
+#       animationDuration: 1.1,
+#       hitAt: 0.451,
+#       targeting: {
+#         effect: 'damage',
+#         delivery: 'projectile',
+#         shape: 'single',
+#         range: 640,
+#         targetSide: 'enemy'
+#       },
+#       meterCost: 100
+#     },
+#     priorSourceReference: 'Hammond assure la sécurité et l’appui armé de l’équipe ; la garde utilise une position de terrain.',
+#     versionRevision: 'wave15-explicit-source-version',
+#     priorSourceWork: 'Dead Space'
+#   },
+#   operator: 'deepStrictEqual',
+#   diff: 'simple'
+# }
+# Node.js v22.23.5
+# Subtest: scripts/combatFidelityWave14.test.mjs
+not ok 1 - scripts/combatFidelityWave14.test.mjs
+  ---
+  duration_ms: 4974.367613
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/combatFidelityWave14.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# (node:187698) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: W15 composes three disjoint groups of40 and exactly42 new /78 source-version revisions
+not ok 2 - W15 composes three disjoint groups of40 and exactly42 new /78 source-version revisions
+  ---
+  duration_ms: 18.334396
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/combatFidelityWave15.test.mjs:72:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    zach_hammond: authoring outside the W17 cohort changed
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        canonicalVerified: false,
+        defense: {
+          animationDuration: 0.55,
+          dmg: 0,
+    ...
+        sourceHeroId: 'zach_hammond',
+    +   sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace SWS Motorized Pulse Rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+    -   sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace 211-V plasma pulse rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.',
+        sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond',
+        sourceWork: 'Dead Space (2008), security chief Zach Hammond',
+        special: {
+          animationDuration: 1.1,
+          dmg: 4.4,
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    universe: 'Dead Space'
+    sourceWork: 'Dead Space (2008), security chief Zach Hammond'
+    sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace 211-V plasma pulse rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.'
+    sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond'
+    identityBasis: 'canonical-role'
+    canonicalVerified: false
+    networkVerified: false
+    gameplayAdaptation: true
+    simple:
+      name: 'Tir du Pulse Rifle de Hammond'
+      type: 'projectile'
+      dmg: 1
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 480
+        targetSide: 'enemy'
+    secondary:
+      name: 'Rafale du chef de sécurité'
+      type: 'projectile'
+      dmg: 1.65
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 480
+        targetSide: 'enemy'
+      cd: 6
+    defense:
+      name: 'Appui du RIG de Hammond'
+      type: 'guard'
+      dmg: 0
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'guard'
+        delivery: 'support'
+        shape: 'single'
+        range: 1
+        targetSide: 'self'
+        duration: 1.2
+        reduce: 0.5
+      reduce: 0.5
+      dur: 1.2
+    sourceHeroId: 'zach_hammond'
+    source1to1Verified: false
+    special:
+      name: 'Rafale du Pulse Rifle de Hammond'
+      type: 'projectile'
+      dmg: 4.4
+      animationDuration: 1.1
+      hitAt: 0.451
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 640
+        targetSide: 'enemy'
+      meterCost: 100
+    priorSourceReference: 'Hammond assure la sécurité et l’appui armé de l’équipe ; la garde utilise une position de terrain.'
+    versionRevision: 'wave15-explicit-source-version'
+    priorSourceWork: 'Dead Space'
+  actual:
+    universe: 'Dead Space'
+    sourceWork: 'Dead Space (2008), security chief Zach Hammond'
+    sourceReference: 'Dead Space (2008), security chief Zach Hammond. Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour. Brace SWS Motorized Pulse Rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam. Explicit bounded gameplay adaptation; selected equipment applies to all four slots, source frames unverified.'
+    sourceUrl: 'https://deadspace.fandom.com/wiki/Zach_Hammond'
+    identityBasis: 'canonical-role'
+    canonicalVerified: false
+    networkVerified: false
+    gameplayAdaptation: true
+    simple:
+      name: 'Tir du Pulse Rifle de Hammond'
+      type: 'projectile'
+      dmg: 1
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 480
+        targetSide: 'enemy'
+    secondary:
+      name: 'Rafale du chef de sécurité'
+      type: 'projectile'
+      dmg: 1.65
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 480
+        targetSide: 'enemy'
+      cd: 6
+    defense:
+      name: 'Appui du RIG de Hammond'
+      type: 'guard'
+      dmg: 0
+      animationDuration: 0.55
+      hitAt: 0.2
+      targeting:
+        effect: 'guard'
+        delivery: 'support'
+        shape: 'single'
+        range: 1
+        targetSide: 'self'
+        duration: 1.2
+        reduce: 0.5
+      reduce: 0.5
+      dur: 1.2
+    sourceHeroId: 'zach_hammond'
+    source1to1Verified: false
+    special:
+      name: 'Rafale du Pulse Rifle de Hammond'
+      type: 'projectile'
+      dmg: 4.4
+      animationDuration: 1.1
+      hitAt: 0.451
+      targeting:
+        effect: 'damage'
+        delivery: 'projectile'
+        shape: 'single'
+        range: 640
+        targetSide: 'enemy'
+      meterCost: 100
+    priorSourceReference: 'Hammond assure la sécurité et l’appui armé de l’équipe ; la garde utilise une position de terrain.'
+    versionRevision: 'wave15-explicit-source-version'
+    priorSourceWork: 'Dead Space'
+  operator: 'deepStrictEqual'
+  stack: |-
+    projectAbilitiesBeforeWave17 (file:///workspace/multiverse-breach/scripts/combatFidelityHistoricalCohortWave17.mjs:48:14)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave15.test.mjs:79:28)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: W15 current provenance replaces obsolete mechanics while preserving its historical reference and unrelated records
+ok 3 - W15 current provenance replaces obsolete mechanics while preserving its historical reference and unrelated records
+  ---
+  duration_ms: 3.942871
+  type: 'test'
+  ...
+# Subtest: W15 resolves480 explicitly named slots with source equipment, zero-damage supports and exact super delivery
+ok 4 - W15 resolves480 explicitly named slots with source equipment, zero-damage supports and exact super delivery
+  ---
+  duration_ms: 35.543263
+  type: 'test'
+  ...
+# Subtest: W15 same-universe non-self relays use the selected partner action without transferring powers across universes
+ok 5 - W15 same-universe non-self relays use the selected partner action without transferring powers across universes
+  ---
+  duration_ms: 19.456098
+  type: 'test'
+  ...
+# Subtest: W15 source-specific safety and role constraints remain real mechanics
+ok 6 - W15 source-specific safety and role constraints remain real mechanics
+  ---
+  duration_ms: 0.781891
+  type: 'test'
+  ...
+# Subtest: W15 native helpers reject changed identities, source universes, effects and delivery without inventing native availability
+ok 7 - W15 native helpers reject changed identities, source universes, effects and delivery without inventing native availability
+  ---
+  duration_ms: 7.76501
+  type: 'test'
+  ...
+# Subtest: W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings
+ok 8 - W15 final native coverage has120 presentation32 and120 exact-universe base16 bindings
+  ---
+  duration_ms: 430.304552
+  type: 'test'
+  ...
+# (node:187713) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: exact forty actors keep IDs/stats/raster bindings and hold unresolved Infector Pod source work open
+ok 9 - exact forty actors keep IDs/stats/raster bindings and hold unresolved Infector Pod source work open
+  ---
+  duration_ms: 9.938587
+  type: 'test'
+  ...
+# Subtest: all 160 slot lookups and their prepared counterparts preserve semantic profiles and source kit identity
+ok 10 - all 160 slot lookups and their prepared counterparts preserve semantic profiles and source kit identity
+  ---
+  duration_ms: 12.654638
+  type: 'test'
+  ...
+# Subtest: fourteen exact catalog projections retain historical action objects and reject altered sources/actions
+ok 11 - fourteen exact catalog projections retain historical action objects and reject altered sources/actions
+  ---
+  duration_ms: 54.025952
+  type: 'test'
+  ...
+# Subtest: Hammond source erratum corrects only weapon/pose and refuses unknown fields, editions and tampered historical labels
+ok 12 - Hammond source erratum corrects only weapon/pose and refuses unknown fields, editions and tampered historical labels
+  ---
+  duration_ms: 1.279698
+  type: 'test'
+  ...
+# Subtest: private contracts fail closed for unknown identities and keep neighboring actors unchanged
+ok 13 - private contracts fail closed for unknown identities and keep neighboring actors unchanged
+  ---
+  duration_ms: 0.308264
+  type: 'test'
+  ...
+# Subtest: real RPG executions retain all sixty authored slot outcomes before and after projection
+ok 14 - real RPG executions retain all sixty authored slot outcomes before and after projection
+  ---
+  duration_ms: 592.690585
+  type: 'test'
+  ...
+# Subtest: real melee supers retain damage/support, resource use and cleanup for all fifteen heroes
+ok 15 - real melee supers retain damage/support, resource use and cleanup for all fifteen heroes
+  ---
+  duration_ms: 372.320799
+  type: 'test'
+  ...
+# Subtest: General RAAM keeps the original Lightmass train incarnation and native Kryll damage gate
+ok 16 - General RAAM keeps the original Lightmass train incarnation and native Kryll damage gate
+  ---
+  duration_ms: 1.463506
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 14
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15140.244416

@@ -1,0 +1,1760 @@
+{
+  "scope": "Individual declarations and already effective raw-action projection only. No art, image, generation or approval changes.",
+  "actors": [
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "kind": "hero",
+      "name": "Marcus Fenix",
+      "incarnation": "Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+      "visualAnchor": "Adult Marcus with a dark bandana, short dark hair, scarred square face, heavy grey-blue COG armor and cyan armor lights. His Lancer Mk2 has a firearm barrel and an attached chainsaw bayonet; no old-man beard, Gears 4 farm clothes or E-Day model.",
+      "equipment": [
+        "Lancer Mk2 assault rifle with chainsaw bayonet",
+        "COG combat armor",
+        "Hammer of Dawn targeting designator"
+      ],
+      "weaponType": "chainsaw",
+      "sourceScene": {
+        "description": "Gears of War 2 campaign, Delta Squad; the Hammer of Dawn is an external satellite weapon guided by a designator, never a beam emitted by the rifle.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Lancer Fire",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "marcus"
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Chainsaw Lunge",
+        "type": "melee",
+        "dmg": 2.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "melee",
+          "shape": "single",
+          "range": 170,
+          "targetSide": "enemy"
+        },
+        "slot": "secondary",
+        "sourceHeroId": "marcus"
+      },
+      "defense": {
+        "name": "Roadie Cover",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 2.5,
+          "reduce": 0.8
+        },
+        "reduce": 0.8,
+        "dur": 2.5,
+        "slot": "defense",
+        "sourceHeroId": "marcus"
+      },
+      "special": {
+        "name": "Hammer of Dawn",
+        "type": "beam_aoe",
+        "dmg": 5,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "beam",
+          "shape": "area",
+          "range": 640,
+          "targetSide": "enemy",
+          "areaRadius": 135,
+          "maxTargets": 8
+        },
+        "color": "#ff6a39",
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "marcus"
+      },
+      "sourceWeaponFamily": "Mk2 Lancer firearm and attached chainsaw bayonet; existing hybrid engine family retained"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "kind": "hero",
+      "name": "Dom Santiago",
+      "incarnation": "Gears of War 2 (2008), Dominic Santiago in Delta Squad armor",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+      "visualAnchor": "Adult Dom with short dark hair, dark facial stubble, exposed muscular arms, grey-blue COG plates and blue lights. Carry Lancer Mk2/Gnasher as physical weapons; no Gears 3 grief-era long beard or supernatural Maria manifestation.",
+      "equipment": [
+        "Lancer Mk2",
+        "Gnasher shotgun",
+        "COG combat armor"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 2 Delta Squad campaign; Maria is a person and story motivation, not an attacking entity.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Lancer Cover Fire",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "dom"
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Gnasher Breach Shot",
+        "type": "projectile",
+        "dmg": 1.8,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "cone",
+          "range": 330,
+          "targetSide": "enemy",
+          "coneAngle": 40,
+          "maxTargets": 3
+        },
+        "slot": "secondary",
+        "sourceHeroId": "dom"
+      },
+      "defense": {
+        "name": "Couvert rapproché de Dom",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 2,
+          "reduce": 0.8
+        },
+        "reduce": 0.8,
+        "dur": 2,
+        "slot": "defense",
+        "sourceHeroId": "dom"
+      },
+      "special": {
+        "name": "Salve de Gnasher de Dom",
+        "type": "projectile",
+        "dmg": 4.6,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "cone",
+          "range": 330,
+          "targetSide": "enemy",
+          "coneAngle": 40,
+          "maxTargets": 3
+        },
+        "color": "#e2ad5c",
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "dom"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "kind": "hero",
+      "name": "Augustus Cole",
+      "incarnation": "Gears of War 2 (2008), Augustus Cole in original Delta Squad armor",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+      "visualAnchor": "Adult Black, muscular Augustus Cole with close-cropped hair, broad exposed arms, grey-blue COG armor and blue lights. Physical Lancer and Gnasher remain separate from his former Thrashball role; no Thrashball uniform or dialogue turned into projectiles.",
+      "equipment": [
+        "Lancer Mk2",
+        "Gnasher shotgun",
+        "COG combat armor"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 2 Delta Squad combat model; Cole Train dialogue does not create a new weapon or energy power.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir de Lancer de Cole",
+        "type": "projectile",
+        "dmg": 1.1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "cole"
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Tir rapproché de Gnasher de Cole",
+        "type": "projectile",
+        "dmg": 1.9,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "cone",
+          "range": 330,
+          "targetSide": "enemy",
+          "coneAngle": 40,
+          "maxTargets": 3
+        },
+        "slot": "secondary",
+        "sourceHeroId": "cole"
+      },
+      "defense": {
+        "name": "Garde personnelle de Cole",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 2,
+          "reduce": 0.65
+        },
+        "reduce": 0.65,
+        "dur": 2,
+        "slot": "defense",
+        "sourceHeroId": "cole"
+      },
+      "special": {
+        "name": "Assaut au Lancer de Cole",
+        "type": "projectile",
+        "dmg": 4.8,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "line",
+          "range": 640,
+          "targetSide": "enemy",
+          "lineWidth": 48,
+          "maxTargets": 3
+        },
+        "color": "#e7b65c",
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "cole"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "kind": "hero",
+      "name": "Damon Baird",
+      "incarnation": "Gears of War 2 (2008), young Damon Baird in COG field armor",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+      "visualAnchor": "Young adult Baird with short blond hair, goggles resting on his forehead, grey-blue COG armor and cyan lamps. He carries a physical Lancer and ordinary maintenance tools; no old-man beard, Fabricator, autonomous turret or later-era robot.",
+      "equipment": [
+        "Lancer Mk2",
+        "COG field maintenance tools",
+        "COG combat armor"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 2 campaign field mechanic; maintenance/guard remains an explicitly bounded support adaptation, not biological healing or a conjured robot.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Lancer de Baird",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "baird"
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Vérification de l’équipement COG",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2.5,
+          "reduce": 0.3
+        },
+        "slot": "secondary",
+        "sourceHeroId": "baird"
+      },
+      "defense": {
+        "name": "Couvert du mécanicien COG",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "baird"
+      },
+      "special": {
+        "name": "Maintenance du matériel COG",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 5,
+          "reduce": 0.45
+        },
+        "color": "#86b8cf",
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "baird"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "kind": "hero",
+      "name": "Anya Stroud",
+      "incarnation": "Gears of War 3 (2011), Anya Stroud in frontline COG armor",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+      "visualAnchor": "Adult blonde Anya in practical grey-blue COG combat armor with cyan lamps, dark underlayers and a physical Lancer Mk2. This is her frontline Gears 3 model, not the Gears 1 radio-room uniform or a later memorial image.",
+      "equipment": [
+        "Lancer Mk2",
+        "COG combat armor"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 3, Anya as a frontline squad member; retain actual rifle recoil and no invented command-fire magic.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Lancer Mk2 d’Anya",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "anya_stroud"
+      },
+      "secondary": {
+        "name": "Visée du Lancer d’Anya",
+        "type": "projectile",
+        "dmg": 1.85,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "anya_stroud"
+      },
+      "defense": {
+        "name": "Mise à couvert d’Anya",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "anya_stroud"
+      },
+      "special": {
+        "name": "Rafale du Lancer d’Anya",
+        "type": "projectile",
+        "dmg": 4.65,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "anya_stroud"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "kind": "hero",
+      "name": "Colonel Hoffman",
+      "incarnation": "Gears of War 2 (2008), Colonel Victor Hoffman during the Jacinto defense",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+      "visualAnchor": "Older Colonel Victor Hoffman with weathered face, dark COG beret, heavy grey-blue officer armor and cyan armor lamps. A physical service firearm is carried; command orders do not project a holographic shield or summon soldiers.",
+      "equipment": [
+        "COG officer beret",
+        "COG officer combat armor",
+        "Physical COG service firearm"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 2 Jacinto command/defense scenes. Existing leadership buffs/guards are Nexus abstractions; no specific unseen firearm attachment is inferred.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Arme de service du colonel Hoffman",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "hoffman_cog"
+      },
+      "secondary": {
+        "cd": 6,
+        "name": "Ordre de défense du commandement COG",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        },
+        "slot": "secondary",
+        "sourceHeroId": "hoffman_cog"
+      },
+      "defense": {
+        "name": "Position couverte du colonel",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "hoffman_cog"
+      },
+      "special": {
+        "name": "Ordre de mise en défense de Hoffman",
+        "type": "guard",
+        "dmg": 0,
+        "color": "#4d5656",
+        "animationDuration": 1.1,
+        "hitAt": 0.45,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "delivery": "support",
+          "range": 760,
+          "reduce": 0.45,
+          "duration": 5
+        },
+        "slot": "special",
+        "sourceHeroId": "hoffman_cog"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "kind": "hero",
+      "name": "Carmine",
+      "incarnation": "Gears of War 3 (2011), specifically adult Clayton Carmine",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+      "visualAnchor": "Clayton Carmine has a fully closed opaque COG helmet, grey-blue heavy armor, blue lamps and conspicuously muscular bare arms. Carry a Lancer Mk2; do not substitute Anthony, Benjamin, Gary or Lizzie, their helmets, sleeves or eras.",
+      "equipment": [
+        "Lancer Mk2",
+        "Clayton Carmine COG helmet",
+        "Heavy COG armor"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears of War 3 adult Clayton model, selected already by the existing W14 source contract; the historical Carmine ID remains unchanged.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Lancer de Clayton",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "carmine_cog"
+      },
+      "secondary": {
+        "name": "Visée du Lancer Mk2 de Clayton",
+        "type": "projectile",
+        "dmg": 1.85,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "carmine_cog"
+      },
+      "defense": {
+        "name": "Garde du casque COG de Clayton",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "carmine_cog"
+      },
+      "special": {
+        "name": "Rafale du Lancer de Clayton Carmine",
+        "type": "projectile",
+        "dmg": 4.65,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "carmine_cog"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "kind": "hero",
+      "name": "Kait Diaz",
+      "incarnation": "Gears 5 (2019), adult Kait in the winter COG field outfit",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+      "visualAnchor": "Adult Kait with dark brown hair, practical grey-blue winter COG armor, a visible fur collar and a physical Lancer Mk3. Preserve the winter field silhouette rather than Gears 4 Outsider clothing, Locust anatomy or a supernatural Swarm attack.",
+      "equipment": [
+        "Lancer Mk3",
+        "Winter COG armor with fur collar"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Gears 5 winter campaign model, consistent with W14. Personal connection to the Swarm is not an offensive mind-control ability.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Lancer Mk3 de Kait",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "kait_diaz"
+      },
+      "secondary": {
+        "name": "Visée de terrain du Lancer de Kait",
+        "type": "projectile",
+        "dmg": 1.85,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "kait_diaz"
+      },
+      "defense": {
+        "name": "Mise à couvert de Kait",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "kait_diaz"
+      },
+      "special": {
+        "name": "Rafale du Lancer de Kait",
+        "type": "projectile",
+        "dmg": 4.65,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "kait_diaz"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "kind": "enemy",
+      "name": "Locust Drone",
+      "incarnation": "Gears of War (2006), ordinary Locust Drone infantry",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Pale grey humanoid Locust Drone with a broad heavy head, thick neck, muscular stocky body, dark Locust harness/armor and a carried Hammerburst. No elite Theron cape, Swarm red tissue or Skaarj wrist blades.",
+      "equipment": [
+        "Hammerburst assault rifle",
+        "Locust infantry armor"
+      ],
+      "weapon": "gun",
+      "sourceScene": {
+        "description": "Original 2006 Locust infantry campaign model; ordinary Drone rather than Grenadier, Theron or Swarm Drone.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "kind": "enemy",
+      "name": "Locust Wretch",
+      "incarnation": "Gears of War (2006), non-Lambent Wretch",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Small hunched pale-grey Locust Wretch with long forelimbs, digitigrade hind limbs, clawed hands and a toothy head. It runs and climbs close to the ground; no gun, armor plates, Lambent yellow glow or explosive sac.",
+      "equipment": [
+        "Natural claws"
+      ],
+      "weapon": "claws",
+      "sourceScene": {
+        "description": "Original non-Lambent Wretch; distinct from the explosive Lambent Wretches in the Imulsion facility.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "kind": "enemy",
+      "name": "Explosive Ticker",
+      "incarnation": "Gears of War 2 (2008), Locust explosive Ticker",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+      "visualAnchor": "Low-slung squat Ticker with small eyes, tusk-like jaws, short scuttling legs and a visible explosive charge strapped to its back. Preserve the separate bomb harness; no wild unarmed Ticker or human suicide bomber anatomy.",
+      "equipment": [
+        "Locust explosive backpack harness"
+      ],
+      "weapon": "suicide",
+      "sourceScene": {
+        "description": "Gears of War 2 explosive Ticker, distinct from the wild Ticker later used to consume fortifications.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "kind": "enemy",
+      "name": "Theron Guard",
+      "incarnation": "Gears of War (2006), standard Theron Guard",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Tall Locust Theron Guard in ornate red-brown armor, distinctive crested helmet and draped coat/cape, carrying a physical Torque Bow. No unarmored Drone, later armored Kantus or RAAM-sized silhouette.",
+      "equipment": [
+        "Torque Bow",
+        "Theron Guard helmet and armor"
+      ],
+      "weapon": "torque_bow",
+      "sourceScene": {
+        "description": "Original Gears of War Torque Bow guard; standard Guard rather than a Theron Sentinel or cross-game elite.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "kind": "enemy",
+      "name": "Boomer Locust",
+      "incarnation": "Gears of War (2006), Boomshot-equipped Boomer",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Very large heavyset pale Locust with a small head, thick exposed arms, heavy dark shoulder armor and a two-handed Boomshot grenade launcher. No Grinder minigun, Mauler shield or Berserker anatomy.",
+      "equipment": [
+        "Boomshot grenade launcher",
+        "Boomer armor"
+      ],
+      "weapon": "boomshot",
+      "sourceScene": {
+        "description": "Original Boomshot Boomer, not another Boomer caste or a generic rocket soldier.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "kind": "enemy",
+      "name": "Kantus Priest",
+      "incarnation": "Gears of War 2 (2008), standard Kantus priest",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+      "visualAnchor": "Tall lean Kantus with long limbs, elongated head, dark reddish ceremonial armor/robes and a physical Gorgon pistol. Keep the narrow priest silhouette distinct from the bulky armored Kantus of Gears 3; no conjured staff or wings.",
+      "equipment": [
+        "Gorgon pistol",
+        "Kantus ceremonial armor"
+      ],
+      "weapon": "gorgon_pistol",
+      "sourceScene": {
+        "description": "Gears of War 2 standard Kantus. Source revival/coordination does not mean our generic enemy AI implements that full mechanic.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "kind": "enemy",
+      "name": "Corpser Hatchling",
+      "incarnation": "Gears of War 3 (2011), juvenile Corpser hatchling",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_3",
+      "visualAnchor": "Small juvenile Corpser with a compact arachnid-like body, recessed head and long jointed digging limbs spreading around it. Keep the juvenile scale and bare creature anatomy; no adult armored head, Brumak guns or dorsal rocket rack.",
+      "equipment": [
+        "Natural digging limbs"
+      ],
+      "weapon": "burrow_claws",
+      "sourceScene": {
+        "description": "Gears of War 3 juvenile Corpsers in the underground nest; not the adult mother or an ordinary armored adult.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_3",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:General RAAM\"]",
+      "kind": "boss",
+      "name": "General RAAM",
+      "incarnation": "Gears of War (2006) - Lightmass Bomb train",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Huge pale Locust general, dark heavy armor, Troika heavy machine gun and protective Kryll swarm on the moving Lightmass Bomb train. No Skorge chainsaw staff or Brumak vehicle.",
+      "equipment": [
+        "Troika heavy machine gun",
+        "Kryll swarm"
+      ],
+      "canonicalName": "General RAAM",
+      "sourceScene": {
+        "description": "Gears of War 2006 Lightmass Bomb train encounter; preserve the existing exact incarnation, Troika, Kryll protection and Lightmass scene binding.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "kind": "boss",
+      "name": "High Priest Skorge",
+      "incarnation": "Gears of War 2 (2008), Skorge at Nexus",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Skorge",
+      "visualAnchor": "Skorge is a tall narrow Kantus leader with pale grey skin, an elongated head, dark reddish ceremonial armor and a double-ended chainsaw staff. No RAAM Troika, generic wizard staff or Reaver body fused into the character.",
+      "equipment": [
+        "Double-ended chainsaw staff",
+        "Skorge armor"
+      ],
+      "weapon": "staff",
+      "sourceScene": {
+        "description": "Gears of War 2 Nexus duel, on foot; his Hydra mount belongs to a separate encounter and must not be merged into the staff model.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Skorge",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "kind": "boss",
+      "name": "Berserker Matriarch",
+      "incarnation": "Gears 5 (2019), the Matriarch at the Mount Kadar laboratory",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_5",
+      "visualAnchor": "The Gears 5 Matriarch is a massive blind, heavily plated female Locust with powerful forelimbs and a vulnerable exposed back. Target her laboratory/ice-arena form; do not reuse an ordinary 2006 Berserker, a Lambent Berserker or invented weapons.",
+      "equipment": [
+        "Natural armored body and charging limbs"
+      ],
+      "weapon": "blind_charge",
+      "sourceScene": {
+        "description": "Gears 5 Act II Mount Kadar laboratory/ice-arena Matriarch boss; historical Berserker Matriarch name is a roster alias, not a license to merge Berserker forms.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_5",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "kind": "boss",
+      "name": "Karn Locust General",
+      "incarnation": "Gears of War: Judgment (2013), Karn mounted on Shibboleth",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Karn",
+      "visualAnchor": "Karn is a pale armored Locust general positioned on the back of the large arachnid-like Shibboleth. Preserve rider and mount as distinct bodies; do not replace the mount with a Brumak or label Karn a generic sniper.",
+      "equipment": [
+        "Shibboleth mount",
+        "Karn armor"
+      ],
+      "weapon": "mount_command",
+      "sourceScene": {
+        "description": "Judgment final Halvo Bay battle with Karn and Shibboleth. The generic actor AI does not claim complete separately controlled rider/mount mechanics.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Karn",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "kind": "boss",
+      "name": "Queen Myrrah",
+      "incarnation": "Gears of War 3 (2011), Myrrah and the Tempest encounter",
+      "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Myrrah",
+      "visualAnchor": "Adult Myrrah is a pale human-looking queen with light hair and elaborate dark-gold Locust regalia. Her physical Tempest mount is a separate enormous winged creature; do not fuse its wings or limbs into Myrrah or borrow Skorge armor.",
+      "equipment": [
+        "Locust royal armor",
+        "Tempest mount"
+      ],
+      "weapon": "tempest",
+      "sourceScene": {
+        "description": "Gears of War 3 final Azura Tempest fight; rider and creature remain distinct source entities. A lone queen sprite cannot certify a mounted boss depiction.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Myrrah",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "kind": "boss",
+      "name": "Corpser Burrower",
+      "incarnation": "Gears of War (2006), adult Corpser in the Imulsion mine",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "visualAnchor": "Enormous subterranean arachnid-shaped Corpser with a recessed body, broad multi-eyed head and very long raised hooked digging limbs. Its source creature has no gun arms or dorsal missile pack; preserve adult rather than hatchling proportions.",
+      "equipment": [
+        "Natural hooked digging limbs"
+      ],
+      "weapon": "burrow_claws",
+      "sourceScene": {
+        "description": "Original 2006 underground Imulsion-mine Corpser encounter, distinct from the Gears 3 nest mother and juveniles.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "kind": "worldBoss",
+      "name": "Gargantuan Brumak",
+      "incarnation": "Gears of War 2 (2008), armed Brumak before Lambent mutation",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+      "visualAnchor": "Huge grey reptilian Brumak with a separate Locust pilot, heavy metal harness, arm-mounted guns and a dorsal missile rack. No tentacles, glowing Imulsion growths or final Lambent Brumak form; Gargantuan is Nexus scaling, not a separate canonical species.",
+      "equipment": [
+        "Locust pilot and harness",
+        "Arm-mounted guns",
+        "Dorsal rocket rack"
+      ],
+      "weapon": "rockets",
+      "sourceScene": {
+        "description": "Gears of War 2 armed Brumak campaign model before Lambent transformation. Boss scale, phases and target geometry remain existing Nexus adaptations.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_2",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "kind": "hero",
+      "name": "Isaac Clarke",
+      "incarnation": "Dead Space (2008), Isaac Clarke and level-3 engineering RIG",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Original 2008 Isaac wears the bronze-brown level-3 engineering RIG with heavy segmented ribs, enclosed helmet, three cyan visor bars and a cyan spinal health strip. Hold the 211-V Plasma Cutter as a separate engineering tool; no remake redesign, Advanced Suit or Arctic suit.",
+      "equipment": [
+        "211-V Plasma Cutter",
+        "Level-3 engineering RIG",
+        "Stasis and Kinesis modules"
+      ],
+      "weaponType": "plasma_cutter",
+      "sourceScene": {
+        "description": "Original Dead Space 2008 USG Ishimura campaign. The selected authored actions are Plasma Cutter fire, readiness and personal guard; Stasis/Kinesis are not arbitrary gravity damage.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Plasma Cutter d’Isaac",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 580,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "isaac"
+      },
+      "secondary": {
+        "name": "Réglage du Plasma Cutter",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "isaac"
+      },
+      "defense": {
+        "name": "Garde de l’ingénieur Isaac",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "isaac"
+      },
+      "special": {
+        "name": "Tir ajusté du Plasma Cutter",
+        "type": "projectile",
+        "dmg": 4.8,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 650,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "isaac"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "kind": "hero",
+      "name": "John Carver",
+      "incarnation": "Dead Space 3 (2013), John Carver in military RIG",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_3",
+      "visualAnchor": "Adult John Carver wears his bulky dark military RIG with red illuminated eye lenses and a blue/cyan spinal health strip. A physical modular military rifle is carried in both hands; no Isaac engineering helmet, Marker body growth or weapon made of hallucinations.",
+      "equipment": [
+        "Military RIG",
+        "Physical modular military rifle"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Dead Space 3 co-op campaign Carver model. Keep his soldier equipment distinct from Isaac and the hallucination sequences; the authored burst has bounded engine timing.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_3",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du fusil militaire de Carver",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 600,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "carver"
+      },
+      "secondary": {
+        "name": "Contrôle du chargeur de Carver",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "carver"
+      },
+      "defense": {
+        "name": "Couvert du soldat Carver",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.6
+        },
+        "reduce": 0.6,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "carver"
+      },
+      "special": {
+        "name": "Rafale du fusil de Carver",
+        "type": "projectile",
+        "dmg": 4.8,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 660,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "carver"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "kind": "hero",
+      "name": "Ellie Langford",
+      "incarnation": "Dead Space 2 (2011), Ellie Langford in civilian pilot workwear",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_2",
+      "visualAnchor": "Adult Ellie has dark hair tied back, pale sleeveless work top, brown utility trousers and practical boots. Use the living civilian pilot model of the Sprawl era; no Dead Space 3 winter coat or Isaac-style engineering RIG. Scene-specific eye state must be checked against the selected shot before art approval.",
+      "equipment": [
+        "Physical rifle used for cover",
+        "Civilian pilot workwear"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Dead Space 2 Ellie pilot scenes. Her escape route is not an area-damage power; exact pre/post-injury eye state remains a scene-review requirement.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_2",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du fusil d’Ellie",
+        "type": "projectile",
+        "dmg": 1.1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 560,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "ellie"
+      },
+      "secondary": {
+        "name": "Vérification du fusil d’Ellie",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 3,
+          "buffMultiplier": 1.12
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "ellie"
+      },
+      "defense": {
+        "name": "Mise à couvert d’Ellie",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "ellie"
+      },
+      "special": {
+        "name": "Tir de couverture d’Ellie",
+        "type": "projectile",
+        "dmg": 4.6,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 620,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "ellie"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "kind": "hero",
+      "name": "Nicole Brennan",
+      "incarnation": "Dead Space (2008), living human medical officer Nicole Brennan",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Nicole is a living human medical officer in the original 2008 context, with loosely tied auburn/light-brown hair and practical grey-blue medical clothing. An ordinary datapad may support clinical instructions; no ghost glow, Marker lesions, summoned console or healing beam.",
+      "equipment": [
+        "Medical uniform",
+        "Ordinary diagnostic datapad"
+      ],
+      "weaponType": "unarmed",
+      "sourceScene": {
+        "description": "Original Dead Space 2008 Nicole medical-record context, before her death; not a Marker hallucination or Dead Space 2 spectral version. Guard and clinical support are role adaptations.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Observation clinique de Nicole",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.08
+        },
+        "slot": "simple",
+        "sourceHeroId": "nicole_brennan"
+      },
+      "secondary": {
+        "name": "Consignes de sécurité médicale",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 2,
+          "reduce": 0.25
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "nicole_brennan"
+      },
+      "defense": {
+        "name": "Refuge dans le poste médical Ishimura",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.45
+        },
+        "reduce": 0.45,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "nicole_brennan"
+      },
+      "special": {
+        "name": "Consignes médicales de Nicole",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 4,
+          "reduce": 0.4
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "nicole_brennan"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "kind": "hero",
+      "name": "Zach Hammond",
+      "incarnation": "Dead Space (2008), security chief Zach Hammond",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Original 2008 Zach Hammond is an adult Black man with close-cropped hair, dark brown security RIG and blue spinal lights. Carry the SWS Motorized Pulse Rifle; no remake model, Isaac engineering helmet or 211-V Plasma Cutter mislabeled as his rifle.",
+      "equipment": [
+        "SWS Motorized Pulse Rifle",
+        "Original 2008 security RIG"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Dead Space 2008 Kellion/Ishimura security chief, alive before the USM Valor encounter in Chapter 9; firearm action, not an escape-pod super.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Tir du Pulse Rifle de Hammond",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "zach_hammond"
+      },
+      "secondary": {
+        "name": "Rafale du chef de sécurité",
+        "type": "projectile",
+        "dmg": 1.65,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "zach_hammond"
+      },
+      "defense": {
+        "name": "Appui du RIG de Hammond",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "zach_hammond"
+      },
+      "special": {
+        "name": "Rafale du Pulse Rifle de Hammond",
+        "type": "projectile",
+        "dmg": 4.4,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "zach_hammond"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "kind": "hero",
+      "name": "Kendra Daniels",
+      "incarnation": "Dead Space (2008), original Kendra Daniels",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Original 2008 Kendra is an adult human woman with a short dark bob, practical grey-blue technical jumpsuit and a small handheld diagnostic pad. No remake face/costume, military RIG, conjured energy weapon or offensive terminal lightning.",
+      "equipment": [
+        "Handheld diagnostic pad",
+        "Original technical jumpsuit"
+      ],
+      "weaponType": "terminal",
+      "sourceScene": {
+        "description": "Original Dead Space 2008 technician scenes. The existing W15 diagnostic/relay actions are zero-damage support adaptations, not source-certified healing or magic.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Lecture de diagnostic de Kendra",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.08
+        },
+        "slot": "simple",
+        "sourceHeroId": "kendra_daniels"
+      },
+      "secondary": {
+        "name": "Repérage des circuits par Kendra",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.14
+        },
+        "cd": 6,
+        "slot": "secondary",
+        "sourceHeroId": "kendra_daniels"
+      },
+      "defense": {
+        "name": "Retrait de l’ingénieure Daniels",
+        "type": "guard",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "guard",
+          "delivery": "support",
+          "shape": "single",
+          "range": 1,
+          "targetSide": "self",
+          "duration": 1.2,
+          "reduce": 0.5
+        },
+        "reduce": 0.5,
+        "dur": 1.2,
+        "slot": "defense",
+        "sourceHeroId": "kendra_daniels"
+      },
+      "special": {
+        "name": "Relais technique de Kendra Daniels",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 4,
+          "buffMultiplier": 1.25
+        },
+        "meterCost": 100,
+        "slot": "special",
+        "sourceHeroId": "kendra_daniels"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "kind": "hero",
+      "name": "Zach Hammond",
+      "incarnation": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "This separate historical roster slot depicts the same living 2008 security chief Zach Hammond: adult Black man, close-cropped hair, brown security RIG, blue spinal lamps and physical Pulse Rifle. It is not a new character, ghost, remake model or merged save identity.",
+      "equipment": [
+        "SWS Motorized Pulse Rifle",
+        "Original 2008 security RIG"
+      ],
+      "weaponType": "gun",
+      "sourceScene": {
+        "description": "Historical hammond_ds alias retained separately from zach_hammond. Its old mechanics are preserved and require a dedicated source-action review; they are not silently upgraded to the W15 kit.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      },
+      "simple": {
+        "name": "Security Pulse Rifle",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "secondary": {
+        "name": "Bridge Order Mark",
+        "type": "signature",
+        "cd": 7,
+        "dmg": 1.8
+      },
+      "defense": {
+        "name": "USG Command Guard",
+        "type": "shield",
+        "dur": 2,
+        "reduce": 0.8
+      },
+      "special": {
+        "name": "Escape Pod Sacrifice",
+        "type": "nexus_aoe",
+        "dmg": 4.6,
+        "color": "#7f8c8d"
+      },
+      "sourceActionReview": "OPEN: historical duplicate keeps its existing action mechanics; no W15 source kit inferred from a shared character name."
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "kind": "enemy",
+      "name": "Necromorph Slasher Scythe",
+      "incarnation": "Dead Space (2008), standard human Slasher",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Original human Slasher with an emaciated humanoid torso, elongated bladed forelimbs, residual human legs and ragged civilian/workwear remnants. Scythe denotes its organic arm blades, not a carried medieval scythe or demonic armor.",
+      "equipment": [
+        "Organic forearm blades"
+      ],
+      "weapon": "claws",
+      "sourceScene": {
+        "description": "Descriptive historical alias for the original 2008 Slasher, not a new weapon-bearing species.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "kind": "enemy",
+      "name": "Necromorph Leaper Demon",
+      "incarnation": "Dead Space (2008), standard Leaper",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Leaper has a low horizontal human-derived body, powerful forearms and a long hooked/barbed tail; its lower limbs are fused into the tail form. Keep the crawling/leaping anatomy without demon horns, wings, human running legs or a carried sword.",
+      "equipment": [
+        "Natural forelimbs and barbed tail"
+      ],
+      "weapon": "tail",
+      "sourceScene": {
+        "description": "Original 2008 Leaper; Demon is a historical encounter label, not evidence of a crossover demon.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "kind": "enemy",
+      "name": "Necromorph Lurker Pod",
+      "incarnation": "Dead Space (2008), original Lurker crawler",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Small original Lurker with a compact low crawler body and three independently raised organic tentacles ending in projectile spines. Preserve the three-tentacle silhouette; no adult soldier RIG, quadruped animal model from another installment or mechanical turret.",
+      "equipment": [
+        "Three spine-projecting tentacles"
+      ],
+      "weapon": "spit",
+      "sourceScene": {
+        "description": "Original 2008 Lurker, with the historical Pod label treated as an encounter alias rather than a distinct species.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "kind": "enemy",
+      "name": "Slasher Necromorph",
+      "incarnation": "Dead Space (2008), standard Slasher",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Human-derived Slasher with a narrow upright torso, extremely long organic arm blades and torn civilian/work clothes, moving on human-derived legs. Do not substitute an armored military variant, a Divider or generic clawed demon.",
+      "equipment": [
+        "Organic arm blades"
+      ],
+      "weapon": "bone_blades",
+      "sourceScene": {
+        "description": "Original 2008 standard Slasher; a source model target, not approval of existing generated pixels.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "kind": "enemy",
+      "name": "Pregnant Necromorph",
+      "incarnation": "Dead Space (2008), Pregnant form",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Large heavy humanoid Necromorph with a swollen abdomen, thick body and long bladed forearms. The abdomen contains separate Swarmers; no explosive yellow Exploder sac, infant Lurker body or firearm.",
+      "equipment": [
+        "Organic forearm blades",
+        "Abdominal Swarmer brood"
+      ],
+      "weapon": "swarm_burst",
+      "sourceScene": {
+        "description": "Original 2008 Pregnant; release of Swarmers is a source behavior and is not claimed to be fully simulated by the generic enemy AI.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "kind": "enemy",
+      "name": "Exploder Necromorph",
+      "incarnation": "Dead Space (2008), Exploder form",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Thin asymmetrical humanoid Exploder with one ordinary clawed arm and one conspicuously large yellow explosive pustule hanging from the other side. Its sac detonates; it is not an acid-spitting organ or a carried grenade launcher.",
+      "equipment": [
+        "Explosive organic sac"
+      ],
+      "weapon": "explosive_sac",
+      "sourceScene": {
+        "description": "Original 2008 Exploder; correct the former acid_sac descriptor without adding an unimplemented chemical-damage mechanic.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "kind": "enemy",
+      "name": "Divider Necromorph",
+      "incarnation": "Dead Space (2008), Divider form",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Very tall thin humanoid Divider with stretched torso, small head and long spindly limbs that can separate into independently moving components. No bulky Brute armor, gun, or invented magic splitting staff.",
+      "equipment": [
+        "Detachable organic limbs"
+      ],
+      "weapon": "split_attack",
+      "sourceScene": {
+        "description": "Original 2008 Divider; detached-limb simulation remains a distinct gameplay/animation requirement, not implied by metadata.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "kind": "enemy",
+      "name": "Leaper Necromorph",
+      "incarnation": "Dead Space (2008), standard Leaper",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Low elongated Leaper with thick supporting forearms and a long bladed tail replacing ordinary lower-body locomotion. Preserve the long tail and forearm-driven leaps; no upright human stride, wings or humanoid weapon.",
+      "equipment": [
+        "Natural forelimbs and barbed tail"
+      ],
+      "weapon": "tail",
+      "sourceScene": {
+        "description": "Original 2008 Leaper; separate historical roster entry retained without merging identities.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "kind": "enemy",
+      "name": "Infector Winged Corpse",
+      "incarnation": "Dead Space (2008), Infector form",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Broad low Infector with a flattened torso, two large membranous wing-like limbs and a projecting infection proboscis. It works on corpses; no Slasher scythes, adult humanoid gun stance or Resident Evil T-Virus equipment.",
+      "equipment": [
+        "Membranous wings",
+        "Infection proboscis"
+      ],
+      "weapon": "infection",
+      "sourceScene": {
+        "description": "Original 2008 Infector, whose corpse-conversion behavior is not certified by a generic damage attack.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Infector Pod\"]",
+      "kind": "boss",
+      "name": "Necromorph Infector Pod",
+      "sourceIdentityReview": "OPEN: canonical Infector base organism does not establish the invented Pod/boss form. Incarnation, visual contract and source scene remain unresolved.",
+      "sourceResearchUrls": [
+        "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)"
+      ],
+      "special": "Necromorph Corpse Infection (Nexus boss adaptation)",
+      "sourceActionReview": "Nexus-only boss/Pod variant remains unresolved. Remove the Resident Evil T-Virus label; do not invent a canonical Pod organism, visual model or source-scene approval.",
+      "canonStatus": "Unresolved Nexus-only encounter alias. No canonical Pod identity or visual source is established; existing combat remains an adaptation."
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "kind": "boss",
+      "name": "Armored Brute Smasher",
+      "incarnation": "Dead Space (2008), armored Brute form",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+      "visualAnchor": "Very large hunched humanoid Brute with broad organic frontal armor, massive forearms and comparatively small rear legs. Preserve its organic plating and vulnerable shoulder/back regions; no metal knight armor, gun turret or Payday Bulldozer identity.",
+      "equipment": [
+        "Organic frontal armor",
+        "Heavy forelimbs"
+      ],
+      "weapon": "fists",
+      "sourceScene": {
+        "description": "Original 2008 Brute. Armored Brute Smasher is a descriptive Nexus boss alias and does not certify a named canonical boss variant.",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "reviewStatus": "documented-source-target; scene/frame comparison remains open"
+      }
+    }
+  ]
+}

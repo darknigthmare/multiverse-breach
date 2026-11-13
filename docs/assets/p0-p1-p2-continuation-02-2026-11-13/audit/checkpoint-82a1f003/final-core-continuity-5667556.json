@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "scope": "Carry the single actual82a actor export and native cohort probes forward across exactly one reviewed FPS consumer change outside their closed import graph; no re-export, media hydration or new classification.",
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "actualExportSourceCommit": "82a1f0035af46b85aac479a8a530963a28cfb219",
+  "laterCoreCommit": "5667556bfb3d00e2cf9959c3d22c3038712cd5a2",
+  "gitHeadAtVerification": "3b892a7ec9eb1dbebf24af040cd8283311178f85",
+  "sourceManifestSha256": "418dc021204ed249cdbaaa94cdb6adad81286b979c6cc2e4df8e47f3ee6bbf70",
+  "validationSha256": "c9f93a7bb7d87eb68746131e7365ca67584079da1163d27bf9566a00f1853b78",
+  "sourceInventoryFilesChecked": 3873,
+  "unchangedSourceInventoryFiles": 3872,
+  "explicitSourceException": {
+    "path": "src/game/extinctionFighterProfiles.js",
+    "beforeGitBlobOid": "c8d472c2d0b602c3a31eeb9e3a5369dea7b64961",
+    "afterGitBlobOid": "5761ba1198470d1f00423d46c90614e9094b4bd5",
+    "beforeSha256": "83e65d07d5c07907a04cc11a8a8b558a6ebd8dccf72be8bbfc2e5ee67a09da80",
+    "afterSha256": "4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc",
+    "afterBytes": 22907,
+    "workingBytesMatchLaterCommit": true,
+    "reason": "Reviewed Extinction FPS source-consumer bindings; this module is not imported by actor export or native cohort probes."
+  },
+  "unexpectedSourceChanges": [],
+  "workingSourceMismatches": [],
+  "laterSrcDlcPublicChangedPaths": [
+    "src/game/extinctionFighterProfiles.js"
+  ],
+  "workingRuntimeChanges": [],
+  "untrackedRuntimeFiles": [],
+  "allLaterCommitChangedPaths": [
+    "src/game/extinctionFighterProfiles.js"
+  ],
+  "actorImportClosure": {
+    "report": "actor-import-closure.json",
+    "reportSha256": "ce7329977af5358b90fdda4c55a01df238c7278141389924390ed7caac3b42da",
+    "modules": 1974,
+    "importEdges": 2151,
+    "unresolvedReferences": [],
+    "allModulesUnchangedInGitAndWorkingTree": true,
+    "fpsConsumerImported": false,
+    "closureComplete": true
+  },
+  "auditHelperChanges": [],
+  "cohortProbesReused": [
+    {
+      "activityId": "gears-deadspace-040",
+      "reviewSha256": "e3cbde9ab9c9a89fc88c617309d94230bf4e2c2cccead4c591ad50f1b3cef438",
+      "runtimeGzipSha256": "7c3dee26bab196e831f50c300ad1531b214fffa3905a28d6eca6c2b5c0a10692",
+      "preservedPreparedHeroRpgSlotsVersus9899": 60,
+      "reusedReason": "All transitive actor/probe module inputs remain identical to the actual82a execution. This does not claim FPS profiles are unchanged."
+    },
+    {
+      "activityId": "portal-l4d-040",
+      "reviewSha256": "756f5c282fbfad9bdd091078e8fb267f9405939893c168b541cbe094169c3d63",
+      "runtimeGzipSha256": "923abb87d9bce30d5e626df7bd229cfbac4dd5599e16682ed56b689067a8bde7",
+      "preservedPreparedHeroRpgSlotsVersus9899": 56,
+      "reusedReason": "All transitive actor/probe module inputs remain identical to the actual82a execution. This does not claim FPS profiles are unchanged."
+    }
+  ],
+  "cgMetadataContinuity": {
+    "sourceCommit": "5baaae27bf23b845a5056eeab3c95fbe7b0d234e",
+    "sourceFixtureSha256": "77a0bb8e02a1d24b5d2c38dadba6401cc9b11740a29b169c2dde844399b864f9",
+    "actorSourcePins": 31,
+    "sourceFilesChecked": [
+      {
+        "path": "src/game/heroes.js",
+        "sha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+        "bytes": 61580,
+        "gitBlobOid": "263a277c02d446413ada75fa6303183202da1f12"
+      },
+      {
+        "path": "src/game/canonicalSpriteQuarantine.js",
+        "sha256": "fa3d055eca6b450d1177468d2e9cc69ec14c427baf108e973f87e8cc7054f847",
+        "bytes": 5797,
+        "gitBlobOid": "205b034e5ab01fe7257ff1b485fff3e0529fc5c0"
+      },
+      {
+        "path": "src/game/combat/combatSourceDefinitionsWave15PartC.js",
+        "sha256": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd",
+        "bytes": 36029,
+        "gitBlobOid": "debc955fa4223c721775daafbf57836bb7c015ae"
+      },
+      {
+        "path": "DLC/GearsOfWar/data/heroes.js",
+        "sha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e",
+        "bytes": 2659,
+        "gitBlobOid": "476e1fd23fb0f4e82e4758c08ca6cb1e15b0603a"
+      },
+      {
+        "path": "DLC/GearsOfWar/data/actorSourceContracts.js",
+        "sha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d",
+        "bytes": 35457,
+        "gitBlobOid": "5e723115f1d59774196d6490efab1ad63a44443b"
+      },
+      {
+        "path": "DLC/GearsOfWar/data/loreAccuratePacks.js",
+        "sha256": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806",
+        "bytes": 1999,
+        "gitBlobOid": "c716cbf647fad4cd44824b95e90052e3e94b0d66"
+      },
+      {
+        "path": "DLC/GearsOfWar/data/loreWorldBossOverrides.js",
+        "sha256": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280",
+        "bytes": 851,
+        "gitBlobOid": "a02779247085a7d50e8590f541ccc359ea95d190"
+      },
+      {
+        "path": "DLC/DeadSpace/data/heroes.js",
+        "sha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1",
+        "bytes": 2594,
+        "gitBlobOid": "6ef982216d48f3d001d16d9f306c9a8211eabfa8"
+      },
+      {
+        "path": "DLC/DeadSpace/data/actorSourceContracts.js",
+        "sha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc",
+        "bytes": 28904,
+        "gitBlobOid": "bb9c3e1e131cdcae965d6bfd5b0d097a26e29edc"
+      },
+      {
+        "path": "DLC/DeadSpace/data/loreAccuratePacks.js",
+        "sha256": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11",
+        "bytes": 1939,
+        "gitBlobOid": "525732ffb9462469f53ab7c2435abe2703148761"
+      },
+      {
+        "path": "DLC/Portal/data/heroes.js",
+        "sha256": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec",
+        "bytes": 2468,
+        "gitBlobOid": "ef3395646da6edd8d7eb9977ef30954769a6feb1"
+      },
+      {
+        "path": "DLC/Portal/data/sourceContracts20261113.js",
+        "sha256": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee",
+        "bytes": 78559,
+        "gitBlobOid": "ed485b19eea146af7c9d807650a127cf2448e455"
+      },
+      {
+        "path": "DLC/Portal/data/loreAccuratePacks.js",
+        "sha256": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688",
+        "bytes": 2001,
+        "gitBlobOid": "46d8579c395e117ef5101df6bc8ee8311f20f038"
+      },
+      {
+        "path": "DLC/Portal/data/loreWorldBossOverrides.js",
+        "sha256": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6",
+        "bytes": 962,
+        "gitBlobOid": "e99def8970ef7d2a717d61804ed15dc598992055"
+      },
+      {
+        "path": "DLC/Left4Dead/data/heroes.js",
+        "sha256": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78",
+        "bytes": 647,
+        "gitBlobOid": "0f70008c74fc2de6ab1b0c9c99710f8d99410081"
+      },
+      {
+        "path": "DLC/Left4Dead/data/sourceContracts20261113.js",
+        "sha256": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456",
+        "bytes": 41865,
+        "gitBlobOid": "e8952e220eb3c60323a51a262dfd6688861c20f8"
+      },
+      {
+        "path": "DLC/Left4Dead/data/expandedUniverses.js",
+        "sha256": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad",
+        "bytes": 1296,
+        "gitBlobOid": "3ab18ca60aef838dd7d7196cc6d702140d19fdd0"
+      }
+    ],
+    "all17FilesUnchangedFrom5baIn82aLaterGitAndWorkingTree": true,
+    "cgApprovalOrHistoryChangedByThisAudit": false
+  },
+  "historicalQueue": {
+    "path": "docs/assets/p0-p1-menu-continuation-2026-11-13/backlog/actor-batches-40.json",
+    "sha256": "b44f08f2428708380959b676d21950466bc1674be9b9b8eed0b727fe6a0affbf",
+    "byteIdenticalTo9899AndLaterGit": true,
+    "batches": 124,
+    "historicalP0ActorKeys": [
+      "[\"Harry Potter\",\"id:harry\"]",
+      "[\"Harry Potter\",\"id:hermione\"]",
+      "[\"Joker New 52\",\"id:batman_n52\"]",
+      "[\"Joker New 52\",\"id:harley_n52\"]",
+      "[\"Joker New 52\",\"id:joker_n52\"]",
+      "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+      "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+      "[\"Minions\",\"id:bob_minions\"]",
+      "[\"Minions\",\"id:kevin_minions\"]",
+      "[\"Minions\",\"id:stuart_minions\"]",
+      "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+      "[\"Roger Rabbit\",\"id:roger_rabbit\"]",
+      "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]",
+      "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]",
+      "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]",
+      "[\"Star Wars\",\"id:vader\"]",
+      "[\"Star Wars\",\"id:han_solo\"]",
+      "[\"Star Wars\",\"id:luke\"]",
+      "[\"Teen Titans\",\"id:raven_tt\"]",
+      "[\"Teen Titans\",\"id:starfire_tt\"]",
+      "[\"The Batman Who Laughs\",\"id:grim_knight\"]",
+      "[\"The Dark Knight\",\"id:batman_tdk\"]"
+    ],
+    "automaticRetryDisallowedActorKeys": [
+      "[\"Joker New 52\",\"id:harley_n52\"]",
+      "[\"Joker New 52\",\"id:joker_n52\"]",
+      "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+      "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+      "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+      "[\"Roger Rabbit\",\"id:roger_rabbit\"]"
+    ]
+  },
+  "carriedActorExportCounts": {
+    "actors": 4937,
+    "tasksByPriority": {
+      "P1": 16734,
+      "P2": 13582
+    },
+    "missingRasterActors": 1471,
+    "newProtectionScope": "[\"The Dark Knight\",\"id:batman_tdk\"]",
+    "newProtectionFinding": "RASTER_SCOPE_UNRESOLVED"
+  },
+  "checksPassed": true,
+  "scriptSha256": "a2669c458f049ec04cb8266a9ff204c5a204607e3a9116b5f9117fe7dea15cee",
+  "reexportsExecuted": 0,
+  "mediaCopiedOrHydrated": 0,
+  "fullActorClosures": 0,
+  "artApprovals": 0,
+  "visual1to1Verified": false
+}

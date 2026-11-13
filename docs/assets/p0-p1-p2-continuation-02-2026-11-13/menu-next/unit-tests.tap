@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: pagination bounds the displayed catalogue while preserving source order, objects and complete search
+ok 1 - pagination bounds the displayed catalogue while preserving source order, objects and complete search
+  ---
+  duration_ms: 2.064132
+  type: 'test'
+  ...
+# Subtest: later-page missions remain searchable by accent-free French, English, universe, ID and boss
+ok 2 - later-page missions remain searchable by accent-free French, English, universe, ID and boss
+  ---
+  duration_ms: 2.066046
+  type: 'test'
+  ...
+# Subtest: all status counts and predicates keep the supplied deployment and progression decisions
+ok 3 - all status counts and predicates keep the supplied deployment and progression decisions
+  ---
+  duration_ms: 0.645343
+  type: 'test'
+  ...
+# Subtest: completed but inaccessible missions keep both historical completion and the deployment lock
+ok 4 - completed but inaccessible missions keep both historical completion and the deployment lock
+  ---
+  duration_ms: 0.41174
+  type: 'test'
+  ...
+# Subtest: blocking reasons use the real localized resolver message, with explicit safe fallback
+ok 5 - blocking reasons use the real localized resolver message, with explicit safe fallback
+  ---
+  duration_ms: 0.487976
+  type: 'test'
+  ...
+# Subtest: empty results, shrinking sources and absent optional deployment resolver remain safe
+ok 6 - empty results, shrinking sources and absent optional deployment resolver remain safe
+  ---
+  duration_ms: 0.278801
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86.549458

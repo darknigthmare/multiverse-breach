@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import { pathToFileURL } from 'node:url';
+import { gzipSync } from 'node:zlib';
+const [root,output]=process.argv.slice(2);
+const ids=process.argv[4]?.split(',')||['marcus','chell'];
+const load=file=>import(pathToFileURL(root+'/'+file).href);
+const {HEROES_DB}=await load('src/game/heroes.js');
+const {getExtinctionFighterProfile}=await load('src/game/extinctionFighterProfiles.js');
+const {createExtinctionProtocolState,activateExtinctionProtocol,mitigateExtinctionProtocolDamage}=await load('src/game/extinctionSignatures.js');
+const {getExtinctionSchematicView}=await load('src/game/extinctionSchematicView.js');
+const {getExtinctionAimReadout}=await load('src/game/extinctionAimReadout.js');
+const rows=ids.map(id=>{
+ const actor=HEROES_DB.find(h=>h.id===id),profile=getExtinctionFighterProfile(actor);
+ const state=()=>({phase:'running',runId:'source-regression-proof',heroId:id,heroCategory:actor.category,hp:20,maxHp:120,px:0,py:0,angle:0,t:0,kills:0,ammo:24,reserveAmmo:72,weapon:{type:'pistol',ammo:24,maxAmmo:24,resource:profile.resource.kind},enemies:[{id:'target',kind:'Traqueur',wx:0,wy:1,hp:500,maxHp:500,size:1}],protocols:createExtinctionProtocolState(profile.signature,'source-regression-proof')});
+ const primary=state(),defense=state(),activatedPrimary=activateExtinctionProtocol(primary,'simple'),activatedDefense=activateExtinctionProtocol(defense,'defense');
+ return{id,incarnation:actor.incarnation||null,weaponType:actor.weaponType,equipment:actor.equipment||null,stats:actor.stats,raw:Object.fromEntries(['simple','secondary','defense','special'].map(slot=>[slot,actor[slot]])),profile:{eligible:profile.eligible,reviewStatus:profile.reviewStatus,resource:profile.resource,actions:profile.signature?.actions||null},primary:{result:activatedPrimary,ammo:primary.weapon.ammo,resource:primary.weapon.resource,schematic:getExtinctionSchematicView(primary),aim:getExtinctionAimReadout(state(),'fr',{width:960,height:540})},defense:{result:activatedDefense,guard: defense.protocols.guard,reduction:defense.protocols.reduction,damageAfterGuard:mitigateExtinctionProtocolDamage(defense,100)}};
+});
+const payload=JSON.stringify({scope:'Exact selected actor source and actual Extinction consumer state before/after, no source mutation or ownership change.',rows},null,2)+'\n';
+fs.writeFileSync(output,output.endsWith('.gz')?gzipSync(payload):payload);
+process.stdout.write(JSON.stringify(rows.map(r=>({id:r.id,review:r.profile.reviewStatus,slots:Object.keys(r.profile.actions||{}),primaryKind:r.profile.actions?.simple?.kind,resource:r.profile.resource.kind,ammo:r.primary.ammo,defense:r.defense.result.activated,guard:r.defense.guard,schematic:r.primary.schematic.style})),null,2)+'\n');

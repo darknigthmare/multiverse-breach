@@ -1,0 +1,818 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "actorCount": 40,
+  "before": {
+    "P1": 177,
+    "P2": 82
+  },
+  "after": {
+    "P2": 120,
+    "P1": 55
+  },
+  "removedCounts": {
+    "INCARNATION_UNSPECIFIED": 38,
+    "VISUAL_CONTRACT_MISSING": 38,
+    "REFERENCE_MISSING": 38,
+    "GENERIC_TECHNIQUE_NAMES": 8
+  },
+  "addedCounts": {
+    "REFERENCE_SCENE_REVIEW": 38
+  },
+  "resolvedSlotLookupsUnchanged": 160,
+  "effectiveHeroSlotsUnchanged": 60,
+  "preparedSlotLookupsUnchanged": 160,
+  "sourceSignatureKitChanges": 0,
+  "rasterChanges": 0,
+  "artApprovals": 0,
+  "closedActorDossiers": 0,
+  "note": "Raw generic labels were already supplied by existing resolved kits. This projection aligns catalog labels and source contracts; it does not grant new techniques or certify images/animation.",
+  "unresolved": [
+    "Necromorph Infector Pod canonical source/edition/model remain unresolved; T-Virus wording removed only.",
+    "hammond_ds retains its distinct historical ID and old mechanics; dedicated source-action review remains open.",
+    "Scene/model comparisons, eight costume/animation dimensions and all missing rasters remain open."
+  ],
+  "runtimeSourceFiles": [
+    {
+      "path": "DLC/GearsOfWar/manifest.json",
+      "sha256": "0a1ba8de4dbb66655473df3fe6e01e8bcb636d9933f5825a9eeac4a6a1fc817b"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/actorSourceContracts.js",
+      "sha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/heroes.js",
+      "sha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/enemies.js",
+      "sha256": "dc6f318bdd3f7d58fd9a009dcf02f92b0f28f39ebe999a0c8ff06ff4bc54a08c"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/loreAccuratePacks.js",
+      "sha256": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806"
+    },
+    {
+      "path": "DLC/DeadSpace/manifest.json",
+      "sha256": "91a6bf77023bdb51adad2282f07ab0ef593893dc3bfde15bba28aaed8043aa55"
+    },
+    {
+      "path": "DLC/DeadSpace/data/actorSourceContracts.js",
+      "sha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc"
+    },
+    {
+      "path": "DLC/DeadSpace/data/heroes.js",
+      "sha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1"
+    },
+    {
+      "path": "DLC/DeadSpace/data/enemies.js",
+      "sha256": "cdb961a14d7ca2edb820b60e814c4a97a186339d3606eafde2d4acce4d9e573c"
+    },
+    {
+      "path": "DLC/DeadSpace/data/loreAccuratePacks.js",
+      "sha256": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/loreWorldBossOverrides.js",
+      "sha256": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave15PartC.js",
+      "sha256": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd"
+    }
+  ],
+  "testSourceFiles": [
+    {
+      "path": "scripts/gearsDeadSpaceSourceContracts20261113.test.mjs",
+      "sha256": "fcade6b4eca08110d62f882d06ad1bf157b8a9440cf4ce83a112d2f1a6dbd8eb"
+    },
+    {
+      "path": "scripts/gearsDeadSpaceCatalogEditions20261113.mjs",
+      "sha256": "4e63cdbd0de2cca850b287cebd763c6989df6be84caff85bfcd576b0d80313a0"
+    },
+    {
+      "path": "scripts/gearsDeadSpaceHammondAuthoringErratum20261113.mjs",
+      "sha256": "c3cd3afdcd0405b9979614781a41d19487dc883ebac932d4024e3162e73c1620"
+    },
+    {
+      "path": "scripts/gearsDeadSpaceSourceDelta20261113.mjs",
+      "sha256": "ec69266e8cb500c3a1192a1ac5721ec52da11861675839425ad9366bf69c9a45"
+    },
+    {
+      "path": "scripts/combatCanonicalEditionFixtures.mjs",
+      "sha256": "1207dd9d79e70de7ae76a34d0e04a7988f52c0b66f823be4c1623b6a7194311b"
+    },
+    {
+      "path": "scripts/combatFidelityHistoricalCohortWave17.mjs",
+      "sha256": "3bf51b5465c4df4049f20278e807f9d04935ae3bce5b916813e7166fab59c1bf"
+    },
+    {
+      "path": "scripts/combatFidelityWave15.test.mjs",
+      "sha256": "330c2ab276eb74260cdf715257870f293fd4bee4a67f0959e8f7d55f0b30c479"
+    }
+  ],
+  "immutableEvidence": [
+    {
+      "file": "reserved-actors.json",
+      "sha256": "9ead8aeebcbc6d132a21b59fa4430c89642c7f5ff6433a535ebcf6e705758412"
+    },
+    {
+      "file": "baseline-runtime.json.gz",
+      "sha256": "499a08ca719b5e1f59b926605e9ce1c063d39369e7d2293194e2f3fef5dc0227"
+    }
+  ],
+  "actors": [
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "name": "Marcus Fenix",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "name": "Dom Santiago",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "name": "Augustus Cole",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "name": "Damon Baird",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "name": "Anya Stroud",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "name": "Colonel Hoffman",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "name": "Carmine",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "name": "Kait Diaz",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "name": "Locust Drone",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "name": "Locust Wretch",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "name": "Explosive Ticker",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "name": "Theron Guard",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "name": "Boomer Locust",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "name": "Kantus Priest",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "name": "Corpser Hatchling",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:General RAAM\"]",
+      "name": "General RAAM",
+      "removed": [],
+      "added": [],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "name": "High Priest Skorge",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "name": "Berserker Matriarch",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "name": "Karn Locust General",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "name": "Queen Myrrah",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "name": "Corpser Burrower",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "name": "Gargantuan Brumak",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "name": "Isaac Clarke",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_ARTWORK",
+        "RESEARCH_first-contact"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "name": "John Carver",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "name": "Ellie Langford",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "name": "Nicole Brennan",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "name": "Zach Hammond",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "name": "Kendra Daniels",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "GENERIC_TECHNIQUE_NAMES"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "name": "Zach Hammond",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "name": "Necromorph Slasher Scythe",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "name": "Necromorph Leaper Demon",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "name": "Necromorph Lurker Pod",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "name": "Slasher Necromorph",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "name": "Pregnant Necromorph",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "name": "Exploder Necromorph",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "name": "Divider Necromorph",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "name": "Leaper Necromorph",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "name": "Infector Winged Corpse",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Infector Pod\"]",
+      "name": "Necromorph Infector Pod",
+      "removed": [],
+      "added": [],
+      "remainingP1": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING",
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "name": "Armored Brute Smasher",
+      "removed": [
+        "INCARNATION_UNSPECIFIED",
+        "VISUAL_CONTRACT_MISSING",
+        "REFERENCE_MISSING"
+      ],
+      "added": [
+        "REFERENCE_SCENE_REVIEW"
+      ],
+      "remainingP1": [
+        "RASTER_MISSING",
+        "OFFICIAL_COSTUME_RESEARCH"
+      ],
+      "source1to1Verified": false,
+      "artApproved": false
+    }
+  ]
+}

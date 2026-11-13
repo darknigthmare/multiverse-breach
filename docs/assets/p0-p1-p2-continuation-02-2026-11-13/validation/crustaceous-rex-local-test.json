@@ -1,0 +1,28 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/crustaceousRexSprite.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 2.415,
+  "scope": "Only the unchanged historical C-Rex sprite test after exact temporary physical public mirror from existing local immutable Git bytes. No changed expected values, artwork or production source.",
+  "tests": 5,
+  "passed": 5,
+  "failed": 0,
+  "unchangedHistoricalTest": {
+    "path": "scripts/crustaceousRexSprite.test.mjs",
+    "sha256": "9946342711873a29d43766e8d7adbfee9be4219f70295fac463c7c6c79a2a6e2",
+    "matchesHeadBytes": true
+  },
+  "mirrorReceipt": "crustaceous-rex-local-mirror.json",
+  "beforeSuiteReceipt": "crustaceous-rex-before-mirror-suite.json",
+  "beforeEnoentExcerpt": "crustaceous-rex-before-mirror-enoent.txt"
+}

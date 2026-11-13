@@ -1,0 +1,134 @@
+TAP version 13
+# (node:182666) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: reviewed Revan has an explicit intro clip on the accepted base16
+ok 1 - reviewed Revan has an explicit intro clip on the accepted base16
+  ---
+  duration_ms: 3.554348
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit outro clip on the accepted base16
+ok 2 - reviewed Revan has an explicit outro clip on the accepted base16
+  ---
+  duration_ms: 0.803732
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit victory clip on the accepted base16
+ok 3 - reviewed Revan has an explicit victory clip on the accepted base16
+  ---
+  duration_ms: 1.040489
+  type: 'test'
+  ...
+# Subtest: the new clips neither authorize another edition nor expose unreviewed W13 phase artwork
+ok 4 - the new clips neither authorize another edition nor expose unreviewed W13 phase artwork
+  ---
+  duration_ms: 1.089913
+  type: 'test'
+  ...
+# Subtest: sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+ok 5 - sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+  ---
+  duration_ms: 1.840644
+  type: 'test'
+  ...
+# (node:182726) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a KO opponent keeps defeat during the outro rather than standing up and running away
+ok 6 - a KO opponent keeps defeat during the outro rather than standing up and running away
+  ---
+  duration_ms: 35.358117
+  type: 'test'
+  ...
+# Subtest: Fighter uses the reviewed clip for Revan on player, freezes it while paused and completes once
+ok 7 - Fighter uses the reviewed clip for Revan on player, freezes it while paused and completes once
+  ---
+  duration_ms: 26.618484
+  type: 'test'
+  ...
+# Subtest: Fighter uses the reviewed clip for Revan on cpu, freezes it while paused and completes once
+ok 8 - Fighter uses the reviewed clip for Revan on cpu, freezes it while paused and completes once
+  ---
+  duration_ms: 25.662251
+  type: 'test'
+  ...
+# Subtest: leaving during the clip disposes the engine without completing a match
+ok 9 - leaving during the clip disposes the engine without completing a match
+  ---
+  duration_ms: 1.965313
+  type: 'test'
+  ...
+# Subtest: the first round remains unrewarded and a living opponent may still exit after a timeout
+ok 10 - the first round remains unrewarded and a living opponent may still exit after a timeout
+  ---
+  duration_ms: 18.30382
+  type: 'test'
+  ...
+# Subtest: Smash samples the same base16 for player without changing collision positions
+ok 11 - Smash samples the same base16 for player without changing collision positions
+  ---
+  duration_ms: 4.913537
+  type: 'test'
+  ...
+# Subtest: Smash samples the same base16 for cpu without changing collision positions
+not ok 12 - Smash samples the same base16 for cpu without changing collision positions
+  ---
+  duration_ms: 0.839996
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/reviewedRevanPresentationRuntime20261113.test.mjs:117:39'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'x')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/reviewedRevanPresentationRuntime20261113.test.mjs:122:29)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# (node:182776) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the exact inspected single-red correction is selected while the rejected original remains quarantined
+ok 13 - the exact inspected single-red correction is selected while the rejected original remains quarantined
+  ---
+  duration_ms: 3.493336
+  type: 'test'
+  ...
+# Subtest: path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+ok 14 - path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+  ---
+  duration_ms: 0.414064
+  type: 'test'
+  ...
+# Subtest: other editions, universes and conflicting aliases cannot obtain the reviewed correction
+ok 15 - other editions, universes and conflicting aliases cannot obtain the reviewed correction
+  ---
+  duration_ms: 0.646795
+  type: 'test'
+  ...
+# Subtest: saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+ok 16 - saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+  ---
+  duration_ms: 0.925765
+  type: 'test'
+  ...
+# Subtest: the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+ok 17 - the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+  ---
+  duration_ms: 1.845472
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 16
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9322.816487

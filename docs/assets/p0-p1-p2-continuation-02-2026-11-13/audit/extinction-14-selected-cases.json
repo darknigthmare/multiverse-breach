@@ -1,0 +1,65 @@
+{
+  "currentLog": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/ui-immersion-final.tap",
+  "currentLogSha256": "fc363a978f324c1d494ddc126e186041473fed595481d9cb7dfbe4c0e74d683a",
+  "cases": [
+    {
+      "label": "every actual combatant has four executable source actions; no source catalog mutation or implicit ownership",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:36:1'"
+    },
+    {
+      "label": "ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:138:1'"
+    },
+    {
+      "label": "returning to the personal kit retains its actual stock and cooldowns without refill or repeated return",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:186:1'"
+    },
+    {
+      "label": "workbook export is deterministic and covers all four modes with provenance and honest production states",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:214:1'"
+    },
+    {
+      "label": "actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:344:1'"
+    },
+    {
+      "label": "pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:448:1'"
+    },
+    {
+      "label": "aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:787:1'"
+    },
+    {
+      "label": "contact and control readouts agree with actual reach, facing and successful actions at the boundaries",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:810:1'"
+    },
+    {
+      "label": "marking and shield feedback follow real damage rules, while non-damaging control remains valid",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:875:1'"
+    },
+    {
+      "label": "aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:914:1'"
+    },
+    {
+      "label": "the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:967:1'"
+    },
+    {
+      "label": "all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:59:1'"
+    },
+    {
+      "label": "real primary activations and cooldown ticks drive attack, recovery and ready states",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:100:1'"
+    },
+    {
+      "label": "every primary delivery has different geometry even with one colour, and pause rendering is pure",
+      "location": "location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:148:1'"
+    }
+  ],
+  "testNamePattern": "^(?:every\\ actual\\ combatant\\ has\\ four\\ executable\\ source\\ actions;\\ no\\ source\\ catalog\\ mutation\\ or\\ implicit\\ ownership|ammunition\\ is\\ consumed\\ by\\ ballistic\\ primaries;\\ contact\\ and\\ non\\-ballistic\\ effects\\ use\\ cooldowns|returning\\ to\\ the\\ personal\\ kit\\ retains\\ its\\ actual\\ stock\\ and\\ cooldowns\\ without\\ refill\\ or\\ repeated\\ return|workbook\\ export\\ is\\ deterministic\\ and\\ covers\\ all\\ four\\ modes\\ with\\ provenance\\ and\\ honest\\ production\\ states|actual\\ reload,\\ pickup\\ and\\ kit\\ return\\ retain\\ 36/26/11/0\\ active\\ reload\\ ticks\\ and\\ the\\ independent\\ primary\\ cooldown|pause\\ cannot\\ age\\ a\\ stored\\ personal\\ reload,\\ and\\ ordinary\\ loot\\ cannot\\ shorten\\ an\\ active\\ reload|aim\\ feedback\\ follows\\ every\\ current\\ primary\\ kit\\ in\\ all\\ four\\ modes\\ without\\ drawing\\ randomness\\ or\\ mutating\\ the\\ run|contact\\ and\\ control\\ readouts\\ agree\\ with\\ actual\\ reach,\\ facing\\ and\\ successful\\ actions\\ at\\ the\\ boundaries|marking\\ and\\ shield\\ feedback\\ follow\\ real\\ damage\\ rules,\\ while\\ non\\-damaging\\ control\\ remains\\ valid|aim\\ readiness\\ follows\\ independent\\ primary\\ cooldowns,\\ reloads,\\ empty\\ ammunition\\ and\\ paused\\ ownership|the\\ actual\\ aiming\\ draw\\ stays\\ inside\\ the\\ reserved\\ reticle\\ and\\ cancels\\ camera\\ shake\\ without\\ altering\\ the\\ hit\\ marker|all\\ 1,811\\ eligible\\ identities\\ resolve\\ their\\ actual\\ primary\\ delivery,\\ without\\ manufacturing\\ art|real\\ primary\\ activations\\ and\\ cooldown\\ ticks\\ drive\\ attack,\\ recovery\\ and\\ ready\\ states|every\\ primary\\ delivery\\ has\\ different\\ geometry\\ even\\ with\\ one\\ colour,\\ and\\ pause\\ rendering\\ is\\ pure)$",
+  "excludedSsrTest": "real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback",
+  "scope": "Only the exact14current failing labels; neitherViteSSRtest nor global suite is executed."
+}

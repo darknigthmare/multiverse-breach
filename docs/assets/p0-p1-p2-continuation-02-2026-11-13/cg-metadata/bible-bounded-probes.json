@@ -1,0 +1,249 @@
+{
+  "source": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+  "scope": "Current metadata probes only; no image generation or likeness approval",
+  "records": [
+    {
+      "characterId": "batman_tdk",
+      "incarnation": {
+        "label": "The Dark Knight (2008), costume segmenté de la seconde partie du film",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/batman-tdk-reference-evidence-wave11-2026-10-26.json",
+          "docs/cg/references/batman-tdk-2008/source-receipt.json",
+          "src/game/heroes.js"
+        ]
+      },
+      "identityLock": "Christian Bale Batman segmented black armored Batsuit2008 with short pointed cowl ears, black full cape and broad gold utility belt. Exposed light-skinned mouth and broad jaw below black cowl; rest masked, no invented face beneath. Black/charcoal layered chest/abdomen plates over black flexible mesh, rounded shoulder plates, black gauntlets, gold utility belt with circular buckle. No blue-gray animated suit or2022 costume. Identity film stills do not establish full grapnel/batarang topology; existing equipment-onlyCG02 remains preserved, no new weapon fabrication. Costume detail shot head-to-hips only. Film frame dark side view with foot/lowerbody details obscured; poster very small rear silhouette. Need better full-body reference before detailed lowerbody rendering. Actual atlas opened: generic brown-haired goggled male gadgeteer, uncovered head, blue gadgets/rope, no cowl or cape. Major discrepancy remains.",
+      "readiness": {
+        "identity": "documented-in-project-source-record",
+        "visualReference": "independent-image-inspected-with-limitations",
+        "sourceReview": "source-evidence-qualified-needs-final-comparison",
+        "currentSprite": {
+          "path": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+          "sha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+          "status": "OLD-quarantined-art-not-selected-in-runtime",
+          "reason": "WRONG_UNMASKED_GOGGLED_CIVILIAN_NO_COWL_CAPE_OR_BATSUIT",
+          "selectedInRuntime": false,
+          "visualFidelityApproved": false
+        },
+        "visualFidelityApproved": false,
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "costume",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
+        "missing": [
+          "Original existing sprite correction refusal preserved exactly. No evasion or repeat generation attempted.",
+          "Film references personally reopened; not a certification of absolute fidelity or lower-body detail.",
+          "Détail des bottes et arrière des plaques non résolu en gros plan par les sources retenues ; comparaison partielle, pas certification1:1.",
+          "Arme CG02 fondée sur description du véritable accessoire Nolan et design de la trilogie; bitmap source inaccessible."
+        ]
+      },
+      "qualificationStatus": "source-evidence-qualified-needs-final-comparison",
+      "equipment": [
+        "Identity film stills do not establish full grapnel/batarang topology; existing equipment-onlyCG02 remains preserved, no new weapon fabrication."
+      ],
+      "CG02": {
+        "slot": "CG02",
+        "type": "weaponSolo",
+        "themeBrief": "CG02 — équipement signature de la trilogie Nolan, objet seul.",
+        "poseBrief": "One small flat Nolan-style folding batarang alone, opened symmetrically and resting diagonally on a dark workshop block. No person, no hand.",
+        "backgroundBrief": "Gotham Ferry Dilemma — composition distincte pour Batman / CG02",
+        "status": "generated",
+        "continuityStatus": "source-identity-in-original-scene",
+        "source": [
+          "docs/cg/reviews/complete-2026-10-18/batman-tdk.json",
+          "docs/cg/references/batman-tdk-2008/source-receipt.json",
+          "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960315.jpg",
+          "https://fr.web.img3.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18960311.jpg",
+          "https://fr.web.img6.acsta.net/r_1280_720/medias/nmedia/18/63/97/89/18935358.jpg",
+          "https://propstore.com/product/dark-knight-trilogy-2005-2012/52-batmans-christian-bale-folding-batarang/",
+          "src/game/cg/cgCatalog.js"
+        ],
+        "sourceComparisonRequired": true,
+        "visualFidelityApproved": false
+      },
+      "localVisuals": [
+        {
+          "path": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": false,
+          "status": "OLD-quarantined-project-art-not-current-or-canon-reference",
+          "archivalOnly": true,
+          "runtimeEligible": false,
+          "quarantineReason": "WRONG_UNMASKED_GOGGLED_CIVILIAN_NO_COWL_CAPE_OR_BATSUIT"
+        }
+      ]
+    },
+    {
+      "characterId": "hammond_ds",
+      "incarnation": {
+        "label": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "src/game/heroes.js"
+        ]
+      },
+      "identityLock": "This separate historical roster slot depicts the same living 2008 security chief Zach Hammond: adult Black man, close-cropped hair, brown security RIG, blue spinal lamps and physical Pulse Rifle. It is not a new character, ghost, remake model or merged save identity.",
+      "readiness": {
+        "identity": "documented-in-project-source-record",
+        "visualReference": "source-image-needed-or-historical-url-only",
+        "sourceReview": "character-specific-lock-needs-image-comparison",
+        "visualFidelityApproved": false,
+        "detailedVisualAxes": [
+          "palette",
+          "face"
+        ],
+        "missing": [
+          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
+          "Axes visuels non détaillés : silhouette, anatomy, costume, distinguishingMarks."
+        ]
+      },
+      "qualificationStatus": "character-specific-lock-needs-image-comparison",
+      "equipment": [
+        "SWS Motorized Pulse Rifle",
+        "Original 2008 security RIG"
+      ],
+      "CG02": {
+        "slot": "CG02",
+        "type": "weaponSolo",
+        "themeBrief": "Arme ou équipement signature confirmé pour cette incarnation; N/A si aucun équipement distinct cohérent.",
+        "poseBrief": "Arme ou équipement signature seul, entièrement visible en diagonale sur un support; aucun corps ni membre coupé.",
+        "backgroundBrief": "USG Ishimura, immense vaisseau minier Planet Cracker ravagé par les Nécromorphes. — composition distincte pour Zach Hammond / CG02",
+        "status": "needs-theme/reference",
+        "continuityStatus": "source-identity-in-original-scene",
+        "source": [
+          "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+        ],
+        "sourceComparisonRequired": true,
+        "visualFidelityApproved": false
+      },
+      "localVisuals": [
+        {
+          "path": "/sprites/generated/heroes/dead-space/hammond-ds.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": true,
+          "status": "existing-project-art-not-independent-canon-proof"
+        }
+      ]
+    },
+    {
+      "characterId": "zach_hammond",
+      "incarnation": {
+        "label": "Dead Space (2008), security chief Zach Hammond",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "src/game/heroes.js"
+        ]
+      },
+      "identityLock": "Original 2008 Zach Hammond is an adult Black man with close-cropped hair, dark brown security RIG and blue spinal lights. Carry the SWS Motorized Pulse Rifle; no remake model, Isaac engineering helmet or 211-V Plasma Cutter mislabeled as his rifle.",
+      "readiness": {
+        "identity": "documented-in-project-source-record",
+        "visualReference": "source-image-needed-or-historical-url-only",
+        "sourceReview": "character-specific-lock-needs-image-comparison",
+        "visualFidelityApproved": false,
+        "detailedVisualAxes": [
+          "costume",
+          "palette",
+          "face"
+        ],
+        "missing": [
+          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
+          "Axes visuels non détaillés : silhouette, anatomy, distinguishingMarks."
+        ]
+      },
+      "qualificationStatus": "character-specific-lock-needs-image-comparison",
+      "equipment": [
+        "SWS Motorized Pulse Rifle",
+        "Original 2008 security RIG"
+      ],
+      "CG02": {
+        "slot": "CG02",
+        "type": "weaponSolo",
+        "themeBrief": "Arme ou équipement signature confirmé pour cette incarnation; N/A si aucun équipement distinct cohérent.",
+        "poseBrief": "Arme ou équipement signature seul, entièrement visible en diagonale sur un support; aucun corps ni membre coupé.",
+        "backgroundBrief": "USG Ishimura, immense vaisseau minier Planet Cracker ravagé par les Nécromorphes. — composition distincte pour Zach Hammond / CG02",
+        "status": "needs-theme/reference",
+        "continuityStatus": "source-identity-in-original-scene",
+        "source": [
+          "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+        ],
+        "sourceComparisonRequired": true,
+        "visualFidelityApproved": false
+      },
+      "localVisuals": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave15-part-c/zach_hammond.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": true,
+          "status": "existing-project-art-not-independent-canon-proof"
+        }
+      ]
+    },
+    {
+      "characterId": "glados_core",
+      "incarnation": {
+        "label": "Portal 2 (2011), GLaDOS carried as PotatOS after Wheatley transfers her to a potato battery",
+        "status": "documented-in-project-source-record",
+        "evidence": [
+          "docs/cg/glados-core-reference-evidence-wave11-2026-10-26.json",
+          "src/game/heroes.js",
+          "docs/cg/roster-fidelity-authored-locks-2026-10-18.json"
+        ]
+      },
+      "identityLock": "Portal 2 PotatOS: an irregular brown potato battery carrying GLaDOS electronics, a yellow optic, wires and clips. It is a small physical prop carried with the portal device, not a humanoid, full central chassis or armed hovering core. Une pomme de terre portant circuits, câbles et un œil jaune de GLaDOS, dimensions petites; pas le châssis blanc géant ni corps humanoïde.",
+      "readiness": {
+        "identity": "documented-in-project-source-record",
+        "visualReference": "source-image-needed-or-historical-url-only",
+        "sourceReview": "character-specific-lock-needs-image-comparison",
+        "visualFidelityApproved": false,
+        "detailedVisualAxes": [
+          "silhouette",
+          "anatomy",
+          "palette",
+          "face",
+          "distinguishingMarks"
+        ],
+        "missing": [
+          "Aucune image source indépendante conservée localement et inspectée dans cette session pour ce personnage.",
+          "Axes visuels non détaillés : costume."
+        ]
+      },
+      "qualificationStatus": "character-specific-lock-needs-image-comparison",
+      "equipment": [
+        "Potato battery",
+        "GLaDOS optic and attached electronics",
+        "Battery wires and clips"
+      ],
+      "CG02": {
+        "slot": "CG02",
+        "type": "weaponSolo",
+        "themeBrief": "Arme ou équipement signature confirmé pour cette incarnation; N/A si aucun équipement distinct cohérent.",
+        "poseBrief": "Arme ou équipement signature seul, entièrement visible en diagonale sur un support; aucun corps ni membre coupé.",
+        "backgroundBrief": "Une chambre de test d'Aperture Science — composition distincte pour GLaDOS Potato Core / CG02",
+        "status": "needs-theme/reference",
+        "continuityStatus": "source-identity-in-original-scene",
+        "source": [
+          "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+        ],
+        "sourceComparisonRequired": true,
+        "visualFidelityApproved": false
+      },
+      "localVisuals": [
+        {
+          "path": "/sprites/generated/heroes/portal/glados-core.png",
+          "role": "project-generated-art",
+          "exists": true,
+          "selectedInRuntime": true,
+          "status": "existing-project-art-not-independent-canon-proof"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[{"case": "before-1280", "ok": true, "error": null}, {"case": "after-1280", "ok": false, "error": "{'charge': 0, 'contacts': [], 'before': 105, 'after': 105, 'definition': {'name': 'Imp Fireball', 'style': 'fire', 'range': 330, 'hits': 1}, 'actor': {'name': 'Imp Fireballer', 'weapon': 'fireball', 'incarnation': 'Doom (1993) - classic Imp (TROO)'}, 'canvas': {'x': 0, 'y': 60, 'width': 1280, 'height': 840, 'top': 60, 'right': 1280, 'bottom': 900, 'left': 0}}"}, {"case": "after-390", "ok": false, "error": "{'charge': 0, 'contacts': [], 'before': 105, 'after': 105, 'definition': {'name': 'Imp Fireball', 'style': 'fire', 'range': 330, 'hits': 1}, 'actor': {'name': 'Imp Fireballer', 'weapon': 'fireball', 'incarnation': 'Doom (1993) - classic Imp (TROO)'}, 'canvas': {'x': 0, 'y': 60, 'width': 390, 'height': 840, 'top': 60, 'right': 390, 'bottom': 900, 'left': 0}}"}]
+Traceback (most recent call last):
+  File "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/browser_imp.py", line 132, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/browser_imp.py", line 130, in main
+    assert len(result)==3 and all(r['ok'] for r in result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+ok 1 - closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+  ---
+  duration_ms: 6.186832
+  type: 'test'
+  ...
+# Subtest: exact new additions are proved before the complete historical W17 projections
+ok 2 - exact new additions are proved before the complete historical W17 projections
+  ---
+  duration_ms: 16.966015
+  type: 'test'
+  ...
+# Subtest: historical intermediate inventories with all Aperture additions absent remain accepted
+ok 3 - historical intermediate inventories with all Aperture additions absent remain accepted
+  ---
+  duration_ms: 21.806139
+  type: 'test'
+  ...
+# Subtest: new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+ok 4 - new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+  ---
+  duration_ms: 124.853885
+  type: 'test'
+  ...
+# Subtest: all three new material definitions and the complete biome profile are exact, never ID-only approval
+ok 5 - all three new material definitions and the complete biome profile are exact, never ID-only approval
+  ---
+  duration_ms: 5.672618
+  type: 'test'
+  ...
+# Subtest: an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+ok 6 - an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+  ---
+  duration_ms: 71.151204
+  type: 'test'
+  ...
+# Subtest: unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+ok 7 - unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+  ---
+  duration_ms: 9.421887
+  type: 'test'
+  ...
+# Subtest: projection never mutates or freezes caller data and preserves unrelated object identities
+ok 8 - projection never mutates or freezes caller data and preserves unrelated object identities
+  ---
+  duration_ms: 81.364083
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 530.406266

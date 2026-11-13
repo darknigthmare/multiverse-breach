@@ -1,0 +1,66 @@
+{
+  "scope": "Independent bounded review of actual dynamic catalog and native Fighter behavior. Browser evidence/source hashes inspected; browser suites and media were not rerun/read by this reviewer.",
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "baselineSourceSnapshotEquivalentCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+  "evidence": {
+    "beforeProbeSha256": "47100bb740d97a795fb4e866379abfd5fac89467887047ec4c3ef45e8de4aa00",
+    "currentProbeSha256": "9b29ec16c26f553bb98c1a180ef0a8d0ae828108222bb6175b4257eb157ee581",
+    "ownerValidationSha256": "5da277c5d12242f5869fd07160c7129d8f24cf38cf5624b2fd977b54b1f014aa",
+    "sourceHashesAll8Match": true
+  },
+  "confirmedBaseline": [
+    "W13 records are dynamically constructed; Revan intro/outro/victory resolve through the real registry.",
+    "Observed W13 phase family is4columns×8rows,32cells, distinct from other archived48frame families.",
+    "The body renderer retains the reviewed4×4sheet and clamps victory row5 to hit row3.",
+    "A zeroHP opponent entered outro and its pose/position progressed while HP stayed0."
+  ],
+  "confirmedCurrent": [
+    "Intro/outro/victory sample the exact reviewed base16 rows0/1; other unreviewed phases remain null.",
+    "Fighter consumes the explicit row/column/offset/opacity data; Smash consumes intro/victory on simulation time without moving collision positions.",
+    "Defeated outro actors retain defeat at progress1 and a fixed last sample, without changing their zeroHP.",
+    "Technical/composite aliases refused by the original predicate now receive no script and no reviewed frame sample. Both normalization paths found during review are fixed."
+  ],
+  "reviewedTestEvidence": {
+    "ownerFinalTests": {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/final-runtime-tests.tap",
+      "sha256": "2d5b36ca4778427de7d8a6a7125b0662e877c5804c4380bbe85c4ec8b58003a5",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "ownerBaselineFailures": {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/baseline-final-tests.tap",
+      "sha256": "43fa5374f1834161b31d997a5547cbbf56b166e0dd6370284bdc364a21d885a5",
+      "tests": 5,
+      "pass": 0,
+      "fail": 5,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "existingFighterSuite": {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/fighter-presentation-regressions.tap",
+      "sha256": "f4db9770c3dc1192512d262a0a06007a0ea859397c98270838eadc64a2170949",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "browserCases": 10,
+    "browserScope": "Prepared outcomes and true engine/renderer, two sides and viewport1280/390, paused time and disposal, original-source technical alias before/after. Not a complete campaign, full App or mobile UI certification."
+  },
+  "decision": "ACCEPT_BOUNDED_REVIEWED_BASE16_CLIPS_AND_KO_PRESENTATION_FIX",
+  "remaining": [
+    "Dedicated phase artwork",
+    "Canonical cinematic timings/choreography",
+    "Defeat/fatality/round-specific clips for Revan",
+    "Other39reserved presentation actors",
+    "Global animation and visual review"
+  ],
+  "sourceLedgerFindingsClosed": 0,
+  "fullActorClosures": 0,
+  "artApprovals": 0,
+  "visual1to1Verified": false
+}

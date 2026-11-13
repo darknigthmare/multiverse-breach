@@ -1,0 +1,426 @@
+{
+  "scope": "Exact Marcus and Chell source and actual Extinction consumer state before/after, no source mutation or ownership change.",
+  "rows": [
+    {
+      "id": "marcus",
+      "incarnation": null,
+      "weaponType": "chainsaw",
+      "equipment": null,
+      "stats": {
+        "hp": 160,
+        "atk": 15,
+        "def": 12,
+        "spd": 4
+      },
+      "raw": {
+        "simple": {
+          "name": "Lancer Fire",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Chainsaw Lunge",
+          "type": "melee",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Roadie Cover",
+          "type": "shield",
+          "dur": 2.5,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Hammer of Dawn",
+          "type": "beam_aoe",
+          "dmg": 5,
+          "color": "#ff4500"
+        }
+      },
+      "profile": {
+        "eligible": true,
+        "reviewStatus": "SOURCE_TYPE_ADAPTED_ART_PENDING",
+        "resource": {
+          "kind": "ammo",
+          "status": "GAME_BALANCE_ADAPTATION",
+          "reload": true
+        },
+        "actions": {
+          "simple": {
+            "slot": "simple",
+            "name": "Lancer Fire",
+            "sourceType": "bullet",
+            "kind": "hitscan",
+            "cooldown": 20,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 28,
+            "range": 24,
+            "color": "#ff4500",
+            "resource": "ammo",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.simple",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "secondary": {
+            "slot": "secondary",
+            "name": "Chainsaw Lunge",
+            "sourceType": "melee",
+            "kind": "melee",
+            "cooldown": 480,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 62,
+            "range": 3.2,
+            "color": "#ff4500",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.secondary",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "defense": {
+            "slot": "defense",
+            "name": "Roadie Cover",
+            "sourceType": "shield",
+            "kind": "guard",
+            "cooldown": 360,
+            "duration": 150,
+            "reduction": 0.8,
+            "damage": 28,
+            "range": 0,
+            "color": "#ff4500",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.defense",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "special": {
+            "slot": "special",
+            "name": "Hammer of Dawn",
+            "sourceType": "beam_aoe",
+            "kind": "beam",
+            "cooldown": 720,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 140,
+            "range": 24,
+            "color": "#ff4500",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.special",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          }
+        }
+      },
+      "primary": {
+        "result": {
+          "activated": true,
+          "action": {
+            "slot": "simple",
+            "name": "Lancer Fire",
+            "sourceType": "bullet",
+            "kind": "hitscan",
+            "cooldown": 20,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 28,
+            "range": 24,
+            "color": "#ff4500",
+            "resource": "ammo",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.simple",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "damage": 28
+        },
+        "ammo": 23,
+        "resource": "ammo",
+        "schematic": {
+          "source": "personal",
+          "ownerId": "marcus",
+          "weaponType": "pistol",
+          "kind": "hitscan",
+          "style": "ballistic",
+          "color": "#ff4500",
+          "phase": "attack",
+          "activation": 1,
+          "cooldown": 20,
+          "reload": 0,
+          "readyFraction": 0,
+          "resource": "ammo",
+          "resourceFraction": 0.9583333333333334,
+          "artwork": false,
+          "morphologyInferred": false
+        },
+        "aim": {
+          "source": "personal",
+          "kind": "hitscan",
+          "shape": "ranged",
+          "readiness": "ready",
+          "condition": "target",
+          "targetId": "target",
+          "targetCondition": "target",
+          "range": 24,
+          "readyFraction": 1,
+          "command": "TIRER",
+          "name": "Lancer Fire",
+          "label": "EN VUE",
+          "detail": "Une menace visible est dans la portée et la zone de cette action."
+        }
+      },
+      "defense": {
+        "result": {
+          "activated": true,
+          "action": {
+            "slot": "defense",
+            "name": "Roadie Cover",
+            "sourceType": "shield",
+            "kind": "guard",
+            "cooldown": 360,
+            "duration": 150,
+            "reduction": 0.8,
+            "damage": 28,
+            "range": 0,
+            "color": "#ff4500",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#marcus.defense",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "damage": 28
+        },
+        "guard": 150,
+        "reduction": 0.8,
+        "damageAfterGuard": 19.999999999999996
+      }
+    },
+    {
+      "id": "chell",
+      "incarnation": null,
+      "weaponType": "portalgun",
+      "equipment": null,
+      "stats": {
+        "hp": 120,
+        "atk": 12,
+        "def": 7,
+        "spd": 8
+      },
+      "raw": {
+        "simple": {
+          "name": "Portal Fling",
+          "type": "projectile",
+          "dmg": 0.9
+        },
+        "secondary": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Portal Redirect",
+          "type": "dodge",
+          "dur": 2,
+          "reduce": 0.9
+        },
+        "special": {
+          "name": "Neurotoxin Vent",
+          "type": "poison",
+          "dmg": 4.4
+        }
+      },
+      "profile": {
+        "eligible": true,
+        "reviewStatus": "SOURCE_TYPE_ADAPTED_ART_PENDING",
+        "resource": {
+          "kind": "cooldown",
+          "status": "GAME_BALANCE_ADAPTATION",
+          "reload": false
+        },
+        "actions": {
+          "simple": {
+            "slot": "simple",
+            "name": "Portal Fling",
+            "sourceType": "projectile",
+            "kind": "projectile",
+            "cooldown": 20,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 25,
+            "range": 24,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.simple",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "secondary": {
+            "slot": "secondary",
+            "name": "Turret Summon",
+            "sourceType": "summon",
+            "kind": "summon",
+            "cooldown": 420,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 50,
+            "range": 8,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.secondary",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "defense": {
+            "slot": "defense",
+            "name": "Portal Redirect",
+            "sourceType": "dodge",
+            "kind": "guard",
+            "cooldown": 360,
+            "duration": 120,
+            "reduction": 0.9,
+            "damage": 28,
+            "range": 0,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.defense",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "special": {
+            "slot": "special",
+            "name": "Neurotoxin Vent",
+            "sourceType": "poison",
+            "kind": "cone",
+            "cooldown": 720,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 123,
+            "range": 9,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.special",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          }
+        }
+      },
+      "primary": {
+        "result": {
+          "activated": true,
+          "action": {
+            "slot": "simple",
+            "name": "Portal Fling",
+            "sourceType": "projectile",
+            "kind": "projectile",
+            "cooldown": 20,
+            "duration": 180,
+            "reduction": 0.6,
+            "damage": 25,
+            "range": 24,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.simple",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "damage": 25
+        },
+        "ammo": 24,
+        "resource": "cooldown",
+        "schematic": {
+          "source": "personal",
+          "ownerId": "chell",
+          "weaponType": "pistol",
+          "kind": "projectile",
+          "style": "projectile",
+          "color": "#ffffff",
+          "phase": "attack",
+          "activation": 1,
+          "cooldown": 20,
+          "reload": 0,
+          "readyFraction": 0,
+          "resource": "cooldown",
+          "resourceFraction": 0,
+          "artwork": false,
+          "morphologyInferred": false
+        },
+        "aim": {
+          "source": "personal",
+          "kind": "projectile",
+          "shape": "projectile",
+          "readiness": "ready",
+          "condition": "flight",
+          "targetId": "target",
+          "targetCondition": "target",
+          "range": 24,
+          "readyFraction": 1,
+          "command": "LANCER",
+          "name": "Portal Fling",
+          "label": "ANTICIPE",
+          "detail": "Une menace croise la trajectoire actuelle. Anticipe son mouvement ; seul le contact réel produit un impact."
+        }
+      },
+      "defense": {
+        "result": {
+          "activated": true,
+          "action": {
+            "slot": "defense",
+            "name": "Portal Redirect",
+            "sourceType": "dodge",
+            "kind": "guard",
+            "cooldown": 360,
+            "duration": 120,
+            "reduction": 0.9,
+            "damage": 28,
+            "range": 0,
+            "color": "#ffffff",
+            "resource": "cooldown",
+            "splash": 0,
+            "sourcePath": "src/game/heroes.js#chell.defense",
+            "sourceReference": "",
+            "adaptationStatus": "SOURCE_TYPE_ADAPTED",
+            "sourceDelivery": null,
+            "sourcePresentation": null
+          },
+          "damage": 28
+        },
+        "guard": 120,
+        "reduction": 0.9,
+        "damageAfterGuard": 9.999999999999998
+      }
+    }
+  ]
+}

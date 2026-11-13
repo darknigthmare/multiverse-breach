@@ -1,0 +1,297 @@
+TAP version 13
+# (node:176432) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: reviewed Revan has an explicit intro clip on the accepted base16
+ok 1 - reviewed Revan has an explicit intro clip on the accepted base16
+  ---
+  duration_ms: 2.439108
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit outro clip on the accepted base16
+ok 2 - reviewed Revan has an explicit outro clip on the accepted base16
+  ---
+  duration_ms: 0.472633
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit victory clip on the accepted base16
+ok 3 - reviewed Revan has an explicit victory clip on the accepted base16
+  ---
+  duration_ms: 0.764873
+  type: 'test'
+  ...
+# Subtest: the new clips neither authorize another edition nor expose unreviewed native48 artwork
+not ok 4 - the new clips neither authorize another edition nor expose unreviewed native48 artwork
+  ---
+  duration_ms: 2.913433
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/reviewedRevanPresentation20261113.test.mjs:38:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   actor: {
+    +     alternateIncarnations: [
+    +       'KOTOR II costume reference: two lightsabers, one red and one purple',
+    +       'SWTOR: Fallen Revan red blade and Redeemed Revan purple blade are separately listed',
+    +       'LEGO Rebuild the Galaxy (2025): red-and-purple dual-wield cameo'
+    +     ],
+    +     canonStatus: 'legends',
+    +     cat: 'tactical',
+    +     category: 'tactical',
+    +     color: '#282329',
+    +     costumeParts: [
+    +       'KOTOR I Revan Mask (weathered rust red and graphite, two-pronged chin)',
+    +       'Dark Hood and Capelet',
+    +       'Armored Cuirass and Vambraces'
+    +     ],
+    +     defense: {
+    +       dmg: 0,
+    +       dur: 2.2,
+    +       name: 'Revanite Mask Focus',
+    +       reduce: 0.86,
+    +       type: 'shield'
+    +     },
+    +     equipment: [
+    +       'Red Lightsaber'
+    +     ],
+    +     equipmentEvidenceStatus: 'KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE',
+    +     equipmentSource: '501st CRL: KOTOR I permits a single red blade, KOTOR II depicts two red/purple blades; SWTOR hilts are a separate edition. Approved cosplay reference only, not an in-game art certificate.',
+    +     id: 'darth_revan',
+    +     incarnation: 'Star Wars: Knights of the Old Republic II',
+    +     name: 'Darth Revan',
+    +     primaryColor: '#282329',
+    +     referenceUrl: 'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii',
+    +     referenceUrls: [
+    +       'https://www.starwars.com/games-apps/knights-of-the-old-republic',
+    +       'https://www.swtor.com/info/news/article/20201209-0',
+    +       'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts'
+    +     ],
+    +     secondary: {
+    +       cd: 6,
+    +       dmg: 1.95,
+    +       name: 'Force Reversal',
+    +       type: 'force'
+    +     },
+    +     secondaryColor: '#8f4dff',
+    +     simple: {
+    +       dmg: 1.14,
+    +       name: 'Red Saber Judgment',
+    +       type: 'melee'
+    +     },
+    +     special: {
+    +       color: '#8f4dff',
+    +       dmg: 4.95,
+    +       name: 'Star Forge Command',
+    +       type: 'force_aoe'
+    +     },
+    +     stats: {
+    +       atk: 16,
+    +       def: 9,
+    +       hp: 138,
+    +       spd: 7
+    +     },
+    +     universe: 'Star Wars',
+    +     visualAnchor: 'KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask',
+    +     weaponColor: '#ff4242',
+    +     weaponType: 'lightsaber'
+    +   },
+    +   beats: [
+    +     {
+    +       at: 0,
+    +       frame: 0,
+    +       opacity: 1,
+    +       scale: 1,
+    +       state: 'idle',
+    +       x: 0,
+    +       y: 0
+    +     },
+    +     {
+    +       at: 0.34,
+    +       frame: 1,
+    +       opacity: 1,
+    +       scale: 1,
+    +       state: 'idle',
+    +       x: 0,
+    +       y: 0
+    +     },
+    +     {
+    +       at: 0.67,
+    +       frame: 2,
+    +       opacity: 1,
+    +       scale: 1,
+    +       state: 'idle',
+    +       x: 0,
+    +       y: 0
+    +     },
+    +     {
+    +       at: 1,
+    +       frame: 3,
+    +       opacity: 1,
+    +       scale: 1,
+    +       state: 'idle',
+    +       x: 0,
+    +       y: 0
+    +     }
+    +   ],
+    +   duration: 1.7,
+    +   effect: {
+    +     endsAt: 0.92,
+    +     kind: 'none',
+    +     startsAt: 0.25
+    +   },
+    +   heroId: 'darth_revan',
+    +   id: 'darth_revan:intro:authored-v1',
+    +   missingAssets: [],
+    +   name: 'Darth Revan : préparation de Taille au sabre rouge de Revan',
+    +   phase: 'intro',
+    +   provenance: {
+    +     canonicalSequence: false,
+    +     kind: 'explicit-character-presentation',
+    +     networkVerified: false,
+    +     visualFidelity: 'existing-character-frames-and-authored-choreography'
+    +   },
+    +   sourceAction: 'Darth Revan : préparation de Taille au sabre rouge de Revan',
+    +   sourceReference: 'Star Wars: Knights of the Old Republic (2003), masked Darth Revan in the selected dark-side armour. https://www.starwars.com/databank/revan. Native drawings and bounded engine mechanics are adaptations; source 1:1 is not certified.',
+    +   universe: 'Star Wars'
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    id: 'darth_revan:intro:authored-v1'
+    heroId: 'darth_revan'
+    universe: 'Star Wars'
+    phase: 'intro'
+    name: 'Darth Revan : préparation de Taille au sabre rouge de Revan'
+    sourceAction: 'Darth Revan : préparation de Taille au sabre rouge de Revan'
+    sourceReference: 'Star Wars: Knights of the Old Republic (2003), masked Darth Revan in the selected dark-side armour. https://www.starwars.com/databank/revan. Native drawings and bounded engine mechanics are adaptations; source 1:1 is not certified.'
+    duration: 1.7
+    beats:
+      0:
+        at: 0
+        state: 'idle'
+        frame: 0
+        x: 0
+        y: 0
+        scale: 1
+        opacity: 1
+      1:
+        at: 0.34
+        state: 'idle'
+        frame: 1
+        x: 0
+        y: 0
+        scale: 1
+        opacity: 1
+      2:
+        at: 0.67
+        state: 'idle'
+        frame: 2
+        x: 0
+        y: 0
+        scale: 1
+        opacity: 1
+      3:
+        at: 1
+        state: 'idle'
+        frame: 3
+        x: 0
+        y: 0
+        scale: 1
+        opacity: 1
+    effect:
+      kind: 'none'
+      startsAt: 0.25
+      endsAt: 0.92
+    missingAssets:
+    provenance:
+      kind: 'explicit-character-presentation'
+      canonicalSequence: false
+      networkVerified: false
+      visualFidelity: 'existing-character-frames-and-authored-choreography'
+    actor:
+      id: 'darth_revan'
+      name: 'Darth Revan'
+      cat: 'tactical'
+      color: '#282329'
+      primaryColor: '#282329'
+      secondaryColor: '#8f4dff'
+      weaponType: 'lightsaber'
+      weaponColor: '#ff4242'
+      stats:
+        hp: 138
+        atk: 16
+        def: 9
+        spd: 7
+      simple:
+        name: 'Red Saber Judgment'
+        type: 'melee'
+        dmg: 1.14
+      secondary:
+        name: 'Force Reversal'
+        type: 'force'
+        dmg: 1.95
+        cd: 6
+      defense:
+        name: 'Revanite Mask Focus'
+        type: 'shield'
+        dmg: 0
+        dur: 2.2
+        reduce: 0.86
+      special:
+        name: 'Star Forge Command'
+        type: 'force_aoe'
+        dmg: 4.95
+        color: '#8f4dff'
+      equipment:
+        0: 'Red Lightsaber'
+      incarnation: 'Star Wars: Knights of the Old Republic II'
+      canonStatus: 'legends'
+      costumeParts:
+        0: 'KOTOR I Revan Mask (weathered rust red and graphite, two-pronged chin)'
+        1: 'Dark Hood and Capelet'
+        2: 'Armored Cuirass and Vambraces'
+      alternateIncarnations:
+        0: 'KOTOR II costume reference: two lightsabers, one red and one purple'
+        1: 'SWTOR: Fallen Revan red blade and Redeemed Revan purple blade are separately listed'
+        2: 'LEGO Rebuild the Galaxy (2025): red-and-purple dual-wield cameo'
+      referenceUrl: 'https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii'
+      referenceUrls:
+        0: 'https://www.starwars.com/games-apps/knights-of-the-old-republic'
+        1: 'https://www.swtor.com/info/news/article/20201209-0'
+        2: 'https://www.starwars.com/news/lego-rebuild-the-galaxy-pieces-of-the-past-deep-cuts'
+      visualAnchor: 'KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask'
+      equipmentSource: '501st CRL: KOTOR I permits a single red blade, KOTOR II depicts two red/purple blades; SWTOR hilts are a separate edition. Approved cosplay reference only, not an in-game art certificate.'
+      equipmentEvidenceStatus: 'KOTOR1_VARIANTE_SITH_REFERENCE_COSTUME_VISUEL_NON_CERTIFIE'
+      universe: 'Star Wars'
+      category: 'tactical'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/reviewedRevanPresentation20261113.test.mjs:46:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+ok 5 - sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+  ---
+  duration_ms: 1.527684
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 4
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2775.273088

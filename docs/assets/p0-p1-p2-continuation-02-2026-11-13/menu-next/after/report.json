@@ -1,0 +1,270 @@
+{
+  "scope": "Exercise the actual Hub mission-directory callbacks with prepared parent state.\n\nThe all-DLC fixture is code only. No complete campaign, disk-save persistence,\nmedia distribution or art-fidelity certification is implied.\n",
+  "compiledFixture": {
+    "profile": {
+      "schemaVersion": 1,
+      "mode": "all",
+      "packIds": [],
+      "sharedPolicy": "preserve-all"
+    },
+    "sourceSha256": {
+      "src/components/HubScreen.jsx": "aec7935bca3eb976dbc01d3fd93979018d4eae8c94ea234c56f53c5328075e4a",
+      "src/components/MissionDirectory.jsx": "7cac0bd7602558ba85bea9092d3df339a5f38b077fd04ec5e5c60e00d0a0f35e",
+      "src/components/MissionDirectory.css": "f62d0ad642cc176a2c81bf2fd7ac103a32012515ef61f696f3dd69a4300dc54d",
+      "src/game/missionDirectoryView.js": "91f692a5712b3f4c03d419bd38c3ec233150116379506c122cb47571a7a3d98d",
+      "scripts/fixtures/missionDirectoryHarness.jsx": "0e8a3434b073015fbad7d3dd7b7888c1be2fdabdc5308a78ee932a499e77ea65"
+    },
+    "scope": "Actual production Hub and mission directory with prepared parent state, ordinary deployment/briefing callbacks and actual all-DLC source transformation. Code-only fixture; no campaign, save-file or media-distribution export."
+  },
+  "cases": [
+    {
+      "size": "desktop",
+      "lang": "fr",
+      "scale": 1,
+      "bodyFont": 15.0,
+      "resetFocus": {
+        "top": 722.078125,
+        "bottom": 768.078125,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 1440,
+      "scrollWidth": 1440,
+      "minButtonHeight": 44,
+      "selectFont": "14.0625px"
+    },
+    {
+      "size": "desktop",
+      "lang": "en",
+      "scale": 1,
+      "bodyFont": 15.0,
+      "resetFocus": {
+        "top": 722.078125,
+        "bottom": 768.078125,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 1440,
+      "scrollWidth": 1440,
+      "minButtonHeight": 44,
+      "selectFont": "14.0625px"
+    },
+    {
+      "size": "mobile",
+      "lang": "fr",
+      "scale": 1,
+      "bodyFont": 15.0,
+      "resetFocus": {
+        "top": 734.265625,
+        "bottom": 780.265625,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 44,
+      "selectFont": "14.0625px"
+    },
+    {
+      "size": "mobile",
+      "lang": "en",
+      "scale": 1,
+      "bodyFont": 15.0,
+      "resetFocus": {
+        "top": 734.265625,
+        "bottom": 780.265625,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 44,
+      "selectFont": "14.0625px"
+    },
+    {
+      "size": "mobile-150",
+      "lang": "fr",
+      "scale": 1.5,
+      "bodyFont": 22.5,
+      "resetFocus": {
+        "top": 721.71875,
+        "bottom": 779.71875,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 53.640625,
+      "selectFont": "21.0938px"
+    },
+    {
+      "size": "mobile-150",
+      "lang": "en",
+      "scale": 1.5,
+      "bodyFont": 22.5,
+      "resetFocus": {
+        "top": 721.71875,
+        "bottom": 779.71875,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 53.640625,
+      "selectFont": "21.0938px"
+    },
+    {
+      "size": "mobile-200",
+      "lang": "fr",
+      "scale": 2,
+      "bodyFont": 30.0,
+      "resetFocus": {
+        "top": 709.953125,
+        "bottom": 779.953125,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 64.1875,
+      "selectFont": "28.125px"
+    },
+    {
+      "size": "mobile-200",
+      "lang": "en",
+      "scale": 2,
+      "bodyFont": 30.0,
+      "resetFocus": {
+        "top": 709.5625,
+        "bottom": 779.5625,
+        "visible": true
+      },
+      "launchedStage": 47001,
+      "lockedBriefing": 47003,
+      "parentStateUnchanged": true,
+      "pageErrors": [],
+      "failedResponses": [],
+      "width": 390,
+      "scrollWidth": 390,
+      "minButtonHeight": 64.1875,
+      "selectFont": "28.125px"
+    },
+    {
+      "size": "mobile-150-real-route",
+      "lang": "fr",
+      "sourceCount": 60,
+      "visibleCount": 12,
+      "firstPageIds": [
+        "60000",
+        "60010",
+        "60020",
+        "60030",
+        "60040",
+        "60050",
+        "60060",
+        "60070",
+        "60080",
+        "60090",
+        "60100",
+        "60110"
+      ],
+      "secondPageIds": [
+        "60120",
+        "60130",
+        "60140",
+        "60150",
+        "60160",
+        "60170",
+        "60180",
+        "60190",
+        "60001",
+        "60002",
+        "60011",
+        "60012"
+      ],
+      "pageFocus": {
+        "top": 661.109375,
+        "bottom": 779.609375,
+        "visible": true
+      },
+      "parentStateUnchanged": true,
+      "pageErrors": []
+    },
+    {
+      "size": "mobile-150-real-route",
+      "lang": "en",
+      "sourceCount": 60,
+      "visibleCount": 12,
+      "firstPageIds": [
+        "60000",
+        "60010",
+        "60020",
+        "60030",
+        "60040",
+        "60050",
+        "60060",
+        "60070",
+        "60080",
+        "60090",
+        "60100",
+        "60110"
+      ],
+      "secondPageIds": [
+        "60120",
+        "60130",
+        "60140",
+        "60150",
+        "60160",
+        "60170",
+        "60180",
+        "60190",
+        "60001",
+        "60002",
+        "60011",
+        "60012"
+      ],
+      "pageFocus": {
+        "top": 661.109375,
+        "bottom": 779.609375,
+        "visible": true
+      },
+      "parentStateUnchanged": true,
+      "pageErrors": []
+    }
+  ],
+  "sourceSha256": {
+    "src/components/HubScreen.jsx": "aec7935bca3eb976dbc01d3fd93979018d4eae8c94ea234c56f53c5328075e4a",
+    "src/components/MissionDirectory.jsx": "7cac0bd7602558ba85bea9092d3df339a5f38b077fd04ec5e5c60e00d0a0f35e",
+    "src/components/MissionDirectory.css": "f62d0ad642cc176a2c81bf2fd7ac103a32012515ef61f696f3dd69a4300dc54d",
+    "src/game/missionDirectoryView.js": "91f692a5712b3f4c03d419bd38c3ec233150116379506c122cb47571a7a3d98d",
+    "scripts/fixtures/missionDirectoryHarness.jsx": "0e8a3434b073015fbad7d3dd7b7888c1be2fdabdc5308a78ee932a499e77ea65"
+  }
+}

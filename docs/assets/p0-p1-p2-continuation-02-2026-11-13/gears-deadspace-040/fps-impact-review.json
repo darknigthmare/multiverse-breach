@@ -1,0 +1,3177 @@
+{
+  "schemaVersion": 1,
+  "scope": "Read-only comparison of 15 reserved Gears of War/Dead Space heroes; no assets, identity IDs, source records, CG plans or runtime code modified.",
+  "baselineCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "currentCommit": "82a1f0035af46b85aac479a8a530963a28cfb219",
+  "baselineArtifact": {
+    "path": "baseline-runtime.json.gz",
+    "sha256": "499a08ca719b5e1f59b926605e9ce1c063d39369e7d2293194e2f3fef5dc0227"
+  },
+  "historicalModuleRoot": "/tmp/p0-p1-p2-final-b9e616b-source",
+  "historicalGraphVerification": "All present listed modules are byte-identical to the immutable 98991b161 Git source; historical getExtinctionFighterProfile is imported from that graph. Current runtime protocol module is byte-identical to historical and is shared for both exercise states.",
+  "sourcePins": [
+    {
+      "path": "src/game/extinctionFighterProfiles.js",
+      "beforeSha256": "146efd459680adb43a81cf3a114a1aab570803082ed95dd02ba981b3092c97c5",
+      "currentSha256": "4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc"
+    },
+    {
+      "path": "src/game/extinctionSignatures.js",
+      "beforeSha256": "1c2c36a3543ec20b1eddbd44910b91363c5ac3d2f95ce29f835c8f8b5f715dd1",
+      "currentSha256": "1c2c36a3543ec20b1eddbd44910b91363c5ac3d2f95ce29f835c8f8b5f715dd1"
+    },
+    {
+      "path": "src/game/extinctionContent.js",
+      "beforeSha256": "3fb8793b34373608a209188c74d6955192e4b005ded60af27f7d7a8d98c6ba1a",
+      "currentSha256": "3fb8793b34373608a209188c74d6955192e4b005ded60af27f7d7a8d98c6ba1a"
+    },
+    {
+      "path": "src/game/extinctionFieldDirectives.js",
+      "beforeSha256": "7b68e2f96ed1deb8b13b4d85d073689cfc44bb53802c037d3648e9200f04bbad",
+      "currentSha256": "7b68e2f96ed1deb8b13b4d85d073689cfc44bb53802c037d3648e9200f04bbad"
+    },
+    {
+      "path": "src/game/extinctionSchematicView.js",
+      "beforeSha256": "2783048672eb10285103e73e484093732028b11361f7aa05cff07cc63a10e90c",
+      "currentSha256": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191"
+    },
+    {
+      "path": "src/game/extinctionViewLayout.js",
+      "beforeSha256": "7a427033ae5e7366289a866ce7c1f24e4860850ae6d1b3ea74b1d0bf43757a9a",
+      "currentSha256": "7a427033ae5e7366289a866ce7c1f24e4860850ae6d1b3ea74b1d0bf43757a9a"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "beforeSha256": "12458ac40528d9e6123aa2d8dd6d8c76f0bfe483b556a79b7189ff0ef332e0be",
+      "currentSha256": "12458ac40528d9e6123aa2d8dd6d8c76f0bfe483b556a79b7189ff0ef332e0be"
+    },
+    {
+      "path": "src/game/heroes.js",
+      "beforeSha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+      "currentSha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/heroes.js",
+      "beforeSha256": "d58f2cca6431d1086152e142a8bc95bd67ca015961e5e2c169d19cfecf3dfee5",
+      "currentSha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e"
+    },
+    {
+      "path": "DLC/DeadSpace/data/heroes.js",
+      "beforeSha256": "abc2947730bea0d3a41de383e15444f7b887f1188ca8462b1102acbfe18b3707",
+      "currentSha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1"
+    },
+    {
+      "path": "DLC/GearsOfWar/data/actorSourceContracts.js",
+      "beforeSha256": null,
+      "currentSha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d"
+    },
+    {
+      "path": "DLC/DeadSpace/data/actorSourceContracts.js",
+      "beforeSha256": null,
+      "currentSha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc"
+    }
+  ],
+  "counts": {
+    "heroes": 15,
+    "actionsPerSide": 60,
+    "existingBulletToProjectile": 9,
+    "existingShotgunToProjectile": 0,
+    "intentionalPhysicalRifleCorrections": 2,
+    "supportPrimaries": 2,
+    "energyCutterPrimaries": 1,
+    "retainedUnchangedDuplicate": 1,
+    "defensesWithSourceTuningChanges": 12,
+    "guardDamageMetadataNormalized": 15
+  },
+  "findings": {
+    "existingBulletToProjectile": [
+      "marcus",
+      "dom",
+      "cole",
+      "anya_stroud",
+      "hoffman_cog",
+      "carmine_cog",
+      "carver",
+      "ellie",
+      "zach_hammond"
+    ],
+    "currentlyLostAmmoReloadOrHitscan": [],
+    "intentionalPhysicalRifleCorrections": [
+      "baird",
+      "kait_diaz"
+    ],
+    "defensesAllExecutable": true,
+    "notes": [
+      "Nine real previous bullet primaries need exact source-bound ammo/reload/hitscan compatibility, not a universal projectile fallback.",
+      "Baird and Kait require separately tested intentional physical-rifle FPS adapters: their old generic energy/melee actions are not the canon baseline to restore.",
+      "Isaac uses the 211-V Plasma Cutter and must remain outside ballistic rifle bindings. This review does not automatically approve visual fidelity or the timing of its energy projectile.",
+      "Nicole and Kendra have source-backed unarmed support profiles already effective in RPG/melee; their old pseudoattacks and ammo are not canon firearm behavior to restore.",
+      "The retained hammond_ds actor ID keeps its historical raw bullet primary and unresolved action review; do not merge it with zach_hammond.",
+      "All four actions are exercised independently with a fresh owned state, full special charge, a target one unit forward, and ninety ticks; immediate ammo, mitigation, damage and projectile counts are retained."
+    ],
+    "defenseTuningChanges": [
+      {
+        "id": "cole",
+        "fields": {
+          "reduction": {
+            "before": 0.8,
+            "current": 0.65
+          }
+        }
+      },
+      {
+        "id": "baird",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.45
+          }
+        }
+      },
+      {
+        "id": "anya_stroud",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.5
+          }
+        }
+      },
+      {
+        "id": "hoffman_cog",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.45
+          }
+        }
+      },
+      {
+        "id": "carmine_cog",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.5
+          }
+        }
+      },
+      {
+        "id": "kait_diaz",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.5
+          }
+        }
+      },
+      {
+        "id": "isaac",
+        "fields": {
+          "duration": {
+            "before": 150,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.85,
+            "current": 0.6
+          }
+        }
+      },
+      {
+        "id": "carver",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.8,
+            "current": 0.6
+          }
+        }
+      },
+      {
+        "id": "ellie",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.8,
+            "current": 0.5
+          }
+        }
+      },
+      {
+        "id": "nicole_brennan",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.45
+          }
+        }
+      },
+      {
+        "id": "zach_hammond",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.5
+          }
+        }
+      },
+      {
+        "id": "kendra_daniels",
+        "fields": {
+          "duration": {
+            "before": 120,
+            "current": 72
+          },
+          "reduction": {
+            "before": 0.75,
+            "current": 0.5
+          }
+        }
+      }
+    ],
+    "defenseTuningInterpretation": "All 15 defenses activate and mitigate damage. Changes in duration/reduction/cooldown are exact existing canonical source-profile projections; they are observable FPS balance changes, not unchanged historical FPS tuning. This report records them and does not label whole FPS profiles identical.",
+    "all120IndependentActivationsSucceeded": true,
+    "nineHistoricalAmmoRestorationsVerified": true,
+    "twoIntentionalPhysicalRifleCorrectionsVerified": true,
+    "guardDamageMetadataNormalized": [
+      {
+        "id": "marcus",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "dom",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "cole",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "baird",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "anya_stroud",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "hoffman_cog",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "carmine_cog",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "kait_diaz",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "isaac",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "carver",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "ellie",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "nicole_brennan",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "zach_hammond",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "kendra_daniels",
+        "before": 28,
+        "current": 0
+      },
+      {
+        "id": "hammond_ds",
+        "before": 28,
+        "current": 0
+      }
+    ],
+    "guardDamageMetadataExplanation": "The guard branch mitigates incoming damage and does not use this damage field to attack. The generic old numeric damage28 metadata becoming0 is separate from actual reduction/duration tuning."
+  },
+  "workingTreeConsumerFreeze": "Freeze3 source sha256 4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc; currentCommit identifies HEAD while sourcePins identify the exact reviewed working-tree files.",
+  "method": {
+    "node": "v22.23.5",
+    "heapMiB": 2048,
+    "cpu": 0,
+    "historicalProfileFunction": "getExtinctionFighterProfile from private historical module graph; exact module bytes checked against git show 98991b161",
+    "currentProfileFunction": "getExtinctionFighterProfile from working tree Freeze3",
+    "actorBefore": "Full raw actor from baseline-runtime.json.gz, originally captured from immutable source98991b161",
+    "actorCurrent": "HEROES_DB actual runtime lookup by exact id and universe; deep equality against frozen runtime-after.json.gz actor verified",
+    "runtimeExecution": "createExtinctionProtocolState + activateExtinctionProtocol + 90 ticks from unchanged extinctionSignatures.js; SHA equals historical source",
+    "state": "Fresh owned run per actor/slot/side, hp20/120 ammo24 reserve72, one target hp500 one unit forward, charge100",
+    "noChanges": "Only two new review artifacts were written inside the repository: fps-impact-review.json and its gzip details. No product/source/CG/asset edits."
+  },
+  "limitations": [
+    "Independent source/runtime adapter audit, not browser visual verification or art/1:1 certification.",
+    "Portal/Left4Dead16 heroes remain owned and tested by menus_logistics; this independent cohort covers exactly Gears/DeadSpace15.",
+    "The historical generic FPS raw action balance is compared explicitly; canonical RPG/melee profile equality remains separately proved by the lot delta and independent native review."
+  ],
+  "details": {
+    "path": "fps-impact-review-details.json.gz",
+    "bytes": 16040,
+    "sha256": "65f6a55ccc2a9d77d640e2acbc127b9377f23dd7a664db309de3c0919731410f",
+    "uncompressedSha256": "2cd9bc1f8a7f0728114dc942a582bdaeee27f49771e7513f7603a35be0d57348",
+    "content": "Full raw actions, complete before/current profiles, and immediate/90-tick observations for all120 independently executed actions."
+  },
+  "rows": [
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "id": "marcus",
+      "identity": {
+        "name": "Marcus Fenix",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor",
+        "weaponType": "chainsaw",
+        "equipment": [
+          "Lancer Mk2 assault rifle with chainsaw bayonet",
+          "COG combat armor",
+          "Hammer of Dawn targeting designator"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Lancer Fire",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Lancer Fire",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "marcus"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Lancer Fire",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Chainsaw Lunge",
+          "sourceType": "melee",
+          "kind": "melee",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Roadie Cover",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 150,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Hammer of Dawn",
+          "sourceType": "beam_aoe",
+          "kind": "beam",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 140,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Lancer Fire",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Chainsaw Lunge",
+          "sourceType": "melee",
+          "kind": "melee",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Roadie Cover",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 150,
+          "reduction": 0.8,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Hammer of Dawn",
+          "sourceType": "beam_aoe",
+          "kind": "beam",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 140,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 472
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 438
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 19.999999999999996,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 360,
+          "currentTargetHp90Ticks": 360
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "id": "dom",
+      "identity": {
+        "name": "Dom Santiago",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 2 (2008), Dominic Santiago in Delta Squad armor",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk2",
+          "Gnasher shotgun",
+          "COG combat armor"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Lancer Cover Fire",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Lancer Cover Fire",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "dom"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Lancer Cover Fire",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Gnasher Breach Shot",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Brotherhood Last Stand",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Maria Memory Charge",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Lancer Cover Fire",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Gnasher Breach Shot",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Couvert rapproché de Dom",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Salve de Gnasher de Dom",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 472
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 450,
+          "currentTargetHp90Ticks": 450
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 19.999999999999996,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 371,
+          "currentTargetHp90Ticks": 371
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "id": "cole",
+      "identity": {
+        "name": "Augustus Cole",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 2 (2008), Augustus Cole in original Delta Squad armor",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk2",
+          "Gnasher shotgun",
+          "COG combat armor"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Thrashball Tackle",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir de Lancer de Cole",
+        "type": "projectile",
+        "dmg": 1.1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 640,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "cole"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Thrashball Tackle",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Boomshot Hype Shot",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Cole Train Brace",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Cole Train Runs On Whole Grain",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir de Lancer de Cole",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 31,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Tir rapproché de Gnasher de Cole",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 53,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Garde personnelle de Cole",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.65,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Assaut au Lancer de Cole",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 134,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 469
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 450,
+          "currentTargetHp90Ticks": 447
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 35,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 371,
+          "currentTargetHp90Ticks": 366
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "id": "baird",
+      "identity": {
+        "name": "Damon Baird",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 2 (2008), young Damon Baird in COG field armor",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk2",
+          "COG field maintenance tools",
+          "COG combat armor"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "INTENTIONAL_CANON_PHYSICAL_RIFLE_FPS_CORRECTION",
+      "sourceWeaponDeclaration": {
+        "kind": "physical-Lancer-rifle-with-intentional-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Damon Baird Signature Strike",
+        "type": "energy",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Lancer de Baird",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "baird"
+      },
+      "beforeResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Damon Baird Signature Strike",
+          "sourceType": "energy",
+          "kind": "projectile",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Damon Baird Breach Technique",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Damon Baird Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Damon Baird Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Lancer de Baird",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 34,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Vérification de l’équipement COG",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 150,
+          "reduction": 0.3,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Couvert du mécanicien COG",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.45,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Maintenance du matériel COG",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 720,
+          "duration": 300,
+          "reduction": 0.45,
+          "damage": 0,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 466
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 70,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 55.00000000000001,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 55.00000000000001,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 500
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "id": "anya_stroud",
+      "identity": {
+        "name": "Anya Stroud",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 3 (2011), Anya Stroud in frontline COG armor",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk2",
+          "COG combat armor"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Anya Stroud Signature Strike",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Lancer Mk2 d’Anya",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "anya_stroud"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Anya Stroud Signature Strike",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Anya Stroud Breach Technique",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Anya Stroud Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Anya Stroud Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Lancer Mk2 d’Anya",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 32,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Visée du Lancer d’Anya",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 52,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Mise à couvert d’Anya",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Rafale du Lancer d’Anya",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 130,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 468
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 448
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 370
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "id": "hoffman_cog",
+      "identity": {
+        "name": "Colonel Hoffman",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 2 (2008), Colonel Victor Hoffman during the Jacinto defense",
+        "weaponType": "gun",
+        "equipment": [
+          "COG officer beret",
+          "COG officer combat armor",
+          "Physical COG service firearm"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Colonel Hoffman Signature Strike",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Arme de service du colonel Hoffman",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "hoffman_cog"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Colonel Hoffman Signature Strike",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Colonel Hoffman Breach Technique",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Colonel Hoffman Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Colonel Hoffman Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Arme de service du colonel Hoffman",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 34,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Ordre de défense du commandement COG",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Position couverte du colonel",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.45,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Ordre de mise en défense de Hoffman",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 720,
+          "duration": 300,
+          "reduction": 0.45,
+          "damage": 0,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 466
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 55.00000000000001,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 55.00000000000001,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 500
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "id": "carmine_cog",
+      "identity": {
+        "name": "Carmine",
+        "universe": "Gears of War",
+        "incarnation": "Gears of War 3 (2011), specifically adult Clayton Carmine",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk2",
+          "Clayton Carmine COG helmet",
+          "Heavy COG armor"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Carmine Signature Strike",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Lancer de Clayton",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "carmine_cog"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Carmine Signature Strike",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Carmine Breach Technique",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Carmine Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Carmine Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Lancer de Clayton",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 32,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Visée du Lancer Mk2 de Clayton",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 52,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Garde du casque COG de Clayton",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Rafale du Lancer de Clayton Carmine",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 130,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 468
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 448
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 370
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "id": "kait_diaz",
+      "identity": {
+        "name": "Kait Diaz",
+        "universe": "Gears of War",
+        "incarnation": "Gears 5 (2019), adult Kait in the winter COG field outfit",
+        "weaponType": "gun",
+        "equipment": [
+          "Lancer Mk3",
+          "Winter COG armor with fur collar"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "INTENTIONAL_CANON_PHYSICAL_RIFLE_FPS_CORRECTION",
+      "sourceWeaponDeclaration": {
+        "kind": "physical-Lancer-rifle-with-intentional-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Kait Diaz Signature Strike",
+        "type": "melee",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Lancer Mk3 de Kait",
+        "type": "projectile",
+        "dmg": 1.15,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "kait_diaz"
+      },
+      "beforeResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Kait Diaz Signature Strike",
+          "sourceType": "melee",
+          "kind": "melee",
+          "cooldown": 26,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Kait Diaz Breach Technique",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Kait Diaz Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Kait Diaz Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Lancer Mk3 de Kait",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 32,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Visée de terrain du Lancer de Kait",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 52,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Mise à couvert de Kait",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Rafale du Lancer de Kait",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 130,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 468
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 448
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 370
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "id": "isaac",
+      "identity": {
+        "name": "Isaac Clarke",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space (2008), Isaac Clarke and level-3 engineering RIG",
+        "weaponType": "plasma_cutter",
+        "equipment": [
+          "211-V Plasma Cutter",
+          "Level-3 engineering RIG",
+          "Stasis and Kinesis modules"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "PLASMA_CUTTER_ENERGY_NOT_BALLISTIC_BINDING",
+      "sourceWeaponDeclaration": {
+        "kind": "energy-engineering-tool",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Cutter Vertical",
+        "type": "laser",
+        "dmg": 1.1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Plasma Cutter d’Isaac",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 580,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "isaac"
+      },
+      "beforeResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "currentResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Cutter Vertical",
+          "sourceType": "laser",
+          "kind": "beam",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 31,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Stasis Slowdown",
+          "sourceType": "gravity",
+          "kind": "focus",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 45,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "RIG Heavy Shield",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 150,
+          "reduction": 0.85,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Telekinetic Smash",
+          "sourceType": "gravity_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 137,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Plasma Cutter d’Isaac",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 34,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Réglage du Plasma Cutter",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Garde de l’ingénieur Isaac",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Tir ajusté du Plasma Cutter",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 134,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 469,
+          "currentTargetHp90Ticks": 466
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 455,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 15.000000000000002,
+          "currentMitigated100": 40,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 363,
+          "currentTargetHp90Ticks": 366
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "id": "carver",
+      "identity": {
+        "name": "John Carver",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space 3 (2013), John Carver in military RIG",
+        "weaponType": "gun",
+        "equipment": [
+          "Military RIG",
+          "Physical modular military rifle"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_3",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Security Rifle Burst",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du fusil militaire de Carver",
+        "type": "projectile",
+        "dmg": 1.2,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 600,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "carver"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Security Rifle Burst",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Co-op Stasis Shot",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Soldier Trauma Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Tau Volantis Push",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du fusil militaire de Carver",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 34,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Contrôle du chargeur de Carver",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Couvert du soldat Carver",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Rafale du fusil de Carver",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 134,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 466
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 450,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 40,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 371,
+          "currentTargetHp90Ticks": 366
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "id": "ellie",
+      "identity": {
+        "name": "Ellie Langford",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space 2 (2011), Ellie Langford in civilian pilot workwear",
+        "weaponType": "gun",
+        "equipment": [
+          "Physical rifle used for cover",
+          "Civilian pilot workwear"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_2",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Engineer Cover Shot",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du fusil d’Ellie",
+        "type": "projectile",
+        "dmg": 1.1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 560,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "ellie"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Engineer Cover Shot",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Ship Route Fix",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Eye Trauma Grit",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Sprawl Escape Vector",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du fusil d’Ellie",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 31,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Vérification du fusil d’Ellie",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Mise à couvert d’Ellie",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Tir de couverture d’Ellie",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 469
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 450,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 371,
+          "currentTargetHp90Ticks": 371
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "id": "nicole_brennan",
+      "identity": {
+        "name": "Nicole Brennan",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space (2008), living human medical officer Nicole Brennan",
+        "weaponType": "unarmed",
+        "equipment": [
+          "Medical uniform",
+          "Ordinary diagnostic datapad"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "CANON_UNARMED_SUPPORT_NOT_BALLISTIC",
+      "sourceWeaponDeclaration": {
+        "kind": "unarmed-technical-or-clinical-support",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Nicole Brennan Signature Strike",
+        "type": "energy",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Observation clinique de Nicole",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.08
+        },
+        "slot": "simple",
+        "sourceHeroId": "nicole_brennan"
+      },
+      "beforeResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "currentResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Nicole Brennan Signature Strike",
+          "sourceType": "energy",
+          "kind": "projectile",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Nicole Brennan Breach Technique",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Nicole Brennan Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Nicole Brennan Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Observation clinique de Nicole",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Consignes de sécurité médicale",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.25,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Refuge dans le poste médical Ishimura",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.45,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Consignes médicales de Nicole",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 720,
+          "duration": 240,
+          "reduction": 0.4,
+          "damage": 0,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 500
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 75,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 55.00000000000001,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 60,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 500
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "id": "zach_hammond",
+      "identity": {
+        "name": "Zach Hammond",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space (2008), security chief Zach Hammond",
+        "weaponType": "gun",
+        "equipment": [
+          "SWS Motorized Pulse Rifle",
+          "Original 2008 security RIG"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "EXISTING_BULLET_AMMO_HITSCAN_COMPATIBILITY",
+      "sourceWeaponDeclaration": {
+        "kind": "rifle-with-prior-ammo-hitscan",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Zach Hammond Signature Strike",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Tir du Pulse Rifle de Hammond",
+        "type": "projectile",
+        "dmg": 1,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "projectile",
+          "shape": "single",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "slot": "simple",
+        "sourceHeroId": "zach_hammond"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Zach Hammond Signature Strike",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Zach Hammond Breach Technique",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Zach Hammond Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Zach Hammond Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Tir du Pulse Rifle de Hammond",
+          "sourceType": "projectile",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo",
+          "sourceBallisticCompatibility": "exact-source-firearm-projectile-to-FPS-hitscan"
+        },
+        "secondary": {
+          "name": "Rafale du chef de sécurité",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 46,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Appui du RIG de Hammond",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Rafale du Pulse Rifle de Hammond",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 123,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 472
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 454
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 1,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 377
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "id": "kendra_daniels",
+      "identity": {
+        "name": "Kendra Daniels",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space (2008), original Kendra Daniels",
+        "weaponType": "terminal",
+        "equipment": [
+          "Handheld diagnostic pad",
+          "Original technical jumpsuit"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "CANON_UNARMED_SUPPORT_NOT_BALLISTIC",
+      "sourceWeaponDeclaration": {
+        "kind": "unarmed-technical-or-clinical-support",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Kendra Daniels Signature Strike",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Lecture de diagnostic de Kendra",
+        "type": "buff",
+        "dmg": 0,
+        "animationDuration": 0.55,
+        "hitAt": 0.2,
+        "targeting": {
+          "effect": "buff",
+          "delivery": "support",
+          "shape": "group",
+          "range": 760,
+          "targetSide": "ally",
+          "duration": 3,
+          "buffMultiplier": 1.08
+        },
+        "slot": "simple",
+        "sourceHeroId": "kendra_daniels"
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "cooldown",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": false
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Kendra Daniels Signature Strike",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Kendra Daniels Breach Technique",
+          "sourceType": "projectile",
+          "kind": "projectile",
+          "cooldown": 480,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 62,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Kendra Daniels Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.75,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Kendra Daniels Origin Burst",
+          "sourceType": "origin_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 126,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Lecture de diagnostic de Kendra",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "secondary": {
+          "name": "Repérage des circuits par Kendra",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 360,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "Retrait de l’ingénieure Daniels",
+          "sourceType": "guard",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 72,
+          "reduction": 0.5,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Relais technique de Kendra Daniels",
+          "sourceType": "buff",
+          "kind": "buff",
+          "cooldown": 720,
+          "duration": 240,
+          "reduction": 0.6,
+          "damage": 0,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 500
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 1,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 438,
+          "currentTargetHp90Ticks": 500
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 25,
+          "currentMitigated100": 50,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 374,
+          "currentTargetHp90Ticks": 500
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "id": "hammond_ds",
+      "identity": {
+        "name": "Zach Hammond",
+        "universe": "Dead Space",
+        "incarnation": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID",
+        "weaponType": "gun",
+        "equipment": [
+          "SWS Motorized Pulse Rifle",
+          "Original 2008 security RIG"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+        "sourceFidelityAudit": "gears-deadspace-040-2026-11-13"
+      },
+      "classification": "RETAINED_HISTORICAL_DUPLICATE_UNCHANGED_BULLET",
+      "sourceWeaponDeclaration": {
+        "kind": "retained-historical-rifle-adapter",
+        "basis": "Exact individual runtime source contract, existing resolved canonical action and selected source edition; no arbitrary projectile or weapon-name fallback."
+      },
+      "rawPrimaryBefore": {
+        "name": "Security Pulse Rifle",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "rawPrimaryCurrent": {
+        "name": "Security Pulse Rifle",
+        "type": "bullet",
+        "dmg": 1
+      },
+      "beforeResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "currentResource": {
+        "kind": "ammo",
+        "status": "GAME_BALANCE_ADAPTATION",
+        "reload": true
+      },
+      "actionsBefore": {
+        "simple": {
+          "name": "Security Pulse Rifle",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Bridge Order Mark",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "USG Command Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 28,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Escape Pod Sacrifice",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "actionsCurrent": {
+        "simple": {
+          "name": "Security Pulse Rifle",
+          "sourceType": "bullet",
+          "kind": "hitscan",
+          "cooldown": 20,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 28,
+          "resource": "ammo"
+        },
+        "secondary": {
+          "name": "Bridge Order Mark",
+          "sourceType": "signature",
+          "kind": "focus",
+          "cooldown": 420,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 50,
+          "resource": "cooldown"
+        },
+        "defense": {
+          "name": "USG Command Guard",
+          "sourceType": "shield",
+          "kind": "guard",
+          "cooldown": 360,
+          "duration": 120,
+          "reduction": 0.8,
+          "damage": 0,
+          "resource": "cooldown"
+        },
+        "special": {
+          "name": "Escape Pod Sacrifice",
+          "sourceType": "nexus_aoe",
+          "kind": "pulse",
+          "cooldown": 720,
+          "duration": 180,
+          "reduction": 0.6,
+          "damage": 129,
+          "resource": "cooldown"
+        }
+      },
+      "activationChecks": {
+        "simple": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 23,
+          "currentAmmo": 23,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 472,
+          "currentTargetHp90Ticks": 472
+        },
+        "secondary": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 450,
+          "currentTargetHp90Ticks": 450
+        },
+        "defense": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 19.999999999999996,
+          "currentMitigated100": 19.999999999999996,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 500,
+          "currentTargetHp90Ticks": 500
+        },
+        "special": {
+          "beforeActivated": true,
+          "currentActivated": true,
+          "beforeAmmo": 24,
+          "currentAmmo": 24,
+          "beforeMitigated100": 100,
+          "currentMitigated100": 100,
+          "beforeImmediateProjectiles": 0,
+          "currentImmediateProjectiles": 0,
+          "beforeTargetHp90Ticks": 371,
+          "currentTargetHp90Ticks": 371
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "reservedActors": 40,
+  "previouslyDeliveredPinkyNotCountedAgain": true,
+  "newRuntimeRastersInThisRecord": 1,
+  "newRuntimeRastersInThisTourLot": 2,
+  "newActorRaster": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+  "remainingMissingRastersInReservedLot": 37,
+  "newImageGeneration": true,
+  "output": "DLC/Doom/assets/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+  "publicUrl": "/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+  "sha256": "27b5a70ba6075a58bb03848e22240ec95b1ea7e0f2a8733f88c50e92f93c0ad9",
+  "bytes": 1222407,
+  "sourcePlan": "source-plan.json",
+  "generationReceipt": "generation/generation.json",
+  "technicalQa": "validation/mancubus-technical-qa.json",
+  "focusedNewTestsForThisActor": 4,
+  "finalClassicDoomTestsPassed": 12,
+  "realGameCanvasCasesPassed": 3,
+  "browserReport": "validation/browser/results.json",
+  "gameCanvasAfterCases": [
+    {
+      "case": "after-1280",
+      "pngHttpStatuses": [
+        200
+      ],
+      "pngSha256s": [
+        "27b5a70ba6075a58bb03848e22240ec95b1ea7e0f2a8733f88c50e92f93c0ad9"
+      ],
+      "rendererCells": 16,
+      "signatureContacts": 6,
+      "beforeCloudHp": 105,
+      "afterCloudHp": 81,
+      "chargeAfter": 0,
+      "receivedHitState": "hit",
+      "receivedActorHpBefore": 150,
+      "receivedActorHpAfter": 139,
+      "disposedVerifiedByDriver": true,
+      "unrelated404s": [
+        "/sprites/generated/items/doom/doom-summon.png",
+        "/sprites/generated/items/doom/praetor-helm.png"
+      ]
+    },
+    {
+      "case": "after-390",
+      "pngHttpStatuses": [
+        200
+      ],
+      "pngSha256s": [
+        "27b5a70ba6075a58bb03848e22240ec95b1ea7e0f2a8733f88c50e92f93c0ad9"
+      ],
+      "rendererCells": 16,
+      "signatureContacts": 6,
+      "beforeCloudHp": 105,
+      "afterCloudHp": 81,
+      "chargeAfter": 0,
+      "receivedHitState": "hit",
+      "receivedActorHpBefore": 150,
+      "receivedActorHpAfter": 138,
+      "disposedVerifiedByDriver": true,
+      "unrelated404s": [
+        "/sprites/generated/items/doom/doom-summon.png",
+        "/sprites/generated/items/doom/praetor-helm.png"
+      ]
+    }
+  ],
+  "parentReview": {
+    "status": "bounded-runtime-connection-and-scale-reviewed",
+    "reviewer": "root",
+    "evidence": [
+      "references/mancubus-classic-source.png",
+      "validation/mancubus-contact-96px.png",
+      "validation/browser/after-1280-fire-sequence.png",
+      "validation/browser/after-390-attack.png"
+    ],
+    "scope": "Parent inspected actual classic source, contact16 at96px, desktop signature and mobile attack. Dual forearm cannons/folded belly/hoses/short legs coherent; proportions/shading adapted. Raccord/scale accepted against six-contact/hash/hit-row receipts, without pixel1:1 or source choreography approval.",
+    "visualFidelityApproved": false
+  },
+  "artisticApproval": false,
+  "source1to1Verified": false,
+  "canonicalAnimationTimingVerified": false,
+  "fullActorClosed": false,
+  "productionBuildComplete": false,
+  "coreRendererOrSignatureKitChanged": false,
+  "integrationRemaining": [
+    "Parent owns DLC/global asset manifest refresh. Only the two new canonicalPNGs staged for existing QA server; no commit by this agent."
+  ]
+}

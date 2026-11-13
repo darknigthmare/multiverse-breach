@@ -1,0 +1,123 @@
+{
+  "baseCommit": "5667556bfb3d00e2cf9959c3d22c3038712cd5a2",
+  "builtFromWorkingTree": true,
+  "scope": "Actual application compilation for five distributions; no public media copy, prebuild or assembled full-media export.",
+  "checks": [
+    {
+      "profile": "all",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/all.json"
+      ],
+      "profileDocument": {
+        "schemaVersion": 1,
+        "mode": "all",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "exitCode": 0,
+      "seconds": 8.106
+    },
+    {
+      "profile": "base",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/base.json"
+      ],
+      "profileDocument": {
+        "schemaVersion": 1,
+        "mode": "base",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "exitCode": 0,
+      "seconds": 7.483
+    },
+    {
+      "profile": "portal",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "/tmp/continuation02-portal-profile.json"
+      ],
+      "profileDocument": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "portal"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "exitCode": 0,
+      "seconds": 6.83
+    },
+    {
+      "profile": "gears-deadspace",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "/tmp/continuation02-gears-deadspace-profile.json"
+      ],
+      "profileDocument": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "gears-of-war",
+          "dead-space"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "exitCode": 0,
+      "seconds": 7.32
+    },
+    {
+      "profile": "left4dead",
+      "command": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "/tmp/continuation02-left4dead-profile.json"
+      ],
+      "profileDocument": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "left4-dead"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "exitCode": 0,
+      "seconds": 7.18
+    }
+  ],
+  "checkedRuntimeInputFiles": 4341,
+  "changedDuringCompilation": [],
+  "inputManifest": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/app-bundle-inputs.json.gz",
+  "inputManifestSha256": "7299823b6a4d5b17889cae441c67fffd19f8d9c4b096cb9265367cbd2559a8fc"
+}

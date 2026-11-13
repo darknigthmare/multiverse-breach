@@ -1,0 +1,1766 @@
+
+> lively-darwin@0.0.0 test:tactics-verticality
+> node --test --test-concurrency=1 scripts/tacticsTerrain.test.mjs scripts/tacticsTerrainRenderer.test.mjs scripts/tacticsVerticalityUi.test.mjs scripts/tacticsVerticalIntegration.test.mjs scripts/tacticsVerticalEffects.test.mjs scripts/tacticsVerticalReview.test.mjs scripts/tacticsUniverseBattlefields.test.mjs scripts/tacticsUniversePresentation.test.mjs scripts/tacticsUniverseRouting.test.mjs scripts/tacticsUniverseRuntime.test.mjs scripts/tacticsUniverseWave15.test.mjs scripts/tacticsUniverseWave15Presentation.test.mjs scripts/tacticsUniverseWave15Routing.test.mjs scripts/tacticsUniverseWave15Runtime.test.mjs scripts/tacticsPhaselockWave15.test.mjs scripts/tacticsValHealingWave15.test.mjs scripts/tacticsUniverseWave16.test.mjs scripts/tacticsUniversePresentationWave16.test.mjs scripts/tacticsUniverseRoutingWave16.test.mjs scripts/tacticsUniverseRuntimeWave16.test.mjs scripts/tacticsSourceRuntimeWave16.test.mjs scripts/tacticsUniverseWave17.test.mjs scripts/tacticsUniversePresentationWave17.test.mjs scripts/tacticsUniverseRoutingWave17.test.mjs scripts/tacticsUniverseRuntimeWave17.test.mjs scripts/tacticsAperture20261113.test.mjs scripts/tacticsHistoricalAperture20261113.test.mjs
+
+TAP version 13
+# Subtest: each spawn, pickup and stacked recovery marker has a physically reachable authored support
+ok 1 - each spawn, pickup and stacked recovery marker has a physically reachable authored support
+  ---
+  duration_ms: 74.701904
+  type: 'test'
+  ...
+# Subtest: the same XY has two independently accessible levels and cannot teleport through a solid catwalk
+ok 2 - the same XY has two independently accessible levels and cannot teleport through a solid catwalk
+  ---
+  duration_ms: 10.401577
+  type: 'test'
+  ...
+# Subtest: the live Custom selector resolves the Portal sector while other engines and forced base keep their contracts
+ok 3 - the live Custom selector resolves the Portal sector while other engines and forced base keep their contracts
+  ---
+  duration_ms: 2.46151
+  type: 'test'
+  ...
+# Subtest: real engine movement charges AP, pauses in flight and finishes on the selected supported level
+ok 4 - real engine movement charges AP, pauses in flight and finishes on the selected supported level
+  ---
+  duration_ms: 25.445739
+  type: 'test'
+  ...
+# Subtest: real engine recovers the two same-XY markers exactly once and completes the objective
+ok 5 - real engine recovers the two same-XY markers exactly once and completes the objective
+  ---
+  duration_ms: 2.243611
+  type: 'test'
+  ...
+# Subtest: closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+ok 6 - closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+  ---
+  duration_ms: 4.042051
+  type: 'test'
+  ...
+# Subtest: exact new additions are proved before the complete historical W17 projections
+ok 7 - exact new additions are proved before the complete historical W17 projections
+  ---
+  duration_ms: 14.575707
+  type: 'test'
+  ...
+# Subtest: historical intermediate inventories with all Aperture additions absent remain accepted
+ok 8 - historical intermediate inventories with all Aperture additions absent remain accepted
+  ---
+  duration_ms: 17.297479
+  type: 'test'
+  ...
+# Subtest: new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+ok 9 - new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+  ---
+  duration_ms: 131.409253
+  type: 'test'
+  ...
+# Subtest: all three new material definitions and the complete biome profile are exact, never ID-only approval
+ok 10 - all three new material definitions and the complete biome profile are exact, never ID-only approval
+  ---
+  duration_ms: 6.162528
+  type: 'test'
+  ...
+# Subtest: an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+ok 11 - an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+  ---
+  duration_ms: 35.992084
+  type: 'test'
+  ...
+# Subtest: unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+ok 12 - unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+  ---
+  duration_ms: 10.412092
+  type: 'test'
+  ...
+# Subtest: projection never mutates or freezes caller data and preserves unrelated object identities
+ok 13 - projection never mutates or freezes caller data and preserves unrelated object identities
+  ---
+  duration_ms: 33.728383
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 14 - training_grid/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 26621.883465
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 15 - training_grid/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 23.226879
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 16 - training_grid/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 29.938525
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: paused contact has no effect or charge and resumes through the real command
+ok 17 - training_grid/hero: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 4.719294
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 18 - training_grid/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 24.090834
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 19 - training_grid/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 5.466711
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 20 - training_grid/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 5.650848
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 21 - training_grid/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 13.683887
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 22 - training_grid/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 22.01197
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: paused contact has no effect or charge and resumes through the real command
+ok 23 - training_grid/enemy: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 8.819054
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 24 - training_grid/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 14.586667
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 25 - training_grid/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 2.750546
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 26 - nexus_skybridge/hero: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 15.686786
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 27 - nexus_skybridge/hero: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 10.490473
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 28 - nexus_skybridge/hero: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 20.257275
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: paused contact has no effect or charge and resumes through the real command
+ok 29 - nexus_skybridge/hero: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 3.518314
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 30 - nexus_skybridge/hero: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 16.408885
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 31 - nexus_skybridge/hero: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 2.431625
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+ok 32 - nexus_skybridge/enemy: real Maya Phaselock accepts one opposing body, charges once and changes no HP/guard/buff
+  ---
+  duration_ms: 3.146653
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+ok 33 - nexus_skybridge/enemy: control survives frames and pause, blocks movement/actions, skips one target turn then expires
+  ---
+  duration_ms: 14.898227
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+ok 34 - nexus_skybridge/enemy: stale, dead, removed, friendly, empty and scenery targets preserve charge and turn
+  ---
+  duration_ms: 11.447535
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: paused contact has no effect or charge and resumes through the real command
+ok 35 - nexus_skybridge/enemy: paused contact has no effect or charge and resumes through the real command
+  ---
+  duration_ms: 4.083636
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+ok 36 - nexus_skybridge/enemy: secondary control uses its real cooldown and rejects boss, immune, invulnerable or already bound bodies
+  ---
+  duration_ms: 14.998839
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+ok 37 - nexus_skybridge/enemy: a contact on the active victim interrupts its current turn and invalidates pending AI
+  ---
+  duration_ms: 2.375351
+  type: 'test'
+  ...
+# Subtest: vertical/hero: opaque slabs and real 3D range reject Phaselock without taking charge
+ok 38 - vertical/hero: opaque slabs and real 3D range reject Phaselock without taking charge
+  ---
+  duration_ms: 3.198422
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: opaque slabs and real 3D range reject Phaselock without taking charge
+ok 39 - vertical/enemy: opaque slabs and real 3D range reject Phaselock without taking charge
+  ---
+  duration_ms: 8.97596
+  type: 'test'
+  ...
+# Subtest: vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses
+ok 40 - vertical/hero: lethal damage ends Phaselock before real revival without removing independent statuses
+  ---
+  duration_ms: 5.000668
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses
+ok 41 - vertical/enemy: lethal damage ends Phaselock before real revival without removing independent statuses
+  ---
+  duration_ms: 2.425506
+  type: 'test'
+  ...
+# Subtest: vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body
+ok 42 - vertical/hero: real Maya AI secondary pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 9.962377
+  type: 'test'
+  ...
+# Subtest: vertical/hero: real Maya AI special pays the authored cost and restrains its opposing body
+ok 43 - vertical/hero: real Maya AI special pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 8.463919
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body
+ok 44 - vertical/enemy: real Maya AI secondary pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 14.72726
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body
+ok 45 - vertical/enemy: real Maya AI special pays the authored cost and restrains its opposing body
+  ---
+  duration_ms: 10.403552
+  type: 'test'
+  ...
+# Subtest: vertical/hero: conventional AI retains its prior damage action and resource rules
+ok 46 - vertical/hero: conventional AI retains its prior damage action and resource rules
+  ---
+  duration_ms: 18.579777
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: conventional AI retains its prior damage action and resource rules
+ok 47 - vertical/enemy: conventional AI retains its prior damage action and resource rules
+  ---
+  duration_ms: 10.088888
+  type: 'test'
+  ...
+# Subtest: vertical Phaselock interrupts a real in-progress route at an actual support and never fires its old completion
+ok 48 - vertical Phaselock interrupts a real in-progress route at an actual support and never fires its old completion
+  ---
+  duration_ms: 6.685057
+  type: 'test'
+  ...
+# Subtest: Phaselock is an opt-in Maya control; conventional fixture damage keeps its normal combat profile
+ok 49 - Phaselock is an opt-in Maya control; conventional fixture damage keeps its normal combat profile
+  ---
+  duration_ms: 1.2469
+  type: 'test'
+  ...
+# Subtest: the held-body marker draws finite geometry at the actual support without changing control, HP or coordinates
+ok 50 - the held-body marker draws finite geometry at the actual support without changing control, HP or coordinates
+  ---
+  duration_ms: 0.845344
+  type: 'test'
+  ...
+# {"passed":true,"cases":68}
+# Subtest: W16 Tactics typed source mechanics: production-command fixtures
+ok 51 - W16 Tactics typed source mechanics: production-command fixtures
+  ---
+  duration_ms: 28682.758093
+  type: 'test'
+  ...
+# Subtest: legacy high tiles keep their flat altitude and declared terrain costs
+ok 52 - legacy high tiles keep their flat altitude and declared terrain costs
+  ---
+  duration_ms: 2.290271
+  type: 'test'
+  ...
+# Subtest: bridge and lower floor retain distinct identities and ambiguous XY is refused
+ok 53 - bridge and lower floor retain distinct identities and ambiguous XY is refused
+  ---
+  duration_ms: 2.268109
+  type: 'test'
+  ...
+# Subtest: ascending to the skybridge follows the authored staircase and spends its exact cost
+ok 54 - ascending to the skybridge follows the authored staircase and spends its exact cost
+  ---
+  duration_ms: 8.320742
+  type: 'test'
+  ...
+# Subtest: a weighted alternate route relaxes costs rather than locking the first visited node
+ok 55 - a weighted alternate route relaxes costs rather than locking the first visited node
+  ---
+  duration_ms: 0.516168
+  type: 'test'
+  ...
+# Subtest: the same material or layer name does not connect separated elevations
+ok 56 - the same material or layer name does not connect separated elevations
+  ---
+  duration_ms: 0.236667
+  type: 'test'
+  ...
+# Subtest: jumping is a declared movement capability and a walk link cannot teleport
+ok 57 - jumping is a declared movement capability and a walk link cannot teleport
+  ---
+  duration_ms: 0.491411
+  type: 'test'
+  ...
+# Subtest: a unit under a bridge occupies the lower surface without blocking its deck
+ok 58 - a unit under a bridge occupies the lower surface without blocking its deck
+  ---
+  duration_ms: 2.165303
+  type: 'test'
+  ...
+# Subtest: headroom tests the thin bridge underside and large footprints require actual support
+ok 59 - headroom tests the thin bridge underside and large footprints require actual support
+  ---
+  duration_ms: 0.769369
+  type: 'test'
+  ...
+# Subtest: sight passes below and above a bridge, while its actual slab blocks an inter-floor shot
+ok 60 - sight passes below and above a bridge, while its actual slab blocks an inter-floor shot
+  ---
+  duration_ms: 1.477657
+  type: 'test'
+  ...
+# Subtest: obstacles and intervening units block only the height occupied by their real volume
+ok 61 - obstacles and intervening units block only the height occupied by their real volume
+  ---
+  duration_ms: 0.953547
+  type: 'test'
+  ...
+# Subtest: ramp and stair heights agree with the drawn slope and four physical treads
+ok 62 - ramp and stair heights agree with the drawn slope and four physical treads
+  ---
+  duration_ms: 0.972336
+  type: 'test'
+  ...
+# Subtest: attack distance and height advantage use Z rather than the screen row
+ok 63 - attack distance and height advantage use Z rather than the screen row
+  ---
+  duration_ms: 0.661147
+  type: 'test'
+  ...
+# Subtest: malformed and duplicate surface definitions fail before a battle can use them
+ok 64 - malformed and duplicate surface definitions fail before a battle can use them
+  ---
+  duration_ms: 0.2388
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge has real access routes, bound resources and room for two-by-two bosses
+ok 65 - nexus_skybridge has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 1.80503
+  type: 'test'
+  ...
+# Subtest: ruined_terraces has real access routes, bound resources and room for two-by-two bosses
+ok 66 - ruined_terraces has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 1.250054
+  type: 'test'
+  ...
+# Subtest: cyber_catwalks has real access routes, bound resources and room for two-by-two bosses
+ok 67 - cyber_catwalks has real access routes, bound resources and room for two-by-two bosses
+  ---
+  duration_ms: 3.169848
+  type: 'test'
+  ...
+# Subtest: terrain corners, ramp heights and inset selection share the supplied camera projection
+ok 68 - terrain corners, ramp heights and inset selection share the supplied camera projection
+  ---
+  duration_ms: 2.283962
+  type: 'test'
+  ...
+# Subtest: an elevated bridge has only its thin fascia and distinct underside, leaving the passage empty
+ok 69 - an elevated bridge has only its thin fascia and distinct underside, leaving the passage empty
+  ---
+  duration_ms: 1.548604
+  type: 'test'
+  ...
+# Subtest: only the exposed interval of a cliff is drawn beside solid ground or an adjacent thin slab
+ok 70 - only the exposed interval of a cliff is drawn beside solid ground or an adjacent thin slab
+  ---
+  duration_ms: 1.823999
+  type: 'test'
+  ...
+# Subtest: material joins follow touching elevations and never join a bridge to a lower floor
+ok 71 - material joins follow touching elevations and never join a bridge to a lower floor
+  ---
+  duration_ms: 0.145168
+  type: 'test'
+  ...
+# Subtest: stairs use separate horizontal treads and closed stepped side walls rather than one sloping image
+ok 72 - stairs use separate horizontal treads and closed stepped side walls rather than one sloping image
+  ---
+  duration_ms: 0.600865
+  type: 'test'
+  ...
+# Subtest: picking chooses the visible bridge, rejects foreground walls and exposes the floor under a level cut
+ok 73 - picking chooses the visible bridge, rejects foreground walls and exposes the floor under a level cut
+  ---
+  duration_ms: 0.587526
+  type: 'test'
+  ...
+# Subtest: the shared painter graph masks an actor under the bridge while keeping its upper actor visible
+ok 74 - the shared painter graph masks an actor under the bridge while keeping its upper actor visible
+  ---
+  duration_ms: 0.836701
+  type: 'test'
+  ...
+# Subtest: surface overlays execute inside terrain ordering before a higher bridge and its actor
+ok 75 - surface overlays execute inside terrain ordering before a higher bridge and its actor
+  ---
+  duration_ms: 1.87728
+  type: 'test'
+  ...
+# Subtest: cover edges are visible open railings ordered behind and in front of the standing actor
+ok 76 - cover edges are visible open railings ordered behind and in front of the standing actor
+  ---
+  duration_ms: 0.814778
+  type: 'test'
+  ...
+# Subtest: eight exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 77 - eight exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 1.888587
+  type: 'test'
+  ...
+# Subtest: the eight sector topologies differ from each other and the earlier Nexus boards without relying on palette or IDs
+ok 78 - the eight sector topologies differ from each other and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 3.21823
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 79 - ff7_mt_nibel_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 66.685587
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 80 - ff13_archylte_steppe_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 45.819759
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 81 - ff15_vesperpool_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 31.798577
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 82 - lotr_caradhras_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 34.173427
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 83 - lotr_ithilien_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 35.441857
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 84 - darksouls_darkroot_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 28.081394
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 85 - masseffect_therum_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 30.463004
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 86 - halo_valhalla_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 41.791037
+  type: 'test'
+  ...
+# Subtest: Mt. Nibel has two real approaches and a thin maintenance bridge above a traversable floor
+ok 87 - Mt. Nibel has two real approaches and a thin maintenance bridge above a traversable floor
+  ---
+  duration_ms: 3.830373
+  type: 'test'
+  ...
+# Subtest: Archylte has negative-altitude travel, two accessible fords and actual cliff occlusion
+ok 88 - Archylte has negative-altitude travel, two accessible fords and actual cliff occlusion
+  ---
+  duration_ms: 2.642143
+  type: 'test'
+  ...
+# Subtest: Vesperpool deep water stays blocked while a broad costly ford admits a body that cannot use the narrow boardwalk
+ok 89 - Vesperpool deep water stays blocked while a broad costly ford admits a body that cannot use the narrow boardwalk
+  ---
+  duration_ms: 4.48502
+  type: 'test'
+  ...
+# Subtest: Caradhras has snow costs, an opaque mountain wall and a usable broad lower pass
+ok 90 - Caradhras has snow costs, an opaque mountain wall and a usable broad lower pass
+  ---
+  duration_ms: 1.963289
+  type: 'test'
+  ...
+# Subtest: Ithilien tree cover is a real sight blocker and the ravine crossing preserves two altitudes
+ok 91 - Ithilien tree cover is a real sight blocker and the ravine crossing preserves two altitudes
+  ---
+  duration_ms: 0.810391
+  type: 'test'
+  ...
+# Subtest: Darkroot objectives require the courtyard floor and the upper perimeter instead of a single flat destination
+ok 92 - Darkroot objectives require the courtyard floor and the upper perimeter instead of a single flat destination
+  ---
+  duration_ms: 2.293867
+  type: 'test'
+  ...
+# Subtest: Therum lava cannot become a walking tile and each relay has a legal, visible attack approach
+ok 93 - Therum lava cannot become a walking tile and each relay has a legal, visible attack approach
+  ---
+  duration_ms: 2.889355
+  type: 'test'
+  ...
+# Subtest: Valhalla offers costly shallow-water crossing and a separately reached Forerunner ridge
+ok 94 - Valhalla offers costly shallow-water crossing and a separately reached Forerunner ridge
+  ---
+  duration_ms: 2.791217
+  type: 'test'
+  ...
+# Subtest: the eight source sectors have dedicated deterministic environments with distinct geometry and no image reuse
+ok 95 - the eight source sectors have dedicated deterministic environments with distinct geometry and no image reuse
+  ---
+  duration_ms: 37.769977
+  type: 'test'
+  ...
+# Subtest: source-specific routes remain Tactics-only and malformed explicit source profiles are rejected
+ok 96 - source-specific routes remain Tactics-only and malformed explicit source profiles are rejected
+  ---
+  duration_ms: 0.422016
+  type: 'test'
+  ...
+# Subtest: legacy and Nexus Tactics boards receive honest original environments without changing their geometry
+ok 97 - legacy and Nexus Tactics boards receive honest original environments without changing their geometry
+  ---
+  duration_ms: 1.635996
+  type: 'test'
+  ...
+# Subtest: legacy cell art uses standalone Tactics tile atlases, with no shared full scene or other-engine tile path
+ok 98 - legacy cell art uses standalone Tactics tile atlases, with no shared full scene or other-engine tile path
+  ---
+  duration_ms: 1.148972
+  type: 'test'
+  ...
+# Subtest: forced base and suppressed DLC environments use only the Nexus profile and deterministic source-free scenery
+ok 99 - forced base and suppressed DLC environments use only the Nexus profile and deterministic source-free scenery
+  ---
+  duration_ms: 0.581005
+  type: 'test'
+  ...
+# Subtest: reduced motion freezes snow, mist and embers while simulation time owns animated scenery
+ok 100 - reduced motion freezes snow, mist and embers while simulation time owns animated scenery
+  ---
+  duration_ms: 1.852192
+  type: 'test'
+  ...
+# Subtest: source material families keep natural cliff strata distinct from architecture and preserve tile geometry
+ok 101 - source material families keep natural cliff strata distinct from architecture and preserve tile geometry
+  ---
+  duration_ms: 5.327309
+  type: 'test'
+  ...
+# Subtest: trees, boulders and source architecture draw at their real support without changing collision or HP
+ok 102 - trees, boulders and source architecture draw at their real support without changing collision or HP
+  ---
+  duration_ms: 1.464537
+  type: 'test'
+  ...
+# Subtest: all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+ok 103 - all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+  ---
+  duration_ms: 8.058856
+  type: 'test'
+  ...
+# Subtest: W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 104 - W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 21.84829
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 105 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 4.806344
+  type: 'test'
+  ...
+# Subtest: four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 106 - four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 0.900607
+  type: 'test'
+  ...
+# Subtest: all19 previous topologies and42 material definitions remain exact after the reviewed W17 and Aperture additions
+ok 107 - all19 previous topologies and42 material definitions remain exact after the reviewed W17 and Aperture additions
+  ---
+  duration_ms: 8.730308
+  type: 'test'
+  ...
+# Subtest: W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 108 - W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 19.091876
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 109 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 5.816106
+  type: 'test'
+  ...
+# Subtest: five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 110 - five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 0.877873
+  type: 'test'
+  ...
+# Subtest: historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+ok 111 - historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+  ---
+  duration_ms: 57.472182
+  type: 'test'
+  ...
+# Subtest: each source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 112 - each source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 8022.945223
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 113 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 0.612233
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 114 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 2.483302
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 115 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.641216
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 116 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.252421
+  type: 'test'
+  ...
+# Subtest: each W16 source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 117 - each W16 source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 6313.018297
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 118 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 3.171931
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 119 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 2.164763
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 120 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.390709
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 121 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.427214
+  type: 'test'
+  ...
+# Subtest: each W17 source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 122 - each W17 source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 5741.738172
+  type: 'test'
+  ...
+# Subtest: a named source location in another universe cannot silently select a foreign terrain
+ok 123 - a named source location in another universe cannot silently select a foreign terrain
+  ---
+  duration_ms: 0.401957
+  type: 'test'
+  ...
+# Subtest: custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+ok 124 - custom Tactics uses its actual terrain universe and location instead of an unrelated selected backdrop
+  ---
+  duration_ms: 1.882783
+  type: 'test'
+  ...
+# Subtest: custom automatic choice uses a dedicated source layout and survives preset normalization
+ok 125 - custom automatic choice uses a dedicated source layout and survives preset normalization
+  ---
+  duration_ms: 0.470601
+  type: 'test'
+  ...
+# Subtest: forced base arenas and authored mission objectives keep their explicit contracts
+ok 126 - forced base arenas and authored mission objectives keep their explicit contracts
+  ---
+  duration_ms: 0.359563
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 127 - ff7_mt_nibel_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 25948.014423
+  type: 'test'
+  ...
+# Subtest: ff7_mt_nibel_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 128 - ff7_mt_nibel_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.829878
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 129 - ff13_archylte_steppe_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 20.5771
+  type: 'test'
+  ...
+# Subtest: ff13_archylte_steppe_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 130 - ff13_archylte_steppe_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.611312
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 131 - ff15_vesperpool_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.053133
+  type: 'test'
+  ...
+# Subtest: ff15_vesperpool_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 132 - ff15_vesperpool_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.672385
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 133 - lotr_caradhras_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 8.443387
+  type: 'test'
+  ...
+# Subtest: lotr_caradhras_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 134 - lotr_caradhras_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 7.00462
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 135 - lotr_ithilien_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 10.389006
+  type: 'test'
+  ...
+# Subtest: lotr_ithilien_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 136 - lotr_ithilien_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.950614
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 137 - darksouls_darkroot_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 8.901155
+  type: 'test'
+  ...
+# Subtest: darksouls_darkroot_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 138 - darksouls_darkroot_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.143838
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 139 - masseffect_therum_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 19.338975
+  type: 'test'
+  ...
+# Subtest: masseffect_therum_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 140 - masseffect_therum_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 6.962416
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 141 - halo_valhalla_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.683692
+  type: 'test'
+  ...
+# Subtest: halo_valhalla_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 142 - halo_valhalla_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 3.633833
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 143 - nexus_skybridge: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 12.280134
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 144 - nexus_skybridge: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 7.458633
+  type: 'test'
+  ...
+# Subtest: training_grid: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 145 - training_grid: hero Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 6.803466
+  type: 'test'
+  ...
+# Subtest: training_grid: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+ok 146 - training_grid: enemy Typhoon stays actor-centred and rejects the diagonal outside its converted radius
+  ---
+  duration_ms: 8.478349
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: hero stale radial selection and an empty radius preserve charge and turn
+ok 147 - nexus_skybridge: hero stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 7.948951
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge: enemy stale radial selection and an empty radius preserve charge and turn
+ok 148 - nexus_skybridge: enemy stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 5.001953
+  type: 'test'
+  ...
+# Subtest: training_grid: hero stale radial selection and an empty radius preserve charge and turn
+ok 149 - training_grid: hero stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 7.152592
+  type: 'test'
+  ...
+# Subtest: training_grid: enemy stale radial selection and an empty radius preserve charge and turn
+ok 150 - training_grid: enemy stale radial selection and an empty radius preserve charge and turn
+  ---
+  duration_ms: 6.156222
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 151 - cuphead_inkwell_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 25032.387661
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 152 - cuphead_inkwell_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.210216
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 153 - titanfall_reclamation_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 22.97225
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 154 - titanfall_reclamation_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 8.931886
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 155 - fma_central_station_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.777914
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 156 - fma_central_station_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.368967
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 157 - wakfu_sadida_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 16.469916
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 158 - wakfu_sadida_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.769989
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 159 - bge_lighthouse_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 25565.113375
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 160 - bge_lighthouse_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.249522
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 161 - rayman_teensies_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 10.472198
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 162 - rayman_teensies_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 4.372247
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 163 - atomic_vdnh_gallery_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 20.672094
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 164 - atomic_vdnh_gallery_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 7.910577
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 165 - zootopia_rainforest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.955108
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 166 - zootopia_rainforest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.379054
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 167 - bge_lighthouse_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 131.39784
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 168 - rayman_teensies_forest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 125.045991
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 169 - atomic_vdnh_gallery_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 124.113996
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+ok 170 - zootopia_rainforest_tactics: real movement ascends from its authored spawn through successive AP-limited turns
+  ---
+  duration_ms: 91.776708
+  type: 'test'
+  ...
+# Subtest: four W15 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 171 - four W15 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 1.972782
+  type: 'test'
+  ...
+# Subtest: the four W15 sector topologies differ from each other, W14 and the earlier Nexus boards without relying on palette or IDs
+ok 172 - the four W15 sector topologies differ from each other, W14 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 4.790998
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 173 - ff8_dollet_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 91.569051
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 174 - re_spencer_courtyard_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 52.006622
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 175 - fallout_red_rock_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 48.499127
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 176 - halflife_white_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 129.439861
+  type: 'test'
+  ...
+# Subtest: Dollet has two control posts at the same XY, separate headroom, occluded sight and stairs to the upper gallery
+ok 177 - Dollet has two control posts at the same XY, separate headroom, occluded sight and stairs to the upper gallery
+  ---
+  duration_ms: 14.851565
+  type: 'test'
+  ...
+# Subtest: Spencer courtyard pool stays impassable while a thin upper passage admits human movement
+ok 178 - Spencer courtyard pool stays impassable while a thin upper passage admits human movement
+  ---
+  duration_ms: 0.853316
+  type: 'test'
+  ...
+# Subtest: Red Rock combines a three-level mesa, a negative-altitude wash and a solid overhang
+ok 179 - Red Rock combines a three-level mesa, a negative-altitude wash and a solid overhang
+  ---
+  duration_ms: 11.894721
+  type: 'test'
+  ...
+# Subtest: White Forest has two independent fords and a raised industrial crossing with physical pine cover
+ok 180 - White Forest has two independent fords and a raised industrial crossing with physical pine cover
+  ---
+  duration_ms: 4.862796
+  type: 'test'
+  ...
+# Subtest: four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+ok 181 - four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+  ---
+  duration_ms: 21.294482
+  type: 'test'
+  ...
+# Subtest: W15 environments cannot enter other engines and suppression removes source-specific art
+ok 182 - W15 environments cannot enter other engines and suppression removes source-specific art
+  ---
+  duration_ms: 0.631622
+  type: 'test'
+  ...
+# Subtest: Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+ok 183 - Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+  ---
+  duration_ms: 4.653861
+  type: 'test'
+  ...
+# Subtest: seven W15 materials paint real tops and cliff faces without changing geometry
+ok 184 - seven W15 materials paint real tops and cliff faces without changing geometry
+  ---
+  duration_ms: 8.652306
+  type: 'test'
+  ...
+# Subtest: every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+ok 185 - every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+  ---
+  duration_ms: 473.258899
+  type: 'test'
+  ...
+# Subtest: lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+ok 186 - lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+  ---
+  duration_ms: 2.490522
+  type: 'test'
+  ...
+# Subtest: each source location selects its own playable Tactics topology and materials without recent-stage substitution
+ok 187 - each source location selects its own playable Tactics topology and materials without recent-stage substitution
+  ---
+  duration_ms: 5195.061935
+  type: 'test'
+  ...
+# Subtest: W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image
+ok 188 - W15 sectors route through real custom preset auto and explicit selection while other engines retain their own image
+  ---
+  duration_ms: 20.757855
+  type: 'test'
+  ...
+# Subtest: W15 location matching and explicit goals keep universe/base-arena boundaries
+ok 189 - W15 location matching and explicit goals keep universe/base-arena boundaries
+  ---
+  duration_ms: 0.55738
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 190 - ff8_dollet_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 25648.022925
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 191 - ff8_dollet_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 6.331342
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 192 - re_spencer_courtyard_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 20.063377
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 193 - re_spencer_courtyard_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 10.886467
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 194 - fallout_red_rock_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 12.21611
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 195 - fallout_red_rock_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 2.413657
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+ok 196 - halflife_white_forest_tactics: real engine animates a legal route, charges exact AP and pauses at the actual surface
+  ---
+  duration_ms: 11.763619
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+ok 197 - halflife_white_forest_tactics: actual surface objective resolves through engine effects without rewriting counters
+  ---
+  duration_ms: 8.359508
+  type: 'test'
+  ...
+# Subtest: ff8_dollet_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 198 - ff8_dollet_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 18.429545
+  type: 'test'
+  ...
+# Subtest: re_spencer_courtyard_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 199 - re_spencer_courtyard_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 9.347062
+  type: 'test'
+  ...
+# Subtest: fallout_red_rock_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 200 - fallout_red_rock_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 8.329944
+  type: 'test'
+  ...
+# Subtest: halflife_white_forest_tactics: a real accepted ramp move animates feet through intermediate world heights
+ok 201 - halflife_white_forest_tactics: a real accepted ramp move animates feet through intermediate world heights
+  ---
+  duration_ms: 19.997328
+  type: 'test'
+  ...
+# Subtest: Dollet stacked control posts score only the exact occupied surface and ignore a rival on the other storey
+ok 202 - Dollet stacked control posts score only the exact occupied surface and ignore a rival on the other storey
+  ---
+  duration_ms: 8.386289
+  type: 'test'
+  ...
+# Subtest: four W16 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 203 - four W16 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 2.094656
+  type: 'test'
+  ...
+# Subtest: the four W16 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+ok 204 - the four W16 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 4.643848
+  type: 'test'
+  ...
+# Subtest: cuphead_inkwell_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 205 - cuphead_inkwell_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 90.403316
+  type: 'test'
+  ...
+# Subtest: titanfall_reclamation_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 206 - titanfall_reclamation_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 64.49491
+  type: 'test'
+  ...
+# Subtest: fma_central_station_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 207 - fma_central_station_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 93.403663
+  type: 'test'
+  ...
+# Subtest: wakfu_sadida_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 208 - wakfu_sadida_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 46.998066
+  type: 'test'
+  ...
+# Subtest: Inkwell separates a slow ford from its artifact bridge and admits only bodies fitting beneath the planks
+ok 209 - Inkwell separates a slow ford from its artifact bridge and admits only bodies fitting beneath the planks
+  ---
+  duration_ms: 3.232361
+  type: 'test'
+  ...
+# Subtest: World Foundry has two decks, negative-altitude maintenance access and a human-only low underpass
+ok 210 - World Foundry has two decks, negative-altitude maintenance access and a human-only low underpass
+  ---
+  duration_ms: 2.617826
+  type: 'test'
+  ...
+# Subtest: Central control posts share XY but keep separate floor occupancy, sight and physical rail-cutting routes
+ok 211 - Central control posts share XY but keep separate floor occupancy, sight and physical rail-cutting routes
+  ---
+  duration_ms: 3.028915
+  type: 'test'
+  ...
+# Subtest: Sadida extraction offers a canopy exit and a lower path while root slopes route around the flooded hollow
+ok 212 - Sadida extraction offers a canopy exit and a lower path while root slopes route around the flooded hollow
+  ---
+  duration_ms: 6.195983
+  type: 'test'
+  ...
+# Subtest: four W17 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+ok 213 - four W17 exclusive Tactics sectors bind actual roster universes to explicit source works without certifying official plans
+  ---
+  duration_ms: 2.046073
+  type: 'test'
+  ...
+# Subtest: the four W17 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+ok 214 - the four W17 sector topologies differ from each other, W14, W15 and the earlier Nexus boards without relying on palette or IDs
+  ---
+  duration_ms: 16.215198
+  type: 'test'
+  ...
+# Subtest: bge_lighthouse_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 215 - bge_lighthouse_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 76.378961
+  type: 'test'
+  ...
+# Subtest: rayman_teensies_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 216 - rayman_teensies_forest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 61.073633
+  type: 'test'
+  ...
+# Subtest: atomic_vdnh_gallery_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 217 - atomic_vdnh_gallery_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 75.208326
+  type: 'test'
+  ...
+# Subtest: zootopia_rainforest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+ok 218 - zootopia_rainforest_tactics: source-addressed spawns, scenery, pickups and mission routes are physically valid
+  ---
+  duration_ms: 44.859978
+  type: 'test'
+  ...
+# Subtest: Hillys gives its two markers distinct floors, real stairs, lower dock cost and an impassable sea
+ok 219 - Hillys gives its two markers distinct floors, real stairs, lower dock cost and an impassable sea
+  ---
+  duration_ms: 6.660759
+  type: 'test'
+  ...
+# Subtest: Legends keeps the curved root route above its slow ravine without bridging the missing shortcut
+ok 220 - Legends keeps the curved root route above its slow ravine without bridging the missing shortcut
+  ---
+  duration_ms: 4.984031
+  type: 'test'
+  ...
+# Subtest: VDNH has three independently supported levels, width-two stairs and a real height-limited service slab
+ok 221 - VDNH has three independently supported levels, width-two stairs and a real height-limited service slab
+  ---
+  duration_ms: 10.328796
+  type: 'test'
+  ...
+# Subtest: Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil
+ok 222 - Rainforest canopy extraction and broad lower route remain distinct, with a real pool and slower wet soil
+  ---
+  duration_ms: 6.624344
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: Healing Burst is a bounded zero-damage two-cell group heal
+ok 223 - training_grid/hero: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 26016.510674
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: real self-target command heals only nearby allies, once, with one charge and turn
+ok 224 - training_grid/hero: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 7.153353
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 225 - training_grid/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 21.375031
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 226 - training_grid/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 2.093791
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 227 - training_grid/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.683173
+  type: 'test'
+  ...
+# Subtest: training_grid/hero: the real AI uses Healing Burst on its own party and pays its special once
+ok 228 - training_grid/hero: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 253.586184
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+ok 229 - training_grid/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 2.901806
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+ok 230 - training_grid/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 2.795346
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 231 - training_grid/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 10.224253
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 232 - training_grid/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 1.6618
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 233 - training_grid/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.470853
+  type: 'test'
+  ...
+# Subtest: training_grid/enemy: the real AI uses Healing Burst on its own party and pays its special once
+ok 234 - training_grid/enemy: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 252.485563
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: Healing Burst is a bounded zero-damage two-cell group heal
+ok 235 - nexus_skybridge/hero: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 13.002574
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: real self-target command heals only nearby allies, once, with one charge and turn
+ok 236 - nexus_skybridge/hero: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 3.601599
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 237 - nexus_skybridge/hero: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 23.476954
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 238 - nexus_skybridge/hero: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 2.775817
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 239 - nexus_skybridge/hero: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 2.213651
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/hero: the real AI uses Healing Burst on its own party and pays its special once
+ok 240 - nexus_skybridge/hero: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 35.714748
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+ok 241 - nexus_skybridge/enemy: Healing Burst is a bounded zero-damage two-cell group heal
+  ---
+  duration_ms: 1.895592
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+ok 242 - nexus_skybridge/enemy: real self-target command heals only nearby allies, once, with one charge and turn
+  ---
+  duration_ms: 2.360431
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+ok 243 - nexus_skybridge/enemy: stale, dead, removed, hostile, empty, healthy and paused anchors spend nothing
+  ---
+  duration_ms: 12.152335
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+ok 244 - nexus_skybridge/enemy: secondary cooldown and radiated HP cap are respected without cleansing or hidden damage
+  ---
+  duration_ms: 2.190496
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+ok 245 - nexus_skybridge/enemy: opaque obstructions prevent the local heal and out-of-range recipients never join it
+  ---
+  duration_ms: 1.707419
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge/enemy: the real AI uses Healing Burst on its own party and pays its special once
+ok 246 - nexus_skybridge/enemy: the real AI uses Healing Burst on its own party and pays its special once
+  ---
+  duration_ms: 34.390084
+  type: 'test'
+  ...
+# Subtest: flat/hero: a healthy-party medic takes a defensive AI turn without spending her burst
+ok 247 - flat/hero: a healthy-party medic takes a defensive AI turn without spending her burst
+  ---
+  duration_ms: 1.715271
+  type: 'test'
+  ...
+# Subtest: flat/enemy: a healthy-party medic takes a defensive AI turn without spending her burst
+ok 248 - flat/enemy: a healthy-party medic takes a defensive AI turn without spending her burst
+  ---
+  duration_ms: 1.161177
+  type: 'test'
+  ...
+# Subtest: vertical/hero: Healing Burst respects stacked supports, floor opacity and 3D distance
+ok 249 - vertical/hero: Healing Burst respects stacked supports, floor opacity and 3D distance
+  ---
+  duration_ms: 2.309399
+  type: 'test'
+  ...
+# Subtest: vertical/enemy: Healing Burst respects stacked supports, floor opacity and 3D distance
+ok 250 - vertical/enemy: Healing Burst respects stacked supports, floor opacity and 3D distance
+  ---
+  duration_ms: 1.61516
+  type: 'test'
+  ...
+# Subtest: vertical commands resolve the selected source identity and convert pixel reach to bounded grid reach
+ok 251 - vertical commands resolve the selected source identity and convert pixel reach to bounded grid reach
+  ---
+  duration_ms: 24634.910811
+  type: 'test'
+  ...
+# Subtest: Bishop guards actual allies without damaging opponents or supporting through the bridge slab
+ok 252 - Bishop guards actual allies without damaging opponents or supporting through the bridge slab
+  ---
+  duration_ms: 21.454038
+  type: 'test'
+  ...
+# Subtest: opposing support consumes its own meter and only guards its own side
+ok 253 - opposing support consumes its own meter and only guards its own side
+  ---
+  duration_ms: 4.06803
+  type: 'test'
+  ...
+# Subtest: an explicit healer heals its real ally once and rejects enemy targets without consuming cooldown
+ok 254 - an explicit healer heals its real ally once and rejects enemy targets without consuming cooldown
+  ---
+  duration_ms: 6.554557
+  type: 'test'
+  ...
+# Subtest: a healing defense retains its declared ally targeting and never becomes a shield or attack
+ok 255 - a healing defense retains its declared ally targeting and never becomes a shield or attack
+  ---
+  duration_ms: 8.736765
+  type: 'test'
+  ...
+# Subtest: revival requires an unoccupied supported surface and never overlaps a living combatant
+ok 256 - revival requires an unoccupied supported surface and never overlaps a living combatant
+  ---
+  duration_ms: 5.219475
+  type: 'test'
+  ...
+# Subtest: guard and buff timers freeze in pause and preview uses the same guard reduction as damage
+ok 257 - guard and buff timers freeze in pause and preview uses the same guard reduction as damage
+  ---
+  duration_ms: 4.119307
+  type: 'test'
+  ...
+# Subtest: local pickup effects use the addressed floor and cannot heal, damage or trigger through a bridge
+ok 258 - local pickup effects use the addressed floor and cannot heal, damage or trigger through a bridge
+  ---
+  duration_ms: 1.767193
+  type: 'test'
+  ...
+# Subtest: a one-unit custom extraction keeps a reachable target and requires the actual extraction surface
+ok 259 - a one-unit custom extraction keeps a reachable target and requires the actual extraction surface
+  ---
+  duration_ms: 1.896868
+  type: 'test'
+  ...
+# Subtest: all three vertical boards are selectable in the real catalogue and pickups keep both floors
+ok 260 - all three vertical boards are selectable in the real catalogue and pickups keep both floors
+  ---
+  duration_ms: 28159.690642
+  type: 'test'
+  ...
+# Subtest: movement spends staircase AP, animates the real route, freezes on pause and cannot refund AP
+ok 261 - movement spends staircase AP, animates the real route, freezes on pause and cannot refund AP
+  ---
+  duration_ms: 14.82704
+  type: 'test'
+  ...
+# Subtest: two units at one XY remain separately occupied and targetable by floor
+ok 262 - two units at one XY remain separately occupied and targetable by floor
+  ---
+  duration_ms: 1.966744
+  type: 'test'
+  ...
+# Subtest: real shot resolution changes the lower target only and refuses a shot through the deck
+ok 263 - real shot resolution changes the lower target only and refuses a shot through the deck
+  ---
+  duration_ms: 17.468281
+  type: 'test'
+  ...
+# Subtest: the bridge blocks cross-floor shots even when a profile ignores ordinary line of sight
+ok 264 - the bridge blocks cross-floor shots even when a profile ignores ordinary line of sight
+  ---
+  duration_ms: 2.720201
+  type: 'test'
+  ...
+# Subtest: a large splash on the bridge does not damage the unit directly beneath its floor
+ok 265 - a large splash on the bridge does not damage the unit directly beneath its floor
+  ---
+  duration_ms: 4.262108
+  type: 'test'
+  ...
+# Subtest: a capture and extraction require their declared surface rather than an XY match
+ok 266 - a capture and extraction require their declared surface rather than an XY match
+  ---
+  duration_ms: 4.451726
+  type: 'test'
+  ...
+# Subtest: barrel damage keeps its source floor and does not cross the bridge slab
+ok 267 - barrel damage keeps its source floor and does not cross the bridge slab
+  ---
+  duration_ms: 1.623642
+  type: 'test'
+  ...
+# Subtest: hazard pulses respect the source volume even when their configured radius spans both floors
+ok 268 - hazard pulses respect the source volume even when their configured radius spans both floors
+  ---
+  duration_ms: 3.00892
+  type: 'test'
+  ...
+# Subtest: reinforcement candidate selection distinguishes a free deck from its occupied lower floor
+ok 269 - reinforcement candidate selection distinguishes a free deck from its occupied lower floor
+  ---
+  duration_ms: 1.56313
+  type: 'test'
+  ...
+# Subtest: view cuts change selection visibility without changing occupancy or damage rules
+ok 270 - view cuts change selection visibility without changing occupancy or damage rules
+  ---
+  duration_ms: 1.73428
+  type: 'test'
+  ...
+# Subtest: automatic heroes choose the physical staircase when their objective is on the bridge
+ok 271 - automatic heroes choose the physical staircase when their objective is on the bridge
+  ---
+  duration_ms: 86.003959
+  type: 'test'
+  ...
+# Subtest: real camera selection preserves surface identity after pan, zoom and an underside cut
+ok 272 - real camera selection preserves surface identity after pan, zoom and an underside cut
+  ---
+  duration_ms: 28.935807
+  type: 'test'
+  ...
+# Subtest: panning and zooming during a move reproject its current feet without advancing the path or snapping to its destination
+ok 273 - panning and zooming during a move reproject its current feet without advancing the path or snapping to its destination
+  ---
+  duration_ms: 12.247675
+  type: 'test'
+  ...
+# Subtest: headroom excludes tall units from the underpass and forced movement stops at the deck edge
+ok 274 - headroom excludes tall units from the underpass and forced movement stops at the deck edge
+  ---
+  duration_ms: 1.547236
+  type: 'test'
+  ...
+# Subtest: nexus_skybridge binds a six-boss custom roster to non-overlapping supported volumes
+ok 275 - nexus_skybridge binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 3.413837
+  type: 'test'
+  ...
+# Subtest: ruined_terraces binds a six-boss custom roster to non-overlapping supported volumes
+ok 276 - ruined_terraces binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 1.417027
+  type: 'test'
+  ...
+# Subtest: cyber_catwalks binds a six-boss custom roster to non-overlapping supported volumes
+ok 277 - cyber_catwalks binds a six-boss custom roster to non-overlapping supported volumes
+  ---
+  duration_ms: 1.927754
+  type: 'test'
+  ...
+# Subtest: automatic revival keeps the selected dead ally through final action validation
+ok 278 - automatic revival keeps the selected dead ally through final action validation
+  ---
+  duration_ms: 27611.849249
+  type: 'test'
+  ...
+# Subtest: an automatic attacker killed by its landing terrain cannot fire posthumously
+ok 279 - an automatic attacker killed by its landing terrain cannot fire posthumously
+  ---
+  duration_ms: 11.509546
+  type: 'test'
+  ...
+# Subtest: losing the moving active unit releases its turn while another ally is still alive
+ok 280 - losing the moving active unit releases its turn while another ally is still alive
+  ---
+  duration_ms: 10.642149
+  type: 'test'
+  ...
+# Subtest: group revival cannot create two living bodies on one vacated surface
+ok 281 - group revival cannot create two living bodies on one vacated surface
+  ---
+  duration_ms: 5.282831
+  type: 'test'
+  ...
+# Subtest: a valid elevated line anchor cannot extend damage beyond the declared spatial reach
+ok 282 - a valid elevated line anchor cannot extend damage beyond the declared spatial reach
+  ---
+  duration_ms: 8.510836
+  type: 'test'
+  ...
+# Subtest: a unit killed by its start-of-turn terrain cannot act or spend resources
+ok 283 - a unit killed by its start-of-turn terrain cannot act or spend resources
+  ---
+  duration_ms: 1.847074
+  type: 'test'
+  ...
+# Subtest: portals retain separate objective identities on two surfaces at one XY
+ok 284 - portals retain separate objective identities on two surfaces at one XY
+  ---
+  duration_ms: 2.63372
+  type: 'test'
+  ...
+# Subtest: artifact retain separate objective identities on two surfaces at one XY
+ok 285 - artifact retain separate objective identities on two surfaces at one XY
+  ---
+  duration_ms: 1.040549
+  type: 'test'
+  ...
+# Subtest: each playable vertical terrain survives setup, saved trace migration and a Tactics runtime launch
+ok 286 - each playable vertical terrain survives setup, saved trace migration and a Tactics runtime launch
+  ---
+  duration_ms: 27117.043445
+  type: 'test'
+  ...
+# Subtest: legacy presets remain automatic and malformed or inherited terrain IDs cannot select a map
+ok 287 - legacy presets remain automatic and malformed or inherited terrain IDs cannot select a map
+  ---
+  duration_ms: 26.169487
+  type: 'test'
+  ...
+# Subtest: terrain controls expose two distinct surfaces at one XY and an explicit confirmation
+ok 288 - terrain controls expose two distinct surfaces at one XY and an explicit confirmation
+  ---
+  duration_ms: 11.499521
+  type: 'test'
+  ...
+# Subtest: pause disables every terrain control and flat battlefields have no terrain panel
+ok 289 - pause disables every terrain control and flat battlefields have no terrain panel
+  ---
+  duration_ms: 1.696219
+  type: 'test'
+  ...
+# Subtest: a resource under a bridge cannot trigger from the upper surface or an ambiguous XY
+ok 290 - a resource under a bridge cannot trigger from the upper surface or an ambiguous XY
+  ---
+  duration_ms: 0.202526
+  type: 'test'
+  ...
+# Subtest: keyboard inspection preserves the nearest visible floor and respects empty map edges
+ok 291 - keyboard inspection preserves the nearest visible floor and respects empty map edges
+  ---
+  duration_ms: 0.726416
+  type: 'test'
+  ...
+1..291
+# tests 291
+# suites 0
+# pass 291
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 337776.014872
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

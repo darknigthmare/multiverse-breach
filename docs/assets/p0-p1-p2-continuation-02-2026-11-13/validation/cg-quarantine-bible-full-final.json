@@ -1,0 +1,939 @@
+{
+  "scope": "Actual integrated CG metadata runner and unchanged historical guards; separate real Bible/quarantine checks. This does not validate all absent historical CG pixels or certify art fidelity.",
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/cgCanonicalSpriteQuarantine.test.mjs",
+    "scripts/cgPilotBibleAuthority.test.mjs"
+  ],
+  "nodeVersion": "v22.23.5",
+  "beganAt": "2026-11-13T15:22:26.486067+00:00",
+  "elapsedSeconds": 158.4769415890005,
+  "exitCode": 0,
+  "counts": {
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "trackedSourceFiles": 113,
+  "sourcesChangedDuringRun": [],
+  "sourceSha256Before": {
+    "DLC/DeadSpace/data/actorSourceContracts.js": {
+      "bytes": 28904,
+      "sha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc"
+    },
+    "DLC/DeadSpace/data/heroes.js": {
+      "bytes": 2594,
+      "sha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1"
+    },
+    "DLC/DeadSpace/data/loreAccuratePacks.js": {
+      "bytes": 1939,
+      "sha256": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11"
+    },
+    "DLC/FinalFantasyVII/data/actorSourceContracts.js": {
+      "bytes": 9760,
+      "sha256": "6998a51162a01a871b547835de540797a2d259ff147847e0588a867c8ff8493f"
+    },
+    "DLC/FinalFantasyVII/data/expandedUniverses.js": {
+      "bytes": 1856,
+      "sha256": "62653badf5a0eb89653d90a7f9c83856e7f34f689efbdb155e817485fed9308c"
+    },
+    "DLC/FinalFantasyVII/data/heroes.js": {
+      "bytes": 698,
+      "sha256": "a9a843b05845f5e7198c942a247e7220ddef1cb6b24193bee5b9a61325b82aff"
+    },
+    "DLC/FinalFantasyVIII/data/actorSourceContracts.js": {
+      "bytes": 10281,
+      "sha256": "911441e7c877f7abec1aabb2332f4a6e111fd7df0483e97378a3034e869967d7"
+    },
+    "DLC/FinalFantasyVIII/data/expandedUniverses.js": {
+      "bytes": 1836,
+      "sha256": "dd0cb708d587c831f8d18843022ed2aab0e43cc523b036a6e7824c2490542d95"
+    },
+    "DLC/FinalFantasyVIII/data/heroes.js": {
+      "bytes": 1375,
+      "sha256": "5b5310e8b72c98c90cfdc111617a6120902d57a70e5c38ad877abcba3305c689"
+    },
+    "DLC/FinalFantasyXIII/data/actorSourceContracts.js": {
+      "bytes": 8335,
+      "sha256": "21d11ebc2af58de354df89290071ee63e16e6852550caff268395c1b9f1532c7"
+    },
+    "DLC/FinalFantasyXIII/data/expandedUniverses.js": {
+      "bytes": 1787,
+      "sha256": "6be31a6db41f0ecb8fc29b98243de508033a6c6e31fac24a574a0a0f3375781e"
+    },
+    "DLC/FinalFantasyXIII/data/heroes.js": {
+      "bytes": 1388,
+      "sha256": "73477c8c9b8dfc7c6da47493768a6033f0abb9fad6da4340fa2d41b2d4165e21"
+    },
+    "DLC/FinalFantasyXV/data/actorSourceContracts.js": {
+      "bytes": 6054,
+      "sha256": "a3d7cd1476b63bff25cedf5df06e561870bb64ef02a846abfa2b5e8ca9431156"
+    },
+    "DLC/FinalFantasyXV/data/expandedUniverses.js": {
+      "bytes": 1800,
+      "sha256": "2b2b9dfbe28f4838cb638248adac12fc0f7bce957cdd943504e777a2158c1103"
+    },
+    "DLC/FinalFantasyXV/data/heroes.js": {
+      "bytes": 1402,
+      "sha256": "e4268c09e298000361ed3bee140aa1a4d1ceaa39d54a1bc1ec216beedb5c65c2"
+    },
+    "DLC/GearsOfWar/data/actorSourceContracts.js": {
+      "bytes": 35457,
+      "sha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d"
+    },
+    "DLC/GearsOfWar/data/heroes.js": {
+      "bytes": 2659,
+      "sha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e"
+    },
+    "DLC/GearsOfWar/data/loreAccuratePacks.js": {
+      "bytes": 1999,
+      "sha256": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806"
+    },
+    "DLC/GearsOfWar/data/loreWorldBossOverrides.js": {
+      "bytes": 851,
+      "sha256": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280"
+    },
+    "DLC/HalfLife/data/heroes.js": {
+      "bytes": 25815,
+      "sha256": "b4a4f2a4ef37214de9723802b77caac7fc2ffc7596cfd3f3cdfa7891254ce07e"
+    },
+    "DLC/HalfLife/data/loreAccuratePacks.js": {
+      "bytes": 1359,
+      "sha256": "cfbdad7a1b99bb74ac0897ce7f16231919849d546050ca5c130bc942709cb6e1"
+    },
+    "DLC/Halo/data/heroes.js": {
+      "bytes": 27113,
+      "sha256": "2a31e249283fe8229c9dfaa49dd007ab6da91f08623afea53ea662082eff3048"
+    },
+    "DLC/Halo/data/loreAccuratePacks.js": {
+      "bytes": 1921,
+      "sha256": "2dcad693cd2cf26578120f6cdab7667f3f6ba92f42b6dbaa70bf6c53c2979ff7"
+    },
+    "DLC/Left4Dead/data/expandedUniverses.js": {
+      "bytes": 1296,
+      "sha256": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad"
+    },
+    "DLC/Left4Dead/data/heroes.js": {
+      "bytes": 647,
+      "sha256": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78"
+    },
+    "DLC/Left4Dead/data/sourceContracts20261113.js": {
+      "bytes": 41865,
+      "sha256": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456"
+    },
+    "DLC/MassEffect/data/heroes.js": {
+      "bytes": 19244,
+      "sha256": "f4d1f3bc63e3f78ad8747db6266f23d825c87b0e108d7d022534028f01f5a571"
+    },
+    "DLC/MassEffect/data/loreAccuratePacks.js": {
+      "bytes": 1941,
+      "sha256": "c86612e146dc0c4e7d456bbd6942bae9e56924abaf8a9ff7830c0666c800a641"
+    },
+    "DLC/Portal/data/heroes.js": {
+      "bytes": 2468,
+      "sha256": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec"
+    },
+    "DLC/Portal/data/loreAccuratePacks.js": {
+      "bytes": 2001,
+      "sha256": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688"
+    },
+    "DLC/Portal/data/loreWorldBossOverrides.js": {
+      "bytes": 962,
+      "sha256": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6"
+    },
+    "DLC/Portal/data/sourceContracts20261113.js": {
+      "bytes": 78559,
+      "sha256": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee"
+    },
+    "DLC/Quake/data/canonRosterWavePartD.js": {
+      "bytes": 12060,
+      "sha256": "6fdc46816355556475c456bce6c390c1ed6fddc7692a30891b304d838294b7f4"
+    },
+    "DLC/Unreal/data/canonRosterWavePartC.js": {
+      "bytes": 9670,
+      "sha256": "4085ade943eaa2755708979585941e7d37a8cc6b8089b4aebfaee375bb118348"
+    },
+    "DLC/UnrealTournament/data/canonRosterWavePartC.js": {
+      "bytes": 11293,
+      "sha256": "1902af4a9258e4d4d714db6a9f3510d65e4bd286984637cedfd76877137ee03d"
+    },
+    "DLC/UnrealTournament2004/data/actorCatalogCombat.js": {
+      "bytes": 4762,
+      "sha256": "7aa0221e9c6c9bed0530afadcf7e15cfda0ac8ea21052b77c2cd6a2cc71d2280"
+    },
+    "DLC/UnrealTournament2004/data/canonRosterWavePartG.js": {
+      "bytes": 6051,
+      "sha256": "a7cd56f0daf76c4bc0b4269c9ccc12ea97d7a7b5bd6dfe680e611173f1ff323f"
+    },
+    "docs/cg/roster-fidelity-bible-2026-10-18.json": {
+      "bytes": 42680470,
+      "sha256": "8acbf883127f01df3932364bf94de0ad592a4c58b67f1e29482909442b295e3d"
+    },
+    "docs/cg/roster-production-2026-10-18.json": {
+      "bytes": 36982763,
+      "sha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e"
+    },
+    "docs/cg/roster-production-2026-10-18.md": {
+      "bytes": 6700,
+      "sha256": "7f41a72e423643f671f9443b94ae50a20445a4522b95bdbd343f8e3651dbf0f4"
+    },
+    "package.json": {
+      "bytes": 54428,
+      "sha256": "1fbe41e129c40690ba5c6077b2e29751f70b1de92ec55d9fccae177b819681b2"
+    },
+    "public/cg/cg-manifest.json": {
+      "bytes": 160270,
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee"
+    },
+    "scripts/buildCgRosterFidelityBible.mjs": {
+      "bytes": 59911,
+      "sha256": "1198bc0f29809f861ec448cf974fd76f3905d5f416ebdd918e6b0772aa1f0349"
+    },
+    "scripts/buildCgRosterProductionPlan.mjs": {
+      "bytes": 55698,
+      "sha256": "4e0aec7cc004479c6cbd598eb84977345311bdee60bd5d38df7b918c06c8e9c1"
+    },
+    "scripts/cgAgentBatches.mjs": {
+      "bytes": 9349,
+      "sha256": "737e7c02b94536f83c398b6f7f34ecf5484894c59d7609e4794496130673cae1"
+    },
+    "scripts/cgAgentBatches.test.mjs": {
+      "bytes": 9711,
+      "sha256": "8195de6603f0b88f57cb90f164ed9d270a076cc260af3f219b86e4c82da17c26"
+    },
+    "scripts/cgAssets.test.mjs": {
+      "bytes": 6297,
+      "sha256": "9ae7ab464e1a6231d5836a43c636874ddd749d0d2b9dbeacc11447a3d893d9f1"
+    },
+    "scripts/cgCanonicalSpriteQuarantine.test.mjs": {
+      "bytes": 4960,
+      "sha256": "c1f560daed18384c0c0fe3fec1ecfefa9441d2af22118280e8eae7fdc9a4c18f"
+    },
+    "scripts/cgCatalog.test.mjs": {
+      "bytes": 11435,
+      "sha256": "2ec6578e1e26ccc9b6f9f54c44bd76ff21b9a9c5a114bb5ab6e5d51cd66c57e3"
+    },
+    "scripts/cgContinuation02MetadataAmendment.mjs": {
+      "bytes": 14292,
+      "sha256": "8791398dadacfca895b2b3cfc6dd50932ac4261ca06b6393d69ef5ca0e0a2549"
+    },
+    "scripts/cgContinuation02MetadataAmendment.test.mjs": {
+      "bytes": 10896,
+      "sha256": "7183c0900f90273b6f0b111e17ccb33ea2d2850d3949983fe5841956237ad46d"
+    },
+    "scripts/cgIdentityAuthorityMetadata.mjs": {
+      "bytes": 2018,
+      "sha256": "95cdb16635285fdec2db678be3d886b2cab3602b64d4de58846af65234e3e934"
+    },
+    "scripts/cgIdentityAuthorityMetadata.test.mjs": {
+      "bytes": 3937,
+      "sha256": "970080f3818aebc61553628c6c2236a2474c97e47b0fa8e7aa0c0efac898b7e7"
+    },
+    "scripts/cgManifest.test.mjs": {
+      "bytes": 3583,
+      "sha256": "8dd096c66be7ca1f0801c0bad50e8e5eb2660c8f4a65f8c9c390b5127d3bf79c"
+    },
+    "scripts/cgPilotBibleAuthority.test.mjs": {
+      "bytes": 3270,
+      "sha256": "171221b5fc587b9d137ed8d4ff979a4ba862d7d01d851b286853eb1aa997042a"
+    },
+    "scripts/cgProductionMetadataScope20261113.test.mjs": {
+      "bytes": 7147,
+      "sha256": "0bb66ba916efa5f337fcf8e4b755b849802d4196a0185f9b3a828a030cfcb869"
+    },
+    "scripts/cgProductionMode20261113.test.mjs": {
+      "bytes": 1003,
+      "sha256": "b8e73ac500ed5abe63ed3b9c5a1929ff4a76eab5b5611acbbfee19af544b1451"
+    },
+    "scripts/cgPublishedDeliveryMetadata.mjs": {
+      "bytes": 5032,
+      "sha256": "aa46076b95c90aa838e409af8d4d9b43e9623d4d30b86b1c5425d84f99b20503"
+    },
+    "scripts/cgReferenceImageAttestation.test.mjs": {
+      "bytes": 3182,
+      "sha256": "a3a7a98bc040ea96cc00b516d08ddc52069d403e8a8e5f8a24258004ac4afcf9"
+    },
+    "scripts/cgReferenceImageDecode.mjs": {
+      "bytes": 1621,
+      "sha256": "88339f313d75adfa452f627ab394b507a258e411b463a146f805aece754a3c04"
+    },
+    "scripts/cgReferenceImageDecode.test.mjs": {
+      "bytes": 3223,
+      "sha256": "eaf822601f56001178365c5cc7429df133c083ae82f0eb95013a3232f52fedbb"
+    },
+    "scripts/cgReviewedAvailabilityAmendment.mjs": {
+      "bytes": 11079,
+      "sha256": "93e8b42dffdbea7fb63e32842a7bd3b03f5e09af9214c9e7011f82caece0460f"
+    },
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs": {
+      "bytes": 12596,
+      "sha256": "47db2b3972fa56dbf9915e563ee49018a7de3baa883e7f60c02c8097af9d558f"
+    },
+    "scripts/cgReviewedQuarantineMetadata.mjs": {
+      "bytes": 4146,
+      "sha256": "5551bdbb9d1da1f7d45c7fc06c4856234e25e9e2235aa50df9ff8f33fa06b49e"
+    },
+    "scripts/cgReviewedQuarantineMetadata.test.mjs": {
+      "bytes": 5304,
+      "sha256": "a826032f599404d0fa17549d39949c8068e2b31ca456258301166ebdf0926264"
+    },
+    "scripts/cgReviewedRuntimeAmendment.mjs": {
+      "bytes": 9245,
+      "sha256": "28b6496e2a5bf830719c42cf0163816608208edadd06c190ad649cf5b926cf2d"
+    },
+    "scripts/cgReviewedRuntimeAmendment.test.mjs": {
+      "bytes": 8310,
+      "sha256": "87cad7ad865425c793061b4daf93f208d52f4bb341599296a20c8e161ea4cf36"
+    },
+    "scripts/cgRevisions.test.mjs": {
+      "bytes": 12279,
+      "sha256": "9466e0645cc1a95192c20fb902a475adbdf5736a72d049bfcd9d56606a8640d1"
+    },
+    "scripts/cgRosterDeliveries.test.mjs": {
+      "bytes": 970,
+      "sha256": "6250c5e1d12b8ae56251798e6fe42ca35a2ecd4c789b2a258fe88b060a7b6e21"
+    },
+    "scripts/cgRosterPlanSnapshot.mjs": {
+      "bytes": 43477,
+      "sha256": "d910d141b1044b6f9cc18a50607cbe782f0e0c9699fb6aa597bd5bf9022fd351"
+    },
+    "scripts/cgRosterProductionPlan.test.mjs": {
+      "bytes": 24746,
+      "sha256": "22950e35ef7edb971e1836f6b80d10e1d9d2e93e545751cafb60e346166c207f"
+    },
+    "scripts/cgSource64Amendment.mjs": {
+      "bytes": 14756,
+      "sha256": "8eb2a3100606fac87953a258dbf78f59fb47af4e3046deb1fef5629a3147a11c"
+    },
+    "scripts/cgSource64Amendment.test.mjs": {
+      "bytes": 11802,
+      "sha256": "2e5660586d81999ef7e0dc98fdbb7d06d28f8ad318f2dbdffacb75b1ad1f18df"
+    },
+    "scripts/cgSourceEvidence.mjs": {
+      "bytes": 24393,
+      "sha256": "897bfc3ffb4017a5130e722520533a8dc6333f90065547772cc026d9d57ba083"
+    },
+    "scripts/cgSourceEvidence.test.mjs": {
+      "bytes": 33311,
+      "sha256": "d37b543451c776bf0cc044c34676074e9a0c440337e1ca4a4c21f59ecf185616"
+    },
+    "scripts/cgSourceIdentityScope.test.mjs": {
+      "bytes": 5918,
+      "sha256": "8a48ec2fc33c426be8a4b3633d0b2b4e7d86d29ab273fa4b95d1cdde59d35466"
+    },
+    "scripts/fixtures/cg-continuation02-metadata-amendment-2026-11-13.json": {
+      "bytes": 170198,
+      "sha256": "77a0bb8e02a1d24b5d2c38dadba6401cc9b11740a29b169c2dde844399b864f9"
+    },
+    "scripts/fixtures/cg-current-descriptors-amendment-2026-11-09.json": {
+      "bytes": 362317,
+      "sha256": "71891cbf57f7f6a580993301db9ee4ba9efc7ca0dd1e7b3d875e9975f31a2ce0"
+    },
+    "scripts/fixtures/cg-local-candidates-amendment-2026-11-09.json": {
+      "bytes": 1176933,
+      "sha256": "8777754e2c113b71661902e21529ec217440f9c15ac5f34467397441a34bd2a3"
+    },
+    "scripts/fixtures/cg-private-source-fallbacks.json": {
+      "bytes": 12416,
+      "sha256": "e6e906db182c881c25649c6c79772c08282ebaf90878dfb900b78ac4d86624fe"
+    },
+    "scripts/fixtures/cg-reviewed-availability-amendment-2026-11-13.json": {
+      "bytes": 172349,
+      "sha256": "65fd79dc231ab247c15fc788b50e4edf7645bfff61cdb60610761aec6196699f"
+    },
+    "scripts/fixtures/cg-reviewed-runtime-correction-amendment-2026-11-13.json": {
+      "bytes": 1331,
+      "sha256": "a535fe7b0420deef9f9b096926789d84157f4948593e9bff98d50b0193d72c3c"
+    },
+    "scripts/fixtures/cg-source-metadata-amendment-2026-11-13.json": {
+      "bytes": 201351,
+      "sha256": "eba38c68b819869fc4cc31fd8b430c8562c9cc763fdc1c76a2ed632e30fbb0b4"
+    },
+    "scripts/fixtures/cg-source64-amendment-2026-11-13.json": {
+      "bytes": 380108,
+      "sha256": "89383d483fb61e456156b2bd9e0ebf8c6082bd83bc0b327bb94d494f45209b42"
+    },
+    "scripts/sourceSceneTestLoader.mjs": {
+      "bytes": 785,
+      "sha256": "a03ae772acf6a4d49cf7fae6ebbae1ba1aa7d154a998ccfc35be555c9c4efa5c"
+    },
+    "src/game/canonRosterPackFactory.js": {
+      "bytes": 15120,
+      "sha256": "4ec7ac79159aeee919fefa5a162e72201361abba9cb9e23a04a68117ecfed326"
+    },
+    "src/game/canonRosterWave.js": {
+      "bytes": 1366,
+      "sha256": "56447c96ed1dd85538582136d901b843e7d046a4431f8df56fba6364997182fb"
+    },
+    "src/game/canonRosterWavePartC.js": {
+      "bytes": 9521,
+      "sha256": "73ee5ccbd3ce4bc2c4bc29a35edc6c326a0fb81f53de6a88cfb797bc208db267"
+    },
+    "src/game/canonRosterWavePartD.js": {
+      "bytes": 12127,
+      "sha256": "028c4f7cc0af8ca21b0ec30a8b2982a6b50420da5183b067a5ce31f4ff9a7bf5"
+    },
+    "src/game/canonRosterWavePartG.js": {
+      "bytes": 5485,
+      "sha256": "60bb532b6b09ee451c144e5fc8d9c857cba8aae5c2034ed62d739790ecaf8d1e"
+    },
+    "src/game/canonicalCombatOverrides.js": {
+      "bytes": 7394,
+      "sha256": "dd1dac79e7fb2c2e71870750f0ce3520cd1295499e2ba5843093021b1fa988da"
+    },
+    "src/game/canonicalSpriteQuarantine.js": {
+      "bytes": 5797,
+      "sha256": "fa3d055eca6b450d1177468d2e9cc69ec14c427baf108e973f87e8cc7054f847"
+    },
+    "src/game/cg/cgCatalog.js": {
+      "bytes": 47467,
+      "sha256": "9a707ea834b5ab9c67f91a818ce0a242d117044c28cf47fedd9dbfff7ce4a30d"
+    },
+    "src/game/cg/cgRevisions.generated.json": {
+      "bytes": 202193,
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    "src/game/cg/cgRosterArtwork.generated.json": {
+      "bytes": 9345009,
+      "sha256": "1c4f17a19d17462ec9b2e4cadd3239c06706f5a7063d1420ef00da63faa47b5c"
+    },
+    "src/game/combat/abilities/abilitiesCanonical.js": {
+      "bytes": 30619,
+      "sha256": "102ae65730dea04b050108fa721a1a39b03c8164556bc58018d9f9fde0cf9564"
+    },
+    "src/game/combat/abilities/abilitiesWave14Definitions.js": {
+      "bytes": 11092,
+      "sha256": "18ad2d428cf652a7d65f9e5093366bcd13fb442033bd3add7993f4d00c85f222"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartA.js": {
+      "bytes": 11823,
+      "sha256": "934b2a8b8c89a7c0efb3f2c016514561a7f0441c3f9301b4f254d933bfe6d863"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartB.js": {
+      "bytes": 93293,
+      "sha256": "caff2bdbcf9afbde1bad882321d0928913a1096fd5d67a749c0700122690cebb"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartC.js": {
+      "bytes": 10703,
+      "sha256": "07843bdefad9a433f88360c786e98517f7c5d118fa25f1f2769fa1e5b04629e6"
+    },
+    "src/game/combat/abilities/rules.js": {
+      "bytes": 1788,
+      "sha256": "24bd8ec1dff7bc5516dc81b1b1221f4326b55bcfb6f92c78b20bca49231246fd"
+    },
+    "src/game/combat/combatSourceDefinitionsWave12.js": {
+      "bytes": 901,
+      "sha256": "55390c86b043615383ad06925c60009c9350de6732105c70ec05ac3d0567b626"
+    },
+    "src/game/combat/combatSourceDefinitionsWave13.js": {
+      "bytes": 24109,
+      "sha256": "5e129239053264fdee3f3665c90a0d83e68ac99f94bb5e2a6b9396b4c0b4f7a5"
+    },
+    "src/game/combat/combatSourceDefinitionsWave14.js": {
+      "bytes": 31030,
+      "sha256": "6c1ee9ed34fe60afe7c8f1ebe2535d338f7fec725a1604672487d217658f7147"
+    },
+    "src/game/combat/combatSourceDefinitionsWave15.js": {
+      "bytes": 830,
+      "sha256": "4d762f6b67505b831249209648b28ee463d85f83790d27a8d66fc1d8d18c7a82"
+    },
+    "src/game/combat/combatSourceDefinitionsWave15PartC.js": {
+      "bytes": 36029,
+      "sha256": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd"
+    },
+    "src/game/combat/combatSourceDefinitionsWave16.js": {
+      "bytes": 988,
+      "sha256": "05188d989ea0284c3ec6836851b287456c1bcbe78bbc9c5ddab38bad0dba32d9"
+    },
+    "src/game/combat/combatSourceDefinitionsWave17.js": {
+      "bytes": 786,
+      "sha256": "1689b026275cc71e77184aa3414a2f084895c41da9bf5cfd8fe7afffd2f4cf72"
+    },
+    "src/game/combatCanonExtensions.js": {
+      "bytes": 15826,
+      "sha256": "ac0815a37ab0032bdb4f57eb2e70b9e38eea5ca254d377b649ea7a799ef93402"
+    },
+    "src/game/expandedUniverses.js": {
+      "bytes": 90592,
+      "sha256": "fdfc290d0d4d73d19f9082ea827519cbdedd8f5828acd17c33c405b0a96ce312"
+    },
+    "src/game/heroes.js": {
+      "bytes": 61580,
+      "sha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e"
+    },
+    "src/game/loreAccuratePacks.js": {
+      "bytes": 17971,
+      "sha256": "8dddfaa4bd525f6ab7a5aec9072617ee2690aca9be5445434ccf6d28ab833d94"
+    },
+    "src/game/spriteAssets.js": {
+      "bytes": 80190,
+      "sha256": "12458ac40528d9e6123aa2d8dd6d8c76f0bfe483b556a79b7189ff0ef332e0be"
+    }
+  },
+  "sourceSha256After": {
+    "DLC/DeadSpace/data/actorSourceContracts.js": {
+      "bytes": 28904,
+      "sha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc"
+    },
+    "DLC/DeadSpace/data/heroes.js": {
+      "bytes": 2594,
+      "sha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1"
+    },
+    "DLC/DeadSpace/data/loreAccuratePacks.js": {
+      "bytes": 1939,
+      "sha256": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11"
+    },
+    "DLC/FinalFantasyVII/data/actorSourceContracts.js": {
+      "bytes": 9760,
+      "sha256": "6998a51162a01a871b547835de540797a2d259ff147847e0588a867c8ff8493f"
+    },
+    "DLC/FinalFantasyVII/data/expandedUniverses.js": {
+      "bytes": 1856,
+      "sha256": "62653badf5a0eb89653d90a7f9c83856e7f34f689efbdb155e817485fed9308c"
+    },
+    "DLC/FinalFantasyVII/data/heroes.js": {
+      "bytes": 698,
+      "sha256": "a9a843b05845f5e7198c942a247e7220ddef1cb6b24193bee5b9a61325b82aff"
+    },
+    "DLC/FinalFantasyVIII/data/actorSourceContracts.js": {
+      "bytes": 10281,
+      "sha256": "911441e7c877f7abec1aabb2332f4a6e111fd7df0483e97378a3034e869967d7"
+    },
+    "DLC/FinalFantasyVIII/data/expandedUniverses.js": {
+      "bytes": 1836,
+      "sha256": "dd0cb708d587c831f8d18843022ed2aab0e43cc523b036a6e7824c2490542d95"
+    },
+    "DLC/FinalFantasyVIII/data/heroes.js": {
+      "bytes": 1375,
+      "sha256": "5b5310e8b72c98c90cfdc111617a6120902d57a70e5c38ad877abcba3305c689"
+    },
+    "DLC/FinalFantasyXIII/data/actorSourceContracts.js": {
+      "bytes": 8335,
+      "sha256": "21d11ebc2af58de354df89290071ee63e16e6852550caff268395c1b9f1532c7"
+    },
+    "DLC/FinalFantasyXIII/data/expandedUniverses.js": {
+      "bytes": 1787,
+      "sha256": "6be31a6db41f0ecb8fc29b98243de508033a6c6e31fac24a574a0a0f3375781e"
+    },
+    "DLC/FinalFantasyXIII/data/heroes.js": {
+      "bytes": 1388,
+      "sha256": "73477c8c9b8dfc7c6da47493768a6033f0abb9fad6da4340fa2d41b2d4165e21"
+    },
+    "DLC/FinalFantasyXV/data/actorSourceContracts.js": {
+      "bytes": 6054,
+      "sha256": "a3d7cd1476b63bff25cedf5df06e561870bb64ef02a846abfa2b5e8ca9431156"
+    },
+    "DLC/FinalFantasyXV/data/expandedUniverses.js": {
+      "bytes": 1800,
+      "sha256": "2b2b9dfbe28f4838cb638248adac12fc0f7bce957cdd943504e777a2158c1103"
+    },
+    "DLC/FinalFantasyXV/data/heroes.js": {
+      "bytes": 1402,
+      "sha256": "e4268c09e298000361ed3bee140aa1a4d1ceaa39d54a1bc1ec216beedb5c65c2"
+    },
+    "DLC/GearsOfWar/data/actorSourceContracts.js": {
+      "bytes": 35457,
+      "sha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d"
+    },
+    "DLC/GearsOfWar/data/heroes.js": {
+      "bytes": 2659,
+      "sha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e"
+    },
+    "DLC/GearsOfWar/data/loreAccuratePacks.js": {
+      "bytes": 1999,
+      "sha256": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806"
+    },
+    "DLC/GearsOfWar/data/loreWorldBossOverrides.js": {
+      "bytes": 851,
+      "sha256": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280"
+    },
+    "DLC/HalfLife/data/heroes.js": {
+      "bytes": 25815,
+      "sha256": "b4a4f2a4ef37214de9723802b77caac7fc2ffc7596cfd3f3cdfa7891254ce07e"
+    },
+    "DLC/HalfLife/data/loreAccuratePacks.js": {
+      "bytes": 1359,
+      "sha256": "cfbdad7a1b99bb74ac0897ce7f16231919849d546050ca5c130bc942709cb6e1"
+    },
+    "DLC/Halo/data/heroes.js": {
+      "bytes": 27113,
+      "sha256": "2a31e249283fe8229c9dfaa49dd007ab6da91f08623afea53ea662082eff3048"
+    },
+    "DLC/Halo/data/loreAccuratePacks.js": {
+      "bytes": 1921,
+      "sha256": "2dcad693cd2cf26578120f6cdab7667f3f6ba92f42b6dbaa70bf6c53c2979ff7"
+    },
+    "DLC/Left4Dead/data/expandedUniverses.js": {
+      "bytes": 1296,
+      "sha256": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad"
+    },
+    "DLC/Left4Dead/data/heroes.js": {
+      "bytes": 647,
+      "sha256": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78"
+    },
+    "DLC/Left4Dead/data/sourceContracts20261113.js": {
+      "bytes": 41865,
+      "sha256": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456"
+    },
+    "DLC/MassEffect/data/heroes.js": {
+      "bytes": 19244,
+      "sha256": "f4d1f3bc63e3f78ad8747db6266f23d825c87b0e108d7d022534028f01f5a571"
+    },
+    "DLC/MassEffect/data/loreAccuratePacks.js": {
+      "bytes": 1941,
+      "sha256": "c86612e146dc0c4e7d456bbd6942bae9e56924abaf8a9ff7830c0666c800a641"
+    },
+    "DLC/Portal/data/heroes.js": {
+      "bytes": 2468,
+      "sha256": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec"
+    },
+    "DLC/Portal/data/loreAccuratePacks.js": {
+      "bytes": 2001,
+      "sha256": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688"
+    },
+    "DLC/Portal/data/loreWorldBossOverrides.js": {
+      "bytes": 962,
+      "sha256": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6"
+    },
+    "DLC/Portal/data/sourceContracts20261113.js": {
+      "bytes": 78559,
+      "sha256": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee"
+    },
+    "DLC/Quake/data/canonRosterWavePartD.js": {
+      "bytes": 12060,
+      "sha256": "6fdc46816355556475c456bce6c390c1ed6fddc7692a30891b304d838294b7f4"
+    },
+    "DLC/Unreal/data/canonRosterWavePartC.js": {
+      "bytes": 9670,
+      "sha256": "4085ade943eaa2755708979585941e7d37a8cc6b8089b4aebfaee375bb118348"
+    },
+    "DLC/UnrealTournament/data/canonRosterWavePartC.js": {
+      "bytes": 11293,
+      "sha256": "1902af4a9258e4d4d714db6a9f3510d65e4bd286984637cedfd76877137ee03d"
+    },
+    "DLC/UnrealTournament2004/data/actorCatalogCombat.js": {
+      "bytes": 4762,
+      "sha256": "7aa0221e9c6c9bed0530afadcf7e15cfda0ac8ea21052b77c2cd6a2cc71d2280"
+    },
+    "DLC/UnrealTournament2004/data/canonRosterWavePartG.js": {
+      "bytes": 6051,
+      "sha256": "a7cd56f0daf76c4bc0b4269c9ccc12ea97d7a7b5bd6dfe680e611173f1ff323f"
+    },
+    "docs/cg/roster-fidelity-bible-2026-10-18.json": {
+      "bytes": 42680470,
+      "sha256": "8acbf883127f01df3932364bf94de0ad592a4c58b67f1e29482909442b295e3d"
+    },
+    "docs/cg/roster-production-2026-10-18.json": {
+      "bytes": 36982763,
+      "sha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e"
+    },
+    "docs/cg/roster-production-2026-10-18.md": {
+      "bytes": 6700,
+      "sha256": "7f41a72e423643f671f9443b94ae50a20445a4522b95bdbd343f8e3651dbf0f4"
+    },
+    "package.json": {
+      "bytes": 54428,
+      "sha256": "1fbe41e129c40690ba5c6077b2e29751f70b1de92ec55d9fccae177b819681b2"
+    },
+    "public/cg/cg-manifest.json": {
+      "bytes": 160270,
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee"
+    },
+    "scripts/buildCgRosterFidelityBible.mjs": {
+      "bytes": 59911,
+      "sha256": "1198bc0f29809f861ec448cf974fd76f3905d5f416ebdd918e6b0772aa1f0349"
+    },
+    "scripts/buildCgRosterProductionPlan.mjs": {
+      "bytes": 55698,
+      "sha256": "4e0aec7cc004479c6cbd598eb84977345311bdee60bd5d38df7b918c06c8e9c1"
+    },
+    "scripts/cgAgentBatches.mjs": {
+      "bytes": 9349,
+      "sha256": "737e7c02b94536f83c398b6f7f34ecf5484894c59d7609e4794496130673cae1"
+    },
+    "scripts/cgAgentBatches.test.mjs": {
+      "bytes": 9711,
+      "sha256": "8195de6603f0b88f57cb90f164ed9d270a076cc260af3f219b86e4c82da17c26"
+    },
+    "scripts/cgAssets.test.mjs": {
+      "bytes": 6297,
+      "sha256": "9ae7ab464e1a6231d5836a43c636874ddd749d0d2b9dbeacc11447a3d893d9f1"
+    },
+    "scripts/cgCanonicalSpriteQuarantine.test.mjs": {
+      "bytes": 4960,
+      "sha256": "c1f560daed18384c0c0fe3fec1ecfefa9441d2af22118280e8eae7fdc9a4c18f"
+    },
+    "scripts/cgCatalog.test.mjs": {
+      "bytes": 11435,
+      "sha256": "2ec6578e1e26ccc9b6f9f54c44bd76ff21b9a9c5a114bb5ab6e5d51cd66c57e3"
+    },
+    "scripts/cgContinuation02MetadataAmendment.mjs": {
+      "bytes": 14292,
+      "sha256": "8791398dadacfca895b2b3cfc6dd50932ac4261ca06b6393d69ef5ca0e0a2549"
+    },
+    "scripts/cgContinuation02MetadataAmendment.test.mjs": {
+      "bytes": 10896,
+      "sha256": "7183c0900f90273b6f0b111e17ccb33ea2d2850d3949983fe5841956237ad46d"
+    },
+    "scripts/cgIdentityAuthorityMetadata.mjs": {
+      "bytes": 2018,
+      "sha256": "95cdb16635285fdec2db678be3d886b2cab3602b64d4de58846af65234e3e934"
+    },
+    "scripts/cgIdentityAuthorityMetadata.test.mjs": {
+      "bytes": 3937,
+      "sha256": "970080f3818aebc61553628c6c2236a2474c97e47b0fa8e7aa0c0efac898b7e7"
+    },
+    "scripts/cgManifest.test.mjs": {
+      "bytes": 3583,
+      "sha256": "8dd096c66be7ca1f0801c0bad50e8e5eb2660c8f4a65f8c9c390b5127d3bf79c"
+    },
+    "scripts/cgPilotBibleAuthority.test.mjs": {
+      "bytes": 3270,
+      "sha256": "171221b5fc587b9d137ed8d4ff979a4ba862d7d01d851b286853eb1aa997042a"
+    },
+    "scripts/cgProductionMetadataScope20261113.test.mjs": {
+      "bytes": 7147,
+      "sha256": "0bb66ba916efa5f337fcf8e4b755b849802d4196a0185f9b3a828a030cfcb869"
+    },
+    "scripts/cgProductionMode20261113.test.mjs": {
+      "bytes": 1003,
+      "sha256": "b8e73ac500ed5abe63ed3b9c5a1929ff4a76eab5b5611acbbfee19af544b1451"
+    },
+    "scripts/cgPublishedDeliveryMetadata.mjs": {
+      "bytes": 5032,
+      "sha256": "aa46076b95c90aa838e409af8d4d9b43e9623d4d30b86b1c5425d84f99b20503"
+    },
+    "scripts/cgReferenceImageAttestation.test.mjs": {
+      "bytes": 3182,
+      "sha256": "a3a7a98bc040ea96cc00b516d08ddc52069d403e8a8e5f8a24258004ac4afcf9"
+    },
+    "scripts/cgReferenceImageDecode.mjs": {
+      "bytes": 1621,
+      "sha256": "88339f313d75adfa452f627ab394b507a258e411b463a146f805aece754a3c04"
+    },
+    "scripts/cgReferenceImageDecode.test.mjs": {
+      "bytes": 3223,
+      "sha256": "eaf822601f56001178365c5cc7429df133c083ae82f0eb95013a3232f52fedbb"
+    },
+    "scripts/cgReviewedAvailabilityAmendment.mjs": {
+      "bytes": 11079,
+      "sha256": "93e8b42dffdbea7fb63e32842a7bd3b03f5e09af9214c9e7011f82caece0460f"
+    },
+    "scripts/cgReviewedAvailabilityAmendment.test.mjs": {
+      "bytes": 12596,
+      "sha256": "47db2b3972fa56dbf9915e563ee49018a7de3baa883e7f60c02c8097af9d558f"
+    },
+    "scripts/cgReviewedQuarantineMetadata.mjs": {
+      "bytes": 4146,
+      "sha256": "5551bdbb9d1da1f7d45c7fc06c4856234e25e9e2235aa50df9ff8f33fa06b49e"
+    },
+    "scripts/cgReviewedQuarantineMetadata.test.mjs": {
+      "bytes": 5304,
+      "sha256": "a826032f599404d0fa17549d39949c8068e2b31ca456258301166ebdf0926264"
+    },
+    "scripts/cgReviewedRuntimeAmendment.mjs": {
+      "bytes": 9245,
+      "sha256": "28b6496e2a5bf830719c42cf0163816608208edadd06c190ad649cf5b926cf2d"
+    },
+    "scripts/cgReviewedRuntimeAmendment.test.mjs": {
+      "bytes": 8310,
+      "sha256": "87cad7ad865425c793061b4daf93f208d52f4bb341599296a20c8e161ea4cf36"
+    },
+    "scripts/cgRevisions.test.mjs": {
+      "bytes": 12279,
+      "sha256": "9466e0645cc1a95192c20fb902a475adbdf5736a72d049bfcd9d56606a8640d1"
+    },
+    "scripts/cgRosterDeliveries.test.mjs": {
+      "bytes": 970,
+      "sha256": "6250c5e1d12b8ae56251798e6fe42ca35a2ecd4c789b2a258fe88b060a7b6e21"
+    },
+    "scripts/cgRosterPlanSnapshot.mjs": {
+      "bytes": 43477,
+      "sha256": "d910d141b1044b6f9cc18a50607cbe782f0e0c9699fb6aa597bd5bf9022fd351"
+    },
+    "scripts/cgRosterProductionPlan.test.mjs": {
+      "bytes": 24746,
+      "sha256": "22950e35ef7edb971e1836f6b80d10e1d9d2e93e545751cafb60e346166c207f"
+    },
+    "scripts/cgSource64Amendment.mjs": {
+      "bytes": 14756,
+      "sha256": "8eb2a3100606fac87953a258dbf78f59fb47af4e3046deb1fef5629a3147a11c"
+    },
+    "scripts/cgSource64Amendment.test.mjs": {
+      "bytes": 11802,
+      "sha256": "2e5660586d81999ef7e0dc98fdbb7d06d28f8ad318f2dbdffacb75b1ad1f18df"
+    },
+    "scripts/cgSourceEvidence.mjs": {
+      "bytes": 24393,
+      "sha256": "897bfc3ffb4017a5130e722520533a8dc6333f90065547772cc026d9d57ba083"
+    },
+    "scripts/cgSourceEvidence.test.mjs": {
+      "bytes": 33311,
+      "sha256": "d37b543451c776bf0cc044c34676074e9a0c440337e1ca4a4c21f59ecf185616"
+    },
+    "scripts/cgSourceIdentityScope.test.mjs": {
+      "bytes": 5918,
+      "sha256": "8a48ec2fc33c426be8a4b3633d0b2b4e7d86d29ab273fa4b95d1cdde59d35466"
+    },
+    "scripts/fixtures/cg-continuation02-metadata-amendment-2026-11-13.json": {
+      "bytes": 170198,
+      "sha256": "77a0bb8e02a1d24b5d2c38dadba6401cc9b11740a29b169c2dde844399b864f9"
+    },
+    "scripts/fixtures/cg-current-descriptors-amendment-2026-11-09.json": {
+      "bytes": 362317,
+      "sha256": "71891cbf57f7f6a580993301db9ee4ba9efc7ca0dd1e7b3d875e9975f31a2ce0"
+    },
+    "scripts/fixtures/cg-local-candidates-amendment-2026-11-09.json": {
+      "bytes": 1176933,
+      "sha256": "8777754e2c113b71661902e21529ec217440f9c15ac5f34467397441a34bd2a3"
+    },
+    "scripts/fixtures/cg-private-source-fallbacks.json": {
+      "bytes": 12416,
+      "sha256": "e6e906db182c881c25649c6c79772c08282ebaf90878dfb900b78ac4d86624fe"
+    },
+    "scripts/fixtures/cg-reviewed-availability-amendment-2026-11-13.json": {
+      "bytes": 172349,
+      "sha256": "65fd79dc231ab247c15fc788b50e4edf7645bfff61cdb60610761aec6196699f"
+    },
+    "scripts/fixtures/cg-reviewed-runtime-correction-amendment-2026-11-13.json": {
+      "bytes": 1331,
+      "sha256": "a535fe7b0420deef9f9b096926789d84157f4948593e9bff98d50b0193d72c3c"
+    },
+    "scripts/fixtures/cg-source-metadata-amendment-2026-11-13.json": {
+      "bytes": 201351,
+      "sha256": "eba38c68b819869fc4cc31fd8b430c8562c9cc763fdc1c76a2ed632e30fbb0b4"
+    },
+    "scripts/fixtures/cg-source64-amendment-2026-11-13.json": {
+      "bytes": 380108,
+      "sha256": "89383d483fb61e456156b2bd9e0ebf8c6082bd83bc0b327bb94d494f45209b42"
+    },
+    "scripts/sourceSceneTestLoader.mjs": {
+      "bytes": 785,
+      "sha256": "a03ae772acf6a4d49cf7fae6ebbae1ba1aa7d154a998ccfc35be555c9c4efa5c"
+    },
+    "src/game/canonRosterPackFactory.js": {
+      "bytes": 15120,
+      "sha256": "4ec7ac79159aeee919fefa5a162e72201361abba9cb9e23a04a68117ecfed326"
+    },
+    "src/game/canonRosterWave.js": {
+      "bytes": 1366,
+      "sha256": "56447c96ed1dd85538582136d901b843e7d046a4431f8df56fba6364997182fb"
+    },
+    "src/game/canonRosterWavePartC.js": {
+      "bytes": 9521,
+      "sha256": "73ee5ccbd3ce4bc2c4bc29a35edc6c326a0fb81f53de6a88cfb797bc208db267"
+    },
+    "src/game/canonRosterWavePartD.js": {
+      "bytes": 12127,
+      "sha256": "028c4f7cc0af8ca21b0ec30a8b2982a6b50420da5183b067a5ce31f4ff9a7bf5"
+    },
+    "src/game/canonRosterWavePartG.js": {
+      "bytes": 5485,
+      "sha256": "60bb532b6b09ee451c144e5fc8d9c857cba8aae5c2034ed62d739790ecaf8d1e"
+    },
+    "src/game/canonicalCombatOverrides.js": {
+      "bytes": 7394,
+      "sha256": "dd1dac79e7fb2c2e71870750f0ce3520cd1295499e2ba5843093021b1fa988da"
+    },
+    "src/game/canonicalSpriteQuarantine.js": {
+      "bytes": 5797,
+      "sha256": "fa3d055eca6b450d1177468d2e9cc69ec14c427baf108e973f87e8cc7054f847"
+    },
+    "src/game/cg/cgCatalog.js": {
+      "bytes": 47467,
+      "sha256": "9a707ea834b5ab9c67f91a818ce0a242d117044c28cf47fedd9dbfff7ce4a30d"
+    },
+    "src/game/cg/cgRevisions.generated.json": {
+      "bytes": 202193,
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    "src/game/cg/cgRosterArtwork.generated.json": {
+      "bytes": 9345009,
+      "sha256": "1c4f17a19d17462ec9b2e4cadd3239c06706f5a7063d1420ef00da63faa47b5c"
+    },
+    "src/game/combat/abilities/abilitiesCanonical.js": {
+      "bytes": 30619,
+      "sha256": "102ae65730dea04b050108fa721a1a39b03c8164556bc58018d9f9fde0cf9564"
+    },
+    "src/game/combat/abilities/abilitiesWave14Definitions.js": {
+      "bytes": 11092,
+      "sha256": "18ad2d428cf652a7d65f9e5093366bcd13fb442033bd3add7993f4d00c85f222"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartA.js": {
+      "bytes": 11823,
+      "sha256": "934b2a8b8c89a7c0efb3f2c016514561a7f0441c3f9301b4f254d933bfe6d863"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartB.js": {
+      "bytes": 93293,
+      "sha256": "caff2bdbcf9afbde1bad882321d0928913a1096fd5d67a749c0700122690cebb"
+    },
+    "src/game/combat/abilities/abilitiesWave15PartC.js": {
+      "bytes": 10703,
+      "sha256": "07843bdefad9a433f88360c786e98517f7c5d118fa25f1f2769fa1e5b04629e6"
+    },
+    "src/game/combat/abilities/rules.js": {
+      "bytes": 1788,
+      "sha256": "24bd8ec1dff7bc5516dc81b1b1221f4326b55bcfb6f92c78b20bca49231246fd"
+    },
+    "src/game/combat/combatSourceDefinitionsWave12.js": {
+      "bytes": 901,
+      "sha256": "55390c86b043615383ad06925c60009c9350de6732105c70ec05ac3d0567b626"
+    },
+    "src/game/combat/combatSourceDefinitionsWave13.js": {
+      "bytes": 24109,
+      "sha256": "5e129239053264fdee3f3665c90a0d83e68ac99f94bb5e2a6b9396b4c0b4f7a5"
+    },
+    "src/game/combat/combatSourceDefinitionsWave14.js": {
+      "bytes": 31030,
+      "sha256": "6c1ee9ed34fe60afe7c8f1ebe2535d338f7fec725a1604672487d217658f7147"
+    },
+    "src/game/combat/combatSourceDefinitionsWave15.js": {
+      "bytes": 830,
+      "sha256": "4d762f6b67505b831249209648b28ee463d85f83790d27a8d66fc1d8d18c7a82"
+    },
+    "src/game/combat/combatSourceDefinitionsWave15PartC.js": {
+      "bytes": 36029,
+      "sha256": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd"
+    },
+    "src/game/combat/combatSourceDefinitionsWave16.js": {
+      "bytes": 988,
+      "sha256": "05188d989ea0284c3ec6836851b287456c1bcbe78bbc9c5ddab38bad0dba32d9"
+    },
+    "src/game/combat/combatSourceDefinitionsWave17.js": {
+      "bytes": 786,
+      "sha256": "1689b026275cc71e77184aa3414a2f084895c41da9bf5cfd8fe7afffd2f4cf72"
+    },
+    "src/game/combatCanonExtensions.js": {
+      "bytes": 15826,
+      "sha256": "ac0815a37ab0032bdb4f57eb2e70b9e38eea5ca254d377b649ea7a799ef93402"
+    },
+    "src/game/expandedUniverses.js": {
+      "bytes": 90592,
+      "sha256": "fdfc290d0d4d73d19f9082ea827519cbdedd8f5828acd17c33c405b0a96ce312"
+    },
+    "src/game/heroes.js": {
+      "bytes": 61580,
+      "sha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e"
+    },
+    "src/game/loreAccuratePacks.js": {
+      "bytes": 17971,
+      "sha256": "8dddfaa4bd525f6ab7a5aec9072617ee2690aca9be5445434ccf6d28ab833d94"
+    },
+    "src/game/spriteAssets.js": {
+      "bytes": 80190,
+      "sha256": "12458ac40528d9e6123aa2d8dd6d8c76f0bfe483b556a79b7189ff0ef332e0be"
+    }
+  },
+  "physicalMediaRevalidatedGlobally": false
+}

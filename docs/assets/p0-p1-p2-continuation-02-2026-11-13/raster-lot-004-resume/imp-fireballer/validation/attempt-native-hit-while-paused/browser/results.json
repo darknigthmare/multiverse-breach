@@ -1,0 +1,165 @@
+[
+  {
+    "case": "before-1280",
+    "ok": true,
+    "mediaAvailabilityReproduction": true,
+    "mediaResponses": [
+      {
+        "status": 404,
+        "sha256": null
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": null
+      }
+    ],
+    "sequence": null,
+    "activeSignature": null,
+    "receivedHit": null,
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/bosses/doom/imp-fireballer.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  },
+  {
+    "case": "after-1280",
+    "ok": false,
+    "error": "{'before': 75, 'after': 75, 'state': 'idle', 'draw': {'src': 'http://127.0.0.1:4198/sprites/generated/bosses/doom/imp-fireballer.png', 'args': [0, 0, 384, 256, -51, -61.625, 102, 68], 'naturalWidth': 1536, 'naturalHeight': 1024}}",
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      }
+    ]
+  },
+  {
+    "case": "after-390",
+    "ok": false,
+    "error": "{'before': 75, 'after': 75, 'state': 'idle', 'draw': {'src': 'http://127.0.0.1:4198/sprites/generated/bosses/doom/imp-fireballer.png', 'args': [0, 0, 384, 256, -51, -61.625, 102, 68], 'naturalWidth': 1536, 'naturalHeight': 1024}}",
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      }
+    ]
+  }
+]

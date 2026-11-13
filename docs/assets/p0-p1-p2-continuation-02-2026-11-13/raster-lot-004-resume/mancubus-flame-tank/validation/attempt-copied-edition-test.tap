@@ -1,0 +1,57 @@
+TAP version 13
+# (node:184664) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: classic Mancubus keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+not ok 1 - classic Mancubus keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+  ---
+  duration_ms: 3.443359
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/mancubusClassicAssets.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'Doom II (1994) - classic Mancubus (FATT)'
+    - 'Doom (1993) - classic Mancubus (TROO)'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'Doom (1993) - classic Mancubus (TROO)'
+  actual: 'Doom II (1994) - classic Mancubus (FATT)'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/mancubusClassicAssets.test.mjs:22:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: the exact Mancubus resolves its delivered atlas, including preserved identities in mixed-universe encounters
+ok 2 - the exact Mancubus resolves its delivered atlas, including preserved identities in mixed-universe encounters
+  ---
+  duration_ms: 0.917974
+  type: 'test'
+  ...
+# Subtest: the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+ok 3 - the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+  ---
+  duration_ms: 180.827973
+  type: 'test'
+  ...
+# Subtest: sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+ok 4 - sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+  ---
+  duration_ms: 281.312475
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2755.154185

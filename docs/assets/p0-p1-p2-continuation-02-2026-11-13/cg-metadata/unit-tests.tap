@@ -1,0 +1,477 @@
+TAP version 13
+# Subtest: the real current producer passes every historical guard after the closed continuation02 amendment
+ok 1 - the real current producer passes every historical guard after the closed continuation02 amendment
+  ---
+  duration_ms: 34088.139146
+  type: 'test'
+  ...
+# Subtest: the scoped projection is immutable and restores the entire historical serialization exactly
+ok 2 - the scoped projection is immutable and restores the entire historical serialization exactly
+  ---
+  duration_ms: 1399.845603
+  type: 'test'
+  ...
+# Subtest: a changed current target value cannot enter through an otherwise allowed field
+    # Subtest: incarnation
+    ok 1 - incarnation
+      ---
+      duration_ms: 502.56465
+      type: 'test'
+      ...
+    # Subtest: identityLock
+    ok 2 - identityLock
+      ---
+      duration_ms: 264.327975
+      type: 'test'
+      ...
+    # Subtest: equipment
+    ok 3 - equipment
+      ---
+      duration_ms: 484.769663
+      type: 'test'
+      ...
+    # Subtest: sourceRefs
+    ok 4 - sourceRefs
+      ---
+      duration_ms: 284.788579
+      type: 'test'
+      ...
+    # Subtest: missing
+    ok 5 - missing
+      ---
+      duration_ms: 290.13805
+      type: 'test'
+      ...
+    # Subtest: adaptationNote
+    ok 6 - adaptationNote
+      ---
+      duration_ms: 323.25924
+      type: 'test'
+      ...
+    1..6
+ok 3 - a changed current target value cannot enter through an otherwise allowed field
+  ---
+  duration_ms: 2155.748702
+  type: 'test'
+  ...
+# Subtest: states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+    # Subtest: status
+    ok 1 - status
+      ---
+      duration_ms: 294.603042
+      type: 'test'
+      ...
+    # Subtest: asset
+    ok 2 - asset
+      ---
+      duration_ms: 363.996556
+      type: 'test'
+      ...
+    # Subtest: generation
+    ok 3 - generation
+      ---
+      duration_ms: 348.168811
+      type: 'test'
+      ...
+    # Subtest: review
+    ok 4 - review
+      ---
+      duration_ms: 339.700044
+      type: 'test'
+      ...
+    # Subtest: reward
+    ok 5 - reward
+      ---
+      duration_ms: 313.729207
+      type: 'test'
+      ...
+    # Subtest: unknown
+    ok 6 - unknown
+      ---
+      duration_ms: 306.089359
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 7 - identity approval
+      ---
+      duration_ms: 299.384933
+      type: 'test'
+      ...
+    1..7
+ok 4 - states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+  ---
+  duration_ms: 2272.060776
+  type: 'test'
+  ...
+# Subtest: Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+    # Subtest: selected sprite
+    ok 1 - selected sprite
+      ---
+      duration_ms: 384.315884
+      type: 'test'
+      ...
+    # Subtest: quarantine hash
+    ok 2 - quarantine hash
+      ---
+      duration_ms: 831.763588
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 3 - identity approval
+      ---
+      duration_ms: 543.024973
+      type: 'test'
+      ...
+    # Subtest: invented backdrop
+    ok 4 - invented backdrop
+      ---
+      duration_ms: 459.358388
+      type: 'test'
+      ...
+    # Subtest: backdrop delivery
+    ok 5 - backdrop delivery
+      ---
+      duration_ms: 605.290622
+      type: 'test'
+      ...
+    # Subtest: CG01 delivery
+    ok 6 - CG01 delivery
+      ---
+      duration_ms: 523.700479
+      type: 'test'
+      ...
+    # Subtest: missing warning
+    ok 7 - missing warning
+      ---
+      duration_ms: 533.806266
+      type: 'test'
+      ...
+    1..7
+ok 5 - Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+  ---
+  duration_ms: 4756.286905
+  type: 'test'
+  ...
+# Subtest: mutations outside all 32 cases survive and are rejected by the real full historical validator
+ok 6 - mutations outside all 32 cases survive and are rejected by the real full historical validator
+  ---
+  duration_ms: 5042.151991
+  type: 'test'
+  ...
+# Subtest: all 32 runtime source records reject undeclared changes
+    # Subtest: anya_stroud
+    ok 1 - anya_stroud
+      ---
+      duration_ms: 6.283669
+      type: 'test'
+      ...
+    # Subtest: atlas
+    ok 2 - atlas
+      ---
+      duration_ms: 3.426195
+      type: 'test'
+      ...
+    # Subtest: baird
+    ok 3 - baird
+      ---
+      duration_ms: 2.865116
+      type: 'test'
+      ...
+    # Subtest: bill_l4d
+    ok 4 - bill_l4d
+      ---
+      duration_ms: 3.474337
+      type: 'test'
+      ...
+    # Subtest: carmine_cog
+    ok 5 - carmine_cog
+      ---
+      duration_ms: 3.59419
+      type: 'test'
+      ...
+    # Subtest: caroline_portal
+    ok 6 - caroline_portal
+      ---
+      duration_ms: 3.446466
+      type: 'test'
+      ...
+    # Subtest: carver
+    ok 7 - carver
+      ---
+      duration_ms: 3.491884
+      type: 'test'
+      ...
+    # Subtest: cave_johnson
+    ok 8 - cave_johnson
+      ---
+      duration_ms: 3.011327
+      type: 'test'
+      ...
+    # Subtest: cave_johnson_echo
+    ok 9 - cave_johnson_echo
+      ---
+      duration_ms: 2.904405
+      type: 'test'
+      ...
+    # Subtest: chell
+    ok 10 - chell
+      ---
+      duration_ms: 3.711217
+      type: 'test'
+      ...
+    # Subtest: coach_l4d
+    ok 11 - coach_l4d
+      ---
+      duration_ms: 3.471934
+      type: 'test'
+      ...
+    # Subtest: cole
+    ok 12 - cole
+      ---
+      duration_ms: 3.764447
+      type: 'test'
+      ...
+    # Subtest: dom
+    ok 13 - dom
+      ---
+      duration_ms: 3.519687
+      type: 'test'
+      ...
+    # Subtest: doug_rattmann
+    ok 14 - doug_rattmann
+      ---
+      duration_ms: 2.781359
+      type: 'test'
+      ...
+    # Subtest: ellis_l4d
+    ok 15 - ellis_l4d
+      ---
+      duration_ms: 3.135745
+      type: 'test'
+      ...
+    # Subtest: ellie
+    ok 16 - ellie
+      ---
+      duration_ms: 2.600997
+      type: 'test'
+      ...
+    # Subtest: glados
+    ok 17 - glados
+      ---
+      duration_ms: 2.896894
+      type: 'test'
+      ...
+    # Subtest: glados_core
+    ok 18 - glados_core
+      ---
+      duration_ms: 2.807629
+      type: 'test'
+      ...
+    # Subtest: hammond_ds
+    ok 19 - hammond_ds
+      ---
+      duration_ms: 3.261015
+      type: 'test'
+      ...
+    # Subtest: hoffman_cog
+    ok 20 - hoffman_cog
+      ---
+      duration_ms: 3.193363
+      type: 'test'
+      ...
+    # Subtest: isaac
+    ok 21 - isaac
+      ---
+      duration_ms: 8.291799
+      type: 'test'
+      ...
+    # Subtest: kait_diaz
+    ok 22 - kait_diaz
+      ---
+      duration_ms: 3.475359
+      type: 'test'
+      ...
+    # Subtest: kendra_daniels
+    ok 23 - kendra_daniels
+      ---
+      duration_ms: 3.750535
+      type: 'test'
+      ...
+    # Subtest: marcus
+    ok 24 - marcus
+      ---
+      duration_ms: 3.495911
+      type: 'test'
+      ...
+    # Subtest: nick_l4d
+    ok 25 - nick_l4d
+      ---
+      duration_ms: 3.466005
+      type: 'test'
+      ...
+    # Subtest: nicole_brennan
+    ok 26 - nicole_brennan
+      ---
+      duration_ms: 3.272652
+      type: 'test'
+      ...
+    # Subtest: pbody
+    ok 27 - pbody
+      ---
+      duration_ms: 5.832146
+      type: 'test'
+      ...
+    # Subtest: rochelle_l4d
+    ok 28 - rochelle_l4d
+      ---
+      duration_ms: 3.493837
+      type: 'test'
+      ...
+    # Subtest: wheatley
+    ok 29 - wheatley
+      ---
+      duration_ms: 3.625206
+      type: 'test'
+      ...
+    # Subtest: zach_hammond
+    ok 30 - zach_hammond
+      ---
+      duration_ms: 3.712068
+      type: 'test'
+      ...
+    # Subtest: zoey_l4d
+    ok 31 - zoey_l4d
+      ---
+      duration_ms: 3.694341
+      type: 'test'
+      ...
+    # Subtest: batman_tdk
+    ok 32 - batman_tdk
+      ---
+      duration_ms: 7.444567
+      type: 'test'
+      ...
+    1..32
+ok 7 - all 32 runtime source records reject undeclared changes
+  ---
+  duration_ms: 134.825899
+  type: 'test'
+  ...
+# Subtest: the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+    # Subtest: src/game/heroes.js
+    ok 1 - src/game/heroes.js
+      ---
+      duration_ms: 1.7977
+      type: 'test'
+      ...
+    # Subtest: src/game/canonicalSpriteQuarantine.js
+    ok 2 - src/game/canonicalSpriteQuarantine.js
+      ---
+      duration_ms: 1.174818
+      type: 'test'
+      ...
+    # Subtest: src/game/combat/combatSourceDefinitionsWave15PartC.js
+    ok 3 - src/game/combat/combatSourceDefinitionsWave15PartC.js
+      ---
+      duration_ms: 1.287669
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/heroes.js
+    ok 4 - DLC/GearsOfWar/data/heroes.js
+      ---
+      duration_ms: 1.215319
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/actorSourceContracts.js
+    ok 5 - DLC/GearsOfWar/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.267318
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreAccuratePacks.js
+    ok 6 - DLC/GearsOfWar/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.141117
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreWorldBossOverrides.js
+    ok 7 - DLC/GearsOfWar/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.152875
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/heroes.js
+    ok 8 - DLC/DeadSpace/data/heroes.js
+      ---
+      duration_ms: 2.666915
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/actorSourceContracts.js
+    ok 9 - DLC/DeadSpace/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.396363
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/loreAccuratePacks.js
+    ok 10 - DLC/DeadSpace/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.505068
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/heroes.js
+    ok 11 - DLC/Portal/data/heroes.js
+      ---
+      duration_ms: 1.436214
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/sourceContracts20261113.js
+    ok 12 - DLC/Portal/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.977423
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreAccuratePacks.js
+    ok 13 - DLC/Portal/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.48695
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreWorldBossOverrides.js
+    ok 14 - DLC/Portal/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.393259
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/heroes.js
+    ok 15 - DLC/Left4Dead/data/heroes.js
+      ---
+      duration_ms: 1.51949
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/sourceContracts20261113.js
+    ok 16 - DLC/Left4Dead/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.465088
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/expandedUniverses.js
+    ok 17 - DLC/Left4Dead/data/expandedUniverses.js
+      ---
+      duration_ms: 1.958754
+      type: 'test'
+      ...
+    1..17
+ok 8 - the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+  ---
+  duration_ms: 37.284775
+  type: 'test'
+  ...
+1..8
+# tests 77
+# suites 0
+# pass 77
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 53373.754035

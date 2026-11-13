@@ -1,0 +1,3355 @@
+
+> lively-darwin@0.0.0 test:ui-immersion
+> node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatDialogLifecycle.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/sceneHudPreferences.test.mjs scripts/reducedMotion.test.mjs scripts/raceKeyboardInput.test.mjs scripts/fighterKeyboardInput.test.mjs scripts/heldControlInput.test.mjs scripts/sceneKeyboardInput.test.mjs scripts/extinctionPauseTiming.test.mjs scripts/mosaicReconnaissance.test.mjs scripts/extinctionRelayOperation.test.mjs scripts/mosaicResidentDialogue.test.mjs scripts/extinctionCampaignKits.test.mjs scripts/nexusFieldOperation.test.mjs scripts/mosaicCharacterMissions.test.mjs scripts/mosaicMissionOperations.test.mjs scripts/mosaicContractJournal.test.mjs scripts/extinctionFighterProfiles.test.mjs scripts/extinctionFieldDirectives.test.mjs scripts/portalDenseCatalogs.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/extinctionViewmodelContract.test.mjs scripts/extinctionSchematicView.test.mjs scripts/universeArchiveReader.test.mjs scripts/collectionFocusLifecycle.test.mjs scripts/hubMediaFilterRegression.test.mjs scripts/missionDirectoryView.test.mjs
+
+TAP version 13
+# Subtest: another tab saving during cloud load aborts reconciliation without rebasing or overwriting
+ok 1 - another tab saving during cloud load aborts reconciliation without rebasing or overwriting
+  ---
+  duration_ms: 5.503536
+  type: 'test'
+  ...
+# Subtest: local gameplay updated while cloud load awaits is uploaded from the fresh ref, not the old render
+ok 2 - local gameplay updated while cloud load awaits is uploaded from the fresh ref, not the old render
+  ---
+  duration_ms: 1.558309
+  type: 'test'
+  ...
+# Subtest: new local progress made during load prevents automatic replacement by a previously eligible cloud trace
+ok 3 - new local progress made during load prevents automatic replacement by a previously eligible cloud trace
+  ---
+  duration_ms: 25.82127
+  type: 'test'
+  ...
+# Subtest: automatic cloud restoration succeeds with an unchanged baseline and never rebases
+ok 4 - automatic cloud restoration succeeds with an unchanged baseline and never rebases
+  ---
+  duration_ms: 0.818514
+  type: 'test'
+  ...
+# Subtest: applySave refuses implicit external changes but an explicitly authorized adoption succeeds
+ok 5 - applySave refuses implicit external changes but an explicitly authorized adoption succeeds
+  ---
+  duration_ms: 0.571431
+  type: 'test'
+  ...
+# Subtest: confirmed divergent cloud choice is explicitly authorized and remains usable
+ok 6 - confirmed divergent cloud choice is explicitly authorized and remains usable
+  ---
+  duration_ms: 0.422467
+  type: 'test'
+  ...
+# Subtest: storage becoming inaccessible during cloud load fails closed without touching player state
+ok 7 - storage becoming inaccessible during cloud load fails closed without touching player state
+  ---
+  duration_ms: 0.35138
+  type: 'test'
+  ...
+# Subtest: missing guard cannot authorize even an explicit application
+ok 8 - missing guard cannot authorize even an explicit application
+  ---
+  duration_ms: 0.255595
+  type: 'test'
+  ...
+# Subtest: a delayed cloud restoration is ignored after new-trace
+ok 9 - a delayed cloud restoration is ignored after new-trace
+  ---
+  duration_ms: 0.756831
+  type: 'test'
+  ...
+# Subtest: a delayed cloud restoration is ignored after sign-out
+ok 10 - a delayed cloud restoration is ignored after sign-out
+  ---
+  duration_ms: 1.138907
+  type: 'test'
+  ...
+# Subtest: a delayed cloud restoration is ignored after import
+ok 11 - a delayed cloud restoration is ignored after import
+  ---
+  duration_ms: 0.471141
+  type: 'test'
+  ...
+# Subtest: a delayed cloud restoration is ignored after other-account
+ok 12 - a delayed cloud restoration is ignored after other-account
+  ---
+  duration_ms: 0.163396
+  type: 'test'
+  ...
+# Subtest: a delayed network error cannot suspend a replacement session
+ok 13 - a delayed network error cannot suspend a replacement session
+  ---
+  duration_ms: 0.211289
+  type: 'test'
+  ...
+# Subtest: authorized cloud adoption backs up the exact replaced local save
+ok 14 - authorized cloud adoption backs up the exact replaced local save
+  ---
+  duration_ms: 1.865301
+  type: 'test'
+  ...
+# Subtest: a pending in-game cloud decision cannot restore after sign-out
+ok 15 - a pending in-game cloud decision cannot restore after sign-out
+  ---
+  duration_ms: 0.39806
+  type: 'test'
+  ...
+# Subtest: a pending in-game cloud decision cannot restore after new-trace
+ok 16 - a pending in-game cloud decision cannot restore after new-trace
+  ---
+  duration_ms: 0.268174
+  type: 'test'
+  ...
+# Subtest: a pending in-game cloud decision cannot restore after other-account
+ok 17 - a pending in-game cloud decision cannot restore after other-account
+  ---
+  duration_ms: 0.203727
+  type: 'test'
+  ...
+# Subtest: another tab changing the trace while the in-game choice is open cannot be silently overwritten
+ok 18 - another tab changing the trace while the in-game choice is open cannot be silently overwritten
+  ---
+  duration_ms: 0.450199
+  type: 'test'
+  ...
+# Subtest: local progress changing during a pending choice requires a new comparison
+ok 19 - local progress changing during a pending choice requires a new comparison
+  ---
+  duration_ms: 0.533755
+  type: 'test'
+  ...
+# Subtest: closing a card then immediately returning cannot reopen the card from a late restoration frame
+ok 20 - closing a card then immediately returning cannot reopen the card from a late restoration frame
+  ---
+  duration_ms: 5.820878
+  type: 'test'
+  ...
+# Subtest: an old fallback frame cannot consume a library request made before its view commits
+ok 21 - an old fallback frame cannot consume a library request made before its view commits
+  ---
+  duration_ms: 1.664499
+  type: 'test'
+  ...
+# Subtest: a delayed fallback never steals focus that the player moved to another control
+ok 22 - a delayed fallback never steals focus that the player moved to another control
+  ---
+  duration_ms: 1.61263
+  type: 'test'
+  ...
+# Subtest: two pending requests for the same destination remain independently owned
+ok 23 - two pending requests for the same destination remain independently owned
+  ---
+  duration_ms: 4.623109
+  type: 'test'
+  ...
+# Subtest: a cancelled callback replay cannot clear or focus a newer request of the same destination
+ok 24 - a cancelled callback replay cannot clear or focus a newer request of the same destination
+  ---
+  duration_ms: 1.414853
+  type: 'test'
+  ...
+# Subtest: removing the original card still restores the binder heading when the player has not moved focus
+ok 25 - removing the original card still restores the binder heading when the player has not moved focus
+  ---
+  duration_ms: 4.655818
+  type: 'test'
+  ...
+# Subtest: a pending restoration cannot target a newly inert, hidden or detached destination
+ok 26 - a pending restoration cannot target a newly inert, hidden or detached destination
+  ---
+  duration_ms: 3.472594
+  type: 'test'
+  ...
+# Subtest: live commands can become a paused native modal without InvalidStateError
+ok 27 - live commands can become a paused native modal without InvalidStateError
+  ---
+  duration_ms: 1.965462
+  type: 'test'
+  ...
+# Subtest: returning from paused settings to live commands releases the native modal
+ok 28 - returning from paused settings to live commands releases the native modal
+  ---
+  duration_ms: 0.316416
+  type: 'test'
+  ...
+# Subtest: changing panel modality preserves the original invoker for closing
+ok 29 - changing panel modality preserves the original invoker for closing
+  ---
+  duration_ms: 0.959647
+  type: 'test'
+  ...
+# Subtest: unchanged open panel does not steal focus from its controls
+ok 30 - unchanged open panel does not steal focus from its controls
+  ---
+  duration_ms: 0.210998
+  type: 'test'
+  ...
+# Subtest: closing an already closed panel is a no-op
+ok 31 - closing an already closed panel is a no-op
+  ---
+  duration_ms: 0.144408
+  type: 'test'
+  ...
+# Subtest: unmount releases a modal and restores focus once
+ok 32 - unmount releases a modal and restores focus once
+  ---
+  duration_ms: 0.167913
+  type: 'test'
+  ...
+# Subtest: unmount never focuses a removed invoker or one isolated by another modal
+ok 33 - unmount never focuses a removed invoker or one isolated by another modal
+  ---
+  duration_ms: 0.210156
+  type: 'test'
+  ...
+# Subtest: reopening after close captures a new invoker
+ok 34 - reopening after close captures a new invoker
+  ---
+  duration_ms: 0.142976
+  type: 'test'
+  ...
+# Subtest: React strict replay can dispose and recreate the native dialog controller
+ok 35 - React strict replay can dispose and recreate the native dialog controller
+  ---
+  duration_ms: 0.305671
+  type: 'test'
+  ...
+# Subtest: canvas input preserves arena coordinates: desktop, with the dedicated toolbar
+ok 36 - canvas input preserves arena coordinates: desktop, with the dedicated toolbar
+  ---
+  duration_ms: 1.727333
+  type: 'test'
+  ...
+# Subtest: canvas input preserves arena coordinates: portrait phone with safe margins
+ok 37 - canvas input preserves arena coordinates: portrait phone with safe margins
+  ---
+  duration_ms: 0.420694
+  type: 'test'
+  ...
+# Subtest: canvas input preserves arena coordinates: short landscape phone
+ok 38 - canvas input preserves arena coordinates: short landscape phone
+  ---
+  duration_ms: 0.234764
+  type: 'test'
+  ...
+# Subtest: canvas input preserves arena coordinates: ultrawide desktop
+ok 39 - canvas input preserves arena coordinates: ultrawide desktop
+  ---
+  duration_ms: 0.248165
+  type: 'test'
+  ...
+# Subtest: canvas input preserves arena coordinates: embedded view with an offset
+ok 40 - canvas input preserves arena coordinates: embedded view with an offset
+  ---
+  duration_ms: 0.31171
+  type: 'test'
+  ...
+# Subtest: decorative letterboxes and right/bottom edges cannot select or command a unit
+ok 41 - decorative letterboxes and right/bottom edges cannot select or command a unit
+  ---
+  duration_ms: 0.298881
+  type: 'test'
+  ...
+# Subtest: a hidden or invalid canvas refuses pointer transforms
+ok 42 - a hidden or invalid canvas refuses pointer transforms
+  ---
+  duration_ms: 0.386362
+  type: 'test'
+  ...
+# Subtest: victory is acknowledged once and cannot become a retreat
+ok 43 - victory is acknowledged once and cannot become a retreat
+  ---
+  duration_ms: 1.741775
+  type: 'test'
+  ...
+# Subtest: defeat is acknowledged once and cannot become a retreat
+ok 44 - defeat is acknowledged once and cannot become a retreat
+  ---
+  duration_ms: 0.90916
+  type: 'test'
+  ...
+# Subtest: an unfinished battle can be abandoned once without manufacturing rewards
+ok 45 - an unfinished battle can be abandoned once without manufacturing rewards
+  ---
+  duration_ms: 1.126988
+  type: 'test'
+  ...
+# Subtest: all five campaign kits stay behind existing ownership and retain their twenty exact source actions
+ok 46 - all five campaign kits stay behind existing ownership and retain their twenty exact source actions
+  ---
+  duration_ms: 4.301124
+  type: 'test'
+  ...
+# Subtest: Quillon sends a travelling warrant; his ultimate explodes only on impact and respects champion shielding
+ok 47 - Quillon sends a travelling warrant; his ultimate explodes only on impact and respects champion shielding
+  ---
+  duration_ms: 2.47499
+  type: 'test'
+  ...
+# Subtest: Elyra buff changes real damage, evasive step stays in bounds and refusal pulse uses local range
+ok 48 - Elyra buff changes real damage, evasive step stays in bounds and refusal pulse uses local range
+  ---
+  duration_ms: 0.965865
+  type: 'test'
+  ...
+# Subtest: Oryn blade needs no rounds and only reaches close targets, then the witness beam crosses facing enemies
+ok 49 - Oryn blade needs no rounds and only reaches close targets, then the witness beam crosses facing enemies
+  ---
+  duration_ms: 0.865534
+  type: 'test'
+  ...
+# Subtest: Tessera reflection is stationary, delayed, range-limited and records a kill only once
+ok 50 - Tessera reflection is stationary, delayed, range-limited and records a kill only once
+  ---
+  duration_ms: 1.212317
+  type: 'test'
+  ...
+# Subtest: a reflection cannot bypass the champion shield; a second reflection cannot be stacked
+ok 51 - a reflection cannot bypass the champion shield; a second reflection cannot be stacked
+  ---
+  duration_ms: 0.662619
+  type: 'test'
+  ...
+# Subtest: Nadir deploys and recalls one return probe without restoring health, ammunition or cooldown
+ok 52 - Nadir deploys and recalls one return probe without restoring health, ammunition or cooldown
+  ---
+  duration_ms: 0.61731
+  type: 'test'
+  ...
+# Subtest: return probe expires in active time, cannot be recalled while paused, and heals only through the named ultimate
+ok 53 - return probe expires in active time, cannot be recalled while paused, and heals only through the named ultimate
+  ---
+  duration_ms: 1.456485
+  type: 'test'
+  ...
+# Subtest: support state from another owner or run never deals damage or recalls coordinates
+ok 54 - support state from another owner or run never deals damage or recalls coordinates
+  ---
+  duration_ms: 0.93517
+  type: 'test'
+  ...
+# Subtest: support world markers render without mutating simulation or borrowing character art
+ok 55 - support world markers render without mutating simulation or borrowing character art
+  ---
+  duration_ms: 1.604749
+  type: 'test'
+  ...
+# Subtest: end cleanup removes anchors and effects while retaining cast history and the single reward receipt
+ok 56 - end cleanup removes anchors and effects while retaining cast history and the single reward receipt
+  ---
+  duration_ms: 0.595288
+  type: 'test'
+  ...
+# Subtest: disabled rules leave all four legacy modes unchanged and never create rewards or consume randomness
+ok 57 - disabled rules leave all four legacy modes unchanged and never create rewards or consume randomness
+  ---
+  duration_ms: 3.530712
+  type: 'test'
+  ...
+# Subtest: Extraction keeps its actual three-second relay rule and gains the same radar bearing as other modes
+ok 58 - Extraction keeps its actual three-second relay rule and gains the same radar bearing as other modes
+  ---
+  duration_ms: 1.441612
+  type: 'test'
+  ...
+# Subtest: Last Signal needs one real terminal per wave, 120 distinct ticks and final confirmation before advancing
+ok 59 - Last Signal needs one real terminal per wave, 120 distinct ticks and final confirmation before advancing
+  ---
+  duration_ms: 1.470286
+  type: 'test'
+  ...
+# Subtest: holding suspends outside the perimeter or near live enemies, and confirmation cannot skip a tick
+ok 60 - holding suspends outside the perimeter or near live enemies, and confirmation cannot skip a tick
+  ---
+  duration_ms: 16.504147
+  type: 'test'
+  ...
+# Subtest: a skipped time value earns one tick only; paused, ended, dead and foreign owners cannot progress or interact
+ok 61 - a skipped time value earns one tick only; paused, ended, dead and foreign owners cannot progress or interact
+  ---
+  duration_ms: 1.078866
+  type: 'test'
+  ...
+# Subtest: Infestation opens three distinct vents at 10/25/40 seconds and requires all three at the 60-second exit
+ok 62 - Infestation opens three distinct vents at 10/25/40 seconds and requires all three at the 60-second exit
+  ---
+  duration_ms: 2.094787
+  type: 'test'
+  ...
+# Subtest: Hunt marking requires aim and range; only four active seconds expose the exact Champion, never its drones shield
+ok 63 - Hunt marking requires aim and range; only four active seconds expose the exact Champion, never its drones shield
+  ---
+  duration_ms: 0.625893
+  type: 'test'
+  ...
+# Subtest: radar uses forward-up and player heading, clamps distant objectives and drawing changes no gameplay
+ok 64 - radar uses forward-up and player heading, clamps distant objectives and drawing changes no gameplay
+  ---
+  duration_ms: 0.715278
+  type: 'test'
+  ...
+# Subtest: the actual finish callback rejects incomplete directives, preserves ordinary rewards, and emits only one receipt
+ok 65 - the actual finish callback rejects incomplete directives, preserves ordinary rewards, and emits only one receipt
+  ---
+  duration_ms: 4.508686
+  type: 'test'
+  ...
+# Subtest: an unfinished directive still allows the actual defeat path and never grants a victory title
+ok 66 - an unfinished directive still allows the actual defeat path and never grants a victory title
+  ---
+  duration_ms: 0.453093
+  type: 'test'
+  ...
+# Subtest: every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+ok 67 - every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+  ---
+  duration_ms: 636.514264
+  type: 'test'
+  ...
+# Subtest: the twelve authored Nexus kits remain byte-for-byte primary to the shared adapter
+ok 68 - the twelve authored Nexus kits remain byte-for-byte primary to the shared adapter
+  ---
+  duration_ms: 0.941939
+  type: 'test'
+  ...
+# Subtest: equipment, incarnation and generic source limits are copied from the exact identity
+ok 69 - equipment, incarnation and generic source limits are copied from the exact identity
+  ---
+  duration_ms: 2.236411
+  type: 'test'
+  ...
+# Subtest: real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback
+ok 70 - real briefing and primary action preserve source equipment, bilingual commands and accessible aiming feedback
+  ---
+  duration_ms: 15253.219075
+  type: 'test'
+  ...
+# Subtest: personal sheets stay exact-owner and costume-bound; new profiles never manufacture art
+ok 71 - personal sheets stay exact-owner and costume-bound; new profiles never manufacture art
+  ---
+  duration_ms: 39.071437
+  type: 'test'
+  ...
+# Subtest: ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+ok 72 - ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+  ---
+  duration_ms: 0.945705
+  type: 'test'
+  ...
+# Subtest: control is non-damaging, earns charge on actual contact, expires and freezes during pause
+ok 73 - control is non-damaging, earns charge on actual contact, expires and freezes during pause
+  ---
+  duration_ms: 0.615387
+  type: 'test'
+  ...
+# Subtest: scatter and sweep cover a cone; ordinary contact remains close and aimed
+ok 74 - scatter and sweep cover a cone; ordinary contact remains close and aimed
+  ---
+  duration_ms: 0.337289
+  type: 'test'
+  ...
+# Subtest: shared summon is delayed, world-anchored, owner-bound and respects the Champion shield
+ok 75 - shared summon is delayed, world-anchored, owner-bound and respects the Champion shield
+  ---
+  duration_ms: 1.66561
+  type: 'test'
+  ...
+# Subtest: returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+ok 76 - returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+  ---
+  duration_ms: 0.698583
+  type: 'test'
+  ...
+# Subtest: the abstract non-ballistic view never draws a gun body or mutates simulation
+ok 77 - the abstract non-ballistic view never draws a gun body or mutates simulation
+  ---
+  duration_ms: 1.52555
+  type: 'test'
+  ...
+# Subtest: future unsupported source types are explicit instead of becoming a borrowed gun or a no-op action
+ok 78 - future unsupported source types are explicit instead of becoming a borrowed gun or a no-op action
+  ---
+  duration_ms: 0.627225
+  type: 'test'
+  ...
+# Subtest: workbook export is deterministic and covers all four modes with provenance and honest production states
+ok 79 - workbook export is deterministic and covers all four modes with provenance and honest production states
+  ---
+  duration_ms: 131.264869
+  type: 'test'
+  ...
+# Subtest: movement reach matches actual dash/teleport displacement and preserves historical authored metadata
+ok 80 - movement reach matches actual dash/teleport displacement and preserves historical authored metadata
+  ---
+  duration_ms: 22.932893
+  type: 'test'
+  ...
+# Subtest: personal effects report no target while summons and reflections expose their actual eight-unit radius
+ok 81 - personal effects report no target while summons and reflections expose their actual eight-unit radius
+  ---
+  duration_ms: 17.440466
+  type: 'test'
+  ...
+# Subtest: mine metadata distinguishes actual deployment distance from the explosion radius without changing either
+ok 82 - mine metadata distinguishes actual deployment distance from the explosion radius without changing either
+  ---
+  duration_ms: 21.50357
+  type: 'test'
+  ...
+# Subtest: the actual pickup fire callback preserves unmarked-Hunt refusal and shows an impact only after real damage
+ok 83 - the actual pickup fire callback preserves unmarked-Hunt refusal and shows an impact only after real damage
+  ---
+  duration_ms: 1.586621
+  type: 'test'
+  ...
+# Subtest: actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+ok 84 - actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+  ---
+  duration_ms: 3.964515
+  type: 'test'
+  ...
+# Subtest: actual collection, fire, reload and V/B callbacks keep separate stocks and reloads in all 48 mode/profile/pickup combinations
+ok 85 - actual collection, fire, reload and V/B callbacks keep separate stocks and reloads in all 48 mode/profile/pickup combinations
+  ---
+  duration_ms: 78.451891
+  type: 'test'
+  ...
+# Subtest: actual collection announces replacement of the active or stored weapon and refuses invalid drops before consumption
+ok 86 - actual collection announces replacement of the active or stored weapon and refuses invalid drops before consumption
+  ---
+  duration_ms: 1.549936
+  type: 'test'
+  ...
+# Subtest: actual completion clears carried equipment and retains one unchanged reward receipt per mode
+ok 87 - actual completion clears carried equipment and retains one unchanged reward receipt per mode
+  ---
+  duration_ms: 3.712845
+  type: 'test'
+  ...
+# Subtest: pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+ok 88 - pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+  ---
+  duration_ms: 0.354374
+  type: 'test'
+  ...
+# Subtest: all three mobility kits earn their first legal ultimate from zero through five actual evasions, without a foreign weapon
+ok 89 - all three mobility kits earn their first legal ultimate from zero through five actual evasions, without a foreign weapon
+  ---
+  duration_ms: 32.003896
+  type: 'test'
+  ...
+# Subtest: mobility charge rejects empty, harmless, distant, approaching, wall-clipped, paused and foreign-run activations
+ok 90 - mobility charge rejects empty, harmless, distant, approaching, wall-clipped, paused and foreign-run activations
+  ---
+  duration_ms: 2.054337
+  type: 'test'
+  ...
+# Subtest: the real fire callback gives all three pickups their own delivery in each mode and preserves personal actions
+ok 91 - the real fire callback gives all three pickups their own delivery in each mode and preserves personal actions
+  ---
+  duration_ms: 13.99301
+  type: 'test'
+  ...
+# Subtest: shotgun pellets stop at their first body, stay within nine units and concentrate only at close range
+ok 92 - shotgun pellets stop at their first body, stay within nine units and concentrate only at close range
+  ---
+  duration_ms: 0.494715
+  type: 'test'
+  ...
+# Subtest: a shotgun spreads across separate targets without penetrating a centre target or multiplying charge
+ok 93 - a shotgun spreads across separate targets without penetrating a centre target or multiplying charge
+  ---
+  duration_ms: 0.249726
+  type: 'test'
+  ...
+# Subtest: plasma travels, can miss a moving target and collides with the closest body before a farther one
+ok 94 - plasma travels, can miss a moving target and collides with the closest body before a farther one
+  ---
+  duration_ms: 0.35858
+  type: 'test'
+  ...
+# Subtest: Slayer pickup projectiles keep close damage at impact, including movement and individual blast victims
+ok 95 - Slayer pickup projectiles keep close damage at impact, including movement and individual blast victims
+  ---
+  duration_ms: 2.620059
+  type: 'test'
+  ...
+# Subtest: projectile segment collision catches fast shots and range exhaustion does not create a remote explosion
+ok 96 - projectile segment collision catches fast shots and range exhaustion does not create a remote explosion
+  ---
+  duration_ms: 0.666254
+  type: 'test'
+  ...
+# Subtest: rocket impact damages nearby threats with falloff, counts each kill once and gives one charge credit
+ok 97 - rocket impact damages nearby threats with falloff, counts each kill once and gives one charge credit
+  ---
+  duration_ms: 0.700916
+  type: 'test'
+  ...
+# Subtest: travelling pickups handle point-blank overlap, stale metadata and consecutive contacts without duplicate drops
+ok 98 - travelling pickups handle point-blank overlap, stale metadata and consecutive contacts without duplicate drops
+  ---
+  duration_ms: 0.912685
+  type: 'test'
+  ...
+# Subtest: one explosion cannot strip drones then damage the shielded Champion through target array order
+ok 99 - one explosion cannot strip drones then damage the shielded Champion through target array order
+  ---
+  duration_ms: 0.532973
+  type: 'test'
+  ...
+# Subtest: Hunt marking is evaluated on projectile impact, not remembered from the trigger press
+ok 100 - Hunt marking is evaluated on projectile impact, not remembered from the trigger press
+  ---
+  duration_ms: 0.810241
+  type: 'test'
+  ...
+# Subtest: a pickup projectile survives a legal kit switch, freezes in pause and never borrows its owner’s personal art
+ok 101 - a pickup projectile survives a legal kit switch, freezes in pause and never borrows its owner’s personal art
+  ---
+  duration_ms: 1.929498
+  type: 'test'
+  ...
+# Subtest: pickup fire obeys reload, empty stock, cadence, source ownership and run cleanup without rewards
+ok 102 - pickup fire obeys reload, empty stock, cadence, source ownership and run cleanup without rewards
+  ---
+  duration_ms: 1.873353
+  type: 'test'
+  ...
+# Subtest: projectile feedback aligns with the scene projection and the held pickup has bilingual instructions
+ok 103 - projectile feedback aligns with the scene projection and the held pickup has bilingual instructions
+  ---
+  duration_ms: 0.606674
+  type: 'test'
+  ...
+# Subtest: aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+ok 104 - aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+  ---
+  duration_ms: 368.856679
+  type: 'test'
+  ...
+# Subtest: contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+ok 105 - contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+  ---
+  duration_ms: 1.500011
+  type: 'test'
+  ...
+# Subtest: a broad contact cone or a hidden projection never reveals an off-screen target
+ok 106 - a broad contact cone or a hidden projection never reveals an off-screen target
+  ---
+  duration_ms: 0.396097
+  type: 'test'
+  ...
+# Subtest: instant shotgun guidance uses the first collision of the actual seven rays, never a continuous spread cone
+ok 107 - instant shotgun guidance uses the first collision of the actual seven rays, never a continuous spread cone
+  ---
+  duration_ms: 0.677401
+  type: 'test'
+  ...
+# Subtest: projectile guidance describes a current path and never predicts or manufactures a later hit
+ok 108 - projectile guidance describes a current path and never predicts or manufactures a later hit
+  ---
+  duration_ms: 1.52641
+  type: 'test'
+  ...
+# Subtest: marking and shield feedback follow real damage rules, while non-damaging control remains valid
+ok 109 - marking and shield feedback follow real damage rules, while non-damaging control remains valid
+  ---
+  duration_ms: 0.941328
+  type: 'test'
+  ...
+# Subtest: movement guidance uses the actual arena boundary and presents no gun command or target
+ok 110 - movement guidance uses the actual arena boundary and presents no gun command or target
+  ---
+  duration_ms: 0.407034
+  type: 'test'
+  ...
+# Subtest: aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+ok 111 - aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+  ---
+  duration_ms: 0.691882
+  type: 'test'
+  ...
+# Subtest: the real snapshot follows collected, holstered and restored equipment without changing an input or resource
+ok 112 - the real snapshot follows collected, holstered and restored equipment without changing an input or resource
+  ---
+  duration_ms: 2.436842
+  type: 'test'
+  ...
+# Subtest: the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+ok 113 - the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+  ---
+  duration_ms: 9.277951
+  type: 'test'
+  ...
+# Subtest: Extinction pause effects are safe before the first renderer mounts
+ok 114 - Extinction pause effects are safe before the first renderer mounts
+  ---
+  duration_ms: 3.611191
+  type: 'test'
+  ...
+# Subtest: Extinction relay synchronization uses actual fixed steps across shell pause
+ok 115 - Extinction relay synchronization uses actual fixed steps across shell pause
+  ---
+  duration_ms: 1.756958
+  type: 'test'
+  ...
+# Subtest: Extinction shell pause and resume discard elapsed time without a paused animation frame
+ok 116 - Extinction shell pause and resume discard elapsed time without a paused animation frame
+  ---
+  duration_ms: 1.371247
+  type: 'test'
+  ...
+# Subtest: Extinction relay synchronization uses actual fixed steps across intel pause
+ok 117 - Extinction relay synchronization uses actual fixed steps across intel pause
+  ---
+  duration_ms: 0.311029
+  type: 'test'
+  ...
+# Subtest: Extinction intel pause and resume discard elapsed time without a paused animation frame
+ok 118 - Extinction intel pause and resume discard elapsed time without a paused animation frame
+  ---
+  duration_ms: 0.295055
+  type: 'test'
+  ...
+# Subtest: Extinction overlapping pauses stay frozen when shell closes first
+ok 119 - Extinction overlapping pauses stay frozen when shell closes first
+  ---
+  duration_ms: 0.404289
+  type: 'test'
+  ...
+# Subtest: Extinction overlapping pauses stay frozen when intel closes first
+ok 120 - Extinction overlapping pauses stay frozen when intel closes first
+  ---
+  duration_ms: 0.197227
+  type: 'test'
+  ...
+# Subtest: Extinction renderer replacement keeps pause control attached to the current clock
+ok 121 - Extinction renderer replacement keeps pause control attached to the current clock
+  ---
+  duration_ms: 0.341434
+  type: 'test'
+  ...
+# Subtest: disabled operation is a strict no-op, without reading legacy state or consuming RNG
+ok 122 - disabled operation is a strict no-op, without reading legacy state or consuming RNG
+  ---
+  duration_ms: 3.091067
+  type: 'test'
+  ...
+# Subtest: ordinary loot keeps its existing path even when the relay option is enabled
+ok 123 - ordinary loot keeps its existing path even when the relay option is enabled
+  ---
+  duration_ms: 0.350538
+  type: 'test'
+  ...
+# Subtest: activation requires the current live beacon, run, tick and existing strict pickup radius
+ok 124 - activation requires the current live beacon, run, tick and existing strict pickup radius
+  ---
+  duration_ms: 0.515587
+  type: 'test'
+  ...
+# Subtest: activation does not change loot, counters, HP, ammo, rewards or the previous operation
+ok 125 - activation does not change loot, counters, HP, ammo, rewards or the previous operation
+  ---
+  duration_ms: 0.40491
+  type: 'test'
+  ...
+# Subtest: synchronization needs exactly 180 distinct active ticks and an explicit final interaction
+ok 126 - synchronization needs exactly 180 distinct active ticks and an explicit final interaction
+  ---
+  duration_ms: 0.575047
+  type: 'test'
+  ...
+# Subtest: a repeated, reversed or skipped tick cannot generate catch-up synchronization
+ok 127 - a repeated, reversed or skipped tick cannot generate catch-up synchronization
+  ---
+  duration_ms: 0.134723
+  type: 'test'
+  ...
+# Subtest: leaving the perimeter suspends progress and returning resumes without credit for absent ticks
+ok 128 - leaving the perimeter suspends progress and returning resumes without credit for absent ticks
+  ---
+  duration_ms: 1.222322
+  type: 'test'
+  ...
+# Subtest: pause, ended run, wrong owner and invalid time leave the operation frozen
+ok 129 - pause, ended run, wrong owner and invalid time leave the operation frozen
+  ---
+  duration_ms: 0.229896
+  type: 'test'
+  ...
+# Subtest: removed, consumed or previous-wave beacons cannot advance or be collected again
+ok 130 - removed, consumed or previous-wave beacons cannot advance or be collected again
+  ---
+  duration_ms: 0.290989
+  type: 'test'
+  ...
+# Subtest: three waves synchronize independent stable IDs and a new run has no carried progress
+ok 131 - three waves synchronize independent stable IDs and a new run has no carried progress
+  ---
+  duration_ms: 1.334972
+  type: 'test'
+  ...
+# Subtest: the entire optional operation is deterministic without native time, timers or random draws
+ok 132 - the entire optional operation is deterministic without native time, timers or random draws
+  ---
+  duration_ms: 1.308922
+  type: 'test'
+  ...
+# Subtest: all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+ok 133 - all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+  ---
+  duration_ms: 308.031667
+  type: 'test'
+  ...
+# Subtest: foreign owners, stale runs and absent profiles cannot lend a personal silhouette or colour
+ok 134 - foreign owners, stale runs and absent profiles cannot lend a personal silhouette or colour
+  ---
+  duration_ms: 2.077521
+  type: 'test'
+  ...
+# Subtest: real primary activations and cooldown ticks drive attack, recovery and ready states
+ok 135 - real primary activations and cooldown ticks drive attack, recovery and ready states
+  ---
+  duration_ms: 3.127913
+  type: 'test'
+  ...
+# Subtest: ammunition, reload and pickup recoil read the actual held resource
+ok 136 - ammunition, reload and pickup recoil read the actual held resource
+  ---
+  duration_ms: 0.363788
+  type: 'test'
+  ...
+# Subtest: every primary delivery has different geometry even with one colour, and pause rendering is pure
+ok 137 - every primary delivery has different geometry even with one colour, and pause rendering is pure
+  ---
+  duration_ms: 4.852902
+  type: 'test'
+  ...
+# Subtest: all diagram states fit the lower envelope on portrait, landscape, ultrawide and small canvases
+ok 138 - all diagram states fit the lower envelope on portrait, landscape, ultrawide and small canvases
+  ---
+  duration_ms: 26.829189
+  type: 'test'
+  ...
+# Subtest: measured HUD regions keep real paths and personal sheet bounds clear at every aspect and display scale
+ok 139 - measured HUD regions keep real paths and personal sheet bounds clear at every aspect and display scale
+  ---
+  duration_ms: 22.530691
+  type: 'test'
+  ...
+# Subtest: progression contract executes current owner, reload, crop, pickup and aspect rules
+ok 140 - progression contract executes current owner, reload, crop, pickup and aspect rules
+  ---
+  duration_ms: 2.23635
+  type: 'test'
+  ...
+# Subtest: the audit fails for wrong Mirelle row count
+ok 141 - the audit fails for wrong Mirelle row count
+  ---
+  duration_ms: 1.246568
+  type: 'test'
+  ...
+# Subtest: the audit fails if reload loses the source bleed trim
+ok 142 - the audit fails if reload loses the source bleed trim
+  ---
+  duration_ms: 0.695558
+  type: 'test'
+  ...
+# Subtest: the audit fails if a cell spills into its neighbour
+ok 143 - the audit fails if a cell spills into its neighbour
+  ---
+  duration_ms: 7.418779
+  type: 'test'
+  ...
+# Subtest: all four trim edges are bounded to the declared cell without mutating input
+ok 144 - all four trim edges are bounded to the declared cell without mutating input
+  ---
+  duration_ms: 1.341501
+  type: 'test'
+  ...
+# Subtest: unloaded sizes and invalid layouts return no crop
+ok 145 - unloaded sizes and invalid layouts return no crop
+  ---
+  duration_ms: 0.202725
+  type: 'test'
+  ...
+# Subtest: placement contains square, wide and tall sources across screen formats
+ok 146 - placement contains square, wide and tall sources across screen formats
+  ---
+  duration_ms: 0.29187
+  type: 'test'
+  ...
+# Subtest: projectile overlay keeps its own aspect without changing timing or simulation
+ok 147 - projectile overlay keeps its own aspect without changing timing or simulation
+  ---
+  duration_ms: 0.158659
+  type: 'test'
+  ...
+# Subtest: arthur_kaamelott: authored first-person cells exclude the PNG separators in all four phases
+ok 148 - arthur_kaamelott: authored first-person cells exclude the PNG separators in all four phases
+  ---
+  duration_ms: 1.316224
+  type: 'test'
+  ...
+# Subtest: serj_tankian: authored first-person cells exclude the PNG separators in all four phases
+ok 149 - serj_tankian: authored first-person cells exclude the PNG separators in all four phases
+  ---
+  duration_ms: 1.49965
+  type: 'test'
+  ...
+# Subtest: invalid authored source cells fall back instead of sampling a different asset region
+ok 150 - invalid authored source cells fall back instead of sampling a different asset region
+  ---
+  duration_ms: 0.615247
+  type: 'test'
+  ...
+# Subtest: progression hookup follows the selected owner through the fighter profile and exact-owner view resolver
+ok 151 - progression hookup follows the selected owner through the fighter profile and exact-owner view resolver
+  ---
+  duration_ms: 268.083038
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects wrong owner
+ok 152 - progression hookup rejects wrong owner
+  ---
+  duration_ms: 85.225367
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects stale owner memo
+ok 153 - progression hookup rejects stale owner memo
+  ---
+  duration_ms: 98.240265
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects bypassed owner profile
+ok 154 - progression hookup rejects bypassed owner profile
+  ---
+  duration_ms: 121.667843
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects borrowed hands
+ok 155 - progression hookup rejects borrowed hands
+  ---
+  duration_ms: 465.347338
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects unbound hand reference
+ok 156 - progression hookup rejects unbound hand reference
+  ---
+  duration_ms: 632.308103
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects borrowed effect
+ok 157 - progression hookup rejects borrowed effect
+  ---
+  duration_ms: 128.072927
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects unbound effect reference
+ok 158 - progression hookup rejects unbound effect reference
+  ---
+  duration_ms: 123.534622
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects wrong adapter owner
+ok 159 - progression hookup rejects wrong adapter owner
+  ---
+  duration_ms: 101.228244
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects borrowed adapter view
+ok 160 - progression hookup rejects borrowed adapter view
+  ---
+  duration_ms: 120.651927
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects overridden adapter owner id
+ok 161 - progression hookup rejects overridden adapter owner id
+  ---
+  duration_ms: 145.887826
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects overridden adapter hands
+ok 162 - progression hookup rejects overridden adapter hands
+  ---
+  duration_ms: 129.711046
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects overridden adapter effect
+ok 163 - progression hookup rejects overridden adapter effect
+  ---
+  duration_ms: 105.829133
+  type: 'test'
+  ...
+# Subtest: progression hookup rejects overridden adapter crop
+ok 164 - progression hookup rejects overridden adapter crop
+  ---
+  duration_ms: 122.979205
+  type: 'test'
+  ...
+# Subtest: a comment containing the old owner expression cannot satisfy the selected-owner hookup
+ok 165 - a comment containing the old owner expression cannot satisfy the selected-owner hookup
+  ---
+  duration_ms: 85.689931
+  type: 'test'
+  ...
+# Subtest: production firing guards accept the extracted runtime while retaining the real scene renderer and reload
+ok 166 - production firing guards accept the extracted runtime while retaining the real scene renderer and reload
+  ---
+  duration_ms: 1.441532
+  type: 'test'
+  ...
+# Subtest: production firing guards reject disconnected pickup call
+ok 167 - production firing guards reject disconnected pickup call
+  ---
+  duration_ms: 13.949033
+  type: 'test'
+  ...
+# Subtest: production firing guards reject reload bypass while firing
+ok 168 - production firing guards reject reload bypass while firing
+  ---
+  duration_ms: 0.328154
+  type: 'test'
+  ...
+# Subtest: production firing guards reject disabled cadence
+ok 169 - production firing guards reject disabled cadence
+  ---
+  duration_ms: 0.217758
+  type: 'test'
+  ...
+# Subtest: production firing guards reject lost shot timestamp
+ok 170 - production firing guards reject lost shot timestamp
+  ---
+  duration_ms: 0.177869
+  type: 'test'
+  ...
+# Subtest: production firing guards reject free ammunition
+ok 171 - production firing guards reject free ammunition
+  ---
+  duration_ms: 0.161062
+  type: 'test'
+  ...
+# Subtest: production firing guards reject lost muzzle feedback
+ok 172 - production firing guards reject lost muzzle feedback
+  ---
+  duration_ms: 0.162605
+  type: 'test'
+  ...
+# Subtest: production firing guards reject unlimited reload reserve
+ok 173 - production firing guards reject unlimited reload reserve
+  ---
+  duration_ms: 1.558168
+  type: 'test'
+  ...
+# Subtest: production firing guards reject instant reload
+ok 174 - production firing guards reject instant reload
+  ---
+  duration_ms: 1.688435
+  type: 'test'
+  ...
+# Subtest: production firing guards reject frozen reload delay
+ok 175 - production firing guards reject frozen reload delay
+  ---
+  duration_ms: 1.523125
+  type: 'test'
+  ...
+# Subtest: production firing guards reject disconnected world effects
+ok 176 - production firing guards reject disconnected world effects
+  ---
+  duration_ms: 1.359529
+  type: 'test'
+  ...
+# Subtest: production firing guards reject undrawn dedicated overlay
+ok 177 - production firing guards reject undrawn dedicated overlay
+  ---
+  duration_ms: 1.281421
+  type: 'test'
+  ...
+# Subtest: production firing guards reject overlay outside firing frames
+ok 178 - production firing guards reject overlay outside firing frames
+  ---
+  duration_ms: 1.15481
+  type: 'test'
+  ...
+# Subtest: movement aliases stay held until the last physical key is released
+ok 179 - movement aliases stay held until the last physical key is released
+  ---
+  duration_ms: 33871.723115
+  type: 'test'
+  ...
+# Subtest: guard aliases and the two Shift keys retain independent physical owners
+ok 180 - guard aliases and the two Shift keys retain independent physical owners
+  ---
+  duration_ms: 3.312974
+  type: 'test'
+  ...
+# Subtest: keyup releases the recorded action after character, case or focus changes
+ok 181 - keyup releases the recorded action after character, case or focus changes
+  ---
+  duration_ms: 1.248733
+  type: 'test'
+  ...
+# Subtest: events without code keep case-insensitive keys and separate modifier locations
+ok 182 - events without code keep case-insensitive keys and separate modifier locations
+  ---
+  duration_ms: 0.938675
+  type: 'test'
+  ...
+# Subtest: two-player directions and guards never release the other camp
+ok 183 - two-player directions and guards never release the other camp
+  ---
+  duration_ms: 1.02856
+  type: 'test'
+  ...
+# Subtest: keyboard and existing touch holds release independently on both camps
+ok 184 - keyboard and existing touch holds release independently on both camps
+  ---
+  duration_ms: 1.562075
+  type: 'test'
+  ...
+# Subtest: each camp retains direction and guard until its final touch source releases
+ok 185 - each camp retains direction and guard until its final touch source releases
+  ---
+  duration_ms: 3.002516
+  type: 'test'
+  ...
+# Subtest: held UI controls, gameplay keys and the other player release independently
+ok 186 - held UI controls, gameplay keys and the other player release independently
+  ---
+  duration_ms: 1.128622
+  type: 'test'
+  ...
+# Subtest: a fresh UI pointer works after tag without restoring the old pointer owner
+ok 187 - a fresh UI pointer works after tag without restoring the old pointer owner
+  ---
+  duration_ms: 2.359336
+  type: 'test'
+  ...
+# Subtest: player: keyboard tag drops every departing owner without affecting the other camp
+ok 188 - player: keyboard tag drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 0.902171
+  type: 'test'
+  ...
+# Subtest: player: button tag drops every departing owner without affecting the other camp
+ok 189 - player: button tag drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 0.480024
+  type: 'test'
+  ...
+# Subtest: player: knockout drops every departing owner without affecting the other camp
+ok 190 - player: knockout drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 7.001997
+  type: 'test'
+  ...
+# Subtest: cpu: keyboard tag drops every departing owner without affecting the other camp
+ok 191 - cpu: keyboard tag drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 0.650731
+  type: 'test'
+  ...
+# Subtest: cpu: button tag drops every departing owner without affecting the other camp
+ok 192 - cpu: button tag drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 0.56368
+  type: 'test'
+  ...
+# Subtest: cpu: knockout drops every departing owner without affecting the other camp
+ok 193 - cpu: knockout drops every departing owner without affecting the other camp
+  ---
+  duration_ms: 4.293172
+  type: 'test'
+  ...
+# Subtest: a refused tag preserves held sources and the active fighter
+ok 194 - a refused tag preserves held sources and the active fighter
+  ---
+  duration_ms: 11.041646
+  type: 'test'
+  ...
+# Subtest: attacks remain one-shot after their first animation finishes
+ok 195 - attacks remain one-shot after their first animation finishes
+  ---
+  duration_ms: 2.924469
+  type: 'test'
+  ...
+# Subtest: forms, menus, consumed events, repeats and inactive sessions acquire no commands
+ok 196 - forms, menus, consumed events, repeats and inactive sessions acquire no commands
+  ---
+  duration_ms: 3.435549
+  type: 'test'
+  ...
+# Subtest: native button Space remains available while canvas Space still jumps
+ok 197 - native button Space remains available while canvas Space still jumps
+  ---
+  duration_ms: 0.56374
+  type: 'test'
+  ...
+# Subtest: shell or controls-menu pause clears sources; late releases cannot restore them
+ok 198 - shell or controls-menu pause clears sources; late releases cannot restore them
+  ---
+  duration_ms: 1.000178
+  type: 'test'
+  ...
+# Subtest: window blur clears sources; late releases cannot restore them
+ok 199 - window blur clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.505652
+  type: 'test'
+  ...
+# Subtest: hidden tab clears sources; late releases cannot restore them
+ok 200 - hidden tab clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.542979
+  type: 'test'
+  ...
+# Subtest: restart clears sources; late releases cannot restore them
+ok 201 - restart clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.518152
+  type: 'test'
+  ...
+# Subtest: return to lobby clears sources; late releases cannot restore them
+ok 202 - return to lobby clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.476058
+  type: 'test'
+  ...
+# Subtest: confirmed exit clears sources; late releases cannot restore them
+ok 203 - confirmed exit clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.739114
+  type: 'test'
+  ...
+# Subtest: new match setup clears sources; late releases cannot restore them
+ok 204 - new match setup clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.738243
+  type: 'test'
+  ...
+# Subtest: render failure clears sources; late releases cannot restore them
+ok 205 - render failure clears sources; late releases cannot restore them
+  ---
+  duration_ms: 0.677131
+  type: 'test'
+  ...
+# Subtest: unmount clears sources; late releases cannot restore them
+ok 206 - unmount clears sources; late releases cannot restore them
+  ---
+  duration_ms: 1.154491
+  type: 'test'
+  ...
+# Subtest: resume stays neutral until a fresh press, without restoring pre-pause owners
+ok 207 - resume stays neutral until a fresh press, without restoring pre-pause owners
+  ---
+  duration_ms: 1.047729
+  type: 'test'
+  ...
+# Subtest: a new engine clears physical owners and a disposed old engine cannot reclaim them
+ok 208 - a new engine clears physical owners and a disposed old engine cannot reclaim them
+  ---
+  duration_ms: 0.695709
+  type: 'test'
+  ...
+# Subtest: campaign progression accepts one outcome per launch and rejects stale callbacks after relaunch
+ok 209 - campaign progression accepts one outcome per launch and rejects stale callbacks after relaunch
+  ---
+  duration_ms: 1.76455
+  type: 'test'
+  ...
+# Subtest: modal decisions are serialized; a stale confirm cannot authorize the next decision
+ok 210 - modal decisions are serialized; a stale confirm cannot authorize the next decision
+  ---
+  duration_ms: 0.333543
+  type: 'test'
+  ...
+# Subtest: unmount cancels pending decisions without confirming destructive actions
+ok 211 - unmount cancels pending decisions without confirming destructive actions
+  ---
+  duration_ms: 1.503897
+  type: 'test'
+  ...
+# Subtest: closed combat drawers do not block Escape pause; an open modal owns Escape
+ok 212 - closed combat drawers do not block Escape pause; an open modal owns Escape
+  ---
+  duration_ms: 4.438812
+  type: 'test'
+  ...
+# Subtest: invalid or unavailable display preferences use a readable bounded default
+ok 213 - invalid or unavailable display preferences use a readable bounded default
+  ---
+  duration_ms: 0.62994
+  type: 'test'
+  ...
+# Subtest: display choices persist separately from the save and round-trip without altering progression
+ok 214 - display choices persist separately from the save and round-trip without altering progression
+  ---
+  duration_ms: 0.420945
+  type: 'test'
+  ...
+# Subtest: two pointers keep the action until its final physical owner releases
+ok 215 - two pointers keep the action until its final physical owner releases
+  ---
+  duration_ms: 2.64038
+  type: 'test'
+  ...
+# Subtest: Space, Enter, NumpadEnter and a pointer have independent owners
+ok 216 - Space, Enter, NumpadEnter and a pointer have independent owners
+  ---
+  duration_ms: 8.319953
+  type: 'test'
+  ...
+# Subtest: button blur releases its keyboard activation while retaining live pointers
+ok 217 - button blur releases its keyboard activation while retaining live pointers
+  ---
+  duration_ms: 0.449157
+  type: 'test'
+  ...
+# Subtest: pointer cancellation is source-specific, even across separate buttons
+ok 218 - pointer cancellation is source-specific, even across separate buttons
+  ---
+  duration_ms: 0.358521
+  type: 'test'
+  ...
+# Subtest: right clicks, disabled controls, consumed events and stray repeats acquire nothing
+ok 219 - right clicks, disabled controls, consumed events and stray repeats acquire nothing
+  ---
+  duration_ms: 0.256386
+  type: 'test'
+  ...
+# Subtest: reset clears all owners once, releases capture and requires a fresh press
+ok 220 - reset clears all owners once, releases capture and requires a fresh press
+  ---
+  duration_ms: 0.289677
+  type: 'test'
+  ...
+# Subtest: scene reset does not suppress a new owner or restore an older held source
+ok 221 - scene reset does not suppress a new owner or restore an older held source
+  ---
+  duration_ms: 0.275986
+  type: 'test'
+  ...
+# Subtest: window release fallback works if pointer capture is unavailable
+ok 222 - window release fallback works if pointer capture is unavailable
+  ---
+  duration_ms: 0.230588
+  type: 'test'
+  ...
+# Subtest: collection diagnostics can label hidden media types before the helper declaration
+ok 223 - collection diagnostics can label hidden media types before the helper declaration
+  ---
+  duration_ms: 6.754418
+  type: 'test'
+  ...
+# Subtest: leaving a walked city district and restoring it preserves position, facing and district
+ok 224 - leaving a walked city district and restoring it preserves position, facing and district
+  ---
+  duration_ms: 5.500362
+  type: 'test'
+  ...
+# Subtest: a hidden/unavailable district falls back safely while valid world positions are clamped
+ok 225 - a hidden/unavailable district falls back safely while valid world positions are clamped
+  ---
+  duration_ms: 0.267193
+  type: 'test'
+  ...
+# Subtest: Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+ok 226 - Extinction persists mode XP, receipts and a journal entry without overwriting existing progression
+  ---
+  duration_ms: 0.800106
+  type: 'test'
+  ...
+# Subtest: abandonment and malformed reports cannot award XP or rewards
+ok 227 - abandonment and malformed reports cannot award XP or rewards
+  ---
+  duration_ms: 0.213622
+  type: 'test'
+  ...
+# Subtest: canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+ok 228 - canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes
+  ---
+  duration_ms: 0.635438
+  type: 'test'
+  ...
+# Subtest: measured HUD bounds project through the actual canvas offset and backing size in every format
+ok 229 - measured HUD bounds project through the actual canvas offset and backing size in every format
+  ---
+  duration_ms: 0.592424
+  type: 'test'
+  ...
+# Subtest: the production viewport hook measures committed title text and preference changes before painting, then disconnects
+ok 230 - the production viewport hook measures committed title text and preference changes before painting, then disconnects
+  ---
+  duration_ms: 3.698326
+  type: 'test'
+  ...
+# Subtest: real scene handlers resume W/E with button focus while reserving native activation and text entry
+ok 231 - real scene handlers resume W/E with button focus while reserving native activation and text entry
+  ---
+  duration_ms: 1.437657
+  type: 'test'
+  ...
+# Subtest: the real pause focus trap yields to a modal that made its parent inert
+ok 232 - the real pause focus trap yields to a modal that made its parent inert
+  ---
+  duration_ms: 0.505011
+  type: 'test'
+  ...
+# Subtest: UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+ok 233 - UI memory restores mission, arc, filters and catalog cursors without save data or a running session
+  ---
+  duration_ms: 0.894559
+  type: 'test'
+  ...
+# Subtest: real launch handler writes mission context before navigation and never bypasses access checks
+ok 234 - real launch handler writes mission context before navigation and never bypasses access checks
+  ---
+  duration_ms: 0.929831
+  type: 'test'
+  ...
+# Subtest: real category effect preserves restored selection on mount, and resets only on a category change
+ok 235 - real category effect preserves restored selection on mount, and resets only on a category change
+  ---
+  duration_ms: 1.792092
+  type: 'test'
+  ...
+# Subtest: real Hub callback credits wallets once and keeps results until acknowledgement
+ok 236 - real Hub callback credits wallets once and keeps results until acknowledgement
+  ---
+  duration_ms: 0.496488
+  type: 'test'
+  ...
+# Subtest: gear comparison includes both gained stats and bonuses lost by replacing the slot
+ok 237 - gear comparison includes both gained stats and bonuses lost by replacing the slot
+  ---
+  duration_ms: 0.290397
+  type: 'test'
+  ...
+# Subtest: pagination bounds the displayed catalogue while preserving source order, objects and complete search
+ok 238 - pagination bounds the displayed catalogue while preserving source order, objects and complete search
+  ---
+  duration_ms: 3.855793
+  type: 'test'
+  ...
+# Subtest: later-page missions remain searchable by accent-free French, English, universe, ID and boss
+ok 239 - later-page missions remain searchable by accent-free French, English, universe, ID and boss
+  ---
+  duration_ms: 2.106987
+  type: 'test'
+  ...
+# Subtest: all status counts and predicates keep the supplied deployment and progression decisions
+ok 240 - all status counts and predicates keep the supplied deployment and progression decisions
+  ---
+  duration_ms: 0.546594
+  type: 'test'
+  ...
+# Subtest: completed but inaccessible missions keep both historical completion and the deployment lock
+ok 241 - completed but inaccessible missions keep both historical completion and the deployment lock
+  ---
+  duration_ms: 0.206021
+  type: 'test'
+  ...
+# Subtest: blocking reasons use the real localized resolver message, with explicit safe fallback
+ok 242 - blocking reasons use the real localized resolver message, with explicit safe fallback
+  ---
+  duration_ms: 0.39102
+  type: 'test'
+  ...
+# Subtest: empty results, shrinking sources and absent optional deployment resolver remain safe
+ok 243 - empty results, shrinking sources and absent optional deployment resolver remain safe
+  ---
+  duration_ms: 1.466421
+  type: 'test'
+  ...
+# Subtest: every Nexus identity and both DLC senders have distinct authored bilingual contracts
+ok 244 - every Nexus identity and both DLC senders have distinct authored bilingual contracts
+  ---
+  duration_ms: 17.31902
+  type: 'test'
+  ...
+# Subtest: DLC cases remain in their own districts and respect the exact owned incarnation
+ok 245 - DLC cases remain in their own districts and respect the exact owned incarnation
+  ---
+  duration_ms: 0.971345
+  type: 'test'
+  ...
+# Subtest: availability requires current district, owned sender, residents and every required exhibit
+ok 246 - availability requires current district, owned sender, residents and every required exhibit
+  ---
+  duration_ms: 0.460404
+  type: 'test'
+  ...
+# Subtest: city-anchor-signature-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 247 - city-anchor-signature-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 91.288675
+  type: 'test'
+  ...
+# Subtest: city-anchor-signature-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 248 - city-anchor-signature-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 24.399724
+  type: 'test'
+  ...
+# Subtest: city-mirelle-suture-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 249 - city-mirelle-suture-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 77.005072
+  type: 'test'
+  ...
+# Subtest: city-mirelle-suture-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 250 - city-mirelle-suture-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 75.007229
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 251 - city-bastion-tenth-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 116.034361
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 252 - city-bastion-tenth-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 142.00256
+  type: 'test'
+  ...
+# Subtest: city-nova-measured-exit-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 253 - city-nova-measured-exit-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 105.116972
+  type: 'test'
+  ...
+# Subtest: city-nova-measured-exit-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 254 - city-nova-measured-exit-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 75.363497
+  type: 'test'
+  ...
+# Subtest: city-sable-signed-map-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 255 - city-sable-signed-map-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 195.258398
+  type: 'test'
+  ...
+# Subtest: city-sable-signed-map-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 256 - city-sable-signed-map-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 143.806109
+  type: 'test'
+  ...
+# Subtest: city-loom-return-thread-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 257 - city-loom-return-thread-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 184.731237
+  type: 'test'
+  ...
+# Subtest: city-loom-return-thread-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 258 - city-loom-return-thread-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 128.189627
+  type: 'test'
+  ...
+# Subtest: city-marrow-distinct-choices-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 259 - city-marrow-distinct-choices-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 128.107872
+  type: 'test'
+  ...
+# Subtest: city-marrow-distinct-choices-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 260 - city-marrow-distinct-choices-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 131.918238
+  type: 'test'
+  ...
+# Subtest: city-tessera-two-accounts-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 261 - city-tessera-two-accounts-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 89.000907
+  type: 'test'
+  ...
+# Subtest: city-tessera-two-accounts-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 262 - city-tessera-two-accounts-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 298.122112
+  type: 'test'
+  ...
+# Subtest: city-quillon-single-receipt-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 263 - city-quillon-single-receipt-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 96.983191
+  type: 'test'
+  ...
+# Subtest: city-quillon-single-receipt-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 264 - city-quillon-single-receipt-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 102.818267
+  type: 'test'
+  ...
+# Subtest: city-nadir-return-probe-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 265 - city-nadir-return-probe-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 163.587753
+  type: 'test'
+  ...
+# Subtest: city-nadir-return-probe-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 266 - city-nadir-return-probe-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 103.73545
+  type: 'test'
+  ...
+# Subtest: city-elyra-consented-door-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 267 - city-elyra-consented-door-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 41.285231
+  type: 'test'
+  ...
+# Subtest: city-elyra-consented-door-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 268 - city-elyra-consented-door-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 48.649923
+  type: 'test'
+  ...
+# Subtest: city-oryn-separate-voices-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 269 - city-oryn-separate-voices-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 55.438809
+  type: 'test'
+  ...
+# Subtest: city-oryn-separate-voices-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 270 - city-oryn-separate-voices-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 57.818556
+  type: 'test'
+  ...
+# Subtest: city-anchor-trace-return-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 271 - city-anchor-trace-return-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 46.165008
+  type: 'test'
+  ...
+# Subtest: city-anchor-trace-return-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 272 - city-anchor-trace-return-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 30.040698
+  type: 'test'
+  ...
+# Subtest: city-anchor-trace-return-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 273 - city-anchor-trace-return-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 49.603115
+  type: 'test'
+  ...
+# Subtest: city-anchor-trace-return-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 274 - city-anchor-trace-return-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 91.76265
+  type: 'test'
+  ...
+# Subtest: city-mirelle-relay-followup-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 275 - city-mirelle-relay-followup-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 68.418647
+  type: 'test'
+  ...
+# Subtest: city-mirelle-relay-followup-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 276 - city-mirelle-relay-followup-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 78.893287
+  type: 'test'
+  ...
+# Subtest: city-mirelle-relay-followup-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 277 - city-mirelle-relay-followup-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 76.687243
+  type: 'test'
+  ...
+# Subtest: city-mirelle-relay-followup-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 278 - city-mirelle-relay-followup-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 119.262277
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-witness-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 279 - city-bastion-tenth-witness-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 80.026286
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-witness-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 280 - city-bastion-tenth-witness-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 27.618307
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-witness-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 281 - city-bastion-tenth-witness-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 92.927026
+  type: 'test'
+  ...
+# Subtest: city-bastion-tenth-witness-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 282 - city-bastion-tenth-witness-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 58.376948
+  type: 'test'
+  ...
+# Subtest: city-nova-return-measurement-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 283 - city-nova-return-measurement-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 61.725506
+  type: 'test'
+  ...
+# Subtest: city-nova-return-measurement-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 284 - city-nova-return-measurement-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 112.388781
+  type: 'test'
+  ...
+# Subtest: city-nova-return-measurement-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 285 - city-nova-return-measurement-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 90.431071
+  type: 'test'
+  ...
+# Subtest: city-nova-return-measurement-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 286 - city-nova-return-measurement-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 68.653051
+  type: 'test'
+  ...
+# Subtest: city-sable-map-detour-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 287 - city-sable-map-detour-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 221.297618
+  type: 'test'
+  ...
+# Subtest: city-sable-map-detour-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 288 - city-sable-map-detour-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 105.609154
+  type: 'test'
+  ...
+# Subtest: city-sable-map-detour-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 289 - city-sable-map-detour-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 157.801309
+  type: 'test'
+  ...
+# Subtest: city-sable-map-detour-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 290 - city-sable-map-detour-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 120.087972
+  type: 'test'
+  ...
+# Subtest: city-loom-receiving-end-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 291 - city-loom-receiving-end-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 91.767989
+  type: 'test'
+  ...
+# Subtest: city-loom-receiving-end-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 292 - city-loom-receiving-end-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 90.042644
+  type: 'test'
+  ...
+# Subtest: city-loom-receiving-end-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 293 - city-loom-receiving-end-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 108.586249
+  type: 'test'
+  ...
+# Subtest: city-loom-receiving-end-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 294 - city-loom-receiving-end-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 74.909582
+  type: 'test'
+  ...
+# Subtest: city-marrow-independent-answers-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 295 - city-marrow-independent-answers-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 38.71846
+  type: 'test'
+  ...
+# Subtest: city-marrow-independent-answers-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 296 - city-marrow-independent-answers-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 57.714889
+  type: 'test'
+  ...
+# Subtest: city-marrow-independent-answers-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 297 - city-marrow-independent-answers-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 109.024871
+  type: 'test'
+  ...
+# Subtest: city-marrow-independent-answers-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 298 - city-marrow-independent-answers-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 101.347604
+  type: 'test'
+  ...
+# Subtest: city-tessera-caption-review-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 299 - city-tessera-caption-review-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 46.717417
+  type: 'test'
+  ...
+# Subtest: city-tessera-caption-review-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 300 - city-tessera-caption-review-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 77.015232
+  type: 'test'
+  ...
+# Subtest: city-tessera-caption-review-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 301 - city-tessera-caption-review-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 94.254188
+  type: 'test'
+  ...
+# Subtest: city-tessera-caption-review-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 302 - city-tessera-caption-review-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 131.436867
+  type: 'test'
+  ...
+# Subtest: city-quillon-delivery-check-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 303 - city-quillon-delivery-check-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 158.083887
+  type: 'test'
+  ...
+# Subtest: city-quillon-delivery-check-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 304 - city-quillon-delivery-check-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 124.911597
+  type: 'test'
+  ...
+# Subtest: city-quillon-delivery-check-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 305 - city-quillon-delivery-check-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 107.9638
+  type: 'test'
+  ...
+# Subtest: city-quillon-delivery-check-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 306 - city-quillon-delivery-check-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 56.082959
+  type: 'test'
+  ...
+# Subtest: city-nadir-second-threshold-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 307 - city-nadir-second-threshold-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 167.821651
+  type: 'test'
+  ...
+# Subtest: city-nadir-second-threshold-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 308 - city-nadir-second-threshold-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 113.700011
+  type: 'test'
+  ...
+# Subtest: city-nadir-second-threshold-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 309 - city-nadir-second-threshold-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 76.344491
+  type: 'test'
+  ...
+# Subtest: city-nadir-second-threshold-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 310 - city-nadir-second-threshold-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 159.633455
+  type: 'test'
+  ...
+# Subtest: city-elyra-renewed-passage-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 311 - city-elyra-renewed-passage-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 169.409105
+  type: 'test'
+  ...
+# Subtest: city-elyra-renewed-passage-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 312 - city-elyra-renewed-passage-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 161.909597
+  type: 'test'
+  ...
+# Subtest: city-elyra-renewed-passage-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 313 - city-elyra-renewed-passage-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 120.143676
+  type: 'test'
+  ...
+# Subtest: city-elyra-renewed-passage-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 314 - city-elyra-renewed-passage-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 63.161892
+  type: 'test'
+  ...
+# Subtest: city-oryn-manifest-delivery-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 315 - city-oryn-manifest-delivery-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 104.028938
+  type: 'test'
+  ...
+# Subtest: city-oryn-manifest-delivery-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 316 - city-oryn-manifest-delivery-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 38.885876
+  type: 'test'
+  ...
+# Subtest: city-oryn-manifest-delivery-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 317 - city-oryn-manifest-delivery-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 109.360046
+  type: 'test'
+  ...
+# Subtest: city-oryn-manifest-delivery-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 318 - city-oryn-manifest-delivery-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 81.846187
+  type: 'test'
+  ...
+# Subtest: city-mirelle-night-watch-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 319 - city-mirelle-night-watch-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 136.779162
+  type: 'test'
+  ...
+# Subtest: city-mirelle-night-watch-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 320 - city-mirelle-night-watch-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 178.102585
+  type: 'test'
+  ...
+# Subtest: city-mirelle-night-watch-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 321 - city-mirelle-night-watch-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 110.429809
+  type: 'test'
+  ...
+# Subtest: city-mirelle-night-watch-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 322 - city-mirelle-night-watch-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 190.124993
+  type: 'test'
+  ...
+# Subtest: city-quillon-refuge-pump-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 323 - city-quillon-refuge-pump-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 355.487366
+  type: 'test'
+  ...
+# Subtest: city-quillon-refuge-pump-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 324 - city-quillon-refuge-pump-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 232.124745
+  type: 'test'
+  ...
+# Subtest: city-quillon-refuge-pump-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 325 - city-quillon-refuge-pump-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 140.176044
+  type: 'test'
+  ...
+# Subtest: city-quillon-refuge-pump-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 326 - city-quillon-refuge-pump-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 208.080539
+  type: 'test'
+  ...
+# Subtest: city-nadir-buried-probe-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 327 - city-nadir-buried-probe-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 107.666532
+  type: 'test'
+  ...
+# Subtest: city-nadir-buried-probe-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 328 - city-nadir-buried-probe-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 143.902503
+  type: 'test'
+  ...
+# Subtest: city-nadir-buried-probe-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 329 - city-nadir-buried-probe-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 110.792129
+  type: 'test'
+  ...
+# Subtest: city-nadir-buried-probe-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 330 - city-nadir-buried-probe-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 187.719851
+  type: 'test'
+  ...
+# Subtest: city-tessera-chosen-window-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 331 - city-tessera-chosen-window-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 52.786077
+  type: 'test'
+  ...
+# Subtest: city-tessera-chosen-window-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 332 - city-tessera-chosen-window-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 92.324047
+  type: 'test'
+  ...
+# Subtest: city-tessera-chosen-window-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 333 - city-tessera-chosen-window-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 69.975558
+  type: 'test'
+  ...
+# Subtest: city-tessera-chosen-window-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 334 - city-tessera-chosen-window-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 96.029554
+  type: 'test'
+  ...
+# Subtest: city-anchor-shared-beacon-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 335 - city-anchor-shared-beacon-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 90.305133
+  type: 'test'
+  ...
+# Subtest: city-anchor-shared-beacon-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 336 - city-anchor-shared-beacon-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 65.470053
+  type: 'test'
+  ...
+# Subtest: city-anchor-shared-beacon-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 337 - city-anchor-shared-beacon-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 71.894281
+  type: 'test'
+  ...
+# Subtest: city-anchor-shared-beacon-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 338 - city-anchor-shared-beacon-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 64.28012
+  type: 'test'
+  ...
+# Subtest: city-bastion-bulwark-relief-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 339 - city-bastion-bulwark-relief-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 466.133111
+  type: 'test'
+  ...
+# Subtest: city-bastion-bulwark-relief-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 340 - city-bastion-bulwark-relief-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 201.89443
+  type: 'test'
+  ...
+# Subtest: city-bastion-bulwark-relief-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 341 - city-bastion-bulwark-relief-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 193.355351
+  type: 'test'
+  ...
+# Subtest: city-bastion-bulwark-relief-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 342 - city-bastion-bulwark-relief-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 145.382138
+  type: 'test'
+  ...
+# Subtest: city-nova-present-pulse-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 343 - city-nova-present-pulse-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 105.514653
+  type: 'test'
+  ...
+# Subtest: city-nova-present-pulse-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 344 - city-nova-present-pulse-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 95.218161
+  type: 'test'
+  ...
+# Subtest: city-nova-present-pulse-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 345 - city-nova-present-pulse-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 112.64508
+  type: 'test'
+  ...
+# Subtest: city-nova-present-pulse-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 346 - city-nova-present-pulse-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 137.976119
+  type: 'test'
+  ...
+# Subtest: city-sable-night-signs-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 347 - city-sable-night-signs-v1: origin 0, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 110.643063
+  type: 'test'
+  ...
+# Subtest: city-sable-night-signs-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 348 - city-sable-night-signs-v1: origin 0, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 88.103507
+  type: 'test'
+  ...
+# Subtest: city-sable-night-signs-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 349 - city-sable-night-signs-v1: origin 1, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 87.874161
+  type: 'test'
+  ...
+# Subtest: city-sable-night-signs-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 350 - city-sable-night-signs-v1: origin 1, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 57.679205
+  type: 'test'
+  ...
+# Subtest: city-chief-unsc-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 351 - city-chief-unsc-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 38.802962
+  type: 'test'
+  ...
+# Subtest: city-chief-unsc-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 352 - city-chief-unsc-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 42.930644
+  type: 'test'
+  ...
+# Subtest: city-chief-return-corridor-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 353 - city-chief-return-corridor-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 89.061581
+  type: 'test'
+  ...
+# Subtest: city-chief-return-corridor-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 354 - city-chief-return-corridor-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 87.681947
+  type: 'test'
+  ...
+# Subtest: city-ripley-narcissus-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 355 - city-ripley-narcissus-route-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 37.459717
+  type: 'test'
+  ...
+# Subtest: city-ripley-narcissus-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 356 - city-ripley-narcissus-route-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 34.226812
+  type: 'test'
+  ...
+# Subtest: city-ripley-alarm-exit-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+ok 357 - city-ripley-alarm-exit-v1: origin null, physical steps, conclusion 1, saved receipt and repeat refusal
+  ---
+  duration_ms: 80.596322
+  type: 'test'
+  ...
+# Subtest: city-ripley-alarm-exit-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+ok 358 - city-ripley-alarm-exit-v1: origin null, physical steps, conclusion 2, saved receipt and repeat refusal
+  ---
+  duration_ms: 92.380063
+  type: 'test'
+  ...
+# Subtest: follow-ups require the full preceding report, preserve its choice, and change both physical destinations
+ok 359 - follow-ups require the full preceding report, preserve its choice, and change both physical destinations
+  ---
+  duration_ms: 414.616066
+  type: 'test'
+  ...
+# Subtest: remote, forged, mismatched and unordered interactions cannot record evidence
+ok 360 - remote, forged, mismatched and unordered interactions cannot record evidence
+  ---
+  duration_ms: 1.063303
+  type: 'test'
+  ...
+# Subtest: all route objects keep their mission and step identity at every checkpoint, across save and after the final operation
+ok 361 - all route objects keep their mission and step identity at every checkpoint, across save and after the final operation
+  ---
+  duration_ms: 140.436728
+  type: 'test'
+  ...
+# Subtest: ordered reconnaissance rejects idle, remote, discontinuous, overlong and foreign movement samples without mutation
+ok 362 - ordered reconnaissance rejects idle, remote, discontinuous, overlong and foreign movement samples without mutation
+  ---
+  duration_ms: 2.770455
+  type: 'test'
+  ...
+# Subtest: route geometry, branch and inherited identity own checkpoints; incompatible receipts are retained but cannot illuminate a finished route
+ok 363 - route geometry, branch and inherited identity own checkpoints; incompatible receipts are retained but cannot illuminate a finished route
+  ---
+  duration_ms: 6.413827
+  type: 'test'
+  ...
+# Subtest: malformed or overlapping walking places cannot turn a single presence into a route
+ok 364 - malformed or overlapping walking places cannot turn a single presence into a route
+  ---
+  duration_ms: 2.230812
+  type: 'test'
+  ...
+# Subtest: switching missions pauses one dossier without losing its completed steps or choices
+ok 365 - switching missions pauses one dossier without losing its completed steps or choices
+  ---
+  duration_ms: 0.725063
+  type: 'test'
+  ...
+# Subtest: unknown DLC records survive normalization; reordered steps and invalid conclusions cannot masquerade as completed
+ok 366 - unknown DLC records survive normalization; reordered steps and invalid conclusions cannot masquerade as completed
+  ---
+  duration_ms: 0.409958
+  type: 'test'
+  ...
+# Subtest: walking speed is identical at 30, 60, 120 and 144 Hz
+ok 367 - walking speed is identical at 30, 60, 120 and 144 Hz
+  ---
+  duration_ms: 2.081697
+  type: 'test'
+  ...
+# Subtest: diagonal walking is normalized and AZERTY keys work
+ok 368 - diagonal walking is normalized and AZERTY keys work
+  ---
+  duration_ms: 0.207673
+  type: 'test'
+  ...
+# Subtest: vertical movement and blocked walking preserve horizontal facing
+ok 369 - vertical movement and blocked walking preserve horizontal facing
+  ---
+  duration_ms: 0.125299
+  type: 'test'
+  ...
+# Subtest: click destinations are clamped and never overshot
+ok 370 - click destinations are clamped and never overshot
+  ---
+  duration_ms: 1.521994
+  type: 'test'
+  ...
+# Subtest: collision substeps prevent tunneling through NPC bodies and allow escaping overlaps
+ok 371 - collision substeps prevent tunneling through NPC bodies and allow escaping overlaps
+  ---
+  duration_ms: 0.205619
+  type: 'test'
+  ...
+# Subtest: zone approach replans when a passer-by enters the existing route
+ok 372 - zone approach replans when a passer-by enters the existing route
+  ---
+  duration_ms: 2.967653
+  type: 'test'
+  ...
+# Subtest: point approach replans when a passer-by enters the existing route
+ok 373 - point approach replans when a passer-by enters the existing route
+  ---
+  duration_ms: 1.186358
+  type: 'test'
+  ...
+# Subtest: manual input still cancels a zone route waiting to be replanned
+ok 374 - manual input still cancels a zone route waiting to be replanned
+  ---
+  duration_ms: 0.237809
+  type: 'test'
+  ...
+# Subtest: collision slides along an NPC instead of canceling the whole movement
+ok 375 - collision slides along an NPC instead of canceling the whole movement
+  ---
+  duration_ms: 0.326682
+  type: 'test'
+  ...
+# Subtest: solid scenery and terminal footprints align with the rendered ground; floor markings remain traversable
+ok 376 - solid scenery and terminal footprints align with the rendered ground; floor markings remain traversable
+  ---
+  duration_ms: 0.685063
+  type: 'test'
+  ...
+# Subtest: scenery collision prevents fast tunneling, permits sliding and lets an existing overlap escape
+ok 377 - scenery collision prevents fast tunneling, permits sliding and lets an existing overlap escape
+  ---
+  duration_ms: 1.026387
+  type: 'test'
+  ...
+# Subtest: people are occluded behind raised scenery and drawn in front after passing its base
+ok 378 - people are occluded behind raised scenery and drawn in front after passing its base
+  ---
+  duration_ms: 0.369517
+  type: 'test'
+  ...
+# Subtest: a walking NPC cannot cut through a terminal corner when resuming its routine after a collision
+ok 379 - a walking NPC cannot cut through a terminal corner when resuming its routine after a collision
+  ---
+  duration_ms: 0.349106
+  type: 'test'
+  ...
+# Subtest: tap movement walks around a solid obstacle without cutting its corners
+ok 380 - tap movement walks around a solid obstacle without cutting its corners
+  ---
+  duration_ms: 0.679804
+  type: 'test'
+  ...
+# Subtest: tap on a solid terminal reaches a walkable interaction point
+ok 381 - tap on a solid terminal reaches a walkable interaction point
+  ---
+  duration_ms: 0.493675
+  type: 'test'
+  ...
+# Subtest: unreachable click destinations stop safely and clear the pending action
+ok 382 - unreachable click destinations stop safely and clear the pending action
+  ---
+  duration_ms: 0.14572
+  type: 'test'
+  ...
+# Subtest: clock restart frames preserve click movement; manual input cancels its route
+ok 383 - clock restart frames preserve click movement; manual input cancels its route
+  ---
+  duration_ms: 0.123095
+  type: 'test'
+  ...
+# Subtest: idle and delayed frames cannot invent movement or huge catch-up travel
+ok 384 - idle and delayed frames cannot invent movement or huge catch-up travel
+  ---
+  duration_ms: 0.09281
+  type: 'test'
+  ...
+# Subtest: interactions require actual proximity; a whole room is not an interaction radius
+ok 385 - interactions require actual proximity; a whole room is not an interaction radius
+  ---
+  duration_ms: 0.156566
+  type: 'test'
+  ...
+# Subtest: clicking a distant target never substitutes a nearer unrelated interaction
+ok 386 - clicking a distant target never substitutes a nearer unrelated interaction
+  ---
+  duration_ms: 0.130797
+  type: 'test'
+  ...
+# Subtest: passive talk scenery is not exposed as a conflicting terminal
+ok 387 - passive talk scenery is not exposed as a conflicting terminal
+  ---
+  duration_ms: 0.07963
+  type: 'test'
+  ...
+# Subtest: the Archives Codex terminal opens the actual global archive only after approach
+ok 388 - the Archives Codex terminal opens the actual global archive only after approach
+  ---
+  duration_ms: 1.965222
+  type: 'test'
+  ...
+# Subtest: onboarding advances through walking, interaction and freely selected objective
+ok 389 - onboarding advances through walking, interaction and freely selected objective
+  ---
+  duration_ms: 0.204789
+  type: 'test'
+  ...
+# Subtest: walking to the Atrium guide reaches stage two before automatic conversation
+ok 390 - walking to the Atrium guide reaches stage two before automatic conversation
+  ---
+  duration_ms: 0.324699
+  type: 'test'
+  ...
+# Subtest: Nexus banner and anchor sprite refer to existing project bitmaps
+ok 391 - Nexus banner and anchor sprite refer to existing project bitmaps
+  ---
+  duration_ms: 51.332855
+  type: 'test'
+  ...
+# Subtest: city controls retain proximity validation, focus loss cleanup and cancellable touch controls
+ok 392 - city controls retain proximity validation, focus loss cleanup and cancellable touch controls
+  ---
+  duration_ms: 0.925886
+  type: 'test'
+  ...
+# Subtest: leaving a universe room preserves context without starting an arbitrary mission
+ok 393 - leaving a universe room preserves context without starting an arbitrary mission
+  ---
+  duration_ms: 0.415056
+  type: 'test'
+  ...
+# Subtest: all 525 owned authorized universe destinations remain indexed beyond former hero and room limits
+ok 394 - all 525 owned authorized universe destinations remain indexed beyond former hero and room limits
+  ---
+  duration_ms: 21.247174
+  type: 'test'
+  ...
+# Subtest: destination authorization never opens unowned or filtered worlds through a fallback list
+ok 395 - destination authorization never opens unowned or filtered worlds through a fallback list
+  ---
+  duration_ms: 0.234773
+  type: 'test'
+  ...
+# Subtest: destination search is accent-insensitive, includes late entries and clamps filtered page indices
+ok 396 - destination search is accent-insensitive, includes late entries and clamps filtered page indices
+  ---
+  duration_ms: 0.322546
+  type: 'test'
+  ...
+# Subtest: tutorial pause persists and resumes the actual partial walking checkpoint
+ok 397 - tutorial pause persists and resumes the actual partial walking checkpoint
+  ---
+  duration_ms: 0.216266
+  type: 'test'
+  ...
+# Subtest: skipping is not completing; replay resets only city checkpoints and grants no gameplay rewards
+ok 398 - skipping is not completing; replay resets only city checkpoints and grants no gameplay rewards
+  ---
+  duration_ms: 0.199621
+  type: 'test'
+  ...
+# Subtest: welcome replay or reading cannot validate movement, interactions, equipment or combat
+ok 399 - welcome replay or reading cannot validate movement, interactions, equipment or combat
+  ---
+  duration_ms: 0.27175
+  type: 'test'
+  ...
+# Subtest: tutorial normalization rejects impossible order and unrelated completion flags
+ok 400 - tutorial normalization rejects impossible order and unrelated completion flags
+  ---
+  duration_ms: 0.221434
+  type: 'test'
+  ...
+# Subtest: actual recording callback persists real movement checkpoints and stops when guide is paused
+ok 401 - actual recording callback persists real movement checkpoints and stops when guide is paused
+  ---
+  duration_ms: 0.294934
+  type: 'test'
+  ...
+# Subtest: actual catalog button only queues walking to an authorized visible portal
+ok 402 - actual catalog button only queues walking to an authorized visible portal
+  ---
+  duration_ms: 0.59095
+  type: 'test'
+  ...
+# Subtest: city saves tutorial and location independently and keeps pause, resume, skip, restart and welcome replay
+ok 403 - city saves tutorial and location independently and keeps pause, resume, skip, restart and welcome replay
+  ---
+  duration_ms: 0.537911
+  type: 'test'
+  ...
+# Subtest: actual active-contract initialization defers unread help without changing tutorial checkpoints or contract data
+ok 404 - actual active-contract initialization defers unread help without changing tutorial checkpoints or contract data
+  ---
+  duration_ms: 1.038255
+  type: 'test'
+  ...
+# Subtest: actual first arrival keeps its welcome, while Later defers locally across a subsequent tutorial import
+ok 405 - actual first arrival keeps its welcome, while Later defers locally across a subsequent tutorial import
+  ---
+  duration_ms: 0.646955
+  type: 'test'
+  ...
+# Subtest: actual late contract import closes automatic welcome and keeps an imported partial tutorial unread
+ok 406 - actual late contract import closes automatic welcome and keeps an imported partial tutorial unread
+  ---
+  duration_ms: 0.664492
+  type: 'test'
+  ...
+# Subtest: actual welcome replay, resume, pause and restart callbacks remain usable during a tracked contract
+ok 407 - actual welcome replay, resume, pause and restart callbacks remain usable during a tracked contract
+  ---
+  duration_ms: 1.229463
+  type: 'test'
+  ...
+# Subtest: journal separates playable progress, submitted cases, prerequisites and retained incompatible records
+ok 408 - journal separates playable progress, submitted cases, prerequisites and retained incompatible records
+  ---
+  duration_ms: 1874.154461
+  type: 'test'
+  ...
+# Subtest: every source case remains reachable; malformed pages clamp without mutating input or checkpoints
+ok 409 - every source case remains reachable; malformed pages clamp without mutating input or checkpoints
+  ---
+  duration_ms: 7.2518
+  type: 'test'
+  ...
+# Subtest: accent-insensitive search applies to the whole source and both languages before pagination
+ok 410 - accent-insensitive search applies to the whole source and both languages before pagination
+  ---
+  duration_ms: 7.269837
+  type: 'test'
+  ...
+# Subtest: empty or removed district content preserves external records without fabricating local entries
+ok 411 - empty or removed district content preserves external records without fabricating local entries
+  ---
+  duration_ms: 10.82741
+  type: 'test'
+  ...
+# Subtest: fr: a resident can open their requested page while another adventure stays tracked
+ok 412 - fr: a resident can open their requested page while another adventure stays tracked
+  ---
+  duration_ms: 27.958639
+  type: 'test'
+  ...
+# Subtest: fr: actual journal renders a bounded directory, direct selector, independent tracked objective and folded evidence
+ok 413 - fr: actual journal renders a bounded directory, direct selector, independent tracked objective and folded evidence
+  ---
+  duration_ms: 11.301064
+  type: 'test'
+  ...
+# Subtest: fr: a locked follow-up explains its prerequisite and provides only a read action
+ok 414 - fr: a locked follow-up explains its prerequisite and provides only a read action
+  ---
+  duration_ms: 7.489848
+  type: 'test'
+  ...
+# Subtest: fr: a second chapter shows the recorded first decision and the effective branch evidence
+ok 415 - fr: a second chapter shows the recorded first decision and the effective branch evidence
+  ---
+  duration_ms: 8.940426
+  type: 'test'
+  ...
+# Subtest: en: a resident can open their requested page while another adventure stays tracked
+ok 416 - en: a resident can open their requested page while another adventure stays tracked
+  ---
+  duration_ms: 18.595428
+  type: 'test'
+  ...
+# Subtest: en: actual journal renders a bounded directory, direct selector, independent tracked objective and folded evidence
+ok 417 - en: actual journal renders a bounded directory, direct selector, independent tracked objective and folded evidence
+  ---
+  duration_ms: 12.102089
+  type: 'test'
+  ...
+# Subtest: en: a locked follow-up explains its prerequisite and provides only a read action
+ok 418 - en: a locked follow-up explains its prerequisite and provides only a read action
+  ---
+  duration_ms: 8.674215
+  type: 'test'
+  ...
+# Subtest: en: a second chapter shows the recorded first decision and the effective branch evidence
+ok 419 - en: a second chapter shows the recorded first decision and the effective branch evidence
+  ---
+  duration_ms: 9.417074
+  type: 'test'
+  ...
+# Subtest: status copy names incompatible records explicitly instead of promising a new mission
+ok 420 - status copy names incompatible records explicitly instead of promising a new mission
+  ---
+  duration_ms: 0.20575
+  type: 'test'
+  ...
+# Subtest: requests, places and named objects are searchable without indexing editorial source metadata
+ok 421 - requests, places and named objects are searchable without indexing editorial source metadata
+  ---
+  duration_ms: 0.551652
+  type: 'test'
+  ...
+# Subtest: fr: a request is attributed, an on-site task is described, and only lived moments enter the journal
+ok 422 - fr: a request is attributed, an on-site task is described, and only lived moments enter the journal
+  ---
+  duration_ms: 4.625732
+  type: 'test'
+  ...
+# Subtest: fr: a quest reply renders with no archive topics
+ok 423 - fr: a quest reply renders with no archive topics
+  ---
+  duration_ms: 3.387175
+  type: 'test'
+  ...
+# Subtest: fr: the conversation names its place and reveals the next action only after acceptance
+ok 424 - fr: the conversation names its place and reveals the next action only after acceptance
+  ---
+  duration_ms: 1.448523
+  type: 'test'
+  ...
+# Subtest: fr: archives require an explicit opening and do not become attributed speech
+ok 425 - fr: archives require an explicit opening and do not become attributed speech
+  ---
+  duration_ms: 1.082641
+  type: 'test'
+  ...
+# Subtest: fr: an old visit retains its own words until an explicit replay starts the new adventure
+ok 426 - fr: an old visit retains its own words until an explicit replay starts the new adventure
+  ---
+  duration_ms: 7.837813
+  type: 'test'
+  ...
+# Subtest: en: a request is attributed, an on-site task is described, and only lived moments enter the journal
+ok 427 - en: a request is attributed, an on-site task is described, and only lived moments enter the journal
+  ---
+  duration_ms: 3.697623
+  type: 'test'
+  ...
+# Subtest: en: a quest reply renders with no archive topics
+ok 428 - en: a quest reply renders with no archive topics
+  ---
+  duration_ms: 2.751107
+  type: 'test'
+  ...
+# Subtest: en: the conversation names its place and reveals the next action only after acceptance
+ok 429 - en: the conversation names its place and reveals the next action only after acceptance
+  ---
+  duration_ms: 1.156643
+  type: 'test'
+  ...
+# Subtest: en: archives require an explicit opening and do not become attributed speech
+ok 430 - en: archives require an explicit opening and do not become attributed speech
+  ---
+  duration_ms: 0.717351
+  type: 'test'
+  ...
+# Subtest: en: an old visit retains its own words until an explicit replay starts the new adventure
+ok 431 - en: an old visit retains its own words until an explicit replay starts the new adventure
+  ---
+  duration_ms: 6.765558
+  type: 'test'
+  ...
+# Subtest: authored quest replies precede folded archives; archive text is never turned into an invented speech
+ok 432 - authored quest replies precede folded archives; archive text is never turned into an invented speech
+  ---
+  duration_ms: 1.965983
+  type: 'test'
+  ...
+# Subtest: a resident can give the quest on site, and accepting counts only that real encounter
+ok 433 - a resident can give the quest on site, and accepting counts only that real encounter
+  ---
+  duration_ms: 3.876463
+  type: 'test'
+  ...
+# Subtest: world equipment changes only after the right physical operation and survives real save sanitizing
+ok 434 - world equipment changes only after the right physical operation and survives real save sanitizing
+  ---
+  duration_ms: 3.322518
+  type: 'test'
+  ...
+# Subtest: a legacy completion preserves its actual words and cannot manufacture repaired objects
+ok 435 - a legacy completion preserves its actual words and cannot manufacture repaired objects
+  ---
+  duration_ms: 1.317546
+  type: 'test'
+  ...
+# Subtest: an interrupted legacy visit retains its past observations and records only new interventions
+ok 436 - an interrupted legacy visit retains its past observations and records only new interventions
+  ---
+  duration_ms: 0.413864
+  type: 'test'
+  ...
+# Subtest: wrong receipt identities, changed marker positions and removed DLC cannot repaint a scene
+ok 437 - wrong receipt identities, changed marker positions and removed DLC cannot repaint a scene
+  ---
+  duration_ms: 3.455057
+  type: 'test'
+  ...
+# Subtest: operation receipts belong to the actual inherited route and final branch
+ok 438 - operation receipts belong to the actual inherited route and final branch
+  ---
+  duration_ms: 3.424571
+  type: 'test'
+  ...
+# Subtest: replaying a parent keeps its completed sequel readable and a replayed sequel uses the new choice
+ok 439 - replaying a parent keeps its completed sequel readable and a replayed sequel uses the new choice
+  ---
+  duration_ms: 1.203053
+  type: 'test'
+  ...
+# Subtest: completed equipment remains in the district while another resident’s adventure is followed
+ok 440 - completed equipment remains in the district while another resident’s adventure is followed
+  ---
+  duration_ms: 1.833193
+  type: 'test'
+  ...
+# Subtest: finished props retain a collision footprint without becoming repeatable interactions
+ok 441 - finished props retain a collision footprint without becoming repeatable interactions
+  ---
+  duration_ms: 1.311216
+  type: 'test'
+  ...
+# Subtest: drawing six types of equipment is read-only and keeps restored/unfinished states distinct
+ok 442 - drawing six types of equipment is read-only and keeps restored/unfinished states distinct
+  ---
+  duration_ms: 2.266646
+  type: 'test'
+  ...
+# Subtest: one visible nearby active operation takes precedence without hiding completed equipment from later inspection
+ok 443 - one visible nearby active operation takes precedence without hiding completed equipment from later inspection
+  ---
+  duration_ms: 0.458922
+  type: 'test'
+  ...
+# Subtest: equidistant label selection is stable and malformed positions cannot win
+ok 444 - equidistant label selection is stable and malformed positions cannot win
+  ---
+  duration_ms: 6.597624
+  type: 'test'
+  ...
+# Subtest: label placement protects a wide avatar, cargo and a wrapped district title in every viewport
+ok 445 - label placement protects a wide avatar, cargo and a wrapped district title in every viewport
+  ---
+  duration_ms: 6.497423
+  type: 'test'
+  ...
+# Subtest: the two obscured CI landscape cartouches clear the measured district banner and the same avatar
+ok 446 - the two obscured CI landscape cartouches clear the measured district banner and the same avatar
+  ---
+  duration_ms: 0.954138
+  type: 'test'
+  ...
+# Subtest: an impossible or malformed label layout yields no unsafe overlay
+ok 447 - an impossible or malformed label layout yields no unsafe overlay
+  ---
+  duration_ms: 0.191058
+  type: 'test'
+  ...
+# Subtest: separate prop painting emits no cartouches and one label pass draws only its selected state
+ok 448 - separate prop painting emits no cartouches and one label pass draws only its selected state
+  ---
+  duration_ms: 1.063843
+  type: 'test'
+  ...
+# Subtest: narrow labels retain their complete source text without overflowing their measured rectangle
+ok 449 - narrow labels retain their complete source text without overflowing their measured rectangle
+  ---
+  duration_ms: 0.548687
+  type: 'test'
+  ...
+# Subtest: choosing and drawing a completed operation leaves saved receipts and collision footprints unchanged
+ok 450 - choosing and drawing a completed operation leaves saved receipts and collision footprints unchanged
+  ---
+  duration_ms: 0.961859
+  type: 'test'
+  ...
+# Subtest: new narrative definitions retain all legacy mission and step identities
+ok 451 - new narrative definitions retain all legacy mission and step identities
+  ---
+  duration_ms: 0.59005
+  type: 'test'
+  ...
+# Subtest: dossier eligibility uses only owned local residents and enabled local displays, including peaceful residents
+ok 452 - dossier eligibility uses only owned local residents and enabled local displays, including peaceful residents
+  ---
+  duration_ms: 2.26209
+  type: 'test'
+  ...
+# Subtest: missing local content or a mismatched anchor never creates an unusable dossier
+ok 453 - missing local content or a mismatched anchor never creates an unusable dossier
+  ---
+  duration_ms: 0.421415
+  type: 'test'
+  ...
+# Subtest: acceptance is explicit and a repeated accept is idempotent
+ok 454 - acceptance is explicit and a repeated accept is idempotent
+  ---
+  duration_ms: 0.774637
+  type: 'test'
+  ...
+# Subtest: a directory selection, missing range evidence, or a distant NPC cannot advance reconnaissance
+ok 455 - a directory selection, missing range evidence, or a distant NPC cannot advance reconnaissance
+  ---
+  duration_ms: 0.51059
+  type: 'test'
+  ...
+# Subtest: target identity, universe and ordered interaction are required at every step
+ok 456 - target identity, universe and ordered interaction are required at every step
+  ---
+  duration_ms: 0.495096
+  type: 'test'
+  ...
+# Subtest: ordinary movement reaches all three objectives, validates each in order, and archives only once
+ok 457 - ordinary movement reaches all three objectives, validates each in order, and archives only once
+  ---
+  duration_ms: 9.725279
+  type: 'test'
+  ...
+# Subtest: switching dossiers preserves partial work and requires explicitly resuming it
+ok 458 - switching dossiers preserves partial work and requires explicitly resuming it
+  ---
+  duration_ms: 0.479142
+  type: 'test'
+  ...
+# Subtest: temporary absence, JSON serialization and save sanitation preserve all district records and existing economy
+ok 459 - temporary absence, JSON serialization and save sanitation preserve all district records and existing economy
+  ---
+  duration_ms: 1.44649
+  type: 'test'
+  ...
+# Subtest: malformed progress cannot skip prerequisites and never binds a retained record to another universe
+ok 460 - malformed progress cannot skip prerequisites and never binds a retained record to another universe
+  ---
+  duration_ms: 0.350969
+  type: 'test'
+  ...
+# Subtest: French and English objectives expose the actual world targets without sharing mutable target arrays
+ok 461 - French and English objectives expose the actual world targets without sharing mutable target arrays
+  ---
+  duration_ms: 0.59005
+  type: 'test'
+  ...
+# Subtest: ten authored Nexus residents expose source paragraphs in both languages without inventing dialogue quotes
+ok 462 - ten authored Nexus residents expose source paragraphs in both languages without inventing dialogue quotes
+  ---
+  duration_ms: 2.066795
+  type: 'test'
+  ...
+# Subtest: directory entries, remote interactions, mismatched IDs and unowned residents cannot begin a conversation
+ok 463 - directory entries, remote interactions, mismatched IDs and unowned residents cannot begin a conversation
+  ---
+  duration_ms: 0.366773
+  type: 'test'
+  ...
+# Subtest: ordinary walking reaches the resident, then reading every source topic cannot complete any reconnaissance step
+ok 464 - ordinary walking reaches the resident, then reading every source topic cannot complete any reconnaissance step
+  ---
+  duration_ms: 2.665227
+  type: 'test'
+  ...
+# Subtest: ledger preserves witness, both distinct proofs and ordering through actual interactions and a save round trip
+ok 465 - ledger preserves witness, both distinct proofs and ordering through actual interactions and a save round trip
+  ---
+  duration_ms: 3.467536
+  type: 'test'
+  ...
+# Subtest: absent DLC, characters or relic definitions never erase proof identities or present an unavailable district as accessible
+ok 466 - absent DLC, characters or relic definitions never erase proof identities or present an unavailable district as accessible
+  ---
+  duration_ms: 0.354875
+  type: 'test'
+  ...
+# Subtest: ledger handles malicious-looking IDs as data and cannot invent prerequisites from malformed proof
+ok 467 - ledger handles malicious-looking IDs as data and cannot invent prerequisites from malformed proof
+  ---
+  duration_ms: 0.193181
+  type: 'test'
+  ...
+# Subtest: return radar preserves player bearing, clamps distant targets and draws inside its bounds
+ok 468 - return radar preserves player bearing, clamps distant targets and draws inside its bounds
+  ---
+  duration_ms: 12.268812
+  type: 'test'
+  ...
+# Subtest: the report is earned through real City movement and each ordered interaction before deployment opens
+ok 469 - the report is earned through real City movement and each ordered interaction before deployment opens
+  ---
+  duration_ms: 4.84409
+  type: 'test'
+  ...
+# Subtest: a standard one-relic report remains valid and the old report shape is not rewritten
+ok 470 - a standard one-relic report remains valid and the old report shape is not rewritten
+  ---
+  duration_ms: 3.269848
+  type: 'test'
+  ...
+# Subtest: the optional operation cannot replace an ordinary mode, an unowned selection, or an unavailable report
+ok 471 - the optional operation cannot replace an ordinary mode, an unowned selection, or an unavailable report
+  ---
+  duration_ms: 6.019103
+  type: 'test'
+  ...
+# Subtest: three counted beacons without actual synchronization cannot open the airlock
+ok 472 - three counted beacons without actual synchronization cannot open the airlock
+  ---
+  duration_ms: 3.040452
+  type: 'test'
+  ...
+# Subtest: actual relay synchronization and shielded Champion damage open a return phase without ending or rewarding the run
+ok 473 - actual relay synchronization and shielded Champion damage open a return phase without ending or rewarding the run
+  ---
+  duration_ms: 3.904946
+  type: 'test'
+  ...
+# Subtest: return requires the real run marker, live owner, nearby position and an unpaused scene
+ok 474 - return requires the real run marker, live owner, nearby position and an unpaused scene
+  ---
+  duration_ms: 4.045808
+  type: 'test'
+  ...
+# Subtest: nearby caches and weapon drops remain interactable before the locked or open airlock
+ok 475 - nearby caches and weapon drops remain interactable before the locked or open airlock
+  ---
+  duration_ms: 2.713034
+  type: 'test'
+  ...
+# Subtest: a normal successful report keeps its existing rewards and does not create an operation receipt
+ok 476 - a normal successful report keeps its existing rewards and does not create an operation receipt
+  ---
+  duration_ms: 4.634506
+  type: 'test'
+  ...
+# Subtest: the existing run receipt stores one first return and rejects duplicate deliveries without extra XP
+ok 477 - the existing run receipt stores one first return and rejects duplicate deliveries without extra XP
+  ---
+  duration_ms: 2.960272
+  type: 'test'
+  ...
+# Subtest: abandon, defeat, wrong-source and incomplete proofs cannot close the City intervention
+ok 478 - abandon, defeat, wrong-source and incomplete proofs cannot close the City intervention
+  ---
+  duration_ms: 3.233363
+  type: 'test'
+  ...
+# Subtest: save round trip and absence of DLC definitions retain operation and older record identities
+ok 479 - save round trip and absence of DLC definitions retain operation and older record identities
+  ---
+  duration_ms: 3.402528
+  type: 'test'
+  ...
+# Subtest: finish, abandonment or recovery cleanup removes the run marker while preserving ordinary loot and the retained proof
+ok 480 - finish, abandonment or recovery cleanup removes the run marker while preserving ordinary loot and the retained proof
+  ---
+  duration_ms: 2.492687
+  type: 'test'
+  ...
+# Subtest: the real Hub renders the operation locked when the report or the owned combat roster is missing
+ok 481 - the real Hub renders the operation locked when the report or the owned combat roster is missing
+  ---
+  duration_ms: 34107.192928
+  type: 'test'
+  ...
+# Subtest: dense dossiers keep the full count, owned count, guarantees and missing-card compass visible in both languages
+ok 482 - dense dossiers keep the full count, owned count, guarantees and missing-card compass visible in both languages
+  ---
+  duration_ms: 4622.122713
+  type: 'test'
+  ...
+# Subtest: the first dossier page limits mounted cards but preserves exact full-pool probabilities and descriptions
+ok 483 - the first dossier page limits mounted cards but preserves exact full-pool probabilities and descriptions
+  ---
+  duration_ms: 10.481211
+  type: 'test'
+  ...
+# Subtest: off-rotation dossier exposes every consultation path while its selection stays disabled
+ok 484 - off-rotation dossier exposes every consultation path while its selection stays disabled
+  ---
+  duration_ms: 12.660992
+  type: 'test'
+  ...
+# Subtest: pagination controls expose only bounded destinations at first, middle, last and empty pages
+ok 485 - pagination controls expose only bounded destinations at first, middle, last and empty pages
+  ---
+  duration_ms: 2.46323
+  type: 'test'
+  ...
+# Subtest: changing page size delivers numeric values and the lower pager does not duplicate the live announcement or size selector
+ok 486 - changing page size delivers numeric values and the lower pager does not duplicate the live announcement or size selector
+  ---
+  duration_ms: 0.77579
+  type: 'test'
+  ...
+# Subtest: Q/ArrowLeft and Z/ArrowUp stay held until their final physical key is released
+ok 487 - Q/ArrowLeft and Z/ArrowUp stay held until their final physical key is released
+  ---
+  duration_ms: 3.961287
+  type: 'test'
+  ...
+# Subtest: keyup releases the recorded physical action after character, case or focus changes
+ok 488 - keyup releases the recorded physical action after character, case or focus changes
+  ---
+  duration_ms: 2.739517
+  type: 'test'
+  ...
+# Subtest: source identity keeps left/right modifier positions separate without adding bindings
+ok 489 - source identity keeps left/right modifier positions separate without adding bindings
+  ---
+  duration_ms: 0.261494
+  type: 'test'
+  ...
+# Subtest: keyboard releases cannot cancel touch or virtual pulses in the merged engine input
+ok 490 - keyboard releases cannot cancel touch or virtual pulses in the merged engine input
+  ---
+  duration_ms: 0.513905
+  type: 'test'
+  ...
+# Subtest: E and R are one-shot commands and never enter the held keyboard snapshot
+ok 491 - E and R are one-shot commands and never enter the held keyboard snapshot
+  ---
+  duration_ms: 0.474494
+  type: 'test'
+  ...
+# Subtest: forms, consumed events, paused/hidden/ended sessions do not acquire controls
+ok 492 - forms, consumed events, paused/hidden/ended sessions do not acquire controls
+  ---
+  duration_ms: 1.314743
+  type: 'test'
+  ...
+# Subtest: Space keeps native button activation, while canvas Space still drifts
+ok 493 - Space keeps native button activation, while canvas Space still drifts
+  ---
+  duration_ms: 0.498211
+  type: 'test'
+  ...
+# Subtest: shell pause clears every keyboard owner and late releases stay neutral
+ok 494 - shell pause clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.444918
+  type: 'test'
+  ...
+# Subtest: garage pause clears every keyboard owner and late releases stay neutral
+ok 495 - garage pause clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.620069
+  type: 'test'
+  ...
+# Subtest: window blur clears every keyboard owner and late releases stay neutral
+ok 496 - window blur clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.53036
+  type: 'test'
+  ...
+# Subtest: hidden tab clears every keyboard owner and late releases stay neutral
+ok 497 - hidden tab clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.91528
+  type: 'test'
+  ...
+# Subtest: restart clears every keyboard owner and late releases stay neutral
+ok 498 - restart clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.62089
+  type: 'test'
+  ...
+# Subtest: track change clears every keyboard owner and late releases stay neutral
+ok 499 - track change clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.637526
+  type: 'test'
+  ...
+# Subtest: start clears every keyboard owner and late releases stay neutral
+ok 500 - start clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.373688
+  type: 'test'
+  ...
+# Subtest: return to grid clears every keyboard owner and late releases stay neutral
+ok 501 - return to grid clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.308698
+  type: 'test'
+  ...
+# Subtest: confirmed exit clears every keyboard owner and late releases stay neutral
+ok 502 - confirmed exit clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.23939
+  type: 'test'
+  ...
+# Subtest: render failure clears every keyboard owner and late releases stay neutral
+ok 503 - render failure clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 0.20739
+  type: 'test'
+  ...
+# Subtest: unmount clears every keyboard owner and late releases stay neutral
+ok 504 - unmount clears every keyboard owner and late releases stay neutral
+  ---
+  duration_ms: 1.311814
+  type: 'test'
+  ...
+# Subtest: resume does not replay held repeats; a fresh press acquires control again
+ok 505 - resume does not replay held repeats; a fresh press acquires control again
+  ---
+  duration_ms: 0.302238
+  type: 'test'
+  ...
+# Subtest: malformed sources and one-shot action names cannot create held inputs
+ok 506 - malformed sources and one-shot action names cannot create held inputs
+  ---
+  duration_ms: 0.159016
+  type: 'test'
+  ...
+# Subtest: Canvas presentation honors the in-game reduced-motion setting immediately
+ok 507 - Canvas presentation honors the in-game reduced-motion setting immediately
+  ---
+  duration_ms: 0.906803
+  type: 'test'
+  ...
+# Subtest: returning to system mode never overrides an OS request for reduced motion
+ok 508 - returning to system mode never overrides an OS request for reduced motion
+  ---
+  duration_ms: 0.170363
+  type: 'test'
+  ...
+# Subtest: the same reader sees live OS preference changes during a presentation
+ok 509 - the same reader sees live OS preference changes during a presentation
+  ---
+  duration_ms: 1.018064
+  type: 'test'
+  ...
+# Subtest: one media query serves repeated animation frames without caching a stale boolean
+ok 510 - one media query serves repeated animation frames without caching a stale boolean
+  ---
+  duration_ms: 0.295327
+  type: 'test'
+  ...
+# Subtest: headless and older browser contexts preserve the local choice without matchMedia
+ok 511 - headless and older browser contexts preserve the local choice without matchMedia
+  ---
+  duration_ms: 0.224627
+  type: 'test'
+  ...
+# Subtest: readers stay scoped to their own document and media query
+ok 512 - readers stay scoped to their own document and media query
+  ---
+  duration_ms: 0.156422
+  type: 'test'
+  ...
+# Subtest: every offered HUD margin reaches the city map and FPS radar in CSS pixels
+ok 513 - every offered HUD margin reaches the city map and FPS radar in CSS pixels
+  ---
+  duration_ms: 3.204196
+  type: 'test'
+  ...
+# Subtest: successive applied preferences replace the previous canvas margin including zero
+ok 514 - successive applied preferences replace the previous canvas margin including zero
+  ---
+  duration_ms: 1.438324
+  type: 'test'
+  ...
+# Subtest: missing or invalid computed CSS keeps the established readable defaults
+ok 515 - missing or invalid computed CSS keeps the established readable defaults
+  ---
+  duration_ms: 0.293885
+  type: 'test'
+  ...
+# Subtest: computed preferences use the same safe bounds as the settings screen
+ok 516 - computed preferences use the same safe bounds as the settings screen
+  ---
+  duration_ms: 0.186458
+  type: 'test'
+  ...
+# Subtest: city: aliases and a touch remain independent through physical releases
+ok 517 - city: aliases and a touch remain independent through physical releases
+  ---
+  duration_ms: 3.392888
+  type: 'test'
+  ...
+# Subtest: city: blur cleanup requires a fresh key press before movement resumes
+ok 518 - city: blur cleanup requires a fresh key press before movement resumes
+  ---
+  duration_ms: 0.768969
+  type: 'test'
+  ...
+# Subtest: city: pause and local menu cleanup cannot be undone by keyboard repeat
+ok 519 - city: pause and local menu cleanup cannot be undone by keyboard repeat
+  ---
+  duration_ms: 0.926823
+  type: 'test'
+  ...
+# Subtest: city: hidden-page cleanup does not revive a held movement on return
+ok 520 - city: hidden-page cleanup does not revive a held movement on return
+  ---
+  duration_ms: 0.298401
+  type: 'test'
+  ...
+# Subtest: city: release follows the physical key after character and focus change
+ok 521 - city: release follows the physical key after character and focus change
+  ---
+  duration_ms: 1.764619
+  type: 'test'
+  ...
+# Subtest: city: UI input remains filtered without preventing owner cleanup
+ok 522 - city: UI input remains filtered without preventing owner cleanup
+  ---
+  duration_ms: 0.311812
+  type: 'test'
+  ...
+# Subtest: fps: aliases and a touch remain independent through physical releases
+ok 523 - fps: aliases and a touch remain independent through physical releases
+  ---
+  duration_ms: 0.796602
+  type: 'test'
+  ...
+# Subtest: fps: blur cleanup requires a fresh key press before movement resumes
+ok 524 - fps: blur cleanup requires a fresh key press before movement resumes
+  ---
+  duration_ms: 0.531492
+  type: 'test'
+  ...
+# Subtest: fps: pause and local menu cleanup cannot be undone by keyboard repeat
+ok 525 - fps: pause and local menu cleanup cannot be undone by keyboard repeat
+  ---
+  duration_ms: 0.720745
+  type: 'test'
+  ...
+# Subtest: fps: hidden-page cleanup does not revive a held movement on return
+ok 526 - fps: hidden-page cleanup does not revive a held movement on return
+  ---
+  duration_ms: 0.473833
+  type: 'test'
+  ...
+# Subtest: fps: release follows the physical key after character and focus change
+ok 527 - fps: release follows the physical key after character and focus change
+  ---
+  duration_ms: 0.288406
+  type: 'test'
+  ...
+# Subtest: fps: UI input remains filtered without preventing owner cleanup
+ok 528 - fps: UI input remains filtered without preventing owner cleanup
+  ---
+  duration_ms: 0.102499
+  type: 'test'
+  ...
+# Subtest: City interaction remains a single action per initial keydown
+ok 529 - City interaction remains a single action per initial keydown
+  ---
+  duration_ms: 0.143842
+  type: 'test'
+  ...
+# Subtest: FPS movement filtering preserves the existing fire and discrete action routes
+ok 530 - FPS movement filtering preserves the existing fire and discrete action routes
+  ---
+  duration_ms: 0.28478
+  type: 'test'
+  ...
+# Subtest: Owned in the library excludes empty universes without changing completion totals
+ok 531 - Owned in the library excludes empty universes without changing completion totals
+  ---
+  duration_ms: 2.593599
+  type: 'test'
+  ...
+# Subtest: every library filter has the same results as entering each binder
+ok 532 - every library filter has the same results as entering each binder
+  ---
+  duration_ms: 0.736239
+  type: 'test'
+  ...
+# Subtest: filtering preserves collection entries and the full source catalogue
+ok 533 - filtering preserves collection entries and the full source catalogue
+  ---
+  duration_ms: 0.220412
+  type: 'test'
+  ...
+# Subtest: Mirelle presents one pose from the registered 4 by 10 collection sheet
+ok 534 - Mirelle presents one pose from the registered 4 by 10 collection sheet
+  ---
+  duration_ms: 0.860858
+  type: 'test'
+  ...
+# Subtest: portraits stay whole and explicit cosmetic atlases use their authored row
+ok 535 - portraits stay whole and explicit cosmetic atlases use their authored row
+  ---
+  duration_ms: 0.224909
+  type: 'test'
+  ...
+# Subtest: modal Escape dismisses once, isolates the game and restores prior focus and scroll
+ok 536 - modal Escape dismisses once, isolates the game and restores prior focus and scroll
+  ---
+  duration_ms: 0.731242
+  type: 'test'
+  ...
+# Subtest: a card dialog suspends its album and closing it restores the selected card focus
+ok 537 - a card dialog suspends its album and closing it restores the selected card focus
+  ---
+  duration_ms: 0.346182
+  type: 'test'
+  ...
+# Subtest: simultaneously closing a catalogue and its dossier cannot leave the game inert
+ok 538 - simultaneously closing a catalogue and its dossier cannot leave the game inert
+  ---
+  duration_ms: 0.286902
+  type: 'test'
+  ...
+# Subtest: the gallery main stage uses an unlocked illustration without exposing locked full-size media
+ok 539 - the gallery main stage uses an unlocked illustration without exposing locked full-size media
+  ---
+  duration_ms: 19100.83314
+  type: 'test'
+  ...
+# Subtest: the main stage displays the latest published correction and keeps every version locked with its hero
+ok 540 - the main stage displays the latest published correction and keeps every version locked with its hero
+  ---
+  duration_ms: 4.500282
+  type: 'test'
+  ...
+# Subtest: the album remains one labelled dialog with all three views and explicitly scoped filters
+ok 541 - the album remains one labelled dialog with all three views and explicitly scoped filters
+  ---
+  duration_ms: 8.863217
+  type: 'test'
+  ...
+# Subtest: the universe reader preserves every supplied section inside one modal
+ok 542 - the universe reader preserves every supplied section inside one modal
+  ---
+  duration_ms: 1.246181
+  type: 'test'
+  ...
+# Subtest: creating an Anchor keeps local play primary and account controls in an optional section
+ok 543 - creating an Anchor keeps local play primary and account controls in an optional section
+  ---
+  duration_ms: 7.038012
+  type: 'test'
+  ...
+# Subtest: fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 544 - fr: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 21932.397692
+  type: 'test'
+  ...
+# Subtest: fr: every item family keeps its source count, event item and bounded first page
+ok 545 - fr: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 12.161616
+  type: 'test'
+  ...
+# Subtest: fr: mission, arc and collection dossiers retain their distinct text and progress
+ok 546 - fr: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 11.991446
+  type: 'test'
+  ...
+# Subtest: fr: living-world reading preserves all eight authoring areas and optional bonus
+ok 547 - fr: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 3.202803
+  type: 'test'
+  ...
+# Subtest: en: reader provides one modal, roving chapters and bounded character/threat catalogues
+ok 548 - en: reader provides one modal, roving chapters and bounded character/threat catalogues
+  ---
+  duration_ms: 39.11436
+  type: 'test'
+  ...
+# Subtest: en: every item family keeps its source count, event item and bounded first page
+ok 549 - en: every item family keeps its source count, event item and bounded first page
+  ---
+  duration_ms: 14.776435
+  type: 'test'
+  ...
+# Subtest: en: mission, arc and collection dossiers retain their distinct text and progress
+ok 550 - en: mission, arc and collection dossiers retain their distinct text and progress
+  ---
+  duration_ms: 9.38173
+  type: 'test'
+  ...
+# Subtest: en: living-world reading preserves all eight authoring areas and optional bonus
+ok 551 - en: living-world reading preserves all eight authoring areas and optional bonus
+  ---
+  duration_ms: 3.389585
+  type: 'test'
+  ...
+# Subtest: an adjacent universe without a living world falls back to an available chapter
+ok 552 - an adjacent universe without a living world falls back to an available chapter
+  ---
+  duration_ms: 4.122048
+  type: 'test'
+  ...
+# Subtest: empty item and mission catalogues expose their absence instead of fabricating entries
+ok 553 - empty item and mission catalogues expose their absence instead of fabricating entries
+  ---
+  duration_ms: 7.275128
+  type: 'test'
+  ...
+# Subtest: a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+ok 554 - a localized description beyond the mounted page can be found, and no-match keeps an explicit recovery message
+  ---
+  duration_ms: 3.376585
+  type: 'test'
+  ...
+# Subtest: every source entry remains reachable with each page-size option without source mutation
+ok 555 - every source entry remains reachable with each page-size option without source mutation
+  ---
+  duration_ms: 12.499165
+  type: 'test'
+  ...
+# Subtest: a stale page clamps to the current source and keeps its exact total
+ok 556 - a stale page clamps to the current source and keeps its exact total
+  ---
+  duration_ms: 0.93624
+  type: 'test'
+  ...
+1..556
+# tests 556
+# suites 0
+# pass 556
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 167142.938847
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

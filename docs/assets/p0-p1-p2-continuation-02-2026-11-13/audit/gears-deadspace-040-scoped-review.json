@@ -1,0 +1,879 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/tmp/scoped-audit-02-sar5a284/ledger.json",
+      "sha256": "d3250f05145be152ef4ec6c6b24fa9ea3b753d1947f2d0757fdeee120d2ebf67"
+    },
+    "before": {
+      "path": "/tmp/scoped-audit-02-sar5a284/gears-deadspace-040-before.json",
+      "sha256": "5a219bfd88684c27eb4acfc314d53013769865c62f06ddc8e04c4c3da532b059"
+    },
+    "after": {
+      "path": "/tmp/scoped-audit-02-sar5a284/gears-deadspace-040-current.json",
+      "sha256": "436517452826d63a068d61ad1ff35a01a25637df3f20869b2fe386d4021f8353"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/delta.json",
+      "sha256": "bf7171e63b7c573ba6ca0201b097695db1313f658e651f9d0533e92d5c8bcb68"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "addedSourceFindings": [
+    {
+      "actorKey": "[\"Gears of War\",\"id:marcus\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:dom\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:cole\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:baird\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:anya_stroud\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:hoffman_cog\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:carmine_cog\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"id:kait_diaz\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Drone\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Locust Wretch\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Explosive Ticker\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Theron Guard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Boomer Locust\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Kantus Priest\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Hatchling\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:High Priest Skorge\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Berserker Matriarch\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Karn Locust General\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Queen Myrrah\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Corpser Burrower\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Gears of War\",\"name:Gargantuan Brumak\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:isaac\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:carver\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:ellie\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:nicole_brennan\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:zach_hammond\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:kendra_daniels\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"id:hammond_ds\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Slasher Scythe\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Leaper Demon\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Lurker Pod\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Slasher Necromorph\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Pregnant Necromorph\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Exploder Necromorph\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Divider Necromorph\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Leaper Necromorph\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Infector Winged Corpse\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Dead Space\",\"name:Armored Brute Smasher\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    }
+  ],
+  "removedSourceFindingsByCode": {
+    "INCARNATION_UNSPECIFIED": 38,
+    "REFERENCE_MISSING": 38,
+    "VISUAL_CONTRACT_MISSING": 38,
+    "GENERIC_TECHNIQUE_NAMES": 8
+  },
+  "addedSourceFindingsByCode": {
+    "REFERENCE_SCENE_REVIEW": 38
+  },
+  "unchangedPreparedRpgHeroes": 15,
+  "unchangedPreparedRpgHeroSlots": 60,
+  "changedPreparedRpgProfiles": [
+    {
+      "actorKey": "[\"Dead Space\",\"name:Necromorph Infector Pod\"]",
+      "kind": "boss",
+      "slots": {
+        "special": {
+          "action": {
+            "before": "T-Virus Necromorph Infection",
+            "after": "Necromorph Corpse Infection (Nexus boss adaptation)"
+          }
+        }
+      }
+    }
+  ],
+  "selectedLegacySignatureChanges": [],
+  "preservedSelectedLegacySignatures": 0,
+  "rawEffectiveLabelDifferences": [],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false,
+  "workingSourceScope": {
+    "scope": "Subject sources were frozen and hashed before/after. This is a native working-graph probe, not a claim that all pending core fixes are committed. Final immutable global export remains pending.",
+    "sourceSha256": {
+      "DLC/GearsOfWar/manifest.json": "0a1ba8de4dbb66655473df3fe6e01e8bcb636d9933f5825a9eeac4a6a1fc817b",
+      "DLC/GearsOfWar/data/actorSourceContracts.js": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d",
+      "DLC/GearsOfWar/data/heroes.js": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e",
+      "DLC/GearsOfWar/data/enemies.js": "dc6f318bdd3f7d58fd9a009dcf02f92b0f28f39ebe999a0c8ff06ff4bc54a08c",
+      "DLC/GearsOfWar/data/loreAccuratePacks.js": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806",
+      "DLC/DeadSpace/manifest.json": "91a6bf77023bdb51adad2282f07ab0ef593893dc3bfde15bba28aaed8043aa55",
+      "DLC/DeadSpace/data/actorSourceContracts.js": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc",
+      "DLC/DeadSpace/data/heroes.js": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1",
+      "DLC/DeadSpace/data/enemies.js": "cdb961a14d7ca2edb820b60e814c4a97a186339d3606eafde2d4acce4d9e573c",
+      "DLC/DeadSpace/data/loreAccuratePacks.js": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11",
+      "DLC/GearsOfWar/data/loreWorldBossOverrides.js": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280",
+      "src/game/combat/combatSourceDefinitionsWave15PartC.js": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd"
+    },
+    "ownerProofSha256": "bf7171e63b7c573ba6ca0201b097695db1313f658e651f9d0533e92d5c8bcb68",
+    "runtimeGzipOriginalSha256": "436517452826d63a068d61ad1ff35a01a25637df3f20869b2fe386d4021f8353",
+    "runtimeGzipSha256": "7c3dee26bab196e831f50c300ad1531b214fffa3905a28d6eca6c2b5c0a10692"
+  }
+}

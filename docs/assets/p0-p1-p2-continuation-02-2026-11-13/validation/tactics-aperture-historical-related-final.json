@@ -1,0 +1,59 @@
+{
+  "command": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/tacticsHistoricalAperture20261113.test.mjs",
+    "scripts/tacticsUniversePresentationWave17.test.mjs",
+    "scripts/tacticsUniversePresentationWave16.test.mjs",
+    "scripts/tacticsUniverseWave15Presentation.test.mjs"
+  ],
+  "exitCode": 0,
+  "seconds": 1.321,
+  "scope": "Final pure closed Aperture guard and related W15/W16/W17 preservation/presentation suites. Includes non-JSON extra-field refusal; no Vite/SSR, runtime or historical input modification.",
+  "tests": 23,
+  "passed": 23,
+  "failed": 0,
+  "finalCodeSha256": {
+    "scripts/tacticsHistoricalAperture20261113.mjs": "0146cb407b096b80e6b4c8547f9b4d83b05eead4613b52d4d1a2050e0243d52b",
+    "scripts/tacticsHistoricalAperture20261113.test.mjs": "d87480bd0479944c8499e260a29c01f8d20e534be360fff08269e8ffb29bb095",
+    "scripts/tacticsHistoricalBaselineWave17.mjs": "235cbbd74e5895825d61ca784e8ed63c1e79638271b04770fd608fb38e7f31b9",
+    "scripts/tacticsUniversePresentationWave17.test.mjs": "5105e6d3e525f50ce7d160bf33a336c0cbbe46d8a89b118ef36ebb4f4a01afd7",
+    "scripts/fixtures/tactics-aperture-historical-amendment-2026-11-13.json": "79b17a7ac81e3b0fbbc1c75eb97b16ca2abb8a0985d79a3574db30da09663185"
+  },
+  "immutableHistoricalInputs": {
+    "docs/tactics-universes-2026-11-02/baseline-tactics-stages-before.json": {
+      "sha256": "2aea8ab9fd69823f4bea48d2176a69bb243617dc61a742e683989b044b6063ee",
+      "matchesHeadBytes": true
+    },
+    "docs/tactics-universes-2026-10-28/baseline-tactics-stages-before.json": {
+      "sha256": "6063699c4e2e8424d7f9eb1574aabe6a433801442c2ec8cc1239020a6725503f",
+      "matchesHeadBytes": true
+    },
+    "docs/tactics-universes-2026-11-02/source-plan-before.json": {
+      "sha256": "4cac1d9f4d60c11b92381c05db6b8ec12822d5d72ddca4732c6969e2f4b03e81",
+      "matchesHeadBytes": true
+    },
+    "src/game/tacticsUniverseBattlefieldsWave17.js": {
+      "sha256": "c730b7fb4b9aae3189b087ce7180981071f3f608730894e7832928bf13f4c8e1",
+      "matchesHeadBytes": true
+    },
+    "src/game/tacticsUniversePresentationWave17.js": {
+      "sha256": "b3fdf07f0e94ec5dba1586c6f25fb83157106de3048dd567bde684cc23475e24",
+      "matchesHeadBytes": true
+    }
+  },
+  "rootOwnedRuntimeReadOnlyInputs": {
+    "src/game/tacticsApertureBattlefield.js": "696191a8196042f88c528d696c4ff9a076838b0c4ff63f5e982e8bca5f24007e",
+    "src/game/tacticsAperturePresentation.js": "4511a76be90a224cef9d9fb8af3a45b876545bf38aa5ca567fafbf3f81add10b"
+  },
+  "runtimeEditedByThisTask": false,
+  "historicalFilesEditedByThisTask": false,
+  "lintExitCode": 0,
+  "oldW17GuardsRetained": true,
+  "noImageGenerationOrCommit": true
+}

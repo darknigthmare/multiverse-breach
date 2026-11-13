@@ -1,0 +1,44 @@
+{
+  "utc": "2026-11-13T14:56:53.468525+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "2,3",
+    "npm",
+    "run",
+    "test:ui-immersion"
+  ],
+  "env": {
+    "PATHPrefix": "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin",
+    "NODE_OPTIONS": "--max-old-space-size=2048"
+  },
+  "exitCode": 1,
+  "durationSeconds": 154.952,
+  "tapBlocks": [
+    {
+      "tests": 556,
+      "pass": 542,
+      "fail": 14,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "totals": {
+    "tests": 556,
+    "pass": 542,
+    "fail": 14,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "package.json": "ac69b1039616c0e73d0557c59b5de5734cad7b8916d2f5b6eaa6f8713aa355dd",
+    "src/components/GameCanvas.jsx": "84ae806058321a89f8e04e4465900981a54596d0fafcd872ee65d63a1cf8dfa6",
+    "src/components/combat-immersion.css": "74befbea0e232f14864e6e201a50f7b327991ee6b0c37c737c5a2b3879cda7d1",
+    "src/game/tacticsApertureBattlefield.js": "696191a8196042f88c528d696c4ff9a076838b0c4ff63f5e982e8bca5f24007e",
+    "src/game/tacticsAperturePresentation.js": "4511a76be90a224cef9d9fb8af3a45b876545bf38aa5ca567fafbf3f81add10b"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Unmodified standard npm UI immersion entry point on reserved CPU2,3; no new build or browser session."
+}

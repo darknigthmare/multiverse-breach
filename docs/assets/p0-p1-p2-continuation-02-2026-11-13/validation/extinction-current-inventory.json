@@ -1,0 +1,78 @@
+{
+  "missing": [
+    {
+      "id": "liara",
+      "universe": "Mass Effect",
+      "slot": "special",
+      "raw": {
+        "name": "Singularity",
+        "type": "area",
+        "dmg": 4.6,
+        "animationDuration": 1.1,
+        "hitAt": 0.451,
+        "targeting": {
+          "effect": "damage",
+          "delivery": "area",
+          "shape": "area",
+          "range": 640,
+          "targetSide": "enemy",
+          "areaRadius": 115
+        },
+        "color": "#84a9ff",
+        "meterCost": 100
+      }
+    }
+  ],
+  "styles": {
+    "contact": 813,
+    "projectile": 364,
+    "ballistic": 538,
+    "cone": 2,
+    "support": 17,
+    "beam": 7,
+    "scatter": 5,
+    "control": 19,
+    "focus": 43,
+    "movement": 3
+  },
+  "kinds": {
+    "melee": 813,
+    "projectile": 364,
+    "hitscan": 538,
+    "cone": 2,
+    "guard": 3,
+    "beam": 7,
+    "scatter": 5,
+    "buff": 14,
+    "control": 19,
+    "focus": 43,
+    "dash": 3
+  },
+  "counts": {
+    "characters": 1912,
+    "combatants": 1811,
+    "peaceful": 101,
+    "authoredKits": 12,
+    "sourceAdaptedKits": 1799,
+    "genericSourceReview": 1576,
+    "boundPersonalViews": 3,
+    "actions": 7243
+  },
+  "sourceFingerprint": "ba245d54b06096cead0ad2ba9fda4188a9071c46c4aa5659f493743e4ec84c4e",
+  "chell": {
+    "name": "Repérage de test de Chell",
+    "type": "guard",
+    "dmg": 0,
+    "animationDuration": 0.55,
+    "hitAt": 0.2,
+    "targeting": {
+      "effect": "guard",
+      "delivery": "support",
+      "shape": "group",
+      "range": 760,
+      "targetSide": "ally",
+      "duration": 2,
+      "reduce": 0.18
+    }
+  }
+}

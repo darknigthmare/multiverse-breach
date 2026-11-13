@@ -1,0 +1,199 @@
+function MissionDirectory({
+  lang,
+  stages,
+  completedStages,
+  isStageUnlocked,
+  getMissionDeployment,
+  onOpenBriefing,
+  onLaunch,
+  getStageModifier,
+  getStageArc,
+  getLootRarity,
+  getRichBreachBrief,
+  getStageRewardPreview,
+  accent = '#39c5bb',
+  emptyBackdrop,
+  query = '',
+  onQueryChange,
+  statusFilter = 'all',
+  onStatusFilterChange
+}) {
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredStages = stages.filter(stage => {
+    const completed = completedStages.includes(stage.id);
+    const unlocked = isStageUnlocked(stage);
+    const deploymentReady = getMissionDeployment?.(stage).allowed ?? unlocked;
+    const statusMatches = statusFilter === 'all'
+      || (statusFilter === 'available' && deploymentReady && !completed)
+      || (statusFilter === 'completed' && completed)
+      || (statusFilter === 'composition' && unlocked && !deploymentReady)
+      || (statusFilter === 'locked' && !unlocked);
+    if (!statusMatches) return false;
+    if (!normalizedQuery) return true;
+    return [
+      stage.id,
+      stage.name,
+      stage.displayName?.fr,
+      stage.displayName?.en,
+      stage.universe,
+      ...(stage.sourceUniverses || []),
+      stage.bossName,
+      stage.mode
+    ].filter(Boolean).some(value => String(value).toLowerCase().includes(normalizedQuery));
+  });
+  const statusItems = [
+    { id: 'all', label: { fr: 'TOUTES', en: 'ALL' }, count: stages.length },
+    {
+      id: 'available',
+      label: { fr: 'OUVERTES', en: 'OPEN' },
+      count: stages.filter(stage => (getMissionDeployment?.(stage).allowed ?? isStageUnlocked(stage)) && !completedStages.includes(stage.id)).length
+    },
+    {
+      id: 'completed',
+      label: { fr: 'STABILISEES', en: 'STABILIZED' },
+      count: stages.filter(stage => completedStages.includes(stage.id)).length
+    },
+    {
+      id: 'composition',
+      label: { fr: 'CELLULE', en: 'SQUAD' },
+      count: stages.filter(stage => {
+        const unlocked = isStageUnlocked(stage);
+        return unlocked && !(getMissionDeployment?.(stage).allowed ?? unlocked);
+      }).length
+    },
+    {
+      id: 'locked',
+      label: { fr: 'SCELLEES', en: 'SEALED' },
+      count: stages.filter(stage => !isStageUnlocked(stage)).length
+    }
+  ];
+
+  return (
+    <section className="mission-directory" style={{ '--operations-accent': accent }}>
+      <header className="mission-directory-head">
+        <div>
+          <span className="portal-focus-kicker">{lang === 'fr' ? 'REPERTOIRE A.R.C.A.' : 'A.R.C.A. DIRECTORY'}</span>
+          <h4>{lang === 'fr' ? 'Missions de cette route' : 'Missions on this route'}</h4>
+        </div>
+        <label>
+          <span>{lang === 'fr' ? 'RECHERCHE' : 'SEARCH'}</span>
+          <input
+            value={query}
+            onChange={event => onQueryChange(event.target.value)}
+            placeholder={lang === 'fr' ? 'Nom, univers, boss ou mode...' : 'Name, universe, boss, or mode...'}
+          />
+        </label>
+      </header>
+      <OperationsSectionTabs
+        lang={lang}
+        items={statusItems}
+        activeId={statusFilter}
+        onChange={onStatusFilterChange}
+        label={lang === 'fr' ? 'Filtrer les missions par statut' : 'Filter missions by status'}
+      />
+      {filteredStages.length > 0 ? (
+        <div className="mission-directory-list">
+          {filteredStages.map(stage => {
+            const completed = completedStages.includes(stage.id);
+            const unlocked = isStageUnlocked(stage);
+            const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+            const deployment = getMissionDeployment?.(stage) || { allowed: unlocked, baseUnlocked: unlocked };
+            const canDeploy = deployment.allowed;
+            const backdrop = getRiftDossierArtSrc(
+              stage,
+              emptyBackdrop || '/images/missions/fusion-rifts.webp'
+            );
+            const modifier = getStageModifier(stage);
+            const rarity = getLootRarity(stage);
+            const stageArc = getStageArc(stage);
+            const rewardPreview = getStageRewardPreview(stage) || [];
+            const statusLabel = completed
+              ? (lang === 'fr' ? 'STABILISEE' : 'STABILIZED')
+              : canDeploy
+                ? (lang === 'fr' ? 'OUVERTE' : 'OPEN')
+                : unlocked
+                  ? (lang === 'fr' ? 'CELLULE' : 'SQUAD')
+                  : (lang === 'fr' ? 'SCELLEE' : 'SEALED');
+            return (
+              <article
+                key={stage.id}
+                className={`mission-directory-entry ${completed ? 'is-complete' : ''} ${!unlocked ? 'is-locked' : ''} ${unlocked && !canDeploy ? 'is-composition' : ''}`}
+              >
+                <div
+                  className="mission-directory-art"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(3,2,8,0.05), rgba(3,2,8,0.82)), url("${backdrop}")`
+                  }}
+                >
+                  <span>#{stage.id}</span>
+                  <b>{statusLabel}</b>
+                </div>
+                <div className="mission-directory-copy">
+                  <div className="mission-directory-title">
+                    <div>
+                      <span>{stage.sourceUniverses?.join(' / ') || stage.universe}</span>
+                      <h5>{stage.displayName?.[lang] || stage.name}</h5>
+                    </div>
+                    <em>{stage.mode}</em>
+                  </div>
+                  <p>{getRichBreachBrief(stage)}</p>
+                  <div className="mission-directory-tags">
+                    <span style={{ '--tag-color': modifier.color }}>{modifier.name[lang]}</span>
+                    <span style={{ '--tag-color': rarity.color }}>{rarity.label}</span>
+                    {stageArc && <span style={{ '--tag-color': stageArc.color }}>{getLocalizedText(stageArc.title, lang)}</span>}
+                  </div>
+                  <div className="mission-directory-meta">
+                    <span>
+                      {nonCombatDetails
+                        ? (lang === 'fr' ? 'Epreuve' : 'Trial')
+                        : (lang === 'fr' ? 'Menace' : 'Threat')}: <strong>{nonCombatDetails?.title || stage.bossName}</strong>
+                    </span>
+                    <span>{rewardPreview.slice(0, 2).join(' / ')}</span>
+                  </div>
+                </div>
+                <div className="mission-directory-actions">
+                  <button
+                    type="button"
+                    className="btn-retro"
+                    onClick={() => onOpenBriefing(stage)}
+                    title={lang === 'fr' ? 'Ouvre le dossier complet de cette mission.' : 'Open this mission full dossier.'}
+                  >
+                    {lang === 'fr' ? 'BRIEFING' : 'BRIEFING'}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-retro mission-directory-launch"
+                    disabled={!canDeploy}
+                    onClick={() => onLaunch(stage)}
+                    title={canDeploy
+                      ? (lang === 'fr' ? 'Lance cette mission avec l escouade active.' : 'Start this mission with the active squad.')
+                      : (deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || (lang === 'fr' ? 'Cette mission est encore scellee.' : 'This mission is still sealed.'))}
+                  >
+                    {canDeploy
+                      ? getTranslation(lang, 'deploySquad')
+                      : unlocked
+                        ? (lang === 'fr' ? 'CELLULE REQUISE' : 'SQUAD REQUIRED')
+                        : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div
+          className="operations-empty-state"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(4,3,10,0.98), rgba(4,3,10,0.72)), url("${emptyBackdrop || '/images/missions/fusion-rifts.webp'}")`
+          }}
+        >
+          <span className="portal-focus-kicker">{lang === 'fr' ? 'AUCUN SIGNAL' : 'NO SIGNAL'}</span>
+          <strong>{lang === 'fr' ? 'Aucune mission ne correspond a cette lecture' : 'No mission matches this reading'}</strong>
+          <p>{lang === 'fr' ? 'Modifie la recherche ou le statut affiche.' : 'Change the search or displayed status.'}</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+

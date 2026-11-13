@@ -1,0 +1,3526 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "batchSize": 40,
+  "scope": "Continuation reservation only; actor tasks remain open until separately evidenced. No artistic approvals or automatic retry authorization.",
+  "actors": [
+    {
+      "actorKey": "[\"Harry Potter\",\"id:harry\"]",
+      "actorId": "harry",
+      "actorName": "Harry Potter",
+      "universe": "Harry Potter",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "visualAnchor": "Harry in the 2007 Order of the Phoenix film: teenage Harry, untidy dark hair, round glasses and lightning scar, Hogwarts Gryffindor school clothing, original holly wand with phoenix-feather core. No Elder Wand, adult epilogue version or green Killing Curse. A corporeal Patronus is a stag, not a generic blast.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Expelliarmus",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Stupefy",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Protego",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Dumbledore s Army Stupefy Duel",
+          "type": "projectile",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Harry Potter\",\"id:harry\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter"
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:harry\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:harry\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:harry\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:luke\"]",
+      "actorId": "luke",
+      "actorName": "Luke Skywalker",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Star Wars: Return of the Jedi (1983) - Death Star II Jedi Knight",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.starwars.com/databank/luke-skywalker",
+      "visualAnchor": "Luke Skywalker in Return of the Jedi: young adult, short brown hair, black Jedi tunic and trousers, black boots, black glove on the mechanical right hand, single silver-and-black hilt with one green lightsaber blade. Death Star II duel outfit; no blue inherited saber, old hermit beard, white farm tunic or electrical mind beam.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Green Lightsaber Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Force Telekinesis",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Lightsaber Deflection",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Green Lightsaber Duel",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:luke\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.starwars.com/databank/luke-skywalker"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:luke\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "Tatooine farm tunic — A New Hope (1977) | Stormtrooper disguise — A New Hope (1977) | X-wing pilot — A New Hope (1977) | Dagobah training — The Empire Strikes Back (1980) | Bespin fatigues — The Empire Strikes Back (1980)"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:luke\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Aluke%22%5D:sw-luke-farm | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Aluke%22%5D:sw-luke-trooper | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Aluke%22%5D:sw-luke-pilot | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Aluke%22%5D:sw-luke-dagobah | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Aluke%22%5D:sw-luke-bespin"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:luke\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "Veilleur de Convergence"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:luke\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Harry Potter\",\"id:hermione\"]",
+      "actorId": "hermione",
+      "actorName": "Hermione Granger",
+      "universe": "Harry Potter",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "visualAnchor": "Hermione in the 2007 Order of the Phoenix film: teenage Hermione with brown hair, Hogwarts Gryffindor school clothing and her vine wand with dragon-heartstring core. Fifth-year incarnation; no permanent third-year Time-Turner pendant, Elder Wand or Deathly Hallows forest outfit. Final film-costume review remains pending.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Stupefy",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Expelliarmus",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Protego",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Dumbledore s Army Stunning Duel",
+          "type": "projectile",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Harry Potter\",\"id:hermione\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger"
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:hermione\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:hermione\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Harry Potter\",\"id:hermione\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:vader\"]",
+      "actorId": "vader",
+      "actorName": "Darth Vader",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.starwars.com/databank/darth-vader",
+      "visualAnchor": "Darth Vader in The Empire Strikes Back: full black domed helmet and triangular respirator mask, glossy black shoulder armor, ribbed black suit, chest life-support control box, black cape, gloves and boots, silver-and-black hilt with one red lightsaber blade. Closed helmet throughout; no hooded human substitute, bare Anakin face, blue blade or Force lightning.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Red Lightsaber Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Bespin Debris Telekinesis",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Lightsaber Parry",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Force Choke",
+          "type": "gravity",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:vader\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.starwars.com/databank/darth-vader"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:vader\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:vader\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "Armure du Seuil — création Nexus"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:vader\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:han_solo\"]",
+      "actorId": "han_solo",
+      "actorName": "Han Solo",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.starwars.com/databank/han-solo",
+      "visualAnchor": "Han Solo in A New Hope: brown hair, cream open-collar shirt, black sleeveless vest, dark blue trousers with red side stripes, brown belt and right-thigh DL-44 holster, black boots. Modified DL-44 blaster pistol; no Jedi saber, carbonite armor, older sequel beard or winter coat.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "DL-44 Quickdraw",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "DL-44 Covering Fire",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Smuggler Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "DL-44 Blaster Volley",
+          "type": "bullet",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:han_solo\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.starwars.com/databank/han-solo"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:han_solo\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "Hoth parka — The Empire Strikes Back (1980) | Endor camouflage coat — Return of the Jedi (1983) | Stormtrooper disguise — A New Hope (1977)"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:han_solo\"]::OFFICIAL_COSTUME_ARTWORK",
+          "code": "OFFICIAL_COSTUME_ARTWORK",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Ahan_solo%22%5D:sw-han-hoth | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Ahan_solo%22%5D:sw-han-endor | wardrobe-v1:%5B%22Star%20Wars%22%2C%22id%3Ahan_solo%22%5D:sw-han-trooper"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:han_solo\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "Courrier des Failles"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:han_solo\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:ahsoka_padawan\"]",
+      "actorId": "ahsoka_padawan",
+      "actorName": "Ahsoka Tano (Padawan)",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "The Clone Wars - early Padawan, age fourteen",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.starwars.com/databank/ahsokas-lightsabers",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Reverse-Grip Green Saber",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Padawan Force Leap",
+          "type": "force",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Shien Deflection",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Skyguy Battlefield Lesson",
+          "type": "force_aoe",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.starwars.com/databank/ahsokas-lightsabers"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::RASTER_SCOPE_UNRESOLVED",
+          "code": "RASTER_SCOPE_UNRESOLVED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka_padawan\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:darth_revan\"]",
+      "actorId": "darth_revan",
+      "actorName": "Darth Revan",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Star Wars: Knights of the Old Republic I - masked Darth Revan (Legends Sith)",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii",
+      "visualAnchor": "KOTOR I masked Sith Revan: weathered graphite/rust mask with two chin prongs, dark hood, cuirass and vambraces; one red blade, NOT the SWTOR flat-chin mask",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Red Saber Judgment",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Force Reversal",
+          "type": "force",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Revanite Mask Focus",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Star Forge Command",
+          "type": "force_aoe",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:darth_revan\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://crls.501st.com/tfe/darth-revan-kotor-i-and-ii"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:darth_revan\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:darth_revan\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:darth_revan\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Star Wars\",\"id:ahsoka\"]",
+      "actorId": "ahsoka",
+      "actorName": "Ahsoka Tano (Siege of Mandalore)",
+      "universe": "Star Wars",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "The Clone Wars - Season 7, Siege of Mandalore",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Twin Blue Saber Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Mandalore Throne-Room Counter",
+          "type": "force",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Order 66 Deflection",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Siege of Mandalore Break",
+          "type": "force_aoe",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.starwars.com/news/clone-wars-declassified-5-highlights-from-old-friends-not-forgotten"
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::RASTER_SCOPE_UNRESOLVED",
+          "code": "RASTER_SCOPE_UNRESOLVED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Star Wars\",\"id:ahsoka\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:joker_n52\"]",
+      "actorId": "joker_n52",
+      "actorName": "Joker New 52",
+      "universe": "Joker New 52",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "visualAnchor": "The Joker in New 52 Endgame, Batman #35-40: chalk-white face, green hair and wide red grin, sinister purple-associated civilian clothing. His restored face is not the detached strapped-on face of Death of the Family. Exact issue panels must drive the final costume review; no movie Joker tattoos, Glasgow smile or Batman Who Laughs visor.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Joker Knife Slash",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Joker Toxin Spray",
+          "type": "spray",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Unpredictable Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Endgame Toxin Spray",
+          "type": "spray",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Joker New 52\",\"id:joker_n52\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame"
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:joker_n52\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:joker_n52\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:joker_n52\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:harley_n52\"]",
+      "actorId": "harley_n52",
+      "actorName": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/Harley_Quinn",
+      "visualAnchor": "Harley Quinn s early New 52 Suicide Squad design, volume 4 #1 (2011): pale skin, hair divided blue and red, red-and-blue corset and shorts with matching boots and gloves, oversized mallet. Fully clothed source costume. Not the animated jester suit, Rebirth pink-and-blue hair tips, or Margot Robbie s 2016 film wardrobe. Source-panel visual review remains pending.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Oversized Mallet Swing",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Mallet Feint",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Acrobatic Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Squad Mallet Takedown",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Joker New 52\",\"id:harley_n52\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/Harley_Quinn"
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:harley_n52\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:harley_n52\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:harley_n52\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Joker New 52\",\"id:batman_n52\"]",
+      "actorId": "batman_n52",
+      "actorName": "Batman New 52",
+      "universe": "Joker New 52",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - Bruce Wayne",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "visualAnchor": "Bruce Wayne in the New 52 Endgame arc, Batman #35-40: gray armored suit, black cowl with white comic eye lenses, black bat emblem, black cape, gauntlets and boots, yellow-gold utility belt. Ordinary Batsuit form; Justice Buster is a separate armor form. No Grim Knight firearms or movie-specific Nolan costume.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "New 52 Martial Strike",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Utility-Belt Batarang",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Batsuit Gauntlet Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Endgame Close-Quarters Counter",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Joker New 52\",\"id:batman_n52\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame"
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:batman_n52\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:batman_n52\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Joker New 52\",\"id:batman_n52\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"The Batman Who Laughs\",\"id:grim_knight\"]",
+      "actorId": "grim_knight",
+      "actorName": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs",
+      "visualAnchor": "The Grim Knight is the firearm-using Dark Multiverse Bruce Wayne: dark tactical bat armor, cowl and cape, multiple weapon mounts and ammunition. Exact 2019 issue panels must determine weapon models and armor details before visual approval. Not Nolan Batman, ordinary New 52 Batman, or Batman Who Laughs with a spiked visor.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Grim Knight Firearm Burst",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Tactical Covering Fire",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Tactical Armor Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Grim Knight Arsenal Volley",
+          "type": "bullet",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"The Batman Who Laughs\",\"id:grim_knight\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs"
+        },
+        {
+          "id": "[\"The Batman Who Laughs\",\"id:grim_knight\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"The Batman Who Laughs\",\"id:grim_knight\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"The Batman Who Laughs\",\"id:grim_knight\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Roger Rabbit\",\"id:roger_rabbit\"]",
+      "actorId": "roger_rabbit",
+      "actorName": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "visualAnchor": "Roger Rabbit in the 1988 film: white cartoon rabbit with tall ears, orange hair tuft, pink nose, red overalls with yellow buttons, blue bow tie with yellow polka dots and yellow gloves. Cartoon elastic anatomy, not a humanoid armored rabbit or laser-wielding substitute. Dip is a lethal threat to toons.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Toon Comic Slap",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Elastic Toon Feint",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Squash-and-Stretch Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Toon Comedy Tumble",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Roger Rabbit\",\"id:roger_rabbit\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/"
+        },
+        {
+          "id": "[\"Roger Rabbit\",\"id:roger_rabbit\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Roger Rabbit\",\"id:roger_rabbit\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Roger Rabbit\",\"id:roger_rabbit\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]",
+      "actorId": "cyber_spider_kelly",
+      "actorName": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "visualAnchor": "The small cybernetic spider carrying Dr. Michael Kelly s mind in Spider: The Video Game (1997), insect-scale laboratory setting and interchangeable weapon legs. This base slot uses the default slasher attachment. No humanoid exosuit, Spider-Man costume or claim that an original substitute sprite already matches the source model.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Slasher Cyber-Leg Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Cybernetic Slasher Feint",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Slasher Attachment Rush",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_kelly\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]",
+      "actorId": "cyber_spider_flamethrower",
+      "actorName": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Flamethrower Cyber-Leg loadout. Small multi-legged spider, flame emission associated with a mechanical leg, not a humanoid blade warrior. Exact 1997 weapon attachment appearance awaits original gameplay review; the existing substitute sprite is not approved.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Flamethrower Cyber-Leg",
+          "type": "fire",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Flamethrower Attachment Sweep",
+          "type": "fire",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Flamethrower Cyber-Leg Burst",
+          "type": "fire",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_flamethrower\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]",
+      "actorId": "cyber_spider_electro_beam",
+      "actorName": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Electro-Beam attachment loadout. Small multi-legged cybernetic spider; the electrical beam belongs to a weapon leg, not a human gun. Exact 1997 weapon model and beam presentation await original gameplay review; the existing original substitute sprite is not approved.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Electro-Beam Cyber-Leg",
+          "type": "beam",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Electro-Beam Attachment Sweep",
+          "type": "beam",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Spider Leg Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Electro-Beam Cyber-Leg Burst",
+          "type": "beam",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Spider: The Video Game\",\"id:cyber_spider_electro_beam\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]",
+      "actorId": "jack_sparrow_potc",
+      "actorName": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "visualAnchor": "Captain Jack Sparrow in The Curse of the Black Pearl (2003): red bandanna, worn brown tricorn, dark beaded hair and braided beard, loose cream shirt, dark waistcoat and worn coat, sash and belts. Pirate sword and flintlock pistol. His compass is a non-offensive prop; no automatic enemy locator or compass attack. Costume and existing sprite review remain pending.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Pirate Sword Cut",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Reserved Flintlock Pistol Shot",
+          "type": "bullet",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Roguish Swordfight Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Black Pearl Swordfight Feint",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl"
+        },
+        {
+          "id": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Pirates of the Caribbean\",\"id:jack_sparrow_potc\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"The Dark Knight\",\"id:batman_tdk\"]",
+      "actorId": "batman_tdk",
+      "actorName": "Batman",
+      "universe": "The Dark Knight",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+      "visualAnchor": "Batman in The Dark Knight (2008): Christian Bale s Bruce Wayne in the black segmented armored Batsuit, narrow pointed ears, exposed mouth and jaw, black cape and gold utility belt. Batarangs and grapnel equipment; no ordinary pistol, Grim Knight rifle, Justice Buster, blue-gray animated suit or The Batman 2022 costume.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Batsuit Martial Strike",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Batarang Throw",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Armored Forearm Guard",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Gotham Close-Quarters Takedown",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"The Dark Knight\",\"id:batman_tdk\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://en.wikipedia.org/wiki/The_Dark_Knight"
+        },
+        {
+          "id": "[\"The Dark Knight\",\"id:batman_tdk\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"The Dark Knight\",\"id:batman_tdk\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"The Dark Knight\",\"id:batman_tdk\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:kevin_minions\"]",
+      "actorId": "kevin_minions",
+      "actorName": "Kevin",
+      "universe": "Minions",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Minions (2015) - Kevin, London crown-heist adventure",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.illumination.com/movie/minions/",
+      "visualAnchor": "Kevin from Minions (2015): tallest member of the trio, elongated yellow capsule body, two brown eyes, silver double-lens goggles with black strap, central upright black hair tuft, blue denim bib overalls, black gloves and boots. Protective team leader; normal size and adventure outfit, distinct from short bald Bob and one-eyed Stuart.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Kevin Minion Bump",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Banana Toss",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Protective Cover",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Kevin Team Charge",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Minions\",\"id:kevin_minions\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.illumination.com/movie/minions/"
+        },
+        {
+          "id": "[\"Minions\",\"id:kevin_minions\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:kevin_minions\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:kevin_minions\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:stuart_minions\"]",
+      "actorId": "stuart_minions",
+      "actorName": "Stuart",
+      "universe": "Minions",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Minions (2015) - Stuart, London rock-star finale",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.illumination.com/movie/minions/",
+      "visualAnchor": "Stuart from Minions (2015): medium-height yellow Minion with exactly one brown eye in a single silver goggle, black head strap, sparse center-parted black hair, blue denim bib overalls, black gloves and boots. Aspiring rock star with a red electric guitar and white pickguard; no second eye, sword or tall Kevin silhouette.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Guitar Swing",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Rock-Star Riff",
+          "type": "sound",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Rebellious Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "London Guitar Solo",
+          "type": "music_aoe",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Minions\",\"id:stuart_minions\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.illumination.com/movie/minions/"
+        },
+        {
+          "id": "[\"Minions\",\"id:stuart_minions\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:stuart_minions\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:stuart_minions\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Minions\",\"id:bob_minions\"]",
+      "actorId": "bob_minions",
+      "actorName": "Bob",
+      "universe": "Minions",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Minions (2015) - Bob, London crown-heist adventure",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.illumination.com/movie/minions/",
+      "visualAnchor": "Bob from Minions (2015): very short round bald yellow Minion, two eyes with different green and brown irises, silver double-lens goggles and black strap, blue denim bib overalls, black gloves and boots. Sweet naive personality and Tim teddy bear. Normal adventure outfit; no laser, human anatomy, hair tuft, single eye or permanent king costume.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Clumsy Minion Bump",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Banana Distraction",
+          "type": "projectile",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Startled Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Bob Comic Tumble",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Minions\",\"id:bob_minions\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.illumination.com/movie/minions/"
+        },
+        {
+          "id": "[\"Minions\",\"id:bob_minions\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:bob_minions\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Minions\",\"id:bob_minions\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Lilo & Stitch\",\"id:stitch_626\"]",
+      "actorId": "stitch_626",
+      "actorName": "Stitch",
+      "universe": "Lilo & Stitch",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "visualAnchor": "Stitch in the 2002 animated film, Earth dog disguise: short stocky blue alien, large lateral ears with pink interiors and characteristic notches, dark nose and eyes, pale-blue belly, two visible arms. Alien four-arm form is a separate presentation, not extra permanent Earth-form arms. No humanoid warrior costume or innate laser gun.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Experiment 626 Claw Swipe",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Alien Strength Pounce",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Agile Alien Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Experiment 626 Strength Rush",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Lilo & Stitch\",\"id:stitch_626\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://d23.com/a-to-z/lilo-stitch-film/"
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:stitch_626\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:stitch_626\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:stitch_626\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]",
+      "actorId": "lilo_pelekai",
+      "actorName": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "visualAnchor": "Lilo in the 2002 animated film: Hawaiian little girl, long straight black hair, red dress with large white leaf shapes and sandals. Camera and Scrump are personal props, not alien weapons. No adult substitute, laser rifle, magic beam or live-action redesign.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Camera Flash Distraction",
+          "type": "flash",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Playful Sidestep Bump",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Hula Sidestep",
+          "type": "dodge",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Ohana Rescue Scramble",
+          "type": "melee",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://d23.com/a-to-z/lilo-stitch-film/"
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Lilo & Stitch\",\"id:lilo_pelekai\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Teen Titans\",\"id:raven_tt\"]",
+      "actorId": "raven_tt",
+      "actorName": "Raven",
+      "universe": "Teen Titans",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.dc.com/characters/raven",
+      "visualAnchor": "Raven in the original 2003 Teen Titans animated series: gray skin, short violet hair, red forehead gem, dark outfit beneath a hooded blue-violet cloak with red clasp, blue-violet boots. Mystical dark-energy and telekinetic presentation, no mechanical laser rifle, Teen Titans Go proportions or live-action Titans wardrobe.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Mystical Telekinetic Strike",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Telekinetic Debris",
+          "type": "gravity",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Mystical Barrier",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Raven Telekinetic Restraint",
+          "type": "gravity",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Teen Titans\",\"id:raven_tt\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.dc.com/characters/raven"
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:raven_tt\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:raven_tt\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:raven_tt\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Teen Titans\",\"id:starfire_tt\"]",
+      "actorId": "starfire_tt",
+      "actorName": "Starfire",
+      "universe": "Teen Titans",
+      "kind": "hero",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "incarnationEvidence": "ACTOR_DECLARED",
+      "declaredReference": "https://www.dc.com/characters/starfire",
+      "visualAnchor": "Starfire in the original 2003 Teen Titans animated series: orange skin, long red hair, large green eyes, purple top and skirt, purple boots, silver neck piece and bracers with green gems. Green starbolts from her hands, not orange weapon fire, a rifle, New 52 comic costume or live-action Titans wardrobe.",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "Green Starbolt",
+          "type": "energy",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "Tamaranean Flight Kick",
+          "type": "melee",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "Tamaranean Resilience",
+          "type": "shield",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Green Starbolt Volley",
+          "type": "energy",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Teen Titans\",\"id:starfire_tt\"]::REFERENCE_SCENE_REVIEW",
+          "code": "REFERENCE_SCENE_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "https://www.dc.com/characters/starfire"
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:starfire_tt\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:starfire_tt\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Teen Titans\",\"id:starfire_tt\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Skittering Facehugger\"]",
+      "actorId": "",
+      "actorName": "Skittering Facehugger",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/skittering-facehugger.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/skittering-facehugger.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Skittering Facehugger\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Runner Alien\"]",
+      "actorId": "",
+      "actorName": "Runner Alien",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/runner-alien.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/runner-alien.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Runner Alien\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Chestburster Echo\"]",
+      "actorId": "",
+      "actorName": "Chestburster Echo",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/chestburster-echo.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/chestburster-echo.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Chestburster Echo\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Warrior Xenomorph\"]",
+      "actorId": "",
+      "actorName": "Warrior Xenomorph",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/warrior-xenomorph.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/warrior-xenomorph.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Warrior Xenomorph\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Egg Chamber Sac\"]",
+      "actorId": "",
+      "actorName": "Egg Chamber Sac",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/egg-chamber-sac.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/egg-chamber-sac.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Egg Chamber Sac\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Acid Blood Pool\"]",
+      "actorId": "",
+      "actorName": "Acid Blood Pool",
+      "universe": "Alien",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/acid-blood-pool.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/acid-blood-pool.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Acid Blood Pool\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]",
+      "actorId": "",
+      "actorName": "Weyland-Yutani Retrieval Team",
+      "universe": "Alien",
+      "kind": "boss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Specimen Recovery Order",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/weyland-yutani-retrieval-team.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/weyland-yutani-retrieval-team.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Weyland-Yutani Retrieval Team\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]",
+      "actorId": "",
+      "actorName": "Ash Synthetic Saboteur",
+      "universe": "Alien",
+      "kind": "boss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Special Order 937",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien/ash-synthetic-saboteur.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien/ash-synthetic-saboteur.png"
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien\",\"name:Ash Synthetic Saboteur\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"Alien 3\",\"name:Company Retrieval Team\"]",
+      "actorId": "",
+      "actorName": "Company Retrieval Team",
+      "universe": "Alien 3",
+      "kind": "boss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Company Retrieval Team Breach Pattern",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/alien-3/company-retrieval-team.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/alien-3/company-retrieval-team.png"
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"Alien 3\",\"name:Company Retrieval Team\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Rage Infected\"]",
+      "actorId": "",
+      "actorName": "Rage Infected",
+      "universe": "28 Days Later",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/rage-infected.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/rage-infected.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rage Infected\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Tunnel Infected\"]",
+      "actorId": "",
+      "actorName": "Tunnel Infected",
+      "universe": "28 Days Later",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/tunnel-infected.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/tunnel-infected.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Tunnel Infected\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Rogue Soldier\"]",
+      "actorId": "",
+      "actorName": "Rogue Soldier",
+      "universe": "28 Days Later",
+      "kind": "enemy",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/rogue-soldier.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/rogue-soldier.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Rogue Soldier\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Mailers Chain Break\"]",
+      "actorId": "",
+      "actorName": "Mailers Chain Break",
+      "universe": "28 Days Later",
+      "kind": "boss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Mailers Chain Break Breach Pattern",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/mailers-chain-break.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/mailers-chain-break.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mailers Chain Break\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Major West\"]",
+      "actorId": "",
+      "actorName": "Major West",
+      "universe": "28 Days Later",
+      "kind": "boss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Major West Breach Pattern",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/major-west.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/major-west.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Major West\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    },
+    {
+      "actorKey": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]",
+      "actorId": "",
+      "actorName": "Mansion Soldier Lockdown",
+      "universe": "28 Days Later",
+      "kind": "worldBoss",
+      "sourceScope": "EXTERNAL_OR_UNRESOLVED",
+      "sourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+      "incarnation": "",
+      "incarnationEvidence": "UNSPECIFIED",
+      "declaredReference": "",
+      "visualAnchor": "",
+      "techniques": [
+        {
+          "slot": "simple",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "secondary",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "defense",
+          "name": "",
+          "type": "",
+          "genericName": false
+        },
+        {
+          "slot": "special",
+          "name": "Mansion Soldier Lockdown Omniverse Rupture",
+          "type": "",
+          "genericName": false
+        }
+      ],
+      "missingRasterPaths": [
+        "/sprites/generated/bosses/28-days-later/mansion-soldier-lockdown.png"
+      ],
+      "staticGameplayPaths": [],
+      "priority": "P1",
+      "artApproved": false,
+      "tasks": [
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::INCARNATION_UNSPECIFIED",
+          "code": "INCARNATION_UNSPECIFIED",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::VISUAL_CONTRACT_MISSING",
+          "code": "VISUAL_CONTRACT_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::REFERENCE_MISSING",
+          "code": "REFERENCE_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::RASTER_MISSING",
+          "code": "RASTER_MISSING",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": "/sprites/generated/bosses/28-days-later/mansion-soldier-lockdown.png"
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::OFFICIAL_COSTUME_RESEARCH",
+          "code": "OFFICIAL_COSTUME_RESEARCH",
+          "priority": "P1",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::ORIGINAL_COSTUME_ARTWORK",
+          "code": "ORIGINAL_COSTUME_ARTWORK",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        },
+        {
+          "id": "[\"28 Days Later\",\"name:Mansion Soldier Lockdown\"]::ANIMATION_AND_VISUAL_REVIEW",
+          "code": "ANIMATION_AND_VISUAL_REVIEW",
+          "priority": "P2",
+          "status": "OPEN",
+          "artApproved": false,
+          "evidence": ""
+        }
+      ]
+    }
+  ]
+}

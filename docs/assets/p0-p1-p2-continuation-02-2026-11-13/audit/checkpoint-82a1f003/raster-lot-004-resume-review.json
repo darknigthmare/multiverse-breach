@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+      "sha256": "d3250f05145be152ef4ec6c6b24fa9ea3b753d1947f2d0757fdeee120d2ebf67"
+    },
+    "before": {
+      "path": "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-before.json",
+      "sha256": "766b634da39ace4d5f7485947bb3f4bf35e8be48a54808cef8e4ab9366528e6a"
+    },
+    "after": {
+      "path": "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-after.json",
+      "sha256": "ed6470cc5bcf6276a33d9840dbaf7d20a5d11300a2ff3d7d7106d5aa52b522a2"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json",
+      "sha256": "418dc021204ed249cdbaaa94cdb6adad81286b979c6cc2e4df8e47f3ee6bbf70"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Doom\",\"name:Imp Fireballer\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Imp Fireballer\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Imp Fireballer\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "addedSourceFindings": [
+    {
+      "actorKey": "[\"Doom\",\"name:Imp Fireballer\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Doom\",\"name:Mancubus Flame Tank\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    }
+  ],
+  "removedSourceFindingsByCode": {
+    "INCARNATION_UNSPECIFIED": 2,
+    "REFERENCE_MISSING": 2,
+    "VISUAL_CONTRACT_MISSING": 2
+  },
+  "addedSourceFindingsByCode": {
+    "REFERENCE_SCENE_REVIEW": 2
+  },
+  "unchangedPreparedRpgHeroes": 0,
+  "unchangedPreparedRpgHeroSlots": 0,
+  "changedPreparedRpgProfiles": [],
+  "selectedLegacySignatureChanges": [],
+  "preservedSelectedLegacySignatures": 9,
+  "rawEffectiveLabelDifferences": [],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false
+}

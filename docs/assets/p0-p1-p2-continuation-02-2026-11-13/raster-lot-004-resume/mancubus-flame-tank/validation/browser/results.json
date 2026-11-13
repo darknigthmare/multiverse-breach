@@ -1,0 +1,1091 @@
+[
+  {
+    "case": "before-1280",
+    "ok": true,
+    "mediaAvailabilityReproduction": true,
+    "mediaResponses": [
+      {
+        "status": 404,
+        "sha256": null
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": null
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": null
+      }
+    ],
+    "sequence": null,
+    "activeSignature": null,
+    "receivedHit": null,
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  },
+  {
+    "case": "after-1280",
+    "ok": true,
+    "mediaAvailabilityReproduction": false,
+    "mediaResponses": [
+      {
+        "status": 200,
+        "sha256": "27b5a70ba6075a58bb03848e22240ec95b1ea7e0f2a8733f88c50e92f93c0ad9"
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      }
+    ],
+    "sequence": {
+      "engineIdentity": {
+        "actorSame": true,
+        "foeSame": true,
+        "engineDisposed": null,
+        "realActor": {
+          "x": 603.1999999999999,
+          "y": 359,
+          "facing": -1,
+          "state": "idle"
+        },
+        "realFoe": {
+          "x": 415.85279999999995,
+          "y": 356.115,
+          "state": "hit"
+        }
+      },
+      "position": {
+        "actor": {
+          "x": 603.1999999999999,
+          "y": 359,
+          "facing": -1,
+          "state": "idle"
+        },
+        "foe": {
+          "x": 415.85279999999995,
+          "y": 356.115,
+          "state": "hit"
+        },
+        "profile": {
+          "delivery": "ranged",
+          "shape": "multi",
+          "range": 320,
+          "verticalRange": 42,
+          "maxTargets": 8,
+          "directional": true,
+          "knockback": 0
+        }
+      },
+      "charge": 0,
+      "contacts": [
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        }
+      ],
+      "before": 105,
+      "after": 81,
+      "definition": {
+        "name": "Mancubus Fireball Salvo",
+        "style": "barrage",
+        "range": 320,
+        "hits": 6
+      },
+      "actor": {
+        "name": "Mancubus Flame Tank",
+        "weapon": "flame_cannons",
+        "incarnation": "Doom II (1994) - classic Mancubus (FATT)"
+      },
+      "canvas": {
+        "x": 0,
+        "y": 60,
+        "width": 1280,
+        "height": 840,
+        "top": 60,
+        "right": 1280,
+        "bottom": 900,
+        "left": 0
+      }
+    },
+    "activeSignature": {
+      "snapshot": {
+        "serial": 1,
+        "actorName": "Mancubus Flame Tank",
+        "actorId": "p2:Doom:Mancubus Flame Tank:0",
+        "side": "enemy",
+        "universe": "Doom",
+        "name": "Mancubus Fireball Salvo",
+        "kind": "personal",
+        "tick": 35,
+        "hit": 0,
+        "hits": 6,
+        "duration": 118,
+        "phase": "reveal",
+        "summonAgent": null,
+        "summonCount": null,
+        "projectile": null,
+        "color": "#ffc179",
+        "icon": null,
+        "fidelity": "source-described-adaptation",
+        "style": "barrage",
+        "summonName": null,
+        "windupTicks": 30,
+        "revealTicks": 24
+      },
+      "actor": {
+        "x": 603.1999999999999,
+        "y": 359,
+        "facing": -1,
+        "state": "signature"
+      },
+      "foe": {
+        "x": 423.19999999999993,
+        "y": 359,
+        "state": "idle"
+      }
+    },
+    "receivedHit": {
+      "before": 150,
+      "after": 139,
+      "state": "hit",
+      "draw": {
+        "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+        "args": [
+          0,
+          768,
+          384,
+          256,
+          -51,
+          -61.625,
+          102,
+          68
+        ],
+        "naturalWidth": 1536,
+        "naturalHeight": 1024
+      }
+    },
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  },
+  {
+    "case": "after-390",
+    "ok": true,
+    "mediaAvailabilityReproduction": false,
+    "mediaResponses": [
+      {
+        "status": 200,
+        "sha256": "27b5a70ba6075a58bb03848e22240ec95b1ea7e0f2a8733f88c50e92f93c0ad9"
+      }
+    ],
+    "samples": [
+      {
+        "state": "idle",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "idle",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            0,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "run",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            256,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "attack",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            512,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 0,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            0,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 1,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            384,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 2,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            768,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      },
+      {
+        "state": "hit",
+        "col": 3,
+        "draw": {
+          "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+          "args": [
+            1152,
+            768,
+            384,
+            256,
+            -51,
+            -61.625,
+            102,
+            68
+          ],
+          "naturalWidth": 1536,
+          "naturalHeight": 1024
+        }
+      }
+    ],
+    "sequence": {
+      "engineIdentity": {
+        "actorSame": true,
+        "foeSame": true,
+        "engineDisposed": null,
+        "realActor": {
+          "x": 603.1999999999999,
+          "y": 359,
+          "facing": -1,
+          "state": "idle"
+        },
+        "realFoe": {
+          "x": 404.6746386034943,
+          "y": 348.99,
+          "state": "hit"
+        }
+      },
+      "position": {
+        "actor": {
+          "x": 603.1999999999999,
+          "y": 359,
+          "facing": -1,
+          "state": "idle"
+        },
+        "foe": {
+          "x": 404.6746386034943,
+          "y": 348.99,
+          "state": "hit"
+        },
+        "profile": {
+          "delivery": "ranged",
+          "shape": "multi",
+          "range": 320,
+          "verticalRange": 42,
+          "maxTargets": 8,
+          "directional": true,
+          "knockback": 0
+        }
+      },
+      "charge": 0,
+      "contacts": [
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        },
+        {
+          "defender": "Cloud Strife",
+          "base": 4.25
+        }
+      ],
+      "before": 105,
+      "after": 81,
+      "definition": {
+        "name": "Mancubus Fireball Salvo",
+        "style": "barrage",
+        "range": 320,
+        "hits": 6
+      },
+      "actor": {
+        "name": "Mancubus Flame Tank",
+        "weapon": "flame_cannons",
+        "incarnation": "Doom II (1994) - classic Mancubus (FATT)"
+      },
+      "canvas": {
+        "x": 0,
+        "y": 60,
+        "width": 390,
+        "height": 840,
+        "top": 60,
+        "right": 390,
+        "bottom": 900,
+        "left": 0
+      }
+    },
+    "activeSignature": {
+      "snapshot": {
+        "serial": 1,
+        "actorName": "Mancubus Flame Tank",
+        "actorId": "p2:Doom:Mancubus Flame Tank:0",
+        "side": "enemy",
+        "universe": "Doom",
+        "name": "Mancubus Fireball Salvo",
+        "kind": "personal",
+        "tick": 35,
+        "hit": 0,
+        "hits": 6,
+        "duration": 118,
+        "phase": "reveal",
+        "summonAgent": null,
+        "summonCount": null,
+        "projectile": null,
+        "color": "#ffc179",
+        "icon": null,
+        "fidelity": "source-described-adaptation",
+        "style": "barrage",
+        "summonName": null,
+        "windupTicks": 30,
+        "revealTicks": 24
+      },
+      "actor": {
+        "x": 603.1999999999999,
+        "y": 359,
+        "facing": -1,
+        "state": "signature"
+      },
+      "foe": {
+        "x": 423.19999999999993,
+        "y": 359,
+        "state": "idle"
+      }
+    },
+    "receivedHit": {
+      "before": 150,
+      "after": 138,
+      "state": "hit",
+      "draw": {
+        "src": "http://127.0.0.1:4198/sprites/generated/bosses/doom/mancubus-flame-tank.png",
+        "args": [
+          0,
+          768,
+          384,
+          256,
+          -51,
+          -61.625,
+          102,
+          68
+        ],
+        "naturalWidth": 1536,
+        "naturalHeight": 1024
+      }
+    },
+    "pageErrors": [],
+    "httpErrors": [
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/praetor-helm.png",
+        "status": 404
+      },
+      {
+        "path": "/sprites/generated/items/doom/doom-summon.png",
+        "status": 404
+      }
+    ],
+    "unrelatedMissingAssetsRetained": [
+      "/sprites/generated/items/doom/doom-summon.png",
+      "/sprites/generated/items/doom/praetor-helm.png"
+    ]
+  }
+]

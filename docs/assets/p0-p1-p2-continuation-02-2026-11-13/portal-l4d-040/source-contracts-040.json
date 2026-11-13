@@ -1,0 +1,3136 @@
+{
+  "schemaVersion": 1,
+  "revision": "portal-l4d-040-2026-11-13",
+  "baseCommit": "98991b161",
+  "artApproved": false,
+  "source1to1Verified": false,
+  "intentionalGameplayChanges": [
+    "glados_core",
+    "cave_johnson_echo"
+  ],
+  "intentionalInvocationCorrections": [
+    "cave_johnson",
+    "caroline_portal",
+    "glados_core",
+    "cave_johnson_echo"
+  ],
+  "catalogAlignmentExceptions": [
+    {
+      "actorId": "bill_l4d",
+      "slot": "secondary",
+      "reason": "Preserve the legacy invocation picker selection of Bill special for Zoey; generic raw label remains OPEN."
+    }
+  ],
+  "rawAlignedExistingKits": [
+    "chell",
+    "atlas",
+    "pbody",
+    "glados",
+    "wheatley",
+    "cave_johnson",
+    "caroline_portal",
+    "doug_rattmann",
+    "zoey_l4d",
+    "bill_l4d",
+    "ellis_l4d",
+    "coach_l4d",
+    "rochelle_l4d",
+    "nick_l4d"
+  ],
+  "actors": [
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "actorId": "chell",
+      "actorName": "Chell",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), adult Chell in the single-player test chambers",
+        "visualAnchor": "Portal 2 adult Chell: dark ponytail, white Aperture tank top, orange jumpsuit tied at the waist, long-fall boots and the white-and-black dual portal device. Retain her human proportions; no Portal 1 closed jumpsuit, firearms, turret backpack or neurotoxin emitter.",
+        "equipment": [
+          "Aperture dual portal device",
+          "Long Fall Boots"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-test-subject",
+          "sourceBody": "Adult human Chell, Portal 2 default test outfit",
+          "sourceGameplayBoundary": "The portal device places portals on compatible surfaces; it does not shoot damaging energy. Existing route/boot support abstractions are retained; no complete portal-physics claim.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "portalgun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Repérage de test de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.18
+          }
+        },
+        "secondary": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Appui des bottes de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Repérage de passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.38
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "actorId": "atlas",
+      "actorName": "Atlas",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), cooperative ATLAS test-robot chassis",
+        "visualAnchor": "Portal 2 ATLAS: short rounded spherical white shell, one blue optic, exposed dark joints, two arms and two legs, carrying the co-op portal device. Keep his compact body distinct from tall P-Body; no independent turret guns.",
+        "equipment": [
+          "ATLAS co-op portal device",
+          "White spherical robot shell",
+          "Blue optic"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "test-robot",
+          "sourceBody": "ATLAS cooperative robot, not a detached personality core",
+          "sourceGameplayBoundary": "Co-op portal placement, pings and joint test coordination are support adaptations; no damaging portal shot or turret deployment.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "portalgun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Signal de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Coordination du passage par ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Appui mécanique d’ATLAS",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "actorId": "pbody",
+      "actorName": "P-Body",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), cooperative P-Body test-robot chassis",
+        "visualAnchor": "Portal 2 P-Body: tall narrow oval white shell, orange optic, long slender articulated legs and arms with dark joints; co-op portal device held as test equipment. Do not substitute the short spherical ATLAS body.",
+        "equipment": [
+          "P-Body co-op portal device",
+          "Tall oval robot shell",
+          "Orange optic"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "test-robot",
+          "sourceBody": "P-Body cooperative robot",
+          "sourceGameplayBoundary": "Co-op route signaling and test coordination are support abstractions, not a damaging laser or an offensive hard-light bridge power.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "portalgun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Signal de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Coordination du passage par P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Appui mécanique de P-Body",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Coordination de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "actorId": "glados",
+      "actorName": "GLaDOS",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), GLaDOS in her central chamber chassis",
+        "visualAnchor": "Portal 2 GLaDOS central chassis: suspended white and black segmented mechanical assembly, a yellow optic and ceiling-connected cables and supports. No humanoid legs, portable flight, potato shell or Portal 1 personality-core cluster in this selected form.",
+        "equipment": [
+          "Ceiling-mounted central AI chassis",
+          "Yellow optic",
+          "Facility connection cables"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "central-ai-machine",
+          "sourceBody": "Stationary chamber-linked machine, distinct from the PotatOS prop",
+          "sourceGameplayBoundary": "The playable support slot relays instructions. Facility turrets and neurotoxin remain environmental systems, not portable equipment carried by GLaDOS.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Indication de test de GLaDOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Consigne de chambre de GLaDOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Maintien du châssis de GLaDOS",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Consigne de test de GLaDOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "actorId": "wheatley",
+      "actorName": "Wheatley",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Wheatley personality sphere before central-chassis transfer",
+        "visualAnchor": "Portal 2 Wheatley personality sphere: white spherical casing, single blue optic, black side handles and articulated eye mount. Use his core form held or attached to facility rails; no Wheatley central chassis, independent combat-drone wings or gun.",
+        "equipment": [
+          "Personality sphere casing",
+          "Blue optic",
+          "Side handles and rail attachment"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "personality-core",
+          "sourceBody": "Detached or rail-mounted spherical core, not a flying sentry",
+          "sourceGameplayBoundary": "Speech and warnings are zero-damage support. This form does not control the central-chassis bomb or turret systems.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Signal du noyau Wheatley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.18
+          }
+        },
+        "secondary": {
+          "name": "Repérage prudent de Wheatley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Retrait du noyau Wheatley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.4
+          },
+          "reduce": 0.4,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Avertissement de Wheatley",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.38
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "actorId": "cave_johnson",
+      "actorName": "Cave Johnson",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Cave Johnson in the old-Aperture 1950s office portrait; human archival identity",
+        "visualAnchor": "Cave Johnson in Portal 2 archival office material: adult human founder with dark hair and moustache in period business clothing. Keep an archival human presentation distinct from a personality sphere, robotic chassis or living present-day combatant; detailed portrait colors remain visually unverified.",
+        "equipment": [
+          "Archival Aperture portrait and recorded instructions"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "archival-human",
+          "sourceBody": "Human Cave Johnson selected from the old-Aperture 1950s office portrait; no present-day living body is claimed",
+          "sourceGameplayBoundary": "Recorded test instructions are support adaptations. Combustible lemons are a speech proposal, not a delivered handheld explosive weapon; no moon-rock shield or firearm.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Enregistrement de consigne de Cave",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Annoncer la procédure du laboratoire",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Retrait vers la zone de test sûre",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Consignes enregistrées d'Aperture",
+          "type": "buff",
+          "dmg": 0,
+          "color": "#f39c12",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.3,
+            "duration": 6
+          }
+        },
+        "sourceInvocationContract": {
+          "kind": "same-universe-reinforcement",
+          "performerHeroId": "chell",
+          "performerIncarnation": "Portal 2 (2011), adult Chell in the single-player test chambers",
+          "sourceSceneContext": "Portal 2 old-Aperture traversal: Chell hears the founder through archival test recordings and sees historical portraits. This Nexus support scene does not put living Cave Johnson beside Chell or give her a turret deployment.",
+          "canonicalSummon": false,
+          "sameCanonicalCombatSceneClaimed": false,
+          "source1to1Verified": false,
+          "visualFidelityApproved": false
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "actorId": "caroline_portal",
+      "actorName": "Caroline",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), human Caroline in the old-Aperture 1950s office portrait",
+        "visualAnchor": "Portal 2 human Caroline: adult human assistant with dark waved hair and period office clothing in the archival portrait. Do not replace her with a GLaDOS robotic shell, yellow mechanical optic or laser-wielding soldier; exact portrait coloring and facial resemblance remain pending visual review.",
+        "equipment": [
+          "Aperture administrative records"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "archival-human",
+          "sourceBody": "Human assistant, separate from the later GLaDOS machine form",
+          "sourceGameplayBoundary": "Office coordination is support. Recorded history does not give human Caroline an energy gun, neurotoxin emitter or a physical robot body.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Caroline vérifie le dossier du laboratoire",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Coordonner le prochain test",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Abri administratif d’Aperture",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Coordination administrative de Caroline",
+          "type": "guard",
+          "dmg": 0,
+          "color": "#e8d2a6",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 5
+          }
+        },
+        "sourceInvocationContract": {
+          "kind": "same-universe-reinforcement",
+          "performerHeroId": "chell",
+          "performerIncarnation": "Portal 2 (2011), adult Chell in the single-player test chambers",
+          "sourceSceneContext": "Portal 2 archival office material identifies human Caroline, separate from the later GLaDOS machine. Nexus cross-era coordination with adult Chell is an explicit adaptation, not a source scene in which the two humans fought together.",
+          "canonicalSummon": false,
+          "sameCanonicalCombatSceneClaimed": false,
+          "source1to1Verified": false,
+          "visualFidelityApproved": false
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "actorId": "doug_rattmann",
+      "actorName": "Doug Rattmann",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2: Lab Rat (2011), Doug Rattmann in the official bridge comic",
+        "visualAnchor": "Official Lab Rat Doug Rattmann: dishevelled human scientist with unkempt hair, beard and lab clothing, linked to hand-drawn wall murals, hidden routes and the Companion Cube. Preserve the comic human identity; the cube is a prop, not a new limb or a combat terminal.",
+        "equipment": [
+          "Companion Cube",
+          "Hand-drawn route murals"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/",
+          "https://www.thinkwithportals.com/comic/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-support",
+          "sourceBody": "Human Aperture scientist in the official Lab Rat comic",
+          "sourceGameplayBoundary": "Route clues and careful retreat are support abstractions; no hallucination attack, portal gun, administrative superpower or handheld terminal weapon.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/portal-lab-rat.html.gz",
+            "sha256": "b8bb36a5a311b7cd7af6bd580a6d6c6fc16fb351d3f496c43c04fdc9ec7bb292",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Repérage de Rattmann",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.18
+          }
+        },
+        "secondary": {
+          "name": "Lecture du passage de Rattmann",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Retrait discret de Rattmann",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.4
+          },
+          "reduce": 0.4,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Indication du passage de Rattmann",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.38
+          },
+          "meterCost": 100
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "actorId": "glados_core",
+      "actorName": "GLaDOS Potato Core",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Portal 2 (2011), GLaDOS carried as PotatOS after Wheatley transfers her to a potato battery",
+        "visualAnchor": "Portal 2 PotatOS: an irregular brown potato battery carrying GLaDOS electronics, a yellow optic, wires and clips. It is a small physical prop carried with the portal device, not a humanoid, full central chassis or armed hovering core.",
+        "equipment": [
+          "Potato battery",
+          "GLaDOS optic and attached electronics",
+          "Battery wires and clips"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "potato-battery-ai",
+          "sourceBody": "Potato-mounted AI prop with no limbs or portable weapon",
+          "sourceGameplayBoundary": "Voice and low-power battery readings can inform the team. PotatOS has no damaging zap, neurotoxin installation or central-facility rewrite attack.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "none",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Lecture de la batterie PotatOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.08
+          }
+        },
+        "secondary": {
+          "name": "Consigne de test de PotatOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.14
+          },
+          "cd": 6
+        },
+        "defense": {
+          "name": "Préserver la batterie PotatOS",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Indications vocales de PotatOS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100
+        },
+        "sourceInvocationContract": {
+          "kind": "same-universe-reinforcement",
+          "performerHeroId": "chell",
+          "performerIncarnation": "Portal 2 (2011), adult Chell in the single-player test chambers",
+          "sourceSceneContext": "Portal 2 after Wheatley puts GLaDOS on a potato battery: PotatOS accompanies and advises Chell, carried with her portal device. The support actor remains Chell; no potato laser, turret factory or neurotoxin system is carried into the scene.",
+          "canonicalSummon": false,
+          "sameCanonicalCombatSceneClaimed": false,
+          "source1to1Verified": false,
+          "visualFidelityApproved": false
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson_echo\"]",
+      "actorId": "cave_johnson_echo",
+      "actorName": "Cave Johnson Echo",
+      "universe": "Portal",
+      "kind": "hero",
+      "contract": {
+        "sourceRoleContract": {
+          "sourceWork": "Portal 2 (2011), archived Cave Johnson test instructions",
+          "entityKind": "recorded-audio",
+          "sourceBody": "No independent body or canon entity named Cave Johnson Echo is established. Preserve the legacy roster ID without designing a ghost or recording sphere.",
+          "sourceGameplayBoundary": "The source is recorded speech. Zero-damage team instructions are a gameplay adaptation; no thrown combustible lemons, moon-rock shield or living duplicate.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false,
+          "canonicalEntityStatus": "UNRESOLVED_LEGACY_ADAPTATION"
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "relatedSourceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "incarnation": "Portal 2 (2011), Cave Johnson 1980s old-Aperture audio recordings; legacy Echo alias has no independent canonical body",
+        "canonStatus": "legacy project adaptation; independent canonical actor body remains unresolved; no source identity or visual approval",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Diffuser une consigne enregistrée",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Rappeler la procédure Aperture",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Rappeler la zone de test sûre",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Instructions archivées de Cave Johnson",
+          "type": "buff",
+          "dmg": 0,
+          "color": "#f39c12",
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.3,
+            "duration": 6
+          }
+        },
+        "weaponType": "none",
+        "equipment": [
+          "Archived voice recordings; no independently embodied Echo"
+        ],
+        "sourceInvocationContract": {
+          "kind": "same-universe-reinforcement",
+          "performerHeroId": "chell",
+          "performerIncarnation": "Portal 2 (2011), adult Chell in the single-player test chambers",
+          "sourceSceneContext": "Portal 2 archived Cave Johnson instructions are played to Chell in old Aperture. An audio channel does not summon a ghost, a Recording Core body or real combustible lemons; adult Chell supplies the Nexus route-support action.",
+          "canonicalSummon": false,
+          "sameCanonicalCombatSceneClaimed": false,
+          "source1to1Verified": false,
+          "visualFidelityApproved": false
+        }
+      },
+      "openSourceIdentity": true
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Security Turret\"]",
+      "actorId": "",
+      "actorName": "Aperture Security Turret",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal (2007), standard Aperture floor sentry turret",
+        "visualAnchor": "Portal 2007 floor turret: white teardrop shell, black inner frame, one red optic, three narrow support legs and side-mounted gun assemblies. It is a grounded machine, not a humanoid carrying a rifle.",
+        "equipment": [
+          "Built-in sentry guns",
+          "Three-legged floor mount"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/400/Portal/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/400/Portal/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "turret-machine",
+          "sourceBody": "Standard floor-mounted sentry",
+          "sourceGameplayBoundary": "Enemy balance and mobility are adaptations; the source machine fires its own mounted guns.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal.html.gz",
+            "sha256": "bd3322e6f758c7a32c4f99735d427c05f387894c9beeaed295245e0b9844b3f6",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Defective Red Eye Turret\"]",
+      "actorId": "",
+      "actorName": "Defective Red Eye Turret",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal 2 (2011), defective turret from the turret manufacturing line",
+        "visualAnchor": "Portal 2 defective turret: exposed dark internal frame, red optic and incomplete or absent white outer shell, on narrow turret supports. Do not render an ordinary complete white sentry just because both have red eyes.",
+        "equipment": [
+          "Defective turret frame",
+          "Red optic"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "defective-turret-machine",
+          "sourceBody": "Rejected manufacturing-line turret",
+          "sourceGameplayBoundary": "Defective turrets are not healthy armed sentries. The retained legacy shoot profile is an open combat adaptation, not proof of working canonical guns.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Sentry Drone Sphere\"]",
+      "actorId": "",
+      "actorName": "Sentry Drone Sphere",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "sourceRoleContract": {
+          "sourceWork": "Portal 2 (2011), related Aperture personality-sphere technology",
+          "entityKind": "unresolved-adaptation",
+          "sourceBody": "No exact canonical flying combat entity named Sentry Drone Sphere is established.",
+          "sourceGameplayBoundary": "A personality sphere is not evidence for a sentry drone, wings, tackle attack or turret equipment. Identity, body and gameplay remain unresolved.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false,
+          "canonicalEntityStatus": "UNRESOLVED_LEGACY_ADAPTATION"
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "relatedSourceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "canonStatus": "legacy project adaptation; independent canonical actor body remains unresolved; no source identity or visual approval",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": true
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Frankenturret Cube\"]",
+      "actorId": "",
+      "actorName": "Frankenturret Cube",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Wheatley turret-and-weighted-cube hybrid",
+        "visualAnchor": "Portal 2 Frankenturret: a weighted cube combined with visibly awkward turret components and thin mechanical legs. Preserve the cube-and-turret construction rather than inventing a humanoid robot; detailed assembly and lens positions require the pending model review.",
+        "equipment": [
+          "Weighted cube assembly",
+          "Attached turret parts"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "hybrid-test-prop",
+          "sourceBody": "Turret-cube hybrid created during Wheatley testing",
+          "sourceGameplayBoundary": "Shuffling or hopping is an adaptation of the unstable hybrid. It is not a standard sentry, a Companion Cube face or a source-approved crush finisher.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Mount\"]",
+      "actorId": "",
+      "actorName": "Rocket Turret Mount",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal (2007), fixed rocket sentry in Aperture test and central-AI chambers",
+        "visualAnchor": "Portal 2007 rocket turret: fixed industrial launcher head, dark mechanical mounting and tracking optic, attached to facility structure. Keep it distinct from the three-legged bullet sentry.",
+        "equipment": [
+          "Facility-mounted rocket launcher",
+          "Tracking optic"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/400/Portal/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/400/Portal/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "rocket-turret-machine",
+          "sourceBody": "Fixed rocket launcher mechanism",
+          "sourceGameplayBoundary": "Tracks targets and launches rockets in Portal 2007. Movement, health and attack timing in this roster are balance adaptations.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal.html.gz",
+            "sha256": "bd3322e6f758c7a32c4f99735d427c05f387894c9beeaed295245e0b9844b3f6",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Excursion Funnel Hazard\"]",
+      "actorId": "",
+      "actorName": "Excursion Funnel Hazard",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Excursion Funnel transport volume",
+        "visualAnchor": "Portal 2 Excursion Funnel: a projected blue transport funnel emitted from an installed circular apparatus; reversing changes its flow and presentation. Render the beam and its fixture as environment, with no face, arms, legs or separate creature body.",
+        "equipment": [
+          "Installed funnel emitter"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "environmental-system",
+          "sourceBody": "Transport volume and environmental emitter, not a combat creature",
+          "sourceGameplayBoundary": "Funnel force transports objects and players; it is not innate damaging energy. The legacy tractor_beam combat mapping and mobile HP-bearing representation remain OPEN adaptations.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Prototype\"]",
+      "actorId": "",
+      "actorName": "Rocket Turret Prototype",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal (2007), rocket-turret mechanism; Prototype is the legacy encounter label",
+        "visualAnchor": "Portal 2007 fixed rocket turret apparatus, with mechanical mount, launcher and tracking optic. The legacy Prototype suffix does not establish an extra canonical model or a different armed robot body.",
+        "equipment": [
+          "Fixed rocket launcher apparatus"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/400/Portal/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/400/Portal/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "rocket-turret-machine",
+          "sourceBody": "Same source mechanism as the Portal 2007 rocket turret, with an unverified project encounter suffix",
+          "sourceGameplayBoundary": "The suffix is a project encounter label, not an additional source prototype, new ammunition type or extra power.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal.html.gz",
+            "sha256": "bd3322e6f758c7a32c4f99735d427c05f387894c9beeaed295245e0b9844b3f6",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Gel Pump Hazard\"]",
+      "actorId": "",
+      "actorName": "Gel Pump Hazard",
+      "universe": "Portal",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Portal 2 (2011), installed gel distribution apparatus in old Aperture tests",
+        "visualAnchor": "Portal 2 environmental gel apparatus: installed industrial pipes, outlets and colored test-gel splashes on chamber surfaces. There is no gel-pump humanoid, independent face or hand-held gel cannon.",
+        "equipment": [
+          "Installed pipes and gel outlet"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "environmental-system",
+          "sourceBody": "Gel distribution machinery and coated surfaces",
+          "sourceGameplayBoundary": "Repulsion, propulsion and conversion gels alter surface behavior. A generic damaging gel attack and mobile creature body are legacy gameplay adaptations requiring review.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Wheatley Central AI\"]",
+      "actorId": "",
+      "actorName": "Wheatley Central AI",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Wheatley after transfer into the central AI chassis",
+        "visualAnchor": "Portal 2 central Wheatley: the large suspended white-and-black central machine assembly now carrying his blue optic. It is distinct from the small rail-mounted personality sphere and does not gain a human body.",
+        "equipment": [
+          "Central AI chassis",
+          "Blue optic",
+          "Facility-linked bomb and turret apparatus"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "central-ai-machine",
+          "sourceBody": "Wheatley attached to the central-chamber machine",
+          "sourceGameplayBoundary": "Bomb and turret encounters depend on the facility. The legacy Portal Loop Crush title is an encounter adaptation, not a portable portal superpower.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Neurotoxin Vent System\"]",
+      "actorId": "",
+      "actorName": "Neurotoxin Vent System",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Portal (2007), central AI chamber neurotoxin ventilation hazard",
+        "visualAnchor": "Portal 2007 chamber hazard: installed air ducts, ventilation grilles and facility-connected machinery. Represent an environmental system and timer, not a separate green monster or humanoid boss.",
+        "equipment": [
+          "Chamber ventilation ducts"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/400/Portal/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/400/Portal/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "environmental-system",
+          "sourceBody": "Built-in chamber ventilation",
+          "sourceGameplayBoundary": "A source chamber hazard, never a biological enemy body or a handheld poison device. Legacy boss HP and mobile combat behavior remain unverified adaptations.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal.html.gz",
+            "sha256": "bd3322e6f758c7a32c4f99735d427c05f387894c9beeaed295245e0b9844b3f6",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Fact Core Logic Snare\"]",
+      "actorId": "",
+      "actorName": "Fact Core Logic Snare",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Fact Core attached during the final corrupted-core sequence",
+        "visualAnchor": "Portal 2 Fact Core: small white spherical personality-core casing with its distinct colored optic and handles. It speaks incorrect facts; no humanoid body, independent combat drone or physical logic-snare apparatus is established.",
+        "equipment": [
+          "Personality-core casing",
+          "Optic and mounting handles"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "dialogue-core",
+          "sourceBody": "Speaking personality sphere in the corrupted-core sequence",
+          "sourceGameplayBoundary": "False facts are dialogue. Logic Snare and Contradiction Cascade are project encounter labels, not canon damaging fact beams or control powers.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Space Core Vacuum Loop\"]",
+      "actorId": "",
+      "actorName": "Space Core Vacuum Loop",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Portal 2 (2011), Space Core in the final corrupted-core sequence",
+        "visualAnchor": "Portal 2 Space Core: small white spherical personality-core shell, optic and handles, with excited dialogue about space. Keep the detached core body; no wings, vacuum generator or gravitational limbs.",
+        "equipment": [
+          "Personality-core casing",
+          "Mounting handles"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/620/Portal_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "dialogue-core",
+          "sourceBody": "Speaking personality sphere",
+          "sourceGameplayBoundary": "Its dialogue and the ending do not establish an innate vacuum, orbit-loop or gravity-pull attack. The legacy offensive slot remains an open adaptation.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Cave Johnson Recording Core\"]",
+      "actorId": "",
+      "actorName": "Cave Johnson Recording Core",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "sourceRoleContract": {
+          "sourceWork": "Portal 2 (2011), archived Cave Johnson test recordings",
+          "entityKind": "recorded-audio",
+          "sourceBody": "Aperture recordings are speech delivered by facility audio. No independent canonical Recording Core body is established.",
+          "sourceGameplayBoundary": "Combustible lemon dialogue is not a real delivered explosive weapon, and the existing narrative-hazard policy must not certify a boss body.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false,
+          "canonicalEntityStatus": "UNRESOLVED_LEGACY_ADAPTATION"
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "relatedSourceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "canonStatus": "legacy project adaptation; independent canonical actor body remains unresolved; no source identity or visual approval",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": true
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Cooperative Test Core\"]",
+      "actorId": "",
+      "actorName": "Aperture Cooperative Test Core",
+      "universe": "Portal",
+      "kind": "boss",
+      "contract": {
+        "sourceRoleContract": {
+          "sourceWork": "Portal 2 (2011), Aperture cooperative testing program",
+          "entityKind": "unresolved-adaptation",
+          "sourceBody": "The co-op program and GLaDOS supervisor are established; a distinct entity called Aperture Cooperative Test Core is not.",
+          "sourceGameplayBoundary": "Do not manufacture an extra personality sphere, humanoid supervisor or autonomous Infinite Test Chamber power for this legacy encounter alias.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false,
+          "canonicalEntityStatus": "UNRESOLVED_LEGACY_ADAPTATION"
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal2.html.gz",
+            "sha256": "7aef5201336463072da2f6ed16a6f9d2ed393d66447731ea422fb4d7913dabc8",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal2.html.gz",
+            "sha256": "d6d0b0e92ca8dc7bb86ceb26da8c186da4f13242152d856aceed1bf9eaba6461",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "relatedSourceUrls": [
+          "https://store.steampowered.com/app/620/Portal_2/"
+        ],
+        "canonStatus": "legacy project adaptation; independent canonical actor body remains unresolved; no source identity or visual approval",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": true
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:GLaDOS Central Core\"]",
+      "actorId": "",
+      "actorName": "GLaDOS Central Core",
+      "universe": "Portal",
+      "kind": "worldBoss",
+      "contract": {
+        "incarnation": "Portal (2007), GLaDOS in the central AI chamber before core detachment",
+        "visualAnchor": "Portal 2007 GLaDOS: ceiling-suspended white and black central machinery, yellow optic, facility cables and detachable personality cores. Keep this machine form distinct from Portal 2 central GLaDOS, Wheatley and the potato battery.",
+        "equipment": [
+          "Suspended central AI chassis",
+          "Detachable personality cores",
+          "Facility-linked rocket and ventilation systems"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/400/Portal/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/400/Portal/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "central-ai-machine",
+          "sourceBody": "Portal 2007 chamber-linked central AI machine",
+          "sourceGameplayBoundary": "Rocket redirection, core removal and the neurotoxin timer are chamber interactions. This is not a humanoid carrying a rocket launcher.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-portal.html.gz",
+            "sha256": "bd3322e6f758c7a32c4f99735d427c05f387894c9beeaed295245e0b9844b3f6",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-portal-characters.html.gz",
+            "sha256": "5aa65b7b53913a525e5e2a7d5ba0d1c9dada525aa0c0fcb64422c672b8752d6e",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "actorId": "zoey_l4d",
+      "actorName": "Zoey",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), Zoey in the original survivor outfit",
+        "visualAnchor": "Left 4 Dead 2008 Zoey: young adult human with dark ponytail, red zip-up jacket over a light shirt, dark jeans and trainers. Retain the original survivor outfit and physical firearm, not a sword, infected form or a later crossover costume.",
+        "equipment": [
+          "Standard survivor pistol",
+          "Hunting Rifle",
+          "Original red survivor jacket"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead Zoey",
+          "sourceGameplayBoundary": "The firearm loadout is a selectable equipment configuration available to survivors, not a Zoey-exclusive power or a guarantee that every weapon is carried at once.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Pistolet de Zoey",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Visée au fusil de chasse de Zoey",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Couvert du groupe de survivants",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Tir de précision de Zoey",
+          "type": "bullet",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 720
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "actorId": "bill_l4d",
+      "actorName": "Bill",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), Bill in his original Vietnam-veteran survivor outfit",
+        "visualAnchor": "Left 4 Dead 2008 Bill: older white human man, grey beard, green military beret, olive fatigue jacket and military trousers, with worn survivor gear. Keep him alive in the selected base-game survivor period, not a post-Sacrifice corpse or supernatural veteran.",
+        "equipment": [
+          "Assault Rifle",
+          "Original military beret and fatigues"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead Bill",
+          "sourceGameplayBoundary": "Rifle cover and group protection are co-op adaptations. No innate supernatural shield, air strike or automatic post-death revival is granted.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Rafale de vétéran de Bill",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "name": "Bill Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Couvert de Bill derrière la barricade",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.5
+          },
+          "reduce": 0.5,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "actorId": "ellis_l4d",
+      "actorName": "Ellis",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead 2 (2009), Ellis in the original mechanic survivor outfit",
+        "visualAnchor": "Left 4 Dead 2 Ellis: young adult white human mechanic, dark hair under a baseball cap, yellow work T-shirt and blue jeans. He is a human survivor with ordinary equipment, not a summoned repair robot or a Left 4 Dead 2008 cast member.",
+        "equipment": [
+          "Ordinary survivor firearm",
+          "Mechanic cap and work clothes"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead 2 Ellis",
+          "sourceGameplayBoundary": "Vehicle checks and team coordination are role-based support adaptations. He has no automatic battlefield repair spell or weapon unique to his biography.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d2.html.gz",
+            "sha256": "334443e8eea60e5de73bb372bee23a43f9391ec614f2288ea70544cc11f6ccdc",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d2.html.gz",
+            "sha256": "0e143ae78cd673d3dfc9220dea247341c9eb0191e9f9c755bae1c9ffd145eb2b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Tir de survie d’Ellis",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Vérifier le véhicule avec Ellis",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Abri du mécanicien survivant",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Remise en route par Ellis",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "actorId": "coach_l4d",
+      "actorName": "Coach",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead 2 (2009), Coach in the original school-coach survivor outfit",
+        "visualAnchor": "Left 4 Dead 2 Coach: broad stocky Black human man with a bald head, two-tone purple-and-yellow school-coach shirt, dark trousers and sturdy shoes. Preserve his human proportions and civilian sporting outfit, without military armor or a transformed Tank body.",
+        "equipment": [
+          "Ordinary survivor firearm",
+          "School-coach polo shirt"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead 2 Coach",
+          "sourceGameplayBoundary": "Spoken group coordination is support, not an innate morale aura or shield. The firearm is a survivor equipment choice.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d2.html.gz",
+            "sha256": "334443e8eea60e5de73bb372bee23a43f9391ec614f2288ea70544cc11f6ccdc",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d2.html.gz",
+            "sha256": "0e143ae78cd673d3dfc9220dea247341c9eb0191e9f9c755bae1c9ffd145eb2b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Tir du survivant Coach",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Donner la prochaine consigne au groupe",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Tenir un angle de couvert avec Coach",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "actorId": "rochelle_l4d",
+      "actorName": "Rochelle",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead 2 (2009), Rochelle in the original reporter survivor outfit",
+        "visualAnchor": "Left 4 Dead 2 Rochelle: adult Black human woman with tied-back dark hair, pink Depeche Mode T-shirt and dark trousers. Keep the base-game human reporter presentation, ordinary pistol and civilian clothes, with no laser or infected anatomy.",
+        "equipment": [
+          "Standard survivor pistol",
+          "Original pink reporter T-shirt"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead 2 Rochelle",
+          "sourceGameplayBoundary": "Route spotting and extraction guidance are support adaptations, not psychic scanning or a damaging energy weapon.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d2.html.gz",
+            "sha256": "334443e8eea60e5de73bb372bee23a43f9391ec614f2288ea70544cc11f6ccdc",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d2.html.gz",
+            "sha256": "0e143ae78cd673d3dfc9220dea247341c9eb0191e9f9c755bae1c9ffd145eb2b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Pistolet de Rochelle",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Repérer le prochain point d’extraction",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 3,
+            "buffMultiplier": 1.12
+          }
+        },
+        "defense": {
+          "name": "Se couvrir avant de traverser",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Repérage du trajet d’extraction",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "actorId": "nick_l4d",
+      "actorName": "Nick",
+      "universe": "Left 4 Dead",
+      "kind": "hero",
+      "contract": {
+        "incarnation": "Left 4 Dead 2 (2009), Nick in the original gambler survivor outfit",
+        "visualAnchor": "Left 4 Dead 2 Nick: adult white human man with short dark hair, white suit jacket and trousers over a blue open-neck shirt. Maintain the worn gambler survivor appearance and ordinary pistols; no military uniform or unique supernatural gun ability.",
+        "equipment": [
+          "Standard survivor pistols",
+          "Original white suit"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "human-survivor",
+          "sourceBody": "Original Left 4 Dead 2 Nick",
+          "sourceGameplayBoundary": "One or two pistols are ordinary selectable survivor equipment. Double-pistol attacks are adaptations of that loadout, not a character-exclusive source power.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d2.html.gz",
+            "sha256": "334443e8eea60e5de73bb372bee23a43f9391ec614f2288ea70544cc11f6ccdc",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d2.html.gz",
+            "sha256": "0e143ae78cd673d3dfc9220dea247341c9eb0191e9f9c755bae1c9ffd145eb2b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "weaponType": "gun",
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13",
+        "simple": {
+          "name": "Premier pistolet de Nick",
+          "type": "projectile",
+          "dmg": 1.2,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "secondary": {
+          "cd": 6,
+          "name": "Deux pistolets du survivant Nick",
+          "type": "projectile",
+          "dmg": 1.8,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "projectile",
+            "shape": "single",
+            "range": 480,
+            "targetSide": "enemy"
+          }
+        },
+        "defense": {
+          "name": "Retrait derrière les caisses avec Nick",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "single",
+            "range": 1,
+            "targetSide": "self",
+            "duration": 1.2,
+            "reduce": 0.45
+          },
+          "reduce": 0.45,
+          "dur": 1.2
+        },
+        "special": {
+          "name": "Double pistolet de Nick",
+          "type": "bullet",
+          "dmg": 4.5,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "damage",
+            "targetSide": "enemy",
+            "shape": "single",
+            "delivery": "projectile",
+            "range": 720
+          },
+          "color": "#b8d393"
+        }
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Common Infected\"]",
+      "actorId": "",
+      "actorName": "Common Infected",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), ordinary common infected civilian",
+        "visualAnchor": "Left 4 Dead 2008 common infected civilian: an aggressive human with disordered movement and damaged everyday clothing. This is an ordinary common-infected population target, not a uniform single named model, armored riot infected or a special-infected mutation.",
+        "equipment": [
+          "Civilian clothing remnants"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "common-infected",
+          "sourceBody": "Population of infected civilian humans; exact clothing model unresolved",
+          "sourceGameplayBoundary": "A population contract cannot certify one invented universal face, outfit or handed weapon. A concrete source-model and scene selection remains OPEN.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Smoker\"]",
+      "actorId": "",
+      "actorName": "Smoker",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original Smoker special-infected model",
+        "visualAnchor": "Left 4 Dead 2008 Smoker: tall distorted human infected, large neck and facial growths, long prehensile tongue and torn civilian clothing. Preserve the original special-infected body; no conventional weapon or invented snake companion.",
+        "equipment": [
+          "Prehensile tongue"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected",
+          "sourceBody": "Original Smoker infected human",
+          "sourceGameplayBoundary": "Tongue restraint and dragging are source attack families. Timing, range and ordinary legacy claw fallback are game adaptations requiring review.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter\"]",
+      "actorId": "",
+      "actorName": "Hunter",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original Hunter special-infected model",
+        "visualAnchor": "Left 4 Dead 2008 Hunter: crouched hooded human infected in a dark hooded sweatshirt and trousers, low predatory posture, bare hands and feet. Keep the human hooded body and long-distance pounce, not an animal, firearm user or armored soldier.",
+        "equipment": [
+          "Hooded sweatshirt",
+          "Clawed hands"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected",
+          "sourceBody": "Original Hunter infected human",
+          "sourceGameplayBoundary": "Pouncing and pinning are source attack families; generic fallback claw balance is an adaptation, not proof of complete pin-and-rescue rules.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Boomer Bile Host\"]",
+      "actorId": "",
+      "actorName": "Boomer Bile Host",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), male Boomer special-infected model",
+        "visualAnchor": "Original male Left 4 Dead Boomer: extremely swollen torso and belly, bloated human head, damaged civilian shirt and trousers, fluid-soiled body and short unstable posture. No female Boomette model or separate symbiotic host creature is selected.",
+        "equipment": [
+          "Bile-producing infected body"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected",
+          "sourceBody": "Male Boomer; Bile Host is a legacy encounter alias",
+          "sourceGameplayBoundary": "Vomiting bile and the death explosion attract infected. They are not a fabricated poison rifle or a new host species.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter Pounce\"]",
+      "actorId": "",
+      "actorName": "Hunter Pounce",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original Hunter during its pounce state",
+        "visualAnchor": "Original Left 4 Dead hooded Hunter body during a crouch, leap or pinned attack, with dark sweatshirt and trousers and exposed hands and feet. Pounce names an action state, not another infected species or a different outfit.",
+        "equipment": [
+          "Hunter hooded clothing",
+          "Clawed hands"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected-state",
+          "sourceBody": "Same source Hunter identity, selected pounce state",
+          "sourceGameplayBoundary": "Keep the existing roster key and balance variant, but do not create a separate source character or an invented leap weapon.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Spitter Acid Pool\"]",
+      "actorId": "",
+      "actorName": "Spitter Acid Pool",
+      "universe": "Left 4 Dead",
+      "kind": "enemy",
+      "contract": {
+        "incarnation": "Left 4 Dead 2 (2009), acid pool left by the Spitter special infected",
+        "visualAnchor": "Left 4 Dead 2 Spitter acid pool: a spreading, bubbling green acidic patch on the ground. The selected source is the pool hazard, with no independent humanoid torso, face, arms, legs or hand-held acid gun.",
+        "equipment": [
+          "Ground-bound acid pool"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "environmental-hazard",
+          "sourceBody": "Environmental acid patch caused by a Spitter; not the Spitter body",
+          "sourceGameplayBoundary": "The name selects a pool, not a separate infected creature. Legacy movement speed and acid_spit actor mapping remain OPEN adaptations; this contract does not certify a walking pool.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d2.html.gz",
+            "sha256": "334443e8eea60e5de73bb372bee23a43f9391ec614f2288ea70544cc11f6ccdc",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d2.html.gz",
+            "sha256": "0e143ae78cd673d3dfc9220dea247341c9eb0191e9f9c755bae1c9ffd145eb2b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch\"]",
+      "actorId": "",
+      "actorName": "Witch",
+      "universe": "Left 4 Dead",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original seated Witch before being startled",
+        "visualAnchor": "Original Left 4 Dead Witch: hunched human infected with long unkempt hair, pale damaged skin, very long claw-like fingernails, bare feet and torn civilian clothing, seated and crying before provocation. Not a bride, a daytime wandering sequel variant or a spell-casting witch.",
+        "equipment": [
+          "Elongated fingernails"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected",
+          "sourceBody": "Original seated and crying Witch",
+          "sourceGameplayBoundary": "Startling triggers pursuit and claw attacks. Witch is an infected human title, not evidence for sorcery or a ranged scream projectile.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch Crying Corner\"]",
+      "actorId": "",
+      "actorName": "Witch Crying Corner",
+      "universe": "Left 4 Dead",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original Witch seated in a dark corner",
+        "visualAnchor": "Same original Left 4 Dead Witch body in its seated crying posture, long unkempt hair, elongated nails, bare feet and torn civilian clothes. The corner is encounter placement, not a new Witch species, costume or bride model.",
+        "equipment": [
+          "Elongated fingernails"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected-state",
+          "sourceBody": "Original Witch, seated crying encounter state",
+          "sourceGameplayBoundary": "Crying is an alert cue; Startled Scream is an encounter label, not a damaging magical sonic ability.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Tank Horde Breaker\"]",
+      "actorId": "",
+      "actorName": "Tank Horde Breaker",
+      "universe": "Left 4 Dead",
+      "kind": "boss",
+      "contract": {
+        "incarnation": "Left 4 Dead (2008), original Tank in a horde or rescue encounter",
+        "visualAnchor": "Original Left 4 Dead Tank: massively overgrown bare upper body, enormous arms, small human head and torn trousers, with a forward heavy posture. Retain the original infected body without armor, artificial gauntlets or a second Witch body fused to it.",
+        "equipment": [
+          "Thrown environmental rubble",
+          "Massive infected hands"
+        ],
+        "referenceUrl": "https://store.steampowered.com/app/500/Left_4_Dead/",
+        "referenceUrls": [
+          "https://store.steampowered.com/app/500/Left_4_Dead/"
+        ],
+        "sourceRoleContract": {
+          "entityKind": "special-infected",
+          "sourceBody": "Original Tank infected human; Horde Breaker is an encounter alias",
+          "sourceGameplayBoundary": "Punching, throwing rubble and striking movable props are source attack families. Safe Room Breach is a project encounter label and does not guarantee destruction of every locked safe-room door.",
+          "sourceSceneReview": "OPEN",
+          "sourceBodyVisualReview": "OPEN",
+          "source1to1Verified": false
+        },
+        "sourceReferenceEvidence": [
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/steam-l4d.html.gz",
+            "sha256": "331d946e007f4527263f7bac5178dceb9da0e42988ed7f76392d578802c2995b",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          },
+          {
+            "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-pages/wiki-l4d.html.gz",
+            "sha256": "ba9941b3e4ed6af1cbb2fcf0554df488d78d66aee87b1e8a926191c176e529b5",
+            "scope": "edition-and-role text only; images and exact scene geometry not reviewed",
+            "imageInspected": false
+          }
+        ],
+        "canonStatus": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending",
+        "visualReviewStatus": "pending",
+        "source1to1Verified": false,
+        "artApproved": false,
+        "sourceContractRevision": "portal-l4d-040-2026-11-13"
+      },
+      "openSourceIdentity": false
+    }
+  ]
+}

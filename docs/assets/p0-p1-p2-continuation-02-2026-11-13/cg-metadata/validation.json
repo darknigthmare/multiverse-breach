@@ -1,0 +1,103 @@
+{
+  "scope": "Real metadata producer and complete historical validator, not historical CG-media revalidation or new artwork approval",
+  "tests": {
+    "passed": 77,
+    "failed": 0,
+    "skipped": 0,
+    "topLevel": 8
+  },
+  "cliExitCode": 0,
+  "validationScope": "metadata-only",
+  "physicalMediaChecked": false,
+  "sourceCommit": "5baaae27bf23b845a5056eeab3c95fbe7b0d234e",
+  "sourceFilesUnchangedSinceCapture": true,
+  "files": [
+    {
+      "path": "scripts/cgContinuation02MetadataAmendment.mjs",
+      "bytes": 14292,
+      "sha256": "8791398dadacfca895b2b3cfc6dd50932ac4261ca06b6393d69ef5ca0e0a2549"
+    },
+    {
+      "path": "scripts/cgContinuation02MetadataAmendment.test.mjs",
+      "bytes": 10896,
+      "sha256": "7183c0900f90273b6f0b111e17ccb33ea2d2850d3949983fe5841956237ad46d"
+    },
+    {
+      "path": "scripts/cgRosterPlanSnapshot.mjs",
+      "bytes": 43477,
+      "sha256": "d910d141b1044b6f9cc18a50607cbe782f0e0c9699fb6aa597bd5bf9022fd351"
+    },
+    {
+      "path": "scripts/fixtures/cg-continuation02-metadata-amendment-2026-11-13.json",
+      "bytes": 170198,
+      "sha256": "77a0bb8e02a1d24b5d2c38dadba6401cc9b11740a29b169c2dde844399b864f9"
+    },
+    {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "bytes": 36982763,
+      "sha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e"
+    },
+    {
+      "path": "docs/cg/roster-production-2026-10-18.md",
+      "bytes": 6700,
+      "sha256": "7f41a72e423643f671f9443b94ae50a20445a4522b95bdbd343f8e3651dbf0f4"
+    },
+    {
+      "path": "scripts/fixtures/cg-local-candidates-amendment-2026-11-09.json",
+      "bytes": 1176933,
+      "sha256": "8777754e2c113b71661902e21529ec217440f9c15ac5f34467397441a34bd2a3"
+    },
+    {
+      "path": "scripts/fixtures/cg-current-descriptors-amendment-2026-11-09.json",
+      "bytes": 362317,
+      "sha256": "71891cbf57f7f6a580993301db9ee4ba9efc7ca0dd1e7b3d875e9975f31a2ce0"
+    },
+    {
+      "path": "scripts/fixtures/cg-source-metadata-amendment-2026-11-13.json",
+      "bytes": 201351,
+      "sha256": "eba38c68b819869fc4cc31fd8b430c8562c9cc763fdc1c76a2ed632e30fbb0b4"
+    },
+    {
+      "path": "scripts/fixtures/cg-source64-amendment-2026-11-13.json",
+      "bytes": 380108,
+      "sha256": "89383d483fb61e456156b2bd9e0ebf8c6082bd83bc0b327bb94d494f45209b42"
+    },
+    {
+      "path": "scripts/fixtures/cg-reviewed-availability-amendment-2026-11-13.json",
+      "bytes": 172349,
+      "sha256": "65fd79dc231ab247c15fc788b50e4edf7645bfff61cdb60610761aec6196699f"
+    },
+    {
+      "path": "scripts/fixtures/cg-reviewed-runtime-correction-amendment-2026-11-13.json",
+      "bytes": 1331,
+      "sha256": "a535fe7b0420deef9f9b096926789d84157f4948593e9bff98d50b0193d72c3c"
+    }
+  ],
+  "freeBytes": 74477568,
+  "independentReview": {
+    "reviewer": "p1_metadata_lot",
+    "mode": "read-only code review, no execution or pixel inspection",
+    "blockingFindings": 0
+  },
+  "bible": {
+    "regeneratedOnly": true,
+    "checkExitCode": 0,
+    "pilotTests": {
+      "passed": 2,
+      "failed": 0
+    },
+    "probeActors": [
+      "batman_tdk",
+      "hammond_ds",
+      "zach_hammond",
+      "glados_core"
+    ],
+    "currentFile": {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "bytes": 42680470,
+      "sha256": "8acbf883127f01df3932364bf94de0ad592a4c58b67f1e29482909442b295e3d"
+    },
+    "newArtApprovals": 0,
+    "historicalPlanAndSixFixturesUnchanged": true
+  }
+}

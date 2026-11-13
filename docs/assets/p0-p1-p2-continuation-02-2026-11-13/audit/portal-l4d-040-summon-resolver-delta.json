@@ -1,0 +1,3561 @@
+{
+  "scope": "Compact resolver projection diff.16objects changed;4have changed top-level action/render contracts. Other12only differ in projected performer/provenance objects. Actual engine execution read separately; no new canonical invocation approval.",
+  "resolverObjectsChanged": 16,
+  "actionRenderContractsChanged": 4,
+  "performerIdentityAndStatsAllPreserved": true,
+  "changes": [
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "chell:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "chell:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "atlas:reinforcement:pbody:special",
+        "name": "P-Body — Coordination de test de P-Body",
+        "kind": "reinforcement",
+        "entityName": "P-Body",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "pbody",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "pbody",
+        "sourceAbility": {
+          "name": "Coordination de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "pbody"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "atlas:reinforcement:pbody:special",
+        "name": "P-Body — Coordination de test de P-Body",
+        "kind": "reinforcement",
+        "entityName": "P-Body",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "pbody",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "pbody",
+        "sourceAbility": {
+          "name": "Coordination de test de P-Body",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "pbody"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "pbody",
+        "universe": "Portal",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "pbody",
+        "universe": "Portal",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "pbody:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "pbody:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "glados:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "glados:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "wheatley:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "wheatley:reinforcement:atlas:special",
+        "name": "Atlas — Coordination de test d’ATLAS",
+        "kind": "reinforcement",
+        "entityName": "Atlas",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "atlas",
+        "sourceAbility": {
+          "name": "Coordination de test d’ATLAS",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "buffMultiplier": 1.25
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "atlas"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "atlas",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 11,
+          "def": 7,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "changedTopLevelFields": [
+        "action",
+        "entityName",
+        "entityRender",
+        "id",
+        "name",
+        "performer",
+        "performerRole",
+        "provenance",
+        "sourceAbility",
+        "visualStyle"
+      ],
+      "beforeContract": {
+        "id": "cave_johnson:summon:chell:secondary",
+        "name": "Turret Summon",
+        "kind": "reinforcement",
+        "entityName": "Turret Summon",
+        "performerRole": "caller",
+        "action": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "rpgProfile": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": {
+          "kind": "sprite-sheet",
+          "entityName": "Turret Summon",
+          "assetMissing": false,
+          "asset": {
+            "id": "portal-turret",
+            "key": "Portal::Turret Summon::Turret Summon",
+            "universe": "Portal",
+            "entityName": "Turret Summon",
+            "actionName": "Turret Summon",
+            "sourceHeroId": "chell",
+            "callers": [
+              "chell",
+              "atlas",
+              "pbody",
+              "glados",
+              "wheatley",
+              "cave_johnson",
+              "caroline_portal",
+              "doug_rattmann",
+              "glados_core",
+              "cave_johnson_echo"
+            ],
+            "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+            "frames": 4,
+            "columns": 4,
+            "rows": 1,
+            "frameWidth": 256,
+            "frameHeight": 256,
+            "width": 1024,
+            "height": 256,
+            "alpha": true,
+            "assetMissing": false,
+            "phases": [
+              "idle",
+              "preparation",
+              "impact",
+              "recovery"
+            ],
+            "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+            "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "sourceBatch": 1,
+            "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "originalSourceRow": 6,
+            "sourceRow": 6,
+            "nativeCorrection": false,
+            "sourceDimensions": [
+              948,
+              1659
+            ],
+            "sourceWork": "Portal",
+            "sourceReference": "Existing project ability chell: Turret Summon",
+            "normalization": {
+              "method": "alpha-valley-and-adaptive-seam-v1",
+              "padding": 12,
+              "sharedScale": 0.6763848396501457,
+              "baseline": 244,
+              "sourceBounds": {
+                "top": 1355,
+                "bottom": 1659
+              },
+              "frameBounds": [
+                {
+                  "source": {
+                    "left": 23,
+                    "top": 3,
+                    "width": 182,
+                    "height": 282,
+                    "pixels": 16354
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 53,
+                    "width": 123,
+                    "height": 191
+                  }
+                },
+                {
+                  "source": {
+                    "left": 260,
+                    "top": 13,
+                    "width": 171,
+                    "height": 272,
+                    "pixels": 18193
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 60,
+                    "width": 116,
+                    "height": 184
+                  }
+                },
+                {
+                  "source": {
+                    "left": 477,
+                    "top": 7,
+                    "width": 287,
+                    "height": 278,
+                    "pixels": 22357
+                  },
+                  "output": {
+                    "left": 50,
+                    "top": 56,
+                    "width": 194,
+                    "height": 188
+                  }
+                },
+                {
+                  "source": {
+                    "left": 762,
+                    "top": 7,
+                    "width": 164,
+                    "height": 278,
+                    "pixels": 15216
+                  },
+                  "output": {
+                    "left": 82,
+                    "top": 56,
+                    "width": 111,
+                    "height": 188
+                  }
+                }
+              ],
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0
+            },
+            "visualValidation": {
+              "identityReviewed": true,
+              "technicalAlphaReviewed": true,
+              "fourPhasesReviewed": true,
+              "fullOutputSilhouetteContained": true,
+              "canon1to1Verified": false,
+              "networkVerified": false,
+              "sourceDesign": "native-generated-adaptation",
+              "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+            }
+          }
+        },
+        "visualStyle": "deployment"
+      },
+      "afterContract": {
+        "id": "cave_johnson:reinforcement:chell:secondary",
+        "name": "Chell — Indication du passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "changedTopLevelFields": [
+        "action",
+        "entityName",
+        "entityRender",
+        "id",
+        "name",
+        "performer",
+        "performerRole",
+        "provenance",
+        "sourceAbility",
+        "visualStyle"
+      ],
+      "beforeContract": {
+        "id": "caroline_portal:summon:chell:secondary",
+        "name": "Turret Summon",
+        "kind": "reinforcement",
+        "entityName": "Turret Summon",
+        "performerRole": "caller",
+        "action": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "rpgProfile": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": {
+          "kind": "sprite-sheet",
+          "entityName": "Turret Summon",
+          "assetMissing": false,
+          "asset": {
+            "id": "portal-turret",
+            "key": "Portal::Turret Summon::Turret Summon",
+            "universe": "Portal",
+            "entityName": "Turret Summon",
+            "actionName": "Turret Summon",
+            "sourceHeroId": "chell",
+            "callers": [
+              "chell",
+              "atlas",
+              "pbody",
+              "glados",
+              "wheatley",
+              "cave_johnson",
+              "caroline_portal",
+              "doug_rattmann",
+              "glados_core",
+              "cave_johnson_echo"
+            ],
+            "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+            "frames": 4,
+            "columns": 4,
+            "rows": 1,
+            "frameWidth": 256,
+            "frameHeight": 256,
+            "width": 1024,
+            "height": 256,
+            "alpha": true,
+            "assetMissing": false,
+            "phases": [
+              "idle",
+              "preparation",
+              "impact",
+              "recovery"
+            ],
+            "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+            "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "sourceBatch": 1,
+            "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "originalSourceRow": 6,
+            "sourceRow": 6,
+            "nativeCorrection": false,
+            "sourceDimensions": [
+              948,
+              1659
+            ],
+            "sourceWork": "Portal",
+            "sourceReference": "Existing project ability chell: Turret Summon",
+            "normalization": {
+              "method": "alpha-valley-and-adaptive-seam-v1",
+              "padding": 12,
+              "sharedScale": 0.6763848396501457,
+              "baseline": 244,
+              "sourceBounds": {
+                "top": 1355,
+                "bottom": 1659
+              },
+              "frameBounds": [
+                {
+                  "source": {
+                    "left": 23,
+                    "top": 3,
+                    "width": 182,
+                    "height": 282,
+                    "pixels": 16354
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 53,
+                    "width": 123,
+                    "height": 191
+                  }
+                },
+                {
+                  "source": {
+                    "left": 260,
+                    "top": 13,
+                    "width": 171,
+                    "height": 272,
+                    "pixels": 18193
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 60,
+                    "width": 116,
+                    "height": 184
+                  }
+                },
+                {
+                  "source": {
+                    "left": 477,
+                    "top": 7,
+                    "width": 287,
+                    "height": 278,
+                    "pixels": 22357
+                  },
+                  "output": {
+                    "left": 50,
+                    "top": 56,
+                    "width": 194,
+                    "height": 188
+                  }
+                },
+                {
+                  "source": {
+                    "left": 762,
+                    "top": 7,
+                    "width": 164,
+                    "height": 278,
+                    "pixels": 15216
+                  },
+                  "output": {
+                    "left": 82,
+                    "top": 56,
+                    "width": 111,
+                    "height": 188
+                  }
+                }
+              ],
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0
+            },
+            "visualValidation": {
+              "identityReviewed": true,
+              "technicalAlphaReviewed": true,
+              "fourPhasesReviewed": true,
+              "fullOutputSilhouetteContained": true,
+              "canon1to1Verified": false,
+              "networkVerified": false,
+              "sourceDesign": "native-generated-adaptation",
+              "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+            }
+          }
+        },
+        "visualStyle": "deployment"
+      },
+      "afterContract": {
+        "id": "caroline_portal:reinforcement:chell:secondary",
+        "name": "Chell — Indication du passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "doug_rattmann:reinforcement:chell:special",
+        "name": "Chell — Repérage de passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Repérage de passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.38,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.38
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.38,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.38
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Repérage de passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.38
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "doug_rattmann:reinforcement:chell:special",
+        "name": "Chell — Repérage de passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Repérage de passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.38,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.38
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.38,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.38
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Repérage de passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.451,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 4,
+            "reduce": 0.38
+          },
+          "meterCost": 100,
+          "slot": "special",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "changedTopLevelFields": [
+        "action",
+        "entityName",
+        "entityRender",
+        "id",
+        "name",
+        "performer",
+        "performerRole",
+        "provenance",
+        "sourceAbility",
+        "visualStyle"
+      ],
+      "beforeContract": {
+        "id": "glados_core:summon:chell:secondary",
+        "name": "Turret Summon",
+        "kind": "reinforcement",
+        "entityName": "Turret Summon",
+        "performerRole": "caller",
+        "action": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "rpgProfile": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": {
+          "kind": "sprite-sheet",
+          "entityName": "Turret Summon",
+          "assetMissing": false,
+          "asset": {
+            "id": "portal-turret",
+            "key": "Portal::Turret Summon::Turret Summon",
+            "universe": "Portal",
+            "entityName": "Turret Summon",
+            "actionName": "Turret Summon",
+            "sourceHeroId": "chell",
+            "callers": [
+              "chell",
+              "atlas",
+              "pbody",
+              "glados",
+              "wheatley",
+              "cave_johnson",
+              "caroline_portal",
+              "doug_rattmann",
+              "glados_core",
+              "cave_johnson_echo"
+            ],
+            "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+            "frames": 4,
+            "columns": 4,
+            "rows": 1,
+            "frameWidth": 256,
+            "frameHeight": 256,
+            "width": 1024,
+            "height": 256,
+            "alpha": true,
+            "assetMissing": false,
+            "phases": [
+              "idle",
+              "preparation",
+              "impact",
+              "recovery"
+            ],
+            "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+            "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "sourceBatch": 1,
+            "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "originalSourceRow": 6,
+            "sourceRow": 6,
+            "nativeCorrection": false,
+            "sourceDimensions": [
+              948,
+              1659
+            ],
+            "sourceWork": "Portal",
+            "sourceReference": "Existing project ability chell: Turret Summon",
+            "normalization": {
+              "method": "alpha-valley-and-adaptive-seam-v1",
+              "padding": 12,
+              "sharedScale": 0.6763848396501457,
+              "baseline": 244,
+              "sourceBounds": {
+                "top": 1355,
+                "bottom": 1659
+              },
+              "frameBounds": [
+                {
+                  "source": {
+                    "left": 23,
+                    "top": 3,
+                    "width": 182,
+                    "height": 282,
+                    "pixels": 16354
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 53,
+                    "width": 123,
+                    "height": 191
+                  }
+                },
+                {
+                  "source": {
+                    "left": 260,
+                    "top": 13,
+                    "width": 171,
+                    "height": 272,
+                    "pixels": 18193
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 60,
+                    "width": 116,
+                    "height": 184
+                  }
+                },
+                {
+                  "source": {
+                    "left": 477,
+                    "top": 7,
+                    "width": 287,
+                    "height": 278,
+                    "pixels": 22357
+                  },
+                  "output": {
+                    "left": 50,
+                    "top": 56,
+                    "width": 194,
+                    "height": 188
+                  }
+                },
+                {
+                  "source": {
+                    "left": 762,
+                    "top": 7,
+                    "width": 164,
+                    "height": 278,
+                    "pixels": 15216
+                  },
+                  "output": {
+                    "left": 82,
+                    "top": 56,
+                    "width": 111,
+                    "height": 188
+                  }
+                }
+              ],
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0
+            },
+            "visualValidation": {
+              "identityReviewed": true,
+              "technicalAlphaReviewed": true,
+              "fourPhasesReviewed": true,
+              "fullOutputSilhouetteContained": true,
+              "canon1to1Verified": false,
+              "networkVerified": false,
+              "sourceDesign": "native-generated-adaptation",
+              "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+            }
+          }
+        },
+        "visualStyle": "deployment"
+      },
+      "afterContract": {
+        "id": "glados_core:reinforcement:chell:secondary",
+        "name": "Chell — Indication du passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson_echo\"]",
+      "changedTopLevelFields": [
+        "action",
+        "entityName",
+        "entityRender",
+        "id",
+        "name",
+        "performer",
+        "performerRole",
+        "provenance",
+        "sourceAbility",
+        "visualStyle"
+      ],
+      "beforeContract": {
+        "id": "cave_johnson_echo:summon:chell:secondary",
+        "name": "Turret Summon",
+        "kind": "reinforcement",
+        "entityName": "Turret Summon",
+        "performerRole": "caller",
+        "action": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "targeting": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "rpgProfile": {
+            "effect": "damage",
+            "delivery": "ranged",
+            "targetSide": "enemy",
+            "excludeSelf": false,
+            "shape": "single",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 1,
+            "multiplier": 1.8,
+            "duration": 0.95,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Turret Summon",
+          "type": "summon",
+          "cd": 7,
+          "dmg": 1.8,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": {
+          "kind": "sprite-sheet",
+          "entityName": "Turret Summon",
+          "assetMissing": false,
+          "asset": {
+            "id": "portal-turret",
+            "key": "Portal::Turret Summon::Turret Summon",
+            "universe": "Portal",
+            "entityName": "Turret Summon",
+            "actionName": "Turret Summon",
+            "sourceHeroId": "chell",
+            "callers": [
+              "chell",
+              "atlas",
+              "pbody",
+              "glados",
+              "wheatley",
+              "cave_johnson",
+              "caroline_portal",
+              "doug_rattmann",
+              "glados_core",
+              "cave_johnson_echo"
+            ],
+            "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+            "frames": 4,
+            "columns": 4,
+            "rows": 1,
+            "frameWidth": 256,
+            "frameHeight": 256,
+            "width": 1024,
+            "height": 256,
+            "alpha": true,
+            "assetMissing": false,
+            "phases": [
+              "idle",
+              "preparation",
+              "impact",
+              "recovery"
+            ],
+            "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+            "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "sourceBatch": 1,
+            "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+            "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+            "originalSourceRow": 6,
+            "sourceRow": 6,
+            "nativeCorrection": false,
+            "sourceDimensions": [
+              948,
+              1659
+            ],
+            "sourceWork": "Portal",
+            "sourceReference": "Existing project ability chell: Turret Summon",
+            "normalization": {
+              "method": "alpha-valley-and-adaptive-seam-v1",
+              "padding": 12,
+              "sharedScale": 0.6763848396501457,
+              "baseline": 244,
+              "sourceBounds": {
+                "top": 1355,
+                "bottom": 1659
+              },
+              "frameBounds": [
+                {
+                  "source": {
+                    "left": 23,
+                    "top": 3,
+                    "width": 182,
+                    "height": 282,
+                    "pixels": 16354
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 53,
+                    "width": 123,
+                    "height": 191
+                  }
+                },
+                {
+                  "source": {
+                    "left": 260,
+                    "top": 13,
+                    "width": 171,
+                    "height": 272,
+                    "pixels": 18193
+                  },
+                  "output": {
+                    "left": 63,
+                    "top": 60,
+                    "width": 116,
+                    "height": 184
+                  }
+                },
+                {
+                  "source": {
+                    "left": 477,
+                    "top": 7,
+                    "width": 287,
+                    "height": 278,
+                    "pixels": 22357
+                  },
+                  "output": {
+                    "left": 50,
+                    "top": 56,
+                    "width": 194,
+                    "height": 188
+                  }
+                },
+                {
+                  "source": {
+                    "left": 762,
+                    "top": 7,
+                    "width": 164,
+                    "height": 278,
+                    "pixels": 15216
+                  },
+                  "output": {
+                    "left": 82,
+                    "top": 56,
+                    "width": 111,
+                    "height": 188
+                  }
+                }
+              ],
+              "crossedOpaquePixels": 0,
+              "crossedVisiblePixels": 0
+            },
+            "visualValidation": {
+              "identityReviewed": true,
+              "technicalAlphaReviewed": true,
+              "fourPhasesReviewed": true,
+              "fullOutputSilhouetteContained": true,
+              "canon1to1Verified": false,
+              "networkVerified": false,
+              "sourceDesign": "native-generated-adaptation",
+              "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+            }
+          }
+        },
+        "visualStyle": "deployment"
+      },
+      "afterContract": {
+        "id": "cave_johnson_echo:reinforcement:chell:secondary",
+        "name": "Chell — Indication du passage de Chell",
+        "kind": "reinforcement",
+        "entityName": "Chell",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 2,
+            "healRatio": 0,
+            "guardReduce": 0.25,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.25
+          }
+        },
+        "sourceHeroId": "chell",
+        "sourceAbility": {
+          "name": "Indication du passage de Chell",
+          "type": "guard",
+          "dmg": 0,
+          "animationDuration": 0.55,
+          "hitAt": 0.2,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "shape": "group",
+            "range": 760,
+            "targetSide": "ally",
+            "duration": 2,
+            "reduce": 0.25
+          },
+          "cd": 6,
+          "slot": "secondary",
+          "sourceHeroId": "chell"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "chell",
+        "universe": "Portal",
+        "stats": {
+          "hp": 120,
+          "atk": 12,
+          "def": 7,
+          "spd": 8
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "zoey_l4d:reinforcement:bill_l4d:special",
+        "name": "Bill — Couverture du vétéran Bill",
+        "kind": "reinforcement",
+        "entityName": "Bill",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          }
+        },
+        "sourceHeroId": "bill_l4d",
+        "sourceAbility": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "zoey_l4d:reinforcement:bill_l4d:special",
+        "name": "Bill — Couverture du vétéran Bill",
+        "kind": "reinforcement",
+        "entityName": "Bill",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          }
+        },
+        "sourceHeroId": "bill_l4d",
+        "sourceAbility": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "bill_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "bill_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "bill_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "bill_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "ellis_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "ellis_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "coach_l4d:reinforcement:bill_l4d:special",
+        "name": "Bill — Couverture du vétéran Bill",
+        "kind": "reinforcement",
+        "entityName": "Bill",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          }
+        },
+        "sourceHeroId": "bill_l4d",
+        "sourceAbility": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "coach_l4d:reinforcement:bill_l4d:special",
+        "name": "Bill — Couverture du vétéran Bill",
+        "kind": "reinforcement",
+        "entityName": "Bill",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d",
+          "rpgProfile": {
+            "effect": "guard",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.45,
+            "buffMultiplier": 1.2,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.45
+          }
+        },
+        "sourceHeroId": "bill_l4d",
+        "sourceAbility": {
+          "name": "Couverture du vétéran Bill",
+          "type": "shield_aoe",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "guard",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "reduce": 0.45,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "bill_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "bill_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "bill_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "rochelle_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "rochelle_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "changedTopLevelFields": [
+        "performer",
+        "provenance"
+      ],
+      "beforeContract": {
+        "id": "nick_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "afterContract": {
+        "id": "nick_l4d:reinforcement:coach_l4d:special",
+        "name": "Coach — Consignes de Coach",
+        "kind": "reinforcement",
+        "entityName": "Coach",
+        "performerRole": "reinforcement",
+        "action": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d",
+          "rpgProfile": {
+            "effect": "buff",
+            "delivery": "support",
+            "targetSide": "ally",
+            "excludeSelf": false,
+            "shape": "group",
+            "range": 1200,
+            "areaRadius": 135,
+            "lineWidth": 48,
+            "coneAngle": 55,
+            "maxTargets": 8,
+            "multiplier": 0,
+            "duration": 4,
+            "healRatio": 0,
+            "guardReduce": 0.4,
+            "buffMultiplier": 1.25,
+            "reviveRatio": 0.3,
+            "cleanses": false,
+            "statusEffect": null,
+            "reduce": 0.4
+          }
+        },
+        "sourceHeroId": "coach_l4d",
+        "sourceAbility": {
+          "name": "Consignes de Coach",
+          "type": "buff",
+          "dmg": 0,
+          "animationDuration": 1.1,
+          "hitAt": 0.45,
+          "targeting": {
+            "effect": "buff",
+            "targetSide": "ally",
+            "shape": "group",
+            "delivery": "support",
+            "range": 760,
+            "buffMultiplier": 1.25,
+            "duration": 4
+          },
+          "color": "#b8d393",
+          "slot": "special",
+          "sourceHeroId": "coach_l4d"
+        },
+        "entityRender": null,
+        "visualStyle": "support"
+      },
+      "beforePerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      },
+      "afterPerformerIdentityAndStats": {
+        "id": "coach_l4d",
+        "universe": "Left 4 Dead",
+        "stats": {
+          "hp": 130,
+          "atk": 10,
+          "def": 8,
+          "spd": 4
+        }
+      }
+    }
+  ],
+  "newCanonicalInvocationsApproved": 0
+}

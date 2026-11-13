@@ -1,0 +1,428 @@
+TAP version 13
+# Subtest: every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+not ok 1 - every actual combatant has four executable source actions; no source catalog mutation or implicit ownership
+  ---
+  duration_ms: 66.967079
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:36:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    masterchief
+    + actual - expected
+    
+      [
+        'simple',
+        'secondary',
+    -   'defense',
+        'special'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'simple'
+    1: 'secondary'
+    2: 'defense'
+    3: 'special'
+  actual:
+    0: 'simple'
+    1: 'secondary'
+    2: 'special'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:46:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+not ok 2 - ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns
+  ---
+  duration_ms: 0.392452
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:138:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    24 !== 23
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 23
+  actual: 24
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:140:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+not ok 3 - returning to the personal kit retains its actual stock and cooldowns without refill or repeated return
+  ---
+  duration_ms: 0.515529
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:186:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    24 !== 23
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 23
+  actual: 24
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:192:53)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: workbook export is deterministic and covers all four modes with provenance and honest production states
+not ok 4 - workbook export is deterministic and covers all four modes with provenance and honest production states
+  ---
+  duration_ms: 94.152475
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:214:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   actions: 7182,
+    -   actions: 7244,
+        authoredKits: 12,
+        boundPersonalViews: 3,
+        characters: 1912,
+        combatants: 1811,
+    +   genericSourceReview: 1583,
+    -   genericSourceReview: 1633,
+        peaceful: 101,
+        sourceAdaptedKits: 1799
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    characters: 1912
+    combatants: 1811
+    peaceful: 101
+    authoredKits: 12
+    sourceAdaptedKits: 1799
+    genericSourceReview: 1633
+    boundPersonalViews: 3
+    actions: 7244
+  actual:
+    characters: 1912
+    combatants: 1811
+    peaceful: 101
+    authoredKits: 12
+    sourceAdaptedKits: 1799
+    genericSourceReview: 1583
+    boundPersonalViews: 3
+    actions: 7182
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:217:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+not ok 5 - actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown
+  ---
+  duration_ms: 1.00017
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:344:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 36
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 36
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:348:41)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+# Subtest: pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+not ok 6 - pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload
+  ---
+  duration_ms: 1.056616
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:448:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    10 !== 36
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 36
+  actual: 10
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:452:44)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+not ok 7 - aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run
+  ---
+  duration_ms: 295.70466
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:787:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'beam',
+    +   'buff',
+        'cone',
+        'control',
+        'dash',
+        'focus',
+        'hitscan',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'beam'
+    1: 'cone'
+    2: 'control'
+    3: 'dash'
+    4: 'focus'
+    5: 'hitscan'
+    6: 'melee'
+    7: 'projectile'
+    8: 'scatter'
+  actual:
+    0: 'beam'
+    1: 'buff'
+    2: 'cone'
+    3: 'control'
+    4: 'dash'
+    5: 'focus'
+    6: 'hitscan'
+    7: 'melee'
+    8: 'projectile'
+    9: 'scatter'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:807:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+not ok 8 - contact and control readouts agree with actual reach, facing and successful actions at the boundaries
+  ---
+  duration_ms: 1.599366
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:810:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    masterchief true
+    
+    'flight' !== 'target'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'target'
+  actual: 'flight'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:816:14)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: marking and shield feedback follow real damage rules, while non-damaging control remains valid
+not ok 9 - marking and shield feedback follow real damage rules, while non-damaging control remains valid
+  ---
+  duration_ms: 1.179682
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:875:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'flight' !== 'target'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'target'
+  actual: 'flight'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:894:53)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  ...
+# Subtest: aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+not ok 10 - aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership
+  ---
+  duration_ms: 0.569911
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:914:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    'flight' !== 'ammo'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'ammo'
+  actual: 'flight'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:922:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+# Subtest: the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+not ok 11 - the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker
+  ---
+  duration_ms: 4.494749
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:967:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    6 !== 7
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 7
+  actual: 6
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionFighterProfiles.test.mjs:992:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+# Subtest: all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+not ok 12 - all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art
+  ---
+  duration_ms: 15.621254
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:59:1'
+  failureType: 'testCodeFailure'
+  error: 'cortana'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'neutral'
+  actual: 'neutral'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:68:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: real primary activations and cooldown ticks drive attack, recovery and ready states
+not ok 13 - real primary activations and cooldown ticks drive attack, recovery and ready states
+  ---
+  duration_ms: 2.135876
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:100:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'projectile'
+    - 'ballistic'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'ballistic'
+  actual: 'projectile'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:106:12)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+# Subtest: every primary delivery has different geometry even with one colour, and pause rendering is pure
+not ok 14 - every primary delivery has different geometry even with one colour, and pause rendering is pure
+  ---
+  duration_ms: 4.508549
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:148:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    geometry must distinguish delivery, not only palette
+    
+    8 !== 9
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 9
+  actual: 8
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/extinctionSchematicView.test.mjs:159:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    node:internal/test_runner/test:981:31
+    node:internal/process/task_queues:149:7
+    AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    AsyncResource.runMicrotask (node:internal/process/task_queues:146:8)
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 0
+# fail 14
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4441.311222

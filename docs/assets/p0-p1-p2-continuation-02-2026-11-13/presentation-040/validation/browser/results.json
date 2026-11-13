@@ -1,0 +1,2998 @@
+{
+  "scope": "Prepared duel outcomes, real Fighter/Smash simulation and real bitmap draws.\n\nBefore uses three exact Git9899 presentation modules with the same QA harness\nand current unchanged Revan media. It is not an archived whole-app build.\n",
+  "cases": [
+    {
+      "label": "before-fighter-player-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "remaining": 1.7000000000000002,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 0,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 0,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": false,
+              "progress": 0
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0,
+              "row": 0,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0,
+              "row": 0,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              0,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "remaining": 1.200000000000002,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.2941176470588224,
+            "facing": 1,
+            "stateElapsed": 0.499999999999998,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.0658472344161528
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2941176470588224,
+              "row": 0,
+              "col": 1
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2941176470588224,
+              "row": 0,
+              "col": 1
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              0,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "remaining": 0.9000000000000028,
+        "actorPhase": "victory",
+        "script": {
+          "id": "darth_revan:victory:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 2,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 5,
+              "col": 2,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.5263157894736827,
+            "facing": 1,
+            "stateElapsed": 0.9999999999999971,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.41241162608012344
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "victory",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 5,
+              "col": 2
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 6,
+              "col": 2
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              512,
+              768,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": {
+        "phase": "outro",
+        "remaining": 1.000000000000003,
+        "actorPhase": "outro",
+        "script": {
+          "id": "darth_revan:outro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.47368421052631415,
+            "facing": 1,
+            "stateElapsed": 0.8999999999999968,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.33385703063628974
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "outro",
+            "pose": {
+              "progress": 0.47368421052631415,
+              "row": 1,
+              "col": 1
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "outro",
+            "pose": {
+              "progress": 0.47368421052631415,
+              "row": 1,
+              "col": 1
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "disposed": {
+        "phase": "victory",
+        "remaining": null,
+        "actorPhase": null,
+        "script": null,
+        "entries": null,
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 1,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-fighter-player-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "remaining": 1.7999999999999998,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -27.999999999999993,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 1.2335811384723962e-16,
+            "facing": 1,
+            "stateElapsed": 2.220446049250313e-16,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 1.2335811384723962e-16
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.2335811384723962e-16,
+              "row": 1,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.3061447348531254e-16,
+              "row": 0,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 212,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "remaining": 1.3000000000000016,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111155,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.2777777777777769,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999845,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.2777777777777769
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2777777777777769,
+              "row": 1,
+              "col": 1
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2941176470588226,
+              "row": 0,
+              "col": 1
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 225.88888549804688,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "remaining": 0.9000000000000028,
+        "actorPhase": "victory",
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 2,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 2,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.5263157894736827,
+            "facing": 1,
+            "stateElapsed": 0.9999999999999971,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.5263157894736827
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "victory",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 0,
+              "col": 2
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 6,
+              "col": 2
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              512,
+              0,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": {
+        "phase": "outro",
+        "remaining": 1.2000000000000033,
+        "actorPhase": "outro",
+        "script": {
+          "id": "darth_revan:outro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -35.57142857142825,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.42857142857142705,
+            "facing": -1,
+            "stateElapsed": 0.3119999999999967,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.42857142857142705
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "outro",
+            "pose": {
+              "progress": 0.42857142857142705,
+              "row": 1,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 1,
+              "row": 6,
+              "col": 3
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 204.42857360839844,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "disposed": {
+        "phase": "victory",
+        "remaining": null,
+        "actorPhase": null,
+        "script": null,
+        "entries": null,
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 1,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-fighter-cpu-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "remaining": 1.7999999999999998,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -27.999999999999993,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 1.2335811384723962e-16,
+            "facing": 1,
+            "stateElapsed": 2.220446049250313e-16,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 1.2335811384723962e-16
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.3061447348531254e-16,
+              "row": 0,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.2335811384723962e-16,
+              "row": 1,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          246,
+          260
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 748,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "remaining": 1.3000000000000016,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111155,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.2777777777777769,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999845,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.2777777777777769
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2941176470588226,
+              "row": 0,
+              "col": 1
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2777777777777769,
+              "row": 1,
+              "col": 1
+            }
+          }
+        ],
+        "hp": [
+          246,
+          260
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 734.111083984375,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "remaining": 0.9000000000000028,
+        "actorPhase": "victory",
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 2,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 2,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.5263157894736827,
+            "facing": 1,
+            "stateElapsed": 0.9999999999999971,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.5263157894736827
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 6,
+              "col": 2
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "victory",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 0,
+              "col": 2
+            }
+          }
+        ],
+        "hp": [
+          0,
+          260
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              512,
+              0,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 720,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": {
+        "phase": "outro",
+        "remaining": 1.2000000000000033,
+        "actorPhase": "outro",
+        "script": {
+          "id": "darth_revan:outro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -35.57142857142825,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.42857142857142705,
+            "facing": -1,
+            "stateElapsed": 0.3119999999999967,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.42857142857142705
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 1,
+              "row": 6,
+              "col": 3
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "outro",
+            "pose": {
+              "progress": 0.42857142857142705,
+              "row": 1,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          0,
+          260
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 755.5714111328125,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "disposed": {
+        "phase": "defeat",
+        "remaining": null,
+        "actorPhase": null,
+        "script": null,
+        "entries": null,
+        "hp": [
+          0,
+          260
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 1,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-fighter-player-390",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "remaining": 1.7999999999999998,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -27.999999999999993,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 1.2335811384723962e-16,
+            "facing": 1,
+            "stateElapsed": 2.220446049250313e-16,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 1.2335811384723962e-16
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.2335811384723962e-16,
+              "row": 1,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 1.3061447348531254e-16,
+              "row": 0,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 212,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "remaining": 1.3000000000000016,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111155,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.2777777777777769,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999845,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.2777777777777769
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2777777777777769,
+              "row": 1,
+              "col": 1
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0.2941176470588226,
+              "row": 0,
+              "col": 1
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 225.88888549804688,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "remaining": 0.9000000000000028,
+        "actorPhase": "victory",
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 2,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 2,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.5263157894736827,
+            "facing": 1,
+            "stateElapsed": 0.9999999999999971,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.5263157894736827
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "victory",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 0,
+              "col": 2
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 0.5263157894736827,
+              "row": 6,
+              "col": 2
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              512,
+              0,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 240,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": {
+        "phase": "outro",
+        "remaining": 1.2000000000000033,
+        "actorPhase": "outro",
+        "script": {
+          "id": "darth_revan:outro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -35.57142857142825,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.42857142857142705,
+            "facing": -1,
+            "stateElapsed": 0.3119999999999967,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.42857142857142705
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "outro",
+            "pose": {
+              "progress": 0.42857142857142705,
+              "row": 1,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "defeat",
+            "pose": {
+              "progress": 1,
+              "row": 6,
+              "col": 3
+            }
+          }
+        ],
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -141.391482261595,
+              -269.52751306116545,
+              282.78296452319,
+              282.78296452319
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 204.42857360839844,
+              "f": 356.3999938964844
+            }
+          }
+        ]
+      },
+      "disposed": {
+        "phase": "victory",
+        "remaining": null,
+        "actorPhase": null,
+        "script": null,
+        "entries": null,
+        "hp": [
+          260,
+          0
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 1,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 12,
+          "y": 412.875,
+          "width": 366,
+          "height": 205.875,
+          "top": 412.875,
+          "right": 378,
+          "bottom": 618.75,
+          "left": 12
+        }
+      }
+    },
+    {
+      "label": "before-smash-player-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "stateElapsed": 0,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "intro",
+          "presentationPhase": null,
+          "presentationFrame": null
+        },
+        "script": {
+          "id": "darth_revan:intro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 0,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 0,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": false,
+              "progress": 0
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 172.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "stateElapsed": 0.49999999999999994,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "intro",
+          "presentationPhase": null,
+          "presentationFrame": null
+        },
+        "script": {
+          "id": "darth_revan:intro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.2941176470588235,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999994,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.06584723441615445
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              512,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 172.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "victory",
+          "presentationPhase": null,
+          "presentationFrame": null
+        },
+        "script": {
+          "id": "darth_revan:victory:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 5,
+              "col": 1,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.2160251374705426
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 172.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": null,
+      "disposed": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "victory",
+          "presentationPhase": null,
+          "presentationFrame": null
+        },
+        "script": {
+          "id": "darth_revan:victory:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 5,
+              "col": 1,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": true,
+              "progress": 0.2160251374705426
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-smash-player-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "stateElapsed": 0,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 144.79999999999998,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 0
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -28,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 144.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "stateElapsed": 0.49999999999999994,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 158.68888888888887,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111114,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.27777777777777773,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999994,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.27777777777777773
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 158.6888885498047,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 172.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": null,
+      "disposed": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-smash-cpu-1280",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "stateElapsed": 0,
+        "actor": {
+          "id": "p2:darth_revan:0",
+          "sourceHeroId": null,
+          "x": 806.4,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 834.4,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 0
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -28,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 834.4000244140625,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "stateElapsed": 0.49999999999999994,
+        "actor": {
+          "id": "p2:darth_revan:0",
+          "sourceHeroId": null,
+          "x": 806.4,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 820.5111111111111,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111114,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.27777777777777773,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999994,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.27777777777777773
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 820.5111083984375,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "p2:darth_revan:0",
+          "sourceHeroId": null,
+          "x": 806.4,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 806.4,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": -1,
+              "d": 1,
+              "e": 806.4000244140625,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": null,
+      "disposed": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "p2:darth_revan:0",
+          "sourceHeroId": null,
+          "x": 806.4,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 806.4,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 140,
+          "y": 249.875,
+          "width": 1000,
+          "height": 562.5,
+          "top": 249.875,
+          "right": 1140,
+          "bottom": 812.375,
+          "left": 140
+        }
+      }
+    },
+    {
+      "label": "after-smash-player-390",
+      "passed": true,
+      "intro": {
+        "phase": "intro",
+        "stateElapsed": 0,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 144.79999999999998,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 0
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 0,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 0,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -28,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              0,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 144.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "introLater": {
+        "phase": "intro",
+        "stateElapsed": 0.49999999999999994,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 158.68888888888887,
+          "y": 410.4,
+          "state": "run",
+          "presentationPhase": "intro",
+          "presentationFrame": {
+            "row": 1,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:intro:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "run",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "run",
+              "requestedState": "run",
+              "row": 1,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": -14.111111111111114,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.27777777777777773,
+            "facing": 1,
+            "stateElapsed": 0.49999999999999994,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.27777777777777773
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              256,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 158.6888885498047,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "victory": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": null,
+        "draws": [
+          {
+            "src": "http://127.0.0.1:4205/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+            "args": [
+              256,
+              0,
+              256,
+              256,
+              -57.84197001610705,
+              -110.26125534320406,
+              115.6839400322141,
+              115.6839400322141
+            ],
+            "transform": {
+              "a": 1,
+              "d": 1,
+              "e": 172.8000030517578,
+              "f": 410.3999938964844
+            }
+          }
+        ]
+      },
+      "outro": null,
+      "disposed": {
+        "phase": "victory",
+        "stateElapsed": 0.7500000000000007,
+        "actor": {
+          "id": "darth_revan",
+          "sourceHeroId": null,
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "currentHp": 138
+        },
+        "view": {
+          "x": 172.79999999999998,
+          "y": 410.4,
+          "state": "idle",
+          "presentationPhase": "victory",
+          "presentationFrame": {
+            "row": 0,
+            "col": 1
+          }
+        },
+        "script": {
+          "id": "darth_revan:victory:reviewed-base16-20261113",
+          "sample": {
+            "poseState": "idle",
+            "frame": 1,
+            "asset": {
+              "kind": "reviewed-character-base16",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 1,
+              "columns": 4,
+              "rows": 4,
+              "dedicatedPhaseAsset": false
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0.39473684210526355,
+            "facing": 1,
+            "stateElapsed": 0.7500000000000007,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0,
+              "endsAt": 1,
+              "active": true,
+              "progress": 0.39473684210526355
+            }
+          }
+        },
+        "completed": 0,
+        "disposed": true
+      },
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": [],
+      "canvas": {
+        "width": 960,
+        "height": 540,
+        "css": {
+          "x": 12,
+          "y": 412.875,
+          "width": 366,
+          "height": 205.875,
+          "top": 412.875,
+          "right": 378,
+          "bottom": 618.75,
+          "left": 12
+        }
+      }
+    },
+    {
+      "label": "before-invalid-fighter-player-1280",
+      "passed": true,
+      "invalidComposite": true,
+      "state": {
+        "phase": "intro",
+        "remaining": 1.7000000000000002,
+        "actorPhase": "intro",
+        "script": {
+          "id": "darth_revan:intro:authored-v1",
+          "sample": {
+            "poseState": "idle",
+            "frame": 0,
+            "asset": {
+              "kind": "native-generated-character-animation",
+              "actorId": "darth_revan",
+              "sheet": "/sprites/generated/combat-character-animations-wave13-part-b/darth_revan.png",
+              "state": "idle",
+              "requestedState": "idle",
+              "row": 0,
+              "col": 0,
+              "columns": 4,
+              "rows": 8,
+              "dedicatedPhaseAsset": true
+            },
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "opacity": 1,
+            "progress": 0,
+            "facing": 1,
+            "stateElapsed": 0,
+            "effect": {
+              "kind": "none",
+              "startsAt": 0.25,
+              "endsAt": 0.92,
+              "active": false,
+              "progress": 0
+            }
+          }
+        },
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0,
+              "row": 0,
+              "col": 0
+            }
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0,
+              "row": 0,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false
+      },
+      "draws": [
+        {
+          "src": "http://127.0.0.1:4204/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "args": [
+            0,
+            0,
+            256,
+            256,
+            -141.391482261595,
+            -269.52751306116545,
+            282.78296452319,
+            282.78296452319
+          ],
+          "transform": {
+            "a": 1,
+            "d": 1,
+            "e": 240,
+            "f": 356.3999938964844
+          }
+        }
+      ],
+      "media": [
+        {
+          "path": "/sprites/generated/combat-character-corrections-wave13-part-b/darth_revan.png",
+          "status": 200,
+          "sha256": "c9f46d3fc0e0144afab53632c1be6d07508975645b2b2bfff30478e5e5fb1fbf"
+        }
+      ],
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "label": "after-invalid-fighter-player-1280",
+      "passed": true,
+      "invalidComposite": true,
+      "state": {
+        "phase": "intro",
+        "remaining": 1.7000000000000002,
+        "actorPhase": "intro",
+        "script": null,
+        "entries": [
+          {
+            "side": "player",
+            "actorPhase": "intro",
+            "pose": null
+          },
+          {
+            "side": "cpu",
+            "actorPhase": "intro",
+            "pose": {
+              "progress": 0,
+              "row": 0,
+              "col": 0
+            }
+          }
+        ],
+        "hp": [
+          260,
+          246
+        ],
+        "meter": [
+          0,
+          0
+        ],
+        "completed": 0,
+        "disposed": false
+      },
+      "draws": [],
+      "media": [],
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "passed": 10
+}

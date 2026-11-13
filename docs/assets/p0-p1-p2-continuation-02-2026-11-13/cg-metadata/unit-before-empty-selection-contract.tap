@@ -1,0 +1,571 @@
+TAP version 13
+# Subtest: the real current producer passes every historical guard after the closed continuation02 amendment
+not ok 1 - the real current producer passes every historical guard after the closed continuation02 amendment
+  ---
+  duration_ms: 33958.208412
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:61:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Rejected Batman bitmap cannot be selected
+    
+    '' !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    projectCgContinuation02MetadataAmendment (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.mjs:147:10)
+    validateCgGithub2333Snapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:545:36)
+    validateCgRosterProductionSnapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:284:24)
+    validate (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:23:29)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:62:43)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: the scoped projection is immutable and restores the entire historical serialization exactly
+not ok 2 - the scoped projection is immutable and restores the entire historical serialization exactly
+  ---
+  duration_ms: 667.19607
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:72:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Rejected Batman bitmap cannot be selected
+    
+    '' !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    projectCgContinuation02MetadataAmendment (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.mjs:147:10)
+    project (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:22:65)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:73:76)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: a changed current target value cannot enter through an otherwise allowed field
+    # Subtest: incarnation
+    ok 1 - incarnation
+      ---
+      duration_ms: 325.352481
+      type: 'test'
+      ...
+    # Subtest: identityLock
+    ok 2 - identityLock
+      ---
+      duration_ms: 312.208247
+      type: 'test'
+      ...
+    # Subtest: equipment
+    ok 3 - equipment
+      ---
+      duration_ms: 390.263427
+      type: 'test'
+      ...
+    # Subtest: sourceRefs
+    ok 4 - sourceRefs
+      ---
+      duration_ms: 331.321916
+      type: 'test'
+      ...
+    # Subtest: missing
+    ok 5 - missing
+      ---
+      duration_ms: 335.667888
+      type: 'test'
+      ...
+    # Subtest: adaptationNote
+    ok 6 - adaptationNote
+      ---
+      duration_ms: 338.736189
+      type: 'test'
+      ...
+    1..6
+ok 3 - a changed current target value cannot enter through an otherwise allowed field
+  ---
+  duration_ms: 2039.232189
+  type: 'test'
+  ...
+# Subtest: states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+    # Subtest: status
+    ok 1 - status
+      ---
+      duration_ms: 390.42284
+      type: 'test'
+      ...
+    # Subtest: asset
+    ok 2 - asset
+      ---
+      duration_ms: 336.179385
+      type: 'test'
+      ...
+    # Subtest: generation
+    ok 3 - generation
+      ---
+      duration_ms: 334.633619
+      type: 'test'
+      ...
+    # Subtest: review
+    ok 4 - review
+      ---
+      duration_ms: 542.850265
+      type: 'test'
+      ...
+    # Subtest: reward
+    ok 5 - reward
+      ---
+      duration_ms: 336.86115
+      type: 'test'
+      ...
+    # Subtest: unknown
+    ok 6 - unknown
+      ---
+      duration_ms: 291.380757
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 7 - identity approval
+      ---
+      duration_ms: 302.447436
+      type: 'test'
+      ...
+    1..7
+ok 4 - states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+  ---
+  duration_ms: 2540.052825
+  type: 'test'
+  ...
+# Subtest: Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+    # Subtest: selected sprite
+    ok 1 - selected sprite
+      ---
+      duration_ms: 341.341368
+      type: 'test'
+      ...
+    # Subtest: quarantine hash
+    ok 2 - quarantine hash
+      ---
+      duration_ms: 574.218828
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 3 - identity approval
+      ---
+      duration_ms: 472.040752
+      type: 'test'
+      ...
+    # Subtest: invented backdrop
+    ok 4 - invented backdrop
+      ---
+      duration_ms: 390.99079
+      type: 'test'
+      ...
+    # Subtest: backdrop delivery
+    ok 5 - backdrop delivery
+      ---
+      duration_ms: 360.094743
+      type: 'test'
+      ...
+    # Subtest: CG01 delivery
+    ok 6 - CG01 delivery
+      ---
+      duration_ms: 359.697865
+      type: 'test'
+      ...
+    # Subtest: missing warning
+    ok 7 - missing warning
+      ---
+      duration_ms: 608.373491
+      type: 'test'
+      ...
+    1..7
+not ok 5 - Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+  ---
+  duration_ms: 3555.646981
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:101:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Rejected Batman bitmap cannot be selected
+    
+    '' !== null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual: ''
+  operator: 'strictEqual'
+  stack: |-
+    projectCgContinuation02MetadataAmendment (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.mjs:147:10)
+    project (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:22:65)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:114:21)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: mutations outside all 32 cases survive and are rejected by the real full historical validator
+not ok 6 - mutations outside all 32 cases survive and are rejected by the real full historical validator
+  ---
+  duration_ms: 5211.907678
+  type: 'test'
+  location: '/workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:120:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /Plan changed outside pinned current-reference metadata amendments/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Rejected Batman bitmap cannot be selected\n' +
+      '\n' +
+      "'' !== null\n"
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    Rejected Batman bitmap cannot be selected
+    
+    '' !== null
+    
+  stack: |-
+    projectCgContinuation02MetadataAmendment (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.mjs:147:10)
+    validateCgGithub2333Snapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:545:36)
+    validateCgRosterProductionSnapshot (file:///workspace/multiverse-breach/scripts/cgRosterPlanSnapshot.mjs:284:24)
+    validate (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:23:29)
+    file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:122:23
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:122:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/cgContinuation02MetadataAmendment.test.mjs:122:10)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: all 32 runtime source records reject undeclared changes
+    # Subtest: anya_stroud
+    ok 1 - anya_stroud
+      ---
+      duration_ms: 2.982044
+      type: 'test'
+      ...
+    # Subtest: atlas
+    ok 2 - atlas
+      ---
+      duration_ms: 2.266485
+      type: 'test'
+      ...
+    # Subtest: baird
+    ok 3 - baird
+      ---
+      duration_ms: 2.34337
+      type: 'test'
+      ...
+    # Subtest: bill_l4d
+    ok 4 - bill_l4d
+      ---
+      duration_ms: 1.892827
+      type: 'test'
+      ...
+    # Subtest: carmine_cog
+    ok 5 - carmine_cog
+      ---
+      duration_ms: 2.235338
+      type: 'test'
+      ...
+    # Subtest: caroline_portal
+    ok 6 - caroline_portal
+      ---
+      duration_ms: 2.339263
+      type: 'test'
+      ...
+    # Subtest: carver
+    ok 7 - carver
+      ---
+      duration_ms: 2.712761
+      type: 'test'
+      ...
+    # Subtest: cave_johnson
+    ok 8 - cave_johnson
+      ---
+      duration_ms: 2.503985
+      type: 'test'
+      ...
+    # Subtest: cave_johnson_echo
+    ok 9 - cave_johnson_echo
+      ---
+      duration_ms: 2.315087
+      type: 'test'
+      ...
+    # Subtest: chell
+    ok 10 - chell
+      ---
+      duration_ms: 2.628536
+      type: 'test'
+      ...
+    # Subtest: coach_l4d
+    ok 11 - coach_l4d
+      ---
+      duration_ms: 2.474015
+      type: 'test'
+      ...
+    # Subtest: cole
+    ok 12 - cole
+      ---
+      duration_ms: 2.951798
+      type: 'test'
+      ...
+    # Subtest: dom
+    ok 13 - dom
+      ---
+      duration_ms: 7.403467
+      type: 'test'
+      ...
+    # Subtest: doug_rattmann
+    ok 14 - doug_rattmann
+      ---
+      duration_ms: 3.311376
+      type: 'test'
+      ...
+    # Subtest: ellis_l4d
+    ok 15 - ellis_l4d
+      ---
+      duration_ms: 4.391759
+      type: 'test'
+      ...
+    # Subtest: ellie
+    ok 16 - ellie
+      ---
+      duration_ms: 3.341711
+      type: 'test'
+      ...
+    # Subtest: glados
+    ok 17 - glados
+      ---
+      duration_ms: 3.600858
+      type: 'test'
+      ...
+    # Subtest: glados_core
+    ok 18 - glados_core
+      ---
+      duration_ms: 3.398826
+      type: 'test'
+      ...
+    # Subtest: hammond_ds
+    ok 19 - hammond_ds
+      ---
+      duration_ms: 3.805073
+      type: 'test'
+      ...
+    # Subtest: hoffman_cog
+    ok 20 - hoffman_cog
+      ---
+      duration_ms: 3.052249
+      type: 'test'
+      ...
+    # Subtest: isaac
+    ok 21 - isaac
+      ---
+      duration_ms: 7.331369
+      type: 'test'
+      ...
+    # Subtest: kait_diaz
+    ok 22 - kait_diaz
+      ---
+      duration_ms: 4.092793
+      type: 'test'
+      ...
+    # Subtest: kendra_daniels
+    ok 23 - kendra_daniels
+      ---
+      duration_ms: 3.434609
+      type: 'test'
+      ...
+    # Subtest: marcus
+    ok 24 - marcus
+      ---
+      duration_ms: 3.955477
+      type: 'test'
+      ...
+    # Subtest: nick_l4d
+    ok 25 - nick_l4d
+      ---
+      duration_ms: 3.655829
+      type: 'test'
+      ...
+    # Subtest: nicole_brennan
+    ok 26 - nicole_brennan
+      ---
+      duration_ms: 3.36202
+      type: 'test'
+      ...
+    # Subtest: pbody
+    ok 27 - pbody
+      ---
+      duration_ms: 6.244456
+      type: 'test'
+      ...
+    # Subtest: rochelle_l4d
+    ok 28 - rochelle_l4d
+      ---
+      duration_ms: 3.933484
+      type: 'test'
+      ...
+    # Subtest: wheatley
+    ok 29 - wheatley
+      ---
+      duration_ms: 4.187765
+      type: 'test'
+      ...
+    # Subtest: zach_hammond
+    ok 30 - zach_hammond
+      ---
+      duration_ms: 5.011644
+      type: 'test'
+      ...
+    # Subtest: zoey_l4d
+    ok 31 - zoey_l4d
+      ---
+      duration_ms: 4.269416
+      type: 'test'
+      ...
+    # Subtest: batman_tdk
+    ok 32 - batman_tdk
+      ---
+      duration_ms: 6.505926
+      type: 'test'
+      ...
+    1..32
+ok 7 - all 32 runtime source records reject undeclared changes
+  ---
+  duration_ms: 125.635044
+  type: 'test'
+  ...
+# Subtest: the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+    # Subtest: src/game/heroes.js
+    ok 1 - src/game/heroes.js
+      ---
+      duration_ms: 2.065375
+      type: 'test'
+      ...
+    # Subtest: src/game/canonicalSpriteQuarantine.js
+    ok 2 - src/game/canonicalSpriteQuarantine.js
+      ---
+      duration_ms: 2.170381
+      type: 'test'
+      ...
+    # Subtest: src/game/combat/combatSourceDefinitionsWave15PartC.js
+    ok 3 - src/game/combat/combatSourceDefinitionsWave15PartC.js
+      ---
+      duration_ms: 2.021118
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/heroes.js
+    ok 4 - DLC/GearsOfWar/data/heroes.js
+      ---
+      duration_ms: 1.396996
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/actorSourceContracts.js
+    ok 5 - DLC/GearsOfWar/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.735642
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreAccuratePacks.js
+    ok 6 - DLC/GearsOfWar/data/loreAccuratePacks.js
+      ---
+      duration_ms: 2.179615
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreWorldBossOverrides.js
+    ok 7 - DLC/GearsOfWar/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.77442
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/heroes.js
+    ok 8 - DLC/DeadSpace/data/heroes.js
+      ---
+      duration_ms: 1.470967
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/actorSourceContracts.js
+    ok 9 - DLC/DeadSpace/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.778987
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/loreAccuratePacks.js
+    ok 10 - DLC/DeadSpace/data/loreAccuratePacks.js
+      ---
+      duration_ms: 2.250522
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/heroes.js
+    ok 11 - DLC/Portal/data/heroes.js
+      ---
+      duration_ms: 1.479099
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/sourceContracts20261113.js
+    ok 12 - DLC/Portal/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.862642
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreAccuratePacks.js
+    ok 13 - DLC/Portal/data/loreAccuratePacks.js
+      ---
+      duration_ms: 2.004073
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreWorldBossOverrides.js
+    ok 14 - DLC/Portal/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.772837
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/heroes.js
+    ok 15 - DLC/Left4Dead/data/heroes.js
+      ---
+      duration_ms: 2.285644
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/sourceContracts20261113.js
+    ok 16 - DLC/Left4Dead/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.91483
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/expandedUniverses.js
+    ok 17 - DLC/Left4Dead/data/expandedUniverses.js
+      ---
+      duration_ms: 2.768665
+      type: 'test'
+      ...
+    1..17
+ok 8 - the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+  ---
+  duration_ms: 43.899366
+  type: 'test'
+  ...
+1..8
+# tests 77
+# suites 0
+# pass 73
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 51812.315888

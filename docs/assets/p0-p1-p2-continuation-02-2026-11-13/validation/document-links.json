@@ -1,0 +1,1450 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-13T16:07:51.875052+00:00",
+  "command": [
+    "python3",
+    "/tmp/p0-p1-p2-continuation02-document-links-audit.py"
+  ],
+  "commandSource": "import hashlib\nimport json\nimport re\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom urllib.parse import unquote, urlsplit\n\nrepo = Path.cwd()\nroot = repo / 'docs/assets/p0-p1-p2-continuation-02-2026-11-13'\nfiles = [repo / 'README.md', *sorted(root.rglob('*.md'))]\nchecked, missing, ignored, documents = [], [], [], []\ninline = re.compile(r'!?\\[(?:\\\\.|[^\\]\\\\])*\\]\\(\\s*(<[^>]*>|(?:\\\\.|[^\\s()])+(?:\\([^()]*\\)[^\\s()]*)*)(?:\\s+(?:\"[^\"]*\"|\\x27[^\\x27]*\\x27|\\([^)]*\\)))?\\s*\\)')\ndefinitions = re.compile(r'^ {0,3}\\[[^\\]]+\\]:\\s*(<[^>]*>|\\S+)', re.M)\nfor file in files:\n    raw = file.read_text()\n    clean, fence = [], None\n    for line in raw.splitlines(keepends=True):\n        marker = re.match(r'^\\s*(`{3,}|~{3,})', line)\n        if marker:\n            char = marker.group(1)[0]\n            if fence is None:\n                fence = char\n            elif fence == char:\n                fence = None\n            clean.append(''.join('\\n' if c == '\\n' else ' ' for c in line))\n        elif fence:\n            clean.append(''.join('\\n' if c == '\\n' else ' ' for c in line))\n        else:\n            clean.append(line)\n    text = ''.join(clean)\n    file_checks = 0\n    for match in [*inline.finditer(text), *definitions.finditer(text)]:\n        target = match.group(1).strip('<>')\n        record = {'file': file.relative_to(repo).as_posix(), 'line': text.count('\\n', 0, match.start()) + 1, 'target': target}\n        if target.startswith('#') or re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) or target.startswith('//'):\n            ignored.append(record)\n            continue\n        local = re.sub(r'\\\\([\\\\() ])', r'\\1', unquote(urlsplit(target).path))\n        destination = (repo / local.lstrip('/') if local.startswith('/') else file.parent / local).resolve()\n        record['resolved'] = destination.relative_to(repo).as_posix() if destination.is_relative_to(repo) else str(destination)\n        checked.append(record)\n        file_checks += 1\n        if not destination.exists():\n            missing.append(record)\n    documents.append({'path': file.relative_to(repo).as_posix(), 'sha256': hashlib.sha256(file.read_bytes()).hexdigest(), 'checked': file_checks})\n\nreport = {\n    'schemaVersion': 1,\n    'recordedAtUtc': datetime.now(timezone.utc).isoformat(),\n    'command': ['python3', '/tmp/p0-p1-p2-continuation02-document-links-audit.py'],\n    'commandSource': Path(__file__).read_text(),\n    'scope': 'Existence of inline Markdown/image links and reference definitions in root README.md plus every .md below this continuation directory. URI schemes, protocol-relative URLs and anchor-only targets ignored; fragment/query removed from local paths. Fenced code examples excluded. No anchor validation, source/image qualification or HTTP requests.',\n    'documentCount': len(files), 'checked': len(checked), 'ignoredCount': len(ignored),\n    'missing': missing, 'allPassed': not missing, 'documents': documents, 'links': checked,\n\n}\noutput = root / 'validation/document-links.json'\noutput.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\\n')\nprint(json.dumps({'documents': len(files), 'checked': len(checked), 'missing': missing, 'report': output.relative_to(repo).as_posix()}))\nraise SystemExit(bool(missing))\n",
+  "scope": "Existence of inline Markdown/image links and reference definitions in root README.md plus every .md below this continuation directory. URI schemes, protocol-relative URLs and anchor-only targets ignored; fragment/query removed from local paths. Fenced code examples excluded. No anchor validation, source/image qualification or HTTP requests.",
+  "documentCount": 15,
+  "checked": 226,
+  "ignoredCount": 10,
+  "missing": [],
+  "allPassed": true,
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "39f58fc42ee0e4dfa64f72a752701d8eaeb1fe40859f96971374d56cd7aea6ea",
+      "checked": 87
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "sha256": "15b30b006b958ff69c71a0ed2ff4a5f6fff13e50fef1b8490cbe147d6993430f",
+      "checked": 18
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "sha256": "ab01e6a90a104550d848c2d01e0385ea4e4b6ebbc9d3210dc30897c68b363424",
+      "checked": 18
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "sha256": "bd8f84be137e9b83e8d89d4a4ccd948801ba4392c544d012514b6b88000e077a",
+      "checked": 11
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "sha256": "e1e7148adfebe546ed5086de4018362d66b88990afd4c3b498f0d81a426d3150",
+      "checked": 9
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "sha256": "c8e63dd01a6d49d0b49d6d9f571f5ea302f6d9a30615845e963bee9ee89b9b84",
+      "checked": 6
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/REPORT.md",
+      "sha256": "5d0f1ead2b6c82b0bcf73258b0088291e4de3a64203faee5ac047c22186c913b",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "sha256": "05b702f6e05d9e6d1f508314c47bf37bfc5d08fd81ed5d85791140c5b92468f4",
+      "checked": 14
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "sha256": "8e5b567f93b053d011d1280924291a6c506a9f7ce175cabda6eea67d0dfada52",
+      "checked": 11
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "sha256": "92cc1c5c32f81983f29e8e15c95ba9a6899123e93b91b5281f626d6d28a222f4",
+      "checked": 11
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "sha256": "87f62cdf2650e850b70520d8a7f80488b01e3a65b781f0b9ef49752382d11258",
+      "checked": 8
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/independent-review/REVIEW.md",
+      "sha256": "242da8d2f18ff280e1c33621972fa709bd26888796c69f4abff9d2a91dea319f",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/EXTINCTION-CONSUMER-REVIEW.md",
+      "sha256": "9cdca251c7331add28b7872e61f8421b4c425c0ce05764b14e56b943f10d0249",
+      "checked": 0
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "sha256": "305b527bfe20ac3f37bdcb3bb2235ddd24f8208cf8efb26acc47eb99c30baaeb",
+      "checked": 30
+    },
+    {
+      "path": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-mirror-reproduction.md",
+      "sha256": "401788edbcc1b84879b6dc625a500edd0aa2182d451643b9829a572807cac210",
+      "checked": 3
+    }
+  ],
+  "links": [
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 7,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 24,
+      "target": "vite.config.js",
+      "resolved": "vite.config.js"
+    },
+    {
+      "file": "README.md",
+      "line": 43,
+      "target": "config/dlc-profiles/",
+      "resolved": "config/dlc-profiles"
+    },
+    {
+      "file": "README.md",
+      "line": 45,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 82,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 82,
+      "target": "docs/assets/dlc-completion-2026-11-13/ui/AFTER/VALIDATION.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/ui/AFTER/VALIDATION.md"
+    },
+    {
+      "file": "README.md",
+      "line": 86,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/current.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/current.json"
+    },
+    {
+      "file": "README.md",
+      "line": 86,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 112,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/summary.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-continuity-3b892a7.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-continuity-3b892a7.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/work-batches-40.json"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 122,
+      "target": "src/game/combat/sourceKitPriority.js",
+      "resolved": "src/game/combat/sourceKitPriority.js"
+    },
+    {
+      "file": "README.md",
+      "line": 132,
+      "target": "docs/licensing/SURVIVAURE_AUTHORIZATION.md",
+      "resolved": "docs/licensing/SURVIVAURE_AUTHORIZATION.md"
+    },
+    {
+      "file": "README.md",
+      "line": 168,
+      "target": "src/game/tacticsTerrainRenderer.js",
+      "resolved": "src/game/tacticsTerrainRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 168,
+      "target": "src/game/tacticsUniversePresentationWave17.js",
+      "resolved": "src/game/tacticsUniversePresentationWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 168,
+      "target": "src/game/tacticsUniverseBattlefieldsWave17.js",
+      "resolved": "src/game/tacticsUniverseBattlefieldsWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 172,
+      "target": "docs/tactics-universes-2026-11-02/README.md",
+      "resolved": "docs/tactics-universes-2026-11-02/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 172,
+      "target": "docs/tactics-universes-2026-10-25/index.html",
+      "resolved": "docs/tactics-universes-2026-10-25/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 172,
+      "target": "docs/tactics-universes-2026-10-26/index.html",
+      "resolved": "docs/tactics-universes-2026-10-26/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 172,
+      "target": "docs/tactics-universes-2026-10-28/index.html",
+      "resolved": "docs/tactics-universes-2026-10-28/index.html"
+    },
+    {
+      "file": "README.md",
+      "line": 174,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 176,
+      "target": "docs/tactics-terrain-demo.html",
+      "resolved": "docs/tactics-terrain-demo.html"
+    },
+    {
+      "file": "README.md",
+      "line": 180,
+      "target": "package.json",
+      "resolved": "package.json"
+    },
+    {
+      "file": "README.md",
+      "line": 200,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/validation.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/validation.json"
+    },
+    {
+      "file": "README.md",
+      "line": 200,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/browser-checks.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/browser-checks.json"
+    },
+    {
+      "file": "README.md",
+      "line": 200,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/browser/production-assets-http.json"
+    },
+    {
+      "file": "README.md",
+      "line": 204,
+      "target": "docs/audits/w17-master-integration-2026-11-09.md",
+      "resolved": "docs/audits/w17-master-integration-2026-11-09.md"
+    },
+    {
+      "file": "README.md",
+      "line": 208,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md#vérifications-et-limites",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 210,
+      "target": "docs/assets/dlc-completion-2026-11-13/validation/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/validation/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 212,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 214,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 216,
+      "target": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 222,
+      "target": "src/App.jsx",
+      "resolved": "src/App.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 223,
+      "target": "src/components/",
+      "resolved": "src/components"
+    },
+    {
+      "file": "README.md",
+      "line": 224,
+      "target": "src/components/GameCanvas.jsx",
+      "resolved": "src/components/GameCanvas.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 225,
+      "target": "src/components/FighterMode.jsx",
+      "resolved": "src/components/FighterMode.jsx"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/engineRpg.js",
+      "resolved": "src/game/engineRpg.js"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/engineTactics.js",
+      "resolved": "src/game/engineTactics.js"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/engineSmash.js",
+      "resolved": "src/game/engineSmash.js"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "target": "src/game/engineFighter.js",
+      "resolved": "src/game/engineFighter.js"
+    },
+    {
+      "file": "README.md",
+      "line": 227,
+      "target": "src/game/combat/",
+      "resolved": "src/game/combat"
+    },
+    {
+      "file": "README.md",
+      "line": 227,
+      "target": "src/game/combatIdentity.js",
+      "resolved": "src/game/combatIdentity.js"
+    },
+    {
+      "file": "README.md",
+      "line": 228,
+      "target": "src/game/melee/",
+      "resolved": "src/game/melee"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsBattlefields.js",
+      "resolved": "src/game/tacticsBattlefields.js"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsUniverseBattlefields.js",
+      "resolved": "src/game/tacticsUniverseBattlefields.js"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsEnvironmentRenderer.js",
+      "resolved": "src/game/tacticsEnvironmentRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsTerrain.js",
+      "resolved": "src/game/tacticsTerrain.js"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsVerticalRuntime.js",
+      "resolved": "src/game/tacticsVerticalRuntime.js"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "target": "src/game/tacticsTerrainRenderer.js",
+      "resolved": "src/game/tacticsTerrainRenderer.js"
+    },
+    {
+      "file": "README.md",
+      "line": 230,
+      "target": "src/game/tacticsUniverseBattlefieldsWave15.js",
+      "resolved": "src/game/tacticsUniverseBattlefieldsWave15.js"
+    },
+    {
+      "file": "README.md",
+      "line": 230,
+      "target": "src/game/tacticsUniversePresentationWave15.js",
+      "resolved": "src/game/tacticsUniversePresentationWave15.js"
+    },
+    {
+      "file": "README.md",
+      "line": 231,
+      "target": "src/game/heroes.js",
+      "resolved": "src/game/heroes.js"
+    },
+    {
+      "file": "README.md",
+      "line": 231,
+      "target": "src/game/enemies.js",
+      "resolved": "src/game/enemies.js"
+    },
+    {
+      "file": "README.md",
+      "line": 232,
+      "target": "src/game/cards/",
+      "resolved": "src/game/cards"
+    },
+    {
+      "file": "README.md",
+      "line": 232,
+      "target": "src/game/missions/",
+      "resolved": "src/game/missions"
+    },
+    {
+      "file": "README.md",
+      "line": 233,
+      "target": "public/",
+      "resolved": "public"
+    },
+    {
+      "file": "README.md",
+      "line": 234,
+      "target": "scripts/",
+      "resolved": "scripts"
+    },
+    {
+      "file": "README.md",
+      "line": 235,
+      "target": "docs/",
+      "resolved": "docs"
+    },
+    {
+      "file": "README.md",
+      "line": 246,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/batch-plan-before.json"
+    },
+    {
+      "file": "README.md",
+      "line": 246,
+      "target": "src/game/combat/combatSourceDefinitionsWave17.js",
+      "resolved": "src/game/combat/combatSourceDefinitionsWave17.js"
+    },
+    {
+      "file": "README.md",
+      "line": 248,
+      "target": "scripts/combatCompletion.test.mjs",
+      "resolved": "scripts/combatCompletion.test.mjs"
+    },
+    {
+      "file": "README.md",
+      "line": 254,
+      "target": "AGENTS.md",
+      "resolved": "AGENTS.md"
+    },
+    {
+      "file": "README.md",
+      "line": 254,
+      "target": "docs/development/GAMEDEV_GUIDE.md",
+      "resolved": "docs/development/GAMEDEV_GUIDE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 254,
+      "target": ".ai-tools/README.md",
+      "resolved": ".ai-tools/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 271,
+      "target": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 272,
+      "target": "docs/assets/dlc-completion-2026-11-13/README.md",
+      "resolved": "docs/assets/dlc-completion-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 273,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/raster-lot-003/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 274,
+      "target": "docs/assets/p0-p1-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 275,
+      "target": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md",
+      "resolved": "docs/assets/p0-p1-menu-continuation-2026-11-13/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 276,
+      "target": "docs/audits/w17-master-integration-2026-11-09.md",
+      "resolved": "docs/audits/w17-master-integration-2026-11-09.md"
+    },
+    {
+      "file": "README.md",
+      "line": 277,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/current.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/current.md"
+    },
+    {
+      "file": "README.md",
+      "line": 277,
+      "target": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md",
+      "resolved": "docs/combat-fidelity-wave17-2026-11-02/CLOSURE.md"
+    },
+    {
+      "file": "README.md",
+      "line": 278,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/README.md",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 279,
+      "target": "docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv",
+      "resolved": "docs/combat-fidelity-wave16-2026-10-28/coverage-all.csv"
+    },
+    {
+      "file": "README.md",
+      "line": 280,
+      "target": "docs/tactics-universes-2026-11-02/README.md",
+      "resolved": "docs/tactics-universes-2026-11-02/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 280,
+      "target": "docs/tactics-terrain-verticality.md",
+      "resolved": "docs/tactics-terrain-verticality.md"
+    },
+    {
+      "file": "README.md",
+      "line": 281,
+      "target": "docs/cg/README.md",
+      "resolved": "docs/cg/README.md"
+    },
+    {
+      "file": "README.md",
+      "line": 282,
+      "target": "docs/rift-dossiers/catalog.json",
+      "resolved": "docs/rift-dossiers/catalog.json"
+    },
+    {
+      "file": "README.md",
+      "line": 283,
+      "target": "scripts/PORTAL_BOOSTER_PIPELINE.md",
+      "resolved": "scripts/PORTAL_BOOSTER_PIPELINE.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 3,
+      "target": "reservations.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/reservations.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 7,
+      "target": "gears-deadspace-040/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 8,
+      "target": "portal-l4d-040/REPORT.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/REPORT.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 9,
+      "target": "raster-lot-004-resume/imp-fireballer/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 9,
+      "target": "raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 10,
+      "target": "presentation-040/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 11,
+      "target": "presentation-040/batman-quarantine/inspection.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/batman-quarantine/inspection.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 12,
+      "target": "validation/EXTINCTION-CONSUMER-REVIEW.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/EXTINCTION-CONSUMER-REVIEW.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 13,
+      "target": "tactics-aperture/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 14,
+      "target": "menu-next/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 15,
+      "target": "cg-metadata/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 19,
+      "target": "audit/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 19,
+      "target": "audit/checkpoint-82a1f003/final-continuity-3b892a7.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-continuity-3b892a7.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 29,
+      "target": "audit/checkpoint-82a1f003/actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 31,
+      "target": "audit/checkpoint-82a1f003/actor-tasks.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-tasks.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 31,
+      "target": "audit/checkpoint-82a1f003/work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/work-batches-40.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 35,
+      "target": "validation/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md",
+      "line": 37,
+      "target": "validation/asset-byte-lineage.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/asset-byte-lineage.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-82a1f003/actor-task-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-82a1f003/summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/summary.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-82a1f003/actor-tasks.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-tasks.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 5,
+      "target": "checkpoint-82a1f003/validation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/validation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 19,
+      "target": "checkpoint-82a1f003/final-core-continuity-5667556.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-core-continuity-5667556.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 21,
+      "target": "checkpoint-82a1f003/final-continuity-3b892a7.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-continuity-3b892a7.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 23,
+      "target": "checkpoint-82a1f003/actor-import-closure.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-import-closure.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 25,
+      "target": "fps-freeze3-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/fps-freeze3-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 31,
+      "target": "checkpoint-82a1f003/portal-l4d-040-summon-delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/portal-l4d-040-summon-delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 35,
+      "target": "revan-presentation-independent-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/revan-presentation-independent-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 39,
+      "target": "extinction-14-baseline9899.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/extinction-14-baseline9899.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 39,
+      "target": "extinction-14-error-comparison.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/extinction-14-error-comparison.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 41,
+      "target": "extinction-14-original-tests-current.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/extinction-14-original-tests-current.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 45,
+      "target": "checkpoint-82a1f003/work-batches-40.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/work-batches-40.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 47,
+      "target": "baseline-adoption.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/baseline-adoption.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 47,
+      "target": "baseline-continuity-98991b161.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/baseline-continuity-98991b161.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 47,
+      "target": "runtime-baselines.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/runtime-baselines.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/README.md",
+      "line": 47,
+      "target": "refresh_core_checkpoint.py",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/refresh_core_checkpoint.py"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 7,
+      "target": "./delta-summary.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/delta-summary.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 7,
+      "target": "./semantic-delta.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/semantic-delta.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 7,
+      "target": "./capture-inputs.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/capture-inputs.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 19,
+      "target": "./unit-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/unit-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 22,
+      "target": "./current-metadata-check.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/current-metadata-check.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 23,
+      "target": "./bible-check.stdout.log",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/bible-check.stdout.log"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 23,
+      "target": "./bible-pilot-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/bible-pilot-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 24,
+      "target": "./bible-bounded-probes.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/bible-bounded-probes.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 25,
+      "target": "./bible-after.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/bible-after.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 26,
+      "target": "../validation/cg-metadata-full-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/cg-metadata-full-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md",
+      "line": 26,
+      "target": "../validation/cg-quarantine-bible-full-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/cg-quarantine-bible-full-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 17,
+      "target": "reserved-actors.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/reserved-actors.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 17,
+      "target": "plan.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/plan.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 18,
+      "target": "source-contracts.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/source-contracts.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 18,
+      "target": "references.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/references.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 19,
+      "target": "delta.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/delta.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 20,
+      "target": "test-receipt.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/test-receipt.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 20,
+      "target": "tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 21,
+      "target": "baseline-runtime.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/baseline-runtime.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/README.md",
+      "line": 21,
+      "target": "runtime-after.json.gz",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/runtime-after.json.gz"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 5,
+      "target": "./before/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/before/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 5,
+      "target": "./before-source-contract.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/before-source-contract.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 9,
+      "target": "./extraction-contract.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/extraction-contract.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 15,
+      "target": "./unit-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/unit-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 16,
+      "target": "./after/report.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/after/report.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md",
+      "line": 26,
+      "target": "./after/",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/after"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 3,
+      "target": "reserved-actors.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/reserved-actors.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 7,
+      "target": "validation/baseline-samples.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/baseline-samples.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 17,
+      "target": "validation/current-samples.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/current-samples.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 25,
+      "target": "../../p0-p1-p2-continuation-2026-11-13/p0-lot-004/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-2026-11-13/p0-lot-004/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 29,
+      "target": "diagnostic-current-poses.png",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/diagnostic-current-poses.png"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 29,
+      "target": "diagnostic-current-poses.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/diagnostic-current-poses.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 35,
+      "target": "validation/baseline-final-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/baseline-final-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 35,
+      "target": "baseline_presentation_loader.mjs",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/baseline_presentation_loader.mjs"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 36,
+      "target": "validation/final-runtime-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/final-runtime-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 37,
+      "target": "validation/fighter-presentation-regressions.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/fighter-presentation-regressions.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 38,
+      "target": "validation/browser/results.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/browser/results.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 39,
+      "target": "validation/before-bundle.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/before-bundle.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 39,
+      "target": "validation/after-bundle.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/after-bundle.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md",
+      "line": 40,
+      "target": "validation/lint.log",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/validation/lint.log"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 7,
+      "target": "../mancubus-flame-tank/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 13,
+      "target": "references/imp-classic-source.png",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/references/imp-classic-source.png"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 19,
+      "target": "source-plan.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/source-plan.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 24,
+      "target": "generation/imp-classic.prompt.txt",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/generation/imp-classic.prompt.txt"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 25,
+      "target": "generation/generation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/generation/generation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 31,
+      "target": "normalize_imp.py",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/normalize_imp.py"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 34,
+      "target": "validation/imp-technical-qa.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/validation/imp-technical-qa.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 35,
+      "target": "validation/imp-contact-96px.png",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/validation/imp-contact-96px.png"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 46,
+      "target": "validation/unit-tests.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/validation/unit-tests.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 48,
+      "target": "validation/fixture-build.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/validation/fixture-build.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md",
+      "line": 51,
+      "target": "validation/browser/results.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/validation/browser/results.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 9,
+      "target": "references/mancubus-classic-source.png",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/references/mancubus-classic-source.png"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 10,
+      "target": "source-plan.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/source-plan.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 19,
+      "target": "generation/mancubus-classic.prompt.txt",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/generation/mancubus-classic.prompt.txt"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 20,
+      "target": "generation/generation.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/generation/generation.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 21,
+      "target": "normalize_mancubus.py",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/normalize_mancubus.py"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 24,
+      "target": "validation/mancubus-technical-qa.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/mancubus-technical-qa.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 25,
+      "target": "validation/mancubus-contact-96px.png",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/mancubus-contact-96px.png"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 34,
+      "target": "validation/unit-tests.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/unit-tests.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 35,
+      "target": "validation/three-classic-doom-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/three-classic-doom-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 37,
+      "target": "validation/fixture-build.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/fixture-build.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "line": 40,
+      "target": "validation/browser/results.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/validation/browser/results.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 5,
+      "target": "references/source-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/references/source-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 11,
+      "target": "root-targeted-tests.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/root-targeted-tests.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 11,
+      "target": "../validation/",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 13,
+      "target": "browser/result.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/browser/result.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 21,
+      "target": "before-dock-correction/",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/before-dock-correction"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 21,
+      "target": "independent-review/",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/independent-review"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 21,
+      "target": "browser/layout-result.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/browser/layout-result.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md",
+      "line": 25,
+      "target": "../../../../scripts/fixtures/tactics-aperture-historical-amendment-2026-11-13.json",
+      "resolved": "scripts/fixtures/tactics-aperture-historical-amendment-2026-11-13.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 7,
+      "target": "source-contracts-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/source-contracts-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 7,
+      "target": "source-contracts-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/source-contracts-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 8,
+      "target": "character-png-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/character-png-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 8,
+      "target": "character-png-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/character-png-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 8,
+      "target": "crustaceous-rex-local-mirror.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-local-mirror.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 9,
+      "target": "presentation-editions-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/presentation-editions-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 9,
+      "target": "presentation-editions-final.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/presentation-editions-final.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 10,
+      "target": "tactics-full.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/tactics-full.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 10,
+      "target": "tactics-full.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/tactics-full.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 11,
+      "target": "app-bundle-matrix.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/app-bundle-matrix.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 11,
+      "target": "compiled-source-continuity.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/compiled-source-continuity.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 12,
+      "target": "dlc-standard-suite.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/dlc-standard-suite.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 12,
+      "target": "dlc-standard-suite.log",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/dlc-standard-suite.log"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 13,
+      "target": "cg-metadata-full-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/cg-metadata-full-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 13,
+      "target": "cg-quarantine-bible-full-final.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/cg-quarantine-bible-full-final.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 14,
+      "target": "../cg-metadata/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/cg-metadata/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 15,
+      "target": "../menu-next/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/menu-next/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 16,
+      "target": "../presentation-040/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 17,
+      "target": "../raster-lot-004-resume/imp-fireballer/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 17,
+      "target": "../raster-lot-004-resume/mancubus-flame-tank/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/mancubus-flame-tank/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 18,
+      "target": "../tactics-aperture/README.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/tactics-aperture/README.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 19,
+      "target": "ui-immersion-final-v3.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/ui-immersion-final-v3.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 19,
+      "target": "ui-immersion-final-v3.tap",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/ui-immersion-final-v3.tap"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 20,
+      "target": "EXTINCTION-CONSUMER-REVIEW.md",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/EXTINCTION-CONSUMER-REVIEW.md"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 21,
+      "target": "changed-source-lint.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/changed-source-lint.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 21,
+      "target": "changed-source-lint.log",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/changed-source-lint.log"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 22,
+      "target": "asset-byte-lineage.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/asset-byte-lineage.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 22,
+      "target": "verify-asset-lineage.mjs",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/verify-asset-lineage.mjs"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 24,
+      "target": "../audit/extinction-14-original-tests-current.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/extinction-14-original-tests-current.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md",
+      "line": 24,
+      "target": "../gears-deadspace-040/fps-impact-review.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/fps-impact-review.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-mirror-reproduction.md",
+      "line": 7,
+      "target": "crustaceous-rex-local-mirror.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-local-mirror.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-mirror-reproduction.md",
+      "line": 8,
+      "target": "crustaceous-rex-local-test.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-local-test.json"
+    },
+    {
+      "file": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-mirror-reproduction.md",
+      "line": 9,
+      "target": "crustaceous-rex-local-mirror-cleanup.json",
+      "resolved": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/crustaceous-rex-local-mirror-cleanup.json"
+    }
+  ]
+}

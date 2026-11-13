@@ -1,0 +1,9 @@
+[{"case": "before-1280", "ok": true, "error": null}, {"case": "after-1280", "ok": false, "error": "{'before': 75, 'after': 75, 'state': 'idle', 'draw': {'src': 'http://127.0.0.1:4198/sprites/generated/bosses/doom/imp-fireballer.png', 'args': [0, 0, 384, 256, -51, -61.625, 102, 68], 'naturalWidth': 1536, 'naturalHeight': 1024}}"}, {"case": "after-390", "ok": false, "error": "{'before': 75, 'after': 75, 'state': 'idle', 'draw': {'src': 'http://127.0.0.1:4198/sprites/generated/bosses/doom/imp-fireballer.png', 'args': [0, 0, 384, 256, -51, -61.625, 102, 68], 'naturalWidth': 1536, 'naturalHeight': 1024}}"}]
+Traceback (most recent call last):
+  File "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/browser_imp.py", line 136, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/imp-fireballer/browser_imp.py", line 134, in main
+    assert len(result)==3 and all(r['ok'] for r in result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,202 @@
+{
+  "reference": "app-bundle-matrix.json",
+  "baseCommit": "5667556bfb3d00e2cf9959c3d22c3038712cd5a2",
+  "checkedFiles": 4341,
+  "changedSinceCompilation": [
+    "package.json"
+  ],
+  "currentRuntimeInputsMatch": true,
+  "packageOnlyAmendment": "test:character-png now uses the same bounded Node22 source loader/serial execution as the successful verification; reversing that prefix reproduces the exact compilation-time package SHA. No dependency or app/build command changes.",
+  "reconstructedPackageSha256": "1a3b10cf31630fb83ca6583c2309e7573fb11ef73736a8c392815096ebf523ae",
+  "expectedPackageSha256": "1a3b10cf31630fb83ca6583c2309e7573fb11ef73736a8c392815096ebf523ae",
+  "additionalCssGitContinuity": {
+    "scope": "Post-compilation CSS checks against the unchanged Core2 commit, separate from the original JS/JSON/compiler-input before/after manifest. No claim that these CSS hashes were captured before compilation.",
+    "referenceCommit": "82a1f0035af46b85aac479a8a530963a28cfb219",
+    "files": [
+      {
+        "path": "src/App.css",
+        "sha256": "6e25a776d3e8102da5bacb3cb99f4a5fc662a2e01e6143140671a556d28c3d5c"
+      },
+      {
+        "path": "src/components/AnchorCustomizationPanel.css",
+        "sha256": "dacfa7f3ce1254fd21240e72254f3c0626188cc16974850555a1bbb1313c2ec5"
+      },
+      {
+        "path": "src/components/AuthCallbackScreen.css",
+        "sha256": "00ee54d3c521a88118944415994bdef6b877718f9ba5e479a40eca856f36f14b"
+      },
+      {
+        "path": "src/components/AuthImmersion.css",
+        "sha256": "9fd36bbaf2419829fd6de7309d04d36c1195976e234ff7cfb008a299b0d36982"
+      },
+      {
+        "path": "src/components/CanonRescuePanel.css",
+        "sha256": "84786b13f8937149507e7d0afac47ce0da26878823ba7b40099d498217e42b71"
+      },
+      {
+        "path": "src/components/CatalogPagination.css",
+        "sha256": "5e0c2480e3dde811736d2f35f745b2e6c10662bab43e87955bf70d4e4c6ef686"
+      },
+      {
+        "path": "src/components/CharacterWardrobe.css",
+        "sha256": "88455f8e5951390f166b0b08f4e6a3f1075d2c03615de50e63b19e12c54253ba"
+      },
+      {
+        "path": "src/components/CustomBattleMode.css",
+        "sha256": "7f8f06cd3ff37497c3ab473ea4de74eba9c37b5d47191969e0aa75b1fdddcf4d"
+      },
+      {
+        "path": "src/components/DlcInstallationPanel.css",
+        "sha256": "82eb07227c7013c681482e9e556601fbc4519be6f6e677c19caa0389a6fb8bdc"
+      },
+      {
+        "path": "src/components/ExtinctionAimReadout.css",
+        "sha256": "015bd546cbe7feb4f70ce30a7342d912d230def698bb500f45508f5000fc9872"
+      },
+      {
+        "path": "src/components/ExtinctionFighterBriefing.css",
+        "sha256": "c2e12b460bac0004b4455872565b5f3a6797267bdb62e6aef58183077c998221"
+      },
+      {
+        "path": "src/components/GameSystemSections.css",
+        "sha256": "58177698641b8f8c1b7b0ef254e4e21d05978736e49be6bf0786c83f6e66a17a"
+      },
+      {
+        "path": "src/components/HubCommandDeck.css",
+        "sha256": "ebac4a59cd2970af44c87d85d3ae7882df60b82540fecd72be136487102c86aa"
+      },
+      {
+        "path": "src/components/HubImmersion.css",
+        "sha256": "ae40a779aef0e1dfceda85b17c537b542e411dfa7dc50aec231854fa91cb4402"
+      },
+      {
+        "path": "src/components/HubLogisticsWorkspace.css",
+        "sha256": "6339964afa8ef670a4801255ecf298f1bf7d45005bbdf5686f58138a1b83e899"
+      },
+      {
+        "path": "src/components/HubWorkspaceFrame.css",
+        "sha256": "7c87c5ad4a7a63b638695f0296a39e61818d3600961be9ffb5df83e2e6a96803"
+      },
+      {
+        "path": "src/components/IntroImmersion.css",
+        "sha256": "9570636a80c9a6d55781b0e5b94cfd7afed51c042ec8dba75545e6826086919f"
+      },
+      {
+        "path": "src/components/MissionDirectory.css",
+        "sha256": "f62d0ad642cc176a2c81bf2fd7ac103a32012515ef61f696f3dd69a4300dc54d"
+      },
+      {
+        "path": "src/components/MosaicCharacterMissions.css",
+        "sha256": "f1c5c200cca02a453b0950ab19671f08662f7e5d35534b961894987949080f7b"
+      },
+      {
+        "path": "src/components/MosaicCityHub.css",
+        "sha256": "8f6262602f7053c12a8435108f3a2ef8f7865646ea15b4b3594264d7013c699b"
+      },
+      {
+        "path": "src/components/MosaicPocketTerminal.css",
+        "sha256": "0cbb7ae4a61689db54715ee099da5765d3047e7b7fdef93849fa98b35d1142df"
+      },
+      {
+        "path": "src/components/MosaicResidentConversation.css",
+        "sha256": "73575e45987f4a1d306d16710d4d59a34de1eb80bf17454a6ca7c61bce14aef6"
+      },
+      {
+        "path": "src/components/MosaicResidentDialogue.css",
+        "sha256": "7141c42c177d7d2b0ce2d7a02a655908edf2069a642ddb0704dff026336aae30"
+      },
+      {
+        "path": "src/components/NexusFieldBriefing.css",
+        "sha256": "3df88a36afa797dc1f342f55c60d03ed61cfeb6b200c3ee293689eebf655698d"
+      },
+      {
+        "path": "src/components/OcDlcLibrary.css",
+        "sha256": "c624d3a015b469614927275e0beb52c09a63b8d963ff7e786567b4146093d198"
+      },
+      {
+        "path": "src/components/PiratesCursePanel.css",
+        "sha256": "647d87d5100e2760ce8b89190a3801e675326017ef1749af783b61ac2b95cf1b"
+      },
+      {
+        "path": "src/components/PortalImmersion.css",
+        "sha256": "9728fdd11460a059112ef6372abc4770a642bb4e78e8926fa6844932bee46f20"
+      },
+      {
+        "path": "src/components/RaamEncounterPanel.css",
+        "sha256": "af74ac74c15909445790994aff9b70cedeb7a24b4da74b4b179ed33227818fd9"
+      },
+      {
+        "path": "src/components/RaceKart3D.css",
+        "sha256": "4e83af0ac30549d60aac5e9582c5bbbf52d9f30f0b167242ec7b82f91a9e302d"
+      },
+      {
+        "path": "src/components/RegulationImagePreview.css",
+        "sha256": "37752fee8bdfb24e28b8e00e341cc89031f15acf24b64eddc5066dfe30f45306"
+      },
+      {
+        "path": "src/components/RexEncounterPanel.css",
+        "sha256": "092675dea8b54b8ea524ef82e80c4ee3958a1cdf454cd20d874a600b24084cdf"
+      },
+      {
+        "path": "src/components/SignatureCodexPanel.css",
+        "sha256": "7a12273f9d6256ccd8469b949af6f4036d2e910ff00d7e0f72442852fc6d7709"
+      },
+      {
+        "path": "src/components/SourceScenePanel.css",
+        "sha256": "0a657dbe693aada07841b229e0a09378cd6c229025b00f52c146a441105e9581"
+      },
+      {
+        "path": "src/components/SquadProposalPanel.css",
+        "sha256": "45be208436be153b1827422910053ab06605ded70970c210b8b4d26a2608925e"
+      },
+      {
+        "path": "src/components/UniverseArchiveDialog.css",
+        "sha256": "6f415b3ff058d779f9d6b3391450a108664f278557932f512811b6b588723b97"
+      },
+      {
+        "path": "src/components/WardrobeBoosterBonus.css",
+        "sha256": "643357fb617c385ecb0f20ea812301f89d2996fc61bbdc0a92724ebe358d5204"
+      },
+      {
+        "path": "src/components/admin/portalLab.css",
+        "sha256": "43cfa257f895bd78b077a35c44d76976f6675cd29c990f52dc177b10957b6cbd"
+      },
+      {
+        "path": "src/components/cg/cgGallery.css",
+        "sha256": "176b153e7cc6297ce9c9e27b338315bfcdca435b4a6e5a20c61a2ea5f97daa84"
+      },
+      {
+        "path": "src/components/cg/cgImmersion.css",
+        "sha256": "de7d9be7638989ca9496991b55a4dc0110ed9148edb37de214d2432d5a318050"
+      },
+      {
+        "path": "src/components/collection/archiveDrawer.css",
+        "sha256": "703e23aa18e82282f3dd47932325a0032862c9980778b217c7dbd8ef3124a9a2"
+      },
+      {
+        "path": "src/components/collection/collection.css",
+        "sha256": "e0705a489ea434f89e5f71e906afb9b436c9d4ee3e255341981cd0669bff9387"
+      },
+      {
+        "path": "src/components/collection/collectionImmersion.css",
+        "sha256": "ce99353d8db4dfd09382adc7e257edf3bb2154288334f92e3497802de7df99a8"
+      },
+      {
+        "path": "src/components/combat-immersion.css",
+        "sha256": "6b7888516b3e005508b93e9833c35a31d6494abcbff2dd5cf5f296cfd63d5e13"
+      },
+      {
+        "path": "src/components/game-system.css",
+        "sha256": "425425c6c500f237984f3702ebbccc81e9df6c178212141c20abf39b5f97edd9"
+      },
+      {
+        "path": "src/components/visuals/portalAtlas.css",
+        "sha256": "a8a3b0131dd3d7ef815d4f69c72a26550f3b866e8d071bd966bbd46f52b05240"
+      },
+      {
+        "path": "src/index.css",
+        "sha256": "39ab77390d9bdb12f3b2d3cd2fa667321eecf8cfc1db55a509d088c0dc689dd2"
+      }
+    ]
+  }
+}

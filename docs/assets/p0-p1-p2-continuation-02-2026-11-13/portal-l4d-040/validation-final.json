@@ -1,0 +1,46 @@
+{
+  "utc": "2026-11-13T14:44:33.042206+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/portalLeft4DeadSourceContracts20261113.test.mjs"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 3.699,
+  "counts": {
+    "tests": 58,
+    "pass": 58,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "scripts/portalLeft4DeadSourceContracts20261113.test.mjs": "f79ff106acd877961733e54f63ae81297bafbf1480ef9a83666ce845dcdb87b4",
+    "DLC/Portal/data/heroes.js": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec",
+    "DLC/Portal/data/enemies.js": "5bd6a9979f1023887a0ed9c62bbe8db78f9bd93333514ff1182ed1c807b71841",
+    "DLC/Portal/data/loreAccuratePacks.js": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688",
+    "DLC/Portal/data/loreWorldBossOverrides.js": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6",
+    "DLC/Portal/data/sourceContracts20261113.js": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee",
+    "DLC/Portal/manifest.json": "b67dcc0f8a0baba6e8ba579a264e49d25181973600953cc8577b6cef34f65cb3",
+    "DLC/Left4Dead/data/heroes.js": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78",
+    "DLC/Left4Dead/data/enemies.js": "30599735f1edfd11a7814cc7fdcd17f026d2e50315812021022fd034d0b34a51",
+    "DLC/Left4Dead/data/expandedUniverses.js": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad",
+    "DLC/Left4Dead/data/sourceContracts20261113.js": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456",
+    "DLC/Left4Dead/manifest.json": "e8770ad61ea8b132a56ff19816b21b82ae47dc4c45d36d098918bf66c219efb0",
+    "src/game/heroes.js": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+    "src/game/enemies.js": "f95d0bf2dc7f8b47b23e0730717aa779e00989522412552d22746118bc7ebf29",
+    "src/game/rpgTargeting.js": "c5781375201819c38e74b8f836c3131540d635a31efed3c6b02c55bac15b71b3",
+    "src/game/engineRpg.js": "6faffb1f138597b61540d6f2c17e11f3f93add006060190939d1f2d62ff5bcdb",
+    "src/game/combatIdentity.js": "408f602f8c490a7c3046b1ef0f2aa7d83eaa4cfca98047b22926dc65af71ba01",
+    "src/game/signatureSourceKits.js": "fda784a8f9d45ae9178c6dbfb562345180d364912b80b002ecb507bf441162de",
+    "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/source-contracts-040.json": "5729be6bf5a6f085427a6eb096f7a89b1a8e95e3fd8d06b00b8f7e7e37e09b69"
+  },
+  "sourceUnchangedDuringRun": true,
+  "scope": "Pure source-role contracts, complete prepared/native/RPG profile comparisons and real EngineRpg calls on both sides plus disposal; no Vite, image hydration or visual certification."
+}

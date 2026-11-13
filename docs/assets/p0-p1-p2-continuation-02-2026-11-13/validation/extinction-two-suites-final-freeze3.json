@@ -1,0 +1,53 @@
+{
+  "scope": "two",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--no-warnings",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "--test",
+    "--test-concurrency=1",
+    "scripts/extinctionFighterProfiles.test.mjs",
+    "scripts/extinctionSchematicView.test.mjs"
+  ],
+  "cwd": "/workspace/multiverse-breach",
+  "exitCode": 0,
+  "elapsedSeconds": 21.628,
+  "sourceBeforeSha256": {
+    "src/game/extinctionFighterProfiles.js": "4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc",
+    "src/game/extinctionSchematicView.js": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191",
+    "src/game/extinctionSignatures.js": "1c2c36a3543ec20b1eddbd44910b91363c5ac3d2f95ce29f835c8f8b5f715dd1",
+    "src/game/extinctionAimReadout.js": "826b47af9a07c6077e7a904e0705ffc836a9b0d121a017d05c84b9b881964966",
+    "scripts/extinctionSourceConsumer20261113.test.mjs": "68ad394c3cbb02c3411bc98dc596d6a253adfe3e22387bb02a8f731f8b0d6e50",
+    "scripts/extinctionFighterProfiles.test.mjs": "2f4406705706edc83fb7cc6c1b66e06a1c6805f18eaea3e188940b59c8270905",
+    "scripts/extinctionSchematicView.test.mjs": "7d8ba7f17c010475cdef36949d28435588b217729710fb07297855a55fe011b0",
+    "scripts/fixtures/extinctionSourceConsumerAmendment.mjs": "067909f0cb7fcf3169699a239b2e3f61788ef378591033a7c0a7fd47cc7f1070",
+    "scripts/fixtures/extinction-source-consumer-amendment-2026-11-13.json": "606f73f43fd4aa6ceb9e00198884f2b3db167d14ba4be1f981f5296addf0b0b3"
+  },
+  "sourceAfterSha256": {
+    "src/game/extinctionFighterProfiles.js": "4ffe9ec65bd4ceb0997fe954d58542c5a19b50532c16cdb9e09f593570dae6fc",
+    "src/game/extinctionSchematicView.js": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191",
+    "src/game/extinctionSignatures.js": "1c2c36a3543ec20b1eddbd44910b91363c5ac3d2f95ce29f835c8f8b5f715dd1",
+    "src/game/extinctionAimReadout.js": "826b47af9a07c6077e7a904e0705ffc836a9b0d121a017d05c84b9b881964966",
+    "scripts/extinctionSourceConsumer20261113.test.mjs": "68ad394c3cbb02c3411bc98dc596d6a253adfe3e22387bb02a8f731f8b0d6e50",
+    "scripts/extinctionFighterProfiles.test.mjs": "2f4406705706edc83fb7cc6c1b66e06a1c6805f18eaea3e188940b59c8270905",
+    "scripts/extinctionSchematicView.test.mjs": "7d8ba7f17c010475cdef36949d28435588b217729710fb07297855a55fe011b0",
+    "scripts/fixtures/extinctionSourceConsumerAmendment.mjs": "067909f0cb7fcf3169699a239b2e3f61788ef378591033a7c0a7fd47cc7f1070",
+    "scripts/fixtures/extinction-source-consumer-amendment-2026-11-13.json": "606f73f43fd4aa6ceb9e00198884f2b3db167d14ba4be1f981f5296addf0b0b3"
+  },
+  "logSha256": "b2e13f26ab3667dbbe31e819c6efc3715097aa7a2fb8a2b5f4419203d0551a04",
+  "footer": [
+    "# tests 54",
+    "# pass 54",
+    "# fail 0",
+    "# skipped 0",
+    "# duration_ms 21546.959117"
+  ],
+  "failures": [],
+  "visual1to1Verified": false,
+  "sourceUnchangedDuringRun": true
+}

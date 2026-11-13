@@ -1,0 +1,30 @@
+{
+  "scope": "Independent native-import diagnostic during in-flight presentation edits; not a frozen final source review.",
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "actorOverride": {
+    "id": "combat:revan:2",
+    "sourceHeroId": "darth_revan"
+  },
+  "observedOriginalBindingApproved": false,
+  "observedPresentationKind": "reviewed-base16-presentation",
+  "observedNormalizedClipActorId": "darth_revan",
+  "cause": "presentationCatalog normalized the ID to sourceHeroId before asking the exact reviewed-binding predicate.",
+  "ownerNotified": true,
+  "correctionAcknowledged": "Evaluate the reviewed helper on the original actor before legacy source normalization and add composite-ID negative coverage.",
+  "sourceFilesModifiedByReviewer": [],
+  "mediaReadOrGenerated": 0,
+  "artApprovals": 0,
+  "secondStageAfterInitialFix": {
+    "originalBindingApproved": false,
+    "scriptProvenanceKind": "explicit-character-presentation",
+    "observedSampleAssetKind": "reviewed-character-base16",
+    "phases": [
+      "intro",
+      "outro",
+      "victory"
+    ],
+    "cause": "The legacy script still normalizes actor.id, and resolveAsset called the new reviewed-frame helper without checking script provenance.",
+    "ownerNotified": true,
+    "requiredRegressionCoverage": "Assert sampled asset kind/sheet for the composite actor, not merely the script provenance label."
+  }
+}

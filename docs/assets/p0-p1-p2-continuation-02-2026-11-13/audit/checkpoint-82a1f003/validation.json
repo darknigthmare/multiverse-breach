@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "sourceCommit": "82a1f0035af46b85aac479a8a530963a28cfb219",
+  "baselineLedgerSourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+  "baselineLedgerGzip": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-tasks.json.gz",
+  "baselineLedgerSha256": "d3250f05145be152ef4ec6c6b24fa9ea3b753d1947f2d0757fdeee120d2ebf67",
+  "baselineAdoptionSha256": "9da89d6010b1424cd9c5d046906b398284f62c737e8cb5d6e7ae5a5548a01981",
+  "runtimeBaselineManifestSha256": "40f67d79db6229dbf0dc0ee47580ab9083934e6cd19c79fccb58d797d892fedb",
+  "sourceFilesRechecked": 3873,
+  "changedSnapshotSources": [],
+  "pinnedAuditHelpers": {
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/prepare_source_snapshot.py": "dca985691b5d1b0bc78060f1dabf12cdbdc6078794ada14fb95e1d75eda5a4ab",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/actor_task_delta.py": "b0311b78105567e74bf17f95fc0d211431da17c1d23662de51da3daf8276fc92",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs": "7b5e358857a9dacfe7142216cca1e848141f357b2dca9794abbc0d91d2e43b06",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py": "7fe5fe32c8a23c1da128f5ff2f6c17a89560d915ab393b37aa782a99873e5d78"
+  },
+  "cohorts": [
+    {
+      "activityId": "gears-deadspace-040",
+      "actors": 40,
+      "reservationSha256": "9ead8aeebcbc6d132a21b59fa4430c89642c7f5ff6433a535ebcf6e705758412",
+      "review": "gears-deadspace-040-review.json",
+      "removedSourceFindingsByCode": {
+        "INCARNATION_UNSPECIFIED": 38,
+        "REFERENCE_MISSING": 38,
+        "VISUAL_CONTRACT_MISSING": 38,
+        "GENERIC_TECHNIQUE_NAMES": 8
+      },
+      "addedSourceFindingsByCode": {
+        "REFERENCE_SCENE_REVIEW": 38
+      },
+      "summonResolverChangesRequiringReview": 15,
+      "signatureLossesRequiringReview": []
+    },
+    {
+      "activityId": "portal-l4d-040",
+      "actors": 40,
+      "reservationSha256": "3e12d041fee01a69a650ff0181452f60f8dc6ee39b1988373de7fc3893dd51d9",
+      "review": "portal-l4d-040-review.json",
+      "removedSourceFindingsByCode": {
+        "INCARNATION_UNSPECIFIED": 37,
+        "REFERENCE_MISSING": 36,
+        "VISUAL_CONTRACT_MISSING": 36,
+        "GENERIC_TECHNIQUE_NAMES": 9
+      },
+      "addedSourceFindingsByCode": {
+        "REFERENCE_SCENE_REVIEW": 36
+      },
+      "summonResolverChangesRequiringReview": 16,
+      "signatureLossesRequiringReview": []
+    },
+    {
+      "activityId": "raster-lot-004-resume",
+      "actors": 40,
+      "reservationSha256": "87f1d391280e22d0a6bf4c37ff985975944e127768b72d9c490bdf06e6d17724",
+      "review": "raster-lot-004-resume-review.json",
+      "removedSourceFindingsByCode": {
+        "INCARNATION_UNSPECIFIED": 2,
+        "REFERENCE_MISSING": 2,
+        "VISUAL_CONTRACT_MISSING": 2
+      },
+      "addedSourceFindingsByCode": {
+        "REFERENCE_SCENE_REVIEW": 2
+      },
+      "summonResolverChangesRequiringReview": 0,
+      "signatureLossesRequiringReview": []
+    },
+    {
+      "activityId": "presentation-040",
+      "actors": 40,
+      "reservationSha256": "19c5a81bbd05cce8a74878cda4160ea2f6d0627b7abc79fdd3ddbbe0edb710c5",
+      "review": "presentation-040-review.json",
+      "removedSourceFindingsByCode": {},
+      "addedSourceFindingsByCode": {},
+      "summonResolverChangesRequiringReview": 0,
+      "signatureLossesRequiringReview": []
+    }
+  ],
+  "reservedActors": 160,
+  "cgHeroSourcePinsRequiringReview": 31,
+  "actorsAddedRequiringReview": [],
+  "actorsRemovedRequiringReview": [],
+  "outsideReservationChangedActors": [],
+  "removedSourceFindingsByPriority": {
+    "P1": 248
+  },
+  "addedOpenFindingsByPriority": {
+    "P2": 76,
+    "P1": 1
+  },
+  "historicalQueueBytesUnchanged": true,
+  "historicalQueueSha256": "b44f08f2428708380959b676d21950466bc1674be9b9b8eed0b727fe6a0affbf",
+  "commands": [
+    {
+      "name": "snapshot",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/prepare_source_snapshot.py",
+        "--repo",
+        "/workspace/multiverse-breach",
+        "--revision",
+        "82a1f0035af46b85aac479a8a530963a28cfb219",
+        "--out",
+        "/tmp/actor-audit-turn02-56akjy4x/source",
+        "--manifest",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json"
+      ],
+      "exitCode": 0,
+      "log": "snapshot.log",
+      "logSha256": "ba9d5c8eb07d48997b7d3cc54d6f562ddefe3f6f7400eaebdd10428434be54cf"
+    },
+    {
+      "name": "export",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=1024",
+        "--no-warnings",
+        "--loader",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/sourceSceneTestLoader.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/exportActorFidelityBacklog.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/export",
+        "82a1f0035af46b85aac479a8a530963a28cfb219",
+        "/tmp/actor-audit-turn02-56akjy4x/source/complete-tree.json",
+        "82a1f0035af46b85aac479a8a530963a28cfb219"
+      ],
+      "exitCode": 0,
+      "log": "export.log",
+      "logSha256": "48d348cd6e26a0d318685e5fa0e73a35e88aeb8956d439f2b905afd03e81c5c4"
+    },
+    {
+      "name": "global-delta",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/actor_task_delta.py",
+        "--before",
+        "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+        "--after",
+        "/tmp/actor-audit-turn02-56akjy4x/after-ledger.json",
+        "--out",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json"
+      ],
+      "exitCode": 0,
+      "log": "global-delta.log",
+      "logSha256": "03b9d398a4f11e5d1664a187c7a231438f3b319632dc91839621467471c7691d"
+    },
+    {
+      "name": "gears-deadspace-040-probe",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=1024",
+        "--no-warnings",
+        "--loader",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/sourceSceneTestLoader.mjs",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/source",
+        "/tmp/actor-audit-turn02-56akjy4x/gears-deadspace-040-keys.json",
+        "/tmp/actor-audit-turn02-56akjy4x/gears-deadspace-040-after.json"
+      ],
+      "exitCode": 0,
+      "log": "gears-deadspace-040-probe.log",
+      "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+    },
+    {
+      "name": "gears-deadspace-040-review",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+        "--baseline",
+        "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+        "--before",
+        "/tmp/actor-audit-turn02-56akjy4x/gears-deadspace-040-before.json",
+        "--after",
+        "/tmp/actor-audit-turn02-56akjy4x/gears-deadspace-040-after.json",
+        "--overlay",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json",
+        "--out",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/gears-deadspace-040-review.json"
+      ],
+      "exitCode": 0,
+      "log": "gears-deadspace-040-review.log",
+      "logSha256": "9aaae9dfe35defa2873990c4f14a3e467bae2232d736e1a081223e57daa33046"
+    },
+    {
+      "name": "portal-l4d-040-probe",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=1024",
+        "--no-warnings",
+        "--loader",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/sourceSceneTestLoader.mjs",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/source",
+        "/tmp/actor-audit-turn02-56akjy4x/portal-l4d-040-keys.json",
+        "/tmp/actor-audit-turn02-56akjy4x/portal-l4d-040-after.json"
+      ],
+      "exitCode": 0,
+      "log": "portal-l4d-040-probe.log",
+      "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+    },
+    {
+      "name": "portal-l4d-040-review",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+        "--baseline",
+        "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+        "--before",
+        "/tmp/actor-audit-turn02-56akjy4x/portal-l4d-040-before.json",
+        "--after",
+        "/tmp/actor-audit-turn02-56akjy4x/portal-l4d-040-after.json",
+        "--overlay",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json",
+        "--out",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/portal-l4d-040-review.json"
+      ],
+      "exitCode": 0,
+      "log": "portal-l4d-040-review.log",
+      "logSha256": "9abc453f4f3da5907cc80c4c55fd08b460e65ce8adae8064b3e0fd1a94b4f515"
+    },
+    {
+      "name": "raster-lot-004-resume-probe",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=1024",
+        "--no-warnings",
+        "--loader",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/sourceSceneTestLoader.mjs",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/source",
+        "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-keys.json",
+        "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-after.json"
+      ],
+      "exitCode": 0,
+      "log": "raster-lot-004-resume-probe.log",
+      "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+    },
+    {
+      "name": "raster-lot-004-resume-review",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+        "--baseline",
+        "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+        "--before",
+        "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-before.json",
+        "--after",
+        "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-after.json",
+        "--overlay",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json",
+        "--out",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/raster-lot-004-resume-review.json"
+      ],
+      "exitCode": 0,
+      "log": "raster-lot-004-resume-review.log",
+      "logSha256": "39a2e3e71a52bdb2d71a185a00ad8f227e67f4171c7954eb8c5d433411914dd1"
+    },
+    {
+      "name": "presentation-040-probe",
+      "command": [
+        "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+        "--max-old-space-size=1024",
+        "--no-warnings",
+        "--loader",
+        "/tmp/actor-audit-turn02-56akjy4x/source/scripts/sourceSceneTestLoader.mjs",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/inspect_actor_lot.mjs",
+        "/tmp/actor-audit-turn02-56akjy4x/source",
+        "/tmp/actor-audit-turn02-56akjy4x/presentation-040-keys.json",
+        "/tmp/actor-audit-turn02-56akjy4x/presentation-040-after.json"
+      ],
+      "exitCode": 0,
+      "log": "presentation-040-probe.log",
+      "logSha256": "5d10d406b4b03eb285a2931501a581191811b0a45d8897dbefa45d9fc5eaad9d"
+    },
+    {
+      "name": "presentation-040-review",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-2026-11-13/audit/review_actor_lot.py",
+        "--baseline",
+        "/tmp/actor-audit-turn02-56akjy4x/before-ledger.json",
+        "--before",
+        "/tmp/actor-audit-turn02-56akjy4x/presentation-040-before.json",
+        "--after",
+        "/tmp/actor-audit-turn02-56akjy4x/presentation-040-after.json",
+        "--overlay",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/source-inputs.json",
+        "--out",
+        "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/presentation-040-review.json"
+      ],
+      "exitCode": 0,
+      "log": "presentation-040-review.log",
+      "logSha256": "a6941943995d59eaa3a88b6a2a3bcb0e0d069b10f450bff1dbf6fa6b70f3a3ec"
+    }
+  ],
+  "compressedRetention": [
+    {
+      "compressedPath": "actor-tasks.json.gz",
+      "compressedBytes": 578245,
+      "compressedSha256": "6c2be99607de7233df04f229e98113cd765f14eb88bf21812f1fe9767c447f81",
+      "originalPathUsed": "/tmp/actor-audit-turn02-56akjy4x/after-ledger.json",
+      "originalBytes": 14230798,
+      "originalSha256": "ec7fb34c4d44b7f637e155e5349d3bab86904b9bfb58ad9776731ecc83e777cc"
+    },
+    {
+      "compressedPath": "gears-deadspace-040-runtime.json.gz",
+      "compressedBytes": 49317,
+      "compressedSha256": "7c3dee26bab196e831f50c300ad1531b214fffa3905a28d6eca6c2b5c0a10692",
+      "originalPathUsed": "/tmp/actor-audit-turn02-56akjy4x/gears-deadspace-040-after.json",
+      "originalBytes": 1002745,
+      "originalSha256": "436517452826d63a068d61ad1ff35a01a25637df3f20869b2fe386d4021f8353"
+    },
+    {
+      "compressedPath": "portal-l4d-040-runtime.json.gz",
+      "compressedBytes": 55459,
+      "compressedSha256": "923abb87d9bce30d5e626df7bd229cfbac4dd5599e16682ed56b689067a8bde7",
+      "originalPathUsed": "/tmp/actor-audit-turn02-56akjy4x/portal-l4d-040-after.json",
+      "originalBytes": 1054920,
+      "originalSha256": "cb382c79548170ea09a28fffa8fd8f12b2b007c05fbd41a6c7bca06098a6595e"
+    },
+    {
+      "compressedPath": "raster-lot-004-resume-runtime.json.gz",
+      "compressedBytes": 8180,
+      "compressedSha256": "336293884efd780d15758bec2b57950f86cda15c3634b69efbb7679cf651f2dd",
+      "originalPathUsed": "/tmp/actor-audit-turn02-56akjy4x/raster-lot-004-resume-after.json",
+      "originalBytes": 369600,
+      "originalSha256": "ed6470cc5bcf6276a33d9840dbaf7d20a5d11300a2ff3d7d7106d5aa52b522a2"
+    },
+    {
+      "compressedPath": "presentation-040-runtime.json.gz",
+      "compressedBytes": 66435,
+      "compressedSha256": "5dd4144630a7c36cd1e832e9632c6d3e56142e7fb4862ccb03516a8c2c0d8005",
+      "originalPathUsed": "/tmp/actor-audit-turn02-56akjy4x/presentation-040-after.json",
+      "originalBytes": 1350572,
+      "originalSha256": "d23186a4f5efe998039bcae7232ad3c03213ea9ce379ec979ddf1712a2398a0e"
+    }
+  ],
+  "rawTemporaryRun": "/tmp/actor-audit-turn02-56akjy4x",
+  "scriptSha256": "7151e6a354bffb30c7ede04b20bc7b4fc81e7121433686f06187df047e3dc46d",
+  "fullActorClosures": 0,
+  "artApprovals": 0,
+  "visual1to1Verified": false,
+  "mediaCopiedOrHydrated": 0
+}

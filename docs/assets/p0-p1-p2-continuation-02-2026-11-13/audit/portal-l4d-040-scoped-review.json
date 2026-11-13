@@ -1,0 +1,1339 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent exact40 source/resolver comparison. Removed source findings are not completed actors, visual approvals, new gameplay or 1:1 certification.",
+  "inputs": {
+    "baseline": {
+      "path": "/tmp/scoped-audit-02-sar5a284/ledger.json",
+      "sha256": "d3250f05145be152ef4ec6c6b24fa9ea3b753d1947f2d0757fdeee120d2ebf67"
+    },
+    "before": {
+      "path": "/tmp/scoped-audit-02-sar5a284/portal-l4d-040-before.json",
+      "sha256": "20c14d176783faea6fb5f4c0d6135ae0a158d8743ba93b6e62da9fc4894fc167"
+    },
+    "after": {
+      "path": "/tmp/scoped-audit-02-sar5a284/portal-l4d-040-current.json",
+      "sha256": "cb382c79548170ea09a28fffa8fd8f12b2b007c05fbd41a6c7bca06098a6595e"
+    },
+    "overlay": {
+      "path": "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/validation-final.json",
+      "sha256": "41451925b2a0a7462d2f8da97ab3d339250051c76c0e839d8d1b2cbe1247a886"
+    }
+  },
+  "actors": 40,
+  "actorKeysPreserved": true,
+  "removedSourceFindings": [
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson_echo\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Security Turret\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Security Turret\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Security Turret\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Defective Red Eye Turret\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Defective Red Eye Turret\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Defective Red Eye Turret\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Frankenturret Cube\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Frankenturret Cube\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Frankenturret Cube\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Mount\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Mount\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Mount\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Excursion Funnel Hazard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Excursion Funnel Hazard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Excursion Funnel Hazard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Prototype\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Prototype\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Prototype\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Gel Pump Hazard\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Gel Pump Hazard\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Gel Pump Hazard\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Wheatley Central AI\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Wheatley Central AI\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Wheatley Central AI\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Neurotoxin Vent System\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Neurotoxin Vent System\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Neurotoxin Vent System\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Fact Core Logic Snare\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Fact Core Logic Snare\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Fact Core Logic Snare\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Space Core Vacuum Loop\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Space Core Vacuum Loop\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Space Core Vacuum Loop\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:GLaDOS Central Core\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:GLaDOS Central Core\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:GLaDOS Central Core\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "code": "GENERIC_TECHNIQUE_NAMES",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Common Infected\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Common Infected\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Common Infected\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Smoker\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Smoker\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Smoker\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Boomer Bile Host\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Boomer Bile Host\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Boomer Bile Host\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter Pounce\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter Pounce\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter Pounce\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Spitter Acid Pool\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Spitter Acid Pool\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Spitter Acid Pool\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch Crying Corner\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch Crying Corner\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch Crying Corner\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Tank Horde Breaker\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Tank Horde Breaker\"]",
+      "code": "REFERENCE_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Tank Horde Breaker\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "addedSourceFindings": [
+    {
+      "actorKey": "[\"Portal\",\"id:chell\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:atlas\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:pbody\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:wheatley\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:caroline_portal\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:doug_rattmann\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Aperture Security Turret\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Defective Red Eye Turret\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Frankenturret Cube\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Mount\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Excursion Funnel Hazard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Rocket Turret Prototype\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Gel Pump Hazard\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Wheatley Central AI\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Neurotoxin Vent System\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Fact Core Logic Snare\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:Space Core Vacuum Loop\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Portal\",\"name:GLaDOS Central Core\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:zoey_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:ellis_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:coach_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:rochelle_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:nick_l4d\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Common Infected\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Smoker\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Boomer Bile Host\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Hunter Pounce\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Spitter Acid Pool\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Witch Crying Corner\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    },
+    {
+      "actorKey": "[\"Left 4 Dead\",\"name:Tank Horde Breaker\"]",
+      "code": "REFERENCE_SCENE_REVIEW",
+      "priority": "P2"
+    }
+  ],
+  "removedSourceFindingsByCode": {
+    "INCARNATION_UNSPECIFIED": 37,
+    "REFERENCE_MISSING": 36,
+    "VISUAL_CONTRACT_MISSING": 36,
+    "GENERIC_TECHNIQUE_NAMES": 9
+  },
+  "addedSourceFindingsByCode": {
+    "REFERENCE_SCENE_REVIEW": 36
+  },
+  "unchangedPreparedRpgHeroes": 14,
+  "unchangedPreparedRpgHeroSlots": 56,
+  "changedPreparedRpgProfiles": [
+    {
+      "actorKey": "[\"Portal\",\"id:glados_core\"]",
+      "kind": "hero",
+      "slots": {
+        "simple": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Passive Aggressive Zap",
+            "after": "Lecture de la batterie PotatOS"
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.08
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Passive Aggressive Zap",
+              "type": "energy",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Lecture de la batterie PotatOS",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.08
+              }
+            }
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          }
+        },
+        "secondary": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Neurotoxin Calculation",
+            "after": "Consigne de test de PotatOS"
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.14
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Neurotoxin Calculation",
+              "type": "signature",
+              "cd": 7,
+              "dmg": 1.8
+            },
+            "after": {
+              "name": "Consigne de test de PotatOS",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.14
+              },
+              "cd": 6
+            }
+          },
+          "multiplier": {
+            "before": 1.8,
+            "after": 0
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          }
+        },
+        "defense": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 1
+          },
+          "name": {
+            "before": "PotatOS Fail-Safe",
+            "after": "Préserver la batterie PotatOS"
+          },
+          "action": {
+            "before": {
+              "name": "PotatOS Fail-Safe",
+              "type": "hack",
+              "dur": 2,
+              "reduce": 0.8
+            },
+            "after": {
+              "name": "Préserver la batterie PotatOS",
+              "type": "guard",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "guard",
+                "delivery": "support",
+                "shape": "single",
+                "range": 1,
+                "targetSide": "self",
+                "duration": 1.2,
+                "reduce": 0.45
+              },
+              "reduce": 0.45,
+              "dur": 1.2
+            }
+          },
+          "guardReduce": {
+            "before": 0.8,
+            "after": 0.45
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          },
+          "duration": {
+            "before": 2,
+            "after": 1.2
+          }
+        },
+        "special": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Aperture Central Rewrite",
+            "after": "Indications vocales de PotatOS"
+          },
+          "shape": {
+            "before": "area",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.25
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Aperture Central Rewrite",
+              "type": "nexus_aoe",
+              "dmg": 4.6,
+              "color": "#d9d4b8"
+            },
+            "after": {
+              "name": "Indications vocales de PotatOS",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 1.1,
+              "hitAt": 0.451,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 4,
+                "buffMultiplier": 1.25
+              },
+              "meterCost": 100
+            }
+          },
+          "multiplier": {
+            "before": 4.6,
+            "after": 0
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          },
+          "duration": {
+            "before": 3,
+            "after": 4
+          }
+        }
+      }
+    },
+    {
+      "actorKey": "[\"Portal\",\"id:cave_johnson_echo\"]",
+      "kind": "hero",
+      "slots": {
+        "simple": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Combustible Lemon Throw",
+            "after": "Diffuser une consigne enregistrée"
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.12
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Combustible Lemon Throw",
+              "type": "melee",
+              "dmg": 1
+            },
+            "after": {
+              "name": "Diffuser une consigne enregistrée",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.12
+              }
+            }
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          },
+          "delivery": {
+            "before": "melee",
+            "after": "support"
+          }
+        },
+        "secondary": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Test Subject Order",
+            "after": "Rappeler la procédure Aperture"
+          },
+          "maxTargets": {
+            "before": 1,
+            "after": {
+              "$auditNumber": "Infinity"
+            }
+          },
+          "shape": {
+            "before": "single",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.12
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Test Subject Order",
+              "type": "signature",
+              "cd": 7,
+              "dmg": 1.8
+            },
+            "after": {
+              "cd": 6,
+              "name": "Rappeler la procédure Aperture",
+              "type": "buff",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "buff",
+                "delivery": "support",
+                "shape": "group",
+                "range": 760,
+                "targetSide": "ally",
+                "duration": 3,
+                "buffMultiplier": 1.12
+              }
+            }
+          },
+          "multiplier": {
+            "before": 1.8,
+            "after": 0
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          }
+        },
+        "defense": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 1
+          },
+          "name": {
+            "before": "Moon Rock Shield",
+            "after": "Rappeler la zone de test sûre"
+          },
+          "action": {
+            "before": {
+              "name": "Moon Rock Shield",
+              "type": "shield",
+              "dur": 2,
+              "reduce": 0.8
+            },
+            "after": {
+              "name": "Rappeler la zone de test sûre",
+              "type": "guard",
+              "dmg": 0,
+              "animationDuration": 0.55,
+              "hitAt": 0.2,
+              "targeting": {
+                "effect": "guard",
+                "delivery": "support",
+                "shape": "single",
+                "range": 1,
+                "targetSide": "self",
+                "duration": 1.2,
+                "reduce": 0.45
+              },
+              "reduce": 0.45,
+              "dur": 1.2
+            }
+          },
+          "guardReduce": {
+            "before": 0.8,
+            "after": 0.45
+          },
+          "multiplier": {
+            "before": 1,
+            "after": 0
+          },
+          "duration": {
+            "before": 2,
+            "after": 1.2
+          }
+        },
+        "special": {
+          "range": {
+            "before": 868.3317338436964,
+            "after": 760
+          },
+          "effect": {
+            "before": "damage",
+            "after": "buff"
+          },
+          "name": {
+            "before": "Science Isn t About Why",
+            "after": "Instructions archivées de Cave Johnson"
+          },
+          "shape": {
+            "before": "area",
+            "after": "group"
+          },
+          "buffMultiplier": {
+            "before": 1.2,
+            "after": 1.3
+          },
+          "targetSide": {
+            "before": "enemy",
+            "after": "ally"
+          },
+          "action": {
+            "before": {
+              "name": "Science Isn t About Why",
+              "type": "nexus_aoe",
+              "dmg": 4.6,
+              "color": "#ff9f43"
+            },
+            "after": {
+              "name": "Instructions archivées de Cave Johnson",
+              "type": "buff",
+              "dmg": 0,
+              "color": "#f39c12",
+              "animationDuration": 1.1,
+              "hitAt": 0.45,
+              "targeting": {
+                "effect": "buff",
+                "targetSide": "ally",
+                "shape": "group",
+                "delivery": "support",
+                "range": 760,
+                "buffMultiplier": 1.3,
+                "duration": 6
+              }
+            }
+          },
+          "multiplier": {
+            "before": 4.6,
+            "after": 0
+          },
+          "delivery": {
+            "before": "ranged",
+            "after": "support"
+          },
+          "duration": {
+            "before": 3,
+            "after": 6
+          }
+        }
+      }
+    }
+  ],
+  "selectedLegacySignatureChanges": [],
+  "preservedSelectedLegacySignatures": 0,
+  "rawEffectiveLabelDifferences": [
+    {
+      "actorKey": "[\"Left 4 Dead\",\"id:bill_l4d\"]",
+      "slot": "secondary",
+      "rawName": "Bill Breach Technique",
+      "effectiveName": "Tenir le passage pour les survivants"
+    }
+  ],
+  "artApprovals": 0,
+  "actorClosuresApproved": 0,
+  "source1to1Verified": false,
+  "workingSourceScope": {
+    "scope": "Subject sources were frozen and hashed before/after. This is a native working-graph probe, not a claim that all pending core fixes are committed. Final immutable global export remains pending.",
+    "sourceSha256": {
+      "DLC/Portal/data/heroes.js": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec",
+      "DLC/Portal/data/enemies.js": "5bd6a9979f1023887a0ed9c62bbe8db78f9bd93333514ff1182ed1c807b71841",
+      "DLC/Portal/data/loreAccuratePacks.js": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688",
+      "DLC/Portal/data/loreWorldBossOverrides.js": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6",
+      "DLC/Portal/data/sourceContracts20261113.js": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee",
+      "DLC/Portal/manifest.json": "b67dcc0f8a0baba6e8ba579a264e49d25181973600953cc8577b6cef34f65cb3",
+      "DLC/Left4Dead/data/heroes.js": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78",
+      "DLC/Left4Dead/data/enemies.js": "30599735f1edfd11a7814cc7fdcd17f026d2e50315812021022fd034d0b34a51",
+      "DLC/Left4Dead/data/expandedUniverses.js": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad",
+      "DLC/Left4Dead/data/sourceContracts20261113.js": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456",
+      "DLC/Left4Dead/manifest.json": "e8770ad61ea8b132a56ff19816b21b82ae47dc4c45d36d098918bf66c219efb0",
+      "src/game/heroes.js": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+      "src/game/enemies.js": "f95d0bf2dc7f8b47b23e0730717aa779e00989522412552d22746118bc7ebf29",
+      "src/game/rpgTargeting.js": "c5781375201819c38e74b8f836c3131540d635a31efed3c6b02c55bac15b71b3",
+      "src/game/engineRpg.js": "6faffb1f138597b61540d6f2c17e11f3f93add006060190939d1f2d62ff5bcdb",
+      "src/game/combatIdentity.js": "408f602f8c490a7c3046b1ef0f2aa7d83eaa4cfca98047b22926dc65af71ba01",
+      "src/game/signatureSourceKits.js": "fda784a8f9d45ae9178c6dbfb562345180d364912b80b002ecb507bf441162de"
+    },
+    "ownerProofSha256": "41451925b2a0a7462d2f8da97ab3d339250051c76c0e839d8d1b2cbe1247a886",
+    "runtimeGzipOriginalSha256": "cb382c79548170ea09a28fffa8fd8f12b2b007c05fbd41a6c7bca06098a6595e",
+    "runtimeGzipSha256": "923abb87d9bce30d5e626df7bd229cfbac4dd5599e16682ed56b689067a8bde7"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "utc": "2026-11-13T14:14:25.797998+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/probe-runtime.mjs",
+    "/workspace/multiverse-breach",
+    "/tmp/portal-l4d-040-keys.json",
+    "/workspace/multiverse-breach/docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/runtime-before.json.gz"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 2.987,
+  "baseCommit": "98991b161",
+  "sourceSha256": {
+    "DLC/Portal/data/heroes.js": "0d00648453917cf5edce30429e9692566b1baec849ac927a08cc120ff7ed01b6",
+    "DLC/Portal/data/loreAccuratePacks.js": "72d9a1596f3a901aee1328fd3c312e574679e0bf5d26d397427990214c0b9e4c",
+    "DLC/Portal/data/enemies.js": "30b3a53c993354005800e2675413592470406b3b57c0549b58acbf1b760671ef",
+    "DLC/Portal/data/loreBossOverrides.js": "bf7aca099e48519708af429fad79a6feb0b2a307ba9e999137cc03e65e7758a8",
+    "DLC/Portal/data/loreWorldBossOverrides.js": "3a6939a912c7e9ccefbeb9c2745af9885d828960d6d68d247289385d160fd2ea",
+    "DLC/Left4Dead/data/heroes.js": "560c11e3971d3b32a715569ff483a40f092d17aa63ec1601c0624fa62d676023",
+    "DLC/Left4Dead/data/enemies.js": "2ef910f40b655d37cbb300cb527033fda16099bea9b5bf8761d3f49032308eb2",
+    "DLC/Left4Dead/data/expandedUniverses.js": "cce1378c5e7adbab64112d0ffb6d1d1659772bd214abe297154f0d6153e18b63",
+    "src/game/heroes.js": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+    "src/game/signatureSourceKits.js": "fda784a8f9d45ae9178c6dbfb562345180d364912b80b002ecb507bf441162de"
+  },
+  "scope": "Pure exact-identity runtime baseline, no Vite, media reads or gameplay certification."
+}

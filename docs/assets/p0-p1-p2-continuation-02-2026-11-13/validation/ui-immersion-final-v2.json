@@ -1,0 +1,67 @@
+{
+  "utc": "2026-11-13T15:34:31.783271+00:00",
+  "command": [
+    "taskset",
+    "-c",
+    "0,1",
+    "npm",
+    "run",
+    "test:ui-immersion"
+  ],
+  "env": {
+    "PATHPrefix": "/tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin",
+    "NODE_OPTIONS": "--max-old-space-size=2048"
+  },
+  "exitCode": 0,
+  "durationSeconds": 167.598,
+  "tapBlocks": [
+    {
+      "tests": 556,
+      "pass": 556,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "totals": {
+    "tests": 556,
+    "pass": 556,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceSha256": {
+    "package.json": "1fbe41e129c40690ba5c6077b2e29751f70b1de92ec55d9fccae177b819681b2",
+    "src/components/GameCanvas.jsx": "80918e4715087670733fac598ff47c74a9d4143b916fe2ea2651f4e08493dcc4",
+    "src/components/combat-immersion.css": "6b7888516b3e005508b93e9833c35a31d6494abcbff2dd5cf5f296cfd63d5e13",
+    "src/game/tacticsApertureBattlefield.js": "696191a8196042f88c528d696c4ff9a076838b0c4ff63f5e982e8bca5f24007e",
+    "src/game/tacticsAperturePresentation.js": "4511a76be90a224cef9d9fb8af3a45b876545bf38aa5ca567fafbf3f81add10b",
+    "src/game/extinctionFighterProfiles.js": "83e65d07d5c07907a04cc11a8a8b558a6ebd8dccf72be8bbfc2e5ee67a09da80",
+    "src/game/extinctionSchematicView.js": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191",
+    "scripts/extinctionFighterProfiles.test.mjs": "2f4406705706edc83fb7cc6c1b66e06a1c6805f18eaea3e188940b59c8270905",
+    "scripts/extinctionSchematicView.test.mjs": "7d8ba7f17c010475cdef36949d28435588b217729710fb07297855a55fe011b0",
+    "scripts/extinctionSourceConsumer20261113.test.mjs": "52fdb1c7c1e0e5fa09cb4b750d2d7d21a9ab604afea53a6313c58a92dbd727af",
+    "scripts/fixtures/extinctionSourceConsumerAmendment.mjs": "067909f0cb7fcf3169699a239b2e3f61788ef378591033a7c0a7fd47cc7f1070",
+    "scripts/fixtures/extinction-source-consumer-amendment-2026-11-13.json": "a147e5fefa977162503177cd684bbd2da0ddf3c4da3db93ef1de90026d4ea7eb"
+  },
+  "sourceAfterSha256": {
+    "package.json": "1a3b10cf31630fb83ca6583c2309e7573fb11ef73736a8c392815096ebf523ae",
+    "src/components/GameCanvas.jsx": "80918e4715087670733fac598ff47c74a9d4143b916fe2ea2651f4e08493dcc4",
+    "src/components/combat-immersion.css": "6b7888516b3e005508b93e9833c35a31d6494abcbff2dd5cf5f296cfd63d5e13",
+    "src/game/tacticsApertureBattlefield.js": "696191a8196042f88c528d696c4ff9a076838b0c4ff63f5e982e8bca5f24007e",
+    "src/game/tacticsAperturePresentation.js": "4511a76be90a224cef9d9fb8af3a45b876545bf38aa5ca567fafbf3f81add10b",
+    "src/game/extinctionFighterProfiles.js": "83e65d07d5c07907a04cc11a8a8b558a6ebd8dccf72be8bbfc2e5ee67a09da80",
+    "src/game/extinctionSchematicView.js": "15d475e9a06dbf531dc5b31d59d4f4c7fa4409b81f49f1d44ada1974b173e191",
+    "scripts/extinctionFighterProfiles.test.mjs": "2f4406705706edc83fb7cc6c1b66e06a1c6805f18eaea3e188940b59c8270905",
+    "scripts/extinctionSchematicView.test.mjs": "7d8ba7f17c010475cdef36949d28435588b217729710fb07297855a55fe011b0",
+    "scripts/extinctionSourceConsumer20261113.test.mjs": "52fdb1c7c1e0e5fa09cb4b750d2d7d21a9ab604afea53a6313c58a92dbd727af",
+    "scripts/fixtures/extinctionSourceConsumerAmendment.mjs": "067909f0cb7fcf3169699a239b2e3f61788ef378591033a7c0a7fd47cc7f1070",
+    "scripts/fixtures/extinction-source-consumer-amendment-2026-11-13.json": "a147e5fefa977162503177cd684bbd2da0ddf3c4da3db93ef1de90026d4ea7eb"
+  },
+  "sourceUnchangedDuringRun": false,
+  "logSha256": "311df09bdb9b107bd67862ed7b883b463ed85eef69496a512afa07d22be1bb74",
+  "scope": "Unmodified standard npm UI immersion entry point after the two bounded Extinction consumer fixes and exact current-source test amendment. CPU0,1; no new build or browser session. Initial failed full run retained separately.",
+  "failures": []
+}

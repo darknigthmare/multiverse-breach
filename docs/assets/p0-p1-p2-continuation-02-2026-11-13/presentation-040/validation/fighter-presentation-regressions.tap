@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: character introductions freeze combat, controls and the round timer before the countdown
+ok 1 - character introductions freeze combat, controls and the round timer before the countdown
+  ---
+  duration_ms: 31124.573844
+  type: 'test'
+  ...
+# Subtest: the first round shows both outcomes without completing or rewarding the match
+ok 2 - the first round shows both outcomes without completing or rewarding the match
+  ---
+  duration_ms: 6.12968
+  type: 'test'
+  ...
+# Subtest: round restart restores both rosters and resources with the score preserved
+ok 3 - round restart restores both rosters and resources with the score preserved
+  ---
+  duration_ms: 2.00353
+  type: 'test'
+  ...
+# Subtest: a lost opening round does not finish the match and the player can win the next two
+ok 4 - a lost opening round does not finish the match and the player can win the next two
+  ---
+  duration_ms: 2.256101
+  type: 'test'
+  ...
+# Subtest: finale, victory and outro use the winner identity and cannot deal further damage
+ok 5 - finale, victory and outro use the winner identity and cannot deal further damage
+  ---
+  duration_ms: 52.350589
+  type: 'test'
+  ...
+# Subtest: support supers heal their intended team without damaging the opponent
+ok 6 - support supers heal their intended team without damaging the opponent
+  ---
+  duration_ms: 6.638226
+  type: 'test'
+  ...
+# Subtest: the presentation renderer displays the character, universe and real source ability through every phase
+ok 7 - the presentation renderer displays the character, universe and real source ability through every phase
+  ---
+  duration_ms: 10.794962
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31768.224422

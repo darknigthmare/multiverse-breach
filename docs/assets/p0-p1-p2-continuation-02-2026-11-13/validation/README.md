@@ -1,0 +1,28 @@
+# Vérifications de la reprise 02
+
+Les groupes se recoupent ; leurs nombres ne sont pas additionnés comme des tests uniques. Tous les passages utilisent Node 22. Les suites lourdes sont séquentielles avec heap borné ; les fixtures et compilations ne copient pas les médias de `public/`.
+
+| Contrôle | Résultat et preuve |
+| --- | --- |
+| Contrats de source | **153/153**, sortie 0 : cinq cohortes, vrais résolveurs et moteurs. [Reçu](source-contracts-final.json), [TAP](source-contracts-final.tap). |
+| PNG et liaisons | **96/96**, sortie 0 : nouveaux atlas, voisins, quarantaines et outils d’import. [Reçu](character-png-final.json), [TAP](character-png-final.tap). Le [miroir C-Rex ciblé](crustaceous-rex-local-mirror.json) est une préparation de test de 1,08 Mo, sans téléchargement ni nouvel art. |
+| Présentations et éditions | **23/23**, sortie 0 : Revan, vrais Fighter/Smash et gardes W14/W15. [Reçu](presentation-editions-final.json), [TAP](presentation-editions-final.tap). |
+| Tactics, suite complète | **291/291**, sortie 0, 338,721 s. [Reçu](tactics-full.json), [TAP](tactics-full.tap). Les six échecs du premier passage concernaient les anciens inventaires stricts ; leur trace est dans `before-aperture-historical-guard/`. |
+| Application réelle | **5/5 compilations** : complète, base, Portal, Gears/Dead Space et Left 4 Dead. [Matrice](app-bundle-matrix.json), [continuité des entrées](compiled-source-continuity.json). Aucune copie globale des médias ni prébuild. |
+| Suite standard DLC | **113/113 puis 245/245**, sortie 0, 329,694 s, 4 333 sources runtime sans mutation pendant le passage. [Reçu](dlc-standard-suite.json), [log](dlc-standard-suite.log). Ce passage précède l’extension de douze liaisons FPS ; les cinq compilations et les tests FPS finaux couvrent cette dernière modification d’un seul consumer, sans changement de registre, manifeste ou transformateur DLC. |
+| Contrats CG intégrés | **158/158**, 64 tests principaux, sortie 0 ; **7/7** pour quarantaine/Bible. [Métadonnées](cg-metadata-full-final.json), [quarantaine/Bible](cg-quarantine-bible-full-final.json). Les 113 entrées suivies restent inchangées avant/après et entre les deux passages. |
+| CLI et Bible CG | `--check-metadata` puis Bible seule régénérée et `--check` réussis ; 1 436 déclarations conservées, anciens pins inchangés. [Rapport et commandes](../cg-metadata/README.md). Aucun contrôle physique global des CG n’est déduit de ces résultats. |
+| Missions dans le vrai Hub | **10/10 cas navigateur**, **6/6 tests purs**, FR/EN, desktop/mobile, lecture 100/150/200 %, recherche, accès et pagination. [Parcours](../menu-next/README.md). |
+| Présentations dans les vrais moteurs | **10/10 cas navigateur**, 27 captures, avant/après Git9899 et source courante, zéro erreur HTTP/page dans ce périmètre. [Preuves](../presentation-040/README.md). |
+| Doom dans GameCanvas | Trois cas pour chacun des deux nouveaux acteurs, plus revalidation de l’Imp sur le bundle final ; signatures, réception des dégâts, jauges, cellules et nettoyage. Deux icônes Doom historiques restent 404. [Imp](../raster-lot-004-resume/imp-fireballer/README.md) · [Mancubus](../raster-lot-004-resume/mancubus-flame-tank/README.md). |
+| Nouveau terrain et panneau | Trois cas GameCanvas/renderer, puis **4/4 dispositions compactes** avec panneau ouvert et commandes accessibles. Cinq icônes Portal historiques restent 404 ; zéro erreur de page. [Terrain](../tactics-aperture/README.md). |
+| UI complète finale | **580/580**, sortie 0, 149,035 s sur `3b892a7e`, 5 283 empreintes de code/styles/données/configuration inchangées pendant le passage. [Reçu](ui-immersion-final-v3.json), [TAP](ui-immersion-final-v3.tap). |
+| FPS final | **24/24** régressions natives et **54/54** cas des deux suites complètes, seize liaisons physiques et 107 actions rétablies. [Rapport](EXTINCTION-CONSUMER-REVIEW.md). La suite UI de 580 inclut aussi les 24 cas ; ils ne sont pas comptés comme une seconde couverture unique. |
+| Lint modifié | Sortie 0 sur 73 fichiers, deux avertissements Fast Refresh sur les points d’entrée de fixture uniquement. [Reçu](changed-source-lint.json), [log](changed-source-lint.log). |
+| Objets médias | **19 583 objets Git existants inchangés**, deux nouveaux atlas seulement, inventaire 19 585. [Continuité](asset-byte-lineage.json), [reproducteur](verify-asset-lineage.mjs). Les anciens payloads ne sont pas retéléchargés. |
+
+Les trois attentes statistiques des anciens tests Extinction ne sont pas effacées : la [contre-épreuve originale](../audit/extinction-14-original-tests-current.json) conserve leurs octets et obtient 11 comportements réussis, trois seuls inventaires historiques différents. Les tests courants distinguent ces métriques au moyen d’un amendement fermé ; les workbooks publiés restent intacts. Les douze gardes dont les valeurs changent sont listées dans la [revue FPS des quinze héros](../gears-deadspace-040/fps-impact-review.json).
+
+Le premier essai de profil Left 4 Dead employait le mauvais ID `left-4-dead` au lieu de `left4-dead` ; ses traces restent dans `before-profile-id-and-layout-fix/`. Les profils finaux sont lus dans les vrais manifestes. Le dernier ajustement du package ne change que l’exécution bornée/séquentielle du test PNG ; la reconstruction de son SHA de compilation est vérifiée, avec les CSS suivies séparément par leur continuité Git.
+
+Les logs, TAP et sources tierces archivées gardent leurs octets. Le contrôle d’espaces porte sur les documents et le code rédigés ; il n’efface pas les traces brutes. Ces vérifications ne remplacent ni le prébuild global avec tous ses médias, ni une campagne complète, ni une revue artistique de chaque personnage.

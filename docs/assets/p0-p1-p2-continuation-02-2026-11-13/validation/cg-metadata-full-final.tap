@@ -1,0 +1,1009 @@
+
+> lively-darwin@0.0.0 test:cg:metadata
+> node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/cgProductionMetadataScope20261113.test.mjs scripts/cgIdentityAuthorityMetadata.test.mjs scripts/cgProductionMode20261113.test.mjs scripts/cgReferenceImageDecode.test.mjs scripts/cgReferenceImageAttestation.test.mjs scripts/cgSourceIdentityScope.test.mjs scripts/cgReviewedQuarantineMetadata.test.mjs scripts/cgReviewedRuntimeAmendment.test.mjs scripts/cgSource64Amendment.test.mjs scripts/cgReviewedAvailabilityAmendment.test.mjs scripts/cgContinuation02MetadataAmendment.test.mjs
+
+TAP version 13
+# (node:201461) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the real current producer passes every historical guard after the closed continuation02 amendment
+ok 1 - the real current producer passes every historical guard after the closed continuation02 amendment
+  ---
+  duration_ms: 34987.366538
+  type: 'test'
+  ...
+# Subtest: the scoped projection is immutable and restores the entire historical serialization exactly
+ok 2 - the scoped projection is immutable and restores the entire historical serialization exactly
+  ---
+  duration_ms: 1344.862501
+  type: 'test'
+  ...
+# Subtest: a changed current target value cannot enter through an otherwise allowed field
+    # Subtest: incarnation
+    ok 1 - incarnation
+      ---
+      duration_ms: 406.001107
+      type: 'test'
+      ...
+    # Subtest: identityLock
+    ok 2 - identityLock
+      ---
+      duration_ms: 306.710556
+      type: 'test'
+      ...
+    # Subtest: equipment
+    ok 3 - equipment
+      ---
+      duration_ms: 313.057043
+      type: 'test'
+      ...
+    # Subtest: sourceRefs
+    ok 4 - sourceRefs
+      ---
+      duration_ms: 312.463225
+      type: 'test'
+      ...
+    # Subtest: missing
+    ok 5 - missing
+      ---
+      duration_ms: 540.737814
+      type: 'test'
+      ...
+    # Subtest: adaptationNote
+    ok 6 - adaptationNote
+      ---
+      duration_ms: 354.450114
+      type: 'test'
+      ...
+    1..6
+ok 3 - a changed current target value cannot enter through an otherwise allowed field
+  ---
+  duration_ms: 2241.255337
+  type: 'test'
+  ...
+# Subtest: states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+    # Subtest: status
+    ok 1 - status
+      ---
+      duration_ms: 306.405171
+      type: 'test'
+      ...
+    # Subtest: asset
+    ok 2 - asset
+      ---
+      duration_ms: 304.200942
+      type: 'test'
+      ...
+    # Subtest: generation
+    ok 3 - generation
+      ---
+      duration_ms: 306.109763
+      type: 'test'
+      ...
+    # Subtest: review
+    ok 4 - review
+      ---
+      duration_ms: 315.261592
+      type: 'test'
+      ...
+    # Subtest: reward
+    ok 5 - reward
+      ---
+      duration_ms: 304.505816
+      type: 'test'
+      ...
+    # Subtest: unknown
+    ok 6 - unknown
+      ---
+      duration_ms: 292.041631
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 7 - identity approval
+      ---
+      duration_ms: 278.891164
+      type: 'test'
+      ...
+    1..7
+ok 4 - states, assets, approvals, rewards and unknown fields remain forbidden inside the cohort
+  ---
+  duration_ms: 2113.327295
+  type: 'test'
+  ...
+# Subtest: Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+    # Subtest: selected sprite
+    ok 1 - selected sprite
+      ---
+      duration_ms: 327.717811
+      type: 'test'
+      ...
+    # Subtest: quarantine hash
+    ok 2 - quarantine hash
+      ---
+      duration_ms: 343.73216
+      type: 'test'
+      ...
+    # Subtest: identity approval
+    ok 3 - identity approval
+      ---
+      duration_ms: 358.708132
+      type: 'test'
+      ...
+    # Subtest: invented backdrop
+    ok 4 - invented backdrop
+      ---
+      duration_ms: 506.556542
+      type: 'test'
+      ...
+    # Subtest: backdrop delivery
+    ok 5 - backdrop delivery
+      ---
+      duration_ms: 368.873763
+      type: 'test'
+      ...
+    # Subtest: CG01 delivery
+    ok 6 - CG01 delivery
+      ---
+      duration_ms: 438.783117
+      type: 'test'
+      ...
+    # Subtest: missing warning
+    ok 7 - missing warning
+      ---
+      duration_ms: 394.121222
+      type: 'test'
+      ...
+    1..7
+ok 5 - Batman cannot regain the wrong bitmap, rewrite CG01 or change either delivered CG
+  ---
+  duration_ms: 3972.389344
+  type: 'test'
+  ...
+# Subtest: mutations outside all 32 cases survive and are rejected by the real full historical validator
+ok 6 - mutations outside all 32 cases survive and are rejected by the real full historical validator
+  ---
+  duration_ms: 5378.766192
+  type: 'test'
+  ...
+# Subtest: all 32 runtime source records reject undeclared changes
+    # Subtest: anya_stroud
+    ok 1 - anya_stroud
+      ---
+      duration_ms: 2.547409
+      type: 'test'
+      ...
+    # Subtest: atlas
+    ok 2 - atlas
+      ---
+      duration_ms: 2.613319
+      type: 'test'
+      ...
+    # Subtest: baird
+    ok 3 - baird
+      ---
+      duration_ms: 2.208926
+      type: 'test'
+      ...
+    # Subtest: bill_l4d
+    ok 4 - bill_l4d
+      ---
+      duration_ms: 2.333866
+      type: 'test'
+      ...
+    # Subtest: carmine_cog
+    ok 5 - carmine_cog
+      ---
+      duration_ms: 2.186302
+      type: 'test'
+      ...
+    # Subtest: caroline_portal
+    ok 6 - caroline_portal
+      ---
+      duration_ms: 2.176828
+      type: 'test'
+      ...
+    # Subtest: carver
+    ok 7 - carver
+      ---
+      duration_ms: 2.272002
+      type: 'test'
+      ...
+    # Subtest: cave_johnson
+    ok 8 - cave_johnson
+      ---
+      duration_ms: 2.672559
+      type: 'test'
+      ...
+    # Subtest: cave_johnson_echo
+    ok 9 - cave_johnson_echo
+      ---
+      duration_ms: 14.485415
+      type: 'test'
+      ...
+    # Subtest: chell
+    ok 10 - chell
+      ---
+      duration_ms: 7.98731
+      type: 'test'
+      ...
+    # Subtest: coach_l4d
+    ok 11 - coach_l4d
+      ---
+      duration_ms: 13.542266
+      type: 'test'
+      ...
+    # Subtest: cole
+    ok 12 - cole
+      ---
+      duration_ms: 14.902887
+      type: 'test'
+      ...
+    # Subtest: dom
+    ok 13 - dom
+      ---
+      duration_ms: 3.123342
+      type: 'test'
+      ...
+    # Subtest: doug_rattmann
+    ok 14 - doug_rattmann
+      ---
+      duration_ms: 2.781333
+      type: 'test'
+      ...
+    # Subtest: ellis_l4d
+    ok 15 - ellis_l4d
+      ---
+      duration_ms: 3.023881
+      type: 'test'
+      ...
+    # Subtest: ellie
+    ok 16 - ellie
+      ---
+      duration_ms: 2.97718
+      type: 'test'
+      ...
+    # Subtest: glados
+    ok 17 - glados
+      ---
+      duration_ms: 3.174229
+      type: 'test'
+      ...
+    # Subtest: glados_core
+    ok 18 - glados_core
+      ---
+      duration_ms: 2.856848
+      type: 'test'
+      ...
+    # Subtest: hammond_ds
+    ok 19 - hammond_ds
+      ---
+      duration_ms: 3.316244
+      type: 'test'
+      ...
+    # Subtest: hoffman_cog
+    ok 20 - hoffman_cog
+      ---
+      duration_ms: 3.271196
+      type: 'test'
+      ...
+    # Subtest: isaac
+    ok 21 - isaac
+      ---
+      duration_ms: 5.647096
+      type: 'test'
+      ...
+    # Subtest: kait_diaz
+    ok 22 - kait_diaz
+      ---
+      duration_ms: 3.147328
+      type: 'test'
+      ...
+    # Subtest: kendra_daniels
+    ok 23 - kendra_daniels
+      ---
+      duration_ms: 3.665012
+      type: 'test'
+      ...
+    # Subtest: marcus
+    ok 24 - marcus
+      ---
+      duration_ms: 3.298757
+      type: 'test'
+      ...
+    # Subtest: nick_l4d
+    ok 25 - nick_l4d
+      ---
+      duration_ms: 3.505591
+      type: 'test'
+      ...
+    # Subtest: nicole_brennan
+    ok 26 - nicole_brennan
+      ---
+      duration_ms: 3.834399
+      type: 'test'
+      ...
+    # Subtest: pbody
+    ok 27 - pbody
+      ---
+      duration_ms: 6.881936
+      type: 'test'
+      ...
+    # Subtest: rochelle_l4d
+    ok 28 - rochelle_l4d
+      ---
+      duration_ms: 3.820488
+      type: 'test'
+      ...
+    # Subtest: wheatley
+    ok 29 - wheatley
+      ---
+      duration_ms: 3.816462
+      type: 'test'
+      ...
+    # Subtest: zach_hammond
+    ok 30 - zach_hammond
+      ---
+      duration_ms: 4.133402
+      type: 'test'
+      ...
+    # Subtest: zoey_l4d
+    ok 31 - zoey_l4d
+      ---
+      duration_ms: 4.234986
+      type: 'test'
+      ...
+    # Subtest: batman_tdk
+    ok 32 - batman_tdk
+      ---
+      duration_ms: 6.796066
+      type: 'test'
+      ...
+    1..32
+ok 7 - all 32 runtime source records reject undeclared changes
+  ---
+  duration_ms: 154.201218
+  type: 'test'
+  ...
+# Subtest: the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+    # Subtest: src/game/heroes.js
+    ok 1 - src/game/heroes.js
+      ---
+      duration_ms: 1.890634
+      type: 'test'
+      ...
+    # Subtest: src/game/canonicalSpriteQuarantine.js
+    ok 2 - src/game/canonicalSpriteQuarantine.js
+      ---
+      duration_ms: 1.232587
+      type: 'test'
+      ...
+    # Subtest: src/game/combat/combatSourceDefinitionsWave15PartC.js
+    ok 3 - src/game/combat/combatSourceDefinitionsWave15PartC.js
+      ---
+      duration_ms: 1.275071
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/heroes.js
+    ok 4 - DLC/GearsOfWar/data/heroes.js
+      ---
+      duration_ms: 1.260249
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/actorSourceContracts.js
+    ok 5 - DLC/GearsOfWar/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.56398
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreAccuratePacks.js
+    ok 6 - DLC/GearsOfWar/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.378309
+      type: 'test'
+      ...
+    # Subtest: DLC/GearsOfWar/data/loreWorldBossOverrides.js
+    ok 7 - DLC/GearsOfWar/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.514345
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/heroes.js
+    ok 8 - DLC/DeadSpace/data/heroes.js
+      ---
+      duration_ms: 1.249573
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/actorSourceContracts.js
+    ok 9 - DLC/DeadSpace/data/actorSourceContracts.js
+      ---
+      duration_ms: 1.563228
+      type: 'test'
+      ...
+    # Subtest: DLC/DeadSpace/data/loreAccuratePacks.js
+    ok 10 - DLC/DeadSpace/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.883283
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/heroes.js
+    ok 11 - DLC/Portal/data/heroes.js
+      ---
+      duration_ms: 1.547294
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/sourceContracts20261113.js
+    ok 12 - DLC/Portal/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.620144
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreAccuratePacks.js
+    ok 13 - DLC/Portal/data/loreAccuratePacks.js
+      ---
+      duration_ms: 1.77557
+      type: 'test'
+      ...
+    # Subtest: DLC/Portal/data/loreWorldBossOverrides.js
+    ok 14 - DLC/Portal/data/loreWorldBossOverrides.js
+      ---
+      duration_ms: 1.628577
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/heroes.js
+    ok 15 - DLC/Left4Dead/data/heroes.js
+      ---
+      duration_ms: 1.393171
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/sourceContracts20261113.js
+    ok 16 - DLC/Left4Dead/data/sourceContracts20261113.js
+      ---
+      duration_ms: 1.606974
+      type: 'test'
+      ...
+    # Subtest: DLC/Left4Dead/data/expandedUniverses.js
+    ok 17 - DLC/Left4Dead/data/expandedUniverses.js
+      ---
+      duration_ms: 1.504269
+      type: 'test'
+      ...
+    1..17
+ok 8 - the closed fixture and each of 17 frozen source files reject tampering without editing canonical files
+  ---
+  duration_ms: 35.790089
+  type: 'test'
+  ...
+# (node:202998) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+ok 9 - historical Halo Infinite CG keeps its authority and cannot borrow Halo 3 equipment
+  ---
+  duration_ms: 3.179584
+  type: 'test'
+  ...
+# Subtest: same-edition structured CG equipment is retained instead of taking runtime defaults
+ok 10 - same-edition structured CG equipment is retained instead of taking runtime defaults
+  ---
+  duration_ms: 0.290779
+  type: 'test'
+  ...
+# Subtest: incomplete CG authority leaves equipment unknown even when edition labels agree
+ok 11 - incomplete CG authority leaves equipment unknown even when edition labels agree
+  ---
+  duration_ms: 0.309337
+  type: 'test'
+  ...
+# Subtest: qualified identity without equipment cannot borrow a runtime weapon
+ok 12 - qualified identity without equipment cannot borrow a runtime weapon
+  ---
+  duration_ms: 0.19939
+  type: 'test'
+  ...
+# Subtest: a pilot without an explicit runtime edition has no invented runtime authority
+ok 13 - a pilot without an explicit runtime edition has no invented runtime authority
+  ---
+  duration_ms: 0.150036
+  type: 'test'
+  ...
+# (node:203018) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+ok 14 - the separate source-plan API explicitly checks metadata and preserves all 1436 published delivery declarations
+  ---
+  duration_ms: 30685.855001
+  type: 'test'
+  ...
+# Subtest: the historical snapshot is exact after closed candidate, descriptor, current-source, availability and Revan amendments
+ok 15 - the historical snapshot is exact after closed candidate, descriptor, current-source, availability and Revan amendments
+  ---
+  duration_ms: 4734.435394
+  type: 'test'
+  ...
+# Subtest: metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+    # Subtest: prompt
+    ok 1 - prompt
+      ---
+      duration_ms: 1.97054
+      type: 'test'
+      ...
+    # Subtest: assetPath
+    ok 2 - assetPath
+      ---
+      duration_ms: 0.376106
+      type: 'test'
+      ...
+    # Subtest: reference
+    ok 3 - reference
+      ---
+      duration_ms: 0.282336
+      type: 'test'
+      ...
+    # Subtest: approval
+    ok 4 - approval
+      ---
+      duration_ms: 0.288765
+      type: 'test'
+      ...
+    # Subtest: revision
+    ok 5 - revision
+      ---
+      duration_ms: 0.273622
+      type: 'test'
+      ...
+    # Subtest: deliveryCount
+    ok 6 - deliveryCount
+      ---
+      duration_ms: 0.370008
+      type: 'test'
+      ...
+    # Subtest: gallery
+    ok 7 - gallery
+      ---
+      duration_ms: 0.486754
+      type: 'test'
+      ...
+    # Subtest: new delivery
+    ok 8 - new delivery
+      ---
+      duration_ms: 0.320372
+      type: 'test'
+      ...
+    # Subtest: removed delivery
+    ok 9 - removed delivery
+      ---
+      duration_ms: 0.452152
+      type: 'test'
+      ...
+    1..9
+ok 16 - metadata reconstruction cannot rewrite prompts, paths, references, approvals, revisions or delivery totals
+  ---
+  duration_ms: 6.353836
+  type: 'test'
+  ...
+# Subtest: metadata-only revision lookup rejects a different owner, revision or output path
+ok 17 - metadata-only revision lookup rejects a different owner, revision or output path
+  ---
+  duration_ms: 209.398336
+  type: 'test'
+  ...
+# Subtest: the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+ok 18 - the exact snapshot projection rejects changed candidate owners, paths and fidelity approval
+  ---
+  duration_ms: 3261.350961
+  type: 'test'
+  ...
+# (node:204580) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: production modes preserve strict full-media check and explicit metadata-only routing
+ok 19 - production modes preserve strict full-media check and explicit metadata-only routing
+  ---
+  duration_ms: 0.969713
+  type: 'test'
+  ...
+# Subtest: conflicting or unknown CLI modes fail before any build or write
+ok 20 - conflicting or unknown CLI modes fail before any build or write
+  ---
+  duration_ms: 0.845855
+  type: 'test'
+  ...
+# (node:204600) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: readable PNG and JPEG require their declared hash, byte count, dimensions and format
+ok 21 - readable PNG and JPEG require their declared hash, byte count, dimensions and format
+  ---
+  duration_ms: 271.42957
+  type: 'test'
+  ...
+# Subtest: matching declarations cannot turn headers, truncated images, HTML or pointers into evidence
+ok 22 - matching declarations cannot turn headers, truncated images, HTML or pointers into evidence
+  ---
+  duration_ms: 465.717506
+  type: 'test'
+  ...
+# Subtest: decoder cache follows the actual bytes rather than a previously attested path
+ok 23 - decoder cache follows the actual bytes rather than a previously attested path
+  ---
+  duration_ms: 1.415553
+  type: 'test'
+  ...
+# (node:204685) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: valid PNG and JPEG are fully decoded from stdin and report bounded metadata
+ok 24 - valid PNG and JPEG are fully decoded from stdin and report bounded metadata
+  ---
+  duration_ms: 254.065958
+  type: 'test'
+  ...
+# Subtest: empty input, PNG/JPEG signatures, HTML and LFS pointers never become visual evidence
+ok 25 - empty input, PNG/JPEG signatures, HTML and LFS pointers never become visual evidence
+  ---
+  duration_ms: 679.034939
+  type: 'test'
+  ...
+# Subtest: headers with truncated PNG or JPEG pixel data are rejected by full decode
+ok 26 - headers with truncated PNG or JPEG pixel data are rejected by full decode
+  ---
+  duration_ms: 457.591447
+  type: 'test'
+  ...
+# Subtest: animated GIF decodes every reported page and returns per-page dimensions
+ok 27 - animated GIF decodes every reported page and returns per-page dimensions
+  ---
+  duration_ms: 126.573532
+  type: 'test'
+  ...
+# Subtest: a complete valid image above the pixel budget is rejected before allocation
+ok 28 - a complete valid image above the pixel budget is rejected before allocation
+  ---
+  duration_ms: 120.847503
+  type: 'test'
+  ...
+# Subtest: stdin above 64 MiB fails without returning payload or decoder diagnostics
+ok 29 - stdin above 64 MiB fails without returning payload or decoder diagnostics
+  ---
+  duration_ms: 247.895065
+  type: 'test'
+  ...
+# (node:204840) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the amendment closes 58 owners and exact image receipts without changing any historical pin
+ok 30 - the amendment closes 58 owners and exact image receipts without changing any historical pin
+  ---
+  duration_ms: 171.758098
+  type: 'test'
+  ...
+# Subtest: a physically absent image can later be hydrated with its exact real pixels and become available
+ok 31 - a physically absent image can later be hydrated with its exact real pixels and become available
+  ---
+  duration_ms: 161.759323
+  type: 'test'
+  ...
+# Subtest: LFS pointers, HTML and truncated PNGs cannot become positive evidence even with their own matching text SHA
+ok 32 - LFS pointers, HTML and truncated PNGs cannot become positive evidence even with their own matching text SHA
+  ---
+  duration_ms: 207.970803
+  type: 'test'
+  ...
+# Subtest: path traversal, symlinks and invalid ancestor types are errors rather than absence
+ok 33 - path traversal, symlinks and invalid ancestor types are errors rather than absence
+  ---
+  duration_ms: 2.3162
+  type: 'test'
+  ...
+# Subtest: AURA identity remains separate from valid Sonic CG13 costume support before and after body hydration
+ok 34 - AURA identity remains separate from valid Sonic CG13 costume support before and after body hydration
+  ---
+  duration_ms: 2.752177
+  type: 'test'
+  ...
+# Subtest: the closed availability projection preserves all complete historical bytes and does not mutate its inputs
+ok 35 - the closed availability projection preserves all complete historical bytes and does not mutate its inputs
+  ---
+  duration_ms: 2556.22099
+  type: 'test'
+  ...
+# Subtest: extra identity claims, changed public inputs, generated CG01s and changed receipts are refused
+ok 36 - extra identity claims, changed public inputs, generated CG01s and changed receipts are refused
+  ---
+  duration_ms: 2623.288212
+  type: 'test'
+  ...
+# Subtest: unrelated edits remain visible for the caller full historical guard instead of being erased
+ok 37 - unrelated edits remain visible for the caller full historical guard instead of being erased
+  ---
+  duration_ms: 2350.256678
+  type: 'test'
+  ...
+# (node:204898) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: metadata reports the exact reviewed current sprite without granting artistic approval
+ok 38 - metadata reports the exact reviewed current sprite without granting artistic approval
+  ---
+  duration_ms: 1.747043
+  type: 'test'
+  ...
+# Subtest: the rejected asset and unrelated old candidates remain archival when a correction is selected
+ok 39 - the rejected asset and unrelated old candidates remain archival when a correction is selected
+  ---
+  duration_ms: 0.412502
+  type: 'test'
+  ...
+# Subtest: no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+ok 40 - no reviewed selection is inferred from a wrong path, edition, universe, alias or display name
+  ---
+  duration_ms: 1.699451
+  type: 'test'
+  ...
+# Subtest: other quarantined actors retain their old annotations and gain no correction
+ok 41 - other quarantined actors retain their old annotations and gain no correction
+  ---
+  duration_ms: 0.331249
+  type: 'test'
+  ...
+# Subtest: the production evidence keeps both current and rejected images with distinct provenance
+ok 42 - the production evidence keeps both current and rejected images with distinct provenance
+  ---
+  duration_ms: 1.2143
+  type: 'test'
+  ...
+# Subtest: the exact KOTOR I edition uses a documented place without inventing visual architecture
+ok 43 - the exact KOTOR I edition uses a documented place without inventing visual architecture
+  ---
+  duration_ms: 0.39131
+  type: 'test'
+  ...
+# (node:204918) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the real metadata producer passes the unchanged historical guards with the bounded Revan and closed source/availability amendments
+ok 44 - the real metadata producer passes the unchanged historical guards with the bounded Revan and closed source/availability amendments
+  ---
+  duration_ms: 37020.045287
+  type: 'test'
+  ...
+# Subtest: the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+    # Subtest: approval
+    ok 1 - approval
+      ---
+      duration_ms: 389.505217
+      type: 'test'
+      ...
+    # Subtest: correctionApproval
+    ok 2 - correctionApproval
+      ---
+      duration_ms: 370.879301
+      type: 'test'
+      ...
+    # Subtest: sourceApproval
+    ok 3 - sourceApproval
+      ---
+      duration_ms: 679.421221
+      type: 'test'
+      ...
+    # Subtest: correctionHash
+    ok 4 - correctionHash
+      ---
+      duration_ms: 546.844523
+      type: 'test'
+      ...
+    # Subtest: oldBitmapSelected
+    ok 5 - oldBitmapSelected
+      ---
+      duration_ms: 388.464378
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 6 - extraField
+      ---
+      duration_ms: 568.492705
+      type: 'test'
+      ...
+    # Subtest: otherEdition
+    ok 7 - otherEdition
+      ---
+      duration_ms: 601.203124
+      type: 'test'
+      ...
+    1..7
+ok 45 - the amendment rejects approval, altered bytes, extra fields and a different Revan edition
+  ---
+  duration_ms: 3546.759893
+  type: 'test'
+  ...
+# Subtest: the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+    # Subtest: delivered
+    ok 1 - delivered
+      ---
+      duration_ms: 377.826679
+      type: 'test'
+      ...
+    # Subtest: registered
+    ok 2 - registered
+      ---
+      duration_ms: 340.219874
+      type: 'test'
+      ...
+    # Subtest: prompt
+    ok 3 - prompt
+      ---
+      duration_ms: 364.584184
+      type: 'test'
+      ...
+    # Subtest: assets
+    ok 4 - assets
+      ---
+      duration_ms: 395.444261
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 5 - extraField
+      ---
+      duration_ms: 679.996032
+      type: 'test'
+      ...
+    1..5
+ok 46 - the pending CG01 cannot become a delivery or acquire an unreviewed prompt
+  ---
+  duration_ms: 2159.174222
+  type: 'test'
+  ...
+# Subtest: the source-place proposal rejects Yavin, invented visual details and image approval
+    # Subtest: wrongPlace
+    ok 1 - wrongPlace
+      ---
+      duration_ms: 484.348958
+      type: 'test'
+      ...
+    # Subtest: inventedVisuals
+    ok 2 - inventedVisuals
+      ---
+      duration_ms: 595.032165
+      type: 'test'
+      ...
+    # Subtest: approvedImage
+    ok 3 - approvedImage
+      ---
+      duration_ms: 362.779183
+      type: 'test'
+      ...
+    # Subtest: extraField
+    ok 4 - extraField
+      ---
+      duration_ms: 369.138648
+      type: 'test'
+      ...
+    1..4
+ok 47 - the source-place proposal rejects Yavin, invented visual details and image approval
+  ---
+  duration_ms: 1812.242837
+  type: 'test'
+  ...
+# Subtest: unrelated identities, delivered entries and totals remain subject to the full historical validator
+ok 48 - unrelated identities, delivered entries and totals remain subject to the full historical validator
+  ---
+  duration_ms: 6250.981608
+  type: 'test'
+  ...
+# Subtest: the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+ok 49 - the closed amendment refuses extra metadata and a changed prior amendment, without touching canonical files
+  ---
+  duration_ms: 148.146717
+  type: 'test'
+  ...
+# Subtest: the original published plan and its three prior amendment pins stay byte-exact
+ok 50 - the original published plan and its three prior amendment pins stay byte-exact
+  ---
+  duration_ms: 57.676779
+  type: 'test'
+  ...
+# (node:206411) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: source64 closes only its exact metadata fixture and preserves all historical records
+ok 51 - source64 closes only its exact metadata fixture and preserves all historical records
+  ---
+  duration_ms: 1866.665692
+  type: 'test'
+  ...
+# Subtest: source64 rejects changed values inside every allowed identity/entry/background field
+ok 52 - source64 rejects changed values inside every allowed identity/entry/background field
+  ---
+  duration_ms: 3638.134344
+  type: 'test'
+  ...
+# Subtest: source64 refuses generation/status/assets/rewards/approval changes for its own actors
+ok 53 - source64 refuses generation/status/assets/rewards/approval changes for its own actors
+  ---
+  duration_ms: 4136.389256
+  type: 'test'
+  ...
+# Subtest: runtime provenance is exact and nonauthoritative for only the two historical Halo pilots
+ok 54 - runtime provenance is exact and nonauthoritative for only the two historical Halo pilots
+  ---
+  duration_ms: 6340.661161
+  type: 'test'
+  ...
+# Subtest: all sixty-four runtime declaration pins and both pilot catalog sources reject altered clones
+ok 55 - all sixty-four runtime declaration pins and both pilot catalog sources reject altered clones
+  ---
+  duration_ms: 1285.525421
+  type: 'test'
+  ...
+# Subtest: unknown outside changes survive the bounded projection and fail the complete historical comparison
+ok 56 - unknown outside changes survive the bounded projection and fail the complete historical comparison
+  ---
+  duration_ms: 12825.029566
+  type: 'test'
+  ...
+# Subtest: known parent key order is restored without accepting unknown values
+ok 57 - known parent key order is restored without accepting unknown values
+  ---
+  duration_ms: 751.326976
+  type: 'test'
+  ...
+# Subtest: closed fixture and frozen b9e source bytes reject tampering without changing canonical files
+ok 58 - closed fixture and frozen b9e source bytes reject tampering without changing canonical files
+  ---
+  duration_ms: 18.706062
+  type: 'test'
+  ...
+# (node:206446) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: explicit costume-only and CG13 support never qualify the target identity on their own
+ok 59 - explicit costume-only and CG13 support never qualify the target identity on their own
+  ---
+  duration_ms: 10.369547
+  type: 'test'
+  ...
+# Subtest: a real identity plus valid support qualifies only the identity while preserving support history
+ok 60 - a real identity plus valid support qualifies only the identity while preserving support history
+  ---
+  duration_ms: 129.821612
+  type: 'test'
+  ...
+# Subtest: a missing V2 or LFS pointer cannot borrow a costume support image as identity
+ok 61 - a missing V2 or LFS pointer cannot borrow a costume support image as identity
+  ---
+  duration_ms: 3.746267
+  type: 'test'
+  ...
+# Subtest: HTML, wrong byte count or a mismatched recorded SHA cannot qualify as a viewed image
+ok 62 - HTML, wrong byte count or a mismatched recorded SHA cannot qualify as a viewed image
+  ---
+  duration_ms: 2.855761
+  type: 'test'
+  ...
+# Subtest: an unknown role with a real viewed identity remains eligible rather than being rejected globally
+ok 63 - an unknown role with a real viewed identity remains eligible rather than being rejected globally
+  ---
+  duration_ms: 1.194399
+  type: 'test'
+  ...
+# Subtest: an explicit face or identity reference is not rejected just because its role also discusses costume or equipment
+ok 64 - an explicit face or identity reference is not rejected just because its role also discusses costume or equipment
+  ---
+  duration_ms: 0.828097
+  type: 'test'
+  ...
+1..64
+# tests 158
+# suites 0
+# pass 158
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 201629.696939
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

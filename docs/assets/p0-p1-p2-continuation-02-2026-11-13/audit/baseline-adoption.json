@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "baselineSourceCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "reusedLedgerSourceCommit": "b9e616b331e4d93efcd63b607736ae6b6c59415b",
+  "scope": "Reuse the already verified compact ledger after exact Git/working continuity; original row sourceCommit values remain unchanged. No new full export or media hydration.",
+  "ledgerGzip": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/actor-tasks.json.gz",
+  "ledgerGzipSha256": "bac56ef1cd51b1971704ac0bab0780e290f0bfc04e71183e79e43e3a53505172",
+  "ledgerOriginalSha256": "d3250f05145be152ef4ec6c6b24fa9ea3b753d1947f2d0757fdeee120d2ebf67",
+  "ledgerActors": 4937,
+  "ledgerFindingsByPriority": {
+    "P1": 16981,
+    "P2": 13506
+  },
+  "sourceContinuity": "baseline-continuity-98991b161.json",
+  "reservationsSha256": "7bd857e61f63fa315423dd44bb7135e7d7c2be0207a5aa603628c350e4e2d8a6",
+  "cohorts": [
+    {
+      "activityId": "gears-deadspace-040",
+      "reservation": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/gears-deadspace-040/reserved-actors.json",
+      "reservationSha256": "9ead8aeebcbc6d132a21b59fa4430c89642c7f5ff6433a535ebcf6e705758412",
+      "actors": 40,
+      "exactRowsMatchReusedLedger": true,
+      "openSourceFindingsByPriority": {
+        "P1": 177,
+        "P2": 82
+      },
+      "kindCounts": {
+        "hero": 15,
+        "enemy": 16,
+        "boss": 8,
+        "worldBoss": 1
+      }
+    },
+    {
+      "activityId": "portal-l4d-040",
+      "reservation": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/portal-l4d-040/reserved-actors.json",
+      "reservationSha256": "3e12d041fee01a69a650ff0181452f60f8dc6ee39b1988373de7fc3893dd51d9",
+      "actors": 40,
+      "exactRowsMatchReusedLedger": true,
+      "openSourceFindingsByPriority": {
+        "P1": 184,
+        "P2": 80
+      },
+      "kindCounts": {
+        "hero": 16,
+        "enemy": 14,
+        "boss": 9,
+        "worldBoss": 1
+      }
+    },
+    {
+      "activityId": "raster-lot-004-resume",
+      "reservation": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/raster-lot-004-resume/reserved-actors.json",
+      "reservationSha256": "87f1d391280e22d0a6bf4c37ff985975944e127768b72d9c490bdf06e6d17724",
+      "actors": 40,
+      "exactRowsMatchReusedLedger": true,
+      "openSourceFindingsByPriority": {
+        "P1": 196,
+        "P2": 81
+      },
+      "kindCounts": {
+        "enemy": 22,
+        "boss": 14,
+        "worldBoss": 4
+      }
+    },
+    {
+      "activityId": "presentation-040",
+      "reservation": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/presentation-040/reserved-actors.json",
+      "reservationSha256": "19c5a81bbd05cce8a74878cda4160ea2f6d0627b7abc79fdd3ddbbe0edb710c5",
+      "actors": 40,
+      "exactRowsMatchReusedLedger": true,
+      "openSourceFindingsByPriority": {
+        "P2": 107,
+        "P1": 104
+      },
+      "kindCounts": {
+        "hero": 25,
+        "enemy": 9,
+        "boss": 5,
+        "worldBoss": 1
+      }
+    }
+  ],
+  "reservedActors": 160,
+  "distinctActorKeys": 160,
+  "reservationsDisjoint": true,
+  "reusableImmutableSourceSnapshot": "/tmp/p0-p1-p2-final-b9e616b-source",
+  "snapshotSourceManifest": "docs/assets/p0-p1-p2-continuation-2026-11-13/audit/checkpoint-b9e616b/source-inputs.json",
+  "sourceFilesRechecked": 3862,
+  "changedSnapshotSources": [],
+  "fullActorClosures": 0,
+  "artApprovals": 0,
+  "visual1to1Verified": false,
+  "mediaCopiedOrHydrated": 0
+}

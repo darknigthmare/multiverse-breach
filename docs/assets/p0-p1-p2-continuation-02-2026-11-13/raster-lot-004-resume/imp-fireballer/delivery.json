@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "reservedActors": 40,
+  "previouslyDeliveredPinkyNotCountedAgain": true,
+  "newRuntimeRasters": 1,
+  "newActorRaster": "[\"Doom\",\"name:Imp Fireballer\"]",
+  "remainingMissingRastersInReservedLot": 37,
+  "newImageGeneration": true,
+  "output": "DLC/Doom/assets/sprites/generated/bosses/doom/imp-fireballer.png",
+  "publicUrl": "/sprites/generated/bosses/doom/imp-fireballer.png",
+  "sha256": "b995a7c9fa7d900170a9e132efd2f19e927aa5b5e07260082af8366dff34f75d",
+  "bytes": 657237,
+  "sourcePlan": "source-plan.json",
+  "generationReceipt": "generation/generation.json",
+  "technicalQa": "validation/imp-technical-qa.json",
+  "focusedNewTestsPassed": 4,
+  "focusedTestsWithPinkyPassed": 8,
+  "realGameCanvasCasesPassed": 3,
+  "browserReport": "validation/browser/results.json",
+  "gameCanvasAfterCases": [
+    {
+      "case": "after-1280",
+      "pngHttpStatuses": [
+        200
+      ],
+      "pngSha256s": [
+        "b995a7c9fa7d900170a9e132efd2f19e927aa5b5e07260082af8366dff34f75d"
+      ],
+      "rendererCells": 16,
+      "signatureContacts": 1,
+      "beforeCloudHp": 105,
+      "afterCloudHp": 90,
+      "chargeAfter": 0,
+      "receivedHitState": "hit",
+      "disposedVerifiedByDriver": true,
+      "unrelated404s": [
+        "/sprites/generated/items/doom/doom-summon.png",
+        "/sprites/generated/items/doom/praetor-helm.png"
+      ]
+    },
+    {
+      "case": "after-390",
+      "pngHttpStatuses": [
+        200
+      ],
+      "pngSha256s": [
+        "b995a7c9fa7d900170a9e132efd2f19e927aa5b5e07260082af8366dff34f75d"
+      ],
+      "rendererCells": 16,
+      "signatureContacts": 1,
+      "beforeCloudHp": 105,
+      "afterCloudHp": 89,
+      "chargeAfter": 0,
+      "receivedHitState": "hit",
+      "disposedVerifiedByDriver": true,
+      "unrelated404s": [
+        "/sprites/generated/items/doom/doom-summon.png",
+        "/sprites/generated/items/doom/praetor-helm.png"
+      ]
+    }
+  ],
+  "parentSourceScaleReview": "Parent inspected original source sheet and contact96px: classic brown Imp, pale spikes, red eyes, claws and cast coherent; anatomy more massive/simplified than source.",
+  "artisticApproval": false,
+  "source1to1Verified": false,
+  "canonicalAnimationTimingVerified": false,
+  "fullActorClosed": false,
+  "productionBuildComplete": false,
+  "coreRendererOrSignatureKitChanged": false,
+  "integrationRemaining": [
+    "Parent owns DLC asset manifest/global registry refresh. New canonicalPNG alone staged with parent approval for existing QA server; no commit by this agent."
+  ],
+  "parentRuntimeReview": {
+    "status": "bounded-runtime-connection-reviewed",
+    "evidence": [
+      "validation/browser/after-1280-fire-sequence.png",
+      "validation/browser/after-390-attack.png",
+      "validation/browser/after-1280-received-hit.png"
+    ],
+    "scope": "Parent inspected actual GameCanvas source-scale body, fire scene/contact and received-hit row. General coherence and technical connection accepted; no pixel1:1,45states or source choreography certification.",
+    "visualFidelityApproved": false,
+    "fullActorClosed": false
+  },
+  "newRuntimeRastersInThisTourLot": 2,
+  "otherNewRasterInThisTourLot": "../mancubus-flame-tank/delivery.json",
+  "finalSharedFixtureConfirmation": {
+    "receipt": "validation/final-shared-fixture.json",
+    "browserReport": "validation/final-shared-fixture/results.json",
+    "passedCases": 3,
+    "scope": "Current Imp reconfirmed after adding only the second Mancubus metadata record to the shared Doom module; original first delivery screenshots remain preserved."
+  },
+  "finalCurrentSourceCheckpoint": "../mancubus-flame-tank/validation/source-checkpoint.json"
+}

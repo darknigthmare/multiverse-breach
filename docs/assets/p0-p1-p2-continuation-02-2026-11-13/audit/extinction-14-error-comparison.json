@@ -1,0 +1,89 @@
+{
+  "scope": "Already-red labels alone do not prove no new regression. Compare actual failure messages and inspect per-actor profiles separately.",
+  "rows": [
+    {
+      "label": "actual reload, pickup and kit return retain 36/26/11/0 active reload ticks and the independent primary cooldown",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n0 !== 36",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n0 !== 36"
+    },
+    {
+      "label": "aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run",
+      "sameErrorText": false,
+      "baselineError": "|-\nExpected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    'beam',\n+   'buff',\n    'cone',\n    'control',\n    'dash',\n    'focus',\n    'hitscan',",
+      "currentError": "|-\nchell\n+ actual - expected\n\n+ 'unavailable'\n- 'personal'"
+    },
+    {
+      "label": "aim readiness follows independent primary cooldowns, reloads, empty ammunition and paused ownership",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n'flight' !== 'ammo'",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n'flight' !== 'ammo'"
+    },
+    {
+      "label": "all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art",
+      "sameErrorText": false,
+      "baselineError": "'cortana'",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n'' !== 'chell'"
+    },
+    {
+      "label": "ammunition is consumed by ballistic primaries; contact and non-ballistic effects use cooldowns",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n24 !== 23",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n24 !== 23"
+    },
+    {
+      "label": "contact and control readouts agree with actual reach, facing and successful actions at the boundaries",
+      "sameErrorText": true,
+      "baselineError": "|-\nmasterchief true\n\n'flight' !== 'target'",
+      "currentError": "|-\nmasterchief true\n\n'flight' !== 'target'"
+    },
+    {
+      "label": "every actual combatant has four executable source actions; no source catalog mutation or implicit ownership",
+      "sameErrorText": false,
+      "baselineError": "|-\nmasterchief\n+ actual - expected\n\n  [\n    'simple',\n    'secondary',\n-   'defense',\n    'special'\n  ]",
+      "currentError": "|-\nmarcus\n+ actual - expected\n\n  [\n    'simple',\n    'secondary',\n-   'defense',\n    'special'\n  ]"
+    },
+    {
+      "label": "every primary delivery has different geometry even with one colour, and pause rendering is pure",
+      "sameErrorText": true,
+      "baselineError": "|-\ngeometry must distinguish delivery, not only palette\n\n8 !== 9",
+      "currentError": "|-\ngeometry must distinguish delivery, not only palette\n\n8 !== 9"
+    },
+    {
+      "label": "marking and shield feedback follow real damage rules, while non-damaging control remains valid",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n'flight' !== 'target'",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n'flight' !== 'target'"
+    },
+    {
+      "label": "pause cannot age a stored personal reload, and ordinary loot cannot shorten an active reload",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n10 !== 36",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n10 !== 36"
+    },
+    {
+      "label": "real primary activations and cooldown ticks drive attack, recovery and ready states",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n+ actual - expected\n\n+ 'projectile'\n- 'ballistic'",
+      "currentError": "|-\nExpected values to be strictly equal:\n+ actual - expected\n\n+ 'projectile'\n- 'ballistic'"
+    },
+    {
+      "label": "returning to the personal kit retains its actual stock and cooldowns without refill or repeated return",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n24 !== 23",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n24 !== 23"
+    },
+    {
+      "label": "the actual aiming draw stays inside the reserved reticle and cancels camera shake without altering the hit marker",
+      "sameErrorText": true,
+      "baselineError": "|-\nExpected values to be strictly equal:\n\n6 !== 7",
+      "currentError": "|-\nExpected values to be strictly equal:\n\n6 !== 7"
+    },
+    {
+      "label": "workbook export is deterministic and covers all four modes with provenance and honest production states",
+      "sameErrorText": false,
+      "baselineError": "|-\nExpected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   actions: 7182,\n-   actions: 7244,\n    authoredKits: 12,\n    boundPersonalViews: 3,\n    characters: 1912,\n    combatants: 1811,\n+   genericSourceReview: 1583,\n-   genericSourceReview: 1633,\n    peaceful: 101,\n    sourceAdaptedKits: 1799\n  }",
+      "currentError": "|-\nExpected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   actions: 7137,\n-   actions: 7244,\n    authoredKits: 12,\n    boundPersonalViews: 3,\n    characters: 1912,\n    combatants: 1811,\n+   genericSourceReview: 1556,\n-   genericSourceReview: 1633,\n    peaceful: 101,\n    sourceAdaptedKits: 1799\n  }"
+    }
+  ]
+}

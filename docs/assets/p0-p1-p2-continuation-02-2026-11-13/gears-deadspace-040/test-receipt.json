@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "98991b161d0116dd9fa8d52d42f2337a243f2091",
+  "node": "v22.23.5",
+  "heapMiB": 2048,
+  "cpuAffinity": 0,
+  "command": "taskset --cpu-list 0 /tmp/p0-p1-npm-cache/_npx/52027bd8fc0022aa/node_modules/node/bin/node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/gearsDeadSpaceSourceContracts20261113.test.mjs scripts/combatFidelityWave14.test.mjs scripts/combatFidelityWave15.test.mjs",
+  "tests": 20,
+  "pass": 20,
+  "fail": 0,
+  "dedicatedTests": 9,
+  "existingW14W15Tests": 11,
+  "scope": [
+    "40 stable identities, stats, raster bindings and hero animation bindings",
+    "60 hero ability profiles and 160 total slot lookups unchanged before and after preparation",
+    "60 RPG actions and 15 melee supers compared in real engines with fixed randomness",
+    "Each action reserves one ATB budget; each special reserves one meter budget and rejects repetition",
+    "General RAAM native Kryll gate and original Lightmass train incarnation preserved",
+    "14 raw catalog editions with complete historical/current objects and altered-source/action rejection",
+    "Hammond source erratum restricted to weapon/pose with a complete current definition pin",
+    "Derived Hammond sourceReference erratum pins complete before/current authoring records; foreign mutations remain rejected"
+  ],
+  "cohortCountsPreserved": {
+    "W14New": 12,
+    "W14Revised": 28,
+    "W15New": 42,
+    "W15Revised": 78,
+    "W17HistoricalAuthoring": 1582
+  },
+  "frozenPlans": [
+    {
+      "path": "docs/combat-fidelity-wave9-2026-10-22/batch-plan-before.json",
+      "sha256": "42a98cd096409c83ad37174e9ec2b813f5a7b9b366f18442809e26638ba81706",
+      "unchanged": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave12-2026-10-23/batch-plan-before.json",
+      "sha256": "47e7c5dd474e6e2acb55f3b7e961bc1f2bdec8191e4754c426e9b4ce7f6aa642",
+      "unchanged": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave14-2026-10-25/batch-plan-before.json",
+      "sha256": "458be3e604ee16a49b06da0d355c9328db7b9799a9bda242679702db201918f0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave15-2026-10-26/batch-plan-before.json",
+      "sha256": "08c143270255b5bc83fc051d37f5203351da868b232856d9f43a4dc943463dd1",
+      "unchanged": true
+    }
+  ],
+  "delta": {
+    "before": {
+      "P1": 177,
+      "P2": 82
+    },
+    "after": {
+      "P2": 120,
+      "P1": 55
+    },
+    "removedCounts": {
+      "INCARNATION_UNSPECIFIED": 38,
+      "VISUAL_CONTRACT_MISSING": 38,
+      "REFERENCE_MISSING": 38,
+      "GENERIC_TECHNIQUE_NAMES": 8
+    },
+    "addedCounts": {
+      "REFERENCE_SCENE_REVIEW": 38
+    }
+  },
+  "historyFailureBeforeExactErratum": "The 8 dedicated tests passed. W14 import and W15 cohort correctly rejected the changed Hammond sourceReference until its exact closed erratum was added; no assertion was disabled or historical plan rewritten.",
+  "remainingValidation": "Full W9/W12 suites start Vite and inspect media, so they were not run in this bounded no-Vite/no-hydration task. Root owns full prebuild. Extinction consumer compatibility for projectile/guard is tracked by menus_logistics.",
+  "source1to1Verified": false,
+  "artApproved": false
+}

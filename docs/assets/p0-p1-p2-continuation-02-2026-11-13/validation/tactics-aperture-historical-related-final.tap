@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+ok 1 - closed Aperture fixture pins the full sector, three materials and complete environment without changing W17 history
+  ---
+  duration_ms: 4.805591
+  type: 'test'
+  ...
+# Subtest: exact new additions are proved before the complete historical W17 projections
+ok 2 - exact new additions are proved before the complete historical W17 projections
+  ---
+  duration_ms: 16.265522
+  type: 'test'
+  ...
+# Subtest: historical intermediate inventories with all Aperture additions absent remain accepted
+ok 3 - historical intermediate inventories with all Aperture additions absent remain accepted
+  ---
+  duration_ms: 19.88994
+  type: 'test'
+  ...
+# Subtest: new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+ok 4 - new geometry, source authority, spawns, presentation and extra fields cannot borrow the reviewed sector identity
+  ---
+  duration_ms: 154.319306
+  type: 'test'
+  ...
+# Subtest: all three new material definitions and the complete biome profile are exact, never ID-only approval
+ok 5 - all three new material definitions and the complete biome profile are exact, never ID-only approval
+  ---
+  duration_ms: 6.433927
+  type: 'test'
+  ...
+# Subtest: an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+ok 6 - an Aperture addition cannot mask mutated old sectors, old materials or prior W17 definitions
+  ---
+  duration_ms: 50.466633
+  type: 'test'
+  ...
+# Subtest: unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+ok 7 - unknown identities, same-prefix aliases and removed old definitions still fail the real historical guards
+  ---
+  duration_ms: 10.891603
+  type: 'test'
+  ...
+# Subtest: projection never mutates or freezes caller data and preserves unrelated object identities
+ok 8 - projection never mutates or freezes caller data and preserves unrelated object identities
+  ---
+  duration_ms: 45.606891
+  type: 'test'
+  ...
+# Subtest: all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+ok 9 - all15 previous topologies and34 material definitions remain exact while eight new material profiles are added
+  ---
+  duration_ms: 6.72022
+  type: 'test'
+  ...
+# Subtest: W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 10 - W16 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 21.661193
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 11 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 4.899723
+  type: 'test'
+  ...
+# Subtest: four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 12 - four new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 0.989032
+  type: 'test'
+  ...
+# Subtest: all19 previous topologies and42 material definitions remain exact after the reviewed W17 and Aperture additions
+ok 13 - all19 previous topologies and42 material definitions remain exact after the reviewed W17 and Aperture additions
+  ---
+  duration_ms: 11.566492
+  type: 'test'
+  ...
+# Subtest: W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+ok 14 - W17 environment geometry is deterministic, source-addressed and dedicated to Tactics without a shared backdrop
+  ---
+  duration_ms: 27.740506
+  type: 'test'
+  ...
+# Subtest: new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+ok 15 - new materials texture the true ramp, sides and platform undersides without changing its polygon or support geometry
+  ---
+  duration_ms: 8.170388
+  type: 'test'
+  ...
+# Subtest: five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+ok 16 - five new scenery types keep the actual floor anchor, physical volume, HP and canvas state
+  ---
+  duration_ms: 1.327923
+  type: 'test'
+  ...
+# Subtest: historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+ok 17 - historical projections prove the exact W17 extension while rejecting unknown or mutated sectors, materials and biomes
+  ---
+  duration_ms: 80.016547
+  type: 'test'
+  ...
+# Subtest: four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+ok 18 - four W15 source environments add distinct deterministic landmarks while historical biome export remains bounded
+  ---
+  duration_ms: 18.877493
+  type: 'test'
+  ...
+# Subtest: W15 environments cannot enter other engines and suppression removes source-specific art
+ok 19 - W15 environments cannot enter other engines and suppression removes source-specific art
+  ---
+  duration_ms: 0.514356
+  type: 'test'
+  ...
+# Subtest: Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+ok 20 - Spencer mist respects reduced-motion while game time drives its independent original atmosphere
+  ---
+  duration_ms: 4.581533
+  type: 'test'
+  ...
+# Subtest: seven W15 materials paint real tops and cliff faces without changing geometry
+ok 21 - seven W15 materials paint real tops and cliff faces without changing geometry
+  ---
+  duration_ms: 8.081263
+  type: 'test'
+  ...
+# Subtest: every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+ok 22 - every W15 playable surface selects a registered material and renders finite faces including slabs and slopes
+  ---
+  duration_ms: 172.720503
+  type: 'test'
+  ...
+# Subtest: lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+ok 23 - lamppost, statue and radio mast use real obstacle supports and never alter collision or HP
+  ---
+  duration_ms: 1.832324
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1250.977028
