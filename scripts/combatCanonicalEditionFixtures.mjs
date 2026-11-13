@@ -1,3 +1,4 @@
+import { GEARS_DEADSPACE_CATALOG_EDITIONS_20261113, assertGearsDeadSpaceCatalogEdition } from './gearsDeadSpaceCatalogEditions20261113.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -2172,6 +2173,7 @@ export const PROJECTED_SOURCE_EDITIONS_20261113 = Object.freeze({
 });
 
 export function assertCatalogActionEdition(actor, slot, historical) {
+  if (Object.hasOwn(GEARS_DEADSPACE_CATALOG_EDITIONS_20261113, actor.id)) return assertGearsDeadSpaceCatalogEdition(actor, slot, historical);
   const projected = PROJECTED_SOURCE_EDITIONS_20261113[actor.id];
   if (projected) {
     for (const [field, expected] of Object.entries(projected)) {
@@ -2300,4 +2302,59 @@ export function assertNativeSourceBaseEdition(actor, actualSrc) {
   assert.equal(entry.visualValidation.canon1to1Verified, false);
   assert.equal(hash(read('public' + edition.src)), edition.sha256, id + ': native base PNG changed');
   assert.equal(hash(read('public' + edition.reference)), edition.referenceSha256, id + ': retained master PNG changed');
+}
+
+// Closed two-field source erratum. Full current source data remain exact.
+export const HAMMOND_PULSE_RIFLE_SOURCE_ERRATUM_20261113 = Object.freeze({
+  "actorId": "zach_hammond",
+  "source": "Original Dead Space2008 source label correction only; SWS is Pulse Rifle,211-V is Plasma Cutter. No historical source plan rewritten.",
+  "fields": [
+    "weapon",
+    "pose"
+  ],
+  "historical": {
+    "universe": "Dead Space",
+    "sourceWork": "Dead Space (2008), security chief Zach Hammond",
+    "appearance": "Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour",
+    "weapon": "211-V plasma pulse rifle",
+    "actionName": "Rafale du Pulse Rifle de Hammond",
+    "effect": "damage",
+    "delivery": "projectile",
+    "pose": "Brace 211-V plasma pulse rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam",
+    "bodyHeight": 195,
+    "sourceReference": "https://deadspace.fandom.com/wiki/Zach_Hammond",
+    "source1to1Verified": false,
+    "networkVerified": false,
+    "name": "Rafale du Pulse Rifle de Hammond",
+    "kind": "hammond-pulse-rifle",
+    "weaponType": "gun"
+  },
+  "current": {
+    "universe": "Dead Space",
+    "sourceWork": "Dead Space (2008), security chief Zach Hammond",
+    "appearance": "Adult Black man, close-cropped hair, dark brown security RIG with blue spine lights, original 2008 outfit and pulse rifle; not remake armour",
+    "weapon": "SWS Motorized Pulse Rifle",
+    "actionName": "Rafale du Pulse Rifle de Hammond",
+    "effect": "damage",
+    "delivery": "projectile",
+    "pose": "Brace SWS Motorized Pulse Rifle, aim, tiny attached muzzle flash at the physical barrel tip on release only, recoil, recover; no floating projectile or beam",
+    "bodyHeight": 195,
+    "sourceReference": "https://deadspace.fandom.com/wiki/Zach_Hammond",
+    "source1to1Verified": false,
+    "networkVerified": false,
+    "name": "Rafale du Pulse Rifle de Hammond",
+    "kind": "hammond-pulse-rifle",
+    "weaponType": "gun"
+  }
+});
+export function assertHammondPulseRifleSourceField(actorId, current, historical, field) {
+  const correction = HAMMOND_PULSE_RIFLE_SOURCE_ERRATUM_20261113;
+  assert.equal(actorId, correction.actorId, 'Only the exact Hammond source receives this erratum');
+  assert.ok(correction.fields.includes(field), 'Only weapon/pose receive the Hammond label erratum');
+  assert.deepEqual(current, correction.current, 'Hammond current source changed outside exact SWS correction');
+  for (const key of ['universe', 'sourceWork', 'appearance', 'weaponType', 'sourceReference']) {
+    assert.deepEqual(historical[key], correction.historical[key], 'Hammond historical source identity changed: ' + key);
+  }
+  assert.deepEqual(historical[field], correction.historical[field], 'Hammond historical label must remain retained: ' + field);
+  assert.deepEqual(current[field], correction.current[field], 'Hammond corrected SWS label changed: ' + field);
 }

@@ -7,6 +7,7 @@ import { createExtinctionProtocolState, activateExtinctionProtocol, tickExtincti
 import { drawExtinctionSchematic, getExtinctionHandPlacement } from '../src/game/extinctionContent.js';
 import { getExtinctionSchematicView, getExtinctionSchematicPlacement } from '../src/game/extinctionSchematicView.js';
 import { getExtinctionViewLayout } from '../src/game/extinctionViewLayout.js';
+import { extinctionSourceConsumerAmendment as sourceAmendment, assertExtinctionSourceAmendment } from './fixtures/extinctionSourceConsumerAmendment.mjs';
 
 const heroes = [createPlayerHero(), ...HEROES_DB];
 const representatives = {
@@ -57,6 +58,7 @@ function context() {
 }
 
 test('all 1,811 eligible identities resolve their actual primary delivery, without manufacturing art', () => {
+  assertExtinctionSourceAmendment(heroes);
   const counts = {}, before = JSON.stringify(heroes);
   for (const hero of heroes) {
     const profile = getExtinctionFighterProfile(hero);
@@ -69,8 +71,7 @@ test('all 1,811 eligible identities resolve their actual primary delivery, witho
     assert.equal(view.artwork, false); assert.equal(view.morphologyInferred, false);
     counts[view.style] = (counts[view.style] || 0) + 1;
   }
-  assert.deepEqual(counts, { contact: 817, projectile: 337, ballistic: 577, cone: 2,
-    beam: 8, scatter: 5, control: 19, focus: 43, movement: 3 });
+  assert.deepEqual(counts, sourceAmendment.expectedCurrentSchematicStyles);
   assert.equal(JSON.stringify(heroes), before);
 });
 

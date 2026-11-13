@@ -5,6 +5,8 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17 } from '../src/game/tacticsUniverseBattlefieldsWave17.js';
 import { TACTICS_TERRAIN_MATERIALS_WAVE17, TACTICS_ENVIRONMENT_PROFILES_WAVE17 } from '../src/game/tacticsUniversePresentationWave17.js';
+import { projectTacticsSectorsBeforeAperture, projectTacticsMaterialsBeforeAperture,
+  projectTacticsBiomesBeforeAperture } from './tacticsHistoricalAperture20261113.mjs';
 
 const directory = '../docs/tactics-universes-2026-11-02/';
 const bytes = readFileSync(new URL(directory + 'baseline-tactics-stages-before.json', import.meta.url));
@@ -39,16 +41,19 @@ function projectDefinitions(actual, previousHashes, additions, label) {
 }
 
 export function projectTacticsSectorsBeforeWave17(actual) {
+  actual = projectTacticsSectorsBeforeAperture(actual);
   const previous = Object.fromEntries(Object.entries(baseline.fields).filter(([id]) => !nexusIds.includes(id)));
   assert.equal(keys(previous).length, 16);
   return projectDefinitions(actual, previous, TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17, 'Tactics sectors');
 }
 
 export function projectTacticsMaterialsBeforeWave17(actual) {
+  actual = projectTacticsMaterialsBeforeAperture(actual);
   return projectDefinitions(actual, baseline.materialDefinitions, TACTICS_TERRAIN_MATERIALS_WAVE17, 'Tactics materials');
 }
 
 export function projectTacticsBiomesBeforeWave17(actual) {
+  actual = projectTacticsBiomesBeforeAperture(actual);
   assert.equal(new Set(actual).size, actual.length, 'Duplicate runtime biome');
   assert.ok(biomeIds.every(id => !baseline.biomes.includes(id)), 'W17 cannot replace a historical biome');
   assert.deepEqual(sorted(actual), sorted([...baseline.biomes, ...biomeIds]), 'Runtime biomes must be exactly W16 plus the four W17 additions');

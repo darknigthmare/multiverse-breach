@@ -1,0 +1,4690 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-aperture-tactics-additions-before-W17-historical-projection",
+  "date": "2026-11-13",
+  "historicalBaselinePath": "docs/tactics-universes-2026-11-02/baseline-tactics-stages-before.json",
+  "historicalBaselineSha256": "2aea8ab9fd69823f4bea48d2176a69bb243617dc61a742e683989b044b6063ee",
+  "changesHistoricalInputs": false,
+  "changesRuntime": false,
+  "source1to1Verified": false,
+  "sector": {
+    "id": "portal2_maintenance_shaft_tactics",
+    "jsonSha256": "60a0a20e34a983575cc21f4b50c28b26bb4e03aa3e32b85fd6197cf1e43ce56a",
+    "definition": {
+      "id": "portal2_maintenance_shaft_tactics",
+      "formatVersion": 2,
+      "modeExclusive": "Tactics",
+      "layoutId": "portal2_maintenance_shaft_tactics:authored-sector-v1",
+      "label": {
+        "fr": "Portal 2 — chambre et puits de maintenance",
+        "en": "Portal 2 — Chamber and Maintenance Shaft"
+      },
+      "rows": 12,
+      "cols": 16,
+      "objective": "artifact",
+      "objectiveTarget": 2,
+      "tileTheme": "aperture-maintenance",
+      "links": [],
+      "tags": [
+        "vertical",
+        "universeSector",
+        "modeExclusive",
+        "maintenanceShaft",
+        "stackedRecovery",
+        "stairs"
+      ],
+      "sourceUniverse": "Portal",
+      "source": {
+        "universe": "Portal",
+        "work": "Portal 2 (2011)",
+        "period": "Portal 2 reconstructed Aperture test-chamber and exposed maintenance architecture; no Portal (2007) chamber layout",
+        "location": "Aperture Science Enrichment Center — chamber panels and exposed maintenance shaft",
+        "reference": "https://www.thinkwithportals.com/about.php",
+        "sourceReference": "https://store.steampowered.com/app/620/Portal_2/",
+        "source1to1Verified": false,
+        "canonicalLayoutVerified": false,
+        "networkVerified": true,
+        "adaptation": "Original Tactics geometry, access stairs and A.R.C.A. recovery markers. Solid metal catwalks, not Hard Light Bridges or Excursion Funnels. Portals, gels and moving machinery are not simulated by this sector."
+      },
+      "scenario": {
+        "fr": "Récupérer les deux repères A.R.C.A. au même emplacement horizontal : passerelle haute et fond du puits. Les escaliers conduisent à chaque niveau ; le tablier ne se traverse pas verticalement.",
+        "en": "Recover two A.R.C.A. markers at the same horizontal position: upper catwalk and shaft floor. Stairs reach each level; the deck cannot be crossed vertically.",
+        "features": [
+          "stacked-recovery-markers",
+          "two-gallery-stair-approaches",
+          "lower-service-stairs",
+          "solid-catwalk-underpass"
+        ]
+      },
+      "tacticsPresentation": {
+        "id": "portal2_maintenance_shaft_tactics",
+        "biome": "aperture-maintenance",
+        "weather": "clear",
+        "architecture": "aperture-maintenance",
+        "skyline": "Light segmented chamber panels, dark support frames and exposed service catwalks"
+      },
+      "surfaces": [
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:0",
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:0",
+          "x": 1,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:0",
+          "x": 2,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:0",
+          "x": 3,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:0",
+          "x": 4,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:0",
+          "x": 5,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:0",
+          "x": 6,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:0",
+          "x": 7,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:0",
+          "x": 8,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:0",
+          "x": 9,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:0",
+          "x": 10,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:0",
+          "x": 11,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:0",
+          "x": 12,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:0",
+          "x": 13,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:0",
+          "x": 14,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:0",
+          "x": 15,
+          "y": 0,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:1",
+          "x": 0,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:1",
+          "x": 1,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:1",
+          "x": 2,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:1",
+          "x": 3,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:1",
+          "x": 4,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:1",
+          "x": 5,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:1",
+          "x": 6,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:1",
+          "x": 7,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:1",
+          "x": 8,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:1",
+          "x": 9,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:1",
+          "x": 10,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:1",
+          "x": 11,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:1",
+          "x": 12,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:1",
+          "x": 13,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:1",
+          "x": 14,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:1",
+          "x": 15,
+          "y": 1,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:2",
+          "x": 0,
+          "y": 2,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:2",
+          "x": 1,
+          "y": 2,
+          "z": 0.75,
+          "cornerZ": [
+            0,
+            1.5,
+            1.5,
+            0
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:2",
+          "x": 2,
+          "y": 2,
+          "z": 2.25,
+          "cornerZ": [
+            1.5,
+            3,
+            3,
+            1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:2",
+          "x": 3,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:2",
+          "x": 4,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:2",
+          "x": 5,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:2",
+          "x": 6,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:2",
+          "x": 7,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:2",
+          "x": 8,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:2",
+          "x": 9,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:2",
+          "x": 10,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:2",
+          "x": 11,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:2",
+          "x": 12,
+          "y": 2,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:2",
+          "x": 13,
+          "y": 2,
+          "z": 2.25,
+          "cornerZ": [
+            3,
+            1.5,
+            1.5,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:2",
+          "x": 14,
+          "y": 2,
+          "z": 0.75,
+          "cornerZ": [
+            1.5,
+            0,
+            0,
+            1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:2",
+          "x": 15,
+          "y": 2,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:3",
+          "x": 0,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:3",
+          "x": 1,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:3",
+          "x": 2,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:3",
+          "x": 3,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:3",
+          "x": 4,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:3",
+          "x": 5,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:3",
+          "x": 6,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:3",
+          "x": 7,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:3",
+          "x": 8,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:3",
+          "x": 9,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:3",
+          "x": 10,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:3",
+          "x": 11,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:3",
+          "x": 12,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:3",
+          "x": 13,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:3",
+          "x": 14,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:3",
+          "x": 15,
+          "y": 3,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:4",
+          "x": 0,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:4",
+          "x": 1,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:4",
+          "x": 2,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:4",
+          "x": 3,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:4",
+          "x": 4,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:4",
+          "x": 5,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:4",
+          "x": 6,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:4",
+          "x": 7,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:4",
+          "x": 8,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:4",
+          "x": 9,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:4",
+          "x": 10,
+          "y": 4,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:4",
+          "x": 11,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:4",
+          "x": 12,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:4",
+          "x": 13,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:4",
+          "x": 14,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:4",
+          "x": 15,
+          "y": 4,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:5",
+          "x": 0,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:5",
+          "x": 1,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:5",
+          "x": 2,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:5",
+          "x": 3,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:5",
+          "x": 4,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:5",
+          "x": 5,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:5",
+          "x": 6,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:5",
+          "x": 7,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:5",
+          "x": 8,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:5",
+          "x": 9,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:5",
+          "x": 10,
+          "y": 5,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:5",
+          "x": 11,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:5",
+          "x": 12,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:5",
+          "x": 13,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:5",
+          "x": 14,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:5",
+          "x": 15,
+          "y": 5,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:6",
+          "x": 0,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:6",
+          "x": 1,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:6",
+          "x": 2,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:6",
+          "x": 3,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:6",
+          "x": 4,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:6",
+          "x": 5,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:6",
+          "x": 6,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:6",
+          "x": 7,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:6",
+          "x": 8,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:6",
+          "x": 9,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:6",
+          "x": 10,
+          "y": 6,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:6",
+          "x": 11,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:6",
+          "x": 12,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:6",
+          "x": 13,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:6",
+          "x": 14,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:6",
+          "x": 15,
+          "y": 6,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:7",
+          "x": 0,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:7",
+          "x": 1,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:7",
+          "x": 2,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:7",
+          "x": 3,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:7",
+          "x": 4,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:7",
+          "x": 5,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:7",
+          "x": 6,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:7",
+          "x": 7,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:7",
+          "x": 8,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:7",
+          "x": 9,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:7",
+          "x": 10,
+          "y": 7,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:7",
+          "x": 11,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:7",
+          "x": 12,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:7",
+          "x": 13,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:7",
+          "x": 14,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:7",
+          "x": 15,
+          "y": 7,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:8",
+          "x": 0,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:8",
+          "x": 1,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:8",
+          "x": 2,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:8",
+          "x": 3,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:8",
+          "x": 4,
+          "y": 8,
+          "z": -0.75,
+          "cornerZ": [
+            0,
+            -1.5,
+            -1.5,
+            0
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:8",
+          "x": 5,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:8",
+          "x": 6,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:8",
+          "x": 7,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:8",
+          "x": 8,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "artifact",
+          "solidBottom": -2,
+          "walkable": true,
+          "label": "Repère A.R.C.A. du niveau de service"
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:8",
+          "x": 9,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:8",
+          "x": 10,
+          "y": 8,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:8",
+          "x": 11,
+          "y": 8,
+          "z": -0.75,
+          "cornerZ": [
+            -1.5,
+            0,
+            0,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "stairs",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true,
+          "direction": "east",
+          "stepCount": 5,
+          "moveCost": 2
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:8",
+          "x": 12,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:8",
+          "x": 13,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:8",
+          "x": 14,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:8",
+          "x": 15,
+          "y": 8,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:9",
+          "x": 0,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:9",
+          "x": 1,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:9",
+          "x": 2,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:9",
+          "x": 3,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:9",
+          "x": 4,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:9",
+          "x": 5,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:9",
+          "x": 6,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:9",
+          "x": 7,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:9",
+          "x": 8,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:9",
+          "x": 9,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:9",
+          "x": 10,
+          "y": 9,
+          "z": -1.5,
+          "cornerZ": [
+            -1.5,
+            -1.5,
+            -1.5,
+            -1.5
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:9",
+          "x": 11,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:9",
+          "x": 12,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:9",
+          "x": 13,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:9",
+          "x": 14,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:9",
+          "x": 15,
+          "y": 9,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:10",
+          "x": 0,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:10",
+          "x": 1,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:10",
+          "x": 2,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:10",
+          "x": 3,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:10",
+          "x": 4,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:10",
+          "x": 5,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:10",
+          "x": 6,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:10",
+          "x": 7,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:10",
+          "x": 8,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:10",
+          "x": 9,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:10",
+          "x": 10,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:10",
+          "x": 11,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:10",
+          "x": 12,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:10",
+          "x": 13,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:10",
+          "x": 14,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:10",
+          "x": 15,
+          "y": 10,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:0:11",
+          "x": 0,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:1:11",
+          "x": 1,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:2:11",
+          "x": 2,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:3:11",
+          "x": 3,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:4:11",
+          "x": 4,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:5:11",
+          "x": 5,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:6:11",
+          "x": 6,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:7:11",
+          "x": 7,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:8:11",
+          "x": 8,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:9:11",
+          "x": 9,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:10:11",
+          "x": 10,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:11:11",
+          "x": 11,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:12:11",
+          "x": 12,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:13:11",
+          "x": 13,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:14:11",
+          "x": 14,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:ground:15:11",
+          "x": 15,
+          "y": 11,
+          "z": 0,
+          "cornerZ": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "materialId": "aperture-panel",
+          "materialLabel": {
+            "fr": "Panneaux clairs de la chambre",
+            "en": "Light chamber panels"
+          },
+          "layerId": "ground",
+          "shape": "flat",
+          "type": "normal",
+          "solidBottom": -2,
+          "walkable": true
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:3",
+          "x": 8,
+          "y": 3,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "normal",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {}
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:4",
+          "x": 8,
+          "y": 4,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "normal",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {}
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:5",
+          "x": 8,
+          "y": 5,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "normal",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {}
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:6",
+          "x": 8,
+          "y": 6,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "normal",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {}
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:7",
+          "x": 8,
+          "y": 7,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "normal",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {}
+        },
+        {
+          "id": "portal2_maintenance_shaft_tactics:bridge:8:8",
+          "x": 8,
+          "y": 8,
+          "z": 3,
+          "cornerZ": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "materialId": "aperture-grate",
+          "materialLabel": {
+            "fr": "Caillebotis de service",
+            "en": "Service grating"
+          },
+          "layerId": "bridge",
+          "shape": "slab",
+          "type": "artifact",
+          "solidBottom": 2.72,
+          "thickness": 0.28,
+          "walkable": true,
+          "coverEdges": {},
+          "label": "Repère A.R.C.A. de la passerelle"
+        }
+      ],
+      "tiles": [
+        {
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:8:8",
+          "x": 8,
+          "y": 8,
+          "type": "artifact",
+          "label": "Repère A.R.C.A. du niveau de service"
+        },
+        {
+          "surfaceId": "portal2_maintenance_shaft_tactics:bridge:8:8",
+          "x": 8,
+          "y": 8,
+          "type": "artifact",
+          "label": "Repère A.R.C.A. de la passerelle"
+        }
+      ],
+      "heroSpawns": [
+        {
+          "x": 0,
+          "y": 5,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:0:5"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:0:6"
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:0:7"
+        }
+      ],
+      "monsterSpawns": [
+        {
+          "x": 12,
+          "y": 5,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:12:5"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:12:6"
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:12:7"
+        }
+      ],
+      "bossSpawns": [
+        {
+          "x": 13,
+          "y": 0,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:13:0"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:13:9"
+        }
+      ],
+      "worldBossSpawn": {
+        "x": 14,
+        "y": 5,
+        "z": 0,
+        "surfaceId": "portal2_maintenance_shaft_tactics:ground:14:5"
+      },
+      "extractionZone": [
+        {
+          "x": 14,
+          "y": 8,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:14:8"
+        }
+      ],
+      "pickupSpawns": [
+        {
+          "x": 1,
+          "y": 8,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:1:8"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "z": 3,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:4:2"
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "z": 3,
+          "surfaceId": "portal2_maintenance_shaft_tactics:bridge:8:6"
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "z": -1.5,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:6:7"
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:12:9"
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 5,
+          "y": 1,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:5:1",
+          "gridX": 5,
+          "gridY": 1,
+          "id": "portal2_maintenance_shaft_tactics:north-frame",
+          "name": "Ossature du puits",
+          "type": "barrier",
+          "sceneryKind": "aperture-support",
+          "materialId": "aperture-frame",
+          "tacticsHeight": 3,
+          "hp": 120,
+          "maxHp": 120,
+          "color": "#4d565b"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "z": -1.5,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:6:6",
+          "gridX": 6,
+          "gridY": 6,
+          "id": "portal2_maintenance_shaft_tactics:service-frame",
+          "name": "Support de maintenance",
+          "type": "barrier",
+          "sceneryKind": "aperture-support",
+          "materialId": "aperture-frame",
+          "tacticsHeight": 2.5,
+          "hp": 120,
+          "maxHp": 120,
+          "color": "#4d565b"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "z": 0,
+          "surfaceId": "portal2_maintenance_shaft_tactics:ground:11:4",
+          "gridX": 11,
+          "gridY": 4,
+          "id": "portal2_maintenance_shaft_tactics:panel-stack",
+          "name": "Panneaux de chambre déposés",
+          "type": "barrier",
+          "sceneryKind": "aperture-panels",
+          "materialId": "aperture-frame",
+          "tacticsHeight": 1.7,
+          "hp": 120,
+          "maxHp": 120,
+          "color": "#4d565b"
+        }
+      ]
+    }
+  },
+  "materials": [
+    {
+      "id": "aperture-panel",
+      "jsonSha256": "603a3317d0cf73cdd241cc10e56f3f30c6d691b7f1963571b58f10dea68f3436",
+      "definition": {
+        "family": "panel",
+        "top": "#c8cac4",
+        "mid": "#b0b5b2",
+        "side": "#68767b",
+        "underside": "#303d44",
+        "detail": "#e4e5df",
+        "accent": "#9bbbc4",
+        "edge": "#d5d9d4"
+      }
+    },
+    {
+      "id": "aperture-frame",
+      "jsonSha256": "6f6c3f53fe9061fb4efb257f240c01cfd0d11aaadccdec29313733e0bafb320e",
+      "definition": {
+        "family": "panel",
+        "top": "#505d64",
+        "mid": "#3e4c55",
+        "side": "#2b3943",
+        "underside": "#19252f",
+        "detail": "#84949a",
+        "accent": "#a9c2c6",
+        "edge": "#758890"
+      }
+    },
+    {
+      "id": "aperture-grate",
+      "jsonSha256": "9b8e42d7334fd04691a56aa286526bf2e4995ff207c3253d203986d5688d573d",
+      "definition": {
+        "family": "grate",
+        "top": "#78868a",
+        "mid": "#5b6c73",
+        "side": "#3b4e58",
+        "underside": "#23333e",
+        "detail": "#b2c1c3",
+        "accent": "#c9d7d4",
+        "edge": "#9aadb1"
+      }
+    }
+  ],
+  "environment": {
+    "id": "aperture-maintenance",
+    "jsonSha256": "2661f65a61411c8ddd7bda95fceeaceee398916dd0ee6f1ebf9c3b058710c9eb",
+    "definition": {
+      "sky": [
+        "#17242e",
+        "#55646b"
+      ],
+      "ground": "#303e45",
+      "haze": "#8b9b9e",
+      "far": "#5e7078",
+      "near": "#354852",
+      "ridge": "city",
+      "flora": "none",
+      "accent": "#b8dce0",
+      "architecture": "aperture-maintenance"
+    }
+  },
+  "scope": "Allow only the exact reviewed new Aperture definitions to be removed before unchanged W17/W16 historical validation. Absent additions support historical intermediate fixtures; unknown identities and all unrelated current values remain under the old strict guards."
+}

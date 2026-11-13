@@ -20,6 +20,7 @@ import * as relays from '../src/game/extinctionRelayOperation.js';
 import * as field from '../src/game/nexusFieldOperation.js';
 import * as equipment from '../src/game/extinctionFieldEquipment.js';
 import * as aiming from '../src/game/extinctionAimReadout.js';
+import { extinctionSourceConsumerAmendment as sourceAmendment, assertExtinctionSourceAmendment } from './fixtures/extinctionSourceConsumerAmendment.mjs';
 
 const heroes = [createPlayerHero(), ...HEROES_DB];
 const hero = id => heroes.find(candidate => candidate.id === id);
@@ -212,10 +213,10 @@ test('future unsupported source types are explicit instead of becoming a borrowe
 });
 
 test('workbook export is deterministic and covers all four modes with provenance and honest production states', () => {
+  assertExtinctionSourceAmendment(heroes);
   const first = buildExtinctionFighterCatalog(), second = buildExtinctionFighterCatalog();
   assert.deepEqual(first, second);
-  assert.deepEqual(first.counts, { characters: 1912, combatants: 1811, peaceful: 101, authoredKits: 12,
-    sourceAdaptedKits: 1799, genericSourceReview: 1633, boundPersonalViews: 3, actions: 7244 });
+  assert.deepEqual(first.counts, sourceAmendment.expectedCurrentCounts);
   assert.deepEqual(first.modes.map(mode => mode.mode), ['extraction', 'last_signal', 'infestation', 'hunt']);
   assert.ok(first.profiles.every(profile => profile.actions.every(action => action.sourcePath.includes(`${profile.heroId}.${action.slot}`))));
   assert.ok(first.profiles.every(profile => profile.actions.every(action => typeof action.reach?.kind === 'string' && Number.isFinite(action.reach.value))));
@@ -785,6 +786,7 @@ const aimViewport = { width: 840, height: 430 };
 const aimReadout = (state, lang = 'fr', viewport = aimViewport) => aiming.getExtinctionAimReadout(state, lang, viewport);
 
 test('aim feedback follows every current primary kit in all four modes without drawing randomness or mutating the run', () => {
+  assertExtinctionSourceAmendment(heroes);
   const originalRandom = Math.random, kinds = new Set(); let combinations = 0;
   try {
     Math.random = () => { throw new Error('Read-only aiming must not draw randomness'); };
@@ -804,7 +806,7 @@ test('aim feedback follows every current primary kit in all four modes without d
     }
   } finally { Math.random = originalRandom; }
   assert.equal(combinations, 7244);
-  assert.deepEqual([...kinds].sort(), ['beam', 'cone', 'control', 'dash', 'focus', 'hitscan', 'melee', 'projectile', 'scatter']);
+  assert.deepEqual([...kinds].sort(), sourceAmendment.expectedCurrentPrimaryKinds);
 });
 
 test('contact and control readouts agree with actual reach, facing and successful actions at the boundaries', () => {

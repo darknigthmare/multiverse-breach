@@ -1,0 +1,3673 @@
+{
+  "schemaVersion": 1,
+  "kind": "closed-continuation02-current-target-metadata",
+  "sourceCommit": "5baaae27bf23b845a5056eeab3c95fbe7b0d234e",
+  "historicalPlanSha256": "ce0e0a87c4308f39207b550721b94a1c6cd117775be853ba93f2336863b6132e",
+  "historicalObjectSha256": "34d07ca38a62d1606fe6efeabae2b80e2a59465efa67e674e9066dd96d8e5e15",
+  "identityAuthority": false,
+  "changesGenerationHistory": false,
+  "visualFidelityApproved": false,
+  "fullSource1to1Verified": false,
+  "identityFields": [
+    "incarnation",
+    "identityLock",
+    "equipment",
+    "sourceRefs",
+    "missing",
+    "adaptationNote"
+  ],
+  "entryFields": [
+    "themeSource",
+    "themeContinuity",
+    "missing"
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "a28ccc3a6ddeea28d16e373ad264af3835c919a7572846a740866dbce7ac393e",
+      "bytes": 61580
+    },
+    {
+      "path": "src/game/canonicalSpriteQuarantine.js",
+      "sha256": "fa3d055eca6b450d1177468d2e9cc69ec14c427baf108e973f87e8cc7054f847",
+      "bytes": 5797
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave15PartC.js",
+      "sha256": "95cb72ae6409af0b475ea5e1e3d87c8a6a285aba6d0b1670de71b41e5bcb11dd",
+      "bytes": 36029
+    },
+    {
+      "path": "DLC/GearsOfWar/data/heroes.js",
+      "sha256": "45b0bd32bf789f97f78e6853743fa6ce6bfd8519d1d5cf5fc9ea881867ec652e",
+      "bytes": 2659
+    },
+    {
+      "path": "DLC/GearsOfWar/data/actorSourceContracts.js",
+      "sha256": "aa72eb7b45e1bbdc2fd9d745e3fec65e093272c64727c9de9567c17b4b30b44d",
+      "bytes": 35457
+    },
+    {
+      "path": "DLC/GearsOfWar/data/loreAccuratePacks.js",
+      "sha256": "c2a83a37051de02163aae966511eb2c70b765ecb1d1a2f4bd98a06463dbed806",
+      "bytes": 1999
+    },
+    {
+      "path": "DLC/GearsOfWar/data/loreWorldBossOverrides.js",
+      "sha256": "9fba858f7d002a5eb8338b213da6458e541d3b97da80c4876a3b0c31038d7280",
+      "bytes": 851
+    },
+    {
+      "path": "DLC/DeadSpace/data/heroes.js",
+      "sha256": "85a6b9b92f5c1752645f48973ea16287684c3e56b6d928a8b43ab28e1b8611f1",
+      "bytes": 2594
+    },
+    {
+      "path": "DLC/DeadSpace/data/actorSourceContracts.js",
+      "sha256": "f54dd4bce9e230f25f0dc2d9179b50d92cb79a7e9ce42e2f15eb870d2d13d6dc",
+      "bytes": 28904
+    },
+    {
+      "path": "DLC/DeadSpace/data/loreAccuratePacks.js",
+      "sha256": "e0376f34811d719979249380ccbcbea829a9b01eea9b48150ed055c74194ff11",
+      "bytes": 1939
+    },
+    {
+      "path": "DLC/Portal/data/heroes.js",
+      "sha256": "7a866baab59d23e2e5b6a2ea738d3c1b043e1347f2be5818fb15730e10461cec",
+      "bytes": 2468
+    },
+    {
+      "path": "DLC/Portal/data/sourceContracts20261113.js",
+      "sha256": "27d4448accd61ba72cfead451e3931c294995cfb84e35229da3616c48350d2ee",
+      "bytes": 78559
+    },
+    {
+      "path": "DLC/Portal/data/loreAccuratePacks.js",
+      "sha256": "9ef1c43cfd250f21d11a152331c33ad7627450768a2c8fc93c35936f8feb6688",
+      "bytes": 2001
+    },
+    {
+      "path": "DLC/Portal/data/loreWorldBossOverrides.js",
+      "sha256": "b53a37be5c3919d49648dda68d7ee79479069f8b65dfb600c36e010805cdd9e6",
+      "bytes": 962
+    },
+    {
+      "path": "DLC/Left4Dead/data/heroes.js",
+      "sha256": "8aa3407b8bd07346e1643a47080d52e3e3d070d3a469a9cbf99d3ca5f6014a78",
+      "bytes": 647
+    },
+    {
+      "path": "DLC/Left4Dead/data/sourceContracts20261113.js",
+      "sha256": "8405aef7b4b075244d0bef4594137428c2a10fce677c7a07dc91e8e2e0113456",
+      "bytes": 41865
+    },
+    {
+      "path": "DLC/Left4Dead/data/expandedUniverses.js",
+      "sha256": "a8ba3a75bb7e7f76f012baccd38c775faab21c755b39909514f9be4ad76aa2ad",
+      "bytes": 1296
+    }
+  ],
+  "actors": [
+    {
+      "characterId": "anya_stroud",
+      "universe": "Gears of War",
+      "characterArcStageId": 9339,
+      "runtimeHeroSha256": "2e61d274e87fff3fdef5c0c90f3249027171cbdd51f2c61e5cc173fcb7c9ce9b",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 3 (2011), Anya Stroud in frontline COG armor",
+            "identityLock": "Adult blonde Anya in practical grey-blue COG combat armor with cyan lamps, dark underlayers and a physical Lancer Mk2. This is her frontline Gears 3 model, not the Gears 1 radio-room uniform or a later memorial image.",
+            "equipment": [
+              "Lancer Mk2",
+              "COG combat armor"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:anya-stroud:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Anya_Stroud",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 3 (2011), Anya Stroud in frontline COG armor",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-anya-stroud-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Anya Stroud"
+          },
+          "current": {
+            "characterContext": "Gears of War 3 (2011), Anya Stroud in frontline COG armor"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "atlas",
+      "universe": "Portal",
+      "characterArcStageId": 9403,
+      "runtimeHeroSha256": "35ec681cab79fd5dde83a50b6dc73419e7f1ca10bf89d79388e8ebd095575c8b",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), cooperative ATLAS test-robot chassis",
+            "identityLock": "Portal 2 ATLAS: short rounded spherical white shell, one blue optic, exposed dark joints, two arms and two legs, carrying the co-op portal device. Keep his compact body distinct from tall P-Body; no independent turret guns.",
+            "equipment": [
+              "ATLAS co-op portal device",
+              "White spherical robot shell",
+              "Blue optic"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:atlas:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), cooperative ATLAS test-robot chassis",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-atlas-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Atlas"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), cooperative ATLAS test-robot chassis"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "baird",
+      "universe": "Gears of War",
+      "characterArcStageId": 9338,
+      "runtimeHeroSha256": "8f5e81f3dea3d34e67eeac6d30f99569744868c425eb728f53aa700bc6896445",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 2 (2008), young Damon Baird in COG field armor",
+            "identityLock": "Young adult Baird with short blond hair, goggles resting on his forehead, grey-blue COG armor and cyan lamps. He carries a physical Lancer and ordinary maintenance tools; no old-man beard, Fabricator, autonomous turret or later-era robot.",
+            "equipment": [
+              "Lancer Mk2",
+              "COG field maintenance tools",
+              "COG combat armor"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:baird:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Damon_Baird",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 2 (2008), young Damon Baird in COG field armor",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-baird-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Damon Baird"
+          },
+          "current": {
+            "characterContext": "Gears of War 2 (2008), young Damon Baird in COG field armor"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "bill_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10198,
+      "runtimeHeroSha256": "a43e17d720f5a448bd01407df312deacfb805f80325dc16fb6bcbb571811ba41",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead (2008), Bill in his original Vietnam-veteran survivor outfit",
+            "identityLock": "Left 4 Dead 2008 Bill: older white human man, grey beard, green military beret, olive fatigue jacket and military trousers, with worn survivor gear. Keep him alive in the selected base-game survivor period, not a post-Sacrifice corpse or supernatural veteran.",
+            "equipment": [
+              "Assault Rifle",
+              "Original military beret and fatigues"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:bill-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead (2008), Bill in his original Vietnam-veteran survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-bill-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Bill"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead (2008), Bill in his original Vietnam-veteran survivor outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "carmine_cog",
+      "universe": "Gears of War",
+      "characterArcStageId": 9341,
+      "runtimeHeroSha256": "cee9d775b962b11a9381a6521ec10297984f558796b2b99287ebd6d71a11724b",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 3 (2011), specifically adult Clayton Carmine",
+            "identityLock": "Clayton Carmine has a fully closed opaque COG helmet, grey-blue heavy armor, blue lamps and conspicuously muscular bare arms. Carry a Lancer Mk2; do not substitute Anthony, Benjamin, Gary or Lizzie, their helmets, sleeves or eras.",
+            "equipment": [
+              "Lancer Mk2",
+              "Clayton Carmine COG helmet",
+              "Heavy COG armor"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:carmine-cog:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Carmine_family",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 3 (2011), specifically adult Clayton Carmine",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-carmine-cog-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Carmine"
+          },
+          "current": {
+            "characterContext": "Gears of War 3 (2011), specifically adult Clayton Carmine"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "caroline_portal",
+      "universe": "Portal",
+      "characterArcStageId": 9408,
+      "runtimeHeroSha256": "ed30f5dd59cc73de4e0bf803b1c8aed39d1036c7419c54cc66be206cb71a91a9",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), human Caroline in the old-Aperture 1950s office portrait",
+            "identityLock": "Portal 2 human Caroline: adult human assistant with dark waved hair and period office clothing in the archival portrait. Do not replace her with a GLaDOS robotic shell, yellow mechanical optic or laser-wielding soldier; exact portrait coloring and facial resemblance remain pending visual review.",
+            "equipment": [
+              "Aperture administrative records"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:caroline-portal:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), human Caroline in the old-Aperture 1950s office portrait",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-caroline-portal-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Caroline"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), human Caroline in the old-Aperture 1950s office portrait"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "carver",
+      "universe": "Dead Space",
+      "characterArcStageId": 9557,
+      "runtimeHeroSha256": "b17637e08deb67e4cf2ec773f239949474c9979f8245dc0e7e1b7baffa52ac30",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space 3 (2013), John Carver in military RIG",
+            "identityLock": "Adult John Carver wears his bulky dark military RIG with red illuminated eye lenses and a blue/cyan spinal health strip. A physical modular military rifle is carried in both hands; no Isaac engineering helmet, Marker body growth or weapon made of hallucinations.",
+            "equipment": [
+              "Military RIG",
+              "Physical modular military rifle"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_3",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_3",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:carver:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_3",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space 3 (2013), John Carver in military RIG",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-carver-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - John Carver"
+          },
+          "current": {
+            "characterContext": "Dead Space 3 (2013), John Carver in military RIG"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "cave_johnson",
+      "universe": "Portal",
+      "characterArcStageId": 9407,
+      "runtimeHeroSha256": "2090bf01e7f810675713e34d03fccfb2920153e33a2410cce6f06dc0d0fbc688",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), Cave Johnson in the old-Aperture 1950s office portrait; human archival identity",
+            "identityLock": "Cave Johnson in Portal 2 archival office material: adult human founder with dark hair and moustache in period business clothing. Keep an archival human presentation distinct from a personality sphere, robotic chassis or living present-day combatant; detailed portrait colors remain visually unverified.",
+            "equipment": [
+              "Archival Aperture portrait and recorded instructions"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:cave-johnson:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), Cave Johnson in the old-Aperture 1950s office portrait; human archival identity",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-cave-johnson-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Cave Johnson"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), Cave Johnson in the old-Aperture 1950s office portrait; human archival identity"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "cave_johnson_echo",
+      "universe": "Portal",
+      "characterArcStageId": 9411,
+      "runtimeHeroSha256": "d7b03fddfa8ca1a740bc86dfbe1339704986d4eab9bf315828d6020be71a1262",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [
+              "Archived voice recordings; no independently embodied Echo"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "legacy project adaptation; independent canonical actor body remains unresolved; no source identity or visual approval"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:cave-johnson-echo:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-cave-johnson-echo-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Cave Johnson Echo"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), Cave Johnson 1980s old-Aperture audio recordings; legacy Echo alias has no independent canonical body"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "chell",
+      "universe": "Portal",
+      "characterArcStageId": 9209,
+      "runtimeHeroSha256": "2cec174004291ae01fb555c804f8ecacff1cd3b3db7bed989ff8a017f6b3d10d",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": "Chell — Portal 2 (Valve, 2011), modèle final du jeu en tenue orange abaissée, sans mélange Portal 1",
+            "identityLock": "Human woman, two arms and two legs, athletic but ordinary proportions; medium warm olive/tan skin; dark brown tied ponytail with loose front strands; uncovered neutral determined face. White sleeveless Aperture tank with pale blue-grey edge/underlayer, grey-blue wrap/band around waist; orange jumpsuit upper half lowered and sleeves tied at waist, orange trousers rolled below knees; no Portal 1 zipped torso suit. White Long Fall Boots with black toe/sole, open dark calf section and black straps, curved black rear spring/brace descending behind heel; not generic armoured shin greaves. Full Chell device turnaround not established. Equipment solo uses the much better documented pair of Long Fall Boots. Device if present is subordinate and limited to the white/black shell and three black prongs supported by official Portal 2 screenshots, without co-op paint or speculative internals. Aperture Portal 2 uses modular panels, cyan dotted indicators, decaying test chambers, cylindrical elevator tubes, steel service framework and red thermal beams. New layouts are canon-inspired compositions, not reproduced game screenshots.",
+            "equipment": [],
+            "sourceRefs": [
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://www.thinkwithportals.com/images/press_bg.jpg"
+            ],
+            "missing": [
+              "Comparer chaque nouvelle image à la référence inspectée, sur les huit axes visuels; la cible sourcée ne certifie pas automatiquement les productions."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Chell — Portal 2 (Valve, 2011), modèle final du jeu en tenue orange abaissée, sans mélange Portal 1",
+            "identityLock": "Human woman, two arms and two legs, athletic but ordinary proportions; medium warm olive/tan skin; dark brown tied ponytail with loose front strands; uncovered neutral determined face. White sleeveless Aperture tank with pale blue-grey edge/underlayer, grey-blue wrap/band around waist; orange jumpsuit upper half lowered and sleeves tied at waist, orange trousers rolled below knees; no Portal 1 zipped torso suit. White Long Fall Boots with black toe/sole, open dark calf section and black straps, curved black rear spring/brace descending behind heel; not generic armoured shin greaves. Full Chell device turnaround not established. Equipment solo uses the much better documented pair of Long Fall Boots. Device if present is subordinate and limited to the white/black shell and three black prongs supported by official Portal 2 screenshots, without co-op paint or speculative internals. Aperture Portal 2 uses modular panels, cyan dotted indicators, decaying test chambers, cylindrical elevator tubes, steel service framework and red thermal beams. New layouts are canon-inspired compositions, not reproduced game screenshots.",
+            "equipment": [],
+            "sourceRefs": [
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://www.thinkwithportals.com/images/press_bg.jpg"
+            ],
+            "missing": [
+              "Comparer chaque nouvelle image à la référence inspectée, sur les huit axes visuels; la cible sourcée ne certifie pas automatiquement les productions."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+            "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+            "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+            "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+            "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+            "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+            "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+            "https://www.thinkwithportals.com/images/press_bg.jpg",
+            "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+            "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+            "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+          ],
+          "current": [
+            "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+            "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+            "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+            "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+            "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+            "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+            "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+            "https://www.thinkwithportals.com/images/press_bg.jpg",
+            "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+            "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+            "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:chell:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:actionScene:openai-v1",
+          "type": "actionScene",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:introPose:openai-v1",
+          "type": "introPose",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:maidService:openai-v1",
+          "type": "maidService",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:goofy:openai-v1",
+          "type": "goofy",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        },
+        {
+          "id": "cg:portal:chell:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "previous": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          },
+          "current": {
+            "themeSource": [
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+              "https://wiki.teamfortress.com/w/images/4/40/Chell.png",
+              "https://wiki.teamfortress.com/w/images/9/9e/Long_fall_boot_diagram.png",
+              "https://www.thinkwithportals.com/images/thumb_p2_boots.jpg",
+              "https://www.thinkwithportals.com/screenshots/old_testchamber.jpg",
+              "https://www.thinkwithportals.com/screenshots/dual_lasers.jpg",
+              "https://www.thinkwithportals.com/screenshots/sp_sabotage_darkness0196.jpg",
+              "https://www.thinkwithportals.com/images/press_bg.jpg",
+              "https://www.thinkwithportals.com/screenshots/p2_1.jpg",
+              "docs/cg/chell-reference-evidence-wave4-2026-10-20.json",
+              "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json"
+            ],
+            "themeContinuity": "portal-2-chell-final-game-2011",
+            "missing": []
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "chell-wave4-cg01",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg02",
+          "type": "weaponSolo",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg03",
+          "type": "decorSolo",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg04",
+          "type": "coherentScene",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg05",
+          "type": "actionScene",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg06",
+          "type": "introPose",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg07",
+          "type": "victoryPose",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg08",
+          "type": "defeatPose",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg09",
+          "type": "beachFamily",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg10",
+          "type": "maidService",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg11",
+          "type": "goofy",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg12",
+          "type": "alignmentSwap",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg13",
+          "type": "genderSwap",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg14",
+          "type": "zombieVersion",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        },
+        {
+          "id": "chell-wave4-cg15",
+          "type": "futureExperienced",
+          "previous": {
+            "characterContext": "portal-2-chell-final-game-2011"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), adult Chell in the single-player test chambers"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "coach_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10200,
+      "runtimeHeroSha256": "30439a9fb8a3758e3aef5b37d5a504b6394453fc90e082378a0ed088f8dac5d2",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead 2 (2009), Coach in the original school-coach survivor outfit",
+            "identityLock": "Left 4 Dead 2 Coach: broad stocky Black human man with a bald head, two-tone purple-and-yellow school-coach shirt, dark trousers and sturdy shoes. Preserve his human proportions and civilian sporting outfit, without military armor or a transformed Tank body.",
+            "equipment": [
+              "Ordinary survivor firearm",
+              "School-coach polo shirt"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:coach-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead 2 (2009), Coach in the original school-coach survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-coach-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Coach"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead 2 (2009), Coach in the original school-coach survivor outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "cole",
+      "universe": "Gears of War",
+      "characterArcStageId": 9337,
+      "runtimeHeroSha256": "fd41b8e9ded8e06997dd2d5133ea1379351aac526e68b3eb8b563454aff39fc8",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 2 (2008), Augustus Cole in original Delta Squad armor",
+            "identityLock": "Adult Black, muscular Augustus Cole with close-cropped hair, broad exposed arms, grey-blue COG armor and blue lights. Physical Lancer and Gnasher remain separate from his former Thrashball role; no Thrashball uniform or dialogue turned into projectiles.",
+            "equipment": [
+              "Lancer Mk2",
+              "Gnasher shotgun",
+              "COG combat armor"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:cole:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Augustus_Cole",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 2 (2008), Augustus Cole in original Delta Squad armor",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-cole-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Augustus Cole"
+          },
+          "current": {
+            "characterContext": "Gears of War 2 (2008), Augustus Cole in original Delta Squad armor"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "dom",
+      "universe": "Gears of War",
+      "characterArcStageId": 9336,
+      "runtimeHeroSha256": "b3f523a0960f0e91927e212b732a36d714760691597f5da0914488d4a780cbdd",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 2 (2008), Dominic Santiago in Delta Squad armor",
+            "identityLock": "Adult Dom with short dark hair, dark facial stubble, exposed muscular arms, grey-blue COG plates and blue lights. Carry Lancer Mk2/Gnasher as physical weapons; no Gears 3 grief-era long beard or supernatural Maria manifestation.",
+            "equipment": [
+              "Lancer Mk2",
+              "Gnasher shotgun",
+              "COG combat armor"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:dom:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Dominic_Santiago",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 2 (2008), Dominic Santiago in Delta Squad armor",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-dom-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Dom Santiago"
+          },
+          "current": {
+            "characterContext": "Gears of War 2 (2008), Dominic Santiago in Delta Squad armor"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "doug_rattmann",
+      "universe": "Portal",
+      "characterArcStageId": 9409,
+      "runtimeHeroSha256": "307382d448f48405595ce647fca649571abd8454e36dc8a83eb6db4f457512c2",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2: Lab Rat (2011), Doug Rattmann in the official bridge comic",
+            "identityLock": "Official Lab Rat Doug Rattmann: dishevelled human scientist with unkempt hair, beard and lab clothing, linked to hand-drawn wall murals, hidden routes and the Companion Cube. Preserve the comic human identity; the cube is a prop, not a new limb or a combat terminal.",
+            "equipment": [
+              "Companion Cube",
+              "Hand-drawn route murals"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://www.thinkwithportals.com/comic/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://www.thinkwithportals.com/comic/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:doug-rattmann:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://www.thinkwithportals.com/comic/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2: Lab Rat (2011), Doug Rattmann in the official bridge comic",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-doug-rattmann-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Doug Rattmann"
+          },
+          "current": {
+            "characterContext": "Portal 2: Lab Rat (2011), Doug Rattmann in the official bridge comic"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "ellis_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10199,
+      "runtimeHeroSha256": "2efa35caf4d7aee75748e79c2bbd358d597142ade6ef3cd0cb1446452689c44a",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead 2 (2009), Ellis in the original mechanic survivor outfit",
+            "identityLock": "Left 4 Dead 2 Ellis: young adult white human mechanic, dark hair under a baseball cap, yellow work T-shirt and blue jeans. He is a human survivor with ordinary equipment, not a summoned repair robot or a Left 4 Dead 2008 cast member.",
+            "equipment": [
+              "Ordinary survivor firearm",
+              "Mechanic cap and work clothes"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:ellis-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead 2 (2009), Ellis in the original mechanic survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-ellis-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Ellis"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead 2 (2009), Ellis in the original mechanic survivor outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "ellie",
+      "universe": "Dead Space",
+      "characterArcStageId": 9558,
+      "runtimeHeroSha256": "eddf9088420e00f6543269de63a734a3704d91d1aa1081cec19343b4684404e0",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space 2 (2011), Ellie Langford in civilian pilot workwear",
+            "identityLock": "Adult Ellie has dark hair tied back, pale sleeveless work top, brown utility trousers and practical boots. Use the living civilian pilot model of the Sprawl era; no Dead Space 3 winter coat or Isaac-style engineering RIG. Scene-specific eye state must be checked against the selected shot before art approval.",
+            "equipment": [
+              "Physical rifle used for cover",
+              "Civilian pilot workwear"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_2",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_2",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:ellie:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_2",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space 2 (2011), Ellie Langford in civilian pilot workwear",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-ellie-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Ellie Langford"
+          },
+          "current": {
+            "characterContext": "Dead Space 2 (2011), Ellie Langford in civilian pilot workwear"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "glados",
+      "universe": "Portal",
+      "characterArcStageId": 9405,
+      "runtimeHeroSha256": "c1ca4b4ee745f7a3d6dd390c0563c520cbb38f7ef983d7c7cda9f5392a788a75",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), GLaDOS in her central chamber chassis",
+            "identityLock": "Portal 2 GLaDOS central chassis: suspended white and black segmented mechanical assembly, a yellow optic and ceiling-connected cables and supports. No humanoid legs, portable flight, potato shell or Portal 1 personality-core cluster in this selected form.",
+            "equipment": [
+              "Ceiling-mounted central AI chassis",
+              "Yellow optic",
+              "Facility connection cables"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:glados:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), GLaDOS in her central chamber chassis",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-glados-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - GLaDOS"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), GLaDOS in her central chamber chassis"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "glados_core",
+      "universe": "Portal",
+      "characterArcStageId": 9410,
+      "runtimeHeroSha256": "43762dba36a7ec488848fb3db5ac9da0470a2852f2426879780a8ed50cd50a0d",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), GLaDOS carried as PotatOS after Wheatley transfers her to a potato battery",
+            "identityLock": "Portal 2 PotatOS: an irregular brown potato battery carrying GLaDOS electronics, a yellow optic, wires and clips. It is a small physical prop carried with the portal device, not a humanoid, full central chassis or armed hovering core.",
+            "equipment": [
+              "Potato battery",
+              "GLaDOS optic and attached electronics",
+              "Battery wires and clips"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:glados-core:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), GLaDOS carried as PotatOS after Wheatley transfers her to a potato battery",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-glados-core-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - GLaDOS Potato Core"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), GLaDOS carried as PotatOS after Wheatley transfers her to a potato battery"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "hammond_ds",
+      "universe": "Dead Space",
+      "characterArcStageId": 9562,
+      "runtimeHeroSha256": "1a8a48f4662c7766dc3e2d07ae009580bce872f6554d9c29dcb42e6d685f69f7",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID",
+            "identityLock": "This separate historical roster slot depicts the same living 2008 security chief Zach Hammond: adult Black man, close-cropped hair, brown security RIG, blue spinal lamps and physical Pulse Rifle. It is not a new character, ghost, remake model or merged save identity.",
+            "equipment": [
+              "SWS Motorized Pulse Rifle",
+              "Original 2008 security RIG"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:hammond-ds:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-hammond-ds-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Zach Hammond"
+          },
+          "current": {
+            "characterContext": "Dead Space (2008), Zach Hammond; retained historical duplicate actor ID"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "hoffman_cog",
+      "universe": "Gears of War",
+      "characterArcStageId": 9340,
+      "runtimeHeroSha256": "199a19807e8b42238369f25bf7e6870352b1e76bdd2b471b2b177ee1b64f80f9",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 2 (2008), Colonel Victor Hoffman during the Jacinto defense",
+            "identityLock": "Older Colonel Victor Hoffman with weathered face, dark COG beret, heavy grey-blue officer armor and cyan armor lamps. A physical service firearm is carried; command orders do not project a holographic shield or summon soldiers.",
+            "equipment": [
+              "COG officer beret",
+              "COG officer combat armor",
+              "Physical COG service firearm"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:hoffman-cog:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Victor_Hoffman",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 2 (2008), Colonel Victor Hoffman during the Jacinto defense",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-hoffman-cog-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Colonel Hoffman"
+          },
+          "current": {
+            "characterContext": "Gears of War 2 (2008), Colonel Victor Hoffman during the Jacinto defense"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "isaac",
+      "universe": "Dead Space",
+      "characterArcStageId": 9328,
+      "runtimeHeroSha256": "0cae797c95158b7dcb106206201b707b574d81401d097a3d96f9fa19438a1937",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space (2008), Isaac Clarke and level-3 engineering RIG",
+            "identityLock": "Original 2008 Isaac wears the bronze-brown level-3 engineering RIG with heavy segmented ribs, enclosed helmet, three cyan visor bars and a cyan spinal health strip. Hold the 211-V Plasma Cutter as a separate engineering tool; no remake redesign, Advanced Suit or Arctic suit.",
+            "equipment": [
+              "211-V Plasma Cutter",
+              "Level-3 engineering RIG",
+              "Stasis and Kinesis modules"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:isaac:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space (2008), Isaac Clarke and level-3 engineering RIG",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-isaac-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Isaac Clarke"
+          },
+          "current": {
+            "characterContext": "Dead Space (2008), Isaac Clarke and level-3 engineering RIG"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "kait_diaz",
+      "universe": "Gears of War",
+      "characterArcStageId": 9342,
+      "runtimeHeroSha256": "feaee0321b233400424481831e76b2b7414e89b608df2120c625468a29b1b199",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears 5 (2019), adult Kait in the winter COG field outfit",
+            "identityLock": "Adult Kait with dark brown hair, practical grey-blue winter COG armor, a visible fur collar and a physical Lancer Mk3. Preserve the winter field silhouette rather than Gears 4 Outsider clothing, Locust anatomy or a supernatural Swarm attack.",
+            "equipment": [
+              "Lancer Mk3",
+              "Winter COG armor with fur collar"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:kait-diaz:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Kait_Diaz",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears 5 (2019), adult Kait in the winter COG field outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-kait-diaz-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Kait Diaz"
+          },
+          "current": {
+            "characterContext": "Gears 5 (2019), adult Kait in the winter COG field outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "kendra_daniels",
+      "universe": "Dead Space",
+      "characterArcStageId": 9561,
+      "runtimeHeroSha256": "354f7bd49df02f2f05586bf849c51e81f8752016a153960241bb139f7b88511c",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space (2008), original Kendra Daniels",
+            "identityLock": "Original 2008 Kendra is an adult human woman with a short dark bob, practical grey-blue technical jumpsuit and a small handheld diagnostic pad. No remake face/costume, military RIG, conjured energy weapon or offensive terminal lightning.",
+            "equipment": [
+              "Handheld diagnostic pad",
+              "Original technical jumpsuit"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:kendra-daniels:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space (2008), original Kendra Daniels",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-kendra-daniels-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Kendra Daniels"
+          },
+          "current": {
+            "characterContext": "Dead Space (2008), original Kendra Daniels"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "marcus",
+      "universe": "Gears of War",
+      "characterArcStageId": 9311,
+      "runtimeHeroSha256": "3df94ac056e559c285269cf7b3345a74fbd0530504864be3a549cad4e9edca6a",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor",
+            "identityLock": "Adult Marcus with a dark bandana, short dark hair, scarred square face, heavy grey-blue COG armor and cyan armor lights. His Lancer Mk2 has a firearm barrel and an attached chainsaw bayonet; no old-man beard, Gears 4 farm clothes or E-Day model.",
+            "equipment": [
+              "Lancer Mk2 assault rifle with chainsaw bayonet",
+              "COG combat armor",
+              "Hammer of Dawn targeting designator"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+            "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:gears-of-war:marcus:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/List_of_Gears_of_War_characters#Marcus_Fenix",
+              "https://news.xbox.com/en-us/2026/06/07/gears-of-war-eday-direct-xbox-games-showcase-2026/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-gears-of-war-marcus-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Marcus Fenix"
+          },
+          "current": {
+            "characterContext": "Gears of War 2 (2008), Marcus Fenix in original Delta Squad armor"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "nick_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10202,
+      "runtimeHeroSha256": "c7e26e08b5915ae7c80aedc5f12135ca676af5ef507bb1b6adcb77083ac344ff",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead 2 (2009), Nick in the original gambler survivor outfit",
+            "identityLock": "Left 4 Dead 2 Nick: adult white human man with short dark hair, white suit jacket and trousers over a blue open-neck shirt. Maintain the worn gambler survivor appearance and ordinary pistols; no military uniform or unique supernatural gun ability.",
+            "equipment": [
+              "Standard survivor pistols",
+              "Original white suit"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:nick-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead 2 (2009), Nick in the original gambler survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-nick-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Nick"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead 2 (2009), Nick in the original gambler survivor outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "nicole_brennan",
+      "universe": "Dead Space",
+      "characterArcStageId": 9559,
+      "runtimeHeroSha256": "48fe6ac6fe720c2591575039fc4043448f30ebc618367f93cb867302b0ae88c3",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space (2008), living human medical officer Nicole Brennan",
+            "identityLock": "Nicole is a living human medical officer in the original 2008 context, with loosely tied auburn/light-brown hair and practical grey-blue medical clothing. An ordinary datapad may support clinical instructions; no ghost glow, Marker lesions, summoned console or healing beam.",
+            "equipment": [
+              "Medical uniform",
+              "Ordinary diagnostic datapad"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:nicole-brennan:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space (2008), living human medical officer Nicole Brennan",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-nicole-brennan-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Nicole Brennan"
+          },
+          "current": {
+            "characterContext": "Dead Space (2008), living human medical officer Nicole Brennan"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "pbody",
+      "universe": "Portal",
+      "characterArcStageId": 9404,
+      "runtimeHeroSha256": "0d6087884c50a3afb9eaa33837ffc66f1b1f5068b49a072586c5d48fe7e7d8b1",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), cooperative P-Body test-robot chassis",
+            "identityLock": "Portal 2 P-Body: tall narrow oval white shell, orange optic, long slender articulated legs and arms with dark joints; co-op portal device held as test equipment. Do not substitute the short spherical ATLAS body.",
+            "equipment": [
+              "P-Body co-op portal device",
+              "Tall oval robot shell",
+              "Orange optic"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:pbody:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), cooperative P-Body test-robot chassis",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-pbody-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - P-Body"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), cooperative P-Body test-robot chassis"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "rochelle_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10201,
+      "runtimeHeroSha256": "fcf371cda185edb94d53308dedadc2d13a3a50a76bb7caebc928744fa5bc0f88",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead 2 (2009), Rochelle in the original reporter survivor outfit",
+            "identityLock": "Left 4 Dead 2 Rochelle: adult Black human woman with tied-back dark hair, pink Depeche Mode T-shirt and dark trousers. Keep the base-game human reporter presentation, ordinary pistol and civilian clothes, with no laser or infected anatomy.",
+            "equipment": [
+              "Standard survivor pistol",
+              "Original pink reporter T-shirt"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:rochelle-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/550/Left_4_Dead_2/",
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead 2 (2009), Rochelle in the original reporter survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-rochelle-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Rochelle"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead 2 (2009), Rochelle in the original reporter survivor outfit"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "wheatley",
+      "universe": "Portal",
+      "characterArcStageId": 9406,
+      "runtimeHeroSha256": "9a357ba1b7d02433b9ddadfb3141b3928ecf8762eab021feb887b1876c69c91b",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Portal 2 (2011), Wheatley personality sphere before central-chassis transfer",
+            "identityLock": "Portal 2 Wheatley personality sphere: white spherical casing, single blue optic, black side handles and articulated eye mount. Use his core form held or attached to facility rails; no Wheatley central chassis, independent combat-drone wings or gun.",
+            "equipment": [
+              "Personality sphere casing",
+              "Blue optic",
+              "Side handles and rail attachment"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/620/Portal_2/",
+            "https://store.steampowered.com/app/400/Portal/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:portal:wheatley:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/620/Portal_2/",
+              "https://store.steampowered.com/app/400/Portal/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Portal 2 (2011), Wheatley personality sphere before central-chassis transfer",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-portal-wheatley-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Wheatley"
+          },
+          "current": {
+            "characterContext": "Portal 2 (2011), Wheatley personality sphere before central-chassis transfer"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "zach_hammond",
+      "universe": "Dead Space",
+      "characterArcStageId": 9560,
+      "runtimeHeroSha256": "c8e4d688e558ebd8975b8e460739209caa986eebc8cdcd0b884ddd86a81f1b2d",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Dead Space (2008), security chief Zach Hammond",
+            "identityLock": "Original 2008 Zach Hammond is an adult Black man with close-cropped hair, dark brown security RIG and blue spinal lights. Carry the SWS Motorized Pulse Rifle; no remake model, Isaac engineering helmet or 211-V Plasma Cutter mislabeled as his rifle.",
+            "equipment": [
+              "SWS Motorized Pulse Rifle",
+              "Original 2008 security RIG"
+            ],
+            "sourceRefs": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "Source target documented individually. Existing numerical combat, timing and geometry remain Nexus adaptations; artwork and animation review remain open."
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+            "https://www.ea.com/games/dead-space/dead-space",
+            "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:dead-space:zach-hammond:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://en.wikipedia.org/wiki/Dead_Space_(2008_video_game)",
+              "https://www.ea.com/games/dead-space/dead-space",
+              "https://www.ea.com/ea-originals/news/inside-dead-space-3-aboard-the-ishimura",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Dead Space (2008), security chief Zach Hammond",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-dead-space-zach-hammond-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Zach Hammond"
+          },
+          "current": {
+            "characterContext": "Dead Space (2008), security chief Zach Hammond"
+          }
+        }
+      ]
+    },
+    {
+      "characterId": "zoey_l4d",
+      "universe": "Left 4 Dead",
+      "characterArcStageId": 10197,
+      "runtimeHeroSha256": "52c7c891babf0f131e4d26ac3c83d76848bfc526cb0e3eac6bafa060c23bb98b",
+      "subject": {
+        "identity": {
+          "previous": {
+            "incarnation": null,
+            "identityLock": null,
+            "equipment": [],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": null
+          },
+          "current": {
+            "incarnation": "Left 4 Dead (2008), Zoey in the original survivor outfit",
+            "identityLock": "Left 4 Dead 2008 Zoey: young adult human with dark ponytail, red zip-up jacket over a light shirt, dark jeans and trainers. Retain the original survivor outfit and physical firearm, not a sword, infected form or a later crossover costume.",
+            "equipment": [
+              "Standard survivor pistol",
+              "Hunting Rifle",
+              "Original red survivor jacket"
+            ],
+            "sourceRefs": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/"
+            ],
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ],
+            "adaptationNote": "source role and selected edition documented; gameplay geometry and choreography remain adaptations; visual review pending"
+          }
+        },
+        "cg01ThemeSource": {
+          "previous": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ],
+          "current": [
+            "https://store.steampowered.com/app/500/Left_4_Dead/",
+            "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+          ]
+        }
+      },
+      "entries": [
+        {
+          "id": "cg:left-4-dead:zoey-l4d:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "previous": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": null,
+            "missing": [
+              "Choisir l’incarnation précise et sa continuité.",
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          },
+          "current": {
+            "themeSource": [
+              "https://store.steampowered.com/app/500/Left_4_Dead/",
+              "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+            ],
+            "themeContinuity": "Left 4 Dead (2008), Zoey in the original survivor outfit",
+            "missing": [
+              "Ouvrir une référence visuelle source correspondant à cette incarnation et valider silhouette, visage ou anatomie, tenue et équipement."
+            ]
+          }
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "cg-bg-left-4-dead-zoey-l4d-charactersolo",
+          "type": "characterSolo",
+          "previous": {
+            "characterContext": "Arc Personnage - Zoey"
+          },
+          "current": {
+            "characterContext": "Left 4 Dead (2008), Zoey in the original survivor outfit"
+          }
+        }
+      ]
+    }
+  ],
+  "quarantine": {
+    "characterId": "batman_tdk",
+    "universe": "The Dark Knight",
+    "runtimeHeroSha256": "e32116d979bea43523760e0a258deaea9438ed3e7a3eb4f5deb1306ce7c9a932",
+    "record": {
+      "universe": "The Dark Knight",
+      "incarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "asset": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+      "sha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+      "reason": "WRONG_UNMASKED_GOGGLED_CIVILIAN_NO_COWL_CAPE_OR_BATSUIT"
+    },
+    "bitmap": {
+      "path": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+      "sha256": "7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11",
+      "bytes": 957350,
+      "width": 1024,
+      "height": 1024,
+      "format": "png"
+    }
+  }
+}

@@ -35,10 +35,15 @@ function recorder() {
   return { ctx, calls, assertRestored() { assert.equal(stack.length, 0); assert.deepEqual(styles, initial); } };
 }
 
-test('all19 previous topologies and42 material definitions remain exact while ten new material profiles are added', () => {
+test('all19 previous topologies and42 material definitions remain exact after the reviewed W17 and Aperture additions', () => {
   const previous = { ...nexusFields, ...oldFields, ...recentFields, ...wave16Fields };
   assert.equal(Object.keys(previous).length, 19); assert.equal(Object.keys(materials).length, 10);
-  assert.equal(Object.keys(TACTICS_TERRAIN_MATERIALS).length, 52);
+  // Live counts are accepted only after the closed Aperture proof and all old
+  // W17/historical definition checks; the archived inventories stay unchanged.
+  assert.equal(Object.keys(projectTacticsMaterialsBeforeWave17(TACTICS_TERRAIN_MATERIALS)).length, 42);
+  assert.equal(projectTacticsBiomesBeforeWave17(TACTICS_RUNTIME_ENVIRONMENT_BIOMES).length, 16);
+  assert.equal(Object.keys(TACTICS_TERRAIN_MATERIALS).length, 55);
+  assert.equal(TACTICS_RUNTIME_ENVIRONMENT_BIOMES.length, 21);
   for (const [id, expected] of Object.entries(baseline.fields)) assert.equal(hash(previous[id]), expected, id);
   for (const [id, expected] of Object.entries(baseline.materialDefinitions)) assert.equal(hash(TACTICS_TERRAIN_MATERIALS[id]), expected, id);
 });

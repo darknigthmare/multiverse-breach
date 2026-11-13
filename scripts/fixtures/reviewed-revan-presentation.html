@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Revan presentation QA</title>
+<style>body{margin:0;background:#111923;color:#e4e7ec;font:16px system-ui}main{max-width:1000px;margin:auto;padding:12px}canvas{display:block;width:100%;height:auto;background:#111923}button,select{font:inherit;padding:8px;margin:4px}p{line-height:1.5}output{display:block;margin:8px}</style></head>
+<body><main><h1>Revan — présentation de combat</h1><p>Fixture de contrôle : états du duel préparés, vrais moteurs Fighter et Smash et vrai renderer. Ces captures ne certifient pas une chorégraphie de KOTOR.</p>
+<nav><button id="qa-fighter">Fighter</button><button id="qa-smash">Smash</button><button id="qa-step">Avancer 15 images</button><button id="qa-pause">Pause</button><button id="qa-result">Résultat préparé</button><button id="qa-dispose">Quitter</button></nav>
+<output id="qa-status"></output><canvas id="qa-canvas" width="960" height="540"></canvas></main>
+<script type="module" src="./reviewedRevanPresentationHarness.js"></script></body></html>

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { projectCgReviewedRuntimeAmendment } from './cgReviewedRuntimeAmendment.mjs';
 import { projectCgSource64Amendment } from './cgSource64Amendment.mjs';
 import { projectCgReviewedAvailabilityAmendment } from './cgReviewedAvailabilityAmendment.mjs';
+import { projectCgContinuation02MetadataAmendment } from './cgContinuation02MetadataAmendment.mjs';
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
@@ -541,10 +542,12 @@ function validateCgGithub2333Snapshot({ root, rebuilt, heroes, catalog, publishe
     projected: candidateProjection.projected, heroes, catalog });
   const availabilityProjection = projectCgReviewedAvailabilityAmendment({ root, published,
     projected: source64Projection.projected, heroes, catalog });
-  const projectedText = serialize(availabilityProjection.projected);
+  const continuation02Projection = projectCgContinuation02MetadataAmendment({ root, published,
+    projected: availabilityProjection.projected, heroes, catalog });
+  const projectedText = serialize(continuation02Projection.projected);
   assert.equal(digest(projectedText), digest(publishedText), 'Plan changed outside pinned current-reference metadata amendments for GitHub 2333c2c0');
   assert.equal(projectedText, publishedText, 'Projected GitHub 2333c2c0 plan must remain byte-exact');
-  assert.equal(buildReport(availabilityProjection.projected), reportText, 'Projected GitHub 2333c2c0 report must remain byte-exact');
+  assert.equal(buildReport(continuation02Projection.projected), reportText, 'Projected GitHub 2333c2c0 report must remain byte-exact');
   diagnostic('GitHub 2333c2c0 snapshot is byte-exact after closed candidate, descriptor, current-source and historical-reference-availability projections; all 1436 published delivery declarations are preserved. Snapshot comparison does not revalidate historical CG pixels.');
   return { mode: 'github-2333-source-metadata-amendment', candidateSubjects: candidateProjection.subjectIds.length,
     amendmentSha256: CG_SOURCE_METADATA_AMENDMENT_SHA256, descriptorFields: descriptorProjection.fields,
@@ -553,5 +556,6 @@ function validateCgGithub2333Snapshot({ root, rebuilt, heroes, catalog, publishe
     publishedPlanSha256: CG_GITHUB_2333_PUBLISHED_SHA256,
     currentSourceMetadataAmendment: source64Projection.evidence,
     historicalReferenceAvailabilityAmendment: availabilityProjection.evidence,
+    continuation02CurrentMetadataAmendment: continuation02Projection.evidence,
     historicalCgMediaRevalidated: false, missingPrivateSubjects: [], unproducedCg01: [] };
 }

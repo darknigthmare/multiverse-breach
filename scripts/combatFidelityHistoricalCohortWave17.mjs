@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { effectiveBatchPlanWave17 } from '../docs/combat-fidelity-wave17-2026-11-02/closure-support.mjs';
+import { projectHammondSourceAuthoringForHistory } from './gearsDeadSpaceHammondAuthoringErratum20261113.mjs';
 
 const directory = 'docs/combat-fidelity-wave17-2026-11-02/';
 const read = name => readFileSync(new URL('../' + directory + name, import.meta.url));
@@ -37,13 +38,16 @@ export function projectAbilitiesBeforeWave17(current) {
   const currentIds = Object.keys(current).sort();
   const previousIds = Object.keys(baseline).sort();
   if (JSON.stringify(currentIds) === JSON.stringify(previousIds)) {
-    assert.deepEqual(current, baseline, 'An incomplete W17 rollout cannot alter the published baseline');
+    const historicalSourceLabels = { ...current,
+      zach_hammond: projectHammondSourceAuthoringForHistory(current.zach_hammond, baseline.zach_hammond) };
+    assert.deepEqual(historicalSourceLabels, baseline, 'An incomplete W17 rollout cannot alter the published baseline');
     return baseline;
   }
   assert.deepEqual(currentIds, [...previousIds, ...WAVE17_NEW_AUTHORING_IDS].sort(), 'W17 must preserve the exact authoring union');
   const result = {};
   for (const [id, prior] of Object.entries(baseline)) {
-    const live = current[id];
+    const live = id === 'zach_hammond'
+      ? projectHammondSourceAuthoringForHistory(current[id], prior) : current[id];
     if (!WAVE17_REVISED_AUTHORING_IDS.has(id)) {
       assert.deepEqual(live, prior, id + ': authoring outside the W17 cohort changed');
       result[id] = live;

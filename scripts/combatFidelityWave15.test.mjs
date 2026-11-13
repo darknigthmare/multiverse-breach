@@ -1,4 +1,4 @@
-import { assertCatalogActionEdition, assertBaseSpriteEdition } from './combatCanonicalEditionFixtures.mjs';
+import { assertCatalogActionEdition, assertBaseSpriteEdition, assertHammondPulseRifleSourceField } from './combatCanonicalEditionFixtures.mjs';
 import { projectAbilitiesBeforeWave17 } from './combatFidelityHistoricalCohortWave17.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -81,7 +81,10 @@ test('W15 composes three disjoint groups of40 and exactly42 new /78 source-versi
   for (const row of plan.heroes) {
     const id = row.hero.id, hero = roster.get(id), source = sources[id], declared = declaredSources[id];
     assert.ok(hero); assert.equal(row.native32Before, false);
-    for (const key of sourceKeys) assert.deepEqual(source[key], declared[key], `${id}: source ${key}`);
+    for (const key of sourceKeys) {
+      if (id === 'zach_hammond' && ['weapon', 'pose'].includes(key)) assertHammondPulseRifleSourceField(id, source, declared, key);
+      else assert.deepEqual(source[key], declared[key], `${id}: source ${key}`);
+    }
     assert.equal(source.source1to1Verified, false); assert.equal(source.networkVerified, false);
     assert.equal(hero.weaponType, source.weaponType);
     for (const slot of ['simple', 'secondary', 'defense', 'special']) assertCatalogActionEdition(hero, slot, row.hero[slot]);
