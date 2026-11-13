@@ -1,0 +1,59 @@
+.mission-directory-workspace { min-width: 0; font-size: calc(15px * var(--game-text-scale, 1)); line-height: 1.6; color: #d6e6ec; }
+.mission-directory-workspace .mission-directory-head { display: block; padding: 20px; background: linear-gradient(125deg, #17343e, #0b1b26); border: 1px solid #587986; border-top: 3px solid var(--operations-accent); border-radius: 6px; }
+.mission-directory-workspace .mission-directory-kicker { display: block; font-size: .8em; letter-spacing: .06em; color: #b4dfdf; }
+.mission-directory-workspace .mission-directory-head h4 { font-size: 1.4em; line-height: 1.4; margin: 10px 0; color: #f2faff; }
+.mission-directory-workspace .mission-directory-head p { font-size: 1em; margin: 0; color: #cfdee6; }
+.mission-directory-controls { display: flex; flex-wrap: wrap; gap: 14px; padding: 16px; border: 1px solid #547481; border-radius: 6px; background: #0b1b27; }
+.mission-directory-controls label { display: grid; flex: 1 1 240px; min-width: 0; gap: 6px; }
+.mission-directory-controls label > span { font-size: .9375em; color: #dceaf1; }
+.mission-directory-workspace .mission-directory-controls :is(input, select) { font: inherit; width: 100%; min-width: 0; min-height: 44px; box-sizing: border-box; padding: 10px; background: #102431; color: #eefbff; border: 1px solid #75929e; border-radius: 4px; }
+.mission-directory-controls input::placeholder { color: #b8ccd6; opacity: 1; }
+.mission-directory-workspace .mission-directory-controls select { font-size: .9375em; }
+.mission-directory-workspace .mission-directory-button { min-width: 44px; min-height: 44px; box-sizing: border-box; border: 1px solid #7996a3; border-radius: 4px; padding: 10px 14px; background: #173342; color: #edf8ff; font: inherit; font-size: .9375em; line-height: 1.5; cursor: pointer; white-space: normal; overflow-wrap: anywhere; }
+.mission-directory-controls > button { align-self: end; }
+.mission-directory-workspace .mission-directory-button:hover:not(:disabled) { background: #234957; border-color: #bcf4ec; }
+.mission-directory-workspace .mission-directory-button:disabled { opacity: 1; color: #c2ced6; background: #192730; border-color: #657782; cursor: not-allowed; }
+.mission-directory-workspace :is(input, select, button, summary):focus-visible, .mission-directory-results:focus { outline: 3px solid #ffe08a; outline-offset: 3px; }
+.mission-directory-workspace :is(input, select, button, summary, h5), .mission-directory-results { scroll-margin-block-end: 64px; }
+.mission-directory-results { display: grid; gap: 4px; padding: 10px 2px; font-size: .9375em; color: #d4e5eb; scroll-margin-top: 150px; }
+.mission-directory-results > span { font-size: .9em; color: #bed2db; }
+.mission-directory-pages { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px; border: 1px solid #526d7b; border-radius: 5px; background: #0c1b27; }
+.mission-directory-pages > span { font-variant-numeric: tabular-nums; }
+.mission-directory-workspace .mission-directory-list { gap: 18px; }
+.mission-directory-workspace .mission-directory-entry { display: grid; grid-template-columns: 165px minmax(0, 1fr); gap: 16px; padding: 16px; border: 1px solid #546f7d; border-top: 3px solid var(--operations-accent); border-radius: 6px; background: #0b1b26; content-visibility: visible; contain-intrinsic-size: none; overflow-wrap: anywhere; }
+.mission-directory-workspace .mission-directory-entry.is-locked { opacity: 1; border-color: #717077; border-top-color: #b4a389; }
+.mission-directory-workspace .mission-directory-entry.is-complete { border-top-color: #84dcb3; }
+.mission-directory-workspace .mission-directory-entry.is-composition { border-top-color: #e6bc80; }
+.mission-directory-workspace .mission-directory-art { grid-row: 1 / span 2; min-height: 150px; display: flex; flex-wrap: wrap; align-content: end; align-items: end; justify-content: space-between; gap: 10px; padding: 12px; box-sizing: border-box; background-color: #12303a; border: 1px solid #718792; }
+.mission-directory-workspace .mission-directory-art :is(span, b) { position: static; font-size: .8em; line-height: 1.5; padding: 4px 7px; background: #10212cef; color: #edf8fa; border: 1px solid #94aab0; border-radius: 3px; }
+.mission-directory-workspace .mission-directory-copy { gap: 12px; }
+.mission-directory-workspace .mission-directory-title { flex-wrap: wrap; }
+.mission-directory-workspace .mission-directory-title > div { flex: 1 1 220px; }
+.mission-directory-workspace .mission-directory-title span { color: #b6d4dd; font-size: .875em; line-height: 1.5; }
+.mission-directory-workspace .mission-directory-title h5 { margin: 7px 0 0; color: #f2fbff; font-size: 1.25em; line-height: 1.45; }
+.mission-directory-workspace .mission-directory-title em { color: #c6e9e9; font-size: .8em; line-height: 1.5; border-color: #7996a1; }
+.mission-directory-workspace .mission-directory-meta { display: grid; gap: 7px; font-size: .9375em; line-height: 1.6; color: #cbdee7; }
+.mission-directory-workspace .mission-directory-meta strong { color: #f5c4b8; }
+.mission-directory-transmission { border-top: 1px solid #476271; }
+.mission-directory-transmission summary { min-height: 44px; box-sizing: border-box; padding: 10px 0; cursor: pointer; color: #b6e8df; }
+.mission-directory-transmission p { margin: 6px 0 14px; color: #d8e6eb; font-size: 1em; }
+.mission-directory-workspace .mission-directory-tags span { font-size: .8em; line-height: 1.5; padding: 4px 7px; }
+.mission-directory-workspace .mission-directory-copy .mission-directory-reason { margin: 0; padding: 12px; border-left: 3px solid #e0bd88; background: #2b281f; color: #f5dfbd; font-size: .9375em; line-height: 1.6; }
+.mission-directory-workspace .mission-directory-actions { grid-column: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+.mission-directory-workspace .mission-directory-launch:not(:disabled) { border-color: #98e1d1; background: #18463f; color: #e9fff8; }
+.mission-directory-empty { padding: 22px; border: 1px solid #607d8b; border-radius: 6px; background: #0e2230; }
+.mission-directory-empty strong { color: #edfaff; font-size: 1.1em; }
+@media (max-width: 800px) {
+  .mission-directory-workspace .mission-directory-entry { grid-template-columns: minmax(0, 1fr); padding: 14px; }
+  .mission-directory-workspace .mission-directory-art { grid-row: auto; min-height: 130px; }
+  .mission-directory-workspace .mission-directory-actions { grid-column: auto; }
+}
+@media (max-width: 480px) {
+  .mission-directory-workspace .mission-directory-head { padding: 16px; }
+  .mission-directory-controls { padding: 12px; }
+  .mission-directory-controls > button { flex: 1 1 100%; }
+  .mission-directory-pages { justify-content: center; }
+  .mission-directory-pages > button { flex: 1 1 100%; }
+  .mission-directory-pages > span { order: -1; }
+  .mission-directory-workspace .mission-directory-actions { grid-template-columns: minmax(0, 1fr); }
+}

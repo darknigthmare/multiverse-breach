@@ -12,6 +12,7 @@ export * as loreDescriptions from './data/loreDescriptions.js';
 export * as loreWorldBossOverrides from './data/loreWorldBossOverrides.js';
 export * as narrativeSystems from './data/narrativeSystems.js';
 export * as renderer from './data/renderer.js';
+export * as sourceContracts20261113 from './data/sourceContracts20261113.js';
 export * as stageMusicProfiles from './data/stageMusicProfiles.js';
 export * as universeModifiers from './data/universeModifiers.js';
 export * as wardrobeExpansion from './data/wardrobeExpansion.js';

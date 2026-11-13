@@ -4,12 +4,21 @@
  *
  * Record origin: docs/excel/star-wars-edition-sprite-review-2026-11-01.csv
  * and scripts/auditCanonicalStarWarsSprites.mjs, GitHub artifact 13103845643.
+ * The additional Batman inspection is recorded in the continuation-02
+ * presentation lot: its atlas depicts an unmasked civilian with goggles.
  * The complete original PNGs stay on disk for back-office review.
  *
  * An updated PNG must be reviewed and this gate deliberately removed in a
  * documented source-art correction. Merely replacing bytes is not approval.
  */
 export const QUARANTINED_CANON_SPRITES = Object.freeze({
+  batman_tdk: Object.freeze({
+    universe: 'The Dark Knight',
+    incarnation: 'The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit',
+    asset: '/sprites/generated/heroes/the-dark-knight/batman-tdk.png',
+    sha256: '7b47aba5d4ae42586116720a873e09d5611100bc6ad79f93d8c8c4016cef4a11',
+    reason: 'WRONG_UNMASKED_GOGGLED_CIVILIAN_NO_COWL_CAPE_OR_BATSUIT'
+  }),
   ahsoka_padawan: Object.freeze({
     universe: 'Star Wars',
     incarnation: 'The Clone Wars - early Padawan, age fourteen',
@@ -34,14 +43,14 @@ export const QUARANTINED_CANON_SPRITES = Object.freeze({
 });
 
 /**
- * Only the identified Star Wars incarnation is gated. No database, save ID,
+ * Only an identified universe and incarnation are gated. No database, save ID,
  * gameplay stats, abilities or other hero appearance is modified.
  *
  * This guard is deliberately not controlled by a saved cosmetic flag: an
  * unreviewed skin cannot accidentally turn known-bad source art back on.
  */
 export function getQuarantinedCanonSprite(actor) {
-  if (!actor || actor.universe !== 'Star Wars' || typeof actor.id !== 'string' || !actor.id) return null;
+  if (!actor || typeof actor.universe !== 'string' || typeof actor.id !== 'string' || !actor.id) return null;
   // Combat projections can have a technical ID while the source ID still owns
   // their bitmap. Follow the sprite resolver's alias precedence, without
   // accepting malformed aliases or inferring an incarnation from the alias.
@@ -51,7 +60,7 @@ export function getQuarantinedCanonSprite(actor) {
     const record = QUARANTINED_CANON_SPRITES[id];
     // The same ID can be reused in custom contexts: never quarantine other
     // incarnations based on a name alone.
-    if (actor.incarnation === record.incarnation) return record;
+    if (actor.universe === record.universe && actor.incarnation === record.incarnation) return record;
   }
   return null;
 }

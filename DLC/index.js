@@ -10,6 +10,9 @@ const manifests = [
     "catalogOrder": 0,
     "modules": [
       {
+        "path": "data/actorSourceContracts.js"
+      },
+      {
         "path": "data/canonicalArchiveLore.js",
         "runtimeAdapter": "src/game/canonicalArchiveLore.js"
       },
@@ -854,6 +857,9 @@ const manifests = [
       {
         "path": "data/renderer.js",
         "runtimeAdapter": "src/game/renderer.js"
+      },
+      {
+        "path": "data/sourceContracts20261113.js"
       },
       {
         "path": "data/stageMusicProfiles.js",
@@ -1821,6 +1827,9 @@ const manifests = [
     "registration": "runtime",
     "catalogOrder": 28,
     "modules": [
+      {
+        "path": "data/actorSourceContracts.js"
+      },
       {
         "path": "data/characterPlaques.js",
         "runtimeAdapter": "src/game/characterPlaques.js"
@@ -7417,6 +7426,9 @@ const manifests = [
       {
         "path": "data/loreWorldBossOverrides.js",
         "runtimeAdapter": "src/game/loreWorldBossOverrides.js"
+      },
+      {
+        "path": "data/sourceContracts20261113.js"
       },
       {
         "path": "data/stageLoreProfiles.js",

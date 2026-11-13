@@ -137,6 +137,16 @@
 }
 .combat-targeting-overlay > section { margin-bottom: 0 !important; }
 .combat-targeting-overlay button { min-height: 44px; }
+/* The terrain menu is anchored to the actual squad/action dock. Its collapsed
+   summary must never cover HP or commands when the mobile dock grows. */
+.combat-terrain-overlay {
+  position: absolute; z-index: 20; left: 0; bottom: calc(100% + 10px);
+  width: min(520px, 100%); max-height: min(45dvh, 540px);
+  padding: 12px; box-sizing: border-box; overflow: auto;
+  border: 1px solid #70a8b0; border-radius: 4px; background: #061b25f5;
+  color: #e7ffff; pointer-events: auto;
+}
+.combat-terrain-overlay button { min-height: 44px; }
 .combat-immersive-surface[data-hud-expanded='false'] .combat-mission-heading p,
 .combat-immersive-surface[data-hud-expanded='false'] .combat-squad-strip,
 .combat-immersive-surface[data-hud-expanded='false'] .melee-controls-hud,

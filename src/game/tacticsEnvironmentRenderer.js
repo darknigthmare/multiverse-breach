@@ -1,6 +1,7 @@
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE15, drawTacticsLandmarksWave15, drawTacticsSceneryWave15 } from './tacticsUniversePresentationWave15.js';
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE16, drawTacticsLandmarksWave16, drawTacticsSceneryWave16 } from './tacticsUniversePresentationWave16.js';
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE17, drawTacticsLandmarksWave17, drawTacticsSceneryWave17 } from './tacticsUniversePresentationWave17.js';
+import { TACTICS_APERTURE_ENVIRONMENT, drawApertureLandmarks, drawApertureScenery } from './tacticsAperturePresentation.js';
 // Dedicated environments for every Tactics board, including source sectors
 // and the older Nexus grids. These draw the horizon around real geometry;
 // they never borrow another engine's backdrop or define a walkable tile.
@@ -46,7 +47,8 @@ const PROFILES = Object.freeze({
     accent: '#c6d4d1', architecture: 'forerunner'
   }
 });
-const RUNTIME_PROFILES = Object.freeze({ ...PROFILES, ...TACTICS_ENVIRONMENT_PROFILES_WAVE15, ...TACTICS_ENVIRONMENT_PROFILES_WAVE16, ...TACTICS_ENVIRONMENT_PROFILES_WAVE17 });
+const RUNTIME_PROFILES = Object.freeze({ ...PROFILES, ...TACTICS_ENVIRONMENT_PROFILES_WAVE15, ...TACTICS_ENVIRONMENT_PROFILES_WAVE16, ...TACTICS_ENVIRONMENT_PROFILES_WAVE17,
+  'aperture-maintenance': TACTICS_APERTURE_ENVIRONMENT });
 const LEGACY_PROFILES = Object.freeze({
   nexus: { sky: ['#10232f', '#33525c'], ground: '#203b44', haze: '#75a5aa', far: '#466773', near: '#294c58', ridge: 'city', flora: 'none', accent: '#7fbbb5', architecture: 'none' },
   industrial: { sky: ['#35434e', '#82918f'], ground: '#455258', haze: '#b9c5be', far: '#6c7f85', near: '#4b626b', ridge: 'city', flora: 'none', accent: '#a2bfc0', architecture: 'none' },
@@ -203,6 +205,7 @@ function forest(ctx, profile, width, horizon, seed, pan) {
 }
 
 function architecturalLandmarks(ctx, profile, width, horizon, pan) {
+  if (drawApertureLandmarks(ctx, profile, width, horizon, pan)) return;
   if (drawTacticsLandmarksWave17(ctx, profile, width, horizon, pan)) return;
   if (drawTacticsLandmarksWave16(ctx, profile, width, horizon, pan)) return;
   if (drawTacticsLandmarksWave15(ctx, profile, width, horizon, pan)) return;
@@ -327,6 +330,7 @@ export function getTacticsSceneryBounds(obstacle, point, width, height) {
 // The caller supplies a real obstacle's support and physical height. Artwork
 // never adds a blocker, changes HP or expands its collision footprint.
 export function drawTacticsScenery(ctx, { obstacle, point, width, height } = {}) {
+  if (drawApertureScenery(ctx, { obstacle, point, width, height })) return true;
   if (drawTacticsSceneryWave17(ctx, { obstacle, point, width, height })) return true;
   if (drawTacticsSceneryWave16(ctx, { obstacle, point, width, height })) return true;
   if (drawTacticsSceneryWave15(ctx, { obstacle, point, width, height })) return true;

@@ -1,8 +1,9 @@
 // Portal — definitions consumed by src/game/loreAccuratePacks.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+import { applyPortalHeroSourceContracts, applyPortalEnemySourceContracts } from './sourceContracts20261113.js';
 
 export function createLoreAccurateHeroExpansions({ hero }) {
-  return ([
+  return applyPortalHeroSourceContracts([
     hero('doug_rattmann', 'Doug Rattmann', 'hacker', '#a68f66', 'terminal', 'Companion Cube Mark', 'Hidden Den Route', 'Schizoid Warning Mural', 'Lab Rat Override'),
     hero('glados_core', 'GLaDOS Potato Core', 'hacker', '#d9d4b8', 'laser', 'Passive Aggressive Zap', 'Neurotoxin Calculation', 'PotatOS Fail-Safe', 'Aperture Central Rewrite'),
     hero('cave_johnson_echo', 'Cave Johnson Echo', 'tactical', '#ff9f43', 'command', 'Combustible Lemon Throw', 'Test Subject Order', 'Moon Rock Shield', 'Science Isn t About Why')
@@ -10,15 +11,15 @@ export function createLoreAccurateHeroExpansions({ hero }) {
 }
 
 export function createLoreAccurateHeroOverrides({ loadout }) {
-  return (loadout('portalgun', 'Blue Portal Ping', 'Co-op Launch Plate', 'Robot Shell Brace', 'Atlas Portal Chain', '#2980b9'));
+  return applyPortalHeroSourceContracts(loadout('portalgun', 'Blue Portal Ping', 'Co-op Launch Plate', 'Robot Shell Brace', 'Atlas Portal Chain', '#2980b9'), 'atlas');
 }
 
 export function createLoreAccurateHeroOverrides2({ loadout }) {
-  return (loadout('portalgun', 'Orange Portal Snap', 'Hardlight Bridge Redirect', 'Co-op Shell Guard', 'P-Body Test Chamber Loop', '#d35400'));
+  return applyPortalHeroSourceContracts(loadout('portalgun', 'Orange Portal Snap', 'Hardlight Bridge Redirect', 'Co-op Shell Guard', 'P-Body Test Chamber Loop', '#d35400'), 'pbody');
 }
 
 export function createLoreAccurateEnemyExpansions({ boss, monster }) {
-  return ({
+  return applyPortalEnemySourceContracts({
     monsters: [
       monster('Rocket Turret Prototype', 85, 15, 4, '#f4f4f4', 'rocket'),
       monster('Gel Pump Hazard', 75, 12, 5, '#ff7f2a', 'gel'),

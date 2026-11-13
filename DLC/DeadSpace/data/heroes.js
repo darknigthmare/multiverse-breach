@@ -1,8 +1,10 @@
+import { sourceHeroContract } from './actorSourceContracts.js';
+
 // Dead Space — definitions consumed by src/game/heroes.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createHeroesDb() {
-  return ({
+  return ({ ...({
     id: 'isaac',
     name: 'Isaac Clarke',
     universe: 'Dead Space',
@@ -16,7 +18,7 @@ export function createHeroesDb() {
     secondary: { name: 'Stasis Slowdown', type: 'gravity', cd: 6, dmg: 1.6 },
     defense: { name: 'RIG Heavy Shield', type: 'shield', dur: 2.5, reduce: 0.85 },
     special: { name: 'Telekinetic Smash', type: 'gravity_aoe', dmg: 4.9 }
-  });
+  }), ...sourceHeroContract('isaac') });
 }
 
 export function createEquipItemsDb() {
@@ -41,16 +43,16 @@ export function createEventItemsDb() {
 }
 
 export function createExtraHeroData() {
-  return ([
+  return (([
     { id: 'carver', name: 'John Carver', cat: 'marine', color: '#7f8c8d' },
     { id: 'ellie', name: 'Ellie Langford', cat: 'tactical', color: '#fdcb6e' }
-  ]);
+  ]).map(actor => ({ ...actor, ...sourceHeroContract(actor.id) })));
 }
 
 export function createCanonRosterExpansion() {
-  return ([
+  return (([
     { id: 'nicole_brennan', name: 'Nicole Brennan', cat: 'hacker', color: '#85c1e9' },
     { id: 'zach_hammond', name: 'Zach Hammond', cat: 'marine', color: '#566573' },
     { id: 'kendra_daniels', name: 'Kendra Daniels', cat: 'tactical', color: '#c0c0c0' }
-  ]);
+  ]).map(actor => ({ ...actor, ...sourceHeroContract(actor.id) })));
 }

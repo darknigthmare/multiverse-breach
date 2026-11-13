@@ -2486,55 +2486,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           </button>
         )}
 
-        {stage.mode === 'Tactics' && tacticsTerrainState?.vertical && (
-          <details open className="combat-targeting-overlay" style={{ left: 'var(--combat-left)', right: 'auto', maxHeight: 'min(45dvh, 540px)', boxSizing: 'border-box' }}>
-            <summary style={{ cursor: 'pointer', minHeight: 44, padding: '8px 0', boxSizing: 'border-box' }}>{lang === 'fr' ? 'TERRAIN · HAUTEURS' : 'TERRAIN · HEIGHTS'}</summary>
-            <TacticsTerrainPanel
-              terrain={tacticsTerrainState}
-              lang={lang}
-              disabled={sessionPaused || battleCompleted || combatBooting}
-              zoom={engineRef.current?.getCameraState?.()?.zoom || 1}
-              onZoom={factor => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.zoomCameraAt?.(factor);
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onResetCamera={() => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.resetCamera?.();
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onLevelChange={level => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.setTerrainLevel?.(level);
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onLevelCycle={direction => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.cycleTerrainLevel?.(direction);
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onSurfaceSelect={id => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.selectTerrainSurface?.(id);
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onSurfaceCycle={direction => {
-                if (sessionPausedRef.current) return;
-                engineRef.current?.cycleSelectedSurface?.(direction);
-                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
-              }}
-              onConfirm={id => {
-                if (sessionPausedRef.current || battleCompleted) return;
-                const engine = engineRef.current;
-                const result = engine?.handleSurfaceClick?.(id);
-                const surface = engine?.getTerrainViewState?.()?.selectedSurface;
-                if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
-                setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
-              }}
-            />
-          </details>
-        )}
+
 
         <canvas
           ref={canvasRef}
@@ -2781,6 +2733,55 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
 
       {!battleCompleted && <div className="combat-hud-dock">
+        {stage.mode === 'Tactics' && tacticsTerrainState?.vertical && (
+          <details open className="combat-terrain-overlay">
+            <summary style={{ cursor: 'pointer', minHeight: 44, padding: '8px 0', boxSizing: 'border-box' }}>{lang === 'fr' ? 'TERRAIN · HAUTEURS' : 'TERRAIN · HEIGHTS'}</summary>
+            <TacticsTerrainPanel
+              terrain={tacticsTerrainState}
+              lang={lang}
+              disabled={sessionPaused || battleCompleted || combatBooting}
+              zoom={engineRef.current?.getCameraState?.()?.zoom || 1}
+              onZoom={factor => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.zoomCameraAt?.(factor);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onResetCamera={() => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.resetCamera?.();
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onLevelChange={level => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.setTerrainLevel?.(level);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onLevelCycle={direction => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.cycleTerrainLevel?.(direction);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onSurfaceSelect={id => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.selectTerrainSurface?.(id);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onSurfaceCycle={direction => {
+                if (sessionPausedRef.current) return;
+                engineRef.current?.cycleSelectedSurface?.(direction);
+                setTacticsTerrainState(engineRef.current?.getTerrainViewState?.() || null);
+              }}
+              onConfirm={id => {
+                if (sessionPausedRef.current || battleCompleted) return;
+                const engine = engineRef.current;
+                const result = engine?.handleSurfaceClick?.(id);
+                const surface = engine?.getTerrainViewState?.()?.selectedSurface;
+                if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
+                setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
+              }}
+            />
+          </details>
+        )}
         <div className="combat-squad-strip" role="group" aria-label={lang === 'fr' ? 'Escouade active' : 'Active squad'}>
           {teamState.map((hero, index) => {
             const dead = !stage.nonCombatTrial && hero.currentHp <= 0;

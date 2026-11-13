@@ -1,8 +1,10 @@
+import { sourceHeroContract } from './actorSourceContracts.js';
+
 // Gears of War — definitions consumed by src/game/heroes.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createHeroesDb() {
-  return ({
+  return ({ ...({
     id: 'marcus',
     name: 'Marcus Fenix',
     universe: 'Gears of War',
@@ -16,7 +18,7 @@ export function createHeroesDb() {
     secondary: { name: 'Chainsaw Lunge', type: 'melee', cd: 8, dmg: 2.2 },
     defense: { name: 'Roadie Cover', type: 'shield', dur: 2.5, reduce: 0.8 },
     special: { name: 'Hammer of Dawn', type: 'beam_aoe', dmg: 5.0, color: '#ff4500' }
-  });
+  }), ...sourceHeroContract('marcus') });
 }
 
 export function createEquipItemsDb() {
@@ -41,18 +43,18 @@ export function createEventItemsDb() {
 }
 
 export function createExtraHeroData() {
-  return ([
+  return (([
     { id: 'dom', name: 'Dom Santiago', cat: 'marine', color: '#3498db' },
     { id: 'cole', name: 'Augustus Cole', cat: 'slayer', color: '#f1c40f' }
-  ]);
+  ]).map(actor => ({ ...actor, ...sourceHeroContract(actor.id) })));
 }
 
 export function createCanonRosterExpansion() {
-  return ([
+  return (([
     { id: 'baird', name: 'Damon Baird', cat: 'hacker', color: '#95a5a6' },
     { id: 'anya_stroud', name: 'Anya Stroud', cat: 'tactical', color: '#d8d3c0' },
     { id: 'hoffman_cog', name: 'Colonel Hoffman', cat: 'marine', color: '#4d5656' },
     { id: 'carmine_cog', name: 'Carmine', cat: 'marine', color: '#6c7a89' },
     { id: 'kait_diaz', name: 'Kait Diaz', cat: 'slayer', color: '#7b241c' }
-  ]);
+  ]).map(actor => ({ ...actor, ...sourceHeroContract(actor.id) })));
 }

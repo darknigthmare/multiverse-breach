@@ -1,8 +1,9 @@
 // Portal — definitions consumed by src/game/enemies.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+import { applyPortalEnemySourceContracts } from './sourceContracts20261113.js';
 
 export function createEnemiesDb() {
-  return ({
+  return applyPortalEnemySourceContracts({
     monsters: [
       { name: 'Aperture Security Turret', hp: 60, atk: 10, spd: 5, color: '#ececec', weapon: 'gun' },
       { name: 'Defective Red Eye Turret', hp: 50, atk: 13, spd: 5, color: '#c0392b', weapon: 'shoot' },
@@ -17,7 +18,7 @@ export function createEnemiesDb() {
 }
 
 export function createCanonEnemyExpansion() {
-  return ({
+  return applyPortalEnemySourceContracts({
     monsters: [
       { name: 'Frankenturret Cube', hp: 90, atk: 10, spd: 4, color: '#dfe6e9', weapon: 'hop_crush' },
       { name: 'Rocket Turret Mount', hp: 100, atk: 15, spd: 3, color: '#bdc3c7', weapon: 'rocket' },

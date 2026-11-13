@@ -7,8 +7,8 @@ export function createCombatSpecs({ boss, phase }) {
     "gears-of-war-gargantuan-brumak",
     "Brumak",
     "kaiju",
-    "Gears of War - Locust war continuity",
-    "https://gearsofwar.fandom.com/wiki/Brumak",
+    "Gears of War 2 (2008), armed Brumak before Lambent mutation",
+    "https://en.wikipedia.org/wiki/Gears_of_War_2",
     "Massive reptilian Brumak with Locust harness, arm cannons, dorsal missile rack and a separately targetable pilot.",
     [
       phase("heavy-ordnance", "Arm cannon burst", "Missile barrage", "Stomp"),

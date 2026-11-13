@@ -1,8 +1,9 @@
 // Portal — definitions consumed by src/game/loreWorldBossOverrides.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+import { applyPortalEnemySourceContract } from './sourceContracts20261113.js';
 
 export function createCombatSpecs({ boss, phase }) {
-  return (boss(
+  return applyPortalEnemySourceContract(boss(
     "Portal",
     "portal-glados-central-core",
     "GLaDOS",
@@ -15,5 +16,5 @@ export function createCombatSpecs({ boss, phase }) {
       phase("neurotoxin", "Neurotoxin countdown", "Core incineration", "Chamber collapse"),
     ],
     { renderHeight: 340, anchor: { x: 0.78, y: 0.43 } },
-  ));
+  ), 'GLaDOS Central Core');
 }

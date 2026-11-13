@@ -713,7 +713,7 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
     }
   }
 
-  // Suppress the *display* of three source-verified incorrect sheets while
+  // Suppress the display of specifically inspected incorrect sheets while
   // preserving their asset records, authoring history and gameplay identities.
   const generatedStatus = quarantinedArt && !getReviewedQuarantinedHeroSprite(character) ? 'missing' : drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSources, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);

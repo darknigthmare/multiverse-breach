@@ -5,5 +5,6 @@ export * as expandedUniverses from './data/expandedUniverses.js';
 export * as heroes from './data/heroes.js';
 export * as loreItemOverrides from './data/loreItemOverrides.js';
 export * as loreWorldBossOverrides from './data/loreWorldBossOverrides.js';
+export * as sourceContracts20261113 from './data/sourceContracts20261113.js';
 export * as stageLoreProfiles from './data/stageLoreProfiles.js';
 export * as stageMusicProfiles from './data/stageMusicProfiles.js';

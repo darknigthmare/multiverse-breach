@@ -1,6 +1,7 @@
 import { TACTICS_TERRAIN_MATERIALS_WAVE15 } from './tacticsUniversePresentationWave15.js';
 import { TACTICS_TERRAIN_MATERIALS_WAVE16 } from './tacticsUniversePresentationWave16.js';
 import { TACTICS_TERRAIN_MATERIALS_WAVE17 } from './tacticsUniversePresentationWave17.js';
+import { TACTICS_APERTURE_MATERIALS } from './tacticsAperturePresentation.js';
 // Shared terrain geometry for the playable Tactics board. Materials are drawn
 // in world coordinates: they are original procedural game textures, not crops
 // from the perspective-painted universe backgrounds or official source art.
@@ -11,6 +12,7 @@ const EDGE_CORNERS = [[0, 1], [1, 2], [2, 3], [3, 0]];
 const OPPOSITE_CORNERS = [[3, 2], [0, 3], [1, 0], [2, 1]];
 
 export const TACTICS_TERRAIN_MATERIALS = Object.freeze({
+  ...TACTICS_APERTURE_MATERIALS,
   ...TACTICS_TERRAIN_MATERIALS_WAVE17,
   ...TACTICS_TERRAIN_MATERIALS_WAVE16,
   ...TACTICS_TERRAIN_MATERIALS_WAVE15,

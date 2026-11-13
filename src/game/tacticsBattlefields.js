@@ -6,10 +6,12 @@ import { TACTICS_UNIVERSE_BATTLEFIELDS } from './tacticsUniverseBattlefields.js'
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15 } from './tacticsUniverseBattlefieldsWave15.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16 } from './tacticsUniverseBattlefieldsWave16.js';
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17 } from './tacticsUniverseBattlefieldsWave17.js';
+import { TACTICS_APERTURE_BATTLEFIELD } from './tacticsApertureBattlefield.js';
 
 // Historical wave exports remain bounded; all live selectors use this union.
 export const TACTICS_SOURCE_BATTLEFIELDS = Object.freeze({
-  ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17
+  ...TACTICS_UNIVERSE_BATTLEFIELDS, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE15, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, ...TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17,
+  [TACTICS_APERTURE_BATTLEFIELD.id]: TACTICS_APERTURE_BATTLEFIELD
 });
 
 const tile = (x, y, type, label = null) => ({ x, y, type, label });
@@ -394,6 +396,7 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
 }
 
 const sourceLocationMatchers = {
+  portal2_maintenance_shaft_tactics: /(?:aperture|portal\s*2).*(?:maintenance|shaft|puits|chamber|chambre)|(?:puits|maintenance).*aperture/i,
   ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17,
   ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE16,
   ...TACTICS_SOURCE_LOCATION_MATCHERS_WAVE15,
@@ -408,8 +411,11 @@ const sourceLocationMatchers = {
 };
 
 export function getUniverseTacticsBattlefield(stage = {}, { allowDefault = false } = {}) {
+  const editionText = [stage.name, stage.location, stage.tacticsLocation, stage.sourceWork, stage.tacticsSource?.work].filter(Boolean).join(' ');
+  const explicitlyPortal2007 = /\bportal\s*(?:\(\s*2007\s*\)|2007\b|1\b)/i.test(editionText);
   const candidates = Object.values(TACTICS_SOURCE_BATTLEFIELDS)
-    .filter(field => field.source.universe === stage.universe);
+    .filter(field => field.source.universe === stage.universe
+      && !(field.id === TACTICS_APERTURE_BATTLEFIELD.id && explicitlyPortal2007));
   const location = [stage.name, stage.location, stage.tacticsLocation].filter(Boolean).join(' ');
   const exact = candidates.find(field => sourceLocationMatchers[field.id]?.test(location));
   if (exact || !allowDefault) return exact || null;

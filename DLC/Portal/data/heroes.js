@@ -1,8 +1,9 @@
 // Portal — definitions consumed by src/game/heroes.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+import { applyPortalHeroSourceContracts } from './sourceContracts20261113.js';
 
 export function createHeroesDb() {
-  return ({
+  return applyPortalHeroSourceContracts({
     id: 'chell',
     name: 'Chell',
     universe: 'Portal',
@@ -41,14 +42,14 @@ export function createEventItemsDb() {
 }
 
 export function createExtraHeroData() {
-  return ([
+  return applyPortalHeroSourceContracts([
     { id: 'atlas', name: 'Atlas', cat: 'tactical', color: '#2980b9' },
     { id: 'pbody', name: 'P-Body', cat: 'marine', color: '#d35400' }
   ]);
 }
 
 export function createCanonRosterExpansion() {
-  return ([
+  return applyPortalHeroSourceContracts([
     { id: 'glados', name: 'GLaDOS', cat: 'hacker', color: '#dfe6e9' },
     { id: 'wheatley', name: 'Wheatley', cat: 'hacker', color: '#2980b9' },
     { id: 'cave_johnson', name: 'Cave Johnson', cat: 'tactical', color: '#f39c12' },

@@ -1,8 +1,9 @@
 // Left 4 Dead — definitions consumed by src/game/enemies.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
+import { applyLeft4DeadEnemySourceContracts } from './sourceContracts20261113.js';
 
 export function createCanonEnemyExpansion() {
-  return ({
+  return applyLeft4DeadEnemySourceContracts({
     monsters: [
       { name: 'Boomer Bile Host', hp: 70, atk: 9, spd: 4, color: '#7f8c8d', weapon: 'bile_explosion' },
       { name: 'Hunter Pounce', hp: 80, atk: 14, spd: 8, color: '#566573', weapon: 'pounce' },

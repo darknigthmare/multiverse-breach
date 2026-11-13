@@ -21,6 +21,7 @@ import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperV
 import { SYNERGIES_DB, getHeroById } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper } from './combatIdentity';
+import { samplePresentationScript } from './combat/presentationCatalog.js';
 import { hasSelectedCombatSource } from './combat/sourceKitPriority.js';
 import { applyCombatHealing } from './combatHealing.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
@@ -356,7 +357,7 @@ export class EngineSmash {
       this.spawnEnemy();
     }
     [...this.heroes, ...this.enemies].forEach(actor => {
-      if (actor.state === 'intro') actor.meleePresentation = resolveCombatPresentation(actor, 'intro');
+      if (actor.state === 'intro') actor.meleePresentation = resolveCombatPresentation(resolveCombatHeroSpriteActor(actor) || actor, 'intro');
     });
     if (!this.isPreMatchLocked()) this.completeMeleeIntros();
   }
@@ -2065,7 +2066,7 @@ export class EngineSmash {
       hero.vy = 0;
       const sideWon = this.heroes.includes(hero) ? result === 'victory' : result === 'defeat';
       const nextState = sideWon && hero.currentHp > 0 ? 'victory' : 'defeat';
-      hero.meleePresentation = resolveCombatPresentation(hero, nextState);
+      hero.meleePresentation = resolveCombatPresentation(resolveCombatHeroSpriteActor(hero) || hero, nextState);
       transitionMeleeState(hero, nextState, { force: true, restart: true });
     });
   }
@@ -2848,6 +2849,18 @@ export class EngineSmash {
   }
 
   getMeleeVisualActor(actor) {
+    const script = actor.meleePresentation?.presentationScript;
+    if (script?.provenance.kind === 'reviewed-base16-presentation' && script.phase === actor.state
+      && ['intro', 'victory'].includes(actor.state)) {
+      const sample = samplePresentationScript(script, actor.stateElapsed || 0);
+      if (sample?.asset.kind === 'reviewed-character-base16') return {
+        ...actor, state: sample.poseState,
+        x: actor.x + sample.x * actor.facing, y: actor.y + sample.y,
+        presentationPhase: script.phase, presentationProgress: sample.progress,
+        presentationFrame: { row: sample.asset.row, col: sample.asset.col },
+        animationClockSource: actor
+      };
+    }
     const action = actor.action;
     const profile = action?.superProfile;
     if (profile?.sourceHeroId !== 'barret_ff7' || profile.name !== 'Catastrophe') return actor;

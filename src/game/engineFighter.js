@@ -1660,12 +1660,13 @@ export class EngineFighter {
   queuePresentation(phase, winnerSide = null) {
     const sides = phase === 'fatality' ? [winnerSide] : ['player', 'cpu'];
     const entries = sides.map(side => {
+      const fighter = this.getActive(side);
       const actorPhase = phase === 'roundResult'
         ? (side === winnerSide ? 'roundVictory' : 'roundDefeat')
         : phase === 'victory'
           ? (side === winnerSide ? 'victory' : 'defeat')
+          : phase === 'outro' && fighter.currentHp <= 0 ? 'defeat'
           : phase;
-      const fighter = this.getActive(side);
       const identity = resolveCombatPresentation(fighter, actorPhase);
       return { side, actorPhase, identity, script: identity.presentationScript || resolvePresentationScript(fighter, actorPhase) };
     });
@@ -1882,7 +1883,7 @@ export class EngineFighter {
             sourceReference: entry.script.sourceReference,
             missingAssets: [...entry.script.missingAssets],
             provenance: { ...entry.script.provenance },
-            sample: samplePresentationScript(entry.script, presentation.duration - presentation.remaining)
+            sample: samplePresentationScript(entry.script, this.getPresentationEntryElapsed(entry, presentation))
           } : null,
           fighterId: this.getActive(entry.side)?.id,
           fighterName: this.getActive(entry.side)?.name,
@@ -1950,6 +1951,15 @@ export class EngineFighter {
       };
     }
     return null;
+  }
+
+  getPresentationEntryElapsed(entry, presentation = this.getCurrentPresentation()) {
+    if (!presentation) return 0;
+    // The previous result phase already completed this fall. A KO cannot
+    // stand up for an exit or restart its defeat while the winner leaves.
+    if (presentation.phase === 'outro' && entry.actorPhase === 'defeat'
+      && this.getActive(entry.side)?.currentHp <= 0) return entry.script?.duration || entry.identity.duration;
+    return Math.max(0, presentation.duration - presentation.remaining);
   }
 
   draw(ctx, animTime) {
@@ -2116,11 +2126,13 @@ export class EngineFighter {
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 18px "Share Tech Mono", monospace';
     ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * 0.34);
-    presentation.entries.forEach(({ side, actorPhase, identity, script }) => {
+    presentation.entries.forEach(entry => {
+      const { side, actorPhase, identity, script } = entry;
       const fighter = this.getActive(side);
       if (!fighter) return;
       const anchorX = finalScene ? this.width / 2 : side === 'player' ? this.width * 0.25 : this.width * 0.75;
-      const sample = script ? samplePresentationScript(script, presentation.duration - presentation.remaining) : null;
+      const entryElapsed = this.getPresentationEntryElapsed(entry, presentation);
+      const sample = script ? samplePresentationScript(script, entryElapsed) : null;
       const facing = side === 'player' ? 1 : -1;
       const entranceOffset = actorPhase === 'intro' ? (side === 'player' ? -1 : 1) * 60 * (1 - progress) : 0;
       const exitOffset = actorPhase === 'outro' ? (side === 'player' ? -1 : 1) * 100 * progress : 0;
@@ -2139,7 +2151,7 @@ export class EngineFighter {
         ...fighter,
         id: sample?.asset.actorId || fighter.id,
         state: sample?.poseState || state,
-        stateElapsed: sample?.stateElapsed ?? presentation.duration - presentation.remaining,
+        stateElapsed: sample?.stateElapsed ?? entryElapsed,
         presentationPhase: actorPhase,
         presentationProgress: sample?.progress ?? progress,
         presentationFrame: sample ? { row: sample.asset.row, col: sample.asset.col } : null

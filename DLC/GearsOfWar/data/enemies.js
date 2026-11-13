@@ -1,8 +1,10 @@
+import { applySourceEnemyContracts } from './actorSourceContracts.js';
+
 // Gears of War — definitions consumed by src/game/enemies.js.
 // Constructors receive shared builders explicitly, avoiding imports back into the aggregate catalog.
 
 export function createEnemiesDb() {
-  return ({
+  return (applySourceEnemyContracts({
     monsters: [
       { name: 'Locust Drone', hp: 90, atk: 9, spd: 4, color: '#6e7a68', weapon: 'gun' },
       { name: 'Locust Wretch', hp: 70, atk: 11, spd: 6, color: '#535c50', weapon: 'claws' },
@@ -21,11 +23,11 @@ export function createEnemiesDb() {
       { name: 'High Priest Skorge', hp: 420, atk: 19, spd: 4, color: '#4a3f35', weapon: 'staff', special: 'Chainsaw Staff Slice' }
     ],
     worldBoss: { name: 'Gargantuan Brumak', hp: 1200, atk: 28, spd: 2, color: '#272d24', weapon: 'rockets', special: 'Back-Mounted Rocket Barrage' }
-  });
+  }));
 }
 
 export function createCanonEnemyExpansion() {
-  return ({
+  return (applySourceEnemyContracts({
     monsters: [
       { name: 'Theron Guard', hp: 112, atk: 13, spd: 5, color: '#7b6a52', weapon: 'torque_bow' },
       { name: 'Boomer Locust', hp: 145, atk: 16, spd: 3, color: '#5d4a3b', weapon: 'boomshot' },
@@ -36,5 +38,5 @@ export function createCanonEnemyExpansion() {
       { name: 'Berserker Matriarch', hp: 620, atk: 24, spd: 4, color: '#6b2d2d', weapon: 'charge', special: 'Blind Rage Charge' },
       { name: 'Karn Locust General', hp: 570, atk: 22, spd: 5, color: '#2f3a30', weapon: 'sniper', special: 'Siege Beast Command' }
     ]
-  });
+  }));
 }
