@@ -1,0 +1,362 @@
+{
+  "sourceBaseline": "f76da7941",
+  "changedSourceSha256": {
+    "src/components/CampaignPauseMenu.jsx": "4facd8b7834aab4a928d8eca3eb096cdd6fd946906ee1a8ea406fa3916ef5a19",
+    "src/components/collection/modalIsolation.js": "be4f54a00e24cecd6e3d9ed080eba95c0bfc7d69a4e62de1293e88d99e548934",
+    "src/components/game-system.css": "e50667097d717a3973dbfda700b7e585cce6757e6a4fb7e6b53799be789f38eb",
+    "scripts/gameSystemImmersion.test.mjs": "e326411c0c63bfe9bd1fab84d98d507c38e9001760ed85ea115a5ac7afba5c74"
+  },
+  "node": "22.23.5",
+  "nodeTests": {
+    "command": "node --test scripts/gameSystemImmersion.test.mjs scripts/dialogFocus.test.mjs scripts/collectionFocusLifecycle.test.mjs",
+    "passed": 22,
+    "failed": 0,
+    "tapSha256": "ac77ab529c4c0f75d69c3e050ec7a6af35453bc1c32d1703e6538d554bcad1de"
+  },
+  "lint": {
+    "command": "node_modules/.bin/oxlint src/components/CampaignPauseMenu.jsx src/components/collection/modalIsolation.js scripts/gameSystemImmersion.test.mjs",
+    "exitCode": 0
+  },
+  "browser": {
+    "chromium": "151.0.7922.173",
+    "testScope": "Native pause menu, confirmation, dialog queue, display settings and keyboard ownership. Host fixture reproduces App's window Escape guard with a controlled paused state.",
+    "preferences": {
+      "textScale": 1.5,
+      "contrast": "high",
+      "motion": "reduced",
+      "safeArea": 24
+    },
+    "before": [
+      {
+        "lang": "fr",
+        "viewport": {
+          "width": 390,
+          "height": 700
+        },
+        "opensThroughRepeat": false,
+        "nestedParentSurvivesRepeat": false,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 20,
+            "bottom": 680,
+            "left": 20,
+            "right": 370
+          },
+          "resume": {
+            "top": 1360.84375,
+            "bottom": 1406.84375,
+            "left": 41,
+            "right": 349
+          },
+          "retreat": {
+            "top": 1418.84375,
+            "bottom": 1464.84375,
+            "left": 41,
+            "right": 349
+          },
+          "width": 348,
+          "scrollWidth": 348,
+          "height": 658,
+          "scrollHeight": 1464,
+          "documentScrollWidth": 390,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 3,
+          "retreats": 0,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      },
+      {
+        "lang": "en",
+        "viewport": {
+          "width": 740,
+          "height": 390
+        },
+        "opensThroughRepeat": false,
+        "nestedParentSurvivesRepeat": false,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 20,
+            "bottom": 370,
+            "left": 50,
+            "right": 690
+          },
+          "resume": {
+            "top": 890.4375,
+            "bottom": 936.4375,
+            "left": 73.1875,
+            "right": 666.8125
+          },
+          "retreat": {
+            "top": 948.4375,
+            "bottom": 994.4375,
+            "left": 73.1875,
+            "right": 666.8125
+          },
+          "width": 638,
+          "scrollWidth": 638,
+          "height": 348,
+          "scrollHeight": 996,
+          "documentScrollWidth": 740,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 3,
+          "retreats": 0,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      },
+      {
+        "lang": "fr",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "opensThroughRepeat": false,
+        "nestedParentSurvivesRepeat": false,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 20,
+            "bottom": 880,
+            "left": 320,
+            "right": 960
+          },
+          "resume": {
+            "top": 931.046875,
+            "bottom": 977.046875,
+            "left": 355,
+            "right": 925
+          },
+          "retreat": {
+            "top": 989.046875,
+            "bottom": 1035.046875,
+            "left": 355,
+            "right": 925
+          },
+          "width": 638,
+          "scrollWidth": 638,
+          "height": 858,
+          "scrollHeight": 1048,
+          "documentScrollWidth": 1280,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 3,
+          "retreats": 0,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      }
+    ],
+    "after": [
+      {
+        "lang": "fr",
+        "viewport": {
+          "width": 390,
+          "height": 700
+        },
+        "opensThroughRepeat": true,
+        "nestedParentSurvivesRepeat": true,
+        "tabWrapsInsidePause": true,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 24,
+            "bottom": 676,
+            "left": 24,
+            "right": 366
+          },
+          "resume": {
+            "top": 597,
+            "bottom": 663,
+            "left": 39,
+            "right": 190
+          },
+          "retreat": {
+            "top": 597,
+            "bottom": 663,
+            "left": 200,
+            "right": 351
+          },
+          "width": 340,
+          "scrollWidth": 340,
+          "height": 559,
+          "scrollHeight": 1291,
+          "documentScrollWidth": 390,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 1,
+          "retreats": 1,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      },
+      {
+        "lang": "en",
+        "viewport": {
+          "width": 740,
+          "height": 390
+        },
+        "opensThroughRepeat": true,
+        "nestedParentSurvivesRepeat": true,
+        "tabWrapsInsidePause": true,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 24,
+            "bottom": 366,
+            "left": 50,
+            "right": 690
+          },
+          "resume": {
+            "top": 307,
+            "bottom": 353,
+            "left": 73.1875,
+            "right": 365
+          },
+          "retreat": {
+            "top": 307,
+            "bottom": 353,
+            "left": 375,
+            "right": 666.8125
+          },
+          "width": 638,
+          "scrollWidth": 638,
+          "height": 269,
+          "scrollHeight": 833,
+          "documentScrollWidth": 740,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 1,
+          "retreats": 1,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      },
+      {
+        "lang": "fr",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "opensThroughRepeat": true,
+        "nestedParentSurvivesRepeat": true,
+        "tabWrapsInsidePause": true,
+        "optionsGeometry": {
+          "dialog": {
+            "top": 24,
+            "bottom": 876,
+            "left": 320,
+            "right": 960
+          },
+          "resume": {
+            "top": 817,
+            "bottom": 863,
+            "left": 349,
+            "right": 635
+          },
+          "retreat": {
+            "top": 817,
+            "bottom": 863,
+            "left": 645,
+            "right": 931
+          },
+          "width": 638,
+          "scrollWidth": 638,
+          "height": 779,
+          "scrollHeight": 873,
+          "documentScrollWidth": 1280,
+          "rootFont": "24px"
+        },
+        "state": {
+          "resumes": 1,
+          "retreats": 1,
+          "escape": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "gameInputs": 0,
+          "audioChanges": 1
+        },
+        "errors": [],
+        "httpFailed": []
+      }
+    ],
+    "rawFixtureDuringValidation": "/tmp/mvb-campaign-pause-06"
+  },
+  "existingMenuRegression": {
+    "command": "node scripts/browserMenuAccessibility.mjs",
+    "fixtureBuild": "Vite existing JSX harness with temporary output, direct build without full prebuild",
+    "passed": [
+      "menus-390x844-fr",
+      "guide-390x844-fr",
+      "menus-390x844-en",
+      "guide-390x844-en",
+      "menus-844x390-fr",
+      "guide-844x390-fr",
+      "menus-844x390-en",
+      "guide-844x390-en",
+      "menus-1365x900-fr",
+      "guide-1365x900-fr",
+      "menus-1365x900-en",
+      "guide-1365x900-en"
+    ],
+    "nexusAtlasGitOid": "cc03f2d9bebd90ac4a79e5cc38a949a17630f2e3",
+    "nexusAtlasSha256": "c1e291b44e03412eb6a2b6867990feceb083101bcf6b282bafbda863b5bb9e8b"
+  },
+  "capturesSha256": {
+    "pause-options-landscape.jpg": "c402b1988274c74b409a38b86f27a1bf8d201278061ed63788fcf88bace4d8f5",
+    "pause-options-portrait.jpg": "087523e649ec049a11d666ee8a2fadd98787e8566df653485d35f6d9e20e6d72"
+  }
+}

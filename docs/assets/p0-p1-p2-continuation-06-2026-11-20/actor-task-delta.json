@@ -1,0 +1,920 @@
+{
+  "previousLedgerCheckpoint": "0657ae9d7b61874d39297acca4a2d1ec11a53bc9",
+  "previousLedgerSha256": "38438fd223a8c3060baf9737562e6cee9d6a4053563420c5a38ed4a7c34c18f1",
+  "baseRevision": "f76da7941",
+  "sourceAndAssetTreeCommit": "b0dbdd440d196a7183831769e49259405f143f81",
+  "actorExportSha256": "8d1de94030d0321db87b927fb055b3ff422c3815f28c9f7ae1113b6334ad5ad3",
+  "summary": {
+    "version": "R14",
+    "sourceBaseCommit": "b0dbdd440d196a7183831769e49259405f143f81",
+    "assetTreeCommit": "b0dbdd440d196a7183831769e49259405f143f81",
+    "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+    "actors": 4937,
+    "heroes": 1912,
+    "universes": 525,
+    "originalIdentities": 312,
+    "externalOrUnresolved": 4625,
+    "actorsWithOfficialVariants": 55,
+    "actorsWithMissingRaster": 1470,
+    "actorsWithStaticGameplay": 8,
+    "actorsWithGenericTechniqueNames": 1309,
+    "continuitiesRecovered": 1401,
+    "structuredContinuitiesRecovered": 60,
+    "actorContinuityAmbiguities": 2,
+    "continuityConflicts": 0,
+    "incarnationsUnspecified": 3028,
+    "visualContractsMissing": 2869,
+    "visualContractsGeneric": 213,
+    "historicalP0": "Not reclassified by this export; see prior fidelity audit. P1/P2 here prioritize newly exported work only.",
+    "newArtApprovals": 0,
+    "newSpriteFiles": 0,
+    "reviewComplete": 0
+  },
+  "beforeTotals": {
+    "P2": 13582,
+    "P1": 16492
+  },
+  "afterTotals": {
+    "P2": 13582,
+    "P1": 16350
+  },
+  "removedTotals": {
+    "P1": 142
+  },
+  "addedTotals": {},
+  "removedByCode": {
+    "INCARNATION_UNSPECIFIED": 70,
+    "VISUAL_CONTRACT_MISSING": 70,
+    "STATIC_GAMEPLAY_REVIEW": 2
+  },
+  "reservations": {
+    "historicalUnique": 480,
+    "newActorContracts": 70,
+    "historicalActorsRevisitedForMotion": 80,
+    "overlapBetweenCurrentLots": 0,
+    "files": [
+      "docs/assets/p0-p1-p2-continuation-06-2026-11-20/roster/reserved-actors.json",
+      "docs/assets/p0-p1-p2-continuation-06-2026-11-20/motion/reserved-actors.json"
+    ]
+  },
+  "changedRuntimeAssets": [
+    "A\tpublic/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne-animated.png",
+    "A\tpublic/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde-animated.png"
+  ],
+  "historicalP0Open": 22,
+  "removed": [
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:citoyen_efface_automatise\"]",
+      "actorName": "Citoyen effacé automatisé",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:citoyen_efface_automatise\"]",
+      "actorName": "Citoyen effacé automatisé",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:doppelganger_de_propagande\"]",
+      "actorName": "Doppelgänger de propagande",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:doppelganger_de_propagande\"]",
+      "actorName": "Doppelgänger de propagande",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:empereur_de_la_ligne_victorieuse\"]",
+      "actorName": "Empereur de la Ligne Victorieuse",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:empereur_de_la_ligne_victorieuse\"]",
+      "actorName": "Empereur de la Ligne Victorieuse",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:general_qui_n_a_jamais_perdu\"]",
+      "actorName": "Général Qui-N’a-Jamais-Perdu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:general_qui_n_a_jamais_perdu\"]",
+      "actorName": "Général Qui-N’a-Jamais-Perdu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:ministre_d_hier\"]",
+      "actorName": "Ministre d’Hier",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:ministre_d_hier\"]",
+      "actorName": "Ministre d’Hier",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:molosse_chronal\"]",
+      "actorName": "Molosse chronal",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:molosse_chronal\"]",
+      "actorName": "Molosse chronal",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:moteur_de_l_histoire_unique\"]",
+      "actorName": "Moteur de l’Histoire Unique",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:moteur_de_l_histoire_unique\"]",
+      "actorName": "Moteur de l’Histoire Unique",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:soldat_anachrone\"]",
+      "actorName": "Soldat anachrone",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Aevum Fracture\",\"id:aevum_fracture:soldat_anachrone\"]",
+      "actorName": "Soldat anachrone",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:civil_defense_automaton\"]",
+      "actorName": "Civil Defense Automaton",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:civil_defense_automaton\"]",
+      "actorName": "Civil Defense Automaton",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:director_isotope\"]",
+      "actorName": "Director Isotope",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:director_isotope\"]",
+      "actorName": "Director Isotope",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:happy_home_servitor\"]",
+      "actorName": "Happy Home Servitor",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:happy_home_servitor\"]",
+      "actorName": "Happy Home Servitor",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:isotope_mite\"]",
+      "actorName": "Isotope Mite",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:isotope_mite\"]",
+      "actorName": "Isotope Mite",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:moonbase_warden\"]",
+      "actorName": "Moonbase Warden",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:moonbase_warden\"]",
+      "actorName": "Moonbase Warden",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:radglass_mutant\"]",
+      "actorName": "Radglass Mutant",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:radglass_mutant\"]",
+      "actorName": "Radglass Mutant",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:saucer_scout\"]",
+      "actorName": "Saucer Scout",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:saucer_scout\"]",
+      "actorName": "Saucer Scout",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:the_perfect_family_broadcast\"]",
+      "actorName": "The Perfect Family Broadcast",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:the_perfect_family_broadcast\"]",
+      "actorName": "The Perfect Family Broadcast",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:aberration_du_culte_genetique\"]",
+      "actorName": "Aberration du Culte génétique",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:aberration_du_culte_genetique\"]",
+      "actorName": "Aberration du Culte génétique",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:archonte_sevrix\"]",
+      "actorName": "Archonte Sevrix",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:archonte_sevrix\"]",
+      "actorName": "Archonte Sevrix",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:cuirasse_nul_oblique\"]",
+      "actorName": "Cuirassé Nul « Oblique »",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:cuirasse_nul_oblique\"]",
+      "actorName": "Cuirassé Nul « Oblique »",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:deserteur_du_concordat\"]",
+      "actorName": "Déserteur du Concordat",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:deserteur_du_concordat\"]",
+      "actorName": "Déserteur du Concordat",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:drone_nul_paleen\"]",
+      "actorName": "Drone Nul paléen",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:drone_nul_paleen\"]",
+      "actorName": "Drone Nul paléen",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:l_architecte_pale\"]",
+      "actorName": "L’Architecte Pâle",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:l_architecte_pale\"]",
+      "actorName": "L’Architecte Pâle",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:parasite_de_voie_resonante\"]",
+      "actorName": "Parasite de voie résonante",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:parasite_de_voie_resonante\"]",
+      "actorName": "Parasite de voie résonante",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:vaisseau_ch_ur_du_schisme_nym\"]",
+      "actorName": "Vaisseau-Chœur du Schisme Nym",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Ilyr Concordat\",\"id:ilyr_concordat:vaisseau_ch_ur_du_schisme_nym\"]",
+      "actorName": "Vaisseau-Chœur du Schisme Nym",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:aurelia_marcellina\"]",
+      "actorName": "Aurelia Marcellina",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:aurelia_marcellina\"]",
+      "actorName": "Aurelia Marcellina",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:cassian_varro\"]",
+      "actorName": "Cassian Varro",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:cassian_varro\"]",
+      "actorName": "Cassian Varro",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:aquila_mecanique\"]",
+      "actorName": "Aquila mécanique",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:aquila_mecanique\"]",
+      "actorName": "Aquila mécanique",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:centurion_rouge_de_bellone\"]",
+      "actorName": "Centurion Rouge de Bellone",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:centurion_rouge_de_bellone\"]",
+      "actorName": "Centurion Rouge de Bellone",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:collecteur_d_orcus\"]",
+      "actorName": "Collecteur d’Orcus",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:collecteur_d_orcus\"]",
+      "actorName": "Collecteur d’Orcus",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:dictateur_a_la_couronne_vide\"]",
+      "actorName": "Dictateur à la Couronne Vide",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:dictateur_a_la_couronne_vide\"]",
+      "actorName": "Dictateur à la Couronne Vide",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:janus_bifrons_seuil_fracture\"]",
+      "actorName": "Janus Bifrons, Seuil Fracturé",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:janus_bifrons_seuil_fracture\"]",
+      "actorName": "Janus Bifrons, Seuil Fracturé",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:legionnaire_au_serment_brise\"]",
+      "actorName": "Légionnaire au serment brisé",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:legionnaire_au_serment_brise\"]",
+      "actorName": "Légionnaire au serment brisé",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:lemure_de_la_maison_vide\"]",
+      "actorName": "Lémure de la Maison Vide",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:lemure_de_la_maison_vide\"]",
+      "actorName": "Lémure de la Maison Vide",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:louve_de_bronze\"]",
+      "actorName": "Louve de bronze",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:louve_de_bronze\"]",
+      "actorName": "Louve de bronze",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:oracle_des_dirae\"]",
+      "actorName": "Oracle des Dirae",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:imperium_aeternum:oracle_des_dirae\"]",
+      "actorName": "Oracle des Dirae",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:numa_corvinus\"]",
+      "actorName": "Numa Corvinus",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Imperium Aeternum\",\"id:numa_corvinus\"]",
+      "actorName": "Numa Corvinus",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:ammit_aux_balances_brisees\"]",
+      "actorName": "Ammit aux Balances Brisées",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:ammit_aux_balances_brisees\"]",
+      "actorName": "Ammit aux Balances Brisées",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:apep_devoreur_de_l_aube\"]",
+      "actorName": "Apep, Dévoreur de l’Aube",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:apep_devoreur_de_l_aube\"]",
+      "actorName": "Apep, Dévoreur de l’Aube",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:chacal_de_tombe\"]",
+      "actorName": "Chacal de tombe",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:chacal_de_tombe\"]",
+      "actorName": "Chacal de tombe",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:ombre_de_ba\"]",
+      "actorName": "Ombre de Ba",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:ombre_de_ba\"]",
+      "actorName": "Ombre de Ba",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:pharaon_usurpateur_sans_nom\"]",
+      "actorName": "Pharaon Usurpateur Sans-Nom",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:pharaon_usurpateur_sans_nom\"]",
+      "actorName": "Pharaon Usurpateur Sans-Nom",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:pretre_d_isfet\"]",
+      "actorName": "Prêtre d’Isfet",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:pretre_d_isfet\"]",
+      "actorName": "Prêtre d’Isfet",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:serpent_des_dunes\"]",
+      "actorName": "Serpent des dunes",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:serpent_des_dunes\"]",
+      "actorName": "Serpent des dunes",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:shabti_corrompu\"]",
+      "actorName": "Shabti corrompu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:shabti_corrompu\"]",
+      "actorName": "Shabti corrompu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:tempete_rouge_avatar_d_isfet\"]",
+      "actorName": "Tempête Rouge, Avatar d’Isfet",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:kemet_devoured_sun:tempete_rouge_avatar_d_isfet\"]",
+      "actorName": "Tempête Rouge, Avatar d’Isfet",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:khepri_sen\"]",
+      "actorName": "Khepri-Sen",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:khepri_sen\"]",
+      "actorName": "Khepri-Sen",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:nefra_balance\"]",
+      "actorName": "Nefra de la Balance",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:nefra_balance\"]",
+      "actorName": "Nefra de la Balance",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:taset_lioness\"]",
+      "actorName": "Taset la Lionne",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Kemet: The Devoured Sun\",\"id:taset_lioness\"]",
+      "actorName": "Taset la Lionne",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:chimere_sans_nom\"]",
+      "actorName": "Chimère sans nom",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:chimere_sans_nom\"]",
+      "actorName": "Chimère sans nom",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:colosse_idole\"]",
+      "actorName": "Colosse-idole",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:colosse_idole\"]",
+      "actorName": "Colosse-idole",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:mer_sans_rivage\"]",
+      "actorName": "Mer Sans Rivage",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:mer_sans_rivage\"]",
+      "actorName": "Mer Sans Rivage",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:mere_des_masques\"]",
+      "actorName": "Mère des Masques",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:mere_des_masques\"]",
+      "actorName": "Mère des Masques",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:oracle_d_os\"]",
+      "actorName": "Oracle d’os",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:oracle_d_os\"]",
+      "actorName": "Oracle d’os",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:rejeton_mange_etoile\"]",
+      "actorName": "Rejeton mange-étoile",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:rejeton_mange_etoile\"]",
+      "actorName": "Rejeton mange-étoile",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:titan_au_masque_vierge\"]",
+      "actorName": "Titan au masque vierge",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:titan_au_masque_vierge\"]",
+      "actorName": "Titan au masque vierge",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:traitre_du_premier_feu\"]",
+      "actorName": "Traître du Premier Feu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:traitre_du_premier_feu\"]",
+      "actorName": "Traître du Premier Feu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:chrome_saint_k_0\"]",
+      "actorName": "Chrome Saint K-0",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:chrome_saint_k_0\"]",
+      "actorName": "Chrome Saint K-0",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:omnia_citymind_of_nadir_9\"]",
+      "actorName": "OMNIA, Citymind of Nadir-9",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Neon Requiem\",\"id:neon_requiem:omnia_citymind_of_nadir_9\"]",
+      "actorName": "OMNIA, Citymind of Nadir-9",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:killa_mayu\"]",
+      "actorName": "Killa Mayu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:killa_mayu\"]",
+      "actorName": "Killa Mayu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:rumi_illa\"]",
+      "actorName": "Rumi Illa",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:rumi_illa\"]",
+      "actorName": "Rumi Illa",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:sumaq_khipu\"]",
+      "actorName": "Sumaq Khipu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:sumaq_khipu\"]",
+      "actorName": "Sumaq Khipu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:amaru_de_la_tempete_fendue\"]",
+      "actorName": "Amaru de la Tempête Fendue",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:amaru_de_la_tempete_fendue\"]",
+      "actorName": "Amaru de la Tempête Fendue",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:chasqui_corrompu\"]",
+      "actorName": "Chasqui corrompu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:chasqui_corrompu\"]",
+      "actorName": "Chasqui corrompu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:echo_de_la_montagne_aux_neiges_noires\"]",
+      "actorName": "Écho de la Montagne aux Neiges Noires",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:echo_de_la_montagne_aux_neiges_noires\"]",
+      "actorName": "Écho de la Montagne aux Neiges Noires",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:gardien_du_khipu_sectionne\"]",
+      "actorName": "Gardien du Khipu Sectionné",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:gardien_du_khipu_sectionne\"]",
+      "actorName": "Gardien du Khipu Sectionné",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:gardien_puma_de_pierre\"]",
+      "actorName": "Gardien puma de pierre",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:gardien_puma_de_pierre\"]",
+      "actorName": "Gardien puma de pierre",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:jeune_amaru_de_tempete\"]",
+      "actorName": "Jeune Amaru de tempête",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:jeune_amaru_de_tempete\"]",
+      "actorName": "Jeune Amaru de tempête",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:masque_du_monde_renverse\"]",
+      "actorName": "Masque du monde renversé",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:masque_du_monde_renverse\"]",
+      "actorName": "Masque du monde renversé",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:ombre_d_uku_pacha\"]",
+      "actorName": "Ombre d’Uku Pacha",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:ombre_d_uku_pacha\"]",
+      "actorName": "Ombre d’Uku Pacha",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:pachakuti_du_soleil_noir\"]",
+      "actorName": "Pachakuti du Soleil Noir",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:pachakuti_du_soleil_noir\"]",
+      "actorName": "Pachakuti du Soleil Noir",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:kraken_sans_couronne\"]",
+      "actorName": "Kraken Sans Couronne",
+      "code": "STATIC_GAMEPLAY_REVIEW",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_phare_qui_regarde\"]",
+      "actorName": "Le Phare qui Regarde",
+      "code": "STATIC_GAMEPLAY_REVIEW",
+      "priority": "P1"
+    }
+  ],
+  "added": []
+}

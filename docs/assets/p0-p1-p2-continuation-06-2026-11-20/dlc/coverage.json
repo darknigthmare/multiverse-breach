@@ -1,0 +1,1968 @@
+{
+  "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+  "runnerSha256": "243aeca93238c358b814712c895ceb49293776229509a47c30873f618b35d302",
+  "originalWitness": {
+    "appliedBatches": 5,
+    "assets": 168,
+    "bytes": 132943404,
+    "payloadsIndependentlyRechecked": 168
+  },
+  "completed": {
+    "batches": 124,
+    "assets": 4294,
+    "bytes": 2364680349,
+    "sourceKinds": {
+      "core-lfs-cache": 15,
+      "git-blob": 4243,
+      "fetched-lfs": 36
+    },
+    "rasterDecodes": {
+      "PASSED": 3667,
+      "NOT_APPLICABLE": 627
+    },
+    "fileSuffixes": {
+      ".glb": 80,
+      ".html": 1,
+      ".json": 64,
+      ".jsonl": 7,
+      ".md": 1,
+      ".png": 2169,
+      ".svg": 474,
+      ".webp": 1498
+    },
+    "pendingBatches": []
+  },
+  "newlyApplied": {
+    "batches": 119,
+    "assets": 4126,
+    "bytes": 2231736945,
+    "rasterDecodes": {
+      "PASSED": 3517,
+      "NOT_APPLICABLE": 609
+    },
+    "receipts": {
+      "00000": {
+        "receiptSha256": "74d3d07e728a3b262ae58b3d3ce783a5db7c5da00d2c0a2e4abaaf6586864b41",
+        "assets": 14,
+        "bytes": 31586027,
+        "decode": {
+          "PASSED": 14
+        },
+        "sourceKinds": {
+          "git-blob": 14
+        }
+      },
+      "00001": {
+        "receiptSha256": "e5e3f1b5ac896b5b3164e4b1c6df9c97fea72b44d9c50af132cb3162ee3c0e8e",
+        "assets": 27,
+        "bytes": 33400188,
+        "decode": {
+          "PASSED": 27
+        },
+        "sourceKinds": {
+          "git-blob": 27
+        }
+      },
+      "00021": {
+        "receiptSha256": "eb551a6f93d4c1a5f26c85d57a64c5485c531eb1ffe301382d40f427da9233bf",
+        "assets": 22,
+        "bytes": 32539722,
+        "decode": {
+          "PASSED": 21,
+          "NOT_APPLICABLE": 1
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 15,
+          "core-lfs-cache": 2
+        }
+      },
+      "00023": {
+        "receiptSha256": "ec7a6b7022dfe7263f5b53fa3845b68989fec317b100e1f725e44a6545821852",
+        "assets": 21,
+        "bytes": 29594641,
+        "decode": {
+          "PASSED": 21
+        },
+        "sourceKinds": {
+          "core-lfs-cache": 5,
+          "git-blob": 14,
+          "fetched-lfs": 2
+        }
+      },
+      "00115": {
+        "receiptSha256": "17b078fd8544e7d9adda92eb73b141f2a8fc5339e0059edfd8035b4536900923",
+        "assets": 28,
+        "bytes": 30755035,
+        "decode": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "git-blob": 23,
+          "fetched-lfs": 5
+        }
+      },
+      "00116": {
+        "receiptSha256": "fb2f07cc7290564d7d73366dcae41eea67e4ad611fe83d24a818a8c52a04533e",
+        "assets": 28,
+        "bytes": 33207817,
+        "decode": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 23
+        }
+      },
+      "00117": {
+        "receiptSha256": "0728abc4c5b8c71772d7faa9c2acecc124a9c457ecc66ece176f1b95c1ab8617",
+        "assets": 26,
+        "bytes": 32337370,
+        "decode": {
+          "PASSED": 26
+        },
+        "sourceKinds": {
+          "git-blob": 21,
+          "fetched-lfs": 5
+        }
+      },
+      "00166": {
+        "receiptSha256": "c69727f0d34c17e670684cce3b14208ef31619304476b25118ade949c997bcec",
+        "assets": 19,
+        "bytes": 32000831,
+        "decode": {
+          "PASSED": 17,
+          "NOT_APPLICABLE": 2
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 14
+        }
+      },
+      "00167": {
+        "receiptSha256": "231b6599d33cb43d46c0af4ed85216958850f1ee33a138acf4acd6cb0e406437",
+        "assets": 40,
+        "bytes": 19703558,
+        "decode": {
+          "PASSED": 12,
+          "NOT_APPLICABLE": 28
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00168": {
+        "receiptSha256": "d2db2e243301715320983ba27e22fbf2f329c1023f6052ff1a01dcee10d4c61b",
+        "assets": 40,
+        "bytes": 271947,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00169": {
+        "receiptSha256": "8618d04fa4919fb6f5b271b0ad394d54c58a10268287c826d56aa8b762cea050",
+        "assets": 40,
+        "bytes": 274469,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00170": {
+        "receiptSha256": "bc244d07dcc52c87e5ee5fc70aa23373bf254d8630a4ab6f1303fd86ab4f5cb4",
+        "assets": 40,
+        "bytes": 265384,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00171": {
+        "receiptSha256": "717a7b49050c4404084a47f8baf5952a9d9955d5326dee3e1fdd99f70c7e4af1",
+        "assets": 40,
+        "bytes": 264797,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00172": {
+        "receiptSha256": "91cb5452d6ddeba03061d5fd3feaffd9f56a824dbabe4c610b0b881fea201838",
+        "assets": 40,
+        "bytes": 264388,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00173": {
+        "receiptSha256": "d6cb247672f9f8568de23069bf86cb4bb75fd78f1ab012e74ed15a67b18effbc",
+        "assets": 40,
+        "bytes": 258399,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00174": {
+        "receiptSha256": "9b2037a99bcea6a7d0ce23d33b5d15ca1d3a5aba2b896f6f070c0012253e2a9b",
+        "assets": 40,
+        "bytes": 266115,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00175": {
+        "receiptSha256": "dd91fe843bcde22beafb783ec31b7b03df7ef8169f387a13c9597c57def60162",
+        "assets": 40,
+        "bytes": 269716,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00176": {
+        "receiptSha256": "29d1a8d63b3c5cb62a6fd7298e9aab06f351f01f18221c4cb562bbae9624c8e6",
+        "assets": 40,
+        "bytes": 275181,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00177": {
+        "receiptSha256": "921226a597c547a6ade1f00b62dfeeffea2053fc9272339668df0e8531b9f9ef",
+        "assets": 40,
+        "bytes": 270647,
+        "decode": {
+          "NOT_APPLICABLE": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00213": {
+        "receiptSha256": "948d65958fd6c433685011f840dee818d235a48cc5de8e9bc223e2d4363ab02c",
+        "assets": 40,
+        "bytes": 22405676,
+        "decode": {
+          "PASSED": 9,
+          "NOT_APPLICABLE": 31
+        },
+        "sourceKinds": {
+          "fetched-lfs": 9,
+          "git-blob": 31
+        }
+      },
+      "00214": {
+        "receiptSha256": "ea536043722e2d7d79b8c5deb07612559a79d17399d34f7c5fca1c63ba297cbd",
+        "assets": 40,
+        "bytes": 33100724,
+        "decode": {
+          "NOT_APPLICABLE": 17,
+          "PASSED": 23
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00215": {
+        "receiptSha256": "e3778ae7b5369031f1f1bcd90e94d40773555b0b6a6a6c171db983525d08f5c5",
+        "assets": 40,
+        "bytes": 2481832,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00216": {
+        "receiptSha256": "00b31466c4f41fe636b595906401bf7414ad213277e5b04a1af9d62045dd1f4c",
+        "assets": 40,
+        "bytes": 2346500,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00217": {
+        "receiptSha256": "3240d14a61d94fcef2751e98c0c4848ae53bacc7d8e77c500c7dc8b4c72ed9e5",
+        "assets": 40,
+        "bytes": 2162444,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00218": {
+        "receiptSha256": "c5ae4fbf821c0c2f6012dee582e422ce66096ec83bc63fde22ba255bd5771fdd",
+        "assets": 40,
+        "bytes": 2338736,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00219": {
+        "receiptSha256": "0c8f1ad83524a503238eb0979805204aaac111f8ebf4ab40df9a4a90d5ae3055",
+        "assets": 40,
+        "bytes": 2316588,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00220": {
+        "receiptSha256": "52cd590bab4be49a83c0fa064177fd2019608294419fcc2c782c82b2716a3700",
+        "assets": 40,
+        "bytes": 2231364,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00221": {
+        "receiptSha256": "71185860ff294015cbf7a4a82877ac71278e0581541a5cc01c99dce64cd5abb1",
+        "assets": 40,
+        "bytes": 2627678,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00222": {
+        "receiptSha256": "ec1e6e206f3f46a8320505eed1fc8c48506e19e98e9752209fddc18c271c8640",
+        "assets": 40,
+        "bytes": 2330748,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00223": {
+        "receiptSha256": "dd6207c7e9e567935f27d1e6c06241b418178e1bd9279dbc474018cbe2c8a766",
+        "assets": 40,
+        "bytes": 2514768,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00224": {
+        "receiptSha256": "f254de1b04a839d7999905b09179eae502b799073aa31d90a7fab020989a7756",
+        "assets": 40,
+        "bytes": 2530004,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00225": {
+        "receiptSha256": "6aaa55efff364048ffbf327c90f62c5c69b1d57621ac0fb77a6e0e34314ba359",
+        "assets": 40,
+        "bytes": 2426062,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00226": {
+        "receiptSha256": "34f7048b60a362951aa8bcc71d1098ea0c6e817235df708a88494c8fbfd8db4a",
+        "assets": 40,
+        "bytes": 1966982,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00227": {
+        "receiptSha256": "54217a8beac34598c1d132e70f63e864812cc349386dac9409a6331c4922049f",
+        "assets": 40,
+        "bytes": 2192916,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00228": {
+        "receiptSha256": "55406cd45348b355360824a6133dea2d737ff38b70a16fba07552af65f5b4310",
+        "assets": 40,
+        "bytes": 2303378,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00229": {
+        "receiptSha256": "7aba3c03a668ea01e9b7169caca6830e4843f9abf3a369aa506e1e27f32e8199",
+        "assets": 40,
+        "bytes": 2214458,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00230": {
+        "receiptSha256": "ab9eaac2122f039a9a7542d50531728f984eac583546df31d984c96582a74564",
+        "assets": 40,
+        "bytes": 2039010,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00231": {
+        "receiptSha256": "a00e9cf5a3eaf32b9a31433b70c4e648d4360f2d6a88ac104f6801d023b41ac5",
+        "assets": 40,
+        "bytes": 1690862,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00232": {
+        "receiptSha256": "13370f7ac48a340b612dd26751b439c76bd0516546263a91129362e35c6748dd",
+        "assets": 40,
+        "bytes": 2215464,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00233": {
+        "receiptSha256": "1a956d9ab213723b40048d236103cb9da9f5d37225929b990c7de6e5ce6d61d9",
+        "assets": 40,
+        "bytes": 2312744,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00234": {
+        "receiptSha256": "27d2c38cc2a0e48146f4179c236f92f431434ca0f1df193184d4770e451dc029",
+        "assets": 40,
+        "bytes": 2257654,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00235": {
+        "receiptSha256": "f5ee66a7e884e80a6265f8a2d8b7344099acb6317b08fd9bcba175322839ed5a",
+        "assets": 40,
+        "bytes": 2314826,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00236": {
+        "receiptSha256": "d8323a11dae5920005361ccd743e37b7ebc459a744c06a4883130b59c051cb2a",
+        "assets": 40,
+        "bytes": 2162658,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00237": {
+        "receiptSha256": "fbd18688ec47328e050415a9eb8a15e80e9d069964a82b3a29235f10863bd573",
+        "assets": 40,
+        "bytes": 1930178,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00238": {
+        "receiptSha256": "e428e2d0cf7b9a93b1acfac89480cf5a8a4d217e54fa379f528544f833885f83",
+        "assets": 35,
+        "bytes": 31261747,
+        "decode": {
+          "PASSED": 35
+        },
+        "sourceKinds": {
+          "git-blob": 35
+        }
+      },
+      "00239": {
+        "receiptSha256": "c7c8d9db4672f41e5a04f4c2ace95d2b758a12425e4f095e6d7de6d6ecfce738",
+        "assets": 40,
+        "bytes": 7282330,
+        "decode": {
+          "PASSED": 39,
+          "NOT_APPLICABLE": 1
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00241": {
+        "receiptSha256": "0c04d3c3fc5bf503b9eefa4ffec8826eca40a35a8621b9fa3e7e42604db8d378",
+        "assets": 40,
+        "bytes": 2501547,
+        "decode": {
+          "NOT_APPLICABLE": 20,
+          "PASSED": 20
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00242": {
+        "receiptSha256": "f3df718203db540f23d3d0b9297e74cad62d7daa7fa4feb7acff4451e6567139",
+        "assets": 40,
+        "bytes": 3295517,
+        "decode": {
+          "NOT_APPLICABLE": 20,
+          "PASSED": 20
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00243": {
+        "receiptSha256": "cb97f7069b3c3d93709cfc59cc16e65fac4523f5824d14e5d06a2fa87a4b3dd3",
+        "assets": 40,
+        "bytes": 2267491,
+        "decode": {
+          "PASSED": 20,
+          "NOT_APPLICABLE": 20
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00244": {
+        "receiptSha256": "ec5c555798bc1e426c8a0a10946d70bea173aa56d88fd08718e7cfbec92f2272",
+        "assets": 35,
+        "bytes": 33135627,
+        "decode": {
+          "PASSED": 29,
+          "NOT_APPLICABLE": 6
+        },
+        "sourceKinds": {
+          "git-blob": 35
+        }
+      },
+      "00246": {
+        "receiptSha256": "47354cee50687962e6f6854e28dfb00e66eb5ea89030f5265064125ae0549c6a",
+        "assets": 34,
+        "bytes": 32880184,
+        "decode": {
+          "PASSED": 34
+        },
+        "sourceKinds": {
+          "git-blob": 34
+        }
+      },
+      "00247": {
+        "receiptSha256": "62b8bdf46c7e7401a4a4dc783b51072456e4bdfc57e4bd1f245d02260b7e95ab",
+        "assets": 29,
+        "bytes": 32567901,
+        "decode": {
+          "PASSED": 29
+        },
+        "sourceKinds": {
+          "git-blob": 29
+        }
+      },
+      "00248": {
+        "receiptSha256": "c801ef016b8433afcffa52f336a1809b36c1662d689504817a1e04acc970c642",
+        "assets": 28,
+        "bytes": 33506448,
+        "decode": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "git-blob": 28
+        }
+      },
+      "00249": {
+        "receiptSha256": "7a1d06a6802fdd5c1aecc0f5b14f79efa4351e62afe57a882a15a60c19661d1a",
+        "assets": 27,
+        "bytes": 33472751,
+        "decode": {
+          "PASSED": 27
+        },
+        "sourceKinds": {
+          "git-blob": 27
+        }
+      },
+      "00250": {
+        "receiptSha256": "39535974501698a63d01a3caccac96179e5050e924adf48a79e30a3f17ff6736",
+        "assets": 28,
+        "bytes": 33294624,
+        "decode": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "git-blob": 28
+        }
+      },
+      "00251": {
+        "receiptSha256": "7b29d1b3e0554f583c1ac59b59328cc7382468d16b1641e5a432ce51d6d1dbf2",
+        "assets": 28,
+        "bytes": 33107789,
+        "decode": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "git-blob": 28
+        }
+      },
+      "00252": {
+        "receiptSha256": "465a7b08935b7b1918ab8ea40034db25d57399908e6680ac18d882add8f5f0fa",
+        "assets": 24,
+        "bytes": 32940968,
+        "decode": {
+          "PASSED": 24
+        },
+        "sourceKinds": {
+          "git-blob": 24
+        }
+      },
+      "00253": {
+        "receiptSha256": "524972ae94a38b0a24adda6687371af5e967cfb4bc455755c0a0bbeadc6bc896",
+        "assets": 21,
+        "bytes": 32980374,
+        "decode": {
+          "PASSED": 21
+        },
+        "sourceKinds": {
+          "git-blob": 21
+        }
+      },
+      "00254": {
+        "receiptSha256": "1482699c8838e82910f1719a023cf30de6e038e4758617c3f9c74116cde74427",
+        "assets": 23,
+        "bytes": 33383273,
+        "decode": {
+          "PASSED": 23
+        },
+        "sourceKinds": {
+          "git-blob": 23
+        }
+      },
+      "00255": {
+        "receiptSha256": "745dda6926d460ac03e932cc82a8570a894bc9fbc7f68cc2c4a059035a2d916c",
+        "assets": 21,
+        "bytes": 33546229,
+        "decode": {
+          "PASSED": 21
+        },
+        "sourceKinds": {
+          "git-blob": 21
+        }
+      },
+      "00256": {
+        "receiptSha256": "e478e8acb5876a2ad5dc77da2eaaee7812c595010600861ce8e6da807d44b090",
+        "assets": 35,
+        "bytes": 32803311,
+        "decode": {
+          "PASSED": 35
+        },
+        "sourceKinds": {
+          "git-blob": 35
+        }
+      },
+      "00257": {
+        "receiptSha256": "1d312568e71c22c9c7b77919276ec0ba238e5cf5ef3abb6053dfea0c92bae280",
+        "assets": 36,
+        "bytes": 32961689,
+        "decode": {
+          "PASSED": 36
+        },
+        "sourceKinds": {
+          "git-blob": 36
+        }
+      },
+      "00258": {
+        "receiptSha256": "d949b8340f59af1ffdaceb6c65974f4cea1b11422ff14aa3a2f8f41b7a8c5f59",
+        "assets": 34,
+        "bytes": 32831941,
+        "decode": {
+          "PASSED": 34
+        },
+        "sourceKinds": {
+          "git-blob": 34
+        }
+      },
+      "00259": {
+        "receiptSha256": "51e4aed051ae562d0572981c90e6f6d2d82037bc5384dd37fb8ca7ecc7e8251c",
+        "assets": 35,
+        "bytes": 33500535,
+        "decode": {
+          "PASSED": 35
+        },
+        "sourceKinds": {
+          "git-blob": 35
+        }
+      },
+      "00260": {
+        "receiptSha256": "9bccb5af3b9c56cbcb95d7083a796077649ba7f1b8707e05fabc9530b651c5d2",
+        "assets": 34,
+        "bytes": 33399503,
+        "decode": {
+          "PASSED": 34
+        },
+        "sourceKinds": {
+          "git-blob": 34
+        }
+      },
+      "00261": {
+        "receiptSha256": "545924f715c7a05eb5722935857479c729c81e26a1761f4ac992313ec24734da",
+        "assets": 35,
+        "bytes": 33280116,
+        "decode": {
+          "PASSED": 35
+        },
+        "sourceKinds": {
+          "git-blob": 35
+        }
+      },
+      "00262": {
+        "receiptSha256": "eef01410b2eeb7012c6e3c69743e31ad55d7197c3e929720ac229acb3756b513",
+        "assets": 36,
+        "bytes": 33043883,
+        "decode": {
+          "PASSED": 36
+        },
+        "sourceKinds": {
+          "git-blob": 36
+        }
+      },
+      "00263": {
+        "receiptSha256": "ae3b9a904e4b2b81bf3bfc4494779f506b6ed7b89c2d7d03d17260f954400af6",
+        "assets": 40,
+        "bytes": 32468451,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00264": {
+        "receiptSha256": "ca20f5fa1e0e5e4eac8a68b77c3906d7330a0242b83599f0306dd028b16b0500",
+        "assets": 37,
+        "bytes": 33327145,
+        "decode": {
+          "PASSED": 37
+        },
+        "sourceKinds": {
+          "git-blob": 37
+        }
+      },
+      "00265": {
+        "receiptSha256": "ea92895a175b4822eaa7c629e7e7b8ba3c8f456c0291f559007c4b1d1761011b",
+        "assets": 32,
+        "bytes": 33020404,
+        "decode": {
+          "PASSED": 32
+        },
+        "sourceKinds": {
+          "git-blob": 32
+        }
+      },
+      "00266": {
+        "receiptSha256": "4f3286ad3f97fc0a421dbf9a048e1de8094d28bf504d54362fe164d03dcd5c66",
+        "assets": 36,
+        "bytes": 33091611,
+        "decode": {
+          "PASSED": 36
+        },
+        "sourceKinds": {
+          "git-blob": 36
+        }
+      },
+      "00267": {
+        "receiptSha256": "ce0014a11195a728877c665479dc848a375f8555df3a8e7751dc02109be175b5",
+        "assets": 39,
+        "bytes": 33485172,
+        "decode": {
+          "PASSED": 39
+        },
+        "sourceKinds": {
+          "git-blob": 39
+        }
+      },
+      "00268": {
+        "receiptSha256": "03c24f7701aa63df97f015116c419ef906cc243855849e7a2250e6574df23a5f",
+        "assets": 30,
+        "bytes": 33113809,
+        "decode": {
+          "PASSED": 30
+        },
+        "sourceKinds": {
+          "git-blob": 30
+        }
+      },
+      "00269": {
+        "receiptSha256": "53962dac9ef176c3a6141d8f151129097ac77d8f5108b84f23319b7245355d22",
+        "assets": 24,
+        "bytes": 32861040,
+        "decode": {
+          "PASSED": 24
+        },
+        "sourceKinds": {
+          "git-blob": 24
+        }
+      },
+      "00270": {
+        "receiptSha256": "55ecfb264b7b1583c2c78016684e1e8847344dba2e60b3fd2137892db70af44d",
+        "assets": 19,
+        "bytes": 32697001,
+        "decode": {
+          "PASSED": 19
+        },
+        "sourceKinds": {
+          "git-blob": 19
+        }
+      },
+      "00271": {
+        "receiptSha256": "64272830d9cdd3ee31691348fea9cc2f3cf3b25279ea29a6523644c2c1fca643",
+        "assets": 18,
+        "bytes": 32172417,
+        "decode": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "git-blob": 18
+        }
+      },
+      "00272": {
+        "receiptSha256": "542922e0c658049add6b1c23a77bb2a921aad44c314aa028fbca8991f79e83da",
+        "assets": 16,
+        "bytes": 33534049,
+        "decode": {
+          "PASSED": 16
+        },
+        "sourceKinds": {
+          "git-blob": 16
+        }
+      },
+      "00273": {
+        "receiptSha256": "2e03cbc2b74a262a091d7865eabb6e4a93fdecaa83815305342863fa1dae4124",
+        "assets": 20,
+        "bytes": 33068660,
+        "decode": {
+          "PASSED": 20
+        },
+        "sourceKinds": {
+          "git-blob": 20
+        }
+      },
+      "00274": {
+        "receiptSha256": "bee33c06a41a7120a67c6f1cbf8e70b3909808e8a11e9239e8aa80516e2c314c",
+        "assets": 21,
+        "bytes": 33184363,
+        "decode": {
+          "PASSED": 21
+        },
+        "sourceKinds": {
+          "git-blob": 21
+        }
+      },
+      "00275": {
+        "receiptSha256": "c37a8bfbf0ae1a6ff8d7db8bb865b3a8ed5f69d9d677219e7b939ea04a5ec5b5",
+        "assets": 24,
+        "bytes": 32830648,
+        "decode": {
+          "PASSED": 24
+        },
+        "sourceKinds": {
+          "git-blob": 24
+        }
+      },
+      "00276": {
+        "receiptSha256": "ad19764e765cd04cc630a90b8f919587b319f221db507293c99ea394549f38ba",
+        "assets": 38,
+        "bytes": 33041371,
+        "decode": {
+          "PASSED": 38
+        },
+        "sourceKinds": {
+          "git-blob": 38
+        }
+      },
+      "00277": {
+        "receiptSha256": "d6a9c4b7a9ea25df2cea26022133fe3083cfa4a759c075562d0ca6a4de7dc2ca",
+        "assets": 40,
+        "bytes": 27562308,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00278": {
+        "receiptSha256": "33c5ababbfc0bccb77e7f5a5a9d82f65d1d86e28e9ccf934fd2ca7f0daf0774b",
+        "assets": 40,
+        "bytes": 18797740,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00279": {
+        "receiptSha256": "916921e3cc11d46a2059d691f45b57d3a5639a5ca4fd15f99aa3bb625960f14f",
+        "assets": 40,
+        "bytes": 18650896,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00280": {
+        "receiptSha256": "59a99f5f24bb7e8b4234e28c8ef94226c7b0b35528e9457f89fa0f8cf69bd1ce",
+        "assets": 40,
+        "bytes": 20177703,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00281": {
+        "receiptSha256": "7ef0f75f5215379319a0f10fb221ad4780b8849d7e1d91e938e0db3d37c43baf",
+        "assets": 40,
+        "bytes": 19409106,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00282": {
+        "receiptSha256": "0c77ff3120601b3ddf3238d7f3cb260ac54ab8cf530892d33152e2e6d989add3",
+        "assets": 40,
+        "bytes": 18221468,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00283": {
+        "receiptSha256": "74866140f2ea3e61a17808cfad589324faf327df7d3b60e33360029561bd1192",
+        "assets": 40,
+        "bytes": 18092828,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00284": {
+        "receiptSha256": "935dd98cf6c6e2cdb1a8b7ad09f0c24200edb56a1bba8e3d65522922fcc39a11",
+        "assets": 40,
+        "bytes": 16850964,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00285": {
+        "receiptSha256": "141312686565615121a7bd7c77b123ca487cb2f84acd12baec1d9e43ed279ebd",
+        "assets": 40,
+        "bytes": 19496320,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00286": {
+        "receiptSha256": "96a64420b421bfa2dd46296238036819b86aca78ad380b2aa69585d48bb80ccb",
+        "assets": 40,
+        "bytes": 20092873,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00287": {
+        "receiptSha256": "c902436b8c868b7dd40d873e60323ffe64907ce8777d9b80cadecec1bad82b70",
+        "assets": 40,
+        "bytes": 18161848,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00288": {
+        "receiptSha256": "c50d144c08e0b2dbddf5029ce023592bb1448ae066f6db9ae6b0c882d9667a21",
+        "assets": 40,
+        "bytes": 19402935,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00289": {
+        "receiptSha256": "12600f3342b3685f1541c91628d771669c4afe317afd1f4bf898b22cb5d64e92",
+        "assets": 40,
+        "bytes": 28924838,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00290": {
+        "receiptSha256": "3c73d30fbad787cf55416a27ced44a4a8e2a41f1fa9f18488a923795055a79ff",
+        "assets": 38,
+        "bytes": 32926601,
+        "decode": {
+          "PASSED": 38
+        },
+        "sourceKinds": {
+          "git-blob": 38
+        }
+      },
+      "00291": {
+        "receiptSha256": "0cd94493363454f7eca9a3a31f7c16675153195924fa753d29157f77bb9a5021",
+        "assets": 40,
+        "bytes": 20367652,
+        "decode": {
+          "PASSED": 40
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00292": {
+        "receiptSha256": "ae54c41e977f4db6badddbc87b658a7f5412df4dceeb841f1eaf258773a48efa",
+        "assets": 25,
+        "bytes": 33246789,
+        "decode": {
+          "PASSED": 25
+        },
+        "sourceKinds": {
+          "git-blob": 25
+        }
+      },
+      "00293": {
+        "receiptSha256": "77acabb63142e94114d9c94a71a88f4104fde31850e05e4472270a6ab699ef79",
+        "assets": 25,
+        "bytes": 32577344,
+        "decode": {
+          "PASSED": 25
+        },
+        "sourceKinds": {
+          "git-blob": 25
+        }
+      },
+      "00295": {
+        "receiptSha256": "ea892cd8452d7f4f8fac610039cdb4bc737c1684533430326924ba667afcc724",
+        "assets": 37,
+        "bytes": 33165022,
+        "decode": {
+          "PASSED": 37
+        },
+        "sourceKinds": {
+          "git-blob": 37
+        }
+      },
+      "00296": {
+        "receiptSha256": "6189a5f1dceae87a910f1eb6ce15760148a1201ffe2bbdde1832e91c36322320",
+        "assets": 36,
+        "bytes": 33459345,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 1
+        },
+        "sourceKinds": {
+          "git-blob": 36
+        }
+      },
+      "00297": {
+        "receiptSha256": "0516861395287fee45ccfc7a7ea98b8f8e4c2310087c1d6a0cadc6ac3ad15b0a",
+        "assets": 31,
+        "bytes": 33038303,
+        "decode": {
+          "PASSED": 28,
+          "NOT_APPLICABLE": 3
+        },
+        "sourceKinds": {
+          "git-blob": 31
+        }
+      },
+      "00298": {
+        "receiptSha256": "6a90d87194b0ddbebd511e7ec7f0eb75ec9ef397360fbe2bb7e69c7b77bb6c6e",
+        "assets": 37,
+        "bytes": 32747686,
+        "decode": {
+          "PASSED": 37
+        },
+        "sourceKinds": {
+          "git-blob": 37
+        }
+      },
+      "00300": {
+        "receiptSha256": "c3a5669c7100748fcdcc57836cad19706df93a68db09403dd6c47da8336acfb1",
+        "assets": 25,
+        "bytes": 33402387,
+        "decode": {
+          "PASSED": 25
+        },
+        "sourceKinds": {
+          "git-blob": 25
+        }
+      },
+      "00301": {
+        "receiptSha256": "2065eee553c9f8a16639c19827a637e449564256957beb6c7a59455e86336b8b",
+        "assets": 29,
+        "bytes": 33316323,
+        "decode": {
+          "PASSED": 29
+        },
+        "sourceKinds": {
+          "git-blob": 29
+        }
+      },
+      "00302": {
+        "receiptSha256": "1b1576e96bd5136af0f9ec5ded63adee92e2a025c059634f4c8ea96efd67748f",
+        "assets": 18,
+        "bytes": 28514052,
+        "decode": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "git-blob": 18
+        }
+      },
+      "00303": {
+        "receiptSha256": "61d45a99828f1c1b309bdcb821b9da1662f70f92d7b006fe693cf5a7235d8b09",
+        "assets": 8,
+        "bytes": 32487241,
+        "decode": {
+          "NOT_APPLICABLE": 2,
+          "PASSED": 6
+        },
+        "sourceKinds": {
+          "git-blob": 8
+        }
+      },
+      "00304": {
+        "receiptSha256": "44ba4beed4988fec98eb2217c47fbe1f77b63b369cd36f2507f46af0484f2e24",
+        "assets": 38,
+        "bytes": 33156164,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 3
+        },
+        "sourceKinds": {
+          "git-blob": 38
+        }
+      },
+      "00305": {
+        "receiptSha256": "969500d33cd7ae31d8b10e54bb09fcb004ccd731388cd1ed418f3b885e46d80e",
+        "assets": 36,
+        "bytes": 32900199,
+        "decode": {
+          "PASSED": 36
+        },
+        "sourceKinds": {
+          "git-blob": 36
+        }
+      },
+      "00306": {
+        "receiptSha256": "d805de25b54de55335d23cc0dc8dea6ae6cefb6e564417fbed67b56e46d0032d",
+        "assets": 40,
+        "bytes": 12198151,
+        "decode": {
+          "PASSED": 34,
+          "NOT_APPLICABLE": 6
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00307": {
+        "receiptSha256": "747a95631bb38fa4da12c49b69bddb4b14816b065711135f6f0ba536a0486ca2",
+        "assets": 40,
+        "bytes": 2111488,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00308": {
+        "receiptSha256": "493f75af7f5de29e3c40cfd7fdb869dc6eafe3e4e19bdaf23517bb8275b37891",
+        "assets": 40,
+        "bytes": 2344727,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00309": {
+        "receiptSha256": "4b1168f866f392ab6c52d973812227dacca52ca0d1ef190b00dcc343e945c641",
+        "assets": 40,
+        "bytes": 1498654,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00310": {
+        "receiptSha256": "6c852b65121b1502aba5b2027c8b98e5267326f1c2eb1a86940600df87a59d57",
+        "assets": 40,
+        "bytes": 1764230,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00311": {
+        "receiptSha256": "bc25c5895742184576e304a0634a18913ca0020dc75c3766bd0e28c6a56d9807",
+        "assets": 40,
+        "bytes": 2098227,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00312": {
+        "receiptSha256": "c4071039c29f9c42ae07e0355f4920000282dd36868eb05f1d6fa9de9946307e",
+        "assets": 40,
+        "bytes": 1968159,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00313": {
+        "receiptSha256": "82ee9eadbe1b4c130f2dc361e57e09768963c298e094b724f39a05467bbd7c6f",
+        "assets": 40,
+        "bytes": 2050374,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00314": {
+        "receiptSha256": "5e6e3787dcb376f5618760981bb6a3a14a883c4eb99b51e309d094189b53ac98",
+        "assets": 40,
+        "bytes": 1876420,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00315": {
+        "receiptSha256": "9e6487c7229a62bc746336d9a3104cc49977094249403b0bb0b0f6c97748853f",
+        "assets": 40,
+        "bytes": 1870382,
+        "decode": {
+          "PASSED": 35,
+          "NOT_APPLICABLE": 5
+        },
+        "sourceKinds": {
+          "git-blob": 40
+        }
+      },
+      "00316": {
+        "receiptSha256": "153cac0938ba1dbc9c64e6dbf611b38a4a4326a69d6f7ee72d45de86969ffabc",
+        "assets": 26,
+        "bytes": 2446793,
+        "decode": {
+          "PASSED": 23,
+          "NOT_APPLICABLE": 3
+        },
+        "sourceKinds": {
+          "git-blob": 26
+        }
+      }
+    },
+    "privateDoomAssets": 29
+  },
+  "planTotal": {
+    "batches": 317,
+    "assets": 7693,
+    "bytes": 8564162885
+  },
+  "remaining": {
+    "batches": 193,
+    "pathsWithoutLocalLfsCachePayload": 1447,
+    "rasterReviewNotProvided": true,
+    "assets": 3399,
+    "bytes": 6199482536,
+    "missingBatchIds": [
+      "00002",
+      "00003",
+      "00004",
+      "00005",
+      "00006",
+      "00007",
+      "00008",
+      "00009",
+      "00010",
+      "00011",
+      "00012",
+      "00013",
+      "00014",
+      "00015",
+      "00016",
+      "00017",
+      "00018",
+      "00019",
+      "00020",
+      "00024",
+      "00025",
+      "00026",
+      "00027",
+      "00028",
+      "00029",
+      "00030",
+      "00031",
+      "00032",
+      "00033",
+      "00034",
+      "00035",
+      "00036",
+      "00037",
+      "00038",
+      "00039",
+      "00040",
+      "00041",
+      "00042",
+      "00043",
+      "00044",
+      "00045",
+      "00046",
+      "00047",
+      "00048",
+      "00049",
+      "00050",
+      "00051",
+      "00052",
+      "00053",
+      "00054",
+      "00055",
+      "00056",
+      "00057",
+      "00058",
+      "00059",
+      "00060",
+      "00061",
+      "00062",
+      "00063",
+      "00064",
+      "00065",
+      "00066",
+      "00067",
+      "00068",
+      "00069",
+      "00070",
+      "00071",
+      "00072",
+      "00073",
+      "00074",
+      "00075",
+      "00076",
+      "00077",
+      "00078",
+      "00079",
+      "00080",
+      "00081",
+      "00082",
+      "00083",
+      "00084",
+      "00085",
+      "00086",
+      "00087",
+      "00088",
+      "00089",
+      "00090",
+      "00091",
+      "00092",
+      "00093",
+      "00094",
+      "00095",
+      "00096",
+      "00097",
+      "00098",
+      "00099",
+      "00100",
+      "00101",
+      "00102",
+      "00103",
+      "00104",
+      "00105",
+      "00106",
+      "00107",
+      "00108",
+      "00109",
+      "00110",
+      "00111",
+      "00112",
+      "00113",
+      "00114",
+      "00118",
+      "00119",
+      "00120",
+      "00121",
+      "00122",
+      "00123",
+      "00124",
+      "00125",
+      "00126",
+      "00127",
+      "00128",
+      "00129",
+      "00130",
+      "00131",
+      "00132",
+      "00133",
+      "00134",
+      "00135",
+      "00136",
+      "00137",
+      "00138",
+      "00139",
+      "00140",
+      "00141",
+      "00142",
+      "00143",
+      "00144",
+      "00145",
+      "00146",
+      "00147",
+      "00148",
+      "00149",
+      "00150",
+      "00151",
+      "00152",
+      "00153",
+      "00154",
+      "00155",
+      "00156",
+      "00157",
+      "00158",
+      "00159",
+      "00160",
+      "00161",
+      "00162",
+      "00163",
+      "00164",
+      "00165",
+      "00178",
+      "00179",
+      "00180",
+      "00181",
+      "00182",
+      "00183",
+      "00184",
+      "00185",
+      "00186",
+      "00187",
+      "00188",
+      "00189",
+      "00190",
+      "00191",
+      "00192",
+      "00193",
+      "00194",
+      "00195",
+      "00196",
+      "00197",
+      "00198",
+      "00199",
+      "00200",
+      "00201",
+      "00202",
+      "00203",
+      "00204",
+      "00205",
+      "00206",
+      "00207",
+      "00208",
+      "00209",
+      "00210",
+      "00211",
+      "00212"
+    ],
+    "noExactLocalGitCopyFound": 1444,
+    "bytesWithoutLocalGitOrLfsCopy": 5073317343
+  },
+  "independentAudit": {
+    "sha256Matches": 4294,
+    "nativeGitBlobOidMatches": 4243,
+    "lfsSha256Matches": 51,
+    "verifiedReceiptPins": 124
+  },
+  "temporaryAssembly": "/tmp/mvb-pass06-doom/assembly",
+  "scope": "Real pinned Doom media. Portable batches are discarded only after copy verification. Frozen plan, canonical checkout and witness sources are unchanged.",
+  "strict": {
+    "coverageExit": 1,
+    "distributionExportExit": 1,
+    "outputCreated": false,
+    "stagingCreated": false,
+    "diagnostic": "Assembled media do not cover the pinned distribution plan."
+  },
+  "recovery": {
+    "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+    "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+    "initialBatch": "00022",
+    "testBatch": "00240",
+    "conflictPreserved": true,
+    "interruptedBatch": "00240",
+    "filesBeforeResume": 63,
+    "resumedCopies": 1,
+    "resumedReuses": 39,
+    "replayCopies": 0,
+    "replayReuses": 40,
+    "finalAssets": 64,
+    "finalPendingBatches": [],
+    "strictIncompleteExit": 1,
+    "scope": "Isolated real-media fixture. Main assembly and the five-batch witness were untouched."
+  },
+  "historicalLfsBeforeRemoteProbe": {
+    "scannedMissingPayloads": 1483,
+    "matchingSizeGitCandidates": 3,
+    "candidateBytes": 7579714,
+    "exactPayloads": 3,
+    "exactCopies": [
+      {
+        "batch": "00180",
+        "source": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+        "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+        "bytes": 2622115,
+        "historicalGitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded"
+      },
+      {
+        "batch": "00205",
+        "source": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+        "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+        "bytes": 2544671,
+        "historicalGitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b"
+      },
+      {
+        "batch": "00204",
+        "source": "public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png",
+        "sha256": "991d671c83f3aab4b2471c87d62773097941823468b273def59c9c9f11d5cf26",
+        "bytes": 2412928,
+        "historicalGitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb"
+      }
+    ],
+    "noExactGitCopyFound": 1480,
+    "providerRecheck": {
+      "historicalCopiesVerified": 3,
+      "additionalWholeBatchesUnblocked": 0,
+      "verified": [
+        {
+          "batch": "00180",
+          "source": "public/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+          "bytes": 2622115,
+          "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+          "historicalGitBlobOid": "33176834de62a64bd42f1a9a7db7bdd50d016ded",
+          "otherMissingInBatch": 13
+        },
+        {
+          "batch": "00204",
+          "source": "public/images/oc-worlds/v2/neon_requiem/heroes/jax_rook.png",
+          "bytes": 2412928,
+          "sha256": "991d671c83f3aab4b2471c87d62773097941823468b273def59c9c9f11d5cf26",
+          "historicalGitBlobOid": "ff787a5e6db1801d372d97f4f2f05c3a5652f0bb",
+          "otherMissingInBatch": 11
+        },
+        {
+          "batch": "00205",
+          "source": "public/images/oc-worlds/v2/neon_requiem/heroes/nyra_vale.png",
+          "bytes": 2544671,
+          "sha256": "8f14ea6f6daa0bd8dcb8dda860ac72549356fb520387ab970351781f7ce5255f",
+          "historicalGitBlobOid": "4c0ac1e3ddd69df587d60e7375fc78360371379b",
+          "otherMissingInBatch": 13
+        }
+      ]
+    }
+  },
+  "verifiedWithNode": "22.23.5",
+  "packageChecks": [
+    {
+      "command": "DLC_ASSEMBLY_REAL_MEDIA_FIXTURE=1 npm run test:dlc:batches",
+      "count": {
+        "tests": 39,
+        "pass": 39,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "8e53623ec64a06bc133c921c9e86f159f336ca5a6bc7b1e682b793a276cc6c10"
+    },
+    {
+      "command": "node --test --test-concurrency=1 scripts/dlcDistributionExport.test.mjs scripts/dlcDistributionBuild.test.mjs",
+      "count": {
+        "tests": 45,
+        "pass": 45,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "daaa07d9a1e3df6f9dc61c96dec67beb147b4c63c2f557c174c212d72c10a03c"
+    }
+  ],
+  "localPass": {
+    "completed": {
+      "batches": 117,
+      "assets": 4110,
+      "bytes": 2151839257,
+      "sourceKinds": {
+        "core-lfs-cache": 8,
+        "git-blob": 4102
+      },
+      "rasterDecodes": {
+        "PASSED": 3517,
+        "NOT_APPLICABLE": 593
+      },
+      "fileSuffixes": {
+        ".glb": 80,
+        ".html": 1,
+        ".json": 63,
+        ".jsonl": 7,
+        ".md": 1,
+        ".png": 2111,
+        ".svg": 441,
+        ".webp": 1406
+      },
+      "pendingBatches": []
+    },
+    "newlyApplied": {
+      "batches": 112,
+      "assets": 3942,
+      "bytes": 2018895853,
+      "rasterDecodes": {
+        "PASSED": 3367,
+        "NOT_APPLICABLE": 575
+      },
+      "privateDoomAssets": 8
+    },
+    "networkFetchesEnabled": false,
+    "maxSimultaneousExports": 2,
+    "applyingParallelism": 1
+  },
+  "remoteProbe": {
+    "singleLot": {
+      "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "batchId": "00213",
+      "targetAssets": 40,
+      "targetBytes": 22405676,
+      "lfsAssets": 9,
+      "lfsBytes": 22197925,
+      "outputCreated": true,
+      "durationMs": 33284,
+      "exitCode": 0,
+      "diagnostic": null,
+      "smudgeLimits": {
+        "lfs.dialtimeout": "6",
+        "lfs.tlstimeout": "6",
+        "lfs.activitytimeout": "8",
+        "lfs.transfer.maxretries": "1",
+        "lfs.transfer.maxretrydelay": "1",
+        "lfs.concurrenttransfers": "1"
+      },
+      "canonicalCheckoutPull": false,
+      "remainingPlan": {
+        "batches": 200,
+        "assets": 3583,
+        "payloadBytes": 6412323628
+      },
+      "exportReceiptSha256": "948d65958fd6c433685011f840dee818d235a48cc5de8e9bc223e2d4363ab02c",
+      "stagingRemainingAfterAttempt": false
+    },
+    "extensionPlan": {
+      "selection": [
+        {
+          "batchId": "00023",
+          "remoteBytes": 8760022,
+          "assets": 21,
+          "bytes": 29594641,
+          "remoteAssets": 2
+        },
+        {
+          "batchId": "00116",
+          "remoteBytes": 13361857,
+          "assets": 28,
+          "bytes": 33207817,
+          "remoteAssets": 5
+        },
+        {
+          "batchId": "00115",
+          "remoteBytes": 14448531,
+          "assets": 28,
+          "bytes": 30755035,
+          "remoteAssets": 5
+        },
+        {
+          "batchId": "00117",
+          "remoteBytes": 18168453,
+          "assets": 26,
+          "bytes": 32337370,
+          "remoteAssets": 5
+        },
+        {
+          "batchId": "00021",
+          "remoteBytes": 20016525,
+          "assets": 22,
+          "bytes": 32539722,
+          "remoteAssets": 5
+        },
+        {
+          "batchId": "00166",
+          "remoteBytes": 20863161,
+          "assets": 19,
+          "bytes": 32000831,
+          "remoteAssets": 5
+        }
+      ],
+      "maxRemoteBytes": 104857600,
+      "maxAssemblyBytes": 314572800,
+      "remoteBytes": 95618549,
+      "bytes": 190435416
+    },
+    "extension": [
+      {
+        "batchId": "00023",
+        "assets": 21,
+        "bytes": 29594641,
+        "fetchedAssets": 2,
+        "fetchedBytes": 8760022,
+        "privateDoomAssets": 14,
+        "decodes": {
+          "PASSED": 21
+        },
+        "sourceKinds": {
+          "core-lfs-cache": 5,
+          "git-blob": 14,
+          "fetched-lfs": 2
+        },
+        "receiptSha256": "ec7a6b7022dfe7263f5b53fa3845b68989fec317b100e1f725e44a6545821852",
+        "independentlyVerified": 21,
+        "durationMs": 10337
+      },
+      {
+        "batchId": "00116",
+        "assets": 28,
+        "bytes": 33207817,
+        "fetchedAssets": 5,
+        "fetchedBytes": 13361857,
+        "privateDoomAssets": 0,
+        "decodes": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 23
+        },
+        "receiptSha256": "fb2f07cc7290564d7d73366dcae41eea67e4ad611fe83d24a818a8c52a04533e",
+        "independentlyVerified": 28,
+        "durationMs": 16794
+      },
+      {
+        "batchId": "00115",
+        "assets": 28,
+        "bytes": 30755035,
+        "fetchedAssets": 5,
+        "fetchedBytes": 14448531,
+        "privateDoomAssets": 0,
+        "decodes": {
+          "PASSED": 28
+        },
+        "sourceKinds": {
+          "git-blob": 23,
+          "fetched-lfs": 5
+        },
+        "receiptSha256": "17b078fd8544e7d9adda92eb73b141f2a8fc5339e0059edfd8035b4536900923",
+        "independentlyVerified": 28,
+        "durationMs": 19026
+      },
+      {
+        "batchId": "00117",
+        "assets": 26,
+        "bytes": 32337370,
+        "fetchedAssets": 5,
+        "fetchedBytes": 18168453,
+        "privateDoomAssets": 0,
+        "decodes": {
+          "PASSED": 26
+        },
+        "sourceKinds": {
+          "git-blob": 21,
+          "fetched-lfs": 5
+        },
+        "receiptSha256": "0728abc4c5b8c71772d7faa9c2acecc124a9c457ecc66ece176f1b95c1ab8617",
+        "independentlyVerified": 26,
+        "durationMs": 14593
+      },
+      {
+        "batchId": "00021",
+        "assets": 22,
+        "bytes": 32539722,
+        "fetchedAssets": 5,
+        "fetchedBytes": 20016525,
+        "privateDoomAssets": 7,
+        "decodes": {
+          "PASSED": 21,
+          "NOT_APPLICABLE": 1
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 15,
+          "core-lfs-cache": 2
+        },
+        "receiptSha256": "eb551a6f93d4c1a5f26c85d57a64c5485c531eb1ffe301382d40f427da9233bf",
+        "independentlyVerified": 22,
+        "durationMs": 12583
+      },
+      {
+        "batchId": "00166",
+        "assets": 19,
+        "bytes": 32000831,
+        "fetchedAssets": 5,
+        "fetchedBytes": 20863161,
+        "privateDoomAssets": 0,
+        "decodes": {
+          "PASSED": 17,
+          "NOT_APPLICABLE": 2
+        },
+        "sourceKinds": {
+          "fetched-lfs": 5,
+          "git-blob": 14
+        },
+        "receiptSha256": "c69727f0d34c17e670684cce3b14208ef31619304476b25118ade949c997bcec",
+        "independentlyVerified": 19,
+        "durationMs": 9797
+      }
+    ],
+    "failures": [],
+    "totals": {
+      "newlyAppliedBatches": 7,
+      "newlyAppliedAssets": 184,
+      "newlyAppliedBytes": 212841092,
+      "fetchedAssets": 36,
+      "fetchedBytes": 117816474,
+      "decode": {
+        "PASSED": 150,
+        "NOT_APPLICABLE": 34
+      },
+      "sourceKinds": {
+        "fetched-lfs": 36,
+        "git-blob": 141,
+        "core-lfs-cache": 7
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+TAP version 13
+# (node:83557) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original swarm selects its animated atlas and keeps its static appearance when unavailable
+ok 1 - the original swarm selects its animated atlas and keeps its static appearance when unavailable
+  ---
+  duration_ms: 2.6157
+  type: 'test'
+  ...
+# Subtest: the four game states reach sixteen distinct cells and retain the same hover anchor
+ok 2 - the four game states reach sixteen distinct cells and retain the same hover anchor
+  ---
+  duration_ms: 253.090098
+  type: 'test'
+  ...
+# (node:83668) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Kraken Sans Couronne selects its atlas and keeps the exact static image as fallback
+ok 3 - Kraken Sans Couronne selects its atlas and keeps the exact static image as fallback
+  ---
+  duration_ms: 43.032714
+  type: 'test'
+  ...
+# Subtest: Kraken Sans Couronne reads sixteen distinct padded cells with a stable baseline
+ok 4 - Kraken Sans Couronne reads sixteen distinct padded cells with a stable baseline
+  ---
+  duration_ms: 162.205765
+  type: 'test'
+  ...
+# Subtest: Le Phare qui Regarde selects its atlas and keeps the exact static image as fallback
+ok 5 - Le Phare qui Regarde selects its atlas and keeps the exact static image as fallback
+  ---
+  duration_ms: 48.086683
+  type: 'test'
+  ...
+# Subtest: Le Phare qui Regarde reads sixteen distinct padded cells with a stable baseline
+ok 6 - Le Phare qui Regarde reads sixteen distinct padded cells with a stable baseline
+  ---
+  duration_ms: 142.052349
+  type: 'test'
+  ...
+# Subtest: the lighthouse beam expands across its attack row without appearing on the other rows
+ok 7 - the lighthouse beam expands across its attack row without appearing on the other rows
+  ---
+  duration_ms: 110.202781
+  type: 'test'
+  ...
+# (node:84130) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+ok 8 - the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+  ---
+  duration_ms: 4.074049
+  type: 'test'
+  ...
+# Subtest: the atlas has 16 distinct and unclipped poses on the shared game baseline
+ok 9 - the atlas has 16 distinct and unclipped poses on the shared game baseline
+  ---
+  duration_ms: 497.033676
+  type: 'test'
+  ...
+# Subtest: the outage fallback is scoped to the original event and restores transform and stroke state
+ok 10 - the outage fallback is scoped to the original event and restores transform and stroke state
+  ---
+  duration_ms: 4.003312
+  type: 'test'
+  ...
+# (node:84227) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: only the exact boss and archived sheet receive cutout animation
+ok 11 - only the exact boss and archived sheet receive cutout animation
+  ---
+  duration_ms: 5.293616
+  type: 'test'
+  ...
+# Subtest: rest, movement, ringing and impact transform exactly two independent bells
+ok 12 - rest, movement, ringing and impact transform exactly two independent bells
+  ---
+  duration_ms: 4.879572
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16124.974851

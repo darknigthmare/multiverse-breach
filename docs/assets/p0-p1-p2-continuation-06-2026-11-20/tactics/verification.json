@@ -1,0 +1,300 @@
+{
+  "baselineCommit": "f76da7941",
+  "scope": "Original campaign stage routing, real engine victory runs, and scoped CustomBattleMode / GameCanvas browser interactions.",
+  "sourceSha256": {
+    "src/game/engineTactics.js": "2a93288ac46256fd53525188df92c4bfa73a62cf8f2c7da986e750076ca6cf60",
+    "src/game/tacticsBattlefields.js": "a92d4d1c0025c4cfa34597118f618508df65c36f52e8881da161db0b01374063",
+    "src/game/tacticsEnvironmentRenderer.js": "18e0f4f4b96e589ce66c49ce6e9e0bb376bd4d7ef689de8ce95ad35508633b55",
+    "src/game/tacticsOriginalBattlefields.js": "5e04f77bfbc2b17fe7b91828f5f39a333737c3ac1401d11479dba89b051af34f",
+    "src/game/tacticsOriginalPresentation.js": "1cbcf87ebbf077a4f74b84ee212a9d71e6fdb94d8a28ff65a5c8463cae52a3fb",
+    "src/game/tacticsTerrainRenderer.js": "25f26ced99a66bbb9ed7a70603f958cdae8ecc4b5da9135e749f50be2d0731d0",
+    "src/game/tacticsVerticalRuntime.js": "4469aab6af28cae97eaeff40342a8974fff54d9ff193ae9d6967907c9b89afa0",
+    "scripts/tacticsOriginalSectors.test.mjs": "23f6361fefb6fc4140ab8e0502fdf3f1cad17871a69e312294c2eee25418e68b"
+  },
+  "referenceSha256": {
+    "src/game/originalUniversesManifest.json": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "public/images/oc-worlds/drowned_testament/stages/lovecraft_impossible_observatory.svg": "186a85703d94b4cb907525fe9ca4815dad169b922f0669a0b94fde84b91cf7b9",
+    "public/images/oc-worlds/valedor_shattered_crown/stages/fantasy_crossroads_free_city.svg": "f5231c44e4a07ef1b0c9f0672a4d2d96ad13b3c5433cbe1aac3e7cd3e830d546"
+  },
+  "tests": {
+    "node": "22.23.5",
+    "command": "node --test --test-concurrency=1 scripts/tacticsOriginalSectors.test.mjs scripts/tacticsNexusHighgrass.test.mjs scripts/tacticsTerrain.test.mjs scripts/tacticsTerrainRenderer.test.mjs scripts/tacticsUniversePresentationWave17.test.mjs scripts/tacticsUniverseRoutingWave17.test.mjs",
+    "newTests": 9,
+    "result": {
+      "tests": 48,
+      "pass": 48,
+      "fail": 0,
+      "skipped": 0
+    },
+    "tapSha256": "4c61053a31d211d4799584205f127afdb9923bbe50394584a3118fc06b86c0e2"
+  },
+  "lintExitCode": 0,
+  "fixtureBuild": {
+    "tool": "Vite",
+    "seconds": 7.4,
+    "scope": "React custom battle setup and actual Canvas game. No full npm prebuild or public media copy."
+  },
+  "browser": {
+    "version": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "scope": "Two boards, manual and automatic lobby binding and four active sessions. Input uses the painted canvas client rect, a click and Enter. Reduced motion requested.",
+    "cases": [
+      {
+        "field": "drowned_observatory_angles_tactics",
+        "width": 1280,
+        "height": 900,
+        "lang": "fr",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "result": {
+          "id": "drowned_observatory_angles_tactics",
+          "at": "drowned_observatory_angles_tactics:gallery:6:4",
+          "z": 2.5,
+          "progress": 1,
+          "spent": 1
+        },
+        "plans": [
+          {
+            "from": "drowned_observatory_angles_tactics:ground:0:4",
+            "to": "drowned_observatory_angles_tactics:ground:1:4",
+            "cost": 1,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "drowned_observatory_angles_tactics:ground:1:4",
+            "to": "drowned_observatory_angles_tactics:gallery:5:4",
+            "cost": 2,
+            "z": 2.5,
+            "progress": 0,
+            "kinds": [
+              "teleport"
+            ]
+          },
+          {
+            "from": "drowned_observatory_angles_tactics:gallery:5:4",
+            "to": "drowned_observatory_angles_tactics:gallery:6:4",
+            "cost": 1,
+            "z": 2.5,
+            "progress": 1,
+            "kinds": [
+              "walk"
+            ]
+          }
+        ],
+        "finalProgress": 1,
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "drowned_observatory_angles_tactics",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "result": {
+          "id": "drowned_observatory_angles_tactics",
+          "at": "drowned_observatory_angles_tactics:gallery:6:4",
+          "z": 2.5,
+          "progress": 1,
+          "spent": 1
+        },
+        "plans": [
+          {
+            "from": "drowned_observatory_angles_tactics:ground:0:4",
+            "to": "drowned_observatory_angles_tactics:ground:1:4",
+            "cost": 1,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "drowned_observatory_angles_tactics:ground:1:4",
+            "to": "drowned_observatory_angles_tactics:gallery:5:4",
+            "cost": 2,
+            "z": 2.5,
+            "progress": 0,
+            "kinds": [
+              "teleport"
+            ]
+          },
+          {
+            "from": "drowned_observatory_angles_tactics:gallery:5:4",
+            "to": "drowned_observatory_angles_tactics:gallery:6:4",
+            "cost": 1,
+            "z": 2.5,
+            "progress": 1,
+            "kinds": [
+              "walk"
+            ]
+          }
+        ],
+        "finalProgress": 1,
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "valedor_free_city_crossroads_tactics",
+        "width": 1280,
+        "height": 900,
+        "lang": "fr",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "result": {
+          "id": "valedor_free_city_crossroads_tactics",
+          "at": "valedor_free_city_crossroads_tactics:ground:3:2",
+          "z": 1.5,
+          "progress": 0,
+          "spent": 1
+        },
+        "plans": [
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:0:4",
+            "to": "valedor_free_city_crossroads_tactics:ground:1:5",
+            "cost": 2,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk",
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:1:5",
+            "to": "valedor_free_city_crossroads_tactics:ground:2:5",
+            "cost": 1,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:2:5",
+            "to": "valedor_free_city_crossroads_tactics:ground:2:4",
+            "cost": 2,
+            "z": 0.75,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:2:4",
+            "to": "valedor_free_city_crossroads_tactics:ground:3:3",
+            "cost": 2,
+            "z": 1.5,
+            "progress": 0,
+            "kinds": [
+              "walk",
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:3:3",
+            "to": "valedor_free_city_crossroads_tactics:ground:3:2",
+            "cost": 1,
+            "z": 1.5,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          }
+        ],
+        "finalProgress": 1,
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      },
+      {
+        "field": "valedor_free_city_crossroads_tactics",
+        "width": 390,
+        "height": 844,
+        "lang": "en",
+        "autoSelectedInLobby": true,
+        "explicitSelectedInLobby": true,
+        "result": {
+          "id": "valedor_free_city_crossroads_tactics",
+          "at": "valedor_free_city_crossroads_tactics:ground:3:2",
+          "z": 1.5,
+          "progress": 0,
+          "spent": 1
+        },
+        "plans": [
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:0:4",
+            "to": "valedor_free_city_crossroads_tactics:ground:1:5",
+            "cost": 2,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk",
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:1:5",
+            "to": "valedor_free_city_crossroads_tactics:ground:2:5",
+            "cost": 1,
+            "z": 0,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:2:5",
+            "to": "valedor_free_city_crossroads_tactics:ground:2:4",
+            "cost": 2,
+            "z": 0.75,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:2:4",
+            "to": "valedor_free_city_crossroads_tactics:ground:3:3",
+            "cost": 2,
+            "z": 1.5,
+            "progress": 0,
+            "kinds": [
+              "walk",
+              "walk"
+            ]
+          },
+          {
+            "from": "valedor_free_city_crossroads_tactics:ground:3:3",
+            "to": "valedor_free_city_crossroads_tactics:ground:3:2",
+            "cost": 1,
+            "z": 1.5,
+            "progress": 0,
+            "kinds": [
+              "walk"
+            ]
+          }
+        ],
+        "finalProgress": 1,
+        "overflow": false,
+        "disposed": true,
+        "errors": [],
+        "http": []
+      }
+    ]
+  },
+  "captures": {
+    "observatory-1280.jpg": "9d33a1d609da9eef2b295d8975f50f2aa2aa37d03ac323294d081c43fc5159a7",
+    "observatory-cut-390.jpg": "e69f27f754271b6a4a259c390410436225b38b00327c26b692e8fa91d33422b0",
+    "crossroads-1280.jpg": "e9bb0efc3bcddc6d9ed2a339aac2bb86340b7dd268432b40f44dc8063d499d12"
+  }
+}

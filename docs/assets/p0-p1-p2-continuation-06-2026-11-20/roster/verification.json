@@ -1,0 +1,67 @@
+{
+  "sourceBaseline": "f76da794162a109e204070edb7090fc92a7082ef",
+  "changedSourceSha256": {
+    "src/game/originalActorDesigns.js": "aa37d74456b2f296ff8e5a0e300ff29b2bd1c1cf999afb5ada85a82689731fbc",
+    "src/game/originalCampaignActorDesigns.js": "ee0c109c92ba03a3aa457ddcb9c3ae94818164526a338be4d06d13fa4942da3c",
+    "src/components/GameCanvas.jsx": "aaacd7d147f6ef1e8728fa225a86aae7969135f838288d296017bad1413731b3",
+    "src/components/RpgTargetingPanel.jsx": "acb9be693c5b64407f851978d0f3632d84254b8dd5dc3f96c978868672f9ac06",
+    "scripts/originalCampaignActors.test.mjs": "ddeccaa6e60eca03823820514e39f6a26f49a462fb232062fc4c53592804027a",
+    "scripts/rpgSourcePresentationWave16.test.mjs": "a39950166efeb90263e89ded8c63a09c740aa7f40ef2da773b35f425e7003227"
+  },
+  "node": "22.23.5",
+  "actors": 70,
+  "priorActorKeys": 480,
+  "newMissingIncarnationTasksRemoved": 70,
+  "newMissingVisualContractTasksRemoved": 70,
+  "exactGitBlobAndNativePixelsVerified": 70,
+  "reviewedCell": [
+    0,
+    0
+  ],
+  "layouts": {
+    "4x4": 69,
+    "1x1": 1
+  },
+  "rpgBossLabels": 28,
+  "rpgMechanicChanges": 3,
+  "retainedRpgMechanics": 25,
+  "tests": [
+    {
+      "scope": "Trois effets RPG, avant branchement du registre",
+      "passed": 0,
+      "failed": 3,
+      "tapSha256": "be4ef8f54511719e9f842eaa54084d2a3a6689c40c359e7bb4d47b12fe686e2b"
+    },
+    {
+      "scope": "Registre de campagne et suites Nexus, technologique et marées",
+      "passed": 23,
+      "failed": 0,
+      "tapSha256": "d7cc69c051941429f7458d426f721c9d1560604b5c15d23aa24c7adfefa5a91e"
+    },
+    {
+      "scope": "Libellé radial, avant correction",
+      "passed": 0,
+      "failed": 1,
+      "tapSha256": "e749601d64d4d30f7e663952dd5b21fbc462ab8ca816ab1d3c961e06badb3478"
+    },
+    {
+      "scope": "Libellés FR/EN et ciblage du HUD",
+      "passed": 12,
+      "failed": 0,
+      "tapSha256": "c194705ef5b99f0dc544c339b213affde0f9a609b48402c5541828edb0bfc03d"
+    }
+  ],
+  "browser": {
+    "game": "GameCanvas RPG J2. Avant : mêmes nouveaux effets, ancien HUD. Après : dock et panneau corrigés.",
+    "priorReactObjectUnmounts": 2,
+    "successfulScenarios": 3,
+    "javascriptErrors": 0,
+    "httpMissingByCase": {
+      "storm": 10,
+      "orbital": 9,
+      "guard": 5
+    },
+    "fixturesAndScreenshotsAreLocal": true
+  },
+  "scope": "Les corrections portent sur les contrats, trois effets RPG et l’affichage du HUD. Les tests n’approuvent ni une nouvelle tenue ni une revue d’animation exhaustive."
+}

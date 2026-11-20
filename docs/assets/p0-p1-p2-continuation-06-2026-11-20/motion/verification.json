@@ -1,0 +1,2288 @@
+{
+  "baseCommit": "f76da7941",
+  "changedSourceSha256": {
+    "src/components/FighterMode.jsx": "1a270a85d0d4ba7e7d4278a0a56e9b58c9ecc5c61872d178531b49d532c479f1",
+    "src/game/combat/originalFighterPresentations.js": "5b5af37abfe9c7cefd8da5e35af18a81ccdf3cc5c66c4d7c86627ddb8bfa623d",
+    "src/game/combat/originalCampaignDuelPresentations.js": "780489f7bdc9dbd540d82035dab7d75a4588d8f9bcbc7230877b007f0de8c04e",
+    "scripts/originalFighterPresentations.test.mjs": "d26c1a0716fc40bfb555756e2d9e0668fd254d546edc69aa93539514dfbee08d"
+  },
+  "node": {
+    "version": "22.23.5",
+    "passed": 59,
+    "failed": 0,
+    "tapSha256": "05d9278f567dab148be57d90ca3b53d1a0415576a0d53e58048aeeb1a859a3a7",
+    "command": "node --test --test-concurrency=1 scripts/originalFighterPresentations.test.mjs scripts/reducedMotion.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/fixedStepClock.test.mjs"
+  },
+  "targetedOxlintExit": 0,
+  "verificationBuild": {
+    "ViteCodeOnlyBeforeExit": 0,
+    "ViteCodeOnlyAfterExit": 0,
+    "realFighterModeBeforePinnedTo": "f76da7941:src/components/FighterMode.jsx",
+    "historicalFixtureMount": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/original-duel-040/fixture.html",
+    "oneNative2dCanvasPerMatch": true
+  },
+  "browser": {
+    "passes": 20,
+    "fails": 0,
+    "appliedMotionPreference": {
+      "before": {
+        "samples": [
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          }
+        ],
+        "caption": "Elara Voss\nEntrance\n\nBram Quill\nEntrance",
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      "after": {
+        "samples": [
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": true,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": true,
+            "isSameEngine": true,
+            "phase": "intro"
+          },
+          {
+            "reduced": false,
+            "isSameEngine": true,
+            "phase": "intro"
+          }
+        ],
+        "caption": "Elara Voss\nElara takes the deck\n\nBram Quill\nBram checks the valve",
+        "pageErrors": [],
+        "httpErrors": {}
+      },
+      "changes": [
+        "system without reduce",
+        "game reduced",
+        "return to system",
+        "OS reduce",
+        "OS normal"
+      ]
+    },
+    "games": [
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "elara_voss",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "elara_voss",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d8b25c",
+              "#e7b85a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "elara_voss",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d8b25c"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "elara_voss"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d8b25c"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "elara_voss",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d8b25c"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "elara_voss",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Mutinerie des Cieux"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "bram_quill",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "merek_flint",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e7b85a",
+              "#ff8a3d"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "merek_flint",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                0,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e7b85a"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e7b85a"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "merek_flint",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e7b85a"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "merek_flint",
+              "bram_quill"
+            ],
+            "crops": [
+              [
+                0,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Théorème d’Éther Libre"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "merek_flint",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "merek_flint",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f6d68a",
+              "#ff8a3d"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "merek_flint",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#ff8a3d"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "merek_flint"
+            ],
+            "crops": [
+              [
+                512,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#ff8a3d"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "merek_flint",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#ff8a3d"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "merek_flint",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Surcharge de la Grande Chaudière"
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "winner": "seraphine_meridius",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "lio_ferrante",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#2e79b9",
+              "#f6d68a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "lio_ferrante",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f6d68a"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f6d68a"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "lio_ferrante",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f6d68a"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "lio_ferrante",
+              "seraphine_meridius"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Treizième Coup"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "lio_ferrante",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "lio_ferrante",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#2e79b9",
+              "#c96c3a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "lio_ferrante",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#2e79b9"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "lio_ferrante"
+            ],
+            "crops": [
+              [
+                512,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#2e79b9"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "lio_ferrante",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#2e79b9"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "lio_ferrante",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Réglage du Monde"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "brother_ors",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "mara_veylan",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c96c3a",
+              "#d9483b"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "mara_veylan",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c96c3a"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c96c3a"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "mara_veylan",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c96c3a"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "mara_veylan",
+              "brother_ors"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Dernière Sonnerie"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "mara_veylan",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "mara_veylan",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d48336",
+              "#d9483b"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "mara_veylan",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9483b"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "mara_veylan"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9483b"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "mara_veylan",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9483b"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "mara_veylan",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                0,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Ordre Zéro Radio"
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "winner": "anton_rook",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "ilya_cross",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d48336",
+              "#e8d18a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "ilya_cross",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d48336"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d48336"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "ilya_cross",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d48336"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "ilya_cross",
+              "anton_rook"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Déraillement Contrôlé"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "ilya_cross",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "ilya_cross",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e63946",
+              "#e8d18a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "ilya_cross",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e8d18a"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "ilya_cross"
+            ],
+            "crops": [
+              [
+                512,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e8d18a"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "ilya_cross",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e8d18a"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "ilya_cross",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Ciel sans Drapeau"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "ysara_flint",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "milo_quill",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#00b4d8",
+              "#e63946"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "milo_quill",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                768,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e63946"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                512,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e63946"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "milo_quill",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e63946"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "milo_quill",
+              "ysara_flint"
+            ],
+            "crops": [
+              [
+                768,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Tous Pavillons Abattus"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "milo_quill",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "milo_quill",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#00b4d8",
+              "#d9b44a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "milo_quill",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#00b4d8"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "milo_quill"
+            ],
+            "crops": [
+              [
+                768,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#00b4d8"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "milo_quill",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#00b4d8"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "milo_quill",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Mer Réécrite à l’Encre"
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "winner": "brann_crow",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "mara_ell",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#70d6ff",
+              "#d9b44a"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "mara_ell",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                768,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9b44a"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9b44a"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "mara_ell",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d9b44a"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "mara_ell",
+              "brann_crow"
+            ],
+            "crops": [
+              [
+                768,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Révolte du Pont Inférieur"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "mara_ell",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "mara_ell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#70d6ff",
+              "#f4d35e"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "mara_ell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#70d6ff"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "mara_ell"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#70d6ff"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "mara_ell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#70d6ff"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "mara_ell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Traduction sans Soumission"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "jonas_mire",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "oona_vell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c77dff",
+              "#f4d35e"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "oona_vell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                512,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4d35e"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4d35e"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "oona_vell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4d35e"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "oona_vell",
+              "jonas_mire"
+            ],
+            "crops": [
+              [
+                512,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Lumière jusqu’au Fond"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "oona_vell",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "oona_vell",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#8fefb5",
+              "#c77dff"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "oona_vell",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c77dff"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "oona_vell"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c77dff"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "oona_vell",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#c77dff"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "oona_vell",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                512,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Carte du Rivage qui n’Existe Pas"
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "winner": "aelwen_starbough",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "brokk_embervein",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                0,
+                0,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#8fefb5",
+              "#f4a261"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "brokk_embervein",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#8fefb5"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#8fefb5"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "brokk_embervein",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#8fefb5"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "brokk_embervein",
+              "aelwen_starbough"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Pluie sur les Sept Royaumes"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "brokk_embervein",
+        "loserSide": "cpu",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "brokk_embervein",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                0,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e76f51",
+              "#f4a261"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "brokk_embervein",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                512,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4a261"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "brokk_embervein"
+            ],
+            "crops": [
+              [
+                256,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4a261"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "brokk_embervein",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#f4a261"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "brokk_embervein",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                256,
+                256,
+                256,
+                256
+              ],
+              [
+                256,
+                768,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Enclume des Sept Serments"
+      },
+      {
+        "viewport": [
+          1280,
+          800
+        ],
+        "winner": "goruk_ash_tusk",
+        "loserSide": "player",
+        "completed": 1,
+        "pageErrors": 0,
+        "httpErrors": 0,
+        "phases": {
+          "intro": {
+            "actors": [
+              "elara_voss",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                768,
+                0,
+                256,
+                256
+              ],
+              [
+                0,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#d8b25c",
+              "#e76f51"
+            ]
+          },
+          "roundResult": {
+            "actors": [
+              "elara_voss",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                512,
+                768,
+                256,
+                256
+              ],
+              [
+                512,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e76f51"
+            ]
+          },
+          "fatality": {
+            "actors": [
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                512,
+                512,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e76f51"
+            ]
+          },
+          "victory": {
+            "actors": [
+              "elara_voss",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                256,
+                768,
+                256,
+                256
+              ],
+              [
+                768,
+                0,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": [
+              "#e76f51"
+            ]
+          },
+          "outro": {
+            "actors": [
+              "elara_voss",
+              "goruk_ash_tusk"
+            ],
+            "crops": [
+              [
+                512,
+                768,
+                256,
+                256
+              ],
+              [
+                256,
+                256,
+                256,
+                256
+              ]
+            ],
+            "motifStrokeColors": []
+          }
+        },
+        "finalCaption": "Aucun Peuple ne Sera l’Ennemi"
+      }
+    ]
+  },
+  "artScope": {
+    "authoredClips": 126,
+    "existingBodySheets": 18,
+    "inspectedCells": 288,
+    "newRasterFiles": 0,
+    "globalVisualClosures": 0
+  }
+}

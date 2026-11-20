@@ -1,0 +1,110 @@
+{
+  "sourceCommit": "b0dbdd440d196a7183831769e49259405f143f81",
+  "node": "22.23.5",
+  "checks": [
+    {
+      "name": "Contrats de source",
+      "command": "npm run test:source-contracts",
+      "totals": {
+        "tests": 176,
+        "pass": 176,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "e670074a552a0c4af91aea9538bf0917b2a5a046a1d1af513f8b725fa45aed6a"
+    },
+    {
+      "name": "RPG, invocations et présentation",
+      "command": "node --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/sourceMechanicsWave17.test.mjs scripts/rpgSourcePresentationWave16.test.mjs",
+      "totals": {
+        "tests": 63,
+        "pass": 63,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "31cc86d25fec465307e34b394246ea18123c6385ce0ea1fafeb60f3ee7a5591c"
+    },
+    {
+      "name": "RPG, contrôles et invocations W16",
+      "command": "node --test --test-concurrency=1 scripts/rpgSourceControlWave16.test.mjs scripts/rpgControlWave15.test.mjs scripts/rpgSummonWave16.test.mjs",
+      "totals": {
+        "tests": 51,
+        "pass": 51,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "5489865a6634b074046f70a5f51d098675e43f8d424ada88836f98bea5e2f21f"
+    },
+    {
+      "name": "Tactics vertical",
+      "command": "npm run test:tactics-verticality",
+      "totals": {
+        "tests": 309,
+        "pass": 309,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "ee70d825fe3425fd6c5cb8d4ab4fd1b005cfe550b503a9486ef9e0ba4c35a1fa"
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 582,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "c62bbf5a8037884a192f111bd0c47e391bd2b5964c5618b040ea0b89874ce654"
+    },
+    {
+      "name": "Présence, rendu et secours des atlas",
+      "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test scripts/originalMaritimeBossSprites.test.mjs scripts/aetherMiteSprite.test.mjs scripts/twelveBellJudgesMotion.test.mjs",
+      "totals": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "6a6dc76b1b8f7a65138cfc59693f8a1caf8caf4c90db9898e09288982223a55f"
+    }
+  ],
+  "lint": {
+    "command": "node_modules/.bin/oxlint --deny-warnings FILES",
+    "checkedFiles": 28,
+    "exitCode": 0
+  },
+  "focusedEvidence": [
+    {
+      "name": "Acteurs originaux et HUD J2",
+      "path": "../roster/verification.json"
+    },
+    {
+      "name": "Duel des 18 héros",
+      "path": "../motion/verification.json"
+    },
+    {
+      "name": "Atlas du Phare et du Kraken",
+      "path": "../media/browser-results.json"
+    },
+    {
+      "name": "Missions Tactics",
+      "path": "../tactics/verification.json"
+    },
+    {
+      "name": "Pause A.R.C.A.",
+      "path": "../menus/verification.json"
+    },
+    {
+      "name": "Lots Doom et reprise",
+      "path": "../dlc/coverage.json"
+    }
+  ],
+  "scope": "Suites, parcours ciblés et reçus techniques. Les suites qui recouvrent certains cas ne sont pas additionnées."
+}
