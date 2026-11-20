@@ -1,0 +1,13 @@
+# Trois dossiers Star Wars
+
+La file historique signalait le maintien des anciennes silhouettes malgré la correction des kits. La revue porte sur les **144 cellules** des sept planches disponibles pour ces trois héros, dont les **96 poses actuellement utilisées** pour Han et Luke. [Critères historiques](../../../excel/REPRISE_MANQUANTS_R3_2026-10-24.md) · [Empreintes et observations](review.json)
+
+| Héros et incarnation | Verdict |
+| --- | --- |
+| Han Solo, *Un nouvel espoir* (1977) | Le défaut historique est clos. Les planches W7 dessinent la chemise claire, le gilet noir, le pantalon rayé, l’étui de cuisse et le DL-44. Le tir dessine un flash orange là où la planche archivée faisait apparaître des effets cyan. [Provenance de la base W7](../../../combat-fidelity-wave7-2026-10-20/base-part-b-provenance.json) · [Provenance de la présentation](../../../combat-fidelity-wave7-2026-10-20/part-b-provenance.json) |
+| Luke Skywalker, *Le Retour du Jedi* (1983) | Le défaut historique est clos. Les planches W13 dessinent la tenue noire de l’Étoile de la mort II et le sabre vert. La cape dorée et la lame bleue restent dans l’ancienne planche archivée. [Provenance W13](../../../combat-fidelity-wave13-2026-10-24/part-b/README.md) |
+| Dark Vador, *L’Empire contre-attaque* (1980) | Le portrait et le corps de jeu utilisent le repère neutre `ART PENDING`. L’unique planche de jeu retrouvée montre un casque éclairé en bleu, un bâton orné et des effets étrangers à l’incarnation de Bespin. Le P0 reste ouvert jusqu’à la livraison d’une planche appropriée. [Refus de production W13](../../../combat-fidelity-wave13-2026-10-24/part-b/request-failures.json) |
+
+Le vrai dessinateur Canvas et les acteurs du catalogue ont été vérifiés dans Chromium avant et après le changement, à 1 280 × 900 et 390 × 844. Pour Han et Luke, le contrôle relève les seize cellules de jeu dans les contextes RPG, Tactics, Mêlée et Duel, les trente-deux cellules de présentation et l’empreinte des octets servis. Pour Vador, l’ancienne planche apparaît avant le changement. Les 97 relevés par taille d’écran montrent le repère après le changement, y compris le portrait, et aucun chargement de sa planche. Ce contrôle à l’échelle du jeu monte le dessinateur avec les états et les échelles des moteurs. Les **21 tests Node** vérifient aussi les replis, le contexte Kart et l’identité des projections de combat. [Reçu navigateur](browser.json) · [Capture des poses](rendu-canvas.jpg) · [Tests ciblés](../../../../scripts/historicalStarWarsP0Sprites.test.mjs)
+
+Les dossiers Han et Luke clôturent la substitution visuelle historique. Les planches sont des adaptations existantes du projet et la comparaison à l’image près avec les œuvres source reste ouverte.

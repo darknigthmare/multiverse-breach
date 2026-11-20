@@ -1,0 +1,7 @@
+# Planches DC historiques et portrait de Starfire
+
+Les sept planches de jeu ont été vérifiées cellule par cellule, soit 112 poses. Batman New 52, Harley New 52, Joker Endgame, le Grim Knight, Raven et Starfire avaient des silhouettes, tenues ou accessoires absents des incarnations sélectionnées. Le jeu écarte ces six planches en conservant leurs octets, l’identité et les commandes des acteurs. Le verrou de Batman 2008 reste en vigueur. [Constats et empreintes par identité](review.json)
+
+Le renfort RPG de Starfire utilise déjà une autre planche, avec le modèle de *Teen Titans* de 2003 et les starbolts verts. Les seize poses de cette planche ont aussi été examinées. La chronologie Tactics reprend les pixels du visage et du haut des épaules dans sa troisième pose de retour. Le cadrage est limité à l’incarnation et à la résolution vérifiées. Le corps provisoire reste identifiable comme tel, et le renfort conserve ses phases. [Planche et provenance W16](../../../combat-fidelity-wave16-2026-10-28/summon-provenance.json) · [Cadre et empreinte](review.json)
+
+Les six tests Node passent. Chromium a exécuté les fonctions de rendu Canvas du corps et de la chronologie Tactics sur ordinateur et mobile. Le navigateur a demandé uniquement la planche W16 et dessiné la découpe de Starfire. Un troisième scénario a renvoyé une réponse 404 pour vérifier le retour au portrait neutre. Les sept dossiers P0 restent ouverts pour leurs planches et animations de combat complètes. [Mesures Chromium](browser.json) · [Ordinateur](canvas-1280.jpg) · [Mobile](canvas-390.jpg)

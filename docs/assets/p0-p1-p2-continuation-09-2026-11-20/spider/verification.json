@@ -1,0 +1,58 @@
+{
+  "reviewedSource": "Spider: The Video Game (PlayStation, 1997)",
+  "sourceBaseline": "8dfe58e21",
+  "archiveSprites": [
+    {
+      "asset": "DLC/SpiderTheVideoGame/assets/sprites/generated/heroes/spider-the-video-game/cyber-spider-electro-beam.png",
+      "sha256": "72849c9c1de5894df6d76ec3fa9a11296486b2a5465720a843df5c8ae6a98c7d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "inspectedCells": 16,
+      "uniqueRgbaCells": 16
+    },
+    {
+      "asset": "DLC/SpiderTheVideoGame/assets/sprites/generated/heroes/spider-the-video-game/cyber-spider-flamethrower.png",
+      "sha256": "109638923fecb53f7744a123b0f9a1991d15b8e7470e6d84687f48fdec1add4b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "inspectedCells": 16,
+      "uniqueRgbaCells": 16
+    },
+    {
+      "asset": "DLC/SpiderTheVideoGame/assets/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png",
+      "sha256": "e9900a15304818da848735096550e37d842bd8349fd9707e9dc89c31f82b1707",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "inspectedCells": 16,
+      "uniqueRgbaCells": 16
+    }
+  ],
+  "visualDefects": {
+    "cyber_spider_kelly": "Dome, antenna and holograms across the reviewed actions, without a visible biological abdomen or default Slasher.",
+    "cyber_spider_electro_beam": "Armored body with forward lights, blue emitters and white residue. The lights do not establish the front-leg Electro-Beam attachment.",
+    "cyber_spider_flamethrower": "Armored body with a dorsal lamp and colored shapes rather than a verified front-leg Flamethrower. Pale opaque residue under the legs."
+  },
+  "recovery": {
+    "runtimeOldSheetsRejected": 3,
+    "approvedNewCharacterRasters": 0,
+    "artisticP0Remaining": 3
+  },
+  "tests": {
+    "node": "22.23.5",
+    "command": "node --test --test-concurrency=1 scripts/historicalSpiderP0SpriteQuarantine.test.mjs scripts/canonP0SourceKits.test.mjs scripts/canonP0RuntimeEffects.test.mjs",
+    "totals": {
+      "tests": 85,
+      "pass": 85,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "tapSha256": "4f6f8b7101b04e4e233ff0783963ff4a459b5f2dd8ec725b049ba1f2bd57a8ca"
+  }
+}

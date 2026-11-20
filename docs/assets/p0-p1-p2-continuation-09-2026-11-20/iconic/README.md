@@ -1,0 +1,9 @@
+# Jack Sparrow 2003 et Roger Rabbit 1988
+
+Les 32 cellules des deux planches en service ont été inspectées. La rangée d’attaque de Jack affiche une carte, une boussole et des effets dorés qui contredisent son sabre et son tir réservé. Celle de Roger transforme son clap en accessoire d’attaque et ajoute des projections lumineuses, alors que son kit repose sur le contact physique. Les silhouettes, costumes et cellules neutres des deux planches restent reconnaissables. [Changement des cellules](../../../../src/game/combat/historicalIconicP0PoseFallbacks.js)
+
+Les attaques de Jack utilisent des poses de réaction sans accessoire. Les attaques de Roger utilisent deux poses neutres sans clap. Les deux cycles de déplacement gardent deux poses existantes, avec un recadrage de 20 pixels qui élimine des fragments du rang voisin. Le clap reste visible comme accessoire dans des poses de course et de réaction de Roger. Les poses conservent le même point d’appui. Les effets de jeu conservent le tir du pistolet à silex accompagné de fumée et les impacts physiques de Roger. [Contrôles et provenance](verification.json)
+
+Les 138 tests Node passent. Sur ordinateur et mobile, Chromium a enregistré 126 découpes Canvas par écran dans les contextes RPG, Mêlée et Tactics, portraits compris. Même une demande de recadrage explicite sur l’ancienne rangée d’attaque reste limitée aux cellules retenues. [Capture du moteur de rendu](rendu.jpg)
+
+Les deux P0 restent ouverts pour la revue des costumes et la livraison de poses d’attaque dessinées. Les photos de référence restent dans les dossiers de recherche et les refus de génération restent consignés. [Jack Sparrow](../../../cg/reviews/wave3-2026-10-20/jack-sparrow-generation-attempts.json) · [Roger Rabbit](../../p0-p1-continuation-2026-11-13/lilo-roger-portraits/README.md)

@@ -1,0 +1,688 @@
+{
+  "frozenInputs": {
+    "frozenFileCount": 1142,
+    "manifestAndAssetInventoryCount": 1011,
+    "currentTreeDivergences": 15,
+    "divergencePaths": [
+      "src/App.jsx",
+      "src/components/CampaignPauseMenu.jsx",
+      "src/components/CustomBattleMode.jsx",
+      "src/components/DlcInstallationPanel.jsx",
+      "src/components/FighterMode.jsx",
+      "src/components/GameCanvas.jsx",
+      "src/components/HubScreen.jsx",
+      "src/components/NexusFieldBriefing.css",
+      "src/components/NexusFieldBriefing.jsx",
+      "src/components/OcDlcLibrary.jsx",
+      "src/components/RpgTargetingPanel.jsx",
+      "src/components/UniverseArchiveReader.jsx",
+      "src/components/collection/modalIsolation.js",
+      "src/components/combat-immersion.css",
+      "src/components/game-system.css"
+    ],
+    "manifestAndAssetInventoryDivergences": [],
+    "additionalPathsSinceLastPass": [],
+    "observedHead": "8dfe58e2182b15068bb2e40485ebe62d52da3221"
+  },
+  "startRevision": "8dfe58e2182b15068bb2e40485ebe62d52da3221",
+  "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+  "runnerSha256": "243aeca93238c358b814712c895ceb49293776229509a47c30873f618b35d302",
+  "baseline": {
+    "batches": 172,
+    "assets": 5173,
+    "bytes": 3831232514,
+    "receiptSha256": "1d4cd052673521fcbcf4275f4ee1ae2b8f5a7ee948ef6efffdd3b7cdd4b73420",
+    "previousReceiptPinsRechecked": 172
+  },
+  "completed": {
+    "batches": 192,
+    "assets": 5542,
+    "bytes": 4470247126,
+    "decode": {
+      "PASSED": 4915,
+      "NOT_APPLICABLE": 627
+    },
+    "sourceKinds": {
+      "fetched-lfs": 443,
+      "git-blob": 5084,
+      "core-lfs-cache": 15
+    },
+    "pendingBatches": []
+  },
+  "appliedThisPass": {
+    "batches": 20,
+    "assets": 369,
+    "bytes": 639014612,
+    "fetchedLfsFiles": 122,
+    "fetchedLfsPayloadBytes": 493670856,
+    "sourceKinds": {
+      "fetched-lfs": 122,
+      "git-blob": 247
+    },
+    "decode": {
+      "PASSED": 369
+    },
+    "records": [
+      {
+        "batchId": "00105",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24510442,
+        "privateDoomFiles": 0,
+        "bytes": 31537044,
+        "receiptSha256": "8de23d52b41ef4a4bb343db49cd9f9745edce8a0fa7589fdf7f9ff3ec79349a3",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 16470
+      },
+      {
+        "batchId": "00083",
+        "verifiedFiles": 20,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24516826,
+        "privateDoomFiles": 0,
+        "bytes": 32554742,
+        "receiptSha256": "b7153350523e533bd80052ea0d5bcf4365d6b0fe8ab8e5866438eb0e6109ca48",
+        "decodes": {
+          "PASSED": 20
+        },
+        "sourceKinds": {
+          "git-blob": 14,
+          "fetched-lfs": 6
+        },
+        "resumedPortableCopy": false,
+        "copied": 20,
+        "reused": 0,
+        "durationMs": 17575
+      },
+      {
+        "batchId": "00164",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24539015,
+        "privateDoomFiles": 0,
+        "bytes": 31770873,
+        "receiptSha256": "62c43c628816462984e5a6d78a17d5422134df8694d4ab91e2ad68df9445d89b",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 15039
+      },
+      {
+        "batchId": "00053",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24547803,
+        "privateDoomFiles": 0,
+        "bytes": 30845417,
+        "receiptSha256": "88b6eb8bb9f5ec0d8851b6abf58a7489dfba82fa85fbb22cae57a93d4da29510",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 14349
+      },
+      {
+        "batchId": "00144",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24557334,
+        "privateDoomFiles": 0,
+        "bytes": 32310258,
+        "receiptSha256": "da989ef88fa72ca91117324c3ba8c81b3cd390785fe96a2a5033eafc34cd2d20",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9908
+      },
+      {
+        "batchId": "00129",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24588409,
+        "privateDoomFiles": 0,
+        "bytes": 31894379,
+        "receiptSha256": "6c48a8975d589aad6d07c5ddf91658832a389a4bbffb0267467cdaa48724edc6",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9919
+      },
+      {
+        "batchId": "00026",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24643680,
+        "privateDoomFiles": 0,
+        "bytes": 31102598,
+        "receiptSha256": "4eec846d9d14bfd8968db18f492c0f7e8a9850bb036e80e0bda2c02be3ddbd10",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9929
+      },
+      {
+        "batchId": "00059",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24666181,
+        "privateDoomFiles": 0,
+        "bytes": 31011921,
+        "receiptSha256": "2bed2d51d3ba4023e67803ea1091f558b91e8681dd8bc08f0c47192c4f0178a3",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9970
+      },
+      {
+        "batchId": "00024",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24673649,
+        "privateDoomFiles": 0,
+        "bytes": 31300507,
+        "receiptSha256": "8ca3e27d9cd6e13d565af7db71d616432d479491d0a96a1813d5a58812dd8531",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 10682
+      },
+      {
+        "batchId": "00160",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24686454,
+        "privateDoomFiles": 0,
+        "bytes": 32125442,
+        "receiptSha256": "9747cbc206391cb6a190d00e13097be85eaaec619fcb2bb4b6b7a4dae0945364",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 10646
+      },
+      {
+        "batchId": "00106",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24730720,
+        "privateDoomFiles": 0,
+        "bytes": 31568200,
+        "receiptSha256": "7db6a22cacf4c7f308e66d7d86067e80ec477e44de9b3a4b220a395fbf593f51",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9716
+      },
+      {
+        "batchId": "00033",
+        "verifiedFiles": 20,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24727352,
+        "privateDoomFiles": 0,
+        "bytes": 32172774,
+        "receiptSha256": "dc61fa5eb224b763bb5d443a7197086859bba85c122868b491e1d173f71b4827",
+        "decodes": {
+          "PASSED": 20
+        },
+        "sourceKinds": {
+          "git-blob": 14,
+          "fetched-lfs": 6
+        },
+        "resumedPortableCopy": false,
+        "copied": 20,
+        "reused": 0,
+        "durationMs": 11343
+      },
+      {
+        "batchId": "00040",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24734477,
+        "privateDoomFiles": 0,
+        "bytes": 31537187,
+        "receiptSha256": "10b53831b4f278b908deff4880221420575b31d59159d2f901c4fec1bbe22016",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9674
+      },
+      {
+        "batchId": "00157",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24752292,
+        "privateDoomFiles": 0,
+        "bytes": 32912004,
+        "receiptSha256": "ec1a6746464126d293b5e50f3ae8b59868e6e352de99b39bf86f196027d5fcc5",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9573
+      },
+      {
+        "batchId": "00074",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24755492,
+        "privateDoomFiles": 0,
+        "bytes": 31346598,
+        "receiptSha256": "1a80881b41d2ae4c412ca0414941d0f8adeb89e0f9c5c6153507d599dad167d7",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 10123
+      },
+      {
+        "batchId": "00099",
+        "verifiedFiles": 23,
+        "fetchedFiles": 8,
+        "fetchedBytes": 24784702,
+        "privateDoomFiles": 0,
+        "bytes": 33511780,
+        "receiptSha256": "7634ae64959d8149de5af5e3b974ae0dcd5e223100ba0e0eee5c4459615a8c1f",
+        "decodes": {
+          "PASSED": 23
+        },
+        "sourceKinds": {
+          "fetched-lfs": 8,
+          "git-blob": 15
+        },
+        "resumedPortableCopy": false,
+        "copied": 23,
+        "reused": 0,
+        "durationMs": 11269
+      },
+      {
+        "batchId": "00077",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24787255,
+        "privateDoomFiles": 0,
+        "bytes": 32191799,
+        "receiptSha256": "9014dabbc7cfc36d4af284f9f141e99fc8c0c883633f485e9823a3207a4e5452",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "git-blob": 12,
+          "fetched-lfs": 6
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9115
+      },
+      {
+        "batchId": "00067",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24793132,
+        "privateDoomFiles": 0,
+        "bytes": 31959486,
+        "receiptSha256": "af82a2c1245ef25024dc006501299b7f10cf7f848bc1e07780837ec4c9683dd8",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9291
+      },
+      {
+        "batchId": "00159",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24836390,
+        "privateDoomFiles": 0,
+        "bytes": 32628254,
+        "receiptSha256": "fe2c962ab735644a1795d021036ac029f0c27ccc719f0787e4d4925921f5f81d",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 9758
+      },
+      {
+        "batchId": "00145",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24839251,
+        "privateDoomFiles": 0,
+        "bytes": 32733349,
+        "receiptSha256": "b7437ef7b106af2c15466e350018178cf305ed11f995d3b9c7a73c71b0e9b8b7",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 11017
+      }
+    ]
+  },
+  "remaining": {
+    "batches": 125,
+    "assets": 2151,
+    "bytes": 4093915759,
+    "missingBatchIds": [
+      "00002",
+      "00003",
+      "00004",
+      "00006",
+      "00007",
+      "00008",
+      "00009",
+      "00010",
+      "00011",
+      "00012",
+      "00013",
+      "00014",
+      "00016",
+      "00017",
+      "00018",
+      "00019",
+      "00028",
+      "00030",
+      "00032",
+      "00034",
+      "00035",
+      "00036",
+      "00037",
+      "00038",
+      "00039",
+      "00042",
+      "00043",
+      "00044",
+      "00050",
+      "00060",
+      "00062",
+      "00063",
+      "00064",
+      "00065",
+      "00066",
+      "00068",
+      "00069",
+      "00070",
+      "00071",
+      "00072",
+      "00073",
+      "00075",
+      "00076",
+      "00079",
+      "00081",
+      "00082",
+      "00086",
+      "00091",
+      "00092",
+      "00093",
+      "00094",
+      "00095",
+      "00096",
+      "00097",
+      "00100",
+      "00101",
+      "00104",
+      "00108",
+      "00110",
+      "00111",
+      "00112",
+      "00113",
+      "00114",
+      "00118",
+      "00119",
+      "00120",
+      "00121",
+      "00122",
+      "00124",
+      "00125",
+      "00126",
+      "00127",
+      "00128",
+      "00130",
+      "00131",
+      "00132",
+      "00133",
+      "00134",
+      "00135",
+      "00137",
+      "00138",
+      "00139",
+      "00148",
+      "00150",
+      "00151",
+      "00154",
+      "00155",
+      "00156",
+      "00158",
+      "00165",
+      "00178",
+      "00179",
+      "00180",
+      "00181",
+      "00182",
+      "00183",
+      "00184",
+      "00185",
+      "00186",
+      "00187",
+      "00188",
+      "00189",
+      "00190",
+      "00191",
+      "00192",
+      "00193",
+      "00194",
+      "00195",
+      "00196",
+      "00197",
+      "00198",
+      "00199",
+      "00200",
+      "00201",
+      "00202",
+      "00203",
+      "00204",
+      "00205",
+      "00206",
+      "00207",
+      "00208",
+      "00209",
+      "00210",
+      "00211",
+      "00212"
+    ],
+    "lfsWithoutIdentifiedLocalCopy": {
+      "assets": 1037,
+      "bytes": 3448078304
+    }
+  },
+  "independentAudit": {
+    "sha256Matches": 5542,
+    "nativeGitBlobOidMatches": 5084,
+    "lfsSha256Matches": 458,
+    "verifiedReceiptPins": 192
+  },
+  "remoteEnvelope": {
+    "maxLots": 20,
+    "maxRemoteBytes": 754974720,
+    "maxAssemblyBytes": 796917760
+  },
+  "networkSettings": {
+    "lfs.dialtimeout": "6",
+    "lfs.tlstimeout": "6",
+    "lfs.activitytimeout": "8",
+    "lfs.transfer.maxretries": "1",
+    "lfs.transfer.maxretrydelay": "1",
+    "lfs.concurrenttransfers": "1"
+  },
+  "parallelism": {
+    "exportParallelism": 2,
+    "applyParallelism": 1
+  },
+  "restart": null,
+  "failures": [],
+  "packageChecks": [
+    {
+      "command": "node --test --test-concurrency=1 scripts/dlcAssetBatches.test.mjs scripts/dlcBatchAssetSource.test.mjs scripts/dlcDistributionExport.test.mjs scripts/dlcDistributionBuild.test.mjs",
+      "counts": {
+        "tests": 75,
+        "pass": 75,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "ce462056dcf1cab25a0ecffae8bea0f3c5167c5963cd1f2f5f8070724563ae65"
+    },
+    {
+      "command": "node --test scripts/dlcAssetBatchDecode.test.mjs",
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "6c0a49b4d1b794dff415644cb13a6ee8545c47a285ec2e804e1794d08d240b44"
+    }
+  ],
+  "assembly": "/tmp/mvb-pass06-doom/assembly",
+  "strict": {
+    "coverageExit": 1,
+    "distributionExportExit": 1,
+    "outputCreated": false,
+    "stagingCreated": false,
+    "diagnostic": "Assembled media do not cover the pinned distribution plan."
+  },
+  "selectedLots": [
+    "00105",
+    "00083",
+    "00164",
+    "00053",
+    "00144",
+    "00129",
+    "00026",
+    "00059",
+    "00024",
+    "00160",
+    "00033",
+    "00106",
+    "00040",
+    "00157",
+    "00074",
+    "00099",
+    "00077",
+    "00067",
+    "00159",
+    "00145"
+  ],
+  "spaceAfterAssemblyBytes": 1032458240,
+  "temporaryVolumeReserveBytes": 786432000,
+  "testNode": "22.23.5",
+  "storage": "One temporary media tree. This pass keeps portable proofs and no additional assembled tree."
+}

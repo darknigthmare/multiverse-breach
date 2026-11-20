@@ -1,0 +1,179 @@
+{
+  "codeCommit": "5127b8d1ab94ff0254efcbd980e9605fb2eaafa2",
+  "comparedWith": "8dfe58e2182b15068bb2e40485ebe62d52da3221",
+  "node": "22.23.5",
+  "suites": [
+    {
+      "name": "P0 visuels",
+      "command": "npm run test:p0-visuals",
+      "totals": {
+        "tests": 30,
+        "pass": 30,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "cab4e64c8bfdcc6c172fb0d41adc3979f30b504c351e93922240e8237956aa6e"
+    },
+    {
+      "name": "Interface immersive",
+      "command": "npm run test:ui-immersion",
+      "totals": {
+        "tests": 582,
+        "pass": 582,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "2064d513f4f5e8f27c6c3ed953d208c594263d2af73c0a22e3013dcfb25a7d38"
+    },
+    {
+      "name": "Archives, interface et présentation Revan",
+      "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/reviewedRevanPresentationRuntime20261113.test.mjs scripts/shellImmersion.test.mjs scripts/universeArchiveReader.test.mjs scripts/canonStarWarsMinionsCorrections.test.mjs scripts/canonicalStarWarsSpriteEvidence.test.mjs",
+      "totals": {
+        "tests": 44,
+        "pass": 44,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "af5341cb3c5a3c821cf77408d274672d901118b38dae0ce913748c41d2f2903e"
+    },
+    {
+      "name": "CG historique et DC",
+      "command": "node --test --test-concurrency=1 scripts/cgContinuation02MetadataAmendment.test.mjs scripts/batmanReviewedQuarantine20261113.test.mjs scripts/historicalDcP0SpriteQuarantine.test.mjs",
+      "totals": {
+        "tests": 83,
+        "pass": 83,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "18d5d98d65558de5c3b0e39c2d06276f3f53124736eba309c8733e9d58779c4a"
+    },
+    {
+      "name": "Rattrapage et intégration des moteurs",
+      "command": "node --max-old-space-size=4096 --test --test-concurrency=1 scripts/tacticsPhaselockWave15.test.mjs scripts/tacticsSourceIntegrationWave17.test.mjs scripts/sourceEngineWave17.test.mjs",
+      "totals": {
+        "tests": 99,
+        "pass": 99,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "232fcde7420a548fe5ec8105e9787cbb092d3fb4f93e07de2c19b8428c01bbda"
+    }
+  ],
+  "tactics": {
+    "initial": {
+      "command": "npm run test:tactics-verticality",
+      "totals": {
+        "tests": 286,
+        "pass": 285,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "93b7f9b9add050ca0b21e0d409b6ce7be5aeaece1377eb6c4fdfda80edbdd9c0"
+    },
+    "interrupted": "scripts/tacticsPhaselockWave15.test.mjs (SIGKILL)",
+    "isolatedRecovery": "Rattrapage et intégration des moteurs"
+  },
+  "lint": {
+    "files": 23,
+    "command": "node_modules/.bin/oxlint --deny-warnings FILES",
+    "exitCode": 0
+  },
+  "profileCompilation": {
+    "scope": "Compilation du code et contrôle des modules en mémoire, sans export des médias.",
+    "profiles": [
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 505,
+        "modules": 2887,
+        "dlcModules": 2038,
+        "javascriptBytes": 53165933,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      },
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 0,
+        "modules": 850,
+        "dlcModules": 0,
+        "javascriptBytes": 49886873,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    ]
+  },
+  "inheritedFailures": [
+    {
+      "suite": "Combat Completion",
+      "cases": [
+        "baird : nom historique du catalogue",
+        "feral_predator : libellé d’incarnation",
+        "cave_johnson : partenaire Chell"
+      ],
+      "baselineTapSha256": "463763063a4d3111bf7644e974f90d86f008634e2040b31d560001a867232f76"
+    },
+    {
+      "suite": "Source Prepared Legacy Wave 17",
+      "cases": [
+        "Master Chief : les deux noms comparés valent « Grenade à plasma du Major »"
+      ],
+      "baselineLogSha256": "29bc7f28989c2020bc961bd727055e8d7ef40aa0bb0d48d2f3ead9ed1eab1661"
+    },
+    {
+      "suite": "Rift",
+      "cases": [
+        "Gordon Freeman : repères visuels et métadonnées historiques"
+      ],
+      "evidence": "../dc/review.json"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "name": "Découpes et portrait de Starfire",
+      "path": "../dc/browser.json"
+    },
+    {
+      "name": "Custom Battle quatre modes",
+      "path": "../wizard-minions/verification.json"
+    },
+    {
+      "name": "Lilo et Stitch",
+      "path": "../lilo-stitch/browser.json"
+    },
+    {
+      "name": "Jack et Roger",
+      "path": "../iconic/verification.json"
+    },
+    {
+      "name": "Les trois chargements de Kelly",
+      "path": "../spider/browser.json"
+    },
+    {
+      "name": "Han, Luke et Vader",
+      "path": "../star-wars/browser.json"
+    },
+    {
+      "name": "Lots et contrôle strict Doom",
+      "path": "../dlc/coverage.json"
+    }
+  ]
+}

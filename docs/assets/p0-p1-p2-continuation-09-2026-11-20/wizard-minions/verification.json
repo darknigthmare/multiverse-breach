@@ -1,0 +1,255 @@
+{
+  "sourceBaseline": "8dfe58e2182b15068bb2e40485ebe62d52da3221",
+  "totalInspectedCells": 112,
+  "archivedSheets": [
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/harry.png",
+      "sha256": "bef3cd1d8f6751c1ca1094b14aca466f506772f5c7bcbb222ad8091407a26243",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "known-wrong-live-art"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/hermione.png",
+      "sha256": "c3fc54f14676e0e9f6692c8b238b3ac99bb1034c201aa04f9ebaa7afc1a5b072",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "known-wrong-live-art"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/harry-potter.png",
+      "sha256": "ba527d7e410aefd8d5621548f199d38724a23d07d127a0377481511838f45d31",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "distinct-legacy-id"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/hermione-granger.png",
+      "sha256": "4b6a449757c7db6c2cde2a1f858f9e6b11586783f41a5b56110f9acc4e423837",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "distinct-legacy-id"
+    },
+    {
+      "path": "public/sprites/generated/heroes/minions/bob-minions.png",
+      "sha256": "d24627706a7d66cc4d3c8f3e90f7580e593e8f31ee9e1362dd5787d6c4288998",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "known-wrong-live-art"
+    },
+    {
+      "path": "public/sprites/generated/heroes/minions/kevin-minions.png",
+      "sha256": "8596cedf12484da0ad15b8a5efcdb9f395eb6d7504ef25a5d6903fabb594f19e",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "known-wrong-live-art"
+    },
+    {
+      "path": "public/sprites/generated/heroes/minions/stuart-minions.png",
+      "sha256": "0b04ef89c9039baee4441d18fd3adc624adb8feda1c4a5603b86b06154fd82cd",
+      "size": [
+        1024,
+        1024
+      ],
+      "cells": 16,
+      "classification": "known-wrong-live-art"
+    }
+  ],
+  "exactReplacementArtClosed": 0,
+  "tests": {
+    "before": {
+      "total": 16,
+      "passed": 1,
+      "failed": 15,
+      "tapSha256": "c10995d98e54709e75de36d6b6ae4d52747c8997b217463dcb8371e37192da69"
+    },
+    "after": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "tapSha256": "bec96c2c3acea2d60cf3daf6a8bea73fc373949d1221ed8a88968e7711992bac"
+    },
+    "compatibility": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "tapSha256": "0025b6159a2c939912f573460848f6234a3a4b73a2624147596decc9d5b3e36d"
+    },
+    "node": "22.23.5"
+  },
+  "browser": {
+    "version": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "scope": "Combat custom, sélecteur d’équipe puis lancement réel. Relevé du Canvas, PV et commandes à l’ouverture d’une partie, puis démontage.",
+    "cases": [
+      {
+        "mode": "RPG",
+        "viewport": [
+          1280,
+          900
+        ],
+        "lang": "fr",
+        "lockerLabels": 20,
+        "observed": {
+          "player": [
+            {
+              "id": "harry",
+              "name": "Harry Potter",
+              "hp": 120,
+              "weapon": "wand",
+              "command": "Expelliarmus"
+            },
+            {
+              "id": "hermione",
+              "name": "Hermione Granger",
+              "hp": 100,
+              "weapon": "wand",
+              "command": "Stupefy"
+            }
+          ],
+          "opponent": [],
+          "images": [
+            "/backgrounds/harry-potter-rpg-openai.png"
+          ],
+          "labels": 12,
+          "views": 6
+        },
+        "requested": [],
+        "errors": [],
+        "missing": [
+          "/sprites/generated/bosses/harry-potter/death-eater.png"
+        ],
+        "afterUnmount": true
+      },
+      {
+        "mode": "Tactics",
+        "viewport": [
+          390,
+          844
+        ],
+        "lang": "en",
+        "lockerLabels": 20,
+        "observed": {
+          "player": [
+            {
+              "id": "bob_minions",
+              "name": "Bob",
+              "hp": 100,
+              "weapon": "fists",
+              "command": "Clumsy Minion Bump"
+            },
+            {
+              "id": "kevin_minions",
+              "name": "Kevin",
+              "hp": 120,
+              "weapon": "fists",
+              "command": "Kevin Minion Bump"
+            },
+            {
+              "id": "stuart_minions",
+              "name": "Stuart",
+              "hp": 105,
+              "weapon": "guitar",
+              "command": "Guitar Swing"
+            }
+          ],
+          "opponent": [],
+          "images": [],
+          "labels": 48,
+          "views": 8
+        },
+        "requested": [],
+        "errors": [],
+        "missing": [
+          "/sprites/generated/bosses/minions/villain-con-guard.png"
+        ],
+        "afterUnmount": true
+      },
+      {
+        "mode": "Smash",
+        "viewport": [
+          1280,
+          900
+        ],
+        "lang": "fr",
+        "lockerLabels": 20,
+        "observed": {
+          "player": [
+            {
+              "id": "kevin_minions",
+              "name": "Kevin",
+              "hp": 120,
+              "weapon": "fists",
+              "command": "Kevin Minion Bump"
+            }
+          ],
+          "opponent": [],
+          "images": [],
+          "labels": 9,
+          "views": 9
+        },
+        "requested": [],
+        "errors": [],
+        "missing": [
+          "/sprites/generated/bosses/minions/villain-con-guard.png"
+        ],
+        "afterUnmount": true
+      },
+      {
+        "mode": "Fighter",
+        "viewport": [
+          390,
+          844
+        ],
+        "lang": "en",
+        "lockerLabels": 20,
+        "observed": {
+          "player": [
+            {
+              "id": "harry",
+              "name": "Harry Potter",
+              "hp": 246,
+              "weapon": "wand",
+              "command": "Expelliarmus"
+            }
+          ],
+          "opponent": [
+            {
+              "id": "stuart_minions",
+              "name": "Stuart",
+              "hp": 234,
+              "weapon": "guitar",
+              "command": "Guitar Swing"
+            }
+          ],
+          "images": [
+            "/backgrounds/harry-potter-rpg-openai.png"
+          ],
+          "labels": 14,
+          "views": 7
+        },
+        "requested": [],
+        "errors": [],
+        "missing": [],
+        "afterUnmount": true
+      }
+    ]
+  }
+}

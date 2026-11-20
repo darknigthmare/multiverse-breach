@@ -1,0 +1,7 @@
+# Lilo et Stitch dans le film animé de 2002
+
+Les 32 cellules des deux planches de jeu ont été examinées. La robe rouge, la fleur et la silhouette de Lilo restent reconnaissables. Certaines cellules ajoutent une carte, une lanterne, des objets rituels ou des fragments de la rangée précédente. Le jeu utilise les cellules (ligne, colonne) **(0,2), (0,3), (1,0) et (1,3)** pour l’attente et la marche. Les autres états jouent une pose calme et la commande photo conserve son flash. L’archive, les cartes, le HUD du duel et le kart choisissent le même cadre d’attente que le Canvas. [Référence existante](../../p0-p1-continuation-2026-11-13/references/lilo_pelekai/reference-evidence.json)
+
+Stitch porte une armure rouge, une antenne et des bras supplémentaires sur les 16 cellules de sa planche. L’acteur sélectionné correspond à sa forme terrestre à deux bras. Le jeu affiche le repère d’illustration en attente et conserve son identité et sa commande de contact. Les planches d’origine et les dossiers visuels P0 de Lilo et Stitch restent suivis. [Référence de la forme terrestre](../../../cg/stitch-626-reference-evidence-wave11-2026-10-26.json)
+
+Deux essais Chromium à 1 100 × 768 et 390 × 844 observent chacun 23 rendus issus du Canvas de jeu, dont 19 découpes de Lilo et quatre repères de Stitch. Une pose forcée vers l’ancienne rangée d’attaque ne contourne pas les cellules autorisées. Le SHA-256 servi correspond à la planche archivée de Lilo. Le PNG de Stitch ne fait l’objet d’aucune requête. [Rendu et mesures](rendu.jpg) · [Reçu Chromium](browser.json)
