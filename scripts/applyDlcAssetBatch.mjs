@@ -90,11 +90,14 @@ function readJournal(root) {
 }
 
 /** Read the local assembly and verify all installed files against its retained receipts. */
-export async function auditDlcAssetBatchAssembly({ directory, expectedPlanSha256, plan } = {}) {
+export async function auditDlcAssetBatchAssembly({ directory, expectedPlanSha256, plan, collectAssetDigests = false } = {}) {
   directory = assertDistributionDirectory(directory);
   const { state, batchEntries, sources } = readJournal(directory);
   if (expectedPlanSha256 !== undefined && state.planSha256 !== expectedPlanSha256) throw new Error('Assembly plan hash differs from the pinned hash.');
   const planCheck = plan === undefined ? null : inspectDlcAssetBatchCoverage({ plan, expectedPlanSha256, state, batchEntries });
+  if (collectAssetDigests && !planCheck?.coverage.mediaPlanComplete) {
+    throw new Error('Assembled media do not cover the pinned distribution plan.');
+  }
   const files = listDistributionFiles({ root: directory, ignore: file => file === JOURNAL });
   if (files.some(file => !sources.has(file))) throw new Error('Assembly contains files absent from its batch receipts.');
   let bytes = 0;
@@ -107,7 +110,9 @@ export async function auditDlcAssetBatchAssembly({ directory, expectedPlanSha256
   }
   const pendingBatches = [...batchEntries].filter(([, row]) => !row.done).map(([id]) => id).sort();
   return { sourceRevision: state.sourceRevision, planSha256: state.planSha256, appliedBatches: batchEntries.size - pendingBatches.length,
-    pendingBatches, presentAssets: present.size, payloadBytes: bytes, ...(planCheck && { coverage: planCheck.coverage }) };
+    pendingBatches, presentAssets: present.size, payloadBytes: bytes, ...(planCheck && { coverage: planCheck.coverage }),
+    ...(collectAssetDigests && { assetDigests: new Map([...sources].map(([sourcePath, { asset }]) =>
+      [sourcePath, { sha256: asset.sha256, bytes: asset.bytes }])) }) };
 }
 
 /** Apply or resume a transferred batch without rereading Git or LFS. */

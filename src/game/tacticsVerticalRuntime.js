@@ -14,6 +14,7 @@ import { getHeroSpriteSheetSrc, getSpriteSheetLayout, getSpriteFrameForLayout } 
 import { drawTacticsScenery, getTacticsSceneryBounds } from './tacticsEnvironmentRenderer.js';
 import { isTacticsPhaselockProfile, getTacticsSourceProfileWave16 } from './tacticsControl.js';
 import { isValHealingBurstProfile } from './combat/combatHealingBurstWave15.js';
+import { applyCombatHealing } from './combatHealing.js';
 
 const rays = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
 const living = unit => (unit?.currentHp ?? unit?.hp ?? 0) > 0;
@@ -477,15 +478,18 @@ export class TacticsVerticalRuntime {
         continue;
       }
       const ticks = Math.max(1, Math.round((profile.effectDuration || profile.duration || 2) * 60));
-      if (profile.effect === 'heal') unit.currentHp = Math.min(unit.maxHp, unit.currentHp + Math.round(unit.maxHp * (profile.healRatio || 0.15)));
+      let label = profile.effect === 'guard' ? 'GARDE' : 'SOUTIEN';
+      if (profile.effect === 'heal') {
+        const gained = applyCombatHealing(unit, unit.maxHp * (profile.healRatio || 0.15));
+        label = gained > 0 ? `+${Math.round(gained)} HP` : null;
+      }
       if (profile.effect === 'revive') { e.invalidateActorActions(unit); delete unit.tacticsControl; unit.currentHp = Math.max(1, Math.round(unit.maxHp * (profile.reviveRatio || 0.3))); unit.state = 'idle'; }
       if (profile.effect === 'guard') { unit.tacticsGuardTicks = ticks; unit.tacticsGuardReduce = profile.guardReduce ?? 0.3; }
       if (profile.effect === 'buff') { unit.tacticsBuffTicks = ticks; unit.tacticsBuffMultiplier = profile.buffMultiplier || 1.12; }
       if (profile.effect === 'cleanse' || profile.cleanses) {
         for (const key of Object.keys(unit.statusEffects || {})) unit.statusEffects[key] = 0;
       }
-      e.particles.add(unit.x, unit.y - 25, 0, -1, '#83e6cc', 10, 36, 'text',
-        profile.effect === 'heal' ? '+HP' : profile.effect === 'guard' ? 'GARDE' : 'SOUTIEN');
+      if (label) e.particles.add(unit.x, unit.y - 25, 0, -1, '#83e6cc', 10, 36, 'text', label);
     }
     return applied;
   }

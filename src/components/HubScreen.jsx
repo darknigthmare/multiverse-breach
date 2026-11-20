@@ -85,7 +85,7 @@ import RegulationImagePreview from './RegulationImagePreview';
 import UniverseArchiveReader from './UniverseArchiveReader.jsx';
 import { getOcCampaignResumeTarget, getOcCampaignUiProgress } from '../game/ocCampaignUiProgress';
 import { OC_DLC_UNIVERSE_KEYS } from '../game/ocDlcPacks';
-import { canInspectUniverseArchive, normalizeArchiveLivingWorld } from '../game/universeArchiveView';
+import { buildArchiveThreatCatalog, canInspectUniverseArchive, normalizeArchiveLivingWorld } from '../game/universeArchiveView';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import CgGallery from './cg/CgGallery';
 import { autoComposeMissionTeam, evaluateMissionAccess } from '../game/missions/missionAccessRules';
@@ -8632,14 +8632,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
       ? indexedStages
       : indexedStages.filter(isStageUnlocked);
     const heroes = HEROES_DB.filter(hero => hero.universe === universe);
-    const allEnemies = ENEMIES_DB[universe]
-      ? [
-        ...(ENEMIES_DB[universe].monsters || []),
-        ...(ENEMIES_DB[universe].bosses || []),
-        ENEMIES_DB[universe].worldBoss
-      ].filter(Boolean)
-        .filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)))
-      : [];
+    const threats = buildArchiveThreatCatalog(ENEMIES_DB[universe], enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)));
     const relics = EQUIP_ITEMS_DB.filter(item => (
       item.universe === universe
       && isGearContentPackVisible(item)
@@ -8670,7 +8663,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         faction,
         cleared: !stageId || completedStages.includes(stageId),
         heroCount: heroes.length,
-        enemyCount: allEnemies.length,
+        enemyCount: threats.allEnemies.length,
         relicCount: relics.length + (eventItem ? 1 : 0) + battleItems.length,
         stageCount: stages.length,
         arcCount
@@ -8679,7 +8672,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
       cleared: !stageId || completedStages.includes(stageId),
       hidden: hiddenUniverseSet.has(universe),
       heroes,
-      allEnemies,
+      ...threats,
       relics,
       eventItem,
       battleItems,

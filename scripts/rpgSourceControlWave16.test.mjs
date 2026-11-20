@@ -11,10 +11,10 @@ const hero=id=>structuredClone(HEROES.find(h=>h.id===id));
 const tick=(engine,count)=>{for(let n=0;n<count;n++)engine.update();};
 const slig=()=>{const body=structuredClone(ENEMIES.Oddworld.monsters.find(e=>e.id==='oddworld_slig'));assert.equal(body.possessionEligible,true);
  return {...body,stats:body.stats||{hp:body.hp,atk:body.atk,def:body.def||5,spd:body.spd||5}};};
-function make(kind,side){
+function make(kind,side,allies=[]){
  const owner=hero(kind==='possession'?'oddworld_abe_possession':'akane_tsunemori');
  const target=kind==='possession'?slig():{...hero('shinya_kogami'),paralyzerEligible:true};
- const other=hero('noble_six'),own=[owner],opposition=[target,other];
+ const other=hero('noble_six'),own=[owner,...allies],opposition=[target,other];
  const engine=new Engine(1040,460,side==='player'?own:opposition,{monsters:side==='player'?opposition:own,bosses:[],customRoster:side==='player'?opposition:own},{add(){}},()=>{},()=>{},
  {universe:owner.universe,customBattle:{singleRoster:true,opponentControl:'p2'}});engines.push(engine);engine.enemyGlobalRecovery=0;
  const actor=(side==='player'?engine.heroes:engine.enemies)[0],targets=side==='player'?engine.enemies:engine.heroes;
@@ -68,6 +68,36 @@ for(const side of['player','enemy']){
    assert.equal(c.engine.beginTargeting(c.actor,'special',side),false);assert.equal(c.actor.atb,100);assert.equal(c.actor.specialCharge,100);}
  });
 }
+
+test('RPG: an allied invocation pauses a committed Slig rifle pose and its release together', () => {
+ const c = make('possession', 'player', [hero('mei_zhen')]);
+ const { engine, actor, target, other } = c;
+ const summoner = engine.heroes[1];
+ summoner.x = summoner.homeX = actor.x - 65;
+ summoner.y = summoner.homeY = actor.y;
+ start(c);
+ tick(engine, 67);
+ assert.equal(engine.beginPossessedTargeting(actor.battleId), true);
+ assert.equal(engine.confirmTargeting(), true);
+ tick(engine, 4);
+ const rifle = target.rpgPossessedRifleActionWave16;
+ const hp = other.currentHp;
+ assert.equal(rifle.elapsedTicks, 4);
+ summoner.atb = 100;
+ assert.equal(engine.beginTargeting(summoner, 'summon') && engine.confirmTargeting(), true);
+ const duration = engine.activeSummon.durationTicks;
+ tick(engine, duration);
+ assert.equal(engine.activeSummon, null);
+ assert.equal(target.rpgPossessedRifleActionWave16, rifle);
+ assert.equal(rifle.elapsedTicks, 4);
+ assert.equal(other.currentHp, hp);
+ assert.equal(target.rpgPossessedRifleLastReleaseWave16, undefined);
+ tick(engine, 10);
+ assert.equal(other.currentHp, hp);
+ tick(engine, 1);
+ assert.equal(target.rpgPossessedRifleLastReleaseWave16.nativePoint.col, 2);
+ assert.ok(other.currentHp < hp);
+});
 
 function sourceCase(id,side){
  const own=[hero(id)],opposition=[hero('noble_six')];

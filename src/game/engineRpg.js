@@ -1141,7 +1141,13 @@ export class EngineRpg {
         target.rpgBuffMultiplier = profile.buffMultiplier;
         this.particles.add(target.x, target.y - 20, 0, -1, color, 12, 45, 'text', 'ATK UP');
       } else if (profile.effect === 'guard') {
-        if (isUberProfileWave17(profile)) { activateUberChargeWave17(target, this.heroes.includes(target) ? this.heroes : this.enemies); continue; }
+        if (isUberProfileWave17(profile)) {
+          if (summon?.medicChannelWave17) {
+            const allies = summon.side === 'enemy' ? this.enemies : this.heroes;
+            activateUberChargeWave17(target, allies, summon.medicChannelWave17);
+          }
+          continue;
+        }
         if (hasSourceProtectionProfileWave16(profile)) {
           armSourceProtectionWave16(actor, profile, target);
           continue;
@@ -1285,7 +1291,10 @@ export class EngineRpg {
       caption: { kind: descriptor.kind, entityName: descriptor.entityName || descriptor.name, actionName: profile.name },
       ...(choreography?.confirmedEffect ? { effectContacts: [] } : {}),
       ...((usesConfirmedSummonContactWave9(nativeAnimation) || usesConfirmedSummonContactWave10(nativeAnimation) || usesConfirmedSummonContactWave11(nativeAnimation) || usesConfirmedSummonContactWave12(nativeAnimation) || usesConfirmedSummonContactWave13(nativeAnimation) || usesConfirmedSummonContactWave14(nativeAnimation) || usesConfirmedSummonContactWave15(nativeAnimation) || usesConfirmedSummonContactWave16(nativeAnimation) || usesConfirmedSummonContactWave17(nativeAnimation)) ? { visualContacts: [] } : {}) };
-    if(sourceMedicWave17)this.activeSummon.sourceMedicWave17=sourceMedicWave17;
+    if (sourceMedicWave17) {
+      this.activeSummon.sourceMedicWave17 = sourceMedicWave17;
+      this.activeSummon.medicChannelWave17 = { medic: sourceMedicWave17, beam: sourceMedicWave17.sourceMediGunWave17 };
+    }
     if(profile.action?.targeting?.sourceGoldenLuteWave17===true){
       this.activeSummon.sourceLuteCommitmentWave17 = captureRpgActionCommitment(this, context, side === 'enemy' ? this.heroes : this.enemies);
       const targetCell=sourceCellWave17(anchor),dx=side==='enemy'?-1:1;
@@ -1326,7 +1335,13 @@ export class EngineRpg {
       return;
     }
     scene.tick++;
-    if(scene.sourceMedicWave17&&!findChargedMedicWave17(scene.actor,scene.side==='enemy'?this.enemies:this.heroes)&&!scene.impacted){this.finishSummon();return;}
+    if (!scene.impacted && scene.medicChannelWave17) {
+      const allies = scene.side === 'enemy' ? this.enemies : this.heroes;
+      if (!findChargedMedicWave17(scene.actor, allies, scene.medicChannelWave17)) {
+        this.finishSummon();
+        return;
+      }
+    }
     if(scene.sourceLuteActorWave17){const step=scene.sourceLuteStepWave17,body=scene.sourceLuteActorWave17;
       const progress=Math.max(0,Math.min(1,(scene.tick-(scene.impactTick-24))/24));
       body.x=step.fromWorld.x+step.dx*progress;body.y=step.fromWorld.y;
@@ -2068,7 +2083,7 @@ export class EngineRpg {
           if(this.enemies.includes(owner))this.enemyActionLock=false;
         }
       }
-      if(actor.rpgPossessedRifleActionWave16){
+      if (!this.activeSummon && actor.rpgPossessedRifleActionWave16) {
         actor.rpgPossessedRifleActionWave16.elapsedTicks++;
         actor.rpgPossessedRifleActionWave16.elapsed=actor.rpgPossessedRifleActionWave16.elapsedTicks/60;
         if(actor.rpgPossessedRifleActionWave16.elapsed>=actor.rpgPossessedRifleActionWave16.duration)actor.rpgPossessedRifleActionWave16=null;

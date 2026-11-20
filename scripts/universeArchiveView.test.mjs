@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { createServer } from './fixtures/ssrTestServer.mjs';
-import { canInspectUniverseArchive, getArchiveNeighbour, normalizeArchiveLivingWorld } from '../src/game/universeArchiveView.js';
+import { buildArchiveThreatCatalog, canInspectUniverseArchive, getArchiveNeighbour, normalizeArchiveLivingWorld } from '../src/game/universeArchiveView.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let vite;
@@ -48,6 +48,24 @@ test('previous/next dossier navigation respects its filtered catalogue and bound
   assert.equal(getArchiveNeighbour([], 'Nexus', 1), null);
   assert.equal(getArchiveNeighbour(null, 'Nexus', 1), null);
   assert.equal(getArchiveNeighbour(worlds, 'Alien', 0), null);
+});
+
+test('archive threats preserve source roles and ordering when the final core is absent or hidden', () => {
+  const field = { name: 'Shared name' };
+  const champion = { name: 'Shared name' };
+  const core = { name: 'Final core' };
+  const roster = { monsters: [field, null], bosses: [champion], worldBoss: core };
+  const original = structuredClone(roster);
+  const full = buildArchiveThreatCatalog(roster);
+  assert.deepEqual(full.allEnemies, [field, champion, core]);
+  assert.deepEqual([...full.enemyRoles], [[field, 'menace'], [champion, 'boss'], [core, 'worldBoss']]);
+  const filtered = buildArchiveThreatCatalog(roster, enemy => enemy !== core);
+  assert.deepEqual(filtered.allEnemies, [field, champion]);
+  assert.equal(filtered.enemyRoles.get(champion), 'boss');
+  assert.equal(filtered.enemyRoles.has(core), false);
+  assert.equal(buildArchiveThreatCatalog({ monsters: [field] }).enemyRoles.get(field), 'menace');
+  assert.deepEqual(buildArchiveThreatCatalog(), { allEnemies: [], enemyRoles: new Map() });
+  assert.deepEqual(roster, original);
 });
 
 test('incomplete optional living worlds normalize safely without inventing lore', () => {
@@ -133,7 +151,7 @@ test('Codex and collection use one modal with live counts and no stale encrypted
   assert.equal((source.match(/<UniverseArchiveReader[\s>]/g) || []).length, 1);
   assert.match(source, /data-universe-open=\{universe\} aria-haspopup="dialog" onClick=\{\(\) => openUniverseArchive\(universe\)\}/);
   assert.match(source, /openUniverseArchive\(universe\); sound\.playSfx\('coin'\)/);
-  assert.match(source, /codexUniverseKeys\.length\} univers affichés/);
+  assert.match(source, /codexUniverseKeys\.length\} univers consultables/);
   const reader = readFileSync(path.join(root, 'src/components/UniverseArchiveReader.jsx'), 'utf8');
   assert.match(reader, /catalogProps\('world-items', selectedUniverseArchive\.worldItems/);
   assert.doesNotMatch(source, /const encryptString/);

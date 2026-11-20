@@ -69,6 +69,7 @@ import { drawWardrobeEffect } from './wardrobeEffects.js';
 import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
 import { getQuarantinedCanonSprite } from './canonicalSpriteQuarantine.js';
 import { drawPachakutiFallback } from './pachakutiWorldBossArt.js';
+import { drawTwelveBellJudgesMotion } from './twelveBellJudgesMotion.js';
 
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
@@ -525,17 +526,10 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   ctx.scale(facing, 1);
   ctx.filter = entity?.spriteFilter || 'none';
   ctx.imageSmoothingEnabled = false;
-  ctx.drawImage(
-    entry.image,
-    sourceX,
-    sourceY,
-    sourceW,
-    sourceH,
-    -drawW / 2,
-    -baseline * scale,
-    drawW,
-    drawH
-  );
+  if (sourceX !== 0 || sourceY !== 0 || sourceW !== entry.image.naturalWidth || sourceH !== entry.image.naturalHeight
+    || !drawTwelveBellJudgesMotion(ctx, entity, entry.image, animTime, -drawW / 2, -baseline * scale, drawW, drawH)) {
+    ctx.drawImage(entry.image, sourceX, sourceY, sourceW, sourceH, -drawW / 2, -baseline * scale, drawW, drawH);
+  }
   ctx.restore();
   drawMirelleItemVfx(ctx, x, y, entity, animTime, facing, targetHeight, context, redrawWhenResolved);
   return 'drawn';

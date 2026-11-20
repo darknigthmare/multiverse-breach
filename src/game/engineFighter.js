@@ -1966,11 +1966,12 @@ export class EngineFighter {
 
   getPresentationEntryElapsed(entry, presentation = this.getCurrentPresentation()) {
     if (!presentation) return 0;
+    const duration = entry.script?.duration ?? entry.identity.duration;
     // The previous result phase already completed this fall. A KO cannot
     // stand up for an exit or restart its defeat while the winner leaves.
     if (presentation.phase === 'outro' && entry.actorPhase === 'defeat'
-      && this.getActive(entry.side)?.currentHp <= 0) return entry.script?.duration || entry.identity.duration;
-    return Math.max(0, presentation.duration - presentation.remaining);
+      && this.getActive(entry.side)?.currentHp <= 0) return duration;
+    return clamp(presentation.duration - presentation.remaining, 0, duration);
   }
 
   draw(ctx, animTime, { reducedMotion = false, canvasCaptions = true } = {}) {
@@ -2148,15 +2149,17 @@ export class EngineFighter {
       const anchorX = finalScene ? this.width / 2 : side === 'player' ? this.width * 0.25 : this.width * 0.75;
       const entryElapsed = this.getPresentationEntryElapsed(entry, presentation);
       const sample = script ? samplePresentationScript(script, entryElapsed) : null;
+      const actorProgress = sample?.progress ?? clamp(entryElapsed / identity.duration, 0, 1);
       const original = script?.provenance?.kind === 'original-duel-presentation';
       const matchingBody = original && sample?.asset.sheet === script.sourceAsset.sheet;
       const facing = side === 'player' ? 1 : -1;
-      const entranceOffset = actorPhase === 'intro' ? (side === 'player' ? -1 : 1) * 60 * (1 - progress) : 0;
-      const exitOffset = actorPhase === 'outro' ? (side === 'player' ? -1 : 1) * 100 * progress : 0;
+      const entranceOffset = actorPhase === 'intro' ? -facing * 60 * (1 - actorProgress) : 0;
+      const exitOffset = actorPhase === 'outro' ? -facing * 100 * actorProgress : 0;
+      const poseFacing = facing * (sample?.facing ?? (actorPhase === 'outro' ? -1 : 1));
       const x = anchorX + (sample ? sample.x * facing : entranceOffset + exitOffset);
       const losing = actorPhase === 'roundDefeat' || actorPhase === 'defeat';
       const state = finalScene ? 'special' : losing ? 'hit' : actorPhase === 'intro' || actorPhase === 'outro' ? 'run' : 'idle';
-      const lift = losing ? 0 : Math.sin(progress * Math.PI) * (finalScene ? 18 : 5);
+      const lift = losing ? 0 : Math.sin(actorProgress * Math.PI) * (finalScene ? 18 : 5);
       const bodyHeight = (finalScene ? 208 : 176) * (sample?.scale || 1);
       // The ordinary four-row renderer anchors 24 pixels above the bottom
       // of a 256-pixel cell. The inspected clips have a slightly lower anchor.
@@ -2173,7 +2176,7 @@ export class EngineFighter {
         state: sample?.poseState || state,
         stateElapsed: sample?.stateElapsed ?? entryElapsed,
         presentationPhase: actorPhase,
-        presentationProgress: sample?.progress ?? progress,
+        presentationProgress: actorProgress,
         presentationFrame: sample ? {
           sheet: sample.asset.sheet, columns: sample.asset.columns, rows: sample.asset.rows,
           row: sample.asset.row, col: sample.asset.col
@@ -2184,7 +2187,7 @@ export class EngineFighter {
       if (sample && !drawOriginalFighterPresentationEffect(ctx, sample, { x, feetY, facing, phase: actorPhase, reducedMotion })) {
         this.drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, actorPhase);
       }
-      drawPixelSprite(ctx, x, feetY + anchorCorrection, presentationFighter, animTime, facing * (sample?.facing || 1), bodyHeight, 'melee');
+      drawPixelSprite(ctx, x, feetY + anchorCorrection, presentationFighter, animTime, poseFacing, bodyHeight, 'melee');
       ctx.restore();
       if (finalScene && !sample) {
         const spec = this.getPersonalSuperSpec(fighter);

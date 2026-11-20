@@ -152,6 +152,7 @@ function copyAttestedAsset(sourceRoot, destinationRoot, asset, destinationPath) 
     while ((count = readSync(input, buffer, 0, buffer.length, null)) > 0) {
       digest.update(buffer.subarray(0, count));
       bytes += count;
+      if (bytes > asset.bytes) throw new Error('Canonical asset changed during export: ' + asset.sourcePath);
       let written = 0;
       while (written < count) {
         const length = writeSync(output, buffer, written, count - written);
@@ -177,11 +178,52 @@ function compareSnapshots(before, after) {
   if (signature(before) !== signature(after)) throw new Error('Canonical media or inventory changed during distribution export.');
 }
 
+function verifyAssemblySourceInputs(root, mediaPlan) {
+  if (!Array.isArray(mediaPlan.inventory) || !mediaPlan.inventory.length) throw new Error('Missing frozen media plan inputs.');
+  for (const file of mediaPlan.inventory) {
+    const bytes = readDistributionFile(root, file.path);
+    if (bytes.length !== file.bytes || hash(bytes) !== file.sha256) {
+      throw new Error('Source snapshot differs from the media plan: ' + file.path);
+    }
+  }
+}
+
+function createAssembledMediaReceipt({ root, plan, sourceRevision, additionalRoot = root, additionalFiles = [] }, assembly) {
+  const current = buildDlcDistributionPlan({ root, selection: plan.selection });
+  const { mode, requestedPackIds: packIds, sharedPolicy, selectedManifests } = current.selection;
+  const profile = { schemaVersion: 1, mode, packIds, sharedPolicy };
+  const planned = assembly.mediaPlan.profile;
+  if (profile.mode !== planned?.mode || profile.sharedPolicy !== planned?.sharedPolicy
+    || JSON.stringify(profile.packIds) !== JSON.stringify(planned?.packIds)) {
+    throw new Error('Distribution profile differs from the assembled media plan.');
+  }
+  if (current.assets.length !== assembly.expectedBySource.size) throw new Error('Distribution inventory differs from the assembled media plan.');
+  const assets = current.assets.map(asset => {
+    const expected = assembly.expectedBySource.get(asset.sourcePath);
+    const digest = assembly.assetDigests.get(asset.sourcePath);
+    if (!expected || !digest || Object.keys(asset).some(key => asset[key] !== expected[key])) {
+      throw new Error('Distribution inventory differs from the assembled media plan: ' + asset.sourcePath);
+    }
+    return { ...asset, ...digest };
+  });
+  const required = new Set(current.metadataFiles);
+  const files = [...required, ...additionalFiles].sort(compare).map(file => {
+    const bytes = readDistributionFile(required.has(file) ? root : additionalRoot, file);
+    return { path: file, sha256: hash(bytes), bytes: bytes.length };
+  });
+  const selectedDirectories = new Set(selectedManifests.map(pack => pack.directory));
+  const retainedPublicSources = current.publicAssets.filter(asset =>
+    asset.declaredBy !== 'DLC/shared-assets.json' && !selectedDirectories.has(asset.declaredBy.slice(0, -'/assets.json'.length)));
+  return { schemaVersion: 1, kind: 'dlc-asset-distribution', ...(sourceRevision !== undefined && { sourceRevision }),
+    profile, packs: selectedManifests.map(({ id, universe, directory, registration, catalogOrder }) =>
+      ({ id, universe, directory, registration, catalogOrder })), retainedPublicSources, assets, files };
+}
+
 /**
  * Export into a fresh sibling staging directory; publish only after all receipt,
  * source-closure and runtime-import checks succeed.
  */
-export function exportDlcDistribution({ root = process.cwd(), profile, out, sourceRevision, documentation = 'all' } = {}) {
+function exportDistribution({ root = process.cwd(), profile, out, sourceRevision, documentation = 'all' }, assembly) {
   root = assertDistributionDirectory(root);
   if (!['all', 'runtime'].includes(documentation)) throw new Error('Documentation mode must be all or runtime.');
   if (inspectDistributionPath(root, DLC_DISTRIBUTION_RECEIPT, { optional: true })) {
@@ -190,11 +232,15 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
   if (typeof out !== 'string' || !out.trim()) throw new Error('A new output directory is required.');
   const destination = path.resolve(out);
   if (isWithin(root, destination)) throw new Error('Distribution output must be outside its source directory.');
+  if (assembly && (isWithin(assembly.root, destination) || isWithin(destination, assembly.root))) {
+    throw new Error('Distribution output must be outside the media assembly.');
+  }
   if (outputExists(destination)) throw new Error('Distribution output already exists: ' + destination);
   const manifests = readDlcDistributionManifests({ root });
   const selection = resolveDlcSelection({ manifests, profile: loadProfile(root, profile) });
   const plan = buildDlcDistributionPlan({ root, selection });
-  const before = createDlcDistributionReceipt({ root, plan, sourceRevision });
+  const attest = options => assembly ? createAssembledMediaReceipt(options, assembly) : createDlcDistributionReceipt(options);
+  const before = attest({ root, plan, sourceRevision });
   const { transformer, runtimeModules, transformSource, sourceFiles } = collectProfileSources(root, selection, documentation);
   const parent = ensureParentDirectory(path.dirname(destination));
   const staging = mkdtempSync(path.join(parent, '.' + path.basename(destination) + '.dlc-staging-'));
@@ -222,12 +268,12 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
     writeNewFile(staging, 'DLC/distribution.json', profileBytes);
     sourceDigests.set('DLC/distribution.json', hash(profileBytes));
     for (const asset of before.assets) {
-      copyAttestedAsset(root, staging, asset, asset.sourcePath);
+      copyAttestedAsset(assembly?.root ?? root, staging, asset, asset.sourcePath);
       if (asset.destinationPath !== asset.sourcePath) copyAttestedAsset(staging, staging, asset, asset.destinationPath);
     }
     const pinnedMetadata = new Set(plan.metadataFiles);
     const additionalFiles = [...sourceDigests.keys()].filter((file) => !pinnedMetadata.has(file)).sort(compare);
-    const receipt = createDlcDistributionReceipt({ root, plan, additionalRoot: staging, additionalFiles, sourceRevision });
+    const receipt = attest({ root, plan, additionalRoot: staging, additionalFiles, sourceRevision });
     compareSnapshots(before, receipt);
     for (const file of receipt.files) {
       if (sourceDigests.get(file.path) !== file.sha256) throw new Error('Copied source changed before attestation: ' + file.path);
@@ -244,6 +290,7 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
         throw new Error('Canonical source changed during distribution export: ' + file);
       }
     }
+    if (assembly) verifyAssemblySourceInputs(root, assembly.mediaPlan);
     if (outputExists(destination)) throw new Error('Distribution output appeared during export: ' + destination);
     const documentationReport = documentationSummary(root, sourceFiles, documentation);
     renameSync(staging, destination);
@@ -256,7 +303,32 @@ export function exportDlcDistribution({ root = process.cwd(), profile, out, sour
   }
 }
 
+export function exportDlcDistribution(options = {}) {
+  return exportDistribution(options);
+}
+
+/** Use a complete portable media assembly with the canonical code and inventories. */
+export async function exportDlcDistributionFromAssembly({ assemblyRoot, mediaPlan, mediaPlanSha256,
+  root = process.cwd(), ...options } = {}) {
+  root = assertDistributionDirectory(root);
+  if (typeof assemblyRoot !== 'string' || !assemblyRoot.trim()) throw new Error('A media assembly directory is required.');
+  assemblyRoot = assertDistributionDirectory(assemblyRoot);
+  if (isWithin(root, assemblyRoot) || isWithin(assemblyRoot, root)) throw new Error('Assembly and canonical source directories must not overlap.');
+  const frozenPlan = structuredClone(mediaPlan);
+  const { auditDlcAssetBatchAssembly } = await import('./applyDlcAssetBatch.mjs');
+  const proof = await auditDlcAssetBatchAssembly({ directory: assemblyRoot, plan: frozenPlan,
+    expectedPlanSha256: mediaPlanSha256, collectAssetDigests: true });
+  if (options.sourceRevision !== undefined && options.sourceRevision !== proof.sourceRevision) {
+    throw new Error('Requested source revision differs from the assembled media plan.');
+  }
+  verifyAssemblySourceInputs(root, frozenPlan);
+  const expectedBySource = new Map(frozenPlan.batches.flatMap(batch => batch.assets).map(asset => [asset.sourcePath, asset]));
+  const result = exportDistribution({ root, ...options }, { root: assemblyRoot, mediaPlan: frozenPlan, expectedBySource, assetDigests: proof.assetDigests });
+  return { ...result, mediaPlanSha256: proof.planSha256 };
+}
+
 const EXPORT_USAGE = `Usage: node scripts/exportDlcDistribution.mjs --profile FILE --out NEW_DIRECTORY [--source-revision FULL_GIT_SHA] [--documentation all|runtime]
+       [--media-assembly DIRECTORY --media-plan PLAN.json --media-plan-sha256 SHA256]
 
 Export an independent source distribution and audit its files before publishing.
 Without --source-revision, the export remains valid for standalone builds.
@@ -277,6 +349,7 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
       let out;
       let sourceRevision;
       let documentation;
+      const media = {};
       for (let index = 0; index < args.length; index += 2) {
         const flag = args[index];
         const value = args[index + 1];
@@ -285,17 +358,22 @@ if (process.argv[1] && pathToFileURL(path.resolve(process.argv[1])).href === imp
         else if (flag === '--out' && out === undefined) out = value;
         else if (flag === '--source-revision' && sourceRevision === undefined) sourceRevision = value;
         else if (flag === '--documentation' && documentation === undefined) documentation = value;
+        else if (['--media-assembly', '--media-plan', '--media-plan-sha256'].includes(flag) && !Object.hasOwn(media, flag)) media[flag] = value;
         else throw new Error('Unknown or duplicate export option: ' + flag);
       }
       if (sourceRevision !== undefined && !/^[a-f0-9]{40}$/.test(sourceRevision)) {
         throw new Error('--source-revision must be a full lowercase Git commit SHA (40 hexadecimal characters).');
       }
       if (!profile || !out) throw new Error(EXPORT_USAGE);
-      const result = exportDlcDistribution({ profile, out, sourceRevision, documentation });
+      const mediaCount = Object.keys(media).length;
+      if (mediaCount !== 0 && mediaCount !== 3) throw new Error('A media assembly requires its directory, plan and pinned plan SHA-256.');
+      const options = { profile, out, sourceRevision, documentation };
+      const result = mediaCount ? await exportDlcDistributionFromAssembly({ ...options, assemblyRoot: media['--media-assembly'],
+        mediaPlan: loadProfile(process.cwd(), media['--media-plan']), mediaPlanSha256: media['--media-plan-sha256'] }) : exportDlcDistribution(options);
       console.log(JSON.stringify({ passed: true, output: slash(result.out), profile: result.profile,
         sourceRevision: result.receipt.sourceRevision ?? null,
         packs: result.packCount, assets: result.assetCount, sources: result.sourceFileCount, transformedFiles: result.transformedFiles.length,
-        documentation: result.documentation }));
+        documentation: result.documentation, ...(mediaCount && { mediaPlanSha256: result.mediaPlanSha256 }) }));
     }
   } catch (error) {
     console.error(error.message);

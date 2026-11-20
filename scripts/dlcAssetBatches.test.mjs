@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import childProcess from 'node:child_process';
 import { syncBuiltinESMExports } from 'node:module';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -399,9 +399,15 @@ test('plan coverage compares native bytes and rejects a locally coherent replace
   await assert.rejects(auditDlcAssetBatchAssembly(options), /differs from planned media/);
 });
 
-test('the assembled media of a complete compact scope are published by a Vite distribution build', async t => {
+test('a compact distribution publishes complete assembled media without hydrating its source checkout', async t => {
   const f = fixture(t);
   const selected = profile(['halo']);
+  const realMedia = process.env.DLC_ASSEMBLY_REAL_MEDIA_FIXTURE === '1';
+  const commonMedia = realMedia ? readFileSync(new URL('../public/favicon.png', import.meta.url)) : PNG;
+  const packMedia = realMedia ? readFileSync(new URL('../DLC/Halo/assets/sprites/generated/heroes/halo/noble-six.png', import.meta.url)) : PNG;
+  f.write('public/images/common.png', commonMedia);
+  f.write('DLC/Halo/assets/images/halo.png', packMedia);
+  f.json('config/dlc-profiles/halo.json', selected);
   f.json('package.json', { type: 'module', name: 'compact-dlc-fixture' });
   f.json('DLC/content-identities.json', { schemaVersion: 1, indexes: { universes: { Halo: 0, Drop: 1 } } });
   const manifests = ['Halo', 'Drop'].map(universe => {
@@ -420,33 +426,52 @@ test('the assembled media of a complete compact scope are published by a Vite di
     'export const MEDIA = [...HALO_MEDIA, ...DROP_MEDIA];',
   ].join('\n') + '\n');
   f.write('vite.config.js', 'export default {};\n');
-  f.write('index.html', '<link rel="icon" href="/images/common.png"><main></main><script type="module" src="/src/main.js"></script>');
+  const html = '<link rel="icon" href="/images/common.png"><main></main><script type="module" src="/src/main.js"></script>';
+  f.write('index.html', html);
   f.write('src/main.js', 'import { MEDIA } from "./game/catalog.js";\nfor (const src of MEDIA) {\n'
     + '  const image = new Image(); image.src = src; document.querySelector("main").append(image);\n}\n');
   f.git(['add', '.']); f.git(['commit', '-qm', 'Compact distribution fixture']);
   const revision = f.git(['rev-parse', 'HEAD']);
   const plan = await createDlcAssetBatchPlan({ root: f.root, revision, profile: selected, limits: { maxAssets: 1 } });
   const assembly = path.join(f.parent, 'assembly');
-  for (const batch of plan.batches) {
+  const { exportDlcDistribution, exportDlcDistributionFromAssembly } = await import('./exportDlcDistribution.mjs');
+  const { buildDlcDistribution } = await import('./buildDlcDistribution.mjs');
+  const out = path.join(f.parent, 'distribution');
+  const options = { root: f.root, profile: selected, sourceRevision: revision, documentation: 'runtime', out };
+  const media = { ...options, assemblyRoot: assembly, mediaPlan: plan, mediaPlanSha256: plan.sha256 };
+  for (const [index, batch] of plan.batches.entries()) {
     const lot = await exportDlcAssetBatch({ root: f.root, plan, batchId: batch.id, out: path.join(f.parent, 'lot-' + batch.id) });
     await applyDlcAssetBatch({ directory: lot.out, out: assembly, expectedReceiptSha256: lot.receiptSha256 });
+    if (index === 0) {
+      await assert.rejects(exportDlcDistributionFromAssembly(media), /do not cover the pinned distribution plan/);
+      assert.equal(existsSync(out), false);
+    }
   }
-  const audit = await auditDlcAssetBatchAssembly({ directory: assembly, plan, expectedPlanSha256: plan.sha256 });
-  assert.equal(audit.coverage.mediaPlanComplete, true);
-  for (const { sourcePath } of plan.batches.flatMap(batch => batch.assets)) {
-    const target = path.join(f.root, sourcePath);
-    rmSync(target);
-    copyFileSync(path.join(assembly, sourcePath), target);
-  }
-  const { exportDlcDistribution } = await import('./exportDlcDistribution.mjs');
-  const { buildDlcDistribution } = await import('./buildDlcDistribution.mjs');
-  const distribution = exportDlcDistribution({ root: f.root, profile: selected, sourceRevision: revision,
-    out: path.join(f.parent, 'distribution'), documentation: 'runtime' });
-  const built = await buildDlcDistribution({ root: distribution.out });
+  const legacy = exportDlcDistribution({ ...options, out: path.join(f.parent, 'checkout-distribution') });
+  const checkoutMedia = plan.batches.flatMap(batch => batch.assets).map(({ sourcePath }) => path.join(f.root, sourcePath));
+  for (const file of checkoutMedia) rmSync(file);
+  assert.throws(() => exportDlcDistribution(options), /ENOENT/);
+  await assert.rejects(exportDlcDistributionFromAssembly({ ...media, profile: profile() }), /profile differs/);
+  f.write('index.html', '<!-- changed after freezing -->\n' + html);
+  await assert.rejects(exportDlcDistributionFromAssembly(media), /Source snapshot differs from the media plan: index.html/);
+  f.write('index.html', html);
+  const planPath = path.join(f.parent, 'media-plan.json');
+  writeFileSync(planPath, JSON.stringify(plan));
+  const script = fileURLToPath(new URL('./exportDlcDistribution.mjs', import.meta.url));
+  const result = spawnSync(process.execPath, [script, '--profile', 'config/dlc-profiles/halo.json', '--out', out,
+    '--source-revision', revision, '--documentation', 'runtime', '--media-assembly', assembly,
+    '--media-plan', planPath, '--media-plan-sha256', plan.sha256], { cwd: f.root, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(JSON.parse(result.stdout).mediaPlanSha256, plan.sha256);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(out, 'DLC/distribution-receipt.json'))), legacy.receipt);
+  assert.ok(checkoutMedia.every(file => !existsSync(file)));
+  const built = await buildDlcDistribution({ root: out });
   assert.equal(built.packs, 1);
   assert.equal(built.media, 2);
   assert.equal(built.dlcModuleCount, 1);
   assert.ok(built.javascriptBytes > 0);
-  assert.deepEqual(readFileSync(path.join(distribution.out, 'dist/images/halo.png')), PNG);
-  assert.equal(existsSync(path.join(distribution.out, 'dist/images/drop.png')), false);
+  assert.deepEqual(readFileSync(path.join(out, 'dist/images/common.png')), commonMedia);
+  assert.deepEqual(readFileSync(path.join(out, 'dist/images/halo.png')), packMedia);
+  assert.equal(existsSync(path.join(out, 'dist/images/drop.png')), false);
+  assert.ok(checkoutMedia.every(file => !existsSync(file)));
 });

@@ -48,6 +48,12 @@ function pinnedMediGunPatientWave17(medic, actors) {
     && runtimeIdWave17(medic) === state?.medicRuntimeId ? patient : null;
 }
 
+function isMediGunChannelInterruptedWave17(medic, patient) {
+  return medic.state === 'hit' || medic.hitstun > 0 || medic.rpgControlTicks > 0
+    || medic.sourceControlWave16?.active || patient.sourceControlWave16?.active
+    || isBubbleActorImmobilizedWave17(medic) || isBubbleActorImmobilizedWave17(patient);
+}
+
 export function startMediGunBeamWave17(medic, patient, { allied = false, range = 220, lineOfSight = true } = {}) {
   if (!isMedicWave17(medic) || !live(medic) || !live(patient) || patient === medic || !allied || !lineOfSight
     || !Number.isFinite(range) || range <= 0 || Math.hypot(patient.x - medic.x, patient.y - medic.y) > range) return false;
@@ -73,8 +79,7 @@ export function advanceMediGunBeamWave17(medic, actors, seconds, { allied, lineO
   if (!state || !state.connected || paused || !Number.isFinite(seconds) || seconds <= 0) return null;
   const patient = pinnedMediGunPatientWave17(medic, actors);
   if (!isMedicWave17(medic) || !live(medic) || !live(patient) || !actors.includes(medic) || !allied?.(medic, patient)
-    || !state.connected || !lineOfSight(medic, patient) || medic.state === 'hit' || medic.hitstun > 0 || medic.rpgControlTicks > 0
-    || medic.sourceControlWave16?.active || patient.sourceControlWave16?.active || isBubbleActorImmobilizedWave17(medic) || isBubbleActorImmobilizedWave17(patient)
+    || !lineOfSight(medic, patient) || isMediGunChannelInterruptedWave17(medic, patient)
     || Math.hypot(patient.x - medic.x, patient.y - medic.y) > state.range) {
     stopMediGunBeamWave17(medic, 'beam-invalid'); return null;
   }
@@ -92,14 +97,19 @@ export function advanceMediGunBeamWave17(medic, actors, seconds, { allied, lineO
   if(patient.currentHp>patient.maxHp)patient.sourceMediGunOverhealWave17=true;
   return { patient, healed: patient.currentHp - beforeHp, charge: state.charge, uberRemaining: state.uberRemaining };
 }
-export function findChargedMedicWave17(patient, allies) {
-  return allies.find(medic => isMedicWave17(medic) && live(medic) && live(patient) && medic !== patient
-    && medic.sourceMediGunWave17?.connected && pinnedMediGunPatientWave17(medic, allies) === patient
-    && medic.sourceMediGunWave17.charge >= 1 - 1e-9 && !(medic.sourceMediGunWave17.uberRemaining > 0)
-    && Math.hypot(patient.x - medic.x, patient.y - medic.y) <= medic.sourceMediGunWave17.range) || null;
+export function findChargedMedicWave17(patient, allies, commitment = null) {
+  if (!live(patient)) return null;
+  return allies.find(medic => {
+    const beam = medic?.sourceMediGunWave17;
+    return (!commitment || (medic === commitment.medic && beam === commitment.beam))
+      && isMedicWave17(medic) && live(medic) && medic !== patient && beam?.connected
+      && pinnedMediGunPatientWave17(medic, allies) === patient && !isMediGunChannelInterruptedWave17(medic, patient)
+      && beam.charge >= 1 - 1e-9 && !(beam.uberRemaining > 0)
+      && Math.hypot(patient.x - medic.x, patient.y - medic.y) <= beam.range;
+  }) || null;
 }
-export function activateUberChargeWave17(patient, allies) {
-  const medic = findChargedMedicWave17(patient, allies);
+export function activateUberChargeWave17(patient, allies, commitment = null) {
+  const medic = findChargedMedicWave17(patient, allies, commitment);
   if (!medic) return null;
   medic.sourceMediGunWave17.charge = 1; medic.sourceMediGunWave17.uberRemaining = 8;
   medic.sourceMediGunWave17.activationCount = (medic.sourceMediGunWave17.activationCount || 0) + 1;

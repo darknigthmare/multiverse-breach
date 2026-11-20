@@ -57,6 +57,30 @@ const englishCaptions = {
     roundDefeat: 'Seyra absorbs the recoil', fatality: 'Resonance of the Five Peoples',
     victory: 'The five masses resonate', defeat: 'Seyra braces the lance',
     outro: 'Seyra gathers the orbiting masses'
+  },
+  eira_hrafnsdottir: {
+    intro: 'Eira sets her shield', roundVictory: 'The shield line holds',
+    roundDefeat: 'Eira leans into her shield', fatality: 'Last Line of Midgard',
+    victory: 'Eira keeps watch', defeat: 'Eira lowers to the ground',
+    outro: 'Eira leaves with her shield'
+  },
+  lyra_hexwind: {
+    intro: 'Lyra measures the seven laws', roundVictory: 'Lyra closes the circuit',
+    roundDefeat: 'Lyra braces on her focus', fatality: 'Seven Laws, One Exception',
+    victory: 'The exception holds', defeat: 'Lyra holds on to her focus',
+    outro: 'Lyra dismisses the circuit'
+  },
+  mercy_ash: {
+    intro: 'Mercy checks the chain', roundVictory: 'A link gives way',
+    roundDefeat: 'Mercy kneels under the chain', fatality: 'Amnesty of the Unbound',
+    victory: 'The contract is broken', defeat: 'Mercy keeps hold of the chain',
+    outro: 'Mercy walks away from the contract'
+  },
+  elise_varenne: {
+    intro: 'Elise calibrates her instruments', roundVictory: 'Elise confirms the signal',
+    roundDefeat: 'Elise catches her breath', fatality: 'Four Capitals, One Signal',
+    victory: 'All four replies are received', defeat: 'Elise steadies her breathing',
+    outro: 'Elise disconnects from the signal'
   }
 };
 
@@ -187,6 +211,58 @@ const presentations = {
       finale: [idle(0, 1), attack(.2, 0), attack(.38, 1, 8), attack(.56, 2, 11),
         attack(.77, 3, 5), idle(.91, 1), idle(1, 0)]
     })
+  },
+  eira_hrafnsdottir: {
+    universe: 'Nine Realms: Last Twilight', weapon: 'axe', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir-v2-fidelity-wave9-2026-10-25.png', footAnchor: 243,
+    sourceReference: 'src/game/originalUniversesManifest.json — hache, bouclier et Dernière Ligne de Midgard.',
+    effect: 'midgard-shield-line',
+    phases: archivePhases({
+      names: ['Eira place son bouclier', 'La ligne de boucliers tient', 'Eira prend appui sur son bouclier',
+        'Dernière Ligne de Midgard', 'Eira monte la garde', 'Eira met genou à terre', 'Eira repart avec son bouclier'],
+      entrance: 1.8, strike: 2.3, departure: 1.95, lowPose: 1,
+      finale: [idle(0, 0), attack(.18, 0), attack(.39, 1), attack(.58, 2, 12),
+        attack(.78, 3, 20), idle(.91, 1, 16), idle(1, 0, 16)]
+    })
+  },
+  lyra_hexwind: {
+    universe: 'Aetherion: Seven Laws of Magic', weapon: 'spell_focus', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png', footAnchor: 239,
+    sourceReference: 'src/game/originalUniversesManifest.json — catalyseur de sort et Sept Lois, Une Exception.',
+    effect: 'seven-laws-circuit',
+    phases: archivePhases({
+      names: ['Lyra mesure les sept lois', 'Lyra referme le circuit', 'Lyra s’appuie sur son catalyseur',
+        'Sept Lois, Une Exception', 'L’exception tient', 'Lyra retient son catalyseur', 'Lyra dissipe le circuit'],
+      entrance: 1.9, strike: 2.5, departure: 2.05, lowPose: 1,
+      finale: [idle(0, 3), attack(.21, 0), attack(.42, 1), attack(.6, 2),
+        attack(.76, 3), idle(.91, 3), idle(1, 0)]
+    })
+  },
+  mercy_ash: {
+    universe: 'Infernum: Nine Pits', weapon: 'chain_sickle', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png', footAnchor: 241,
+    sourceReference: 'src/game/originalUniversesManifest.json — faucille à chaîne et Amnistie des Sans-Contrat.',
+    effect: 'amnesty-chain',
+    phases: archivePhases({
+      names: ['Mercy vérifie la chaîne', 'Un maillon cède', 'Mercy ploie sous la chaîne',
+        'Amnistie des Sans-Contrat', 'Le contrat est rompu', 'Mercy retient la chaîne', 'Mercy laisse le contrat derrière elle'],
+      entrance: 1.75, strike: 2.45, departure: 1.85, lowPose: 2,
+      finale: [idle(0, 1), attack(.22, 0), attack(.4, 1, 5), attack(.61, 2, 16),
+        attack(.79, 3, 14), idle(.92, 1, 10), idle(1, 0, 10)]
+    })
+  },
+  elise_varenne: {
+    universe: 'Aevum Fracture', weapon: 'chronal_pistol', sourceType: 'original',
+    sheet: '/sprites/generated/heroes/aevum-fracture/elise-varenne.png', footAnchor: 244,
+    sourceReference: 'src/game/originalUniversesManifest.json — instrumentation temporelle et Quatre Capitales, Un Signal.',
+    effect: 'four-capitals-signal',
+    phases: archivePhases({
+      names: ['Élise règle ses instruments', 'Élise confirme le signal', 'Élise reprend son souffle',
+        'Quatre Capitales, Un Signal', 'Les quatre réponses sont reçues', 'Élise stabilise sa respiration', 'Élise coupe le signal'],
+      entrance: 1.7, strike: 2.35, departure: 1.9, lowPose: 2,
+      finale: [idle(0, 1), attack(.21, 0), attack(.39, 1), attack(.56, 2),
+        attack(.76, 3), idle(.9, 1), idle(1, 0)]
+    })
   }
 };
 
@@ -314,6 +390,46 @@ const paintMotif = {
       ctx.arc(Math.cos(angle) * reach, Math.sin(angle) * reach * .45, (2.5 + index * .45) * size, 0, Math.PI * 2);
       ctx.fill();
     }
+  },
+  'midgard-shield-line'(ctx, p, size) {
+    ctx.strokeStyle = '#b5d8f3';
+    for (let index = 0; index < 3; index++) {
+      const x = (index - 1) * (25 + p * 9) * size;
+      const width = (12 + p * 5) * size;
+      const height = (24 + p * 11) * size;
+      stroke(ctx, [[x - width, -height / 2], [x + width, -height / 2],
+        [x + width, height * .2], [x, height * .52], [x - width, height * .2], [x - width, -height / 2]]);
+    }
+  },
+  'seven-laws-circuit'(ctx, p, size) {
+    ctx.strokeStyle = '#d8b0ff';
+    for (let index = 0; index < 7; index++) {
+      const angle = index * Math.PI * 2 / 7 + p;
+      const length = (17 + p * 18) * size;
+      ctx.beginPath();
+      ctx.arc(0, 0, length + (index === 6 ? 7 * size : 0), angle, angle + .54);
+      ctx.stroke();
+    }
+  },
+  'amnesty-chain'(ctx, p, size) {
+    ctx.strokeStyle = '#ffc378';
+    for (let index = 0; index < 5; index++) {
+      const x = (index - 2) * (15 + p * 6) * size;
+      const separation = Math.sign(x) * (p > .45 ? (p - .45) * 24 : 0) * size;
+      ctx.beginPath();
+      ctx.ellipse(x + separation, Math.sin(p * 4 + index) * 6 * size, 9 * size, 5 * size,
+        index % 2 ? .55 : -.4, 0, index === 2 ? Math.PI * 1.5 : Math.PI * 2);
+      ctx.stroke();
+    }
+  },
+  'four-capitals-signal'(ctx, p, size) {
+    ctx.strokeStyle = '#a5e7f8';
+    const distance = (21 + p * 25) * size;
+    for (const [x, y] of [[-distance, 0], [0, -distance * .7], [distance, 0], [0, distance * .7]]) {
+      stroke(ctx, [[0, 0], [x * .6, y * .6], [x, y]]);
+      ctx.strokeRect(x - 3, y - 3, 6, 6);
+    }
+    ctx.strokeRect(-4, -4, 8, 8);
   }
 };
 

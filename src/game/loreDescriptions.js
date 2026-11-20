@@ -368,8 +368,9 @@ const getEnemyBaseLoreDescription = ({ enemy, universe, lang = 'fr', lore, type 
     : '';
   const featuredLore = FEATURED_ENEMY_LORE[universe]?.[enemy.name]?.[lang];
   if (featuredLore) return `${featuredLore} ${special}`.trim();
+  const article = type === 'worldBoss' || type === 'boss' ? 'un' : 'une';
   return lang === 'fr'
-    ? `${enemy.name} est une ${role} de ${universe}. Signature source: ${signature.theme}. A.R.C.A. le classe comme deformation active de ${signature.stageName}: il porte la pression de ${signature.worldBoss || signature.bossName} sans effacer les lois de sa Trame. ${special}`.trim()
+    ? `${enemy.name} est ${article} ${role} de ${universe}. Signature source: ${signature.theme}. A.R.C.A. le classe comme deformation active de ${signature.stageName}: il porte la pression de ${signature.worldBoss || signature.bossName} sans effacer les lois de sa Trame. ${special}`.trim()
     : `${enemy.name} is a ${role} from ${universe}. Source signature: ${signature.theme}. A.R.C.A. classifies it as an active deformation of ${signature.stageName}: it carries pressure from ${signature.worldBoss || signature.bossName} without erasing its Thread laws. ${special}`.trim();
 };
 

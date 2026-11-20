@@ -21,6 +21,23 @@ export const getArchiveNeighbour = (universes, current, direction) => {
   return universes[index + Math.sign(direction)] || null;
 };
 
+export function buildArchiveThreatCatalog(roster, isVisible = () => true) {
+  const allEnemies = [];
+  const enemyRoles = new Map();
+  for (const [role, threats] of [
+    ['menace', list(roster?.monsters)],
+    ['boss', list(roster?.bosses)],
+    ['worldBoss', list([roster?.worldBoss])]
+  ]) {
+    for (const enemy of threats) {
+      if (!enemy || !isVisible(enemy)) continue;
+      allEnemies.push(enemy);
+      enemyRoles.set(enemy, role);
+    }
+  }
+  return { allEnemies, enemyRoles };
+}
+
 // Missing optional world fields remain empty: never fabricate lore to fill a UI.
 export const normalizeArchiveLivingWorld = value => {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return null;

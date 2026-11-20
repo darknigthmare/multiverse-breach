@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { createServer } from './fixtures/ssrTestServer.mjs';
+import { buildArchiveThreatCatalog } from '../src/game/universeArchiveView.js';
 import { denseArchive, emptyArchive, archiveProgress, archivePresentation } from './fixtures/universeArchiveData.mjs';
 
 let vite, Reader, Catalog;
@@ -70,6 +71,28 @@ test('an adjacent universe without a living world falls back to an available cha
   assert.equal((html.match(/role="tab"/g) || []).length, 3);
   assert.match(html, /No playable hero indexed/);
   assert.equal(entries(html).length, 0);
+});
+
+test('threat cards retain their localized rank after masking the final core', () => {
+  const roster = {
+    monsters: [{ id: 'field', name: 'QA Field' }],
+    bosses: [{ id: 'champion', name: 'QA Champion' }],
+    worldBoss: { id: 'core', name: 'QA Core' }
+  };
+  const archive = { ...emptyArchive, ...buildArchiveThreatCatalog(roster) };
+  const full = read('signatures', 'fr', archive);
+  assert.match(full, /data-archive-threat-role="menace">Menace de terrain/);
+  assert.match(full, /data-archive-threat-role="boss">Champion de faille/);
+  assert.match(full, /data-archive-threat-role="worldBoss">Noyau final local/);
+  assert.match(full, /QA Champion est un champion de faille/);
+  assert.match(full, /QA Core est un noyau final local/);
+  const filtered = read('signatures', 'en', {
+    ...archive,
+    ...buildArchiveThreatCatalog(roster, enemy => enemy !== roster.worldBoss)
+  });
+  assert.match(filtered, /data-archive-threat-role="boss">Breach champion/);
+  assert.match(filtered, /QA Champion is a breach champion/);
+  assert.doesNotMatch(filtered, /QA Core|data-archive-threat-role="worldBoss"/);
 });
 
 test('empty item and mission catalogues expose their absence instead of fabricating entries', () => {

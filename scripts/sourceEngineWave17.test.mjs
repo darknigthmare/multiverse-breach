@@ -31,6 +31,47 @@ test('RPG: stock Medic really channels, charges through40 injured-patient second
  for(let n=0;n<2400;n++){c.actor.currentHp=5000;c.e.update();}assert.equal(mechanics.findChargedMedicWave17(c.actor,c.e.heroes),medic);c.actor.atb=100;c.actor.specialCharge=100;assert.equal(c.e.beginTargeting(c.actor,'summon'),true);assert.equal(c.e.confirmTargeting(),true);assert.equal(c.e.activeSummon.sourceMedicWave17,medic);c.step(100);assert.equal(medic.sourceMediGunWave17.uberRemaining,8);c.step(92);assert.equal(c.e.activeSummon,null);const hp=c.actor.currentHp;c.e.applyDamage(c.target,c.actor,50);assert.equal(c.actor.currentHp,hp);medic.x=999;c.e.applyDamage(c.target,c.actor,50);assert.ok(c.actor.currentHp<hp);
 });
 
+function prepareChargedMedic() {
+ const c = make('rpg', 'team_fortress_2_scout', ['team_fortress_2_medic']);
+ const medic = c.e.heroes[1];
+ medic.x = medic.homeX = 340;
+ medic.y = medic.homeY = 400;
+ medic.atb = 100;
+ assert.equal(c.e.beginTargeting(medic, 'secondary'), true);
+ assert.equal(c.e.selectTarget(c.actor.battleId), true);
+ assert.equal(c.e.confirmTargeting(), true);
+ c.step(20);
+ assert.equal(medic.sourceMediGunWave17?.connected, true);
+ medic.sourceMediGunWave17.charge = 1;
+ c.actor.atb = c.actor.specialCharge = 100;
+ return { ...c, medic };
+}
+
+test('RPG: ÜberCharge is unavailable when a fully charged Medic has already been hit', () => {
+ const { e, actor, medic, target } = prepareChargedMedic();
+ assert.equal(e.canUseAction(actor, 'summon'), true);
+ e.applyDamage(target, medic, 50);
+ assert.equal(medic.state, 'hit');
+ assert.equal(e.canUseAction(actor, 'summon'), false);
+ assert.equal(e.beginTargeting(actor, 'summon'), false);
+ assert.equal(actor.specialCharge, 100);
+});
+
+test('RPG: an ÜberCharge cinematic cannot activate a new beam after losing its committed channel', () => {
+ const { e, actor, medic, step } = prepareChargedMedic();
+ assert.equal(e.beginTargeting(actor, 'summon') && e.confirmTargeting(), true);
+ const selectedBeam = medic.sourceMediGunWave17;
+ assert.equal(e.activeSummon.sourceMedicWave17, medic);
+ mechanics.stopMediGunBeamWave17(medic);
+ assert.equal(mechanics.startMediGunBeamWave17(medic, actor, { allied: true }), true);
+ assert.notEqual(medic.sourceMediGunWave17, selectedBeam);
+ step(1);
+ assert.equal(e.activeSummon, null);
+ step(100);
+ assert.equal(medic.sourceMediGunWave17.uberRemaining, 0);
+ assert.equal(medic.sourceMediGunWave17.charge, 1);
+});
+
 for(const mode of['fighter','melee','rpg','tactics'])test(mode+': the canonical manual kitten keeps its actual native body through capture and release and can never deal invented HP attacks',()=>{
  const c=make(mode,'tail_concerto_waffle',[],structuredClone(npcCatalog.CANONICAL_CAPTURE_NPC_WAVE17));const hp=c.actor.currentHp,targetHp=c.target.currentHp,targetY=c.target.y;
  const camp={hero:c.e.heroes?.includes(c.target)||false,enemy:c.e.enemies?.includes(c.target)||false,side:c.target.side,team:c.target.team};

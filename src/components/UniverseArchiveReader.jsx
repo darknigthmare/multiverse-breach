@@ -21,6 +21,13 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
   const tabsRef = useRef({});
   const universeFocus = useRef(false);
   const fr = lang === 'fr';
+  const threatRoles = fr
+    ? { menace: 'Menace de terrain', boss: 'Champion de faille', worldBoss: 'Noyau final local' }
+    : { menace: 'Field threat', boss: 'Breach champion', worldBoss: 'Local final core' };
+  const getThreatRole = enemy => selectedUniverseArchive.enemyRoles?.get(enemy) || 'menace';
+  const describeThreat = enemy => getEnemyLoreDescription({
+    enemy, universe: selectedUniverseArchive.universe, lang, lore: selectedUniverseArchive.lore, type: getThreatRole(enemy)
+  });
   const sections = [
     ['signatures', fr ? 'Personnages et menaces' : 'Characters and threats'],
     ['items', fr ? 'Objets' : 'Items'],
@@ -151,9 +158,10 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                         );
                       })}
           </UniverseArchiveCatalog>
-          <UniverseArchiveCatalog {...catalogProps('enemies', selectedUniverseArchive.allEnemies, fr ? 'Menaces locales' : 'Local threats')} getSearchText={enemy => archiveSearchText([enemy, getEnemyLoreDescription({ enemy, universe: selectedUniverseArchive.universe, lang, lore: selectedUniverseArchive.lore, type: selectedUniverseArchive.allEnemies.indexOf(enemy) === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace' })])}>
+          <UniverseArchiveCatalog {...catalogProps('enemies', selectedUniverseArchive.allEnemies, fr ? 'Menaces locales' : 'Local threats')} getSearchText={enemy => archiveSearchText([enemy, threatRoles[getThreatRole(enemy)], describeThreat(enemy)])}>
             {items => items.map(enemy => {
                         const index = selectedUniverseArchive.allEnemies.indexOf(enemy);
+                        const role = getThreatRole(enemy);
                         const portraitSrc = enemy.portrait || null;
                         const spriteInfo = getEnemySpriteInfo(enemy, selectedUniverseArchive.universe);
                         const spriteSrc = portraitSrc || spriteInfo.src;
@@ -182,7 +190,8 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                               <div style={{ color: enemy.color || '#e74c3c', fontSize: '.85rem', fontWeight: 'bold' }}>{enemy.name}</div>
                               {!illustrationReady && <p className="universe-archive-illustration-status">{lang === 'fr' ? 'Illustration à venir' : 'Illustration pending'}</p>}
                               <div style={{ color: '#aaa', fontSize: '.82rem', marginTop: '3px' }}>
-                                HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
+                                <span data-archive-threat-role={role}>{threatRoles[role]}</span>
+                                {' · '}HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
                               </div>
                               {enemy.special && (
                                 <div style={{ color: '#ffb15c', fontSize: '.82rem', marginTop: '3px' }}>
@@ -190,13 +199,7 @@ export default function UniverseArchiveReader({ archive: selectedUniverseArchive
                                 </div>
                               )}
                               <div style={{ color: '#d0b7b7', fontSize: '.82rem', lineHeight: 1.35, marginTop: '5px' }}>
-                                {getEnemyLoreDescription({
-                                  enemy,
-                                  universe: selectedUniverseArchive.universe,
-                                  lang,
-                                  lore: selectedUniverseArchive.lore,
-                                  type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
-                                })}
+                                {describeThreat(enemy)}
                               </div>
                               <CharacterWardrobe actor={{...enemy, universe: selectedUniverseArchive.universe}} lang={lang} inventory={inventory} readOnly />
                             </div>

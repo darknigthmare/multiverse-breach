@@ -101,6 +101,33 @@ test('an explicit healer heals its real ally once and rejects enemy targets with
   assert.equal(e.enemies[0].currentHp, 300);
 });
 
+test('Healing Wind caps actual recovery at the irradiated limit on the same floor', () => {
+  const e = make(['aerith_ff7', 'ripley', 'isaac']);
+  const [aerith, upperAlly, lowerAlly] = e.heroes;
+  place(e, aerith, 'bridge:4:3'); place(e, upperAlly, 'bridge:5:3'); place(e, lowerAlly, 'ground:5:3');
+  const cap = upperAlly.maxHp * 0.5;
+  const woundedHp = Math.floor(upperAlly.maxHp * 0.4);
+  upperAlly.currentHp = Math.ceil(cap) + 1; upperAlly.statusEffects.radiated = 100;
+  lowerAlly.currentHp = 120;
+  const particles = [];
+  e.particles.add = (...args) => particles.push(args);
+  act(e, aerith);
+  assert.equal(e.getActionDefinition(aerith, 'secondary').name, 'Healing Wind');
+  assert.equal(e.selectAction('secondary'), true);
+  assert.equal(e.handleSurfaceClick(lowerAlly.surfaceId).handled, false);
+  assert.equal(e.handleSurfaceClick(upperAlly.surfaceId).handled, false);
+  assert.equal(upperAlly.currentHp, Math.ceil(cap) + 1);
+  assert.equal(aerith.cooldown, 0);
+  upperAlly.currentHp = woundedHp;
+  assert.equal(e.getDamagePreview(aerith, upperAlly, 'secondary').healing, cap - woundedHp);
+  assert.equal(e.handleSurfaceClick(upperAlly.surfaceId).handled, true);
+  assert.equal(upperAlly.currentHp, cap);
+  assert.equal(upperAlly.statusEffects.radiated, 100);
+  assert.equal(lowerAlly.currentHp, 120);
+  assert.ok(particles.some(([x, y, ...rest]) => x === upperAlly.x
+    && y === upperAlly.y - 25 && rest.at(-1) === `+${Math.round(cap - woundedHp)} HP`));
+});
+
 test('a healing defense retains its declared ally targeting and never becomes a shield or attack', () => {
   const e = make(), [healer, ally] = e.heroes;
   healer.id = 'vertical-healing-defense';

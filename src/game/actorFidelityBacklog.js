@@ -1,8 +1,7 @@
 /** Read-only per-actor gaps. Source metadata and file presence are not visual approval. */
 import { wardrobeActorKey, getOfficialCostumes, getOriginalCostumes, getWardrobeResearchTargets } from './wardrobe.js';
 import { getLoreWorldBossOverride } from './loreWorldBossOverrides.js';
-import { getNexusActorDesign } from './nexusActorDesigns.js';
-import { getOriginalMachineActorDesign } from './originalMachineActorDesigns.js';
+import { getOriginalActorDesign } from './originalActorDesigns.js';
 const text = value => typeof value === 'string' ? value : value?.en || value?.fr || '';
 const httpReference = value => {
   if (typeof value !== 'string') return '';
@@ -41,7 +40,7 @@ export function inspectActorLockedContinuity(actor, kind = 'hero') {
 }
 export function actorSourceScope(actor, originalUniverses = new Set()) {
   if (actor.originalContent === true || actor.contentOrigin === 'oc' || originalUniverses.has(actor.universe)
-    || getNexusActorDesign(actor) || getOriginalMachineActorDesign(actor)
+    || getOriginalActorDesign(actor)
     || /^Multiverse Breach original (?:companion|tribute persona)\b/i.test(text(actor.incarnation))
     || /^Original (?:project companion|tribute persona from the project)[,.;: ]/i.test(text(actor.canonStatus))) return 'ORIGINAL_DESIGN';
   // "original fan-made artwork" never turns a licensed character into an original identity.
@@ -90,7 +89,7 @@ export function buildActorFidelityBacklog(actor, {kind='hero',originalUniverses=
   const scope=actorSourceScope(actor,originalUniverses);
   const official=getOfficialCostumes(actor), originals=getOriginalCostumes(actor), research=getWardrobeResearchTargets(actor);
   const explicitActorIncarnation=text(actor.incarnation)||text(actor.sourceIncarnation)||text(actor.continuity);
-  const internalDesign = getNexusActorDesign(actor) || getOriginalMachineActorDesign(actor);
+  const internalDesign = getOriginalActorDesign(actor);
   const design = internalDesign?.kind === kind ? internalDesign : null;
   const declaredContinuity=explicitActorIncarnation ? null : inspectActorLockedContinuity(actor,kind);
   const structuredIncarnation=declaredContinuity?.evidence==='ACTOR_LOCKED_CONTINUITY' ? declaredContinuity.label : '';

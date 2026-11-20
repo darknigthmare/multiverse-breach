@@ -122,14 +122,3 @@ export function getOriginalMachineActorDesign(actor) {
   const design = entries && Object.hasOwn(entries, actor?.id) ? entries[actor.id] : null;
   return design?.name === actor?.name ? design : null;
 }
-
-export function resolveOriginalMachineRpgSpecial(actor, supplied) {
-  const move = getOriginalMachineActorDesign(actor)?.rpgMove;
-  if (!move || !supplied || typeof supplied !== 'object' || Object.keys(supplied).length !== 2
-    || supplied.fr !== move.description || supplied.en !== move.description) return null;
-  return {
-    ...supplied,
-    name: move.name,
-    ...(move.targeting ? { type: 'projectile', targeting: { ...move.targeting } } : {})
-  };
-}

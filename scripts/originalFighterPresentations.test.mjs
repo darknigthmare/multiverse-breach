@@ -10,7 +10,11 @@ const leads = {
   thaleia_naxos: ['Chemin hors du Labyrinthe', 'labyrinth-thread'],
   rei_kagetsu: ['Calendrier des Cent Esprits', 'ofuda-calendar'],
   lin_yue: ['Carte des Neuf Cieux', 'nine-heavens-chart'],
-  seyra_tal: ['Résonance des Cinq Peuples', 'five-mass-concordance']
+  seyra_tal: ['Résonance des Cinq Peuples', 'five-mass-concordance'],
+  eira_hrafnsdottir: ['Dernière Ligne de Midgard', 'midgard-shield-line'],
+  lyra_hexwind: ['Sept Lois, Une Exception', 'seven-laws-circuit'],
+  mercy_ash: ['Amnistie des Sans-Contrat', 'amnesty-chain'],
+  elise_varenne: ['Quatre Capitales, Un Signal', 'four-capitals-signal']
 };
 let vite, EngineFighter, HEROES_DB, PRESENTATION_PHASES, samplePresentationScript, resolveOriginalFighterPresentation;
 let resolvePresentationScript, getHeroSpriteSheetSrc, drawPixelSprite;
@@ -160,8 +164,11 @@ function withImageTrace(draw, unavailable = new Set()) {
   }
   globalThis.Image = FixtureImage;
   const operations = [];
+  let x = 0, flip = 1;
   const ctx = new Proxy({ globalAlpha: 1,
-    drawImage(image, ...args) { operations.push([new URL(image.src).pathname, ...args]); }
+    translate(value) { x = value; },
+    scale(value) { flip = Math.sign(value); },
+    drawImage(image, ...args) { operations.push([new URL(image.src).pathname, ...args, { x, flip }]); }
   }, { get(target, key) { return target[key] ?? noop; } });
   try { draw(ctx); } finally { globalThis.Image = prior; }
   return operations;
@@ -196,4 +203,41 @@ test('a missing phase sheet keeps the runtime body ID rather than its source ali
   assert.ok(drawn.every(row => row[0] !== baseSheet));
   assert.equal(fighter.getActive('player').id, variant.id);
   fighter.dispose();
+});
+
+test('living timeout exits turn outward on both roster bodies and preserve HP', () => {
+  const ids = ['sten_ulfsson', 'orin_vale'];
+  const engine = new EngineFighter(960, 540, [hero(ids[0])], [hero(ids[1])],
+    { add: noop }, noop, noop, { opponentControl: 'p2', roundsToWin: 1 });
+  advance(engine, 5.4);
+  assert.equal(engine.getSnapshot().phase, 'running');
+  engine.timer = .001;
+  advance(engine, .02);
+  assert.equal(engine.getSnapshot().phase, 'victory');
+  advance(engine, engine.presentation.remaining + .02);
+  assert.equal(engine.getSnapshot().phase, 'outro');
+  advance(engine, .7);
+  assert.ok(engine.presentation.entries.every(e => e.actorPhase === 'outro' && !e.script));
+  const images = withImageTrace(ctx => engine.drawCharacterPresentation(ctx, 0));
+  const bodies = ids.map(id => images.find(row => row[0] === getHeroSpriteSheetSrc(hero(id), 'melee'))?.at(-1));
+  assert.equal(bodies[0].flip, -1);
+  assert.equal(bodies[1].flip, 1);
+  assert.ok(bodies[0].x < engine.width * .25);
+  assert.ok(bodies[1].x > engine.width * .75);
+  assert.deepEqual(engine.roundHistory.map(round => round.timeout), [true]);
+  assert.equal(engine.getActive('player').currentHp, engine.getActive('player').maxHp);
+  assert.equal(engine.getActive('cpu').currentHp, engine.getActive('cpu').maxHp);
+  engine.dispose();
+});
+
+test('an early finish holds the last sample of a looping Ancre exit, and aerial exits face the path', () => {
+  const anchor = resolvePresentationScript({ id: 'player_anchor', universe: 'Nexus de Convergence' }, 'outro');
+  const terminal = samplePresentationScript(anchor, anchor.duration);
+  assert.equal(terminal.asset.kind, 'melee-manifest');
+  assert.equal(terminal.progress, 1);
+  assert.deepEqual(samplePresentationScript(anchor, anchor.duration * 1.25), terminal);
+  const aerial = resolvePresentationScript(hero('yuffie_ff7'), 'outro');
+  const retreat = samplePresentationScript(aerial, aerial.duration * .85);
+  assert.ok(retreat.x < 0 && retreat.y < 0);
+  assert.equal(retreat.facing, -1);
 });
