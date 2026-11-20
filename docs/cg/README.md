@@ -2,9 +2,13 @@
 
 [Vérification d’intégration à master](MASTER_INTEGRATION_2026-11-02.md) : hub, galerie, variantes, références Rift et classeur synchronisés.
 
+## Music par univers du 20 novembre 2026
+
+Cette vague ajoute **79 décors CG03** pour **26 univers Music** et **21 scènes, poses ou accessoires**. La galerie livre **154 décors sur 154** pour la catégorie Music. Il reste **2 110 CG Music** à réaliser. [Planches, sources et illustrations](reviews/music-universes-2026-11-20/README.md).
+
 ## Série Music du 20 novembre 2026
 
-Cette vague ajoute **55 CG Music** pour 41 personnages, dont **36 décors CG03** et **19 scènes, poses ou accessoires**. Ado Avatar possède **15 des 15 CG** de sa série. Il reste **2 210 CG Music** à produire, dont 79 décors. Le roster complet compte **27 136 emplacements ouverts**. [Planches et illustration par personnage](reviews/music-long-2026-11-20/README.md).
+Cette vague ajoute **55 CG Music** pour 41 personnages, dont **36 décors CG03** et **19 scènes, poses ou accessoires**. Ado Avatar possède **15 des 15 CG** de sa série. À l’issue de cette vague, 2 210 CG Music restaient à produire, dont 79 décors. Le roster complet compte **27 136 emplacements ouverts**. [Planches et illustration par personnage](reviews/music-long-2026-11-20/README.md).
 
 ## Portraits Music du 20 novembre 2026
 
