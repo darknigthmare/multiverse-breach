@@ -1,0 +1,24 @@
+{
+  "command": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 --test-reporter=tap scripts/originalTideActors.test.mjs scripts/originalMachineActors.test.mjs scripts/nexusActorDesigns.test.mjs",
+  "nodeVersion": "v24.19.0",
+  "tests": 17,
+  "pass": 17,
+  "fail": 0,
+  "skip": 0,
+  "durationMs": 12938.535837,
+  "tapSha256": "1283831c4cb26a96c8dcf7e979634d6c4f3d9db46cb7b891f558df68a231de0e",
+  "scope": "Pure roster and wardrobe integration, current RPG profile comparisons, real custom EngineRpg targeting and damage for both bosses. No browser evidence in this receipt.",
+  "resolverSnapshots": {
+    "before": "97017f077c85f47a4288e6c1f456c51aebf2c3aacf6663b563cfb590699ee535",
+    "after": "df8fd28815780661c908ace4a2d591191eb28252fdf1b6f1e593064bda238e2e"
+  },
+  "sourceSha256": {
+    "src/game/originalActorDesigns.js": "5dddb0c496fde29ed81a4636fb09a6e234d84b77e663d224e2511d2b933964a0",
+    "src/game/originalTideActorDesigns.js": "9fa0c14b859148430143d325e554604d5f69570deabe46eb1d04d9e52ed37c47",
+    "src/game/originalMachineActorDesigns.js": "e91458d49e2146633e1f90b61226b622b806ebdc061dea77083c44b0e412b911",
+    "src/game/actorFidelityBacklog.js": "0a38257631ecec594b0fd79c7a4d690b0643ade7d54f61f300809145ed4fda93",
+    "src/game/wardrobe.js": "26002ae490316a941cdc5d3da05f4b1b6c630b6ee3c1215d3037773f90d422d3",
+    "src/game/rpgTargeting.js": "4694aebff351005d4bee15c503f8f97960c38cdac563b9fd7abb3a06bb26cf06",
+    "scripts/originalTideActors.test.mjs": "5132057459eac15c2ea75af06de73fd95fe9bbadd96956684e92396759183ab1"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "originalAtlas": "public/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png",
+  "sha256": "29bc77091a8feeae6cf908dde3768468267fdca3a214d6f063ba46448ee5c6ec",
+  "moduleSha256": "d4cb7ae252f1de579c8b22f6519a51a048a2c4e928246af379b6491a6882f174",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "method": "Pillow polygon mask; scipy.ndimage labels 8-neighbour alpha >=8 islands; compare the mask to the island reached from each source seed.",
+  "masks": [
+    {
+      "seed": [
+        260,
+        812
+      ],
+      "connectedVisiblePixels": 10584,
+      "missed": 0,
+      "otherVisiblePixels": 0,
+      "weakAlphaPixelsInside": 1147
+    },
+    {
+      "seed": [
+        512,
+        830
+      ],
+      "connectedVisiblePixels": 10914,
+      "missed": 0,
+      "otherVisiblePixels": 0,
+      "weakAlphaPixelsInside": 1120
+    }
+  ],
+  "artworkBytesChanged": false,
+  "staticAtlasReviewStillOpen": true
+}

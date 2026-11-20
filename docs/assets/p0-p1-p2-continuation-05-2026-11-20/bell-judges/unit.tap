@@ -1,0 +1,61 @@
+TAP version 13
+# (node:53577) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original swarm selects its animated atlas and keeps its static appearance when unavailable
+ok 1 - the original swarm selects its animated atlas and keeps its static appearance when unavailable
+  ---
+  duration_ms: 2.765656
+  type: 'test'
+  ...
+# Subtest: the four game states reach sixteen distinct cells and retain the same hover anchor
+ok 2 - the four game states reach sixteen distinct cells and retain the same hover anchor
+  ---
+  duration_ms: 166.849108
+  type: 'test'
+  ...
+# (node:53635) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+ok 3 - the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+  ---
+  duration_ms: 1.840853
+  type: 'test'
+  ...
+# Subtest: the atlas has 16 distinct and unclipped poses on the shared game baseline
+ok 4 - the atlas has 16 distinct and unclipped poses on the shared game baseline
+  ---
+  duration_ms: 790.045661
+  type: 'test'
+  ...
+# Subtest: the outage fallback is scoped to the original event and restores transform and stroke state
+ok 5 - the outage fallback is scoped to the original event and restores transform and stroke state
+  ---
+  duration_ms: 2.481778
+  type: 'test'
+  ...
+# (node:53661) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: only the exact boss and archived sheet receive cutout animation
+ok 6 - only the exact boss and archived sheet receive cutout animation
+  ---
+  duration_ms: 3.813344
+  type: 'test'
+  ...
+# Subtest: rest, movement, ringing and impact transform exactly two independent bells
+ok 7 - rest, movement, ringing and impact transform exactly two independent bells
+  ---
+  duration_ms: 1.047397
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5235.592528

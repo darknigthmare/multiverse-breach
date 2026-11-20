@@ -8,7 +8,9 @@ Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge AT
 
 Les corrections suivantes rendent les légendes de combat lisibles sur mobile, déclenchent le ramassage Tactics à l’arrivée et rétablissent les ambiances des arènes personnalisées ainsi que les spéciales de J2 du Nexus. Deux lots de médias ont aussi été réunis dans un dossier avec reprise vérifiée. [Corrections et essais](docs/development/corrections-2026-11-20/README.md).
 
-La nouvelle passe parallèle retire **81 P1**. Elle ajoute un atlas animé pour l’essaim de The Aether Crown et 28 séquences de duel sur les planches existantes. Les invocations de fin de combat et l’extraction Tactics attendent leur animation de retour ou d’arrivée. Le contrôle DLC identifie les lots jamais reçus. [Reprise, inventaire et preuves](docs/assets/p0-p1-p2-continuation-04-2026-11-20/README.md).
+La passe précédente retire **81 P1**. Elle ajoute un atlas animé pour l’essaim de The Aether Crown et 28 séquences de duel sur les planches existantes. Les invocations de fin de combat et l’extraction Tactics attendent leur animation de retour ou d’arrivée. Le contrôle DLC identifie les lots jamais reçus. [Reprise, inventaire et preuves](docs/assets/p0-p1-p2-continuation-04-2026-11-20/README.md).
+
+La dernière passe couvre **deux lots de 40 acteurs** et retire **80 P1** supplémentaires. Le duel gagne 28 séquences sur les atlas existants. Le RPG synchronise le tir du Slig et conserve le faisceau confirmé de l’ÜberCharge. Les soins en hauteur respectent l’irradiation et le Codex affiche le rang réel des menaces. [Résultats et preuves](docs/assets/p0-p1-p2-continuation-05-2026-11-20/README.md).
 
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
@@ -53,6 +55,8 @@ Sur un disque contraint, `npm run dlc:assets:batches` permet de lire, contrôler
 Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exportDlcAssetBatch.mjs --plan PLAN.json --batch ID --out NOUVEAU_DOSSIER`. Le dossier contient les fichiers aux chemins source et un reçu SHA-256 vérifiable après transfert. Deux lots réels totalisant 60 médias ont été exportés. [Reproduction et reçus](docs/assets/dlc-batch-export-2026-11-20/README.md).
 
 `node scripts/applyDlcAssetBatch.mjs` réunit les lots du même plan dans un dossier de destination. La reprise vérifie les fichiers présents et copie ceux qui manquent. [Commandes et preuve sur deux lots](docs/assets/dlc-batch-export-2026-11-20/ASSEMBLY.md).
+
+Un assemblage complet peut alimenter directement `dlc:export:runtime` avec `--media-assembly`, `--media-plan` et `--media-plan-sha256`. Le checkout fournit le code et le dossier assemblé fournit les médias vérifiés. La destination doit avoir la place pour l’édition exportée. [Commande complète et validation](docs/development/corrections-2026-11-20/dlc-distribution-from-assembly/README.md).
 
 ## Jouer
 

@@ -1,0 +1,81 @@
+{
+  "chromium": "151.0.7922.173",
+  "scope": "Isolated Vite builds use actual CustomBattleMode and GameCanvas. Test sets actor positions and irradiation in the scene, then clicks the real Healing Wind button and confirms floor-addressed selection with Enter. Before and after compare Tactics while other files may have been edited in parallel.",
+  "browserRuns": {
+    "before": {
+      "phase": "before",
+      "prepared": {
+        "caster": "aerith_ff7",
+        "surface": "bridge:4:3",
+        "upper": "bridge:5:3",
+        "lower": "ground:5:3",
+        "before": 70,
+        "lowerBefore": 75,
+        "maxHp": 176
+      },
+      "denied": {
+        "cooldown": 0,
+        "action": "action"
+      },
+      "preview": 18,
+      "observed": {
+        "upperHp": 102,
+        "lowerHp": 75,
+        "radiation": 3565,
+        "cooldown": 475
+      },
+      "errors": [],
+      "bundle": "index-DuCr7ocN.js",
+      "bundleSha256": "cf31323ff349a7ac609b4cfdfbc80a9d058d723d3badc7e65d94ef1ced032d41"
+    },
+    "after": {
+      "phase": "after",
+      "prepared": {
+        "caster": "aerith_ff7",
+        "surface": "bridge:4:3",
+        "upper": "bridge:5:3",
+        "lower": "ground:5:3",
+        "before": 70,
+        "lowerBefore": 75,
+        "maxHp": 176
+      },
+      "denied": {
+        "cooldown": 0,
+        "action": "action"
+      },
+      "preview": 18,
+      "observed": {
+        "upperHp": 88,
+        "lowerHp": 75,
+        "radiation": 3540,
+        "cooldown": 475
+      },
+      "errors": [],
+      "bundle": "index-DTRG22K9.js",
+      "bundleSha256": "cff501edd18ba7fa01dca228cfe7d10789d8d2c4f2b83c87bc1517dc11583236"
+    }
+  },
+  "node": "22.23.5",
+  "engineChecks": {
+    "targetedBeforeFix": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "tapSha256": "277988217c7c10e21a416e1dee4c91e59c4a4935a29b1dd815f14e266f1706e7",
+      "failure": "218 actual HP versus 187.5 shared radiation cap"
+    },
+    "suiteAfterFix": {
+      "tests": 38,
+      "pass": 38,
+      "fail": 0,
+      "skipped": 0,
+      "tapSha256": "31e1e7db4ca0014e3bad4fdf65972ed0e9844eff351dcefe097e63f7ec7ecfe8"
+    }
+  },
+  "finalTestCommand": "node --max-old-space-size=2048 --test --test-concurrency=1 scripts/tacticsVerticalEffects.test.mjs scripts/tacticsValHealingWave15.test.mjs",
+  "changedSourceSha256": {
+    "src/game/tacticsVerticalRuntime.js": "0705f897ce9974c257c4562d92ffcecb28081807bd6b5e02666f7fba6df4370e",
+    "scripts/tacticsVerticalEffects.test.mjs": "730dba0f6ffc6b674bf535ab51a6270e2a5ddbeb1c431475dafa1b70fa885701"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "actorKey": [
+    "Meridian Clockwork",
+    "id:meridian_clockwork:the_twelve_bell_judges"
+  ],
+  "sourceBaseCommit": "b930e849c",
+  "atlas": {
+    "path": "public/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png",
+    "sha256": "29bc77091a8feeae6cf908dde3768468267fdca3a214d6f063ba46448ee5c6ec",
+    "gitBlob": "bdd5d1d1fa66fe57bf2fc7322f28b7cc88679c41",
+    "columns": 1,
+    "rows": 1
+  },
+  "animation": {
+    "method": "draw two isolated regions around their pivots with Canvas transforms",
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "regions": 2,
+    "newRasterFiles": 0,
+    "honorsReducedMotion": true
+  },
+  "directBuild": {
+    "fixture": "game-canvas.html",
+    "viteVersion": "8.1.0",
+    "exitCode": 0,
+    "copiesPublicAssets": false
+  },
+  "verification": {
+    "unitPasses": 7,
+    "browserPasses": 3,
+    "cases": [
+      {
+        "name": "1280-animated",
+        "receivedHit": [
+          640,
+          602
+        ],
+        "position": [
+          5,
+          1
+        ],
+        "disposed": true
+      },
+      {
+        "name": "390-animated",
+        "receivedHit": [
+          640,
+          606
+        ],
+        "position": [
+          5,
+          1
+        ],
+        "disposed": true
+      },
+      {
+        "name": "1280-reduced",
+        "receivedHit": [
+          640,
+          604
+        ],
+        "position": [
+          5,
+          1
+        ],
+        "disposed": true
+      }
+    ],
+    "receipts": [
+      {
+        "file": "docs/assets/p0-p1-p2-continuation-05-2026-11-20/bell-judges/alpha-review.json",
+        "sha256": "843c0821c90d00b90ca68f372b800207959a53dc0b7bdaa09c3889441eec50dc",
+        "bytes": 924
+      },
+      {
+        "file": "docs/assets/p0-p1-p2-continuation-05-2026-11-20/bell-judges/browser-results.json",
+        "sha256": "423ba68030f5162a06622bd31a12a8adaa40142fb89a5b00849c5b0b243aa4d5",
+        "bytes": 13533
+      },
+      {
+        "file": "docs/assets/p0-p1-p2-continuation-05-2026-11-20/bell-judges/unit.tap",
+        "sha256": "1dddcac5e9a3076131743f93f145b1d3235bb195ea6d31f249e0e9fc1e08bda0",
+        "bytes": 2909
+      },
+      {
+        "file": "docs/assets/p0-p1-p2-continuation-05-2026-11-20/bell-judges/1280-animated.jpg",
+        "sha256": "5144ed03053dcc823969bc7a7ff879b15d920400706a6a32db60476956927244",
+        "bytes": 90683
+      },
+      {
+        "file": "docs/assets/p0-p1-p2-continuation-05-2026-11-20/bell-judges/390-animated.jpg",
+        "sha256": "7b606776124d2cec0c45d3d21eff7a22928f22228d7f9f8f5a4fc56f7ab74bda",
+        "bytes": 37901
+      }
+    ]
+  },
+  "remaining": {
+    "staticGameplayReview": true,
+    "closedP0": 0,
+    "closedP1": 0,
+    "closedP2": 0
+  }
+}

@@ -1,0 +1,542 @@
+{
+  "previousLedgerCheckpoint": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+  "previousLedgerSha256": "fb31e772c51aa1e611429337af6040ef42ead74b591a0a7b3b14a1702429a181",
+  "baseRevision": "b930e849c01e13844f19745592ee57e4f549b64c",
+  "sourceAndAssetTreeCommit": "0657ae9d7b61874d39297acca4a2d1ec11a53bc9",
+  "actorExportSha256": "38438fd223a8c3060baf9737562e6cee9d6a4053563420c5a38ed4a7c34c18f1",
+  "summary": {
+    "version": "R14",
+    "sourceBaseCommit": "0657ae9d7b61874d39297acca4a2d1ec11a53bc9",
+    "assetTreeCommit": "0657ae9d7b61874d39297acca4a2d1ec11a53bc9",
+    "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+    "actors": 4937,
+    "heroes": 1912,
+    "universes": 525,
+    "originalIdentities": 312,
+    "externalOrUnresolved": 4625,
+    "actorsWithOfficialVariants": 55,
+    "actorsWithMissingRaster": 1470,
+    "actorsWithStaticGameplay": 10,
+    "actorsWithGenericTechniqueNames": 1309,
+    "continuitiesRecovered": 1401,
+    "structuredContinuitiesRecovered": 60,
+    "actorContinuityAmbiguities": 2,
+    "continuityConflicts": 0,
+    "incarnationsUnspecified": 3098,
+    "visualContractsMissing": 2939,
+    "visualContractsGeneric": 213,
+    "historicalP0": "Not reclassified by this export; see prior fidelity audit. P1/P2 here prioritize newly exported work only.",
+    "newArtApprovals": 0,
+    "newSpriteFiles": 0,
+    "reviewComplete": 0
+  },
+  "beforeTotals": {
+    "P2": 13582,
+    "P1": 16572
+  },
+  "afterTotals": {
+    "P2": 13582,
+    "P1": 16492
+  },
+  "removedTotals": {
+    "P1": 80
+  },
+  "addedTotals": {},
+  "removedByCode": {
+    "INCARNATION_UNSPECIFIED": 40,
+    "VISUAL_CONTRACT_MISSING": 40
+  },
+  "reservations": {
+    "priorUnique": 400,
+    "current": {
+      "tide-crown-actors-040": 40,
+      "duel-exits-040": 40
+    },
+    "overlap": 0
+  },
+  "changedRuntimeAssets": [],
+  "historicalP0Open": 22,
+  "removed": [
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:astra_vey\"]",
+      "actorName": "Astra Vey",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:astra_vey\"]",
+      "actorName": "Astra Vey",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:korun_stoneborn\"]",
+      "actorName": "Korun Né-de-Pierre",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:korun_stoneborn\"]",
+      "actorName": "Korun Né-de-Pierre",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:le_dieu_d_avant_les_noms\"]",
+      "actorName": "Le Dieu d’Avant les Noms",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:mythos_primordia:le_dieu_d_avant_les_noms\"]",
+      "actorName": "Le Dieu d’Avant les Noms",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:nyme_first_song\"]",
+      "actorName": "Nyme du Premier Chant",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Mythos Primordia\",\"id:nyme_first_song\"]",
+      "actorName": "Nyme du Premier Chant",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:brann_crow\"]",
+      "actorName": "Brann Crow",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:brann_crow\"]",
+      "actorName": "Brann Crow",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:amiral_chain\"]",
+      "actorName": "Amiral Chain",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:amiral_chain\"]",
+      "actorName": "Amiral Chain",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:coffre_mimetique\"]",
+      "actorName": "Coffre mimétique",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:coffre_mimetique\"]",
+      "actorName": "Coffre mimétique",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:corsaire_noye\"]",
+      "actorName": "Corsaire noyé",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:corsaire_noye\"]",
+      "actorName": "Corsaire noyé",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:fusilier_de_la_marine_de_la_couronne\"]",
+      "actorName": "Fusilier de la Marine de la Couronne",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:fusilier_de_la_marine_de_la_couronne\"]",
+      "actorName": "Fusilier de la Marine de la Couronne",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:goule_a_poudre\"]",
+      "actorName": "Goule à poudre",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:goule_a_poudre\"]",
+      "actorName": "Goule à poudre",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:kraken_sans_couronne\"]",
+      "actorName": "Kraken Sans Couronne",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:kraken_sans_couronne\"]",
+      "actorName": "Kraken Sans Couronne",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:pretre_du_leviathan\"]",
+      "actorName": "Prêtre du Léviathan",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:pretre_du_leviathan\"]",
+      "actorName": "Prêtre du Léviathan",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:sirene_de_recif\"]",
+      "actorName": "Sirène de récif",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:sirene_de_recif\"]",
+      "actorName": "Sirène de récif",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:sorciere_du_calme_mort\"]",
+      "actorName": "Sorcière du Calme Mort",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:crownless_sea:sorciere_du_calme_mort\"]",
+      "actorName": "Sorcière du Calme Mort",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:milo_quill\"]",
+      "actorName": "Milo Quill",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:milo_quill\"]",
+      "actorName": "Milo Quill",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:ysara_flint\"]",
+      "actorName": "Capitaine Ysara Flint",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Crownless Sea\",\"id:ysara_flint\"]",
+      "actorName": "Capitaine Ysara Flint",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:cartographe_des_angles_impossibles\"]",
+      "actorName": "Cartographe des Angles Impossibles",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:cartographe_des_angles_impossibles\"]",
+      "actorName": "Cartographe des Angles Impossibles",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:coquille_couverte_de_balanes\"]",
+      "actorName": "Coquille couverte de balanes",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:coquille_couverte_de_balanes\"]",
+      "actorName": "Coquille couverte de balanes",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:cultiste_lie_au_sel\"]",
+      "actorName": "Cultiste lié au sel",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:cultiste_lie_au_sel\"]",
+      "actorName": "Cultiste lié au sel",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_ch_ur_sous_la_ville\"]",
+      "actorName": "Le Chœur sous la Ville",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_ch_ur_sous_la_ville\"]",
+      "actorName": "Le Chœur sous la Ville",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_dormeur_derriere_la_maree\"]",
+      "actorName": "Le Dormeur derrière la Marée",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_dormeur_derriere_la_maree\"]",
+      "actorName": "Le Dormeur derrière la Marée",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_phare_qui_regarde\"]",
+      "actorName": "Le Phare qui Regarde",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:le_phare_qui_regarde\"]",
+      "actorName": "Le Phare qui Regarde",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:rejeton_du_ch_ur_profond\"]",
+      "actorName": "Rejeton du Chœur Profond",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:rejeton_du_ch_ur_profond\"]",
+      "actorName": "Rejeton du Chœur Profond",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:sangsue_de_reve\"]",
+      "actorName": "Sangsue de rêve",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:sangsue_de_reve\"]",
+      "actorName": "Sangsue de rêve",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:traqueur_d_angles\"]",
+      "actorName": "Traqueur d’angles",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:drowned_testament:traqueur_d_angles\"]",
+      "actorName": "Traqueur d’angles",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:jonas_mire\"]",
+      "actorName": "Jonas Mire",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:jonas_mire\"]",
+      "actorName": "Jonas Mire",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:mara_ell\"]",
+      "actorName": "Dr Mara Ell",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:mara_ell\"]",
+      "actorName": "Dr Mara Ell",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:oona_vell\"]",
+      "actorName": "Oona Vell",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Drowned Testament\",\"id:oona_vell\"]",
+      "actorName": "Oona Vell",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:aelwen_starbough\"]",
+      "actorName": "Aelwen Starbough",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:aelwen_starbough\"]",
+      "actorName": "Aelwen Starbough",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:brokk_embervein\"]",
+      "actorName": "Brokk Embervein",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:brokk_embervein\"]",
+      "actorName": "Brokk Embervein",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:goruk_ash_tusk\"]",
+      "actorName": "Goruk Ash-Tusk",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:goruk_ash_tusk\"]",
+      "actorName": "Goruk Ash-Tusk",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:archer_spectre_de_l_ancienne_cour\"]",
+      "actorName": "Archer spectre de l’ancienne cour",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:archer_spectre_de_l_ancienne_cour\"]",
+      "actorName": "Archer spectre de l’ancienne cour",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:brute_troll_des_ponts\"]",
+      "actorName": "Brute troll des ponts",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:brute_troll_des_ponts\"]",
+      "actorName": "Brute troll des ponts",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:chevalier_creux\"]",
+      "actorName": "Chevalier creux",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:chevalier_creux\"]",
+      "actorName": "Chevalier creux",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:dragon_du_pic_creux\"]",
+      "actorName": "Dragon du Pic Creux",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:dragon_du_pic_creux\"]",
+      "actorName": "Dragon du Pic Creux",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:lich_sans_couronne\"]",
+      "actorName": "Lich Sans Couronne",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:lich_sans_couronne\"]",
+      "actorName": "Lich Sans Couronne",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:matriarche_araignee_des_ruines\"]",
+      "actorName": "Matriarche araignée des ruines",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:matriarche_araignee_des_ruines\"]",
+      "actorName": "Matriarche araignée des ruines",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:reine_des_ronces\"]",
+      "actorName": "Reine des Ronces",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:reine_des_ronces\"]",
+      "actorName": "Reine des Ronces",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:sapeur_gobelin_mercenaire\"]",
+      "actorName": "Sapeur gobelin mercenaire",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:sapeur_gobelin_mercenaire\"]",
+      "actorName": "Sapeur gobelin mercenaire",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:vaelgor_premier_wyrm\"]",
+      "actorName": "Vaelgor, Premier Wyrm",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Valedor: The Shattered Crown\",\"id:valedor_shattered_crown:vaelgor_premier_wyrm\"]",
+      "actorName": "Vaelgor, Premier Wyrm",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "added": []
+}

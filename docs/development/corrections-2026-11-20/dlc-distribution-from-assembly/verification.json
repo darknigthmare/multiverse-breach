@@ -1,0 +1,61 @@
+{
+  "sourceBaseline": "b930e849c",
+  "nodeVersion": "22.23.5",
+  "changedFileSha256": {
+    "scripts/applyDlcAssetBatch.mjs": "c61ac91cf928447300447e05d3e93f3fb52bfce70b6db8d146ede63659efebcf",
+    "scripts/exportDlcDistribution.mjs": "d2db438b2f3c7e334201a89e72efd593abe06b872ad581c5775e346cfe9a4366",
+    "scripts/dlcAssetBatches.test.mjs": "e4a5358e7a213c806abbfeec6b13d44faefb43837cc6acd3918df90f615e5fd9"
+  },
+  "oldPlanIdentityFilesUnchanged": 8,
+  "batches": {
+    "passed": 39,
+    "failed": 0,
+    "durationMs": 12308.540255,
+    "command": "DLC_ASSEMBLY_REAL_MEDIA_FIXTURE=1 npm run test:dlc:batches"
+  },
+  "standardExportBuild": {
+    "passed": 45,
+    "failed": 0,
+    "durationMs": 2508.470023,
+    "command": "node --test --test-concurrency=1 scripts/dlcDistributionExport.test.mjs scripts/dlcDistributionBuild.test.mjs"
+  },
+  "targetedLint": {
+    "command": "npm run lint -- scripts/dlcAssetBatches.test.mjs scripts/exportDlcDistribution.mjs scripts/applyDlcAssetBatch.mjs",
+    "exitCode": 0
+  },
+  "fixture": {
+    "scope": "Synthetic lightweight profile using real repository assets.",
+    "assets": [
+      {
+        "sourcePath": "public/favicon.png",
+        "bytes": 116871,
+        "sha256": "03223a345e6f1ea6c57e3aa9aa34a9839650ade118fb4014a70eea0af89b9056",
+        "gitBlobOid": "8086f2d3106a802d1e1e2560b2b1e9263bc9fb95"
+      },
+      {
+        "sourcePath": "DLC/Halo/assets/sprites/generated/heroes/halo/noble-six.png",
+        "bytes": 733864,
+        "sha256": "ca02f0444fdb61c9a4cd4f7ca16668a7f9005e80d1c1e99ce510dddfe74b218d",
+        "gitBlobOid": "5beddeab76b06df110fed4edec2feb9bb074af7a"
+      }
+    ],
+    "distributionReceiptMatchesLegacy": true,
+    "checkoutMediaAbsentAfterBuild": true,
+    "profileMismatchRejected": true,
+    "frozenSourceDriftRejected": true,
+    "build": {
+      "mode": "selected",
+      "packs": 1,
+      "media": 2,
+      "builtFiles": 4,
+      "moduleCount": 5,
+      "dlcModuleCount": 1,
+      "javascriptBytes": 797
+    }
+  },
+  "realDoom": {
+    "attemptReceipt": "doom-incomplete-export.json",
+    "profileComplete": false,
+    "distributionPublished": false
+  }
+}

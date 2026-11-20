@@ -1,0 +1,84 @@
+{
+  "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+  "localInventory": {
+    "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+    "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+    "candidatesChecked": 315,
+    "locallyAvailableByGitAndCacheSize": 115,
+    "fullyNativeAvailable": 115,
+    "selected": [
+      {
+        "batchId": "00240",
+        "assets": 40,
+        "bytes": 2445568,
+        "privateDoom": 16
+      },
+      {
+        "batchId": "00294",
+        "assets": 28,
+        "bytes": 32690077,
+        "privateDoom": 2
+      },
+      {
+        "batchId": "00299",
+        "assets": 40,
+        "bytes": 33130531,
+        "privateDoom": 2
+      }
+    ]
+  },
+  "newBatches": [
+    {
+      "batchId": "00240",
+      "assets": 40,
+      "bytes": 2445568,
+      "privateDoom": 16,
+      "rastersDecoded": 23,
+      "receiptSha256": "e581fdee366676e79c5b0b094ea0d5ce27d8b8a25f2df38a48036b1c647f2310"
+    },
+    {
+      "batchId": "00294",
+      "assets": 28,
+      "bytes": 32690077,
+      "privateDoom": 2,
+      "rastersDecoded": 27,
+      "receiptSha256": "e6c28105081ad69be2d74e8b2f59a1c0ef14d2eb8c732ca9ec4d3e54fd3ee1bc"
+    },
+    {
+      "batchId": "00299",
+      "assets": 40,
+      "bytes": 33130531,
+      "privateDoom": 2,
+      "rastersDecoded": 40,
+      "receiptSha256": "40022a9f3f38959ec074faa581843efb110c4cf5484b7330fe8eb6a748f756b6"
+    }
+  ],
+  "previousWitness": {
+    "appliedBatches": 2,
+    "presentAssets": 60,
+    "payloadBytes": 64677228,
+    "plannedBatches": 317
+  },
+  "coverage": {
+    "appliedBatches": 5,
+    "pendingBatches": [],
+    "plannedBatches": 317,
+    "missingBatchCount": 312,
+    "presentAssets": 168,
+    "plannedAssets": 7693,
+    "payloadBytes": 132943404,
+    "mediaPlanComplete": false
+  },
+  "networkLfsFetchEnabled": false,
+  "canonicalCheckoutWritten": false,
+  "independentNewAssetsVerifiedAgainstFrozenGitOid": 108,
+  "selectionScope": "Metadata availability only before export. Raster decoding and full content hashes apply to the three selected lots.",
+  "demoStorage": "The five-lot media tree and three raw portable batches are on the temporary build volume.",
+  "strictDistributionExport": {
+    "exitCode": 1,
+    "outputCreated": false,
+    "stagingCreated": false,
+    "diagnostic": "Assembled media do not cover the pinned distribution plan."
+  }
+}

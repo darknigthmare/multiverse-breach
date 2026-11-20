@@ -1,0 +1,119 @@
+{
+  "sourceCommit": "0657ae9d7b61874d39297acca4a2d1ec11a53bc9",
+  "node": "22.23.5",
+  "simulations": [
+    {
+      "name": "Contrats des acteurs",
+      "command": "npm run test:source-contracts",
+      "testResult": {
+        "tests": 170,
+        "pass": 170,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "64a5a01b4f35c3afe496bbfe0ac543a6ecdf5a4bb7bbedb7e301dfb5c98c8a5c"
+    },
+    {
+      "name": "Mécaniques W17 et ÜberCharge",
+      "command": "node --test --test-concurrency=1 scripts/sourceMechanicsWave17.test.mjs scripts/sourceEngineWave17.test.mjs",
+      "testResult": {
+        "tests": 41,
+        "pass": 41,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "f1bc5c4ae0006353105afa89d9b1e75351bf0222da726c70a370242ebad3776f"
+    },
+    {
+      "name": "Contrôle RPG W16",
+      "command": "node --test scripts/rpgSourceControlWave16.test.mjs",
+      "testResult": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "162ca3438d1fe71c71cbcf75ea146aefea6ed9286ec29a207af9b619a9bc19f0"
+    },
+    {
+      "name": "Invocations RPG",
+      "command": "node --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/rpgSummonWave16.test.mjs",
+      "testResult": {
+        "tests": 53,
+        "pass": 53,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "2b948418e3f91eb9aee7c6836dfd07f8c7dbb0de6a3a782bde82c5f8929e525e"
+    },
+    {
+      "name": "Verticalité Tactics",
+      "command": "npm run test:tactics-verticality",
+      "testResult": {
+        "tests": 300,
+        "pass": 300,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "4c12034762bfe8b383aa1e74e71ec9c5808261d7968dc74cdb69ed60964f8612"
+    },
+    {
+      "name": "Interface",
+      "command": "npm run test:ui-immersion",
+      "testResult": {
+        "tests": 581,
+        "pass": 581,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "fac2c6b1c16e3bb73b5aef40d4787bc2fc1c574b1df46701515022d20515577f"
+    }
+  ],
+  "targetedLint": {
+    "command": "node_modules/.bin/oxlint <29 changed source and test files>",
+    "exitCode": 0,
+    "files": 29
+  },
+  "focusedEvidence": [
+    {
+      "name": "Acteurs et palettes",
+      "path": "../tide-crown-actors-040/validation.json",
+      "passed": 17
+    },
+    {
+      "name": "Duel",
+      "path": "../duel-exits-040/verification.json",
+      "passed": 37,
+      "browserScenarios": 6
+    },
+    {
+      "name": "Tactics",
+      "path": "../tactics-healing/verification.json",
+      "passed": 38,
+      "browserScenarios": 2
+    },
+    {
+      "name": "Twelve Bell Judges",
+      "path": "../bell-judges/browser-results.json",
+      "passed": 7,
+      "browserScenarios": 3
+    },
+    {
+      "name": "Archives du Nexus",
+      "path": "../archive-threats/README.md",
+      "passed": 25
+    },
+    {
+      "name": "Export et build DLC",
+      "path": "../../../development/corrections-2026-11-20/dlc-distribution-from-assembly/verification.json",
+      "passed": 84
+    }
+  ],
+  "scope": "Suites locales et parcours ciblés. Certains tests apparaissent dans plusieurs suites et ne sont pas additionnés."
+}
