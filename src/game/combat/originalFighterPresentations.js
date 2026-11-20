@@ -9,6 +9,33 @@ const attack = (at, frame, x, y, opacity) => pose(at, 'attack', frame, x, y, opa
 const hit = (at, frame, x, y, opacity) => pose(at, 'hit', frame, x, y, opacity);
 const scene = (name, duration, beats, effectWindow = null) => ({ name, duration, beats, effectWindow });
 
+const englishCaptions = {
+  neris_vale: {
+    intro: 'Surveying the abyssal chart', roundVictory: 'Neris confirms the survey',
+    roundDefeat: 'Neris buckles under pressure', fatality: 'True Name',
+    victory: 'The chart of names is safe', defeat: 'Neris falls to one knee',
+    outro: 'Neris follows the return current'
+  },
+  kael_venn: {
+    intro: 'Kael arrives between two seconds', roundVictory: 'Kael counts one more second',
+    roundDefeat: 'A setback stops Kael', fatality: 'Full Refund',
+    victory: 'Kael puts away his blades', defeat: 'Kael loses his final moment',
+    outro: 'Kael makes off with the returned seconds'
+  },
+  eira_solenne: {
+    intro: 'Eira tends the photosphere', roundVictory: 'The star seed lights up again',
+    roundDefeat: 'Eira leans on her staff', fatality: 'Shared Light',
+    victory: 'Eira protects the young star', defeat: 'The botanist holds on to her photosphere',
+    outro: 'Eira brings the seed back to the garden'
+  },
+  nyra_vale: {
+    intro: 'Nyra opens a Ghostline connection', roundVictory: 'Nyra locks down her connection',
+    roundDefeat: 'Nyra loses the Ghostline signal', fatality: 'Accès Racine Nadir',
+    victory: 'The memory keys are secure', defeat: 'Nyra stays down, her link cut',
+    outro: 'Nyra disconnects and disappears'
+  }
+};
+
 const presentations = {
   neris_vale: {
     universe: 'Thalassa Mnémique', weapon: 'mnemonic_sonar', pack: 'oc-dlc-drowned-dawn',
@@ -88,6 +115,7 @@ export function resolveOriginalFighterPresentation(actor, phase) {
   return {
     id: `${actor.id}:${phase}:original-duel`, heroId: actor.id, universe: actor.universe,
     phase, name: clip.name, sourceAction: clip.name, sourceReference: record.sourceReference,
+    nameLocalized: { fr: clip.name, en: englishCaptions[actor.id][phase] },
     sourceAsset: { sheet: record.sheet, footAnchor: record.footAnchor },
     duration: clip.duration, beats: clip.beats.map(beat => ({ ...beat })),
     effect: { kind: clip.effectWindow ? record.effect : 'none', startsAt, endsAt },

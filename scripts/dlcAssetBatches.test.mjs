@@ -11,6 +11,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { createDlcAssetBatchPlan, DLC_BATCH_MIB, validateDlcAssetBatch, validateDlcAssetBatches, verifyDlcAssetBatchPlan } from './dlcAssetBatches.mjs';
 import { auditDlcAssetBatchExport, exportDlcAssetBatch } from './exportDlcAssetBatch.mjs';
+import { applyDlcAssetBatch, auditDlcAssetBatchAssembly } from './applyDlcAssetBatch.mjs';
 
 const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFUlEQVR4nGN023LnPwMDAwMTAxQAACryAtmZNLxsAAAAAElFTkSuQmCC', 'base64');
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -262,4 +263,94 @@ test('batch output commits once under concurrency and portable audits detect tam
   writeFileSync(media, PNG);
   writeFileSync(path.join(out, 'unrecorded.png'), PNG);
   await assert.rejects(auditDlcAssetBatchExport({ directory: out, expectedReceiptSha256 }), /file inventory differs/);
+});
+
+test('portable CLI assembles selected batches, verifies the tree and reuses completed bytes', async t => {
+  const f = fixture(t, { extras: 2 });
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile(['halo']), limits: { maxAssets: 2 } });
+  const exports = [];
+  for (const [i, batch] of plan.batches.entries()) {
+    exports.push(await exportDlcAssetBatch({ root: f.root, plan, batchId: batch.id, out: path.join(f.parent, 'lot-' + i) }));
+  }
+  const out = path.join(f.parent, 'assembly');
+  const script = fileURLToPath(new URL('./applyDlcAssetBatch.mjs', import.meta.url));
+  const run = args => spawnSync(process.execPath, [script, ...args], { cwd: f.parent, encoding: 'utf8' });
+  const assemble = delivery => run(['--batch', delivery.out, '--out', out, '--receipt-sha256', delivery.receiptSha256]);
+  for (const delivery of exports) {
+    const applied = assemble(delivery);
+    assert.equal(applied.status, 0, applied.stderr);
+    assert.equal(JSON.parse(applied.stdout).copiedAssets, 2);
+  }
+  const reapplied = assemble(exports[0]);
+  assert.equal(reapplied.status, 0, reapplied.stderr);
+  assert.equal(JSON.parse(reapplied.stdout).copiedAssets, 0);
+  assert.equal(JSON.parse(reapplied.stdout).reusedAssets, 2);
+  const checked = run(['--check', out, '--expected-plan-sha256', plan.sha256]);
+  assert.equal(checked.status, 0, checked.stderr);
+  assert.deepEqual(JSON.parse(checked.stdout), { sourceRevision: f.revision, planSha256: plan.sha256, appliedBatches: 2,
+    pendingBatches: [], presentAssets: 4, payloadBytes: 4 * PNG.length });
+  assert.deepEqual(readFileSync(path.join(out, 'DLC/Halo/assets/images/halo.png')), PNG);
+  assert.equal(existsSync(path.join(out, 'public/images/halo.png')), false);
+});
+
+test('an interrupted assembly resumes missing assets and preserves conflicting files and plans', async t => {
+  const f = fixture(t, { extras: 2 });
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile(['halo']), limits: { maxAssets: 2 } });
+  const out = path.join(f.parent, 'assembly');
+  const apply = item => applyDlcAssetBatch({ directory: item.out, expectedReceiptSha256: item.receiptSha256, out });
+  const select = (plan, batchId, name) => exportDlcAssetBatch({ root: f.root, plan, batchId, out: path.join(f.parent, name) });
+  const first = await select(plan, 0, 'first');
+  const next = await select(plan, 1, 'next');
+  const foreignPlan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile(['drop']) });
+  const foreign = await select(foreignPlan, 0, 'foreign');
+  const user = path.join(f.parent, 'user');
+  mkdirSync(user); writeFileSync(path.join(user, 'keep'), 'keep');
+  await assert.rejects(applyDlcAssetBatch({ directory: first.out, expectedReceiptSha256: first.receiptSha256, out: user }), /files without a journal/);
+  assert.deepEqual(readdirSync(user), ['keep']);
+  await apply(first);
+  await assert.rejects(apply(foreign), /Assembly journal differs: state.json/);
+  const [available, conflicting] = plan.batches[1].assets.map(asset => path.join(out, asset.sourcePath));
+  const sentinel = Buffer.alloc(PNG.length);
+  mkdirSync(path.dirname(conflicting), { recursive: true }); writeFileSync(conflicting, sentinel);
+  await assert.rejects(apply(next), /Batch export payload differs/);
+  assert.deepEqual(readFileSync(conflicting), sentinel);
+  assert.deepEqual(readFileSync(available), PNG);
+  rmSync(conflicting);
+  assert.deepEqual((await auditDlcAssetBatchAssembly({ directory: out, expectedPlanSha256: plan.sha256 })).pendingBatches, ['00001']);
+  const resumed = await apply(next);
+  assert.equal(resumed.copiedAssets, 1);
+  assert.equal(resumed.reusedAssets, 1);
+  const after = await auditDlcAssetBatchAssembly({ directory: out });
+  assert.deepEqual(after.pendingBatches, []);
+  assert.equal(after.appliedBatches, 2);
+  assert.equal(after.presentAssets, 4);
+});
+
+test('concurrent appends with different sources for one public URL leave one intact batch', async t => {
+  const f = fixture(t, { extras: 1 });
+  const plan = await createDlcAssetBatchPlan({ root: f.root, revision: f.revision, profile: profile(), limits: { maxAssets: 1 } });
+  const exportAsset = batchId => exportDlcAssetBatch({ root: f.root, plan, batchId, out: path.join(f.parent, 'lot-' + batchId) });
+  const first = await exportAsset(0);
+  const second = await exportAsset(1);
+  const firstAsset = JSON.parse(readFileSync(path.join(first.out, 'batch-export.json'))).assets[0];
+  const secondReceiptFile = path.join(second.out, 'batch-export.json');
+  const changed = JSON.parse(readFileSync(secondReceiptFile));
+  rmSync(path.join(second.out, changed.assets[0].sourcePath));
+  const privateSource = 'DLC/Drop/assets' + firstAsset.publicPath;
+  const privateFile = path.join(second.out, privateSource);
+  mkdirSync(path.dirname(privateFile), { recursive: true });
+  writeFileSync(privateFile, PNG);
+  changed.assets = [{ ...firstAsset, sourcePath: privateSource }];
+  const altered = JSON.stringify(changed);
+  writeFileSync(secondReceiptFile, altered);
+  second.receiptSha256 = hash(altered);
+  const out = path.join(f.parent, 'assembly');
+  const outcomes = await Promise.allSettled([first, second].map(item => applyDlcAssetBatch({ directory: item.out,
+    expectedReceiptSha256: item.receiptSha256, out })));
+  assert.equal(outcomes.filter(item => item.status === 'fulfilled').length, 1);
+  assert.match(outcomes.find(item => item.status === 'rejected').reason.message, /New batch media collide/);
+  const audit = await auditDlcAssetBatchAssembly({ directory: out, expectedPlanSha256: plan.sha256 });
+  assert.deepEqual(audit.pendingBatches, []);
+  assert.equal(audit.appliedBatches, 1);
+  assert.equal(audit.presentAssets, 1);
 });

@@ -1,0 +1,76 @@
+{
+  "toolingBaseline": "e973004e2ba8e2a5cf04f42969cb2a2e12df0a9a",
+  "nodeVersion": "22.23.5",
+  "inputs": {
+    "scripts/applyDlcAssetBatch.mjs": "c3f9a7cd4c02f5fb8ee6bfd661ae8b7b1606ab7373d53add1e2978e0b9831240",
+    "scripts/exportDlcAssetBatch.mjs": "3ffbb1b4b5f3c56f55a1c7f65df114e2a1d4069cf966406caa59ee3321e3d8e0",
+    "scripts/dlcAssetBatches.test.mjs": "1feb16e49d2b6b7d7c0683569153e63fc86f139d85228b25f2307fb2cf5682fe",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f"
+  },
+  "targetedTests": {
+    "command": "npm run test:dlc:batches",
+    "testsPassed": 37,
+    "testsFailed": 0,
+    "durationMs": 8778.096076
+  },
+  "targetedLint": {
+    "command": "npm run lint -- scripts/dlcAssetBatches.test.mjs scripts/exportDlcAssetBatch.mjs scripts/applyDlcAssetBatch.mjs",
+    "exitCode": 0
+  },
+  "portableDemo": {
+    "first": {
+      "out": "/tmp/mb-dlc-nov20/final-doom-media-assembly",
+      "batchId": "00022",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "receiptSha256": "cfcfe8c3954b960ce5ec642d2fffb4a867ee315111c1bd6ae9a98e46b58c8745",
+      "copiedAssets": 24,
+      "reusedAssets": 0,
+      "payloadBytes": 31179057
+    },
+    "failure": {
+      "exitCode": 1,
+      "error": "Batch export payload differs: public/sprites/generated/bosses/hellraiser-alternate/leviathan-diamond.png"
+    },
+    "partial": {
+      "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "appliedBatches": 1,
+      "pendingBatches": [
+        "00245"
+      ],
+      "presentAssets": 59,
+      "payloadBytes": 64049622
+    },
+    "resumed": {
+      "out": "/tmp/mb-dlc-nov20/final-doom-media-assembly",
+      "batchId": "00245",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "receiptSha256": "e43c6783d1893ba7a9abc0c034838ea5c8c651d1db058aa34502620e21569f1e",
+      "copiedAssets": 1,
+      "reusedAssets": 35,
+      "payloadBytes": 33498171
+    },
+    "replayed": {
+      "out": "/tmp/mb-dlc-nov20/final-doom-media-assembly",
+      "batchId": "00022",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "receiptSha256": "cfcfe8c3954b960ce5ec642d2fffb4a867ee315111c1bd6ae9a98e46b58c8745",
+      "copiedAssets": 0,
+      "reusedAssets": 24,
+      "payloadBytes": 31179057
+    },
+    "verified": {
+      "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+      "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+      "appliedBatches": 2,
+      "pendingBatches": [],
+      "presentAssets": 60,
+      "payloadBytes": 64677228
+    },
+    "independentlyVerifiedAssets": 60,
+    "originalBatchReceiptsPreserved": true,
+    "payloadsHadDistinctInodesFromTransfer": true,
+    "verificationWasRunOutsideRepository": true,
+    "scope": "Temporary working directory, two media lots; no distribution code compilation or edition publication."
+  }
+}

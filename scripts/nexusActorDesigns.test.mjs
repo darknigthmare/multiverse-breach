@@ -11,6 +11,8 @@ import { resolveUniverseSummon } from '../src/game/combatIdentity.js';
 import { EngineRpg } from '../src/game/engineRpg.js';
 import { EngineSmash } from '../src/game/engineSmash.js';
 import { tickMeleeCombatActor } from '../src/game/melee/meleeCombatRuntime.js';
+import { buildCustomEnemyCatalog, buildCustomEnemyData } from '../src/game/customBattle.js';
+import { installSignatureDirector } from '../src/game/signatureDirector.js';
 
 const universe = 'Nexus de Convergence';
 const roster = ENEMIES_DB[universe];
@@ -176,5 +178,44 @@ test('all twelve Nexus heroes can execute their named super through the normal S
     } finally {
       engine.dispose();
     }
+  }
+});
+
+test('the custom battle P2 Special command casts a named Nexus boss move once at full meter', () => {
+  const selection = buildCustomEnemyCatalog().find(entry => entry.universe === universe
+    && entry.name === 'Greffier du Voile');
+  const enemyData = buildCustomEnemyData([selection.id], [selection]);
+  const particles = [];
+  const engine = new EngineSmash(1040, 520, [anchor], enemyData,
+    { add: (...args) => particles.push(args) }, noop, noop, { ...stage, mode: 'Smash' });
+  installSignatureDirector(engine, { mode: 'Smash' });
+  try {
+    engine.syncPreMatchFromServer(3000);
+    const boss = engine.getActiveOpponent();
+    const player = engine.getActiveHero();
+    const hp = player.currentHp;
+    boss.specialCharge = 99;
+    assert.equal(engine.triggerMeleeAction('cpu', 'Special'), false);
+    assert.equal(boss.specialCharge, 99);
+    assert.equal(player.currentHp, hp);
+    boss.specialCharge = 100;
+    assert.equal(engine.setMeleeShield('cpu', true), true);
+    assert.equal(engine.triggerMeleeAction('cpu', 'Special'), false);
+    assert.equal(boss.specialCharge, 100);
+    engine.setMeleeShield('cpu', false);
+    engine.setPaused(true);
+    assert.equal(engine.triggerMeleeAction('cpu', 'Special'), false);
+    assert.equal(boss.specialCharge, 100);
+    engine.setPaused(false);
+    assert.equal(engine.triggerMeleeAction('cpu', 'Special'), true);
+    assert.equal(boss.specialCharge, 0);
+    assert.ok(player.currentHp < hp);
+    const after = player.currentHp;
+    assert.equal(engine.triggerMeleeAction('cpu', 'Special'), false);
+    assert.equal(engine.triggerOpponentAbility('special'), false);
+    assert.equal(player.currentHp, after);
+    assert.equal(particles.filter(args => args.at(-1) === '!!! TAMPON DE REECRITURE !!!').length, 1);
+  } finally {
+    engine.dispose();
   }
 });

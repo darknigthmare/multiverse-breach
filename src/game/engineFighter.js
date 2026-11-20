@@ -1889,6 +1889,7 @@ export class EngineFighter {
           script: entry.script ? {
             id: entry.script.id,
             name: entry.script.name,
+            ...(entry.script.nameLocalized ? { nameLocalized: { ...entry.script.nameLocalized } } : {}),
             sourceAction: entry.script.sourceAction,
             sourceReference: entry.script.sourceReference,
             missingAssets: [...entry.script.missingAssets],
@@ -1972,11 +1973,11 @@ export class EngineFighter {
     return Math.max(0, presentation.duration - presentation.remaining);
   }
 
-  draw(ctx, animTime, { reducedMotion = false } = {}) {
+  draw(ctx, animTime, { reducedMotion = false, canvasCaptions = true } = {}) {
     this.drawArena(ctx, animTime);
     if (this.getCurrentPresentation()) {
       this.drawHud(ctx);
-      this.drawCharacterPresentation(ctx, animTime, reducedMotion);
+      this.drawCharacterPresentation(ctx, animTime, { reducedMotion, canvasCaptions });
       if (this.introPoseTimer > 0) this.drawIntroPoses(ctx);
       if (this.victoryPoseEvent && this.presentation?.phase === 'victory') this.drawVictoryPose(ctx);
       return;
@@ -2124,7 +2125,7 @@ export class EngineFighter {
     ctx.restore();
   }
 
-  drawCharacterPresentation(ctx, animTime, reducedMotion = false) {
+  drawCharacterPresentation(ctx, animTime, { reducedMotion = false, canvasCaptions = true } = {}) {
     const presentation = this.getCurrentPresentation();
     const progress = clamp(1 - presentation.remaining / presentation.duration, 0, 1);
     const finalScene = presentation.phase === 'fatality';
@@ -2134,10 +2135,12 @@ export class EngineFighter {
     ctx.save();
     ctx.fillStyle = finalScene ? 'rgba(0,0,8,0.82)' : 'rgba(0,0,8,0.72)';
     ctx.fillRect(0, this.height * bandTop, this.width, this.height * (.89 - bandTop));
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 18px "Share Tech Mono", monospace';
-    ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * (originalFinal ? .29 : .34));
+    if (canvasCaptions) {
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 18px "Share Tech Mono", monospace';
+      ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * (originalFinal ? .29 : .34));
+    }
     presentation.entries.forEach(entry => {
       const { side, actorPhase, identity, script } = entry;
       const fighter = this.getActive(side);
@@ -2190,15 +2193,17 @@ export class EngineFighter {
           action: { ...spec, facing: side === 'player' ? 1 : -1, elapsed: progress * spec.duration }
         });
       }
-      ctx.fillStyle = identity.color;
-      ctx.font = 'bold 15px "Share Tech Mono", monospace';
-      ctx.fillText(String(fighter.name || fighter.id), anchorX, this.height * 0.7, this.width * 0.45);
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '13px "Share Tech Mono", monospace';
-      ctx.fillText(script?.name || identity.name, anchorX, this.height * 0.75, this.width * 0.44);
-      ctx.fillStyle = '#b8c9d0';
-      ctx.font = '11px "Share Tech Mono", monospace';
-      ctx.fillText(original ? fighter.universe : `${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
+      if (canvasCaptions) {
+        ctx.fillStyle = identity.color;
+        ctx.font = 'bold 15px "Share Tech Mono", monospace';
+        ctx.fillText(String(fighter.name || fighter.id), anchorX, this.height * 0.7, this.width * 0.45);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '13px "Share Tech Mono", monospace';
+        ctx.fillText(script?.name || identity.name, anchorX, this.height * 0.75, this.width * 0.44);
+        ctx.fillStyle = '#b8c9d0';
+        ctx.font = '11px "Share Tech Mono", monospace';
+        ctx.fillText(original ? fighter.universe : `${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
+      }
     });
     ctx.restore();
   }

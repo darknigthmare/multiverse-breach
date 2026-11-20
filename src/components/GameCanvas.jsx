@@ -249,6 +249,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [selectedAction, setSelectedAction] = useState(null); // tactics
   const [tacticsTerrainState, setTacticsTerrainState] = useState(null);
   const [rpgTargeting, setRpgTargeting] = useState(null);
+  const [rpgSummonCaption, setRpgSummonCaption] = useState(null);
   const [rpgTargetingWait, setRpgTargetingWait] = useState(true);
   const rpgTargetingWaitRef = useRef(true);
   const rpgSummonGamepadHeldRef = useRef({ player: true, enemy: true });
@@ -917,11 +918,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     activateBattleItem(next, 'shortcut');
   };
 
-  const activateTacticalPickupAtCell = (gridX, gridY, surfaceId = null) => {
+  const activateTacticalPickupAtCell = (gridX, gridY, surfaceId = null, side = engineRef.current?.activeUnitType) => {
     const pickup = battlePickupsRef.current.find(item => isTacticsPickupAtSurface(item, gridX, gridY, surfaceId));
     if (!pickup) return false;
     const triggerSide = battleConfig?.opponentControl === 'p2'
-      && engineRef.current?.activeUnitType === 'enemy'
+      && side === 'enemy'
       ? 'opponent'
       : 'player';
     activateBattleItem(pickup, 'tactics-step', triggerSide);
@@ -1274,7 +1275,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
       engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     } else if (stage.mode === 'Tactics') {
-      engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
+      engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles,
+        (type) => sound.playSfx(type), handleBattleComplete, arenaStage,
+        ({ x, y, surfaceId, side }) => activateTacticalPickupAtCell(x, y, surfaceId, side));
       setTacticsTerrainState(engineRef.current.getTerrainViewState?.() || null);
       engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     }
@@ -1289,6 +1292,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     engineRef.current.setPaused?.(sessionPausedRef.current || document.hidden);
     engineRef.current.setTargetingWait?.(rpgTargetingWaitRef.current);
     setRpgTargeting(null);
+    setRpgSummonCaption(null);
     if (stage.mode === 'Smash') {
       const initialPreMatch = engineRef.current.getPreMatchState?.(lang) || null;
       preMatchCueRef.current = initialPreMatch
@@ -1364,8 +1368,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             e.preventDefault();
             const selectedSurface = engine.getTerrainViewState().selectedSurface;
             if (selectedSurface) {
-              const result = engine.handleSurfaceClick?.(selectedSurface.id);
-              if (result?.type === 'move') activateTacticalPickupAtCell(selectedSurface.x, selectedSurface.y, selectedSurface.id);
+              engine.handleSurfaceClick?.(selectedSurface.id);
               setTacticsTerrainState(engine.getTerrainViewState());
             }
             return;
@@ -1520,6 +1523,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     simulationClockRef.current = simulationClock;
     const reducedMotion = createReducedMotionReader();
     let lastHudSyncTimestamp = -Infinity;
+    let lastSummonCaption = null;
     let frameId;
 
     const tick = (frameTimestamp = performance.now()) => {
@@ -1677,7 +1681,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               );
             }
           }
-          engine.draw(ctx, animTime, lang);
+          if (stage.mode === 'RPG') {
+            const summonCaption = engine.getSummonCaption?.() ?? null;
+            if (summonCaption !== lastSummonCaption) {
+              lastSummonCaption = summonCaption;
+              setRpgSummonCaption(summonCaption);
+            }
+            engine.draw(ctx, animTime, lang, { showSummonCaption: false });
+          } else engine.draw(ctx, animTime, lang);
           if (stage.mode !== 'RPG' && !(stage.mode === 'Smash' && engine.isMatchInputLocked?.())) {
             battlePickupsRef.current.forEach(item => {
               const tacticalScreen = stage.mode === 'Tactics'
@@ -1776,6 +1787,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         frameId = requestAnimationFrame(tick);
       } catch (error) {
         console.error('Combat render loop failed', error);
+        setRpgSummonCaption(null);
         setCombatBooting(false);
         setCombatRuntimeError(lang === 'fr'
           ? 'La simulation de breche a ete interrompue. Retourne au hub puis relance le combat.'
@@ -1814,7 +1826,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const engine = engineRef.current;
     if (!engine?.canCommandActiveUnit?.()) return;
     const result = engine.handleCellClick(c, r, surfaceId);
-    if (result?.type === 'move' && engine.isActiveCombatant?.() && !engine.gameOver) activateTacticalPickupAtCell(c, r, surfaceId);
+    if (!engine.verticalTerrain && result?.type === 'move' && engine.isActiveCombatant?.() && !engine.gameOver) {
+      activateTacticalPickupAtCell(c, r, surfaceId);
+    }
     setSelectedAction(engine.selectedAction);
     setTacticsTerrainState(engine.getTerrainViewState?.() || null);
   };
@@ -2049,7 +2063,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const rpgSummon = stage.mode === 'RPG' && activeHeroObj
     ? engineRef.current?.getSummonState?.(activeHeroObj, rpgTargeting?.side || (opponentHasCommand ? 'enemy' : 'player'))
     : null;
-  const rpgSceneActive = stage.mode === 'RPG' && Boolean(engineRef.current?.getSummonSceneState?.()?.active);
+  const summonCaption = stage.mode === 'RPG' ? rpgSummonCaption : null;
+  const rpgSceneActive = stage.mode === 'RPG' && Boolean(engineRef.current?.isSummonSceneActive?.());
   const rpgSourceInputLocked = stage.mode === 'RPG' && Boolean(activeHeroObj?.sourceControlWave16?.active
     || activeHeroObj?.sourcePossessionBodyWave16
     || activeHeroObj?.sourceProtectionWave16?.active && activeHeroObj.sourceProtectionWave16.kind === 'yukikaze');
@@ -2401,8 +2416,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       <header className="combat-hud-header">
         <div className="combat-mission-heading">
           <span>{stage.mode === 'Smash' ? (lang === 'fr' ? 'MÊLÉE' : 'MELEE') : stage.mode.toUpperCase()} / {stage.universe}</span>
-          <h1>{(stage.isCustomBattle && stage.mode === 'Tactics' && tacticsTerrainState?.battlefieldInfo?.label?.[lang]) || stage.name}</h1>
-          <p>{battleObjective}</p>
+          <h1 hidden={Boolean(summonCaption)}>{(stage.isCustomBattle && stage.mode === 'Tactics' && tacticsTerrainState?.battlefieldInfo?.label?.[lang]) || stage.name}</h1>
+          <p hidden={Boolean(summonCaption)}>{battleObjective}</p>
+          {stage.mode === 'RPG' && <div className="combat-rpg-caption" role="status" aria-atomic="true" lang={lang}>
+            {summonCaption && <>
+              <strong>{summonCaption.kind === 'reinforcement'
+                ? (lang === 'fr' ? 'Renfort' : 'Reinforcement') : (lang === 'fr' ? 'Invocation' : 'Summon')}
+                {' · '}{summonCaption.entityName}</strong>
+              {summonCaption.actionName !== summonCaption.entityName && <span>{summonCaption.actionName}</span>}
+            </>}
+          </div>}
         </div>
         <nav className="combat-hud-tools" aria-label={lang === 'fr' ? 'Menu du combat' : 'Combat menu'}>
           {(stage.mode === 'RPG' || stage.mode === 'Tactics') && <button type="button" onClick={toggleAuto}
@@ -2776,9 +2799,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               onConfirm={id => {
                 if (sessionPausedRef.current || battleCompleted) return;
                 const engine = engineRef.current;
-                const result = engine?.handleSurfaceClick?.(id);
-                const surface = engine?.getTerrainViewState?.()?.selectedSurface;
-                if (result?.type === 'move' && surface) activateTacticalPickupAtCell(surface.x, surface.y, surface.id);
+                engine?.handleSurfaceClick?.(id);
                 setTacticsTerrainState(engine?.getTerrainViewState?.() || null);
               }}
             />

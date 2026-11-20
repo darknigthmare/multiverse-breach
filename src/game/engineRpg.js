@@ -897,6 +897,10 @@ export class EngineRpg {
     };
   }
 
+  getSummonCaption() {
+    return this.activeSummon?.caption ?? null;
+  }
+
   isSummonSceneActive() {
     return Boolean(this.activeSummon);
   }
@@ -1278,6 +1282,7 @@ export class EngineRpg {
     const color = descriptor.color || profile.action.color || actor.secondaryColor || actor.color || '#39c5bb';
     const choreography = resolveSummonChoreography(descriptor);
     this.activeSummon = { descriptor, actor, side, profile, targets, anchor, commitment, color, choreography, tick: 0, durationTicks, impactTick, impacted: false,
+      caption: { kind: descriptor.kind, entityName: descriptor.entityName || descriptor.name, actionName: profile.name },
       ...(choreography?.confirmedEffect ? { effectContacts: [] } : {}),
       ...((usesConfirmedSummonContactWave9(nativeAnimation) || usesConfirmedSummonContactWave10(nativeAnimation) || usesConfirmedSummonContactWave11(nativeAnimation) || usesConfirmedSummonContactWave12(nativeAnimation) || usesConfirmedSummonContactWave13(nativeAnimation) || usesConfirmedSummonContactWave14(nativeAnimation) || usesConfirmedSummonContactWave15(nativeAnimation) || usesConfirmedSummonContactWave16(nativeAnimation) || usesConfirmedSummonContactWave17(nativeAnimation)) ? { visualContacts: [] } : {}) };
     if(sourceMedicWave17)this.activeSummon.sourceMedicWave17=sourceMedicWave17;
@@ -2443,7 +2448,7 @@ export class EngineRpg {
     }
   }
 
-  drawSummonScene(ctx, lang = 'fr') {
+  drawSummonScene(ctx, lang = 'fr', showCaption = true) {
     const scene = this.activeSummon;
     if (!scene) return;
     const { descriptor, tick, durationTicks, impactTick, color } = scene;
@@ -2464,15 +2469,17 @@ export class EngineRpg {
     ctx.fillStyle = color;
     ctx.fillRect(0, 42, this.width, 2);
     ctx.fillRect(0, this.height - 40, this.width, 2);
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '11px "Press Start 2P"';
-    const commandLabel = descriptor.kind === 'reinforcement'
-      ? (lang === 'fr' ? 'RENFORT' : 'REINFORCEMENT') : (lang === 'fr' ? 'INVOCATION' : 'SUMMON');
-    ctx.fillText(`${commandLabel} · ${descriptor.entityName || descriptor.name}`, this.width / 2, 26, this.width - 24);
-    ctx.fillStyle = color;
-    ctx.font = '10px "Press Start 2P"';
-    ctx.fillText(scene.profile.name, this.width / 2, this.height - 17, this.width - 24);
+    if (showCaption) {
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '11px "Press Start 2P"';
+      const commandLabel = descriptor.kind === 'reinforcement'
+        ? (lang === 'fr' ? 'RENFORT' : 'REINFORCEMENT') : (lang === 'fr' ? 'INVOCATION' : 'SUMMON');
+      ctx.fillText(`${commandLabel} · ${descriptor.entityName || descriptor.name}`, this.width / 2, 26, this.width - 24);
+      ctx.fillStyle = color;
+      ctx.font = '10px "Press Start 2P"';
+      ctx.fillText(scene.profile.name, this.width / 2, this.height - 17, this.width - 24);
+    }
 
     const nativeAsset = resolveSummonAnimationAsset(descriptor);
     const nativeFrame = getSummonAnimationFrame(scene, choreography);
@@ -2552,7 +2559,7 @@ export class EngineRpg {
     ctx.restore();
   }
 
-  draw(ctx, animTime, lang = 'fr') {
+  draw(ctx, animTime, lang = 'fr', { showSummonCaption = true } = {}) {
     drawPhotographicEvidenceWave17(ctx,[...this.heroes,...this.enemies]);
     drawBubbleCapturesWave17(ctx,[...this.heroes,...this.enemies]);
     drawMediGunBeamsWave17(ctx,[...this.heroes,...this.enemies],{height:unit=>72*this.getDepthScale(unit.y),exclude:this.activeSummon?.sourceMedicWave17});
@@ -2602,6 +2609,6 @@ export class EngineRpg {
     ctx.fillStyle = '#ffffff';
     ctx.font = '10px "Press Start 2P"';
     ctx.fillText(`WAVE: ${this.wave}/${this.maxWaves}`, 20, 22);
-    this.drawSummonScene(ctx, lang);
+    this.drawSummonScene(ctx, lang, showSummonCaption);
   }
 }

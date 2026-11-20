@@ -20,6 +20,7 @@ import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './comba
 import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
 import { SYNERGIES_DB, getHeroById } from './heroes';
 import { PLAYER_HERO_ID } from './playerHero.js';
+import { getNexusActorDesign } from './nexusActorDesigns.js';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper } from './combatIdentity';
 import { samplePresentationScript } from './combat/presentationCatalog.js';
@@ -423,6 +424,7 @@ export class EngineSmash {
       const specialName = typeof template.special === 'string'
         ? template.special
         : template.special?.name || 'Versus Rupture';
+      const nexusDesign = typeof template.special === 'string' && getNexusActorDesign(template);
       const behavior = this.getEnemyBehavior(template, isBoss);
 
       return initializeMeleeActorRuntime({
@@ -450,6 +452,7 @@ export class EngineSmash {
           dur: Number(template.defense?.dur) || 0.6
         },
         versusSpecialName: specialName,
+        nexusNamedSpecial: nexusDesign && nexusDesign.kind !== 'hero' ? template.special : null,
         primaryColor: template.primaryColor || template.color || '#e74c3c',
         secondaryColor: template.secondaryColor || template.color || '#ffb347',
         weaponType: template.weaponType || template.weapon || 'melee',
@@ -607,7 +610,12 @@ export class EngineSmash {
         return started;
       }
       const superProfile = resolveMeleeSuper(actor);
-      if (!superProfile) return false;
+      if (!superProfile) {
+        // Named Nexus threats already have a local-versus command. Keep the
+        // legacy action and its full meter cost on the normal input path too.
+        return this.isLocalP2 && actor.isLocalOpponent === true && Boolean(actor.nexusNamedSpecial)
+          && actor.special === actor.nexusNamedSpecial && this.triggerOpponentAbility('special');
+      }
       if (usesTimedPersonalSuper(actor, superProfile) && actor.specialCharge >= superProfile.meterCost) return this.triggerMeleeSuper(actor, superProfile);
       if (actor.specialCharge < 30) return false;
       const started = beginMeleeAction(actor, 'special');
@@ -1066,6 +1074,8 @@ export class EngineSmash {
     if (abilityType === 'special') {
       if (usesTimedPersonalSuper(opponent)) return this.triggerMeleeSuper(opponent);
       if (!opponent.special || opponent.specialCharge < 100) return false;
+      if (opponent.nexusNamedSpecial && (isMeleeMovementLocked(opponent)
+        || ['attack', 'defense'].includes(opponent.state))) return false;
       opponent.specialCharge = 0;
       opponent.state = 'attack';
       opponent.stateTimer = 40;

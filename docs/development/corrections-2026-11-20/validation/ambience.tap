@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: scene mechanisms are explicit and retain source and rendering provenance
+ok 1 - scene mechanisms are explicit and retain source and rendering provenance
+  ---
+  duration_ms: 10.281008
+  type: 'test'
+  ...
+# Subtest: mode reference scenes follow the actual distinct local environments
+ok 2 - mode reference scenes follow the actual distinct local environments
+  ---
+  duration_ms: 0.423539
+  type: 'test'
+  ...
+# Subtest: custom combat keeps the reference animation of the backdrop for its mode
+ok 3 - custom combat keeps the reference animation of the backdrop for its mode
+  ---
+  duration_ms: 799.189794
+  type: 'test'
+  ...
+# Subtest: a concrete scene prevents unrelated mode defaults or foreign-universe assets
+ok 4 - a concrete scene prevents unrelated mode defaults or foreign-universe assets
+  ---
+  duration_ms: 1.110627
+  type: 'test'
+  ...
+# Subtest: scene mechanisms render deterministic finite geometry behind the combat lane
+ok 5 - scene mechanisms render deterministic finite geometry behind the combat lane
+  ---
+  duration_ms: 13.058819
+  type: 'test'
+  ...
+# Subtest: pause, reduced motion and animation-off keep the scene state stable
+ok 6 - pause, reduced motion and animation-off keep the scene state stable
+  ---
+  duration_ms: 22.6341
+  type: 'test'
+  ...
+# Subtest: four-phase local effect atlases are played from their real distinct transparent cells
+ok 7 - four-phase local effect atlases are played from their real distinct transparent cells
+  ---
+  duration_ms: 88.906972
+  type: 'test'
+  ...
+# Subtest: actual bitmaps are decoded and cropped by source cell or backdrop region
+ok 8 - actual bitmaps are decoded and cropped by source cell or backdrop region
+  ---
+  duration_ms: 1.298385
+  type: 'test'
+  ...
+# Subtest: the second wave adds 24 sourced mechanisms in 12 new universes without inventing animation frames
+ok 9 - the second wave adds 24 sourced mechanisms in 12 new universes without inventing animation frames
+  ---
+  duration_ms: 8.008918
+  type: 'test'
+  ...
+# Subtest: new mechanisms keep physical geometry, backdrop coordinates and fighter mirror independence
+ok 10 - new mechanisms keep physical geometry, backdrop coordinates and fighter mirror independence
+  ---
+  duration_ms: 8.248995
+  type: 'test'
+  ...
+# Subtest: the battle background entrypoint actually dispatches the selected scene mechanism
+ok 11 - the battle background entrypoint actually dispatches the selected scene mechanism
+  ---
+  duration_ms: 0.796511
+  type: 'test'
+  ...
+# Subtest: authored atmosphere identifies the actual location, with transparent adaptation provenance
+ok 12 - authored atmosphere identifies the actual location, with transparent adaptation provenance
+  ---
+  duration_ms: 42.073071
+  type: 'test'
+  ...
+# Subtest: different places in one universe do not inherit unrelated canonical set pieces
+ok 13 - different places in one universe do not inherit unrelated canonical set pieces
+  ---
+  duration_ms: 7.058477
+  type: 'test'
+  ...
+# Subtest: physical profiles use authored surfaces and never genre, faction or stage hashes
+ok 14 - physical profiles use authored surfaces and never genre, faction or stage hashes
+  ---
+  duration_ms: 4.281041
+  type: 'test'
+  ...
+# Subtest: every authored rendering branch draws finite, deterministic, low-opacity background geometry
+ok 15 - every authored rendering branch draws finite, deterministic, low-opacity background geometry
+  ---
+  duration_ms: 156.878436
+  type: 'test'
+  ...
+# Subtest: reduced motion freezes animation, invalid clocks cannot poison drawing and stage options disable the layer
+ok 16 - reduced motion freezes animation, invalid clocks cannot poison drawing and stage options disable the layer
+  ---
+  duration_ms: 1.496896
+  type: 'test'
+  ...
+# Subtest: lore and crossover registry entries resolve without pretending visual validation
+ok 17 - lore and crossover registry entries resolve without pretending visual validation
+  ---
+  duration_ms: 75.737922
+  type: 'test'
+  ...
+# Subtest: all 255 formerly missing universes have explicit reference scenes, local motifs and placements
+ok 18 - all 255 formerly missing universes have explicit reference scenes, local motifs and placements
+  ---
+  duration_ms: 205.5973
+  type: 'test'
+  ...
+# Subtest: all 525 roster universes resolve without a scene name and unknown universes stay unconfigured
+ok 19 - all 525 roster universes resolve without a scene name and unknown universes stay unconfigured
+  ---
+  duration_ms: 15.082107
+  type: 'test'
+  ...
+# Subtest: caller scenes always beat universe defaults, including unknown scenes and ordinary rooms
+ok 20 - caller scenes always beat universe defaults, including unknown scenes and ordinary rooms
+  ---
+  duration_ms: 0.828909
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2941.436735

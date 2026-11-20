@@ -624,11 +624,15 @@ export class TacticsVerticalRuntime {
       if (!entry) return { handled: false, reason: 'blocked' };
       e.actionPhase = 'moving';
       e.movementSpent += entry.cost;
+      const turn = e.turnSerial;
       const onComplete = () => {
-        if (e.disposed || e.gameOver || !living(unit)) return;
+        if (e.disposed || e.gameOver || !living(unit) || e.activeUnit !== unit || e.turnSerial !== turn
+          || e.interruptedTurn === turn || unit.surfaceId !== surface.id) return;
         e.applyStartTileEffect(unit);
         if (e.gameOver) return;
         if (!living(unit)) { e.endActiveTurn(); return; }
+        e.onManualMoveArrival?.({ ...cell(surface), side: e.activeUnitType });
+        if (e.gameOver) return;
         e.actionPhase = 'action'; e.selectedAction = 'simple'; e.selectedActionExplicit = false;
         e.calculateAttackRange();
       };

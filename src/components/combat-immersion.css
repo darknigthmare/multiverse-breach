@@ -63,6 +63,13 @@
 .combat-mission-heading > span { display: block; color: #8ed9d6; font-size: .82em; letter-spacing: .12em; }
 .combat-mission-heading h1 { margin: 4px 0; font-size: 1.2em; text-transform: uppercase; text-wrap: balance; }
 .combat-mission-heading p { margin: 0; color: #c0d7df; font-size: .92em; line-height: 1.35; }
+.combat-rpg-caption {
+  font: 400 calc(15px * var(--game-text-scale, 1))/1.35 system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.combat-rpg-caption > strong, .combat-rpg-caption > span { display: block; }
+.combat-rpg-caption > strong { margin-block-start: 4px; color: #f2fffd; }
+.combat-rpg-caption > span { color: #bce8e3; }
 .combat-hud-tools { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 560px; pointer-events: auto; }
 .combat-hud-tools button,
 .combat-quick-specials button,
@@ -220,6 +227,54 @@
 .combat-immersive-surface .melee-touch-buttons [data-touch-slot='special'] { grid-area: 2 / 6 / 3 / 8; }
 .combat-mode-smash[data-touch-controls='true'] .combat-hud-dock { bottom: calc(var(--combat-bottom) + 116px); }
 /* Fighter uses the engine's active health bars and timer; bench tags are HUD. */
+.combat-immersive-surface[data-fighter-presenting='true'] .fighter-canvas-panel {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.fighter-presentation-caption {
+  justify-self: center;
+  width: min(760px, calc(100% - 2 * max(var(--combat-left), var(--combat-right))));
+  box-sizing: border-box;
+  margin-block: var(--combat-top) 6px;
+  padding: 9px 12px;
+  border: 1px solid #5b828a;
+  border-radius: 5px;
+  color: #f3fbff;
+  background: #081520;
+  text-align: center;
+  pointer-events: none;
+}
+.fighter-presentation-heading {
+  display: block;
+  font-size: calc(14px * var(--game-text-scale, 1));
+  line-height: 1.2;
+  color: #b7ece7;
+  margin-bottom: 6px;
+}
+.fighter-presentation-entries {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.fighter-presentation-entries[data-solo='true'] { grid-template-columns: minmax(0, 1fr); }
+.fighter-presentation-entries p {
+  min-width: 0;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: calc(17px * var(--game-text-scale, 1));
+  line-height: 1.24;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.fighter-presentation-entries b { display: block; }
+.fighter-mode-active.combat-immersive-surface[data-fighter-presenting='true']
+  :is(.fighter-hud-lineups, .fighter-touch-controls):not(:focus-within) { display: none; }
+@media (max-width: 480px) {
+  .fighter-presentation-entries { grid-template-columns: minmax(0, 1fr); gap: 6px; text-align: start; }
+  .fighter-presentation-entries[data-solo='true'] { text-align: center; }
+  .fighter-presentation-entries b { display: inline; }
+  .fighter-presentation-entries b::after { content: ' — '; }
+}
 .combat-immersive-surface .combat-fighter-toolbar {
   position: absolute; z-index: 18; bottom: var(--combat-bottom); left: var(--combat-left); right: var(--combat-right);
   margin: 0; padding: 7px 10px; display: flex; justify-content: space-between; align-items: center; gap: 14px;
@@ -255,7 +310,7 @@
 .combat-immersive-surface[data-touch-controls='true'] .fighter-hud-lineups { bottom: calc(var(--combat-bottom) + 190px); }
 .combat-immersive-surface[data-touch-controls='true']:has(.fighter-touch-controls[data-opponent-control='p2']) .fighter-hud-lineups { bottom: calc(var(--combat-bottom) + 300px); }
 /* Versus setup uses owned art, live selection, and the existing real loadout. */
-.fighter-mode-shell.fighter-immersive-lobby { position: relative; isolation: isolate; width: 100%; max-width: none; min-height: min(780px, 80dvh); overflow: hidden; padding: clamp(18px, 3vw, 40px); border-radius: 4px; background: #06101c; }
+.fighter-mode-shell.fighter-immersive-lobby { position: relative; isolation: isolate; width: 100%; max-width: none; min-height: min(780px, 80dvh); box-sizing: border-box; overflow: hidden; padding: clamp(18px, 3vw, 40px); border-radius: 4px; background: #06101c; }
 .fighter-immersive-lobby::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #040917eb 12%, #071522a1 70%), var(--combat-backdrop) center / cover; opacity: .88; }
 .fighter-immersive-lobby .fighter-mode-header { border: 0; padding: 0; background: transparent; }
 .fighter-immersive-lobby .fighter-mode-header h3 { font-size: clamp(24px, 3.5vw, 42px); margin: 8px 0; }

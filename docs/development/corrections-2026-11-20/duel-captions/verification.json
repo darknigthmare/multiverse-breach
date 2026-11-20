@@ -1,0 +1,507 @@
+{
+  "baseCommit": "e973004e2",
+  "browser": "Chromium via Playwright, real FighterMode launch with desktop click and mobile tap",
+  "scope": "Real UI and engine loop. Two last hits are prepared through the real damage function per match. No clock overrides. Mobile safe-area preference 24 px; hardware notches were not emulated.",
+  "portraitLobbyBefore": {
+    "requestedViewportWidth": 390,
+    "layoutViewportWidth": 426,
+    "measuredOutsideWidth": 36,
+    "clickIntercepted": true
+  },
+  "oldCaptionCanvasFallbackPreservedByFocusedTests": true,
+  "browserCases": [
+    {
+      "dimensions": [
+        1440,
+        900
+      ],
+      "lang": "fr",
+      "textScale": 1.5,
+      "safeArea": 24,
+      "realLaunch": true,
+      "activation": "click",
+      "focusStayedOnControlsAcrossTransition": true,
+      "oneStatusNodeOnTransition": true,
+      "presentationCaptionDuplicatedOnCanvas": false,
+      "phases": [
+        {
+          "phase": "intro",
+          "round": 1,
+          "duration": 1.8
+        },
+        {
+          "phase": "countdown",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "roundResult",
+          "round": 1,
+          "duration": 1.25
+        },
+        {
+          "phase": "countdown",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "fatality",
+          "round": 2,
+          "duration": 2.4
+        },
+        {
+          "phase": "victory",
+          "round": 2,
+          "duration": 1.8
+        },
+        {
+          "phase": "outro",
+          "round": 2,
+          "duration": 2
+        },
+        {
+          "phase": "victory",
+          "round": 2,
+          "duration": null
+        }
+      ],
+      "completionCallbacks": 1,
+      "pageErrors": [],
+      "httpErrors": {},
+      "sceneLabels": {
+        "intro": {
+          "heading": "ENTRÉES",
+          "actors": [
+            "Relevé de la carte abyssale",
+            "Kael arrive entre deux secondes"
+          ],
+          "captionBounds": {
+            "x": 340,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 1100
+          },
+          "fontPx": 25.5
+        },
+        "roundResult": {
+          "heading": "RÉSULTAT DE MANCHE",
+          "actors": [
+            "Neris confirme le relevé",
+            "Le contretemps arrête Kael"
+          ],
+          "captionBounds": {
+            "x": 340,
+            "y": 24,
+            "width": 760,
+            "height": 114.40625,
+            "bottom": 138.40625,
+            "right": 1100
+          },
+          "fontPx": 25.5
+        },
+        "finale": {
+          "heading": "FINALE",
+          "actors": [
+            "Nom véritable"
+          ],
+          "captionBounds": {
+            "x": 340,
+            "y": 24,
+            "width": 760,
+            "height": 114.40625,
+            "bottom": 138.40625,
+            "right": 1100
+          },
+          "fontPx": 25.5
+        },
+        "victory": {
+          "heading": "RÉSULTAT DU MATCH",
+          "actors": [
+            "La carte des noms est préservée",
+            "Kael perd son dernier instant"
+          ],
+          "captionBounds": {
+            "x": 340,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 1100
+          },
+          "fontPx": 25.5
+        },
+        "outro": {
+          "heading": "SORTIES",
+          "actors": [
+            "Neris suit le courant de retour",
+            "Kael perd son dernier instant"
+          ],
+          "captionBounds": {
+            "x": 340,
+            "y": 24,
+            "width": 760,
+            "height": 114.40625,
+            "bottom": 138.40625,
+            "right": 1100
+          },
+          "fontPx": 25.5
+        }
+      },
+      "wrappedTextInsideCardAndSafeViewport": true,
+      "captionDisjointFromCanvasAndVisibleControls": true,
+      "captionOwnsNoPointerOrFocus": true
+    },
+    {
+      "dimensions": [
+        390,
+        640
+      ],
+      "lang": "fr",
+      "textScale": 1.5,
+      "safeArea": 24,
+      "realLaunch": true,
+      "activation": "tap",
+      "focusStayedOnControlsAcrossTransition": true,
+      "oneStatusNodeOnTransition": true,
+      "presentationCaptionDuplicatedOnCanvas": false,
+      "phases": [
+        {
+          "phase": "intro",
+          "round": 1,
+          "duration": 1.8
+        },
+        {
+          "phase": "countdown",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "roundResult",
+          "round": 1,
+          "duration": 1.25
+        },
+        {
+          "phase": "countdown",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "fatality",
+          "round": 2,
+          "duration": 2.3
+        },
+        {
+          "phase": "victory",
+          "round": 2,
+          "duration": 1.8
+        },
+        {
+          "phase": "outro",
+          "round": 2,
+          "duration": 1.8
+        },
+        {
+          "phase": "defeat",
+          "round": 2,
+          "duration": null
+        }
+      ],
+      "completionCallbacks": 1,
+      "pageErrors": [],
+      "httpErrors": {},
+      "sceneLabels": {
+        "intro": {
+          "heading": "ENTRÉES",
+          "actors": [
+            "Relevé de la carte abyssale",
+            "Kael arrive entre deux secondes"
+          ],
+          "captionBounds": {
+            "x": 24,
+            "y": 24,
+            "width": 342,
+            "height": 183.625,
+            "bottom": 207.625,
+            "right": 366
+          },
+          "fontPx": 25.5
+        },
+        "roundResult": {
+          "heading": "RÉSULTAT DE MANCHE",
+          "actors": [
+            "Neris plie sous la pression",
+            "Kael compte une seconde de plus"
+          ],
+          "captionBounds": {
+            "x": 24,
+            "y": 24,
+            "width": 342,
+            "height": 183.625,
+            "bottom": 207.625,
+            "right": 366
+          },
+          "fontPx": 25.5
+        },
+        "finale": {
+          "heading": "FINALE",
+          "actors": [
+            "Remboursement total"
+          ],
+          "captionBounds": {
+            "x": 24,
+            "y": 24,
+            "width": 342,
+            "height": 114.40625,
+            "bottom": 138.40625,
+            "right": 366
+          },
+          "fontPx": 25.5
+        },
+        "victory": {
+          "heading": "RÉSULTAT DU MATCH",
+          "actors": [
+            "Neris retombe à genou",
+            "Kael range ses deux lames"
+          ],
+          "captionBounds": {
+            "x": 24,
+            "y": 24,
+            "width": 342,
+            "height": 183.625,
+            "bottom": 207.625,
+            "right": 366
+          },
+          "fontPx": 25.5
+        },
+        "outro": {
+          "heading": "SORTIES",
+          "actors": [
+            "Neris retombe à genou",
+            "Kael file avec les secondes rendues"
+          ],
+          "captionBounds": {
+            "x": 24,
+            "y": 24,
+            "width": 342,
+            "height": 215.234375,
+            "bottom": 239.234375,
+            "right": 366
+          },
+          "fontPx": 25.5
+        }
+      },
+      "wrappedTextInsideCardAndSafeViewport": true,
+      "captionDisjointFromCanvasAndVisibleControls": true,
+      "captionOwnsNoPointerOrFocus": true
+    },
+    {
+      "dimensions": [
+        844,
+        390
+      ],
+      "lang": "en",
+      "textScale": 1.5,
+      "safeArea": 24,
+      "realLaunch": true,
+      "activation": "tap",
+      "focusStayedOnControlsAcrossTransition": true,
+      "oneStatusNodeOnTransition": true,
+      "presentationCaptionDuplicatedOnCanvas": false,
+      "phases": [
+        {
+          "phase": "intro",
+          "round": 1,
+          "duration": 1.95
+        },
+        {
+          "phase": "countdown",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 1,
+          "duration": null
+        },
+        {
+          "phase": "roundResult",
+          "round": 1,
+          "duration": 1.35
+        },
+        {
+          "phase": "countdown",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "running",
+          "round": 2,
+          "duration": null
+        },
+        {
+          "phase": "fatality",
+          "round": 2,
+          "duration": 2.35
+        },
+        {
+          "phase": "victory",
+          "round": 2,
+          "duration": 1.95
+        },
+        {
+          "phase": "outro",
+          "round": 2,
+          "duration": 1.95
+        },
+        {
+          "phase": "defeat",
+          "round": 2,
+          "duration": null
+        }
+      ],
+      "completionCallbacks": 1,
+      "pageErrors": [],
+      "httpErrors": {},
+      "sceneLabels": {
+        "intro": {
+          "heading": "ENTRANCES",
+          "actors": [
+            "Eira tends the photosphere",
+            "Nyra opens a Ghostline connection"
+          ],
+          "captionBounds": {
+            "x": 42,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 802
+          },
+          "fontPx": 25.5
+        },
+        "roundResult": {
+          "heading": "ROUND RESULT",
+          "actors": [
+            "Eira leans on her staff",
+            "Nyra locks down her connection"
+          ],
+          "captionBounds": {
+            "x": 42,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 802
+          },
+          "fontPx": 25.5
+        },
+        "finale": {
+          "heading": "FINISHER",
+          "actors": [
+            "Accès Racine Nadir"
+          ],
+          "captionBounds": {
+            "x": 42,
+            "y": 24,
+            "width": 760,
+            "height": 114.40625,
+            "bottom": 138.40625,
+            "right": 802
+          },
+          "fontPx": 25.5
+        },
+        "victory": {
+          "heading": "MATCH RESULT",
+          "actors": [
+            "The botanist holds on to her photosphere",
+            "The memory keys are secure"
+          ],
+          "captionBounds": {
+            "x": 42,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 802
+          },
+          "fontPx": 25.5
+        },
+        "outro": {
+          "heading": "EXITS",
+          "actors": [
+            "The botanist holds on to her photosphere",
+            "Nyra disconnects and disappears"
+          ],
+          "captionBounds": {
+            "x": 42,
+            "y": 24,
+            "width": 760,
+            "height": 146.015625,
+            "bottom": 170.015625,
+            "right": 802
+          },
+          "fontPx": 25.5
+        }
+      },
+      "wrappedTextInsideCardAndSafeViewport": true,
+      "captionDisjointFromCanvasAndVisibleControls": true,
+      "captionOwnsNoPointerOrFocus": true,
+      "rotation": {
+        "to": [
+          390,
+          844
+        ],
+        "captionBounds": {
+          "x": 24,
+          "y": 24,
+          "width": 342,
+          "height": 189.625,
+          "bottom": 213.625,
+          "right": 366
+        },
+        "heading": "ENTRANCES",
+        "focusPreserved": true
+      }
+    }
+  ],
+  "focusedTests": {
+    "node": "22.23.5",
+    "passed": 65,
+    "failed": 0,
+    "command": "NODE_OPTIONS=--max-old-space-size=2048 node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalFighterPresentations.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/reviewedRevanPresentation20261113.test.mjs scripts/reviewedRevanPresentationRuntime20261113.test.mjs scripts/fighterKeyboardInput.test.mjs scripts/fixedStepClock.test.mjs"
+  },
+  "fixtureCompilation": {
+    "modules": 2292,
+    "exitCode": 0,
+    "copyPublicDir": false
+  },
+  "scopedSourceSha256": {
+    "src/components/FighterMode.jsx": "d84531a9ed787e45c6b8fb0efaf15fd429a849724469fee7940a4c022aa7763e",
+    "src/components/combat-immersion.css": "fc478947c5ab5a055bfcac1b8366c7165544cd6854d511ff4ab1b1894e33bb6d",
+    "src/game/engineFighter.js": "336b883c6bfe81799222d8d20d099227c2eb2cad1af3c670a9b320c32f10d85b",
+    "src/game/combat/originalFighterPresentations.js": "4421b5a81e6c4a3171c6a3e685b5d1c63d119e00ed466444dba2186170ba7184"
+  },
+  "portraitSha256": "ca4629b8af6c8e269502f05d353801ef1447fc17529a5646ab21fb1ad9d2565b"
+}

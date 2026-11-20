@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { register } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import {
@@ -101,6 +102,38 @@ test('mode reference scenes follow the actual distinct local environments', () =
   for (const mode of ['Combat', 'Smash', 'RPG', 'Tactics']) {
     assert.equal(getStageAnimationProfile({ universe: 'Final Fantasy VII', mode }).id, 'ff7-reactor-mako-circulation');
   }
+});
+
+test('custom combat keeps the reference animation of the backdrop for its mode', async () => {
+  register('./sourceSceneTestLoader.mjs', import.meta.url);
+  const { buildCustomRuntimeStage, DEFAULT_CUSTOM_BATTLE_PRESET } = await import('../src/game/customBattle.js');
+  for (const [universe, mode, expected] of [
+    ['Final Fantasy VII', 'RPG', 'ff7-reactor-mako-circulation'],
+    ['Final Fantasy VII', 'Smash', 'ff7-reactor-mako-circulation'],
+    ['Portal', 'Smash', 'portal-aperture-wall-aperture-phases'],
+    ['Dragon Ball Z', 'Smash', 'dbz-namek-water-refraction'],
+    ['Dragon Ball Z', 'RPG', 'dbz-time-chamber-hourglasses']
+  ]) {
+    const stage = buildCustomRuntimeStage({ preset: { ...DEFAULT_CUSTOM_BATTLE_PRESET, mode }, archive: { universe }, enemyData: {} });
+    assert.equal(getStageAnimationProfile(stage)?.id, expected);
+    assert.equal(getStageAnimationProfile(stage).selection, 'reference-scene-without-explicit-location');
+    const first = context();
+    const later = context();
+    assert.equal(renderStageAtmosphere(first.ctx, { stage, width: 1040, height: 460, elapsedSeconds: 0 }), true);
+    assert.equal(renderStageAtmosphere(later.ctx, { stage, width: 1040, height: 460, elapsedSeconds: 2 }), true);
+    assert.notDeepEqual(first.operations, later.operations);
+  }
+  const stage = buildCustomRuntimeStage({ preset: { ...DEFAULT_CUSTOM_BATTLE_PRESET, mode: 'RPG' }, archive: { universe: 'Portal' }, enemyData: {} });
+  assert.equal(getStageAtmosphereProfile(stage).selection, 'universe-default');
+  for (const explicit of [
+    { name: 'An ordinary timber hall' }, { description: { fr: 'Salle en bois', en: 'Wooden hall' } }, { location: 'Unrelated outdoor courtyard' }
+  ]) {
+    const named = { ...stage, ...explicit };
+    assert.equal(getStageAnimationProfile(named), null);
+    assert.equal(getStageAtmosphereProfile(named).selection, 'stage-scene');
+  }
+  assert.equal(getStageAnimationProfile({ ...stage, isCustomBattle: false }), null);
+  assert.equal(getStageAnimationProfile({ ...stage, disableStageAnimations: true }).enabled, false);
 });
 
 test('a concrete scene prevents unrelated mode defaults or foreign-universe assets', () => {

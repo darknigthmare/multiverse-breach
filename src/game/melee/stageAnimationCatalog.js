@@ -189,13 +189,20 @@ const MODE_REFERENCE_SCENES = Object.freeze({
 const textValue = value => typeof value === 'string' ? value : value && typeof value === 'object' ? [value.fr, value.en].filter(item => typeof item === 'string').join(' ') : '';
 const wrap = (value, limit = 1) => ((value % limit) + limit) % limit;
 
+export function getConcreteStageLocation(stage) {
+  const name = textValue(stage.name);
+  // The lobby and custom battle labels identify the session. The backdrop
+  // supplies its own reference scene when no actual place was declared.
+  const sessionLabel = /^A\.R\.C\.A\. Impact Arena\s*-/i.test(name)
+    || (stage.isCustomBattle === true && name === `Simulation Custom - ${stage.universe}`);
+  return [sessionLabel ? '' : name, textValue(stage.description), textValue(stage.location)].filter(Boolean).join(' ');
+}
+
 export function getStageAnimationProfile(stageOrUniverse = {}) {
   const stage = typeof stageOrUniverse === 'string' ? { universe: stageOrUniverse } : stageOrUniverse || {};
   if (!stage.universe) return null;
   const mode = MODE_ALIASES[stage.mode] || 'Combat';
-  const stageName = textValue(stage.name);
-  const concreteName = /^A\.R\.C\.A\. Impact Arena\s*-/i.test(stageName) ? '' : stageName;
-  const concreteScene = [concreteName, textValue(stage.description), textValue(stage.location)].filter(Boolean).join(' ');
+  const concreteScene = getConcreteStageLocation(stage);
   const defaultScene = MODE_REFERENCE_SCENES[stage.universe]?.[mode] || getUniverseStageAtmosphereDefault(stage.universe)?.location || '';
   const scene = concreteScene || defaultScene;
   if (!scene) return null;

@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/all.json"
+      ],
+      "seconds": 8.197,
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "all",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 505,
+      "modules": 2866,
+      "dlcModules": 2038,
+      "javascriptBytes": 53033508,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "command": [
+        "node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/base.json"
+      ],
+      "seconds": 5.223,
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "base",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 0,
+      "modules": 829,
+      "dlcModules": 0,
+      "javascriptBytes": 49754662,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    }
+  ],
+  "modifiedRuntimeInputsSha256": {
+    "src/components/FighterMode.jsx": "d84531a9ed787e45c6b8fb0efaf15fd429a849724469fee7940a4c022aa7763e",
+    "src/components/GameCanvas.jsx": "30101a7c108287b1fe6f8f75f794b3954fa9617aad715b90076376ac0ea23252",
+    "src/components/combat-immersion.css": "fc478947c5ab5a055bfcac1b8366c7165544cd6854d511ff4ab1b1894e33bb6d",
+    "src/game/combat/originalFighterPresentations.js": "4421b5a81e6c4a3171c6a3e685b5d1c63d119e00ed466444dba2186170ba7184",
+    "src/game/engineFighter.js": "336b883c6bfe81799222d8d20d099227c2eb2cad1af3c670a9b320c32f10d85b",
+    "src/game/engineRpg.js": "567a88b89535d8197fc238913754b388f4a62a57b1498a0916b0052f28fec934",
+    "src/game/engineSmash.js": "751d18fe3a6eaac3633a80a87ac97968cac9d672797f555376c6e7a76b905afd",
+    "src/game/engineTactics.js": "980c92ca7db2708c1fa473e3787be4a7e2b6e07929c543d1b62dcb11a8b7efd9",
+    "src/game/melee/stageAnimationCatalog.js": "9c18fb9153c0ed00d3b8a614c8fae38172866f001085b4ebe14749f34a337c0e",
+    "src/game/melee/stageAtmosphere.js": "c64b18767ab713359327df0c143c7fb5c42ce737651d2ed88f9d319aedbaead8",
+    "src/game/tacticsVerticalRuntime.js": "c7aacb321708dc302c4f89175e571c1480a074eed7f4435f6f29b627f752383a"
+  },
+  "unchangedDuringChecks": true
+}

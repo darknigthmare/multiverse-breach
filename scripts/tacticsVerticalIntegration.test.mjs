@@ -3,6 +3,7 @@ import { after, afterEach, before, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { canOccupyTerrainSurface, getTerrainUnitFootprint } from '../src/game/tacticsTerrain.js';
+import { isTacticsPickupAtSurface } from '../src/game/tacticsPickupSurface.js';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const engines = [], noop = () => {};
@@ -36,7 +37,7 @@ const makeEngine = (id = 'nexus_skybridge', options = {}) => {
   }, { add: noop }, noop, noop, {
     id: 'vertical-integration', universe: 'Nexus de Convergence', tacticsBattlefieldId: id,
     difficulty: 'Medium', customBattle: { singleRoster: true, opponentControl: 'p2' }
-  });
+  }, options.onManualMoveArrival);
   engines.push(engine);
   return engine;
 };
@@ -92,6 +93,65 @@ test('movement spends staircase AP, animates the real route, freezes on pause an
   assert.equal(engine.movementSpent, 2);
   assert.equal(engine.movementRange.length, 1);
   assert.equal(engine.handleCellClick(2, 3, 'stairs:2:3').handled, false);
+});
+
+test('vertical step pickups resolve on arrival at the addressed floor for P1 and P2', () => {
+  for (const [side, origin, destination] of [
+    ['hero', 'ground:4:2', 'ground:4:3'],
+    ['enemy', 'bridge:5:3', 'bridge:4:3']
+  ]) {
+    const pickups = getTacticsPickupPositions({ tacticsBattlefieldId: 'nexus_skybridge' })
+      .filter(item => item.gridX === 4 && item.gridY === 3)
+      .map(item => ({ ...item, used: false, tier: 'pickup', effect: { shield: 12 } }));
+    const arrivals = [];
+    const engine = makeEngine('nexus_skybridge', { onManualMoveArrival: arrival => {
+      arrivals.push(arrival);
+      const pickup = pickups.find(item => isTacticsPickupAtSurface(item, arrival.x, arrival.y, arrival.surfaceId));
+      assert.equal(engine.applyTacticalBattleItem(pickup, 'tactics-step', arrival.side), true);
+      pickup.used = true;
+    } });
+    heroTurn(engine);
+    const actor = side === 'hero' ? engine.heroes[0] : engine.enemies[0];
+    engine.activeUnit = actor;
+    engine.activeUnitType = side;
+    place(engine, actor, origin);
+    engine.calculateMovementRange();
+    const landingPickup = pickups.find(item => item.surfaceId === destination);
+    const otherPickup = pickups.find(item => item.surfaceId !== destination);
+    assert.equal(engine.handleSurfaceClick(destination).handled, true);
+    assert.equal(actor.terrainRenderPosition.surfaceId, origin);
+    assert.equal(engine.applyTacticalBattleItem(landingPickup, 'tactics-step', side), false);
+    engine.setPaused(true);
+    for (let frame = 0; frame < 45; frame += 1) engine.update();
+    assert.equal(arrivals.length, 0);
+    engine.setPaused(false);
+    for (let frame = 0; frame < 45; frame += 1) engine.update();
+    assert.equal(engine.tacticalItemsUsed, 1);
+    assert.equal(arrivals.length, 1);
+    assert.equal(arrivals[0].side, side);
+    assert.equal(arrivals[0].surfaceId, destination);
+    assert.equal(landingPickup.used, true);
+    assert.equal(otherPickup.used, false);
+    assert.equal(engine.applyTacticalBattleItem(otherPickup, 'tactics-step', side), false);
+    assert.equal(engine.applyTacticalBattleItem(landingPickup, 'tactics-step', side === 'hero' ? 'enemy' : 'hero'), false);
+  }
+});
+
+test('a knockout before touchdown never collects the destination pickup', () => {
+  const arrivals = [];
+  const engine = makeEngine('nexus_skybridge', {
+    heroes: [makeHero(), makeHero('reserve')], onManualMoveArrival: arrival => arrivals.push(arrival)
+  });
+  const hero = engine.heroes[0];
+  place(engine, hero, 'ground:4:2');
+  heroTurn(engine);
+  assert.equal(engine.handleSurfaceClick('ground:4:3').handled, true);
+  hero.currentHp = 0;
+  for (let frame = 0; frame < 45; frame += 1) engine.update();
+  assert.equal(hero.surfaceId, 'ground:4:2');
+  assert.equal(hero.terrainMotion, undefined);
+  assert.deepEqual(arrivals, []);
+  assert.equal(engine.tacticalItemsUsed, 0);
 });
 
 test('two units at one XY remain separately occupied and targetable by floor', () => {

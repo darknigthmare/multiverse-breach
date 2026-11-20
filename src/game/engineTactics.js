@@ -75,12 +75,13 @@ const colorWithAlpha = (hex, alpha) => {
 };
 
 export class EngineTactics {
-  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
+  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}, onManualMoveArrival = null) {
     this.width = width;
     this.height = height;
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
+    this.onManualMoveArrival = onManualMoveArrival;
     this.stage = stage;
     this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
     this.singleRoster = stage.customBattle?.singleRoster === true
@@ -2656,9 +2657,13 @@ export class EngineTactics {
     this.hazardPulses++;
   }
 
-  applyTacticalBattleItem(pickup, _source = 'manual', triggerSide = this.activeUnitType) {
+  applyTacticalBattleItem(pickup, source = 'manual', triggerSide = this.activeUnitType) {
     if (this.sourceScene) return false;
     if (!pickup || this.disposed || this.paused || this.gameOver) return false;
+    if (source === 'tactics-step' && this.verticalTerrain && (
+      !this.isActiveCombatant() || this.activeUnit.terrainMotion || triggerSide !== this.activeUnitType
+      || pickup.surfaceId !== this.activeUnit.surfaceId
+    )) return false;
     const tier = pickup.tier || 'pickup';
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';

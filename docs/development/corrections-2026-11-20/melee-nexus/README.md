@@ -1,0 +1,7 @@
+# Spéciale J2 des ennemis du Nexus en Mêlée
+
+Dans Combat personnalisé, le Greffier du Voile est sélectionnable pour J2. Sa spéciale est déclarée par son nom, « Tampon de Reecriture ». La commande Spécial s’arrêtait avant l’exécution à cause de ce format. Elle rejoint désormais la commande J2 existante pour les fiches Nexus portant ce type de déclaration. Le lien est établi sur le modèle du catalogue avant le clonage de l’adversaire. Les noms, le seuil et les dégâts des attaques restent ceux du jeu. [Moteur](../../../../src/game/engineSmash.js)
+
+Le Greffier refuse la commande à 99 %, pendant une garde et pendant la pause. À 100 %, il dépense la jauge entière, frappe une fois et affiche le nom déclaré. Le test utilise le catalogue réel de Combat personnalisé et le même directeur de combat que GameCanvas. Les profils de héros continuent à suivre leurs tests de fenêtre d’impact dans la même suite. [Tests](../../../../scripts/nexusActorDesigns.test.mjs)
+
+Chromium a envoyé deux pressions réelles sur la touche `Numpad3` dans GameCanvas. La première à 99 % laisse Ariane à 175 HP et conserve la charge. La seconde à 100 % ramène la charge du Greffier à zéro et Ariane à 140 HP en un seul impact. Les planches et fonds déjà présents étaient servis depuis le dépôt. Le test prépare seulement la charge et observe les appels d’origine. La dernière exécution relève zéro erreur de page ou de requête suivie. [Reçu](receipt.json)

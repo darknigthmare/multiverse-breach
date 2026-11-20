@@ -1,0 +1,59 @@
+{
+  "baseRevision": "e973004e2ba8e2a5cf04f42969cb2a2e12df0a9a",
+  "node": "22.23.5",
+  "tests": {
+    "ui": {
+      "tests": 580,
+      "pass": 580,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:ui-immersion",
+      "tap": "ui.tap",
+      "tapSha256": "6b6de58f8534765e323f7044b88a34513c9fb0d00642fc84449cfeb7c93e1c3d"
+    },
+    "source-contracts": {
+      "tests": 160,
+      "pass": 160,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:source-contracts",
+      "tap": "source-contracts.tap",
+      "tapSha256": "2059dbfb289fc46e28cd6f08181b5b9ecb59e03f5664c7733cbc113174557891"
+    },
+    "rpg": {
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "node --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/auditRpgLifecycle.test.mjs",
+      "tap": "rpg.tap",
+      "tapSha256": "9770485db5f1e6064324bcfef83bfd82cb25c1d20170e580e2554537274ef1a4"
+    },
+    "tactics-audit": {
+      "tests": 116,
+      "pass": 116,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:audit-tactics",
+      "tap": "tactics-audit.tap",
+      "tapSha256": "e2b3b13767f1f624a943c90e60b243d2411132f6ba9b062cd3af637a3801b9da"
+    },
+    "ambience": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "node --test --test-concurrency=1 scripts/stageAnimationCatalog.test.mjs scripts/stageAtmosphere.test.mjs",
+      "tap": "ambience.tap",
+      "tapSha256": "930ee314439b29575f1af6b5f2fb3f13c15595d810850c3f10c752a419639979"
+    }
+  },
+  "uiTiming": "Standard UI suite run during integration before final touch lobby and caption polish. Final Chromium scenarios and code compilation cover the later presentation changes.",
+  "changedJsLintFiles": 16,
+  "changedJsLintExit": 0
+}

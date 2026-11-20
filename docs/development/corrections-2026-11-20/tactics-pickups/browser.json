@@ -1,0 +1,247 @@
+{
+  "chromium": "151.0.7922.173",
+  "scope": "Actual CustomBattleMode → GameCanvas → EngineTactics on Nexus Skybridge in P2. Test selected the exact surface through the inspection API, then used Enter or the terrain button. The cancel case injects HP zero immediately after the final move is accepted. Before and after are isolated Vite builds of the working tree with the Tactics patch absent or present.",
+  "beforeAndAfter": {
+    "before": {
+      "mode": "before",
+      "cases": [
+        {
+          "scenario": "player-lower-arrival",
+          "target": "ground:4:3",
+          "steps": [
+            {
+              "to": "ground:2:2",
+              "from": "ground:0:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:2",
+              "from": "ground:2:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:3",
+              "from": "ground:4:2",
+              "ap": 1
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "ground:4:3",
+                "side": "hero",
+                "motion": true,
+                "support": "ground:4:2",
+                "hp": 105
+              }
+            ],
+            "cancelled": false,
+            "used": 1
+          },
+          "errors": []
+        },
+        {
+          "scenario": "player-cancelled-before-arrival",
+          "target": "ground:4:3",
+          "steps": [
+            {
+              "to": "ground:2:2",
+              "from": "ground:0:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:2",
+              "from": "ground:2:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:3",
+              "from": "ground:4:2",
+              "ap": 1
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "ground:4:3",
+                "side": "hero",
+                "motion": true,
+                "support": "ground:4:2",
+                "hp": 0
+              }
+            ],
+            "cancelled": true,
+            "used": 1
+          },
+          "errors": []
+        },
+        {
+          "scenario": "opponent-upper-arrival",
+          "target": "bridge:4:3",
+          "steps": [
+            {
+              "to": "bridge:4:3",
+              "from": "bridge:6:3",
+              "ap": 2
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "bridge:4:3",
+                "side": "enemy",
+                "motion": true,
+                "support": "bridge:6:3",
+                "hp": 65
+              }
+            ],
+            "cancelled": false,
+            "used": 1
+          },
+          "errors": []
+        }
+      ],
+      "bundle": "index-BlpGNaBo.js",
+      "bundleSha256": "994b6435ef274b89cf29946bb18468c6f54ecd041823343b2e9297919e496cc1"
+    },
+    "after": {
+      "mode": "after",
+      "cases": [
+        {
+          "scenario": "player-lower-arrival",
+          "target": "ground:4:3",
+          "steps": [
+            {
+              "to": "ground:2:2",
+              "from": "ground:0:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:2",
+              "from": "ground:2:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:3",
+              "from": "ground:4:2",
+              "ap": 1
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "ground:4:3",
+                "side": "hero",
+                "motion": false,
+                "support": "ground:4:3",
+                "hp": 105
+              }
+            ],
+            "cancelled": false,
+            "used": 1
+          },
+          "errors": []
+        },
+        {
+          "scenario": "player-cancelled-before-arrival",
+          "target": "ground:4:3",
+          "steps": [
+            {
+              "to": "ground:2:2",
+              "from": "ground:0:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:2",
+              "from": "ground:2:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:3",
+              "from": "ground:4:2",
+              "ap": 1
+            }
+          ],
+          "observed": {
+            "calls": [],
+            "cancelled": true,
+            "used": 0
+          },
+          "errors": []
+        },
+        {
+          "scenario": "opponent-upper-arrival",
+          "target": "bridge:4:3",
+          "steps": [
+            {
+              "to": "bridge:4:3",
+              "from": "bridge:6:3",
+              "ap": 2
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "bridge:4:3",
+                "side": "enemy",
+                "motion": false,
+                "support": "bridge:4:3",
+                "hp": 65
+              }
+            ],
+            "cancelled": false,
+            "used": 1
+          },
+          "errors": []
+        },
+        {
+          "scenario": "player-lower-arrival-from-panel",
+          "target": "ground:4:3",
+          "steps": [
+            {
+              "to": "ground:2:2",
+              "from": "ground:0:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:2",
+              "from": "ground:2:2",
+              "ap": 2
+            },
+            {
+              "to": "ground:4:3",
+              "from": "ground:4:2",
+              "ap": 1
+            }
+          ],
+          "observed": {
+            "calls": [
+              {
+                "destination": "ground:4:3",
+                "side": "hero",
+                "motion": false,
+                "support": "ground:4:3",
+                "hp": 105
+              }
+            ],
+            "cancelled": false,
+            "used": 1
+          },
+          "errors": []
+        }
+      ],
+      "bundle": "index-B8y6Retm.js",
+      "bundleSha256": "c3e52539acfaee94b2ca9c66eb7d77249c9b58cbf2b9f0863d367d14df25a331"
+    }
+  },
+  "tests": {
+    "tests": 28,
+    "pass": 28,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "node": "22.23.5",
+    "command": "node --max-old-space-size=2048 --test --test-concurrency=1 scripts/tacticsVerticalIntegration.test.mjs scripts/tacticsVerticalReview.test.mjs",
+    "tapSha256": "08ebfe5a5f8b28599f38808848320dbbb185ed5264832611d75633451be89809"
+  }
+}

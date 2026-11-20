@@ -1,0 +1,292 @@
+TAP version 13
+# Subtest: RPG player: a dead caster's old attack cannot return with a resurrection
+ok 1 - RPG player: a dead caster's old attack cannot return with a resurrection
+  ---
+  duration_ms: 23147.98944
+  type: 'test'
+  ...
+# Subtest: RPG enemy: a dead caster's old attack cannot return with a resurrection
+ok 2 - RPG enemy: a dead caster's old attack cannot return with a resurrection
+  ---
+  duration_ms: 3.783842
+  type: 'test'
+  ...
+# Subtest: RPG player: removed combatants cannot deliver queued impacts
+ok 3 - RPG player: removed combatants cannot deliver queued impacts
+  ---
+  duration_ms: 1.939382
+  type: 'test'
+  ...
+# Subtest: RPG enemy: removed combatants cannot deliver queued impacts
+ok 4 - RPG enemy: removed combatants cannot deliver queued impacts
+  ---
+  duration_ms: 1.473461
+  type: 'test'
+  ...
+# Subtest: RPG stale target contexts cannot spend ATB, cooldown or charge
+ok 5 - RPG stale target contexts cannot spend ATB, cooldown or charge
+  ---
+  duration_ms: 3.090346
+  type: 'test'
+  ...
+# Subtest: RPG callback cancellation applies to callbacks already due on this tick
+ok 6 - RPG callback cancellation applies to callbacks already due on this tick
+  ---
+  duration_ms: 2.132022
+  type: 'test'
+  ...
+# Subtest: RPG direct negative damage cannot stagger or weaken a target
+ok 7 - RPG direct negative damage cannot stagger or weaken a target
+  ---
+  duration_ms: 0.693875
+  type: 'test'
+  ...
+# Subtest: RPG reapplying infected cannot shorten a stronger existing duration
+ok 8 - RPG reapplying infected cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.504991
+  type: 'test'
+  ...
+# Subtest: RPG reapplying glitched cannot shorten a stronger existing duration
+ok 9 - RPG reapplying glitched cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.618031
+  type: 'test'
+  ...
+# Subtest: RPG reapplying radiated cannot shorten a stronger existing duration
+ok 10 - RPG reapplying radiated cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.436778
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP NaN cannot enter a revival target set
+ok 11 - RPG invalid HP NaN cannot enter a revival target set
+  ---
+  duration_ms: 0.293502
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP Infinity cannot enter a revival target set
+ok 12 - RPG invalid HP Infinity cannot enter a revival target set
+  ---
+  duration_ms: 0.291108
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP 0 cannot enter a revival target set
+ok 13 - RPG invalid HP 0 cannot enter a revival target set
+  ---
+  duration_ms: 0.234583
+  type: 'test'
+  ...
+# Subtest: RPG revival preview agrees with the minimum one-HP recovery
+ok 14 - RPG revival preview agrees with the minimum one-HP recovery
+  ---
+  duration_ms: 2.759688
+  type: 'test'
+  ...
+# Subtest: RPG heal plus cleanse may target an irradiated ally already at the healing cap
+ok 15 - RPG heal plus cleanse may target an irradiated ally already at the healing cap
+  ---
+  duration_ms: 3.072315
+  type: 'test'
+  ...
+# Subtest: RPG selective cleansing removes only the authored statuses
+ok 16 - RPG selective cleansing removes only the authored statuses
+  ---
+  duration_ms: 2.187636
+  type: 'test'
+  ...
+# Subtest: RPG a cleanse cannot spend an action on a status it does not remove
+ok 17 - RPG a cleanse cannot spend an action on a status it does not remove
+  ---
+  duration_ms: 0.530108
+  type: 'test'
+  ...
+# Subtest: RPG automatic healing uses recoverable HP and preserves manual choice
+ok 18 - RPG automatic healing uses recoverable HP and preserves manual choice
+  ---
+  duration_ms: 8.238214
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input null fails closed
+ok 19 - RPG malformed selected target input null fails closed
+  ---
+  duration_ms: 0.213972
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input 12 fails closed
+ok 20 - RPG malformed selected target input 12 fails closed
+  ---
+  duration_ms: 0.12563
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input {} fails closed
+ok 21 - RPG malformed selected target input {} fails closed
+  ---
+  duration_ms: 0.108323
+  type: 'test'
+  ...
+# Subtest: RPG invalidated action profiles clear targeting rather than crash the HUD
+ok 22 - RPG invalidated action profiles clear targeting rather than crash the HUD
+  ---
+  duration_ms: 0.210166
+  type: 'test'
+  ...
+# Subtest: RPG buff and guard expire without changing prepared stats
+ok 23 - RPG buff and guard expire without changing prepared stats
+  ---
+  duration_ms: 2.457774
+  type: 'test'
+  ...
+# Subtest: RPG complete is reported once and clears all pending actions
+ok 24 - RPG complete is reported once and clears all pending actions
+  ---
+  duration_ms: 0.668868
+  type: 'test'
+  ...
+# Subtest: Booster hero streak counts trailing duplicates in reveal order and ignores cosmetics
+ok 25 - Booster hero streak counts trailing duplicates in reveal order and ignores cosmetics
+  ---
+  duration_ms: 0.929501
+  type: 'test'
+  ...
+# Subtest: RPG summon selection and cancellation never spend resources for player
+ok 26 - RPG summon selection and cancellation never spend resources for player
+  ---
+  duration_ms: 29682.71157
+  type: 'test'
+  ...
+# Subtest: RPG summon selection and cancellation never spend resources for enemy
+ok 27 - RPG summon selection and cancellation never spend resources for enemy
+  ---
+  duration_ms: 1.516284
+  type: 'test'
+  ...
+# Subtest: RPG summon requires both full gauges, commits once and remains separate from the special
+ok 28 - RPG summon requires both full gauges, commits once and remains separate from the special
+  ---
+  duration_ms: 33.948655
+  type: 'test'
+  ...
+# Subtest: RPG cinematic has one impact at the exact simulation tick and a completed return
+ok 29 - RPG cinematic has one impact at the exact simulation tick and a completed return
+  ---
+  duration_ms: 16.649138
+  type: 'test'
+  ...
+# Subtest: RPG summon pause freezes the scene and queued attacks without late wall-time effects
+ok 30 - RPG summon pause freezes the scene and queued attacks without late wall-time effects
+  ---
+  duration_ms: 13.392092
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on dispose
+ok 31 - RPG summon cancels safely on dispose
+  ---
+  duration_ms: 1.476894
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on gameOver
+ok 32 - RPG summon cancels safely on gameOver
+  ---
+  duration_ms: 1.193168
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on dead-caller
+ok 33 - RPG summon cancels safely on dead-caller
+  ---
+  duration_ms: 1.9189
+  type: 'test'
+  ...
+# Subtest: RPG invocation cannot silently acquire a replacement for an invalidated target
+ok 34 - RPG invocation cannot silently acquire a replacement for an invalidated target
+  ---
+  duration_ms: 20.0965
+  type: 'test'
+  ...
+# Subtest: RPG catalog deployment preserves arca_loom support semantics
+ok 35 - RPG catalog deployment preserves arca_loom support semantics
+  ---
+  duration_ms: 11.324738
+  type: 'test'
+  ...
+# Subtest: RPG catalog deployment preserves arca_bastion support semantics
+ok 36 - RPG catalog deployment preserves arca_bastion support semantics
+  ---
+  duration_ms: 10.014714
+  type: 'test'
+  ...
+# Subtest: Nexus arca_bastion renders its applied guard for either camp
+ok 37 - Nexus arca_bastion renders its applied guard for either camp
+  ---
+  duration_ms: 38.227229
+  type: 'test'
+  ...
+# Subtest: Nexus arca_loom renders its applied heal for either camp
+ok 38 - Nexus arca_loom renders its applied heal for either camp
+  ---
+  duration_ms: 44.205735
+  type: 'test'
+  ...
+# Subtest: Nexus arca_tessera renders its applied damage for either camp
+ok 39 - Nexus arca_tessera renders its applied damage for either camp
+  ---
+  duration_ms: 34.139673
+  type: 'test'
+  ...
+# Subtest: Nexus arca_nadir renders its applied damage for either camp
+ok 40 - Nexus arca_nadir renders its applied damage for either camp
+  ---
+  duration_ms: 26.233023
+  type: 'test'
+  ...
+# Subtest: Nexus invocation draws no success on fully absorbed, full-HP or replaced targets
+ok 41 - Nexus invocation draws no success on fully absorbed, full-HP or replaced targets
+  ---
+  duration_ms: 21.879467
+  type: 'test'
+  ...
+# Subtest: Nexus probe keeps its route and visible KO contact at the impact position
+ok 42 - Nexus probe keeps its route and visible KO contact at the impact position
+  ---
+  duration_ms: 10.128276
+  type: 'test'
+  ...
+# Subtest: RPG explicit revival, buff and cleansing deployments keep their declared effect
+ok 43 - RPG explicit revival, buff and cleansing deployments keep their declared effect
+  ---
+  duration_ms: 28.223311
+  type: 'test'
+  ...
+# Subtest: RPG automatic sides use the same invocation resolver and keep manual targeting closed
+ok 44 - RPG automatic sides use the same invocation resolver and keep manual targeting closed
+  ---
+  duration_ms: 1.52669
+  type: 'test'
+  ...
+# Subtest: RPG auto falls back to the original special when a healing invocation has no eligible ally
+ok 45 - RPG auto falls back to the original special when a healing invocation has no eligible ally
+  ---
+  duration_ms: 2.227365
+  type: 'test'
+  ...
+# Subtest: RPG every catalog invocation can resolve its authored effect from the combat formation
+ok 46 - RPG every catalog invocation can resolve its authored effect from the combat formation
+  ---
+  duration_ms: 319.25546
+  type: 'test'
+  ...
+# Subtest: RPG reinforcement uses its existing partner identity and matches buffed damage preview
+ok 47 - RPG reinforcement uses its existing partner identity and matches buffed damage preview
+  ---
+  duration_ms: 15.397682
+  type: 'test'
+  ...
+1..47
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54271.198373

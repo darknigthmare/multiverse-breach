@@ -1,0 +1,80 @@
+{
+  "baseline": "e973004e2",
+  "nodeVersion": "v24.19.0",
+  "command": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/nexusActorDesigns.test.mjs scripts/engineSmashSuper.test.mjs",
+  "baselineReproduction": {
+    "singleCase": true,
+    "expected": true,
+    "actual": false,
+    "charge": 100
+  },
+  "targetedRun": {
+    "tests": 15,
+    "pass": 15,
+    "fail": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "compilation": "Direct Vite code-only build of a GameCanvas fixture, backed by the existing public media tree. No public assets copied. No physical gamepad or second touchscreen tested.",
+    "browser": "Chromium",
+    "keyboardCode": "Numpad3",
+    "trusted": true,
+    "viewport": [
+      1160,
+      800
+    ],
+    "fixture": {
+      "boss": "Greffier du Voile",
+      "anchor": "Ariane",
+      "hp": 175
+    },
+    "at99": {
+      "charge": 99,
+      "damage": [],
+      "command": {
+        "side": "cpu",
+        "action": "Special",
+        "result": false
+      }
+    },
+    "at100": {
+      "charge": 0,
+      "hp": 140,
+      "damage": [
+        {
+          "actor": "Greffier du Voile",
+          "target": "Ariane",
+          "delta": 35
+        }
+      ],
+      "command": {
+        "side": "cpu",
+        "action": "Special",
+        "result": true
+      },
+      "pressed": [
+        {
+          "code": "Numpad3",
+          "trusted": true
+        },
+        {
+          "code": "Numpad3",
+          "trusted": true
+        }
+      ]
+    },
+    "disposed": true,
+    "pageErrors": [],
+    "httpErrors": []
+  },
+  "sourceSha256": {
+    "src/game/engineSmash.js": "751d18fe3a6eaac3633a80a87ac97968cac9d672797f555376c6e7a76b905afd",
+    "scripts/nexusActorDesigns.test.mjs": "2c61fd47cfbae76315ad717a23abaaa041fc69f43c1cced0e03da45b83e9c604"
+  },
+  "nexusFinalRerun": {
+    "command": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-reporter=tap scripts/nexusActorDesigns.test.mjs",
+    "tests": 7,
+    "pass": 7,
+    "fail": 0
+  }
+}

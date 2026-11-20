@@ -6,6 +6,8 @@ Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge AT
 
 **Reprise du 20 novembre 2026.** Le Nexus gagne le Col des Hautes-Herbes en Tactics, un briefing Extinction accessible au clavier et quatre scènes d’invocation raccordées aux effets réellement appliqués. Quatre combattants des univers originaux reçoivent leurs présentations de duel. Le Pachakuti du Soleil Noir a son atlas d’anomalie environnementale. L’export DLC produit maintenant des dossiers de médias transportables par lots. [Rapport et vérifications](docs/assets/p0-p1-p2-continuation-03-2026-11-20/README.md).
 
+Les corrections suivantes rendent les légendes de combat lisibles sur mobile, déclenchent le ramassage Tactics à l’arrivée et rétablissent les ambiances des arènes personnalisées ainsi que les spéciales de J2 du Nexus. Deux lots de médias ont aussi été réunis dans un dossier avec reprise vérifiée. [Corrections et essais](docs/development/corrections-2026-11-20/README.md).
+
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
@@ -47,6 +49,8 @@ Les profils d’édition se trouvent dans [config/dlc-profiles/](config/dlc-prof
 Sur un disque contraint, `npm run dlc:assets:batches` permet de lire, contrôler puis libérer uniquement les copies temporaires : jusqu’à 40 ressources par lot, avec plafonds de taille, vérification SHA-256 et décodage des rasters. Le plan fige les sources et le vérificateur ; la reprise conserve les résultats déjà acquis. La passe du 13 novembre valide **19 582 fichiers en 490 lots**, dont 17 087 rasters décodés, sans indisponibilité restante. Voir [les commandes, reçus et résultats](docs/assets/dlc-completion-2026-11-13/README.md). Cette validation ne produit pas à elle seule une distribution contenant tous les médias.
 
 Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exportDlcAssetBatch.mjs --plan PLAN.json --batch ID --out NOUVEAU_DOSSIER`. Le dossier contient les fichiers aux chemins source et un reçu SHA-256 vérifiable après transfert. Deux lots réels totalisant 60 médias ont été exportés. [Reproduction et reçus](docs/assets/dlc-batch-export-2026-11-20/README.md).
+
+`node scripts/applyDlcAssetBatch.mjs` réunit les lots du même plan dans un dossier de destination. La reprise vérifie les fichiers présents et copie ceux qui manquent. [Commandes et preuve sur deux lots](docs/assets/dlc-batch-export-2026-11-20/ASSEMBLY.md).
 
 ## Jouer
 

@@ -1,0 +1,287 @@
+{
+  "baseRevision": "e973004e2ba8e2a5cf04f42969cb2a2e12df0a9a",
+  "resolverSha256": {
+    "src/game/melee/stageAnimationCatalog.js": {
+      "before": "2af6890d75b9f9eda5b10d2062cb665e2b0ce54e7da126c7749fe973d41f5f3f",
+      "after": "9c18fb9153c0ed00d3b8a614c8fae38172866f001085b4ebe14749f34a337c0e"
+    },
+    "src/game/melee/stageAtmosphere.js": {
+      "before": "0226158797cf9cc911047fd5df54fce3e9aa61e19fd6b80850fa2b642147b905",
+      "after": "c64b18767ab713359327df0c143c7fb5c42ce737651d2ed88f9d319aedbaead8"
+    }
+  },
+  "environment": {
+    "node": "22.23.5",
+    "chromium": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "build": "Vite fixture with real CustomBattleMode, GameCanvas and engines, publicDir disabled. Media serve from precise source checkout/index."
+  },
+  "measurement": "Instrument Canvas ellipse calls whose stroke uses the existing Mako animation color. Sample after the actual background bitmap and combat are visible. Every 15 calls start a subsequent Mako bubble frame.",
+  "before": [
+    {
+      "build": "before",
+      "viewport": [
+        1280,
+        820
+      ],
+      "language": "fr",
+      "motion": "no-preference",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "RPG",
+      "observedBubbles": 0,
+      "firstBubbleCoordinates": 0,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/rpg.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "build": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "language": "en",
+      "motion": "no-preference",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "Smash",
+      "observedBubbles": 0,
+      "firstBubbleCoordinates": 0,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/melee.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "build": "before",
+      "viewport": [
+        390,
+        844
+      ],
+      "language": "fr",
+      "motion": "reduce",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "RPG",
+      "observedBubbles": 0,
+      "firstBubbleCoordinates": 0,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/rpg.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "after": [
+    {
+      "build": "after",
+      "viewport": [
+        1280,
+        820
+      ],
+      "language": "fr",
+      "motion": "no-preference",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "RPG",
+      "observedBubbles": 735,
+      "firstBubbleCoordinates": 47,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/rpg.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "build": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "language": "en",
+      "motion": "no-preference",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "Smash",
+      "observedBubbles": 495,
+      "firstBubbleCoordinates": 31,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/melee.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "build": "after",
+      "viewport": [
+        390,
+        844
+      ],
+      "language": "fr",
+      "motion": "reduce",
+      "title": "Simulation Custom - Final Fantasy VII",
+      "universe": "Final Fantasy VII",
+      "mode": "RPG",
+      "observedBubbles": 720,
+      "firstBubbleCoordinates": 1,
+      "backdrops": [
+        "/backgrounds/lore-stages/final-fantasy-vii/rpg.webp"
+      ],
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "runtimeTests": {
+    "beforeRegression": "expected failure: missing FFVII animation id",
+    "afterPassed": 19,
+    "afterFailed": 0,
+    "excludedLocalPhysicalTest": "four-phase local effect atlases are played from their real distinct transparent cells",
+    "physicalReplacement": {
+      "gitCommit": "e973004e2",
+      "decode": "Pillow in memory from local Git blobs",
+      "files": [
+        {
+          "path": "public/visuals/cosmetics/openai/universes/doom/portal-effects-atlas.webp",
+          "checkedInWorktree": false,
+          "gitBlobOid": "08253dbf4524135436fc0c9afed809ca2e5144e7",
+          "bytes": 55426,
+          "sha256": "0405f675130a70cb65a3ae186e805df489c4b9d28a11e6739d3e9bd27d4cbe8b",
+          "dimensions": [
+            1024,
+            256
+          ],
+          "frames": [
+            {
+              "sha256": "32f951f0b7d01ac683925ea5af1d5f3fc6a537d4b8a06892587c5d50c936c8be",
+              "visible": 29566,
+              "transparent": 35970
+            },
+            {
+              "sha256": "da02b2e3a4828b0466d00c415960aab81c7f678a1be4f36942148383149bd4d0",
+              "visible": 29495,
+              "transparent": 36041
+            },
+            {
+              "sha256": "795a461ce25448343f19558fabd2af8cbb6310eccdfd5e65674a2b7cb8ef6e83",
+              "visible": 27331,
+              "transparent": 38205
+            },
+            {
+              "sha256": "1f177cfb6d268aee570a32df197abae9202b4e6a596d0bdadae3907e29e232cf",
+              "visible": 19524,
+              "transparent": 46012
+            }
+          ]
+        },
+        {
+          "path": "public/visuals/cosmetics/openai/universes/stargate/portal-effects-atlas.webp",
+          "checkedInWorktree": false,
+          "gitBlobOid": "a4c044dff80443de0d2dc1f17e31d87ff92019fa",
+          "bytes": 52604,
+          "sha256": "415aafd2ebb41ec18b784b820a87393ab1d9d9ca326be882badb7b7e36059170",
+          "dimensions": [
+            1024,
+            256
+          ],
+          "frames": [
+            {
+              "sha256": "a8a0d7313ad8ab94001b9ff2b5d22d65b5306dc85114b20b886d71f016136a3b",
+              "visible": 17986,
+              "transparent": 47550
+            },
+            {
+              "sha256": "d987206322adb0a7250e87817c46d666f92b2aeb92516b4977938933f3e1f3d5",
+              "visible": 32825,
+              "transparent": 32711
+            },
+            {
+              "sha256": "822fc023a6a741d1e98ec5eac434e12001f8a8a487ba1b90e374c1519b05fec2",
+              "visible": 32712,
+              "transparent": 32824
+            },
+            {
+              "sha256": "ff91fbc0d28595c1ef813148b549bc57f601655709a0f402c3b1d0a156f548ad",
+              "visible": 18771,
+              "transparent": 46765
+            }
+          ]
+        },
+        {
+          "path": "public/visuals/cosmetics/openai/universes/portal/portal-effects-atlas.webp",
+          "checkedInWorktree": false,
+          "gitBlobOid": "13ab4d2fb0c39fd6696bc1b9d9de1929881926d5",
+          "bytes": 39364,
+          "sha256": "7aa649083e68dd85249b96efcf4ea83697bde82f59e4f17d76739221ed028b98",
+          "dimensions": [
+            1024,
+            256
+          ],
+          "frames": [
+            {
+              "sha256": "6fac465c980800cdd80d50ee97683608e955950077ee8f1f7f866eea2d5aa95a",
+              "visible": 11076,
+              "transparent": 54460
+            },
+            {
+              "sha256": "3559471ff0064f11ba81a2ca745c682667e807273efc34651fe4dc14b5c0ef3a",
+              "visible": 12224,
+              "transparent": 53312
+            },
+            {
+              "sha256": "9e1c2a4251caaaae64d3266dea214fc663c2000db359931dfe1c8ffb6b3b947f",
+              "visible": 23705,
+              "transparent": 41831
+            },
+            {
+              "sha256": "ddb8457d50b2ab43f73e0e092a80e79b698cc205d2fc8c746022163270609e78",
+              "visible": 2542,
+              "transparent": 62994
+            }
+          ]
+        },
+        {
+          "path": "public/visuals/cosmetics/openai/universes/rick-morty/portal-effects-atlas.webp",
+          "checkedInWorktree": false,
+          "gitBlobOid": "7c6aa0da91af5f022cb6a56128bc59ec593a1624",
+          "bytes": 72508,
+          "sha256": "e8527bae407372fedf0a19451ca3d73fb08edf8a13aeb46b6615865e2b9a1b86",
+          "dimensions": [
+            1024,
+            256
+          ],
+          "frames": [
+            {
+              "sha256": "c00cdb1f5f18ea0bc24c8ba52346a0aa8b2afea39111baa0138eb2e85e0860e1",
+              "visible": 15588,
+              "transparent": 49948
+            },
+            {
+              "sha256": "98b083bb93fdaec9e1f73e7d20e1f1a19f5653317975d4d994fb995bc8396077",
+              "visible": 25218,
+              "transparent": 40318
+            },
+            {
+              "sha256": "c0dbf26e8287603e03057b12c54ed99cf47f8b3b950c8234fd4388676eb77da2",
+              "visible": 19844,
+              "transparent": 45692
+            },
+            {
+              "sha256": "687897d42e660748bc9012cba9bbded9d5a47d3a9753369de9eb64397d9a1aec",
+              "visible": 7275,
+              "transparent": 58261
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

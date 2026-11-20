@@ -666,7 +666,7 @@ export default function FighterMode({
             elapsedSeconds: visualElapsedSeconds,
             reducedMotion
           });
-          engine.draw(ctx, visualElapsedSeconds * 60, { reducedMotion });
+          engine.draw(ctx, visualElapsedSeconds * 60, { reducedMotion, canvasCaptions: false });
           particles.draw(ctx);
         }
         snapshotClock += dt;
@@ -862,6 +862,15 @@ export default function FighterMode({
   const phaseLabels = lang === 'fr'
     ? { intro: 'ENTRÉES', countdown: 'PRÉPARATION', running: 'DUEL ACTIF', roundResult: 'RÉSULTAT DE MANCHE', fatality: 'FINALE', victory: 'VICTOIRE', defeat: 'DÉFAITE', outro: 'SORTIES' }
     : { intro: 'ENTRANCES', countdown: 'READY', running: 'LIVE FIGHT', roundResult: 'ROUND RESULT', fatality: 'FINISHER', victory: 'VICTORY', defeat: 'DEFEAT', outro: 'EXITS' };
+  const presentation = !summary && !runtimeError ? snapshot.presentation : null;
+  const presentationResultLabel = presentation?.phase === 'victory'
+    ? (lang === 'fr' ? 'RÉSULTAT DU MATCH' : 'MATCH RESULT')
+    : phaseLabels[snapshot.phase] || snapshot.phase.toUpperCase();
+  const actorResultLabels = lang === 'fr'
+    ? { intro: 'Entrée', outro: 'Sortie', fatality: 'Finale', victory: 'Victoire', defeat: 'Défaite', roundVictory: 'Manche gagnée', roundDefeat: 'Manche perdue' }
+    : { intro: 'Entrance', outro: 'Exit', fatality: 'Finisher', victory: 'Victory', defeat: 'Defeat', roundVictory: 'Round won', roundDefeat: 'Round lost' };
+  const roundStatus = lang === 'fr' ? `Manche ${snapshot.roundNumber}` : `Round ${snapshot.roundNumber}`;
+  const scoreStatus = `Score ${snapshot.roundWins?.player || 0} ${lang === 'fr' ? 'à' : 'to'} ${snapshot.roundWins?.cpu || 0}`;
   const playerFieldState = snapshot.fieldSupers?.player || {
     charge: snapshot.fieldSuperCharge,
     used: snapshot.fieldSuperUsed,
@@ -1053,7 +1062,7 @@ export default function FighterMode({
   }
 
   return (
-    <section className={`fighter-mode-shell fighter-mode-active combat-immersive-surface ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title" data-battle-completed={Boolean(summary)} data-touch-controls={showTouchControls}
+    <section className={`fighter-mode-shell fighter-mode-active combat-immersive-surface ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title" data-battle-completed={Boolean(summary)} data-touch-controls={showTouchControls} data-fighter-presenting={Boolean(presentation)}
       style={{ '--combat-backdrop': getOpenAiBackdropSrc(arenaUniverse, 'Combat') ? `url("${getOpenAiBackdropSrc(arenaUniverse, 'Combat')}")` : 'none' }}>
       <div className="combat-scene-fill" aria-hidden="true" />
       <GameHudThemeLayer theme={activeHudTheme} mode="combat" />
@@ -1065,7 +1074,7 @@ export default function FighterMode({
         </div>
         <div>
           <b>{snapshot.phase === 'countdown' ? snapshot.countdown : snapshot.timer}s</b>
-          <small>{phaseLabels[snapshot.phase] || snapshot.phase.toUpperCase()}{opponentControl === 'p2' ? ' · P2 LOCAL' : ''}</small>
+          {!presentation && <small>{presentationResultLabel}{opponentControl === 'p2' ? ' · P2 LOCAL' : ''}</small>}
         </div>
         <nav className="combat-hud-tools" aria-label={lang === 'fr' ? 'Menu du duel' : 'Duel menu'}>
           <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'arsenal' ? null : 'arsenal')}
@@ -1091,6 +1100,22 @@ export default function FighterMode({
       </div>}
       <div className="fighter-battle-grid">
         <div className="fighter-canvas-panel">
+          <div className={presentation ? 'fighter-presentation-caption' : 'gameplay-live-status'} role="status" aria-live="polite" aria-atomic="true" lang={lang}>
+            {presentation ? <>
+              <strong className="fighter-presentation-heading">{presentationResultLabel}</strong>
+              <span className="gameplay-live-status">{roundStatus}. {scoreStatus}.</span>
+              <div className="fighter-presentation-entries" data-solo={presentation.entries.length === 1}>
+                {presentation.entries.map(({ side, fighterName, fighterId, actorPhase, script }) => (
+                  <p key={side}>
+                    <b>{fighterName || fighterId}</b>
+                    <span lang={script?.nameLocalized && script.nameLocalized.en === script.nameLocalized.fr ? 'fr' : undefined}>
+                      {script?.nameLocalized?.[lang] || script?.name || actorResultLabels[actorPhase]}
+                    </span>
+                  </p>
+                ))}
+              </div>
+            </> : `${roundStatus}. ${presentationResultLabel}. ${scoreStatus}. ${snapshot.timer} ${lang === 'fr' ? 'secondes' : 'seconds'}.`}
+          </div>
           <canvas
             ref={canvasRef}
             width="960"
@@ -1103,13 +1128,7 @@ export default function FighterMode({
             data-player-active={playerSnapshot.activeIndex}
             data-opponent-active={cpuSnapshot.activeIndex}
           />
-          <p className="gameplay-live-status" role="status" aria-live="polite">
-            {lang === 'fr'
-              ? `Manche ${snapshot.roundNumber}. ${phaseLabels[snapshot.phase] || snapshot.phase}. Score ${snapshot.roundWins?.player || 0} à ${snapshot.roundWins?.cpu || 0}. ${snapshot.timer} secondes.`
-              : `Round ${snapshot.roundNumber}. ${phaseLabels[snapshot.phase] || snapshot.phase}. Score ${snapshot.roundWins?.player || 0} to ${snapshot.roundWins?.cpu || 0}. ${snapshot.timer} seconds.`}
-            {snapshot.presentation?.entries.map(entry => `${entry.fighterName} : ${entry.identity.name}. ${entry.identity.description}`).join(' ')}
-          </p>
-          <p style={{ color: '#8fa8ad', fontSize: 10, margin: '6px 10px' }}>
+          <p className="gameplay-live-status">
             {lang === 'fr'
               ? 'Chaque manche : PV et garde restaurés, jauge personnelle à 0, super terrain à 20 %, assist à 40 %.'
               : 'Each round: full HP and guard, personal meter at 0, field super at 20%, assist at 40%.'}

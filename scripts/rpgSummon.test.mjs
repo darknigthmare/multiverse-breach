@@ -118,6 +118,8 @@ test('RPG cinematic has one impact at the exact simulation tick and a completed 
   const previewIds = engine.getTargetingState().previewTargetIds;
   assert.equal(engine.confirmTargeting(), true);
   const scene = engine.getSummonSceneState();
+  const caption = engine.getSummonCaption();
+  assert.deepEqual(caption, { kind: 'summon', entityName: 'Ifrit', actionName: 'Hellfire' });
   assert.equal(scene.performerId, null, 'a different hero was used as an Ifrit sprite');
   assert.equal(scene.assetMissing, false);
   assert.equal(scene.entityAssetId, 'ff7-ifrit');
@@ -130,11 +132,13 @@ test('RPG cinematic has one impact at the exact simulation tick and a completed 
   const after = engine.enemies.map(unit => unit.currentHp);
   assert.ok(after.some((value, index) => value < hp[index]));
   assert.equal(engine.getSummonSceneState().impacted, true);
+  assert.strictEqual(engine.getSummonCaption(), caption, 'a new animation frame must not announce the title again');
   assert.deepEqual(engine.getSummonSceneState().entityFrame, { index: 2, phase: 'impact' });
   tick(engine, scene.durationTicks - scene.impactTick);
   assert.deepEqual(engine.enemies.map(unit => unit.currentHp), after, 'an invocation impacted twice');
   assert.equal(engine.isSummonSceneActive(), false);
   assert.equal(engine.getSummonSceneState(), null);
+  assert.equal(engine.getSummonCaption(), null);
   assert.equal(actor.actionPending, false);
   assert.equal(actor.state, 'idle');
   assert.equal(actor.x, actor.homeX);

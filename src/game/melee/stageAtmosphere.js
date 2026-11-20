@@ -1,7 +1,7 @@
 import { getStageLoreProfile } from '../stageLoreProfiles.js';
 import { getRecentUniverseLevelProfile } from '../recentUniverseLevels.js';
 import { getUniverseStageAtmosphereDefault } from './stageAtmosphereUniverseDefaults.js';
-import { getStageAnimationProfile, renderStageAnimation } from './stageAnimationCatalog.js';
+import { getConcreteStageLocation, getStageAnimationProfile, renderStageAnimation } from './stageAnimationCatalog.js';
 
 // These are background adaptations of locations already named by the stage
 // catalogue, not claims that a procedural drawing reproduces a source 1:1.
@@ -71,9 +71,6 @@ const PHYSICAL_MOTIFS = Object.freeze([
   { match: /wood|timber|tatami|castle|chateau|temple|stone|masonry|ruins|dungeon|dojo|library|hall|corridor|room|concrete|salon|bureau|crater|sand|earth|floor|vault|atelier|wreck|pyramid|ramp|passage|aisle|dock|court|alley|bunker|trench|pub|yard|school|class|stair|lawn|residence|foyer|basement|bridge|apartment|attic|warehouse|outpost|museum|house|pens|pillar|sanctuary|checkpoint|field|cabin|throne|circus|theme.park|playground|cave|desert|headquarters|fortress|workshop|village|clearing|junkyard|dust/i, effect: 'dust', color: '#b7af9f' }
 ]);
 
-const textValue = value => typeof value === 'string' ? value : value && typeof value === 'object'
-  ? [value.fr, value.en].filter(item => typeof item === 'string').join(' ')
-  : '';
 const validColor = (value, fallback) => /^#[0-9a-f]{6}$/i.test(value || '') ? value : fallback;
 const wrap = (value, size) => ((value % size) + size) % size;
 
@@ -81,11 +78,7 @@ export function getStageAtmosphereProfile(stageOrUniverse = {}) {
   const stage = typeof stageOrUniverse === 'string' ? { universe: stageOrUniverse } : (stageOrUniverse || {});
   const lore = getStageLoreProfile(stage);
   const level = getRecentUniverseLevelProfile(stage.universe);
-  const stageName = textValue(stage.name);
-  // Fighter's lobby label is not a physical place; its universe lore is the
-  // source until the player selects a concrete location.
-  const concreteStageName = /^A\.R\.C\.A\. Impact Arena\s*-/i.test(stageName) ? '' : stageName;
-  const stageLocation = [concreteStageName, textValue(stage.description), textValue(stage.location)].filter(Boolean).join(' ');
+  const stageLocation = getConcreteStageLocation(stage);
   // A concrete stage name wins over the universe-wide list of possible places.
   // For example Cell Games must not inherit Namek water or the Time Chamber.
   const sourceText = stageLocation || [lore?.canonicalName, lore?.visualAnchor].filter(Boolean).join(' ');

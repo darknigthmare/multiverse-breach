@@ -13,7 +13,7 @@ import { projectAssetPath } from './dlcAssetPaths.mjs';
 import { createDlcBatchAssetSource } from './dlcBatchAssetSource.mjs';
 import { assertDistributionDirectory, inspectDistributionPath, listDistributionFiles, readDistributionFile } from './dlcDistributionFilesystem.mjs';
 
-const RECEIPT = 'batch-export.json';
+export const DLC_ASSET_BATCH_EXPORT_RECEIPT = 'batch-export.json';
 const HASH = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
 const BATCH_ID = /^\d{5}$/;
@@ -29,7 +29,7 @@ function describeAsset({ sourcePath, publicPath, gitBlobOid, bytes, sha256, sour
 }
 
 /** Hash and bound the copy in the same pass, or hash a previously delivered file. */
-async function verifyBytes(input, { bytes, sha256, sourcePath }, destination) {
+export async function verifyDlcAssetBatchBytes(input, { bytes, sha256, sourcePath }, destination) {
   const hash = createHash('sha256');
   let length = 0;
   const verifyChunk = chunk => {
@@ -49,10 +49,7 @@ async function verifyBytes(input, { bytes, sha256, sourcePath }, destination) {
   if (length !== bytes || hash.digest('hex') !== sha256) throw new Error('Batch export payload differs: ' + sourcePath);
 }
 
-/** Verify a transferred batch. Pin receiptSha256 from the exporter to check provenance continuity. */
-export async function auditDlcAssetBatchExport({ directory, expectedReceiptSha256 } = {}) {
-  directory = assertDistributionDirectory(directory);
-  const receiptBytes = readDistributionFile(directory, RECEIPT);
+export function parseDlcAssetBatchExportReceipt(receiptBytes, expectedReceiptSha256) {
   const receiptSha256 = digest(receiptBytes);
   if (expectedReceiptSha256 !== undefined && expectedReceiptSha256 !== receiptSha256) {
     throw new Error('Batch export receipt hash differs from the pinned hash.');
@@ -64,7 +61,7 @@ export async function auditDlcAssetBatchExport({ directory, expectedReceiptSha25
     || !Array.isArray(receipt.assets) || receipt.assets.length < 1 || receipt.assets.length > 40) {
     throw new Error('Invalid batch export receipt.');
   }
-  const expectedFiles = new Set([RECEIPT]);
+  const expectedFiles = new Set([DLC_ASSET_BATCH_EXPORT_RECEIPT]);
   const publicPaths = new Set();
   let bytes = 0;
   for (const asset of receipt.assets) {
@@ -79,15 +76,23 @@ export async function auditDlcAssetBatchExport({ directory, expectedReceiptSha25
     bytes += asset.bytes;
   }
   if (bytes > MAX_BATCH_BYTES || receipt.payloadBytes !== bytes) throw new Error('Invalid batch export byte total.');
+  return { receipt, receiptSha256, expectedFiles };
+}
+
+/** Verify a transferred batch. Pin receiptSha256 from the exporter to check provenance continuity. */
+export async function auditDlcAssetBatchExport({ directory, expectedReceiptSha256 } = {}) {
+  directory = assertDistributionDirectory(directory);
+  const receiptBytes = readDistributionFile(directory, DLC_ASSET_BATCH_EXPORT_RECEIPT);
+  const { receipt, receiptSha256, expectedFiles } = parseDlcAssetBatchExportReceipt(receiptBytes, expectedReceiptSha256);
   const actualFiles = listDistributionFiles({ root: directory });
   if (actualFiles.length !== expectedFiles.size || actualFiles.some(file => !expectedFiles.has(file))) {
     throw new Error('Batch export file inventory differs from receipt.');
   }
   for (const asset of receipt.assets) {
-    await verifyBytes(inspectDistributionPath(directory, asset.sourcePath), asset);
+    await verifyDlcAssetBatchBytes(inspectDistributionPath(directory, asset.sourcePath), asset);
   }
   return { batchId: receipt.batchId, sourceRevision: receipt.sourceRevision, planSha256: receipt.planSha256,
-    assets: receipt.assets.length, payloadBytes: bytes, receiptSha256 };
+    assets: receipt.assets.length, payloadBytes: receipt.payloadBytes, receiptSha256 };
 }
 
 /** Materialize one frozen lot, keeping exactly one working payload at a time. */
@@ -136,7 +141,7 @@ export async function exportDlcAssetBatch({ root = process.cwd(), plan, batchId,
         const entry = describeAsset({ ...payload, publicPath: asset.publicPath, decode });
         const file = path.join(staging, entry.sourcePath);
         await mkdir(path.dirname(file), { recursive: true });
-        await verifyBytes(payload.path, entry, file);
+        await verifyDlcAssetBatchBytes(payload.path, entry, file);
         assets.push(entry);
       } finally { await provider.cleanup([payload]); }
     }
@@ -144,7 +149,7 @@ export async function exportDlcAssetBatch({ root = process.cwd(), plan, batchId,
     const receipt = { schemaVersion: 1, kind: 'dlc-asset-batch-export', layout: plan.layout, profile: plan.profile,
       sourceRevision: plan.sourceRevision, planSha256: plan.sha256, batchId: batch.id, batchSha256: batch.sha256,
       runnerSha256: plan.runner.implementationSha256, payloadBytes: batch.payloadBytes, assets };
-    await writeFile(path.join(staging, RECEIPT), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });
+    await writeFile(path.join(staging, DLC_ASSET_BATCH_EXPORT_RECEIPT), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });
     const audit = await auditDlcAssetBatchExport({ directory: staging });
     if (!sameDirectory(await lstat(staging), originalStaging)) throw new Error('Batch staging directory changed before publication.');
     // Reserve the final path exclusively so concurrent exports cannot replace one another.
