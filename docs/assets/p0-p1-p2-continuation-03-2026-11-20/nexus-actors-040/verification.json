@@ -1,0 +1,18 @@
+{
+  "command": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/nexusActorDesigns.test.mjs scripts/actorFidelityR9.test.mjs scripts/wardrobe.test.mjs",
+  "nodeVersion": "v24.19.0",
+  "tests": 85,
+  "passed": 85,
+  "failed": 0,
+  "skipped": 0,
+  "beforeAnchorCorrection": "The instant Special command left 70 charge at full meter in the production Smash runtime. The other five new tests passed in the pre-Anchor-fix run.",
+  "compatibilityCorrection": "The first attempt resolved every string special name, which changed an archived Portal action profile. The final scope covers an exact non-hero Nexus encounter only.",
+  "sourceSha256": {
+    "src/game/nexusActorDesigns.js": "a9587435b10542a7c0913fde9b05bef169de163c413f04e5beb21d4fcb3c0532",
+    "src/game/actorFidelityBacklog.js": "9cbf4781c787ea57b93e4de128069af609c17b4475edd1996835dabd1fb041c3",
+    "src/game/wardrobe.js": "b238f936e0d208ca9db0394c68e39800243f2be60c0643bd6450257d86984457",
+    "src/game/rpgTargeting.js": "9aa62321c22e106e5c3988fd6fcd0a1ca2fab2421bf0b60480a8e6c396ebf0f5",
+    "src/game/engineSmash.js": "8f7c63c60d2d531974c30816bffceaad836fc71ad048d1700a98ad7f69782a7d",
+    "scripts/nexusActorDesigns.test.mjs": "4d2720797d7b1af8853967d94fd8a19d16042d1f6084b42fb1fb97399a9b4932"
+  }
+}

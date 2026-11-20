@@ -1,0 +1,11 @@
+# Nexus — Col des Hautes-Herbes
+
+Depuis **Combat custom**, choisir **Tactique**, ouvrir **Arène**, sélectionner **Nexus — Col des Hautes-Herbes** dans **Terrain tactique**, puis passer à **Règles** pour lancer. Le menu indique la carte retenue et son objectif. Dans le combat, le titre et le panneau de terrain utilisent la langue sélectionnée.
+
+Ce secteur original du Nexus occupe 13 × 9 cases. L’équipe part du vallon ouest et peut gagner la crête par l’escalier nord ou le sentier sud. Les chemins les plus courts par chacun de ces accès coûtent respectivement 15 et 16 PA depuis le départ central, hors unités adverses. Un escalier à l’est relie la crête au versant opposé. Le relais à Z 3 rapporte un point par tour terminé lorsqu’une unité alliée le tient sans adversaire. Trois points donnent la victoire.
+
+Le gué à Z −0,5 coûte 2 PA à l’entrée. L’arche de roche qui le surplombe à Z 3 dispose de son propre identifiant de surface. Sa roche bloque les tirs entre les étages et ne laisse que 2,8 unités de hauteur libre sous la voûte. La coupe du terrain permet d’inspecter l’eau sans déplacer les unités. L’herbe, la terre, la roche, l’eau et le métal du relais utilisent les matières procédurales du moteur. Le décor et les volumes du plateau sont propres au secteur. Le cadre extérieur du combat utilise l’habillage Nexus du mode Tactics. Le catalogue actif compte 25 terrains verticaux, dont 4 Nexus, pour 55 matières au total. [Définition du secteur](../../../../src/game/tacticsNexusHighgrassBattlefield.js).
+
+Quatre tests couvrent les accès, les volumes, la sélection dans Combat custom et le déroulement complet du contrôle du relais. Le dernier test fait avancer une unité avec son budget réel et alterne les tours des deux camps jusqu’à la victoire, dans une rencontre sans attaque adverse. Vingt-huit tests ciblés sont passés avec le terrain historique et la garde Aperture. [Suite du col](../../../../scripts/tacticsNexusHighgrass.test.mjs).
+
+Le navigateur vérifie l’entrée par le menu, le titre localisé, le déplacement au clavier et la coupe sans dépense sur ordinateur en français et mobile en anglais. Les deux parcours se terminent sans erreur de page ni requête en échec. La victoire complète est vérifiée séparément par la suite moteur. [Reçu navigateur](browser.json) · [Ordinateur](desktop-fr.jpg) · [Mobile](mobile-en-coupe.jpg).

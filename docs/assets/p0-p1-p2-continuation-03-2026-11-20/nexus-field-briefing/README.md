@@ -1,0 +1,9 @@
+# Briefing Retour des témoins
+
+Dans la Cité et dans la préparation d’Extinction, le dossier présente les trois objectifs dans l’ordre du terrain. Le joueur sécurise les relais, élimine les hostiles et rejoint le losange du sas pour transmettre le relevé. Le motif de blocage reste visible près de l’action. Il est aussi lié au bouton ou à la case par leur description accessible. Le volet Rapport et preuves garde le témoin et les reliques consultables au clavier.
+
+Le navigateur a gagné les deux preuves dans le vrai Hub, sur **1280 × 900 en français** et **390 × 844 en anglais**, avec un facteur de lecture de 150 %. Les deux parcours ont vérifié séparément l’absence de rapport et de signature combattante. Entrée a transféré le joueur vers Extinction avec le focus sur l’option sélectionnée et les relais imposés. Espace a désactivé puis réactivé l’option. La lecture du rapport a restitué les mêmes deux preuves dans chaque écran. Sur ce trajet, les soldes et le dossier sont restés identiques et aucun reçu n’a été attribué. [Relevé Chromium](browser.json)
+
+Le corps du briefing passe de 21 à 22,5 px à 150 %. Les actions conservent une hauteur supérieure à 44 px et les cartes s’adaptent à la largeur sans débordement horizontal. Le passage en navigateur s’arrête à la préparation de la partie. La compilation Vite portait sur la fixture du Hub et la transformation complète du catalogue, avec les médias chargés à la demande. Les deux cas ont enregistré zéro erreur JavaScript ou HTTP. [Comparaison](before.json) · [Cité](city-fr.png) · [Extinction](extinction-en.png)
+
+La suite `node --test scripts/nexusFieldOperation.test.mjs` passe **14/14** sous Node 22. Elle couvre les prérequis, le retour physique, les reçus, l’abandon et l’association entre le motif visible et la case désactivée dans le rendu du Hub. [Résultats](contracts.tap)

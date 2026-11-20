@@ -1,0 +1,172 @@
+TAP version 13
+# (node:20640) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: character introductions freeze combat, controls and the round timer before the countdown
+ok 1 - character introductions freeze combat, controls and the round timer before the countdown
+  ---
+  duration_ms: 33118.31631
+  type: 'test'
+  ...
+# Subtest: the first round shows both outcomes without completing or rewarding the match
+ok 2 - the first round shows both outcomes without completing or rewarding the match
+  ---
+  duration_ms: 24.324272
+  type: 'test'
+  ...
+# Subtest: round restart restores both rosters and resources with the score preserved
+ok 3 - round restart restores both rosters and resources with the score preserved
+  ---
+  duration_ms: 2.126465
+  type: 'test'
+  ...
+# Subtest: a lost opening round does not finish the match and the player can win the next two
+ok 4 - a lost opening round does not finish the match and the player can win the next two
+  ---
+  duration_ms: 2.757768
+  type: 'test'
+  ...
+# Subtest: finale, victory and outro use the winner identity and cannot deal further damage
+ok 5 - finale, victory and outro use the winner identity and cannot deal further damage
+  ---
+  duration_ms: 71.576959
+  type: 'test'
+  ...
+# Subtest: support supers heal their intended team without damaging the opponent
+ok 6 - support supers heal their intended team without damaging the opponent
+  ---
+  duration_ms: 19.009997
+  type: 'test'
+  ...
+# Subtest: the presentation renderer displays the character, universe and real source ability through every phase
+ok 7 - the presentation renderer displays the character, universe and real source ability through every phase
+  ---
+  duration_ms: 14.502377
+  type: 'test'
+  ...
+# (node:21393) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: neris_vale has seven duel scripts tied to the inspected body and real original concept
+ok 8 - neris_vale has seven duel scripts tied to the inspected body and real original concept
+  ---
+  duration_ms: 31601.112491
+  type: 'test'
+  ...
+# Subtest: kael_venn has seven duel scripts tied to the inspected body and real original concept
+ok 9 - kael_venn has seven duel scripts tied to the inspected body and real original concept
+  ---
+  duration_ms: 14.395376
+  type: 'test'
+  ...
+# Subtest: eira_solenne has seven duel scripts tied to the inspected body and real original concept
+ok 10 - eira_solenne has seven duel scripts tied to the inspected body and real original concept
+  ---
+  duration_ms: 22.701581
+  type: 'test'
+  ...
+# Subtest: nyra_vale has seven duel scripts tied to the inspected body and real original concept
+ok 11 - nyra_vale has seven duel scripts tied to the inspected body and real original concept
+  ---
+  duration_ms: 7.870779
+  type: 'test'
+  ...
+# Subtest: original duel goes from intro to first round, final loss and KO outro without extra contacts or rewards
+ok 12 - original duel goes from intro to first round, final loss and KO outro without extra contacts or rewards
+  ---
+  duration_ms: 59.479458
+  type: 'test'
+  ...
+# Subtest: the real draw entry point honors reduced motion for original overlays and keeps the actor captions
+ok 13 - the real draw entry point honors reduced motion for original overlays and keeps the actor captions
+  ---
+  duration_ms: 10.027744
+  type: 'test'
+  ...
+# (node:21670) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: reviewed Revan has an explicit intro clip on the accepted base16
+ok 14 - reviewed Revan has an explicit intro clip on the accepted base16
+  ---
+  duration_ms: 2.121431
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit outro clip on the accepted base16
+ok 15 - reviewed Revan has an explicit outro clip on the accepted base16
+  ---
+  duration_ms: 0.805375
+  type: 'test'
+  ...
+# Subtest: reviewed Revan has an explicit victory clip on the accepted base16
+ok 16 - reviewed Revan has an explicit victory clip on the accepted base16
+  ---
+  duration_ms: 0.352281
+  type: 'test'
+  ...
+# Subtest: the new clips neither authorize another edition nor expose unreviewed W13 phase artwork
+ok 17 - the new clips neither authorize another edition nor expose unreviewed W13 phase artwork
+  ---
+  duration_ms: 0.913399
+  type: 'test'
+  ...
+# Subtest: sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+ok 18 - sampling is deterministic, clamps to the endpoints and leaves the source actor unchanged
+  ---
+  duration_ms: 1.468917
+  type: 'test'
+  ...
+# (node:21752) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: a KO opponent keeps defeat during the outro rather than standing up and running away
+ok 19 - a KO opponent keeps defeat during the outro rather than standing up and running away
+  ---
+  duration_ms: 71.384019
+  type: 'test'
+  ...
+# Subtest: Fighter uses the reviewed clip for Revan on player, freezes it while paused and completes once
+ok 20 - Fighter uses the reviewed clip for Revan on player, freezes it while paused and completes once
+  ---
+  duration_ms: 48.034361
+  type: 'test'
+  ...
+# Subtest: Fighter uses the reviewed clip for Revan on cpu, freezes it while paused and completes once
+ok 21 - Fighter uses the reviewed clip for Revan on cpu, freezes it while paused and completes once
+  ---
+  duration_ms: 33.359225
+  type: 'test'
+  ...
+# Subtest: leaving during the clip disposes the engine without completing a match
+ok 22 - leaving during the clip disposes the engine without completing a match
+  ---
+  duration_ms: 4.889973
+  type: 'test'
+  ...
+# Subtest: the first round remains unrewarded and a living opponent may still exit after a timeout
+ok 23 - the first round remains unrewarded and a living opponent may still exit after a timeout
+  ---
+  duration_ms: 15.81979
+  type: 'test'
+  ...
+# Subtest: Smash samples the same base16 for player without changing collision positions
+ok 24 - Smash samples the same base16 for player without changing collision positions
+  ---
+  duration_ms: 32.509073
+  type: 'test'
+  ...
+# Subtest: Smash samples the same base16 for cpu without changing collision positions
+ok 25 - Smash samples the same base16 for cpu without changing collision positions
+  ---
+  duration_ms: 2.157223
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 77261.185543

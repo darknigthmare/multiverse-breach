@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "width": 1280,
+      "height": 900,
+      "language": "fr",
+      "engine": {
+        "id": "nexus_highgrass_pass",
+        "cut": [
+          -0.5,
+          0,
+          0.5,
+          0.75,
+          1.5,
+          2.25,
+          2.5,
+          3
+        ],
+        "projected": {
+          "left": 76.28999999999996,
+          "right": 964.71,
+          "top": 107.62,
+          "bottom": 404,
+          "width": 888.4200000000001,
+          "height": 296.38
+        },
+        "width": 1040,
+        "height": 460,
+        "squad": [
+          [
+            "cloud_ff7",
+            "nexus_highgrass_pass:ground:0:4"
+          ]
+        ],
+        "enemies": [
+          "nexus_highgrass_pass:ground:9:4"
+        ]
+      },
+      "forwardCost": 1,
+      "archivePreviewReplaced": true,
+      "localizedBattleHeading": true,
+      "cutWithoutAP": true,
+      "disposed": true,
+      "errors": [],
+      "failed": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "language": "en",
+      "engine": {
+        "id": "nexus_highgrass_pass",
+        "cut": [
+          -0.5,
+          0,
+          0.5,
+          0.75,
+          1.5,
+          2.25,
+          2.5,
+          3
+        ],
+        "projected": {
+          "left": 76.28999999999996,
+          "right": 964.71,
+          "top": 107.62,
+          "bottom": 404,
+          "width": 888.4200000000001,
+          "height": 296.38
+        },
+        "width": 1040,
+        "height": 460,
+        "squad": [
+          [
+            "cloud_ff7",
+            "nexus_highgrass_pass:ground:0:4"
+          ]
+        ],
+        "enemies": [
+          "nexus_highgrass_pass:ground:9:4"
+        ]
+      },
+      "forwardCost": 1,
+      "archivePreviewReplaced": true,
+      "localizedBattleHeading": true,
+      "cutWithoutAP": true,
+      "disposed": true,
+      "errors": [],
+      "failed": []
+    }
+  ],
+  "browser": "Chromium 151.0.7922.173",
+  "fixtureBuild": {
+    "vite": "8.1.0",
+    "seconds": 5.08,
+    "modules": 2472,
+    "publicDir": false
+  },
+  "scope": "Isolated Vite entry mounts the real CustomBattleMode. Its only engine hook observes startTurn and delegates without modification. Each case used actual tabs, selector, launch, keyboard movement, cut selector and React unmount. The supplied preview image is a QA fixture. The committed Node test separately exercises ordinary turns through victory.",
+  "sourceSha256": {
+    "src/game/tacticsNexusHighgrassBattlefield.js": "e6391c5842007167b1cb4e1251ecc6f2d209d4963d9cbeb72e0a2f0a73b77cda",
+    "src/game/tacticsBattlefields.js": "d802bf2f64d2ffcad4c28911d0a14b583e89ed2c5886e2a53c370f2cb0278009",
+    "src/components/CustomBattleMode.jsx": "41aee3864c0e280894f96b2285dcc6c237c5e999777b279fdc596d650989b110",
+    "src/components/GameCanvas.jsx": "1d932b3976a965ec9753319c72d97747c855adfd062fda9e89f0818bb3e4f975",
+    "scripts/tacticsNexusHighgrass.test.mjs": "f2e808955b0f7c268d02a3c845708c21b3775ad880cc0136009d72948a6e3eb1"
+  },
+  "screenshots": [
+    {
+      "path": "desktop-fr.jpg",
+      "bytes": 197409,
+      "sha256": "a3c6c882b9eecba79f9a022160afaa54054244c9b4a98e59e6142836c5425722"
+    },
+    {
+      "path": "mobile-en-coupe.jpg",
+      "bytes": 74148,
+      "sha256": "46a527f6d8129559cd3d554c900179d812e6dbc28c21c7ac494e915000626fdf"
+    }
+  ]
+}

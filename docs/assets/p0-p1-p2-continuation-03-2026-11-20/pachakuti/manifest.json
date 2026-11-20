@@ -1,0 +1,86 @@
+{
+  "actorId": "tawantinsuyu_split_sun:pachakuti_du_soleil_noir",
+  "universe": "Tawantinsuyu: The Split Sun",
+  "sourceType": "Original project design",
+  "authoring": {
+    "date": "2026-11-20",
+    "method": "Hand-authored procedural forms drawn with Pillow 12.3.0, rendered at double scale and downsampled into a transparent grid.",
+    "designBasis": "Existing fictional lore of the black sun, the severed roads and cords, and the cultural review specifying an environmental catastrophe.",
+    "siblingAtlasReviewedForScaleAndPalette": "public/sprites/generated/bosses/tawantinsuyu-the-split-sun/echo-de-la-montagne-aux-neiges-noires.png",
+    "historicalPortraitStatus": "Git LFS pointer verified, media absent in this checkout, pixels not used."
+  },
+  "layout": {
+    "width": 1024,
+    "height": 1024,
+    "columns": 4,
+    "rows": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "baseline": 232
+  },
+  "atlas": {
+    "path": "public/sprites/generated/bosses/tawantinsuyu-the-split-sun/pachakuti-du-soleil-noir.png",
+    "bytes": 656431,
+    "sha256": "1a771242700e2d52cf3d5f2dddf4bc431e705a429cd620e086cfb6ec036eb88b"
+  },
+  "sourceSha256": {
+    "src/game/originalUniversesManifest.json": "8fafbd428fb0233fac58661a9bf09d941af4fba6607ceb18e92217b1dc88e234",
+    "docs/original-universes/cultural-remediation-v3.json": "e4bc70336476bd41ec5c8a6cbc8081dde865e103a960f07f6343bfe221879202",
+    "public/sprites/generated/bosses/tawantinsuyu-the-split-sun/echo-de-la-montagne-aux-neiges-noires.png": "d453431e590478847508a8babf2de625cc169694a47fea75f659f6443cfea88d",
+    "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/build_atlas.py": "2d3a9d658929e0d231e01c6dfd54e476fcabe95939c10ddcf8ae190dc7f1fbc3",
+    "src/game/pachakutiWorldBossArt.js": "f91e66de29130f4736463d8c2de9575cbbab1f1adae1b4192bf9b1443b82f7aa",
+    "src/game/renderer.js": "e769f188bef113cb46c8c0b111a4c2adbc870453756c9f0d40ffa010bc5c028b",
+    "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/game-canvas.jsx": "ea346db9b12e6c10065817b12bd8f9ab667b9204081cfd7ae32499a4ba67d4e9"
+  },
+  "browser": {
+    "fixtureBuild": {
+      "exitCode": 0,
+      "vite": "8.1.0",
+      "scope": "Code-only fixture, publicDir:false with existing public imagery served selectively by the local test server.",
+      "buildLogSha256": "5df36f4be09b047d92561409b049676b2963068444b3069b24421190e54c71e2"
+    },
+    "passedCases": 3,
+    "report": {
+      "path": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/browser-results.json",
+      "bytes": 26423,
+      "sha256": "681b185fb6f552be2fa47c69a3ac33c33cdb756d331389b2ac2818296fb21747"
+    },
+    "captures": [
+      {
+        "path": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/desktop-attack.png",
+        "bytes": 352292,
+        "sha256": "7eedf3c41ccb070b5eae4ba6ee980d879277548ebdcbdc8614a3e88db3049d11"
+      },
+      {
+        "path": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/mobile-attack.png",
+        "bytes": 108500,
+        "sha256": "c511d349d2b9d337d4cf290b6fa390450a1a8308af75b1aca613e86e2bc19b8a"
+      }
+    ]
+  },
+  "validation": {
+    "unitPassed": 3,
+    "unitReceipt": {
+      "path": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/unit.tap",
+      "bytes": 1245,
+      "sha256": "a293e9049b8e589f1cf8f5e1c8c58f82a04b15f20dc80a4d5c3b2d594d969278"
+    },
+    "rasterDelta": {
+      "path": "docs/assets/p0-p1-p2-continuation-03-2026-11-20/pachakuti/coverage.json",
+      "bytes": 2381,
+      "sha256": "493cc9ea899b9ef56b0fcaf48c79b0adc677c977dcbd83358897733fbe08ec9b"
+    },
+    "lint": "Oxlint exit 0, one Fast Refresh warning in the browser fixture."
+  },
+  "status": {
+    "artworkAuthored": true,
+    "testedInGameAtNormalScale": true,
+    "humanCulturalReview": false,
+    "fullActorClosed": false
+  }
+}

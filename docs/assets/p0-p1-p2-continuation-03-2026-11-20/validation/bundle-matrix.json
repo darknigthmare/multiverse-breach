@@ -1,0 +1,60 @@
+[
+  {
+    "profile": "all",
+    "command": [
+      "node",
+      "--max-old-space-size=4096",
+      "scripts/checkDlcProfileBundle.mjs",
+      "--profile",
+      "config/dlc-profiles/all.json"
+    ],
+    "profileDocument": {
+      "schemaVersion": 1,
+      "mode": "all",
+      "packIds": [],
+      "sharedPolicy": "preserve-all"
+    },
+    "seconds": 7.472,
+    "exitCode": 0
+  },
+  {
+    "profile": "base",
+    "command": [
+      "node",
+      "--max-old-space-size=4096",
+      "scripts/checkDlcProfileBundle.mjs",
+      "--profile",
+      "config/dlc-profiles/base.json"
+    ],
+    "profileDocument": {
+      "schemaVersion": 1,
+      "mode": "base",
+      "packIds": [],
+      "sharedPolicy": "preserve-all"
+    },
+    "seconds": 9.233,
+    "exitCode": 0
+  },
+  {
+    "profile": "original-worlds",
+    "command": [
+      "node",
+      "--max-old-space-size=4096",
+      "scripts/checkDlcProfileBundle.mjs",
+      "--profile",
+      "/tmp/mvb-nov20-builds/original-worlds.json"
+    ],
+    "profileDocument": {
+      "schemaVersion": 1,
+      "mode": "selected",
+      "packIds": [
+        "thalassa-mnemique",
+        "meridien-creux",
+        "viridienne-ultime"
+      ],
+      "sharedPolicy": "preserve-all"
+    },
+    "seconds": 8.44,
+    "exitCode": 0
+  }
+]

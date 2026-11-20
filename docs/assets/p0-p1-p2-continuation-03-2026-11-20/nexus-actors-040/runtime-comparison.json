@@ -1,0 +1,457 @@
+{
+  "scope": "Resolutions for the forty Nexus actors sampled before and after the scoped name projection. Actor definitions and sampled asset paths are identical. The Anchor command behavior is tested separately in the actual Smash engine. The later exact Nexus guard leaves the sampled Nexus outputs identical and excludes other universes.",
+  "heroRawProfilesAndInvocationsEqual": true,
+  "unaffectedRpgSlots": 137,
+  "nexusHeroSupers": [
+    {
+      "actorId": "player_anchor",
+      "rpgSpecial": {
+        "name": "Commandement d Ancrage",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 4.4,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Commandement d Ancrage",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "area",
+        "multiplier": 4.4,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_mirelle",
+      "rpgSpecial": {
+        "name": "Suture du Voile",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.4,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Suture du Voile",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "area",
+        "multiplier": 3.4,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_bastion",
+      "rpgSpecial": {
+        "name": "Verrou de Convergence",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.8,
+        "shape": "line"
+      },
+      "meleeSuper": {
+        "name": "Verrou de Convergence",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "beam",
+        "multiplier": 3.8,
+        "shape": "line"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_nova",
+      "rpgSpecial": {
+        "name": "Reboot de Faille",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.6,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Reboot de Faille",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "area",
+        "multiplier": 3.6,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_marrow",
+      "rpgSpecial": {
+        "name": "Execution de Paradoxe",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 4.3,
+        "shape": "line"
+      },
+      "meleeSuper": {
+        "name": "Execution de Paradoxe",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "beam",
+        "multiplier": 4.3,
+        "shape": "line"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_sable",
+      "rpgSpecial": {
+        "name": "Barrage du Cartographe",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 4,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Barrage du Cartographe",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "projectile",
+        "multiplier": 4,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_loom",
+      "rpgSpecial": {
+        "name": "Ligne de Vie Nexus",
+        "effect": "heal",
+        "targetSide": "ally",
+        "delivery": "support",
+        "multiplier": 3.2,
+        "shape": "group"
+      },
+      "meleeSuper": {
+        "name": "Ligne de Vie Nexus",
+        "effect": "heal",
+        "targetSide": "ally",
+        "delivery": "support",
+        "multiplier": 3.2,
+        "shape": "group"
+      },
+      "invocationPerformer": "arca_loom",
+      "invocationName": "Drone de Suture",
+      "invocationEffect": "heal"
+    },
+    {
+      "actorId": "arca_tessera",
+      "rpgSpecial": {
+        "name": "Choeur des Vies Refusees",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.9,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Choeur des Vies Refusees",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "area",
+        "multiplier": 3.9,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_tessera",
+      "invocationName": "Reflet Non Remplace",
+      "invocationEffect": "damage"
+    },
+    {
+      "actorId": "arca_quillon",
+      "rpgSpecial": {
+        "name": "Audit de la Premiere Breche",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.9,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Audit de la Premiere Breche",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "projectile",
+        "multiplier": 3.9,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_nadir",
+      "rpgSpecial": {
+        "name": "Extraction des Marges",
+        "effect": "heal",
+        "targetSide": "ally",
+        "delivery": "support",
+        "multiplier": 3.3,
+        "shape": "group"
+      },
+      "meleeSuper": {
+        "name": "Extraction des Marges",
+        "effect": "heal",
+        "targetSide": "ally",
+        "delivery": "support",
+        "multiplier": 3.3,
+        "shape": "group"
+      },
+      "invocationPerformer": "arca_nadir",
+      "invocationName": "Sonde de Retour",
+      "invocationEffect": "damage"
+    },
+    {
+      "actorId": "arca_elyra",
+      "rpgSpecial": {
+        "name": "Droit de Dire Non",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 3.7,
+        "shape": "area"
+      },
+      "meleeSuper": {
+        "name": "Droit de Dire Non",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "area",
+        "multiplier": 3.7,
+        "shape": "area"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    },
+    {
+      "actorId": "arca_oryn",
+      "rpgSpecial": {
+        "name": "Manifeste des Survivants",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "ranged",
+        "multiplier": 4.2,
+        "shape": "line"
+      },
+      "meleeSuper": {
+        "name": "Manifeste des Survivants",
+        "effect": "damage",
+        "targetSide": "enemy",
+        "delivery": "beam",
+        "multiplier": 4.2,
+        "shape": "line"
+      },
+      "invocationPerformer": "arca_bastion",
+      "invocationName": "Balise Barricade",
+      "invocationEffect": "guard"
+    }
+  ],
+  "nexusNamedRpgEnemySpecials": [
+    {
+      "actorName": "Double ideal de Marrow",
+      "before": "special",
+      "after": "Remplacement sans dette",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Matrice de Substitution",
+      "before": "special",
+      "after": "Copie de doctrine",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Pelerin de la Fausse Sortie",
+      "before": "special",
+      "after": "Appel du Regret",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Reflet de Vie Possible",
+      "before": "special",
+      "after": "Memoire empruntee",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Courtier du Regret",
+      "before": "special",
+      "after": "Offre sans consequence",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Scribe du Registre Noir",
+      "before": "special",
+      "after": "Dette reclassee",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Porte-Verrou Endeuille",
+      "before": "special",
+      "after": "Ancrage de deuil",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Indexeur des Contradictions",
+      "before": "special",
+      "after": "Cohérence forcee",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Guide de l Issue Parfaite",
+      "before": "special",
+      "after": "Itineraire sans perte",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Rature du Seuil Blanc",
+      "before": "special",
+      "after": "Marge devorante",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Simulacre Sans Choix",
+      "before": "special",
+      "after": "Paix obligatoire",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Vigie de la Coordonnee X",
+      "before": "special",
+      "after": "Position interdite",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Contre-Temoin de Veyr",
+      "before": "special",
+      "after": "Deposition tronquee",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Greffier du Voile",
+      "before": "special",
+      "after": "Tampon de Reecriture",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Juge des Trames",
+      "before": "special",
+      "after": "Sentence de Continuite",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Cartographe des Portes Mortes",
+      "before": "special",
+      "after": "Atlas des Issues Parfaites",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Avatar du Sans-Auteur",
+      "before": "special",
+      "after": "Rature de Destin",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Usurpateur des Vies Possibles",
+      "before": "special",
+      "after": "Couronnement du Double",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Intendant du Sacrifice Muet",
+      "before": "special",
+      "after": "Comptabilite des Disparus",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Conservateur des Causes Absentes",
+      "before": "special",
+      "after": "Catalogue des Fins Parfaites",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Heraut de la Paix Illisible",
+      "before": "special",
+      "after": "Armistice Sans Memoire",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Arbitre de la Cause Unique",
+      "before": "special",
+      "after": "Verdict du Coupable Unique",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    },
+    {
+      "actorName": "Moteur de Convergence Instable",
+      "before": "special",
+      "after": "Compression des Mille Portails",
+      "effect": "damage",
+      "shape": "single",
+      "multiplier": 1
+    }
+  ]
+}

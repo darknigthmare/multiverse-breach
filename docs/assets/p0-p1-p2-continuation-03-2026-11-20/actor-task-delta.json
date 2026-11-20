@@ -1,0 +1,550 @@
+{
+  "baseTaskLedger": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-tasks.json.gz",
+  "baseTaskLedgerSha256": "6c2be99607de7233df04f229e98113cd765f14eb88bf21812f1fe9767c447f81",
+  "sourceAndAssetTreeCommit": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+  "exportCommand": [
+    "node",
+    "--max-old-space-size=2048",
+    "--loader",
+    "./scripts/sourceSceneTestLoader.mjs",
+    "scripts/exportActorFidelityBacklog.mjs",
+    "/tmp/mvb-nov20-backlog",
+    "0edb2d0ac152b7508b686de8276c7c7ba09a89a5"
+  ],
+  "actorExportSha256": "5f19cba1d38b003984a508cbe87028780d770b21e09fb868560e89f8a46d0e41",
+  "countsBefore": {
+    "P1": 16734,
+    "P2": 13582
+  },
+  "countsAfter": {
+    "P2": 13582,
+    "P1": 16653
+  },
+  "summary": {
+    "version": "R14",
+    "sourceBaseCommit": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+    "assetTreeCommit": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+    "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+    "actors": 4937,
+    "heroes": 1912,
+    "universes": 525,
+    "originalIdentities": 312,
+    "externalOrUnresolved": 4625,
+    "actorsWithOfficialVariants": 55,
+    "actorsWithMissingRaster": 1470,
+    "actorsWithStaticGameplay": 11,
+    "actorsWithGenericTechniqueNames": 1309,
+    "continuitiesRecovered": 1401,
+    "structuredContinuitiesRecovered": 60,
+    "actorContinuityAmbiguities": 2,
+    "continuityConflicts": 0,
+    "incarnationsUnspecified": 3178,
+    "visualContractsMissing": 3019,
+    "visualContractsGeneric": 213,
+    "historicalP0": "Not reclassified by this export; see prior fidelity audit. P1/P2 here prioritize newly exported work only.",
+    "newArtApprovals": 0,
+    "newSpriteFiles": 0,
+    "reviewComplete": 0
+  },
+  "reservations": {
+    "thisPass": {
+      "nexus-actors-040": 40,
+      "original-duel-040": 40
+    },
+    "previousPass": 160,
+    "overlaps": 0
+  },
+  "removed": [
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_bastion\"]",
+      "actorName": "Bastion Korr",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_bastion\"]",
+      "actorName": "Bastion Korr",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_elyra\"]",
+      "actorName": "Elyra Null",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_elyra\"]",
+      "actorName": "Elyra Null",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_loom\"]",
+      "actorName": "Loom Ivara",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_loom\"]",
+      "actorName": "Loom Ivara",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_marrow\"]",
+      "actorName": "Marrow Kade",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_marrow\"]",
+      "actorName": "Marrow Kade",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_mirelle\"]",
+      "actorName": "Mirelle Suture",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_mirelle\"]",
+      "actorName": "Mirelle Suture",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nadir\"]",
+      "actorName": "Nadir Kest",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nadir\"]",
+      "actorName": "Nadir Kest",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nova\"]",
+      "actorName": "Nova Vey",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nova\"]",
+      "actorName": "Nova Vey",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_oryn\"]",
+      "actorName": "Oryn Xile",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_oryn\"]",
+      "actorName": "Oryn Xile",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_quillon\"]",
+      "actorName": "Quillon Rusk",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_quillon\"]",
+      "actorName": "Quillon Rusk",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_sable\"]",
+      "actorName": "Sable Orison",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_sable\"]",
+      "actorName": "Sable Orison",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_tessera\"]",
+      "actorName": "Tessera Vale",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_tessera\"]",
+      "actorName": "Tessera Vale",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_courtier_regret\"]",
+      "actorName": "Courtier du Regret",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_courtier_regret\"]",
+      "actorName": "Courtier du Regret",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_reflet_vie_possible\"]",
+      "actorName": "Reflet de Vie Possible",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_reflet_vie_possible\"]",
+      "actorName": "Reflet de Vie Possible",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_usurpateur_vies_possibles\"]",
+      "actorName": "Usurpateur des Vies Possibles",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_usurpateur_vies_possibles\"]",
+      "actorName": "Usurpateur des Vies Possibles",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_intendant_sacrifice_muet\"]",
+      "actorName": "Intendant du Sacrifice Muet",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_intendant_sacrifice_muet\"]",
+      "actorName": "Intendant du Sacrifice Muet",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_porte_verrou_endeuille\"]",
+      "actorName": "Porte-Verrou Endeuille",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_porte_verrou_endeuille\"]",
+      "actorName": "Porte-Verrou Endeuille",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_scribe_registre_noir\"]",
+      "actorName": "Scribe du Registre Noir",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_scribe_registre_noir\"]",
+      "actorName": "Scribe du Registre Noir",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_conservateur_causes_absentes\"]",
+      "actorName": "Conservateur des Causes Absentes",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_conservateur_causes_absentes\"]",
+      "actorName": "Conservateur des Causes Absentes",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_guide_issue_parfaite\"]",
+      "actorName": "Guide de l Issue Parfaite",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_guide_issue_parfaite\"]",
+      "actorName": "Guide de l Issue Parfaite",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_indexeur_contradictions\"]",
+      "actorName": "Indexeur des Contradictions",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_indexeur_contradictions\"]",
+      "actorName": "Indexeur des Contradictions",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_heraut_paix_illisible\"]",
+      "actorName": "Heraut de la Paix Illisible",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_heraut_paix_illisible\"]",
+      "actorName": "Heraut de la Paix Illisible",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_rature_seuil_blanc\"]",
+      "actorName": "Rature du Seuil Blanc",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_rature_seuil_blanc\"]",
+      "actorName": "Rature du Seuil Blanc",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_simulacre_sans_choix\"]",
+      "actorName": "Simulacre Sans Choix",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_simulacre_sans_choix\"]",
+      "actorName": "Simulacre Sans Choix",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_arbitre_cause_unique\"]",
+      "actorName": "Arbitre de la Cause Unique",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_arbitre_cause_unique\"]",
+      "actorName": "Arbitre de la Cause Unique",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_contre_temoin_veyr\"]",
+      "actorName": "Contre-Temoin de Veyr",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_contre_temoin_veyr\"]",
+      "actorName": "Contre-Temoin de Veyr",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_vigie_coordonnee_x\"]",
+      "actorName": "Vigie de la Coordonnee X",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_vigie_coordonnee_x\"]",
+      "actorName": "Vigie de la Coordonnee X",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:player_anchor\"]",
+      "actorName": "Ancre",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:player_anchor\"]",
+      "actorName": "Ancre",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Archiviste Rompu\"]",
+      "actorName": "Archiviste Rompu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Archiviste Rompu\"]",
+      "actorName": "Archiviste Rompu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Avatar du Sans-Auteur\"]",
+      "actorName": "Avatar du Sans-Auteur",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Avatar du Sans-Auteur\"]",
+      "actorName": "Avatar du Sans-Auteur",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Cartographe des Portes Mortes\"]",
+      "actorName": "Cartographe des Portes Mortes",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Cartographe des Portes Mortes\"]",
+      "actorName": "Cartographe des Portes Mortes",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Double ideal de Marrow\"]",
+      "actorName": "Double ideal de Marrow",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Double ideal de Marrow\"]",
+      "actorName": "Double ideal de Marrow",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Drone A.R.C.A. Corrompu\"]",
+      "actorName": "Drone A.R.C.A. Corrompu",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Drone A.R.C.A. Corrompu\"]",
+      "actorName": "Drone A.R.C.A. Corrompu",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Echo Sans-Auteur\"]",
+      "actorName": "Echo Sans-Auteur",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Echo Sans-Auteur\"]",
+      "actorName": "Echo Sans-Auteur",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Fragment Vagabond\"]",
+      "actorName": "Fragment Vagabond",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Fragment Vagabond\"]",
+      "actorName": "Fragment Vagabond",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Greffier du Voile\"]",
+      "actorName": "Greffier du Voile",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Greffier du Voile\"]",
+      "actorName": "Greffier du Voile",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Juge des Trames\"]",
+      "actorName": "Juge des Trames",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Juge des Trames\"]",
+      "actorName": "Juge des Trames",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Matrice de Substitution\"]",
+      "actorName": "Matrice de Substitution",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Matrice de Substitution\"]",
+      "actorName": "Matrice de Substitution",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Moteur de Convergence Instable\"]",
+      "actorName": "Moteur de Convergence Instable",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Moteur de Convergence Instable\"]",
+      "actorName": "Moteur de Convergence Instable",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Noeud de Paradoxe\"]",
+      "actorName": "Noeud de Paradoxe",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Noeud de Paradoxe\"]",
+      "actorName": "Noeud de Paradoxe",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Pelerin de la Fausse Sortie\"]",
+      "actorName": "Pelerin de la Fausse Sortie",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Pelerin de la Fausse Sortie\"]",
+      "actorName": "Pelerin de la Fausse Sortie",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Tawantinsuyu: The Split Sun\",\"id:tawantinsuyu_split_sun:pachakuti_du_soleil_noir\"]",
+      "actorName": "Pachakuti du Soleil Noir",
+      "code": "RASTER_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "added": [],
+  "changedRuntimeAssets": [
+    "A\tpublic/sprites/generated/bosses/tawantinsuyu-the-split-sun/pachakuti-du-soleil-noir.png"
+  ],
+  "historicalP0Open": 22
+}

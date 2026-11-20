@@ -1,0 +1,235 @@
+[
+  {
+    "actor": "arca_bastion",
+    "blocked": false,
+    "mobile": false,
+    "fixture": {
+      "actor": "arca_bastion",
+      "target": "Mirelle Suture",
+      "hp": 127,
+      "id": "hero:1:arca_mirelle"
+    },
+    "result": {
+      "hp": 127,
+      "guard": 180,
+      "shield": null,
+      "charge": 0,
+      "atb": 0,
+      "targets": [
+        {
+          "id": "hero:1:arca_mirelle",
+          "x": 208,
+          "y": 359,
+          "centerY": 315.3
+        }
+      ],
+      "entity": "nexus-barricade",
+      "frame": {
+        "index": 2,
+        "phase": "impact"
+      },
+      "poses": [
+        0,
+        256,
+        512
+      ],
+      "assetURLs": [
+        "/sprites/generated/combat-entities/nexus-barricade.png"
+      ],
+      "drawnContact": true
+    },
+    "passed": true,
+    "pageErrors": [],
+    "httpErrors": [
+      [
+        404,
+        "http://127.0.0.1:4269/sprites/generated/bosses/nexus-de-convergence/cible-qa.png"
+      ]
+    ]
+  },
+  {
+    "actor": "arca_loom",
+    "blocked": false,
+    "mobile": true,
+    "fixture": {
+      "actor": "arca_loom",
+      "target": "Mirelle Suture",
+      "hp": 27,
+      "id": "hero:1:arca_mirelle"
+    },
+    "result": {
+      "hp": 45,
+      "guard": null,
+      "shield": null,
+      "charge": 0,
+      "atb": 0,
+      "targets": [
+        {
+          "id": "hero:1:arca_mirelle",
+          "x": 208,
+          "y": 359,
+          "centerY": 315.3
+        }
+      ],
+      "entity": "nexus-suture-drone",
+      "frame": {
+        "index": 2,
+        "phase": "impact"
+      },
+      "poses": [
+        0,
+        256,
+        512
+      ],
+      "assetURLs": [
+        "/sprites/generated/combat-entities/nexus-suture-drone.png"
+      ],
+      "drawnContact": true
+    },
+    "passed": true,
+    "pageErrors": [],
+    "httpErrors": [
+      [
+        404,
+        "http://127.0.0.1:4269/sprites/generated/bosses/nexus-de-convergence/cible-qa.png"
+      ]
+    ]
+  },
+  {
+    "actor": "arca_tessera",
+    "blocked": false,
+    "mobile": false,
+    "fixture": {
+      "actor": "arca_tessera",
+      "target": "Cible QA",
+      "hp": 12000,
+      "id": "enemy:custom:0:qa-target"
+    },
+    "result": {
+      "hp": 11978,
+      "guard": null,
+      "shield": 0,
+      "charge": 0,
+      "atb": 0,
+      "targets": [
+        {
+          "id": "enemy:custom:0:qa-target",
+          "x": 770,
+          "y": 304,
+          "centerY": 260.3
+        }
+      ],
+      "entity": "nexus-tessera-reflection",
+      "frame": {
+        "index": 2,
+        "phase": "impact"
+      },
+      "poses": [
+        0,
+        256,
+        512
+      ],
+      "assetURLs": [
+        "/sprites/generated/combat-entities/nexus-tessera-reflection.png"
+      ],
+      "drawnContact": true
+    },
+    "passed": true,
+    "pageErrors": [],
+    "httpErrors": [
+      [
+        404,
+        "http://127.0.0.1:4269/sprites/generated/bosses/nexus-de-convergence/cible-qa.png"
+      ]
+    ]
+  },
+  {
+    "actor": "arca_nadir",
+    "blocked": false,
+    "mobile": false,
+    "fixture": {
+      "actor": "arca_nadir",
+      "target": "Cible QA",
+      "hp": 12000,
+      "id": "enemy:custom:0:qa-target"
+    },
+    "result": {
+      "hp": 11983,
+      "guard": null,
+      "shield": 0,
+      "charge": 0,
+      "atb": 0,
+      "targets": [
+        {
+          "id": "enemy:custom:0:qa-target",
+          "x": 770,
+          "y": 304,
+          "centerY": 260.3
+        }
+      ],
+      "entity": "nexus-return-probe",
+      "frame": {
+        "index": 2,
+        "phase": "impact"
+      },
+      "poses": [
+        0,
+        256,
+        512
+      ],
+      "assetURLs": [
+        "/sprites/generated/combat-entities/nexus-return-probe.png"
+      ],
+      "drawnContact": true
+    },
+    "passed": true,
+    "pageErrors": [],
+    "httpErrors": [
+      [
+        404,
+        "http://127.0.0.1:4269/sprites/generated/bosses/nexus-de-convergence/cible-qa.png"
+      ]
+    ]
+  },
+  {
+    "actor": "arca_tessera",
+    "blocked": true,
+    "mobile": false,
+    "fixture": {
+      "actor": "arca_tessera",
+      "target": "Cible QA",
+      "hp": 12000,
+      "id": "enemy:custom:0:qa-target"
+    },
+    "result": {
+      "hp": 12000,
+      "guard": null,
+      "shield": 11979,
+      "charge": 0,
+      "atb": 0,
+      "targets": [],
+      "entity": "nexus-tessera-reflection",
+      "frame": {
+        "index": 2,
+        "phase": "impact"
+      },
+      "poses": [
+        0,
+        256,
+        512
+      ],
+      "assetURLs": [
+        "/sprites/generated/combat-entities/nexus-tessera-reflection.png"
+      ],
+      "drawnContact": true
+    },
+    "passed": true,
+    "pageErrors": [],
+    "httpErrors": [
+      [
+        404,
+        "http://127.0.0.1:4269/sprites/generated/bosses/nexus-de-convergence/cible-qa.png"
+      ]
+    ]
+  }
+]

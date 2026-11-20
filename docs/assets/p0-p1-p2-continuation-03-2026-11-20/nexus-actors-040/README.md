@@ -1,0 +1,13 @@
+# Les 40 acteurs du Nexus de Convergence
+
+Le lot rassemble l’Ancre, onze héros A.R.C.A., dix-huit ennemis, neuf boss et le Moteur de Convergence Instable. Les personnages originaux ont une incarnation située dans le Palimpseste et un repère visuel individuel tiré des planches et dossiers internes. Les fiches de recherche et les concepts de tenue renvoient à la même description. Les tenues restent au stade de concept. [Réservation](reserved-actors.json) · [Registre](../../../../src/game/nexusActorDesigns.js)
+
+Le nom choisi par le joueur reste attaché à l’Ancre. Les homonymes et les acteurs d’un autre univers restent sur leur propre fiche. Le Double idéal de Marrow conserve un chantier visuel : la campagne prévoit un cristal qui remplace sa cicatrice, tandis que le jeu utilise l’atlas de Marrow sous un filtre. La fiche de design conserve cette distinction pour le prochain dessin. [Références inspectées](reference-review.json) · [Cellules de repos des héros](heroes-reference-contact.webp) · [Ennemis et boss I](enemies-part-1-reference-contact.webp) · [Ennemis et boss II](enemies-part-2-reference-contact.webp)
+
+À charge pleine, la commande Spécial de l’Ancre déclenche maintenant son Commandement d’Ancrage et le passage à zéro de la jauge. Avant le correctif, elle déclenchait le coup à 30 points et laissait 70. Le test utilise la commande normale de Mêlée pour les douze héros, progresse à 60 pas par seconde et contrôle l’impact unique ou le soin allié au moment prévu.
+
+Le RPG affiche les 23 noms de spéciales déjà déclarés par les ennemis du Nexus, par exemple « Tampon de Reecriture ». Le profil garde sa cible individuelle et sa puissance historique. Le test déclenche cette attaque du Greffier du Voile par la commande opposante, vérifie les ressources et avance le combat jusqu’à l’impact. Les quatre invocations Balise Barricade, Drone de Suture, Reflet Non Remplace et Sonde de Retour gardent chacune leur porteur et leur effet de départ. [Comparaison des profils](runtime-comparison.json) · [Tests](../../../../scripts/nexusActorDesigns.test.mjs)
+
+Les suites ciblées Nexus, audit des acteurs et garde-robe passent **85 tests sur 85**. [Reçu d’exécution](verification.json)
+
+L’export global sur l’arbre des médias de `31c3639d8` retire **80 P1**, répartis entre 40 déclarations d’incarnation et 40 contrats visuels. Il compte 16 654 P1 et 13 582 P2. Les tâches P2 de comparaison du dessin, d’animation et de tenue restent ouvertes. Les 40 résolutions d’atlas correspondent à 39 PNG du dépôt, inspectés dans leur première cellule de repos. Cette passe ne conclut pas à la fidélité 1:1 des autres poses et n’ajoute aucune nouvelle planche. [Delta exact](backlog-delta.json)

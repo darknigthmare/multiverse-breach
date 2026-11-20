@@ -1,0 +1,103 @@
+{
+  "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+  "planFileSha256": "1c389787a5202a0abc925fd933b9aa770a706ba81270b5d3c9c45fee53875053",
+  "planProfile": {
+    "schemaVersion": 1,
+    "mode": "selected",
+    "packIds": [
+      "doom"
+    ],
+    "sharedPolicy": "preserve-all"
+  },
+  "planBatchCount": 317,
+  "planAssetCount": 7693,
+  "planLimits": {
+    "maxAssets": 40,
+    "maxBatchBytes": 33554432,
+    "maxAssetBytes": 134217728,
+    "maxTempBytes": 536870912,
+    "maxDecodePixels": 33554432,
+    "decode": "raster"
+  },
+  "exporterAndTests": {
+    "scripts/exportDlcAssetBatch.mjs": "7989ce7ccc0ac6c33537ae284975d80f1c03c268c28952a86d135b3f9c99debe",
+    "scripts/dlcAssetBatches.test.mjs": "5a56937597a80f2b5d152466c075239f184f85bf9155c61bc22fc7d8187cdb68",
+    "scripts/dlcAssetBatches.mjs": "fdeade68f4a387c782a842f12cc1e99f9049cf1ae92716ec85b588ecf468708e",
+    "scripts/dlcBatchAssetSource.mjs": "782d6d58fb65ab421fd18bc3ab97e09f13cdaa2c7d0cdd25dff754913be6948c",
+    "scripts/dlcAssetBatchDecode.mjs": "40de8891a4281a317fb84180bd4e252b39dc817d9acc690840d35b63bd3cf472",
+    "scripts/dlcDistribution.mjs": "cdf31d96c7979ea5fa76816bb375e12687cfe6432436b585ddf54f2b15d24dbe",
+    "scripts/dlcDistributionFilesystem.mjs": "bb1161b5a37e744a11f4c06cc688aa34ed071a9cacf355489b1f59c8bdd81b5f",
+    "scripts/dlcAssetPaths.mjs": "80222d481532b2a7740c278869b73ae4a233cf3c2cb8c26fddf150704ca04e90",
+    "scripts/dlcCommonUiAssets.mjs": "6664a2fc22b3bb00a2a0f952c68fac774bbc5f90fd305466c7424c8306969c10",
+    "scripts/dlcSharedAssetDependencies.mjs": "0e39585cb5c0f82c97aa10fd7beb9aa31ec71fab7b24210802009782f97e76e5"
+  },
+  "nodeVersion": "22.23.5",
+  "batchTestCommand": "npm run test:dlc:batches",
+  "tests": {
+    "passCount": 34,
+    "failCount": 0,
+    "durationMs": 6492.330337
+  },
+  "targetedLintCommand": "npm run lint -- scripts/exportDlcAssetBatch.mjs scripts/dlcAssetBatches.test.mjs",
+  "targetedLintExitCode": 0,
+  "diskScope": "Batch payloads and tests used /tmp. Export never wrote the canonical checkout or Git LFS cache.",
+  "networkLfsFetchEnabled": false,
+  "profilesCompiledWithMedia": 0,
+  "receipts": [
+    {
+      "receipt": "batch-00245.json",
+      "exportVerifiedWithPinnedReceiptOutsideRepository": true,
+      "summary": {
+        "batchId": "00245",
+        "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+        "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+        "assets": 36,
+        "payloadBytes": 33498171,
+        "receiptSha256": "e43c6783d1893ba7a9abc0c034838ea5c8c651d1db058aa34502620e21569f1e"
+      },
+      "independentAudit": {
+        "batchId": "00245",
+        "checked": 36,
+        "checkoutMissing": 4,
+        "sources": {
+          "git-blob": 36
+        },
+        "decodedFormats": {
+          "PNG": 36
+        },
+        "payloadBytes": 33498171,
+        "receiptSha256": "e43c6783d1893ba7a9abc0c034838ea5c8c651d1db058aa34502620e21569f1e"
+      },
+      "reproducedAfterFinalCodeChange": true
+    },
+    {
+      "receipt": "batch-00022.json",
+      "exportVerifiedWithPinnedReceiptOutsideRepository": true,
+      "summary": {
+        "batchId": "00022",
+        "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+        "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+        "assets": 24,
+        "payloadBytes": 31179057,
+        "receiptSha256": "cfcfe8c3954b960ce5ec642d2fffb4a867ee315111c1bd6ae9a98e46b58c8745"
+      },
+      "independentAudit": {
+        "batchId": "00022",
+        "checked": 24,
+        "checkoutMissing": 24,
+        "sources": {
+          "core-lfs-cache": 8,
+          "git-blob": 16
+        },
+        "decodedFormats": {
+          "PNG": 8,
+          "WEBP": 16
+        },
+        "payloadBytes": 31179057,
+        "receiptSha256": "cfcfe8c3954b960ce5ec642d2fffb4a867ee315111c1bd6ae9a98e46b58c8745"
+      },
+      "reproducedAfterFinalCodeChange": true
+    }
+  ]
+}

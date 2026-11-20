@@ -4,7 +4,9 @@ Jeu de crossover indépendant et non officiel, jouable dans le navigateur. Le jo
 
 Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge ATB**, **Tactics sur grille**, **Mêlée sur plateformes** et **Combat en duel**. L’interface utilise React ; les combats sont dessinés en Canvas 2D. Les univers, personnages et marques cités appartiennent à leurs ayants droit.
 
-**État courant : W17 prolongé depuis l’intégration GitHub `2333c2c0`, revue du 13 novembre 2026.** La [seconde reprise P0/P1/P2](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md) traite les contrats Gears/Dead Space et Portal/Left 4 Dead, ajoute les atlas classiques Imp/Mancubus, corrige les présentations Revan et les fins de combat K.O., reprend le répertoire des missions et étend Tactics à Portal 2. L’audit retire **248 P1**, ajoute un P1 de portée visuelle Batman et conserve 76 nouvelles revues P2. La [passe précédente](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md), la [distribution DLC](docs/assets/dlc-completion-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) gardent leurs preuves datées. Les 22 P0 visuels historiques et la fidélité globale 1:1 restent ouverts.
+**Reprise du 20 novembre 2026.** Le Nexus gagne le Col des Hautes-Herbes en Tactics, un briefing Extinction accessible au clavier et quatre scènes d’invocation raccordées aux effets réellement appliqués. Quatre combattants des univers originaux reçoivent leurs présentations de duel. Le Pachakuti du Soleil Noir a son atlas d’anomalie environnementale. L’export DLC produit maintenant des dossiers de médias transportables par lots. [Rapport et vérifications](docs/assets/p0-p1-p2-continuation-03-2026-11-20/README.md).
+
+Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
 
@@ -44,6 +46,8 @@ Les profils d’édition se trouvent dans [config/dlc-profiles/](config/dlc-prof
 
 Sur un disque contraint, `npm run dlc:assets:batches` permet de lire, contrôler puis libérer uniquement les copies temporaires : jusqu’à 40 ressources par lot, avec plafonds de taille, vérification SHA-256 et décodage des rasters. Le plan fige les sources et le vérificateur ; la reprise conserve les résultats déjà acquis. La passe du 13 novembre valide **19 582 fichiers en 490 lots**, dont 17 087 rasters décodés, sans indisponibilité restante. Voir [les commandes, reçus et résultats](docs/assets/dlc-completion-2026-11-13/README.md). Cette validation ne produit pas à elle seule une distribution contenant tous les médias.
 
+Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exportDlcAssetBatch.mjs --plan PLAN.json --batch ID --out NOUVEAU_DOSSIER`. Le dossier contient les fichiers aux chemins source et un reçu SHA-256 vérifiable après transfert. Deux lots réels totalisant 60 médias ont été exportés. [Reproduction et reçus](docs/assets/dlc-batch-export-2026-11-20/README.md).
+
 ## Jouer
 
 1. Depuis l’écran titre, créer ou reprendre une Trace, puis suivre le prologue de l’Ancre.
@@ -73,7 +77,7 @@ Les noms internes et les noms utilisés dans les rapports ne sont pas toujours i
 | Nom utilisé | Identifiant du mode | Fonctionnement actuel |
 | --- | --- | --- |
 | **RPG** | `RPG` | Jauges ATB, ciblage manuel, actions simples, secondaires, défense, super et invocation ou renfort selon le profil du personnage. Les protections et soutiens agissent sur les alliés sans créer de dégâts offensifs. |
-| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission ; vingt-quatre terrains verticaux, dont vingt et un secteurs d’univers avec reliefs naturels, gués, ravins, passerelles et décors physiques. Caméra avec déplacement et zoom. |
+| **Tactics / Tactique** | `Tactics` | Tours d’unités, déplacements sur grille en perspective 3/4, coûts de terrain, obstacles, couvertures, orientation et objectifs de mission. Vingt-cinq terrains verticaux couvrent des reliefs naturels, gués, ravins et structures à plusieurs étages. Caméra avec déplacement et zoom. |
 | **Mêlée / Smash** | `Smash` | Combat sur plateformes, déplacements physiques, sauts, garde, charge, prises de rebord et objectifs d’arène. Les personnages couverts possèdent un manifeste d’animation par état. |
 | **Combat / Fighter** | `Fighter` | Moteur de duel distinct, avec sa préparation, ses séquences de présentation, ses actions et ses conditions de victoire. |
 
@@ -83,7 +87,7 @@ Les espaces Équipement, Boutique, Résonance, Équipe, Dossier de l’Ancre, Ar
 
 ## Couverture réelle
 
-Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les lignes de combat ci-dessous proviennent de l’[inventaire daté W17 + master](docs/combat-fidelity-wave17-2026-11-02/current.json), régénéré le 13 novembre 2026 avant la seconde reprise. La ligne Tactics tient compte du nouveau secteur ; les deux atlas d’ennemis et les trois clips Revan sont suivis séparément dans la [reprise 02](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). Ces chiffres ne constituent pas une revue visuelle complète.
+Une entrée dans le catalogue, une capacité nommée, une recette de présentation et un dessin livré sont des mesures différentes. Les lignes de combat ci-dessous proviennent de l’[inventaire daté W17 + master](docs/combat-fidelity-wave17-2026-11-02/current.json), régénéré le 13 novembre 2026 avant la seconde reprise. La ligne Tactics inclut le Col des Hautes-Herbes. Les atlas et clips livrés depuis cet inventaire figurent dans les reprises datées.
 
 | Périmètre mesuré après intégration | Résultat |
 | --- | --- |
@@ -99,7 +103,7 @@ Une entrée dans le catalogue, une capacité nommée, une recette de présentati
 | Invocations et renforts natifs16 | 68 planches |
 | Actions supplémentaires16 | 2 planches, 32 poses |
 | Familier de protection autonome16 | 1 planche, distincte des invocations RPG |
-| Terrains Tactics verticaux | 24 : vingt et un secteurs d’univers et trois Nexus ; 55 matières |
+| Terrains Tactics verticaux | 25 terrains dont vingt et un secteurs d’univers et quatre arènes Nexus, pour 55 matières |
 | Décors animés | 445 mécanismes dans 220 univers ; 305 univers sans mécanisme localisé |
 | Ressources de cet audit combat | 1 491 PNG dans 149 registres ; les 1 237 PNG et 138 registres W16 restent préservés |
 
@@ -112,6 +116,8 @@ Le **lot W17** conserve **120 personnages avec de nouveaux dessins**, en trois g
 La [reprise P0/P1 du 13 novembre](docs/assets/p0-p1-continuation-2026-11-13/README.md) ajoute trois fonds tactiques distincts (Predator 1987, Predator 2 et Prey), les portraits de Naru/Sarii et une icône extérieure du masque osseux. Le masque porté, transporté et monté ne se duplique pas ; les scènes source n’annoncent plus d’anomalie crossover. Le Feral courant possède un kit physique borné à ses lames et à son bouclier.
 
 L’[inventaire de la seconde reprise](docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/summary.json) conserve **4 937 acteurs**, dont 1 912 héros avec l’Ancre : **16 734 P1**, **13 582 P2**, **1 471 acteurs avec raster absent** et 1 309 fiches avec noms bruts génériques. Le [delta exact](docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-task-delta.json) retire 248 P1 sur 77 acteurs, ajoute un P1 après blocage du faux sprite Batman et 76 revues de scène P2. La [continuité finale](docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/final-continuity-3b892a7.json) distingue explicitement le dernier correctif FPS des sources du classement. Les 22 P0 restent ouverts. L’ancienne file de 124 lots garde son ordre ; les [quatre lots de 40 de cette passe](docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/work-batches-40.json) ne sont pas 160 dossiers entièrement clos. La [passe antérieure](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) conserve séparément ses 277 P1 et 39 P2 retirés. Recherche, données, art et catalogue ne se confondent pas avec les supers effectivement résolus.
+
+Après la reprise du 20 novembre, le même inventaire compte **16 653 P1**, **13 582 P2** et **1 470 acteurs avec raster absent**. Il retire 80 constats de données pour 40 acteurs du Nexus et un constat de raster pour Pachakuti. Les revues d’animation et de fidélité 1:1 se poursuivent. [Comparaison du nouvel inventaire](docs/assets/p0-p1-p2-continuation-03-2026-11-20/actor-task-delta.json).
 
 Une présentation32 réunit huit phases de quatre dessins : intro, sortie, victoire et défaite de manche, finale, victoire et défaite finales, super. Une base16 couvre quatre états ; elle ne remplace pas les 45 états physiques du manifeste Mêlée.
 
@@ -159,7 +165,7 @@ La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom**, choi
 | Rainforest District | Zootopia, film de 2016 | Canopée, chemin bas humide et bassin |
 | Chambre et puits de maintenance | Portal 2, 2011 | Galerie haute, escaliers, passerelle métallique et niveau de service inférieur |
 
-Les trois arènes originales du Nexus restent disponibles : pont et passage inférieur, terrasses des ruines, passerelles du réseau. Les vingt-quatre terrains distinguent les surfaces à plusieurs hauteurs ; deux unités peuvent occuper un pont et son passage inférieur à la même coordonnée.
+Les quatre arènes originales du Nexus comprennent un pont avec passage inférieur, les terrasses des ruines, les passerelles du réseau et le Col des Hautes-Herbes. Deux unités peuvent occuper des supports distincts à la même coordonnée. Au col, le gué passe sous la crête et le relais se gagne en tenant le sommet trois tours. [Terrain et parcours](docs/assets/p0-p1-p2-continuation-03-2026-11-20/tactics-highgrass/README.md).
 
 Cliquer une surface ou utiliser les flèches du plateau pour l’inspecter, puis confirmer avec **ALLER / CIBLER CETTE CASE** ou **Entrée**. La coupe de vue, la liste des surfaces et les touches `[` / `]` permettent de choisir un étage ; l’inspection ne dépense aucun point d’action. Les boutons de zoom et de recadrage complètent le glissement de caméra et la molette, y compris au tactile.
 
@@ -214,6 +220,8 @@ La reprise P0/P1/P2 suivante fait passer la suite DLC (**113/113 puis 245/245**)
 Le [contrôle CG courant](docs/assets/p0-p1-p2-continuation-2026-11-13/cg-runtime-correction/README.md) vérifie séparément les métadonnées avec `npm run cg:roster:plan:check:metadata` et leurs contrats avec `npm run test:cg:metadata`, sous Node 22. Le plan historique et ses 1 436 déclarations restent inchangés ; les 58 portraits absents ne sont pas déclarés vus. Le contrôle strict des médias reste obligatoire pour une livraison complète.
 
 La seconde reprise ajoute les vérifications finales suivantes : **153/153 contrats**, **96/96 tests PNG**, **291/291 Tactics**, **580/580 UI**, **158/158 métadonnées CG** et **7/7 quarantaine/Bible**. Cinq profils de l’application compilent après le dernier raccord FPS. La suite standard DLC passe en 113/113 puis 245/245 au checkpoint précédent, avec les inventaires et transformateurs inchangés ; les derniers consommateurs FPS passent leurs régressions et compilations propres. Les groupes se recoupent et ne sont pas additionnés comme des tests uniques. Les limites média et les trois anciennes attentes statistiques de la contre-épreuve restent dans les [reçus courants](docs/assets/p0-p1-p2-continuation-02-2026-11-13/validation/README.md).
+
+La reprise du 20 novembre passe **295 tests Tactics, 159 contrats, 108 régressions RPG et 99 tests PNG**. L’édition complète, le jeu de base et les trois packs originaux concernés compilent sans copier les médias. [Vérifications et parcours](docs/assets/p0-p1-p2-continuation-03-2026-11-20/README.md).
 
 ## Architecture
 

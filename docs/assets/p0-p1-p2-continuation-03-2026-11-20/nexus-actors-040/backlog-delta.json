@@ -1,0 +1,421 @@
+{
+  "scope": "Full exporter run on working source with base media tree. The delta concerns internal design declarations only. Later media changes are outside this snapshot.",
+  "gitAssetTree": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "exportCommand": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs scripts/exportActorFidelityBacklog.mjs /tmp/nexus-actor-lot/current 31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "baselineLedger": "docs/assets/p0-p1-p2-continuation-02-2026-11-13/audit/checkpoint-82a1f003/actor-tasks.json.gz",
+  "baselineLedgerSha256": "6c2be99607de7233df04f229e98113cd765f14eb88bf21812f1fe9767c447f81",
+  "actors": 4937,
+  "before": {
+    "P1": 16734,
+    "P2": 13582
+  },
+  "after": {
+    "P2": 13582,
+    "P1": 16654
+  },
+  "removed": [
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_bastion\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_bastion\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_elyra\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_elyra\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_loom\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_loom\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_marrow\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_marrow\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_mirelle\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_mirelle\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nadir\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nadir\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nova\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_nova\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_oryn\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_oryn\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_quillon\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_quillon\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_sable\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_sable\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_tessera\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:arca_tessera\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_courtier_regret\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_courtier_regret\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_reflet_vie_possible\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_reflet_vie_possible\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_usurpateur_vies_possibles\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act1_usurpateur_vies_possibles\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_intendant_sacrifice_muet\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_intendant_sacrifice_muet\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_porte_verrou_endeuille\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_porte_verrou_endeuille\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_scribe_registre_noir\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act2_scribe_registre_noir\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_conservateur_causes_absentes\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_conservateur_causes_absentes\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_guide_issue_parfaite\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_guide_issue_parfaite\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_indexeur_contradictions\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act3_indexeur_contradictions\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_heraut_paix_illisible\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_heraut_paix_illisible\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_rature_seuil_blanc\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_rature_seuil_blanc\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_simulacre_sans_choix\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act4_simulacre_sans_choix\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_arbitre_cause_unique\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_arbitre_cause_unique\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_contre_temoin_veyr\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_contre_temoin_veyr\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_vigie_coordonnee_x\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:oc_act5_vigie_coordonnee_x\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:player_anchor\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"id:player_anchor\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Archiviste Rompu\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Archiviste Rompu\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Avatar du Sans-Auteur\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Avatar du Sans-Auteur\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Cartographe des Portes Mortes\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Cartographe des Portes Mortes\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Double ideal de Marrow\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Double ideal de Marrow\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Drone A.R.C.A. Corrompu\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Drone A.R.C.A. Corrompu\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Echo Sans-Auteur\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Echo Sans-Auteur\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Fragment Vagabond\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Fragment Vagabond\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Greffier du Voile\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Greffier du Voile\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Juge des Trames\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Juge des Trames\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Matrice de Substitution\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Matrice de Substitution\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Moteur de Convergence Instable\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Moteur de Convergence Instable\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Noeud de Paradoxe\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Noeud de Paradoxe\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Pelerin de la Fausse Sortie\"]",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Nexus de Convergence\",\"name:Pelerin de la Fausse Sortie\"]",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "added": [],
+  "newArtApprovals": 0,
+  "wholeActorClosures": 0
+}

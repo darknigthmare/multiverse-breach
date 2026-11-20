@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: return radar preserves player bearing, clamps distant targets and draws inside its bounds
+ok 1 - return radar preserves player bearing, clamps distant targets and draws inside its bounds
+  ---
+  duration_ms: 8.693046
+  type: 'test'
+  ...
+# Subtest: the report is earned through real City movement and each ordered interaction before deployment opens
+ok 2 - the report is earned through real City movement and each ordered interaction before deployment opens
+  ---
+  duration_ms: 3.670765
+  type: 'test'
+  ...
+# Subtest: a standard one-relic report remains valid and the old report shape is not rewritten
+ok 3 - a standard one-relic report remains valid and the old report shape is not rewritten
+  ---
+  duration_ms: 2.43761
+  type: 'test'
+  ...
+# Subtest: the optional operation cannot replace an ordinary mode, an unowned selection, or an unavailable report
+ok 4 - the optional operation cannot replace an ordinary mode, an unowned selection, or an unavailable report
+  ---
+  duration_ms: 4.116057
+  type: 'test'
+  ...
+# Subtest: three counted beacons without actual synchronization cannot open the airlock
+ok 5 - three counted beacons without actual synchronization cannot open the airlock
+  ---
+  duration_ms: 2.295405
+  type: 'test'
+  ...
+# Subtest: actual relay synchronization and shielded Champion damage open a return phase without ending or rewarding the run
+ok 6 - actual relay synchronization and shielded Champion damage open a return phase without ending or rewarding the run
+  ---
+  duration_ms: 2.550329
+  type: 'test'
+  ...
+# Subtest: return requires the real run marker, live owner, nearby position and an unpaused scene
+ok 7 - return requires the real run marker, live owner, nearby position and an unpaused scene
+  ---
+  duration_ms: 3.101709
+  type: 'test'
+  ...
+# Subtest: nearby caches and weapon drops remain interactable before the locked or open airlock
+ok 8 - nearby caches and weapon drops remain interactable before the locked or open airlock
+  ---
+  duration_ms: 2.281053
+  type: 'test'
+  ...
+# Subtest: a normal successful report keeps its existing rewards and does not create an operation receipt
+ok 9 - a normal successful report keeps its existing rewards and does not create an operation receipt
+  ---
+  duration_ms: 3.408521
+  type: 'test'
+  ...
+# Subtest: the existing run receipt stores one first return and rejects duplicate deliveries without extra XP
+ok 10 - the existing run receipt stores one first return and rejects duplicate deliveries without extra XP
+  ---
+  duration_ms: 2.925474
+  type: 'test'
+  ...
+# Subtest: abandon, defeat, wrong-source and incomplete proofs cannot close the City intervention
+ok 11 - abandon, defeat, wrong-source and incomplete proofs cannot close the City intervention
+  ---
+  duration_ms: 3.373087
+  type: 'test'
+  ...
+# Subtest: save round trip and absence of DLC definitions retain operation and older record identities
+ok 12 - save round trip and absence of DLC definitions retain operation and older record identities
+  ---
+  duration_ms: 3.716945
+  type: 'test'
+  ...
+# Subtest: finish, abandonment or recovery cleanup removes the run marker while preserving ordinary loot and the retained proof
+ok 13 - finish, abandonment or recovery cleanup removes the run marker while preserving ordinary loot and the retained proof
+  ---
+  duration_ms: 2.447594
+  type: 'test'
+  ...
+# Subtest: the real Hub renders the operation locked when the report or the owned combat roster is missing
+ok 14 - the real Hub renders the operation locked when the report or the owned combat roster is missing
+  ---
+  duration_ms: 26112.239972
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26371.09255

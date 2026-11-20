@@ -1,0 +1,79 @@
+{
+  "runtimeCommit": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+  "node": "v22.23.5",
+  "tests": {
+    "source-contracts": {
+      "tests": 159,
+      "pass": 159,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:source-contracts",
+      "sha256": "73738be426c7ea03d76fe367121c353a732d1f9386644d10453d06a7bb903325",
+      "file": "source-contracts.tap"
+    },
+    "rpg": {
+      "tests": 108,
+      "pass": 108,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/auditRpgLifecycle.test.mjs scripts/rpgSummonEncounterLockWave17.test.mjs scripts/portalLeft4DeadSourceContracts20261113.test.mjs",
+      "sha256": "3846c9251b98d21f8a492bb1d41e3605c4bb797082ce8cd59ae1cf80ca0e997c",
+      "file": "rpg.tap"
+    },
+    "character-png": {
+      "tests": 99,
+      "pass": 99,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:character-png",
+      "sha256": "eb0529259f7ad09bf53ec4fbc2a3f5f0ef9643d07bbd764aec97b9a59dc16341",
+      "file": "character-png.tap"
+    },
+    "tactics": {
+      "tests": 295,
+      "pass": 295,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:tactics-verticality",
+      "sha256": "bf28927af9a88a37a3f828e2e9100262f40342f706ce6e53dd3d3f5c7b4c5f4e",
+      "file": "tactics.tap"
+    }
+  },
+  "lintChangedFilesExitCode": 0,
+  "lintChangedFilesCount": 26,
+  "changedFileSha256": {
+    "package.json": "845be3365280e945864501d67f393bd10ac6e4bd84a52b9bb78d1261827855da",
+    "public/sprites/generated/bosses/tawantinsuyu-the-split-sun/pachakuti-du-soleil-noir.png": "1a771242700e2d52cf3d5f2dddf4bc431e705a429cd620e086cfb6ec036eb88b",
+    "scripts/dlcAssetBatches.test.mjs": "5a56937597a80f2b5d152466c075239f184f85bf9155c61bc22fc7d8187cdb68",
+    "scripts/exportDlcAssetBatch.mjs": "7989ce7ccc0ac6c33537ae284975d80f1c03c268c28952a86d135b3f9c99debe",
+    "scripts/nexusActorDesigns.test.mjs": "4d2720797d7b1af8853967d94fd8a19d16042d1f6084b42fb1fb97399a9b4932",
+    "scripts/nexusFieldOperation.test.mjs": "3d07cd5e8dd1c5ec05ecbdba309ea4e8de92e2a61598d2e24edc02b746554b0b",
+    "scripts/originalFighterPresentations.test.mjs": "2c79689982269a5eb872da4e98b4d4d35377b1c617d907f03f7a595066cf1e1a",
+    "scripts/pachakutiWorldBossArt.test.mjs": "9f4fdaa3c55d1203be4a066300786f651a47039392f3bcf83a2800603c43a774",
+    "scripts/rpgSummon.test.mjs": "60214cd5803858bb5c4109ad75d8efa19186cfd0ddd8d1050d9220972781a846",
+    "scripts/tacticsNexusHighgrass.test.mjs": "f2e808955b0f7c268d02a3c845708c21b3775ad880cc0136009d72948a6e3eb1",
+    "src/components/CustomBattleMode.jsx": "41aee3864c0e280894f96b2285dcc6c237c5e999777b279fdc596d650989b110",
+    "src/components/FighterMode.jsx": "74334bcef5823193a0e8296fa638078bd908aa46f555c3983d90a0fc913a0a9f",
+    "src/components/GameCanvas.jsx": "1d932b3976a965ec9753319c72d97747c855adfd062fda9e89f0818bb3e4f975",
+    "src/components/HubScreen.jsx": "63e62c4753d9401c6efac4baba7c1204a8271f510885b8e12e4966ca8f455119",
+    "src/components/NexusFieldBriefing.css": "5bd7bb21c1c1bf53932c05848b7250a4c5fb57698ff12aed2a00e3f64a7606fd",
+    "src/components/NexusFieldBriefing.jsx": "69a0ec47c08e797bdeaf01aa3ecd3d9fb4b4104ff5a1d9e72109b71b59678330",
+    "src/game/actorFidelityBacklog.js": "9cbf4781c787ea57b93e4de128069af609c17b4475edd1996835dabd1fb041c3",
+    "src/game/combat/originalFighterPresentations.js": "64f266a9fdfd583cc550a36da80de492f392ee7aecea24cc45d0a94faf429c96",
+    "src/game/combat/summonChoreography.js": "7bbaf1607adbfeef2d3f1a3cd296e7b2f9094e363d627cba9e7ca6d9704ae2fa",
+    "src/game/engineFighter.js": "001c3efc91fdbe7f26973e2e42dcf213805c4abc8f4ee4c1a4f014bb0a7fd88b",
+    "src/game/engineRpg.js": "cdac126d45ec30ac0f92e2e138c99adc97a05dc25ebcfd4cb77279746a31c71d",
+    "src/game/engineSmash.js": "8f7c63c60d2d531974c30816bffceaad836fc71ad048d1700a98ad7f69782a7d",
+    "src/game/nexusActorDesigns.js": "a9587435b10542a7c0913fde9b05bef169de163c413f04e5beb21d4fcb3c0532",
+    "src/game/pachakutiWorldBossArt.js": "f91e66de29130f4736463d8c2de9575cbbab1f1adae1b4192bf9b1443b82f7aa",
+    "src/game/renderer.js": "e769f188bef113cb46c8c0b111a4c2adbc870453756c9f0d40ffa010bc5c028b",
+    "src/game/rpgTargeting.js": "9aa62321c22e106e5c3988fd6fcd0a1ca2fab2421bf0b60480a8e6c396ebf0f5",
+    "src/game/tacticsBattlefields.js": "d802bf2f64d2ffcad4c28911d0a14b583e89ed2c5886e2a53c370f2cb0278009",
+    "src/game/tacticsNexusHighgrassBattlefield.js": "e6391c5842007167b1cb4e1251ecc6f2d209d4963d9cbeb72e0a2f0a73b77cda",
+    "src/game/wardrobe.js": "b238f936e0d208ca9db0394c68e39800243f2be60c0643bd6450257d86984457"
+  }
+}
