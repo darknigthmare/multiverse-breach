@@ -1,0 +1,61 @@
+{
+  "actorId": "aether_crown:aether_mite_swarm",
+  "universe": "The Aether Crown",
+  "sourceType": "Original project enemy",
+  "reference": {
+    "path": "public/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png",
+    "bytes": 819722,
+    "sha256": "fefbb1ef26a4a04742ccad04c8b4dd2d9af352063582094969c09c77e898118f"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "date": "2026-11-20",
+    "scope": "Four sequences for the original swarm, based on its project-provided static sprite.",
+    "rawArtifact": {
+      "path": "/workspace/generated_images/exec-c62f02ed-6478-4565-9122-8777b047ad78.png",
+      "bytes": 1943864,
+      "sha256": "1aca7e18f4ef23b6da7c393b12ef9b2a3b3efe7ce6cd2e0719087233da430c73"
+    }
+  },
+  "atlas": {
+    "path": "public/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png",
+    "bytes": 1138710,
+    "sha256": "18ddc4a57317a8c7aecdb1c10a84912745e14dece6c89a4fddaacca221f319d0"
+  },
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "width": 1024,
+    "height": 1024,
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "baseline": 232
+  },
+  "gameplay": {
+    "hp": 96,
+    "atk": 9,
+    "def": 5,
+    "spd": 6,
+    "weapon": "staff",
+    "behaviorChanged": false
+  },
+  "tests": {
+    "focusedWithNeighborsPassed": 10,
+    "browserPassed": 3,
+    "directViteFixtureExit": 0,
+    "scope": "Real GameCanvas, real RPG renderer, custom battle selecting the actual catalogue enemy, no campaign replay."
+  },
+  "closure": {
+    "removedP1": [
+      "STATIC_GAMEPLAY_REVIEW"
+    ],
+    "p0Closures": 0,
+    "p2Closures": 0,
+    "fullActorClosed": false
+  }
+}

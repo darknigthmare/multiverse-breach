@@ -1,0 +1,47 @@
+{
+  "baseCommit": "94c5245fb",
+  "nodeVersion": "22.23.5",
+  "targetedOriginalDuelTests": {
+    "passed": 12,
+    "failed": 0,
+    "command": "NODE_OPTIONS=--max-old-space-size=2048 node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalFighterPresentations.test.mjs"
+  },
+  "fighterAndRevanAdjacentTests": {
+    "passed": 19,
+    "files": [
+      "scripts/fighterPresentationRuntime.test.mjs",
+      "scripts/reviewedRevanPresentation20261113.test.mjs",
+      "scripts/reviewedRevanPresentationRuntime20261113.test.mjs"
+    ],
+    "sameProductionSources": true
+  },
+  "targetedFixtureCorrection": "The first synthetic alias fixture expected the ordinary fallback while a valid Bastion phase sheet was still marked loaded. The final test marks only that native sheet unavailable and verifies the real runtime selects the variant fallback ID. Production sources unchanged during that fixture correction.",
+  "browserCases": 6,
+  "browserProof": "browser.json",
+  "wrongCropProbe": {
+    "sameActualBody": true,
+    "matchingSheet": [
+      512,
+      768,
+      256,
+      256
+    ],
+    "mismatchingSheet": [
+      0,
+      256,
+      256,
+      256
+    ]
+  },
+  "scopedSourceSha256": {
+    "src/game/engineFighter.js": "e33f41bbb419507735d88b1eab3c1b3aa43668a5333b68995373bb17898f8278",
+    "src/game/combat/originalFighterPresentations.js": "96235df9eb6ce585bc6774c974d79a27c2bdba7e124ed7382458f17d6ae4aa14",
+    "src/game/combat/presentationCatalog.js": "426972a3f2fbacff0861de2d92512744ace4195a7c3d575ecb47345368ada12c",
+    "scripts/originalFighterPresentations.test.mjs": "e687843c44bbb4101e93092bdcc9b4d4fe865014a3296c0b7eb394430114dc9a"
+  },
+  "rendererPoseSelectionSha256": "bc86310ad40c8a75d934e7b18bf414e71472b4bcab8d6263141db82fe23da26f",
+  "fixtureSha256": {
+    "fixture.jsx": "10fdcf1946f5aaeb3cce1828e80074b41c2e67f56c5faef5fe98cbf773b78a03",
+    "browser.py": "41a9c4fac3266ac18e33dcf71c023b95877b0945c4275ac767c66d3f5d9873f2"
+  }
+}

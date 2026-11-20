@@ -1,0 +1,68 @@
+{
+  "runtimeRevision": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+  "node": "22.23.5",
+  "tests": {
+    "ui": {
+      "tests": 580,
+      "pass": 580,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:ui-immersion",
+      "log": "ui.tap",
+      "logSha256": "8ead798c58407a43a4e76a960cb06607636caa93683f47a5f494822f00e2832d"
+    },
+    "source-contracts": {
+      "tests": 165,
+      "pass": 165,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:source-contracts",
+      "log": "source-contracts.tap",
+      "logSha256": "ffb1e81a82cc640afa65e334140b7df9287921a2ee0c59e0933444113cc1c932"
+    },
+    "rpg": {
+      "tests": 64,
+      "pass": 64,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "node --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/rpgSummon.test.mjs scripts/auditRpgLifecycle.test.mjs scripts/rpgSummonEncounterLockWave17.test.mjs scripts/summonAnimationWave9.test.mjs",
+      "log": "rpg.tap",
+      "logSha256": "48b9c083a5f6628498b3c65278a208da7bd164ffac751f12866f4102fb5e1471"
+    },
+    "tactics": {
+      "tests": 116,
+      "pass": 116,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:audit-tactics",
+      "log": "tactics.tap",
+      "logSha256": "6266c211f13af87019d7ae5eb4b7d333f07ed7f6a770ac75d646700b3199edc5"
+    },
+    "character-png": {
+      "tests": 101,
+      "pass": 101,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "npm run test:character-png",
+      "log": "character-png.tap",
+      "logSha256": "fe306034fda2790bf357d28bcb41a3363e81b4b0c3b4875d4020d304e3e3e044"
+    },
+    "ambience": {
+      "tests": 21,
+      "pass": 21,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "command": "node --test --test-concurrency=1 scripts/stageAnimationCatalog.test.mjs scripts/stageAtmosphere.test.mjs",
+      "log": "ambience.tap",
+      "logSha256": "866806ce4b491fd768311f812ea513ea062e7015c5bfb245b93b3e7761cf586b"
+    }
+  },
+  "uiTiming": "The standard UI suite ran during integration. Later changes to the Mass Effect relay are covered by final RPG and source-contract suites.",
+  "lintChangedCodeExitCode": 0
+}

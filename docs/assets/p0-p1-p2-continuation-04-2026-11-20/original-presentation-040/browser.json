@@ -1,0 +1,575 @@
+{
+  "engineCanvasCases": 4,
+  "fighterModeLaunchCases": 2,
+  "scope": "Fixture compiled from the application engine, renderer and FighterMode. Browser uses already-present real sprite files. Prepared KO damage through EngineFighter.applyHit, followed by its live presentation clock. Four winner cases and two actual setup launches at 1280 and 390 px.",
+  "cases": [
+    {
+      "kind": "engine-canvas",
+      "pair": "a",
+      "viewport": [
+        1280,
+        800
+      ],
+      "loser": "player",
+      "introAndReducedMotion": true,
+      "phases": [
+        {
+          "phase": "roundResult",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#91f0e6"
+          ]
+        },
+        {
+          "phase": "fatality",
+          "actors": [
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#91f0e6"
+          ]
+        },
+        {
+          "phase": "victory",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                0,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#91f0e6"
+          ]
+        },
+        {
+          "phase": "outro",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": []
+        }
+      ],
+      "cropMismatchProbe": {
+        "sameSheet": {
+          "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+          "crop": [
+            512,
+            768,
+            256,
+            256
+          ]
+        },
+        "foreignPoseSheet": {
+          "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+          "crop": [
+            0,
+            256,
+            256,
+            256
+          ]
+        }
+      },
+      "httpErrors": {},
+      "pageErrors": [],
+      "completionCallbacks": 1,
+      "disposed": true
+    },
+    {
+      "kind": "engine-canvas",
+      "pair": "a",
+      "viewport": [
+        1280,
+        800
+      ],
+      "loser": "cpu",
+      "introAndReducedMotion": true,
+      "phases": [
+        {
+          "phase": "roundResult",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#ffc979"
+          ]
+        },
+        {
+          "phase": "fatality",
+          "actors": [
+            "thaleia_naxos"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#ffc979"
+          ]
+        },
+        {
+          "phase": "victory",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                0,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#ffc979"
+          ]
+        },
+        {
+          "phase": "outro",
+          "actors": [
+            "thaleia_naxos",
+            "rei_kagetsu"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": []
+        }
+      ],
+      "cropMismatchProbe": null,
+      "httpErrors": {},
+      "pageErrors": [],
+      "completionCallbacks": 1,
+      "disposed": true
+    },
+    {
+      "kind": "engine-canvas",
+      "pair": "b",
+      "viewport": [
+        390,
+        844
+      ],
+      "loser": "cpu",
+      "introAndReducedMotion": true,
+      "phases": [
+        {
+          "phase": "roundResult",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#f4ce84"
+          ]
+        },
+        {
+          "phase": "fatality",
+          "actors": [
+            "lin_yue"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#f4ce84"
+          ]
+        },
+        {
+          "phase": "victory",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                0,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#f4ce84"
+          ]
+        },
+        {
+          "phase": "outro",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                768,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": []
+        }
+      ],
+      "cropMismatchProbe": null,
+      "httpErrors": {},
+      "pageErrors": [],
+      "completionCallbacks": 1,
+      "disposed": true
+    },
+    {
+      "kind": "engine-canvas",
+      "pair": "b",
+      "viewport": [
+        1280,
+        800
+      ],
+      "loser": "player",
+      "introAndReducedMotion": true,
+      "phases": [
+        {
+          "phase": "roundResult",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                512,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#9fbcff"
+          ]
+        },
+        {
+          "phase": "fatality",
+          "actors": [
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                512,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#9fbcff"
+          ]
+        },
+        {
+          "phase": "victory",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                0,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": [
+            "#9fbcff"
+          ]
+        },
+        {
+          "phase": "outro",
+          "actors": [
+            "lin_yue",
+            "seyra_tal"
+          ],
+          "spriteCrops": [
+            {
+              "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png",
+              "crop": [
+                512,
+                768,
+                256,
+                256
+              ]
+            },
+            {
+              "path": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+              "crop": [
+                256,
+                0,
+                256,
+                256
+              ]
+            }
+          ],
+          "effectColors": []
+        }
+      ],
+      "cropMismatchProbe": null,
+      "httpErrors": {},
+      "pageErrors": [],
+      "completionCallbacks": 1,
+      "disposed": true
+    },
+    {
+      "kind": "FighterMode-launch",
+      "pair": "a",
+      "viewport": [
+        1280,
+        800
+      ],
+      "reducedMotion": "no-preference",
+      "captions": [
+        "Thaleia suit le premier fil",
+        "Rei lit les sceaux de papier"
+      ],
+      "bodyPaths": [
+        "/sprites/generated/heroes/aegea-war-of-the-moirai/thaleia-naxos-v2-fidelity-wave10-2026-10-25.png",
+        "/sprites/generated/heroes/yomi-no-kage/rei-kagetsu-v2-fidelity-wave10-2026-10-25.png"
+      ],
+      "overlayVisible": true,
+      "httpErrors": {},
+      "pageErrors": []
+    },
+    {
+      "kind": "FighterMode-launch",
+      "pair": "b",
+      "viewport": [
+        390,
+        844
+      ],
+      "reducedMotion": "reduce",
+      "captions": [
+        "Lin relève le ciel",
+        "Seyra équilibre les masses"
+      ],
+      "bodyPaths": [
+        "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+        "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue-v2-fidelity-wave9-2026-10-25.png"
+      ],
+      "overlayVisible": false,
+      "httpErrors": {},
+      "pageErrors": []
+    }
+  ],
+  "fixtureViteBuild": {
+    "exitCode": 0,
+    "completeAppPrebuild": false,
+    "staticMediaCopied": false
+  },
+  "captureSha256": {
+    "duel-finale-seyra-tal.jpg": "a44098a1db4339f06e129b7c3ef21bae31e2adc7785e5112e1a8d86186750258",
+    "duel-finale-thaleia-naxos.jpg": "22c959a0cbc11a8b6342fe8008e849102fb9a7185b1d36df253ab9bae15e9643"
+  }
+}

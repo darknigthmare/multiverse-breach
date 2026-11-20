@@ -1,0 +1,21 @@
+{
+  "command": "node --max-old-space-size=1800 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-reporter=tap scripts/originalMachineActors.test.mjs",
+  "nodeVersion": "v24.19.0",
+  "pass": 5,
+  "fail": 0,
+  "testedRpg": "A real EngineRpg custom PvP action with SignatureDirector. Confirmed line with one target outside, synchronized ATB and charge, hits at tick 18 only and no repeat. No browser run in this receipt.",
+  "comparisonInputs": {
+    "baselineRawResolverProbe": "d12182e1556a318254ebf3af903c41b7f1ac5d88de46ae33bc5b90beef57e5e5",
+    "currentRawResolverProbe": "d90a5c6113601c1cc1defa9f7258b7827b01cc7be88783dd4f83d8540a85b268",
+    "fortyPreviousTaskRecords": "7419d8c366c99362bf5f0e1d616412a07ec294b6960210c3cd1b959cc0be2072"
+  },
+  "sourceSha256": {
+    "src/game/originalMachineActorDesigns.js": "dcc808a5bf62e54ca4d75b4b7dc1936fdda11ef535888361fc124a9a158df71f",
+    "src/game/actorFidelityBacklog.js": "dc6586ca219b14a76ff6318408fd314d9886e5ed2184210f1763ebc695aab167",
+    "src/game/wardrobe.js": "bea0123091734747e95b0ce4f68a0f10dc374205d9ecdf3dd8f0f9fd6c372a2b",
+    "src/game/rpgTargeting.js": "aa1d03e28199ac5926d3494c3bd6548d73d89fda151e2b0eecb87ba0299c9c77",
+    "scripts/originalMachineActors.test.mjs": "3e4e13a26cb98fc15ec7e778f86ed140885553577c1289d8626fb292409f2556"
+  },
+  "durationMs": 6297.303794,
+  "tapSha256": "663e86adf06795a0c974197fa16f76fe251afe6e2264ca1007f2cc46ab39027b"
+}

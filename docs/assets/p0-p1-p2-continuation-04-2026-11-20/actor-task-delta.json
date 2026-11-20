@@ -1,0 +1,551 @@
+{
+  "previousLedgerCheckpoint": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+  "previousLedgerSha256": "5f19cba1d38b003984a508cbe87028780d770b21e09fb868560e89f8a46d0e41",
+  "baseRevision": "94c5245fb",
+  "sourceAndAssetTreeCommit": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+  "actorExportSha256": "fb31e772c51aa1e611429337af6040ef42ead74b591a0a7b3b14a1702429a181",
+  "summary": {
+    "version": "R14",
+    "sourceBaseCommit": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+    "assetTreeCommit": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+    "scope": "All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.",
+    "actors": 4937,
+    "heroes": 1912,
+    "universes": 525,
+    "originalIdentities": 312,
+    "externalOrUnresolved": 4625,
+    "actorsWithOfficialVariants": 55,
+    "actorsWithMissingRaster": 1470,
+    "actorsWithStaticGameplay": 10,
+    "actorsWithGenericTechniqueNames": 1309,
+    "continuitiesRecovered": 1401,
+    "structuredContinuitiesRecovered": 60,
+    "actorContinuityAmbiguities": 2,
+    "continuityConflicts": 0,
+    "incarnationsUnspecified": 3138,
+    "visualContractsMissing": 2979,
+    "visualContractsGeneric": 213,
+    "historicalP0": "Not reclassified by this export; see prior fidelity audit. P1/P2 here prioritize newly exported work only.",
+    "newArtApprovals": 0,
+    "newSpriteFiles": 0,
+    "reviewComplete": 0
+  },
+  "beforeTotals": {
+    "P2": 13582,
+    "P1": 16653
+  },
+  "afterTotals": {
+    "P2": 13582,
+    "P1": 16572
+  },
+  "removedTotals": {
+    "P1": 81
+  },
+  "addedTotals": {},
+  "removedByCode": {
+    "INCARNATION_UNSPECIFIED": 40,
+    "VISUAL_CONTRACT_MISSING": 40,
+    "STATIC_GAMEPLAY_REVIEW": 1
+  },
+  "reservations": {
+    "priorUnique": 240,
+    "current": {
+      "technology-actors-040": 40,
+      "original-presentation-040": 40
+    },
+    "overlap": 0
+  },
+  "changedRuntimeAssets": [
+    "A\tpublic/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png"
+  ],
+  "historicalP0Open": 22,
+  "removed": [
+    {
+      "actorKey": "[\"Helios 56\",\"id:aura_7\"]",
+      "actorName": "AURA-7",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:aura_7\"]",
+      "actorName": "AURA-7",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:celeste_ray\"]",
+      "actorName": "Dr Celeste Ray",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:celeste_ray\"]",
+      "actorName": "Dr Celeste Ray",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:helio_1_smiling_sun_reactor\"]",
+      "actorName": "HELIO-1, Smiling Sun Reactor",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:helio_1_smiling_sun_reactor\"]",
+      "actorName": "HELIO-1, Smiling Sun Reactor",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:nova_bell\"]",
+      "actorName": "Nova Bell",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:nova_bell\"]",
+      "actorName": "Nova Bell",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:anton_rook\"]",
+      "actorName": "Anton Rook",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:anton_rook\"]",
+      "actorName": "Anton Rook",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:ilya_cross\"]",
+      "actorName": "Ilya Cross",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:ilya_cross\"]",
+      "actorName": "Ilya Cross",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:black_zephyr_ace\"]",
+      "actorName": "Black Zephyr Ace",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:black_zephyr_ace\"]",
+      "actorName": "Black Zephyr Ace",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:fuel_hound\"]",
+      "actorName": "Fuel Hound",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:fuel_hound\"]",
+      "actorName": "Fuel Hound",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:gyro_trooper\"]",
+      "actorName": "Gyro Trooper",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:gyro_trooper\"]",
+      "actorName": "Gyro Trooper",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:marshal_volgra\"]",
+      "actorName": "Marshal Volgra",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:marshal_volgra\"]",
+      "actorName": "Marshal Volgra",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:moloch_continental_landship\"]",
+      "actorName": "Moloch Continental Landship",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:moloch_continental_landship\"]",
+      "actorName": "Moloch Continental Landship",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:propaganda_drone\"]",
+      "actorName": "Propaganda Drone",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:propaganda_drone\"]",
+      "actorName": "Propaganda Drone",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:rail_cannon_behemoth\"]",
+      "actorName": "Rail-Cannon Behemoth",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:rail_cannon_behemoth\"]",
+      "actorName": "Rail-Cannon Behemoth",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:soot_legionnaire\"]",
+      "actorName": "Soot Legionnaire",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:soot_legionnaire\"]",
+      "actorName": "Soot Legionnaire",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:trench_automaton\"]",
+      "actorName": "Trench Automaton",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:trench_automaton\"]",
+      "actorName": "Trench Automaton",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:mara_veylan\"]",
+      "actorName": "Mara Veylan",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:mara_veylan\"]",
+      "actorName": "Mara Veylan",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:brother_ors\"]",
+      "actorName": "Frère Ors",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:brother_ors\"]",
+      "actorName": "Frère Ors",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:lio_ferrante\"]",
+      "actorName": "Lio Ferrante",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:lio_ferrante\"]",
+      "actorName": "Lio Ferrante",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:chronophage_of_the_last_meridian\"]",
+      "actorName": "Chronophage of the Last Meridian",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:chronophage_of_the_last_meridian\"]",
+      "actorName": "Chronophage of the Last Meridian",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:escapement_guard\"]",
+      "actorName": "Escapement Guard",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:escapement_guard\"]",
+      "actorName": "Escapement Guard",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:gearwing_falcon\"]",
+      "actorName": "Gearwing Falcon",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:gearwing_falcon\"]",
+      "actorName": "Gearwing Falcon",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:hour_thief\"]",
+      "actorName": "Hour-Thief",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:hour_thief\"]",
+      "actorName": "Hour-Thief",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:maestro_vellum\"]",
+      "actorName": "Maestro Vellum",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:maestro_vellum\"]",
+      "actorName": "Maestro Vellum",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:orloj_duelist\"]",
+      "actorName": "Orloj Duelist",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:orloj_duelist\"]",
+      "actorName": "Orloj Duelist",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:pendulum_penitent\"]",
+      "actorName": "Pendulum Penitent",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:pendulum_penitent\"]",
+      "actorName": "Pendulum Penitent",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:springblade_automaton\"]",
+      "actorName": "Springblade Automaton",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:springblade_automaton\"]",
+      "actorName": "Springblade Automaton",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:the_twelve_bell_judges\"]",
+      "actorName": "The Twelve Bell Judges",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:the_twelve_bell_judges\"]",
+      "actorName": "The Twelve Bell Judges",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:seraphine_meridius\"]",
+      "actorName": "Seraphine Meridius",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:seraphine_meridius\"]",
+      "actorName": "Seraphine Meridius",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorName": "Aether Mite Swarm",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorName": "Aether Mite Swarm",
+      "code": "STATIC_GAMEPLAY_REVIEW",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorName": "Aether Mite Swarm",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:brass_constable\"]",
+      "actorName": "Brass Constable",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:brass_constable\"]",
+      "actorName": "Brass Constable",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:coalbound_golem\"]",
+      "actorName": "Coalbound Golem",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:coalbound_golem\"]",
+      "actorName": "Coalbound Golem",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:crown_of_storms_leviathan_engine\"]",
+      "actorName": "Crown of Storms, Leviathan Engine",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:crown_of_storms_leviathan_engine\"]",
+      "actorName": "Crown of Storms, Leviathan Engine",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:duchess_caldera\"]",
+      "actorName": "Duchess Caldera",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:duchess_caldera\"]",
+      "actorName": "Duchess Caldera",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:hms_sovereign_automaton\"]",
+      "actorName": "HMS Sovereign Automaton",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:hms_sovereign_automaton\"]",
+      "actorName": "HMS Sovereign Automaton",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:lord_pneuma\"]",
+      "actorName": "Lord Pneuma",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:lord_pneuma\"]",
+      "actorName": "Lord Pneuma",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:pressure_wraith\"]",
+      "actorName": "Pressure Wraith",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:pressure_wraith\"]",
+      "actorName": "Pressure Wraith",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:sky_corsair_press_gang\"]",
+      "actorName": "Sky Corsair Press-Gang",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:sky_corsair_press_gang\"]",
+      "actorName": "Sky Corsair Press-Gang",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:bram_quill\"]",
+      "actorName": "Bram Quill",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:bram_quill\"]",
+      "actorName": "Bram Quill",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:elara_voss\"]",
+      "actorName": "Elara Voss",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:elara_voss\"]",
+      "actorName": "Elara Voss",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:merek_flint\"]",
+      "actorName": "Merek Flint",
+      "code": "INCARNATION_UNSPECIFIED",
+      "priority": "P1"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:merek_flint\"]",
+      "actorName": "Merek Flint",
+      "code": "VISUAL_CONTRACT_MISSING",
+      "priority": "P1"
+    }
+  ],
+  "added": []
+}

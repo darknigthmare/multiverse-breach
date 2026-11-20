@@ -1,0 +1,78 @@
+{
+  "verification": "Per-actor projection of the historical static file and the candidate selecting the new atlas",
+  "sourceBaseline": "94c5245fb69fb8a314ec428bd2ec11a9326287e1",
+  "old": {
+    "relative": "public/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png",
+    "sha": "190d90c186ce031cedbc16345cbf2e5080c7e912",
+    "size": 819722,
+    "sha256": "fefbb1ef26a4a04742ccad04c8b4dd2d9af352063582094969c09c77e898118f"
+  },
+  "next": {
+    "relative": "public/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png",
+    "sha": "79795fabba364bfd96133c2e1da5db939a46033b",
+    "size": 1138710,
+    "sha256": "18ddc4a57317a8c7aecdb1c10a84912745e14dece6c89a4fddaacca221f319d0"
+  },
+  "before": {
+    "raster": {
+      "path": "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png",
+      "context": "enemy-sheet",
+      "state": "idle",
+      "columns": 1,
+      "rows": 1,
+      "artApproved": false,
+      "status": "PRESENT_IN_GIT",
+      "present": true,
+      "gitBlob": "190d90c186ce031cedbc16345cbf2e5080c7e912",
+      "bytes": 819722
+    },
+    "tasks": [
+      {
+        "code": "INTERNAL_DESIGN_REVIEW",
+        "priority": "P2"
+      },
+      {
+        "code": "STATIC_GAMEPLAY_REVIEW",
+        "priority": "P1"
+      },
+      {
+        "code": "ORIGINAL_COSTUME_ARTWORK",
+        "priority": "P2"
+      },
+      {
+        "code": "ANIMATION_AND_VISUAL_REVIEW",
+        "priority": "P2"
+      }
+    ],
+    "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]"
+  },
+  "after": {
+    "raster": {
+      "path": "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png",
+      "context": "enemy-sheet",
+      "state": "idle",
+      "columns": 4,
+      "rows": 4,
+      "artApproved": false,
+      "status": "PRESENT_IN_GIT",
+      "present": true,
+      "gitBlob": "79795fabba364bfd96133c2e1da5db939a46033b",
+      "bytes": 1138710
+    },
+    "tasks": [
+      {
+        "code": "INTERNAL_DESIGN_REVIEW",
+        "priority": "P2"
+      },
+      {
+        "code": "ORIGINAL_COSTUME_ARTWORK",
+        "priority": "P2"
+      },
+      {
+        "code": "ANIMATION_AND_VISUAL_REVIEW",
+        "priority": "P2"
+      }
+    ],
+    "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]"
+  }
+}

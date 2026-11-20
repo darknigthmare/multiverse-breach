@@ -1,0 +1,99 @@
+{
+  "checks": [
+    {
+      "name": "all",
+      "command": [
+        "node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/all.json"
+      ],
+      "seconds": 5.881,
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "all",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 505,
+      "modules": 2867,
+      "dlcModules": 2038,
+      "javascriptBytes": 53050854,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "name": "base",
+      "command": [
+        "node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "config/dlc-profiles/base.json"
+      ],
+      "seconds": 5.133,
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "base",
+        "packIds": [],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 0,
+      "modules": 830,
+      "dlcModules": 0,
+      "javascriptBytes": 49772005,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    },
+    {
+      "name": "mass-effect",
+      "command": [
+        "node",
+        "--max-old-space-size=4096",
+        "scripts/checkDlcProfileBundle.mjs",
+        "--profile",
+        "/tmp/mvb-pass04-builds/mass-effect.json"
+      ],
+      "seconds": 6.946,
+      "schemaVersion": 1,
+      "passed": true,
+      "profile": {
+        "schemaVersion": 1,
+        "mode": "selected",
+        "packIds": [
+          "mass-effect"
+        ],
+        "sharedPolicy": "preserve-all"
+      },
+      "selectedPacks": 1,
+      "modules": 841,
+      "dlcModules": 11,
+      "javascriptBytes": 49794031,
+      "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+      "emittedFiles": 0
+    }
+  ],
+  "workingTreeInputSha256": {
+    "package.json": "a9b9afdf97b2f63051c58c39a8fe483c298db859c753ac501025feaad6a8e8d2",
+    "src/game/actorFidelityBacklog.js": "dc6586ca219b14a76ff6318408fd314d9886e5ed2184210f1763ebc695aab167",
+    "src/game/combat/originalFighterPresentations.js": "96235df9eb6ce585bc6774c974d79a27c2bdba7e124ed7382458f17d6ae4aa14",
+    "src/game/combat/presentationCatalog.js": "426972a3f2fbacff0861de2d92512744ace4195a7c3d575ecb47345368ada12c",
+    "src/game/combatIdentity.js": "1a181d6e97c7a95cf9d80d95644bb1f0a7976c378da92a6e65e4632cc8db7096",
+    "src/game/engineFighter.js": "e33f41bbb419507735d88b1eab3c1b3aa43668a5333b68995373bb17898f8278",
+    "src/game/engineRpg.js": "86496015e0235526093d4ae51eef4c6c653bde834d3687643dd1821999a965ac",
+    "src/game/melee/stageAnimationCatalog.js": "fae73ca431feebca817478468461336a6002c6150539c4026e7413e305ea734d",
+    "src/game/melee/stageAtmosphere.js": "53aa39dff31bc4be962cdeda9bb51950423574bd82fb6af16246a485b7e783af",
+    "src/game/originalMachineActorDesigns.js": "dcc808a5bf62e54ca4d75b4b7dc1936fdda11ef535888361fc124a9a158df71f",
+    "src/game/renderer.js": "0bc6756229f78c5704dd56e2bb2f337090b15ca7fea65ed8edf2f3536b68bbf5",
+    "src/game/rpgTargeting.js": "aa1d03e28199ac5926d3494c3bd6548d73d89fda151e2b0eecb87ba0299c9c77",
+    "src/game/spriteAssets.js": "b133060be33bf5dae49fa3be9f6a83b385ef4fd9b5195fc879574be4a3246909",
+    "src/game/tacticsVerticalRuntime.js": "086d68ad2892498744cb5c9b94884ff9bfd77dc83d81ba588063e698f28381e5",
+    "src/game/wardrobe.js": "bea0123091734747e95b0ce4f68a0f10dc374205d9ecdf3dd8f0f9fd6c372a2b"
+  },
+  "changedInputsStableDuringBuilds": true
+}

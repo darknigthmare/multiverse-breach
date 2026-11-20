@@ -1,0 +1,661 @@
+
+> lively-darwin@0.0.0 test:character-png
+> node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/installGeneratedBitmap.test.mjs scripts/installReferencedCharacterImages.test.mjs scripts/installWebReferencedCharacterImages.test.mjs scripts/crustaceousRexSprite.test.mjs scripts/technicalSpritePackingRevalidation.test.mjs scripts/pinkyClassicAssets.test.mjs scripts/reviewedRevanSprite.test.mjs scripts/impClassicAssets.test.mjs scripts/mancubusClassicAssets.test.mjs scripts/batmanReviewedQuarantine20261113.test.mjs scripts/pachakutiWorldBossArt.test.mjs scripts/aetherMiteSprite.test.mjs
+
+TAP version 13
+# (node:47582) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original swarm selects its animated atlas and keeps its static appearance when unavailable
+ok 1 - the original swarm selects its animated atlas and keeps its static appearance when unavailable
+  ---
+  duration_ms: 4.052022
+  type: 'test'
+  ...
+# Subtest: the four game states reach sixteen distinct cells and retain the same hover anchor
+ok 2 - the four game states reach sixteen distinct cells and retain the same hover anchor
+  ---
+  duration_ms: 216.657309
+  type: 'test'
+  ...
+# (node:47597) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the actually inspected civilian atlas stays intact but is unavailable for the exact 2008 Batsuit
+ok 3 - the actually inspected civilian atlas stays intact but is unavailable for the exact 2008 Batsuit
+  ---
+  duration_ms: 20.406243
+  type: 'test'
+  ...
+# Subtest: combat aliases keep the gate, while another edition, universe or actor is not inferred from a name
+ok 4 - combat aliases keep the gate, while another edition, universe or actor is not inferred from a name
+  ---
+  duration_ms: 0.860377
+  type: 'test'
+  ...
+# Subtest: real body and HUD renderers draw an explicit pending silhouette without loading an unrelated bitmap
+ok 5 - real body and HUD renderers draw an explicit pending silhouette without loading an unrelated bitmap
+  ---
+  duration_ms: 1.299846
+  type: 'test'
+  ...
+# (node:47706) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: C-Rex is a real transparent single-frame PNG with recorded generation and reference review
+ok 6 - C-Rex is a real transparent single-frame PNG with recorded generation and reference review
+  ---
+  duration_ms: 4.92665
+  type: 'test'
+  ...
+# Subtest: the recorded alpha bounds retain the full silhouette and only negligible fringe is trimmed
+ok 7 - the recorded alpha bounds retain the full silhouette and only negligible fringe is trimmed
+  ---
+  duration_ms: 23.153657
+  type: 'test'
+  ...
+# Subtest: the live boss, full catalog and UI index resolve the same reviewed static asset
+ok 8 - the live boss, full catalog and UI index resolve the same reviewed static asset
+  ---
+  duration_ms: 3.500894
+  type: 'test'
+  ...
+# Subtest: every boss state consumes the same whole source image rather than a 4 by 4 atlas cell
+ok 9 - every boss state consumes the same whole source image rather than a 4 by 4 atlas cell
+  ---
+  duration_ms: 1.764882
+  type: 'test'
+  ...
+# Subtest: the real generated-sprite draw routine keeps the silhouette grounded at game scales in both facings
+ok 10 - the real generated-sprite draw routine keeps the silhouette grounded at game scales in both facings
+  ---
+  duration_ms: 12.46661
+  type: 'test'
+  ...
+# (node:47819) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: classic Imp keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+ok 11 - classic Imp keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+  ---
+  duration_ms: 3.284262
+  type: 'test'
+  ...
+# Subtest: the exact Imp resolves its delivered atlas, including preserved identities in mixed-universe encounters
+ok 12 - the exact Imp resolves its delivered atlas, including preserved identities in mixed-universe encounters
+  ---
+  duration_ms: 0.625864
+  type: 'test'
+  ...
+# Subtest: the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+ok 13 - the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+  ---
+  duration_ms: 33.322302
+  type: 'test'
+  ...
+# Subtest: sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+ok 14 - sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+  ---
+  duration_ms: 426.000348
+  type: 'test'
+  ...
+# (node:47835) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: bitmap CLI writes the legacy public source and keeps ledger URLs and overwrite checks
+ok 15 - bitmap CLI writes the legacy public source and keeps ledger URLs and overwrite checks
+  ---
+  duration_ms: 756.494208
+  type: 'test'
+  ...
+# Subtest: bitmap CLI writes the canonical DLC source and keeps ledger URLs and overwrite checks
+ok 16 - bitmap CLI writes the canonical DLC source and keeps ledger URLs and overwrite checks
+  ---
+  duration_ms: 702.778233
+  type: 'test'
+  ...
+# (node:47940) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: one uniform scale packs all original frames with RGBA and transparent 12 px guards
+ok 17 - one uniform scale packs all original frames with RGBA and transparent 12 px guards
+  ---
+  duration_ms: 301.870419
+  type: 'test'
+  ...
+# Subtest: strict source rejects empty cells and clipped poses before any packing
+ok 18 - strict source rejects empty cells and clipped poses before any packing
+  ---
+  duration_ms: 9.690561
+  type: 'test'
+  ...
+# Subtest: source must be actual RGBA PNG and have a four by four layout
+ok 19 - source must be actual RGBA PNG and have a four by four layout
+  ---
+  duration_ms: 9.424138
+  type: 'test'
+  ...
+# Subtest: non-divisible dimensions use rounded source grid edges without resizing before extraction
+ok 20 - non-divisible dimensions use rounded source grid edges without resizing before extraction
+  ---
+  duration_ms: 104.010391
+  type: 'test'
+  ...
+# Subtest: a complete component crossing a virtual cell boundary remains intact without moving its inner pixels
+ok 21 - a complete component crossing a virtual cell boundary remains intact without moving its inner pixels
+  ---
+  duration_ms: 204.032518
+  type: 'test'
+  ...
+# Subtest: component layout associates detached satellites by bbox and preserves their original distance
+ok 22 - component layout associates detached satellites by bbox and preserves their original distance
+  ---
+  duration_ms: 161.977064
+  type: 'test'
+  ...
+# Subtest: strict packing ignores remote weak alpha noise and preserves the 4 px fringe and feet baseline
+ok 23 - strict packing ignores remote weak alpha noise and preserves the 4 px fringe and feet baseline
+  ---
+  duration_ms: 704.90107
+  type: 'test'
+  ...
+# Subtest: component packing ignores remote weak alpha noise and preserves the 4 px fringe and feet baseline
+ok 24 - component packing ignores remote weak alpha noise and preserves the 4 px fringe and feet baseline
+  ---
+  duration_ms: 424.380286
+  type: 'test'
+  ...
+# Subtest: component layout refuses opaque outer borders, missing bodies, fused bodies and ambiguous satellites
+ok 25 - component layout refuses opaque outer borders, missing bodies, fused bodies and ambiguous satellites
+  ---
+  duration_ms: 106.140842
+  type: 'test'
+  ...
+# Subtest: successful install emits only public hashes and geometry and never touches historical ledger
+ok 26 - successful install emits only public hashes and geometry and never touches historical ledger
+  ---
+  duration_ms: 323.810312
+  type: 'test'
+  ...
+# Subtest: installation refuses traversal, mismatched hashes and false visual fidelity claims
+ok 27 - installation refuses traversal, mismatched hashes and false visual fidelity claims
+  ---
+  duration_ms: 50.14129
+  type: 'test'
+  ...
+# Subtest: actual OC IDs containing a colon and root-relative reference outputs are supported
+ok 28 - actual OC IDs containing a colon and root-relative reference outputs are supported
+  ---
+  duration_ms: 143.861597
+  type: 'test'
+  ...
+# Subtest: existing destination and symlink parents are rejected without altering their bytes
+ok 29 - existing destination and symlink parents are rejected without altering their bytes
+  ---
+  duration_ms: 9.155524
+  type: 'test'
+  ...
+# Subtest: all jobs validate before mutation and a later failed source leaves no outputs
+ok 30 - all jobs validate before mutation and a later failed source leaves no outputs
+  ---
+  duration_ms: 186.987759
+  type: 'test'
+  ...
+# Subtest: commit failure rolls back every newly created PNG and leaves the prior ledger untouched
+ok 31 - commit failure rolls back every newly created PNG and leaves the prior ledger untouched
+  ---
+  duration_ms: 287.08069
+  type: 'test'
+  ...
+# Subtest: failed final audit rolls back both PNG and new public manifest
+ok 32 - failed final audit rolls back both PNG and new public manifest
+  ---
+  duration_ms: 168.038863
+  type: 'test'
+  ...
+# Subtest: duplicate outputs are refused before any installation
+ok 33 - duplicate outputs are refused before any installation
+  ---
+  duration_ms: 132.600638
+  type: 'test'
+  ...
+# Subtest: DLC installation reads a registered public URL without a public copy and preserves provenance URLs
+ok 34 - DLC installation reads a registered public URL without a public copy and preserves provenance URLs
+  ---
+  duration_ms: 488.182891
+  type: 'test'
+  ...
+# Subtest: DLC installation reads a registered canonical source without a public copy and preserves provenance URLs
+ok 35 - DLC installation reads a registered canonical source without a public copy and preserves provenance URLs
+  ---
+  duration_ms: 292.209082
+  type: 'test'
+  ...
+# Subtest: a DLC reference needs a registered mapping and cannot be replaced by a private path or symlink
+ok 36 - a DLC reference needs a registered mapping and cannot be replaced by a private path or symlink
+  ---
+  duration_ms: 44.328837
+  type: 'test'
+  ...
+# Subtest: DLC audit failure cannot make rollback follow a swapped output parent into private files
+ok 37 - DLC audit failure cannot make rollback follow a swapped output parent into private files
+  ---
+  duration_ms: 183.150292
+  type: 'test'
+  ...
+# (node:48077) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: DLC outputs remain auditable at their canonical source while web references stay private
+ok 38 - DLC outputs remain auditable at their canonical source while web references stay private
+  ---
+  duration_ms: 920.662889
+  type: 'test'
+  ...
+# Subtest: a concurrent canonical DLC destination keeps its bytes and rolls back only owned outputs
+ok 39 - a concurrent canonical DLC destination keeps its bytes and rolls back only owned outputs
+  ---
+  duration_ms: 601.547167
+  type: 'test'
+  ...
+# Subtest: DLC rollback cannot follow a swapped canonical parent to delete an outside file
+ok 40 - DLC rollback cannot follow a swapped canonical parent to delete an outside file
+  ---
+  duration_ms: 232.612968
+  type: 'test'
+  ...
+# Subtest: installs exact packed PNG and records truthful web digests without redistributing references or private evidence
+ok 41 - installs exact packed PNG and records truthful web digests without redistributing references or private evidence
+  ---
+  duration_ms: 262.562303
+  type: 'test'
+  ...
+# Subtest: an existing PNG or manifest is never overwritten, even with a valid plan
+ok 42 - an existing PNG or manifest is never overwritten, even with a valid plan
+  ---
+  duration_ms: 21.166921
+  type: 'test'
+  ...
+# Subtest: validating every job precedes all public writes, including later invalid jobs
+ok 43 - validating every job precedes all public writes, including later invalid jobs
+  ---
+  duration_ms: 100.080423
+  type: 'test'
+  ...
+# Subtest: duplicate identities and duplicate destinations fail before installing any member
+ok 44 - duplicate identities and duplicate destinations fail before installing any member
+  ---
+  duration_ms: 370.8834
+  type: 'test'
+  ...
+# Subtest: source, generation evidence, peer evidence and downloaded reference bytes must match their SHA256
+ok 45 - source, generation evidence, peer evidence and downloaded reference bytes must match their SHA256
+  ---
+  duration_ms: 119.082361
+  type: 'test'
+  ...
+# Subtest: peer acceptance is bound to the exact native image, packed image and ordered reference digests
+ok 46 - peer acceptance is bound to the exact native image, packed image and ordered reference digests
+  ---
+  duration_ms: 756.267705
+  type: 'test'
+  ...
+# Subtest: generation evidence binds the declared tool, native image and exact ordered web references
+ok 47 - generation evidence binds the declared tool, native image and exact ordered web references
+  ---
+  duration_ms: 626.661048
+  type: 'test'
+  ...
+# Subtest: multiple distinct web references are bound in their reviewed order rather than accepted as an unordered set
+ok 48 - multiple distinct web references are bound in their reviewed order rather than accepted as an unordered set
+  ---
+  duration_ms: 386.614065
+  type: 'test'
+  ...
+# Subtest: a declared reference must be HTTPS, fetched with 200, viewed, dated and incarnation-labelled
+ok 49 - a declared reference must be HTTPS, fetched with 200, viewed, dated and incarnation-labelled
+  ---
+  duration_ms: 1020.61207
+  type: 'test'
+  ...
+# Subtest: HTML masquerading as a downloaded image cannot enter the reference record
+ok 50 - HTML masquerading as a downloaded image cannot enter the reference record
+  ---
+  duration_ms: 87.648631
+  type: 'test'
+  ...
+# Subtest: a truncated PNG with readable dimensions must still fail full reference-pixel decoding
+ok 51 - a truncated PNG with readable dimensions must still fail full reference-pixel decoding
+  ---
+  duration_ms: 196.047534
+  type: 'test'
+  ...
+# Subtest: an invalid declared provider, review or kind/output association is rejected before installation
+ok 52 - an invalid declared provider, review or kind/output association is rejected before installation
+  ---
+  duration_ms: 110.193479
+  type: 'test'
+  ...
+# Subtest: destinations and private input paths reject traversal rather than escaping the repository or evidence directory
+ok 53 - destinations and private input paths reject traversal rather than escaping the repository or evidence directory
+  ---
+  duration_ms: 208.152038
+  type: 'test'
+  ...
+# Subtest: input-file and input-ancestor symlinks cannot substitute unreviewed outside evidence
+ok 54 - input-file and input-ancestor symlinks cannot substitute unreviewed outside evidence
+  ---
+  duration_ms: 16.62889
+  type: 'test'
+  ...
+# Subtest: a symlink in the repository root or an output ancestor is rejected without outside writes
+ok 55 - a symlink in the repository root or an output ancestor is rejected without outside writes
+  ---
+  duration_ms: 43.308657
+  type: 'test'
+  ...
+# Subtest: failure after writing a batch member rolls back owned PNGs and never publishes a partial manifest
+ok 56 - failure after writing a batch member rolls back owned PNGs and never publishes a partial manifest
+  ---
+  duration_ms: 214.360382
+  type: 'test'
+  ...
+# Subtest: a concurrently appearing later output is preserved while this transaction removes only its own earlier writes
+ok 57 - a concurrently appearing later output is preserved while this transaction removes only its own earlier writes
+  ---
+  duration_ms: 184.416459
+  type: 'test'
+  ...
+# Subtest: a manifest race cannot overwrite another publisher and rolls back the transaction PNG
+ok 58 - a manifest race cannot overwrite another publisher and rolls back the transaction PNG
+  ---
+  duration_ms: 195.047743
+  type: 'test'
+  ...
+# Subtest: post-write image tampering is caught by the final audit and rolls back the owned manifest and image
+ok 59 - post-write image tampering is caught by the final audit and rolls back the owned manifest and image
+  ---
+  duration_ms: 132.885335
+  type: 'test'
+  ...
+# Subtest: rollback cannot follow a swapped parent symlink to delete an outside pre-existing image
+ok 60 - rollback cannot follow a swapped parent symlink to delete an outside pre-existing image
+  ---
+  duration_ms: 144.766922
+  type: 'test'
+  ...
+# Subtest: rollback preserves a foreign replacement at an owned pathname instead of deleting its new inode
+ok 61 - rollback preserves a foreign replacement at an owned pathname instead of deleting its new inode
+  ---
+  duration_ms: 436.781734
+  type: 'test'
+  ...
+# Subtest: invalid private JSON and missing private inputs produce generic errors without private bytes or locations
+ok 62 - invalid private JSON and missing private inputs produce generic errors without private bytes or locations
+  ---
+  duration_ms: 728.674302
+  type: 'test'
+  ...
+# Subtest: public notes cannot leak private filesystem paths and no private evidence fields are serialized
+ok 63 - public notes cannot leak private filesystem paths and no private evidence fields are serialized
+  ---
+  duration_ms: 54.655712
+  type: 'test'
+  ...
+# Subtest: the standalone audit detects changed PNG bytes, symlinks and falsely certified public records
+ok 64 - the standalone audit detects changed PNG bytes, symlinks and falsely certified public records
+  ---
+  duration_ms: 269.132981
+  type: 'test'
+  ...
+# Subtest: the audit rejects false public policy, provider and packed-image geometry assertions
+ok 65 - the audit rejects false public policy, provider and packed-image geometry assertions
+  ---
+  duration_ms: 197.357227
+  type: 'test'
+  ...
+# (node:48376) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: classic Mancubus keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+ok 66 - classic Mancubus keeps its stable catalogue identity and a source-specific fireball without Eternal equipment
+  ---
+  duration_ms: 2.240004
+  type: 'test'
+  ...
+# Subtest: the exact Mancubus resolves its delivered atlas, including preserved identities in mixed-universe encounters
+ok 67 - the exact Mancubus resolves its delivered atlas, including preserved identities in mixed-universe encounters
+  ---
+  duration_ms: 0.416237
+  type: 'test'
+  ...
+# Subtest: the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+ok 68 - the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+  ---
+  duration_ms: 36.376432
+  type: 'test'
+  ...
+# Subtest: sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+ok 69 - sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+  ---
+  duration_ms: 293.662367
+  type: 'test'
+  ...
+# (node:48399) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+ok 70 - the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+  ---
+  duration_ms: 2.36911
+  type: 'test'
+  ...
+# Subtest: the atlas has 16 distinct and unclipped poses on the shared game baseline
+ok 71 - the atlas has 16 distinct and unclipped poses on the shared game baseline
+  ---
+  duration_ms: 206.293426
+  type: 'test'
+  ...
+# Subtest: the outage fallback is scoped to the original event and restores transform and stroke state
+ok 72 - the outage fallback is scoped to the original event and restores transform and stroke state
+  ---
+  duration_ms: 2.150132
+  type: 'test'
+  ...
+# (node:48420) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: classic Pinky keeps its stable catalogue identity and a source-specific bite without Eternal equipment
+ok 73 - classic Pinky keeps its stable catalogue identity and a source-specific bite without Eternal equipment
+  ---
+  duration_ms: 3.255663
+  type: 'test'
+  ...
+# Subtest: the exact Pinky resolves its delivered atlas, including preserved identities in mixed-universe encounters
+ok 74 - the exact Pinky resolves its delivered atlas, including preserved identities in mixed-universe encounters
+  ---
+  duration_ms: 0.444107
+  type: 'test'
+  ...
+# Subtest: the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+ok 75 - the real PNG decodes and its rectangular cells retain the ordinary four-state renderer contract
+  ---
+  duration_ms: 38.691066
+  type: 'test'
+  ...
+# Subtest: sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+ok 76 - sixteen distinct pose cells have transparency, no clipped bodies and one stable ground baseline
+  ---
+  duration_ms: 236.25154
+  type: 'test'
+  ...
+# (node:48433) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the exact inspected single-red correction is selected while the rejected original remains quarantined
+ok 77 - the exact inspected single-red correction is selected while the rejected original remains quarantined
+  ---
+  duration_ms: 2.756212
+  type: 'test'
+  ...
+# Subtest: path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+ok 78 - path, PNG checksum, native provenance and the reviewed 16-frame layout must all match
+  ---
+  duration_ms: 0.335554
+  type: 'test'
+  ...
+# Subtest: other editions, universes and conflicting aliases cannot obtain the reviewed correction
+ok 79 - other editions, universes and conflicting aliases cannot obtain the reviewed correction
+  ---
+  duration_ms: 0.772951
+  type: 'test'
+  ...
+# Subtest: saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+ok 80 - saved cosmetic fields cannot redirect the canonical correction to the old dual-saber atlas
+  ---
+  duration_ms: 0.234683
+  type: 'test'
+  ...
+# Subtest: the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+ok 81 - the selected existing PNG bytes match the reviewed source record and retain alpha/grid dimensions
+  ---
+  duration_ms: 1.296389
+  type: 'test'
+  ...
+# (node:48445) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: current implementation reproduces the real reviewed atlas and all sixteen frames without rewriting history
+ok 82 - current implementation reproduces the real reviewed atlas and all sixteen frames without rewriting history
+  ---
+  duration_ms: 1814.889483
+  type: 'test'
+  ...
+# Subtest: proof must be explicitly supplied rather than discovered or silently accepted
+ok 83 - proof must be explicitly supplied rather than discovered or silently accepted
+  ---
+  duration_ms: 5.482893
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing current implementation
+ok 84 - rejects stale proof after changing current implementation
+  ---
+  duration_ms: 15.561524
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing revalidation tool
+ok 85 - rejects stale proof after changing revalidation tool
+  ---
+  duration_ms: 24.077354
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing historical promotion
+ok 86 - rejects stale proof after changing historical promotion
+  ---
+  duration_ms: 10.744504
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing historical preparation receipt
+ok 87 - rejects stale proof after changing historical preparation receipt
+  ---
+  duration_ms: 7.005115
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing historical independent review
+ok 88 - rejects stale proof after changing historical independent review
+  ---
+  duration_ms: 6.554437
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing source image
+ok 89 - rejects stale proof after changing source image
+  ---
+  duration_ms: 7.203954
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing source snapshot
+ok 90 - rejects stale proof after changing source snapshot
+  ---
+  duration_ms: 8.966818
+  type: 'test'
+  ...
+# Subtest: rejects stale proof after changing packed output image
+ok 91 - rejects stale proof after changing packed output image
+  ---
+  duration_ms: 10.435388
+  type: 'test'
+  ...
+# Subtest: rejects modified proof historical implementation link
+ok 92 - rejects modified proof historical implementation link
+  ---
+  duration_ms: 10.989984
+  type: 'test'
+  ...
+# Subtest: rejects modified proof declared current implementation hash
+ok 93 - rejects modified proof declared current implementation hash
+  ---
+  duration_ms: 10.538925
+  type: 'test'
+  ...
+# Subtest: rejects modified proof declared output hash
+ok 94 - rejects modified proof declared output hash
+  ---
+  duration_ms: 11.251847
+  type: 'test'
+  ...
+# Subtest: rejects modified proof frame hash
+ok 95 - rejects modified proof frame hash
+  ---
+  duration_ms: 12.039963
+  type: 'test'
+  ...
+# Subtest: rejects modified proof geometry hash
+ok 96 - rejects modified proof geometry hash
+  ---
+  duration_ms: 20.436352
+  type: 'test'
+  ...
+# Subtest: rejects modified proof processing hash
+ok 97 - rejects modified proof processing hash
+  ---
+  duration_ms: 10.992988
+  type: 'test'
+  ...
+# Subtest: rejects modified proof new visual approval claim
+ok 98 - rejects modified proof new visual approval claim
+  ---
+  duration_ms: 7.412709
+  type: 'test'
+  ...
+# Subtest: generation refuses a changed output before writing any proof
+ok 99 - generation refuses a changed output before writing any proof
+  ---
+  duration_ms: 9.879612
+  type: 'test'
+  ...
+# Subtest: generation recomputes frame pixels instead of trusting consistent but false historical claims
+ok 100 - generation recomputes frame pixels instead of trusting consistent but false historical claims
+  ---
+  duration_ms: 859.886648
+  type: 'test'
+  ...
+# Subtest: generation cannot overwrite the historical receipt or a different existing proof
+ok 101 - generation cannot overwrite the historical receipt or a different existing proof
+  ---
+  duration_ms: 1741.940353
+  type: 'test'
+  ...
+1..101
+# tests 101
+# suites 0
+# pass 101
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 50996.50763
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

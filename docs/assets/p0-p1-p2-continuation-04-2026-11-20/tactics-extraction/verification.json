@@ -1,0 +1,223 @@
+{
+  "browser": "Chromium 151.0.7922.173",
+  "viewport": [
+    1280,
+    900
+  ],
+  "scope": "Isolated Vite fixture with real CustomBattleMode and EngineTactics. The runner uses inspection API only to select each surface. Keyboard Enter and real End Turn buttons handle combat. Engine wrappers observe update and completion and delegate to the actual methods. P2 is moved aside with the real controls to open the path. Media are served from the existing checkout. Before and after compare the Tactics behavior while other code was being developed in parallel.",
+  "start": {
+    "hero": "ground:0:3",
+    "enemy": "catwalk:5:2",
+    "enemyName": "Greffier du Voile"
+  },
+  "sameStepsInBothRuns": [
+    {
+      "from": "catwalk:5:2",
+      "to": "catwalk:3:2",
+      "cost": 2,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "catwalk:3:2",
+      "to": "stairs:2:3",
+      "cost": 2,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "stairs:2:3",
+      "to": "stairs:2:4",
+      "cost": 2,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "stairs:2:4",
+      "to": "stairs:2:5",
+      "cost": 2,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "stairs:2:5",
+      "to": "ground:2:6",
+      "cost": 2,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "ground:2:6",
+      "to": "ground:3:6",
+      "cost": 1,
+      "goal": "ground:3:6",
+      "side": "enemy"
+    },
+    {
+      "from": "ground:0:3",
+      "to": "ground:0:5",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "ground:0:5",
+      "to": "ground:1:6",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "ground:1:6",
+      "to": "ground:2:6",
+      "cost": 1,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "ground:2:6",
+      "to": "stairs:2:5",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "stairs:2:5",
+      "to": "stairs:2:4",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "stairs:2:4",
+      "to": "stairs:2:3",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "stairs:2:3",
+      "to": "catwalk:3:2",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "catwalk:3:2",
+      "to": "catwalk:5:2",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "catwalk:5:2",
+      "to": "catwalk:7:2",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "catwalk:7:2",
+      "to": "catwalk:8:3",
+      "cost": 2,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    },
+    {
+      "from": "catwalk:8:3",
+      "to": "catwalk:8:4",
+      "cost": 1,
+      "goal": "catwalk:8:4",
+      "side": "hero"
+    }
+  ],
+  "browserRuns": {
+    "before": {
+      "phase": "before",
+      "observed": {
+        "probe": {
+          "ticks": 3,
+          "completions": [
+            {
+              "result": "victory",
+              "surface": "catwalk:8:4",
+              "renderSurface": "catwalk:8:3",
+              "motion": true,
+              "progress": 1,
+              "events": 1,
+              "target": 1
+            }
+          ],
+          "events": [
+            0,
+            1,
+            1
+          ]
+        },
+        "result": "victory",
+        "progress": 1,
+        "phase": "end"
+      },
+      "errors": [],
+      "bundle": "index-DTGveudl.js",
+      "bundleSha256": "ce2bbc5d4742c4dbd4e407fafd2677ebb6915b8b1f13bcb9fadc24120eb3057a"
+    },
+    "after": {
+      "phase": "after",
+      "observed": {
+        "probe": {
+          "ticks": 10,
+          "completions": [
+            {
+              "result": "victory",
+              "surface": "catwalk:8:4",
+              "renderSurface": "catwalk:8:4",
+              "motion": false,
+              "progress": 1,
+              "events": 1,
+              "target": 1
+            }
+          ],
+          "events": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "result": "victory",
+        "progress": 1,
+        "phase": "end"
+      },
+      "errors": [],
+      "bundle": "index-DmUeQpv2.js",
+      "bundleSha256": "002ce3ff373b3e11e34b583bccd44db02ff51f6445aaec8786065e23bc2202a6"
+    }
+  },
+  "node": "22.23.5",
+  "engineTests": {
+    "beforeFix": {
+      "tests": 2,
+      "pass": 0,
+      "fail": 2,
+      "tapSha256": "92879c551d864aad96cbb38af4be4fb5d646135848a89b993f5749c5f9f22815"
+    },
+    "afterFix": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "tapSha256": "ecc7c84a669fcb8474a74bd5bf19139e696eee4cd826485f099fbf2448322f2e"
+    }
+  },
+  "finalTestCommand": "node --max-old-space-size=2048 --test --test-concurrency=1 scripts/tacticsVerticalIntegration.test.mjs",
+  "changedSourceSha256": {
+    "src/game/tacticsVerticalRuntime.js": "086d68ad2892498744cb5c9b94884ff9bfd77dc83d81ba588063e698f28381e5",
+    "scripts/tacticsVerticalIntegration.test.mjs": "b9cac9f22d21a25c009f13af4001dbfd821ec6a7fcf72a93b69987db5eeddea3"
+  }
+}

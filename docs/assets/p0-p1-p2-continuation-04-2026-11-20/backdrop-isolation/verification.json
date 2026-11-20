@@ -1,0 +1,146 @@
+{
+  "sourceBefore": "94c5245fb69fb8a314ec428bd2ec11a9326287e1",
+  "fixtureBuild": {
+    "before": {
+      "kind": "Vite code-only fixture",
+      "jsSha256": "ea4c8ef2242b5e82180ba16990ea1221af5a182848f3158c33c4f001f00b71e1"
+    },
+    "after": {
+      "kind": "Vite code-only fixture",
+      "jsSha256": "695d21d162f0fa18029de229a129ba1b3c1bc5fc7d4191725acb98a8840a75cd"
+    }
+  },
+  "environment": {
+    "node": "22.23.5",
+    "browser": "Chromium 151.0.7922.173 built on Debian GNU/Linux 13 (trixie)",
+    "mode": "Production modules in a loopback fixture. Media served from checkout or exact Git index blobs."
+  },
+  "measurement": "Clicked actual CustomBattleMode rules and launch controls. Observed drawImage calls for the Naruto WebP, separated by whether the source width equals the waterfall crop width. Counted moveTo draws under the existing waterfall stroke color once EngineSmash released intro input. Reduced-motion media query set in Chromium.",
+  "before": [
+    {
+      "viewport": [
+        1280,
+        820
+      ],
+      "motion": "no-preference",
+      "series": "shippuden",
+      "name": "Simulation Custom - Naruto Shippuden",
+      "universe": "Naruto Shippuden",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 21,
+      "fullCalls": 0,
+      "markerCount": 231,
+      "distinctFirstStreamCoordinates": 21,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "motion": "no-preference",
+      "series": "base",
+      "name": "Simulation Custom - Naruto",
+      "universe": "Naruto",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 14,
+      "fullCalls": 14,
+      "markerCount": 154,
+      "distinctFirstStreamCoordinates": 14,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "motion": "reduce",
+      "series": "shippuden",
+      "name": "Simulation Custom - Naruto Shippuden",
+      "universe": "Naruto Shippuden",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 16,
+      "fullCalls": 0,
+      "markerCount": 176,
+      "distinctFirstStreamCoordinates": 1,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "after": [
+    {
+      "viewport": [
+        1280,
+        820
+      ],
+      "motion": "no-preference",
+      "series": "shippuden",
+      "name": "Simulation Custom - Naruto Shippuden",
+      "universe": "Naruto Shippuden",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 0,
+      "fullCalls": 0,
+      "markerCount": 176,
+      "distinctFirstStreamCoordinates": 16,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "motion": "no-preference",
+      "series": "base",
+      "name": "Simulation Custom - Naruto",
+      "universe": "Naruto",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 13,
+      "fullCalls": 13,
+      "markerCount": 143,
+      "distinctFirstStreamCoordinates": 13,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "motion": "reduce",
+      "series": "shippuden",
+      "name": "Simulation Custom - Naruto Shippuden",
+      "universe": "Naruto Shippuden",
+      "mode": "Smash",
+      "matchInputLocked": false,
+      "cropCalls": 0,
+      "fullCalls": 0,
+      "markerCount": 176,
+      "distinctFirstStreamCoordinates": 1,
+      "disposed": true,
+      "pageErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "capturesSha256": {
+    "shippuden-after.jpg": "6a74cf17de7d4754ee5f903e47ea99577ac5b206b43f312e5c9c703704109012",
+    "shippuden-before.jpg": "7743d97809d2f94388c2d8109776d1594f8811f4385da09c2c274bf78598ba04"
+  },
+  "targetedTests": {
+    "passed": 20,
+    "failed": 0,
+    "excludedLocalPhysicalTest": "four-phase local effect atlases are played from their real distinct transparent cells"
+  }
+}

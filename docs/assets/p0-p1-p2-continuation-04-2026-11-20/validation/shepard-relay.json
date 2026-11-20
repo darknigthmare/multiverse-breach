@@ -1,0 +1,49 @@
+{
+  "baseRevision": "94c5245fb69fb8a314ec428bd2ec11a9326287e1",
+  "runtimeRevision": "e6fb6bdd6bc6d1d9715f6294a39fe07a0003c1cd",
+  "scope": "Exact current catalogue comparison and two-camp engine tests. Wrex keeps the 2007 caller edition and uses an adapted Nexus relay.",
+  "catalogueEntriesCompared": 1911,
+  "changedPersonalKits": 0,
+  "changedRelayActors": [
+    "garrus",
+    "liara",
+    "tali",
+    "wrex"
+  ],
+  "beforeAction": "Adrenaline Rush",
+  "afterAction": "Concussive Shot",
+  "beforeSourceSlot": "secondary",
+  "afterSourceSlot": "special",
+  "actualEngineCases": 8,
+  "catalogueInputsSha256": {
+    "baseline-coverage.json": "1819a959265dc50249e6eb52d312839a3327c17230a7780e91a8ef3867577ac6",
+    "after-coverage.json": "6c20c4b1bd9d84aa47dedb3082d2bf17c577cf35b04e86547bb7a6ed051655ae"
+  },
+  "changes": [
+    {
+      "actor": "garrus",
+      "beforeSha256": "b230dd2e47e3b91c1e7de45ba6b822874b24d9623c1fcca5d3cadcdca7d8bddf",
+      "afterSha256": "6d3d0c788736670306704f03504cf94908faf68ef792c0bcc7894cce294e2903"
+    },
+    {
+      "actor": "liara",
+      "beforeSha256": "499562e9a3da20183310141355eda8ac64ecf4805ced31347dc9edd25b694946",
+      "afterSha256": "4ad8ded05eb6c0b0e6ad09e1df6376378e096c4c3677384c49acb0ff3045a683"
+    },
+    {
+      "actor": "tali",
+      "beforeSha256": "0ccd86f06ba600ab0ab7c688b1dbe802f01d565935e85c0f7a4bf87eda3cde01",
+      "afterSha256": "608c8b2e7e731e07390b3473a0bec12f951cf1adf396f93dab1d527f84e5803b"
+    },
+    {
+      "actor": "wrex",
+      "beforeSha256": "5b5e5472a6c40b5c88698617459dd47fd08669683a4412389712499338d02501",
+      "afterSha256": "f5643ce2a423a848da7fb8a8ce5b2f131c9a300933363722eba2db30a819d5b4"
+    }
+  ],
+  "testReceipts": [
+    "shepard-baseline.tap",
+    "shepard-after-wave9.tap",
+    "shepard-after-scifi.tap"
+  ]
+}

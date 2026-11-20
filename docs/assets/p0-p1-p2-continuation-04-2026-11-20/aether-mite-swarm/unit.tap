@@ -1,0 +1,79 @@
+TAP version 13
+# (node:44741) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original swarm selects its animated atlas and keeps its static appearance when unavailable
+ok 1 - the original swarm selects its animated atlas and keeps its static appearance when unavailable
+  ---
+  duration_ms: 25.121143
+  type: 'test'
+  ...
+# Subtest: the four game states reach sixteen distinct cells and retain the same hover anchor
+ok 2 - the four game states reach sixteen distinct cells and retain the same hover anchor
+  ---
+  duration_ms: 535.076535
+  type: 'test'
+  ...
+# (node:44831) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Chestburster Larva: the live DLC catalogue resolves the already delivered 1979 sheet
+ok 3 - Chestburster Larva: the live DLC catalogue resolves the already delivered 1979 sheet
+  ---
+  duration_ms: 5.211762
+  type: 'test'
+  ...
+# Subtest: Chestburster Larva: another edition, weapon, universe or organism cannot borrow the sheet
+ok 4 - Chestburster Larva: another edition, weapon, universe or organism cannot borrow the sheet
+  ---
+  duration_ms: 0.50402
+  type: 'test'
+  ...
+# Subtest: Synthetic Ash Protocol: the live DLC catalogue resolves the already delivered 1979 sheet
+ok 5 - Synthetic Ash Protocol: the live DLC catalogue resolves the already delivered 1979 sheet
+  ---
+  duration_ms: 2.121428
+  type: 'test'
+  ...
+# Subtest: Synthetic Ash Protocol: another edition, weapon, universe or organism cannot borrow the sheet
+ok 6 - Synthetic Ash Protocol: another edition, weapon, universe or organism cannot borrow the sheet
+  ---
+  duration_ms: 0.275846
+  type: 'test'
+  ...
+# Subtest: the source-scene facehugger and egg keep their Aliens1986 identity instead of receiving the 1979 body
+ok 7 - the source-scene facehugger and egg keep their Aliens1986 identity instead of receiving the 1979 body
+  ---
+  duration_ms: 0.34539
+  type: 'test'
+  ...
+# (node:44918) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+ok 8 - the original catalog boss resolves the environmental atlas at its existing identity and gameplay values
+  ---
+  duration_ms: 2.005133
+  type: 'test'
+  ...
+# Subtest: the atlas has 16 distinct and unclipped poses on the shared game baseline
+ok 9 - the atlas has 16 distinct and unclipped poses on the shared game baseline
+  ---
+  duration_ms: 409.311207
+  type: 'test'
+  ...
+# Subtest: the outage fallback is scoped to the original event and restores transform and stroke state
+ok 10 - the outage fallback is scoped to the original event and restores transform and stroke state
+  ---
+  duration_ms: 3.837144
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14850.761602

@@ -1,0 +1,50 @@
+{
+  "sourceBaseline": "94c5245fb",
+  "nodeVersion": "22.23.5",
+  "checkedFiles": {
+    "scripts/dlcAssetBatchCoverage.mjs": "b4ccb2bfcc18f406b668e4291802a14439af4e93ae06cb5f609a673821d21924",
+    "scripts/applyDlcAssetBatch.mjs": "2045173ddbc6f49595f1cbe24d48d676b9187c53b02ce29f24b5fb14cc102846",
+    "scripts/exportDlcAssetBatch.mjs": "955079efcbd12e1204d9a4bb146871bb72f59b7186dce2efe3fb8cead42f6bc9",
+    "scripts/dlcAssetBatches.test.mjs": "617f3d6ea2445f02557119370c8711c6ec1b786fc5a0deba2aa3d5c0dc6aca85",
+    "scripts/exportDlcDistribution.mjs": "3d35dcb0dacb73fde72069ffdc94504faa9148eaa02f767ff9ba87a2fb26d8eb",
+    "scripts/buildDlcDistribution.mjs": "5e5d8b4b15cfeb35734a14c29016d0db322623908d41443b35645b5d5b623342"
+  },
+  "targetedTests": {
+    "command": "npm run test:dlc:batches",
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 9225.332921
+  },
+  "fixture": {
+    "kind": "small synthetic selected edition",
+    "mediaPlanComplete": true,
+    "assembledMedia": 2,
+    "productionViteBuild": {
+      "mode": "selected",
+      "packs": 1,
+      "media": 2,
+      "builtFiles": 4,
+      "moduleCount": 5,
+      "dlcModuleCount": 1,
+      "javascriptBytes": 797
+    },
+    "publicMediaChecked": true,
+    "scope": "Compilation and byte comparisons on a synthetic fixture."
+  },
+  "realDemo": {
+    "report": "doom-strict.json",
+    "planFileSha256": "1c389787a5202a0abc925fd933b9aa770a706ba81270b5d3c9c45fee53875053",
+    "originalAssemblyTemporary": true,
+    "wholeEditionPublished": false
+  },
+  "targetedLint": {
+    "exitCode": 0,
+    "checkedFiles": [
+      "scripts/dlcAssetBatchCoverage.mjs",
+      "scripts/applyDlcAssetBatch.mjs",
+      "scripts/exportDlcAssetBatch.mjs",
+      "scripts/dlcAssetBatches.test.mjs"
+    ]
+  }
+}

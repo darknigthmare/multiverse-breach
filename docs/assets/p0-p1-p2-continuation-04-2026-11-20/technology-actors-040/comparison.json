@@ -1,0 +1,1055 @@
+{
+  "sourceCommit": "94c5245fb69fb8a314ec428bd2ec11a9326287e1",
+  "baselineAssetTreeCommit": "0edb2d0ac152b7508b686de8276c7c7ba09a89a5",
+  "scope": "40 exact records. Compare pre-change and current raw data and RPG / melee / summon resolver outputs. Keep the previous verified media tree for task deltas, so unrelated work on an animation is counted separately.",
+  "closedByThisLot": {
+    "P0": 0,
+    "P1": 80,
+    "P2": 0,
+    "animationOrRasterP1": 0
+  },
+  "newArtApprovals": 0,
+  "delta": [
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:elara_voss\"]",
+      "actorId": "elara_voss",
+      "actorName": "Elara Voss",
+      "universe": "The Aether Crown",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Boucles sombres, long manteau bordeaux à galons or, rapière cyan et pistolet de pont distincts.",
+      "incarnation": "Capitaine corsaire des routes interdites",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:bram_quill\"]",
+      "actorId": "bram_quill",
+      "actorName": "Bram Quill",
+      "universe": "The Aether Crown",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Visière et lunettes cyan, manteau bleu noir à coutures laiton et clef d’éther longue à tête ajourée.",
+      "incarnation": "Inventeur banni des soupapes d’éther",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:merek_flint\"]",
+      "actorId": "merek_flint",
+      "actorName": "Merek Flint",
+      "universe": "The Aether Crown",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Armure lourde noir et cuivre, tablier brun déchiré et marteau-piston à tête cylindrique, avec surfaces chauffées orange.",
+      "incarnation": "Chevalier-chaudière insurgé de la Couronne",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:brass_constable\"]",
+      "actorId": "aether_crown:brass_constable",
+      "actorName": "Brass Constable",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Armure de laiton, panache bleu, grand bouclier rond gravé à cœur cyan et matraque pneumatique.",
+      "incarnation": "Patrouille du Marché de Cuivre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:coalbound_golem\"]",
+      "actorId": "aether_crown:coalbound_golem",
+      "actorName": "Coalbound Golem",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Corps de chaudière bas et massif, cercle cyan au centre du torse, épaule fumante et lourd outil de forge présenté bas.",
+      "incarnation": "Golem de la Fonderie de la Couronne",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:aether_mite_swarm\"]",
+      "actorId": "aether_crown:aether_mite_swarm",
+      "actorName": "Aether Mite Swarm",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Figure de laiton flottante à capuchon bleu, longue tige à cristal cyan et petites mites sphériques formant l’essaim dans la planche de référence initiale.",
+      "incarnation": "Essaim rongeur de la Couronne en formation",
+      "staticGameplayPaths": [
+        "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:sky_corsair_press_gang\"]",
+      "actorId": "aether_crown:sky_corsair_press_gang",
+      "actorName": "Sky Corsair Press-Gang",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Casque de laiton à pointe, manteau bleu déchiré, sabre court à lueur cyan et protection ronde devant le bras.",
+      "incarnation": "Corsaire d’abordage du Pont du Marché",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:pressure_wraith\"]",
+      "actorId": "aether_crown:pressure_wraith",
+      "actorName": "Pressure Wraith",
+      "universe": "The Aether Crown",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Haut du corps mécanisé cuivre et cyan, spirale gazeuse en guise de jambes, hampe à globe et échappées de vapeur lumineuse.",
+      "incarnation": "Spectre de pression des conduites d’éther",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:duchess_caldera\"]",
+      "actorId": "aether_crown:duchess_caldera",
+      "actorName": "Duchess Caldera",
+      "universe": "The Aether Crown",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Robe brun cuivre à pans longs, épaules et couronne de laiton, sceptre ajouré éclairé cyan.",
+      "incarnation": "Duchesse du Pont du Marché de Cuivre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:lord_pneuma\"]",
+      "actorId": "aether_crown:lord_pneuma",
+      "actorName": "Lord Pneuma",
+      "universe": "The Aether Crown",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Haute couronne à anneau, respirateur à tuyaux, chemise d’armure bleu nuit et or, globe au bout du sceptre et vortex en main. Référence de pose unique.",
+      "incarnation": "Seigneur de la Fonderie de la Couronne",
+      "staticGameplayPaths": [
+        "/sprites/generated/bosses/the-aether-crown/lord-pneuma.png"
+      ]
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:hms_sovereign_automaton\"]",
+      "actorId": "aether_crown:hms_sovereign_automaton",
+      "actorName": "HMS Sovereign Automaton",
+      "universe": "The Aether Crown",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Marcheur en laiton, superstructure de cheminée et couronne, bras-canons et grands télémètres cyan.",
+      "incarnation": "Automate du Quai du Moteur-Léviathan",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:crown_of_storms_leviathan_engine\"]",
+      "actorId": "aether_crown:crown_of_storms_leviathan_engine",
+      "actorName": "Crown of Storms, Leviathan Engine",
+      "universe": "The Aether Crown",
+      "kind": "worldBoss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Coque aérienne large à tours et chaudières en laiton, grands anneaux lumineux sous la quille et courants d’éther cyan.",
+      "incarnation": "Moteur-Léviathan de la Couronne des Tempêtes",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:seraphine_meridius\"]",
+      "actorId": "seraphine_meridius",
+      "actorName": "Seraphine Meridius",
+      "universe": "Meridian Clockwork",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Manteau bleu à passementerie or, cheveux bruns, lame fine à garde d’échappement et bottes de duel.",
+      "incarnation": "Protectrice des minutes libres",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:lio_ferrante\"]",
+      "actorId": "lio_ferrante",
+      "actorName": "Lio Ferrante",
+      "universe": "Meridian Clockwork",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Cheveux en bataille, manteau court de cuir brun, lance-rouages mécanique et faucon à ressort distinct de son corps.",
+      "incarnation": "Mécanicien du Méridien et des minutes libres",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:brother_ors\"]",
+      "actorId": "brother_ors",
+      "actorName": "Frère Ors",
+      "universe": "Meridian Clockwork",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Robe et cape cuivrées, col haut, silhouette large et grand maillet rond suspendu à sa hampe.",
+      "incarnation": "Frère horloger des minutes libres",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:escapement_guard\"]",
+      "actorId": "meridian_clockwork:escapement_guard",
+      "actorName": "Escapement Guard",
+      "universe": "Meridian Clockwork",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Casque en cadran, bouclier d’échappement bleu et or, lourde chaîne portant sa masse de rouage.",
+      "incarnation": "Garde de la Place aux Mille Cadrans",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:springblade_automaton\"]",
+      "actorId": "meridian_clockwork:springblade_automaton",
+      "actorName": "Springblade Automaton",
+      "universe": "Meridian Clockwork",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Automate courbé bleu et or sur pieds griffus, lames fines en faisceau au bout de chaque avant-bras.",
+      "incarnation": "Automate de l’Astrarium",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:gearwing_falcon\"]",
+      "actorId": "meridian_clockwork:gearwing_falcon",
+      "actorName": "Gearwing Falcon",
+      "universe": "Meridian Clockwork",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Pattes d’oiseau, bec mécanique et ailes d’engrenage déployées en longues plumes articulées bleues et or.",
+      "incarnation": "Faucon de garde du Méridien",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:pendulum_penitent\"]",
+      "actorId": "meridian_clockwork:pendulum_penitent",
+      "actorName": "Pendulum Penitent",
+      "universe": "Meridian Clockwork",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Masque grêle ivoire sous une capuche bleue, tunique sombre effilochée et balanciers à anneaux de laiton dans les deux mains.",
+      "incarnation": "Pénitent de la Grande Horloge",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:hour_thief\"]",
+      "actorId": "meridian_clockwork:hour_thief",
+      "actorName": "Hour-Thief",
+      "universe": "Meridian Clockwork",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Manteau bleu flottant, visage en cadran unique, anneau de mesure et trace bleu vif autour du bras.",
+      "incarnation": "Voleur d’heures du Méridien",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:maestro_vellum\"]",
+      "actorId": "meridian_clockwork:maestro_vellum",
+      "actorName": "Maestro Vellum",
+      "universe": "Meridian Clockwork",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Longue silhouette d’officiant bleu et or, grand cadran autour du masque et sceptre solaire orné.",
+      "incarnation": "Maestro de la Place aux Mille Cadrans",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:orloj_duelist\"]",
+      "actorId": "meridian_clockwork:orloj_duelist",
+      "actorName": "Orloj Duelist",
+      "universe": "Meridian Clockwork",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Capuche bleue pointue, corps horloger en retrait, griffes argentées très longues et fils de manteau tirés vers l’arrière.",
+      "incarnation": "Duelliste de l’Astrarium",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:the_twelve_bell_judges\"]",
+      "actorId": "meridian_clockwork:the_twelve_bell_judges",
+      "actorName": "The Twelve Bell Judges",
+      "universe": "Meridian Clockwork",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Officiant bleu, or et blanc à cadran facial, hampe frontale et cloches isolées dans des disques bleus. Référence de pose unique.",
+      "incarnation": "Juges de la Grande Horloge",
+      "staticGameplayPaths": [
+        "/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png"
+      ]
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:chronophage_of_the_last_meridian\"]",
+      "actorId": "meridian_clockwork:chronophage_of_the_last_meridian",
+      "actorName": "Chronophage of the Last Meridian",
+      "universe": "Meridian Clockwork",
+      "kind": "worldBoss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Silhouette effilée en armature d’horloge bleue et or, cadran d’ancrages derrière le corps et sphère au sceptre.",
+      "incarnation": "Chronophage du Dernier Méridien",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:mara_veylan\"]",
+      "actorId": "mara_veylan",
+      "actorName": "Mara Veylan",
+      "universe": "Iron Tempest",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Tenue de terrain olive, cheveux sombres courts, pan de cape rouge et carabine diesel portée devant le buste.",
+      "incarnation": "Reconnaissance de la Ligne-Cendre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:anton_rook\"]",
+      "actorId": "anton_rook",
+      "actorName": "Anton Rook",
+      "universe": "Iron Tempest",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Veste de travail en cuir et plaques renforcées, barbe sombre et canon à rivets à tubulure orange.",
+      "incarnation": "Artilleur à rivets du front diesel",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:ilya_cross\"]",
+      "actorId": "ilya_cross",
+      "actorName": "Ilya Cross",
+      "universe": "Iron Tempest",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Tenue sombre légère à liserés cuivre, bandes longues d’écharpe ocre et lame-hélice tenue vers le sol.",
+      "incarnation": "Pilote affranchi du front Zephyr",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:soot_legionnaire\"]",
+      "actorId": "iron_tempest:soot_legionnaire",
+      "actorName": "Soot Legionnaire",
+      "universe": "Iron Tempest",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Casque filtrant à fente rouge, plastron cuirassé rouille et haut bouclier rectangulaire à bosse centrale.",
+      "incarnation": "Infanterie de la Ligne-Cendre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:gyro_trooper\"]",
+      "actorId": "iron_tempest:gyro_trooper",
+      "actorName": "Gyro Trooper",
+      "universe": "Iron Tempest",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Armure rouge à casque fermé, deux pales au-dessus du corps et lame courte tenue près de la cuisse.",
+      "incarnation": "Troupe d’assaut de l’Aérodrome Zephyr",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:trench_automaton\"]",
+      "actorId": "iron_tempest:trench_automaton",
+      "actorName": "Trench Automaton",
+      "universe": "Iron Tempest",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Robot à chaudière ventrale orange, face ronde et bras épais, outil long au fer rouge à deux branches.",
+      "incarnation": "Automate de la Ligne-Cendre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:fuel_hound\"]",
+      "actorId": "iron_tempest:fuel_hound",
+      "actorName": "Fuel Hound",
+      "universe": "Iron Tempest",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Quadrupède bas couvert de câbles, plaques rouges, grandes griffes et petite flamme au bout de la queue.",
+      "incarnation": "Molosse mécanique du front diesel",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:propaganda_drone\"]",
+      "actorId": "iron_tempest:propaganda_drone",
+      "actorName": "Propaganda Drone",
+      "universe": "Iron Tempest",
+      "kind": "enemy",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Machine arrondie sans jambes, optique rouge entourée de haut-parleurs, bannières irrégulières et module de signal suspendu.",
+      "incarnation": "Drone des émetteurs du front",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:marshal_volgra\"]",
+      "actorId": "iron_tempest:marshal_volgra",
+      "actorName": "Marshal Volgra",
+      "universe": "Iron Tempest",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Officier longiligne en manteau noir et rouge, casque militaire et hampe d’émetteur rouge rayonnant.",
+      "incarnation": "Commandement de la Ligne-Cendre",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:black_zephyr_ace\"]",
+      "actorId": "iron_tempest:black_zephyr_ace",
+      "actorName": "Black Zephyr Ace",
+      "universe": "Iron Tempest",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Combinaison d’as sombre, casque rond rouge, longues griffes aux mains et pans de foulard rouge flottants.",
+      "incarnation": "As de l’Aérodrome Zephyr",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:rail_cannon_behemoth\"]",
+      "actorId": "iron_tempest:rail_cannon_behemoth",
+      "actorName": "Rail-Cannon Behemoth",
+      "universe": "Iron Tempest",
+      "kind": "boss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Châssis bas à quatre supports, bandes rouges et canon sur rail à double guide rouge, monté au-dessus du centre du corps.",
+      "incarnation": "Canon sur rails du front diesel",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:moloch_continental_landship\"]",
+      "actorId": "iron_tempest:moloch_continental_landship",
+      "actorName": "Moloch Continental Landship",
+      "universe": "Iron Tempest",
+      "kind": "worldBoss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Forteresse mobile à chenilles superposées, batteries saillantes et cœur diesel rouge au centre de la tour.",
+      "incarnation": "Forteresse continentale de l’Iron Tempest",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:celeste_ray\"]",
+      "actorId": "celeste_ray",
+      "actorName": "Dr Celeste Ray",
+      "universe": "Helios 56",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Blouse ivoire et combinaison turquoise, lunettes de protection et émetteur gamma portatif cyan.",
+      "incarnation": "Physicienne de Tomorrowville",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:nova_bell\"]",
+      "actorId": "nova_bell",
+      "actorName": "Nova Bell",
+      "universe": "Helios 56",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Cheveux ondulés sous casque ouvert à lunettes, combinaison rouge et jaune, bottes renforcées et pistolet rayon.",
+      "incarnation": "Pilote-fusée de Helios 56",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:aura_7\"]",
+      "actorId": "aura_7",
+      "actorName": "AURA-7",
+      "universe": "Helios 56",
+      "kind": "hero",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Robot blanc et rouge à visage circulaire cyan, grand gantelet atomique et écran de protection arrondi.",
+      "incarnation": "Serviteur protecteur de Tomorrowville",
+      "staticGameplayPaths": []
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:helio_1_smiling_sun_reactor\"]",
+      "actorId": "helios_56:helio_1_smiling_sun_reactor",
+      "actorName": "HELIO-1, Smiling Sun Reactor",
+      "universe": "Helios 56",
+      "kind": "worldBoss",
+      "removed": [
+        [
+          "INCARNATION_UNSPECIFIED",
+          "P1"
+        ],
+        [
+          "VISUAL_CONTRACT_MISSING",
+          "P1"
+        ]
+      ],
+      "added": [],
+      "visualAnchor": "Automate-réacteur cuivré, grand disque jaune souriant entouré de pointes, cœur bleu et deux masses bleues aux bras.",
+      "incarnation": "Cœur de HELIO-1",
+      "staticGameplayPaths": []
+    }
+  ],
+  "actions": [
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:duchess_caldera\"]",
+      "before": "special",
+      "after": "Prélèvement de charbon",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:lord_pneuma\"]",
+      "before": "special",
+      "after": "Décompression",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:hms_sovereign_automaton\"]",
+      "before": "special",
+      "after": "Feu des télémètres",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:aether_crown:crown_of_storms_leviathan_engine\"]",
+      "before": "special",
+      "after": "Aspiration d’éther",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:maestro_vellum\"]",
+      "before": "special",
+      "after": "Cycle du sceau",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:orloj_duelist\"]",
+      "before": "special",
+      "after": "Écho d’Orloj",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:the_twelve_bell_judges\"]",
+      "before": "special",
+      "after": "Décret des cloches",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:meridian_clockwork:chronophage_of_the_last_meridian\"]",
+      "before": "special",
+      "after": "Dévoration de durée",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:marshal_volgra\"]",
+      "before": "special",
+      "after": "Ordre des émetteurs",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:black_zephyr_ace\"]",
+      "before": "special",
+      "after": "Passe du Zephyr",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:rail_cannon_behemoth\"]",
+      "before": "special",
+      "after": "Tir transversal",
+      "oldShape": "single",
+      "newShape": "line",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:iron_tempest:moloch_continental_landship\"]",
+      "before": "special",
+      "after": "Salve de Moloch",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:helios_56:helio_1_smiling_sun_reactor\"]",
+      "before": "special",
+      "after": "Surchauffe de HELIO-1",
+      "oldShape": "single",
+      "newShape": "single",
+      "effect": "damage",
+      "multiplier": 1
+    }
+  ],
+  "actorDefinitionsIdentical": 40,
+  "profilesIdentical": 147,
+  "meleeAndSummonUnprepared": [
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:elara_voss\"]",
+      "super": "Mutinerie des Cieux",
+      "summonOwner": "elara_voss",
+      "summonName": "Mutinerie des Cieux"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:bram_quill\"]",
+      "super": "Théorème d’Éther Libre",
+      "summonOwner": "bram_quill",
+      "summonName": "Drone Soupape"
+    },
+    {
+      "actorKey": "[\"The Aether Crown\",\"id:merek_flint\"]",
+      "super": "Surcharge de la Grande Chaudière",
+      "summonOwner": "elara_voss",
+      "summonName": "Mutinerie des Cieux"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:seraphine_meridius\"]",
+      "super": "Treizième Coup",
+      "summonOwner": "lio_ferrante",
+      "summonName": "Faucon à Ressort"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:lio_ferrante\"]",
+      "super": "Réglage du Monde",
+      "summonOwner": "lio_ferrante",
+      "summonName": "Faucon à Ressort"
+    },
+    {
+      "actorKey": "[\"Meridian Clockwork\",\"id:brother_ors\"]",
+      "super": "Dernière Sonnerie",
+      "summonOwner": "lio_ferrante",
+      "summonName": "Faucon à Ressort"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:mara_veylan\"]",
+      "super": "Ordre Zéro Radio",
+      "summonOwner": "anton_rook",
+      "summonName": "Déraillement Contrôlé"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:anton_rook\"]",
+      "super": "Déraillement Contrôlé",
+      "summonOwner": "mara_veylan",
+      "summonName": "Ordre Zéro Radio"
+    },
+    {
+      "actorKey": "[\"Iron Tempest\",\"id:ilya_cross\"]",
+      "super": "Ciel sans Drapeau",
+      "summonOwner": "mara_veylan",
+      "summonName": "Ordre Zéro Radio"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:celeste_ray\"]",
+      "super": "Équation du Soleil Sûr",
+      "summonOwner": "nova_bell",
+      "summonName": "Passage Comète"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:nova_bell\"]",
+      "super": "Passage Comète",
+      "summonOwner": "celeste_ray",
+      "summonName": "Équation du Soleil Sûr"
+    },
+    {
+      "actorKey": "[\"Helios 56\",\"id:aura_7\"]",
+      "super": "Directive : Sauver Tout le Monde",
+      "summonOwner": "celeste_ray",
+      "summonName": "Équation du Soleil Sûr"
+    }
+  ]
+}

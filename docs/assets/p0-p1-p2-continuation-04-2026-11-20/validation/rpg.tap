@@ -1,0 +1,406 @@
+TAP version 13
+# (node:50806) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: RPG player: a dead caster's old attack cannot return with a resurrection
+ok 1 - RPG player: a dead caster's old attack cannot return with a resurrection
+  ---
+  duration_ms: 24826.277736
+  type: 'test'
+  ...
+# Subtest: RPG enemy: a dead caster's old attack cannot return with a resurrection
+ok 2 - RPG enemy: a dead caster's old attack cannot return with a resurrection
+  ---
+  duration_ms: 2.322139
+  type: 'test'
+  ...
+# Subtest: RPG player: removed combatants cannot deliver queued impacts
+ok 3 - RPG player: removed combatants cannot deliver queued impacts
+  ---
+  duration_ms: 1.191916
+  type: 'test'
+  ...
+# Subtest: RPG enemy: removed combatants cannot deliver queued impacts
+ok 4 - RPG enemy: removed combatants cannot deliver queued impacts
+  ---
+  duration_ms: 0.92261
+  type: 'test'
+  ...
+# Subtest: RPG stale target contexts cannot spend ATB, cooldown or charge
+ok 5 - RPG stale target contexts cannot spend ATB, cooldown or charge
+  ---
+  duration_ms: 1.885932
+  type: 'test'
+  ...
+# Subtest: RPG callback cancellation applies to callbacks already due on this tick
+ok 6 - RPG callback cancellation applies to callbacks already due on this tick
+  ---
+  duration_ms: 1.748174
+  type: 'test'
+  ...
+# Subtest: RPG direct negative damage cannot stagger or weaken a target
+ok 7 - RPG direct negative damage cannot stagger or weaken a target
+  ---
+  duration_ms: 0.824943
+  type: 'test'
+  ...
+# Subtest: RPG reapplying infected cannot shorten a stronger existing duration
+ok 8 - RPG reapplying infected cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.492753
+  type: 'test'
+  ...
+# Subtest: RPG reapplying glitched cannot shorten a stronger existing duration
+ok 9 - RPG reapplying glitched cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.446824
+  type: 'test'
+  ...
+# Subtest: RPG reapplying radiated cannot shorten a stronger existing duration
+ok 10 - RPG reapplying radiated cannot shorten a stronger existing duration
+  ---
+  duration_ms: 0.25864
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP NaN cannot enter a revival target set
+ok 11 - RPG invalid HP NaN cannot enter a revival target set
+  ---
+  duration_ms: 0.244177
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP Infinity cannot enter a revival target set
+ok 12 - RPG invalid HP Infinity cannot enter a revival target set
+  ---
+  duration_ms: 0.234012
+  type: 'test'
+  ...
+# Subtest: RPG invalid HP 0 cannot enter a revival target set
+ok 13 - RPG invalid HP 0 cannot enter a revival target set
+  ---
+  duration_ms: 0.141053
+  type: 'test'
+  ...
+# Subtest: RPG revival preview agrees with the minimum one-HP recovery
+ok 14 - RPG revival preview agrees with the minimum one-HP recovery
+  ---
+  duration_ms: 2.111372
+  type: 'test'
+  ...
+# Subtest: RPG heal plus cleanse may target an irradiated ally already at the healing cap
+ok 15 - RPG heal plus cleanse may target an irradiated ally already at the healing cap
+  ---
+  duration_ms: 2.458865
+  type: 'test'
+  ...
+# Subtest: RPG selective cleansing removes only the authored statuses
+ok 16 - RPG selective cleansing removes only the authored statuses
+  ---
+  duration_ms: 2.810715
+  type: 'test'
+  ...
+# Subtest: RPG a cleanse cannot spend an action on a status it does not remove
+ok 17 - RPG a cleanse cannot spend an action on a status it does not remove
+  ---
+  duration_ms: 0.309175
+  type: 'test'
+  ...
+# Subtest: RPG automatic healing uses recoverable HP and preserves manual choice
+ok 18 - RPG automatic healing uses recoverable HP and preserves manual choice
+  ---
+  duration_ms: 9.212571
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input null fails closed
+ok 19 - RPG malformed selected target input null fails closed
+  ---
+  duration_ms: 0.239731
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input 12 fails closed
+ok 20 - RPG malformed selected target input 12 fails closed
+  ---
+  duration_ms: 0.231619
+  type: 'test'
+  ...
+# Subtest: RPG malformed selected target input {} fails closed
+ok 21 - RPG malformed selected target input {} fails closed
+  ---
+  duration_ms: 0.277979
+  type: 'test'
+  ...
+# Subtest: RPG invalidated action profiles clear targeting rather than crash the HUD
+ok 22 - RPG invalidated action profiles clear targeting rather than crash the HUD
+  ---
+  duration_ms: 0.267944
+  type: 'test'
+  ...
+# Subtest: RPG buff and guard expire without changing prepared stats
+ok 23 - RPG buff and guard expire without changing prepared stats
+  ---
+  duration_ms: 2.175338
+  type: 'test'
+  ...
+# Subtest: RPG complete is reported once and clears all pending actions
+ok 24 - RPG complete is reported once and clears all pending actions
+  ---
+  duration_ms: 0.577891
+  type: 'test'
+  ...
+# Subtest: Booster hero streak counts trailing duplicates in reveal order and ignores cosmetics
+ok 25 - Booster hero streak counts trailing duplicates in reveal order and ignores cosmetics
+  ---
+  duration_ms: 1.464687
+  type: 'test'
+  ...
+# (node:50948) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: RPG summon selection and cancellation never spend resources for player
+ok 26 - RPG summon selection and cancellation never spend resources for player
+  ---
+  duration_ms: 24558.838364
+  type: 'test'
+  ...
+# Subtest: RPG summon selection and cancellation never spend resources for enemy
+ok 27 - RPG summon selection and cancellation never spend resources for enemy
+  ---
+  duration_ms: 1.42024
+  type: 'test'
+  ...
+# Subtest: RPG summon requires both full gauges, commits once and remains separate from the special
+ok 28 - RPG summon requires both full gauges, commits once and remains separate from the special
+  ---
+  duration_ms: 27.955011
+  type: 'test'
+  ...
+# Subtest: RPG cinematic has one impact at the exact simulation tick and a completed return
+ok 29 - RPG cinematic has one impact at the exact simulation tick and a completed return
+  ---
+  duration_ms: 13.756677
+  type: 'test'
+  ...
+# Subtest: RPG summon pause freezes the scene and queued attacks without late wall-time effects
+ok 30 - RPG summon pause freezes the scene and queued attacks without late wall-time effects
+  ---
+  duration_ms: 10.725661
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on dispose
+ok 31 - RPG summon cancels safely on dispose
+  ---
+  duration_ms: 1.280679
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on gameOver
+ok 32 - RPG summon cancels safely on gameOver
+  ---
+  duration_ms: 1.104174
+  type: 'test'
+  ...
+# Subtest: RPG summon cancels safely on dead-caller
+ok 33 - RPG summon cancels safely on dead-caller
+  ---
+  duration_ms: 1.541382
+  type: 'test'
+  ...
+# Subtest: RPG invocation cannot silently acquire a replacement for an invalidated target
+ok 34 - RPG invocation cannot silently acquire a replacement for an invalidated target
+  ---
+  duration_ms: 19.488885
+  type: 'test'
+  ...
+# Subtest: RPG catalog deployment preserves arca_loom support semantics
+ok 35 - RPG catalog deployment preserves arca_loom support semantics
+  ---
+  duration_ms: 9.467385
+  type: 'test'
+  ...
+# Subtest: RPG catalog deployment preserves arca_bastion support semantics
+ok 36 - RPG catalog deployment preserves arca_bastion support semantics
+  ---
+  duration_ms: 8.273856
+  type: 'test'
+  ...
+# Subtest: Nexus arca_bastion renders its applied guard for either camp
+ok 37 - Nexus arca_bastion renders its applied guard for either camp
+  ---
+  duration_ms: 30.704543
+  type: 'test'
+  ...
+# Subtest: Nexus arca_loom renders its applied heal for either camp
+ok 38 - Nexus arca_loom renders its applied heal for either camp
+  ---
+  duration_ms: 30.588609
+  type: 'test'
+  ...
+# Subtest: Nexus arca_tessera renders its applied damage for either camp
+ok 39 - Nexus arca_tessera renders its applied damage for either camp
+  ---
+  duration_ms: 31.802457
+  type: 'test'
+  ...
+# Subtest: Nexus arca_nadir renders its applied damage for either camp
+ok 40 - Nexus arca_nadir renders its applied damage for either camp
+  ---
+  duration_ms: 26.838278
+  type: 'test'
+  ...
+# Subtest: Nexus invocation draws no success on fully absorbed, full-HP or replaced targets
+ok 41 - Nexus invocation draws no success on fully absorbed, full-HP or replaced targets
+  ---
+  duration_ms: 24.518432
+  type: 'test'
+  ...
+# Subtest: Nexus probe keeps its route and visible KO contact at the impact position
+ok 42 - Nexus probe keeps its route and visible KO contact at the impact position
+  ---
+  duration_ms: 12.282056
+  type: 'test'
+  ...
+# Subtest: RPG keeps the return of a finishing invocation visible for player
+ok 43 - RPG keeps the return of a finishing invocation visible for player
+  ---
+  duration_ms: 22.156875
+  type: 'test'
+  ...
+# Subtest: RPG keeps the return of a finishing invocation visible for enemy
+ok 44 - RPG keeps the return of a finishing invocation visible for enemy
+  ---
+  duration_ms: 12.378882
+  type: 'test'
+  ...
+# Subtest: RPG shows a neutral manifestation when a declared invocation atlas cannot draw
+ok 45 - RPG shows a neutral manifestation when a declared invocation atlas cannot draw
+  ---
+  duration_ms: 1.820453
+  type: 'test'
+  ...
+# Subtest: RPG explicit revival, buff and cleansing deployments keep their declared effect
+ok 46 - RPG explicit revival, buff and cleansing deployments keep their declared effect
+  ---
+  duration_ms: 33.986528
+  type: 'test'
+  ...
+# Subtest: RPG automatic sides use the same invocation resolver and keep manual targeting closed
+ok 47 - RPG automatic sides use the same invocation resolver and keep manual targeting closed
+  ---
+  duration_ms: 1.622925
+  type: 'test'
+  ...
+# Subtest: RPG auto falls back to the original special when a healing invocation has no eligible ally
+ok 48 - RPG auto falls back to the original special when a healing invocation has no eligible ally
+  ---
+  duration_ms: 2.362359
+  type: 'test'
+  ...
+# Subtest: RPG every catalog invocation can resolve its authored effect from the combat formation
+ok 49 - RPG every catalog invocation can resolve its authored effect from the combat formation
+  ---
+  duration_ms: 557.535075
+  type: 'test'
+  ...
+# Subtest: RPG reinforcement uses its existing partner identity and matches buffed damage preview
+ok 50 - RPG reinforcement uses its existing partner identity and matches buffed damage preview
+  ---
+  duration_ms: 15.500876
+  type: 'test'
+  ...
+# (node:51022) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: RAAM take-light-cover waits for an actual summon scene to finish without spending another ready hero's resources
+ok 51 - RAAM take-light-cover waits for an actual summon scene to finish without spending another ready hero's resources
+  ---
+  duration_ms: 25229.026933
+  type: 'test'
+  ...
+# Subtest: RAAM frag waits for an actual summon scene to finish without spending another ready hero's resources
+ok 52 - RAAM frag waits for an actual summon scene to finish without spending another ready hero's resources
+  ---
+  duration_ms: 22.340933
+  type: 'test'
+  ...
+# Subtest: Pirates ritual coordination waits for an actual summon scene and resumes through the ordinary command impact
+ok 53 - Pirates ritual coordination waits for an actual summon scene and resumes through the ordinary command impact
+  ---
+  duration_ms: 15.996854
+  type: 'test'
+  ...
+# (node:51174) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./scripts/sourceSceneTestLoader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: four roster partners require exact performer/source identities, universe, action and reinforcement role
+ok 54 - four roster partners require exact performer/source identities, universe, action and reinforcement role
+  ---
+  duration_ms: 25236.765088
+  type: 'test'
+  ...
+# Subtest: 64 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale
+ok 55 - 64 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale
+  ---
+  duration_ms: 294.133979
+  type: 'test'
+  ...
+# Subtest: the eleven previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata
+ok 56 - the eleven previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata
+  ---
+  duration_ms: 84.490374
+  type: 'test'
+  ...
+# Subtest: player four native roster partners render all16 cells, spend once, pause and impact only on attack col2
+ok 57 - player four native roster partners render all16 cells, spend once, pause and impact only on attack col2
+  ---
+  duration_ms: 183.192491
+  type: 'test'
+  ...
+# Subtest: enemy four native roster partners render all16 cells, spend once, pause and impact only on attack col2
+ok 58 - enemy four native roster partners render all16 cells, spend once, pause and impact only on attack col2
+  ---
+  duration_ms: 121.162325
+  type: 'test'
+  ...
+# Subtest: player the four roster partners retain target identities through death and cannot cause late interrupted impacts
+ok 59 - player the four roster partners retain target identities through death and cannot cause late interrupted impacts
+  ---
+  duration_ms: 93.161183
+  type: 'test'
+  ...
+# Subtest: enemy the four roster partners retain target identities through death and cannot cause late interrupted impacts
+ok 60 - enemy the four roster partners retain target identities through death and cannot cause late interrupted impacts
+  ---
+  duration_ms: 75.179694
+  type: 'test'
+  ...
+# Subtest: all four new native weapon apertures track each phase/column and facing with no travel from lowered or empty weapons
+ok 61 - all four new native weapon apertures track each phase/column and facing with no travel from lowered or empty weapons
+  ---
+  duration_ms: 22.350818
+  type: 'test'
+  ...
+# Subtest: a pending native sheet falls back to the exact roster partner instead of an entity surrogate
+ok 62 - a pending native sheet falls back to the exact roster partner instead of an entity surrogate
+  ---
+  duration_ms: 9.017518
+  type: 'test'
+  ...
+# Subtest: all 28 historical entity path labels, source references and 280 sampled geometries remain identical
+ok 63 - all 28 historical entity path labels, source references and 280 sampled geometries remain identical
+  ---
+  duration_ms: 3.629959
+  type: 'test'
+  ...
+# Subtest: all four other Mass Effect callers summon Soldier Shepard Concussive Shot without shared class buffs, P1 and P2
+ok 64 - all four other Mass Effect callers summon Soldier Shepard Concussive Shot without shared class buffs, P1 and P2
+  ---
+  duration_ms: 144.711558
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 64
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 104283.100158

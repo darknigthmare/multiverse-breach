@@ -8,6 +8,8 @@ Le même catalogue de personnages alimente plusieurs moteurs : **RPG à jauge AT
 
 Les corrections suivantes rendent les légendes de combat lisibles sur mobile, déclenchent le ramassage Tactics à l’arrivée et rétablissent les ambiances des arènes personnalisées ainsi que les spéciales de J2 du Nexus. Deux lots de médias ont aussi été réunis dans un dossier avec reprise vérifiée. [Corrections et essais](docs/development/corrections-2026-11-20/README.md).
 
+La nouvelle passe parallèle retire **81 P1**. Elle ajoute un atlas animé pour l’essaim de The Aether Crown et 28 séquences de duel sur les planches existantes. Les invocations de fin de combat et l’extraction Tactics attendent leur animation de retour ou d’arrivée. Le contrôle DLC identifie les lots jamais reçus. [Reprise, inventaire et preuves](docs/assets/p0-p1-p2-continuation-04-2026-11-20/README.md).
+
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
 [Installation](#installation) · [Jouer](#jouer) · [Modes](#modes-de-jeu) · [Couverture réelle](#couverture-réelle) · [Tactics et verticalité](#tactics--textures-par-case-et-verticalité) · [Vérification](#vérification) · [Architecture](#architecture) · [Documentation](#documentation)
