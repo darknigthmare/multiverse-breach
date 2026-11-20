@@ -1980,6 +1980,12 @@ export class EngineTactics {
     return contacts;
   }
 
+  emitTacticsCanonAttackEffect(attacker, defender, action) {
+    emitCanonHeroAttackEffect(this.particles,
+      { ...attacker, ...this.getUnitScreenPosition(attacker.gridX, attacker.gridY, attacker.surfaceId) },
+      this.getUnitScreenPosition(defender.gridX, defender.gridY, defender.surfaceId), action);
+  }
+
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType, commitment = null) {
     if (!this.isActiveCombatant(attacker) || this.disposed || this.paused || this.gameOver
       || this.isTacticsControlled(attacker) || !this.canAttackCell(attacker, target, actionType)) return [];
@@ -2012,15 +2018,9 @@ export class EngineTactics {
     if (canonEffect) this.playSfx(canonEffect.sfx);
     targets.forEach(entry => {
       if (this.gameOver || this.disposed || (commitment && !commitment.accepts(entry.unit))) return;
-      if (canonEffect) {
-        emitCanonHeroAttackEffect(
-          this.particles,
-          { ...attacker, ...this.getUnitScreenPosition(attacker.gridX, attacker.gridY) },
-          this.getUnitScreenPosition(entry.unit.gridX, entry.unit.gridY),
-          action
-        );
-      }
-      this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
+      if (canonEffect && !canonEffect.confirmedImpact) this.emitTacticsCanonAttackEffect(attacker, entry.unit, action);
+      const damage = this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
+      if (canonEffect?.confirmedImpact && damage > 0) this.emitTacticsCanonAttackEffect(attacker, entry.unit, action);
     });
     return targets;
   }

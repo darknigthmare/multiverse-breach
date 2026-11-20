@@ -2,6 +2,11 @@ const material = (family, top, mid, side, underside, detail, accent, edge, sideF
   ({ family, sideFamily, top, mid, side, underside, detail, accent, edge });
 
 export const TACTICS_ORIGINAL_MATERIALS = Object.freeze({
+  'ashline-grass': material('grass', '#6d7850', '#596344', '#77634c', '#44392e', '#a0a56c', '#c5bd86', '#9d9a65', 'strata'),
+  'ashline-mud': material('mud', '#64533f', '#524534', '#473b2e', '#2e291f', '#917b57', '#b49b6d', '#8c7b55', 'strata'),
+  'ashline-gravel': material('gravel', '#9b9986', '#817f6d', '#6d6251', '#413b30', '#d1cbbb', '#e5d9bc', '#b8ad92', 'strata'),
+  'ashline-rock': material('rock', '#77776b', '#606458', '#4f5148', '#32382e', '#aaa792', '#cec2a2', '#a5a18a', 'strata'),
+  'ashline-planks': material('wood', '#97764d', '#7b5d3d', '#674b33', '#3c2e23', '#c49f6d', '#dfbd83', '#b99a67'),
   'greywake-causeway': material('stone', '#3c5d65', '#2b4852', '#28424c', '#172632', '#63949c', '#81c1cb', '#71a9b6'),
   'greywake-crypt': material('rock', '#2d424a', '#223640', '#1f2e3d', '#15212b', '#527581', '#72a4ab', '#5f8e95'),
   'greywake-gallery': material('panel', '#494b6b', '#383953', '#2e304f', '#1f2038', '#8c7fa0', '#d7abef', '#a184bc'),
@@ -23,6 +28,11 @@ export const TACTICS_ORIGINAL_MATERIALS = Object.freeze({
 });
 
 export const TACTICS_ORIGINAL_ENVIRONMENTS = Object.freeze({
+  'iron-ashline': {
+    sky: ['#59645f', '#a9ac98'], ground: '#4f5141', haze: '#c2b995',
+    far: '#7c8270', near: '#5d6852', ridge: 'hills', flora: 'steppe',
+    accent: '#d0b987', architecture: 'none'
+  },
   'greywake-observatory': {
     sky: ['#071b24', '#172b3b'], ground: '#182b36', haze: '#9c88b5',
     far: '#324358', near: '#203442', ridge: 'spires', flora: 'none',

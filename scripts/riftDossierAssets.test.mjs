@@ -1,8 +1,9 @@
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import path from 'node:path';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import {
   RIFT_DOSSIER_ASSET_COUNTS,
@@ -14,6 +15,7 @@ import {
   requireRiftDossierAssetSrc,
   resolveRiftDossierAssetSrc
 } from '../src/game/riftDossierAssets.js';
+import { createRiftDossierFileResolver } from './riftDossierMedia.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -21,15 +23,11 @@ const riftDossierCatalog = JSON.parse(readFileSync(
   path.join(projectRoot, 'docs', 'rift-dossiers', 'catalog.json'),
   'utf8'
 ));
-const toPublicFile = (assetPath) => path.join(
-  projectRoot,
-  'public',
-  assetPath.replace(/^\//, '')
-);
+const toPublicFile = createRiftDossierFileResolver({ projectRoot, mediaRoot: process.env.RIFT_DOSSIER_MEDIA_ROOT });
 
 test('rift dossier registry has a valid unique schema and all available files exist', () => {
   const audit = auditRiftDossierAssets({
-    assetExists: assetPath => existsSync(toPublicFile(assetPath))
+    assetExists: assetPath => Boolean(toPublicFile(assetPath))
   });
 
   assert.deepEqual(RIFT_DOSSIER_ASSET_REGISTRY_META, {
@@ -55,7 +53,7 @@ test('rift dossier registry has a valid unique schema and all available files ex
     .filter(entry => entry.status === 'available')
     .map((entry) => {
       const filePath = toPublicFile(entry.assetPath);
-      assert.equal(existsSync(filePath), true, `${entry.stageId}: missing ${entry.assetPath}`);
+      assert.ok(filePath && existsSync(filePath), `${entry.stageId}: missing ${entry.assetPath}`);
       assert.ok(statSync(filePath).size > 0, `${entry.stageId}: empty ${entry.assetPath}`);
       return createHash('sha256').update(readFileSync(filePath)).digest('hex');
     });
@@ -64,6 +62,36 @@ test('rift dossier registry has a valid unique schema and all available files ex
     availableHashes.length,
     'Every available rift dossier must have a distinct bitmap'
   );
+});
+
+test('isolated Rift media supply absent files and LFS pointers while preserving local bytes and route containment', t => {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'rift-media-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const mediaRoot = path.join(root, 'isolated');
+  const route = '/images/oc-worlds/v2/aevum/stages/stage-01.png';
+  const localFile = path.join(root, 'public', route);
+  const extraFile = path.join(mediaRoot, route);
+  const pointer = 'version https://git-lfs.github.com/spec/v1\noid sha256:' + 'f'.repeat(64) + '\nsize 42\n';
+  mkdirSync(path.dirname(extraFile), { recursive: true });
+  mkdirSync(path.dirname(localFile), { recursive: true });
+  writeFileSync(extraFile, 'isolated bytes');
+  const resolveFile = createRiftDossierFileResolver({ projectRoot: root, mediaRoot });
+  assert.equal(resolveFile(route), realpathSync(extraFile));
+  writeFileSync(localFile, pointer);
+  assert.equal(resolveFile(route), realpathSync(extraFile));
+  assert.equal(createRiftDossierFileResolver({ projectRoot: root })(route), null);
+  writeFileSync(localFile, 'local bytes');
+  assert.equal(resolveFile(route), localFile);
+  assert.equal(resolveFile('/images/oc-worlds/v2/aevum/stages/../stage-01.png'), null);
+  rmSync(localFile);
+  writeFileSync(extraFile, pointer);
+  assert.equal(resolveFile(route), null);
+  rmSync(extraFile);
+  const outsideFile = path.join(root, 'outside.png');
+  writeFileSync(outsideFile, 'outside');
+  symlinkSync(outsideFile, extraFile);
+  assert.equal(resolveFile(route), null);
+  assert.throws(() => createRiftDossierFileResolver({ projectRoot: root, mediaRoot: outsideFile }), /must point to a directory/);
 });
 
 test('strict resolver never substitutes a fallback for missing or pending stages', () => {

@@ -4,6 +4,7 @@ import { createServer } from './fixtures/ssrTestServer.mjs';
 
 import { getHeroById } from '../src/game/heroes.js';
 import { grantCombatEventBuff } from '../src/game/combatEventBuffs.js';
+import { grantBattleItemShield } from '../src/game/battleItemShield.js';
 import { initializeMeleeActorRuntime, tickMeleeCombatActor } from '../src/game/melee/meleeCombatRuntime.js';
 import { getSmashAbilityProfile } from '../src/game/smashAbilityProfiles.js';
 import { MELEE_ACTIONS } from '../src/game/melee/meleeInputMap.js';
@@ -84,6 +85,29 @@ test('Vader’s Force choke damages one selected nearby opponent without a laser
   assert.equal(types(engine).includes('laser_line'), false);
   assert.equal(types(engine).includes('glitch'), false);
 });
+
+for (const timed of [false, true]) {
+  test(`Vader’s ${timed ? 'timed' : 'direct'} melee choke draws contact only for positive HP damage`, () => {
+    for (const shielded of [false, true]) {
+      const engine = makeEngine('vader');
+      const hero = engine.heroes[0];
+      const [target, other] = placeTargets(engine, [[175], [185]]);
+      if (shielded) assert.ok(grantBattleItemShield(target, 1000) > 0);
+      const cue = () => engine.particleCalls.filter(call => call[4] === '#aeb4b9' && call[7] === 'spark');
+      if (timed) {
+        assert.equal(engine.triggerMeleeAction('player', MELEE_ACTIONS.special), true);
+        assert.deepEqual(damaged([target, other]), []);
+        assert.equal(cue().length, 0);
+        for (let frame = 0; frame < 20; frame++) {
+          tickMeleeCombatActor(hero, 1 / 60, { resolveActionHit: (source, action) => engine.resolveMeleeActionHit(source, action) });
+        }
+      } else assert.equal(engine.triggerAbility(hero, 'special'), true);
+      assert.deepEqual(damaged([target, other]), shielded ? [] : [target.id]);
+      assert.deepEqual(cue().map(call => call.slice(0, 2)), shielded ? [] : [[target.x, target.y - 30]]);
+      assert.ok(!types(engine).some(kind => ['laser_line', 'glitch'].includes(kind)));
+    }
+  });
+}
 
 test('Luke’s special is a single close lightsaber duel and telekinesis supplies no electrical ray', () => {
   const engine = makeEngine('luke');

@@ -22,7 +22,7 @@ import { SYNERGIES_DB, getHeroById } from './heroes';
 import { PLAYER_HERO_ID } from './playerHero.js';
 import { getNexusActorDesign } from './nexusActorDesigns.js';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
-import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper } from './combatIdentity';
+import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveSmashSuper as resolveMeleeSuper } from './combatIdentity';
 import { samplePresentationScript } from './combat/presentationCatalog.js';
 import { hasSelectedCombatSource } from './combat/sourceKitPriority.js';
 import { applyCombatHealing } from './combatHealing.js';
@@ -668,6 +668,7 @@ export class EngineSmash {
     const candidates = (attackerIsHero ? this.getEncounterTargets() : this.heroes)
       .filter(target => target.currentHp > 0);
     const targets = profile ? getSmashAbilityTargets(attacker, candidates, profile) : candidates;
+    const canonImpact = profile && resolveCanonHeroAttackEffect(attacker, abilityType)?.confirmedImpact;
     const attackStat = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
     const powerScale = Math.max(0.1, Number(action.powerScale) || 1);
     let hitCount = 0;
@@ -682,7 +683,7 @@ export class EngineSmash {
       const verticalOverlap = attackBottom >= hurtbox.top && attackTop <= hurtbox.bottom;
       if (!inFront || !inRange || (!profile && !verticalOverlap)) return;
       const damage = attackStat * (action.base / 10) * powerScale;
-      this.applyDamage(
+      const dealt = this.applyDamage(
         attacker,
         target,
         damage,
@@ -690,7 +691,7 @@ export class EngineSmash {
         null,
         action.guardDamage * powerScale
       );
-      if (profile && !emitAliensHiveAttackEffect(this.particles, attacker, target, abilityType)) {
+      if (profile && (!canonImpact || dealt > 0) && !emitAliensHiveAttackEffect(this.particles, attacker, target, abilityType)) {
         emitCanonHeroAttackEffect(this.particles, attacker, target, abilityType);
       }
       hitCount += 1;
@@ -824,6 +825,7 @@ export class EngineSmash {
         const maxHp = Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1;
         return target.currentHp < (target.statusEffects?.radiated > 0 ? maxHp * 0.5 : maxHp);
       }
+      if (profile.originalMelee && profile.effect === 'cleanse') return target.statusEffects?.[profile.cleanses] > 0;
       return true;
     });
     const distanceFrom = (source, target) => Math.hypot(target.x - source.x, target.y - source.y);
@@ -890,7 +892,7 @@ export class EngineSmash {
       target => target.battleId || target.runtimeId || target.id) : boundTargets;
     if (targets[0]) action.impactPoint = { x: targets[0].x, y: targets[0].y - 30 };
     const attack = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
-    const confirmNativeContact = supportsConfirmedCharacterSuperContact(profile);
+    const confirmNativeContact = profile.originalMelee || supportsConfirmedCharacterSuperContact(profile);
     targets.forEach(target => {
       const sourceJadeHpBeforeWave17=target.currentHp;
       if (isSourceControlProfileWave16(profile)) {
@@ -1310,13 +1312,14 @@ export class EngineSmash {
     const multiplier = Number.isFinite(Number(action.dmg)) ? Number(action.dmg) : 1;
     const knockback = profile.knockback ?? (abilityType === 'special' ? 45 : abilityType === 'secondary' ? 20 : 10);
     targets.forEach(target => {
-      if (!emitAliensHiveAttackEffect(this.particles, actor, target, action)) {
+      if (!effect?.confirmedImpact && !emitAliensHiveAttackEffect(this.particles, actor, target, action)) {
         emitCanonHeroAttackEffect(this.particles, actor, target, action);
       }
       const sourceId = actor.sourceId || actor.id;
       const status = sourceId === 'neo' && abilityType === 'special' ? 'glitched'
         : sourceId === 'leon' && abilityType === 'simple' ? 'infected' : null;
-      this.applyDamage(actor, target, attack * multiplier, knockback, status);
+      const dealt = this.applyDamage(actor, target, attack * multiplier, knockback, status);
+      if (effect?.confirmedImpact && dealt > 0) emitCanonHeroAttackEffect(this.particles, actor, target, action);
     });
     return true;
   }
@@ -3070,6 +3073,10 @@ export class EngineSmash {
         ctx.beginPath(); ctx.ellipse(origin.x, origin.y - 30, Math.max(4, radius * windup), Math.max(4, radius * windup), 0, 0, Math.PI * 2); ctx.stroke();
       }
     } else if (profile.delivery === 'area') {
+      if (profile.originalMelee && release && !action.visualConfirmedContact) {
+        ctx.restore();
+        return;
+      }
       const target = action.impactPoint || this.getMeleeSuperTargets(actor, profile, facing)[0];
       const areaX = profile.shape === 'area' && target ? target.x : x;
       const areaY = profile.shape === 'area' && target ? (action.impactPoint ? target.y : target.y - 30) : y;

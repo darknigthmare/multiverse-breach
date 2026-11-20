@@ -19,6 +19,11 @@ const bosses = new Map([
     sheet: '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png',
     draw: drawOrochi,
   }],
+  ['ilyr_concordat:cuirasse_nul_oblique', {
+    universe: 'Ilyr Concordat', name: 'Cuirassé Nul « Oblique »', weapon: 'heavy_melee',
+    sheet: '/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png',
+    draw: drawObliqueScreens,
+  }],
 ]);
 
 // The upper vortex bends around its horizontal cut at y=247. Pixels below
@@ -84,6 +89,24 @@ const orochiMotion = {
   attack: { rate: 0.165, lean: 0.12, sway: 0.12, stretch: 0.13 },
   hit: { rate: 0.245, lean: -0.08, sway: 0.055, stretch: 0.06 },
 };
+
+const obliquePanels = [
+  {
+    bounds: [246, 152, 169, 234],
+    outline: [[310, 152], [350, 152], [410, 260], [415, 294], [410, 317],
+      [412, 363], [402, 386], [263, 386], [246, 270], [277, 240], [280, 208]],
+    hinge: [[263, 386], [402, 386]], travel: [-0.34, 0.075],
+  },
+  {
+    bounds: [480, 259, 139, 80],
+    outline: [[480, 339], [548, 259], [608, 268], [619, 291], [599, 309]],
+    hinge: [[480, 339], [599, 309]], travel: [0.32, 0.23],
+  },
+];
+function easePanelDeployment(value) {
+  const amount = Math.min(1, Math.max(0, value));
+  return amount * amount * (3 - 2 * amount);
+}
 
 function outlineSegment(ctx, { outline }) {
   ctx.moveTo(...outline[0]);
@@ -151,6 +174,40 @@ function drawOrochi(ctx, image, state, time) {
   }
 }
 
+function getObliqueDeployment(actor) {
+  // The RPG guard counter begins at the accepted impact. The panels stay
+  // deployed while the screens protect the group and fold as they expire.
+  if (actor.rpgGuardTicks > 0) return easePanelDeployment(actor.rpgGuardTicks / 30);
+  if (actor.state === 'special' && actor.actionPending && actor.rpgSpecialDurationTicks > 0) {
+    const progress = 1 - actor.stateTimer / actor.rpgSpecialDurationTicks;
+    return 0.84 * easePanelDeployment(progress / (actor.rpgSpecialImpactProgress || 0.4));
+  }
+  return actor.guarding || actor.state === 'defense' ? 1 : 0;
+}
+
+function drawObliqueScreens(ctx, image, state, time, actor) {
+  const deployment = getObliqueDeployment(actor);
+  const tension = Math.sin(time * (state === 'hit' ? 0.19 : 0.054)) * 0.035 * (1 - deployment);
+  drawFixedBody(ctx, image, obliquePanels);
+  for (const [index, panel] of obliquePanels.entries()) {
+    const [from, to] = panel.hinge;
+    const width = to[0] - from[0];
+    const rise = to[1] - from[1];
+    const size = Math.hypot(width, rise);
+    const nx = -rise / size;
+    const ny = width / size;
+    const plane = from[0] * nx + from[1] * ny;
+    const dx = panel.travel[0] * deployment + (index === 0 ? tension : -tension);
+    const dy = panel.travel[1] * deployment;
+    ctx.save();
+    // Each pixel moves with its signed distance from the panel hinge. The
+    // entire hinge line stays in place, including the oblique rear seam.
+    ctx.transform(1 + dx * nx, dy * nx, dx * ny, 1 + dy * ny, -dx * plane, -dy * plane);
+    drawSegment(ctx, image, panel);
+    ctx.restore();
+  }
+}
+
 export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, width, height) {
   const bossId = getOriginalBossMotionId(actor);
   const boss = bosses.get(bossId);
@@ -165,7 +222,7 @@ export function drawOriginalStaticBossMotion(ctx, actor, image, animTime, x, y, 
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(width / SIZE, height / SIZE);
-  boss.draw(ctx, image, state, time);
+  boss.draw(ctx, image, state, time, actor);
   ctx.restore();
   return true;
 }

@@ -335,6 +335,17 @@ function drawTopTexture(ctx, face, material, options) {
     faceLine(ctx, face, 0.38 + shift, 0.44, 0.51, 0.13); faceLine(ctx, face, 0.73, 0.53, 0.9, 0.86);
     ctx.strokeStyle = withAlpha(material.accent, 0.31);
     faceLine(ctx, face, 0.13, 0.24, 0.44, 0.16); faceLine(ctx, face, 0.65, 0.76, 0.86, 0.62);
+  } else if (family === 'gravel') {
+    // Individual stones sit in tile/world coordinates, rather than a stretched
+    // photograph or the continuous fissures used for solid rock.
+    for (let index = 0; index < 17; index++) {
+      const u = 0.07 + ((surface.x * 11 + index * 23) % 82) / 100;
+      const v = 0.08 + ((surface.y * 13 + index * 37) % 80) / 100;
+      traceTerrainPolygon(ctx, [interpolateFace(face, u, v), interpolateFace(face, u + 0.045, v - 0.018),
+        interpolateFace(face, u + 0.075, v + 0.025), interpolateFace(face, u + 0.02, v + 0.045)]);
+      ctx.fillStyle = withAlpha(index % 3 ? material.detail : material.underside, 0.55);
+      ctx.fill(); ctx.stroke();
+    }
   } else if (family === 'snow') {
     ctx.fillStyle = withAlpha(material.detail, 0.45);
     for (let index = 0; index < 12; index += 1) {

@@ -69,6 +69,7 @@ import { drawWardrobeEffect } from './wardrobeEffects.js';
 import { drawFallbackEnergyBlades } from './energyBladeFallback.js';
 import { getQuarantinedCanonSprite } from './runtimeSpriteQuarantine.js';
 import { getReviewedDcP0Bust } from './historicalDcP0SpriteQuarantine.js';
+import { getStarfireFighterCastCenter, getStarfireFighterCastFrame } from './combat/starfireFighterCast.js';
 import { drawPachakutiFallback } from './pachakutiWorldBossArt.js';
 import { drawTwelveBellJudgesMotion } from './twelveBellJudgesMotion.js';
 import { drawOriginalStaticBossMotion } from './originalStaticBossMotion.js';
@@ -236,6 +237,34 @@ export const drawCosmeticAtlasFrame = (
   ctx.restore();
   return true;
 };
+
+export function isStarfireFighterCastAtlasReady(asset) {
+  const entry = getCachedSpriteSheet(asset?.sheet);
+  return entry?.status === 'ready' && entry.image.complete
+    && entry.image.naturalWidth === asset.width && entry.image.naturalHeight === asset.height;
+}
+
+export function drawStarfireFighterCast(ctx, fighter, height, reducedMotion) {
+  const frame = getStarfireFighterCastFrame(fighter, reducedMotion);
+  if (!frame || !isStarfireFighterCastAtlasReady(frame.asset)) return false;
+  const { asset, col, row, clipAtSourceX } = frame;
+  const facing = fighter.action.facing;
+  const centerY = getStarfireFighterCastCenter(asset, fighter.y, height);
+  const scale = height / asset.frameHeight;
+  const width = asset.frameWidth * scale;
+  ctx.save();
+  if (clipAtSourceX) {
+    const bodyWidth = clipAtSourceX * scale;
+    const left = Math.round(fighter.x) + (facing < 0 ? width / 2 - bodyWidth : -width / 2);
+    ctx.beginPath();
+    ctx.rect(left, Math.round(centerY) - height / 2, bodyWidth, height);
+    ctx.clip();
+  }
+  const drawn = drawCosmeticAtlasFrame(ctx, { ...asset, row }, col, fighter.x, centerY, width, height,
+    { facing, glowBlur: 0, redrawWhenReady: false });
+  ctx.restore();
+  return drawn;
+}
 
 export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
   const entry = getCachedSpriteSheet(getItemSpriteSrc(item));

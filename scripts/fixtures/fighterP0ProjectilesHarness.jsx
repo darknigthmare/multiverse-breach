@@ -30,7 +30,7 @@ const audit = {
 };
 window.__fighterP0Projectiles = audit;
 window.addEventListener('keydown', event => {
-  if (['f', 'p'].includes(event.key.toLowerCase())) audit.keyEvents.push({
+  if (['f', 'p', 'r', 'o'].includes(event.key.toLowerCase())) audit.keyEvents.push({
     key: event.key.toLowerCase(), code: event.code, repeat: event.repeat, trusted: event.isTrusted
   });
 });
@@ -55,6 +55,7 @@ EngineFighter.prototype.spawnProjectile = function (actor, action) {
       side: projectile.side, owner: identity(actor), sourceHeroId: actor.sourceHeroId || actor.sourceId || actor.id,
       kind: projectile.canonParticleType, x: projectile.x, y: projectile.y,
       vx: projectile.vx, maxRange: projectile.maxRange, radius: projectile.radius,
+      starfireLaunch: projectile.starfireLaunch,
       canonSourceAbility: action.canonSourceAbility, authoredAbility: action.authoredAbility,
       name: action.identity?.name, delivery: action.identity?.delivery, shape: action.identity?.shape,
       maxTargets: action.identity?.maxTargets, identityAuthored: action.identity?.provenance?.identityAuthored,

@@ -8,9 +8,16 @@ import {
 } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { RIFT_DOSSIER_ASSET_ROOT } from '../src/game/riftDossierAssetPath.js';
+import { createRiftDossierFileResolver } from './riftDossierMedia.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
+const checkOnly = process.argv.includes('--check');
+const resolveFile = createRiftDossierFileResolver({
+  projectRoot,
+  mediaRoot: process.env.RIFT_DOSSIER_MEDIA_ROOT
+});
 const catalogPath = path.join(projectRoot, 'docs/rift-dossiers/catalog.json');
 const registryPath = path.join(projectRoot, 'src/game/riftDossierAssets.json');
 const riftLedgerPath = path.join(
@@ -65,14 +72,10 @@ assert.equal(
 );
 assert.equal(catalog.entrees.length, catalog.total, 'Catalog total is inconsistent');
 
+const availableImageHashes = [];
 const entries = catalog.entrees.map((entry) => {
-  const publicFile = path.join(
-    projectRoot,
-    'public',
-    entry.cheminCibleDedie.replace(/^\//, '')
-  );
-  const fileExists = existsSync(publicFile);
-  const imageSha256 = fileExists ? fileSha256(publicFile) : null;
+  const publicFile = resolveFile(entry.cheminCibleDedie);
+  const imageSha256 = publicFile ? fileSha256(publicFile) : null;
   const isOriginalUniverseStage = entry.cheminCibleDedie.startsWith('/images/oc-worlds/v2/');
   const provenanceMatches = isOriginalUniverseStage
     ? (() => {
@@ -94,10 +97,12 @@ const entries = catalog.entrees.map((entry) => {
         && ledgerMatches[0].image?.sha256 === imageSha256;
     })();
 
+  const available = Boolean(publicFile && provenanceMatches);
+  if (available) availableImageHashes.push(imageSha256);
   return {
     stageId: entry.id,
     assetPath: entry.cheminCibleDedie,
-    status: fileExists && provenanceMatches ? 'available' : 'pending'
+    status: available ? 'available' : 'pending'
   };
 });
 
@@ -111,13 +116,6 @@ assert.equal(
   entries.length,
   'Registry asset paths must be unique'
 );
-const availableImageHashes = entries
-  .filter(entry => entry.status === 'available')
-  .map(entry => fileSha256(path.join(
-    projectRoot,
-    'public',
-    entry.assetPath.replace(/^\//, '')
-  )));
 assert.equal(
   new Set(availableImageHashes).size,
   availableImageHashes.length,
@@ -127,19 +125,25 @@ assert.equal(
 const registry = {
   schemaVersion: 1,
   source: 'openai',
-  assetRoot: '/images/rift-dossiers/openai/',
+  assetRoot: RIFT_DOSSIER_ASSET_ROOT,
   entries
 };
 const serialized = `${JSON.stringify(registry, null, 2)}\n`;
-const checkOnly = process.argv.includes('--check');
-
 if (checkOnly) {
   assert.equal(existsSync(registryPath), true, 'Missing generated rift-dossier registry');
-  assert.equal(
-    readFileSync(registryPath, 'utf8'),
-    serialized,
-    'Generated rift-dossier registry is stale'
-  );
+  const stored = readFileSync(registryPath, 'utf8');
+  if (stored !== serialized) {
+    const byStage = new Map(JSON.parse(stored).entries.map(entry => [entry.stageId, entry]));
+    const changed = entries.filter(entry => {
+      const prior = byStage.get(entry.stageId);
+      return prior?.assetPath !== entry.assetPath || prior?.status !== entry.status;
+    });
+    const examples = changed.slice(0, 8).map(entry => {
+      const priorStatus = byStage.get(entry.stageId)?.status ?? 'undeclared';
+      return `${entry.stageId} ${priorStatus} → ${entry.status} ${entry.assetPath}`;
+    });
+    throw new Error(['Generated rift-dossier registry is stale', ...examples].join('\n'));
+  }
 } else {
   writeFileSync(registryPath, serialized, 'utf8');
 }

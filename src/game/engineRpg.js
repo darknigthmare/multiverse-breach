@@ -1094,7 +1094,7 @@ export class EngineRpg {
     const gyroProfileWave17=isJadeGyrodiskProfileWave17(resolveCombatAbility(actor,abilityType));
     if(gyroProfileWave17&&!this.heroes.includes(actor)&&!this.enemies.includes(actor)){actor.rpgGyrodiskActionWave17=null;actor.actionPending=false;return;}
     if (this.disposed || this.gameOver || actor.currentHp <= 0 || actor.rpgControlTicks > 0 || isSourceImmobilizedWave16(actor)) return;
-    const canonImpact = profile.effect === 'damage' && resolveCanonHeroAttackEffect(actor, profile.action)?.rpgImpact;
+    const canonImpact = profile.effect === 'damage' && resolveCanonHeroAttackEffect(actor, profile.action)?.confirmedImpact;
     const source = this.getRpgDamageSource(actor, profile);
     const summon = abilityType === 'summon' && this.activeSummon?.actor === actor ? this.activeSummon : null;
     for (const target of targets) {
@@ -1635,7 +1635,7 @@ export class EngineRpg {
     if (meleeContact) this.positionForMelee(actor, anchor);
     const canonEffect = profile.effect === 'damage' ? resolveCanonHeroAttackEffect(actor, profile.action) : null;
     // The RPG Force choke owns its confirmed contact, separately from the W13 melee saber super.
-    const visualProfile = abilityType === 'special' && !canonEffect?.rpgImpact ? resolveCombatAbility(actor, 'special') : null;
+    const visualProfile = abilityType === 'special' && !canonEffect?.confirmedImpact ? resolveCombatAbility(actor, 'special') : null;
     const visualAction = { elapsed: 0, duration: durationTicks / 60, hitAt: Math.ceil(impactDelay * 60 / 1000) / 60, facing: actor.facing };
     if (profile.action?.sourceSligRifle) actor.rpgPossessedRifleActionWave16={...visualAction,elapsedTicks:0,sourceSligRifle:true};
     const jadeGyroIdentityWave17=resolveCombatAbility(actor,abilityType);if(isJadeGyrodiskProfileWave17(jadeGyroIdentityWave17)){actor.rpgGyrodiskActionWave17={...visualAction,identity:jadeGyroIdentityWave17,elapsedTicks:0,actionVersion};(this.sourceRpgGyrodiskActorsWave17||=new Set()).add(actor);}
@@ -1655,7 +1655,7 @@ export class EngineRpg {
       this.playSfx(canonEffect?.sfx || (profile.effect === 'damage' ? 'shoot' : 'shield'));
       // Source-curated support actions use their pose and accepted status feedback.
       // A radio order, analysis or protection must not launch a generic laser at an ally.
-      if (!canonEffect?.rpgImpact && !actor.rpgGyrodiskActionWave17 && !profile.action?.sourceSligRifle && !actor.rpgSpecialVisual && !sourceSupport && !['radial', 'control'].includes(profile.delivery)) targets.forEach(target => {
+      if (!canonEffect?.confirmedImpact && !actor.rpgGyrodiskActionWave17 && !profile.action?.sourceSligRifle && !actor.rpgSpecialVisual && !sourceSupport && !['radial', 'control'].includes(profile.delivery)) targets.forEach(target => {
         if (!emitCanonHeroAttackEffect(this.particles, actor, target, profile.action)) this.emitTargetedProjectile(actor, target, color);
       });
     }

@@ -6,6 +6,13 @@ import { getBossesForUniverse, getWorldBossForUniverse } from '../src/game/enemi
 import { drawOriginalStaticBossMotion } from '../src/game/originalStaticBossMotion.js';
 import { getEnemySpriteSheetSrc, getSpriteSheetLayout } from '../src/game/spriteAssets.js';
 
+const oblique = {
+  actor: getBossesForUniverse('Ilyr Concordat').find(enemy => enemy.id === 'ilyr_concordat:cuirasse_nul_oblique'),
+  path: '/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png',
+  bytes: 'd8fc3b1c20506f0b246f63b0bf48c11d4a33a713d57bc141eb07a6186256f1dd',
+  crops: [[246, 152, 169, 234], [480, 259, 139, 80]],
+  hinges: [[[263, 386], [402, 386]], [[480, 339], [599, 309]]],
+};
 const bosses = [
   {
     actor: getBossesForUniverse('The Aether Crown').find(enemy => enemy.id === 'aether_crown:lord_pneuma'),
@@ -26,6 +33,7 @@ const bosses = [
     crops: [[403, 26, 185, 145], [268, 190, 90, 55], [739, 160, 102, 68]],
     crestRoots: [171, 245, 228],
   },
+  oblique,
 ];
 const worldRect = [0, 0, 126, 126];
 
@@ -36,7 +44,7 @@ function recordingContext() {
   return { trace, ctx: Object.fromEntries(operations.map(name => [name, (...args) => trace.push([name, ...args])])) };
 }
 
-for (const { actor, path, bytes, crops, crestRoots } of bosses) {
+for (const { actor, path, bytes, crops } of bosses) {
   const image = { src: 'http://localhost' + path, naturalWidth: 1024, naturalHeight: 1024 };
   test(actor.name + ' animates only the exact actor and still serves the original 1×1 bitmap', () => {
     const original = readFileSync(new URL('../public' + path, import.meta.url));
@@ -67,7 +75,10 @@ for (const { actor, path, bytes, crops, crestRoots } of bosses) {
       assert.deepEqual(trace, []);
     }
   });
+}
 
+for (const { actor, path, crops, crestRoots } of bosses.filter(boss => boss !== oblique)) {
+  const image = { src: 'http://localhost' + path, naturalWidth: 1024, naturalHeight: 1024 };
   test(actor.name + ' preserves the body and gives the measured source regions distinct state motion', () => {
     const read = (state, time) => {
       const { ctx, trace } = recordingContext();
@@ -112,3 +123,43 @@ for (const { actor, path, bytes, crops, crestRoots } of bosses) {
     assert.deepEqual(read('special', 13), read('attack', 13));
   });
 }
+
+test('Oblique deploys its own articulated plates with the accepted RPG guard window', () => {
+  const { actor, path, crops, hinges } = oblique;
+  const image = { src: 'http://localhost' + path, naturalWidth: 1024, naturalHeight: 1024 };
+  function pose(motion, time = 0) {
+    const { ctx, trace } = recordingContext();
+    const fighter = { ...actor, state: 'idle', ...motion };
+    assert.equal(drawOriginalStaticBossMotion(ctx, fighter, image, time, ...worldRect), true);
+    assert.deepEqual(trace.filter(([op]) => op === 'drawImage'), [
+      ['drawImage', image, 0, 0, 1024, 1024],
+      ...crops.map(rect => ['drawImage', image, ...rect, ...rect]),
+    ]);
+    assert.deepEqual(trace.filter(([op]) => op === 'clip'), [['clip', 'evenodd'], ['clip'], ['clip']]);
+    assert.equal(trace.filter(([op]) => op === 'save').length, trace.filter(([op]) => op === 'restore').length);
+    const transforms = trace.filter(([op]) => op === 'transform').map(([, ...matrix]) => matrix);
+    assert.equal(transforms.length, hinges.length);
+    for (const [index, [a, b, c, d, e, f]] of transforms.entries()) {
+      for (const [x, y] of hinges[index]) {
+        assert.ok(Math.abs(a * x + c * y + e - x) < 1e-9);
+        assert.ok(Math.abs(b * x + d * y + f - y) < 1e-9);
+      }
+    }
+    return transforms;
+  }
+
+  const anticipation = { state: 'special', actionPending: true, rpgSpecialDurationTicks: 45,
+    rpgSpecialImpactProgress: 18 / 45 };
+  const rest = pose({ rpgGuardTicks: 0 });
+  const charging = pose({ ...anticipation, stateTimer: 33 });
+  const deployed = pose({ rpgGuardTicks: 180 });
+  const folding = pose({ rpgGuardTicks: 15 });
+  assert.notDeepEqual(pose({}, 25), rest, 'the resting tension is subtle live motion');
+  assert.deepEqual(pose({ ...anticipation, stateTimer: 45 }), rest);
+  assert.deepEqual(pose({ ...anticipation, stateTimer: 33, actionPending: false }), rest);
+  assert.deepEqual(pose({ rpgGuardTicks: 30 }, 25), deployed);
+  assert.deepEqual(pose({ state: 'defense' }), deployed);
+  assert.ok(0 > charging[0][2] && charging[0][2] > deployed[0][2]);
+  assert.ok(0 > folding[0][2] && folding[0][2] > deployed[0][2]);
+  assert.ok(folding[1][2] > 0 && folding[1][2] < deployed[1][2]);
+});

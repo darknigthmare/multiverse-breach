@@ -16,6 +16,7 @@ import { ROSTER_REINFORCEMENTS_WAVE10 } from './combat/rosterReinforcementsWave1
 import { ROSTER_REINFORCEMENTS_WAVE11 } from './combat/rosterReinforcementsWave11.js';
 import { resolveSelectedCombatSource, hasPreparedLegacyCombatSource, prefersCurrentCanonCombatKit } from './combat/sourceKitPriority.js';
 import { resolveMaskedFeralSourceLoadout } from './combat/sourceLoadoutFeralMasked20261113.js';
+import { getOriginalMeleeSuper } from './originalMeleeSupers.js';
 
 // This catalog preserves the source of each action. A runtime adaptation and an
 // actual source-game animation are different claims; no animation is certified
@@ -153,7 +154,7 @@ function abilityProfile(actor, slot, action) {
   };
 }
 
-export function resolveMeleeSuper(actor) {
+export function resolveMeleeSuper(actor, { originalCampaign = false } = {}) {
   if (!actor?.universe || !hasAbility(actor.special)) return null;
   const sourceLoadout = resolveMaskedFeralSourceLoadout(actor);
   const preparedLegacy = hasPreparedLegacyCombatSource(actor, 'special') || prefersSuppliedCanonAction(actor, 'special');
@@ -167,7 +168,8 @@ export function resolveMeleeSuper(actor) {
       sourceUrl: authored.sourceUrl || canonical.sourceUrl,
       sourceReference: [canonical.sourceReference, authored.sourceReference].filter(Boolean).join(' ') }
     : canonical;
-  const action = clone(override?.special || actor.special);
+  const original = originalCampaign && !override && !preparedLegacy && !selected ? getOriginalMeleeSuper(actor) : null;
+  const action = clone(override?.special || original?.special || actor.special);
   if (!hasAbility(action)) return null;
   const profile = abilityProfile(actor, 'special', action);
   const duration = finite(action.animationDuration, 1.1, 0.2);
@@ -186,8 +188,13 @@ export function resolveMeleeSuper(actor) {
     visualStyle: beneficial.has(profile.effect) ? profile.effect : profile.delivery,
     sourceHeroId: identity(actor),
     sourceAbility: { ...action, name: combatIdentityText(action.name), slot: 'special', sourceHeroId: identity(actor) },
-    provenance: provenanceFor(actor, 'special', action, override)
+    provenance: provenanceFor(actor, 'special', action, override || original),
+    ...(original ? { originalMelee: true } : {})
   };
+}
+
+export function resolveSmashSuper(actor) {
+  return resolveMeleeSuper(actor, { originalCampaign: true });
 }
 
 // Basic commands need the same identity and effect guarantees as supers.

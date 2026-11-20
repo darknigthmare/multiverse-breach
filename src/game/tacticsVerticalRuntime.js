@@ -15,6 +15,8 @@ import { drawTacticsScenery, getTacticsSceneryBounds } from './tacticsEnvironmen
 import { isTacticsPhaselockProfile, getTacticsSourceProfileWave16 } from './tacticsControl.js';
 import { isValHealingBurstProfile } from './combat/combatHealingBurstWave15.js';
 import { applyCombatHealing } from './combatHealing.js';
+import { getBespinVaderTacticsAbility } from './starWarsBespinVader.js';
+import { resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 
 const rays = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
 const living = unit => (unit?.currentHp ?? unit?.hp ?? 0) > 0;
@@ -34,7 +36,8 @@ export class TacticsVerticalRuntime {
 
   surface(ref) { return getTerrainSurface(this.terrain, ref); }
   ability(unit, action) {
-    return resolveCombatAbility(unit, action === 'enemy' ? 'simple' : action);
+    const slot = action === 'enemy' ? 'simple' : action;
+    return getBespinVaderTacticsAbility(unit, slot) || resolveCombatAbility(unit, slot);
   }
   definition(unit, action) {
     const source = getTacticsSourceProfileWave16(unit, action);
@@ -60,7 +63,7 @@ export class TacticsVerticalRuntime {
     const targetSide = action === 'defense' && effect === 'guard' && !declaredSide ? 'self'
       : declaredSide || profile?.targetSide || (effect === 'damage' ? 'enemy' : 'ally');
     const range = targetSide === 'self' ? 0
-      : explicit.range ?? raw.tacticsRange ?? convertedRange;
+      : explicit.range ?? raw.tacticsRange ?? profile?.tacticsRange ?? convertedRange;
     return {
       ...profile, ...explicit, effect, delivery, shape, actionType: action, range,
       effectDuration: profile?.effectDuration ?? raw.targeting?.duration ?? raw.dur ?? 2,
@@ -471,6 +474,9 @@ export class TacticsVerticalRuntime {
     if (!e.canAttackCell(attacker, target, profile)) return [];
     if(isMelodyWave17(attacker)&&profile.sourceGoldenLuteWave17===true){return e.beginSourceGoldenLuteMoveWave17(attacker,target)?targets:[];}
     if(!consumeOkarunAllOutWave17(attacker,profile))return [];
+    const attack = this.definition(attacker, action);
+    const canonEffect = profile.effect === 'damage' && resolveCanonHeroAttackEffect(attacker, attack);
+    if (canonEffect?.confirmedImpact && targets.length) e.playSfx(canonEffect.sfx);
     const applied = [];
     for (const { unit } of targets) {
       if (profile.effect === 'revive' && (!canOccupyTerrainSurface(this.terrain, unit, this.pathOptions(unit)) || living(unit))) continue;
@@ -479,7 +485,8 @@ export class TacticsVerticalRuntime {
       if(isJadeInformationProfileWave17(profile)){revealPhotographicEvidenceWave17(attacker,unit,profile,{hostile:e.heroes.includes(attacker)!==e.heroes.includes(unit)});continue;}
       if(isMediGunProfileWave17(profile)){startMediGunBeamWave17(attacker,unit,{allied:e.heroes.includes(attacker)===e.heroes.includes(unit),range:220});continue;}
       if (profile.effect === 'damage') {
-        e.applyDamage(attacker, unit, damage, status || profile.statusEffect, { actionType: action });
+        const dealt = e.applyDamage(attacker, unit, damage, status || profile.statusEffect, { actionType: action });
+        if (canonEffect?.confirmedImpact && dealt > 0) e.emitTacticsCanonAttackEffect(attacker, unit, attack);
         continue;
       }
       const ticks = Math.max(1, Math.round((profile.effectDuration || profile.duration || 2) * 60));
@@ -675,7 +682,8 @@ export class TacticsVerticalRuntime {
     unit.stateTimer = action === 'special' ? 35 : 25;
     if (action === 'special') unit.tacticsPresentationTicks = 35;
     const loadoutContact = isMaskedFeralSourceLoadoutProfile(profile) && profile.effect === 'damage' && profile.delivery === 'melee';
-    e.playSfx(loadoutContact ? 'slash' : profile.effect === 'damage' ? action === 'special' ? 'special' : 'shoot' : 'shield');
+    const impactCue = resolveCanonHeroAttackEffect(unit, this.definition(unit, action))?.confirmedImpact;
+    if (!impactCue) e.playSfx(loadoutContact ? 'slash' : profile.effect === 'damage' ? action === 'special' ? 'special' : 'shoot' : 'shield');
     e.applyProfiledAttack(unit, cell(surface), action, e.getActionBaseDamage(unit, action), null, e.activeUnitType);
     e.endActiveTurn();
     return { handled: true, type: 'action', action, target: targets[0], targets };

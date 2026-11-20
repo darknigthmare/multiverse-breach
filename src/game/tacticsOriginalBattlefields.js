@@ -2,6 +2,7 @@
 // The campaign manifest supplies the setting and objective. The board is a
 // playable interpretation of that setting with its own geometry and materials.
 import { KHIPU_WITNESS_ACTOR, KHIPU_WITNESS_ID } from './tacticsKhipuWitness.js';
+import { TACTICS_IRON_ASHLINE_BATTLEFIELD } from './tacticsIronAshlineBattlefield.js';
 
 const frEn = (fr, en) => ({ fr, en });
 const reference = 'src/game/originalUniversesManifest.json';
@@ -275,5 +276,5 @@ function pitOfAuditors() {
 }
 
 export const TACTICS_ORIGINAL_BATTLEFIELDS = Object.freeze(Object.fromEntries(
-  [observatory(), crossroads(), qhapaqNan(), pitOfAuditors()].map(field => [field.id, field])
+  [observatory(), crossroads(), qhapaqNan(), pitOfAuditors(), TACTICS_IRON_ASHLINE_BATTLEFIELD].map(field => [field.id, field])
 ));

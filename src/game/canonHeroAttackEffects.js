@@ -2,10 +2,10 @@
 // game abstractions, not approval of any character sprite or film choreography.
 import { emitP0CanonAttackEffect, getP0HeroSourceId, resolveP0CanonAttackEffect } from './canonP0AttackEffects.js';
 import { CANON_FOLLOWUP_SOURCE_KITS } from './canonFollowupSourceKits.js';
+import { isBespinVader } from './starWarsBespinVader.js';
 const SOURCE_KITS = new Set([
   'han_solo', 'luke', 'vader', 'bob_minions', 'kevin_minions', 'stuart_minions'
 ]);
-const BESPIN_VADER = 'Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord';
 const BESPIN_FORCE_ACTIONS = new Map([
   ['Bespin Debris Telekinesis', 'bespinDebris'],
   ['Force Choke', 'forceChoke']
@@ -18,11 +18,9 @@ export function resolveCanonHeroAttackEffect(actor, actionOrType) {
   if (p0Effect) return p0Effect;
   const sourceId = getCanonHeroSourceId(actor);
   const action = typeof actionOrType === 'string' ? actor?.[actionOrType] : actionOrType;
-  if ((actor?.sourceHeroId || sourceId) === 'vader' && actor.universe === 'Star Wars'
-    && (!actor.sourceUniverse || actor.sourceUniverse === actor.universe)
-    && actor.incarnation === BESPIN_VADER && action?.type === 'gravity') {
+  if (isBespinVader(actor) && action?.type === 'gravity') {
     const kind = BESPIN_FORCE_ACTIONS.get(action.name);
-    if (kind) return { kind, color: '#aeb4b9', sfx: 'shield', rpgImpact: true };
+    if (kind) return { kind, color: '#aeb4b9', sfx: 'shield', confirmedImpact: true };
   }
   // This separate follow-up selection leaves the frozen P0 identities intact.
   const followup = Object.hasOwn(CANON_FOLLOWUP_SOURCE_KITS, sourceId)
@@ -57,7 +55,7 @@ export function emitCanonHeroAttackEffect(particles, actor, target, actionOrType
   if (p0Effect) return emitP0CanonAttackEffect(particles, actor, target, p0Effect);
   const effect = resolveCanonHeroAttackEffect(actor, actionOrType);
   if (!effect || !particles?.add) return false;
-  if (effect.rpgImpact && !target) return true;
+  if (effect.confirmedImpact && !target) return true;
   const destination = target || { x: actor.x + (actor.facing || 1) * 60, y: actor.y };
   const dx = destination.x - actor.x;
   const dy = destination.y - actor.y;

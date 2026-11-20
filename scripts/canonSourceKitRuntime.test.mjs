@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from './fixtures/ssrTestServer.mjs';
 import { getHeroById } from '../src/game/heroes.js';
 import { resolveCanonHeroAttackEffect } from '../src/game/canonHeroAttackEffects.js';
+import { grantBattleItemShield } from '../src/game/battleItemShield.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const engines = [];
@@ -194,6 +195,58 @@ test('Tactics Vader Force choke hits its selected distant target without damagin
   assert.ok(!particleKinds(engine).some(kind => ['laser_line', 'glitch', 'music'].includes(kind)));
 });
 
+for (const [slot, range, expectedKind] of [['special', 5, 'spark'], ['secondary', 3, 'thrown_prop']]) {
+  test(`Vertical Tactics Vader ${slot}: selected elevated surface owns the original command and accepted cue`, () => {
+    for (const shielded of [false, true]) {
+      const calls = [], sounds = [];
+      const vader = getHeroById('vader');
+      const engine = new EngineTactics(1040, 460, [vader], enemyData,
+        { add: (...args) => calls.push(args) }, cue => sounds.push(cue), () => {}, {
+          universe: 'Nexus de Convergence', tacticsBattlefieldId: 'nexus_skybridge',
+          customBattle: { singleRoster: true, opponentControl: 'p2' }
+        });
+      engines.push(engine);
+      const [actor] = engine.heroes;
+      const [target, underneath] = engine.enemies;
+      const place = (unit, surfaceId) => {
+        const surface = engine.terrain.byId.get(surfaceId);
+        Object.assign(unit, { gridX: surface.x, gridY: surface.y, gridZ: surface.z, surfaceId });
+      };
+      place(actor, 'bridge:4:3');
+      place(target, 'bridge:7:3');
+      place(underneath, 'ground:7:3');
+      engine.syncActorsToCamera();
+      engine.obstacles = [];
+      Object.assign(engine, { activeUnit: actor, activeUnitType: 'hero', actionPhase: 'action' });
+      actor.specialCharge = 100;
+      if (shielded) assert.ok(grantBattleItemShield(target, 500) > 0);
+      const cues = () => calls.filter(call => call[4] === '#aeb4b9' && call[7] === expectedKind);
+      const hp = engine.enemies.map(unit => unit.currentHp);
+      const cueCount = slot === 'special' ? 1 : 2;
+      calls.length = 0;
+      sounds.length = 0;
+
+      assert.equal(engine.getActionDefinition(actor, 'simple').name, vader.simple.name);
+      assert.equal(engine.getActionDefinition(actor, 'defense').name, vader.defense.name);
+      assert.equal(engine.getAttackProfile(actor, 'defense').guardReduce, vader.defense.reduce);
+      assert.equal(engine.getActionDefinition(actor, slot).name, vader[slot].name);
+      const { delivery, shape, maxTargets, multiplier } = engine.getAttackProfile(actor, slot);
+      assert.deepEqual({ delivery, shape, maxTargets, multiplier }, { delivery: 'ranged', shape: 'single', maxTargets: 1, multiplier: vader[slot].dmg });
+      assert.equal(engine.getAttackProfile(actor, slot).range, range);
+      assert.equal(engine.selectAction(slot), true);
+      assert.ok(engine.attackRange.some(cell => cell.surfaceId === target.surfaceId));
+      assert.equal(engine.handleCellClick(7, 3, target.surfaceId).handled, true);
+      assert.equal(target.currentHp < hp[0], !shielded);
+      assert.deepEqual(engine.enemies.slice(1).map(unit => unit.currentHp), hp.slice(1));
+      assert.equal(cues().length, shielded ? 0 : cueCount);
+      const position = engine.getUnitScreenPosition(7, 3, target.surfaceId);
+      assert.notEqual(position.y, engine.getUnitScreenPosition(7, 3, underneath.surfaceId).y);
+      assert.ok(cues().every(call => Math.abs(call[0] - position.x) <= 8 && call[1] < position.y));
+      assert.ok(!sounds.includes('shoot') && !sounds.includes('special'));
+    }
+  });
+}
+
 test('Tactics Han volley fires at up to three distinct visible opponents without cone or splash damage', () => {
   const engine = makeEngine('tactics', 'han_solo');
   const actor = engine.heroes[0];
@@ -227,7 +280,7 @@ test('canonical presentation follows the original identity for custom P2 heroes 
   const vader = getHeroById('vader');
   assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'p2:vader', sourceId: 'vader' }, 'special').kind, 'forceChoke');
   assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'p2:vader' }, 'special').kind, 'forceChoke');
-  assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'temporary:2', sourceHeroId: 'vader' }, 'special').rpgImpact, true);
-  assert.equal(resolveCanonHeroAttackEffect({ ...vader, incarnation: 'Death Star II (1983)' }, 'special').rpgImpact, undefined);
+  assert.equal(resolveCanonHeroAttackEffect({ ...vader, id: 'temporary:2', sourceHeroId: 'vader' }, 'special').confirmedImpact, true);
+  assert.equal(resolveCanonHeroAttackEffect({ ...vader, incarnation: 'Death Star II (1983)' }, 'special').confirmedImpact, undefined);
   assert.equal(resolveCanonHeroAttackEffect({ id: 'unrelated', secondary: { type: 'gravity' } }, 'secondary'), null);
 });

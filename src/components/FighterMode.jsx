@@ -11,6 +11,7 @@ import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimatio
 import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
 import { getQuarantinedCanonSprite } from '../game/runtimeSpriteQuarantine.js';
 import { getReviewedDcP0Bust } from '../game/historicalDcP0SpriteQuarantine.js';
+import { getStarfireFighterCastAtlas } from '../game/combat/starfireFighterCast.js';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
@@ -589,6 +590,7 @@ export default function FighterMode({
       ...playerHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
       ...opponentHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
       ...[...playerHeroes, ...opponentHeroes].map(hero => resolveCharacterAnimationAsset(hero)?.sheet).filter(Boolean),
+      ...[...playerHeroes, ...opponentHeroes].map(hero => getStarfireFighterCastAtlas(hero)?.sheet).filter(Boolean),
       ...cosmeticSpriteSheets
     ]);
 

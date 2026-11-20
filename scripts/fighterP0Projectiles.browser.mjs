@@ -114,7 +114,17 @@ try {
       assert.deepEqual(flight.hp, initial.hp, 'Flight before contact cannot damage any actor');
       assert.ok(flight.paints.length > 1);
       assert.ok(flight.paints.every(paint => paint.kind === profile.kind && paint.color.toLowerCase() === profile.color));
-      assert.ok(flight.paints.every(paint => Math.abs(paint.x - paint.projectileX) < .001 && Math.abs(paint.y - paint.projectileY) < .001));
+      if (profile.heroId === 'starfire_tt') {
+        assert.ok(spawn.starfireLaunch, 'Starfire has a recorded palm release');
+        assert.ok(flight.paints.some(paint => paint.travelFromMuzzle < 52 && paint.y < paint.projectileY), 'The loaded cast shows its hand on release');
+        for (const paint of flight.paints) {
+          const blend = Math.max(0, 1 - paint.travelFromMuzzle / 52);
+          assert.ok(Math.abs(paint.x - paint.projectileX - spawn.starfireLaunch.dx * blend) < .001);
+          assert.ok(Math.abs(paint.y - paint.projectileY - spawn.starfireLaunch.dy * blend) < .001);
+        }
+      } else {
+        assert.ok(flight.paints.every(paint => Math.abs(paint.x - paint.projectileX) < .001 && Math.abs(paint.y - paint.projectileY) < .001));
+      }
       assert.ok(flight.paints.every(paint => Math.abs(paint.radiusX - 9.1) < .001 && Math.abs(paint.radiusY - 6.5) < .001), 'Actual typed procedural ellipses must follow the projectile, rather than a generic laser');
       assert.equal(flight.particleTypes.includes('laser_line'), false);
       assert.deepEqual(flight.keyEvents, [{ key, code: side === 'player' ? 'KeyF' : 'KeyP', repeat: false, trusted: true }]);

@@ -1,20 +1,15 @@
 import registry from './riftDossierAssets.json' with { type: 'json' };
+import { RIFT_DOSSIER_ASSET_ROOT, auditRiftDossierAssetPath, isDedicatedRiftDossierAssetPath } from './riftDossierAssetPath.js';
+
+export { RIFT_DOSSIER_ASSET_ROOT, auditRiftDossierAssetPath, isDedicatedRiftDossierAssetPath };
 
 export const RIFT_DOSSIER_ASSET_SCHEMA_VERSION = 1;
-export const RIFT_DOSSIER_ASSET_ROOT = '/images/rift-dossiers/openai/';
 export const RIFT_DOSSIER_ASSET_STATUSES = Object.freeze({
   AVAILABLE: 'available',
   PENDING: 'pending'
 });
 
 const VALID_STATUSES = new Set(Object.values(RIFT_DOSSIER_ASSET_STATUSES));
-const GENERATED_DOSSIER_ASSET_PATH_PATTERN = /^\/images\/rift-dossiers\/openai\/(?:[a-z0-9][a-z0-9-]*\/)*[a-z0-9][a-z0-9-]*\.(?:avif|png|webp)$/;
-const ORIGINAL_OC_STAGE_ART_PATH_PATTERN = /^\/images\/oc-worlds\/v2\/[a-z0-9][a-z0-9_-]*\/stages\/[a-z0-9][a-z0-9_-]*\.png$/;
-const isKnownDedicatedAssetPath = assetPath => (
-  GENERATED_DOSSIER_ASSET_PATH_PATTERN.test(assetPath)
-  || ORIGINAL_OC_STAGE_ART_PATH_PATTERN.test(assetPath)
-);
-
 const normalizeStageId = (stageOrId) => {
   const value = typeof stageOrId === 'object' && stageOrId !== null
     ? stageOrId.id
@@ -40,40 +35,6 @@ export const RIFT_DOSSIER_ASSET_REGISTRY_META = Object.freeze({
   source: registry.source,
   assetRoot: registry.assetRoot
 });
-
-/**
- * Validates the public URL contract for a dedicated rift-dossier thumbnail.
- * The route must stay inside the OpenAI dossier directory and cannot contain
- * traversal segments, query strings, hashes, or shared backdrop locations.
- */
-export const auditRiftDossierAssetPath = (assetPath) => {
-  const issues = [];
-
-  if (typeof assetPath !== 'string' || !assetPath.trim()) {
-    issues.push('assetPath must be a non-empty string');
-  } else {
-    if (assetPath.includes('\\')) issues.push('assetPath must use URL separators');
-    if (assetPath.includes('..')) issues.push('assetPath cannot contain traversal segments');
-    if (assetPath.includes('?') || assetPath.includes('#')) {
-      issues.push('assetPath cannot contain a query string or hash');
-    }
-    if (!isKnownDedicatedAssetPath(assetPath)) {
-      issues.push(
-        `assetPath must use ${RIFT_DOSSIER_ASSET_ROOT} or a dedicated original-OC stage-art route`
-      );
-    }
-  }
-
-  return Object.freeze({
-    assetPath,
-    valid: issues.length === 0,
-    issues: Object.freeze(issues)
-  });
-};
-
-export const isDedicatedRiftDossierAssetPath = (assetPath) => (
-  auditRiftDossierAssetPath(assetPath).valid
-);
 
 const buildIndex = (entries) => {
   const index = new Map();

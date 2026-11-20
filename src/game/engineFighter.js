@@ -18,7 +18,8 @@ import { COMBAT_SOURCE_DEFINITIONS_WAVE14 } from './combat/combatSourceDefinitio
 import { prepareFighterMelee as prepareLegacyFighterMelee, getFighterMeleeDefinition as getLegacyFighterMeleeDefinition, createFighterMeleeSignatures, splitFighterMeleeDamage } from './fighterMeleeSignatures.js';
 import { prepareFighterHealing as prepareLegacyFighterHealing, getFighterHealingDefinition as getLegacyFighterHealingDefinition, createFighterHealing } from './fighterHealing.js';
 import { prepareStockMedic as prepareLegacyStockMedic, getStockMedicDefinition as getLegacyStockMedicDefinition, createFighterMedicSupport } from './stockMedicModes.js';
-import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
+import { drawCosmeticAtlasFrame, drawPixelSprite, drawStarfireFighterCast, isStarfireFighterCastAtlasReady } from './renderer';
+import { getStarfireFighterCastAtlas, getStarfireFighterLaunch, getStarfireFighterProjectilePoint, isStarfireFighterCast } from './combat/starfireFighterCast.js';
 import { combatBuffSource } from './combat/characterFormState';
 import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
 import { supportsTrackedCharacterSuperVisual } from './combat/characterSuperVisuals';
@@ -1331,6 +1332,7 @@ export class EngineFighter {
     if(jadeGloveOriginWave17)fighter.sourceGyrodiskLastReleaseWave17=jadeGloveOriginWave17;
     const sourceMuzzle = jadeGloveOriginWave17 || (action.sourceSligRifle ? projectSourceSligMuzzleWave16(fighter, 142, 2) : null);
     const origin = sourceMuzzle || nativeMuzzle || { x: fighter.x + direction * 58, y: fighter.y - 64 };
+    const starfireLaunch = getStarfireFighterLaunch(fighter, action, origin, 142);
     const originDistance = (origin.x - fighter.x) * direction;
     let vx = direction * 520, vy = 0;
     let life = action.type === 'super' || action.authoredAbility || action.canonSourceAbility ? Math.max(0, action.range - originDistance) / 520 : 1.25;
@@ -1363,7 +1365,8 @@ export class EngineFighter {
       ...(aimedVortessence || aimedSourceBt ? { vy, rangeOriginY: fighter.y } : {}),
       radius,
       sourceJadeGyrodiskWave17:!!jadeGloveOriginWave17,
-      canonParticleType: action.canonSourceFeedback?.kind === 'starbolt' ? 'starbolt'
+      ...(starfireLaunch ? { starfireLaunch } : {}),
+      canonParticleType: starfireLaunch || action.canonSourceFeedback?.kind === 'starbolt' ? 'starbolt'
         : action.canonSourceFeedback?.kind === 'shadow' ? 'shadow_wisp' : action.reservedShot ? 'bullet' : null,
       ...(nativeVisual ? { visualElapsed: 0, visualOriginX: origin.x,
         visualFlightDistance: Math.max(1, Math.min(action.range, ((target?.x ?? fighter.x + direction * action.range) - fighter.x) * direction) - originDistance - radius - 32) } : {}),
@@ -1376,7 +1379,7 @@ export class EngineFighter {
       this.playSfx(action.canonSourceFeedback.sfx);
       this.particles.add(origin.x, origin.y, direction * 0.5, -0.4, '#b8b4ab', 8, 16, 'smoke');
     }
-    if(!jadeGloveOriginWave17 && !action.canonSourceAbility)this.particles.add(nativeMuzzle ? origin.x : fighter.x, nativeMuzzle ? origin.y : fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
+    if (!jadeGloveOriginWave17 && !action.canonSourceAbility && !starfireLaunch) this.particles.add(nativeMuzzle ? origin.x : fighter.x, nativeMuzzle ? origin.y : fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
     return true;
   }
 
@@ -2027,7 +2030,9 @@ export class EngineFighter {
       if (fighter.invulnerable > 0 && Math.floor(this.elapsed * 20) % 2 === 0) ctx.globalAlpha = 0.45;
       const catastrophe = this.getCatastropheSuperVisual(fighter);
       const sprite = catastrophe ? { ...fighter, presentationPhase: 'super', presentationProgress: catastrophe.actionProgress } : fighter;
-      drawPixelSprite(ctx, catastrophe?.x ?? fighter.x, catastrophe?.feetY ?? fighter.y, sprite, animTime, catastrophe ? (fighter.action.facing ?? fighter.facing) : fighter.facing, 142, 'melee');
+      if (!drawStarfireFighterCast(ctx, sprite, 142, reducedMotion)) {
+        drawPixelSprite(ctx, catastrophe?.x ?? fighter.x, catastrophe?.feetY ?? fighter.y, sprite, animTime, catastrophe ? (fighter.action.facing ?? fighter.facing) : fighter.facing, 142, 'melee');
+      }
       ctx.restore();
       drawCombatControl(ctx, fighter, 142);
       drawSourceCombatStatusWave16(ctx, fighter, 142);
@@ -2111,6 +2116,7 @@ export class EngineFighter {
   drawPersonalSuper(ctx, fighter) {
     if(isJadeStaffActionWave17(fighter,fighter.action))return;
     const action = fighter.action;
+    if (isStarfireFighterCast(fighter, action)) return;
     const catastrophe = this.getCatastropheSuperVisual(fighter);
     if (catastrophe) {
       this.drawCatastropheEffect(ctx, catastrophe.geometry, action.color);
@@ -2774,12 +2780,13 @@ export class EngineFighter {
 
   drawProjectile(ctx, projectile) {
     if(projectile.sourceJadeGyrodiskWave17){ctx.save();ctx.fillStyle='#dce7c5';ctx.beginPath();ctx.ellipse(projectile.x,projectile.y,9,3,0,0,Math.PI*2);ctx.fill();ctx.restore();return;}
-    // Reuse the declared procedural feedback at the real projectile position.
-    // It shares collision/expiry with that projectile, with no detached trail.
+    const displayPoint = projectile.starfireLaunch && isStarfireFighterCastAtlasReady(getStarfireFighterCastAtlas(projectile.owner))
+      ? getStarfireFighterProjectilePoint(projectile) : projectile;
+    // Procedural feedback shares the real projectile's collision and expiry.
     if (projectile.canonParticleType && drawP0CanonParticle(ctx, {
-      type: projectile.canonParticleType, x: projectile.x, y: projectile.y,
+      type: projectile.canonParticleType, x: displayPoint.x, y: displayPoint.y,
       vx: projectile.vx, vy: projectile.vy || 0, size: projectile.radius,
-      color: projectile.action.canonSourceFeedback.color
+      color: projectile.action.canonSourceFeedback?.color || projectile.color
     })) return;
     if (projectile.visualElapsed != null && drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({
       actor: projectile.owner, profile: projectile.action.identity, action: projectile.action, height: 142,
