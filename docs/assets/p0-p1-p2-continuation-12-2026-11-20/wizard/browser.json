@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "id": "harry",
+      "side": "player",
+      "key": "f",
+      "name": "Expelliarmus",
+      "color": "#ed6456",
+      "hitstun": 0.24,
+      "spawn": {
+        "side": "player",
+        "owner": "player-0-harry",
+        "sourceHeroId": "harry",
+        "kind": "spell_bolt",
+        "x": 218,
+        "y": 379,
+        "vx": 520,
+        "maxRange": 300,
+        "radius": 13,
+        "canonSourceAbility": true,
+        "authoredAbility": false,
+        "name": "Expelliarmus",
+        "delivery": "projectile",
+        "shape": "single",
+        "maxTargets": 1,
+        "identityAuthored": false,
+        "feedback": {
+          "color": "#ed6456",
+          "sfx": "shield",
+          "kind": "spell",
+          "fighterHitstun": 0
+        },
+        "elapsed": 0.3
+      },
+      "capture": "harry-flight.jpg",
+      "flightPaints": 7,
+      "maximumRenderedTravel": 164.6666666666669,
+      "hit": {
+        "owner": "player-0-harry",
+        "target": "cpu-0-cloud_ff7",
+        "side": "player",
+        "damage": 9.4,
+        "canonSourceAbility": true,
+        "delivery": "projectile",
+        "elapsed": 0.6166666666666669,
+        "hitstun": 0.24
+      },
+      "errors": [],
+      "badRoutes": [],
+      "missingUrls": [],
+      "passed": true
+    },
+    {
+      "id": "hermione",
+      "side": "cpu",
+      "key": "p",
+      "name": "Stupefy",
+      "color": "#e35c5c",
+      "hitstun": 0.62,
+      "spawn": {
+        "side": "cpu",
+        "owner": "cpu-0-hermione",
+        "sourceHeroId": "hermione",
+        "kind": "spell_bolt",
+        "x": 742,
+        "y": 379,
+        "vx": -520,
+        "maxRange": 300,
+        "radius": 13,
+        "canonSourceAbility": true,
+        "authoredAbility": false,
+        "name": "Stupefy",
+        "delivery": "projectile",
+        "shape": "single",
+        "maxTargets": 1,
+        "identityAuthored": false,
+        "feedback": {
+          "color": "#e35c5c",
+          "sfx": "shield",
+          "kind": "spell",
+          "fighterHitstun": 0.62
+        },
+        "elapsed": 0.3333333333333333
+      },
+      "capture": "hermione-flight.jpg",
+      "flightPaints": 6,
+      "maximumRenderedTravel": 164.66666666666595,
+      "hit": {
+        "owner": "cpu-0-hermione",
+        "target": "player-0-cloud_ff7",
+        "side": "cpu",
+        "damage": 8.6,
+        "canonSourceAbility": true,
+        "delivery": "projectile",
+        "elapsed": 0.6500000000000004,
+        "hitstun": 0.62
+      },
+      "errors": [],
+      "badRoutes": [],
+      "missingUrls": [],
+      "passed": true
+    }
+  ],
+  "node": "v22.23.5",
+  "chromium": "151.0.7922.173",
+  "inputSha256": {
+    "scripts/fixtures/fighter-p0-projectiles.html": "60679e111eda7816c5bb617935afbe3d64d416e25fb8f4d759e468f821f21df7",
+    "scripts/fixtures/fighterP0ProjectilesHarness.jsx": "95fc64b21f6ef0cf6294ce27e29fb1f060f091a8af9df5872399f3cf41c04771",
+    "src/components/FighterMode.jsx": "23acfbf6fbb4bed0a22461aee23e26d313513fd2d8e7b99e2ecb8fe423483f39",
+    "src/game/engineFighter.js": "91322738c929360bb78ec5b5a421fb6c36d05b4f3600ad77f195ce682952af34",
+    "src/game/combat/historicalIconicP0FighterActions.js": "c4de7c7299726e7ca65dc6f880df75e47a9036f2ac829908820aaaafc9f25f42",
+    "src/game/canonP0ParticleRenderer.js": "01c53ce0ad7be655e9e54ee7decd25fa4d3d7ccb861db0b49a1a5f54e41140fa",
+    "DLC/HarryPotter/data/canonP0SourceKits.js": "995f4c495ee7572dc4129d8c72df5bcf1d57c4a5b24066b42de2b457f418d348"
+  },
+  "source1to1Verified": false
+}

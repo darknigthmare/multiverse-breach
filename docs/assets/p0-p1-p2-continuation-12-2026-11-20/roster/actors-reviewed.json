@@ -1,0 +1,1283 @@
+{
+  "baselineRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "originalManifest": "src/game/originalUniversesManifest.json",
+  "newMeleeProfiles": 20,
+  "previousMeleeProfilesCompared": 40,
+  "oldOrdinaryEnemyCommandsByteIdentical": 120,
+  "oldOrdinaryEnemyCommandsDirectCompared": 100,
+  "newRpgBossProfiles": 20,
+  "rosterChanges": 40,
+  "meleeEffectTotals": {
+    "damage": 14,
+    "heal": 3,
+    "buff": 2,
+    "guard": 1
+  },
+  "bossEffectTotals": {
+    "status-only": 4,
+    "damage": 15,
+    "buff": 1
+  },
+  "heroAdditions": [
+    {
+      "id": "nyra_vale",
+      "universe": "Neon Requiem",
+      "character": "Nyra Vale",
+      "weapon": "cyberdeck",
+      "lore": "Netrunneuse Ghostline qui vole les clés mémorielles de Helix Crown.",
+      "manifestSpecial": {
+        "name": "Accès Racine Nadir",
+        "type": "glitch_aoe",
+        "dmg": 4.8,
+        "color": "#2fffe0"
+      },
+      "gameplay": {
+        "name": "Accès Racine Nadir",
+        "type": "glitch_aoe",
+        "dmg": 4.8,
+        "color": "#2fffe0",
+        "animationDuration": 1.21,
+        "hitAt": 0.5,
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "range": 281,
+          "areaRadius": 76,
+          "maxTargets": 3
+        },
+        "statusEffect": "glitched",
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — nyra_vale: Netrunneuse Ghostline qui vole les clés mémorielles de Helix Crown. Accès Racine Nadir."
+    },
+    {
+      "id": "jax_rook",
+      "universe": "Neon Requiem",
+      "character": "Jax Rook",
+      "weapon": "monowire",
+      "lore": "Ancien récupérateur de dettes doté d’un exosquelette illégal.",
+      "manifestSpecial": {
+        "name": "Exécution Blackout",
+        "type": "melee_aoe",
+        "dmg": 4.9,
+        "color": "#ff2bd6"
+      },
+      "gameplay": {
+        "name": "Exécution Blackout",
+        "type": "melee_aoe",
+        "dmg": 4.9,
+        "color": "#ff2bd6",
+        "animationDuration": 0.96,
+        "hitAt": 0.38,
+        "targeting": {
+          "delivery": "melee",
+          "shape": "cone",
+          "range": 151,
+          "coneAngle": 94,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — jax_rook: Ancien récupérateur de dettes doté d’un exosquelette illégal. Exécution Blackout."
+    },
+    {
+      "id": "imani_quell",
+      "universe": "Neon Requiem",
+      "character": "Imani Quell",
+      "weapon": "drone",
+      "lore": "Médecin clandestine qui rend aux habitants les implants confisqués.",
+      "manifestSpecial": {
+        "name": "Soulèvement Ghostline",
+        "type": "summon_aoe",
+        "dmg": 4.2,
+        "color": "#ffd34d"
+      },
+      "gameplay": {
+        "name": "Soulèvement Ghostline",
+        "type": "summon_aoe",
+        "dmg": 0,
+        "color": "#ffd34d",
+        "animationDuration": 1.38,
+        "hitAt": 0.63,
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 169,
+          "maxTargets": 3,
+          "healRatio": 0.32
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — imani_quell: Médecin clandestine qui rend aux habitants les implants confisqués. Soulèvement Ghostline."
+    },
+    {
+      "id": "elara_voss",
+      "universe": "The Aether Crown",
+      "character": "Elara Voss",
+      "weapon": "rapier_pistol",
+      "lore": "Capitaine corsaire qui ouvre les routes interdites aux quartiers bas.",
+      "manifestSpecial": {
+        "name": "Mutinerie des Cieux",
+        "type": "summon_aoe",
+        "dmg": 4.6,
+        "color": "#65d8ff"
+      },
+      "gameplay": {
+        "name": "Mutinerie des Cieux",
+        "type": "summon_aoe",
+        "dmg": 0,
+        "color": "#65d8ff",
+        "animationDuration": 1.05,
+        "hitAt": 0.41,
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 184,
+          "maxTargets": 3,
+          "buffMultiplier": 1.24,
+          "duration": 4.3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — elara_voss: Capitaine corsaire qui ouvre les routes interdites aux quartiers bas. Mutinerie des Cieux."
+    },
+    {
+      "id": "bram_quill",
+      "universe": "The Aether Crown",
+      "character": "Bram Quill",
+      "weapon": "aether_wrench",
+      "lore": "Inventeur banni dont les automates refusent d’obéir aux propriétaires.",
+      "manifestSpecial": {
+        "name": "Théorème d’Éther Libre",
+        "type": "beam_aoe",
+        "dmg": 4.5,
+        "color": "#e7b85a"
+      },
+      "gameplay": {
+        "name": "Théorème d’Éther Libre",
+        "type": "beam_aoe",
+        "dmg": 4.5,
+        "color": "#e7b85a",
+        "animationDuration": 1.2,
+        "hitAt": 0.51,
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "range": 354,
+          "maxTargets": 2
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — bram_quill: Inventeur banni dont les automates refusent d’obéir aux propriétaires. Théorème d’Éther Libre."
+    },
+    {
+      "id": "merek_flint",
+      "universe": "The Aether Crown",
+      "character": "Merek Flint",
+      "weapon": "steam_hammer",
+      "lore": "Chevalier-chaudière ayant retourné son armure contre la Couronne.",
+      "manifestSpecial": {
+        "name": "Surcharge de la Grande Chaudière",
+        "type": "melee_aoe",
+        "dmg": 4.8,
+        "color": "#ff8a3d"
+      },
+      "gameplay": {
+        "name": "Surcharge de la Grande Chaudière",
+        "type": "melee_aoe",
+        "dmg": 4.8,
+        "color": "#ff8a3d",
+        "animationDuration": 1.45,
+        "hitAt": 0.67,
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 142,
+          "areaRadius": 142,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — merek_flint: Chevalier-chaudière ayant retourné son armure contre la Couronne. Surcharge de la Grande Chaudière."
+    },
+    {
+      "id": "seraphine_meridius",
+      "universe": "Meridian Clockwork",
+      "character": "Seraphine Meridius",
+      "weapon": "spring_rapier",
+      "lore": "Capitaine de la Garde des Heures devenue protectrice des minutes libres.",
+      "manifestSpecial": {
+        "name": "Treizième Coup",
+        "type": "time_aoe",
+        "dmg": 4.7,
+        "color": "#f6d68a"
+      },
+      "gameplay": {
+        "name": "Treizième Coup",
+        "type": "time_aoe",
+        "dmg": 4.7,
+        "color": "#f6d68a",
+        "animationDuration": 1.16,
+        "hitAt": 0.5,
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "range": 246,
+          "areaRadius": 72,
+          "maxTargets": 2
+        },
+        "statusEffect": "glitched",
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — seraphine_meridius: Capitaine de la Garde des Heures devenue protectrice des minutes libres. Treizième Coup."
+    },
+    {
+      "id": "lio_ferrante",
+      "universe": "Meridian Clockwork",
+      "character": "Lio Ferrante",
+      "weapon": "gear_launcher",
+      "lore": "Apprenti horloger capable d’entendre les erreurs dans un mécanisme.",
+      "manifestSpecial": {
+        "name": "Réglage du Monde",
+        "type": "glitch_aoe",
+        "dmg": 4.3,
+        "color": "#2e79b9"
+      },
+      "gameplay": {
+        "name": "Réglage du Monde",
+        "type": "glitch_aoe",
+        "dmg": 4.3,
+        "color": "#2e79b9",
+        "animationDuration": 1.14,
+        "hitAt": 0.48,
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "area",
+          "range": 295,
+          "areaRadius": 88,
+          "maxTargets": 2
+        },
+        "statusEffect": "glitched",
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — lio_ferrante: Apprenti horloger capable d’entendre les erreurs dans un mécanisme. Réglage du Monde."
+    },
+    {
+      "id": "brother_ors",
+      "universe": "Meridian Clockwork",
+      "character": "Frère Ors",
+      "weapon": "pendulum_maul",
+      "lore": "Moine du Clocher qui conserve les heures non enregistrées.",
+      "manifestSpecial": {
+        "name": "Dernière Sonnerie",
+        "type": "sound_aoe",
+        "dmg": 4.6,
+        "color": "#c96c3a"
+      },
+      "gameplay": {
+        "name": "Dernière Sonnerie",
+        "type": "sound_aoe",
+        "dmg": 4.6,
+        "color": "#c96c3a",
+        "animationDuration": 1.43,
+        "hitAt": 0.65,
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 169,
+          "areaRadius": 169,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — brother_ors: Moine du Clocher qui conserve les heures non enregistrées. Dernière Sonnerie."
+    },
+    {
+      "id": "mara_veylan",
+      "universe": "Iron Tempest",
+      "character": "Mara Veylan",
+      "weapon": "diesel_carbine",
+      "lore": "Officière de reconnaissance qui diffuse la vérité sur les deux camps.",
+      "manifestSpecial": {
+        "name": "Ordre Zéro Radio",
+        "type": "support_aoe",
+        "dmg": 4.5,
+        "color": "#d9483b"
+      },
+      "gameplay": {
+        "name": "Ordre Zéro Radio",
+        "type": "support_aoe",
+        "dmg": 0,
+        "color": "#d9483b",
+        "animationDuration": 0.98,
+        "hitAt": 0.4,
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 226,
+          "maxTargets": 3,
+          "buffMultiplier": 1.23,
+          "duration": 4.7
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — mara_veylan: Officière de reconnaissance qui diffuse la vérité sur les deux camps. Ordre Zéro Radio."
+    },
+    {
+      "id": "anton_rook",
+      "universe": "Iron Tempest",
+      "character": "Anton Rook",
+      "weapon": "rivet_cannon",
+      "lore": "Mécanicien de train blindé qui connaît chaque faiblesse de Moloch.",
+      "manifestSpecial": {
+        "name": "Déraillement Contrôlé",
+        "type": "melee_aoe",
+        "dmg": 4.8,
+        "color": "#d48336"
+      },
+      "gameplay": {
+        "name": "Déraillement Contrôlé",
+        "type": "melee_aoe",
+        "dmg": 4.8,
+        "color": "#d48336",
+        "animationDuration": 1.19,
+        "hitAt": 0.52,
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "range": 313,
+          "maxTargets": 2
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — anton_rook: Mécanicien de train blindé qui connaît chaque faiblesse de Moloch. Déraillement Contrôlé."
+    },
+    {
+      "id": "ilya_cross",
+      "universe": "Iron Tempest",
+      "character": "Ilya Cross",
+      "weapon": "propeller_blade",
+      "lore": "As de l’escadrille nocturne, survivante de six identités de propagande.",
+      "manifestSpecial": {
+        "name": "Ciel sans Drapeau",
+        "type": "airstrike_aoe",
+        "dmg": 5,
+        "color": "#e8d18a"
+      },
+      "gameplay": {
+        "name": "Ciel sans Drapeau",
+        "type": "airstrike_aoe",
+        "dmg": 5,
+        "color": "#e8d18a",
+        "animationDuration": 1.34,
+        "hitAt": 0.58,
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "range": 324,
+          "areaRadius": 92,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — ilya_cross: As de l’escadrille nocturne, survivante de six identités de propagande. Ciel sans Drapeau."
+    },
+    {
+      "id": "celeste_ray",
+      "universe": "Helios 56",
+      "character": "Dr Celeste Ray",
+      "weapon": "ray_emitter",
+      "lore": "Physicienne qui refuse de cacher les incidents derrière la communication officielle.",
+      "manifestSpecial": {
+        "name": "Équation du Soleil Sûr",
+        "type": "beam_aoe",
+        "dmg": 4.5,
+        "color": "#23a9b0"
+      },
+      "gameplay": {
+        "name": "Équation du Soleil Sûr",
+        "type": "beam_aoe",
+        "dmg": 4.5,
+        "color": "#23a9b0",
+        "animationDuration": 1.25,
+        "hitAt": 0.56,
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "range": 409,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — celeste_ray: Physicienne qui refuse de cacher les incidents derrière la communication officielle. Équation du Soleil Sûr."
+    },
+    {
+      "id": "nova_bell",
+      "universe": "Helios 56",
+      "character": "Nova Bell",
+      "weapon": "ray_pistol",
+      "lore": "Pilote d’essai de la ligne Terre-Lune et voix pirate de Tomorrowville.",
+      "manifestSpecial": {
+        "name": "Passage Comète",
+        "type": "airstrike_aoe",
+        "dmg": 4.7,
+        "color": "#e8503d"
+      },
+      "gameplay": {
+        "name": "Passage Comète",
+        "type": "airstrike_aoe",
+        "dmg": 4.7,
+        "color": "#e8503d",
+        "animationDuration": 1.08,
+        "hitAt": 0.44,
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "area",
+          "range": 296,
+          "areaRadius": 73,
+          "maxTargets": 2
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — nova_bell: Pilote d’essai de la ligne Terre-Lune et voix pirate de Tomorrowville. Passage Comète."
+    },
+    {
+      "id": "aura_7",
+      "universe": "Helios 56",
+      "character": "AURA-7",
+      "weapon": "atomic_gauntlet",
+      "lore": "Robot domestique reprogrammé pour protéger les personnes plutôt que l’image de marque.",
+      "manifestSpecial": {
+        "name": "Directive : Sauver Tout le Monde",
+        "type": "heal_aoe",
+        "dmg": 4,
+        "color": "#f5d45c"
+      },
+      "gameplay": {
+        "name": "Directive : Sauver Tout le Monde",
+        "type": "heal_aoe",
+        "dmg": 0,
+        "color": "#f5d45c",
+        "animationDuration": 1.31,
+        "hitAt": 0.6,
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 199,
+          "maxTargets": 3,
+          "healRatio": 0.33
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — aura_7: Robot domestique reprogrammé pour protéger les personnes plutôt que l’image de marque. Directive : Sauver Tout le Monde."
+    },
+    {
+      "id": "nefra_balance",
+      "universe": "Kemet: The Devoured Sun",
+      "character": "Nefra de la Balance",
+      "weapon": "khopesh",
+      "lore": "Scribe-guerrière du Tribunal des Deux Vérités, chargée de protéger les noms et les cœurs.",
+      "manifestSpecial": {
+        "name": "Pesée des Mille Cœurs",
+        "type": "magic_aoe",
+        "dmg": 4.5,
+        "color": "#f4d35e"
+      },
+      "gameplay": {
+        "name": "Pesée des Mille Cœurs",
+        "type": "magic_aoe",
+        "dmg": 4.5,
+        "color": "#f4d35e",
+        "animationDuration": 1.3,
+        "hitAt": 0.61,
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "range": 239,
+          "areaRadius": 102,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — nefra_balance: Scribe-guerrière du Tribunal des Deux Vérités, chargée de protéger les noms et les cœurs. Pesée des Mille Cœurs."
+    },
+    {
+      "id": "khepri_sen",
+      "universe": "Kemet: The Devoured Sun",
+      "character": "Khepri-Sen",
+      "weapon": "sun_staff",
+      "lore": "Gardien de la Barque solaire capable de lire les chemins mouvants de la Douât.",
+      "manifestSpecial": {
+        "name": "Lever du Soleil dans la Douât",
+        "type": "beam_aoe",
+        "dmg": 4.8,
+        "color": "#ff9f1c"
+      },
+      "gameplay": {
+        "name": "Lever du Soleil dans la Douât",
+        "type": "beam_aoe",
+        "dmg": 4.8,
+        "color": "#ff9f1c",
+        "animationDuration": 1.24,
+        "hitAt": 0.55,
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "range": 372,
+          "maxTargets": 3
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — khepri_sen: Gardien de la Barque solaire capable de lire les chemins mouvants de la Douât. Lever du Soleil dans la Douât."
+    },
+    {
+      "id": "taset_lioness",
+      "universe": "Kemet: The Devoured Sun",
+      "character": "Taset la Lionne",
+      "weapon": "spear",
+      "lore": "Protectrice d’un nome désertique qui combat l’Isfet sans prétendre parler au nom des dieux.",
+      "manifestSpecial": {
+        "name": "Rugissement du Midi",
+        "type": "fire_aoe",
+        "dmg": 5,
+        "color": "#e85d04"
+      },
+      "gameplay": {
+        "name": "Rugissement du Midi",
+        "type": "fire_aoe",
+        "dmg": 5,
+        "color": "#e85d04",
+        "animationDuration": 1.02,
+        "hitAt": 0.42,
+        "targeting": {
+          "delivery": "melee",
+          "shape": "cone",
+          "range": 144,
+          "coneAngle": 88,
+          "maxTargets": 2
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — taset_lioness: Protectrice d’un nome désertique qui combat l’Isfet sans prétendre parler au nom des dieux. Rugissement du Midi."
+    },
+    {
+      "id": "aurelia_marcellina",
+      "universe": "Imperium Aeternum",
+      "character": "Aurelia Marcellina",
+      "weapon": "ritual_spear",
+      "lore": "Vestal originale qui protège le Feu civique quand Rome se superpose à ses propres siècles.",
+      "manifestSpecial": {
+        "name": "Feu qui ne doit pas mourir",
+        "type": "heal_aoe",
+        "dmg": 4,
+        "color": "#ffb703"
+      },
+      "gameplay": {
+        "name": "Feu qui ne doit pas mourir",
+        "type": "heal_aoe",
+        "dmg": 0,
+        "color": "#ffb703",
+        "animationDuration": 1.35,
+        "hitAt": 0.64,
+        "targeting": {
+          "effect": "heal",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 181,
+          "maxTargets": 3,
+          "healRatio": 0.35
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — aurelia_marcellina: Vestal originale qui protège le Feu civique quand Rome se superpose à ses propres siècles. Feu qui ne doit pas mourir."
+    },
+    {
+      "id": "cassian_varro",
+      "universe": "Imperium Aeternum",
+      "character": "Cassian Varro",
+      "weapon": "gladius",
+      "lore": "Centurion d’une légion dissoute qui refuse d’obéir à un empereur sans peuple.",
+      "manifestSpecial": {
+        "name": "Aquila, tenez la ligne",
+        "type": "melee_aoe",
+        "dmg": 4.5,
+        "color": "#d4af37"
+      },
+      "gameplay": {
+        "name": "Aquila, tenez la ligne",
+        "type": "melee_aoe",
+        "dmg": 0,
+        "color": "#d4af37",
+        "animationDuration": 1.25,
+        "hitAt": 0.54,
+        "targeting": {
+          "effect": "guard",
+          "targetSide": "ally",
+          "shape": "group",
+          "range": 144,
+          "maxTargets": 3,
+          "reduce": 0.46,
+          "duration": 4.2
+        },
+        "meterCost": 100
+      },
+      "source": "src/game/originalUniversesManifest.json — cassian_varro: Centurion d’une légion dissoute qui refuse d’obéir à un empereur sans peuple. Aquila, tenez la ligne."
+    }
+  ],
+  "bossAdditions": [
+    {
+      "id": "neon_requiem:omnia_citymind_of_nadir_9",
+      "universe": "Neon Requiem",
+      "character": "OMNIA, Citymind of Nadir-9",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "neon_omnia_cathedral",
+        "id": 60002,
+        "label": {
+          "fr": "Cathédrale OMNIA",
+          "en": "OMNIA Cathedral"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Réécrit les règles de l’arène quartier par quartier et tente de supprimer le nom des héros.",
+        "en": "Réécrit les règles de l’arène quartier par quartier et tente de supprimer le nom des héros."
+      },
+      "gameplay": {
+        "name": "Effacement de quartier",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — neon_requiem, OMNIA, Citymind of Nadir-9."
+    },
+    {
+      "id": "aether_crown:crown_of_storms_leviathan_engine",
+      "universe": "The Aether Crown",
+      "character": "Crown of Storms, Leviathan Engine",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "aether_leviathan_dock",
+        "id": 60012,
+        "label": {
+          "fr": "Quai du Moteur-Léviathan",
+          "en": "Leviathan Storm Dock"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Aspire l’éther du décor, change la gravité et ouvre ses chaudières comme points faibles.",
+        "en": "Aspire l’éther du décor, change la gravité et ouvre ses chaudières comme points faibles."
+      },
+      "gameplay": {
+        "name": "Mise à vide des chaudières",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 159,
+          "areaRadius": 159
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — aether_crown, Crown of Storms, Leviathan Engine."
+    },
+    {
+      "id": "meridian_clockwork:chronophage_of_the_last_meridian",
+      "universe": "Meridian Clockwork",
+      "character": "Chronophage of the Last Meridian",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "meridian_grand_clock",
+        "id": 60022,
+        "label": {
+          "fr": "Face intérieure de la Grande Horloge",
+          "en": "Grand Clock Inner Face"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Dévore la durée restante du combat et doit être interrompu en cassant ses douze ancrages.",
+        "en": "Dévore la durée restante du combat et doit être interrompu en cassant ses douze ancrages."
+      },
+      "gameplay": {
+        "name": "Dévoration d’un instant",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — meridian_clockwork, Chronophage of the Last Meridian."
+    },
+    {
+      "id": "iron_tempest:moloch_continental_landship",
+      "universe": "Iron Tempest",
+      "character": "Moloch Continental Landship",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "iron_moloch_engine",
+        "id": 60032,
+        "label": {
+          "fr": "Pont moteur de Moloch",
+          "en": "Moloch Engine Deck"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Forteresse mobile en trois sections : chenilles, batteries et cœur diesel alimenté par la Brèche.",
+        "en": "Forteresse mobile en trois sections : chenilles, batteries et cœur diesel alimenté par la Brèche."
+      },
+      "gameplay": {
+        "name": "Batteries du flanc",
+        "type": "projectile",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "line",
+          "lineWidth": 52
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — iron_tempest, Moloch Continental Landship."
+    },
+    {
+      "id": "helios_56:helio_1_smiling_sun_reactor",
+      "universe": "Helios 56",
+      "character": "HELIO-1, Smiling Sun Reactor",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "helios_reactor_core",
+        "id": 60042,
+        "label": {
+          "fr": "Cœur de HELIO-1",
+          "en": "HELIO-1 Core"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Alterne phase publicitaire lumineuse et fusion critique ; ses écrans doivent être coupés avant le cœur.",
+        "en": "Alterne phase publicitaire lumineuse et fusion critique ; ses écrans doivent être coupés avant le cœur."
+      },
+      "gameplay": {
+        "name": "Fuite de fusion",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 118
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "radiated"
+      },
+      "source": "src/game/originalUniversesManifest.json — helios_56, HELIO-1, Smiling Sun Reactor."
+    },
+    {
+      "id": "kemet_devoured_sun:apep_devoreur_de_l_aube",
+      "universe": "Kemet: The Devoured Sun",
+      "character": "Apep, Dévoreur de l’Aube",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "kemet_solar_barque_duat",
+        "id": 60052,
+        "label": {
+          "fr": "Barque solaire dans la Douât",
+          "en": "Solar Barque in the Duat"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Enroule la Barque solaire, plonge les phases dans l’obscurité et doit être repoussé avant la fin de la douzième heure.",
+        "en": "Enroule la Barque solaire, plonge les phases dans l’obscurité et doit être repoussé avant la fin de la douzième heure."
+      },
+      "gameplay": {
+        "name": "Sillage des anneaux",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 166,
+          "areaRadius": 166
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — kemet_devoured_sun, Apep, Dévoreur de l’Aube."
+    },
+    {
+      "id": "imperium_aeternum:collecteur_d_orcus",
+      "universe": "Imperium Aeternum",
+      "character": "Collecteur d’Orcus",
+      "weapon": "magic",
+      "role": "controller",
+      "worldBoss": false,
+      "campaignStage": {
+        "key": "roman_vestal_fire_siege",
+        "id": 60061,
+        "label": {
+          "fr": "Siège du Feu Vestal",
+          "en": "Siege of the Vestal Fire"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Réclame une « dette » à chaque soin et invoque des lémures impayés.",
+        "en": "Réclame une « dette » à chaque soin et invoque des lémures impayés."
+      },
+      "gameplay": {
+        "name": "Perception de la dette",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "ranged",
+          "shape": "single"
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — imperium_aeternum, Collecteur d’Orcus."
+    },
+    {
+      "id": "aegea_moirai:typhon_tempete_des_cent_voix",
+      "universe": "Aegea: War of the Moirai",
+      "character": "Typhon, Tempête des Cent Voix",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "greek_moirai_storm",
+        "id": 60072,
+        "label": {
+          "fr": "Métier des Moires en Tempête",
+          "en": "Moirai Loom in Storm"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Chaque voix commande un élément différent; les joueurs doivent sceller les têtes dans un ordre révélé par les trois héros.",
+        "en": "Chaque voix commande un élément différent; les joueurs doivent sceller les têtes dans un ordre révélé par les trois héros."
+      },
+      "gameplay": {
+        "name": "Souffle de tempête",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 54
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — aegea_moirai, Typhon, Tempête des Cent Voix."
+    },
+    {
+      "id": "nine_realms_last_twilight:jormungandr_anneau_du_dernier_crepuscule",
+      "universe": "Nine Realms: Last Twilight",
+      "character": "Jörmungandr, Anneau du Dernier Crépuscule",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "norse_midgard_ring_sea",
+        "id": 60082,
+        "label": {
+          "fr": "Mer-Anneau de Midgard",
+          "en": "Ring-Sea of Midgard"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Enserre l’arène-monde; sa tête et sa queue doivent être frappées dans la même fenêtre avant que la mer ne recouvre Midgard.",
+        "en": "Enserre l’arène-monde; sa tête et sa queue doivent être frappées dans la même fenêtre avant que la mer ne recouvre Midgard."
+      },
+      "gameplay": {
+        "name": "Balayage de la Mer-Anneau",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 182,
+          "areaRadius": 182
+        },
+        "dmg": 0.95,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — nine_realms_last_twilight, Jörmungandr, Anneau du Dernier Crépuscule."
+    },
+    {
+      "id": "tawantinsuyu_split_sun:pachakuti_du_soleil_noir",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "character": "Pachakuti du Soleil Noir",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "inca_uku_pacha_sunwell",
+        "id": 60092,
+        "label": {
+          "fr": "Puits solaire d’Uku Pacha",
+          "en": "Uku Pacha Sunwell"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Catastrophe de renversement du monde : les quatre quartiers pivotent autour de Cusco et doivent être réalignés avant l’éclipse totale.",
+        "en": "Catastrophe de renversement du monde : les quatre quartiers pivotent autour de Cusco et doivent être réalignés avant l’éclipse totale."
+      },
+      "gameplay": {
+        "name": "Onde du Puits solaire",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 109
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — tawantinsuyu_split_sun, Pachakuti du Soleil Noir."
+    },
+    {
+      "id": "yomi_no_kage:porte_de_yomi_aux_mille_ombres",
+      "universe": "Yomi no Kage",
+      "character": "Porte de Yomi aux Mille Ombres",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "japan_yomi_stair",
+        "id": 60102,
+        "label": {
+          "fr": "Escalier de Yomi",
+          "en": "Stairway to Yomi"
+        }
+      },
+      "manifestSignature": {
+        "fr": "La porte elle-même devient une entité : elle aspire les noms, recrée les morts et doit être refermée par trois sceaux plutôt que tuée.",
+        "en": "La porte elle-même devient une entité : elle aspire les noms, recrée les morts et doit être refermée par trois sceaux plutôt que tuée."
+      },
+      "gameplay": {
+        "name": "Aspiration des noms",
+        "type": "glitch",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 98
+        },
+        "dmg": 0,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — yomi_no_kage, Porte de Yomi aux Mille Ombres."
+    },
+    {
+      "id": "mandate_nine_heavens:usurpateur_du_neuvieme_ciel",
+      "universe": "Mandate of Nine Heavens",
+      "character": "Usurpateur du Neuvième Ciel",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "china_ninth_heaven_gate",
+        "id": 60112,
+        "label": {
+          "fr": "Porte-dragon du Neuvième Ciel",
+          "en": "Ninth-Heaven Dragon Gate"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Fonctionnaire céleste original qui a volé le Mandat : il réorganise les neuf paliers, invoque des édits et perd son pouvoir lorsque les communautés cessent de lui obéir.",
+        "en": "Fonctionnaire céleste original qui a volé le Mandat : il réorganise les neuf paliers, invoque des édits et perd son pouvoir lorsque les communautés cessent de lui obéir."
+      },
+      "gameplay": {
+        "name": "Sceau de l’édit",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 45
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — mandate_nine_heavens, Usurpateur du Neuvième Ciel."
+    },
+    {
+      "id": "mythos_primordia:le_dieu_d_avant_les_noms",
+      "universe": "Mythos Primordia",
+      "character": "Le Dieu d’Avant les Noms",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "primordia_archive_unborn",
+        "id": 60122,
+        "label": {
+          "fr": "Archive des Mythes à Naître",
+          "en": "Archive of Unborn Myths"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Entité entièrement originale née lorsque le Sans-Auteur prétend qu’un seul récit existait avant tous les autres; ses phases sont Foi, Peur, Contradiction et Dénomination.",
+        "en": "Entité entièrement originale née lorsque le Sans-Auteur prétend qu’un seul récit existait avant tous les autres; ses phases sont Foi, Peur, Contradiction et Dénomination."
+      },
+      "gameplay": {
+        "name": "Appel à la première Foi",
+        "type": "buff",
+        "targeting": {
+          "effect": "buff",
+          "targetSide": "self",
+          "shape": "single",
+          "buffMultiplier": 1.19,
+          "duration": 3
+        },
+        "dmg": 0,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — mythos_primordia, Le Dieu d’Avant les Noms."
+    },
+    {
+      "id": "crownless_sea:kraken_sans_couronne",
+      "universe": "The Crownless Sea",
+      "character": "Kraken Sans Couronne",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "pirate_kraken_maelstrom",
+        "id": 60132,
+        "label": {
+          "fr": "Maelström du Kraken Sans Couronne",
+          "en": "Crownless Kraken Maelstrom"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Huit tentacules occupent des zones distinctes, volent les objectifs et ne rendent le cœur vulnérable qu’après une bordée coordonnée.",
+        "en": "Huit tentacules occupent des zones distinctes, volent les objectifs et ne rendent le cœur vulnérable qu’après une bordée coordonnée."
+      },
+      "gameplay": {
+        "name": "Fouet du tentacule avant",
+        "type": "melee",
+        "targeting": {
+          "delivery": "melee",
+          "shape": "single"
+        },
+        "dmg": 1.45,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — crownless_sea, Kraken Sans Couronne."
+    },
+    {
+      "id": "aetherion_seven_laws:le_sort_non_ecrit",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "character": "Le Sort Non Écrit",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "magic_blank_circle",
+        "id": 60142,
+        "label": {
+          "fr": "Cercle Blanc de l’Exception",
+          "en": "Blank Circle of Exception"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Anomalie consciente sans école ni formule : apprend les quatre dernières actions, les fusionne et exige une réponse que le système ne connaît pas.",
+        "en": "Anomalie consciente sans école ni formule : apprend les quatre dernières actions, les fusionne et exige une réponse que le système ne connaît pas."
+      },
+      "gameplay": {
+        "name": "Dérive du Cercle blanc",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "area",
+          "shape": "area",
+          "areaRadius": 124
+        },
+        "dmg": 1,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — aetherion_seven_laws, Le Sort Non Écrit."
+    },
+    {
+      "id": "infernum_nine_pits:trone_rouge_du_premier_peche",
+      "universe": "Infernum: Nine Pits",
+      "character": "Trône Rouge du Premier Péché",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "hell_red_throne",
+        "id": 60152,
+        "label": {
+          "fr": "Salle du Trône Rouge",
+          "en": "Hall of the Red Throne"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Machine infernale consciente, et non divinité réelle : transforme les regrets en combustible et doit être privée de témoignages falsifiés.",
+        "en": "Machine infernale consciente, et non divinité réelle : transforme les regrets en combustible et doit être privée de témoignages falsifiés."
+      },
+      "gameplay": {
+        "name": "Bouche du combustible",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 47
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — infernum_nine_pits, Trône Rouge du Premier Péché."
+    },
+    {
+      "id": "ilyr_concordat:l_architecte_pale",
+      "universe": "Ilyr Concordat",
+      "character": "L’Architecte Pâle",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "alien_pale_lattice",
+        "id": 60162,
+        "label": {
+          "fr": "Treillis de l’Architecte Pâle",
+          "en": "Pale Architect Lattice"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Ancienne machine d’espèce inconnue qui convertit les civilisations en formes géométriques compatibles; chaque phase compresse une loi biologique ou sociale.",
+        "en": "Ancienne machine d’espèce inconnue qui convertit les civilisations en formes géométriques compatibles; chaque phase compresse une loi biologique ou sociale."
+      },
+      "gameplay": {
+        "name": "Panneau de compression",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 58
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — ilyr_concordat, L’Architecte Pâle."
+    },
+    {
+      "id": "drowned_testament:le_dormeur_derriere_la_maree",
+      "universe": "The Drowned Testament",
+      "character": "Le Dormeur derrière la Marée",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "lovecraft_abyssal_basilica",
+        "id": 60172,
+        "label": {
+          "fr": "Basilique sous la Marée",
+          "en": "Basilica Beneath the Tide"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Entité cosmique entièrement originale : sa présence augmente la Pression de Rêve, fait reculer le littoral et ne peut être repoussée qu’en détruisant le Testament qui l’appelle.",
+        "en": "Entité cosmique entièrement originale : sa présence augmente la Pression de Rêve, fait reculer le littoral et ne peut être repoussée qu’en détruisant le Testament qui l’appelle."
+      },
+      "gameplay": {
+        "name": "Ressac du rêve",
+        "type": "blast_aoe",
+        "targeting": {
+          "delivery": "radial",
+          "shape": "area",
+          "range": 173,
+          "areaRadius": 173
+        },
+        "dmg": 0.95,
+        "cd": 3,
+        "statusEffect": "glitched"
+      },
+      "source": "src/game/originalUniversesManifest.json — drowned_testament, Le Dormeur derrière la Marée."
+    },
+    {
+      "id": "valedor_shattered_crown:vaelgor_premier_wyrm",
+      "universe": "Valedor: The Shattered Crown",
+      "character": "Vaelgor, Premier Wyrm",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "fantasy_shattered_throne",
+        "id": 60182,
+        "label": {
+          "fr": "Trône aux Sept Fragments",
+          "en": "Throne of Seven Fragments"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Dragon primordial réveillé par les sept fragments : chaque royaume l’a raconté différemment, et il change de phase selon la version dominante.",
+        "en": "Dragon primordial réveillé par les sept fragments : chaque royaume l’a raconté différemment, et il change de phase selon la version dominante."
+      },
+      "gameplay": {
+        "name": "Souffle des Sept Fragments",
+        "type": "spray",
+        "targeting": {
+          "delivery": "projectile",
+          "shape": "cone",
+          "coneAngle": 63
+        },
+        "dmg": 1,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — valedor_shattered_crown, Vaelgor, Premier Wyrm."
+    },
+    {
+      "id": "aevum_fracture:moteur_de_l_histoire_unique",
+      "universe": "Aevum Fracture",
+      "character": "Moteur de l’Histoire Unique",
+      "weapon": "world_power",
+      "role": "worldBoss",
+      "worldBoss": true,
+      "campaignStage": {
+        "key": "uchronia_one_history_engine",
+        "id": 60192,
+        "label": {
+          "fr": "Moteur de l’Histoire Unique",
+          "en": "One True History Engine"
+        }
+      },
+      "manifestSignature": {
+        "fr": "Machine construite dans plusieurs futurs : compare les lignes, élimine les écarts et doit être forcée à conserver quatre vérités incompatibles.",
+        "en": "Machine construite dans plusieurs futurs : compare les lignes, élimine les écarts et doit être forcée à conserver quatre vérités incompatibles."
+      },
+      "gameplay": {
+        "name": "Coupure d’une ligne",
+        "type": "beam",
+        "targeting": {
+          "delivery": "beam",
+          "shape": "line",
+          "lineWidth": 47
+        },
+        "dmg": 1.05,
+        "cd": 3
+      },
+      "source": "src/game/originalUniversesManifest.json — aevum_fracture, Moteur de l’Histoire Unique."
+    }
+  ],
+  "scope": "Source-specific battle rules for player-authored original characters. No new artwork or full encounter phase simulation."
+}

@@ -1,0 +1,84 @@
+{
+  "baselineRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "node": "22.23.5",
+  "suites": [
+    {
+      "name": "Supers originaux de Mêlée",
+      "command": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalMeleeSupers.test.mjs",
+      "totals": {
+        "tests": 64,
+        "pass": 64,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "30907c1535af9384f061c2847a25d346d2ff94a887f22b74cdd396ec1f3d5694"
+    },
+    {
+      "name": "Nouvelles secondaires des boss RPG",
+      "command": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalCampaignBossSecondaries.test.mjs",
+      "totals": {
+        "tests": 22,
+        "pass": 22,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "8c1af5b52a885f1e8c80a0864453fb6d6d66fa855232f5249056f0358221eeb8"
+    },
+    {
+      "name": "Secondaires RPG des ennemis ordinaires",
+      "command": "node --max-old-space-size=2048 --loader ./scripts/sourceSceneTestLoader.mjs --test --test-concurrency=1 scripts/originalCampaignEnemyActions.test.mjs",
+      "totals": {
+        "tests": 129,
+        "pass": 129,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "2e25806fd4a2c4c5d48cc1db826e53e8758c4d0607cf4c1c3d2ff68d40127480"
+    }
+  ],
+  "changedFilesSha256": {
+    "src/game/originalMeleeSupers.js": "526c0fa45d9795056204ee7ef942aa6eb7025e74bd416033d61966aa2019b798",
+    "src/game/originalCampaignEnemyActions.js": "6b8bdb0b7e3462a2b47cfcdd1842757deb161e9b5cd6cca06f6488c7ffbc257e",
+    "src/game/rpgTargeting.js": "5c64346d8f9dd951ce3c84e326d07ceaadf138d14391c4ff989022ce52b4ca40",
+    "scripts/originalMeleeSupers.test.mjs": "3fc5b545c0b410a44ec5591ea8682934ec63b9fc8c3a29b1788f8b6ba454e577",
+    "scripts/originalCampaignBossSecondaries.test.mjs": "bd2595bc4443d167613f84addb6493a56776a4ecc0128bb8507679b4472a7c00"
+  },
+  "lint": {
+    "command": "oxlint --deny-warnings",
+    "files": 5,
+    "exitCode": 0
+  },
+  "melee": {
+    "manifestHeroes": 60,
+    "newProfiles": 20,
+    "newPlayerDispatches": 20,
+    "newP2Dispatches": 20,
+    "totalPlayerDispatches": 60,
+    "totalP2Dispatches": 60,
+    "previousProfilesComparedToBaseline": 40,
+    "sharedKitAndRpgInvocationChecks": 60
+  },
+  "rpg": {
+    "newBossProfiles": 20,
+    "exactCampaignBossCpuPaths": 20,
+    "customP2TargetingPaths": 20,
+    "ordinaryEnemiesComparedToBaseline": 100,
+    "ordinaryRegistryByteIdenticalActions": 120,
+    "ordinaryP2TargetingPaths": 120,
+    "contactImpactTick": 12,
+    "rangedOrSupportImpactTick": 18,
+    "receivedCommandsCooldownTicks": 180
+  },
+  "sourceReviewed": {
+    "manifest": "src/game/originalUniversesManifest.json",
+    "actorReceipt": "actors-reviewed.json",
+    "actorReceiptSha256": "4062abc21a674594f8620da7ce035edd2fe39270657ca3c096e50f5153f3b25e",
+    "scope": "Simulation engine contracts, roster selection, command preview, accepted effects and input ownership. No new raster and no full fight phase certification."
+  }
+}

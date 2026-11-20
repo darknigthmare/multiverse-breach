@@ -1,0 +1,113 @@
+{
+  "baselineRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "compilerNode": {
+    "before": "24.19.0",
+    "after": "22.23.5"
+  },
+  "browser": "151.0.7922.173",
+  "scenariosBefore": {
+    "passed": 0,
+    "failed": 6,
+    "commonFailure": "Refreshing the archive during pause replaced the Tactics stage instance",
+    "receiptSha256": "cc67b3053d44f300e31b5d1cf3c2cba09b5c0bfabe16228efb6351fddd78dfba"
+  },
+  "scenariosAfter": {
+    "passed": 6,
+    "failed": 0,
+    "checkedHandoffs": 24,
+    "pauseAndResumeTransitions": 48,
+    "receiptSha256": "ad2880969e03debe8c953a10acb6a6d02fbcea97eace18643cc0222c265c9357",
+    "cases": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "fr",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "en",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      },
+      {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "language": "fr",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      },
+      {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "language": "en",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      },
+      {
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "language": "fr",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      },
+      {
+        "viewport": {
+          "width": 1365,
+          "height": 900
+        },
+        "language": "en",
+        "launchModes": [
+          "Tactics",
+          "Smash",
+          "Fighter",
+          "RPG"
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "selectedThreatNodeChecks": {
+    "passed": 5,
+    "failed": 0,
+    "tapSha256": "f602ad2011e7b9d616163f31a466603760c30af02eee515df4f8a6810e6b7e94"
+  },
+  "actualEngineRun": "actual-battle.json"
+}

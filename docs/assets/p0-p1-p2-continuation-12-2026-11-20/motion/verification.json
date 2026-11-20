@@ -1,0 +1,149 @@
+{
+  "sourceRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "actor": "valedor_shattered_crown:reine_des_ronces",
+  "ability": "Forêt défensive",
+  "sprite": {
+    "path": "/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png",
+    "sha256": "7a795b230657eb182c360ab427cd8d41390d7085f8467020610e9c55b9c07315",
+    "type": "RGBA PNG",
+    "size": [
+      1024,
+      1024
+    ],
+    "alphaBounds": [
+      42,
+      32,
+      974,
+      1000
+    ],
+    "layout": [
+      1,
+      1
+    ],
+    "matchesSourceRevision": true,
+    "sourceRegions": [
+      [
+        80,
+        386,
+        245,
+        298
+      ],
+      [
+        582,
+        32,
+        284,
+        264
+      ],
+      [
+        709,
+        394,
+        243,
+        269
+      ]
+    ],
+    "hinges": [
+      [
+        [
+          325,
+          474
+        ],
+        [
+          325,
+          619
+        ]
+      ],
+      [
+        [
+          790,
+          296
+        ],
+        [
+          630,
+          296
+        ]
+      ],
+      [
+        [
+          709,
+          608
+        ],
+        [
+          713,
+          435
+        ]
+      ]
+    ]
+  },
+  "rpg": {
+    "preparationTicks": 17,
+    "impactTick": 18,
+    "guardDurationTicks": 180,
+    "guardReduction": 0.4,
+    "foldingTicks": 36,
+    "scope": "Own accepted Forêt défensive guard. Other guard sources and interrupted casts preserve native combat behavior."
+  },
+  "verification": {
+    "nodeVersion": "22.23.5",
+    "counts": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "tapSha256": "4f36188777382bc573d6378dde816176cea67899c6667e51e2253715ce3c914c",
+    "checks": [
+      "real local P2 guard impact and damage reduction",
+      "real CPU interrupted and completed turns",
+      "replacement by an ally guard",
+      "renderer source identity, dimensions and pivots",
+      "unchanged original sprite bytes"
+    ]
+  },
+  "motionPreference": {
+    "readerTests": 6,
+    "readerTapSha256": "c034e7437125183964e96179d878389ca71db5c89c0715b6c773d080b84522c6",
+    "directCanvasRouting": [
+      {
+        "scenario": "default",
+        "renderedWreaths": true,
+        "draws": 4,
+        "guardTicks": 144
+      },
+      {
+        "scenario": "reduced",
+        "renderedWreaths": false,
+        "draws": 0,
+        "guardTicks": 144
+      },
+      {
+        "scenario": "system normal",
+        "renderedWreaths": true,
+        "draws": 4,
+        "guardTicks": 144
+      },
+      {
+        "scenario": "system reduce",
+        "renderedWreaths": false,
+        "draws": 0,
+        "guardTicks": 144
+      },
+      {
+        "scenario": "system resume",
+        "renderedWreaths": true,
+        "draws": 4,
+        "guardTicks": 144
+      }
+    ]
+  },
+  "browser": {
+    "status": "verified",
+    "replay": "browser.mjs",
+    "result": "browser.json",
+    "capture": "foret-defensive.jpg",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    }
+  }
+}

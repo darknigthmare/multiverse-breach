@@ -1,0 +1,372 @@
+{
+  "chromium": "151.0.7922.173",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "identity": {
+    "id": "valedor_shattered_crown:reine_des_ronces",
+    "universe": "Valedor: The Shattered Crown",
+    "stage": "fantasy_shattered_throne",
+    "guardedIds": [
+      "enemy:custom:0:valedor_shattered_crown:reine_des_ronces",
+      "enemy:custom:1:valedor_shattered_crown:dragon_du_pic_creux"
+    ],
+    "excludedId": "enemy:custom:2:valedor_shattered_crown:chevalier_creux"
+  },
+  "sprite": {
+    "path": "/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png",
+    "sha256": "7a795b230657eb182c360ab427cd8d41390d7085f8467020610e9c55b9c07315",
+    "status": 200
+  },
+  "input": [
+    "7",
+    "i",
+    "Confirmer les cibles"
+  ],
+  "targeting": {
+    "abilityName": "Forêt défensive",
+    "effect": "guard",
+    "previewTargetIds": [
+      "enemy:custom:0:valedor_shattered_crown:reine_des_ronces",
+      "enemy:custom:1:valedor_shattered_crown:dragon_du_pic_creux"
+    ],
+    "resources": [
+      100,
+      100
+    ]
+  },
+  "spent": [
+    0,
+    0
+  ],
+  "appliedTick": 18,
+  "reducedMotion": [
+    4,
+    1,
+    4,
+    1,
+    4
+  ],
+  "phases": {
+    "rest": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ]
+      ],
+      "matrices": [],
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "applied": false,
+      "pending": false,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    },
+    "preparation": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        [
+          80,
+          386,
+          245,
+          298
+        ],
+        [
+          582,
+          32,
+          284,
+          264
+        ],
+        [
+          709,
+          394,
+          243,
+          269
+        ]
+      ],
+      "matrices": [
+        [
+          1.0805926,
+          0.0352593,
+          0,
+          1,
+          -26.1925926,
+          -11.459259
+        ],
+        [
+          1,
+          0,
+          -0.0352593,
+          1.0856296,
+          10.4367409,
+          -25.3463707
+        ],
+        [
+          1.0805711,
+          -0.0453212,
+          0.0018629,
+          0.9989521,
+          -58.257534,
+          32.7698631
+        ]
+      ],
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "applied": false,
+      "pending": true,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    },
+    "beforeImpact": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        [
+          80,
+          386,
+          245,
+          298
+        ],
+        [
+          582,
+          32,
+          284,
+          264
+        ],
+        [
+          709,
+          394,
+          243,
+          269
+        ]
+      ],
+      "matrices": [
+        [
+          1.1078299,
+          0.0471756,
+          0,
+          1,
+          -35.0447197,
+          -15.3320646
+        ],
+        [
+          1,
+          0,
+          -0.0471756,
+          1.1145693,
+          13.9639721,
+          -33.9125061
+        ],
+        [
+          1.1078011,
+          -0.0606381,
+          0.0024925,
+          0.998598,
+          -77.9464188,
+          43.8448601
+        ]
+      ],
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "applied": false,
+      "pending": true,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    },
+    "applied": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        [
+          80,
+          386,
+          245,
+          298
+        ],
+        [
+          582,
+          32,
+          284,
+          264
+        ],
+        [
+          709,
+          394,
+          243,
+          269
+        ]
+      ],
+      "matrices": [
+        [
+          1.1670442,
+          0.0730818,
+          0,
+          1,
+          -54.28936,
+          -23.7515945
+        ],
+        [
+          1,
+          0,
+          -0.0639488,
+          1.1553041,
+          18.9288292,
+          -45.9700127
+        ],
+        [
+          1.1591983,
+          -0.0895491,
+          0.0036809,
+          0.9979295,
+          -115.1095963,
+          64.7491455
+        ]
+      ],
+      "guardTicks": [
+        179,
+        179,
+        0
+      ],
+      "applied": true,
+      "pending": false,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    },
+    "folding": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ],
+        [
+          80,
+          386,
+          245,
+          298
+        ],
+        [
+          582,
+          32,
+          284,
+          264
+        ],
+        [
+          709,
+          394,
+          243,
+          269
+        ]
+      ],
+      "matrices": [
+        [
+          1.085986,
+          0.0376189,
+          0,
+          1,
+          -27.9454365,
+          -12.2261286
+        ],
+        [
+          1,
+          0,
+          -0.0327003,
+          1.0794151,
+          9.6792936,
+          -23.506855
+        ],
+        [
+          1.0763822,
+          -0.042965,
+          0.0017661,
+          0.9990066,
+          -55.2287216,
+          31.0661545
+        ]
+      ],
+      "guardTicks": [
+        18,
+        18,
+        0
+      ],
+      "applied": true,
+      "pending": false,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    },
+    "expired": {
+      "rects": [
+        [
+          0,
+          0,
+          1024,
+          1024
+        ]
+      ],
+      "matrices": [],
+      "guardTicks": [
+        0,
+        0,
+        0
+      ],
+      "applied": true,
+      "pending": false,
+      "hp": [
+        116,
+        640,
+        570,
+        0
+      ]
+    }
+  },
+  "disposed": true,
+  "pageErrors": [],
+  "httpErrors": []
+}

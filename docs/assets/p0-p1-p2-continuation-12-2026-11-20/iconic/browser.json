@@ -1,0 +1,437 @@
+{
+  "chromium": "151.0.7922.173",
+  "cases": [
+    {
+      "scenario": "rounds",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": "no-preference",
+      "gap": 195,
+      "rounds": 2,
+      "name": "Camera Flash Distraction",
+      "phases": [
+        "intro",
+        "roundResult",
+        "fatality",
+        "victory",
+        "outro"
+      ],
+      "inputs": [
+        {
+          "kind": "key",
+          "trusted": true,
+          "code": "KeyF"
+        },
+        {
+          "kind": "key",
+          "trusted": true,
+          "code": "KeyF"
+        }
+      ],
+      "impacts": [
+        {
+          "actor": "lilo_pelekai",
+          "target": "roger_rabbit",
+          "side": "player",
+          "name": "Camera Flash Distraction",
+          "range": 300,
+          "delivery": "beam",
+          "damage": 1,
+          "round": 1
+        },
+        {
+          "actor": "lilo_pelekai",
+          "target": "roger_rabbit",
+          "side": "player",
+          "name": "Camera Flash Distraction",
+          "range": 300,
+          "delivery": "beam",
+          "damage": 1,
+          "round": 2
+        }
+      ],
+      "shutter": [
+        0.4513888888888873,
+        0.4583333333333317,
+        0.4652777777777761,
+        0.47222222222222054,
+        0.47916666666666496,
+        0.4861111111111094,
+        0.4930555555555538,
+        0.4999999999999982,
+        0.5069444444444426,
+        0.5138888888888871,
+        0.5208333333333315,
+        0.5277777777777759,
+        0.5347222222222203,
+        0.5416666666666647,
+        0.5486111111111092,
+        0.5555555555555536
+      ],
+      "pendingArtDraws": 0,
+      "completionCount": 1,
+      "roundsWon": {
+        "player": 2,
+        "cpu": 0
+      },
+      "stitchIllustration": null,
+      "observed": {
+        "intro": {
+          "lilo-pelekai.png": {
+            "count": 99,
+            "cells": [
+              "1:0",
+              "1:3",
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 33
+          },
+          "roger-rabbit.png": {
+            "count": 99,
+            "cells": [
+              "1:0",
+              "1:1",
+              "0:1"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 41
+          }
+        },
+        "roundResult": {
+          "lilo-pelekai.png": {
+            "count": 70,
+            "cells": [
+              "0:2",
+              "0:3"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 7
+          },
+          "roger-rabbit.png": {
+            "count": 70,
+            "cells": [
+              "3:1",
+              "0:1"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 12
+          }
+        },
+        "fatality": {
+          "lilo-pelekai.png": {
+            "count": 145,
+            "cells": [
+              "0:2",
+              "0:3"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 5
+          }
+        },
+        "victory": {
+          "lilo-pelekai.png": {
+            "count": 114,
+            "cells": [
+              "0:3",
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 8
+          },
+          "roger-rabbit.png": {
+            "count": 114,
+            "cells": [
+              "3:1"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 24
+          }
+        },
+        "outro": {
+          "lilo-pelekai.png": {
+            "count": 108,
+            "cells": [
+              "0:3",
+              "1:3",
+              "1:0"
+            ],
+            "facings": [
+              1,
+              -1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 81
+          },
+          "roger-rabbit.png": {
+            "count": 108,
+            "cells": [
+              "3:1"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": false,
+            "distinctPositions": 1
+          }
+        }
+      },
+      "capture": "duel-manche-un.jpg",
+      "expectedSpriteFailures": [],
+      "unrelatedFailures": [],
+      "pageErrors": []
+    },
+    {
+      "scenario": "static",
+      "width": 1280,
+      "height": 900,
+      "reducedMotion": "reduce",
+      "gap": 64,
+      "rounds": 2,
+      "name": "Pirate Sword Cut",
+      "phases": [
+        "intro",
+        "roundResult",
+        "fatality",
+        "victory",
+        "outro"
+      ],
+      "inputs": [
+        {
+          "kind": "key",
+          "trusted": true,
+          "code": "KeyF"
+        },
+        {
+          "kind": "key",
+          "trusted": true,
+          "code": "KeyF"
+        }
+      ],
+      "impacts": [
+        {
+          "actor": "jack_sparrow_potc",
+          "target": "lilo_pelekai",
+          "side": "player",
+          "name": "Pirate Sword Cut",
+          "range": 70,
+          "delivery": "melee",
+          "damage": 1,
+          "round": 1
+        },
+        {
+          "actor": "jack_sparrow_potc",
+          "target": "lilo_pelekai",
+          "side": "player",
+          "name": "Pirate Sword Cut",
+          "range": 70,
+          "delivery": "melee",
+          "damage": 1,
+          "round": 2
+        }
+      ],
+      "shutter": [],
+      "pendingArtDraws": 0,
+      "completionCount": 1,
+      "roundsWon": {
+        "player": 2,
+        "cpu": 0
+      },
+      "stitchIllustration": null,
+      "observed": {
+        "intro": {
+          "jack-sparrow-potc.png": {
+            "count": 97,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          },
+          "lilo-pelekai.png": {
+            "count": 97,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        },
+        "roundResult": {
+          "jack-sparrow-potc.png": {
+            "count": 78,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          },
+          "lilo-pelekai.png": {
+            "count": 78,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        },
+        "fatality": {
+          "jack-sparrow-potc.png": {
+            "count": 127,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        },
+        "victory": {
+          "jack-sparrow-potc.png": {
+            "count": 108,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          },
+          "lilo-pelekai.png": {
+            "count": 108,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        },
+        "outro": {
+          "jack-sparrow-potc.png": {
+            "count": 109,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          },
+          "lilo-pelekai.png": {
+            "count": 109,
+            "cells": [
+              "0:2"
+            ],
+            "facings": [
+              -1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        }
+      },
+      "capture": null,
+      "expectedSpriteFailures": [],
+      "unrelatedFailures": [],
+      "pageErrors": []
+    },
+    {
+      "scenario": "stitch",
+      "width": 390,
+      "height": 844,
+      "reducedMotion": "reduce",
+      "gap": 64,
+      "rounds": 1,
+      "name": "Alien Strength Pounce",
+      "phases": [
+        "intro"
+      ],
+      "inputs": [
+        {
+          "kind": "touch",
+          "trusted": true,
+          "button": "P2 heavy attack [M]"
+        }
+      ],
+      "impacts": [
+        {
+          "actor": "stitch_626",
+          "target": "roger_rabbit",
+          "side": "cpu",
+          "name": "Alien Strength Pounce",
+          "range": 70,
+          "delivery": "melee",
+          "damage": 36.5,
+          "round": 1
+        }
+      ],
+      "shutter": [],
+      "pendingArtDraws": 95,
+      "completionCount": 0,
+      "roundsWon": {
+        "player": 0,
+        "cpu": 0
+      },
+      "stitchIllustration": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "observed": {
+        "intro": {
+          "roger-rabbit.png": {
+            "count": 93,
+            "cells": [
+              "0:1"
+            ],
+            "facings": [
+              1
+            ],
+            "reducedMotion": true,
+            "distinctPositions": 1
+          }
+        }
+      },
+      "capture": null,
+      "expectedSpriteFailures": [],
+      "unrelatedFailures": [],
+      "pageErrors": []
+    }
+  ]
+}

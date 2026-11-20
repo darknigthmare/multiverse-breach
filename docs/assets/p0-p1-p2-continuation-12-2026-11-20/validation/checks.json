@@ -1,0 +1,110 @@
+{
+  "baseRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "runtimeRevision": "b5c955bd22625d459d401edc66910541e135c37a",
+  "nodeVersion": "22.23.5",
+  "suites": [
+    {
+      "name": "Contrats de source",
+      "command": "npm run test:source-contracts",
+      "totals": {
+        "tests": 393,
+        "pass": 393,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "cb08e627272b91f6f3baa1b5025510a61b24369f6adbcebd9affd78ae4063d18"
+    },
+    {
+      "name": "P0 visuels et Duel",
+      "command": "npm run test:p0-visuals",
+      "totals": {
+        "tests": 58,
+        "pass": 58,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "fecdaf69809ba0190ba98a04ebda631b2ee56031904f8c83d6bc5589e610e56a"
+    },
+    {
+      "name": "Combat custom",
+      "command": "npm run test:custom",
+      "totals": {
+        "tests": 47,
+        "pass": 47,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "e5cc1a095e3eabab3804c074e76f7a079e582aed1cdb480faabe7dcff40cd3e3"
+    }
+  ],
+  "customSuiteCorrection": "Le contrôle Arsenal vérifie le raccord entre HubScreen et les cartes actives et de réserve de HubCommandDeck, où l’action est désormais définie.",
+  "lint": {
+    "command": "oxlint --deny-warnings",
+    "files": 34,
+    "exitCode": 0
+  },
+  "compilation": {
+    "scope": "Fermeture des modules de code Vite par profil",
+    "commands": [
+      "node scripts/checkDlcProfileBundle.mjs --profile config/dlc-profiles/base.json",
+      "node scripts/checkDlcProfileBundle.mjs --profile config/dlc-profiles/all.json"
+    ],
+    "profiles": [
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "base",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 0,
+        "modules": 860,
+        "dlcModules": 0,
+        "javascriptBytes": 49937068,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      },
+      {
+        "schemaVersion": 1,
+        "passed": true,
+        "profile": {
+          "schemaVersion": 1,
+          "mode": "all",
+          "packIds": [],
+          "sharedPolicy": "preserve-all"
+        },
+        "selectedPacks": 505,
+        "modules": 2897,
+        "dlcModules": 2038,
+        "javascriptBytes": 53216146,
+        "scope": "Full executable application compile and selected-DLC module closure. No exported edition, media hydration/copy, production prebuild, or artwork approval.",
+        "emittedFiles": 0
+      }
+    ]
+  },
+  "riftAudit": {
+    "command": "RIFT_DOSSIER_MEDIA_ROOT=/tmp/mvb-pass10-rift/verified-overlay/public npm run rift:audit",
+    "declared": 3199,
+    "available": 1017,
+    "pending": 2182,
+    "logSha256": "e7fbce16cd4962e861223dfdb827a062ca7b707790b3203e9302e28adaf1f0e8"
+  },
+  "relatedReceipts": [
+    "../roster/verification.json",
+    "../lobby/verification.json",
+    "../lobby/actual-battle.json",
+    "../wizard/verification.json",
+    "../iconic/verification.json",
+    "../motion/verification.json",
+    "../tactics/README.md",
+    "../dlc/coverage.json"
+  ]
+}

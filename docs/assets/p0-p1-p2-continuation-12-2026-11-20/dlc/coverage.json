@@ -1,0 +1,492 @@
+{
+  "startRevision": "d0bf46c46558a41c3ea65a78d954848927e17716",
+  "sourceRevision": "31c3639d86b67f1f6cb22659d46d06b5ed2016e5",
+  "planSha256": "03442fc32a3f538a95ed9f63f11aefea741ad4b114f0c348f9ab0c5677607e16",
+  "runnerSha256": "243aeca93238c358b814712c895ceb49293776229509a47c30873f618b35d302",
+  "baseline": {
+    "batches": 213,
+    "assets": 5871,
+    "bytes": 5137262854,
+    "receiptSha256": "7d974e0960132fb62cefdcf4baf7e287b499d8705f45a9014567cd94c72c6525",
+    "previousReceiptPinsRechecked": 213
+  },
+  "completed": {
+    "batches": 224,
+    "assets": 6032,
+    "bytes": 5492826604,
+    "decode": {
+      "PASSED": 5397,
+      "NOT_APPLICABLE": 635
+    },
+    "sourceKinds": {
+      "fetched-lfs": 779,
+      "git-blob": 5236,
+      "historical-git-lfs": 2,
+      "core-lfs-cache": 15
+    },
+    "pendingBatches": []
+  },
+  "appliedThisPass": {
+    "batches": 11,
+    "assets": 161,
+    "bytes": 355563750,
+    "fetchedLfsFiles": 115,
+    "fetchedLfsPayloadBytes": 327731856,
+    "sourceKinds": {
+      "fetched-lfs": 115,
+      "git-blob": 46
+    },
+    "decode": {
+      "PASSED": 161
+    },
+    "records": [
+      {
+        "batchId": "00062",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 24994664,
+        "privateDoomFiles": 0,
+        "bytes": 32228464,
+        "receiptSha256": "63f6da4d4aabd4c80dd77e33fe81b61b0ee5046006df17359f36b22e6027536f",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 11000
+      },
+      {
+        "batchId": "00006",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 25298507,
+        "privateDoomFiles": 0,
+        "bytes": 32261401,
+        "receiptSha256": "dbde5ff280bbb6420ef285c58d8b8f4759fcf84a669fe85d771dba897b49d7f3",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 10828
+      },
+      {
+        "batchId": "00195",
+        "verifiedFiles": 13,
+        "fetchedFiles": 13,
+        "fetchedBytes": 32299848,
+        "privateDoomFiles": 0,
+        "bytes": 32299848,
+        "receiptSha256": "3616b82c8088446ae49a9d667c36abfbca145d00a2f9af581102e452d40528af",
+        "decodes": {
+          "PASSED": 13
+        },
+        "sourceKinds": {
+          "fetched-lfs": 13
+        },
+        "resumedPortableCopy": false,
+        "copied": 13,
+        "reused": 0,
+        "durationMs": 13328
+      },
+      {
+        "batchId": "00082",
+        "verifiedFiles": 18,
+        "fetchedFiles": 6,
+        "fetchedBytes": 25299173,
+        "privateDoomFiles": 0,
+        "bytes": 32307803,
+        "receiptSha256": "7b34137babafef4c88973669c003f1eba787292113e7d7ef0baed1466044e47b",
+        "decodes": {
+          "PASSED": 18
+        },
+        "sourceKinds": {
+          "git-blob": 12,
+          "fetched-lfs": 6
+        },
+        "resumedPortableCopy": false,
+        "copied": 18,
+        "reused": 0,
+        "durationMs": 10169
+      },
+      {
+        "batchId": "00211",
+        "verifiedFiles": 12,
+        "fetchedFiles": 12,
+        "fetchedBytes": 32313516,
+        "privateDoomFiles": 0,
+        "bytes": 32313516,
+        "receiptSha256": "0223df9db98723e9151c2933db9c61d41956e52d2190083a7d6dcea07bc84f20",
+        "decodes": {
+          "PASSED": 12
+        },
+        "sourceKinds": {
+          "fetched-lfs": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 12,
+        "reused": 0,
+        "durationMs": 13092
+      },
+      {
+        "batchId": "00185",
+        "verifiedFiles": 14,
+        "fetchedFiles": 14,
+        "fetchedBytes": 32331510,
+        "privateDoomFiles": 0,
+        "bytes": 32331510,
+        "receiptSha256": "2703b917aed8c082b55d60545cd4a489b6b14f0b9547bc5319fd8e16ef3a29a4",
+        "decodes": {
+          "PASSED": 14
+        },
+        "sourceKinds": {
+          "fetched-lfs": 14
+        },
+        "resumedPortableCopy": false,
+        "copied": 14,
+        "reused": 0,
+        "durationMs": 14927
+      },
+      {
+        "batchId": "00179",
+        "verifiedFiles": 12,
+        "fetchedFiles": 12,
+        "fetchedBytes": 32343657,
+        "privateDoomFiles": 0,
+        "bytes": 32343657,
+        "receiptSha256": "81a93b59ff6aae5e8c613b784f8949ad714f21339870a815d7dc379cdb23722a",
+        "decodes": {
+          "PASSED": 12
+        },
+        "sourceKinds": {
+          "fetched-lfs": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 12,
+        "reused": 0,
+        "durationMs": 14044
+      },
+      {
+        "batchId": "00182",
+        "verifiedFiles": 14,
+        "fetchedFiles": 14,
+        "fetchedBytes": 32354934,
+        "privateDoomFiles": 0,
+        "bytes": 32354934,
+        "receiptSha256": "07fcae643e514eb8120e5eb4e1cf6d3a50a13264f5b1ac0968725887465cb3a7",
+        "decodes": {
+          "PASSED": 14
+        },
+        "sourceKinds": {
+          "fetched-lfs": 14
+        },
+        "resumedPortableCopy": false,
+        "copied": 14,
+        "reused": 0,
+        "durationMs": 15635
+      },
+      {
+        "batchId": "00198",
+        "verifiedFiles": 14,
+        "fetchedFiles": 14,
+        "fetchedBytes": 32369317,
+        "privateDoomFiles": 0,
+        "bytes": 32369317,
+        "receiptSha256": "a89a3eec2e8018ce095a0216c5312d1d042a1c7304d4c4822f6a430e08ff8f64",
+        "decodes": {
+          "PASSED": 14
+        },
+        "sourceKinds": {
+          "fetched-lfs": 14
+        },
+        "resumedPortableCopy": false,
+        "copied": 14,
+        "reused": 0,
+        "durationMs": 14318
+      },
+      {
+        "batchId": "00200",
+        "verifiedFiles": 12,
+        "fetchedFiles": 12,
+        "fetchedBytes": 32372333,
+        "privateDoomFiles": 0,
+        "bytes": 32372333,
+        "receiptSha256": "471f64d55e8c742a359aad7c0e94af66f583b185b9c5924c352e04f0c1b55ef5",
+        "decodes": {
+          "PASSED": 12
+        },
+        "sourceKinds": {
+          "fetched-lfs": 12
+        },
+        "resumedPortableCopy": false,
+        "copied": 12,
+        "reused": 0,
+        "durationMs": 13002
+      },
+      {
+        "batchId": "00119",
+        "verifiedFiles": 16,
+        "fetchedFiles": 6,
+        "fetchedBytes": 25754397,
+        "privateDoomFiles": 0,
+        "bytes": 32380967,
+        "receiptSha256": "c91c04e05eada0f0629ba7d50d0e2486a110f3538ff3f9184bc16d5dd950b523",
+        "decodes": {
+          "PASSED": 16
+        },
+        "sourceKinds": {
+          "fetched-lfs": 6,
+          "git-blob": 10
+        },
+        "resumedPortableCopy": false,
+        "copied": 16,
+        "reused": 0,
+        "durationMs": 9676
+      }
+    ]
+  },
+  "remaining": {
+    "batches": 93,
+    "assets": 1661,
+    "bytes": 3071336281,
+    "missingBatchIds": [
+      "00002",
+      "00003",
+      "00004",
+      "00007",
+      "00009",
+      "00010",
+      "00012",
+      "00013",
+      "00014",
+      "00016",
+      "00017",
+      "00019",
+      "00028",
+      "00030",
+      "00032",
+      "00034",
+      "00035",
+      "00036",
+      "00037",
+      "00038",
+      "00042",
+      "00043",
+      "00044",
+      "00050",
+      "00060",
+      "00063",
+      "00064",
+      "00065",
+      "00066",
+      "00068",
+      "00069",
+      "00070",
+      "00071",
+      "00073",
+      "00075",
+      "00076",
+      "00079",
+      "00081",
+      "00086",
+      "00091",
+      "00092",
+      "00095",
+      "00096",
+      "00097",
+      "00100",
+      "00101",
+      "00104",
+      "00110",
+      "00111",
+      "00112",
+      "00113",
+      "00114",
+      "00118",
+      "00120",
+      "00121",
+      "00122",
+      "00124",
+      "00125",
+      "00126",
+      "00127",
+      "00128",
+      "00130",
+      "00131",
+      "00132",
+      "00133",
+      "00134",
+      "00135",
+      "00137",
+      "00138",
+      "00139",
+      "00148",
+      "00150",
+      "00151",
+      "00154",
+      "00155",
+      "00156",
+      "00158",
+      "00165",
+      "00180",
+      "00181",
+      "00183",
+      "00184",
+      "00186",
+      "00187",
+      "00189",
+      "00190",
+      "00191",
+      "00192",
+      "00202",
+      "00203",
+      "00206",
+      "00208",
+      "00212"
+    ],
+    "lfsWithoutIdentifiedLocalCopy": {
+      "assets": 701,
+      "bytes": 2511338036
+    },
+    "sharedAssets": 1661
+  },
+  "independentAudit": {
+    "sha256Matches": 6032,
+    "nativeGitBlobOidMatches": 5236,
+    "lfsSha256Matches": 796,
+    "verifiedReceiptPins": 224
+  },
+  "remoteEnvelope": {
+    "maxLots": 11,
+    "maxRemoteBytes": 421670912,
+    "maxAssemblyBytes": 421670912
+  },
+  "networkSettings": {
+    "lfs.dialtimeout": "12",
+    "lfs.tlstimeout": "12",
+    "lfs.activitytimeout": "20",
+    "lfs.transfer.maxretries": "2",
+    "lfs.transfer.maxretrydelay": "1",
+    "lfs.concurrenttransfers": "1"
+  },
+  "parallelism": {
+    "exportParallelism": 1,
+    "applyParallelism": 1
+  },
+  "restart": null,
+  "failures": [],
+  "packageChecks": [
+    {
+      "command": "node --test --test-concurrency=1 scripts/dlcAssetBatches.test.mjs scripts/dlcBatchAssetSource.test.mjs scripts/dlcDistributionExport.test.mjs scripts/dlcDistributionBuild.test.mjs",
+      "counts": {
+        "tests": 75,
+        "pass": 75,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "9a68609a3a80d8c16f2e1af6f0f6dce2542ed1c05da7cd74bff7bcaee93fcde9"
+    },
+    {
+      "command": "node --test scripts/dlcAssetBatchDecode.test.mjs",
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "tapSha256": "198b9fd413a0eaf880c3f4f27da4986d399a10d78048e85fa338c69d3e5757fd"
+    }
+  ],
+  "assembly": "/tmp/mvb-pass06-doom/assembly",
+  "doomOwned": {
+    "verifiedAssets": 80,
+    "totalAssets": 80
+  },
+  "strict": {
+    "coverageExit": 1,
+    "distributionExportExit": 1,
+    "outputCreated": false,
+    "stagingCreated": false,
+    "diagnostic": "Assembled media do not cover the pinned distribution plan."
+  },
+  "frozenInputs": {
+    "observedHead": "d0bf46c46558a41c3ea65a78d954848927e17716",
+    "frozenFileCount": 1142,
+    "manifestAndAssetInventoryCount": 1011,
+    "currentTreeDivergences": 16,
+    "divergencePaths": [
+      "src/App.jsx",
+      "src/components/CampaignPauseMenu.jsx",
+      "src/components/CustomBattleMode.jsx",
+      "src/components/DlcInstallationPanel.jsx",
+      "src/components/FighterMode.jsx",
+      "src/components/GameCanvas.jsx",
+      "src/components/HubScreen.jsx",
+      "src/components/NexusFieldBriefing.css",
+      "src/components/NexusFieldBriefing.jsx",
+      "src/components/OcDlcLibrary.jsx",
+      "src/components/RpgTargetingPanel.jsx",
+      "src/components/UniverseArchiveReader.jsx",
+      "src/components/cards/cardArtPresentation.js",
+      "src/components/collection/modalIsolation.js",
+      "src/components/combat-immersion.css",
+      "src/components/game-system.css"
+    ],
+    "manifestAndAssetInventoryDivergences": []
+  },
+  "workspaceCleanup": {
+    "scope": "Regular JS/CSS Vite chunks from eight authorized inactive prior test output directories.",
+    "releasedFiles": 105,
+    "allocatedBytesReleased": 455274496,
+    "retainedAssets": [
+      "PNG copies in the prior roster output",
+      "HTML fixtures",
+      "logs and receipts",
+      "canonical media, plans and assembled archives"
+    ],
+    "bytesPerAssetsDirectory": {
+      "/tmp/mvb-pass07-library/after/assets": 53219328,
+      "/tmp/mvb-pass07-library/base/assets": 49942528,
+      "/tmp/mvb-pass07-library/before/assets": 53202944,
+      "/tmp/mvb-pass07-library/thalassa/assets": 49971200,
+      "/tmp/mvb-pass08-previous-build/dist/assets": 53239808,
+      "/tmp/mvb-pass11-roster/fixture/assets": 42364928,
+      "/tmp/nexus-briefing-20261120/after/assets": 76673024,
+      "/tmp/nexus-briefing-20261120/before/assets": 76660736
+    },
+    "freeBeforeCleanupBytes": 249577472,
+    "freeAfterCleanupBytes": 704851968,
+    "detailedTemporaryReceiptSha256": "b6db1ccb366b611c29d8ab30f83febea50a16616b7defb3f0c5aca4705df9127"
+  },
+  "selectedLots": [
+    "00062",
+    "00006",
+    "00195",
+    "00082",
+    "00211",
+    "00185",
+    "00179",
+    "00182",
+    "00198",
+    "00200",
+    "00119"
+  ],
+  "unappliedQueue": [],
+  "temporaryVolumeReserveBytes": 283115520,
+  "auxiliaryMarginBytes": 16777216,
+  "spaceAfterAssemblyBytes": 334237696,
+  "sourceCopies": "native",
+  "testNode": "22.23.5"
+}

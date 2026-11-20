@@ -1,0 +1,86 @@
+{
+  "runtimeCommit": "b5c955bd22625d459d401edc66910541e135c37a",
+  "sourceComparison": {
+    "baseline": "d0bf46c46558a41c3ea65a78d954848927e17716",
+    "unchangedPreviousOriginalBoards": [
+      "drowned_observatory_angles_tactics",
+      "valedor_free_city_crossroads_tactics",
+      "tawantinsuyu_qhapaq_nan_tactics",
+      "infernum_pit_of_auditors_tactics",
+      "iron_ashline_radio_ridge_tactics"
+    ],
+    "sharedSha256": "423333445ae5416e77613c7365b421c2d828c0ec42d9548d453c21085bc163ff",
+    "combinedMaterials": 84
+  },
+  "sourceSha256": {
+    "src/components/GameCanvas.jsx": "b111d458c7950ab540be828543ca72cc4511435fc25f125cb94321ba2a487580",
+    "src/game/engineTactics.js": "c2156d8148ed74d3803e56dfd13c833f48940bf6ceec0f2ab10acda2ade7c055",
+    "src/game/tacticsCrownlessSea.js": "ecf7151025bdb5683f788742b1df2abf8da7a7f23e38e469ba5c1bac9e91464d",
+    "src/game/tacticsEscort.js": "7214333bf7c0597d1fd226cac71922815d64e097cc4503be8445a1beccf11fc5",
+    "src/game/tacticsEnvironmentRenderer.js": "9cfc75edf15fa0f1615948ac1cf480eb4c303b5edde74f7edfeb1e9973a0c487",
+    "src/game/tacticsOriginalBattlefields.js": "480f5232557bb5757e8d540a66d37481e3a07812be7cf6342054ec9f6efddee8",
+    "src/game/tacticsOriginalPresentation.js": "ebcf66e89bb6cd955c7417a5b599f72eda21c658f82cf5647fd15e021b6049f2",
+    "src/game/tacticsVerticalRuntime.js": "b42f1cac0d4922a086b7ac5989b4e61a35a7381aa73d36ce5873e30c90fa5624",
+    "scripts/tacticsDeadCalm.test.mjs": "a1d17c1dab0898faae6c06b14420624543c41135ede383681aa7af471d88b8ce"
+  },
+  "board": {
+    "id": "crownless_dead_calm_graveyard_tactics",
+    "stageKey": "pirate_dead_calm_graveyard",
+    "universe": "The Crownless Sea",
+    "mode": "Tactics",
+    "source": "src/game/originalUniversesManifest.json",
+    "cols": 13,
+    "rows": 9,
+    "surfaces": 126,
+    "channelSurfaces": 13,
+    "landSurfacesReachableOnFoot": 110,
+    "wreckObstacles": 3,
+    "stackedChannelLocations": 3,
+    "waterZ": -1,
+    "wreckDeckZ": 2,
+    "reefZ": 1.25,
+    "clearanceUnderDeck": 2.72,
+    "materialCount": 6
+  },
+  "node": {
+    "version": "22.23.5",
+    "targeted": {
+      "counts": {
+        "tests": 42,
+        "pass": 42,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "070d6164289a3d3f7a5f67df44831c3f1cb83ab06f691fdc5be166aa1027d375"
+    },
+    "escortAndInterface": {
+      "counts": {
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tapSha256": "91bf2d21c86a12c81fd2266f636f8ec4455a0a3d2e85a6e45d1b01ca554bd3de"
+    },
+    "newTests": 6,
+    "replay": {
+      "manualAlliedMoves": 9,
+      "manualActionPoints": 11,
+      "shipMoves": 10,
+      "confirmedOnlyAfterTerrainMotion": true,
+      "alliedAIFollowsAfterOpponentsDefeated": true
+    }
+  },
+  "browser": {
+    "receipt": "browser.json",
+    "receiptSha256": "a319bd7ccade79a304fc13ea8e378401dbc43b04203d34b679c5ce4cb79ad396",
+    "scriptSha256": "330a6a15473e3e27903431c18e0cb6d87b29aa744141c5302698c588c2eb3081",
+    "harnessSha256": "562d3a9faebe64845a34e436b856aff326bf87b441070278f1c4baa125b6049e",
+    "captureSha256": "a377116e61738e78746b76b7a0f136eb6afe83207750a8a1172cdf1a5d9426fb",
+    "scope": "Chromium desktop, exact battle briefing, native keyboard and end-turn controls, successful escort and cleanup."
+  }
+}

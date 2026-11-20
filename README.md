@@ -22,7 +22,9 @@ La passe suivante réexamine les **22 défauts visuels P0 historiques**. Les cor
 
 La passe suivante porte à **120** le nombre de secondaires RPG spécifiques des ennemis originaux. Jack, Lilo et Roger retrouvent leurs commandes en Duel. Les effets de Vader suivent l’impact réel en RPG. Raven et Starfire retrouvent leurs portraits dans quatre écrans et les aigrettes de l’Amas des Huit Orochi s’animent en Mêlée. Doom atteint alors **209 lots sur 317**. [Corrections et vérifications](docs/assets/p0-p1-p2-continuation-10-2026-11-20/README.md).
 
-La dernière passe livre **40 supers de Mêlée** pour les héros originaux et une nouvelle carte Tactics dans Iron Tempest. Vader conserve son kit de Bespin à plusieurs étages, Starfire retrouve son geste de tir en Duel et le cuirassé Oblique déploie ses écrans en RPG. Les contrôles Rift acceptent une copie des médias assemblés par lots. Doom atteint **213 lots sur 317**. [Bilan et preuves](docs/assets/p0-p1-p2-continuation-11-2026-11-20/README.md).
+La passe suivante livre **40 supers de Mêlée** pour les héros originaux et une carte Tactics dans Iron Tempest. Vader conserve son kit de Bespin à plusieurs étages, Starfire retrouve son geste de tir en Duel et le cuirassé Oblique déploie ses écrans en RPG. Les contrôles Rift acceptent une copie des médias assemblés par lots. Doom atteint alors **213 lots sur 317**. [Bilan et preuves](docs/assets/p0-p1-p2-continuation-11-2026-11-20/README.md).
+
+La dernière passe complète la couverture des **60 héros originaux en Mêlée** et ajoute une secondaire RPG à chacun des **20 boss de campagne** concernés. Harry et Hermione retrouvent leurs sorts en Duel. Le Calme Mort rejoint les terrains Tactics et Combat custom maintient l’état du combat même si la collection est rafraîchie pendant la pause. Doom atteint **224 lots sur 317**. [Bilan et preuves](docs/assets/p0-p1-p2-continuation-12-2026-11-20/README.md)
 
 Les travaux sur Gears/Dead Space, Portal/Left 4 Dead, Revan, Imp et Mancubus sont détaillés dans la [reprise du 13 novembre](docs/assets/p0-p1-p2-continuation-02-2026-11-13/README.md). La [première passe](docs/assets/p0-p1-p2-continuation-2026-11-13/README.md) et les [sept espaces du Hub](docs/assets/p0-p1-menu-continuation-2026-11-13/README.md) conservent leurs résultats datés.
 
@@ -70,7 +72,7 @@ Pour conserver et transférer les médias d’un lot, utiliser `node scripts/exp
 
 Un assemblage complet peut alimenter directement `dlc:export:runtime` avec `--media-assembly`, `--media-plan` et `--media-plan-sha256`. Le checkout fournit le code et le dossier assemblé fournit les médias vérifiés. La destination doit avoir la place pour l’édition exportée. [Commande complète et validation](docs/development/corrections-2026-11-20/dlc-distribution-from-assembly/README.md).
 
-L’assemblage temporaire Doom contient désormais **5 871 médias vérifiés sur 7 693**, répartis en **213 lots sur 317**. La dernière reprise a ajouté quatre lots et contrôlé les empreintes de l’ensemble. Il reste 104 lots et 3,43 Go à assembler selon la révision gelée du plan. [État du plan Doom](docs/assets/p0-p1-p2-continuation-11-2026-11-20/dlc/README.md).
+L’assemblage temporaire Doom contient désormais **6 032 médias vérifiés sur 7 693**, répartis en **224 lots sur 317**. Les 80 médias propres à Doom sont assemblés. Selon le plan gelé, il reste **93 lots de ressources partagées**, soit 1 661 médias et 3,07 Go. [État du plan Doom](docs/assets/p0-p1-p2-continuation-12-2026-11-20/dlc/README.md)
 
 Les contrôles Rift peuvent lire les images d’une copie isolée. Indiquer le dossier qui contient `images/` à la racine. Les vrais fichiers locaux gardent la priorité. Les contrôles d’empreinte et d’unicité s’appliquent aux images de la copie.
 
@@ -134,7 +136,7 @@ Une entrée dans le catalogue, une capacité nommée, une recette de présentati
 | Invocations et renforts natifs16 | 68 planches |
 | Actions supplémentaires16 | 2 planches, 32 poses |
 | Familier de protection autonome16 | 1 planche, distincte des invocations RPG |
-| Terrains Tactics verticaux | 30 terrains dont vingt-six secteurs d’univers et quatre arènes Nexus, pour 78 matières |
+| Terrains Tactics verticaux | 31 terrains dont vingt-sept secteurs d’univers et quatre arènes Nexus, pour 84 matières |
 | Décors animés | 445 mécanismes dans 220 univers ; 305 univers sans mécanisme localisé |
 | Ressources de cet audit combat | 1 491 PNG dans 149 registres ; les 1 237 PNG et 138 registres W16 restent préservés |
 
@@ -200,6 +202,7 @@ La verticalité est intégrée au moteur Tactics. Ouvrir **Combat custom**, choi
 | Qhapaq Ñan des Falaises | Tawantinsuyu: The Split Sun, campagne originale | Escorter le témoin du khipu par trois lacets, entre terre ocre, terrasses en pierre et col herbeux |
 | Gouffre des Auditeurs | Infernum: Nine Pits, campagne originale | Registres à détruire avant la clôture, entre métal, roche noire et rigole chaude |
 | Ligne-Cendre — Crête des trois radios | Iron Tempest, campagne originale | Radios à tenir entre boyau boueux, crête herbeuse et chemin de ravitaillement en gravier |
+| Cimetière du Calme Mort | The Crownless Sea, campagne originale | Escorte d’un navire-lanterne par le chenal, entre vasières et épaves surélevées |
 
 Les quatre arènes originales du Nexus comprennent un pont avec passage inférieur, les terrasses des ruines, les passerelles du réseau et le Col des Hautes-Herbes. Deux unités peuvent occuper des supports distincts à la même coordonnée. Au col, le gué passe sous la crête et le relais se gagne en tenant le sommet trois tours. [Terrain et parcours](docs/assets/p0-p1-p2-continuation-03-2026-11-20/tactics-highgrass/README.md).
 
@@ -207,13 +210,15 @@ Cliquer une surface ou utiliser les flèches du plateau pour l’inspecter, puis
 
 Les déplacements suivent un chemin et son coût réel ; occupation, hauteur libre, empreinte des grandes unités, ligne de vue, objectifs et ressources distinguent les étages. Les arbres et obstacles ont des volumes physiques. Une coupe n’autorise pas un tir à travers un plancher opaque. Dans les secteurs d’univers avec objectif de contrôle, le score progresse une fois par tour réellement terminé. Les anciennes cartes plates conservent leur géométrie.
 
-Les **78 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins. Les quatre hauteurs donnent sa pente à la case et permettent de distinguer un pont de son passage inférieur à la même position horizontale. Le rendu projette des motifs différents sur le dessus, les flancs et les dessous des plateformes. Les raccords suivent les arêtes à la bonne altitude. Les volumes déterminent le placement et le masquage des personnages. [Rendu du terrain](src/game/tacticsTerrainRenderer.js) · [Matières W17](src/game/tacticsUniversePresentationWave17.js)
+Les **84 matières configurées** couvrent les secteurs d’univers et les arènes Nexus. Chaque surface possède son identifiant, son matériau et la hauteur de ses quatre coins. Les quatre hauteurs donnent sa pente à la case et permettent de distinguer un pont de son passage inférieur à la même position horizontale. Le rendu projette des motifs différents sur le dessus, les flancs et les dessous des plateformes. Les raccords suivent les arêtes à la bonne altitude. Les volumes déterminent le placement et le masquage des personnages. [Rendu du terrain](src/game/tacticsTerrainRenderer.js) · [Matières W17](src/game/tacticsUniversePresentationWave17.js)
 
 Dans l’Observatoire, deux cartes partagent une coordonnée horizontale et se ramassent depuis leurs étages respectifs. Des passages d’angle relient la crypte à la galerie pour deux points d’action. Au Carrefour, des rampes et escaliers joignent les quatre quartiers. Chaque place de l’objectif porte son matériau et sa hauteur. Ces plateaux utilisent une géométrie propre au Tactics et sont accessibles depuis la campagne originale ou le combat custom. [Parcours des deux secteurs](docs/assets/p0-p1-p2-continuation-06-2026-11-20/tactics/README.md)
 
 Au Qhapaq Ñan, le témoin suit les terrasses jusqu’au support d’extraction. Sa planche d’animation couvre l’attente, le déplacement, le coup reçu et le départ. Dans le Gouffre, les registres occupent trois hauteurs et la clôture compte les fins de tour alliées. Les tirs qui s’arrêtent au contact tiennent compte de chaque case occupée par un boss 2×2, y compris au bord du plateau. [Secteurs et matières](docs/assets/p0-p1-p2-continuation-07-2026-11-20/tactics/README.md) · [Escorte et animations](docs/assets/p0-p1-p2-continuation-08-2026-11-20/witness/README.md) · [Ligne de vue](docs/assets/p0-p1-p2-continuation-08-2026-11-20/tactics/README.md)
 
 La Ligne-Cendre relie trois radios sur la crête, dans le boyau et au ravitaillement. Le pont crée un raccourci au-dessus de la tranchée, avec un passage inférieur soumis à la hauteur des unités. La boue coûte deux points de déplacement et le gravier un. La carte se joue dans la campagne Iron Tempest et en combat custom. [Parcours de la Ligne-Cendre](docs/assets/p0-p1-p2-continuation-11-2026-11-20/tactics/README.md)
+
+Dans le Calme Mort, le navire-lanterne suit le chenal à Z −1. Un allié à sa hauteur doit se tenir sur un appui adjacent en fin de tour pour le faire avancer. Le pont de l’épave à Z 2 offre un passage et une couverture à l’escouade. Les six matières couvrent le chenal, la vase, le gravier, le chemin de halage, l’épave et le récif. [Parcours du Calme Mort](docs/assets/p0-p1-p2-continuation-12-2026-11-20/tactics/README.md)
 
 Chaque niveau Tactics utilise un environnement propre à ce mode, y compris les anciennes cartes. Les atlas de tuiles Tactics sont distincts de ceux des autres moteurs ; leurs images d’arène ne servent plus de fond Tactics.
 
@@ -269,7 +274,9 @@ La seconde reprise ajoute les vérifications finales suivantes : **153/153 contr
 
 La reprise du 20 novembre passe **295 tests Tactics, 159 contrats, 108 régressions RPG et 99 tests PNG**. L’édition complète, le jeu de base et les trois packs originaux concernés compilent sans copier les médias. [Vérifications et parcours](docs/assets/p0-p1-p2-continuation-03-2026-11-20/README.md).
 
-La dernière passe passe **349 contrats de source, 93 tests Rift et 42 tests P0 visuels**. Les profils `base` et `all` compilent selon leurs sélections, soit 0 et 505 packs. Les vérifications en jeu et les contrôles des fichiers Doom ont leurs propres reçus. [Relevé des vérifications](docs/assets/p0-p1-p2-continuation-11-2026-11-20/validation/checks.json)
+La passe précédente valide **349 contrats de source, 93 tests Rift et 42 tests P0 visuels**. Les profils `base` et `all` compilent selon leurs sélections, soit 0 et 505 packs. Les vérifications en jeu et les contrôles des fichiers Doom ont leurs propres reçus. [Relevé des vérifications](docs/assets/p0-p1-p2-continuation-11-2026-11-20/validation/checks.json)
+
+Dans la passe actuelle, six parcours Chromium contrôlent le menu Combat custom aux résolutions d’ordinateur et de téléphone, en français et en anglais. Un parcours moteur confirme que l’actualisation de la collection conserve le tour et les points d’action pendant la pause. [Vérifications de la passe](docs/assets/p0-p1-p2-continuation-12-2026-11-20/README.md)
 
 ## Architecture
 
