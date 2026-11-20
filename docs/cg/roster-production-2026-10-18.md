@@ -3,11 +3,11 @@
 Périmètre : **1911 héros de HEROES_DB + l’Ancre séparée = 1912 sujets**, répartis dans 525 univers. Les six personnages du pilote sont inclus. Aucun boss non jouable n’est ajouté.
 
 - 83 CG publiées réutilisées pour les six sujets pilotes. Leur existence ne valide pas automatiquement la nouvelle demande de fidélité 1:1 ou de décor distinct.
-- 1906 nouveaux CG01 characterSolo constituent le socle du reste du roster; 94 CG01 et 1259 CG de séries supplémentaires sont réellement livrées dans le registre dédié.
-- Statuts : **1436 generated, 0 ready, 1812 needs-reference**. Aucun ancien sprite, numéro de décor, URL historique ou miniature de dossier n’est déclaré nouvelle CG terminée.
-- 3248 décors distincts associés, chacun avec backgroundId et description spatiale explicite; 1353 sont déjà liés à une nouvelle image livrée et revue. Les autres restent des propositions à confronter aux références puis à l’image finale, sans affirmation de nouveaux lieux canoniques.
+- 1906 nouveaux CG01 characterSolo constituent le socle du reste du roster; 100 CG01 et 1453 CG de séries supplémentaires sont réellement livrées dans le registre dédié.
+- Statuts : **1636 generated, 0 ready, 1806 needs-reference**. Aucun ancien sprite, numéro de décor, URL historique ou miniature de dossier n’est déclaré nouvelle CG terminée.
+- 3442 décors distincts associés, chacun avec backgroundId et description spatiale explicite; 1553 sont déjà liés à une nouvelle image livrée et revue. Les autres restent des propositions à confronter aux références puis à l’image finale, sans affirmation de nouveaux lieux canoniques.
 - Les **25 P0** de l’audit Wave4 passent en tête de production. Leurs substitutions historiques ne constituent pas une référence fidèle.
-- Matrice conservée : 15 emplacements × 1912 sujets = **28680 cellules**; 25424 extensions restent en needs-theme/reference et 8 N/A sont documentés (7 du pilote et 1 issus de la revue source du roster). Les choix CG13 et CG15 restent alternatifs. Chaque cellule applicable porte une pose distincte, un thème ou template documenté, sa source et un backgroundId. Les décors d’extension combinent leur template physique et environmentSourceId; ils attendent la résolution d’un thème propre au personnage avant génération. Au total, 27236 emplacements demandés restent non produits; le socle CG01 ne réduit pas ce périmètre.
+- Matrice conservée : 15 emplacements × 1912 sujets = **28680 cellules**; 25230 extensions restent en needs-theme/reference et 8 N/A sont documentés (7 du pilote et 1 issus de la revue source du roster). Les choix CG13 et CG15 restent alternatifs. Chaque cellule applicable porte une pose distincte, un thème ou template documenté, sa source et un backgroundId. Les décors d’extension combinent leur template physique et environmentSourceId; ils attendent la résolution d’un thème propre au personnage avant génération. Au total, 27036 emplacements demandés restent non produits; le socle CG01 ne réduit pas ce périmètre.
 
 Les incarnations, équipements verrouillés, sources publiques, candidats visuels historiques, manques de référence et identifiants de dossier figurent par sujet dans [le manifeste JSON](./roster-production-2026-10-18.json). Les thèmes spéciaux du pilote restent ceux de leurs prompts documentés. Les thèmes livrés des nouveaux personnages portent leur source et leur statut Canon, Fan Art ou What If; les autres restent des propositions à résoudre; un template ne devient pas un thème canonique. Les poses proposées ne prétendent pas modifier une image déjà livrée. Les références distantes historiques ne sont ni téléchargées ni présentées comme images actuellement chargées. Les métadonnées de qualité bitmap ne certifient pas la ressemblance.
 
@@ -18,8 +18,8 @@ Les incarnations, équipements verrouillés, sources publiques, candidats visuel
 | Saturnin the Duck | Les Aventures de Saturnin | Les Aventures de Saturnin (ORTF, 1965-1970) - real duckling in a miniature animal village | generated |
 | Lilo Pelekai | Lilo & Stitch | Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai | needs-reference |
 | Stitch | Lilo & Stitch | Lilo & Stitch — film animé Disney 2002, Stitch/Expérience 626 en forme terrestre à deux bras | needs-reference |
-| King of Pop Avatar | Michael Jackson | Multiverse Breach original tribute persona - King of Pop Avatar | needs-reference |
-| Rhythm Guard | Michael Jackson | Multiverse Breach original companion - Rhythm Guard | needs-reference |
+| King of Pop Avatar | Michael Jackson | King of Pop Avatar, personnage original Multiverse Breach selon le kit et le sprite retenu | generated |
+| Rhythm Guard | Michael Jackson | Rhythm Guard, compagnon original Multiverse Breach selon le kit et le sprite retenu | generated |
 | Bob | Minions | Minions (2015) - Bob, London crown-heist adventure | needs-reference |
 | Kevin | Minions | Minions (2015) - Kevin, London crown-heist adventure | needs-reference |
 | Stuart | Minions | Minions (2015) - Stuart, London rock-star finale | needs-reference |

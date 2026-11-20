@@ -118,7 +118,8 @@ def audit_global_batch(book, plan):
     assert counts["remainingSlots"] == plan["summary"]["totalRequestedSlotsNotProduced"]
     assert counts["queueStatuses"] == dict(dispositions)
     assert counts["imageCallsMadeByThisBuilder"] == counts["imagesInstalledByThisBuilder"] == counts["automaticPerfectFidelityApprovals"] == 0
-    assert counts["currentProviderRefusedOrCorrectionRefusedJobs"] == 20
+    active_cg_refusals = dispositions["provider-refused"] + dispositions["source-correction-refused"]
+    assert counts["currentProviderRefusedOrCorrectionRefusedJobs"] == active_cg_refusals
     active_atlas_refusals = [record for subject in manifest["subjects"]
                             for record in subject.get("atlasCorrectionRefusals", [])
                             if record.get("currentlyBlocksSourceCorrection")]
@@ -139,7 +140,7 @@ def audit_global_batch(book, plan):
     return {"manifest": batch["manifestPath"], "manifestSha256": batch["manifestSha256"],
             "masterPrompt": batch["masterPromptPath"], "masterPromptSha256": batch["masterPromptSha256"],
             "subjects": len(subjects), "slots": sum(dispositions.values()),
-            "actualDeliveredCg": counts["actualDeliveredCg"], "currentCgRefusals": 20,
+            "actualDeliveredCg": counts["actualDeliveredCg"], "currentCgRefusals": active_cg_refusals,
             "currentAtlasRefusals": len(active_atlas_subjects), "newAtlasRefusals": len(new_atlas_subjects),
             "homeEntryPointLinksVerified": 2, "instructionsMistakenForGeneratedImages": 0}
 
