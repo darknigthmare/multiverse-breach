@@ -8,6 +8,7 @@ import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE16, TACTICS_SOURCE_LOCATION_MATCHERS_
 import { TACTICS_UNIVERSE_BATTLEFIELDS_WAVE17, TACTICS_SOURCE_LOCATION_MATCHERS_WAVE17 } from './tacticsUniverseBattlefieldsWave17.js';
 import { TACTICS_APERTURE_BATTLEFIELD } from './tacticsApertureBattlefield.js';
 import { TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD } from './tacticsNexusHighgrassBattlefield.js';
+import { TACTICS_ORIGINAL_BATTLEFIELDS } from './tacticsOriginalBattlefields.js';
 
 // Historical wave exports remain bounded; all live selectors use this union.
 export const TACTICS_SOURCE_BATTLEFIELDS = Object.freeze({
@@ -334,6 +335,7 @@ export const TACTICS_BATTLEFIELDS = {
   },
   ...TACTICS_VERTICAL_BATTLEFIELDS,
   [TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD.id]: TACTICS_NEXUS_HIGHGRASS_BATTLEFIELD,
+  ...TACTICS_ORIGINAL_BATTLEFIELDS,
   ...TACTICS_SOURCE_BATTLEFIELDS
 };
 
@@ -412,7 +414,20 @@ const sourceLocationMatchers = {
   halo_valhalla_tactics: /valhalla/i
 };
 
+const originalFields = Object.values(TACTICS_ORIGINAL_BATTLEFIELDS);
+
+function getOriginalTacticsBattlefield(stage, allowDefault) {
+  if (stage.mode && stage.mode !== 'Tactics') return null;
+  const candidates = originalFields.filter(field => field.source.universe === stage.universe);
+  const stageKey = stage.stageKey || stage.contentStageId;
+  const exact = stageKey ? candidates.find(field => field.source.stageKey === stageKey)
+    : candidates.find(field => Object.values(field.label).includes(stage.name));
+  return exact || (allowDefault ? candidates[0] : null) || null;
+}
+
 export function getUniverseTacticsBattlefield(stage = {}, { allowDefault = false } = {}) {
+  const original = getOriginalTacticsBattlefield(stage, allowDefault);
+  if (original) return original;
   const editionText = [stage.name, stage.location, stage.tacticsLocation, stage.sourceWork, stage.tacticsSource?.work].filter(Boolean).join(' ');
   const explicitlyPortal2007 = /\bportal\s*(?:\(\s*2007\s*\)|2007\b|1\b)/i.test(editionText);
   const candidates = Object.values(TACTICS_SOURCE_BATTLEFIELDS)
@@ -449,6 +464,7 @@ export function getTacticsBattlefield(stage = {}) {
   const universeField = getUniverseTacticsBattlefield(stage, { allowDefault: stage.isCustomBattle === true });
   if (stage.forceBaseArena || stage.dlcSuppressedArena) battlefield = TACTICS_BATTLEFIELDS.training_grid;
   else if (stage.tacticsBattlefieldId && TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId]) battlefield = TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId];
+  else if (universeField && Object.hasOwn(TACTICS_ORIGINAL_BATTLEFIELDS, universeField.id)) battlefield = universeField;
   else if (stage.isCustomBattle && universeField) battlefield = universeField;
   else if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
   else if (textIncludes(missionText, ['overload', 'surcharge', 'timer', 'core'])) battlefield = TACTICS_BATTLEFIELDS.boss_overload_zone;

@@ -1,9 +1,11 @@
 import { getNexusActorDesign } from './nexusActorDesigns.js';
 import { getOriginalMachineActorDesign } from './originalMachineActorDesigns.js';
 import { getOriginalTideActorDesign } from './originalTideActorDesigns.js';
+import { getOriginalCampaignActorDesign } from './originalCampaignActorDesigns.js';
 
 export function getOriginalActorDesign(actor) {
-  return getNexusActorDesign(actor) || getOriginalMachineActorDesign(actor) || getOriginalTideActorDesign(actor);
+  return getNexusActorDesign(actor) || getOriginalMachineActorDesign(actor) || getOriginalTideActorDesign(actor)
+    || getOriginalCampaignActorDesign(actor);
 }
 
 export function resolveOriginalRpgSpecial(actor, supplied) {

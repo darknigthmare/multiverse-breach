@@ -4,6 +4,7 @@ import { getRpgSourceEffectPresentation, getRpgSourceStatusPresentation } from '
 const EFFECT_LABELS = { damage: ['Dégâts estimés', 'Estimated damage'], heal: ['Soin', 'Healing'], revive: ['Réanimation', 'Revive'], guard: ['Protection', 'Protection'], buff: ['Renforcement', 'Buff'], cleanse: ['Purification', 'Cleanse'], control: ['Immobilisation', 'Immobilize'] };
 const STATUS_LABELS = { infected: ['Infection', 'Infection'], glitched: ['Glitch', 'Glitch'], radiated: ['Radiations', 'Radiation'] };
 const SHAPE_LABELS = { single: ['Une cible', 'Single target'], multi: ['Cibles choisies', 'Selected targets'], group: ['Tout le groupe valide', 'All valid group members'], area: ['Zone autour de la cible', 'Area around target'], line: ['Ligne vers la cible', 'Line toward target'], cone: ['Cône vers la cible', 'Cone toward target'] };
+const RADIAL_LABEL = ['Zone autour du lanceur', 'Area around caster'];
 
 export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWaitChange, onSelect, onConfirm, onCancel,
   possessionCommands = [], sourceStatusActors = [], onPossessedTargeting, onReleasePossession }) {
@@ -36,7 +37,7 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
           <div role="status" style={{ marginBottom: 8 }}>
             <strong>{targeting.side === 'enemy' ? 'P2 · ' : ''}{targeting.actorName} — {targeting.abilityName}</strong>
             <div style={{ fontSize: 12, marginTop: 5 }}>
-              {SHAPE_LABELS[targeting.shape]?.[locale]}
+              {(targeting.delivery === 'radial' ? RADIAL_LABEL : SHAPE_LABELS[targeting.shape])?.[locale]}
               {targeting.shape === 'multi' ? ` (${targeting.selectedTargetIds.length}/${targeting.maxTargets})` : ''}
               {targeting.sourceHits > 1 && <div>
                 {fr ? `${targeting.sourceHits} contacts` : `${targeting.sourceHits} contacts`}

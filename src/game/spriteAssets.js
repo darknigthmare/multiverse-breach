@@ -613,6 +613,11 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
   ]
 };
 
+const AETHER_MITE_SHEET = '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm';
+const KRAKEN_SHEET = '/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne';
+const LIGHTHOUSE_SHEET = '/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde';
+const originalBossRows = { idle: 0, run: 1, attack: 2, defense: 0, support: 0, special: 2, hit: 3, dead: 3 };
+
 export const SPRITE_SHEET_LAYOUTS = {
   ...DISCIPLINE_SPRITE_LAYOUTS,
   '/sprites/generated/bosses/predator/feral-predator.png': {
@@ -637,16 +642,17 @@ export const SPRITE_SHEET_LAYOUTS = {
     rows: 1,
     rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
   },
-  '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png': {
+  [`${AETHER_MITE_SHEET}.png`]: {
     columns: 1,
     rows: 1,
     rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
   },
-  '/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png': {
+  [`${KRAKEN_SHEET}.png`]: {
     columns: 1,
     rows: 1,
     rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
   },
+  [`${KRAKEN_SHEET}-animated.png`]: { columns: 4, rows: 4, baseline: 183, rowByState: originalBossRows },
   '/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png': {
     columns: 1,
     rows: 1,
@@ -667,11 +673,12 @@ export const SPRITE_SHEET_LAYOUTS = {
     rows: 1,
     rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
   },
-  '/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png': {
+  [`${LIGHTHOUSE_SHEET}.png`]: {
     columns: 1,
     rows: 1,
     rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
   },
+  [`${LIGHTHOUSE_SHEET}-animated.png`]: { columns: 4, rows: 4, baseline: 182, rowByState: originalBossRows },
   '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png': {
     // One reviewed full-body image; animations remain pending in its asset manifest.
     columns: 1,
@@ -1065,8 +1072,14 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => (
   getHeroSpriteSheetSources(hero, context)[0] || ''
 );
 
-const AETHER_MITE_STATIC = '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png';
-const AETHER_MITE_ANIMATED = '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm-animated.png';
+const originalBossSpriteBindings = new Map([
+  ['aether_crown:aether_mite_swarm', { universe: 'The Aether Crown', name: 'Aether Mite Swarm', weapon: 'staff', sheet: AETHER_MITE_SHEET }],
+  ['crownless_sea:kraken_sans_couronne', { universe: 'The Crownless Sea', name: 'Kraken Sans Couronne', weapon: 'world_power', sheet: KRAKEN_SHEET }],
+  ['drowned_testament:le_phare_qui_regarde', { universe: 'The Drowned Testament', name: 'Le Phare qui Regarde', weapon: 'magic', sheet: LIGHTHOUSE_SHEET }],
+]);
+const originalBossStillByAtlas = new Map(
+  [...originalBossSpriteBindings.values()].map(({ sheet }) => [`${sheet}-animated.png`, `${sheet}.png`])
+);
 
 export const getEnemySpriteSheetSrc = (enemy) => {
   // Exact source identity owns the capture NPC preload before generic boss paths.
@@ -1074,8 +1087,10 @@ export const getEnemySpriteSheetSrc = (enemy) => {
   if (captureFrame) return captureFrame.asset.sheet;
   if (!enemy?.name) return '';
   if (enemy.spriteSource) return enemy.spriteSource;
-  if (enemy.id === 'aether_crown:aether_mite_swarm' && enemy.universe === 'The Aether Crown'
-    && enemy.name === 'Aether Mite Swarm' && enemy.weapon === 'staff') return AETHER_MITE_ANIMATED;
+  const original = originalBossSpriteBindings.get(enemy.id);
+  if (original && original.universe === enemy.universe && original.name === enemy.name && original.weapon === enemy.weapon) {
+    return `${original.sheet}-animated.png`;
+  }
   const boundSprite = getBoundEnemySpriteSrc(enemy);
   if (boundSprite) return boundSprite;
   const universe = enemy.universe || enemy.sourceUniverse || 'unknown';
@@ -1084,7 +1099,8 @@ export const getEnemySpriteSheetSrc = (enemy) => {
 
 export const getEnemySpriteSheetSources = (enemy) => {
   const src = getEnemySpriteSheetSrc(enemy);
-  return src === AETHER_MITE_ANIMATED ? [src, AETHER_MITE_STATIC] : src ? [src] : [];
+  const fallback = originalBossStillByAtlas.get(src);
+  return fallback ? [src, fallback] : src ? [src] : [];
 };
 
 const ITEM_SPRITE_ALIASES = Object.freeze({

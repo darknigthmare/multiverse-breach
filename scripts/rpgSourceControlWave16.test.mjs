@@ -11,10 +11,10 @@ const hero=id=>structuredClone(HEROES.find(h=>h.id===id));
 const tick=(engine,count)=>{for(let n=0;n<count;n++)engine.update();};
 const slig=()=>{const body=structuredClone(ENEMIES.Oddworld.monsters.find(e=>e.id==='oddworld_slig'));assert.equal(body.possessionEligible,true);
  return {...body,stats:body.stats||{hp:body.hp,atk:body.atk,def:body.def||5,spd:body.spd||5}};};
-function make(kind,side,allies=[]){
+function make(kind,side,allies=[],opponents=[hero('noble_six')]){
  const owner=hero(kind==='possession'?'oddworld_abe_possession':'akane_tsunemori');
  const target=kind==='possession'?slig():{...hero('shinya_kogami'),paralyzerEligible:true};
- const other=hero('noble_six'),own=[owner,...allies],opposition=[target,other];
+ const own=[owner,...allies],opposition=[target,...opponents];
  const engine=new Engine(1040,460,side==='player'?own:opposition,{monsters:side==='player'?opposition:own,bosses:[],customRoster:side==='player'?opposition:own},{add(){}},()=>{},()=>{},
  {universe:owner.universe,customBattle:{singleRoster:true,opponentControl:'p2'}});engines.push(engine);engine.enemyGlobalRecovery=0;
  const actor=(side==='player'?engine.heroes:engine.enemies)[0],targets=side==='player'?engine.enemies:engine.heroes;
@@ -97,6 +97,46 @@ test('RPG: an allied invocation pauses a committed Slig rifle pose and its relea
  tick(engine, 1);
  assert.equal(target.rpgPossessedRifleLastReleaseWave16.nativePoint.col, 2);
  assert.ok(other.currentHp < hp);
+});
+
+test('RPG J2: the Paralyzer cannot unlock a teammate’s command while another enemy is still attacking', () => {
+ const c = make('paralyzer', 'player', [], [hero('kirito_sao'), hero('noble_six')]);
+ const { engine, actor, target, other } = c;
+ const reserve = engine.enemies[2];
+ actor.currentHp = actor.maxHp = 100000;
+ other.x = other.homeX = actor.x + 135;
+ other.atb = reserve.atb = 100;
+ start(c);
+ assert.equal(engine.triggerEnemyAbility(other, 'special', [actor.battleId]), true);
+ assert.equal(engine.enemyActionOwner, other);
+ let elapsed = 0;
+ while (!target.sourceControlWave16?.active && elapsed++ < 90) engine.update();
+ assert.equal(target.sourceControlWave16?.kind, 'paralyzer');
+ assert.equal(other.actionPending, true);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), false);
+
+ elapsed = 0;
+ while (other.actionPending && elapsed++ < 300) engine.update();
+ assert.equal(other.actionPending, false);
+ assert.equal(engine.canUseAction(reserve, 'simple', 'enemy'), true);
+});
+
+test('RPG J2: the Paralyzer unlocks the team when it interrupts the actor that owns the command', () => {
+ const c = make('paralyzer', 'player');
+ const { engine, actor, target, other } = c;
+ target.x = target.homeX = actor.x + 135;
+ other.atb = 100;
+ start(c);
+ tick(engine, engine.actorActions.get(actor).ticks - 1);
+ assert.equal(engine.triggerEnemyAbility(target, 'simple', [actor.battleId]), true);
+ assert.equal(engine.enemyActionOwner, target);
+ const hp = actor.currentHp;
+ tick(engine, 1);
+ assert.equal(target.sourceControlWave16?.kind, 'paralyzer');
+ assert.equal(engine.enemyActionOwner, null);
+ assert.equal(engine.canUseAction(other, 'simple', 'enemy'), true);
+ tick(engine, 40);
+ assert.equal(actor.currentHp, hp);
 });
 
 function sourceCase(id,side){

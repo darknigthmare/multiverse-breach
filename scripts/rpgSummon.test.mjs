@@ -68,6 +68,41 @@ after(async () => {
   await vite?.close();
 });
 
+for (const side of ['player', 'enemy']) test(`RPG ${side}: stock ÜberCharge stops infection damage while the beam remains connected`, () => {
+  const team = [hero('team_fortress_2_scout'), hero('team_fortress_2_medic')];
+  const foes = [enemyData('opponent')];
+  const engine = side === 'player' ? makeEngine(team, foes) : makeEngine(foes, team);
+  const [patient, medic] = side === 'player' ? engine.heroes : engine.enemies;
+  patient.x = patient.homeX = 390;
+  patient.y = patient.homeY = medic.y = medic.homeY = 320;
+  medic.x = medic.homeX = 330;
+  assert.equal(engine.beginTargeting(medic, 'secondary', side), true);
+  assert.equal(engine.selectTarget(id(patient)), true);
+  assert.equal(engine.confirmTargeting(), true);
+  tick(engine, 60);
+  const beam = medic.sourceMediGunWave17;
+  assert.equal(beam?.connected, true);
+  beam.charge = 1;
+  assert.equal(engine.summon(patient, side) && engine.confirmTargeting(), true);
+  tick(engine, engine.activeSummon.durationTicks);
+  assert.equal(beam.uberRemaining, 8);
+  patient.currentHp = patient.maxHp * 1.5;
+  const pair = [patient, medic];
+  const protectedHp = pair.map(actor => actor.currentHp);
+  for (const actor of pair) actor.statusEffects.infected = 61;
+  tick(engine);
+  assert.deepEqual(pair.map(actor => actor.statusEffects.infected), [60, 60]);
+  assert.deepEqual(pair.map(actor => actor.currentHp), protectedHp);
+
+  medic.x = 40;
+  patient.currentHp = patient.maxHp;
+  const exposedHp = pair.map(actor => actor.currentHp);
+  for (const actor of pair) actor.statusEffects.infected = 61;
+  tick(engine);
+  assert.equal(beam.connected, false);
+  assert.deepEqual(pair.map(actor => actor.currentHp), exposedHp.map(hp => hp - 3));
+});
+
 for (const side of ['player', 'enemy']) test('RPG summon selection and cancellation never spend resources for ' + side, () => {
   const engine = side === 'player'
     ? makeEngine([hero('cloud_ff7')])

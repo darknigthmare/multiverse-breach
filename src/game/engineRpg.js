@@ -1173,7 +1173,10 @@ export class EngineRpg {
             this.sourceRpgControlTargetsWave16.add(target);
           }
           if (this.targeting?.actor === target) this.targeting = null;
-          if (this.enemies.includes(target)) this.enemyActionLock = false;
+          if (this.enemyActionOwner === target) {
+            this.enemyActionOwner = null;
+            this.enemyActionLock = false;
+          }
           this.particles.add(target.x,target.y-20,0,-.4,color,12,45,'text',profile.controlKind==='possession'?'POSSESSION':'PARALYZER');
           continue;
         }
@@ -1859,6 +1862,11 @@ export class EngineRpg {
     }
     return true;
   }
+  hasRpgUberProtection(actor) {
+    return hasStockUberProtectionWave17(actor, [...this.heroes, ...this.enemies],
+      (medic, patient) => this.heroes.includes(medic) === this.heroes.includes(patient));
+  }
+
   applyDamage(attacker, defender, baseDmg, statusEffect = null, sourceOptions = {}) {
     if (this.disposed || this.paused || this.gameOver || !defender || !Number.isFinite(defender.currentHp) || defender.currentHp <= 0 || !Number.isFinite(baseDmg) || baseDmg < 0) return 0;
     if (isPiratesCurseProtected(this.piratesCurseEncounter, defender, this.enemies)
@@ -1877,7 +1885,7 @@ export class EngineRpg {
     }
     if(isSourceKittenWave17(attacker))return 0;
     if (isMelodyWave17(attacker) && !sourceOptions.sourceGoldenLuteContactWave17) return 0;
-    if (hasStockUberProtectionWave17(defender, [...this.heroes, ...this.enemies], (a,b) => this.heroes.includes(a) === this.heroes.includes(b))) return 0;
+    if (this.hasRpgUberProtection(defender)) return 0;
     if (sourceDamageImmuneWave16(defender) && interceptSourceProtectionHitWave16(defender, attacker, baseDmg, {
       delivery: sourceOptions.delivery || 'melee', hostile: attacker !== defender,
       onCounter: counter => this.beginRpgSourceCounterWave16(defender, attacker, counter)
@@ -2184,7 +2192,7 @@ export class EngineRpg {
       // Infection DoT
       if (h.statusEffects?.infected > 0) {
         h.statusEffects.infected--;
-        if (h.statusEffects.infected % 60 === 0 && !sourceDamageImmuneWave16(h)) {
+        if (h.statusEffects.infected % 60 === 0 && !sourceDamageImmuneWave16(h) && !this.hasRpgUberProtection(h)) {
           if (!isPiratesCursedHero(this.piratesCurseEncounter, h, this.heroes)) h.currentHp = Math.max(1, h.currentHp - 3);
           this.particles.add(h.x, h.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
@@ -2255,7 +2263,7 @@ export class EngineRpg {
       // Infection DoT
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
-        if (e.statusEffects.infected % 60 === 0 && !sourceDamageImmuneWave16(e)) {
+        if (e.statusEffects.infected % 60 === 0 && !sourceDamageImmuneWave16(e) && !this.hasRpgUberProtection(e)) {
           if ((e !== raam || !isRaamShieldActive(this.raamEncounter, raam))
             && !isPiratesCurseProtected(this.piratesCurseEncounter, e, this.enemies)) e.currentHp = Math.max(1, e.currentHp - 3);
           this.particles.add(e.x, e.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');

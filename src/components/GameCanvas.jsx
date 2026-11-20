@@ -2145,22 +2145,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.playSfx(command === 'frag' ? 'special' : 'shield');
     }
   };
-  const getCombatantMove = (combatant, type) => {
-    const named = action => typeof action === 'string' ? { name: action } : action;
-    if (stage.mode === 'Tactics' && engineRef.current?.verticalTerrain) {
-      const action = engineRef.current.getActionDefinition(combatant, type);
-      if (action) return named(action);
-    }
-    if (stage.mode === 'RPG') {
-      const action = getRpgCombatantAbility(combatant, type);
-      if (action) return named(action);
-    }
-    if (combatant?.[type]) return named(combatant[type]);
-    const baseDamage = Math.max(1, Number(combatant?.atk) || 8);
-    if (type === 'secondary') return { name: combatant?.special || 'Frappe lourde', dmg: 1.45, cd: 4 };
-    if (type === 'defense') return { name: 'Garde', dur: 1.6, reduce: 0.55 };
-    if (type === 'special') return { name: combatant?.special || 'Rupture ennemie', dmg: 2.4 };
-    return { name: combatant?.weapon || 'Attaque', dmg: Math.max(0.7, baseDamage / 10) };
+  const getCombatantMoveName = (combatant, type) => {
+    const tacticsAction = stage.mode === 'Tactics' && engineRef.current?.verticalTerrain
+      ? engineRef.current.getActionDefinition(combatant, type) : null;
+    const rpgAction = stage.mode === 'RPG' ? getRpgCombatantAbility(combatant, type) : null;
+    const action = tacticsAction || rpgAction || combatant?.[type];
+    const label = action?.name ?? action;
+    if (typeof label === 'string' && label) return label;
+    const localized = label?.[lang] || label?.fr || label?.en;
+    if (typeof localized === 'string' && localized) return localized;
+
+    if (type === 'secondary') return lang === 'fr' ? 'Frappe lourde' : 'Strong attack';
+    if (type === 'defense') return lang === 'fr' ? 'Garde' : 'Guard';
+    if (type === 'special') return lang === 'fr' ? 'Rupture ennemie' : 'Enemy rupture';
+    return typeof combatant?.weapon === 'string' ? combatant.weapon : lang === 'fr' ? 'Attaque' : 'Attack';
   };
 
   const activeSimpleIsCapture = stage.mode === 'Tactics' && activeHeroObj
@@ -2287,7 +2285,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     ? (lang === 'fr' ? 'Capture une cible admissible sans lui infliger de dégâts.' : 'Capture an eligible target without damage.')
                     : (lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.')}
                 >
-                  {activeSimpleIsCapture ? '🫧' : '⚔️'} {getCombatantMove(activeHeroObj, 'simple').name}
+                  {activeSimpleIsCapture ? '🫧' : '⚔️'} {getCombatantMoveName(activeHeroObj, 'simple')}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
                     {activeSimpleIsCapture
                       ? (lang === 'fr' ? 'Capture non létale' : 'Nonlethal capture')
@@ -2301,7 +2299,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
-                  ⚡ {getCombatantMove(activeHeroObj, 'secondary').name}
+                  ⚡ {getCombatantMoveName(activeHeroObj, 'secondary')}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
                     {activeHeroObj.cooldown > 0 ? `COOLDOWN (${Math.ceil(activeHeroObj.cooldown/60)}s)` : 'Skill Action'}
                   </div>
@@ -2313,7 +2311,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
-                  🛡️ {getCombatantMove(activeHeroObj, 'defense').name}
+                  🛡️ {getCombatantMoveName(activeHeroObj, 'defense')}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Shield Defense</div>
                 </button>
 
@@ -2329,7 +2327,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     color: '#fff'
                   }}
                 >
-                  🔥 {getCombatantMove(activeHeroObj, 'special').name.toUpperCase()}
+                  🔥 {getCombatantMoveName(activeHeroObj, 'special').toUpperCase()}
                   <div style={{ fontSize: '8px', color: '#fff', marginTop: '2px' }}>
                     {activeHeroObj.specialCharge < 100 ? `SPECIAL CHARGE: ${Math.round(activeHeroObj.specialCharge)}%` : 'READY!'}
                   </div>
@@ -3195,7 +3193,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {stage.mode === 'Tactics' && (
                   <span style={{ fontSize: '9px', color: '#ffb300' }}>
                     {selectedAction
-                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${selectedAction === 'rex_stinger' ? (lang === 'fr' ? 'Stinger de mission' : 'Mission Stinger') : getCombatantMove(activeHeroObj, selectedAction).name}`
+                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${selectedAction === 'rex_stinger' ? (lang === 'fr' ? 'Stinger de mission' : 'Mission Stinger') : getCombatantMoveName(activeHeroObj, selectedAction)}`
                       : (lang === 'fr' ? 'MODE DEPLACEMENT' : 'MOVEMENT MODE')}
                   </span>
                 )}

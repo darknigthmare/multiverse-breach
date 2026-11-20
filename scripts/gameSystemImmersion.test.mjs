@@ -3,6 +3,7 @@ import test from 'node:test';
 import { createBattleCompletionGate } from '../src/game/battleCompletionGate.js';
 import { createGameDialogQueue } from '../src/game/gameDialogQueue.js';
 import { hasActiveModal } from '../src/game/dialogFocus.js';
+import { activateModal } from '../src/components/collection/modalIsolation.js';
 import { applyDisplayPreferences, DEFAULT_DISPLAY_PREFERENCES, DISPLAY_PREFERENCES_KEY, normalizeDisplayPreferences, readDisplayPreferences, saveDisplayPreferences } from '../src/game/displayPreferences.js';
 
 test('campaign progression accepts one outcome per launch and rejects stale callbacks after relaunch', () => {
@@ -53,6 +54,27 @@ test('closed combat drawers do not block Escape pause; an open modal owns Escape
   assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(true, { inert: true })] }), false);
   assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(true, { visible: false })] }), false);
   assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(false, { tagName: 'SECTION' })] }), true);
+});
+
+test('the active modal consumes a repeated Escape without dismissing another layer', () => {
+  const listeners = new Set();
+  const doc = { body: { style: { overflow: 'auto' } },
+    addEventListener: (_type, listener) => listeners.add(listener),
+    removeEventListener: (_type, listener) => listeners.delete(listener) };
+  const dialog = { focus() {} };
+  const overlay = { ownerDocument: doc, closest: () => null };
+  let closes = 0;
+  const release = activateModal({ overlay, dialog, onClose: () => { closes++; } });
+  for (const [repeat, expectedCloses] of [[true, 0], [false, 1], [true, 1]]) {
+    const consumed = [];
+    const event = { key: 'Escape', repeat, preventDefault: () => consumed.push('default'), stopPropagation: () => consumed.push('propagation') };
+    for (const listener of listeners) listener(event);
+    assert.deepEqual(consumed, ['default', 'propagation']);
+    assert.equal(closes, expectedCloses);
+  }
+  release();
+  assert.equal(listeners.size, 0);
+  assert.equal(doc.body.style.overflow, 'auto');
 });
 
 test('invalid or unavailable display preferences use a readable bounded default', () => {

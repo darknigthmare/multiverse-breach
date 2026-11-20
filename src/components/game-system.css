@@ -14,7 +14,7 @@ html { font-size: calc(16px * var(--game-text-scale)); }
   --game-text: #fff;
   --game-muted: #e4f3fa;
 }
-:root[data-game-contrast="high"] :is(.game-system-dialog, .game-display-settings, .narrative-copy, .dedicated-session-pause-dialog) {
+:root[data-game-contrast="high"] :is(.game-system-dialog, .game-display-settings, .narrative-copy, .dedicated-session-pause-dialog, .campaign-pause-dialog) {
   background-color: #03090e !important;
   color: #fff !important;
   text-shadow: none !important;
@@ -49,14 +49,38 @@ html { font-size: calc(16px * var(--game-text-scale)); }
 .game-dialog-primary { color: #061318 !important; background: #6de9e1 !important; border-color: #6de9e1 !important; }
 .game-dialog-primary.is-destructive { background: #ffc08e !important; border-color: #ffc08e !important; }
 .campaign-session { position: fixed; inset: 0; height: 100dvh; overflow: hidden; background: #030710; }
-.campaign-pause-overlay { position: fixed; z-index: 19000; inset: 0; display: grid; place-items: center; padding: 20px; background: #020610c9; backdrop-filter: blur(10px); }
-.campaign-pause-dialog { width: min(640px, 100%); max-height: calc(100dvh - 40px); overflow-y: auto; box-sizing: border-box; padding: clamp(20px, 3vw, 34px); color: var(--game-text); background: var(--game-panel-bg); border: 1px solid var(--game-panel-border); border-radius: 12px; }
-.campaign-pause-dialog h2 { margin: 4px 0 20px; font-size: 1.5rem; }
-.campaign-pause-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-.campaign-pause-tabs button { min-height: 40px; font-size: .75rem; }
+.campaign-pause-overlay {
+  --campaign-pause-edge: max(12px, var(--game-safe-area, 12px));
+  position: fixed; z-index: 19000; inset: 0; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center; padding: max(var(--campaign-pause-edge), env(safe-area-inset-top)) max(var(--campaign-pause-edge), env(safe-area-inset-right))
+    max(var(--campaign-pause-edge), env(safe-area-inset-bottom)) max(var(--campaign-pause-edge), env(safe-area-inset-left));
+  background: #020610c9; backdrop-filter: blur(10px);
+}
+.campaign-pause-dialog {
+  display: grid; grid-template-rows: minmax(0, 1fr) auto; width: min(640px, 100%); max-height: 100%;
+  min-width: 0; overflow: hidden; box-sizing: border-box; color: var(--game-text);
+  background: var(--game-panel-bg); border: 1px solid var(--game-panel-border); border-radius: 12px;
+}
+.campaign-pause-content {
+  min-width: 0; overflow-y: auto; overscroll-behavior: contain; padding: clamp(14px, 3vw, 28px);
+  overflow-wrap: anywhere;
+}
+.campaign-pause-content:focus-visible { outline: 2px solid var(--game-text); outline-offset: -3px; }
+.campaign-pause-heading h2 { margin: 6px 0 8px; font-size: 1.4rem; }
+.campaign-pause-heading p { margin: 0; color: var(--game-muted); font: .9rem/1.45 system-ui, sans-serif; }
+.campaign-pause-tabs { display: flex; gap: 8px; margin: 18px 0 16px; flex-wrap: wrap; }
+.campaign-pause-tabs button { min-width: 0; min-height: 44px; padding-inline: 12px; font-size: .75rem; white-space: normal; }
 .campaign-pause-tabs button[aria-pressed="true"] { background: #6de9e1; color: #061318; }
-.campaign-pause-actions { display: grid; gap: 12px; }
-.campaign-pause-actions .btn-retro { min-height: 46px; font-size: .85rem; }
+.campaign-pause-panel > .game-system-controls { margin-block: 0 16px; }
+.campaign-pause-panel > fieldset { margin: 16px 0 0; }
+.campaign-pause-panel .game-range-setting output { white-space: nowrap; }
+.campaign-pause-actions {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
+  padding: 12px clamp(14px, 3vw, 28px); border-top: 1px solid var(--game-panel-border); background: var(--game-panel-bg);
+}
+.campaign-pause-actions .btn-retro {
+  min-width: 0; min-height: 46px; padding: 8px 10px; font-size: .85rem; white-space: normal; overflow-wrap: anywhere;
+}
 .campaign-help { font: .9rem/1.7 system-ui, sans-serif; color: var(--game-muted); }
 .campaign-help dt { font-weight: 700; color: var(--game-text); }
 .campaign-help dd { margin: 0 0 16px; }
@@ -73,6 +97,7 @@ html { font-size: calc(16px * var(--game-text-scale)); }
 @media (max-width: 520px) {
   .game-range-setting { grid-template-columns: 1fr 56px; }
   .game-range-setting span { grid-column: 1 / -1; }
+  .campaign-pause-panel .game-range-setting { grid-template-columns: minmax(0, 1fr) max-content; }
   .game-system-dialog { max-height: calc(100dvh - 32px); }
 }
 
@@ -86,4 +111,3 @@ body:has(.hub-screen.is-dedicated-game) .game-system-trigger { display: none; }
 .game-system-controls .network-status-badge { flex: 1 1 180px; }
 .game-system-menu .archive-drawer { max-width: 620px; }
 .game-system-menu .archive-drawer-content { display: block; }
-.campaign-pause-dialog > .game-system-controls { margin-block: 16px; }

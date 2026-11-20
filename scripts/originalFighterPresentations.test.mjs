@@ -14,7 +14,25 @@ const leads = {
   eira_hrafnsdottir: ['Dernière Ligne de Midgard', 'midgard-shield-line'],
   lyra_hexwind: ['Sept Lois, Une Exception', 'seven-laws-circuit'],
   mercy_ash: ['Amnistie des Sans-Contrat', 'amnesty-chain'],
-  elise_varenne: ['Quatre Capitales, Un Signal', 'four-capitals-signal']
+  elise_varenne: ['Quatre Capitales, Un Signal', 'four-capitals-signal'],
+  elara_voss: ['Mutinerie des Cieux', 'sky-mutiny'],
+  bram_quill: ['Théorème d’Éther Libre', 'free-aether'],
+  merek_flint: ['Surcharge de la Grande Chaudière', 'boiler-overload'],
+  seraphine_meridius: ['Treizième Coup', 'thirteenth-chime'],
+  lio_ferrante: ['Réglage du Monde', 'world-adjustment'],
+  brother_ors: ['Dernière Sonnerie', 'last-peal'],
+  mara_veylan: ['Ordre Zéro Radio', 'radio-order-zero'],
+  anton_rook: ['Déraillement Contrôlé', 'controlled-derailment'],
+  ilya_cross: ['Ciel sans Drapeau', 'flagless-sky'],
+  ysara_flint: ['Tous Pavillons Abattus', 'fallen-flags'],
+  milo_quill: ['Mer Réécrite à l’Encre', 'ink-sea'],
+  brann_crow: ['Révolte du Pont Inférieur', 'lower-deck-revolt'],
+  mara_ell: ['Traduction sans Soumission', 'unbowed-translation'],
+  jonas_mire: ['Lumière jusqu’au Fond', 'greywake-beacon'],
+  oona_vell: ['Carte du Rivage qui n’Existe Pas', 'absent-shore'],
+  aelwen_starbough: ['Pluie sur les Sept Royaumes', 'seven-kingdoms-rain'],
+  brokk_embervein: ['Enclume des Sept Serments', 'seven-oaths-anvil'],
+  goruk_ash_tusk: ['Aucun Peuple ne Sera l’Ennemi', 'free-clans']
 };
 let vite, EngineFighter, HEROES_DB, PRESENTATION_PHASES, samplePresentationScript, resolveOriginalFighterPresentation;
 let resolvePresentationScript, getHeroSpriteSheetSrc, drawPixelSprite;
@@ -46,6 +64,8 @@ for (const [id, [finale, effect]] of Object.entries(leads)) {
       assert.equal(script.heroId, id);
       assert.equal(script.phase, phase);
       assert.equal(script.provenance.dedicatedPhaseArtwork, false);
+      assert.equal(script.nameLocalized.fr, script.name);
+      assert.ok(script.nameLocalized.en.length > 0);
       for (const beat of script.beats) {
         const sample = samplePresentationScript(script, beat.at * script.duration + 1e-6);
         assert.equal(sample.asset.sheet, script.sourceAsset.sheet);

@@ -285,7 +285,7 @@ export class TacticsVerticalRuntime {
     if (points.length <= 1) { onComplete?.(); return true; }
     unit.terrainRenderPosition = { x: start.x, y: start.y, z: getTerrainHeightAt(start), surfaceId: start.id };
     Object.assign(unit, this.project(start.x + 0.5, start.y + 0.5, getTerrainHeightAt(start)));
-    unit.terrainMotion = { points, segment: 0, elapsed: 0, onComplete };
+    unit.terrainMotion = { points, transitions: route.transitions, segment: 0, elapsed: 0, onComplete };
     unit.state = 'run'; unit.stateTimer = 0;
     return true;
   }
@@ -305,14 +305,19 @@ export class TacticsVerticalRuntime {
         continue;
       }
       const from = motion.points[motion.segment], to = motion.points[motion.segment + 1];
-      const duration = 10 + Math.ceil(Math.abs(from.z - to.z) * 5);
+      const teleport = motion.transitions?.[motion.segment]?.kind === 'teleport';
+      const duration = teleport ? 8 : 10 + Math.ceil(Math.abs(from.z - to.z) * 5);
       const t = Math.min(1, ++motion.elapsed / duration);
-      const x = from.x + (to.x - from.x) * t + 0.5, y = from.y + (to.y - from.y) * t + 0.5;
-      const z = getTerrainHeightAt(t < 0.5 ? from : to, x, y);
-      unit.terrainRenderPosition = { x: x - 0.5, y: y - 0.5, z, surfaceId: (t < 0.5 ? from : to).id };
+      // Angle passages keep the actor on the entrance until the exit appears.
+      // Intermediate coordinates would paint a walk through floors and walls.
+      const progress = teleport && t < 1 ? 0 : t;
+      const x = from.x + (to.x - from.x) * progress + 0.5, y = from.y + (to.y - from.y) * progress + 0.5;
+      const support = progress < 0.5 ? from : to;
+      const z = getTerrainHeightAt(support, x, y);
+      unit.terrainRenderPosition = { x: x - 0.5, y: y - 0.5, z, surfaceId: support.id };
       Object.assign(unit, this.project(x, y, z));
       if (t < 1) continue;
-      e.applySourceGoldenLuteStepWave17(unit,{x:from.x,y:from.y,z:from.z},{x:to.x,y:to.y,z:to.z});
+      if (!teleport) e.applySourceGoldenLuteStepWave17(unit,{x:from.x,y:from.y,z:from.z},{x:to.x,y:to.y,z:to.z});
       motion.segment++; motion.elapsed = 0;
       if (motion.segment < motion.points.length - 1) continue;
       delete unit.terrainMotion;

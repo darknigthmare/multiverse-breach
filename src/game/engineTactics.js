@@ -4468,6 +4468,8 @@ export class EngineTactics {
         ? (lang === 'en' ? `Directive: clear Scarab crew (${remaining})` : `Directive: eliminer l equipage (${remaining})`)
         : (lang === 'en' ? 'Directive: board Scarab at BOARD' : 'Directive: aborder le Scarab sur BOARD');
     }
+    const scenarioObjective = this.battlefield.objectiveText?.[this.objective]?.[lang];
+    if (scenarioObjective) return scenarioObjective;
     const lines = {
       rout: {
         fr: 'Directive: neutraliser la cellule hostile',

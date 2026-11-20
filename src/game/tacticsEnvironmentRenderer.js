@@ -2,6 +2,7 @@ import { TACTICS_ENVIRONMENT_PROFILES_WAVE15, drawTacticsLandmarksWave15, drawTa
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE16, drawTacticsLandmarksWave16, drawTacticsSceneryWave16 } from './tacticsUniversePresentationWave16.js';
 import { TACTICS_ENVIRONMENT_PROFILES_WAVE17, drawTacticsLandmarksWave17, drawTacticsSceneryWave17 } from './tacticsUniversePresentationWave17.js';
 import { TACTICS_APERTURE_ENVIRONMENT, drawApertureLandmarks, drawApertureScenery } from './tacticsAperturePresentation.js';
+import { TACTICS_ORIGINAL_ENVIRONMENTS, drawOriginalTacticsLandmarks } from './tacticsOriginalPresentation.js';
 // Dedicated environments for every Tactics board, including source sectors
 // and the older Nexus grids. These draw the horizon around real geometry;
 // they never borrow another engine's backdrop or define a walkable tile.
@@ -104,8 +105,8 @@ export function getTacticsEnvironmentProfile(battlefield, mode = 'Tactics', opti
       adaptation: 'Original tactical-board landscape using the universe material family; no exact source location is claimed.'
     };
   }
-  if (battlefield.modeExclusive !== 'Tactics' || battlefield.formatVersion !== 2 || !RUNTIME_PROFILES[presentation.biome]) return null;
-  const selected = RUNTIME_PROFILES[presentation.biome];
+  const selected = TACTICS_ORIGINAL_ENVIRONMENTS[presentation.biome] || RUNTIME_PROFILES[presentation.biome];
+  if (battlefield.modeExclusive !== 'Tactics' || battlefield.formatVersion !== 2 || !selected) return null;
   // An authored palette may tune an original sector. It does not select another
   // universe's image or make an arbitrary background path part of the runtime.
   const palette = Object.fromEntries(Object.entries(presentation.palette || {})
@@ -205,6 +206,7 @@ function forest(ctx, profile, width, horizon, seed, pan) {
 }
 
 function architecturalLandmarks(ctx, profile, width, horizon, pan) {
+  if (drawOriginalTacticsLandmarks(ctx, profile, width, horizon, pan)) return;
   if (drawApertureLandmarks(ctx, profile, width, horizon, pan)) return;
   if (drawTacticsLandmarksWave17(ctx, profile, width, horizon, pan)) return;
   if (drawTacticsLandmarksWave16(ctx, profile, width, horizon, pan)) return;

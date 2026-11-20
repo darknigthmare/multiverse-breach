@@ -2,6 +2,7 @@ import { TACTICS_TERRAIN_MATERIALS_WAVE15 } from './tacticsUniversePresentationW
 import { TACTICS_TERRAIN_MATERIALS_WAVE16 } from './tacticsUniversePresentationWave16.js';
 import { TACTICS_TERRAIN_MATERIALS_WAVE17 } from './tacticsUniversePresentationWave17.js';
 import { TACTICS_APERTURE_MATERIALS } from './tacticsAperturePresentation.js';
+import { TACTICS_ORIGINAL_MATERIALS } from './tacticsOriginalPresentation.js';
 // Shared terrain geometry for the playable Tactics board. Materials are drawn
 // in world coordinates: they are original procedural game textures, not crops
 // from the perspective-painted universe backgrounds or official source art.
@@ -54,7 +55,7 @@ const cornersOf = surface => surface.cornerZ?.length === 4
 const mean = values => values.reduce((sum, value) => sum + value, 0) / values.length;
 const bottomOf = surface => finite(surface.solidBottom, finite(surface.bottomZ,
   Math.min(...cornersOf(surface)) - finite(surface.thickness, 0.24)));
-const materialOf = surface => TACTICS_TERRAIN_MATERIALS[surface.materialId]
+const materialOf = surface => TACTICS_ORIGINAL_MATERIALS[surface.materialId] || TACTICS_TERRAIN_MATERIALS[surface.materialId]
   || TACTICS_TERRAIN_MATERIALS['nexus-floor'];
 const surfaceId = surface => surface.id || surface.surfaceId || `${surface.x}:${surface.y}:${finite(surface.z)}`;
 
@@ -364,6 +365,17 @@ function drawTopTexture(ctx, face, material, options) {
   } else if (family === 'water') {
     const shift = Math.sin((options.animTime || 0) * 0.04 + surface.x) * 0.025;
     for (const v of [0.22, 0.51, 0.79]) faceLine(ctx, face, 0.1 + shift, v, 0.8 + shift, v);
+  }
+  if (surface.anglePassage) {
+    ctx.strokeStyle = material.accent;
+    ctx.lineWidth *= 1.8;
+    for (const size of [0.27, 0.14]) {
+      traceTerrainPolygon(ctx, [
+        interpolateFace(face, 0.5, 0.5 - size), interpolateFace(face, 0.5 + size, 0.5),
+        interpolateFace(face, 0.5, 0.5 + size), interpolateFace(face, 0.5 - size, 0.5)
+      ]);
+      ctx.stroke();
+    }
   }
   // Material breaks are attached to the touching edge at the same height.
   for (let edge = 0; edge < 4; edge += 1) {

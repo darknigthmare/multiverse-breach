@@ -3,6 +3,7 @@ import HeldControlButton from './HeldControlButton.jsx';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
 import { createFighterHeldInputs, synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
+import { createReducedMotionReader } from '../game/reducedMotion.js';
 import { ParticleSystem, getOpenAiBackdropSrc, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
@@ -637,7 +638,7 @@ export default function FighterMode({
     simulationClockRef.current = simulationClock;
     let snapshotClock = 0;
     let visualElapsedSeconds = 0;
-    const reducedMotion = Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+    const readReducedMotion = createReducedMotionReader();
     const loop = now => {
       if (!active || engine.disposed) return;
       try {
@@ -660,6 +661,7 @@ export default function FighterMode({
         visualElapsedSeconds += dt;
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          const reducedMotion = readReducedMotion();
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat', {
             stage: fighterMusicStage,

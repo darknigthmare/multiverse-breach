@@ -1,4 +1,5 @@
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../spriteAssets.js';
+import { getCampaignDuelMotif, ORIGINAL_CAMPAIGN_DUELS } from './originalCampaignDuelPresentations.js';
 
 // Each sequence addresses the 16 existing poses of this body. Only the
 // movement, timing and overlays belong to the duel presentation.
@@ -267,14 +268,16 @@ const presentations = {
 };
 
 export function resolveOriginalFighterPresentation(actor, phase) {
-  const record = Object.hasOwn(presentations, actor?.id) ? presentations[actor.id] : null;
+  const id = actor?.id;
+  const record = Object.hasOwn(presentations, id) ? presentations[id]
+    : Object.hasOwn(ORIGINAL_CAMPAIGN_DUELS, id) ? ORIGINAL_CAMPAIGN_DUELS[id] : null;
   if (!record || actor.originalContent !== true || actor.universe !== record.universe || actor.weaponType !== record.weapon) return null;
   if ([actor.sourceHeroId, actor.sourceId].some(id => id != null && id !== actor.id)) return null;
   if (record.pack ? actor.contentPackId !== record.pack || actor.contentOrigin !== 'oc' : actor.sourceType !== record.sourceType) return null;
   const clip = Object.hasOwn(record.phases, phase) ? record.phases[phase] : null;
   if (!clip) return null;
   // An equipped skin, a future native sheet or another layout must keep its
-  // own pose selection. The indices below were inspected on these four files.
+  // own pose selection. These indices were inspected on the declared sheet.
   const layout = getSpriteSheetLayout(record.sheet);
   if (layout.columns !== 4 || layout.rows !== 4 || layout.rowByState || layout.trim ||
       clip.beats.some(({ state }) => getHeroSpriteSheetSrc({ ...actor, state }, 'melee') !== record.sheet)) return null;
@@ -282,7 +285,7 @@ export function resolveOriginalFighterPresentation(actor, phase) {
   return {
     id: `${actor.id}:${phase}:original-duel`, heroId: actor.id, universe: actor.universe,
     phase, name: clip.name, sourceAction: clip.name, sourceReference: record.sourceReference,
-    nameLocalized: { fr: clip.name, en: englishCaptions[actor.id][phase] },
+    nameLocalized: { fr: clip.name, en: clip.nameEnglish ?? englishCaptions[id][phase] },
     sourceAsset: { sheet: record.sheet, footAnchor: record.footAnchor },
     duration: clip.duration, beats: clip.beats.map(beat => ({ ...beat })),
     effect: { kind: clip.effectWindow ? record.effect : 'none', startsAt, endsAt },
@@ -434,7 +437,9 @@ const paintMotif = {
 };
 
 export function drawOriginalFighterPresentationEffect(ctx, sample, { x, feetY, facing, phase, reducedMotion }) {
-  if (!Object.hasOwn(paintMotif, sample.effect.kind)) return false;
+  const kind = sample.effect.kind;
+  const paint = Object.hasOwn(paintMotif, kind) ? paintMotif[kind] : getCampaignDuelMotif(kind);
+  if (!paint) return false;
   if (reducedMotion || !sample.effect.active) return true;
   const progress = sample.effect.progress;
   const final = phase === 'fatality';
@@ -443,7 +448,7 @@ export function drawOriginalFighterPresentationEffect(ctx, sample, { x, feetY, f
   ctx.scale(facing, 1);
   ctx.globalAlpha *= Math.sin(progress * Math.PI) * (final ? .78 : .47);
   ctx.lineWidth = final ? 2.5 : 1.5;
-  paintMotif[sample.effect.kind](ctx, progress, final ? 1 : .65);
+  paint(ctx, progress, final ? 1 : .65);
   ctx.restore();
   return true;
 }

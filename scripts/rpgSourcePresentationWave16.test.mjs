@@ -15,7 +15,7 @@ const targeting = profile => ({ actorId: 'caller', actorName: 'Caller', abilityN
   profile, side: 'player', shape: 'single', selectedTargetIds: ['target'], previewTargetIds: ['target'], maxTargets: 1,
   eligibleTargets: [{ id: 'target', name: 'Target', hp: 40, maxHp: 100 }],
   estimates: [{ id: 'target', effect: profile.effect || 'guard', amount: 999, min: 900, max: 1000 }], valid: true });
-const render = state => renderToStaticMarkup(React.createElement(Panel, { targeting: state, lang: 'fr', paused: false, wait: true,
+const render = (state, lang = 'fr') => renderToStaticMarkup(React.createElement(Panel, { targeting: state, lang, paused: false, wait: true,
   onWaitChange() {}, onSelect() {}, onConfirm() {}, onCancel() {} }));
 
 test('Mugman displays source duration and an honest caller-only relay without an invented damage estimate', () => {
@@ -81,6 +81,15 @@ test('damage ranges, Über blocking and cleansed status previews survive source 
   assert.match(html, /Dégâts estimés 0–25/);
   assert.match(html, /ÜberCharge : dégâts bloqués/);
   assert.match(html, /Purification : Infection, Glitch, Radiations/);
+});
+
+test('the targeting panel distinguishes actor-centred radial attacks from target-centred areas', () => {
+  const state = { ...targeting({ effect: 'damage' }), shape: 'area', delivery: 'radial' };
+  assert.match(render(state), /Zone autour du lanceur/);
+  assert.match(render(state, 'en'), /Area around caster/);
+  const selectedArea = { ...state, delivery: 'ranged' };
+  assert.match(render(selectedArea), /Zone autour de la cible/);
+  assert.match(render(selectedArea, 'en'), /Area around target/);
 });
 
 test('the single targeting panel retains source status and possession commands outside target selection', () => {

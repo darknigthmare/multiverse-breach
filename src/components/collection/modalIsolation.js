@@ -46,7 +46,9 @@ export function activateModal({ overlay, dialog, initialFocus, onClose, onKeyDow
     if (event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
-      onClose?.();
+      // One physical press can dismiss only one layer, even if that press
+      // opened the pause menu or just dismissed a child confirmation.
+      if (!event.repeat) onClose?.();
     } else if (event.key === 'Tab') {
       trapDialogTab(event, dialog);
     } else onKeyDown?.(event);

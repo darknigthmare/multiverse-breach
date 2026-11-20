@@ -324,15 +324,19 @@ test('RPG authored cleansing and revival retain their eligible target rules and 
 
 test('GameCanvas RPG command labels use the same authored ability helper as targeting', () => {
   const source = readFileSync(new URL('../src/components/GameCanvas.jsx', import.meta.url), 'utf8');
-  const start = source.indexOf('const getCombatantMove');
-  const handler = source.slice(start, source.indexOf('const toggleAuto', start));
+  const start = source.indexOf('const getCombatantMoveName');
+  const handler = source.slice(start, source.indexOf('const activeSimpleIsCapture', start));
   assert.match(handler, /stage\.mode === 'RPG'/);
   assert.match(handler, /getRpgCombatantAbility\(combatant, type\)/);
-  assert.ok(handler.indexOf('getRpgCombatantAbility') < handler.indexOf('return named(combatant[type])'));
-  const command = new Function('stage', 'engineRef', 'getRpgCombatantAbility', handler + '\nreturn getCombatantMove;')(
-    { mode: 'RPG' }, { current: null }, getRpgCombatantAbility);
-  assert.equal(command(hero('stark_warrior'), 'special').name, 'Lightning Strike');
+  const makeCommand = new Function('stage', 'engineRef', 'getRpgCombatantAbility', 'lang', handler + '\nreturn getCombatantMoveName;');
+  const command = makeCommand({ mode: 'RPG' }, { current: null }, getRpgCombatantAbility, 'en');
+  const commandFr = makeCommand({ mode: 'RPG' }, { current: null }, getRpgCombatantAbility, 'fr');
+  assert.equal(command(hero('stark_warrior'), 'special'), 'Lightning Strike');
   const legacySlig = { id: 'oddworld_slig', universe: 'Oddworld', atk: 8, special: 'Ancien tir du Slig' };
-  assert.equal(command(legacySlig, 'special').name, 'Ancien tir du Slig');
-  assert.match(source, /getCombatantMove\(activeHeroObj, 'special'\)\.name\.toUpperCase\(\)/);
+  assert.equal(command(legacySlig, 'special'), 'Ancien tir du Slig');
+  const boss = { id: 'localized-boss', universe: 'Fixture', special: { fr: 'Déferlement', en: 'Surge' } };
+  assert.equal(command(boss, 'special'), 'Surge');
+  assert.equal(commandFr(boss, 'special'), 'Déferlement');
+  assert.equal(command(boss, 'secondary'), 'Strong attack');
+  assert.match(source, /getCombatantMoveName\(activeHeroObj, 'special'\)\.toUpperCase\(\)/);
 });
